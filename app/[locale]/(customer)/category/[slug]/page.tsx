@@ -1,26 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Grid3X3, List, SlidersHorizontal, X, ChevronDown } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
 import { Pagination } from '@/components/ui';
+import { useProducts } from '@/lib/hooks/useProducts';
 
-// Mock products
-const mockProducts = [
+// Fallback products
+const fallbackProducts = [
   { id: '1', name: 'Oversized Wool Blazer', brand: 'MOHAN', price: '$299' },
   { id: '2', name: 'Silk Slip Dress', brand: 'LAMEREI', price: '$189' },
   { id: '3', name: 'Cashmere Cardigan', brand: 'KORIN', price: '$249' },
   { id: '4', name: 'Leather Tote Bag', brand: 'MERAKI', price: '$399' },
-  { id: '5', name: 'Cotton T-Shirt', brand: 'BASIC', price: '$49' },
-  { id: '6', name: 'Denim Wide Pants', brand: 'KORIN', price: '$129' },
-  { id: '7', name: 'Knit Sweater', brand: 'MOHAN', price: '$159' },
-  { id: '8', name: 'Ankle Boots', brand: 'MERAKI', price: '$349' },
 ];
-
-const filterTags = ['Women', 'All apparel'];
 
 export default function CategoryPage() {
   const params = useParams();
@@ -30,15 +25,42 @@ export default function CategoryPage() {
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
-  const [activeFilters, setActiveFilters] = useState(filterTags);
+
+  const categorySlug = typeof params.slug === 'string' ? params.slug : '';
+  const categoryName = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
+
+  // Fetch real products from Firestore
+  const { products: firestoreProducts, isLoading, hasMore, loadMore } = useProducts({
+    category: categorySlug,
+    limit: 12,
+  });
+
+  // Transform products for display
+  const products = useMemo(() => {
+    if (firestoreProducts && firestoreProducts.length > 0) {
+      return firestoreProducts.map(p => ({
+        id: p.id,
+        name: p.name,
+        brand: p.brand || '',
+        price: `$${p.price}`,
+        image: p.images?.[0]?.url,
+      }));
+    }
+    return fallbackProducts;
+  }, [firestoreProducts]);
+
+  const productCount = firestoreProducts?.length || fallbackProducts.length;
+
+  // Active filters based on category
+  const [activeFilters, setActiveFilters] = useState<string[]>([categoryName]);
 
   const removeFilter = (filter: string) => {
     setActiveFilters(prev => prev.filter(f => f !== filter));
+    // If category filter removed, go back
+    if (filter === categoryName) {
+      router.back();
+    }
   };
-
-  const categoryName = typeof params.slug === 'string'
-    ? params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-    : 'Category';
 
   return (
     <div className="min-h-screen pb-8">
@@ -53,7 +75,7 @@ export default function CategoryPage() {
           </button>
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-[var(--color-title-active)]">
-              4,500 {categoryName.toUpperCase()}
+              {isLoading ? '...' : productCount} {categoryName.toUpperCase()}
             </span>
             <div className="flex items-center gap-1 border-l border-[var(--color-line)] pl-4">
               <button className="flex items-center gap-1 text-sm text-[var(--color-text-body)]">
@@ -102,17 +124,39 @@ export default function CategoryPage() {
 
       {/* Products */}
       <div className="py-4">
-        <ProductGrid products={mockProducts} />
+        {isLoading ? (
+          <div className="grid grid-cols-2 gap-4 px-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="animate-pulse">
+                <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-2" />
+                <div className="h-3 bg-gray-200 rounded w-16 mb-1" />
+                <div className="h-4 bg-gray-200 rounded w-full mb-1" />
+                <div className="h-4 bg-gray-200 rounded w-12" />
+              </div>
+            ))}
+          </div>
+        ) : products.length > 0 ? (
+          <ProductGrid products={products} />
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 px-4">
+            <p className="text-sm text-[var(--color-text-label)] text-center">
+              No products found in this category.
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Pagination */}
-      <div className="px-4 py-4">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={10}
-          onPageChange={setCurrentPage}
-        />
-      </div>
+      {/* Load More / Pagination */}
+      {hasMore && (
+        <div className="px-4 py-4 flex justify-center">
+          <button
+            onClick={loadMore}
+            className="px-6 py-2 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </div>
   );
 }

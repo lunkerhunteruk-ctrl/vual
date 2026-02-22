@@ -2,26 +2,33 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Play, Calendar, Clock, Eye } from 'lucide-react';
-
-interface Broadcast {
-  id: string;
-  title: string;
-  date: string;
-  duration: string;
-  views: number;
-  thumbnail: string;
-}
-
-const mockBroadcasts: Broadcast[] = [
-  { id: '1', title: 'Summer Collection Launch', date: '2025-01-02', duration: '1h 24m', views: 2340, thumbnail: '' },
-  { id: '2', title: 'New Year Special Sale', date: '2025-01-01', duration: '45m', views: 1890, thumbnail: '' },
-  { id: '3', title: 'Winter Essentials Showcase', date: '2024-12-28', duration: '1h 10m', views: 3120, thumbnail: '' },
-  { id: '4', title: 'Holiday Gift Guide', date: '2024-12-24', duration: '55m', views: 2780, thumbnail: '' },
-];
+import { Play, Calendar, Clock, Eye, Loader2 } from 'lucide-react';
+import { useStreams } from '@/lib/hooks/useStreams';
 
 export function BroadcastHistory() {
   const t = useTranslations('admin.live');
+
+  // Fetch ended streams (past broadcasts)
+  const { streams, isLoading } = useStreams({ status: 'ended', limit: 10 });
+
+  const formatDate = (date: Date | undefined) => {
+    if (!date) return '-';
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(date);
+  };
+
+  const formatDuration = (minutes: number | undefined) => {
+    if (!minutes) return '-';
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    if (hours > 0) {
+      return `${hours}h ${mins}m`;
+    }
+    return `${mins}m`;
+  };
 
   return (
     <motion.div
@@ -63,37 +70,55 @@ export function BroadcastHistory() {
             </tr>
           </thead>
           <tbody>
-            {mockBroadcasts.map((broadcast) => (
-              <tr
-                key={broadcast.id}
-                className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
-              >
-                <td className="py-3 px-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-16 h-10 bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-sm)] flex items-center justify-center">
-                      <Play size={14} className="text-[var(--color-text-label)]" />
-                    </div>
-                    <span className="text-sm font-medium text-[var(--color-title-active)]">
-                      {broadcast.title}
-                    </span>
-                  </div>
-                </td>
-                <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
-                  {broadcast.date}
-                </td>
-                <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
-                  {broadcast.duration}
-                </td>
-                <td className="py-3 px-2 text-sm font-medium text-[var(--color-title-active)]">
-                  {broadcast.views.toLocaleString()}
-                </td>
-                <td className="py-3 px-2">
-                  <button className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-input)] transition-colors">
-                    <Play size={16} className="text-[var(--color-accent)]" />
-                  </button>
+            {isLoading ? (
+              <tr>
+                <td colSpan={5} className="py-10 text-center">
+                  <Loader2 size={20} className="animate-spin mx-auto text-[var(--color-text-label)]" />
                 </td>
               </tr>
-            ))}
+            ) : streams.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-10 text-center text-sm text-[var(--color-text-label)]">
+                  No past broadcasts yet
+                </td>
+              </tr>
+            ) : (
+              streams.map((stream) => (
+                <tr
+                  key={stream.id}
+                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                >
+                  <td className="py-3 px-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-16 h-10 bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-sm)] flex items-center justify-center overflow-hidden">
+                        {stream.thumbnailURL ? (
+                          <img src={stream.thumbnailURL} alt={stream.title} className="w-full h-full object-cover" />
+                        ) : (
+                          <Play size={14} className="text-[var(--color-text-label)]" />
+                        )}
+                      </div>
+                      <span className="text-sm font-medium text-[var(--color-title-active)]">
+                        {stream.title}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
+                    {formatDate(stream.endedAt || stream.startedAt)}
+                  </td>
+                  <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
+                    {formatDuration(stream.duration)}
+                  </td>
+                  <td className="py-3 px-2 text-sm font-medium text-[var(--color-title-active)]">
+                    {stream.peakViewerCount?.toLocaleString() || '0'}
+                  </td>
+                  <td className="py-3 px-2">
+                    <button className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-input)] transition-colors">
+                      <Play size={16} className="text-[var(--color-accent)]" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

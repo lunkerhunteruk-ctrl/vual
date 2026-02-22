@@ -1,35 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Mail, Phone, MapPin, ShoppingBag, Calendar } from 'lucide-react';
-import { Pagination, Badge } from '@/components/ui';
+import { Search, X, Mail, Phone, MapPin, ShoppingBag, Calendar, Loader2 } from 'lucide-react';
+import { Pagination } from '@/components/ui';
+import { useCustomers } from '@/lib/hooks/useCustomers';
+import type { Customer } from '@/lib/types';
 
 type CustomerStatus = 'active' | 'inactive' | 'vip';
 
-interface Customer {
-  id: string;
-  customerId: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  orderCount: number;
-  totalSpend: string;
-  status: CustomerStatus;
-  registrationDate: string;
-  lastPurchase: string;
-}
-
-const mockCustomers: Customer[] = [
-  { id: '1', customerId: '#CUST001', name: 'John Doe', email: 'john@example.com', phone: '+1 234 567 8901', address: '123 Main St, New York, NY', orderCount: 25, totalSpend: '$3,450', status: 'vip', registrationDate: '2024-01-15', lastPurchase: '2025-01-02' },
-  { id: '2', customerId: '#CUST002', name: 'Jane Smith', email: 'jane@example.com', phone: '+1 234 567 8902', address: '456 Oak Ave, Los Angeles, CA', orderCount: 12, totalSpend: '$1,280', status: 'active', registrationDate: '2024-03-20', lastPurchase: '2024-12-28' },
-  { id: '3', customerId: '#CUST003', name: 'Mike Johnson', email: 'mike@example.com', phone: '+1 234 567 8903', address: '789 Pine Rd, Chicago, IL', orderCount: 8, totalSpend: '$890', status: 'active', registrationDate: '2024-05-10', lastPurchase: '2024-12-15' },
-  { id: '4', customerId: '#CUST004', name: 'Sarah Williams', email: 'sarah@example.com', phone: '+1 234 567 8904', address: '321 Elm St, Houston, TX', orderCount: 3, totalSpend: '$320', status: 'inactive', registrationDate: '2024-08-05', lastPurchase: '2024-09-20' },
-  { id: '5', customerId: '#CUST005', name: 'Tom Brown', email: 'tom@example.com', phone: '+1 234 567 8905', address: '654 Maple Dr, Phoenix, AZ', orderCount: 45, totalSpend: '$8,920', status: 'vip', registrationDate: '2023-11-01', lastPurchase: '2025-01-03' },
-  { id: '6', customerId: '#CUST006', name: 'Emily Davis', email: 'emily@example.com', phone: '+1 234 567 8906', address: '987 Cedar Ln, San Diego, CA', orderCount: 6, totalSpend: '$540', status: 'active', registrationDate: '2024-06-18', lastPurchase: '2024-12-10' },
-];
+// Helper to determine customer status
+const getCustomerStatus = (customer: Customer): CustomerStatus => {
+  if (customer.isVip) return 'vip';
+  // Consider inactive if no purchase in last 90 days
+  if (customer.lastPurchaseAt) {
+    const daysSincePurchase = (Date.now() - customer.lastPurchaseAt.getTime()) / (1000 * 60 * 60 * 24);
+    if (daysSincePurchase > 90) return 'inactive';
+  }
+  return 'active';
+};
 
 const statusColors: Record<CustomerStatus, { bg: string; text: string }> = {
   active: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
@@ -41,6 +31,41 @@ export function CustomerTable() {
   const t = useTranslations('admin.customers');
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Fetch real customers from Firestore
+  const { customers: firestoreCustomers, isLoading, hasMore, loadMore } = useCustomers({
+    limit: 20,
+  });
+
+  // Filter customers by search query
+  const filteredCustomers = useMemo(() => {
+    if (!firestoreCustomers) return [];
+    if (!searchQuery.trim()) return firestoreCustomers;
+
+    const query = searchQuery.toLowerCase();
+    return firestoreCustomers.filter(customer =>
+      customer.displayName?.toLowerCase().includes(query) ||
+      customer.email?.toLowerCase().includes(query) ||
+      customer.phone?.toLowerCase().includes(query)
+    );
+  }, [firestoreCustomers, searchQuery]);
+
+  const formatDate = (date: Date | undefined) => {
+    if (!date) return '-';
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(date);
+  };
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount / 100);
+  };
 
   return (
     <div className="flex gap-6">
@@ -61,6 +86,8 @@ export function CustomerTable() {
             />
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search customers..."
               className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
@@ -93,56 +120,81 @@ export function CustomerTable() {
               </tr>
             </thead>
             <tbody>
-              {mockCustomers.map((customer) => (
-                <tr
-                  key={customer.id}
-                  onClick={() => setSelectedCustomer(customer)}
-                  className={`border-b border-[var(--color-line)] last:border-0 cursor-pointer transition-colors ${
-                    selectedCustomer?.id === customer.id
-                      ? 'bg-[var(--color-bg-element)]'
-                      : 'hover:bg-[var(--color-bg-element)]'
-                  }`}
-                >
-                  <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    {customer.customerId}
-                  </td>
-                  <td className="py-3 px-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-[var(--color-bg-input)] rounded-full flex items-center justify-center">
-                        <span className="text-xs font-medium text-[var(--color-text-body)]">
-                          {customer.name.split(' ').map(n => n[0]).join('')}
-                        </span>
-                      </div>
-                      <span className="text-sm text-[var(--color-title-active)]">{customer.name}</span>
-                    </div>
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {customer.phone}
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-title-active)]">
-                    {customer.orderCount}
-                  </td>
-                  <td className="py-3 px-4 text-sm font-medium text-[var(--color-accent)]">
-                    {customer.totalSpend}
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[customer.status].bg} ${statusColors[customer.status].text}`}>
-                      {customer.status.toUpperCase()}
-                    </span>
+              {isLoading ? (
+                <tr>
+                  <td colSpan={6} className="py-20 text-center">
+                    <Loader2 size={24} className="animate-spin mx-auto text-[var(--color-text-label)]" />
                   </td>
                 </tr>
-              ))}
+              ) : filteredCustomers.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-20 text-center text-sm text-[var(--color-text-label)]">
+                    No customers found
+                  </td>
+                </tr>
+              ) : (
+                filteredCustomers.map((customer) => {
+                  const status = getCustomerStatus(customer);
+                  return (
+                    <tr
+                      key={customer.id}
+                      onClick={() => setSelectedCustomer(customer)}
+                      className={`border-b border-[var(--color-line)] last:border-0 cursor-pointer transition-colors ${
+                        selectedCustomer?.id === customer.id
+                          ? 'bg-[var(--color-bg-element)]'
+                          : 'hover:bg-[var(--color-bg-element)]'
+                      }`}
+                    >
+                      <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
+                        #{customer.id.slice(-6).toUpperCase()}
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-[var(--color-bg-input)] rounded-full flex items-center justify-center">
+                            <span className="text-xs font-medium text-[var(--color-text-body)]">
+                              {customer.displayName.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                          <span className="text-sm text-[var(--color-title-active)]">{customer.displayName}</span>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                        {customer.phone || '-'}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-[var(--color-title-active)]">
+                        {customer.orderCount}
+                      </td>
+                      <td className="py-3 px-4 text-sm font-medium text-[var(--color-accent)]">
+                        {formatCurrency(customer.totalSpent)}
+                      </td>
+                      <td className="py-3 px-4">
+                        <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[status].bg} ${statusColors[status].text}`}>
+                          {status.toUpperCase()}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
             </tbody>
           </table>
         </div>
 
-        {/* Pagination */}
+        {/* Load More */}
         <div className="p-4 border-t border-[var(--color-line)]">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={10}
-            onPageChange={setCurrentPage}
-          />
+          {hasMore ? (
+            <button
+              onClick={loadMore}
+              disabled={isLoading}
+              className="w-full py-2 text-sm text-[var(--color-text-body)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors disabled:opacity-50"
+            >
+              {isLoading ? 'Loading...' : 'Load More'}
+            </button>
+          ) : filteredCustomers.length > 0 ? (
+            <p className="text-center text-sm text-[var(--color-text-label)]">
+              Showing all {filteredCustomers.length} customers
+            </p>
+          ) : null}
         </div>
       </motion.div>
 
@@ -159,13 +211,13 @@ export function CustomerTable() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-[var(--color-bg-input)] rounded-full flex items-center justify-center">
                   <span className="text-lg font-medium text-[var(--color-text-body)]">
-                    {selectedCustomer.name.split(' ').map(n => n[0]).join('')}
+                    {selectedCustomer.displayName.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[var(--color-title-active)]">{selectedCustomer.name}</h3>
-                  <span className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[selectedCustomer.status].bg} ${statusColors[selectedCustomer.status].text}`}>
-                    {selectedCustomer.status.toUpperCase()}
+                  <h3 className="font-semibold text-[var(--color-title-active)]">{selectedCustomer.displayName}</h3>
+                  <span className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[getCustomerStatus(selectedCustomer)].bg} ${statusColors[getCustomerStatus(selectedCustomer)].text}`}>
+                    {getCustomerStatus(selectedCustomer).toUpperCase()}
                   </span>
                 </div>
               </div>
@@ -185,15 +237,19 @@ export function CustomerTable() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm">
                   <Mail size={16} className="text-[var(--color-text-label)]" />
-                  <span className="text-[var(--color-text-body)]">{selectedCustomer.email}</span>
+                  <span className="text-[var(--color-text-body)]">{selectedCustomer.email || '-'}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <Phone size={16} className="text-[var(--color-text-label)]" />
-                  <span className="text-[var(--color-text-body)]">{selectedCustomer.phone}</span>
+                  <span className="text-[var(--color-text-body)]">{selectedCustomer.phone || '-'}</span>
                 </div>
                 <div className="flex items-start gap-3 text-sm">
                   <MapPin size={16} className="text-[var(--color-text-label)] mt-0.5" />
-                  <span className="text-[var(--color-text-body)]">{selectedCustomer.address}</span>
+                  <span className="text-[var(--color-text-body)]">
+                    {selectedCustomer.addresses?.[0]
+                      ? `${selectedCustomer.addresses[0].city}, ${selectedCustomer.addresses[0].prefecture}`
+                      : '-'}
+                  </span>
                 </div>
               </div>
             </div>
@@ -209,14 +265,14 @@ export function CustomerTable() {
                     <Calendar size={14} className="text-[var(--color-text-label)]" />
                     <span className="text-[var(--color-text-label)]">{t('registration')}</span>
                   </div>
-                  <span className="text-[var(--color-text-body)]">{selectedCustomer.registrationDate}</span>
+                  <span className="text-[var(--color-text-body)]">{formatDate(selectedCustomer.createdAt)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
                     <ShoppingBag size={14} className="text-[var(--color-text-label)]" />
                     <span className="text-[var(--color-text-label)]">{t('lastPurchase')}</span>
                   </div>
-                  <span className="text-[var(--color-text-body)]">{selectedCustomer.lastPurchase}</span>
+                  <span className="text-[var(--color-text-body)]">{formatDate(selectedCustomer.lastPurchaseAt)}</span>
                 </div>
               </div>
             </div>
@@ -232,7 +288,7 @@ export function CustomerTable() {
                   <p className="text-xs text-[var(--color-text-label)]">{t('totalOrder')}</p>
                 </div>
                 <div className="bg-[var(--color-bg-element)] rounded-[var(--radius-md)] p-3 text-center">
-                  <p className="text-xl font-semibold text-[var(--color-accent)]">{selectedCustomer.totalSpend}</p>
+                  <p className="text-xl font-semibold text-[var(--color-accent)]">{formatCurrency(selectedCustomer.totalSpent)}</p>
                   <p className="text-xs text-[var(--color-text-label)]">{t('totalSpend')}</p>
                 </div>
               </div>

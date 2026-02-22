@@ -1,34 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Eye } from 'lucide-react';
-import { Pagination } from '@/components/ui';
+import { Search, Eye, Loader2 } from 'lucide-react';
+import { useTransactions } from '@/lib/hooks/useTransactions';
+import type { Transaction } from '@/lib/types';
 
-type TransactionStatus = 'completed' | 'pending' | 'failed';
-type PaymentMethod = 'credit_card' | 'paypal' | 'bank_transfer' | 'stripe';
-
-interface Transaction {
-  id: string;
-  customerId: string;
-  customerName: string;
-  date: string;
-  amount: string;
-  method: PaymentMethod;
-  status: TransactionStatus;
-}
-
-const mockTransactions: Transaction[] = [
-  { id: '1', customerId: '#CUST001', customerName: 'John Doe', date: '01-01-2025', amount: '$2,904', method: 'credit_card', status: 'completed' },
-  { id: '2', customerId: '#CUST002', customerName: 'Jane Smith', date: '01-01-2025', amount: '$1,280', method: 'stripe', status: 'completed' },
-  { id: '3', customerId: '#CUST003', customerName: 'Mike Johnson', date: '02-01-2025', amount: '$890', method: 'paypal', status: 'pending' },
-  { id: '4', customerId: '#CUST004', customerName: 'Sarah Williams', date: '02-01-2025', amount: '$320', method: 'bank_transfer', status: 'failed' },
-  { id: '5', customerId: '#CUST005', customerName: 'Tom Brown', date: '03-01-2025', amount: '$4,520', method: 'credit_card', status: 'completed' },
-  { id: '6', customerId: '#CUST006', customerName: 'Emily Davis', date: '03-01-2025', amount: '$540', method: 'stripe', status: 'completed' },
-  { id: '7', customerId: '#CUST007', customerName: 'David Wilson', date: '04-01-2025', amount: '$1,890', method: 'credit_card', status: 'pending' },
-  { id: '8', customerId: '#CUST008', customerName: 'Lisa Anderson', date: '04-01-2025', amount: '$670', method: 'paypal', status: 'completed' },
-];
+type TransactionStatus = 'pending' | 'completed' | 'failed';
 
 const statusColors: Record<TransactionStatus, string> = {
   completed: 'bg-emerald-50 text-emerald-700',
@@ -36,30 +15,66 @@ const statusColors: Record<TransactionStatus, string> = {
   failed: 'bg-red-50 text-red-700',
 };
 
-const methodLabels: Record<PaymentMethod, string> = {
-  credit_card: 'Credit Card',
-  paypal: 'PayPal',
-  bank_transfer: 'Bank Transfer',
-  stripe: 'Stripe',
-};
-
 type TabFilter = 'all' | 'completed' | 'pending' | 'failed';
 
 export function TransactionsTable() {
   const t = useTranslations('admin.transactions');
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Fetch real transactions from Firestore
+  const statusFilter = activeTab === 'all' ? undefined : activeTab as TransactionStatus;
+  const { transactions: firestoreTransactions, isLoading, hasMore, loadMore } = useTransactions({
+    status: statusFilter,
+    limit: 20,
+  });
+
+  // Calculate tab counts
+  const { transactions: allTransactions } = useTransactions({ limit: 1000 });
+  const tabCounts = useMemo(() => {
+    if (!allTransactions) return { all: 0, completed: 0, pending: 0, failed: 0 };
+    return {
+      all: allTransactions.length,
+      completed: allTransactions.filter(t => t.status === 'completed').length,
+      pending: allTransactions.filter(t => t.status === 'pending').length,
+      failed: allTransactions.filter(t => t.status === 'failed').length,
+    };
+  }, [allTransactions]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
-    { key: 'all', label: 'All', count: 240 },
-    { key: 'completed', label: t('complete'), count: 180 },
-    { key: 'pending', label: 'Pending', count: 45 },
-    { key: 'failed', label: 'Failed', count: 15 },
+    { key: 'all', label: 'All', count: tabCounts.all },
+    { key: 'completed', label: t('complete'), count: tabCounts.completed },
+    { key: 'pending', label: 'Pending', count: tabCounts.pending },
+    { key: 'failed', label: 'Failed', count: tabCounts.failed },
   ];
 
-  const filteredTransactions = activeTab === 'all'
-    ? mockTransactions
-    : mockTransactions.filter(tx => tx.status === activeTab);
+  // Filter transactions by search
+  const filteredTransactions = useMemo(() => {
+    if (!firestoreTransactions) return [];
+    if (!searchQuery.trim()) return firestoreTransactions;
+
+    const query = searchQuery.toLowerCase();
+    return firestoreTransactions.filter(tx =>
+      tx.orderId?.toLowerCase().includes(query) ||
+      tx.paymentMethod?.toLowerCase().includes(query)
+    );
+  }, [firestoreTransactions, searchQuery]);
+
+  const formatDate = (date: Date | undefined) => {
+    if (!date) return '-';
+    return new Intl.DateTimeFormat('en-US', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(date);
+  };
+
+  const formatCurrency = (amount: number, currency: string = 'USD') => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(amount / 100);
+  };
 
   return (
     <motion.div
@@ -94,6 +109,8 @@ export function TransactionsTable() {
           />
           <input
             type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('searchHistory')}
             className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
           />
@@ -127,50 +144,72 @@ export function TransactionsTable() {
             </tr>
           </thead>
           <tbody>
-            {filteredTransactions.map((transaction) => (
-              <tr
-                key={transaction.id}
-                className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
-              >
-                <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                  {transaction.customerId}
-                </td>
-                <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                  {transaction.customerName}
-                </td>
-                <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                  {transaction.date}
-                </td>
-                <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                  {transaction.amount}
-                </td>
-                <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                  {methodLabels[transaction.method]}
-                </td>
-                <td className="py-3 px-4">
-                  <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[transaction.status]}`}>
-                    {transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}
-                  </span>
-                </td>
-                <td className="py-3 px-4">
-                  <button className="flex items-center gap-1.5 text-sm text-[var(--color-accent)] hover:underline">
-                    <Eye size={14} />
-                    {t('viewDetails')}
-                  </button>
+            {isLoading ? (
+              <tr>
+                <td colSpan={7} className="py-20 text-center">
+                  <Loader2 size={24} className="animate-spin mx-auto text-[var(--color-text-label)]" />
                 </td>
               </tr>
-            ))}
+            ) : filteredTransactions.length === 0 ? (
+              <tr>
+                <td colSpan={7} className="py-20 text-center text-sm text-[var(--color-text-label)]">
+                  No transactions found
+                </td>
+              </tr>
+            ) : (
+              filteredTransactions.map((transaction) => (
+                <tr
+                  key={transaction.id}
+                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                >
+                  <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
+                    #{transaction.orderId?.slice(-6).toUpperCase() || '-'}
+                  </td>
+                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                    {transaction.paymentProvider || '-'}
+                  </td>
+                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                    {formatDate(transaction.createdAt)}
+                  </td>
+                  <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
+                    {formatCurrency(transaction.amount, transaction.currency)}
+                  </td>
+                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                    {transaction.paymentMethod || '-'}
+                  </td>
+                  <td className="py-3 px-4">
+                    <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[transaction.status as TransactionStatus] || 'bg-gray-50 text-gray-700'}`}>
+                      {transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4">
+                    <button className="flex items-center gap-1.5 text-sm text-[var(--color-accent)] hover:underline">
+                      <Eye size={14} />
+                      {t('viewDetails')}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
 
-      {/* Pagination */}
+      {/* Load More */}
       <div className="p-4 border-t border-[var(--color-line)]">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={12}
-          onPageChange={setCurrentPage}
-        />
+        {hasMore ? (
+          <button
+            onClick={loadMore}
+            disabled={isLoading}
+            className="w-full py-2 text-sm text-[var(--color-text-body)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors disabled:opacity-50"
+          >
+            {isLoading ? 'Loading...' : 'Load More'}
+          </button>
+        ) : filteredTransactions.length > 0 ? (
+          <p className="text-center text-sm text-[var(--color-text-label)]">
+            Showing all {filteredTransactions.length} transactions
+          </p>
+        ) : null}
       </div>
     </motion.div>
   );

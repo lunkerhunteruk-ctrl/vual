@@ -1,22 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Search, X, Clock, TrendingUp, Grid3X3 } from 'lucide-react';
+import { Search, X, Clock, TrendingUp, Grid3X3, Loader2 } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
+import { useProducts } from '@/lib/hooks/useProducts';
 
-const recentSearches = ['Dress', 'Collection', 'Nike'];
+// These could be stored in localStorage for real recent searches
+const defaultRecentSearches = ['Dress', 'Jacket', 'Shoes'];
 const popularTerms = ['Trend', 'Dress', 'Bag', 'T-shirt', 'Beauty', 'Accessories'];
-
-// Mock search results
-const mockResults = [
-  { id: '1', name: 'Silk Slip Dress', brand: 'LAMEREI', price: '$189' },
-  { id: '2', name: 'Cotton Summer Dress', brand: 'BASIC', price: '$89' },
-  { id: '3', name: 'Floral Midi Dress', brand: 'KORIN', price: '$149' },
-  { id: '4', name: 'Knit Sweater Dress', brand: 'MOHAN', price: '$179' },
-];
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -26,34 +19,87 @@ export default function SearchPage() {
 
   const initialQuery = searchParams.get('q') || '';
   const [query, setQuery] = useState(initialQuery);
-  const [hasSearched, setHasSearched] = useState(!!initialQuery);
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+  const [recentSearches, setRecentSearches] = useState<string[]>(defaultRecentSearches);
+
+  // Fetch all products for search
+  const { products: allProducts, isLoading } = useProducts({ limit: 100 });
+
+  // Filter products based on search query
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim() || !allProducts) return [];
+
+    const lowerQuery = searchQuery.toLowerCase();
+    return allProducts
+      .filter(p =>
+        p.name.toLowerCase().includes(lowerQuery) ||
+        p.brand?.toLowerCase().includes(lowerQuery) ||
+        p.description?.toLowerCase().includes(lowerQuery) ||
+        p.categories?.some(c => c.toLowerCase().includes(lowerQuery))
+      )
+      .map(p => ({
+        id: p.id,
+        name: p.name,
+        brand: p.brand || '',
+        price: `$${p.price}`,
+        image: p.images?.[0]?.url,
+      }));
+  }, [searchQuery, allProducts]);
 
   useEffect(() => {
     if (initialQuery) {
       setQuery(initialQuery);
-      setHasSearched(true);
+      setSearchQuery(initialQuery);
     }
   }, [initialQuery]);
+
+  // Load recent searches from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('vual-recent-searches');
+    if (saved) {
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch {
+        // ignore
+      }
+    }
+  }, []);
+
+  const saveRecentSearch = (term: string) => {
+    const updated = [term, ...recentSearches.filter(s => s !== term)].slice(0, 5);
+    setRecentSearches(updated);
+    localStorage.setItem('vual-recent-searches', JSON.stringify(updated));
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      setHasSearched(true);
+      setSearchQuery(query);
+      saveRecentSearch(query);
       router.push(`/${locale}/search?q=${encodeURIComponent(query)}`);
     }
   };
 
   const handleTermClick = (term: string) => {
     setQuery(term);
-    setHasSearched(true);
+    setSearchQuery(term);
+    saveRecentSearch(term);
     router.push(`/${locale}/search?q=${encodeURIComponent(term)}`);
   };
 
   const clearSearch = () => {
     setQuery('');
-    setHasSearched(false);
+    setSearchQuery('');
     router.push(`/${locale}/search`);
   };
+
+  const removeRecentSearch = (term: string) => {
+    const updated = recentSearches.filter(s => s !== term);
+    setRecentSearches(updated);
+    localStorage.setItem('vual-recent-searches', JSON.stringify(updated));
+  };
+
+  const hasSearched = !!searchQuery;
 
   return (
     <div className="min-h-screen">
@@ -85,12 +131,21 @@ export default function SearchPage() {
 
       {/* Content */}
       <div className="px-4 py-6">
-        {hasSearched && query ? (
+        {hasSearched ? (
           <>
             {/* Search Results Header */}
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm text-[var(--color-text-body)]">
-                {mockResults.length} {t('resultsFor')} "{query}"
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 size={14} className="animate-spin" />
+                    Searching...
+                  </span>
+                ) : (
+                  <>
+                    {searchResults.length} {t('resultsFor')} &quot;{searchQuery}&quot;
+                  </>
+                )}
               </p>
               <button className="p-1.5 rounded bg-[var(--color-bg-element)]">
                 <Grid3X3 size={18} className="text-[var(--color-text-body)]" />
@@ -98,37 +153,62 @@ export default function SearchPage() {
             </div>
 
             {/* Results Grid */}
-            <ProductGrid products={mockResults} />
+            {isLoading ? (
+              <div className="grid grid-cols-2 gap-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="animate-pulse">
+                    <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-2" />
+                    <div className="h-3 bg-gray-200 rounded w-16 mb-1" />
+                    <div className="h-4 bg-gray-200 rounded w-full mb-1" />
+                    <div className="h-4 bg-gray-200 rounded w-12" />
+                  </div>
+                ))}
+              </div>
+            ) : searchResults.length > 0 ? (
+              <ProductGrid products={searchResults} />
+            ) : (
+              <div className="flex flex-col items-center justify-center py-16">
+                <Search size={48} className="text-[var(--color-text-label)] mb-4" />
+                <p className="text-sm text-[var(--color-text-body)] text-center">
+                  No products found for &quot;{searchQuery}&quot;
+                </p>
+                <p className="text-xs text-[var(--color-text-label)] text-center mt-1">
+                  Try different keywords or browse categories
+                </p>
+              </div>
+            )}
           </>
         ) : (
           <>
             {/* Recent Searches */}
-            <div className="mb-8">
-              <h3 className="text-sm font-medium text-[var(--color-text-label)] mb-3">
-                {t('recentSearch')}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {recentSearches.map((term) => (
-                  <button
-                    key={term}
-                    onClick={() => handleTermClick(term)}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-[var(--color-bg-element)] rounded-full text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)] transition-colors"
-                  >
-                    <Clock size={14} className="text-[var(--color-text-label)]" />
-                    {term}
+            {recentSearches.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-sm font-medium text-[var(--color-text-label)] mb-3">
+                  {t('recentSearch')}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {recentSearches.map((term) => (
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Remove from recent searches
-                      }}
-                      className="hover:text-[var(--color-error)]"
+                      key={term}
+                      onClick={() => handleTermClick(term)}
+                      className="flex items-center gap-2 px-3 py-1.5 bg-[var(--color-bg-element)] rounded-full text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)] transition-colors"
                     >
-                      <X size={14} />
+                      <Clock size={14} className="text-[var(--color-text-label)]" />
+                      {term}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeRecentSearch(term);
+                        }}
+                        className="hover:text-[var(--color-error)]"
+                      >
+                        <X size={14} />
+                      </button>
                     </button>
-                  </button>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Popular Terms */}
             <div>

@@ -1,34 +1,47 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Filter } from 'lucide-react';
+import { Filter, Loader2 } from 'lucide-react';
+import { useOrders } from '@/lib/hooks/useOrders';
 
-interface Transaction {
-  id: string;
-  orderId: string;
-  customer: string;
-  date: string;
-  amount: string;
-  status: 'paid' | 'pending' | 'cancelled';
-}
-
-const mockTransactions: Transaction[] = [
-  { id: '1', orderId: '#6545', customer: 'John Doe', date: '01 Oct', amount: '$240.00', status: 'paid' },
-  { id: '2', orderId: '#5412', customer: 'Jane Smith', date: '01 Oct', amount: '$120.00', status: 'pending' },
-  { id: '3', orderId: '#6622', customer: 'Mike Johnson', date: '01 Oct', amount: '$89.00', status: 'paid' },
-  { id: '4', orderId: '#7891', customer: 'Sarah Williams', date: '30 Sep', amount: '$450.00', status: 'paid' },
-  { id: '5', orderId: '#4521', customer: 'Tom Brown', date: '30 Sep', amount: '$67.00', status: 'cancelled' },
-];
-
-const statusColors = {
+const statusColors: Record<string, string> = {
   paid: 'bg-emerald-50 text-emerald-700',
   pending: 'bg-amber-50 text-amber-700',
   cancelled: 'bg-red-50 text-red-700',
+  failed: 'bg-red-50 text-red-700',
+  refunded: 'bg-gray-50 text-gray-700',
+};
+
+const statusDotColors: Record<string, string> = {
+  paid: 'bg-emerald-500',
+  pending: 'bg-amber-500',
+  cancelled: 'bg-red-500',
+  failed: 'bg-red-500',
+  refunded: 'bg-gray-500',
 };
 
 export function RecentTransactions() {
   const t = useTranslations('admin.dashboard');
+
+  // Fetch recent orders (which contain payment info)
+  const { orders, isLoading } = useOrders({ limit: 5 });
+
+  const formatDate = (date: Date | undefined) => {
+    if (!date) return '-';
+    return new Intl.DateTimeFormat('en-US', {
+      day: '2-digit',
+      month: 'short',
+    }).format(date);
+  };
+
+  const formatCurrency = (amount: number, currency: string = 'USD') => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(amount / 100);
+  };
 
   return (
     <motion.div
@@ -67,43 +80,53 @@ export function RecentTransactions() {
             </tr>
           </thead>
           <tbody>
-            {mockTransactions.map((transaction, index) => (
-              <tr
-                key={transaction.id}
-                className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
-              >
-                <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
-                  {index + 1}.
-                </td>
-                <td className="py-3 px-2 text-sm text-[var(--color-title-active)]">
-                  {transaction.orderId}
-                </td>
-                <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
-                  {transaction.date}
-                </td>
-                <td className="py-3 px-2">
-                  <span
-                    className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${
-                      statusColors[transaction.status]
-                    }`}
-                  >
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
-                        transaction.status === 'paid'
-                          ? 'bg-emerald-500'
-                          : transaction.status === 'pending'
-                          ? 'bg-amber-500'
-                          : 'bg-red-500'
-                      }`}
-                    />
-                    {transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}
-                  </span>
-                </td>
-                <td className="py-3 px-2 text-sm text-[var(--color-title-active)] text-right font-medium">
-                  {transaction.amount}
+            {isLoading ? (
+              <tr>
+                <td colSpan={5} className="py-10 text-center">
+                  <Loader2 size={20} className="animate-spin mx-auto text-[var(--color-text-label)]" />
                 </td>
               </tr>
-            ))}
+            ) : orders.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-10 text-center text-sm text-[var(--color-text-label)]">
+                  No transactions yet
+                </td>
+              </tr>
+            ) : (
+              orders.map((order, index) => (
+                <tr
+                  key={order.id}
+                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                >
+                  <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
+                    {index + 1}.
+                  </td>
+                  <td className="py-3 px-2 text-sm text-[var(--color-title-active)]">
+                    #{order.orderNumber || order.id.slice(-4).toUpperCase()}
+                  </td>
+                  <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
+                    {formatDate(order.createdAt)}
+                  </td>
+                  <td className="py-3 px-2">
+                    <span
+                      className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${
+                        statusColors[order.paymentStatus] || 'bg-gray-50 text-gray-700'
+                      }`}
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
+                          statusDotColors[order.paymentStatus] || 'bg-gray-500'
+                        }`}
+                      />
+                      {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                    </span>
+                  </td>
+                  <td className="py-3 px-2 text-sm text-[var(--color-title-active)] text-right font-medium">
+                    {formatCurrency(order.total, order.currency)}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

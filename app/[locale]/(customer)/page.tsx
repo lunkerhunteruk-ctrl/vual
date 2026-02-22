@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronRight } from 'lucide-react';
 import {
@@ -9,9 +9,10 @@ import {
   ProductGrid,
   CollectionBanner,
 } from '@/components/customer/home';
+import { useProducts } from '@/lib/hooks/useProducts';
 
-// Mock data
-const mockProducts = [
+// Fallback data when Firestore is empty
+const fallbackProducts = [
   { id: '1', name: 'Oversized Wool Blazer', brand: 'MOHAN', price: '$299' },
   { id: '2', name: 'Silk Slip Dress', brand: 'LAMEREI', price: '$189' },
   { id: '3', name: 'Cashmere Cardigan', brand: 'KORIN', price: '$249' },
@@ -25,6 +26,26 @@ const mockProducts = [
 export default function HomePage() {
   const t = useTranslations('customer.home');
   const [activeCategory, setActiveCategory] = useState('all');
+
+  // Fetch real products from Firestore
+  const { products: firestoreProducts, isLoading } = useProducts({
+    category: activeCategory === 'all' ? undefined : activeCategory,
+    limit: 8,
+  });
+
+  // Transform Firestore products to display format or use fallback
+  const products = useMemo(() => {
+    if (firestoreProducts && firestoreProducts.length > 0) {
+      return firestoreProducts.map(p => ({
+        id: p.id,
+        name: p.name,
+        brand: p.brand || '',
+        price: `$${p.price}`,
+        image: p.images?.[0]?.url,
+      }));
+    }
+    return fallbackProducts;
+  }, [firestoreProducts]);
 
   return (
     <div className="min-h-screen">
@@ -48,7 +69,20 @@ export default function HomePage() {
 
         {/* Product Grid */}
         <div className="mt-6">
-          <ProductGrid products={mockProducts} />
+          {isLoading ? (
+            <div className="grid grid-cols-2 gap-4 px-4">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-2" />
+                  <div className="h-3 bg-gray-200 rounded w-16 mb-1" />
+                  <div className="h-4 bg-gray-200 rounded w-full mb-1" />
+                  <div className="h-4 bg-gray-200 rounded w-12" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ProductGrid products={products} />
+          )}
         </div>
 
         {/* See More Link */}
