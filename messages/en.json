@@ -462,7 +462,9 @@
       "themeStreet": "Street",
       "themeStreetDesc": "Bold & Raw - High contrast brutalism",
       "themeElegant": "Elegant",
-      "themeElegantDesc": "Soft & Graceful - Feminine dusty pink"
+      "themeElegantDesc": "Soft & Graceful - Feminine dusty pink",
+      "themeNeutral": "Neutral",
+      "themeNeutralDesc": "Monochrome & Versatile - All-purpose grey tones"
     },
     "modelCasting": {
       "title": "Model Casting",

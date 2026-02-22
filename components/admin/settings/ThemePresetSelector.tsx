@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Check, Palette } from 'lucide-react';
 
-export type ThemePreset = 'vual' | 'modern' | 'organic' | 'street' | 'elegant';
+export type ThemePreset = 'vual' | 'modern' | 'organic' | 'street' | 'elegant' | 'neutral';
 
 interface ThemeConfig {
   id: ThemePreset;
@@ -92,6 +92,20 @@ const THEME_PRESETS: ThemeConfig[] = [
     },
     radius: '16px',
     style: 'Soft & Graceful',
+  },
+  {
+    id: 'neutral',
+    nameKey: 'themeNeutral',
+    descriptionKey: 'themeNeutralDesc',
+    colors: {
+      primary: '#1A1A1A',
+      accent: '#333333',
+      bg: '#FAFAFA',
+      text: '#1A1A1A',
+      line: '#D4D4D4',
+    },
+    radius: '6px',
+    style: 'Monochrome & Versatile',
   },
 ];
 

@@ -171,6 +171,35 @@
 }
 
 /* ========================================
+   THEME: NEUTRAL (ニュートラル)
+   Monochrome & Versatile
+   ======================================== */
+[data-theme="neutral"] {
+  --color-title-active: #1A1A1A;
+  --color-text-body: #404040;
+  --color-text-label: #666666;
+  --color-text-placeholder: #999999;
+
+  --color-bg-page: #FAFAFA;
+  --color-bg-element: #F5F5F5;
+  --color-bg-input: #EBEBEB;
+  --color-line: #D4D4D4;
+
+  --color-primary: #1A1A1A;
+  --color-secondary: #333333;
+  --color-accent: #333333;
+  --color-price: #1A1A1A;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ========================================
    Utility Classes
    ======================================== */
 .text-title {

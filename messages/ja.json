@@ -471,7 +471,9 @@
       "themeStreet": "Street",
       "themeStreetDesc": "Bold & Raw - ハイコントラストなブルータリズム",
       "themeElegant": "Elegant",
-      "themeElegantDesc": "Soft & Graceful - フェミニンなダスティピンク"
+      "themeElegantDesc": "Soft & Graceful - フェミニンなダスティピンク",
+      "themeNeutral": "Neutral",
+      "themeNeutralDesc": "Monochrome & Versatile - 汎用性の高いグレートーン"
     },
     "modelCasting": {
       "title": "モデルキャスティング",
