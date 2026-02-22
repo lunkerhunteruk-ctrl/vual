@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Heart, ShoppingBag } from 'lucide-react';
-import { Button } from '@/components/ui';
+import { ArrowLeft, Heart, ShoppingBag, Check } from 'lucide-react';
+import { Button, Skeleton } from '@/components/ui';
 import {
   ImageCarousel,
   ColorSwatches,
@@ -13,14 +13,16 @@ import {
   ProductInfo,
   RelatedProducts,
 } from '@/components/customer/product';
+import { useProduct } from '@/lib/hooks/useProducts';
+import { useCartStore } from '@/lib/store/cart';
 
-// Mock product data
-const mockProduct = {
+// Fallback mock data if product not found in Firestore
+const fallbackProduct = {
   id: '1',
   brand: 'MOHAN',
   name: 'Recycle Boucle Knit Cardigan Pink',
-  price: '$120',
-  images: ['', '', '', ''],
+  price: 120,
+  images: [] as string[],
   colors: [
     { name: 'Pink', hex: '#F5B5C8' },
     { name: 'Black', hex: '#000000' },
@@ -44,19 +46,84 @@ export default function ProductDetailPage() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('customer.product');
+  const productId = params.id as string;
 
-  const [selectedColor, setSelectedColor] = useState(mockProduct.colors[0].name);
-  const [selectedSize, setSelectedSize] = useState('M');
+  // Fetch real product data
+  const { product: firestoreProduct, isLoading: loading, error } = useProduct(productId);
+
+  // Use Firestore product or fallback
+  const product = firestoreProduct || fallbackProduct;
+
+  // Cart store
+  const addItem = useCartStore((state) => state.addItem);
+
+  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
   const [isFavorite, setIsFavorite] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  // Extract colors and sizes from variants or use defaults
+  const extractedColors = firestoreProduct?.variants
+    ? [...new Set(firestoreProduct.variants.map(v => v.options?.color).filter(Boolean))]
+    : [];
+  const extractedSizes = firestoreProduct?.variants
+    ? [...new Set(firestoreProduct.variants.map(v => v.options?.size).filter(Boolean))]
+    : [];
+
+  // Use extracted or fallback
+  const colors = extractedColors.length > 0
+    ? extractedColors.map(c => ({ name: c as string, hex: '#888888' }))
+    : fallbackProduct.colors;
+  const sizes = (extractedSizes.length > 0 ? extractedSizes : fallbackProduct.sizes) as string[];
+  const unavailableSizes: string[] = [];
+
+  // Set default selections when product loads
+  useEffect(() => {
+    if (colors.length > 0 && !selectedColor) {
+      setSelectedColor(typeof colors[0] === 'string' ? colors[0] : colors[0].name);
+    }
+    if (sizes.length > 0 && !selectedSize) {
+      setSelectedSize(sizes[0]);
+    }
+  }, [colors, sizes, selectedColor, selectedSize]);
 
   const handleAddToCart = () => {
-    // Add to cart logic
-    console.log('Adding to cart:', {
-      productId: params.id,
-      color: selectedColor,
-      size: selectedSize,
+    const price = typeof product.price === 'number' ? product.price : parseFloat(String(product.price).replace(/[^0-9.]/g, '')) || 0;
+    const productImage = firestoreProduct?.images?.[0]?.url || '';
+
+    addItem({
+      productId: productId,
+      variantId: `${selectedColor}-${selectedSize}`,
+      name: product.name,
+      price: price,
+      image: productImage,
+      options: {
+        brand: product.brand || '',
+        color: selectedColor,
+        size: selectedSize,
+      },
     });
+
+    // Show confirmation
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen pb-24">
+        <div className="px-4 py-3 border-b">
+          <Skeleton className="w-16 h-6" />
+        </div>
+        <Skeleton className="w-full aspect-square" />
+        <div className="px-4 py-6 space-y-4">
+          <Skeleton className="w-24 h-4" />
+          <Skeleton className="w-full h-6" />
+          <Skeleton className="w-20 h-8" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pb-24">
@@ -73,13 +140,13 @@ export default function ProductDetailPage() {
 
       {/* Image Carousel */}
       <ImageCarousel
-        images={mockProduct.images}
+        images={firestoreProduct?.images?.map(img => img.url) || fallbackProduct.images}
         isFavorite={isFavorite}
         onFavoriteToggle={() => setIsFavorite(!isFavorite)}
         onShare={() => {
           if (navigator.share) {
             navigator.share({
-              title: mockProduct.name,
+              title: product.name,
               url: window.location.href,
             });
           }
@@ -88,25 +155,25 @@ export default function ProductDetailPage() {
 
       {/* Product Info */}
       <ProductInfo
-        brand={mockProduct.brand}
-        name={mockProduct.name}
-        price={mockProduct.price}
-        materials={mockProduct.materials}
-        care={mockProduct.care}
+        brand={product.brand || ''}
+        name={product.name}
+        price={typeof product.price === 'number' ? `$${product.price}` : product.price}
+        materials={product.materials || fallbackProduct.materials}
+        care={product.care || fallbackProduct.care}
       />
 
       {/* Color & Size Selection */}
       <div className="px-4 py-6 space-y-6">
         <ColorSwatches
-          colors={mockProduct.colors}
+          colors={colors}
           selectedColor={selectedColor}
           onColorChange={setSelectedColor}
         />
         <SizeSelector
-          sizes={mockProduct.sizes}
+          sizes={sizes}
           selectedSize={selectedSize}
           onSizeChange={setSelectedSize}
-          unavailableSizes={mockProduct.unavailableSizes}
+          unavailableSizes={unavailableSizes}
         />
       </div>
 
@@ -123,13 +190,14 @@ export default function ProductDetailPage() {
       >
         <div className="flex items-center gap-3">
           <Button
-            variant="inverse"
+            variant={addedToCart ? 'primary' : 'inverse'}
             size="lg"
             fullWidth
-            leftIcon={<ShoppingBag size={18} />}
+            leftIcon={addedToCart ? <Check size={18} /> : <ShoppingBag size={18} />}
             onClick={handleAddToCart}
+            disabled={addedToCart}
           >
-            {t('addToBasket')}
+            {addedToCart ? 'Added to Cart!' : t('addToBasket')}
           </Button>
           <button
             onClick={() => setIsFavorite(!isFavorite)}

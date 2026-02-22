@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -8,41 +7,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag, Lock } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { CartItem } from '@/components/customer/cart';
-
-interface CartItemData {
-  id: string;
-  name: string;
-  brand: string;
-  price: number;
-  quantity: number;
-  size: string;
-  color: string;
-}
-
-const initialCartItems: CartItemData[] = [
-  { id: '1', name: 'Recycle Boucle Knit Cardigan Pink', brand: 'LAMEREI', price: 120, quantity: 1, size: 'M', color: 'Pink' },
-  { id: '2', name: 'Oversized Wool Blazer', brand: 'MOHAN', price: 299, quantity: 1, size: 'L', color: 'Black' },
-];
+import { useCartStore } from '@/lib/store/cart';
 
 export default function CartPage() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('customer.cart');
-  const [cartItems, setCartItems] = useState(initialCartItems);
 
-  const updateQuantity = (id: string, quantity: number) => {
-    setCartItems(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
-    );
+  // Use real cart store instead of mock data
+  const { items: cartItems, total, updateQuantity, removeItem } = useCartStore();
+
+  const handleUpdateQuantity = (productId: string, quantity: number, variantId?: string) => {
+    updateQuantity(productId, quantity, variantId);
   };
 
-  const removeItem = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
+  const handleRemoveItem = (productId: string, variantId?: string) => {
+    removeItem(productId, variantId);
   };
-
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="min-h-screen pb-32">
@@ -66,16 +47,17 @@ export default function CartPage() {
           {cartItems.length > 0 ? (
             cartItems.map(item => (
               <CartItem
-                key={item.id}
-                id={item.id}
+                key={`${item.productId}-${item.variantId || ''}`}
+                id={item.productId}
                 name={item.name}
-                brand={item.brand}
+                brand={item.options?.brand || ''}
                 price={`$${item.price}`}
                 quantity={item.quantity}
-                size={item.size}
-                color={item.color}
-                onQuantityChange={(qty) => updateQuantity(item.id, qty)}
-                onRemove={() => removeItem(item.id)}
+                size={item.options?.size || ''}
+                color={item.options?.color || ''}
+                image={item.image}
+                onQuantityChange={(qty) => handleUpdateQuantity(item.productId, qty, item.variantId)}
+                onRemove={() => handleRemoveItem(item.productId, item.variantId)}
               />
             ))
           ) : (
