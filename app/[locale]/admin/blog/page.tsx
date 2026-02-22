@@ -13,6 +13,7 @@ type TabFilter = 'all' | 'published' | 'draft';
 
 export default function BlogAdminPage() {
   const t = useTranslations('admin.blog');
+  const tCommon = useTranslations('common');
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreating, setIsCreating] = useState(false);
@@ -41,9 +42,9 @@ export default function BlogAdminPage() {
   }), [posts]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
-    { key: 'all', label: 'All', count: tabCounts.all },
-    { key: 'published', label: 'Published', count: tabCounts.published },
-    { key: 'draft', label: 'Draft', count: tabCounts.draft },
+    { key: 'all', label: t('all'), count: tabCounts.all },
+    { key: 'published', label: t('published'), count: tabCounts.published },
+    { key: 'draft', label: t('draft'), count: tabCounts.draft },
   ];
 
   const filteredPosts = useMemo(() => {
@@ -122,7 +123,7 @@ export default function BlogAdminPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Are you sure you want to delete this post?')) {
+    if (confirm(t('confirmDelete'))) {
       try {
         await deletePost(id);
       } catch (err) {
@@ -158,7 +159,7 @@ export default function BlogAdminPage() {
   };
 
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
+    return new Intl.DateTimeFormat('ja-JP', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
@@ -179,10 +180,10 @@ export default function BlogAdminPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-[var(--color-title-active)]">
-            Blog Management
+            {t('title')}
           </h2>
           <p className="text-sm text-[var(--color-text-label)] mt-1">
-            Create and manage blog posts
+            {t('description')}
           </p>
         </div>
         <Button
@@ -190,24 +191,24 @@ export default function BlogAdminPage() {
           leftIcon={<Plus size={16} />}
           onClick={() => { resetForm(); setIsCreating(true); }}
         >
-          Add Post
+          {t('addPost')}
         </Button>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatCard
-          title="Total Posts"
+          title={t('totalPosts')}
           value={tabCounts.all.toString()}
           icon={Edit2}
         />
         <StatCard
-          title="Published"
+          title={t('published')}
           value={tabCounts.published.toString()}
           icon={Eye}
         />
         <StatCard
-          title="Drafts"
+          title={t('drafts')}
           value={tabCounts.draft.toString()}
           icon={EyeOff}
         />
@@ -221,16 +222,16 @@ export default function BlogAdminPage() {
           className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-6"
         >
           <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-4">
-            {editingPost ? 'Edit Post' : 'Create New Post'}
+            {editingPost ? t('editPost') : t('createPost')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Title</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('postTitle')}</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                placeholder="Post title"
+                placeholder={t('postTitle')}
                 className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
@@ -245,27 +246,27 @@ export default function BlogAdminPage() {
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Excerpt</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('excerpt')}</label>
               <input
                 type="text"
                 value={formData.excerpt}
                 onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
-                placeholder="Short description"
+                placeholder={t('excerpt')}
                 className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Content (HTML)</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('content')}</label>
               <textarea
                 value={formData.content}
                 onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                placeholder="<p>Your blog content...</p>"
+                placeholder={t('content')}
                 rows={6}
                 className="w-full px-3 py-2 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Category</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('category')}</label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
@@ -277,7 +278,7 @@ export default function BlogAdminPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Tags (comma separated)</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('tags')}</label>
               <input
                 type="text"
                 value={formData.tags}
@@ -287,7 +288,7 @@ export default function BlogAdminPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Read Time (minutes)</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('readTime')}</label>
               <input
                 type="number"
                 value={formData.readTime}
@@ -299,10 +300,10 @@ export default function BlogAdminPage() {
           </div>
           <div className="flex gap-2 mt-6">
             <Button variant="primary" onClick={editingPost ? handleUpdate : handleCreate}>
-              {editingPost ? 'Update Post' : 'Create Post'}
+              {editingPost ? t('updatePost') : t('createPost')}
             </Button>
             <Button variant="secondary" onClick={resetForm}>
-              Cancel
+              {tCommon('cancel')}
             </Button>
           </div>
         </motion.div>
@@ -343,7 +344,7 @@ export default function BlogAdminPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search posts..."
+              placeholder={t('searchPosts')}
               className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
           </div>
@@ -357,24 +358,23 @@ export default function BlogAdminPage() {
             </div>
           ) : filteredPosts.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20">
-              <p className="text-sm text-[var(--color-text-label)]">No posts found</p>
-              <p className="text-xs text-[var(--color-text-placeholder)] mt-1">Create your first blog post</p>
+              <p className="text-sm text-[var(--color-text-label)]">{t('noPosts')}</p>
             </div>
           ) : (
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    Title
+                    {t('postTitle')}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    Category
+                    {t('category')}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    Status
+                    {t('status')}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    Date
+                    {t('date')}
                   </th>
                   <th className="w-32 py-3 px-4"></th>
                 </tr>
@@ -392,7 +392,7 @@ export default function BlogAdminPage() {
                         </p>
                         <p className="text-xs text-[var(--color-text-label)] flex items-center gap-1 mt-0.5">
                           <Clock size={10} />
-                          {post.readTime} min read
+                          {post.readTime}分
                         </p>
                       </div>
                     </td>
@@ -411,7 +411,7 @@ export default function BlogAdminPage() {
                         }`}
                       >
                         {post.isPublished ? <Eye size={12} /> : <EyeOff size={12} />}
-                        {post.isPublished ? 'Published' : 'Draft'}
+                        {post.isPublished ? t('published') : t('draft')}
                       </button>
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
