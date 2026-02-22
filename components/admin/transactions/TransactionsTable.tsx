@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Search, Eye, Loader2 } from 'lucide-react';
 import { useTransactions } from '@/lib/hooks/useTransactions';
+import { formatPrice } from '@/lib/utils/currency';
 import type { Transaction } from '@/lib/types';
 
 type TransactionStatus = 'pending' | 'completed' | 'failed';
@@ -19,6 +20,7 @@ type TabFilter = 'all' | 'completed' | 'pending' | 'failed';
 
 export function TransactionsTable() {
   const t = useTranslations('admin.transactions');
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -70,10 +72,7 @@ export function TransactionsTable() {
   };
 
   const formatCurrency = (amount: number, currency: string = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency,
-    }).format(amount / 100);
+    return formatPrice(amount, currency, locale, true);
   };
 
   return (

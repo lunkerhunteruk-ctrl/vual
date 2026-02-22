@@ -1,10 +1,11 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Filter, Loader2 } from 'lucide-react';
 import { useOrders } from '@/lib/hooks/useOrders';
+import { formatPrice } from '@/lib/utils/currency';
 
 const statusColors: Record<string, string> = {
   paid: 'bg-emerald-50 text-emerald-700',
@@ -24,6 +25,7 @@ const statusDotColors: Record<string, string> = {
 
 export function RecentTransactions() {
   const t = useTranslations('admin.dashboard');
+  const locale = useLocale();
 
   // Fetch recent orders (which contain payment info)
   const { orders, isLoading } = useOrders({ limit: 5 });
@@ -37,10 +39,7 @@ export function RecentTransactions() {
   };
 
   const formatCurrency = (amount: number, currency: string = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency,
-    }).format(amount / 100);
+    return formatPrice(amount, currency, locale, true);
   };
 
   return (

@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, Mail, Phone, MapPin, ShoppingBag, Calendar, Loader2 } from 'lucide-react';
 import { Pagination } from '@/components/ui';
 import { useCustomers } from '@/lib/hooks/useCustomers';
+import { formatPrice, getDefaultCurrency } from '@/lib/utils/currency';
 import type { Customer } from '@/lib/types';
 
 type CustomerStatus = 'active' | 'inactive' | 'vip';
@@ -29,6 +30,8 @@ const statusColors: Record<CustomerStatus, { bg: string; text: string }> = {
 
 export function CustomerTable() {
   const t = useTranslations('admin.customers');
+  const locale = useLocale();
+  const defaultCurrency = getDefaultCurrency(locale);
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
@@ -61,10 +64,7 @@ export function CustomerTable() {
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(amount / 100);
+    return formatPrice(amount, defaultCurrency, locale, true);
   };
 
   return (

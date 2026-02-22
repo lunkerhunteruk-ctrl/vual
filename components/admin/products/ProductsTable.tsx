@@ -1,16 +1,18 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Search, Plus, Filter, MoreHorizontal, Edit2, Trash2, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { useProducts } from '@/lib/hooks/useProducts';
+import { formatPrice } from '@/lib/utils/currency';
 
 type TabFilter = 'all' | 'published' | 'draft' | 'outOfStock';
 
 export function ProductsTable() {
   const t = useTranslations('admin.products');
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -71,11 +73,8 @@ export function ProductsTable() {
     }).format(date);
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(price);
+  const formatProductPrice = (price: number, currency: string = 'USD') => {
+    return formatPrice(price, currency, locale, false);
   };
 
   const getStockStatusColor = (status: string) => {
@@ -212,7 +211,7 @@ export function ProductsTable() {
                     {product.sku || '-'}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    {formatPrice(product.price)}
+                    {formatProductPrice(product.price, product.currency)}
                   </td>
                   <td className="py-3 px-4">
                     <span className={`text-sm font-medium ${getStockStatusColor(product.stockStatus)}`}>

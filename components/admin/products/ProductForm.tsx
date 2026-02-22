@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Upload, Plus, X } from 'lucide-react';
 import { Input, Select, Button } from '@/components/ui';
+import { useCurrency } from '@/lib/hooks';
 
 const categoryOptions = [
   { value: 'apparel', label: 'Apparel' },
@@ -38,12 +39,20 @@ const sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 export function ProductForm() {
   const t = useTranslations('admin.products');
+  const { defaultCurrency, symbol, options: currencyOptions } = useCurrency();
+  const [selectedCurrency, setSelectedCurrency] = useState(defaultCurrency.toLowerCase());
   const [selectedColors, setSelectedColors] = useState<string[]>(['black']);
   const [selectedSizes, setSelectedSizes] = useState<string[]>(['M']);
   const [images, setImages] = useState<string[]>([]);
   const [taxIncluded, setTaxIncluded] = useState(true);
   const [unlimitedStock, setUnlimitedStock] = useState(false);
   const [isHighlighted, setIsHighlighted] = useState(false);
+
+  // Get the current currency symbol
+  const getCurrentSymbol = () => {
+    const symbols: Record<string, string> = { usd: '$', jpy: '¥', eur: '€', gbp: '£', krw: '₩', cny: '¥' };
+    return symbols[selectedCurrency] || '$';
+  };
 
   const toggleColor = (color: string) => {
     setSelectedColors(prev =>
@@ -107,23 +116,21 @@ export function ProductForm() {
               <Input
                 label={t('productPrice')}
                 type="number"
-                placeholder="0.00"
-                leftIcon={<span className="text-[var(--color-text-label)]">$</span>}
+                placeholder={selectedCurrency === 'jpy' || selectedCurrency === 'krw' ? '0' : '0.00'}
+                leftIcon={<span className="text-[var(--color-text-label)]">{getCurrentSymbol()}</span>}
               />
               <Select
-                label="Currency"
-                options={[
-                  { value: 'usd', label: '🇺🇸 USD' },
-                  { value: 'jpy', label: '🇯🇵 JPY' },
-                  { value: 'eur', label: '🇪🇺 EUR' },
-                ]}
+                label={t('currency')}
+                options={currencyOptions}
+                value={selectedCurrency}
+                onChange={(e) => setSelectedCurrency(e.target.value)}
               />
             </div>
             <Input
               label={`${t('discountedPrice')} (${t('optional')})`}
               type="number"
-              placeholder="0.00"
-              leftIcon={<span className="text-[var(--color-text-label)]">$</span>}
+              placeholder={selectedCurrency === 'jpy' || selectedCurrency === 'krw' ? '0' : '0.00'}
+              leftIcon={<span className="text-[var(--color-text-label)]">{getCurrentSymbol()}</span>}
             />
             <div>
               <label className="block text-sm font-medium text-[var(--color-text-body)] mb-2">

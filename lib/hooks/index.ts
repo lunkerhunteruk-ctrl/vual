@@ -13,3 +13,4 @@ export { useMedia, useMediaItem } from './useMedia';
 export { useBlogPosts, useBlogPost, useBlogCategories } from './useBlogPosts';
 export { useHasBlogPosts } from './useHasBlogPosts';
 export { useHasProducts, useHasCollections, useHasLiveStreams, useHasBrands, useHasReviews } from './useHasContent';
+export { useCurrency } from './useCurrency';

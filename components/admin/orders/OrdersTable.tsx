@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Search, Filter, SlidersHorizontal, MoreHorizontal, Loader2 } from 'lucide-react';
 import { Pagination } from '@/components/ui';
 import { useOrders } from '@/lib/hooks/useOrders';
+import { formatPrice } from '@/lib/utils/currency';
 import type { OrderStatus } from '@/lib/types';
 
 type PaymentStatus = 'paid' | 'unpaid' | 'refunded';
@@ -30,6 +31,7 @@ type TabFilter = 'all' | 'delivered' | 'pending' | 'cancelled';
 
 export function OrdersTable() {
   const t = useTranslations('admin.orders');
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,11 +101,8 @@ export function OrdersTable() {
     }).format(date);
   };
 
-  const formatPrice = (amount: number, currency: string = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency,
-    }).format(amount / 100); // Assuming amount is in cents
+  const formatOrderPrice = (amount: number, currency: string = 'USD') => {
+    return formatPrice(amount, currency, locale, true);
   };
 
   return (
@@ -237,7 +236,7 @@ export function OrdersTable() {
                     {formatDate(order.createdAt)}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    {formatPrice(order.total, order.currency)}
+                    {formatOrderPrice(order.total, order.currency)}
                   </td>
                   <td className="py-3 px-4">
                     <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[order.status] || 'bg-gray-50 text-gray-700'}`}>

@@ -1,14 +1,16 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Search, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { useProducts } from '@/lib/hooks/useProducts';
+import { formatPrice } from '@/lib/utils/currency';
 
 export function TopProducts() {
   const t = useTranslations('admin.dashboard');
+  const locale = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
 
   // Fetch products - in a real app, you'd sort by sales/orders
@@ -26,11 +28,8 @@ export function TopProducts() {
     );
   }, [firestoreProducts, searchQuery]);
 
-  const formatCurrency = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    }).format(price);
+  const formatCurrency = (price: number, currency: string = 'USD') => {
+    return formatPrice(price, currency, locale, false);
   };
 
   return (
@@ -91,7 +90,7 @@ export function TopProducts() {
                 <p className="text-sm font-medium text-[var(--color-title-active)] truncate">
                   {product.name}
                 </p>
-                <p className="text-sm text-[var(--color-accent)]">{formatCurrency(product.price)}</p>
+                <p className="text-sm text-[var(--color-accent)]">{formatCurrency(product.price, product.currency)}</p>
               </div>
               <div className="text-right">
                 <p className="text-xs text-[var(--color-text-label)]">{product.stockQuantity} in stock</p>
