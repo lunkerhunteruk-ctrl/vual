@@ -16,9 +16,12 @@ import {
   Sparkles,
   Radio,
   User,
-  UsersRound,
   ExternalLink,
   LucideIcon,
+  FolderOpen,
+  Star,
+  MessageSquare,
+  Shield,
 } from 'lucide-react';
 
 interface MenuItem {
@@ -41,7 +44,9 @@ const menuSections: MenuSection[] = [
       { icon: ShoppingCart, labelKey: 'orders', href: '/admin/orders' },
       { icon: Users, labelKey: 'customers', href: '/admin/customers' },
       { icon: Ticket, labelKey: 'coupons', href: '/admin/coupons' },
+      { icon: FolderOpen, labelKey: 'categories', href: '/admin/categories' },
       { icon: CreditCard, labelKey: 'transactions', href: '/admin/transactions' },
+      { icon: Star, labelKey: 'brand', href: '/admin/brand' },
     ],
   },
   {
@@ -50,6 +55,7 @@ const menuSections: MenuSection[] = [
       { icon: Plus, labelKey: 'addProduct', href: '/admin/products/add' },
       { icon: Image, labelKey: 'productMedia', href: '/admin/products/media' },
       { icon: List, labelKey: 'productList', href: '/admin/products' },
+      { icon: MessageSquare, labelKey: 'productReviews', href: '/admin/products/reviews' },
     ],
   },
   {
@@ -60,10 +66,10 @@ const menuSections: MenuSection[] = [
     ],
   },
   {
-    sectionKey: 'settings',
+    sectionKey: 'admin',
     items: [
-      { icon: User, labelKey: 'profile', href: '/admin/settings/profile' },
-      { icon: UsersRound, labelKey: 'team', href: '/admin/settings/team' },
+      { icon: User, labelKey: 'adminRole', href: '/admin/settings/profile' },
+      { icon: Shield, labelKey: 'controlAuthority', href: '/admin/settings/authority' },
     ],
   },
 ];
