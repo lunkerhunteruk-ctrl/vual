@@ -58,7 +58,7 @@ export function LivePreview() {
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
             <VideoOff size={48} className="mb-4 opacity-50" />
             <p className="text-sm opacity-70">{t('cameraFeed')}</p>
-            <p className="text-xs opacity-50">Click camera icon to enable</p>
+            <p className="text-xs opacity-50">{t('clickCameraToEnable')}</p>
           </div>
         )}
 

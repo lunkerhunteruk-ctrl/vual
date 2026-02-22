@@ -35,9 +35,9 @@ export function ProfileForm() {
           </button>
         </div>
         <div>
-          <h4 className="font-medium text-[var(--color-title-active)] mb-1">Profile Photo</h4>
+          <h4 className="font-medium text-[var(--color-title-active)] mb-1">{t('profilePhoto')}</h4>
           <p className="text-sm text-[var(--color-text-label)] mb-3">
-            Upload a new avatar. JPG, GIF or PNG. Max 2MB.
+            {t('uploadAvatarHint')}
           </p>
           <Button variant="secondary" size="sm" leftIcon={<Upload size={14} />}>
             {t('uploadNew')}
@@ -78,21 +78,21 @@ export function ProfileForm() {
               <Instagram size={20} className="text-pink-600" />
               <span className="text-sm text-[var(--color-text-body)]">Instagram</span>
             </div>
-            <Button variant="ghost" size="sm">Connect</Button>
+            <Button variant="ghost" size="sm">{t('connect')}</Button>
           </div>
           <div className="flex items-center justify-between p-4 bg-[var(--color-bg-element)] rounded-[var(--radius-md)]">
             <div className="flex items-center gap-3">
               <Twitter size={20} className="text-blue-500" />
               <span className="text-sm text-[var(--color-text-body)]">Twitter</span>
             </div>
-            <Button variant="ghost" size="sm">Connect</Button>
+            <Button variant="ghost" size="sm">{t('connect')}</Button>
           </div>
           <div className="flex items-center justify-between p-4 bg-[var(--color-bg-element)] rounded-[var(--radius-md)]">
             <div className="flex items-center gap-3">
               <Facebook size={20} className="text-blue-700" />
               <span className="text-sm text-[var(--color-text-body)]">Facebook</span>
             </div>
-            <Button variant="ghost" size="sm">Connect</Button>
+            <Button variant="ghost" size="sm">{t('connect')}</Button>
           </div>
         </div>
       </div>

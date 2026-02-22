@@ -46,12 +46,12 @@ export function BroadcastHistory() {
           <thead>
             <tr className="border-b border-[var(--color-line)]">
               <th className="text-left py-3 px-2 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Broadcast
+                {t('broadcast')}
               </th>
               <th className="text-left py-3 px-2 text-xs font-medium text-[var(--color-text-label)] uppercase">
                 <div className="flex items-center gap-1">
                   <Calendar size={12} />
-                  Date
+                  {t('date')}
                 </div>
               </th>
               <th className="text-left py-3 px-2 text-xs font-medium text-[var(--color-text-label)] uppercase">
@@ -79,7 +79,7 @@ export function BroadcastHistory() {
             ) : streams.length === 0 ? (
               <tr>
                 <td colSpan={5} className="py-10 text-center text-sm text-[var(--color-text-label)]">
-                  No past broadcasts yet
+                  {t('noPastBroadcasts')}
                 </td>
               </tr>
             ) : (

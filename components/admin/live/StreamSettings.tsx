@@ -36,22 +36,22 @@ export function StreamSettings({ onGoLive, isLive }: StreamSettingsProps) {
       <div className="space-y-4 mb-6">
         <Input
           label={t('streamTitle')}
-          placeholder="Enter stream title..."
+          placeholder={t('enterStreamTitle')}
         />
         <Select
           label={t('streamCategory')}
           options={categoryOptions}
-          placeholder="Select category"
+          placeholder={t('selectCategory')}
         />
 
         {scheduleMode && (
           <div className="grid grid-cols-2 gap-4">
             <Input
-              label="Date"
+              label={t('date')}
               type="date"
             />
             <Input
-              label="Time"
+              label={t('time')}
               type="time"
             />
           </div>
@@ -68,7 +68,7 @@ export function StreamSettings({ onGoLive, isLive }: StreamSettingsProps) {
           onClick={onGoLive}
           className={isLive ? '' : 'bg-red-600 hover:bg-red-700'}
         >
-          {isLive ? 'End Stream' : t('goLive')}
+          {isLive ? t('endStream') : t('goLive')}
         </Button>
 
         {!isLive && (
