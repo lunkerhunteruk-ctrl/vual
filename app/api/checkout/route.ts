@@ -1,6 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 import type { CartItem } from '@/lib/types';
+
+// Initialize Firebase Admin
+function getFirestoreAdmin() {
+  if (!getApps().length) {
+    const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+
+    if (process.env.FIREBASE_ADMIN_PRIVATE_KEY) {
+      initializeApp({
+        credential: cert({
+          projectId,
+          clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+          privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        }),
+      });
+    } else {
+      initializeApp({ projectId });
+    }
+  }
+  return getFirestore();
+}
 
 // Initialize Stripe lazily to avoid build-time errors
 function getStripeClient(): Stripe {
@@ -29,6 +51,33 @@ interface CheckoutRequestBody {
   locale: string;
 }
 
+// Check inventory availability for all items
+async function checkInventory(items: CartItem[]): Promise<{ available: boolean; unavailableItems: string[] }> {
+  const db = getFirestoreAdmin();
+  const unavailableItems: string[] = [];
+
+  for (const item of items) {
+    const productDoc = await db.collection('products').doc(item.productId).get();
+
+    if (!productDoc.exists) {
+      unavailableItems.push(`${item.name} (product not found)`);
+      continue;
+    }
+
+    const productData = productDoc.data()!;
+    const availableStock = productData.stockQuantity || 0;
+
+    if (availableStock < item.quantity) {
+      unavailableItems.push(`${item.name} (available: ${availableStock}, requested: ${item.quantity})`);
+    }
+  }
+
+  return {
+    available: unavailableItems.length === 0,
+    unavailableItems,
+  };
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body: CheckoutRequestBody = await request.json();
@@ -37,6 +86,18 @@ export async function POST(request: NextRequest) {
     if (!items || items.length === 0) {
       return NextResponse.json(
         { error: 'No items in cart' },
+        { status: 400 }
+      );
+    }
+
+    // Check inventory before creating checkout session
+    const inventoryCheck = await checkInventory(items);
+    if (!inventoryCheck.available) {
+      return NextResponse.json(
+        {
+          error: 'Some items are out of stock',
+          unavailableItems: inventoryCheck.unavailableItems
+        },
         { status: 400 }
       );
     }
@@ -75,6 +136,14 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    // Prepare items data for metadata (Stripe metadata has 500 char limit per value)
+    // Store essential info: productId and quantity for inventory update
+    const itemsForInventory = items.map(item => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      variantId: item.variantId || null,
+    }));
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -89,6 +158,8 @@ export async function POST(request: NextRequest) {
       metadata: {
         locale,
         itemCount: items.length.toString(),
+        // Store items JSON for inventory update (will be parsed in webhook)
+        items: JSON.stringify(itemsForInventory),
       },
       locale: locale === 'ja' ? 'ja' : 'en',
     });

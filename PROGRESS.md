@@ -152,25 +152,48 @@
 
 ---
 
+### Product & Inventory Management ✅ NEW
+- [x] Firebase Admin SDK (`firebase-admin` + `@opentelemetry/api`)
+- [x] Products API (`app/api/products/route.ts`)
+  - GET: List products or get single product by ID
+  - POST: Create new product
+  - PUT: Update product
+  - DELETE: Delete product
+- [x] Inventory API (`app/api/products/inventory/route.ts`)
+  - POST: Update single product inventory (set/increment/decrement)
+  - PUT: Bulk inventory update for orders
+  - GET: Check stock availability
+- [x] Checkout with Inventory Check (`app/api/checkout/route.ts`)
+  - Validates stock availability before creating Stripe session
+  - Includes items in metadata for webhook processing
+- [x] Webhook Inventory Integration (`app/api/webhooks/stripe/route.ts`)
+  - Auto-decrement inventory on `checkout.session.completed`
+  - Auto-restore inventory on `charge.refunded`
+  - Creates order record in Firestore
+
+---
+
 ## API Routes Summary
 
 | Route | Method | Description |
 |-------|--------|-------------|
-| `/api/checkout` | POST | Create Stripe checkout session |
-| `/api/webhooks/stripe` | POST | Handle Stripe webhooks |
+| `/api/checkout` | POST | Create Stripe checkout session (with inventory check) |
+| `/api/webhooks/stripe` | POST | Handle Stripe webhooks (inventory sync) |
 | `/api/coupons/validate` | POST | Validate coupon codes |
 | `/api/ai/generate-description` | POST | Generate product descriptions |
 | `/api/ai/model-casting` | POST | Generate AI model images |
 | `/api/streams` | GET, POST | Manage Mux live streams |
+| `/api/products` | GET, POST, PUT, DELETE | Product CRUD operations |
+| `/api/products/inventory` | GET, POST, PUT | Inventory management |
 
 ---
 
 ## Last Updated
-2026-02-22 - Phase 10 Backend Integration completed. All UI + Backend ready. Build passing (38 routes).
+2026-02-22 - Inventory Management System completed. Auto-sync between purchases and stock levels.
 
 ## Next Steps (Optional)
-- [ ] Add Firebase Admin SDK for server-side operations
-- [ ] Implement real Firestore CRUD operations
+- [x] ~~Add Firebase Admin SDK for server-side operations~~ ✅
+- [x] ~~Implement real Firestore CRUD operations~~ ✅
 - [ ] Add email notifications (SendGrid/Resend)
 - [ ] Implement real LINE LIFF login flow
 - [ ] Add image upload to Cloud Storage
