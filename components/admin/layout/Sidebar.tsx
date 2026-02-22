@@ -22,6 +22,8 @@ import {
   Star,
   MessageSquare,
   Shield,
+  FileText,
+  UsersRound,
 } from 'lucide-react';
 
 interface MenuItem {
@@ -47,6 +49,7 @@ const menuSections: MenuSection[] = [
       { icon: FolderOpen, labelKey: 'categories', href: '/admin/categories' },
       { icon: CreditCard, labelKey: 'transactions', href: '/admin/transactions' },
       { icon: Star, labelKey: 'brand', href: '/admin/brand' },
+      { icon: FileText, labelKey: 'blog', href: '/admin/blog' },
     ],
   },
   {
@@ -70,6 +73,7 @@ const menuSections: MenuSection[] = [
     items: [
       { icon: User, labelKey: 'adminRole', href: '/admin/settings/profile' },
       { icon: Shield, labelKey: 'controlAuthority', href: '/admin/settings/authority' },
+      { icon: UsersRound, labelKey: 'teamMembers', href: '/admin/settings/team' },
     ],
   },
 ];

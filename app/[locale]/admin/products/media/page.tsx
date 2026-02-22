@@ -1,36 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Upload, Image as ImageIcon, Trash2, Eye, Grid3X3, List, Search, Filter } from 'lucide-react';
+import { Upload, Image as ImageIcon, Trash2, Eye, Grid3X3, List, Search, Filter, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
-
-interface MediaItem {
-  id: string;
-  url: string;
-  name: string;
-  size: string;
-  uploadedAt: string;
-  productId?: string;
-  productName?: string;
-}
-
-const mockMedia: MediaItem[] = [
-  { id: '1', url: '/placeholder-product.jpg', name: 'product-001.jpg', size: '1.2 MB', uploadedAt: '2025-01-15', productName: 'Oversized Blazer' },
-  { id: '2', url: '/placeholder-product.jpg', name: 'product-002.jpg', size: '980 KB', uploadedAt: '2025-01-14', productName: 'Silk Dress' },
-  { id: '3', url: '/placeholder-product.jpg', name: 'product-003.jpg', size: '1.5 MB', uploadedAt: '2025-01-13' },
-  { id: '4', url: '/placeholder-product.jpg', name: 'product-004.jpg', size: '2.1 MB', uploadedAt: '2025-01-12', productName: 'Wool Cardigan' },
-  { id: '5', url: '/placeholder-product.jpg', name: 'product-005.jpg', size: '890 KB', uploadedAt: '2025-01-11' },
-  { id: '6', url: '/placeholder-product.jpg', name: 'product-006.jpg', size: '1.8 MB', uploadedAt: '2025-01-10', productName: 'Leather Bag' },
-];
+import { useMedia } from '@/lib/hooks';
 
 export default function ProductMediaPage() {
   const t = useTranslations('admin.products');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // TODO: Get shopId from auth context
+  const shopId = 'demo-shop';
+  const { media, isLoading, error, uploadMedia, deleteMedia } = useMedia({ shopId });
 
   const toggleSelect = (id: string) => {
     setSelectedItems(prev =>
@@ -38,10 +26,62 @@ export default function ProductMediaPage() {
     );
   };
 
-  const filteredMedia = mockMedia.filter(item =>
+  const filteredMedia = media.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.productName?.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setIsUploading(true);
+    try {
+      for (let i = 0; i < files.length; i++) {
+        await uploadMedia(files[i]);
+      }
+    } catch (err) {
+      console.error('Failed to upload media:', err);
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (confirm(t('confirmDeleteMedia'))) {
+      try {
+        await deleteMedia(id);
+        setSelectedItems(prev => prev.filter(i => i !== id));
+      } catch (err) {
+        console.error('Failed to delete media:', err);
+      }
+    }
+  };
+
+  const formatSize = (bytes: number) => {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(date);
+  };
+
+  if (error) {
+    return (
+      <div className="p-8 text-center text-red-500">
+        {error.message}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -84,8 +124,21 @@ export default function ProductMediaPage() {
               <List size={16} className="text-[var(--color-text-body)]" />
             </button>
           </div>
-          <Button variant="primary" leftIcon={<Upload size={16} />}>
-            {t('uploadMedia')}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*,video/*"
+            multiple
+            onChange={handleUpload}
+            className="hidden"
+          />
+          <Button
+            variant="primary"
+            leftIcon={isUploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading}
+          >
+            {isUploading ? t('uploading') : t('uploadMedia')}
           </Button>
         </div>
       </div>
@@ -96,7 +149,17 @@ export default function ProductMediaPage() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-6"
       >
-        {viewMode === 'grid' ? (
+        {isLoading ? (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+          </div>
+        ) : filteredMedia.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <ImageIcon size={48} className="text-[var(--color-text-label)] mb-4" />
+            <p className="text-sm text-[var(--color-text-label)]">{t('noMedia')}</p>
+            <p className="text-xs text-[var(--color-text-placeholder)] mt-1">{t('uploadToGetStarted')}</p>
+          </div>
+        ) : viewMode === 'grid' ? (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {filteredMedia.map((item) => (
               <div
@@ -109,22 +172,38 @@ export default function ProductMediaPage() {
                 onClick={() => toggleSelect(item.id)}
               >
                 <div className="aspect-square bg-[var(--color-bg-element)]">
-                  <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] flex items-center justify-center">
-                    <ImageIcon size={24} className="text-[var(--color-text-label)]" />
-                  </div>
+                  {item.type === 'image' ? (
+                    <Image
+                      src={item.url}
+                      alt={item.name}
+                      width={200}
+                      height={200}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] flex items-center justify-center">
+                      <ImageIcon size={24} className="text-[var(--color-text-label)]" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-2">
                   <p className="text-xs font-medium text-[var(--color-title-active)] truncate">
                     {item.name}
                   </p>
-                  <p className="text-xs text-[var(--color-text-label)]">{item.size}</p>
+                  <p className="text-xs text-[var(--color-text-label)]">{formatSize(item.size)}</p>
                 </div>
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                  <button className="p-2 bg-white rounded-full">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); window.open(item.url, '_blank'); }}
+                    className="p-2 bg-white rounded-full"
+                  >
                     <Eye size={14} className="text-[var(--color-title-active)]" />
                   </button>
-                  <button className="p-2 bg-white rounded-full">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleDelete(item.id); }}
+                    className="p-2 bg-white rounded-full"
+                  >
                     <Trash2 size={14} className="text-red-500" />
                   </button>
                 </div>
@@ -171,28 +250,44 @@ export default function ProductMediaPage() {
                     />
                   </td>
                   <td className="py-3 px-4">
-                    <div className="w-10 h-10 bg-[var(--color-bg-element)] rounded-[var(--radius-md)] flex items-center justify-center">
-                      <ImageIcon size={16} className="text-[var(--color-text-label)]" />
+                    <div className="w-10 h-10 bg-[var(--color-bg-element)] rounded-[var(--radius-md)] flex items-center justify-center overflow-hidden">
+                      {item.type === 'image' ? (
+                        <Image
+                          src={item.url}
+                          alt={item.name}
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <ImageIcon size={16} className="text-[var(--color-text-label)]" />
+                      )}
                     </div>
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-title-active)]">
                     {item.name}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {item.size}
+                    {formatSize(item.size)}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
                     {item.productName || '-'}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {item.uploadedAt}
+                    {formatDate(item.createdAt)}
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-1">
-                      <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
+                      <button
+                        onClick={() => window.open(item.url, '_blank')}
+                        className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors"
+                      >
                         <Eye size={14} className="text-[var(--color-text-label)]" />
                       </button>
-                      <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors"
+                      >
                         <Trash2 size={14} className="text-[var(--color-text-label)]" />
                       </button>
                     </div>

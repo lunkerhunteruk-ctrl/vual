@@ -359,12 +359,17 @@
       "about": "私たちについて",
       "contact": "お問い合わせ",
       "blog": "ブログ",
+      "live": "ライブ",
       "allRightsReserved": "All Rights Reserved"
     },
     "live": {
       "products": "商品",
       "buyNow": "今すぐ購入",
-      "typeSomething": "コメントを入力..."
+      "typeSomething": "コメントを入力...",
+      "noStreams": "ライブ配信はありません",
+      "noStreamsDescription": "現在ライブ配信はありません。近日中のイベントをお楽しみに。",
+      "backToHome": "ホームに戻る",
+      "upcomingStreams": "今後のライブ配信"
     }
   },
   "errors": {

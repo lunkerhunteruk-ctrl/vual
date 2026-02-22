@@ -3,33 +3,13 @@
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, MoreHorizontal, Edit2, Trash2, Copy, Loader2 } from 'lucide-react';
+import { Search, Edit2, Trash2, Copy, Loader2 } from 'lucide-react';
+import { useCoupons } from '@/lib/hooks';
+import type { Coupon } from '@/lib/types';
 
-type CouponType = 'percentage' | 'fixed_amount' | 'free_shipping';
 type CouponStatus = 'active' | 'expired' | 'scheduled';
 
-interface Coupon {
-  id: string;
-  code: string;
-  type: CouponType;
-  value: number;
-  usageCount: number;
-  usageLimit?: number;
-  minPurchase?: number;
-  startsAt: Date;
-  expiresAt: Date;
-  isActive: boolean;
-}
-
-// Mock data for now - will connect to Firestore later
-const mockCoupons: Coupon[] = [
-  { id: '1', code: 'WELCOME20', type: 'percentage', value: 20, usageCount: 145, usageLimit: 500, minPurchase: 5000, startsAt: new Date('2025-01-01'), expiresAt: new Date('2025-12-31'), isActive: true },
-  { id: '2', code: 'FREESHIP', type: 'free_shipping', value: 0, usageCount: 89, usageLimit: undefined, minPurchase: 10000, startsAt: new Date('2025-01-01'), expiresAt: new Date('2025-06-30'), isActive: true },
-  { id: '3', code: 'SAVE500', type: 'fixed_amount', value: 500, usageCount: 234, usageLimit: 1000, minPurchase: 3000, startsAt: new Date('2025-01-01'), expiresAt: new Date('2025-03-31'), isActive: true },
-  { id: '4', code: 'SUMMER30', type: 'percentage', value: 30, usageCount: 0, usageLimit: 200, minPurchase: 8000, startsAt: new Date('2025-06-01'), expiresAt: new Date('2025-08-31'), isActive: false },
-];
-
-const typeLabels: Record<CouponType, string> = {
+const typeLabels: Record<Coupon['type'], string> = {
   percentage: 'Percentage',
   fixed_amount: 'Fixed Amount',
   free_shipping: 'Free Shipping',
@@ -43,11 +23,16 @@ const statusColors: Record<CouponStatus, string> = {
 
 type TabFilter = 'all' | 'active' | 'expired' | 'scheduled';
 
-export function CouponsTable() {
+interface CouponsTableProps {
+  shopId?: string;
+}
+
+export function CouponsTable({ shopId }: CouponsTableProps) {
   const t = useTranslations('admin.coupons');
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading] = useState(false);
+
+  const { coupons, isLoading, error, deleteCoupon } = useCoupons({ shopId });
 
   const getStatus = (coupon: Coupon): CouponStatus => {
     const now = new Date();
@@ -58,12 +43,12 @@ export function CouponsTable() {
 
   const tabCounts = useMemo(() => {
     return {
-      all: mockCoupons.length,
-      active: mockCoupons.filter(c => getStatus(c) === 'active').length,
-      expired: mockCoupons.filter(c => getStatus(c) === 'expired').length,
-      scheduled: mockCoupons.filter(c => getStatus(c) === 'scheduled').length,
+      all: coupons.length,
+      active: coupons.filter(c => getStatus(c) === 'active').length,
+      expired: coupons.filter(c => getStatus(c) === 'expired').length,
+      scheduled: coupons.filter(c => getStatus(c) === 'scheduled').length,
     };
-  }, []);
+  }, [coupons]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
     { key: 'all', label: t('all'), count: tabCounts.all },
@@ -73,7 +58,7 @@ export function CouponsTable() {
   ];
 
   const filteredCoupons = useMemo(() => {
-    let result = mockCoupons;
+    let result = coupons;
 
     if (activeTab !== 'all') {
       result = result.filter(c => getStatus(c) === activeTab);
@@ -85,7 +70,7 @@ export function CouponsTable() {
     }
 
     return result;
-  }, [activeTab, searchQuery]);
+  }, [coupons, activeTab, searchQuery]);
 
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
@@ -104,6 +89,24 @@ export function CouponsTable() {
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code);
   };
+
+  const handleDelete = async (id: string) => {
+    if (confirm(t('confirmDelete'))) {
+      try {
+        await deleteCoupon(id);
+      } catch (err) {
+        console.error('Failed to delete coupon:', err);
+      }
+    }
+  };
+
+  if (error) {
+    return (
+      <div className="p-8 text-center text-red-500">
+        {error.message}
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -224,7 +227,10 @@ export function CouponsTable() {
                         <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
                           <Edit2 size={14} className="text-[var(--color-text-label)]" />
                         </button>
-                        <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
+                        <button
+                          onClick={() => handleDelete(coupon.id)}
+                          className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors"
+                        >
                           <Trash2 size={14} className="text-[var(--color-text-label)]" />
                         </button>
                       </div>

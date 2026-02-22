@@ -289,6 +289,85 @@ export interface Coupon {
   updatedAt: Date;
 }
 
+// Brands
+export interface Brand {
+  id: string;
+  shopId: string;
+  name: string;
+  slug: string;
+  logo?: string;
+  website?: string;
+  description?: string;
+  productCount: number;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Reviews
+export interface Review {
+  id: string;
+  shopId: string;
+  productId: string;
+  productName: string;
+  customerId: string;
+  customerName: string;
+  rating: number;
+  title?: string;
+  comment: string;
+  images?: string[];
+  status: 'pending' | 'approved' | 'rejected';
+  helpful: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Roles & Permissions
+export interface Role {
+  id: string;
+  shopId: string;
+  name: string;
+  description: string;
+  permissions: string[];
+  isSystem: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface TeamMember {
+  id: string;
+  shopId: string;
+  userId: string;
+  email: string;
+  name: string;
+  avatar?: string;
+  roleId: string;
+  roleName: string;
+  status: 'active' | 'invited' | 'inactive';
+  invitedAt?: Date;
+  lastActiveAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Media
+export interface MediaItem {
+  id: string;
+  shopId: string;
+  url: string;
+  thumbnailUrl?: string;
+  name: string;
+  type: 'image' | 'video';
+  mimeType: string;
+  size: number;
+  width?: number;
+  height?: number;
+  productId?: string;
+  productName?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 // Cart (client-side state)
 export interface CartItem {
   productId: string;
@@ -311,4 +390,41 @@ export interface Cart {
   discount: number;
   total: number;
   couponCode?: string;
+}
+
+// Blog Posts
+export interface BlogPost {
+  id: string;
+  shopId: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  coverImage?: string;
+  category: string;
+  tags: string[];
+  author: {
+    name: string;
+    avatar?: string;
+  };
+  readTime: number; // in minutes
+  isPublished: boolean;
+  publishedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Collections (for homepage)
+export interface Collection {
+  id: string;
+  shopId: string;
+  name: string;
+  slug: string;
+  description?: string;
+  coverImage?: string;
+  products: string[]; // Product IDs
+  isActive: boolean;
+  displayOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

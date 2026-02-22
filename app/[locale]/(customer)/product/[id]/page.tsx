@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Heart, ShoppingBag, Check } from 'lucide-react';
+import { ArrowLeft, Heart, ShoppingBag, Check, PackageX } from 'lucide-react';
 import { Button, Skeleton } from '@/components/ui';
 import {
   ImageCarousel,
@@ -13,33 +13,8 @@ import {
   ProductInfo,
   RelatedProducts,
 } from '@/components/customer/product';
-import { useProduct } from '@/lib/hooks/useProducts';
+import { useProduct, useProducts } from '@/lib/hooks/useProducts';
 import { useCartStore } from '@/lib/store/cart';
-
-// Fallback mock data if product not found in Firestore
-const fallbackProduct = {
-  id: '1',
-  brand: 'MOHAN',
-  name: 'Recycle Boucle Knit Cardigan Pink',
-  price: 120,
-  images: [] as string[],
-  colors: [
-    { name: 'Pink', hex: '#F5B5C8' },
-    { name: 'Black', hex: '#000000' },
-    { name: 'Cream', hex: '#F5F5DC' },
-  ],
-  sizes: ['S', 'M', 'L'],
-  unavailableSizes: [] as string[],
-  materials: '60% Recycled Polyester, 30% Acrylic, 10% Wool. Certified sustainable materials.',
-  care: 'Hand wash cold. Lay flat to dry. Do not bleach or iron.',
-};
-
-const relatedProducts = [
-  { id: '2', name: 'Wool Blend Coat', brand: 'MOHAN', price: '$349' },
-  { id: '3', name: 'Cashmere Sweater', brand: 'KORIN', price: '$249' },
-  { id: '4', name: 'Silk Blouse', brand: 'LAMEREI', price: '$189' },
-  { id: '5', name: 'Cotton Dress', brand: 'BASIC', price: '$129' },
-];
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -49,10 +24,12 @@ export default function ProductDetailPage() {
   const productId = params.id as string;
 
   // Fetch real product data
-  const { product: firestoreProduct, isLoading: loading, error } = useProduct(productId);
+  const { product, isLoading, error } = useProduct(productId);
 
-  // Use Firestore product or fallback
-  const product = firestoreProduct || fallbackProduct;
+  // Fetch related products (same category)
+  const { products: relatedProductsData } = useProducts({
+    limit: 4,
+  });
 
   // Cart store
   const addItem = useCartStore((state) => state.addItem);
@@ -62,25 +39,33 @@ export default function ProductDetailPage() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
-  // Extract colors and sizes from variants or use defaults
-  const extractedColors = firestoreProduct?.variants
-    ? [...new Set(firestoreProduct.variants.map(v => v.options?.color).filter(Boolean))]
+  // Extract colors and sizes from variants
+  const extractedColors = product?.variants
+    ? [...new Set(product.variants.map(v => v.options?.color).filter(Boolean))]
     : [];
-  const extractedSizes = firestoreProduct?.variants
-    ? [...new Set(firestoreProduct.variants.map(v => v.options?.size).filter(Boolean))]
+  const extractedSizes = product?.variants
+    ? [...new Set(product.variants.map(v => v.options?.size).filter(Boolean))]
     : [];
 
-  // Use extracted or fallback
-  const colors = extractedColors.length > 0
-    ? extractedColors.map(c => ({ name: c as string, hex: '#888888' }))
-    : fallbackProduct.colors;
-  const sizes = (extractedSizes.length > 0 ? extractedSizes : fallbackProduct.sizes) as string[];
-  const unavailableSizes: string[] = [];
+  // Transform colors for component
+  const colors = extractedColors.map(c => ({ name: c as string, hex: '#888888' }));
+  const sizes = extractedSizes as string[];
+
+  // Related products (exclude current product)
+  const relatedProducts = relatedProductsData
+    .filter(p => p.id !== productId)
+    .slice(0, 4)
+    .map(p => ({
+      id: p.id,
+      name: p.name,
+      brand: p.brand || '',
+      price: `$${p.price}`,
+    }));
 
   // Set default selections when product loads
   useEffect(() => {
     if (colors.length > 0 && !selectedColor) {
-      setSelectedColor(typeof colors[0] === 'string' ? colors[0] : colors[0].name);
+      setSelectedColor(colors[0].name);
     }
     if (sizes.length > 0 && !selectedSize) {
       setSelectedSize(sizes[0]);
@@ -88,15 +73,14 @@ export default function ProductDetailPage() {
   }, [colors, sizes, selectedColor, selectedSize]);
 
   const handleAddToCart = () => {
-    const price = typeof product.price === 'number' ? product.price : parseFloat(String(product.price).replace(/[^0-9.]/g, '')) || 0;
-    const productImage = firestoreProduct?.images?.[0]?.url || '';
+    if (!product) return;
 
     addItem({
       productId: productId,
       variantId: `${selectedColor}-${selectedSize}`,
       name: product.name,
-      price: price,
-      image: productImage,
+      price: product.price,
+      image: product.images?.[0]?.url || '',
       options: {
         brand: product.brand || '',
         color: selectedColor,
@@ -109,7 +93,8 @@ export default function ProductDetailPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
-  if (loading) {
+  // Loading state
+  if (isLoading) {
     return (
       <div className="min-h-screen pb-24">
         <div className="px-4 py-3 border-b">
@@ -121,6 +106,36 @@ export default function ProductDetailPage() {
           <Skeleton className="w-full h-6" />
           <Skeleton className="w-20 h-8" />
         </div>
+      </div>
+    );
+  }
+
+  // Product not found
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center"
+        >
+          <div className="w-20 h-20 mb-6 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center mx-auto">
+            <PackageX size={32} className="text-[var(--color-text-label)]" />
+          </div>
+          <h1 className="text-lg font-medium text-[var(--color-title-active)] mb-2">
+            Product Not Found
+          </h1>
+          <p className="text-sm text-[var(--color-text-body)] mb-6 max-w-xs">
+            This product may have been removed or is no longer available.
+          </p>
+          <Button
+            variant="primary"
+            leftIcon={<ArrowLeft size={16} />}
+            onClick={() => router.push(`/${locale}`)}
+          >
+            Back to Home
+          </Button>
+        </motion.div>
       </div>
     );
   }
@@ -140,7 +155,7 @@ export default function ProductDetailPage() {
 
       {/* Image Carousel */}
       <ImageCarousel
-        images={firestoreProduct?.images?.map(img => img.url) || fallbackProduct.images}
+        images={product.images?.map(img => img.url) || []}
         isFavorite={isFavorite}
         onFavoriteToggle={() => setIsFavorite(!isFavorite)}
         onShare={() => {
@@ -157,30 +172,38 @@ export default function ProductDetailPage() {
       <ProductInfo
         brand={product.brand || ''}
         name={product.name}
-        price={typeof product.price === 'number' ? `$${product.price}` : product.price}
-        materials={product.materials || fallbackProduct.materials}
-        care={product.care || fallbackProduct.care}
+        price={`$${product.price}`}
+        materials={product.materials || ''}
+        care={product.care || ''}
       />
 
-      {/* Color & Size Selection */}
-      <div className="px-4 py-6 space-y-6">
-        <ColorSwatches
-          colors={colors}
-          selectedColor={selectedColor}
-          onColorChange={setSelectedColor}
-        />
-        <SizeSelector
-          sizes={sizes}
-          selectedSize={selectedSize}
-          onSizeChange={setSelectedSize}
-          unavailableSizes={unavailableSizes}
-        />
-      </div>
+      {/* Color & Size Selection - only show if available */}
+      {(colors.length > 0 || sizes.length > 0) && (
+        <div className="px-4 py-6 space-y-6">
+          {colors.length > 0 && (
+            <ColorSwatches
+              colors={colors}
+              selectedColor={selectedColor}
+              onColorChange={setSelectedColor}
+            />
+          )}
+          {sizes.length > 0 && (
+            <SizeSelector
+              sizes={sizes}
+              selectedSize={selectedSize}
+              onSizeChange={setSelectedSize}
+              unavailableSizes={[]}
+            />
+          )}
+        </div>
+      )}
 
-      {/* Related Products */}
-      <div className="border-t border-[var(--color-line)] mt-6">
-        <RelatedProducts products={relatedProducts} />
-      </div>
+      {/* Related Products - only show if available */}
+      {relatedProducts.length > 0 && (
+        <div className="border-t border-[var(--color-line)] mt-6">
+          <RelatedProducts products={relatedProducts} />
+        </div>
+      )}
 
       {/* Fixed Bottom CTA */}
       <motion.div

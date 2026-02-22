@@ -40,4 +40,11 @@ export const COLLECTIONS = {
   COUPONS: 'coupons',
   TRANSACTIONS: 'transactions',
   SHOPS: 'shops',
+  BRANDS: 'brands',
+  REVIEWS: 'reviews',
+  ROLES: 'roles',
+  TEAM_MEMBERS: 'team_members',
+  MEDIA: 'media',
+  BLOG_POSTS: 'blog_posts',
+  COLLECTIONS: 'collections',
 } as const;

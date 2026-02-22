@@ -3,10 +3,13 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { Twitter, Instagram, Youtube, Mail, Phone, Clock } from 'lucide-react';
+import { useHasBlogPosts, useHasLiveStreams } from '@/lib/hooks';
 
 export function CustomerFooter() {
   const locale = useLocale();
   const t = useTranslations('customer.footer');
+  const { hasPosts } = useHasBlogPosts();
+  const { hasStreams } = useHasLiveStreams();
 
   return (
     <footer className="bg-white border-t border-[var(--color-line)] mt-auto">
@@ -66,12 +69,24 @@ export function CustomerFooter() {
           >
             {t('contact')}
           </Link>
-          <Link
-            href={`/${locale}/blog`}
-            className="text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
-          >
-            {t('blog')}
-          </Link>
+          {/* Blog link - only show if there are published posts */}
+          {hasPosts && (
+            <Link
+              href={`/${locale}/blog`}
+              className="text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
+            >
+              {t('blog')}
+            </Link>
+          )}
+          {/* Live link - only show if there are live/scheduled streams */}
+          {hasStreams && (
+            <Link
+              href={`/${locale}/live`}
+              className="text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
+            >
+              {t('live')}
+            </Link>
+          )}
         </nav>
 
         {/* Copyright */}

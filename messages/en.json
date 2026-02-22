@@ -59,6 +59,8 @@
       "admin": "Admin",
       "adminRole": "Admin Role",
       "controlAuthority": "Control Authority",
+      "teamMembers": "Team",
+      "blog": "Blog",
       "yourShop": "Your Shop"
     },
     "topnav": {
@@ -162,7 +164,8 @@
       "usage": "Usage",
       "validity": "Validity",
       "status": "Status",
-      "noCoupons": "No coupons found"
+      "noCoupons": "No coupons found",
+      "confirmDelete": "Are you sure you want to delete this coupon?"
     },
     "categories": {
       "title": "Categories",
@@ -190,7 +193,9 @@
       "brand": "Brand",
       "products": "Products",
       "website": "Website",
-      "status": "Status"
+      "status": "Status",
+      "noBrands": "No brands found",
+      "confirmDelete": "Are you sure you want to delete this brand?"
     },
     "transactions": {
       "title": "Transactions",
@@ -274,7 +279,13 @@
       "fileName": "File Name",
       "size": "Size",
       "linkedProduct": "Linked Product",
-      "uploaded": "Uploaded"
+      "uploaded": "Uploaded",
+      "noReviews": "No reviews found",
+      "confirmDeleteReview": "Are you sure you want to delete this review?",
+      "noMedia": "No media found",
+      "uploadToGetStarted": "Upload media to get started",
+      "uploading": "Uploading...",
+      "confirmDeleteMedia": "Are you sure you want to delete this media?"
     },
     "studio": {
       "title": "AI Studio",
@@ -344,7 +355,23 @@
       "searchTeam": "Search team members...",
       "member": "Member",
       "role": "Role",
-      "lastActive": "Last Active"
+      "lastActive": "Last Active",
+      "noRoles": "No roles found",
+      "createNewRole": "Create New Role",
+      "roleName": "Role Name",
+      "roleDescription": "Role Description",
+      "create": "Create",
+      "cancel": "Cancel",
+      "confirmDeleteRole": "Are you sure you want to delete this role?",
+      "cannotDeleteSystemRole": "Cannot delete system roles",
+      "noTeamMembers": "No team members found",
+      "inviteNewMember": "Invite New Member",
+      "name": "Name",
+      "email": "Email",
+      "selectRole": "Select Role",
+      "sendInvite": "Send Invite",
+      "confirmRemoveMember": "Are you sure you want to remove this team member?",
+      "status": "Status"
     },
     "modelCasting": {
       "title": "Model Casting",
@@ -455,12 +482,17 @@
       "about": "About",
       "contact": "Contact",
       "blog": "Blog",
+      "live": "Live",
       "allRightsReserved": "All Rights Reserved"
     },
     "live": {
       "products": "Products",
       "buyNow": "Buy Now",
-      "typeSomething": "Type Something..."
+      "typeSomething": "Type Something...",
+      "noStreams": "No Live Streams",
+      "noStreamsDescription": "There are no live streams at the moment. Check back soon for upcoming events.",
+      "backToHome": "Back to Home",
+      "upcomingStreams": "Upcoming Streams"
     }
   },
   "errors": {

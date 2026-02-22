@@ -1,45 +1,135 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Shield, Users, ShoppingCart, Package, CreditCard, Settings, Eye, Edit2, Trash2 } from 'lucide-react';
+import { Shield, Users, ShoppingCart, Package, CreditCard, Settings, Edit2, Trash2, Loader2, Plus } from 'lucide-react';
 import { Button } from '@/components/ui';
+import { useRoles, AVAILABLE_PERMISSIONS } from '@/lib/hooks';
+import type { Role } from '@/lib/types';
 
-interface Permission {
+interface PermissionGroup {
   id: string;
   name: string;
   description: string;
   icon: typeof Shield;
-}
-
-interface Role {
-  id: string;
-  name: string;
-  description: string;
   permissions: string[];
-  userCount: number;
 }
 
-const permissions: Permission[] = [
-  { id: 'dashboard', name: 'Dashboard', description: 'View dashboard and analytics', icon: Settings },
-  { id: 'orders', name: 'Orders', description: 'Manage orders and fulfillment', icon: ShoppingCart },
-  { id: 'customers', name: 'Customers', description: 'View and manage customers', icon: Users },
-  { id: 'products', name: 'Products', description: 'Add and edit products', icon: Package },
-  { id: 'transactions', name: 'Transactions', description: 'View financial data', icon: CreditCard },
-  { id: 'settings', name: 'Settings', description: 'Manage system settings', icon: Settings },
-];
-
-const mockRoles: Role[] = [
-  { id: '1', name: 'Super Admin', description: 'Full access to all features', permissions: ['dashboard', 'orders', 'customers', 'products', 'transactions', 'settings'], userCount: 1 },
-  { id: '2', name: 'Store Manager', description: 'Manage products and orders', permissions: ['dashboard', 'orders', 'customers', 'products'], userCount: 3 },
-  { id: '3', name: 'Sales Staff', description: 'Handle orders and customers', permissions: ['dashboard', 'orders', 'customers'], userCount: 5 },
-  { id: '4', name: 'Viewer', description: 'Read-only access', permissions: ['dashboard'], userCount: 2 },
+const permissionGroups: PermissionGroup[] = [
+  { id: 'dashboard', name: 'Dashboard', description: 'View dashboard and analytics', icon: Settings, permissions: ['analytics.view'] },
+  { id: 'orders', name: 'Orders', description: 'Manage orders and fulfillment', icon: ShoppingCart, permissions: ['orders.view', 'orders.edit', 'orders.cancel'] },
+  { id: 'customers', name: 'Customers', description: 'View and manage customers', icon: Users, permissions: ['customers.view', 'customers.edit'] },
+  { id: 'products', name: 'Products', description: 'Add and edit products', icon: Package, permissions: ['products.view', 'products.create', 'products.edit', 'products.delete'] },
+  { id: 'transactions', name: 'Transactions', description: 'View financial data', icon: CreditCard, permissions: ['analytics.view'] },
+  { id: 'settings', name: 'Settings', description: 'Manage system settings', icon: Settings, permissions: ['settings.view', 'settings.edit', 'team.view', 'team.manage', 'roles.view', 'roles.manage'] },
 ];
 
 export default function ControlAuthorityPage() {
   const t = useTranslations('admin.settings');
-  const [selectedRole, setSelectedRole] = useState<Role | null>(mockRoles[0]);
+
+  // TODO: Get shopId from auth context
+  const shopId = 'demo-shop';
+  const { roles, isLoading, error, createRole, updateRole, deleteRole, refresh } = useRoles({ shopId });
+
+  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedPermissions, setEditedPermissions] = useState<string[]>([]);
+  const [newRoleName, setNewRoleName] = useState('');
+  const [newRoleDescription, setNewRoleDescription] = useState('');
+  const [isCreating, setIsCreating] = useState(false);
+
+  useEffect(() => {
+    if (roles.length > 0 && !selectedRole) {
+      setSelectedRole(roles[0]);
+      setEditedPermissions(roles[0].permissions);
+    }
+  }, [roles, selectedRole]);
+
+  useEffect(() => {
+    if (selectedRole) {
+      setEditedPermissions(selectedRole.permissions);
+    }
+  }, [selectedRole]);
+
+  const hasPermission = (groupId: string) => {
+    const group = permissionGroups.find(g => g.id === groupId);
+    if (!group) return false;
+    return group.permissions.some(p => editedPermissions.includes(p));
+  };
+
+  const togglePermission = (groupId: string) => {
+    const group = permissionGroups.find(g => g.id === groupId);
+    if (!group) return;
+
+    const hasAllPerms = group.permissions.every(p => editedPermissions.includes(p));
+
+    if (hasAllPerms) {
+      setEditedPermissions(prev => prev.filter(p => !group.permissions.includes(p)));
+    } else {
+      setEditedPermissions(prev => [...new Set([...prev, ...group.permissions])]);
+    }
+  };
+
+  const handleSavePermissions = async () => {
+    if (!selectedRole) return;
+
+    try {
+      await updateRole(selectedRole.id, { permissions: editedPermissions });
+      setSelectedRole({ ...selectedRole, permissions: editedPermissions });
+      setIsEditing(false);
+    } catch (err) {
+      console.error('Failed to update role:', err);
+    }
+  };
+
+  const handleCreateRole = async () => {
+    if (!newRoleName.trim()) return;
+
+    try {
+      const id = await createRole({
+        shopId,
+        name: newRoleName,
+        description: newRoleDescription,
+        permissions: [],
+      });
+      setNewRoleName('');
+      setNewRoleDescription('');
+      setIsCreating(false);
+      await refresh();
+      const newRole = roles.find(r => r.id === id);
+      if (newRole) setSelectedRole(newRole);
+    } catch (err) {
+      console.error('Failed to create role:', err);
+    }
+  };
+
+  const handleDeleteRole = async (id: string) => {
+    const role = roles.find(r => r.id === id);
+    if (role?.isSystem) {
+      alert(t('cannotDeleteSystemRole'));
+      return;
+    }
+
+    if (confirm(t('confirmDeleteRole'))) {
+      try {
+        await deleteRole(id);
+        if (selectedRole?.id === id) {
+          setSelectedRole(roles[0] || null);
+        }
+      } catch (err) {
+        console.error('Failed to delete role:', err);
+      }
+    }
+  };
+
+  if (error) {
+    return (
+      <div className="p-8 text-center text-red-500">
+        {error.message}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -53,10 +143,49 @@ export default function ControlAuthorityPage() {
             {t('controlAuthorityDescription')}
           </p>
         </div>
-        <Button variant="primary" leftIcon={<Shield size={16} />}>
+        <Button
+          variant="primary"
+          leftIcon={<Shield size={16} />}
+          onClick={() => setIsCreating(true)}
+        >
           {t('addRole')}
         </Button>
       </div>
+
+      {/* Create Role Modal */}
+      {isCreating && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-4"
+        >
+          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-4">{t('createNewRole')}</h3>
+          <div className="space-y-3">
+            <input
+              type="text"
+              value={newRoleName}
+              onChange={(e) => setNewRoleName(e.target.value)}
+              placeholder={t('roleName')}
+              className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+            />
+            <input
+              type="text"
+              value={newRoleDescription}
+              onChange={(e) => setNewRoleDescription(e.target.value)}
+              placeholder={t('roleDescription')}
+              className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+            />
+            <div className="flex gap-2">
+              <Button variant="primary" onClick={handleCreateRole}>
+                {t('create')}
+              </Button>
+              <Button variant="secondary" onClick={() => setIsCreating(false)}>
+                {t('cancel')}
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Roles List */}
@@ -70,33 +199,46 @@ export default function ControlAuthorityPage() {
               {t('roles')}
             </h3>
           </div>
-          <div className="divide-y divide-[var(--color-line)]">
-            {mockRoles.map((role) => (
-              <button
-                key={role.id}
-                onClick={() => setSelectedRole(role)}
-                className={`w-full p-4 text-left transition-colors ${
-                  selectedRole?.id === role.id
-                    ? 'bg-[var(--color-bg-element)]'
-                    : 'hover:bg-[var(--color-bg-element)]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-[var(--color-title-active)]">
-                      {role.name}
-                    </p>
-                    <p className="text-xs text-[var(--color-text-label)] mt-0.5">
-                      {role.description}
-                    </p>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-10">
+              <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+            </div>
+          ) : roles.length === 0 ? (
+            <div className="p-8 text-center">
+              <p className="text-sm text-[var(--color-text-label)]">{t('noRoles')}</p>
+            </div>
+          ) : (
+            <div className="divide-y divide-[var(--color-line)]">
+              {roles.map((role) => (
+                <button
+                  key={role.id}
+                  onClick={() => { setSelectedRole(role); setIsEditing(false); }}
+                  className={`w-full p-4 text-left transition-colors ${
+                    selectedRole?.id === role.id
+                      ? 'bg-[var(--color-bg-element)]'
+                      : 'hover:bg-[var(--color-bg-element)]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-[var(--color-title-active)]">
+                        {role.name}
+                        {role.isSystem && (
+                          <span className="ml-2 text-xs text-[var(--color-text-label)]">(System)</span>
+                        )}
+                      </p>
+                      <p className="text-xs text-[var(--color-text-label)] mt-0.5">
+                        {role.description}
+                      </p>
+                    </div>
+                    <span className="text-xs bg-[var(--color-bg-input)] text-[var(--color-text-body)] px-2 py-1 rounded-full">
+                      {role.permissions.length} perms
+                    </span>
                   </div>
-                  <span className="text-xs bg-[var(--color-bg-input)] text-[var(--color-text-body)] px-2 py-1 rounded-full">
-                    {role.userCount} users
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+                </button>
+              ))}
+            </div>
+          )}
         </motion.div>
 
         {/* Permissions Editor */}
@@ -118,12 +260,22 @@ export default function ControlAuthorityPage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors">
-                    <Edit2 size={16} className="text-[var(--color-text-label)]" />
-                  </button>
-                  <button className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors">
-                    <Trash2 size={16} className="text-red-500" />
-                  </button>
+                  {!selectedRole.isSystem && (
+                    <>
+                      <button
+                        onClick={() => setIsEditing(!isEditing)}
+                        className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+                      >
+                        <Edit2 size={16} className="text-[var(--color-text-label)]" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteRole(selectedRole.id)}
+                        className="p-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+                      >
+                        <Trash2 size={16} className="text-red-500" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
               <div className="p-4">
@@ -131,42 +283,48 @@ export default function ControlAuthorityPage() {
                   {t('permissions')}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {permissions.map((permission) => {
-                    const Icon = permission.icon;
-                    const hasPermission = selectedRole.permissions.includes(permission.id);
+                  {permissionGroups.map((group) => {
+                    const Icon = group.icon;
+                    const hasPermissionGroup = hasPermission(group.id);
                     return (
                       <label
-                        key={permission.id}
+                        key={group.id}
                         className={`flex items-center gap-3 p-3 rounded-[var(--radius-md)] border cursor-pointer transition-colors ${
-                          hasPermission
+                          hasPermissionGroup
                             ? 'border-[var(--color-accent)] bg-[var(--color-bg-element)]'
                             : 'border-[var(--color-line)] hover:bg-[var(--color-bg-element)]'
-                        }`}
+                        } ${!isEditing && 'pointer-events-none'}`}
                       >
                         <input
                           type="checkbox"
-                          checked={hasPermission}
-                          onChange={() => {}}
+                          checked={hasPermissionGroup}
+                          onChange={() => togglePermission(group.id)}
+                          disabled={!isEditing || selectedRole.isSystem}
                           className="w-4 h-4 rounded border-[var(--color-line)] text-[var(--color-accent)]"
                         />
-                        <Icon size={18} className={hasPermission ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-label)]'} />
+                        <Icon size={18} className={hasPermissionGroup ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-label)]'} />
                         <div>
                           <p className="text-sm font-medium text-[var(--color-title-active)]">
-                            {permission.name}
+                            {group.name}
                           </p>
                           <p className="text-xs text-[var(--color-text-label)]">
-                            {permission.description}
+                            {group.description}
                           </p>
                         </div>
                       </label>
                     );
                   })}
                 </div>
-                <div className="mt-6 flex justify-end">
-                  <Button variant="primary">
-                    {t('saveChanges')}
-                  </Button>
-                </div>
+                {isEditing && !selectedRole.isSystem && (
+                  <div className="mt-6 flex justify-end gap-2">
+                    <Button variant="secondary" onClick={() => { setIsEditing(false); setEditedPermissions(selectedRole.permissions); }}>
+                      {t('cancel')}
+                    </Button>
+                    <Button variant="primary" onClick={handleSavePermissions}>
+                      {t('saveChanges')}
+                    </Button>
+                  </div>
+                )}
               </div>
             </>
           ) : (

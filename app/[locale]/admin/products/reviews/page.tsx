@@ -3,29 +3,11 @@
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Star, MessageSquare, ThumbsUp, ThumbsDown, MoreHorizontal, Check, X } from 'lucide-react';
+import { Search, Star, MessageSquare, ThumbsUp, ThumbsDown, MoreHorizontal, Check, X, Loader2 } from 'lucide-react';
 import { StatCard } from '@/components/admin/dashboard';
+import { useReviews } from '@/lib/hooks';
 
 type ReviewStatus = 'pending' | 'approved' | 'rejected';
-
-interface Review {
-  id: string;
-  productName: string;
-  customerName: string;
-  rating: number;
-  comment: string;
-  date: string;
-  status: ReviewStatus;
-  helpful: number;
-}
-
-const mockReviews: Review[] = [
-  { id: '1', productName: 'Oversized Blazer', customerName: 'John Doe', rating: 5, comment: 'Excellent quality and perfect fit!', date: '2025-01-15', status: 'approved', helpful: 12 },
-  { id: '2', productName: 'Silk Dress', customerName: 'Jane Smith', rating: 4, comment: 'Beautiful dress, slightly smaller than expected.', date: '2025-01-14', status: 'pending', helpful: 5 },
-  { id: '3', productName: 'Wool Cardigan', customerName: 'Mike Johnson', rating: 5, comment: 'So warm and cozy! Love it.', date: '2025-01-13', status: 'approved', helpful: 8 },
-  { id: '4', productName: 'Leather Bag', customerName: 'Sarah Williams', rating: 3, comment: 'Good quality but strap could be longer.', date: '2025-01-12', status: 'pending', helpful: 3 },
-  { id: '5', productName: 'Cotton T-Shirt', customerName: 'Tom Brown', rating: 1, comment: 'Poor quality, fell apart after one wash.', date: '2025-01-11', status: 'rejected', helpful: 0 },
-];
 
 const statusColors: Record<ReviewStatus, string> = {
   pending: 'bg-amber-50 text-amber-700',
@@ -40,12 +22,14 @@ export default function ProductReviewsPage() {
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const { reviews, isLoading, error, approveReview, rejectReview, deleteReview } = useReviews();
+
   const tabCounts = useMemo(() => ({
-    all: mockReviews.length,
-    pending: mockReviews.filter(r => r.status === 'pending').length,
-    approved: mockReviews.filter(r => r.status === 'approved').length,
-    rejected: mockReviews.filter(r => r.status === 'rejected').length,
-  }), []);
+    all: reviews.length,
+    pending: reviews.filter(r => r.status === 'pending').length,
+    approved: reviews.filter(r => r.status === 'approved').length,
+    rejected: reviews.filter(r => r.status === 'rejected').length,
+  }), [reviews]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
     { key: 'all', label: t('allReviews'), count: tabCounts.all },
@@ -55,7 +39,7 @@ export default function ProductReviewsPage() {
   ];
 
   const filteredReviews = useMemo(() => {
-    let result = mockReviews;
+    let result = reviews;
     if (activeTab !== 'all') {
       result = result.filter(r => r.status === activeTab);
     }
@@ -68,9 +52,11 @@ export default function ProductReviewsPage() {
       );
     }
     return result;
-  }, [activeTab, searchQuery]);
+  }, [reviews, activeTab, searchQuery]);
 
-  const avgRating = (mockReviews.reduce((sum, r) => sum + r.rating, 0) / mockReviews.length).toFixed(1);
+  const avgRating = reviews.length > 0
+    ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+    : '0.0';
 
   const renderStars = (rating: number) => {
     return (
@@ -86,13 +72,55 @@ export default function ProductReviewsPage() {
     );
   };
 
+  const handleApprove = async (id: string) => {
+    try {
+      await approveReview(id);
+    } catch (err) {
+      console.error('Failed to approve review:', err);
+    }
+  };
+
+  const handleReject = async (id: string) => {
+    try {
+      await rejectReview(id);
+    } catch (err) {
+      console.error('Failed to reject review:', err);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (confirm(t('confirmDeleteReview'))) {
+      try {
+        await deleteReview(id);
+      } catch (err) {
+        console.error('Failed to delete review:', err);
+      }
+    }
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(date);
+  };
+
+  if (error) {
+    return (
+      <div className="p-8 text-center text-red-500">
+        {error.message}
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Stats Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title={t('totalReviews')}
-          value={mockReviews.length.toString()}
+          value={reviews.length.toString()}
           change={{ value: '15%', isPositive: true }}
           icon={MessageSquare}
         />
@@ -157,77 +185,96 @@ export default function ProductReviewsPage() {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('product')}
-                </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('customer')}
-                </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('rating')}
-                </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('review')}
-                </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('date')}
-                </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('status')}
-                </th>
-                <th className="w-32 py-3 px-4"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredReviews.map((review) => (
-                <tr
-                  key={review.id}
-                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
-                >
-                  <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    {review.productName}
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {review.customerName}
-                  </td>
-                  <td className="py-3 px-4">
-                    {renderStars(review.rating)}
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)] max-w-xs truncate">
-                    {review.comment}
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {review.date}
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[review.status]}`}>
-                      {review.status.charAt(0).toUpperCase() + review.status.slice(1)}
-                    </span>
-                  </td>
-                  <td className="py-3 px-4">
-                    <div className="flex items-center gap-1">
-                      {review.status === 'pending' && (
-                        <>
-                          <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-emerald-50 transition-colors">
-                            <Check size={14} className="text-emerald-600" />
-                          </button>
-                          <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-red-50 transition-colors">
-                            <X size={14} className="text-red-500" />
-                          </button>
-                        </>
-                      )}
-                      <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
-                        <MoreHorizontal size={14} className="text-[var(--color-text-label)]" />
-                      </button>
-                    </div>
-                  </td>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+            </div>
+          ) : filteredReviews.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <p className="text-sm text-[var(--color-text-label)]">{t('noReviews')}</p>
+            </div>
+          ) : (
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('product')}
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('customer')}
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('rating')}
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('review')}
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('date')}
+                  </th>
+                  <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
+                    {t('status')}
+                  </th>
+                  <th className="w-32 py-3 px-4"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredReviews.map((review) => (
+                  <tr
+                    key={review.id}
+                    className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                  >
+                    <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
+                      {review.productName}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                      {review.customerName}
+                    </td>
+                    <td className="py-3 px-4">
+                      {renderStars(review.rating)}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-[var(--color-text-body)] max-w-xs truncate">
+                      {review.comment}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
+                      {formatDate(review.createdAt)}
+                    </td>
+                    <td className="py-3 px-4">
+                      <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[review.status]}`}>
+                        {review.status.charAt(0).toUpperCase() + review.status.slice(1)}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-1">
+                        {review.status === 'pending' && (
+                          <>
+                            <button
+                              onClick={() => handleApprove(review.id)}
+                              className="p-1.5 rounded-[var(--radius-sm)] hover:bg-emerald-50 transition-colors"
+                            >
+                              <Check size={14} className="text-emerald-600" />
+                            </button>
+                            <button
+                              onClick={() => handleReject(review.id)}
+                              className="p-1.5 rounded-[var(--radius-sm)] hover:bg-red-50 transition-colors"
+                            >
+                              <X size={14} className="text-red-500" />
+                            </button>
+                          </>
+                        )}
+                        <button
+                          onClick={() => handleDelete(review.id)}
+                          className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors"
+                        >
+                          <MoreHorizontal size={14} className="text-[var(--color-text-label)]" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </motion.div>
     </div>

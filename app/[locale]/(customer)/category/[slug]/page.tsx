@@ -4,18 +4,10 @@ import { useState, useMemo } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Grid3X3, List, SlidersHorizontal, X, ChevronDown } from 'lucide-react';
+import { ArrowLeft, Grid3X3, List, SlidersHorizontal, X, ChevronDown, Package } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
-import { Pagination } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { useProducts } from '@/lib/hooks/useProducts';
-
-// Fallback products
-const fallbackProducts = [
-  { id: '1', name: 'Oversized Wool Blazer', brand: 'MOHAN', price: '$299' },
-  { id: '2', name: 'Silk Slip Dress', brand: 'LAMEREI', price: '$189' },
-  { id: '3', name: 'Cashmere Cardigan', brand: 'KORIN', price: '$249' },
-  { id: '4', name: 'Leather Tote Bag', brand: 'MERAKI', price: '$399' },
-];
 
 export default function CategoryPage() {
   const params = useParams();
@@ -46,10 +38,10 @@ export default function CategoryPage() {
         image: p.images?.[0]?.url,
       }));
     }
-    return fallbackProducts;
+    return [];
   }, [firestoreProducts]);
 
-  const productCount = firestoreProducts?.length || fallbackProducts.length;
+  const productCount = products.length;
 
   // Active filters based on category
   const [activeFilters, setActiveFilters] = useState<string[]>([categoryName]);
@@ -139,9 +131,26 @@ export default function CategoryPage() {
           <ProductGrid products={products} />
         ) : (
           <div className="flex flex-col items-center justify-center py-20 px-4">
-            <p className="text-sm text-[var(--color-text-label)] text-center">
-              No products found in this category.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center"
+            >
+              <div className="w-16 h-16 mb-4 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center mx-auto">
+                <Package size={24} className="text-[var(--color-text-label)]" />
+              </div>
+              <p className="text-sm text-[var(--color-text-body)] mb-4">
+                No products found in this category yet.
+              </p>
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<ArrowLeft size={14} />}
+                onClick={() => router.push(`/${locale}`)}
+              >
+                Browse All Products
+              </Button>
+            </motion.div>
           </div>
         )}
       </div>

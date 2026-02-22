@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
@@ -11,12 +12,14 @@ import {
   MessageCircle,
   Share2,
   Bookmark,
-  MoreHorizontal,
   ShoppingCart,
   X,
   Send,
+  Radio,
+  Calendar,
 } from 'lucide-react';
-import { Button } from '@/components/ui';
+import { Button, Skeleton } from '@/components/ui';
+import { useStreams } from '@/lib/hooks';
 
 interface Comment {
   id: string;
@@ -25,31 +28,24 @@ interface Comment {
   message: string;
 }
 
-interface Product {
-  id: string;
-  name: string;
-  price: string;
-  image?: string;
-}
-
-const mockComments: Comment[] = [
-  { id: '1', userName: 'Sarah', avatar: '', message: 'Love this collection!' },
-  { id: '2', userName: 'Mike', avatar: '', message: 'When will the black one be available?' },
-  { id: '3', userName: 'Emma', avatar: '', message: 'Just ordered! So excited!' },
-  { id: '4', userName: 'John', avatar: '', message: 'Great quality as always' },
-];
-
-const mockProducts: Product[] = [
-  { id: '1', name: 'Oversized Blazer', price: '$299' },
-  { id: '2', name: 'Silk Dress', price: '$189' },
-  { id: '3', name: 'Wool Cardigan', price: '$149' },
-];
-
 export default function LivePage() {
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations('customer.live');
+
+  // Fetch real streams from Firestore (live or scheduled)
+  const { streams, isLoading } = useStreams();
+
+  // Filter to only show live or scheduled streams
+  const activeStreams = useMemo(() =>
+    streams.filter(s => s.status === 'live' || s.status === 'scheduled'),
+    [streams]
+  );
+
+  const currentStream = activeStreams[0]; // Show the first active stream
+
   const [showProducts, setShowProducts] = useState(false);
-  const [comments, setComments] = useState(mockComments);
+  const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState('');
   const [isLiked, setIsLiked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -67,10 +63,97 @@ export default function LivePage() {
     }
   };
 
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <Skeleton className="w-full h-full" />
+      </div>
+    );
+  }
+
+  // Empty state - no live or scheduled streams
+  if (!currentStream) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center"
+        >
+          <div className="w-20 h-20 mb-6 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center mx-auto">
+            <Radio size={32} className="text-[var(--color-text-label)]" />
+          </div>
+          <h1 className="text-lg font-medium text-[var(--color-title-active)] mb-2">
+            {t('noStreams') || 'No Live Streams'}
+          </h1>
+          <p className="text-sm text-[var(--color-text-body)] mb-6 max-w-xs">
+            {t('noStreamsDescription') || 'There are no live streams at the moment. Check back soon for upcoming events.'}
+          </p>
+          <Button
+            variant="primary"
+            leftIcon={<ArrowLeft size={16} />}
+            onClick={() => router.push(`/${locale}`)}
+          >
+            {t('backToHome') || 'Back to Home'}
+          </Button>
+        </motion.div>
+
+        {/* Show upcoming scheduled streams if any */}
+        {activeStreams.filter(s => s.status === 'scheduled').length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-8 w-full max-w-sm"
+          >
+            <h2 className="text-sm font-medium text-[var(--color-title-active)] mb-4 text-center">
+              {t('upcomingStreams') || 'Upcoming Streams'}
+            </h2>
+            <div className="space-y-3">
+              {activeStreams.filter(s => s.status === 'scheduled').map(stream => (
+                <div
+                  key={stream.id}
+                  className="p-4 bg-[var(--color-bg-element)] rounded-[var(--radius-lg)]"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar size={14} className="text-[var(--color-accent)]" />
+                    <span className="text-xs text-[var(--color-accent)]">
+                      {stream.scheduledAt?.toLocaleDateString()} at {stream.scheduledAt?.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-medium text-[var(--color-title-active)]">
+                    {stream.title}
+                  </h3>
+                  {stream.description && (
+                    <p className="text-xs text-[var(--color-text-body)] mt-1 line-clamp-2">
+                      {stream.description}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </div>
+    );
+  }
+
+  // Stream products (array of product IDs)
+  const hasProducts = currentStream.products && currentStream.products.length > 0;
+
   return (
     <div className="fixed inset-0 bg-black z-50">
       {/* Video Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black">
+        {currentStream.thumbnailURL && (
+          <img
+            src={currentStream.thumbnailURL}
+            alt={currentStream.title}
+            className="w-full h-full object-cover opacity-50"
+          />
+        )}
+      </div>
 
       {/* Header Overlay */}
       <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent px-4 pt-4 pb-8">
@@ -84,9 +167,9 @@ export default function LivePage() {
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-white/20" />
             <div>
-              <p className="text-sm font-medium text-white">VUAL Fashion</p>
+              <p className="text-sm font-medium text-white">{currentStream.title}</p>
               <span className="inline-block px-2 py-0.5 text-[10px] bg-[var(--color-accent)] text-white rounded-full">
-                Clothes
+                Live
               </span>
             </div>
           </div>
@@ -97,11 +180,20 @@ export default function LivePage() {
 
         {/* Live Badge */}
         <div className="flex items-center gap-3 mt-4">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-red-600 rounded-full">
-            <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-white">LIVE</span>
-          </div>
-          <span className="text-xs text-white/70">1,234 watching</span>
+          {currentStream.status === 'live' ? (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-red-600 rounded-full">
+              <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+              <span className="text-xs font-medium text-white">LIVE</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-blue-600 rounded-full">
+              <Calendar size={12} className="text-white" />
+              <span className="text-xs font-medium text-white">SCHEDULED</span>
+            </div>
+          )}
+          <span className="text-xs text-white/70">
+            {currentStream.viewerCount || 0} watching
+          </span>
         </div>
       </div>
 
@@ -138,13 +230,13 @@ export default function LivePage() {
               className={isLiked ? 'fill-red-500 text-red-500' : 'text-white'}
             />
           </div>
-          <span className="text-[10px] text-white/70 mt-1">24.5K</span>
+          <span className="text-[10px] text-white/70 mt-1">0</span>
         </button>
         <button className="flex flex-col items-center">
           <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm">
             <MessageCircle size={22} className="text-white" />
           </div>
-          <span className="text-[10px] text-white/70 mt-1">1.2K</span>
+          <span className="text-[10px] text-white/70 mt-1">{comments.length}</span>
         </button>
         <button className="flex flex-col items-center">
           <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm">
@@ -156,15 +248,17 @@ export default function LivePage() {
             <Bookmark size={22} className="text-white" />
           </div>
         </button>
-        <button
-          onClick={() => setShowProducts(true)}
-          className="flex flex-col items-center"
-        >
-          <div className="p-2 rounded-full bg-[var(--color-accent)]">
-            <ShoppingCart size={22} className="text-white" />
-          </div>
-          <span className="text-[10px] text-white/70 mt-1">{mockProducts.length}</span>
-        </button>
+        {hasProducts && (
+          <button
+            onClick={() => setShowProducts(true)}
+            className="flex flex-col items-center"
+          >
+            <div className="p-2 rounded-full bg-[var(--color-accent)]">
+              <ShoppingCart size={22} className="text-white" />
+            </div>
+            <span className="text-[10px] text-white/70 mt-1">{currentStream.products.length}</span>
+          </button>
+        )}
       </div>
 
       {/* Comment Input */}
@@ -190,7 +284,7 @@ export default function LivePage() {
 
       {/* Products Sheet */}
       <AnimatePresence>
-        {showProducts && (
+        {showProducts && hasProducts && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -219,27 +313,23 @@ export default function LivePage() {
               </div>
 
               <div className="px-4 pb-8 max-h-80 overflow-y-auto">
-                {mockProducts.map((product) => (
-                  <div
-                    key={product.id}
+                {currentStream.products.map((productId: string) => (
+                  <Link
+                    key={productId}
+                    href={`/${locale}/product/${productId}`}
+                    onClick={() => setShowProducts(false)}
                     className="flex items-center gap-4 py-3 border-b border-[var(--color-line)] last:border-0"
                   >
                     <div className="w-16 h-20 bg-[var(--color-bg-element)] rounded-[var(--radius-md)]" />
                     <div className="flex-1">
                       <p className="text-sm font-medium text-[var(--color-title-active)]">
-                        {product.name}
+                        View Product
                       </p>
-                      <p className="text-sm text-[var(--color-accent)]">{product.price}</p>
                     </div>
-                    <div className="flex gap-2">
-                      <button className="p-2 rounded-full bg-[var(--color-bg-element)]">
-                        <ShoppingCart size={16} className="text-[var(--color-text-body)]" />
-                      </button>
-                      <Button variant="primary" size="sm">
-                        {t('buyNow')}
-                      </Button>
-                    </div>
-                  </div>
+                    <Button variant="primary" size="sm">
+                      {t('buyNow')}
+                    </Button>
+                  </Link>
                 ))}
               </div>
             </motion.div>
