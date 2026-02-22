@@ -146,29 +146,6 @@ export function ProductForm() {
             </div>
           </motion.div>
 
-          {/* Categories */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-5"
-          >
-            <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-4">
-              {t('categories')}
-            </h3>
-            <div className="space-y-4">
-              <Select
-                label={t('productCategories')}
-                options={categoryOptions}
-                placeholder={t('selectCategory')}
-              />
-              <Input
-                label={t('productTag')}
-                placeholder={t('enterTags') || 'Enter tags separated by comma'}
-              />
-            </div>
-          </motion.div>
-
           {/* Inventory (only if no variants) */}
           {!hasVariants && (
             <motion.div
@@ -210,7 +187,7 @@ export function ProductForm() {
           )}
         </div>
 
-        {/* Right Column - Images */}
+        {/* Right Column - Images & Categories */}
         <div className="space-y-6">
           {/* Product Images with Color Linking */}
           <ProductImageUpload
@@ -220,6 +197,29 @@ export function ProductForm() {
             imageColorMap={imageColorMap}
             onImageColorMapChange={setImageColorMap}
           />
+
+          {/* Categories */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-5"
+          >
+            <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-4">
+              {t('categories')}
+            </h3>
+            <div className="space-y-4">
+              <Select
+                label={t('productCategories')}
+                options={categoryOptions}
+                placeholder={t('selectCategory')}
+              />
+              <Input
+                label={t('productTag')}
+                placeholder={t('enterTags') || 'Enter tags separated by comma'}
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
 
