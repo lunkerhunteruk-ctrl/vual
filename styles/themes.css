@@ -4,27 +4,27 @@
 
 /* ========================================
    VUAL DEFAULT THEME (デフォルト)
-   Warm & Elegant Brand Colors
+   Clean & Professional - Shopify-inspired
    ======================================== */
 :root,
 [data-theme="vual"] {
   /* Text Colors */
-  --color-title-active: #000000;
-  --color-text-body: #3D3D3D;
-  --color-text-label: #5C5C5C;
-  --color-text-placeholder: #8C8C8C;
+  --color-title-active: #1A1A1A;
+  --color-text-body: #474747;
+  --color-text-label: #6B7177;
+  --color-text-placeholder: #9CA3AF;
 
   /* Background Colors */
-  --color-bg-page: #FAFAFA;
-  --color-bg-element: #FBF6F0;
-  --color-bg-input: #F5EDE6;
-  --color-line: #D4C4B0;
+  --color-bg-page: #F7F7F7;
+  --color-bg-element: #FFFFFF;
+  --color-bg-input: #F3F4F6;
+  --color-line: #E1E3E5;
 
   /* Brand Colors */
-  --color-primary: #A67C5B;
-  --color-secondary: #C48B6C;
-  --color-accent: #C48B6C;
-  --color-price: #C48B6C;
+  --color-primary: #1A1A1A;
+  --color-secondary: #303030;
+  --color-accent: #2C6ECB;
+  --color-price: #1A1A1A;
 
   /* Status Colors */
   --color-success: #10B981;
