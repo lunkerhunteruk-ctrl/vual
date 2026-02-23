@@ -63,11 +63,10 @@ export async function GET(request: NextRequest) {
       .order('created_at', { ascending: false })
       .limit(limit);
 
-    if (status) {
+    if (status && status !== 'all') {
       query = query.eq('status', status);
-    } else {
-      query = query.eq('status', 'published');
     }
+    // If status is 'all' or not provided in admin, show all products
 
     if (category) {
       query = query.eq('category', category);

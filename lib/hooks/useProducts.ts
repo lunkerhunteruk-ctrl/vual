@@ -1,13 +1,43 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Product } from '@/lib/types';
+
+interface Product {
+  id: string;
+  name: string;
+  name_en?: string;
+  description?: string;
+  category: string;
+  tags?: string[];
+  base_price: number;
+  price: number; // Alias for base_price for compatibility
+  discounted_price?: number;
+  currency: string;
+  tax_included: boolean;
+  status: 'draft' | 'published' | 'archived';
+  is_highlighted: boolean;
+  size_specs?: any;
+  created_at: string;
+  updated_at: string;
+  // Compatibility fields
+  brand?: string;
+  sku?: string;
+  stockQuantity?: number;
+  stockStatus?: string;
+  isPublished?: boolean;
+  isFeatured?: boolean;
+  materials?: string;
+  care?: string;
+  images?: { url: string; color?: string; is_primary?: boolean }[];
+  variants?: { id: string; color?: string; size?: string; stock: number; options?: { color?: string; size?: string } }[];
+  product_images?: { id: string; url: string; is_primary: boolean; color?: string }[];
+  product_variants?: { id: string; color?: string; size?: string; stock: number }[];
+}
 
 interface UseProductsOptions {
   shopId?: string;
   category?: string;
   limit?: number;
   featured?: boolean;
+  status?: string;
 }
 
 interface UseProductsReturn {
@@ -19,85 +49,85 @@ interface UseProductsReturn {
   refresh: () => Promise<void>;
 }
 
+// Transform Supabase product to compatible format
+function transformProduct(p: any): Product {
+  return {
+    ...p,
+    price: p.base_price,
+    isPublished: p.status === 'published',
+    isFeatured: p.is_highlighted,
+    stockQuantity: p.product_variants?.reduce((sum: number, v: any) => sum + (v.stock || 0), 0) || 0,
+    stockStatus: 'in_stock',
+    images: p.product_images?.map((img: any) => ({
+      url: img.url,
+      color: img.color,
+      is_primary: img.is_primary,
+    })) || [],
+    variants: p.product_variants?.map((v: any) => ({
+      id: v.id,
+      color: v.color,
+      size: v.size,
+      stock: v.stock,
+      options: { color: v.color, size: v.size },
+    })) || [],
+  };
+}
+
 export function useProducts(options: UseProductsOptions = {}): UseProductsReturn {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchProducts = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchProducts = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.PRODUCTS),
-        where('isPublished', '==', true),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
       if (options.category) {
-        q = query(q, where('categories', 'array-contains', options.category));
+        params.set('category', options.category);
       }
 
-      if (options.featured) {
-        q = query(q, where('isFeatured', '==', true));
-      }
-
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
-
-      const snapshot = await getDocs(q);
-      const newProducts = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-        publishedAt: doc.data().publishedAt?.toDate(),
-      })) as Product[];
-
-      if (isLoadMore) {
-        setProducts((prev) => [...prev, ...newProducts]);
+      if (options.status) {
+        params.set('status', options.status);
       } else {
-        setProducts(newProducts);
+        params.set('status', 'published');
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
+      const response = await fetch(`/api/products?${params.toString()}`);
+      const data = await response.json();
+
+      if (data.products) {
+        const transformed = data.products.map(transformProduct);
+        setProducts(transformed);
+        setHasMore(transformed.length >= pageLimit);
+      } else {
+        setProducts([]);
+        setHasMore(false);
+      }
+
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch products'));
+      setProducts([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.category, options.featured, pageLimit, lastDoc]);
+  }, [options.category, options.status, pageLimit]);
 
   useEffect(() => {
     fetchProducts();
-  }, [options.shopId, options.category, options.featured]);
+  }, [fetchProducts]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchProducts(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchProducts();
   };
 
@@ -110,7 +140,7 @@ export function useProduct(productId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!productId || !db) {
+    if (!productId) {
       setIsLoading(false);
       return;
     }
@@ -118,24 +148,18 @@ export function useProduct(productId: string | null) {
     const fetchProduct = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.PRODUCTS, productId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/products?id=${productId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setProduct({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-            publishedAt: data.publishedAt?.toDate(),
-          } as Product);
+        if (data && data.id) {
+          setProduct(transformProduct(data));
         } else {
           setProduct(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch product'));
+        setProduct(null);
       } finally {
         setIsLoading(false);
       }
