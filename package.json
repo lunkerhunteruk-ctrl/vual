@@ -9,13 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google-cloud/vertexai": "^1.10.0",
     "@line/liff": "^2.27.3",
     "@mux/mux-node": "^12.8.1",
     "@opentelemetry/api": "^1.9.0",
     "@stripe/stripe-js": "^8.8.0",
+    "@supabase/supabase-js": "^2.97.0",
     "firebase": "^12.9.0",
     "firebase-admin": "^13.6.1",
     "framer-motion": "^12.34.3",
+    "google-auth-library": "^10.5.0",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
     "next-intl": "^4.8.3",

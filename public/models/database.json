@@ -1,0 +1,41 @@
+{
+  "models": [
+    {
+      "id": "jp-f-18-stand-001",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-001.jpg",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-001.jpg"
+    }
+  ],
+  "ethnicities": [
+    { "id": "japanese", "labelEn": "Japanese", "labelJa": "日本人" },
+    { "id": "korean", "labelEn": "Korean", "labelJa": "韓国人" },
+    { "id": "chinese", "labelEn": "Chinese", "labelJa": "中国人" },
+    { "id": "eastern-european", "labelEn": "Eastern European", "labelJa": "東欧系白人" },
+    { "id": "western-european", "labelEn": "Western European", "labelJa": "西欧系白人" },
+    { "id": "african", "labelEn": "African", "labelJa": "アフリカ系" },
+    { "id": "latin", "labelEn": "Latin", "labelJa": "ラテン系" },
+    { "id": "middle-eastern", "labelEn": "Middle Eastern", "labelJa": "中東系" },
+    { "id": "south-asian", "labelEn": "South Asian", "labelJa": "南アジア系" },
+    { "id": "southeast-asian", "labelEn": "Southeast Asian", "labelJa": "東南アジア系" }
+  ],
+  "ageRanges": [
+    { "id": "18-24", "labelEn": "18-24", "labelJa": "18-24歳" },
+    { "id": "25-34", "labelEn": "25-34", "labelJa": "25-34歳" },
+    { "id": "35-44", "labelEn": "35-44", "labelJa": "35-44歳" },
+    { "id": "45-54", "labelEn": "45-54", "labelJa": "45-54歳" }
+  ],
+  "poses": [
+    { "id": "standing", "labelEn": "Standing", "labelJa": "スタンディング" },
+    { "id": "walking", "labelEn": "Walking", "labelJa": "ウォーキング" },
+    { "id": "sitting", "labelEn": "Sitting", "labelJa": "シッティング" },
+    { "id": "dynamic", "labelEn": "Dynamic", "labelJa": "ダイナミック" }
+  ],
+  "genders": [
+    { "id": "female", "labelEn": "Female", "labelJa": "女性" },
+    { "id": "male", "labelEn": "Male", "labelJa": "男性" }
+  ]
+}

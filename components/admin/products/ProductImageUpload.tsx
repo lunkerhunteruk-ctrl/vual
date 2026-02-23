@@ -131,11 +131,12 @@ export function ProductImageUpload({
             <span className="text-xs text-[var(--color-text-label)]">
               {images.length} {images.length === 1 ? t('imageUploaded') || 'image' : t('imagesUploaded') || 'images'}
             </span>
-            {colorOptions.length > 0 && (
-              <span className="text-xs text-[var(--color-text-label)]">
-                {t('assignColorToImage') || 'Assign color to each image'}
-              </span>
-            )}
+            <span className="text-xs text-[var(--color-text-label)]">
+              {colorOptions.length > 0
+                ? (t('assignColorToImage') || 'Assign color to each image')
+                : (t('addColorVariantsFirst') || '↓ Add color variants below first')
+              }
+            </span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -183,21 +184,31 @@ export function ProductImageUpload({
                   </button>
                 </div>
 
-                {/* Color selector */}
-                {colorOptions.length > 0 && (
-                  <div className="mt-2">
-                    <select
-                      value={imageColorMap[image.id] || ''}
-                      onChange={(e) => setImageColor(image.id, e.target.value)}
-                      className="w-full h-8 px-2 text-xs bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-sm)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
-                    >
-                      <option value="">{t('selectColor') || 'Select color'}</option>
-                      {colorOptions.map(color => (
-                        <option key={color} value={color}>{color}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
+                {/* Color selector - always show, with hint if no colors defined */}
+                <div className="mt-2" onClick={(e) => e.stopPropagation()}>
+                  <select
+                    value={imageColorMap[image.id] || ''}
+                    onChange={(e) => setImageColor(image.id, e.target.value)}
+                    onClick={(e) => e.stopPropagation()}
+                    disabled={colorOptions.length === 0}
+                    className={`w-full h-8 px-2 text-xs border rounded-[var(--radius-sm)] focus:outline-none focus:border-[var(--color-accent)] ${
+                      colorOptions.length === 0
+                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200'
+                        : 'bg-white text-[var(--color-text-body)] border-[var(--color-line)] cursor-pointer'
+                    }`}
+                  >
+                    {colorOptions.length === 0 ? (
+                      <option value="">{t('addColorInVariants') || 'バリエーションでカラーを追加'}</option>
+                    ) : (
+                      <>
+                        <option value="">{t('selectColor') || 'カラーを選択'}</option>
+                        {colorOptions.map(color => (
+                          <option key={color} value={color}>{color}</option>
+                        ))}
+                      </>
+                    )}
+                  </select>
+                </div>
               </motion.div>
             ))}
 

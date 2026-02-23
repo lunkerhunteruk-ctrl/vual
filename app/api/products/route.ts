@@ -1,28 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
 
-// Initialize Firebase Admin
-function getFirestoreAdmin() {
-  if (!getApps().length) {
-    const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-
-    // For development without service account, use application default credentials
-    if (process.env.FIREBASE_ADMIN_PRIVATE_KEY) {
-      initializeApp({
-        credential: cert({
-          projectId,
-          clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-          privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-        }),
-      });
-    } else {
-      // Fallback for environments without service account
-      initializeApp({ projectId });
-    }
-  }
-  return getFirestore();
-}
+const DEFAULT_STORE_ID = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'; // Default VUAL store
 
 // GET - List products or get single product
 export async function GET(request: NextRequest) {
@@ -30,34 +9,76 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('id');
     const category = searchParams.get('category');
+    const status = searchParams.get('status');
     const limit = parseInt(searchParams.get('limit') || '20');
 
-    const db = getFirestoreAdmin();
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      // Return mock data for development
+      return NextResponse.json({
+        products: [
+          {
+            id: 'mock-1',
+            name: 'サンプル商品',
+            category: 'apparel',
+            base_price: 5000,
+            status: 'draft',
+          },
+        ],
+        mock: true,
+      });
+    }
+
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
 
     if (productId) {
-      // Get single product
-      const doc = await db.collection('products').doc(productId).get();
-      if (!doc.exists) {
+      // Get single product with images and variants
+      const { data: product, error } = await supabase
+        .from('products')
+        .select(`
+          *,
+          product_images (*),
+          product_variants (*)
+        `)
+        .eq('id', productId)
+        .single();
+
+      if (error || !product) {
         return NextResponse.json({ error: 'Product not found' }, { status: 404 });
       }
-      return NextResponse.json({ id: doc.id, ...doc.data() });
+      return NextResponse.json(product);
     }
 
     // List products
-    let query = db.collection('products')
-      .where('isPublished', '==', true)
-      .orderBy('createdAt', 'desc')
+    let query = supabase
+      .from('products')
+      .select(`
+        *,
+        product_images (id, url, is_primary, position)
+      `)
+      .eq('store_id', DEFAULT_STORE_ID)
+      .order('created_at', { ascending: false })
       .limit(limit);
 
-    if (category) {
-      query = query.where('categories', 'array-contains', category);
+    if (status) {
+      query = query.eq('status', status);
+    } else {
+      query = query.eq('status', 'published');
     }
 
-    const snapshot = await query.get();
-    const products = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    if (category) {
+      query = query.eq('category', category);
+    }
+
+    const { data: products, error } = await query;
+
+    if (error) {
+      console.error('Query error:', error);
+      return NextResponse.json({ error: 'Failed to get products' }, { status: 500 });
+    }
 
     return NextResponse.json({ products });
   } catch (error) {
@@ -73,22 +94,96 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const db = getFirestoreAdmin();
 
-    const product = {
-      ...body,
-      stockQuantity: body.stockQuantity || 0,
-      stockStatus: body.stockQuantity > 0 ? 'in_stock' : 'out_of_stock',
-      isPublished: body.isPublished ?? false,
-      isFeatured: body.isFeatured ?? false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      // Return mock response for development
+      return NextResponse.json({
+        id: 'mock-' + Date.now(),
+        ...body,
+        message: 'Product created (mock mode - Supabase not configured)',
+        mock: true,
+      });
+    }
 
-    const docRef = await db.collection('products').add(product);
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const { images, variants, ...productData } = body;
+
+    // Insert product
+    const { data: product, error: productError } = await supabase
+      .from('products')
+      .insert({
+        store_id: DEFAULT_STORE_ID,
+        name: productData.name,
+        name_en: productData.nameEn,
+        description: productData.description,
+        description_en: productData.descriptionEn,
+        category: productData.category || 'apparel',
+        tags: productData.tags || [],
+        base_price: productData.price || 0,
+        discounted_price: productData.discountedPrice,
+        currency: productData.currency || 'jpy',
+        tax_included: productData.taxIncluded ?? true,
+        status: productData.status || 'draft',
+        is_highlighted: productData.isHighlighted || false,
+        size_specs: productData.sizeSpecs,
+      })
+      .select()
+      .single();
+
+    if (productError || !product) {
+      console.error('Product insert error:', productError);
+      return NextResponse.json(
+        { error: 'Failed to create product', details: productError?.message },
+        { status: 500 }
+      );
+    }
+
+    // Insert images if provided
+    if (images && images.length > 0) {
+      const imageInserts = images.map((img: { url: string; color: string | null }, index: number) => ({
+        product_id: product.id,
+        url: img.url,
+        color: img.color,
+        position: index,
+        is_primary: index === 0,
+      }));
+
+      const { error: imageError } = await supabase
+        .from('product_images')
+        .insert(imageInserts);
+
+      if (imageError) {
+        console.error('Image insert error:', imageError);
+      }
+    }
+
+    // Insert variants if provided
+    if (variants && variants.length > 0) {
+      const variantInserts = variants.map((v: { color: string | null; size: string | null; sku: string; stock: number; priceOverride: number | null }) => ({
+        product_id: product.id,
+        color: v.color,
+        size: v.size,
+        sku: v.sku,
+        price_override: v.priceOverride,
+        stock: v.stock || 0,
+      }));
+
+      const { error: variantError } = await supabase
+        .from('product_variants')
+        .insert(variantInserts);
+
+      if (variantError) {
+        console.error('Variant insert error:', variantError);
+      }
+    }
 
     return NextResponse.json({
-      id: docRef.id,
+      id: product.id,
       ...product,
       message: 'Product created successfully'
     });
@@ -105,36 +200,94 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, ...updates } = body;
+    const { id, images, variants, ...updates } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
     }
 
-    const db = getFirestoreAdmin();
-    const docRef = db.collection('products').doc(id);
-    const doc = await docRef.get();
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      return NextResponse.json({
+        id,
+        ...updates,
+        message: 'Product updated (mock mode)',
+        mock: true,
+      });
+    }
 
-    if (!doc.exists) {
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    // Update product
+    const { data: product, error: productError } = await supabase
+      .from('products')
+      .update({
+        name: updates.name,
+        name_en: updates.nameEn,
+        description: updates.description,
+        description_en: updates.descriptionEn,
+        category: updates.category,
+        tags: updates.tags,
+        base_price: updates.price,
+        discounted_price: updates.discountedPrice,
+        currency: updates.currency,
+        tax_included: updates.taxIncluded,
+        status: updates.status,
+        is_highlighted: updates.isHighlighted,
+        size_specs: updates.sizeSpecs,
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (productError) {
+      console.error('Product update error:', productError);
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
-    // Update stock status based on quantity
-    if (updates.stockQuantity !== undefined) {
-      updates.stockStatus = updates.stockQuantity > 10
-        ? 'in_stock'
-        : updates.stockQuantity > 0
-          ? 'low_stock'
-          : 'out_of_stock';
+    // Update images if provided
+    if (images) {
+      // Delete existing and re-insert
+      await supabase.from('product_images').delete().eq('product_id', id);
+
+      if (images.length > 0) {
+        const imageInserts = images.map((img: { url: string; color: string | null }, index: number) => ({
+          product_id: id,
+          url: img.url,
+          color: img.color,
+          position: index,
+          is_primary: index === 0,
+        }));
+
+        await supabase.from('product_images').insert(imageInserts);
+      }
     }
 
-    updates.updatedAt = new Date();
+    // Update variants if provided
+    if (variants) {
+      // Delete existing and re-insert
+      await supabase.from('product_variants').delete().eq('product_id', id);
 
-    await docRef.update(updates);
+      if (variants.length > 0) {
+        const variantInserts = variants.map((v: { color: string | null; size: string | null; sku: string; stock: number; priceOverride: number | null }) => ({
+          product_id: id,
+          color: v.color,
+          size: v.size,
+          sku: v.sku,
+          price_override: v.priceOverride,
+          stock: v.stock || 0,
+        }));
+
+        await supabase.from('product_variants').insert(variantInserts);
+      }
+    }
 
     return NextResponse.json({
       id,
-      ...updates,
+      ...product,
       message: 'Product updated successfully'
     });
   } catch (error) {
@@ -156,8 +309,26 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Product ID is required' }, { status: 400 });
     }
 
-    const db = getFirestoreAdmin();
-    await db.collection('products').doc(id).delete();
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured()) {
+      return NextResponse.json({ message: 'Product deleted (mock mode)', mock: true });
+    }
+
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    // CASCADE will handle images and variants
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Delete error:', error);
+      return NextResponse.json({ error: 'Failed to delete product' }, { status: 500 });
+    }
 
     return NextResponse.json({ message: 'Product deleted successfully' });
   } catch (error) {
