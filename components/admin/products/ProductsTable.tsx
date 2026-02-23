@@ -287,9 +287,11 @@ export function ProductsTable() {
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-1">
-                      <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
-                        <Edit2 size={14} className="text-[var(--color-text-label)]" />
-                      </button>
+                      <Link href={`/${locale}/admin/products/edit/${product.id}`}>
+                        <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
+                          <Edit2 size={14} className="text-[var(--color-text-label)]" />
+                        </button>
+                      </Link>
                       <button
                         onClick={() => handleDelete(product.id)}
                         className="p-1.5 rounded-[var(--radius-sm)] hover:bg-red-50 transition-colors"
