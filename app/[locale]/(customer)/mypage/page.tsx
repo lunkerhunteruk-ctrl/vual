@@ -15,6 +15,17 @@ export default function MyPage() {
   const { login: liffLogin, logout: liffLogout } = useLiff();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
+  const [lineBotId, setLineBotId] = useState<string | null>(null);
+
+  // Fetch store LINE bot info for friend add
+  useEffect(() => {
+    fetch('/api/stores/line')
+      .then(res => res.json())
+      .then(data => {
+        if (data.lineBotBasicId) setLineBotId(data.lineBotBasicId);
+      })
+      .catch(() => {});
+  }, []);
 
   const handleGoogleLogin = async () => {
     try {
@@ -109,17 +120,6 @@ export default function MyPage() {
       </div>
     );
   }
-
-  // Fetch store LINE bot info for friend add
-  const [lineBotId, setLineBotId] = useState<string | null>(null);
-  useEffect(() => {
-    fetch('/api/stores/line')
-      .then(res => res.json())
-      .then(data => {
-        if (data.lineBotBasicId) setLineBotId(data.lineBotBasicId);
-      })
-      .catch(() => {});
-  }, []);
 
   // Logged in view
   const menuItems = [
