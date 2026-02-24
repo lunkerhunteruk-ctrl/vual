@@ -85,14 +85,14 @@ export default function BlogDetailPage() {
       </div>
 
       {/* Cover Image */}
-      {post.coverImage && (
+      {post.featured_image && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="aspect-video bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)]"
         >
           <img
-            src={post.coverImage}
+            src={post.featured_image}
             alt={post.title}
             className="w-full h-full object-cover"
           />
@@ -120,11 +120,11 @@ export default function BlogDetailPage() {
         <div className="flex items-center gap-4 text-sm text-[var(--color-text-label)] mb-6 pb-6 border-b border-[var(--color-line)]">
           <span className="flex items-center gap-1.5">
             <Calendar size={14} />
-            {formatDate(post.publishedAt || post.createdAt)}
+            {formatDate(new Date(post.published_at || post.created_at))}
           </span>
           <span className="flex items-center gap-1.5">
             <Clock size={14} />
-            {post.readTime} min read
+            {Math.ceil((post.content?.length || 0) / 1000)} min read
           </span>
         </div>
 
@@ -148,10 +148,12 @@ export default function BlogDetailPage() {
         </div>
 
         {/* Content */}
-        <div
-          className="prose prose-sm max-w-none text-[var(--color-text-body)]"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        {post.content && (
+          <div
+            className="prose prose-sm max-w-none text-[var(--color-text-body)]"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        )}
       </motion.article>
 
       {/* Navigation */}

@@ -1,15 +1,27 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage, COLLECTIONS } from '@/lib/firebase';
-import type { MediaItem } from '@/lib/types';
 
 type MediaType = 'image' | 'video';
+type UsageTag = 'product' | 'lp' | 'blog' | 'video' | 'other';
+
+interface MediaItem {
+  id: string;
+  product_id?: string;
+  url: string;
+  name: string;
+  type: MediaType;
+  usage_tag?: UsageTag;
+  mime_type?: string;
+  size?: number;
+  width?: number;
+  height?: number;
+  created_at: string;
+  updated_at: string;
+}
 
 interface UseMediaOptions {
-  shopId?: string;
   productId?: string;
   type?: MediaType;
+  usageTag?: UsageTag;
   limit?: number;
 }
 
@@ -20,7 +32,7 @@ interface UseMediaReturn {
   hasMore: boolean;
   loadMore: () => Promise<void>;
   refresh: () => Promise<void>;
-  uploadMedia: (file: File, metadata?: { productId?: string; productName?: string }) => Promise<MediaItem>;
+  uploadMedia: (file: File, metadata?: { productId?: string; usageTag?: UsageTag }) => Promise<MediaItem>;
   updateMedia: (id: string, data: Partial<MediaItem>) => Promise<void>;
   deleteMedia: (id: string) => Promise<void>;
 }
@@ -29,171 +41,134 @@ export function useMedia(options: UseMediaOptions = {}): UseMediaReturn {
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 30;
 
-  const fetchMedia = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchMedia = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.MEDIA),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
       if (options.productId) {
-        q = query(q, where('productId', '==', options.productId));
+        params.set('productId', options.productId);
       }
 
       if (options.type) {
-        q = query(q, where('type', '==', options.type));
+        params.set('type', options.type);
       }
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
+      if (options.usageTag) {
+        params.set('usage_tag', options.usageTag);
       }
 
-      const snapshot = await getDocs(q);
-      const newMedia = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-      })) as MediaItem[];
+      const response = await fetch(`/api/media?${params.toString()}`);
+      const data = await response.json();
 
-      if (isLoadMore) {
-        setMedia((prev) => [...prev, ...newMedia]);
+      if (data.media) {
+        setMedia(data.media);
+        setHasMore(data.media.length >= pageLimit);
       } else {
-        setMedia(newMedia);
+        setMedia([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch media'));
+      setMedia([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.productId, options.type, pageLimit, lastDoc]);
+  }, [options.productId, options.type, options.usageTag, pageLimit]);
 
   useEffect(() => {
     fetchMedia();
-  }, [options.shopId, options.productId, options.type]);
+  }, [fetchMedia]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchMedia(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchMedia();
   };
 
-  const uploadMedia = async (file: File, metadata?: { productId?: string; productName?: string }): Promise<MediaItem> => {
-    if (!db || !storage) throw new Error('Firebase not initialized');
-    if (!options.shopId) throw new Error('Shop ID is required for upload');
-
-    // Determine media type
+  const uploadMedia = async (file: File, metadata?: { productId?: string; usageTag?: UsageTag }): Promise<MediaItem> => {
     const type: MediaType = file.type.startsWith('video/') ? 'video' : 'image';
 
-    // Generate unique filename
-    const timestamp = Date.now();
-    const filename = `${timestamp}-${file.name}`;
-    const storagePath = `shops/${options.shopId}/media/${filename}`;
+    // 1. Upload file to Supabase Storage via /api/upload
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'media');
 
-    // Upload to storage
-    const storageRef = ref(storage, storagePath);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
+    const uploadRes = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
 
-    // Get image dimensions if it's an image
-    let width: number | undefined;
-    let height: number | undefined;
-    if (type === 'image') {
-      const dimensions = await getImageDimensions(file);
-      width = dimensions.width;
-      height = dimensions.height;
+    if (!uploadRes.ok) {
+      throw new Error('Failed to upload file');
     }
 
-    // Create database record
-    const now = new Date();
-    const mediaData = {
-      shopId: options.shopId,
-      url,
-      name: file.name,
-      type,
-      mimeType: file.type,
-      size: file.size,
-      width,
-      height,
-      productId: metadata?.productId,
-      productName: metadata?.productName,
-      createdAt: now,
-      updatedAt: now,
-    };
+    const uploadData = await uploadRes.json();
+    if (!uploadData.url || uploadData.mock) {
+      throw new Error('Upload returned no URL');
+    }
 
-    const docRef = await addDoc(collection(db, COLLECTIONS.MEDIA), mediaData);
+    // 2. Create database record via /api/media
+    const response = await fetch('/api/media', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: file.name,
+        type,
+        mime_type: file.type,
+        size: file.size,
+        url: uploadData.url,
+        product_id: metadata?.productId || null,
+        usage_tag: metadata?.usageTag || 'other',
+      }),
+    });
 
-    const newItem: MediaItem = {
-      id: docRef.id,
-      ...mediaData,
-    };
+    if (!response.ok) {
+      throw new Error('Failed to create media record');
+    }
 
-    setMedia((prev) => [newItem, ...prev]);
-
-    return newItem;
+    const result = await response.json();
+    setMedia((prev) => [result, ...prev]);
+    return result;
   };
 
   const updateMedia = async (id: string, data: Partial<MediaItem>): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const docRef = doc(db, COLLECTIONS.MEDIA, id);
-    await updateDoc(docRef, {
-      ...data,
-      updatedAt: new Date(),
+    const response = await fetch('/api/media', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...data }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to update media');
+    }
 
     setMedia((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, ...data, updatedAt: new Date() } : item
+        item.id === id ? { ...item, ...data } : item
       )
     );
   };
 
   const deleteMedia = async (id: string): Promise<void> => {
-    if (!db || !storage) throw new Error('Firebase not initialized');
+    const response = await fetch(`/api/media?id=${id}`, {
+      method: 'DELETE',
+    });
 
-    // Find the media item to get its URL
-    const item = media.find(m => m.id === id);
-    if (item) {
-      try {
-        // Delete from storage
-        const storageRef = ref(storage, item.url);
-        await deleteObject(storageRef);
-      } catch (err) {
-        // Storage deletion might fail if URL is different format, continue anyway
-        console.warn('Failed to delete from storage:', err);
-      }
+    if (!response.ok) {
+      throw new Error('Failed to delete media');
     }
 
-    // Delete from database
-    await deleteDoc(doc(db, COLLECTIONS.MEDIA, id));
     setMedia((prev) => prev.filter((item) => item.id !== id));
   };
 
@@ -206,7 +181,7 @@ export function useMediaItem(mediaId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!mediaId || !db) {
+    if (!mediaId) {
       setIsLoading(false);
       return;
     }
@@ -214,23 +189,18 @@ export function useMediaItem(mediaId: string | null) {
     const fetchItem = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.MEDIA, mediaId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/media?id=${mediaId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setItem({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-          } as MediaItem);
+        if (data && data.id) {
+          setItem(data);
         } else {
           setItem(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch media item'));
+        setItem(null);
       } finally {
         setIsLoading(false);
       }
@@ -240,16 +210,4 @@ export function useMediaItem(mediaId: string | null) {
   }, [mediaId]);
 
   return { item, isLoading, error };
-}
-
-// Helper function to get image dimensions
-function getImageDimensions(file: File): Promise<{ width: number; height: number }> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => {
-      resolve({ width: img.width, height: img.height });
-    };
-    img.onerror = reject;
-    img.src = URL.createObjectURL(file);
-  });
 }

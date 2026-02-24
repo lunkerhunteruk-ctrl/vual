@@ -7,11 +7,13 @@ import { Plus, MoreHorizontal, Package, CheckCircle, AlertTriangle, XCircle } fr
 import { Button } from '@/components/ui';
 import { StatCard } from '@/components/admin/dashboard';
 import { ProductsTable } from '@/components/admin/products';
+import { CategoriesGrid } from '@/components/admin/categories';
 
 export default function ProductsListPage() {
   const t = useTranslations('admin.products');
   const locale = useLocale();
   const [stats, setStats] = useState({ total: 0, published: 0, draft: 0 });
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
 
   // Fetch stats from API
   useEffect(() => {
@@ -72,8 +74,16 @@ export default function ProductsListPage() {
         />
       </div>
 
+      {/* Categories Filter */}
+      <CategoriesGrid
+        selectedCategory={selectedCategory}
+        onCategorySelect={(path) =>
+          setSelectedCategory(prev => prev === path ? undefined : path)
+        }
+      />
+
       {/* Products Table */}
-      <ProductsTable />
+      <ProductsTable categoryFilter={selectedCategory} />
     </div>
   );
 }

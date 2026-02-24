@@ -1,12 +1,22 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Coupon } from '@/lib/types';
+
+interface Coupon {
+  id: string;
+  code: string;
+  type: 'percentage' | 'fixed';
+  value: number;
+  min_purchase?: number;
+  max_uses?: number;
+  used_count: number;
+  starts_at?: string;
+  expires_at?: string;
+  is_active: boolean;
+  created_at: string;
+}
 
 type CouponStatus = 'active' | 'expired' | 'scheduled';
 
 interface UseCouponsOptions {
-  shopId?: string;
   status?: CouponStatus;
   limit?: number;
 }
@@ -18,132 +28,115 @@ interface UseCouponsReturn {
   hasMore: boolean;
   loadMore: () => Promise<void>;
   refresh: () => Promise<void>;
-  createCoupon: (data: Omit<Coupon, 'id' | 'createdAt' | 'updatedAt' | 'usageCount'>) => Promise<string>;
+  createCoupon: (data: Omit<Coupon, 'id' | 'created_at' | 'used_count'>) => Promise<string>;
   updateCoupon: (id: string, data: Partial<Coupon>) => Promise<void>;
   deleteCoupon: (id: string) => Promise<void>;
 }
+
+const getStatus = (coupon: Coupon): CouponStatus => {
+  const now = new Date();
+  if (coupon.starts_at && new Date(coupon.starts_at) > now) return 'scheduled';
+  if ((coupon.expires_at && new Date(coupon.expires_at) < now) || !coupon.is_active) return 'expired';
+  return 'active';
+};
 
 export function useCoupons(options: UseCouponsOptions = {}): UseCouponsReturn {
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const getStatus = (coupon: Coupon): CouponStatus => {
-    const now = new Date();
-    if (coupon.startsAt > now) return 'scheduled';
-    if (coupon.expiresAt < now || !coupon.isActive) return 'expired';
-    return 'active';
-  };
-
-  const fetchCoupons = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchCoupons = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.COUPONS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const response = await fetch(`/api/coupons?${params.toString()}`);
+      const data = await response.json();
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
+      if (data.coupons) {
+        let filteredCoupons = data.coupons;
 
-      const snapshot = await getDocs(q);
-      let newCoupons = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        startsAt: doc.data().startsAt?.toDate(),
-        expiresAt: doc.data().expiresAt?.toDate(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-      })) as Coupon[];
+        // Filter by status on client side
+        if (options.status) {
+          filteredCoupons = filteredCoupons.filter((c: Coupon) => getStatus(c) === options.status);
+        }
 
-      // Filter by status on client side
-      if (options.status) {
-        newCoupons = newCoupons.filter(c => getStatus(c) === options.status);
-      }
-
-      if (isLoadMore) {
-        setCoupons((prev) => [...prev, ...newCoupons]);
+        setCoupons(filteredCoupons);
+        setHasMore(data.coupons.length >= pageLimit);
       } else {
-        setCoupons(newCoupons);
+        setCoupons([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch coupons'));
+      setCoupons([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.status, pageLimit, lastDoc]);
+  }, [options.status, pageLimit]);
 
   useEffect(() => {
     fetchCoupons();
-  }, [options.shopId, options.status]);
+  }, [fetchCoupons]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchCoupons(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchCoupons();
   };
 
-  const createCoupon = async (data: Omit<Coupon, 'id' | 'createdAt' | 'updatedAt' | 'usageCount'>): Promise<string> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const now = new Date();
-    const docRef = await addDoc(collection(db, COLLECTIONS.COUPONS), {
-      ...data,
-      usageCount: 0,
-      createdAt: now,
-      updatedAt: now,
+  const createCoupon = async (data: Omit<Coupon, 'id' | 'created_at' | 'used_count'>): Promise<string> => {
+    const response = await fetch('/api/coupons', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
 
+    if (!response.ok) {
+      throw new Error('Failed to create coupon');
+    }
+
+    const result = await response.json();
     await refresh();
-    return docRef.id;
+    return result.id;
   };
 
   const updateCoupon = async (id: string, data: Partial<Coupon>): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const docRef = doc(db, COLLECTIONS.COUPONS, id);
-    await updateDoc(docRef, {
-      ...data,
-      updatedAt: new Date(),
+    const response = await fetch('/api/coupons', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...data }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to update coupon');
+    }
 
     setCoupons((prev) =>
       prev.map((coupon) =>
-        coupon.id === id ? { ...coupon, ...data, updatedAt: new Date() } : coupon
+        coupon.id === id ? { ...coupon, ...data } : coupon
       )
     );
   };
 
   const deleteCoupon = async (id: string): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
+    const response = await fetch(`/api/coupons?id=${id}`, {
+      method: 'DELETE',
+    });
 
-    await deleteDoc(doc(db, COLLECTIONS.COUPONS, id));
+    if (!response.ok) {
+      throw new Error('Failed to delete coupon');
+    }
+
     setCoupons((prev) => prev.filter((coupon) => coupon.id !== id));
   };
 
@@ -156,7 +149,7 @@ export function useCoupon(couponId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!couponId || !db) {
+    if (!couponId) {
       setIsLoading(false);
       return;
     }
@@ -164,25 +157,18 @@ export function useCoupon(couponId: string | null) {
     const fetchCoupon = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.COUPONS, couponId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/coupons?id=${couponId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setCoupon({
-            id: docSnap.id,
-            ...data,
-            startsAt: data.startsAt?.toDate(),
-            expiresAt: data.expiresAt?.toDate(),
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-          } as Coupon);
+        if (data && data.id) {
+          setCoupon(data);
         } else {
           setCoupon(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch coupon'));
+        setCoupon(null);
       } finally {
         setIsLoading(false);
       }

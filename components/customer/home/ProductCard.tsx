@@ -4,15 +4,15 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
-import { useState } from 'react';
+import { useFavoritesStore } from '@/lib/store/favorites';
 
 interface ProductCardProps {
   id: string;
   name: string;
   brand: string;
   price: string;
+  numericPrice?: number;
   image?: string;
-  isFavorite?: boolean;
 }
 
 export function ProductCard({
@@ -20,16 +20,24 @@ export function ProductCard({
   name,
   brand,
   price,
+  numericPrice,
   image,
-  isFavorite = false,
 }: ProductCardProps) {
   const locale = useLocale();
-  const [favorite, setFavorite] = useState(isFavorite);
+  const favToggle = useFavoritesStore((s) => s.toggle);
+  const favCheck = useFavoritesStore((s) => s.isFavorite);
+  const favorite = favCheck(id);
 
   const toggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setFavorite(!favorite);
+    favToggle({
+      productId: id,
+      name,
+      brand,
+      price: numericPrice || 0,
+      image: image || '',
+    });
   };
 
   return (

@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User, Customer } from '../types';
 
+type AuthMethod = 'line' | 'google' | null;
+
 interface AuthStore {
   // Admin auth (Firebase)
   user: User | null;
@@ -12,10 +14,11 @@ interface AuthStore {
   setError: (error: string | null) => void;
   signOut: () => void;
 
-  // Customer auth (LINE LIFF)
+  // Customer auth (LINE LIFF or Google)
   customer: Customer | null;
   isCustomerLoading: boolean;
-  setCustomer: (customer: Customer | null) => void;
+  authMethod: AuthMethod;
+  setCustomer: (customer: Customer | null, method?: AuthMethod) => void;
   setCustomerLoading: (loading: boolean) => void;
 }
 
@@ -29,12 +32,13 @@ export const useAuthStore = create<AuthStore>()(
       setUser: (user) => set({ user, isLoading: false, error: null }),
       setLoading: (isLoading) => set({ isLoading }),
       setError: (error) => set({ error, isLoading: false }),
-      signOut: () => set({ user: null, customer: null, error: null }),
+      signOut: () => set({ user: null, customer: null, authMethod: null, error: null }),
 
       // Customer auth
       customer: null,
       isCustomerLoading: true,
-      setCustomer: (customer) => set({ customer, isCustomerLoading: false }),
+      authMethod: null,
+      setCustomer: (customer, method) => set({ customer, isCustomerLoading: false, authMethod: method ?? (customer ? 'line' : null) }),
       setCustomerLoading: (isCustomerLoading) => set({ isCustomerLoading }),
     }),
     {

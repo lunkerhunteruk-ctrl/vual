@@ -1,10 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ShoppingBag, Lock } from 'lucide-react';
+import { X, ShoppingBag, Lock, Tag, Loader2, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { CartItem } from '@/components/customer/cart';
 import { useCartStore } from '@/lib/store/cart';
@@ -15,7 +16,11 @@ export default function CartPage() {
   const t = useTranslations('customer.cart');
 
   // Use real cart store instead of mock data
-  const { items: cartItems, total, updateQuantity, removeItem } = useCartStore();
+  const { items: cartItems, subtotal, discount, couponCode, total, updateQuantity, removeItem, applyCoupon, removeCoupon } = useCartStore();
+
+  const [couponInput, setCouponInput] = useState('');
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponError, setCouponError] = useState<string | null>(null);
 
   const handleUpdateQuantity = (productId: string, quantity: number, variantId?: string) => {
     updateQuantity(productId, quantity, variantId);
@@ -81,6 +86,78 @@ export default function CartPage() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Coupon & Summary */}
+      {cartItems.length > 0 && (
+        <div className="px-4 mt-4 space-y-4">
+          {/* Coupon Input */}
+          {couponCode ? (
+            <div className="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-200 rounded-[var(--radius-md)]">
+              <div className="flex items-center gap-2">
+                <CheckCircle size={16} className="text-emerald-600" />
+                <span className="text-sm font-medium text-emerald-700">{couponCode}</span>
+                <span className="text-xs text-emerald-600">
+                  (-{discount > 0 ? `$${discount.toFixed(2)}` : ''})
+                </span>
+              </div>
+              <button
+                onClick={() => { removeCoupon(); setCouponInput(''); setCouponError(null); }}
+                className="text-xs text-emerald-600 hover:text-emerald-800"
+              >
+                {locale === 'ja' ? '削除' : 'Remove'}
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <Tag size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text-placeholder)]" />
+                  <input
+                    type="text"
+                    value={couponInput}
+                    onChange={(e) => { setCouponInput(e.target.value.toUpperCase()); setCouponError(null); }}
+                    placeholder={locale === 'ja' ? 'クーポンコード' : 'Coupon code'}
+                    className="w-full h-10 pl-9 pr-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)] uppercase"
+                  />
+                </div>
+                <button
+                  onClick={async () => {
+                    if (!couponInput.trim()) return;
+                    setCouponLoading(true);
+                    setCouponError(null);
+                    const ok = await applyCoupon(couponInput.trim());
+                    if (!ok) {
+                      setCouponError(locale === 'ja' ? '無効なクーポンコードです' : 'Invalid coupon code');
+                    }
+                    setCouponLoading(false);
+                  }}
+                  disabled={couponLoading || !couponInput.trim()}
+                  className="h-10 px-4 text-sm font-medium text-[var(--color-accent)] border border-[var(--color-accent)] rounded-[var(--radius-md)] hover:bg-[var(--color-accent)]/5 transition-colors disabled:opacity-50"
+                >
+                  {couponLoading ? <Loader2 size={14} className="animate-spin" /> : locale === 'ja' ? '適用' : 'Apply'}
+                </button>
+              </div>
+              {couponError && (
+                <p className="text-xs text-red-500 mt-1.5">{couponError}</p>
+              )}
+            </div>
+          )}
+
+          {/* Order Summary */}
+          <div className="space-y-2 py-3 border-t border-[var(--color-line)]">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-[var(--color-text-body)]">{locale === 'ja' ? '小計' : 'Subtotal'}</span>
+              <span className="text-[var(--color-text-body)]">${subtotal.toFixed(2)}</span>
+            </div>
+            {discount > 0 && (
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-[var(--color-text-body)]">{locale === 'ja' ? '割引' : 'Discount'}</span>
+                <span className="text-emerald-600">-${discount.toFixed(2)}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Fixed Bottom */}
       {cartItems.length > 0 && (

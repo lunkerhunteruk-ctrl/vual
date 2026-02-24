@@ -1,101 +1,21 @@
 import { useState, useEffect } from 'react';
-import { collection, query, where, limit, getDocs } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-
-/**
- * Generic hook to check if a collection has any documents matching criteria
- */
-function useHasDocuments(
-  collectionName: string,
-  whereField?: string,
-  whereValue?: unknown
-) {
-  const [hasDocuments, setHasDocuments] = useState<boolean | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const check = async () => {
-      if (!db) {
-        setHasDocuments(false);
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        let q = query(collection(db, collectionName), limit(1));
-
-        if (whereField && whereValue !== undefined) {
-          q = query(q, where(whereField, '==', whereValue));
-        }
-
-        const snapshot = await getDocs(q);
-        setHasDocuments(snapshot.docs.length > 0);
-      } catch (err) {
-        console.error(`Failed to check ${collectionName}:`, err);
-        setHasDocuments(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    check();
-  }, [collectionName, whereField, whereValue]);
-
-  return { hasDocuments, isLoading };
-}
 
 /**
  * Check if there are any published products
  */
 export function useHasProducts() {
-  const { hasDocuments, isLoading } = useHasDocuments(
-    COLLECTIONS.PRODUCTS,
-    'isPublished',
-    true
-  );
-  return { hasProducts: hasDocuments, isLoading };
-}
-
-/**
- * Check if there are any active collections
- */
-export function useHasCollections() {
-  const { hasDocuments, isLoading } = useHasDocuments(
-    COLLECTIONS.COLLECTIONS,
-    'isActive',
-    true
-  );
-  return { hasCollections: hasDocuments, isLoading };
-}
-
-/**
- * Check if there are any live or scheduled streams
- */
-export function useHasLiveStreams() {
-  const [hasStreams, setHasStreams] = useState<boolean | null>(null);
+  const [hasProducts, setHasProducts] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const check = async () => {
-      if (!db) {
-        setHasStreams(false);
-        setIsLoading(false);
-        return;
-      }
-
       try {
-        // Check for live or scheduled streams
-        const q = query(
-          collection(db, COLLECTIONS.STREAMS),
-          where('status', 'in', ['live', 'scheduled']),
-          limit(1)
-        );
-
-        const snapshot = await getDocs(q);
-        setHasStreams(snapshot.docs.length > 0);
+        const response = await fetch('/api/products?status=published&limit=1');
+        const data = await response.json();
+        setHasProducts(data.products && data.products.length > 0);
       } catch (err) {
-        console.error('Failed to check streams:', err);
-        setHasStreams(false);
+        console.error('Failed to check products:', err);
+        setHasProducts(false);
       } finally {
         setIsLoading(false);
       }
@@ -104,19 +24,31 @@ export function useHasLiveStreams() {
     check();
   }, []);
 
-  return { hasStreams, isLoading };
+  return { hasProducts, isLoading };
+}
+
+/**
+ * Check if there are any active collections
+ */
+export function useHasCollections() {
+  // Collections not implemented in Supabase yet, return false
+  return { hasCollections: false, isLoading: false };
+}
+
+/**
+ * Check if there are any live or scheduled streams
+ */
+export function useHasLiveStreams() {
+  // Streams not implemented in Supabase yet, return false
+  return { hasStreams: false, isLoading: false };
 }
 
 /**
  * Check if there are any active brands
  */
 export function useHasBrands() {
-  const { hasDocuments, isLoading } = useHasDocuments(
-    COLLECTIONS.BRANDS,
-    'isActive',
-    true
-  );
-  return { hasBrands: hasDocuments, isLoading };
+  // Brands not implemented in Supabase yet, return false
+  return { hasBrands: false, isLoading: false };
 }
 
 /**
@@ -127,7 +59,7 @@ export function useHasReviews(productId: string | null) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!productId || !db) {
+    if (!productId) {
       setHasReviews(false);
       setIsLoading(false);
       return;
@@ -135,15 +67,9 @@ export function useHasReviews(productId: string | null) {
 
     const check = async () => {
       try {
-        const q = query(
-          collection(db, COLLECTIONS.REVIEWS),
-          where('productId', '==', productId),
-          where('status', '==', 'approved'),
-          limit(1)
-        );
-
-        const snapshot = await getDocs(q);
-        setHasReviews(snapshot.docs.length > 0);
+        const response = await fetch(`/api/reviews?productId=${productId}&status=approved&limit=1`);
+        const data = await response.json();
+        setHasReviews(data.reviews && data.reviews.length > 0);
       } catch (err) {
         console.error('Failed to check reviews:', err);
         setHasReviews(false);

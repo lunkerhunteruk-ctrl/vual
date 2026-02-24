@@ -3,7 +3,7 @@ import { generateVTON, type VTONRequest } from '@/lib/ai/vertex-vton';
 
 export async function POST(request: NextRequest) {
   try {
-    const body: VTONRequest = await request.json();
+    const body = await request.json();
 
     if (!body.personImage) {
       return NextResponse.json(
@@ -19,7 +19,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await generateVTON(body);
+    // Images should be base64 from client-side conversion
+    if (!body.personImage.startsWith('data:') || !body.garmentImage.startsWith('data:')) {
+      return NextResponse.json(
+        { error: 'Images must be base64 encoded' },
+        { status: 400 }
+      );
+    }
+
+    const vtonRequest: VTONRequest = {
+      personImage: body.personImage,
+      garmentImage: body.garmentImage,
+      category: body.category || 'upper_body',
+      mode: body.mode,
+    };
+
+    const result = await generateVTON(vtonRequest);
 
     return NextResponse.json({
       success: true,
@@ -30,20 +45,19 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('VTON error:', error);
 
-    // Return placeholder for development
-    if (process.env.NODE_ENV === 'development') {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
+    // Check if Google Cloud is configured
+    if (errorMessage.includes('GOOGLE_CLOUD_PROJECT_ID')) {
       return NextResponse.json({
-        success: true,
-        resultImage: '/placeholder-vton-result.jpg',
-        confidence: 0.85,
-        processingTime: 2000,
-        mock: true,
+        success: false,
+        error: 'Google Cloud is not configured. Please set GOOGLE_CLOUD_PROJECT_ID environment variable.',
       });
     }
 
-    return NextResponse.json(
-      { error: 'Failed to generate virtual try-on' },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: false,
+      error: `Generation failed: ${errorMessage}`,
+    });
   }
 }

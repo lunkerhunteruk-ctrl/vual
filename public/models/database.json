@@ -8,6 +8,69 @@
       "pose": "standing",
       "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-001.jpg",
       "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-001.jpg"
+    },
+    {
+      "id": "jp-f-18-stand-002",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-002.jpg",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-002.jpg"
+    },
+    {
+      "id": "jp-f-18-stand-003",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-003.jpg",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-003.jpg"
+    },
+    {
+      "id": "jp-f-18-stand-004",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-004.jpg",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-004.jpg"
+    },
+    {
+      "id": "ee-f-18-stand-001",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "eastern-european",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-001.jpg",
+      "fullImage": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-001.jpg"
+    },
+    {
+      "id": "ee-f-18-stand-002",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "eastern-european",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-002.jpg",
+      "fullImage": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-002.jpg"
+    },
+    {
+      "id": "ee-f-18-stand-003",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "eastern-european",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-003.jpg",
+      "fullImage": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-003.jpg"
+    },
+    {
+      "id": "ee-f-18-stand-004",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "eastern-european",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-004.jpg",
+      "fullImage": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-004.jpg"
     }
   ],
   "ethnicities": [

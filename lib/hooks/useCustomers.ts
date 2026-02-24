@@ -1,13 +1,20 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Customer } from '@/lib/types';
+
+interface Customer {
+  id: string;
+  email: string;
+  name: string;
+  phone?: string;
+  line_user_id?: string;
+  total_orders: number;
+  total_spent: number;
+  created_at: string;
+  updated_at: string;
+}
 
 interface UseCustomersOptions {
-  shopId?: string;
-  isVip?: boolean;
+  search?: string;
   limit?: number;
-  searchQuery?: string;
 }
 
 interface UseCustomersReturn {
@@ -23,72 +30,50 @@ export function useCustomers(options: UseCustomersOptions = {}): UseCustomersRet
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchCustomers = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchCustomers = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.CUSTOMERS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
-      if (options.isVip !== undefined) {
-        q = query(q, where('isVip', '==', options.isVip));
+      if (options.search) {
+        params.set('search', options.search);
       }
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
+      const response = await fetch(`/api/customers?${params.toString()}`);
+      const data = await response.json();
 
-      const snapshot = await getDocs(q);
-      const newCustomers = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-        lastPurchaseAt: doc.data().lastPurchaseAt?.toDate(),
-      })) as Customer[];
-
-      if (isLoadMore) {
-        setCustomers((prev) => [...prev, ...newCustomers]);
+      if (data.customers) {
+        setCustomers(data.customers);
+        setHasMore(data.customers.length >= pageLimit);
       } else {
-        setCustomers(newCustomers);
+        setCustomers([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch customers'));
+      setCustomers([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.isVip, pageLimit, lastDoc]);
+  }, [options.search, pageLimit]);
 
   useEffect(() => {
     fetchCustomers();
-  }, [options.isVip]);
+  }, [fetchCustomers]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchCustomers(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchCustomers();
   };
 
@@ -101,7 +86,7 @@ export function useCustomer(customerId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!customerId || !db) {
+    if (!customerId) {
       setIsLoading(false);
       return;
     }
@@ -109,24 +94,18 @@ export function useCustomer(customerId: string | null) {
     const fetchCustomer = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.CUSTOMERS, customerId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/customers?id=${customerId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setCustomer({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-            lastPurchaseAt: data.lastPurchaseAt?.toDate(),
-          } as Customer);
+        if (data && data.id) {
+          setCustomer(data);
         } else {
           setCustomer(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch customer'));
+        setCustomer(null);
       } finally {
         setIsLoading(false);
       }

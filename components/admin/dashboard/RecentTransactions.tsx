@@ -30,12 +30,11 @@ export function RecentTransactions() {
   // Fetch recent orders (which contain payment info)
   const { orders, isLoading } = useOrders({ limit: 5 });
 
-  const formatDate = (date: Date | undefined) => {
-    if (!date) return '-';
+  const formatDate = (dateStr: string) => {
     return new Intl.DateTimeFormat('en-US', {
       day: '2-digit',
       month: 'short',
-    }).format(date);
+    }).format(new Date(dateStr));
   };
 
   const formatCurrency = (amount: number, currency: string = 'USD') => {
@@ -101,23 +100,23 @@ export function RecentTransactions() {
                     {index + 1}.
                   </td>
                   <td className="py-3 px-2 text-sm text-[var(--color-title-active)]">
-                    #{order.orderNumber || order.id.slice(-4).toUpperCase()}
+                    #{order.id.slice(-4).toUpperCase()}
                   </td>
                   <td className="py-3 px-2 text-sm text-[var(--color-text-body)]">
-                    {formatDate(order.createdAt)}
+                    {formatDate(order.created_at)}
                   </td>
                   <td className="py-3 px-2">
                     <span
                       className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${
-                        statusColors[order.paymentStatus] || 'bg-gray-50 text-gray-700'
+                        statusColors[order.status] || 'bg-gray-50 text-gray-700'
                       }`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
-                          statusDotColors[order.paymentStatus] || 'bg-gray-500'
+                          statusDotColors[order.status] || 'bg-gray-500'
                         }`}
                       />
-                      {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                      {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                     </span>
                   </td>
                   <td className="py-3 px-2 text-sm text-[var(--color-title-active)] text-right font-medium">

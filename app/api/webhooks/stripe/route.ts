@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
+import { createServerClient } from '@/lib/supabase';
 
 // Initialize Firebase Admin
 function getFirestoreAdmin() {
@@ -74,7 +75,30 @@ export async function POST(request: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutComplete(session);
+        // Route to credit pack handler or product order handler
+        if (session.metadata?.packSlug) {
+          await handleCreditPackPurchase(session);
+        } else {
+          await handleCheckoutComplete(session);
+        }
+        break;
+      }
+
+      case 'invoice.paid': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handleSubscriptionRenewal(invoice);
+        break;
+      }
+
+      case 'customer.subscription.deleted': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionCanceled(subscription);
+        break;
+      }
+
+      case 'customer.subscription.updated': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionUpdated(subscription);
         break;
       }
 
@@ -260,4 +284,252 @@ async function handleRefund(charge: Stripe.Charge) {
 
   await batch.commit();
   console.log('Inventory restored for refund:', inventoryUpdates);
+}
+
+// ============================================================
+// Credit Pack Purchase Handler
+// ============================================================
+async function handleCreditPackPurchase(session: Stripe.Checkout.Session) {
+  const supabase = createServerClient();
+  if (!supabase) {
+    console.error('Supabase not configured for credit pack purchase');
+    return;
+  }
+
+  const { packSlug, credits: creditsStr, target, storeId, customerId, lineUserId } = session.metadata || {};
+  const credits = parseInt(creditsStr || '0');
+
+  console.log('Credit pack purchase:', { packSlug, credits, target, storeId, customerId, lineUserId });
+
+  if (!credits || !target) {
+    console.error('Invalid credit pack metadata:', session.metadata);
+    return;
+  }
+
+  if (target === 'store' && storeId) {
+    // B2B: Add credits to store
+    const { data: existing } = await supabase
+      .from('store_credits')
+      .select('balance, total_purchased')
+      .eq('store_id', storeId)
+      .single();
+
+    if (existing) {
+      const newBalance = existing.balance + credits;
+      await supabase
+        .from('store_credits')
+        .update({
+          balance: newBalance,
+          total_purchased: existing.total_purchased + credits,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('store_id', storeId);
+
+      await supabase.from('store_credit_transactions').insert({
+        store_id: storeId,
+        type: 'purchase',
+        amount: credits,
+        balance_after: newBalance,
+        description: `${packSlug} パック購入 (${credits}クレジット)`,
+        stripe_session_id: session.id,
+      });
+    } else {
+      await supabase.from('store_credits').insert({
+        store_id: storeId,
+        balance: credits,
+        total_purchased: credits,
+      });
+
+      await supabase.from('store_credit_transactions').insert({
+        store_id: storeId,
+        type: 'purchase',
+        amount: credits,
+        balance_after: credits,
+        description: `${packSlug} パック購入 (${credits}クレジット)`,
+        stripe_session_id: session.id,
+      });
+    }
+
+    console.log(`Store ${storeId}: +${credits} credits`);
+  } else if (target === 'consumer') {
+    // B2C: Add paid credits to consumer
+    const query = customerId
+      ? supabase.from('consumer_credits').select('id, paid_credits').eq('customer_id', customerId)
+      : supabase.from('consumer_credits').select('id, paid_credits').eq('line_user_id', lineUserId!);
+
+    const { data: cc } = await query.single();
+
+    if (cc) {
+      await supabase
+        .from('consumer_credits')
+        .update({
+          paid_credits: cc.paid_credits + credits,
+          stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer?.id || null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', cc.id);
+
+      await supabase.from('consumer_credit_transactions').insert({
+        consumer_credit_id: cc.id,
+        type: 'paid_credit_purchase',
+        amount: credits,
+        description: `${packSlug} 購入 (${credits}クレジット)`,
+        stripe_session_id: session.id,
+      });
+    } else {
+      // Create consumer_credits record
+      const insertData: Record<string, unknown> = {
+        paid_credits: credits,
+        stripe_customer_id: typeof session.customer === 'string' ? session.customer : null,
+      };
+      if (customerId) insertData.customer_id = customerId;
+      if (lineUserId) insertData.line_user_id = lineUserId;
+
+      const { data: newCc } = await supabase
+        .from('consumer_credits')
+        .insert(insertData)
+        .select('id')
+        .single();
+
+      if (newCc) {
+        await supabase.from('consumer_credit_transactions').insert({
+          consumer_credit_id: newCc.id,
+          type: 'paid_credit_purchase',
+          amount: credits,
+          description: `${packSlug} 購入 (${credits}クレジット)`,
+          stripe_session_id: session.id,
+        });
+      }
+    }
+
+    console.log(`Consumer: +${credits} paid credits`);
+  }
+}
+
+// ============================================================
+// Subscription Renewal Handler (invoice.paid)
+// ============================================================
+async function handleSubscriptionRenewal(invoice: Stripe.Invoice) {
+  const supabase = createServerClient();
+  if (!supabase) return;
+
+  // Extract subscription ID from invoice (may be string or object depending on expansion)
+  const sub = (invoice as unknown as Record<string, unknown>).subscription;
+  const subscriptionId = typeof sub === 'string' ? sub : (sub as { id?: string })?.id;
+
+  if (!subscriptionId) return;
+
+  // Skip first invoice (handled by checkout.session.completed)
+  if (invoice.billing_reason === 'subscription_create') {
+    // First subscription payment — set up the consumer_credits
+    const stripeCustomerId = typeof invoice.customer === 'string'
+      ? invoice.customer
+      : invoice.customer?.id;
+
+    if (stripeCustomerId) {
+      const { data: cc } = await supabase
+        .from('consumer_credits')
+        .select('id')
+        .eq('stripe_customer_id', stripeCustomerId)
+        .single();
+
+      if (cc) {
+        await supabase
+          .from('consumer_credits')
+          .update({
+            stripe_subscription_id: subscriptionId,
+            subscription_status: 'active',
+            subscription_credits: 30,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', cc.id);
+
+        await supabase.from('consumer_credit_transactions').insert({
+          consumer_credit_id: cc.id,
+          type: 'subscription_credit_grant',
+          amount: 30,
+          description: 'VUAL Pass 初回クレジット付与',
+        });
+      }
+    }
+    return;
+  }
+
+  // Recurring renewal
+  const { data: cc } = await supabase
+    .from('consumer_credits')
+    .select('id, subscription_credits')
+    .eq('stripe_subscription_id', subscriptionId)
+    .single();
+
+  if (!cc) {
+    console.error(`Consumer not found for subscription: ${subscriptionId}`);
+    return;
+  }
+
+  await supabase
+    .from('consumer_credits')
+    .update({
+      subscription_credits: cc.subscription_credits + 30,
+      subscription_status: 'active',
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', cc.id);
+
+  await supabase.from('consumer_credit_transactions').insert({
+    consumer_credit_id: cc.id,
+    type: 'subscription_credit_grant',
+    amount: 30,
+    description: 'VUAL Pass 月次クレジット付与',
+  });
+
+  console.log(`Subscription ${subscriptionId}: +30 credits`);
+}
+
+// ============================================================
+// Subscription Canceled Handler
+// ============================================================
+async function handleSubscriptionCanceled(subscription: Stripe.Subscription) {
+  const supabase = createServerClient();
+  if (!supabase) return;
+
+  await supabase
+    .from('consumer_credits')
+    .update({
+      subscription_status: 'canceled',
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscription.id);
+
+  console.log(`Subscription canceled: ${subscription.id}`);
+}
+
+// ============================================================
+// Subscription Updated Handler
+// ============================================================
+async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
+  const supabase = createServerClient();
+  if (!supabase) return;
+
+  const statusMap: Record<string, string> = {
+    active: 'active',
+    past_due: 'past_due',
+    canceled: 'canceled',
+    unpaid: 'past_due',
+  };
+
+  const mappedStatus = statusMap[subscription.status] || null;
+
+  await supabase
+    .from('consumer_credits')
+    .update({
+      subscription_status: mappedStatus,
+      subscription_period_end: (subscription as unknown as Record<string, unknown>).current_period_end
+        ? new Date(((subscription as unknown as Record<string, unknown>).current_period_end as number) * 1000).toISOString()
+        : null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscription.id);
+
+  console.log(`Subscription updated: ${subscription.id} → ${mappedStatus}`);
 }

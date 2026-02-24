@@ -18,6 +18,7 @@ const pageTitles: Record<string, string> = {
   '/admin/settings': 'settings',
   '/admin/settings/profile': 'profile',
   '/admin/settings/team': 'team',
+  '/admin/settings/line': 'lineIntegration',
 };
 
 function getPageTitleKey(pathname: string, locale: string): string {

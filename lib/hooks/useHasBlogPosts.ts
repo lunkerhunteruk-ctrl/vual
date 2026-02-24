@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { collection, query, where, limit, getDocs } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
 
 /**
  * Hook to check if there are any published blog posts
@@ -12,21 +10,10 @@ export function useHasBlogPosts() {
 
   useEffect(() => {
     const checkPosts = async () => {
-      if (!db) {
-        setHasPosts(false);
-        setIsLoading(false);
-        return;
-      }
-
       try {
-        const q = query(
-          collection(db, COLLECTIONS.BLOG_POSTS),
-          where('isPublished', '==', true),
-          limit(1)
-        );
-
-        const snapshot = await getDocs(q);
-        setHasPosts(snapshot.docs.length > 0);
+        const response = await fetch('/api/blog?isPublished=true&limit=1');
+        const data = await response.json();
+        setHasPosts(data.posts && data.posts.length > 0);
       } catch (err) {
         console.error('Failed to check blog posts:', err);
         setHasPosts(false);

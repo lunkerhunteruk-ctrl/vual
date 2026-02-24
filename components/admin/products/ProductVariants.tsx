@@ -32,6 +32,8 @@ interface ProductVariantsProps {
   images: ProductImage[];
   variants: ProductVariant[];
   options: VariantOption[];
+  imageColorMap: Record<string, string>;
+  basePrice?: number;
   onVariantsChange: (variants: ProductVariant[]) => void;
   onOptionsChange: (options: VariantOption[]) => void;
 }
@@ -40,6 +42,8 @@ export function ProductVariants({
   images,
   variants,
   options,
+  imageColorMap,
+  basePrice,
   onVariantsChange,
   onOptionsChange,
 }: ProductVariantsProps) {
@@ -48,6 +52,38 @@ export function ProductVariants({
   const [showVariants, setShowVariants] = useState(true);
   const [newColorValue, setNewColorValue] = useState('');
   const [newSizeValue, setNewSizeValue] = useState('');
+
+  // Filter out images with invalid URLs
+  const validImages = images.filter(img => {
+    if (!img.url) return false;
+    if (img.url.startsWith('http')) return true;
+    if (img.url.startsWith('blob:') && img.file) return true;
+    return false;
+  });
+
+  // Helper function to find image for a variant based on color
+  const getImageForVariant = (variant: ProductVariant): ProductImage | null => {
+    // First check if variant has explicit imageId
+    if (variant.imageId) {
+      const img = validImages.find(i => i.id === variant.imageId);
+      if (img) return img;
+    }
+
+    // Otherwise, look up by color from imageColorMap
+    if (variant.color) {
+      // Find image ID that has this color assigned
+      const imageId = Object.entries(imageColorMap).find(
+        ([, color]) => color === variant.color
+      )?.[0];
+
+      if (imageId) {
+        const img = validImages.find(i => i.id === imageId);
+        if (img) return img;
+      }
+    }
+
+    return null;
+  };
 
   // Get current color and size options
   const colorOption = options.find(o => o.name === 'color') || { name: 'color', values: [] };
@@ -289,9 +325,9 @@ export function ProductVariants({
                               <button
                                 className="w-10 h-10 rounded-[var(--radius-sm)] border border-[var(--color-line)] overflow-hidden flex items-center justify-center bg-[var(--color-bg-element)] hover:border-[var(--color-accent)] transition-colors"
                               >
-                                {variant.imageId && images.find(i => i.id === variant.imageId) ? (
+                                {getImageForVariant(variant) ? (
                                   <img
-                                    src={images.find(i => i.id === variant.imageId)?.url}
+                                    src={getImageForVariant(variant)!.url}
                                     alt=""
                                     className="w-full h-full object-cover"
                                   />
@@ -299,16 +335,16 @@ export function ProductVariants({
                                   <ImageIcon size={16} className="text-[var(--color-text-label)]" />
                                 )}
                               </button>
-                              {images.length > 0 && (
+                              {validImages.length > 0 && (
                                 <select
                                   value={variant.imageId || ''}
                                   onChange={(e) => updateVariant(variant.id, { imageId: e.target.value || null })}
                                   className="absolute inset-0 opacity-0 cursor-pointer"
                                 >
-                                  <option value="">{t('selectImage') || 'Select image'}</option>
-                                  {images.map((img, idx) => (
+                                  <option value="">{getImageForVariant(variant) ? 'カラーから自動' : '画像を選択'}</option>
+                                  {validImages.map((img, idx) => (
                                     <option key={img.id} value={img.id}>
-                                      {t('imageNumber', { number: idx + 1 }) || `Image ${idx + 1}`}
+                                      画像 {idx + 1}{imageColorMap[img.id] ? ` (${imageColorMap[img.id]})` : ''}
                                     </option>
                                   ))}
                                 </select>
@@ -348,10 +384,21 @@ export function ProductVariants({
                               </span>
                               <input
                                 type="number"
-                                value={variant.price ?? ''}
-                                onChange={(e) => updateVariant(variant.id, { price: e.target.value ? Number(e.target.value) : null })}
-                                placeholder={t('sameAsBase') || 'Base'}
-                                className="w-full h-8 pl-5 pr-2 text-sm bg-transparent border border-[var(--color-line)] rounded-[var(--radius-sm)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                                value={variant.price ?? basePrice ?? ''}
+                                onChange={(e) => {
+                                  const newPrice = e.target.value ? Number(e.target.value) : null;
+                                  // If price matches base price, set to null (use base)
+                                  if (newPrice === basePrice) {
+                                    updateVariant(variant.id, { price: null });
+                                  } else {
+                                    updateVariant(variant.id, { price: newPrice });
+                                  }
+                                }}
+                                className={`w-full h-8 pl-5 pr-2 text-sm bg-transparent border border-[var(--color-line)] rounded-[var(--radius-sm)] focus:outline-none focus:border-[var(--color-accent)] ${
+                                  variant.price === null
+                                    ? 'text-[var(--color-text-placeholder)]'
+                                    : 'text-[var(--color-text-body)]'
+                                }`}
                               />
                             </div>
                           </div>

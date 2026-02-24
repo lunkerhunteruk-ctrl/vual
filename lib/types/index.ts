@@ -244,7 +244,7 @@ export interface LiveStream {
   title: string;
   description?: string;
   thumbnailURL?: string;
-  status: 'scheduled' | 'live' | 'ended';
+  status: 'scheduled' | 'live' | 'ended' | 'test';
   scheduledAt?: Date;
   startedAt?: Date;
   endedAt?: Date;

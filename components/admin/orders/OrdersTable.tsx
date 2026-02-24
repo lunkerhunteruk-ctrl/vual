@@ -2,14 +2,12 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Search, Filter, SlidersHorizontal, MoreHorizontal, Loader2 } from 'lucide-react';
-import { Pagination } from '@/components/ui';
-import { useOrders } from '@/lib/hooks/useOrders';
+import { Search, Filter, SlidersHorizontal, MoreHorizontal, Loader2, ShoppingCart } from 'lucide-react';
+import { useOrders, OrderStatus } from '@/lib/hooks/useOrders';
 import { formatPrice } from '@/lib/utils/currency';
-import type { OrderStatus } from '@/lib/types';
-
-type PaymentStatus = 'paid' | 'unpaid' | 'refunded';
+import { EmptyState } from '@/components/ui/EmptyState';
 
 const statusColors: Record<string, string> = {
   delivered: 'bg-emerald-50 text-emerald-700',
@@ -18,13 +16,7 @@ const statusColors: Record<string, string> = {
   cancelled: 'bg-red-50 text-red-700',
   completed: 'bg-emerald-50 text-emerald-700',
   processing: 'bg-blue-50 text-blue-700',
-  paid: 'bg-emerald-50 text-emerald-700',
-};
-
-const paymentColors: Record<PaymentStatus, string> = {
-  paid: 'text-emerald-600',
-  unpaid: 'text-amber-600',
-  refunded: 'text-red-600',
+  confirmed: 'bg-blue-50 text-blue-700',
 };
 
 type TabFilter = 'all' | 'delivered' | 'pending' | 'cancelled';
@@ -32,14 +24,14 @@ type TabFilter = 'all' | 'delivered' | 'pending' | 'cancelled';
 export function OrdersTable() {
   const t = useTranslations('admin.orders');
   const locale = useLocale();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch real orders from Firestore
+  // Fetch orders from Supabase API
   const statusFilter: OrderStatus | undefined = activeTab === 'all' ? undefined : activeTab as OrderStatus;
-  const { orders: firestoreOrders, isLoading, hasMore, loadMore } = useOrders({
+  const { orders, isLoading, hasMore, loadMore } = useOrders({
     status: statusFilter,
     limit: 20,
   });
@@ -52,7 +44,7 @@ export function OrdersTable() {
       all: allOrders.length,
       delivered: allOrders.filter(o => o.status === 'delivered').length,
       pending: allOrders.filter(o => o.status === 'pending' || o.status === 'processing' || o.status === 'confirmed').length,
-      cancelled: allOrders.filter(o => o.status === 'cancelled' || o.status === 'refunded').length,
+      cancelled: allOrders.filter(o => o.status === 'cancelled').length,
     };
   }, [allOrders]);
 
@@ -65,16 +57,16 @@ export function OrdersTable() {
 
   // Filter orders by search query
   const filteredOrders = useMemo(() => {
-    if (!firestoreOrders) return [];
-    if (!searchQuery.trim()) return firestoreOrders;
+    if (!orders) return [];
+    if (!searchQuery.trim()) return orders;
 
     const query = searchQuery.toLowerCase();
-    return firestoreOrders.filter(order =>
-      order.orderNumber?.toLowerCase().includes(query) ||
-      order.customer?.name?.toLowerCase().includes(query) ||
-      order.customer?.email?.toLowerCase().includes(query)
+    return orders.filter(order =>
+      order.id?.toLowerCase().includes(query) ||
+      order.customer_name?.toLowerCase().includes(query) ||
+      order.customer_email?.toLowerCase().includes(query)
     );
-  }, [firestoreOrders, searchQuery]);
+  }, [orders, searchQuery]);
 
   const toggleOrder = (orderId: string) => {
     setSelectedOrders(prev =>
@@ -92,17 +84,18 @@ export function OrdersTable() {
     }
   };
 
-  const formatDate = (date: Date | undefined) => {
-    if (!date) return '-';
-    return new Intl.DateTimeFormat('en-US', {
+  const formatDate = (dateStr: string | undefined) => {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     }).format(date);
   };
 
-  const formatOrderPrice = (amount: number, currency: string = 'USD') => {
-    return formatPrice(amount, currency, locale, true);
+  const formatOrderPrice = (amount: number, currency: string = 'JPY') => {
+    return formatPrice(amount, currency.toUpperCase(), locale, true);
   };
 
   return (
@@ -163,9 +156,11 @@ export function OrdersTable() {
             <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
           </div>
         ) : filteredOrders.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <p className="text-sm text-[var(--color-text-label)]">No orders found</p>
-          </div>
+          <EmptyState
+            icon={ShoppingCart}
+            title={locale === 'ja' ? '注文がありません' : 'No orders found'}
+            description={locale === 'ja' ? '新しい注文が入ると、ここに表示されます' : 'New orders will appear here'}
+          />
         ) : (
           <table className="w-full">
             <thead>
@@ -185,7 +180,7 @@ export function OrdersTable() {
                   {t('orderId')}
                 </th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  Customer
+                  {locale === 'ja' ? '顧客' : 'Customer'}
                 </th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
                   {t('date')}
@@ -196,9 +191,6 @@ export function OrdersTable() {
                 <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
                   {t('status')}
                 </th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                  {t('payment')}
-                </th>
                 <th className="w-12 py-3 px-4"></th>
               </tr>
             </thead>
@@ -206,9 +198,10 @@ export function OrdersTable() {
               {filteredOrders.map((order, index) => (
                 <tr
                   key={order.id}
-                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                  onClick={() => router.push(`/${locale}/admin/orders/${order.id}`)}
+                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors cursor-pointer"
                 >
-                  <td className="py-3 px-4">
+                  <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
                     <input
                       type="checkbox"
                       checked={selectedOrders.includes(order.id)}
@@ -220,20 +213,20 @@ export function OrdersTable() {
                     {index + 1}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    #{order.orderNumber || order.id.slice(-6).toUpperCase()}
+                    #{order.id.slice(-6).toUpperCase()}
                   </td>
                   <td className="py-3 px-4">
                     <div>
                       <p className="text-sm text-[var(--color-title-active)]">
-                        {order.customer?.name || 'Unknown'}
+                        {order.customer_name || 'Unknown'}
                       </p>
                       <p className="text-xs text-[var(--color-text-label)]">
-                        {order.customer?.email || ''}
+                        {order.customer_email || ''}
                       </p>
                     </div>
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {formatDate(order.createdAt)}
+                    {formatDate(order.created_at)}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
                     {formatOrderPrice(order.total, order.currency)}
@@ -243,13 +236,7 @@ export function OrdersTable() {
                       {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                     </span>
                   </td>
-                  <td className="py-3 px-4">
-                    <span className={`text-sm font-medium ${paymentColors[order.paymentStatus as PaymentStatus] || 'text-gray-600'}`}>
-                      {order.paymentStatus === 'paid' ? '● ' : '○ '}
-                      {order.paymentStatus?.charAt(0).toUpperCase() + order.paymentStatus?.slice(1)}
-                    </span>
-                  </td>
-                  <td className="py-3 px-4">
+                  <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
                     <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
                       <MoreHorizontal size={16} className="text-[var(--color-text-label)]" />
                     </button>
@@ -269,11 +256,11 @@ export function OrdersTable() {
             disabled={isLoading}
             className="w-full py-2 text-sm text-[var(--color-text-body)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors disabled:opacity-50"
           >
-            {isLoading ? 'Loading...' : 'Load More'}
+            {isLoading ? (locale === 'ja' ? '読み込み中...' : 'Loading...') : locale === 'ja' ? 'もっと見る' : 'Load More'}
           </button>
         ) : filteredOrders.length > 0 ? (
           <p className="text-center text-sm text-[var(--color-text-label)]">
-            Showing all {filteredOrders.length} orders
+            {locale === 'ja' ? `全${filteredOrders.length}件を表示中` : `Showing all ${filteredOrders.length} orders`}
           </p>
         ) : null}
       </div>

@@ -30,7 +30,7 @@ export function CategoryProductsTable({ category }: CategoryProductsTableProps) 
     return {
       all: firestoreProducts.length,
       featured: firestoreProducts.filter(p => p.isFeatured).length,
-      onSale: firestoreProducts.filter(p => p.compareAtPrice && p.compareAtPrice > p.price).length,
+      onSale: firestoreProducts.filter(p => p.discounted_price && p.discounted_price < p.price).length,
       outOfStock: firestoreProducts.filter(p => p.stockStatus === 'out_of_stock').length,
     };
   }, [firestoreProducts]);
@@ -50,7 +50,7 @@ export function CategoryProductsTable({ category }: CategoryProductsTableProps) 
     if (activeTab === 'featured') {
       result = result.filter(p => p.isFeatured);
     } else if (activeTab === 'onSale') {
-      result = result.filter(p => p.compareAtPrice && p.compareAtPrice > p.price);
+      result = result.filter(p => p.discounted_price && p.discounted_price < p.price);
     } else if (activeTab === 'outOfStock') {
       result = result.filter(p => p.stockStatus === 'out_of_stock');
     }
@@ -66,8 +66,7 @@ export function CategoryProductsTable({ category }: CategoryProductsTableProps) 
     return result;
   }, [firestoreProducts, activeTab, searchQuery]);
 
-  const formatDate = (date: Date | undefined) => {
-    if (!date) return '-';
+  const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: '2-digit',
@@ -194,7 +193,7 @@ export function CategoryProductsTable({ category }: CategoryProductsTableProps) 
                     </div>
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {formatDate(product.createdAt)}
+                    {formatDate(new Date(product.created_at))}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
                     {product.stockQuantity}

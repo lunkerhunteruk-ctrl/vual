@@ -1,12 +1,22 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { TeamMember } from '@/lib/types';
 
 type MemberStatus = 'active' | 'invited' | 'inactive';
 
+interface TeamMember {
+  id: string;
+  user_id?: string;
+  email: string;
+  name: string;
+  role_id?: string;
+  role_name?: string;
+  status: MemberStatus;
+  invited_at?: string;
+  last_active_at?: string;
+  created_at: string;
+  updated_at: string;
+}
+
 interface UseTeamMembersOptions {
-  shopId?: string;
   status?: MemberStatus;
 }
 
@@ -15,7 +25,7 @@ interface UseTeamMembersReturn {
   isLoading: boolean;
   error: Error | null;
   refresh: () => Promise<void>;
-  inviteMember: (data: { email: string; name: string; roleId: string; roleName: string; shopId: string }) => Promise<string>;
+  inviteMember: (data: { email: string; name: string; role_id?: string; role_name?: string }) => Promise<string>;
   updateMember: (id: string, data: Partial<TeamMember>) => Promise<void>;
   removeMember: (id: string) => Promise<void>;
   activateMember: (id: string, userId: string) => Promise<void>;
@@ -28,99 +38,91 @@ export function useTeamMembers(options: UseTeamMembersOptions = {}): UseTeamMemb
   const [error, setError] = useState<Error | null>(null);
 
   const fetchMembers = useCallback(async () => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.TEAM_MEMBERS),
-        orderBy('createdAt', 'desc')
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
-
+      const params = new URLSearchParams();
       if (options.status) {
-        q = query(q, where('status', '==', options.status));
+        params.set('status', options.status);
       }
 
-      const snapshot = await getDocs(q);
-      const fetchedMembers = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        invitedAt: doc.data().invitedAt?.toDate(),
-        lastActiveAt: doc.data().lastActiveAt?.toDate(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-      })) as TeamMember[];
+      const response = await fetch(`/api/team?${params.toString()}`);
+      const data = await response.json();
 
-      setMembers(fetchedMembers);
+      if (data.members) {
+        setMembers(data.members);
+      } else {
+        setMembers([]);
+      }
+
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch team members'));
+      setMembers([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.status]);
+  }, [options.status]);
 
   useEffect(() => {
     fetchMembers();
-  }, [options.shopId, options.status]);
+  }, [fetchMembers]);
 
   const refresh = async () => {
     await fetchMembers();
   };
 
-  const inviteMember = async (data: { email: string; name: string; roleId: string; roleName: string; shopId: string }): Promise<string> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const now = new Date();
-    const docRef = await addDoc(collection(db, COLLECTIONS.TEAM_MEMBERS), {
-      ...data,
-      userId: '', // Will be set when user accepts invitation
-      status: 'invited',
-      invitedAt: now,
-      createdAt: now,
-      updatedAt: now,
+  const inviteMember = async (data: { email: string; name: string; role_id?: string; role_name?: string }): Promise<string> => {
+    const response = await fetch('/api/team', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
 
+    if (!response.ok) {
+      throw new Error('Failed to invite member');
+    }
+
+    const result = await response.json();
     await refresh();
-    return docRef.id;
+    return result.id;
   };
 
   const updateMember = async (id: string, data: Partial<TeamMember>): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const docRef = doc(db, COLLECTIONS.TEAM_MEMBERS, id);
-    await updateDoc(docRef, {
-      ...data,
-      updatedAt: new Date(),
+    const response = await fetch('/api/team', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...data }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to update member');
+    }
 
     setMembers((prev) =>
       prev.map((member) =>
-        member.id === id ? { ...member, ...data, updatedAt: new Date() } : member
+        member.id === id ? { ...member, ...data } : member
       )
     );
   };
 
   const removeMember = async (id: string): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
+    const response = await fetch(`/api/team?id=${id}`, {
+      method: 'DELETE',
+    });
 
-    await deleteDoc(doc(db, COLLECTIONS.TEAM_MEMBERS, id));
+    if (!response.ok) {
+      throw new Error('Failed to remove member');
+    }
+
     setMembers((prev) => prev.filter((member) => member.id !== id));
   };
 
   const activateMember = async (id: string, userId: string): Promise<void> => {
     await updateMember(id, {
-      userId,
+      user_id: userId,
       status: 'active',
-      lastActiveAt: new Date(),
+      last_active_at: new Date().toISOString(),
     });
   };
 
@@ -137,7 +139,7 @@ export function useTeamMember(memberId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!memberId || !db) {
+    if (!memberId) {
       setIsLoading(false);
       return;
     }
@@ -145,25 +147,18 @@ export function useTeamMember(memberId: string | null) {
     const fetchMember = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.TEAM_MEMBERS, memberId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/team?id=${memberId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setMember({
-            id: docSnap.id,
-            ...data,
-            invitedAt: data.invitedAt?.toDate(),
-            lastActiveAt: data.lastActiveAt?.toDate(),
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-          } as TeamMember);
+        if (data && data.id) {
+          setMember(data);
         } else {
           setMember(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch team member'));
+        setMember(null);
       } finally {
         setIsLoading(false);
       }

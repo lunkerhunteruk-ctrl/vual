@@ -59,6 +59,7 @@
       "vual": "VUAL",
       "aiStudio": "AIスタジオ",
       "liveBroadcast": "ライブ配信",
+      "fittingCredit": "フィッティングクレジット",
       "admin": "管理",
       "appearance": "外観",
       "settings": "設定",
@@ -67,6 +68,7 @@
       "teamMembers": "チームメンバー",
       "controlAuthority": "権限管理",
       "adminRole": "プロフィール",
+      "lineIntegration": "LINE連携",
       "yourShop": "ショップを見る"
     },
     "topnav": {
@@ -100,6 +102,37 @@
       "quickAdd": "クイック追加",
       "allProduct": "全商品"
     },
+    "billing": {
+      "title": "フィッティングクレジット",
+      "balance": "残高",
+      "credits": "クレジット",
+      "purchaseCredits": "クレジットを購入",
+      "starter": "スターター",
+      "starterDesc": "250クレジット / 1回40円",
+      "standard": "スタンダード（推奨）",
+      "standardDesc": "1,000クレジット / 1回35円",
+      "pro": "プロ（最大割引）",
+      "proDesc": "3,000クレジット / 1回30円",
+      "purchase": "購入する",
+      "transactionHistory": "利用履歴",
+      "noTransactions": "まだ取引はありません",
+      "type": "種別",
+      "typePurchase": "購入",
+      "typeConsumption": "使用",
+      "typeRefund": "返金",
+      "typeAdjustment": "調整",
+      "amount": "数量",
+      "balanceAfter": "残高",
+      "date": "日時",
+      "loadMore": "もっと見る",
+      "totalPurchased": "累計購入",
+      "totalConsumed": "累計使用",
+      "settings": "設定",
+      "dailyTryonLimit": "1日の試着上限（1顧客あたり）",
+      "dailyTryonLimitDesc": "VUAL商品の試着回数を制限し、クレジットの過剰消費を防止します",
+      "save": "保存",
+      "saved": "保存しました"
+    },
     "orders": {
       "title": "注文管理",
       "orderList": "注文一覧",
@@ -122,7 +155,28 @@
       "unpaid": "未払い",
       "delivered": "配達済",
       "shipped": "発送済",
-      "searchOrders": "注文レポートを検索"
+      "searchOrders": "注文レポートを検索",
+      "orderDetail": "注文詳細",
+      "orderStatus": "注文ステータス",
+      "orderItems": "注文商品",
+      "customerInfo": "顧客情報",
+      "shippingAddress": "配送先",
+      "paymentInfo": "決済情報",
+      "subtotal": "小計",
+      "shippingFee": "送料",
+      "tax": "税金",
+      "discount": "割引",
+      "total": "合計",
+      "notes": "備考",
+      "backToOrders": "注文一覧に戻る",
+      "statusPending": "保留中",
+      "statusConfirmed": "確認済み",
+      "statusProcessing": "処理中",
+      "statusShipped": "発送済み",
+      "statusDelivered": "配達完了",
+      "statusCancelled": "キャンセル",
+      "orderNotFound": "注文が見つかりません",
+      "updateFailed": "ステータスの更新に失敗しました"
     },
     "customers": {
       "title": "顧客",
@@ -516,6 +570,13 @@
     }
   },
   "customer": {
+    "nav": {
+      "home": "ホーム",
+      "discover": "探す",
+      "live": "ライブ",
+      "tryOn": "試着",
+      "myPage": "マイページ"
+    },
     "blog": {
       "title": "ブログ",
       "loadMore": "もっと見る"
@@ -542,7 +603,8 @@
       "returnPolicy": "返品ポリシー",
       "youMayAlsoLike": "こちらもおすすめ",
       "color": "カラー",
-      "size": "サイズ"
+      "size": "サイズ",
+      "tryOn": "試着してみる"
     },
     "cart": {
       "title": "カート",
@@ -598,6 +660,7 @@
       "allRightsReserved": "All Rights Reserved"
     },
     "live": {
+      "title": "ライブ",
       "products": "商品",
       "buyNow": "今すぐ購入",
       "typeSomething": "コメントを入力...",
@@ -611,5 +674,43 @@
     "pageNotFound": "ページが見つかりません",
     "pageNotFoundDesc": "お探しのページが見つかりませんでした。",
     "homePage": "ホームページ"
+  },
+  "categories": {
+    "genders": {
+      "mens": "メンズ",
+      "womens": "レディース"
+    },
+    "types": {
+      "wear": "ウェア",
+      "goods": "グッズ"
+    },
+    "wear": {
+      "tops": "トップス",
+      "outer": "アウター",
+      "pants": "パンツ",
+      "skirts": "スカート",
+      "dresses": "ワンピース",
+      "setup": "セットアップ",
+      "suits": "スーツ",
+      "underwear": "アンダーウェア"
+    },
+    "goods": {
+      "neckties": "ネクタイ",
+      "bags": "バッグ",
+      "shoes": "シューズ",
+      "wallets": "財布・カードケース",
+      "watches": "腕時計",
+      "eyewear": "アイウェア",
+      "jewelry": "ジュエリー・アクセサリー",
+      "legwear": "レッグウェア",
+      "hats": "帽子",
+      "belts": "ベルト",
+      "smallItems": "小物",
+      "umbrellas": "傘",
+      "stoles": "ストール・マフラー"
+    },
+    "selectGender": "性別を選択",
+    "selectType": "タイプを選択",
+    "selectCategory": "カテゴリーを選択"
   }
 }

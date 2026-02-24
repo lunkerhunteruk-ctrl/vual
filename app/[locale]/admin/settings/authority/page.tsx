@@ -1,12 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Shield, Users, ShoppingCart, Package, CreditCard, Settings, Edit2, Trash2, Loader2, Plus } from 'lucide-react';
+import { Shield, Users, ShoppingCart, Package, CreditCard, Settings, Edit2, Trash2, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { useRoles, AVAILABLE_PERMISSIONS } from '@/lib/hooks';
-import type { Role } from '@/lib/types';
+
+interface Role {
+  id: string;
+  name: string;
+  description?: string;
+  permissions: string[];
+  is_system: boolean;
+}
 
 interface PermissionGroup {
   id: string;
@@ -27,10 +34,9 @@ const permissionGroups: PermissionGroup[] = [
 
 export default function ControlAuthorityPage() {
   const t = useTranslations('admin.settings');
+  const locale = useLocale();
 
-  // TODO: Get shopId from auth context
-  const shopId = 'demo-shop';
-  const { roles, isLoading, error, createRole, updateRole, deleteRole, refresh } = useRoles({ shopId });
+  const { roles, isLoading, error, createRole, updateRole, deleteRole, refresh } = useRoles();
 
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -41,8 +47,9 @@ export default function ControlAuthorityPage() {
 
   useEffect(() => {
     if (roles.length > 0 && !selectedRole) {
-      setSelectedRole(roles[0]);
-      setEditedPermissions(roles[0].permissions);
+      const firstRole = roles[0] as Role;
+      setSelectedRole(firstRole);
+      setEditedPermissions(firstRole.permissions);
     }
   }, [roles, selectedRole]);
 
@@ -88,7 +95,6 @@ export default function ControlAuthorityPage() {
 
     try {
       const id = await createRole({
-        shopId,
         name: newRoleName,
         description: newRoleDescription,
         permissions: [],
@@ -97,25 +103,23 @@ export default function ControlAuthorityPage() {
       setNewRoleDescription('');
       setIsCreating(false);
       await refresh();
-      const newRole = roles.find(r => r.id === id);
-      if (newRole) setSelectedRole(newRole);
     } catch (err) {
       console.error('Failed to create role:', err);
     }
   };
 
   const handleDeleteRole = async (id: string) => {
-    const role = roles.find(r => r.id === id);
-    if (role?.isSystem) {
-      alert(t('cannotDeleteSystemRole'));
+    const role = roles.find(r => r.id === id) as Role | undefined;
+    if (role?.is_system) {
+      alert(locale === 'ja' ? 'システムロールは削除できません' : 'Cannot delete system role');
       return;
     }
 
-    if (confirm(t('confirmDeleteRole'))) {
+    if (confirm(locale === 'ja' ? 'このロールを削除しますか？' : 'Delete this role?')) {
       try {
         await deleteRole(id);
         if (selectedRole?.id === id) {
-          setSelectedRole(roles[0] || null);
+          setSelectedRole(roles[0] as Role || null);
         }
       } catch (err) {
         console.error('Failed to delete role:', err);
@@ -137,10 +141,10 @@ export default function ControlAuthorityPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-[var(--color-title-active)]">
-            {t('controlAuthority')}
+            {locale === 'ja' ? '権限管理' : 'Control Authority'}
           </h2>
           <p className="text-sm text-[var(--color-text-label)] mt-1">
-            {t('controlAuthorityDescription')}
+            {locale === 'ja' ? 'ロールと権限を管理します' : 'Manage roles and permissions'}
           </p>
         </div>
         <Button
@@ -148,7 +152,7 @@ export default function ControlAuthorityPage() {
           leftIcon={<Shield size={16} />}
           onClick={() => setIsCreating(true)}
         >
-          {t('addRole')}
+          {locale === 'ja' ? 'ロールを追加' : 'Add Role'}
         </Button>
       </div>
 
@@ -159,28 +163,30 @@ export default function ControlAuthorityPage() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-4"
         >
-          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-4">{t('createNewRole')}</h3>
+          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-4">
+            {locale === 'ja' ? '新しいロールを作成' : 'Create New Role'}
+          </h3>
           <div className="space-y-3">
             <input
               type="text"
               value={newRoleName}
               onChange={(e) => setNewRoleName(e.target.value)}
-              placeholder={t('roleName')}
+              placeholder={locale === 'ja' ? 'ロール名' : 'Role Name'}
               className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
             <input
               type="text"
               value={newRoleDescription}
               onChange={(e) => setNewRoleDescription(e.target.value)}
-              placeholder={t('roleDescription')}
+              placeholder={locale === 'ja' ? '説明' : 'Description'}
               className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
             <div className="flex gap-2">
               <Button variant="primary" onClick={handleCreateRole}>
-                {t('create')}
+                {locale === 'ja' ? '作成' : 'Create'}
               </Button>
               <Button variant="secondary" onClick={() => setIsCreating(false)}>
-                {t('cancel')}
+                {locale === 'ja' ? 'キャンセル' : 'Cancel'}
               </Button>
             </div>
           </div>
@@ -196,7 +202,7 @@ export default function ControlAuthorityPage() {
         >
           <div className="p-4 border-b border-[var(--color-line)]">
             <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide">
-              {t('roles')}
+              {locale === 'ja' ? 'ロール' : 'Roles'}
             </h3>
           </div>
           {isLoading ? (
@@ -205,38 +211,43 @@ export default function ControlAuthorityPage() {
             </div>
           ) : roles.length === 0 ? (
             <div className="p-8 text-center">
-              <p className="text-sm text-[var(--color-text-label)]">{t('noRoles')}</p>
+              <p className="text-sm text-[var(--color-text-label)]">
+                {locale === 'ja' ? 'ロールがありません' : 'No roles'}
+              </p>
             </div>
           ) : (
             <div className="divide-y divide-[var(--color-line)]">
-              {roles.map((role) => (
-                <button
-                  key={role.id}
-                  onClick={() => { setSelectedRole(role); setIsEditing(false); }}
-                  className={`w-full p-4 text-left transition-colors ${
-                    selectedRole?.id === role.id
-                      ? 'bg-[var(--color-bg-element)]'
-                      : 'hover:bg-[var(--color-bg-element)]'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-[var(--color-title-active)]">
-                        {role.name}
-                        {role.isSystem && (
-                          <span className="ml-2 text-xs text-[var(--color-text-label)]">(System)</span>
-                        )}
-                      </p>
-                      <p className="text-xs text-[var(--color-text-label)] mt-0.5">
-                        {role.description}
-                      </p>
+              {roles.map((role) => {
+                const typedRole = role as Role;
+                return (
+                  <button
+                    key={typedRole.id}
+                    onClick={() => { setSelectedRole(typedRole); setIsEditing(false); }}
+                    className={`w-full p-4 text-left transition-colors ${
+                      selectedRole?.id === typedRole.id
+                        ? 'bg-[var(--color-bg-element)]'
+                        : 'hover:bg-[var(--color-bg-element)]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm font-medium text-[var(--color-title-active)]">
+                          {typedRole.name}
+                          {typedRole.is_system && (
+                            <span className="ml-2 text-xs text-[var(--color-text-label)]">(System)</span>
+                          )}
+                        </p>
+                        <p className="text-xs text-[var(--color-text-label)] mt-0.5">
+                          {typedRole.description}
+                        </p>
+                      </div>
+                      <span className="text-xs bg-[var(--color-bg-input)] text-[var(--color-text-body)] px-2 py-1 rounded-full">
+                        {typedRole.permissions.length} perms
+                      </span>
                     </div>
-                    <span className="text-xs bg-[var(--color-bg-input)] text-[var(--color-text-body)] px-2 py-1 rounded-full">
-                      {role.permissions.length} perms
-                    </span>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           )}
         </motion.div>
@@ -260,7 +271,7 @@ export default function ControlAuthorityPage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {!selectedRole.isSystem && (
+                  {!selectedRole.is_system && (
                     <>
                       <button
                         onClick={() => setIsEditing(!isEditing)}
@@ -280,7 +291,7 @@ export default function ControlAuthorityPage() {
               </div>
               <div className="p-4">
                 <h4 className="text-xs font-medium text-[var(--color-text-label)] uppercase tracking-wide mb-4">
-                  {t('permissions')}
+                  {locale === 'ja' ? '権限' : 'Permissions'}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {permissionGroups.map((group) => {
@@ -299,7 +310,7 @@ export default function ControlAuthorityPage() {
                           type="checkbox"
                           checked={hasPermissionGroup}
                           onChange={() => togglePermission(group.id)}
-                          disabled={!isEditing || selectedRole.isSystem}
+                          disabled={!isEditing || selectedRole.is_system}
                           className="w-4 h-4 rounded border-[var(--color-line)] text-[var(--color-accent)]"
                         />
                         <Icon size={18} className={hasPermissionGroup ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-label)]'} />
@@ -315,13 +326,13 @@ export default function ControlAuthorityPage() {
                     );
                   })}
                 </div>
-                {isEditing && !selectedRole.isSystem && (
+                {isEditing && !selectedRole.is_system && (
                   <div className="mt-6 flex justify-end gap-2">
                     <Button variant="secondary" onClick={() => { setIsEditing(false); setEditedPermissions(selectedRole.permissions); }}>
-                      {t('cancel')}
+                      {locale === 'ja' ? 'キャンセル' : 'Cancel'}
                     </Button>
                     <Button variant="primary" onClick={handleSavePermissions}>
-                      {t('saveChanges')}
+                      {locale === 'ja' ? '保存' : 'Save Changes'}
                     </Button>
                   </div>
                 )}
@@ -330,7 +341,7 @@ export default function ControlAuthorityPage() {
           ) : (
             <div className="p-8 text-center">
               <p className="text-sm text-[var(--color-text-label)]">
-                {t('selectRoleToEdit')}
+                {locale === 'ja' ? '編集するロールを選択してください' : 'Select a role to edit'}
               </p>
             </div>
           )}

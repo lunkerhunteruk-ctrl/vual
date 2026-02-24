@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const vertexAI = new VertexAI({ project: PROJECT_ID, location: LOCATION });
-    const model = vertexAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
+    const model = vertexAI.getGenerativeModel({ model: 'gemini-2.5-flash-image' });
 
     const prompt = `以下の商品説明からサイズ情報を抽出してJSONで返してください。
 数値はcm単位の数字のみ返してください。該当する情報がない場合はnullを返してください。

@@ -2,11 +2,13 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Search, Plus, Filter, MoreHorizontal, Edit2, Trash2, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatPrice } from '@/lib/utils/currency';
+import { parseCategoryPath } from '@/lib/data/categories';
 
 interface Product {
   id: string;
@@ -24,13 +26,23 @@ interface Product {
 
 type TabFilter = 'all' | 'published' | 'draft';
 
-export function ProductsTable() {
+interface ProductsTableProps {
+  categoryFilter?: string;
+}
+
+export function ProductsTable({ categoryFilter }: ProductsTableProps) {
   const t = useTranslations('admin.products');
+  const tCat = useTranslations('categories');
   const locale = useLocale();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleRowClick = (productId: string) => {
+    router.push(`/${locale}/admin/products/edit/${productId}`);
+  };
 
   // Fetch products from Supabase API
   useEffect(() => {
@@ -70,6 +82,11 @@ export function ProductsTable() {
   const filteredProducts = useMemo(() => {
     let result = products;
 
+    // Category filter from CategoriesGrid
+    if (categoryFilter) {
+      result = result.filter(p => p.category === categoryFilter);
+    }
+
     if (activeTab === 'published') {
       result = result.filter(p => p.status === 'published');
     } else if (activeTab === 'draft') {
@@ -86,7 +103,7 @@ export function ProductsTable() {
     }
 
     return result;
-  }, [products, activeTab, searchQuery]);
+  }, [products, activeTab, searchQuery, categoryFilter]);
 
   const formatDate = (dateStr: string | undefined) => {
     if (!dateStr) return '-';
@@ -115,6 +132,21 @@ export function ProductsTable() {
     }
     const primary = product.product_images.find(img => img.is_primary);
     return primary?.url || product.product_images[0]?.url;
+  };
+
+  const formatCategory = (categoryPath: string | undefined): string => {
+    if (!categoryPath) return '-';
+    const parsed = parseCategoryPath(categoryPath);
+    if (!parsed) return categoryPath; // Return as-is if not a valid path
+
+    try {
+      const genderLabel = tCat(`genders.${parsed.gender}`);
+      const typeLabel = tCat(`types.${parsed.type}`);
+      const categoryLabel = tCat(`${parsed.type}.${parsed.category}`);
+      return `${genderLabel} / ${categoryLabel}`;
+    } catch {
+      return categoryPath;
+    }
   };
 
   const handleDelete = async (productId: string) => {
@@ -233,9 +265,10 @@ export function ProductsTable() {
               {filteredProducts.map((product) => (
                 <tr
                   key={product.id}
-                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
+                  onClick={() => handleRowClick(product.id)}
+                  className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors cursor-pointer"
                 >
-                  <td className="py-3 px-4">
+                  <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
                     <input type="checkbox" className="w-4 h-4 rounded border-[var(--color-line)]" />
                   </td>
                   <td className="py-3 px-4">
@@ -250,7 +283,7 @@ export function ProductsTable() {
                             className="w-full h-full object-cover"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)]" />
+                          <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] flex items-center justify-center text-[10px] text-[var(--color-text-label)]">?</div>
                         )}
                       </div>
                       <div>
@@ -264,7 +297,7 @@ export function ProductsTable() {
                     </div>
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {product.category || '-'}
+                    {formatCategory(product.category)}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
                     {formatProductPrice(product.base_price, product.currency)}
@@ -285,13 +318,14 @@ export function ProductsTable() {
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
                     {formatDate(product.created_at)}
                   </td>
-                  <td className="py-3 px-4">
+                  <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-center gap-1">
-                      <Link href={`/${locale}/admin/products/edit/${product.id}`}>
-                        <button className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors">
-                          <Edit2 size={14} className="text-[var(--color-text-label)]" />
-                        </button>
-                      </Link>
+                      <button
+                        onClick={() => handleRowClick(product.id)}
+                        className="p-1.5 rounded-[var(--radius-sm)] hover:bg-[var(--color-bg-input)] transition-colors"
+                      >
+                        <Edit2 size={14} className="text-[var(--color-text-label)]" />
+                      </button>
                       <button
                         onClick={() => handleDelete(product.id)}
                         className="p-1.5 rounded-[var(--radius-sm)] hover:bg-red-50 transition-colors"

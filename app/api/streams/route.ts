@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Mux from '@mux/mux-node';
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
 // Initialize Mux lazily to avoid build-time errors
 function getMuxClient(): Mux {
@@ -9,6 +11,25 @@ function getMuxClient(): Mux {
     throw new Error('MUX_TOKEN_ID or MUX_TOKEN_SECRET is not configured');
   }
   return new Mux({ tokenId, tokenSecret });
+}
+
+// Initialize Firebase Admin
+function getFirestoreAdmin() {
+  if (!getApps().length) {
+    const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+    if (process.env.FIREBASE_ADMIN_PRIVATE_KEY) {
+      initializeApp({
+        credential: cert({
+          projectId,
+          clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+          privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        }),
+      });
+    } else {
+      initializeApp({ projectId });
+    }
+  }
+  return getFirestore();
 }
 
 // Create a new live stream
@@ -37,12 +58,26 @@ export async function POST(request: NextRequest) {
       max_continuous_duration: 43200, // 12 hours
     });
 
-    // In production, save to Firestore
+    // Save to Firestore
+    const db = getFirestoreAdmin();
+    await db.collection('streams').doc(stream.id).set({
+      shopId,
+      title,
+      status: 'scheduled',
+      playbackId: stream.playback_ids?.[0]?.id || null,
+      streamKey: stream.stream_key || null,
+      viewerCount: 0,
+      peakViewerCount: 0,
+      products: [],
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
+    });
+
     const streamData = {
       id: stream.id,
       streamKey: stream.stream_key,
       playbackId: stream.playback_ids?.[0]?.id,
-      status: stream.status,
+      status: 'scheduled',
       title,
       shopId,
       createdAt: new Date().toISOString(),

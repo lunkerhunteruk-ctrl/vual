@@ -1,10 +1,22 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { BlogPost } from '@/lib/types';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content?: string;
+  excerpt?: string;
+  featured_image?: string;
+  category?: string;
+  tags?: string[];
+  author_name?: string;
+  is_published: boolean;
+  published_at?: string;
+  created_at: string;
+  updated_at: string;
+}
 
 interface UseBlogPostsOptions {
-  shopId?: string;
   category?: string;
   isPublished?: boolean;
   limit?: number;
@@ -17,7 +29,7 @@ interface UseBlogPostsReturn {
   hasMore: boolean;
   loadMore: () => Promise<void>;
   refresh: () => Promise<void>;
-  createPost: (data: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>) => Promise<string>;
+  createPost: (data: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>) => Promise<string>;
   updatePost: (id: string, data: Partial<BlogPost>) => Promise<void>;
   deletePost: (id: string) => Promise<void>;
   publishPost: (id: string) => Promise<void>;
@@ -28,130 +40,113 @@ export function useBlogPosts(options: UseBlogPostsOptions = {}): UseBlogPostsRet
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchPosts = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchPosts = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.BLOG_POSTS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
       if (options.category) {
-        q = query(q, where('category', '==', options.category));
+        params.set('category', options.category);
       }
 
       if (options.isPublished !== undefined) {
-        q = query(q, where('isPublished', '==', options.isPublished));
+        params.set('isPublished', options.isPublished.toString());
       }
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
+      const response = await fetch(`/api/blog?${params.toString()}`);
+      const data = await response.json();
 
-      const snapshot = await getDocs(q);
-      const newPosts = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        publishedAt: doc.data().publishedAt?.toDate(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-      })) as BlogPost[];
-
-      if (isLoadMore) {
-        setPosts((prev) => [...prev, ...newPosts]);
+      if (data.posts) {
+        setPosts(data.posts);
+        setHasMore(data.posts.length >= pageLimit);
       } else {
-        setPosts(newPosts);
+        setPosts([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch blog posts'));
+      setPosts([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.category, options.isPublished, pageLimit, lastDoc]);
+  }, [options.category, options.isPublished, pageLimit]);
 
   useEffect(() => {
     fetchPosts();
-  }, [options.shopId, options.category, options.isPublished]);
+  }, [fetchPosts]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchPosts(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchPosts();
   };
 
-  const createPost = async (data: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const now = new Date();
-    const docRef = await addDoc(collection(db, COLLECTIONS.BLOG_POSTS), {
-      ...data,
-      createdAt: now,
-      updatedAt: now,
+  const createPost = async (data: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>): Promise<string> => {
+    const response = await fetch('/api/blog', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
     });
 
+    if (!response.ok) {
+      throw new Error('Failed to create blog post');
+    }
+
+    const result = await response.json();
     await refresh();
-    return docRef.id;
+    return result.id;
   };
 
   const updatePost = async (id: string, data: Partial<BlogPost>): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const docRef = doc(db, COLLECTIONS.BLOG_POSTS, id);
-    await updateDoc(docRef, {
-      ...data,
-      updatedAt: new Date(),
+    const response = await fetch('/api/blog', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...data }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to update blog post');
+    }
 
     setPosts((prev) =>
       prev.map((post) =>
-        post.id === id ? { ...post, ...data, updatedAt: new Date() } : post
+        post.id === id ? { ...post, ...data } : post
       )
     );
   };
 
   const deletePost = async (id: string): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
+    const response = await fetch(`/api/blog?id=${id}`, {
+      method: 'DELETE',
+    });
 
-    await deleteDoc(doc(db, COLLECTIONS.BLOG_POSTS, id));
+    if (!response.ok) {
+      throw new Error('Failed to delete blog post');
+    }
+
     setPosts((prev) => prev.filter((post) => post.id !== id));
   };
 
   const publishPost = async (id: string): Promise<void> => {
     await updatePost(id, {
-      isPublished: true,
-      publishedAt: new Date(),
+      is_published: true,
+      published_at: new Date().toISOString(),
     });
   };
 
   const unpublishPost = async (id: string): Promise<void> => {
     await updatePost(id, {
-      isPublished: false,
+      is_published: false,
     });
   };
 
@@ -164,7 +159,7 @@ export function useBlogPost(postId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!postId || !db) {
+    if (!postId) {
       setIsLoading(false);
       return;
     }
@@ -172,24 +167,18 @@ export function useBlogPost(postId: string | null) {
     const fetchPost = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.BLOG_POSTS, postId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/blog?id=${postId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setPost({
-            id: docSnap.id,
-            ...data,
-            publishedAt: data.publishedAt?.toDate(),
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-          } as BlogPost);
+        if (data && data.id) {
+          setPost(data);
         } else {
           setPost(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch blog post'));
+        setPost(null);
       } finally {
         setIsLoading(false);
       }

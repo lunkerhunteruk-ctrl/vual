@@ -1,29 +1,41 @@
-import createMiddleware from 'next-intl/middleware';
+import createIntlMiddleware from 'next-intl/middleware';
+import { NextRequest } from 'next/server';
 import { locales, defaultLocale } from './i18n';
+import { extractSubdomain, STORE_SLUG_HEADER, STORE_SLUG_COOKIE } from './lib/store-resolver';
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const intlMiddleware = createIntlMiddleware({
   locales,
-
-  // Used when no locale matches
   defaultLocale,
-
-  // Don't redirect to default locale
   localePrefix: 'always',
 });
 
+export default function middleware(request: NextRequest) {
+  const host = request.headers.get('host') || '';
+  const subdomain = extractSubdomain(host);
+
+  // Delegate to next-intl middleware for locale routing
+  const response = intlMiddleware(request);
+
+  // Inject store slug into response header and cookie
+  if (subdomain) {
+    response.headers.set(STORE_SLUG_HEADER, subdomain);
+    response.cookies.set(STORE_SLUG_COOKIE, subdomain, {
+      httpOnly: false,
+      path: '/',
+      sameSite: 'lax',
+    });
+  } else {
+    // Root domain — delete cookie if it was set from a previous subdomain visit
+    response.cookies.delete(STORE_SLUG_COOKIE);
+  }
+
+  return response;
+}
+
 export const config = {
-  // Match only internationalized pathnames
   matcher: [
-    // Enable a redirect to a matching locale at the root
     '/',
-
-    // Set a cookie to remember the previous locale for
-    // all requests that have a locale prefix
     '/(en|ja)/:path*',
-
-    // Enable redirects that add missing locales
-    // (e.g. `/pathnames` -> `/en/pathnames`)
     '/((?!api|_next|_vercel|.*\\..*).*)',
   ],
 };

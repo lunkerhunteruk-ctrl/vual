@@ -2,25 +2,24 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, Mail, Phone, MapPin, ShoppingBag, Calendar, Loader2 } from 'lucide-react';
-import { Pagination } from '@/components/ui';
+import { Search, X, Mail, Phone, ShoppingBag, Calendar, Loader2, ExternalLink, Users } from 'lucide-react';
 import { useCustomers } from '@/lib/hooks/useCustomers';
 import { formatPrice, getDefaultCurrency } from '@/lib/utils/currency';
-import type { Customer } from '@/lib/types';
+import { EmptyState } from '@/components/ui/EmptyState';
 
 type CustomerStatus = 'active' | 'inactive' | 'vip';
 
-// Helper to determine customer status
-const getCustomerStatus = (customer: Customer): CustomerStatus => {
-  if (customer.isVip) return 'vip';
-  // Consider inactive if no purchase in last 90 days
-  if (customer.lastPurchaseAt) {
-    const daysSincePurchase = (Date.now() - customer.lastPurchaseAt.getTime()) / (1000 * 60 * 60 * 24);
-    if (daysSincePurchase > 90) return 'inactive';
-  }
-  return 'active';
-};
+interface Customer {
+  id: string;
+  email: string;
+  name: string;
+  phone?: string;
+  total_orders: number;
+  total_spent: number;
+  created_at: string;
+}
 
 const statusColors: Record<CustomerStatus, { bg: string; text: string }> = {
   active: { bg: 'bg-emerald-50', text: 'text-emerald-700' },
@@ -28,35 +27,36 @@ const statusColors: Record<CustomerStatus, { bg: string; text: string }> = {
   vip: { bg: 'bg-amber-50', text: 'text-amber-700' },
 };
 
+// Helper to determine customer status based on spending
+const getCustomerStatus = (customer: Customer): CustomerStatus => {
+  if (customer.total_spent > 100000) return 'vip'; // VIP if spent over 100,000
+  if (customer.total_orders === 0) return 'inactive';
+  return 'active';
+};
+
 export function CustomerTable() {
   const t = useTranslations('admin.customers');
   const locale = useLocale();
   const defaultCurrency = getDefaultCurrency(locale);
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch real customers from Firestore
-  const { customers: firestoreCustomers, isLoading, hasMore, loadMore } = useCustomers({
+  // Fetch customers from Supabase API
+  const { customers, isLoading, hasMore, loadMore } = useCustomers({
+    search: searchQuery,
     limit: 20,
   });
 
   // Filter customers by search query
   const filteredCustomers = useMemo(() => {
-    if (!firestoreCustomers) return [];
-    if (!searchQuery.trim()) return firestoreCustomers;
+    if (!customers) return [];
+    return customers;
+  }, [customers]);
 
-    const query = searchQuery.toLowerCase();
-    return firestoreCustomers.filter(customer =>
-      customer.displayName?.toLowerCase().includes(query) ||
-      customer.email?.toLowerCase().includes(query) ||
-      customer.phone?.toLowerCase().includes(query)
-    );
-  }, [firestoreCustomers, searchQuery]);
-
-  const formatDate = (date: Date | undefined) => {
-    if (!date) return '-';
-    return new Intl.DateTimeFormat('en-US', {
+  const formatDate = (dateStr: string | undefined) => {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
@@ -88,7 +88,7 @@ export function CustomerTable() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search customers..."
+              placeholder={locale === 'ja' ? '顧客を検索...' : 'Search customers...'}
               className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
           </div>
@@ -128,12 +128,16 @@ export function CustomerTable() {
                 </tr>
               ) : filteredCustomers.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-20 text-center text-sm text-[var(--color-text-label)]">
-                    No customers found
+                  <td colSpan={6}>
+                    <EmptyState
+                      icon={Users}
+                      title={locale === 'ja' ? '顧客がいません' : 'No customers found'}
+                      description={locale === 'ja' ? '顧客が登録されると、ここに表示されます' : 'Customers will appear here when they register'}
+                    />
                   </td>
                 </tr>
               ) : (
-                filteredCustomers.map((customer) => {
+                filteredCustomers.map((customer: Customer) => {
                   const status = getCustomerStatus(customer);
                   return (
                     <tr
@@ -152,20 +156,20 @@ export function CustomerTable() {
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-[var(--color-bg-input)] rounded-full flex items-center justify-center">
                             <span className="text-xs font-medium text-[var(--color-text-body)]">
-                              {customer.displayName.split(' ').map(n => n[0]).join('')}
+                              {customer.name?.split(' ').map(n => n[0]).join('') || '?'}
                             </span>
                           </div>
-                          <span className="text-sm text-[var(--color-title-active)]">{customer.displayName}</span>
+                          <span className="text-sm text-[var(--color-title-active)]">{customer.name}</span>
                         </div>
                       </td>
                       <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
                         {customer.phone || '-'}
                       </td>
                       <td className="py-3 px-4 text-sm text-[var(--color-title-active)]">
-                        {customer.orderCount}
+                        {customer.total_orders}
                       </td>
                       <td className="py-3 px-4 text-sm font-medium text-[var(--color-accent)]">
-                        {formatCurrency(customer.totalSpent)}
+                        {formatCurrency(customer.total_spent)}
                       </td>
                       <td className="py-3 px-4">
                         <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[status].bg} ${statusColors[status].text}`}>
@@ -188,11 +192,11 @@ export function CustomerTable() {
               disabled={isLoading}
               className="w-full py-2 text-sm text-[var(--color-text-body)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors disabled:opacity-50"
             >
-              {isLoading ? 'Loading...' : 'Load More'}
+              {isLoading ? 'Loading...' : locale === 'ja' ? 'もっと見る' : 'Load More'}
             </button>
           ) : filteredCustomers.length > 0 ? (
             <p className="text-center text-sm text-[var(--color-text-label)]">
-              Showing all {filteredCustomers.length} customers
+              {locale === 'ja' ? `全${filteredCustomers.length}件を表示中` : `Showing all ${filteredCustomers.length} customers`}
             </p>
           ) : null}
         </div>
@@ -211,11 +215,11 @@ export function CustomerTable() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-[var(--color-bg-input)] rounded-full flex items-center justify-center">
                   <span className="text-lg font-medium text-[var(--color-text-body)]">
-                    {selectedCustomer.displayName.split(' ').map(n => n[0]).join('')}
+                    {selectedCustomer.name?.split(' ').map(n => n[0]).join('') || '?'}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[var(--color-title-active)]">{selectedCustomer.displayName}</h3>
+                  <h3 className="font-semibold text-[var(--color-title-active)]">{selectedCustomer.name}</h3>
                   <span className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[getCustomerStatus(selectedCustomer)].bg} ${statusColors[getCustomerStatus(selectedCustomer)].text}`}>
                     {getCustomerStatus(selectedCustomer).toUpperCase()}
                   </span>
@@ -243,14 +247,6 @@ export function CustomerTable() {
                   <Phone size={16} className="text-[var(--color-text-label)]" />
                   <span className="text-[var(--color-text-body)]">{selectedCustomer.phone || '-'}</span>
                 </div>
-                <div className="flex items-start gap-3 text-sm">
-                  <MapPin size={16} className="text-[var(--color-text-label)] mt-0.5" />
-                  <span className="text-[var(--color-text-body)]">
-                    {selectedCustomer.addresses?.[0]
-                      ? `${selectedCustomer.addresses[0].city}, ${selectedCustomer.addresses[0].prefecture}`
-                      : '-'}
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -265,14 +261,7 @@ export function CustomerTable() {
                     <Calendar size={14} className="text-[var(--color-text-label)]" />
                     <span className="text-[var(--color-text-label)]">{t('registration')}</span>
                   </div>
-                  <span className="text-[var(--color-text-body)]">{formatDate(selectedCustomer.createdAt)}</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <div className="flex items-center gap-2">
-                    <ShoppingBag size={14} className="text-[var(--color-text-label)]" />
-                    <span className="text-[var(--color-text-label)]">{t('lastPurchase')}</span>
-                  </div>
-                  <span className="text-[var(--color-text-body)]">{formatDate(selectedCustomer.lastPurchaseAt)}</span>
+                  <span className="text-[var(--color-text-body)]">{formatDate(selectedCustomer.created_at)}</span>
                 </div>
               </div>
             </div>
@@ -284,14 +273,25 @@ export function CustomerTable() {
               </h4>
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-[var(--color-bg-element)] rounded-[var(--radius-md)] p-3 text-center">
-                  <p className="text-xl font-semibold text-[var(--color-title-active)]">{selectedCustomer.orderCount}</p>
+                  <p className="text-xl font-semibold text-[var(--color-title-active)]">{selectedCustomer.total_orders}</p>
                   <p className="text-xs text-[var(--color-text-label)]">{t('totalOrder')}</p>
                 </div>
                 <div className="bg-[var(--color-bg-element)] rounded-[var(--radius-md)] p-3 text-center">
-                  <p className="text-xl font-semibold text-[var(--color-accent)]">{formatCurrency(selectedCustomer.totalSpent)}</p>
+                  <p className="text-xl font-semibold text-[var(--color-accent)]">{formatCurrency(selectedCustomer.total_spent)}</p>
                   <p className="text-xs text-[var(--color-text-label)]">{t('totalSpend')}</p>
                 </div>
               </div>
+            </div>
+
+            {/* View Full Details Link */}
+            <div className="pt-4 border-t border-[var(--color-line)]">
+              <Link
+                href={`/${locale}/admin/customers/${selectedCustomer.id}`}
+                className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-medium text-[var(--color-accent)] bg-[var(--color-bg-element)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-input)] transition-colors"
+              >
+                <ExternalLink size={14} />
+                {locale === 'ja' ? '詳細を見る' : 'View full details'}
+              </Link>
             </div>
           </motion.div>
         )}

@@ -1,24 +1,15 @@
 'use client';
 
-import { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Input, Select } from '@/components/ui';
 import { useCurrency } from '@/lib/hooks';
 import { ProductImageUpload } from './ProductImageUpload';
+import { ProductModelImages } from './ProductModelImages';
 import { ProductVariants, type ProductImage, type ProductVariant, type VariantOption } from './ProductVariants';
 import { SizeSpecTable, type SizeSpec } from './SizeSpecTable';
-
-const categoryOptions = [
-  { value: 'apparel', label: 'Apparel' },
-  { value: 'dress', label: 'Dress' },
-  { value: 'outer', label: 'Outer' },
-  { value: 'knitwear', label: 'Knitwear' },
-  { value: 'pants', label: 'Pants' },
-  { value: 'bag', label: 'Bag' },
-  { value: 'shoes', label: 'Shoes' },
-  { value: 'accessories', label: 'Accessories' },
-];
+import { CategorySelector } from './CategorySelector';
 
 const stockStatusOptions = [
   { value: 'in-stock', label: 'In Stock' },
@@ -41,41 +32,165 @@ export interface ProductFormData {
   variants: { color: string | null; size: string | null; sku: string; stock: number; priceOverride: number | null }[];
   sku?: string;
   stock?: number;
+  brandId?: string | null;
 }
 
 export interface ProductFormRef {
   getData: () => ProductFormData;
+  getDataWithUpload: () => Promise<ProductFormData>;
   validate: () => { valid: boolean; errors: string[] };
+  setData: (data: Partial<ProductFormData> & { id?: string }) => void;
 }
 
-export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(props, ref) {
+interface ProductFormProps {
+  productId?: string;
+  initialData?: Partial<ProductFormData> & {
+    id?: string;
+    base_price?: number;
+    discounted_price?: number;
+    tax_included?: boolean;
+    is_highlighted?: boolean;
+    size_specs?: any;
+    brand_id?: string;
+    product_images?: { id: string; url: string; color?: string; is_primary?: boolean }[];
+    product_variants?: { id: string; color?: string; size?: string; sku?: string; stock: number; price_override?: number }[];
+  };
+}
+
+export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function ProductForm({ productId, initialData }, ref) {
   const t = useTranslations('admin.products');
   const { defaultCurrency, options: currencyOptions } = useCurrency();
 
-  // Form state
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('apparel');
-  const [tags, setTags] = useState('');
-  const [price, setPrice] = useState('');
-  const [discountedPrice, setDiscountedPrice] = useState('');
-  const [selectedCurrency, setSelectedCurrency] = useState(defaultCurrency.toLowerCase());
-  const [taxIncluded, setTaxIncluded] = useState(true);
-  const [isHighlighted, setIsHighlighted] = useState(false);
-  const [sku, setSku] = useState('');
-  const [stockQuantity, setStockQuantity] = useState('');
+  // Form state - initialize from initialData if provided
+  const [name, setName] = useState(initialData?.name || '');
+  const [description, setDescription] = useState(initialData?.description || '');
+  const [category, setCategory] = useState(initialData?.category || '');
+  const [tags, setTags] = useState(initialData?.tags?.join(', ') || '');
+  const [price, setPrice] = useState(
+    (initialData?.price || initialData?.base_price)?.toString() || ''
+  );
+  const [discountedPrice, setDiscountedPrice] = useState(
+    (initialData?.discountedPrice || initialData?.discounted_price)?.toString() || ''
+  );
+  const [selectedCurrency, setSelectedCurrency] = useState(
+    initialData?.currency?.toLowerCase() || defaultCurrency.toLowerCase()
+  );
+  const [taxIncluded, setTaxIncluded] = useState(
+    initialData?.taxIncluded ?? initialData?.tax_included ?? true
+  );
+  const [isHighlighted, setIsHighlighted] = useState(
+    initialData?.isHighlighted ?? initialData?.is_highlighted ?? false
+  );
+  const [sku, setSku] = useState(initialData?.sku || '');
+  const [stockQuantity, setStockQuantity] = useState(initialData?.stock?.toString() || '');
   const [stockStatus, setStockStatus] = useState('in-stock');
 
-  // Image state
-  const [images, setImages] = useState<ProductImage[]>([]);
-  const [imageColorMap, setImageColorMap] = useState<Record<string, string>>({});
+  // Brand state
+  const [brandId, setBrandId] = useState<string | null>(initialData?.brandId || initialData?.brand_id || null);
+  const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
+  const [isCreatingBrand, setIsCreatingBrand] = useState(false);
+  const [newBrandName, setNewBrandName] = useState('');
 
-  // Variant state
-  const [variantOptions, setVariantOptions] = useState<VariantOption[]>([]);
-  const [variants, setVariants] = useState<ProductVariant[]>([]);
+  // Fetch brands
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const res = await fetch('/api/brands');
+        const data = await res.json();
+        if (data.brands) {
+          setBrands(data.brands.map((b: any) => ({ id: b.id, name: b.name })));
+        }
+      } catch (err) {
+        console.error('Failed to fetch brands:', err);
+      }
+    };
+    fetchBrands();
+  }, []);
+
+  const handleCreateBrand = async () => {
+    if (!newBrandName.trim()) return;
+    try {
+      const res = await fetch('/api/brands', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: newBrandName.trim() }),
+      });
+      const data = await res.json();
+      if (data.brand) {
+        setBrands(prev => [...prev, { id: data.brand.id, name: data.brand.name }]);
+        setBrandId(data.brand.id);
+        setNewBrandName('');
+        setIsCreatingBrand(false);
+      } else if (data.error) {
+        alert(data.error);
+      }
+    } catch (err) {
+      console.error('Failed to create brand:', err);
+    }
+  };
+
+  // Image state - initialize from initialData
+  const initImages: ProductImage[] = (initialData?.product_images || initialData?.images || []).map((img, idx) => ({
+    id: `img-${idx}`,
+    url: typeof img === 'string' ? img : img.url,
+    isPrimary: typeof img === 'object' && 'is_primary' in img ? img.is_primary : idx === 0,
+  }));
+  const [images, setImages] = useState<ProductImage[]>(initImages);
+
+  const initColorMap: Record<string, string> = {};
+  (initialData?.product_images || []).forEach((img, idx) => {
+    if (typeof img === 'object' && img.color) {
+      initColorMap[`img-${idx}`] = img.color;
+    }
+  });
+  const [imageColorMap, setImageColorMap] = useState<Record<string, string>>(initColorMap);
+
+  // Variant state - initialize from initialData
+  const initVariants: ProductVariant[] = (initialData?.product_variants || initialData?.variants || []).map((v: any, idx) => ({
+    id: `var-${idx}`,
+    color: v?.color || null,
+    size: v?.size || null,
+    sku: v?.sku || '',
+    stock: v?.stock || 0,
+    price: v?.priceOverride || v?.price_override || null,
+    imageId: null,
+  }));
+  const [variants, setVariants] = useState<ProductVariant[]>(initVariants);
+
+  // Extract variant options from initial variants
+  const initOptions: VariantOption[] = [];
+  const colors = [...new Set(initVariants.map(v => v.color).filter(Boolean))] as string[];
+  const sizes = [...new Set(initVariants.map(v => v.size).filter(Boolean))] as string[];
+  if (colors.length > 0) {
+    initOptions.push({ name: 'color', values: colors });
+  }
+  if (sizes.length > 0) {
+    initOptions.push({ name: 'size', values: sizes });
+  }
+  const [variantOptions, setVariantOptions] = useState<VariantOption[]>(initOptions);
 
   // Size spec state
-  const [sizeSpecs, setSizeSpecs] = useState<SizeSpec>({ columns: [], rows: [] });
+  const [sizeSpecs, setSizeSpecs] = useState<SizeSpec>(
+    initialData?.sizeSpecs || initialData?.size_specs || { columns: [], rows: [] }
+  );
+
+  // Helper function to upload a single image
+  const uploadImage = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', 'products');
+
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const result = await response.json();
+    if (result.error) {
+      throw new Error(result.error);
+    }
+    return result.url;
+  };
 
   // Expose methods to parent via ref
   useImperativeHandle(ref, () => ({
@@ -110,6 +225,64 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
         variants: formVariants,
         sku: sku || undefined,
         stock: stockQuantity ? parseInt(stockQuantity) : undefined,
+        brandId,
+      };
+    },
+    getDataWithUpload: async () => {
+      // Upload any new images (those with file property)
+      const uploadedImages = await Promise.all(
+        images.map(async (img) => {
+          // If image has a file, it needs to be uploaded
+          if (img.file) {
+            try {
+              const uploadedUrl = await uploadImage(img.file);
+              return {
+                url: uploadedUrl,
+                color: imageColorMap[img.id] || null,
+              };
+            } catch (error) {
+              console.error('Image upload failed:', error);
+              // Return original URL as fallback
+              return {
+                url: img.url,
+                color: imageColorMap[img.id] || null,
+              };
+            }
+          }
+          // Already uploaded image
+          return {
+            url: img.url,
+            color: imageColorMap[img.id] || null,
+          };
+        })
+      );
+
+      const formVariants = variants
+        .filter(v => v.color || v.size)
+        .map(v => ({
+          color: v.color,
+          size: v.size,
+          sku: v.sku,
+          stock: v.stock,
+          priceOverride: v.price,
+        }));
+
+      return {
+        name,
+        description,
+        category,
+        tags: tags.split(',').map(t => t.trim()).filter(Boolean),
+        price: parseInt(price) || 0,
+        discountedPrice: discountedPrice ? parseInt(discountedPrice) : null,
+        currency: selectedCurrency,
+        taxIncluded,
+        isHighlighted,
+        sizeSpecs,
+        images: uploadedImages,
+        variants: formVariants,
+        sku: sku || undefined,
+        stock: stockQuantity ? parseInt(stockQuantity) : undefined,
+        brandId,
       };
     },
     validate: () => {
@@ -118,6 +291,21 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
       if (!price || parseInt(price) <= 0) errors.push('価格を入力してください');
       // 画像は任意に変更
       return { valid: errors.length === 0, errors };
+    },
+    setData: (data) => {
+      if (data.name !== undefined) setName(data.name);
+      if (data.description !== undefined) setDescription(data.description);
+      if (data.category !== undefined) setCategory(data.category);
+      if (data.tags !== undefined) setTags(data.tags.join(', '));
+      if (data.price !== undefined) setPrice(data.price.toString());
+      if (data.discountedPrice !== undefined) setDiscountedPrice(data.discountedPrice?.toString() || '');
+      if (data.currency !== undefined) setSelectedCurrency(data.currency.toLowerCase());
+      if (data.taxIncluded !== undefined) setTaxIncluded(data.taxIncluded);
+      if (data.isHighlighted !== undefined) setIsHighlighted(data.isHighlighted);
+      if (data.sku !== undefined) setSku(data.sku);
+      if (data.stock !== undefined) setStockQuantity(data.stock.toString());
+      if (data.sizeSpecs !== undefined) setSizeSpecs(data.sizeSpecs);
+      if (data.brandId !== undefined) setBrandId(data.brandId || null);
     },
   }));
 
@@ -145,9 +333,20 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
             animate={{ opacity: 1, y: 0 }}
             className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-5"
           >
-            <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-4">
-              {t('basicDetails')}
-            </h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide">
+                {t('basicDetails')}
+              </h3>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={isHighlighted}
+                  onChange={(e) => setIsHighlighted(e.target.checked)}
+                  className="w-4 h-4 rounded text-[var(--color-accent)]"
+                />
+                <span className="text-xs text-[var(--color-text-label)]">{t('highlightProduct')}</span>
+              </label>
+            </div>
             <div className="space-y-4">
               <Input
                 label={t('productName')}
@@ -155,6 +354,61 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
+
+              {/* Brand Selector */}
+              <div>
+                <label className="block text-sm font-medium text-[var(--color-text-body)] mb-1.5">
+                  ブランド
+                </label>
+                {isCreatingBrand ? (
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={newBrandName}
+                      onChange={(e) => setNewBrandName(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleCreateBrand()}
+                      placeholder="ブランド名を入力"
+                      autoFocus
+                      className="flex-1 h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleCreateBrand}
+                      className="h-10 px-3 text-sm font-medium bg-[var(--color-accent)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity"
+                    >
+                      追加
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setIsCreatingBrand(false); setNewBrandName(''); }}
+                      className="h-10 px-3 text-sm text-[var(--color-text-label)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+                    >
+                      取消
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={brandId || ''}
+                      onChange={(e) => setBrandId(e.target.value || null)}
+                      className="flex-1 h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
+                    >
+                      <option value="">ブランドを選択</option>
+                      {brands.map(b => (
+                        <option key={b.id} value={b.id}>{b.name}</option>
+                      ))}
+                    </select>
+                    <button
+                      type="button"
+                      onClick={() => setIsCreatingBrand(true)}
+                      className="h-10 px-3 text-sm text-[var(--color-accent)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors whitespace-nowrap"
+                    >
+                      ＋ 新規
+                    </button>
+                  </div>
+                )}
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-[var(--color-text-body)] mb-1.5">
                   {t('productDescription')}
@@ -271,22 +525,13 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
                   value={sku}
                   onChange={(e) => setSku(e.target.value)}
                 />
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={isHighlighted}
-                    onChange={(e) => setIsHighlighted(e.target.checked)}
-                    className="w-4 h-4 rounded text-[var(--color-accent)]"
-                  />
-                  <span className="text-sm text-[var(--color-text-body)]">{t('highlightProduct')}</span>
-                </label>
               </div>
             </motion.div>
           )}
         </div>
 
         {/* Right Column - Images & Categories */}
-        <div className="space-y-6">
+        <div className="flex flex-col">
           {/* Product Images with Color Linking */}
           <ProductImageUpload
             images={images}
@@ -294,29 +539,47 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
             colorOptions={colorOptions}
             imageColorMap={imageColorMap}
             onImageColorMapChange={setImageColorMap}
+            onAddColor={(newColor) => {
+              // Add color to variant options
+              const colorOpt = variantOptions.find(o => o.name === 'color');
+              if (colorOpt) {
+                if (!colorOpt.values.includes(newColor)) {
+                  setVariantOptions(
+                    variantOptions.map(o =>
+                      o.name === 'color' ? { ...o, values: [...o.values, newColor] } : o
+                    )
+                  );
+                }
+              } else {
+                setVariantOptions([...variantOptions, { name: 'color', values: [newColor] }]);
+              }
+            }}
           />
 
-          {/* Categories */}
+          {/* Model Wearing Images */}
+          {productId && <ProductModelImages productId={productId} />}
+
+          {/* Spacer to push Categories to bottom */}
+          <div className="flex-1 min-h-6" />
+
+          {/* Categories & Highlight */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-5"
+            className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-4"
           >
-            <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-4">
+            <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-3">
               {t('categories')}
             </h3>
-            <div className="space-y-4">
-              <Select
-                label={t('productCategories')}
-                options={categoryOptions}
-                placeholder={t('selectCategory')}
+            <div className="space-y-3">
+              <CategorySelector
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={setCategory}
               />
               <Input
                 label={t('productTag')}
-                placeholder={t('enterTags') || 'Enter tags separated by comma'}
+                placeholder={t('enterTags')}
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
               />
@@ -330,28 +593,11 @@ export const ProductForm = forwardRef<ProductFormRef, {}>(function ProductForm(p
         images={images}
         variants={variants}
         options={variantOptions}
+        imageColorMap={imageColorMap}
+        basePrice={price ? parseInt(price) : undefined}
         onVariantsChange={setVariants}
         onOptionsChange={setVariantOptions}
       />
-
-      {/* Highlight option when variants exist */}
-      {hasVariants && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-5"
-        >
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={isHighlighted}
-              onChange={(e) => setIsHighlighted(e.target.checked)}
-              className="w-4 h-4 rounded text-[var(--color-accent)]"
-            />
-            <span className="text-sm text-[var(--color-text-body)]">{t('highlightProduct')}</span>
-          </label>
-        </motion.div>
-      )}
     </div>
   );
 });

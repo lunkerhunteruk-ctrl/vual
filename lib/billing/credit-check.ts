@@ -1,0 +1,177 @@
+import { createServerClient } from '@/lib/supabase';
+
+export interface CreditCheckResult {
+  allowed: boolean;
+  creditSource: 'store_b2b' | 'consumer_free' | 'consumer_paid' | 'consumer_subscription' | null;
+  creditTransactionId: string | null;
+  error?: string;
+  errorCode?: 'NO_CREDITS' | 'NO_STORE_CREDITS' | 'DAILY_LIMIT_EXCEEDED' | 'AUTH_REQUIRED' | 'DB_ERROR';
+  dailyLimit?: number;
+}
+
+export async function checkAndDeductCredit(params: {
+  storeId?: string;
+  productId?: string;
+  lineUserId?: string;
+  customerId?: string;
+  vtonQueueId?: string;
+}): Promise<CreditCheckResult> {
+  const supabase = createServerClient();
+  if (!supabase) {
+    return { allowed: false, creditSource: null, creditTransactionId: null, error: 'Database not configured', errorCode: 'DB_ERROR' };
+  }
+
+  const { storeId, productId, lineUserId, customerId, vtonQueueId } = params;
+
+  // ---- B2B: VUAL store product try-on ----
+  if (storeId && productId) {
+    const userId = lineUserId || customerId;
+
+    // Check daily try-on limit
+    if (userId) {
+      const { data: storeCredits } = await supabase
+        .from('store_credits')
+        .select('daily_tryon_limit')
+        .eq('store_id', storeId)
+        .single();
+
+      const dailyLimit = storeCredits?.daily_tryon_limit ?? 3;
+
+      // Count today's B2B usage for this user at this store
+      const todayStart = new Date();
+      todayStart.setHours(0, 0, 0, 0);
+
+      const { count } = await supabase
+        .from('vton_queue')
+        .select('*', { count: 'exact', head: true })
+        .eq('store_id', storeId)
+        .eq('user_id', userId)
+        .eq('credit_source', 'store_b2b')
+        .gte('created_at', todayStart.toISOString());
+
+      if ((count ?? 0) >= dailyLimit) {
+        return {
+          allowed: false,
+          creditSource: null,
+          creditTransactionId: null,
+          error: `本日の試着上限(${dailyLimit}回)に達しました`,
+          errorCode: 'DAILY_LIMIT_EXCEEDED',
+          dailyLimit,
+        };
+      }
+    }
+
+    const { data, error } = await supabase.rpc('deduct_store_credit', {
+      p_store_id: storeId,
+      p_amount: 1,
+      p_description: `試着クレジット消費 (product: ${productId})`,
+      p_vton_queue_id: vtonQueueId || null,
+    });
+
+    if (error) {
+      console.error('deduct_store_credit RPC error:', error);
+      return { allowed: false, creditSource: null, creditTransactionId: null, error: 'Failed to check store credits', errorCode: 'DB_ERROR' };
+    }
+
+    const result = data?.[0] || data;
+    if (!result?.success) {
+      return {
+        allowed: false,
+        creditSource: null,
+        creditTransactionId: null,
+        error: 'ストアのフィッティングクレジットが不足しています',
+        errorCode: 'NO_STORE_CREDITS',
+      };
+    }
+
+    return {
+      allowed: true,
+      creditSource: 'store_b2b',
+      creditTransactionId: result.transaction_id,
+    };
+  }
+
+  // ---- B2C: External try-on ----
+  if (!lineUserId && !customerId) {
+    return {
+      allowed: false,
+      creditSource: null,
+      creditTransactionId: null,
+      error: 'ログインが必要です',
+      errorCode: 'AUTH_REQUIRED',
+    };
+  }
+
+  // Find or create consumer_credits
+  let consumerCreditId: string | null = null;
+
+  if (lineUserId) {
+    const { data } = await supabase
+      .from('consumer_credits')
+      .select('id')
+      .eq('line_user_id', lineUserId)
+      .single();
+    consumerCreditId = data?.id || null;
+  } else if (customerId) {
+    const { data } = await supabase
+      .from('consumer_credits')
+      .select('id')
+      .eq('customer_id', customerId)
+      .single();
+    consumerCreditId = data?.id || null;
+  }
+
+  // Auto-create if not exists
+  if (!consumerCreditId) {
+    const insertData: Record<string, unknown> = {
+      free_tickets_remaining: 3,
+      free_tickets_reset_at: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth() + 1,
+        1
+      ).toISOString(),
+    };
+    if (customerId) insertData.customer_id = customerId;
+    if (lineUserId) insertData.line_user_id = lineUserId;
+
+    const { data: newCredits, error: insertError } = await supabase
+      .from('consumer_credits')
+      .insert(insertData)
+      .select('id')
+      .single();
+
+    if (insertError || !newCredits) {
+      console.error('Failed to create consumer_credits:', insertError);
+      return { allowed: false, creditSource: null, creditTransactionId: null, error: 'Failed to initialize credits', errorCode: 'DB_ERROR' };
+    }
+    consumerCreditId = newCredits.id;
+  }
+
+  // Deduct consumer credit (priority: free > subscription > paid)
+  const { data, error } = await supabase.rpc('deduct_consumer_credit', {
+    p_consumer_credit_id: consumerCreditId,
+    p_vton_queue_id: vtonQueueId || null,
+  });
+
+  if (error) {
+    console.error('deduct_consumer_credit RPC error:', error);
+    return { allowed: false, creditSource: null, creditTransactionId: null, error: 'Failed to check consumer credits', errorCode: 'DB_ERROR' };
+  }
+
+  const result = data?.[0] || data;
+  if (!result?.success || result.source === 'none') {
+    return {
+      allowed: false,
+      creditSource: null,
+      creditTransactionId: null,
+      error: 'クレジットが不足しています。クレジットを購入してください。',
+      errorCode: 'NO_CREDITS',
+    };
+  }
+
+  return {
+    allowed: true,
+    creditSource: result.source as CreditCheckResult['creditSource'],
+    creditTransactionId: result.tx_id,
+  };
+}

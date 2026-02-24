@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Search, X, Clock, TrendingUp, Grid3X3, Loader2 } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
-import { useProducts } from '@/lib/hooks/useProducts';
+import { useCustomerContext } from '@/lib/store/customer-context';
 
 // These could be stored in localStorage for real recent searches
 const defaultRecentSearches = ['Dress', 'Jacket', 'Shoes'];
@@ -17,34 +17,89 @@ export default function SearchPage() {
   const locale = useLocale();
   const t = useTranslations('customer.search');
 
+  const { storeId } = useCustomerContext();
+
   const initialQuery = searchParams.get('q') || '';
   const [query, setQuery] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [recentSearches, setRecentSearches] = useState<string[]>(defaultRecentSearches);
 
-  // Fetch all products for search
-  const { products: allProducts, isLoading } = useProducts({ limit: 100 });
+  // When storeId is set, load store products immediately (even without search query)
+  const [storeProducts, setStoreProducts] = useState<any[]>([]);
+  const [isLoadingStore, setIsLoadingStore] = useState(false);
 
-  // Filter products based on search query
-  const searchResults = useMemo(() => {
-    if (!searchQuery.trim() || !allProducts) return [];
+  // Server-side search via API
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const lowerQuery = searchQuery.toLowerCase();
-    return allProducts
-      .filter(p =>
-        p.name.toLowerCase().includes(lowerQuery) ||
-        p.brand?.toLowerCase().includes(lowerQuery) ||
-        p.description?.toLowerCase().includes(lowerQuery) ||
-        p.categories?.some(c => c.toLowerCase().includes(lowerQuery))
-      )
-      .map(p => ({
-        id: p.id,
-        name: p.name,
-        brand: p.brand || '',
-        price: `$${p.price}`,
-        image: p.images?.[0]?.url,
-      }));
-  }, [searchQuery, allProducts]);
+  // Load all store products when storeId is available
+  useEffect(() => {
+    if (!storeId) return;
+    const fetchStoreProducts = async () => {
+      setIsLoadingStore(true);
+      try {
+        const res = await fetch(`/api/customer/store-products?storeId=${storeId}&limit=100`);
+        const data = await res.json();
+        setStoreProducts((data.products || []).map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          brand: '',
+          price: `¥${p.price?.toLocaleString() || 0}`,
+          image: p.image,
+        })));
+      } catch {
+        setStoreProducts([]);
+      } finally {
+        setIsLoadingStore(false);
+      }
+    };
+    fetchStoreProducts();
+  }, [storeId]);
+
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    const fetchResults = async () => {
+      setIsLoading(true);
+      try {
+        // If scoped to a store, filter from already-loaded store products
+        if (storeId && storeProducts.length > 0) {
+          const q = searchQuery.toLowerCase();
+          const filtered = storeProducts.filter((p: any) =>
+            p.name.toLowerCase().includes(q)
+          );
+          setSearchResults(filtered);
+          setIsLoading(false);
+          return;
+        }
+
+        const params = new URLSearchParams({
+          search: searchQuery,
+          status: 'published',
+          limit: '50',
+        });
+        const res = await fetch(`/api/products?${params.toString()}`);
+        const data = await res.json();
+        const products = (data.products || []).map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          brand: p.brand || '',
+          price: `¥${p.base_price?.toLocaleString() || 0}`,
+          image: p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
+        }));
+        setSearchResults(products);
+      } catch {
+        setSearchResults([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchResults();
+  }, [searchQuery, storeId, storeProducts]);
 
   useEffect(() => {
     if (initialQuery) {
@@ -100,6 +155,10 @@ export default function SearchPage() {
   };
 
   const hasSearched = !!searchQuery;
+  // When store-scoped, show store products as default view
+  const showStoreProducts = !!storeId && !hasSearched;
+  const displayProducts = hasSearched ? searchResults : storeProducts;
+  const isLoadingAny = isLoading || isLoadingStore;
 
   return (
     <div className="min-h-screen">
@@ -114,7 +173,7 @@ export default function SearchPage() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={t('placeholder')}
+            placeholder={storeId ? (locale === 'ja' ? 'このショップの商品を検索' : 'Search this store') : t('placeholder')}
             className="w-full h-11 pl-11 pr-10 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
           />
           {query && (
@@ -131,19 +190,23 @@ export default function SearchPage() {
 
       {/* Content */}
       <div className="px-4 py-6">
-        {hasSearched ? (
+        {hasSearched || showStoreProducts ? (
           <>
-            {/* Search Results Header */}
+            {/* Results Header */}
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm text-[var(--color-text-body)]">
-                {isLoading ? (
+                {isLoadingAny ? (
                   <span className="flex items-center gap-2">
                     <Loader2 size={14} className="animate-spin" />
-                    Searching...
+                    {locale === 'ja' ? '読み込み中...' : 'Loading...'}
                   </span>
-                ) : (
+                ) : hasSearched ? (
                   <>
                     {searchResults.length} {t('resultsFor')} &quot;{searchQuery}&quot;
+                  </>
+                ) : (
+                  <>
+                    {displayProducts.length} {locale === 'ja' ? '件の商品' : 'products'}
                   </>
                 )}
               </p>
@@ -152,8 +215,8 @@ export default function SearchPage() {
               </button>
             </div>
 
-            {/* Results Grid */}
-            {isLoading ? (
+            {/* Products Grid */}
+            {isLoadingAny ? (
               <div className="grid grid-cols-2 gap-4">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="animate-pulse">
@@ -164,16 +227,15 @@ export default function SearchPage() {
                   </div>
                 ))}
               </div>
-            ) : searchResults.length > 0 ? (
-              <ProductGrid products={searchResults} />
+            ) : displayProducts.length > 0 ? (
+              <ProductGrid products={displayProducts} />
             ) : (
               <div className="flex flex-col items-center justify-center py-16">
                 <Search size={48} className="text-[var(--color-text-label)] mb-4" />
                 <p className="text-sm text-[var(--color-text-body)] text-center">
-                  No products found for &quot;{searchQuery}&quot;
-                </p>
-                <p className="text-xs text-[var(--color-text-label)] text-center mt-1">
-                  Try different keywords or browse categories
+                  {hasSearched
+                    ? `No products found for "${searchQuery}"`
+                    : (locale === 'ja' ? '商品が見つかりません' : 'No products found')}
                 </p>
               </div>
             )}
@@ -188,10 +250,13 @@ export default function SearchPage() {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {recentSearches.map((term) => (
-                    <button
+                    <div
                       key={term}
+                      role="button"
+                      tabIndex={0}
                       onClick={() => handleTermClick(term)}
-                      className="flex items-center gap-2 px-3 py-1.5 bg-[var(--color-bg-element)] rounded-full text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)] transition-colors"
+                      onKeyDown={(e) => { if (e.key === 'Enter') handleTermClick(term); }}
+                      className="flex items-center gap-2 px-3 py-1.5 bg-[var(--color-bg-element)] rounded-full text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)] transition-colors cursor-pointer"
                     >
                       <Clock size={14} className="text-[var(--color-text-label)]" />
                       {term}
@@ -204,7 +269,7 @@ export default function SearchPage() {
                       >
                         <X size={14} />
                       </button>
-                    </button>
+                    </div>
                   ))}
                 </div>
               </div>

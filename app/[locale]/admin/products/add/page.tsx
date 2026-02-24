@@ -15,21 +15,18 @@ export default function AddProductPage() {
   const formRef = useRef<ProductFormRef>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const saveProduct = async (status: 'draft' | 'published') => {
-    if (!formRef.current) {
-      alert('フォームの初期化エラー');
-      return;
-    }
+    if (!formRef.current) return;
 
     const validation = formRef.current.validate();
     if (!validation.valid) {
-      alert(validation.errors.join('\n'));
+      setError(validation.errors.join('\n'));
       return;
     }
 
-    const data = formRef.current.getData();
-
+    setError(null);
     const isPublish = status === 'published';
     if (isPublish) {
       setIsPublishing(true);
@@ -38,6 +35,8 @@ export default function AddProductPage() {
     }
 
     try {
+      const data = await formRef.current.getDataWithUpload();
+
       const response = await fetch('/api/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,16 +49,10 @@ export default function AddProductPage() {
         throw new Error(result.error || 'Failed to save');
       }
 
-      if (isPublish) {
-        alert(locale === 'ja' ? '商品を公開しました' : 'Product published successfully');
-        router.push(`/${locale}/admin/products`);
-      } else {
-        alert(locale === 'ja' ? '下書きを保存しました' : 'Draft saved successfully');
-      }
+      router.push(`/${locale}/admin/products`);
     } catch (error) {
       console.error('Save error:', error);
-      alert(locale === 'ja' ? '保存に失敗しました' : 'Failed to save');
-    } finally {
+      setError(locale === 'ja' ? '保存に失敗しました' : 'Failed to save');
       setIsSaving(false);
       setIsPublishing(false);
     }
@@ -91,6 +84,13 @@ export default function AddProductPage() {
           {t('publishProduct')}
         </Button>
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-[var(--radius-md)] px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
       {/* Product Form */}
       <ProductForm ref={formRef} />

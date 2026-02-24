@@ -1,12 +1,22 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, updateDoc, deleteDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Review } from '@/lib/types';
 
 type ReviewStatus = 'pending' | 'approved' | 'rejected';
 
+interface Review {
+  id: string;
+  product_id: string;
+  customer_id?: string;
+  customer_name: string;
+  customer_email?: string;
+  rating: number;
+  title?: string;
+  content?: string;
+  status: ReviewStatus;
+  created_at: string;
+  updated_at: string;
+}
+
 interface UseReviewsOptions {
-  shopId?: string;
   productId?: string;
   status?: ReviewStatus;
   limit?: number;
@@ -28,94 +38,71 @@ export function useReviews(options: UseReviewsOptions = {}): UseReviewsReturn {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchReviews = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchReviews = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.REVIEWS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
       if (options.productId) {
-        q = query(q, where('productId', '==', options.productId));
+        params.set('productId', options.productId);
       }
 
       if (options.status) {
-        q = query(q, where('status', '==', options.status));
+        params.set('status', options.status);
       }
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
+      const response = await fetch(`/api/reviews?${params.toString()}`);
+      const data = await response.json();
 
-      const snapshot = await getDocs(q);
-      const newReviews = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-      })) as Review[];
-
-      if (isLoadMore) {
-        setReviews((prev) => [...prev, ...newReviews]);
+      if (data.reviews) {
+        setReviews(data.reviews);
+        setHasMore(data.reviews.length >= pageLimit);
       } else {
-        setReviews(newReviews);
+        setReviews([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch reviews'));
+      setReviews([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.productId, options.status, pageLimit, lastDoc]);
+  }, [options.productId, options.status, pageLimit]);
 
   useEffect(() => {
     fetchReviews();
-  }, [options.shopId, options.productId, options.status]);
+  }, [fetchReviews]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchReviews(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchReviews();
   };
 
   const updateStatus = async (id: string, status: ReviewStatus): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
-
-    const docRef = doc(db, COLLECTIONS.REVIEWS, id);
-    await updateDoc(docRef, {
-      status,
-      updatedAt: new Date(),
+    const response = await fetch('/api/reviews', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, status }),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to update review status');
+    }
 
     setReviews((prev) =>
       prev.map((review) =>
-        review.id === id ? { ...review, status, updatedAt: new Date() } : review
+        review.id === id ? { ...review, status } : review
       )
     );
   };
@@ -129,9 +116,14 @@ export function useReviews(options: UseReviewsOptions = {}): UseReviewsReturn {
   };
 
   const deleteReview = async (id: string): Promise<void> => {
-    if (!db) throw new Error('Database not initialized');
+    const response = await fetch(`/api/reviews?id=${id}`, {
+      method: 'DELETE',
+    });
 
-    await deleteDoc(doc(db, COLLECTIONS.REVIEWS, id));
+    if (!response.ok) {
+      throw new Error('Failed to delete review');
+    }
+
     setReviews((prev) => prev.filter((review) => review.id !== id));
   };
 
@@ -144,7 +136,7 @@ export function useReview(reviewId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!reviewId || !db) {
+    if (!reviewId) {
       setIsLoading(false);
       return;
     }
@@ -152,23 +144,18 @@ export function useReview(reviewId: string | null) {
     const fetchReview = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.REVIEWS, reviewId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/reviews?id=${reviewId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setReview({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-          } as Review);
+        if (data && data.id) {
+          setReview(data);
         } else {
           setReview(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch review'));
+        setReview(null);
       } finally {
         setIsLoading(false);
       }
@@ -187,7 +174,7 @@ export function useProductRating(productId: string | null) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!productId || !db) {
+    if (!productId) {
       setIsLoading(false);
       return;
     }
@@ -195,17 +182,13 @@ export function useProductRating(productId: string | null) {
     const fetchRatings = async () => {
       try {
         setIsLoading(true);
-        const q = query(
-          collection(db, COLLECTIONS.REVIEWS),
-          where('productId', '==', productId),
-          where('status', '==', 'approved')
-        );
-        const snapshot = await getDocs(q);
+        const response = await fetch(`/api/reviews?productId=${productId}&status=approved&limit=1000`);
+        const data = await response.json();
 
-        if (snapshot.docs.length > 0) {
-          const total = snapshot.docs.reduce((sum, doc) => sum + (doc.data().rating || 0), 0);
-          setAvgRating(total / snapshot.docs.length);
-          setReviewCount(snapshot.docs.length);
+        if (data.reviews && data.reviews.length > 0) {
+          const total = data.reviews.reduce((sum: number, r: Review) => sum + (r.rating || 0), 0);
+          setAvgRating(total / data.reviews.length);
+          setReviewCount(data.reviews.length);
         } else {
           setAvgRating(0);
           setReviewCount(0);

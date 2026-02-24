@@ -1,12 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Transaction } from '@/lib/types';
 
 type TransactionStatus = 'pending' | 'completed' | 'failed';
+type TransactionType = 'payment' | 'refund' | 'payout';
+
+interface Transaction {
+  id: string;
+  order_id?: string;
+  type: TransactionType;
+  amount: number;
+  currency: string;
+  status: TransactionStatus;
+  stripe_payment_intent_id?: string;
+  metadata?: any;
+  created_at: string;
+}
 
 interface UseTransactionsOptions {
-  shopId?: string;
   orderId?: string;
   status?: TransactionStatus;
   limit?: number;
@@ -25,78 +34,54 @@ export function useTransactions(options: UseTransactionsOptions = {}): UseTransa
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchTransactions = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchTransactions = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.TRANSACTIONS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
       if (options.orderId) {
-        q = query(q, where('orderId', '==', options.orderId));
+        params.set('orderId', options.orderId);
       }
 
       if (options.status) {
-        q = query(q, where('status', '==', options.status));
+        params.set('status', options.status);
       }
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
+      const response = await fetch(`/api/transactions?${params.toString()}`);
+      const data = await response.json();
 
-      const snapshot = await getDocs(q);
-      const newTransactions = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-      })) as Transaction[];
-
-      if (isLoadMore) {
-        setTransactions((prev) => [...prev, ...newTransactions]);
+      if (data.transactions) {
+        setTransactions(data.transactions);
+        setHasMore(data.transactions.length >= pageLimit);
       } else {
-        setTransactions(newTransactions);
+        setTransactions([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch transactions'));
+      setTransactions([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.orderId, options.status, pageLimit, lastDoc]);
+  }, [options.orderId, options.status, pageLimit]);
 
   useEffect(() => {
     fetchTransactions();
-  }, [options.shopId, options.orderId, options.status]);
+  }, [fetchTransactions]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchTransactions(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchTransactions();
   };
 
@@ -109,7 +94,7 @@ export function useTransaction(transactionId: string | null) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!transactionId || !db) {
+    if (!transactionId) {
       setIsLoading(false);
       return;
     }
@@ -117,22 +102,18 @@ export function useTransaction(transactionId: string | null) {
     const fetchTransaction = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.TRANSACTIONS, transactionId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/transactions?id=${transactionId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setTransaction({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-          } as Transaction);
+        if (data && data.id) {
+          setTransaction(data);
         } else {
           setTransaction(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch transaction'));
+        setTransaction(null);
       } finally {
         setIsLoading(false);
       }

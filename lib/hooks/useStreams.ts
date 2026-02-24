@@ -3,7 +3,7 @@ import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, startAf
 import { db, COLLECTIONS } from '@/lib/firebase';
 import type { LiveStream } from '@/lib/types';
 
-type StreamStatus = 'scheduled' | 'live' | 'ended';
+type StreamStatus = 'scheduled' | 'live' | 'ended' | 'test';
 
 interface UseStreamsOptions {
   shopId?: string;

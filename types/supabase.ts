@@ -18,6 +18,13 @@ export interface Database {
           description: string | null
           logo_url: string | null
           owner_id: string
+          line_channel_access_token: string | null
+          line_channel_id: string | null
+          line_bot_basic_id: string | null
+          line_connected_at: string | null
+          custom_domain: string | null
+          primary_color: string | null
+          is_active: boolean
           created_at: string
           updated_at: string
         }
@@ -28,6 +35,13 @@ export interface Database {
           description?: string | null
           logo_url?: string | null
           owner_id: string
+          line_channel_access_token?: string | null
+          line_channel_id?: string | null
+          line_bot_basic_id?: string | null
+          line_connected_at?: string | null
+          custom_domain?: string | null
+          primary_color?: string | null
+          is_active?: boolean
           created_at?: string
           updated_at?: string
         }
@@ -38,6 +52,13 @@ export interface Database {
           description?: string | null
           logo_url?: string | null
           owner_id?: string
+          line_channel_access_token?: string | null
+          line_channel_id?: string | null
+          line_bot_basic_id?: string | null
+          line_connected_at?: string | null
+          custom_domain?: string | null
+          primary_color?: string | null
+          is_active?: boolean
           updated_at?: string
         }
       }

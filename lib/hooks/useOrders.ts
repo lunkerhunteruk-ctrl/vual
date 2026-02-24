@@ -1,12 +1,41 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, updateDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
-import { db, COLLECTIONS } from '@/lib/firebase';
-import type { Order, OrderStatus } from '@/lib/types';
+
+export type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+
+interface OrderItem {
+  id: string;
+  product_id: string;
+  product_name: string;
+  variant_name?: string;
+  quantity: number;
+  unit_price: number;
+  total_price: number;
+}
+
+interface Order {
+  id: string;
+  customer_id?: string;
+  customer_email: string;
+  customer_name: string;
+  status: OrderStatus;
+  subtotal: number;
+  tax: number;
+  shipping: number;
+  discount: number;
+  total: number;
+  currency: string;
+  shipping_address: any;
+  billing_address?: any;
+  stripe_payment_intent_id?: string;
+  notes?: string;
+  created_at: string;
+  updated_at: string;
+  order_items?: OrderItem[];
+}
 
 interface UseOrdersOptions {
-  shopId?: string;
-  customerId?: string;
   status?: OrderStatus;
+  customerId?: string;
   limit?: number;
 }
 
@@ -24,115 +53,73 @@ export function useOrders(options: UseOrdersOptions = {}): UseOrdersReturn {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const [lastDoc, setLastDoc] = useState<DocumentSnapshot | null>(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
 
   const pageLimit = options.limit || 20;
 
-  const fetchOrders = useCallback(async (isLoadMore = false) => {
-    if (!db) {
-      setIsLoading(false);
-      return;
-    }
-
+  const fetchOrders = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.ORDERS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
+      const params = new URLSearchParams();
+      params.set('limit', pageLimit.toString());
 
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
+      if (options.status) {
+        params.set('status', options.status);
       }
 
       if (options.customerId) {
-        q = query(q, where('customerId', '==', options.customerId));
+        params.set('customerId', options.customerId);
       }
 
-      if (options.status) {
-        q = query(q, where('status', '==', options.status));
-      }
+      const response = await fetch(`/api/orders?${params.toString()}`);
+      const data = await response.json();
 
-      if (isLoadMore && lastDoc) {
-        q = query(q, startAfter(lastDoc));
-      }
-
-      const snapshot = await getDocs(q);
-      const newOrders = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-        paidAt: doc.data().paidAt?.toDate(),
-        shippedAt: doc.data().shippedAt?.toDate(),
-        deliveredAt: doc.data().deliveredAt?.toDate(),
-        cancelledAt: doc.data().cancelledAt?.toDate(),
-      })) as Order[];
-
-      if (isLoadMore) {
-        setOrders((prev) => [...prev, ...newOrders]);
+      if (data.orders) {
+        setOrders(data.orders);
+        setHasMore(data.orders.length >= pageLimit);
       } else {
-        setOrders(newOrders);
+        setOrders([]);
+        setHasMore(false);
       }
 
-      setLastDoc(snapshot.docs[snapshot.docs.length - 1] || null);
-      setHasMore(snapshot.docs.length === pageLimit);
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch orders'));
+      setOrders([]);
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.customerId, options.status, pageLimit, lastDoc]);
+  }, [options.status, options.customerId, pageLimit]);
 
   useEffect(() => {
     fetchOrders();
-  }, [options.shopId, options.customerId, options.status]);
+  }, [fetchOrders]);
 
   const loadMore = async () => {
-    if (!isLoading && hasMore) {
-      await fetchOrders(true);
-    }
+    // Pagination not implemented yet
   };
 
   const refresh = async () => {
-    setLastDoc(null);
-    setHasMore(true);
     await fetchOrders();
   };
 
   const updateOrderStatus = async (orderId: string, status: OrderStatus) => {
-    if (!db) return;
-
     try {
-      const orderRef = doc(db, COLLECTIONS.ORDERS, orderId);
-      const updateData: Record<string, Date | OrderStatus> = {
-        status,
-        updatedAt: new Date(),
-      };
+      const response = await fetch('/api/orders', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: orderId, status }),
+      });
 
-      // Add timestamp for specific status changes
-      switch (status) {
-        case 'shipped':
-          updateData.shippedAt = new Date();
-          break;
-        case 'delivered':
-          updateData.deliveredAt = new Date();
-          break;
-        case 'cancelled':
-          updateData.cancelledAt = new Date();
-          break;
+      if (!response.ok) {
+        throw new Error('Failed to update order status');
       }
-
-      await updateDoc(orderRef, updateData);
 
       // Update local state
       setOrders((prev) =>
         prev.map((order) =>
-          order.id === orderId ? { ...order, status, ...updateData } : order
+          order.id === orderId ? { ...order, status } : order
         )
       );
     } catch (err) {
@@ -147,9 +134,10 @@ export function useOrder(orderId: string | null) {
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    if (!orderId || !db) {
+    if (!orderId) {
       setIsLoading(false);
       return;
     }
@@ -157,34 +145,27 @@ export function useOrder(orderId: string | null) {
     const fetchOrder = async () => {
       try {
         setIsLoading(true);
-        const docRef = doc(db, COLLECTIONS.ORDERS, orderId);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(`/api/orders?id=${orderId}`);
+        const data = await response.json();
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setOrder({
-            id: docSnap.id,
-            ...data,
-            createdAt: data.createdAt?.toDate(),
-            updatedAt: data.updatedAt?.toDate(),
-            paidAt: data.paidAt?.toDate(),
-            shippedAt: data.shippedAt?.toDate(),
-            deliveredAt: data.deliveredAt?.toDate(),
-            cancelledAt: data.cancelledAt?.toDate(),
-          } as Order);
+        if (data && data.id) {
+          setOrder(data);
         } else {
           setOrder(null);
         }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to fetch order'));
+        setOrder(null);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchOrder();
-  }, [orderId]);
+  }, [orderId, refreshKey]);
 
-  return { order, isLoading, error };
+  const refresh = () => setRefreshKey((k) => k + 1);
+
+  return { order, isLoading, error, refresh };
 }

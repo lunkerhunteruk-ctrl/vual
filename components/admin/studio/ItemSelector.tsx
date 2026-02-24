@@ -1,41 +1,48 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Star, Check, Sparkles, ToggleLeft, ToggleRight } from 'lucide-react';
+import { Search, Star, Check, Sparkles, ToggleLeft, ToggleRight, Loader2 } from 'lucide-react';
+import Image from 'next/image';
+import { formatPrice } from '@/lib/utils/currency';
 
 interface Product {
   id: string;
   name: string;
-  nameJa?: string;
-  price: string;
+  name_en?: string;
+  base_price: number;
+  currency: string;
   category: string;
-  categoryJa?: string;
-  image: string;
+  product_images?: { id: string; url: string; is_primary: boolean }[];
 }
-
-// Mock products - in production, fetch from API
-const mockProducts: Product[] = [
-  { id: '1', name: 'Oversized Blazer', nameJa: 'オーバーサイズブレザー', price: '¥29,900', category: 'Outer', categoryJa: 'アウター', image: '' },
-  { id: '2', name: 'Silk Blouse', nameJa: 'シルクブラウス', price: '¥18,900', category: 'Tops', categoryJa: 'トップス', image: '' },
-  { id: '3', name: 'Wool Cardigan', nameJa: 'ウールカーディガン', price: '¥14,900', category: 'Tops', categoryJa: 'トップス', image: '' },
-  { id: '4', name: 'Cotton T-Shirt', nameJa: 'コットンTシャツ', price: '¥4,900', category: 'Tops', categoryJa: 'トップス', image: '' },
-  { id: '5', name: 'Cashmere Sweater', nameJa: 'カシミアセーター', price: '¥24,900', category: 'Tops', categoryJa: 'トップス', image: '' },
-  { id: '6', name: 'Denim Jeans', nameJa: 'デニムジーンズ', price: '¥12,900', category: 'Bottoms', categoryJa: 'ボトムス', image: '' },
-  { id: '7', name: 'Pleated Skirt', nameJa: 'プリーツスカート', price: '¥9,900', category: 'Bottoms', categoryJa: 'ボトムス', image: '' },
-  { id: '8', name: 'Wide Pants', nameJa: 'ワイドパンツ', price: '¥11,900', category: 'Bottoms', categoryJa: 'ボトムス', image: '' },
-  { id: '9', name: 'Silk Dress', nameJa: 'シルクワンピース', price: '¥34,900', category: 'Dress', categoryJa: 'ワンピース', image: '' },
-  { id: '10', name: 'Leather Bag', nameJa: 'レザーバッグ', price: '¥39,900', category: 'Bag', categoryJa: 'バッグ', image: '' },
-];
 
 // Category mapping for AI suggestions
 const categoryPairs: Record<string, string[]> = {
-  'Tops': ['Bottoms'],
-  'Outer': ['Tops', 'Bottoms'],
-  'Bottoms': ['Tops'],
-  'Dress': [],
-  'Bag': ['Tops', 'Bottoms', 'Dress'],
+  'tops': ['bottoms', 'pants'],
+  'apparel': ['bottoms', 'pants', 'bag'],
+  'outer': ['tops', 'bottoms', 'pants'],
+  'knitwear': ['bottoms', 'pants'],
+  'bottoms': ['tops', 'knitwear', 'outer'],
+  'pants': ['tops', 'knitwear', 'outer'],
+  'dress': ['bag', 'accessories'],
+  'bag': ['tops', 'bottoms', 'dress'],
+  'shoes': ['tops', 'bottoms', 'dress'],
+  'accessories': ['tops', 'bottoms', 'dress'],
+};
+
+// Category display names
+const categoryNames: Record<string, { en: string; ja: string }> = {
+  'apparel': { en: 'Apparel', ja: 'アパレル' },
+  'tops': { en: 'Tops', ja: 'トップス' },
+  'outer': { en: 'Outer', ja: 'アウター' },
+  'knitwear': { en: 'Knitwear', ja: 'ニット' },
+  'bottoms': { en: 'Bottoms', ja: 'ボトムス' },
+  'pants': { en: 'Pants', ja: 'パンツ' },
+  'dress': { en: 'Dress', ja: 'ワンピース' },
+  'bag': { en: 'Bag', ja: 'バッグ' },
+  'shoes': { en: 'Shoes', ja: 'シューズ' },
+  'accessories': { en: 'Accessories', ja: 'アクセサリー' },
 };
 
 export interface ItemSelection {
@@ -53,28 +60,51 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
   const t = useTranslations('admin.studio');
   const locale = useLocale();
   const [searchQuery, setSearchQuery] = useState('');
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredProducts = mockProducts.filter(product => {
-    const name = locale === 'ja' ? (product.nameJa || product.name) : product.name;
-    const category = locale === 'ja' ? (product.categoryJa || product.category) : product.category;
+  // Fetch products from API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch('/api/products?status=published&limit=100');
+        const data = await response.json();
+        if (data.products) {
+          setProducts(data.products);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = products.filter(product => {
+    const name = locale === 'ja' ? product.name : (product.name_en || product.name);
+    const category = product.category || '';
     return name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       category.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   // Get key item details
-  const keyItemProduct = mockProducts.find(p => p.id === selection.keyItem);
+  const keyItemProduct = products.find(p => p.id === selection.keyItem);
 
   // Get suggested categories for sub-items
   const suggestedCategories = useMemo(() => {
     if (!keyItemProduct) return [];
-    return categoryPairs[keyItemProduct.category] || [];
+    const category = (keyItemProduct.category || '').toLowerCase();
+    return categoryPairs[category] || [];
   }, [keyItemProduct]);
 
   // Filter products for sub-item selection (different category than key item)
   const subItemProducts = useMemo(() => {
     if (!keyItemProduct) return [];
     return filteredProducts.filter(p =>
-      suggestedCategories.includes(p.category) && p.id !== selection.keyItem
+      suggestedCategories.includes((p.category || '').toLowerCase()) && p.id !== selection.keyItem
     );
   }, [filteredProducts, keyItemProduct, suggestedCategories, selection.keyItem]);
 
@@ -102,10 +132,19 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
   };
 
   const getProductName = (product: Product) =>
-    locale === 'ja' ? (product.nameJa || product.name) : product.name;
+    locale === 'ja' ? product.name : (product.name_en || product.name);
 
-  const getProductCategory = (product: Product) =>
-    locale === 'ja' ? (product.categoryJa || product.category) : product.category;
+  const getProductCategory = (product: Product) => {
+    const category = (product.category || '').toLowerCase();
+    const names = categoryNames[category];
+    return names ? (locale === 'ja' ? names.ja : names.en) : product.category;
+  };
+
+  const getProductImage = (product: Product) => {
+    if (!product.product_images || product.product_images.length === 0) return null;
+    const primary = product.product_images.find(img => img.is_primary);
+    return primary?.url || product.product_images[0]?.url;
+  };
 
   return (
     <motion.div
@@ -135,43 +174,73 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
 
       {/* Key Item Selection */}
       <div className="flex-1 overflow-y-auto mb-4">
-        <div className="grid grid-cols-2 gap-3">
-          {filteredProducts.map((product) => {
-            const isKeyItem = selection.keyItem === product.id;
+        {isLoading ? (
+          <div className="flex items-center justify-center py-10">
+            <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+          </div>
+        ) : filteredProducts.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-10 text-center">
+            <p className="text-sm text-[var(--color-text-label)]">
+              {locale === 'ja' ? '商品がありません' : 'No products found'}
+            </p>
+            <p className="text-xs text-[var(--color-text-placeholder)] mt-1">
+              {locale === 'ja' ? '公開中の商品を追加してください' : 'Add published products first'}
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3">
+            {filteredProducts.map((product) => {
+              const isKeyItem = selection.keyItem === product.id;
+              const imageUrl = getProductImage(product);
 
-            return (
-              <motion.button
-                key={product.id}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => selectKeyItem(product.id)}
-                className={`relative p-2 rounded-[var(--radius-md)] text-left transition-all ${
-                  isKeyItem
-                    ? 'bg-[var(--color-accent)]/10 ring-2 ring-[var(--color-accent)]'
-                    : 'bg-white border border-[var(--color-line)] hover:border-[var(--color-accent)]'
-                }`}
-              >
-                {/* Key Item indicator */}
-                {isKeyItem && (
-                  <div className="absolute top-2 right-2 w-5 h-5 bg-[var(--color-accent)] rounded-full flex items-center justify-center">
-                    <Star size={12} className="text-white fill-white" />
+              return (
+                <motion.button
+                  key={product.id}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => selectKeyItem(product.id)}
+                  className={`relative p-2 rounded-[var(--radius-md)] text-left transition-all ${
+                    isKeyItem
+                      ? 'bg-[var(--color-accent)]/10 ring-2 ring-[var(--color-accent)]'
+                      : 'bg-white border border-[var(--color-line)] hover:border-[var(--color-accent)]'
+                  }`}
+                >
+                  {/* Key Item indicator */}
+                  {isKeyItem && (
+                    <div className="absolute top-2 right-2 w-5 h-5 bg-[var(--color-accent)] rounded-full flex items-center justify-center z-10">
+                      <Star size={12} className="text-white fill-white" />
+                    </div>
+                  )}
+
+                  {/* Product Image */}
+                  <div className="aspect-square bg-[var(--color-bg-element)] rounded-[var(--radius-sm)] mb-2 overflow-hidden">
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={getProductName(product)}
+                        width={120}
+                        height={120}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] flex items-center justify-center text-xs text-[var(--color-text-label)]">
+                        No Image
+                      </div>
+                    )}
                   </div>
-                )}
 
-                {/* Product Image */}
-                <div className="aspect-square bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-sm)] mb-2" />
-
-                {/* Product Info */}
-                <p className="text-xs font-medium text-[var(--color-title-active)] truncate">
-                  {getProductName(product)}
-                </p>
-                <p className="text-xs text-[var(--color-text-label)]">
-                  {getProductCategory(product)}
-                </p>
-              </motion.button>
-            );
-          })}
-        </div>
+                  {/* Product Info */}
+                  <p className="text-xs font-medium text-[var(--color-title-active)] truncate">
+                    {getProductName(product)}
+                  </p>
+                  <p className="text-xs text-[var(--color-text-label)]">
+                    {getProductCategory(product)}
+                  </p>
+                </motion.button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Sub-Item Section */}
@@ -206,6 +275,7 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
                 <div className="grid grid-cols-2 gap-2 max-h-[200px] overflow-y-auto">
                   {subItemProducts.map((product) => {
                     const isSubItem = selection.subItem === product.id;
+                    const imageUrl = getProductImage(product);
 
                     return (
                       <motion.button
@@ -220,12 +290,24 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
                         }`}
                       >
                         {isSubItem && (
-                          <div className="absolute top-1.5 right-1.5 w-4 h-4 bg-[var(--color-secondary)] rounded-full flex items-center justify-center">
+                          <div className="absolute top-1.5 right-1.5 w-4 h-4 bg-[var(--color-secondary)] rounded-full flex items-center justify-center z-10">
                             <Check size={10} className="text-white" />
                           </div>
                         )}
 
-                        <div className="aspect-square bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-sm)] mb-1.5" />
+                        <div className="aspect-square bg-[var(--color-bg-element)] rounded-[var(--radius-sm)] mb-1.5 overflow-hidden">
+                          {imageUrl ? (
+                            <Image
+                              src={imageUrl}
+                              alt={getProductName(product)}
+                              width={80}
+                              height={80}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)]" />
+                          )}
+                        </div>
                         <p className="text-[10px] font-medium text-[var(--color-title-active)] truncate">
                           {getProductName(product)}
                         </p>
@@ -244,11 +326,14 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
                 <Sparkles size={16} className="text-[var(--color-accent)]" />
                 <span className="text-xs text-[var(--color-text-body)]">
                   {locale === 'ja'
-                    ? `AIが最適な${suggestedCategories.map(c =>
-                        c === 'Bottoms' ? 'ボトムス' :
-                        c === 'Tops' ? 'トップス' : c
-                      ).join('/')}を提案します`
-                    : `AI will suggest the best ${suggestedCategories.join('/')}`
+                    ? `AIが最適な${suggestedCategories.map(c => {
+                        const names = categoryNames[c];
+                        return names ? names.ja : c;
+                      }).join('/')}を提案します`
+                    : `AI will suggest the best ${suggestedCategories.map(c => {
+                        const names = categoryNames[c];
+                        return names ? names.en : c;
+                      }).join('/')}`
                   }
                 </span>
               </motion.div>
@@ -258,19 +343,19 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
       )}
 
       {/* Selection Summary */}
-      {selection.keyItem && (
+      {selection.keyItem && keyItemProduct && (
         <div className="mt-4 p-3 bg-[var(--color-bg-element)] rounded-[var(--radius-md)]">
           <div className="flex items-center gap-2 text-sm">
             <Star size={14} className="text-[var(--color-accent)]" />
             <span className="font-medium text-[var(--color-title-active)]">
-              {getProductName(keyItemProduct!)}
+              {getProductName(keyItemProduct)}
             </span>
           </div>
           {selection.subItem && (
             <div className="flex items-center gap-2 text-sm mt-1">
               <Check size={14} className="text-[var(--color-secondary)]" />
               <span className="text-[var(--color-text-body)]">
-                {getProductName(mockProducts.find(p => p.id === selection.subItem)!)}
+                {getProductName(products.find(p => p.id === selection.subItem)!)}
               </span>
             </div>
           )}

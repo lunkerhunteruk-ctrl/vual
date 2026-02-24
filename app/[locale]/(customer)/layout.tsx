@@ -4,34 +4,35 @@ import { useState } from 'react';
 import {
   CustomerHeader,
   CustomerFooter,
-  MenuDrawer,
   SearchModal,
+  BottomNavBar,
 } from '@/components/customer/layout';
+import { LiffProvider } from '@/components/providers/LiffProvider';
 
 export default function CustomerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <CustomerHeader
-        onMenuOpen={() => setIsMenuOpen(true)}
-        onSearchOpen={() => setIsSearchOpen(true)}
-        cartCount={0}
-      />
+    <LiffProvider>
+      <div className="min-h-screen bg-white flex flex-col">
+        <CustomerHeader
+          onSearchOpen={() => setIsSearchOpen(true)}
+          cartCount={0}
+        />
 
-      <MenuDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+        <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-      <main className="flex-1 pt-14">
-        {children}
-      </main>
+        <main className="flex-1 pt-14 pb-20">
+          {children}
+        </main>
 
-      <CustomerFooter />
-    </div>
+        <CustomerFooter />
+        <BottomNavBar />
+      </div>
+    </LiffProvider>
   );
 }

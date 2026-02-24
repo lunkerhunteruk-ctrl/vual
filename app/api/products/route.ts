@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
-
-const DEFAULT_STORE_ID = 'f47ac10b-58cc-4372-a567-0e02b2c3d479'; // Default VUAL store
+import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 // GET - List products or get single product
 export async function GET(request: NextRequest) {
@@ -9,6 +8,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('id');
     const category = searchParams.get('category');
+    const brandId = searchParams.get('brand_id');
     const status = searchParams.get('status');
     const limit = parseInt(searchParams.get('limit') || '20');
 
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
         *,
         product_images (id, url, is_primary, position)
       `)
-      .eq('store_id', DEFAULT_STORE_ID)
+      .eq('store_id', await resolveStoreIdFromRequest(request))
       .order('created_at', { ascending: false })
       .limit(limit);
 
@@ -70,6 +70,15 @@ export async function GET(request: NextRequest) {
 
     if (category) {
       query = query.eq('category', category);
+    }
+
+    if (brandId) {
+      query = query.eq('brand_id', brandId);
+    }
+
+    const search = searchParams.get('search');
+    if (search) {
+      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%,name_en.ilike.%${search}%`);
     }
 
     const { data: products, error } = await query;
@@ -116,7 +125,7 @@ export async function POST(request: NextRequest) {
     const { data: product, error: productError } = await supabase
       .from('products')
       .insert({
-        store_id: DEFAULT_STORE_ID,
+        store_id: await resolveStoreIdFromRequest(request),
         name: productData.name,
         name_en: productData.nameEn,
         description: productData.description,
@@ -130,6 +139,7 @@ export async function POST(request: NextRequest) {
         status: productData.status || 'draft',
         is_highlighted: productData.isHighlighted || false,
         size_specs: productData.sizeSpecs,
+        brand_id: productData.brandId || null,
       })
       .select()
       .single();
@@ -237,6 +247,7 @@ export async function PUT(request: NextRequest) {
         status: updates.status,
         is_highlighted: updates.isHighlighted,
         size_specs: updates.sizeSpecs,
+        brand_id: updates.brandId !== undefined ? (updates.brandId || null) : undefined,
       })
       .eq('id', id)
       .select()

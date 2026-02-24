@@ -1,18 +1,31 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Edit2, Trash2, Copy, Loader2 } from 'lucide-react';
+import { Search, Edit2, Trash2, Copy, Loader2, Tag } from 'lucide-react';
 import { useCoupons } from '@/lib/hooks';
-import type { Coupon } from '@/lib/types';
+import { EmptyState } from '@/components/ui/EmptyState';
 
 type CouponStatus = 'active' | 'expired' | 'scheduled';
 
-const typeLabels: Record<Coupon['type'], string> = {
+interface Coupon {
+  id: string;
+  code: string;
+  type: 'percentage' | 'fixed';
+  value: number;
+  min_purchase?: number;
+  max_uses?: number;
+  used_count: number;
+  starts_at?: string;
+  expires_at?: string;
+  is_active: boolean;
+  created_at: string;
+}
+
+const typeLabels: Record<string, string> = {
   percentage: 'Percentage',
-  fixed_amount: 'Fixed Amount',
-  free_shipping: 'Free Shipping',
+  fixed: 'Fixed Amount',
 };
 
 const statusColors: Record<CouponStatus, string> = {
@@ -23,30 +36,27 @@ const statusColors: Record<CouponStatus, string> = {
 
 type TabFilter = 'all' | 'active' | 'expired' | 'scheduled';
 
-interface CouponsTableProps {
-  shopId?: string;
-}
-
-export function CouponsTable({ shopId }: CouponsTableProps) {
+export function CouponsTable() {
   const t = useTranslations('admin.coupons');
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const { coupons, isLoading, error, deleteCoupon } = useCoupons({ shopId });
+  const { coupons, isLoading, error, deleteCoupon } = useCoupons();
 
   const getStatus = (coupon: Coupon): CouponStatus => {
     const now = new Date();
-    if (coupon.startsAt > now) return 'scheduled';
-    if (coupon.expiresAt < now || !coupon.isActive) return 'expired';
+    if (coupon.starts_at && new Date(coupon.starts_at) > now) return 'scheduled';
+    if ((coupon.expires_at && new Date(coupon.expires_at) < now) || !coupon.is_active) return 'expired';
     return 'active';
   };
 
   const tabCounts = useMemo(() => {
     return {
       all: coupons.length,
-      active: coupons.filter(c => getStatus(c) === 'active').length,
-      expired: coupons.filter(c => getStatus(c) === 'expired').length,
-      scheduled: coupons.filter(c => getStatus(c) === 'scheduled').length,
+      active: coupons.filter(c => getStatus(c as Coupon) === 'active').length,
+      expired: coupons.filter(c => getStatus(c as Coupon) === 'expired').length,
+      scheduled: coupons.filter(c => getStatus(c as Coupon) === 'scheduled').length,
     };
   }, [coupons]);
 
@@ -61,7 +71,7 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
     let result = coupons;
 
     if (activeTab !== 'all') {
-      result = result.filter(c => getStatus(c) === activeTab);
+      result = result.filter(c => getStatus(c as Coupon) === activeTab);
     }
 
     if (searchQuery.trim()) {
@@ -72,8 +82,10 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
     return result;
   }, [coupons, activeTab, searchQuery]);
 
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
+  const formatDate = (dateStr: string | undefined) => {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
@@ -82,8 +94,8 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
 
   const formatValue = (coupon: Coupon) => {
     if (coupon.type === 'percentage') return `${coupon.value}%`;
-    if (coupon.type === 'fixed_amount') return `$${coupon.value}`;
-    return 'Free';
+    if (coupon.type === 'fixed') return `¥${coupon.value}`;
+    return '-';
   };
 
   const copyCode = (code: string) => {
@@ -91,7 +103,7 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm(t('confirmDelete'))) {
+    if (confirm(locale === 'ja' ? 'このクーポンを削除しますか？' : 'Delete this coupon?')) {
       try {
         await deleteCoupon(id);
       } catch (err) {
@@ -156,9 +168,11 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
             <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
           </div>
         ) : filteredCoupons.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <p className="text-sm text-[var(--color-text-label)]">{t('noCoupons')}</p>
-          </div>
+          <EmptyState
+            icon={Tag}
+            title={locale === 'ja' ? 'クーポンがありません' : 'No coupons found'}
+            description={locale === 'ja' ? 'クーポンを作成して割引を提供しましょう' : 'Create coupons to offer discounts'}
+          />
         ) : (
           <table className="w-full">
             <thead>
@@ -186,7 +200,8 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
             </thead>
             <tbody>
               {filteredCoupons.map((coupon) => {
-                const status = getStatus(coupon);
+                const typedCoupon = coupon as Coupon;
+                const status = getStatus(typedCoupon);
                 return (
                   <tr
                     key={coupon.id}
@@ -206,16 +221,16 @@ export function CouponsTable({ shopId }: CouponsTableProps) {
                       </div>
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                      {typeLabels[coupon.type]}
+                      {typeLabels[typedCoupon.type] || typedCoupon.type}
                     </td>
                     <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                      {formatValue(coupon)}
+                      {formatValue(typedCoupon)}
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                      {coupon.usageCount} / {coupon.usageLimit || '∞'}
+                      {typedCoupon.used_count} / {typedCoupon.max_uses || '∞'}
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                      {formatDate(coupon.startsAt)} - {formatDate(coupon.expiresAt)}
+                      {formatDate(typedCoupon.starts_at)} - {formatDate(typedCoupon.expires_at)}
                     </td>
                     <td className="py-3 px-4">
                       <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[status]}`}>

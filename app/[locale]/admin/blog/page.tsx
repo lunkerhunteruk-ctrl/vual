@@ -1,19 +1,30 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Calendar, Clock, Loader2 } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Clock, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { StatCard } from '@/components/admin/dashboard';
 import { useBlogPosts, useBlogCategories } from '@/lib/hooks';
-import type { BlogPost } from '@/lib/types';
+
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content?: string;
+  excerpt?: string;
+  category?: string;
+  tags?: string[];
+  is_published: boolean;
+  created_at: string;
+}
 
 type TabFilter = 'all' | 'published' | 'draft';
 
 export default function BlogAdminPage() {
   const t = useTranslations('admin.blog');
-  const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreating, setIsCreating] = useState(false);
@@ -27,40 +38,37 @@ export default function BlogAdminPage() {
     content: '',
     category: 'Fashion',
     tags: '',
-    readTime: 5,
   });
 
-  // TODO: Get shopId from auth context
-  const shopId = 'demo-shop';
-  const { posts, isLoading, error, createPost, updatePost, deletePost, publishPost, unpublishPost } = useBlogPosts({ shopId });
+  const { posts, isLoading, error, createPost, updatePost, deletePost, publishPost, unpublishPost } = useBlogPosts();
   const { categories } = useBlogCategories();
 
   const tabCounts = useMemo(() => ({
     all: posts.length,
-    published: posts.filter(p => p.isPublished).length,
-    draft: posts.filter(p => !p.isPublished).length,
+    published: posts.filter((p: BlogPost) => p.is_published).length,
+    draft: posts.filter((p: BlogPost) => !p.is_published).length,
   }), [posts]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
-    { key: 'all', label: t('all'), count: tabCounts.all },
-    { key: 'published', label: t('published'), count: tabCounts.published },
-    { key: 'draft', label: t('draft'), count: tabCounts.draft },
+    { key: 'all', label: locale === 'ja' ? '全て' : 'All', count: tabCounts.all },
+    { key: 'published', label: locale === 'ja' ? '公開中' : 'Published', count: tabCounts.published },
+    { key: 'draft', label: locale === 'ja' ? '下書き' : 'Draft', count: tabCounts.draft },
   ];
 
   const filteredPosts = useMemo(() => {
-    let result = posts;
+    let result = posts as BlogPost[];
 
     if (activeTab === 'published') {
-      result = result.filter(p => p.isPublished);
+      result = result.filter(p => p.is_published);
     } else if (activeTab === 'draft') {
-      result = result.filter(p => !p.isPublished);
+      result = result.filter(p => !p.is_published);
     }
 
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       result = result.filter(p =>
-        p.title.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
+        p.title?.toLowerCase().includes(query) ||
+        p.category?.toLowerCase().includes(query)
       );
     }
 
@@ -75,7 +83,6 @@ export default function BlogAdminPage() {
       content: '',
       category: 'Fashion',
       tags: '',
-      readTime: 5,
     });
     setEditingPost(null);
     setIsCreating(false);
@@ -86,16 +93,13 @@ export default function BlogAdminPage() {
 
     try {
       await createPost({
-        shopId,
         title: formData.title,
         slug: formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-'),
         excerpt: formData.excerpt,
         content: formData.content,
         category: formData.category,
         tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
-        author: { name: 'Admin' },
-        readTime: formData.readTime,
-        isPublished: false,
+        is_published: false,
       });
       resetForm();
     } catch (err) {
@@ -114,7 +118,6 @@ export default function BlogAdminPage() {
         content: formData.content,
         category: formData.category,
         tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
-        readTime: formData.readTime,
       });
       resetForm();
     } catch (err) {
@@ -123,7 +126,7 @@ export default function BlogAdminPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm(t('confirmDelete'))) {
+    if (confirm(locale === 'ja' ? 'この投稿を削除しますか？' : 'Delete this post?')) {
       try {
         await deletePost(id);
       } catch (err) {
@@ -134,13 +137,12 @@ export default function BlogAdminPage() {
 
   const handleEdit = (post: BlogPost) => {
     setFormData({
-      title: post.title,
-      slug: post.slug,
-      excerpt: post.excerpt,
-      content: post.content,
-      category: post.category,
-      tags: post.tags.join(', '),
-      readTime: post.readTime,
+      title: post.title || '',
+      slug: post.slug || '',
+      excerpt: post.excerpt || '',
+      content: post.content || '',
+      category: post.category || 'Fashion',
+      tags: post.tags?.join(', ') || '',
     });
     setEditingPost(post);
     setIsCreating(true);
@@ -148,7 +150,7 @@ export default function BlogAdminPage() {
 
   const togglePublish = async (post: BlogPost) => {
     try {
-      if (post.isPublished) {
+      if (post.is_published) {
         await unpublishPost(post.id);
       } else {
         await publishPost(post.id);
@@ -158,8 +160,9 @@ export default function BlogAdminPage() {
     }
   };
 
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('ja-JP', {
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
@@ -180,10 +183,10 @@ export default function BlogAdminPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-[var(--color-title-active)]">
-            {t('title')}
+            {locale === 'ja' ? 'ブログ管理' : 'Blog Management'}
           </h2>
           <p className="text-sm text-[var(--color-text-label)] mt-1">
-            {t('description')}
+            {locale === 'ja' ? 'ブログ記事を作成・編集します' : 'Create and edit blog posts'}
           </p>
         </div>
         <Button
@@ -191,24 +194,24 @@ export default function BlogAdminPage() {
           leftIcon={<Plus size={16} />}
           onClick={() => { resetForm(); setIsCreating(true); }}
         >
-          {t('addPost')}
+          {locale === 'ja' ? '投稿を追加' : 'Add Post'}
         </Button>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <StatCard
-          title={t('totalPosts')}
+          title={locale === 'ja' ? '総投稿数' : 'Total Posts'}
           value={tabCounts.all.toString()}
           icon={Edit2}
         />
         <StatCard
-          title={t('published')}
+          title={locale === 'ja' ? '公開中' : 'Published'}
           value={tabCounts.published.toString()}
           icon={Eye}
         />
         <StatCard
-          title={t('drafts')}
+          title={locale === 'ja' ? '下書き' : 'Drafts'}
           value={tabCounts.draft.toString()}
           icon={EyeOff}
         />
@@ -222,16 +225,18 @@ export default function BlogAdminPage() {
           className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-6"
         >
           <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-4">
-            {editingPost ? t('editPost') : t('createPost')}
+            {editingPost ? (locale === 'ja' ? '投稿を編集' : 'Edit Post') : (locale === 'ja' ? '新しい投稿' : 'Create Post')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('postTitle')}</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">
+                {locale === 'ja' ? 'タイトル' : 'Title'}
+              </label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                placeholder={t('postTitle')}
+                placeholder={locale === 'ja' ? 'タイトル' : 'Post Title'}
                 className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
@@ -246,27 +251,33 @@ export default function BlogAdminPage() {
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('excerpt')}</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">
+                {locale === 'ja' ? '概要' : 'Excerpt'}
+              </label>
               <input
                 type="text"
                 value={formData.excerpt}
                 onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
-                placeholder={t('excerpt')}
+                placeholder={locale === 'ja' ? '概要' : 'Excerpt'}
                 className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('content')}</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">
+                {locale === 'ja' ? '内容' : 'Content'}
+              </label>
               <textarea
                 value={formData.content}
                 onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                placeholder={t('content')}
+                placeholder={locale === 'ja' ? '内容' : 'Content'}
                 rows={6}
                 className="w-full px-3 py-2 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('category')}</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">
+                {locale === 'ja' ? 'カテゴリー' : 'Category'}
+              </label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
@@ -278,7 +289,9 @@ export default function BlogAdminPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('tags')}</label>
+              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">
+                {locale === 'ja' ? 'タグ' : 'Tags'}
+              </label>
               <input
                 type="text"
                 value={formData.tags}
@@ -287,23 +300,13 @@ export default function BlogAdminPage() {
                 className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
               />
             </div>
-            <div>
-              <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">{t('readTime')}</label>
-              <input
-                type="number"
-                value={formData.readTime}
-                onChange={(e) => setFormData(prev => ({ ...prev, readTime: parseInt(e.target.value) || 5 }))}
-                min={1}
-                className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
-              />
-            </div>
           </div>
           <div className="flex gap-2 mt-6">
             <Button variant="primary" onClick={editingPost ? handleUpdate : handleCreate}>
-              {editingPost ? t('updatePost') : t('createPost')}
+              {editingPost ? (locale === 'ja' ? '更新' : 'Update') : (locale === 'ja' ? '作成' : 'Create')}
             </Button>
             <Button variant="secondary" onClick={resetForm}>
-              {tCommon('cancel')}
+              {locale === 'ja' ? 'キャンセル' : 'Cancel'}
             </Button>
           </div>
         </motion.div>
@@ -344,7 +347,7 @@ export default function BlogAdminPage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={t('searchPosts')}
+              placeholder={locale === 'ja' ? '投稿を検索' : 'Search posts'}
               className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
             />
           </div>
@@ -358,23 +361,25 @@ export default function BlogAdminPage() {
             </div>
           ) : filteredPosts.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20">
-              <p className="text-sm text-[var(--color-text-label)]">{t('noPosts')}</p>
+              <p className="text-sm text-[var(--color-text-label)]">
+                {locale === 'ja' ? '投稿がありません' : 'No posts'}
+              </p>
             </div>
           ) : (
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    {t('postTitle')}
+                    {locale === 'ja' ? 'タイトル' : 'Title'}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    {t('category')}
+                    {locale === 'ja' ? 'カテゴリー' : 'Category'}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    {t('status')}
+                    {locale === 'ja' ? 'ステータス' : 'Status'}
                   </th>
                   <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                    {t('date')}
+                    {locale === 'ja' ? '日付' : 'Date'}
                   </th>
                   <th className="w-32 py-3 px-4"></th>
                 </tr>
@@ -386,36 +391,30 @@ export default function BlogAdminPage() {
                     className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
                   >
                     <td className="py-3 px-4">
-                      <div>
-                        <p className="text-sm font-medium text-[var(--color-title-active)]">
-                          {post.title}
-                        </p>
-                        <p className="text-xs text-[var(--color-text-label)] flex items-center gap-1 mt-0.5">
-                          <Clock size={10} />
-                          {post.readTime}分
-                        </p>
-                      </div>
+                      <p className="text-sm font-medium text-[var(--color-title-active)]">
+                        {post.title}
+                      </p>
                     </td>
                     <td className="py-3 px-4">
                       <span className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                        {post.category}
+                        {post.category || '-'}
                       </span>
                     </td>
                     <td className="py-3 px-4">
                       <button
                         onClick={() => togglePublish(post)}
                         className={`inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full cursor-pointer transition-colors ${
-                          post.isPublished
+                          post.is_published
                             ? 'bg-emerald-50 text-emerald-700'
                             : 'bg-gray-100 text-gray-600'
                         }`}
                       >
-                        {post.isPublished ? <Eye size={12} /> : <EyeOff size={12} />}
-                        {post.isPublished ? t('published') : t('draft')}
+                        {post.is_published ? <Eye size={12} /> : <EyeOff size={12} />}
+                        {post.is_published ? (locale === 'ja' ? '公開中' : 'Published') : (locale === 'ja' ? '下書き' : 'Draft')}
                       </button>
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                      {formatDate(post.createdAt)}
+                      {formatDate(post.created_at)}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-1">

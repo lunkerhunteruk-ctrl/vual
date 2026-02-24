@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     }
 
     const vertexAI = new VertexAI({ project: PROJECT_ID, location: LOCATION });
-    const model = vertexAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
+    const model = vertexAI.getGenerativeModel({ model: 'gemini-2.5-flash-image' });
 
     const prompt = `You are a professional fashion stylist. Given a key fashion item, suggest the best matching item from the available inventory for a cohesive coordinate.
 

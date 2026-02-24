@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 interface Product {
   id: string;
+  store_id: string;
   name: string;
   name_en?: string;
   description?: string;

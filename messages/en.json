@@ -56,12 +56,13 @@
       "vual": "VUAL",
       "aiStudio": "AI Studio",
       "liveBroadcast": "Live Broadcast",
-      "admin": "Admin",
+      "fittingCredit": "Fitting Credits",
       "admin": "Admin",
       "appearance": "Appearance",
       "adminRole": "Profile",
       "controlAuthority": "Control Authority",
       "teamMembers": "Team Members",
+      "lineIntegration": "LINE Integration",
       "blog": "Blog",
       "yourShop": "Your Shop"
     },
@@ -96,6 +97,37 @@
       "quickAdd": "Quick Add",
       "allProduct": "All product"
     },
+    "billing": {
+      "title": "Fitting Credits",
+      "balance": "Balance",
+      "credits": "credits",
+      "purchaseCredits": "Purchase Credits",
+      "starter": "Starter",
+      "starterDesc": "250 credits / ¥40 per use",
+      "standard": "Standard (Recommended)",
+      "standardDesc": "1,000 credits / ¥35 per use",
+      "pro": "Pro (Best Value)",
+      "proDesc": "3,000 credits / ¥30 per use",
+      "purchase": "Purchase",
+      "transactionHistory": "Transaction History",
+      "noTransactions": "No transactions yet",
+      "type": "Type",
+      "typePurchase": "Purchase",
+      "typeConsumption": "Usage",
+      "typeRefund": "Refund",
+      "typeAdjustment": "Adjustment",
+      "amount": "Amount",
+      "balanceAfter": "Balance",
+      "date": "Date",
+      "loadMore": "Load more",
+      "totalPurchased": "Total Purchased",
+      "totalConsumed": "Total Used",
+      "settings": "Settings",
+      "dailyTryonLimit": "Daily try-on limit (per customer)",
+      "dailyTryonLimitDesc": "Limit try-on frequency to prevent excessive credit consumption",
+      "save": "Save",
+      "saved": "Saved"
+    },
     "orders": {
       "title": "Order Management",
       "orderList": "Order List",
@@ -118,7 +150,28 @@
       "unpaid": "Unpaid",
       "delivered": "Delivered",
       "shipped": "Shipped",
-      "searchOrders": "Search order report"
+      "searchOrders": "Search order report",
+      "orderDetail": "Order Detail",
+      "orderStatus": "Order Status",
+      "orderItems": "Order Items",
+      "customerInfo": "Customer",
+      "shippingAddress": "Shipping Address",
+      "paymentInfo": "Payment",
+      "subtotal": "Subtotal",
+      "shippingFee": "Shipping",
+      "tax": "Tax",
+      "discount": "Discount",
+      "total": "Total",
+      "notes": "Notes",
+      "backToOrders": "Back to orders",
+      "statusPending": "Pending",
+      "statusConfirmed": "Confirmed",
+      "statusProcessing": "Processing",
+      "statusShipped": "Shipped",
+      "statusDelivered": "Delivered",
+      "statusCancelled": "Cancelled",
+      "orderNotFound": "Order not found",
+      "updateFailed": "Failed to update status"
     },
     "customers": {
       "title": "Customers",
@@ -497,6 +550,13 @@
     }
   },
   "customer": {
+    "nav": {
+      "home": "Home",
+      "discover": "Discover",
+      "live": "Live",
+      "tryOn": "Try-On",
+      "myPage": "My Page"
+    },
     "blog": {
       "title": "Blog",
       "loadMore": "Load More"
@@ -523,7 +583,8 @@
       "returnPolicy": "Return Policy",
       "youMayAlsoLike": "You May Also Like",
       "color": "Color",
-      "size": "Size"
+      "size": "Size",
+      "tryOn": "Try It On"
     },
     "cart": {
       "title": "Cart",
@@ -592,5 +653,43 @@
     "pageNotFound": "Page Not Found",
     "pageNotFoundDesc": "We can't find the page you're looking for, it will return to the",
     "homePage": "Home Page"
+  },
+  "categories": {
+    "genders": {
+      "mens": "Mens",
+      "womens": "Womens"
+    },
+    "types": {
+      "wear": "Wear",
+      "goods": "Goods"
+    },
+    "wear": {
+      "tops": "Tops",
+      "outer": "Outer",
+      "pants": "Pants",
+      "skirts": "Skirts",
+      "dresses": "Dresses",
+      "setup": "Set Up",
+      "suits": "Suits",
+      "underwear": "Underwear"
+    },
+    "goods": {
+      "neckties": "Neckties",
+      "bags": "Bags",
+      "shoes": "Shoes",
+      "wallets": "Wallets & Card Cases",
+      "watches": "Watches",
+      "eyewear": "Eyewear",
+      "jewelry": "Jewelry & Accessories",
+      "legwear": "Legwear",
+      "hats": "Hats",
+      "belts": "Belts",
+      "smallItems": "Small Items",
+      "umbrellas": "Umbrellas",
+      "stoles": "Stoles & Mufflers"
+    },
+    "selectGender": "Select gender",
+    "selectType": "Select type",
+    "selectCategory": "Select category"
   }
 }

@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { Twitter, Instagram, Youtube, Mail, Phone, Clock } from 'lucide-react';
 import { useHasBlogPosts, useHasLiveStreams } from '@/lib/hooks';
+import { useStoreContext } from '@/lib/store/store-context';
 
 export function CustomerFooter() {
   const locale = useLocale();
   const t = useTranslations('customer.footer');
+  const { store } = useStoreContext();
   const { hasPosts } = useHasBlogPosts();
   const { hasStreams } = useHasLiveStreams();
 
@@ -91,7 +93,7 @@ export function CustomerFooter() {
 
         {/* Copyright */}
         <p className="text-center text-xs text-[var(--color-text-label)]">
-          Copyright© VUAL. {t('allRightsReserved')}
+          Copyright© {store?.name || 'VUAL'}. {t('allRightsReserved')}
         </p>
       </div>
     </footer>

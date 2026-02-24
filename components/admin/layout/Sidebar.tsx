@@ -18,13 +18,15 @@ import {
   User,
   ExternalLink,
   LucideIcon,
-  FolderOpen,
+
   Star,
   MessageSquare,
   Shield,
   FileText,
   UsersRound,
   Palette,
+  MessageCircle,
+  Coins,
 } from 'lucide-react';
 
 interface MenuItem {
@@ -47,7 +49,6 @@ const menuSections: MenuSection[] = [
       { icon: ShoppingCart, labelKey: 'orders', href: '/admin/orders' },
       { icon: Users, labelKey: 'customers', href: '/admin/customers' },
       { icon: Ticket, labelKey: 'coupons', href: '/admin/coupons' },
-      { icon: FolderOpen, labelKey: 'categories', href: '/admin/categories' },
       { icon: CreditCard, labelKey: 'transactions', href: '/admin/transactions' },
       { icon: Star, labelKey: 'brand', href: '/admin/brand' },
       { icon: FileText, labelKey: 'blog', href: '/admin/blog' },
@@ -67,6 +68,7 @@ const menuSections: MenuSection[] = [
     items: [
       { icon: Sparkles, labelKey: 'aiStudio', href: '/admin/studio', highlight: true },
       { icon: Radio, labelKey: 'liveBroadcast', href: '/admin/live', highlight: true },
+      { icon: Coins, labelKey: 'fittingCredit', href: '/admin/billing', highlight: true },
     ],
   },
   {
@@ -76,6 +78,7 @@ const menuSections: MenuSection[] = [
       { icon: User, labelKey: 'adminRole', href: '/admin/settings/profile' },
       { icon: Shield, labelKey: 'controlAuthority', href: '/admin/settings/authority' },
       { icon: UsersRound, labelKey: 'teamMembers', href: '/admin/settings/team' },
+      { icon: MessageCircle, labelKey: 'lineIntegration', href: '/admin/settings/line' },
     ],
   },
 ];

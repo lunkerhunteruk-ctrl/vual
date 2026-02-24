@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Heart, ShoppingBag, Check, PackageX } from 'lucide-react';
+import { ArrowLeft, Heart, ShoppingBag, Check, PackageX, AlertTriangle, Ruler, Sparkles } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { Button, Skeleton } from '@/components/ui';
 import {
   ImageCarousel,
@@ -12,9 +13,14 @@ import {
   SizeSelector,
   ProductInfo,
   RelatedProducts,
+  ReviewSection,
+  SizeGuideModal,
 } from '@/components/customer/product';
+import { OutfitTryOnModal, CreditPurchaseSheet } from '@/components/customer/tryon';
 import { useProduct, useProducts } from '@/lib/hooks/useProducts';
 import { useCartStore } from '@/lib/store/cart';
+import { useFavoritesStore } from '@/lib/store/favorites';
+import { mapToVtonCategory } from '@/lib/utils/vton-category';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -34,10 +40,31 @@ export default function ProductDetailPage() {
   // Cart store
   const addItem = useCartStore((state) => state.addItem);
 
+  // Favorites store
+  const favToggle = useFavoritesStore((s) => s.toggle);
+  const favCheck = useFavoritesStore((s) => s.isFavorite);
+  const isFavorite = favCheck(productId);
+
+  const handleFavoriteToggle = () => {
+    if (!product) return;
+    favToggle({
+      productId,
+      name: product.name,
+      brand: product.brand || '',
+      price: product.price,
+      image: product.images?.[0]?.url || '',
+    });
+  };
+
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
-  const [isFavorite, setIsFavorite] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const [showOutfitTryOn, setShowOutfitTryOn] = useState(false);
+  const [showPurchase, setShowPurchase] = useState(false);
+
+  // Check if product supports VTON
+  const isTryOnCompatible = product ? mapToVtonCategory(product.category) !== null : false;
 
   // Extract colors and sizes from variants
   const extractedColors = product?.variants
@@ -50,6 +77,19 @@ export default function ProductDetailPage() {
   // Transform colors for component
   const colors = extractedColors.map(c => ({ name: c as string, hex: '#888888' }));
   const sizes = extractedSizes as string[];
+
+  // Stock warning: find the selected variant's stock
+  const selectedVariant = product?.variants?.find(
+    (v) =>
+      ((!selectedColor && !selectedSize) ||
+        (v.options?.color === selectedColor || !selectedColor) &&
+        (v.options?.size === selectedSize || !selectedSize))
+  );
+  const totalStock = product?.stockQuantity || 0;
+  const variantStock = selectedVariant?.stock ?? totalStock;
+  const LOW_STOCK_THRESHOLD = 3;
+  const isLowStock = variantStock > 0 && variantStock <= LOW_STOCK_THRESHOLD;
+  const isOutOfStock = variantStock === 0 && (product?.variants?.length ?? 0) > 0;
 
   // Related products (exclude current product)
   const relatedProducts = relatedProductsData
@@ -157,7 +197,7 @@ export default function ProductDetailPage() {
       <ImageCarousel
         images={product.images?.map(img => img.url) || []}
         isFavorite={isFavorite}
-        onFavoriteToggle={() => setIsFavorite(!isFavorite)}
+        onFavoriteToggle={handleFavoriteToggle}
         onShare={() => {
           if (navigator.share) {
             navigator.share({
@@ -188,19 +228,68 @@ export default function ProductDetailPage() {
             />
           )}
           {sizes.length > 0 && (
-            <SizeSelector
-              sizes={sizes}
-              selectedSize={selectedSize}
-              onSizeChange={setSelectedSize}
-              unavailableSizes={[]}
-            />
+            <div>
+              <SizeSelector
+                sizes={sizes}
+                selectedSize={selectedSize}
+                onSizeChange={setSelectedSize}
+                unavailableSizes={[]}
+              />
+              {product.size_specs?.columns?.length > 0 && (
+                <button
+                  onClick={() => setSizeGuideOpen(true)}
+                  className="mt-3 flex items-center gap-1.5 text-xs text-[var(--color-accent)] hover:underline"
+                >
+                  <Ruler size={14} />
+                  {locale === 'ja' ? 'サイズガイド' : 'Size Guide'}
+                </button>
+              )}
+            </div>
           )}
         </div>
       )}
 
+      {/* Try On Button */}
+      {isTryOnCompatible && (
+        <div className="px-4 py-3">
+          <button
+            onClick={() => setShowOutfitTryOn(true)}
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+          >
+            <Sparkles size={16} />
+            {locale === 'ja' ? '試着してみる' : 'Try It On'}
+          </button>
+        </div>
+      )}
+
+      {/* Stock Warning */}
+      {isLowStock && (
+        <div className="mx-4 mt-2 flex items-center gap-2 px-3 py-2.5 bg-amber-50 border border-amber-200 rounded-[var(--radius-md)]">
+          <AlertTriangle size={16} className="text-amber-600 flex-shrink-0" />
+          <span className="text-sm text-amber-700 font-medium">
+            {locale === 'ja'
+              ? `残りわずか（あと${variantStock}点）`
+              : `Low stock — only ${variantStock} left`}
+          </span>
+        </div>
+      )}
+      {isOutOfStock && (
+        <div className="mx-4 mt-2 flex items-center gap-2 px-3 py-2.5 bg-red-50 border border-red-200 rounded-[var(--radius-md)]">
+          <PackageX size={16} className="text-red-500 flex-shrink-0" />
+          <span className="text-sm text-red-600 font-medium">
+            {locale === 'ja' ? '在庫切れ' : 'Out of stock'}
+          </span>
+        </div>
+      )}
+
+      {/* Reviews */}
+      <div className="border-t border-[var(--color-line)] mt-6">
+        <ReviewSection productId={productId} />
+      </div>
+
       {/* Related Products - only show if available */}
       {relatedProducts.length > 0 && (
-        <div className="border-t border-[var(--color-line)] mt-6">
+        <div className="border-t border-[var(--color-line)]">
           <RelatedProducts products={relatedProducts} />
         </div>
       )}
@@ -218,12 +307,16 @@ export default function ProductDetailPage() {
             fullWidth
             leftIcon={addedToCart ? <Check size={18} /> : <ShoppingBag size={18} />}
             onClick={handleAddToCart}
-            disabled={addedToCart}
+            disabled={addedToCart || isOutOfStock}
           >
-            {addedToCart ? 'Added to Cart!' : t('addToBasket')}
+            {isOutOfStock
+              ? (locale === 'ja' ? '在庫切れ' : 'Out of Stock')
+              : addedToCart
+                ? (locale === 'ja' ? 'カートに追加しました' : 'Added to Cart!')
+                : t('addToBasket')}
           </Button>
           <button
-            onClick={() => setIsFavorite(!isFavorite)}
+            onClick={handleFavoriteToggle}
             className="flex-shrink-0 w-12 h-12 rounded-[var(--radius-md)] border border-[var(--color-line)] flex items-center justify-center hover:bg-[var(--color-bg-element)] transition-colors"
           >
             <Heart
@@ -237,6 +330,45 @@ export default function ProductDetailPage() {
           </button>
         </div>
       </motion.div>
+
+      {/* Size Guide Modal */}
+      {product.size_specs && (
+        <SizeGuideModal
+          isOpen={sizeGuideOpen}
+          onClose={() => setSizeGuideOpen(false)}
+          sizeSpecs={product.size_specs}
+        />
+      )}
+
+      {/* Outfit Try-On Modal */}
+      <AnimatePresence>
+        {showOutfitTryOn && product && (
+          <OutfitTryOnModal
+            initialProduct={{
+              id: product.id,
+              name: product.name,
+              nameEn: product.name_en,
+              price: product.price,
+              image: product.images?.[0]?.url || '',
+              category: product.category,
+              storeId: product.store_id,
+            }}
+            onClose={() => setShowOutfitTryOn(false)}
+            onPaymentRequired={() => {
+              setShowOutfitTryOn(false);
+              setShowPurchase(true);
+            }}
+            lineUserId={typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Credit Purchase Sheet */}
+      <CreditPurchaseSheet
+        isOpen={showPurchase}
+        onClose={() => setShowPurchase(false)}
+        lineUserId={typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined}
+      />
     </div>
   );
 }

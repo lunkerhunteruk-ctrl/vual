@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 import { Clock, ArrowRight, ArrowLeft, Loader2, FileText } from 'lucide-react';
 import { useBlogPosts, useBlogCategories } from '@/lib/hooks';
 import { Button } from '@/components/ui';
-import type { BlogPost } from '@/lib/types';
 
 export default function BlogPage() {
   const locale = useLocale();
@@ -109,9 +108,9 @@ export default function BlogPage() {
                   className="relative"
                 >
                   <div className="aspect-[16/9] bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-lg)] mb-4 overflow-hidden">
-                    {filteredPosts[0].coverImage && (
+                    {filteredPosts[0].featured_image && (
                       <img
-                        src={filteredPosts[0].coverImage}
+                        src={filteredPosts[0].featured_image}
                         alt={filteredPosts[0].title}
                         className="w-full h-full object-cover"
                       />
@@ -127,10 +126,10 @@ export default function BlogPage() {
                     {filteredPosts[0].excerpt}
                   </p>
                   <div className="flex items-center gap-4 text-xs text-[var(--color-text-label)]">
-                    <span>{formatDate(filteredPosts[0].createdAt)}</span>
+                    <span>{formatDate(new Date(filteredPosts[0].published_at || filteredPosts[0].created_at))}</span>
                     <span className="flex items-center gap-1">
                       <Clock size={12} />
-                      {filteredPosts[0].readTime} min read
+                      {Math.ceil((filteredPosts[0].content?.length || 0) / 1000)} min read
                     </span>
                   </div>
                 </motion.article>
@@ -150,9 +149,9 @@ export default function BlogPage() {
                     className="flex gap-4"
                   >
                     <div className="w-24 h-24 flex-shrink-0 bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-md)] overflow-hidden">
-                      {post.coverImage && (
+                      {post.featured_image && (
                         <img
-                          src={post.coverImage}
+                          src={post.featured_image}
                           alt={post.title}
                           className="w-full h-full object-cover"
                         />
@@ -166,10 +165,10 @@ export default function BlogPage() {
                         {post.title}
                       </h3>
                       <div className="flex items-center gap-3 text-[10px] text-[var(--color-text-label)]">
-                        <span>{formatDate(post.createdAt)}</span>
+                        <span>{formatDate(new Date(post.published_at || post.created_at))}</span>
                         <span className="flex items-center gap-1">
                           <Clock size={10} />
-                          {post.readTime} min read
+                          {Math.ceil((post.content?.length || 0) / 1000)} min read
                         </span>
                       </div>
                     </div>

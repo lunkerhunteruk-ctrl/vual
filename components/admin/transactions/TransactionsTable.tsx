@@ -3,10 +3,10 @@
 import { useState, useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Eye, Loader2 } from 'lucide-react';
+import { Search, Eye, Loader2, CreditCard } from 'lucide-react';
 import { useTransactions } from '@/lib/hooks/useTransactions';
 import { formatPrice } from '@/lib/utils/currency';
-import type { Transaction } from '@/lib/types';
+import { EmptyState } from '@/components/ui/EmptyState';
 
 type TransactionStatus = 'pending' | 'completed' | 'failed';
 
@@ -24,9 +24,9 @@ export function TransactionsTable() {
   const [activeTab, setActiveTab] = useState<TabFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch real transactions from Firestore
+  // Fetch transactions from Supabase API
   const statusFilter = activeTab === 'all' ? undefined : activeTab as TransactionStatus;
-  const { transactions: firestoreTransactions, isLoading, hasMore, loadMore } = useTransactions({
+  const { transactions, isLoading, hasMore, loadMore } = useTransactions({
     status: statusFilter,
     limit: 20,
   });
@@ -44,35 +44,36 @@ export function TransactionsTable() {
   }, [allTransactions]);
 
   const tabs: { key: TabFilter; label: string; count: number }[] = [
-    { key: 'all', label: 'All', count: tabCounts.all },
+    { key: 'all', label: locale === 'ja' ? '全て' : 'All', count: tabCounts.all },
     { key: 'completed', label: t('complete'), count: tabCounts.completed },
-    { key: 'pending', label: 'Pending', count: tabCounts.pending },
-    { key: 'failed', label: 'Failed', count: tabCounts.failed },
+    { key: 'pending', label: locale === 'ja' ? '保留中' : 'Pending', count: tabCounts.pending },
+    { key: 'failed', label: locale === 'ja' ? '失敗' : 'Failed', count: tabCounts.failed },
   ];
 
   // Filter transactions by search
   const filteredTransactions = useMemo(() => {
-    if (!firestoreTransactions) return [];
-    if (!searchQuery.trim()) return firestoreTransactions;
+    if (!transactions) return [];
+    if (!searchQuery.trim()) return transactions;
 
     const query = searchQuery.toLowerCase();
-    return firestoreTransactions.filter(tx =>
-      tx.orderId?.toLowerCase().includes(query) ||
-      tx.paymentMethod?.toLowerCase().includes(query)
+    return transactions.filter(tx =>
+      tx.order_id?.toLowerCase().includes(query) ||
+      tx.type?.toLowerCase().includes(query)
     );
-  }, [firestoreTransactions, searchQuery]);
+  }, [transactions, searchQuery]);
 
-  const formatDate = (date: Date | undefined) => {
-    if (!date) return '-';
-    return new Intl.DateTimeFormat('en-US', {
+  const formatDate = (dateStr: string | undefined) => {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     }).format(date);
   };
 
-  const formatCurrency = (amount: number, currency: string = 'USD') => {
-    return formatPrice(amount, currency, locale, true);
+  const formatCurrency = (amount: number, currency: string = 'JPY') => {
+    return formatPrice(amount, currency.toUpperCase(), locale, true);
   };
 
   return (
@@ -122,22 +123,19 @@ export function TransactionsTable() {
           <thead>
             <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
               <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Customer
+                {locale === 'ja' ? '注文ID' : 'Order ID'}
               </th>
               <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Name
+                {locale === 'ja' ? 'タイプ' : 'Type'}
               </th>
               <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Date
+                {locale === 'ja' ? '日付' : 'Date'}
               </th>
               <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Total
+                {locale === 'ja' ? '金額' : 'Total'}
               </th>
               <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                {t('method')}
-              </th>
-              <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
-                Status
+                {locale === 'ja' ? 'ステータス' : 'Status'}
               </th>
               <th className="w-20 py-3 px-4"></th>
             </tr>
@@ -145,14 +143,18 @@ export function TransactionsTable() {
           <tbody>
             {isLoading ? (
               <tr>
-                <td colSpan={7} className="py-20 text-center">
+                <td colSpan={6} className="py-20 text-center">
                   <Loader2 size={24} className="animate-spin mx-auto text-[var(--color-text-label)]" />
                 </td>
               </tr>
             ) : filteredTransactions.length === 0 ? (
               <tr>
-                <td colSpan={7} className="py-20 text-center text-sm text-[var(--color-text-label)]">
-                  No transactions found
+                <td colSpan={6}>
+                  <EmptyState
+                    icon={CreditCard}
+                    title={locale === 'ja' ? '取引がありません' : 'No transactions found'}
+                    description={locale === 'ja' ? '決済が完了すると、ここに表示されます' : 'Completed payments will appear here'}
+                  />
                 </td>
               </tr>
             ) : (
@@ -162,19 +164,16 @@ export function TransactionsTable() {
                   className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors"
                 >
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
-                    #{transaction.orderId?.slice(-6).toUpperCase() || '-'}
+                    #{transaction.order_id?.slice(-6).toUpperCase() || '-'}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {transaction.paymentProvider || '-'}
+                    {transaction.type || '-'}
                   </td>
                   <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {formatDate(transaction.createdAt)}
+                    {formatDate(transaction.created_at)}
                   </td>
                   <td className="py-3 px-4 text-sm font-medium text-[var(--color-title-active)]">
                     {formatCurrency(transaction.amount, transaction.currency)}
-                  </td>
-                  <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
-                    {transaction.paymentMethod || '-'}
                   </td>
                   <td className="py-3 px-4">
                     <span className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full ${statusColors[transaction.status as TransactionStatus] || 'bg-gray-50 text-gray-700'}`}>
@@ -202,11 +201,11 @@ export function TransactionsTable() {
             disabled={isLoading}
             className="w-full py-2 text-sm text-[var(--color-text-body)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors disabled:opacity-50"
           >
-            {isLoading ? 'Loading...' : 'Load More'}
+            {isLoading ? (locale === 'ja' ? '読み込み中...' : 'Loading...') : locale === 'ja' ? 'もっと見る' : 'Load More'}
           </button>
         ) : filteredTransactions.length > 0 ? (
           <p className="text-center text-sm text-[var(--color-text-label)]">
-            Showing all {filteredTransactions.length} transactions
+            {locale === 'ja' ? `全${filteredTransactions.length}件を表示中` : `Showing all ${filteredTransactions.length} transactions`}
           </p>
         ) : null}
       </div>

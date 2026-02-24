@@ -1,40 +1,37 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Menu, Search, ShoppingBag, X } from 'lucide-react';
+import { Search, ShoppingBag } from 'lucide-react';
+import { useStoreContext } from '@/lib/store/store-context';
 
 interface CustomerHeaderProps {
-  onMenuOpen: () => void;
   onSearchOpen: () => void;
   cartCount?: number;
 }
 
-export function CustomerHeader({ onMenuOpen, onSearchOpen, cartCount = 0 }: CustomerHeaderProps) {
+export function CustomerHeader({ onSearchOpen, cartCount = 0 }: CustomerHeaderProps) {
   const locale = useLocale();
+  const { store } = useStoreContext();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--color-line)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[var(--color-line)]">
       <div className="flex items-center justify-between h-14 px-4">
-        {/* Left - Menu */}
-        <button
-          onClick={onMenuOpen}
-          className="p-2 -ml-2 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
-          aria-label="Open menu"
-        >
-          <Menu size={24} className="text-[var(--color-title-active)]" />
-        </button>
+        {/* Left - spacer for balance */}
+        <div className="w-10" />
 
-        {/* Center - Logo */}
+        {/* Center - Logo/Store Name */}
         <Link
           href={`/${locale}`}
           className="absolute left-1/2 -translate-x-1/2"
         >
-          <span className="text-lg font-semibold tracking-[0.2em] text-[var(--color-title-active)]">
-            VUAL
-          </span>
+          {store?.logoUrl ? (
+            <img src={store.logoUrl} alt={store.name} className="h-7 object-contain" />
+          ) : (
+            <span className="text-lg font-semibold tracking-[0.2em] text-[var(--color-title-active)]">
+              {store?.name || 'VUAL'}
+            </span>
+          )}
         </Link>
 
         {/* Right - Search & Cart */}

@@ -2,3 +2,4 @@ export { ProductForm, type ProductFormRef, type ProductFormData } from './Produc
 export { ModelCasting } from './ModelCasting';
 export { ProductsTable } from './ProductsTable';
 export { SizeSpecTable, type SizeSpec } from './SizeSpecTable';
+export { CategorySelector } from './CategorySelector';
