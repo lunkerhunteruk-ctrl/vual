@@ -46,6 +46,7 @@ export async function POST(request: NextRequest) {
         name: shopName,
         slug,
         owner_id: ownerUid,
+        is_active: true,
       })
       .select('id')
       .single();
