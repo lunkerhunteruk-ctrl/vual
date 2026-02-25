@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { signInWithEmailAndPassword, signInWithPopup, signInWithCustomToken, GoogleAuthProvider } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { supabase } from '@/lib/supabase';
@@ -12,56 +12,110 @@ import Link from 'next/link';
 
 const googleProvider = new GoogleAuthProvider();
 
-async function redirectToShop(uid: string, locale: string) {
-  // Check if on root domain
+async function getCustomToken(idToken: string): Promise<string | null> {
+  try {
+    const res = await fetch('/api/auth/custom-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ idToken }),
+    });
+    if (!res.ok) return null;
+    const { customToken } = await res.json();
+    return customToken;
+  } catch {
+    return null;
+  }
+}
+
+async function redirectToShop(locale: string) {
   const hostname = window.location.hostname;
   const parts = hostname.split('.');
   const isRootDomain = parts.length <= 2 || parts[0] === 'www';
 
   if (!isRootDomain || !supabase) {
-    // Already on subdomain, stay here
+    window.location.href = `${window.location.origin}/${locale}/admin`;
+    return;
+  }
+
+  const currentUser = auth.currentUser;
+  if (!currentUser) {
     window.location.href = `${window.location.origin}/${locale}/admin`;
     return;
   }
 
   try {
-    // Try Firestore first for shopId
+    // Look up store slug
     let slug: string | null = null;
     if (db) {
-      const userDoc = await getDoc(doc(db, 'users', uid));
+      const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
       const shopId = userDoc.data()?.shopId;
       if (shopId) {
         const { data } = await supabase.from('stores').select('slug').eq('id', shopId).single();
         slug = data?.slug || null;
       }
     }
-
-    // Fallback: search by owner_id directly
     if (!slug) {
-      const { data } = await supabase.from('stores').select('slug').eq('owner_id', uid).single();
+      const { data } = await supabase.from('stores').select('slug').eq('owner_id', currentUser.uid).single();
       slug = data?.slug || null;
     }
 
     if (slug) {
+      // Get custom token for cross-domain auth
+      const idToken = await currentUser.getIdToken();
+      const customToken = await getCustomToken(idToken);
+
       const baseDomain = hostname.split('.').slice(-2).join('.');
-      window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin`;
+      if (customToken) {
+        window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login?token=${encodeURIComponent(customToken)}`;
+      } else {
+        window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login`;
+      }
       return;
     }
   } catch (e) {
     console.error('Shop redirect failed:', e);
   }
 
-  // Fallback: stay on current domain
   window.location.href = `${window.location.origin}/${locale}/admin`;
 }
 
 export default function AdminLoginPage() {
   const locale = useLocale();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [autoLogging, setAutoLogging] = useState(false);
+
+  // Handle custom token from cross-domain redirect
+  useEffect(() => {
+    const token = searchParams.get('token');
+    if (token && !autoLogging) {
+      setAutoLogging(true);
+      (async () => {
+        try {
+          await signInWithCustomToken(auth, token);
+          // Clean URL and go to admin
+          window.location.href = `${window.location.origin}/${locale}/admin`;
+        } catch (e) {
+          console.error('Auto-login failed:', e);
+          setAutoLogging(false);
+          // Remove token from URL so user can login manually
+          window.history.replaceState({}, '', `/${locale}/admin/login`);
+        }
+      })();
+    }
+  }, [searchParams, locale, autoLogging]);
+
+  if (autoLogging) {
+    return (
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+        <Loader2 size={24} className="animate-spin text-neutral-400" />
+      </div>
+    );
+  }
 
   const handleLogin = async () => {
     if (!email || !password) return;
@@ -69,8 +123,8 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      const credential = await signInWithEmailAndPassword(auth, email, password);
-      await redirectToShop(credential.user.uid, locale);
+      await signInWithEmailAndPassword(auth, email, password);
+      await redirectToShop(locale);
     } catch (err: any) {
       if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
         setError(locale === 'ja' ? 'メールアドレスまたはパスワードが正しくありません' : 'Invalid email or password');
@@ -89,8 +143,8 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      await redirectToShop(result.user.uid, locale);
+      await signInWithPopup(auth, googleProvider);
+      await redirectToShop(locale);
     } catch (err: any) {
       if (err.code === 'auth/popup-closed-by-user') {
         // User closed popup, do nothing
