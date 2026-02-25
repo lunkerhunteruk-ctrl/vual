@@ -2,14 +2,47 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { Search, X, Clock, TrendingUp, Grid3X3, Loader2 } from 'lucide-react';
+import { Search, X, Clock, Grid3X3, Loader2 } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
 import { useCustomerContext } from '@/lib/store/customer-context';
 
-// These could be stored in localStorage for real recent searches
-const defaultRecentSearches = ['Dress', 'Jacket', 'Shoes'];
-const popularTerms = ['Trend', 'Dress', 'Bag', 'T-shirt', 'Beauty', 'Accessories'];
+// Japanese → English category slug mapping for search
+const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
+  'トップス': ['tops'],
+  'アウター': ['outer'],
+  'パンツ': ['pants'],
+  'スカート': ['skirts'],
+  'ワンピース': ['dresses'],
+  'セットアップ': ['setup'],
+  'スーツ': ['suits'],
+  'アンダーウェア': ['underwear'],
+  'バッグ': ['bags'],
+  'シューズ': ['shoes'],
+  '財布': ['wallets'],
+  '腕時計': ['watches'],
+  'アイウェア': ['eyewear'],
+  'ジュエリー': ['jewelry'],
+  'アクセサリー': ['jewelry'],
+  '帽子': ['hats'],
+  'ベルト': ['belts'],
+  'ネクタイ': ['neckties'],
+  'メンズ': ['mens'],
+  'レディース': ['womens'],
+  'ウェア': ['wear'],
+};
+
+function expandSearchQuery(query: string): string[] {
+  const q = query.toLowerCase();
+  const slugs: string[] = [];
+  for (const [ja, en] of Object.entries(CATEGORY_SEARCH_MAP)) {
+    if (ja.toLowerCase().includes(q) || q.includes(ja.toLowerCase())) {
+      slugs.push(...en);
+    }
+  }
+  return slugs;
+}
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -22,7 +55,7 @@ export default function SearchPage() {
   const initialQuery = searchParams.get('q') || '';
   const [query, setQuery] = useState(initialQuery);
   const [searchQuery, setSearchQuery] = useState(initialQuery);
-  const [recentSearches, setRecentSearches] = useState<string[]>(defaultRecentSearches);
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
   // When storeId is set, load store products immediately (even without search query)
   const [storeProducts, setStoreProducts] = useState<any[]>([]);
@@ -32,20 +65,27 @@ export default function SearchPage() {
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Load all store products when storeId is available
+  // Load all store products (for client-side search filtering)
   useEffect(() => {
-    if (!storeId) return;
     const fetchStoreProducts = async () => {
       setIsLoadingStore(true);
       try {
-        const res = await fetch(`/api/customer/store-products?storeId=${storeId}&limit=100`);
+        let res;
+        if (storeId) {
+          res = await fetch(`/api/customer/store-products?storeId=${storeId}&limit=100`);
+        } else {
+          // No storeId: use general products API (resolves store from host)
+          res = await fetch('/api/products?status=published&limit=100');
+        }
         const data = await res.json();
-        setStoreProducts((data.products || []).map((p: any) => ({
+        const rawProducts = data.products || [];
+        setStoreProducts(rawProducts.map((p: any) => ({
           id: p.id,
           name: p.name,
-          brand: '',
-          price: `¥${p.price?.toLocaleString() || 0}`,
-          image: p.image,
+          brand: p.brand || '',
+          category: p.category || '',
+          price: `¥${(p.price || p.base_price || 0).toLocaleString()}`,
+          image: p.image || p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url || '',
         })));
       } catch {
         setStoreProducts([]);
@@ -65,29 +105,39 @@ export default function SearchPage() {
     const fetchResults = async () => {
       setIsLoading(true);
       try {
-        // If scoped to a store, filter from already-loaded store products
-        if (storeId && storeProducts.length > 0) {
+        // If store products are pre-loaded, filter client-side (fast + reliable)
+        if (storeProducts.length > 0) {
           const q = searchQuery.toLowerCase();
-          const filtered = storeProducts.filter((p: any) =>
-            p.name.toLowerCase().includes(q)
-          );
+          const categorySlugs = expandSearchQuery(searchQuery);
+          const filtered = storeProducts.filter((p: any) => {
+            if (p.name?.toLowerCase().includes(q)) return true;
+            if (p.brand?.toLowerCase().includes(q)) return true;
+            if (p.category?.toLowerCase().includes(q)) return true;
+            if (categorySlugs.length > 0 && p.category) {
+              return categorySlugs.some(slug => p.category.toLowerCase().includes(slug));
+            }
+            return false;
+          });
           setSearchResults(filtered);
-          setIsLoading(false);
           return;
         }
 
+        // Fallback: API search (with store_id if available)
         const params = new URLSearchParams({
           search: searchQuery,
           status: 'published',
           limit: '50',
         });
+        if (storeId) {
+          params.set('store_id', storeId);
+        }
         const res = await fetch(`/api/products?${params.toString()}`);
         const data = await res.json();
         const products = (data.products || []).map((p: any) => ({
           id: p.id,
           name: p.name,
           brand: p.brand || '',
-          price: `¥${p.base_price?.toLocaleString() || 0}`,
+          price: `¥${(p.base_price || p.price || 0).toLocaleString()}`,
           image: p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
         }));
         setSearchResults(products);
@@ -108,6 +158,9 @@ export default function SearchPage() {
     }
   }, [initialQuery]);
 
+  // Browsing history
+  const [viewedProducts, setViewedProducts] = useState<any[]>([]);
+
   // Load recent searches from localStorage
   useEffect(() => {
     const saved = localStorage.getItem('vual-recent-searches');
@@ -117,6 +170,13 @@ export default function SearchPage() {
       } catch {
         // ignore
       }
+    }
+    // Load browsing history
+    try {
+      const viewed = JSON.parse(localStorage.getItem('vual-viewed-products') || '[]');
+      setViewedProducts(viewed);
+    } catch {
+      // ignore
     }
   }, []);
 
@@ -234,7 +294,7 @@ export default function SearchPage() {
                 <Search size={48} className="text-[var(--color-text-label)] mb-4" />
                 <p className="text-sm text-[var(--color-text-body)] text-center">
                   {hasSearched
-                    ? `No products found for "${searchQuery}"`
+                    ? (locale === 'ja' ? `「${searchQuery}」に一致する商品がありません` : `No products found for "${searchQuery}"`)
                     : (locale === 'ja' ? '商品が見つかりません' : 'No products found')}
                 </p>
               </div>
@@ -275,28 +335,48 @@ export default function SearchPage() {
               </div>
             )}
 
-            {/* Popular Terms */}
-            <div>
-              <h3 className="text-sm font-medium text-[var(--color-text-label)] mb-3">
-                {t('popularSearchTerms')}
-              </h3>
-              <ul className="space-y-1">
-                {popularTerms.map((term) => (
-                  <li key={term}>
-                    <button
-                      onClick={() => handleTermClick(term)}
-                      className="flex items-center gap-3 w-full px-3 py-2.5 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] rounded-[var(--radius-md)] transition-colors"
-                    >
-                      <TrendingUp size={16} className="text-[var(--color-text-label)]" />
-                      {term}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Empty state when no store and no searches */}
+            {recentSearches.length === 0 && viewedProducts.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20">
+                <Search size={48} className="text-[var(--color-text-label)] mb-4" />
+                <p className="text-sm text-[var(--color-text-body)]">
+                  {locale === 'ja' ? '商品を検索してみましょう' : 'Search for products'}
+                </p>
+              </div>
+            )}
           </>
         )}
       </div>
+
+      {/* Recently Viewed Products */}
+      {viewedProducts.length > 0 && (
+        <div className="border-t border-[var(--color-line)] px-4 py-6">
+          <h3 className="text-sm font-medium text-[var(--color-title-active)] mb-3">
+            {locale === 'ja' ? '最近チェックした商品' : 'Recently Viewed'}
+          </h3>
+          <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4">
+            {viewedProducts.map((p: any) => (
+              <Link
+                key={p.id}
+                href={`/${locale}/product/${p.id}`}
+                className="flex-shrink-0 w-[17vw]"
+              >
+                <div className="aspect-[3/4] bg-[var(--color-bg-element)] rounded-lg overflow-hidden border border-[var(--color-line)]">
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)]" />
+                  )}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

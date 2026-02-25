@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Compass, Radio, Sparkles, User } from 'lucide-react';
+import { Home, Radio, Sparkles, User } from 'lucide-react';
 
 const HIDE_ON_ROUTES = ['/checkout', '/cart'];
 
@@ -17,7 +17,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { key: 'home', icon: Home, path: '' },
-  { key: 'discover', icon: Compass, path: '/search' },
   { key: 'live', icon: Radio, path: '/live' },
   { key: 'tryOn', icon: Sparkles, path: '/tryon' },
   { key: 'myPage', icon: User, path: '/mypage' },

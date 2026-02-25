@@ -63,6 +63,58 @@ export default function ProductDetailPage() {
   const [showOutfitTryOn, setShowOutfitTryOn] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
 
+  // Store policies
+  const [storePolicies, setStorePolicies] = useState<{
+    shippingPolicy?: string;
+    freeShippingThreshold?: number | null;
+    codPolicy?: string;
+    returnPolicy?: string;
+  }>({});
+
+  // Model images
+  const [modelImages, setModelImages] = useState<string[]>([]);
+
+  // Save to browsing history
+  useEffect(() => {
+    if (!product) return;
+    try {
+      const key = 'vual-viewed-products';
+      const saved = JSON.parse(localStorage.getItem(key) || '[]');
+      const item = {
+        id: productId,
+        name: product.name,
+        brand: product.brand || '',
+        price: product.price,
+        image: product.images?.find((img: any) => img.is_primary)?.url || product.images?.[0]?.url || '',
+        viewedAt: Date.now(),
+      };
+      const filtered = saved.filter((p: any) => p.id !== productId);
+      const updated = [item, ...filtered].slice(0, 20);
+      localStorage.setItem(key, JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  }, [product, productId]);
+
+  useEffect(() => {
+    fetch('/api/stores/policies')
+      .then(res => res.json())
+      .then(data => setStorePolicies(data))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (!productId) return;
+    fetch(`/api/products/model-images?productId=${productId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.modelImages?.length) {
+          setModelImages(data.modelImages.map((m: any) => m.image_url));
+        }
+      })
+      .catch(() => {});
+  }, [productId]);
+
   // Check if product supports VTON
   const isTryOnCompatible = product ? mapToVtonCategory(product.category) !== null : false;
 
@@ -74,8 +126,12 @@ export default function ProductDetailPage() {
     ? [...new Set(product.variants.map(v => v.options?.size).filter(Boolean))]
     : [];
 
-  // Transform colors for component
-  const colors = extractedColors.map(c => ({ name: c as string, hex: '#888888' }));
+  // Transform colors for component - include thumbnail from product images
+  const colors = extractedColors.map(c => {
+    const colorName = c as string;
+    const colorImage = product?.images?.find(img => img.color === colorName);
+    return { name: colorName, hex: '#888888', image: colorImage?.url };
+  });
   const sizes = extractedSizes as string[];
 
   // Stock warning: find the selected variant's stock
@@ -99,7 +155,8 @@ export default function ProductDetailPage() {
       id: p.id,
       name: p.name,
       brand: p.brand || '',
-      price: `$${p.price}`,
+      price: `¥${p.price?.toLocaleString() || 0}`,
+      image: p.images?.find(img => img.is_primary)?.url || p.images?.[0]?.url || p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
     }));
 
   // Set default selections when product loads
@@ -136,7 +193,7 @@ export default function ProductDetailPage() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen pb-24">
+      <div className="min-h-screen pb-40">
         <div className="px-4 py-3 border-b">
           <Skeleton className="w-16 h-6" />
         </div>
@@ -181,7 +238,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="min-h-screen pb-24">
+    <div className="min-h-screen pb-40">
       {/* Back Button */}
       <div className="sticky top-14 z-10 bg-white border-b border-[var(--color-line)] px-4 py-3">
         <button
@@ -193,9 +250,10 @@ export default function ProductDetailPage() {
         </button>
       </div>
 
-      {/* Image Carousel */}
+      {/* Image Carousel - product images + model images */}
       <ImageCarousel
-        images={product.images?.map(img => img.url) || []}
+        images={[...(product.images?.map(img => img.url) || []), ...modelImages]}
+        modelImageCount={modelImages.length}
         isFavorite={isFavorite}
         onFavoriteToggle={handleFavoriteToggle}
         onShare={() => {
@@ -212,9 +270,16 @@ export default function ProductDetailPage() {
       <ProductInfo
         brand={product.brand || ''}
         name={product.name}
-        price={`$${product.price}`}
+        price={`¥${product.price?.toLocaleString() || 0}`}
+        category={product.category}
+        description={product.description || ''}
         materials={product.materials || ''}
         care={product.care || ''}
+        sizeSpecs={product.size_specs}
+        shippingPolicy={storePolicies.shippingPolicy}
+        freeShippingThreshold={storePolicies.freeShippingThreshold}
+        codPolicy={storePolicies.codPolicy}
+        returnPolicy={storePolicies.returnPolicy}
       />
 
       {/* Color & Size Selection - only show if available */}
@@ -254,7 +319,7 @@ export default function ProductDetailPage() {
         <div className="px-4 py-3">
           <button
             onClick={() => setShowOutfitTryOn(true)}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+            className="w-full py-3 rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
           >
             <Sparkles size={16} />
             {locale === 'ja' ? '試着してみる' : 'Try It On'}
@@ -298,7 +363,7 @@ export default function ProductDetailPage() {
       <motion.div
         initial={{ y: 100 }}
         animate={{ y: 0 }}
-        className="fixed bottom-0 left-0 right-0 bg-white border-t border-[var(--color-line)] p-4 z-20"
+        className="fixed bottom-20 left-0 right-0 bg-white border-t border-[var(--color-line)] p-4 z-20"
       >
         <div className="flex items-center gap-3">
           <Button

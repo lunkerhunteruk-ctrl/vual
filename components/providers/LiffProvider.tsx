@@ -58,17 +58,25 @@ export function LiffProvider({ children }: LiffProviderProps) {
           }
         }
 
-        // Check for Google redirect result first (from signInWithRedirect)
-        const googleCustomer = await handleGoogleRedirectResult();
-        if (googleCustomer) {
-          setCustomer(googleCustomer, 'google');
-          setIsReady(true);
-          return;
+        const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
+        const inLine = isLineBrowser();
+
+        // Check for Google redirect result (skip in LINE browser to avoid iframe conflicts)
+        if (!inLine) {
+          try {
+            const googleCustomer = await handleGoogleRedirectResult();
+            if (googleCustomer) {
+              setCustomer(googleCustomer, 'google');
+              setIsReady(true);
+              return;
+            }
+          } catch (e) {
+            console.warn('Google redirect check skipped:', e);
+          }
         }
 
-        // Only initialize LIFF in LINE browser or when LIFF ID is set
-        const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
-        if (liffId && isLineBrowser()) {
+        // Initialize LIFF (works in both LINE browser and external browsers)
+        if (liffId) {
           const liffInstance = await initLiff();
           setLiff(liffInstance);
           setIsReady(true);
@@ -115,11 +123,19 @@ export function LiffProvider({ children }: LiffProviderProps) {
     }
   }, [setCustomer, setCustomerLoading, setStoreId]);
 
-  const login = () => {
-    const liffInstance = getLiff();
-    if (liffInstance) {
-      liffInstance.login();
+  const login = async () => {
+    let liffInstance = getLiff();
+    // If LIFF not initialized yet (e.g., init failed on page load), try again
+    if (!liffInstance) {
+      try {
+        liffInstance = await initLiff();
+        setLiff(liffInstance);
+      } catch (e) {
+        console.error('LIFF login failed:', e);
+        return;
+      }
     }
+    liffInstance.login();
   };
 
   const logout = () => {

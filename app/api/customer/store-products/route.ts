@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
       .from('products')
       .select(`
         id, name, name_en, category, base_price, discounted_price,
+        brands (name),
         product_images!inner (url, is_primary, position)
       `)
       .eq('store_id', storeId)
@@ -63,6 +64,7 @@ export async function GET(request: NextRequest) {
         id: p.id,
         name: p.name,
         nameEn: p.name_en,
+        brand: p.brands?.name || '',
         category: p.category,
         price: p.discounted_price || p.base_price,
         originalPrice: p.discounted_price ? p.base_price : undefined,

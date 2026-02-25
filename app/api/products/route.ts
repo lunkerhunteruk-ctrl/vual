@@ -2,6 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
+// Japanese → English category slug mapping for search
+const CATEGORY_SEARCH_MAP: Record<string, string> = {
+  'トップス': 'tops', 'アウター': 'outer', 'パンツ': 'pants',
+  'スカート': 'skirts', 'ワンピース': 'dresses', 'セットアップ': 'setup',
+  'スーツ': 'suits', 'アンダーウェア': 'underwear', 'バッグ': 'bags',
+  'シューズ': 'shoes', '財布': 'wallets', '腕時計': 'watches',
+  'アイウェア': 'eyewear', 'ジュエリー': 'jewelry', 'アクセサリー': 'jewelry',
+  '帽子': 'hats', 'ベルト': 'belts', 'ネクタイ': 'neckties',
+  'メンズ': 'mens', 'レディース': 'womens', 'ウェア': 'wear',
+};
+
 // GET - List products or get single product
 export async function GET(request: NextRequest) {
   try {
@@ -40,6 +51,7 @@ export async function GET(request: NextRequest) {
         .from('products')
         .select(`
           *,
+          brands (name),
           product_images (*),
           product_variants (*)
         `)
@@ -49,17 +61,21 @@ export async function GET(request: NextRequest) {
       if (error || !product) {
         return NextResponse.json({ error: 'Product not found' }, { status: 404 });
       }
-      return NextResponse.json(product);
+      return NextResponse.json({ ...product, brand: (product as any).brands?.name || '' });
     }
 
     // List products
+    const explicitStoreId = searchParams.get('store_id');
+    const storeId = explicitStoreId || await resolveStoreIdFromRequest(request);
+
     let query = supabase
       .from('products')
       .select(`
         *,
+        brands (name),
         product_images (id, url, is_primary, position)
       `)
-      .eq('store_id', await resolveStoreIdFromRequest(request))
+      .eq('store_id', storeId)
       .order('created_at', { ascending: false })
       .limit(limit);
 
@@ -78,7 +94,21 @@ export async function GET(request: NextRequest) {
 
     const search = searchParams.get('search');
     if (search) {
-      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%,name_en.ilike.%${search}%`);
+      // Build OR conditions: name, description, name_en, category
+      // Note: brand search is handled client-side (brand is in joined brands table)
+      const conditions = [
+        `name.ilike.%${search}%`,
+        `description.ilike.%${search}%`,
+        `name_en.ilike.%${search}%`,
+        `category.ilike.%${search}%`,
+      ];
+      // Expand Japanese category/gender terms to English slugs
+      for (const [ja, en] of Object.entries(CATEGORY_SEARCH_MAP)) {
+        if (search.includes(ja)) {
+          conditions.push(`category.ilike.%${en}%`);
+        }
+      }
+      query = query.or(conditions.join(','));
     }
 
     const { data: products, error } = await query;
@@ -88,7 +118,13 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to get products' }, { status: 500 });
     }
 
-    return NextResponse.json({ products });
+    // Flatten brand name from joined brands table
+    const flatProducts = (products || []).map((p: any) => ({
+      ...p,
+      brand: p.brands?.name || '',
+    }));
+
+    return NextResponse.json({ products: flatProducts });
   } catch (error) {
     console.error('Get products error:', error);
     return NextResponse.json(
@@ -140,6 +176,8 @@ export async function POST(request: NextRequest) {
         is_highlighted: productData.isHighlighted || false,
         size_specs: productData.sizeSpecs,
         brand_id: productData.brandId || null,
+        materials: productData.materials || null,
+        care: productData.care || null,
       })
       .select()
       .single();
@@ -248,6 +286,8 @@ export async function PUT(request: NextRequest) {
         is_highlighted: updates.isHighlighted,
         size_specs: updates.sizeSpecs,
         brand_id: updates.brandId !== undefined ? (updates.brandId || null) : undefined,
+        materials: updates.materials !== undefined ? (updates.materials || null) : undefined,
+        care: updates.care !== undefined ? (updates.care || null) : undefined,
       })
       .eq('id', id)
       .select()
