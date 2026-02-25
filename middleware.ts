@@ -1,7 +1,7 @@
 import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
 import { locales, defaultLocale } from './i18n';
-import { extractSubdomain, STORE_SLUG_HEADER, STORE_SLUG_COOKIE } from './lib/store-resolver';
+import { extractSubdomain, STORE_SLUG_HEADER, STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG } from './lib/store-resolver';
 
 const intlMiddleware = createIntlMiddleware({
   locales,
@@ -25,8 +25,13 @@ export default function middleware(request: NextRequest) {
       sameSite: 'lax',
     });
   } else {
-    // Root domain — delete cookie if it was set from a previous subdomain visit
-    response.cookies.delete(STORE_SLUG_COOKIE);
+    // Root domain — set fallback store slug
+    response.headers.set(STORE_SLUG_HEADER, FALLBACK_STORE_SLUG);
+    response.cookies.set(STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG, {
+      httpOnly: false,
+      path: '/',
+      sameSite: 'lax',
+    });
   }
 
   return response;
