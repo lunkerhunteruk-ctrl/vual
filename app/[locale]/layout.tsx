@@ -3,7 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { locales, Locale } from '@/i18n';
-import { resolveStore, STORE_SLUG_COOKIE } from '@/lib/store-resolver';
+import { resolveStore, STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG } from '@/lib/store-resolver';
 import { StoreProvider } from '@/components/providers/StoreProvider';
 import { ToastContainer } from '@/components/ui/Toast';
 
@@ -27,7 +27,8 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const store = await resolveStore();
   const cookieStore = await cookies();
-  const isRootDomain = !cookieStore.get(STORE_SLUG_COOKIE)?.value;
+  const slugCookie = cookieStore.get(STORE_SLUG_COOKIE)?.value;
+  const isRootDomain = !slugCookie || slugCookie === FALLBACK_STORE_SLUG;
 
   return (
     <NextIntlClientProvider messages={messages}>
