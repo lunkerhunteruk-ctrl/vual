@@ -81,8 +81,7 @@ export async function resolveStore(): Promise<StoreInfo | null> {
     .from('stores')
     .select('id, name, slug, description, logo_url, primary_color, contact_email, contact_phone, social_instagram, social_twitter, social_youtube, social_line')
     .eq('slug', slug)
-    .eq('is_active', true)
-    .single();
+        .single();
 
   if (!error && data) {
     return {
@@ -106,8 +105,7 @@ export async function resolveStore(): Promise<StoreInfo | null> {
     .from('stores')
     .select('id, name, slug, description, logo_url, primary_color')
     .eq('slug', slug)
-    .eq('is_active', true)
-    .single();
+        .single();
 
   if (fallbackError || !fallback) return null;
 

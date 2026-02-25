@@ -46,8 +46,7 @@ async function resolveSlugToId(slug: string): Promise<string> {
     .from('stores')
     .select('id')
     .eq('slug', slug)
-    .eq('is_active', true)
-    .single();
+        .single();
 
   if (error || !data) {
     console.warn(`Store not found for slug: ${slug}, falling back to default`);
