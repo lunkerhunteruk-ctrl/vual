@@ -76,46 +76,21 @@ export async function resolveStore(): Promise<StoreInfo | null> {
   const supabase = createServerClient();
   if (!supabase) return null;
 
-  // Try with all columns (including contact/social added in migration 012)
   const { data, error } = await supabase
     .from('stores')
-    .select('id, name, slug, description, logo_url, primary_color, contact_email, contact_phone, social_instagram, social_twitter, social_youtube, social_line')
+    .select('id, name, slug, description, logo_url')
     .eq('slug', slug)
-        .single();
+    .single();
 
-  if (!error && data) {
-    return {
-      id: data.id,
-      name: data.name,
-      slug: data.slug,
-      description: data.description,
-      logoUrl: data.logo_url,
-      primaryColor: data.primary_color,
-      contactEmail: data.contact_email,
-      contactPhone: data.contact_phone,
-      socialInstagram: data.social_instagram,
-      socialTwitter: data.social_twitter,
-      socialYoutube: data.social_youtube,
-      socialLine: data.social_line,
-    };
-  }
-
-  // Fallback: try without contact/social columns (migration 012 not yet applied)
-  const { data: fallback, error: fallbackError } = await supabase
-    .from('stores')
-    .select('id, name, slug, description, logo_url, primary_color')
-    .eq('slug', slug)
-        .single();
-
-  if (fallbackError || !fallback) return null;
+  if (error || !data) return null;
 
   return {
-    id: fallback.id,
-    name: fallback.name,
-    slug: fallback.slug,
-    description: fallback.description,
-    logoUrl: fallback.logo_url,
-    primaryColor: fallback.primary_color,
+    id: data.id,
+    name: data.name,
+    slug: data.slug,
+    description: data.description,
+    logoUrl: data.logo_url,
+    primaryColor: null,
     contactEmail: null,
     contactPhone: null,
     socialInstagram: null,
