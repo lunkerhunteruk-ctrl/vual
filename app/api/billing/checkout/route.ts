@@ -44,7 +44,9 @@ export async function POST(request: NextRequest) {
     }
 
     const stripe = getStripeClient();
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const host = request.headers.get('host') || '';
+    const protocol = host.includes('localhost') ? 'http' : 'https';
+    const baseUrl = `${protocol}://${host}`;
 
     // Build metadata for webhook processing
     const metadata: Record<string, string> = {
