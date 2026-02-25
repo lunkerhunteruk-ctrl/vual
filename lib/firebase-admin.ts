@@ -5,13 +5,19 @@ import { getFirestore } from 'firebase-admin/firestore';
 function ensureInitialized() {
   if (!getApps().length) {
     const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID?.trim();
-    if (process.env.FIREBASE_ADMIN_PRIVATE_KEY) {
+    const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL?.trim();
+    let privateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY;
+
+    if (privateKey) {
+      // Handle various formats of private key from env vars
+      privateKey = privateKey.replace(/\\n/g, '\n');
+      // Remove surrounding quotes if present
+      if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+        privateKey = privateKey.slice(1, -1).replace(/\\n/g, '\n');
+      }
+
       initializeApp({
-        credential: cert({
-          projectId,
-          clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL?.trim(),
-          privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-        }),
+        credential: cert({ projectId, clientEmail, privateKey }),
       });
     } else {
       initializeApp({ projectId });

@@ -20,8 +20,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ customToken });
   } catch (error) {
     console.error('Custom token error:', error);
+    const hasKey = !!process.env.FIREBASE_ADMIN_PRIVATE_KEY;
+    const hasEmail = !!process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to create token' },
+      {
+        error: error instanceof Error ? error.message : 'Failed to create token',
+        debug: { hasKey, hasEmail },
+      },
       { status: 500 }
     );
   }
