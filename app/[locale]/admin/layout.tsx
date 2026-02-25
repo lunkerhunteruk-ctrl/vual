@@ -73,20 +73,19 @@ export default function AdminLayout({
   useEffect(() => {
     if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && user.shopId && supabase) {
       setRedirecting(true);
-      supabase
-        .from('stores')
-        .select('slug')
-        .eq('id', user.shopId)
-        .single()
-        .then(({ data }) => {
+      (async () => {
+        try {
+          const { data } = await supabase.from('stores').select('slug').eq('id', user.shopId!).single();
           if (data?.slug) {
             const baseDomain = window.location.hostname.split('.').slice(-2).join('.');
             window.location.href = `${window.location.protocol}//${data.slug}.${baseDomain}/${locale}/admin`;
           } else {
             setRedirecting(false);
           }
-        })
-        .catch(() => setRedirecting(false));
+        } catch {
+          setRedirecting(false);
+        }
+      })();
     }
   }, [isLoading, user, isRootDomain, isLoginPage, redirecting, locale]);
 
