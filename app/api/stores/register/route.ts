@@ -73,6 +73,29 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to create store', detail: storeError.message, code: storeError.code }, { status: 500 });
     }
 
+    // Add subdomain to Vercel automatically
+    const vercelToken = process.env.VERCEL_API_TOKEN;
+    const vercelProjectId = process.env.VERCEL_PROJECT_ID;
+    if (vercelToken && vercelProjectId) {
+      try {
+        const domainRes = await fetch(`https://api.vercel.com/v10/projects/${vercelProjectId}/domains`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${vercelToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name: `${slug}.vual.jp` }),
+        });
+        if (!domainRes.ok) {
+          const domainErr = await domainRes.json();
+          console.error('Vercel domain add error:', domainErr);
+        }
+      } catch (vercelError) {
+        console.error('Vercel domain add failed:', vercelError);
+        // Non-blocking: store was created, domain can be added manually
+      }
+    }
+
     // Save owner to Firestore users collection
     try {
       const db = getFirestoreAdmin();

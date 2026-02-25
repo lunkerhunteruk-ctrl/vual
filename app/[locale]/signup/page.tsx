@@ -362,7 +362,7 @@ export default function SignupPage() {
                 </p>
               </div>
               <a
-                href={`/${locale}/admin`}
+                href={`${window.location.protocol}//${registeredSlug}.${appDomain}/${locale}/admin`}
                 className="btn-dark inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-sm font-medium rounded-lg hover:bg-neutral-800 transition-colors"
               >
                 {locale === 'ja' ? '管理画面へ' : 'Go to Dashboard'}
