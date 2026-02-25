@@ -1,103 +1,76 @@
 'use client';
 
-import { useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Mail, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui';
+import { useLocale } from 'next-intl';
+import { Instagram, Twitter, Youtube, MessageCircle } from 'lucide-react';
+import { useStoreContext } from '@/lib/store/store-context';
 
 export default function AboutPage() {
   const locale = useLocale();
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const { store } = useStoreContext();
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-    }
-  };
+  const shopName = store?.name || 'Shop';
+
+  const socialLinks = [
+    { url: store?.socialInstagram, icon: Instagram, label: 'Instagram', color: 'text-pink-600' },
+    { url: store?.socialTwitter, icon: Twitter, label: 'X (Twitter)', color: 'text-gray-800' },
+    { url: store?.socialYoutube, icon: Youtube, label: 'YouTube', color: 'text-red-600' },
+    { url: store?.socialLine, icon: MessageCircle, label: 'LINE', color: 'text-green-600' },
+  ].filter(l => l.url);
 
   return (
     <div className="min-h-screen pb-8">
       {/* Header */}
       <div className="px-4 py-6 text-center border-b border-[var(--color-line)]">
-        <h1 className="text-lg font-medium tracking-[0.15em] text-[var(--color-title-active)] uppercase">
-          Our Story
+        <h1 className="text-lg font-medium tracking-[0.1em] text-[var(--color-title-active)]">
+          {shopName}{locale === 'ja' ? 'について' : ` About`}
         </h1>
         <div className="w-12 h-0.5 bg-[var(--color-title-active)] mx-auto mt-2" />
       </div>
 
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="px-4 py-8"
-      >
-        <p className="text-sm leading-relaxed text-[var(--color-text-body)] mb-6">
-          VUAL is a free download UI kit. You can open VUAL - Free Ecommerce UI Kit file by Figma.
-        </p>
-        <p className="text-sm leading-relaxed text-[var(--color-text-body)]">
-          Create stunning shop with bulletproof guidelines and thoughtful components. Its library contains more than 50+ components supporting Light & Dark Mode and 60+ ready to use mobile screens.
-        </p>
-      </motion.section>
+      {/* Logo */}
+      {store?.logoUrl && (
+        <div className="flex justify-center px-4 py-8">
+          <div className="w-32 h-32 rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-line)] bg-white flex items-center justify-center">
+            <img src={store.logoUrl} alt={shopName} className="w-full h-full object-contain" />
+          </div>
+        </div>
+      )}
 
-      {/* Image Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="px-4 mb-8"
-      >
-        <div className="aspect-[4/5] bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)] rounded-[var(--radius-lg)]" />
-      </motion.section>
-
-      {/* Sign Up Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="px-4 py-8 text-center"
-      >
-        <h2 className="text-lg font-medium tracking-[0.15em] text-[var(--color-title-active)] uppercase mb-4">
-          Sign Up
-        </h2>
-        <div className="w-12 h-0.5 bg-[var(--color-title-active)] mx-auto mb-6" />
-
-        <p className="text-sm text-[var(--color-text-body)] mb-6">
-          Receive early access to new arrivals, sales, exclusive content, events and much more!
-        </p>
-
-        {subscribed ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="p-4 bg-emerald-50 text-emerald-700 rounded-[var(--radius-md)] text-sm"
-          >
-            Thank you for subscribing!
-          </motion.div>
+      {/* Description */}
+      <section className="px-4 py-6">
+        {store?.description ? (
+          <p className="text-sm leading-relaxed text-[var(--color-text-body)] whitespace-pre-line">
+            {store.description}
+          </p>
         ) : (
-          <form onSubmit={handleSubscribe} className="max-w-sm mx-auto">
-            <div className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
-                required
-                className="w-full px-4 py-3 pr-12 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm focus:outline-none focus:border-[var(--color-accent)]"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-[var(--color-text-body)] hover:text-[var(--color-accent)] transition-colors"
-              >
-                <ArrowRight size={18} />
-              </button>
-            </div>
-          </form>
+          <p className="text-sm text-[var(--color-text-label)] text-center py-8">
+            {locale === 'ja' ? '準備中です' : 'Coming soon'}
+          </p>
         )}
-      </motion.section>
+      </section>
+
+      {/* Social Links */}
+      {socialLinks.length > 0 && (
+        <section className="px-4 py-6 border-t border-[var(--color-line)]">
+          <h2 className="text-sm font-medium text-[var(--color-title-active)] text-center mb-4">
+            {locale === 'ja' ? 'ソーシャルメディア' : 'Follow Us'}
+          </h2>
+          <div className="flex items-center justify-center gap-4">
+            {socialLinks.map(({ url, icon: Icon, label, color }) => (
+              <a
+                key={label}
+                href={url!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
+                aria-label={label}
+              >
+                <Icon size={20} className={color} />
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

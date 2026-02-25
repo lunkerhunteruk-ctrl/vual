@@ -15,6 +15,7 @@ import {
   List,
   Sparkles,
   Radio,
+  Store,
   User,
   ExternalLink,
   LucideIcon,
@@ -75,10 +76,11 @@ const menuSections: MenuSection[] = [
     sectionKey: 'admin',
     items: [
       { icon: Palette, labelKey: 'appearance', href: '/admin/settings/appearance' },
-      { icon: User, labelKey: 'adminRole', href: '/admin/settings/profile' },
+      { icon: Store, labelKey: 'shopProfile', href: '/admin/settings/profile' },
       { icon: Shield, labelKey: 'controlAuthority', href: '/admin/settings/authority' },
       { icon: UsersRound, labelKey: 'teamMembers', href: '/admin/settings/team' },
       { icon: MessageCircle, labelKey: 'lineIntegration', href: '/admin/settings/line' },
+      { icon: FileText, labelKey: 'storePolicies', href: '/admin/settings/policies' },
     ],
   },
 ];

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { Twitter, Instagram, Youtube, Mail, Phone, Clock } from 'lucide-react';
+import { Twitter, Instagram, Youtube } from 'lucide-react';
 import { useHasBlogPosts, useHasLiveStreams } from '@/lib/hooks';
 import { useStoreContext } from '@/lib/store/store-context';
 
@@ -13,46 +13,66 @@ export function CustomerFooter() {
   const { hasPosts } = useHasBlogPosts();
   const { hasStreams } = useHasLiveStreams();
 
+  const hasSocial = store?.socialTwitter || store?.socialInstagram || store?.socialYoutube;
+  const hasContact = store?.contactEmail || store?.contactPhone;
+
   return (
     <footer className="bg-white border-t border-[var(--color-line)] mt-auto">
       <div className="px-6 py-10">
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <a
-            href="#"
-            className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
-            aria-label="Twitter"
-          >
-            <Twitter size={20} className="text-[var(--color-text-body)]" />
-          </a>
-          <a
-            href="#"
-            className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={20} className="text-[var(--color-text-body)]" />
-          </a>
-          <a
-            href="#"
-            className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
-            aria-label="YouTube"
-          >
-            <Youtube size={20} className="text-[var(--color-text-body)]" />
-          </a>
-        </div>
+        {hasSocial && (
+          <div className="flex items-center justify-center gap-4 mb-8">
+            {store?.socialTwitter && (
+              <a
+                href={store.socialTwitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter size={20} className="text-[var(--color-text-body)]" />
+              </a>
+            )}
+            {store?.socialInstagram && (
+              <a
+                href={store.socialInstagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} className="text-[var(--color-text-body)]" />
+              </a>
+            )}
+            {store?.socialYoutube && (
+              <a
+                href={store.socialYoutube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-[var(--color-bg-element)] hover:bg-[var(--color-bg-input)] transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube size={20} className="text-[var(--color-text-body)]" />
+              </a>
+            )}
+          </div>
+        )}
 
         {/* Contact Info */}
-        <div className="text-center mb-8">
-          <p className="text-sm text-[var(--color-text-body)] mb-2">
-            support@vual.design
-          </p>
-          <p className="text-sm text-[var(--color-text-body)] mb-2">
-            +81 90 1234 5678
-          </p>
-          <p className="text-xs text-[var(--color-text-label)]">
-            08:00 - 22:00 - Everyday
-          </p>
-        </div>
+        {hasContact && (
+          <div className="text-center mb-8">
+            {store?.contactEmail && (
+              <p className="text-sm text-[var(--color-text-body)] mb-2">
+                {store.contactEmail}
+              </p>
+            )}
+            {store?.contactPhone && (
+              <p className="text-sm text-[var(--color-text-body)] mb-2">
+                {store.contactPhone}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Divider */}
         <div className="w-12 h-px bg-[var(--color-line)] mx-auto mb-8" />
@@ -71,7 +91,6 @@ export function CustomerFooter() {
           >
             {t('contact')}
           </Link>
-          {/* Blog link - only show if there are published posts */}
           {hasPosts && (
             <Link
               href={`/${locale}/blog`}
@@ -80,7 +99,6 @@ export function CustomerFooter() {
               {t('blog')}
             </Link>
           )}
-          {/* Live link - only show if there are live/scheduled streams */}
           {hasStreams && (
             <Link
               href={`/${locale}/live`}

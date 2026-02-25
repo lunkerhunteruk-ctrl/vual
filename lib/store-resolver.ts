@@ -24,6 +24,12 @@ export interface StoreInfo {
   description: string | null;
   logoUrl: string | null;
   primaryColor: string | null;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  socialInstagram: string | null;
+  socialTwitter: string | null;
+  socialYoutube: string | null;
+  socialLine: string | null;
 }
 
 /**
@@ -72,7 +78,7 @@ export async function resolveStore(): Promise<StoreInfo | null> {
 
   const { data, error } = await supabase
     .from('stores')
-    .select('id, name, slug, description, logo_url, primary_color')
+    .select('id, name, slug, description, logo_url, primary_color, contact_email, contact_phone, social_instagram, social_twitter, social_youtube, social_line')
     .eq('slug', slug)
     .eq('is_active', true)
     .single();
@@ -86,5 +92,11 @@ export async function resolveStore(): Promise<StoreInfo | null> {
     description: data.description,
     logoUrl: data.logo_url,
     primaryColor: data.primary_color,
+    contactEmail: data.contact_email,
+    contactPhone: data.contact_phone,
+    socialInstagram: data.social_instagram,
+    socialTwitter: data.social_twitter,
+    socialYoutube: data.social_youtube,
+    socialLine: data.social_line,
   };
 }
