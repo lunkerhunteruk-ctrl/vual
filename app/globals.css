@@ -98,6 +98,14 @@ button {
   font-family: inherit;
 }
 
+/* Dark button links — force white text */
+a.btn-dark {
+  color: #ffffff !important;
+}
+a.btn-dark:hover {
+  color: #ffffff !important;
+}
+
 /* Image defaults */
 img {
   max-width: 100%;
