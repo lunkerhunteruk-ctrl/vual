@@ -19,6 +19,7 @@ const pageTitles: Record<string, string> = {
   '/admin/settings': 'settings',
   '/admin/settings/profile': 'shopProfile',
   '/admin/settings/team': 'team',
+  '/admin/settings/policies': 'storePolicies',
   '/admin/settings/line': 'lineIntegration',
 };
 
