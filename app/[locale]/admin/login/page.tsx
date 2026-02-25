@@ -25,7 +25,7 @@ export default function AdminLoginPage() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push(`/${locale}/admin`);
+      window.location.href = `/${locale}/admin`;
     } catch (err: any) {
       if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
         setError(locale === 'ja' ? 'メールアドレスまたはパスワードが正しくありません' : 'Invalid email or password');
@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
 
     try {
       await signInWithPopup(auth, googleProvider);
-      router.push(`/${locale}/admin`);
+      window.location.href = `/${locale}/admin`;
     } catch (err: any) {
       if (err.code === 'auth/popup-closed-by-user') {
         // User closed popup, do nothing
