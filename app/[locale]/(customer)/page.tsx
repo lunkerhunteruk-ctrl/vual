@@ -65,10 +65,10 @@ function LandingPage() {
           </p>
           <Link
             href={`/${locale}/signup`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+            className="inline-flex items-center gap-2.5 px-10 py-4 bg-neutral-900 text-white text-base font-semibold rounded-full hover:bg-neutral-800 transition-colors shadow-lg shadow-neutral-900/20"
           >
             {locale === 'ja' ? '無料でショップを開設' : 'Start Your Shop Free'}
-            <ChevronRight size={16} />
+            <ChevronRight size={18} />
           </Link>
         </div>
       </section>
@@ -101,9 +101,10 @@ function LandingPage() {
           </p>
           <Link
             href={`/${locale}/signup`}
-            className="px-8 py-3 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition-colors"
+            className="inline-flex items-center gap-2 px-10 py-4 bg-neutral-900 text-white text-base font-semibold rounded-full hover:bg-neutral-800 transition-colors shadow-lg shadow-neutral-900/20"
           >
             {locale === 'ja' ? '無料で始める' : 'Start Free'}
+            <ChevronRight size={18} />
           </Link>
         </div>
       </section>
