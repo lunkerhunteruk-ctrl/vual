@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { initializeApp, getApps, cert, App } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
+import { GoogleAuth } from 'google-auth-library';
 
 const RESERVED_SLUGS = ['admin', 'api', 'www', 'app', 'signup', 'login', 'vual', 'help', 'support', 'blog', 'docs'];
 
@@ -93,6 +94,47 @@ export async function POST(request: NextRequest) {
       } catch (vercelError) {
         console.error('Vercel domain add failed:', vercelError);
         // Non-blocking: store was created, domain can be added manually
+      }
+    }
+
+    // Add subdomain to Firebase Authorized Domains
+    const firebaseClientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
+    const firebasePrivateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    const firebaseProjectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID?.trim();
+    if (firebaseClientEmail && firebasePrivateKey && firebaseProjectId) {
+      try {
+        const googleAuth = new GoogleAuth({
+          credentials: {
+            client_email: firebaseClientEmail,
+            private_key: firebasePrivateKey,
+          },
+          scopes: ['https://www.googleapis.com/auth/identitytoolkit', 'https://www.googleapis.com/auth/cloud-platform'],
+        });
+        const accessToken = await googleAuth.getAccessToken();
+
+        // Get current config
+        const configUrl = `https://identitytoolkit.googleapis.com/admin/v2/projects/${firebaseProjectId}/config`;
+        const configRes = await fetch(configUrl, {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        if (configRes.ok) {
+          const config = await configRes.json();
+          const currentDomains: string[] = config.authorizedDomains || [];
+          const newDomain = `${slug}.vual.jp`;
+          if (!currentDomains.includes(newDomain)) {
+            currentDomains.push(newDomain);
+            await fetch(`${configUrl}?updateMask=authorizedDomains`, {
+              method: 'PATCH',
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ authorizedDomains: currentDomains }),
+            });
+          }
+        }
+      } catch (firebaseAuthDomainError) {
+        console.error('Firebase authorized domain add failed:', firebaseAuthDomainError);
       }
     }
 
