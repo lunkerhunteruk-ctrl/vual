@@ -111,14 +111,36 @@ export default function BillingPage() {
     }
   }, [storeId, fetchBalance, fetchTransactions, fetchSettings]);
 
-  // Check for success query param
+  // Check for success query param and verify session to grant credits
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('success') === 'true') {
-      toast.success(locale === 'ja' ? 'クレジットを購入しました！' : 'Credits purchased successfully!');
+      const sessionId = params.get('session_id');
       window.history.replaceState({}, '', window.location.pathname);
-      fetchBalance();
-      fetchTransactions(0);
+
+      if (sessionId) {
+        // Verify session and grant credits server-side
+        fetch(`/api/billing/verify-session?session_id=${encodeURIComponent(sessionId)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              toast.success(locale === 'ja' ? 'クレジットを購入しました！' : 'Credits purchased successfully!');
+            } else {
+              toast.error(locale === 'ja' ? 'クレジットの反映に失敗しました' : 'Failed to verify purchase');
+            }
+            fetchBalance();
+            fetchTransactions(0);
+          })
+          .catch(() => {
+            toast.error(locale === 'ja' ? 'クレジットの検証に失敗しました' : 'Verification failed');
+            fetchBalance();
+            fetchTransactions(0);
+          });
+      } else {
+        toast.success(locale === 'ja' ? 'クレジットを購入しました！' : 'Credits purchased successfully!');
+        fetchBalance();
+        fetchTransactions(0);
+      }
     }
   }, [locale, fetchBalance, fetchTransactions]);
 

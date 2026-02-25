@@ -307,6 +307,19 @@ async function handleCreditPackPurchase(session: Stripe.Checkout.Session) {
   }
 
   if (target === 'store' && storeId) {
+    // Idempotency check: skip if already processed
+    const { data: existingTx } = await supabase
+      .from('store_credit_transactions')
+      .select('id')
+      .eq('stripe_session_id', session.id)
+      .limit(1)
+      .single();
+
+    if (existingTx) {
+      console.log(`Store ${storeId}: session ${session.id} already processed, skipping`);
+      return;
+    }
+
     // B2B: Add credits to store
     const { data: existing } = await supabase
       .from('store_credits')
@@ -352,6 +365,19 @@ async function handleCreditPackPurchase(session: Stripe.Checkout.Session) {
 
     console.log(`Store ${storeId}: +${credits} credits`);
   } else if (target === 'consumer') {
+    // Idempotency check: skip if already processed
+    const { data: existingConsumerTx } = await supabase
+      .from('consumer_credit_transactions')
+      .select('id')
+      .eq('stripe_session_id', session.id)
+      .limit(1)
+      .single();
+
+    if (existingConsumerTx) {
+      console.log(`Consumer: session ${session.id} already processed, skipping`);
+      return;
+    }
+
     // B2C: Add paid credits to consumer
     const query = customerId
       ? supabase.from('consumer_credits').select('id, paid_credits').eq('customer_id', customerId)

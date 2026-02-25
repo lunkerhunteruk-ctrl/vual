@@ -59,9 +59,10 @@ export async function POST(request: NextRequest) {
     if (lineUserId) metadata.lineUserId = lineUserId;
 
     // Determine success/cancel URLs
+    // {CHECKOUT_SESSION_ID} is replaced by Stripe with the actual session ID
     const successUrl = pack.target === 'store'
-      ? `${baseUrl}/ja/admin/billing?success=true`
-      : `${baseUrl}/ja/tryon?credit_success=true`;
+      ? `${baseUrl}/ja/admin/billing?success=true&session_id={CHECKOUT_SESSION_ID}`
+      : `${baseUrl}/ja/tryon?credit_success=true&session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl = pack.target === 'store'
       ? `${baseUrl}/ja/admin/billing?canceled=true`
       : `${baseUrl}/ja/tryon?credit_canceled=true`;
