@@ -5,6 +5,7 @@ import { cookies } from 'next/headers';
 import { locales, Locale } from '@/i18n';
 import { resolveStore, STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG } from '@/lib/store-resolver';
 import { StoreProvider } from '@/components/providers/StoreProvider';
+import { AuthProvider } from '@/components/providers/AuthProvider';
 import { ToastContainer } from '@/components/ui/Toast';
 
 export function generateStaticParams() {
@@ -33,8 +34,10 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <StoreProvider store={store} isRootDomain={isRootDomain}>
-        {children}
-        <ToastContainer />
+        <AuthProvider>
+          {children}
+          <ToastContainer />
+        </AuthProvider>
       </StoreProvider>
     </NextIntlClientProvider>
   );
