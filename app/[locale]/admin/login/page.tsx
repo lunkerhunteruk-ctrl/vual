@@ -19,10 +19,15 @@ async function getCustomToken(idToken: string): Promise<string | null> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ idToken }),
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      const errBody = await res.text();
+      console.error('Custom token API error:', res.status, errBody);
+      return null;
+    }
     const { customToken } = await res.json();
     return customToken;
-  } catch {
+  } catch (e) {
+    console.error('Custom token fetch error:', e);
     return null;
   }
 }
@@ -62,14 +67,16 @@ async function redirectToShop(locale: string) {
     if (slug) {
       // Get custom token for cross-domain auth
       const idToken = await currentUser.getIdToken();
+      console.log('Got idToken, requesting custom token...');
       const customToken = await getCustomToken(idToken);
+      console.log('Custom token result:', customToken ? 'success' : 'null');
 
       const baseDomain = hostname.split('.').slice(-2).join('.');
-      if (customToken) {
-        window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login?token=${encodeURIComponent(customToken)}`;
-      } else {
-        window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login`;
-      }
+      const targetUrl = customToken
+        ? `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login?token=${encodeURIComponent(customToken)}`
+        : `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login`;
+      console.log('Redirecting to:', targetUrl);
+      window.location.href = targetUrl;
       return;
     }
   } catch (e) {
