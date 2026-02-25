@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
     if (storeError) {
       console.error('Store creation error:', storeError);
-      return NextResponse.json({ error: 'Failed to create store' }, { status: 500 });
+      return NextResponse.json({ error: 'Failed to create store', detail: storeError.message, code: storeError.code }, { status: 500 });
     }
 
     // Save owner to Firestore users collection
