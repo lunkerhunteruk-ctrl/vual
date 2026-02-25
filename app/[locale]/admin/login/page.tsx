@@ -4,11 +4,45 @@ import { useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth, db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { supabase } from '@/lib/supabase';
 import { Loader2, Mail, Lock, AlertCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const googleProvider = new GoogleAuthProvider();
+
+async function redirectToShop(uid: string, locale: string) {
+  // Check if on root domain
+  const hostname = window.location.hostname;
+  const parts = hostname.split('.');
+  const isRootDomain = parts.length <= 2 || parts[0] === 'www';
+
+  if (!isRootDomain || !supabase || !db) {
+    // Already on subdomain, stay here
+    window.location.href = `${window.location.origin}/${locale}/admin`;
+    return;
+  }
+
+  // Fetch user's shopId from Firestore, then slug from Supabase
+  try {
+    const userDoc = await getDoc(doc(db, 'users', uid));
+    const shopId = userDoc.data()?.shopId;
+    if (shopId) {
+      const { data } = await supabase.from('stores').select('slug').eq('id', shopId).single();
+      if (data?.slug) {
+        const baseDomain = hostname.split('.').slice(-2).join('.');
+        window.location.href = `${window.location.protocol}//${data.slug}.${baseDomain}/${locale}/admin`;
+        return;
+      }
+    }
+  } catch (e) {
+    console.error('Shop redirect failed:', e);
+  }
+
+  // Fallback: stay on current domain
+  window.location.href = `${window.location.origin}/${locale}/admin`;
+}
 
 export default function AdminLoginPage() {
   const locale = useLocale();
@@ -24,8 +58,8 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = `${window.location.origin}/${locale}/admin`;
+      const credential = await signInWithEmailAndPassword(auth, email, password);
+      await redirectToShop(credential.user.uid, locale);
     } catch (err: any) {
       if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
         setError(locale === 'ja' ? 'メールアドレスまたはパスワードが正しくありません' : 'Invalid email or password');
@@ -44,8 +78,8 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      await signInWithPopup(auth, googleProvider);
-      window.location.href = `${window.location.origin}/${locale}/admin`;
+      const result = await signInWithPopup(auth, googleProvider);
+      await redirectToShop(result.user.uid, locale);
     } catch (err: any) {
       if (err.code === 'auth/popup-closed-by-user') {
         // User closed popup, do nothing

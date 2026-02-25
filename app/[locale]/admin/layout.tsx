@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Sidebar, TopNav } from '@/components/admin/layout';
 import { useAuthStore } from '@/lib/store';
+import { useStoreContext } from '@/lib/store/store-context';
+import { supabase } from '@/lib/supabase';
 import { Loader2 } from 'lucide-react';
 
 const pageTitles: Record<string, string> = {
@@ -55,6 +57,8 @@ export default function AdminLayout({
   const router = useRouter();
   const t = useTranslations('admin.sidebar');
   const { user, isLoading } = useAuthStore();
+  const isRootDomain = useStoreContext((s) => s.isRootDomain);
+  const [redirecting, setRedirecting] = useState(false);
 
   const isLoginPage = pathname.endsWith('/admin/login');
 
@@ -64,6 +68,27 @@ export default function AdminLayout({
       router.replace(`/${locale}/admin/login`);
     }
   }, [user, isLoading, isLoginPage, locale, router]);
+
+  // On root domain, redirect logged-in user to their shop's subdomain
+  useEffect(() => {
+    if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && user.shopId && supabase) {
+      setRedirecting(true);
+      supabase
+        .from('stores')
+        .select('slug')
+        .eq('id', user.shopId)
+        .single()
+        .then(({ data }) => {
+          if (data?.slug) {
+            const baseDomain = window.location.hostname.split('.').slice(-2).join('.');
+            window.location.href = `${window.location.protocol}//${data.slug}.${baseDomain}/${locale}/admin`;
+          } else {
+            setRedirecting(false);
+          }
+        })
+        .catch(() => setRedirecting(false));
+    }
+  }, [isLoading, user, isRootDomain, isLoginPage, redirecting, locale]);
 
   // Login page: render without sidebar/topnav
   if (isLoginPage) {
