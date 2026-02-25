@@ -1,8 +1,11 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Sidebar, TopNav } from '@/components/admin/layout';
+import { useAuthStore } from '@/lib/store';
+import { Loader2 } from 'lucide-react';
 
 const pageTitles: Record<string, string> = {
   '/admin': 'dashboard',
@@ -49,7 +52,41 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations('admin.sidebar');
+  const { user, isLoading } = useAuthStore();
+
+  const isLoginPage = pathname.endsWith('/admin/login');
+
+  // Auth guard: redirect to login if not authenticated
+  useEffect(() => {
+    if (!isLoading && !user && !isLoginPage) {
+      router.replace(`/${locale}/admin/login`);
+    }
+  }, [user, isLoading, isLoginPage, locale, router]);
+
+  // Login page: render without sidebar/topnav
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[var(--color-bg-page)] flex items-center justify-center">
+        <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+      </div>
+    );
+  }
+
+  // Not authenticated — show nothing while redirecting
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-[var(--color-bg-page)] flex items-center justify-center">
+        <Loader2 size={24} className="animate-spin text-[var(--color-text-label)]" />
+      </div>
+    );
+  }
 
   const titleKey = getPageTitleKey(pathname, locale);
   const title = t(titleKey);
