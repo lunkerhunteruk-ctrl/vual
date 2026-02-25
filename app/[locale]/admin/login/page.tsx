@@ -18,23 +18,34 @@ async function redirectToShop(uid: string, locale: string) {
   const parts = hostname.split('.');
   const isRootDomain = parts.length <= 2 || parts[0] === 'www';
 
-  if (!isRootDomain || !supabase || !db) {
+  if (!isRootDomain || !supabase) {
     // Already on subdomain, stay here
     window.location.href = `${window.location.origin}/${locale}/admin`;
     return;
   }
 
-  // Fetch user's shopId from Firestore, then slug from Supabase
   try {
-    const userDoc = await getDoc(doc(db, 'users', uid));
-    const shopId = userDoc.data()?.shopId;
-    if (shopId) {
-      const { data } = await supabase.from('stores').select('slug').eq('id', shopId).single();
-      if (data?.slug) {
-        const baseDomain = hostname.split('.').slice(-2).join('.');
-        window.location.href = `${window.location.protocol}//${data.slug}.${baseDomain}/${locale}/admin`;
-        return;
+    // Try Firestore first for shopId
+    let slug: string | null = null;
+    if (db) {
+      const userDoc = await getDoc(doc(db, 'users', uid));
+      const shopId = userDoc.data()?.shopId;
+      if (shopId) {
+        const { data } = await supabase.from('stores').select('slug').eq('id', shopId).single();
+        slug = data?.slug || null;
       }
+    }
+
+    // Fallback: search by owner_id directly
+    if (!slug) {
+      const { data } = await supabase.from('stores').select('slug').eq('owner_id', uid).single();
+      slug = data?.slug || null;
+    }
+
+    if (slug) {
+      const baseDomain = hostname.split('.').slice(-2).join('.');
+      window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin`;
+      return;
     }
   } catch (e) {
     console.error('Shop redirect failed:', e);

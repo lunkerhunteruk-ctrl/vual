@@ -71,14 +71,24 @@ export default function AdminLayout({
 
   // On root domain, redirect logged-in user to their shop's subdomain
   useEffect(() => {
-    if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && user.shopId && supabase) {
+    if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && supabase) {
       setRedirecting(true);
       (async () => {
         try {
-          const { data } = await supabase.from('stores').select('slug').eq('id', user.shopId!).single();
-          if (data?.slug) {
+          let slug: string | null = null;
+          // Try by shopId first
+          if (user.shopId) {
+            const { data } = await supabase.from('stores').select('slug').eq('id', user.shopId).single();
+            slug = data?.slug || null;
+          }
+          // Fallback: search by owner_id (Firebase UID)
+          if (!slug) {
+            const { data } = await supabase.from('stores').select('slug').eq('owner_id', user.id).single();
+            slug = data?.slug || null;
+          }
+          if (slug) {
             const baseDomain = window.location.hostname.split('.').slice(-2).join('.');
-            window.location.href = `${window.location.protocol}//${data.slug}.${baseDomain}/${locale}/admin`;
+            window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin`;
           } else {
             setRedirecting(false);
           }
