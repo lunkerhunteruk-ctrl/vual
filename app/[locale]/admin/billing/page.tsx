@@ -102,6 +102,12 @@ export default function BillingPage() {
     if (storeId) {
       setIsLoading(true);
       Promise.all([fetchBalance(), fetchTransactions(0), fetchSettings()]).finally(() => setIsLoading(false));
+    } else {
+      // If store context loaded but store is null, stop loading
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [storeId, fetchBalance, fetchTransactions, fetchSettings]);
 
@@ -140,7 +146,10 @@ export default function BillingPage() {
   };
 
   const handlePurchase = async (packSlug: string) => {
-    if (!storeId) return;
+    if (!storeId) {
+      toast.error(locale === 'ja' ? 'ストア情報を取得できません' : 'Store not found');
+      return;
+    }
     setPurchasingSlug(packSlug);
     try {
       const res = await fetch('/api/billing/checkout', {

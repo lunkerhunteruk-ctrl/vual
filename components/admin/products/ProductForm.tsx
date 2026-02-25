@@ -20,6 +20,8 @@ const stockStatusOptions = [
 export interface ProductFormData {
   name: string;
   description: string;
+  materials: string;
+  care: string;
   category: string;
   tags: string[];
   price: number;
@@ -52,6 +54,8 @@ interface ProductFormProps {
     is_highlighted?: boolean;
     size_specs?: any;
     brand_id?: string;
+    materials?: string;
+    care?: string;
     product_images?: { id: string; url: string; color?: string; is_primary?: boolean }[];
     product_variants?: { id: string; color?: string; size?: string; sku?: string; stock: number; price_override?: number }[];
   };
@@ -64,6 +68,8 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
   // Form state - initialize from initialData if provided
   const [name, setName] = useState(initialData?.name || '');
   const [description, setDescription] = useState(initialData?.description || '');
+  const [materials, setMaterials] = useState(initialData?.materials || '');
+  const [care, setCare] = useState(initialData?.care || '');
   const [category, setCategory] = useState(initialData?.category || '');
   const [tags, setTags] = useState(initialData?.tags?.join(', ') || '');
   const [price, setPrice] = useState(
@@ -213,6 +219,8 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
       return {
         name,
         description,
+        materials,
+        care,
         category,
         tags: tags.split(',').map(t => t.trim()).filter(Boolean),
         price: parseInt(price) || 0,
@@ -270,6 +278,8 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
       return {
         name,
         description,
+        materials,
+        care,
         category,
         tags: tags.split(',').map(t => t.trim()).filter(Boolean),
         price: parseInt(price) || 0,
@@ -295,6 +305,8 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
     setData: (data) => {
       if (data.name !== undefined) setName(data.name);
       if (data.description !== undefined) setDescription(data.description);
+      if (data.materials !== undefined) setMaterials(data.materials);
+      if (data.care !== undefined) setCare(data.care);
       if (data.category !== undefined) setCategory(data.category);
       if (data.tags !== undefined) setTags(data.tags.join(', '));
       if (data.price !== undefined) setPrice(data.price.toString());
@@ -418,6 +430,32 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
                   placeholder={t('enterProductDescription') || 'Enter product description'}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  className="w-full px-4 py-2.5 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)] resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[var(--color-text-body)] mb-1.5">
+                  素材
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="例: コットン100%、ポリエステル混紡など"
+                  value={materials}
+                  onChange={(e) => setMaterials(e.target.value)}
+                  className="w-full px-4 py-2.5 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)] resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-[var(--color-text-body)] mb-1.5">
+                  お手入れ方法
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="例: 洗濯機可（弱水流）、漂白剤不可など"
+                  value={care}
+                  onChange={(e) => setCare(e.target.value)}
                   className="w-full px-4 py-2.5 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)] resize-none"
                 />
               </div>

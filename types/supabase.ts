@@ -24,6 +24,10 @@ export interface Database {
           line_connected_at: string | null
           custom_domain: string | null
           primary_color: string | null
+          shipping_policy: string | null
+          free_shipping_threshold: number | null
+          cod_policy: string | null
+          return_policy: string | null
           is_active: boolean
           created_at: string
           updated_at: string
@@ -41,6 +45,10 @@ export interface Database {
           line_connected_at?: string | null
           custom_domain?: string | null
           primary_color?: string | null
+          shipping_policy?: string | null
+          free_shipping_threshold?: number | null
+          cod_policy?: string | null
+          return_policy?: string | null
           is_active?: boolean
           created_at?: string
           updated_at?: string
@@ -58,6 +66,10 @@ export interface Database {
           line_connected_at?: string | null
           custom_domain?: string | null
           primary_color?: string | null
+          shipping_policy?: string | null
+          free_shipping_threshold?: number | null
+          cod_policy?: string | null
+          return_policy?: string | null
           is_active?: boolean
           updated_at?: string
         }
@@ -80,6 +92,8 @@ export interface Database {
           status: 'draft' | 'published' | 'archived'
           is_highlighted: boolean
           size_specs: Json | null
+          materials: string | null
+          care: string | null
           created_at: string
           updated_at: string
         }
@@ -99,6 +113,8 @@ export interface Database {
           status?: 'draft' | 'published' | 'archived'
           is_highlighted?: boolean
           size_specs?: Json | null
+          materials?: string | null
+          care?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -118,6 +134,8 @@ export interface Database {
           status?: 'draft' | 'published' | 'archived'
           is_highlighted?: boolean
           size_specs?: Json | null
+          materials?: string | null
+          care?: string | null
           updated_at?: string
         }
       }

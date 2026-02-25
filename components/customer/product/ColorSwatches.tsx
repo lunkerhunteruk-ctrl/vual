@@ -7,6 +7,7 @@ import { Check } from 'lucide-react';
 interface Color {
   name: string;
   hex: string;
+  image?: string;
 }
 
 interface ColorSwatchesProps {
@@ -21,43 +22,59 @@ export function ColorSwatches({ colors, selectedColor, onColorChange }: ColorSwa
   return (
     <div>
       <p className="text-sm font-medium text-[var(--color-text-body)] mb-3">
-        {t('color')}
+        {t('color')}: <span className="text-[var(--color-title-active)]">{selectedColor}</span>
       </p>
       <div className="flex items-center gap-3">
         {colors.map((color) => {
           const isSelected = selectedColor === color.name;
-          const isLight = color.hex.toLowerCase() === '#ffffff' || color.hex.toLowerCase() === '#fff';
 
           return (
             <button
               key={color.name}
               onClick={() => onColorChange(color.name)}
-              className={`relative w-8 h-8 rounded-full transition-transform ${
-                isSelected ? 'scale-110' : 'hover:scale-105'
-              } ${isLight ? 'border border-[var(--color-line)]' : ''}`}
-              style={{ backgroundColor: color.hex }}
+              className={`relative flex flex-col items-center gap-1.5 transition-transform ${
+                isSelected ? 'scale-105' : 'hover:scale-105'
+              }`}
               title={color.name}
             >
-              {isSelected && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <Check
-                    size={16}
-                    className={isLight ? 'text-[var(--color-title-active)]' : 'text-white'}
+              {/* Swatch - image or color circle */}
+              <div
+                className={`relative w-12 h-12 rounded-lg overflow-hidden border-2 transition-colors ${
+                  isSelected
+                    ? 'border-[var(--color-accent)]'
+                    : 'border-[var(--color-line)]'
+                }`}
+              >
+                {color.image ? (
+                  <img
+                    src={color.image}
+                    alt={color.name}
+                    className="w-full h-full object-cover"
                   />
-                </motion.div>
-              )}
-              {isSelected && (
-                <div
-                  className={`absolute -inset-1 rounded-full border-2 ${
-                    isLight ? 'border-[var(--color-title-active)]' : 'border-current'
-                  }`}
-                  style={{ borderColor: isLight ? undefined : color.hex }}
-                />
-              )}
+                ) : (
+                  <div
+                    className="w-full h-full"
+                    style={{ backgroundColor: color.hex }}
+                  />
+                )}
+                {isSelected && (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute inset-0 flex items-center justify-center bg-black/20"
+                  >
+                    <Check size={16} className="text-white" />
+                  </motion.div>
+                )}
+              </div>
+              {/* Color name */}
+              <span className={`text-xs ${
+                isSelected
+                  ? 'text-[var(--color-title-active)] font-medium'
+                  : 'text-[var(--color-text-label)]'
+              }`}>
+                {color.name}
+              </span>
             </button>
           );
         })}
