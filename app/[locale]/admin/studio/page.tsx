@@ -299,11 +299,6 @@ export default function AIStudioPage() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
-      {/* Header */}
-      <div className="mb-2 flex-shrink-0">
-        <h1 className="text-xl font-bold text-[var(--color-title-active)]">VUAL Studio</h1>
-      </div>
-
       {/* Item Selection Grid - 4 columns */}
       <div className="flex-shrink-0 grid grid-cols-4 gap-2 mb-2">
         {renderItemColumn({
