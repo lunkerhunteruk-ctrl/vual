@@ -319,7 +319,7 @@ export default function TryOnPage() {
       const nonEmpty = garmentSlots.map((imgs) => ({ imgs })).filter((s) => s.imgs.length > 0);
       if (nonEmpty.length === 0) throw new Error('No garment images');
 
-      setProcessingStatus(isJa ? 'AI生成中...' : 'AI generating...');
+      setProcessingStatus(isJa ? 'コーディネートを生成中...' : 'Generating coordinate...');
 
       // Build style prompt
       const stylePrompt = buildStylePrompt(styleOptions);
