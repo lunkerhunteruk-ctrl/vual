@@ -159,7 +159,7 @@ export default function TryOnPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.code === 'INSUFFICIENT_CREDITS') {
+        if (data.errorCode === 'INSUFFICIENT_CREDITS') {
           setIsProcessing(false);
           setProcessingStatus('');
           setShowPurchase(true);
@@ -169,7 +169,7 @@ export default function TryOnPage() {
       }
 
       setProcessingStatus(locale === 'ja' ? 'キューに追加しました...' : 'Added to queue...');
-      startPolling(data.id);
+      startPolling(data.queueId);
     } catch (err: any) {
       setTryOnError(err.message || (locale === 'ja' ? 'エラーが発生しました' : 'An error occurred'));
       setIsProcessing(false);
