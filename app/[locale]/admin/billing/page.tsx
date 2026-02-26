@@ -298,11 +298,11 @@ export default function BillingPage() {
 
   return (
     <div className="space-y-10">
-      {/* ━━━ Section 1: AI Studio & Subscription Plan ━━━ */}
+      {/* ━━━ Section 1: Creative Studio & Subscription Plan ━━━ */}
       <section className="bg-white border border-[var(--color-line)] rounded-2xl p-6 space-y-6">
         <h2 className="text-lg font-bold text-[var(--color-title-active)] flex items-center gap-2">
           <Sparkles size={20} className="text-[var(--color-accent)]" />
-          {locale === 'ja' ? 'AIスタジオ & サブスクリプション' : 'AI Studio & Subscription'}
+          {locale === 'ja' ? 'クリエイティブスタジオ & サブスクリプション' : 'Creative Studio & Subscription'}
         </h2>
 
         {/* Subscription Status Card */}
@@ -340,14 +340,14 @@ export default function BillingPage() {
                       ? `${locale === 'ja' ? '次回更新日' : 'Next renewal'}: ${new Date(subscription.subscriptionPeriodEnd).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US')}`
                       : subscription.status === 'trialing' && subscription.trialDaysRemaining !== null
                         ? `${locale === 'ja' ? '残り' : ''}${subscription.trialDaysRemaining}${locale === 'ja' ? '日' : ' days remaining'}`
-                        : (locale === 'ja' ? 'AIスタジオ・ライブ配信を利用するにはプランに加入してください' : 'Subscribe to use AI Studio & Live Broadcast')}
+                        : (locale === 'ja' ? 'クリエイティブスタジオ・ライブ配信を利用するにはプランに加入してください' : 'Subscribe to use Creative Studio & Live Broadcast')}
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 {(subscription.status === 'active' || subscription.status === 'trialing') && (
                   <div className="text-right">
-                    <p className="text-xs text-gray-500">{locale === 'ja' ? 'AIスタジオクレジット' : 'AI Studio Credits'}</p>
+                    <p className="text-xs text-gray-500">{locale === 'ja' ? 'クリエイティブスタジオクレジット' : 'Creative Studio Credits'}</p>
                     <p className="text-xl font-bold text-gray-900">{subscription.studioTotalCredits}</p>
                     {subscription.studioTopupCredits > 0 && (
                       <p className="text-[10px] text-gray-500">
@@ -381,7 +381,7 @@ export default function BillingPage() {
           </motion.div>
         )}
 
-        {/* AI Studio Credit Topup */}
+        {/* Creative Studio Credit Topup */}
         {subscription && (subscription.status === 'active' || subscription.status === 'trialing') && (
           <div>
             <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-3">

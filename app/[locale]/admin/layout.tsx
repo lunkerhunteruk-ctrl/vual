@@ -164,8 +164,8 @@ export default function AdminLayout({
                 </h2>
                 <p className="text-sm text-[var(--color-text-body)] mb-6">
                   {locale === 'ja'
-                    ? 'AIスタジオやライブ配信をご利用いただくには、月額プランにご加入ください。'
-                    : 'Please subscribe to a monthly plan to use AI Studio and Live Broadcast.'}
+                    ? 'クリエイティブスタジオやライブ配信をご利用いただくには、月額プランにご加入ください。'
+                    : 'Please subscribe to a monthly plan to use Creative Studio and Live Broadcast.'}
                 </p>
                 <a
                   href={`/${locale}/admin/billing`}
