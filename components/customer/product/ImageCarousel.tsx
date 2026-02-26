@@ -61,35 +61,25 @@ export function ImageCarousel({
   const isModelImage = modelImageCount > 0 && currentIndex >= productImageCount;
   const currentAR = aspectRatios[currentUrl];
 
-  // For model images: use actual AR, clamped between 3:4 and 16:9
+  // For model images: match container to image's natural AR (no crop, no gap)
   // For product images: always 3:4
   let mainAspect = '3 / 4';
   if (isModelImage && currentAR) {
-    if (currentAR >= 1) {
-      // Landscape or square: use actual ratio (cap at 16:9)
-      const capped = Math.min(currentAR, 16 / 9);
-      mainAspect = `${capped}`;
-    } else {
-      // Portrait: use actual ratio (floor at 3:4)
-      const capped = Math.max(currentAR, 3 / 4);
-      mainAspect = `${capped}`;
-    }
+    mainAspect = `${currentAR}`;
   }
 
   return (
     <div>
       {/* Main Image */}
       <div
-        className="relative bg-[#f5f5f0] transition-[aspect-ratio] duration-300"
+        className={`relative transition-[aspect-ratio] duration-300 ${isModelImage ? 'bg-[#f5f5f0]' : 'bg-white'}`}
         style={{ aspectRatio: mainAspect }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={currentUrl}
           alt={`Product image ${currentIndex + 1}`}
-          className={`absolute inset-0 w-full h-full ${
-            isModelImage ? 'object-contain' : 'object-cover'
-          }`}
+          className="absolute inset-0 w-full h-full object-cover"
           onLoad={(e) => {
             const img = e.currentTarget;
             handleImageLoad(currentUrl, img.naturalWidth, img.naturalHeight);
