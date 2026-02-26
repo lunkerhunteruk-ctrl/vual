@@ -1,22 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
+import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-
-interface Category {
-  key: string;
-  label: string;
-}
-
-const categories: Category[] = [
-  { key: 'all', label: 'All' },
-  { key: 'apparel', label: 'Apparel' },
-  { key: 'dress', label: 'Dress' },
-  { key: 'bag', label: 'Bag' },
-  { key: 'shoes', label: 'Shoes' },
-  { key: 'beauty', label: 'Beauty' },
-  { key: 'accessories', label: 'Accessories' },
-];
+import { useProductCategories, buildFlatCategories } from '@/lib/hooks/useProductCategories';
 
 interface CategoryTabsProps {
   activeCategory: string;
@@ -25,6 +12,14 @@ interface CategoryTabsProps {
 
 export function CategoryTabs({ activeCategory, onCategoryChange }: CategoryTabsProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
+  const { slugs } = useProductCategories();
+  const dynamicCategories = buildFlatCategories(slugs, locale);
+
+  const allTab = { key: 'all', label: locale === 'ja' ? 'すべて' : 'All' };
+  const categories = [allTab, ...dynamicCategories];
+
+  if (categories.length <= 1) return null;
 
   return (
     <div className="relative">
