@@ -104,6 +104,14 @@ function DragPreview({ item }: { item: TryOnListItem }) {
 }
 
 // --- Style options for garment types ---
+// Infer subCategory from VTONCategory when subCategory is missing (legacy persisted data)
+function inferSubCategory(item: TryOnListItem): string | undefined {
+  if (item.subCategory) return item.subCategory;
+  // Fallback: upper_body without subCategory → assume 'tops'
+  if (item.category === 'upper_body') return 'tops';
+  return undefined;
+}
+
 function getStyleOptions(subCategory?: string): { key: string; labelJa: string; labelEn: string; options: { value: string; labelJa: string; labelEn: string }[] } | null {
   if (subCategory === 'tops') {
     return {
@@ -466,7 +474,7 @@ export default function TryOnPage() {
           <div className="grid grid-cols-3 gap-3">
             {VTON_SLOTS.map((slot) => {
               const item = tryOnSlots[slot.id];
-              const styleOption = item ? getStyleOptions(item.subCategory) : null;
+              const styleOption = item ? getStyleOptions(inferSubCategory(item)) : null;
               return (
                 <div key={slot.id} className="flex flex-col items-center">
                   <DroppableSlot slotId={slot.id} isOver={!!selectedPoolItemId}>
