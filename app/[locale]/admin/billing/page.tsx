@@ -442,10 +442,15 @@ export default function BillingPage() {
 
       {/* ━━━ Section 2: Virtual Try-on (Fitting Credits) ━━━ */}
       <section className="bg-white border border-[var(--color-line)] rounded-2xl p-6 space-y-6">
-        <h2 className="text-lg font-bold text-[var(--color-title-active)] flex items-center gap-2">
-          <Shirt size={20} className="text-[var(--color-accent)]" />
-          {locale === 'ja' ? 'バーチャル試着' : 'Virtual Try-on'}
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-bold text-[var(--color-title-active)] flex items-center gap-2">
+            <Shirt size={20} className="text-[var(--color-accent)]" />
+            {locale === 'ja' ? 'バーチャル試着' : 'Virtual Try-on'}
+          </h2>
+          <span className="text-xs text-[var(--color-text-label)] bg-[var(--color-bg-element)] px-3 py-1 rounded-full">
+            {locale === 'ja' ? '顧客がショップ上で利用' : 'Used by customers on your shop'}
+          </span>
+        </div>
 
         {/* Fitting Credit Balance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -581,70 +586,74 @@ export default function BillingPage() {
           </div>
         </div>
 
-        {/* Transaction History */}
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-3">{t('transactionHistory')}</h3>
-          <div className="border border-[var(--color-line)] rounded-xl overflow-hidden">
-            {transactions.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <Coins size={32} className="text-[var(--color-text-label)] mb-3" />
-                <p className="text-sm text-[var(--color-text-label)]">{t('noTransactions')}</p>
-              </div>
-            ) : (
-              <>
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
-                      <th className="text-left px-4 py-3 font-medium text-[var(--color-text-label)]">{t('type')}</th>
-                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('amount')}</th>
-                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('balanceAfter')}</th>
-                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('date')}</th>
+      </section>
+
+      {/* ━━━ Section 3: Transaction History ━━━ */}
+      <section className="bg-white border border-[var(--color-line)] rounded-2xl p-6">
+        <h2 className="text-lg font-bold text-[var(--color-title-active)] mb-4 flex items-center gap-2">
+          <TrendingUp size={20} className="text-[var(--color-accent)]" />
+          {t('transactionHistory')}
+        </h2>
+        <div className="border border-[var(--color-line)] rounded-xl overflow-hidden">
+          {transactions.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <Coins size={32} className="text-[var(--color-text-label)] mb-3" />
+              <p className="text-sm text-[var(--color-text-label)]">{t('noTransactions')}</p>
+            </div>
+          ) : (
+            <>
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
+                    <th className="text-left px-4 py-3 font-medium text-[var(--color-text-label)]">{t('type')}</th>
+                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('amount')}</th>
+                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('balanceAfter')}</th>
+                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('date')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((tx) => (
+                    <tr key={tx.id} className="border-b border-[var(--color-line)]/50 last:border-0">
+                      <td className="px-4 py-3">
+                        <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${typeColor(tx.type)}`}>
+                          {typeLabel(tx.type)}
+                        </span>
+                        {tx.description && (
+                          <p className="text-xs text-[var(--color-text-label)] mt-0.5 truncate max-w-[200px]">{tx.description}</p>
+                        )}
+                      </td>
+                      <td className={`text-right px-4 py-3 font-medium ${tx.amount > 0 ? 'text-emerald-600' : 'text-[var(--color-text-body)]'}`}>
+                        {tx.amount > 0 ? '+' : ''}{tx.amount}
+                      </td>
+                      <td className="text-right px-4 py-3 text-[var(--color-text-body)]">
+                        {tx.balance_after.toLocaleString()}
+                      </td>
+                      <td className="text-right px-4 py-3 text-[var(--color-text-label)] text-xs">
+                        {new Date(tx.created_at).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {transactions.map((tx) => (
-                      <tr key={tx.id} className="border-b border-[var(--color-line)]/50 last:border-0">
-                        <td className="px-4 py-3">
-                          <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${typeColor(tx.type)}`}>
-                            {typeLabel(tx.type)}
-                          </span>
-                          {tx.description && (
-                            <p className="text-xs text-[var(--color-text-label)] mt-0.5 truncate max-w-[200px]">{tx.description}</p>
-                          )}
-                        </td>
-                        <td className={`text-right px-4 py-3 font-medium ${tx.amount > 0 ? 'text-emerald-600' : 'text-[var(--color-text-body)]'}`}>
-                          {tx.amount > 0 ? '+' : ''}{tx.amount}
-                        </td>
-                        <td className="text-right px-4 py-3 text-[var(--color-text-body)]">
-                          {tx.balance_after.toLocaleString()}
-                        </td>
-                        <td className="text-right px-4 py-3 text-[var(--color-text-label)] text-xs">
-                          {new Date(tx.created_at).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {transactions.length < txTotal && (
-                  <div className="px-4 py-3 border-t border-[var(--color-line)]">
-                    <button
-                      onClick={() => fetchTransactions(txOffset)}
-                      disabled={txLoading}
-                      className="text-sm text-[var(--color-accent)] hover:underline disabled:opacity-50"
-                    >
-                      {txLoading ? <Loader2 size={14} className="animate-spin inline mr-1" /> : null}
-                      {t('loadMore')}
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+                  ))}
+                </tbody>
+              </table>
+              {transactions.length < txTotal && (
+                <div className="px-4 py-3 border-t border-[var(--color-line)]">
+                  <button
+                    onClick={() => fetchTransactions(txOffset)}
+                    disabled={txLoading}
+                    className="text-sm text-[var(--color-accent)] hover:underline disabled:opacity-50"
+                  >
+                    {txLoading ? <Loader2 size={14} className="animate-spin inline mr-1" /> : null}
+                    {t('loadMore')}
+                  </button>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
     </div>
