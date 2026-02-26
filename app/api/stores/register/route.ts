@@ -119,6 +119,30 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Create trial subscription with 10 AI Studio credits
+    try {
+      const trialEndsAt = new Date();
+      trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+
+      await supabase.from('store_subscriptions').insert({
+        store_id: store.id,
+        plan: 'trial',
+        status: 'trialing',
+        trial_ends_at: trialEndsAt.toISOString(),
+        studio_subscription_credits: 10,
+      });
+
+      await supabase.from('studio_credit_transactions').insert({
+        store_id: store.id,
+        type: 'trial_grant',
+        amount: 10,
+        balance_after: 10,
+        description: 'トライアル開始 (AIスタジオ10クレジット)',
+      });
+    } catch (subError) {
+      console.error('Subscription creation error:', subError);
+    }
+
     // Save owner to Firestore users collection
     try {
       const db = getFirebaseAdminFirestore();

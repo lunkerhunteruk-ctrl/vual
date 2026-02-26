@@ -36,8 +36,62 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, reason: 'no_credit_metadata' });
     }
 
+    // Handle store subscription checkout verification
+    const sessionType = session.metadata?.type;
+    if (sessionType === 'store_subscription' && storeId) {
+      // Store subscription is handled by webhook; just return success if payment is paid
+      return NextResponse.json({ success: true, type: 'subscription' });
+    }
+
+    // Handle AI Studio topup credits
+    if (target === 'store' && storeId && packSlug?.startsWith('studio-')) {
+      const { data: existingTx } = await supabase
+        .from('studio_credit_transactions')
+        .select('id')
+        .eq('stripe_session_id', sessionId)
+        .limit(1)
+        .single();
+
+      if (existingTx) {
+        return NextResponse.json({ success: true, already_processed: true });
+      }
+
+      const { data: sub } = await supabase
+        .from('store_subscriptions')
+        .select('studio_subscription_credits, studio_topup_credits')
+        .eq('store_id', storeId)
+        .single();
+
+      const currentTopup = sub?.studio_topup_credits || 0;
+      const newTopup = currentTopup + credits;
+
+      if (sub) {
+        await supabase
+          .from('store_subscriptions')
+          .update({ studio_topup_credits: newTopup, updated_at: new Date().toISOString() })
+          .eq('store_id', storeId);
+      } else {
+        await supabase.from('store_subscriptions').insert({
+          store_id: storeId,
+          studio_topup_credits: credits,
+        });
+      }
+
+      const totalAfter = (sub?.studio_subscription_credits || 0) + newTopup;
+      await supabase.from('studio_credit_transactions').insert({
+        store_id: storeId,
+        type: 'topup_purchase',
+        amount: credits,
+        balance_after: totalAfter,
+        description: `${packSlug} トップアップ購入 (${credits}クレジット)`,
+        stripe_session_id: sessionId,
+      });
+
+      return NextResponse.json({ success: true, credits_granted: credits });
+    }
+
     if (target === 'store' && storeId) {
-      // Check if already processed (idempotency)
+      // Fitting credit pack (existing logic)
       const { data: existingTx } = await supabase
         .from('store_credit_transactions')
         .select('id')

@@ -57,6 +57,8 @@ interface GeminiImageGeneratorProps {
   selectedProductIds?: string[];
   // All products for modal display
   allProducts?: { id: string; name: string; name_en?: string; category: string; product_images?: { id: string; url: string; is_primary: boolean }[] }[];
+  // Store ID for AI Studio credit consumption
+  storeId?: string;
 }
 
 interface SavedImage {
@@ -184,6 +186,7 @@ export function GeminiImageGenerator({
   fourthGarmentName,
   selectedProductIds = [],
   allProducts = [],
+  storeId,
 }: GeminiImageGeneratorProps) {
   const locale = useLocale();
   const [modelDatabase, setModelDatabase] = useState<ModelDatabase | null>(null);
@@ -199,6 +202,9 @@ export function GeminiImageGenerator({
   const [isLinking, setIsLinking] = useState(false);
   const [linkSuccess, setLinkSuccess] = useState(false);
 
+  // AI Studio credit balance
+  const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
+
   const [settings, setSettings] = useState({
     gender: 'female',
     height: 165,
@@ -209,6 +215,27 @@ export function GeminiImageGenerator({
     aspectRatio: '3:4',
     customPrompt: '',
   });
+
+  // Fetch AI Studio credit balance
+  const fetchCredits = async () => {
+    if (!storeId) return;
+    try {
+      const res = await fetch(`/api/billing/subscription-status?storeId=${storeId}`);
+      const data = await res.json();
+      if (data.success) {
+        setStudioCredits({
+          subscription: data.studioSubscriptionCredits || 0,
+          topup: data.studioTopupCredits || 0,
+        });
+      }
+    } catch (err) {
+      console.error('Failed to fetch studio credits:', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCredits();
+  }, [storeId]);
 
   useEffect(() => {
     fetch('/models/database.json')
@@ -348,15 +375,22 @@ export function GeminiImageGenerator({
           aspectRatio: settings.aspectRatio,
           customPrompt: settings.customPrompt,
           locale,
+          storeId,
         }),
       });
       const result = await response.json();
       if (result.success) {
+        // Refresh credit balance after successful generation
+        fetchCredits();
         const newImage = result.images?.[0] || result.image;
         setGeneratedImage(newImage);
         if (newImage && result.savedImageUrl) {
           console.log('Image saved to:', result.savedImageUrl);
         }
+      } else if (result.errorCode === 'insufficient_studio_credits') {
+        setError(locale === 'ja' ? 'AIスタジオクレジットが不足しています。トップアップを購入してください。' : 'Insufficient AI Studio credits. Please purchase a top-up pack.');
+      } else if (result.errorCode === 'no_subscription') {
+        setError(locale === 'ja' ? 'サブスクリプションが有効ではありません。' : 'Subscription is not active.');
       } else {
         setError(result.error || 'Generation failed');
       }
@@ -498,8 +532,22 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
-        {/* Selected items indicator */}
+        {/* Credit balance + selected items */}
         <div className="ml-auto text-sm text-[var(--color-text-label)] flex items-center gap-2 flex-wrap">
+          {studioCredits !== null && (
+            <span className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
+              (studioCredits.subscription + studioCredits.topup) > 0
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                : 'bg-red-50 text-red-600 border border-red-200'
+            }`}>
+              {locale === 'ja' ? 'クレジット' : 'Credits'}: {studioCredits.subscription + studioCredits.topup}
+              {studioCredits.topup > 0 && (
+                <span className="ml-1 font-normal opacity-70">
+                  ({studioCredits.subscription}+{studioCredits.topup})
+                </span>
+              )}
+            </span>
+          )}
           {selectedGarmentName && (
             <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
               {selectedGarmentName}

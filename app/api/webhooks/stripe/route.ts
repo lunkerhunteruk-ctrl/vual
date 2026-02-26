@@ -75,8 +75,9 @@ export async function POST(request: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
-        // Route to credit pack handler or product order handler
-        if (session.metadata?.packSlug) {
+        if (session.metadata?.type === 'store_subscription') {
+          await handleStoreSubscriptionCheckout(session);
+        } else if (session.metadata?.packSlug) {
           await handleCreditPackPurchase(session);
         } else {
           await handleCheckoutComplete(session);
@@ -306,8 +307,57 @@ async function handleCreditPackPurchase(session: Stripe.Checkout.Session) {
     return;
   }
 
+  if (target === 'store' && storeId && packSlug?.startsWith('studio-')) {
+    // AI Studio topup credits
+    const { data: existingTx } = await supabase
+      .from('studio_credit_transactions')
+      .select('id')
+      .eq('stripe_session_id', session.id)
+      .limit(1)
+      .single();
+
+    if (existingTx) {
+      console.log(`Store ${storeId}: studio session ${session.id} already processed, skipping`);
+      return;
+    }
+
+    const { data: sub } = await supabase
+      .from('store_subscriptions')
+      .select('studio_subscription_credits, studio_topup_credits')
+      .eq('store_id', storeId)
+      .single();
+
+    const currentTopup = sub?.studio_topup_credits || 0;
+    const newTopup = currentTopup + credits;
+
+    if (sub) {
+      await supabase
+        .from('store_subscriptions')
+        .update({ studio_topup_credits: newTopup, updated_at: new Date().toISOString() })
+        .eq('store_id', storeId);
+    } else {
+      await supabase.from('store_subscriptions').insert({
+        store_id: storeId,
+        studio_topup_credits: credits,
+      });
+    }
+
+    const totalAfter = (sub?.studio_subscription_credits || 0) + newTopup;
+    await supabase.from('studio_credit_transactions').insert({
+      store_id: storeId,
+      type: 'topup_purchase',
+      amount: credits,
+      balance_after: totalAfter,
+      description: `${packSlug} トップアップ購入 (${credits}クレジット)`,
+      stripe_session_id: session.id,
+    });
+
+    console.log(`Store ${storeId}: +${credits} studio topup credits`);
+    return;
+  }
+
   if (target === 'store' && storeId) {
-    // Idempotency check: skip if already processed
+    // Fitting credit pack (existing logic)
     const { data: existingTx } = await supabase
       .from('store_credit_transactions')
       .select('id')
@@ -481,7 +531,37 @@ async function handleSubscriptionRenewal(invoice: Stripe.Invoice) {
     return;
   }
 
-  // Recurring renewal
+  // Check if this is a store subscription renewal
+  const { data: storeSub } = await supabase
+    .from('store_subscriptions')
+    .select('store_id, studio_topup_credits')
+    .eq('stripe_subscription_id', subscriptionId)
+    .single();
+
+  if (storeSub) {
+    // Store subscription monthly renewal: reset subscription credits to 100
+    await supabase
+      .from('store_subscriptions')
+      .update({
+        studio_subscription_credits: 100,
+        status: 'active',
+        updated_at: new Date().toISOString(),
+      })
+      .eq('stripe_subscription_id', subscriptionId);
+
+    await supabase.from('studio_credit_transactions').insert({
+      store_id: storeSub.store_id,
+      type: 'subscription_grant',
+      amount: 100,
+      balance_after: 100 + storeSub.studio_topup_credits,
+      description: 'スタンダードプラン月次クレジット付与 (100クレジット)',
+    });
+
+    console.log(`Store subscription ${subscriptionId}: reset to 100 credits`);
+    return;
+  }
+
+  // Consumer subscription renewal
   const { data: cc } = await supabase
     .from('consumer_credits')
     .select('id, subscription_credits')
@@ -489,7 +569,7 @@ async function handleSubscriptionRenewal(invoice: Stripe.Invoice) {
     .single();
 
   if (!cc) {
-    console.error(`Consumer not found for subscription: ${subscriptionId}`);
+    console.error(`No subscription found: ${subscriptionId}`);
     return;
   }
 
@@ -509,7 +589,7 @@ async function handleSubscriptionRenewal(invoice: Stripe.Invoice) {
     description: 'VUAL Pass 月次クレジット付与',
   });
 
-  console.log(`Subscription ${subscriptionId}: +30 credits`);
+  console.log(`Consumer subscription ${subscriptionId}: +30 credits`);
 }
 
 // ============================================================
@@ -525,6 +605,12 @@ async function handleSubscriptionCanceled(subscription: Stripe.Subscription) {
       subscription_status: 'canceled',
       updated_at: new Date().toISOString(),
     })
+    .eq('stripe_subscription_id', subscription.id);
+
+  // Also check store subscriptions
+  await supabase
+    .from('store_subscriptions')
+    .update({ status: 'canceled', updated_at: new Date().toISOString() })
     .eq('stripe_subscription_id', subscription.id);
 
   console.log(`Subscription canceled: ${subscription.id}`);
@@ -545,17 +631,89 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
   };
 
   const mappedStatus = statusMap[subscription.status] || null;
+  const periodEnd = (subscription as unknown as Record<string, unknown>).current_period_end
+    ? new Date(((subscription as unknown as Record<string, unknown>).current_period_end as number) * 1000).toISOString()
+    : null;
 
+  // Update consumer credits
   await supabase
     .from('consumer_credits')
     .update({
       subscription_status: mappedStatus,
-      subscription_period_end: (subscription as unknown as Record<string, unknown>).current_period_end
-        ? new Date(((subscription as unknown as Record<string, unknown>).current_period_end as number) * 1000).toISOString()
-        : null,
+      subscription_period_end: periodEnd,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('stripe_subscription_id', subscription.id);
+
+  // Update store subscriptions
+  await supabase
+    .from('store_subscriptions')
+    .update({
+      status: mappedStatus || 'canceled',
+      subscription_period_end: periodEnd,
       updated_at: new Date().toISOString(),
     })
     .eq('stripe_subscription_id', subscription.id);
 
   console.log(`Subscription updated: ${subscription.id} → ${mappedStatus}`);
+}
+
+// ============================================================
+// Store Subscription Checkout Handler
+// ============================================================
+async function handleStoreSubscriptionCheckout(session: Stripe.Checkout.Session) {
+  const supabase = createServerClient();
+  if (!supabase) return;
+
+  const storeId = session.metadata?.storeId;
+  if (!storeId) {
+    console.error('No storeId in store subscription metadata');
+    return;
+  }
+
+  const stripeCustomerId = typeof session.customer === 'string' ? session.customer : null;
+  const subscriptionId = typeof session.subscription === 'string' ? session.subscription : null;
+
+  const { data: sub } = await supabase
+    .from('store_subscriptions')
+    .select('studio_subscription_credits, studio_topup_credits')
+    .eq('store_id', storeId)
+    .single();
+
+  const newSubCredits = 100;
+
+  if (sub) {
+    await supabase
+      .from('store_subscriptions')
+      .update({
+        plan: 'standard',
+        status: 'active',
+        stripe_customer_id: stripeCustomerId,
+        stripe_subscription_id: subscriptionId,
+        studio_subscription_credits: newSubCredits,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('store_id', storeId);
+  } else {
+    await supabase.from('store_subscriptions').insert({
+      store_id: storeId,
+      plan: 'standard',
+      status: 'active',
+      stripe_customer_id: stripeCustomerId,
+      stripe_subscription_id: subscriptionId,
+      studio_subscription_credits: newSubCredits,
+    });
+  }
+
+  const totalAfter = newSubCredits + (sub?.studio_topup_credits || 0);
+  await supabase.from('studio_credit_transactions').insert({
+    store_id: storeId,
+    type: 'subscription_grant',
+    amount: 100,
+    balance_after: totalAfter,
+    description: 'スタンダードプラン開始 (AIスタジオ100クレジット)',
+    stripe_session_id: session.id,
+  });
+
+  console.log(`Store ${storeId}: subscription activated, +100 studio credits`);
 }

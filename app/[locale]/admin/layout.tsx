@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Sidebar, TopNav } from '@/components/admin/layout';
 import { useAuthStore } from '@/lib/store';
 import { useStoreContext } from '@/lib/store/store-context';
 import { supabase } from '@/lib/supabase';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertTriangle } from 'lucide-react';
 
 const pageTitles: Record<string, string> = {
   '/admin': 'dashboard',
@@ -57,10 +57,34 @@ export default function AdminLayout({
   const router = useRouter();
   const t = useTranslations('admin.sidebar');
   const { user, isLoading } = useAuthStore();
+  const store = useStoreContext((s) => s.store);
   const isRootDomain = useStoreContext((s) => s.isRootDomain);
   const [redirecting, setRedirecting] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState<string | null>(null);
 
   const isLoginPage = pathname.endsWith('/admin/login');
+
+  // Fetch subscription status
+  useEffect(() => {
+    if (!store?.id || isLoginPage) return;
+    (async () => {
+      try {
+        const res = await fetch(`/api/billing/subscription-status?storeId=${store.id}`);
+        const data = await res.json();
+        if (data.success) {
+          setSubscriptionStatus(data.status);
+        }
+      } catch {
+        // ignore
+      }
+    })();
+  }, [store?.id, isLoginPage]);
+
+  // Pages blocked when subscription is expired/canceled
+  const blockedPaths = ['/admin/studio', '/admin/live'];
+  const pathWithoutLocale = pathname.replace(`/${locale}`, '');
+  const isBlockedPage = blockedPaths.some(p => pathWithoutLocale.startsWith(p));
+  const isSubscriptionExpired = subscriptionStatus === 'expired' || subscriptionStatus === 'canceled';
 
   // Auth guard: redirect to login if not authenticated
   useEffect(() => {
@@ -127,11 +151,33 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-page)]">
-      <Sidebar />
+      <Sidebar subscriptionExpired={isSubscriptionExpired} />
       <div className="ml-64">
         <TopNav title={title} />
         <main className="p-6">
-          {children}
+          {isBlockedPage && isSubscriptionExpired ? (
+            <div className="flex flex-col items-center justify-center py-20">
+              <div className="bg-white rounded-2xl border border-[var(--color-line)] p-8 max-w-md text-center shadow-sm">
+                <AlertTriangle size={48} className="mx-auto text-amber-500 mb-4" />
+                <h2 className="text-lg font-bold text-[var(--color-title-active)] mb-2">
+                  {locale === 'ja' ? 'この機能を利用するにはプランへの加入が必要です' : 'Subscription required to access this feature'}
+                </h2>
+                <p className="text-sm text-[var(--color-text-body)] mb-6">
+                  {locale === 'ja'
+                    ? 'AIスタジオやライブ配信をご利用いただくには、月額プランにご加入ください。'
+                    : 'Please subscribe to a monthly plan to use AI Studio and Live Broadcast.'}
+                </p>
+                <a
+                  href={`/${locale}/admin/billing`}
+                  className="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  {locale === 'ja' ? 'プランに加入する' : 'Subscribe to a plan'}
+                </a>
+              </div>
+            </div>
+          ) : (
+            children
+          )}
         </main>
       </div>
     </div>

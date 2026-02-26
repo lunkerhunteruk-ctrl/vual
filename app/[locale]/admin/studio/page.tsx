@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Search, Check, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { GeminiImageGenerator } from '@/components/admin/studio';
+import { useStoreContext } from '@/lib/store/store-context';
 
 // SizeSpec type for structured size data
 interface SizeSpec {
@@ -27,6 +28,8 @@ interface Product {
 
 export default function AIStudioPage() {
   const locale = useLocale();
+  const store = useStoreContext((s) => s.store);
+  const storeId = store?.id;
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -374,6 +377,7 @@ export default function AIStudioPage() {
             fourthGarmentName={selectedFourthProduct ? getProductName(selectedFourthProduct) : undefined}
             selectedProductIds={[selectedProduct, selectedSecondProduct, selectedThirdProduct, selectedFourthProduct].filter(Boolean).map(p => p!.id)}
             allProducts={products}
+            storeId={storeId}
           />
         </div>
       </div>

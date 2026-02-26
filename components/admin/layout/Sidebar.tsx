@@ -85,10 +85,13 @@ const menuSections: MenuSection[] = [
   },
 ];
 
-export function Sidebar() {
+export function Sidebar({ subscriptionExpired = false }: { subscriptionExpired?: boolean }) {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('admin.sidebar');
+
+  // Pages blocked when subscription expired
+  const blockedHrefs = ['/admin/studio', '/admin/live'];
 
   const isActive = (href: string) => {
     const localizedHref = `/${locale}${href}`;
@@ -120,22 +123,25 @@ export function Sidebar() {
               {section.items.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.href);
+                const isBlocked = subscriptionExpired && blockedHrefs.includes(item.href);
 
                 return (
                   <li key={item.href}>
                     <Link
-                      href={`/${locale}${item.href}`}
+                      href={isBlocked ? `/${locale}${item.href}` : `/${locale}${item.href}`}
                       className={`
                         relative flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-md)]
                         text-sm font-medium transition-all duration-200
-                        ${active
-                          ? 'bg-[var(--color-bg-element)] text-[var(--color-title-active)]'
-                          : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] hover:text-[var(--color-title-active)]'
+                        ${isBlocked
+                          ? 'opacity-40 cursor-not-allowed'
+                          : active
+                            ? 'bg-[var(--color-bg-element)] text-[var(--color-title-active)]'
+                            : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] hover:text-[var(--color-title-active)]'
                         }
-                        ${item.highlight ? 'text-[var(--color-accent)]' : ''}
+                        ${item.highlight && !isBlocked ? 'text-[var(--color-accent)]' : ''}
                       `}
                     >
-                      {active && (
+                      {active && !isBlocked && (
                         <motion.div
                           layoutId="activeTab"
                           className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-[var(--color-accent)] rounded-r-full"
@@ -144,10 +150,10 @@ export function Sidebar() {
                       )}
                       <Icon
                         size={18}
-                        className={item.highlight && !active ? 'text-[var(--color-accent)]' : ''}
+                        className={item.highlight && !active && !isBlocked ? 'text-[var(--color-accent)]' : ''}
                       />
                       <span>{t(item.labelKey)}</span>
-                      {item.highlight && (
+                      {item.highlight && !isBlocked && (
                         <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
                       )}
                     </Link>

@@ -52,6 +52,8 @@ interface RequestBody {
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
+  // Store admin billing (AI Studio)
+  storeId?: string;
 }
 
 // Background descriptions
@@ -162,6 +164,64 @@ export async function POST(request: NextRequest) {
           { error: creditResult.error, errorCode: creditResult.errorCode },
           { status: 402 }
         );
+      }
+    }
+
+    // AI Studio credit check for store admin requests
+    if (body.storeId && !body.lineUserId && !body.customerId) {
+      const { createServerClient: createSC } = await import('@/lib/supabase');
+      const sb = createSC();
+      if (sb) {
+        const { data: sub } = await sb
+          .from('store_subscriptions')
+          .select('studio_subscription_credits, studio_topup_credits, status')
+          .eq('store_id', body.storeId)
+          .single();
+
+        if (!sub || (sub.status !== 'active' && sub.status !== 'trialing')) {
+          return NextResponse.json(
+            { error: 'サブスクリプションが有効ではありません', errorCode: 'no_subscription' },
+            { status: 402 }
+          );
+        }
+
+        const totalCredits = sub.studio_subscription_credits + sub.studio_topup_credits;
+        if (totalCredits <= 0) {
+          return NextResponse.json(
+            { error: 'AIスタジオクレジットが不足しています', errorCode: 'insufficient_studio_credits' },
+            { status: 402 }
+          );
+        }
+
+        // Deduct: subscription credits first, then topup
+        if (sub.studio_subscription_credits > 0) {
+          await sb
+            .from('store_subscriptions')
+            .update({
+              studio_subscription_credits: sub.studio_subscription_credits - 1,
+              studio_credits_total_used: (sub as Record<string, number>).studio_credits_total_used + 1,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('store_id', body.storeId);
+        } else {
+          await sb
+            .from('store_subscriptions')
+            .update({
+              studio_topup_credits: sub.studio_topup_credits - 1,
+              studio_credits_total_used: (sub as Record<string, number>).studio_credits_total_used + 1,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('store_id', body.storeId);
+        }
+
+        const newTotal = totalCredits - 1;
+        await sb.from('studio_credit_transactions').insert({
+          store_id: body.storeId,
+          type: 'consumption',
+          amount: -1,
+          balance_after: newTotal,
+          description: 'AIスタジオ画像生成',
+        });
       }
     }
 

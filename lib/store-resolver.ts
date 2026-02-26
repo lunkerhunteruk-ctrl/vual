@@ -30,6 +30,7 @@ export interface StoreInfo {
   socialTwitter: string | null;
   socialYoutube: string | null;
   socialLine: string | null;
+  subscriptionStatus: string | null;
 }
 
 /**
@@ -78,11 +79,22 @@ export async function resolveStore(): Promise<StoreInfo | null> {
 
   const { data, error } = await supabase
     .from('stores')
-    .select('id, name, slug, description, logo_url')
+    .select('id, name, slug, description, logo_url, store_subscriptions(status, trial_ends_at)')
     .eq('slug', slug)
     .single();
 
   if (error || !data) return null;
+
+  // Resolve subscription status
+  let subscriptionStatus: string | null = null;
+  const sub = (data as Record<string, unknown>).store_subscriptions as { status: string; trial_ends_at: string | null } | null;
+  if (sub) {
+    subscriptionStatus = sub.status;
+    // Check if trial expired
+    if (sub.status === 'trialing' && sub.trial_ends_at && new Date(sub.trial_ends_at) < new Date()) {
+      subscriptionStatus = 'expired';
+    }
+  }
 
   return {
     id: data.id,
@@ -97,5 +109,6 @@ export async function resolveStore(): Promise<StoreInfo | null> {
     socialTwitter: null,
     socialYoutube: null,
     socialLine: null,
+    subscriptionStatus,
   };
 }

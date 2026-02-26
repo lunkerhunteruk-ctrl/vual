@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Coins, TrendingUp, TrendingDown, ArrowRight, Loader2, Settings, Check } from 'lucide-react';
+import { Coins, TrendingUp, TrendingDown, ArrowRight, Loader2, Settings, Check, Crown, Sparkles, Clock, AlertTriangle } from 'lucide-react';
 import { useStoreContext } from '@/lib/store/store-context';
 import { toast } from '@/lib/store/toast';
 
@@ -22,10 +22,27 @@ interface CreditTransaction {
   created_at: string;
 }
 
+interface SubscriptionInfo {
+  status: string;
+  plan: string | null;
+  trialDaysRemaining: number | null;
+  trialEndsAt: string | null;
+  subscriptionPeriodEnd: string | null;
+  studioSubscriptionCredits: number;
+  studioTopupCredits: number;
+  studioTotalCredits: number;
+}
+
 const PACKS = [
   { slug: 'store-starter', nameKey: 'starter', descKey: 'starterDesc', price: 10000, credits: 250 },
   { slug: 'store-standard', nameKey: 'standard', descKey: 'standardDesc', price: 35000, credits: 1000 },
   { slug: 'store-pro', nameKey: 'pro', descKey: 'proDesc', price: 90000, credits: 3000 },
+] as const;
+
+const STUDIO_TOPUP_PACKS = [
+  { slug: 'studio-light', name: 'ライト', nameEn: 'Light', price: 12000, credits: 50, perCredit: 240 },
+  { slug: 'studio-standard', name: 'スタンダード', nameEn: 'Standard', price: 33000, credits: 150, perCredit: 220 },
+  { slug: 'studio-pro', name: 'プロ', nameEn: 'Pro', price: 90000, credits: 500, perCredit: 180 },
 ] as const;
 
 export default function BillingPage() {
@@ -44,6 +61,8 @@ export default function BillingPage() {
   const [dailyLimit, setDailyLimit] = useState(3);
   const [dailyLimitSaved, setDailyLimitSaved] = useState(3);
   const [savingLimit, setSavingLimit] = useState(false);
+  const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
+  const [subscribing, setSubscribing] = useState(false);
 
   const fetchBalance = useCallback(async () => {
     if (!storeId) return;
@@ -98,10 +117,45 @@ export default function BillingPage() {
     }
   }, [storeId]);
 
+  const fetchSubscription = useCallback(async () => {
+    if (!storeId) return;
+    try {
+      const res = await fetch(`/api/billing/subscription-status?storeId=${storeId}`);
+      const data = await res.json();
+      if (data.success) {
+        setSubscription(data);
+      }
+    } catch {
+      console.error('Failed to fetch subscription');
+    }
+  }, [storeId]);
+
+  const handleSubscribe = async () => {
+    if (!storeId) return;
+    setSubscribing(true);
+    try {
+      const res = await fetch('/api/billing/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storeId }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error(data.error || 'Failed to create subscription');
+      }
+    } catch {
+      toast.error(locale === 'ja' ? 'サブスクリプション開始に失敗しました' : 'Subscription failed');
+    } finally {
+      setSubscribing(false);
+    }
+  };
+
   useEffect(() => {
     if (storeId) {
       setIsLoading(true);
-      Promise.all([fetchBalance(), fetchTransactions(0), fetchSettings()]).finally(() => setIsLoading(false));
+      Promise.all([fetchBalance(), fetchTransactions(0), fetchSettings(), fetchSubscription()]).finally(() => setIsLoading(false));
     } else {
       // If store context loaded but store is null, stop loading
       const timer = setTimeout(() => {
@@ -109,11 +163,34 @@ export default function BillingPage() {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [storeId, fetchBalance, fetchTransactions, fetchSettings]);
+  }, [storeId, fetchBalance, fetchTransactions, fetchSettings, fetchSubscription]);
 
   // Check for success query param and verify session to grant credits
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+
+    // Subscription success
+    if (params.get('sub_success') === 'true') {
+      const sessionId = params.get('session_id');
+      window.history.replaceState({}, '', window.location.pathname);
+      if (sessionId) {
+        fetch(`/api/billing/verify-session?session_id=${encodeURIComponent(sessionId)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              toast.success(locale === 'ja' ? 'プランに加入しました！' : 'Subscribed successfully!');
+            }
+            fetchSubscription();
+          })
+          .catch(() => { fetchSubscription(); });
+      } else {
+        toast.success(locale === 'ja' ? 'プランに加入しました！' : 'Subscribed successfully!');
+        fetchSubscription();
+      }
+      return;
+    }
+
+    // Credit purchase success
     if (params.get('success') === 'true') {
       const sessionId = params.get('session_id');
       window.history.replaceState({}, '', window.location.pathname);
@@ -130,6 +207,7 @@ export default function BillingPage() {
             }
             fetchBalance();
             fetchTransactions(0);
+            fetchSubscription();
           })
           .catch(() => {
             toast.error(locale === 'ja' ? 'クレジットの検証に失敗しました' : 'Verification failed');
@@ -142,7 +220,7 @@ export default function BillingPage() {
         fetchTransactions(0);
       }
     }
-  }, [locale, fetchBalance, fetchTransactions]);
+  }, [locale, fetchBalance, fetchTransactions, fetchSubscription]);
 
   const handleSaveLimit = async () => {
     if (!storeId || dailyLimit === dailyLimitSaved) return;
@@ -222,7 +300,147 @@ export default function BillingPage() {
 
   return (
     <div className="space-y-8">
-      {/* Balance Section */}
+      {/* Subscription Status Card */}
+      {subscription && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`rounded-xl p-6 border ${
+            subscription.status === 'active'
+              ? 'bg-emerald-50 border-emerald-200'
+              : subscription.status === 'trialing'
+                ? 'bg-blue-50 border-blue-200'
+                : 'bg-amber-50 border-amber-200'
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {subscription.status === 'active' ? (
+                <Crown size={24} className="text-emerald-600" />
+              ) : subscription.status === 'trialing' ? (
+                <Clock size={24} className="text-blue-600" />
+              ) : (
+                <AlertTriangle size={24} className="text-amber-600" />
+              )}
+              <div>
+                <h3 className="text-base font-bold text-gray-900">
+                  {subscription.status === 'active'
+                    ? (locale === 'ja' ? 'スタンダードプラン' : 'Standard Plan')
+                    : subscription.status === 'trialing'
+                      ? (locale === 'ja' ? '無料トライアル' : 'Free Trial')
+                      : (locale === 'ja' ? 'プラン未加入' : 'No Active Plan')}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  {subscription.status === 'active' && subscription.subscriptionPeriodEnd
+                    ? `${locale === 'ja' ? '次回更新日' : 'Next renewal'}: ${new Date(subscription.subscriptionPeriodEnd).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US')}`
+                    : subscription.status === 'trialing' && subscription.trialDaysRemaining !== null
+                      ? `${locale === 'ja' ? '残り' : ''}${subscription.trialDaysRemaining}${locale === 'ja' ? '日' : ' days remaining'}`
+                      : (locale === 'ja' ? 'AIスタジオ・ライブ配信を利用するにはプランに加入してください' : 'Subscribe to use AI Studio & Live Broadcast')}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {/* AI Studio credits */}
+              {(subscription.status === 'active' || subscription.status === 'trialing') && (
+                <div className="text-right">
+                  <p className="text-xs text-gray-500">{locale === 'ja' ? 'AIスタジオクレジット' : 'AI Studio Credits'}</p>
+                  <p className="text-xl font-bold text-gray-900">{subscription.studioTotalCredits}</p>
+                  {subscription.studioTopupCredits > 0 && (
+                    <p className="text-[10px] text-gray-500">
+                      {locale === 'ja' ? '月額' : 'Monthly'}: {subscription.studioSubscriptionCredits} + {locale === 'ja' ? 'トップアップ' : 'Topup'}: {subscription.studioTopupCredits}
+                    </p>
+                  )}
+                </div>
+              )}
+              {(subscription.status === 'none' || subscription.status === 'expired' || subscription.status === 'canceled') && (
+                <button
+                  onClick={handleSubscribe}
+                  disabled={subscribing}
+                  className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                >
+                  {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
+                  {locale === 'ja' ? 'プランに加入する' : 'Subscribe'}
+                </button>
+              )}
+              {subscription.status === 'trialing' && (
+                <button
+                  onClick={handleSubscribe}
+                  disabled={subscribing}
+                  className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                >
+                  {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
+                  {locale === 'ja' ? '月額プランに切り替え' : 'Switch to paid plan'}
+                </button>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* AI Studio Credit Topup */}
+      {subscription && (subscription.status === 'active' || subscription.status === 'trialing') && (
+        <div>
+          <h2 className="text-base font-semibold text-[var(--color-title-active)] mb-4 flex items-center gap-2">
+            <Sparkles size={18} />
+            {locale === 'ja' ? 'AIスタジオ クレジットトップアップ' : 'AI Studio Credit Top-up'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {STUDIO_TOPUP_PACKS.map((pack, idx) => (
+              <motion.div
+                key={pack.slug}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 * idx }}
+                className={`relative bg-white border rounded-xl p-6 hover:shadow-md transition-shadow ${
+                  pack.slug === 'studio-standard'
+                    ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]'
+                    : 'border-[var(--color-line)]'
+                }`}
+              >
+                {pack.slug === 'studio-standard' && (
+                  <div className="absolute -top-3 left-4 px-2.5 py-0.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
+                    {locale === 'ja' ? '人気' : 'Popular'}
+                  </div>
+                )}
+                <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-1">
+                  {locale === 'ja' ? pack.name : pack.nameEn}
+                </h3>
+                <p className="text-xs text-[var(--color-text-label)] mb-2">
+                  {pack.credits}{locale === 'ja' ? 'クレジット' : ' credits'} (¥{pack.perCredit}/{locale === 'ja' ? '回' : 'gen'})
+                </p>
+                <p className="text-2xl font-bold text-[var(--color-title-active)] mb-4">
+                  ¥{pack.price.toLocaleString()}
+                </p>
+                <button
+                  onClick={() => handlePurchase(pack.slug)}
+                  disabled={purchasingSlug !== null}
+                  className="w-full h-10 flex items-center justify-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {purchasingSlug === pack.slug ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <>
+                      {locale === 'ja' ? '購入する' : 'Purchase'}
+                      <ArrowRight size={14} />
+                    </>
+                  )}
+                </button>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-xs text-[var(--color-text-label)] mt-2">
+            {locale === 'ja'
+              ? '※ トップアップクレジットは繰り越し可能です。月額クレジット(¥198/回相当)は毎月リセットされます。'
+              : '※ Top-up credits carry over. Monthly credits (¥198/gen) reset each billing cycle.'}
+          </p>
+        </div>
+      )}
+
+      {/* Fitting Credits - Balance Section */}
+      <h2 className="text-base font-semibold text-[var(--color-title-active)] flex items-center gap-2">
+        <Coins size={18} />
+        {locale === 'ja' ? 'フィッティングクレジット' : 'Fitting Credits'}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
