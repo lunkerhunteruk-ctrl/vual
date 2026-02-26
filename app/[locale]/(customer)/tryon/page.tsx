@@ -115,7 +115,7 @@ export default function TryOnPage() {
           } else {
             const ahead = item.itemsAhead || 0;
             setProcessingStatus(
-              locale === 'ja' ? `キュー待ち（${ahead}件先）` : `In queue (${ahead} ahead)`
+              locale === 'ja' ? `順番待ち（${ahead}件先）` : `In queue (${ahead} ahead)`
             );
           }
         } catch {
@@ -168,7 +168,7 @@ export default function TryOnPage() {
         throw new Error(data.error || 'Failed to start try-on');
       }
 
-      setProcessingStatus(locale === 'ja' ? 'キューに追加しました...' : 'Added to queue...');
+      setProcessingStatus(locale === 'ja' ? '順番待ち...' : 'In queue...');
       startPolling(data.queueId);
     } catch (err: any) {
       setTryOnError(err.message || (locale === 'ja' ? 'エラーが発生しました' : 'An error occurred'));
