@@ -179,9 +179,9 @@ export function LiffProvider({ children }: LiffProviderProps) {
       const redirectUri = `https://vual.jp/auth/callback?returnTo=${encodeURIComponent(currentUrl)}`;
       liffInstance.login({ redirectUri });
     } else {
-      // External browser: use direct LINE OAuth (no LIFF dependency)
+      // External browser: use direct LINE OAuth on vual.jp domain (no LIFF dependency)
       const currentUrl = window.location.href;
-      window.location.href = `/api/auth/line?returnTo=${encodeURIComponent(currentUrl)}`;
+      window.location.href = `https://vual.jp/api/auth/line?returnTo=${encodeURIComponent(currentUrl)}`;
     }
   };
 

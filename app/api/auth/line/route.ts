@@ -20,7 +20,8 @@ export async function GET(request: NextRequest) {
   // Store state and returnTo in a cookie for validation on callback
   const callbackData = JSON.stringify({ state, returnTo });
 
-  const redirectUri = `${request.nextUrl.origin}/api/auth/line/callback`;
+  // Must match exactly what's registered in LINE Developers Console
+  const redirectUri = 'https://vual.jp/api/auth/line/callback';
 
   const params = new URLSearchParams({
     response_type: 'code',
@@ -40,6 +41,7 @@ export async function GET(request: NextRequest) {
     sameSite: 'lax',
     path: '/',
     maxAge: 300, // 5 minutes
+    domain: '.vual.jp', // Accessible across all subdomains
   });
 
   return response;

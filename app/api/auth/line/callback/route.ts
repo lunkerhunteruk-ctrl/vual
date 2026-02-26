@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Exchange code for access token
-    const redirectUri = `${request.nextUrl.origin}/api/auth/line/callback`;
+    // Exchange code for access token (must match the redirect_uri sent in /api/auth/line)
+    const redirectUri = 'https://vual.jp/api/auth/line/callback';
     const tokenResponse = await fetch('https://api.line.me/oauth2/v2.1/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
