@@ -382,8 +382,10 @@ export async function POST(request: NextRequest) {
 
               const insertPayload: Record<string, unknown> = {
                   image_url: savedImageUrl,
+                  storage_path: filename,
                   garment_count: garmentCount,
                   product_ids: body.productIds || [],
+                  expires_at: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
                   ...(body.storeId ? { store_id: body.storeId } : {}),
                 };
               console.log('[Gemini] Inserting gemini_results:', JSON.stringify(insertPayload));
