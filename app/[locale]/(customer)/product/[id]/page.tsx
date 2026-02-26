@@ -22,6 +22,7 @@ import { useCartStore } from '@/lib/store/cart';
 import { useFavoritesStore } from '@/lib/store/favorites';
 import { useTryOnStore } from '@/lib/store/tryon';
 import { mapToVtonCategory } from '@/lib/utils/vton-category';
+import { parseCategoryPath } from '@/lib/data/categories';
 import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 export default function ProductDetailPage() {
@@ -66,9 +67,9 @@ export default function ProductDetailPage() {
   const [showOutfitTryOn, setShowOutfitTryOn] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
 
-  // Try-on list
-  const addToTryOnList = useTryOnStore((s) => s.addToTryOnList);
-  const tryOnList = useTryOnStore((s) => s.tryOnList);
+  // Try-on pool
+  const addToPool = useTryOnStore((s) => s.addToPool);
+  const tryOnPool = useTryOnStore((s) => s.tryOnPool);
 
   // Store policies
   const [storePolicies, setStorePolicies] = useState<{
@@ -213,13 +214,18 @@ export default function ProductDetailPage() {
     const currency = product.currency || 'jpy';
     const taxIncPrice = getTaxInclusivePrice(product.price || product.base_price || 0, product.tax_included ?? true, currency);
 
-    addToTryOnList({
+    // Extract sub-category for style options (tops vs outer, etc.)
+    const parsed = parseCategoryPath(product.category);
+    const subCat = parsed?.category;
+
+    addToPool({
       productId,
       name: product.name,
       image: product.images?.find((img: any) => img.is_primary)?.url || product.images?.[0]?.url || '',
       price: taxIncPrice,
       currency,
       category: vtonCategory,
+      subCategory: subCat,
       storeId: product.store_id || '',
       addedAt: new Date().toISOString(),
     });
@@ -228,10 +234,8 @@ export default function ProductDetailPage() {
     setTimeout(() => setAddedToTryOn(false), 2000);
   };
 
-  // Check if this product is already in the try-on list
-  const vtonCategory = product ? mapToVtonCategory(product.category) : null;
-  const tryOnSlotKey = vtonCategory === 'dresses' ? 'upper_body' : vtonCategory;
-  const isInTryOnList = tryOnSlotKey ? tryOnList[tryOnSlotKey]?.productId === productId : false;
+  // Check if this product is already in the pool
+  const isInTryOnList = tryOnPool.some((p) => p.productId === productId);
 
   // Loading state
   if (isLoading) {

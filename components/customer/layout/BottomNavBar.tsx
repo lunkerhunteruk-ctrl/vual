@@ -27,8 +27,8 @@ export function BottomNavBar() {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations('customer.nav');
-  const tryOnList = useTryOnStore((s) => s.tryOnList);
-  const tryOnCount = Object.keys(tryOnList).length;
+  const tryOnPool = useTryOnStore((s) => s.tryOnPool);
+  const tryOnCount = tryOnPool.length;
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
 
