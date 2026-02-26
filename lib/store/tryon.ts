@@ -1,5 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { VTONCategory } from '@/lib/utils/vton-category';
+
+export interface TryOnListItem {
+  productId: string;
+  name: string;
+  image: string;
+  price: number;
+  currency: string;
+  category: VTONCategory;
+  storeId: string;
+  addedAt: string;
+}
 
 export interface Portrait {
   id: string;
@@ -29,12 +41,16 @@ interface TryOnStore {
   results: TryOnResult[];
   credits: ConsumerCredits | null;
   creditsLoading: boolean;
+  tryOnList: Record<string, TryOnListItem>;
   addPortrait: (portrait: Portrait) => void;
   removePortrait: (id: string) => void;
   addResult: (result: TryOnResult) => void;
   clearResults: () => void;
   loadCredits: (lineUserId?: string, customerId?: string) => Promise<void>;
   setCredits: (credits: ConsumerCredits | null) => void;
+  addToTryOnList: (item: TryOnListItem) => void;
+  removeFromTryOnList: (category: string) => void;
+  clearTryOnList: () => void;
 }
 
 export const useTryOnStore = create<TryOnStore>()(
@@ -44,6 +60,7 @@ export const useTryOnStore = create<TryOnStore>()(
       results: [],
       credits: null,
       creditsLoading: false,
+      tryOnList: {},
       addPortrait: (portrait) =>
         set((state) => ({
           portraits: [portrait, ...state.portraits].slice(0, 5), // Max 5
@@ -87,12 +104,28 @@ export const useTryOnStore = create<TryOnStore>()(
         }
       },
       setCredits: (credits) => set({ credits }),
+      addToTryOnList: (item) =>
+        set((state) => {
+          // dresses maps to upper_body slot
+          const slotKey = item.category === 'dresses' ? 'upper_body' : item.category;
+          return {
+            tryOnList: { ...state.tryOnList, [slotKey]: item },
+          };
+        }),
+      removeFromTryOnList: (category) =>
+        set((state) => {
+          const next = { ...state.tryOnList };
+          delete next[category];
+          return { tryOnList: next };
+        }),
+      clearTryOnList: () => set({ tryOnList: {} }),
     }),
     {
       name: 'vual-tryon',
       partialize: (state) => ({
         portraits: state.portraits,
         results: state.results,
+        tryOnList: state.tryOnList,
       }),
     }
   )

@@ -20,6 +20,7 @@ import { OutfitTryOnModal, CreditPurchaseSheet } from '@/components/customer/try
 import { useProduct, useProducts } from '@/lib/hooks/useProducts';
 import { useCartStore } from '@/lib/store/cart';
 import { useFavoritesStore } from '@/lib/store/favorites';
+import { useTryOnStore } from '@/lib/store/tryon';
 import { mapToVtonCategory } from '@/lib/utils/vton-category';
 import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
@@ -60,9 +61,14 @@ export default function ProductDetailPage() {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [addedToCart, setAddedToCart] = useState(false);
+  const [addedToTryOn, setAddedToTryOn] = useState(false);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
   const [showOutfitTryOn, setShowOutfitTryOn] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
+
+  // Try-on list
+  const addToTryOnList = useTryOnStore((s) => s.addToTryOnList);
+  const tryOnList = useTryOnStore((s) => s.tryOnList);
 
   // Store policies
   const [storePolicies, setStorePolicies] = useState<{
@@ -199,6 +205,34 @@ export default function ProductDetailPage() {
     setTimeout(() => setAddedToCart(false), 2000);
   };
 
+  const handleAddToTryOnList = () => {
+    if (!product) return;
+    const vtonCategory = mapToVtonCategory(product.category);
+    if (!vtonCategory) return;
+
+    const currency = product.currency || 'jpy';
+    const taxIncPrice = getTaxInclusivePrice(product.price || product.base_price || 0, product.tax_included ?? true, currency);
+
+    addToTryOnList({
+      productId,
+      name: product.name,
+      image: product.images?.find((img: any) => img.is_primary)?.url || product.images?.[0]?.url || '',
+      price: taxIncPrice,
+      currency,
+      category: vtonCategory,
+      storeId: product.store_id || '',
+      addedAt: new Date().toISOString(),
+    });
+
+    setAddedToTryOn(true);
+    setTimeout(() => setAddedToTryOn(false), 2000);
+  };
+
+  // Check if this product is already in the try-on list
+  const vtonCategory = product ? mapToVtonCategory(product.category) : null;
+  const tryOnSlotKey = vtonCategory === 'dresses' ? 'upper_body' : vtonCategory;
+  const isInTryOnList = tryOnSlotKey ? tryOnList[tryOnSlotKey]?.productId === productId : false;
+
   // Loading state
   if (isLoading) {
     return (
@@ -327,19 +361,6 @@ export default function ProductDetailPage() {
         </div>
       )}
 
-      {/* Try On Button */}
-      {isTryOnCompatible && (
-        <div className="px-4 py-3">
-          <button
-            onClick={() => setShowOutfitTryOn(true)}
-            className="w-full py-3 rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-          >
-            <Sparkles size={16} />
-            {locale === 'ja' ? '試着してみる' : 'Try It On'}
-          </button>
-        </div>
-      )}
-
       {/* Stock Warning */}
       {isLowStock && (
         <div className="mx-4 mt-2 flex items-center gap-2 px-3 py-2.5 bg-amber-50 border border-amber-200 rounded-[var(--radius-md)]">
@@ -378,7 +399,27 @@ export default function ProductDetailPage() {
         animate={{ y: 0 }}
         className="fixed bottom-20 left-0 right-0 bg-white border-t border-[var(--color-line)] p-4 z-20"
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          {isTryOnCompatible && (
+            <button
+              onClick={handleAddToTryOnList}
+              disabled={addedToTryOn}
+              className={`flex-shrink-0 h-12 px-3 rounded-[var(--radius-md)] border text-sm font-medium flex items-center justify-center gap-1.5 transition-colors ${
+                addedToTryOn || isInTryOnList
+                  ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5 text-[var(--color-accent)]'
+                  : 'border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5'
+              }`}
+            >
+              {addedToTryOn || isInTryOnList ? <Check size={16} /> : <Sparkles size={16} />}
+              <span className="whitespace-nowrap">
+                {addedToTryOn
+                  ? (locale === 'ja' ? '追加済み' : 'Added')
+                  : isInTryOnList
+                    ? (locale === 'ja' ? 'リスト内' : 'In List')
+                    : (locale === 'ja' ? '試着' : 'Try On')}
+              </span>
+            </button>
+          )}
           <Button
             variant={addedToCart ? 'primary' : 'inverse'}
             size="lg"

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Radio, Sparkles, User } from 'lucide-react';
+import { useTryOnStore } from '@/lib/store/tryon';
 
 const HIDE_ON_ROUTES = ['/checkout', '/cart'];
 
@@ -26,6 +27,8 @@ export function BottomNavBar() {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations('customer.nav');
+  const tryOnList = useTryOnStore((s) => s.tryOnList);
+  const tryOnCount = Object.keys(tryOnList).length;
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
 
@@ -74,15 +77,22 @@ export function BottomNavBar() {
               href={`/${locale}${item.path}`}
               className="flex flex-col items-center justify-center flex-1 py-1 relative"
             >
-              <Icon
-                size={22}
-                strokeWidth={active ? 2.2 : 1.8}
-                className={`transition-colors ${
-                  active
-                    ? 'text-[var(--color-accent)]'
-                    : 'text-[var(--color-text-label)]'
-                }`}
-              />
+              <div className="relative">
+                <Icon
+                  size={22}
+                  strokeWidth={active ? 2.2 : 1.8}
+                  className={`transition-colors ${
+                    active
+                      ? 'text-[var(--color-accent)]'
+                      : 'text-[var(--color-text-label)]'
+                  }`}
+                />
+                {item.key === 'tryOn' && tryOnCount > 0 && (
+                  <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
+                    {tryOnCount}
+                  </span>
+                )}
+              </div>
               <span
                 className={`text-[10px] mt-0.5 transition-colors ${
                   active
