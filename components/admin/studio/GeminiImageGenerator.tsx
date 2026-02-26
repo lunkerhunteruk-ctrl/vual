@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
 
@@ -201,6 +201,8 @@ export function GeminiImageGenerator({
   const [linkingProductIds, setLinkingProductIds] = useState<string[]>([]);
   const [isLinking, setIsLinking] = useState(false);
   const [linkSuccess, setLinkSuccess] = useState(false);
+  const [isAddingToCollection, setIsAddingToCollection] = useState(false);
+  const [collectionSuccess, setCollectionSuccess] = useState(false);
 
   // AI Studio credit balance
   const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
@@ -761,6 +763,7 @@ export function GeminiImageGenerator({
                     setModalImage(img);
                     setLinkingProductIds([]);
                     setLinkSuccess(false);
+                    setCollectionSuccess(false);
                   }}
                 >
                   <img
@@ -952,6 +955,56 @@ export function GeminiImageGenerator({
                           {locale === 'ja' ? '↑ アイテムを選択してください' : '↑ Select items to link'}
                         </span>
                       )}
+                    </div>
+                  );
+                })()}
+
+                {/* Add to Collection */}
+                {(() => {
+                  const usedProducts = allProducts.filter(p =>
+                    modalImage.product_ids?.includes(p.id)
+                  );
+
+                  return (
+                    <div className="pt-3 border-t border-[var(--color-line)]">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        disabled={isAddingToCollection}
+                        isLoading={isAddingToCollection}
+                        leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
+                        onClick={async () => {
+                          setIsAddingToCollection(true);
+                          try {
+                            const productIds = linkingProductIds.length > 0
+                              ? linkingProductIds
+                              : usedProducts.map(p => p.id);
+                            const res = await fetch('/api/collections', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                imageUrl: modalImage.image_url,
+                                sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
+                                productIds: productIds.slice(0, 4),
+                              }),
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                              setCollectionSuccess(true);
+                            }
+                          } catch (err) {
+                            console.error('Collection add failed:', err);
+                          } finally {
+                            setIsAddingToCollection(false);
+                          }
+                        }}
+                      >
+                        {collectionSuccess
+                          ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
+                          : (locale === 'ja'
+                            ? `コレクションに追加${linkingProductIds.length > 0 ? `（${linkingProductIds.length}点紐づけ）` : usedProducts.length > 0 ? `（${usedProducts.length}点紐づけ）` : ''}`
+                            : `Add to Collection${linkingProductIds.length > 0 ? ` (${linkingProductIds.length} items)` : usedProducts.length > 0 ? ` (${usedProducts.length} items)` : ''}`)}
+                      </Button>
                     </div>
                   );
                 })()}
