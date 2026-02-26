@@ -135,8 +135,19 @@ export function LiffProvider({ children }: LiffProviderProps) {
         return;
       }
     }
-    // Pass current URL as redirectUri so user returns to the same page after login
-    const redirectUri = typeof window !== 'undefined' ? window.location.href : undefined;
+    // Build redirectUri through the auth callback proxy on vual.jp
+    // This allows a single LIFF endpoint to serve all *.vual.jp subdomains
+    let redirectUri: string | undefined;
+    if (typeof window !== 'undefined') {
+      const currentUrl = window.location.href;
+      const isSubdomain = window.location.hostname !== 'vual.jp' && window.location.hostname.endsWith('.vual.jp');
+      if (isSubdomain) {
+        // Redirect through vual.jp/auth/callback, which will bounce back to the subdomain
+        redirectUri = `https://vual.jp/auth/callback?returnTo=${encodeURIComponent(currentUrl)}`;
+      } else {
+        redirectUri = currentUrl;
+      }
+    }
     liffInstance.login({ redirectUri });
   };
 
