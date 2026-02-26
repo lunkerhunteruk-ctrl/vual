@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,8 +12,10 @@ import {
   Globe,
   User,
   ChevronDown,
+  LogOut,
 } from 'lucide-react';
 import { locales, localeNames, Locale } from '@/i18n';
+import { useAuthStore } from '@/lib/store/auth';
 
 interface TopNavProps {
   title: string;
@@ -26,6 +28,25 @@ export function TopNav({ title }: TopNavProps) {
   const pathname = usePathname();
   const [isDark, setIsDark] = useState(false);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
+  const { signOut } = useAuthStore();
+
+  // Close profile menu on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(e.target as Node)) {
+        setShowProfileMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const handleSignOut = () => {
+    signOut();
+    router.push(`/${locale}/admin/login`);
+  };
 
   const handleLocaleChange = (newLocale: Locale) => {
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
@@ -120,11 +141,36 @@ export function TopNav({ title }: TopNavProps) {
         </div>
 
         {/* Profile */}
-        <button className="flex items-center gap-2 p-1.5 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors">
-          <div className="w-8 h-8 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center">
-            <User size={16} className="text-[var(--color-text-label)]" />
-          </div>
-        </button>
+        <div className="relative" ref={profileMenuRef}>
+          <button
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
+            className="flex items-center gap-2 p-1.5 rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center">
+              <User size={16} className="text-[var(--color-text-label)]" />
+            </div>
+          </button>
+
+          <AnimatePresence>
+            {showProfileMenu && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.15 }}
+                className="absolute right-0 top-full mt-2 w-44 bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] overflow-hidden z-50"
+              >
+                <button
+                  onClick={handleSignOut}
+                  className="w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
+                >
+                  <LogOut size={16} />
+                  <span>{locale === 'ja' ? 'サインアウト' : 'Sign out'}</span>
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </header>
   );

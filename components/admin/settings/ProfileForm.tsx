@@ -119,10 +119,6 @@ export function ProfileForm() {
 
   return (
     <div className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] p-6">
-      <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-6">
-        {t('shopProfile')}
-      </h3>
-
       {/* Logo Section */}
       <div className="flex items-start gap-6 mb-8">
         <div className="relative">

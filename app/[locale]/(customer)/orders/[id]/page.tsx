@@ -7,6 +7,7 @@ import { ArrowLeft, Loader2, RotateCcw } from 'lucide-react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { OrderStatusBadge, OrderTimeline } from '@/components/customer/orders';
+import { formatPrice as formatCurrencyPrice } from '@/lib/utils/currency';
 
 type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
@@ -60,7 +61,7 @@ export default function OrderDetailPage() {
     if (orderId) fetchOrder();
   }, [orderId]);
 
-  const formatPrice = (amount: number) => `¥${amount.toLocaleString()}`;
+  const formatPrice = (amount: number) => formatCurrencyPrice(amount, order?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false);
 
   const formatDate = (dateStr: string) => {
     return new Intl.DateTimeFormat('ja-JP', {

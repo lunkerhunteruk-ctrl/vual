@@ -3,6 +3,7 @@ import Stripe from 'stripe';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import type { CartItem } from '@/lib/types';
+import { toSmallestUnit } from '@/lib/utils/currency';
 
 // Initialize Firebase Admin
 function getFirestoreAdmin() {
@@ -105,10 +106,13 @@ export async function POST(request: NextRequest) {
     const stripe = getStripeClient();
     const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_APP_URL;
 
+    // Determine currency from cart items (all items should share the same currency)
+    const cartCurrency = items[0]?.currency || 'jpy';
+
     // Create line items for Stripe
     const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((item) => ({
       price_data: {
-        currency: 'usd',
+        currency: cartCurrency,
         product_data: {
           name: item.name,
           images: item.image ? [item.image] : [],
@@ -117,7 +121,7 @@ export async function POST(request: NextRequest) {
             variantId: item.variantId || '',
           },
         },
-        unit_amount: Math.round(item.price * 100), // Convert to cents
+        unit_amount: toSmallestUnit(item.price, cartCurrency),
       },
       quantity: item.quantity,
     }));
@@ -126,11 +130,11 @@ export async function POST(request: NextRequest) {
     if (shippingCost > 0) {
       lineItems.push({
         price_data: {
-          currency: 'usd',
+          currency: cartCurrency,
           product_data: {
-            name: 'Shipping',
+            name: locale === 'ja' ? '送料' : 'Shipping',
           },
-          unit_amount: Math.round(shippingCost * 100),
+          unit_amount: toSmallestUnit(shippingCost, cartCurrency),
         },
         quantity: 1,
       });

@@ -134,6 +134,43 @@ export function fromSmallestUnit(amount: number, currencyCode: CurrencyCode | st
 }
 
 /**
+ * Japan consumption tax rate (10%)
+ */
+export const JP_TAX_RATE = 0.1;
+
+/**
+ * Calculate tax-inclusive price from a base price.
+ * If tax is already included, returns the price as-is.
+ * Rounds to nearest integer for zero-decimal currencies (JPY, KRW).
+ */
+export function getTaxInclusivePrice(
+  basePrice: number,
+  taxIncluded: boolean,
+  currencyCode: CurrencyCode | string = 'JPY',
+  taxRate: number = JP_TAX_RATE
+): number {
+  if (taxIncluded) return basePrice;
+  const config = getCurrencyConfig(currencyCode);
+  const withTax = basePrice * (1 + taxRate);
+  return config.decimals === 0 ? Math.round(withTax) : withTax;
+}
+
+/**
+ * Format price for display with tax-inclusive label.
+ * Appends "（税込）" for Japanese locale.
+ */
+export function formatPriceWithTax(
+  amount: number,
+  currencyCode: CurrencyCode | string = 'JPY',
+  locale?: string,
+  fromSmallestUnit: boolean = false
+): string {
+  const formatted = formatPrice(amount, currencyCode, locale, fromSmallestUnit);
+  const displayLocale = locale || getCurrencyConfig(currencyCode).locale;
+  return displayLocale.startsWith('ja') ? `${formatted}（税込）` : formatted;
+}
+
+/**
  * Get currency options for select dropdowns
  */
 export function getCurrencyOptions(): Array<{ value: string; label: string }> {

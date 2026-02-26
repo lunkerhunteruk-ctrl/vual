@@ -10,6 +10,7 @@ import { useLocale } from 'next-intl';
 import { useTryOnStore, type Portrait } from '@/lib/store/tryon';
 import { useCartStore } from '@/lib/store/cart';
 import { mapToVtonCategory, VTON_SLOTS, type VTONCategory } from '@/lib/utils/vton-category';
+import { formatPrice } from '@/lib/utils/currency';
 
 // --- Types ---
 
@@ -19,6 +20,7 @@ interface OutfitProduct {
   nameEn?: string;
   price: number;
   originalPrice?: number;
+  currency?: string;
   image: string;
   category: string; // e.g. "mens-wear-tops"
 }
@@ -249,6 +251,7 @@ export function OutfitTryOnModal({
         variantId: 'default',
         name: product.name,
         price: product.price,
+        currency: product.currency || 'jpy',
         image: product.image,
         options: {},
       });
@@ -461,7 +464,7 @@ function BuildPhase({
                     {item.name}
                   </p>
                   <p className="text-xs text-[var(--color-accent)]">
-                    ¥{item.price.toLocaleString()}
+                    {formatPrice(item.price, item.currency || 'jpy', isJa ? 'ja-JP' : undefined, false)}
                   </p>
                 </div>
                 {!isInitial && (
@@ -549,7 +552,7 @@ function BuildPhase({
                           {product.name}
                         </p>
                         <p className="text-[10px] text-[var(--color-accent)] font-medium">
-                          ¥{product.price.toLocaleString()}
+                          {formatPrice(product.price, product.currency || 'jpy', isJa ? 'ja-JP' : undefined, false)}
                         </p>
                       </div>
                     </button>
@@ -623,7 +626,7 @@ function ResultPhase({
           <div key={cat} className="flex items-center justify-between text-sm">
             <span className="text-[var(--color-text-body)] truncate">{product.name}</span>
             <span className="text-[var(--color-title-active)] font-medium shrink-0 ml-2">
-              ¥{product.price.toLocaleString()}
+              {formatPrice(product.price, product.currency || 'jpy', isJa ? 'ja-JP' : undefined, false)}
             </span>
           </div>
         ))}
@@ -632,7 +635,7 @@ function ResultPhase({
             {isJa ? '合計' : 'Total'}
           </span>
           <span className="text-sm font-semibold text-[var(--color-accent)]">
-            ¥{totalPrice.toLocaleString()}
+            {formatPrice(totalPrice, 'jpy', isJa ? 'ja-JP' : undefined, false)}
           </span>
         </div>
       </div>

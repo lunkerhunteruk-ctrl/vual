@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { useAuthStore } from '@/lib/store';
 import { OrderStatusBadge } from '@/components/customer/orders';
+import { formatPrice as formatCurrencyPrice } from '@/lib/utils/currency';
 
 type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
@@ -75,8 +76,8 @@ export default function OrdersPage() {
     return true;
   });
 
-  const formatPrice = (amount: number) => {
-    return `¥${amount.toLocaleString()}`;
+  const formatPrice = (amount: number, currency: string = 'jpy') => {
+    return formatCurrencyPrice(amount, currency, locale === 'ja' ? 'ja-JP' : undefined, false);
   };
 
   const formatDate = (dateStr: string) => {
@@ -179,7 +180,7 @@ export default function OrdersPage() {
                     {order.order_items?.length || 0}点
                   </p>
                   <p className="text-sm font-semibold text-[var(--color-title-active)]">
-                    {formatPrice(order.total)}
+                    {formatPrice(order.total, order.currency)}
                   </p>
                 </div>
 

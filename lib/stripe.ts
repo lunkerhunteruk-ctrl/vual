@@ -1,4 +1,5 @@
 import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { toSmallestUnit, fromSmallestUnit } from '@/lib/utils/currency';
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -80,12 +81,12 @@ export async function createCheckoutAndRedirect(
   }
 }
 
-// Format price for Stripe (converts to cents)
-export function formatPriceForStripe(price: number): number {
-  return Math.round(price * 100);
+// Format price for Stripe (converts to smallest unit for the given currency)
+export function formatPriceForStripe(price: number, currency: string = 'usd'): number {
+  return toSmallestUnit(price, currency);
 }
 
-// Format price from Stripe (converts from cents)
-export function formatPriceFromStripe(amount: number): number {
-  return amount / 100;
+// Format price from Stripe (converts from smallest unit)
+export function formatPriceFromStripe(amount: number, currency: string = 'usd'): number {
+  return fromSmallestUnit(amount, currency);
 }

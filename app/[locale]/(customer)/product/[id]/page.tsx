@@ -21,6 +21,7 @@ import { useProduct, useProducts } from '@/lib/hooks/useProducts';
 import { useCartStore } from '@/lib/store/cart';
 import { useFavoritesStore } from '@/lib/store/favorites';
 import { mapToVtonCategory } from '@/lib/utils/vton-category';
+import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -155,7 +156,11 @@ export default function ProductDetailPage() {
       id: p.id,
       name: p.name,
       brand: p.brand || '',
-      price: `¥${p.price?.toLocaleString() || 0}`,
+      price: formatPriceWithTax(
+        getTaxInclusivePrice(p.price || p.base_price || 0, p.tax_included ?? true, p.currency || 'jpy'),
+        p.currency || 'jpy',
+        locale === 'ja' ? 'ja-JP' : undefined
+      ),
       image: p.images?.find(img => img.is_primary)?.url || p.images?.[0]?.url || p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
     }));
 
@@ -172,11 +177,15 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     if (!product) return;
 
+    const currency = product.currency || 'jpy';
+    const taxIncPrice = getTaxInclusivePrice(product.price || product.base_price || 0, product.tax_included ?? true, currency);
+
     addItem({
       productId: productId,
       variantId: `${selectedColor}-${selectedSize}`,
       name: product.name,
-      price: product.price,
+      price: taxIncPrice,
+      currency,
       image: product.images?.[0]?.url || '',
       options: {
         brand: product.brand || '',
@@ -270,7 +279,11 @@ export default function ProductDetailPage() {
       <ProductInfo
         brand={product.brand || ''}
         name={product.name}
-        price={`¥${product.price?.toLocaleString() || 0}`}
+        price={formatPriceWithTax(
+          getTaxInclusivePrice(product.price || product.base_price || 0, product.tax_included ?? true, product.currency || 'jpy'),
+          product.currency || 'jpy',
+          locale === 'ja' ? 'ja-JP' : undefined
+        )}
         category={product.category}
         description={product.description || ''}
         materials={product.materials || ''}

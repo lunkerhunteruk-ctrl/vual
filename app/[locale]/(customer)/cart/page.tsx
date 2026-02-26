@@ -9,6 +9,7 @@ import { X, ShoppingBag, Lock, Tag, Loader2, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { CartItem } from '@/components/customer/cart';
 import { useCartStore } from '@/lib/store/cart';
+import { formatPrice } from '@/lib/utils/currency';
 
 export default function CartPage() {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function CartPage() {
                 id={item.productId}
                 name={item.name}
                 brand={item.options?.brand || ''}
-                price={`$${item.price}`}
+                price={formatPrice(item.price, item.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
                 quantity={item.quantity}
                 size={item.options?.size || ''}
                 color={item.options?.color || ''}
@@ -97,7 +98,7 @@ export default function CartPage() {
                 <CheckCircle size={16} className="text-emerald-600" />
                 <span className="text-sm font-medium text-emerald-700">{couponCode}</span>
                 <span className="text-xs text-emerald-600">
-                  (-{discount > 0 ? `$${discount.toFixed(2)}` : ''})
+                  (-{discount > 0 ? formatPrice(discount, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false) : ''})
                 </span>
               </div>
               <button
@@ -147,12 +148,12 @@ export default function CartPage() {
           <div className="space-y-2 py-3 border-t border-[var(--color-line)]">
             <div className="flex items-center justify-between text-sm">
               <span className="text-[var(--color-text-body)]">{locale === 'ja' ? '小計' : 'Subtotal'}</span>
-              <span className="text-[var(--color-text-body)]">${subtotal.toFixed(2)}</span>
+              <span className="text-[var(--color-text-body)]">{formatPrice(subtotal, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}</span>
             </div>
             {discount > 0 && (
               <div className="flex items-center justify-between text-sm">
                 <span className="text-[var(--color-text-body)]">{locale === 'ja' ? '割引' : 'Discount'}</span>
-                <span className="text-emerald-600">-${discount.toFixed(2)}</span>
+                <span className="text-emerald-600">-{formatPrice(discount, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}</span>
               </div>
             )}
           </div>
@@ -171,7 +172,7 @@ export default function CartPage() {
               {t('total')}
             </span>
             <span className="text-xl font-semibold text-[var(--color-title-active)]">
-              ${total.toFixed(2)}
+              {formatPrice(total, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
             </span>
           </div>
           <Link href={`/${locale}/checkout`}>

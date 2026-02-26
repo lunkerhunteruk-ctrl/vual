@@ -247,7 +247,7 @@ export function GeminiImageGenerator({
   useEffect(() => {
     const fetchSavedImages = async () => {
       try {
-        const response = await fetch('/api/ai/gemini-results?all=true');
+        const response = await fetch(`/api/ai/gemini-results?all=true${storeId ? `&storeId=${storeId}` : ''}`);
         const data = await response.json();
         if (data.success && data.results) setSavedImages(data.results);
       } catch (err) {

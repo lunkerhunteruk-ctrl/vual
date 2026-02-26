@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { useStoreContext } from '@/lib/store/store-context';
 import {
   LayoutDashboard,
   ShoppingCart,
@@ -19,7 +20,7 @@ import {
   User,
   ExternalLink,
   LucideIcon,
-
+  LogOut,
   Star,
   MessageSquare,
   Shield,
@@ -29,6 +30,8 @@ import {
   MessageCircle,
   Coins,
 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/auth';
 
 interface MenuItem {
   icon: LucideIcon;
@@ -88,7 +91,15 @@ const menuSections: MenuSection[] = [
 export function Sidebar({ subscriptionExpired = false }: { subscriptionExpired?: boolean }) {
   const pathname = usePathname();
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations('admin.sidebar');
+  const store = useStoreContext((s) => s.store);
+  const { signOut } = useAuthStore();
+
+  const handleSignOut = () => {
+    signOut();
+    router.push(`/${locale}/admin/login`);
+  };
 
   // Pages blocked when subscription expired
   const blockedHrefs = ['/admin/studio', '/admin/live'];
@@ -103,11 +114,11 @@ export function Sidebar({ subscriptionExpired = false }: { subscriptionExpired?:
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-[var(--color-line)] flex flex-col z-40">
-      {/* Logo */}
+      {/* Store Name */}
       <div className="h-16 flex items-center justify-center border-b border-[var(--color-line)]">
-        <Link href={`/${locale}/admin`} className="flex items-center gap-2">
-          <span className="text-xl font-semibold tracking-[0.2em] text-[var(--color-title-active)]">
-            V U A L
+        <Link href={`/${locale}/admin`} className="flex items-center gap-2 px-4 max-w-full">
+          <span className="text-lg font-semibold text-[var(--color-title-active)] truncate">
+            {store?.name || 'V U A L'}
           </span>
         </Link>
       </div>
@@ -177,12 +188,17 @@ export function Sidebar({ subscriptionExpired = false }: { subscriptionExpired?:
           <ExternalLink size={16} />
           <span>{t('yourShop')}</span>
         </Link>
-        <div className="flex items-center gap-3 px-3 py-2 mt-2">
+        <button
+          onClick={handleSignOut}
+          className="flex items-center gap-3 px-3 py-2 mt-2 w-full rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+        >
           <div className="w-8 h-8 rounded-full bg-[var(--color-bg-element)] flex items-center justify-center">
-            <User size={16} className="text-[var(--color-text-label)]" />
+            <LogOut size={14} className="text-[var(--color-text-label)]" />
           </div>
-          <span className="text-sm text-[var(--color-text-body)]">@admin</span>
-        </div>
+          <span className="text-sm text-[var(--color-text-body)]">
+            {locale === 'ja' ? 'サインアウト' : 'Sign out'}
+          </span>
+        </button>
       </div>
     </aside>
   );

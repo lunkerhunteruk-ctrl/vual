@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight, MapPin, Truck, CreditCard, Tag, Plus, Lock, ShoppingBag, AlertCircle } from 'lucide-react';
 import { Button, Modal } from '@/components/ui';
 import { useCartStore } from '@/lib/store/cart';
+import { formatPrice } from '@/lib/utils/currency';
 
 const shippingMethods = [
   { id: 'pickup', label: 'Pickup at store', price: 0 },
@@ -160,7 +161,7 @@ export default function CheckoutPage() {
                 <p className="text-xs text-[var(--color-text-label)]">Qty: {item.quantity}</p>
               </div>
               <p className="text-sm font-medium text-[var(--color-title-active)]">
-                ${(item.price * item.quantity).toFixed(2)}
+                {formatPrice(item.price * item.quantity, item.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
               </p>
             </div>
           ))}
@@ -238,7 +239,7 @@ export default function CheckoutPage() {
                 <span className="text-sm text-[var(--color-text-body)]">{method.label}</span>
               </div>
               <span className="text-sm font-medium text-[var(--color-title-active)]">
-                {method.price === 0 ? 'FREE' : `$${method.price.toFixed(2)}`}
+                {method.price === 0 ? (locale === 'ja' ? '無料' : 'FREE') : formatPrice(method.price, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
               </span>
             </button>
           ))}
@@ -250,12 +251,12 @@ export default function CheckoutPage() {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-sm text-[var(--color-text-body)]">Subtotal</span>
-            <span className="text-sm text-[var(--color-title-active)]">${subtotal.toFixed(2)}</span>
+            <span className="text-sm text-[var(--color-title-active)]">{formatPrice(subtotal, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-[var(--color-text-body)]">Shipping</span>
             <span className="text-sm text-[var(--color-title-active)]">
-              {shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}
+              {shippingCost === 0 ? (locale === 'ja' ? '無料' : 'FREE') : formatPrice(shippingCost, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
             </span>
           </div>
         </div>
@@ -272,7 +273,7 @@ export default function CheckoutPage() {
             Total
           </span>
           <span className="text-xl font-semibold text-[var(--color-title-active)]">
-            ${total.toFixed(2)}
+            {formatPrice(total, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
           </span>
         </div>
         <Button

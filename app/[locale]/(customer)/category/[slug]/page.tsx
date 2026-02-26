@@ -8,6 +8,7 @@ import { ArrowLeft, Grid3X3, List, SlidersHorizontal, X, ChevronDown, Package } 
 import { ProductGrid } from '@/components/customer/home';
 import { Button } from '@/components/ui';
 import { useProducts } from '@/lib/hooks/useProducts';
+import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 export default function CategoryPage() {
   const params = useParams();
@@ -34,12 +35,16 @@ export default function CategoryPage() {
         id: p.id,
         name: p.name,
         brand: p.brand || '',
-        price: `$${p.price}`,
+        price: formatPriceWithTax(
+          getTaxInclusivePrice(p.price || p.base_price || 0, p.tax_included ?? true, p.currency || 'jpy'),
+          p.currency || 'jpy',
+          locale === 'ja' ? 'ja-JP' : undefined
+        ),
         image: p.images?.[0]?.url,
       }));
     }
     return [];
-  }, [firestoreProducts]);
+  }, [firestoreProducts, locale]);
 
   const productCount = products.length;
 

@@ -374,6 +374,7 @@ export interface CartItem {
   variantId?: string;
   name: string;
   price: number;
+  currency: string;
   quantity: number;
   image?: string;
   options?: {

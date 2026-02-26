@@ -680,7 +680,9 @@ async function handleStoreSubscriptionCheckout(session: Stripe.Checkout.Session)
     .eq('store_id', storeId)
     .single();
 
-  const newSubCredits = 100;
+  // Add 100 credits on top of existing balance (preserve trial/remaining credits)
+  const existingSubCredits = sub?.studio_subscription_credits || 0;
+  const newSubCredits = existingSubCredits + 100;
 
   if (sub) {
     await supabase

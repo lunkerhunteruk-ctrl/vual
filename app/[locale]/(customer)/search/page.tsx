@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Search, X, Clock, Grid3X3, Loader2 } from 'lucide-react';
 import { ProductGrid } from '@/components/customer/home';
 import { useCustomerContext } from '@/lib/store/customer-context';
+import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 // Japanese → English category slug mapping for search
 const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
@@ -79,14 +80,23 @@ export default function SearchPage() {
         }
         const data = await res.json();
         const rawProducts = data.products || [];
-        setStoreProducts(rawProducts.map((p: any) => ({
-          id: p.id,
-          name: p.name,
-          brand: p.brand || '',
-          category: p.category || '',
-          price: `¥${(p.price || p.base_price || 0).toLocaleString()}`,
-          image: p.image || p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url || '',
-        })));
+        setStoreProducts(rawProducts.map((p: any) => {
+          const currency = p.currency || 'jpy';
+          const basePrice = p.price || p.base_price || 0;
+          const taxInc = p.taxIncluded ?? p.tax_included ?? true;
+          return {
+            id: p.id,
+            name: p.name,
+            brand: p.brand || '',
+            category: p.category || '',
+            price: formatPriceWithTax(
+              getTaxInclusivePrice(basePrice, taxInc, currency),
+              currency,
+              locale === 'ja' ? 'ja-JP' : undefined
+            ),
+            image: p.image || p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url || '',
+          };
+        }));
       } catch {
         setStoreProducts([]);
       } finally {
@@ -133,13 +143,22 @@ export default function SearchPage() {
         }
         const res = await fetch(`/api/products?${params.toString()}`);
         const data = await res.json();
-        const products = (data.products || []).map((p: any) => ({
-          id: p.id,
-          name: p.name,
-          brand: p.brand || '',
-          price: `¥${(p.base_price || p.price || 0).toLocaleString()}`,
-          image: p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
-        }));
+        const products = (data.products || []).map((p: any) => {
+          const currency = p.currency || 'jpy';
+          const basePrice = p.base_price || p.price || 0;
+          const taxInc = p.tax_included ?? true;
+          return {
+            id: p.id,
+            name: p.name,
+            brand: p.brand || '',
+            price: formatPriceWithTax(
+              getTaxInclusivePrice(basePrice, taxInc, currency),
+              currency,
+              locale === 'ja' ? 'ja-JP' : undefined
+            ),
+            image: p.product_images?.find((img: any) => img.is_primary)?.url || p.product_images?.[0]?.url,
+          };
+        });
         setSearchResults(products);
       } catch {
         setSearchResults([]);

@@ -367,6 +367,7 @@ export async function POST(request: NextRequest) {
                   garment_count: garmentCount,
                   product_ids: body.productIds || [],
                   expires_at: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+                  ...(body.storeId ? { store_id: body.storeId } : {}),
                 });
 
               console.log('Saved Gemini result to storage:', savedImageUrl);

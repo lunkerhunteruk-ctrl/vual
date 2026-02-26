@@ -13,6 +13,7 @@ import {
 import { useProducts } from '@/lib/hooks/useProducts';
 import { useHasCollections } from '@/lib/hooks';
 import { useStoreContext } from '@/lib/store/store-context';
+import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 // ============================================================
 // Landing Page for root domain (vual.jp)
@@ -134,6 +135,7 @@ export default function HomePage() {
 
 function ShopHomePage() {
   const t = useTranslations('customer.home');
+  const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState('all');
 
   // Fetch real products from Firestore
@@ -152,12 +154,16 @@ function ShopHomePage() {
         id: p.id,
         name: p.name,
         brand: p.brand || '',
-        price: `$${p.price}`,
+        price: formatPriceWithTax(
+          getTaxInclusivePrice(p.price || p.base_price || 0, p.tax_included ?? true, p.currency || 'jpy'),
+          p.currency || 'jpy',
+          locale === 'ja' ? 'ja-JP' : undefined
+        ),
         image: p.images?.[0]?.url,
       }));
     }
     return [];
-  }, [firestoreProducts]);
+  }, [firestoreProducts, locale]);
 
   // Check if we have any products
   const hasProducts = products.length > 0;

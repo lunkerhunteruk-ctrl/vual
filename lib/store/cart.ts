@@ -135,6 +135,14 @@ export const useCartStore = create<CartStore>()(
         items: state.items,
         couponCode: state.couponCode,
       }),
+      onRehydrateStorage: () => (state) => {
+        if (state?.items) {
+          state.items = state.items.map(item => ({
+            ...item,
+            currency: item.currency || 'jpy',
+          }));
+        }
+      },
     }
   )
 );

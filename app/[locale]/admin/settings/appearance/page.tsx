@@ -58,37 +58,27 @@ export default function AppearanceSettingsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-semibold text-[var(--color-title-active)]">
-            {t('appearance') || 'Appearance'}
-          </h1>
-          <p className="text-sm text-[var(--color-text-label)] mt-1">
-            {t('appearanceDescription') || 'Customize your shop\'s look and feel'}
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          {hasChanges && (
-            <Button
-              variant="ghost"
-              size="sm"
-              leftIcon={<RotateCcw size={16} />}
-              onClick={handleReset}
-            >
-              {t('reset') || 'Reset'}
-            </Button>
-          )}
+      {/* Actions */}
+      <div className="flex items-center justify-end gap-3">
+        {hasChanges && (
           <Button
-            variant="primary"
-            size="md"
-            leftIcon={<Save size={16} />}
-            onClick={handleSave}
-            disabled={!hasChanges || isSaving}
+            variant="ghost"
+            size="sm"
+            leftIcon={<RotateCcw size={16} />}
+            onClick={handleReset}
           >
-            {isSaving ? (t('saving') || 'Saving...') : (t('saveChanges') || 'Save Changes')}
+            {t('reset') || 'Reset'}
           </Button>
-        </div>
+        )}
+        <Button
+          variant="primary"
+          size="md"
+          leftIcon={<Save size={16} />}
+          onClick={handleSave}
+          disabled={!hasChanges || isSaving}
+        >
+          {isSaving ? (t('saving') || 'Saving...') : (t('saveChanges') || 'Save Changes')}
+        </Button>
       </div>
 
       {/* Theme Presets Section */}

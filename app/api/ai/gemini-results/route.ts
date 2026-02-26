@@ -52,6 +52,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const all = searchParams.get('all') === 'true';
     const limit = parseInt(searchParams.get('limit') || '50');
+    const storeId = searchParams.get('storeId');
 
     // Only fetch images from last 5 days
     const fiveDaysAgo = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString();
@@ -61,6 +62,11 @@ export async function GET(request: NextRequest) {
       .select('*')
       .gte('created_at', fiveDaysAgo)
       .order('created_at', { ascending: false });
+
+    // Filter by store_id for multi-tenant isolation
+    if (storeId) {
+      query.eq('store_id', storeId);
+    }
 
     if (!all) {
       query.limit(limit);
@@ -143,6 +149,7 @@ export async function POST(request: NextRequest) {
       .insert({
         image_url: imageUrl,
         garment_count: body.garmentCount || 1,
+        ...(body.storeId ? { store_id: body.storeId } : {}),
       })
       .select()
       .single();

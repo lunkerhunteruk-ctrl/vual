@@ -22,6 +22,7 @@ const pageTitles: Record<string, string> = {
   '/admin/live': 'liveBroadcast',
   '/admin/billing': 'billing',
   '/admin/settings': 'settings',
+  '/admin/settings/appearance': 'appearance',
   '/admin/settings/profile': 'shopProfile',
   '/admin/settings/team': 'team',
   '/admin/settings/policies': 'storePolicies',

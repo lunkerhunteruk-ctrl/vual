@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     let query = supabase
       .from('products')
       .select(`
-        id, name, name_en, category, base_price, discounted_price,
+        id, name, name_en, category, base_price, discounted_price, currency, tax_included,
         brands (name),
         product_images!inner (url, is_primary, position)
       `)
@@ -68,6 +68,8 @@ export async function GET(request: NextRequest) {
         category: p.category,
         price: p.discounted_price || p.base_price,
         originalPrice: p.discounted_price ? p.base_price : undefined,
+        currency: p.currency || 'jpy',
+        taxIncluded: p.tax_included ?? true,
         image: primaryImage?.url || '',
       };
     });
