@@ -56,6 +56,39 @@ export function LiffProvider({ children }: LiffProviderProps) {
           if (storeIdParam) {
             setStoreId(storeIdParam);
           }
+
+          // Check for LINE auth callback params (from /auth/callback proxy)
+          const lineAuth = urlParams.get('lineAuth');
+          const lineUserId = urlParams.get('lineUserId');
+          const lineDisplayName = urlParams.get('lineDisplayName');
+          if (lineAuth === '1' && lineUserId && lineDisplayName) {
+            const linePhoto = urlParams.get('linePhoto') || undefined;
+            // Store LINE user ID for later use
+            localStorage.setItem('vual-line-user-id', lineUserId);
+            setCustomer({
+              id: lineUserId,
+              lineUserId,
+              displayName: lineDisplayName,
+              photoURL: linePhoto,
+              addresses: [],
+              orderCount: 0,
+              totalSpent: 0,
+              isVip: false,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            }, 'line');
+            setIsReady(true);
+            // Clean up URL params
+            urlParams.delete('lineAuth');
+            urlParams.delete('lineUserId');
+            urlParams.delete('lineDisplayName');
+            urlParams.delete('linePhoto');
+            const cleanUrl = urlParams.toString()
+              ? `${window.location.pathname}?${urlParams}`
+              : window.location.pathname;
+            window.history.replaceState({}, '', cleanUrl);
+            return;
+          }
         }
 
         const liffId = process.env.NEXT_PUBLIC_LIFF_ID;
@@ -76,7 +109,8 @@ export function LiffProvider({ children }: LiffProviderProps) {
         }
 
         // Initialize LIFF (works in both LINE browser and external browsers)
-        if (liffId) {
+        if (liffId && inLine) {
+          // Only init LIFF in LINE browser where it will work correctly
           const liffInstance = await initLiff();
           setLiff(liffInstance);
           setIsReady(true);
@@ -86,6 +120,7 @@ export function LiffProvider({ children }: LiffProviderProps) {
             setProfile(userProfile);
 
             if (userProfile) {
+              localStorage.setItem('vual-line-user-id', userProfile.userId);
               setCustomer({
                 id: userProfile.userId,
                 lineUserId: userProfile.userId,
@@ -103,7 +138,7 @@ export function LiffProvider({ children }: LiffProviderProps) {
             setCustomerLoading(false);
           }
         } else {
-          // Not in LINE browser - LIFF not needed
+          // External browser - LIFF init not needed (login via /auth/callback)
           setIsReady(true);
           setCustomerLoading(false);
         }
