@@ -160,6 +160,76 @@ export default function TryOnPage() {
   const { login: liffLogin } = useLiff();
   const [isSigningIn, setIsSigningIn] = useState(false);
 
+  // All hooks must be called before any conditional returns (React rules of hooks)
+  const {
+    portraits,
+    results,
+    removePortrait,
+    credits,
+    loadCredits,
+    tryOnPool,
+    tryOnSlots,
+    removeFromPool,
+    clearPool,
+    assignToSlot,
+    unassignSlot,
+    swapSlots,
+    modelGender,
+    modelHeight,
+    setModelGender,
+    setModelHeight,
+    addResult,
+  } = useTryOnStore();
+
+  const [showCapture, setShowCapture] = useState(false);
+  const [showPurchase, setShowPurchase] = useState(false);
+  const [selectedPortraitId, setSelectedPortraitId] = useState<string | null>(null);
+
+  // Try-on execution state
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState('');
+  const [tryOnError, setTryOnError] = useState<string | null>(null);
+  const [latestResult, setLatestResult] = useState<string | null>(null);
+
+  // DnD state
+  const [activeItem, setActiveItem] = useState<TryOnListItem | null>(null);
+  // Tap-to-assign fallback
+  const [selectedPoolItemId, setSelectedPoolItemId] = useState<string | null>(null);
+  // Style options per slot
+  const [styleOptions, setStyleOptions] = useState<Record<string, Record<string, string>>>({});
+
+  // DnD sensors
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: { delay: 200, tolerance: 5 },
+  });
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: { distance: 8 },
+  });
+  const sensors = useSensors(touchSensor, mouseSensor);
+
+  useEffect(() => {
+    const lineUserId =
+      typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('lineUserId') ||
+          localStorage.getItem('vual-line-user-id')
+        : null;
+    if (lineUserId) {
+      loadCredits(lineUserId);
+    }
+  }, [loadCredits]);
+
+  useEffect(() => {
+    if (!selectedPortraitId && portraits.length > 0) {
+      setSelectedPortraitId(portraits[0].id);
+    }
+  }, [portraits, selectedPortraitId]);
+
+  const slotItems = Object.values(tryOnSlots).filter(Boolean) as TryOnListItem[];
+  const slotCount = slotItems.length;
+  const selectedPortrait = portraits.find((p) => p.id === selectedPortraitId);
+  const canStartTryOn = slotCount > 0 && selectedPortrait && !isProcessing;
+  const assignedIds = new Set(slotItems.map((i) => i.productId));
+
   const handleGoogleLogin = async () => {
     try {
       setIsSigningIn(true);
@@ -222,77 +292,6 @@ export default function TryOnPage() {
       </div>
     );
   }
-
-  const {
-    portraits,
-    results,
-    removePortrait,
-    credits,
-    loadCredits,
-    tryOnPool,
-    tryOnSlots,
-    removeFromPool,
-    clearPool,
-    assignToSlot,
-    unassignSlot,
-    swapSlots,
-    modelGender,
-    modelHeight,
-    setModelGender,
-    setModelHeight,
-    addResult,
-  } = useTryOnStore();
-
-  const [showCapture, setShowCapture] = useState(false);
-  const [showPurchase, setShowPurchase] = useState(false);
-  const [selectedPortraitId, setSelectedPortraitId] = useState<string | null>(null);
-
-  // Try-on execution state
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [processingStatus, setProcessingStatus] = useState('');
-  const [tryOnError, setTryOnError] = useState<string | null>(null);
-  const [latestResult, setLatestResult] = useState<string | null>(null);
-
-  // DnD state
-  const [activeItem, setActiveItem] = useState<TryOnListItem | null>(null);
-  // Tap-to-assign fallback
-  const [selectedPoolItemId, setSelectedPoolItemId] = useState<string | null>(null);
-  // Style options per slot
-  const [styleOptions, setStyleOptions] = useState<Record<string, Record<string, string>>>({});
-
-  const slotItems = Object.values(tryOnSlots).filter(Boolean) as TryOnListItem[];
-  const slotCount = slotItems.length;
-  const selectedPortrait = portraits.find((p) => p.id === selectedPortraitId);
-  const canStartTryOn = slotCount > 0 && selectedPortrait && !isProcessing;
-
-  // Assigned product IDs (for dimming in pool)
-  const assignedIds = new Set(slotItems.map((i) => i.productId));
-
-  // DnD sensors
-  const touchSensor = useSensor(TouchSensor, {
-    activationConstraint: { delay: 200, tolerance: 5 },
-  });
-  const mouseSensor = useSensor(MouseSensor, {
-    activationConstraint: { distance: 8 },
-  });
-  const sensors = useSensors(touchSensor, mouseSensor);
-
-  useEffect(() => {
-    const lineUserId =
-      typeof window !== 'undefined'
-        ? new URLSearchParams(window.location.search).get('lineUserId') ||
-          localStorage.getItem('vual-line-user-id')
-        : null;
-    if (lineUserId) {
-      loadCredits(lineUserId);
-    }
-  }, [loadCredits]);
-
-  useEffect(() => {
-    if (!selectedPortraitId && portraits.length > 0) {
-      setSelectedPortraitId(portraits[0].id);
-    }
-  }, [portraits, selectedPortraitId]);
 
   const toBase64 = async (url: string): Promise<string> => {
     if (url.startsWith('data:')) return url;
