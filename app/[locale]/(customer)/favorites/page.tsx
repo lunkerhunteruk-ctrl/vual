@@ -56,7 +56,7 @@ export default function FavoritesPage() {
                 transition={{ duration: 0.2 }}
               >
                 <Link href={`/${locale}/product/${item.productId}`} className="group">
-                  <div className="relative aspect-[3/4] bg-[var(--color-bg-element)] rounded-[var(--radius-md)] overflow-hidden mb-2">
+                  <div className="relative aspect-[3/4] bg-white rounded-[var(--radius-md)] overflow-hidden mb-2">
                     {item.image ? (
                       <img
                         src={item.image}
