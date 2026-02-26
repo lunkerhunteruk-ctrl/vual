@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Coins, TrendingUp, TrendingDown, ArrowRight, Loader2, Settings, Check, Crown, Sparkles, Clock, AlertTriangle } from 'lucide-react';
+import { Coins, TrendingUp, TrendingDown, ArrowRight, Loader2, Settings, Check, Crown, Sparkles, Clock, AlertTriangle, Shirt } from 'lucide-react';
 import { useStoreContext } from '@/lib/store/store-context';
 import { toast } from '@/lib/store/toast';
 
@@ -157,7 +157,6 @@ export default function BillingPage() {
       setIsLoading(true);
       Promise.all([fetchBalance(), fetchTransactions(0), fetchSettings(), fetchSubscription()]).finally(() => setIsLoading(false));
     } else {
-      // If store context loaded but store is null, stop loading
       const timer = setTimeout(() => {
         setIsLoading(false);
       }, 3000);
@@ -196,7 +195,6 @@ export default function BillingPage() {
       window.history.replaceState({}, '', window.location.pathname);
 
       if (sessionId) {
-        // Verify session and grant credits server-side
         fetch(`/api/billing/verify-session?session_id=${encodeURIComponent(sessionId)}`)
           .then((res) => res.json())
           .then((data) => {
@@ -299,212 +297,213 @@ export default function BillingPage() {
   }
 
   return (
-    <div className="space-y-8">
-      {/* Subscription Status Card */}
-      {subscription && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`rounded-xl p-6 border ${
-            subscription.status === 'active'
-              ? 'bg-emerald-50 border-emerald-200'
-              : subscription.status === 'trialing'
-                ? 'bg-blue-50 border-blue-200'
-                : 'bg-amber-50 border-amber-200'
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              {subscription.status === 'active' ? (
-                <Crown size={24} className="text-emerald-600" />
-              ) : subscription.status === 'trialing' ? (
-                <Clock size={24} className="text-blue-600" />
-              ) : (
-                <AlertTriangle size={24} className="text-amber-600" />
-              )}
-              <div>
-                <h3 className="text-base font-bold text-gray-900">
-                  {subscription.status === 'active'
-                    ? (locale === 'ja' ? 'スタンダードプラン' : 'Standard Plan')
-                    : subscription.status === 'trialing'
-                      ? (locale === 'ja' ? '無料トライアル' : 'Free Trial')
-                      : (locale === 'ja' ? 'プラン未加入' : 'No Active Plan')}
-                </h3>
-                <p className="text-sm text-gray-600">
-                  {subscription.status === 'active' && subscription.subscriptionPeriodEnd
-                    ? `${locale === 'ja' ? '次回更新日' : 'Next renewal'}: ${new Date(subscription.subscriptionPeriodEnd).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US')}`
-                    : subscription.status === 'trialing' && subscription.trialDaysRemaining !== null
-                      ? `${locale === 'ja' ? '残り' : ''}${subscription.trialDaysRemaining}${locale === 'ja' ? '日' : ' days remaining'}`
-                      : (locale === 'ja' ? 'AIスタジオ・ライブ配信を利用するにはプランに加入してください' : 'Subscribe to use AI Studio & Live Broadcast')}
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              {/* AI Studio credits */}
-              {(subscription.status === 'active' || subscription.status === 'trialing') && (
-                <div className="text-right">
-                  <p className="text-xs text-gray-500">{locale === 'ja' ? 'AIスタジオクレジット' : 'AI Studio Credits'}</p>
-                  <p className="text-xl font-bold text-gray-900">{subscription.studioTotalCredits}</p>
-                  {subscription.studioTopupCredits > 0 && (
-                    <p className="text-[10px] text-gray-500">
-                      {locale === 'ja' ? '月額' : 'Monthly'}: {subscription.studioSubscriptionCredits} + {locale === 'ja' ? 'トップアップ' : 'Topup'}: {subscription.studioTopupCredits}
-                    </p>
-                  )}
-                </div>
-              )}
-              {(subscription.status === 'none' || subscription.status === 'expired' || subscription.status === 'canceled') && (
-                <button
-                  onClick={handleSubscribe}
-                  disabled={subscribing}
-                  className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
-                >
-                  {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
-                  {locale === 'ja' ? 'プランに加入する' : 'Subscribe'}
-                </button>
-              )}
-              {subscription.status === 'trialing' && (
-                <button
-                  onClick={handleSubscribe}
-                  disabled={subscribing}
-                  className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
-                >
-                  {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
-                  {locale === 'ja' ? '月額プランに切り替え' : 'Switch to paid plan'}
-                </button>
-              )}
-            </div>
-          </div>
-        </motion.div>
-      )}
+    <div className="space-y-10">
+      {/* ━━━ Section 1: AI Studio & Subscription Plan ━━━ */}
+      <section className="bg-white border border-[var(--color-line)] rounded-2xl p-6 space-y-6">
+        <h2 className="text-lg font-bold text-[var(--color-title-active)] flex items-center gap-2">
+          <Sparkles size={20} className="text-[var(--color-accent)]" />
+          {locale === 'ja' ? 'AIスタジオ & サブスクリプション' : 'AI Studio & Subscription'}
+        </h2>
 
-      {/* AI Studio Credit Topup */}
-      {subscription && (subscription.status === 'active' || subscription.status === 'trialing') && (
-        <div>
-          <h2 className="text-base font-semibold text-[var(--color-title-active)] mb-4 flex items-center gap-2">
-            <Sparkles size={18} />
-            {locale === 'ja' ? 'AIスタジオ クレジットトップアップ' : 'AI Studio Credit Top-up'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {STUDIO_TOPUP_PACKS.map((pack, idx) => (
-              <motion.div
-                key={pack.slug}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 * idx }}
-                className={`relative bg-white border rounded-xl p-6 hover:shadow-md transition-shadow ${
-                  pack.slug === 'studio-standard'
-                    ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]'
-                    : 'border-[var(--color-line)]'
-                }`}
-              >
-                {pack.slug === 'studio-standard' && (
-                  <div className="absolute -top-3 left-4 px-2.5 py-0.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
-                    {locale === 'ja' ? '人気' : 'Popular'}
+        {/* Subscription Status Card */}
+        {subscription && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`rounded-xl p-5 border ${
+              subscription.status === 'active'
+                ? 'bg-emerald-50 border-emerald-200'
+                : subscription.status === 'trialing'
+                  ? 'bg-blue-50 border-blue-200'
+                  : 'bg-amber-50 border-amber-200'
+            }`}
+          >
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-3">
+                {subscription.status === 'active' ? (
+                  <Crown size={24} className="text-emerald-600" />
+                ) : subscription.status === 'trialing' ? (
+                  <Clock size={24} className="text-blue-600" />
+                ) : (
+                  <AlertTriangle size={24} className="text-amber-600" />
+                )}
+                <div>
+                  <h3 className="text-base font-bold text-gray-900">
+                    {subscription.status === 'active'
+                      ? (locale === 'ja' ? 'スタンダードプラン — ¥19,800/月' : 'Standard Plan — ¥19,800/mo')
+                      : subscription.status === 'trialing'
+                        ? (locale === 'ja' ? '無料トライアル' : 'Free Trial')
+                        : (locale === 'ja' ? 'プラン未加入' : 'No Active Plan')}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {subscription.status === 'active' && subscription.subscriptionPeriodEnd
+                      ? `${locale === 'ja' ? '次回更新日' : 'Next renewal'}: ${new Date(subscription.subscriptionPeriodEnd).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US')}`
+                      : subscription.status === 'trialing' && subscription.trialDaysRemaining !== null
+                        ? `${locale === 'ja' ? '残り' : ''}${subscription.trialDaysRemaining}${locale === 'ja' ? '日' : ' days remaining'}`
+                        : (locale === 'ja' ? 'AIスタジオ・ライブ配信を利用するにはプランに加入してください' : 'Subscribe to use AI Studio & Live Broadcast')}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                {(subscription.status === 'active' || subscription.status === 'trialing') && (
+                  <div className="text-right">
+                    <p className="text-xs text-gray-500">{locale === 'ja' ? 'AIスタジオクレジット' : 'AI Studio Credits'}</p>
+                    <p className="text-xl font-bold text-gray-900">{subscription.studioTotalCredits}</p>
+                    {subscription.studioTopupCredits > 0 && (
+                      <p className="text-[10px] text-gray-500">
+                        {locale === 'ja' ? '月額' : 'Monthly'}: {subscription.studioSubscriptionCredits} + {locale === 'ja' ? 'トップアップ' : 'Topup'}: {subscription.studioTopupCredits}
+                      </p>
+                    )}
                   </div>
                 )}
-                <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-1">
-                  {locale === 'ja' ? pack.name : pack.nameEn}
-                </h3>
-                <p className="text-xs text-[var(--color-text-label)] mb-2">
-                  {pack.credits}{locale === 'ja' ? 'クレジット' : ' credits'} (¥{pack.perCredit}/{locale === 'ja' ? '回' : 'gen'})
-                </p>
-                <p className="text-2xl font-bold text-[var(--color-title-active)] mb-4">
-                  ¥{pack.price.toLocaleString()}
-                </p>
-                <button
-                  onClick={() => handlePurchase(pack.slug)}
-                  disabled={purchasingSlug !== null}
-                  className="w-full h-10 flex items-center justify-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+                {(subscription.status === 'none' || subscription.status === 'expired' || subscription.status === 'canceled') && (
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={subscribing}
+                    className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
+                    {locale === 'ja' ? 'プランに加入する' : 'Subscribe'}
+                  </button>
+                )}
+                {subscription.status === 'trialing' && (
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={subscribing}
+                    className="px-5 py-2.5 bg-[var(--color-accent)] text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {subscribing ? <Loader2 size={14} className="animate-spin" /> : <Crown size={14} />}
+                    {locale === 'ja' ? '月額プランに切り替え' : 'Switch to paid plan'}
+                  </button>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* AI Studio Credit Topup */}
+        {subscription && (subscription.status === 'active' || subscription.status === 'trialing') && (
+          <div>
+            <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-3">
+              {locale === 'ja' ? 'クレジットトップアップ' : 'Credit Top-up'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {STUDIO_TOPUP_PACKS.map((pack, idx) => (
+                <motion.div
+                  key={pack.slug}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * idx }}
+                  className={`relative bg-white border rounded-xl p-5 hover:shadow-md transition-shadow ${
+                    pack.slug === 'studio-standard'
+                      ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]'
+                      : 'border-[var(--color-line)]'
+                  }`}
                 >
-                  {purchasingSlug === pack.slug ? (
-                    <Loader2 size={16} className="animate-spin" />
-                  ) : (
-                    <>
-                      {locale === 'ja' ? '購入する' : 'Purchase'}
-                      <ArrowRight size={14} />
-                    </>
+                  {pack.slug === 'studio-standard' && (
+                    <div className="absolute -top-3 left-4 px-2.5 py-0.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
+                      {locale === 'ja' ? '人気' : 'Popular'}
+                    </div>
                   )}
-                </button>
-              </motion.div>
-            ))}
+                  <h4 className="text-sm font-semibold text-[var(--color-title-active)] mb-1">
+                    {locale === 'ja' ? pack.name : pack.nameEn}
+                  </h4>
+                  <p className="text-xs text-[var(--color-text-label)] mb-2">
+                    {pack.credits}{locale === 'ja' ? 'クレジット' : ' credits'} (¥{pack.perCredit}/{locale === 'ja' ? '回' : 'gen'})
+                  </p>
+                  <p className="text-2xl font-bold text-[var(--color-title-active)] mb-4">
+                    ¥{pack.price.toLocaleString()}
+                  </p>
+                  <button
+                    onClick={() => handlePurchase(pack.slug)}
+                    disabled={purchasingSlug !== null}
+                    className="w-full h-10 flex items-center justify-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    {purchasingSlug === pack.slug ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <>
+                        {locale === 'ja' ? '購入する' : 'Purchase'}
+                        <ArrowRight size={14} />
+                      </>
+                    )}
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--color-text-label)] mt-2">
+              {locale === 'ja'
+                ? '※ トップアップクレジットは繰り越し可能です。月額クレジット(¥198/回相当)は毎月リセットされます。'
+                : '※ Top-up credits carry over. Monthly credits (¥198/gen) reset each billing cycle.'}
+            </p>
           </div>
-          <p className="text-xs text-[var(--color-text-label)] mt-2">
-            {locale === 'ja'
-              ? '※ トップアップクレジットは繰り越し可能です。月額クレジット(¥198/回相当)は毎月リセットされます。'
-              : '※ Top-up credits carry over. Monthly credits (¥198/gen) reset each billing cycle.'}
-          </p>
-        </div>
-      )}
+        )}
+      </section>
 
-      {/* Fitting Credits - Balance Section */}
-      <h2 className="text-base font-semibold text-[var(--color-title-active)] flex items-center gap-2">
-        <Coins size={18} />
-        {locale === 'ja' ? 'フィッティングクレジット' : 'Fitting Credits'}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="col-span-1 md:col-span-1 bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent)]/80 rounded-xl p-6 text-white"
-        >
-          <div className="flex items-center gap-2 mb-3 opacity-90">
-            <Coins size={20} />
-            <span className="text-sm font-medium">{t('balance')}</span>
-          </div>
-          <p className="text-4xl font-bold tracking-tight">
-            {(balance?.balance ?? 0).toLocaleString()}
-          </p>
-          <p className="text-sm opacity-80 mt-1">{t('credits')}</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 }}
-          className="bg-white border border-[var(--color-line)] rounded-xl p-6"
-        >
-          <div className="flex items-center gap-2 mb-2 text-[var(--color-text-label)]">
-            <TrendingUp size={18} />
-            <span className="text-sm">{t('totalPurchased')}</span>
-          </div>
-          <p className="text-2xl font-semibold text-[var(--color-title-active)]">
-            {(balance?.totalPurchased ?? 0).toLocaleString()}
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-white border border-[var(--color-line)] rounded-xl p-6"
-        >
-          <div className="flex items-center gap-2 mb-2 text-[var(--color-text-label)]">
-            <TrendingDown size={18} />
-            <span className="text-sm">{t('totalConsumed')}</span>
-          </div>
-          <p className="text-2xl font-semibold text-[var(--color-title-active)]">
-            {(balance?.totalConsumed ?? 0).toLocaleString()}
-          </p>
-        </motion.div>
-      </div>
-
-      {/* Settings */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-      >
-        <h2 className="text-base font-semibold text-[var(--color-title-active)] mb-4 flex items-center gap-2">
-          <Settings size={18} />
-          {t('settings')}
+      {/* ━━━ Section 2: Virtual Try-on (Fitting Credits) ━━━ */}
+      <section className="bg-white border border-[var(--color-line)] rounded-2xl p-6 space-y-6">
+        <h2 className="text-lg font-bold text-[var(--color-title-active)] flex items-center gap-2">
+          <Shirt size={20} className="text-[var(--color-accent)]" />
+          {locale === 'ja' ? 'バーチャル試着' : 'Virtual Try-on'}
         </h2>
-        <div className="bg-white border border-[var(--color-line)] rounded-xl p-6">
+
+        {/* Fitting Credit Balance */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent)]/80 rounded-xl p-6 text-white"
+          >
+            <div className="flex items-center gap-2 mb-3 opacity-90">
+              <Coins size={20} />
+              <span className="text-sm font-medium">{t('balance')}</span>
+            </div>
+            <p className="text-4xl font-bold tracking-tight">
+              {(balance?.balance ?? 0).toLocaleString()}
+            </p>
+            <p className="text-sm opacity-80 mt-1">{t('credits')}</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            className="bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-xl p-6"
+          >
+            <div className="flex items-center gap-2 mb-2 text-[var(--color-text-label)]">
+              <TrendingUp size={18} />
+              <span className="text-sm">{t('totalPurchased')}</span>
+            </div>
+            <p className="text-2xl font-semibold text-[var(--color-title-active)]">
+              {(balance?.totalPurchased ?? 0).toLocaleString()}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-xl p-6"
+          >
+            <div className="flex items-center gap-2 mb-2 text-[var(--color-text-label)]">
+              <TrendingDown size={18} />
+              <span className="text-sm">{t('totalConsumed')}</span>
+            </div>
+            <p className="text-2xl font-semibold text-[var(--color-title-active)]">
+              {(balance?.totalConsumed ?? 0).toLocaleString()}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Settings */}
+        <div className="bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-xl p-5">
           <div className="flex items-center justify-between gap-6">
             <div className="flex-1">
-              <p className="text-sm font-medium text-[var(--color-title-active)]">
+              <p className="text-sm font-medium text-[var(--color-title-active)] flex items-center gap-2">
+                <Settings size={15} />
                 {t('dailyTryonLimit')}
               </p>
-              <p className="text-xs text-[var(--color-text-label)] mt-0.5">
+              <p className="text-xs text-[var(--color-text-label)] mt-0.5 ml-[23px]">
                 {t('dailyTryonLimitDesc')}
               </p>
             </div>
@@ -515,7 +514,7 @@ export default function BillingPage() {
                 max={100}
                 value={dailyLimit}
                 onChange={(e) => setDailyLimit(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                className="w-20 h-10 px-3 text-sm text-center bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-lg focus:outline-none focus:border-[var(--color-accent)] text-[var(--color-title-active)]"
+                className="w-20 h-10 px-3 text-sm text-center bg-white border border-[var(--color-line)] rounded-lg focus:outline-none focus:border-[var(--color-accent)] text-[var(--color-title-active)]"
               />
               <button
                 onClick={handleSaveLimit}
@@ -532,122 +531,122 @@ export default function BillingPage() {
             </div>
           </div>
         </div>
-      </motion.div>
 
-      {/* Purchase Packs */}
-      <div>
-        <h2 className="text-base font-semibold text-[var(--color-title-active)] mb-4">{t('purchaseCredits')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {PACKS.map((pack, idx) => (
-            <motion.div
-              key={pack.slug}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05 * idx }}
-              className={`relative bg-white border rounded-xl p-6 hover:shadow-md transition-shadow ${
-                pack.slug === 'store-standard'
-                  ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]'
-                  : 'border-[var(--color-line)]'
-              }`}
-            >
-              {pack.slug === 'store-standard' && (
-                <div className="absolute -top-3 left-4 px-2.5 py-0.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
-                  {locale === 'ja' ? '推奨' : 'Recommended'}
-                </div>
-              )}
-              <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-1">
-                {t(pack.nameKey)}
-              </h3>
-              <p className="text-xs text-[var(--color-text-label)] mb-4">
-                {t(pack.descKey)}
-              </p>
-              <p className="text-2xl font-bold text-[var(--color-title-active)] mb-4">
-                ¥{pack.price.toLocaleString()}
-              </p>
-              <button
-                onClick={() => handlePurchase(pack.slug)}
-                disabled={purchasingSlug !== null}
-                className="w-full h-10 flex items-center justify-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+        {/* Purchase Fitting Credit Packs */}
+        <div>
+          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-3">{t('purchaseCredits')}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {PACKS.map((pack, idx) => (
+              <motion.div
+                key={pack.slug}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 * idx }}
+                className={`relative bg-white border rounded-xl p-5 hover:shadow-md transition-shadow ${
+                  pack.slug === 'store-standard'
+                    ? 'border-[var(--color-accent)] ring-1 ring-[var(--color-accent)]'
+                    : 'border-[var(--color-line)]'
+                }`}
               >
-                {purchasingSlug === pack.slug ? (
-                  <Loader2 size={16} className="animate-spin" />
-                ) : (
-                  <>
-                    {t('purchase')}
-                    <ArrowRight size={14} />
-                  </>
+                {pack.slug === 'store-standard' && (
+                  <div className="absolute -top-3 left-4 px-2.5 py-0.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full">
+                    {locale === 'ja' ? '推奨' : 'Recommended'}
+                  </div>
                 )}
-              </button>
-            </motion.div>
-          ))}
+                <h4 className="text-sm font-semibold text-[var(--color-title-active)] mb-1">
+                  {t(pack.nameKey)}
+                </h4>
+                <p className="text-xs text-[var(--color-text-label)] mb-4">
+                  {t(pack.descKey)}
+                </p>
+                <p className="text-2xl font-bold text-[var(--color-title-active)] mb-4">
+                  ¥{pack.price.toLocaleString()}
+                </p>
+                <button
+                  onClick={() => handlePurchase(pack.slug)}
+                  disabled={purchasingSlug !== null}
+                  className="w-full h-10 flex items-center justify-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+                >
+                  {purchasingSlug === pack.slug ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <>
+                      {t('purchase')}
+                      <ArrowRight size={14} />
+                    </>
+                  )}
+                </button>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Transaction History */}
-      <div>
-        <h2 className="text-base font-semibold text-[var(--color-title-active)] mb-4">{t('transactionHistory')}</h2>
-        <div className="bg-white border border-[var(--color-line)] rounded-xl overflow-hidden">
-          {transactions.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <Coins size={32} className="text-[var(--color-text-label)] mb-3" />
-              <p className="text-sm text-[var(--color-text-label)]">{t('noTransactions')}</p>
-            </div>
-          ) : (
-            <>
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
-                    <th className="text-left px-4 py-3 font-medium text-[var(--color-text-label)]">{t('type')}</th>
-                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('amount')}</th>
-                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('balanceAfter')}</th>
-                    <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('date')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {transactions.map((tx) => (
-                    <tr key={tx.id} className="border-b border-[var(--color-line)]/50 last:border-0">
-                      <td className="px-4 py-3">
-                        <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${typeColor(tx.type)}`}>
-                          {typeLabel(tx.type)}
-                        </span>
-                        {tx.description && (
-                          <p className="text-xs text-[var(--color-text-label)] mt-0.5 truncate max-w-[200px]">{tx.description}</p>
-                        )}
-                      </td>
-                      <td className={`text-right px-4 py-3 font-medium ${tx.amount > 0 ? 'text-emerald-600' : 'text-[var(--color-text-body)]'}`}>
-                        {tx.amount > 0 ? '+' : ''}{tx.amount}
-                      </td>
-                      <td className="text-right px-4 py-3 text-[var(--color-text-body)]">
-                        {tx.balance_after.toLocaleString()}
-                      </td>
-                      <td className="text-right px-4 py-3 text-[var(--color-text-label)] text-xs">
-                        {new Date(tx.created_at).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit',
-                        })}
-                      </td>
+        {/* Transaction History */}
+        <div>
+          <h3 className="text-sm font-semibold text-[var(--color-title-active)] mb-3">{t('transactionHistory')}</h3>
+          <div className="border border-[var(--color-line)] rounded-xl overflow-hidden">
+            {transactions.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <Coins size={32} className="text-[var(--color-text-label)] mb-3" />
+                <p className="text-sm text-[var(--color-text-label)]">{t('noTransactions')}</p>
+              </div>
+            ) : (
+              <>
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
+                      <th className="text-left px-4 py-3 font-medium text-[var(--color-text-label)]">{t('type')}</th>
+                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('amount')}</th>
+                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('balanceAfter')}</th>
+                      <th className="text-right px-4 py-3 font-medium text-[var(--color-text-label)]">{t('date')}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-              {transactions.length < txTotal && (
-                <div className="px-4 py-3 border-t border-[var(--color-line)]">
-                  <button
-                    onClick={() => fetchTransactions(txOffset)}
-                    disabled={txLoading}
-                    className="text-sm text-[var(--color-accent)] hover:underline disabled:opacity-50"
-                  >
-                    {txLoading ? <Loader2 size={14} className="animate-spin inline mr-1" /> : null}
-                    {t('loadMore')}
-                  </button>
-                </div>
-              )}
-            </>
-          )}
+                  </thead>
+                  <tbody>
+                    {transactions.map((tx) => (
+                      <tr key={tx.id} className="border-b border-[var(--color-line)]/50 last:border-0">
+                        <td className="px-4 py-3">
+                          <span className={`inline-flex px-2 py-0.5 rounded text-xs font-medium ${typeColor(tx.type)}`}>
+                            {typeLabel(tx.type)}
+                          </span>
+                          {tx.description && (
+                            <p className="text-xs text-[var(--color-text-label)] mt-0.5 truncate max-w-[200px]">{tx.description}</p>
+                          )}
+                        </td>
+                        <td className={`text-right px-4 py-3 font-medium ${tx.amount > 0 ? 'text-emerald-600' : 'text-[var(--color-text-body)]'}`}>
+                          {tx.amount > 0 ? '+' : ''}{tx.amount}
+                        </td>
+                        <td className="text-right px-4 py-3 text-[var(--color-text-body)]">
+                          {tx.balance_after.toLocaleString()}
+                        </td>
+                        <td className="text-right px-4 py-3 text-[var(--color-text-label)] text-xs">
+                          {new Date(tx.created_at).toLocaleDateString(locale === 'ja' ? 'ja-JP' : 'en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {transactions.length < txTotal && (
+                  <div className="px-4 py-3 border-t border-[var(--color-line)]">
+                    <button
+                      onClick={() => fetchTransactions(txOffset)}
+                      disabled={txLoading}
+                      className="text-sm text-[var(--color-accent)] hover:underline disabled:opacity-50"
+                    >
+                      {txLoading ? <Loader2 size={14} className="animate-spin inline mr-1" /> : null}
+                      {t('loadMore')}
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

@@ -20,7 +20,7 @@ const pageTitles: Record<string, string> = {
   '/admin/products/media': 'productMedia',
   '/admin/studio': 'aiStudio',
   '/admin/live': 'liveBroadcast',
-  '/admin/billing': 'fittingCredit',
+  '/admin/billing': 'billing',
   '/admin/settings': 'settings',
   '/admin/settings/profile': 'shopProfile',
   '/admin/settings/team': 'team',
