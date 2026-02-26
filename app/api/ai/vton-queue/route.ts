@@ -1,81 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
+import { processNextQueueItem } from './process/route';
+import type { VTONQueueRequestData } from './types';
 
-// Types for the queue system
-export interface VTONQueueRequestData {
-  personImage: string;
-  garmentImages: string[];
-  categories: ('upper_body' | 'lower_body' | 'dresses' | 'footwear')[];
-  mode?: 'standard' | 'high_quality' | 'add_item';
-}
-
-export interface VTONQueueResultItem {
-  resultImage: string;
-  category: string;
-  processingTime: number;
-  confidence: number;
-}
-
-export interface VTONQueueResultData {
-  results: VTONQueueResultItem[];
-  totalProcessingTime: number;
-}
-
-export interface VTONQueueItem {
-  id: string;
-  user_id: string | null;
-  status: 'pending' | 'processing' | 'completed' | 'failed';
-  request_data: VTONQueueRequestData;
-  result_data: VTONQueueResultData | null;
-  error_message: string | null;
-  queue_position: number;
-  retry_count: number;
-  next_retry_at: string | null;
-  created_at: string;
-  updated_at: string;
-  completed_at: string | null;
-}
-
-// Trigger the queue worker to process the next pending item
-async function triggerQueueWorker(): Promise<void> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-    || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
-
-  console.log('Triggering queue worker at:', baseUrl);
-
-  try {
-    const response = await fetch(`${baseUrl}/api/ai/vton-queue/process`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        workerSecret: process.env.VTON_WORKER_SECRET,
-      }),
-    });
-
-    const result = await response.json();
-    console.log('Queue worker result:', result);
-
-    // If successful, trigger again for next item
-    if (result.processed && result.success) {
-      setTimeout(() => {
-        triggerQueueWorker().catch(console.error);
-      }, 2000);
-    }
-    // If rate limited, schedule retry based on the delay
-    else if (result.retryScheduled && result.nextRetryAt) {
-      const retryDelay = new Date(result.nextRetryAt).getTime() - Date.now() + 1000; // Add 1s buffer
-      console.log(`Rate limited, scheduling retry in ${retryDelay}ms`);
-      setTimeout(() => {
-        triggerQueueWorker().catch(console.error);
-      }, Math.max(retryDelay, 5000)); // Minimum 5 seconds
-    }
-  } catch (error) {
-    console.error('Error triggering queue worker:', error);
-  }
-}
+// Re-export types for backward compatibility
+export type { VTONQueueRequestData, VTONQueueResultItem, VTONQueueResultData, VTONQueueItem } from './types';
 
 // POST: Add a new item to the queue
 export async function POST(request: NextRequest) {
@@ -203,17 +133,20 @@ export async function POST(request: NextRequest) {
       .in('status', ['pending', 'processing'])
       .lt('queue_position', position);
 
-    // Trigger worker to process queue (fire and forget)
-    // This ensures the queue is processed without blocking the response
-    triggerQueueWorker().catch(console.error);
+    // Process the queue item directly (no self-fetch needed)
+    // This runs inline - the client polls for status updates
+    console.log('Processing queue item inline:', queueItem.id);
+    const processResult = await processNextQueueItem();
+    console.log('Queue processing result:', processResult);
 
     return NextResponse.json({
       success: true,
       queueId: queueItem.id,
       position: position,
       itemsAhead: itemsAhead || 0,
-      estimatedWaitTime: ((itemsAhead || 0) + 1) * 30, // ~30 seconds per item estimate
+      estimatedWaitTime: ((itemsAhead || 0) + 1) * 30,
       message: 'Added to queue successfully',
+      processResult: processResult,
     });
   } catch (error) {
     console.error('VTON Queue POST error:', error);
