@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Share2, Heart } from 'lucide-react';
 
 interface ImageCarouselProps {
@@ -20,6 +20,8 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const thumbRef = useRef<HTMLDivElement>(null);
+  // Cache natural aspect ratios: key=url, value=width/height
+  const [aspectRatios, setAspectRatios] = useState<Record<string, number>>({});
 
   const goTo = (index: number) => {
     setCurrentIndex(index);
@@ -43,21 +45,55 @@ export function ImageCarousel({
     }
   }, [currentIndex]);
 
+  // Pre-load model images to detect their aspect ratios
   const productImageCount = images.length - modelImageCount;
+
+  const handleImageLoad = useCallback((url: string, naturalWidth: number, naturalHeight: number) => {
+    if (naturalHeight > 0) {
+      setAspectRatios(prev => {
+        if (prev[url]) return prev;
+        return { ...prev, [url]: naturalWidth / naturalHeight };
+      });
+    }
+  }, []);
+
+  const currentUrl = images[currentIndex];
+  const isModelImage = modelImageCount > 0 && currentIndex >= productImageCount;
+  const currentAR = aspectRatios[currentUrl];
+
+  // For model images: use actual AR, clamped between 3:4 and 16:9
+  // For product images: always 3:4
+  let mainAspect = '3 / 4';
+  if (isModelImage && currentAR) {
+    if (currentAR >= 1) {
+      // Landscape or square: use actual ratio (cap at 16:9)
+      const capped = Math.min(currentAR, 16 / 9);
+      mainAspect = `${capped}`;
+    } else {
+      // Portrait: use actual ratio (floor at 3:4)
+      const capped = Math.max(currentAR, 3 / 4);
+      mainAspect = `${capped}`;
+    }
+  }
 
   return (
     <div>
       {/* Main Image */}
-      <div className="relative aspect-[3/4] bg-[#f5f5f0]">
+      <div
+        className="relative bg-[#f5f5f0] transition-[aspect-ratio] duration-300"
+        style={{ aspectRatio: mainAspect }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={images[currentIndex]}
+          src={currentUrl}
           alt={`Product image ${currentIndex + 1}`}
           className={`absolute inset-0 w-full h-full ${
-            modelImageCount > 0 && currentIndex >= productImageCount
-              ? 'object-contain'
-              : 'object-cover'
+            isModelImage ? 'object-contain' : 'object-cover'
           }`}
+          onLoad={(e) => {
+            const img = e.currentTarget;
+            handleImageLoad(currentUrl, img.naturalWidth, img.naturalHeight);
+          }}
         />
 
         {/* Navigation Arrows */}

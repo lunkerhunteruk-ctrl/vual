@@ -107,7 +107,7 @@ export function ProductModelImages({ productId }: ProductModelImagesProps) {
                 <img
                   src={img.image_url}
                   alt="Model"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -153,11 +153,11 @@ export function ProductModelImages({ productId }: ProductModelImagesProps) {
               onClick={(e) => e.stopPropagation()}
               className="relative bg-white rounded-lg overflow-hidden max-w-md w-full"
             >
-              <div className="aspect-[3/4] bg-[#f5f5f0]">
+              <div className="bg-[#f5f5f0] flex items-center justify-center max-h-[70vh]">
                 <img
                   src={previewImage.image_url}
                   alt="Model"
-                  className="w-full h-full object-contain"
+                  className="max-w-full max-h-[70vh] object-contain"
                 />
               </div>
               <div className="p-3 border-t border-[var(--color-line)] flex items-center justify-between">
