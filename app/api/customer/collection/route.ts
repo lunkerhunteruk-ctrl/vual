@@ -12,15 +12,10 @@ export async function GET(request: NextRequest) {
 
     const storeId = await resolveStoreIdFromRequest(request);
 
+    // Fetch looks
     const { data: looks, error } = await supabase
       .from('collection_looks')
-      .select(`
-        id, image_url, position,
-        collection_look_products (
-          id, product_id, position,
-          products:product_id ( id, name, base_price, price, currency, tax_included, images, status )
-        )
-      `)
+      .select('id, image_url, position')
       .eq('store_id', storeId)
       .order('position', { ascending: true });
 
@@ -31,15 +26,44 @@ export async function GET(request: NextRequest) {
       throw error;
     }
 
-    // Filter out products that are not published
-    const filteredLooks = (looks || []).map(look => ({
+    if (!looks || looks.length === 0) {
+      return NextResponse.json({ looks: [] });
+    }
+
+    // Fetch linked products separately
+    const lookIds = looks.map(l => l.id);
+    const { data: linkData } = await supabase
+      .from('collection_look_products')
+      .select('*')
+      .in('look_id', lookIds)
+      .order('position', { ascending: true });
+
+    let productsMap: Record<string, any> = {};
+    if (linkData && linkData.length > 0) {
+      const productIds = [...new Set(linkData.map(l => l.product_id))];
+      const { data: products } = await supabase
+        .from('products')
+        .select('id, name, base_price, price, currency, tax_included, images, status')
+        .in('id', productIds);
+
+      if (products) {
+        productsMap = Object.fromEntries(products.map(p => [p.id, p]));
+      }
+    }
+
+    // Assemble and filter published products only
+    const result = looks.map(look => ({
       ...look,
-      collection_look_products: (look.collection_look_products || [])
-        .filter((lp: any) => lp.products?.status === 'published')
-        .sort((a: any, b: any) => (a.position || 0) - (b.position || 0)),
+      collection_look_products: (linkData || [])
+        .filter(lp => lp.look_id === look.id)
+        .map(lp => ({
+          ...lp,
+          products: productsMap[lp.product_id] || null,
+        }))
+        .filter(lp => lp.products?.status === 'published'),
     }));
 
-    return NextResponse.json({ looks: filteredLooks });
+    return NextResponse.json({ looks: result });
   } catch (error: any) {
     console.error('Customer collection GET error:', error);
     return NextResponse.json({ looks: [] });
