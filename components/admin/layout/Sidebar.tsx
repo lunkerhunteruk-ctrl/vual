@@ -69,7 +69,7 @@ const menuSections: MenuSection[] = [
     items: [
       { icon: Sparkles, labelKey: 'aiStudio', href: '/admin/studio', highlight: true },
       { icon: Radio, labelKey: 'liveBroadcast', href: '/admin/live', highlight: true },
-      { icon: Coins, labelKey: 'fittingCredit', href: '/admin/billing', highlight: true },
+      { icon: Coins, labelKey: 'billing', href: '/admin/billing', highlight: true },
     ],
   },
   {
