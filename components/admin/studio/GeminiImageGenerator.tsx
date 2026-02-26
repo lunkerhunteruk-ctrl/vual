@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers } from 'lucide-react';
@@ -203,6 +203,7 @@ export function GeminiImageGenerator({
   const [linkSuccess, setLinkSuccess] = useState(false);
   const [isAddingToCollection, setIsAddingToCollection] = useState(false);
   const [collectionSuccess, setCollectionSuccess] = useState(false);
+  const pendingAutoOpen = useRef(false);
 
   // AI Studio credit balance
   const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
@@ -252,7 +253,22 @@ export function GeminiImageGenerator({
       try {
         const response = await fetch(`/api/ai/gemini-results?all=true&storeId=${storeId}`);
         const data = await response.json();
-        if (data.success && data.results) setSavedImages(data.results);
+        if (data.success && data.results) {
+          setSavedImages(data.results);
+          // Auto-open modal for the newest image after generation
+          if (pendingAutoOpen.current && data.results.length > 0) {
+            pendingAutoOpen.current = false;
+            const newest = data.results[0];
+            const usedIds = allProducts
+              .filter((p: any) => newest.product_ids?.includes(p.id))
+              .map((p: any) => p.id);
+            setModalImage(newest);
+            setLinkingProductIds(usedIds);
+            setLinkSuccess(false);
+            setCollectionSuccess(false);
+            setShowSavedImages(true);
+          }
+        }
       } catch (err) {
         console.error('Failed to fetch saved images:', err);
       }
@@ -387,6 +403,7 @@ export function GeminiImageGenerator({
         fetchCredits();
         const newImage = result.images?.[0] || result.image;
         setGeneratedImage(newImage);
+        pendingAutoOpen.current = true;
         if (newImage && result.savedImageUrl) {
           console.log('Image saved to:', result.savedImageUrl);
         }
