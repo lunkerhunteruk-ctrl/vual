@@ -12,7 +12,7 @@ import { CreditStatusBar, CreditPurchaseSheet } from '@/components/customer/tryo
 
 // --- Types ---
 
-type SlotType = 'tops' | 'bottoms' | 'shoes' | 'bags';
+type SlotType = 'tops' | 'bottoms' | 'shoes';
 
 interface SlotItem {
   image: string; // base64 data URL or URL
@@ -29,7 +29,6 @@ const SLOTS: SlotConfig[] = [
   { id: 'tops', labelJa: 'トップス', labelEn: 'Tops' },
   { id: 'bottoms', labelJa: 'ボトムス', labelEn: 'Bottoms' },
   { id: 'shoes', labelJa: 'シューズ', labelEn: 'Shoes' },
-  { id: 'bags', labelJa: 'バッグ', labelEn: 'Bags' },
 ];
 
 type Phase = 'build' | 'processing' | 'result';
@@ -60,7 +59,7 @@ export default function ExternalTryOnPage() {
   const [showPurchase, setShowPurchase] = useState(false);
 
   const fileInputRefs = useRef<Record<SlotType, HTMLInputElement | null>>({
-    tops: null, bottoms: null, shoes: null, bags: null,
+    tops: null, bottoms: null, shoes: null,
   });
 
   useEffect(() => {
@@ -171,9 +170,9 @@ export default function ExternalTryOnPage() {
     try {
       // Convert all images to base64
       const slotEntries = Array.from(items.entries());
-      const garmentArrays: string[][] = [[], [], [], []];
+      const garmentArrays: string[][] = [[], [], []];
 
-      for (let i = 0; i < slotEntries.length && i < 4; i++) {
+      for (let i = 0; i < slotEntries.length && i < 3; i++) {
         const base64 = await toBase64(slotEntries[i][1].image);
         garmentArrays[i] = [base64];
       }
@@ -185,7 +184,6 @@ export default function ExternalTryOnPage() {
           garmentImages: garmentArrays[0].length > 0 ? garmentArrays[0] : undefined,
           secondGarmentImages: garmentArrays[1].length > 0 ? garmentArrays[1] : undefined,
           thirdGarmentImages: garmentArrays[2].length > 0 ? garmentArrays[2] : undefined,
-          fourthGarmentImages: garmentArrays[3].length > 0 ? garmentArrays[3] : undefined,
           modelImage: selectedPortrait.dataUrl,
           modelSettings: {
             gender,
@@ -408,9 +406,9 @@ export default function ExternalTryOnPage() {
           {/* Item Slots */}
           <section className="mb-6">
             <p className="text-xs font-medium text-[var(--color-text-label)] uppercase tracking-wider mb-2">
-              {isJa ? 'アイテム' : 'Items'} ({itemCount}/4)
+              {isJa ? 'アイテム' : 'Items'} ({itemCount}/3)
             </p>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {SLOTS.map((slot) => {
                 const item = items.get(slot.id);
                 const isDragging = draggingSlot === slot.id;
@@ -523,8 +521,7 @@ export default function ExternalTryOnPage() {
           <div className={`grid gap-2 mb-4 ${
             items.size === 1 ? 'grid-cols-1 max-w-[120px]'
               : items.size === 2 ? 'grid-cols-2 max-w-[256px]'
-              : items.size === 3 ? 'grid-cols-3'
-              : 'grid-cols-4'
+              : 'grid-cols-3'
           }`}>
             {Array.from(items.entries()).map(([slot, item]) => (
               <div key={slot} className="flex flex-col items-center gap-1">
