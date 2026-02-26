@@ -388,7 +388,7 @@ export function GeminiImageGenerator({
           console.log('Image saved to:', result.savedImageUrl);
         }
       } else if (result.errorCode === 'insufficient_studio_credits') {
-        setError(locale === 'ja' ? 'クリエイティブスタジオのクレジットが不足しています。トップアップを購入してください。' : 'Insufficient Creative Studio credits. Please purchase a top-up pack.');
+        setError(locale === 'ja' ? 'VUALスタジオのクレジットが不足しています。トップアップを購入してください。' : 'Insufficient VUAL Studio credits. Please purchase a top-up pack.');
       } else if (result.errorCode === 'no_subscription') {
         setError(locale === 'ja' ? 'サブスクリプションが有効ではありません。' : 'Subscription is not active.');
       } else {

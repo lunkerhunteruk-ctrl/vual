@@ -301,7 +301,7 @@ export default function AIStudioPage() {
     <div className="flex flex-col h-[calc(100vh-4rem)]">
       {/* Header */}
       <div className="mb-2 flex-shrink-0">
-        <h1 className="text-xl font-bold text-[var(--color-title-active)]">Creative Studio</h1>
+        <h1 className="text-xl font-bold text-[var(--color-title-active)]">VUAL Studio</h1>
       </div>
 
       {/* Item Selection Grid - 4 columns */}
