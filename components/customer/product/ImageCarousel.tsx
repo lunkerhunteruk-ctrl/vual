@@ -48,13 +48,16 @@ export function ImageCarousel({
   return (
     <div>
       {/* Main Image */}
-      <div className="relative aspect-[3/4] bg-white">
+      <div className="relative aspect-[3/4] bg-[#f5f5f0]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={images[currentIndex]}
           alt={`Product image ${currentIndex + 1}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ height: '100%', maxWidth: 'none' }}
+          className={`absolute inset-0 w-full h-full ${
+            modelImageCount > 0 && currentIndex >= productImageCount
+              ? 'object-contain'
+              : 'object-cover'
+          }`}
         />
 
         {/* Navigation Arrows */}
