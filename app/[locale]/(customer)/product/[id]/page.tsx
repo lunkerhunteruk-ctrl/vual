@@ -408,19 +408,19 @@ export default function ProductDetailPage() {
             <button
               onClick={handleAddToTryOnList}
               disabled={addedToTryOn}
-              className={`flex-shrink-0 h-12 px-3 rounded-[var(--radius-md)] border text-sm font-medium flex items-center justify-center gap-1.5 transition-colors ${
+              className={`flex-1 h-12 px-4 rounded-[var(--radius-md)] border-2 text-sm font-semibold flex items-center justify-center gap-2 transition-colors ${
                 addedToTryOn || isInTryOnList
-                  ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5 text-[var(--color-accent)]'
-                  : 'border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5'
+                  ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]'
+                  : 'border-[var(--color-accent)] bg-[var(--color-accent)] text-white hover:opacity-90'
               }`}
             >
-              {addedToTryOn || isInTryOnList ? <Check size={16} /> : <Sparkles size={16} />}
+              {addedToTryOn || isInTryOnList ? <Check size={18} /> : <Sparkles size={18} />}
               <span className="whitespace-nowrap">
                 {addedToTryOn
                   ? (locale === 'ja' ? '追加済み' : 'Added')
                   : isInTryOnList
                     ? (locale === 'ja' ? 'リスト内' : 'In List')
-                    : (locale === 'ja' ? '試着' : 'Try On')}
+                    : (locale === 'ja' ? '試着する' : 'Try On')}
               </span>
             </button>
           )}
