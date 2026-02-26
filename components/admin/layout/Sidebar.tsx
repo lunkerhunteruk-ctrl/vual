@@ -65,7 +65,7 @@ const menuSections: MenuSection[] = [
     ],
   },
   {
-    sectionKey: 'vual',
+    sectionKey: '',
     items: [
       { icon: Sparkles, labelKey: 'aiStudio', href: '/admin/studio', highlight: true },
       { icon: Radio, labelKey: 'liveBroadcast', href: '/admin/live', highlight: true },
@@ -115,10 +115,12 @@ export function Sidebar({ subscriptionExpired = false }: { subscriptionExpired?:
       {/* Menu */}
       <nav className="flex-1 overflow-y-auto py-4 px-3">
         {menuSections.map((section, idx) => (
-          <div key={section.sectionKey} className={idx > 0 ? 'mt-6' : ''}>
-            <p className="px-3 mb-2 text-xs font-medium text-[var(--color-text-label)] uppercase tracking-wider">
-              {t(section.sectionKey)}
-            </p>
+          <div key={section.sectionKey || `section-${idx}`} className={idx > 0 ? 'mt-6' : ''}>
+            {section.sectionKey && (
+              <p className="px-3 mb-2 text-xs font-medium text-[var(--color-text-label)] uppercase tracking-wider">
+                {t(section.sectionKey)}
+              </p>
+            )}
             <ul className="space-y-1">
               {section.items.map((item) => {
                 const Icon = item.icon;
