@@ -423,9 +423,9 @@ export default function TryOnPage() {
           </div>
           {tryOnPool.length > 0 ? (
             <PoolDropZone>
-              <div className="flex gap-2.5 overflow-x-auto pb-2 -mx-4 px-4">
+              <div className="flex gap-3 overflow-x-auto pb-2 pt-2 -mx-4 px-4">
                 {tryOnPool.map((item) => (
-                  <div key={item.productId} className="relative">
+                  <div key={item.productId} className="relative overflow-visible">
                     <DraggablePoolItem
                       item={item}
                       isAssigned={assignedIds.has(item.productId)}
@@ -434,9 +434,9 @@ export default function TryOnPage() {
                     />
                     <button
                       onClick={(e) => { e.stopPropagation(); removeFromPool(item.productId); }}
-                      className="absolute -top-1 -right-1 w-4 h-4 bg-black/60 rounded-full flex items-center justify-center z-10"
+                      className="absolute -top-2 -right-1.5 w-5 h-5 bg-black/60 rounded-full flex items-center justify-center z-10"
                     >
-                      <X size={8} className="text-white" />
+                      <X size={10} className="text-white" />
                     </button>
                   </div>
                 ))}
