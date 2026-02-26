@@ -56,6 +56,11 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
     return NextResponse.json({ reviews: data || [] });
   } catch (error: any) {
+    // Table may not exist yet — return empty instead of 500
+    if (error?.code === '42P01' || error?.message?.includes('reviews')) {
+      if (id) return NextResponse.json(null);
+      return NextResponse.json({ reviews: [] });
+    }
     console.error('Reviews API error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
