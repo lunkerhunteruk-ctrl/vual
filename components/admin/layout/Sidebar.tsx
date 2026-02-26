@@ -15,6 +15,7 @@ import {
   Image,
   List,
   Sparkles,
+  Layers,
   Radio,
   Store,
   User,
@@ -71,6 +72,7 @@ const menuSections: MenuSection[] = [
     sectionKey: '',
     items: [
       { icon: Sparkles, labelKey: 'aiStudio', href: '/admin/studio', highlight: true },
+      { icon: Layers, labelKey: 'collection', href: '/admin/collection', highlight: true },
       { icon: Radio, labelKey: 'liveBroadcast', href: '/admin/live', highlight: true },
       { icon: Coins, labelKey: 'billing', href: '/admin/billing', highlight: true },
     ],

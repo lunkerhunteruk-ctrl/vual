@@ -56,6 +56,7 @@
       "vual": "VUAL",
       "aiStudio": "VUAL Studio",
       "liveBroadcast": "Live Broadcast",
+      "collection": "Collection",
       "billing": "Billing",
       "admin": "Admin",
       "appearance": "Shop Design",
@@ -416,6 +417,21 @@
       "generating": "Generating your look...",
       "noItemsSelected": "No items selected",
       "selectItemsToGenerate": "Select items from the left panel to generate a look"
+    },
+    "collection": {
+      "title": "Collection",
+      "description": "Curate AI-generated look images for your storefront",
+      "addLook": "Add Look",
+      "noLooks": "No looks yet",
+      "noLooksDescription": "Add images generated in VUAL Studio to your collection",
+      "deleteLook": "Delete this look?",
+      "linkedProducts": "Linked Products",
+      "selectProducts": "Select products (max 4)",
+      "generatedImages": "Generated Images",
+      "modelImages": "Model Images",
+      "addToCollection": "Add to Collection",
+      "selectImage": "Select Image",
+      "looks": "looks"
     },
     "live": {
       "title": "Live Broadcast",

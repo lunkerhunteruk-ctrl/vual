@@ -31,8 +31,25 @@ export function useHasProducts() {
  * Check if there are any active collections
  */
 export function useHasCollections() {
-  // Collections not implemented in Supabase yet, return false
-  return { hasCollections: false, isLoading: false };
+  const [hasCollections, setHasCollections] = useState<boolean | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const check = async () => {
+      try {
+        const response = await fetch('/api/customer/collection');
+        const data = await response.json();
+        setHasCollections(data.looks && data.looks.length > 0);
+      } catch {
+        setHasCollections(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    check();
+  }, []);
+
+  return { hasCollections, isLoading };
 }
 
 /**

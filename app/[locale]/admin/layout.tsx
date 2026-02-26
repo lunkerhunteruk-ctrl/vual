@@ -19,6 +19,7 @@ const pageTitles: Record<string, string> = {
   '/admin/products/add': 'addProduct',
   '/admin/products/media': 'productMedia',
   '/admin/studio': 'aiStudio',
+  '/admin/collection': 'collection',
   '/admin/live': 'liveBroadcast',
   '/admin/billing': 'billing',
   '/admin/settings': 'settings',

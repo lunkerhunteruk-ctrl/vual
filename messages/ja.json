@@ -59,6 +59,7 @@
       "vual": "VUAL",
       "aiStudio": "VUALスタジオ",
       "liveBroadcast": "ライブ配信",
+      "collection": "コレクション",
       "billing": "サブスクリプション",
       "admin": "管理",
       "appearance": "ショップデザイン",
@@ -437,6 +438,21 @@
       "generating": "ルックを生成中...",
       "noItemsSelected": "アイテムが選択されていません",
       "selectItemsToGenerate": "左のパネルからアイテムを選択してルックを生成"
+    },
+    "collection": {
+      "title": "コレクション",
+      "description": "AIで生成したルック画像をキュレーションしてショップフロントに表示",
+      "addLook": "ルックを追加",
+      "noLooks": "まだルックがありません",
+      "noLooksDescription": "VUALスタジオで生成した画像をコレクションに追加しましょう",
+      "deleteLook": "このルックを削除しますか？",
+      "linkedProducts": "紐付け商品",
+      "selectProducts": "商品を選択（最大4点）",
+      "generatedImages": "生成済み画像",
+      "modelImages": "商品リンク画像",
+      "addToCollection": "コレクションに追加",
+      "selectImage": "画像を選択",
+      "looks": "ルック"
     },
     "live": {
       "title": "ライブ配信",

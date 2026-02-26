@@ -9,6 +9,7 @@ import {
   CategoryTabs,
   ProductGrid,
   CollectionBanner,
+  CollectionHeroSlideshow,
 } from '@/components/customer/home';
 import { useProducts } from '@/lib/hooks/useProducts';
 import { useHasCollections } from '@/lib/hooks';
@@ -170,8 +171,8 @@ function ShopHomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - always show */}
-      <HeroSection />
+      {/* Hero Section - slideshow if collection exists, else static */}
+      <CollectionHeroSlideshow fallback={<HeroSection />} />
 
       {/* New Arrival Section - only show if products exist */}
       {(isLoading || hasProducts) && (
