@@ -48,7 +48,7 @@ export function ProductCard({
         className="group"
       >
         {/* Image */}
-        <div className="relative aspect-[3/4] bg-[var(--color-bg-element)] rounded-[var(--radius-md)] overflow-hidden mb-3">
+        <div className="relative aspect-[3/4] bg-white rounded-[var(--radius-md)] overflow-hidden mb-3">
           {image ? (
             <img
               src={image}
