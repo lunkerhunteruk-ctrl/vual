@@ -152,6 +152,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Additional garments required when using VTON base' }, { status: 400 });
     }
 
+    console.log('[Gemini] Request billing context:', {
+      storeId: body.storeId || 'NONE',
+      lineUserId: body.lineUserId || 'NONE',
+      customerId: body.customerId || 'NONE',
+    });
+
     // Credit check for consumer requests (lineUserId or customerId present)
     if (body.lineUserId || body.customerId) {
       const creditResult = await checkAndDeductCredit({
@@ -168,15 +174,24 @@ export async function POST(request: NextRequest) {
     }
 
     // AI Studio credit check for store admin requests
+    console.log('[Gemini] Studio credit check condition:', {
+      hasStoreId: !!body.storeId,
+      hasLineUserId: !!body.lineUserId,
+      hasCustomerId: !!body.customerId,
+      willCheck: !!(body.storeId && !body.lineUserId && !body.customerId),
+    });
     if (body.storeId && !body.lineUserId && !body.customerId) {
       const { createServerClient: createSC } = await import('@/lib/supabase');
       const sb = createSC();
+      console.log('[Gemini] Supabase client created:', !!sb);
       if (sb) {
-        const { data: sub } = await sb
+        const { data: sub, error: subError } = await sb
           .from('store_subscriptions')
-          .select('studio_subscription_credits, studio_topup_credits, status')
+          .select('studio_subscription_credits, studio_topup_credits, studio_credits_total_used, status')
           .eq('store_id', body.storeId)
           .single();
+
+        console.log('[Gemini] Subscription query result:', { sub, subError, storeId: body.storeId });
 
         if (!sub || (sub.status !== 'active' && sub.status !== 'trialing')) {
           return NextResponse.json(
@@ -194,34 +209,39 @@ export async function POST(request: NextRequest) {
         }
 
         // Deduct: subscription credits first, then topup
+        console.log('[Gemini] Deducting credit. subscription:', sub.studio_subscription_credits, 'topup:', sub.studio_topup_credits);
         if (sub.studio_subscription_credits > 0) {
-          await sb
+          const { error: deductError } = await sb
             .from('store_subscriptions')
             .update({
               studio_subscription_credits: sub.studio_subscription_credits - 1,
-              studio_credits_total_used: (sub as Record<string, number>).studio_credits_total_used + 1,
+              studio_credits_total_used: (sub.studio_credits_total_used || 0) + 1,
               updated_at: new Date().toISOString(),
             })
             .eq('store_id', body.storeId);
+          console.log('[Gemini] Subscription credit deduct result:', { error: deductError });
         } else {
-          await sb
+          const { error: deductError } = await sb
             .from('store_subscriptions')
             .update({
               studio_topup_credits: sub.studio_topup_credits - 1,
-              studio_credits_total_used: (sub as Record<string, number>).studio_credits_total_used + 1,
+              studio_credits_total_used: (sub.studio_credits_total_used || 0) + 1,
               updated_at: new Date().toISOString(),
             })
             .eq('store_id', body.storeId);
+          console.log('[Gemini] Topup credit deduct result:', { error: deductError });
         }
 
         const newTotal = totalCredits - 1;
-        await sb.from('studio_credit_transactions').insert({
+        console.log('[Gemini] New total credits:', newTotal);
+        const { error: txError } = await sb.from('studio_credit_transactions').insert({
           store_id: body.storeId,
           type: 'consumption',
           amount: -1,
           balance_after: newTotal,
           description: 'AIスタジオ画像生成',
         });
+        if (txError) console.error('[Gemini] Credit transaction insert error:', txError);
       }
     }
 
@@ -338,6 +358,7 @@ export async function POST(request: NextRequest) {
         let savedImageUrl: string | null = null;
         try {
           const supabase = createServerClient();
+          console.log('[Gemini] Save: supabase client:', !!supabase, 'has image:', !!images[0], 'storeId:', body.storeId || 'NONE');
           if (supabase && images[0]) {
             const base64Data = images[0].replace(/^data:image\/\w+;base64,/, '');
             const imageBuffer = Buffer.from(base64Data, 'base64');
@@ -359,18 +380,24 @@ export async function POST(request: NextRequest) {
 
               const garmentCount = 1 + (secondGarmentImages.length > 0 ? 1 : 0) + (thirdGarmentImages.length > 0 ? 1 : 0) + (fourthGarmentImages.length > 0 ? 1 : 0);
 
-              await supabase
-                .from('gemini_results')
-                .insert({
+              const insertPayload = {
                   image_url: savedImageUrl,
                   storage_path: filename,
                   garment_count: garmentCount,
                   product_ids: body.productIds || [],
                   expires_at: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
                   ...(body.storeId ? { store_id: body.storeId } : {}),
-                });
+                };
+              console.log('[Gemini] Inserting gemini_results:', JSON.stringify(insertPayload));
+              const { error: insertError } = await supabase
+                .from('gemini_results')
+                .insert(insertPayload);
 
-              console.log('Saved Gemini result to storage:', savedImageUrl);
+              if (insertError) {
+                console.error('[Gemini] gemini_results insert error:', insertError);
+              } else {
+                console.log('[Gemini] Saved Gemini result to storage:', savedImageUrl);
+              }
             }
           }
         } catch (storageError) {

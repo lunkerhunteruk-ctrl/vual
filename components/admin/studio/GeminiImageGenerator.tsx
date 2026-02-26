@@ -246,8 +246,9 @@ export function GeminiImageGenerator({
 
   useEffect(() => {
     const fetchSavedImages = async () => {
+      if (!storeId) return;
       try {
-        const response = await fetch(`/api/ai/gemini-results?all=true${storeId ? `&storeId=${storeId}` : ''}`);
+        const response = await fetch(`/api/ai/gemini-results?all=true&storeId=${storeId}`);
         const data = await response.json();
         if (data.success && data.results) setSavedImages(data.results);
       } catch (err) {
@@ -255,7 +256,7 @@ export function GeminiImageGenerator({
       }
     };
     fetchSavedImages();
-  }, [generatedImage]);
+  }, [generatedImage, storeId]);
 
   useEffect(() => {
     if (selectedGarmentSizeSpecs && selectedGarmentSizeSpecs.rows.length > 0) {
