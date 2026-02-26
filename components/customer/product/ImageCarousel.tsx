@@ -61,18 +61,25 @@ export function ImageCarousel({
   const isModelImage = modelImageCount > 0 && currentIndex >= productImageCount;
   const currentAR = aspectRatios[currentUrl];
 
-  // For model images: match container to image's natural AR (no crop, no gap)
-  // For product images: always 3:4
+  // Match container to image's natural AR for all images.
+  // Product images: clamp to minimum 3:4 (don't go taller than portrait)
+  // Model images: use exact natural AR (any shape)
+  // Default 3:4 until image loads
   let mainAspect = '3 / 4';
-  if (isModelImage && currentAR) {
-    mainAspect = `${currentAR}`;
+  if (currentAR) {
+    if (isModelImage) {
+      mainAspect = `${currentAR}`;
+    } else {
+      // Product images: use natural AR but no taller than 3:4
+      mainAspect = `${Math.max(currentAR, 3 / 4)}`;
+    }
   }
 
   return (
     <div>
       {/* Main Image */}
       <div
-        className={`relative transition-[aspect-ratio] duration-300 ${isModelImage ? 'bg-[#f5f5f0]' : 'bg-white'}`}
+        className="relative transition-[aspect-ratio] duration-300 bg-white"
         style={{ aspectRatio: mainAspect }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
