@@ -64,6 +64,7 @@ export async function GET(request: NextRequest) {
       .order('created_at', { ascending: false });
 
     // Filter by store_id for multi-tenant isolation
+    console.log('[GeminiResults] Fetch with storeId:', storeId || 'NONE');
     if (storeId) {
       query.eq('store_id', storeId);
     }
@@ -73,6 +74,7 @@ export async function GET(request: NextRequest) {
     }
 
     const { data, error } = await query;
+    console.log('[GeminiResults] Query result:', { count: data?.length || 0, error: error?.message || null });
 
     if (error) {
       console.error('Error fetching gemini results:', error);
