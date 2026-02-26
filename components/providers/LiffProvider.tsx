@@ -135,7 +135,9 @@ export function LiffProvider({ children }: LiffProviderProps) {
         return;
       }
     }
-    liffInstance.login();
+    // Pass current URL as redirectUri so user returns to the same page after login
+    const redirectUri = typeof window !== 'undefined' ? window.location.href : undefined;
+    liffInstance.login({ redirectUri });
   };
 
   const logout = () => {
