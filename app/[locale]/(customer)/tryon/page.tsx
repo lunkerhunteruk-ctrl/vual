@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Camera, X, Download, Plus, Loader2, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
@@ -32,7 +32,6 @@ export default function TryOnPage() {
   const [processingStatus, setProcessingStatus] = useState('');
   const [tryOnError, setTryOnError] = useState<string | null>(null);
   const [latestResult, setLatestResult] = useState<string | null>(null);
-  const pollingRef = useRef<NodeJS.Timeout | null>(null);
 
   const tryOnListCount = Object.keys(tryOnList).length;
   const selectedPortrait = portraits.find((p) => p.id === selectedPortraitId);
@@ -56,13 +55,6 @@ export default function TryOnPage() {
     }
   }, [portraits, selectedPortraitId]);
 
-  // Cleanup polling on unmount
-  useEffect(() => {
-    return () => {
-      if (pollingRef.current) clearInterval(pollingRef.current);
-    };
-  }, []);
-
   const toBase64 = async (url: string): Promise<string> => {
     if (url.startsWith('data:')) return url;
     const res = await fetch(url);
@@ -74,58 +66,6 @@ export default function TryOnPage() {
     });
   };
 
-  const startPolling = useCallback(
-    (queueId: string) => {
-      pollingRef.current = setInterval(async () => {
-        try {
-          const res = await fetch(`/api/ai/vton-queue?id=${queueId}`);
-          const data = await res.json();
-          const item = data.item;
-
-          if (!item) return;
-
-          if (item.status === 'completed') {
-            if (pollingRef.current) clearInterval(pollingRef.current);
-            pollingRef.current = null;
-
-            const firstResult = item.resultData?.results?.[0];
-            if (firstResult?.resultImage) {
-              const garmentNames = Object.values(tryOnList)
-                .map((i) => i.name)
-                .join(' + ');
-              addResult({
-                id: `outfit-${Date.now()}`,
-                portraitId: selectedPortrait!.id,
-                garmentName: garmentNames,
-                resultImage: firstResult.resultImage,
-                createdAt: new Date().toISOString(),
-              });
-              setLatestResult(firstResult.resultImage);
-            }
-            setIsProcessing(false);
-            setProcessingStatus('');
-          } else if (item.status === 'failed') {
-            if (pollingRef.current) clearInterval(pollingRef.current);
-            pollingRef.current = null;
-            setTryOnError(item.errorMessage || (locale === 'ja' ? '試着に失敗しました' : 'Try-on failed'));
-            setIsProcessing(false);
-            setProcessingStatus('');
-          } else if (item.status === 'processing') {
-            setProcessingStatus(locale === 'ja' ? 'AI処理中...' : 'AI processing...');
-          } else {
-            const ahead = item.itemsAhead || 0;
-            setProcessingStatus(
-              locale === 'ja' ? `順番待ち（${ahead}件先）` : `In queue (${ahead} ahead)`
-            );
-          }
-        } catch {
-          // Continue polling
-        }
-      }, 3000);
-    },
-    [tryOnList, selectedPortrait, addResult, locale]
-  );
-
   const handleTryOn = async () => {
     if (!selectedPortrait || tryOnListCount === 0) return;
 
@@ -136,22 +76,45 @@ export default function TryOnPage() {
 
     try {
       const items = Object.values(tryOnList);
-      const garmentImages = await Promise.all(items.map((item) => toBase64(item.image)));
-      const categories = items.map((item) => item.category);
       const personImage = await toBase64(selectedPortrait.dataUrl);
 
       const lineUserId =
         typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined;
 
-      const res = await fetch('/api/ai/vton-queue', {
+      // Build garment images per slot (same format as gemini-image API)
+      // Slots: garmentImages (1st item), secondGarmentImages (2nd), thirdGarmentImages (3rd)
+      const slotOrder = ['upper_body', 'lower_body', 'footwear'] as const;
+      const garmentSlots: string[][] = [[], [], []];
+      for (const item of items) {
+        const slotKey = item.category === 'dresses' ? 'upper_body' : item.category;
+        const idx = slotOrder.indexOf(slotKey as typeof slotOrder[number]);
+        if (idx >= 0) {
+          garmentSlots[idx].push(await toBase64(item.image));
+        }
+      }
+
+      // Find first non-empty slot as primary, rest as additional
+      const nonEmpty = garmentSlots.map((imgs, i) => ({ imgs, i })).filter(s => s.imgs.length > 0);
+      if (nonEmpty.length === 0) throw new Error('No garment images');
+
+      setProcessingStatus(locale === 'ja' ? 'AI生成中...' : 'AI generating...');
+
+      const res = await fetch('/api/ai/gemini-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          personImage,
-          garmentImages,
-          categories,
-          storeId: items[0]?.storeId || '',
-          productId: items[0]?.productId || '',
+          garmentImages: nonEmpty[0]?.imgs || [],
+          secondGarmentImages: nonEmpty[1]?.imgs || [],
+          thirdGarmentImages: nonEmpty[2]?.imgs || [],
+          modelImage: personImage,
+          modelSettings: {
+            gender: 'female',
+            height: 165,
+            ethnicity: 'japanese',
+            pose: 'standing',
+          },
+          background: 'studioWhite',
+          aspectRatio: '3:4',
           lineUserId,
         }),
       });
@@ -165,13 +128,27 @@ export default function TryOnPage() {
           setShowPurchase(true);
           return;
         }
-        throw new Error(data.error || 'Failed to start try-on');
+        throw new Error(data.error || 'Generation failed');
       }
 
-      setProcessingStatus(locale === 'ja' ? '順番待ち...' : 'In queue...');
-      startPolling(data.queueId);
-    } catch (err: any) {
-      setTryOnError(err.message || (locale === 'ja' ? 'エラーが発生しました' : 'An error occurred'));
+      if (data.success && data.images?.[0]) {
+        const resultImage = data.images[0];
+        const garmentNames = items.map((i) => i.name).join(' + ');
+        addResult({
+          id: `outfit-${Date.now()}`,
+          portraitId: selectedPortrait.id,
+          garmentName: garmentNames,
+          resultImage,
+          createdAt: new Date().toISOString(),
+        });
+        setLatestResult(resultImage);
+      } else {
+        throw new Error(data.error || (locale === 'ja' ? '画像生成に失敗しました' : 'Image generation failed'));
+      }
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : (locale === 'ja' ? 'エラーが発生しました' : 'An error occurred');
+      setTryOnError(message);
+    } finally {
       setIsProcessing(false);
       setProcessingStatus('');
     }
