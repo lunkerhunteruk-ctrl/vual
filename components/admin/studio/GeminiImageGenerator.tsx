@@ -761,7 +761,11 @@ export function GeminiImageGenerator({
                   className="w-24 h-32 rounded-lg overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors relative group cursor-pointer flex-shrink-0"
                   onClick={() => {
                     setModalImage(img);
-                    setLinkingProductIds([]);
+                    // Default: select all used products
+                    const usedIds = allProducts
+                      .filter(p => img.product_ids?.includes(p.id))
+                      .map(p => p.id);
+                    setLinkingProductIds(usedIds);
                     setLinkSuccess(false);
                     setCollectionSuccess(false);
                   }}
@@ -908,106 +912,42 @@ export function GeminiImageGenerator({
                   );
                 })()}
 
-                {/* Link Action */}
-                {(() => {
-                  const usedProducts = allProducts.filter(p =>
-                    modalImage.product_ids?.includes(p.id)
-                  );
-                  if (usedProducts.length === 0) return null;
-
-                  return (
-                    <div className="flex items-center gap-3">
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        disabled={linkingProductIds.length === 0 || isLinking}
-                        isLoading={isLinking}
-                        leftIcon={linkSuccess ? <CheckCircle2 size={14} /> : <Link2 size={14} />}
-                        onClick={async () => {
-                          setIsLinking(true);
-                          try {
-                            const res = await fetch('/api/products/model-images', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({
-                                imageUrl: modalImage.image_url,
-                                sourceResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
-                                productIds: linkingProductIds,
-                              }),
-                            });
-                            const data = await res.json();
-                            if (data.success) {
-                              setLinkSuccess(true);
-                            }
-                          } catch (err) {
-                            console.error('Link failed:', err);
-                          } finally {
-                            setIsLinking(false);
-                          }
-                        }}
-                      >
-                        {linkSuccess
-                          ? (locale === 'ja' ? '紐づけ完了！' : 'Linked!')
-                          : (locale === 'ja' ? `${linkingProductIds.length}点に紐づけ` : `Link to ${linkingProductIds.length} items`)}
-                      </Button>
-                      {linkingProductIds.length === 0 && (
-                        <span className="text-xs text-[var(--color-text-placeholder)]">
-                          {locale === 'ja' ? '↑ アイテムを選択してください' : '↑ Select items to link'}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })()}
-
                 {/* Add to Collection */}
-                {(() => {
-                  const usedProducts = allProducts.filter(p =>
-                    modalImage.product_ids?.includes(p.id)
-                  );
-
-                  return (
-                    <div className="pt-3 border-t border-[var(--color-line)]">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        disabled={isAddingToCollection}
-                        isLoading={isAddingToCollection}
-                        leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
-                        onClick={async () => {
-                          setIsAddingToCollection(true);
-                          try {
-                            const productIds = linkingProductIds.length > 0
-                              ? linkingProductIds
-                              : usedProducts.map(p => p.id);
-                            const res = await fetch('/api/collections', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({
-                                imageUrl: modalImage.image_url,
-                                sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
-                                productIds: productIds.slice(0, 4),
-                              }),
-                            });
-                            const data = await res.json();
-                            if (data.success) {
-                              setCollectionSuccess(true);
-                            }
-                          } catch (err) {
-                            console.error('Collection add failed:', err);
-                          } finally {
-                            setIsAddingToCollection(false);
-                          }
-                        }}
-                      >
-                        {collectionSuccess
-                          ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
-                          : (locale === 'ja'
-                            ? `コレクションに追加${linkingProductIds.length > 0 ? `（${linkingProductIds.length}点紐づけ）` : usedProducts.length > 0 ? `（${usedProducts.length}点紐づけ）` : ''}`
-                            : `Add to Collection${linkingProductIds.length > 0 ? ` (${linkingProductIds.length} items)` : usedProducts.length > 0 ? ` (${usedProducts.length} items)` : ''}`)}
-                      </Button>
-                    </div>
-                  );
-                })()}
+                <Button
+                  variant="primary"
+                  size="sm"
+                  disabled={isAddingToCollection}
+                  isLoading={isAddingToCollection}
+                  leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
+                  onClick={async () => {
+                    setIsAddingToCollection(true);
+                    try {
+                      const res = await fetch('/api/collections', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                          imageUrl: modalImage.image_url,
+                          sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
+                          productIds: linkingProductIds.slice(0, 4),
+                        }),
+                      });
+                      const data = await res.json();
+                      if (data.success) {
+                        setCollectionSuccess(true);
+                      }
+                    } catch (err) {
+                      console.error('Collection add failed:', err);
+                    } finally {
+                      setIsAddingToCollection(false);
+                    }
+                  }}
+                >
+                  {collectionSuccess
+                    ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
+                    : (locale === 'ja'
+                      ? `コレクションに${linkingProductIds.length > 0 ? `${linkingProductIds.length}点` : ''}追加`
+                      : `Add${linkingProductIds.length > 0 ? ` ${linkingProductIds.length} items` : ''} to Collection`)}
+                </Button>
               </div>
             </motion.div>
           </motion.div>
