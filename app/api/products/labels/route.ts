@@ -25,15 +25,12 @@ export async function POST(request: NextRequest) {
     // Fetch product
     const { data: product, error: productError } = await supabase
       .from('products')
-      .select('id, name, base_price, currency, store_id, sku')
+      .select('id, name, base_price, currency, store_id')
       .eq('id', productId)
       .single();
 
     if (productError || !product) {
-      return NextResponse.json(
-        { error: 'Product not found', detail: productError?.message, productId },
-        { status: 404 },
-      );
+      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
     }
 
     // Fetch store name
@@ -61,7 +58,7 @@ export async function POST(request: NextRequest) {
     // No variants → generate single label from product-level data
     if (targetVariants.length === 0) {
       const label = await generateLabel({
-        sku: product.sku || productId.slice(0, 8),
+        sku: productId.slice(0, 8),
         productName: product.name,
         price: product.base_price,
         currency: product.currency || 'JPY',
@@ -71,7 +68,7 @@ export async function POST(request: NextRequest) {
       return new NextResponse(new Uint8Array(label), {
         headers: {
           'Content-Type': 'image/png',
-          'Content-Disposition': `attachment; filename="label-${product.sku || productId.slice(0, 8)}.png"`,
+          'Content-Disposition': `attachment; filename="label-${productId.slice(0, 8)}.png"`,
         },
       });
     }
