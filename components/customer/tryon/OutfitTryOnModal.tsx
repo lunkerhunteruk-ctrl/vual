@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X, Loader2, Share2, ShoppingBag, Plus, Trash2, Sparkles,
@@ -56,13 +56,11 @@ export function OutfitTryOnModal({
   const [slotLoading, setSlotLoading] = useState(false);
   const [selectedPortrait, setSelectedPortrait] = useState<Portrait | null>(portraits[0] || null);
   const [phase, setPhase] = useState<Phase>('build');
-  const [queueId, setQueueId] = useState<string | null>(null);
   const [progress, setProgress] = useState('');
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [showComparison, setShowComparison] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // --- Initialize with the product that triggered the modal ---
   useEffect(() => {
@@ -139,110 +137,71 @@ export function OutfitTryOnModal({
     setProgress(isJa ? 'コーディネートを準備中...' : 'Preparing your outfit...');
 
     try {
-      // Prepare garment images + categories
       const entries = Array.from(selectedItems.entries());
-      const garmentImages: string[] = [];
-      const categories: VTONCategory[] = [];
 
-      for (const [cat, product] of entries) {
-        const base64 = await toBase64(product.image);
-        garmentImages.push(base64);
-        categories.push(cat);
+      // Process items sequentially: first item replaces, rest use add_item mode
+      let currentPersonImage = selectedPortrait.dataUrl;
+      let finalResultImage: string | null = null;
+
+      for (let i = 0; i < entries.length; i++) {
+        const [cat, product] = entries[i];
+        const garmentBase64 = await toBase64(product.image);
+        const isFirst = i === 0;
+        const itemLabel = isJa
+          ? `${i + 1}/${entries.length} アイテムを生成中...`
+          : `Generating item ${i + 1}/${entries.length}...`;
+        setProgress(itemLabel);
+
+        const res = await fetch('/api/ai/vton', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            personImage: currentPersonImage,
+            garmentImage: garmentBase64,
+            category: cat,
+            mode: isFirst ? 'standard' : 'add_item',
+            storeId: initialProduct.storeId,
+            productId: product.id,
+            lineUserId,
+            customerId,
+          }),
+        });
+
+        if (res.status === 402) {
+          setPhase('build');
+          onPaymentRequired?.();
+          return;
+        }
+
+        const data = await res.json();
+        if (!data.success) {
+          throw new Error(data.error || `Item ${i + 1} generation failed`);
+        }
+
+        finalResultImage = data.resultImage;
+        // Use result as person image for next item (layering)
+        if (i < entries.length - 1) {
+          currentPersonImage = data.resultImage;
+        }
       }
 
-      setProgress(isJa ? 'キューに送信中...' : 'Submitting to queue...');
+      if (finalResultImage) {
+        setResultImage(finalResultImage);
+        setPhase('result');
 
-      const res = await fetch('/api/ai/vton-queue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          personImage: selectedPortrait.dataUrl,
-          garmentImages,
-          categories,
-          storeId: initialProduct.storeId,
-          productId: initialProduct.id,
-          lineUserId,
-          customerId,
-        }),
-      });
-
-      if (res.status === 402) {
-        setPhase('build');
-        onPaymentRequired?.();
-        return;
+        addResult({
+          id: `outfit-${Date.now()}`,
+          portraitId: selectedPortrait!.id,
+          garmentName: Array.from(selectedItems.values()).map(p => p.name).join(' + '),
+          resultImage: finalResultImage,
+          createdAt: new Date().toISOString(),
+        });
       }
-
-      const data = await res.json();
-      if (!data.success) {
-        throw new Error(data.error || 'Queue submission failed');
-      }
-
-      setQueueId(data.queueId);
-      setProgress(isJa ? 'コーディネートを生成中...' : 'Creating your outfit...');
-
-      // Start polling
-      startPolling(data.queueId);
     } catch (err: any) {
       setError(err.message || (isJa ? '試着に失敗しました' : 'Try-on failed'));
       setPhase('build');
     }
   };
-
-  const startPolling = (id: string) => {
-    if (pollingRef.current) clearInterval(pollingRef.current);
-
-    pollingRef.current = setInterval(async () => {
-      try {
-        const res = await fetch(`/api/ai/vton-queue?id=${id}`);
-        const data = await res.json();
-        const item = data.item;
-
-        if (!item) return;
-
-        if (item.status === 'completed' && item.resultData?.results?.[0]) {
-          stopPolling();
-          const firstResult = item.resultData.results[0];
-          setResultImage(firstResult.resultImage);
-          setPhase('result');
-
-          // Save result to store
-          addResult({
-            id: `outfit-${Date.now()}`,
-            portraitId: selectedPortrait!.id,
-            garmentName: Array.from(selectedItems.values()).map(p => p.name).join(' + '),
-            resultImage: firstResult.resultImage,
-            createdAt: new Date().toISOString(),
-          });
-        } else if (item.status === 'failed') {
-          stopPolling();
-          setError(item.errorMessage || (isJa ? '処理に失敗しました' : 'Processing failed'));
-          setPhase('build');
-        } else if (item.status === 'processing') {
-          setProgress(isJa ? '生成中...' : 'Generating...');
-        } else {
-          setProgress(
-            isJa
-              ? `キュー待機中 (${item.itemsAhead + 1}番目)...`
-              : `In queue (position ${item.itemsAhead + 1})...`
-          );
-        }
-      } catch {
-        // Continue polling on network errors
-      }
-    }, 3000);
-  };
-
-  const stopPolling = () => {
-    if (pollingRef.current) {
-      clearInterval(pollingRef.current);
-      pollingRef.current = null;
-    }
-  };
-
-  // Cleanup polling on unmount
-  useEffect(() => {
-    return () => stopPolling();
-  }, []);
 
   const handleAddAllToCart = () => {
     for (const product of selectedItems.values()) {

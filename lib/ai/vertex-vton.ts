@@ -1,5 +1,4 @@
-// Virtual Try-On & Model Casting Integration
-// Uses Gemini API for image generation, Vertex AI Imagen for text-to-image
+// Virtual Try-On using Gemini API for image generation
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
@@ -19,25 +18,6 @@ export interface VTONResponse {
   resultImage: string; // Base64 encoded result image
   confidence: number;
   processingTime: number;
-}
-
-export interface ModelCastingRequest {
-  productImage: string; // Base64 encoded image
-  modelSettings: {
-    gender: 'female' | 'male' | 'non-binary';
-    ageRange: string;
-    ethnicity: string;
-    pose: 'standing' | 'walking' | 'sitting' | 'dynamic';
-    background: string;
-  };
-}
-
-export interface ModelCastingResponse {
-  generatedImages: string[]; // Array of Base64 encoded images
-  metadata: {
-    model: string;
-    processingTime: number;
-  };
 }
 
 // Call Gemini API directly with image generation support
@@ -184,153 +164,6 @@ CRITICAL INSTRUCTIONS:
   throw new Error(`VTON failed after ${MAX_RETRIES} attempts. Last error: ${lastError?.message}`);
 }
 
-// Generate AI model wearing product using Gemini API + Imagen
-export async function generateModelCasting(
-  request: ModelCastingRequest
-): Promise<ModelCastingResponse> {
-  const startTime = Date.now();
-
-  try {
-    // First, analyze the product image using Gemini API
-    const analysisPrompt = `Analyze this fashion product image and describe it in detail
-    for use in generating a model wearing this item. Include:
-    - Type of garment
-    - Color and pattern
-    - Style and fit
-    - Key design features`;
-
-    const productImageData = request.productImage.replace(/^data:image\/\w+;base64,/, '');
-
-    const analysisData = await callGeminiImageAPI([
-      { text: analysisPrompt },
-      { inline_data: { mime_type: 'image/jpeg', data: productImageData } },
-    ]);
-
-    const productDescription = analysisData.candidates?.[0]?.content?.parts?.[0]?.text || 'fashion garment';
-
-    // Build the image generation prompt
-    const generationPrompt = buildModelCastingPrompt(request.modelSettings, productDescription);
-
-    // Generate model images using Gemini Flash Image API
-    const generatedImages = await generateImagesWithGemini(generationPrompt, productImageData);
-
-    const processingTime = Date.now() - startTime;
-
-    return {
-      generatedImages,
-      metadata: {
-        model: GEMINI_MODEL,
-        processingTime,
-      },
-    };
-  } catch (error) {
-    console.error('Model Casting Error:', error);
-
-    return {
-      generatedImages: [
-        '/images/placeholder-model-1.jpg',
-        '/images/placeholder-model-2.jpg',
-        '/images/placeholder-model-3.jpg',
-        '/images/placeholder-model-4.jpg',
-      ],
-      metadata: {
-        model: 'fallback',
-        processingTime: Date.now() - startTime,
-      },
-    };
-  }
-}
-
-// Generate images using Gemini Flash Image API
-async function generateImagesWithGemini(prompt: string, productImageData?: string): Promise<string[]> {
-  if (!GEMINI_API_KEY) {
-    throw new Error('GEMINI_API_KEY is not configured');
-  }
-
-  const parts: any[] = [{ text: prompt }];
-
-  // Include product image as reference if available
-  if (productImageData) {
-    parts.push({
-      inline_data: { mime_type: 'image/jpeg', data: productImageData },
-    });
-  }
-
-  const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts }],
-      generationConfig: {
-        responseModalities: ['TEXT', 'IMAGE'],
-        imageConfig: {
-          aspectRatio: '3:4',
-        },
-      },
-      safetySettings: [
-        { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
-      ],
-    }),
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error('Gemini Image API Error:', errorText);
-    throw new Error(`Gemini Image API error: ${response.status} ${response.statusText}`);
-  }
-
-  const data = await response.json();
-  const images: string[] = [];
-
-  for (const candidate of (data.candidates || [])) {
-    for (const part of (candidate.content?.parts || [])) {
-      const inlineData = part.inline_data || part.inlineData;
-      if (inlineData?.data) {
-        const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
-        images.push(`data:${mimeType};base64,${inlineData.data}`);
-      }
-    }
-  }
-
-  return images;
-}
-
-function buildModelCastingPrompt(
-  settings: ModelCastingRequest['modelSettings'],
-  productDescription: string
-): string {
-  const genderMap: Record<string, string> = {
-    female: 'woman',
-    male: 'man',
-    'non-binary': 'person',
-  };
-
-  const poseMap: Record<string, string> = {
-    standing: 'standing confidently with good posture',
-    walking: 'walking naturally mid-stride',
-    sitting: 'sitting elegantly',
-    dynamic: 'in a dynamic fashion pose',
-  };
-
-  const backgroundMap: Record<string, string> = {
-    studioWhite: 'clean white studio background with soft lighting',
-    studioGray: 'neutral gray studio background with professional lighting',
-    outdoorUrban: 'urban city street background with modern architecture',
-    outdoorNature: 'natural outdoor setting with soft natural lighting',
-    lifestyle: 'lifestyle setting appropriate for the fashion style',
-  };
-
-  return `Professional fashion photography of a ${settings.ethnicity} ${genderMap[settings.gender]}
-model in their ${settings.ageRange}, ${poseMap[settings.pose]},
-wearing ${productDescription}.
-${backgroundMap[settings.background] || settings.background}.
-High-end fashion magazine editorial style, perfect lighting,
-sharp focus, professional fashion photography, 8K resolution,
-realistic skin texture, natural pose.`.trim().replace(/\n/g, ' ');
-}
 
 // Utility: Convert image URL to base64
 export async function imageUrlToBase64(url: string): Promise<string> {

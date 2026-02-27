@@ -6,7 +6,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { Save, Upload, ArrowLeft, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
-import { ProductForm, ModelCasting } from '@/components/admin/products';
+import { ProductForm } from '@/components/admin/products';
 import type { ProductFormRef } from '@/components/admin/products/ProductForm';
 
 export default function EditProductPage() {
@@ -160,12 +160,6 @@ export default function EditProductPage() {
 
       {/* Product Form - Same as Add page */}
       <ProductForm ref={formRef} productId={productId} initialData={product} />
-
-      {/* Divider */}
-      <div className="border-t border-[var(--color-line)]" />
-
-      {/* Model Casting - VUAL Core Feature */}
-      <ModelCasting />
 
       {/* Bottom Actions */}
       <div className="flex items-center justify-end gap-3 pt-4">

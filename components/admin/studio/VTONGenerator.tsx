@@ -1,17 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, User, Loader2, Download, RotateCcw, Check, Clock, Trash2, ImageIcon } from 'lucide-react';
+import { Zap, User, Loader2, Download, RotateCcw, Check, Trash2, ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
-import {
-  addToVTONQueue,
-  pollVTONQueueUntilComplete,
-  cancelVTONQueueItem,
-  type VTONQueueItemStatus,
-} from '@/lib/ai/vton-queue';
+// Direct VTON API (no queue)
 
 interface ModelData {
   id: string;
@@ -166,19 +161,8 @@ export function VTONGenerator({
   const [selectedModel, setSelectedModel] = useState<ModelData | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isAddingToQueue, setIsAddingToQueue] = useState(false);
-
-  // Multiple queue items tracking
-  interface QueueItem {
-    id: string;
-    status: 'pending' | 'processing' | 'completed' | 'failed';
-    position: number;
-    itemsAhead: number;
-    resultImage?: string;
-    error?: string;
-  }
-  const [queueItems, setQueueItems] = useState<QueueItem[]>([]);
-  const pollingRef = useRef<{ [id: string]: boolean }>({});
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [progress, setProgress] = useState('');
 
   // Saved results from database
   interface SavedResult {
@@ -302,119 +286,75 @@ export function VTONGenerator({
     }
   }, [availablePoses, filters.pose]);
 
-  // Cancel a specific queue item
-  const handleCancelItem = async (itemId: string) => {
-    pollingRef.current[itemId] = false;
-    await cancelVTONQueueItem(itemId);
-    setQueueItems(prev => prev.filter(item => item.id !== itemId));
-  };
-
-  // Poll a queue item for completion
-  const pollQueueItem = async (queueId: string) => {
-    pollingRef.current[queueId] = true;
-
-    try {
-      const finalStatus = await pollVTONQueueUntilComplete(queueId, {
-        pollInterval: 2000,
-        maxPollTime: 600000,
-        onProgress: (status) => {
-          if (!pollingRef.current[queueId]) return;
-
-          setQueueItems(prev => prev.map(item =>
-            item.id === queueId
-              ? { ...item, status: status.status, position: status.position, itemsAhead: status.itemsAhead }
-              : item
-          ));
-        },
-      });
-
-      if (!pollingRef.current[queueId]) return;
-
-      if (finalStatus.status === 'completed' && finalStatus.resultData?.results?.length) {
-        const finalResult = finalStatus.resultData.results[finalStatus.resultData.results.length - 1];
-        // Reload saved results to get the newly saved image
-        loadSavedResults();
-        setQueueItems(prev => prev.map(item =>
-          item.id === queueId
-            ? { ...item, status: 'completed', resultImage: finalResult.resultImage }
-            : item
-        ));
-        // Auto-display the latest completed result
-        setGeneratedImage(finalResult.resultImage);
-      } else if (finalStatus.status === 'failed') {
-        setQueueItems(prev => prev.map(item =>
-          item.id === queueId
-            ? { ...item, status: 'failed', error: finalStatus.errorMessage || 'Failed' }
-            : item
-        ));
-      }
-    } catch (err) {
-      if (pollingRef.current[queueId]) {
-        setQueueItems(prev => prev.map(item =>
-          item.id === queueId
-            ? { ...item, status: 'failed', error: err instanceof Error ? err.message : 'Error' }
-            : item
-        ));
-      }
-    } finally {
-      delete pollingRef.current[queueId];
-    }
-  };
-
-  // Add to queue (without blocking)
-  const handleAddToQueue = async () => {
+  // Direct VTON generation (no queue)
+  const handleGenerate = async () => {
     if (!selectedModel || !selectedGarmentImage) return;
 
-    setIsAddingToQueue(true);
+    setIsGenerating(true);
     setError(null);
+    setProgress(locale === 'ja' ? '準備中...' : 'Preparing...');
 
     try {
-      // Convert images to base64
       const personImageBase64 = await imageToBase64(selectedModel.fullImage);
-      const garmentImages: string[] = [];
-      const categories: ('upper_body' | 'lower_body' | 'dresses' | 'footwear')[] = [];
 
-      garmentImages.push(await imageToBase64(selectedGarmentImage));
-      categories.push(getVTONCategory(selectedGarmentCategory));
-
-      if (secondGarmentImage) {
-        garmentImages.push(await imageToBase64(secondGarmentImage));
-        categories.push(getVTONCategory(secondGarmentCategory));
-      }
-
-      if (thirdGarmentImage) {
-        garmentImages.push(await imageToBase64(thirdGarmentImage));
-        categories.push(getVTONCategory(thirdGarmentCategory));
-      }
-
-      // Add to queue
-      const addResult = await addToVTONQueue({
-        personImage: personImageBase64,
-        garmentImages,
-        categories,
+      const garments: { image: string; category: string }[] = [];
+      garments.push({
+        image: await imageToBase64(selectedGarmentImage),
+        category: getVTONCategory(selectedGarmentCategory),
       });
-
-      if (!addResult.success || !addResult.queueId) {
-        throw new Error(addResult.error || 'Failed to add to queue');
+      if (secondGarmentImage) {
+        garments.push({
+          image: await imageToBase64(secondGarmentImage),
+          category: getVTONCategory(secondGarmentCategory),
+        });
+      }
+      if (thirdGarmentImage) {
+        garments.push({
+          image: await imageToBase64(thirdGarmentImage),
+          category: getVTONCategory(thirdGarmentCategory),
+        });
       }
 
-      // Add to local tracking
-      const newItem: QueueItem = {
-        id: addResult.queueId,
-        status: 'pending',
-        position: addResult.position || 1,
-        itemsAhead: addResult.itemsAhead || 0,
-      };
-      setQueueItems(prev => [...prev, newItem]);
+      let currentPersonImage = personImageBase64;
 
-      // Start polling in background
-      pollQueueItem(addResult.queueId);
+      for (let i = 0; i < garments.length; i++) {
+        const { image, category } = garments[i];
+        setProgress(
+          locale === 'ja'
+            ? `${i + 1}/${garments.length} アイテムを生成中...`
+            : `Generating item ${i + 1}/${garments.length}...`
+        );
 
+        const res = await fetch('/api/ai/vton', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            personImage: currentPersonImage,
+            garmentImage: image,
+            category,
+            mode: i === 0 ? 'standard' : 'add_item',
+          }),
+        });
+
+        const data = await res.json();
+        if (!data.success) {
+          throw new Error(data.error || `Item ${i + 1} generation failed`);
+        }
+
+        if (i < garments.length - 1) {
+          currentPersonImage = data.resultImage;
+        } else {
+          setGeneratedImage(data.resultImage);
+        }
+      }
+
+      loadSavedResults();
     } catch (err) {
-      console.error('Failed to add to queue:', err);
-      setError(err instanceof Error ? err.message : 'Failed to add to queue');
+      console.error('VTON generation failed:', err);
+      setError(err instanceof Error ? err.message : 'Generation failed');
     } finally {
-      setIsAddingToQueue(false);
+      setIsGenerating(false);
+      setProgress('');
     }
   };
 
@@ -601,65 +541,13 @@ export function VTONGenerator({
             </AnimatePresence>
           </div>
 
-          {/* Bottom: Queue List & Generate Button */}
+          {/* Bottom: Results & Generate Button */}
           <div className="mt-4 space-y-3">
-            {/* Queue Items List */}
-            {queueItems.length > 0 && (
-              <div className="flex flex-wrap gap-2 p-3 bg-[var(--color-bg-element)] rounded-lg">
-                {queueItems.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
-                      item.status === 'completed'
-                        ? 'bg-emerald-100 text-emerald-700'
-                        : item.status === 'failed'
-                        ? 'bg-red-100 text-red-700'
-                        : item.status === 'processing'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'bg-amber-100 text-amber-700'
-                    }`}
-                  >
-                    {item.status === 'processing' && (
-                      <Loader2 size={12} className="animate-spin" />
-                    )}
-                    {item.status === 'pending' && (
-                      <Clock size={12} />
-                    )}
-                    {item.status === 'completed' && (
-                      <Check size={12} />
-                    )}
-                    <span>
-                      {item.status === 'pending' && `#${index + 1} ${locale === 'ja' ? `待機中 (${item.itemsAhead}件前)` : `Waiting (${item.itemsAhead} ahead)`}`}
-                      {item.status === 'processing' && `#${index + 1} ${locale === 'ja' ? '生成中...' : 'Generating...'}`}
-                      {item.status === 'completed' && `#${index + 1} ${locale === 'ja' ? '完了' : 'Done'}`}
-                      {item.status === 'failed' && `#${index + 1} ${locale === 'ja' ? '失敗' : 'Failed'}`}
-                    </span>
-                    {item.status === 'completed' && item.resultImage && (
-                      <button
-                        onClick={() => setGeneratedImage(item.resultImage!)}
-                        className="ml-1 underline hover:no-underline"
-                      >
-                        {locale === 'ja' ? '表示' : 'View'}
-                      </button>
-                    )}
-                    {(item.status === 'pending' || item.status === 'processing') && (
-                      <button
-                        onClick={() => handleCancelItem(item.id)}
-                        className="ml-1 hover:text-red-600"
-                      >
-                        ✕
-                      </button>
-                    )}
-                  </div>
-                ))}
-                {queueItems.length > 0 && (
-                  <button
-                    onClick={() => setQueueItems(prev => prev.filter(i => i.status === 'pending' || i.status === 'processing'))}
-                    className="px-2 py-1 text-xs text-[var(--color-text-label)] hover:text-[var(--color-text-body)]"
-                  >
-                    {locale === 'ja' ? '完了を消す' : 'Clear done'}
-                  </button>
-                )}
+            {/* Progress */}
+            {isGenerating && progress && (
+              <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg text-sm text-blue-700">
+                <Loader2 size={14} className="animate-spin" />
+                {progress}
               </div>
             )}
 
@@ -734,13 +622,13 @@ export function VTONGenerator({
                 <Button
                   variant="primary"
                   size="lg"
-                  isLoading={isAddingToQueue}
+                  isLoading={isGenerating}
                   disabled={!selectedModel || !selectedGarmentImage}
                   leftIcon={<Zap size={18} />}
-                  onClick={handleAddToQueue}
+                  onClick={handleGenerate}
                   className="!px-8"
                 >
-                  {locale === 'ja' ? '順番待ちに送る' : 'Add to Queue'}
+                  {locale === 'ja' ? '生成する' : 'Generate'}
                 </Button>
               </div>
             </div>

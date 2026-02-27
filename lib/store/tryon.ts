@@ -223,10 +223,10 @@ export const useTryOnStore = create<TryOnStore>()(
     }),
     {
       name: 'vual-tryon',
-      version: 2,
+      version: 3,
       partialize: (state) => ({
         portraits: state.portraits,
-        results: state.results,
+        // results excluded - base64 images exceed localStorage quota
         tryOnPool: state.tryOnPool,
         tryOnSlots: state.tryOnSlots,
         modelGender: state.modelGender,
@@ -249,7 +249,12 @@ export const useTryOnStore = create<TryOnStore>()(
             tryOnSlots: slots,
             modelGender: 'female',
             modelHeight: 165,
+            results: [],
           };
+        }
+        if (version < 3) {
+          // Remove results from persisted state to fix quota exceeded
+          return { ...state, results: [] };
         }
         return state;
       },
