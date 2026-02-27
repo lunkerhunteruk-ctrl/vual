@@ -23,75 +23,7 @@ export async function checkAndDeductCredit(params: {
 
   const { storeId, productId, lineUserId, customerId, vtonQueueId } = params;
 
-  // ---- B2B: VUAL store product try-on ----
-  if (storeId && productId) {
-    const userId = lineUserId || customerId;
-
-    // Check daily try-on limit
-    if (userId) {
-      const { data: storeCredits } = await supabase
-        .from('store_credits')
-        .select('daily_tryon_limit')
-        .eq('store_id', storeId)
-        .single();
-
-      const dailyLimit = storeCredits?.daily_tryon_limit ?? 3;
-
-      // Count today's B2B usage for this user at this store
-      const todayStart = new Date();
-      todayStart.setHours(0, 0, 0, 0);
-
-      const { count } = await supabase
-        .from('vton_queue')
-        .select('*', { count: 'exact', head: true })
-        .eq('store_id', storeId)
-        .eq('user_id', userId)
-        .eq('credit_source', 'store_b2b')
-        .gte('created_at', todayStart.toISOString());
-
-      if ((count ?? 0) >= dailyLimit) {
-        return {
-          allowed: false,
-          creditSource: null,
-          creditTransactionId: null,
-          error: `本日の試着上限(${dailyLimit}回)に達しました`,
-          errorCode: 'DAILY_LIMIT_EXCEEDED',
-          dailyLimit,
-        };
-      }
-    }
-
-    const { data, error } = await supabase.rpc('deduct_store_credit', {
-      p_store_id: storeId,
-      p_amount: 1,
-      p_description: `試着クレジット消費 (product: ${productId})`,
-      p_vton_queue_id: vtonQueueId || null,
-    });
-
-    if (error) {
-      console.error('deduct_store_credit RPC error:', error);
-      return { allowed: false, creditSource: null, creditTransactionId: null, error: 'Failed to check store credits', errorCode: 'DB_ERROR' };
-    }
-
-    const result = data?.[0] || data;
-    if (!result?.success) {
-      return {
-        allowed: false,
-        creditSource: null,
-        creditTransactionId: null,
-        error: 'ストアのフィッティングクレジットが不足しています',
-        errorCode: 'NO_STORE_CREDITS',
-      };
-    }
-
-    return {
-      allowed: true,
-      creditSource: 'store_b2b',
-      creditTransactionId: result.transaction_id,
-    };
-  }
-
-  // ---- B2C: External try-on ----
+  // ---- B2C: Consumer try-on ----
   if (!lineUserId && !customerId) {
     return {
       allowed: false,
@@ -134,13 +66,14 @@ export async function checkAndDeductCredit(params: {
 
   // Auto-create if not exists
   if (!consumerCreditId) {
+    // Reset at midnight tomorrow (daily free tickets)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+
     const insertData: Record<string, unknown> = {
       free_tickets_remaining: dailyFreeLimit,
-      free_tickets_reset_at: new Date(
-        new Date().getFullYear(),
-        new Date().getMonth() + 1,
-        1
-      ).toISOString(),
+      free_tickets_reset_at: tomorrow.toISOString(),
     };
     if (customerId) insertData.customer_id = customerId;
     if (lineUserId) insertData.line_user_id = lineUserId;

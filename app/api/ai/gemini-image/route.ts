@@ -52,7 +52,7 @@ interface RequestBody {
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
-  // Store admin billing (AI Studio)
+  // Store ID for resolving daily free limit
   storeId?: string;
 }
 
@@ -163,6 +163,7 @@ export async function POST(request: NextRequest) {
       const creditResult = await checkAndDeductCredit({
         lineUserId: body.lineUserId,
         customerId: body.customerId,
+        storeId: body.storeId,
       });
 
       if (!creditResult.allowed) {

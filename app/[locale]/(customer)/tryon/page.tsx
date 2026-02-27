@@ -402,6 +402,9 @@ export default function TryOnPage() {
       // Build style prompt
       const stylePrompt = buildStylePrompt(styleOptions, tryOnSlots);
 
+      // Extract storeId from first slot item to resolve daily free limit
+      const storeId = items[0]?.storeId;
+
       const res = await fetch('/api/ai/gemini-image', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -419,6 +422,7 @@ export default function TryOnPage() {
           background: 'studioWhite',
           aspectRatio: '3:4',
           lineUserId,
+          storeId,
           customPrompt: stylePrompt || undefined,
         }),
       });
