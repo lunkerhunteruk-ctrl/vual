@@ -1,4 +1,4 @@
-import * as sharp from 'sharp';
+import sharp from 'sharp';
 
 /**
  * Add credit watermark to a try-on result image.

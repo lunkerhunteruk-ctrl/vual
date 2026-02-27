@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { generateLabel } from '@/lib/utils/label-generator';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 
 interface LabelRequest {
   productId: string;
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
         storeName,
       });
 
-      return new NextResponse(label, {
+      return new NextResponse(new Uint8Array(label), {
         headers: {
           'Content-Type': 'image/png',
           'Content-Disposition': `attachment; filename="label-${product.sku || productId.slice(0, 8)}.png"`,
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
         storeName,
       });
 
-      return new NextResponse(label, {
+      return new NextResponse(new Uint8Array(label), {
         headers: {
           'Content-Type': 'image/png',
           'Content-Disposition': `attachment; filename="label-${v.sku}.png"`,
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
 
     const zipBuffer = await zip.generateAsync({ type: 'nodebuffer' });
 
-    return new NextResponse(zipBuffer, {
+    return new NextResponse(new Uint8Array(zipBuffer), {
       headers: {
         'Content-Type': 'application/zip',
         'Content-Disposition': `attachment; filename="labels-${product.name}.zip"`,

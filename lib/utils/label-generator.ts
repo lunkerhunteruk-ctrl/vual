@@ -1,5 +1,5 @@
-import * as sharp from 'sharp';
-import * as QRCode from 'qrcode';
+import sharp from 'sharp';
+import QRCode from 'qrcode';
 
 export interface LabelParams {
   sku: string;
