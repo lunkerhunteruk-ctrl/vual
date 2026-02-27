@@ -41,21 +41,25 @@ export async function POST(request: NextRequest) {
       shopId,
     });
 
-    // Save to Firestore
-    const db = getFirestoreAdmin();
-    await db.collection('streams').doc(liveInput.uid).set({
-      shopId,
-      title,
-      status: 'scheduled',
-      playbackId: liveInput.uid,
-      streamKey: liveInput.rtmps.streamKey,
-      rtmpsUrl: liveInput.rtmps.url,
-      viewerCount: 0,
-      peakViewerCount: 0,
-      products: [],
-      createdAt: FieldValue.serverTimestamp(),
-      updatedAt: FieldValue.serverTimestamp(),
-    });
+    // Save to Firestore (non-blocking — stream works even if Firestore fails)
+    try {
+      const db = getFirestoreAdmin();
+      await db.collection('streams').doc(liveInput.uid).set({
+        shopId,
+        title,
+        status: 'scheduled',
+        playbackId: liveInput.uid,
+        streamKey: liveInput.rtmps.streamKey,
+        rtmpsUrl: liveInput.rtmps.url,
+        viewerCount: 0,
+        peakViewerCount: 0,
+        products: [],
+        createdAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
+      });
+    } catch (firestoreError) {
+      console.error('Firestore save error (stream still created):', firestoreError);
+    }
 
     return NextResponse.json({
       id: liveInput.uid,
@@ -70,7 +74,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Create stream error:', error);
     return NextResponse.json(
-      { error: 'Failed to create live stream' },
+      { error: 'Failed to create live stream', details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
