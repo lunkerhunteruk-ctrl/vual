@@ -447,6 +447,7 @@ export default function TryOnPage() {
           portraitId: selectedPortrait.id,
           garmentName: garmentNames,
           resultImage,
+          savedImageUrl: data.savedImageUrl || undefined,
           createdAt: new Date().toISOString(),
         });
         setLatestResult(resultImage);
@@ -797,24 +798,31 @@ export default function TryOnPage() {
             {isJa ? '最近の試着結果' : 'Recent Results'}
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
-            {results.map((result) => (
-              <div key={result.id} className="shrink-0 w-20 flex flex-col items-end gap-1">
-                <div className="w-full aspect-[3/4] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-bg-element)]">
-                  <img src={result.resultImage} alt={result.garmentName} className="w-full h-full object-contain" />
+            {results.filter((r) => r.resultImage || r.savedImageUrl).map((result) => {
+              const imgSrc = result.resultImage || result.savedImageUrl || '';
+              return (
+                <div key={result.id} className="shrink-0 w-20 flex flex-col items-end gap-1">
+                  <div className="w-full aspect-[3/4] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-bg-element)]">
+                    <img src={imgSrc} alt={result.garmentName} className="w-full h-full object-contain" />
+                  </div>
+                  <button
+                    onClick={() => {
+                      if (result.resultImage) {
+                        const a = document.createElement('a');
+                        a.href = result.resultImage;
+                        a.download = `vual-tryon-${result.id}.png`;
+                        a.click();
+                      } else if (result.savedImageUrl) {
+                        window.open(result.savedImageUrl, '_blank');
+                      }
+                    }}
+                    className="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-[var(--color-line)] shadow-sm"
+                  >
+                    <Download size={11} className="text-[var(--color-text-label)]" />
+                  </button>
                 </div>
-                <button
-                  onClick={() => {
-                    const a = document.createElement('a');
-                    a.href = result.resultImage;
-                    a.download = `vual-tryon-${result.id}.png`;
-                    a.click();
-                  }}
-                  className="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-[var(--color-line)] shadow-sm"
-                >
-                  <Download size={11} className="text-[var(--color-text-label)]" />
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       )}

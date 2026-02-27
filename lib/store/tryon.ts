@@ -26,7 +26,8 @@ export interface TryOnResult {
   portraitId: string;
   garmentName: string;
   garmentImageUrl?: string;
-  resultImage: string; // base64
+  resultImage: string; // base64 (transient, not persisted)
+  savedImageUrl?: string; // Supabase Storage URL (persisted)
   createdAt: string;
 }
 
@@ -223,10 +224,13 @@ export const useTryOnStore = create<TryOnStore>()(
     }),
     {
       name: 'vual-tryon',
-      version: 3,
+      version: 4,
       partialize: (state) => ({
         portraits: state.portraits,
-        // results excluded - base64 images exceed localStorage quota
+        // Persist results but strip base64 data (keep only savedImageUrl)
+        results: state.results
+          .filter((r) => r.savedImageUrl)
+          .map(({ resultImage, ...rest }) => ({ ...rest, resultImage: '' })),
         tryOnPool: state.tryOnPool,
         tryOnSlots: state.tryOnSlots,
         modelGender: state.modelGender,
@@ -255,6 +259,14 @@ export const useTryOnStore = create<TryOnStore>()(
         if (version < 3) {
           // Remove results from persisted state to fix quota exceeded
           return { ...state, results: [] };
+        }
+        if (version < 4) {
+          // v4: results now persisted with savedImageUrl only (no base64)
+          // Clear old results that don't have savedImageUrl
+          const results = (state.results as TryOnResult[] || []).filter(
+            (r) => r.savedImageUrl
+          );
+          return { ...state, results };
         }
         return state;
       },
