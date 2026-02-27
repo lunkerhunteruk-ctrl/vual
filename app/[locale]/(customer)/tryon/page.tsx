@@ -384,8 +384,8 @@ export default function TryOnPage() {
       const lineUserId =
         typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined;
 
-      const slotOrder = ['upper_body', 'lower_body', 'footwear'] as const;
-      const garmentSlots: string[][] = [[], [], []];
+      const slotOrder = ['upper_body', 'lower_body', 'footwear', 'bags'] as const;
+      const garmentSlots: string[][] = [[], [], [], []];
       for (const slotKey of slotOrder) {
         const item = tryOnSlots[slotKey];
         if (item) {
@@ -412,6 +412,7 @@ export default function TryOnPage() {
           garmentImages: nonEmpty[0]?.imgs || [],
           secondGarmentImages: nonEmpty[1]?.imgs || [],
           thirdGarmentImages: nonEmpty[2]?.imgs || [],
+          fourthGarmentImages: nonEmpty[3]?.imgs || [],
           modelImage: personImage,
           modelSettings: {
             gender: modelGender,
@@ -555,7 +556,7 @@ export default function TryOnPage() {
           <h2 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-3">
             {isJa ? 'コーディネート' : 'Coordinate'}
           </h2>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-4 gap-2">
             {VTON_SLOTS.map((slot) => {
               const item = tryOnSlots[slot.id];
               const styleOption = item ? getStyleOptions(inferSubCategory(item)) : null;

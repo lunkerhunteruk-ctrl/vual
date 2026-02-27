@@ -1,6 +1,6 @@
 import { parseCategoryPath } from '@/lib/data/categories';
 
-export type VTONCategory = 'upper_body' | 'lower_body' | 'dresses' | 'footwear';
+export type VTONCategory = 'upper_body' | 'lower_body' | 'dresses' | 'footwear' | 'bags';
 
 // Product sub-category → VTON category mapping
 const CATEGORY_MAP: Record<string, VTONCategory> = {
@@ -11,6 +11,7 @@ const CATEGORY_MAP: Record<string, VTONCategory> = {
   dresses: 'dresses',
   setup: 'upper_body', // セットアップはupper_bodyとして扱う
   shoes: 'footwear',
+  bags: 'bags',
 };
 
 // Reverse mapping: VTON slot → product sub-categories
@@ -19,6 +20,7 @@ const SLOT_TO_CATEGORIES: Record<VTONCategory, string[]> = {
   lower_body: ['pants', 'skirts'],
   dresses: ['dresses'],
   footwear: ['shoes'],
+  bags: ['bags'],
 };
 
 export interface VTONSlotInfo {
@@ -31,6 +33,7 @@ export const VTON_SLOTS: VTONSlotInfo[] = [
   { id: 'upper_body', labelJa: 'トップス', labelEn: 'Tops' },
   { id: 'lower_body', labelJa: 'ボトムス', labelEn: 'Bottoms' },
   { id: 'footwear', labelJa: 'シューズ', labelEn: 'Shoes' },
+  { id: 'bags', labelJa: 'バッグ', labelEn: 'Bags' },
 ];
 
 /**

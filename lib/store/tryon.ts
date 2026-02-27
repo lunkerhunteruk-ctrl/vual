@@ -85,6 +85,7 @@ const DEFAULT_SLOTS: Record<string, TryOnListItem | null> = {
   upper_body: null,
   lower_body: null,
   footwear: null,
+  bags: null,
 };
 
 export const useTryOnStore = create<TryOnStore>()(
@@ -205,7 +206,7 @@ export const useTryOnStore = create<TryOnStore>()(
           const inPool = state.tryOnPool.some((p) => p.productId === item.productId);
           const newPool = inPool ? state.tryOnPool : [item, ...state.tryOnPool].slice(0, 10);
           // Auto-assign to matching slot
-          const slotKey = item.category === 'dresses' ? 'upper_body' : item.category;
+          const slotKey = item.category === 'dresses' ? 'upper_body' : (item.category === 'bags' ? 'bags' : item.category);
           const newSlots = { ...state.tryOnSlots };
           // Remove from other slots if already there
           for (const key of Object.keys(newSlots)) {
@@ -224,7 +225,7 @@ export const useTryOnStore = create<TryOnStore>()(
     }),
     {
       name: 'vual-tryon',
-      version: 4,
+      version: 5,
       partialize: (state) => ({
         portraits: state.portraits,
         // Persist results but strip base64 data (keep only savedImageUrl)
@@ -246,6 +247,7 @@ export const useTryOnStore = create<TryOnStore>()(
             upper_body: oldList.upper_body || null,
             lower_body: oldList.lower_body || null,
             footwear: oldList.footwear || null,
+            bags: null,
           };
           return {
             ...state,
@@ -267,6 +269,14 @@ export const useTryOnStore = create<TryOnStore>()(
             (r) => r.savedImageUrl
           );
           return { ...state, results };
+        }
+        if (version < 5) {
+          // v5: Add bags slot to existing persisted slots
+          const slots = (state.tryOnSlots || {}) as Record<string, TryOnListItem | null>;
+          if (!('bags' in slots)) {
+            slots.bags = null;
+          }
+          return { ...state, tryOnSlots: slots };
         }
         return state;
       },
