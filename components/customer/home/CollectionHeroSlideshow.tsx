@@ -38,7 +38,7 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
   const currentUrl = looks[currentIndex]?.image_url;
 
   return (
-    <section className="relative w-full aspect-[16/9] bg-black overflow-hidden">
+    <section className="relative w-full aspect-[9/16] sm:aspect-[3/4] md:aspect-[16/9] bg-black overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={looks[currentIndex]?.id}
