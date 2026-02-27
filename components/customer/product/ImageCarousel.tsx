@@ -50,13 +50,22 @@ export function ImageCarousel({
     <div>
       {/* Main Image */}
       <div
-        className="relative w-full max-h-[100vw] bg-[var(--color-bg-element)] overflow-hidden"
+        className="relative w-full aspect-square bg-[var(--color-bg-element)] overflow-hidden flex items-center justify-center"
       >
+        {/* Blurred background fill for non-square images */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={currentUrl}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] opacity-60"
+        />
+        {/* Main image — contained, no crop */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={currentUrl}
           alt={`Product image ${currentIndex + 1}`}
-          className="w-full h-auto block"
+          className="relative z-[1] max-w-full max-h-full object-contain"
         />
 
         {/* Navigation Arrows */}
