@@ -202,13 +202,18 @@ export function LiffProvider({ children }: LiffProviderProps) {
   };
 
   const logout = () => {
+    // Clear LIFF session if available
     const liffInstance = getLiff();
     if (liffInstance) {
-      liffInstance.logout();
-      setProfile(null);
-      setCustomer(null);
-      window.location.reload();
+      try { liffInstance.logout(); } catch (e) { /* ignore */ }
     }
+    // Clear stored LINE user ID
+    localStorage.removeItem('vual-line-user-id');
+    // Clear Zustand state
+    setProfile(null);
+    setCustomer(null);
+    useAuthStore.getState().signOut();
+    window.location.reload();
   };
 
   return (
