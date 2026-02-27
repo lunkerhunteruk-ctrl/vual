@@ -196,7 +196,7 @@ function ShopHomePage() {
               <div className="grid grid-cols-2 gap-4 px-4">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="animate-pulse">
-                    <div className="aspect-[3/4] bg-gray-200 rounded-lg mb-2" />
+                    <div className="aspect-square bg-gray-200 rounded-lg mb-2" />
                     <div className="h-3 bg-gray-200 rounded w-16 mb-1" />
                     <div className="h-4 bg-gray-200 rounded w-full mb-1" />
                     <div className="h-4 bg-gray-200 rounded w-12" />
