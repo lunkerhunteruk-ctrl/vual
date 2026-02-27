@@ -43,11 +43,22 @@ export async function GET(request: NextRequest) {
       const productIds = [...new Set(linkData.map(l => l.product_id))];
       const { data: products } = await supabase
         .from('products')
-        .select('id, name, base_price, price, currency, tax_included, images, status')
+        .select('id, name, base_price, price, currency, tax_included, status')
         .in('id', productIds);
 
+      const { data: productImages } = await supabase
+        .from('product_images')
+        .select('product_id, url, is_primary, position')
+        .in('product_id', productIds)
+        .order('position', { ascending: true });
+
       if (products) {
-        productsMap = Object.fromEntries(products.map(p => [p.id, p]));
+        productsMap = Object.fromEntries(products.map(p => [p.id, {
+          ...p,
+          images: (productImages || [])
+            .filter(img => img.product_id === p.id)
+            .map(img => ({ url: img.url, is_primary: img.is_primary })),
+        }]));
       }
     }
 
