@@ -834,7 +834,11 @@ export default function TryOnPage() {
       </AnimatePresence>
 
       {/* Credit Purchase Sheet */}
-      <CreditPurchaseSheet isOpen={showPurchase} onClose={() => setShowPurchase(false)} />
+      <CreditPurchaseSheet
+        isOpen={showPurchase}
+        onClose={() => setShowPurchase(false)}
+        lineUserId={typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined}
+      />
     </div>
   );
 }
