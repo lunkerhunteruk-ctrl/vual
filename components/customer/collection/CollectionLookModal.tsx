@@ -115,7 +115,7 @@ export function CollectionLookModal({
                 if (!product) return null;
                 const priceStr = formatPriceWithTax(
                   getTaxInclusivePrice(
-                    product.price || product.base_price || 0,
+                    product.base_price || 0,
                     product.tax_included ?? true,
                     product.currency || 'jpy'
                   ),
