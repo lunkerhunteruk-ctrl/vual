@@ -42,7 +42,7 @@ export async function addCreditWatermark(
     letter-spacing="0.5"
     fill="white"
     opacity="0.85"
-  >item coordinated by ${escapedName}</text>
+  >Styled by ${escapedName}</text>
   <text
     x="${textX}"
     y="${vualY}"
