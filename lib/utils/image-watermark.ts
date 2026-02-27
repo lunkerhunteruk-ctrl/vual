@@ -16,8 +16,9 @@ export async function addCreditWatermark(
   const height = metadata.height || 1024;
 
   const storeFontSize = Math.round(width * 0.022);
-  const vualFontSize = Math.round(width * 0.016);
-  const padding = Math.round(width * 0.03);
+  const vualFontSize = Math.round(width * 0.018);
+  const paddingX = Math.round(width * 0.03);
+  const paddingY = Math.round(height * 0.10);
   const lineGap = Math.round(storeFontSize * 1.4);
 
   const escapedName = storeName
@@ -26,9 +27,9 @@ export async function addCreditWatermark(
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-  // Position: right-aligned, bottom area
-  const textX = width - padding;
-  const vualY = height - padding;
+  // Position: right-aligned, raised from bottom
+  const textX = width - paddingX;
+  const vualY = height - paddingY;
   const storeY = vualY - lineGap;
 
   const svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
@@ -49,10 +50,10 @@ export async function addCreditWatermark(
     text-anchor="end"
     font-family="Inter"
     font-size="${vualFontSize}"
-    font-weight="400"
+    font-weight="500"
     letter-spacing="0.3"
     fill="white"
-    opacity="0.55"
+    opacity="0.70"
   >virtual try-on by VUAL</text>
 </svg>`;
 
