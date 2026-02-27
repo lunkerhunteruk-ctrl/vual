@@ -540,14 +540,14 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
-    customPrompt ? `Additional details: ${customPrompt}` : '',
+    customPrompt ? `STYLING INSTRUCTION (MUST FOLLOW): ${customPrompt}` : '',
   ];
 
   return parts.filter(Boolean).join(' ');
 }
 
 function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secondImageCount: number, thirdImageCount: number, fourthImageCount: number = 0): string {
-  const { modelSettings, modelImage, vtonBase, background } = body;
+  const { modelSettings, modelImage, vtonBase, background, customPrompt } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
   const ethnicity = ethnicityDescriptions[modelSettings.ethnicity] || modelSettings.ethnicity;
 
@@ -556,13 +556,15 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
     model = 'the model keeping their existing outfit';
   }
 
-  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseDescriptions[modelSettings.pose] || modelSettings.pose}, wearing the garment(s) from the provided reference images. ${backgroundDescriptions[background] || background}. ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
+  const styleNote = customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
+  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseDescriptions[modelSettings.pose] || modelSettings.pose}, wearing the garment(s) from the provided reference images.${styleNote} ${backgroundDescriptions[background] || background}. ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
-  const { modelSettings, modelImage, background } = body;
+  const { modelSettings, modelImage, background, customPrompt } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
 
   const model = modelImage ? 'this person' : `a ${gender}`;
-  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images. ${backgroundDescriptions[background] || 'White background'}. ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
+  const styleNote = customPrompt ? ` ${customPrompt}.` : '';
+  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${styleNote} ${backgroundDescriptions[background] || 'White background'}. ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
 }

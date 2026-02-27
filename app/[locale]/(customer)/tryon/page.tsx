@@ -141,13 +141,22 @@ function getStyleOptions(subCategory?: string): { key: string; labelJa: string; 
   return null;
 }
 
-function buildStylePrompt(styleOptions: Record<string, Record<string, string>>): string {
+function buildStylePrompt(styleOptions: Record<string, Record<string, string>>, slots: Record<string, TryOnListItem | null>): string {
   const parts: string[] = [];
-  for (const [, options] of Object.entries(styleOptions)) {
-    if (options.tucking === 'in') parts.push('The top is neatly tucked into the pants/skirt');
-    if (options.tucking === 'out') parts.push('The top is worn untucked, hanging naturally');
-    if (options.front === 'open') parts.push('The jacket/coat front is open, showing the inner top');
-    if (options.front === 'closed') parts.push('The jacket/coat is buttoned/zipped closed');
+  for (const [slotId, item] of Object.entries(slots)) {
+    if (!item) continue;
+    const styleConfig = getStyleOptions(item.subCategory);
+    if (!styleConfig) continue;
+    // Use explicit selection or fall back to first option (default)
+    const value = styleOptions[slotId]?.[styleConfig.key] || styleConfig.options[0].value;
+    if (styleConfig.key === 'tucking') {
+      if (value === 'in') parts.push('The top is neatly tucked into the pants/skirt');
+      if (value === 'out') parts.push('The top is worn untucked, hanging naturally over the waistband');
+    }
+    if (styleConfig.key === 'front') {
+      if (value === 'open') parts.push('The jacket/coat front is open, showing the inner top');
+      if (value === 'closed') parts.push('The jacket/coat is buttoned/zipped closed');
+    }
   }
   return parts.join('. ');
 }
@@ -391,7 +400,7 @@ export default function TryOnPage() {
       setProcessingStatus(isJa ? 'コーディネートを生成中...' : 'Generating coordinate...');
 
       // Build style prompt
-      const stylePrompt = buildStylePrompt(styleOptions);
+      const stylePrompt = buildStylePrompt(styleOptions, tryOnSlots);
 
       const res = await fetch('/api/ai/gemini-image', {
         method: 'POST',
