@@ -102,12 +102,12 @@ export function ProductModelImages({ productId }: ProductModelImagesProps) {
             <div key={img.id} className="relative group">
               <div
                 onClick={() => setPreviewImage(img)}
-                className="aspect-[3/4] rounded-[var(--radius-sm)] overflow-hidden bg-[#f5f5f0] border border-[var(--color-line)] cursor-pointer"
+                className="aspect-square rounded-[var(--radius-sm)] overflow-hidden bg-[var(--color-bg-element)] border border-[var(--color-line)] cursor-pointer flex items-center justify-center"
               >
                 <img
                   src={img.image_url}
                   alt="Model"
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
