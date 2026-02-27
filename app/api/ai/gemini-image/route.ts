@@ -3,7 +3,7 @@ import { createServerClient } from '@/lib/supabase';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-3-pro-image-preview';
+const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 interface GarmentSize {

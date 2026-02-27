@@ -2,7 +2,7 @@
 // Uses Gemini API for image generation, Vertex AI Imagen for text-to-image
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-3-pro-image-preview';
+const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT_ID;
@@ -206,8 +206,8 @@ export async function generateModelCasting(
     // Build the image generation prompt
     const generationPrompt = buildModelCastingPrompt(request.modelSettings, productDescription);
 
-    // For Imagen generation, use the REST API
-    const generatedImages = await generateImagesWithImagen(generationPrompt, 4);
+    // Generate model images using Gemini Flash Image API
+    const generatedImages = await generateImagesWithGemini(generationPrompt, productImageData);
 
     const processingTime = Date.now() - startTime;
 
@@ -236,49 +236,59 @@ export async function generateModelCasting(
   }
 }
 
-// Generate images using Imagen REST API
-async function generateImagesWithImagen(prompt: string, count: number): Promise<string[]> {
-  if (!PROJECT_ID) {
-    throw new Error('GOOGLE_CLOUD_PROJECT_ID is not configured');
+// Generate images using Gemini Flash Image API
+async function generateImagesWithGemini(prompt: string, productImageData?: string): Promise<string[]> {
+  if (!GEMINI_API_KEY) {
+    throw new Error('GEMINI_API_KEY is not configured');
   }
 
-  const { GoogleAuth } = await import('google-auth-library');
-  const auth = new GoogleAuth({
-    scopes: ['https://www.googleapis.com/auth/cloud-platform'],
-  });
-  const client = await auth.getClient();
-  const accessToken = await client.getAccessToken();
+  const parts: any[] = [{ text: prompt }];
 
-  const endpoint = `https://${LOCATION}-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/${LOCATION}/publishers/google/models/imagen-3.0-generate-001:predict`;
+  // Include product image as reference if available
+  if (productImageData) {
+    parts.push({
+      inline_data: { mime_type: 'image/jpeg', data: productImageData },
+    });
+  }
 
-  const response = await fetch(endpoint, {
+  const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken.token}`,
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      instances: [{ prompt }],
-      parameters: {
-        sampleCount: count,
-        aspectRatio: '3:4',
-        safetyFilterLevel: 'block_some',
-        personGeneration: 'allow_adult',
+      contents: [{ parts }],
+      generationConfig: {
+        responseModalities: ['TEXT', 'IMAGE'],
+        imageConfig: {
+          aspectRatio: '3:4',
+        },
       },
+      safetySettings: [
+        { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+      ],
     }),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    console.error('Imagen API Error:', errorText);
-    throw new Error(`Imagen API error: ${response.status} ${response.statusText}`);
+    console.error('Gemini Image API Error:', errorText);
+    throw new Error(`Gemini Image API error: ${response.status} ${response.statusText}`);
   }
 
   const data = await response.json();
+  const images: string[] = [];
 
-  const images: string[] = data.predictions?.map(
-    (p: { bytesBase64Encoded: string }) => `data:image/png;base64,${p.bytesBase64Encoded}`
-  ) || [];
+  for (const candidate of (data.candidates || [])) {
+    for (const part of (candidate.content?.parts || [])) {
+      const inlineData = part.inline_data || part.inlineData;
+      if (inlineData?.data) {
+        const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
+        images.push(`data:${mimeType};base64,${inlineData.data}`);
+      }
+    }
+  }
 
   return images;
 }
