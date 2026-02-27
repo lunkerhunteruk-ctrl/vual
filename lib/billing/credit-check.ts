@@ -159,11 +159,26 @@ export async function checkAndDeductCredit(params: {
   }
 
   // Deduct consumer credit (priority: free > subscription > paid)
-  const { data, error } = await supabase.rpc('deduct_consumer_credit', {
+  // Try with p_free_ticket_limit first (new schema), fall back to old signature
+  let data: any;
+  let error: any;
+  const rpcResult = await supabase.rpc('deduct_consumer_credit', {
     p_consumer_credit_id: consumerCreditId,
     p_vton_queue_id: vtonQueueId || null,
     p_free_ticket_limit: dailyFreeLimit,
   });
+  data = rpcResult.data;
+  error = rpcResult.error;
+
+  // Fallback: if new param not recognized, retry without it
+  if (error && error.message?.includes('p_free_ticket_limit')) {
+    const fallback = await supabase.rpc('deduct_consumer_credit', {
+      p_consumer_credit_id: consumerCreditId,
+      p_vton_queue_id: vtonQueueId || null,
+    });
+    data = fallback.data;
+    error = fallback.error;
+  }
 
   if (error) {
     console.error('deduct_consumer_credit RPC error:', error);
