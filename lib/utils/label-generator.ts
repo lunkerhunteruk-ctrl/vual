@@ -45,14 +45,23 @@ export async function generateLabel(params: LabelParams): Promise<Buffer> {
 
   const { sku, productName, color, size, price, currency, storeName } = params;
 
-  // Generate QR code as PNG buffer
-  const qrBuffer = await QRCode.toBuffer(sku, {
-    type: 'png',
+  // Generate QR code as SVG string (no native dependencies needed)
+  const qrSvg = await QRCode.toString(sku, {
+    type: 'svg',
     width: QR_SIZE,
     margin: 1,
     errorCorrectionLevel: 'M',
     color: { dark: '#000000', light: '#FFFFFF' },
   });
+
+  // Extract the inner content of the QR SVG (paths/rects) to embed inline
+  // Remove the outer <svg> wrapper and embed content with a transform
+  const qrInner = qrSvg
+    .replace(/<\?xml[^?]*\?>\s*/g, '')
+    .replace(/<svg[^>]*>/, '')
+    .replace(/<\/svg>/, '');
+
+  const qrTop = (LABEL_H - QR_SIZE) / 2 | 0;
 
   // Build variant line
   const variantParts: string[] = [];
@@ -72,41 +81,27 @@ export async function generateLabel(params: LabelParams): Promise<Buffer> {
   const priceY = QR_MARGIN + (variantLine ? 100 : 66);
   const skuY = QR_MARGIN + (variantLine ? 132 : 98);
 
-  const variantSvg = variantLine
+  const variantSvgText = variantLine
     ? `<text x="${TEXT_X}" y="${variantY}" font-family="Inter" font-size="18" fill="#555555">${variantDisplay}</text>`
     : '';
 
   const svg = `<svg width="${LABEL_W}" height="${LABEL_H}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${LABEL_W}" height="${LABEL_H}" fill="white" rx="8" ry="8"/>
   <rect x="1" y="1" width="${LABEL_W - 2}" height="${LABEL_H - 2}" fill="none" stroke="#E0E0E0" stroke-width="1" rx="8" ry="8"/>
+  <g transform="translate(${QR_MARGIN}, ${qrTop})">
+    <svg width="${QR_SIZE}" height="${QR_SIZE}" viewBox="0 0 ${QR_SIZE} ${QR_SIZE}">
+      ${qrInner}
+    </svg>
+  </g>
   <text x="${TEXT_X}" y="${nameY}" font-family="Inter" font-size="22" font-weight="600" fill="#1A1A1A">${nameDisplay}</text>
-  ${variantSvg}
+  ${variantSvgText}
   <text x="${TEXT_X}" y="${priceY}" font-family="Inter" font-size="24" font-weight="700" fill="#1A1A1A">${priceDisplay}</text>
   <text x="${TEXT_X}" y="${skuY}" font-family="Inter" font-size="13" fill="#999999" letter-spacing="0.5">SKU: ${skuDisplay}</text>
   <text x="${LABEL_W - 16}" y="${LABEL_H - 16}" text-anchor="end" font-family="Inter" font-size="11" fill="#BBBBBB" letter-spacing="0.3">${storeDisplay}</text>
 </svg>`;
 
-  // Create label: white background + QR composite + text SVG overlay
-  return sharp({
-    create: {
-      width: LABEL_W,
-      height: LABEL_H,
-      channels: 4,
-      background: { r: 255, g: 255, b: 255, alpha: 1 },
-    },
-  })
-    .composite([
-      {
-        input: await sharp(qrBuffer).resize(QR_SIZE, QR_SIZE).png().toBuffer(),
-        top: (LABEL_H - QR_SIZE) / 2 | 0,
-        left: QR_MARGIN,
-      },
-      {
-        input: Buffer.from(svg),
-        top: 0,
-        left: 0,
-      },
-    ])
+  // Convert SVG to PNG via sharp
+  return sharp(Buffer.from(svg))
     .png()
     .toBuffer();
 }
