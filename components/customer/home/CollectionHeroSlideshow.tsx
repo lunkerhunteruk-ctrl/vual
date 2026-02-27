@@ -35,8 +35,10 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
   // No collection: show fallback (existing HeroSection)
   if (looks.length === 0) return <>{fallback}</>;
 
+  const currentUrl = looks[currentIndex]?.image_url;
+
   return (
-    <section className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-black overflow-hidden">
+    <section className="relative w-full aspect-[16/9] bg-black overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={looks[currentIndex]?.id}
@@ -46,13 +48,22 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
           transition={{ duration: 0.6 }}
           className="absolute inset-0"
         >
+          {/* Blurred background fill — same image stretched + blurred */}
           <img
-            src={looks[currentIndex]?.image_url}
+            src={currentUrl}
             alt=""
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] brightness-75"
           />
+
+          {/* Main image — height-fit, centered, no crop */}
+          <img
+            src={currentUrl}
+            alt=""
+            className="absolute inset-0 w-full h-full object-contain z-[1]"
+          />
+
           {/* Gradient overlay for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-[2]" />
         </motion.div>
       </AnimatePresence>
 
