@@ -16,6 +16,7 @@ interface CastProduct {
 interface StreamData {
   id: string;
   streamKey: string;
+  rtmpsUrl: string;
   playbackId: string;
 }
 
@@ -32,7 +33,7 @@ export default function LiveBroadcastPage() {
   const [castProducts, setCastProducts] = useState<CastProduct[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  // Handle "Go Live" — create Mux stream
+  // Handle "Go Live" — create Cloudflare Stream
   const handleGoLive = useCallback(async (title: string) => {
     if (!store?.id) {
       setError(locale === 'ja' ? 'ストア情報が取得できません' : 'Store information not available');
@@ -61,6 +62,7 @@ export default function LiveBroadcastPage() {
       setStreamData({
         id: data.id,
         streamKey: data.streamKey,
+        rtmpsUrl: data.rtmpsUrl,
         playbackId: data.playbackId,
       });
 
@@ -120,7 +122,7 @@ export default function LiveBroadcastPage() {
             <div>
               <span className="text-green-600 font-medium">RTMPS URL:</span>
               <code className="block mt-1 p-2 bg-white rounded border border-green-200 text-green-900 break-all select-all">
-                rtmps://global-live.mux.com:443/app
+                {streamData.rtmpsUrl}
               </code>
             </div>
             <div>

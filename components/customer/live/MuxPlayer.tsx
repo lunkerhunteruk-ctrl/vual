@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { getPlaybackUrl, getThumbnailUrl } from '@/lib/mux';
+import { getPlaybackUrl, getThumbnailUrl } from '@/lib/cloudflare-stream';
 
-interface MuxPlayerProps {
+interface StreamPlayerProps {
   playbackId: string;
   title?: string;
   autoPlay?: boolean;
@@ -14,6 +14,8 @@ interface MuxPlayerProps {
   onEnded?: () => void;
 }
 
+// Note: File kept as MuxPlayer.tsx to avoid breaking imports.
+// Internally uses Cloudflare Stream.
 export function MuxPlayer({
   playbackId,
   title,
@@ -23,7 +25,7 @@ export function MuxPlayer({
   onPlay,
   onPause,
   onEnded,
-}: MuxPlayerProps) {
+}: StreamPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +37,6 @@ export function MuxPlayer({
     const video = videoRef.current;
     if (!video) return;
 
-    // Use HLS.js for browsers that don't natively support HLS
     let hls: any = null;
 
     const initPlayer = async () => {
@@ -62,7 +63,6 @@ export function MuxPlayer({
             setError('お使いのブラウザではライブ配信を再生できません');
           }
         } catch {
-          // hls.js not available, try native
           video.src = playbackUrl;
         }
       }

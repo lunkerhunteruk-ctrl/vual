@@ -1,17 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Mux from '@mux/mux-node';
+import { createLiveInput, type CloudflareLiveInput } from '@/lib/cloudflare-stream';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
-
-// Initialize Mux lazily to avoid build-time errors
-function getMuxClient(): Mux {
-  const tokenId = process.env.MUX_TOKEN_ID;
-  const tokenSecret = process.env.MUX_TOKEN_SECRET;
-  if (!tokenId || !tokenSecret) {
-    throw new Error('MUX_TOKEN_ID or MUX_TOKEN_SECRET is not configured');
-  }
-  return new Mux({ tokenId, tokenSecret });
-}
 
 // Initialize Firebase Admin
 function getFirestoreAdmin() {
@@ -45,27 +35,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const mux = getMuxClient();
-
-    // Create live stream with Mux
-    const stream = await mux.video.liveStreams.create({
-      playback_policy: ['public'],
-      new_asset_settings: {
-        playback_policy: ['public'],
-      },
-      latency_mode: 'low',
-      reconnect_window: 60,
-      max_continuous_duration: 43200, // 12 hours
+    // Create live input with Cloudflare Stream
+    const liveInput: CloudflareLiveInput = await createLiveInput({
+      title,
+      shopId,
     });
 
     // Save to Firestore
     const db = getFirestoreAdmin();
-    await db.collection('streams').doc(stream.id).set({
+    await db.collection('streams').doc(liveInput.uid).set({
       shopId,
       title,
       status: 'scheduled',
-      playbackId: stream.playback_ids?.[0]?.id || null,
-      streamKey: stream.stream_key || null,
+      playbackId: liveInput.uid,
+      streamKey: liveInput.rtmps.streamKey,
+      rtmpsUrl: liveInput.rtmps.url,
       viewerCount: 0,
       peakViewerCount: 0,
       products: [],
@@ -73,17 +57,16 @@ export async function POST(request: NextRequest) {
       updatedAt: FieldValue.serverTimestamp(),
     });
 
-    const streamData = {
-      id: stream.id,
-      streamKey: stream.stream_key,
-      playbackId: stream.playback_ids?.[0]?.id,
+    return NextResponse.json({
+      id: liveInput.uid,
+      streamKey: liveInput.rtmps.streamKey,
+      rtmpsUrl: liveInput.rtmps.url,
+      playbackId: liveInput.uid,
       status: 'scheduled',
       title,
       shopId,
       createdAt: new Date().toISOString(),
-    };
-
-    return NextResponse.json(streamData);
+    });
   } catch (error) {
     console.error('Create stream error:', error);
     return NextResponse.json(
@@ -106,20 +89,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const mux = getMuxClient();
+    // Fetch from Firestore filtered by shopId
+    const db = getFirestoreAdmin();
+    const snapshot = await db.collection('streams')
+      .where('shopId', '==', shopId)
+      .orderBy('createdAt', 'desc')
+      .limit(20)
+      .get();
 
-    // In production, fetch from Firestore filtered by shopId
-    // For now, fetch all live streams from Mux
-    const streams = await mux.video.liveStreams.list();
-
-    return NextResponse.json({
-      streams: streams.data.map((stream) => ({
-        id: stream.id,
-        status: stream.status,
-        playbackId: stream.playback_ids?.[0]?.id,
-        createdAt: stream.created_at,
-      })),
+    const streams = snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        status: data.status,
+        playbackId: data.playbackId,
+        title: data.title,
+        createdAt: data.createdAt?.toDate?.()?.toISOString() || null,
+      };
     });
+
+    return NextResponse.json({ streams });
   } catch (error) {
     console.error('Get streams error:', error);
     return NextResponse.json(
