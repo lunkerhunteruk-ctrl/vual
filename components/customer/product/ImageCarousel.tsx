@@ -50,13 +50,13 @@ export function ImageCarousel({
     <div>
       {/* Main Image */}
       <div
-        className="relative aspect-square bg-white flex items-center justify-center"
+        className="relative w-full max-h-[100vw] bg-[var(--color-bg-element)] overflow-hidden"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={currentUrl}
           alt={`Product image ${currentIndex + 1}`}
-          className="max-w-full max-h-full object-contain"
+          className="w-full h-auto block"
         />
 
         {/* Navigation Arrows */}
@@ -105,7 +105,7 @@ export function ImageCarousel({
       {images.length > 1 && (
         <div
           ref={thumbRef}
-          className="flex gap-2 px-3 pt-1 pb-2 overflow-x-auto no-scrollbar"
+          className="flex gap-2 px-3 pb-2 overflow-x-auto no-scrollbar"
         >
           {images.map((img, index) => {
             const isModel = modelImageCount > 0 && index >= productImageCount;
