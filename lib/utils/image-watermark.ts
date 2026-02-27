@@ -15,10 +15,10 @@ export async function addCreditWatermark(
   const width = metadata.width || 768;
   const height = metadata.height || 1024;
 
-  const storeFontSize = Math.round(width * 0.028);
-  const vualFontSize = Math.round(width * 0.020);
-  const bandHeight = Math.round(height * 0.08);
-  const padding = Math.round(width * 0.02);
+  const storeFontSize = Math.round(width * 0.022);
+  const vualFontSize = Math.round(width * 0.016);
+  const padding = Math.round(width * 0.03);
+  const lineGap = Math.round(storeFontSize * 1.4);
 
   const escapedName = storeName
     .replace(/&/g, '&amp;')
@@ -26,35 +26,33 @@ export async function addCreditWatermark(
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
+  // Position: right-aligned, bottom area
+  const textX = width - padding;
+  const vualY = height - padding;
+  const storeY = vualY - lineGap;
+
   const svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="black" stop-opacity="0"/>
-      <stop offset="100%" stop-color="black" stop-opacity="0.55"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="${height - bandHeight}" width="${width}" height="${bandHeight}" fill="url(#fade)"/>
   <text
-    x="${width / 2}"
-    y="${height - padding - vualFontSize - Math.round(storeFontSize * 0.4)}"
-    text-anchor="middle"
+    x="${textX}"
+    y="${storeY}"
+    text-anchor="end"
     font-family="Inter"
     font-size="${storeFontSize}"
     font-weight="500"
     letter-spacing="0.5"
     fill="white"
-    opacity="0.95"
+    opacity="0.85"
   >item coordinated by ${escapedName}</text>
   <text
-    x="${width / 2}"
-    y="${height - padding}"
-    text-anchor="middle"
+    x="${textX}"
+    y="${vualY}"
+    text-anchor="end"
     font-family="Inter"
     font-size="${vualFontSize}"
     font-weight="400"
     letter-spacing="0.3"
     fill="white"
-    opacity="0.65"
+    opacity="0.55"
   >virtual try-on by VUAL</text>
 </svg>`;
 
