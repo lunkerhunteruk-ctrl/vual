@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocale } from 'next-intl';
 import { Download, Loader2, CheckSquare, Square } from 'lucide-react';
 import { Modal, Button } from '@/components/ui';
 import type { ProductVariant } from './ProductVariants';
+import QRCode from 'qrcode';
+import JSZip from 'jszip';
 
 interface LabelGeneratorModalProps {
   productId: string;
@@ -13,15 +15,130 @@ interface LabelGeneratorModalProps {
   baseSku?: string;
   basePrice?: number;
   currency?: string;
+  storeName?: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
+// --- Label drawing on Canvas ---
+const LABEL_W = 580;
+const LABEL_H = 280;
+const QR_SIZE = 180;
+const QR_MARGIN = 30;
+const TEXT_X = QR_MARGIN + QR_SIZE + 28;
+
+function formatPrice(price: number, currency: string): string {
+  if (currency === 'JPY' || currency === 'KRW') {
+    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency }).format(price);
+  }
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(price);
+}
+
+function truncate(s: string, max: number): string {
+  return s.length > max ? s.slice(0, max - 1) + '…' : s;
+}
+
+interface LabelData {
+  sku: string;
+  productName: string;
+  color?: string | null;
+  size?: string | null;
+  price: number;
+  currency: string;
+  storeName: string;
+}
+
+async function drawLabel(data: LabelData): Promise<Blob> {
+  const canvas = document.createElement('canvas');
+  canvas.width = LABEL_W;
+  canvas.height = LABEL_H;
+  const ctx = canvas.getContext('2d')!;
+
+  // White background with rounded border
+  ctx.fillStyle = '#FFFFFF';
+  ctx.beginPath();
+  ctx.roundRect(0, 0, LABEL_W, LABEL_H, 8);
+  ctx.fill();
+  ctx.strokeStyle = '#E0E0E0';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // QR Code
+  const qrDataUrl = await QRCode.toDataURL(data.sku, {
+    width: QR_SIZE,
+    margin: 1,
+    errorCorrectionLevel: 'M',
+    color: { dark: '#000000', light: '#FFFFFF' },
+  });
+  const qrImg = await loadImage(qrDataUrl);
+  const qrTop = (LABEL_H - QR_SIZE) / 2 | 0;
+  ctx.drawImage(qrImg, QR_MARGIN, qrTop, QR_SIZE, QR_SIZE);
+
+  // Build variant line
+  const variantParts: string[] = [];
+  if (data.color) variantParts.push(data.color);
+  if (data.size) variantParts.push(data.size);
+  const variantLine = variantParts.join(' / ');
+
+  // Text rendering
+  const nameDisplay = truncate(data.productName, 22);
+  const priceDisplay = formatPrice(data.price, data.currency);
+
+  // Product name
+  ctx.fillStyle = '#1A1A1A';
+  ctx.font = '600 22px "Inter", "Noto Sans JP", sans-serif';
+  ctx.fillText(nameDisplay, TEXT_X, QR_MARGIN + 28);
+
+  // Variant
+  let nextY = QR_MARGIN + 62;
+  if (variantLine) {
+    ctx.fillStyle = '#555555';
+    ctx.font = '400 18px "Inter", "Noto Sans JP", sans-serif';
+    ctx.fillText(variantLine, TEXT_X, nextY);
+    nextY += 38;
+  } else {
+    nextY = QR_MARGIN + 66;
+  }
+
+  // Price
+  ctx.fillStyle = '#1A1A1A';
+  ctx.font = '700 24px "Inter", "Noto Sans JP", sans-serif';
+  ctx.fillText(priceDisplay, TEXT_X, nextY);
+
+  // SKU
+  ctx.fillStyle = '#999999';
+  ctx.font = '400 13px "Inter", monospace';
+  ctx.fillText(`SKU: ${data.sku}`, TEXT_X, nextY + 32);
+
+  // Store name
+  ctx.fillStyle = '#BBBBBB';
+  ctx.font = '400 11px "Inter", sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(data.storeName, LABEL_W - 16, LABEL_H - 16);
+
+  return new Promise((resolve) => {
+    canvas.toBlob((blob) => resolve(blob!), 'image/png');
+  });
+}
+
+function loadImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+// --- Modal Component ---
 export function LabelGeneratorModal({
   productId,
   productName,
   variants,
   baseSku,
+  basePrice = 0,
+  currency = 'JPY',
+  storeName = '',
   isOpen,
   onClose,
 }: LabelGeneratorModalProps) {
@@ -31,12 +148,19 @@ export function LabelGeneratorModal({
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const previewRef = useRef<string | null>(null);
 
   // Select all by default when opening
   useEffect(() => {
     if (isOpen && variants.length > 0) {
       setSelectedIds(new Set(variants.map((v) => v.id)));
+    }
+    if (isOpen) {
       setPreviewUrl(null);
+      if (previewRef.current) {
+        URL.revokeObjectURL(previewRef.current);
+        previewRef.current = null;
+      }
     }
   }, [isOpen, variants]);
 
@@ -44,78 +168,106 @@ export function LabelGeneratorModal({
   const allSelected = hasVariants && selectedIds.size === variants.length;
 
   const toggleAll = () => {
-    if (allSelected) {
-      setSelectedIds(new Set());
-    } else {
-      setSelectedIds(new Set(variants.map((v) => v.id)));
-    }
+    setSelectedIds(allSelected ? new Set() : new Set(variants.map((v) => v.id)));
   };
 
   const toggleOne = (id: string) => {
     const next = new Set(selectedIds);
-    if (next.has(id)) {
-      next.delete(id);
-    } else {
-      next.add(id);
-    }
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
     setSelectedIds(next);
   };
 
-  // Generate preview of first selected variant
-  const generatePreview = async () => {
-    const targetIds = hasVariants ? [Array.from(selectedIds)[0]] : undefined;
+  // Generate preview on client side
+  const generatePreview = useCallback(async () => {
     try {
-      const res = await fetch('/api/products/labels', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, variantIds: targetIds }),
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        setPreviewUrl(URL.createObjectURL(blob));
+      let data: LabelData;
+      if (hasVariants) {
+        const firstId = Array.from(selectedIds)[0];
+        const v = variants.find((x) => x.id === firstId);
+        if (!v) return;
+        data = {
+          sku: v.sku,
+          productName,
+          color: v.color,
+          size: v.size,
+          price: v.price ?? basePrice,
+          currency,
+          storeName,
+        };
+      } else {
+        data = {
+          sku: baseSku || productId.slice(0, 8),
+          productName,
+          price: basePrice,
+          currency,
+          storeName,
+        };
       }
-    } catch {
-      // Preview is optional, ignore errors
+      const blob = await drawLabel(data);
+      const url = URL.createObjectURL(blob);
+      if (previewRef.current) URL.revokeObjectURL(previewRef.current);
+      previewRef.current = url;
+      setPreviewUrl(url);
+    } catch (err) {
+      console.error('Preview error:', err);
     }
-  };
+  }, [hasVariants, selectedIds, variants, productName, basePrice, currency, storeName, baseSku, productId]);
 
   // Load preview when modal opens
   useEffect(() => {
     if (isOpen && !previewUrl) {
       generatePreview();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, previewUrl, generatePreview]);
 
   const handleDownload = async () => {
     setIsGenerating(true);
     try {
-      const variantIds = hasVariants ? Array.from(selectedIds) : undefined;
-      const res = await fetch('/api/products/labels', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, variantIds }),
-      });
-
-      if (!res.ok) throw new Error('Generation failed');
-
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-
-      const contentType = res.headers.get('content-type') || '';
-      if (contentType.includes('zip')) {
-        a.download = `labels-${productName}.zip`;
+      if (!hasVariants || selectedIds.size === 1) {
+        // Single label
+        let data: LabelData;
+        if (hasVariants) {
+          const v = variants.find((x) => selectedIds.has(x.id))!;
+          data = {
+            sku: v.sku,
+            productName,
+            color: v.color,
+            size: v.size,
+            price: v.price ?? basePrice,
+            currency,
+            storeName,
+          };
+        } else {
+          data = {
+            sku: baseSku || productId.slice(0, 8),
+            productName,
+            price: basePrice,
+            currency,
+            storeName,
+          };
+        }
+        const blob = await drawLabel(data);
+        downloadBlob(blob, `label-${data.sku}.png`);
       } else {
-        const sku = hasVariants
-          ? variants.find((v) => selectedIds.has(v.id))?.sku || 'label'
-          : baseSku || 'label';
-        a.download = `label-${sku}.png`;
+        // Multiple labels → ZIP
+        const zip = new JSZip();
+        const selected = variants.filter((v) => selectedIds.has(v.id));
+        for (const v of selected) {
+          const blob = await drawLabel({
+            sku: v.sku,
+            productName,
+            color: v.color,
+            size: v.size,
+            price: v.price ?? basePrice,
+            currency,
+            storeName,
+          });
+          zip.file(`label-${v.sku}.png`, blob);
+        }
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        downloadBlob(zipBlob, `labels-${productName}.zip`);
       }
-
-      a.click();
-      URL.revokeObjectURL(url);
     } catch (err) {
       console.error('Label download error:', err);
     } finally {
@@ -205,4 +357,13 @@ export function LabelGeneratorModal({
       </div>
     </Modal>
   );
+}
+
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }

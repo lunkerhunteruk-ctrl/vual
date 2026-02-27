@@ -202,6 +202,7 @@ export default function EditProductPage() {
         baseSku={product.sku}
         basePrice={product.base_price || 0}
         currency={product.currency || 'JPY'}
+        storeName={document.cookie.match(/store-slug=([^;]+)/)?.[1] || ''}
         isOpen={showLabelModal}
         onClose={() => setShowLabelModal(false)}
       />
