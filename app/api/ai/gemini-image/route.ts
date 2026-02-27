@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
+import { addCreditWatermark } from '@/lib/utils/image-watermark';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
@@ -365,6 +366,30 @@ export async function POST(request: NextRequest) {
             await new Promise(r => setTimeout(r, 1000));
           }
           continue;
+        }
+
+        // Add credit watermark for consumer requests (not studio/admin)
+        const isConsumerRequest = !!(body.lineUserId || body.customerId);
+        if (isConsumerRequest && body.storeId && images[0]) {
+          try {
+            const wmSupabase = createServerClient();
+            let storeName = 'SHOP';
+            if (wmSupabase) {
+              const { data: storeData } = await wmSupabase
+                .from('stores')
+                .select('name')
+                .eq('id', body.storeId)
+                .single();
+              if (storeData?.name) storeName = storeData.name;
+            }
+            const rawBase64 = images[0].replace(/^data:image\/\w+;base64,/, '');
+            const rawBuffer = Buffer.from(rawBase64, 'base64');
+            const watermarked = await addCreditWatermark(rawBuffer, storeName);
+            images[0] = `data:image/png;base64,${watermarked.toString('base64')}`;
+            console.log('[Gemini] Watermark added for consumer request, store:', storeName);
+          } catch (wmError) {
+            console.error('[Gemini] Watermark error (continuing without):', wmError);
+          }
         }
 
         // Save to Supabase Storage
