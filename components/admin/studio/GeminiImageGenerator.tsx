@@ -53,6 +53,9 @@ interface GeminiImageGeneratorProps {
   fourthGarmentImage?: string;
   fourthGarmentImages?: string[];
   fourthGarmentName?: string;
+  fifthGarmentImage?: string;
+  fifthGarmentImages?: string[];
+  fifthGarmentName?: string;
   // Product IDs for linking
   selectedProductIds?: string[];
   // All products for modal display
@@ -184,6 +187,9 @@ export function GeminiImageGenerator({
   fourthGarmentImage,
   fourthGarmentImages = [],
   fourthGarmentName,
+  fifthGarmentImage,
+  fifthGarmentImages = [],
+  fifthGarmentName,
   selectedProductIds = [],
   allProducts = [],
   storeId,
@@ -353,6 +359,7 @@ export function GeminiImageGenerator({
       const secondImages = secondGarmentImages.length > 0 ? secondGarmentImages : (secondGarmentImage ? [secondGarmentImage] : []);
       const thirdImages = thirdGarmentImages.length > 0 ? thirdGarmentImages : (thirdGarmentImage ? [thirdGarmentImage] : []);
       const fourthImages = fourthGarmentImages.length > 0 ? fourthGarmentImages : (fourthGarmentImage ? [fourthGarmentImage] : []);
+      const fifthImages = fifthGarmentImages.length > 0 ? fifthGarmentImages : (fifthGarmentImage ? [fifthGarmentImage] : []);
 
       const allImagesToConvert: Promise<string>[] = [];
       for (const img of firstImages) allImagesToConvert.push(imageToBase64(img));
@@ -360,6 +367,7 @@ export function GeminiImageGenerator({
       for (const img of secondImages) allImagesToConvert.push(imageToBase64(img));
       for (const img of thirdImages) allImagesToConvert.push(imageToBase64(img));
       for (const img of fourthImages) allImagesToConvert.push(imageToBase64(img));
+      for (const img of fifthImages) allImagesToConvert.push(imageToBase64(img));
 
       const convertedImages = await Promise.all(allImagesToConvert);
 
@@ -372,6 +380,8 @@ export function GeminiImageGenerator({
       const thirdGarmentBase64 = convertedImages.slice(idx, idx + thirdImages.length);
       idx += thirdImages.length;
       const fourthGarmentBase64 = convertedImages.slice(idx, idx + fourthImages.length);
+      idx += fourthImages.length;
+      const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
 
       const response = await fetch('/api/ai/gemini-image', {
         method: 'POST',
@@ -387,6 +397,8 @@ export function GeminiImageGenerator({
           thirdGarmentName,
           fourthGarmentImages: fourthGarmentBase64,
           fourthGarmentName,
+          fifthGarmentImages: fifthGarmentBase64,
+          fifthGarmentName,
           productIds: selectedProductIds,
           modelSettings: settings,
           modelImage: baseImageBase64,
@@ -426,6 +438,7 @@ export function GeminiImageGenerator({
   const hasSecondItem = !!secondGarmentImage;
   const hasThirdItem = !!thirdGarmentImage;
   const hasFourthItem = !!fourthGarmentImage;
+  const hasFifthItem = !!fifthGarmentImage;
 
   return (
     <div className="h-full flex flex-col">
@@ -588,6 +601,11 @@ export function GeminiImageGenerator({
               + {fourthGarmentName}
             </span>
           )}
+          {hasFifthItem && fifthGarmentName && (
+            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
+              + {fifthGarmentName}
+            </span>
+          )}
         </div>
       </div>
 
@@ -671,7 +689,7 @@ export function GeminiImageGenerator({
                         setModalImage({
                           id: 'current',
                           image_url: generatedImage,
-                          garment_count: 1 + (secondGarmentImage ? 1 : 0) + (thirdGarmentImage ? 1 : 0) + (fourthGarmentImage ? 1 : 0),
+                          garment_count: 1 + (secondGarmentImage ? 1 : 0) + (thirdGarmentImage ? 1 : 0) + (fourthGarmentImage ? 1 : 0) + (fifthGarmentImage ? 1 : 0),
                           product_ids: selectedProductIds,
                           created_at: new Date().toISOString(),
                         });

@@ -38,18 +38,21 @@ export default function AIStudioPage() {
   const [selectedSecondProduct, setSelectedSecondProduct] = useState<Product | null>(null);
   const [selectedThirdProduct, setSelectedThirdProduct] = useState<Product | null>(null);
   const [selectedFourthProduct, setSelectedFourthProduct] = useState<Product | null>(null);
+  const [selectedFifthProduct, setSelectedFifthProduct] = useState<Product | null>(null);
 
   // Per-slot search queries
   const [search1, setSearch1] = useState('');
   const [search2, setSearch2] = useState('');
   const [search3, setSearch3] = useState('');
   const [search4, setSearch4] = useState('');
+  const [search5, setSearch5] = useState('');
 
-  // Additional reference images for each item (4+4+3+3)
+  // Additional reference images for each item (4+3+3+2+2)
   const [selectedFirstImages, setSelectedFirstImages] = useState<string[]>([]);
   const [selectedSecondImages, setSelectedSecondImages] = useState<string[]>([]);
   const [selectedThirdImages, setSelectedThirdImages] = useState<string[]>([]);
   const [selectedFourthImages, setSelectedFourthImages] = useState<string[]>([]);
+  const [selectedFifthImages, setSelectedFifthImages] = useState<string[]>([]);
 
 
   // Fetch products
@@ -181,6 +184,7 @@ export default function AIStudioPage() {
   const exclude2 = selectedProduct ? [selectedProduct.id] : [];
   const exclude3 = [selectedProduct?.id, selectedSecondProduct?.id].filter(Boolean) as string[];
   const exclude4 = [selectedProduct?.id, selectedSecondProduct?.id, selectedThirdProduct?.id].filter(Boolean) as string[];
+  const exclude5 = [selectedProduct?.id, selectedSecondProduct?.id, selectedThirdProduct?.id, selectedFourthProduct?.id].filter(Boolean) as string[];
 
   // Reusable item selector column
   const renderItemColumn = (config: {
@@ -299,8 +303,8 @@ export default function AIStudioPage() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
-      {/* Item Selection Grid - 4 columns */}
-      <div className="flex-shrink-0 grid grid-cols-4 gap-2 mb-2">
+      {/* Item Selection Grid - 5 columns */}
+      <div className="flex-shrink-0 grid grid-cols-5 gap-2 mb-2">
         {renderItemColumn({
           num: 1,
           label: locale === 'ja' ? 'アイテム1' : 'Item 1',
@@ -323,7 +327,7 @@ export default function AIStudioPage() {
           setSelected: setSelectedSecondProduct,
           images: selectedSecondImages,
           setImages: setSelectedSecondImages,
-          maxImages: 4,
+          maxImages: 3,
         })}
         {renderItemColumn({
           num: 3,
@@ -347,7 +351,19 @@ export default function AIStudioPage() {
           setSelected: setSelectedFourthProduct,
           images: selectedFourthImages,
           setImages: setSelectedFourthImages,
-          maxImages: 3,
+          maxImages: 2,
+        })}
+        {renderItemColumn({
+          num: 5,
+          label: locale === 'ja' ? 'アイテム5' : 'Item 5',
+          search: search5,
+          setSearch: setSearch5,
+          excludeIds: exclude5,
+          selected: selectedFifthProduct,
+          setSelected: setSelectedFifthProduct,
+          images: selectedFifthImages,
+          setImages: setSelectedFifthImages,
+          maxImages: 2,
         })}
       </div>
 
@@ -370,7 +386,10 @@ export default function AIStudioPage() {
             fourthGarmentImage={selectedFourthProduct ? getProductImage(selectedFourthProduct) || undefined : undefined}
             fourthGarmentImages={selectedFourthProduct ? selectedFourthImages : []}
             fourthGarmentName={selectedFourthProduct ? getProductName(selectedFourthProduct) : undefined}
-            selectedProductIds={[selectedProduct, selectedSecondProduct, selectedThirdProduct, selectedFourthProduct].filter(Boolean).map(p => p!.id)}
+            fifthGarmentImage={selectedFifthProduct ? getProductImage(selectedFifthProduct) || undefined : undefined}
+            fifthGarmentImages={selectedFifthProduct ? selectedFifthImages : []}
+            fifthGarmentName={selectedFifthProduct ? getProductName(selectedFifthProduct) : undefined}
+            selectedProductIds={[selectedProduct, selectedSecondProduct, selectedThirdProduct, selectedFourthProduct, selectedFifthProduct].filter(Boolean).map(p => p!.id)}
             allProducts={products}
             storeId={storeId}
           />
