@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback, ReactNode } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCustomerCollection } from '@/lib/hooks/useCollection';
-import { Button } from '@/components/ui';
 
 interface CollectionHeroSlideshowProps {
   fallback: ReactNode;
@@ -14,7 +13,6 @@ interface CollectionHeroSlideshowProps {
 export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowProps) {
   const { looks, isLoading } = useCustomerCollection();
   const locale = useLocale();
-  const t = useTranslations('customer.home');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goNext = useCallback(() => {
@@ -70,14 +68,8 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
         </motion.div>
       </AnimatePresence>
 
-      {/* CTA */}
-      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center z-10">
-        <Link href={`/${locale}/collection`}>
-          <Button variant="inverse" size="lg">
-            {t('exploreCollection')}
-          </Button>
-        </Link>
-      </div>
+      {/* Clickable overlay to collection */}
+      <Link href={`/${locale}/collection`} className="absolute inset-0 z-[3]" />
 
       {/* Dot indicators */}
       {looks.length > 1 && (
