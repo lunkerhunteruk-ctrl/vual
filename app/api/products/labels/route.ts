@@ -30,7 +30,10 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (productError || !product) {
-      return NextResponse.json({ error: 'Product not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'Product not found', detail: productError?.message, productId },
+        { status: 404 },
+      );
     }
 
     // Fetch store name
