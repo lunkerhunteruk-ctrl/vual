@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Check, Loader2 } from 'lucide-react';
+import { Search, Check, Loader2, Plus, X } from 'lucide-react';
 import Image from 'next/image';
 import { GeminiImageGenerator } from '@/components/admin/studio';
 import { useStoreContext } from '@/lib/store/store-context';
@@ -53,6 +53,7 @@ export default function AIStudioPage() {
   const [selectedThirdImages, setSelectedThirdImages] = useState<string[]>([]);
   const [selectedFourthImages, setSelectedFourthImages] = useState<string[]>([]);
   const [selectedFifthImages, setSelectedFifthImages] = useState<string[]>([]);
+  const [showFifthSlot, setShowFifthSlot] = useState(false);
 
 
   // Fetch products
@@ -303,68 +304,93 @@ export default function AIStudioPage() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
-      {/* Item Selection Grid - 5 columns */}
-      <div className="flex-shrink-0 grid grid-cols-5 gap-2 mb-2">
-        {renderItemColumn({
-          num: 1,
-          label: locale === 'ja' ? 'アイテム1' : 'Item 1',
-          search: search1,
-          setSearch: setSearch1,
-          excludeIds: exclude1,
-          selected: selectedProduct,
-          setSelected: setSelectedProduct,
-          images: selectedFirstImages,
-          setImages: setSelectedFirstImages,
-          maxImages: 4,
-        })}
-        {renderItemColumn({
-          num: 2,
-          label: locale === 'ja' ? 'アイテム2' : 'Item 2',
-          search: search2,
-          setSearch: setSearch2,
-          excludeIds: exclude2,
-          selected: selectedSecondProduct,
-          setSelected: setSelectedSecondProduct,
-          images: selectedSecondImages,
-          setImages: setSelectedSecondImages,
-          maxImages: 3,
-        })}
-        {renderItemColumn({
-          num: 3,
-          label: locale === 'ja' ? 'アイテム3' : 'Item 3',
-          search: search3,
-          setSearch: setSearch3,
-          excludeIds: exclude3,
-          selected: selectedThirdProduct,
-          setSelected: setSelectedThirdProduct,
-          images: selectedThirdImages,
-          setImages: setSelectedThirdImages,
-          maxImages: 3,
-        })}
-        {renderItemColumn({
-          num: 4,
-          label: locale === 'ja' ? 'アイテム4' : 'Item 4',
-          search: search4,
-          setSearch: setSearch4,
-          excludeIds: exclude4,
-          selected: selectedFourthProduct,
-          setSelected: setSelectedFourthProduct,
-          images: selectedFourthImages,
-          setImages: setSelectedFourthImages,
-          maxImages: 2,
-        })}
-        {renderItemColumn({
-          num: 5,
-          label: locale === 'ja' ? 'アイテム5' : 'Item 5',
-          search: search5,
-          setSearch: setSearch5,
-          excludeIds: exclude5,
-          selected: selectedFifthProduct,
-          setSelected: setSelectedFifthProduct,
-          images: selectedFifthImages,
-          setImages: setSelectedFifthImages,
-          maxImages: 2,
-        })}
+      {/* Item Selection Grid */}
+      <div className="flex-shrink-0 flex gap-2 mb-2">
+        <div className={`grid gap-2 flex-1 ${showFifthSlot ? 'grid-cols-5' : 'grid-cols-4'}`}>
+          {renderItemColumn({
+            num: 1,
+            label: locale === 'ja' ? 'アイテム1' : 'Item 1',
+            search: search1,
+            setSearch: setSearch1,
+            excludeIds: exclude1,
+            selected: selectedProduct,
+            setSelected: setSelectedProduct,
+            images: selectedFirstImages,
+            setImages: setSelectedFirstImages,
+            maxImages: 4,
+          })}
+          {renderItemColumn({
+            num: 2,
+            label: locale === 'ja' ? 'アイテム2' : 'Item 2',
+            search: search2,
+            setSearch: setSearch2,
+            excludeIds: exclude2,
+            selected: selectedSecondProduct,
+            setSelected: setSelectedSecondProduct,
+            images: selectedSecondImages,
+            setImages: setSelectedSecondImages,
+            maxImages: 3,
+          })}
+          {renderItemColumn({
+            num: 3,
+            label: locale === 'ja' ? 'アイテム3' : 'Item 3',
+            search: search3,
+            setSearch: setSearch3,
+            excludeIds: exclude3,
+            selected: selectedThirdProduct,
+            setSelected: setSelectedThirdProduct,
+            images: selectedThirdImages,
+            setImages: setSelectedThirdImages,
+            maxImages: 3,
+          })}
+          {renderItemColumn({
+            num: 4,
+            label: locale === 'ja' ? 'アイテム4' : 'Item 4',
+            search: search4,
+            setSearch: setSearch4,
+            excludeIds: exclude4,
+            selected: selectedFourthProduct,
+            setSelected: setSelectedFourthProduct,
+            images: selectedFourthImages,
+            setImages: setSelectedFourthImages,
+            maxImages: 2,
+          })}
+          {showFifthSlot && renderItemColumn({
+            num: 5,
+            label: locale === 'ja' ? 'アイテム5' : 'Item 5',
+            search: search5,
+            setSearch: setSearch5,
+            excludeIds: exclude5,
+            selected: selectedFifthProduct,
+            setSelected: setSelectedFifthProduct,
+            images: selectedFifthImages,
+            setImages: setSelectedFifthImages,
+            maxImages: 2,
+          })}
+        </div>
+        {/* Show/hide 5th slot toggle */}
+        {selectedFourthProduct && !showFifthSlot && (
+          <button
+            onClick={() => setShowFifthSlot(true)}
+            className="flex-shrink-0 w-10 self-stretch border-2 border-dashed border-[var(--color-line)] rounded-2xl flex items-center justify-center hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] text-[var(--color-text-label)] transition-colors"
+            title={locale === 'ja' ? 'アイテム5を追加' : 'Add Item 5'}
+          >
+            <Plus size={20} />
+          </button>
+        )}
+        {showFifthSlot && (
+          <button
+            onClick={() => {
+              setSelectedFifthProduct(null);
+              setSelectedFifthImages([]);
+              setShowFifthSlot(false);
+            }}
+            className="flex-shrink-0 w-8 self-start mt-3 p-1.5 rounded-full bg-[var(--color-bg-element)] hover:bg-red-50 text-[var(--color-text-label)] transition-colors"
+            title={locale === 'ja' ? 'アイテム5を閉じる' : 'Remove Item 5'}
+          >
+            <X size={14} />
+          </button>
+        )}
       </div>
 
       {/* Generator - fills remaining space */}
