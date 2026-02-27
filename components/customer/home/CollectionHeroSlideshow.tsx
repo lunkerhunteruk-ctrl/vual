@@ -52,15 +52,18 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
           <img
             src={currentUrl}
             alt=""
+            aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] brightness-75"
           />
 
-          {/* Main image — height-fit, centered, no crop */}
-          <img
-            src={currentUrl}
-            alt=""
-            className="absolute inset-0 w-full h-full object-contain z-[1]"
-          />
+          {/* Main image — height-fit, no crop */}
+          <div className="absolute inset-0 z-[1] flex items-center justify-center">
+            <img
+              src={currentUrl}
+              alt=""
+              className="h-full w-auto object-contain"
+            />
+          </div>
 
           {/* Gradient overlay for text legibility */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-[2]" />
