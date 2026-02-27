@@ -132,7 +132,7 @@ export function ProductModelImages({ productId }: ProductModelImagesProps) {
         </div>
 
         <p className="text-[10px] text-[var(--color-text-label)] mt-2">
-          AI Studioから紐付け・解除できます
+          VUALスタジオから紐付け・解除できます
         </p>
       </motion.div>
 
