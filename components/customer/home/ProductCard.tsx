@@ -48,12 +48,12 @@ export function ProductCard({
         className="group"
       >
         {/* Image */}
-        <div className="relative aspect-[3/4] bg-white rounded-[var(--radius-md)] overflow-hidden mb-3">
+        <div className="relative aspect-square bg-white rounded-[var(--radius-md)] overflow-hidden mb-3 flex items-center justify-center">
           {image ? (
             <img
               src={image}
               alt={name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-[var(--color-bg-element)] to-[var(--color-bg-input)]" />

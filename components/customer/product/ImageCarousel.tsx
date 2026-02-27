@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Share2, Heart } from 'lucide-react';
 
 interface ImageCarouselProps {
@@ -20,8 +20,6 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const thumbRef = useRef<HTMLDivElement>(null);
-  // Cache natural aspect ratios: key=url, value=width/height
-  const [aspectRatios, setAspectRatios] = useState<Record<string, number>>({});
 
   const goTo = (index: number) => {
     setCurrentIndex(index);
@@ -45,45 +43,20 @@ export function ImageCarousel({
     }
   }, [currentIndex]);
 
-  // Pre-load model images to detect their aspect ratios
   const productImageCount = images.length - modelImageCount;
-
-  const handleImageLoad = useCallback((url: string, naturalWidth: number, naturalHeight: number) => {
-    if (naturalHeight > 0) {
-      setAspectRatios(prev => {
-        if (prev[url]) return prev;
-        return { ...prev, [url]: naturalWidth / naturalHeight };
-      });
-    }
-  }, []);
-
   const currentUrl = images[currentIndex];
-  const isModelImage = modelImageCount > 0 && currentIndex >= productImageCount;
-  const currentAR = aspectRatios[currentUrl];
-
-  // Match container to image's natural AR — no crop, no gap.
-  // Default 3:4 until image loads.
-  let mainAspect = '3 / 4';
-  if (currentAR) {
-    mainAspect = `${currentAR}`;
-  }
 
   return (
     <div>
       {/* Main Image */}
       <div
-        className="relative transition-[aspect-ratio] duration-300 bg-white"
-        style={{ aspectRatio: mainAspect }}
+        className="relative aspect-square bg-white flex items-center justify-center"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={currentUrl}
           alt={`Product image ${currentIndex + 1}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          onLoad={(e) => {
-            const img = e.currentTarget;
-            handleImageLoad(currentUrl, img.naturalWidth, img.naturalHeight);
-          }}
+          className="max-w-full max-h-full object-contain"
         />
 
         {/* Navigation Arrows */}
@@ -140,7 +113,7 @@ export function ImageCarousel({
               <button
                 key={index}
                 onClick={() => goTo(index)}
-                className={`relative flex-shrink-0 w-[17vw] aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${
+                className={`relative flex-shrink-0 w-[17vw] aspect-square rounded-lg overflow-hidden border-2 transition-all bg-white flex items-center justify-center ${
                   index === currentIndex
                     ? 'border-[var(--color-accent)] opacity-100'
                     : 'border-[var(--color-line)] opacity-70 hover:opacity-100'
@@ -149,7 +122,7 @@ export function ImageCarousel({
                 <img
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                 />
                 {isModel && index === productImageCount && (
                   <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[9px] text-center py-0.5">
