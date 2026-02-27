@@ -61,8 +61,8 @@ function SortableLookCard({
       </button>
 
       {/* Look image */}
-      <div className="w-20 h-28 rounded-lg overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0">
-        <img src={look.image_url} alt="" className="w-full h-full object-cover" />
+      <div className="w-20 h-20 rounded-lg overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center">
+        <img src={look.image_url} alt="" className="max-w-full max-h-full object-contain" />
       </div>
 
       {/* Linked products */}
@@ -74,11 +74,11 @@ function SortableLookCard({
           {products.map((lp) => (
             <div
               key={lp.id}
-              className="w-10 h-14 rounded overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0"
+              className="w-10 h-10 rounded overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center"
               title={lp.products?.name}
             >
               {lp.products?.images?.[0]?.url && (
-                <img src={lp.products.images[0].url} alt="" className="w-full h-full object-cover" />
+                <img src={lp.products.images[0].url} alt="" className="max-w-full max-h-full object-contain" />
               )}
             </div>
           ))}

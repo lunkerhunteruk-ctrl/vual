@@ -43,12 +43,12 @@ export default function CollectionPage() {
             <button
               key={look.id}
               onClick={() => setSelectedIndex(idx)}
-              className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--color-bg-element)] group"
+              className="relative aspect-square rounded-lg overflow-hidden bg-[var(--color-bg-element)] group flex items-center justify-center"
             >
               <img
                 src={look.image_url}
                 alt=""
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
               />
               {/* Product count badge */}
               {look.collection_look_products?.length > 0 && (
