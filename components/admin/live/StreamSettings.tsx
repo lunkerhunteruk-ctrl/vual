@@ -1,26 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Radio, Calendar } from 'lucide-react';
-import { Input, Select, Button } from '@/components/ui';
-
-const categoryOptions = [
-  { value: 'fashion', label: 'Fashion' },
-  { value: 'beauty', label: 'Beauty' },
-  { value: 'lifestyle', label: 'Lifestyle' },
-  { value: 'accessories', label: 'Accessories' },
-];
+import { Radio, Calendar, Loader2 } from 'lucide-react';
+import { Input, Button } from '@/components/ui';
 
 interface StreamSettingsProps {
-  onGoLive: () => void;
+  onGoLive: (title: string) => void;
+  onEndStream: () => void;
   isLive: boolean;
+  isConnecting?: boolean;
+  streamTitle: string;
+  onTitleChange: (title: string) => void;
 }
 
-export function StreamSettings({ onGoLive, isLive }: StreamSettingsProps) {
+export function StreamSettings({
+  onGoLive,
+  onEndStream,
+  isLive,
+  isConnecting = false,
+  streamTitle,
+  onTitleChange,
+}: StreamSettingsProps) {
   const t = useTranslations('admin.live');
+  const locale = useLocale();
   const [scheduleMode, setScheduleMode] = useState(false);
+
+  const handleGoLive = () => {
+    if (!streamTitle.trim()) return;
+    onGoLive(streamTitle.trim());
+  };
 
   return (
     <motion.div
@@ -37,41 +47,49 @@ export function StreamSettings({ onGoLive, isLive }: StreamSettingsProps) {
         <Input
           label={t('streamTitle')}
           placeholder={t('enterStreamTitle')}
-        />
-        <Select
-          label={t('streamCategory')}
-          options={categoryOptions}
-          placeholder={t('selectCategory')}
+          value={streamTitle}
+          onChange={(e) => onTitleChange(e.target.value)}
+          disabled={isLive}
         />
 
-        {scheduleMode && (
+        {scheduleMode && !isLive && (
           <div className="grid grid-cols-2 gap-4">
-            <Input
-              label={t('date')}
-              type="date"
-            />
-            <Input
-              label={t('time')}
-              type="time"
-            />
+            <Input label={t('date')} type="date" />
+            <Input label={t('time')} type="time" />
           </div>
         )}
       </div>
 
       {/* Action Buttons */}
       <div className="space-y-3">
-        <Button
-          variant={isLive ? 'secondary' : 'primary'}
-          size="lg"
-          fullWidth
-          leftIcon={<Radio size={18} />}
-          onClick={onGoLive}
-          className={isLive ? '' : 'bg-red-600 hover:bg-red-700'}
-        >
-          {isLive ? t('endStream') : t('goLive')}
-        </Button>
+        {isLive ? (
+          <Button
+            variant="secondary"
+            size="lg"
+            fullWidth
+            leftIcon={<Radio size={18} />}
+            onClick={onEndStream}
+          >
+            {t('endStream')}
+          </Button>
+        ) : (
+          <Button
+            variant="primary"
+            size="lg"
+            fullWidth
+            leftIcon={isConnecting ? <Loader2 size={18} className="animate-spin" /> : <Radio size={18} />}
+            onClick={handleGoLive}
+            disabled={!streamTitle.trim() || isConnecting}
+            className="bg-red-600 hover:bg-red-700"
+          >
+            {isConnecting
+              ? (locale === 'ja' ? '接続中...' : 'Connecting...')
+              : t('goLive')
+            }
+          </Button>
+        )}
 
-        {!isLive && (
+        {!isLive && !isConnecting && (
           <Button
             variant="secondary"
             size="md"
