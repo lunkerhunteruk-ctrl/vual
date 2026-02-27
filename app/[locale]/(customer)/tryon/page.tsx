@@ -150,8 +150,8 @@ function buildStylePrompt(styleOptions: Record<string, Record<string, string>>, 
     // Use explicit selection or fall back to first option (default)
     const value = styleOptions[slotId]?.[styleConfig.key] || styleConfig.options[0].value;
     if (styleConfig.key === 'tucking') {
-      if (value === 'in') parts.push('The top is neatly tucked into the pants/skirt');
-      if (value === 'out') parts.push('The top is worn untucked, hanging naturally over the waistband');
+      if (value === 'in') parts.push('The top/blouse hem MUST be tucked IN - neatly tucked inside the pants/skirt waistband, with the hem hidden inside');
+      if (value === 'out') parts.push('The top/blouse hem MUST hang OUT and be UNTUCKED - the bottom hem of the top must hang freely OUTSIDE and OVER the pants/skirt waistband, NOT tucked in. The hem should be visible hanging down loosely');
     }
     if (styleConfig.key === 'front') {
       if (value === 'open') parts.push('The jacket/coat front is open, showing the inner top');

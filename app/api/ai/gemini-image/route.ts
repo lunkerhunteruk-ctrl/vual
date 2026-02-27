@@ -305,6 +305,7 @@ export async function POST(request: NextRequest) {
       try {
         const prompt = promptVariants[attempt] || promptVariants[promptVariants.length - 1];
         console.log(`[Freestyle] Attempt ${attempt + 1}/${MAX_RETRIES} using ${GEMINI_MODEL}...`);
+        if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
         const data = await callGeminiAPI(parts, body.aspectRatio);
@@ -530,6 +531,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `who is ${modelSettings.height}cm tall,`,
     `${poseDescriptions[modelSettings.pose] || modelSettings.pose},`,
     garmentDesc + secondGarmentDesc + thirdGarmentDesc + fourthGarmentDesc + '.',
+    customPrompt ? `MANDATORY STYLING (DO NOT IGNORE): ${customPrompt}. This styling instruction overrides any default assumptions about how the garment is worn.` : '',
     sizeDescription,
     fitDescription ? `The garment appears with ${fitDescription}.` : '',
     `${backgroundDescriptions[background] || background}.`,
@@ -540,7 +542,6 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
-    customPrompt ? `STYLING INSTRUCTION (MUST FOLLOW): ${customPrompt}` : '',
   ];
 
   return parts.filter(Boolean).join(' ');
