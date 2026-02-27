@@ -3,11 +3,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, useParams } from 'next/navigation';
-import { Save, Upload, ArrowLeft, Loader2 } from 'lucide-react';
+import { Save, Upload, ArrowLeft, Loader2, Tag } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
 import { ProductForm } from '@/components/admin/products';
 import type { ProductFormRef } from '@/components/admin/products/ProductForm';
+import { LabelGeneratorModal } from '@/components/admin/products/LabelGeneratorModal';
 
 export default function EditProductPage() {
   const t = useTranslations('admin.products');
@@ -22,6 +23,7 @@ export default function EditProductPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showLabelModal, setShowLabelModal] = useState(false);
 
   // Load product data
   useEffect(() => {
@@ -121,6 +123,13 @@ export default function EditProductPage() {
         </Link>
         <div className="flex items-center gap-3">
           <Button
+            variant="ghost"
+            leftIcon={<Tag size={16} />}
+            onClick={() => setShowLabelModal(true)}
+          >
+            {locale === 'ja' ? 'ラベル' : 'Labels'}
+          </Button>
+          <Button
             variant="secondary"
             leftIcon={<Save size={16} />}
             onClick={handleSaveDraft}
@@ -184,6 +193,18 @@ export default function EditProductPage() {
           {t('publishProduct')}
         </Button>
       </div>
+
+      {/* Label Generator Modal */}
+      <LabelGeneratorModal
+        productId={productId}
+        productName={product.name}
+        variants={product.variants || []}
+        baseSku={product.sku}
+        basePrice={product.base_price || 0}
+        currency={product.currency || 'JPY'}
+        isOpen={showLabelModal}
+        onClose={() => setShowLabelModal(false)}
+      />
     </div>
   );
 }
