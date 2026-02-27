@@ -52,18 +52,32 @@ export function CollectionLookModal({
         </button>
 
         {/* Look image */}
-        <div className="relative aspect-[3/4] bg-[var(--color-bg-element)]">
+        <div className="relative aspect-square bg-[var(--color-bg-element)] overflow-hidden flex items-center justify-center">
           <AnimatePresence mode="wait">
-            <motion.img
+            <motion.div
               key={look.id}
-              src={look.image_url}
-              alt=""
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="w-full h-full object-cover"
-            />
+              className="absolute inset-0"
+            >
+              {/* Blurred background */}
+              <img
+                src={look.image_url}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] opacity-60"
+              />
+              {/* Main image — contained, no crop */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img
+                  src={look.image_url}
+                  alt=""
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            </motion.div>
           </AnimatePresence>
 
           {/* Navigation arrows */}
