@@ -54,7 +54,9 @@ async function callGeminiImageAPI(parts: any[]): Promise<any> {
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
         imageConfig: {
+          aspectRatio: '3:4',
           imageSize: '1K',
+          image_size: '1K',
         },
       },
       safetySettings: [
