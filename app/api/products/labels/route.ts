@@ -115,13 +115,11 @@ export async function POST(request: NextRequest) {
     return new NextResponse(new Uint8Array(zipBuffer), {
       headers: {
         'Content-Type': 'application/zip',
-        'Content-Disposition': `attachment; filename="labels-${product.name}.zip"`,
+        'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(`labels-${product.name}.zip`)}`,
       },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    const stack = error instanceof Error ? error.stack?.split('\n').slice(0, 3).join('\n') : '';
-    console.error('Label generation error:', message, stack);
-    return NextResponse.json({ error: 'Label generation failed', detail: message }, { status: 500 });
+    console.error('Label generation error:', error);
+    return NextResponse.json({ error: 'Label generation failed' }, { status: 500 });
   }
 }
