@@ -8,7 +8,6 @@ export interface CollectionLookProduct {
     id: string;
     name: string;
     base_price: number;
-    price: number;
     currency: string;
     tax_included: boolean;
     images: { url: string; color?: string }[];

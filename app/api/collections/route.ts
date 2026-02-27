@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       const productIds = [...new Set(linkData.map(l => l.product_id))];
       const { data: products } = await supabase
         .from('products')
-        .select('id, name, base_price, price, currency, tax_included, status')
+        .select('id, name, base_price, currency, tax_included, status')
         .in('id', productIds);
 
       // Fetch product images from product_images table
