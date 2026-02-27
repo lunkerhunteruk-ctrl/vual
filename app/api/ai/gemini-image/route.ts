@@ -40,6 +40,9 @@ interface RequestBody {
   fourthGarmentImage?: string;
   fourthGarmentImages?: string[];
   fourthGarmentName?: string;
+  fifthGarmentImage?: string;
+  fifthGarmentImages?: string[];
+  fifthGarmentName?: string;
   // Product IDs for linking generated images to products
   productIds?: string[];
   modelSettings: ModelSettings;
@@ -143,8 +146,9 @@ export async function POST(request: NextRequest) {
     const secondGarmentImages = body.secondGarmentImages || (body.secondGarmentImage ? [body.secondGarmentImage] : []);
     const thirdGarmentImages = body.thirdGarmentImages || (body.thirdGarmentImage ? [body.thirdGarmentImage] : []);
     const fourthGarmentImages = body.fourthGarmentImages || (body.fourthGarmentImage ? [body.fourthGarmentImage] : []);
+    const fifthGarmentImages = body.fifthGarmentImages || (body.fifthGarmentImage ? [body.fifthGarmentImage] : []);
 
-    const hasAdditionalGarments = secondGarmentImages.length > 0 || thirdGarmentImages.length > 0 || fourthGarmentImages.length > 0;
+    const hasAdditionalGarments = secondGarmentImages.length > 0 || thirdGarmentImages.length > 0 || fourthGarmentImages.length > 0 || fifthGarmentImages.length > 0;
     if (firstGarmentImages.length === 0 && !body.vtonBase) {
       return NextResponse.json({ error: 'Garment image is required' }, { status: 400 });
     }
@@ -293,10 +297,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    for (const img of fifthGarmentImages) {
+      const imageData = extractBase64(img);
+      if (imageData) {
+        imageParts.push({ inline_data: { mime_type: imageData.mimeType, data: imageData.data } });
+      }
+    }
+
     // Prompt variants for retry
     const promptVariants = [
-      buildPrompt(body, firstGarmentImages.length, secondGarmentImages.length, thirdGarmentImages.length, fourthGarmentImages.length),
-      buildSimplifiedPrompt(body, firstGarmentImages.length, secondGarmentImages.length, thirdGarmentImages.length, fourthGarmentImages.length),
+      buildPrompt(body, firstGarmentImages.length, secondGarmentImages.length, thirdGarmentImages.length, fourthGarmentImages.length, fifthGarmentImages.length),
+      buildSimplifiedPrompt(body, firstGarmentImages.length, secondGarmentImages.length, thirdGarmentImages.length, fourthGarmentImages.length, fifthGarmentImages.length),
       buildMinimalPrompt(body),
     ];
 
@@ -380,7 +391,7 @@ export async function POST(request: NextRequest) {
 
               savedImageUrl = urlData.publicUrl;
 
-              const garmentCount = 1 + (secondGarmentImages.length > 0 ? 1 : 0) + (thirdGarmentImages.length > 0 ? 1 : 0) + (fourthGarmentImages.length > 0 ? 1 : 0);
+              const garmentCount = 1 + (secondGarmentImages.length > 0 ? 1 : 0) + (thirdGarmentImages.length > 0 ? 1 : 0) + (fourthGarmentImages.length > 0 ? 1 : 0) + (fifthGarmentImages.length > 0 ? 1 : 0);
 
               const insertPayload: Record<string, unknown> = {
                   image_url: savedImageUrl,
@@ -434,7 +445,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImageCount: number = 0, thirdImageCount: number = 0, fourthImageCount: number = 0): string {
+function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImageCount: number = 0, thirdImageCount: number = 0, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
   const { modelSettings, modelImage, garmentSize, garmentSizeSpecs, vtonBase, background, customPrompt, locale } = body;
 
   let sizeDescription = '';
@@ -494,6 +505,13 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     ? ` and carrying/wearing the bag/accessory from ${fourthImgRef}`
     : '';
 
+  const fifthImgRef = fifthImageCount > 1
+    ? `the next ${fifthImageCount} images`
+    : `the next accessory image`;
+  const fifthGarmentDesc = fifthImageCount > 0
+    ? ` and also wearing/using the accessory (hat, scarf, stole, etc.) from ${fifthImgRef}`
+    : '';
+
   let modelDescription: string;
   if (vtonBase && modelImage) {
     modelDescription = `IMPORTANT: The first image shows a model ALREADY WEARING an outfit. Keep the model's appearance (face, body, pose) and their EXISTING CLOTHING exactly as shown. ADD the new garment items from the following reference images to complete the outfit.`;
@@ -503,7 +521,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     modelDescription = `A ${ethnicityDescriptions[modelSettings.ethnicity] || modelSettings.ethnicity} ${modelSettings.gender === 'female' ? 'woman' : 'man'}`;
   }
 
-  const multiImageNote = firstImageCount > 1 || secondImageCount > 1 || thirdImageCount > 1 || fourthImageCount > 1
+  const multiImageNote = firstImageCount > 1 || secondImageCount > 1 || thirdImageCount > 1 || fourthImageCount > 1 || fifthImageCount > 1
     ? `MULTIPLE REFERENCE IMAGES: When multiple images are provided for a garment, use ALL of them to understand the garment's complete details from different angles. Combine information from all reference images to ensure maximum accuracy.`
     : '';
 
@@ -531,7 +549,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     modelDescription,
     `who is ${modelSettings.height}cm tall,`,
     `${poseDescriptions[modelSettings.pose] || modelSettings.pose},`,
-    garmentDesc + secondGarmentDesc + thirdGarmentDesc + fourthGarmentDesc + '.',
+    garmentDesc + secondGarmentDesc + thirdGarmentDesc + fourthGarmentDesc + fifthGarmentDesc + '.',
     customPrompt ? `MANDATORY STYLING (DO NOT IGNORE): ${customPrompt}. This styling instruction overrides any default assumptions about how the garment is worn.` : '',
     sizeDescription,
     fitDescription ? `The garment appears with ${fitDescription}.` : '',
@@ -548,7 +566,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   return parts.filter(Boolean).join(' ');
 }
 
-function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secondImageCount: number, thirdImageCount: number, fourthImageCount: number = 0): string {
+function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secondImageCount: number, thirdImageCount: number, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
   const { modelSettings, modelImage, vtonBase, background, customPrompt } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
   const ethnicity = ethnicityDescriptions[modelSettings.ethnicity] || modelSettings.ethnicity;

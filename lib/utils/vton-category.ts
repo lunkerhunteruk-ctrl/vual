@@ -1,6 +1,6 @@
 import { parseCategoryPath } from '@/lib/data/categories';
 
-export type VTONCategory = 'upper_body' | 'lower_body' | 'dresses' | 'footwear' | 'bags';
+export type VTONCategory = 'upper_body' | 'lower_body' | 'dresses' | 'footwear' | 'bags' | 'accessories';
 
 // Product sub-category → VTON category mapping
 const CATEGORY_MAP: Record<string, VTONCategory> = {
@@ -12,6 +12,13 @@ const CATEGORY_MAP: Record<string, VTONCategory> = {
   setup: 'upper_body', // セットアップはupper_bodyとして扱う
   shoes: 'footwear',
   bags: 'bags',
+  hats: 'accessories',
+  stoles: 'accessories',
+  belts: 'accessories',
+  neckties: 'accessories',
+  eyewear: 'accessories',
+  jewelry: 'accessories',
+  legwear: 'accessories',
 };
 
 // Reverse mapping: VTON slot → product sub-categories
@@ -21,6 +28,7 @@ const SLOT_TO_CATEGORIES: Record<VTONCategory, string[]> = {
   dresses: ['dresses'],
   footwear: ['shoes'],
   bags: ['bags'],
+  accessories: ['hats', 'stoles', 'belts', 'neckties', 'eyewear', 'jewelry', 'legwear'],
 };
 
 export interface VTONSlotInfo {
@@ -29,12 +37,21 @@ export interface VTONSlotInfo {
   labelEn: string;
 }
 
+/** Base slots always displayed (4 slots) */
 export const VTON_SLOTS: VTONSlotInfo[] = [
   { id: 'upper_body', labelJa: 'トップス', labelEn: 'Tops' },
   { id: 'lower_body', labelJa: 'ボトムス', labelEn: 'Bottoms' },
   { id: 'footwear', labelJa: 'シューズ', labelEn: 'Shoes' },
   { id: 'bags', labelJa: 'バッグ', labelEn: 'Bags' },
 ];
+
+/** Extra slot shown on demand (5th slot) */
+export const VTON_EXTRA_SLOT: VTONSlotInfo = {
+  id: 'accessories', labelJa: '小物', labelEn: 'Accessories',
+};
+
+/** Categories prioritised in the extra accessories slot */
+export const ACCESSORY_CATEGORIES = ['hats', 'stoles', 'belts', 'neckties', 'eyewear', 'jewelry', 'legwear'];
 
 /**
  * Map a product category path (e.g. "mens-wear-tops") to a VTON category.

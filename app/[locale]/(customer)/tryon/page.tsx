@@ -21,7 +21,7 @@ import {
   type DragEndEvent,
 } from '@dnd-kit/core';
 import { useTryOnStore, type TryOnListItem } from '@/lib/store/tryon';
-import { VTON_SLOTS } from '@/lib/utils/vton-category';
+import { VTON_SLOTS, VTON_EXTRA_SLOT, ACCESSORY_CATEGORIES } from '@/lib/utils/vton-category';
 import { PortraitCapture, CreditStatusBar, CreditPurchaseSheet } from '@/components/customer/tryon';
 
 // --- DnD sub-components ---
@@ -206,6 +206,8 @@ export default function TryOnPage() {
   const [selectedPoolItemId, setSelectedPoolItemId] = useState<string | null>(null);
   // Style options per slot
   const [styleOptions, setStyleOptions] = useState<Record<string, Record<string, string>>>({});
+  // 5th accessories slot visibility
+  const [showExtraSlot, setShowExtraSlot] = useState(false);
 
   // DnD sensors
   const touchSensor = useSensor(TouchSensor, {
@@ -232,6 +234,11 @@ export default function TryOnPage() {
       setSelectedPortraitId(portraits[0].id);
     }
   }, [portraits, selectedPortraitId]);
+
+  // Auto-show extra slot if it has an item assigned
+  useEffect(() => {
+    if (tryOnSlots[VTON_EXTRA_SLOT.id]) setShowExtraSlot(true);
+  }, [tryOnSlots]);
 
   const slotItems = Object.values(tryOnSlots).filter(Boolean) as TryOnListItem[];
   const slotCount = slotItems.length;
@@ -384,8 +391,8 @@ export default function TryOnPage() {
       const lineUserId =
         typeof window !== 'undefined' ? localStorage.getItem('vual-line-user-id') || undefined : undefined;
 
-      const slotOrder = ['upper_body', 'lower_body', 'footwear', 'bags'] as const;
-      const garmentSlots: string[][] = [[], [], [], []];
+      const slotOrder = ['upper_body', 'lower_body', 'footwear', 'bags', 'accessories'] as const;
+      const garmentSlots: string[][] = [[], [], [], [], []];
       for (const slotKey of slotOrder) {
         const item = tryOnSlots[slotKey];
         if (item) {
@@ -413,6 +420,7 @@ export default function TryOnPage() {
           secondGarmentImages: nonEmpty[1]?.imgs || [],
           thirdGarmentImages: nonEmpty[2]?.imgs || [],
           fourthGarmentImages: nonEmpty[3]?.imgs || [],
+          fifthGarmentImages: nonEmpty[4]?.imgs || [],
           modelImage: personImage,
           modelSettings: {
             gender: modelGender,
@@ -509,7 +517,12 @@ export default function TryOnPage() {
           {tryOnPool.length > 0 ? (
             <PoolDropZone>
               <div className="flex gap-3 overflow-x-auto pb-2 pt-2 -mx-4 px-4">
-                {tryOnPool.map((item) => (
+                {[...tryOnPool].sort((a, b) => {
+                  // Prioritise accessory categories at the top
+                  const aIsAccessory = ACCESSORY_CATEGORIES.includes(a.subCategory || '') || a.category === 'accessories' ? 1 : 0;
+                  const bIsAccessory = ACCESSORY_CATEGORIES.includes(b.subCategory || '') || b.category === 'accessories' ? 1 : 0;
+                  return bIsAccessory - aIsAccessory;
+                }).map((item) => (
                   <div key={item.productId} className="relative overflow-visible">
                     <DraggablePoolItem
                       item={item}
@@ -556,6 +569,7 @@ export default function TryOnPage() {
           <h2 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide mb-3">
             {isJa ? 'コーディネート' : 'Coordinate'}
           </h2>
+          {/* Base 4 slots */}
           <div className="grid grid-cols-4 gap-2">
             {VTON_SLOTS.map((slot) => {
               const item = tryOnSlots[slot.id];
@@ -618,6 +632,63 @@ export default function TryOnPage() {
               );
             })}
           </div>
+          {/* 5th accessories slot — expandable */}
+          {showExtraSlot ? (
+            <div className="mt-3 flex items-start gap-2">
+              <div className="w-1/4 flex flex-col items-center">
+                <DroppableSlot slotId={VTON_EXTRA_SLOT.id} isOver={!!selectedPoolItemId}>
+                  {tryOnSlots[VTON_EXTRA_SLOT.id] ? (
+                    <div
+                      className="relative w-full aspect-[3/4] rounded-[var(--radius-md)] overflow-hidden border-2 border-[var(--color-accent)] bg-[var(--color-bg-element)]"
+                      onClick={() => handleSlotTap(VTON_EXTRA_SLOT.id)}
+                    >
+                      <DraggableSlotItem item={tryOnSlots[VTON_EXTRA_SLOT.id]!} slotId={VTON_EXTRA_SLOT.id} />
+                      <button
+                        onClick={(e) => { e.stopPropagation(); unassignSlot(VTON_EXTRA_SLOT.id); }}
+                        className="absolute top-1 right-1 p-1 bg-black/50 rounded-full z-10"
+                      >
+                        <X size={12} className="text-white" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => handleSlotTap(VTON_EXTRA_SLOT.id)}
+                      className={`w-full aspect-[3/4] rounded-[var(--radius-md)] border-2 border-dashed flex flex-col items-center justify-center gap-2 transition-colors ${
+                        selectedPoolItemId
+                          ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5 animate-pulse'
+                          : 'border-[var(--color-line)]'
+                      }`}
+                    >
+                      <Plus size={24} className="text-[var(--color-text-label)]" />
+                    </div>
+                  )}
+                </DroppableSlot>
+                <p className="text-[10px] text-[var(--color-text-label)] mt-1.5 text-center truncate w-full">
+                  {tryOnSlots[VTON_EXTRA_SLOT.id]
+                    ? tryOnSlots[VTON_EXTRA_SLOT.id]!.name
+                    : (isJa ? VTON_EXTRA_SLOT.labelJa : VTON_EXTRA_SLOT.labelEn)}
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  unassignSlot(VTON_EXTRA_SLOT.id);
+                  setShowExtraSlot(false);
+                }}
+                className="mt-2 p-1.5 rounded-full bg-[var(--color-bg-element)] hover:bg-red-50 transition-colors"
+                title={isJa ? '小物スロットを閉じる' : 'Remove accessories slot'}
+              >
+                <X size={14} className="text-[var(--color-text-label)]" />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowExtraSlot(true)}
+              className="mt-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-dashed border-[var(--color-line)] hover:border-[var(--color-accent)] text-[var(--color-text-label)] hover:text-[var(--color-accent)] transition-colors text-xs"
+            >
+              <Plus size={14} />
+              {isJa ? '小物を追加' : 'Add Accessories'}
+            </button>
+          )}
         </motion.div>
 
         {/* Drag Overlay */}
