@@ -3,17 +3,20 @@
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { Plus, MoreHorizontal, Package, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+import { Plus, Upload, Package, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { StatCard } from '@/components/admin/dashboard';
 import { ProductsTable } from '@/components/admin/products';
 import { CategoriesGrid } from '@/components/admin/categories';
+import { CsvImportWizard } from '@/components/admin/products/CsvImportWizard';
 
 export default function ProductsListPage() {
   const t = useTranslations('admin.products');
   const locale = useLocale();
   const [stats, setStats] = useState({ total: 0, published: 0, draft: 0 });
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
+  const [showCsvImport, setShowCsvImport] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Fetch stats from API
   useEffect(() => {
@@ -44,8 +47,8 @@ export default function ProductsListPage() {
             {t('addProduct')}
           </Button>
         </Link>
-        <Button variant="secondary" leftIcon={<MoreHorizontal size={16} />}>
-          {t('moreAction')}
+        <Button variant="secondary" leftIcon={<Upload size={16} />} onClick={() => setShowCsvImport(true)}>
+          {t('csvImport.title')}
         </Button>
       </div>
 
@@ -83,7 +86,30 @@ export default function ProductsListPage() {
       />
 
       {/* Products Table */}
-      <ProductsTable categoryFilter={selectedCategory} />
+      <ProductsTable key={refreshKey} categoryFilter={selectedCategory} />
+
+      {/* CSV Import Wizard */}
+      <CsvImportWizard
+        isOpen={showCsvImport}
+        onClose={() => setShowCsvImport(false)}
+        onComplete={() => {
+          setShowCsvImport(false);
+          setRefreshKey(prev => prev + 1);
+          // Re-fetch stats
+          fetch('/api/products?status=all&limit=1000')
+            .then(res => res.json())
+            .then(data => {
+              if (data.products) {
+                setStats({
+                  total: data.products.length,
+                  published: data.products.filter((p: any) => p.status === 'published').length,
+                  draft: data.products.filter((p: any) => p.status === 'draft').length,
+                });
+              }
+            })
+            .catch(() => {});
+        }}
+      />
     </div>
   );
 }
