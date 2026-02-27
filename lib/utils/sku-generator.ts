@@ -51,8 +51,14 @@ const COLOR_ABBR: Record<string, string> = {
   'オリーブ': 'OLV',
   'ターコイズ': 'TRQ',
   'コーラル': 'CRL',
+  'ローズ': 'RSE',
   'サーモン': 'SMN',
   'モカ': 'MOC',
+  'テラコッタ': 'TRC',
+  'マゼンタ': 'MGT',
+  'ミント': 'MNT',
+  'サックス': 'SAX',
+  'エクリュ': 'ECR',
   'チャコール': 'CHR',
   'デニム': 'DNM',
   'インディゴ': 'IDG',
@@ -86,23 +92,53 @@ const COLOR_ABBR: Record<string, string> = {
   'olive': 'OLV',
   'turquoise': 'TRQ',
   'coral': 'CRL',
+  'rose': 'RSE',
+  'salmon': 'SMN',
   'charcoal': 'CHR',
   'denim': 'DNM',
   'indigo': 'IDG',
+  'mint': 'MNT',
+  'magenta': 'MGT',
+  'terracotta': 'TRC',
+  'ecru': 'ECR',
+  'off white': 'OWH',
+  'off-white': 'OWH',
 };
 
 /**
  * Get 3-letter color abbreviation from color name (Japanese or English).
- * Falls back to first 3 uppercase ASCII chars, or 'COL' if non-ASCII only.
+ *
+ * Strategy:
+ * 1. Exact match in dictionary
+ * 2. Partial match: check if a known base color is contained in the name
+ *    e.g. "セージグリーン" contains "グリーン" → GRN
+ *    e.g. "ウルトラマリンブルー" contains "ブルー" → BLU
+ *    e.g. "ダークネイビー" contains "ネイビー" → NVY
+ * 3. ASCII fallback: first 3 uppercase ASCII letters
+ * 4. Final fallback: 'COL'
  */
 export function colorToAbbr(color: string): string {
   const trimmed = color.trim();
-  const mapped = COLOR_ABBR[trimmed] || COLOR_ABBR[trimmed.toLowerCase()];
-  if (mapped) return mapped;
 
-  // Fallback: take first 3 uppercase ASCII letters
+  // 1. Exact match
+  const exact = COLOR_ABBR[trimmed] || COLOR_ABBR[trimmed.toLowerCase()];
+  if (exact) return exact;
+
+  // 2. Partial match — find the longest known color name contained in the input
+  //    (longest match first to prefer "ライトブルー" over "ブルー")
+  const sortedKeys = Object.keys(COLOR_ABBR).sort((a, b) => b.length - a.length);
+  for (const key of sortedKeys) {
+    if (trimmed.includes(key) || trimmed.toLowerCase().includes(key)) {
+      return COLOR_ABBR[key];
+    }
+  }
+
+  // 3. ASCII fallback
   const ascii = trimmed.replace(/[^a-zA-Z]/g, '').toUpperCase();
-  return ascii.slice(0, 3) || 'COL';
+  if (ascii.length >= 2) return ascii.slice(0, 3);
+
+  // 4. Final fallback
+  return 'COL';
 }
 
 /**
