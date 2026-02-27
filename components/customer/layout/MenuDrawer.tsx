@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,16 +13,44 @@ interface MenuDrawerProps {
   onClose: () => void;
 }
 
+type MenuTab = 'category' | 'brand';
+
+interface Brand {
+  id: string;
+  name: string;
+  name_en: string | null;
+  slug: string;
+}
+
 export function MenuDrawer({ isOpen, onClose }: MenuDrawerProps) {
   const locale = useLocale();
   const { store } = useStoreContext();
   const { slugs, isLoading } = useProductCategories();
   const tree = buildCategoryTree(slugs, locale);
 
+  const [activeTab, setActiveTab] = useState<MenuTab>('category');
   const [activeGenderIdx, setActiveGenderIdx] = useState(0);
   const [expandedType, setExpandedType] = useState<string | null>(null);
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const [brandsLoading, setBrandsLoading] = useState(false);
 
   const activeGender = tree[activeGenderIdx] || null;
+
+  // Fetch brands when brand tab is selected
+  useEffect(() => {
+    if (activeTab === 'brand' && brands.length === 0) {
+      setBrandsLoading(true);
+      fetch('/api/brands')
+        .then(res => res.json())
+        .then(data => {
+          if (data.brands) {
+            setBrands(data.brands.filter((b: Brand) => b.name));
+          }
+        })
+        .catch(() => {})
+        .finally(() => setBrandsLoading(false));
+    }
+  }, [activeTab, brands.length]);
 
   return (
     <AnimatePresence>
@@ -58,49 +86,156 @@ export function MenuDrawer({ isOpen, onClose }: MenuDrawerProps) {
               </button>
             </div>
 
-            {isLoading ? (
-              <div className="flex-1 flex items-center justify-center">
-                <div className="w-5 h-5 border-2 border-[var(--color-text-label)] border-t-transparent rounded-full animate-spin" />
-              </div>
-            ) : tree.length === 0 ? (
-              <div className="flex-1 flex items-center justify-center px-6">
-                <p className="text-sm text-[var(--color-text-label)] text-center">
-                  {locale === 'ja' ? '商品がまだ登録されていません' : 'No products yet'}
-                </p>
-              </div>
-            ) : (
-              <>
-                {/* Gender Tabs - only show if multiple genders */}
-                {tree.length > 1 && (
-                  <div className="flex border-b border-[var(--color-line)]">
-                    {tree.map((g, idx) => (
-                      <button
-                        key={g.gender}
-                        onClick={() => {
-                          setActiveGenderIdx(idx);
-                          setExpandedType(null);
-                        }}
-                        className={`flex-1 py-3 text-sm font-medium tracking-wide transition-colors relative ${
-                          activeGenderIdx === idx
-                            ? 'text-[var(--color-title-active)]'
-                            : 'text-[var(--color-text-label)]'
-                        }`}
-                      >
-                        {g.genderLabel}
-                        {activeGenderIdx === idx && (
-                          <motion.div
-                            layoutId="menuGenderUnderline"
-                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-title-active)]"
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
+            {/* Category / Brand Tabs */}
+            <div className="flex border-b border-[var(--color-line)]">
+              <button
+                onClick={() => setActiveTab('category')}
+                className={`flex-1 py-3 text-sm font-medium tracking-wide transition-colors relative ${
+                  activeTab === 'category'
+                    ? 'text-[var(--color-title-active)]'
+                    : 'text-[var(--color-text-label)]'
+                }`}
+              >
+                {locale === 'ja' ? 'カテゴリ' : 'Category'}
+                {activeTab === 'category' && (
+                  <motion.div
+                    layoutId="menuTabUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-title-active)]"
+                  />
                 )}
+              </button>
+              <button
+                onClick={() => setActiveTab('brand')}
+                className={`flex-1 py-3 text-sm font-medium tracking-wide transition-colors relative ${
+                  activeTab === 'brand'
+                    ? 'text-[var(--color-title-active)]'
+                    : 'text-[var(--color-text-label)]'
+                }`}
+              >
+                {locale === 'ja' ? 'ブランド' : 'Brand'}
+                {activeTab === 'brand' && (
+                  <motion.div
+                    layoutId="menuTabUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-title-active)]"
+                  />
+                )}
+              </button>
+            </div>
 
-                {/* Category tree */}
+            {/* Tab Content */}
+            {activeTab === 'category' ? (
+              /* Category Content */
+              isLoading ? (
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="w-5 h-5 border-2 border-[var(--color-text-label)] border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : tree.length === 0 ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                  <p className="text-sm text-[var(--color-text-label)] text-center">
+                    {locale === 'ja' ? '商品がまだ登録されていません' : 'No products yet'}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Gender Tabs - only show if multiple genders */}
+                  {tree.length > 1 && (
+                    <div className="flex border-b border-[var(--color-line)]">
+                      {tree.map((g, idx) => (
+                        <button
+                          key={g.gender}
+                          onClick={() => {
+                            setActiveGenderIdx(idx);
+                            setExpandedType(null);
+                          }}
+                          className={`flex-1 py-3 text-sm font-medium tracking-wide transition-colors relative ${
+                            activeGenderIdx === idx
+                              ? 'text-[var(--color-title-active)]'
+                              : 'text-[var(--color-text-label)]'
+                          }`}
+                        >
+                          {g.genderLabel}
+                          {activeGenderIdx === idx && (
+                            <motion.div
+                              layoutId="menuGenderUnderline"
+                              className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-title-active)]"
+                            />
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Category tree */}
+                  <nav className="flex-1 overflow-y-auto py-2">
+                    {/* All products link */}
+                    <Link
+                      href={`/${locale}`}
+                      onClick={onClose}
+                      className="flex items-center justify-between px-6 py-3 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
+                    >
+                      <span className="font-medium">{locale === 'ja' ? 'すべて' : 'All'}</span>
+                      <ChevronRight size={18} className="text-[var(--color-text-label)]" />
+                    </Link>
+
+                    {activeGender?.types.map((type) => (
+                      <div key={type.type}>
+                        {/* Type header (ウェア / グッズ) */}
+                        <button
+                          onClick={() => setExpandedType(expandedType === type.type ? null : type.type)}
+                          className="flex items-center justify-between w-full px-6 py-3 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
+                        >
+                          <span className="font-medium">{type.typeLabel}</span>
+                          <ChevronDown
+                            size={18}
+                            className={`text-[var(--color-text-label)] transition-transform ${
+                              expandedType === type.type ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+
+                        {/* Detail categories */}
+                        <AnimatePresence>
+                          {expandedType === type.type && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden bg-[var(--color-bg-element)]"
+                            >
+                              {type.details.map((d) => (
+                                <Link
+                                  key={d.slug}
+                                  href={`/${locale}/category/${d.slug}`}
+                                  onClick={onClose}
+                                  className="flex items-center gap-2 px-8 py-2.5 text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
+                                >
+                                  <span className="w-1 h-1 rounded-full bg-[var(--color-text-label)]" />
+                                  {d.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ))}
+                  </nav>
+                </>
+              )
+            ) : (
+              /* Brand Content */
+              brandsLoading ? (
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="w-5 h-5 border-2 border-[var(--color-text-label)] border-t-transparent rounded-full animate-spin" />
+                </div>
+              ) : brands.length === 0 ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                  <p className="text-sm text-[var(--color-text-label)] text-center">
+                    {locale === 'ja' ? 'ブランドがまだ登録されていません' : 'No brands yet'}
+                  </p>
+                </div>
+              ) : (
                 <nav className="flex-1 overflow-y-auto py-2">
-                  {/* All products link */}
+                  {/* All brands link */}
                   <Link
                     href={`/${locale}`}
                     onClick={onClose}
@@ -110,49 +245,21 @@ export function MenuDrawer({ isOpen, onClose }: MenuDrawerProps) {
                     <ChevronRight size={18} className="text-[var(--color-text-label)]" />
                   </Link>
 
-                  {activeGender?.types.map((type) => (
-                    <div key={type.type}>
-                      {/* Type header (ウェア / グッズ) */}
-                      <button
-                        onClick={() => setExpandedType(expandedType === type.type ? null : type.type)}
-                        className="flex items-center justify-between w-full px-6 py-3 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
-                      >
-                        <span className="font-medium">{type.typeLabel}</span>
-                        <ChevronDown
-                          size={18}
-                          className={`text-[var(--color-text-label)] transition-transform ${
-                            expandedType === type.type ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-
-                      {/* Detail categories */}
-                      <AnimatePresence>
-                        {expandedType === type.type && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden bg-[var(--color-bg-element)]"
-                          >
-                            {type.details.map((d) => (
-                              <Link
-                                key={d.slug}
-                                href={`/${locale}/category/${d.slug}`}
-                                onClick={onClose}
-                                className="flex items-center gap-2 px-8 py-2.5 text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
-                              >
-                                <span className="w-1 h-1 rounded-full bg-[var(--color-text-label)]" />
-                                {d.label}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                  {brands.map(brand => (
+                    <Link
+                      key={brand.id}
+                      href={`/${locale}/brand/${brand.slug}`}
+                      onClick={onClose}
+                      className="flex items-center justify-between px-6 py-3 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors"
+                    >
+                      <span className="font-medium tracking-wide uppercase">
+                        {brand.name_en || brand.name}
+                      </span>
+                      <ChevronRight size={18} className="text-[var(--color-text-label)]" />
+                    </Link>
                   ))}
                 </nav>
-              </>
+              )
             )}
 
             {/* Footer */}

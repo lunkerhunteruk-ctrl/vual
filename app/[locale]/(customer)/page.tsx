@@ -10,6 +10,7 @@ import {
   ProductGrid,
   CollectionBanner,
   CollectionHeroSlideshow,
+  BrandGrid,
 } from '@/components/customer/home';
 import { useProducts } from '@/lib/hooks/useProducts';
 import { useHasCollections } from '@/lib/hooks';
@@ -220,30 +221,16 @@ function ShopHomePage() {
         </section>
       )}
 
-      {/* Collections Section - only show if collections exist */}
-      {hasCollections && (
-        <section className="py-10">
-          <div className="px-4 mb-6">
-            <h2 className="text-lg font-medium tracking-[0.15em] text-[var(--color-title-active)] uppercase">
-              {t('collections')}
-            </h2>
-            <div className="w-12 h-0.5 bg-[var(--color-title-active)] mt-2" />
-          </div>
-
-          <div className="space-y-4">
-            <CollectionBanner
-              title="OCTOBER COLLECTION"
-              subtitle="Autumn 2025"
-              href="/collection/october"
-            />
-            <CollectionBanner
-              title="BLACK ESSENTIALS"
-              subtitle="Timeless Classics"
-              href="/collection/black"
-            />
-          </div>
-        </section>
-      )}
+      {/* Brands Section */}
+      <section className="py-10">
+        <div className="px-4 mb-6">
+          <h2 className="text-lg font-medium tracking-[0.15em] text-[var(--color-title-active)] uppercase">
+            {locale === 'ja' ? 'ブランド' : 'Brands'}
+          </h2>
+          <div className="w-12 h-0.5 bg-[var(--color-title-active)] mt-2" />
+        </div>
+        <BrandGrid />
+      </section>
     </div>
   );
 }
