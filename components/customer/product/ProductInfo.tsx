@@ -18,7 +18,9 @@ interface ProductInfoProps {
   brand: string;
   name: string;
   price: string;
+  taxInclusivePrice?: string;
   category?: string;
+  tags?: string[];
   description?: string;
   materials?: string;
   care?: string;
@@ -33,7 +35,9 @@ export function ProductInfo({
   brand,
   name,
   price,
+  taxInclusivePrice,
   category,
+  tags,
   description,
   materials,
   care,
@@ -71,9 +75,30 @@ export function ProductInfo({
       <h1 className="text-xl font-medium text-[var(--color-title-active)] mb-2">
         {name}
       </h1>
-      <p className="text-xl font-medium text-[var(--color-accent)] mb-4">
-        {price}
-      </p>
+      <div className="mb-4">
+        <span className="text-xl font-medium text-[var(--color-accent)]">
+          {price}
+        </span>
+        {taxInclusivePrice && (
+          <span className="text-sm text-[var(--color-text-label)] ml-1.5">
+            （{taxInclusivePrice} 税込）
+          </span>
+        )}
+      </div>
+
+      {/* Tags */}
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {tags.map(tag => (
+            <span
+              key={tag}
+              className="inline-block px-3 py-1 text-xs font-medium bg-[var(--color-bg-element)] text-[var(--color-text-body)] border border-[var(--color-line)] rounded-full"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Description */}
       {description && (

@@ -23,7 +23,7 @@ import { useFavoritesStore } from '@/lib/store/favorites';
 import { useTryOnStore } from '@/lib/store/tryon';
 import { mapToVtonCategory } from '@/lib/utils/vton-category';
 import { parseCategoryPath } from '@/lib/data/categories';
-import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
+import { getTaxInclusivePrice, formatPrice, formatPriceWithTax } from '@/lib/utils/currency';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -317,12 +317,23 @@ export default function ProductDetailPage() {
       <ProductInfo
         brand={product.brand || ''}
         name={product.name}
-        price={formatPriceWithTax(
-          getTaxInclusivePrice(product.price || product.base_price || 0, product.tax_included ?? true, product.currency || 'jpy'),
-          product.currency || 'jpy',
-          locale === 'ja' ? 'ja-JP' : undefined
-        )}
+        price={(() => {
+          const basePrice = product.price || product.base_price || 0;
+          const currency = product.currency || 'jpy';
+          const taxIncluded = product.tax_included ?? true;
+          // Tax-exclusive price
+          const taxExcPrice = taxIncluded ? Math.round(basePrice / 1.1) : basePrice;
+          return formatPrice(taxExcPrice, currency, locale === 'ja' ? 'ja-JP' : undefined, false);
+        })()}
+        taxInclusivePrice={(() => {
+          const basePrice = product.price || product.base_price || 0;
+          const currency = product.currency || 'jpy';
+          const taxIncluded = product.tax_included ?? true;
+          const taxIncPrice = getTaxInclusivePrice(basePrice, taxIncluded, currency);
+          return formatPrice(taxIncPrice, currency, locale === 'ja' ? 'ja-JP' : undefined, false);
+        })()}
         category={product.category}
+        tags={product.tags}
         description={product.description || ''}
         materials={product.materials || ''}
         care={product.care || ''}
