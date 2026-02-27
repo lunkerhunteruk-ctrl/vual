@@ -29,7 +29,9 @@ export function CreditStatusBar({
       <div className="flex items-center gap-1.5">
         <Ticket size={14} className="text-[var(--color-accent)]" />
         <span className="text-xs text-[var(--color-text-body)]">
-          {locale === 'ja' ? '無料' : 'Free'}: <strong>{freeTickets}</strong>/{dailyFreeLimit}
+          {locale === 'ja'
+            ? <>あと<strong>{freeTickets}</strong>回無料</>
+            : <><strong>{freeTickets}</strong> free left</>}
         </span>
       </div>
 

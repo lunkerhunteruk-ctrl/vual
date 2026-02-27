@@ -54,13 +54,14 @@ export async function GET(request: NextRequest) {
 
       // Auto-create consumer credits on first access
       if (!credits) {
+        // Reset at midnight tomorrow (daily free tickets)
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0);
+
         const insertData: Record<string, unknown> = {
           free_tickets_remaining: dailyFreeLimit,
-          free_tickets_reset_at: new Date(
-            new Date().getFullYear(),
-            new Date().getMonth() + 1,
-            1
-          ).toISOString(),
+          free_tickets_reset_at: tomorrow.toISOString(),
         };
         if (customerId) insertData.customer_id = customerId;
         if (lineUserId) insertData.line_user_id = lineUserId;
