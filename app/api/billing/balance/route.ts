@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 // GET: Fetch credit balance for store or consumer
 export async function GET(request: NextRequest) {
@@ -33,6 +34,15 @@ export async function GET(request: NextRequest) {
 
     // B2C: Consumer balance
     if (customerId || lineUserId) {
+      // Resolve store to get daily_tryon_limit (the free ticket max)
+      const storeIdResolved = await resolveStoreIdFromRequest(request);
+      const { data: storeCredits } = await supabase
+        .from('store_credits')
+        .select('daily_tryon_limit')
+        .eq('store_id', storeIdResolved)
+        .single();
+      const dailyFreeLimit = storeCredits?.daily_tryon_limit ?? 3;
+
       let query = supabase.from('consumer_credits').select('*');
       if (customerId) {
         query = query.eq('customer_id', customerId);
@@ -45,7 +55,7 @@ export async function GET(request: NextRequest) {
       // Auto-create consumer credits on first access
       if (!credits) {
         const insertData: Record<string, unknown> = {
-          free_tickets_remaining: 3,
+          free_tickets_remaining: dailyFreeLimit,
           free_tickets_reset_at: new Date(
             new Date().getFullYear(),
             new Date().getMonth() + 1,
@@ -66,15 +76,16 @@ export async function GET(request: NextRequest) {
 
       // Check if free tickets need reset
       const resetAt = credits?.free_tickets_reset_at ? new Date(credits.free_tickets_reset_at) : null;
-      let freeTickets = credits?.free_tickets_remaining ?? 3;
+      let freeTickets = credits?.free_tickets_remaining ?? dailyFreeLimit;
       if (resetAt && resetAt <= new Date()) {
-        freeTickets = 3; // Will be reset on next deduction
+        freeTickets = dailyFreeLimit; // Will be reset on next deduction
       }
 
       return NextResponse.json({
         success: true,
         type: 'consumer',
         freeTickets,
+        dailyFreeLimit,
         freeTicketsResetAt: credits?.free_tickets_reset_at,
         paidCredits: credits?.paid_credits ?? 0,
         subscriptionCredits: credits?.subscription_credits ?? 0,

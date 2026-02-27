@@ -102,6 +102,17 @@ export async function checkAndDeductCredit(params: {
     };
   }
 
+  // Resolve the store's daily free limit
+  let dailyFreeLimit = 3;
+  if (storeId) {
+    const { data: storeCreds } = await supabase
+      .from('store_credits')
+      .select('daily_tryon_limit')
+      .eq('store_id', storeId)
+      .single();
+    dailyFreeLimit = storeCreds?.daily_tryon_limit ?? 3;
+  }
+
   // Find or create consumer_credits
   let consumerCreditId: string | null = null;
 
@@ -124,7 +135,7 @@ export async function checkAndDeductCredit(params: {
   // Auto-create if not exists
   if (!consumerCreditId) {
     const insertData: Record<string, unknown> = {
-      free_tickets_remaining: 3,
+      free_tickets_remaining: dailyFreeLimit,
       free_tickets_reset_at: new Date(
         new Date().getFullYear(),
         new Date().getMonth() + 1,
@@ -151,6 +162,7 @@ export async function checkAndDeductCredit(params: {
   const { data, error } = await supabase.rpc('deduct_consumer_credit', {
     p_consumer_credit_id: consumerCreditId,
     p_vton_queue_id: vtonQueueId || null,
+    p_free_ticket_limit: dailyFreeLimit,
   });
 
   if (error) {

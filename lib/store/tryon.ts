@@ -32,6 +32,7 @@ export interface TryOnResult {
 
 export interface ConsumerCredits {
   freeTickets: number;
+  dailyFreeLimit: number;
   paidCredits: number;
   subscriptionCredits: number;
   isSubscribed: boolean;
@@ -127,6 +128,7 @@ export const useTryOnStore = create<TryOnStore>()(
             set({
               credits: {
                 freeTickets: data.freeTickets ?? 0,
+                dailyFreeLimit: data.dailyFreeLimit ?? 3,
                 paidCredits: data.paidCredits ?? 0,
                 subscriptionCredits: data.subscriptionCredits ?? 0,
                 isSubscribed: data.subscriptionStatus === 'active',

@@ -277,6 +277,7 @@ export default function ExternalTryOnPage() {
         <div className="mb-6">
           <CreditStatusBar
             freeTickets={credits.freeTickets}
+            dailyFreeLimit={credits.dailyFreeLimit}
             paidCredits={credits.paidCredits}
             subscriptionCredits={credits.subscriptionCredits}
             isSubscribed={credits.isSubscribed}

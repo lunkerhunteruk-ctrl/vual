@@ -5,6 +5,7 @@ import { Ticket, Sparkles, Crown, Plus } from 'lucide-react';
 
 interface CreditStatusBarProps {
   freeTickets: number;
+  dailyFreeLimit: number;
   paidCredits: number;
   subscriptionCredits: number;
   isSubscribed: boolean;
@@ -13,6 +14,7 @@ interface CreditStatusBarProps {
 
 export function CreditStatusBar({
   freeTickets,
+  dailyFreeLimit,
   paidCredits,
   subscriptionCredits,
   isSubscribed,
@@ -27,7 +29,7 @@ export function CreditStatusBar({
       <div className="flex items-center gap-1.5">
         <Ticket size={14} className="text-[var(--color-accent)]" />
         <span className="text-xs text-[var(--color-text-body)]">
-          {locale === 'ja' ? '無料' : 'Free'}: <strong>{freeTickets}</strong>/3
+          {locale === 'ja' ? '無料' : 'Free'}: <strong>{freeTickets}</strong>/{dailyFreeLimit}
         </span>
       </div>
 
