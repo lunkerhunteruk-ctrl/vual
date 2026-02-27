@@ -119,7 +119,9 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('Label generation error:', error);
-    return NextResponse.json({ error: 'Label generation failed' }, { status: 500 });
+    const message = error instanceof Error ? error.message : String(error);
+    const stack = error instanceof Error ? error.stack?.split('\n').slice(0, 3).join('\n') : '';
+    console.error('Label generation error:', message, stack);
+    return NextResponse.json({ error: 'Label generation failed', detail: message }, { status: 500 });
   }
 }
