@@ -96,6 +96,7 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
   const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
   const [isCreatingBrand, setIsCreatingBrand] = useState(false);
   const [newBrandName, setNewBrandName] = useState('');
+  const [newBrandNameEn, setNewBrandNameEn] = useState('');
 
   // Fetch brands
   useEffect(() => {
@@ -119,13 +120,14 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
       const res = await fetch('/api/brands', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: newBrandName.trim() }),
+        body: JSON.stringify({ name: newBrandName.trim(), nameEn: newBrandNameEn.trim() || undefined }),
       });
       const data = await res.json();
       if (data.brand) {
         setBrands(prev => [...prev, { id: data.brand.id, name: data.brand.name }]);
         setBrandId(data.brand.id);
         setNewBrandName('');
+        setNewBrandNameEn('');
         setIsCreatingBrand(false);
       } else if (data.error) {
         alert(data.error);
@@ -373,30 +375,42 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
                   ブランド
                 </label>
                 {isCreatingBrand ? (
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      value={newBrandName}
-                      onChange={(e) => setNewBrandName(e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && handleCreateBrand()}
-                      placeholder="ブランド名を入力"
-                      autoFocus
-                      className="flex-1 h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
-                    />
-                    <button
-                      type="button"
-                      onClick={handleCreateBrand}
-                      className="h-10 px-3 text-sm font-medium bg-[var(--color-accent)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity"
-                    >
-                      追加
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setIsCreatingBrand(false); setNewBrandName(''); }}
-                      className="h-10 px-3 text-sm text-[var(--color-text-label)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
-                    >
-                      取消
-                    </button>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={newBrandName}
+                        onChange={(e) => setNewBrandName(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleCreateBrand()}
+                        placeholder="ブランド名（日本語）"
+                        autoFocus
+                        className="flex-1 h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={newBrandNameEn}
+                        onChange={(e) => setNewBrandNameEn(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleCreateBrand()}
+                        placeholder="Brand Name (English)"
+                        className="flex-1 h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleCreateBrand}
+                        className="h-10 px-3 text-sm font-medium bg-[var(--color-accent)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity"
+                      >
+                        追加
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setIsCreatingBrand(false); setNewBrandName(''); setNewBrandNameEn(''); }}
+                        className="h-10 px-3 text-sm text-[var(--color-text-label)] border border-[var(--color-line)] rounded-[var(--radius-md)] hover:bg-[var(--color-bg-element)] transition-colors"
+                      >
+                        取消
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">

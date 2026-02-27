@@ -294,6 +294,7 @@ export interface Brand {
   id: string;
   shopId: string;
   name: string;
+  nameEn?: string | null;
   slug: string;
   logo?: string;
   website?: string;

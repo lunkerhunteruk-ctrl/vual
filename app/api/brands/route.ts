@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
-function toSlug(name: string): string {
-  return name
+function toSlug(name: string, nameEn?: string | null): string {
+  // Prefer English name for slug (Japanese names produce unusable slugs)
+  const source = nameEn?.trim() || name;
+  return source
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, '')
@@ -84,13 +86,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
     }
 
-    const { name, website, description } = await request.json();
+    const { name, nameEn, website, description } = await request.json();
 
     if (!name?.trim()) {
       return NextResponse.json({ error: 'Brand name is required' }, { status: 400 });
     }
 
-    const slug = toSlug(name);
+    const slug = toSlug(name, nameEn);
 
     // Check if slug already exists for this store
     const { data: existing } = await supabase
@@ -109,6 +111,7 @@ export async function POST(request: NextRequest) {
       .insert({
         store_id: await resolveStoreIdFromRequest(request),
         name: name.trim(),
+        name_en: nameEn?.trim() || null,
         slug,
         website: website || null,
         description: description || null,
@@ -138,7 +141,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
     }
 
-    const { id, name, logoUrl, website, description, isActive } = await request.json();
+    const { id, name, nameEn, logoUrl, website, description, isActive } = await request.json();
 
     if (!id) {
       return NextResponse.json({ error: 'Brand ID is required' }, { status: 400 });
@@ -147,7 +150,22 @@ export async function PUT(request: NextRequest) {
     const updates: Record<string, any> = { updated_at: new Date().toISOString() };
     if (name !== undefined) {
       updates.name = name;
-      updates.slug = toSlug(name);
+      updates.slug = toSlug(name, nameEn);
+    }
+    if (nameEn !== undefined) {
+      updates.name_en = nameEn || null;
+      // Regenerate slug if English name changed (even without name change)
+      if (name === undefined) {
+        // Fetch current name to regenerate slug
+        const { data: current } = await supabase
+          .from('brands')
+          .select('name')
+          .eq('id', id)
+          .single();
+        if (current) {
+          updates.slug = toSlug(current.name, nameEn);
+        }
+      }
     }
     if (logoUrl !== undefined) updates.logo_url = logoUrl;
     if (website !== undefined) updates.website = website;

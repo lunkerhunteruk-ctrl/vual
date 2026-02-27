@@ -10,6 +10,7 @@ import { toast } from '@/lib/store/toast';
 interface Brand {
   id: string;
   name: string;
+  name_en: string | null;
   slug: string;
   logo_url: string | null;
   website: string | null;
@@ -27,6 +28,7 @@ export function BrandTable() {
   const [uploadingId, setUploadingId] = useState<string | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [newBrandName, setNewBrandName] = useState('');
+  const [newBrandNameEn, setNewBrandNameEn] = useState('');
   const [newBrandWebsite, setNewBrandWebsite] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const [createError, setCreateError] = useState<string | null>(null);
@@ -36,6 +38,7 @@ export function BrandTable() {
   // Edit modal
   const [editTarget, setEditTarget] = useState<Brand | null>(null);
   const [editName, setEditName] = useState('');
+  const [editNameEn, setEditNameEn] = useState('');
   const [editWebsite, setEditWebsite] = useState('');
   const [isSavingEdit, setIsSavingEdit] = useState(false);
   // Products modal
@@ -66,7 +69,7 @@ export function BrandTable() {
   const filteredBrands = useMemo(() => {
     if (!searchQuery.trim()) return brands;
     const query = searchQuery.toLowerCase();
-    return brands.filter(b => b.name.toLowerCase().includes(query));
+    return brands.filter(b => b.name.toLowerCase().includes(query) || b.name_en?.toLowerCase().includes(query));
   }, [brands, searchQuery]);
 
   // Delete with custom modal
@@ -93,6 +96,7 @@ export function BrandTable() {
   const openEdit = (brand: Brand) => {
     setEditTarget(brand);
     setEditName(brand.name);
+    setEditNameEn(brand.name_en || '');
     setEditWebsite(brand.website || '');
   };
 
@@ -103,12 +107,12 @@ export function BrandTable() {
       const res = await fetch('/api/brands', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: editTarget.id, name: editName.trim(), website: editWebsite.trim() || null }),
+        body: JSON.stringify({ id: editTarget.id, name: editName.trim(), nameEn: editNameEn.trim() || null, website: editWebsite.trim() || null }),
       });
       const data = await res.json();
       if (data.success) {
         setBrands(prev => prev.map(b =>
-          b.id === editTarget.id ? { ...b, name: editName.trim(), website: editWebsite.trim() || null } : b
+          b.id === editTarget.id ? { ...b, name: editName.trim(), name_en: editNameEn.trim() || null, website: editWebsite.trim() || null } : b
         ));
         setEditTarget(null);
         toast.success('ブランドを更新しました');
@@ -187,12 +191,13 @@ export function BrandTable() {
       const res = await fetch('/api/brands', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: newBrandName.trim(), website: newBrandWebsite.trim() || undefined }),
+        body: JSON.stringify({ name: newBrandName.trim(), nameEn: newBrandNameEn.trim() || undefined, website: newBrandWebsite.trim() || undefined }),
       });
       const data = await res.json();
       if (data.success && data.brand) {
         setBrands(prev => [{ ...data.brand, productCount: 0, thumbnailUrl: null }, ...prev]);
         setNewBrandName('');
+        setNewBrandNameEn('');
         setNewBrandWebsite('');
         setIsAdding(false);
         toast.success('ブランドを作成しました');
@@ -260,7 +265,15 @@ export function BrandTable() {
                     value={newBrandName}
                     onChange={(e) => setNewBrandName(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleCreateBrand(); if (e.key === 'Escape') setIsAdding(false); }}
-                    placeholder="ブランド名 *"
+                    placeholder="ブランド名（日本語） *"
+                    className="w-full h-9 px-3 text-sm bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                  />
+                  <input
+                    type="text"
+                    value={newBrandNameEn}
+                    onChange={(e) => setNewBrandNameEn(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') handleCreateBrand(); if (e.key === 'Escape') setIsAdding(false); }}
+                    placeholder="Brand Name (English) *"
                     className="w-full h-9 px-3 text-sm bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
                   />
                   <input
@@ -284,7 +297,7 @@ export function BrandTable() {
                     {isCreating ? <Loader2 size={14} className="animate-spin" /> : '追加'}
                   </button>
                   <button
-                    onClick={() => { setIsAdding(false); setNewBrandName(''); setNewBrandWebsite(''); setCreateError(null); }}
+                    onClick={() => { setIsAdding(false); setNewBrandName(''); setNewBrandNameEn(''); setNewBrandWebsite(''); setCreateError(null); }}
                     className="h-9 w-9 flex items-center justify-center text-[var(--color-text-label)] hover:text-[var(--color-text-body)] rounded-[var(--radius-md)] hover:bg-white transition-colors"
                   >
                     <X size={16} />
@@ -357,12 +370,17 @@ export function BrandTable() {
                             </>
                           )}
                         </button>
-                        <button
-                          onClick={() => setProductsBrand(brand)}
-                          className="text-sm font-medium text-[var(--color-title-active)] hover:text-[var(--color-accent)] hover:underline transition-colors text-left"
-                        >
-                          {brand.name}
-                        </button>
+                        <div className="text-left">
+                          <button
+                            onClick={() => setProductsBrand(brand)}
+                            className="text-sm font-medium text-[var(--color-title-active)] hover:text-[var(--color-accent)] hover:underline transition-colors text-left"
+                          >
+                            {brand.name}
+                          </button>
+                          {brand.name_en && (
+                            <p className="text-xs text-[var(--color-text-label)]">{brand.name_en}</p>
+                          )}
+                        </div>
                       </div>
                     </td>
                     <td className="py-3 px-4 text-sm text-[var(--color-text-body)]">
@@ -485,7 +503,7 @@ export function BrandTable() {
               </h3>
               <div className="mt-4 space-y-3">
                 <div>
-                  <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">ブランド名</label>
+                  <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">ブランド名（日本語）</label>
                   <input
                     type="text"
                     value={editName}
@@ -493,6 +511,17 @@ export function BrandTable() {
                     onKeyDown={(e) => { if (e.key === 'Enter') saveEdit(); if (e.key === 'Escape') setEditTarget(null); }}
                     className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] focus:outline-none focus:border-[var(--color-accent)]"
                     autoFocus
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-[var(--color-text-label)] mb-1">Brand Name (English)</label>
+                  <input
+                    type="text"
+                    value={editNameEn}
+                    onChange={(e) => setEditNameEn(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') saveEdit(); if (e.key === 'Escape') setEditTarget(null); }}
+                    placeholder="e.g. Tod's, Gucci"
+                    className="w-full h-10 px-3 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
                   />
                 </div>
                 <div>
