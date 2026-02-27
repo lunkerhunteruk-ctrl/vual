@@ -2,6 +2,8 @@
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
+import { doc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { LivePreview, StreamSettings, ProductCasting, BroadcastHistory } from '@/components/admin/live';
 import { useStoreContext } from '@/lib/store/store-context';
 import { WHIPClient } from '@/lib/whip-client';
@@ -38,9 +40,9 @@ export default function LiveBroadcastPage() {
 
   const whipClientRef = useRef<WHIPClient | null>(null);
 
-  // Sync products to Firestore when they change during a live stream
+  // Sync products to Firestore directly (client SDK) when they change
   useEffect(() => {
-    if (!isLive || !streamData?.id) return;
+    if (!isLive || !streamData?.id || !db) return;
 
     const productData = castProducts.map(p => ({
       id: p.id,
@@ -50,11 +52,10 @@ export default function LiveBroadcastPage() {
       imageUrl: p.imageUrl || null,
     }));
 
-    fetch(`/api/streams/${streamData.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ products: productData }),
-    }).catch(() => {});
+    updateDoc(doc(db, 'streams', streamData.id), {
+      products: productData,
+      updatedAt: serverTimestamp(),
+    }).catch((err) => console.error('Product sync error:', err));
   }, [castProducts, isLive, streamData?.id]);
 
   // Handle "Go Live" — create Cloudflare Stream + WebRTC publish
@@ -73,7 +74,7 @@ export default function LiveBroadcastPage() {
     setError(null);
 
     try {
-      // 1. Create stream on Cloudflare
+      // 1. Create stream on Cloudflare via API
       const res = await fetch('/api/streams', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -99,7 +100,23 @@ export default function LiveBroadcastPage() {
         playbackId: data.playbackId,
       });
 
-      // 2. Connect via WHIP
+      // 2. Save stream info to Firestore via client SDK
+      if (db) {
+        await setDoc(doc(db, 'streams', data.id), {
+          shopId: store.id,
+          title,
+          status: 'live',
+          playbackId: data.id,
+          viewerCount: 0,
+          peakViewerCount: 0,
+          products: [],
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp(),
+          startedAt: serverTimestamp(),
+        });
+      }
+
+      // 3. Connect via WHIP
       const client = new WHIPClient(data.webRTCUrl);
 
       client.onConnectionStateChange((state) => {
@@ -115,13 +132,6 @@ export default function LiveBroadcastPage() {
 
       await client.publish(mediaStream);
       whipClientRef.current = client;
-
-      // 3. Update Firestore status to live
-      fetch(`/api/streams/${data.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'live' }),
-      }).catch(() => {});
 
       setIsLive(true);
     } catch (err) {
@@ -144,12 +154,12 @@ export default function LiveBroadcastPage() {
       whipClientRef.current = null;
     }
 
-    // Update Firestore status
-    if (streamData?.id) {
-      fetch(`/api/streams/${streamData.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'ended' }),
+    // Update Firestore status via client SDK
+    if (streamData?.id && db) {
+      updateDoc(doc(db, 'streams', streamData.id), {
+        status: 'ended',
+        endedAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
       }).catch(() => {});
     }
 
