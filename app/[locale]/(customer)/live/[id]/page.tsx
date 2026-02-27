@@ -11,16 +11,27 @@ import {
   MessageCircle,
   Share2,
   Bookmark,
+  ShoppingBag,
   ShoppingCart,
   X,
   Send,
   Radio,
   Users,
+  Package,
 } from 'lucide-react';
 import { Button, Skeleton } from '@/components/ui';
 import { MuxPlayer } from '@/components/customer/live';
 import { useStream } from '@/lib/hooks/useStreams';
+import { useCartStore } from '@/lib/store/cart';
 import type { LiveComment } from '@/lib/types';
+
+interface StreamProduct {
+  id: string;
+  name: string;
+  price: number;
+  currency: string;
+  imageUrl?: string | null;
+}
 
 export default function LiveStreamPage() {
   const locale = useLocale();
@@ -30,11 +41,13 @@ export default function LiveStreamPage() {
   const t = useTranslations('customer.live');
 
   const { stream, isLoading } = useStream(streamId);
+  const addItem = useCartStore((s) => s.addItem);
 
   const [showProducts, setShowProducts] = useState(false);
   const [comments, setComments] = useState<LiveComment[]>([]);
   const [newComment, setNewComment] = useState('');
   const [isLiked, setIsLiked] = useState(false);
+  const [addedToCart, setAddedToCart] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
   const commentsEndRef = useRef<HTMLDivElement>(null);
 
@@ -55,6 +68,43 @@ export default function LiveStreamPage() {
     };
     setComments(prev => [...prev, comment]);
     setNewComment('');
+  };
+
+  const handleAddToCart = (product: StreamProduct) => {
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      currency: product.currency || 'jpy',
+      image: product.imageUrl || undefined,
+    });
+    setAddedToCart(prev => new Set(prev).add(product.id));
+    setTimeout(() => {
+      setAddedToCart(prev => {
+        const next = new Set(prev);
+        next.delete(product.id);
+        return next;
+      });
+    }, 2000);
+  };
+
+  const handleBuyNow = (product: StreamProduct) => {
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      currency: product.currency || 'jpy',
+      image: product.imageUrl || undefined,
+    });
+    setShowProducts(false);
+    router.push(`/${locale}/cart`);
+  };
+
+  const formatPrice = (price: number, currency: string) => {
+    if (currency === 'jpy' || !currency) {
+      return `¥${price.toLocaleString()}`;
+    }
+    return `$${price.toLocaleString()}`;
   };
 
   if (isLoading) {
@@ -81,7 +131,11 @@ export default function LiveStreamPage() {
     );
   }
 
-  const hasProducts = stream.products && stream.products.length > 0;
+  // Products are now stored as objects with full data
+  const products: StreamProduct[] = (stream.products || []).map((p: any) =>
+    typeof p === 'string' ? { id: p, name: '', price: 0, currency: 'jpy' } : p
+  );
+  const hasProducts = products.length > 0;
   const isLive = stream.status === 'live';
   const hasPlayback = !!stream.playbackId;
 
@@ -215,9 +269,9 @@ export default function LiveStreamPage() {
             className="flex flex-col items-center"
           >
             <div className="p-2 rounded-full bg-[var(--color-accent)]">
-              <ShoppingCart size={22} className="text-white" />
+              <ShoppingBag size={22} className="text-white" />
             </div>
-            <span className="text-[10px] text-white/70 mt-1">{stream.products.length}</span>
+            <span className="text-[10px] text-white/70 mt-1">{products.length}</span>
           </button>
         )}
       </div>
@@ -243,7 +297,7 @@ export default function LiveStreamPage() {
         </div>
       </div>
 
-      {/* Products Sheet */}
+      {/* Products Bottom Sheet */}
       <AnimatePresence>
         {showProducts && hasProducts && (
           <>
@@ -259,38 +313,91 @@ export default function LiveStreamPage() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md rounded-t-3xl z-30"
+              className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl z-30"
+              style={{ maxHeight: '65vh' }}
             >
+              {/* Handle bar */}
               <div className="flex items-center justify-center py-3">
                 <div className="w-10 h-1 bg-gray-300 rounded-full" />
               </div>
-              <div className="flex items-center justify-between px-4 pb-4">
-                <h3 className="text-lg font-medium text-[var(--color-title-active)]">
-                  {t('products')}
+
+              {/* Header */}
+              <div className="flex items-center justify-between px-5 pb-4">
+                <h3 className="text-lg font-semibold text-[var(--color-title-active)]">
+                  Products
                 </h3>
-                <button onClick={() => setShowProducts(false)}>
-                  <X size={24} className="text-[var(--color-text-label)]" />
+                <button
+                  onClick={() => setShowProducts(false)}
+                  className="p-1 rounded-full hover:bg-gray-100"
+                >
+                  <X size={22} className="text-[var(--color-text-label)]" />
                 </button>
               </div>
 
-              <div className="px-4 pb-8 max-h-80 overflow-y-auto">
-                {stream.products.map((productId: string) => (
-                  <Link
-                    key={productId}
-                    href={`/${locale}/product/${productId}`}
-                    onClick={() => setShowProducts(false)}
-                    className="flex items-center gap-4 py-3 border-b border-[var(--color-line)] last:border-0"
+              {/* Product List */}
+              <div className="px-5 pb-8 overflow-y-auto" style={{ maxHeight: 'calc(65vh - 80px)' }}>
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-0"
                   >
-                    <div className="w-16 h-20 bg-[var(--color-bg-element)] rounded-[var(--radius-md)]" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-[var(--color-title-active)]">
-                        商品を見る
+                    {/* Product Image */}
+                    {product.imageUrl ? (
+                      <Link
+                        href={`/${locale}/product/${product.id}`}
+                        onClick={() => setShowProducts(false)}
+                        className="shrink-0"
+                      >
+                        <img
+                          src={product.imageUrl}
+                          alt={product.name}
+                          className="w-[72px] h-[90px] object-cover rounded-xl bg-gray-100"
+                        />
+                      </Link>
+                    ) : (
+                      <div className="w-[72px] h-[90px] bg-gray-100 rounded-xl flex items-center justify-center shrink-0">
+                        <Package size={20} className="text-gray-300" />
+                      </div>
+                    )}
+
+                    {/* Product Info */}
+                    <div className="flex-1 min-w-0">
+                      <Link
+                        href={`/${locale}/product/${product.id}`}
+                        onClick={() => setShowProducts(false)}
+                      >
+                        <p className="text-sm font-medium text-[var(--color-title-active)] line-clamp-2">
+                          {product.name || '商品を見る'}
+                        </p>
+                      </Link>
+                      <p className="text-sm font-semibold text-[var(--color-accent)] mt-1">
+                        {formatPrice(product.price, product.currency)}
                       </p>
                     </div>
-                    <Button variant="primary" size="sm">
-                      {t('buyNow')}
-                    </Button>
-                  </Link>
+
+                    {/* Action Buttons */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {/* Cart Button */}
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className={`p-2.5 rounded-full border transition-colors ${
+                          addedToCart.has(product.id)
+                            ? 'bg-green-50 border-green-300 text-green-600'
+                            : 'border-gray-200 text-gray-500 hover:bg-gray-50'
+                        }`}
+                      >
+                        <ShoppingCart size={18} />
+                      </button>
+
+                      {/* Buy Now Button */}
+                      <button
+                        onClick={() => handleBuyNow(product)}
+                        className="px-4 py-2 bg-[var(--color-accent)] text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
+                      >
+                        Buy Now
+                      </button>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>

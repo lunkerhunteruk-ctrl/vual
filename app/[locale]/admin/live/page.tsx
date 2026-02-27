@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { LivePreview, StreamSettings, ProductCasting, BroadcastHistory } from '@/components/admin/live';
 import { useStoreContext } from '@/lib/store/store-context';
+import { WHIPClient } from '@/lib/whip-client';
 
 interface CastProduct {
   id: string;
@@ -17,6 +18,7 @@ interface StreamData {
   id: string;
   streamKey: string;
   rtmpsUrl: string;
+  webRTCUrl: string | null;
   playbackId: string;
 }
 
@@ -32,11 +34,38 @@ export default function LiveBroadcastPage() {
   const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
   const [castProducts, setCastProducts] = useState<CastProduct[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [connectionState, setConnectionState] = useState<string>('');
 
-  // Handle "Go Live" — create Cloudflare Stream
+  const whipClientRef = useRef<WHIPClient | null>(null);
+
+  // Sync products to Firestore when they change during a live stream
+  useEffect(() => {
+    if (!isLive || !streamData?.id) return;
+
+    const productData = castProducts.map(p => ({
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      currency: p.currency,
+      imageUrl: p.imageUrl || null,
+    }));
+
+    fetch(`/api/streams/${streamData.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ products: productData }),
+    }).catch(() => {});
+  }, [castProducts, isLive, streamData?.id]);
+
+  // Handle "Go Live" — create Cloudflare Stream + WebRTC publish
   const handleGoLive = useCallback(async (title: string) => {
     if (!store?.id) {
       setError(locale === 'ja' ? 'ストア情報が取得できません' : 'Store information not available');
+      return;
+    }
+
+    if (!mediaStream) {
+      setError(locale === 'ja' ? 'カメラをONにしてから配信を開始してください' : 'Please turn on the camera before going live');
       return;
     }
 
@@ -44,49 +73,78 @@ export default function LiveBroadcastPage() {
     setError(null);
 
     try {
+      // 1. Create stream on Cloudflare
       const res = await fetch('/api/streams', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title,
-          shopId: store.id,
-        }),
+        body: JSON.stringify({ title, shopId: store.id }),
       });
 
       if (!res.ok) {
-        throw new Error('Failed to create stream');
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.details || 'Failed to create stream');
       }
 
       const data = await res.json();
+
+      if (!data.webRTCUrl) {
+        throw new Error('WebRTC URL not available from Cloudflare');
+      }
 
       setStreamData({
         id: data.id,
         streamKey: data.streamKey,
         rtmpsUrl: data.rtmpsUrl,
+        webRTCUrl: data.webRTCUrl,
         playbackId: data.playbackId,
       });
 
+      // 2. Connect via WHIP
+      const client = new WHIPClient(data.webRTCUrl);
+
+      client.onConnectionStateChange((state) => {
+        setConnectionState(state);
+        if (state === 'failed' || state === 'disconnected') {
+          setError(
+            locale === 'ja'
+              ? '配信接続が切断されました。再接続してください。'
+              : 'Stream connection lost. Please reconnect.'
+          );
+        }
+      });
+
+      await client.publish(mediaStream);
+      whipClientRef.current = client;
+
+      // 3. Update Firestore status to live
+      fetch(`/api/streams/${data.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'live' }),
+      }).catch(() => {});
+
       setIsLive(true);
-    } catch {
+    } catch (err) {
+      console.error('Go live error:', err);
       setError(
         locale === 'ja'
-          ? '配信の開始に失敗しました。もう一度お試しください。'
-          : 'Failed to start stream. Please try again.'
+          ? `配信の開始に失敗しました: ${err instanceof Error ? err.message : '不明なエラー'}`
+          : `Failed to start stream: ${err instanceof Error ? err.message : 'Unknown error'}`
       );
     } finally {
       setIsConnecting(false);
     }
-  }, [store?.id, locale]);
+  }, [store?.id, locale, mediaStream]);
 
   // Handle "End Stream"
-  const handleEndStream = useCallback(() => {
-    setIsLive(false);
-
-    if (mediaStream) {
-      mediaStream.getTracks().forEach(track => track.stop());
-      setMediaStream(null);
+  const handleEndStream = useCallback(async () => {
+    // Disconnect WHIP
+    if (whipClientRef.current) {
+      await whipClientRef.current.disconnect();
+      whipClientRef.current = null;
     }
 
+    // Update Firestore status
     if (streamData?.id) {
       fetch(`/api/streams/${streamData.id}`, {
         method: 'PATCH',
@@ -95,11 +153,22 @@ export default function LiveBroadcastPage() {
       }).catch(() => {});
     }
 
+    setIsLive(false);
     setStreamData(null);
-  }, [mediaStream, streamData]);
+    setConnectionState('');
+  }, [streamData]);
 
   const handleStreamReady = useCallback((stream: MediaStream | null) => {
     setMediaStream(stream);
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (whipClientRef.current) {
+        whipClientRef.current.disconnect();
+      }
+    };
   }, []);
 
   return (
@@ -112,25 +181,19 @@ export default function LiveBroadcastPage() {
         </div>
       )}
 
-      {/* Stream Key Info (shown when live) */}
+      {/* Live Status */}
       {isLive && streamData && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-[var(--radius-md)]">
-          <p className="text-sm font-medium text-green-800 mb-2">
-            {locale === 'ja' ? '配信中 — OBSなどで以下の情報を使用してください' : 'Live — Use these details in OBS or your streaming software'}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-            <div>
-              <span className="text-green-600 font-medium">RTMPS URL:</span>
-              <code className="block mt-1 p-2 bg-white rounded border border-green-200 text-green-900 break-all select-all">
-                {streamData.rtmpsUrl}
-              </code>
-            </div>
-            <div>
-              <span className="text-green-600 font-medium">Stream Key:</span>
-              <code className="block mt-1 p-2 bg-white rounded border border-green-200 text-green-900 break-all select-all">
-                {streamData.streamKey}
-              </code>
-            </div>
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse" />
+            <p className="text-sm font-medium text-green-800">
+              {locale === 'ja' ? '配信中' : 'Live'}
+              {connectionState && (
+                <span className="ml-2 text-xs font-normal text-green-600">
+                  ({connectionState})
+                </span>
+              )}
+            </p>
           </div>
         </div>
       )}
@@ -159,7 +222,7 @@ export default function LiveBroadcastPage() {
           <ProductCasting
             products={castProducts}
             onProductsChange={setCastProducts}
-            disabled={isLive}
+            disabled={false}
           />
         </div>
       </div>
