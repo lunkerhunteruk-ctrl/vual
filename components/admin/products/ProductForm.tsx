@@ -93,7 +93,7 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
 
   // Brand state
   const [brandId, setBrandId] = useState<string | null>(initialData?.brandId || initialData?.brand_id || null);
-  const [brands, setBrands] = useState<{ id: string; name: string }[]>([]);
+  const [brands, setBrands] = useState<{ id: string; name: string; slug: string }[]>([]);
   const [isCreatingBrand, setIsCreatingBrand] = useState(false);
   const [newBrandName, setNewBrandName] = useState('');
   const [newBrandNameEn, setNewBrandNameEn] = useState('');
@@ -105,7 +105,7 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
         const res = await fetch('/api/brands');
         const data = await res.json();
         if (data.brands) {
-          setBrands(data.brands.map((b: any) => ({ id: b.id, name: b.name })));
+          setBrands(data.brands.map((b: any) => ({ id: b.id, name: b.name, slug: b.slug })));
         }
       } catch (err) {
         console.error('Failed to fetch brands:', err);
@@ -124,7 +124,7 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
       });
       const data = await res.json();
       if (data.brand) {
-        setBrands(prev => [...prev, { id: data.brand.id, name: data.brand.name }]);
+        setBrands(prev => [...prev, { id: data.brand.id, name: data.brand.name, slug: data.brand.slug }]);
         setBrandId(data.brand.id);
         setNewBrandName('');
         setNewBrandNameEn('');
@@ -647,6 +647,8 @@ export const ProductForm = forwardRef<ProductFormRef, ProductFormProps>(function
         options={variantOptions}
         imageColorMap={imageColorMap}
         basePrice={price ? parseInt(price) : undefined}
+        brandSlug={brands.find(b => b.id === brandId)?.slug || ''}
+        category={category}
         onVariantsChange={setVariants}
         onOptionsChange={setVariantOptions}
       />

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, X, Image as ImageIcon, ChevronDown, ChevronUp, GripVertical } from 'lucide-react';
 import { Input, Button } from '@/components/ui';
 import { useCurrency } from '@/lib/hooks';
+import { generateSku } from '@/lib/utils/sku-generator';
 
 export interface ProductImage {
   id: string;
@@ -34,6 +35,8 @@ interface ProductVariantsProps {
   options: VariantOption[];
   imageColorMap: Record<string, string>;
   basePrice?: number;
+  brandSlug?: string;
+  category?: string;
   onVariantsChange: (variants: ProductVariant[]) => void;
   onOptionsChange: (options: VariantOption[]) => void;
 }
@@ -44,6 +47,8 @@ export function ProductVariants({
   options,
   imageColorMap,
   basePrice,
+  brandSlug = '',
+  category = '',
   onVariantsChange,
   onOptionsChange,
 }: ProductVariantsProps) {
@@ -139,6 +144,7 @@ export function ProductVariants({
     const sizes = sizeOption.values.length > 0 ? sizeOption.values : [null];
 
     const newVariants: ProductVariant[] = [];
+    let index = 0;
 
     colors.forEach(color => {
       sizes.forEach(size => {
@@ -150,22 +156,17 @@ export function ProductVariants({
         if (existing) {
           newVariants.push(existing);
         } else {
-          // Create new variant
-          const skuParts = [
-            color?.toUpperCase().replace(/\s+/g, '-').slice(0, 3) || '',
-            size?.toUpperCase().replace(/\s+/g, '-') || '',
-          ].filter(Boolean);
-
           newVariants.push({
             id: `${color || 'default'}-${size || 'default'}-${Date.now()}`,
             color,
             size,
-            sku: skuParts.join('-') || 'DEFAULT',
+            sku: generateSku({ brandSlug, category, color, size, index }),
             price: null,
             stock: 0,
             imageId: null,
           });
         }
+        index++;
       });
     });
 
@@ -173,7 +174,7 @@ export function ProductVariants({
     if (JSON.stringify(newVariants) !== JSON.stringify(variants)) {
       onVariantsChange(newVariants);
     }
-  }, [colorOption.values, sizeOption.values]);
+  }, [colorOption.values, sizeOption.values, brandSlug, category]);
 
   // Update a single variant
   const updateVariant = (variantId: string, updates: Partial<ProductVariant>) => {
