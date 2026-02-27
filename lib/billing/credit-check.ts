@@ -34,15 +34,17 @@ export async function checkAndDeductCredit(params: {
     };
   }
 
-  // Resolve the store's daily free limit
+  // Resolve the store's daily free limit and reset hour
   let dailyFreeLimit = 3;
+  let resetHour = 0;
   if (storeId) {
     const { data: storeCreds } = await supabase
       .from('store_credits')
-      .select('daily_tryon_limit')
+      .select('daily_tryon_limit, free_reset_hour')
       .eq('store_id', storeId)
       .single();
     dailyFreeLimit = storeCreds?.daily_tryon_limit ?? 3;
+    resetHour = storeCreds?.free_reset_hour ?? 0;
   }
 
   // Find or create consumer_credits
@@ -66,14 +68,12 @@ export async function checkAndDeductCredit(params: {
 
   // Auto-create if not exists
   if (!consumerCreditId) {
-    // Reset at midnight tomorrow (daily free tickets)
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(0, 0, 0, 0);
+    // Calculate next reset time based on store's reset hour (JST)
+    const nextReset = calcNextResetTime(resetHour);
 
     const insertData: Record<string, unknown> = {
       free_tickets_remaining: dailyFreeLimit,
-      free_tickets_reset_at: tomorrow.toISOString(),
+      free_tickets_reset_at: nextReset.toISOString(),
     };
     if (customerId) insertData.customer_id = customerId;
     if (lineUserId) insertData.line_user_id = lineUserId;
@@ -99,19 +99,10 @@ export async function checkAndDeductCredit(params: {
     p_consumer_credit_id: consumerCreditId,
     p_vton_queue_id: vtonQueueId || null,
     p_free_ticket_limit: dailyFreeLimit,
+    p_reset_hour: resetHour,
   });
   data = rpcResult.data;
   error = rpcResult.error;
-
-  // Fallback: if new param not recognized, retry without it
-  if (error && error.message?.includes('p_free_ticket_limit')) {
-    const fallback = await supabase.rpc('deduct_consumer_credit', {
-      p_consumer_credit_id: consumerCreditId,
-      p_vton_queue_id: vtonQueueId || null,
-    });
-    data = fallback.data;
-    error = fallback.error;
-  }
 
   if (error) {
     console.error('deduct_consumer_credit RPC error:', error);
@@ -134,4 +125,24 @@ export async function checkAndDeductCredit(params: {
     creditSource: result.source as CreditCheckResult['creditSource'],
     creditTransactionId: result.tx_id,
   };
+}
+
+/** Calculate the next reset time for a given hour (JST). */
+function calcNextResetTime(resetHour: number): Date {
+  // Get current time in JST
+  const nowUTC = new Date();
+  const jstOffset = 9 * 60 * 60 * 1000;
+  const nowJST = new Date(nowUTC.getTime() + jstOffset);
+
+  // Today's reset time in JST
+  const todayResetJST = new Date(nowJST);
+  todayResetJST.setHours(resetHour, 0, 0, 0);
+
+  // If we've already passed today's reset, next reset is tomorrow
+  const nextResetJST = nowJST >= todayResetJST
+    ? new Date(todayResetJST.getTime() + 24 * 60 * 60 * 1000)
+    : todayResetJST;
+
+  // Convert back to UTC
+  return new Date(nextResetJST.getTime() - jstOffset);
 }

@@ -38,10 +38,11 @@ export async function GET(request: NextRequest) {
       const storeIdResolved = await resolveStoreIdFromRequest(request);
       const { data: storeCredits } = await supabase
         .from('store_credits')
-        .select('daily_tryon_limit')
+        .select('daily_tryon_limit, free_reset_hour')
         .eq('store_id', storeIdResolved)
         .single();
       const dailyFreeLimit = storeCredits?.daily_tryon_limit ?? 3;
+      const resetHour = storeCredits?.free_reset_hour ?? 0;
 
       let query = supabase.from('consumer_credits').select('*');
       if (customerId) {
@@ -54,14 +55,11 @@ export async function GET(request: NextRequest) {
 
       // Auto-create consumer credits on first access
       if (!credits) {
-        // Reset at midnight tomorrow (daily free tickets)
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        tomorrow.setHours(0, 0, 0, 0);
+        const nextReset = calcNextResetTime(resetHour);
 
         const insertData: Record<string, unknown> = {
           free_tickets_remaining: dailyFreeLimit,
-          free_tickets_reset_at: tomorrow.toISOString(),
+          free_tickets_reset_at: nextReset.toISOString(),
         };
         if (customerId) insertData.customer_id = customerId;
         if (lineUserId) insertData.line_user_id = lineUserId;
@@ -104,4 +102,20 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+/** Calculate the next reset time for a given hour (JST). */
+function calcNextResetTime(resetHour: number): Date {
+  const nowUTC = new Date();
+  const jstOffset = 9 * 60 * 60 * 1000;
+  const nowJST = new Date(nowUTC.getTime() + jstOffset);
+
+  const todayResetJST = new Date(nowJST);
+  todayResetJST.setHours(resetHour, 0, 0, 0);
+
+  const nextResetJST = nowJST >= todayResetJST
+    ? new Date(todayResetJST.getTime() + 24 * 60 * 60 * 1000)
+    : todayResetJST;
+
+  return new Date(nextResetJST.getTime() - jstOffset);
 }

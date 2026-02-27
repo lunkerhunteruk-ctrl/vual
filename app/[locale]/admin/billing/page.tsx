@@ -60,7 +60,10 @@ export default function BillingPage() {
   const [purchasingSlug, setPurchasingSlug] = useState<string | null>(null);
   const [dailyLimit, setDailyLimit] = useState(3);
   const [dailyLimitSaved, setDailyLimitSaved] = useState(3);
+  const [resetHour, setResetHour] = useState(0);
+  const [resetHourSaved, setResetHourSaved] = useState(0);
   const [savingLimit, setSavingLimit] = useState(false);
+  const [resettingTickets, setResettingTickets] = useState(false);
   const [subscription, setSubscription] = useState<SubscriptionInfo | null>(null);
   const [subscribing, setSubscribing] = useState(false);
 
@@ -111,6 +114,8 @@ export default function BillingPage() {
       if (data.success) {
         setDailyLimit(data.dailyTryonLimit);
         setDailyLimitSaved(data.dailyTryonLimit);
+        setResetHour(data.freeResetHour ?? 0);
+        setResetHourSaved(data.freeResetHour ?? 0);
       }
     } catch {
       console.error('Failed to fetch settings');
@@ -221,17 +226,18 @@ export default function BillingPage() {
   }, [locale, fetchBalance, fetchTransactions, fetchSubscription]);
 
   const handleSaveLimit = async () => {
-    if (!storeId || dailyLimit === dailyLimitSaved) return;
+    if (!storeId || (dailyLimit === dailyLimitSaved && resetHour === resetHourSaved)) return;
     setSavingLimit(true);
     try {
       const res = await fetch('/api/billing/settings', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ storeId, dailyTryonLimit: dailyLimit }),
+        body: JSON.stringify({ storeId, dailyTryonLimit: dailyLimit, freeResetHour: resetHour }),
       });
       const data = await res.json();
       if (data.success) {
         setDailyLimitSaved(dailyLimit);
+        setResetHourSaved(resetHour);
         toast.success(t('saved'));
       } else {
         toast.error(data.error || 'Failed to save');
@@ -240,6 +246,35 @@ export default function BillingPage() {
       toast.error(locale === 'ja' ? '保存に失敗しました' : 'Save failed');
     } finally {
       setSavingLimit(false);
+    }
+  };
+
+  const handleResetFreeTickets = async () => {
+    if (!storeId) return;
+    const confirmed = window.confirm(
+      locale === 'ja'
+        ? '全ユーザーの無料枠を今すぐリセットしますか？'
+        : 'Reset free tickets for all users now?'
+    );
+    if (!confirmed) return;
+
+    setResettingTickets(true);
+    try {
+      const res = await fetch('/api/billing/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storeId, action: 'resetFreeTickets' }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success(locale === 'ja' ? '無料枠をリセットしました' : 'Free tickets reset');
+      } else {
+        toast.error(data.error || 'Failed to reset');
+      }
+    } catch {
+      toast.error(locale === 'ja' ? 'リセットに失敗しました' : 'Reset failed');
+    } finally {
+      setResettingTickets(false);
     }
   };
 
@@ -501,7 +536,8 @@ export default function BillingPage() {
         </div>
 
         {/* Settings */}
-        <div className="bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-xl p-5">
+        <div className="bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-xl p-5 space-y-5">
+          {/* Daily limit */}
           <div className="flex items-center justify-between gap-6">
             <div className="flex-1">
               <p className="text-sm font-medium text-[var(--color-title-active)] flex items-center gap-2">
@@ -512,28 +548,64 @@ export default function BillingPage() {
                 {t('dailyTryonLimitDesc')}
               </p>
             </div>
-            <div className="flex items-center gap-3">
-              <input
-                type="number"
-                min={1}
-                max={100}
-                value={dailyLimit}
-                onChange={(e) => setDailyLimit(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                className="w-20 h-10 px-3 text-sm text-center bg-white border border-[var(--color-line)] rounded-lg focus:outline-none focus:border-[var(--color-accent)] text-[var(--color-title-active)]"
-              />
-              <button
-                onClick={handleSaveLimit}
-                disabled={savingLimit || dailyLimit === dailyLimitSaved}
-                className="h-10 px-4 flex items-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
-              >
-                {savingLimit ? (
-                  <Loader2 size={14} className="animate-spin" />
-                ) : (
-                  <Check size={14} />
-                )}
-                {t('save')}
-              </button>
+            <input
+              type="number"
+              min={1}
+              max={100}
+              value={dailyLimit}
+              onChange={(e) => setDailyLimit(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
+              className="w-20 h-10 px-3 text-sm text-center bg-white border border-[var(--color-line)] rounded-lg focus:outline-none focus:border-[var(--color-accent)] text-[var(--color-title-active)]"
+            />
+          </div>
+
+          {/* Reset hour */}
+          <div className="flex items-center justify-between gap-6">
+            <div className="flex-1">
+              <p className="text-sm font-medium text-[var(--color-title-active)] flex items-center gap-2">
+                <Clock size={15} />
+                {locale === 'ja' ? '無料枠リセット時刻' : 'Free ticket reset time'}
+              </p>
+              <p className="text-xs text-[var(--color-text-label)] mt-0.5 ml-[23px]">
+                {locale === 'ja' ? '毎日この時刻に無料枠がリセットされます（日本時間）' : 'Free tickets reset daily at this time (JST)'}
+              </p>
             </div>
+            <select
+              value={resetHour}
+              onChange={(e) => setResetHour(parseInt(e.target.value))}
+              className="w-24 h-10 px-3 text-sm bg-white border border-[var(--color-line)] rounded-lg focus:outline-none focus:border-[var(--color-accent)] text-[var(--color-title-active)]"
+            >
+              {Array.from({ length: 24 }, (_, i) => (
+                <option key={i} value={i}>{`${i}:00`}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Save + Manual reset */}
+          <div className="flex items-center justify-between gap-3 pt-2 border-t border-[var(--color-line)]">
+            <button
+              onClick={handleResetFreeTickets}
+              disabled={resettingTickets}
+              className="h-10 px-4 flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] border border-[var(--color-accent)]/30 rounded-[var(--radius-md)] hover:bg-[var(--color-accent)]/5 transition-colors disabled:opacity-50"
+            >
+              {resettingTickets ? (
+                <Loader2 size={14} className="animate-spin" />
+              ) : (
+                <Clock size={14} />
+              )}
+              {locale === 'ja' ? '今すぐリセット' : 'Reset now'}
+            </button>
+            <button
+              onClick={handleSaveLimit}
+              disabled={savingLimit || (dailyLimit === dailyLimitSaved && resetHour === resetHourSaved)}
+              className="h-10 px-4 flex items-center gap-2 text-sm font-medium bg-[var(--color-title-active)] text-white rounded-[var(--radius-md)] hover:opacity-90 transition-opacity disabled:opacity-50"
+            >
+              {savingLimit ? (
+                <Loader2 size={14} className="animate-spin" />
+              ) : (
+                <Check size={14} />
+              )}
+              {t('save')}
+            </button>
           </div>
         </div>
 
