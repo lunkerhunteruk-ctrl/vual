@@ -67,14 +67,13 @@ export async function listLiveInputs() {
 
 // ─── Playback URLs ───────────────────────────────────────────
 
+// Cloudflare assigns a customer subdomain per account (e.g. customer-iachfaxtqeo2l99t)
+// This must be a NEXT_PUBLIC_ var so client components can build playback URLs
+const CF_CUSTOMER_SUBDOMAIN = process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t';
+
 // HLS playback URL for a live input
 export function getPlaybackUrl(uid: string): string {
-  return `https://customer-${CF_ACCOUNT_ID?.slice(0, 8)}.cloudflarestream.com/${uid}/manifest/video.m3u8`;
-}
-
-// Customer subdomain playback (generic fallback)
-export function getPlaybackUrlFromVideoId(videoId: string): string {
-  return `https://cloudflarestream.com/${videoId}/manifest/video.m3u8`;
+  return `https://${CF_CUSTOMER_SUBDOMAIN}.cloudflarestream.com/${uid}/manifest/video.m3u8`;
 }
 
 // Thumbnail URL
@@ -85,7 +84,7 @@ export function getThumbnailUrl(videoId: string, options?: { width?: number; hei
   if (options?.time) params.set('time', options.time);
 
   const queryString = params.toString();
-  return `https://cloudflarestream.com/${videoId}/thumbnails/thumbnail.jpg${queryString ? `?${queryString}` : ''}`;
+  return `https://${CF_CUSTOMER_SUBDOMAIN}.cloudflarestream.com/${videoId}/thumbnails/thumbnail.jpg${queryString ? `?${queryString}` : ''}`;
 }
 
 // ─── Types ───────────────────────────────────────────────────

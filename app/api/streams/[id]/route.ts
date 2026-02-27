@@ -48,6 +48,7 @@ export async function GET(
 }
 
 // PATCH: Update stream (status, products, etc.)
+// Non-blocking on Firestore failures — returns success even if DB update fails
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -55,30 +56,35 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await request.json();
-    const db = getFirestoreAdmin();
 
-    const updateData: Record<string, any> = {
-      updatedAt: FieldValue.serverTimestamp(),
-    };
+    try {
+      const db = getFirestoreAdmin();
 
-    if (body.status !== undefined) {
-      updateData.status = body.status;
-      if (body.status === 'live') {
-        updateData.startedAt = FieldValue.serverTimestamp();
-      } else if (body.status === 'ended') {
-        updateData.endedAt = FieldValue.serverTimestamp();
+      const updateData: Record<string, any> = {
+        updatedAt: FieldValue.serverTimestamp(),
+      };
+
+      if (body.status !== undefined) {
+        updateData.status = body.status;
+        if (body.status === 'live') {
+          updateData.startedAt = FieldValue.serverTimestamp();
+        } else if (body.status === 'ended') {
+          updateData.endedAt = FieldValue.serverTimestamp();
+        }
       }
-    }
 
-    if (body.products !== undefined) {
-      updateData.products = body.products;
-    }
+      if (body.products !== undefined) {
+        updateData.products = body.products;
+      }
 
-    if (body.title !== undefined) {
-      updateData.title = body.title;
-    }
+      if (body.title !== undefined) {
+        updateData.title = body.title;
+      }
 
-    await db.collection('streams').doc(id).update(updateData);
+      await db.collection('streams').doc(id).update(updateData);
+    } catch (firestoreError) {
+      console.error('Firestore update error (non-blocking):', firestoreError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
