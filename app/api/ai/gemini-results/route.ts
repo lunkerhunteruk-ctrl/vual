@@ -53,6 +53,7 @@ export async function GET(request: NextRequest) {
     const all = searchParams.get('all') === 'true';
     const limit = parseInt(searchParams.get('limit') || '50');
     const storeId = searchParams.get('storeId');
+    const source = searchParams.get('source'); // 'studio' or 'customer'
 
     // Only fetch images from last 5 days
     const fiveDaysAgo = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString();
@@ -64,9 +65,14 @@ export async function GET(request: NextRequest) {
       .order('created_at', { ascending: false });
 
     // Filter by store_id for multi-tenant isolation
-    console.log('[GeminiResults] Fetch with storeId:', storeId || 'NONE');
+    console.log('[GeminiResults] Fetch with storeId:', storeId || 'NONE', 'source:', source || 'ALL');
     if (storeId) {
       query.eq('store_id', storeId);
+    }
+
+    // Filter by source to separate studio vs customer results
+    if (source) {
+      query.eq('source', source);
     }
 
     if (!all) {
@@ -151,6 +157,7 @@ export async function POST(request: NextRequest) {
       .insert({
         image_url: imageUrl,
         garment_count: body.garmentCount || 1,
+        source: body.source || 'studio',
         ...(body.storeId ? { store_id: body.storeId } : {}),
       })
       .select()

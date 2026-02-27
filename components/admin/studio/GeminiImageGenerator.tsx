@@ -257,7 +257,7 @@ export function GeminiImageGenerator({
     const fetchSavedImages = async () => {
       if (!storeId) return;
       try {
-        const response = await fetch(`/api/ai/gemini-results?all=true&storeId=${storeId}`);
+        const response = await fetch(`/api/ai/gemini-results?all=true&storeId=${storeId}&source=studio`);
         const data = await response.json();
         if (data.success && data.results) {
           setSavedImages(data.results);

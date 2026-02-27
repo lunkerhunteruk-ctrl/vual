@@ -418,12 +418,16 @@ export async function POST(request: NextRequest) {
 
               const garmentCount = 1 + (secondGarmentImages.length > 0 ? 1 : 0) + (thirdGarmentImages.length > 0 ? 1 : 0) + (fourthGarmentImages.length > 0 ? 1 : 0) + (fifthGarmentImages.length > 0 ? 1 : 0);
 
+              // Determine source: customer (has lineUserId/customerId) vs studio (admin)
+              const source = (body.lineUserId || body.customerId) ? 'customer' : 'studio';
+
               const insertPayload: Record<string, unknown> = {
                   image_url: savedImageUrl,
                   storage_path: filename,
                   garment_count: garmentCount,
                   product_ids: body.productIds || [],
                   expires_at: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+                  source,
                   ...(body.storeId ? { store_id: body.storeId } : {}),
                 };
               console.log('[Gemini] Inserting gemini_results:', JSON.stringify(insertPayload));
