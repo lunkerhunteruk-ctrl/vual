@@ -3,6 +3,15 @@ import { createServerClient } from '@/lib/supabase';
 import { generateLabel } from '@/lib/utils/label-generator';
 import JSZip from 'jszip';
 
+function safeContentDisposition(filename: string): string {
+  // eslint-disable-next-line no-control-regex
+  const isAscii = /^[\x00-\x7F]*$/.test(filename);
+  if (isAscii) {
+    return `attachment; filename="${filename}"`;
+  }
+  return `attachment; filename="${encodeURIComponent(filename)}"; filename*=UTF-8''${encodeURIComponent(filename)}`;
+}
+
 interface LabelRequest {
   productId: string;
   variantIds?: string[];
@@ -68,7 +77,7 @@ export async function POST(request: NextRequest) {
       return new NextResponse(new Uint8Array(label), {
         headers: {
           'Content-Type': 'image/png',
-          'Content-Disposition': `attachment; filename="label-${productId.slice(0, 8)}.png"`,
+          'Content-Disposition': safeContentDisposition(`label-${productId.slice(0, 8)}.png`),
         },
       });
     }
@@ -89,7 +98,7 @@ export async function POST(request: NextRequest) {
       return new NextResponse(new Uint8Array(label), {
         headers: {
           'Content-Type': 'image/png',
-          'Content-Disposition': `attachment; filename="label-${v.sku}.png"`,
+          'Content-Disposition': safeContentDisposition(`label-${v.sku}.png`),
         },
       });
     }
@@ -115,7 +124,7 @@ export async function POST(request: NextRequest) {
     return new NextResponse(new Uint8Array(zipBuffer), {
       headers: {
         'Content-Type': 'application/zip',
-        'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(`labels-${product.name}.zip`)}`,
+        'Content-Disposition': safeContentDisposition(`labels-${product.name}.zip`),
       },
     });
   } catch (error) {
