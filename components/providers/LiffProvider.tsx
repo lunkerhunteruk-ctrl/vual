@@ -139,8 +139,24 @@ export function LiffProvider({ children }: LiffProviderProps) {
           }
         } else {
           // External browser - LIFF init not needed (login via /auth/callback)
+          // Restore session from localStorage if LINE user ID is saved
+          const savedLineUserId = localStorage.getItem('vual-line-user-id');
+          if (savedLineUserId) {
+            setCustomer({
+              id: savedLineUserId,
+              lineUserId: savedLineUserId,
+              displayName: '',
+              addresses: [],
+              orderCount: 0,
+              totalSpent: 0,
+              isVip: false,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            }, 'line');
+          } else {
+            setCustomerLoading(false);
+          }
           setIsReady(true);
-          setCustomerLoading(false);
         }
       } catch (err) {
         console.error('Auth initialization failed:', err);
