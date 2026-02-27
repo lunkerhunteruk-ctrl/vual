@@ -123,7 +123,7 @@ export default function EditProductPage() {
         </Link>
         <div className="flex items-center gap-3">
           <Button
-            variant="ghost"
+            variant="secondary"
             leftIcon={<Tag size={16} />}
             onClick={() => setShowLabelModal(true)}
           >
