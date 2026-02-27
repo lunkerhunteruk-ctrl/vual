@@ -56,12 +56,12 @@ export function CollectionHeroSlideshow({ fallback }: CollectionHeroSlideshowPro
             className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] brightness-75"
           />
 
-          {/* Main image — height-fit, no crop */}
+          {/* Main image — fully contained, no crop */}
           <div className="absolute inset-0 z-[1] flex items-center justify-center">
             <img
               src={currentUrl}
               alt=""
-              className="h-full w-auto object-contain"
+              className="max-w-full max-h-full object-contain"
             />
           </div>
 
