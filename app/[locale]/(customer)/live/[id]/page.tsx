@@ -552,6 +552,16 @@ export default function LiveStreamPage() {
                   <button
                     onClick={() => {
                       setShowProducts(false);
+                      router.push(`/${locale}/tryon`);
+                    }}
+                    className="flex items-center gap-1 px-3.5 py-1.5 border border-purple-400 text-purple-600 text-xs font-medium rounded-full hover:bg-purple-50 transition-colors whitespace-nowrap"
+                  >
+                    <Sparkles size={12} />
+                    {locale === 'ja' ? '試着する' : 'Try On'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowProducts(false);
                       router.push(`/${locale}/cart`);
                     }}
                     className="px-3.5 py-1.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
@@ -638,8 +648,8 @@ export default function LiveStreamPage() {
                           >
                             <Sparkles size={12} />
                             {inPool
-                              ? (locale === 'ja' ? '試着リスト済' : 'In Try-On')
-                              : (locale === 'ja' ? '試着する' : 'Try On')
+                              ? (locale === 'ja' ? '追加済み' : 'Added')
+                              : (locale === 'ja' ? '試着に追加' : 'Add to Try-On')
                             }
                           </button>
                         );
