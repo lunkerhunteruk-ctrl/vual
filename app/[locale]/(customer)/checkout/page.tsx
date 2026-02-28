@@ -10,12 +10,6 @@ import { Button, Modal } from '@/components/ui';
 import { useCartStore } from '@/lib/store/cart';
 import { formatPrice } from '@/lib/utils/currency';
 
-const shippingMethods = [
-  { id: 'pickup', label: 'Pickup at store', price: 0 },
-  { id: 'standard', label: 'Standard Shipping', price: 5 },
-  { id: 'express', label: 'Express Shipping', price: 15 },
-];
-
 export default function CheckoutPage() {
   const router = useRouter();
   const locale = useLocale();
@@ -23,6 +17,12 @@ export default function CheckoutPage() {
 
   // Connect to real cart store
   const { items: cartItems, subtotal, total, shippingCost, setShippingCost, clearCart } = useCartStore();
+
+  const shippingMethods = [
+    { id: 'pickup', label: t('pickupAtStore'), price: 0 },
+    { id: 'standard', label: t('standardShipping'), price: 5 },
+    { id: 'express', label: t('expressShipping'), price: 15 },
+  ];
 
   const [selectedShipping, setSelectedShipping] = useState('pickup');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -49,7 +49,7 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder = async () => {
     if (cartItems.length === 0) {
-      setError('Your cart is empty');
+      setError(t('cartEmpty'));
       return;
     }
 
@@ -114,10 +114,10 @@ export default function CheckoutPage() {
           <ShoppingBag size={32} className="text-[var(--color-text-label)]" />
         </div>
         <p className="text-sm text-[var(--color-text-body)] mb-6 text-center">
-          Your cart is empty. Add items before checkout.
+          {t('emptyCart')}
         </p>
         <Link href={`/${locale}`}>
-          <Button variant="primary">Continue Shopping</Button>
+          <Button variant="primary">{t('continueShopping')}</Button>
         </Link>
       </div>
     );
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
       {/* Order Summary */}
       <section className="px-4 py-6 border-b border-[var(--color-line)]">
         <h2 className="text-sm font-medium tracking-[0.1em] text-[var(--color-text-label)] uppercase mb-4">
-          Order Summary ({cartItems.length} items)
+          {t('orderSummary')} ({t('items', { count: cartItems.length })})
         </h2>
         <div className="space-y-3">
           {cartItems.map(item => (
@@ -158,7 +158,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm text-[var(--color-title-active)] truncate">{item.name}</p>
-                <p className="text-xs text-[var(--color-text-label)]">Qty: {item.quantity}</p>
+                <p className="text-xs text-[var(--color-text-label)]">{t('qty', { count: item.quantity })}</p>
               </div>
               <p className="text-sm font-medium text-[var(--color-title-active)]">
                 {formatPrice(item.price * item.quantity, item.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
@@ -174,19 +174,19 @@ export default function CheckoutPage() {
           {t('shippingAddress')}
         </h2>
         <p className="text-xs text-[var(--color-text-label)] mb-4">
-          Leave empty to enter address during Stripe checkout
+          {t('addressHint')}
         </p>
         <div className="space-y-3">
           <input
             type="text"
-            placeholder="Full Name"
+            placeholder={t('fullName')}
             value={shippingAddress.name}
             onChange={(e) => setShippingAddress(prev => ({ ...prev, name: e.target.value }))}
             className="w-full px-4 py-3 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm"
           />
           <input
             type="text"
-            placeholder="Address"
+            placeholder={t('address')}
             value={shippingAddress.address}
             onChange={(e) => setShippingAddress(prev => ({ ...prev, address: e.target.value }))}
             className="w-full px-4 py-3 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm"
@@ -194,14 +194,14 @@ export default function CheckoutPage() {
           <div className="grid grid-cols-2 gap-3">
             <input
               type="text"
-              placeholder="City"
+              placeholder={t('city')}
               value={shippingAddress.city}
               onChange={(e) => setShippingAddress(prev => ({ ...prev, city: e.target.value }))}
               className="w-full px-4 py-3 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm"
             />
             <input
               type="text"
-              placeholder="Postal Code"
+              placeholder={t('postalCode')}
               value={shippingAddress.postal_code}
               onChange={(e) => setShippingAddress(prev => ({ ...prev, postal_code: e.target.value }))}
               className="w-full px-4 py-3 border border-[var(--color-line)] rounded-[var(--radius-md)] text-sm"
@@ -239,7 +239,7 @@ export default function CheckoutPage() {
                 <span className="text-sm text-[var(--color-text-body)]">{method.label}</span>
               </div>
               <span className="text-sm font-medium text-[var(--color-title-active)]">
-                {method.price === 0 ? (locale === 'ja' ? '無料' : 'FREE') : formatPrice(method.price, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
+                {method.price === 0 ? t('free') : formatPrice(method.price, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
               </span>
             </button>
           ))}
@@ -250,13 +250,13 @@ export default function CheckoutPage() {
       <section className="px-4 py-6 border-b border-[var(--color-line)]">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-[var(--color-text-body)]">Subtotal</span>
+            <span className="text-sm text-[var(--color-text-body)]">{t('subtotal')}</span>
             <span className="text-sm text-[var(--color-title-active)]">{formatPrice(subtotal, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm text-[var(--color-text-body)]">Shipping</span>
+            <span className="text-sm text-[var(--color-text-body)]">{t('shipping')}</span>
             <span className="text-sm text-[var(--color-title-active)]">
-              {shippingCost === 0 ? (locale === 'ja' ? '無料' : 'FREE') : formatPrice(shippingCost, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
+              {shippingCost === 0 ? t('free') : formatPrice(shippingCost, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
             </span>
           </div>
         </div>
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
       >
         <div className="flex items-center justify-between mb-4">
           <span className="text-sm font-medium tracking-[0.1em] text-[var(--color-text-body)] uppercase">
-            Total
+            {t('total')}
           </span>
           <span className="text-xl font-semibold text-[var(--color-title-active)]">
             {formatPrice(total, cartItems[0]?.currency || 'jpy', locale === 'ja' ? 'ja-JP' : undefined, false)}
@@ -285,10 +285,10 @@ export default function CheckoutPage() {
           onClick={handlePlaceOrder}
           disabled={cartItems.length === 0}
         >
-          {t('placeOrder')} - Pay with Stripe
+          {t('placeOrder')} - {t('payWithStripe')}
         </Button>
         <p className="text-xs text-center text-[var(--color-text-label)] mt-2">
-          You will be redirected to Stripe for secure payment
+          {t('stripeRedirect')}
         </p>
       </motion.div>
     </div>
