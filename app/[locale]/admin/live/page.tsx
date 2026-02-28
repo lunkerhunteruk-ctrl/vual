@@ -14,6 +14,7 @@ interface CastProduct {
   price: number;
   currency: string;
   imageUrl?: string;
+  category?: string;
 }
 
 interface StreamData {
@@ -50,6 +51,7 @@ export default function LiveBroadcastPage() {
       price: p.price,
       currency: p.currency,
       imageUrl: p.imageUrl || null,
+      category: p.category || null,
     }));
 
     updateDoc(doc(db, 'streams', streamData.id), {

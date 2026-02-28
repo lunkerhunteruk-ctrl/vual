@@ -4,6 +4,23 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, X, GripVertical, Search, Loader2, Package } from 'lucide-react';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+  arrayMove,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { Button } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 
@@ -13,6 +30,7 @@ interface CastProduct {
   price: number;
   currency: string;
   imageUrl?: string;
+  category?: string;
 }
 
 interface ProductCastingProps {
@@ -21,13 +39,113 @@ interface ProductCastingProps {
   disabled?: boolean;
 }
 
+// ─── Sortable Product Item ─────────────────────────────────
+
+function SortableProductItem({
+  product,
+  index,
+  disabled,
+  onRemove,
+  formatPrice,
+}: {
+  product: CastProduct;
+  index: number;
+  disabled: boolean;
+  onRemove: (id: string) => void;
+  formatPrice: (price: number, currency: string) => string;
+}) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: product.id, disabled });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 10 : undefined,
+    opacity: isDragging ? 0.8 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`flex items-center gap-3 p-3 bg-[var(--color-bg-element)] rounded-[var(--radius-md)] group ${
+        isDragging ? 'shadow-lg ring-2 ring-[var(--color-accent)]/30' : ''
+      }`}
+    >
+      <button
+        className="cursor-grab active:cursor-grabbing touch-none opacity-0 group-hover:opacity-100 transition-opacity"
+        {...attributes}
+        {...listeners}
+      >
+        <GripVertical size={16} className="text-[var(--color-text-label)]" />
+      </button>
+
+      {product.imageUrl ? (
+        <img
+          src={product.imageUrl}
+          alt={product.name}
+          className="w-12 h-12 object-cover rounded-[var(--radius-sm)]"
+        />
+      ) : (
+        <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-bg-input)] to-[var(--color-line)] rounded-[var(--radius-sm)] flex items-center justify-center">
+          <Package size={16} className="text-[var(--color-text-label)]" />
+        </div>
+      )}
+
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium text-[var(--color-title-active)] truncate">
+          {product.name}
+        </p>
+        <p className="text-xs text-[var(--color-accent)]">
+          {formatPrice(product.price, product.currency)}
+        </p>
+      </div>
+
+      <span className="text-xs text-[var(--color-text-label)] px-2 py-1 bg-white rounded-full">
+        #{index + 1}
+      </span>
+
+      {!disabled && (
+        <button
+          onClick={() => onRemove(product.id)}
+          className="p-1 rounded-full hover:bg-[var(--color-bg-input)] transition-colors opacity-0 group-hover:opacity-100"
+        >
+          <X size={14} className="text-[var(--color-text-label)]" />
+        </button>
+      )}
+    </div>
+  );
+}
+
+// ─── Product Casting ───────────────────────────────────────
+
 export function ProductCasting({ products, onProductsChange, disabled = false }: ProductCastingProps) {
   const t = useTranslations('admin.live');
   const locale = useLocale();
   const [showPicker, setShowPicker] = useState(false);
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
   const removeProduct = (id: string) => {
     onProductsChange(products.filter(p => p.id !== id));
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      const oldIndex = products.findIndex(p => p.id === active.id);
+      const newIndex = products.findIndex(p => p.id === over.id);
+      onProductsChange(arrayMove(products, oldIndex, newIndex));
+    }
   };
 
   const formatPrice = (price: number, currency: string) => {
@@ -64,59 +182,31 @@ export function ProductCasting({ products, onProductsChange, disabled = false }:
           {t('productsToFeature')}
         </p>
 
-        {/* Product List */}
+        {/* Product List with Drag & Drop */}
         <div className="space-y-2">
-          <AnimatePresence>
-            {products.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                className="flex items-center gap-3 p-3 bg-[var(--color-bg-element)] rounded-[var(--radius-md)] group"
+          {products.length > 0 ? (
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={products.map(p => p.id)}
+                strategy={verticalListSortingStrategy}
               >
-                <button className="cursor-grab opacity-0 group-hover:opacity-100 transition-opacity" disabled={disabled}>
-                  <GripVertical size={16} className="text-[var(--color-text-label)]" />
-                </button>
-
-                {product.imageUrl ? (
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="w-12 h-12 object-cover rounded-[var(--radius-sm)]"
+                {products.map((product, index) => (
+                  <SortableProductItem
+                    key={product.id}
+                    product={product}
+                    index={index}
+                    disabled={disabled}
+                    onRemove={removeProduct}
+                    formatPrice={formatPrice}
                   />
-                ) : (
-                  <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-bg-input)] to-[var(--color-line)] rounded-[var(--radius-sm)] flex items-center justify-center">
-                    <Package size={16} className="text-[var(--color-text-label)]" />
-                  </div>
-                )}
-
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[var(--color-title-active)] truncate">
-                    {product.name}
-                  </p>
-                  <p className="text-xs text-[var(--color-accent)]">
-                    {formatPrice(product.price, product.currency)}
-                  </p>
-                </div>
-
-                <span className="text-xs text-[var(--color-text-label)] px-2 py-1 bg-white rounded-full">
-                  #{index + 1}
-                </span>
-
-                {!disabled && (
-                  <button
-                    onClick={() => removeProduct(product.id)}
-                    className="p-1 rounded-full hover:bg-[var(--color-bg-input)] transition-colors opacity-0 group-hover:opacity-100"
-                  >
-                    <X size={14} className="text-[var(--color-text-label)]" />
-                  </button>
-                )}
-              </motion.div>
-            ))}
-          </AnimatePresence>
-
-          {products.length === 0 && (
+                ))}
+              </SortableContext>
+            </DndContext>
+          ) : (
             <div className="py-8 text-center">
               <Package size={24} className="mx-auto mb-2 text-[var(--color-text-label)] opacity-50" />
               <p className="text-sm text-[var(--color-text-label)]">
@@ -179,6 +269,7 @@ function ProductPickerModal({ isOpen, onClose, onSelect, selectedIds }: ProductP
           imageUrl: p.product_images?.find((img: any) => img.is_primary)?.url
             || p.product_images?.[0]?.url
             || undefined,
+          category: p.category || undefined,
         })));
       }
     } catch {

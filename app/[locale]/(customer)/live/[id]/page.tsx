@@ -20,10 +20,13 @@ import {
   Radio,
   Users,
   Package,
+  Sparkles,
 } from 'lucide-react';
 import { Button, Skeleton } from '@/components/ui';
 import { MuxPlayer } from '@/components/customer/live';
 import { useCartStore } from '@/lib/store/cart';
+import { useTryOnStore } from '@/lib/store/tryon';
+import { mapToVtonCategory } from '@/lib/utils/vton-category';
 import type { LiveComment, LiveStream } from '@/lib/types';
 
 interface StreamProduct {
@@ -32,6 +35,7 @@ interface StreamProduct {
   price: number;
   currency: string;
   imageUrl?: string | null;
+  category?: string | null;
 }
 
 export default function LiveStreamPage() {
@@ -42,6 +46,9 @@ export default function LiveStreamPage() {
   const t = useTranslations('customer.live');
 
   const addItem = useCartStore((s) => s.addItem);
+  const addToPool = useTryOnStore((s) => s.addToPool);
+  const tryOnPool = useTryOnStore((s) => s.tryOnPool);
+  const [addedToTryOn, setAddedToTryOn] = useState<Set<string>>(new Set());
 
   // Real-time Firestore listener for stream data
   const [stream, setStream] = useState<LiveStream | null>(null);
@@ -124,18 +131,6 @@ export default function LiveStreamPage() {
         return next;
       });
     }, 2000);
-  };
-
-  const handleBuyNow = (product: StreamProduct) => {
-    addItem({
-      productId: product.id,
-      name: product.name,
-      price: product.price,
-      currency: product.currency || 'jpy',
-      image: product.imageUrl || undefined,
-    });
-    setShowProducts(false);
-    router.push(`/${locale}/cart`);
   };
 
   const formatPrice = (price: number, currency: string) => {
@@ -367,12 +362,23 @@ export default function LiveStreamPage() {
                     {products.length}
                   </span>
                 </h3>
-                <button
-                  onClick={() => setShowProducts(false)}
-                  className="p-1 rounded-full hover:bg-gray-100"
-                >
-                  <X size={20} className="text-[var(--color-text-label)]" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setShowProducts(false);
+                      router.push(`/${locale}/cart`);
+                    }}
+                    className="px-3.5 py-1.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
+                  >
+                    {locale === 'ja' ? '購入に進む' : 'Checkout'}
+                  </button>
+                  <button
+                    onClick={() => setShowProducts(false)}
+                    className="p-1 rounded-full hover:bg-gray-100"
+                  >
+                    <X size={20} className="text-[var(--color-text-label)]" />
+                  </button>
+                </div>
               </div>
 
               {/* Product List — scrollable */}
@@ -418,22 +424,53 @@ export default function LiveStreamPage() {
 
                     {/* Action Buttons */}
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <button
-                        onClick={() => handleAddToCart(product)}
-                        className={`p-2 rounded-full border transition-colors ${
-                          addedToCart.has(product.id)
-                            ? 'bg-green-50 border-green-300 text-green-600'
-                            : 'border-gray-200 text-gray-500 hover:bg-gray-50'
-                        }`}
-                      >
-                        <ShoppingCart size={16} />
-                      </button>
+                      {(() => {
+                        const inPool = addedToTryOn.has(product.id) || tryOnPool.some(p => p.productId === product.id);
+                        return (
+                          <button
+                            onClick={() => {
+                              if (inPool) return;
+                              const vtonCat = mapToVtonCategory(product.category || '') || 'upper_body';
+                              addToPool({
+                                productId: product.id,
+                                name: product.name,
+                                image: product.imageUrl || '',
+                                price: product.price,
+                                currency: product.currency || 'jpy',
+                                category: vtonCat,
+                                storeId: stream?.shopId || '',
+                                addedAt: new Date().toISOString(),
+                              });
+                              setAddedToTryOn(prev => new Set(prev).add(product.id));
+                            }}
+                            className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-full transition-colors whitespace-nowrap ${
+                              inPool
+                                ? 'bg-purple-50 border border-purple-300 text-purple-600'
+                                : 'border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5'
+                            }`}
+                          >
+                            <Sparkles size={12} />
+                            {inPool
+                              ? (locale === 'ja' ? '試着リスト済' : 'In Try-On')
+                              : (locale === 'ja' ? '試着する' : 'Try On')
+                            }
+                          </button>
+                        );
+                      })()}
 
                       <button
-                        onClick={() => handleBuyNow(product)}
-                        className="px-3 py-1.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
+                        onClick={() => handleAddToCart(product)}
+                        className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-full transition-colors whitespace-nowrap ${
+                          addedToCart.has(product.id)
+                            ? 'bg-green-50 border border-green-300 text-green-600'
+                            : 'bg-[var(--color-bg-inverse)] text-white hover:opacity-90'
+                        }`}
                       >
-                        Buy Now
+                        <ShoppingCart size={12} />
+                        {addedToCart.has(product.id)
+                          ? (locale === 'ja' ? '追加済み' : 'Added')
+                          : (locale === 'ja' ? 'カートに追加' : 'Add to Cart')
+                        }
                       </button>
                     </div>
                   </div>
