@@ -54,7 +54,7 @@ export function MuxPlayer({
 
   return (
     <div className={`relative w-full h-full bg-black ${className}`}>
-      <div className={`absolute inset-0 [&>iframe]:!w-full [&>iframe]:!h-full [&>iframe]:!object-cover ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`absolute inset-0 [&>iframe]:!w-full [&>iframe]:!h-full [&>iframe]:!object-contain ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Stream
           src={playbackId}
           streamRef={streamRef}
