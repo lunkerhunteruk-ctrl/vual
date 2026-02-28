@@ -258,7 +258,6 @@ export default function LiveStreamPage() {
             playbackId={stream.playbackId!}
             title={stream.title}
             autoPlay={isLive}
-            muted={false}
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-b from-gray-900 to-black">
