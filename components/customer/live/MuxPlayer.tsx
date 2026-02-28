@@ -23,7 +23,7 @@ export function MuxPlayer({
   const [error, setError] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const streamRef = useRef<StreamPlayerApi>(undefined);
-  const customerCode = process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t';
+  const customerCode = (process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t').replace(/^customer-/, '');
 
   const toggleMute = useCallback(() => {
     const player = streamRef.current;
