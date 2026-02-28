@@ -108,57 +108,47 @@ export async function POST(request: NextRequest) {
       console.log(`Stream ${liveInputUid} is now live`);
 
       // Send LINE push notification to all customers with line_user_id
+      const notifyLog: Record<string, unknown> = { step: 'start', liveInputUid };
       try {
-        // Wait briefly for client-side setDoc to complete (race condition)
         let streamDoc = await streamRef.get();
         let streamData = streamDoc.data();
-        console.log('[webhook] Stream data (1st read):', JSON.stringify({ shopId: streamData?.shopId, title: streamData?.title, status: streamData?.status }));
+        notifyLog.shopId1 = streamData?.shopId || null;
         if (!streamData?.shopId) {
-          // Client setDoc hasn't completed yet — retry after short delay
-          console.log('[webhook] shopId missing, waiting 3s for client setDoc...');
           await new Promise(resolve => setTimeout(resolve, 3000));
           streamDoc = await streamRef.get();
           streamData = streamDoc.data();
-          console.log('[webhook] Stream data (2nd read):', JSON.stringify({ shopId: streamData?.shopId, title: streamData?.title }));
+          notifyLog.shopId2 = streamData?.shopId || null;
         }
         const shopId = streamData?.shopId;
         const title = streamData?.title || 'ライブ配信';
+        notifyLog.shopId = shopId;
 
         const supabase = createServerClient();
-        console.log('[webhook] shopId:', shopId, '| supabase:', supabase ? 'OK' : 'NULL');
-        if (!shopId) {
-          console.log('[webhook] No shopId found in stream doc — cannot send LINE notification');
-        }
+        notifyLog.supabase = supabase ? 'OK' : 'NULL';
         if (shopId && supabase) {
-          // Get LINE user IDs of customers
           const { data: customers, error: custErr } = await supabase
             .from('customers')
             .select('line_user_id')
             .eq('store_id', shopId)
             .not('line_user_id', 'is', null);
 
-          if (custErr) {
-            console.error('[webhook] Failed to fetch customers:', custErr);
-          }
-
+          notifyLog.custErr = custErr?.message || null;
           const lineUserIds = (customers || [])
             .map((c) => c.line_user_id)
             .filter((id): id is string => !!id);
+          notifyLog.lineUserCount = lineUserIds.length;
 
-          console.log('[webhook] LINE user IDs found:', lineUserIds.length, lineUserIds);
           if (lineUserIds.length > 0) {
-            // Get store's LINE channel access token
             const { data: store } = await supabase
               .from('stores')
               .select('line_channel_access_token')
               .eq('id', shopId)
               .single();
 
+            notifyLog.hasToken = !!store?.line_channel_access_token;
             const lineToken = store?.line_channel_access_token;
-            console.log('[webhook] LINE token:', lineToken ? lineToken.substring(0, 20) + '...' : 'NULL');
             if (lineToken) {
               const message = liveStreamStartMessage({ title, streamId: liveInputUid });
-              // Send in batches of 500 (LINE API limit)
               for (let i = 0; i < lineUserIds.length; i += 500) {
                 const batch = lineUserIds.slice(i, i + 500);
                 const res = await fetch('https://api.line.me/v2/bot/message/multicast', {
@@ -170,22 +160,31 @@ export async function POST(request: NextRequest) {
                   body: JSON.stringify({ to: batch, messages: [message] }),
                 });
                 const resBody = await res.text();
-                console.log(`[webhook] LINE multicast response: ${res.status} ${resBody}`);
-                if (!res.ok) {
-                  console.error(`[webhook] LINE multicast failed: ${res.status} ${resBody}`);
-                }
+                notifyLog.lineStatus = res.status;
+                notifyLog.lineResponse = resBody;
               }
-              console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInputUid}`);
+              notifyLog.step = 'sent';
             } else {
-              console.log(`No LINE token configured for store ${shopId}`);
+              notifyLog.step = 'no_token';
             }
           } else {
-            console.log(`No LINE users to notify for store ${shopId}`);
+            notifyLog.step = 'no_users';
           }
+        } else {
+          notifyLog.step = shopId ? 'no_supabase' : 'no_shopId';
         }
       } catch (notifyErr) {
-        console.error('LINE notification error (non-blocking):', notifyErr);
+        notifyLog.step = 'error';
+        notifyLog.error = notifyErr instanceof Error ? notifyErr.message : String(notifyErr);
       }
+      // Write full notification result to Firestore for debugging
+      try {
+        await db.collection('webhook_logs').add({
+          type: 'line_notify',
+          ...notifyLog,
+          createdAt: FieldValue.serverTimestamp(),
+        });
+      } catch (_) { /* ignore */ }
     } else if (state === 'ready') {
       // Recording is ready (stream ended and video is available)
       const streamDoc = await streamRef.get();
