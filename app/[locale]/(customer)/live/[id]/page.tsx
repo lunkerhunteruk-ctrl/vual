@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
@@ -21,9 +23,8 @@ import {
 } from 'lucide-react';
 import { Button, Skeleton } from '@/components/ui';
 import { MuxPlayer } from '@/components/customer/live';
-import { useStream } from '@/lib/hooks/useStreams';
 import { useCartStore } from '@/lib/store/cart';
-import type { LiveComment } from '@/lib/types';
+import type { LiveComment, LiveStream } from '@/lib/types';
 
 interface StreamProduct {
   id: string;
@@ -40,8 +41,45 @@ export default function LiveStreamPage() {
   const streamId = params.id as string;
   const t = useTranslations('customer.live');
 
-  const { stream, isLoading } = useStream(streamId);
   const addItem = useCartStore((s) => s.addItem);
+
+  // Real-time Firestore listener for stream data
+  const [stream, setStream] = useState<LiveStream | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!streamId || !db) {
+      setIsLoading(false);
+      return;
+    }
+
+    const unsubscribe = onSnapshot(
+      doc(db, 'streams', streamId),
+      (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setStream({
+            id: docSnap.id,
+            ...data,
+            createdAt: data.createdAt?.toDate(),
+            updatedAt: data.updatedAt?.toDate(),
+            scheduledAt: data.scheduledAt?.toDate(),
+            startedAt: data.startedAt?.toDate(),
+            endedAt: data.endedAt?.toDate(),
+          } as LiveStream);
+        } else {
+          setStream(null);
+        }
+        setIsLoading(false);
+      },
+      (error) => {
+        console.error('Stream listener error:', error);
+        setIsLoading(false);
+      }
+    );
+
+    return () => unsubscribe();
+  }, [streamId]);
 
   const [showProducts, setShowProducts] = useState(false);
   const [comments, setComments] = useState<LiveComment[]>([]);
@@ -131,7 +169,7 @@ export default function LiveStreamPage() {
     );
   }
 
-  // Products are now stored as objects with full data
+  // Products are stored as objects — real-time updated via onSnapshot
   const products: StreamProduct[] = (stream.products || []).map((p: any) =>
     typeof p === 'string' ? { id: p, name: '', price: 0, currency: 'jpy' } : p
   );
@@ -297,7 +335,7 @@ export default function LiveStreamPage() {
         </div>
       </div>
 
-      {/* Products Bottom Sheet */}
+      {/* Products Bottom Sheet — shows ~2 items, scrollable */}
       <AnimatePresence>
         {showProducts && hasProducts && (
           <>
@@ -314,7 +352,7 @@ export default function LiveStreamPage() {
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl z-30"
-              style={{ maxHeight: '65vh' }}
+              style={{ maxHeight: '40vh' }}
             >
               {/* Handle bar */}
               <div className="flex items-center justify-center py-3">
@@ -322,24 +360,27 @@ export default function LiveStreamPage() {
               </div>
 
               {/* Header */}
-              <div className="flex items-center justify-between px-5 pb-4">
-                <h3 className="text-lg font-semibold text-[var(--color-title-active)]">
+              <div className="flex items-center justify-between px-5 pb-3">
+                <h3 className="text-base font-semibold text-[var(--color-title-active)]">
                   Products
+                  <span className="ml-2 text-xs font-normal text-[var(--color-text-label)]">
+                    {products.length}
+                  </span>
                 </h3>
                 <button
                   onClick={() => setShowProducts(false)}
                   className="p-1 rounded-full hover:bg-gray-100"
                 >
-                  <X size={22} className="text-[var(--color-text-label)]" />
+                  <X size={20} className="text-[var(--color-text-label)]" />
                 </button>
               </div>
 
-              {/* Product List */}
-              <div className="px-5 pb-8 overflow-y-auto" style={{ maxHeight: 'calc(65vh - 80px)' }}>
+              {/* Product List — scrollable */}
+              <div className="px-5 pb-6 overflow-y-auto" style={{ maxHeight: 'calc(40vh - 72px)' }}>
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="flex items-center gap-4 py-4 border-b border-gray-100 last:border-0"
+                    className="flex items-center gap-3 py-3 border-b border-gray-100 last:border-0"
                   >
                     {/* Product Image */}
                     {product.imageUrl ? (
@@ -351,12 +392,12 @@ export default function LiveStreamPage() {
                         <img
                           src={product.imageUrl}
                           alt={product.name}
-                          className="w-[72px] h-[90px] object-cover rounded-xl bg-gray-100"
+                          className="w-14 h-[70px] object-cover rounded-lg bg-gray-100"
                         />
                       </Link>
                     ) : (
-                      <div className="w-[72px] h-[90px] bg-gray-100 rounded-xl flex items-center justify-center shrink-0">
-                        <Package size={20} className="text-gray-300" />
+                      <div className="w-14 h-[70px] bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                        <Package size={18} className="text-gray-300" />
                       </div>
                     )}
 
@@ -366,33 +407,31 @@ export default function LiveStreamPage() {
                         href={`/${locale}/product/${product.id}`}
                         onClick={() => setShowProducts(false)}
                       >
-                        <p className="text-sm font-medium text-[var(--color-title-active)] line-clamp-2">
+                        <p className="text-sm font-medium text-[var(--color-title-active)] line-clamp-1">
                           {product.name || '商品を見る'}
                         </p>
                       </Link>
-                      <p className="text-sm font-semibold text-[var(--color-accent)] mt-1">
+                      <p className="text-sm font-semibold text-[var(--color-accent)] mt-0.5">
                         {formatPrice(product.price, product.currency)}
                       </p>
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-2 shrink-0">
-                      {/* Cart Button */}
+                    <div className="flex items-center gap-1.5 shrink-0">
                       <button
                         onClick={() => handleAddToCart(product)}
-                        className={`p-2.5 rounded-full border transition-colors ${
+                        className={`p-2 rounded-full border transition-colors ${
                           addedToCart.has(product.id)
                             ? 'bg-green-50 border-green-300 text-green-600'
                             : 'border-gray-200 text-gray-500 hover:bg-gray-50'
                         }`}
                       >
-                        <ShoppingCart size={18} />
+                        <ShoppingCart size={16} />
                       </button>
 
-                      {/* Buy Now Button */}
                       <button
                         onClick={() => handleBuyNow(product)}
-                        className="px-4 py-2 bg-[var(--color-accent)] text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
+                        className="px-3 py-1.5 bg-[var(--color-accent)] text-white text-xs font-medium rounded-full hover:opacity-90 transition-opacity whitespace-nowrap"
                       >
                         Buy Now
                       </button>

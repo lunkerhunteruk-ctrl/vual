@@ -5,12 +5,12 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Video, VideoOff, Mic, MicOff, Settings, Check } from 'lucide-react';
 
-export type Resolution = '1440p' | '1080p' | '720p';
+export type Resolution = '1080p' | '720p';
 
+// Portrait (9:16) resolutions for mobile-optimized streaming
 const RESOLUTION_MAP: Record<Resolution, { width: number; height: number; label: string }> = {
-  '1440p': { width: 2560, height: 1440, label: '1440p (2K)' },
-  '1080p': { width: 1920, height: 1080, label: '1080p (Full HD)' },
-  '720p': { width: 1280, height: 720, label: '720p (HD)' },
+  '1080p': { width: 1080, height: 1920, label: '1080p (縦)' },
+  '720p': { width: 720, height: 1280, label: '720p (縦)' },
 };
 
 interface LivePreviewProps {
@@ -204,8 +204,8 @@ export function LivePreview({ isLive = false, viewerCount = 0, onStreamReady }: 
         </div>
       </div>
 
-      {/* Video Preview */}
-      <div className="aspect-video bg-[var(--color-bg-inverse)] relative">
+      {/* Video Preview (9:16 portrait) */}
+      <div className="bg-[var(--color-bg-inverse)] relative" style={{ aspectRatio: '9/16', maxHeight: '70vh' }}>
         {/* Real video element */}
         <video
           ref={videoRef}
