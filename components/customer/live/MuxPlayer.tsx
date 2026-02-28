@@ -1,114 +1,49 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
+import { Stream, type StreamPlayerApi } from '@cloudflare/stream-react';
 import { Loader2, VolumeX, Volume2 } from 'lucide-react';
-
-declare global {
-  interface Window {
-    Stream?: (iframe: HTMLIFrameElement) => any;
-  }
-}
 
 interface StreamPlayerProps {
   playbackId: string;
   title?: string;
   autoPlay?: boolean;
   className?: string;
-  onMutedChange?: (muted: boolean) => void;
-  hideUnmuteButton?: boolean;
 }
 
-// Cloudflare Stream iframe player with SDK-based mute control.
+// Cloudflare Stream React component player.
+// Starts muted for autoplay, with a custom unmute button.
 export function MuxPlayer({
   playbackId,
   title,
   autoPlay = true,
   className = '',
-  onMutedChange,
-  hideUnmuteButton = false,
 }: StreamPlayerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const playerRef = useRef<any>(null);
-  const sdkLoadedRef = useRef(false);
-
-  const subdomain = process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t';
-
-  const params = new URLSearchParams();
-  if (autoPlay) params.set('autoplay', 'true');
-  params.set('muted', 'true'); // Always start muted for autoplay
-  params.set('preload', 'auto');
-  params.set('loop', 'false');
-  params.set('controls', 'false'); // We provide our own unmute button
-  params.set('primaryColor', '#e74c3c');
-
-  const embedUrl = `https://${subdomain}.cloudflarestream.com/${playbackId}/iframe?${params.toString()}`;
-
-  // Load Cloudflare Stream SDK
-  useEffect(() => {
-    if (sdkLoadedRef.current || window.Stream) {
-      sdkLoadedRef.current = true;
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://embed.cloudflarestream.com/embed/sdk.latest.js';
-    script.async = true;
-    script.onload = () => { sdkLoadedRef.current = true; };
-    document.head.appendChild(script);
-  }, []);
-
-  // Initialize player once iframe loads
-  const handleIframeLoad = useCallback(() => {
-    setIsLoading(false);
-
-    // Try to init SDK player with retries
-    const tryInit = (attempts: number) => {
-      if (attempts <= 0 || !iframeRef.current) return;
-      if (window.Stream) {
-        try {
-          playerRef.current = window.Stream(iframeRef.current);
-          console.log('[MuxPlayer] SDK player initialized:', !!playerRef.current);
-        } catch (e) {
-          console.warn('[MuxPlayer] Stream SDK init error:', e);
-        }
-      } else {
-        console.log('[MuxPlayer] SDK not loaded yet, retrying...', attempts);
-        setTimeout(() => tryInit(attempts - 1), 500);
-      }
-    };
-    tryInit(10); // Try up to 5 seconds
-  }, []);
+  const streamRef = useRef<StreamPlayerApi>();
+  const customerCode = process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t';
 
   const toggleMute = useCallback(() => {
-    const newMuted = !isMuted;
-
-    if (playerRef.current) {
-      try {
-        playerRef.current.muted = newMuted;
-        if (!newMuted) {
-          playerRef.current.play();
-        }
-        // Verify the change took effect
-        console.log('[MuxPlayer] SDK muted set to:', newMuted, '| actual:', playerRef.current.muted, '| volume:', playerRef.current.volume);
-      } catch (e) {
-        console.warn('[MuxPlayer] Mute toggle error:', e);
+    const player = streamRef.current;
+    if (player) {
+      const newMuted = !isMuted;
+      player.muted = newMuted;
+      if (!newMuted) {
+        player.volume = 1;
+        player.play();
       }
-    } else {
-      console.warn('[MuxPlayer] No SDK player ref — cannot toggle mute');
+      setIsMuted(newMuted);
     }
-
-    setIsMuted(newMuted);
-    onMutedChange?.(newMuted);
-  }, [isMuted, onMutedChange]);
+  }, [isMuted]);
 
   if (error) {
     return (
       <div className={`flex flex-col items-center justify-center bg-black ${className}`}>
         <p className="text-sm text-white/70 mb-3">配信の読み込みに失敗しました</p>
         <button
-          onClick={() => { setError(false); setIsLoading(true); playerRef.current = null; }}
+          onClick={() => { setError(false); setIsLoading(true); }}
           className="px-4 py-2 text-xs font-medium text-white bg-white/20 rounded-full hover:bg-white/30 transition-colors"
         >
           再接続
@@ -119,27 +54,34 @@ export function MuxPlayer({
 
   return (
     <div className={`relative w-full h-full bg-black ${className}`}>
-      <iframe
-        ref={iframeRef}
-        src={embedUrl}
-        title={title || 'Live Stream'}
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-        allowFullScreen
-        className={`w-full h-full border-0 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-        style={{ backgroundColor: 'black' }}
-        onLoad={handleIframeLoad}
-        onError={() => { setError(true); setIsLoading(false); }}
-      />
+      <div className={`w-full h-full ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Stream
+          src={playbackId}
+          streamRef={streamRef}
+          customerCode={customerCode}
+          autoplay={autoPlay}
+          muted
+          controls={false}
+          responsive={false}
+          preload="auto"
+          primaryColor="#e74c3c"
+          title={title || 'Live Stream'}
+          width="100%"
+          height="100%"
+          onCanPlay={() => { setIsLoading(false); setError(false); }}
+          onError={() => { setError(true); setIsLoading(false); }}
+        />
+      </div>
 
       {/* Loading overlay */}
       {isLoading && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-10">
           <Loader2 size={32} className="animate-spin text-white mb-3" />
           <p className="text-xs text-white/70">配信を読み込み中...</p>
         </div>
       )}
 
-      {/* Mute toggle button — always visible */}
+      {/* Mute toggle button */}
       {!isLoading && (
         <button
           onClick={toggleMute}

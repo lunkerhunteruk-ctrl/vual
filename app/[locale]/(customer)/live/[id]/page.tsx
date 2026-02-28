@@ -277,7 +277,7 @@ export default function LiveStreamPage() {
       </div>
 
       {/* Header Overlay */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent px-4 pt-4 pb-8">
+      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent px-4 pt-4 pb-8 pointer-events-none [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
         <div className="flex items-center justify-between">
           <Link
             href={`/${locale}/live`}
@@ -313,7 +313,7 @@ export default function LiveStreamPage() {
       </div>
 
       {/* Comments Stream */}
-      <div className="absolute left-4 right-16 bottom-32 max-h-48 overflow-y-auto scrollbar-hide">
+      <div className="absolute left-4 right-16 bottom-32 max-h-48 overflow-y-auto scrollbar-hide pointer-events-none">
         <AnimatePresence>
           {comments.slice(-8).map((comment) => (
             <motion.div
