@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
-import { supabase } from '@/lib/supabase';
-import { multicastMessage } from '@/lib/line-messaging';
+import { createServerClient } from '@/lib/supabase';
 import { liveStreamStartMessage } from '@/lib/notifications/templates';
 
 const MIN_DURATION_MINUTES = 5;
@@ -68,25 +67,54 @@ export async function POST(request: NextRequest) {
         const shopId = streamData?.shopId;
         const title = streamData?.title || 'ライブ配信';
 
+        const supabase = createServerClient();
         if (shopId && supabase) {
-          const { data: customers } = await supabase
+          // Get LINE user IDs of customers
+          const { data: customers, error: custErr } = await supabase
             .from('customers')
             .select('line_user_id')
             .eq('store_id', shopId)
             .not('line_user_id', 'is', null);
+
+          if (custErr) {
+            console.error('Failed to fetch customers:', custErr);
+          }
 
           const lineUserIds = (customers || [])
             .map((c) => c.line_user_id)
             .filter((id): id is string => !!id);
 
           if (lineUserIds.length > 0) {
-            const message = liveStreamStartMessage({ title, streamId: liveInputUid });
-            // Send in batches of 500 (LINE API limit)
-            for (let i = 0; i < lineUserIds.length; i += 500) {
-              const batch = lineUserIds.slice(i, i + 500);
-              await multicastMessage(shopId, batch, [message]);
+            // Get store's LINE channel access token
+            const { data: store } = await supabase
+              .from('stores')
+              .select('line_channel_access_token')
+              .eq('id', shopId)
+              .single();
+
+            const lineToken = store?.line_channel_access_token;
+            if (lineToken) {
+              const message = liveStreamStartMessage({ title, streamId: liveInputUid });
+              // Send in batches of 500 (LINE API limit)
+              for (let i = 0; i < lineUserIds.length; i += 500) {
+                const batch = lineUserIds.slice(i, i + 500);
+                const res = await fetch('https://api.line.me/v2/bot/message/multicast', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${lineToken}`,
+                  },
+                  body: JSON.stringify({ to: batch, messages: [message] }),
+                });
+                if (!res.ok) {
+                  const errBody = await res.text();
+                  console.error(`LINE multicast failed: ${res.status} ${errBody}`);
+                }
+              }
+              console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInputUid}`);
+            } else {
+              console.log(`No LINE token configured for store ${shopId}`);
             }
-            console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInputUid}`);
           } else {
             console.log(`No LINE users to notify for store ${shopId}`);
           }
