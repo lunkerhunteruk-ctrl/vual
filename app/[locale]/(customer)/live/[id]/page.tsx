@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, increment, collection, addDoc, query, orderBy, limitToLast, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -93,13 +93,54 @@ export default function LiveStreamPage() {
   const [newComment, setNewComment] = useState('');
   const [isLiked, setIsLiked] = useState(false);
   const [addedToCart, setAddedToCart] = useState<Set<string>>(new Set());
+  const [floatingHearts, setFloatingHearts] = useState<{ id: number; x: number }[]>([]);
+  const [actionToasts, setActionToasts] = useState<{ id: string; type: 'tryon' | 'cart'; userName: string; productName: string }[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const commentsEndRef = useRef<HTMLDivElement>(null);
+  const heartIdRef = useRef(0);
 
   // Auto-scroll comments
   useEffect(() => {
     commentsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [comments]);
+
+  // Listen for real-time actions (try-on, cart adds) from other viewers
+  useEffect(() => {
+    if (!streamId || !db) return;
+
+    const actionsQuery = query(
+      collection(db, 'streams', streamId, 'actions'),
+      orderBy('createdAt', 'desc'),
+      limitToLast(1)
+    );
+
+    let isFirst = true;
+    const unsubscribe = onSnapshot(actionsQuery, (snapshot) => {
+      // Skip initial load
+      if (isFirst) {
+        isFirst = false;
+        return;
+      }
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added') {
+          const data = change.doc.data();
+          const toast = {
+            id: change.doc.id,
+            type: data.type as 'tryon' | 'cart',
+            userName: data.userName || 'ゲスト',
+            productName: data.productName || '',
+          };
+          setActionToasts(prev => [...prev, toast].slice(-3));
+          // Auto-remove after 3s
+          setTimeout(() => {
+            setActionToasts(prev => prev.filter(t => t.id !== toast.id));
+          }, 3000);
+        }
+      });
+    });
+
+    return () => unsubscribe();
+  }, [streamId]);
 
   const handleSendComment = () => {
     if (!newComment.trim()) return;
@@ -115,6 +156,41 @@ export default function LiveStreamPage() {
     setNewComment('');
   };
 
+  // Broadcast an action (try-on or cart) to all viewers
+  const broadcastAction = useCallback(async (type: 'tryon' | 'cart', productName: string) => {
+    if (!streamId || !db) return;
+    try {
+      await addDoc(collection(db, 'streams', streamId, 'actions'), {
+        type,
+        userName: 'ゲスト',
+        productName,
+        createdAt: serverTimestamp(),
+      });
+    } catch {
+      // Non-critical — silently fail
+    }
+  }, [streamId]);
+
+  // Handle like — increment in Firestore + floating heart animation
+  const handleLike = useCallback(() => {
+    setIsLiked(true);
+
+    // Floating heart animation
+    const id = ++heartIdRef.current;
+    const x = Math.random() * 40 - 20; // random offset
+    setFloatingHearts(prev => [...prev, { id, x }]);
+    setTimeout(() => {
+      setFloatingHearts(prev => prev.filter(h => h.id !== id));
+    }, 1500);
+
+    // Increment in Firestore
+    if (streamId && db) {
+      updateDoc(doc(db, 'streams', streamId), {
+        likeCount: increment(1),
+      }).catch(() => {});
+    }
+  }, [streamId]);
+
   const handleAddToCart = (product: StreamProduct) => {
     addItem({
       productId: product.id,
@@ -124,6 +200,7 @@ export default function LiveStreamPage() {
       image: product.imageUrl || undefined,
     });
     setAddedToCart(prev => new Set(prev).add(product.id));
+    broadcastAction('cart', product.name);
     setTimeout(() => {
       setAddedToCart(prev => {
         const next = new Set(prev);
@@ -262,10 +339,54 @@ export default function LiveStreamPage() {
         <div ref={commentsEndRef} />
       </div>
 
+      {/* Floating Hearts Animation */}
+      <div className="absolute right-8 bottom-44 pointer-events-none">
+        <AnimatePresence>
+          {floatingHearts.map((heart) => (
+            <motion.div
+              key={heart.id}
+              initial={{ opacity: 1, y: 0, x: heart.x, scale: 1 }}
+              animate={{ opacity: 0, y: -120, scale: 1.2 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              className="absolute bottom-0"
+            >
+              <Heart size={20} className="fill-red-500 text-red-500" />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* Action Toasts (試着追加/カート追加) */}
+      <div className="absolute left-4 right-16 bottom-[280px] flex flex-col gap-1.5 pointer-events-none">
+        <AnimatePresence>
+          {actionToasts.map((toast) => (
+            <motion.div
+              key={toast.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1.5 w-fit"
+            >
+              {toast.type === 'tryon' ? (
+                <Sparkles size={12} className="text-purple-300" />
+              ) : (
+                <ShoppingCart size={12} className="text-green-300" />
+              )}
+              <span className="text-[11px] text-white/90">
+                {toast.userName}が
+                {toast.productName ? `「${toast.productName}」を` : ''}
+                {toast.type === 'tryon' ? '試着リストに追加' : 'カートに追加'}
+              </span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
       {/* Right Side Actions */}
       <div className="absolute right-4 bottom-40 flex flex-col gap-4">
         <button
-          onClick={() => setIsLiked(!isLiked)}
+          onClick={handleLike}
           className="flex flex-col items-center"
         >
           <div className="p-2 rounded-full bg-white/10 backdrop-blur-sm">
@@ -274,6 +395,11 @@ export default function LiveStreamPage() {
               className={isLiked ? 'fill-red-500 text-red-500' : 'text-white'}
             />
           </div>
+          {(stream?.likeCount || 0) > 0 && (
+            <span className="text-[10px] text-white/70 mt-1">
+              {(stream?.likeCount || 0).toLocaleString()}
+            </span>
+          )}
         </button>
         <button
           onClick={() => inputRef.current?.focus()}
@@ -442,6 +568,7 @@ export default function LiveStreamPage() {
                                 addedAt: new Date().toISOString(),
                               });
                               setAddedToTryOn(prev => new Set(prev).add(product.id));
+                              broadcastAction('tryon', product.name);
                             }}
                             className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-full transition-colors whitespace-nowrap ${
                               inPool

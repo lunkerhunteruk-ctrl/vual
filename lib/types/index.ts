@@ -251,6 +251,7 @@ export interface LiveStream {
   duration?: number;
   viewerCount: number;
   peakViewerCount: number;
+  likeCount?: number;
   playbackId?: string;
   streamKey?: string;
   products: string[]; // Product IDs
