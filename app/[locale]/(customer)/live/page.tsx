@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import { Radio } from 'lucide-react';
 import { StreamList } from '@/components/customer/live';
 import { useStreams } from '@/lib/hooks';
-import { useCustomerContext } from '@/lib/store/customer-context';
+import { useStoreContext } from '@/lib/store/store-context';
 
 export default function LivePage() {
   const t = useTranslations('customer.live');
-  const { storeId } = useCustomerContext();
-  const { streams, isLoading } = useStreams({ shopId: storeId || undefined, status: 'live' });
+  const store = useStoreContext((s) => s.store);
+  const { streams, isLoading } = useStreams({ shopId: store?.id || undefined, status: 'live' });
 
   return (
     <div className="min-h-screen pb-4">

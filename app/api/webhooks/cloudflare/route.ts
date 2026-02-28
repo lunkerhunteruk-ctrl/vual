@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+    console.log('[webhook] Received:', JSON.stringify({ uid: body.uid, liveInput: body.liveInput, state: body.status?.state }));
 
     // Cloudflare Stream webhook payload structure:
     // { uid, readyToStream, status: { state }, liveInput, meta, ... }
@@ -45,6 +46,7 @@ export async function POST(request: NextRequest) {
     const state = body.status?.state; // 'ready', 'live-inprogress', 'error'
 
     if (!liveInputUid) {
+      console.log('[webhook] No liveInput in payload, skipping');
       return NextResponse.json({ received: true });
     }
 
@@ -67,16 +69,23 @@ export async function POST(request: NextRequest) {
         // Wait briefly for client-side setDoc to complete (race condition)
         let streamDoc = await streamRef.get();
         let streamData = streamDoc.data();
+        console.log('[webhook] Stream data (1st read):', JSON.stringify({ shopId: streamData?.shopId, title: streamData?.title, status: streamData?.status }));
         if (!streamData?.shopId) {
           // Client setDoc hasn't completed yet — retry after short delay
+          console.log('[webhook] shopId missing, waiting 3s for client setDoc...');
           await new Promise(resolve => setTimeout(resolve, 3000));
           streamDoc = await streamRef.get();
           streamData = streamDoc.data();
+          console.log('[webhook] Stream data (2nd read):', JSON.stringify({ shopId: streamData?.shopId, title: streamData?.title }));
         }
         const shopId = streamData?.shopId;
         const title = streamData?.title || 'ライブ配信';
 
         const supabase = createServerClient();
+        console.log('[webhook] shopId:', shopId, '| supabase:', supabase ? 'OK' : 'NULL');
+        if (!shopId) {
+          console.log('[webhook] No shopId found in stream doc — cannot send LINE notification');
+        }
         if (shopId && supabase) {
           // Get LINE user IDs of customers
           const { data: customers, error: custErr } = await supabase
@@ -86,13 +95,14 @@ export async function POST(request: NextRequest) {
             .not('line_user_id', 'is', null);
 
           if (custErr) {
-            console.error('Failed to fetch customers:', custErr);
+            console.error('[webhook] Failed to fetch customers:', custErr);
           }
 
           const lineUserIds = (customers || [])
             .map((c) => c.line_user_id)
             .filter((id): id is string => !!id);
 
+          console.log('[webhook] LINE user IDs found:', lineUserIds.length, lineUserIds);
           if (lineUserIds.length > 0) {
             // Get store's LINE channel access token
             const { data: store } = await supabase
@@ -102,6 +112,7 @@ export async function POST(request: NextRequest) {
               .single();
 
             const lineToken = store?.line_channel_access_token;
+            console.log('[webhook] LINE token:', lineToken ? lineToken.substring(0, 20) + '...' : 'NULL');
             if (lineToken) {
               const message = liveStreamStartMessage({ title, streamId: liveInputUid });
               // Send in batches of 500 (LINE API limit)
@@ -115,9 +126,10 @@ export async function POST(request: NextRequest) {
                   },
                   body: JSON.stringify({ to: batch, messages: [message] }),
                 });
+                const resBody = await res.text();
+                console.log(`[webhook] LINE multicast response: ${res.status} ${resBody}`);
                 if (!res.ok) {
-                  const errBody = await res.text();
-                  console.error(`LINE multicast failed: ${res.status} ${errBody}`);
+                  console.error(`[webhook] LINE multicast failed: ${res.status} ${resBody}`);
                 }
               }
               console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInputUid}`);
