@@ -177,28 +177,9 @@ export function LiffProvider({ children }: LiffProviderProps) {
   const login = async () => {
     if (typeof window === 'undefined') return;
 
-    const inLine = isLineBrowser();
-
-    if (inLine) {
-      // LINE browser: use LIFF SDK login
-      let liffInstance = getLiff();
-      if (!liffInstance) {
-        try {
-          liffInstance = await initLiff();
-          setLiff(liffInstance);
-        } catch (e) {
-          console.error('LIFF login failed:', e);
-          return;
-        }
-      }
-      const currentUrl = window.location.href;
-      const redirectUri = `https://vual.jp/auth/callback?returnTo=${encodeURIComponent(currentUrl)}`;
-      liffInstance.login({ redirectUri });
-    } else {
-      // External browser: use direct LINE OAuth on vual.jp domain (no LIFF dependency)
-      const currentUrl = window.location.href;
-      window.location.href = `https://vual.jp/api/auth/line?returnTo=${encodeURIComponent(currentUrl)}`;
-    }
+    // Use LINE OAuth flow for all browsers (works in both LINE browser and external)
+    const currentUrl = window.location.href;
+    window.location.href = `https://vual.jp/api/auth/line?returnTo=${encodeURIComponent(currentUrl)}`;
   };
 
   const logout = () => {
