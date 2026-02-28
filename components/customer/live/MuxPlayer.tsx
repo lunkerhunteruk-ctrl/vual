@@ -15,6 +15,7 @@ interface StreamPlayerProps {
   autoPlay?: boolean;
   className?: string;
   onMutedChange?: (muted: boolean) => void;
+  hideUnmuteButton?: boolean;
 }
 
 // Cloudflare Stream iframe player with SDK-based mute control.
@@ -24,6 +25,7 @@ export function MuxPlayer({
   autoPlay = true,
   className = '',
   onMutedChange,
+  hideUnmuteButton = false,
 }: StreamPlayerProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -135,7 +137,7 @@ export function MuxPlayer({
       {!isLoading && (
         <button
           onClick={toggleMute}
-          className={`absolute bottom-4 left-4 z-20 flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-medium transition-all active:scale-95 ${
+          className={`absolute bottom-24 left-4 z-20 flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-medium transition-all active:scale-95 ${
             isMuted
               ? 'bg-red-600/90 backdrop-blur-sm animate-pulse'
               : 'bg-black/50 backdrop-blur-sm'
