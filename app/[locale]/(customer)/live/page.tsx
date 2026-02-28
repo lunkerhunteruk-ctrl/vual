@@ -10,7 +10,7 @@ import { useCustomerContext } from '@/lib/store/customer-context';
 export default function LivePage() {
   const t = useTranslations('customer.live');
   const { storeId } = useCustomerContext();
-  const { streams, isLoading } = useStreams({ shopId: storeId || undefined });
+  const { streams, isLoading } = useStreams({ shopId: storeId || undefined, status: 'live' });
 
   return (
     <div className="min-h-screen pb-4">
