@@ -313,7 +313,7 @@ export default function LiveStreamPage() {
       </div>
 
       {/* Comments Stream */}
-      <div className="absolute left-4 right-16 bottom-24 max-h-60 overflow-y-auto scrollbar-hide">
+      <div className="absolute left-4 right-16 bottom-32 max-h-48 overflow-y-auto scrollbar-hide">
         <AnimatePresence>
           {comments.slice(-8).map((comment) => (
             <motion.div
