@@ -54,20 +54,26 @@ export function MuxPlayer({
 
   return (
     <div className={`relative w-full h-full bg-black ${className}`}>
-      <div className={`absolute inset-0 [&>iframe]:!w-full [&>iframe]:!h-full [&>iframe]:!object-contain ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-        <Stream
-          src={playbackId}
-          streamRef={streamRef}
-          customerCode={customerCode}
-          autoplay={autoPlay}
-          muted
-          controls={false}
-          preload="auto"
-          primaryColor="#e74c3c"
-          title={title || 'Live Stream'}
-          onCanPlay={() => { setIsLoading(false); setError(false); }}
-          onError={() => { setError(true); setIsLoading(false); }}
-        />
+      {/* 9:19.5 container: height=100%, width derived from aspect ratio, centered */}
+      <div className={`absolute inset-0 flex items-start justify-center ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <div
+          className="h-full max-w-full [&>iframe]:!w-full [&>iframe]:!h-full"
+          style={{ aspectRatio: '9/19.5' }}
+        >
+          <Stream
+            src={playbackId}
+            streamRef={streamRef}
+            customerCode={customerCode}
+            autoplay={autoPlay}
+            muted
+            controls={false}
+            preload="auto"
+            primaryColor="#e74c3c"
+            title={title || 'Live Stream'}
+            onCanPlay={() => { setIsLoading(false); setError(false); }}
+            onError={() => { setError(true); setIsLoading(false); }}
+          />
+        </div>
       </div>
 
       {/* Loading overlay */}

@@ -7,10 +7,10 @@ import { Video, VideoOff, Mic, MicOff, Settings, Check } from 'lucide-react';
 
 export type Resolution = '1080p' | '720p';
 
-// Portrait (9:16) resolutions for mobile-optimized streaming
+// Portrait (9:19.5) resolutions matching iPhone 16 screen ratio
 const RESOLUTION_MAP: Record<Resolution, { width: number; height: number; label: string }> = {
-  '1080p': { width: 1080, height: 1920, label: '1080p (縦)' },
-  '720p': { width: 720, height: 1280, label: '720p (縦)' },
+  '1080p': { width: 1080, height: 2340, label: '1080p (縦)' },
+  '720p': { width: 720, height: 1560, label: '720p (縦)' },
 };
 
 interface LivePreviewProps {
@@ -209,8 +209,8 @@ export function LivePreview({ isLive = false, viewerCount = 0, onStreamReady }: 
         </div>
       </div>
 
-      {/* Video Preview (9:16 portrait, centered) */}
-      <div className="bg-[var(--color-bg-inverse)] relative mx-auto" style={{ aspectRatio: '9/16', maxHeight: '70vh' }}>
+      {/* Video Preview (9:19.5 portrait, matching iPhone 16 screen) */}
+      <div className="bg-[var(--color-bg-inverse)] relative mx-auto" style={{ aspectRatio: '9/19.5', maxHeight: '70vh' }}>
         {/* Real video element */}
         <video
           ref={videoRef}
