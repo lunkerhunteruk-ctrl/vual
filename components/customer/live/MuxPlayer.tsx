@@ -69,10 +69,12 @@ export function MuxPlayer({
       if (window.Stream) {
         try {
           playerRef.current = window.Stream(iframeRef.current);
+          console.log('[MuxPlayer] SDK player initialized:', !!playerRef.current);
         } catch (e) {
-          console.warn('Stream SDK init error:', e);
+          console.warn('[MuxPlayer] Stream SDK init error:', e);
         }
       } else {
+        console.log('[MuxPlayer] SDK not loaded yet, retrying...', attempts);
         setTimeout(() => tryInit(attempts - 1), 500);
       }
     };
@@ -88,9 +90,13 @@ export function MuxPlayer({
         if (!newMuted) {
           playerRef.current.play();
         }
+        // Verify the change took effect
+        console.log('[MuxPlayer] SDK muted set to:', newMuted, '| actual:', playerRef.current.muted, '| volume:', playerRef.current.volume);
       } catch (e) {
-        console.warn('Mute toggle error:', e);
+        console.warn('[MuxPlayer] Mute toggle error:', e);
       }
+    } else {
+      console.warn('[MuxPlayer] No SDK player ref — cannot toggle mute');
     }
 
     setIsMuted(newMuted);
