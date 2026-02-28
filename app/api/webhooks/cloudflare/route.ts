@@ -70,6 +70,19 @@ export async function POST(request: NextRequest) {
     const body = JSON.parse(rawBody);
     console.log('[webhook] Received:', JSON.stringify({ uid: body.uid, liveInput: body.liveInput, state: body.status?.state }));
 
+    // Debug: write webhook receipt to Firestore for verification
+    try {
+      const debugDb = getFirestoreAdmin();
+      await debugDb.collection('webhook_logs').add({
+        receivedAt: FieldValue.serverTimestamp(),
+        state: body.status?.state,
+        liveInput: body.liveInput,
+        uid: body.uid,
+      });
+    } catch (logErr) {
+      console.error('[webhook] Debug log write failed:', logErr);
+    }
+
     // Cloudflare Stream webhook payload structure:
     // { uid, readyToStream, status: { state }, liveInput, meta, ... }
     const liveInputUid = body.liveInput;
