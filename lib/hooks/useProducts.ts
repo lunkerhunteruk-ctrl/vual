@@ -36,6 +36,7 @@ interface Product {
 interface UseProductsOptions {
   shopId?: string;
   category?: string;
+  brandId?: string;
   limit?: number;
   featured?: boolean;
   status?: string;
@@ -82,7 +83,14 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsReturn
 
   const pageLimit = options.limit || 20;
 
+  const enabled = options.limit !== 0;
+
   const fetchProducts = useCallback(async () => {
+    if (!enabled) {
+      setProducts([]);
+      setIsLoading(false);
+      return;
+    }
     try {
       setIsLoading(true);
 
@@ -91,6 +99,10 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsReturn
 
       if (options.category) {
         params.set('category', options.category);
+      }
+
+      if (options.brandId) {
+        params.set('brand_id', options.brandId);
       }
 
       if (options.status) {
@@ -118,7 +130,7 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsReturn
     } finally {
       setIsLoading(false);
     }
-  }, [options.category, options.status, pageLimit]);
+  }, [options.category, options.brandId, options.status, pageLimit, enabled]);
 
   useEffect(() => {
     fetchProducts();

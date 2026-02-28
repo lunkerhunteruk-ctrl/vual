@@ -42,13 +42,18 @@ export function LivePreview({ isLive = false, viewerCount = 0, onStreamReady }: 
           height: { ideal: config.height },
           facingMode: 'user',
         },
-        audio: isMicOn,
+        audio: true, // Always capture audio; mic toggle controls track.enabled
       });
 
       // Stop previous stream
       if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
       }
+
+      // Apply current mic state to audio tracks
+      stream.getAudioTracks().forEach(track => {
+        track.enabled = isMicOn;
+      });
 
       setMediaStream(stream);
       onStreamReady?.(stream);

@@ -15,12 +15,14 @@ interface StreamPlayerProps {
 }
 
 // Cloudflare Stream iframe embed player.
-// Starts muted for autoplay; user can unmute via the built-in player controls.
+// For live streams, starts unmuted so viewers can hear audio immediately.
+// Browsers may block unmuted autoplay — Cloudflare's player handles this
+// by showing a "click to unmute" overlay automatically.
 export function MuxPlayer({
   playbackId,
   title,
   autoPlay = true,
-  muted = true,
+  muted = false,
   className = '',
 }: StreamPlayerProps) {
   const [isLoading, setIsLoading] = useState(true);

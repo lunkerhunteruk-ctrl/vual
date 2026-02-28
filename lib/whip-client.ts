@@ -71,6 +71,9 @@ export class WHIPClient {
       }, { once: true });
 
       // Add all tracks as sendonly
+      if (stream.getAudioTracks().length === 0) {
+        console.warn('WHIPClient: No audio tracks in stream — broadcasting without audio');
+      }
       stream.getTracks().forEach((track) => {
         this.pc.addTransceiver(track, { direction: 'sendonly' });
       });
