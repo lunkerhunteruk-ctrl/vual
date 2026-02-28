@@ -22,7 +22,7 @@ export function MuxPlayer({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const streamRef = useRef<StreamPlayerApi>();
+  const streamRef = useRef<StreamPlayerApi>(undefined);
   const customerCode = process.env.NEXT_PUBLIC_CF_STREAM_SUBDOMAIN || 'customer-iachfaxtqeo2l99t';
 
   const toggleMute = useCallback(() => {
