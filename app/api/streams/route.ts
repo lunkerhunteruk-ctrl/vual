@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createLiveInput, type CloudflareLiveInput } from '@/lib/cloudflare-stream';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { createServerClient } from '@/lib/supabase';
+import { liveStreamStartMessage } from '@/lib/notifications/templates';
 
 // Initialize Firebase Admin
 function getFirestoreAdmin() {
@@ -60,6 +62,49 @@ export async function POST(request: NextRequest) {
       });
     } catch (firestoreError) {
       console.error('Firestore save error (stream still created):', firestoreError);
+    }
+
+    // Send LINE push notification to customers (non-blocking)
+    try {
+      const supabase = createServerClient();
+      if (supabase) {
+        const { data: customers } = await supabase
+          .from('customers')
+          .select('line_user_id')
+          .eq('store_id', shopId)
+          .not('line_user_id', 'is', null);
+
+        const lineUserIds = (customers || [])
+          .map((c) => c.line_user_id)
+          .filter((id): id is string => !!id);
+
+        if (lineUserIds.length > 0) {
+          const { data: store } = await supabase
+            .from('stores')
+            .select('line_channel_access_token')
+            .eq('id', shopId)
+            .single();
+
+          const lineToken = store?.line_channel_access_token;
+          if (lineToken) {
+            const message = liveStreamStartMessage({ title, streamId: liveInput.uid });
+            for (let i = 0; i < lineUserIds.length; i += 500) {
+              const batch = lineUserIds.slice(i, i + 500);
+              await fetch('https://api.line.me/v2/bot/message/multicast', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${lineToken}`,
+                },
+                body: JSON.stringify({ to: batch, messages: [message] }),
+              });
+            }
+            console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInput.uid}`);
+          }
+        }
+      }
+    } catch (notifyErr) {
+      console.error('LINE notification error (non-blocking):', notifyErr);
     }
 
     return NextResponse.json({
