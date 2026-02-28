@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Radio, Sparkles, User } from 'lucide-react';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 import { useTryOnStore } from '@/lib/store/tryon';
 
 const HIDE_ON_ROUTES = ['/checkout', '/cart', '/live/'];
@@ -30,7 +32,18 @@ export function BottomNavBar() {
   const tryOnPool = useTryOnStore((s) => s.tryOnPool);
   const tryOnCount = tryOnPool.length;
   const [visible, setVisible] = useState(true);
+  const [hasLiveStream, setHasLiveStream] = useState(false);
   const lastScrollY = useRef(0);
+
+  // Listen for active live streams
+  useEffect(() => {
+    if (!db) return;
+    const q = query(collection(db, 'streams'), where('status', '==', 'live'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setHasLiveStream(!snapshot.empty);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Hide on scroll down, show on scroll up
   useEffect(() => {
@@ -78,15 +91,27 @@ export function BottomNavBar() {
               className="flex flex-col items-center justify-center flex-1 py-1 relative"
             >
               <div className="relative">
+                {item.key === 'live' && hasLiveStream && (
+                  <motion.div
+                    className="absolute -inset-2 rounded-full bg-red-500/15"
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0, 0.6] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                )}
                 <Icon
                   size={22}
                   strokeWidth={active ? 2.2 : 1.8}
-                  className={`transition-colors ${
-                    active
-                      ? 'text-[var(--color-accent)]'
-                      : 'text-[var(--color-text-label)]'
+                  className={`relative transition-colors ${
+                    item.key === 'live' && hasLiveStream && !active
+                      ? 'text-red-500'
+                      : active
+                        ? 'text-[var(--color-accent)]'
+                        : 'text-[var(--color-text-label)]'
                   }`}
                 />
+                {item.key === 'live' && hasLiveStream && (
+                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-500" />
+                )}
                 {item.key === 'tryOn' && tryOnCount > 0 && (
                   <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
                     {tryOnCount}
@@ -95,9 +120,11 @@ export function BottomNavBar() {
               </div>
               <span
                 className={`text-[10px] mt-0.5 transition-colors ${
-                  active
-                    ? 'text-[var(--color-accent)] font-medium'
-                    : 'text-[var(--color-text-label)]'
+                  item.key === 'live' && hasLiveStream && !active
+                    ? 'text-red-500 font-medium'
+                    : active
+                      ? 'text-[var(--color-accent)] font-medium'
+                      : 'text-[var(--color-text-label)]'
                 }`}
               >
                 {t(item.key)}
