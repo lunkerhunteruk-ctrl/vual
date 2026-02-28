@@ -88,6 +88,28 @@ export default function LiveStreamPage() {
     return () => unsubscribe();
   }, [streamId]);
 
+  // Track viewer count: increment on mount, decrement on unmount/close
+  useEffect(() => {
+    if (!streamId || !db) return;
+
+    const streamRef = doc(db, 'streams', streamId);
+    // Increment viewer count
+    updateDoc(streamRef, { viewerCount: increment(1) }).catch(() => {});
+
+    const decrement = () => {
+      updateDoc(streamRef, { viewerCount: increment(-1) }).catch(() => {});
+    };
+
+    // Decrement on page close/navigate away
+    const handleBeforeUnload = () => decrement();
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      decrement();
+    };
+  }, [streamId]);
+
   const [showProducts, setShowProducts] = useState(false);
   const [comments, setComments] = useState<LiveComment[]>([]);
   const [newComment, setNewComment] = useState('');

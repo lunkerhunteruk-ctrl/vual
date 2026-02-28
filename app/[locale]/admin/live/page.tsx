@@ -43,6 +43,19 @@ export default function LiveBroadcastPage() {
 
   const whipClientRef = useRef<WHIPClient | null>(null);
 
+  // Real-time viewer count
+  const [viewerCount, setViewerCount] = useState(0);
+
+  useEffect(() => {
+    if (!isLive || !streamData?.id || !db) return;
+    const unsubscribe = onSnapshot(doc(db, 'streams', streamData.id), (snap) => {
+      if (snap.exists()) {
+        setViewerCount(snap.data().viewerCount || 0);
+      }
+    });
+    return () => unsubscribe();
+  }, [isLive, streamData?.id]);
+
   // Real-time comments & hearts from viewers
   const [liveComments, setLiveComments] = useState<{ id: string; userName: string; message: string }[]>([]);
   const [floatingHearts, setFloatingHearts] = useState<{ id: number; x: number }[]>([]);
@@ -290,7 +303,7 @@ export default function LiveBroadcastPage() {
           <div className="relative">
             <LivePreview
               isLive={isLive}
-              viewerCount={0}
+              viewerCount={viewerCount}
               onStreamReady={handleStreamReady}
             />
 
