@@ -505,7 +505,7 @@ export default function LiveStreamPage() {
             onChange={(e) => setNewComment(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendComment()}
             placeholder={t('typeSomething')}
-            className="w-full h-11 px-4 pr-12 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="w-full h-11 px-4 pr-12 bg-white/10 backdrop-blur-sm rounded-full text-base text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
           />
           <button
             onClick={handleSendComment}
