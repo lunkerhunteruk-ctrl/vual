@@ -53,17 +53,26 @@ export async function POST(request: NextRequest) {
 
     if (state === 'live-inprogress') {
       // Stream started broadcasting
-      await streamRef.update({
+      // Use set+merge instead of update to handle race condition:
+      // Cloudflare webhook may fire before client-side setDoc completes
+      await streamRef.set({
         status: 'live',
         startedAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
-      });
+      }, { merge: true });
       console.log(`Stream ${liveInputUid} is now live`);
 
       // Send LINE push notification to all customers with line_user_id
       try {
-        const streamDoc = await streamRef.get();
-        const streamData = streamDoc.data();
+        // Wait briefly for client-side setDoc to complete (race condition)
+        let streamDoc = await streamRef.get();
+        let streamData = streamDoc.data();
+        if (!streamData?.shopId) {
+          // Client setDoc hasn't completed yet — retry after short delay
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          streamDoc = await streamRef.get();
+          streamData = streamDoc.data();
+        }
         const shopId = streamData?.shopId;
         const title = streamData?.title || 'ライブ配信';
 
@@ -164,12 +173,12 @@ export async function POST(request: NextRequest) {
         console.log(`Stream ${liveInputUid} ended without startedAt — marked as test`);
       }
 
-      await streamRef.update(updates);
+      await streamRef.set(updates, { merge: true });
     } else if (state === 'error') {
-      await streamRef.update({
+      await streamRef.set({
         status: 'test',
         updatedAt: FieldValue.serverTimestamp(),
-      });
+      }, { merge: true });
       console.log(`Stream ${liveInputUid} errored`);
     }
 
