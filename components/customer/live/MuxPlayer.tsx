@@ -54,7 +54,7 @@ export function MuxPlayer({
 
   return (
     <div className={`relative w-full h-full bg-black ${className}`}>
-      <div className={`w-full h-full ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`absolute inset-0 [&>iframe]:!w-full [&>iframe]:!h-full [&>iframe]:!object-cover ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Stream
           src={playbackId}
           streamRef={streamRef}
@@ -62,12 +62,9 @@ export function MuxPlayer({
           autoplay={autoPlay}
           muted
           controls={false}
-          responsive={false}
           preload="auto"
           primaryColor="#e74c3c"
           title={title || 'Live Stream'}
-          width="100%"
-          height="100%"
           onCanPlay={() => { setIsLoading(false); setError(false); }}
           onError={() => { setError(true); setIsLoading(false); }}
         />
