@@ -165,7 +165,7 @@ export default function CartPage() {
         <motion.div
           initial={{ y: 100 }}
           animate={{ y: 0 }}
-          className="fixed bottom-0 left-0 right-0 bg-white border-t border-[var(--color-line)] p-4 z-20"
+          className="fixed bottom-14 left-0 right-0 bg-white border-t border-[var(--color-line)] p-4 z-20"
         >
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm font-medium tracking-[0.1em] text-[var(--color-text-body)] uppercase">
