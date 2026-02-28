@@ -434,8 +434,8 @@ export default function LiveStreamPage() {
         )}
       </div>
 
-      {/* Comment Input */}
-      <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2">
+      {/* Comment Input — safe area aware */}
+      <div className="absolute bottom-0 left-0 right-0 px-4 pb-[calc(env(safe-area-inset-bottom)+12px)] flex items-center gap-2">
         <div className="flex-1 relative">
           <input
             ref={inputRef}

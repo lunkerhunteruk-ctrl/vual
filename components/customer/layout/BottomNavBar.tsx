@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Radio, Sparkles, User } from 'lucide-react';
 import { useTryOnStore } from '@/lib/store/tryon';
 
-const HIDE_ON_ROUTES = ['/checkout', '/cart'];
+const HIDE_ON_ROUTES = ['/checkout', '/cart', '/live/'];
 
 interface NavItem {
   key: string;
