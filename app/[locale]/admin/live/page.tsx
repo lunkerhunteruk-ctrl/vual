@@ -2,8 +2,10 @@
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { doc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, updateDoc, serverTimestamp, collection, query, orderBy, limitToLast, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, MessageCircle } from 'lucide-react';
 import { LivePreview, StreamSettings, ProductCasting, BroadcastHistory } from '@/components/admin/live';
 import { useStoreContext } from '@/lib/store/store-context';
 import { WHIPClient } from '@/lib/whip-client';
@@ -40,6 +42,77 @@ export default function LiveBroadcastPage() {
   const [connectionState, setConnectionState] = useState<string>('');
 
   const whipClientRef = useRef<WHIPClient | null>(null);
+
+  // Real-time comments & hearts from viewers
+  const [liveComments, setLiveComments] = useState<{ id: string; userName: string; message: string }[]>([]);
+  const [floatingHearts, setFloatingHearts] = useState<{ id: number; x: number }[]>([]);
+  const heartIdRef = useRef(0);
+  const commentsEndRef = useRef<HTMLDivElement>(null);
+
+  // Listen for viewer comments
+  useEffect(() => {
+    if (!isLive || !streamData?.id || !db) return;
+
+    const q = query(
+      collection(db, 'streams', streamData.id, 'comments'),
+      orderBy('createdAt', 'asc'),
+      limitToLast(30)
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added') {
+          const data = change.doc.data();
+          setLiveComments(prev => {
+            if (prev.some(c => c.id === change.doc.id)) return prev;
+            return [...prev, {
+              id: change.doc.id,
+              userName: data.userName || 'ゲスト',
+              message: data.message || '',
+            }].slice(-30);
+          });
+        }
+      });
+    });
+
+    return () => unsubscribe();
+  }, [isLive, streamData?.id]);
+
+  // Listen for viewer hearts
+  useEffect(() => {
+    if (!isLive || !streamData?.id || !db) return;
+
+    const q = query(
+      collection(db, 'streams', streamData.id, 'actions'),
+      orderBy('createdAt', 'desc'),
+      limitToLast(1)
+    );
+
+    let isFirst = true;
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (isFirst) { isFirst = false; return; }
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added') {
+          const data = change.doc.data();
+          if (data.type === 'heart') {
+            const id = ++heartIdRef.current;
+            const x = Math.random() * 40 - 20;
+            setFloatingHearts(prev => [...prev, { id, x }]);
+            setTimeout(() => {
+              setFloatingHearts(prev => prev.filter(h => h.id !== id));
+            }, 1500);
+          }
+        }
+      });
+    });
+
+    return () => unsubscribe();
+  }, [isLive, streamData?.id]);
+
+  // Auto-scroll comments
+  useEffect(() => {
+    commentsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [liveComments]);
 
   // Sync products to Firestore directly (client SDK) when they change
   useEffect(() => {
@@ -212,13 +285,72 @@ export default function LiveBroadcastPage() {
 
       {/* Top Section - Preview and Settings */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left - Preview */}
-        <div className="lg:col-span-2">
-          <LivePreview
-            isLive={isLive}
-            viewerCount={0}
-            onStreamReady={handleStreamReady}
-          />
+        {/* Left - Preview + Live Interactions */}
+        <div className="lg:col-span-2 space-y-4">
+          <div className="relative">
+            <LivePreview
+              isLive={isLive}
+              viewerCount={0}
+              onStreamReady={handleStreamReady}
+            />
+
+            {/* Floating Hearts overlay on preview */}
+            {isLive && (
+              <div className="absolute right-8 bottom-20 pointer-events-none">
+                <AnimatePresence>
+                  {floatingHearts.map((heart) => (
+                    <motion.div
+                      key={heart.id}
+                      initial={{ opacity: 1, y: 0, x: heart.x, scale: 1 }}
+                      animate={{ opacity: 0, y: -120, scale: 1.2 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.5, ease: 'easeOut' }}
+                      className="absolute bottom-0"
+                    >
+                      <Heart size={20} className="fill-red-500 text-red-500" />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            )}
+          </div>
+
+          {/* Live Comments Panel */}
+          {isLive && (
+            <div className="bg-white border border-[var(--color-line)] rounded-[var(--radius-md)] overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--color-line)] flex items-center gap-2">
+                <MessageCircle size={16} className="text-[var(--color-text-label)]" />
+                <h3 className="text-sm font-semibold text-[var(--color-title-active)] uppercase tracking-wide">
+                  {locale === 'ja' ? 'コメント' : 'Comments'}
+                </h3>
+                <span className="text-xs text-[var(--color-text-label)] ml-auto">
+                  {liveComments.length}
+                </span>
+              </div>
+              <div className="max-h-48 overflow-y-auto px-4 py-2 space-y-2">
+                {liveComments.length === 0 ? (
+                  <p className="text-xs text-[var(--color-text-label)] py-4 text-center">
+                    {locale === 'ja' ? 'コメントはまだありません' : 'No comments yet'}
+                  </p>
+                ) : (
+                  liveComments.map((comment) => (
+                    <div key={comment.id} className="flex items-start gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center">
+                        <span className="text-[10px] font-medium text-[var(--color-text-label)]">
+                          {comment.userName.charAt(0)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-xs font-medium text-[var(--color-text-label)]">{comment.userName}</span>
+                        <p className="text-sm text-[var(--color-text-body)]">{comment.message}</p>
+                      </div>
+                    </div>
+                  ))
+                )}
+                <div ref={commentsEndRef} />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right - Settings & Products */}

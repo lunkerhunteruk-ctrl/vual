@@ -104,7 +104,39 @@ export default function LiveStreamPage() {
     commentsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [comments]);
 
-  // Listen for real-time actions (try-on, cart adds) from other viewers
+  // Listen for real-time comments from Firestore
+  useEffect(() => {
+    if (!streamId || !db) return;
+
+    const commentsQuery = query(
+      collection(db, 'streams', streamId, 'comments'),
+      orderBy('createdAt', 'asc'),
+      limitToLast(30)
+    );
+
+    const unsubscribe = onSnapshot(commentsQuery, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added') {
+          const data = change.doc.data();
+          setComments(prev => {
+            if (prev.some(c => c.id === change.doc.id)) return prev;
+            return [...prev, {
+              id: change.doc.id,
+              streamId,
+              userId: data.userId || '',
+              userName: data.userName || 'ゲスト',
+              message: data.message || '',
+              createdAt: data.createdAt?.toDate() || new Date(),
+            }].slice(-30);
+          });
+        }
+      });
+    });
+
+    return () => unsubscribe();
+  }, [streamId]);
+
+  // Listen for real-time actions (hearts, try-on, cart adds) from all viewers
   useEffect(() => {
     if (!streamId || !db) return;
 
@@ -116,7 +148,6 @@ export default function LiveStreamPage() {
 
     let isFirst = true;
     const unsubscribe = onSnapshot(actionsQuery, (snapshot) => {
-      // Skip initial load
       if (isFirst) {
         isFirst = false;
         return;
@@ -124,17 +155,26 @@ export default function LiveStreamPage() {
       snapshot.docChanges().forEach((change) => {
         if (change.type === 'added') {
           const data = change.doc.data();
-          const toast = {
-            id: change.doc.id,
-            type: data.type as 'tryon' | 'cart',
-            userName: data.userName || 'ゲスト',
-            productName: data.productName || '',
-          };
-          setActionToasts(prev => [...prev, toast].slice(-3));
-          // Auto-remove after 3s
-          setTimeout(() => {
-            setActionToasts(prev => prev.filter(t => t.id !== toast.id));
-          }, 3000);
+          if (data.type === 'heart') {
+            // Show floating heart from other viewers
+            const id = ++heartIdRef.current;
+            const x = Math.random() * 40 - 20;
+            setFloatingHearts(prev => [...prev, { id, x }]);
+            setTimeout(() => {
+              setFloatingHearts(prev => prev.filter(h => h.id !== id));
+            }, 1500);
+          } else {
+            const toast = {
+              id: change.doc.id,
+              type: data.type as 'tryon' | 'cart',
+              userName: data.userName || 'ゲスト',
+              productName: data.productName || '',
+            };
+            setActionToasts(prev => [...prev, toast].slice(-3));
+            setTimeout(() => {
+              setActionToasts(prev => prev.filter(t => t.id !== toast.id));
+            }, 3000);
+          }
         }
       });
     });
@@ -142,28 +182,26 @@ export default function LiveStreamPage() {
     return () => unsubscribe();
   }, [streamId]);
 
-  const handleSendComment = () => {
-    if (!newComment.trim()) return;
-    const comment: LiveComment = {
-      id: Date.now().toString(),
-      streamId,
+  // Send comment to Firestore for real-time sharing
+  const handleSendComment = useCallback(() => {
+    if (!newComment.trim() || !streamId || !db) return;
+    addDoc(collection(db, 'streams', streamId, 'comments'), {
       userId: 'me',
-      userName: 'You',
-      message: newComment,
-      createdAt: new Date(),
-    };
-    setComments(prev => [...prev, comment]);
+      userName: 'ゲスト',
+      message: newComment.trim(),
+      createdAt: serverTimestamp(),
+    }).catch(() => {});
     setNewComment('');
-  };
+  }, [newComment, streamId]);
 
-  // Broadcast an action (try-on or cart) to all viewers
-  const broadcastAction = useCallback(async (type: 'tryon' | 'cart', productName: string) => {
+  // Broadcast an action (heart, try-on, cart) to all viewers
+  const broadcastAction = useCallback(async (type: 'heart' | 'tryon' | 'cart', productName?: string) => {
     if (!streamId || !db) return;
     try {
       await addDoc(collection(db, 'streams', streamId, 'actions'), {
         type,
         userName: 'ゲスト',
-        productName,
+        productName: productName || '',
         createdAt: serverTimestamp(),
       });
     } catch {
@@ -171,25 +209,26 @@ export default function LiveStreamPage() {
     }
   }, [streamId]);
 
-  // Handle like — increment in Firestore + floating heart animation
+  // Handle like — local animation + broadcast to all viewers
   const handleLike = useCallback(() => {
     setIsLiked(true);
 
-    // Floating heart animation
+    // Local floating heart animation
     const id = ++heartIdRef.current;
-    const x = Math.random() * 40 - 20; // random offset
+    const x = Math.random() * 40 - 20;
     setFloatingHearts(prev => [...prev, { id, x }]);
     setTimeout(() => {
       setFloatingHearts(prev => prev.filter(h => h.id !== id));
     }, 1500);
 
-    // Increment in Firestore
+    // Increment count + broadcast heart action
     if (streamId && db) {
       updateDoc(doc(db, 'streams', streamId), {
         likeCount: increment(1),
       }).catch(() => {});
+      broadcastAction('heart');
     }
-  }, [streamId]);
+  }, [streamId, broadcastAction]);
 
   const handleAddToCart = (product: StreamProduct) => {
     addItem({
