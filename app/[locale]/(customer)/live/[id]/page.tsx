@@ -341,7 +341,7 @@ export default function LiveStreamPage() {
       <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/60 to-transparent px-4 pt-4 pb-8 pointer-events-none [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
         <div className="flex items-center justify-between">
           <Link
-            href={`/${locale}/live`}
+            href={`/${locale}`}
             className="p-2 rounded-full bg-white/10 backdrop-blur-sm"
           >
             <ArrowLeft size={20} className="text-white" />

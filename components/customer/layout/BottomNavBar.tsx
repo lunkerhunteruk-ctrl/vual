@@ -11,7 +11,7 @@ import { db } from '@/lib/firebase';
 import { useTryOnStore } from '@/lib/store/tryon';
 import { useStoreContext } from '@/lib/store/store-context';
 
-const HIDE_ON_ROUTES = ['/checkout', '/cart', '/live/'];
+const HIDE_ON_ROUTES = ['/live/'];
 
 interface NavItem {
   key: string;
