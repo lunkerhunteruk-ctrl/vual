@@ -204,8 +204,8 @@ export function LivePreview({ isLive = false, viewerCount = 0, onStreamReady }: 
         </div>
       </div>
 
-      {/* Video Preview (9:16 portrait) */}
-      <div className="bg-[var(--color-bg-inverse)] relative" style={{ aspectRatio: '9/16', maxHeight: '70vh' }}>
+      {/* Video Preview (9:16 portrait, centered) */}
+      <div className="bg-[var(--color-bg-inverse)] relative mx-auto" style={{ aspectRatio: '9/16', maxHeight: '70vh' }}>
         {/* Real video element */}
         <video
           ref={videoRef}
