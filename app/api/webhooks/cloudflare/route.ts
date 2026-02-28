@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { supabase } from '@/lib/supabase';
+import { multicastMessage } from '@/lib/line-messaging';
+import { liveStreamStartMessage } from '@/lib/notifications/templates';
 
 const MIN_DURATION_MINUTES = 5;
 
@@ -57,6 +60,40 @@ export async function POST(request: NextRequest) {
         updatedAt: FieldValue.serverTimestamp(),
       });
       console.log(`Stream ${liveInputUid} is now live`);
+
+      // Send LINE push notification to all customers with line_user_id
+      try {
+        const streamDoc = await streamRef.get();
+        const streamData = streamDoc.data();
+        const shopId = streamData?.shopId;
+        const title = streamData?.title || 'ライブ配信';
+
+        if (shopId && supabase) {
+          const { data: customers } = await supabase
+            .from('customers')
+            .select('line_user_id')
+            .eq('store_id', shopId)
+            .not('line_user_id', 'is', null);
+
+          const lineUserIds = (customers || [])
+            .map((c) => c.line_user_id)
+            .filter((id): id is string => !!id);
+
+          if (lineUserIds.length > 0) {
+            const message = liveStreamStartMessage({ title, streamId: liveInputUid });
+            // Send in batches of 500 (LINE API limit)
+            for (let i = 0; i < lineUserIds.length; i += 500) {
+              const batch = lineUserIds.slice(i, i + 500);
+              await multicastMessage(shopId, batch, [message]);
+            }
+            console.log(`LINE notification sent to ${lineUserIds.length} users for stream ${liveInputUid}`);
+          } else {
+            console.log(`No LINE users to notify for store ${shopId}`);
+          }
+        }
+      } catch (notifyErr) {
+        console.error('LINE notification error (non-blocking):', notifyErr);
+      }
     } else if (state === 'ready') {
       // Recording is ready (stream ended and video is available)
       const streamDoc = await streamRef.get();
