@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createServerClient } from '@/lib/supabase';
 
 /**
  * GET /api/auth/line/callback?code=...&state=...
@@ -78,6 +79,60 @@ export async function GET(request: NextRequest) {
     }
 
     const profile = await profileResponse.json();
+
+    // Save line_user_id to Supabase customers table
+    try {
+      const supabase = createServerClient();
+      if (supabase && profile.userId) {
+        // Resolve store_id from returnTo URL subdomain
+        const returnUrl = new URL(returnTo);
+        const hostname = returnUrl.hostname;
+        let storeId: string | null = null;
+
+        // Extract subdomain: mybrand.vual.jp → mybrand
+        const match = hostname.match(/^([^.]+)\.vual\.jp$/);
+        if (match && match[1] !== 'www') {
+          const slug = match[1];
+          const { data: store } = await supabase
+            .from('stores')
+            .select('id')
+            .eq('slug', slug)
+            .single();
+          if (store) storeId = store.id;
+        }
+
+        // Fallback to default store
+        if (!storeId) {
+          storeId = 'f47ac10b-58cc-4372-a567-0e02b2c3d479';
+        }
+
+        // Upsert customer with line_user_id
+        const { data: existing } = await supabase
+          .from('customers')
+          .select('id')
+          .eq('store_id', storeId)
+          .eq('line_user_id', profile.userId)
+          .maybeSingle();
+
+        if (existing) {
+          await supabase
+            .from('customers')
+            .update({ name: profile.displayName, updated_at: new Date().toISOString() })
+            .eq('id', existing.id);
+        } else {
+          await supabase
+            .from('customers')
+            .insert({
+              store_id: storeId,
+              line_user_id: profile.userId,
+              name: profile.displayName,
+              email: `line_${profile.userId}@line.placeholder`,
+            });
+        }
+      }
+    } catch (dbErr) {
+      console.error('Failed to save LINE customer (non-blocking):', dbErr);
+    }
 
     // Build redirect URL with profile params
     const url = new URL(returnTo);
