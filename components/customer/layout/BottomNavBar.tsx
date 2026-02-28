@@ -9,6 +9,7 @@ import { Home, Radio, Sparkles, User } from 'lucide-react';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { useTryOnStore } from '@/lib/store/tryon';
+import { useStoreContext } from '@/lib/store/store-context';
 
 const HIDE_ON_ROUTES = ['/checkout', '/cart', '/live/'];
 
@@ -31,19 +32,26 @@ export function BottomNavBar() {
   const t = useTranslations('customer.nav');
   const tryOnPool = useTryOnStore((s) => s.tryOnPool);
   const tryOnCount = tryOnPool.length;
+  const store = useStoreContext((s) => s.store);
   const [visible, setVisible] = useState(true);
   const [hasLiveStream, setHasLiveStream] = useState(false);
   const lastScrollY = useRef(0);
 
-  // Listen for active live streams
+  // Listen for active live streams for this shop
   useEffect(() => {
-    if (!db) return;
-    const q = query(collection(db, 'streams'), where('status', '==', 'live'));
+    if (!db || !store?.id) return;
+    const q = query(
+      collection(db, 'streams'),
+      where('shopId', '==', store.id),
+      where('status', '==', 'live')
+    );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setHasLiveStream(!snapshot.empty);
+    }, (error) => {
+      console.warn('Live stream listener error:', error.message);
     });
     return () => unsubscribe();
-  }, []);
+  }, [store?.id]);
 
   // Hide on scroll down, show on scroll up
   useEffect(() => {

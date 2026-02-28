@@ -1,0 +1,30 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Streams: public read, authenticated write
+    match /streams/{streamId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Stream sub-collections (comments, actions, etc.)
+    match /streams/{streamId}/{subcol}/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Products: public read
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Other collections: default allow for now
+    match /{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
