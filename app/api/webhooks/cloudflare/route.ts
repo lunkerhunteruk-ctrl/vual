@@ -3,6 +3,7 @@ import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { createServerClient } from '@/lib/supabase';
 import { liveStreamStartMessage } from '@/lib/notifications/templates';
+import { createHmac, timingSafeEqual } from 'crypto';
 
 const MIN_DURATION_MINUTES = 5;
 
@@ -28,16 +29,45 @@ function getFirestoreAdmin() {
 // Docs: https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/
 export async function POST(request: NextRequest) {
   try {
-    // Verify webhook secret header if configured
+    // Read raw body for signature verification
+    const rawBody = await request.text();
+
+    // Verify Cloudflare Stream webhook signature (HMAC-SHA256)
+    // Format: Webhook-Signature: time=<unix_ts>,sig1=<hex_hmac>
     const webhookSecret = process.env.CLOUDFLARE_STREAM_WEBHOOK_SECRET;
     if (webhookSecret) {
-      const signature = request.headers.get('webhook-signature');
-      if (!signature || signature !== webhookSecret) {
+      const signatureHeader = request.headers.get('webhook-signature');
+      if (!signatureHeader) {
+        console.log('[webhook] Missing Webhook-Signature header');
+        return NextResponse.json({ error: 'Missing signature' }, { status: 401 });
+      }
+      const parts = Object.fromEntries(
+        signatureHeader.split(',').map(p => {
+          const [k, ...v] = p.split('=');
+          return [k, v.join('=')];
+        })
+      );
+      const timestamp = parts.time;
+      const expectedSig = parts.sig1;
+      if (!timestamp || !expectedSig) {
+        console.log('[webhook] Invalid signature format:', signatureHeader);
+        return NextResponse.json({ error: 'Invalid signature format' }, { status: 401 });
+      }
+      const source = `${timestamp}.${rawBody}`;
+      const computedSig = createHmac('sha256', webhookSecret).update(source).digest('hex');
+      try {
+        const valid = timingSafeEqual(Buffer.from(computedSig), Buffer.from(expectedSig));
+        if (!valid) {
+          console.log('[webhook] Signature mismatch');
+          return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
+        }
+      } catch {
+        console.log('[webhook] Signature verification error');
         return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
       }
     }
 
-    const body = await request.json();
+    const body = JSON.parse(rawBody);
     console.log('[webhook] Received:', JSON.stringify({ uid: body.uid, liveInput: body.liveInput, state: body.status?.state }));
 
     // Cloudflare Stream webhook payload structure:
