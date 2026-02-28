@@ -141,7 +141,9 @@ export function shippingNotificationMessage(order: {
 export function liveStreamStartMessage(stream: {
   title: string;
   streamId: string;
+  baseUrl?: string;
 }) {
+  const base = stream.baseUrl || process.env.NEXT_PUBLIC_APP_URL || 'https://vual.jp';
   return flexMessage(`ライブ配信が始まりました: ${stream.title}`, {
     type: 'bubble',
     body: {
@@ -189,7 +191,7 @@ export function liveStreamStartMessage(stream: {
           action: {
             type: 'uri',
             label: '視聴する',
-            uri: `${process.env.NEXT_PUBLIC_APP_URL || 'https://vual.jp'}/ja/live/${stream.streamId}`,
+            uri: `${base}/ja/live/${stream.streamId}`,
           },
           style: 'primary',
           color: '#EF4444',

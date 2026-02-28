@@ -81,13 +81,14 @@ export async function POST(request: NextRequest) {
         if (lineUserIds.length > 0) {
           const { data: store } = await supabase
             .from('stores')
-            .select('line_channel_access_token')
+            .select('line_channel_access_token, slug')
             .eq('id', shopId)
             .single();
 
           const lineToken = store?.line_channel_access_token;
           if (lineToken) {
-            const message = liveStreamStartMessage({ title, streamId: liveInput.uid });
+            const baseUrl = store?.slug ? `https://${store.slug}.vual.jp` : undefined;
+            const message = liveStreamStartMessage({ title, streamId: liveInput.uid, baseUrl });
             for (let i = 0; i < lineUserIds.length; i += 500) {
               const batch = lineUserIds.slice(i, i + 500);
               await fetch('https://api.line.me/v2/bot/message/multicast', {
