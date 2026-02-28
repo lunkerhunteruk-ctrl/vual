@@ -226,7 +226,7 @@ export function ProductCasting({ products, onProductsChange, disabled = false }:
         onClose={() => setShowPicker(false)}
         onSelect={(product) => {
           if (!products.find(p => p.id === product.id)) {
-            onProductsChange([...products, product]);
+            onProductsChange([product, ...products]);
           }
         }}
         selectedIds={products.map(p => p.id)}
