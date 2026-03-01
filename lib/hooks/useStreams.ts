@@ -1,14 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, query, where, orderBy, limit, getDocs, doc, getDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
+import { collection, query, where, orderBy, limit, getDocs, onSnapshot, doc, getDoc, startAfter, DocumentSnapshot } from 'firebase/firestore';
 import { db, COLLECTIONS } from '@/lib/firebase';
 import type { LiveStream } from '@/lib/types';
 
 type StreamStatus = 'scheduled' | 'live' | 'ended' | 'test';
 
+// Streams with status 'live' but updatedAt older than this are considered stale
+const STALE_STREAM_HOURS = 12;
+
 interface UseStreamsOptions {
   shopId?: string;
   status?: StreamStatus;
   limit?: number;
+  /** Use real-time listener instead of one-time fetch (default: false) */
+  realtime?: boolean;
 }
 
 interface UseStreamsReturn {
@@ -20,6 +25,28 @@ interface UseStreamsReturn {
   refresh: () => Promise<void>;
 }
 
+function docToStream(docSnap: DocumentSnapshot): LiveStream {
+  const data = docSnap.data()!;
+  return {
+    id: docSnap.id,
+    ...data,
+    createdAt: data.createdAt?.toDate(),
+    updatedAt: data.updatedAt?.toDate(),
+    scheduledAt: data.scheduledAt?.toDate(),
+    startedAt: data.startedAt?.toDate(),
+    endedAt: data.endedAt?.toDate(),
+  } as LiveStream;
+}
+
+function filterStaleStreams(streams: LiveStream[], status?: StreamStatus): LiveStream[] {
+  if (status !== 'live') return streams;
+  const cutoff = new Date(Date.now() - STALE_STREAM_HOURS * 60 * 60 * 1000);
+  return streams.filter(s => {
+    const lastActive = s.updatedAt || s.startedAt || s.createdAt;
+    return lastActive && lastActive > cutoff;
+  });
+}
+
 export function useStreams(options: UseStreamsOptions = {}): UseStreamsReturn {
   const [streams, setStreams] = useState<LiveStream[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,8 +56,42 @@ export function useStreams(options: UseStreamsOptions = {}): UseStreamsReturn {
 
   const pageLimit = options.limit || 20;
 
+  // Build Firestore query
+  const buildQuery = useCallback(() => {
+    if (!db) return null;
+    const constraints: any[] = [
+      orderBy('createdAt', 'desc'),
+      limit(pageLimit),
+    ];
+    if (options.shopId) constraints.push(where('shopId', '==', options.shopId));
+    if (options.status) constraints.push(where('status', '==', options.status));
+    return query(collection(db, COLLECTIONS.STREAMS), ...constraints);
+  }, [options.shopId, options.status, pageLimit]);
+
+  // Real-time listener mode
+  useEffect(() => {
+    if (!options.realtime || !db) return;
+
+    const q = buildQuery();
+    if (!q) return;
+
+    setIsLoading(true);
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const results = snapshot.docs.map(docToStream);
+      setStreams(filterStaleStreams(results, options.status));
+      setIsLoading(false);
+      setError(null);
+    }, (err) => {
+      setError(err instanceof Error ? err : new Error('Failed to fetch streams'));
+      setIsLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [options.realtime, options.shopId, options.status, buildQuery]);
+
+  // One-time fetch mode
   const fetchStreams = useCallback(async (isLoadMore = false) => {
-    if (!db) {
+    if (!db || options.realtime) {
       setIsLoading(false);
       return;
     }
@@ -38,34 +99,15 @@ export function useStreams(options: UseStreamsOptions = {}): UseStreamsReturn {
     try {
       setIsLoading(true);
 
-      let q = query(
-        collection(db, COLLECTIONS.STREAMS),
-        orderBy('createdAt', 'desc'),
-        limit(pageLimit)
-      );
-
-      if (options.shopId) {
-        q = query(q, where('shopId', '==', options.shopId));
-      }
-
-      if (options.status) {
-        q = query(q, where('status', '==', options.status));
-      }
+      let q = buildQuery();
+      if (!q) return;
 
       if (isLoadMore && lastDoc) {
         q = query(q, startAfter(lastDoc));
       }
 
       const snapshot = await getDocs(q);
-      const newStreams = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate(),
-        updatedAt: doc.data().updatedAt?.toDate(),
-        scheduledAt: doc.data().scheduledAt?.toDate(),
-        startedAt: doc.data().startedAt?.toDate(),
-        endedAt: doc.data().endedAt?.toDate(),
-      })) as LiveStream[];
+      const newStreams = filterStaleStreams(snapshot.docs.map(docToStream), options.status);
 
       if (isLoadMore) {
         setStreams((prev) => [...prev, ...newStreams]);
@@ -81,11 +123,13 @@ export function useStreams(options: UseStreamsOptions = {}): UseStreamsReturn {
     } finally {
       setIsLoading(false);
     }
-  }, [options.shopId, options.status, pageLimit, lastDoc]);
+  }, [options.shopId, options.status, options.realtime, pageLimit, lastDoc, buildQuery]);
 
   useEffect(() => {
-    fetchStreams();
-  }, [options.shopId, options.status]);
+    if (!options.realtime) {
+      fetchStreams();
+    }
+  }, [options.shopId, options.status, options.realtime]);
 
   const loadMore = async () => {
     if (!isLoading && hasMore) {
