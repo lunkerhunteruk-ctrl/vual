@@ -429,9 +429,9 @@ export default function LiveStreamPage() {
               className="flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1.5 w-fit"
             >
               {toast.type === 'tryon' ? (
-                <Sparkles size={12} className="text-purple-300" />
+                <Sparkles size={12} className="text-white/80" />
               ) : (
-                <ShoppingCart size={12} className="text-green-300" />
+                <ShoppingCart size={12} className="text-white/80" />
               )}
               <span className="text-[11px] text-white/90">
                 {toast.userName}が
@@ -554,7 +554,7 @@ export default function LiveStreamPage() {
                       setShowProducts(false);
                       router.push(`/${locale}/tryon`);
                     }}
-                    className="flex items-center gap-1 px-3.5 py-1.5 border border-purple-400 text-purple-600 text-xs font-medium rounded-full hover:bg-purple-50 transition-colors whitespace-nowrap"
+                    className="flex items-center gap-1 px-3.5 py-1.5 border border-[var(--color-accent)] text-[var(--color-accent)] text-xs font-medium rounded-full hover:bg-[var(--color-accent)]/5 transition-colors whitespace-nowrap"
                   >
                     <Sparkles size={12} />
                     {locale === 'ja' ? '試着する' : 'Try On'}
@@ -642,7 +642,7 @@ export default function LiveStreamPage() {
                             }}
                             className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-full transition-colors whitespace-nowrap ${
                               inPool
-                                ? 'bg-purple-50 border border-purple-300 text-purple-600'
+                                ? 'bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 text-[var(--color-accent)]'
                                 : 'border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5'
                             }`}
                           >
@@ -659,7 +659,7 @@ export default function LiveStreamPage() {
                         onClick={() => handleAddToCart(product)}
                         className={`flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-full transition-colors whitespace-nowrap ${
                           addedToCart.has(product.id)
-                            ? 'bg-green-50 border border-green-300 text-green-600'
+                            ? 'bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/30 text-[var(--color-accent)]'
                             : 'bg-[var(--color-bg-inverse)] text-white hover:opacity-90'
                         }`}
                       >
