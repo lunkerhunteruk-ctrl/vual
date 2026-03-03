@@ -974,9 +974,6 @@ export function GeminiImageGenerator({
                 {locale === 'ja' ? 'カスタム' : 'Custom'}
               </button>
             </div>
-            <span className="text-[10px] text-[var(--color-text-label)] ml-auto">
-              {locale === 'ja' ? `${storyCount}クレジット消費` : `${storyCount} credits`}
-            </span>
           </div>
 
           {sceneMode === 'auto' ? (
@@ -1412,36 +1409,12 @@ export function GeminiImageGenerator({
                 <h3 className="text-sm font-bold text-[var(--color-title-active)]">
                   {locale === 'ja' ? '生成画像' : 'Generated Image'}
                 </h3>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={async () => {
-                      try {
-                        const response = await fetch(modalImage.image_url);
-                        const blob = await response.blob();
-                        const blobUrl = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.href = blobUrl;
-                        link.download = `gemini-${modalImage.id}.png`;
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        URL.revokeObjectURL(blobUrl);
-                      } catch (err) {
-                        console.error('Download failed:', err);
-                      }
-                    }}
-                    className="p-1.5 rounded-lg hover:bg-[var(--color-bg-element)] transition-colors"
-                    title={locale === 'ja' ? 'ダウンロード' : 'Download'}
-                  >
-                    <Download size={18} className="text-[var(--color-text-body)]" />
-                  </button>
-                  <button
-                    onClick={() => setModalImage(null)}
-                    className="p-1.5 rounded-lg hover:bg-[var(--color-bg-element)] transition-colors"
-                  >
-                    <X size={18} className="text-[var(--color-text-body)]" />
-                  </button>
-                </div>
+                <button
+                  onClick={() => setModalImage(null)}
+                  className="p-1.5 rounded-lg hover:bg-[var(--color-bg-element)] transition-colors"
+                >
+                  <X size={18} className="text-[var(--color-text-body)]" />
+                </button>
               </div>
 
               {/* Modal Body */}
@@ -1511,42 +1484,65 @@ export function GeminiImageGenerator({
                   );
                 })()}
 
-                {/* Add to Collection */}
-                <Button
-                  variant="primary"
-                  size="sm"
-                  disabled={isAddingToCollection}
-                  isLoading={isAddingToCollection}
-                  leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
-                  onClick={async () => {
-                    setIsAddingToCollection(true);
-                    try {
-                      const res = await fetch('/api/collections', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                          imageUrl: modalImage.image_url,
-                          sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
-                          productIds: linkingProductIds.slice(0, 4),
-                        }),
-                      });
-                      const data = await res.json();
-                      if (data.success) {
-                        setCollectionSuccess(true);
+                {/* Actions */}
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    disabled={isAddingToCollection}
+                    isLoading={isAddingToCollection}
+                    leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
+                    onClick={async () => {
+                      setIsAddingToCollection(true);
+                      try {
+                        const res = await fetch('/api/collections', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            imageUrl: modalImage.image_url,
+                            sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
+                            productIds: linkingProductIds.slice(0, 4),
+                          }),
+                        });
+                        const data = await res.json();
+                        if (data.success) {
+                          setCollectionSuccess(true);
+                        }
+                      } catch (err) {
+                        console.error('Collection add failed:', err);
+                      } finally {
+                        setIsAddingToCollection(false);
                       }
-                    } catch (err) {
-                      console.error('Collection add failed:', err);
-                    } finally {
-                      setIsAddingToCollection(false);
-                    }
-                  }}
-                >
-                  {collectionSuccess
-                    ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
-                    : (locale === 'ja'
-                      ? `コレクションに${linkingProductIds.length > 0 ? `${linkingProductIds.length}点` : ''}追加`
-                      : `Add${linkingProductIds.length > 0 ? ` ${linkingProductIds.length} items` : ''} to Collection`)}
-                </Button>
+                    }}
+                  >
+                    {collectionSuccess
+                      ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
+                      : (locale === 'ja'
+                        ? `コレクションに${linkingProductIds.length > 0 ? `${linkingProductIds.length}点` : ''}追加`
+                        : `Add${linkingProductIds.length > 0 ? ` ${linkingProductIds.length} items` : ''} to Collection`)}
+                  </Button>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const response = await fetch(modalImage.image_url);
+                        const blob = await response.blob();
+                        const blobUrl = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = blobUrl;
+                        link.download = `gemini-${modalImage.id}.png`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(blobUrl);
+                      } catch (err) {
+                        console.error('Download failed:', err);
+                      }
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium border-2 border-[var(--color-accent)] text-[var(--color-accent)] bg-white rounded-lg hover:bg-[var(--color-accent)]/5 transition-colors"
+                  >
+                    <Download size={14} />
+                  </button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
