@@ -223,6 +223,11 @@ export function GeminiImageGenerator({
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
   const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '']);
+  // AI Story Generation state
+  const [storyConcept, setStoryConcept] = useState('');
+  const [isGeneratingStory, setIsGeneratingStory] = useState(false);
+  const [storyGenerated, setStoryGenerated] = useState(false);
+  const [perShotAspectRatios, setPerShotAspectRatios] = useState<string[]>(['3:4', '3:4', '3:4', '3:4']);
   const [editorialResults, setEditorialResults] = useState<{
     images: (string | null)[];
     savedImageUrls: (string | null)[];
@@ -378,16 +383,72 @@ export function GeminiImageGenerator({
     });
   };
 
+  // AI Story Generation: concept → per-shot prompts + aspect ratios
+  const handleGenerateStory = async () => {
+    if (!storyConcept.trim()) return;
+    setIsGeneratingStory(true);
+    setError(null);
+    try {
+      const response = await fetch('/api/ai/editorial-story', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          storyConcept: storyConcept.trim(),
+          shotCount: storyCount,
+          garmentName: selectedGarmentName,
+          garmentDescription: selectedGarmentDescription,
+          secondGarmentName,
+          thirdGarmentName,
+          fourthGarmentName,
+          fifthGarmentName,
+          modelGender: settings.gender,
+          modelEthnicity: settings.ethnicity,
+          modelHeight: settings.height,
+          locale,
+        }),
+      });
+      const data = await response.json();
+      if (data.shots && data.shots.length > 0) {
+        const newPrompts = [...customScenePrompts];
+        const newAR = [...perShotAspectRatios];
+        data.shots.forEach((s: { prompt: string; aspectRatio: string }, i: number) => {
+          if (i < storyCount) {
+            newPrompts[i] = s.prompt || '';
+            newAR[i] = s.aspectRatio || '3:4';
+          }
+        });
+        setCustomScenePrompts(newPrompts);
+        setPerShotAspectRatios(newAR);
+        setStoryGenerated(true);
+      } else {
+        setError(locale === 'ja' ? 'ストーリー生成に失敗しました' : 'Story generation failed');
+      }
+    } catch (err) {
+      console.error('Story generation error:', err);
+      setError(locale === 'ja' ? 'ストーリー生成に失敗しました' : 'Story generation failed');
+    } finally {
+      setIsGeneratingStory(false);
+    }
+  };
+
   // Editorial parallel generation handler
   const handleEditorialGenerate = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
 
-    // Validate selection for auto mode
+    // Validate selection
     if (sceneMode === 'auto') {
       if (selectedScenes.length !== storyCount || selectedPoses.length !== storyCount) {
         setError(locale === 'ja'
           ? `ポーズとシーンをそれぞれ${storyCount}つ選択してください`
           : `Select ${storyCount} poses and ${storyCount} scenes`);
+        return;
+      }
+    } else {
+      const hasAnyPrompt = customScenePrompts.slice(0, storyCount).some(p => p.trim());
+      if (!hasAnyPrompt) {
+        setError(locale === 'ja'
+          ? 'ストーリーコンセプトを入力して「ストーリー生成」をクリックしてください'
+          : 'Enter a story concept and click "Generate Story" first');
         return;
       }
     }
@@ -444,20 +505,22 @@ export function GeminiImageGenerator({
       const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
 
       // Build per-shot configurations
-      // Auto: per-shot pose from checkboxes + per-shot scene
-      // Custom: pose = '' (let custom prompt handle it), per-shot custom prompt
+      // Auto: per-shot pose + scene, global aspect ratio
+      // Custom: pose = '' (prompt handles it), per-shot aspect ratio from AI story
       const shotConfigs = Array.from({ length: storyCount }, (_, i) => {
         if (sceneMode === 'auto') {
           return {
             background: selectedScenes[i],
             customPrompt: settings.customPrompt,
             pose: selectedPoses[i],
+            aspectRatio: settings.aspectRatio,
           };
         } else {
           return {
             background: settings.background,
             customPrompt: customScenePrompts[i] || settings.customPrompt,
             pose: '',
+            aspectRatio: perShotAspectRatios[i] || settings.aspectRatio,
           };
         }
       });
@@ -484,7 +547,7 @@ export function GeminiImageGenerator({
             modelSettings: { ...settings, pose: config.pose },
             modelImage: baseImageBase64,
             background: config.background,
-            aspectRatio: settings.aspectRatio,
+            aspectRatio: config.aspectRatio,
             customPrompt: config.customPrompt,
             locale,
             storeId,
@@ -781,15 +844,18 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
-        <select
-          value={settings.aspectRatio}
-          onChange={(e) => setSettings(prev => ({ ...prev, aspectRatio: e.target.value }))}
-          className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
-        >
-          {aspectRatioOptions.map(a => (
-            <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
-          ))}
-        </select>
+        {/* Hide global AR when custom editorial uses per-shot AR */}
+        {!(storyCount > 1 && sceneMode === 'custom') && (
+          <select
+            value={settings.aspectRatio}
+            onChange={(e) => setSettings(prev => ({ ...prev, aspectRatio: e.target.value }))}
+            className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
+          >
+            {aspectRatioOptions.map(a => (
+              <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
+            ))}
+          </select>
+        )}
 
         {/* Story Count Selector */}
         <div className="flex gap-0.5 border border-[var(--color-line)] rounded-lg p-0.5">
@@ -799,6 +865,9 @@ export function GeminiImageGenerator({
               onClick={() => {
                 setStoryCount(count);
                 setEditorialResults(null);
+                setStoryGenerated(false);
+                setCustomScenePrompts(['', '', '', '']);
+                setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']);
                 if (count === 1) {
                   setSelectedScenes([]);
                   setSelectedPoses([]);
@@ -872,7 +941,7 @@ export function GeminiImageGenerator({
             </span>
             <div className="flex gap-1 border border-[var(--color-line)] rounded-lg p-0.5">
               <button
-                onClick={() => setSceneMode('auto')}
+                onClick={() => { setSceneMode('auto'); setStoryGenerated(false); }}
                 className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
                   sceneMode === 'auto' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
                 }`}
@@ -880,7 +949,7 @@ export function GeminiImageGenerator({
                 {locale === 'ja' ? 'おまかせ' : 'Auto'}
               </button>
               <button
-                onClick={() => setSceneMode('custom')}
+                onClick={() => { setSceneMode('custom'); setCustomScenePrompts(['', '', '', '']); setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']); setStoryGenerated(false); }}
                 className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
                   sceneMode === 'custom' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
                 }`}
@@ -955,27 +1024,69 @@ export function GeminiImageGenerator({
             </div>
           ) : (
             <div className="space-y-2">
-              {Array.from({ length: storyCount }, (_, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-[var(--color-text-label)] w-12 text-center flex-shrink-0">
-                    Shot {i + 1}
-                  </span>
-                  <input
-                    type="text"
-                    value={customScenePrompts[i] || ''}
-                    onChange={(e) => {
-                      const updated = [...customScenePrompts];
-                      updated[i] = e.target.value;
-                      setCustomScenePrompts(updated);
-                    }}
-                    placeholder={locale === 'ja'
-                      ? ['屋久島の苔むした森、朝霧の中', '伊勢神宮の参道、木漏れ日', '京都の竹林、夕方の光', '渋谷スクランブル交差点、夜景'][i]
-                      : ['Yakushima forest, morning mist', 'Ise shrine pathway, dappled light', 'Kyoto bamboo grove, evening', 'Shibuya crossing, night'][i]
-                    }
-                    className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
-                  />
+              {/* Story concept input + generate button */}
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={storyConcept}
+                  onChange={(e) => setStoryConcept(e.target.value)}
+                  placeholder={locale === 'ja'
+                    ? '由布院・金鱗湖を舞台に、朝霧のエディトリアル'
+                    : 'Editorial at Lake Kinrinko, Yufuin, morning mist'}
+                  className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
+                  onKeyDown={(e) => { if (e.key === 'Enter' && storyConcept.trim()) handleGenerateStory(); }}
+                />
+                <button
+                  onClick={handleGenerateStory}
+                  disabled={!storyConcept.trim() || isGeneratingStory}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--color-accent)] text-white hover:opacity-90 disabled:opacity-40 transition-all whitespace-nowrap"
+                >
+                  {isGeneratingStory ? (
+                    <Loader2 size={12} className="animate-spin" />
+                  ) : (
+                    <Sparkles size={12} />
+                  )}
+                  {storyGenerated
+                    ? (locale === 'ja' ? '再生成' : 'Regenerate')
+                    : (locale === 'ja' ? 'ストーリー生成' : 'Generate Story')}
+                </button>
+              </div>
+
+              {/* Per-shot editable textareas with AR selectors (shown after story generation) */}
+              {storyGenerated && (
+                <div className="space-y-2">
+                  {Array.from({ length: storyCount }, (_, i) => (
+                    <div key={i} className="flex gap-2">
+                      <span className="text-[10px] font-bold text-[var(--color-text-label)] w-10 text-center flex-shrink-0 pt-2">
+                        {i + 1}
+                      </span>
+                      <textarea
+                        value={customScenePrompts[i] || ''}
+                        onChange={(e) => {
+                          const updated = [...customScenePrompts];
+                          updated[i] = e.target.value;
+                          setCustomScenePrompts(updated);
+                        }}
+                        rows={3}
+                        className="flex-1 text-xs px-3 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed"
+                      />
+                      <select
+                        value={perShotAspectRatios[i] || '3:4'}
+                        onChange={(e) => {
+                          const updated = [...perShotAspectRatios];
+                          updated[i] = e.target.value;
+                          setPerShotAspectRatios(updated);
+                        }}
+                        className="text-xs px-1.5 py-1 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] w-14 flex-shrink-0 self-start"
+                      >
+                        {aspectRatioOptions.map(a => (
+                          <option key={a.id} value={a.id}>{a.id}</option>
+                        ))}
+                      </select>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
           )}
         </div>
