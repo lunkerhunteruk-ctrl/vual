@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download } from 'lucide-react';
 import {
   DndContext,
   closestCenter,
@@ -160,9 +160,33 @@ function LookDetailModal({
           <h2 className="text-base font-bold text-[var(--color-title-active)]">
             {ja ? 'ルック詳細' : 'Look Details'}
           </h2>
-          <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
-            <X size={20} className="text-[var(--color-text-label)]" />
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={async () => {
+                try {
+                  const response = await fetch(look.image_url);
+                  const blob = await response.blob();
+                  const blobUrl = URL.createObjectURL(blob);
+                  const link = document.createElement('a');
+                  link.href = blobUrl;
+                  link.download = `look-${look.id}.png`;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  URL.revokeObjectURL(blobUrl);
+                } catch (err) {
+                  console.error('Download failed:', err);
+                }
+              }}
+              className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+              title={ja ? 'ダウンロード' : 'Download'}
+            >
+              <Download size={18} className="text-[var(--color-text-label)]" />
+            </button>
+            <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
+              <X size={20} className="text-[var(--color-text-label)]" />
+            </button>
+          </div>
         </div>
 
         <div className="p-5 space-y-5">

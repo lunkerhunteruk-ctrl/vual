@@ -583,6 +583,7 @@ export function GeminiImageGenerator({
       });
 
       // Phase 2: Generate copywriting for successful shots in parallel
+      let finalCopies = [...updatedCopies];
       if (successfulShots.length > 0 && selectedProductIds.length > 0) {
         const selectedProducts = allProducts.filter(p => selectedProductIds.includes(p.id));
         const lastSuccessIndex = successfulShots[successfulShots.length - 1];
@@ -603,7 +604,6 @@ export function GeminiImageGenerator({
         );
 
         const copyResults = await Promise.allSettled(copyPromises);
-        const finalCopies = [...updatedCopies];
         const finalStatus = [...updatedStatus];
         copyResults.forEach((result, idx) => {
           const shotIndex = successfulShots[idx];
@@ -640,8 +640,8 @@ export function GeminiImageGenerator({
         const batchLooks = successfulShots.map(i => ({
           imageUrl: updatedSavedUrls[i] || updatedImages[i]!,
           productIds: selectedProductIds.slice(0, 4),
-          title: updatedCopies[i]?.title,
-          description: updatedCopies[i]?.description,
+          title: finalCopies[i]?.title,
+          description: finalCopies[i]?.description,
         }));
 
         await fetch('/api/collections/batch', {
@@ -1205,7 +1205,23 @@ export function GeminiImageGenerator({
                       </div>
                     ) : img ? (
                       <>
-                        <img src={img} alt={`Shot ${i + 1}`} className="w-full h-full object-cover" />
+                        <img
+                          src={img}
+                          alt={`Shot ${i + 1}`}
+                          className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => {
+                            const savedUrl = editorialResults.savedImageUrls[i];
+                            setModalImage({
+                              id: `editorial-${i}`,
+                              image_url: savedUrl || img,
+                              garment_count: 1 + (secondGarmentImage ? 1 : 0) + (thirdGarmentImage ? 1 : 0) + (fourthGarmentImage ? 1 : 0) + (fifthGarmentImage ? 1 : 0),
+                              product_ids: selectedProductIds,
+                              created_at: new Date().toISOString(),
+                            });
+                            setLinkingProductIds(selectedProductIds);
+                            setLinkSuccess(false);
+                          }}
+                        />
                         {editorialResults.copies[i] && (
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
                             <p className="text-white text-[10px] font-medium line-clamp-1">{editorialResults.copies[i]?.title}</p>
