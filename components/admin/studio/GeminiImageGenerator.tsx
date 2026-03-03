@@ -221,6 +221,7 @@ export function GeminiImageGenerator({
   const [storyCount, setStoryCount] = useState<1 | 3 | 4>(1);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
+  const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
   const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '']);
   const [editorialResults, setEditorialResults] = useState<{
     images: (string | null)[];
@@ -360,7 +361,7 @@ export function GeminiImageGenerator({
   // If filtered lists are empty (e.g. age has models but no match for specific combo), fallback
   const finalEthnicities = availableEthnicities.length > 0 ? availableEthnicities : allEthnicityIds;
 
-  // Toggle helper for multi-story scene selection
+  // Toggle helpers for multi-story scene/pose selection
   const toggleScene = (sceneId: string) => {
     setSelectedScenes(prev => {
       if (prev.includes(sceneId)) return prev.filter(s => s !== sceneId);
@@ -369,16 +370,24 @@ export function GeminiImageGenerator({
     });
   };
 
+  const togglePose = (poseId: string) => {
+    setSelectedPoses(prev => {
+      if (prev.includes(poseId)) return prev.filter(p => p !== poseId);
+      if (prev.length >= storyCount) return prev;
+      return [...prev, poseId];
+    });
+  };
+
   // Editorial parallel generation handler
   const handleEditorialGenerate = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
 
-    // Validate scene selection for auto mode
+    // Validate selection for auto mode
     if (sceneMode === 'auto') {
-      if (selectedScenes.length !== storyCount) {
+      if (selectedScenes.length !== storyCount || selectedPoses.length !== storyCount) {
         setError(locale === 'ja'
-          ? `シーンを${storyCount}つ選択してください`
-          : `Select ${storyCount} scenes`);
+          ? `ポーズとシーンをそれぞれ${storyCount}つ選択してください`
+          : `Select ${storyCount} poses and ${storyCount} scenes`);
         return;
       }
     }
@@ -434,19 +443,21 @@ export function GeminiImageGenerator({
       idx += fourthImages.length;
       const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
 
-      // Build per-shot configurations (pose is shared across all shots from dropdown)
+      // Build per-shot configurations
+      // Auto: per-shot pose from checkboxes + per-shot scene
+      // Custom: pose = '' (let custom prompt handle it), per-shot custom prompt
       const shotConfigs = Array.from({ length: storyCount }, (_, i) => {
         if (sceneMode === 'auto') {
           return {
             background: selectedScenes[i],
             customPrompt: settings.customPrompt,
-            pose: settings.pose,
+            pose: selectedPoses[i],
           };
         } else {
           return {
             background: settings.background,
             customPrompt: customScenePrompts[i] || settings.customPrompt,
-            pose: settings.pose,
+            pose: '',
           };
         }
       });
@@ -790,6 +801,7 @@ export function GeminiImageGenerator({
                 setEditorialResults(null);
                 if (count === 1) {
                   setSelectedScenes([]);
+                  setSelectedPoses([]);
                 }
               }}
               className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
@@ -883,6 +895,35 @@ export function GeminiImageGenerator({
 
           {sceneMode === 'auto' ? (
             <div className="space-y-2">
+              {/* Pose selection */}
+              <div>
+                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
+                  {locale === 'ja' ? `ポーズ（${selectedPoses.length}/${storyCount}）` : `Pose (${selectedPoses.length}/${storyCount})`}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {allPoseIds.map(id => {
+                    const labels = allPoseLabels[id];
+                    const isSelected = selectedPoses.includes(id);
+                    const isFull = selectedPoses.length >= storyCount && !isSelected;
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => togglePose(id)}
+                        disabled={isFull}
+                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
+                          isSelected
+                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
+                            : isFull
+                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
+                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
+                        }`}
+                      >
+                        {locale === 'ja' ? labels.labelJa : labels.labelEn}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
               {/* Scene selection */}
               <div>
                 <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">

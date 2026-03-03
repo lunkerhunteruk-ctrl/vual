@@ -577,7 +577,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `Professional high-end fashion photography.`,
     modelDescription,
     `who is ${modelSettings.height}cm tall,`,
-    `${poseDescriptions[modelSettings.pose] || modelSettings.pose},`,
+    modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose},` : '',
     garmentDesc + secondGarmentDesc + thirdGarmentDesc + fourthGarmentDesc + fifthGarmentDesc + '.',
     customPrompt ? `MANDATORY STYLING (DO NOT IGNORE): ${customPrompt}. This styling instruction overrides any default assumptions about how the garment is worn.` : '',
     sizeDescription,
@@ -606,7 +606,8 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
   }
 
   const styleNote = customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
-  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseDescriptions[modelSettings.pose] || modelSettings.pose}, wearing the garment(s) from the provided reference images.${styleNote} ${backgroundDescriptions[background] || background}. ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
+  const poseNote = modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose}, ` : '';
+  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${styleNote} ${backgroundDescriptions[background] || background}. ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
