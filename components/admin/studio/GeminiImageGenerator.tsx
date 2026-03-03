@@ -1361,7 +1361,7 @@ export function GeminiImageGenerator({
               {savedImages.map((img) => (
                 <div
                   key={img.id}
-                  className="w-24 h-32 rounded-lg overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors relative group cursor-pointer flex-shrink-0"
+                  className="w-24 h-24 rounded-lg overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors relative group cursor-pointer flex-shrink-0 bg-[var(--color-bg-element)] flex items-center justify-center"
                   onClick={() => {
                     setModalImage(img);
                     // Default: select all used products
@@ -1376,7 +1376,7 @@ export function GeminiImageGenerator({
                   <img
                     src={img.thumbnail_url || img.image_url}
                     alt="Saved"
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full object-contain"
                   />
                   <div className="absolute bottom-1 left-1 bg-black/60 text-white text-[9px] px-1 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                     {img.garment_count}{locale === 'ja' ? '点' : 'p'}
