@@ -1034,7 +1034,6 @@ export function GeminiImageGenerator({
                     ? '由布院・金鱗湖を舞台に、朝霧のエディトリアル'
                     : 'Editorial at Lake Kinrinko, Yufuin, morning mist'}
                   className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
-                  onKeyDown={(e) => { if (e.key === 'Enter' && storyConcept.trim()) handleGenerateStory(); }}
                 />
                 <button
                   onClick={handleGenerateStory}
