@@ -465,6 +465,7 @@ export function GeminiImageGenerator({
     setIsGenerating(true);
     setError(null);
     setGeneratedImage(null);
+    setEditorialResults(null);
 
     const initialResults = {
       images: Array(storyCount).fill(null) as (string | null)[],
@@ -473,6 +474,7 @@ export function GeminiImageGenerator({
       status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
     };
     setEditorialResults(initialResults);
+    console.log('[Editorial] Initial results set, storyCount:', storyCount);
 
     try {
       // Convert garment images to base64 (shared across all shots)
@@ -565,6 +567,7 @@ export function GeminiImageGenerator({
       const successfulShots: number[] = [];
 
       imageResults.forEach((result, i) => {
+        console.log(`[Editorial] Shot ${i} result:`, result.status, result.status === 'fulfilled' ? { success: result.value.success, hasImages: !!result.value.images?.length, savedUrl: !!result.value.savedImageUrl } : result.reason);
         if (result.status === 'fulfilled' && result.value.success) {
           updatedImages[i] = result.value.images?.[0] || null;
           updatedSavedUrls[i] = result.value.savedImageUrl || null;
@@ -572,9 +575,9 @@ export function GeminiImageGenerator({
           successfulShots.push(i);
         } else {
           updatedStatus[i] = 'failed';
-          console.error(`[Editorial] Shot ${i} failed:`, result.status === 'fulfilled' ? result.value : result.reason);
         }
       });
+      console.log('[Editorial] After image phase - successfulShots:', successfulShots.length, 'images set:', updatedImages.map(img => img ? `${img.substring(0, 30)}...` : null));
       setEditorialResults({
         images: updatedImages,
         savedImageUrls: updatedSavedUrls,
