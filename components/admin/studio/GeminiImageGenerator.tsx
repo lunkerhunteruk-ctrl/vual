@@ -474,7 +474,6 @@ export function GeminiImageGenerator({
       status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
     };
     setEditorialResults(initialResults);
-    console.log('[Editorial] Initial results set, storyCount:', storyCount);
 
     try {
       // Convert garment images to base64 (shared across all shots)
@@ -567,7 +566,6 @@ export function GeminiImageGenerator({
       const successfulShots: number[] = [];
 
       imageResults.forEach((result, i) => {
-        console.log(`[Editorial] Shot ${i} result:`, result.status, result.status === 'fulfilled' ? { success: result.value.success, hasImages: !!result.value.images?.length, savedUrl: !!result.value.savedImageUrl } : result.reason);
         if (result.status === 'fulfilled' && result.value.success) {
           updatedImages[i] = result.value.images?.[0] || null;
           updatedSavedUrls[i] = result.value.savedImageUrl || null;
@@ -577,7 +575,6 @@ export function GeminiImageGenerator({
           updatedStatus[i] = 'failed';
         }
       });
-      console.log('[Editorial] After image phase - successfulShots:', successfulShots.length, 'images set:', updatedImages.map(img => img ? `${img.substring(0, 30)}...` : null));
       setEditorialResults({
         images: updatedImages,
         savedImageUrls: updatedSavedUrls,
@@ -958,7 +955,7 @@ export function GeminiImageGenerator({
 
       {/* Editorial Scene Settings (only when storyCount > 1) */}
       {storyCount > 1 && (
-        <div className="pb-3 border-b border-[var(--color-line)] pt-3">
+        <div className="pb-3 border-b border-[var(--color-line)] pt-3 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
           <div className="flex items-center gap-3 mb-2">
             <BookOpen size={14} className="text-[var(--color-accent)]" />
             <span className="text-xs font-bold text-[var(--color-title-active)]">
