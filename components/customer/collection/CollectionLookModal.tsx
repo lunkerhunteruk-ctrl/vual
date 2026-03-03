@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
@@ -30,6 +30,23 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
   const [slideIndex, setSlideIndex] = useState(0);
   const look = looks[slideIndex];
 
+  // Lock body scroll when open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  // ESC to close
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
+
   const goPrev = useCallback(() => {
     setSlideIndex((prev) => (prev - 1 + looks.length) % looks.length);
   }, [looks.length]);
@@ -46,45 +63,56 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
   const showCredits = look.show_credits !== false;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={onClose}>
-      <div
-        className="relative w-full max-w-lg mx-4 bg-white rounded-2xl overflow-hidden max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="fixed inset-0 z-50 bg-white flex flex-col"
+    >
+      {/* Top bar */}
+      <div className="sticky top-0 z-20 flex items-center justify-between px-4 h-14 bg-white/90 backdrop-blur-sm border-b border-[var(--color-line)]">
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-20 w-8 h-8 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/60 transition-colors"
+          className="flex items-center gap-1 text-sm text-[var(--color-text-body)] hover:text-[var(--color-title-active)] transition-colors"
         >
-          <X size={16} className="text-white" />
+          <ChevronLeft size={18} />
+          <span>{ja ? 'コレクション' : 'Collection'}</span>
         </button>
 
-        {/* Look image */}
-        <div className="relative aspect-square bg-[var(--color-bg-element)] overflow-hidden flex items-center justify-center">
+        {/* Slide indicator for bundles */}
+        {looks.length > 1 && (
+          <span className="text-xs text-[var(--color-text-label)]">
+            {slideIndex + 1} / {looks.length}
+          </span>
+        )}
+
+        <button
+          onClick={onClose}
+          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[var(--color-bg-element)] transition-colors"
+        >
+          <X size={18} className="text-[var(--color-title-active)]" />
+        </button>
+      </div>
+
+      {/* Scrollable content */}
+      <div className="flex-1 overflow-y-auto">
+        {/* Hero image — full width, editorial feel */}
+        <div className="relative w-full bg-black">
           <AnimatePresence mode="wait">
             <motion.div
               key={look.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
+              transition={{ duration: 0.4 }}
+              className="relative w-full"
             >
-              {/* Blurred background */}
               <img
                 src={look.image_url}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover scale-110 blur-[40px] opacity-60"
+                alt={look.title || ''}
+                className="w-full h-auto block"
               />
-              {/* Main image */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <img
-                  src={look.image_url}
-                  alt=""
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
             </motion.div>
           </AnimatePresence>
 
@@ -108,7 +136,7 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
 
           {/* Dot indicators */}
           {looks.length > 1 && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
               {looks.map((_, idx) => (
                 <button
                   key={idx}
@@ -124,34 +152,34 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
           )}
         </div>
 
-        {/* Content area — changes with slide */}
-        <div className="p-4 overflow-y-auto">
+        {/* Content area */}
+        <div className="px-5 py-6">
           {/* Title & Description */}
           {look.title && (
-            <h3 className="text-base font-semibold text-[var(--color-title-active)] mb-1">
+            <h2 className="text-lg font-semibold tracking-wide text-[var(--color-title-active)] mb-2">
               {look.title}
-            </h3>
+            </h2>
           )}
           {look.description && (
-            <p className="text-xs text-[var(--color-text-body)] leading-relaxed mb-3">
+            <p className="text-sm text-[var(--color-text-body)] leading-relaxed mb-5">
               {look.description}
             </p>
           )}
 
-          {/* Credits section (structured, from DB product data) */}
+          {/* Credits section */}
           {showCredits && products.length > 0 && (
-            <div className="mb-4 py-3 border-t border-b border-[var(--color-line)]">
+            <div className="mb-5 py-4 border-t border-b border-[var(--color-line)]">
               {products.map((lp) => {
                 const p = lp.products;
                 if (!p) return null;
                 const catLabel = getCategoryLabel(p.category || '', locale);
                 const brandPart = p.brand ? ` (${p.brand})` : '';
                 return (
-                  <div key={lp.id} className="mb-1.5 last:mb-0">
-                    <p className="text-[11px] font-medium text-[var(--color-title-active)]">
+                  <div key={lp.id} className="mb-2 last:mb-0">
+                    <p className="text-xs font-medium text-[var(--color-title-active)]">
                       {catLabel}: {p.name}{brandPart}
                     </p>
-                    <p className="text-[11px] text-[var(--color-text-label)]">
+                    <p className="text-xs text-[var(--color-text-label)]">
                       {formatPrice(p.base_price, p.currency)}
                     </p>
                   </div>
@@ -160,9 +188,9 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
             </div>
           )}
 
-          {/* Product cards with links */}
+          {/* Product cards */}
           {products.length > 0 && (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 pb-6">
               {products.map((lp) => {
                 const product = lp.products;
                 if (!product) return null;
@@ -202,7 +230,7 @@ export function CollectionLookModal({ item, onClose }: CollectionLookModalProps)
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

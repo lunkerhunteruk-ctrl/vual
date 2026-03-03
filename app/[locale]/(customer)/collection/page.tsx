@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Layers, Loader2 } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import { useCustomerCollection, CollectionItem } from '@/lib/hooks/useCollection';
 import { CollectionLookModal } from '@/components/customer/collection/CollectionLookModal';
 
@@ -79,13 +80,15 @@ export default function CollectionPage() {
         </div>
       )}
 
-      {/* Modal */}
-      {selectedItemIndex !== null && items[selectedItemIndex] && (
-        <CollectionLookModal
-          item={items[selectedItemIndex]}
-          onClose={() => setSelectedItemIndex(null)}
-        />
-      )}
+      {/* Full-screen look view */}
+      <AnimatePresence>
+        {selectedItemIndex !== null && items[selectedItemIndex] && (
+          <CollectionLookModal
+            item={items[selectedItemIndex]}
+            onClose={() => setSelectedItemIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
