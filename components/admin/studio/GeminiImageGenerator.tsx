@@ -783,9 +783,8 @@ export function GeminiImageGenerator({
                   setStoryGenerated(false);
                   setCustomScenePrompts(['', '', '', '']);
                   setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']);
-                  if (count === 1) {
-                    setSelectedScenes([]);
-                    setSelectedPoses([]);
+                  if (count > 1) {
+                    setSceneMode('custom');
                   }
                 }}
                 className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
@@ -880,6 +879,8 @@ export function GeminiImageGenerator({
           })}
         </select>
 
+        {/* Hide pose/background/AR when multi-shot custom mode (AI story handles everything) */}
+        {!(storyCount > 1 && sceneMode === 'custom') && (<>
         <select
           value={settings.pose}
           onChange={(e) => setSettings(prev => ({ ...prev, pose: e.target.value }))}
@@ -901,18 +902,16 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
-        {/* Hide global AR when custom editorial uses per-shot AR */}
-        {!(storyCount > 1 && sceneMode === 'custom') && (
-          <select
-            value={settings.aspectRatio}
-            onChange={(e) => setSettings(prev => ({ ...prev, aspectRatio: e.target.value }))}
-            className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
-          >
-            {aspectRatioOptions.map(a => (
-              <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
-            ))}
-          </select>
-        )}
+        <select
+          value={settings.aspectRatio}
+          onChange={(e) => setSettings(prev => ({ ...prev, aspectRatio: e.target.value }))}
+          className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
+        >
+          {aspectRatioOptions.map(a => (
+            <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
+          ))}
+        </select>
+        </>)}
 
         {/* Credit balance */}
         {studioCredits !== null && (
@@ -948,188 +947,80 @@ export function GeminiImageGenerator({
       )}
       </div>
 
-      {/* Editorial Scene Settings (only when storyCount > 1) */}
+      {/* Editorial Story Settings (only when storyCount > 1) */}
       {storyCount > 1 && (
         <div className="pb-3 border-b border-[var(--color-line)] pt-3 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
           <div className="flex items-center gap-3 mb-2">
             <BookOpen size={14} className="text-[var(--color-accent)]" />
             <span className="text-xs font-bold text-[var(--color-title-active)]">
-              {locale === 'ja' ? 'エディトリアル設定' : 'Editorial Settings'}
+              {locale === 'ja' ? 'ストーリー' : 'Story'}
             </span>
-            <div className="flex gap-1 border border-[var(--color-line)] rounded-lg p-0.5">
-              <button
-                onClick={() => { setSceneMode('auto'); setStoryGenerated(false); }}
-                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
-                  sceneMode === 'auto' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
-                }`}
-              >
-                {locale === 'ja' ? 'おまかせ' : 'Auto'}
-              </button>
-              <button
-                onClick={() => { setSceneMode('custom'); setCustomScenePrompts(['', '', '', '']); setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']); setStoryGenerated(false); }}
-                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
-                  sceneMode === 'custom' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
-                }`}
-              >
-                {locale === 'ja' ? 'カスタム' : 'Custom'}
-              </button>
-            </div>
           </div>
 
-          {sceneMode === 'auto' ? (
-            <div className="space-y-2">
-              {/* Pose selection */}
-              <div>
-                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
-                  {locale === 'ja' ? `ポーズ（${selectedPoses.length}/${storyCount}）` : `Pose (${selectedPoses.length}/${storyCount})`}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {allPoseIds.map(id => {
-                    const labels = allPoseLabels[id];
-                    const isSelected = selectedPoses.includes(id);
-                    const isFull = selectedPoses.length >= storyCount && !isSelected;
-                    return (
-                      <button
-                        key={id}
-                        onClick={() => togglePose(id)}
-                        disabled={isFull}
-                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
-                          isSelected
-                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
-                            : isFull
-                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
-                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
-                        }`}
-                      >
-                        {locale === 'ja' ? labels.labelJa : labels.labelEn}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              {/* Scene selection */}
-              <div>
-                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
-                  {locale === 'ja' ? `シーン（${selectedScenes.length}/${storyCount}）` : `Scene (${selectedScenes.length}/${storyCount})`}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {backgroundOptions.map(b => {
-                    const isSelected = selectedScenes.includes(b.id);
-                    const isFull = selectedScenes.length >= storyCount && !isSelected;
-                    return (
-                      <button
-                        key={b.id}
-                        onClick={() => toggleScene(b.id)}
-                        disabled={isFull}
-                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
-                          isSelected
-                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
-                            : isFull
-                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
-                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
-                        }`}
-                      >
-                        {locale === 'ja' ? b.labelJa : b.labelEn}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              {/* Style selection */}
-              <div>
-                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
-                  {locale === 'ja' ? 'スタイル' : 'Style'}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {[
-                    { id: '', labelJa: 'なし', labelEn: 'None' },
-                    { id: 'High-end fashion magazine cover editorial. Dramatic cinematic lighting, striking pose, luxury fashion aesthetic with bold composition and high contrast tones.', labelJa: 'ハイファッション誌カバー', labelEn: 'Fashion Magazine Cover' },
-                    { id: 'Minimalist Scandinavian e-commerce lookbook. Clean white background, soft diffused natural light, relaxed yet refined pose. Focus on garment silhouette and fabric texture.', labelJa: 'ミニマルECルックブック', labelEn: 'Minimal EC Lookbook' },
-                    { id: 'Parisian street style editorial. Golden hour warm sunlight, candid walking pose on European cobblestone street. Effortlessly chic, natural movement with wind-blown fabric.', labelJa: 'パリジャン・ストリートスナップ', labelEn: 'Parisian Street Snap' },
-                    { id: 'High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.', labelJa: 'スタジオ・キャンペーンビジュアル', labelEn: 'Studio Campaign' },
-                    { id: 'Lifestyle resort collection lookbook. Bright airy natural light, relaxed resort setting. Warm golden tones, vacation mood with soft bokeh background and effortless styling.', labelJa: 'リゾートライフスタイル', labelEn: 'Resort Lifestyle' },
-                  ].map(s => (
-                    <button
-                      key={s.labelEn}
-                      onClick={() => setSettings(prev => ({ ...prev, customPrompt: s.id }))}
-                      className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
-                        settings.customPrompt === s.id
-                          ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
-                          : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
-                      }`}
-                    >
-                      {locale === 'ja' ? s.labelJa : s.labelEn}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <div className="space-y-2">
+            {/* Story concept input + generate button */}
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={storyConcept}
+                onChange={(e) => setStoryConcept(e.target.value)}
+                placeholder={locale === 'ja'
+                  ? '由布院・金鱗湖を舞台に、朝霧のエディトリアル'
+                  : 'Editorial at Lake Kinrinko, Yufuin, morning mist'}
+                className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
+              />
+              <button
+                onClick={handleGenerateStory}
+                disabled={!storyConcept.trim() || isGeneratingStory}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--color-accent)] text-white hover:opacity-90 disabled:opacity-40 transition-all whitespace-nowrap"
+              >
+                {isGeneratingStory ? (
+                  <Loader2 size={12} className="animate-spin" />
+                ) : (
+                  <Sparkles size={12} />
+                )}
+                {storyGenerated
+                  ? (locale === 'ja' ? '再生成' : 'Regenerate')
+                  : (locale === 'ja' ? 'ストーリー生成' : 'Generate Story')}
+              </button>
             </div>
-          ) : (
-            <div className="space-y-2">
-              {/* Story concept input + generate button */}
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={storyConcept}
-                  onChange={(e) => setStoryConcept(e.target.value)}
-                  placeholder={locale === 'ja'
-                    ? '由布院・金鱗湖を舞台に、朝霧のエディトリアル'
-                    : 'Editorial at Lake Kinrinko, Yufuin, morning mist'}
-                  className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
-                />
-                <button
-                  onClick={handleGenerateStory}
-                  disabled={!storyConcept.trim() || isGeneratingStory}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[var(--color-accent)] text-white hover:opacity-90 disabled:opacity-40 transition-all whitespace-nowrap"
-                >
-                  {isGeneratingStory ? (
-                    <Loader2 size={12} className="animate-spin" />
-                  ) : (
-                    <Sparkles size={12} />
-                  )}
-                  {storyGenerated
-                    ? (locale === 'ja' ? '再生成' : 'Regenerate')
-                    : (locale === 'ja' ? 'ストーリー生成' : 'Generate Story')}
-                </button>
-              </div>
 
-              {/* Per-shot editable textareas with AR selectors (shown after story generation) */}
-              {storyGenerated && (
-                <div className="space-y-2">
-                  {Array.from({ length: storyCount }, (_, i) => (
-                    <div key={i} className="flex gap-2">
-                      <span className="text-[10px] font-bold text-[var(--color-text-label)] w-10 text-center flex-shrink-0 pt-2">
-                        {i + 1}
-                      </span>
-                      <textarea
-                        value={customScenePrompts[i] || ''}
-                        onChange={(e) => {
-                          const updated = [...customScenePrompts];
-                          updated[i] = e.target.value;
-                          setCustomScenePrompts(updated);
-                        }}
-                        rows={3}
-                        className="flex-1 text-xs px-3 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed"
-                      />
-                      <select
-                        value={perShotAspectRatios[i] || '3:4'}
-                        onChange={(e) => {
-                          const updated = [...perShotAspectRatios];
-                          updated[i] = e.target.value;
-                          setPerShotAspectRatios(updated);
-                        }}
-                        className="text-xs px-1.5 py-1 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] w-14 flex-shrink-0 self-start"
-                      >
-                        {aspectRatioOptions.map(a => (
-                          <option key={a.id} value={a.id}>{a.id}</option>
-                        ))}
-                      </select>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+            {/* Per-shot editable textareas with AR selectors (shown after story generation) */}
+            {storyGenerated && (
+              <div className="space-y-2">
+                {Array.from({ length: storyCount }, (_, i) => (
+                  <div key={i} className="flex gap-2">
+                    <span className="text-[10px] font-bold text-[var(--color-text-label)] w-10 text-center flex-shrink-0 pt-2">
+                      {i + 1}
+                    </span>
+                    <textarea
+                      value={customScenePrompts[i] || ''}
+                      onChange={(e) => {
+                        const updated = [...customScenePrompts];
+                        updated[i] = e.target.value;
+                        setCustomScenePrompts(updated);
+                      }}
+                      rows={3}
+                      className="flex-1 text-xs px-3 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed"
+                    />
+                    <select
+                      value={perShotAspectRatios[i] || '3:4'}
+                      onChange={(e) => {
+                        const updated = [...perShotAspectRatios];
+                        updated[i] = e.target.value;
+                        setPerShotAspectRatios(updated);
+                      }}
+                      className="text-xs px-1.5 py-1 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] w-14 flex-shrink-0 self-start"
+                    >
+                      {aspectRatioOptions.map(a => (
+                        <option key={a.id} value={a.id}>{a.id}</option>
+                      ))}
+                    </select>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
