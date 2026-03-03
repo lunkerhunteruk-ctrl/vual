@@ -914,48 +914,16 @@ export function GeminiImageGenerator({
           </select>
         )}
 
-        {/* Credit balance + selected items */}
-        <div className="ml-auto text-sm text-[var(--color-text-label)] flex items-center gap-2 flex-wrap">
-          {studioCredits !== null && (
-            <span className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
-              (studioCredits.subscription + studioCredits.topup) > 0
-                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                : 'bg-red-50 text-red-600 border border-red-200'
-            }`}>
-              {locale === 'ja' ? 'クレジット' : 'Credits'}: {studioCredits.subscription + studioCredits.topup}
-              {studioCredits.topup > 0 && (
-                <span className="ml-1 font-normal opacity-70">
-                  ({studioCredits.subscription}+{studioCredits.topup})
-                </span>
-              )}
-            </span>
-          )}
-          {selectedGarmentName && (
-            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
-              {selectedGarmentName}
-            </span>
-          )}
-          {hasSecondItem && secondGarmentName && (
-            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
-              + {secondGarmentName}
-            </span>
-          )}
-          {hasThirdItem && thirdGarmentName && (
-            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
-              + {thirdGarmentName}
-            </span>
-          )}
-          {hasFourthItem && fourthGarmentName && (
-            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
-              + {fourthGarmentName}
-            </span>
-          )}
-          {hasFifthItem && fifthGarmentName && (
-            <span className="px-2 py-0.5 bg-[var(--color-accent)]/10 text-[var(--color-accent)] rounded text-xs">
-              + {fifthGarmentName}
-            </span>
-          )}
-        </div>
+        {/* Credit balance */}
+        {studioCredits !== null && (
+          <span className={`ml-auto px-2.5 py-1 rounded-lg text-xs font-bold flex-shrink-0 ${
+            (studioCredits.subscription + studioCredits.topup) > 0
+              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              : 'bg-red-50 text-red-600 border border-red-200'
+          }`}>
+            {locale === 'ja' ? 'クレジット' : 'Credits'}: {studioCredits.subscription + studioCredits.topup}
+          </span>
+        )}
       </div>
 
       {/* Row 2: Style selector (single-shot only) */}
