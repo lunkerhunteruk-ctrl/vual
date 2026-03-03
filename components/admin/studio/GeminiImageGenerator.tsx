@@ -1163,53 +1163,48 @@ export function GeminiImageGenerator({
         {/* Preview - fills remaining space */}
         <div className="flex-1 min-w-0">
           <div className="bg-[var(--color-bg-element)] rounded-2xl overflow-hidden flex items-center justify-center w-full h-full p-4">
+            {/* Editorial Results Grid — rendered outside AnimatePresence */}
+            {storyCount > 1 && editorialResults ? (
+              <div className={`w-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : 'grid-cols-2 grid-rows-2'}`}>
+                {editorialResults.images.map((img, i) => (
+                  <div key={i} className="relative rounded-lg overflow-hidden bg-[var(--color-bg-input)] flex items-center justify-center aspect-[3/4]">
+                    {editorialResults.status[i] === 'generating' ? (
+                      <div className="flex flex-col items-center">
+                        <Loader2 size={20} className="animate-spin text-[var(--color-accent)]" />
+                        <span className="text-[10px] text-[var(--color-text-label)] mt-1">Shot {i + 1}</span>
+                      </div>
+                    ) : editorialResults.status[i] === 'failed' ? (
+                      <div className="flex flex-col items-center text-red-400">
+                        <X size={20} />
+                        <span className="text-[10px] mt-1">{locale === 'ja' ? '失敗' : 'Failed'}</span>
+                      </div>
+                    ) : img ? (
+                      <>
+                        <img src={img} alt={`Shot ${i + 1}`} className="w-full h-full object-cover" />
+                        {editorialResults.copies[i] && (
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
+                            <p className="text-white text-[10px] font-medium line-clamp-1">{editorialResults.copies[i]?.title}</p>
+                            <p className="text-white/70 text-[8px] line-clamp-2 mt-0.5">{editorialResults.copies[i]?.description}</p>
+                          </div>
+                        )}
+                        {editorialResults.status[i] === 'copying' && (
+                          <div className="absolute top-2 right-2">
+                            <Loader2 size={12} className="animate-spin text-white" />
+                          </div>
+                        )}
+                        {editorialResults.status[i] === 'done' && (
+                          <div className="absolute top-2 right-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                            <Check size={10} className="text-white" />
+                          </div>
+                        )}
+                      </>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : (
             <AnimatePresence mode="wait">
-              {/* Editorial Results Grid */}
-              {storyCount > 1 && editorialResults ? (
-                <motion.div
-                  key="editorial"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className={`w-full h-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : 'grid-cols-2 grid-rows-2'}`}
-                >
-                  {editorialResults.images.map((img, i) => (
-                    <div key={i} className="relative rounded-lg overflow-hidden bg-[var(--color-bg-input)] flex items-center justify-center">
-                      {editorialResults.status[i] === 'generating' ? (
-                        <div className="flex flex-col items-center">
-                          <Loader2 size={20} className="animate-spin text-[var(--color-accent)]" />
-                          <span className="text-[10px] text-[var(--color-text-label)] mt-1">Shot {i + 1}</span>
-                        </div>
-                      ) : editorialResults.status[i] === 'failed' ? (
-                        <div className="flex flex-col items-center text-red-400">
-                          <X size={20} />
-                          <span className="text-[10px] mt-1">{locale === 'ja' ? '失敗' : 'Failed'}</span>
-                        </div>
-                      ) : img ? (
-                        <>
-                          <img src={img} alt={`Shot ${i + 1}`} className="w-full h-full object-cover" />
-                          {editorialResults.copies[i] && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
-                              <p className="text-white text-[10px] font-medium line-clamp-1">{editorialResults.copies[i]?.title}</p>
-                              <p className="text-white/70 text-[8px] line-clamp-2 mt-0.5">{editorialResults.copies[i]?.description}</p>
-                            </div>
-                          )}
-                          {editorialResults.status[i] === 'copying' && (
-                            <div className="absolute top-2 right-2">
-                              <Loader2 size={12} className="animate-spin text-white" />
-                            </div>
-                          )}
-                          {editorialResults.status[i] === 'done' && (
-                            <div className="absolute top-2 right-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                              <Check size={10} className="text-white" />
-                            </div>
-                          )}
-                        </>
-                      ) : null}
-                    </div>
-                  ))}
-                </motion.div>
-              ) : isGenerating && storyCount === 1 ? (
+              {isGenerating && storyCount === 1 ? (
                 <motion.div
                   key="loading"
                   initial={{ opacity: 0 }}
@@ -1279,6 +1274,7 @@ export function GeminiImageGenerator({
                 </motion.div>
               )}
             </AnimatePresence>
+            )}
           </div>
         </div>
       </div>
