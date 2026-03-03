@@ -1043,6 +1043,34 @@ export function GeminiImageGenerator({
                   })}
                 </div>
               </div>
+              {/* Style selection */}
+              <div>
+                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
+                  {locale === 'ja' ? 'スタイル' : 'Style'}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    { id: '', labelJa: 'なし', labelEn: 'None' },
+                    { id: 'High-end fashion magazine cover editorial. Dramatic cinematic lighting, striking pose, luxury fashion aesthetic with bold composition and high contrast tones.', labelJa: 'ハイファッション誌カバー', labelEn: 'Fashion Magazine Cover' },
+                    { id: 'Minimalist Scandinavian e-commerce lookbook. Clean white background, soft diffused natural light, relaxed yet refined pose. Focus on garment silhouette and fabric texture.', labelJa: 'ミニマルECルックブック', labelEn: 'Minimal EC Lookbook' },
+                    { id: 'Parisian street style editorial. Golden hour warm sunlight, candid walking pose on European cobblestone street. Effortlessly chic, natural movement with wind-blown fabric.', labelJa: 'パリジャン・ストリートスナップ', labelEn: 'Parisian Street Snap' },
+                    { id: 'High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.', labelJa: 'スタジオ・キャンペーンビジュアル', labelEn: 'Studio Campaign' },
+                    { id: 'Lifestyle resort collection lookbook. Bright airy natural light, relaxed resort setting. Warm golden tones, vacation mood with soft bokeh background and effortless styling.', labelJa: 'リゾートライフスタイル', labelEn: 'Resort Lifestyle' },
+                  ].map(s => (
+                    <button
+                      key={s.labelEn}
+                      onClick={() => setSettings(prev => ({ ...prev, customPrompt: s.id }))}
+                      className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
+                        settings.customPrompt === s.id
+                          ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
+                          : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
+                      }`}
+                    >
+                      {locale === 'ja' ? s.labelJa : s.labelEn}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           ) : (
             <div className="space-y-2">
@@ -1276,33 +1304,23 @@ export function GeminiImageGenerator({
         </div>
       </div>
 
-      {/* Prompt & Generate */}
+      {/* Generate bar */}
       <div className="flex items-center gap-2 flex-shrink-0 py-3 border-t border-[var(--color-line)]">
-        <div className="flex-1 flex gap-1.5">
+        {storyCount === 1 && (
           <select
-            value=""
-            onChange={(e) => {
-              if (e.target.value) {
-                setSettings(prev => ({ ...prev, customPrompt: e.target.value }));
-              }
-            }}
-            className="text-sm px-2 py-2 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] w-[200px] flex-shrink-0"
+            value={settings.customPrompt}
+            onChange={(e) => setSettings(prev => ({ ...prev, customPrompt: e.target.value }))}
+            className="text-sm px-2 py-2 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] flex-1"
           >
-            <option value="">{locale === 'ja' ? 'スタイル選択' : 'Select style'}</option>
+            <option value="">{locale === 'ja' ? 'スタイル選択（任意）' : 'Select style (optional)'}</option>
             <option value="High-end fashion magazine cover editorial. Dramatic cinematic lighting, striking pose, luxury fashion aesthetic with bold composition and high contrast tones.">{locale === 'ja' ? 'ハイファッション誌カバー' : 'Fashion Magazine Cover'}</option>
             <option value="Minimalist Scandinavian e-commerce lookbook. Clean white background, soft diffused natural light, relaxed yet refined pose. Focus on garment silhouette and fabric texture.">{locale === 'ja' ? 'ミニマルECルックブック' : 'Minimal EC Lookbook'}</option>
             <option value="Parisian street style editorial. Golden hour warm sunlight, candid walking pose on European cobblestone street. Effortlessly chic, natural movement with wind-blown fabric.">{locale === 'ja' ? 'パリジャン・ストリートスナップ' : 'Parisian Street Snap'}</option>
-            <option value="High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.">{locale === 'ja' ? 'スタジオ・キャンペーンビジュアル' : 'Studio Campaign Visual'}</option>
+            <option value="High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.">{locale === 'ja' ? 'スタジオ・キャンペーンビジュアル' : 'Studio Campaign'}</option>
             <option value="Lifestyle resort collection lookbook. Bright airy natural light, relaxed resort setting. Warm golden tones, vacation mood with soft bokeh background and effortless styling.">{locale === 'ja' ? 'リゾートライフスタイル' : 'Resort Lifestyle'}</option>
           </select>
-          <input
-            type="text"
-            value={settings.customPrompt}
-            onChange={(e) => setSettings(prev => ({ ...prev, customPrompt: e.target.value }))}
-            placeholder={locale === 'ja' ? '追加プロンプト（任意）' : 'Additional prompt'}
-            className="flex-1 text-sm px-4 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
-          />
-        </div>
+        )}
+        {storyCount > 1 && <div className="flex-1" />}
         <Button
           variant="primary"
           size="lg"
