@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   DndContext,
   closestCenter,
@@ -286,11 +286,15 @@ function LookDetailModal({
   onClose,
   onSave,
   locale,
+  bundleLooks,
+  onNavigate,
 }: {
   look: CollectionLook;
   onClose: () => void;
   onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean }) => Promise<void>;
   locale: string;
+  bundleLooks?: CollectionLook[];
+  onNavigate?: (look: CollectionLook) => void;
 }) {
   const ja = locale === 'ja';
   const [title, setTitle] = useState(look.title || '');
@@ -304,6 +308,23 @@ function LookDetailModal({
     title !== (look.title || '') ||
     description !== (look.description || '') ||
     showCredits !== (look.show_credits ?? true);
+
+  // Bundle navigation
+  const currentBundleIndex = bundleLooks ? bundleLooks.findIndex(l => l.id === look.id) : -1;
+  const canGoPrev = bundleLooks && currentBundleIndex > 0;
+  const canGoNext = bundleLooks && currentBundleIndex >= 0 && currentBundleIndex < bundleLooks.length - 1;
+
+  const handleNavigate = async (direction: 'prev' | 'next') => {
+    if (!bundleLooks || !onNavigate) return;
+    // Auto-save if there are changes
+    if (hasChanges) {
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits });
+    }
+    const nextIndex = direction === 'prev' ? currentBundleIndex - 1 : currentBundleIndex + 1;
+    if (nextIndex >= 0 && nextIndex < bundleLooks.length) {
+      onNavigate(bundleLooks[nextIndex]);
+    }
+  };
 
   const handleSave = async () => {
     setIsSaving(true);
@@ -324,9 +345,16 @@ function LookDetailModal({
       <div className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-[var(--color-line)]">
-          <h2 className="text-base font-bold text-[var(--color-title-active)]">
-            {ja ? 'ルック詳細' : 'Look Details'}
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-base font-bold text-[var(--color-title-active)]">
+              {ja ? 'ルック詳細' : 'Look Details'}
+            </h2>
+            {bundleLooks && currentBundleIndex >= 0 && (
+              <span className="text-xs text-[var(--color-text-label)]">
+                {currentBundleIndex + 1} / {bundleLooks.length}
+              </span>
+            )}
+          </div>
           <div className="flex items-center gap-1">
             <button
               onClick={async () => {
@@ -357,9 +385,25 @@ function LookDetailModal({
         </div>
 
         <div className="p-5 space-y-5">
-          {/* Image */}
-          <div className="rounded-xl overflow-hidden bg-[var(--color-bg-element)] flex items-center justify-center">
+          {/* Image with bundle navigation arrows */}
+          <div className="relative rounded-xl overflow-hidden bg-[var(--color-bg-element)] flex items-center justify-center">
             <img src={look.image_url} alt="" className="max-w-full max-h-[400px] object-contain" />
+            {canGoPrev && (
+              <button
+                onClick={() => handleNavigate('prev')}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm"
+              >
+                <ChevronLeft size={20} className="text-[var(--color-title-active)]" />
+              </button>
+            )}
+            {canGoNext && (
+              <button
+                onClick={() => handleNavigate('next')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm"
+              >
+                <ChevronRight size={20} className="text-[var(--color-title-active)]" />
+              </button>
+            )}
           </div>
 
           {/* Title */}
@@ -552,6 +596,7 @@ export default function CollectionPage() {
   } = useCollection();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
+  const [selectedLookBundleLooks, setSelectedLookBundleLooks] = useState<CollectionLook[] | undefined>(undefined);
   const [selectedBundle, setSelectedBundle] = useState<{ id: string; looks: CollectionLook[] } | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [isBundling, setIsBundling] = useState(false);
@@ -713,13 +758,18 @@ export default function CollectionPage() {
       {/* Look Detail Modal */}
       {selectedLook && (
         <LookDetailModal
+          key={selectedLook.id}
           look={selectedLook}
-          onClose={() => setSelectedLook(null)}
+          onClose={() => { setSelectedLook(null); setSelectedLookBundleLooks(undefined); }}
           onSave={async (id, updates) => {
             await updateLook(id, updates);
             setSelectedLook(prev => prev ? { ...prev, ...updates } : null);
           }}
           locale={locale}
+          bundleLooks={selectedLookBundleLooks}
+          onNavigate={(nextLook) => {
+            setSelectedLook(nextLook);
+          }}
         />
       )}
 
@@ -729,7 +779,9 @@ export default function CollectionPage() {
           bundle={selectedBundle}
           onClose={() => setSelectedBundle(null)}
           onClickLook={(look) => {
+            const bundleLooks = selectedBundle.looks;
             setSelectedBundle(null);
+            setSelectedLookBundleLooks(bundleLooks);
             setSelectedLook(look);
           }}
           onReorder={reorderBundleLooks}
