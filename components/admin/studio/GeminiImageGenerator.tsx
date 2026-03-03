@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers } from 'lucide-react';
+import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
 
@@ -170,6 +170,7 @@ const aspectRatioOptions = [
   { id: '3:4', labelEn: '3:4 Portrait', labelJa: '3:4 縦長' },
   { id: '4:3', labelEn: '4:3 Landscape', labelJa: '4:3 横長' },
   { id: '9:16', labelEn: '9:16 Story', labelJa: '9:16 ストーリー' },
+  { id: '16:9', labelEn: '16:9 Wide', labelJa: '16:9 ワイド' },
 ];
 
 export function GeminiImageGenerator({
@@ -213,6 +214,19 @@ export function GeminiImageGenerator({
 
   // AI Studio credit balance
   const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
+
+  // Multi-story editorial state
+  const [storyCount, setStoryCount] = useState<1 | 3 | 4>(1);
+  const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
+  const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
+  const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
+  const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '']);
+  const [editorialResults, setEditorialResults] = useState<{
+    images: (string | null)[];
+    savedImageUrls: (string | null)[];
+    copies: ({ title: string; description: string } | null)[];
+    status: ('pending' | 'generating' | 'copying' | 'done' | 'failed')[];
+  } | null>(null);
 
   const [settings, setSettings] = useState({
     gender: 'female',
@@ -347,6 +361,229 @@ export function GeminiImageGenerator({
   // If filtered lists are empty (e.g. age has models but no match for specific combo), fallback
   const finalEthnicities = availableEthnicities.length > 0 ? availableEthnicities : allEthnicityIds;
   const finalPoses = availablePoses.length > 0 ? availablePoses : allPoseIds;
+
+  // Toggle helpers for multi-story scene/pose selection
+  const toggleScene = (sceneId: string) => {
+    setSelectedScenes(prev => {
+      if (prev.includes(sceneId)) return prev.filter(s => s !== sceneId);
+      if (prev.length >= storyCount) return prev;
+      return [...prev, sceneId];
+    });
+  };
+
+  const togglePose = (poseId: string) => {
+    setSelectedPoses(prev => {
+      if (prev.includes(poseId)) return prev.filter(p => p !== poseId);
+      if (prev.length >= storyCount) return prev;
+      return [...prev, poseId];
+    });
+  };
+
+  // Editorial parallel generation handler
+  const handleEditorialGenerate = async () => {
+    if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
+
+    // Validate scene/pose selection for auto mode
+    if (sceneMode === 'auto') {
+      if (selectedScenes.length !== storyCount || selectedPoses.length !== storyCount) {
+        setError(locale === 'ja'
+          ? `シーンとポーズをそれぞれ${storyCount}つ選択してください`
+          : `Select ${storyCount} scenes and ${storyCount} poses`);
+        return;
+      }
+    }
+
+    // Pre-check credits
+    const totalCredits = (studioCredits?.subscription || 0) + (studioCredits?.topup || 0);
+    if (totalCredits < storyCount) {
+      setError(locale === 'ja'
+        ? `クレジットが${storyCount}枚必要です（残り${totalCredits}枚）`
+        : `Need ${storyCount} credits (${totalCredits} remaining)`);
+      return;
+    }
+
+    setIsGenerating(true);
+    setError(null);
+    setGeneratedImage(null);
+
+    const initialResults = {
+      images: Array(storyCount).fill(null) as (string | null)[],
+      savedImageUrls: Array(storyCount).fill(null) as (string | null)[],
+      copies: Array(storyCount).fill(null) as ({ title: string; description: string } | null)[],
+      status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
+    };
+    setEditorialResults(initialResults);
+
+    try {
+      // Convert garment images to base64 (shared across all shots)
+      const firstImages = selectedGarmentImages.length > 0 ? selectedGarmentImages : (selectedGarmentImage ? [selectedGarmentImage] : []);
+      const secondImages = secondGarmentImages.length > 0 ? secondGarmentImages : (secondGarmentImage ? [secondGarmentImage] : []);
+      const thirdImages = thirdGarmentImages.length > 0 ? thirdGarmentImages : (thirdGarmentImage ? [thirdGarmentImage] : []);
+      const fourthImages = fourthGarmentImages.length > 0 ? fourthGarmentImages : (fourthGarmentImage ? [fourthGarmentImage] : []);
+      const fifthImages = fifthGarmentImages.length > 0 ? fifthGarmentImages : (fifthGarmentImage ? [fifthGarmentImage] : []);
+
+      const allImagesToConvert: Promise<string>[] = [];
+      for (const img of firstImages) allImagesToConvert.push(imageToBase64(img));
+      if (selectedModel?.fullImage) allImagesToConvert.push(imageToBase64(selectedModel.fullImage));
+      for (const img of secondImages) allImagesToConvert.push(imageToBase64(img));
+      for (const img of thirdImages) allImagesToConvert.push(imageToBase64(img));
+      for (const img of fourthImages) allImagesToConvert.push(imageToBase64(img));
+      for (const img of fifthImages) allImagesToConvert.push(imageToBase64(img));
+
+      const convertedImages = await Promise.all(allImagesToConvert);
+
+      let idx = 0;
+      const firstGarmentBase64 = convertedImages.slice(idx, idx + firstImages.length);
+      idx += firstImages.length;
+      const baseImageBase64 = selectedModel?.fullImage ? convertedImages[idx++] : undefined;
+      const secondGarmentBase64 = convertedImages.slice(idx, idx + secondImages.length);
+      idx += secondImages.length;
+      const thirdGarmentBase64 = convertedImages.slice(idx, idx + thirdImages.length);
+      idx += thirdImages.length;
+      const fourthGarmentBase64 = convertedImages.slice(idx, idx + fourthImages.length);
+      idx += fourthImages.length;
+      const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
+
+      // Build per-shot configurations
+      const shotConfigs = Array.from({ length: storyCount }, (_, i) => {
+        if (sceneMode === 'auto') {
+          return {
+            background: selectedScenes[i],
+            customPrompt: settings.customPrompt,
+            pose: selectedPoses[i],
+          };
+        } else {
+          return {
+            background: settings.background,
+            customPrompt: customScenePrompts[i] || settings.customPrompt,
+            pose: settings.pose,
+          };
+        }
+      });
+
+      // Phase 1: Generate all images in parallel
+      const imagePromises = shotConfigs.map((config) =>
+        fetch('/api/ai/gemini-image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            garmentImages: firstGarmentBase64.length > 0 ? firstGarmentBase64 : undefined,
+            garmentName: selectedGarmentName,
+            garmentSize: extractedSize,
+            garmentSizeSpecs: selectedGarmentSizeSpecs,
+            secondGarmentImages: secondGarmentBase64,
+            secondGarmentName,
+            thirdGarmentImages: thirdGarmentBase64,
+            thirdGarmentName,
+            fourthGarmentImages: fourthGarmentBase64,
+            fourthGarmentName,
+            fifthGarmentImages: fifthGarmentBase64,
+            fifthGarmentName,
+            productIds: selectedProductIds,
+            modelSettings: { ...settings, pose: config.pose },
+            modelImage: baseImageBase64,
+            background: config.background,
+            aspectRatio: settings.aspectRatio,
+            customPrompt: config.customPrompt,
+            locale,
+            storeId,
+          }),
+        }).then(r => r.json())
+      );
+
+      const imageResults = await Promise.allSettled(imagePromises);
+
+      // Update results with images
+      const updatedResults = { ...initialResults };
+      const successfulShots: number[] = [];
+
+      imageResults.forEach((result, i) => {
+        if (result.status === 'fulfilled' && result.value.success) {
+          updatedResults.images[i] = result.value.images?.[0] || null;
+          updatedResults.savedImageUrls[i] = result.value.savedImageUrl || null;
+          updatedResults.status[i] = 'copying';
+          successfulShots.push(i);
+        } else {
+          updatedResults.status[i] = 'failed';
+        }
+      });
+      setEditorialResults({ ...updatedResults });
+
+      // Phase 2: Generate copywriting for successful shots in parallel
+      if (successfulShots.length > 0 && selectedProductIds.length > 0) {
+        const selectedProducts = allProducts.filter(p => selectedProductIds.includes(p.id));
+        const lastSuccessIndex = successfulShots[successfulShots.length - 1];
+
+        const copyPromises = successfulShots.map(i =>
+          fetch('/api/ai/collection-copy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              products: selectedProducts.map(p => ({
+                name: p.name,
+                ...(p.name_en ? { description: p.name_en } : {}),
+              })),
+              locale,
+              includeCredits: i === lastSuccessIndex,
+            }),
+          }).then(r => r.json()).catch(() => null)
+        );
+
+        const copyResults = await Promise.allSettled(copyPromises);
+        copyResults.forEach((result, idx) => {
+          const shotIndex = successfulShots[idx];
+          if (result.status === 'fulfilled' && result.value) {
+            updatedResults.copies[shotIndex] = {
+              title: result.value.title,
+              description: result.value.description,
+            };
+          }
+          updatedResults.status[shotIndex] = 'done';
+        });
+        setEditorialResults({ ...updatedResults });
+      } else {
+        successfulShots.forEach(i => {
+          updatedResults.status[i] = 'done';
+        });
+        setEditorialResults({ ...updatedResults });
+      }
+
+      // Phase 3: Batch-create collection looks (auto-save)
+      if (successfulShots.length > 0) {
+        const editorialGroupId = crypto.randomUUID();
+        const batchLooks = successfulShots.map(i => ({
+          imageUrl: updatedResults.savedImageUrls[i] || updatedResults.images[i]!,
+          productIds: selectedProductIds.slice(0, 4),
+          title: updatedResults.copies[i]?.title,
+          description: updatedResults.copies[i]?.description,
+        }));
+
+        await fetch('/api/collections/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ looks: batchLooks, editorialGroupId }),
+        });
+      }
+
+      // Refresh credits
+      fetchCredits();
+
+      const failCount = storyCount - successfulShots.length;
+      if (failCount > 0 && successfulShots.length > 0) {
+        setError(locale === 'ja'
+          ? `${successfulShots.length}/${storyCount}枚生成成功（${failCount}枚失敗）`
+          : `${successfulShots.length}/${storyCount} shots succeeded (${failCount} failed)`);
+      } else if (successfulShots.length === 0) {
+        setError(locale === 'ja' ? '全てのショットが失敗しました' : 'All shots failed');
+      }
+
+    } catch (err) {
+      console.error('Editorial generation error:', err);
+      setError(err instanceof Error ? err.message : 'Editorial generation failed');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   const handleGenerate = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
@@ -565,6 +802,33 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
+        {/* Story Count Selector */}
+        <div className="flex gap-0.5 border border-[var(--color-line)] rounded-lg p-0.5">
+          {([1, 3, 4] as const).map((count) => (
+            <button
+              key={count}
+              onClick={() => {
+                setStoryCount(count);
+                setEditorialResults(null);
+                if (count === 1) {
+                  setSelectedScenes([]);
+                  setSelectedPoses([]);
+                }
+              }}
+              className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
+                storyCount === count
+                  ? 'bg-[var(--color-accent)] text-white'
+                  : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
+              }`}
+            >
+              {count === 1
+                ? (locale === 'ja' ? '1枚' : '1')
+                : `${count}`
+              }
+            </button>
+          ))}
+        </div>
+
         {/* Credit balance + selected items */}
         <div className="ml-auto text-sm text-[var(--color-text-label)] flex items-center gap-2 flex-wrap">
           {studioCredits !== null && (
@@ -609,6 +873,124 @@ export function GeminiImageGenerator({
         </div>
       </div>
 
+      {/* Editorial Scene Settings (only when storyCount > 1) */}
+      {storyCount > 1 && (
+        <div className="pb-3 border-b border-[var(--color-line)] pt-3">
+          <div className="flex items-center gap-3 mb-2">
+            <BookOpen size={14} className="text-[var(--color-accent)]" />
+            <span className="text-xs font-bold text-[var(--color-title-active)]">
+              {locale === 'ja' ? 'エディトリアル設定' : 'Editorial Settings'}
+            </span>
+            <div className="flex gap-1 border border-[var(--color-line)] rounded-lg p-0.5">
+              <button
+                onClick={() => setSceneMode('auto')}
+                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
+                  sceneMode === 'auto' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
+                }`}
+              >
+                {locale === 'ja' ? 'おまかせ' : 'Auto'}
+              </button>
+              <button
+                onClick={() => setSceneMode('custom')}
+                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
+                  sceneMode === 'custom' ? 'bg-[var(--color-accent)] text-white' : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
+                }`}
+              >
+                {locale === 'ja' ? 'カスタム' : 'Custom'}
+              </button>
+            </div>
+            <span className="text-[10px] text-[var(--color-text-label)] ml-auto">
+              {locale === 'ja' ? `${storyCount}クレジット消費` : `${storyCount} credits`}
+            </span>
+          </div>
+
+          {sceneMode === 'auto' ? (
+            <div className="space-y-2">
+              {/* Scene selection */}
+              <div>
+                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
+                  {locale === 'ja' ? `シーン（${selectedScenes.length}/${storyCount}）` : `Scene (${selectedScenes.length}/${storyCount})`}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {backgroundOptions.map(b => {
+                    const isSelected = selectedScenes.includes(b.id);
+                    const isFull = selectedScenes.length >= storyCount && !isSelected;
+                    return (
+                      <button
+                        key={b.id}
+                        onClick={() => toggleScene(b.id)}
+                        disabled={isFull}
+                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
+                          isSelected
+                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
+                            : isFull
+                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
+                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
+                        }`}
+                      >
+                        {locale === 'ja' ? b.labelJa : b.labelEn}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              {/* Pose selection */}
+              <div>
+                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
+                  {locale === 'ja' ? `ポーズ（${selectedPoses.length}/${storyCount}）` : `Pose (${selectedPoses.length}/${storyCount})`}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {Object.entries(allPoseLabels).map(([id, labels]) => {
+                    const isSelected = selectedPoses.includes(id);
+                    const isFull = selectedPoses.length >= storyCount && !isSelected;
+                    return (
+                      <button
+                        key={id}
+                        onClick={() => togglePose(id)}
+                        disabled={isFull}
+                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
+                          isSelected
+                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
+                            : isFull
+                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
+                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
+                        }`}
+                      >
+                        {locale === 'ja' ? labels.labelJa : labels.labelEn}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {Array.from({ length: storyCount }, (_, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-[var(--color-text-label)] w-12 text-center flex-shrink-0">
+                    Shot {i + 1}
+                  </span>
+                  <input
+                    type="text"
+                    value={customScenePrompts[i] || ''}
+                    onChange={(e) => {
+                      const updated = [...customScenePrompts];
+                      updated[i] = e.target.value;
+                      setCustomScenePrompts(updated);
+                    }}
+                    placeholder={locale === 'ja'
+                      ? ['屋久島の苔むした森、朝霧の中', '伊勢神宮の参道、木漏れ日', '京都の竹林、夕方の光', '渋谷スクランブル交差点、夜景'][i]
+                      : ['Yakushima forest, morning mist', 'Ise shrine pathway, dappled light', 'Kyoto bamboo grove, evening', 'Shibuya crossing, night'][i]
+                    }
+                    className="flex-1 text-sm px-3 py-1.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)]"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Model Selector (left, vertical scroll) + Preview (right) */}
       <div className="flex-1 min-h-0 flex gap-3 pt-3">
         {/* Model Selector - 2-column vertical scroll */}
@@ -636,6 +1018,9 @@ export function GeminiImageGenerator({
                         <User size={16} className="text-[var(--color-text-placeholder)]" />
                       </div>
                     )}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-[7px] font-mono px-1 py-[1px] text-center truncate">
+                      {model.id.replace(/-f-18-stand-/, '-').toUpperCase()}
+                    </div>
                     {selectedModel?.id === model.id && (
                       <div className="absolute top-1 right-1 w-4 h-4 bg-[var(--color-accent)] rounded-full flex items-center justify-center">
                         <Check size={10} className="text-white" />
@@ -654,7 +1039,52 @@ export function GeminiImageGenerator({
         <div className="flex-1 min-w-0">
           <div className="bg-[var(--color-bg-element)] rounded-2xl overflow-hidden flex items-center justify-center w-full h-full p-4">
             <AnimatePresence mode="wait">
-              {isGenerating ? (
+              {/* Editorial Results Grid */}
+              {storyCount > 1 && editorialResults ? (
+                <motion.div
+                  key="editorial"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className={`w-full h-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : 'grid-cols-2 grid-rows-2'}`}
+                >
+                  {editorialResults.images.map((img, i) => (
+                    <div key={i} className="relative rounded-lg overflow-hidden bg-[var(--color-bg-input)] flex items-center justify-center">
+                      {editorialResults.status[i] === 'generating' ? (
+                        <div className="flex flex-col items-center">
+                          <Loader2 size={20} className="animate-spin text-[var(--color-accent)]" />
+                          <span className="text-[10px] text-[var(--color-text-label)] mt-1">Shot {i + 1}</span>
+                        </div>
+                      ) : editorialResults.status[i] === 'failed' ? (
+                        <div className="flex flex-col items-center text-red-400">
+                          <X size={20} />
+                          <span className="text-[10px] mt-1">{locale === 'ja' ? '失敗' : 'Failed'}</span>
+                        </div>
+                      ) : img ? (
+                        <>
+                          <img src={img} alt={`Shot ${i + 1}`} className="w-full h-full object-cover" />
+                          {editorialResults.copies[i] && (
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2">
+                              <p className="text-white text-[10px] font-medium line-clamp-1">{editorialResults.copies[i]?.title}</p>
+                              <p className="text-white/70 text-[8px] line-clamp-2 mt-0.5">{editorialResults.copies[i]?.description}</p>
+                            </div>
+                          )}
+                          {editorialResults.status[i] === 'copying' && (
+                            <div className="absolute top-2 right-2">
+                              <Loader2 size={12} className="animate-spin text-white" />
+                            </div>
+                          )}
+                          {editorialResults.status[i] === 'done' && (
+                            <div className="absolute top-2 right-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                              <Check size={10} className="text-white" />
+                            </div>
+                          )}
+                        </>
+                      ) : null}
+                    </div>
+                  ))}
+                </motion.div>
+              ) : isGenerating && storyCount === 1 ? (
                 <motion.div
                   key="loading"
                   initial={{ opacity: 0 }}
@@ -681,7 +1111,6 @@ export function GeminiImageGenerator({
                     style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto', objectFit: 'contain' }}
                     className="rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => {
-                      // Find this image in savedImages to open modal, or create a temporary one
                       const saved = savedImages.find(s => s.image_url === generatedImage);
                       if (saved) {
                         setModalImage(saved);
@@ -761,11 +1190,14 @@ export function GeminiImageGenerator({
           size="lg"
           isLoading={isGenerating}
           disabled={!selectedGarmentImage}
-          leftIcon={<Sparkles size={16} />}
-          onClick={handleGenerate}
+          leftIcon={storyCount > 1 ? <BookOpen size={16} /> : <Sparkles size={16} />}
+          onClick={storyCount > 1 ? handleEditorialGenerate : handleGenerate}
           className="!px-6"
         >
-          {locale === 'ja' ? '生成' : 'Generate'}
+          {storyCount === 1
+            ? (locale === 'ja' ? '生成' : 'Generate')
+            : (locale === 'ja' ? `${storyCount}枚生成（${storyCount}cr）` : `Generate ${storyCount} (${storyCount}cr)`)
+          }
         </Button>
       </div>
       {error && <p className="text-sm text-red-500 mt-1">{error}</p>}

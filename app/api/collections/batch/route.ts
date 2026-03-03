@@ -1,0 +1,122 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { createServerClient } from '@/lib/supabase';
+import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
+
+interface BatchLookPayload {
+  looks: {
+    imageUrl: string;
+    sourceGeminiResultId?: string;
+    productIds: string[];
+    title?: string;
+    description?: string;
+  }[];
+  editorialGroupId: string;
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const storeId = await resolveStoreIdFromRequest(request);
+    const body: BatchLookPayload = await request.json();
+    const { looks, editorialGroupId } = body;
+
+    if (!looks || looks.length === 0) {
+      return NextResponse.json({ error: 'looks array is required' }, { status: 400 });
+    }
+
+    // Get current max position
+    const { data: maxPos } = await supabase
+      .from('collection_looks')
+      .select('position')
+      .eq('store_id', storeId)
+      .order('position', { ascending: false })
+      .limit(1)
+      .single();
+
+    let nextPosition = (maxPos?.position ?? -1) + 1;
+
+    // Copy images to permanent storage in parallel
+    const permanentUrls = await Promise.all(
+      looks.map(async (look) => {
+        try {
+          const imageResponse = await fetch(look.imageUrl);
+          if (imageResponse.ok) {
+            const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
+            const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+
+            const { error: uploadError } = await supabase.storage
+              .from('model-images')
+              .upload(filename, imageBuffer, {
+                contentType: 'image/png',
+                upsert: false,
+              });
+
+            if (!uploadError) {
+              const { data: urlData } = supabase.storage
+                .from('model-images')
+                .getPublicUrl(filename);
+              return urlData.publicUrl;
+            }
+          }
+        } catch (err) {
+          console.error('[Collections Batch] Image copy error:', err);
+        }
+        return look.imageUrl; // fallback to original URL
+      })
+    );
+
+    // Insert all looks
+    const createdLooks: any[] = [];
+    for (let i = 0; i < looks.length; i++) {
+      const look = looks[i];
+      const insertPayload: Record<string, unknown> = {
+        store_id: storeId,
+        image_url: permanentUrls[i],
+        position: nextPosition + i,
+        editorial_group_id: editorialGroupId,
+      };
+      if (look.sourceGeminiResultId) insertPayload.source_gemini_result_id = look.sourceGeminiResultId;
+      if (look.title) insertPayload.title = look.title;
+      if (look.description) insertPayload.description = look.description;
+
+      const { data: created, error: insertError } = await supabase
+        .from('collection_looks')
+        .insert(insertPayload)
+        .select()
+        .single();
+
+      if (insertError) {
+        console.error(`[Collections Batch] Look ${i} insert error:`, insertError);
+        continue;
+      }
+
+      createdLooks.push(created);
+
+      // Link products
+      if (look.productIds && look.productIds.length > 0) {
+        const links = look.productIds.slice(0, 4).map((pid: string, idx: number) => ({
+          look_id: created.id,
+          product_id: pid,
+          position: idx,
+        }));
+
+        const { error: linkError } = await supabase
+          .from('collection_look_products')
+          .insert(links);
+
+        if (linkError) {
+          console.error(`[Collections Batch] Look ${i} product link error:`, linkError);
+        }
+      }
+    }
+
+    return NextResponse.json({ success: true, looks: createdLooks });
+  } catch (error: any) {
+    console.error('[Collections Batch] Error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

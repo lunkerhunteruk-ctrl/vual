@@ -19,6 +19,9 @@ export interface CollectionLook {
   id: string;
   store_id: string;
   image_url: string;
+  title: string | null;
+  description: string | null;
+  editorial_group_id: string | null;
   source_model_image_id: string | null;
   source_gemini_result_id: string | null;
   position: number;
@@ -53,6 +56,8 @@ export function useCollection() {
     sourceModelImageId?: string;
     sourceGeminiResultId?: string;
     productIds: string[];
+    title?: string;
+    description?: string;
   }) => {
     const res = await fetch('/api/collections', {
       method: 'POST',
