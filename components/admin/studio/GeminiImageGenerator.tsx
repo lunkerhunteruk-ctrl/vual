@@ -1085,7 +1085,9 @@ export function GeminiImageGenerator({
             {/* Editorial Results Grid — rendered outside AnimatePresence */}
             {storyCount > 1 && editorialResults ? (
               <div className={`w-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : 'grid-cols-2 grid-rows-2'}`}>
-                {editorialResults.images.map((img, i) => (
+                {editorialResults.images.map((img, i) => {
+                  const displaySrc = editorialResults.savedImageUrls[i] || img;
+                  return (
                   <div key={i} className="relative rounded-lg overflow-hidden bg-[var(--color-bg-input)] flex items-center justify-center aspect-[3/4]">
                     {editorialResults.status[i] === 'generating' ? (
                       <div className="flex flex-col items-center">
@@ -1097,17 +1099,17 @@ export function GeminiImageGenerator({
                         <X size={20} />
                         <span className="text-[10px] mt-1">{locale === 'ja' ? '失敗' : 'Failed'}</span>
                       </div>
-                    ) : img ? (
+                    ) : displaySrc ? (
                       <>
                         <img
-                          src={img}
+                          src={displaySrc}
                           alt={`Shot ${i + 1}`}
                           className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => {
                             const savedUrl = editorialResults.savedImageUrls[i];
                             setModalImage({
                               id: `editorial-${i}`,
-                              image_url: savedUrl || img,
+                              image_url: savedUrl || img || '',
                               garment_count: 1 + (secondGarmentImage ? 1 : 0) + (thirdGarmentImage ? 1 : 0) + (fourthGarmentImage ? 1 : 0) + (fifthGarmentImage ? 1 : 0),
                               product_ids: selectedProductIds,
                               created_at: new Date().toISOString(),
@@ -1135,7 +1137,8 @@ export function GeminiImageGenerator({
                       </>
                     ) : null}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             ) : (
             <AnimatePresence mode="wait">
