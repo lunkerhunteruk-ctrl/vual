@@ -59,7 +59,7 @@ interface GeminiImageGeneratorProps {
   // Product IDs for linking
   selectedProductIds?: string[];
   // All products for modal display
-  allProducts?: { id: string; name: string; name_en?: string; category: string; product_images?: { id: string; url: string; is_primary: boolean }[] }[];
+  allProducts?: { id: string; name: string; name_en?: string; category: string; brand?: string; base_price?: number; currency?: string; product_images?: { id: string; url: string; is_primary: boolean }[] }[];
   // Store ID for AI Studio credit consumption
   storeId?: string;
 }
@@ -582,23 +582,17 @@ export function GeminiImageGenerator({
         status: updatedStatus,
       });
 
-      // Phase 2: Generate copywriting for successful shots in parallel
+      // Phase 2: Generate cinematic copywriting for successful shots in parallel
       let finalCopies = [...updatedCopies];
-      if (successfulShots.length > 0 && selectedProductIds.length > 0) {
-        const selectedProducts = allProducts.filter(p => selectedProductIds.includes(p.id));
-        const lastSuccessIndex = successfulShots[successfulShots.length - 1];
-
+      if (successfulShots.length > 0) {
         const copyPromises = successfulShots.map(i =>
           fetch('/api/ai/collection-copy', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              products: selectedProducts.map(p => ({
-                name: p.name,
-                ...(p.name_en ? { description: p.name_en } : {}),
-              })),
+              scenePrompt: customScenePrompts[i] || '',
+              lookImageBase64: updatedImages[i]?.replace(/^data:image\/\w+;base64,/, '') || undefined,
               locale,
-              includeCredits: i === lastSuccessIndex,
             }),
           }).then(r => r.json()).catch(() => null)
         );
@@ -634,7 +628,7 @@ export function GeminiImageGenerator({
         });
       }
 
-      // Phase 3: Batch-create collection looks (auto-save)
+      // Phase 3: Batch-create collection looks + auto-bundle
       if (successfulShots.length > 0) {
         const editorialGroupId = crypto.randomUUID();
         const batchLooks = successfulShots.map(i => ({
@@ -644,11 +638,28 @@ export function GeminiImageGenerator({
           description: finalCopies[i]?.description,
         }));
 
-        await fetch('/api/collections/batch', {
+        const batchRes = await fetch('/api/collections/batch', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ looks: batchLooks, editorialGroupId }),
         });
+
+        // Auto-bundle if 2+ looks were created
+        if (batchRes.ok && successfulShots.length >= 2) {
+          try {
+            const batchData = await batchRes.json();
+            const createdIds = (batchData.looks || []).map((l: any) => l.id).filter(Boolean);
+            if (createdIds.length >= 2) {
+              await fetch('/api/collections/bundles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lookIds: createdIds }),
+              });
+            }
+          } catch (bundleErr) {
+            console.error('Auto-bundle error:', bundleErr);
+          }
+        }
       }
 
       // Refresh credits

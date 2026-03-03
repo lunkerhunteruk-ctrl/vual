@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 export interface CollectionLookProduct {
   id: string;
@@ -10,6 +10,8 @@ export interface CollectionLookProduct {
     base_price: number;
     currency: string;
     tax_included: boolean;
+    category?: string;
+    brand?: string;
     images: { url: string; color?: string }[];
     status: string;
   };
@@ -21,7 +23,10 @@ export interface CollectionLook {
   image_url: string;
   title: string | null;
   description: string | null;
+  show_credits: boolean;
   editorial_group_id: string | null;
+  bundle_id: string | null;
+  bundle_position: number;
   source_model_image_id: string | null;
   source_gemini_result_id: string | null;
   position: number;
@@ -30,9 +35,68 @@ export interface CollectionLook {
   collection_look_products: CollectionLookProduct[];
 }
 
+export interface CollectionBundle {
+  id: string;
+  looks: CollectionLook[];
+  position: number; // position of first look in bundle
+}
+
+export type CollectionItem =
+  | { type: 'single'; look: CollectionLook }
+  | { type: 'bundle'; bundle: CollectionBundle };
+
+/**
+ * Group looks into CollectionItems (singles + bundles)
+ */
+function groupLooksIntoItems(looks: CollectionLook[]): CollectionItem[] {
+  const bundleMap = new Map<string, CollectionLook[]>();
+  const singles: CollectionLook[] = [];
+
+  for (const look of looks) {
+    if (look.bundle_id) {
+      const existing = bundleMap.get(look.bundle_id) || [];
+      existing.push(look);
+      bundleMap.set(look.bundle_id, existing);
+    } else {
+      singles.push(look);
+    }
+  }
+
+  const items: CollectionItem[] = [];
+
+  // Add singles
+  for (const look of singles) {
+    items.push({ type: 'single', look });
+  }
+
+  // Add bundles
+  for (const [bundleId, bundleLooks] of bundleMap) {
+    bundleLooks.sort((a, b) => a.bundle_position - b.bundle_position);
+    items.push({
+      type: 'bundle',
+      bundle: {
+        id: bundleId,
+        looks: bundleLooks,
+        position: Math.min(...bundleLooks.map(l => l.position)),
+      },
+    });
+  }
+
+  // Sort by position
+  items.sort((a, b) => {
+    const posA = a.type === 'single' ? a.look.position : a.bundle.position;
+    const posB = b.type === 'single' ? b.look.position : b.bundle.position;
+    return posA - posB;
+  });
+
+  return items;
+}
+
 export function useCollection() {
   const [looks, setLooks] = useState<CollectionLook[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const items = useMemo(() => groupLooksIntoItems(looks), [looks]);
 
   const fetchLooks = useCallback(async () => {
     try {
@@ -75,7 +139,6 @@ export function useCollection() {
   };
 
   const reorderLooks = async (lookIds: string[]) => {
-    // Optimistic update
     setLooks(prev => {
       const map = new Map(prev.map(l => [l.id, l]));
       return lookIds.map((id, i) => ({ ...map.get(id)!, position: i }));
@@ -87,28 +150,76 @@ export function useCollection() {
       body: JSON.stringify({ lookIds }),
     });
     if (!res.ok) {
-      await fetchLooks(); // Rollback on error
+      await fetchLooks();
     }
   };
 
-  const updateLook = async (id: string, updates: { title?: string; description?: string }) => {
+  const updateLook = async (id: string, updates: { title?: string; description?: string; show_credits?: boolean }) => {
     const res = await fetch('/api/collections', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, ...updates }),
     });
     if (!res.ok) throw new Error('Failed to update look');
-    // Optimistic update
     setLooks(prev => prev.map(l => l.id === id ? { ...l, ...updates } : l));
   };
 
-  return { looks, isLoading, addLook, updateLook, deleteLook, reorderLooks, refetch: fetchLooks };
+  // Bundle management
+  const createBundle = async (lookIds: string[]) => {
+    const res = await fetch('/api/collections/bundles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lookIds }),
+    });
+    if (!res.ok) throw new Error('Failed to create bundle');
+    await fetchLooks();
+  };
+
+  const disbandBundle = async (bundleId: string) => {
+    const res = await fetch(`/api/collections/bundles?id=${bundleId}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('Failed to disband bundle');
+    await fetchLooks();
+  };
+
+  const reorderBundleLooks = async (bundleId: string, lookIds: string[]) => {
+    // Optimistic update
+    setLooks(prev => prev.map(l => {
+      if (l.bundle_id !== bundleId) return l;
+      const newPos = lookIds.indexOf(l.id);
+      return newPos >= 0 ? { ...l, bundle_position: newPos } : l;
+    }));
+
+    const res = await fetch('/api/collections/bundles', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bundleId, lookIds }),
+    });
+    if (!res.ok) {
+      await fetchLooks();
+    }
+  };
+
+  return {
+    looks,
+    items,
+    isLoading,
+    addLook,
+    updateLook,
+    deleteLook,
+    reorderLooks,
+    createBundle,
+    disbandBundle,
+    reorderBundleLooks,
+    refetch: fetchLooks,
+  };
 }
 
 // Customer-facing hook
 export function useCustomerCollection() {
   const [looks, setLooks] = useState<CollectionLook[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const items = useMemo(() => groupLooksIntoItems(looks), [looks]);
 
   useEffect(() => {
     (async () => {
@@ -124,5 +235,5 @@ export function useCustomerCollection() {
     })();
   }, []);
 
-  return { looks, isLoading };
+  return { looks, items, isLoading };
 }

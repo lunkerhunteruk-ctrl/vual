@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink } from 'lucide-react';
 import {
   DndContext,
   closestCenter,
@@ -20,19 +20,35 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { useCollection, CollectionLook } from '@/lib/hooks/useCollection';
+import { useCollection, CollectionLook, CollectionItem } from '@/lib/hooks/useCollection';
 import { AddLookModal } from '@/components/admin/collection/AddLookModal';
+import { getCategoryLabel } from '@/lib/utils/category';
 
+// Format price with currency
+function formatPrice(price: number, currency: string): string {
+  if (currency === 'jpy' || currency === 'JPY') {
+    return `¥${price.toLocaleString()}`;
+  }
+  return `${currency.toUpperCase()} ${price.toLocaleString()}`;
+}
+
+// Single look card (used inside the list)
 function SortableLookCard({
   look,
   onDelete,
   onClick,
   locale,
+  isSelected,
+  onToggleSelect,
+  isBundled,
 }: {
   look: CollectionLook;
   onDelete: (id: string) => void;
   onClick: () => void;
   locale: string;
+  isSelected: boolean;
+  onToggleSelect: (id: string) => void;
+  isBundled: boolean;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: look.id,
@@ -51,16 +67,28 @@ function SortableLookCard({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-4 bg-white border border-[var(--color-line)] rounded-xl p-3 hover:shadow-sm transition-shadow"
+      className="flex items-center gap-3 bg-white border border-[var(--color-line)] rounded-xl p-3 hover:shadow-sm transition-shadow"
     >
+      {/* Checkbox (only for unbundled looks) */}
+      {!isBundled && (
+        <input
+          type="checkbox"
+          checked={isSelected}
+          onChange={() => onToggleSelect(look.id)}
+          className="w-4 h-4 rounded border-[var(--color-line)] text-[var(--color-accent)] focus:ring-[var(--color-accent)] flex-shrink-0"
+        />
+      )}
+
       {/* Drag handle */}
-      <button
-        {...attributes}
-        {...listeners}
-        className="cursor-grab active:cursor-grabbing p-1 text-[var(--color-text-label)] hover:text-[var(--color-title-active)]"
-      >
-        <GripVertical size={20} />
-      </button>
+      {!isBundled && (
+        <button
+          {...attributes}
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing p-1 text-[var(--color-text-label)] hover:text-[var(--color-title-active)]"
+        >
+          <GripVertical size={20} />
+        </button>
+      )}
 
       {/* Look image + info (clickable) */}
       <div className="flex-1 min-w-0 flex items-center gap-4 cursor-pointer" onClick={onClick}>
@@ -104,16 +132,151 @@ function SortableLookCard({
       </div>
 
       {/* Delete */}
-      <button
-        onClick={() => {
-          if (confirm(ja ? 'このルックを削除しますか？' : 'Delete this look?')) {
-            onDelete(look.id);
-          }
-        }}
-        className="p-2 text-[var(--color-text-label)] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
-      >
-        <Trash2 size={18} />
-      </button>
+      {!isBundled && (
+        <button
+          onClick={() => {
+            if (confirm(ja ? 'このルックを削除しますか？' : 'Delete this look?')) {
+              onDelete(look.id);
+            }
+          }}
+          className="p-2 text-[var(--color-text-label)] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
+        >
+          <Trash2 size={18} />
+        </button>
+      )}
+    </div>
+  );
+}
+
+// Bundle card (shows multiple thumbnails side by side)
+function BundleCard({
+  bundle,
+  onClick,
+  onDisband,
+  locale,
+}: {
+  bundle: { id: string; looks: CollectionLook[] };
+  onClick: () => void;
+  onDisband: (bundleId: string) => void;
+  locale: string;
+}) {
+  const ja = locale === 'ja';
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: `bundle-${bundle.id}`,
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="border-2 border-[var(--color-accent)] rounded-xl p-3 bg-[var(--color-accent)]/5 hover:shadow-sm transition-shadow"
+    >
+      <div className="flex items-center gap-3">
+        {/* Drag handle */}
+        <button
+          {...attributes}
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing p-1 text-[var(--color-accent)]"
+        >
+          <GripVertical size={20} />
+        </button>
+
+        {/* Thumbnails row (clickable) */}
+        <div className="flex-1 min-w-0 flex items-center gap-2 cursor-pointer" onClick={onClick}>
+          {bundle.looks.map((look) => (
+            <div
+              key={look.id}
+              className="w-20 h-20 rounded-lg overflow-hidden bg-white border border-[var(--color-line)] flex-shrink-0 flex items-center justify-center"
+            >
+              <img src={look.image_url} alt="" className="max-w-full max-h-full object-contain" />
+            </div>
+          ))}
+          <div className="ml-2">
+            <div className="flex items-center gap-1.5 mb-1">
+              <Link2 size={12} className="text-[var(--color-accent)]" />
+              <span className="text-xs font-semibold text-[var(--color-accent)]">
+                {ja ? `${bundle.looks.length}枚バンドル` : `${bundle.looks.length}-look bundle`}
+              </span>
+            </div>
+            {bundle.looks[0]?.title && (
+              <p className="text-xs text-[var(--color-text-body)] truncate max-w-[200px]">
+                {bundle.looks[0].title}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Disband */}
+        <button
+          onClick={() => {
+            if (confirm(ja ? 'バンドルを解除しますか？' : 'Disband this bundle?')) {
+              onDisband(bundle.id);
+            }
+          }}
+          className="p-2 text-[var(--color-text-label)] hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors flex-shrink-0"
+          title={ja ? 'バンドル解除' : 'Disband'}
+        >
+          <Unlink size={18} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Credits section component
+function CreditsSection({
+  products,
+  showCredits,
+  onToggle,
+  locale,
+}: {
+  products: CollectionLook['collection_look_products'];
+  showCredits: boolean;
+  onToggle: (value: boolean) => void;
+  locale: string;
+}) {
+  const ja = locale === 'ja';
+  if (!products || products.length === 0) return null;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-2">
+        <label className="text-xs font-semibold text-[var(--color-text-label)] uppercase tracking-wide">
+          {ja ? 'クレジット' : 'Credits'}
+        </label>
+        <button
+          onClick={() => onToggle(!showCredits)}
+          className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
+            showCredits ? 'bg-[var(--color-accent)]' : 'bg-gray-300'
+          }`}
+        >
+          <span
+            className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${
+              showCredits ? 'translate-x-4.5' : 'translate-x-0.5'
+            }`}
+          />
+        </button>
+      </div>
+      <div className={`space-y-2 ${!showCredits ? 'opacity-40' : ''}`}>
+        {products.map((lp) => {
+          const p = lp.products;
+          if (!p) return null;
+          const catLabel = getCategoryLabel(p.category || '', locale);
+          const brandPart = p.brand ? ` (${p.brand})` : '';
+          return (
+            <div key={lp.id} className="text-xs text-[var(--color-text-body)] leading-relaxed">
+              <p className="font-medium">{catLabel}: {p.name}{brandPart}</p>
+              <p className="text-[var(--color-text-label)]">{formatPrice(p.base_price, p.currency)}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -126,22 +289,26 @@ function LookDetailModal({
 }: {
   look: CollectionLook;
   onClose: () => void;
-  onSave: (id: string, updates: { title?: string; description?: string }) => Promise<void>;
+  onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean }) => Promise<void>;
   locale: string;
 }) {
   const ja = locale === 'ja';
   const [title, setTitle] = useState(look.title || '');
   const [description, setDescription] = useState(look.description || '');
+  const [showCredits, setShowCredits] = useState(look.show_credits ?? true);
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const products = look.collection_look_products || [];
 
-  const hasChanges = title !== (look.title || '') || description !== (look.description || '');
+  const hasChanges =
+    title !== (look.title || '') ||
+    description !== (look.description || '') ||
+    showCredits !== (look.show_credits ?? true);
 
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await onSave(look.id, { title: title || '', description: description || '' });
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits });
       setSaved(true);
       setTimeout(() => setSaved(false), 1500);
     } catch (err) {
@@ -223,29 +390,13 @@ function LookDetailModal({
             />
           </div>
 
-          {/* Products */}
-          {products.length > 0 && (
-            <div>
-              <label className="text-xs font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1.5 block">
-                {ja ? '使用アイテム' : 'Products'}
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {products.map((lp) => (
-                  <div
-                    key={lp.id}
-                    className="flex items-center gap-2 px-3 py-2 border border-[var(--color-line)] rounded-lg"
-                  >
-                    <div className="w-8 h-8 rounded overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center">
-                      {lp.products?.images?.[0]?.url && (
-                        <img src={lp.products.images[0].url} alt="" className="max-w-full max-h-full object-contain" />
-                      )}
-                    </div>
-                    <span className="text-xs text-[var(--color-text-body)]">{lp.products?.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Credits with toggle */}
+          <CreditsSection
+            products={products}
+            showCredits={showCredits}
+            onToggle={setShowCredits}
+            locale={locale}
+          />
         </div>
 
         {/* Footer */}
@@ -276,12 +427,22 @@ function LookDetailModal({
   );
 }
 
-export default function CollectionPage() {
-  const locale = useLocale();
+// Bundle detail modal (view/reorder looks within a bundle)
+function BundleDetailModal({
+  bundle,
+  onClose,
+  onClickLook,
+  onReorder,
+  locale,
+}: {
+  bundle: { id: string; looks: CollectionLook[] };
+  onClose: () => void;
+  onClickLook: (look: CollectionLook) => void;
+  onReorder: (bundleId: string, lookIds: string[]) => void;
+  locale: string;
+}) {
   const ja = locale === 'ja';
-  const { looks, isLoading, addLook, updateLook, deleteLook, reorderLooks } = useCollection();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
+  const [orderedLooks, setOrderedLooks] = useState(bundle.looks);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -292,10 +453,162 @@ export default function CollectionPage() {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
-    const oldIndex = looks.findIndex((l) => l.id === active.id);
-    const newIndex = looks.findIndex((l) => l.id === over.id);
-    const newOrder = arrayMove(looks, oldIndex, newIndex);
-    reorderLooks(newOrder.map((l) => l.id));
+    const oldIndex = orderedLooks.findIndex((l) => l.id === active.id);
+    const newIndex = orderedLooks.findIndex((l) => l.id === over.id);
+    const newOrder = arrayMove(orderedLooks, oldIndex, newIndex);
+    setOrderedLooks(newOrder);
+    onReorder(bundle.id, newOrder.map(l => l.id));
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+      <div className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
+        <div className="flex items-center justify-between p-5 border-b border-[var(--color-line)]">
+          <div className="flex items-center gap-2">
+            <Link2 size={16} className="text-[var(--color-accent)]" />
+            <h2 className="text-base font-bold text-[var(--color-title-active)]">
+              {ja ? `バンドル (${bundle.looks.length}枚)` : `Bundle (${bundle.looks.length} looks)`}
+            </h2>
+          </div>
+          <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
+            <X size={20} className="text-[var(--color-text-label)]" />
+          </button>
+        </div>
+
+        <div className="p-5">
+          <p className="text-xs text-[var(--color-text-label)] mb-3">
+            {ja ? 'ドラッグで順番を変更。クリックで詳細表示。' : 'Drag to reorder. Click for details.'}
+          </p>
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <SortableContext items={orderedLooks.map((l) => l.id)} strategy={verticalListSortingStrategy}>
+              <div className="space-y-2">
+                {orderedLooks.map((look, idx) => (
+                  <SortableBundleLookItem key={look.id} look={look} index={idx} onClick={() => onClickLook(look)} locale={locale} />
+                ))}
+              </div>
+            </SortableContext>
+          </DndContext>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SortableBundleLookItem({
+  look,
+  index,
+  onClick,
+  locale,
+}: {
+  look: CollectionLook;
+  index: number;
+  onClick: () => void;
+  locale: string;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: look.id,
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="flex items-center gap-3 bg-white border border-[var(--color-line)] rounded-lg p-2"
+    >
+      <button
+        {...attributes}
+        {...listeners}
+        className="cursor-grab active:cursor-grabbing p-1 text-[var(--color-text-label)]"
+      >
+        <GripVertical size={16} />
+      </button>
+      <span className="text-xs font-medium text-[var(--color-text-label)] w-5">{index + 1}</span>
+      <div className="w-14 h-14 rounded overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center cursor-pointer" onClick={onClick}>
+        <img src={look.image_url} alt="" className="max-w-full max-h-full object-contain" />
+      </div>
+      <div className="flex-1 min-w-0 cursor-pointer" onClick={onClick}>
+        <p className="text-sm font-medium text-[var(--color-title-active)] truncate">
+          {look.title || (locale === 'ja' ? 'タイトル未設定' : 'No title')}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function CollectionPage() {
+  const locale = useLocale();
+  const ja = locale === 'ja';
+  const {
+    looks, items, isLoading,
+    addLook, updateLook, deleteLook, reorderLooks,
+    createBundle, disbandBundle, reorderBundleLooks,
+  } = useCollection();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
+  const [selectedBundle, setSelectedBundle] = useState<{ id: string; looks: CollectionLook[] } | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [isBundling, setIsBundling] = useState(false);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  const toggleSelect = (id: string) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const handleCreateBundle = async () => {
+    if (selectedIds.size < 2) return;
+    setIsBundling(true);
+    try {
+      await createBundle(Array.from(selectedIds));
+      setSelectedIds(new Set());
+    } catch (err) {
+      console.error('Bundle creation failed:', err);
+    } finally {
+      setIsBundling(false);
+    }
+  };
+
+  // Build sortable IDs for DnD — singles use look.id, bundles use bundle-{id}
+  const sortableIds = items.map(item =>
+    item.type === 'single' ? item.look.id : `bundle-${item.bundle.id}`
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = sortableIds.indexOf(active.id as string);
+    const newIndex = sortableIds.indexOf(over.id as string);
+    if (oldIndex < 0 || newIndex < 0) return;
+
+    // Get all look IDs in order (expanding bundles)
+    const reorderedItems = arrayMove(items, oldIndex, newIndex);
+    const newLookOrder: string[] = [];
+    for (const item of reorderedItems) {
+      if (item.type === 'single') {
+        newLookOrder.push(item.look.id);
+      } else {
+        for (const look of item.bundle.looks) {
+          newLookOrder.push(look.id);
+        }
+      }
+    }
+    reorderLooks(newLookOrder);
   };
 
   return (
@@ -342,20 +655,52 @@ export default function CollectionPage() {
         </div>
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <SortableContext items={looks.map((l) => l.id)} strategy={verticalListSortingStrategy}>
+          <SortableContext items={sortableIds} strategy={verticalListSortingStrategy}>
             <div className="space-y-3">
-              {looks.map((look) => (
-                <SortableLookCard
-                  key={look.id}
-                  look={look}
-                  onDelete={deleteLook}
-                  onClick={() => setSelectedLook(look)}
-                  locale={locale}
-                />
-              ))}
+              {items.map((item) => {
+                if (item.type === 'bundle') {
+                  return (
+                    <BundleCard
+                      key={`bundle-${item.bundle.id}`}
+                      bundle={item.bundle}
+                      onClick={() => setSelectedBundle(item.bundle)}
+                      onDisband={disbandBundle}
+                      locale={locale}
+                    />
+                  );
+                }
+                return (
+                  <SortableLookCard
+                    key={item.look.id}
+                    look={item.look}
+                    onDelete={deleteLook}
+                    onClick={() => setSelectedLook(item.look)}
+                    locale={locale}
+                    isSelected={selectedIds.has(item.look.id)}
+                    onToggleSelect={toggleSelect}
+                    isBundled={false}
+                  />
+                );
+              })}
             </div>
           </SortableContext>
         </DndContext>
+      )}
+
+      {/* Floating bundle action bar */}
+      {selectedIds.size >= 2 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+          <button
+            onClick={handleCreateBundle}
+            disabled={isBundling}
+            className="flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white text-sm font-medium rounded-full shadow-lg hover:opacity-90 disabled:opacity-50 transition-all"
+          >
+            {isBundling ? <Loader2 size={16} className="animate-spin" /> : <Link2 size={16} />}
+            {ja
+              ? `${selectedIds.size}枚をバンドル化`
+              : `Bundle ${selectedIds.size} looks`}
+          </button>
+        </div>
       )}
 
       {/* Add Look Modal */}
@@ -374,6 +719,20 @@ export default function CollectionPage() {
             await updateLook(id, updates);
             setSelectedLook(prev => prev ? { ...prev, ...updates } : null);
           }}
+          locale={locale}
+        />
+      )}
+
+      {/* Bundle Detail Modal */}
+      {selectedBundle && (
+        <BundleDetailModal
+          bundle={selectedBundle}
+          onClose={() => setSelectedBundle(null)}
+          onClickLook={(look) => {
+            setSelectedBundle(null);
+            setSelectedLook(look);
+          }}
+          onReorder={reorderBundleLooks}
           locale={locale}
         />
       )}

@@ -12,10 +12,10 @@ export async function GET(request: NextRequest) {
 
     const storeId = await resolveStoreIdFromRequest(request);
 
-    // Fetch looks
+    // Fetch looks with bundle and credits info
     const { data: looks, error } = await supabase
       .from('collection_looks')
-      .select('id, image_url, position')
+      .select('id, image_url, title, description, show_credits, bundle_id, bundle_position, position')
       .eq('store_id', storeId)
       .order('position', { ascending: true });
 
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       const productIds = [...new Set(linkData.map(l => l.product_id))];
       const { data: products } = await supabase
         .from('products')
-        .select('id, name, base_price, currency, tax_included, status')
+        .select('id, name, base_price, currency, tax_included, status, category, brand_id, brands(name)')
         .in('id', productIds);
 
       const { data: productImages } = await supabase
@@ -53,8 +53,9 @@ export async function GET(request: NextRequest) {
         .order('position', { ascending: true });
 
       if (products) {
-        productsMap = Object.fromEntries(products.map(p => [p.id, {
+        productsMap = Object.fromEntries(products.map((p: any) => [p.id, {
           ...p,
+          brand: p.brands?.name || '',
           images: (productImages || [])
             .filter(img => img.product_id === p.id)
             .map(img => ({ url: img.url, is_primary: img.is_primary })),

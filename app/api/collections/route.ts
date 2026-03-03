@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       const productIds = [...new Set(linkData.map(l => l.product_id))];
       const { data: products } = await supabase
         .from('products')
-        .select('id, name, base_price, currency, tax_included, status')
+        .select('id, name, base_price, currency, tax_included, status, category, brand_id, brands(name)')
         .in('id', productIds);
 
       // Fetch product images from product_images table
@@ -58,8 +58,9 @@ export async function GET(request: NextRequest) {
         .order('position', { ascending: true });
 
       if (products) {
-        productsMap = Object.fromEntries(products.map(p => [p.id, {
+        productsMap = Object.fromEntries(products.map((p: any) => [p.id, {
           ...p,
+          brand: p.brands?.name || '',
           images: (productImages || [])
             .filter(img => img.product_id === p.id)
             .map(img => ({ url: img.url, is_primary: img.is_primary })),
@@ -200,15 +201,20 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, title, description } = body;
+    const { id, title, description, show_credits } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'Look ID required' }, { status: 400 });
     }
 
+    const updates: Record<string, any> = {};
+    if (title !== undefined) updates.title = title ?? null;
+    if (description !== undefined) updates.description = description ?? null;
+    if (show_credits !== undefined) updates.show_credits = show_credits;
+
     const { error } = await supabase
       .from('collection_looks')
-      .update({ title: title ?? null, description: description ?? null })
+      .update(updates)
       .eq('id', id);
 
     if (error) throw error;

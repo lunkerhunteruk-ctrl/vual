@@ -7,6 +7,7 @@ import { Search, Check, Loader2, Plus, X } from 'lucide-react';
 import Image from 'next/image';
 import { GeminiImageGenerator } from '@/components/admin/studio';
 import { useStoreContext } from '@/lib/store/store-context';
+import { getCategoryLabel } from '@/lib/utils/category';
 
 // SizeSpec type for structured size data
 interface SizeSpec {
@@ -21,6 +22,7 @@ interface Product {
   category: string;
   base_price: number;
   currency: string;
+  brand?: string;
   description?: string;
   size_specs?: SizeSpec;
   product_images?: { id: string; url: string; is_primary: boolean }[];
@@ -83,21 +85,7 @@ export default function AIStudioPage() {
     return primary?.url || product.product_images[0]?.url;
   };
 
-  const getCategoryLabel = (category: string): string => {
-    if (!category) return '-';
-    if (category.includes('bags')) return locale === 'ja' ? 'バッグ' : 'Bags';
-    if (category.includes('shoes')) return locale === 'ja' ? 'シューズ' : 'Shoes';
-    if (category.includes('tops') || category.includes('blouse') || category.includes('shirt'))
-      return locale === 'ja' ? 'トップス' : 'Tops';
-    if (category.includes('pants')) return locale === 'ja' ? 'パンツ' : 'Pants';
-    if (category.includes('skirt')) return locale === 'ja' ? 'スカート' : 'Skirts';
-    if (category.includes('dress')) return locale === 'ja' ? 'ワンピース' : 'Dresses';
-    if (category.includes('outer') || category.includes('jacket') || category.includes('coat'))
-      return locale === 'ja' ? 'アウター' : 'Outerwear';
-    if (category.includes('accessor')) return locale === 'ja' ? 'アクセサリー' : 'Accessories';
-    // Fallback: last segment of slug
-    return category.split('-').pop() || category;
-  };
+  // getCategoryLabel imported from @/lib/utils/category
 
   // Get category group key for sorting
   const getCategoryGroup = (category: string): string => {
@@ -130,7 +118,7 @@ export default function AIStudioPage() {
       if (!query) return true;
       const name = getProductName(p);
       const category = p.category || '';
-      const catLabel = getCategoryLabel(category);
+      const catLabel = getCategoryLabel(category, locale);
       const q = query.toLowerCase();
       return name.toLowerCase().includes(q) ||
         category.toLowerCase().includes(q) ||
@@ -267,7 +255,7 @@ export default function AIStudioPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-[var(--color-title-active)] truncate">{getProductName(product)}</p>
-                      <p className="text-[10px] text-[var(--color-text-label)]">{getCategoryLabel(product.category)}</p>
+                      <p className="text-[10px] text-[var(--color-text-label)]">{getCategoryLabel(product.category, locale)}</p>
                     </div>
                     {isSelected && <Check size={14} className="text-[var(--color-accent)] flex-shrink-0" />}
                   </motion.button>
