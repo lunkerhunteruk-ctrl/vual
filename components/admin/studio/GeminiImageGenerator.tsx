@@ -1391,41 +1391,48 @@ export function GeminiImageGenerator({
 
                 {/* Actions */}
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    disabled={isAddingToCollection}
-                    isLoading={isAddingToCollection}
-                    leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
-                    onClick={async () => {
-                      setIsAddingToCollection(true);
-                      try {
-                        const res = await fetch('/api/collections', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            imageUrl: modalImage.image_url,
-                            sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
-                            productIds: linkingProductIds.slice(0, 4),
-                          }),
-                        });
-                        const data = await res.json();
-                        if (data.success) {
-                          setCollectionSuccess(true);
+                  {modalImage.id.startsWith('editorial-') ? (
+                    <span className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-emerald-600">
+                      <CheckCircle2 size={14} />
+                      {locale === 'ja' ? 'コレクションに追加済み' : 'Added to Collection'}
+                    </span>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      disabled={isAddingToCollection}
+                      isLoading={isAddingToCollection}
+                      leftIcon={collectionSuccess ? <CheckCircle2 size={14} /> : <Layers size={14} />}
+                      onClick={async () => {
+                        setIsAddingToCollection(true);
+                        try {
+                          const res = await fetch('/api/collections', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              imageUrl: modalImage.image_url,
+                              sourceGeminiResultId: modalImage.id !== 'current' ? modalImage.id : undefined,
+                              productIds: linkingProductIds.slice(0, 4),
+                            }),
+                          });
+                          const data = await res.json();
+                          if (data.success) {
+                            setCollectionSuccess(true);
+                          }
+                        } catch (err) {
+                          console.error('Collection add failed:', err);
+                        } finally {
+                          setIsAddingToCollection(false);
                         }
-                      } catch (err) {
-                        console.error('Collection add failed:', err);
-                      } finally {
-                        setIsAddingToCollection(false);
-                      }
-                    }}
-                  >
-                    {collectionSuccess
-                      ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
-                      : (locale === 'ja'
-                        ? `コレクションに${linkingProductIds.length > 0 ? `${linkingProductIds.length}点` : ''}追加`
-                        : `Add${linkingProductIds.length > 0 ? ` ${linkingProductIds.length} items` : ''} to Collection`)}
-                  </Button>
+                      }}
+                    >
+                      {collectionSuccess
+                        ? (locale === 'ja' ? 'コレクションに追加済み！' : 'Added to Collection!')
+                        : (locale === 'ja'
+                          ? `コレクションに${linkingProductIds.length > 0 ? `${linkingProductIds.length}点` : ''}追加`
+                          : `Add${linkingProductIds.length > 0 ? ` ${linkingProductIds.length} items` : ''} to Collection`)}
+                    </Button>
+                  )}
                   <button
                     onClick={async () => {
                       try {
