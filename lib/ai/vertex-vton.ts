@@ -1,4 +1,5 @@
 // Virtual Try-On using Gemini API for image generation
+// Supports coordinate try-on: multiple garments in a single generation
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
@@ -6,11 +7,19 @@ const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/
 
 const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT_ID;
 const LOCATION = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
+const MAX_RETRIES = 3;
 
 export interface VTONRequest {
-  personImage: string; // Base64 encoded image
-  garmentImage: string; // Base64 encoded image
-  category: 'upper_body' | 'lower_body' | 'dresses' | 'footwear';
+  personImage: string; // Base64 data URL
+  garmentImages: string[]; // Array of base64 data URLs (1-5 items)
+  categories: string[]; // Category per garment (same order)
+}
+
+// Legacy single-garment interface for backward compatibility
+export interface VTONRequestLegacy {
+  personImage: string;
+  garmentImage: string;
+  category: string;
   mode?: 'standard' | 'high_quality' | 'add_item';
 }
 
@@ -20,8 +29,24 @@ export interface VTONResponse {
   processingTime: number;
 }
 
+function extractBase64(dataUrl: string): { data: string; mimeType: string } | null {
+  const match = dataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+  if (match) {
+    return { mimeType: match[1], data: match[2] };
+  }
+  // Raw base64 without data URL prefix
+  if (!dataUrl.startsWith('data:') && dataUrl.length > 100) {
+    return { mimeType: 'image/jpeg', data: dataUrl };
+  }
+  return null;
+}
+
 // Call Gemini API directly with image generation support
-async function callGeminiImageAPI(parts: any[]): Promise<any> {
+async function callGeminiImageAPI(
+  parts: any[],
+  aspectRatio: string = '3:4',
+  imageSize: string = '1K'
+): Promise<any> {
   if (!GEMINI_API_KEY) {
     throw new Error('GEMINI_API_KEY is not configured');
   }
@@ -34,9 +59,8 @@ async function callGeminiImageAPI(parts: any[]): Promise<any> {
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
         imageConfig: {
-          aspectRatio: '3:4',
-          imageSize: '1K',
-          image_size: '1K',
+          aspectRatio,
+          imageSize,
         },
       },
       safetySettings: [
@@ -57,78 +81,188 @@ async function callGeminiImageAPI(parts: any[]): Promise<any> {
   return response.json();
 }
 
-// Generate virtual try-on using Gemini API
+function categoryLabel(cat: string): string {
+  switch (cat) {
+    case 'upper_body': return 'top/shirt/blouse';
+    case 'lower_body': return 'pants/skirt/bottom';
+    case 'footwear': return 'shoes/footwear';
+    case 'dresses': return 'dress/full outfit';
+    case 'bags': return 'bag/handbag';
+    case 'accessories': return 'accessory/scarf/hat';
+    case 'jewelry_ring': return 'ring';
+    case 'jewelry_necklace': return 'necklace/pendant';
+    case 'jewelry_earring': return 'earring';
+    case 'jewelry_bracelet': return 'bracelet/bangle';
+    default: return 'garment';
+  }
+}
+
+function buildCoordinatePrompt(categories: string[]): string {
+  const garmentDescs: string[] = [];
+  for (let i = 0; i < categories.length; i++) {
+    const label = categoryLabel(categories[i]);
+    const ordinal = i === 0 ? 'first' : i === 1 ? 'second' : i === 2 ? 'third' : i === 3 ? 'fourth' : 'fifth';
+    garmentDescs.push(`the ${label} from the ${ordinal} garment image`);
+  }
+
+  const allGarments = garmentDescs.join(', ');
+
+  return [
+    `CRITICAL INSTRUCTION - GARMENT FIDELITY IS THE TOP PRIORITY:`,
+    `You MUST reproduce the EXACT garments from the provided reference images with 100% accuracy.`,
+    `DO NOT create similar-looking alternatives. The garments must be PIXEL-PERFECT matches to the originals.`,
+    ``,
+    `GARMENT DETAILS TO PRESERVE EXACTLY:`,
+    `- Exact color and shade (no color shifts)`,
+    `- Exact pattern, print, or texture`,
+    `- Exact neckline shape and style`,
+    `- Exact sleeve length, cuff style, and details`,
+    `- Exact buttons, zippers, pockets, seams, and all design elements`,
+    `- Exact fabric drape and material appearance`,
+    `- Exact silhouette and fit`,
+    ``,
+    `Generate a professional fashion photo for virtual try-on.`,
+    `The FIRST image is the person's photo — use their EXACT face, body type, pose, and skin tone.`,
+    `IMPORTANT: Completely REMOVE whatever clothing the person is currently wearing. Replace ALL existing garments entirely with ONLY the provided reference garments. No part of the original clothing should be visible.`,
+    `Dress this person in a coordinated outfit using ALL of the following garments: ${allGarments}.`,
+    ``,
+    `The result must show the person wearing ALL ${categories.length} items together as a complete coordinated outfit.`,
+    `Studio white background, professional lighting.`,
+    `Full body shot showing the complete outfit including feet.`,
+    `High quality, 8K resolution, fashion magazine style.`,
+    `CRITICAL: Generate EXACTLY ONE single person. Do NOT create collages, split views, or multiple copies.`,
+    `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image.`,
+    `REMINDER: The garments MUST be exact copies from the reference images.`,
+  ].filter(Boolean).join(' ');
+}
+
+function buildSimplifiedCoordinatePrompt(categories: string[]): string {
+  const items = categories.map((c) => categoryLabel(c)).join(', ');
+  return `Virtual try-on: Show the person from the first image wearing these items from the garment images: ${items}. Remove all original clothing the person is wearing — only the provided garments should be visible. Professional fashion photography, white background, full body. One person only, no collages. Garments must match the reference images exactly.`;
+}
+
+function buildMinimalCoordinatePrompt(categories: string[]): string {
+  const items = categories.map((c) => categoryLabel(c)).join(', ');
+  return `Fashion photo: Person from image 1 wearing the ${items} from the other images. Remove all original clothing. White background, full body, one person.`;
+}
+
+// --- Jewelry VTON helpers ---
+
+function isJewelryCategory(cat: string): boolean {
+  return ['jewelry_ring', 'jewelry_necklace', 'jewelry_earring', 'jewelry_bracelet'].includes(cat);
+}
+
+function jewelryBodyPart(cat: string): string {
+  switch (cat) {
+    case 'jewelry_ring': return 'hand and fingers';
+    case 'jewelry_necklace': return 'neck and décolletage';
+    case 'jewelry_earring': return 'ear and side of face';
+    case 'jewelry_bracelet': return 'wrist and forearm';
+    default: return 'hand';
+  }
+}
+
+function buildJewelryVTONPrompt(category: string): string {
+  const bodyPart = jewelryBodyPart(category);
+  return [
+    `CRITICAL — JEWELRY FIDELITY IS THE TOP PRIORITY:`,
+    `Reproduce the EXACT jewelry from the reference image with 100% accuracy.`,
+    `Preserve exact metal color/finish, gemstone details, design pattern, and proportions.`,
+    ``,
+    `Virtual try-on: The FIRST image shows the customer's ${bodyPart}.`,
+    `Place the jewelry piece from the SECOND image naturally on their ${bodyPart}.`,
+    `Close-up shot focused on the ${bodyPart} with the jewelry.`,
+    `Clean, elegant background. Sharp focus on jewelry details.`,
+    `Professional jewelry photography quality.`,
+    `CRITICAL: Show ONLY the ${bodyPart} area — close-up, NOT full body.`,
+    `CRITICAL: DO NOT render any text, labels, or watermarks.`,
+    `CRITICAL: Generate ONE single close-up shot. No collages or split views.`,
+  ].filter(Boolean).join(' ');
+}
+
+function buildSimplifiedJewelryVTONPrompt(category: string): string {
+  const bodyPart = jewelryBodyPart(category);
+  return `Virtual try-on: Place the jewelry from image 2 on the ${bodyPart} from image 1. Close-up, sharp focus, clean background. One image only.`;
+}
+
+function buildMinimalJewelryVTONPrompt(category: string): string {
+  const bodyPart = jewelryBodyPart(category);
+  return `Photo: jewelry from image 2 on the ${bodyPart} from image 1. Close-up, clean background.`;
+}
+
+// Generate virtual try-on — coordinate mode (all garments in one generation)
 export async function generateVTON(request: VTONRequest): Promise<VTONResponse> {
   const startTime = Date.now();
-  const MAX_RETRIES = 3;
 
-  const categoryDesc = request.category === 'upper_body' ? 'top/shirt/blouse' :
-                       request.category === 'lower_body' ? 'pants/skirt/bottom' :
-                       request.category === 'footwear' ? 'shoes/footwear' :
-                       'dress/full outfit';
+  if (request.garmentImages.length === 0) {
+    throw new Error('At least one garment image is required');
+  }
 
-  const isAddingToExisting = request.mode === 'add_item';
+  // Build image parts: person first, then all garments
+  const imageParts: any[] = [];
 
-  const promptVariants = [
-    isAddingToExisting
-      ? `Generate a professional fashion photo. The model in the first image is already wearing some clothing.
-ADD the ${categoryDesc} from the second image to complete the outfit.
+  // Person image
+  const personData = extractBase64(request.personImage);
+  if (!personData) {
+    throw new Error('Invalid person image data');
+  }
+  imageParts.push({
+    inline_data: { mime_type: personData.mimeType, data: personData.data },
+  });
 
-CRITICAL INSTRUCTIONS:
-- KEEP the model's face, body type, pose, skin tone, and ALL EXISTING CLOTHING from the first image
-- ADD the new ${categoryDesc} from the second image - it must look IDENTICAL (same color, pattern, texture, style)
-- The result should show the model wearing ALL the existing clothes AND the new ${categoryDesc}
-- If adding pants/bottom: keep the top unchanged, add the pants
-- If adding top: keep the bottom unchanged, add the top
-- If adding shoes/footwear: keep ALL existing clothes unchanged, just add the shoes on the feet
-- Studio white background, professional lighting
-- Full body shot showing the complete outfit including feet
-- High quality, 8K resolution, fashion magazine style`
-      : `Generate a professional fashion photo. Take the model from the first image and dress them in the ${categoryDesc} garment from the second image.
+  // All garment images
+  for (const garmentImg of request.garmentImages) {
+    const garmentData = extractBase64(garmentImg);
+    if (garmentData) {
+      imageParts.push({
+        inline_data: { mime_type: garmentData.mimeType, data: garmentData.data },
+      });
+    }
+  }
 
-CRITICAL INSTRUCTIONS:
-- The model's face, body type, pose, and skin tone must match EXACTLY the person in the first image
-- The garment must look IDENTICAL to the second image - same color, pattern, texture, and style
-- Create a realistic fashion photography result with the model wearing this exact garment
-- Studio white background, professional lighting
-- Full body shot showing the complete outfit
-- High quality, 8K resolution, fashion magazine style`,
-    isAddingToExisting
-      ? `E-commerce product visualization: Show the person from image 1 wearing their current outfit plus the ${categoryDesc} product from image 2. Professional product photography, white background, full body.`
-      : `E-commerce product visualization: Show the person from image 1 wearing the ${categoryDesc} product from image 2. Professional product photography, white background, full body.`,
-    isAddingToExisting
-      ? `Fashion catalog photo: Combine the outfit from image 1 with the ${categoryDesc} from image 2 on the same person. Clean white background.`
-      : `Fashion catalog photo: Show the person in image 1 wearing the ${categoryDesc} from image 2. Clean white background.`,
-  ];
+  // Detect jewelry mode from first category
+  const jewelry = request.categories.length > 0 && isJewelryCategory(request.categories[0]);
+  const jewelryCat = jewelry ? request.categories[0] : '';
 
-  const personImageData = request.personImage.replace(/^data:image\/\w+;base64,/, '');
-  const garmentImageData = request.garmentImage.replace(/^data:image\/\w+;base64,/, '');
+  const promptVariants = jewelry
+    ? [
+        buildJewelryVTONPrompt(jewelryCat),
+        buildSimplifiedJewelryVTONPrompt(jewelryCat),
+        buildMinimalJewelryVTONPrompt(jewelryCat),
+      ]
+    : [
+        buildCoordinatePrompt(request.categories),
+        buildSimplifiedCoordinatePrompt(request.categories),
+        buildMinimalCoordinatePrompt(request.categories),
+      ];
+
+  // Jewelry: 1:1 aspect; Fashion: 3:4
+  const vtonAspectRatio = jewelry ? '1:1' : '3:4';
+  const vtonImageSize = '1K';
 
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
       const prompt = promptVariants[attempt] || promptVariants[promptVariants.length - 1];
-      console.log(`[VTON] Attempt ${attempt + 1}/${MAX_RETRIES} using ${GEMINI_MODEL}...`);
+      console.log(
+        `[VTON] Attempt ${attempt + 1}/${MAX_RETRIES}, ${request.garmentImages.length} item(s)${jewelry ? ' (jewelry)' : ''}...`
+      );
 
-      const parts = [
-        { text: prompt },
-        { inline_data: { mime_type: 'image/jpeg', data: personImageData } },
-        { inline_data: { mime_type: 'image/jpeg', data: garmentImageData } },
-      ];
-
-      const data = await callGeminiImageAPI(parts);
+      const parts = [{ text: prompt }, ...imageParts];
+      const data = await callGeminiImageAPI(parts, vtonAspectRatio, vtonImageSize);
       const processingTime = Date.now() - startTime;
 
       const candidates = data.candidates || [];
       const finishReason = candidates[0]?.finishReason;
-      console.log(`[VTON Debug] Attempt ${attempt + 1} - finishReason: ${finishReason}, parts: ${candidates[0]?.content?.parts?.length || 0}`);
 
       if (finishReason === 'IMAGE_PROHIBITED_CONTENT') {
-        console.log(`[VTON] Content filter triggered on attempt ${attempt + 1}, ${attempt + 1 < MAX_RETRIES ? 'retrying...' : 'no more retries'}`);
+        console.log(
+          `[VTON] Content filter on attempt ${attempt + 1}, ${attempt + 1 < MAX_RETRIES ? 'retrying...' : 'no more retries'}`
+        );
         lastError = new Error(`IMAGE_PROHIBITED_CONTENT on attempt ${attempt + 1}`);
         if (attempt + 1 < MAX_RETRIES) {
-          await new Promise(r => setTimeout(r, 1000));
+          await new Promise((r) => setTimeout(r, 1000));
         }
         continue;
       }
@@ -137,14 +271,13 @@ CRITICAL INSTRUCTIONS:
       for (const candidate of candidates) {
         const responseParts = candidate.content?.parts || [];
         for (const part of responseParts) {
-          if (part.text) {
-            console.log('[VTON Debug] Text response:', part.text);
-          }
           const inlineData = part.inline_data || part.inlineData;
           if (inlineData?.data) {
             const base64 = inlineData.data;
             const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
-            console.log(`[VTON] Success on attempt ${attempt + 1}, mimeType: ${mimeType}, size: ${base64.length}`);
+            console.log(
+              `[VTON] Success on attempt ${attempt + 1}, mimeType: ${mimeType}, size: ${base64.length}`
+            );
             return {
               resultImage: `data:${mimeType};base64,${base64}`,
               confidence: 0.9,
@@ -164,6 +297,14 @@ CRITICAL INSTRUCTIONS:
   throw new Error(`VTON failed after ${MAX_RETRIES} attempts. Last error: ${lastError?.message}`);
 }
 
+// Legacy single-garment wrapper for backward compatibility
+export async function generateVTONLegacy(request: VTONRequestLegacy): Promise<VTONResponse> {
+  return generateVTON({
+    personImage: request.personImage,
+    garmentImages: [request.garmentImage],
+    categories: [request.category],
+  });
+}
 
 // Utility: Convert image URL to base64
 export async function imageUrlToBase64(url: string): Promise<string> {
@@ -193,7 +334,6 @@ export async function checkVertexAIConnection(): Promise<{
       throw new Error('GEMINI_API_KEY is not configured');
     }
 
-    // Test Gemini API with a simple request
     const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

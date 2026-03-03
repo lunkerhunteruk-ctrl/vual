@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateVTON, type VTONRequest } from '@/lib/ai/vertex-vton';
+import { generateVTON, generateVTONLegacy, type VTONRequest, type VTONRequestLegacy } from '@/lib/ai/vertex-vton';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,29 +12,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!body.garmentImage) {
+    // Support both new multi-garment and legacy single-garment format
+    const garmentImages: string[] = body.garmentImages
+      || (body.garmentImage ? [body.garmentImage] : []);
+    const categories: string[] = body.categories
+      || (body.category ? [body.category] : []);
+
+    if (garmentImages.length === 0) {
       return NextResponse.json(
-        { error: 'Garment image is required' },
+        { error: 'At least one garment image is required' },
         { status: 400 }
       );
     }
 
-    // Images should be base64 from client-side conversion
-    if (!body.personImage.startsWith('data:') || !body.garmentImage.startsWith('data:')) {
+    if (garmentImages.length > 5) {
       return NextResponse.json(
-        { error: 'Images must be base64 encoded' },
+        { error: 'Maximum 5 garments per generation' },
         { status: 400 }
       );
     }
 
-    const vtonRequest: VTONRequest = {
+    // Fill categories to match garment count
+    const filledCategories = garmentImages.map(
+      (_, i) => categories[i] || 'upper_body'
+    );
+
+    const result = await generateVTON({
       personImage: body.personImage,
-      garmentImage: body.garmentImage,
-      category: body.category || 'upper_body',
-      mode: body.mode,
-    };
-
-    const result = await generateVTON(vtonRequest);
+      garmentImages,
+      categories: filledCategories,
+    });
 
     return NextResponse.json({
       success: true,
@@ -47,7 +54,6 @@ export async function POST(request: NextRequest) {
 
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
-    // Check if Google Cloud is configured
     if (errorMessage.includes('GOOGLE_CLOUD_PROJECT_ID')) {
       return NextResponse.json({
         success: false,

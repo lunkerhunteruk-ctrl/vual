@@ -139,61 +139,50 @@ export function OutfitTryOnModal({
     try {
       const entries = Array.from(selectedItems.entries());
 
-      // Process items sequentially: first item replaces, rest use add_item mode
-      let currentPersonImage = selectedPortrait.dataUrl;
-      let finalResultImage: string | null = null;
+      // Convert all garment images to base64 in parallel
+      setProgress(isJa ? 'アイテムを準備中...' : 'Preparing items...');
+      const garmentImages = await Promise.all(
+        entries.map(([, product]) => toBase64(product.image))
+      );
+      const categories = entries.map(([cat]) => cat);
 
-      for (let i = 0; i < entries.length; i++) {
-        const [cat, product] = entries[i];
-        const garmentBase64 = await toBase64(product.image);
-        const isFirst = i === 0;
-        const itemLabel = isJa
-          ? `${i + 1}/${entries.length} アイテムを生成中...`
-          : `Generating item ${i + 1}/${entries.length}...`;
-        setProgress(itemLabel);
+      // Generate all garments in one coordinated request
+      setProgress(isJa ? 'コーディネートを生成中...' : 'Generating coordinated outfit...');
 
-        const res = await fetch('/api/ai/vton', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            personImage: currentPersonImage,
-            garmentImage: garmentBase64,
-            category: cat,
-            mode: isFirst ? 'standard' : 'add_item',
-            storeId: initialProduct.storeId,
-            productId: product.id,
-            lineUserId,
-            customerId,
-          }),
-        });
+      const res = await fetch('/api/ai/vton', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          personImage: selectedPortrait.dataUrl,
+          garmentImages,
+          categories,
+          storeId: initialProduct.storeId,
+          productId: entries[0][1].id,
+          lineUserId,
+          customerId,
+        }),
+      });
 
-        if (res.status === 402) {
-          setPhase('build');
-          onPaymentRequired?.();
-          return;
-        }
-
-        const data = await res.json();
-        if (!data.success) {
-          throw new Error(data.error || `Item ${i + 1} generation failed`);
-        }
-
-        finalResultImage = data.resultImage;
-        // Use result as person image for next item (layering)
-        if (i < entries.length - 1) {
-          currentPersonImage = data.resultImage;
-        }
+      if (res.status === 402) {
+        setPhase('build');
+        onPaymentRequired?.();
+        return;
       }
 
-      if (finalResultImage) {
-        setResultImage(finalResultImage);
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Generation failed');
+      }
+
+      if (data.resultImage) {
+        setResultImage(data.resultImage);
         setPhase('result');
 
         addResult({
           id: `outfit-${Date.now()}`,
           portraitId: selectedPortrait!.id,
           garmentName: Array.from(selectedItems.values()).map(p => p.name).join(' + '),
-          resultImage: finalResultImage,
+          resultImage: data.resultImage,
           createdAt: new Date().toISOString(),
         });
       }

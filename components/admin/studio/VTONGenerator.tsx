@@ -297,56 +297,42 @@ export function VTONGenerator({
     try {
       const personImageBase64 = await imageToBase64(selectedModel.fullImage);
 
-      const garments: { image: string; category: string }[] = [];
-      garments.push({
-        image: await imageToBase64(selectedGarmentImage),
-        category: getVTONCategory(selectedGarmentCategory),
-      });
+      // Collect all garment images and categories
+      const garmentImages: string[] = [await imageToBase64(selectedGarmentImage)];
+      const categories: string[] = [getVTONCategory(selectedGarmentCategory)];
+
       if (secondGarmentImage) {
-        garments.push({
-          image: await imageToBase64(secondGarmentImage),
-          category: getVTONCategory(secondGarmentCategory),
-        });
+        garmentImages.push(await imageToBase64(secondGarmentImage));
+        categories.push(getVTONCategory(secondGarmentCategory));
       }
       if (thirdGarmentImage) {
-        garments.push({
-          image: await imageToBase64(thirdGarmentImage),
-          category: getVTONCategory(thirdGarmentCategory),
-        });
+        garmentImages.push(await imageToBase64(thirdGarmentImage));
+        categories.push(getVTONCategory(thirdGarmentCategory));
       }
 
-      let currentPersonImage = personImageBase64;
+      // Generate all garments in one coordinated request
+      setProgress(
+        locale === 'ja'
+          ? 'コーディネートを生成中...'
+          : 'Generating coordinated outfit...'
+      );
 
-      for (let i = 0; i < garments.length; i++) {
-        const { image, category } = garments[i];
-        setProgress(
-          locale === 'ja'
-            ? `${i + 1}/${garments.length} アイテムを生成中...`
-            : `Generating item ${i + 1}/${garments.length}...`
-        );
+      const res = await fetch('/api/ai/vton', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          personImage: personImageBase64,
+          garmentImages,
+          categories,
+        }),
+      });
 
-        const res = await fetch('/api/ai/vton', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            personImage: currentPersonImage,
-            garmentImage: image,
-            category,
-            mode: i === 0 ? 'standard' : 'add_item',
-          }),
-        });
-
-        const data = await res.json();
-        if (!data.success) {
-          throw new Error(data.error || `Item ${i + 1} generation failed`);
-        }
-
-        if (i < garments.length - 1) {
-          currentPersonImage = data.resultImage;
-        } else {
-          setGeneratedImage(data.resultImage);
-        }
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.error || 'Generation failed');
       }
+
+      setGeneratedImage(data.resultImage);
 
       loadSavedResults();
     } catch (err) {

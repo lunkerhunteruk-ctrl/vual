@@ -20,6 +20,7 @@ interface ModelImage {
 interface Product {
   id: string;
   name: string;
+  description?: string;
   images: { url: string }[];
   base_price: number;
   price: number;
@@ -34,6 +35,8 @@ interface AddLookModalProps {
     sourceModelImageId?: string;
     sourceGeminiResultId?: string;
     productIds: string[];
+    title?: string;
+    description?: string;
   }) => Promise<void>;
 }
 
@@ -112,11 +115,41 @@ export function AddLookModal({ open, onClose, onAdd }: AddLookModalProps) {
     if (!selectedImage) return;
     setIsSaving(true);
     try {
+      // Generate AI copywriting from selected products + look image
+      let title: string | undefined;
+      let description: string | undefined;
+
+      if (selectedProductIds.length > 0) {
+        try {
+          const selectedProducts = products.filter((p) => selectedProductIds.includes(p.id));
+          const copyRes = await fetch('/api/ai/collection-copy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              products: selectedProducts.map((p) => ({
+                name: p.name,
+                ...(p.description ? { description: p.description } : {}),
+              })),
+              locale,
+            }),
+          });
+          if (copyRes.ok) {
+            const copyData = await copyRes.json();
+            title = copyData.title;
+            description = copyData.description;
+          }
+        } catch (e) {
+          console.error('AI copywriting failed (non-blocking):', e);
+        }
+      }
+
       await onAdd({
         imageUrl: selectedImage.url,
         sourceModelImageId: selectedImage.type === 'model' ? selectedImage.id : undefined,
         sourceGeminiResultId: selectedImage.type === 'gemini' ? selectedImage.id : undefined,
         productIds: selectedProductIds,
+        title,
+        description,
       });
       onClose();
     } catch (err) {

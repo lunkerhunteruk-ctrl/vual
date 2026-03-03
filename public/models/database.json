@@ -71,6 +71,78 @@
       "pose": "standing",
       "thumbnail": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-004.jpg",
       "fullImage": "/models/images/female/18-24/eastern-european/standing/ee-f-18-stand-004.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-001",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-001.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-001.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-002",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-002.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-002.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-003",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-003.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-003.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-004",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-004.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-004.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-005",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-005.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-005.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-006",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-006.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-006.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-007",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-007.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-007.jpg"
+    },
+    {
+      "id": "sc-f-18-stand-008",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "scandinavian",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-008.jpg",
+      "fullImage": "/models/images/female/18-24/scandinavian/standing/sc-f-18-stand-008.jpg"
     }
   ],
   "ethnicities": [
@@ -79,6 +151,7 @@
     { "id": "chinese", "labelEn": "Chinese", "labelJa": "中国人" },
     { "id": "eastern-european", "labelEn": "Eastern European", "labelJa": "東欧系白人" },
     { "id": "western-european", "labelEn": "Western European", "labelJa": "西欧系白人" },
+    { "id": "scandinavian", "labelEn": "Scandinavian", "labelJa": "北欧系" },
     { "id": "african", "labelEn": "African", "labelJa": "アフリカ系" },
     { "id": "latin", "labelEn": "Latin", "labelJa": "ラテン系" },
     { "id": "middle-eastern", "labelEn": "Middle Eastern", "labelJa": "中東系" },
