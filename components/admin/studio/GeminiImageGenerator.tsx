@@ -158,11 +158,13 @@ const allEthnicityLabels: Record<string, { labelEn: string; labelJa: string }> =
   'southeast-asian': { labelEn: 'SE Asian', labelJa: '東南アジア系' },
 };
 
+// Output pose options — controls Gemini prompt (not model image selection)
 const allPoseLabels: Record<string, { labelEn: string; labelJa: string }> = {
   'standing': { labelEn: 'Standing', labelJa: 'スタンディング' },
   'walking': { labelEn: 'Walking', labelJa: 'ウォーキング' },
   'sitting': { labelEn: 'Sitting', labelJa: 'シッティング' },
   'dynamic': { labelEn: 'Dynamic', labelJa: 'ダイナミック' },
+  'leaning': { labelEn: 'Leaning', labelJa: 'リーニング' },
 };
 
 const aspectRatioOptions = [
@@ -219,7 +221,6 @@ export function GeminiImageGenerator({
   const [storyCount, setStoryCount] = useState<1 | 3 | 4>(1);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
-  const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
   const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '']);
   const [editorialResults, setEditorialResults] = useState<{
     images: (string | null)[];
@@ -329,11 +330,13 @@ export function GeminiImageGenerator({
     }
   };
 
+  // Models are always filtered by standing pose (base images are standing only)
+  // The pose setting is output-only (controls Gemini prompt, not model selection)
   const filteredModels = modelDatabase?.models.filter(model =>
     model.gender === settings.gender &&
     model.ageRange === settings.ageRange &&
     model.ethnicity === settings.ethnicity &&
-    model.pose === settings.pose
+    model.pose === 'standing'
   ) || [];
 
   // Compute available options from actual model images, cascading: gender → ageRange → ethnicity → pose
@@ -354,15 +357,10 @@ export function GeminiImageGenerator({
     ? [...new Set(genderModels.filter(m => m.ageRange === settings.ageRange).map(m => m.ethnicity))]
     : allEthnicityIds;
 
-  const availablePoses = hasModelsForGender
-    ? [...new Set(genderModels.filter(m => m.ageRange === settings.ageRange && m.ethnicity === settings.ethnicity).map(m => m.pose))]
-    : allPoseIds;
-
   // If filtered lists are empty (e.g. age has models but no match for specific combo), fallback
   const finalEthnicities = availableEthnicities.length > 0 ? availableEthnicities : allEthnicityIds;
-  const finalPoses = availablePoses.length > 0 ? availablePoses : allPoseIds;
 
-  // Toggle helpers for multi-story scene/pose selection
+  // Toggle helper for multi-story scene selection
   const toggleScene = (sceneId: string) => {
     setSelectedScenes(prev => {
       if (prev.includes(sceneId)) return prev.filter(s => s !== sceneId);
@@ -371,24 +369,16 @@ export function GeminiImageGenerator({
     });
   };
 
-  const togglePose = (poseId: string) => {
-    setSelectedPoses(prev => {
-      if (prev.includes(poseId)) return prev.filter(p => p !== poseId);
-      if (prev.length >= storyCount) return prev;
-      return [...prev, poseId];
-    });
-  };
-
   // Editorial parallel generation handler
   const handleEditorialGenerate = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
 
-    // Validate scene/pose selection for auto mode
+    // Validate scene selection for auto mode
     if (sceneMode === 'auto') {
-      if (selectedScenes.length !== storyCount || selectedPoses.length !== storyCount) {
+      if (selectedScenes.length !== storyCount) {
         setError(locale === 'ja'
-          ? `シーンとポーズをそれぞれ${storyCount}つ選択してください`
-          : `Select ${storyCount} scenes and ${storyCount} poses`);
+          ? `シーンを${storyCount}つ選択してください`
+          : `Select ${storyCount} scenes`);
         return;
       }
     }
@@ -444,13 +434,13 @@ export function GeminiImageGenerator({
       idx += fourthImages.length;
       const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
 
-      // Build per-shot configurations
+      // Build per-shot configurations (pose is shared across all shots from dropdown)
       const shotConfigs = Array.from({ length: storyCount }, (_, i) => {
         if (sceneMode === 'auto') {
           return {
             background: selectedScenes[i],
             customPrompt: settings.customPrompt,
-            pose: selectedPoses[i],
+            pose: settings.pose,
           };
         } else {
           return {
@@ -748,16 +738,7 @@ export function GeminiImageGenerator({
         <select
           value={settings.ethnicity}
           onChange={(e) => {
-            const newEthnicity = e.target.value;
-            setSettings(prev => {
-              const posesForNew = [...new Set(
-                (modelDatabase?.models || [])
-                  .filter(m => m.gender === prev.gender && m.ageRange === prev.ageRange && m.ethnicity === newEthnicity)
-                  .map(m => m.pose)
-              )];
-              const pose = posesForNew.includes(prev.pose) ? prev.pose : (posesForNew[0] || 'standing');
-              return { ...prev, ethnicity: newEthnicity, pose };
-            });
+            setSettings(prev => ({ ...prev, ethnicity: e.target.value }));
             setSelectedModel(null);
           }}
           className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
@@ -770,13 +751,10 @@ export function GeminiImageGenerator({
 
         <select
           value={settings.pose}
-          onChange={(e) => {
-            setSettings(prev => ({ ...prev, pose: e.target.value }));
-            setSelectedModel(null);
-          }}
+          onChange={(e) => setSettings(prev => ({ ...prev, pose: e.target.value }))}
           className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
         >
-          {finalPoses.map(id => {
+          {allPoseIds.map(id => {
             const labels = allPoseLabels[id];
             return <option key={id} value={id}>{locale === 'ja' ? labels?.labelJa || id : labels?.labelEn || id}</option>;
           })}
@@ -812,7 +790,6 @@ export function GeminiImageGenerator({
                 setEditorialResults(null);
                 if (count === 1) {
                   setSelectedScenes([]);
-                  setSelectedPoses([]);
                 }
               }}
               className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
@@ -929,34 +906,6 @@ export function GeminiImageGenerator({
                         }`}
                       >
                         {locale === 'ja' ? b.labelJa : b.labelEn}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-              {/* Pose selection */}
-              <div>
-                <p className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide mb-1">
-                  {locale === 'ja' ? `ポーズ（${selectedPoses.length}/${storyCount}）` : `Pose (${selectedPoses.length}/${storyCount})`}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {Object.entries(allPoseLabels).map(([id, labels]) => {
-                    const isSelected = selectedPoses.includes(id);
-                    const isFull = selectedPoses.length >= storyCount && !isSelected;
-                    return (
-                      <button
-                        key={id}
-                        onClick={() => togglePose(id)}
-                        disabled={isFull}
-                        className={`px-2.5 py-1 text-xs rounded-lg border transition-all ${
-                          isSelected
-                            ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium'
-                            : isFull
-                              ? 'border-[var(--color-line)] text-[var(--color-text-placeholder)] opacity-40'
-                              : 'border-[var(--color-line)] text-[var(--color-text-body)] hover:border-[var(--color-accent)]'
-                        }`}
-                      >
-                        {locale === 'ja' ? labels.labelJa : labels.labelEn}
                       </button>
                     );
                   })}
