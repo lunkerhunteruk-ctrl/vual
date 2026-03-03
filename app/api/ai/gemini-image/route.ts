@@ -67,7 +67,7 @@ const backgroundDescriptions: Record<string, string> = {
   outdoorUrban: 'modern urban street background with city architecture, natural daylight',
   outdoorNature: 'natural outdoor setting with soft natural lighting, greenery',
   cafeIndoor: 'stylish cafe interior with warm ambient lighting',
-  beachResort: 'tropical beach or resort setting with bright natural sunlight',
+  beachResort: 'tropical beach or resort setting with bright natural sunlight, model standing on dry sand near the shoreline',
 };
 
 // Ethnicity descriptions
@@ -587,6 +587,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `Extremely detailed, photorealistic rendering with fine texture details.`,
     `Realistic skin texture, natural pose, professional model.`,
     `IMPORTANT: Show the full body including feet if shoes/footwear are included.`,
+    `IMPORTANT: The model must ALWAYS stand on dry ground. Never place the model inside water, puddles, or wet surfaces. For beach, lake, river, or ocean scenes, the model must stand on dry shore, sand, rocks, or a pier — never wading or stepping into the water.`,
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,

@@ -109,6 +109,7 @@ CRITICAL RULES:
 - The prompts MUST be in English regardless of the story concept language
 - The model MUST be described as wearing the EXACT garments provided, woven naturally into the scene
 - Do NOT include any text overlays, watermarks, or labels in the prompt
+- The model must ALWAYS stand on dry ground. NEVER place the model inside water, puddles, or wet surfaces. For beach, lake, river, or ocean scenes, the model must be on dry shore, sand, rocks, a dock, or a pier — never wading or stepping into the water
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 {"shots": [{"prompt": "Editorial fashion photography, ...", "aspectRatio": "3:4", "label": "Dawn Arrival"}, ...]}`;
