@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
 
     const storeId = await resolveStoreIdFromRequest(request);
     const body = await request.json();
-    const { imageUrl, sourceModelImageId, sourceGeminiResultId, productIds } = body;
+    const { imageUrl, sourceModelImageId, sourceGeminiResultId, productIds, title, description } = body;
 
     console.log('[Collections] POST:', { storeId, imageUrl: imageUrl?.substring(0, 80), sourceGeminiResultId, productIds });
 
@@ -152,6 +152,8 @@ export async function POST(request: NextRequest) {
     // Only set source FKs if they exist and are valid UUIDs
     if (sourceModelImageId) insertPayload.source_model_image_id = sourceModelImageId;
     if (sourceGeminiResultId) insertPayload.source_gemini_result_id = sourceGeminiResultId;
+    if (title) insertPayload.title = title;
+    if (description) insertPayload.description = description;
 
     const { data: look, error: insertError } = await supabase
       .from('collection_looks')
@@ -185,6 +187,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, look });
   } catch (error: any) {
     console.error('[Collections] POST error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+// PATCH: Update look title/description
+export async function PATCH(request: NextRequest) {
+  try {
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const body = await request.json();
+    const { id, title, description } = body;
+
+    if (!id) {
+      return NextResponse.json({ error: 'Look ID required' }, { status: 400 });
+    }
+
+    const { error } = await supabase
+      .from('collection_looks')
+      .update({ title: title ?? null, description: description ?? null })
+      .eq('id', id);
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error('Collections PATCH error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

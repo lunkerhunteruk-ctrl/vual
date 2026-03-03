@@ -91,7 +91,18 @@ export function useCollection() {
     }
   };
 
-  return { looks, isLoading, addLook, deleteLook, reorderLooks, refetch: fetchLooks };
+  const updateLook = async (id: string, updates: { title?: string; description?: string }) => {
+    const res = await fetch('/api/collections', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, ...updates }),
+    });
+    if (!res.ok) throw new Error('Failed to update look');
+    // Optimistic update
+    setLooks(prev => prev.map(l => l.id === id ? { ...l, ...updates } : l));
+  };
+
+  return { looks, isLoading, addLook, updateLook, deleteLook, reorderLooks, refetch: fetchLooks };
 }
 
 // Customer-facing hook
