@@ -557,21 +557,30 @@ export function GeminiImageGenerator({
 
       const imageResults = await Promise.allSettled(imagePromises);
 
-      // Update results with images
-      const updatedResults = { ...initialResults };
+      // Update results with images (deep copy arrays to trigger React re-render)
+      const updatedImages = [...initialResults.images];
+      const updatedSavedUrls = [...initialResults.savedImageUrls];
+      const updatedCopies = [...initialResults.copies];
+      const updatedStatus = [...initialResults.status];
       const successfulShots: number[] = [];
 
       imageResults.forEach((result, i) => {
         if (result.status === 'fulfilled' && result.value.success) {
-          updatedResults.images[i] = result.value.images?.[0] || null;
-          updatedResults.savedImageUrls[i] = result.value.savedImageUrl || null;
-          updatedResults.status[i] = 'copying';
+          updatedImages[i] = result.value.images?.[0] || null;
+          updatedSavedUrls[i] = result.value.savedImageUrl || null;
+          updatedStatus[i] = 'copying';
           successfulShots.push(i);
         } else {
-          updatedResults.status[i] = 'failed';
+          updatedStatus[i] = 'failed';
+          console.error(`[Editorial] Shot ${i} failed:`, result.status === 'fulfilled' ? result.value : result.reason);
         }
       });
-      setEditorialResults({ ...updatedResults });
+      setEditorialResults({
+        images: updatedImages,
+        savedImageUrls: updatedSavedUrls,
+        copies: updatedCopies,
+        status: updatedStatus,
+      });
 
       // Phase 2: Generate copywriting for successful shots in parallel
       if (successfulShots.length > 0 && selectedProductIds.length > 0) {
@@ -594,32 +603,45 @@ export function GeminiImageGenerator({
         );
 
         const copyResults = await Promise.allSettled(copyPromises);
+        const finalCopies = [...updatedCopies];
+        const finalStatus = [...updatedStatus];
         copyResults.forEach((result, idx) => {
           const shotIndex = successfulShots[idx];
           if (result.status === 'fulfilled' && result.value) {
-            updatedResults.copies[shotIndex] = {
+            finalCopies[shotIndex] = {
               title: result.value.title,
               description: result.value.description,
             };
           }
-          updatedResults.status[shotIndex] = 'done';
+          finalStatus[shotIndex] = 'done';
         });
-        setEditorialResults({ ...updatedResults });
+        setEditorialResults({
+          images: updatedImages,
+          savedImageUrls: updatedSavedUrls,
+          copies: finalCopies,
+          status: finalStatus,
+        });
       } else {
+        const finalStatus = [...updatedStatus];
         successfulShots.forEach(i => {
-          updatedResults.status[i] = 'done';
+          finalStatus[i] = 'done';
         });
-        setEditorialResults({ ...updatedResults });
+        setEditorialResults({
+          images: updatedImages,
+          savedImageUrls: updatedSavedUrls,
+          copies: updatedCopies,
+          status: finalStatus,
+        });
       }
 
       // Phase 3: Batch-create collection looks (auto-save)
       if (successfulShots.length > 0) {
         const editorialGroupId = crypto.randomUUID();
         const batchLooks = successfulShots.map(i => ({
-          imageUrl: updatedResults.savedImageUrls[i] || updatedResults.images[i]!,
+          imageUrl: updatedSavedUrls[i] || updatedImages[i]!,
           productIds: selectedProductIds.slice(0, 4),
-          title: updatedResults.copies[i]?.title,
-          description: updatedResults.copies[i]?.description,
+          title: updatedCopies[i]?.title,
+          description: updatedCopies[i]?.description,
         }));
 
         await fetch('/api/collections/batch', {
