@@ -766,7 +766,42 @@ export function GeminiImageGenerator({
   return (
     <div className="h-full flex flex-col">
       {/* Settings Bar */}
-      <div className="flex flex-wrap items-center gap-3 pb-3 border-b border-[var(--color-line)] flex-shrink-0">
+      <div className="pb-3 border-b border-[var(--color-line)] flex-shrink-0 space-y-2">
+      <div className="flex flex-wrap items-center gap-3">
+        {/* Story Count */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide">
+            {locale === 'ja' ? 'ショット' : 'Shots'}
+          </span>
+          <div className="flex gap-0.5 border border-[var(--color-line)] rounded-lg p-0.5">
+            {([1, 3, 4] as const).map((count) => (
+              <button
+                key={count}
+                onClick={() => {
+                  setStoryCount(count);
+                  setEditorialResults(null);
+                  setStoryGenerated(false);
+                  setCustomScenePrompts(['', '', '', '']);
+                  setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']);
+                  if (count === 1) {
+                    setSelectedScenes([]);
+                    setSelectedPoses([]);
+                  }
+                }}
+                className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
+                  storyCount === count
+                    ? 'bg-[var(--color-accent)] text-white'
+                    : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
+                }`}
+              >
+                {count}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="w-px h-5 bg-[var(--color-line)]" />
+
         <div className="flex gap-1">
           <button
             onClick={() => {
@@ -879,36 +914,6 @@ export function GeminiImageGenerator({
           </select>
         )}
 
-        {/* Story Count Selector */}
-        <div className="flex gap-0.5 border border-[var(--color-line)] rounded-lg p-0.5">
-          {([1, 3, 4] as const).map((count) => (
-            <button
-              key={count}
-              onClick={() => {
-                setStoryCount(count);
-                setEditorialResults(null);
-                setStoryGenerated(false);
-                setCustomScenePrompts(['', '', '', '']);
-                setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']);
-                if (count === 1) {
-                  setSelectedScenes([]);
-                  setSelectedPoses([]);
-                }
-              }}
-              className={`px-2 py-1 text-xs font-medium rounded-md transition-all ${
-                storyCount === count
-                  ? 'bg-[var(--color-accent)] text-white'
-                  : 'text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)]'
-              }`}
-            >
-              {count === 1
-                ? (locale === 'ja' ? '1枚' : '1')
-                : `${count}`
-              }
-            </button>
-          ))}
-        </div>
-
         {/* Credit balance + selected items */}
         <div className="ml-auto text-sm text-[var(--color-text-label)] flex items-center gap-2 flex-wrap">
           {studioCredits !== null && (
@@ -951,6 +956,28 @@ export function GeminiImageGenerator({
             </span>
           )}
         </div>
+      </div>
+
+      {/* Row 2: Style selector (single-shot only) */}
+      {storyCount === 1 && (
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide">
+            {locale === 'ja' ? 'スタイル' : 'Style'}
+          </span>
+          <select
+            value={settings.customPrompt}
+            onChange={(e) => setSettings(prev => ({ ...prev, customPrompt: e.target.value }))}
+            className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] flex-1"
+          >
+            <option value="">{locale === 'ja' ? 'なし' : 'None'}</option>
+            <option value="High-end fashion magazine cover editorial. Dramatic cinematic lighting, striking pose, luxury fashion aesthetic with bold composition and high contrast tones.">{locale === 'ja' ? 'ハイファッション誌カバー' : 'Fashion Magazine Cover'}</option>
+            <option value="Minimalist Scandinavian e-commerce lookbook. Clean white background, soft diffused natural light, relaxed yet refined pose. Focus on garment silhouette and fabric texture.">{locale === 'ja' ? 'ミニマルECルックブック' : 'Minimal EC Lookbook'}</option>
+            <option value="Parisian street style editorial. Golden hour warm sunlight, candid walking pose on European cobblestone street. Effortlessly chic, natural movement with wind-blown fabric.">{locale === 'ja' ? 'パリジャン・ストリートスナップ' : 'Parisian Street Snap'}</option>
+            <option value="High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.">{locale === 'ja' ? 'スタジオ・キャンペーンビジュアル' : 'Studio Campaign'}</option>
+            <option value="Lifestyle resort collection lookbook. Bright airy natural light, relaxed resort setting. Warm golden tones, vacation mood with soft bokeh background and effortless styling.">{locale === 'ja' ? 'リゾートライフスタイル' : 'Resort Lifestyle'}</option>
+          </select>
+        </div>
+      )}
       </div>
 
       {/* Editorial Scene Settings (only when storyCount > 1) */}
@@ -1321,22 +1348,7 @@ export function GeminiImageGenerator({
       </div>
 
       {/* Generate bar */}
-      <div className="flex items-center gap-2 flex-shrink-0 py-3 border-t border-[var(--color-line)]">
-        {storyCount === 1 && (
-          <select
-            value={settings.customPrompt}
-            onChange={(e) => setSettings(prev => ({ ...prev, customPrompt: e.target.value }))}
-            className="text-sm px-2 py-2 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] flex-1"
-          >
-            <option value="">{locale === 'ja' ? 'スタイル選択（任意）' : 'Select style (optional)'}</option>
-            <option value="High-end fashion magazine cover editorial. Dramatic cinematic lighting, striking pose, luxury fashion aesthetic with bold composition and high contrast tones.">{locale === 'ja' ? 'ハイファッション誌カバー' : 'Fashion Magazine Cover'}</option>
-            <option value="Minimalist Scandinavian e-commerce lookbook. Clean white background, soft diffused natural light, relaxed yet refined pose. Focus on garment silhouette and fabric texture.">{locale === 'ja' ? 'ミニマルECルックブック' : 'Minimal EC Lookbook'}</option>
-            <option value="Parisian street style editorial. Golden hour warm sunlight, candid walking pose on European cobblestone street. Effortlessly chic, natural movement with wind-blown fabric.">{locale === 'ja' ? 'パリジャン・ストリートスナップ' : 'Parisian Street Snap'}</option>
-            <option value="High fashion studio campaign. Moody dramatic studio lighting with deep shadows and rim light. Strong editorial pose, avant-garde fashion photography with cinematic color grading.">{locale === 'ja' ? 'スタジオ・キャンペーンビジュアル' : 'Studio Campaign'}</option>
-            <option value="Lifestyle resort collection lookbook. Bright airy natural light, relaxed resort setting. Warm golden tones, vacation mood with soft bokeh background and effortless styling.">{locale === 'ja' ? 'リゾートライフスタイル' : 'Resort Lifestyle'}</option>
-          </select>
-        )}
-        {storyCount > 1 && <div className="flex-1" />}
+      <div className="flex items-center justify-end gap-2 flex-shrink-0 py-3 border-t border-[var(--color-line)]">
         <Button
           variant="primary"
           size="lg"
