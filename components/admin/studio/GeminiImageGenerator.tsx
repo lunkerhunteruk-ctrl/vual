@@ -225,16 +225,16 @@ export function GeminiImageGenerator({
   const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
 
   // Multi-story editorial state
-  const [storyCount, setStoryCount] = useState<1 | 3 | 4>(1);
+  const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
-  const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '']);
+  const [customScenePrompts, setCustomScenePrompts] = useState<string[]>(['', '', '', '', '', '']);
   // AI Story Generation state
   const [storyConcept, setStoryConcept] = useState('');
   const [isGeneratingStory, setIsGeneratingStory] = useState(false);
   const [storyGenerated, setStoryGenerated] = useState(false);
-  const [perShotAspectRatios, setPerShotAspectRatios] = useState<string[]>(['3:4', '3:4', '3:4', '3:4']);
+  const [perShotAspectRatios, setPerShotAspectRatios] = useState<string[]>(['3:4', '3:4', '3:4', '3:4', '3:4', '3:4']);
   const [editorialResults, setEditorialResults] = useState<{
     images: (string | null)[];
     savedImageUrls: (string | null)[];
@@ -464,10 +464,11 @@ export function GeminiImageGenerator({
 
     // Pre-check credits
     const totalCredits = (studioCredits?.subscription || 0) + (studioCredits?.topup || 0);
-    if (totalCredits < storyCount) {
+    const editorialCreditCost = storyCount * (settings.resolution === '4K' ? 2 : 1);
+    if (totalCredits < editorialCreditCost) {
       setError(locale === 'ja'
-        ? `クレジットが${storyCount}枚必要です（残り${totalCredits}枚）`
-        : `Need ${storyCount} credits (${totalCredits} remaining)`);
+        ? `クレジットが${editorialCreditCost}枚必要です（残り${totalCredits}枚）`
+        : `Need ${editorialCreditCost} credits (${totalCredits} remaining)`);
       return;
     }
 
@@ -798,15 +799,15 @@ export function GeminiImageGenerator({
             {locale === 'ja' ? 'ショット' : 'Shots'}
           </span>
           <div className="flex gap-0.5 border border-[var(--color-line)] rounded-lg p-0.5">
-            {([1, 3, 4] as const).map((count) => (
+            {([1, 3, 4, 6] as const).map((count) => (
               <button
                 key={count}
                 onClick={() => {
                   setStoryCount(count);
                   setEditorialResults(null);
                   setStoryGenerated(false);
-                  setCustomScenePrompts(['', '', '', '']);
-                  setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4']);
+                  setCustomScenePrompts(['', '', '', '', '', '']);
+                  setPerShotAspectRatios(['3:4', '3:4', '3:4', '3:4', '3:4', '3:4']);
                   if (count > 1) {
                     setSceneMode('custom');
                   }
@@ -1119,7 +1120,7 @@ export function GeminiImageGenerator({
           <div className="bg-[var(--color-bg-element)] rounded-2xl overflow-hidden flex items-center justify-center w-full h-full p-4">
             {/* Editorial Results Grid — rendered outside AnimatePresence */}
             {storyCount > 1 && editorialResults ? (
-              <div className={`w-full h-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
+              <div className={`w-full h-full grid gap-2 ${storyCount === 3 ? 'grid-cols-3' : storyCount === 6 ? 'grid-cols-3 grid-rows-2' : 'grid-cols-4'}`}>
                 {editorialResults.images.map((img, i) => {
                   const displaySrc = editorialResults.savedImageUrls[i] || img;
                   return (
@@ -1265,7 +1266,7 @@ export function GeminiImageGenerator({
         >
           {storyCount === 1
             ? (locale === 'ja' ? '生成' : 'Generate')
-            : (locale === 'ja' ? `${storyCount}枚生成（${storyCount}cr）` : `Generate ${storyCount} (${storyCount}cr)`)
+            : (locale === 'ja' ? `${storyCount}枚生成（${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr）` : `Generate ${storyCount} (${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr)`)
           }
         </Button>
       </div>
