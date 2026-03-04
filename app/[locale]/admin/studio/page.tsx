@@ -276,9 +276,6 @@ export default function AIStudioPage() {
                           <Image src={img.url} alt="" width={28} height={28} className="w-full h-full object-cover" />
                         </button>
                       ))}
-                      <span className="text-[10px] text-[var(--color-text-placeholder)] self-center ml-0.5">
-                        {images.length}/{maxImages}
-                      </span>
                     </div>
                   )}
                 </div>
