@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, X, Star, Plus } from 'lucide-react';
+import { Upload, X, Plus, GripVertical } from 'lucide-react';
 import type { ProductImage } from './ProductVariants';
 
 interface ProductImageUploadProps {
@@ -29,6 +29,8 @@ export function ProductImageUpload({
   const [newColorInput, setNewColorInput] = useState('');
   const [showColorInput, setShowColorInput] = useState<string | null>(null);
   const [previewImage, setPreviewImage] = useState<ProductImage | null>(null);
+  const [draggedImageId, setDraggedImageId] = useState<string | null>(null);
+  const [dragOverImageId, setDragOverImageId] = useState<string | null>(null);
 
   const handleAddColor = (imageId: string) => {
     if (newColorInput.trim() && onAddColor) {
@@ -110,16 +112,6 @@ export function ProductImageUpload({
       ...imageColorMap,
       [imageId]: color,
     });
-  };
-
-  const setAsPrimary = (imageId: string) => {
-    const imageIndex = images.findIndex(img => img.id === imageId);
-    if (imageIndex > 0) {
-      const newImages = [...images];
-      const [image] = newImages.splice(imageIndex, 1);
-      newImages.unshift(image);
-      onImagesChange(newImages);
-    }
   };
 
   // Filter out images with invalid URLs
@@ -224,20 +216,57 @@ export function ProductImageUpload({
             const image = validImages[slotIndex];
 
             if (image) {
-              // Filled slot
+              // Filled slot - draggable via native HTML drag
               return (
-                <div key={image.id} className="relative group">
+                <div
+                  key={image.id}
+                  className="relative group"
+                  draggable
+                  onDragStart={(e) => {
+                    e.dataTransfer.setData('text/plain', image.id);
+                    e.dataTransfer.effectAllowed = 'move';
+                    setDraggedImageId(image.id);
+                  }}
+                  onDragEnd={() => setDraggedImageId(null)}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    setDragOverImageId(image.id);
+                  }}
+                  onDragLeave={() => setDragOverImageId(null)}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setDragOverImageId(null);
+                    const fromId = e.dataTransfer.getData('text/plain');
+                    if (fromId && fromId !== image.id) {
+                      const fromIndex = validImages.findIndex(img => img.id === fromId);
+                      const toIndex = validImages.findIndex(img => img.id === image.id);
+                      if (fromIndex >= 0 && toIndex >= 0) {
+                        const reordered = [...validImages];
+                        const [moved] = reordered.splice(fromIndex, 1);
+                        reordered.splice(toIndex, 0, moved);
+                        const invalidImages = images.filter(img => !validImages.includes(img));
+                        onImagesChange([...reordered, ...invalidImages]);
+                      }
+                    }
+                    setDraggedImageId(null);
+                  }}
+                >
                   <div
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={handleDrop}
                     onClick={() => setPreviewImage(image)}
-                    className="aspect-square rounded-[var(--radius-sm)] overflow-hidden bg-[var(--color-bg-element)] border border-[var(--color-line)] relative cursor-pointer flex items-center justify-center"
+                    className={`aspect-square rounded-[var(--radius-sm)] overflow-hidden bg-[var(--color-bg-element)] border-2 relative cursor-grab active:cursor-grabbing flex items-center justify-center transition-all ${
+                      dragOverImageId === image.id && draggedImageId !== image.id
+                        ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10'
+                        : draggedImageId === image.id
+                        ? 'opacity-40 border-[var(--color-line)]'
+                        : 'border-[var(--color-line)]'
+                    }`}
                   >
                     <img
                       src={image.url}
                       alt=""
-                      className="max-w-full max-h-full object-contain"
+                      className="max-w-full max-h-full object-contain pointer-events-none"
                     />
 
                     {/* Primary badge */}
@@ -246,6 +275,11 @@ export function ProductImageUpload({
                         メイン
                       </div>
                     )}
+
+                    {/* Drag handle indicator */}
+                    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-70 transition-opacity pointer-events-none">
+                      <GripVertical size={14} className="text-white drop-shadow-md rotate-90" />
+                    </div>
 
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -315,21 +349,10 @@ export function ProductImageUpload({
                       </select>
                     )}
                   </div>
-
-                  {/* Set as primary button for non-primary images */}
-                  {slotIndex !== 0 && (
-                    <button
-                      onClick={(e) => { e.stopPropagation(); setAsPrimary(image.id); }}
-                      className="absolute -top-1 -right-1 p-1 bg-white border border-[var(--color-line)] rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity z-20"
-                      title="メインに設定"
-                    >
-                      <Star size={10} className="text-[var(--color-text-label)]" />
-                    </button>
-                  )}
                 </div>
               );
             } else {
-              // Empty slot - can accept drop
+              // Empty slot - can accept file drop
               return (
                 <div
                   key={`empty-${slotIndex}`}
