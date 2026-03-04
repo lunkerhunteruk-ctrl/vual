@@ -615,33 +615,44 @@ export function GeminiImageGenerator({
         for (let idx = 0; idx < successfulShots.length; idx++) {
           const i = successfulShots[idx];
           try {
+            // Prefer sending URL instead of base64 to avoid Vercel body size limits
+            const copyPayload: Record<string, string | undefined> = {
+              scenePrompt: customScenePrompts[i] || '',
+              locale,
+            };
+            if (updatedSavedUrls[i]) {
+              copyPayload.lookImageUrl = updatedSavedUrls[i]!;
+            } else if (updatedImages[i]) {
+              copyPayload.lookImageBase64 = updatedImages[i]!.replace(/^data:image\/\w+;base64,/, '');
+            }
             const res = await fetch('/api/ai/collection-copy', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                scenePrompt: customScenePrompts[i] || '',
-                lookImageBase64: updatedImages[i]?.replace(/^data:image\/\w+;base64,/, '') || undefined,
-                locale,
-              }),
+              body: JSON.stringify(copyPayload),
             });
-            const copyData = await res.json();
-            if (copyData?.title) {
-              finalCopies[i] = {
-                title: copyData.title,
-                description: copyData.description || '',
-              };
-              if (copyData.video_prompt_veo || copyData.video_prompt_kling) {
-                finalVideoPrompts[i] = {
-                  veo: copyData.video_prompt_veo || '',
-                  kling: copyData.video_prompt_kling || '',
+            if (!res.ok) {
+              console.error(`[Editorial] Copy API error for shot ${i}: ${res.status} ${res.statusText}`);
+            } else {
+              const copyData = await res.json();
+              console.log(`[Editorial] Copy data for shot ${i}:`, copyData?.title ? 'OK' : 'no title', copyData?.fallback ? '(fallback)' : '');
+              if (copyData?.title) {
+                finalCopies[i] = {
+                  title: copyData.title,
+                  description: copyData.description || '',
                 };
-              }
-              if (copyData.telop_caption_ja || copyData.telop_caption_en) {
-                finalTelops[i] = {
-                  captionJa: copyData.telop_caption_ja || '',
-                  captionEn: copyData.telop_caption_en || '',
-                  durationSec: copyData.shot_duration_sec || 6,
-                };
+                if (copyData.video_prompt_veo || copyData.video_prompt_kling) {
+                  finalVideoPrompts[i] = {
+                    veo: copyData.video_prompt_veo || '',
+                    kling: copyData.video_prompt_kling || '',
+                  };
+                }
+                if (copyData.telop_caption_ja || copyData.telop_caption_en) {
+                  finalTelops[i] = {
+                    captionJa: copyData.telop_caption_ja || '',
+                    captionEn: copyData.telop_caption_en || '',
+                    durationSec: copyData.shot_duration_sec || 6,
+                  };
+                }
               }
             }
           } catch (copyErr) {

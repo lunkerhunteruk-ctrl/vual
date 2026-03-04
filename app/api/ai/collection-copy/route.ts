@@ -16,14 +16,29 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { scenePrompt, lookImageBase64, locale = 'ja' } = body as {
+    const { scenePrompt, lookImageBase64, lookImageUrl, locale = 'ja' } = body as {
       scenePrompt?: string;
       lookImageBase64?: string;
+      lookImageUrl?: string;
       locale?: string;
     };
 
-    if (!scenePrompt && !lookImageBase64) {
-      return NextResponse.json({ error: 'scenePrompt or lookImageBase64 required' }, { status: 400 });
+    if (!scenePrompt && !lookImageBase64 && !lookImageUrl) {
+      return NextResponse.json({ error: 'scenePrompt, lookImageBase64, or lookImageUrl required' }, { status: 400 });
+    }
+
+    // If URL provided, fetch and convert to base64 (avoids Vercel body size limits)
+    let resolvedImageBase64 = lookImageBase64;
+    if (!resolvedImageBase64 && lookImageUrl) {
+      try {
+        const imgRes = await fetch(lookImageUrl);
+        if (imgRes.ok) {
+          const buf = Buffer.from(await imgRes.arrayBuffer());
+          resolvedImageBase64 = buf.toString('base64');
+        }
+      } catch (e) {
+        console.error('[Collection Copy] Failed to fetch image from URL:', e);
+      }
     }
 
     const langInstruction = locale.startsWith('ja')
@@ -40,7 +55,7 @@ export async function POST(request: NextRequest) {
       ? `\nScene direction:\n${scenePrompt}`
       : '';
 
-    const imageNote = lookImageBase64
+    const imageNote = resolvedImageBase64
       ? ' Study the attached image closely — its mood, light, color palette, composition, and the way garments move and drape.'
       : '';
 
@@ -101,9 +116,9 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 {"title": "Your Title Here", "description": "Your description here as plain text.", "shot_duration_sec": 6, "video_prompt_veo": "Scene: ...", "video_prompt_kling": "Scene: ...", "telop_caption_ja": "光の中で息をする", "telop_caption_en": "breathing in the light"}`;
 
     const parts: any[] = [{ text: prompt }];
-    if (lookImageBase64) {
+    if (resolvedImageBase64) {
       // Strip data URI prefix if present
-      const base64Data = lookImageBase64.replace(/^data:image\/\w+;base64,/, '');
+      const base64Data = resolvedImageBase64.replace(/^data:image\/\w+;base64,/, '');
       parts.push({
         inline_data: {
           mime_type: 'image/png',
