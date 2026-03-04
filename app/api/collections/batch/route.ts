@@ -93,15 +93,37 @@ export async function POST(request: NextRequest) {
       if (look.telop_caption_en) insertPayload.telop_caption_en = look.telop_caption_en;
       if (look.shot_duration_sec) insertPayload.shot_duration_sec = look.shot_duration_sec;
 
-      const { data: created, error: insertError } = await supabase
+      let { data: created, error: insertError } = await supabase
         .from('collection_looks')
         .insert(insertPayload)
         .select()
         .single();
 
+      // If insert fails (e.g. new columns not yet migrated), retry with core fields only
       if (insertError) {
-        console.error(`[Collections Batch] Look ${i} insert error:`, insertError);
-        continue;
+        console.error(`[Collections Batch] Look ${i} insert error (retrying core):`, insertError);
+        const corePayload: Record<string, unknown> = {
+          store_id: insertPayload.store_id,
+          image_url: insertPayload.image_url,
+          position: insertPayload.position,
+          editorial_group_id: insertPayload.editorial_group_id,
+        };
+        if (look.title) corePayload.title = look.title;
+        if (look.description) corePayload.description = look.description;
+        if (look.sourceGeminiResultId) corePayload.source_gemini_result_id = look.sourceGeminiResultId;
+
+        const retry = await supabase
+          .from('collection_looks')
+          .insert(corePayload)
+          .select()
+          .single();
+
+        if (retry.error) {
+          console.error(`[Collections Batch] Look ${i} core insert also failed:`, retry.error);
+          continue;
+        }
+        created = retry.data;
+        insertError = null;
       }
 
       createdLooks.push(created);
