@@ -103,8 +103,21 @@ For each shot, generate:
 
 3. A short LABEL (max 20 characters) — evocative title for the shot.
 
+SHOT DIVERSITY REQUIREMENTS:
+Your ${validShotCount} shots MUST include a MIX of these camera types (pick at least one from each category that applies):
+
+MANDATORY shot types:
+- At least 1 CLOSE-UP / DETAIL shot: tight framing on upper body, face, hands, accessories, or fabric texture. Camera at eye level or slightly above. Shows garment details.
+- At least 1 ELEVATED ANGLE shot: camera positioned above the model (roughly head-height above, looking down at ~30-45°). Bird's eye perspective showing the model within the environment. NOT a drone shot — think rooftop edge, balcony, staircase looking down, or elevated walkway.
+- At least 1 WIDE / ENVIRONMENTAL shot: model is smaller in the frame, surrounded by the location's architecture or landscape. Establishes the scene.
+
+LOCATION DIVERSITY:
+- The story concept describes a general area (e.g. "京都の祇園", "Paris Le Marais"). You MUST place each shot in a DIFFERENT specific micro-location within that area.
+- Example for "京都の祇園": Shot 1 = stone-paved back alley with wooden machiya facades, Shot 2 = vermillion-railed bridge over Shirakawa canal, Shot 3 = beneath a massive cedar tree in a shrine courtyard, Shot 4 = narrow lantern-lit passage between teahouses, Shot 5 = moss-covered stone steps leading to a temple gate, Shot 6 = open riverside promenade at dawn
+- NO two shots should share the same background or setting. Each must feel like a distinct location.
+
 CRITICAL RULES:
-- Each shot MUST have a DIFFERENT pose, camera angle, and ideally different aspect ratio for visual variety
+- Each shot MUST have a DIFFERENT pose, camera angle, AND location for visual variety
 - The shots should tell a cohesive visual story with narrative flow (beginning → middle → climax)
 - The prompts MUST be in English regardless of the story concept language
 - The model MUST be described as wearing the EXACT garments provided, woven naturally into the scene
