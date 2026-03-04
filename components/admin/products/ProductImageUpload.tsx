@@ -161,7 +161,7 @@ export function ProductImageUpload({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => !primaryImage && fileInputRef.current?.click()}
-          className={`aspect-square rounded-[var(--radius-md)] border-2 border-dashed mb-4 relative overflow-hidden transition-all ${
+          className={`${primaryImage ? '' : 'aspect-square '}rounded-[var(--radius-md)] border-2 border-dashed mb-4 relative overflow-hidden transition-all ${
             isDragging
               ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5'
               : primaryImage
@@ -172,13 +172,13 @@ export function ProductImageUpload({
           {primaryImage && primaryImage.url ? (
             // Show primary image as preview
             <div
-              className="w-full h-full cursor-pointer"
+              className="w-full cursor-pointer flex items-center justify-center"
               onClick={(e) => { e.stopPropagation(); setPreviewImage(primaryImage); }}
             >
               <img
                 src={primaryImage.url}
                 alt=""
-                className="w-full h-full object-contain"
+                className="w-full h-auto block"
               />
               {/* Primary badge */}
               <div className="absolute top-3 left-3 px-2 py-1 bg-[var(--color-accent)] text-white text-xs font-medium rounded">
@@ -232,12 +232,12 @@ export function ProductImageUpload({
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
                     onClick={() => setPreviewImage(image)}
-                    className="aspect-square rounded-[var(--radius-sm)] overflow-hidden bg-[var(--color-bg-element)] border border-[var(--color-line)] relative cursor-pointer"
+                    className="aspect-square rounded-[var(--radius-sm)] overflow-hidden bg-[var(--color-bg-element)] border border-[var(--color-line)] relative cursor-pointer flex items-center justify-center"
                   >
                     <img
                       src={image.url}
                       alt=""
-                      className="w-full h-full object-contain"
+                      className="max-w-full max-h-full object-contain"
                     />
 
                     {/* Primary badge */}
