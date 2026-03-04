@@ -201,7 +201,7 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, title, description, show_credits } = body;
+    const { id, title, description, show_credits, video_prompt_veo, video_prompt_kling } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'Look ID required' }, { status: 400 });
@@ -211,6 +211,8 @@ export async function PATCH(request: NextRequest) {
     if (title !== undefined) updates.title = title ?? null;
     if (description !== undefined) updates.description = description ?? null;
     if (show_credits !== undefined) updates.show_credits = show_credits;
+    if (video_prompt_veo !== undefined) updates.video_prompt_veo = video_prompt_veo ?? null;
+    if (video_prompt_kling !== undefined) updates.video_prompt_kling = video_prompt_kling ?? null;
 
     const { error } = await supabase
       .from('collection_looks')

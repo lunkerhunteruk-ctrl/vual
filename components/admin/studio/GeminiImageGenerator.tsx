@@ -239,6 +239,7 @@ export function GeminiImageGenerator({
     images: (string | null)[];
     savedImageUrls: (string | null)[];
     copies: ({ title: string; description: string } | null)[];
+    videoPrompts: ({ veo: string; kling: string } | null)[];
     status: ('pending' | 'generating' | 'copying' | 'done' | 'failed')[];
   } | null>(null);
 
@@ -481,6 +482,7 @@ export function GeminiImageGenerator({
       images: Array(storyCount).fill(null) as (string | null)[],
       savedImageUrls: Array(storyCount).fill(null) as (string | null)[],
       copies: Array(storyCount).fill(null) as ({ title: string; description: string } | null)[],
+      videoPrompts: Array(storyCount).fill(null) as ({ veo: string; kling: string } | null)[],
       status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
     };
     setEditorialResults(initialResults);
@@ -586,16 +588,19 @@ export function GeminiImageGenerator({
           updatedStatus[i] = 'failed';
         }
       });
+      const initialVideoPrompts = Array(storyCount).fill(null) as ({ veo: string; kling: string } | null)[];
       setEditorialResults({
         images: updatedImages,
         savedImageUrls: updatedSavedUrls,
         copies: updatedCopies,
+        videoPrompts: initialVideoPrompts,
         status: updatedStatus,
       });
 
       // Phase 2: Generate cinematic copywriting for successful shots sequentially
       // Sequential to avoid Gemini API rate limits that cause fallback copies
       let finalCopies = [...updatedCopies];
+      let finalVideoPrompts = [...initialVideoPrompts];
       const finalStatus = [...updatedStatus];
       if (successfulShots.length > 0) {
         for (let idx = 0; idx < successfulShots.length; idx++) {
@@ -616,6 +621,12 @@ export function GeminiImageGenerator({
                 title: copyData.title,
                 description: copyData.description || '',
               };
+              if (copyData.video_prompt_veo || copyData.video_prompt_kling) {
+                finalVideoPrompts[i] = {
+                  veo: copyData.video_prompt_veo || '',
+                  kling: copyData.video_prompt_kling || '',
+                };
+              }
             }
           } catch (copyErr) {
             console.error(`[Editorial] Copy generation failed for shot ${i}:`, copyErr);
@@ -626,6 +637,7 @@ export function GeminiImageGenerator({
             images: updatedImages,
             savedImageUrls: updatedSavedUrls,
             copies: [...finalCopies],
+            videoPrompts: [...finalVideoPrompts],
             status: [...finalStatus],
           });
         }
@@ -637,6 +649,7 @@ export function GeminiImageGenerator({
           images: updatedImages,
           savedImageUrls: updatedSavedUrls,
           copies: updatedCopies,
+          videoPrompts: initialVideoPrompts,
           status: finalStatus,
         });
       }
@@ -649,6 +662,8 @@ export function GeminiImageGenerator({
           productIds: selectedProductIds.slice(0, 4),
           title: finalCopies[i]?.title,
           description: finalCopies[i]?.description,
+          video_prompt_veo: finalVideoPrompts[i]?.veo,
+          video_prompt_kling: finalVideoPrompts[i]?.kling,
         }));
 
         const batchRes = await fetch('/api/collections/batch', {

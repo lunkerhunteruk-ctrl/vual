@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       ? ' Study the attached image closely — its mood, light, color palette, composition, and the way garments move and drape.'
       : '';
 
-    const prompt = `You are an editorial fashion copywriter for a luxury magazine like Vogue or Harper's Bazaar.${imageNote}
+    const prompt = `You are an editorial fashion copywriter AND a video production director for a luxury magazine like Vogue or Harper's Bazaar.${imageNote}
 
 Given the scene direction and/or the styled look image, generate:
 
@@ -53,9 +53,28 @@ Given the scene direction and/or the styled look image, generate:
 
 2. DESCRIPTION (2-3 sentences): Emotional, cinematic editorial copy that captures the mood, light, movement, and story of the scene. Paint a visual narrative.
    You may describe garments by their visible appearance (color, silhouette, texture, drape, movement) but follow the rules below.
+
+3. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A detailed video generation prompt (150-200 words) using this structure:
+   - Scene: One clear sentence describing the overall action and vibe
+   - Visual style: Define the aesthetic (e.g. "35mm film grain, muted earth tones, editorial fashion")
+   - Camera movement: Specific camera behavior (dolly, tracking, crane, slow push-in, etc.)
+   - Main subject: The model's appearance, garments, pose, and subtle movement (hair, fabric sway, weight shift)
+   - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
+   - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
+   - Audio direction: Ambient sounds, fabric rustle, footsteps, subtle score
+   - End with: "4-8 second clip, cinematic aspect ratio, photorealistic quality"
+
+4. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
+   - Scene: Location and atmosphere in one sentence
+   - Character: Model's appearance, garments described by visual appearance, body positioning
+   - Action sequence: "First [subtle movement], then [secondary action], finally [hold pose]" — keep movements minimal and elegant
+   - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
+   - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
+   - Audio: Ambient sounds and subtle music direction
+   - End with: "Fashion editorial, photorealistic, 15 seconds"
 ${sceneContext}
 
-${langInstruction}
+${langInstruction} (applies to TITLE and DESCRIPTION only — video prompts MUST be in English)
 
 CRITICAL RULES:
 - NEVER mention specific fabric or material names (silk, cotton, linen, polyester, cashmere, wool, leather, etc. / シルク、コットン、リネン、ポリエステル、カシミヤ、ウール、レザー等)
@@ -63,9 +82,10 @@ CRITICAL RULES:
 - Be cinematic, atmospheric, evocative — like a film still caption or a poetry fragment
 - The title should feel like a chapter heading in a visual novel
 - Do NOT mention brand names or product names
+- Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
-{"title": "Your Title Here", "description": "Your description here as plain text."}`;
+{"title": "Your Title Here", "description": "Your description here as plain text.", "video_prompt_veo": "Scene: ... Visual style: ... Camera: ... Subject: ... Background: ... Lighting: ... Audio: ...", "video_prompt_kling": "Scene: ... Character: ... Action: First ..., then ..., finally ... Camera: ... Style: ... Audio: ..."}`;
 
     const parts: any[] = [{ text: prompt }];
     if (lookImageBase64) {
@@ -90,7 +110,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             contents: [{ parts }],
             generationConfig: {
               temperature: 1.0,
-              maxOutputTokens: 500,
+              maxOutputTokens: 1500,
             },
           }),
         });
@@ -115,6 +135,8 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             return NextResponse.json({
               title: parsed.title,
               description: parsed.description || '',
+              video_prompt_veo: parsed.video_prompt_veo || '',
+              video_prompt_kling: parsed.video_prompt_kling || '',
             });
           }
         }

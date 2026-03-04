@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video } from 'lucide-react';
+import { useStoreContext } from '@/lib/store/store-context';
 import {
   DndContext,
   closestCenter,
@@ -291,15 +292,21 @@ function LookDetailModal({
 }: {
   look: CollectionLook;
   onClose: () => void;
-  onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean }) => Promise<void>;
+  onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string }) => Promise<void>;
   locale: string;
   bundleLooks?: CollectionLook[];
   onNavigate?: (look: CollectionLook) => void;
 }) {
   const ja = locale === 'ja';
+  const store = useStoreContext((s) => s.store);
+  const isDevStore = store?.slug === 'vualofficial';
   const [title, setTitle] = useState(look.title || '');
   const [description, setDescription] = useState(look.description || '');
   const [showCredits, setShowCredits] = useState(look.show_credits ?? true);
+  const [videoPromptVeo, setVideoPromptVeo] = useState(look.video_prompt_veo || '');
+  const [videoPromptKling, setVideoPromptKling] = useState(look.video_prompt_kling || '');
+  const [videoPromptsOpen, setVideoPromptsOpen] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const products = look.collection_look_products || [];
@@ -307,7 +314,17 @@ function LookDetailModal({
   const hasChanges =
     title !== (look.title || '') ||
     description !== (look.description || '') ||
-    showCredits !== (look.show_credits ?? true);
+    showCredits !== (look.show_credits ?? true) ||
+    videoPromptVeo !== (look.video_prompt_veo || '') ||
+    videoPromptKling !== (look.video_prompt_kling || '');
+
+  const handleCopyPrompt = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setTimeout(() => setCopiedField(null), 1500);
+    } catch {}
+  };
 
   // Bundle navigation
   const currentBundleIndex = bundleLooks ? bundleLooks.findIndex(l => l.id === look.id) : -1;
@@ -318,7 +335,7 @@ function LookDetailModal({
     if (!bundleLooks || !onNavigate) return;
     // Auto-save if there are changes
     if (hasChanges) {
-      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits });
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling });
     }
     const nextIndex = direction === 'prev' ? currentBundleIndex - 1 : currentBundleIndex + 1;
     if (nextIndex >= 0 && nextIndex < bundleLooks.length) {
@@ -329,7 +346,7 @@ function LookDetailModal({
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits });
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling });
       setSaved(true);
       setTimeout(() => setSaved(false), 1500);
     } catch (err) {
@@ -433,6 +450,66 @@ function LookDetailModal({
               className="w-full text-sm px-3 py-2.5 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed focus:outline-none focus:border-[var(--color-accent)]"
             />
           </div>
+
+          {/* Video Prompts — developer store only */}
+          {isDevStore && (
+            <div className="border border-[var(--color-line)] rounded-lg overflow-hidden">
+              <button
+                onClick={() => setVideoPromptsOpen(!videoPromptsOpen)}
+                className="w-full flex items-center gap-2 px-3 py-2.5 text-left hover:bg-[var(--color-bg-element)] transition-colors"
+              >
+                <Video size={14} className="text-[var(--color-text-label)]" />
+                <span className="text-xs font-semibold text-[var(--color-text-label)] uppercase tracking-wide flex-1">
+                  Video Prompts
+                </span>
+                <ChevronDown size={14} className={`text-[var(--color-text-label)] transition-transform ${videoPromptsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {videoPromptsOpen && (
+                <div className="px-3 pb-3 space-y-3 border-t border-[var(--color-line)]">
+                  {/* Veo 3.1 */}
+                  <div className="pt-3">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide">Veo 3.1</span>
+                      <button
+                        onClick={() => handleCopyPrompt(videoPromptVeo, 'veo')}
+                        className="flex items-center gap-1 px-2 py-0.5 text-[10px] text-[var(--color-text-label)] hover:text-[var(--color-accent)] hover:bg-[var(--color-bg-element)] rounded transition-colors"
+                      >
+                        {copiedField === 'veo' ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} />}
+                        {copiedField === 'veo' ? 'Copied' : 'Copy'}
+                      </button>
+                    </div>
+                    <textarea
+                      value={videoPromptVeo}
+                      onChange={(e) => setVideoPromptVeo(e.target.value)}
+                      placeholder="Veo 3.1 video generation prompt..."
+                      rows={4}
+                      className="w-full text-[11px] px-2.5 py-2 border border-[var(--color-line)] rounded-md text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed focus:outline-none focus:border-[var(--color-accent)] font-mono"
+                    />
+                  </div>
+                  {/* Kling 3.0 */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide">Kling 3.0</span>
+                      <button
+                        onClick={() => handleCopyPrompt(videoPromptKling, 'kling')}
+                        className="flex items-center gap-1 px-2 py-0.5 text-[10px] text-[var(--color-text-label)] hover:text-[var(--color-accent)] hover:bg-[var(--color-bg-element)] rounded transition-colors"
+                      >
+                        {copiedField === 'kling' ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} />}
+                        {copiedField === 'kling' ? 'Copied' : 'Copy'}
+                      </button>
+                    </div>
+                    <textarea
+                      value={videoPromptKling}
+                      onChange={(e) => setVideoPromptKling(e.target.value)}
+                      placeholder="Kling 3.0 video generation prompt..."
+                      rows={4}
+                      className="w-full text-[11px] px-2.5 py-2 border border-[var(--color-line)] rounded-md text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed focus:outline-none focus:border-[var(--color-accent)] font-mono"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Credits with toggle */}
           <CreditsSection

@@ -9,6 +9,8 @@ interface BatchLookPayload {
     productIds: string[];
     title?: string;
     description?: string;
+    video_prompt_veo?: string;
+    video_prompt_kling?: string;
   }[];
   editorialGroupId: string;
 }
@@ -82,6 +84,8 @@ export async function POST(request: NextRequest) {
       if (look.sourceGeminiResultId) insertPayload.source_gemini_result_id = look.sourceGeminiResultId;
       if (look.title) insertPayload.title = look.title;
       if (look.description) insertPayload.description = look.description;
+      if (look.video_prompt_veo) insertPayload.video_prompt_veo = look.video_prompt_veo;
+      if (look.video_prompt_kling) insertPayload.video_prompt_kling = look.video_prompt_kling;
 
       const { data: created, error: insertError } = await supabase
         .from('collection_looks')

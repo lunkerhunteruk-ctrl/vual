@@ -24,6 +24,8 @@ export interface CollectionLook {
   title: string | null;
   description: string | null;
   show_credits: boolean;
+  video_prompt_veo: string | null;
+  video_prompt_kling: string | null;
   editorial_group_id: string | null;
   bundle_id: string | null;
   bundle_position: number;
@@ -154,7 +156,7 @@ export function useCollection() {
     }
   };
 
-  const updateLook = async (id: string, updates: { title?: string; description?: string; show_credits?: boolean }) => {
+  const updateLook = async (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string }) => {
     const res = await fetch('/api/collections', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
