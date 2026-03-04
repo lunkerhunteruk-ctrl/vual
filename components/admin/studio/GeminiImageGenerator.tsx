@@ -936,6 +936,8 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
+        </>)}
+
         <select
           value={settings.resolution}
           onChange={(e) => setSettings(prev => ({ ...prev, resolution: e.target.value }))}
@@ -956,7 +958,6 @@ export function GeminiImageGenerator({
           <option value="tuck-in">{locale === 'ja' ? '裾: イン' : 'Hem: Tucked In'}</option>
           <option value="french-tuck">{locale === 'ja' ? '裾: フレンチタック' : 'Hem: French Tuck'}</option>
         </select>
-        </>)}
 
         {/* Credit balance */}
         {studioCredits !== null && (
