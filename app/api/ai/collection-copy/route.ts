@@ -81,7 +81,7 @@ Given the scene direction and/or the styled look image, generate:
    - Scene: One clear sentence describing the overall action and vibe
    - Visual style: Define the aesthetic (e.g. "35mm film grain, muted earth tones, editorial fashion")
    - Camera movement: Specific camera behavior (dolly, tracking, crane, slow push-in, etc.)
-   - Main subject: The model's appearance, garments, pose, and subtle movement (hair, fabric sway, weight shift)
+   - Main subject: The model's appearance, garments, pose, and subtle movement (hair, fabric sway, weight shift). IMPORTANT: Specify which hand holds each accessory/bag and state it remains fixed throughout (e.g. "right hand holding bag at her side, maintained throughout")
    - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
    - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
    - Audio direction: FOLEY ONLY — NO background music, NO score, NO soundtrack. Only realistic diegetic sounds: footsteps on stone/wood/gravel, fabric rustling and swishing, soft breathing, wind through hair, distant ambient sounds (birds, water, city hum). The audio must feel like a raw field recording on set.
@@ -89,7 +89,7 @@ Given the scene direction and/or the styled look image, generate:
 
 5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: Location and atmosphere in one sentence
-   - Character: Model's appearance, garments described by visual appearance, body positioning
+   - Character: Model's appearance, garments described by visual appearance, body positioning. Specify exact hand/arm positions for held items — bags and accessories must stay in the SAME hand/position for the entire clip, never switching or teleporting
    - Action sequence: "First [subtle movement], then [secondary action], finally [hold pose]" — keep movements minimal and elegant
    - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
    - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
@@ -110,6 +110,7 @@ CRITICAL RULES:
 - The title should feel like a chapter heading in a visual novel
 - Do NOT mention brand names or product names
 - Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
+- PHYSICAL CONTINUITY: Items the model holds (bags, accessories) must STAY in the SAME hand/position throughout the entire clip. NEVER have items teleport, switch hands, appear, or disappear mid-shot. If a bag is on the left shoulder at the start, it must remain on the left shoulder for the entire duration. Explicitly state hand/arm positions in the prompt (e.g. "left hand holding a woven bag at her side throughout the shot"). Any item visible in the reference image must be described with a FIXED position that does not change.
 - GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze, while subtly brushing hair back or sweeping it aside. This creates an emotionally captivating moment. Use 7s duration for gaze shift shots.
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
