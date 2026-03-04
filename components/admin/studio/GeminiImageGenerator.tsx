@@ -154,6 +154,7 @@ const allEthnicityLabels: Record<string, { labelEn: string; labelJa: string }> =
   'eastern-european': { labelEn: 'E. European', labelJa: '東欧系' },
   'western-european': { labelEn: 'W. European', labelJa: '西欧系' },
   'african': { labelEn: 'African', labelJa: 'アフリカ系' },
+  'scandinavian': { labelEn: 'Scandinavian', labelJa: '北欧系' },
   'latin': { labelEn: 'Latin', labelJa: 'ラテン系' },
   'southeast-asian': { labelEn: 'SE Asian', labelJa: '東南アジア系' },
 };
