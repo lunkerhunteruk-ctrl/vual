@@ -133,16 +133,16 @@ export async function POST(request: NextRequest) {
       console.error('[Collections] Image copy error (non-blocking):', copyErr);
     }
 
-    // Get next position
-    const { data: maxPos } = await supabase
+    // Get current min position so new look goes to the top
+    const { data: minPos } = await supabase
       .from('collection_looks')
       .select('position')
       .eq('store_id', storeId)
-      .order('position', { ascending: false })
+      .order('position', { ascending: true })
       .limit(1)
       .single();
 
-    const nextPosition = (maxPos?.position ?? -1) + 1;
+    const nextPosition = (minPos?.position ?? 1) - 1;
 
     // Insert look (skip FK columns that might cause issues)
     const insertPayload: any = {

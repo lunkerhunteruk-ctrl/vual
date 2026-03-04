@@ -28,16 +28,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'looks array is required' }, { status: 400 });
     }
 
-    // Get current max position
-    const { data: maxPos } = await supabase
+    // Get current min position so new looks go to the top
+    const { data: minPos } = await supabase
       .from('collection_looks')
       .select('position')
       .eq('store_id', storeId)
-      .order('position', { ascending: false })
+      .order('position', { ascending: true })
       .limit(1)
       .single();
 
-    let nextPosition = (maxPos?.position ?? -1) + 1;
+    let nextPosition = (minPos?.position ?? 1) - looks.length;
 
     // Copy images to permanent storage in parallel
     const permanentUrls = await Promise.all(
