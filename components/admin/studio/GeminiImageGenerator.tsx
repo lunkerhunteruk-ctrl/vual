@@ -421,15 +421,19 @@ export function GeminiImageGenerator({
       const data = await response.json();
       if (data.shots && data.shots.length > 0) {
         const newPrompts = [...customScenePrompts];
+        // If user changed the global AR from default, keep their choice for all shots
+        const userPickedAR = settings.aspectRatio !== '3:4';
         const newAR = [...perShotAspectRatios];
         data.shots.forEach((s: { prompt: string; aspectRatio: string }, i: number) => {
           if (i < storyCount) {
             newPrompts[i] = s.prompt || '';
-            newAR[i] = s.aspectRatio || '3:4';
+            if (!userPickedAR) {
+              newAR[i] = s.aspectRatio || '3:4';
+            }
           }
         });
         setCustomScenePrompts(newPrompts);
-        setPerShotAspectRatios(newAR);
+        if (!userPickedAR) setPerShotAspectRatios(newAR);
         setStoryGenerated(true);
       } else {
         setError(locale === 'ja' ? 'ストーリー生成に失敗しました' : 'Story generation failed');
