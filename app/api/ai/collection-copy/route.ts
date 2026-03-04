@@ -110,6 +110,7 @@ CRITICAL RULES:
 - The title should feel like a chapter heading in a visual novel
 - Do NOT mention brand names or product names
 - Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
+- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze, while subtly brushing hair back or sweeping it aside. This creates an emotionally captivating moment. Use 7s duration for gaze shift shots.
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:

@@ -110,6 +110,7 @@ MANDATORY shot types:
 - At least 1 CLOSE-UP / DETAIL shot: tight framing on upper body, face, hands, accessories, or fabric texture. Camera at eye level or slightly above. Shows garment details.
 - At least 1 ELEVATED ANGLE shot: camera positioned above the model (roughly head-height above, looking down at ~30-45°). Bird's eye perspective showing the model within the environment. NOT a drone shot — think rooftop edge, balcony, staircase looking down, or elevated walkway.
 - At least 1 WIDE / ENVIRONMENTAL shot: model is smaller in the frame, surrounded by the location's architecture or landscape. Establishes the scene.
+- Exactly 1 "GAZE SHIFT" HERO shot (apply to ONE of the close-up shots): The model starts looking away (profile or three-quarter, gazing into the distance or down) then mid-shot turns to look DIRECTLY into the camera with a confident, magnetic gaze — as if noticing the viewer for the first time. Pair this with a subtle hair movement: brushing hair back behind the ear, or a light toss/sweep of hair with one hand. Think luxury shampoo commercial — the turn must feel effortless and captivating. In the prompt, describe this as a SEQUENCE: "initially looking [direction], then slowly turns toward the camera with a direct gaze while [hair action]". This creates the most emotionally striking moment of the editorial.
 
 LOCATION DIVERSITY:
 - The story concept describes a general area (e.g. "京都の祇園", "Paris Le Marais"). You MUST place each shot in a DIFFERENT specific micro-location within that area.
