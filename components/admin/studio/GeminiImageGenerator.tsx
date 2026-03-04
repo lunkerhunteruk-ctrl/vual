@@ -251,6 +251,7 @@ export function GeminiImageGenerator({
     background: 'studioWhite',
     aspectRatio: '3:4',
     resolution: '1K',
+    tuckStyle: 'auto' as 'auto' | 'tuck-out' | 'tuck-in' | 'french-tuck',
     customPrompt: '',
   });
 
@@ -943,6 +944,17 @@ export function GeminiImageGenerator({
           {resolutionOptions.map(r => (
             <option key={r.id} value={r.id}>{locale === 'ja' ? r.labelJa : r.labelEn}</option>
           ))}
+        </select>
+
+        <select
+          value={settings.tuckStyle}
+          onChange={(e) => setSettings(prev => ({ ...prev, tuckStyle: e.target.value as any }))}
+          className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
+        >
+          <option value="auto">{locale === 'ja' ? '裾: 自動' : 'Hem: Auto'}</option>
+          <option value="tuck-out">{locale === 'ja' ? '裾: アウト' : 'Hem: Untucked'}</option>
+          <option value="tuck-in">{locale === 'ja' ? '裾: イン' : 'Hem: Tucked In'}</option>
+          <option value="french-tuck">{locale === 'ja' ? '裾: フレンチタック' : 'Hem: French Tuck'}</option>
         </select>
         </>)}
 

@@ -19,6 +19,7 @@ interface ModelSettings {
   height: number;
   ethnicity: string;
   pose: string;
+  tuckStyle?: 'auto' | 'tuck-out' | 'tuck-in' | 'french-tuck';
 }
 
 interface SizeSpec {
@@ -553,12 +554,24 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     ? `VTON BASE MODE: The model is already wearing clothing in the base image. DO NOT change their existing outfit. Only ADD the new items (pants/shoes) to what they're already wearing.`
     : '';
 
+  // Tuck style instruction
+  const tuckStyle = modelSettings.tuckStyle || 'auto';
+  let tuckInstruction = '';
+  if (tuckStyle === 'tuck-out') {
+    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be worn UNTUCKED — the hem hangs freely OUTSIDE the pants/skirt. Do NOT tuck the top into the bottoms under any circumstances.';
+  } else if (tuckStyle === 'tuck-in') {
+    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be fully TUCKED IN to the pants/skirt. The entire hem of the top must be neatly inserted inside the waistband.';
+  } else if (tuckStyle === 'french-tuck') {
+    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be styled with a FRENCH TUCK — only the front center portion of the hem is loosely tucked into the waistband, while the sides and back hang freely untucked.';
+  }
+
   const parts = [
     `CRITICAL INSTRUCTION - GARMENT FIDELITY IS THE TOP PRIORITY:`,
     `You MUST reproduce the EXACT garments from the provided reference images with 100% accuracy.`,
     `DO NOT create similar-looking alternatives. The garments must be PIXEL-PERFECT matches to the originals.`,
     multiImageNote,
     vtonBaseNote,
+    tuckInstruction,
     ``,
     `GARMENT DETAILS TO PRESERVE EXACTLY:`,
     `- Exact color and shade (no color shifts)`,
@@ -592,6 +605,13 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   return parts.filter(Boolean).join(' ');
 }
 
+function getTuckNote(tuckStyle?: string): string {
+  if (tuckStyle === 'tuck-out') return ' The top MUST be UNTUCKED — hem hanging freely outside the pants.';
+  if (tuckStyle === 'tuck-in') return ' The top MUST be fully TUCKED IN to the pants.';
+  if (tuckStyle === 'french-tuck') return ' The top MUST have a FRENCH TUCK — front tucked in, sides and back untucked.';
+  return '';
+}
+
 function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secondImageCount: number, thirdImageCount: number, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
   const { modelSettings, modelImage, vtonBase, background, customPrompt } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
@@ -602,10 +622,11 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
     model = 'the model keeping their existing outfit';
   }
 
+  const tuckNote = getTuckNote(modelSettings.tuckStyle);
   const styleNote = customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
   const poseNote = modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose}, ` : '';
   const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || background}.`;
-  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
+  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
@@ -613,7 +634,8 @@ function buildMinimalPrompt(body: RequestBody): string {
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
 
   const model = modelImage ? 'this person' : `a ${gender}`;
+  const tuckNote = getTuckNote(modelSettings.tuckStyle);
   const styleNote = customPrompt ? ` ${customPrompt}.` : '';
   const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || 'White background'}.`;
-  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
+  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
 }
