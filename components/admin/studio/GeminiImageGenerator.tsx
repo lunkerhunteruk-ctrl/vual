@@ -240,7 +240,7 @@ export function GeminiImageGenerator({
     savedImageUrls: (string | null)[];
     copies: ({ title: string; description: string } | null)[];
     videoPrompts: ({ veo: string; kling: string } | null)[];
-    telops: ({ captionJa: string; captionEn: string } | null)[];
+    telops: ({ captionJa: string; captionEn: string; durationSec: number } | null)[];
     status: ('pending' | 'generating' | 'copying' | 'done' | 'failed')[];
   } | null>(null);
 
@@ -484,7 +484,7 @@ export function GeminiImageGenerator({
       savedImageUrls: Array(storyCount).fill(null) as (string | null)[],
       copies: Array(storyCount).fill(null) as ({ title: string; description: string } | null)[],
       videoPrompts: Array(storyCount).fill(null) as ({ veo: string; kling: string } | null)[],
-      telops: Array(storyCount).fill(null) as ({ captionJa: string; captionEn: string } | null)[],
+      telops: Array(storyCount).fill(null) as ({ captionJa: string; captionEn: string; durationSec: number } | null)[],
       status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
     };
     setEditorialResults(initialResults);
@@ -591,7 +591,7 @@ export function GeminiImageGenerator({
         }
       });
       const initialVideoPrompts = Array(storyCount).fill(null) as ({ veo: string; kling: string } | null)[];
-      const initialTelops = Array(storyCount).fill(null) as ({ captionJa: string; captionEn: string } | null)[];
+      const initialTelops = Array(storyCount).fill(null) as ({ captionJa: string; captionEn: string; durationSec: number } | null)[];
       setEditorialResults({
         images: updatedImages,
         savedImageUrls: updatedSavedUrls,
@@ -636,6 +636,7 @@ export function GeminiImageGenerator({
                 finalTelops[i] = {
                   captionJa: copyData.telop_caption_ja || '',
                   captionEn: copyData.telop_caption_en || '',
+                  durationSec: copyData.shot_duration_sec || 6,
                 };
               }
             }
@@ -679,6 +680,7 @@ export function GeminiImageGenerator({
           video_prompt_kling: finalVideoPrompts[i]?.kling,
           telop_caption_ja: finalTelops[i]?.captionJa,
           telop_caption_en: finalTelops[i]?.captionEn,
+          shot_duration_sec: finalTelops[i]?.durationSec || 6,
         }));
 
         const batchRes = await fetch('/api/collections/batch', {

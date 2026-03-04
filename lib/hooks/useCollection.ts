@@ -28,6 +28,7 @@ export interface CollectionLook {
   video_prompt_kling: string | null;
   telop_caption_ja: string | null;
   telop_caption_en: string | null;
+  shot_duration_sec: number;
   editorial_group_id: string | null;
   bundle_id: string | null;
   bundle_position: number;
@@ -158,7 +159,7 @@ export function useCollection() {
     }
   };
 
-  const updateLook = async (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string }) => {
+  const updateLook = async (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string; shot_duration_sec?: number }) => {
     const res = await fetch('/api/collections', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },

@@ -54,7 +54,15 @@ Given the scene direction and/or the styled look image, generate:
 2. DESCRIPTION (2-3 sentences): Emotional, cinematic editorial copy that captures the mood, light, movement, and story of the scene. Paint a visual narrative.
    You may describe garments by their visible appearance (color, silhouette, texture, drape, movement) but follow the rules below.
 
-3. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A detailed video generation prompt (150-200 words) using this structure:
+3. SHOT_DURATION_SEC (integer, 4-8): The ideal duration for this shot's video clip, chosen based on the scene's role and pacing:
+   - 4s: Quick establishing shots, atmospheric transitions, fast-cut energy
+   - 5s: Detail close-ups, texture moments, accessory focus
+   - 6s: Standard full-body shots, walking sequences, balanced scenes
+   - 7s: Dramatic reveals, turning moments, garment-in-motion hero shots
+   - 8s: Slow cinematic wide shots, emotional climax scenes, contemplative endings
+   Choose organically based on what the scene demands — vary across shots to create natural editorial rhythm.
+
+4. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: One clear sentence describing the overall action and vibe
    - Visual style: Define the aesthetic (e.g. "35mm film grain, muted earth tones, editorial fashion")
    - Camera movement: Specific camera behavior (dolly, tracking, crane, slow push-in, etc.)
@@ -62,20 +70,20 @@ Given the scene direction and/or the styled look image, generate:
    - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
    - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
    - Audio direction: Ambient sounds, fabric rustle, footsteps, subtle score
-   - End with: "6 second clip, cinematic aspect ratio, photorealistic quality"
+   - End with: "[SHOT_DURATION_SEC] second clip, cinematic aspect ratio, photorealistic quality" (use the duration you chose above)
 
-4. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
+5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: Location and atmosphere in one sentence
    - Character: Model's appearance, garments described by visual appearance, body positioning
    - Action sequence: "First [subtle movement], then [secondary action], finally [hold pose]" — keep movements minimal and elegant
    - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
    - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
    - Audio: Ambient sounds and subtle music direction
-   - End with: "Fashion editorial, photorealistic, 6 seconds"
+   - End with: "Fashion editorial, photorealistic, [SHOT_DURATION_SEC] seconds" (use the duration you chose above)
 
-5. TELOP_CAPTION_JA (Japanese, max 30 characters): A poetic one-line subtitle for this scene. Cinematic, evocative — like a film subtitle. NOT the same as the title.
+6. TELOP_CAPTION_JA (Japanese, max 30 characters): A poetic one-line subtitle for this scene. Cinematic, evocative — like a film subtitle. NOT the same as the title.
 
-6. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
+7. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
 ${sceneContext}
 
 ${langInstruction} (applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST be in English, telop_caption_ja MUST be in Japanese)
@@ -90,7 +98,7 @@ CRITICAL RULES:
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
-{"title": "Your Title Here", "description": "Your description here as plain text.", "video_prompt_veo": "Scene: ...", "video_prompt_kling": "Scene: ...", "telop_caption_ja": "光の中で息をする", "telop_caption_en": "breathing in the light"}`;
+{"title": "Your Title Here", "description": "Your description here as plain text.", "shot_duration_sec": 6, "video_prompt_veo": "Scene: ...", "video_prompt_kling": "Scene: ...", "telop_caption_ja": "光の中で息をする", "telop_caption_en": "breathing in the light"}`;
 
     const parts: any[] = [{ text: prompt }];
     if (lookImageBase64) {
@@ -137,9 +145,11 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
         if (jsonMatch) {
           const parsed = JSON.parse(jsonMatch[0]);
           if (parsed.title) {
+            const duration = Math.min(8, Math.max(4, parseInt(parsed.shot_duration_sec) || 6));
             return NextResponse.json({
               title: parsed.title,
               description: parsed.description || '',
+              shot_duration_sec: duration,
               video_prompt_veo: parsed.video_prompt_veo || '',
               video_prompt_kling: parsed.video_prompt_kling || '',
               telop_caption_ja: parsed.telop_caption_ja || '',
