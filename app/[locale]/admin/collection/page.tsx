@@ -628,6 +628,58 @@ function BundleDetailModal({
 }) {
   const ja = locale === 'ja';
   const [orderedLooks, setOrderedLooks] = useState(bundle.looks);
+  const store = useStoreContext((s) => s.store);
+  const isDevStore = store?.slug === 'vualofficial';
+
+  const handleDownloadRemotionJson = () => {
+    let cumulativeTime = 0;
+    const shots = orderedLooks.map((look, idx) => {
+      const duration = look.shot_duration_sec || 6;
+      const shot = {
+        shot: idx + 1,
+        title_ja: look.title || '',
+        caption_ja: look.telop_caption_ja || '',
+        caption_en: look.telop_caption_en || '',
+        image_url: look.image_url,
+        shot_duration_sec: duration,
+        video_prompt_veo: look.video_prompt_veo || '',
+        video_prompt_kling: look.video_prompt_kling || '',
+        timing: {
+          startSec: cumulativeTime,
+          durationSec: duration,
+          telop: {
+            startSec: cumulativeTime + 0.5,
+            durationSec: Math.min(3, duration - 1.5),
+            fadeInSec: 0.3,
+            fadeOutSec: 0.5,
+          },
+        },
+        products: look.collection_look_products?.map(lp => ({
+          name: lp.products?.name || '',
+          brand: lp.products?.brand || '',
+          price: lp.products?.base_price || 0,
+          currency: lp.products?.currency || 'JPY',
+        })) || [],
+      };
+      cumulativeTime += duration;
+      return shot;
+    });
+
+    const payload = {
+      bundle_id: bundle.id,
+      total_shots: shots.length,
+      total_duration_sec: cumulativeTime,
+      shots,
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `remotion-bundle-${bundle.id.slice(0, 8)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -656,9 +708,20 @@ function BundleDetailModal({
               {ja ? `バンドル (${bundle.looks.length}枚)` : `Bundle (${bundle.looks.length} looks)`}
             </h2>
           </div>
-          <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
-            <X size={20} className="text-[var(--color-text-label)]" />
-          </button>
+          <div className="flex items-center gap-1">
+            {isDevStore && (
+              <button
+                onClick={handleDownloadRemotionJson}
+                className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+                title={ja ? 'Remotion JSON をダウンロード' : 'Download Remotion JSON'}
+              >
+                <Download size={18} className="text-[var(--color-text-label)]" />
+              </button>
+            )}
+            <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
+              <X size={20} className="text-[var(--color-text-label)]" />
+            </button>
+          </div>
         </div>
 
         <div className="p-5">
