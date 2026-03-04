@@ -292,7 +292,7 @@ function LookDetailModal({
 }: {
   look: CollectionLook;
   onClose: () => void;
-  onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string }) => Promise<void>;
+  onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string }) => Promise<void>;
   locale: string;
   bundleLooks?: CollectionLook[];
   onNavigate?: (look: CollectionLook) => void;
@@ -305,6 +305,8 @@ function LookDetailModal({
   const [showCredits, setShowCredits] = useState(look.show_credits ?? true);
   const [videoPromptVeo, setVideoPromptVeo] = useState(look.video_prompt_veo || '');
   const [videoPromptKling, setVideoPromptKling] = useState(look.video_prompt_kling || '');
+  const [telopCaptionJa, setTelopCaptionJa] = useState(look.telop_caption_ja || '');
+  const [telopCaptionEn, setTelopCaptionEn] = useState(look.telop_caption_en || '');
   const [videoPromptsOpen, setVideoPromptsOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -316,7 +318,9 @@ function LookDetailModal({
     description !== (look.description || '') ||
     showCredits !== (look.show_credits ?? true) ||
     videoPromptVeo !== (look.video_prompt_veo || '') ||
-    videoPromptKling !== (look.video_prompt_kling || '');
+    videoPromptKling !== (look.video_prompt_kling || '') ||
+    telopCaptionJa !== (look.telop_caption_ja || '') ||
+    telopCaptionEn !== (look.telop_caption_en || '');
 
   const handleCopyPrompt = async (text: string, field: string) => {
     try {
@@ -335,7 +339,7 @@ function LookDetailModal({
     if (!bundleLooks || !onNavigate) return;
     // Auto-save if there are changes
     if (hasChanges) {
-      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling });
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling, telop_caption_ja: telopCaptionJa, telop_caption_en: telopCaptionEn });
     }
     const nextIndex = direction === 'prev' ? currentBundleIndex - 1 : currentBundleIndex + 1;
     if (nextIndex >= 0 && nextIndex < bundleLooks.length) {
@@ -346,7 +350,7 @@ function LookDetailModal({
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling });
+      await onSave(look.id, { title: title || '', description: description || '', show_credits: showCredits, video_prompt_veo: videoPromptVeo, video_prompt_kling: videoPromptKling, telop_caption_ja: telopCaptionJa, telop_caption_en: telopCaptionEn });
       setSaved(true);
       setTimeout(() => setSaved(false), 1500);
     } catch (err) {
@@ -505,6 +509,49 @@ function LookDetailModal({
                       rows={4}
                       className="w-full text-[11px] px-2.5 py-2 border border-[var(--color-line)] rounded-md text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed focus:outline-none focus:border-[var(--color-accent)] font-mono"
                     />
+                  </div>
+                  {/* Telop Captions */}
+                  <div className="border-t border-[var(--color-line)] pt-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-semibold text-[var(--color-text-label)] uppercase tracking-wide">Telop Captions</span>
+                      <button
+                        onClick={() => {
+                          const telopJson = JSON.stringify({
+                            caption_ja: telopCaptionJa,
+                            caption_en: telopCaptionEn,
+                            title_ja: title,
+                            timing: { startSec: 0.5, durationSec: 3, fadeInSec: 0.3, fadeOutSec: 0.5 },
+                          }, null, 2);
+                          handleCopyPrompt(telopJson, 'telop');
+                        }}
+                        className="flex items-center gap-1 px-2 py-0.5 text-[10px] text-[var(--color-text-label)] hover:text-[var(--color-accent)] hover:bg-[var(--color-bg-element)] rounded transition-colors"
+                      >
+                        {copiedField === 'telop' ? <Check size={10} className="text-emerald-500" /> : <Copy size={10} />}
+                        {copiedField === 'telop' ? 'Copied JSON' : 'Copy JSON'}
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <span className="text-[9px] text-[var(--color-text-label)] mb-0.5 block">JA</span>
+                        <input
+                          type="text"
+                          value={telopCaptionJa}
+                          onChange={(e) => setTelopCaptionJa(e.target.value)}
+                          placeholder="光の中で息をする"
+                          className="w-full text-[11px] px-2 py-1.5 border border-[var(--color-line)] rounded-md text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                        />
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-[var(--color-text-label)] mb-0.5 block">EN</span>
+                        <input
+                          type="text"
+                          value={telopCaptionEn}
+                          onChange={(e) => setTelopCaptionEn(e.target.value)}
+                          placeholder="breathing in the light"
+                          className="w-full text-[11px] px-2 py-1.5 border border-[var(--color-line)] rounded-md text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

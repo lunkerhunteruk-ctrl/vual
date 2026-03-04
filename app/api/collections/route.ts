@@ -201,7 +201,7 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, title, description, show_credits, video_prompt_veo, video_prompt_kling } = body;
+    const { id, title, description, show_credits, video_prompt_veo, video_prompt_kling, telop_caption_ja, telop_caption_en } = body;
 
     if (!id) {
       return NextResponse.json({ error: 'Look ID required' }, { status: 400 });
@@ -213,6 +213,8 @@ export async function PATCH(request: NextRequest) {
     if (show_credits !== undefined) updates.show_credits = show_credits;
     if (video_prompt_veo !== undefined) updates.video_prompt_veo = video_prompt_veo ?? null;
     if (video_prompt_kling !== undefined) updates.video_prompt_kling = video_prompt_kling ?? null;
+    if (telop_caption_ja !== undefined) updates.telop_caption_ja = telop_caption_ja ?? null;
+    if (telop_caption_en !== undefined) updates.telop_caption_en = telop_caption_en ?? null;
 
     const { error } = await supabase
       .from('collection_looks')

@@ -11,6 +11,8 @@ interface BatchLookPayload {
     description?: string;
     video_prompt_veo?: string;
     video_prompt_kling?: string;
+    telop_caption_ja?: string;
+    telop_caption_en?: string;
   }[];
   editorialGroupId: string;
 }
@@ -86,6 +88,8 @@ export async function POST(request: NextRequest) {
       if (look.description) insertPayload.description = look.description;
       if (look.video_prompt_veo) insertPayload.video_prompt_veo = look.video_prompt_veo;
       if (look.video_prompt_kling) insertPayload.video_prompt_kling = look.video_prompt_kling;
+      if (look.telop_caption_ja) insertPayload.telop_caption_ja = look.telop_caption_ja;
+      if (look.telop_caption_en) insertPayload.telop_caption_en = look.telop_caption_en;
 
       const { data: created, error: insertError } = await supabase
         .from('collection_looks')

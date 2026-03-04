@@ -62,7 +62,7 @@ Given the scene direction and/or the styled look image, generate:
    - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
    - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
    - Audio direction: Ambient sounds, fabric rustle, footsteps, subtle score
-   - End with: "4-8 second clip, cinematic aspect ratio, photorealistic quality"
+   - End with: "6 second clip, cinematic aspect ratio, photorealistic quality"
 
 4. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: Location and atmosphere in one sentence
@@ -71,10 +71,14 @@ Given the scene direction and/or the styled look image, generate:
    - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
    - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
    - Audio: Ambient sounds and subtle music direction
-   - End with: "Fashion editorial, photorealistic, 15 seconds"
+   - End with: "Fashion editorial, photorealistic, 6 seconds"
+
+5. TELOP_CAPTION_JA (Japanese, max 30 characters): A poetic one-line subtitle for this scene. Cinematic, evocative — like a film subtitle. NOT the same as the title.
+
+6. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
 ${sceneContext}
 
-${langInstruction} (applies to TITLE and DESCRIPTION only — video prompts MUST be in English)
+${langInstruction} (applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST be in English, telop_caption_ja MUST be in Japanese)
 
 CRITICAL RULES:
 - NEVER mention specific fabric or material names (silk, cotton, linen, polyester, cashmere, wool, leather, etc. / シルク、コットン、リネン、ポリエステル、カシミヤ、ウール、レザー等)
@@ -83,9 +87,10 @@ CRITICAL RULES:
 - The title should feel like a chapter heading in a visual novel
 - Do NOT mention brand names or product names
 - Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
+- Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
-{"title": "Your Title Here", "description": "Your description here as plain text.", "video_prompt_veo": "Scene: ... Visual style: ... Camera: ... Subject: ... Background: ... Lighting: ... Audio: ...", "video_prompt_kling": "Scene: ... Character: ... Action: First ..., then ..., finally ... Camera: ... Style: ... Audio: ..."}`;
+{"title": "Your Title Here", "description": "Your description here as plain text.", "video_prompt_veo": "Scene: ...", "video_prompt_kling": "Scene: ...", "telop_caption_ja": "光の中で息をする", "telop_caption_en": "breathing in the light"}`;
 
     const parts: any[] = [{ text: prompt }];
     if (lookImageBase64) {
@@ -137,6 +142,8 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
               description: parsed.description || '',
               video_prompt_veo: parsed.video_prompt_veo || '',
               video_prompt_kling: parsed.video_prompt_kling || '',
+              telop_caption_ja: parsed.telop_caption_ja || '',
+              telop_caption_en: parsed.telop_caption_en || '',
             });
           }
         }
