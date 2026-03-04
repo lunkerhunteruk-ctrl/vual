@@ -942,17 +942,22 @@ export function GeminiImageGenerator({
           ))}
         </select>
 
+        </>)}
+
         <select
           value={settings.aspectRatio}
-          onChange={(e) => setSettings(prev => ({ ...prev, aspectRatio: e.target.value }))}
+          onChange={(e) => {
+            setSettings(prev => ({ ...prev, aspectRatio: e.target.value }));
+            if (storyCount > 1) {
+              setPerShotAspectRatios(prev => prev.map(() => e.target.value));
+            }
+          }}
           className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
         >
           {aspectRatioOptions.map(a => (
             <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
           ))}
         </select>
-
-        </>)}
 
         <select
           value={settings.resolution}
