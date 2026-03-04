@@ -84,8 +84,8 @@ Given the scene direction and/or the styled look image, generate:
    - Main subject: The model's appearance, garments, pose, and subtle movement (hair, fabric sway, weight shift)
    - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
    - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
-   - Audio direction: Ambient sounds, fabric rustle, footsteps, subtle score
-   - End with: "[SHOT_DURATION_SEC] second clip, cinematic aspect ratio, photorealistic quality" (use the duration you chose above)
+   - Audio direction: FOLEY ONLY — NO background music, NO score, NO soundtrack. Only realistic diegetic sounds: footsteps on stone/wood/gravel, fabric rustling and swishing, soft breathing, wind through hair, distant ambient sounds (birds, water, city hum). The audio must feel like a raw field recording on set.
+   - End with: "[SHOT_DURATION_SEC] second clip, cinematic aspect ratio, photorealistic quality, no background music" (use the duration you chose above)
 
 5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: Location and atmosphere in one sentence
@@ -93,8 +93,8 @@ Given the scene direction and/or the styled look image, generate:
    - Action sequence: "First [subtle movement], then [secondary action], finally [hold pose]" — keep movements minimal and elegant
    - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
    - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
-   - Audio: Ambient sounds and subtle music direction
-   - End with: "Fashion editorial, photorealistic, [SHOT_DURATION_SEC] seconds" (use the duration you chose above)
+   - Audio: FOLEY ONLY — NO background music, NO score. Only diegetic sounds: footsteps, fabric movement, breathing, environmental ambience (wind, birds, distant sounds). Raw on-set audio feel.
+   - End with: "Fashion editorial, photorealistic, no background music, [SHOT_DURATION_SEC] seconds" (use the duration you chose above)
 
 6. TELOP_CAPTION_JA (Japanese, max 30 characters): A poetic one-line subtitle for this scene. Cinematic, evocative — like a film subtitle. NOT the same as the title.
 
