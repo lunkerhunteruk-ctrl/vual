@@ -79,41 +79,61 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
       });
     }
 
-    const response = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts }],
-        generationConfig: {
-          temperature: 1.0,
-          maxOutputTokens: 500,
-        },
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('[Collection Copy] Gemini error:', errorText);
-      return NextResponse.json(fallbackCopy(locale), { status: 200 });
-    }
-
-    const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-    try {
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]);
-        return NextResponse.json({
-          title: parsed.title || fallbackTitle(locale),
-          description: parsed.description || '',
+    // Retry up to 3 times on API errors (rate limits, transient failures)
+    const MAX_RETRIES = 3;
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+      try {
+        const response = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts }],
+            generationConfig: {
+              temperature: 1.0,
+              maxOutputTokens: 500,
+            },
+          }),
         });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`[Collection Copy] Gemini error (attempt ${attempt + 1}):`, errorText);
+          if (attempt < MAX_RETRIES - 1) {
+            await new Promise(r => setTimeout(r, 1500 * (attempt + 1)));
+            continue;
+          }
+          return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
+        }
+
+        const data = await response.json();
+        const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed.title) {
+            return NextResponse.json({
+              title: parsed.title,
+              description: parsed.description || '',
+            });
+          }
+        }
+
+        console.error(`[Collection Copy] Parse failed (attempt ${attempt + 1}), raw:`, text.substring(0, 200));
+        if (attempt < MAX_RETRIES - 1) {
+          await new Promise(r => setTimeout(r, 1000));
+          continue;
+        }
+      } catch (retryErr) {
+        console.error(`[Collection Copy] Attempt ${attempt + 1} error:`, retryErr);
+        if (attempt < MAX_RETRIES - 1) {
+          await new Promise(r => setTimeout(r, 1500 * (attempt + 1)));
+          continue;
+        }
       }
-    } catch (e) {
-      console.error('[Collection Copy] Parse error:', e, 'Raw:', text);
     }
 
-    return NextResponse.json(fallbackCopy(locale));
+    return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
   } catch (error: any) {
     console.error('[Collection Copy] Error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

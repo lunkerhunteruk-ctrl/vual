@@ -591,41 +591,43 @@ export function GeminiImageGenerator({
         status: updatedStatus,
       });
 
-      // Phase 2: Generate cinematic copywriting for successful shots in parallel
+      // Phase 2: Generate cinematic copywriting for successful shots sequentially
+      // Sequential to avoid Gemini API rate limits that cause fallback copies
       let finalCopies = [...updatedCopies];
+      const finalStatus = [...updatedStatus];
       if (successfulShots.length > 0) {
-        const copyPromises = successfulShots.map(i =>
-          fetch('/api/ai/collection-copy', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              scenePrompt: customScenePrompts[i] || '',
-              lookImageBase64: updatedImages[i]?.replace(/^data:image\/\w+;base64,/, '') || undefined,
-              locale,
-            }),
-          }).then(r => r.json()).catch(() => null)
-        );
-
-        const copyResults = await Promise.allSettled(copyPromises);
-        const finalStatus = [...updatedStatus];
-        copyResults.forEach((result, idx) => {
-          const shotIndex = successfulShots[idx];
-          if (result.status === 'fulfilled' && result.value) {
-            finalCopies[shotIndex] = {
-              title: result.value.title,
-              description: result.value.description,
-            };
+        for (let idx = 0; idx < successfulShots.length; idx++) {
+          const i = successfulShots[idx];
+          try {
+            const res = await fetch('/api/ai/collection-copy', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                scenePrompt: customScenePrompts[i] || '',
+                lookImageBase64: updatedImages[i]?.replace(/^data:image\/\w+;base64,/, '') || undefined,
+                locale,
+              }),
+            });
+            const copyData = await res.json();
+            if (copyData?.title) {
+              finalCopies[i] = {
+                title: copyData.title,
+                description: copyData.description || '',
+              };
+            }
+          } catch (copyErr) {
+            console.error(`[Editorial] Copy generation failed for shot ${i}:`, copyErr);
           }
-          finalStatus[shotIndex] = 'done';
-        });
-        setEditorialResults({
-          images: updatedImages,
-          savedImageUrls: updatedSavedUrls,
-          copies: finalCopies,
-          status: finalStatus,
-        });
+          finalStatus[i] = 'done';
+          // Update UI progressively as each copy completes
+          setEditorialResults({
+            images: updatedImages,
+            savedImageUrls: updatedSavedUrls,
+            copies: [...finalCopies],
+            status: [...finalStatus],
+          });
+        }
       } else {
-        const finalStatus = [...updatedStatus];
         successfulShots.forEach(i => {
           finalStatus[i] = 'done';
         });
