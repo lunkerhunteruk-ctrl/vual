@@ -51,6 +51,7 @@ interface RequestBody {
   vtonBase?: boolean;
   background: string;
   aspectRatio: string;
+  resolution?: string;
   customPrompt?: string;
   locale?: string;
   // Consumer billing fields (when called from customer try-on)
@@ -101,7 +102,7 @@ function extractBase64(dataUrl: string): { data: string; mimeType: string } | nu
 }
 
 // Call Gemini API directly
-async function callGeminiAPI(parts: any[], aspectRatio: string = '3:4'): Promise<any> {
+async function callGeminiAPI(parts: any[], aspectRatio: string = '3:4', imageSize: string = '1K'): Promise<any> {
   if (!GEMINI_API_KEY) {
     throw new Error('GEMINI_API_KEY is not configured');
   }
@@ -116,6 +117,7 @@ async function callGeminiAPI(parts: any[], aspectRatio: string = '3:4'): Promise
         responseModalities: ['TEXT', 'IMAGE'],
         imageConfig: {
           aspectRatio,
+          imageSize,
         },
       },
       safetySettings: [
@@ -206,46 +208,39 @@ export async function POST(request: NextRequest) {
           );
         }
 
+        const creditCost = body.resolution === '4K' ? 2 : 1;
         const totalCredits = sub.studio_subscription_credits + sub.studio_topup_credits;
-        if (totalCredits <= 0) {
+        if (totalCredits < creditCost) {
           return NextResponse.json(
-            { error: 'AIスタジオクレジットが不足しています', errorCode: 'insufficient_studio_credits' },
+            { error: creditCost === 2 ? 'AIスタジオクレジットが不足しています（4K解像度は2クレジット必要です）' : 'AIスタジオクレジットが不足しています', errorCode: 'insufficient_studio_credits' },
             { status: 402 }
           );
         }
 
         // Deduct: subscription credits first, then topup
-        console.log('[Gemini] Deducting credit. subscription:', sub.studio_subscription_credits, 'topup:', sub.studio_topup_credits);
-        if (sub.studio_subscription_credits > 0) {
-          const { error: deductError } = await sb
-            .from('store_subscriptions')
-            .update({
-              studio_subscription_credits: sub.studio_subscription_credits - 1,
-              studio_credits_total_used: (sub.studio_credits_total_used || 0) + 1,
-              updated_at: new Date().toISOString(),
-            })
-            .eq('store_id', body.storeId);
-          console.log('[Gemini] Subscription credit deduct result:', { error: deductError });
-        } else {
-          const { error: deductError } = await sb
-            .from('store_subscriptions')
-            .update({
-              studio_topup_credits: sub.studio_topup_credits - 1,
-              studio_credits_total_used: (sub.studio_credits_total_used || 0) + 1,
-              updated_at: new Date().toISOString(),
-            })
-            .eq('store_id', body.storeId);
-          console.log('[Gemini] Topup credit deduct result:', { error: deductError });
-        }
+        console.log('[Gemini] Deducting credit. cost:', creditCost, 'resolution:', body.resolution || '1K', 'subscription:', sub.studio_subscription_credits, 'topup:', sub.studio_topup_credits);
+        let subDeduct = Math.min(creditCost, sub.studio_subscription_credits);
+        let topupDeduct = creditCost - subDeduct;
 
-        const newTotal = totalCredits - 1;
+        const { error: deductError } = await sb
+          .from('store_subscriptions')
+          .update({
+            studio_subscription_credits: sub.studio_subscription_credits - subDeduct,
+            studio_topup_credits: sub.studio_topup_credits - topupDeduct,
+            studio_credits_total_used: (sub.studio_credits_total_used || 0) + creditCost,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('store_id', body.storeId);
+        console.log('[Gemini] Credit deduct result:', { error: deductError, subDeduct, topupDeduct });
+
+        const newTotal = totalCredits - creditCost;
         console.log('[Gemini] New total credits:', newTotal);
         const { error: txError } = await sb.from('studio_credit_transactions').insert({
           store_id: body.storeId,
           type: 'consumption',
-          amount: -1,
+          amount: -creditCost,
           balance_after: newTotal,
-          description: 'AIスタジオ画像生成',
+          description: creditCost === 2 ? 'AIスタジオ画像生成 (4K)' : 'AIスタジオ画像生成',
         });
         if (txError) console.error('[Gemini] Credit transaction insert error:', txError);
       }
@@ -321,7 +316,7 @@ export async function POST(request: NextRequest) {
         if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
-        const data = await callGeminiAPI(parts, body.aspectRatio);
+        const data = await callGeminiAPI(parts, body.aspectRatio, body.resolution || '1K');
 
         const candidates = data.candidates || [];
         const finishReason = candidates[0]?.finishReason;

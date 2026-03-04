@@ -176,6 +176,12 @@ const aspectRatioOptions = [
   { id: '16:9', labelEn: '16:9 Wide', labelJa: '16:9 ワイド' },
 ];
 
+const resolutionOptions = [
+  { id: '1K', labelEn: '1K', labelJa: '1K', credits: 1 },
+  { id: '2K', labelEn: '2K', labelJa: '2K', credits: 1 },
+  { id: '4K', labelEn: '4K (2x credits)', labelJa: '4K (2倍クレジット)', credits: 2 },
+];
+
 export function GeminiImageGenerator({
   selectedGarmentImage,
   selectedGarmentImages = [],
@@ -244,6 +250,7 @@ export function GeminiImageGenerator({
     pose: 'standing',
     background: 'studioWhite',
     aspectRatio: '3:4',
+    resolution: '1K',
     customPrompt: '',
   });
 
@@ -550,6 +557,7 @@ export function GeminiImageGenerator({
             modelImage: baseImageBase64,
             background: config.background,
             aspectRatio: config.aspectRatio,
+            resolution: settings.resolution,
             customPrompt: config.customPrompt,
             locale,
             storeId,
@@ -739,6 +747,7 @@ export function GeminiImageGenerator({
           modelImage: baseImageBase64,
           background: settings.background,
           aspectRatio: settings.aspectRatio,
+          resolution: settings.resolution,
           customPrompt: settings.customPrompt,
           locale,
           storeId,
@@ -921,6 +930,16 @@ export function GeminiImageGenerator({
         >
           {aspectRatioOptions.map(a => (
             <option key={a.id} value={a.id}>{locale === 'ja' ? a.labelJa : a.labelEn}</option>
+          ))}
+        </select>
+
+        <select
+          value={settings.resolution}
+          onChange={(e) => setSettings(prev => ({ ...prev, resolution: e.target.value }))}
+          className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
+        >
+          {resolutionOptions.map(r => (
+            <option key={r.id} value={r.id}>{locale === 'ja' ? r.labelJa : r.labelEn}</option>
           ))}
         </select>
         </>)}
