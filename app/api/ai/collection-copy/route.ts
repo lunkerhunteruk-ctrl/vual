@@ -83,7 +83,7 @@ Given the scene direction and/or the styled look image, generate:
    - Background: Setting details and environmental motion (wind, light shifts, ambient elements)
    - Lighting and mood: Specific light quality (soft wrap, hard rim, golden hour, motivated practicals)
    - Audio direction: NO background music, NO score, NO soundtrack. Only realistic diegetic and environmental sounds: footsteps on stone/wood/gravel, fabric rustling, soft breathing, wind through hair, AND natural ambient sounds — flowing water, river/stream sounds, rain, birdsong, insects chirping, rustling leaves, distant city hum. The audio should feel like an immersive field recording capturing the real atmosphere of the location.
-   - End with: "[SHOT_DURATION_SEC] second clip, cinematic aspect ratio, photorealistic quality, no background music" (use the duration you chose above)
+   - End with: "X second clip, cinematic aspect ratio, photorealistic quality, no background music" where X is the ACTUAL number you chose for shot_duration_sec (4, 6, or 8). Write the real number, NOT a placeholder.
 
 5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: Location and atmosphere in one sentence
@@ -92,7 +92,7 @@ Given the scene direction and/or the styled look image, generate:
    - Camera: Specific framing and movement (e.g. "slow dolly from medium to close-up, slight upward tilt")
    - Style: Color palette, film reference, motion intensity 0.3-0.4 (subtle, fashion-editorial pace)
    - Audio: NO background music, NO score. Diegetic and environmental sounds only: footsteps, fabric movement, breathing, AND natural ambient sounds — flowing water, rain, birdsong, insects, rustling leaves, wind, distant city hum. Immersive location atmosphere.
-   - End with: "Fashion editorial, photorealistic, no background music, [SHOT_DURATION_SEC] seconds" (use the duration you chose above)
+   - End with: "Fashion editorial, photorealistic, no background music, X seconds" where X is the ACTUAL number you chose for shot_duration_sec (4, 6, or 8). Write the real number, NOT a placeholder.
 
 6. TELOP_CAPTION_JA (Japanese, max 30 characters): A poetic one-line subtitle for this scene. Cinematic, evocative — like a film subtitle. NOT the same as the title.
 
@@ -163,12 +163,18 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             // Snap to nearest valid Veo 3.1 duration (4, 6, or 8 only)
             const rawDur = parseInt(parsed.shot_duration_sec) || 6;
             const duration = rawDur <= 4 ? 4 : rawDur <= 5 ? 4 : rawDur <= 7 ? 6 : 8;
+
+            // Replace any leftover [SHOT_DURATION_SEC] placeholders with actual duration
+            const durStr = String(duration);
+            const fixPrompt = (p: string) =>
+              p.replace(/\[SHOT_DURATION_SEC\]/g, durStr);
+
             return NextResponse.json({
               title: parsed.title,
               description: parsed.description || '',
               shot_duration_sec: duration,
-              video_prompt_veo: parsed.video_prompt_veo || '',
-              video_prompt_kling: parsed.video_prompt_kling || '',
+              video_prompt_veo: fixPrompt(parsed.video_prompt_veo || ''),
+              video_prompt_kling: fixPrompt(parsed.video_prompt_kling || ''),
               telop_caption_ja: parsed.telop_caption_ja || '',
               telop_caption_en: parsed.telop_caption_en || '',
             });
