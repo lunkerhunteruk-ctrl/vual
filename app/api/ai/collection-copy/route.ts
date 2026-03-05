@@ -69,13 +69,11 @@ Given the scene direction and/or the styled look image, generate:
 2. DESCRIPTION (2-3 sentences): Emotional, cinematic editorial copy that captures the mood, light, movement, and story of the scene. Paint a visual narrative.
    You may describe garments by their visible appearance (color, silhouette, texture, drape, movement) but follow the rules below.
 
-3. SHOT_DURATION_SEC (integer, 4-8): The ideal duration for this shot's video clip, chosen based on the scene's role and pacing:
-   - 4s: Quick establishing shots, atmospheric transitions, fast-cut energy
-   - 5s: Detail close-ups, texture moments, accessory focus
-   - 6s: Standard full-body shots, walking sequences, balanced scenes
-   - 7s: Dramatic reveals, turning moments, garment-in-motion hero shots
-   - 8s: Slow cinematic wide shots, emotional climax scenes, contemplative endings
-   Choose organically based on what the scene demands — vary across shots to create natural editorial rhythm.
+3. SHOT_DURATION_SEC (MUST be exactly 4, 6, or 8 — these are the ONLY valid values for Veo 3.1):
+   - 4s: Quick establishing shots, atmospheric transitions, detail close-ups, texture moments, fast-cut energy
+   - 6s: Standard full-body shots, walking sequences, balanced scenes, dramatic reveals, garment-in-motion hero shots
+   - 8s: Slow cinematic wide shots, emotional climax scenes, contemplative endings, gaze shift moments
+   IMPORTANT: Never use 5 or 7. Only 4, 6, or 8 are valid. Vary across shots to create natural editorial rhythm.
 
 4. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A detailed video generation prompt (150-200 words) using this structure:
    - Scene: One clear sentence describing the overall action and vibe
@@ -111,7 +109,7 @@ CRITICAL RULES:
 - Do NOT mention brand names or product names
 - Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
 - PHYSICAL CONTINUITY: Items the model holds (bags, accessories) must STAY in the SAME hand/position throughout the entire clip. NEVER have items teleport, switch hands, appear, or disappear mid-shot. If a bag is on the left shoulder at the start, it must remain on the left shoulder for the entire duration. Explicitly state hand/arm positions in the prompt (e.g. "left hand holding a woven bag at her side throughout the shot"). Any item visible in the reference image must be described with a FIXED position that does not change.
-- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze, while subtly brushing hair back or sweeping it aside. This creates an emotionally captivating moment. Use 7s duration for gaze shift shots.
+- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze, while subtly brushing hair back or sweeping it aside. This creates an emotionally captivating moment. Use 8s duration for gaze shift shots.
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
@@ -162,7 +160,9 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
         if (jsonMatch) {
           const parsed = JSON.parse(jsonMatch[0]);
           if (parsed.title) {
-            const duration = Math.min(8, Math.max(4, parseInt(parsed.shot_duration_sec) || 6));
+            // Snap to nearest valid Veo 3.1 duration (4, 6, or 8 only)
+            const rawDur = parseInt(parsed.shot_duration_sec) || 6;
+            const duration = rawDur <= 4 ? 4 : rawDur <= 5 ? 4 : rawDur <= 7 ? 6 : 8;
             return NextResponse.json({
               title: parsed.title,
               description: parsed.description || '',
