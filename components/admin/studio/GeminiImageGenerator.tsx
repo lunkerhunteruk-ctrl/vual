@@ -704,22 +704,7 @@ export function GeminiImageGenerator({
           body: JSON.stringify({ looks: batchLooks, editorialGroupId }),
         });
 
-        // Auto-bundle if 2+ looks were created
-        if (batchRes.ok && successfulShots.length >= 2) {
-          try {
-            const batchData = await batchRes.json();
-            const createdIds = (batchData.looks || []).map((l: any) => l.id).filter(Boolean);
-            if (createdIds.length >= 2) {
-              await fetch('/api/collections/bundles', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ lookIds: createdIds }),
-              });
-            }
-          } catch (bundleErr) {
-            console.error('Auto-bundle error:', bundleErr);
-          }
-        }
+        // Auto-bundle is now handled inside the batch API
       }
 
       // Refresh credits

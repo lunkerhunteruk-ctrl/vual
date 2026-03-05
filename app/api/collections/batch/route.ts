@@ -146,7 +146,38 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ success: true, looks: createdLooks });
+    // Auto-bundle if 2+ looks were created in this batch
+    let bundleId: string | null = null;
+    if (createdLooks.length >= 2) {
+      try {
+        const minPosition = Math.min(...createdLooks.map((l: any) => l.position));
+        const { data: bundle, error: bundleError } = await supabase
+          .from('collection_bundles')
+          .insert({ store_id: storeId, position: minPosition })
+          .select()
+          .single();
+
+        if (bundleError) {
+          console.error('[Collections Batch] Bundle create error:', bundleError);
+        } else {
+          bundleId = bundle.id;
+          for (let i = 0; i < createdLooks.length; i++) {
+            const { error: linkError } = await supabase
+              .from('collection_looks')
+              .update({ bundle_id: bundle.id, bundle_position: i })
+              .eq('id', createdLooks[i].id);
+
+            if (linkError) {
+              console.error(`[Collections Batch] Bundle link error for look ${i}:`, linkError);
+            }
+          }
+        }
+      } catch (bundleErr) {
+        console.error('[Collections Batch] Auto-bundle error:', bundleErr);
+      }
+    }
+
+    return NextResponse.json({ success: true, looks: createdLooks, bundleId });
   } catch (error: any) {
     console.error('[Collections Batch] Error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
