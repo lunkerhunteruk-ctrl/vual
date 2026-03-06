@@ -388,6 +388,16 @@ function LookDetailModal({
             )}
           </div>
           <div className="flex items-center gap-1">
+            {onRegenerate && (
+              <button
+                onClick={() => setShowRegenPrompt(!showRegenPrompt)}
+                disabled={isRegenerating}
+                className="p-1.5 hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors disabled:opacity-50"
+                title={ja ? '再生成' : 'Regenerate'}
+              >
+                <RefreshCw size={18} className={`text-[var(--color-text-label)] ${isRegenerating ? 'animate-spin' : ''}`} />
+              </button>
+            )}
             <button
               onClick={async () => {
                 try {
@@ -712,12 +722,14 @@ function BundleDetailModal({
   onClose,
   onClickLook,
   onReorder,
+  onRegenerate,
   locale,
 }: {
   bundle: { id: string; looks: CollectionLook[] };
   onClose: () => void;
   onClickLook: (look: CollectionLook) => void;
   onReorder: (bundleId: string, lookIds: string[]) => void;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
   locale: string;
 }) {
   const ja = locale === 'ja';
@@ -827,7 +839,7 @@ function BundleDetailModal({
             <SortableContext items={orderedLooks.map((l) => l.id)} strategy={verticalListSortingStrategy}>
               <div className="space-y-2">
                 {orderedLooks.map((look, idx) => (
-                  <SortableBundleLookItem key={look.id} look={look} index={idx} onClick={() => onClickLook(look)} locale={locale} />
+                  <SortableBundleLookItem key={look.id} look={look} index={idx} onClick={() => onClickLook(look)} onRegenerate={onRegenerate} locale={locale} />
                 ))}
               </div>
             </SortableContext>
@@ -842,13 +854,16 @@ function SortableBundleLookItem({
   look,
   index,
   onClick,
+  onRegenerate,
   locale,
 }: {
   look: CollectionLook;
   index: number;
   onClick: () => void;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
   locale: string;
 }) {
+  const [isRegenerating, setIsRegenerating] = useState(false);
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: look.id,
   });
@@ -881,6 +896,26 @@ function SortableBundleLookItem({
           {look.title || (locale === 'ja' ? 'タイトル未設定' : 'No title')}
         </p>
       </div>
+      {onRegenerate && (
+        <button
+          onClick={async (e) => {
+            e.stopPropagation();
+            setIsRegenerating(true);
+            try {
+              await onRegenerate(look.id, '');
+            } catch (err) {
+              console.error('Regenerate failed:', err);
+            } finally {
+              setIsRegenerating(false);
+            }
+          }}
+          disabled={isRegenerating}
+          className="p-1.5 text-[var(--color-text-label)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors flex-shrink-0 disabled:opacity-50"
+          title={locale === 'ja' ? '再生成' : 'Regenerate'}
+        >
+          <RefreshCw size={14} className={isRegenerating ? 'animate-spin' : ''} />
+        </button>
+      )}
     </div>
   );
 }
@@ -1086,6 +1121,7 @@ export default function CollectionPage() {
             setSelectedLook(look);
           }}
           onReorder={reorderBundleLooks}
+          onRegenerate={regenerateLook}
           locale={locale}
         />
       )}
