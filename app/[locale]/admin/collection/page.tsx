@@ -154,11 +154,13 @@ function BundleCard({
   bundle,
   onClick,
   onDisband,
+  onDelete,
   locale,
 }: {
   bundle: { id: string; looks: CollectionLook[] };
   onClick: () => void;
   onDisband: (bundleId: string) => void;
+  onDelete: (bundleId: string, lookIds: string[]) => void;
   locale: string;
 }) {
   const ja = locale === 'ja';
@@ -216,18 +218,31 @@ function BundleCard({
           </div>
         </div>
 
-        {/* Disband */}
-        <button
-          onClick={() => {
-            if (confirm(ja ? 'バンドルを解除しますか？' : 'Disband this bundle?')) {
-              onDisband(bundle.id);
-            }
-          }}
-          className="p-2 text-[var(--color-text-label)] hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors flex-shrink-0"
-          title={ja ? 'バンドル解除' : 'Disband'}
-        >
-          <Unlink size={18} />
-        </button>
+        {/* Disband & Delete */}
+        <div className="flex flex-col gap-1 flex-shrink-0">
+          <button
+            onClick={() => {
+              if (confirm(ja ? 'バンドルを解除しますか？（ルックは残ります）' : 'Disband this bundle? (looks will remain)')) {
+                onDisband(bundle.id);
+              }
+            }}
+            className="p-1.5 text-[var(--color-text-label)] hover:text-orange-500 hover:bg-orange-50 rounded-lg transition-colors"
+            title={ja ? 'バンドル解除' : 'Disband'}
+          >
+            <Unlink size={16} />
+          </button>
+          <button
+            onClick={() => {
+              if (confirm(ja ? `バンドル内の${bundle.looks.length}枚すべてを削除しますか？` : `Delete all ${bundle.looks.length} looks in this bundle?`)) {
+                onDelete(bundle.id, bundle.looks.map(l => l.id));
+              }
+            }}
+            className="p-1.5 text-[var(--color-text-label)] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+            title={ja ? 'バンドルごと削除' : 'Delete bundle'}
+          >
+            <Trash2 size={16} />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -931,7 +946,7 @@ export default function CollectionPage() {
   const ja = locale === 'ja';
   const {
     looks, items, isLoading,
-    addLook, updateLook, deleteLook, reorderLooks,
+    addLook, updateLook, deleteLook, deleteBundle, reorderLooks,
     createBundle, disbandBundle, reorderBundleLooks,
     regenerateLook,
   } = useCollection();
@@ -1051,6 +1066,7 @@ export default function CollectionPage() {
                       bundle={item.bundle}
                       onClick={() => setSelectedBundle(item.bundle)}
                       onDisband={disbandBundle}
+                      onDelete={deleteBundle}
                       locale={locale}
                     />
                   );

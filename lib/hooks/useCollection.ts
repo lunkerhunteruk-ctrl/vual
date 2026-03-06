@@ -181,6 +181,14 @@ export function useCollection() {
     await fetchLooks();
   };
 
+  const deleteBundle = async (bundleId: string, lookIds: string[]) => {
+    // Delete all looks in the bundle
+    await Promise.all(lookIds.map(id =>
+      fetch(`/api/collections?id=${id}`, { method: 'DELETE' })
+    ));
+    await fetchLooks();
+  };
+
   const disbandBundle = async (bundleId: string) => {
     const res = await fetch(`/api/collections/bundles?id=${bundleId}`, { method: 'DELETE' });
     if (!res.ok) throw new Error('Failed to disband bundle');
@@ -226,6 +234,7 @@ export function useCollection() {
     addLook,
     updateLook,
     deleteLook,
+    deleteBundle,
     reorderLooks,
     createBundle,
     disbandBundle,
