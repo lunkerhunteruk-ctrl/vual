@@ -792,11 +792,11 @@ export function GeminiImageGenerator({
           fifthGarmentImages: ctx.fifthGarmentBase64,
           fifthGarmentName,
           productIds: selectedProductIds,
-          modelSettings: { ...ctx.settingsSnapshot, pose: config.pose },
+          modelSettings: { ...settings, pose: config.pose },
           modelImage: ctx.baseImageBase64,
           background: config.background,
           aspectRatio: config.aspectRatio,
-          resolution: ctx.settingsSnapshot.resolution,
+          resolution: settings.resolution,
           customPrompt: config.customPrompt,
           locale,
           storeId,
@@ -1587,12 +1587,30 @@ export function GeminiImageGenerator({
                 <h3 className="text-sm font-bold text-[var(--color-title-active)]">
                   {locale === 'ja' ? '生成画像' : 'Generated Image'}
                 </h3>
-                <button
-                  onClick={() => setModalImage(null)}
-                  className="p-1.5 rounded-lg hover:bg-[var(--color-bg-element)] transition-colors"
-                >
-                  <X size={18} className="text-[var(--color-text-body)]" />
-                </button>
+                <div className="flex items-center gap-1">
+                  {modalImage.id.startsWith('editorial-') && editorialContextRef.current && (
+                    <button
+                      onClick={() => {
+                        const shotIndex = parseInt(modalImage.id.replace('editorial-', ''), 10);
+                        if (!isNaN(shotIndex)) {
+                          setModalImage(null);
+                          handleRegenerateShot(shotIndex);
+                        }
+                      }}
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors"
+                      title={locale === 'ja' ? '再生成' : 'Regenerate'}
+                    >
+                      <RefreshCw size={14} />
+                      {locale === 'ja' ? '再生成' : 'Regenerate'}
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setModalImage(null)}
+                    className="p-1.5 rounded-lg hover:bg-[var(--color-bg-element)] transition-colors"
+                  >
+                    <X size={18} className="text-[var(--color-text-body)]" />
+                  </button>
+                </div>
               </div>
 
               {/* Modal Body */}
