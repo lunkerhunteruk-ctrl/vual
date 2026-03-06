@@ -83,6 +83,7 @@ export async function POST(request: NextRequest) {
       // Poll for completion
       const startTime = Date.now();
       let attemptDone = false;
+      let isRaiFilter = false;
 
       while (Date.now() - startTime < MAX_POLL_TIME_MS) {
         await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
@@ -92,6 +93,10 @@ export async function POST(request: NextRequest) {
         if (result.error) {
           lastError = result.error.message;
           console.error(`[Generate Clip] Attempt ${attempt} error:`, lastError);
+          // Don't retry if it's a content filter — same image will get the same result
+          if (lastError.includes('filter') || lastError.includes('violated')) {
+            isRaiFilter = true;
+          }
           attemptDone = true;
           break;
         }
@@ -104,6 +109,7 @@ export async function POST(request: NextRequest) {
       }
 
       if (videoData) break; // Success
+      if (isRaiFilter) break; // Don't retry content filter
 
       if (!attemptDone) {
         lastError = 'Veo generation timed out';

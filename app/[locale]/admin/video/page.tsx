@@ -194,7 +194,11 @@ export default function VideoPage() {
         // Force refresh collection data
         window.location.reload();
       } else {
-        alert(ja ? `クリップ生成失敗: ${data.error}` : `Clip generation failed: ${data.error}`);
+        const isFilter = data.error?.includes('filter') || data.error?.includes('violated');
+        const msg = isFilter
+          ? (ja ? 'この画像はコンテンツフィルターによりブロックされました。スタジオで画像を再生成してからお試しください。' : 'This image was blocked by the content filter. Please regenerate the image in studio and try again.')
+          : (ja ? `クリップ生成失敗: ${data.error}` : `Clip generation failed: ${data.error}`);
+        alert(msg);
       }
     } catch (err: any) {
       console.error('[RetryClip] Error:', err);
