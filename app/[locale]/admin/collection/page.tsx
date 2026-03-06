@@ -864,6 +864,8 @@ function SortableBundleLookItem({
   locale: string;
 }) {
   const [isRegenerating, setIsRegenerating] = useState(false);
+  const [localImageUrl, setLocalImageUrl] = useState(look.image_url);
+  const [localTitle, setLocalTitle] = useState(look.title);
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: look.id,
   });
@@ -889,11 +891,11 @@ function SortableBundleLookItem({
       </button>
       <span className="text-xs font-medium text-[var(--color-text-label)] w-5">{index + 1}</span>
       <div className="w-14 h-14 rounded overflow-hidden bg-[var(--color-bg-element)] flex-shrink-0 flex items-center justify-center cursor-pointer" onClick={onClick}>
-        <img src={look.image_url} alt="" className="max-w-full max-h-full object-contain" />
+        <img src={localImageUrl} alt="" className="max-w-full max-h-full object-contain" />
       </div>
       <div className="flex-1 min-w-0 cursor-pointer" onClick={onClick}>
         <p className="text-sm font-medium text-[var(--color-title-active)] truncate">
-          {look.title || (locale === 'ja' ? 'タイトル未設定' : 'No title')}
+          {localTitle || (locale === 'ja' ? 'タイトル未設定' : 'No title')}
         </p>
       </div>
       {onRegenerate && (
@@ -902,7 +904,11 @@ function SortableBundleLookItem({
             e.stopPropagation();
             setIsRegenerating(true);
             try {
-              await onRegenerate(look.id, '');
+              const result = await onRegenerate(look.id, '');
+              if (result.success && result.newImageUrl) {
+                setLocalImageUrl(result.newImageUrl);
+                if (result.copy?.title) setLocalTitle(result.copy.title);
+              }
             } catch (err) {
               console.error('Regenerate failed:', err);
             } finally {
@@ -1100,7 +1106,24 @@ export default function CollectionPage() {
             await updateLook(id, updates);
             setSelectedLook(prev => prev ? { ...prev, ...updates } : null);
           }}
-          onRegenerate={regenerateLook}
+          onRegenerate={async (lookId, customPrompt) => {
+            const result = await regenerateLook(lookId, customPrompt);
+            // Update selectedLook with new data so modal reflects changes
+            if (result.success && result.newImageUrl) {
+              setSelectedLook(prev => prev ? {
+                ...prev,
+                image_url: result.newImageUrl!,
+                ...(result.copy?.title && { title: result.copy.title }),
+                ...(result.copy?.description && { description: result.copy.description }),
+                ...(result.copy?.video_prompt_veo && { video_prompt_veo: result.copy.video_prompt_veo }),
+                ...(result.copy?.video_prompt_kling && { video_prompt_kling: result.copy.video_prompt_kling }),
+                ...(result.copy?.telop_caption_ja && { telop_caption_ja: result.copy.telop_caption_ja }),
+                ...(result.copy?.telop_caption_en && { telop_caption_en: result.copy.telop_caption_en }),
+                ...(result.copy?.shot_duration_sec && { shot_duration_sec: result.copy.shot_duration_sec }),
+              } : null);
+            }
+            return result;
+          }}
           locale={locale}
           bundleLooks={selectedLookBundleLooks}
           onNavigate={(nextLook) => {
