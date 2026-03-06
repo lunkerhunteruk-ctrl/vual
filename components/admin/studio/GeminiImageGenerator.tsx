@@ -247,6 +247,8 @@ export function GeminiImageGenerator({
     videoPrompts: ({ veo: string; kling: string } | null)[];
     telops: ({ captionJa: string; captionEn: string; durationSec: number } | null)[];
     status: ('pending' | 'generating' | 'copying' | 'done' | 'failed')[];
+    lookIds: (string | null)[];
+    bundleId: string | null;
   } | null>(null);
 
   // Stored generation context for per-shot regeneration
@@ -507,6 +509,8 @@ export function GeminiImageGenerator({
       videoPrompts: Array(storyCount).fill(null) as ({ veo: string; kling: string } | null)[],
       telops: Array(storyCount).fill(null) as ({ captionJa: string; captionEn: string; durationSec: number } | null)[],
       status: Array(storyCount).fill('generating') as ('pending' | 'generating' | 'copying' | 'done' | 'failed')[],
+      lookIds: Array(storyCount).fill(null) as (string | null)[],
+      bundleId: null as string | null,
     };
     setEditorialResults(initialResults);
 
@@ -635,6 +639,8 @@ export function GeminiImageGenerator({
         videoPrompts: initialVideoPrompts,
         telops: initialTelops,
         status: updatedStatus,
+        lookIds: Array(storyCount).fill(null),
+        bundleId: null,
       });
 
       // Phase 2: Generate cinematic copywriting for successful shots sequentially
@@ -692,27 +698,31 @@ export function GeminiImageGenerator({
           }
           finalStatus[i] = 'done';
           // Update UI progressively as each copy completes
-          setEditorialResults({
+          setEditorialResults(prev => ({
             images: updatedImages,
             savedImageUrls: updatedSavedUrls,
             copies: [...finalCopies],
             videoPrompts: [...finalVideoPrompts],
             telops: [...finalTelops],
             status: [...finalStatus],
-          });
+            lookIds: prev?.lookIds || Array(storyCount).fill(null),
+            bundleId: prev?.bundleId || null,
+          }));
         }
       } else {
         successfulShots.forEach(i => {
           finalStatus[i] = 'done';
         });
-        setEditorialResults({
+        setEditorialResults(prev => ({
           images: updatedImages,
           savedImageUrls: updatedSavedUrls,
           copies: updatedCopies,
           videoPrompts: initialVideoPrompts,
           telops: initialTelops,
           status: finalStatus,
-        });
+          lookIds: prev?.lookIds || Array(storyCount).fill(null),
+          bundleId: prev?.bundleId || null,
+        }));
       }
 
       // Phase 3: Batch-create collection looks + auto-bundle
@@ -736,7 +746,23 @@ export function GeminiImageGenerator({
           body: JSON.stringify({ looks: batchLooks, editorialGroupId }),
         });
 
-        // Auto-bundle is now handled inside the batch API
+        // Store look IDs and bundle ID from batch response
+        if (batchRes.ok) {
+          const batchData = await batchRes.json();
+          if (batchData.looks) {
+            const newLookIds = Array(storyCount).fill(null) as (string | null)[];
+            for (let j = 0; j < successfulShots.length; j++) {
+              if (batchData.looks[j]) {
+                newLookIds[successfulShots[j]] = batchData.looks[j].id;
+              }
+            }
+            setEditorialResults(prev => prev ? {
+              ...prev,
+              lookIds: newLookIds,
+              bundleId: batchData.bundleId || null,
+            } : prev);
+          }
+        }
       }
 
       // Refresh credits
@@ -771,6 +797,10 @@ export function GeminiImageGenerator({
     const mergedPrompt = additionalPrompt
       ? `${config.customPrompt}\n\nADDITIONAL USER INSTRUCTION (override previous styling if conflicting): ${additionalPrompt}`
       : config.customPrompt;
+
+    // Capture current collection look/bundle info for swap
+    const oldLookId = editorialResults.lookIds?.[shotIndex] || null;
+    const currentBundleId = editorialResults.bundleId || null;
 
     // Mark this shot as generating
     setEditorialResults(prev => {
@@ -828,6 +858,7 @@ export function GeminiImageGenerator({
         });
 
         // Regenerate copy
+        let copyResult: { title?: string; description?: string; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string; shot_duration_sec?: number } | null = null;
         try {
           const copyPayload: any = {
             scenePrompt: mergedPrompt || '',
@@ -845,6 +876,7 @@ export function GeminiImageGenerator({
           });
           if (copyRes.ok) {
             const copyData = await copyRes.json();
+            copyResult = copyData;
             setEditorialResults(prev => {
               if (!prev) return prev;
               const newCopies = [...prev.copies];
@@ -872,6 +904,42 @@ export function GeminiImageGenerator({
             newStatus[shotIndex] = 'done';
             return { ...prev, status: newStatus };
           });
+        }
+
+        // Swap look in collection bundle (old look becomes standalone)
+        if (oldLookId && currentBundleId && newSavedUrl) {
+          try {
+            const swapRes = await fetch('/api/collections/swap-look', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                oldLookId,
+                bundleId: currentBundleId,
+                imageUrl: newSavedUrl,
+                productIds: selectedProductIds.slice(0, 4),
+                title: copyResult?.title,
+                description: copyResult?.description,
+                video_prompt_veo: copyResult?.video_prompt_veo,
+                video_prompt_kling: copyResult?.video_prompt_kling,
+                telop_caption_ja: copyResult?.telop_caption_ja,
+                telop_caption_en: copyResult?.telop_caption_en,
+                shot_duration_sec: copyResult?.shot_duration_sec,
+              }),
+            });
+            if (swapRes.ok) {
+              const swapData = await swapRes.json();
+              // Update lookId in state to track the new look
+              setEditorialResults(prev => {
+                if (!prev) return prev;
+                const newLookIds = [...prev.lookIds];
+                newLookIds[shotIndex] = swapData.newLookId;
+                return { ...prev, lookIds: newLookIds };
+              });
+              console.log(`[RegenerateShot] Swapped look in collection: ${oldLookId} → ${swapData.newLookId}`);
+            }
+          } catch (swapErr) {
+            console.error(`[RegenerateShot] Collection swap failed (non-blocking):`, swapErr);
+          }
         }
       } else {
         setEditorialResults(prev => {
