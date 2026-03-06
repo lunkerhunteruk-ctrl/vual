@@ -84,6 +84,22 @@ export async function runPipeline(
     clipUrl: undefined,
   }));
 
+  // Step definitions for progress tracking
+  const stepDefs = [
+    { id: 'clip-generation', label: 'Generate video clips', labelJa: 'クリップ生成' },
+    { id: 'edit-prep', label: 'Prepare edit timeline', labelJa: '編集準備' },
+    { id: 'rendering', label: 'Render final video', labelJa: '動画レンダリング' },
+    { id: 'complete', label: 'Complete', labelJa: '完成' },
+  ];
+
+  const buildSteps = (currentStepId: string) => {
+    const currentIdx = stepDefs.findIndex(s => s.id === currentStepId);
+    return stepDefs.map((s, i) => ({
+      ...s,
+      status: i < currentIdx ? 'completed' : i === currentIdx ? 'processing' : 'pending',
+    }));
+  };
+
   const emitProgress = (step: string, stepLabel: string) => {
     const doneCount = clipProgress.filter((c) => c.status === 'done').length;
     const totalCount = clipProgress.length;
@@ -92,6 +108,13 @@ export async function runPipeline(
       stepLabel,
       clipProgress: [...clipProgress],
       overallProgress: Math.round((doneCount / totalCount) * 100),
+    });
+
+    // Update steps in DB
+    updateJobStatus(jobId, {
+      current_step: step,
+      current_step_label: stepLabel,
+      steps: buildSteps(step),
     });
   };
 
@@ -157,6 +180,11 @@ export async function runPipeline(
   const successCount = clipProgress.filter((c) => c.status === 'done').length;
 
   if (successCount === 0) {
+    await updateJobStatus(jobId, {
+      status: 'failed',
+      error_message: 'All clips failed to generate',
+      steps: stepDefs.map((s, i) => ({ ...s, status: i === 0 ? 'failed' : 'pending' })),
+    });
     return { success: false, clipUrls: [], error: 'All clips failed to generate' };
   }
 
@@ -169,7 +197,20 @@ export async function runPipeline(
   // TODO Phase 3: Generate Remotion props JSON and trigger Lambda render
 
   // --- Step 3: Mark complete ---
-  emitProgress('complete', 'Complete');
+  const finalSteps = stepDefs.map(s => ({ ...s, status: 'completed' }));
+  onProgress?.({
+    step: 'complete',
+    stepLabel: 'Complete',
+    clipProgress: [...clipProgress],
+    overallProgress: 100,
+  });
+  await updateJobStatus(jobId, {
+    current_step: 'complete',
+    current_step_label: 'Complete',
+    steps: finalSteps,
+    clip_urls: successfulClipUrls,
+    status: successCount < lookIds.length ? 'completed' : 'completed',
+  });
 
   return {
     success: true,
