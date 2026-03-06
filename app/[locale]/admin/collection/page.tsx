@@ -312,7 +312,7 @@ function LookDetailModal({
   look: CollectionLook;
   onClose: () => void;
   onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string; shot_duration_sec?: number }) => Promise<void>;
-  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any; error?: string }>;
   locale: string;
   bundleLooks?: CollectionLook[];
   onNavigate?: (look: CollectionLook) => void;
@@ -747,7 +747,7 @@ function BundleDetailModal({
   onClose: () => void;
   onClickLook: (look: CollectionLook) => void;
   onReorder: (bundleId: string, lookIds: string[]) => void;
-  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any; error?: string }>;
   locale: string;
 }) {
   const ja = locale === 'ja';
@@ -878,7 +878,7 @@ function SortableBundleLookItem({
   look: CollectionLook;
   index: number;
   onClick: () => void;
-  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any; error?: string }>;
   locale: string;
 }) {
   const [isRegenerating, setIsRegenerating] = useState(false);
