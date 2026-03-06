@@ -263,6 +263,12 @@ export function GeminiImageGenerator({
     settingsSnapshot: any;
   } | null>(null);
 
+  // Track collection look IDs and bundle ID via ref (avoids state race condition)
+  const collectionRef = useRef<{
+    lookIds: (string | null)[];
+    bundleId: string | null;
+  }>({ lookIds: [], bundleId: null });
+
   const [settings, setSettings] = useState({
     gender: 'female',
     height: 165,
@@ -501,6 +507,7 @@ export function GeminiImageGenerator({
     setError(null);
     setGeneratedImage(null);
     setEditorialResults(null);
+    collectionRef.current = { lookIds: [], bundleId: null };
 
     const initialResults = {
       images: Array(storyCount).fill(null) as (string | null)[],
@@ -726,6 +733,7 @@ export function GeminiImageGenerator({
       }
 
       // Phase 3: Batch-create collection looks + auto-bundle
+      console.log('[Editorial] Phase 3: saving to collection', { successfulShots: successfulShots.length });
       if (successfulShots.length > 0) {
         const editorialGroupId = crypto.randomUUID();
         const batchLooks = successfulShots.map(i => ({
@@ -749,6 +757,7 @@ export function GeminiImageGenerator({
         // Store look IDs and bundle ID from batch response
         if (batchRes.ok) {
           const batchData = await batchRes.json();
+          console.log('[Editorial] Batch response:', { looksCount: batchData.looks?.length, bundleId: batchData.bundleId });
           if (batchData.looks) {
             const newLookIds = Array(storyCount).fill(null) as (string | null)[];
             for (let j = 0; j < successfulShots.length; j++) {
@@ -756,12 +765,17 @@ export function GeminiImageGenerator({
                 newLookIds[successfulShots[j]] = batchData.looks[j].id;
               }
             }
+            // Update both ref (immediate) and state
+            collectionRef.current = { lookIds: newLookIds, bundleId: batchData.bundleId || null };
             setEditorialResults(prev => prev ? {
               ...prev,
               lookIds: newLookIds,
               bundleId: batchData.bundleId || null,
             } : prev);
           }
+        } else {
+          const errText = await batchRes.text();
+          console.error('[Editorial] Batch save failed:', batchRes.status, errText.slice(0, 300));
         }
       }
 
@@ -798,9 +812,10 @@ export function GeminiImageGenerator({
       ? `${config.customPrompt}\n\nADDITIONAL USER INSTRUCTION (override previous styling if conflicting): ${additionalPrompt}`
       : config.customPrompt;
 
-    // Capture current collection look/bundle info for swap
-    const oldLookId = editorialResults.lookIds?.[shotIndex] || null;
-    const currentBundleId = editorialResults.bundleId || null;
+    // Read from ref (immediate, no state race condition)
+    const oldLookId = collectionRef.current.lookIds[shotIndex] || null;
+    const currentBundleId = collectionRef.current.bundleId || null;
+    console.log(`[RegenerateShot ${shotIndex}] Collection info:`, { oldLookId, currentBundleId });
 
     // Mark this shot as generating
     setEditorialResults(prev => {
@@ -928,7 +943,8 @@ export function GeminiImageGenerator({
             });
             if (swapRes.ok) {
               const swapData = await swapRes.json();
-              // Update lookId in state to track the new look
+              // Update both ref (immediate) and state
+              collectionRef.current.lookIds[shotIndex] = swapData.newLookId;
               setEditorialResults(prev => {
                 if (!prev) return prev;
                 const newLookIds = [...prev.lookIds];
@@ -936,6 +952,9 @@ export function GeminiImageGenerator({
                 return { ...prev, lookIds: newLookIds };
               });
               console.log(`[RegenerateShot] Swapped look in collection: ${oldLookId} → ${swapData.newLookId}`);
+            } else {
+              const errText = await swapRes.text();
+              console.error(`[RegenerateShot] Swap API error ${swapRes.status}:`, errText.slice(0, 300));
             }
           } catch (swapErr) {
             console.error(`[RegenerateShot] Collection swap failed (non-blocking):`, swapErr);
