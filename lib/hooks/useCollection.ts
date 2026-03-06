@@ -213,35 +213,6 @@ export function useCollection() {
     }
   };
 
-  const regenerateLook = async (lookId: string, customPrompt: string): Promise<{ success: boolean; newImageUrl?: string; copy?: any; error?: string }> => {
-    console.log('[regenerateLook] Starting:', { lookId, customPrompt });
-    const res = await fetch('/api/collections/regenerate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lookId, customPrompt }),
-    });
-    console.log('[regenerateLook] Response status:', res.status);
-    if (!res.ok) {
-      // Handle non-JSON error responses (e.g. timeout, body too large)
-      let errorMsg: string;
-      try {
-        const data = await res.json();
-        errorMsg = data.error || `Server error: ${res.status}`;
-      } catch {
-        errorMsg = `Server error: ${res.status} ${res.statusText}`;
-      }
-      console.error('[regenerateLook] Error:', errorMsg);
-      return { success: false, error: errorMsg };
-    }
-    const data = await res.json();
-    console.log('[regenerateLook] Response data:', { success: data.success, hasUrl: !!data.newImageUrl, error: data.error });
-    if (data.success) {
-      // Refresh looks to pick up the new image and copy data
-      await fetchLooks();
-    }
-    return data;
-  };
-
   return {
     looks,
     items,
@@ -254,7 +225,6 @@ export function useCollection() {
     createBundle,
     disbandBundle,
     reorderBundleLooks,
-    regenerateLook,
     refetch: fetchLooks,
   };
 }

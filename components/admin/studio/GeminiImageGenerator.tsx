@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers, BookOpen, Video } from 'lucide-react';
+import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers, BookOpen, Video, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
 import { VideoSettingsModal } from './VideoSettingsModal';
@@ -246,6 +246,18 @@ export function GeminiImageGenerator({
     videoPrompts: ({ veo: string; kling: string } | null)[];
     telops: ({ captionJa: string; captionEn: string; durationSec: number } | null)[];
     status: ('pending' | 'generating' | 'copying' | 'done' | 'failed')[];
+  } | null>(null);
+
+  // Stored generation context for per-shot regeneration
+  const editorialContextRef = useRef<{
+    shotConfigs: { background: string; customPrompt: string; pose: string; aspectRatio: string }[];
+    firstGarmentBase64: string[];
+    secondGarmentBase64: string[];
+    thirdGarmentBase64: string[];
+    fourthGarmentBase64: string[];
+    fifthGarmentBase64: string[];
+    baseImageBase64?: string;
+    settingsSnapshot: any;
   } | null>(null);
 
   const [settings, setSettings] = useState({
@@ -527,6 +539,18 @@ export function GeminiImageGenerator({
       idx += fourthImages.length;
       const fifthGarmentBase64 = convertedImages.slice(idx, idx + fifthImages.length);
 
+      // Save generation context for per-shot regeneration
+      editorialContextRef.current = {
+        shotConfigs: [], // will be filled below
+        firstGarmentBase64,
+        secondGarmentBase64,
+        thirdGarmentBase64,
+        fourthGarmentBase64,
+        fifthGarmentBase64,
+        baseImageBase64,
+        settingsSnapshot: { ...settings },
+      };
+
       // Build per-shot configurations
       // Auto: per-shot pose + scene, global aspect ratio
       // Custom: pose = '' (prompt handles it), per-shot aspect ratio from AI story
@@ -547,6 +571,9 @@ export function GeminiImageGenerator({
           };
         }
       });
+
+      // Save shotConfigs to ref for regeneration
+      editorialContextRef.current!.shotConfigs = shotConfigs;
 
       // Phase 1: Generate all images in parallel
       const imagePromises = shotConfigs.map((config) =>
@@ -728,6 +755,134 @@ export function GeminiImageGenerator({
       setError(err instanceof Error ? err.message : 'Editorial generation failed');
     } finally {
       setIsGenerating(false);
+    }
+  };
+
+  // Regenerate a single shot using the same settings
+  const handleRegenerateShot = async (shotIndex: number) => {
+    const ctx = editorialContextRef.current;
+    if (!ctx || !editorialResults) return;
+
+    const config = ctx.shotConfigs[shotIndex];
+    if (!config) return;
+
+    // Mark this shot as generating
+    setEditorialResults(prev => {
+      if (!prev) return prev;
+      const newStatus = [...prev.status];
+      newStatus[shotIndex] = 'generating';
+      return { ...prev, status: newStatus };
+    });
+
+    try {
+      const res = await fetch('/api/ai/gemini-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          garmentImages: ctx.firstGarmentBase64.length > 0 ? ctx.firstGarmentBase64 : undefined,
+          garmentName: selectedGarmentName,
+          garmentSize: extractedSize,
+          garmentSizeSpecs: selectedGarmentSizeSpecs,
+          secondGarmentImages: ctx.secondGarmentBase64,
+          secondGarmentName,
+          thirdGarmentImages: ctx.thirdGarmentBase64,
+          thirdGarmentName,
+          fourthGarmentImages: ctx.fourthGarmentBase64,
+          fourthGarmentName,
+          fifthGarmentImages: ctx.fifthGarmentBase64,
+          fifthGarmentName,
+          productIds: selectedProductIds,
+          modelSettings: { ...ctx.settingsSnapshot, pose: config.pose },
+          modelImage: ctx.baseImageBase64,
+          background: config.background,
+          aspectRatio: config.aspectRatio,
+          resolution: ctx.settingsSnapshot.resolution,
+          customPrompt: config.customPrompt,
+          locale,
+          storeId,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success && data.images?.[0]) {
+        const newImage = data.images[0];
+        const newSavedUrl = data.savedImageUrl || null;
+
+        // Update image
+        setEditorialResults(prev => {
+          if (!prev) return prev;
+          const newImages = [...prev.images];
+          const newSavedUrls = [...prev.savedImageUrls];
+          const newStatus = [...prev.status];
+          newImages[shotIndex] = newImage;
+          newSavedUrls[shotIndex] = newSavedUrl;
+          newStatus[shotIndex] = 'copying';
+          return { ...prev, images: newImages, savedImageUrls: newSavedUrls, status: newStatus };
+        });
+
+        // Regenerate copy
+        try {
+          const copyPayload: any = {
+            scenePrompt: config.customPrompt || '',
+            locale,
+          };
+          if (newSavedUrl) {
+            copyPayload.lookImageUrl = newSavedUrl;
+          } else {
+            copyPayload.lookImageBase64 = newImage;
+          }
+          const copyRes = await fetch('/api/ai/collection-copy', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(copyPayload),
+          });
+          if (copyRes.ok) {
+            const copyData = await copyRes.json();
+            setEditorialResults(prev => {
+              if (!prev) return prev;
+              const newCopies = [...prev.copies];
+              const newVideoPrompts = [...prev.videoPrompts];
+              const newTelops = [...prev.telops];
+              const newStatus = [...prev.status];
+              newCopies[shotIndex] = { title: copyData.title || '', description: copyData.description || '' };
+              newVideoPrompts[shotIndex] = { veo: copyData.video_prompt_veo || '', kling: copyData.video_prompt_kling || '' };
+              newTelops[shotIndex] = { captionJa: copyData.telop_caption_ja || '', captionEn: copyData.telop_caption_en || '', durationSec: copyData.shot_duration_sec || 6 };
+              newStatus[shotIndex] = 'done';
+              return { ...prev, copies: newCopies, videoPrompts: newVideoPrompts, telops: newTelops, status: newStatus };
+            });
+          } else {
+            setEditorialResults(prev => {
+              if (!prev) return prev;
+              const newStatus = [...prev.status];
+              newStatus[shotIndex] = 'done';
+              return { ...prev, status: newStatus };
+            });
+          }
+        } catch {
+          setEditorialResults(prev => {
+            if (!prev) return prev;
+            const newStatus = [...prev.status];
+            newStatus[shotIndex] = 'done';
+            return { ...prev, status: newStatus };
+          });
+        }
+      } else {
+        setEditorialResults(prev => {
+          if (!prev) return prev;
+          const newStatus = [...prev.status];
+          newStatus[shotIndex] = 'failed';
+          return { ...prev, status: newStatus };
+        });
+      }
+    } catch (err) {
+      console.error(`[RegenerateShot ${shotIndex}] Error:`, err);
+      setEditorialResults(prev => {
+        if (!prev) return prev;
+        const newStatus = [...prev.status];
+        newStatus[shotIndex] = 'failed';
+        return { ...prev, status: newStatus };
+      });
     }
   };
 
@@ -1175,6 +1330,12 @@ export function GeminiImageGenerator({
                       <div className="flex flex-col items-center text-red-400">
                         <X size={20} />
                         <span className="text-[10px] mt-1">{locale === 'ja' ? '失敗' : 'Failed'}</span>
+                        <button
+                          onClick={() => handleRegenerateShot(i)}
+                          className="mt-1 px-2 py-0.5 text-[9px] bg-[var(--color-accent)] text-white rounded-full hover:opacity-90"
+                        >
+                          {locale === 'ja' ? '再生成' : 'Retry'}
+                        </button>
                       </div>
                     ) : displaySrc ? (
                       <>
@@ -1207,9 +1368,13 @@ export function GeminiImageGenerator({
                           </div>
                         )}
                         {editorialResults.status[i] === 'done' && (
-                          <div className="absolute top-2 right-2 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                            <Check size={10} className="text-white" />
-                          </div>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleRegenerateShot(i); }}
+                            className="absolute top-2 right-2 w-6 h-6 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow transition-colors"
+                            title={locale === 'ja' ? '再生成' : 'Regenerate'}
+                          >
+                            <RefreshCw size={11} className="text-[var(--color-text-body)]" />
+                          </button>
                         )}
                       </>
                     ) : null}
