@@ -215,6 +215,7 @@ export function GeminiImageGenerator({
   const [savedImages, setSavedImages] = useState<SavedImage[]>([]);
   const [showSavedImages, setShowSavedImages] = useState(false);
   const [modalImage, setModalImage] = useState<SavedImage | null>(null);
+  const [modalAdditionalPrompt, setModalAdditionalPrompt] = useState('');
   const [linkingProductIds, setLinkingProductIds] = useState<string[]>([]);
   const [isLinking, setIsLinking] = useState(false);
   const [linkSuccess, setLinkSuccess] = useState(false);
@@ -759,12 +760,17 @@ export function GeminiImageGenerator({
   };
 
   // Regenerate a single shot using the same settings
-  const handleRegenerateShot = async (shotIndex: number) => {
+  const handleRegenerateShot = async (shotIndex: number, additionalPrompt?: string) => {
     const ctx = editorialContextRef.current;
     if (!ctx || !editorialResults) return;
 
     const config = ctx.shotConfigs[shotIndex];
     if (!config) return;
+
+    // Merge additional prompt with original
+    const mergedPrompt = additionalPrompt
+      ? `${config.customPrompt}\n\nADDITIONAL USER INSTRUCTION (override previous styling if conflicting): ${additionalPrompt}`
+      : config.customPrompt;
 
     // Mark this shot as generating
     setEditorialResults(prev => {
@@ -797,7 +803,7 @@ export function GeminiImageGenerator({
           background: config.background,
           aspectRatio: config.aspectRatio,
           resolution: settings.resolution,
-          customPrompt: config.customPrompt,
+          customPrompt: mergedPrompt,
           locale,
           storeId,
         }),
@@ -824,7 +830,7 @@ export function GeminiImageGenerator({
         // Regenerate copy
         try {
           const copyPayload: any = {
-            scenePrompt: config.customPrompt || '',
+            scenePrompt: mergedPrompt || '',
             locale,
           };
           if (newSavedUrl) {
@@ -1354,6 +1360,7 @@ export function GeminiImageGenerator({
                             });
                             setLinkingProductIds(selectedProductIds);
                             setLinkSuccess(false);
+                            setModalAdditionalPrompt('');
                           }}
                         />
                         {editorialResults.copies[i] && (
@@ -1593,8 +1600,9 @@ export function GeminiImageGenerator({
                       onClick={() => {
                         const shotIndex = parseInt(modalImage.id.replace('editorial-', ''), 10);
                         if (!isNaN(shotIndex)) {
+                          const prompt = modalAdditionalPrompt.trim() || undefined;
                           setModalImage(null);
-                          handleRegenerateShot(shotIndex);
+                          handleRegenerateShot(shotIndex, prompt);
                         }
                       }}
                       className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors"
@@ -1624,6 +1632,22 @@ export function GeminiImageGenerator({
                     className="rounded-xl"
                   />
                 </div>
+
+                {/* Additional prompt for regeneration */}
+                {modalImage.id.startsWith('editorial-') && editorialContextRef.current && (
+                  <div className="mb-4">
+                    <label className="block text-[10px] font-medium text-[var(--color-text-label)] mb-1">
+                      {locale === 'ja' ? '追加指示（再生成時に反映）' : 'Additional instructions (applied on regenerate)'}
+                    </label>
+                    <textarea
+                      value={modalAdditionalPrompt}
+                      onChange={(e) => setModalAdditionalPrompt(e.target.value)}
+                      placeholder={locale === 'ja' ? '例: ジャケットのフロントを閉めて、髪をまとめて' : 'e.g. Close the jacket front, hair tied up'}
+                      className="w-full px-3 py-2 text-xs bg-[var(--color-bg-input)] border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
+                      rows={2}
+                    />
+                  </div>
+                )}
 
                 {/* Used Products */}
                 {(() => {
