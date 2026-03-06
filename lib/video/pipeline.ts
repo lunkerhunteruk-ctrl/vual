@@ -122,59 +122,47 @@ export async function runPipeline(
   emitProgress('clip-generation', `Generating clips (0/${lookIds.length})`);
 
   const clipUrls: string[] = [];
-  const MAX_CONCURRENT = 3;
 
-  // Process clips in batches of MAX_CONCURRENT
-  for (let batchStart = 0; batchStart < lookIds.length; batchStart += MAX_CONCURRENT) {
-    const batchEnd = Math.min(batchStart + MAX_CONCURRENT, lookIds.length);
-    const batchPromises = [];
+  // Process clips sequentially to avoid Veo rate limits
+  for (let i = 0; i < lookIds.length; i++) {
+    const lookId = lookIds[i];
+    const promptEntry = videoPrompts.find((vp) => vp.lookId === lookId);
+    const prompt = promptEntry?.prompt || 'Camera slowly follows the model as they walk with confidence.';
+    const duration = durations[i] || 6;
 
-    for (let i = batchStart; i < batchEnd; i++) {
-      const lookId = lookIds[i];
-      const promptEntry = videoPrompts.find((vp) => vp.lookId === lookId);
-      const prompt = promptEntry?.prompt || 'Camera slowly follows the model as they walk with confidence.';
-      const duration = durations[i] || 6;
+    clipProgress[i].status = 'generating';
+    emitProgress('clip-generation', `クリップ ${i + 1}/${lookIds.length} 生成中`);
 
-      clipProgress[i].status = 'generating';
-      emitProgress('clip-generation', `Generating clips (${i + 1}/${lookIds.length})`);
+    try {
+      const res = await fetch('/api/video/generate-clip', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lookId,
+          jobId,
+          prompt,
+          durationSeconds: duration,
+          aspectRatio: '16:9',
+        }),
+      });
 
-      batchPromises.push(
-        (async () => {
-          try {
-            const res = await fetch('/api/video/generate-clip', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                lookId,
-                jobId,
-                prompt,
-                durationSeconds: duration,
-                aspectRatio: '16:9',
-              }),
-            });
+      const data = await res.json();
 
-            const data = await res.json();
-
-            if (data.success && data.clipUrl) {
-              clipProgress[i].status = 'done';
-              clipProgress[i].clipUrl = data.clipUrl;
-              clipUrls[i] = data.clipUrl;
-            } else {
-              clipProgress[i].status = 'failed';
-              console.error(`[Pipeline] Clip ${i} failed:`, data.error);
-            }
-          } catch (err) {
-            clipProgress[i].status = 'failed';
-            console.error(`[Pipeline] Clip ${i} error:`, err);
-          }
-
-          const doneCount = clipProgress.filter((c) => c.status === 'done' || c.status === 'failed').length;
-          emitProgress('clip-generation', `Generating clips (${doneCount}/${lookIds.length})`);
-        })()
-      );
+      if (data.success && data.clipUrl) {
+        clipProgress[i].status = 'done';
+        clipProgress[i].clipUrl = data.clipUrl;
+        clipUrls[i] = data.clipUrl;
+      } else {
+        clipProgress[i].status = 'failed';
+        console.error(`[Pipeline] Clip ${i} failed:`, data.error);
+      }
+    } catch (err) {
+      clipProgress[i].status = 'failed';
+      console.error(`[Pipeline] Clip ${i} error:`, err);
     }
 
-    await Promise.all(batchPromises);
+    const doneCount = clipProgress.filter((c) => c.status === 'done' || c.status === 'failed').length;
+    emitProgress('clip-generation', `クリップ ${doneCount}/${lookIds.length} 完了`);
   }
 
   const successCount = clipProgress.filter((c) => c.status === 'done').length;

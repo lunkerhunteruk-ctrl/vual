@@ -194,9 +194,13 @@ export async function pollVeoOperation(operationName: string): Promise<VeoPollRe
   // Extract video from response
   const videos = data.response?.videos;
   if (!videos || videos.length === 0) {
+    // Log full response for debugging
+    const raiResult = data.response?.raiMediaFilteredReasons;
+    const filterReason = raiResult ? JSON.stringify(raiResult) : 'unknown';
+    console.error('[Veo] No videos in response. Full response keys:', Object.keys(data.response || {}), 'RAI filter:', filterReason);
     return {
       done: true,
-      error: { code: 500, message: 'No videos in response' },
+      error: { code: 500, message: `No videos in response (filter: ${filterReason})` },
     };
   }
 

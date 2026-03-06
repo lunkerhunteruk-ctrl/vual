@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { submitVeoJob, pollVeoOperation } from '@/lib/video/veo-client';
 
-const MAX_POLL_TIME_MS = 300000; // 5 minutes (Vercel Pro maxDuration = 300s)
+export const maxDuration = 300;
+
+const MAX_POLL_TIME_MS = 240000; // 4 minutes per attempt (leave room for retry)
 const POLL_INTERVAL_MS = 10000;  // 10 seconds
 
 /**
@@ -60,48 +62,70 @@ export async function POST(request: NextRequest) {
     // Determine MIME type from URL or default to jpeg
     const mimeType = look.image_url.toLowerCase().includes('.png') ? 'image/png' : 'image/jpeg';
 
-    // 3. Submit Veo job
-    const { operationName } = await submitVeoJob({
-      imageBase64,
-      imageMimeType: mimeType,
-      prompt,
-      durationSeconds: (durationSeconds as 4 | 6 | 8) || 8,
-      aspectRatio: aspectRatio || '16:9',
-      resolution: '1080p',
-      negativePrompt: 'blur, distortion, watermark, text overlay, low quality',
-    });
-
-    // 4. Poll for completion
-    const startTime = Date.now();
+    // 3. Submit Veo job with retry
+    const MAX_ATTEMPTS = 2;
     let videoData: { bytesBase64Encoded?: string; gcsUri?: string; mimeType: string } | undefined;
+    let lastError: string | null = null;
 
-    while (Date.now() - startTime < MAX_POLL_TIME_MS) {
-      await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+      console.log(`[Generate Clip] Attempt ${attempt}/${MAX_ATTEMPTS} for look ${lookId}`);
 
-      const result = await pollVeoOperation(operationName);
+      const { operationName } = await submitVeoJob({
+        imageBase64,
+        imageMimeType: mimeType,
+        prompt,
+        durationSeconds: (durationSeconds as 4 | 6 | 8) || 8,
+        aspectRatio: aspectRatio || '16:9',
+        resolution: '1080p',
+        negativePrompt: 'blur, distortion, watermark, text overlay, low quality',
+      });
 
-      if (result.error) {
-        // Update job status if jobId provided
-        if (jobId) {
-          await supabase
-            .from('video_jobs')
-            .update({ error_message: result.error.message })
-            .eq('id', jobId);
+      // Poll for completion
+      const startTime = Date.now();
+      let attemptDone = false;
+
+      while (Date.now() - startTime < MAX_POLL_TIME_MS) {
+        await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+
+        const result = await pollVeoOperation(operationName);
+
+        if (result.error) {
+          lastError = result.error.message;
+          console.error(`[Generate Clip] Attempt ${attempt} error:`, lastError);
+          attemptDone = true;
+          break;
         }
-        return NextResponse.json(
-          { error: `Veo generation failed: ${result.error.message}` },
-          { status: 500 }
-        );
+
+        if (result.done && result.video) {
+          videoData = result.video;
+          attemptDone = true;
+          break;
+        }
       }
 
-      if (result.done && result.video) {
-        videoData = result.video;
-        break;
+      if (videoData) break; // Success
+
+      if (!attemptDone) {
+        lastError = 'Veo generation timed out';
+      }
+
+      if (attempt < MAX_ATTEMPTS) {
+        console.log(`[Generate Clip] Retrying in 2s...`);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       }
     }
 
     if (!videoData) {
-      return NextResponse.json({ error: 'Veo generation timed out' }, { status: 504 });
+      if (jobId) {
+        await supabase
+          .from('video_jobs')
+          .update({ error_message: lastError })
+          .eq('id', jobId);
+      }
+      return NextResponse.json(
+        { error: `Veo generation failed: ${lastError}` },
+        { status: 500 }
+      );
     }
 
     // 5. Save video to Supabase Storage
@@ -145,7 +169,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       clipUrl,
-      operationName,
     });
   } catch (error: any) {
     console.error('[Generate Clip] Error:', error);
