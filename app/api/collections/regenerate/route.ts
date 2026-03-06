@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
+export const maxDuration = 120;
+
 /**
  * POST /api/collections/regenerate
  *
@@ -31,6 +33,8 @@ export async function POST(request: NextRequest) {
     const storeId = await resolveStoreIdFromRequest(request);
     const body = await request.json();
     const { lookId, customPrompt, modelSettings, background, aspectRatio, resolution } = body;
+
+    console.log('[Regenerate] Starting:', { lookId, customPrompt: customPrompt?.slice(0, 50), storeId });
 
     if (!lookId) {
       return NextResponse.json({ error: 'lookId is required' }, { status: 400 });
@@ -119,13 +123,18 @@ export async function POST(request: NextRequest) {
     if (garmentNames[3]) geminiPayload.fourthGarmentName = garmentNames[3];
     if (garmentNames[4]) geminiPayload.fifthGarmentName = garmentNames[4];
 
+    console.log('[Regenerate] Calling Gemini Image API at:', `${baseUrl}/api/ai/gemini-image`);
+    console.log('[Regenerate] Garment images count:', garmentImages.length, 'Model image:', !!modelImageBase64);
+
     const geminiRes = await fetch(`${baseUrl}/api/ai/gemini-image`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(geminiPayload),
     });
 
+    console.log('[Regenerate] Gemini API response status:', geminiRes.status);
     const geminiData = await geminiRes.json();
+    console.log('[Regenerate] Gemini API response:', { success: geminiData.success, hasUrl: !!geminiData.savedImageUrl, error: geminiData.error });
 
     if (!geminiData.success || !geminiData.savedImageUrl) {
       return NextResponse.json(

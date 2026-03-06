@@ -511,9 +511,12 @@ function LookDetailModal({
                             }
                             setShowRegenPrompt(false);
                             setRegenPrompt('');
+                          } else {
+                            alert(result.error || 'Regeneration failed');
                           }
                         } catch (err) {
                           console.error('Regeneration failed:', err);
+                          alert('Regeneration request failed');
                         } finally {
                           setIsRegenerating(false);
                         }
@@ -923,9 +926,12 @@ function SortableBundleLookItem({
               if (result.success && result.newImageUrl) {
                 setLocalImageUrl(result.newImageUrl);
                 if (result.copy?.title) setLocalTitle(result.copy.title);
+              } else {
+                alert(result.error || 'Regeneration failed');
               }
             } catch (err) {
               console.error('Regenerate failed:', err);
+              alert('Regeneration request failed');
             } finally {
               setIsRegenerating(false);
             }

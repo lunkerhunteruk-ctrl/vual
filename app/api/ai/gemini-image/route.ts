@@ -3,6 +3,8 @@ import { createServerClient } from '@/lib/supabase';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
 import { addCreditWatermark } from '@/lib/utils/image-watermark';
 
+export const maxDuration = 120;
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
