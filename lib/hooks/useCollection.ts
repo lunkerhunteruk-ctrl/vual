@@ -221,6 +221,18 @@ export function useCollection() {
       body: JSON.stringify({ lookId, customPrompt }),
     });
     console.log('[regenerateLook] Response status:', res.status);
+    if (!res.ok) {
+      // Handle non-JSON error responses (e.g. timeout, body too large)
+      let errorMsg: string;
+      try {
+        const data = await res.json();
+        errorMsg = data.error || `Server error: ${res.status}`;
+      } catch {
+        errorMsg = `Server error: ${res.status} ${res.statusText}`;
+      }
+      console.error('[regenerateLook] Error:', errorMsg);
+      return { success: false, error: errorMsg };
+    }
     const data = await res.json();
     console.log('[regenerateLook] Response data:', { success: data.success, hasUrl: !!data.newImageUrl, error: data.error });
     if (data.success) {

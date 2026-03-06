@@ -4,24 +4,35 @@ import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 export const maxDuration = 120;
 
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+const backgroundDescriptions: Record<string, string> = {
+  studioWhite: 'clean white studio background with soft professional lighting',
+  studioGray: 'neutral gray studio background with professional fashion photography lighting',
+  outdoorUrban: 'modern urban street background with city architecture, natural daylight',
+  outdoorNature: 'natural outdoor setting with soft natural lighting, greenery',
+  cafeIndoor: 'stylish cafe interior with warm ambient lighting',
+  beachResort: 'tropical beach or resort setting with bright natural sunlight, model standing on dry sand near the shoreline',
+};
+
+const ethnicityDescriptions: Record<string, string> = {
+  japanese: 'Japanese', korean: 'Korean', chinese: 'Chinese',
+  'eastern-european': 'Eastern European', 'western-european': 'Western European',
+  african: 'African', latin: 'Latin American', 'southeast-asian': 'Southeast Asian',
+};
+
+const poseDescriptions: Record<string, string> = {
+  standing: 'standing with confident posture', walking: 'walking naturally mid-stride',
+  sitting: 'sitting elegantly', dynamic: 'in a dynamic fashion pose',
+  leaning: 'leaning casually against a wall',
+};
+
 /**
  * POST /api/collections/regenerate
  *
- * Regenerate a single look image within a bundle.
- * 1. Calls Gemini Image API to generate a new image
- * 2. Uploads to storage and updates collection_looks.image_url
- * 3. Calls collection-copy API to regenerate copy/video prompts
- * 4. Updates collection_looks with new copy data
- * 5. Consumes 1 studio credit
- *
- * Body: {
- *   lookId: string,
- *   customPrompt?: string,       // Additional prompt instructions
- *   modelSettings: object,        // gender, height, ethnicity, pose, tuckStyle
- *   background: string,
- *   aspectRatio: string,
- *   resolution?: string,
- * }
+ * Regenerate a single look image. Calls Gemini API directly (no internal fetch).
  */
 export async function POST(request: NextRequest) {
   try {
@@ -30,9 +41,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
     }
 
+    if (!GEMINI_API_KEY) {
+      return NextResponse.json({ error: 'GEMINI_API_KEY not configured' }, { status: 500 });
+    }
+
     const storeId = await resolveStoreIdFromRequest(request);
     const body = await request.json();
-    const { lookId, customPrompt, modelSettings, background, aspectRatio, resolution } = body;
+    const { lookId, customPrompt, modelSettings: userModelSettings, background: userBackground, aspectRatio: userAspectRatio } = body;
 
     console.log('[Regenerate] Starting:', { lookId, customPrompt: customPrompt?.slice(0, 50), storeId });
 
@@ -52,9 +67,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Look not found' }, { status: 404 });
     }
 
-    // 2. Get product images for garment reference
-    const productIds = look.collection_look_products?.map((lp: any) => lp.product_id) || [];
-    const garmentImages: string[] = [];
+    // 2. Fetch product images as base64 inline_data parts for Gemini
+    const imageParts: any[] = [];
     const garmentNames: string[] = [];
 
     for (const lp of (look.collection_look_products || [])) {
@@ -64,12 +78,13 @@ export async function POST(request: NextRequest) {
       const primaryImg = product.product_images?.find((img: any) => img.is_primary);
       const imgUrl = primaryImg?.url || product.product_images?.[0]?.url;
       if (imgUrl) {
-        // Convert to base64
         try {
           const imgRes = await fetch(imgUrl);
           if (imgRes.ok) {
+            const contentType = imgRes.headers.get('content-type') || 'image/png';
+            const mimeType = contentType.split(';')[0].trim();
             const buf = Buffer.from(await imgRes.arrayBuffer());
-            garmentImages.push(buf.toString('base64'));
+            imageParts.push({ inline_data: { mime_type: mimeType, data: buf.toString('base64') } });
           }
         } catch (e) {
           console.error('[Regenerate] Failed to fetch product image:', e);
@@ -77,87 +92,160 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 3. Also get the original look image as model reference
-    let modelImageBase64: string | undefined;
+    // 3. Fetch original look image as model reference
     if (look.image_url) {
       try {
         const imgRes = await fetch(look.image_url);
         if (imgRes.ok) {
+          const contentType = imgRes.headers.get('content-type') || 'image/png';
+          const mimeType = contentType.split(';')[0].trim();
           const buf = Buffer.from(await imgRes.arrayBuffer());
-          modelImageBase64 = buf.toString('base64');
+          imageParts.push({ inline_data: { mime_type: mimeType, data: buf.toString('base64') } });
         }
       } catch (e) {
-        console.error('[Regenerate] Failed to fetch look image for reference:', e);
+        console.error('[Regenerate] Failed to fetch look image:', e);
       }
     }
 
-    // 4. Call Gemini Image API
-    const origin = request.headers.get('origin') || request.headers.get('x-forwarded-host') || 'http://localhost:3000';
-    const baseUrl = origin.startsWith('http') ? origin : `https://${origin}`;
+    console.log('[Regenerate] Image parts count:', imageParts.length, 'Garment names:', garmentNames);
 
-    const geminiPayload: any = {
-      garmentImages: garmentImages.length > 0 ? [garmentImages[0]] : undefined,
-      garmentName: garmentNames[0] || undefined,
-      modelSettings: modelSettings || {
-        gender: 'female',
-        height: 165,
-        ethnicity: 'japanese',
-        pose: 'standing',
-        tuckStyle: 'auto',
-      },
-      modelImage: modelImageBase64,
-      background: background || 'outdoorUrban',
-      aspectRatio: aspectRatio || '3:4',
-      resolution: resolution || '1K',
-      customPrompt: customPrompt || '',
-      storeId,
-    };
+    // 4. Build prompt
+    const ms = userModelSettings || { gender: 'female', height: 165, ethnicity: 'japanese', pose: 'standing' };
+    const bg = userBackground || 'outdoorUrban';
+    const ar = userAspectRatio || '3:4';
+    const hasModelRef = !!look.image_url;
 
-    // Add additional garment images
-    if (garmentImages[1]) geminiPayload.secondGarmentImages = [garmentImages[1]];
-    if (garmentImages[2]) geminiPayload.thirdGarmentImages = [garmentImages[2]];
-    if (garmentImages[3]) geminiPayload.fourthGarmentImages = [garmentImages[3]];
-    if (garmentImages[4]) geminiPayload.fifthGarmentImages = [garmentImages[4]];
-    if (garmentNames[1]) geminiPayload.secondGarmentName = garmentNames[1];
-    if (garmentNames[2]) geminiPayload.thirdGarmentName = garmentNames[2];
-    if (garmentNames[3]) geminiPayload.fourthGarmentName = garmentNames[3];
-    if (garmentNames[4]) geminiPayload.fifthGarmentName = garmentNames[4];
-
-    console.log('[Regenerate] Calling Gemini Image API at:', `${baseUrl}/api/ai/gemini-image`);
-    console.log('[Regenerate] Garment images count:', garmentImages.length, 'Model image:', !!modelImageBase64);
-
-    const geminiRes = await fetch(`${baseUrl}/api/ai/gemini-image`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(geminiPayload),
-    });
-
-    console.log('[Regenerate] Gemini API response status:', geminiRes.status);
-    const geminiData = await geminiRes.json();
-    console.log('[Regenerate] Gemini API response:', { success: geminiData.success, hasUrl: !!geminiData.savedImageUrl, error: geminiData.error });
-
-    if (!geminiData.success || !geminiData.savedImageUrl) {
-      return NextResponse.json(
-        { error: geminiData.error || 'Image generation failed' },
-        { status: 500 }
-      );
+    const garmentCount = imageParts.length - (hasModelRef ? 1 : 0);
+    let garmentRef = 'the garment from the provided reference image';
+    if (garmentCount > 1) {
+      garmentRef = `the ${garmentCount} garments from the provided reference images`;
     }
 
-    const newImageUrl = geminiData.savedImageUrl;
+    const modelDesc = hasModelRef
+      ? 'Generate an image using the EXACT model appearance from the provided model reference image (face, body type, skin tone must match exactly)'
+      : `A ${ethnicityDescriptions[ms.ethnicity] || ms.ethnicity} ${ms.gender === 'female' ? 'woman' : 'man'}`;
 
-    // 5. Update collection_looks with new image
+    const bgDesc = (customPrompt && customPrompt.length > 100) ? '' : ` ${backgroundDescriptions[bg] || bg}.`;
+
+    const prompt = [
+      `CRITICAL: Reproduce the EXACT garments from the reference images with 100% accuracy.`,
+      `DO NOT create similar-looking alternatives. The garments must be PIXEL-PERFECT matches.`,
+      `Preserve exact: color, pattern, texture, neckline, sleeve details, buttons, zippers, pockets, fabric drape, silhouette.`,
+      ``,
+      `Professional high-end fashion photography.`,
+      `${modelDesc}, ${ms.height}cm tall,`,
+      ms.pose ? `${poseDescriptions[ms.pose] || ms.pose},` : '',
+      `wearing ${garmentRef}.`,
+      customPrompt ? `MANDATORY STYLING: ${customPrompt}.` : '',
+      bgDesc,
+      `Sharp focus, editorial fashion quality, photorealistic. Full body shot.`,
+      `No text, labels, watermarks. ${ar} aspect ratio.`,
+      `IMPORTANT: Generate a DIFFERENT pose and angle from the model reference — same person, new composition.`,
+    ].filter(Boolean).join(' ');
+
+    // 5. Call Gemini API directly
+    const MAX_RETRIES = 2;
+    let generatedImageBase64: string | null = null;
+    let lastError: string | null = null;
+
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+      try {
+        console.log(`[Regenerate] Gemini attempt ${attempt + 1}/${MAX_RETRIES}`);
+
+        const geminiRes = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }, ...imageParts] }],
+            generationConfig: {
+              responseModalities: ['TEXT', 'IMAGE'],
+              imageConfig: { aspectRatio: ar, imageSize: '1K' },
+            },
+            safetySettings: [
+              { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+              { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+              { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+              { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+            ],
+          }),
+        });
+
+        if (!geminiRes.ok) {
+          const errText = await geminiRes.text();
+          console.error(`[Regenerate] Gemini API error ${geminiRes.status}:`, errText.slice(0, 500));
+          lastError = `Gemini API error: ${geminiRes.status}`;
+          continue;
+        }
+
+        const data = await geminiRes.json();
+        const candidates = data.candidates || [];
+        const finishReason = candidates[0]?.finishReason;
+
+        if (finishReason === 'IMAGE_PROHIBITED_CONTENT') {
+          console.log(`[Regenerate] Content filter on attempt ${attempt + 1}`);
+          lastError = 'Content filter blocked generation';
+          await new Promise(r => setTimeout(r, 1000));
+          continue;
+        }
+
+        // Extract image
+        for (const candidate of candidates) {
+          for (const part of (candidate.content?.parts || [])) {
+            const inlineData = part.inline_data || part.inlineData;
+            if (inlineData?.data) {
+              generatedImageBase64 = inlineData.data;
+              console.log(`[Regenerate] Got image on attempt ${attempt + 1}, size: ${generatedImageBase64!.length}`);
+              break;
+            }
+          }
+          if (generatedImageBase64) break;
+        }
+
+        if (generatedImageBase64) break;
+        lastError = `No image in response (finishReason: ${finishReason})`;
+      } catch (e: any) {
+        console.error(`[Regenerate] Attempt ${attempt + 1} error:`, e.message);
+        lastError = e.message;
+      }
+    }
+
+    if (!generatedImageBase64) {
+      return NextResponse.json({ error: lastError || 'Image generation failed' }, { status: 500 });
+    }
+
+    // 6. Upload to Supabase Storage
+    const imageBuffer = Buffer.from(generatedImageBase64, 'base64');
+    const filename = `regen-${Date.now()}.png`;
+
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('gemini-results')
+      .upload(filename, imageBuffer, { contentType: 'image/png', upsert: false });
+
+    if (uploadError) {
+      console.error('[Regenerate] Upload error:', uploadError);
+      return NextResponse.json({ error: 'Failed to upload generated image' }, { status: 500 });
+    }
+
+    const { data: urlData } = supabase.storage.from('gemini-results').getPublicUrl(filename);
+    const newImageUrl = urlData.publicUrl;
+    console.log('[Regenerate] New image URL:', newImageUrl);
+
+    // 7. Update collection_looks with new image
     const { error: updateError } = await supabase
       .from('collection_looks')
       .update({ image_url: newImageUrl })
       .eq('id', lookId);
 
     if (updateError) {
-      console.error('[Regenerate] Image URL update failed:', updateError);
+      console.error('[Regenerate] DB update error:', updateError);
     }
 
-    // 6. Regenerate copy/video prompts
+    // 8. Regenerate copy/video prompts via collection-copy API
     let copyData: any = null;
     try {
+      const origin = request.headers.get('origin') || request.headers.get('x-forwarded-host') || 'http://localhost:3000';
+      const baseUrl = origin.startsWith('http') ? origin : `https://${origin}`;
+
       const copyRes = await fetch(`${baseUrl}/api/ai/collection-copy`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -170,8 +258,6 @@ export async function POST(request: NextRequest) {
 
       if (copyRes.ok) {
         copyData = await copyRes.json();
-
-        // Update with new copy data
         const copyUpdates: Record<string, any> = {};
         if (copyData.title) copyUpdates.title = copyData.title;
         if (copyData.description) copyUpdates.description = copyData.description;
@@ -182,14 +268,33 @@ export async function POST(request: NextRequest) {
         if (copyData.shot_duration_sec) copyUpdates.shot_duration_sec = copyData.shot_duration_sec;
 
         if (Object.keys(copyUpdates).length > 0) {
-          await supabase
-            .from('collection_looks')
-            .update(copyUpdates)
-            .eq('id', lookId);
+          await supabase.from('collection_looks').update(copyUpdates).eq('id', lookId);
         }
       }
     } catch (copyErr) {
       console.error('[Regenerate] Copy generation failed (non-blocking):', copyErr);
+    }
+
+    // 9. Deduct 1 studio credit
+    try {
+      const { data: sub } = await supabase
+        .from('store_subscriptions')
+        .select('studio_subscription_credits, studio_topup_credits, studio_credits_total_used')
+        .eq('store_id', storeId)
+        .single();
+
+      if (sub) {
+        const subDeduct = Math.min(1, sub.studio_subscription_credits);
+        const topupDeduct = 1 - subDeduct;
+        await supabase.from('store_subscriptions').update({
+          studio_subscription_credits: sub.studio_subscription_credits - subDeduct,
+          studio_topup_credits: sub.studio_topup_credits - topupDeduct,
+          studio_credits_total_used: (sub.studio_credits_total_used || 0) + 1,
+          updated_at: new Date().toISOString(),
+        }).eq('store_id', storeId);
+      }
+    } catch (creditErr) {
+      console.error('[Regenerate] Credit deduction failed:', creditErr);
     }
 
     return NextResponse.json({
