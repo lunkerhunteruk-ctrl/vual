@@ -30,6 +30,48 @@ const poseDescriptions: Record<string, string> = {
 };
 
 /**
+ * Detect aspect ratio from a PNG/JPEG buffer by reading image header.
+ * Returns closest Gemini-supported ratio: '3:4', '4:3', '16:9', '9:16', '1:1'
+ */
+function detectAspectRatio(buf: Buffer): string {
+  let width = 0, height = 0;
+
+  // PNG: width at bytes 16-19, height at bytes 20-23
+  if (buf[0] === 0x89 && buf[1] === 0x50) {
+    width = buf.readUInt32BE(16);
+    height = buf.readUInt32BE(20);
+  }
+  // JPEG: scan for SOF markers
+  else if (buf[0] === 0xFF && buf[1] === 0xD8) {
+    let offset = 2;
+    while (offset < buf.length - 8) {
+      if (buf[offset] !== 0xFF) break;
+      const marker = buf[offset + 1];
+      // SOF0, SOF2
+      if (marker === 0xC0 || marker === 0xC2) {
+        height = buf.readUInt16BE(offset + 5);
+        width = buf.readUInt16BE(offset + 7);
+        break;
+      }
+      const segLen = buf.readUInt16BE(offset + 2);
+      offset += 2 + segLen;
+    }
+  }
+
+  if (width === 0 || height === 0) return '3:4'; // fallback
+
+  const ratio = width / height;
+  console.log(`[Regenerate] Detected image size: ${width}x${height}, ratio: ${ratio.toFixed(2)}`);
+
+  // Map to closest Gemini-supported ratio
+  if (ratio > 1.6) return '16:9';
+  if (ratio > 1.15) return '4:3';
+  if (ratio > 0.85) return '1:1';
+  if (ratio > 0.6) return '3:4';
+  return '9:16';
+}
+
+/**
  * POST /api/collections/regenerate
  *
  * Regenerate a single look image. Calls Gemini API directly (no internal fetch).
@@ -92,7 +134,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 3. Fetch original look image as model reference
+    // 3. Fetch original look image as model/scene reference + detect aspect ratio
+    let detectedAspectRatio = '3:4';
     if (look.image_url) {
       try {
         const imgRes = await fetch(look.image_url);
@@ -100,6 +143,7 @@ export async function POST(request: NextRequest) {
           const contentType = imgRes.headers.get('content-type') || 'image/png';
           const mimeType = contentType.split(';')[0].trim();
           const buf = Buffer.from(await imgRes.arrayBuffer());
+          detectedAspectRatio = detectAspectRatio(buf);
           imageParts.push({ inline_data: { mime_type: mimeType, data: buf.toString('base64') } });
         }
       } catch (e) {
@@ -107,41 +151,39 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Use user-specified AR if provided, otherwise use detected AR from original image
+    const ar = userAspectRatio || detectedAspectRatio;
+
     console.log('[Regenerate] Image parts count:', imageParts.length, 'Garment names:', garmentNames);
 
-    // 4. Build prompt
+    // 4. Build prompt — use the LAST image part as model/scene reference
     const ms = userModelSettings || { gender: 'female', height: 165, ethnicity: 'japanese', pose: 'standing' };
-    const bg = userBackground || 'outdoorUrban';
-    const ar = userAspectRatio || '3:4';
     const hasModelRef = !!look.image_url;
-
     const garmentCount = imageParts.length - (hasModelRef ? 1 : 0);
-    let garmentRef = 'the garment from the provided reference image';
+
+    let garmentRef = 'the garment from the provided product reference image';
     if (garmentCount > 1) {
-      garmentRef = `the ${garmentCount} garments from the provided reference images`;
+      garmentRef = `the ${garmentCount} garments from the provided product reference images`;
     }
 
-    const modelDesc = hasModelRef
-      ? 'Generate an image using the EXACT model appearance from the provided model reference image (face, body type, skin tone must match exactly)'
-      : `A ${ethnicityDescriptions[ms.ethnicity] || ms.ethnicity} ${ms.gender === 'female' ? 'woman' : 'man'}`;
-
-    const bgDesc = (customPrompt && customPrompt.length > 100) ? '' : ` ${backgroundDescriptions[bg] || bg}.`;
-
+    // The prompt tells Gemini to match the scene/location from the last reference image (the original look)
     const prompt = [
-      `CRITICAL: Reproduce the EXACT garments from the reference images with 100% accuracy.`,
-      `DO NOT create similar-looking alternatives. The garments must be PIXEL-PERFECT matches.`,
-      `Preserve exact: color, pattern, texture, neckline, sleeve details, buttons, zippers, pockets, fabric drape, silhouette.`,
+      `REGENERATION TASK: You are given product reference images and a final "scene reference" image.`,
+      `The scene reference image (the LAST image provided) shows a model wearing these garments in a specific location/setting.`,
       ``,
-      `Professional high-end fashion photography.`,
-      `${modelDesc}, ${ms.height}cm tall,`,
-      ms.pose ? `${poseDescriptions[ms.pose] || ms.pose},` : '',
-      `wearing ${garmentRef}.`,
-      customPrompt ? `MANDATORY STYLING: ${customPrompt}.` : '',
-      bgDesc,
-      `Sharp focus, editorial fashion quality, photorealistic. Full body shot.`,
-      `No text, labels, watermarks. ${ar} aspect ratio.`,
-      `IMPORTANT: Generate a DIFFERENT pose and angle from the model reference — same person, new composition.`,
-    ].filter(Boolean).join(' ');
+      `YOUR TASK:`,
+      `1. GARMENTS: Reproduce the EXACT garments from the product reference images with 100% accuracy. Preserve exact color, pattern, texture, neckline, sleeve details, buttons, zippers, pockets, fabric drape, silhouette.`,
+      `2. MODEL: Use the SAME model from the scene reference — match face, body type, skin tone, hair exactly.`,
+      `3. LOCATION & BACKGROUND: Use the EXACT SAME location, setting, and background as the scene reference image. Same type of environment, same lighting mood, same atmosphere. Do NOT change the location.`,
+      `4. POSE: Generate a SLIGHTLY DIFFERENT pose or angle — same person, same place, but a fresh composition. Small variation only.`,
+      ``,
+      `The model is ${ms.height}cm tall, wearing ${garmentRef}.`,
+      customPrompt ? `Additional styling instruction: ${customPrompt}.` : '',
+      ``,
+      `Professional high-end editorial fashion photography. Sharp focus, photorealistic. Full body shot.`,
+      `No text, labels, or watermarks.`,
+      `CRITICAL: Output the image in the EXACT SAME aspect ratio as the scene reference image. If the reference is portrait (3:4), output portrait. If it's landscape (16:9 or 4:3), output landscape. Match exactly.`,
+    ].filter(Boolean).join('\n');
 
     // 5. Call Gemini API directly
     const MAX_RETRIES = 2;
