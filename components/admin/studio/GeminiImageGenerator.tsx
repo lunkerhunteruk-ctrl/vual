@@ -1285,7 +1285,7 @@ export function GeminiImageGenerator({
 
       {/* Editorial Story Settings (only when storyCount > 1) */}
       {storyCount > 1 && (
-        <div className="pb-3 border-b border-[var(--color-line)] pt-3 max-h-48 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+        <div className="pb-3 border-b border-[var(--color-line)] pt-3">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen size={14} className="text-[var(--color-accent)]" />
             <span className="text-xs font-bold text-[var(--color-title-active)]">
@@ -1321,39 +1321,11 @@ export function GeminiImageGenerator({
               </button>
             </div>
 
-            {/* Per-shot editable textareas with AR selectors (shown after story generation) */}
+            {/* Story generated indicator */}
             {storyGenerated && (
-              <div className="space-y-2">
-                {Array.from({ length: storyCount }, (_, i) => (
-                  <div key={i} className="flex gap-2">
-                    <span className="text-[10px] font-bold text-[var(--color-text-label)] w-10 text-center flex-shrink-0 pt-2">
-                      {i + 1}
-                    </span>
-                    <textarea
-                      value={customScenePrompts[i] || ''}
-                      onChange={(e) => {
-                        const updated = [...customScenePrompts];
-                        updated[i] = e.target.value;
-                        setCustomScenePrompts(updated);
-                      }}
-                      rows={3}
-                      className="flex-1 text-xs px-3 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none leading-relaxed"
-                    />
-                    <select
-                      value={perShotAspectRatios[i] || '3:4'}
-                      onChange={(e) => {
-                        const updated = [...perShotAspectRatios];
-                        updated[i] = e.target.value;
-                        setPerShotAspectRatios(updated);
-                      }}
-                      className="text-xs px-1.5 py-1 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)] w-14 flex-shrink-0 self-start"
-                    >
-                      {aspectRatioOptions.map(a => (
-                        <option key={a.id} value={a.id}>{a.id}</option>
-                      ))}
-                    </select>
-                  </div>
-                ))}
+              <div className="flex items-center gap-1.5 text-[10px] text-green-600">
+                <CheckCircle2 size={12} />
+                {locale === 'ja' ? `${storyCount}ショットのストーリー生成済み` : `${storyCount}-shot story generated`}
               </div>
             )}
           </div>
