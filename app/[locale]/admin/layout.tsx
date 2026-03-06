@@ -8,6 +8,7 @@ import { useAuthStore } from '@/lib/store';
 import { useStoreContext } from '@/lib/store/store-context';
 import { supabase } from '@/lib/supabase';
 import { Loader2, AlertTriangle } from 'lucide-react';
+import { VideoProgressTracker } from '@/components/admin/studio/VideoProgressTracker';
 
 const pageTitles: Record<string, string> = {
   '/admin': 'dashboard',
@@ -28,6 +29,7 @@ const pageTitles: Record<string, string> = {
   '/admin/settings/team': 'team',
   '/admin/settings/policies': 'storePolicies',
   '/admin/settings/line': 'lineIntegration',
+  '/admin/video': 'video',
 };
 
 function getPageTitleKey(pathname: string, locale: string): string {
@@ -182,6 +184,7 @@ export default function AdminLayout({
           )}
         </main>
       </div>
+      <VideoProgressTracker locale={locale} />
     </div>
   );
 }

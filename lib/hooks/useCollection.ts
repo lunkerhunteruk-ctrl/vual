@@ -29,6 +29,7 @@ export interface CollectionLook {
   telop_caption_ja: string | null;
   telop_caption_en: string | null;
   shot_duration_sec: number;
+  video_clip_url: string | null;
   editorial_group_id: string | null;
   bundle_id: string | null;
   bundle_position: number;
@@ -204,6 +205,20 @@ export function useCollection() {
     }
   };
 
+  const regenerateLook = async (lookId: string, customPrompt: string): Promise<{ success: boolean; newImageUrl?: string; copy?: any }> => {
+    const res = await fetch('/api/collections/regenerate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lookId, customPrompt }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      // Refresh looks to pick up the new image and copy data
+      await fetchLooks();
+    }
+    return data;
+  };
+
   return {
     looks,
     items,
@@ -215,6 +230,7 @@ export function useCollection() {
     createBundle,
     disbandBundle,
     reorderBundleLooks,
+    regenerateLook,
     refetch: fetchLooks,
   };
 }

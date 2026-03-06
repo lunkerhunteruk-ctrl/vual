@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers, BookOpen } from 'lucide-react';
+import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDown, ChevronUp, X, Link2, CheckCircle2, Layers, BookOpen, Video } from 'lucide-react';
 import { Button } from '@/components/ui';
 import Image from 'next/image';
+import { VideoSettingsModal } from './VideoSettingsModal';
 
 interface GarmentSize {
   bodyWidth?: number;
@@ -220,6 +221,9 @@ export function GeminiImageGenerator({
   const [isAddingToCollection, setIsAddingToCollection] = useState(false);
   const [collectionSuccess, setCollectionSuccess] = useState(false);
   const pendingAutoOpen = useRef(false);
+
+  // Video settings modal state
+  const [showVideoSettingsModal, setShowVideoSettingsModal] = useState(false);
 
   // AI Studio credit balance
   const [studioCredits, setStudioCredits] = useState<{ subscription: number; topup: number } | null>(null);
@@ -1302,11 +1306,42 @@ export function GeminiImageGenerator({
           className="!px-6"
         >
           {storyCount === 1
-            ? (locale === 'ja' ? '生成' : 'Generate')
+            ? (locale === 'ja' ? 'ルックを生成' : 'Generate Look')
             : (locale === 'ja' ? `${storyCount}枚生成（${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr）` : `Generate ${storyCount} (${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr)`)
           }
         </Button>
+        {storyCount > 1 && (
+          <Button
+            variant="secondary"
+            size="lg"
+            isLoading={isGenerating}
+            disabled={!selectedGarmentImage}
+            leftIcon={<Video size={16} />}
+            onClick={() => setShowVideoSettingsModal(true)}
+            className="!px-6 !border-[var(--color-accent)] !text-[var(--color-accent)] hover:!bg-[var(--color-accent)]/5"
+          >
+            {locale === 'ja'
+              ? `ルック＋動画を生成`
+              : `Look + Video`}
+          </Button>
+        )}
       </div>
+
+      {/* Video Settings Modal */}
+      {showVideoSettingsModal && (
+        <VideoSettingsModal
+          storyCount={storyCount}
+          onClose={() => setShowVideoSettingsModal(false)}
+          onStartGeneration={async (videoSettings) => {
+            setShowVideoSettingsModal(false);
+            // Store video settings in sessionStorage for post-generation pipeline
+            sessionStorage.setItem('vual-pending-video-settings', JSON.stringify(videoSettings));
+            // Run editorial look generation first; video pipeline triggers after bundle creation
+            if (storyCount > 1) handleEditorialGenerate();
+          }}
+          locale={locale}
+        />
+      )}
       {error && <p className="text-sm text-red-500 mt-1">{error}</p>}
 
       {/* Saved Images */}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video, RefreshCw } from 'lucide-react';
 import { useStoreContext } from '@/lib/store/store-context';
 import {
   DndContext,
@@ -204,6 +204,9 @@ function BundleCard({
               <span className="text-xs font-semibold text-[var(--color-accent)]">
                 {ja ? `${bundle.looks.length}枚バンドル` : `${bundle.looks.length}-look bundle`}
               </span>
+              {bundle.looks.some(l => l.video_clip_url) && (
+                <Video size={12} className="text-emerald-500" />
+              )}
             </div>
             {bundle.looks[0]?.title && (
               <p className="text-xs text-[var(--color-text-body)] truncate max-w-[200px]">
@@ -286,6 +289,7 @@ function LookDetailModal({
   look,
   onClose,
   onSave,
+  onRegenerate,
   locale,
   bundleLooks,
   onNavigate,
@@ -293,6 +297,7 @@ function LookDetailModal({
   look: CollectionLook;
   onClose: () => void;
   onSave: (id: string, updates: { title?: string; description?: string; show_credits?: boolean; video_prompt_veo?: string; video_prompt_kling?: string; telop_caption_ja?: string; telop_caption_en?: string; shot_duration_sec?: number }) => Promise<void>;
+  onRegenerate?: (lookId: string, customPrompt: string) => Promise<{ success: boolean; newImageUrl?: string; copy?: any }>;
   locale: string;
   bundleLooks?: CollectionLook[];
   onNavigate?: (look: CollectionLook) => void;
@@ -312,6 +317,10 @@ function LookDetailModal({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [showRegenPrompt, setShowRegenPrompt] = useState(false);
+  const [regenPrompt, setRegenPrompt] = useState('');
+  const [isRegenerating, setIsRegenerating] = useState(false);
+  const [regenImageUrl, setRegenImageUrl] = useState<string | null>(null);
   const products = look.collection_look_products || [];
 
   const hasChanges =
@@ -410,7 +419,7 @@ function LookDetailModal({
         <div className="p-5 space-y-5">
           {/* Image with bundle navigation arrows */}
           <div className="relative rounded-xl overflow-hidden bg-[var(--color-bg-element)] flex items-center justify-center">
-            <img src={look.image_url} alt="" className="max-w-full max-h-[400px] object-contain" />
+            <img src={regenImageUrl || look.image_url} alt="" className="max-w-full max-h-[400px] object-contain" />
             {canGoPrev && (
               <button
                 onClick={() => handleNavigate('prev')}
@@ -428,6 +437,91 @@ function LookDetailModal({
               </button>
             )}
           </div>
+
+          {/* Regenerate section */}
+          {onRegenerate && (
+            <div>
+              {!showRegenPrompt ? (
+                <button
+                  onClick={() => setShowRegenPrompt(true)}
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors"
+                >
+                  <RefreshCw size={14} />
+                  {ja ? 'このルックを再生成' : 'Regenerate this look'}
+                </button>
+              ) : (
+                <div className="border border-[var(--color-accent)]/30 rounded-xl p-3 bg-[var(--color-accent)]/[0.02] space-y-2">
+                  <div className="flex items-center gap-2 mb-1">
+                    <RefreshCw size={14} className="text-[var(--color-accent)]" />
+                    <span className="text-xs font-semibold text-[var(--color-accent)] uppercase tracking-wide">
+                      {ja ? '再生成' : 'Regenerate'}
+                    </span>
+                  </div>
+                  <textarea
+                    value={regenPrompt}
+                    onChange={(e) => setRegenPrompt(e.target.value)}
+                    placeholder={ja
+                      ? '追加指示（例: レザージャケットはシンプルなデザイン、装飾なし）'
+                      : 'Additional instructions (e.g., simple leather jacket, no decorations)'}
+                    rows={2}
+                    className="w-full text-sm px-3 py-2 border border-[var(--color-line)] rounded-lg text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] resize-none focus:outline-none focus:border-[var(--color-accent)]"
+                  />
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={async () => {
+                        setIsRegenerating(true);
+                        try {
+                          const result = await onRegenerate(look.id, regenPrompt);
+                          if (result.success && result.newImageUrl) {
+                            setRegenImageUrl(result.newImageUrl);
+                            // Update local state with new copy data
+                            if (result.copy) {
+                              if (result.copy.title) setTitle(result.copy.title);
+                              if (result.copy.description) setDescription(result.copy.description);
+                              if (result.copy.video_prompt_veo) setVideoPromptVeo(result.copy.video_prompt_veo);
+                              if (result.copy.video_prompt_kling) setVideoPromptKling(result.copy.video_prompt_kling);
+                              if (result.copy.telop_caption_ja) setTelopCaptionJa(result.copy.telop_caption_ja);
+                              if (result.copy.telop_caption_en) setTelopCaptionEn(result.copy.telop_caption_en);
+                              if (result.copy.shot_duration_sec) setShotDuration(result.copy.shot_duration_sec);
+                            }
+                            setShowRegenPrompt(false);
+                            setRegenPrompt('');
+                          }
+                        } catch (err) {
+                          console.error('Regeneration failed:', err);
+                        } finally {
+                          setIsRegenerating(false);
+                        }
+                      }}
+                      disabled={isRegenerating}
+                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[var(--color-accent)] text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                    >
+                      {isRegenerating ? (
+                        <>
+                          <Loader2 size={14} className="animate-spin" />
+                          {ja ? '再生成中...' : 'Regenerating...'}
+                        </>
+                      ) : (
+                        <>
+                          <RefreshCw size={14} />
+                          {ja ? '再生成する（1cr）' : 'Regenerate (1cr)'}
+                        </>
+                      )}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowRegenPrompt(false);
+                        setRegenPrompt('');
+                      }}
+                      className="px-3 py-2 text-sm text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+                    >
+                      {ja ? 'キャンセル' : 'Cancel'}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Title */}
           <div>
@@ -798,6 +892,7 @@ export default function CollectionPage() {
     looks, items, isLoading,
     addLook, updateLook, deleteLook, reorderLooks,
     createBundle, disbandBundle, reorderBundleLooks,
+    regenerateLook,
   } = useCollection();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
@@ -970,6 +1065,7 @@ export default function CollectionPage() {
             await updateLook(id, updates);
             setSelectedLook(prev => prev ? { ...prev, ...updates } : null);
           }}
+          onRegenerate={regenerateLook}
           locale={locale}
           bundleLooks={selectedLookBundleLooks}
           onNavigate={(nextLook) => {
