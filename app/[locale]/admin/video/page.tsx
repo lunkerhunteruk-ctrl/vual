@@ -60,6 +60,7 @@ export default function VideoPage() {
   // Clip generation progress
   const clipCount = selectedBundle?.looks.length || 0;
   const clipsWithVideo = selectedBundle?.looks.filter((l) => l.video_clip_url).length || 0;
+  const [retryingClipIdx, setRetryingClipIdx] = useState<number | null>(null);
 
   const handleStartGeneration = async () => {
     if (!selectedBundle || !storeId) return;
@@ -160,6 +161,46 @@ export default function VideoPage() {
     } finally {
       setIsGenerating(false);
       setPipelineProgress(null);
+    }
+  };
+
+  // Retry a single failed clip
+  const handleRetryClip = async (look: CollectionLook, idx: number) => {
+    if (!selectedBundle || retryingClipIdx !== null) return;
+
+    setRetryingClipIdx(idx);
+    try {
+      const prompt = look.video_prompt_veo || 'Camera slowly follows the model walking with confidence and elegance.';
+      const duration = videoSettings.totalDurationSec
+        ? Math.min(8, Math.max(4, Math.round(videoSettings.totalDurationSec / clipCount)))
+        : 4;
+      // Snap to valid Veo duration
+      const veoDuration = duration <= 5 ? 4 : duration <= 7 ? 6 : 8;
+
+      const res = await fetch('/api/video/generate-clip', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lookId: look.id,
+          jobId: activeJob?.id,
+          prompt,
+          durationSeconds: veoDuration,
+          aspectRatio: '16:9',
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success && data.clipUrl) {
+        // Force refresh collection data
+        window.location.reload();
+      } else {
+        alert(ja ? `クリップ生成失敗: ${data.error}` : `Clip generation failed: ${data.error}`);
+      }
+    } catch (err: any) {
+      console.error('[RetryClip] Error:', err);
+      alert(ja ? `エラー: ${err.message}` : `Error: ${err.message}`);
+    } finally {
+      setRetryingClipIdx(null);
     }
   };
 
@@ -367,11 +408,24 @@ export default function VideoPage() {
                     <div className="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded-md font-medium">
                       {idx + 1}
                     </div>
-                    {look.video_clip_url && (
+                    {look.video_clip_url ? (
                       <div className="absolute top-2 right-2 bg-emerald-500 text-white p-1 rounded-md">
                         <Video size={10} />
                       </div>
-                    )}
+                    ) : !isGenerating && clipsWithVideo > 0 && retryingClipIdx !== idx ? (
+                      <button
+                        onClick={() => handleRetryClip(look, idx)}
+                        disabled={retryingClipIdx !== null}
+                        className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center gap-1 opacity-0 hover:opacity-100 transition-opacity disabled:opacity-0"
+                      >
+                        <RefreshCw size={20} className="text-white" />
+                        <span className="text-white text-[10px] font-medium">{ja ? '再生成' : 'Retry'}</span>
+                      </button>
+                    ) : retryingClipIdx === idx ? (
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <Loader2 size={24} className="text-white animate-spin" />
+                      </div>
+                    ) : null}
                     {/* Pipeline progress overlay */}
                     {pipelineProgress && pipelineProgress.clipProgress[idx] && (
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -410,6 +464,20 @@ export default function VideoPage() {
                           <Download size={8} />
                           clip
                         </a>
+                      )}
+                      {!look.video_clip_url && !isGenerating && clipsWithVideo > 0 && (
+                        <button
+                          onClick={() => handleRetryClip(look, idx)}
+                          disabled={retryingClipIdx !== null}
+                          className="text-[9px] text-red-500 hover:text-red-700 flex items-center gap-0.5 disabled:opacity-40"
+                        >
+                          {retryingClipIdx === idx ? (
+                            <Loader2 size={8} className="animate-spin" />
+                          ) : (
+                            <RefreshCw size={8} />
+                          )}
+                          {ja ? '再生成' : 'retry'}
+                        </button>
                       )}
                     </div>
                   </div>
