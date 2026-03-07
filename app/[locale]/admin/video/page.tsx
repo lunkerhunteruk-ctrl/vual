@@ -14,6 +14,7 @@ import {
   AlertCircle,
   CheckCircle2,
   ExternalLink,
+  ImagePlus,
 } from 'lucide-react';
 import { useCollection, CollectionLook, CollectionBundle } from '@/lib/hooks/useCollection';
 import { useVideoJobStore } from '@/lib/store/video-job-store';
@@ -61,6 +62,8 @@ export default function VideoPage() {
   const clipCount = selectedBundle?.looks.length || 0;
   const clipsWithVideo = selectedBundle?.looks.filter((l) => l.video_clip_url).length || 0;
   const [retryingClipIdx, setRetryingClipIdx] = useState<number | null>(null);
+  const [regeneratingImageIdx, setRegeneratingImageIdx] = useState<number | null>(null);
+  const [raiFilteredIdx, setRaiFilteredIdx] = useState<Set<number>>(new Set());
 
   const handleStartGeneration = async () => {
     if (!selectedBundle || !storeId) return;
@@ -195,8 +198,11 @@ export default function VideoPage() {
         window.location.reload();
       } else {
         const isFilter = data.error?.includes('filter') || data.error?.includes('violated');
+        if (isFilter) {
+          setRaiFilteredIdx((prev) => new Set(prev).add(idx));
+        }
         const msg = isFilter
-          ? (ja ? 'この画像はコンテンツフィルターによりブロックされました。スタジオで画像を再生成してからお試しください。' : 'This image was blocked by the content filter. Please regenerate the image in studio and try again.')
+          ? (ja ? 'コンテンツフィルターでブロックされました。「画像を再生成」で新しい画像を生成できます。' : 'Blocked by content filter. Use "Regenerate Image" to generate a new image.')
           : (ja ? `クリップ生成失敗: ${data.error}` : `Clip generation failed: ${data.error}`);
         alert(msg);
       }
@@ -208,6 +214,41 @@ export default function VideoPage() {
     }
   };
 
+  // Regenerate the image for a look (when RAI filter blocks clip generation)
+  const handleRegenerateImage = async (look: CollectionLook, idx: number) => {
+    if (regeneratingImageIdx !== null) return;
+
+    setRegeneratingImageIdx(idx);
+    try {
+      const res = await fetch('/api/collections/regenerate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lookId: look.id }),
+      });
+
+      const data = await res.json();
+      if (data.success && data.newImageUrl) {
+        // Clear RAI filter flag and auto-retry clip
+        setRaiFilteredIdx((prev) => {
+          const next = new Set(prev);
+          next.delete(idx);
+          return next;
+        });
+        setRegeneratingImageIdx(null);
+
+        // Auto-retry clip with the new image
+        await handleRetryClip(look, idx);
+      } else {
+        alert(ja ? `画像再生成に失敗: ${data.error}` : `Image regeneration failed: ${data.error}`);
+      }
+    } catch (err: any) {
+      console.error('[RegenerateImage] Error:', err);
+      alert(ja ? `エラー: ${err.message}` : `Error: ${err.message}`);
+    } finally {
+      setRegeneratingImageIdx(null);
+    }
+  };
+
   // Cleanup render polling on unmount
   useEffect(() => {
     return () => {
@@ -216,34 +257,37 @@ export default function VideoPage() {
   }, []);
 
   const handleStartRender = useCallback(async () => {
-    if (!selectedBundle || !storeId || !activeJob) return;
+    if (!selectedBundle || !storeId) return;
 
-    const clipUrls = activeJob.clipUrls;
-    if (!clipUrls || clipUrls.length === 0) return;
+    // Get clip URLs from collection looks (more reliable than Zustand after page reload)
+    const clipUrls = selectedBundle.looks.map((l) => l.video_clip_url).filter(Boolean) as string[];
+    if (clipUrls.length === 0) return;
 
     setIsRendering(true);
     setRenderProgress(0);
     setFinalVideoUrl(null);
 
     try {
-      // Build render request
+      // Build render request — only include looks that have clips
       const settings = videoSettings.getSettings();
-      const shots = selectedBundle.looks.map((look, i) => ({
-        clipUrl: clipUrls[i] || '',
-        durationSec: look.shot_duration_sec || 6,
-        telopText: look.telop_caption_en || undefined,
-        telopPosition: 'bottom-left' as const,
-      }));
+      const shots = selectedBundle.looks
+        .filter((look) => look.video_clip_url)
+        .map((look) => ({
+          clipUrl: look.video_clip_url!,
+          durationSec: look.shot_duration_sec || 6,
+          telopText: look.telop_caption_en || undefined,
+          telopPosition: 'bottom-left' as const,
+        }));
 
+      const jobId = activeJob?.id || '';
       const res = await fetch('/api/video/render', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          jobId: activeJob.id,
+          jobId,
           shots,
           textStyle: settings.motionPreset,
           textFont: settings.textFont,
-          bgmUrl: settings.bgmId ? undefined : undefined, // TODO: resolve BGM URL from bgmId
           showIntro: settings.showIntro,
           showEnding: settings.showEnding,
           whiteFlash: settings.whiteFlash,
@@ -252,7 +296,8 @@ export default function VideoPage() {
       });
 
       const data = await res.json();
-      if (!data.success) throw new Error(data.error);
+      console.log('[Render] API response:', data);
+      if (!data.success) throw new Error(data.error || 'Render API returned failure');
 
       const { renderId, bucketName } = data;
 
@@ -266,9 +311,18 @@ export default function VideoPage() {
       renderPollRef.current = setInterval(async () => {
         try {
           const pollRes = await fetch(
-            `/api/video/render?renderId=${renderId}&bucketName=${bucketName}&jobId=${activeJob.id}`
+            `/api/video/render?renderId=${renderId}&bucketName=${bucketName}&jobId=${jobId}`
           );
           const pollData = await pollRes.json();
+          console.log('[Render] Poll response:', pollData);
+
+          if (!pollData.success) {
+            console.error('[Render] Poll error response:', pollData);
+            if (renderPollRef.current) clearInterval(renderPollRef.current);
+            setIsRendering(false);
+            alert(ja ? `レンダリングエラー: ${pollData.error}` : `Render error: ${pollData.error}`);
+            return;
+          }
 
           if (pollData.done) {
             if (renderPollRef.current) clearInterval(renderPollRef.current);
@@ -283,9 +337,11 @@ export default function VideoPage() {
                 currentStepLabel: ja ? '完了' : 'Complete',
               });
             } else {
+              const errMsg = pollData.errors?.join('; ') || 'Render failed';
+              alert(ja ? `レンダリング失敗: ${errMsg}` : `Render failed: ${errMsg}`);
               updateJobStatus(storeId, {
                 status: 'failed',
-                errorMessage: pollData.errors?.join('; ') || 'Render failed',
+                errorMessage: errMsg,
               });
             }
           } else {
@@ -298,12 +354,15 @@ export default function VideoPage() {
     } catch (err: any) {
       console.error('Render error:', err);
       setIsRendering(false);
-      updateJobStatus(storeId, {
-        status: 'failed',
-        errorMessage: err.message,
-      });
+      alert(ja ? `レンダリングエラー: ${err.message}` : `Render error: ${err.message}`);
+      if (storeId) {
+        updateJobStatus(storeId, {
+          status: 'failed',
+          errorMessage: err.message,
+        });
+      }
     }
-  }, [selectedBundle, storeId, activeJob, videoSettings, store, ja, updateJobStatus]);
+  }, [selectedBundle, storeId, activeJob?.id, videoSettings, store, ja, updateJobStatus]);
 
   if (isLoading) {
     return (
@@ -416,6 +475,21 @@ export default function VideoPage() {
                       <div className="absolute top-2 right-2 bg-emerald-500 text-white p-1 rounded-md">
                         <Video size={10} />
                       </div>
+                    ) : regeneratingImageIdx === idx ? (
+                      <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-1">
+                        <Loader2 size={24} className="text-white animate-spin" />
+                        <span className="text-white text-[10px] font-medium">{ja ? '画像再生成中...' : 'Regenerating image...'}</span>
+                      </div>
+                    ) : raiFilteredIdx.has(idx) && !isGenerating ? (
+                      <button
+                        onClick={() => handleRegenerateImage(look, idx)}
+                        disabled={regeneratingImageIdx !== null}
+                        className="absolute inset-0 bg-red-900/40 flex flex-col items-center justify-center gap-1 transition-opacity disabled:opacity-50"
+                      >
+                        <ImagePlus size={20} className="text-white" />
+                        <span className="text-white text-[10px] font-medium">{ja ? '画像を再生成' : 'Regenerate Image'}</span>
+                        <span className="text-white/70 text-[9px]">{ja ? 'フィルター回避' : 'Bypass filter'}</span>
+                      </button>
                     ) : !isGenerating && clipsWithVideo > 0 && retryingClipIdx !== idx ? (
                       <button
                         onClick={() => handleRetryClip(look, idx)}
@@ -470,18 +544,33 @@ export default function VideoPage() {
                         </a>
                       )}
                       {!look.video_clip_url && !isGenerating && clipsWithVideo > 0 && (
-                        <button
-                          onClick={() => handleRetryClip(look, idx)}
-                          disabled={retryingClipIdx !== null}
-                          className="text-[9px] text-red-500 hover:text-red-700 flex items-center gap-0.5 disabled:opacity-40"
-                        >
-                          {retryingClipIdx === idx ? (
-                            <Loader2 size={8} className="animate-spin" />
-                          ) : (
-                            <RefreshCw size={8} />
-                          )}
-                          {ja ? '再生成' : 'retry'}
-                        </button>
+                        raiFilteredIdx.has(idx) ? (
+                          <button
+                            onClick={() => handleRegenerateImage(look, idx)}
+                            disabled={regeneratingImageIdx !== null}
+                            className="text-[9px] text-orange-500 hover:text-orange-700 flex items-center gap-0.5 disabled:opacity-40"
+                          >
+                            {regeneratingImageIdx === idx ? (
+                              <Loader2 size={8} className="animate-spin" />
+                            ) : (
+                              <ImagePlus size={8} />
+                            )}
+                            {ja ? '画像再生成' : 'regen image'}
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleRetryClip(look, idx)}
+                            disabled={retryingClipIdx !== null}
+                            className="text-[9px] text-red-500 hover:text-red-700 flex items-center gap-0.5 disabled:opacity-40"
+                          >
+                            {retryingClipIdx === idx ? (
+                              <Loader2 size={8} className="animate-spin" />
+                            ) : (
+                              <RefreshCw size={8} />
+                            )}
+                            {ja ? '再生成' : 'retry'}
+                          </button>
+                        )
                       )}
                     </div>
                   </div>
@@ -570,15 +659,28 @@ export default function VideoPage() {
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <a
-                      href={finalVideoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={async () => {
+                        try {
+                          const res = await fetch(finalVideoUrl);
+                          const blob = await res.blob();
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `vual-video-${Date.now()}.mp4`;
+                          document.body.appendChild(a);
+                          a.click();
+                          document.body.removeChild(a);
+                          URL.revokeObjectURL(url);
+                        } catch (err) {
+                          window.open(finalVideoUrl, '_blank');
+                        }
+                      }}
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 text-white text-xs font-medium rounded-lg hover:bg-emerald-700 transition-colors"
                     >
                       <Download size={14} />
                       {ja ? 'ダウンロード' : 'Download'}
-                    </a>
+                    </button>
                     <a
                       href={finalVideoUrl}
                       target="_blank"
