@@ -24,6 +24,16 @@ import { VideoSettingsPanel } from '@/components/admin/video/VideoSettingsPanel'
 import { Button } from '@/components/ui';
 import { runPipeline, type PipelineProgress } from '@/lib/video/pipeline';
 
+const SUPABASE_STORAGE_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/model-images/bgm`
+  : '';
+
+const BGM_URL_MAP: Record<string, string> = {
+  'ambient-01': `${SUPABASE_STORAGE_BASE}/ambient-01.mp3`,
+  'upbeat-01': `${SUPABASE_STORAGE_BASE}/upbeat-01.mp3`,
+  'cinematic-01': `${SUPABASE_STORAGE_BASE}/cinematic-01.mp3`,
+};
+
 export default function VideoPage() {
   const locale = useLocale();
   const ja = locale === 'ja';
@@ -280,6 +290,7 @@ export default function VideoPage() {
         }));
 
       const jobId = activeJob?.id || '';
+      const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
       const res = await fetch('/api/video/render', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -288,6 +299,7 @@ export default function VideoPage() {
           shots,
           textStyle: settings.motionPreset,
           textFont: settings.textFont,
+          bgmUrl,
           showIntro: settings.showIntro,
           showEnding: settings.showEnding,
           whiteFlash: settings.whiteFlash,

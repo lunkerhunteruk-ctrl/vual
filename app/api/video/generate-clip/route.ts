@@ -164,11 +164,14 @@ export async function POST(request: NextRequest) {
       clipUrl = videoData.gcsUri;
     }
 
-    // 6. Update collection_looks with clip URL
+    // 6. Update collection_looks with clip URL and actual duration
     if (clipUrl) {
       await supabase
         .from('collection_looks')
-        .update({ video_clip_url: clipUrl })
+        .update({
+          video_clip_url: clipUrl,
+          shot_duration_sec: (durationSeconds as number) || 4,
+        })
         .eq('id', lookId);
     }
 
