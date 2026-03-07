@@ -136,9 +136,27 @@ export async function POST(request: NextRequest) {
 
     // 5. Save video to Supabase Storage
     let clipUrl: string | null = null;
+    let actualDurationSec = (durationSeconds as number) || 4;
 
     if (videoData.bytesBase64Encoded) {
       const videoBuffer = Buffer.from(videoData.bytesBase64Encoded, 'base64');
+
+      // Parse actual duration from mp4 mvhd box
+      const mvhdIdx = videoBuffer.indexOf(Buffer.from('mvhd'));
+      if (mvhdIdx !== -1) {
+        const version = videoBuffer[mvhdIdx + 4];
+        if (version === 0) {
+          const timescale = videoBuffer.readUInt32BE(mvhdIdx + 16);
+          const dur = videoBuffer.readUInt32BE(mvhdIdx + 20);
+          if (timescale > 0) actualDurationSec = Math.round(dur / timescale);
+        } else {
+          const timescale = videoBuffer.readUInt32BE(mvhdIdx + 24);
+          const dur = Number(videoBuffer.readBigUInt64BE(mvhdIdx + 28));
+          if (timescale > 0) actualDurationSec = Math.round(dur / timescale);
+        }
+        console.log(`[Generate Clip] Actual video duration: ${actualDurationSec}s (requested: ${durationSeconds}s)`);
+      }
+
       const filename = `video-clips/${look.store_id}/${lookId}-${Date.now()}.mp4`;
 
       const { error: uploadError } = await supabase.storage
@@ -170,7 +188,7 @@ export async function POST(request: NextRequest) {
         .from('collection_looks')
         .update({
           video_clip_url: clipUrl,
-          shot_duration_sec: (durationSeconds as number) || 4,
+          shot_duration_sec: actualDurationSec,
         })
         .eq('id', lookId);
     }
