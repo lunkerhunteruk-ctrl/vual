@@ -6,6 +6,54 @@ export const maxDuration = 300;
 
 const MAX_POLL_TIME_MS = 240000; // 4 minutes per attempt (leave room for retry)
 const POLL_INTERVAL_MS = 10000;  // 10 seconds
+const GEMINI_MODEL = 'gemini-2.5-flash-lite';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+
+/**
+ * Use Gemini to simplify a video prompt that Veo rejected.
+ * Returns a shorter, safer prompt.
+ */
+async function simplifyPrompt(originalPrompt: string, durationSec: number): Promise<string | null> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return null;
+
+  try {
+    const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: `You are rewriting a video generation prompt that was rejected by the Veo AI model.
+
+REJECTED PROMPT:
+${originalPrompt}
+
+Rewrite this as a simpler, shorter prompt (max 2 sentences) that describes the same scene but:
+- Remove any potentially problematic words (narrow spaces, close contact, etc.)
+- Keep it as a simple camera movement + scene description
+- Keep the fashion editorial style
+- End with: "${durationSec} second clip, cinematic aspect ratio, photorealistic quality, no background music"
+
+Return ONLY the new prompt text, nothing else.`
+          }]
+        }],
+        generationConfig: { temperature: 0.3, maxOutputTokens: 200 },
+      }),
+    });
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    if (text && text.length > 20) {
+      console.log(`[Generate Clip] Simplified prompt: ${text}`);
+      return text;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * POST /api/video/generate-clip
@@ -62,18 +110,19 @@ export async function POST(request: NextRequest) {
     // Determine MIME type from URL or default to jpeg
     const mimeType = look.image_url.toLowerCase().includes('.png') ? 'image/png' : 'image/jpeg';
 
-    // 3. Submit Veo job with retry
-    const MAX_ATTEMPTS = 2;
+    // 3. Submit Veo job with retry (attempt 2 uses simplified prompt)
+    const MAX_ATTEMPTS = 3;
     let videoData: { bytesBase64Encoded?: string; gcsUri?: string; mimeType: string } | undefined;
     let lastError: string | null = null;
+    let currentPrompt = prompt;
 
     for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-      console.log(`[Generate Clip] Attempt ${attempt}/${MAX_ATTEMPTS} for look ${lookId}`);
+      console.log(`[Generate Clip] Attempt ${attempt}/${MAX_ATTEMPTS} for look ${lookId} (prompt: ${currentPrompt.substring(0, 80)}...)`);
 
       const { operationName } = await submitVeoJob({
         imageBase64,
         imageMimeType: mimeType,
-        prompt,
+        prompt: currentPrompt,
         durationSeconds: (durationSeconds as 4 | 6 | 8) || 8,
         aspectRatio: aspectRatio || '16:9',
         resolution: '1080p',
@@ -83,7 +132,7 @@ export async function POST(request: NextRequest) {
       // Poll for completion
       const startTime = Date.now();
       let attemptDone = false;
-      let isRaiFilter = false;
+      let isPromptRejection = false;
 
       while (Date.now() - startTime < MAX_POLL_TIME_MS) {
         await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
@@ -93,9 +142,16 @@ export async function POST(request: NextRequest) {
         if (result.error) {
           lastError = result.error.message;
           console.error(`[Generate Clip] Attempt ${attempt} error:`, lastError);
-          // Don't retry if it's a content filter — same image will get the same result
+          // Check if it's a prompt/content issue (can be fixed by rewriting)
+          if (lastError.includes('could not generate') || lastError.includes('prompt provided')) {
+            isPromptRejection = true;
+          }
+          // RAI filter on the image itself — no point retrying
           if (lastError.includes('filter') || lastError.includes('violated')) {
-            isRaiFilter = true;
+            return NextResponse.json(
+              { error: `Veo generation failed: ${lastError}` },
+              { status: 500 }
+            );
           }
           attemptDone = true;
           break;
@@ -109,10 +165,18 @@ export async function POST(request: NextRequest) {
       }
 
       if (videoData) break; // Success
-      if (isRaiFilter) break; // Don't retry content filter
 
       if (!attemptDone) {
         lastError = 'Veo generation timed out';
+      }
+
+      // On prompt rejection, try simplifying the prompt before next attempt
+      if (isPromptRejection && attempt < MAX_ATTEMPTS) {
+        console.log(`[Generate Clip] Prompt rejected, asking Gemini to simplify...`);
+        const simplified = await simplifyPrompt(currentPrompt, (durationSeconds as number) || 4);
+        if (simplified) {
+          currentPrompt = simplified;
+        }
       }
 
       if (attempt < MAX_ATTEMPTS) {
