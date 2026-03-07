@@ -176,6 +176,11 @@ export function VideoSettingsPanel({
             checked={store.whiteFlash}
             onChange={store.setWhiteFlash}
           />
+          <Toggle
+            label={ja ? 'Instagram 4:5 レターボックス' : 'Instagram 4:5 Letterbox'}
+            checked={store.letterbox}
+            onChange={store.setLetterbox}
+          />
         </div>
       </Section>
     </div>

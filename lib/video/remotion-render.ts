@@ -31,7 +31,7 @@ export interface RenderRequest {
   whiteFlash: boolean;
   brandName?: string;
   tagline?: string;
-  aspectRatio?: "16:9" | "9:16" | "1:1";
+  aspectRatio?: "16:9" | "9:16" | "1:1" | "4:5";
 }
 
 export interface RenderResult {

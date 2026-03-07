@@ -11,6 +11,7 @@ export interface VideoSettingsState {
   whiteFlash: boolean;
   textFont: 'impact' | 'noto-sans' | 'montserrat';
   aspectRatio: '16:9' | '9:16' | '1:1';
+  letterbox: boolean;
 }
 
 interface VideoSettingsStore extends VideoSettingsState {
@@ -23,6 +24,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setWhiteFlash: (show: boolean) => void;
   setTextFont: (font: 'impact' | 'noto-sans' | 'montserrat') => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
+  setLetterbox: (on: boolean) => void;
   getSettings: () => VideoSettingsState;
 }
 
@@ -38,6 +40,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       whiteFlash: true,
       textFont: 'impact',
       aspectRatio: '9:16',
+      letterbox: false,
 
       setVideoModel: (model) => set({ videoModel: model }),
       setTotalDuration: (sec) => set({ totalDurationSec: sec }),
@@ -48,6 +51,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setWhiteFlash: (show) => set({ whiteFlash: show }),
       setTextFont: (font) => set({ textFont: font }),
       setAspectRatio: (ar) => set({ aspectRatio: ar }),
+      setLetterbox: (on) => set({ letterbox: on }),
 
       getSettings: () => {
         const s = get();
@@ -61,6 +65,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           whiteFlash: s.whiteFlash,
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
+          letterbox: s.letterbox,
         };
       },
     }),

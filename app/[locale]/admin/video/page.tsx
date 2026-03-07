@@ -315,7 +315,8 @@ export default function VideoPage() {
 
       const jobId = activeJob?.id || '';
       const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
-      const clipAspectRatio = settings.aspectRatio || '9:16';
+      // Letterbox mode: render at 4:5 with contain fit (no crop)
+      const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
 
       const res = await fetch('/api/video/render', {
         method: 'POST',
