@@ -17,33 +17,36 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { jobId, ...renderProps } = body;
 
-    if (!jobId) {
-      return NextResponse.json(
-        { success: false, error: "jobId is required" },
-        { status: 400 }
-      );
-    }
+    console.log("[render] POST request:", {
+      jobId: jobId || "(none)",
+      shotCount: renderProps.shots?.length,
+      textStyle: renderProps.textStyle,
+      hasBgm: !!renderProps.bgmUrl,
+    });
 
     // Start Lambda render
     const { renderId, bucketName } = await startRender(
       renderProps as RenderRequest
     );
+    console.log("[render] Lambda render started:", { renderId, bucketName });
 
-    // Update job with render info
-    const supabase = createServerClient();
-    await supabase!
-      .from("video_jobs")
-      .update({
-        current_step: "rendering",
-        current_step_label: "Rendering video",
-        request_data: {
-          ...body,
-          remotion_render_id: renderId,
-          remotion_bucket_name: bucketName,
-        },
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", jobId);
+    // Update job with render info (if jobId provided)
+    if (jobId) {
+      const supabase = createServerClient();
+      await supabase!
+        .from("video_jobs")
+        .update({
+          current_step: "rendering",
+          current_step_label: "Rendering video",
+          request_data: {
+            ...body,
+            remotion_render_id: renderId,
+            remotion_bucket_name: bucketName,
+          },
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", jobId);
+    }
 
     return NextResponse.json({
       success: true,
@@ -51,9 +54,9 @@ export async function POST(req: NextRequest) {
       bucketName,
     });
   } catch (err: any) {
-    console.error("[render] Error:", err);
+    console.error("[render] Error:", err.message, err.stack);
     return NextResponse.json(
-      { success: false, error: err.message },
+      { success: false, error: err.message || String(err) },
       { status: 500 }
     );
   }
