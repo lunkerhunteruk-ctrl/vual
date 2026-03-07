@@ -651,7 +651,7 @@ export default function VideoPage() {
                     ? (ja ? '再生成' : 'Regenerate')
                     : (ja ? 'クリップを生成' : 'Generate Clips')}
               </Button>
-              {clipsWithVideo === clipCount && clipCount > 0 && (
+              {clipsWithVideo >= 2 && (
                 <Button
                   variant="secondary"
                   size="lg"
