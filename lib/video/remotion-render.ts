@@ -69,6 +69,8 @@ export async function startRender(
     maxRetries: 1,
     framesPerLambda: 900,
     privacy: "public",
+    timeoutInMilliseconds: 120000,
+    delayRenderTimeoutInMilliseconds: 120000,
   });
 
   return {
