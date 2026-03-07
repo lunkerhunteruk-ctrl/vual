@@ -48,7 +48,17 @@ export default function VideoPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isRendering, setIsRendering] = useState(false);
   const [renderProgress, setRenderProgress] = useState(0);
-  const [finalVideoUrl, setFinalVideoUrl] = useState<string | null>(null);
+  const [finalVideoUrl, _setFinalVideoUrl] = useState<string | null>(null);
+  const setFinalVideoUrl = useCallback((url: string | null) => {
+    _setFinalVideoUrl(url);
+    if (selectedBundleId) {
+      if (url) {
+        localStorage.setItem(`vual-video-${selectedBundleId}`, url);
+      } else {
+        localStorage.removeItem(`vual-video-${selectedBundleId}`);
+      }
+    }
+  }, [selectedBundleId]);
   const renderPollRef = useRef<NodeJS.Timeout | null>(null);
 
   // Extract bundles only
@@ -67,6 +77,14 @@ export default function VideoPage() {
 
   const selectedBundle = bundles.find((b) => b.id === selectedBundleId) || null;
   const activeJob = storeId ? activeJobs[storeId] : null;
+
+  // Restore finalVideoUrl from localStorage when bundle changes
+  useEffect(() => {
+    if (selectedBundleId) {
+      const saved = localStorage.getItem(`vual-video-${selectedBundleId}`);
+      _setFinalVideoUrl(saved || null);
+    }
+  }, [selectedBundleId]);
 
   // Clip generation progress
   const clipCount = selectedBundle?.looks.length || 0;
@@ -409,7 +427,6 @@ export default function VideoPage() {
                   key={bundle.id}
                   onClick={() => {
                     setSelectedBundleId(bundle.id);
-                    setFinalVideoUrl(null);
                     setRenderProgress(0);
                     setIsRendering(false);
                   }}
