@@ -108,9 +108,10 @@ Your ${validShotCount} shots MUST include a MIX of these camera types (pick at l
 
 MANDATORY shot types:
 - At least 1 CLOSE-UP / DETAIL shot: tight framing on upper body, face, hands, accessories, or fabric texture. Camera at eye level or slightly above. Shows garment details.
-- At least 1 ELEVATED ANGLE shot: camera positioned above the model (roughly head-height above, looking down at ~30-45°). Bird's eye perspective showing the model within the environment. NOT a drone shot — think rooftop edge, balcony, staircase looking down, or elevated walkway.
-- At least 1 WIDE / ENVIRONMENTAL shot: model is smaller in the frame, surrounded by the location's architecture or landscape. Establishes the scene.
-- Exactly 1 "GAZE SHIFT" HERO shot (apply to ONE of the close-up shots): The model starts looking away (profile or three-quarter, gazing into the distance or down) then mid-shot turns to look DIRECTLY into the camera with a confident, magnetic gaze — as if noticing the viewer for the first time. Pair this with a subtle hair movement: brushing hair back behind the ear, or a light toss/sweep of hair with one hand. Think luxury shampoo commercial — the turn must feel effortless and captivating. In the prompt, describe this as a SEQUENCE: "initially looking [direction], then slowly turns toward the camera with a direct gaze while [hair action]". This creates the most emotionally striking moment of the editorial.
+- At least 1 MEDIUM-LONG / FULL SHOT: full body of the model visible from head to toe, with 30-40% of the frame showing the surrounding environment. Camera at eye level or slightly low angle. Shows the complete outfit in context. Think classic fashion editorial — the model's full silhouette and styling are clearly visible.
+- At least 1 WIDE / ENVIRONMENTAL shot: model is smaller in the frame (20-30% of frame), surrounded by the location's architecture or landscape. Establishes the scene. Camera can be at a distance or slightly low angle to emphasize the environment.
+- Exactly 1 "GAZE SHIFT" HERO shot (apply to ONE of the close-up or medium shots): The model starts looking away (profile or three-quarter, gazing into the distance or down) then mid-shot turns to look DIRECTLY into the camera with a confident, magnetic gaze — as if noticing the viewer for the first time. Pair this with a subtle hair movement: brushing hair back behind the ear, or a light toss/sweep of hair with one hand. Think luxury shampoo commercial — the turn must feel effortless and captivating. In the prompt, describe this as a SEQUENCE: "initially looking [direction], then slowly turns toward the camera with a direct gaze while [hair action]". This creates the most emotionally striking moment of the editorial.
+- For remaining shots: use WALKING/MOVEMENT shots (mid-stride, turning a corner, stepping forward), PROFILE shots, or THREE-QUARTER VIEW shots. Vary the pose and energy across shots.
 
 LOCATION DIVERSITY:
 - The story concept describes a general area (e.g. "京都の祇園", "Paris Le Marais"). You MUST place each shot in a DIFFERENT specific micro-location within that area.
@@ -124,6 +125,7 @@ CRITICAL RULES:
 - The model MUST be described as wearing the EXACT garments provided, woven naturally into the scene
 - Do NOT include any text overlays, watermarks, or labels in the prompt
 - The model must ALWAYS stand on dry ground. NEVER place the model inside water, puddles, or wet surfaces. For beach, lake, river, or ocean scenes, the model must be on dry shore, sand, rocks, a dock, or a pier — never wading or stepping into the water
+- HAIR RULE: Only the ONE "GAZE SHIFT" hero shot may include hair touching, brushing, or tossing. ALL other shots must keep the model's hands AWAY from their hair. Use varied hand positions instead: hands in pockets, holding a bag strap, adjusting a cuff, resting at sides, or gesturing naturally
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 {"shots": [{"prompt": "Editorial fashion photography, ...", "aspectRatio": "3:4", "label": "Dawn Arrival"}, ...]}`;
@@ -191,12 +193,12 @@ function buildFallback(
 ) {
   const aspectRatios = ['3:4', '16:9', '16:9', '3:4', '4:3', '1:1'];
   const poses = [
-    'standing with confident posture, looking away from camera',
-    'walking naturally mid-stride, profile view',
-    'sitting elegantly, looking directly at camera',
-    'leaning against a wall, three-quarter view',
-    'in a dynamic fashion pose, low angle shot',
-    'standing in silhouette, backlit',
+    'standing with confident posture, hands at sides, looking away from camera',
+    'walking naturally mid-stride, profile view, full body visible',
+    'standing full body head to toe, three-quarter view, environment visible',
+    'turning to look directly at camera while brushing hair back, close-up',
+    'leaning against a wall, hands in pockets, low angle shot',
+    'walking toward camera on a path, wide environmental shot',
   ];
 
   const shots = Array.from({ length: shotCount }, (_, i) => ({
