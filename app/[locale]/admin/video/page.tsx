@@ -39,7 +39,7 @@ export default function VideoPage() {
   const ja = locale === 'ja';
   const store = useStoreContext((s) => s.store);
   const storeId = store?.id;
-  const { looks, items, isLoading } = useCollection();
+  const { looks, items, isLoading, refetch } = useCollection();
   const videoSettings = useVideoSettingsStore();
   const { activeJobs, setJob, updateJobStatus } = useVideoJobStore();
 
@@ -153,6 +153,10 @@ export default function VideoPage() {
         },
         (progress) => {
           setPipelineProgress(progress);
+          // Refresh collection data when a clip completes to update UI
+          if (progress.clipProgress.some(c => c.status === 'done' || c.status === 'failed')) {
+            refetch();
+          }
           if (storeId) {
             updateJobStatus(storeId, {
               currentStep: progress.step,
@@ -192,6 +196,7 @@ export default function VideoPage() {
     } finally {
       setIsGenerating(false);
       setPipelineProgress(null);
+      refetch();
     }
   };
 
@@ -505,7 +510,7 @@ export default function VideoPage() {
                     <div className="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded-md font-medium">
                       {idx + 1}
                     </div>
-                    {look.video_clip_url ? (
+                    {look.video_clip_url && !pipelineProgress ? (
                       <div className="absolute top-2 right-2 bg-emerald-500 text-white p-1 rounded-md">
                         <Video size={10} />
                       </div>
