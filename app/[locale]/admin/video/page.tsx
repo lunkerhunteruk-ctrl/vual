@@ -149,6 +149,7 @@ export default function VideoPage() {
           videoPrompts,
           totalDurationSec: videoSettings.totalDurationSec,
           videoModel: videoSettings.videoModel,
+          aspectRatio: videoSettings.aspectRatio || '9:16',
           requestData: videoSettings.getSettings(),
         },
         (progress) => {
@@ -221,7 +222,7 @@ export default function VideoPage() {
           jobId: activeJob?.id,
           prompt,
           durationSeconds: veoDuration,
-          aspectRatio: '16:9',
+          aspectRatio: videoSettings.aspectRatio || '9:16',
         }),
       });
 
@@ -314,6 +315,8 @@ export default function VideoPage() {
 
       const jobId = activeJob?.id || '';
       const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
+      const clipAspectRatio = settings.aspectRatio || '9:16';
+
       const res = await fetch('/api/video/render', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -327,6 +330,7 @@ export default function VideoPage() {
           showEnding: settings.showEnding,
           whiteFlash: settings.whiteFlash,
           brandName: store?.name || 'VUAL',
+          aspectRatio: clipAspectRatio,
         }),
       });
 

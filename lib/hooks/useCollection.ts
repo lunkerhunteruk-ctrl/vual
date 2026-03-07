@@ -30,6 +30,7 @@ export interface CollectionLook {
   telop_caption_en: string | null;
   shot_duration_sec: number;
   video_clip_url: string | null;
+  aspect_ratio: string | null;
   editorial_group_id: string | null;
   bundle_id: string | null;
   bundle_position: number;

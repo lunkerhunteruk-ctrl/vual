@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Video, Music, Type, Zap, Film, Clock } from 'lucide-react';
+import { Video, Music, Type, Zap, Film, Clock, Maximize } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
 import {
   distributeVideoDuration,
@@ -14,6 +14,12 @@ const motionPresets = [
   { id: 'slide' as const, labelEn: 'Slide', labelJa: 'スライド' },
   { id: 'shuffle' as const, labelEn: 'Shuffle', labelJa: 'シャッフル' },
   { id: 'minimal' as const, labelEn: 'Minimal', labelJa: 'ミニマル' },
+];
+
+const aspectRatioOptions = [
+  { id: '9:16' as const, label: '9:16', descEn: 'Portrait', descJa: '縦型' },
+  { id: '16:9' as const, label: '16:9', descEn: 'Landscape', descJa: '横型' },
+  { id: '1:1' as const, label: '1:1', descEn: 'Square', descJa: '正方形' },
 ];
 
 const fontOptions = [
@@ -69,6 +75,20 @@ export function VideoSettingsPanel({
             label="Kling 3.0"
             disabled
           />
+        </div>
+      </Section>
+
+      {/* Aspect Ratio */}
+      <Section icon={<Maximize size={14} />} title={ja ? 'アスペクト比' : 'Aspect Ratio'}>
+        <div className="flex gap-1.5">
+          {aspectRatioOptions.map((ar) => (
+            <Chip
+              key={ar.id}
+              active={store.aspectRatio === ar.id}
+              onClick={() => store.setAspectRatio(ar.id)}
+              label={ar.label}
+            />
+          ))}
         </div>
       </Section>
 

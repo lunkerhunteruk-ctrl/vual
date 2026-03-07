@@ -18,6 +18,7 @@ export interface PipelineConfig {
   videoPrompts: { lookId: string; prompt: string }[];
   totalDurationSec: number;
   videoModel: 'veo' | 'kling';
+  aspectRatio: '16:9' | '9:16' | '1:1';
   requestData: {
     motionPreset: string;
     bgmId: string | null;
@@ -72,7 +73,7 @@ export async function runPipeline(
   config: PipelineConfig,
   onProgress?: ProgressCallback
 ): Promise<{ success: boolean; clipUrls: string[]; error?: string }> {
-  const { jobId, lookIds, videoPrompts, totalDurationSec, videoModel } = config;
+  const { jobId, lookIds, videoPrompts, totalDurationSec, videoModel, aspectRatio } = config;
 
   // Calculate duration per clip
   const durations = distributeVideoDuration(lookIds.length, totalDurationSec);
@@ -142,7 +143,7 @@ export async function runPipeline(
           jobId,
           prompt,
           durationSeconds: duration,
-          aspectRatio: '16:9',
+          aspectRatio,
         }),
       });
 
