@@ -66,7 +66,7 @@ export async function startRender(
     codec: "h264",
     imageFormat: "jpeg",
     maxRetries: 1,
-    framesPerLambda: 20,
+    framesPerLambda: 900,
     privacy: "public",
   });
 
