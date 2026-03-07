@@ -12,6 +12,7 @@ export interface VideoSettingsState {
   textFont: 'impact' | 'noto-sans' | 'montserrat';
   aspectRatio: '16:9' | '9:16' | '1:1';
   letterbox: boolean;
+  colorPreset: 'none' | 'natural' | 'chrome' | 'film';
 }
 
 interface VideoSettingsStore extends VideoSettingsState {
@@ -25,6 +26,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setTextFont: (font: 'impact' | 'noto-sans' | 'montserrat') => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
   setLetterbox: (on: boolean) => void;
+  setColorPreset: (preset: 'none' | 'natural' | 'chrome' | 'film') => void;
   getSettings: () => VideoSettingsState;
 }
 
@@ -41,6 +43,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       textFont: 'impact',
       aspectRatio: '9:16',
       letterbox: false,
+      colorPreset: 'none',
 
       setVideoModel: (model) => set({ videoModel: model }),
       setTotalDuration: (sec) => set({ totalDurationSec: sec }),
@@ -52,6 +55,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setTextFont: (font) => set({ textFont: font }),
       setAspectRatio: (ar) => set({ aspectRatio: ar }),
       setLetterbox: (on) => set({ letterbox: on }),
+      setColorPreset: (preset) => set({ colorPreset: preset }),
 
       getSettings: () => {
         const s = get();
@@ -66,6 +70,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
           letterbox: s.letterbox,
+          colorPreset: s.colorPreset,
         };
       },
     }),

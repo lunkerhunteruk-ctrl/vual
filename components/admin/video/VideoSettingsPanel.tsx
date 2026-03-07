@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Video, Music, Type, Zap, Film, Clock, Maximize } from 'lucide-react';
+import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
 import {
   distributeVideoDuration,
@@ -26,6 +26,13 @@ const fontOptions = [
   { id: 'impact' as const, label: 'Impact' },
   { id: 'noto-sans' as const, label: 'Noto Sans' },
   { id: 'montserrat' as const, label: 'Montserrat' },
+];
+
+const colorPresetOptions = [
+  { id: 'none' as const, labelEn: 'None', labelJa: 'なし' },
+  { id: 'natural' as const, labelEn: 'Natural', labelJa: 'ナチュラル' },
+  { id: 'chrome' as const, labelEn: 'Chrome', labelJa: 'クローム' },
+  { id: 'film' as const, labelEn: 'Film', labelJa: 'フィルム' },
 ];
 
 const bgmOptions = [
@@ -153,6 +160,20 @@ export function VideoSettingsPanel({
               active={store.textFont === f.id}
               onClick={() => store.setTextFont(f.id)}
               label={f.label}
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* Color Preset */}
+      <Section icon={<Palette size={14} />} title={ja ? 'カラー' : 'Color'}>
+        <div className="flex gap-1.5 flex-wrap">
+          {colorPresetOptions.map((c) => (
+            <Chip
+              key={c.id}
+              active={store.colorPreset === c.id}
+              onClick={() => store.setColorPreset(c.id)}
+              label={ja ? c.labelJa : c.labelEn}
             />
           ))}
         </div>

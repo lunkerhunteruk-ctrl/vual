@@ -332,6 +332,7 @@ export default function VideoPage() {
           whiteFlash: settings.whiteFlash,
           brandName: store?.name || 'VUAL',
           aspectRatio: clipAspectRatio,
+          colorPreset: settings.colorPreset || 'none',
         }),
       });
 
