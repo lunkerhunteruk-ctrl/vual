@@ -407,7 +407,12 @@ export default function VideoPage() {
               return (
                 <button
                   key={bundle.id}
-                  onClick={() => setSelectedBundleId(bundle.id)}
+                  onClick={() => {
+                    setSelectedBundleId(bundle.id);
+                    setFinalVideoUrl(null);
+                    setRenderProgress(0);
+                    setIsRendering(false);
+                  }}
                   className={`
                     w-full text-left p-3 rounded-xl border-2 transition-all
                     ${isSelected
@@ -674,7 +679,9 @@ export default function VideoPage() {
                     <button
                       onClick={async () => {
                         try {
-                          const res = await fetch(finalVideoUrl);
+                          // Use proxy API to avoid S3 CORS issues
+                          const proxyUrl = `/api/video/download?url=${encodeURIComponent(finalVideoUrl)}`;
+                          const res = await fetch(proxyUrl);
                           const blob = await res.blob();
                           const url = URL.createObjectURL(blob);
                           const a = document.createElement('a');
@@ -685,6 +692,7 @@ export default function VideoPage() {
                           document.body.removeChild(a);
                           URL.revokeObjectURL(url);
                         } catch (err) {
+                          console.error('[Download] Error:', err);
                           window.open(finalVideoUrl, '_blank');
                         }
                       }}
