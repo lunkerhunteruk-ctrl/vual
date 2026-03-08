@@ -183,6 +183,65 @@ export async function POST(request: NextRequest) {
       if (linkError) {
         console.error('[Collections] Product link error:', linkError);
       }
+
+      // Also sync to product_model_image_links so the model image shows on product pages
+      try {
+        // Find or create the product_model_images record for this look image
+        let modelImageId = sourceModelImageId;
+
+        if (!modelImageId) {
+          // Check if a model image already exists with this URL
+          const { data: existingModel } = await supabase
+            .from('product_model_images')
+            .select('id')
+            .eq('image_url', permanentUrl)
+            .single();
+
+          if (existingModel) {
+            modelImageId = existingModel.id;
+          } else {
+            // Create a new product_model_images record
+            const { data: newModel } = await supabase
+              .from('product_model_images')
+              .insert({
+                image_url: permanentUrl,
+                source_result_id: sourceGeminiResultId || null,
+              })
+              .select('id')
+              .single();
+
+            modelImageId = newModel?.id;
+          }
+        }
+
+        if (modelImageId) {
+          // Update the look to store the model image FK
+          if (!sourceModelImageId) {
+            await supabase
+              .from('collection_looks')
+              .update({ source_model_image_id: modelImageId })
+              .eq('id', look.id);
+          }
+
+          // Create product_model_image_links for each product
+          const modelLinks = productIds.slice(0, 4).map((pid: string) => ({
+            model_image_id: modelImageId,
+            product_id: pid,
+          }));
+
+          const { error: modelLinkError } = await supabase
+            .from('product_model_image_links')
+            .upsert(modelLinks, { onConflict: 'model_image_id,product_id' });
+
+          if (modelLinkError) {
+            console.error('[Collections] Model image link error (non-blocking):', modelLinkError);
+          } else {
+            console.log('[Collections] Model image linked to', modelLinks.length, 'products');
+          }
+        }
+      } catch (syncErr) {
+        console.error('[Collections] Model image sync error (non-blocking):', syncErr);
+      }
     }
 
     return NextResponse.json({ success: true, look });
