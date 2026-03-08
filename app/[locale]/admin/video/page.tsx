@@ -46,6 +46,21 @@ export default function VideoPage() {
   const videoSettings = useVideoSettingsStore();
   const { activeJobs, setJob, updateJobStatus } = useVideoJobStore();
 
+  // Custom BGM tracks for URL resolution
+  const [bgmTracks, setBgmTracks] = useState<{ id: string; url: string }[]>([]);
+  useEffect(() => {
+    fetch('/api/video/bgm').then(r => r.json()).then(d => {
+      if (d.tracks) setBgmTracks(d.tracks);
+    }).catch(() => {});
+  }, []);
+
+  const resolveBgmUrl = useCallback((bgmId: string | null): string | undefined => {
+    if (!bgmId) return undefined;
+    if (BGM_URL_MAP[bgmId]) return BGM_URL_MAP[bgmId];
+    const custom = bgmTracks.find(t => t.id === bgmId);
+    return custom?.url;
+  }, [bgmTracks]);
+
   const [selectedBundleId, setSelectedBundleId] = useState<string | null>(null);
   const [pipelineProgress, setPipelineProgress] = useState<PipelineProgress | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -167,7 +182,7 @@ export default function VideoPage() {
         telopPosition: 'bottom-left' as const,
       }));
 
-      const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
+      const bgmUrl = resolveBgmUrl(settings.bgmId);
       const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
 
       const res = await fetch('/api/video/render', {
@@ -456,7 +471,7 @@ export default function VideoPage() {
         }));
 
       const jobId = activeJob?.id || '';
-      const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
+      const bgmUrl = resolveBgmUrl(settings.bgmId);
       // Letterbox mode: render at 4:5 with contain fit (no crop)
       const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
 

@@ -1,14 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard } from 'lucide-react';
+import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard, Upload, Loader2, X } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
 import {
   distributeVideoDuration,
   formatDistribution,
   getDurationRange,
 } from '@/lib/utils/video-duration';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
+
+interface BgmTrack {
+  id: string;
+  name: string;
+  url: string;
+  file_size: number;
+  created_at: string;
+}
 
 const motionPresets = [
   { id: 'slide' as const, labelEn: 'Slide', labelJa: 'スライド' },
@@ -69,6 +77,64 @@ export function VideoSettingsPanel({
 
   const [presetName, setPresetName] = useState('');
   const [showSaveInput, setShowSaveInput] = useState(false);
+
+  // BGM custom tracks
+  const [customBgmTracks, setCustomBgmTracks] = useState<BgmTrack[]>([]);
+  const [showBgmUpload, setShowBgmUpload] = useState(false);
+  const [bgmUploadName, setBgmUploadName] = useState('');
+  const [bgmUploading, setBgmUploading] = useState(false);
+  const [bgmDeleting, setBgmDeleting] = useState<string | null>(null);
+  const bgmFileRef = useRef<HTMLInputElement>(null);
+  const [bgmFile, setBgmFile] = useState<File | null>(null);
+
+  const fetchBgmTracks = useCallback(async () => {
+    try {
+      const res = await fetch('/api/video/bgm');
+      const data = await res.json();
+      if (data.tracks) setCustomBgmTracks(data.tracks);
+    } catch {}
+  }, []);
+
+  useEffect(() => { fetchBgmTracks(); }, [fetchBgmTracks]);
+
+  const handleBgmUpload = async () => {
+    if (!bgmFile || !bgmUploadName.trim()) return;
+    setBgmUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', bgmFile);
+      formData.append('name', bgmUploadName.trim());
+      const res = await fetch('/api/video/bgm', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (data.success && data.track) {
+        setCustomBgmTracks(prev => [data.track, ...prev]);
+        store.setBgmId(data.track.id);
+        setShowBgmUpload(false);
+        setBgmUploadName('');
+        setBgmFile(null);
+      }
+    } catch (err) {
+      console.error('BGM upload failed:', err);
+    } finally {
+      setBgmUploading(false);
+    }
+  };
+
+  const handleBgmDelete = async (trackId: string) => {
+    setBgmDeleting(trackId);
+    try {
+      const res = await fetch(`/api/video/bgm?id=${trackId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setCustomBgmTracks(prev => prev.filter(t => t.id !== trackId));
+        if (store.bgmId === trackId) store.setBgmId(null);
+      }
+    } catch {} finally {
+      setBgmDeleting(null);
+    }
+  };
+
+  const isCustomBgm = store.bgmId && !['ambient-01', 'upbeat-01', 'cinematic-01'].includes(store.bgmId);
 
   const handleSavePreset = () => {
     if (!presetName.trim()) return;
@@ -212,17 +278,85 @@ export function VideoSettingsPanel({
 
       {/* BGM */}
       <Section icon={<Music size={14} />} title="BGM">
-        <select
-          value={store.bgmId || 'none'}
-          onChange={(e) => store.setBgmId(e.target.value === 'none' ? null : e.target.value)}
-          className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
-        >
-          {bgmOptions.map((opt) => (
-            <option key={opt.id} value={opt.id}>
-              {ja ? opt.labelJa : opt.labelEn}
-            </option>
-          ))}
-        </select>
+        <div className="space-y-2">
+          <div className="flex gap-1.5">
+            <select
+              value={store.bgmId || 'none'}
+              onChange={(e) => store.setBgmId(e.target.value === 'none' ? null : e.target.value)}
+              className="flex-1 px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+            >
+              {bgmOptions.map((opt) => (
+                <option key={opt.id} value={opt.id}>
+                  {ja ? opt.labelJa : opt.labelEn}
+                </option>
+              ))}
+              {customBgmTracks.length > 0 && (
+                <option disabled>──────</option>
+              )}
+              {customBgmTracks.map((t) => (
+                <option key={t.id} value={t.id}>{t.name}</option>
+              ))}
+            </select>
+            {isCustomBgm && (
+              <button
+                onClick={() => store.bgmId && handleBgmDelete(store.bgmId)}
+                disabled={bgmDeleting === store.bgmId}
+                className="p-1.5 rounded-lg border border-[var(--color-line)] text-red-500 hover:bg-red-50 transition-colors"
+              >
+                {bgmDeleting === store.bgmId ? <Loader2 size={12} className="animate-spin" /> : <Trash2 size={12} />}
+              </button>
+            )}
+          </div>
+
+          {showBgmUpload ? (
+            <div className="space-y-1.5 p-2.5 rounded-lg border border-[var(--color-line)] bg-[var(--color-bg-element)]">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-medium text-[var(--color-text-label)]">
+                  {ja ? 'BGMアップロード' : 'Upload BGM'}
+                </span>
+                <button onClick={() => { setShowBgmUpload(false); setBgmFile(null); setBgmUploadName(''); }}>
+                  <X size={12} className="text-[var(--color-text-placeholder)]" />
+                </button>
+              </div>
+              <input
+                ref={bgmFileRef}
+                type="file"
+                accept=".mp3,audio/mpeg"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) {
+                    setBgmFile(f);
+                    if (!bgmUploadName) setBgmUploadName(f.name.replace(/\.\w+$/, ''));
+                  }
+                }}
+                className="w-full text-xs file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-xs file:bg-[var(--color-accent)]/10 file:text-[var(--color-accent)]"
+              />
+              <input
+                type="text"
+                value={bgmUploadName}
+                onChange={(e) => setBgmUploadName(e.target.value)}
+                placeholder={ja ? 'トラック名...' : 'Track name...'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+              <button
+                onClick={handleBgmUpload}
+                disabled={!bgmFile || !bgmUploadName.trim() || bgmUploading}
+                className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--color-accent)] text-white text-xs font-medium disabled:opacity-30 transition-opacity"
+              >
+                {bgmUploading ? <Loader2 size={12} className="animate-spin" /> : <Upload size={12} />}
+                {bgmUploading ? (ja ? 'アップロード中...' : 'Uploading...') : (ja ? 'アップロード' : 'Upload')}
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowBgmUpload(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-dashed border-[var(--color-line)] text-xs text-[var(--color-text-label)] hover:border-[var(--color-accent)]/50 hover:text-[var(--color-accent)] transition-colors w-full justify-center"
+            >
+              <Upload size={12} />
+              {ja ? 'BGMをアップロード' : 'Upload BGM'}
+            </button>
+          )}
+        </div>
       </Section>
 
       {/* Font */}
