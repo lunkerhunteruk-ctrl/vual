@@ -10,6 +10,7 @@ export interface VideoSettingsState {
   bgmId: string | null;
   showIntro: boolean;
   introStyle: 'flatlay' | 'text-only';
+  flatLayImages: [string, string, string, string];
   introText: string;
   locationText: string;
   dateText: string;
@@ -41,6 +42,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setBgmId: (id: string | null) => void;
   setShowIntro: (show: boolean) => void;
   setIntroStyle: (style: 'flatlay' | 'text-only') => void;
+  setFlatLayImage: (index: 0 | 1 | 2 | 3, url: string) => void;
   setIntroText: (text: string) => void;
   setLocationText: (text: string) => void;
   setDateText: (text: string) => void;
@@ -80,6 +82,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       bgmId: null,
       showIntro: true,
       introStyle: 'flatlay',
+      flatLayImages: ['', '', '', ''] as [string, string, string, string],
       introText: 'FROM FLATLAY TO RUNWAY',
       locationText: '',
       dateText: '',
@@ -102,6 +105,12 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setBgmId: (id) => set({ bgmId: id, activePresetId: null }),
       setShowIntro: (show) => set({ showIntro: show, activePresetId: null }),
       setIntroStyle: (style) => set({ introStyle: style, activePresetId: null }),
+      setFlatLayImage: (index, url) => {
+        const current = get().flatLayImages;
+        const updated = [...current] as [string, string, string, string];
+        updated[index] = url;
+        set({ flatLayImages: updated, activePresetId: null });
+      },
       setIntroText: (text) => set({ introText: text, activePresetId: null }),
       setLocationText: (text) => set({ locationText: text, activePresetId: null }),
       setDateText: (text) => set({ dateText: text, activePresetId: null }),
@@ -141,6 +150,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           bgmId: s.bgmId,
           showIntro: s.showIntro,
           introStyle: s.introStyle,
+          flatLayImages: s.flatLayImages,
           introText: s.introText,
           locationText: s.locationText,
           dateText: s.dateText,

@@ -29,6 +29,7 @@ export interface RenderRequest {
   showIntro: boolean;
   introStyle?: "flatlay" | "text-only";
   introText?: string;
+  flatLayImageUrls?: string[];
   locationText?: string;
   dateText?: string;
   showEnding: boolean;

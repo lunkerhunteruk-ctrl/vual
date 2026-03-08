@@ -479,6 +479,9 @@ export function VideoSettingsPanel({
                   />
                 ))}
               </div>
+              {store.introStyle === 'flatlay' && (
+                <FlatLayImageGrid ja={ja} />
+              )}
               <input
                 type="text"
                 value={store.introText}
@@ -633,5 +636,108 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
         />
       </button>
     </label>
+  );
+}
+
+const FLATLAY_LABELS_JA = ['左上', '右上', '左下', '右下'];
+const FLATLAY_LABELS_EN = ['Top Left', 'Top Right', 'Bottom Left', 'Bottom Right'];
+
+function FlatLayImageGrid({ ja }: { ja: boolean }) {
+  const store = useVideoSettingsStore();
+  const [uploading, setUploading] = useState<number | null>(null);
+  const fileRefs = [
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+    useRef<HTMLInputElement>(null),
+  ];
+
+  const handleUpload = async (index: 0 | 1 | 2 | 3, file: File) => {
+    setUploading(index);
+    try {
+      const signRes = await fetch('/api/video/flatlay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'sign', fileName: file.name }),
+      });
+      const signData = await signRes.json();
+      if (!signData.signedUrl) throw new Error(signData.error || 'Failed to get upload URL');
+
+      const uploadRes = await fetch(signData.signedUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type || 'image/png' },
+        body: file,
+      });
+      if (!uploadRes.ok) throw new Error(`Upload failed: ${uploadRes.status}`);
+
+      store.setFlatLayImage(index, signData.publicUrl);
+    } catch (err) {
+      console.error('Flatlay upload failed:', err);
+    } finally {
+      setUploading(null);
+    }
+  };
+
+  const labels = ja ? FLATLAY_LABELS_JA : FLATLAY_LABELS_EN;
+
+  return (
+    <div className="grid grid-cols-2 gap-2">
+      {([0, 1, 2, 3] as const).map((i) => {
+        const url = store.flatLayImages[i];
+        return (
+          <div key={i} className="relative">
+            <input
+              ref={fileRefs[i]}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) handleUpload(i, f);
+                e.target.value = '';
+              }}
+            />
+            {url ? (
+              <div
+                className="aspect-square rounded-lg border border-[var(--color-line)] overflow-hidden relative group cursor-pointer bg-neutral-100"
+                onClick={() => fileRefs[i].current?.click()}
+              >
+                <img
+                  src={url}
+                  alt={labels[i]}
+                  className="w-full h-full object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    store.setFlatLayImage(i, '');
+                  }}
+                  className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <X size={12} />
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => fileRefs[i].current?.click()}
+                disabled={uploading === i}
+                className="aspect-square w-full rounded-lg border-2 border-dashed border-[var(--color-line)] hover:border-[var(--color-accent)]/50 flex flex-col items-center justify-center gap-1 transition-colors"
+              >
+                {uploading === i ? (
+                  <Loader2 size={16} className="text-[var(--color-accent)] animate-spin" />
+                ) : (
+                  <>
+                    <Upload size={14} className="text-[var(--color-text-label)]" />
+                    <span className="text-[10px] text-[var(--color-text-label)]">{labels[i]}</span>
+                  </>
+                )}
+              </button>
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
