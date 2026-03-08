@@ -93,6 +93,14 @@ export async function getRenderStatus(
     functionName: FUNCTION_NAME,
   });
 
+  console.log("[Render Debug]", {
+    chunks: progress.chunks,
+    lambdasInvoked: progress.lambdasInvoked,
+    framesRendered: progress.framesRendered,
+    totalFrames: progress.frameCount,
+    functionName: FUNCTION_NAME,
+  });
+
   if (progress.done) {
     return {
       done: true,
