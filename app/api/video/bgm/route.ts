@@ -32,7 +32,9 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST: Upload BGM file and register track (server-side upload with service_role)
+// POST: Two-step process
+// Step 1: action=sign — Generate signed upload URL (service_role bypasses RLS)
+// Step 2: action=register — Register metadata after client uploads to Storage
 export async function POST(request: NextRequest) {
   try {
     const supabase = createServerClient();
@@ -41,58 +43,68 @@ export async function POST(request: NextRequest) {
     }
 
     const storeId = await resolveStoreIdFromRequest(request);
-    const formData = await request.formData();
-    const file = formData.get('file') as File | null;
-    const name = formData.get('name') as string | null;
+    const body = await request.json();
+    const { action } = body;
 
-    if (!file || !name?.trim()) {
-      return NextResponse.json({ error: 'file and name are required' }, { status: 400 });
-    }
+    // Step 1: Generate signed upload URL
+    if (action === 'sign') {
+      const { fileName, contentType } = body;
+      if (!fileName) {
+        return NextResponse.json({ error: 'fileName is required' }, { status: 400 });
+      }
 
-    // Upload to Supabase Storage with service_role (bypasses RLS)
-    const timestamp = Date.now();
-    const randomStr = Math.random().toString(36).substring(2, 8);
-    const ext = file.name.split('.').pop() || 'mp3';
-    const filename = `bgm/${timestamp}-${randomStr}.${ext}`;
+      const timestamp = Date.now();
+      const randomStr = Math.random().toString(36).substring(2, 8);
+      const ext = fileName.split('.').pop() || 'mp3';
+      const storagePath = `bgm/${timestamp}-${randomStr}.${ext}`;
 
-    const buffer = Buffer.from(await file.arrayBuffer());
+      const { data, error: signError } = await supabase.storage
+        .from('model-images')
+        .createSignedUploadUrl(storagePath);
 
-    const { error: uploadError } = await supabase.storage
-      .from('model-images')
-      .upload(filename, buffer, {
-        contentType: file.type || 'audio/mpeg',
-        cacheControl: '31536000',
+      if (signError) {
+        console.error('[BGM] Signed URL error:', signError);
+        return NextResponse.json({ error: 'Failed to create upload URL' }, { status: 500 });
+      }
+
+      return NextResponse.json({
+        signedUrl: data.signedUrl,
+        token: data.token,
+        path: storagePath,
       });
-
-    if (uploadError) {
-      console.error('[BGM] Storage upload error:', uploadError);
-      return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 });
     }
 
-    const { data: urlData } = supabase.storage
-      .from('model-images')
-      .getPublicUrl(filename);
+    // Step 2: Register metadata after upload
+    if (action === 'register') {
+      const { name, path: storagePath, fileSize } = body;
+      if (!name?.trim() || !storagePath) {
+        return NextResponse.json({ error: 'name and path are required' }, { status: 400 });
+      }
 
-    // Register metadata in database
-    const { data: track, error: insertError } = await supabase
-      .from('bgm_tracks')
-      .insert({
-        store_id: storeId,
-        name: name.trim(),
-        url: urlData.publicUrl,
-        file_size: file.size,
-      })
-      .select('id, name, url, file_size, created_at')
-      .single();
+      const { data: urlData } = supabase.storage
+        .from('model-images')
+        .getPublicUrl(storagePath);
 
-    if (insertError) {
-      console.error('[BGM] Insert error:', insertError);
-      // Clean up uploaded file
-      await supabase.storage.from('model-images').remove([filename]);
-      return NextResponse.json({ error: 'Failed to save track' }, { status: 500 });
+      const { data: track, error: insertError } = await supabase
+        .from('bgm_tracks')
+        .insert({
+          store_id: storeId,
+          name: name.trim(),
+          url: urlData.publicUrl,
+          file_size: fileSize || 0,
+        })
+        .select('id, name, url, file_size, created_at')
+        .single();
+
+      if (insertError) {
+        console.error('[BGM] Insert error:', insertError);
+        return NextResponse.json({ error: 'Failed to save track' }, { status: 500 });
+      }
+
+      return NextResponse.json({ success: true, track });
     }
 
-    return NextResponse.json({ success: true, track });
+    return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
   } catch (error: any) {
     console.error('[BGM] POST error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

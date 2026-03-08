@@ -10,7 +10,6 @@ import {
   getDurationRange,
 } from '@/lib/utils/video-duration';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import { trimAndCompressMP3 } from '@/lib/audio/mp3-trimmer';
 
 interface BgmTrack {
   id: string;
@@ -113,39 +112,55 @@ export function VideoSettingsPanel({
     setBgmUploading(true);
     setBgmStatus('');
     try {
-      // Trim + compress if needed (always process to ensure 60s max + 128kbps)
-      setBgmStatus('音声を処理中...');
-      const result = await trimAndCompressMP3(bgmFile, 60, (phase) => setBgmStatus(phase));
-      const processedFile = new File([result.blob], bgmFile.name, { type: 'audio/mpeg' });
-
-      if (result.trimmedDuration < result.originalDuration) {
-        setBgmStatus(`${Math.round(result.originalDuration)}秒 → ${Math.round(result.trimmedDuration)}秒にトリム`);
-      }
-
-      // Upload via API route (service_role handles Storage + DB)
-      setBgmStatus('アップロード中...');
-      const formData = new FormData();
-      formData.append('file', processedFile);
-      formData.append('name', bgmUploadName.trim());
-
-      const res = await fetch('/api/video/bgm', {
+      // Step 1: Get signed upload URL from API (service_role)
+      setBgmStatus('準備中...');
+      const signRes = await fetch('/api/video/bgm', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'sign',
+          fileName: bgmFile.name,
+          contentType: bgmFile.type || 'audio/mpeg',
+        }),
       });
-      const data = await res.json();
-      if (data.success && data.track) {
-        setCustomBgmTracks(prev => [data.track, ...prev]);
-        store.setBgmId(data.track.id);
+      const signData = await signRes.json();
+      if (!signData.signedUrl) throw new Error(signData.error || 'Failed to get upload URL');
+
+      // Step 2: Upload directly to Supabase Storage via signed URL
+      setBgmStatus('アップロード中...');
+      const uploadRes = await fetch(signData.signedUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': bgmFile.type || 'audio/mpeg' },
+        body: bgmFile,
+      });
+      if (!uploadRes.ok) throw new Error(`Upload failed: ${uploadRes.status}`);
+
+      // Step 3: Register metadata via API
+      setBgmStatus('登録中...');
+      const regRes = await fetch('/api/video/bgm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'register',
+          name: bgmUploadName.trim(),
+          path: signData.path,
+          fileSize: bgmFile.size,
+        }),
+      });
+      const regData = await regRes.json();
+      if (regData.success && regData.track) {
+        setCustomBgmTracks(prev => [regData.track, ...prev]);
+        store.setBgmId(regData.track.id);
         setShowBgmUpload(false);
         setBgmUploadName('');
         setBgmFile(null);
         setBgmStatus('');
       } else {
-        setBgmStatus('アップロード失敗');
-        console.error('BGM upload failed:', data.error);
+        setBgmStatus('登録失敗');
+        console.error('BGM register failed:', regData.error);
       }
     } catch (err) {
-      setBgmStatus('処理失敗');
+      setBgmStatus('アップロード失敗');
       console.error('BGM upload failed:', err);
     } finally {
       setBgmUploading(false);
