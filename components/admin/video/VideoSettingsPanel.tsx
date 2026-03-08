@@ -411,16 +411,15 @@ export function VideoSettingsPanel({
 
       {/* Font */}
       <Section icon={<Type size={14} />} title={ja ? 'フォント' : 'Font'}>
-        <div className="flex gap-1.5">
+        <select
+          value={store.textFont}
+          onChange={(e) => store.setTextFont(e.target.value as typeof store.textFont)}
+          className="w-full px-3 py-2 rounded-lg border border-stone-200 bg-white text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-stone-300"
+        >
           {fontOptions.map((f) => (
-            <Chip
-              key={f.id}
-              active={store.textFont === f.id}
-              onClick={() => store.setTextFont(f.id)}
-              label={f.label}
-            />
+            <option key={f.id} value={f.id}>{f.label}</option>
           ))}
-        </div>
+        </select>
       </Section>
 
       {/* Film Look */}
