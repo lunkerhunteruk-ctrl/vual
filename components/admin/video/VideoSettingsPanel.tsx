@@ -35,6 +35,9 @@ const fontOptions = [
   { id: 'impact' as const, label: 'Impact' },
   { id: 'noto-sans' as const, label: 'Noto Sans' },
   { id: 'montserrat' as const, label: 'Montserrat' },
+  { id: 'playfair-display' as const, label: 'Playfair Display' },
+  { id: 'cormorant-garamond' as const, label: 'Cormorant' },
+  { id: 'dm-serif-display' as const, label: 'DM Serif' },
 ];
 
 const EFFECT_LEVELS: { id: EffectLevel; labelEn: string; labelJa: string }[] = [

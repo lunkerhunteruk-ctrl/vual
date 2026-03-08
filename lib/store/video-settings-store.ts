@@ -15,7 +15,7 @@ export interface VideoSettingsState {
   dateText: string;
   showEnding: boolean;
   whiteFlash: boolean;
-  textFont: 'impact' | 'noto-sans' | 'montserrat';
+  textFont: 'impact' | 'noto-sans' | 'montserrat' | 'playfair-display' | 'cormorant-garamond' | 'dm-serif-display';
   aspectRatio: '16:9' | '9:16' | '1:1';
   letterbox: boolean;
   filmEffects: FilmEffects;
@@ -43,7 +43,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setDateText: (text: string) => void;
   setShowEnding: (show: boolean) => void;
   setWhiteFlash: (show: boolean) => void;
-  setTextFont: (font: 'impact' | 'noto-sans' | 'montserrat') => void;
+  setTextFont: (font: VideoSettingsState['textFont']) => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
   setLetterbox: (on: boolean) => void;
   setFilmLookPreset: (presetId: string) => void;

@@ -24,7 +24,7 @@ export interface RenderRequest {
     telopPosition?: string;
   }[];
   textStyle: "slide" | "shuffle" | "minimal";
-  textFont: "impact" | "noto-sans" | "montserrat";
+  textFont: "impact" | "noto-sans" | "montserrat" | "playfair-display" | "cormorant-garamond" | "dm-serif-display";
   bgmUrl?: string;
   showIntro: boolean;
   showEnding: boolean;
