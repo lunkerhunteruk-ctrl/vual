@@ -27,6 +27,10 @@ export interface RenderRequest {
   textFont: "impact" | "noto-sans" | "montserrat" | "playfair-display" | "cormorant-garamond" | "dm-serif-display";
   bgmUrl?: string;
   showIntro: boolean;
+  introStyle?: "flatlay" | "text-only";
+  introText?: string;
+  locationText?: string;
+  dateText?: string;
   showEnding: boolean;
   whiteFlash: boolean;
   brandName?: string;
