@@ -1,14 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette } from 'lucide-react';
+import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
 import {
   distributeVideoDuration,
   formatDistribution,
   getDurationRange,
 } from '@/lib/utils/video-duration';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 const motionPresets = [
   { id: 'slide' as const, labelEn: 'Slide', labelJa: 'スライド' },
@@ -33,6 +33,11 @@ const colorPresetOptions = [
   { id: 'natural' as const, labelEn: 'Natural', labelJa: 'ナチュラル' },
   { id: 'chrome' as const, labelEn: 'Chrome', labelJa: 'クローム' },
   { id: 'film' as const, labelEn: 'Film', labelJa: 'フィルム' },
+];
+
+const introStyleOptions = [
+  { id: 'flatlay' as const, labelEn: 'Flatlay', labelJa: 'フラットレイ' },
+  { id: 'text-only' as const, labelEn: 'Text Only', labelJa: 'テキストのみ' },
 ];
 
 const bgmOptions = [
@@ -62,11 +67,80 @@ export function VideoSettingsPanel({
     [distribution]
   );
 
+  const [presetName, setPresetName] = useState('');
+  const [showSaveInput, setShowSaveInput] = useState(false);
+
+  const handleSavePreset = () => {
+    if (!presetName.trim()) return;
+    store.savePreset(presetName.trim());
+    setPresetName('');
+    setShowSaveInput(false);
+  };
+
   return (
     <div className="space-y-5">
       <h3 className="text-xs font-semibold text-[var(--color-text-label)] uppercase tracking-wider">
         {ja ? '動画設定' : 'Video Settings'}
       </h3>
+
+      {/* Presets */}
+      <Section icon={<BookmarkCheck size={14} />} title={ja ? 'プリセット' : 'Presets'}>
+        <div className="space-y-2">
+          {store.presets.length > 0 && (
+            <div className="flex gap-1.5 flex-wrap">
+              {store.presets.map((p) => (
+                <div key={p.id} className="flex items-center gap-0.5">
+                  <Chip
+                    active={store.activePresetId === p.id}
+                    onClick={() => store.loadPreset(p.id)}
+                    label={p.name}
+                  />
+                  <button
+                    onClick={() => store.deletePreset(p.id)}
+                    className="p-0.5 text-[var(--color-text-placeholder)] hover:text-red-500 transition-colors"
+                  >
+                    <Trash2 size={10} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          {showSaveInput ? (
+            <div className="flex gap-1.5">
+              <input
+                type="text"
+                value={presetName}
+                onChange={(e) => setPresetName(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSavePreset()}
+                placeholder={ja ? 'プリセット名...' : 'Preset name...'}
+                className="flex-1 px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+                autoFocus
+              />
+              <button
+                onClick={handleSavePreset}
+                disabled={!presetName.trim()}
+                className="px-3 py-1.5 rounded-lg bg-[var(--color-accent)] text-white text-xs font-medium disabled:opacity-30"
+              >
+                {ja ? '保存' : 'Save'}
+              </button>
+              <button
+                onClick={() => { setShowSaveInput(false); setPresetName(''); }}
+                className="px-2 py-1.5 rounded-lg border border-[var(--color-line)] text-xs text-[var(--color-text-body)]"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowSaveInput(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-dashed border-[var(--color-line)] text-xs text-[var(--color-text-label)] hover:border-[var(--color-accent)]/50 hover:text-[var(--color-accent)] transition-colors w-full justify-center"
+            >
+              <Save size={12} />
+              {ja ? '現在の設定を保存' : 'Save current settings'}
+            </button>
+          )}
+        </div>
+      </Section>
 
       {/* Video Model */}
       <Section icon={<Video size={14} />} title={ja ? 'モデル' : 'Model'}>
@@ -179,14 +253,55 @@ export function VideoSettingsPanel({
         </div>
       </Section>
 
-      {/* Toggles */}
-      <Section icon={<Film size={14} />} title={ja ? 'エフェクト' : 'Effects'}>
-        <div className="space-y-2">
+      {/* Intro */}
+      <Section icon={<Clapperboard size={14} />} title={ja ? 'イントロ' : 'Intro'}>
+        <div className="space-y-3">
           <Toggle
-            label={ja ? 'イントロ' : 'Intro'}
+            label={ja ? 'イントロ表示' : 'Show Intro'}
             checked={store.showIntro}
             onChange={store.setShowIntro}
           />
+          {store.showIntro && (
+            <>
+              <div className="flex gap-1.5">
+                {introStyleOptions.map((s) => (
+                  <Chip
+                    key={s.id}
+                    active={store.introStyle === s.id}
+                    onClick={() => store.setIntroStyle(s.id)}
+                    label={ja ? s.labelJa : s.labelEn}
+                  />
+                ))}
+              </div>
+              <input
+                type="text"
+                value={store.introText}
+                onChange={(e) => store.setIntroText(e.target.value)}
+                placeholder={ja ? 'イントロテキスト（例: FROM FLATLAY TO RUNWAY）' : 'Intro text (e.g. FROM FLATLAY TO RUNWAY)'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+              <input
+                type="text"
+                value={store.dateText}
+                onChange={(e) => store.setDateText(e.target.value)}
+                placeholder={ja ? '日付（例: 6TH MARCH 2026）' : 'Date (e.g. 6TH MARCH 2026)'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+              <input
+                type="text"
+                value={store.locationText}
+                onChange={(e) => store.setLocationText(e.target.value)}
+                placeholder={ja ? '場所（例: ACROPOLIS ATHENS）' : 'Location (e.g. ACROPOLIS ATHENS)'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+            </>
+          )}
+        </div>
+      </Section>
+
+      {/* Toggles */}
+      <Section icon={<Film size={14} />} title={ja ? 'エフェクト' : 'Effects'}>
+        <div className="space-y-2">
           <Toggle
             label={ja ? 'エンディング' : 'Ending'}
             checked={store.showEnding}
