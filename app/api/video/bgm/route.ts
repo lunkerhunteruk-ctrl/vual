@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST: Register a BGM track (file already uploaded to Supabase Storage by client)
+// POST: Upload BGM file and register track (server-side upload with service_role)
 export async function POST(request: NextRequest) {
   try {
     const supabase = createServerClient();
@@ -41,26 +41,54 @@ export async function POST(request: NextRequest) {
     }
 
     const storeId = await resolveStoreIdFromRequest(request);
-    const body = await request.json();
-    const { name, url, fileSize } = body;
+    const formData = await request.formData();
+    const file = formData.get('file') as File | null;
+    const name = formData.get('name') as string | null;
 
-    if (!name || !url) {
-      return NextResponse.json({ error: 'name and url are required' }, { status: 400 });
+    if (!file || !name?.trim()) {
+      return NextResponse.json({ error: 'file and name are required' }, { status: 400 });
     }
 
+    // Upload to Supabase Storage with service_role (bypasses RLS)
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substring(2, 8);
+    const ext = file.name.split('.').pop() || 'mp3';
+    const filename = `bgm/${timestamp}-${randomStr}.${ext}`;
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    const { error: uploadError } = await supabase.storage
+      .from('model-images')
+      .upload(filename, buffer, {
+        contentType: file.type || 'audio/mpeg',
+        cacheControl: '31536000',
+      });
+
+    if (uploadError) {
+      console.error('[BGM] Storage upload error:', uploadError);
+      return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 });
+    }
+
+    const { data: urlData } = supabase.storage
+      .from('model-images')
+      .getPublicUrl(filename);
+
+    // Register metadata in database
     const { data: track, error: insertError } = await supabase
       .from('bgm_tracks')
       .insert({
         store_id: storeId,
         name: name.trim(),
-        url,
-        file_size: fileSize || 0,
+        url: urlData.publicUrl,
+        file_size: file.size,
       })
       .select('id, name, url, file_size, created_at')
       .single();
 
     if (insertError) {
       console.error('[BGM] Insert error:', insertError);
+      // Clean up uploaded file
+      await supabase.storage.from('model-images').remove([filename]);
       return NextResponse.json({ error: 'Failed to save track' }, { status: 500 });
     }
 

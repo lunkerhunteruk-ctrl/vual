@@ -10,7 +10,7 @@ import {
   getDurationRange,
 } from '@/lib/utils/video-duration';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
+import { trimAndCompressMP3 } from '@/lib/audio/mp3-trimmer';
 
 interface BgmTrack {
   id: string;
@@ -93,6 +93,7 @@ export function VideoSettingsPanel({
   const [showBgmUpload, setShowBgmUpload] = useState(false);
   const [bgmUploadName, setBgmUploadName] = useState('');
   const [bgmUploading, setBgmUploading] = useState(false);
+  const [bgmStatus, setBgmStatus] = useState('');
   const [bgmDeleting, setBgmDeleting] = useState<string | null>(null);
   const bgmFileRef = useRef<HTMLInputElement>(null);
   const [bgmFile, setBgmFile] = useState<File | null>(null);
@@ -108,37 +109,28 @@ export function VideoSettingsPanel({
   useEffect(() => { fetchBgmTracks(); }, [fetchBgmTracks]);
 
   const handleBgmUpload = async () => {
-    if (!bgmFile || !bgmUploadName.trim() || !supabase) return;
+    if (!bgmFile || !bgmUploadName.trim()) return;
     setBgmUploading(true);
+    setBgmStatus('');
     try {
-      // Upload directly to Supabase Storage (bypasses Vercel 4.5MB body limit)
-      const timestamp = Date.now();
-      const randomStr = Math.random().toString(36).substring(2, 8);
-      const ext = bgmFile.name.split('.').pop() || 'mp3';
-      const filename = `bgm/${timestamp}-${randomStr}.${ext}`;
+      // Trim + compress if needed (always process to ensure 60s max + 128kbps)
+      setBgmStatus('音声を処理中...');
+      const result = await trimAndCompressMP3(bgmFile, 60, (phase) => setBgmStatus(phase));
+      const processedFile = new File([result.blob], bgmFile.name, { type: 'audio/mpeg' });
 
-      const { error: uploadError } = await supabase.storage
-        .from('model-images')
-        .upload(filename, bgmFile, {
-          contentType: bgmFile.type || 'audio/mpeg',
-          cacheControl: '31536000',
-        });
+      if (result.trimmedDuration < result.originalDuration) {
+        setBgmStatus(`${Math.round(result.originalDuration)}秒 → ${Math.round(result.trimmedDuration)}秒にトリム`);
+      }
 
-      if (uploadError) throw uploadError;
+      // Upload via API route (service_role handles Storage + DB)
+      setBgmStatus('アップロード中...');
+      const formData = new FormData();
+      formData.append('file', processedFile);
+      formData.append('name', bgmUploadName.trim());
 
-      const { data: urlData } = supabase.storage
-        .from('model-images')
-        .getPublicUrl(filename);
-
-      // Register metadata via API
       const res = await fetch('/api/video/bgm', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: bgmUploadName.trim(),
-          url: urlData.publicUrl,
-          fileSize: bgmFile.size,
-        }),
+        body: formData,
       });
       const data = await res.json();
       if (data.success && data.track) {
@@ -147,8 +139,13 @@ export function VideoSettingsPanel({
         setShowBgmUpload(false);
         setBgmUploadName('');
         setBgmFile(null);
+        setBgmStatus('');
+      } else {
+        setBgmStatus('アップロード失敗');
+        console.error('BGM upload failed:', data.error);
       }
     } catch (err) {
+      setBgmStatus('処理失敗');
       console.error('BGM upload failed:', err);
     } finally {
       setBgmUploading(false);
@@ -379,7 +376,7 @@ export function VideoSettingsPanel({
                 className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--color-accent)] text-white text-xs font-medium disabled:opacity-30 transition-opacity"
               >
                 {bgmUploading ? <Loader2 size={12} className="animate-spin" /> : <Upload size={12} />}
-                {bgmUploading ? (ja ? 'アップロード中...' : 'Uploading...') : (ja ? 'アップロード' : 'Upload')}
+                {bgmUploading ? (bgmStatus || (ja ? 'アップロード中...' : 'Uploading...')) : (ja ? 'アップロード' : 'Upload')}
               </button>
             </div>
           ) : (
