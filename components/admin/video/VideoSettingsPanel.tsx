@@ -513,6 +513,20 @@ export function VideoSettingsPanel({
             checked={store.showEnding}
             onChange={store.setShowEnding}
           />
+          {store.showEnding && (
+            <input
+              type="text"
+              value={store.endingText}
+              onChange={(e) => store.setEndingText(e.target.value)}
+              placeholder={ja ? 'エンディングテキスト（任意）' : 'Ending text (optional)'}
+              className="w-full px-3 py-1.5 rounded-lg border border-stone-200 bg-white text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-300 ml-0"
+            />
+          )}
+          <Toggle
+            label={ja ? 'クレジット' : 'Credit'}
+            checked={store.showCredit}
+            onChange={store.setShowCredit}
+          />
           <Toggle
             label={ja ? '白フラッシュ' : 'White Flash'}
             checked={store.whiteFlash}

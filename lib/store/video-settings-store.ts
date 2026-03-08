@@ -14,6 +14,8 @@ export interface VideoSettingsState {
   locationText: string;
   dateText: string;
   showEnding: boolean;
+  endingText: string;
+  showCredit: boolean;
   whiteFlash: boolean;
   textFont: 'impact' | 'noto-sans' | 'montserrat' | 'playfair-display' | 'cormorant-garamond' | 'dm-serif-display';
   aspectRatio: '16:9' | '9:16' | '1:1';
@@ -42,6 +44,8 @@ interface VideoSettingsStore extends VideoSettingsState {
   setLocationText: (text: string) => void;
   setDateText: (text: string) => void;
   setShowEnding: (show: boolean) => void;
+  setEndingText: (text: string) => void;
+  setShowCredit: (show: boolean) => void;
   setWhiteFlash: (show: boolean) => void;
   setTextFont: (font: VideoSettingsState['textFont']) => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
@@ -78,6 +82,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       locationText: '',
       dateText: '',
       showEnding: true,
+      endingText: '',
+      showCredit: true,
       whiteFlash: true,
       textFont: 'impact',
       aspectRatio: '9:16',
@@ -97,6 +103,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setLocationText: (text) => set({ locationText: text, activePresetId: null }),
       setDateText: (text) => set({ dateText: text, activePresetId: null }),
       setShowEnding: (show) => set({ showEnding: show, activePresetId: null }),
+      setEndingText: (text) => set({ endingText: text, activePresetId: null }),
+      setShowCredit: (show) => set({ showCredit: show, activePresetId: null }),
       setWhiteFlash: (show) => set({ whiteFlash: show, activePresetId: null }),
       setTextFont: (font) => set({ textFont: font, activePresetId: null }),
       setAspectRatio: (ar) => set({ aspectRatio: ar, activePresetId: null }),
@@ -133,6 +141,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           locationText: s.locationText,
           dateText: s.dateText,
           showEnding: s.showEnding,
+          endingText: s.endingText,
+          showCredit: s.showCredit,
           whiteFlash: s.whiteFlash,
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
