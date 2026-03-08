@@ -16,8 +16,8 @@ export interface VideoSettingsState {
   dateText: string;
   showTelop: boolean;
   showEnding: boolean;
-  endingText: string;
-  showCredit: boolean;
+  endingMainText: string;
+  endingSubText: string;
   whiteFlash: boolean;
   textFont: 'impact' | 'noto-sans' | 'montserrat' | 'playfair-display' | 'cormorant-garamond' | 'dm-serif-display';
   aspectRatio: '16:9' | '9:16' | '1:1';
@@ -48,8 +48,8 @@ interface VideoSettingsStore extends VideoSettingsState {
   setDateText: (text: string) => void;
   setShowTelop: (show: boolean) => void;
   setShowEnding: (show: boolean) => void;
-  setEndingText: (text: string) => void;
-  setShowCredit: (show: boolean) => void;
+  setEndingMainText: (text: string) => void;
+  setEndingSubText: (text: string) => void;
   setWhiteFlash: (show: boolean) => void;
   setTextFont: (font: VideoSettingsState['textFont']) => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
@@ -88,8 +88,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       dateText: '',
       showTelop: true,
       showEnding: true,
-      endingText: '',
-      showCredit: true,
+      endingMainText: '',
+      endingSubText: '',
       whiteFlash: true,
       textFont: 'impact',
       aspectRatio: '9:16',
@@ -116,8 +116,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setDateText: (text) => set({ dateText: text, activePresetId: null }),
       setShowTelop: (show) => set({ showTelop: show, activePresetId: null }),
       setShowEnding: (show) => set({ showEnding: show, activePresetId: null }),
-      setEndingText: (text) => set({ endingText: text, activePresetId: null }),
-      setShowCredit: (show) => set({ showCredit: show, activePresetId: null }),
+      setEndingMainText: (text) => set({ endingMainText: text, activePresetId: null }),
+      setEndingSubText: (text) => set({ endingSubText: text, activePresetId: null }),
       setWhiteFlash: (show) => set({ whiteFlash: show, activePresetId: null }),
       setTextFont: (font) => set({ textFont: font, activePresetId: null }),
       setAspectRatio: (ar) => set({ aspectRatio: ar, activePresetId: null }),
@@ -156,8 +156,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           dateText: s.dateText,
           showTelop: s.showTelop,
           showEnding: s.showEnding,
-          endingText: s.endingText,
-          showCredit: s.showCredit,
+          endingMainText: s.endingMainText,
+          endingSubText: s.endingSubText,
           whiteFlash: s.whiteFlash,
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,

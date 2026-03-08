@@ -522,19 +522,23 @@ export function VideoSettingsPanel({
             onChange={store.setShowEnding}
           />
           {store.showEnding && (
-            <input
-              type="text"
-              value={store.endingText}
-              onChange={(e) => store.setEndingText(e.target.value)}
-              placeholder={ja ? 'エンディングテキスト（任意）' : 'Ending text (optional)'}
-              className="w-full px-3 py-1.5 rounded-lg border border-stone-200 bg-white text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-300 ml-0"
-            />
+            <>
+              <input
+                type="text"
+                value={store.endingMainText}
+                onChange={(e) => store.setEndingMainText(e.target.value)}
+                placeholder={ja ? 'メインテキスト（例: BALENCIAGA）' : 'Main text (e.g. BALENCIAGA)'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+              <input
+                type="text"
+                value={store.endingSubText}
+                onChange={(e) => store.setEndingSubText(e.target.value)}
+                placeholder={ja ? 'サブテキスト（例: SPRING 2026）' : 'Sub text (e.g. SPRING 2026)'}
+                className="w-full px-2.5 py-1.5 rounded-lg border border-[var(--color-line)] bg-white text-xs text-[var(--color-text-body)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]/30"
+              />
+            </>
           )}
-          <Toggle
-            label={ja ? 'クレジット' : 'Credit'}
-            checked={store.showCredit}
-            onChange={store.setShowCredit}
-          />
           <Toggle
             label={ja ? '白フラッシュ' : 'White Flash'}
             checked={store.whiteFlash}
