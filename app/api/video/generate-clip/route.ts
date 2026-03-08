@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { submitVeoJob, pollVeoOperation } from '@/lib/video/veo-client';
+import { parseMp4Duration } from '@/lib/utils/parse-mp4-duration';
 
 export const maxDuration = 300;
 
@@ -206,18 +207,9 @@ export async function POST(request: NextRequest) {
       const videoBuffer = Buffer.from(videoData.bytesBase64Encoded, 'base64');
 
       // Parse actual duration from mp4 mvhd box
-      const mvhdIdx = videoBuffer.indexOf(Buffer.from('mvhd'));
-      if (mvhdIdx !== -1) {
-        const version = videoBuffer[mvhdIdx + 4];
-        if (version === 0) {
-          const timescale = videoBuffer.readUInt32BE(mvhdIdx + 16);
-          const dur = videoBuffer.readUInt32BE(mvhdIdx + 20);
-          if (timescale > 0) actualDurationSec = Math.round(dur / timescale);
-        } else {
-          const timescale = videoBuffer.readUInt32BE(mvhdIdx + 24);
-          const dur = Number(videoBuffer.readBigUInt64BE(mvhdIdx + 28));
-          if (timescale > 0) actualDurationSec = Math.round(dur / timescale);
-        }
+      const parsed = parseMp4Duration(videoBuffer);
+      if (parsed !== null) {
+        actualDurationSec = Math.round(parsed);
         console.log(`[Generate Clip] Actual video duration: ${actualDurationSec}s (requested: ${durationSeconds}s)`);
       }
 

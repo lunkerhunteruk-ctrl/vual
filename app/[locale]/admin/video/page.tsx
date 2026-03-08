@@ -15,6 +15,9 @@ import {
   CheckCircle2,
   ExternalLink,
   ImagePlus,
+  Upload,
+  X,
+  Wrench,
 } from 'lucide-react';
 import { useCollection, CollectionLook, CollectionBundle } from '@/lib/hooks/useCollection';
 import { useVideoJobStore } from '@/lib/store/video-job-store';
@@ -92,6 +95,145 @@ export default function VideoPage() {
   const [retryingClipIdx, setRetryingClipIdx] = useState<number | null>(null);
   const [regeneratingImageIdx, setRegeneratingImageIdx] = useState<number | null>(null);
   const [raiFilteredIdx, setRaiFilteredIdx] = useState<Set<number>>(new Set());
+
+  // Dev mode: Import clips
+  const isDevStore = store?.slug === 'vualofficial';
+  interface ImportedClip {
+    url: string;
+    durationSec: number;
+    fileName: string;
+  }
+  const [importedClips, setImportedClips] = useState<(ImportedClip | null)[]>([null, null, null, null, null, null]);
+  const [uploadingSlot, setUploadingSlot] = useState<number | null>(null);
+  const [importRenderProgress, setImportRenderProgress] = useState(0);
+  const [isImportRendering, setIsImportRendering] = useState(false);
+  const [importFinalVideoUrl, setImportFinalVideoUrl] = useState<string | null>(null);
+  const importRenderPollRef = useRef<NodeJS.Timeout | null>(null);
+  const importFileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const importedClipCount = importedClips.filter(Boolean).length;
+  const importTotalDuration = useMemo(() => {
+    const clipTotal = importedClips.reduce((sum, c) => sum + (c?.durationSec || 0), 0);
+    const endingSec = videoSettings.showEnding ? 3 : 0;
+    return { clipTotal: Math.round(clipTotal * 10) / 10, endingSec, total: Math.round((clipTotal + endingSec) * 10) / 10 };
+  }, [importedClips, videoSettings.showEnding]);
+
+  const handleImportUpload = async (slotIdx: number, file: File) => {
+    if (!file.type.startsWith('video/')) {
+      alert(ja ? '動画ファイルを選択してください' : 'Please select a video file');
+      return;
+    }
+    setUploadingSlot(slotIdx);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch('/api/video/upload-clip', { method: 'POST', body: formData });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error);
+      setImportedClips((prev) => {
+        const next = [...prev];
+        next[slotIdx] = { url: data.url, durationSec: data.durationSec, fileName: file.name };
+        return next;
+      });
+    } catch (err: any) {
+      alert(ja ? `アップロード失敗: ${err.message}` : `Upload failed: ${err.message}`);
+    } finally {
+      setUploadingSlot(null);
+    }
+  };
+
+  const handleRemoveImportClip = (slotIdx: number) => {
+    setImportedClips((prev) => {
+      const next = [...prev];
+      next[slotIdx] = null;
+      return next;
+    });
+  };
+
+  const handleRenderImportedClips = useCallback(async () => {
+    const clips = importedClips.filter((c): c is ImportedClip => c !== null);
+    if (clips.length < 2) return;
+
+    setIsImportRendering(true);
+    setImportRenderProgress(0);
+    setImportFinalVideoUrl(null);
+
+    try {
+      const settings = videoSettings.getSettings();
+      const shots = clips.map((clip) => ({
+        clipUrl: clip.url,
+        durationSec: clip.durationSec,
+        telopText: undefined,
+        telopPosition: 'bottom-left' as const,
+      }));
+
+      const bgmUrl = settings.bgmId ? BGM_URL_MAP[settings.bgmId] || undefined : undefined;
+      const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
+
+      const res = await fetch('/api/video/render', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jobId: '',
+          shots,
+          textStyle: settings.motionPreset,
+          textFont: settings.textFont,
+          bgmUrl,
+          showIntro: settings.showIntro,
+          showEnding: settings.showEnding,
+          whiteFlash: settings.whiteFlash,
+          brandName: store?.name || 'VUAL',
+          aspectRatio: clipAspectRatio,
+          colorPreset: settings.colorPreset || 'none',
+        }),
+      });
+
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || 'Render API returned failure');
+
+      const { renderId, bucketName } = data;
+
+      importRenderPollRef.current = setInterval(async () => {
+        try {
+          const pollRes = await fetch(`/api/video/render?renderId=${renderId}&bucketName=${bucketName}&jobId=`);
+          const pollData = await pollRes.json();
+
+          if (!pollData.success) {
+            if (importRenderPollRef.current) clearInterval(importRenderPollRef.current);
+            setIsImportRendering(false);
+            alert(ja ? `レンダリングエラー: ${pollData.error}` : `Render error: ${pollData.error}`);
+            return;
+          }
+
+          if (pollData.done) {
+            if (importRenderPollRef.current) clearInterval(importRenderPollRef.current);
+            setIsImportRendering(false);
+            if (pollData.outputUrl) {
+              setImportFinalVideoUrl(pollData.outputUrl);
+              setImportRenderProgress(100);
+            } else {
+              const errMsg = pollData.errors?.join('; ') || 'Render failed';
+              alert(ja ? `レンダリング失敗: ${errMsg}` : `Render failed: ${errMsg}`);
+            }
+          } else {
+            setImportRenderProgress(pollData.progress || 0);
+          }
+        } catch (err) {
+          console.error('Import render poll error:', err);
+        }
+      }, 5000);
+    } catch (err: any) {
+      setIsImportRendering(false);
+      alert(ja ? `レンダリングエラー: ${err.message}` : `Render error: ${err.message}`);
+    }
+  }, [importedClips, videoSettings, store, ja]);
+
+  // Cleanup import render polling on unmount
+  useEffect(() => {
+    return () => {
+      if (importRenderPollRef.current) clearInterval(importRenderPollRef.current);
+    };
+  }, []);
 
   const handleStartGeneration = async () => {
     if (!selectedBundle || !storeId) return;
@@ -484,6 +626,159 @@ export default function VideoPage() {
         )}
       </div>
 
+      {/* Dev mode: Import Clips */}
+      {isDevStore && (
+        <div className="flex-shrink-0 w-[420px] border-l border-[var(--color-line)] pl-5">
+          <div className="flex items-center gap-1.5 mb-3">
+            <Wrench size={12} className="text-orange-500" />
+            <h3 className="text-xs font-semibold text-orange-500 uppercase tracking-wider">
+              Import Clips (Dev)
+            </h3>
+          </div>
+
+          {/* 6-slot grid */}
+          <div className="grid grid-cols-3 gap-2 mb-3">
+            {importedClips.map((clip, idx) => (
+              <div
+                key={idx}
+                className={`aspect-[9/16] rounded-lg overflow-hidden relative ${
+                  clip ? 'border border-[var(--color-line)]' : 'border-2 border-dashed border-[var(--color-line)]'
+                } bg-[var(--color-bg-element)] flex items-center justify-center`}
+              >
+                {uploadingSlot === idx ? (
+                  <Loader2 size={20} className="text-[var(--color-text-label)] animate-spin" />
+                ) : clip ? (
+                  <>
+                    <video
+                      src={clip.url}
+                      className="w-full h-full object-cover"
+                      muted
+                      playsInline
+                      onMouseEnter={(e) => (e.target as HTMLVideoElement).play()}
+                      onMouseLeave={(e) => { const v = e.target as HTMLVideoElement; v.pause(); v.currentTime = 0; }}
+                    />
+                    <div className="absolute top-1 left-1 bg-black/70 text-white text-[9px] px-1 py-0.5 rounded font-mono">
+                      {clip.durationSec}s
+                    </div>
+                    <button
+                      onClick={() => handleRemoveImportClip(idx)}
+                      className="absolute top-1 right-1 bg-black/70 text-white p-0.5 rounded hover:bg-red-600 transition-colors"
+                    >
+                      <X size={10} />
+                    </button>
+                    <div className="absolute bottom-1 left-1 right-1 bg-black/70 text-white text-[8px] px-1 py-0.5 rounded truncate">
+                      {clip.fileName}
+                    </div>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => importFileInputRefs.current[idx]?.click()}
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-1 hover:bg-[var(--color-accent)]/5 transition-colors"
+                  >
+                    <Upload size={16} className="text-[var(--color-text-placeholder)]" />
+                    <span className="text-[9px] text-[var(--color-text-placeholder)]">{idx + 1}</span>
+                  </button>
+                )}
+                <input
+                  ref={(el) => { importFileInputRefs.current[idx] = el; }}
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleImportUpload(idx, file);
+                    e.target.value = '';
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Duration summary */}
+          {importedClipCount > 0 && (
+            <div className="text-[10px] text-[var(--color-text-label)] font-mono mb-3">
+              {importedClips.filter(Boolean).map((c) => `${c!.durationSec}s`).join(' + ')}
+              {importTotalDuration.endingSec > 0 && ` + ${importTotalDuration.endingSec}s (ending)`}
+              {' = '}{importTotalDuration.total}s
+            </div>
+          )}
+
+          {/* Render button */}
+          <Button
+            variant="secondary"
+            size="lg"
+            leftIcon={isImportRendering ? <Loader2 size={16} className="animate-spin" /> : <Film size={16} />}
+            disabled={isImportRendering || importedClipCount < 2}
+            onClick={handleRenderImportedClips}
+            className="w-full !text-xs"
+          >
+            {isImportRendering
+              ? (ja ? `レンダリング中 ${importRenderProgress}%` : `Rendering ${importRenderProgress}%`)
+              : importFinalVideoUrl
+                ? (ja ? '再レンダリング' : 'Re-render')
+                : (ja ? 'インポートクリップをレンダリング' : 'Render Imported Clips')}
+          </Button>
+
+          {/* Import render progress */}
+          {isImportRendering && (
+            <div className="mt-3">
+              <div className="h-1.5 bg-[var(--color-bg-element)] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-purple-500 rounded-full transition-all duration-500"
+                  style={{ width: `${importRenderProgress}%` }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Import final video */}
+          {importFinalVideoUrl && !isImportRendering && (
+            <div className="mt-3 bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+              <div className="flex items-center gap-2 mb-2">
+                <CheckCircle2 size={12} className="text-emerald-600" />
+                <span className="text-[11px] font-medium text-emerald-800">
+                  {ja ? '完成' : 'Ready'}
+                </span>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={async () => {
+                    try {
+                      const proxyUrl = `/api/video/download?url=${encodeURIComponent(importFinalVideoUrl)}`;
+                      const res = await fetch(proxyUrl);
+                      const blob = await res.blob();
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `vual-import-${Date.now()}.mp4`;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    } catch (err) {
+                      window.open(importFinalVideoUrl, '_blank');
+                    }
+                  }}
+                  className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-emerald-600 text-white text-[10px] font-medium rounded-md hover:bg-emerald-700 transition-colors"
+                >
+                  <Download size={10} />
+                  {ja ? 'DL' : 'DL'}
+                </button>
+                <a
+                  href={importFinalVideoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 border border-emerald-300 text-emerald-700 text-[10px] font-medium rounded-md hover:bg-emerald-100 transition-colors"
+                >
+                  <ExternalLink size={10} />
+                  {ja ? 'プレビュー' : 'Preview'}
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Center: Preview */}
       <div className="flex-1 min-w-0">
         {selectedBundle ? (
@@ -763,7 +1058,7 @@ export default function VideoPage() {
 
       {/* Right: Settings panel */}
       <div className="w-56 flex-shrink-0 border-l border-[var(--color-line)] pl-5">
-        <VideoSettingsPanel shotCount={clipCount || 6} locale={locale} />
+        <VideoSettingsPanel shotCount={importedClipCount > 0 ? importedClipCount : (clipCount || 6)} locale={locale} />
       </div>
     </div>
   );
