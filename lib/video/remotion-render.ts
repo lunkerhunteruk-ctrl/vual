@@ -32,7 +32,13 @@ export interface RenderRequest {
   brandName?: string;
   tagline?: string;
   aspectRatio?: "16:9" | "9:16" | "1:1" | "4:5";
-  colorPreset?: "none" | "natural" | "chrome" | "film";
+  filmEffects?: {
+    vignette: "off" | "weak" | "medium" | "strong";
+    colorChrome: "off" | "weak" | "medium" | "strong";
+    colorChromeBlue: "off" | "weak" | "medium" | "strong";
+    grain: "off" | "weak" | "medium" | "strong";
+    colorShift: "off" | "weak" | "medium" | "strong";
+  };
 }
 
 export interface RenderResult {

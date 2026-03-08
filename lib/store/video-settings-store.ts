@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import type { FilmEffects, EffectLevel } from '@/lib/video/film-presets';
+import { DEFAULT_FILM_EFFECTS, FILM_LOOK_PRESETS } from '@/lib/video/film-presets';
 
 export interface VideoSettingsState {
   videoModel: 'veo' | 'kling';
@@ -16,7 +18,8 @@ export interface VideoSettingsState {
   textFont: 'impact' | 'noto-sans' | 'montserrat';
   aspectRatio: '16:9' | '9:16' | '1:1';
   letterbox: boolean;
-  colorPreset: 'none' | 'natural' | 'chrome' | 'film';
+  filmEffects: FilmEffects;
+  filmLookPreset: string;
 }
 
 export interface VideoPreset {
@@ -43,12 +46,23 @@ interface VideoSettingsStore extends VideoSettingsState {
   setTextFont: (font: 'impact' | 'noto-sans' | 'montserrat') => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
   setLetterbox: (on: boolean) => void;
-  setColorPreset: (preset: 'none' | 'natural' | 'chrome' | 'film') => void;
+  setFilmLookPreset: (presetId: string) => void;
+  setFilmEffect: (key: keyof FilmEffects, level: EffectLevel) => void;
   getSettings: () => VideoSettingsState;
   savePreset: (name: string) => void;
   loadPreset: (id: string) => void;
   deletePreset: (id: string) => void;
   renamePreset: (id: string, name: string) => void;
+}
+
+function migrateColorPreset(colorPreset: string): FilmEffects {
+  const mapping: Record<string, FilmEffects> = {
+    none: DEFAULT_FILM_EFFECTS,
+    natural: { vignette: 'weak', colorChrome: 'weak', colorChromeBlue: 'off', grain: 'off', colorShift: 'weak' },
+    chrome: { vignette: 'medium', colorChrome: 'medium', colorChromeBlue: 'weak', grain: 'off', colorShift: 'off' },
+    film: { vignette: 'medium', colorChrome: 'medium', colorChromeBlue: 'off', grain: 'weak', colorShift: 'weak' },
+  };
+  return mapping[colorPreset] || DEFAULT_FILM_EFFECTS;
 }
 
 export const useVideoSettingsStore = create<VideoSettingsStore>()(
@@ -68,7 +82,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       textFont: 'impact',
       aspectRatio: '9:16',
       letterbox: false,
-      colorPreset: 'none',
+      filmEffects: DEFAULT_FILM_EFFECTS,
+      filmLookPreset: 'none',
       presets: [],
       activePresetId: null,
 
@@ -86,7 +101,22 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setTextFont: (font) => set({ textFont: font, activePresetId: null }),
       setAspectRatio: (ar) => set({ aspectRatio: ar, activePresetId: null }),
       setLetterbox: (on) => set({ letterbox: on, activePresetId: null }),
-      setColorPreset: (preset) => set({ colorPreset: preset, activePresetId: null }),
+
+      setFilmLookPreset: (presetId) => {
+        const preset = FILM_LOOK_PRESETS.find((p) => p.id === presetId);
+        if (preset) {
+          set({ filmEffects: { ...preset.effects }, filmLookPreset: presetId, activePresetId: null });
+        }
+      },
+
+      setFilmEffect: (key, level) => {
+        const current = get().filmEffects;
+        set({
+          filmEffects: { ...current, [key]: level },
+          filmLookPreset: 'custom',
+          activePresetId: null,
+        });
+      },
 
       getSettings: () => {
         const s = get();
@@ -105,7 +135,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
           letterbox: s.letterbox,
-          colorPreset: s.colorPreset,
+          filmEffects: s.filmEffects,
+          filmLookPreset: s.filmLookPreset,
         };
       },
 
@@ -124,7 +155,18 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       loadPreset: (id) => {
         const preset = get().presets.find((p) => p.id === id);
         if (preset) {
-          set({ ...preset.settings, activePresetId: id });
+          const settings = { ...preset.settings } as any;
+          // Handle old presets that have colorPreset instead of filmEffects
+          if (!settings.filmEffects && settings.colorPreset) {
+            settings.filmEffects = migrateColorPreset(settings.colorPreset);
+            settings.filmLookPreset = 'custom';
+            delete settings.colorPreset;
+          }
+          if (!settings.filmEffects) {
+            settings.filmEffects = DEFAULT_FILM_EFFECTS;
+            settings.filmLookPreset = 'none';
+          }
+          set({ ...settings, activePresetId: id });
         }
       },
 
@@ -143,6 +185,21 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
         });
       },
     }),
-    { name: 'vual-video-settings' }
+    {
+      name: 'vual-video-settings',
+      version: 2,
+      migrate: (persisted: any, version: number) => {
+        if (version < 2) {
+          const oldPreset = persisted?.colorPreset || 'none';
+          return {
+            ...persisted,
+            filmEffects: migrateColorPreset(oldPreset),
+            filmLookPreset: oldPreset === 'none' ? 'none' : 'custom',
+            colorPreset: undefined,
+          };
+        }
+        return persisted as any;
+      },
+    }
   )
 );

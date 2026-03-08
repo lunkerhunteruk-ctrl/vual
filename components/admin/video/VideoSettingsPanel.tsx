@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard, Upload, Loader2, X } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
+import { FILM_LOOK_PRESETS, type EffectLevel } from '@/lib/video/film-presets';
 import {
   distributeVideoDuration,
   formatDistribution,
@@ -36,11 +37,19 @@ const fontOptions = [
   { id: 'montserrat' as const, label: 'Montserrat' },
 ];
 
-const colorPresetOptions = [
-  { id: 'none' as const, labelEn: 'None', labelJa: 'なし' },
-  { id: 'natural' as const, labelEn: 'Natural', labelJa: 'ナチュラル' },
-  { id: 'chrome' as const, labelEn: 'Chrome', labelJa: 'クローム' },
-  { id: 'film' as const, labelEn: 'Film', labelJa: 'フィルム' },
+const EFFECT_LEVELS: { id: EffectLevel; labelEn: string; labelJa: string }[] = [
+  { id: 'off', labelEn: 'Off', labelJa: 'Off' },
+  { id: 'weak', labelEn: 'Weak', labelJa: '弱' },
+  { id: 'medium', labelEn: 'Med', labelJa: '中' },
+  { id: 'strong', labelEn: 'Strong', labelJa: '強' },
+];
+
+const filmEffectLabels: { key: keyof import('@/lib/video/film-presets').FilmEffects; labelEn: string; labelJa: string }[] = [
+  { key: 'vignette', labelEn: 'Vignette', labelJa: 'ビネット' },
+  { key: 'colorChrome', labelEn: 'Color Chrome', labelJa: 'カラークローム' },
+  { key: 'colorChromeBlue', labelEn: 'Chrome Blue', labelJa: 'クロームブルー' },
+  { key: 'grain', labelEn: 'Grain', labelJa: 'グレイン' },
+  { key: 'colorShift', labelEn: 'Color Shift', labelJa: 'カラーシフト' },
 ];
 
 const introStyleOptions = [
@@ -373,17 +382,34 @@ export function VideoSettingsPanel({
         </div>
       </Section>
 
-      {/* Color Preset */}
-      <Section icon={<Palette size={14} />} title={ja ? 'カラー' : 'Color'}>
-        <div className="flex gap-1.5 flex-wrap">
-          {colorPresetOptions.map((c) => (
-            <Chip
-              key={c.id}
-              active={store.colorPreset === c.id}
-              onClick={() => store.setColorPreset(c.id)}
-              label={ja ? c.labelJa : c.labelEn}
-            />
-          ))}
+      {/* Film Look */}
+      <Section icon={<Palette size={14} />} title={ja ? 'フィルムルック' : 'Film Look'}>
+        <div className="space-y-3">
+          <div className="flex gap-1.5 flex-wrap">
+            {FILM_LOOK_PRESETS.map((p) => (
+              <Chip
+                key={p.id}
+                active={store.filmLookPreset === p.id}
+                onClick={() => store.setFilmLookPreset(p.id)}
+                label={ja ? p.labelJa : p.labelEn}
+              />
+            ))}
+            {store.filmLookPreset === 'custom' && (
+              <Chip active onClick={() => {}} label="Custom" />
+            )}
+          </div>
+          <div className="border-t border-[var(--color-line)]" />
+          <div className="space-y-2">
+            {filmEffectLabels.map((ef) => (
+              <EffectLevelSelector
+                key={ef.key}
+                label={ja ? ef.labelJa : ef.labelEn}
+                value={store.filmEffects[ef.key]}
+                onChange={(v) => store.setFilmEffect(ef.key, v)}
+                ja={ja}
+              />
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -486,6 +512,41 @@ function Chip({ active, onClick, label, disabled = false }: { active: boolean; o
     >
       {label}
     </button>
+  );
+}
+
+function EffectLevelSelector({
+  label,
+  value,
+  onChange,
+  ja,
+}: {
+  label: string;
+  value: EffectLevel;
+  onChange: (v: EffectLevel) => void;
+  ja: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-between">
+      <span className="text-xs text-[var(--color-text-body)] min-w-[100px]">{label}</span>
+      <div className="flex gap-1">
+        {EFFECT_LEVELS.map((level) => (
+          <button
+            key={level.id}
+            onClick={() => onChange(level.id)}
+            className={`
+              px-2 py-1 rounded text-[10px] font-medium transition-all
+              ${value === level.id
+                ? 'bg-[var(--color-accent)] text-white'
+                : 'border border-[var(--color-line)] text-[var(--color-text-label)] hover:border-[var(--color-accent)]/50'
+              }
+            `}
+          >
+            {ja ? level.labelJa : level.labelEn}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
 
