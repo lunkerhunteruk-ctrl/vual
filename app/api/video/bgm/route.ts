@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST: Upload a new BGM track
+// POST: Register a BGM track (file already uploaded to Supabase Storage by client)
 export async function POST(request: NextRequest) {
   try {
     const supabase = createServerClient();
@@ -41,56 +41,20 @@ export async function POST(request: NextRequest) {
     }
 
     const storeId = await resolveStoreIdFromRequest(request);
-    const formData = await request.formData();
-    const file = formData.get('file') as File;
-    const name = formData.get('name') as string;
+    const body = await request.json();
+    const { name, url, fileSize } = body;
 
-    if (!file || !name) {
-      return NextResponse.json({ error: 'file and name are required' }, { status: 400 });
+    if (!name || !url) {
+      return NextResponse.json({ error: 'name and url are required' }, { status: 400 });
     }
-
-    // Validate file type
-    if (!file.type.includes('audio/') && !file.name.endsWith('.mp3')) {
-      return NextResponse.json({ error: 'Only audio files are allowed' }, { status: 400 });
-    }
-
-    // 20MB limit
-    if (file.size > 20 * 1024 * 1024) {
-      return NextResponse.json({ error: 'File too large (max 20MB)' }, { status: 400 });
-    }
-
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = new Uint8Array(arrayBuffer);
-
-    const timestamp = Date.now();
-    const randomStr = Math.random().toString(36).substring(2, 8);
-    const ext = file.name.split('.').pop() || 'mp3';
-    const filename = `bgm/${storeId}/${timestamp}-${randomStr}.${ext}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from('model-images')
-      .upload(filename, buffer, {
-        contentType: file.type || 'audio/mpeg',
-        cacheControl: '31536000',
-        upsert: false,
-      });
-
-    if (uploadError) {
-      console.error('[BGM] Upload error:', uploadError);
-      return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
-    }
-
-    const { data: urlData } = supabase.storage
-      .from('model-images')
-      .getPublicUrl(filename);
 
     const { data: track, error: insertError } = await supabase
       .from('bgm_tracks')
       .insert({
         store_id: storeId,
         name: name.trim(),
-        url: urlData.publicUrl,
-        file_size: file.size,
+        url,
+        file_size: fileSize || 0,
       })
       .select('id, name, url, file_size, created_at')
       .single();
@@ -130,7 +94,6 @@ export async function DELETE(request: NextRequest) {
       .single();
 
     if (track?.url) {
-      // Extract path from URL: .../model-images/bgm/store-id/file.mp3
       const match = track.url.match(/model-images\/(.+)$/);
       if (match) {
         await supabase.storage.from('model-images').remove([match[1]]);

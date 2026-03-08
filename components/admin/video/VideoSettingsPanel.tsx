@@ -10,6 +10,7 @@ import {
   getDurationRange,
 } from '@/lib/utils/video-duration';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
+import { supabase } from '@/lib/supabase';
 
 interface BgmTrack {
   id: string;
@@ -107,13 +108,38 @@ export function VideoSettingsPanel({
   useEffect(() => { fetchBgmTracks(); }, [fetchBgmTracks]);
 
   const handleBgmUpload = async () => {
-    if (!bgmFile || !bgmUploadName.trim()) return;
+    if (!bgmFile || !bgmUploadName.trim() || !supabase) return;
     setBgmUploading(true);
     try {
-      const formData = new FormData();
-      formData.append('file', bgmFile);
-      formData.append('name', bgmUploadName.trim());
-      const res = await fetch('/api/video/bgm', { method: 'POST', body: formData });
+      // Upload directly to Supabase Storage (bypasses Vercel 4.5MB body limit)
+      const timestamp = Date.now();
+      const randomStr = Math.random().toString(36).substring(2, 8);
+      const ext = bgmFile.name.split('.').pop() || 'mp3';
+      const filename = `bgm/${timestamp}-${randomStr}.${ext}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('model-images')
+        .upload(filename, bgmFile, {
+          contentType: bgmFile.type || 'audio/mpeg',
+          cacheControl: '31536000',
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from('model-images')
+        .getPublicUrl(filename);
+
+      // Register metadata via API
+      const res = await fetch('/api/video/bgm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: bgmUploadName.trim(),
+          url: urlData.publicUrl,
+          fileSize: bgmFile.size,
+        }),
+      });
       const data = await res.json();
       if (data.success && data.track) {
         setCustomBgmTracks(prev => [data.track, ...prev]);
