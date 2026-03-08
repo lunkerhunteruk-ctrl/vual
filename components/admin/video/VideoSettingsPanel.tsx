@@ -509,6 +509,11 @@ export function VideoSettingsPanel({
       <Section icon={<Film size={14} />} title={ja ? 'エフェクト' : 'Effects'}>
         <div className="space-y-2">
           <Toggle
+            label={ja ? 'ストーリータイトル' : 'Story Title'}
+            checked={store.showTelop}
+            onChange={store.setShowTelop}
+          />
+          <Toggle
             label={ja ? 'エンディング' : 'Ending'}
             checked={store.showEnding}
             onChange={store.setShowEnding}

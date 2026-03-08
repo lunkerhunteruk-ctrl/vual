@@ -13,6 +13,7 @@ export interface VideoSettingsState {
   introText: string;
   locationText: string;
   dateText: string;
+  showTelop: boolean;
   showEnding: boolean;
   endingText: string;
   showCredit: boolean;
@@ -43,6 +44,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setIntroText: (text: string) => void;
   setLocationText: (text: string) => void;
   setDateText: (text: string) => void;
+  setShowTelop: (show: boolean) => void;
   setShowEnding: (show: boolean) => void;
   setEndingText: (text: string) => void;
   setShowCredit: (show: boolean) => void;
@@ -81,6 +83,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       introText: 'FROM FLATLAY TO RUNWAY',
       locationText: '',
       dateText: '',
+      showTelop: true,
       showEnding: true,
       endingText: '',
       showCredit: true,
@@ -102,6 +105,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setIntroText: (text) => set({ introText: text, activePresetId: null }),
       setLocationText: (text) => set({ locationText: text, activePresetId: null }),
       setDateText: (text) => set({ dateText: text, activePresetId: null }),
+      setShowTelop: (show) => set({ showTelop: show, activePresetId: null }),
       setShowEnding: (show) => set({ showEnding: show, activePresetId: null }),
       setEndingText: (text) => set({ endingText: text, activePresetId: null }),
       setShowCredit: (show) => set({ showCredit: show, activePresetId: null }),
@@ -140,6 +144,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           introText: s.introText,
           locationText: s.locationText,
           dateText: s.dateText,
+          showTelop: s.showTelop,
           showEnding: s.showEnding,
           endingText: s.endingText,
           showCredit: s.showCredit,

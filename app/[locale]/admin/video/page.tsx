@@ -471,7 +471,7 @@ export default function VideoPage() {
         .map((look) => ({
           clipUrl: look.video_clip_url!,
           durationSec: look.shot_duration_sec || 6,
-          telopText: look.telop_caption_en || undefined,
+          telopText: settings.showTelop ? (look.telop_caption_en || undefined) : undefined,
           telopPosition: 'bottom-left' as const,
         }));
 
