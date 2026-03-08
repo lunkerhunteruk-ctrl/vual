@@ -394,22 +394,28 @@ export function VideoSettingsPanel({
                 label={ja ? p.labelJa : p.labelEn}
               />
             ))}
-            {store.filmLookPreset === 'custom' && (
-              <Chip active onClick={() => {}} label="Custom" />
-            )}
+            <Chip
+              active={store.filmLookPreset === 'custom'}
+              onClick={() => store.setFilmLookPreset('custom')}
+              label={ja ? 'カスタム' : 'Custom'}
+            />
           </div>
-          <div className="border-t border-[var(--color-line)]" />
-          <div className="space-y-2">
-            {filmEffectLabels.map((ef) => (
-              <EffectLevelSelector
-                key={ef.key}
-                label={ja ? ef.labelJa : ef.labelEn}
-                value={store.filmEffects[ef.key]}
-                onChange={(v) => store.setFilmEffect(ef.key, v)}
-                ja={ja}
-              />
-            ))}
-          </div>
+          {store.filmLookPreset === 'custom' && (
+            <>
+              <div className="border-t border-[var(--color-line)]" />
+              <div className="space-y-2">
+                {filmEffectLabels.map((ef) => (
+                  <EffectLevelSelector
+                    key={ef.key}
+                    label={ja ? ef.labelJa : ef.labelEn}
+                    value={store.filmEffects[ef.key]}
+                    onChange={(v) => store.setFilmEffect(ef.key, v)}
+                    ja={ja}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </Section>
 

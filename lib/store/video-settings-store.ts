@@ -106,6 +106,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
         const preset = FILM_LOOK_PRESETS.find((p) => p.id === presetId);
         if (preset) {
           set({ filmEffects: { ...preset.effects }, filmLookPreset: presetId, activePresetId: null });
+        } else if (presetId === 'custom') {
+          set({ filmLookPreset: 'custom', activePresetId: null });
         }
       },
 
