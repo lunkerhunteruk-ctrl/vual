@@ -481,6 +481,20 @@ export default function VideoPage() {
       // Letterbox mode: render at 4:5 with contain fit (no crop)
       const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
 
+      // Build credits from all looks' products
+      const credits = settings.showCredit
+        ? selectedBundle.looks.flatMap((look) =>
+            look.collection_look_products.map((clp) => ({
+              category: clp.products.category || '',
+              name: clp.products.name,
+              brand: clp.products.brand || '',
+              price: clp.products.currency === 'jpy'
+                ? `¥${clp.products.base_price.toLocaleString()}`
+                : `$${clp.products.base_price.toLocaleString()}`,
+            }))
+          )
+        : undefined;
+
       const res = await fetch('/api/video/render', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -500,6 +514,7 @@ export default function VideoPage() {
           whiteFlash: settings.whiteFlash,
           brandName: settings.endingMainText || undefined,
           tagline: settings.endingSubText || undefined,
+          credits: credits?.length ? credits : undefined,
           aspectRatio: clipAspectRatio,
           filmEffects: settings.filmEffects,
         }),

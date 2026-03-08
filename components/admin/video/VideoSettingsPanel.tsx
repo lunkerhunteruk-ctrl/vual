@@ -540,6 +540,11 @@ export function VideoSettingsPanel({
             </>
           )}
           <Toggle
+            label={ja ? 'クレジット' : 'Credit'}
+            checked={store.showCredit}
+            onChange={store.setShowCredit}
+          />
+          <Toggle
             label={ja ? '白フラッシュ' : 'White Flash'}
             checked={store.whiteFlash}
             onChange={store.setWhiteFlash}

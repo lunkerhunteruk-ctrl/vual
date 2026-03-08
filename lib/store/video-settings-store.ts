@@ -18,6 +18,7 @@ export interface VideoSettingsState {
   showEnding: boolean;
   endingMainText: string;
   endingSubText: string;
+  showCredit: boolean;
   whiteFlash: boolean;
   textFont: 'impact' | 'noto-sans' | 'montserrat' | 'playfair-display' | 'cormorant-garamond' | 'dm-serif-display';
   aspectRatio: '16:9' | '9:16' | '1:1';
@@ -50,6 +51,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setShowEnding: (show: boolean) => void;
   setEndingMainText: (text: string) => void;
   setEndingSubText: (text: string) => void;
+  setShowCredit: (show: boolean) => void;
   setWhiteFlash: (show: boolean) => void;
   setTextFont: (font: VideoSettingsState['textFont']) => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
@@ -90,6 +92,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       showEnding: true,
       endingMainText: '',
       endingSubText: '',
+      showCredit: true,
       whiteFlash: true,
       textFont: 'impact',
       aspectRatio: '9:16',
@@ -118,6 +121,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setShowEnding: (show) => set({ showEnding: show, activePresetId: null }),
       setEndingMainText: (text) => set({ endingMainText: text, activePresetId: null }),
       setEndingSubText: (text) => set({ endingSubText: text, activePresetId: null }),
+      setShowCredit: (show) => set({ showCredit: show, activePresetId: null }),
       setWhiteFlash: (show) => set({ whiteFlash: show, activePresetId: null }),
       setTextFont: (font) => set({ textFont: font, activePresetId: null }),
       setAspectRatio: (ar) => set({ aspectRatio: ar, activePresetId: null }),
@@ -158,6 +162,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           showEnding: s.showEnding,
           endingMainText: s.endingMainText,
           endingSubText: s.endingSubText,
+          showCredit: s.showCredit,
           whiteFlash: s.whiteFlash,
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
