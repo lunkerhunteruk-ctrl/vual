@@ -554,6 +554,13 @@ export function VideoSettingsPanel({
             checked={store.letterbox}
             onChange={store.setLetterbox}
           />
+          {store.aspectRatio === '16:9' && (
+            <Toggle
+              label={ja ? 'Film Print フレーム' : 'Film Print Frame'}
+              checked={store.filmFrame}
+              onChange={store.setFilmFrame}
+            />
+          )}
         </div>
       </Section>
     </div>

@@ -23,6 +23,7 @@ export interface VideoSettingsState {
   textFont: 'impact' | 'noto-sans' | 'montserrat' | 'playfair-display' | 'cormorant-garamond' | 'dm-serif-display';
   aspectRatio: '16:9' | '9:16' | '1:1';
   letterbox: boolean;
+  filmFrame: boolean;
   filmEffects: FilmEffects;
   filmLookPreset: string;
 }
@@ -56,6 +57,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setTextFont: (font: VideoSettingsState['textFont']) => void;
   setAspectRatio: (ar: '16:9' | '9:16' | '1:1') => void;
   setLetterbox: (on: boolean) => void;
+  setFilmFrame: (on: boolean) => void;
   setFilmLookPreset: (presetId: string) => void;
   setFilmEffect: (key: keyof FilmEffects, level: EffectLevel) => void;
   getSettings: () => VideoSettingsState;
@@ -97,6 +99,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       textFont: 'impact',
       aspectRatio: '9:16',
       letterbox: false,
+      filmFrame: false,
       filmEffects: DEFAULT_FILM_EFFECTS,
       filmLookPreset: 'none',
       presets: [],
@@ -126,6 +129,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       setTextFont: (font) => set({ textFont: font, activePresetId: null }),
       setAspectRatio: (ar) => set({ aspectRatio: ar, activePresetId: null }),
       setLetterbox: (on) => set({ letterbox: on, activePresetId: null }),
+      setFilmFrame: (on) => set({ filmFrame: on, activePresetId: null }),
 
       setFilmLookPreset: (presetId) => {
         const preset = FILM_LOOK_PRESETS.find((p) => p.id === presetId);
@@ -167,6 +171,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           textFont: s.textFont,
           aspectRatio: s.aspectRatio,
           letterbox: s.letterbox,
+          filmFrame: s.filmFrame,
           filmEffects: s.filmEffects,
           filmLookPreset: s.filmLookPreset,
         };

@@ -38,6 +38,7 @@ export interface RenderRequest {
   tagline?: string;
   credits?: { category: string; name: string; brand: string; price: string }[];
   aspectRatio?: "16:9" | "9:16" | "1:1" | "4:5";
+  filmFrame?: boolean;
   filmEffects?: {
     vignette: "off" | "weak" | "medium" | "strong";
     colorChrome: "off" | "weak" | "medium" | "strong";

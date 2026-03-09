@@ -205,6 +205,7 @@ export default function VideoPage() {
           brandName: settings.endingMainText || undefined,
           tagline: settings.endingSubText || undefined,
           aspectRatio: clipAspectRatio,
+          filmFrame: settings.filmFrame,
           filmEffects: settings.filmEffects,
         }),
       });
@@ -516,6 +517,7 @@ export default function VideoPage() {
           tagline: settings.endingSubText || undefined,
           credits: credits?.length ? credits : undefined,
           aspectRatio: clipAspectRatio,
+          filmFrame: settings.filmFrame,
           filmEffects: settings.filmEffects,
         }),
       });
