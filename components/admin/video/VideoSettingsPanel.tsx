@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard, Upload, Loader2, X } from 'lucide-react';
+import { Video, Music, Type, Zap, Film, Clock, Maximize, Palette, Save, Trash2, BookmarkCheck, Clapperboard, Upload, Loader2, X, ImageIcon } from 'lucide-react';
 import { useVideoSettingsStore } from '@/lib/store/video-settings-store';
 import { FILM_LOOK_PRESETS, type EffectLevel } from '@/lib/video/film-presets';
 import {
@@ -563,6 +563,11 @@ export function VideoSettingsPanel({
           )}
         </div>
       </Section>
+
+      {/* Cover Image (for X/Twitter thumbnail) */}
+      <Section icon={<ImageIcon size={14} />} title={ja ? 'カバー画像（サムネイル）' : 'Cover Image (Thumbnail)'}>
+        <CoverImageUploader ja={ja} />
+      </Section>
     </div>
   );
 }
@@ -754,6 +759,97 @@ function FlatLayImageGrid({ ja }: { ja: boolean }) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function CoverImageUploader({ ja }: { ja: boolean }) {
+  const store = useVideoSettingsStore();
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleUpload = async (file: File) => {
+    setUploading(true);
+    try {
+      const signRes = await fetch('/api/video/flatlay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'sign', fileName: `cover-${file.name}` }),
+      });
+      const signData = await signRes.json();
+      if (!signData.signedUrl) throw new Error(signData.error || 'Failed to get upload URL');
+
+      const uploadRes = await fetch(signData.signedUrl, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type || 'image/png' },
+        body: file,
+      });
+      if (!uploadRes.ok) throw new Error(`Upload failed: ${uploadRes.status}`);
+
+      store.setCoverImageUrl(signData.publicUrl);
+    } catch (err) {
+      console.error('Cover image upload failed:', err);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div>
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={(e) => {
+          const f = e.target.files?.[0];
+          if (f) handleUpload(f);
+          e.target.value = '';
+        }}
+      />
+      <p className="text-[10px] text-[var(--color-text-placeholder)] mb-1.5">
+        {ja ? 'X（Twitter）投稿時のサムネイルとして1フレーム目に表示されます' : 'Displayed as the first frame for X (Twitter) thumbnails'}
+      </p>
+      {store.coverImageUrl ? (
+        <div
+          className="relative aspect-video rounded-lg border border-[var(--color-line)] overflow-hidden group cursor-pointer bg-neutral-100"
+          onClick={() => fileRef.current?.click()}
+        >
+          <img
+            src={store.coverImageUrl}
+            alt="Cover"
+            className="w-full h-full object-cover"
+          />
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              store.setCoverImageUrl('');
+            }}
+            className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => fileRef.current?.click()}
+          disabled={uploading}
+          className="aspect-video w-full rounded-lg border-2 border-dashed border-[var(--color-line)] hover:border-[var(--color-accent)]/50 flex flex-col items-center justify-center gap-1.5 transition-colors"
+        >
+          {uploading ? (
+            <Loader2 size={20} className="text-[var(--color-accent)] animate-spin" />
+          ) : (
+            <>
+              <Upload size={16} className="text-[var(--color-text-label)]" />
+              <span className="text-xs text-[var(--color-text-label)]">
+                {ja ? '画像をアップロード' : 'Upload image'}
+              </span>
+            </>
+          )}
+        </button>
+      )}
     </div>
   );
 }

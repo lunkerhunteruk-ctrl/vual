@@ -22,6 +22,9 @@ export async function POST(req: NextRequest) {
       shotCount: renderProps.shots?.length,
       textStyle: renderProps.textStyle,
       hasBgm: !!renderProps.bgmUrl,
+      filmFrame: renderProps.filmFrame,
+      letterbox: renderProps.letterbox,
+      aspectRatio: renderProps.aspectRatio,
     });
 
     // Start Lambda render

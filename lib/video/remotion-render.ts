@@ -47,6 +47,7 @@ export interface RenderRequest {
     grain: "off" | "weak" | "medium" | "strong";
     colorShift: "off" | "weak" | "medium" | "strong";
   };
+  coverImageUrl?: string;
 }
 
 export interface RenderResult {

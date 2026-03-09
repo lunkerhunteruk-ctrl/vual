@@ -26,6 +26,7 @@ export interface VideoSettingsState {
   filmFrame: boolean;
   filmEffects: FilmEffects;
   filmLookPreset: string;
+  coverImageUrl: string;
 }
 
 export interface VideoPreset {
@@ -60,6 +61,7 @@ interface VideoSettingsStore extends VideoSettingsState {
   setFilmFrame: (on: boolean) => void;
   setFilmLookPreset: (presetId: string) => void;
   setFilmEffect: (key: keyof FilmEffects, level: EffectLevel) => void;
+  setCoverImageUrl: (url: string) => void;
   getSettings: () => VideoSettingsState;
   savePreset: (name: string) => void;
   loadPreset: (id: string) => void;
@@ -102,6 +104,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
       filmFrame: false,
       filmEffects: DEFAULT_FILM_EFFECTS,
       filmLookPreset: 'none',
+      coverImageUrl: '',
       presets: [],
       activePresetId: null,
 
@@ -140,6 +143,8 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
         }
       },
 
+      setCoverImageUrl: (url) => set({ coverImageUrl: url, activePresetId: null }),
+
       setFilmEffect: (key, level) => {
         const current = get().filmEffects;
         set({
@@ -174,6 +179,7 @@ export const useVideoSettingsStore = create<VideoSettingsStore>()(
           filmFrame: s.filmFrame,
           filmEffects: s.filmEffects,
           filmLookPreset: s.filmLookPreset,
+          coverImageUrl: s.coverImageUrl,
         };
       },
 

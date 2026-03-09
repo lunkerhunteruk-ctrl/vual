@@ -210,6 +210,7 @@ export default function VideoPage() {
           filmFrame: settings.filmFrame,
           letterbox: settings.letterbox,
           filmEffects: settings.filmEffects,
+          coverImageUrl: settings.coverImageUrl || undefined,
         }),
       });
 
@@ -526,6 +527,7 @@ export default function VideoPage() {
           filmFrame: settings.filmFrame,
           letterbox: settings.letterbox,
           filmEffects: settings.filmEffects,
+          coverImageUrl: settings.coverImageUrl || undefined,
         }),
       });
 
