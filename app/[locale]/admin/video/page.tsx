@@ -183,7 +183,9 @@ export default function VideoPage() {
       }));
 
       const bgmUrl = resolveBgmUrl(settings.bgmId);
-      const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
+      const clipAspectRatio = (settings.letterbox && !settings.filmFrame)
+        ? '4:5'
+        : (settings.aspectRatio || '9:16');
 
       const res = await fetch('/api/video/render', {
         method: 'POST',
@@ -206,6 +208,7 @@ export default function VideoPage() {
           tagline: settings.endingSubText || undefined,
           aspectRatio: clipAspectRatio,
           filmFrame: settings.filmFrame,
+          letterbox: settings.letterbox,
           filmEffects: settings.filmEffects,
         }),
       });
@@ -480,7 +483,11 @@ export default function VideoPage() {
       const jobId = activeJob?.id || '';
       const bgmUrl = resolveBgmUrl(settings.bgmId);
       // Letterbox mode: render at 4:5 with contain fit (no crop)
-      const clipAspectRatio = settings.letterbox ? '4:5' : (settings.aspectRatio || '9:16');
+      // When filmFrame is on, always render at base aspect ratio (16:9)
+      // and let Remotion handle the letterbox padding
+      const clipAspectRatio = (settings.letterbox && !settings.filmFrame)
+        ? '4:5'
+        : (settings.aspectRatio || '9:16');
 
       // Build credits from first look's products (all clips share the same outfit)
       const firstLook = selectedBundle.looks[0];
@@ -517,6 +524,7 @@ export default function VideoPage() {
           credits: credits?.length ? credits : undefined,
           aspectRatio: clipAspectRatio,
           filmFrame: settings.filmFrame,
+          letterbox: settings.letterbox,
           filmEffects: settings.filmEffects,
         }),
       });
