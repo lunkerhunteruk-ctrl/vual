@@ -563,7 +563,8 @@ export function GeminiImageGenerator({
 
       // Build per-shot configurations
       // Auto: per-shot pose + scene, global aspect ratio
-      // Custom: pose = '' (prompt handles it), per-shot aspect ratio from AI story
+      // Custom: if user picked a non-default AR, use it; otherwise use per-shot AR from AI story
+      const userPickedAR = settings.aspectRatio !== '3:4';
       const shotConfigs = Array.from({ length: storyCount }, (_, i) => {
         if (sceneMode === 'auto') {
           return {
@@ -577,7 +578,7 @@ export function GeminiImageGenerator({
             background: settings.background,
             customPrompt: customScenePrompts[i] || settings.customPrompt,
             pose: '',
-            aspectRatio: perShotAspectRatios[i] || settings.aspectRatio,
+            aspectRatio: userPickedAR ? settings.aspectRatio : (perShotAspectRatios[i] || settings.aspectRatio),
           };
         }
       });
