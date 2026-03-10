@@ -196,6 +196,28 @@ export function useCollection() {
     await fetchLooks();
   };
 
+  const addToBundle = async (bundleId: string, lookId: string) => {
+    const res = await fetch('/api/collections/bundles', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bundleId, action: 'add', lookId }),
+    });
+    if (!res.ok) throw new Error('Failed to add look to bundle');
+    await fetchLooks();
+  };
+
+  const removeFromBundle = async (bundleId: string, lookId: string) => {
+    const res = await fetch('/api/collections/bundles', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bundleId, action: 'remove', lookId }),
+    });
+    if (!res.ok) throw new Error('Failed to remove look from bundle');
+    const data = await res.json();
+    await fetchLooks();
+    return data; // { success, disbanded? }
+  };
+
   const reorderBundleLooks = async (bundleId: string, lookIds: string[]) => {
     // Optimistic update
     setLooks(prev => prev.map(l => {
@@ -225,6 +247,8 @@ export function useCollection() {
     reorderLooks,
     createBundle,
     disbandBundle,
+    addToBundle,
+    removeFromBundle,
     reorderBundleLooks,
     refetch: fetchLooks,
   };

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video } from 'lucide-react';
 import { useStoreContext } from '@/lib/store/store-context';
@@ -636,18 +636,60 @@ function BundleDetailModal({
   onClose,
   onClickLook,
   onReorder,
+  onAddToBundle,
+  onRemoveFromBundle,
+  unbundledLooks,
   locale,
 }: {
   bundle: { id: string; looks: CollectionLook[] };
   onClose: () => void;
   onClickLook: (look: CollectionLook) => void;
   onReorder: (bundleId: string, lookIds: string[]) => void;
+  onAddToBundle: (bundleId: string, lookId: string) => Promise<void>;
+  onRemoveFromBundle: (bundleId: string, lookId: string) => Promise<{ disbanded?: boolean }>;
+  unbundledLooks: CollectionLook[];
   locale: string;
 }) {
   const ja = locale === 'ja';
   const [orderedLooks, setOrderedLooks] = useState(bundle.looks);
+  // Sync orderedLooks when bundle.looks changes (after add/remove)
+  useEffect(() => {
+    setOrderedLooks(bundle.looks);
+  }, [bundle.looks]);
+  const [showAddPicker, setShowAddPicker] = useState(false);
+  const [isAdding, setIsAdding] = useState<string | null>(null);
+  const [isRemoving, setIsRemoving] = useState<string | null>(null);
   const store = useStoreContext((s) => s.store);
   const isDevStore = store?.slug === 'vualofficial';
+
+  const handleAddLook = async (lookId: string) => {
+    setIsAdding(lookId);
+    try {
+      await onAddToBundle(bundle.id, lookId);
+      setShowAddPicker(false);
+    } catch (err) {
+      console.error('Failed to add look to bundle:', err);
+    } finally {
+      setIsAdding(null);
+    }
+  };
+
+  const handleRemoveLook = async (lookId: string) => {
+    if (isRemoving) return;
+    setIsRemoving(lookId);
+    try {
+      const result = await onRemoveFromBundle(bundle.id, lookId);
+      if (result?.disbanded) {
+        onClose();
+      } else {
+        setOrderedLooks(prev => prev.filter(l => l.id !== lookId));
+      }
+    } catch (err) {
+      console.error('Failed to remove look from bundle:', err);
+    } finally {
+      setIsRemoving(null);
+    }
+  };
 
   const handleDownloadRemotionJson = () => {
     let cumulativeTime = 0;
@@ -724,10 +766,17 @@ function BundleDetailModal({
           <div className="flex items-center gap-2">
             <Link2 size={16} className="text-[var(--color-accent)]" />
             <h2 className="text-base font-bold text-[var(--color-title-active)]">
-              {ja ? `バンドル (${bundle.looks.length}枚)` : `Bundle (${bundle.looks.length} looks)`}
+              {ja ? `バンドル (${orderedLooks.length}枚)` : `Bundle (${orderedLooks.length} looks)`}
             </h2>
           </div>
           <div className="flex items-center gap-1">
+            <button
+              onClick={() => setShowAddPicker(!showAddPicker)}
+              className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+              title={ja ? 'カードを追加' : 'Add card'}
+            >
+              <Plus size={18} className="text-[var(--color-text-label)]" />
+            </button>
             {isDevStore && (
               <button
                 onClick={handleDownloadRemotionJson}
@@ -743,6 +792,43 @@ function BundleDetailModal({
           </div>
         </div>
 
+        {/* Add card picker */}
+        {showAddPicker && (
+          <div className="border-b border-[var(--color-line)] p-4 bg-[var(--color-bg-element)]">
+            <p className="text-xs font-medium text-[var(--color-text-label)] mb-2">
+              {ja ? '追加するカードを選択' : 'Select a card to add'}
+            </p>
+            {unbundledLooks.length === 0 ? (
+              <p className="text-xs text-[var(--color-text-label)]">
+                {ja ? 'バンドルに追加可能なカードがありません' : 'No available cards to add'}
+              </p>
+            ) : (
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 max-h-48 overflow-y-auto">
+                {unbundledLooks.map(look => (
+                  <button
+                    key={look.id}
+                    onClick={() => handleAddLook(look.id)}
+                    disabled={isAdding !== null}
+                    className="relative group rounded-lg overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors disabled:opacity-50"
+                  >
+                    <div className="aspect-[3/4] bg-[var(--color-bg-element)]">
+                      <img src={look.image_url} alt="" className="w-full h-full object-cover" />
+                    </div>
+                    {isAdding === look.id && (
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <Loader2 size={16} className="animate-spin text-white" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                      <Plus size={20} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="p-5">
           <p className="text-xs text-[var(--color-text-label)] mb-3">
             {ja ? 'ドラッグで順番を変更。クリックで詳細表示。' : 'Drag to reorder. Click for details.'}
@@ -751,7 +837,15 @@ function BundleDetailModal({
             <SortableContext items={orderedLooks.map((l) => l.id)} strategy={verticalListSortingStrategy}>
               <div className="space-y-2">
                 {orderedLooks.map((look, idx) => (
-                  <SortableBundleLookItem key={look.id} look={look} index={idx} onClick={() => onClickLook(look)} locale={locale} />
+                  <SortableBundleLookItem
+                    key={look.id}
+                    look={look}
+                    index={idx}
+                    onClick={() => onClickLook(look)}
+                    onRemove={() => handleRemoveLook(look.id)}
+                    isRemoving={isRemoving === look.id}
+                    locale={locale}
+                  />
                 ))}
               </div>
             </SortableContext>
@@ -766,11 +860,15 @@ function SortableBundleLookItem({
   look,
   index,
   onClick,
+  onRemove,
+  isRemoving,
   locale,
 }: {
   look: CollectionLook;
   index: number;
   onClick: () => void;
+  onRemove: () => void;
+  isRemoving: boolean;
   locale: string;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
@@ -780,7 +878,7 @@ function SortableBundleLookItem({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    opacity: isDragging ? 0.5 : isRemoving ? 0.4 : 1,
   };
 
   return (
@@ -805,6 +903,18 @@ function SortableBundleLookItem({
           {look.title || (locale === 'ja' ? 'タイトル未設定' : 'No title')}
         </p>
       </div>
+      <button
+        onClick={(e) => { e.stopPropagation(); onRemove(); }}
+        disabled={isRemoving}
+        className="p-1.5 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
+        title={locale === 'ja' ? 'バンドルから外す' : 'Remove from bundle'}
+      >
+        {isRemoving ? (
+          <Loader2 size={14} className="animate-spin text-[var(--color-text-label)]" />
+        ) : (
+          <X size={14} className="text-[var(--color-text-label)] hover:text-red-500" />
+        )}
+      </button>
     </div>
   );
 }
@@ -815,7 +925,7 @@ export default function CollectionPage() {
   const {
     looks, items, isLoading,
     addLook, updateLook, deleteLook, deleteBundle, reorderLooks,
-    createBundle, disbandBundle, reorderBundleLooks,
+    createBundle, disbandBundle, addToBundle, removeFromBundle, reorderBundleLooks,
   } = useCollection();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
@@ -823,6 +933,20 @@ export default function CollectionPage() {
   const [selectedBundle, setSelectedBundle] = useState<{ id: string; looks: CollectionLook[] } | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [isBundling, setIsBundling] = useState(false);
+
+  // Keep selectedBundle in sync with looks data (after add/remove operations)
+  useEffect(() => {
+    if (!selectedBundle) return;
+    const bundleItem = items.find(
+      (item) => item.type === 'bundle' && item.bundle.id === selectedBundle.id
+    );
+    if (bundleItem && bundleItem.type === 'bundle') {
+      setSelectedBundle(bundleItem.bundle);
+    } else {
+      // Bundle was disbanded (removed)
+      setSelectedBundle(null);
+    }
+  }, [items]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -1009,6 +1133,14 @@ export default function CollectionPage() {
             setSelectedLook(look);
           }}
           onReorder={reorderBundleLooks}
+          onAddToBundle={async (bundleId, lookId) => {
+            await addToBundle(bundleId, lookId);
+          }}
+          onRemoveFromBundle={async (bundleId, lookId) => {
+            const result = await removeFromBundle(bundleId, lookId);
+            return result;
+          }}
+          unbundledLooks={looks.filter(l => !l.bundle_id)}
           locale={locale}
         />
       )}

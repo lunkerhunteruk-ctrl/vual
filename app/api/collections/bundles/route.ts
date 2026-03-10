@@ -103,6 +103,110 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
+// PUT: Add or remove a single look from a bundle
+export async function PUT(request: NextRequest) {
+  try {
+    const supabase = createServerClient();
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
+    }
+
+    const storeId = await resolveStoreIdFromRequest(request);
+    const body = await request.json();
+    const { bundleId, action, lookId } = body as { bundleId: string; action: 'add' | 'remove'; lookId: string };
+
+    if (!bundleId || !action || !lookId) {
+      return NextResponse.json({ error: 'bundleId, action, and lookId required' }, { status: 400 });
+    }
+
+    if (action === 'add') {
+      // Verify look exists, belongs to this store, and isn't already bundled
+      const { data: look, error: lookError } = await supabase
+        .from('collection_looks')
+        .select('id, bundle_id')
+        .eq('id', lookId)
+        .eq('store_id', storeId)
+        .single();
+
+      if (lookError || !look) {
+        return NextResponse.json({ error: 'Look not found' }, { status: 404 });
+      }
+      if (look.bundle_id) {
+        return NextResponse.json({ error: 'Look is already in a bundle' }, { status: 400 });
+      }
+
+      // Get max bundle_position in this bundle
+      const { data: bundleLooks } = await supabase
+        .from('collection_looks')
+        .select('bundle_position')
+        .eq('bundle_id', bundleId)
+        .order('bundle_position', { ascending: false })
+        .limit(1);
+
+      const nextPos = (bundleLooks?.[0]?.bundle_position ?? -1) + 1;
+
+      const { error: updateError } = await supabase
+        .from('collection_looks')
+        .update({ bundle_id: bundleId, bundle_position: nextPos })
+        .eq('id', lookId);
+
+      if (updateError) throw updateError;
+
+    } else if (action === 'remove') {
+      // Count how many looks remain in this bundle
+      const { count } = await supabase
+        .from('collection_looks')
+        .select('id', { count: 'exact', head: true })
+        .eq('bundle_id', bundleId);
+
+      // Unlink the look
+      const { error: updateError } = await supabase
+        .from('collection_looks')
+        .update({ bundle_id: null, bundle_position: 0 })
+        .eq('id', lookId)
+        .eq('bundle_id', bundleId);
+
+      if (updateError) throw updateError;
+
+      // If only 1 look remains after removal, auto-disband the bundle
+      if (count !== null && count <= 2) {
+        await supabase
+          .from('collection_looks')
+          .update({ bundle_id: null, bundle_position: 0 })
+          .eq('bundle_id', bundleId);
+
+        await supabase
+          .from('collection_bundles')
+          .delete()
+          .eq('id', bundleId);
+
+        return NextResponse.json({ success: true, disbanded: true });
+      }
+
+      // Re-sequence bundle_positions
+      const { data: remaining } = await supabase
+        .from('collection_looks')
+        .select('id')
+        .eq('bundle_id', bundleId)
+        .order('bundle_position', { ascending: true });
+
+      if (remaining) {
+        for (let i = 0; i < remaining.length; i++) {
+          await supabase
+            .from('collection_looks')
+            .update({ bundle_position: i })
+            .eq('id', remaining[i].id);
+        }
+      }
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error('[Bundles] PUT error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
 // PATCH: Reorder looks within a bundle
 export async function PATCH(request: NextRequest) {
   try {
