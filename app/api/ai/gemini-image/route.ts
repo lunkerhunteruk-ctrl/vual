@@ -111,6 +111,7 @@ async function callGeminiAPI(parts: any[], aspectRatio: string = '3:4', imageSiz
   }
 
   // Gemini API uses aspectRatio string (e.g. "3:4") directly in imageConfig
+  console.log(`[callGeminiAPI] aspectRatio=${aspectRatio}, imageSize=${imageSize}`);
   const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -315,7 +316,7 @@ export async function POST(request: NextRequest) {
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
       try {
         const prompt = promptVariants[attempt] || promptVariants[promptVariants.length - 1];
-        console.log(`[Freestyle] Attempt ${attempt + 1}/${MAX_RETRIES} using ${GEMINI_MODEL}...`);
+        console.log(`[Freestyle] Attempt ${attempt + 1}/${MAX_RETRIES} using ${GEMINI_MODEL}, aspectRatio=${body.aspectRatio}, resolution=${body.resolution || '1K'}`);
         if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
