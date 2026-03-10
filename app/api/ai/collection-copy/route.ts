@@ -75,7 +75,7 @@ Given the scene direction and/or the styled look image, generate:
    - 8s: Slow cinematic wide shots, emotional climax scenes, contemplative endings, gaze shift moments
    IMPORTANT: Never use 5 or 7. Only 4, 6, or 8 are valid. Vary across shots to create natural editorial rhythm.
 
-4. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A detailed video generation prompt (150-200 words) using this structure:
+4. VIDEO_PROMPT_VEO (for Google Veo 3.1, in English): A concise video generation prompt (max 150 words) using this structure:
    - Scene: One clear sentence describing the overall action and vibe
    - Visual style: Define the aesthetic (e.g. "35mm film grain, muted earth tones, editorial fashion")
    - Camera movement: Specific camera behavior (dolly, tracking, crane, slow push-in, etc.)
@@ -85,7 +85,7 @@ Given the scene direction and/or the styled look image, generate:
    - Audio direction: NO background music, NO score, NO soundtrack. Only realistic diegetic and environmental sounds: footsteps on stone/wood/gravel, fabric rustling, soft breathing, wind through hair, AND natural ambient sounds — flowing water, river/stream sounds, rain, birdsong, insects chirping, rustling leaves, distant city hum. The audio should feel like an immersive field recording capturing the real atmosphere of the location.
    - End with: "X second clip, cinematic aspect ratio, photorealistic quality, no background music" where X is the ACTUAL number you chose for shot_duration_sec (4, 6, or 8). Write the real number, NOT a placeholder.
 
-5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A detailed video generation prompt (150-200 words) using this structure:
+5. VIDEO_PROMPT_KLING (for Kling 3.0, in English): A concise video generation prompt (max 150 words) using this structure:
    - Scene: Location and atmosphere in one sentence
    - Character: Model's appearance, garments described by visual appearance, body positioning. Specify exact hand/arm positions for held items — bags and accessories must stay in the SAME hand/position for the entire clip, never switching or teleporting
    - Action sequence: "First [subtle movement], then [secondary action], finally [hold pose]" — keep movements minimal and elegant
@@ -169,12 +169,36 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             const fixPrompt = (p: string) =>
               p.replace(/\[SHOT_DURATION_SEC\]/g, durStr);
 
+            let veoPrompt = fixPrompt(parsed.video_prompt_veo || '');
+            let klingPrompt = fixPrompt(parsed.video_prompt_kling || '');
+
+            // Auto-trim if over 150 words
+            const MAX_WORDS = 150;
+            const wordCount = (s: string) => s.split(/\s+/).filter(Boolean).length;
+
+            const trimPromises: Promise<void>[] = [];
+            if (wordCount(veoPrompt) > MAX_WORDS) {
+              console.log(`[Collection Copy] Veo prompt too long (${wordCount(veoPrompt)} words), trimming...`);
+              trimPromises.push(
+                trimVideoPrompt(veoPrompt, duration, apiKey).then((t: string | null) => { if (t) veoPrompt = t; })
+              );
+            }
+            if (wordCount(klingPrompt) > MAX_WORDS) {
+              console.log(`[Collection Copy] Kling prompt too long (${wordCount(klingPrompt)} words), trimming...`);
+              trimPromises.push(
+                trimVideoPrompt(klingPrompt, duration, apiKey).then((t: string | null) => { if (t) klingPrompt = t; })
+              );
+            }
+            if (trimPromises.length > 0) {
+              await Promise.all(trimPromises);
+            }
+
             return NextResponse.json({
               title: parsed.title,
               description: parsed.description || '',
               shot_duration_sec: duration,
-              video_prompt_veo: fixPrompt(parsed.video_prompt_veo || ''),
-              video_prompt_kling: fixPrompt(parsed.video_prompt_kling || ''),
+              video_prompt_veo: veoPrompt,
+              video_prompt_kling: klingPrompt,
               telop_caption_ja: parsed.telop_caption_ja || '',
               telop_caption_en: parsed.telop_caption_en || '',
             });
@@ -199,6 +223,33 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
   } catch (error: any) {
     console.error('[Collection Copy] Error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+async function trimVideoPrompt(prompt: string, duration: number, apiKey: string): Promise<string | null> {
+  try {
+    const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: `Shorten this video generation prompt to under 120 words while keeping all essential details (scene, subject, camera, style, audio). Keep the ending line about duration and aspect ratio. Remove redundant adjectives and merge similar descriptions. Do NOT add new details.\n\nOriginal prompt:\n${prompt}\n\nReturn ONLY the shortened prompt, nothing else.`,
+          }],
+        }],
+        generationConfig: { temperature: 0.3, maxOutputTokens: 300 },
+      }),
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    if (text && text.split(/\s+/).filter(Boolean).length <= 150) {
+      return text;
+    }
+    return null;
+  } catch (e) {
+    console.error('[Collection Copy] Trim prompt failed:', e);
+    return null;
   }
 }
 
