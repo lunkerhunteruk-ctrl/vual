@@ -562,11 +562,11 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   const tuckStyle = modelSettings.tuckStyle || 'auto';
   let tuckInstruction = '';
   if (tuckStyle === 'tuck-out') {
-    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be worn UNTUCKED — the hem hangs freely OUTSIDE the pants/skirt. Do NOT tuck the top into the bottoms under any circumstances.';
+    tuckInstruction = 'MANDATORY STYLING RULE (INNER LAYER ONLY — applies to shirts, tops, blouses, NOT to jackets or coats): The top/shirt MUST be worn UNTUCKED — the hem hangs freely OUTSIDE the pants/skirt. Do NOT tuck the top into the bottoms under any circumstances. This rule does NOT apply to outer layers like jackets, coats, or blazers.';
   } else if (tuckStyle === 'tuck-in') {
-    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be fully TUCKED IN to the pants/skirt. The entire hem of the top must be neatly inserted inside the waistband.';
+    tuckInstruction = 'MANDATORY STYLING RULE (INNER LAYER ONLY — applies to shirts, tops, blouses, NOT to jackets or coats): The top/shirt MUST be fully TUCKED IN to the pants/skirt. The entire hem of the top must be neatly inserted inside the waistband. This rule does NOT apply to outer layers like jackets, coats, or blazers.';
   } else if (tuckStyle === 'french-tuck') {
-    tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be styled with a FRENCH TUCK — only the front center portion of the hem is loosely tucked into the waistband, while the sides and back hang freely untucked.';
+    tuckInstruction = 'MANDATORY STYLING RULE (INNER LAYER ONLY — applies to shirts, tops, blouses, NOT to jackets or coats): The top/shirt MUST be styled with a FRENCH TUCK — only the front center portion of the hem is loosely tucked into the waistband, while the sides and back hang freely untucked. This rule does NOT apply to outer layers like jackets, coats, or blazers.';
   }
 
   // Outer (jacket/coat) front style instruction
@@ -620,9 +620,9 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
 }
 
 function getTuckNote(tuckStyle?: string): string {
-  if (tuckStyle === 'tuck-out') return ' The top MUST be UNTUCKED — hem hanging freely outside the pants.';
-  if (tuckStyle === 'tuck-in') return ' The top MUST be fully TUCKED IN to the pants.';
-  if (tuckStyle === 'french-tuck') return ' The top MUST have a FRENCH TUCK — front tucked in, sides and back untucked.';
+  if (tuckStyle === 'tuck-out') return ' The inner top/shirt MUST be UNTUCKED (not jackets/coats).';
+  if (tuckStyle === 'tuck-in') return ' The inner top/shirt MUST be fully TUCKED IN (not jackets/coats).';
+  if (tuckStyle === 'french-tuck') return ' The inner top/shirt MUST have a FRENCH TUCK (not jackets/coats).';
   return '';
 }
 
