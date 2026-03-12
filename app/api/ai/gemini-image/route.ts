@@ -22,6 +22,7 @@ interface ModelSettings {
   ethnicity: string;
   pose: string;
   tuckStyle?: 'auto' | 'tuck-out' | 'tuck-in' | 'french-tuck';
+  outerStyle?: 'auto' | 'open' | 'closed';
 }
 
 interface SizeSpec {
@@ -568,6 +569,15 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     tuckInstruction = 'MANDATORY STYLING RULE: The top/shirt MUST be styled with a FRENCH TUCK — only the front center portion of the hem is loosely tucked into the waistband, while the sides and back hang freely untucked.';
   }
 
+  // Outer (jacket/coat) front style instruction
+  const outerStyle = modelSettings.outerStyle || 'auto';
+  let outerInstruction = '';
+  if (outerStyle === 'open') {
+    outerInstruction = 'MANDATORY STYLING RULE: The jacket/coat/outer garment MUST be worn OPEN and UNBUTTONED — the front panels hang apart, fully revealing the garment underneath. Do NOT button, zip, or close the outer layer.';
+  } else if (outerStyle === 'closed') {
+    outerInstruction = 'MANDATORY STYLING RULE: The jacket/coat/outer garment MUST be worn CLOSED — fully buttoned, zipped, or fastened. The front must be neatly closed with no gap showing the garment underneath.';
+  }
+
   const parts = [
     `CRITICAL INSTRUCTION - GARMENT FIDELITY IS THE TOP PRIORITY:`,
     `You MUST reproduce the EXACT garments from the provided reference images with 100% accuracy.`,
@@ -575,6 +585,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     multiImageNote,
     vtonBaseNote,
     tuckInstruction,
+    outerInstruction,
     ``,
     `GARMENT DETAILS TO PRESERVE EXACTLY:`,
     `- Exact color and shade (no color shifts)`,
@@ -615,6 +626,12 @@ function getTuckNote(tuckStyle?: string): string {
   return '';
 }
 
+function getOuterNote(outerStyle?: string): string {
+  if (outerStyle === 'open') return ' The jacket/coat MUST be worn OPEN, showing the garment underneath.';
+  if (outerStyle === 'closed') return ' The jacket/coat MUST be worn CLOSED and buttoned/zipped.';
+  return '';
+}
+
 function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secondImageCount: number, thirdImageCount: number, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
   const { modelSettings, modelImage, vtonBase, background, customPrompt } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
@@ -626,10 +643,11 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
   }
 
   const tuckNote = getTuckNote(modelSettings.tuckStyle);
+  const outerNote = getOuterNote(modelSettings.outerStyle);
   const styleNote = customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
   const poseNote = modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose}, ` : '';
   const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || background}.`;
-  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
+  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
@@ -638,7 +656,8 @@ function buildMinimalPrompt(body: RequestBody): string {
 
   const model = modelImage ? 'this person' : `a ${gender}`;
   const tuckNote = getTuckNote(modelSettings.tuckStyle);
+  const outerNote = getOuterNote(modelSettings.outerStyle);
   const styleNote = customPrompt ? ` ${customPrompt}.` : '';
   const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || 'White background'}.`;
-  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
+  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
 }

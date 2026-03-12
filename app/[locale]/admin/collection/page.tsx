@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video } from 'lucide-react';
+import JSZip from 'jszip';
 import { useStoreContext } from '@/lib/store/store-context';
 import {
   DndContext,
@@ -661,6 +662,7 @@ function BundleDetailModal({
   const [isRemoving, setIsRemoving] = useState<string | null>(null);
   const store = useStoreContext((s) => s.store);
   const isDevStore = store?.slug === 'vualofficial';
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleAddLook = async (lookId: string) => {
     setIsAdding(lookId);
@@ -691,55 +693,40 @@ function BundleDetailModal({
     }
   };
 
-  const handleDownloadRemotionJson = () => {
-    let cumulativeTime = 0;
-    const shots = orderedLooks.map((look, idx) => {
-      const duration = look.shot_duration_sec || 6;
-      const shot = {
-        shot: idx + 1,
-        title_ja: look.title || '',
-        caption_ja: look.telop_caption_ja || '',
-        caption_en: look.telop_caption_en || '',
-        image_url: look.image_url,
-        shot_duration_sec: duration,
-        video_prompt_veo: look.video_prompt_veo || '',
-        video_prompt_kling: look.video_prompt_kling || '',
-        timing: {
-          startSec: cumulativeTime,
-          durationSec: duration,
-          telop: {
-            startSec: cumulativeTime + 0.5,
-            durationSec: Math.min(3, duration - 1.5),
-            fadeInSec: 0.3,
-            fadeOutSec: 0.5,
-          },
-        },
-        products: look.collection_look_products?.map(lp => ({
-          name: lp.products?.name || '',
-          brand: lp.products?.brand || '',
-          price: lp.products?.base_price || 0,
-          currency: lp.products?.currency || 'JPY',
-        })) || [],
-      };
-      cumulativeTime += duration;
-      return shot;
-    });
+  const handleDownloadGlamJobsZip = async () => {
+    if (isDownloading) return;
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+      const glamJobs = zip.folder('glam_jobs')!;
 
-    const payload = {
-      bundle_id: bundle.id,
-      total_shots: shots.length,
-      total_duration_sec: cumulativeTime,
-      shots,
-    };
+      for (let i = 0; i < orderedLooks.length; i++) {
+        const look = orderedLooks[i];
+        const num = String(i + 1).padStart(3, '0');
+        const title = look.title || `look_${i + 1}`;
+        const folderName = `${num}_${title}`;
+        const folder = glamJobs.folder(folderName)!;
 
-    const jsonStr = JSON.stringify(payload, null, 2);
-    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), jsonStr], { type: 'application/json;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `remotion-bundle-${bundle.id.slice(0, 8)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+        const response = await fetch(look.image_url);
+        const imageBlob = await response.blob();
+        folder.file('image.jpg', imageBlob);
+
+        const prompt = look.video_prompt_veo || '';
+        folder.file('prompt.txt', prompt);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `glam_jobs_${bundle.id.slice(0, 8)}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Glam Jobs ZIP download error:', err);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   const sensors = useSensors(
@@ -779,11 +766,15 @@ function BundleDetailModal({
             </button>
             {isDevStore && (
               <button
-                onClick={handleDownloadRemotionJson}
-                className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
-                title={ja ? 'Remotion JSON をダウンロード' : 'Download Remotion JSON'}
+                onClick={handleDownloadGlamJobsZip}
+                disabled={isDownloading}
+                className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors disabled:opacity-50"
+                title={ja ? 'Glam Jobs ZIP をダウンロード' : 'Download Glam Jobs ZIP'}
               >
-                <Download size={18} className="text-[var(--color-text-label)]" />
+                {isDownloading
+                  ? <Loader2 size={18} className="animate-spin text-[var(--color-text-label)]" />
+                  : <Download size={18} className="text-[var(--color-text-label)]" />
+                }
               </button>
             )}
             <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">

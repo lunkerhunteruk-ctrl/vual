@@ -279,6 +279,7 @@ export function GeminiImageGenerator({
     aspectRatio: '3:4',
     resolution: '1K',
     tuckStyle: 'auto' as 'auto' | 'tuck-out' | 'tuck-in' | 'french-tuck',
+    outerStyle: 'auto' as 'auto' | 'open' | 'closed',
     customPrompt: '',
   });
 
@@ -1246,6 +1247,16 @@ export function GeminiImageGenerator({
           <option value="tuck-out">{locale === 'ja' ? '裾: アウト' : 'Hem: Untucked'}</option>
           <option value="tuck-in">{locale === 'ja' ? '裾: イン' : 'Hem: Tucked In'}</option>
           <option value="french-tuck">{locale === 'ja' ? '裾: フレンチタック' : 'Hem: French Tuck'}</option>
+        </select>
+
+        <select
+          value={settings.outerStyle}
+          onChange={(e) => setSettings(prev => ({ ...prev, outerStyle: e.target.value as any }))}
+          className="text-sm px-2 py-1.5 border border-[var(--color-line)] rounded-lg bg-white text-[var(--color-text-body)]"
+        >
+          <option value="auto">{locale === 'ja' ? 'アウター: 自動' : 'Outer: Auto'}</option>
+          <option value="open">{locale === 'ja' ? 'アウター: 開ける' : 'Outer: Open'}</option>
+          <option value="closed">{locale === 'ja' ? 'アウター: 閉める' : 'Outer: Closed'}</option>
         </select>
 
         {/* Credit balance */}
