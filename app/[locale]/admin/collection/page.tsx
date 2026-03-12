@@ -698,7 +698,8 @@ function BundleDetailModal({
     setIsDownloading(true);
     try {
       const zip = new JSZip();
-      const glamJobs = zip.folder('glam_jobs')!;
+      const zipFolderName = `glam_jobs_${bundle.id.slice(0, 8)}`;
+      const glamJobs = zip.folder(zipFolderName)!;
 
       for (let i = 0; i < orderedLooks.length; i++) {
         const look = orderedLooks[i];
@@ -709,7 +710,8 @@ function BundleDetailModal({
 
         const response = await fetch(look.image_url);
         const imageBlob = await response.blob();
-        folder.file('image.jpg', imageBlob);
+        const ext = imageBlob.type === 'image/png' ? 'png' : 'jpg';
+        folder.file(`image.${ext}`, imageBlob);
 
         const prompt = look.video_prompt_veo || '';
         folder.file('prompt.txt', prompt);
