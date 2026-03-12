@@ -119,10 +119,12 @@ export default function AIStudioPage() {
       const name = getProductName(p);
       const category = p.category || '';
       const catLabel = getCategoryLabel(category, locale);
+      const brand = p.brand || '';
       const q = query.toLowerCase();
       return name.toLowerCase().includes(q) ||
         category.toLowerCase().includes(q) ||
-        catLabel.toLowerCase().includes(q);
+        catLabel.toLowerCase().includes(q) ||
+        brand.toLowerCase().includes(q);
     });
 
     const priority = slotPriorities[slotNum] || [];

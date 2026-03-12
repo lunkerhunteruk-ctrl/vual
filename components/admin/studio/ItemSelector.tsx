@@ -14,6 +14,7 @@ interface Product {
   base_price: number;
   currency: string;
   category: string;
+  brand?: string;
   product_images?: { id: string; url: string; is_primary: boolean }[];
 }
 
@@ -86,8 +87,10 @@ export function ItemSelector({ selection, onSelectionChange }: ItemSelectorProps
   const filteredProducts = products.filter(product => {
     const name = locale === 'ja' ? product.name : (product.name_en || product.name);
     const category = product.category || '';
+    const brand = product.brand || '';
     return name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      category.toLowerCase().includes(searchQuery.toLowerCase());
+      category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      brand.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   // Get key item details
