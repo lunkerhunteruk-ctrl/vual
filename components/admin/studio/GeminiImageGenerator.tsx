@@ -158,6 +158,7 @@ const allEthnicityLabels: Record<string, { labelEn: string; labelJa: string }> =
   'scandinavian': { labelEn: 'Scandinavian', labelJa: '北欧系' },
   'latin': { labelEn: 'Latin', labelJa: 'ラテン系' },
   'southeast-asian': { labelEn: 'SE Asian', labelJa: '東南アジア系' },
+  'no-ethnic': { labelEn: 'No Ethnic', labelJa: '無国籍' },
 };
 
 // Output pose options — controls Gemini prompt (not model image selection)

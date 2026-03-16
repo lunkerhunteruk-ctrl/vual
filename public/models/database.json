@@ -737,6 +737,42 @@
       "pose": "standing",
       "thumbnail": "/models/images/female/18-24/latin/standing/la-f-18-stand-011.jpg",
       "fullImage": "/models/images/female/18-24/latin/standing/la-f-18-stand-011.jpg"
+    },
+    {
+      "id": "ne-f-18-stand-001",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "no-ethnic",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-001.jpg",
+      "fullImage": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-001.jpg"
+    },
+    {
+      "id": "ne-f-18-stand-002",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "no-ethnic",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-002.jpg",
+      "fullImage": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-002.jpg"
+    },
+    {
+      "id": "ne-f-18-stand-003",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "no-ethnic",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-003.jpg",
+      "fullImage": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-003.jpg"
+    },
+    {
+      "id": "ne-f-18-stand-004",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "no-ethnic",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-004.jpg",
+      "fullImage": "/models/images/female/18-24/no-ethnic/standing/ne-f-18-stand-004.jpg"
     }
   ],
   "ethnicities": [
@@ -750,7 +786,8 @@
     { "id": "latin", "labelEn": "Latin", "labelJa": "ラテン系" },
     { "id": "middle-eastern", "labelEn": "Middle Eastern", "labelJa": "中東系" },
     { "id": "south-asian", "labelEn": "South Asian", "labelJa": "南アジア系" },
-    { "id": "southeast-asian", "labelEn": "Southeast Asian", "labelJa": "東南アジア系" }
+    { "id": "southeast-asian", "labelEn": "Southeast Asian", "labelJa": "東南アジア系" },
+    { "id": "no-ethnic", "labelEn": "No Ethnic", "labelJa": "無国籍" }
   ],
   "ageRanges": [
     { "id": "18-24", "labelEn": "18-24", "labelJa": "18-24歳" },
