@@ -54,6 +54,29 @@ const slideFromRight: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
+// Apple-style counter animation
+function CountUp({ value, suffix = '' }: { value: number; suffix?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4); // ease-out quart
+      setDisplay(Math.round(eased * value));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [isInView, value]);
+
+  return <span ref={ref}>{display}{suffix}</span>;
+}
+
 // ============================================================
 // Image slideshow — crossfade loop (reusable)
 // ============================================================
@@ -629,31 +652,86 @@ export function VualLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
+              <motion.span
+                variants={fadeUp}
+                className="inline-block text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase"
+              >
                 01
               </motion.span>
-              <AnimatedHeading
-                text={t('lookbook.heading')}
+
+              {/* Apple-style headline: words clip-reveal staggered */}
+              <motion.h2
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
-              />
-              <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
+                variants={staggerContainer}
+              >
+                {t('lookbook.heading').split(' ').map((word, i) => (
+                  <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
+                    <motion.span
+                      className="inline-block"
+                      variants={{
+                        hidden: { y: '120%', rotateX: 40 },
+                        visible: {
+                          y: 0,
+                          rotateX: 0,
+                          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+                        },
+                      }}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
+              </motion.h2>
+
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
+                }}
+                className="text-[#a89bb8] leading-relaxed text-base mb-10"
+              >
                 {t('lookbook.description')}
               </motion.p>
-              <motion.div variants={fadeUp} className="flex gap-6">
+
+              {/* Apple-style stats — count up with stagger */}
+              <motion.div
+                variants={staggerContainer}
+                className="flex gap-10"
+              >
                 {[
-                  { value: '90%', label: t('lookbook.costReduction') },
-                  { value: '10x', label: t('lookbook.fasterProduction') },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-[#8a7a9b] mt-1">{stat.label}</p>
-                  </div>
+                  { value: 90, suffix: '%', label: t('lookbook.costReduction') },
+                  { value: 10, suffix: 'x', label: t('lookbook.fasterProduction') },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    variants={{
+                      hidden: { opacity: 0, y: 40, scale: 0.8 },
+                      visible: {
+                        opacity: 1, y: 0, scale: 1,
+                        transition: { duration: 0.8, delay: 0.6 + i * 0.15, ease: [0.16, 1, 0.3, 1] },
+                      },
+                    }}
+                  >
+                    <p className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+                      <CountUp value={stat.value} suffix={stat.suffix} />
+                    </p>
+                    <p className="text-sm text-[#8a7a9b] mt-2 tracking-wide">{stat.label}</p>
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
 
             {/* Lookbook slideshow */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.92, x: 60 },
+                visible: {
+                  opacity: 1, scale: 1, x: 0,
+                  transition: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+                },
+              }}
+              className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60"
+            >
               <ImageSlideshow folder="lookbook" fallbackLabel="LOOKBOOK DEMO" />
             </motion.div>
           </div>
