@@ -300,19 +300,20 @@ function AnimatedHeading({ text, className = '' }: { text: string; className?: s
 function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
   const t = useTranslations('lp.waitlist');
   const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
   const [type, setType] = useState<'brand' | 'shop'>('brand');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !company) return;
     setLoading(true);
     try {
       await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, type }),
+        body: JSON.stringify({ email, company, type }),
       });
       setSubmitted(true);
     } catch {
@@ -366,6 +367,20 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           </button>
         ))}
       </div>
+
+      {/* Company name */}
+      <input
+        type="text"
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
+        placeholder={t('companyPlaceholder')}
+        required
+        className={`w-full px-5 py-3.5 rounded-full text-sm outline-none transition-all mb-2 ${
+          isDark
+            ? 'bg-white/10 text-white placeholder:text-[#8a7a9b] border border-white/20 focus:border-white/50'
+            : 'bg-neutral-100 text-black placeholder:text-[#a89bb8] border border-neutral-200 focus:border-neutral-400'
+        }`}
+      />
 
       {/* Email input + submit */}
       <div className="flex gap-2">

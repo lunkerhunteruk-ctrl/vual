@@ -808,7 +808,7 @@
   },
   "lp": {
     "hero": {
-      "badge": "Now accepting early access",
+      "badge": "Priority access open",
       "tagline": "AI-powered platform for the future of fashion.",
       "features": "Lookbook Generation · Virtual Try-On · Live Commerce · EC · All in One"
     },
@@ -818,7 +818,8 @@
       "placeholder": "Enter your email",
       "submit": "Join",
       "successTitle": "You're on the list",
-      "successMessage": "We'll be in touch soon"
+      "successMessage": "We'll reach out with priority access",
+      "companyPlaceholder": "Company / Brand / Shop name"
     },
     "lookbook": {
       "heading": "AI Lookbook Magazine quality without a shoot",

@@ -820,7 +820,7 @@
   },
   "lp": {
     "hero": {
-      "badge": "ウェイティングリスト受付中",
+      "badge": "優先案内受付中",
       "tagline": "AIが変える、ファッションビジネスのすべて。",
       "features": "ルックブック生成 · バーチャル試着 · ライブコマース · EC · すべてひとつに"
     },
@@ -830,7 +830,8 @@
       "placeholder": "メールアドレス",
       "submit": "登録",
       "successTitle": "登録完了",
-      "successMessage": "近日中にご連絡します"
+      "successMessage": "優先的にご案内いたします",
+      "companyPlaceholder": "企業名 / ブランド名 / ショップ名"
     },
     "lookbook": {
       "heading": "AI Lookbook 撮影なしで 雑誌品質を",

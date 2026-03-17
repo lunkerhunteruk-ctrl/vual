@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Database not configured' }, { status: 500 });
     }
 
-    const { email, type } = await request.json();
+    const { email, company, type } = await request.json();
 
     if (!email || !type) {
       return NextResponse.json({ error: 'Email and type required' }, { status: 400 });
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const { error } = await supabase
       .from('waitlist')
       .upsert(
-        { email: email.toLowerCase().trim(), type, updated_at: new Date().toISOString() },
+        { email: email.toLowerCase().trim(), company: company?.trim() || null, type, updated_at: new Date().toISOString() },
         { onConflict: 'email' }
       );
 
@@ -29,10 +29,11 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        _subject: `[VUAL Waitlist] New ${type} signup`,
+        _subject: `[VUAL Waitlist] New ${type} signup: ${company || 'N/A'}`,
         email,
+        company,
         type,
-        message: `New waitlist signup: ${email} (${type})`,
+        message: `New waitlist signup: ${company || 'N/A'} / ${email} (${type})`,
       }),
     }).catch(() => {});
 
