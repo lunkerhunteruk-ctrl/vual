@@ -199,7 +199,7 @@ function FeatureCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="group relative p-8 rounded-3xl border border-[#2a2035] bg-[#15101e]/50 backdrop-blur-sm hover:border-[#3d2e50] transition-all duration-500"
+      className="group relative p-8 rounded-3xl border border-[#2a2035]/60 bg-[#15101e]/40 backdrop-blur-md hover:border-[#3d2e50] transition-all duration-500"
     >
       <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${gradient}`} />
       <div className="relative">
@@ -228,7 +228,68 @@ export function VualLandingPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <div className="bg-[#0d0a12] text-white overflow-x-hidden" style={{ '--color-title-active': '#f0edf5', '--color-text-body': '#c8c0d4' } as React.CSSProperties}>
+    <div className="relative bg-[#0d0a12] text-white overflow-x-hidden" style={{ '--color-title-active': '#f0edf5', '--color-text-body': '#c8c0d4' } as React.CSSProperties}>
+      {/* Aurora background — fixed behind all content */}
+      <div className="fixed inset-0 -z-0 overflow-hidden">
+        <div className="aurora-blob aurora-blob-1" />
+        <div className="aurora-blob aurora-blob-2" />
+        <div className="aurora-blob aurora-blob-3" />
+        <div className="aurora-blob aurora-blob-4" />
+        {/* Noise overlay for texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")' }} />
+      </div>
+      <style>{`
+        .aurora-blob {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(120px);
+          opacity: 0.35;
+          will-change: transform;
+        }
+        .aurora-blob-1 {
+          width: 60vw; height: 60vw;
+          top: -15%; left: -10%;
+          background: radial-gradient(circle, #6b21a8 0%, #4c1d95 40%, transparent 70%);
+          animation: aurora1 18s ease-in-out infinite;
+        }
+        .aurora-blob-2 {
+          width: 50vw; height: 50vw;
+          top: 30%; right: -15%;
+          background: radial-gradient(circle, #7e22ce 0%, #581c87 40%, transparent 70%);
+          animation: aurora2 22s ease-in-out infinite;
+        }
+        .aurora-blob-3 {
+          width: 45vw; height: 45vw;
+          bottom: 10%; left: 20%;
+          background: radial-gradient(circle, #a855f7 0%, #7c3aed 30%, #2e1065 60%, transparent 75%);
+          animation: aurora3 20s ease-in-out infinite;
+        }
+        .aurora-blob-4 {
+          width: 40vw; height: 40vw;
+          top: 50%; left: 50%;
+          background: radial-gradient(circle, #c084fc 0%, #8b5cf6 30%, transparent 65%);
+          animation: aurora4 25s ease-in-out infinite;
+        }
+        @keyframes aurora1 {
+          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+          33% { transform: translate(10vw, 8vh) scale(1.15); opacity: 0.45; }
+          66% { transform: translate(-5vw, 15vh) scale(0.9); opacity: 0.25; }
+        }
+        @keyframes aurora2 {
+          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.25; }
+          40% { transform: translate(-12vw, -10vh) scale(1.2); opacity: 0.4; }
+          70% { transform: translate(-5vw, 8vh) scale(0.85); opacity: 0.2; }
+        }
+        @keyframes aurora3 {
+          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+          50% { transform: translate(15vw, -12vh) scale(1.1); opacity: 0.4; }
+        }
+        @keyframes aurora4 {
+          0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+          35% { transform: translate(-10vw, 10vh) scale(1.25); opacity: 0.35; }
+          65% { transform: translate(8vw, -8vh) scale(0.9); opacity: 0.15; }
+        }
+      `}</style>
       {/* ======== HERO ======== */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background video/gradient */}
@@ -236,9 +297,7 @@ export function VualLandingPage() {
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12]/40 via-[#1a1025]/20 to-[#0d0a12] z-10" />
-          {/* Replace with actual video when ready */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1025] via-[#0d0a12] to-[#15101e]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0a12]/60 z-10" />
           {/* Subtle animated grid */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -330,7 +389,7 @@ export function VualLandingPage() {
       </section>
 
       {/* ======== AI LOOKBOOK & EDITORIAL ======== */}
-      <AnimatedSection className="py-32 px-6">
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -360,8 +419,8 @@ export function VualLandingPage() {
             </div>
 
             {/* Visual placeholder */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035]">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2a2035]/50 to-transparent" />
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2a2035]/30 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LOOKBOOK DEMO</p>
               </div>
@@ -371,11 +430,11 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== VIRTUAL TRY-ON ======== */}
-      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-[#0d0a12] to-[#110e18]">
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Visual placeholder */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035] order-2 md:order-1">
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/60 border border-[#2a2035] order-2 md:order-1">
               <div className="absolute inset-0 bg-gradient-to-tl from-[#2a2035]/50 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VTON DEMO</p>
@@ -412,7 +471,7 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== AI VIDEO ======== */}
-      <AnimatedSection className="py-32 px-6">
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             03
@@ -428,7 +487,7 @@ export function VualLandingPage() {
           </motion.p>
 
           {/* Video placeholder */}
-          <motion.div variants={scaleIn} className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035]">
+          <motion.div variants={scaleIn} className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d0a12]/60" />
             <div className="absolute inset-0 flex items-center justify-center">
               <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VIDEO SHOWREEL</p>
@@ -442,7 +501,7 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== LINE LIVE COMMERCE ======== */}
-      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-[#0d0a12] to-[#110e18]">
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -460,7 +519,7 @@ export function VualLandingPage() {
               </motion.p>
             </div>
 
-            <motion.div variants={scaleIn} className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-[2rem] overflow-hidden bg-[#15101e] border border-[#2a2035]">
+            <motion.div variants={scaleIn} className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-[2rem] overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d0a12]/40" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LIVE DEMO</p>
@@ -471,8 +530,7 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== NETWORK — Brand × Shop ======== */}
-      <AnimatedSection className="py-32 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#110e18] via-[#130f1e] to-[#0d0a12]" />
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="relative max-w-6xl mx-auto text-center">
           <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             05
@@ -518,7 +576,7 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== ALL-IN-ONE ======== */}
-      <AnimatedSection className="py-32 px-6">
+      <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             06
@@ -541,7 +599,7 @@ export function VualLandingPage() {
               <motion.div
                 key={item}
                 variants={fadeUp}
-                className="py-4 px-3 rounded-xl border border-[#2a2035] bg-[#15101e]/30 text-sm text-neutral-300 hover:border-[#3d2e50] hover:bg-[#1a1025]/50 transition-all"
+                className="py-4 px-3 rounded-xl border border-[#2a2035]/60 bg-[#15101e]/30 backdrop-blur-sm text-sm text-neutral-300 hover:border-[#3d2e50] hover:bg-[#1a1025]/40 transition-all"
               >
                 {item}
               </motion.div>
@@ -551,10 +609,7 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== FINAL CTA ======== */}
-      <section className="relative py-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12] via-[#15101e] to-[#0d0a12]" />
-        {/* Subtle radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/[0.03] rounded-full blur-3xl" />
+      <section className="relative z-10 py-32 px-6 overflow-hidden">
 
         <AnimatedSection className="relative max-w-3xl mx-auto text-center">
           <AnimatedHeading
@@ -573,7 +628,7 @@ export function VualLandingPage() {
       </section>
 
       {/* ======== FOOTER ======== */}
-      <footer className="border-t border-[#1a1025] py-12 px-6">
+      <footer className="relative z-10 border-t border-[#2a2035]/40 py-12 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <span className="text-lg font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
