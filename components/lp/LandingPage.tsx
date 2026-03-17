@@ -662,18 +662,18 @@ export function VualLandingPage() {
               {/* Apple-style headline: words clip-reveal staggered */}
               <motion.h2
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
-                variants={staggerContainer}
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
               >
                 {t('lookbook.heading').split(' ').map((word, i) => (
                   <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
                     <motion.span
                       className="inline-block"
                       variants={{
-                        hidden: { y: '120%', rotateX: 40 },
+                        hidden: { y: '100%', opacity: 0 },
                         visible: {
-                          y: 0,
-                          rotateX: 0,
-                          transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+                          y: '0%',
+                          opacity: 1,
+                          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
                         },
                       }}
                     >
