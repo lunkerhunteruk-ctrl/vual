@@ -755,18 +755,35 @@ export function VualLandingPage() {
                 text={t('tryOn.heading')}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
-              <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
+                }}
+                className="text-[#a89bb8] leading-relaxed text-base mb-10"
+              >
                 {t('tryOn.description')}
               </motion.p>
-              <motion.div variants={fadeUp} className="flex gap-6">
+              <motion.div variants={staggerContainer} className="flex gap-10">
                 {[
-                  { value: '-40%', label: t('tryOn.returnReduction') },
-                  { value: '+25%', label: t('tryOn.cvrIncrease') },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-[#8a7a9b] mt-1">{stat.label}</p>
-                  </div>
+                  { value: 40, prefix: '-', suffix: '%', label: t('tryOn.returnReduction') },
+                  { value: 25, prefix: '+', suffix: '%', label: t('tryOn.cvrIncrease') },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    variants={{
+                      hidden: { opacity: 0, y: 40, scale: 0.8 },
+                      visible: {
+                        opacity: 1, y: 0, scale: 1,
+                        transition: { duration: 0.8, delay: 0.6 + i * 0.15, ease: [0.16, 1, 0.3, 1] },
+                      },
+                    }}
+                  >
+                    <p className="text-5xl md:text-6xl font-bold text-white tracking-tight">
+                      {stat.prefix}<CountUp value={stat.value} suffix={stat.suffix} />
+                    </p>
+                    <p className="text-sm text-[#8a7a9b] mt-2 tracking-wide">{stat.label}</p>
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
