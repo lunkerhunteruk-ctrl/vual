@@ -469,8 +469,7 @@
           "materials": "Materials",
           "care": "Care"
         }
-      },
-      "outOfStock": "Out of Stock"
+      }
     },
     "studio": {
       "title": "AI Studio",
@@ -549,7 +548,7 @@
       "lastName": "Last Name",
       "password": "Password",
       "phoneNumber": "Phone Number",
-      "email": "E-mail",
+      "email": "Email",
       "dateOfBirth": "Date of Birth",
       "location": "Location",
       "creditCard": "Credit Card",
@@ -591,7 +590,6 @@
       "noTeamMembers": "No team members found",
       "inviteNewMember": "Invite New Member",
       "name": "Name",
-      "email": "Email",
       "selectRole": "Select Role",
       "sendInvite": "Send Invite",
       "confirmRemoveMember": "Are you sure you want to remove this team member?",
@@ -807,5 +805,59 @@
     "selectGender": "Select gender",
     "selectType": "Select type",
     "selectCategory": "Select category"
+  },
+  "lp": {
+    "hero": {
+      "badge": "Now accepting early access",
+      "tagline": "AI-powered platform for the future of fashion.",
+      "features": "Lookbook Generation · Virtual Try-On · Live Commerce · EC · All in One"
+    },
+    "waitlist": {
+      "brand": "Brand",
+      "shop": "Select Shop",
+      "placeholder": "Enter your email",
+      "submit": "Join",
+      "successTitle": "You're on the list",
+      "successMessage": "We'll be in touch soon"
+    },
+    "lookbook": {
+      "heading": "AI Lookbook Magazine quality without a shoot",
+      "description": "Generate professional lookbook images and editorial videos from a single text prompt. Dramatically reduce studio shooting costs and time.",
+      "costReduction": "Cost reduction",
+      "fasterProduction": "Faster production"
+    },
+    "tryOn": {
+      "heading": "Virtual Try-On Digital fitting experience",
+      "description": "AI-powered virtual fitting adapts products to each customer's body. Dramatically reduce \"wrong size\" returns and boost purchase conversions.",
+      "returnReduction": "Return reduction",
+      "cvrIncrease": "CVR increase"
+    },
+    "video": {
+      "heading": "AI Editorial Video Production powered by AI",
+      "description": "The Louvre, Gunkanjima, Scottish castles. AI-generated editorial films that blur the line between reality and fantasy. Complete promotional video production with AI."
+    },
+    "live": {
+      "heading": "LINE Live Commerce Sell live Unified inventory",
+      "description": "Live stream directly on LINE. Product links, inventory sync, payments — all seamless. Sell in real-time on the best channel for Japanese customers."
+    },
+    "network": {
+      "heading": "Fashion Network Connecting brands and shops",
+      "description": "The moment you subscribe, brands and shops connect. Host virtual exhibitions directly from VUAL and showcase new collections to shops nationwide. A new fashion network that transcends physical distance.",
+      "exhibitionTitle": "Virtual Exhibition",
+      "exhibitionDesc": "Showcase new collections digitally. Shops nationwide can browse and order online.",
+      "outreachTitle": "Direct Outreach",
+      "outreachDesc": "Send new collection info directly to subscribed shops. Invitations, sample requests — all in one place.",
+      "orderTitle": "Order Management",
+      "orderDesc": "Manage exhibition orders centrally on VUAL. Complete the flow from ordering to delivery."
+    },
+    "allInOne": {
+      "heading": "All-in-One Platform Everything in one place",
+      "description": "Product management, order processing, customer analytics, collections, blog, magazine. No more switching between multiple tools.",
+      "items": "Products,EC & Payments,Orders,Customer Data,AI Lookbook,Virtual Try-On,Live Commerce,Magazine"
+    },
+    "cta": {
+      "heading": "Build the future of fashion together",
+      "description": "VUAL empowers both brands and select shops with cutting-edge AI technology. Join the waiting list for early access."
+    }
   }
 }

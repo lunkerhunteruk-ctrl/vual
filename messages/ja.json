@@ -341,8 +341,8 @@
       "highlightProduct": "この商品を注目セクションに表示する",
       "uploadProductImage": "商品画像をアップロード",
       "productImage": "商品画像",
-      "dragDropImages": "画像をドラッグ＆ドロップ",
-      "orClickToUpload": "またはクリックしてアップロード",
+      "dragDropImages": "ここに画像をドラッグ＆ドロップ",
+      "orClickToUpload": "または",
       "browse": "参照",
       "replace": "置き換え",
       "addImage": "画像追加",
@@ -370,9 +370,6 @@
       "lowStock": "在庫僅少",
       "allProducts": "すべての商品",
       "price": "価格",
-      "stock": "在庫",
-      "created": "作成日",
-      "noProducts": "商品がありません",
       "allReviews": "すべてのレビュー",
       "pending": "保留中",
       "approved": "承認済み",
@@ -402,22 +399,15 @@
       "confirmDeleteMedia": "このメディアを削除しますか？",
       "variants": "バリエーション",
       "variantsDescription": "カラーやサイズなどのオプションを追加してバリエーションを作成",
-      "colors": "カラー",
       "sizes": "サイズ",
       "addColor": "カラーを追加（例：ブラック、ホワイト）",
       "addSize": "サイズを追加（例：S、M、L、XL）",
       "variantsList": "バリエーション一覧",
       "color": "カラー",
-      "enterProductName": "商品名を入力",
-      "enterProductDescription": "商品説明を入力",
-      "enterTags": "タグをカンマ区切りで入力",
       "enterSKU": "SKUを入力",
-      "dragDropImages": "ここに画像をドラッグ＆ドロップ",
-      "orClickToUpload": "または",
       "toUpload": "してアップロード",
       "imageUploaded": "枚の画像",
       "imagesUploaded": "枚の画像",
-      "assignColorToImage": "各画像にカラーを割り当て",
       "primary": "メイン",
       "setAsPrimary": "メインに設定",
       "remove": "削除",
@@ -490,8 +480,7 @@
           "materials": "素材",
           "care": "お手入れ"
         }
-      },
-      "outOfStock": "在庫切れ"
+      }
     },
     "studio": {
       "title": "AIスタジオ",
@@ -828,5 +817,59 @@
     "selectGender": "性別を選択",
     "selectType": "タイプを選択",
     "selectCategory": "カテゴリーを選択"
+  },
+  "lp": {
+    "hero": {
+      "badge": "ウェイティングリスト受付中",
+      "tagline": "AIが変える、ファッションビジネスのすべて。",
+      "features": "ルックブック生成 · バーチャル試着 · ライブコマース · EC · すべてひとつに"
+    },
+    "waitlist": {
+      "brand": "ブランド",
+      "shop": "セレクトショップ",
+      "placeholder": "メールアドレス",
+      "submit": "登録",
+      "successTitle": "登録完了",
+      "successMessage": "近日中にご連絡します"
+    },
+    "lookbook": {
+      "heading": "AI Lookbook 撮影なしで 雑誌品質を",
+      "description": "テキストひとつで、プロフェッショナルなルックブック画像とエディトリアル映像を自動生成。スタジオ撮影のコスト・時間を劇的に削減。",
+      "costReduction": "コスト削減",
+      "fasterProduction": "制作スピード"
+    },
+    "tryOn": {
+      "heading": "Virtual Try-On 試着体験を デジタルに",
+      "description": "AIがお客様の体型に合わせて商品を仮想試着。「サイズが合わなかった」による返品を大幅削減し、購入コンバージョンを向上。",
+      "returnReduction": "返品率削減",
+      "cvrIncrease": "CVR向上"
+    },
+    "video": {
+      "heading": "AI Editorial Video 映像制作も AI で完結",
+      "description": "ルーブル美術館、軍艦島、スコットランドの古城。AIが生み出す、現実とファンタジーの狭間のエディトリアル映像。プロモーションビデオもAIで完結。"
+    },
+    "live": {
+      "heading": "LINE Live Commerce ライブで売る 在庫も一元化",
+      "description": "LINEで直接ライブ配信。商品リンク、在庫連動、決済まですべてがシームレス。日本の顧客に最適なチャネルで、リアルタイムに売る。"
+    },
+    "network": {
+      "heading": "Fashion Network ブランドと ショップを つなぐ",
+      "description": "サブスクリプションに参加した瞬間から、ブランドとショップがつながる。バーチャル展示会をVUALから直接開催し、全国のショップへ新作を案内。物理的な距離を超えた、新しいファッションネットワーク。",
+      "exhibitionTitle": "バーチャル展示会",
+      "exhibitionDesc": "新作コレクションをデジタルで展示。全国のショップがオンラインで閲覧・オーダー。",
+      "outreachTitle": "ダイレクト案内",
+      "outreachDesc": "サブスク店舗に新作情報を直接送信。展示会への招待、サンプルリクエストまでワンストップ。",
+      "orderTitle": "オーダー管理",
+      "orderDesc": "展示会からのオーダーをVUAL上で一元管理。発注から納品までの動線を完結。"
+    },
+    "allInOne": {
+      "heading": "All-in-One Platform すべてが ひとつに",
+      "description": "商品管理、注文処理、顧客分析、コレクション、ブログ、マガジン。複数のツールを行き来する必要はもうない。",
+      "items": "商品管理,EC & 決済,注文管理,顧客データ,AI ルックブック,バーチャル試着,ライブコマース,マガジン"
+    },
+    "cta": {
+      "heading": "ファッションの 未来を 一緒に",
+      "description": "VUALは、ブランドもセレクトショップも、最新のAI技術で次のステージへ導きます。ウェイティングリストに登録して、いち早くアクセスを。"
+    }
   }
 }

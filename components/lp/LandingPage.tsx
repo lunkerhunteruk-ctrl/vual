@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence, type Variants } from 'framer-motion';
-import { useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 
@@ -250,8 +250,7 @@ function AnimatedHeading({ text, className = '' }: { text: string; className?: s
 // Waitlist form
 // ============================================================
 function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
-  const locale = useLocale();
-  const ja = locale === 'ja';
+  const t = useTranslations('lp.waitlist');
   const [email, setEmail] = useState('');
   const [type, setType] = useState<'brand' | 'shop'>('brand');
   const [submitted, setSubmitted] = useState(false);
@@ -287,8 +286,8 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           <Check size={20} />
         </div>
         <div>
-          <p className="font-semibold text-white">{ja ? '登録完了' : 'You\'re on the list'}</p>
-          <p className="text-sm text-[#a89bb8]">{ja ? '近日中にご連絡します' : 'We\'ll be in touch soon'}</p>
+          <p className="font-semibold text-white">{t('successTitle')}</p>
+          <p className="text-sm text-[#a89bb8]">{t('successMessage')}</p>
         </div>
       </motion.div>
     );
@@ -300,13 +299,13 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
     <form onSubmit={handleSubmit} className="w-full max-w-lg">
       {/* Type toggle */}
       <div className="flex gap-2 mb-4">
-        {(['brand', 'shop'] as const).map((t) => (
+        {(['brand', 'shop'] as const).map((v) => (
           <button
-            key={t}
+            key={v}
             type="button"
-            onClick={() => setType(t)}
+            onClick={() => setType(v)}
             className={`px-4 py-2 text-xs font-medium rounded-full border transition-all ${
-              type === t
+              type === v
                 ? isDark
                   ? 'bg-white text-black border-white'
                   : 'bg-black text-white border-black'
@@ -315,9 +314,7 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
                   : 'bg-transparent text-[#8a7a9b] border-neutral-300 hover:border-neutral-400'
             }`}
           >
-            {t === 'brand'
-              ? (ja ? 'ブランド' : 'Brand')
-              : (ja ? 'セレクトショップ' : 'Select Shop')}
+            {t(v)}
           </button>
         ))}
       </div>
@@ -328,7 +325,7 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder={ja ? 'メールアドレス' : 'Enter your email'}
+          placeholder={t('placeholder')}
           required
           className={`flex-1 px-5 py-3.5 rounded-full text-sm outline-none transition-all ${
             isDark
@@ -342,7 +339,7 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           className="px-6 py-3.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-neutral-200 transition-all disabled:opacity-50 flex items-center gap-2"
         >
           {loading ? <Loader2 size={16} className="animate-spin" /> : null}
-          {ja ? '登録' : 'Join'}
+          {t('submit')}
           {!loading && <ArrowRight size={14} />}
         </button>
       </div>
@@ -383,8 +380,7 @@ function FeatureCard({
 // Main LP Component
 // ============================================================
 export function VualLandingPage() {
-  const locale = useLocale();
-  const ja = locale === 'ja';
+  const t = useTranslations('lp');
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -541,7 +537,7 @@ export function VualLandingPage() {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-medium text-neutral-300 tracking-wide">
-              {ja ? 'ウェイティングリスト受付中' : 'Now accepting early access'}
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -563,9 +559,7 @@ export function VualLandingPage() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="text-lg md:text-2xl text-neutral-300 max-w-2xl mx-auto mb-4 leading-relaxed font-light"
           >
-            {ja
-              ? 'AIが変える、ファッションビジネスのすべて。'
-              : 'AI-powered platform for the future of fashion.'}
+            {t('hero.tagline')}
           </motion.p>
 
           <motion.p
@@ -574,9 +568,7 @@ export function VualLandingPage() {
             transition={{ duration: 0.8, delay: 1.0 }}
             className="text-sm text-[#8a7a9b] mb-12 tracking-wide"
           >
-            {ja
-              ? 'ルックブック生成 · バーチャル試着 · ライブコマース · EC · すべてひとつに'
-              : 'Lookbook Generation · Virtual Try-On · Live Commerce · EC · All in One'}
+            {t('hero.features')}
           </motion.p>
 
           {/* CTA */}
@@ -616,18 +608,16 @@ export function VualLandingPage() {
                 01
               </motion.span>
               <AnimatedHeading
-                text={ja ? 'AI Lookbook 撮影なしで 雑誌品質を' : 'AI Lookbook Magazine quality without a shoot'}
+                text={t('lookbook.heading')}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
               <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
-                {ja
-                  ? 'テキストひとつで、プロフェッショナルなルックブック画像とエディトリアル映像を自動生成。スタジオ撮影のコスト・時間を劇的に削減。'
-                  : 'Generate professional lookbook images and editorial videos from a single text prompt. Dramatically reduce studio shooting costs and time.'}
+                {t('lookbook.description')}
               </motion.p>
               <motion.div variants={fadeUp} className="flex gap-6">
                 {[
-                  { value: '90%', label: ja ? 'コスト削減' : 'Cost reduction' },
-                  { value: '10x', label: ja ? '制作スピード' : 'Faster production' },
+                  { value: '90%', label: t('lookbook.costReduction') },
+                  { value: '10x', label: t('lookbook.fasterProduction') },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl font-bold text-white">{stat.value}</p>
@@ -662,18 +652,16 @@ export function VualLandingPage() {
                 02
               </motion.span>
               <AnimatedHeading
-                text={ja ? 'Virtual Try-On 試着体験を デジタルに' : 'Virtual Try-On Digital fitting experience'}
+                text={t('tryOn.heading')}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
               <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
-                {ja
-                  ? 'AIがお客様の体型に合わせて商品を仮想試着。「サイズが合わなかった」による返品を大幅削減し、購入コンバージョンを向上。'
-                  : 'AI-powered virtual fitting adapts products to each customer\'s body. Dramatically reduce "wrong size" returns and boost purchase conversions.'}
+                {t('tryOn.description')}
               </motion.p>
               <motion.div variants={fadeUp} className="flex gap-6">
                 {[
-                  { value: '-40%', label: ja ? '返品率削減' : 'Return reduction' },
-                  { value: '+25%', label: ja ? 'CVR向上' : 'CVR increase' },
+                  { value: '-40%', label: t('tryOn.returnReduction') },
+                  { value: '+25%', label: t('tryOn.cvrIncrease') },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl font-bold text-white">{stat.value}</p>
@@ -693,13 +681,11 @@ export function VualLandingPage() {
             03
           </motion.span>
           <AnimatedHeading
-            text={ja ? 'AI Editorial Video 映像制作も AI で完結' : 'AI Editorial Video Production powered by AI'}
+            text={t('video.heading')}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
           <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-12 max-w-2xl mx-auto">
-            {ja
-              ? 'ルーブル美術館、軍艦島、スコットランドの古城。AIが生み出す、現実とファンタジーの狭間のエディトリアル映像。プロモーションビデオもAIで完結。'
-              : 'The Louvre, Gunkanjima, Scottish castles. AI-generated editorial films that blur the line between reality and fantasy. Complete promotional video production with AI.'}
+            {t('video.description')}
           </motion.p>
 
           {/* Video showcase with thumbnail selector */}
@@ -718,13 +704,11 @@ export function VualLandingPage() {
                 04
               </motion.span>
               <AnimatedHeading
-                text={ja ? 'LINE Live Commerce ライブで売る 在庫も一元化' : 'LINE Live Commerce Sell live Unified inventory'}
+                text={t('live.heading')}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
               <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
-                {ja
-                  ? 'LINEで直接ライブ配信。商品リンク、在庫連動、決済まですべてがシームレス。日本の顧客に最適なチャネルで、リアルタイムに売る。'
-                  : 'Live stream directly on LINE. Product links, inventory sync, payments — all seamless. Sell in real-time on the best channel for Japanese customers.'}
+                {t('live.description')}
               </motion.p>
             </div>
 
@@ -745,39 +729,31 @@ export function VualLandingPage() {
             05
           </motion.span>
           <AnimatedHeading
-            text={ja ? 'Fashion Network ブランドと ショップを つなぐ' : 'Fashion Network Connecting brands and shops'}
+            text={t('network.heading')}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
           <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-16 max-w-2xl mx-auto">
-            {ja
-              ? 'サブスクリプションに参加した瞬間から、ブランドとショップがつながる。バーチャル展示会をVUALから直接開催し、全国のショップへ新作を案内。物理的な距離を超えた、新しいファッションネットワーク。'
-              : 'The moment you subscribe, brands and shops connect. Host virtual exhibitions directly from VUAL and showcase new collections to shops nationwide. A new fashion network that transcends physical distance.'}
+            {t('network.description')}
           </motion.p>
 
           {/* Network visual */}
           <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <FeatureCard
               number="05-A"
-              title={ja ? 'バーチャル展示会' : 'Virtual Exhibition'}
-              description={ja
-                ? '新作コレクションをデジタルで展示。全国のショップがオンラインで閲覧・オーダー。'
-                : 'Showcase new collections digitally. Shops nationwide can browse and order online.'}
+              title={t('network.exhibitionTitle')}
+              description={t('network.exhibitionDesc')}
               gradient="bg-gradient-to-br from-blue-500/5 to-transparent"
             />
             <FeatureCard
               number="05-B"
-              title={ja ? 'ダイレクト案内' : 'Direct Outreach'}
-              description={ja
-                ? 'サブスク店舗に新作情報を直接送信。展示会への招待、サンプルリクエストまでワンストップ。'
-                : 'Send new collection info directly to subscribed shops. Invitations, sample requests — all in one place.'}
+              title={t('network.outreachTitle')}
+              description={t('network.outreachDesc')}
               gradient="bg-gradient-to-br from-purple-500/5 to-transparent"
             />
             <FeatureCard
               number="05-C"
-              title={ja ? 'オーダー管理' : 'Order Management'}
-              description={ja
-                ? '展示会からのオーダーをVUAL上で一元管理。発注から納品までの動線を完結。'
-                : 'Manage exhibition orders centrally on VUAL. Complete the flow from ordering to delivery.'}
+              title={t('network.orderTitle')}
+              description={t('network.orderDesc')}
               gradient="bg-gradient-to-br from-emerald-500/5 to-transparent"
             />
           </motion.div>
@@ -791,20 +767,15 @@ export function VualLandingPage() {
             06
           </motion.span>
           <AnimatedHeading
-            text={ja ? 'All-in-One Platform すべてが ひとつに' : 'All-in-One Platform Everything in one place'}
+            text={t('allInOne.heading')}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
           <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-16 max-w-2xl mx-auto">
-            {ja
-              ? '商品管理、注文処理、顧客分析、コレクション、ブログ、マガジン。複数のツールを行き来する必要はもうない。'
-              : 'Product management, order processing, customer analytics, collections, blog, magazine. No more switching between multiple tools.'}
+            {t('allInOne.description')}
           </motion.p>
 
           <motion.div variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {(ja
-              ? ['商品管理', 'EC & 決済', '注文管理', '顧客データ', 'AI ルックブック', 'バーチャル試着', 'ライブコマース', 'マガジン']
-              : ['Products', 'EC & Payments', 'Orders', 'Customer Data', 'AI Lookbook', 'Virtual Try-On', 'Live Commerce', 'Magazine']
-            ).map((item) => (
+            {t('allInOne.items').split(',').map((item) => (
               <motion.div
                 key={item}
                 variants={fadeUp}
@@ -822,13 +793,11 @@ export function VualLandingPage() {
 
         <AnimatedSection className="relative max-w-3xl mx-auto text-center">
           <AnimatedHeading
-            text={ja ? 'ファッションの 未来を 一緒に' : 'Build the future of fashion together'}
+            text={t('cta.heading')}
             className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]"
           />
           <motion.p variants={fadeUp} className="text-[#a89bb8] text-base mb-12 leading-relaxed">
-            {ja
-              ? 'VUALは、ブランドもセレクトショップも、最新のAI技術で次のステージへ導きます。ウェイティングリストに登録して、いち早くアクセスを。'
-              : 'VUAL empowers both brands and select shops with cutting-edge AI technology. Join the waiting list for early access.'}
+            {t('cta.description')}
           </motion.p>
           <motion.div variants={fadeUp} className="flex justify-center">
             <WaitlistForm />
