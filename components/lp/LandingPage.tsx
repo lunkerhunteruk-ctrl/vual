@@ -414,20 +414,21 @@ export function VualLandingPage() {
       `}</style>
       {/* ======== HERO ======== */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background video/gradient */}
+        {/* Background video (16:9, film frame included) */}
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0a12]/60 z-10" />
-          {/* Subtle animated grid */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-              backgroundSize: '60px 60px',
-            }}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/lp/hero.mp4"
           />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12]/50 via-[#0d0a12]/30 to-[#0d0a12]/80 z-10" />
         </motion.div>
 
         {/* Hero content */}
