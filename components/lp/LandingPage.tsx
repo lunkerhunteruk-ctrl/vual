@@ -699,8 +699,8 @@ export function VualLandingPage() {
                 className="flex gap-10"
               >
                 {[
-                  { value: 90, suffix: '%', label: t('lookbook.costReduction') },
-                  { value: 10, suffix: 'x', label: t('lookbook.fasterProduction') },
+                  { value: 95, suffix: '%', label: t('lookbook.costReduction') },
+                  { value: 100, suffix: 'x', label: t('lookbook.fasterProduction') },
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
