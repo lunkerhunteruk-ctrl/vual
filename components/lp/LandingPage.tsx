@@ -192,7 +192,7 @@ function VideoShowcase() {
 
       {/* Thumbnail column — 5 thumbs fit player height exactly, 6+ scrolls */}
       {items.length > 1 && (() => {
-        const GAP = 2;
+        const GAP = 6;
         const VISIBLE = 5;
         // thumbW so that 5 × (thumbW×9/16) + 4×gap = playerH
         const thumbW = playerH > 0
