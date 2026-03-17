@@ -848,7 +848,9 @@
       "outreachTitle": "Direct Outreach",
       "outreachDesc": "Send new collection info directly to subscribed shops. Invitations, sample requests — all in one place.",
       "orderTitle": "Order Management",
-      "orderDesc": "Manage exhibition orders centrally on VUAL. Complete the flow from ordering to delivery."
+      "orderDesc": "Manage exhibition orders centrally on VUAL. Complete the flow from ordering to delivery.",
+      "prAgentTitle": "PR Agent Mode",
+      "prAgentDesc": "Sample lending & return tracking, schedule management, barcode label generation. Complete PR operations on VUAL."
     },
     "allInOne": {
       "heading": "All-in-One Platform Everything in one place",

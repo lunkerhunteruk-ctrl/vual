@@ -860,7 +860,9 @@
       "outreachTitle": "ダイレクト案内",
       "outreachDesc": "サブスク店舗に新作情報を直接送信。展示会への招待、サンプルリクエストまでワンストップ。",
       "orderTitle": "オーダー管理",
-      "orderDesc": "展示会からのオーダーをVUAL上で一元管理。発注から納品までの動線を完結。"
+      "orderDesc": "展示会からのオーダーをVUAL上で一元管理。発注から納品までの動線を完結。",
+      "prAgentTitle": "PRエージェントモード",
+      "prAgentDesc": "サンプルの貸出・返却管理、スケジュール調整、バーコードラベル自動生成。PR業務をVUAL上で完結。"
     },
     "allInOne": {
       "heading": "All-in-One Platform すべてが ひとつに",

@@ -837,7 +837,7 @@ export function VualLandingPage() {
           </motion.p>
 
           {/* Network visual */}
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <FeatureCard
               number="05-A"
               title={t('network.exhibitionTitle')}
@@ -855,6 +855,12 @@ export function VualLandingPage() {
               title={t('network.orderTitle')}
               description={t('network.orderDesc')}
               gradient="bg-gradient-to-br from-emerald-500/5 to-transparent"
+            />
+            <FeatureCard
+              number="05-D"
+              title={t('network.prAgentTitle')}
+              description={t('network.prAgentDesc')}
+              gradient="bg-gradient-to-br from-amber-500/5 to-transparent"
             />
           </motion.div>
         </div>
