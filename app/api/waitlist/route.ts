@@ -24,6 +24,18 @@ export async function POST(request: NextRequest) {
 
     if (error) throw error;
 
+    // Notify via Formspree (fire-and-forget)
+    fetch('https://formspree.io/f/xnjbbwev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        _subject: `[VUAL Waitlist] New ${type} signup`,
+        email,
+        type,
+        message: `New waitlist signup: ${email} (${type})`,
+      }),
+    }).catch(() => {});
+
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('[Waitlist] POST error:', error);
