@@ -130,6 +130,16 @@ function VideoShowcase() {
   const [items, setItems] = useState<typeof VIDEO_ITEMS>([]);
   const [active, setActive] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
+  const [playerH, setPlayerH] = useState(0);
+
+  // Track main player height
+  useEffect(() => {
+    if (!playerRef.current) return;
+    const ro = new ResizeObserver(([e]) => setPlayerH(e.contentRect.height));
+    ro.observe(playerRef.current);
+    return () => ro.disconnect();
+  }, []);
 
   // Check which videos exist
   useEffect(() => {
@@ -166,9 +176,9 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto">
-      {/* Main player — 16:9, no border (film frame is in the video) */}
-      <div className="relative aspect-video overflow-hidden">
+    <div className="flex gap-3 max-w-5xl mx-auto items-start">
+      {/* Main player — 16:9, film frame included */}
+      <div ref={playerRef} className="relative flex-1 aspect-video overflow-hidden">
         <video
           ref={videoRef}
           autoPlay
@@ -180,28 +190,30 @@ function VideoShowcase() {
         />
       </div>
 
-      {/* Thumbnail rail — horizontal, each 16:9 */}
+      {/* Thumbnail column — matches main player height, scrollable */}
       {items.length > 1 && (
-        <div className="flex gap-2 mt-3">
-          {items.map((item, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`relative aspect-video flex-1 overflow-hidden transition-all ${
-                i === active
-                  ? 'opacity-100 ring-2 ring-white/50'
-                  : 'opacity-40 hover:opacity-70'
-              }`}
-            >
-              <video
-                muted
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 w-full h-full object-contain"
-                src={`${item.video}#t=1`}
-              />
-            </button>
-          ))}
+        <div className="w-[100px] shrink-0 overflow-y-auto overflow-x-hidden scrollbar-hide" style={{ height: playerH || undefined }}>
+          <div className="flex flex-col gap-1.5">
+            {items.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`relative aspect-video w-full shrink-0 overflow-hidden transition-all ${
+                  i === active
+                    ? 'opacity-100 ring-1 ring-white/60'
+                    : 'opacity-35 hover:opacity-70'
+                }`}
+              >
+                <video
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  src={`${item.video}#t=1`}
+                />
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
