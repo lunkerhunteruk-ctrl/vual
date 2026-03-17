@@ -120,7 +120,7 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
         </div>
         <div>
           <p className="font-semibold text-white">{ja ? '登録完了' : 'You\'re on the list'}</p>
-          <p className="text-sm text-neutral-400">{ja ? '近日中にご連絡します' : 'We\'ll be in touch soon'}</p>
+          <p className="text-sm text-[#a89bb8]">{ja ? '近日中にご連絡します' : 'We\'ll be in touch soon'}</p>
         </div>
       </motion.div>
     );
@@ -143,8 +143,8 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
                   ? 'bg-white text-black border-white'
                   : 'bg-black text-white border-black'
                 : isDark
-                  ? 'bg-transparent text-neutral-400 border-neutral-700 hover:border-neutral-500'
-                  : 'bg-transparent text-neutral-500 border-neutral-300 hover:border-neutral-400'
+                  ? 'bg-transparent text-[#a89bb8] border-[#2a2035] hover:border-[#3d2e50]'
+                  : 'bg-transparent text-[#8a7a9b] border-neutral-300 hover:border-neutral-400'
             }`}
           >
             {t === 'brand'
@@ -164,8 +164,8 @@ function WaitlistForm({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
           required
           className={`flex-1 px-5 py-3.5 rounded-full text-sm outline-none transition-all ${
             isDark
-              ? 'bg-white/10 text-white placeholder:text-neutral-500 border border-white/20 focus:border-white/50'
-              : 'bg-neutral-100 text-black placeholder:text-neutral-400 border border-neutral-200 focus:border-neutral-400'
+              ? 'bg-white/10 text-white placeholder:text-[#8a7a9b] border border-white/20 focus:border-white/50'
+              : 'bg-neutral-100 text-black placeholder:text-[#a89bb8] border border-neutral-200 focus:border-neutral-400'
           }`}
         />
         <button
@@ -199,13 +199,13 @@ function FeatureCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm hover:border-neutral-700 transition-all duration-500"
+      className="group relative p-8 rounded-3xl border border-[#2a2035] bg-[#15101e]/50 backdrop-blur-sm hover:border-[#3d2e50] transition-all duration-500"
     >
       <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${gradient}`} />
       <div className="relative">
-        <span className="text-xs font-mono text-neutral-500 tracking-widest">{number}</span>
+        <span className="text-xs font-mono text-[#8a7a9b] tracking-widest">{number}</span>
         <h3 className="text-xl font-semibold text-white mt-3 mb-3">{title}</h3>
-        <p className="text-sm text-neutral-400 leading-relaxed">{description}</p>
+        <p className="text-sm text-[#a89bb8] leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );
@@ -228,7 +228,7 @@ export function VualLandingPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <div className="bg-black text-white overflow-x-hidden" style={{ '--color-title-active': '#ffffff', '--color-text-body': '#d4d4d4' } as React.CSSProperties}>
+    <div className="bg-[#0d0a12] text-white overflow-x-hidden" style={{ '--color-title-active': '#f0edf5', '--color-text-body': '#c8c0d4' } as React.CSSProperties}>
       {/* ======== HERO ======== */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background video/gradient */}
@@ -236,9 +236,9 @@ export function VualLandingPage() {
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12]/40 via-[#1a1025]/20 to-[#0d0a12] z-10" />
           {/* Replace with actual video when ready */}
-          <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-black to-neutral-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1025] via-[#0d0a12] to-[#15101e]" />
           {/* Subtle animated grid */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -259,7 +259,7 @@ export function VualLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-300/10 bg-purple-300/5 backdrop-blur-sm mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-medium text-neutral-300 tracking-wide">
@@ -294,7 +294,7 @@ export function VualLandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-sm text-neutral-500 mb-12 tracking-wide"
+            className="text-sm text-[#8a7a9b] mb-12 tracking-wide"
           >
             {ja
               ? 'ルックブック生成 · バーチャル試着 · ライブコマース · EC · すべてひとつに'
@@ -334,14 +334,14 @@ export function VualLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+              <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
                 01
               </motion.span>
               <AnimatedHeading
                 text={ja ? 'AI Lookbook 撮影なしで 雑誌品質を' : 'AI Lookbook Magazine quality without a shoot'}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
-              <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-8">
+              <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
                 {ja
                   ? 'テキストひとつで、プロフェッショナルなルックブック画像とエディトリアル映像を自動生成。スタジオ撮影のコスト・時間を劇的に削減。'
                   : 'Generate professional lookbook images and editorial videos from a single text prompt. Dramatically reduce studio shooting costs and time.'}
@@ -353,17 +353,17 @@ export function VualLandingPage() {
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-neutral-500 mt-1">{stat.label}</p>
+                    <p className="text-xs text-[#8a7a9b] mt-1">{stat.label}</p>
                   </div>
                 ))}
               </motion.div>
             </div>
 
             {/* Visual placeholder */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800">
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/50 to-transparent" />
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035]">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2a2035]/50 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-neutral-600 tracking-widest font-mono">LOOKBOOK DEMO</p>
+                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LOOKBOOK DEMO</p>
               </div>
             </motion.div>
           </div>
@@ -371,26 +371,26 @@ export function VualLandingPage() {
       </AnimatedSection>
 
       {/* ======== VIRTUAL TRY-ON ======== */}
-      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-black to-neutral-950">
+      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-[#0d0a12] to-[#110e18]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Visual placeholder */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 order-2 md:order-1">
-              <div className="absolute inset-0 bg-gradient-to-tl from-neutral-800/50 to-transparent" />
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035] order-2 md:order-1">
+              <div className="absolute inset-0 bg-gradient-to-tl from-[#2a2035]/50 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-neutral-600 tracking-widest font-mono">VTON DEMO</p>
+                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VTON DEMO</p>
               </div>
             </motion.div>
 
             <div className="order-1 md:order-2">
-              <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+              <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
                 02
               </motion.span>
               <AnimatedHeading
                 text={ja ? 'Virtual Try-On 試着体験を デジタルに' : 'Virtual Try-On Digital fitting experience'}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
-              <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-8">
+              <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
                 {ja
                   ? 'AIがお客様の体型に合わせて商品を仮想試着。「サイズが合わなかった」による返品を大幅削減し、購入コンバージョンを向上。'
                   : 'AI-powered virtual fitting adapts products to each customer\'s body. Dramatically reduce "wrong size" returns and boost purchase conversions.'}
@@ -402,7 +402,7 @@ export function VualLandingPage() {
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-neutral-500 mt-1">{stat.label}</p>
+                    <p className="text-xs text-[#8a7a9b] mt-1">{stat.label}</p>
                   </div>
                 ))}
               </motion.div>
@@ -414,56 +414,56 @@ export function VualLandingPage() {
       {/* ======== AI VIDEO ======== */}
       <AnimatedSection className="py-32 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+          <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             03
           </motion.span>
           <AnimatedHeading
             text={ja ? 'AI Editorial Video 映像制作も AI で完結' : 'AI Editorial Video Production powered by AI'}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
-          <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-12 max-w-2xl mx-auto">
+          <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-12 max-w-2xl mx-auto">
             {ja
               ? 'ルーブル美術館、軍艦島、スコットランドの古城。AIが生み出す、現実とファンタジーの狭間のエディトリアル映像。プロモーションビデオもAIで完結。'
               : 'The Louvre, Gunkanjima, Scottish castles. AI-generated editorial films that blur the line between reality and fantasy. Complete promotional video production with AI.'}
           </motion.p>
 
           {/* Video placeholder */}
-          <motion.div variants={scaleIn} className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+          <motion.div variants={scaleIn} className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-[#15101e] border border-[#2a2035]">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d0a12]/60" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-sm text-neutral-600 tracking-widest font-mono">VIDEO SHOWREEL</p>
+              <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VIDEO SHOWREEL</p>
             </div>
             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-              <span className="text-xs text-neutral-500">All visuals generated by AI</span>
-              <span className="text-xs text-neutral-600 font-mono">VUAL</span>
+              <span className="text-xs text-[#8a7a9b]">All visuals generated by AI</span>
+              <span className="text-xs text-[#6b5d7b] font-mono">VUAL</span>
             </div>
           </motion.div>
         </div>
       </AnimatedSection>
 
       {/* ======== LINE LIVE COMMERCE ======== */}
-      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-black to-neutral-950">
+      <AnimatedSection className="py-32 px-6 bg-gradient-to-b from-[#0d0a12] to-[#110e18]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+              <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
                 04
               </motion.span>
               <AnimatedHeading
                 text={ja ? 'LINE Live Commerce ライブで売る 在庫も一元化' : 'LINE Live Commerce Sell live Unified inventory'}
                 className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1]"
               />
-              <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-8">
+              <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-8">
                 {ja
                   ? 'LINEで直接ライブ配信。商品リンク、在庫連動、決済まですべてがシームレス。日本の顧客に最適なチャネルで、リアルタイムに売る。'
                   : 'Live stream directly on LINE. Product links, inventory sync, payments — all seamless. Sell in real-time on the best channel for Japanese customers.'}
               </motion.p>
             </div>
 
-            <motion.div variants={scaleIn} className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-[2rem] overflow-hidden bg-neutral-900 border border-neutral-800">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
+            <motion.div variants={scaleIn} className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-[2rem] overflow-hidden bg-[#15101e] border border-[#2a2035]">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d0a12]/40" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-neutral-600 tracking-widest font-mono">LIVE DEMO</p>
+                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LIVE DEMO</p>
               </div>
             </motion.div>
           </div>
@@ -472,16 +472,16 @@ export function VualLandingPage() {
 
       {/* ======== NETWORK — Brand × Shop ======== */}
       <AnimatedSection className="py-32 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-[#0a0a1a] to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#110e18] via-[#130f1e] to-[#0d0a12]" />
         <div className="relative max-w-6xl mx-auto text-center">
-          <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+          <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             05
           </motion.span>
           <AnimatedHeading
             text={ja ? 'Fashion Network ブランドと ショップを つなぐ' : 'Fashion Network Connecting brands and shops'}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
-          <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-16 max-w-2xl mx-auto">
+          <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-16 max-w-2xl mx-auto">
             {ja
               ? 'サブスクリプションに参加した瞬間から、ブランドとショップがつながる。バーチャル展示会をVUALから直接開催し、全国のショップへ新作を案内。物理的な距離を超えた、新しいファッションネットワーク。'
               : 'The moment you subscribe, brands and shops connect. Host virtual exhibitions directly from VUAL and showcase new collections to shops nationwide. A new fashion network that transcends physical distance.'}
@@ -520,14 +520,14 @@ export function VualLandingPage() {
       {/* ======== ALL-IN-ONE ======== */}
       <AnimatedSection className="py-32 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.span variants={fadeUp} className="text-xs font-mono text-neutral-500 tracking-[0.3em] uppercase">
+          <motion.span variants={fadeUp} className="text-xs font-mono text-[#8a7a9b] tracking-[0.3em] uppercase">
             06
           </motion.span>
           <AnimatedHeading
             text={ja ? 'All-in-One Platform すべてが ひとつに' : 'All-in-One Platform Everything in one place'}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
-          <motion.p variants={fadeUp} className="text-neutral-400 leading-relaxed text-base mb-16 max-w-2xl mx-auto">
+          <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-16 max-w-2xl mx-auto">
             {ja
               ? '商品管理、注文処理、顧客分析、コレクション、ブログ、マガジン。複数のツールを行き来する必要はもうない。'
               : 'Product management, order processing, customer analytics, collections, blog, magazine. No more switching between multiple tools.'}
@@ -541,7 +541,7 @@ export function VualLandingPage() {
               <motion.div
                 key={item}
                 variants={fadeUp}
-                className="py-4 px-3 rounded-xl border border-neutral-800 bg-neutral-900/30 text-sm text-neutral-300 hover:border-neutral-600 hover:bg-neutral-800/50 transition-all"
+                className="py-4 px-3 rounded-xl border border-[#2a2035] bg-[#15101e]/30 text-sm text-neutral-300 hover:border-[#3d2e50] hover:bg-[#1a1025]/50 transition-all"
               >
                 {item}
               </motion.div>
@@ -552,16 +552,16 @@ export function VualLandingPage() {
 
       {/* ======== FINAL CTA ======== */}
       <section className="relative py-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12] via-[#15101e] to-[#0d0a12]" />
         {/* Subtle radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/[0.02] rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/[0.03] rounded-full blur-3xl" />
 
         <AnimatedSection className="relative max-w-3xl mx-auto text-center">
           <AnimatedHeading
             text={ja ? 'ファッションの 未来を 一緒に' : 'Build the future of fashion together'}
             className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]"
           />
-          <motion.p variants={fadeUp} className="text-neutral-400 text-base mb-12 leading-relaxed">
+          <motion.p variants={fadeUp} className="text-[#a89bb8] text-base mb-12 leading-relaxed">
             {ja
               ? 'VUALは、ブランドもセレクトショップも、最新のAI技術で次のステージへ導きます。ウェイティングリストに登録して、いち早くアクセスを。'
               : 'VUAL empowers both brands and select shops with cutting-edge AI technology. Join the waiting list for early access.'}
@@ -573,21 +573,21 @@ export function VualLandingPage() {
       </section>
 
       {/* ======== FOOTER ======== */}
-      <footer className="border-t border-neutral-900 py-12 px-6">
+      <footer className="border-t border-[#1a1025] py-12 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <span className="text-lg font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
               VUAL
             </span>
-            <span className="text-xs text-neutral-600">
+            <span className="text-xs text-[#6b5d7b]">
               © {new Date().getFullYear()}
             </span>
           </div>
           <div className="flex gap-6">
-            <a href="https://instagram.com/vual.ai" target="_blank" rel="noopener" className="text-xs text-neutral-500 hover:text-white transition-colors">
+            <a href="https://instagram.com/vual.ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
               Instagram
             </a>
-            <a href="https://x.com/vual_ai" target="_blank" rel="noopener" className="text-xs text-neutral-500 hover:text-white transition-colors">
+            <a href="https://x.com/vual_ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
               X
             </a>
           </div>
