@@ -176,7 +176,7 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="flex gap-1.5 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH - 4 * 6) * 16 / (5 * 9) + 6) / 2}px)` : undefined }}>
+    <div className="flex gap-0 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH) * 16 / (5 * 9)) / 2}px)` : undefined }}>
       {/* Main player — 16:9, film frame included */}
       <div ref={playerRef} className="relative flex-1 aspect-video overflow-hidden">
         <video
@@ -192,7 +192,7 @@ function VideoShowcase() {
 
       {/* Thumbnail column — 5 thumbs fit player height exactly, 6+ scrolls */}
       {items.length > 1 && (() => {
-        const GAP = 6;
+        const GAP = 2;
         const VISIBLE = 5;
         // thumbW so that 5 × (thumbW×9/16) + 4×gap = playerH
         const thumbW = playerH > 0
