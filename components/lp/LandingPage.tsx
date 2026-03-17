@@ -176,16 +176,16 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="flex gap-0 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH) * 16 / (5 * 9)) / 2}px)` : undefined }}>
-      {/* Main player — 16:9, film frame included */}
-      <div ref={playerRef} className="relative flex-1 aspect-video overflow-hidden">
+    <div className="flex gap-0 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH - 4 * 6) * (2084 / 1420) / 5) / 2}px)` : undefined }}>
+      {/* Main player — film frame AR (2084:1420 ≈ 521:355) */}
+      <div ref={playerRef} className="relative flex-1 overflow-hidden" style={{ aspectRatio: '2084 / 1420' }}>
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-cover"
           src={items[active].video}
         />
       </div>
@@ -194,9 +194,10 @@ function VideoShowcase() {
       {items.length > 1 && (() => {
         const GAP = 6;
         const VISIBLE = 5;
-        // thumbW so that 5 × (thumbW×9/16) + 4×gap = playerH
+        // thumbW so that 5 × (thumbW×1420/2084) + 4×gap = playerH
+        const AR = 2084 / 1420;
         const thumbW = playerH > 0
-          ? (playerH - (VISIBLE - 1) * GAP) * 16 / (VISIBLE * 9)
+          ? (playerH - (VISIBLE - 1) * GAP) * AR / VISIBLE
           : 160;
         return (
           <div
@@ -208,18 +209,18 @@ function VideoShowcase() {
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  className={`relative aspect-video shrink-0 overflow-hidden transition-all ${
+                  className={`relative shrink-0 overflow-hidden transition-all ${
                     i === active
                       ? 'opacity-100 ring-1 ring-white/60'
                       : 'opacity-35 hover:opacity-70'
                   }`}
-                  style={{ width: thumbW }}
+                  style={{ width: thumbW, aspectRatio: '2084 / 1420' }}
                 >
                   <video
                     muted
                     playsInline
                     preload="metadata"
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover"
                     src={`${item.video}#t=1`}
                   />
                 </button>
