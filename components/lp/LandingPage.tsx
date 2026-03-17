@@ -190,32 +190,44 @@ function VideoShowcase() {
         />
       </div>
 
-      {/* Thumbnail column — matches main player height, scrollable */}
-      {items.length > 1 && (
-        <div className="w-[100px] shrink-0 overflow-y-auto overflow-x-hidden scrollbar-hide" style={{ height: playerH || undefined }}>
-          <div className="flex flex-col gap-1.5">
-            {items.map((item, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`relative aspect-video w-full shrink-0 overflow-hidden transition-all ${
-                  i === active
-                    ? 'opacity-100 ring-1 ring-white/60'
-                    : 'opacity-35 hover:opacity-70'
-                }`}
-              >
-                <video
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-contain"
-                  src={`${item.video}#t=1`}
-                />
-              </button>
-            ))}
+      {/* Thumbnail column — 5 thumbs fit player height exactly, 6+ scrolls */}
+      {items.length > 1 && (() => {
+        const GAP = 6;
+        const VISIBLE = 5;
+        // thumbW so that 5 × (thumbW×9/16) + 4×gap = playerH
+        const thumbW = playerH > 0
+          ? (playerH - (VISIBLE - 1) * GAP) * 16 / (VISIBLE * 9)
+          : 160;
+        return (
+          <div
+            className="shrink-0 overflow-y-auto overflow-x-hidden scrollbar-hide"
+            style={{ width: thumbW, height: playerH || undefined }}
+          >
+            <div className="flex flex-col" style={{ gap: GAP }}>
+              {items.map((item, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`relative aspect-video shrink-0 overflow-hidden transition-all ${
+                    i === active
+                      ? 'opacity-100 ring-1 ring-white/60'
+                      : 'opacity-35 hover:opacity-70'
+                  }`}
+                  style={{ width: thumbW }}
+                >
+                  <video
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 w-full h-full object-contain"
+                    src={`${item.video}#t=1`}
+                  />
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
