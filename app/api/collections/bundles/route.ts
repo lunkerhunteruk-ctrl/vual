@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
-// POST: Create a bundle from selected look IDs
+// POST: Create a bundle from selected look IDs, or merge bundles
+// Supports: lookIds (individual looks), bundleIds (merge entire bundles), or both
 export async function POST(request: NextRequest) {
   try {
     const supabase = createServerClient();
@@ -12,26 +13,50 @@ export async function POST(request: NextRequest) {
 
     const storeId = await resolveStoreIdFromRequest(request);
     const body = await request.json();
-    const { lookIds } = body as { lookIds: string[] };
+    const { lookIds = [], bundleIds = [] } = body as { lookIds?: string[]; bundleIds?: string[] };
 
-    if (!lookIds || lookIds.length < 2) {
-      return NextResponse.json({ error: 'At least 2 look IDs required' }, { status: 400 });
+    // Collect all look IDs: from individual lookIds + all looks in specified bundles
+    const allLookIds = [...lookIds];
+    const bundlesToDelete: string[] = [];
+
+    if (bundleIds.length > 0) {
+      // Fetch all looks belonging to the specified bundles
+      const { data: bundleLooks, error: blError } = await supabase
+        .from('collection_looks')
+        .select('id, bundle_id, bundle_position')
+        .eq('store_id', storeId)
+        .in('bundle_id', bundleIds)
+        .order('bundle_position', { ascending: true });
+
+      if (blError) throw blError;
+
+      for (const bl of bundleLooks || []) {
+        if (!allLookIds.includes(bl.id)) {
+          allLookIds.push(bl.id);
+        }
+      }
+      bundlesToDelete.push(...bundleIds);
     }
 
-    // Verify looks exist, belong to this store, and aren't already bundled
+    if (allLookIds.length < 2) {
+      return NextResponse.json({ error: 'At least 2 looks required' }, { status: 400 });
+    }
+
+    // Verify looks exist and belong to this store
     const { data: existingLooks, error: lookError } = await supabase
       .from('collection_looks')
       .select('id, bundle_id, position')
       .eq('store_id', storeId)
-      .in('id', lookIds);
+      .in('id', allLookIds);
 
     if (lookError) throw lookError;
 
-    if (!existingLooks || existingLooks.length !== lookIds.length) {
+    if (!existingLooks || existingLooks.length !== allLookIds.length) {
       return NextResponse.json({ error: 'Some looks not found' }, { status: 404 });
     }
 
-    const alreadyBundled = existingLooks.filter(l => l.bundle_id);
+    // Check for looks already in OTHER bundles (not being merged)
+    const alreadyBundled = existingLooks.filter(l => l.bundle_id && !bundlesToDelete.includes(l.bundle_id));
     if (alreadyBundled.length > 0) {
       return NextResponse.json({ error: 'Some looks are already in a bundle' }, { status: 400 });
     }
@@ -39,7 +64,7 @@ export async function POST(request: NextRequest) {
     // Use the minimum position of selected looks for bundle position
     const minPosition = Math.min(...existingLooks.map(l => l.position));
 
-    // Create bundle
+    // Create new bundle
     const { data: bundle, error: bundleError } = await supabase
       .from('collection_bundles')
       .insert({ store_id: storeId, position: minPosition })
@@ -48,14 +73,24 @@ export async function POST(request: NextRequest) {
 
     if (bundleError) throw bundleError;
 
-    // Assign looks to bundle with positions matching lookIds order
-    for (let i = 0; i < lookIds.length; i++) {
+    // Assign looks to new bundle with positions matching allLookIds order
+    for (let i = 0; i < allLookIds.length; i++) {
       const { error } = await supabase
         .from('collection_looks')
         .update({ bundle_id: bundle.id, bundle_position: i })
-        .eq('id', lookIds[i]);
+        .eq('id', allLookIds[i]);
 
       if (error) throw error;
+    }
+
+    // Delete old bundles
+    if (bundlesToDelete.length > 0) {
+      const { error: delError } = await supabase
+        .from('collection_bundles')
+        .delete()
+        .in('id', bundlesToDelete);
+
+      if (delError) throw delError;
     }
 
     return NextResponse.json({ success: true, bundleId: bundle.id });

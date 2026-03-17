@@ -157,12 +157,16 @@ function BundleCard({
   onDisband,
   onDelete,
   locale,
+  isSelected,
+  onToggleSelect,
 }: {
   bundle: { id: string; looks: CollectionLook[] };
   onClick: () => void;
   onDisband: (bundleId: string) => void;
   onDelete: (bundleId: string, lookIds: string[]) => void;
   locale: string;
+  isSelected: boolean;
+  onToggleSelect: (bundleId: string) => void;
 }) {
   const ja = locale === 'ja';
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
@@ -179,9 +183,17 @@ function BundleCard({
     <div
       ref={setNodeRef}
       style={style}
-      className="border-2 border-[var(--color-accent)] rounded-xl p-3 bg-[var(--color-accent)]/5 hover:shadow-sm transition-shadow"
+      className={`border-2 rounded-xl p-3 hover:shadow-sm transition-shadow ${isSelected ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/10' : 'border-[var(--color-accent)] bg-[var(--color-accent)]/5'}`}
     >
       <div className="flex items-center gap-3">
+        {/* Checkbox */}
+        <input
+          type="checkbox"
+          checked={isSelected}
+          onChange={() => onToggleSelect(bundle.id)}
+          className="w-4 h-4 rounded border-[var(--color-line)] text-[var(--color-accent)] focus:ring-[var(--color-accent)] flex-shrink-0"
+        />
+
         {/* Drag handle */}
         <button
           {...attributes}
@@ -917,15 +929,17 @@ export default function CollectionPage() {
   const ja = locale === 'ja';
   const {
     looks, items, isLoading,
-    addLook, updateLook, deleteLook, deleteBundle, reorderLooks,
-    createBundle, disbandBundle, addToBundle, removeFromBundle, reorderBundleLooks,
+    addLook, updateLook, deleteLook, deleteBundle, bulkDeleteLooks, reorderLooks,
+    createBundle, mergeBundles, disbandBundle, addToBundle, removeFromBundle, reorderBundleLooks,
   } = useCollection();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLook, setSelectedLook] = useState<CollectionLook | null>(null);
   const [selectedLookBundleLooks, setSelectedLookBundleLooks] = useState<CollectionLook[] | undefined>(undefined);
   const [selectedBundle, setSelectedBundle] = useState<{ id: string; looks: CollectionLook[] } | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [selectedBundleIds, setSelectedBundleIds] = useState<Set<string>>(new Set());
   const [isBundling, setIsBundling] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // Keep selectedBundle in sync with looks data (after add/remove operations)
   useEffect(() => {
@@ -955,18 +969,67 @@ export default function CollectionPage() {
     });
   };
 
+  const toggleSelectBundle = (bundleId: string) => {
+    setSelectedBundleIds(prev => {
+      const next = new Set(prev);
+      if (next.has(bundleId)) next.delete(bundleId);
+      else next.add(bundleId);
+      return next;
+    });
+  };
+
   const handleCreateBundle = async () => {
-    if (selectedIds.size < 2) return;
+    if (selectedIds.size < 2 && selectedBundleIds.size === 0) return;
     setIsBundling(true);
     try {
-      await createBundle(Array.from(selectedIds));
+      if (selectedBundleIds.size > 0) {
+        // Merge: bundles + any selected single looks
+        await mergeBundles(Array.from(selectedBundleIds), Array.from(selectedIds));
+      } else {
+        await createBundle(Array.from(selectedIds));
+      }
       setSelectedIds(new Set());
+      setSelectedBundleIds(new Set());
     } catch (err) {
-      console.error('Bundle creation failed:', err);
+      console.error('Bundle creation/merge failed:', err);
     } finally {
       setIsBundling(false);
     }
   };
+
+  const handleBulkDelete = async () => {
+    const lookIdsToDelete = Array.from(selectedIds);
+    // Also collect all look IDs from selected bundles
+    for (const bundleId of selectedBundleIds) {
+      const bundleItem = items.find(i => i.type === 'bundle' && i.bundle.id === bundleId);
+      if (bundleItem && bundleItem.type === 'bundle') {
+        for (const look of bundleItem.bundle.looks) {
+          if (!lookIdsToDelete.includes(look.id)) {
+            lookIdsToDelete.push(look.id);
+          }
+        }
+      }
+    }
+    if (lookIdsToDelete.length === 0) return;
+
+    const msg = ja
+      ? `${lookIdsToDelete.length}件のルックを削除しますか？`
+      : `Delete ${lookIdsToDelete.length} looks?`;
+    if (!confirm(msg)) return;
+
+    setIsDeleting(true);
+    try {
+      await bulkDeleteLooks(lookIdsToDelete);
+      setSelectedIds(new Set());
+      setSelectedBundleIds(new Set());
+    } catch (err) {
+      console.error('Bulk delete failed:', err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const totalSelected = selectedIds.size + selectedBundleIds.size;
 
   // Build sortable IDs for DnD — singles use look.id, bundles use bundle-{id}
   const sortableIds = items.map(item =>
@@ -1052,6 +1115,8 @@ export default function CollectionPage() {
                       onDisband={disbandBundle}
                       onDelete={deleteBundle}
                       locale={locale}
+                      isSelected={selectedBundleIds.has(item.bundle.id)}
+                      onToggleSelect={toggleSelectBundle}
                     />
                   );
                 }
@@ -1073,18 +1138,31 @@ export default function CollectionPage() {
         </DndContext>
       )}
 
-      {/* Floating bundle action bar */}
-      {selectedIds.size >= 2 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+      {/* Floating action bar */}
+      {totalSelected >= 1 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3">
+          {/* Bundle / Merge button — show when 2+ items selected, or 1+ bundles selected */}
+          {(selectedIds.size + selectedBundleIds.size >= 2 || (selectedBundleIds.size >= 1 && selectedIds.size >= 1)) && (
+            <button
+              onClick={handleCreateBundle}
+              disabled={isBundling}
+              className="flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white text-sm font-medium rounded-full shadow-lg hover:opacity-90 disabled:opacity-50 transition-all"
+            >
+              {isBundling ? <Loader2 size={16} className="animate-spin" /> : <Link2 size={16} />}
+              {selectedBundleIds.size > 0
+                ? (ja ? `${totalSelected}件を合体` : `Merge ${totalSelected} items`)
+                : (ja ? `${selectedIds.size}枚をバンドル化` : `Bundle ${selectedIds.size} looks`)}
+            </button>
+          )}
+
+          {/* Delete button */}
           <button
-            onClick={handleCreateBundle}
-            disabled={isBundling}
-            className="flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white text-sm font-medium rounded-full shadow-lg hover:opacity-90 disabled:opacity-50 transition-all"
+            onClick={handleBulkDelete}
+            disabled={isDeleting}
+            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white text-sm font-medium rounded-full shadow-lg hover:bg-red-600 disabled:opacity-50 transition-all"
           >
-            {isBundling ? <Loader2 size={16} className="animate-spin" /> : <Link2 size={16} />}
-            {ja
-              ? `${selectedIds.size}枚をバンドル化`
-              : `Bundle ${selectedIds.size} looks`}
+            {isDeleting ? <Loader2 size={16} className="animate-spin" /> : <Trash2 size={16} />}
+            {ja ? `${totalSelected}件を削除` : `Delete ${totalSelected}`}
           </button>
         </div>
       )}

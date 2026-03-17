@@ -182,6 +182,23 @@ export function useCollection() {
     await fetchLooks();
   };
 
+  const mergeBundles = async (bundleIds: string[], lookIds?: string[]) => {
+    const res = await fetch('/api/collections/bundles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bundleIds, lookIds: lookIds || [] }),
+    });
+    if (!res.ok) throw new Error('Failed to merge bundles');
+    await fetchLooks();
+  };
+
+  const bulkDeleteLooks = async (lookIds: string[]) => {
+    await Promise.all(lookIds.map(id =>
+      fetch(`/api/collections?id=${id}`, { method: 'DELETE' })
+    ));
+    await fetchLooks();
+  };
+
   const deleteBundle = async (bundleId: string, lookIds: string[]) => {
     // Delete all looks in the bundle
     await Promise.all(lookIds.map(id =>
@@ -244,8 +261,10 @@ export function useCollection() {
     updateLook,
     deleteLook,
     deleteBundle,
+    bulkDeleteLooks,
     reorderLooks,
     createBundle,
+    mergeBundles,
     disbandBundle,
     addToBundle,
     removeFromBundle,
