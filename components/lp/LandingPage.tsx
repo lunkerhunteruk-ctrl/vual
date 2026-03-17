@@ -7,12 +7,14 @@ import Image from 'next/image';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 
 // ============================================================
-// Lookbook slideshow images (public/lp/lookbook/01.jpg ~ 10.jpg)
+// Slideshow image paths helper
 // ============================================================
-const LOOKBOOK_IMAGES = Array.from({ length: 10 }, (_, i) => {
-  const num = String(i + 1).padStart(2, '0');
-  return `/lp/lookbook/${num}.jpg`;
-});
+function buildImagePaths(folder: string, count = 10) {
+  return Array.from({ length: count }, (_, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return `/lp/${folder}/${num}.jpg`;
+  });
+}
 
 // ============================================================
 // Animation variants
@@ -53,18 +55,19 @@ const slideFromRight: Variants = {
 };
 
 // ============================================================
-// Lookbook slideshow — crossfade loop
+// Image slideshow — crossfade loop (reusable)
 // ============================================================
-function LookbookSlideshow() {
+function ImageSlideshow({ folder, fallbackLabel }: { folder: string; fallbackLabel: string }) {
   const [images, setImages] = useState<string[]>([]);
   const [current, setCurrent] = useState(0);
+  const candidates = buildImagePaths(folder);
 
   // Check which images actually exist
   useEffect(() => {
     let cancelled = false;
     (async () => {
       const existing: string[] = [];
-      for (const src of LOOKBOOK_IMAGES) {
+      for (const src of candidates) {
         try {
           const res = await fetch(src, { method: 'HEAD' });
           if (res.ok) existing.push(src);
@@ -73,7 +76,7 @@ function LookbookSlideshow() {
       if (!cancelled) setImages(existing);
     })();
     return () => { cancelled = true; };
-  }, []);
+  }, [folder]);
 
   // Auto-advance every 4s
   useEffect(() => {
@@ -87,7 +90,7 @@ function LookbookSlideshow() {
   if (images.length === 0) {
     return (
       <div className="absolute inset-0 flex items-center justify-center">
-        <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LOOKBOOK DEMO</p>
+        <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">{fallbackLabel}</p>
       </div>
     );
   }
@@ -104,7 +107,7 @@ function LookbookSlideshow() {
       >
         <Image
           src={images[current]}
-          alt={`Lookbook ${current + 1}`}
+          alt={`${folder} ${current + 1}`}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -651,7 +654,7 @@ export function VualLandingPage() {
 
             {/* Lookbook slideshow */}
             <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
-              <LookbookSlideshow />
+              <ImageSlideshow folder="lookbook" fallbackLabel="LOOKBOOK DEMO" />
             </motion.div>
           </div>
         </div>
@@ -661,12 +664,9 @@ export function VualLandingPage() {
       <AnimatedSection className="relative z-10 py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Visual placeholder */}
-            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/60 border border-[#2a2035] order-2 md:order-1">
-              <div className="absolute inset-0 bg-gradient-to-tl from-[#2a2035]/50 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VTON DEMO</p>
-              </div>
+            {/* Try-on slideshow */}
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60 order-2 md:order-1">
+              <ImageSlideshow folder="tryon" fallbackLabel="VTON DEMO" />
             </motion.div>
 
             <div className="order-1 md:order-2">
