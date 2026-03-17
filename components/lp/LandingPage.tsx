@@ -228,7 +228,7 @@ export function VualLandingPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <div className="bg-black text-white overflow-x-hidden">
+    <div className="bg-black text-white overflow-x-hidden" style={{ '--color-title-active': '#ffffff', '--color-text-body': '#d4d4d4' } as React.CSSProperties}>
       {/* ======== HERO ======== */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background video/gradient */}
