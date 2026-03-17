@@ -166,9 +166,9 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="flex gap-4 max-w-5xl mx-auto items-stretch">
-      {/* Main player */}
-      <div className="flex-1 relative aspect-video rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
+    <div className="max-w-5xl mx-auto">
+      {/* Main player — 16:9 */}
+      <div className="relative aspect-video rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
         <video
           ref={videoRef}
           autoPlay
@@ -180,25 +180,24 @@ function VideoShowcase() {
         />
       </div>
 
-      {/* Thumbnail rail */}
+      {/* Thumbnail rail — horizontal, each 16:9 */}
       {items.length > 1 && (
-        <div className="flex flex-col gap-2 w-[120px] shrink-0">
+        <div className="flex gap-2 mt-3">
           {items.map((item, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`relative rounded-lg overflow-hidden border-2 transition-all flex-1 min-h-0 ${
+              className={`relative aspect-video flex-1 rounded-lg overflow-hidden border-2 transition-all ${
                 i === active
                   ? 'border-white/60 shadow-lg shadow-purple-500/20'
                   : 'border-[#2a2035]/60 opacity-50 hover:opacity-80'
               }`}
             >
-              {/* Thumbnail: use poster image or video thumbnail */}
               <video
                 muted
                 playsInline
                 preload="metadata"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
                 src={`${item.video}#t=1`}
               />
               {i === active && (
