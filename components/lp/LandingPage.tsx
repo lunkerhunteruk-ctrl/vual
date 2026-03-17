@@ -176,7 +176,7 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="flex gap-3 max-w-5xl mx-auto items-start">
+    <div className="flex gap-1.5 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH - 4 * 6) * 16 / (5 * 9) + 6) / 2}px)` : undefined }}>
       {/* Main player — 16:9, film frame included */}
       <div ref={playerRef} className="relative flex-1 aspect-video overflow-hidden">
         <video
