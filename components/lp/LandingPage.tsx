@@ -1,9 +1,18 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useInView, type Variants } from 'framer-motion';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import { motion, useScroll, useTransform, useInView, AnimatePresence, type Variants } from 'framer-motion';
 import { useLocale } from 'next-intl';
+import Image from 'next/image';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
+
+// ============================================================
+// Lookbook slideshow images (public/lp/lookbook/01.jpg ~ 10.jpg)
+// ============================================================
+const LOOKBOOK_IMAGES = Array.from({ length: 10 }, (_, i) => {
+  const num = String(i + 1).padStart(2, '0');
+  return `/lp/lookbook/${num}.jpg`;
+});
 
 // ============================================================
 // Animation variants
@@ -42,6 +51,69 @@ const slideFromRight: Variants = {
   hidden: { opacity: 0, x: 80 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
 };
+
+// ============================================================
+// Lookbook slideshow — crossfade loop
+// ============================================================
+function LookbookSlideshow() {
+  const [images, setImages] = useState<string[]>([]);
+  const [current, setCurrent] = useState(0);
+
+  // Check which images actually exist
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const existing: string[] = [];
+      for (const src of LOOKBOOK_IMAGES) {
+        try {
+          const res = await fetch(src, { method: 'HEAD' });
+          if (res.ok) existing.push(src);
+        } catch { /* skip */ }
+      }
+      if (!cancelled) setImages(existing);
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Auto-advance every 4s
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  if (images.length === 0) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LOOKBOOK DEMO</p>
+      </div>
+    );
+  }
+
+  return (
+    <AnimatePresence mode="popLayout">
+      <motion.div
+        key={images[current]}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.2, ease: 'easeInOut' }}
+        className="absolute inset-0"
+      >
+        <Image
+          src={images[current]}
+          alt={`Lookbook ${current + 1}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={current === 0}
+        />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 // ============================================================
 // Section wrapper with scroll animation
@@ -468,12 +540,9 @@ export function VualLandingPage() {
               </motion.div>
             </div>
 
-            {/* Visual placeholder */}
+            {/* Lookbook slideshow */}
             <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2a2035]/30 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LOOKBOOK DEMO</p>
-              </div>
+              <LookbookSlideshow />
             </motion.div>
           </div>
         </div>
