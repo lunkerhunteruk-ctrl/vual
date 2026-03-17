@@ -157,7 +157,7 @@ function VideoShowcase() {
 
   if (items.length === 0) {
     return (
-      <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
+      <div className="relative aspect-video max-w-4xl mx-auto overflow-hidden bg-[#15101e]/40 backdrop-blur-sm">
         <div className="absolute inset-0 flex items-center justify-center">
           <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">VIDEO SHOWREEL</p>
         </div>
@@ -167,15 +167,15 @@ function VideoShowcase() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      {/* Main player — 16:9 */}
-      <div className="relative aspect-video rounded-2xl overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
+      {/* Main player — 16:9, no border (film frame is in the video) */}
+      <div className="relative aspect-video overflow-hidden">
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
           src={items[active].video}
         />
       </div>
@@ -187,22 +187,19 @@ function VideoShowcase() {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`relative aspect-video flex-1 rounded-lg overflow-hidden border-2 transition-all ${
+              className={`relative aspect-video flex-1 overflow-hidden transition-all ${
                 i === active
-                  ? 'border-white/60 shadow-lg shadow-purple-500/20'
-                  : 'border-[#2a2035]/60 opacity-50 hover:opacity-80'
+                  ? 'opacity-100 ring-2 ring-white/50'
+                  : 'opacity-40 hover:opacity-70'
               }`}
             >
               <video
                 muted
                 playsInline
                 preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
                 src={`${item.video}#t=1`}
               />
-              {i === active && (
-                <div className="absolute inset-0 bg-white/5" />
-              )}
             </button>
           ))}
         </div>
