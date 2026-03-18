@@ -200,7 +200,7 @@ function VideoShowcase() {
           loop
           muted
           playsInline
-          crossOrigin="anonymous"
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover"
           src={items[active].video}
         />
@@ -717,6 +717,7 @@ export function VualLandingPage() {
             loop
             muted
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
             src={`${LP_MEDIA_BASE}/hero.mp4`}
           />
