@@ -717,7 +717,6 @@ export function VualLandingPage() {
             loop
             muted
             playsInline
-            crossOrigin="anonymous"
             className="absolute inset-0 w-full h-full object-cover"
             src={`${LP_MEDIA_BASE}/hero.mp4`}
           />
@@ -1144,10 +1143,10 @@ export function VualLandingPage() {
               </span>
             </div>
             <div className="flex items-center gap-6">
-              <a href="https://instagram.com/vual.ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+              <a href="https://instagram.com/sachio_kawasaki" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
                 Instagram
               </a>
-              <a href="https://x.com/vual_ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+              <a href="https://x.com/VUAL_fashion" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
                 X
               </a>
               <img src="/lp/powered-by-stripe.svg" alt="Powered by Stripe" className="h-[22px] opacity-60 hover:opacity-100 transition-opacity" />
