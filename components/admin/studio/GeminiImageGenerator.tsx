@@ -1552,21 +1552,6 @@ export function GeminiImageGenerator({
             : (locale === 'ja' ? `${storyCount}枚生成（${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr）` : `Generate ${storyCount} (${storyCount * (settings.resolution === '4K' ? 2 : 1)}cr)`)
           }
         </Button>
-        {storyCount > 1 && (
-          <Button
-            variant="secondary"
-            size="lg"
-            isLoading={isGenerating}
-            disabled={!selectedGarmentImage}
-            leftIcon={<Video size={16} />}
-            onClick={() => setShowVideoSettingsModal(true)}
-            className="!px-6 !border-[var(--color-accent)] !text-[var(--color-accent)] hover:!bg-[var(--color-accent)]/5"
-          >
-            {locale === 'ja'
-              ? `ルック＋動画を生成`
-              : `Look + Video`}
-          </Button>
-        )}
       </div>
 
       {/* Video Settings Modal */}

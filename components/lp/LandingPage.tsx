@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence, type Variants } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 
@@ -10,10 +10,13 @@ import { ArrowRight, Check, Loader2 } from 'lucide-react';
 // Slideshow image paths helper
 // ============================================================
 function buildImagePaths(folder: string, count = 10) {
-  return Array.from({ length: count }, (_, i) => {
+  const paths: string[] = [];
+  for (let i = 0; i < count; i++) {
     const num = String(i + 1).padStart(2, '0');
-    return `/lp/${folder}/${num}.jpg`;
-  });
+    paths.push(`/lp/${folder}/${num}.jpg`);
+    paths.push(`/lp/${folder}/${num}.png`);
+  }
+  return paths;
 }
 
 // ============================================================
@@ -80,7 +83,7 @@ function CountUp({ value, suffix = '' }: { value: number; suffix?: string }) {
 // ============================================================
 // Image slideshow — crossfade loop (reusable)
 // ============================================================
-function ImageSlideshow({ folder, fallbackLabel }: { folder: string; fallbackLabel: string }) {
+function ImageSlideshow({ folder, fallbackLabel, contain }: { folder: string; fallbackLabel: string; contain?: boolean }) {
   const [images, setImages] = useState<string[]>([]);
   const [current, setCurrent] = useState(0);
   const candidates = buildImagePaths(folder);
@@ -132,7 +135,7 @@ function ImageSlideshow({ folder, fallbackLabel }: { folder: string; fallbackLab
           src={images[current]}
           alt={`${folder} ${current + 1}`}
           fill
-          className="object-cover"
+          className={contain ? 'object-contain' : 'object-cover'}
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={current === 0}
         />
@@ -144,11 +147,13 @@ function ImageSlideshow({ folder, fallbackLabel }: { folder: string; fallbackLab
 // ============================================================
 // Video showcase — main player + thumbnail selector
 // ============================================================
+const LP_MEDIA_BASE = 'https://lufis.net/vual';
+
 const VIDEO_ITEMS = Array.from({ length: 5 }, (_, i) => {
   const num = String(i + 1).padStart(2, '0');
   return {
-    video: `/lp/videos/${num}.mp4`,
-    thumb: `/lp/videos/${num}.jpg`,
+    video: `${LP_MEDIA_BASE}/videos/${num}.mp4`,
+    thumb: `${LP_MEDIA_BASE}/videos/${num}.jpg`,
   };
 });
 
@@ -440,6 +445,151 @@ function FeatureCard({
 }
 
 // ============================================================
+// UI slideshow — dashboard screenshots
+// ============================================================
+const UI_SCREENS = ['/lp/ui/01.png', '/lp/ui/02.png', '/lp/ui/03.png'];
+
+function UISlideshow() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % UI_SCREENS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <>
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={UI_SCREENS[current]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={UI_SCREENS[current]}
+            alt={`VUAL UI ${current + 1}`}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 80vw"
+          />
+        </motion.div>
+      </AnimatePresence>
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {UI_SCREENS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-all ${
+              i === current ? 'bg-white scale-110' : 'bg-white/30'
+            }`}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
+// ============================================================
+// Statement section — typewriter reveal
+// ============================================================
+function StatementSection({ line1, line2 }: { line1: string; line2: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [displayedChars1, setDisplayedChars1] = useState(0);
+  const [displayedChars2, setDisplayedChars2] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let i = 0;
+    const speed = 40;
+    const total1 = line1.length;
+    const total2 = line2.length;
+
+    const interval = setInterval(() => {
+      i++;
+      if (i <= total1) {
+        setDisplayedChars1(i);
+      } else if (i <= total1 + 10) {
+        // pause between lines
+      } else if (i <= total1 + 10 + total2) {
+        setDisplayedChars2(i - total1 - 10);
+      } else {
+        clearInterval(interval);
+        setTimeout(() => setShowCursor(false), 1500);
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [isInView, line1, line2]);
+
+  const done = displayedChars2 >= line2.length;
+
+  return (
+    <section ref={ref} className="relative z-10 py-20 md:py-28 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Invisible full text to reserve exact layout height */}
+        <div className="relative">
+          <div aria-hidden className="invisible">
+            <p className="text-2xl md:text-4xl lg:text-[2.8rem] font-bold tracking-tight leading-[1.4]">{line1}</p>
+            <p className="text-lg md:text-2xl mt-8 leading-relaxed font-light">{line2}</p>
+          </div>
+          {/* Visible typed text layered on top */}
+          <div className="absolute inset-0">
+            <p className="text-2xl md:text-4xl lg:text-[2.8rem] font-bold tracking-tight leading-[1.4] text-white">
+              {line1.slice(0, displayedChars1)}
+              {displayedChars1 > 0 && !done && displayedChars2 === 0 && showCursor && (
+                <span className="inline-block w-[3px] h-[1em] bg-white/80 ml-0.5 animate-pulse align-baseline" />
+              )}
+            </p>
+            <p className="text-lg md:text-2xl text-[#b8adc8] mt-8 leading-relaxed font-light">
+              {line2.slice(0, displayedChars2)}
+              {displayedChars2 > 0 && !done && showCursor && (
+                <span className="inline-block w-[2px] h-[1em] bg-[#b8adc8]/80 ml-0.5 animate-pulse align-baseline" />
+              )}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// Language toggle (JA / EN)
+// ============================================================
+function LanguageToggle() {
+  const locale = useLocale();
+  const isJa = locale === 'ja';
+
+  const toggle = () => {
+    const newLocale = isJa ? 'en' : 'ja';
+    const path = window.location.pathname.replace(`/${locale}`, `/${newLocale}`);
+    window.location.href = path;
+  };
+
+  return (
+    <button
+      onClick={toggle}
+      className="fixed top-5 right-5 z-50 flex items-center gap-0.5 px-1 py-1 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-[11px] font-medium tracking-wide transition-all hover:border-white/30"
+    >
+      <span className={`px-2.5 py-1 rounded-full transition-all ${isJa ? 'bg-white/15 text-white' : 'text-white/40'}`}>
+        JA
+      </span>
+      <span className={`px-2.5 py-1 rounded-full transition-all ${!isJa ? 'bg-white/15 text-white' : 'text-white/40'}`}>
+        EN
+      </span>
+    </button>
+  );
+}
+
+// ============================================================
 // Main LP Component
 // ============================================================
 export function VualLandingPage() {
@@ -456,6 +606,9 @@ export function VualLandingPage() {
 
   return (
     <div className="relative bg-[#0d0a12] text-white overflow-x-hidden" style={{ '--color-title-active': '#f0edf5', '--color-text-body': '#c8c0d4' } as React.CSSProperties}>
+      {/* Language toggle — fixed top-right */}
+      <LanguageToggle />
+
       {/* Aurora background — fixed behind all content */}
       <div className="fixed inset-0 -z-0 overflow-hidden">
         {/* Purple / violet blobs */}
@@ -580,7 +733,7 @@ export function VualLandingPage() {
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            src="/lp/hero.mp4"
+            src={`${LP_MEDIA_BASE}/hero.mp4`}
           />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a12]/60 via-[#0d0a12]/40 to-[#0d0a12]/90 z-10" />
@@ -620,18 +773,9 @@ export function VualLandingPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-lg md:text-2xl text-neutral-300 max-w-2xl mx-auto mb-4 leading-relaxed font-light"
+            className="text-lg md:text-2xl text-neutral-300 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
           >
             {t('hero.tagline')}
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-sm text-[#8a7a9b] mb-12 tracking-wide"
-          >
-            {t('hero.features')}
           </motion.p>
 
           {/* CTA */}
@@ -661,6 +805,24 @@ export function VualLandingPage() {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* ======== STATEMENT — typewriter between hero and 01 ======== */}
+      <StatementSection
+        line1={t('hero.subtitle')}
+        line2={t('hero.features')}
+      />
+
+      {/* ======== UI SHOWCASE ======== */}
+      <AnimatedSection className="relative z-10 py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            variants={scaleIn}
+            className="relative aspect-[16/10] rounded-xl overflow-hidden border border-[#2a2035]/60 shadow-2xl shadow-black/40"
+          >
+            <UISlideshow />
+          </motion.div>
+        </div>
+      </AnimatedSection>
 
       {/* ======== AI LOOKBOOK & EDITORIAL ======== */}
       <AnimatedSection className="relative z-10 py-32 px-6">
@@ -844,11 +1006,8 @@ export function VualLandingPage() {
               </motion.p>
             </div>
 
-            <motion.div variants={scaleIn} className="relative aspect-[9/16] max-w-[280px] mx-auto rounded-[2rem] overflow-hidden bg-[#15101e]/40 backdrop-blur-sm border border-[#2a2035]/60">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d0a12]/40" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-sm text-[#6b5d7b] tracking-widest font-mono">LIVE DEMO</p>
-              </div>
+            <motion.div variants={scaleIn} className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#0d0a12] border border-[#2a2035]/60">
+              <ImageSlideshow folder="live" fallbackLabel="LIVE DEMO" contain />
             </motion.div>
           </div>
         </div>
@@ -864,6 +1023,12 @@ export function VualLandingPage() {
             text={t('network.heading')}
             className="text-4xl md:text-5xl font-bold tracking-tight mt-4 mb-6 leading-[1.1] max-w-3xl mx-auto"
           />
+          <motion.div variants={fadeUp} className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-400/20 bg-purple-400/5 text-xs text-purple-300 tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+              Coming Soon
+            </span>
+          </motion.div>
           <motion.p variants={fadeUp} className="text-[#a89bb8] leading-relaxed text-base mb-16 max-w-2xl mx-auto">
             {t('network.description')}
           </motion.p>
@@ -926,6 +1091,42 @@ export function VualLandingPage() {
         </div>
       </AnimatedSection>
 
+      {/* ======== FOUNDER ======== */}
+      <AnimatedSection className="relative z-10 py-32 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <motion.div
+              variants={scaleIn}
+              className="shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-[#2a2035]/60"
+            >
+              <Image
+                src="/lp/founder-bw.jpeg"
+                alt={t('founder.name')}
+                width={144}
+                height={144}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <div>
+              <motion.p variants={fadeUp} className="text-lg font-semibold text-white">
+                {t('founder.name')}
+              </motion.p>
+              <motion.p variants={fadeUp} className="text-xs text-[#8a7a9b] tracking-wide mt-1 mb-4">
+                {t('founder.role')}
+              </motion.p>
+              <motion.p variants={fadeUp} className="text-sm text-[#a89bb8] leading-relaxed">
+                {t('founder.bio')}
+              </motion.p>
+              <motion.div variants={fadeUp} className="flex gap-4 mt-4">
+                <a href="https://x.com/sachiokawasaki_" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+                  X @sachiokawasaki_
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* ======== FINAL CTA ======== */}
       <section className="relative z-10 py-32 px-6 overflow-hidden">
 
@@ -945,22 +1146,40 @@ export function VualLandingPage() {
 
       {/* ======== FOOTER ======== */}
       <footer className="relative z-10 border-t border-[#2a2035]/40 py-12 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
-              VUAL
-            </span>
-            <span className="text-xs text-[#6b5d7b]">
-              © {new Date().getFullYear()}
-            </span>
+        <div className="max-w-6xl mx-auto">
+          {/* Top row: logo + links */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+            <div className="flex items-center gap-3">
+              <span className="text-lg font-bold tracking-tighter" style={{ fontFamily: 'var(--font-playfair)' }}>
+                VUAL
+              </span>
+              <span className="text-xs text-[#6b5d7b]">
+                © {new Date().getFullYear()} All rights reserved.
+              </span>
+            </div>
+            <div className="flex items-center gap-6">
+              <a href="https://instagram.com/vual.ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+                Instagram
+              </a>
+              <a href="https://x.com/vual_ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+                X
+              </a>
+              <img src="/lp/powered-by-stripe.svg" alt="Powered by Stripe" className="h-[22px] opacity-60 hover:opacity-100 transition-opacity" />
+            </div>
           </div>
-          <div className="flex gap-6">
-            <a href="https://instagram.com/vual.ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
-              Instagram
-            </a>
-            <a href="https://x.com/vual_ai" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
-              X
-            </a>
+
+          {/* Company info */}
+          <div className="grid md:grid-cols-2 gap-8 text-[11px] text-[#6b5d7b] leading-relaxed tracking-wide">
+            <div>
+              <p className="font-medium text-[#8a7a9b] mb-1">LUFIS Co., Ltd.</p>
+              <p>1-1-22, Tokuyoshi-minami, Kokuraminami-ku, Kitakyusyushi, Fukuokaken, Japan</p>
+              <p>+81 50 6867 2592 · info@lufis.co.jp</p>
+            </div>
+            <div>
+              <p className="font-medium text-[#8a7a9b] mb-1">LUFIS UK Co., Ltd.</p>
+              <p>124 City Road, London, EC1V 2NX, United Kingdom</p>
+              <p>+44 74 5512 7722 · info@lufis.co.jp</p>
+            </div>
           </div>
         </div>
       </footer>

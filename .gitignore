@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .secrets/
+
+# LP videos (hosted on Xserver)
+public/lp/hero.mp4
+public/lp/videos/*.mp4

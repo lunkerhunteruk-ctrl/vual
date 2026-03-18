@@ -809,8 +809,9 @@
   "lp": {
     "hero": {
       "badge": "Priority access open",
-      "tagline": "AI-powered platform for the future of fashion.",
-      "features": "Lookbook Generation · Virtual Try-On · Live Commerce · EC · All in One"
+      "tagline": "One screen. Everything in motion.",
+      "subtitle": "From AI generation to full EC operations. Everything fashion needs, inside VUAL.",
+      "features": "Not a generic EC. An apparel-native OS — purpose-built to run brands, shops, and customer reach from the ground up."
     },
     "waitlist": {
       "brand": "Brand",
@@ -839,7 +840,7 @@
     },
     "live": {
       "heading": "LINE Live Commerce Sell live Unified inventory",
-      "description": "Live stream directly on LINE. Product links, inventory sync, payments — all seamless. Sell in real-time on the best channel for Japanese customers."
+      "description": "Live stream directly on LINE. Product links, inventory sync, payments — all seamless. Sell in real-time on the best channel for Japanese customers. Use your existing LINE Official Account and push-notify followers the moment you go live."
     },
     "network": {
       "heading": "Fashion Network Connecting brands and shops",
@@ -855,8 +856,13 @@
     },
     "allInOne": {
       "heading": "All-in-One Platform Everything in one place",
-      "description": "Product management, order processing, customer analytics, collections, blog, magazine. No more switching between multiple tools.",
-      "items": "Products,EC & Payments,Orders,Customer Data,AI Lookbook,Virtual Try-On,Live Commerce,Magazine"
+      "description": "Product management, order processing, customer analytics, collections, blog, editorial. No more switching between multiple tools.",
+      "items": "Products,EC & Payments,Orders,Customer Data,AI Lookbook,Editorial Generation,Virtual Try-On,Live Commerce"
+    },
+    "founder": {
+      "name": "Sachio Kawasaki",
+      "role": "Founder & CEO",
+      "bio": "MA Fashion, Central Saint Martins. Balenciaga intern. Founded and ran his own brand — and through that experience, saw firsthand the operational inefficiencies that technology should have solved long ago. VUAL is a product born from inside the industry."
     },
     "cta": {
       "heading": "Build the future of fashion together",
