@@ -158,7 +158,7 @@ const VIDEO_ITEMS = Array.from({ length: 5 }, (_, i) => {
 });
 
 function VideoShowcase() {
-  const [items, setItems] = useState<typeof VIDEO_ITEMS>([]);
+  const items = VIDEO_ITEMS;
   const [active, setActive] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
@@ -170,22 +170,6 @@ function VideoShowcase() {
     const ro = new ResizeObserver(([e]) => setPlayerH(e.contentRect.height));
     ro.observe(playerRef.current);
     return () => ro.disconnect();
-  }, []);
-
-  // Check which videos exist
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const existing: typeof VIDEO_ITEMS = [];
-      for (const item of VIDEO_ITEMS) {
-        try {
-          const res = await fetch(item.video, { method: 'HEAD' });
-          if (res.ok) existing.push(item);
-        } catch { /* skip */ }
-      }
-      if (!cancelled) setItems(existing);
-    })();
-    return () => { cancelled = true; };
   }, []);
 
   // Play new video when active changes
@@ -216,6 +200,7 @@ function VideoShowcase() {
           loop
           muted
           playsInline
+          crossOrigin="anonymous"
           className="absolute inset-0 w-full h-full object-cover"
           src={items[active].video}
         />
@@ -732,6 +717,7 @@ export function VualLandingPage() {
             loop
             muted
             playsInline
+            crossOrigin="anonymous"
             className="absolute inset-0 w-full h-full object-cover"
             src={`${LP_MEDIA_BASE}/hero.mp4`}
           />
