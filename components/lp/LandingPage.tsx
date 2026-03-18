@@ -1167,6 +1167,9 @@ export function VualLandingPage() {
               <p>+44 74 5512 7722 · info@lufis.co.jp</p>
             </div>
           </div>
+          <div className="mt-6 text-[11px] text-[#6b5d7b] tracking-wide">
+            SaaS Development & MVP Engineering — <a href="mailto:info@lufis.co.jp" className="text-[#8a7a9b] hover:text-white transition-colors">info@lufis.co.jp</a>
+          </div>
         </div>
       </footer>
     </div>
