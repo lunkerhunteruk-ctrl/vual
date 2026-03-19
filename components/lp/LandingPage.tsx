@@ -191,9 +191,9 @@ function VideoShowcase() {
   }
 
   return (
-    <div className="flex gap-3 max-w-5xl mx-auto items-start" style={{ transform: playerH > 0 ? `translateX(${((playerH - 4 * 8) * (2084 / 1420) / 5 + 12) / 2}px)` : undefined }}>
+    <div className="inline-flex gap-3 items-start">
       {/* Main player — film frame AR (2084:1420) */}
-      <div ref={playerRef} className="relative flex-1 overflow-hidden" style={{ aspectRatio: '2084 / 1420' }}>
+      <div ref={playerRef} className="relative overflow-hidden" style={{ aspectRatio: '2084 / 1420', width: 'min(56rem, 80vw)' }}>
         <video
           ref={videoRef}
           autoPlay
