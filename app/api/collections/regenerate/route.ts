@@ -178,7 +178,7 @@ export async function POST(request: NextRequest) {
       `4. POSE: Generate a SLIGHTLY DIFFERENT pose or angle — same person, same place, but a fresh composition. Small variation only.`,
       ``,
       `The model is ${ms.height}cm tall, wearing ${garmentRef}.`,
-      customPrompt ? `Additional styling instruction: ${customPrompt}.` : '',
+      customPrompt && customPrompt.length >= 150 ? `SCENE & STYLING DIRECTION (PRIMARY CREATIVE BRIEF): ${customPrompt}.` : customPrompt ? `Additional styling instruction: ${customPrompt}.` : '',
       ``,
       `Professional high-end editorial fashion photography. Sharp focus, photorealistic. Full body shot.`,
       `No text, labels, or watermarks.`,

@@ -477,6 +477,19 @@ export async function POST(request: NextRequest) {
   }
 }
 
+/**
+ * Detect if customPrompt is a full creative prompt (not just keywords).
+ * Japanese: 80+ chars → full prompt mode (detailed scene descriptions)
+ * English: 150+ chars → full prompt mode (1-2 sentences = full scene)
+ */
+function isFullPromptMode(prompt: string, locale?: string): boolean {
+  if (!prompt) return false;
+  // Detect Japanese content by checking for CJK characters
+  const hasJapanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/.test(prompt);
+  const threshold = (locale === 'ja' || hasJapanese) ? 80 : 150;
+  return prompt.length >= threshold;
+}
+
 function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImageCount: number = 0, thirdImageCount: number = 0, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
   const { modelSettings, modelImage, garmentSize, garmentSizeSpecs, vtonBase, background, customPrompt, locale } = body;
 
@@ -604,11 +617,13 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     `who is ${modelSettings.height}cm tall,`,
     modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose},` : '',
     garmentDesc + secondGarmentDesc + thirdGarmentDesc + fourthGarmentDesc + fifthGarmentDesc + '.',
-    customPrompt ? `MANDATORY STYLING (DO NOT IGNORE): ${customPrompt}. This styling instruction overrides any default assumptions about how the garment is worn, the background, and the setting.` : '',
+    customPrompt && isFullPromptMode(customPrompt, locale)
+      ? `SCENE & STYLING DIRECTION (THIS IS THE PRIMARY CREATIVE BRIEF — follow it faithfully): ${customPrompt}`
+      : customPrompt ? `MANDATORY STYLING (DO NOT IGNORE): ${customPrompt}. This styling instruction overrides any default assumptions about how the garment is worn, the background, and the setting.` : '',
     sizeDescription,
     fitDescription ? `The garment appears with ${fitDescription}.` : '',
-    // Skip background description when a detailed custom prompt provides its own scene
-    customPrompt && customPrompt.length > 100 ? '' : `${backgroundDescriptions[background] || background}.`,
+    // Skip background description when custom prompt is a full scene prompt
+    customPrompt && isFullPromptMode(customPrompt, locale) ? '' : `${backgroundDescriptions[background] || background}.`,
     `Sharp focus, editorial fashion magazine quality, ultra high resolution 8K.`,
     `Extremely detailed, photorealistic rendering with fine texture details.`,
     `Realistic skin texture, natural pose, professional model.`,
@@ -647,20 +662,22 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
 
   const tuckNote = getTuckNote(modelSettings.tuckStyle);
   const outerNote = getOuterNote(modelSettings.outerStyle);
-  const styleNote = customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
+  const fullPrompt = customPrompt && isFullPromptMode(customPrompt, body.locale);
+  const styleNote = fullPrompt ? ` SCENE DIRECTION: ${customPrompt}.` : customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
   const poseNote = modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose}, ` : '';
-  const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || background}.`;
+  const bgNote = fullPrompt ? '' : ` ${backgroundDescriptions[background] || background}.`;
   return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
-  const { modelSettings, modelImage, background, customPrompt } = body;
+  const { modelSettings, modelImage, background, customPrompt, locale } = body;
   const gender = modelSettings.gender === 'female' ? 'woman' : 'man';
 
   const model = modelImage ? 'this person' : `a ${gender}`;
   const tuckNote = getTuckNote(modelSettings.tuckStyle);
   const outerNote = getOuterNote(modelSettings.outerStyle);
+  const fullPrompt = customPrompt && isFullPromptMode(customPrompt, locale);
   const styleNote = customPrompt ? ` ${customPrompt}.` : '';
-  const bgNote = customPrompt && customPrompt.length > 100 ? '' : ` ${backgroundDescriptions[background] || 'White background'}.`;
+  const bgNote = fullPrompt ? '' : ` ${backgroundDescriptions[background] || 'White background'}.`;
   return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
 }
