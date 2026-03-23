@@ -86,12 +86,14 @@ export async function POST(request: NextRequest) {
         const imageResponse = await fetch(imageUrl);
         if (imageResponse.ok) {
           const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
-          const filename = `model-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+          const ct = imageResponse.headers.get('content-type') || 'image/jpeg';
+          const ext = ct.includes('png') ? 'png' : 'jpg';
+          const filename = `model-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
 
           const { error: uploadError } = await supabase.storage
             .from('model-images')
             .upload(filename, imageBuffer, {
-              contentType: 'image/png',
+              contentType: ct,
               upsert: false,
             });
 

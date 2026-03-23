@@ -398,14 +398,17 @@ export async function POST(request: NextRequest) {
           const supabase = createServerClient();
           console.log('[Gemini] Save: supabase client:', !!supabase, 'has image:', !!images[0], 'storeId:', body.storeId || 'NONE');
           if (supabase && images[0]) {
+            const mimeMatch = images[0].match(/^data:(image\/\w+);base64,/);
+            const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+            const ext = mimeType === 'image/png' ? 'png' : 'jpg';
             const base64Data = images[0].replace(/^data:image\/\w+;base64,/, '');
             const imageBuffer = Buffer.from(base64Data, 'base64');
-            const filename = `gemini-${Date.now()}.png`;
+            const filename = `gemini-${Date.now()}.${ext}`;
 
             const { data: uploadData, error: uploadError } = await supabase.storage
               .from('gemini-results')
               .upload(filename, imageBuffer, {
-                contentType: 'image/png',
+                contentType: mimeType,
                 upsert: false,
               });
 

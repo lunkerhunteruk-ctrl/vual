@@ -231,23 +231,23 @@ export default function ExternalTryOnPage() {
     const src = savedImageUrl || resultImage;
     if (!src) return;
 
-    const a = document.createElement('a');
-    a.href = src;
-    a.download = `vual-tryon-${Date.now()}.png`;
-    // For base64 data URLs, direct download works.
-    // For remote URLs, we need to fetch and create a blob.
     if (src.startsWith('data:')) {
+      const a = document.createElement('a');
+      a.href = src;
+      a.download = `vual-tryon-${Date.now()}.png`;
       a.click();
     } else {
       fetch(src)
         .then((res) => res.blob())
         .then((blob) => {
+          const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+          const a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
+          a.download = `vual-tryon-${Date.now()}.${ext}`;
           a.click();
           URL.revokeObjectURL(a.href);
         })
         .catch(() => {
-          // Fallback: open in new tab
           window.open(src, '_blank');
         });
     }

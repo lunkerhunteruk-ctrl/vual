@@ -125,14 +125,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Convert base64 to buffer and upload
+    const mimeMatch = body.image.match(/^data:(image\/\w+);base64,/);
+    const mimeType = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+    const ext = mimeType === 'image/png' ? 'png' : 'jpg';
     const base64Data = body.image.replace(/^data:image\/\w+;base64,/, '');
     const imageBuffer = Buffer.from(base64Data, 'base64');
-    const filename = `gemini-manual-${Date.now()}.png`;
+    const filename = `gemini-manual-${Date.now()}.${ext}`;
 
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('gemini-results')
       .upload(filename, imageBuffer, {
-        contentType: 'image/png',
+        contentType: mimeType,
         upsert: false,
       });
 

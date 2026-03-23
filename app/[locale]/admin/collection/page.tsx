@@ -415,10 +415,11 @@ function LookDetailModal({
                 try {
                   const response = await fetch(look.image_url);
                   const blob = await response.blob();
+                  const ext = blob.type === 'image/png' ? 'png' : 'jpg';
                   const blobUrl = URL.createObjectURL(blob);
                   const link = document.createElement('a');
                   link.href = blobUrl;
-                  link.download = `look-${look.id}.png`;
+                  link.download = `look-${look.id}.${ext}`;
                   document.body.appendChild(link);
                   link.click();
                   document.body.removeChild(link);

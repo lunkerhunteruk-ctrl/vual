@@ -849,11 +849,23 @@ export default function TryOnPage() {
             <img src={latestResult} alt="Try-on result" className="w-full h-full object-contain" />
           </div>
           <button
-            onClick={() => {
-              const a = document.createElement('a');
-              a.href = latestResult;
-              a.download = `vual-tryon-${Date.now()}.png`;
-              a.click();
+            onClick={async () => {
+              try {
+                const resp = await fetch(latestResult);
+                const blob = await resp.blob();
+                const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `vual-tryon-${Date.now()}.${ext}`;
+                a.click();
+                URL.revokeObjectURL(blobUrl);
+              } catch {
+                const a = document.createElement('a');
+                a.href = latestResult;
+                a.download = `vual-tryon-${Date.now()}.png`;
+                a.click();
+              }
             }}
             className="mt-3 w-full py-2 text-sm font-medium text-[var(--color-accent)] border border-[var(--color-accent)] rounded-[var(--radius-md)] flex items-center justify-center gap-2 hover:bg-[var(--color-accent)]/5 transition-colors"
           >
@@ -878,14 +890,21 @@ export default function TryOnPage() {
                     <img src={imgSrc} alt={result.garmentName} className="w-full h-full object-contain" />
                   </div>
                   <button
-                    onClick={() => {
-                      if (result.resultImage) {
+                    onClick={async () => {
+                      const imgUrl = result.resultImage || result.savedImageUrl;
+                      if (!imgUrl) return;
+                      try {
+                        const resp = await fetch(imgUrl);
+                        const blob = await resp.blob();
+                        const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                        const blobUrl = URL.createObjectURL(blob);
                         const a = document.createElement('a');
-                        a.href = result.resultImage;
-                        a.download = `vual-tryon-${result.id}.png`;
+                        a.href = blobUrl;
+                        a.download = `vual-tryon-${result.id}.${ext}`;
                         a.click();
-                      } else if (result.savedImageUrl) {
-                        window.open(result.savedImageUrl, '_blank');
+                        URL.revokeObjectURL(blobUrl);
+                      } catch {
+                        if (result.savedImageUrl) window.open(result.savedImageUrl, '_blank');
                       }
                     }}
                     className="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-[var(--color-line)] shadow-sm"

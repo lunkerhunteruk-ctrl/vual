@@ -1808,10 +1808,11 @@ export function GeminiImageGenerator({
                       try {
                         const response = await fetch(modalImage.image_url);
                         const blob = await response.blob();
+                        const ext = blob.type === 'image/png' ? 'png' : 'jpg';
                         const blobUrl = URL.createObjectURL(blob);
                         const link = document.createElement('a');
                         link.href = blobUrl;
-                        link.download = `gemini-${modalImage.id}.png`;
+                        link.download = `gemini-${modalImage.id}.${ext}`;
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);

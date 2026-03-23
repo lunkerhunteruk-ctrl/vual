@@ -188,6 +188,7 @@ export async function POST(request: NextRequest) {
     // 5. Call Gemini API directly
     const MAX_RETRIES = 2;
     let generatedImageBase64: string | null = null;
+    let generatedMimeType = 'image/jpeg';
     let lastError: string | null = null;
 
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
@@ -236,7 +237,8 @@ export async function POST(request: NextRequest) {
             const inlineData = part.inline_data || part.inlineData;
             if (inlineData?.data) {
               generatedImageBase64 = inlineData.data;
-              console.log(`[Regenerate] Got image on attempt ${attempt + 1}, size: ${generatedImageBase64!.length}`);
+              generatedMimeType = inlineData.mime_type || inlineData.mimeType || 'image/jpeg';
+              console.log(`[Regenerate] Got image on attempt ${attempt + 1}, size: ${generatedImageBase64!.length}, mime: ${generatedMimeType}`);
               break;
             }
           }
@@ -257,11 +259,12 @@ export async function POST(request: NextRequest) {
 
     // 6. Upload to Supabase Storage
     const imageBuffer = Buffer.from(generatedImageBase64, 'base64');
-    const filename = `regen-${Date.now()}.png`;
+    const ext = generatedMimeType.includes('png') ? 'png' : 'jpg';
+    const filename = `regen-${Date.now()}.${ext}`;
 
     const { data: uploadData, error: uploadError } = await supabase.storage
       .from('gemini-results')
-      .upload(filename, imageBuffer, { contentType: 'image/png', upsert: false });
+      .upload(filename, imageBuffer, { contentType: generatedMimeType, upsert: false });
 
     if (uploadError) {
       console.error('[Regenerate] Upload error:', uploadError);

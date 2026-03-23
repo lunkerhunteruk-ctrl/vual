@@ -51,12 +51,14 @@ export async function POST(request: NextRequest) {
           const imageResponse = await fetch(look.imageUrl);
           if (imageResponse.ok) {
             const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
-            const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+            const contentType = imageResponse.headers.get('content-type') || 'image/jpeg';
+            const ext = contentType.includes('png') ? 'png' : 'jpg';
+            const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
 
             const { error: uploadError } = await supabase.storage
               .from('model-images')
               .upload(filename, imageBuffer, {
-                contentType: 'image/png',
+                contentType,
                 upsert: false,
               });
 

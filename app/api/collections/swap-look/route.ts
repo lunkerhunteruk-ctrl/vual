@@ -55,10 +55,12 @@ export async function POST(request: NextRequest) {
       const imgRes = await fetch(imageUrl);
       if (imgRes.ok) {
         const buf = Buffer.from(await imgRes.arrayBuffer());
-        const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+        const ct = imgRes.headers.get('content-type') || 'image/jpeg';
+        const ext = ct.includes('png') ? 'png' : 'jpg';
+        const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
         const { error: uploadErr } = await supabase.storage
           .from('model-images')
-          .upload(filename, buf, { contentType: 'image/png', upsert: false });
+          .upload(filename, buf, { contentType: ct, upsert: false });
         if (!uploadErr) {
           const { data: urlData } = supabase.storage.from('model-images').getPublicUrl(filename);
           permanentUrl = urlData.publicUrl;

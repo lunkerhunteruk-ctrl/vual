@@ -344,12 +344,24 @@ export function VTONGenerator({
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!generatedImage) return;
-    const link = document.createElement('a');
-    link.href = generatedImage;
-    link.download = `vton-${Date.now()}.png`;
-    link.click();
+    try {
+      const response = await fetch(generatedImage);
+      const blob = await response.blob();
+      const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = `vton-${Date.now()}.${ext}`;
+      link.click();
+      URL.revokeObjectURL(blobUrl);
+    } catch {
+      const link = document.createElement('a');
+      link.href = generatedImage;
+      link.download = `vton-${Date.now()}.png`;
+      link.click();
+    }
   };
 
   const hasSecondItem = !!secondGarmentImage;
@@ -568,14 +580,25 @@ export function VTONGenerator({
                       </button>
                       {/* Overlay buttons on hover */}
                       <div className="absolute inset-0 flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-lg">
-                        <a
-                          href={result.image_url}
-                          download={`vton-${result.id}.png`}
-                          onClick={(e) => e.stopPropagation()}
+                        <button
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            try {
+                              const resp = await fetch(result.image_url);
+                              const blob = await resp.blob();
+                              const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                              const blobUrl = URL.createObjectURL(blob);
+                              const link = document.createElement('a');
+                              link.href = blobUrl;
+                              link.download = `vton-${result.id}.${ext}`;
+                              link.click();
+                              URL.revokeObjectURL(blobUrl);
+                            } catch { /* ignore */ }
+                          }}
                           className="p-1 bg-white rounded-full hover:bg-gray-100"
                         >
                           <Download size={12} />
-                        </a>
+                        </button>
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
