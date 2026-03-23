@@ -851,9 +851,10 @@ export default function TryOnPage() {
           <button
             onClick={async () => {
               try {
+                const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
                 const resp = await fetch(latestResult);
                 const blob = await resp.blob();
-                const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                const ext = await detectImageExt(blob);
                 const blobUrl = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = blobUrl;
@@ -894,9 +895,10 @@ export default function TryOnPage() {
                       const imgUrl = result.resultImage || result.savedImageUrl;
                       if (!imgUrl) return;
                       try {
+                        const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
                         const resp = await fetch(imgUrl);
                         const blob = await resp.blob();
-                        const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                        const ext = await detectImageExt(blob);
                         const blobUrl = URL.createObjectURL(blob);
                         const a = document.createElement('a');
                         a.href = blobUrl;

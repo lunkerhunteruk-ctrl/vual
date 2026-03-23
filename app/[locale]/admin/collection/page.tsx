@@ -413,9 +413,10 @@ function LookDetailModal({
             <button
               onClick={async () => {
                 try {
+                  const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
                   const response = await fetch(look.image_url);
                   const blob = await response.blob();
-                  const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                  const ext = await detectImageExt(blob);
                   const blobUrl = URL.createObjectURL(blob);
                   const link = document.createElement('a');
                   link.href = blobUrl;

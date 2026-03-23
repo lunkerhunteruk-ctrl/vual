@@ -239,8 +239,9 @@ export default function ExternalTryOnPage() {
     } else {
       fetch(src)
         .then((res) => res.blob())
-        .then((blob) => {
-          const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+        .then(async (blob) => {
+          const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
+          const ext = await detectImageExt(blob);
           const a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
           a.download = `vual-tryon-${Date.now()}.${ext}`;

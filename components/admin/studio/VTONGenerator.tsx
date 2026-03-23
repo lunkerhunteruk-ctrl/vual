@@ -347,9 +347,10 @@ export function VTONGenerator({
   const handleDownload = async () => {
     if (!generatedImage) return;
     try {
+      const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
       const response = await fetch(generatedImage);
       const blob = await response.blob();
-      const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+      const ext = await detectImageExt(blob);
       const blobUrl = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = blobUrl;
@@ -584,9 +585,10 @@ export function VTONGenerator({
                           onClick={async (e) => {
                             e.stopPropagation();
                             try {
+                              const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
                               const resp = await fetch(result.image_url);
                               const blob = await resp.blob();
-                              const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                              const ext = await detectImageExt(blob);
                               const blobUrl = URL.createObjectURL(blob);
                               const link = document.createElement('a');
                               link.href = blobUrl;
