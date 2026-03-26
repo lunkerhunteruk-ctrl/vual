@@ -163,6 +163,12 @@ function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const [playerH, setPlayerH] = useState(0);
+  const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(0.7);
+  const [showControls, setShowControls] = useState(false);
+  const [showMobileIcon, setShowMobileIcon] = useState(false);
+  const hideTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window;
 
   // Track main player height
   useEffect(() => {
@@ -172,13 +178,32 @@ function VideoShowcase() {
     return () => ro.disconnect();
   }, []);
 
+  // Sync muted/volume to video element
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = muted;
+      videoRef.current.volume = volume;
+    }
+  }, [muted, volume]);
+
   // Play new video when active changes
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load();
+      videoRef.current.muted = muted;
+      videoRef.current.volume = volume;
       videoRef.current.play().catch(() => {});
     }
   }, [active, items]);
+
+  const toggleMute = () => {
+    setMuted((m) => !m);
+    if (isTouchDevice) {
+      setShowMobileIcon(true);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+      hideTimer.current = setTimeout(() => setShowMobileIcon(false), 1200);
+    }
+  };
 
   if (items.length === 0) {
     return (
@@ -193,7 +218,14 @@ function VideoShowcase() {
   return (
     <div className="inline-flex gap-3 items-start">
       {/* Main player — film frame AR (2084:1420) */}
-      <div ref={playerRef} className="relative overflow-hidden" style={{ aspectRatio: '2084 / 1420', width: 'min(56rem, 80vw)' }}>
+      <div
+        ref={playerRef}
+        className="relative overflow-hidden group"
+        style={{ aspectRatio: '2084 / 1420', width: 'min(56rem, 80vw)' }}
+        onMouseEnter={() => !isTouchDevice && setShowControls(true)}
+        onMouseLeave={() => !isTouchDevice && setShowControls(false)}
+        onClick={() => isTouchDevice && toggleMute()}
+      >
         <video
           ref={videoRef}
           autoPlay
@@ -204,6 +236,66 @@ function VideoShowcase() {
           className="absolute inset-0 w-full h-full object-cover"
           src={items[active].video}
         />
+
+        {/* PC: Volume controls on hover */}
+        <div
+          className={`absolute bottom-3 right-3 z-20 flex items-center gap-2 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1.5 transition-opacity duration-300 ${
+            showControls && !isTouchDevice ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        >
+          <button onClick={toggleMute} className="text-white/90 hover:text-white">
+            {muted ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            )}
+          </button>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.05"
+            value={muted ? 0 : volume}
+            onChange={(e) => {
+              const v = parseFloat(e.target.value);
+              setVolume(v);
+              if (v > 0 && muted) setMuted(false);
+              if (v === 0) setMuted(true);
+            }}
+            className="w-20 h-1 accent-white cursor-pointer"
+          />
+        </div>
+
+        {/* Mobile: tap icon feedback */}
+        <div
+          className={`absolute inset-0 z-20 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${
+            showMobileIcon ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="bg-black/50 backdrop-blur-sm rounded-full p-4">
+            {muted ? (
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
+              </svg>
+            ) : (
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Thumbnail column — 5 thumbs fit player height exactly, 6+ scrolls */}
