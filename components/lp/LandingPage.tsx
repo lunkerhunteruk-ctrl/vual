@@ -1196,8 +1196,8 @@ export function VualLandingPage() {
                 {t('founder.bio')}
               </motion.p>
               <motion.div variants={fadeUp} className="flex gap-4 mt-4">
-                <a href="https://x.com/sachiokawasaki_" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
-                  X @sachiokawasaki_
+                <a href="https://www.threads.net/@sachio_kawasaki" target="_blank" rel="noopener" className="text-xs text-[#8a7a9b] hover:text-white transition-colors">
+                  Threads @sachio_kawasaki
                 </a>
               </motion.div>
             </div>
