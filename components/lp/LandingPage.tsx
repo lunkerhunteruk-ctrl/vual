@@ -167,8 +167,12 @@ function VideoShowcase() {
   const [volume, setVolume] = useState(0.7);
   const [showControls, setShowControls] = useState(false);
   const [showMobileIcon, setShowMobileIcon] = useState(false);
-  const hideTimer = useRef<ReturnType<typeof setTimeout>>(null);
-  const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window;
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window);
+  }, []);
 
   // Track main player height
   useEffect(() => {
