@@ -868,5 +868,98 @@
       "heading": "Build the future of fashion together",
       "description": "VUAL empowers both brands and select shops with cutting-edge AI technology. Join the waiting list for early access."
     }
+  },
+  "shopify": {
+    "privacy": {
+      "title": "Privacy Policy — VUAL for Shopify",
+      "lastUpdated": "Last updated: March 30, 2026",
+      "intro": {
+        "heading": "Introduction",
+        "body": "VUAL for Shopify (\"the App\") is operated by LUFIS Co., Ltd. This Privacy Policy explains how we collect, use, and protect information when you install and use our App on your Shopify store."
+      },
+      "dataCollected": {
+        "heading": "Data We Collect",
+        "item1": "Store information: Shop domain, store name, and locale settings (provided by Shopify during installation).",
+        "item2": "Product data: Product titles, descriptions, images, and variant information (accessed via Shopify API to generate lookbook images).",
+        "item3": "Generated content: AI-generated lookbook images and collection data created through the App.",
+        "item4": "Customer photos: Photos uploaded by end customers for Virtual Try-On (processed in real-time and not stored permanently on our servers)."
+      },
+      "purpose": {
+        "heading": "How We Use Your Data",
+        "item1": "To generate AI lookbook images using your product photos.",
+        "item2": "To provide Virtual Try-On functionality for your store customers.",
+        "item3": "To manage your subscription, track credit usage, and provide billing services."
+      },
+      "thirdParty": {
+        "heading": "Third-Party Services",
+        "body": "We use the following third-party services to provide core App functionality:",
+        "item1": "Google Gemini API: Product images are sent to Google's Gemini API for AI image generation. Google's privacy policy applies to data processed by their services.",
+        "item2": "Supabase: Subscription and credit usage data is stored in Supabase (hosted on AWS). Data is encrypted at rest and in transit."
+      },
+      "retention": {
+        "heading": "Data Retention",
+        "body": "Store and subscription data is retained while the App is installed. Generated images are stored as Shopify product images within your store — we do not maintain separate copies. Customer photos uploaded for Virtual Try-On are processed in real-time and automatically deleted after processing. Upon App uninstallation, your subscription data is deactivated within 30 days."
+      },
+      "customerData": {
+        "heading": "End Customer Data",
+        "body": "Photos uploaded by your store customers for Virtual Try-On are used solely for generating the try-on result. These photos are processed in memory and are not stored, logged, or shared. No personally identifiable customer information is collected or retained by the App."
+      },
+      "rights": {
+        "heading": "Your Rights",
+        "body": "You may request access to, correction of, or deletion of your data at any time by contacting us. Upon uninstalling the App, you may request complete deletion of all associated data. We comply with applicable data protection regulations including GDPR and APPI (Act on the Protection of Personal Information, Japan)."
+      },
+      "security": {
+        "heading": "Data Security",
+        "body": "We implement industry-standard security measures including HTTPS encryption for all data in transit, encrypted storage at rest, and access controls to protect your data. We regularly review our security practices to ensure the safety of your information."
+      },
+      "changes": {
+        "heading": "Changes to This Policy",
+        "body": "We may update this Privacy Policy from time to time. Material changes will be communicated through the App or via email. Continued use of the App after changes constitutes acceptance of the updated policy."
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "body": "If you have any questions about this Privacy Policy or your data, please contact us:"
+      }
+    },
+    "terms": {
+      "title": "Terms of Service — VUAL for Shopify",
+      "lastUpdated": "Last updated: March 30, 2026",
+      "acceptance": {
+        "heading": "Acceptance of Terms",
+        "body": "By installing or using VUAL for Shopify (\"the App\"), you agree to these Terms of Service. If you do not agree, please uninstall the App immediately."
+      },
+      "service": {
+        "heading": "Service Description",
+        "body": "VUAL for Shopify provides AI-powered lookbook image generation and Virtual Try-On functionality for Shopify stores. The App uses artificial intelligence to generate styled lookbook images from your product photos and allows your customers to virtually try on garments."
+      },
+      "credits": {
+        "heading": "Credits and Billing",
+        "body": "The App operates on a credit-based system. New installations receive 12 free credits. Additional credits are available through monthly subscription plans billed via Shopify. Credits are consumed when generating lookbook images or processing Virtual Try-On requests. Unused monthly credits do not roll over to the next billing cycle. Subscription fees are non-refundable except as required by applicable law."
+      },
+      "content": {
+        "heading": "Generated Content",
+        "body": "Images generated through the App are AI-produced and may not perfectly represent actual products. You are responsible for reviewing all generated content before publishing it to your store. VUAL does not guarantee the accuracy, quality, or suitability of AI-generated images for any specific purpose."
+      },
+      "ip": {
+        "heading": "Intellectual Property",
+        "body": "You retain all rights to your original product photos and store content. AI-generated images created through the App are owned by you and may be used freely for commercial purposes. The App itself, including its code, design, and AI models, remains the intellectual property of LUFIS Co., Ltd."
+      },
+      "liability": {
+        "heading": "Limitation of Liability",
+        "body": "The App is provided \"as is\" without warranties of any kind. LUFIS Co., Ltd. shall not be liable for any indirect, incidental, or consequential damages arising from the use of the App, including but not limited to lost profits, data loss, or business interruption. Our total liability shall not exceed the fees paid by you in the 12 months preceding the claim."
+      },
+      "termination": {
+        "heading": "Termination",
+        "body": "You may stop using the App at any time by uninstalling it from your Shopify store. We reserve the right to suspend or terminate access to the App for violations of these terms, abuse of the service, or non-payment. Upon termination, your remaining credits are forfeited."
+      },
+      "governing": {
+        "heading": "Governing Law",
+        "body": "These Terms are governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Fukuoka District Court."
+      },
+      "contact": {
+        "heading": "Contact Us",
+        "body": "If you have any questions about these Terms, please contact us:"
+      }
+    }
   }
 }
