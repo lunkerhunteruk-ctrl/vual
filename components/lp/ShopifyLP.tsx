@@ -284,11 +284,7 @@ export default function ShopifyLP() {
             transition={{ delay: 0.2 }}
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-white/15 bg-white/5 backdrop-blur-md"
           >
-            <svg width="20" height="20" viewBox="0 0 109.5 124.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M74.7 0.8C74.7 0.8 74.8 0.8 74.8 0.8L95.8 12.1C95.8 12.2 95.8 12.2 95.8 12.2L95.8 32.5 109.5 40.4 109.5 84.1 74.8 104.2 54.8 115.7 54.8 92.4 54.8 92.4 54.8 69.1 74.7 57.6 74.7 57.6 74.7 34.4 54.8 45.8 34.8 34.4 34.8 34.4 34.8 34.4 54.8 22.9 54.8 22.9Z" fill="#95BF47"/>
-              <path d="M54.8 69.1L34.8 57.6 34.8 80.9 0 60.8 0 40.4 13.7 32.5 13.7 12.2 34.8 0.8 54.8 22.9 34.8 34.4 54.8 45.8 74.7 34.4 74.7 57.6 54.8 69.1Z" fill="#5E8E3E"/>
-              <path d="M34.8 80.9L34.8 57.6 54.8 69.1 54.8 92.4 54.8 92.4 54.8 115.7 34.8 104.2 0 84.1 0 60.8 34.8 80.9Z" fill="#95BF47"/>
-            </svg>
+            <Image src="/lp/shopify/shopify-logo.png" alt="Shopify" width={80} height={24} className="h-5 w-auto" />
             <span className="text-sm text-white/80 font-medium">{t('hero.badge')}</span>
           </motion.div>
 
@@ -551,10 +547,14 @@ export default function ShopifyLP() {
 
       {/* ======== FOOTER ======== */}
       <footer className="relative z-10 py-12 px-6 border-t border-white/5">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm text-[#6b5d7b]">
-            <span>{t('footer.powered')}</span>
-            <span className="font-semibold text-white">VUAL</span>
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-sm text-[#6b5d7b]">
+              <span>{t('footer.powered')}</span>
+              <span className="font-semibold text-white">VUAL</span>
+            </div>
+            <span className="text-[#2a2035]">|</span>
+            <Image src="/lp/shopify/shopify-logo.png" alt="Shopify" width={80} height={24} className="h-4 w-auto opacity-60" />
           </div>
           <div className="flex items-center gap-6 text-sm text-[#6b5d7b]">
             <Link href={`/${locale}/apps/vual/terms`} className="hover:text-white transition-colors">
