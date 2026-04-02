@@ -383,12 +383,12 @@ export default function ShopifyLP() {
 
           {/* Screenshot */}
           <motion.div variants={scaleIn} className="mb-16 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
-            <div className="relative aspect-[16/10]">
+            <div className="relative aspect-video">
               <Image
                 src="/lp/shopify/studio.png"
                 alt="VUAL Studio - Look Creation"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
             </div>
@@ -413,12 +413,12 @@ export default function ShopifyLP() {
       <AnimatedSection className="relative z-10 pb-16 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div variants={scaleIn} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm">
-            <div className="relative aspect-[16/10]">
+            <div className="relative aspect-video">
               <Image
                 src="/lp/shopify/result.png"
                 alt="VUAL Studio - Generated Result"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 80vw"
               />
             </div>
