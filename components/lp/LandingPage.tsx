@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence, type Variants } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 
 // ============================================================
@@ -675,6 +676,7 @@ function LanguageToggle() {
 // ============================================================
 export function VualLandingPage() {
   const t = useTranslations('lp');
+  const locale = useLocale();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -887,6 +889,27 @@ export function VualLandingPage() {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* ======== SHOPIFY BANNER ======== */}
+      <AnimatedSection className="relative z-10 px-6 py-6">
+        <Link
+          href={`/${locale}/shopify`}
+          className="group block max-w-3xl mx-auto"
+        >
+          <motion.div
+            variants={fadeUp}
+            className="flex items-center justify-between gap-4 px-6 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-emerald-400/30 hover:bg-emerald-400/5 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3">
+              <Image src="/lp/shopify/shopify-logo.png" alt="Shopify" width={80} height={24} className="h-5 w-auto" />
+              <span className="text-sm text-[#c8c0d4] group-hover:text-white transition-colors">
+                {t('shopifyBanner')}
+              </span>
+            </div>
+            <ArrowRight size={16} className="text-[#6b5d7b] group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
+          </motion.div>
+        </Link>
+      </AnimatedSection>
 
       {/* ======== STATEMENT — typewriter between hero and 01 ======== */}
       <StatementSection

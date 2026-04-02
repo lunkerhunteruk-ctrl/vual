@@ -819,6 +819,7 @@
     "selectCategory": "カテゴリーを選択"
   },
   "lp": {
+    "shopifyBanner": "Shopifyをお使いですか？ VUAL Studio アドオンを試す →",
     "hero": {
       "badge": "優先案内受付中",
       "tagline": "ひとつの画面で、すべてを動かす",
