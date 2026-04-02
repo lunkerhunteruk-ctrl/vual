@@ -149,9 +149,10 @@ function PricingCard({ plan, isPopular }: {
         href="https://apps.shopify.com/"
         target="_blank"
         rel="noopener noreferrer"
+        style={isPopular ? { color: '#111', backgroundColor: '#fff' } : undefined}
         className={`block w-full text-center py-3 rounded-full text-sm font-bold transition-all ${
           isPopular
-            ? 'bg-white text-neutral-900 hover:bg-neutral-100 shadow-lg shadow-white/10'
+            ? 'hover:opacity-90 shadow-lg shadow-white/10'
             : 'bg-white/15 text-white border border-white/20 hover:bg-white/25'
         }`}
       >
@@ -322,7 +323,7 @@ export default function ShopifyLP() {
               href="https://apps.shopify.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 text-base font-bold rounded-full hover:bg-neutral-100 transition-all shadow-lg shadow-white/10"
+              style={{ color: '#111', backgroundColor: '#fff' }} className="inline-flex items-center gap-2 px-8 py-4 text-base font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-white/10"
             >
               {t('hero.cta')}
               <ArrowRight size={18} />
@@ -533,7 +534,7 @@ export default function ShopifyLP() {
               href="https://apps.shopify.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 text-base font-bold rounded-full hover:bg-neutral-100 transition-all shadow-lg shadow-white/10"
+              style={{ color: '#111', backgroundColor: '#fff' }} className="inline-flex items-center gap-2 px-8 py-4 text-base font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-white/10"
             >
               {t('cta.button')}
               <ArrowRight size={18} />
