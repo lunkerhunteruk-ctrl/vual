@@ -961,5 +961,117 @@
         "body": "If you have any questions about these Terms, please contact us:"
       }
     }
+  },
+  "shopify": {
+    "meta": {
+      "title": "VUAL Studio for Shopify — AI Model Photography & Virtual Try-On",
+      "description": "Generate professional model photography and add virtual try-on to your Shopify store. No photoshoots needed."
+    },
+    "nav": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "install": "Install"
+    },
+    "hero": {
+      "badge": "Shopify App",
+      "title": "AI Model Photography\nfor Your Shopify Store",
+      "subtitle": "Generate studio-quality lookbook images and let customers virtually try on your products — all from your Shopify admin.",
+      "cta": "Install on Shopify",
+      "ctaSub": "Free trial · No credit card required"
+    },
+    "studio": {
+      "label": "01",
+      "badge": "For Store Owners",
+      "title": "AI Look Creation",
+      "description": "Select your products, choose a model, and generate professional lookbook photography in seconds. Save directly to your product images or create new collections — complete with AI-generated editorial copy.",
+      "step1": "Select Products",
+      "step1desc": "Pick up to 5 items from your catalog to style together",
+      "step2": "Choose a Model",
+      "step2desc": "Select gender, ethnicity, and pose from our diverse model library",
+      "step3": "Generate & Save",
+      "step3desc": "AI creates the look — save to products or create a collection instantly"
+    },
+    "tryon": {
+      "label": "02",
+      "badge": "For Your Customers",
+      "title": "Virtual Try-On",
+      "description": "Add a \"Virtual Try-On\" button to your product pages. Customers upload their photo and see themselves wearing your products — increasing confidence and reducing returns.",
+      "stat1": "Reduce returns",
+      "stat1value": "40",
+      "stat1suffix": "%",
+      "stat2": "Increase CVR",
+      "stat2value": "3",
+      "stat2suffix": "x",
+      "feature1": "Before/After comparison",
+      "feature2": "Multi-item coordinate try-on",
+      "feature3": "Add to Cart from result",
+      "feature4": "Daily limit per customer"
+    },
+    "how": {
+      "title": "Up and Running in Minutes",
+      "step1": "Install",
+      "step1desc": "Add VUAL Studio from the Shopify App Store",
+      "step2": "Create",
+      "step2desc": "Generate lookbook images or enable virtual try-on",
+      "step3": "Grow",
+      "step3desc": "Watch engagement and conversions increase"
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Start free. Scale as you grow.",
+      "monthly": "/mo",
+      "points": "points",
+      "studioGen": "studio generations",
+      "tryOns": "virtual try-ons",
+      "overage": "overage",
+      "per3pt": "/3pt",
+      "noOverage": "No overage",
+      "popular": "Popular",
+      "currentPlan": "Current Plan",
+      "choosePlan": "Get Started",
+      "free": {
+        "name": "Free Trial",
+        "price": "0",
+        "credits": "15",
+        "studio": "5",
+        "tryon": "15",
+        "note": "One-time trial credits"
+      },
+      "starter": {
+        "name": "Starter",
+        "price": "29",
+        "credits": "150",
+        "studio": "50",
+        "tryon": "150",
+        "overage": "$0.80"
+      },
+      "growth": {
+        "name": "Growth",
+        "price": "79",
+        "credits": "600",
+        "studio": "200",
+        "tryon": "600",
+        "overage": "$0.50"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "299",
+        "credits": "3,000",
+        "studio": "1,000",
+        "tryon": "3,000",
+        "overage": "$0.25"
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Store?",
+      "description": "Join Shopify stores using AI to create stunning product imagery and boost conversions.",
+      "button": "Install VUAL Studio",
+      "learnMore": "Or explore VUAL full platform →"
+    },
+    "footer": {
+      "powered": "Powered by",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    }
   }
 }

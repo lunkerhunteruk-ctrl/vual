@@ -973,5 +973,117 @@
         "body": "本利用規約に関するご質問は、以下までご連絡ください："
       }
     }
+  },
+  "shopify": {
+    "meta": {
+      "title": "VUAL Studio for Shopify — AIモデル撮影 & バーチャル試着",
+      "description": "Shopifyストアにプロ品質のモデル着用画像生成とバーチャル試着を。撮影不要。"
+    },
+    "nav": {
+      "features": "機能",
+      "pricing": "料金",
+      "install": "インストール"
+    },
+    "hero": {
+      "badge": "Shopify App",
+      "title": "AIモデル撮影を\nあなたのShopifyストアに",
+      "subtitle": "スタジオ品質のルックブック画像を生成し、お客様にバーチャル試着を提供。すべてShopify管理画面から。",
+      "cta": "Shopifyにインストール",
+      "ctaSub": "無料トライアル · クレジットカード不要"
+    },
+    "studio": {
+      "label": "01",
+      "badge": "ストアオーナー向け",
+      "title": "AIルック生成",
+      "description": "商品を選んで、モデルを選んで、プロ品質のルックブック写真を数秒で生成。商品画像に直接保存、またはAIが書いたエディトリアルコピー付きのコレクションを自動作成。",
+      "step1": "商品を選ぶ",
+      "step1desc": "カタログから最大5アイテムを選んでコーディネート",
+      "step2": "モデルを選ぶ",
+      "step2desc": "性別・人種・ポーズを多様なモデルライブラリから選択",
+      "step3": "生成して保存",
+      "step3desc": "AIがルックを作成 — 商品に保存 or コレクションを即時作成"
+    },
+    "tryon": {
+      "label": "02",
+      "badge": "お客様向け",
+      "title": "バーチャル試着",
+      "description": "商品ページに「バーチャル試着」ボタンを追加。お客様が自分の写真をアップロードすると着用イメージを生成 — 購買意欲を高め、返品を削減。",
+      "stat1": "返品率を削減",
+      "stat1value": "40",
+      "stat1suffix": "%",
+      "stat2": "CVRを向上",
+      "stat2value": "3",
+      "stat2suffix": "倍",
+      "feature1": "Before/After 比較",
+      "feature2": "複数アイテムのコーディネート試着",
+      "feature3": "結果からカートに追加",
+      "feature4": "顧客ごとの1日利用制限"
+    },
+    "how": {
+      "title": "数分で導入完了",
+      "step1": "インストール",
+      "step1desc": "Shopify App StoreからVUAL Studioを追加",
+      "step2": "作成",
+      "step2desc": "ルックブック画像を生成、またはバーチャル試着を有効化",
+      "step3": "成長",
+      "step3desc": "エンゲージメントとコンバージョンの向上を実感"
+    },
+    "pricing": {
+      "title": "シンプルで透明な料金体系",
+      "subtitle": "無料で始めて、成長に合わせてスケール。",
+      "monthly": "/月",
+      "points": "ポイント",
+      "studioGen": "スタジオ生成",
+      "tryOns": "バーチャル試着",
+      "overage": "超過料金",
+      "per3pt": "/3pt",
+      "noOverage": "超過なし",
+      "popular": "人気",
+      "currentPlan": "現在のプラン",
+      "choosePlan": "始める",
+      "free": {
+        "name": "無料トライアル",
+        "price": "0",
+        "credits": "15",
+        "studio": "5",
+        "tryon": "15",
+        "note": "初回限定トライアルクレジット"
+      },
+      "starter": {
+        "name": "Starter",
+        "price": "29",
+        "credits": "150",
+        "studio": "50",
+        "tryon": "150",
+        "overage": "$0.80"
+      },
+      "growth": {
+        "name": "Growth",
+        "price": "79",
+        "credits": "600",
+        "studio": "200",
+        "tryon": "600",
+        "overage": "$0.50"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "299",
+        "credits": "3,000",
+        "studio": "1,000",
+        "tryon": "3,000",
+        "overage": "$0.25"
+      }
+    },
+    "cta": {
+      "title": "あなたのストアを変革する準備はできましたか？",
+      "description": "AIで驚くほど美しい商品画像を作成し、コンバージョンを向上させているShopifyストアの仲間に。",
+      "button": "VUAL Studioをインストール",
+      "learnMore": "VUAL フルプラットフォームを見る →"
+    },
+    "footer": {
+      "powered": "Powered by",
+      "terms": "利用規約",
+      "privacy": "プライバシーポリシー"
+    }
   }
 }
