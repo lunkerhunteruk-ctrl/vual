@@ -149,10 +149,10 @@ function PricingCard({ plan, isPopular }: {
         href="https://apps.shopify.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className={`block w-full text-center py-3 rounded-full text-sm font-semibold transition-all ${
+        className={`block w-full text-center py-3 rounded-full text-sm font-bold transition-all ${
           isPopular
-            ? 'bg-white text-black hover:bg-neutral-200'
-            : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
+            ? 'bg-white text-neutral-900 hover:bg-neutral-100 shadow-lg shadow-white/10'
+            : 'bg-white/15 text-white border border-white/20 hover:bg-white/25'
         }`}
       >
         {t('choosePlan')}
@@ -322,7 +322,7 @@ export default function ShopifyLP() {
               href="https://apps.shopify.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-base font-semibold rounded-full hover:bg-neutral-200 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 text-base font-bold rounded-full hover:bg-neutral-100 transition-all shadow-lg shadow-white/10"
             >
               {t('hero.cta')}
               <ArrowRight size={18} />
@@ -533,7 +533,7 @@ export default function ShopifyLP() {
               href="https://apps.shopify.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-base font-semibold rounded-full hover:bg-neutral-200 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-neutral-900 text-base font-bold rounded-full hover:bg-neutral-100 transition-all shadow-lg shadow-white/10"
             >
               {t('cta.button')}
               <ArrowRight size={18} />
