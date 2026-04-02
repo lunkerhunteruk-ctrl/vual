@@ -1044,9 +1044,9 @@
       "free": {
         "name": "無料トライアル",
         "price": "0",
-        "credits": "15",
-        "studio": "5",
-        "tryon": "15",
+        "credits": "12",
+        "studio": "4",
+        "tryon": "12",
         "note": "初回限定トライアルクレジット"
       },
       "starter": {

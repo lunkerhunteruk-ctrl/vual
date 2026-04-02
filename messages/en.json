@@ -1032,9 +1032,9 @@
       "free": {
         "name": "Free Trial",
         "price": "0",
-        "credits": "15",
-        "studio": "5",
-        "tryon": "15",
+        "credits": "12",
+        "studio": "4",
+        "tryon": "12",
         "note": "One-time trial credits"
       },
       "starter": {
