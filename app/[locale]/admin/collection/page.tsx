@@ -438,20 +438,23 @@ function LookDetailModal({
                         onClick={async () => {
                           setDownloadFilterOpen(false);
                           try {
+                            const proxyUrl = `/api/media/download?url=${encodeURIComponent(look.image_url)}`;
                             if (f.id === 'none') {
-                              // Direct link download (no CORS issues)
+                              // Download original via proxy
+                              const res = await fetch(proxyUrl);
+                              const blob = await res.blob();
                               const link = document.createElement('a');
-                              link.href = look.image_url;
+                              link.href = URL.createObjectURL(blob);
                               link.download = `look-${look.id}.png`;
-                              link.target = '_blank';
                               document.body.appendChild(link);
                               link.click();
                               document.body.removeChild(link);
+                              URL.revokeObjectURL(link.href);
                             } else {
-                              // Load image via <img> to avoid CORS, draw to canvas, apply filter
+                              // Load image via proxy, draw to canvas, apply filter
                               const img = new window.Image();
                               img.crossOrigin = 'anonymous';
-                              img.src = look.image_url;
+                              img.src = proxyUrl;
                               await new Promise<void>((resolve, reject) => {
                                 img.onload = () => resolve();
                                 img.onerror = () => reject(new Error('Image load failed'));

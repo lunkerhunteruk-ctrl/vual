@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const ALLOWED_HOSTS = [
+  '.r2.dev',
+  '.s3.',
+  'remotionlambda-',
+];
+
 /**
- * GET /api/video/download?url=...
- * Proxy download to avoid S3 CORS restrictions.
- * Only allows URLs from known S3 buckets.
+ * GET /api/media/download?url=...
+ * Server-side proxy to bypass CORS restrictions for R2/S3 media.
  */
 export async function GET(req: NextRequest) {
   const url = req.nextUrl.searchParams.get('url');
@@ -11,22 +16,23 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'url parameter required' }, { status: 400 });
   }
 
-  // Only allow S3 remotion bucket URLs
-  if (!url.includes('remotionlambda-') && !url.includes('.s3.')) {
+  if (!ALLOWED_HOSTS.some((h) => url.includes(h))) {
     return NextResponse.json({ error: 'Invalid URL' }, { status: 403 });
   }
 
   try {
     const res = await fetch(url);
     if (!res.ok) {
-      return NextResponse.json({ error: 'Failed to fetch video' }, { status: 502 });
+      return NextResponse.json({ error: 'Failed to fetch media' }, { status: 502 });
     }
 
     const buffer = await res.arrayBuffer();
+    const contentType = res.headers.get('content-type') || 'application/octet-stream';
+
     return new NextResponse(buffer, {
       headers: {
-        'Content-Type': 'video/mp4',
-        'Content-Disposition': `attachment; filename="vual-video.mp4"`,
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=86400',
         'Content-Length': String(buffer.byteLength),
       },
     });

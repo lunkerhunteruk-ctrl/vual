@@ -903,7 +903,7 @@ export default function VideoPage() {
                       onClick={async () => {
                         try {
                           // Use proxy API to avoid S3 CORS issues
-                          const proxyUrl = `/api/video/download?url=${encodeURIComponent(finalVideoUrl)}`;
+                          const proxyUrl = `/api/media/download?url=${encodeURIComponent(finalVideoUrl)}`;
                           const res = await fetch(proxyUrl);
                           const blob = await res.blob();
                           const url = URL.createObjectURL(blob);
@@ -1067,7 +1067,7 @@ export default function VideoPage() {
                         <button
                           onClick={async () => {
                             try {
-                              const proxyUrl = `/api/video/download?url=${encodeURIComponent(importFinalVideoUrl)}`;
+                              const proxyUrl = `/api/media/download?url=${encodeURIComponent(importFinalVideoUrl)}`;
                               const res = await fetch(proxyUrl);
                               const blob = await res.blob();
                               const url = URL.createObjectURL(blob);
