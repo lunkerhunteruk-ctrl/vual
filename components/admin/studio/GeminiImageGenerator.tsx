@@ -1729,8 +1729,8 @@ export function GeminiImageGenerator({
                           }
                           setModalFilterProcessing(true);
                           try {
-                            // Fetch image as base64 first
-                            const resp = await fetch(modalImage.image_url);
+                            // Fetch image as base64 via proxy to avoid CORS
+                            const resp = await fetch(`/api/media/download?url=${encodeURIComponent(modalImage.image_url)}`);
                             const blob = await resp.blob();
                             const base64 = await new Promise<string>((resolve) => {
                               const reader = new FileReader();
