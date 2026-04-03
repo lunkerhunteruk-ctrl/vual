@@ -216,6 +216,10 @@ export function GeminiImageGenerator({
   const [savedImages, setSavedImages] = useState<SavedImage[]>([]);
   const [showSavedImages, setShowSavedImages] = useState(false);
   const [modalImage, setModalImage] = useState<SavedImage | null>(null);
+  const [modalFilter, setModalFilter] = useState<import('@/lib/photo-filters').FilterId>('none');
+  const [modalFilteredUrl, setModalFilteredUrl] = useState<string | null>(null);
+  const [modalFilterProcessing, setModalFilterProcessing] = useState(false);
+  const modalFilterCache = useRef<Record<string, string>>({});
   const [modalAdditionalPrompt, setModalAdditionalPrompt] = useState('');
   const [linkingProductIds, setLinkingProductIds] = useState<string[]>([]);
   const [isLinking, setIsLinking] = useState(false);
@@ -1597,6 +1601,8 @@ export function GeminiImageGenerator({
                   className="w-24 h-24 rounded-lg overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors relative group cursor-pointer flex-shrink-0 bg-[var(--color-bg-element)] flex items-center justify-center"
                   onClick={() => {
                     setModalImage(img);
+                    setModalFilter('none');
+                    setModalFilteredUrl(null);
                     // Default: select all used products
                     const usedIds = allProducts
                       .filter(p => img.product_ids?.includes(p.id))
@@ -1679,13 +1685,72 @@ export function GeminiImageGenerator({
               {/* Modal Body */}
               <div className="flex-1 overflow-y-auto p-5">
                 {/* Large Preview */}
-                <div className="bg-[var(--color-bg-element)] rounded-xl overflow-hidden flex items-center justify-center mb-4" style={{ maxHeight: '55vh' }}>
+                <div className="bg-[var(--color-bg-element)] rounded-xl overflow-hidden flex items-center justify-center mb-3" style={{ maxHeight: '50vh' }}>
                   <img
-                    src={modalImage.image_url}
+                    src={modalFilteredUrl || modalImage.image_url}
                     alt="Generated"
-                    style={{ maxWidth: '100%', maxHeight: '55vh', width: 'auto', height: 'auto', objectFit: 'contain' }}
+                    style={{ maxWidth: '100%', maxHeight: '50vh', width: 'auto', height: 'auto', objectFit: 'contain', transition: 'opacity 0.3s', opacity: modalFilterProcessing ? 0.5 : 1 }}
                     className="rounded-xl"
                   />
+                </div>
+
+                {/* Filter Selection */}
+                <div className="flex gap-1.5 flex-wrap mb-4">
+                  {([
+                    { id: 'none' as const, label: 'Original' },
+                    { id: 'natural' as const, label: 'Natural' },
+                    { id: 'film' as const, label: 'Film' },
+                    { id: 'chrome' as const, label: 'Chrome' },
+                    { id: 'polaroid' as const, label: 'Polaroid' },
+                    { id: 'polaroidBlue' as const, label: 'Polaroid Blue' },
+                  ]).map((f) => {
+                    const isActive = modalFilter === f.id;
+                    return (
+                      <button
+                        key={f.id}
+                        disabled={modalFilterProcessing && !isActive}
+                        onClick={async () => {
+                          if (isActive) return;
+                          setModalFilter(f.id);
+                          if (f.id === 'none') {
+                            setModalFilteredUrl(null);
+                            return;
+                          }
+                          const cacheKey = `${modalImage.id}-${f.id}`;
+                          if (modalFilterCache.current[cacheKey]) {
+                            setModalFilteredUrl(modalFilterCache.current[cacheKey]);
+                            return;
+                          }
+                          setModalFilterProcessing(true);
+                          try {
+                            // Fetch image as base64 first
+                            const resp = await fetch(modalImage.image_url);
+                            const blob = await resp.blob();
+                            const base64 = await new Promise<string>((resolve) => {
+                              const reader = new FileReader();
+                              reader.onloadend = () => resolve(reader.result as string);
+                              reader.readAsDataURL(blob);
+                            });
+                            const { applyFilter } = await import('@/lib/photo-filters');
+                            const result = await applyFilter(base64, f.id);
+                            modalFilterCache.current[cacheKey] = result;
+                            setModalFilteredUrl(result);
+                          } catch (err) {
+                            console.error('Filter failed:', err);
+                          } finally {
+                            setModalFilterProcessing(false);
+                          }
+                        }}
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                          isActive
+                            ? 'bg-[var(--color-title-active)] text-white'
+                            : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-line)]'
+                        } ${modalFilterProcessing && !isActive ? 'opacity-40 cursor-wait' : 'cursor-pointer'}`}
+                      >
+                        {modalFilterProcessing && isActive && f.id !== 'none' ? (locale === 'ja' ? '適用中...' : 'Applying...') : f.label}
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* Additional prompt for regeneration */}
@@ -1806,18 +1871,31 @@ export function GeminiImageGenerator({
                   <button
                     onClick={async () => {
                       try {
-                        const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
-                        const response = await fetch(modalImage.image_url);
-                        const blob = await response.blob();
-                        const ext = await detectImageExt(blob);
-                        const blobUrl = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.href = blobUrl;
-                        link.download = `gemini-${modalImage.id}.${ext}`;
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        URL.revokeObjectURL(blobUrl);
+                        const downloadSrc = modalFilteredUrl || modalImage.image_url;
+                        if (downloadSrc.startsWith('data:')) {
+                          // Filtered image is base64 data URL
+                          const ext = downloadSrc.startsWith('data:image/png') ? 'png' : 'jpg';
+                          const link = document.createElement('a');
+                          link.href = downloadSrc;
+                          link.download = `gemini-${modalImage.id}${modalFilter !== 'none' ? `-${modalFilter}` : ''}.${ext}`;
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        } else {
+                          // Original image from URL
+                          const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
+                          const response = await fetch(downloadSrc);
+                          const blob = await response.blob();
+                          const ext = await detectImageExt(blob);
+                          const blobUrl = URL.createObjectURL(blob);
+                          const link = document.createElement('a');
+                          link.href = blobUrl;
+                          link.download = `gemini-${modalImage.id}.${ext}`;
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                          URL.revokeObjectURL(blobUrl);
+                        }
                       } catch (err) {
                         console.error('Download failed:', err);
                       }
