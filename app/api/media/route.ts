@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 export async function GET(request: NextRequest) {
@@ -157,7 +158,7 @@ export async function DELETE(request: NextRequest) {
     if (mediaItem?.url) {
       const match = mediaItem.url.match(/\/storage\/v1\/object\/public\/media\/(.+)$/);
       if (match) {
-        await supabase.storage.from('media').remove([match[1]]);
+        await storage.from('media').remove([match[1]]);
       }
     }
 

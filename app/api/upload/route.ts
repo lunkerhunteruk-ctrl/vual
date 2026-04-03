@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -36,27 +37,26 @@ export async function POST(request: NextRequest) {
     const buffer = new Uint8Array(arrayBuffer);
 
     // Upload to Supabase Storage
-    const { data, error } = await supabase.storage
+    const { data, error } = await storage
       .from('media')
       .upload(filename, buffer, {
         contentType: file.type,
-        cacheControl: '3600',
         upsert: false,
       });
 
-    if (error) {
+    if (error || !data) {
       console.error('Upload error:', error);
-      return NextResponse.json({ error: 'Upload failed', details: error.message }, { status: 500 });
+      return NextResponse.json({ error: 'Upload failed', details: error?.message }, { status: 500 });
     }
 
     // Get public URL
-    const { data: urlData } = supabase.storage
+    const { data: urlData } = storage
       .from('media')
-      .getPublicUrl(data.path);
+      .getPublicUrl(filename);
 
     return NextResponse.json({
       url: urlData.publicUrl,
-      path: data.path,
+      path: filename,
       filename: file.name,
     });
   } catch (error) {

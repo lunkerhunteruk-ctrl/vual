@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 // GET: List BGM tracks for this store
@@ -58,11 +59,11 @@ export async function POST(request: NextRequest) {
       const ext = fileName.split('.').pop() || 'mp3';
       const storagePath = `bgm/${timestamp}-${randomStr}.${ext}`;
 
-      const { data, error: signError } = await supabase.storage
+      const { data, error: signError } = await storage
         .from('model-images')
         .createSignedUploadUrl(storagePath);
 
-      if (signError) {
+      if (signError || !data) {
         console.error('[BGM] Signed URL error:', signError);
         return NextResponse.json({ error: 'Failed to create upload URL' }, { status: 500 });
       }
@@ -81,7 +82,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'name and path are required' }, { status: 400 });
       }
 
-      const { data: urlData } = supabase.storage
+      const { data: urlData } = storage
         .from('model-images')
         .getPublicUrl(storagePath);
 
@@ -136,7 +137,7 @@ export async function DELETE(request: NextRequest) {
     if (track?.url) {
       const match = track.url.match(/model-images\/(.+)$/);
       if (match) {
-        await supabase.storage.from('model-images').remove([match[1]]);
+        await storage.from('model-images').remove([match[1]]);
       }
     }
 

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 /**
@@ -58,11 +59,11 @@ export async function POST(request: NextRequest) {
         const ct = imgRes.headers.get('content-type') || 'image/jpeg';
         const ext = ct.includes('png') ? 'png' : 'jpg';
         const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
-        const { error: uploadErr } = await supabase.storage
+        const { error: uploadErr } = await storage
           .from('model-images')
           .upload(filename, buf, { contentType: ct, upsert: false });
         if (!uploadErr) {
-          const { data: urlData } = supabase.storage.from('model-images').getPublicUrl(filename);
+          const { data: urlData } = storage.from('model-images').getPublicUrl(filename);
           permanentUrl = urlData.publicUrl;
         }
       }

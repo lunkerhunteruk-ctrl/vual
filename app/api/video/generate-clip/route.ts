@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { submitVeoJob, pollVeoOperation } from '@/lib/video/veo-client';
 import { parseMp4Duration } from '@/lib/utils/parse-mp4-duration';
 
@@ -215,7 +216,7 @@ export async function POST(request: NextRequest) {
 
       const filename = `video-clips/${look.store_id}/${lookId}-${Date.now()}.mp4`;
 
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError } = await storage
         .from('model-images')
         .upload(filename, videoBuffer, {
           contentType: 'video/mp4',
@@ -227,7 +228,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Failed to upload video clip' }, { status: 500 });
       }
 
-      const { data: urlData } = supabase.storage
+      const { data: urlData } = storage
         .from('model-images')
         .getPublicUrl(filename);
 

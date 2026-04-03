@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,17 +23,17 @@ export async function POST(request: NextRequest) {
       const ext = fileName.split('.').pop() || 'png';
       const storagePath = `flatlay/${timestamp}-${randomStr}.${ext}`;
 
-      const { data, error: signError } = await supabase.storage
+      const { data, error: signError } = await storage
         .from('model-images')
         .createSignedUploadUrl(storagePath);
 
-      if (signError) {
+      if (signError || !data) {
         console.error('[Flatlay] Signed URL error:', signError);
         return NextResponse.json({ error: 'Failed to create upload URL' }, { status: 500 });
       }
 
       // Get the public URL for after upload
-      const { data: urlData } = supabase.storage
+      const { data: urlData } = storage
         .from('model-images')
         .getPublicUrl(storagePath);
 

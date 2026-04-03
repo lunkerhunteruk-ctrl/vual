@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 
 // Vercel Cron or external scheduler calls this endpoint daily.
 // Deletes expired gemini_results rows + their Storage objects.
@@ -37,7 +38,7 @@ export async function GET(request: NextRequest) {
     // 2. Delete storage objects in batches
     let storageDeleted = 0;
     if (paths.length > 0) {
-      const { error: storageError } = await supabase.storage
+      const { error: storageError } = await storage
         .from('gemini-results')
         .remove(paths);
 

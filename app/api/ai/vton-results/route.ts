@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 
 // GET: Fetch saved VTON results
 export async function GET(request: NextRequest) {
@@ -75,7 +76,7 @@ export async function DELETE(request: NextRequest) {
       // Extract filename from URL and delete from storage
       const filename = result.image_url.split('/').pop();
       if (filename) {
-        await supabase.storage
+        await storage
           .from('vton-results')
           .remove([filename]);
       }

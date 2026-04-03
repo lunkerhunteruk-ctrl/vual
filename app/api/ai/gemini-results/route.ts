@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 
 // Auto-cleanup images older than 5 days (runs in background on GET)
 async function cleanupExpiredImages(supabase: ReturnType<typeof createServerClient>) {
@@ -21,7 +22,7 @@ async function cleanupExpiredImages(supabase: ReturnType<typeof createServerClie
       .filter(Boolean) as string[];
 
     if (filenames.length > 0) {
-      await supabase.storage.from('gemini-results').remove(filenames);
+      await storage.from('gemini-results').remove(filenames);
     }
 
     // Delete from database
@@ -132,7 +133,7 @@ export async function POST(request: NextRequest) {
     const imageBuffer = Buffer.from(base64Data, 'base64');
     const filename = `gemini-manual-${Date.now()}.${ext}`;
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { data: uploadData, error: uploadError } = await storage
       .from('gemini-results')
       .upload(filename, imageBuffer, {
         contentType: mimeType,
@@ -148,7 +149,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get public URL
-    const { data: urlData } = supabase.storage
+    const { data: urlData } = storage
       .from('gemini-results')
       .getPublicUrl(filename);
 
@@ -228,7 +229,7 @@ export async function DELETE(request: NextRequest) {
     if (result.image_url) {
       const filename = result.image_url.split('/').pop();
       if (filename) {
-        await supabase.storage
+        await storage
           .from('gemini-results')
           .remove([filename]);
       }

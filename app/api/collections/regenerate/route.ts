@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 export const maxDuration = 120;
@@ -262,7 +263,7 @@ export async function POST(request: NextRequest) {
     const ext = generatedMimeType.includes('png') ? 'png' : 'jpg';
     const filename = `regen-${Date.now()}.${ext}`;
 
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    const { data: uploadData, error: uploadError } = await storage
       .from('gemini-results')
       .upload(filename, imageBuffer, { contentType: generatedMimeType, upsert: false });
 
@@ -271,7 +272,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to upload generated image' }, { status: 500 });
     }
 
-    const { data: urlData } = supabase.storage.from('gemini-results').getPublicUrl(filename);
+    const { data: urlData } = storage.from('gemini-results').getPublicUrl(filename);
     const newImageUrl = urlData.publicUrl;
     console.log('[Regenerate] New image URL:', newImageUrl);
 

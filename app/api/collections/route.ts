@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 // GET: Fetch collection looks with linked products
@@ -114,7 +115,7 @@ export async function POST(request: NextRequest) {
         const ext = contentType.includes('png') ? 'png' : 'jpg';
         const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
 
-        const { error: uploadError } = await supabase.storage
+        const { error: uploadError } = await storage
           .from('model-images')
           .upload(filename, imageBuffer, {
             contentType,
@@ -122,7 +123,7 @@ export async function POST(request: NextRequest) {
           });
 
         if (!uploadError) {
-          const { data: urlData } = supabase.storage
+          const { data: urlData } = storage
             .from('model-images')
             .getPublicUrl(filename);
           permanentUrl = urlData.publicUrl;
@@ -317,7 +318,7 @@ export async function DELETE(request: NextRequest) {
     if (look?.image_url) {
       const filename = look.image_url.split('/').pop();
       if (filename) {
-        await supabase.storage.from('model-images').remove([filename]);
+        await storage.from('model-images').remove([filename]);
       }
     }
 

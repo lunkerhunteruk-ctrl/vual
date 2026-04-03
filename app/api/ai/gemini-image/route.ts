@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
 import { addCreditWatermark } from '@/lib/utils/image-watermark';
 
@@ -405,7 +406,7 @@ export async function POST(request: NextRequest) {
             const imageBuffer = Buffer.from(base64Data, 'base64');
             const filename = `gemini-${Date.now()}.${ext}`;
 
-            const { data: uploadData, error: uploadError } = await supabase.storage
+            const { data: uploadData, error: uploadError } = await storage
               .from('gemini-results')
               .upload(filename, imageBuffer, {
                 contentType: mimeType,
@@ -413,7 +414,7 @@ export async function POST(request: NextRequest) {
               });
 
             if (!uploadError && uploadData) {
-              const { data: urlData } = supabase.storage
+              const { data: urlData } = storage
                 .from('gemini-results')
                 .getPublicUrl(filename);
 

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
 
 interface BatchLookPayload {
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
             const ext = contentType.includes('png') ? 'png' : 'jpg';
             const filename = `collection-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.${ext}`;
 
-            const { error: uploadError } = await supabase.storage
+            const { error: uploadError } = await storage
               .from('model-images')
               .upload(filename, imageBuffer, {
                 contentType,
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest) {
               });
 
             if (!uploadError) {
-              const { data: urlData } = supabase.storage
+              const { data: urlData } = storage
                 .from('model-images')
                 .getPublicUrl(filename);
               return urlData.publicUrl;

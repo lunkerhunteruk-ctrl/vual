@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
+import { storage } from '@/lib/storage';
 import { parseMp4Duration } from '@/lib/utils/parse-mp4-duration';
 
 export const maxDuration = 60;
@@ -33,7 +34,7 @@ export async function POST(request: NextRequest) {
     const randomStr = Math.random().toString(36).substring(2, 8);
     const filename = `video-clips/imports/${timestamp}-${randomStr}.mp4`;
 
-    const { error: uploadError } = await supabase.storage
+    const { error: uploadError } = await storage
       .from('model-images')
       .upload(filename, buffer, {
         contentType: 'video/mp4',
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to upload video clip' }, { status: 500 });
     }
 
-    const { data: urlData } = supabase.storage
+    const { data: urlData } = storage
       .from('model-images')
       .getPublicUrl(filename);
 
