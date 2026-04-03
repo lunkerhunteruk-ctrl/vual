@@ -430,6 +430,7 @@ function LookDetailModal({
                       { id: 'film' as const, label: 'Film' },
                       { id: 'chrome' as const, label: 'Chrome' },
                       { id: 'polaroid' as const, label: 'Polaroid' },
+                      { id: 'polaroidDusk' as const, label: 'Polaroid Dusk' },
                       { id: 'polaroidBlue' as const, label: 'Polaroid Blue' },
                     ]).map((f) => (
                       <button
