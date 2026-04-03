@@ -439,27 +439,28 @@ function LookDetailModal({
                           setDownloadFilterOpen(false);
                           try {
                             if (f.id === 'none') {
-                              const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
-                              const response = await fetch(look.image_url);
-                              const blob = await response.blob();
-                              const ext = await detectImageExt(blob);
-                              const blobUrl = URL.createObjectURL(blob);
+                              // Direct link download (no CORS issues)
                               const link = document.createElement('a');
-                              link.href = blobUrl;
-                              link.download = `look-${look.id}.${ext}`;
+                              link.href = look.image_url;
+                              link.download = `look-${look.id}.png`;
+                              link.target = '_blank';
                               document.body.appendChild(link);
                               link.click();
                               document.body.removeChild(link);
-                              URL.revokeObjectURL(blobUrl);
                             } else {
-                              // Apply filter then download
-                              const response = await fetch(look.image_url);
-                              const blob = await response.blob();
-                              const base64 = await new Promise<string>((resolve) => {
-                                const reader = new FileReader();
-                                reader.onloadend = () => resolve(reader.result as string);
-                                reader.readAsDataURL(blob);
+                              // Load image via <img> to avoid CORS, draw to canvas, apply filter
+                              const img = new window.Image();
+                              img.crossOrigin = 'anonymous';
+                              img.src = look.image_url;
+                              await new Promise<void>((resolve, reject) => {
+                                img.onload = () => resolve();
+                                img.onerror = () => reject(new Error('Image load failed'));
                               });
+                              const canvas = document.createElement('canvas');
+                              canvas.width = img.naturalWidth;
+                              canvas.height = img.naturalHeight;
+                              canvas.getContext('2d')!.drawImage(img, 0, 0);
+                              const base64 = canvas.toDataURL('image/png');
                               const { applyFilter } = await import('@/lib/photo-filters');
                               const filtered = await applyFilter(base64, f.id);
                               const link = document.createElement('a');
