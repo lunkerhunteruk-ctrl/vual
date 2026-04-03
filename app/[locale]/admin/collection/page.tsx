@@ -331,6 +331,7 @@ function LookDetailModal({
   const ja = locale === 'ja';
   const store = useStoreContext((s) => s.store);
   const isDevStore = store?.slug === 'vualofficial';
+  const [downloadFilterOpen, setDownloadFilterOpen] = useState(false);
   const [title, setTitle] = useState(look.title || '');
   const [description, setDescription] = useState(look.description || '');
   const [showCredits, setShowCredits] = useState(look.show_credits ?? true);
@@ -410,30 +411,77 @@ function LookDetailModal({
             )}
           </div>
           <div className="flex items-center gap-1">
-            <button
-              onClick={async () => {
-                try {
-                  const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
-                  const response = await fetch(look.image_url);
-                  const blob = await response.blob();
-                  const ext = await detectImageExt(blob);
-                  const blobUrl = URL.createObjectURL(blob);
-                  const link = document.createElement('a');
-                  link.href = blobUrl;
-                  link.download = `look-${look.id}.${ext}`;
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                  URL.revokeObjectURL(blobUrl);
-                } catch (err) {
-                  console.error('Download failed:', err);
-                }
-              }}
-              className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
-              title={ja ? 'ダウンロード' : 'Download'}
-            >
-              <Download size={18} className="text-[var(--color-text-label)]" />
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => setDownloadFilterOpen(prev => !prev)}
+                className="flex items-center gap-0.5 p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+                title={ja ? 'ダウンロード' : 'Download'}
+              >
+                <Download size={18} className="text-[var(--color-text-label)]" />
+                <ChevronDown size={12} className="text-[var(--color-text-label)]" />
+              </button>
+              {downloadFilterOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setDownloadFilterOpen(false)} />
+                  <div className="absolute right-0 top-full mt-1 z-20 bg-white rounded-lg shadow-xl border border-[var(--color-line)] py-1 min-w-[150px]">
+                    {([
+                      { id: 'none' as const, label: 'Original' },
+                      { id: 'natural' as const, label: 'Natural' },
+                      { id: 'film' as const, label: 'Film' },
+                      { id: 'chrome' as const, label: 'Chrome' },
+                      { id: 'polaroid' as const, label: 'Polaroid' },
+                      { id: 'polaroidBlue' as const, label: 'Polaroid Blue' },
+                    ]).map((f) => (
+                      <button
+                        key={f.id}
+                        className="w-full text-left px-3 py-1.5 text-xs text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors flex items-center gap-2"
+                        onClick={async () => {
+                          setDownloadFilterOpen(false);
+                          try {
+                            if (f.id === 'none') {
+                              const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
+                              const response = await fetch(look.image_url);
+                              const blob = await response.blob();
+                              const ext = await detectImageExt(blob);
+                              const blobUrl = URL.createObjectURL(blob);
+                              const link = document.createElement('a');
+                              link.href = blobUrl;
+                              link.download = `look-${look.id}.${ext}`;
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                              URL.revokeObjectURL(blobUrl);
+                            } else {
+                              // Apply filter then download
+                              const response = await fetch(look.image_url);
+                              const blob = await response.blob();
+                              const base64 = await new Promise<string>((resolve) => {
+                                const reader = new FileReader();
+                                reader.onloadend = () => resolve(reader.result as string);
+                                reader.readAsDataURL(blob);
+                              });
+                              const { applyFilter } = await import('@/lib/photo-filters');
+                              const filtered = await applyFilter(base64, f.id);
+                              const link = document.createElement('a');
+                              link.href = filtered;
+                              link.download = `look-${look.id}-${f.id}.png`;
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }
+                          } catch (err) {
+                            console.error('Download failed:', err);
+                          }
+                        }}
+                      >
+                        <Download size={12} className="text-[var(--color-text-label)]" />
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
             <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
               <X size={20} className="text-[var(--color-text-label)]" />
             </button>
