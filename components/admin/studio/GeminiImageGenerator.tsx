@@ -1136,7 +1136,12 @@ export function GeminiImageGenerator({
           </button>
           <button
             onClick={() => {
-              setSettings(prev => ({ ...prev, gender: 'male', height: 175, ageRange: '18-24', ethnicity: 'japanese', pose: 'standing' }));
+              const all = modelDatabase?.models || [];
+              const gModels = all.filter(m => m.gender === 'male');
+              const age = gModels[0]?.ageRange || '25-34';
+              const eth = gModels.find(m => m.ageRange === age)?.ethnicity || 'japanese';
+              const pose = gModels.find(m => m.ageRange === age && m.ethnicity === eth)?.pose || 'standing';
+              setSettings(prev => ({ ...prev, gender: 'male', height: 175, ageRange: age, ethnicity: eth, pose }));
               setSelectedModel(null);
             }}
             className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-all ${
