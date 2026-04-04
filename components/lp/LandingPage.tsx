@@ -150,7 +150,7 @@ function ImageSlideshow({ folder, fallbackLabel, contain }: { folder: string; fa
 // ============================================================
 const LP_MEDIA_BASE = 'https://lufis.net/vual';
 
-const VIDEO_ITEMS = Array.from({ length: 5 }, (_, i) => {
+const VIDEO_ITEMS = Array.from({ length: 6 }, (_, i) => {
   const num = String(i + 1).padStart(2, '0');
   return {
     video: `${LP_MEDIA_BASE}/videos/${num}.mp4`,
