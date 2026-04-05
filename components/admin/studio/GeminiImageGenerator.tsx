@@ -1434,10 +1434,9 @@ export function GeminiImageGenerator({
                           alt={`Shot ${i + 1}`}
                           className="max-w-full max-h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => {
-                            const savedUrl = editorialResults.savedImageUrls[i];
                             setModalImage({
                               id: `editorial-${i}`,
-                              image_url: savedUrl || img || '',
+                              image_url: displaySrc,
                               garment_count: 1 + (secondGarmentImage ? 1 : 0) + (thirdGarmentImage ? 1 : 0) + (fourthGarmentImage ? 1 : 0) + (fifthGarmentImage ? 1 : 0),
                               product_ids: selectedProductIds,
                               created_at: new Date().toISOString(),
