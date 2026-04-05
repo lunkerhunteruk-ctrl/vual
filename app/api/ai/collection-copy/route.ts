@@ -16,11 +16,13 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { scenePrompt, lookImageBase64, lookImageUrl, locale = 'ja' } = body as {
+    const { scenePrompt, lookImageBase64, lookImageUrl, locale = 'ja', shotIndex, totalShots } = body as {
       scenePrompt?: string;
       lookImageBase64?: string;
       lookImageUrl?: string;
       locale?: string;
+      shotIndex?: number;
+      totalShots?: number;
     };
 
     if (!scenePrompt && !lookImageBase64 && !lookImageUrl) {
@@ -50,6 +52,29 @@ export async function POST(request: NextRequest) {
           : locale.startsWith('zh')
             ? 'LANGUAGE RULE: "title" and "description" MUST be written in Chinese. Do NOT use any other language for these fields.'
             : `LANGUAGE RULE: "title" and "description" MUST be written in the language matching locale "${locale}". If unsure, use English.`;
+
+    // Determine wind shot assignments for editorial multi-shot stories
+    let windInstruction = '';
+    if (typeof shotIndex === 'number' && typeof totalShots === 'number' && totalShots > 1) {
+      // Assign ~1/3 of shots as wind shots (e.g. 2 of 6, 1 of 3)
+      const windShots: number[] = [];
+      if (totalShots >= 6) {
+        windShots.push(1, 3); // shots 2 and 4 (0-indexed)
+      } else if (totalShots >= 3) {
+        windShots.push(1); // shot 2
+      }
+      if (windShots.includes(shotIndex)) {
+        // One special "hair blown across face + strong camera gaze" shot
+        const isHeroWindShot = shotIndex === windShots[windShots.length - 1];
+        if (isHeroWindShot) {
+          windInstruction = `
+WIND SHOT (MANDATORY for this shot): This shot MUST feature strong, visible wind. The wind blows the model's hair partially across her face, but she stands firm and powerful, gazing directly into the camera with unwavering confidence. Her garments billow and ripple dramatically in the wind. The wind direction should be consistent throughout the clip. Emphasize the contrast between the wild movement of hair and fabric and the model's composed, magnetic stillness. Do NOT have her touch or adjust her hair — she remains poised despite the wind.`;
+        } else {
+          windInstruction = `
+WIND SHOT (MANDATORY for this shot): This shot MUST feature visible wind creating dynamic movement. Wind catches the garments — fabric billows, ripples, and flows. The model's hair moves naturally in the breeze. Emphasize the sense of motion and energy the wind brings to the scene. Do NOT have her touch or adjust her hair.`;
+        }
+      }
+    }
 
     const sceneContext = scenePrompt
       ? `\nScene direction:\n${scenePrompt}`
@@ -98,6 +123,7 @@ Given the scene direction and/or the styled look image, generate:
 
 7. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
 ${sceneContext}
+${windInstruction}
 
 ${langInstruction}
 (The language rule above applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST always be in English, telop_caption_ja MUST always be in Japanese, regardless of locale.)

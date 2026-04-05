@@ -672,9 +672,11 @@ export function GeminiImageGenerator({
           const i = successfulShots[idx];
           try {
             // Prefer sending URL instead of base64 to avoid Vercel body size limits
-            const copyPayload: Record<string, string | undefined> = {
+            const copyPayload: Record<string, string | number | undefined> = {
               scenePrompt: customScenePrompts[i] || '',
               locale,
+              shotIndex: i,
+              totalShots: storyCount,
             };
             if (updatedSavedUrls[i]) {
               copyPayload.lookImageUrl = updatedSavedUrls[i]!;
