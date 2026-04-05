@@ -16,11 +16,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { scenePrompt, lookImageBase64, lookImageUrl, locale = 'ja', shotIndex, totalShots } = body as {
+    const { scenePrompt, lookImageBase64, lookImageUrl, locale = 'ja', shotIndex, totalShots, detailMode } = body as {
       scenePrompt?: string;
       lookImageBase64?: string;
       lookImageUrl?: string;
       locale?: string;
+      detailMode?: 'shoes' | 'face' | 'upper-body';
       shotIndex?: number;
       totalShots?: number;
     };
@@ -80,6 +81,16 @@ WIND SHOT (MANDATORY for this shot): This shot MUST feature visible wind creatin
       ? `\nScene direction:\n${scenePrompt}`
       : '';
 
+    // Detail mode: instruct for Ken Burns-optimized close-up video prompts
+    const detailModeLabels: Record<string, string> = {
+      'shoes': 'shoes/footwear close-up',
+      'face': 'face/portrait close-up',
+      'upper-body': 'upper body/garment detail close-up',
+    };
+    const detailInstruction = detailMode
+      ? `\nDETAIL SHOT MODE (${detailModeLabels[detailMode] || detailMode}): This is a CLOSE-UP detail shot, NOT a full-body shot. The video prompts must describe extremely subtle, almost imperceptible movement — this shot will use Ken Burns (slow pan/zoom on a still image). Focus on: gentle light shifts, subtle shadow movement, tiny fabric micro-movements from a breeze, dust particles in light beams. Camera should be nearly static with only a very slow drift. Use 4s duration for detail shots. The title and description should be poetic and focused on texture, light, and intimate details — NOT action or poses.`
+      : '';
+
     const imageNote = resolvedImageBase64
       ? ' Study the attached image closely — its mood, light, color palette, composition, and the way garments move and drape.'
       : '';
@@ -124,6 +135,7 @@ Given the scene direction and/or the styled look image, generate:
 7. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
 ${sceneContext}
 ${windInstruction}
+${detailInstruction}
 
 ${langInstruction}
 (The language rule above applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST always be in English, telop_caption_ja MUST always be in Japanese, regardless of locale.)

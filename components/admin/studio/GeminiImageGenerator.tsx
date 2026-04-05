@@ -242,6 +242,7 @@ export function GeminiImageGenerator({
 
   // Multi-story editorial state
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
+  const [isDetailMode, setIsDetailMode] = useState(false);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
@@ -598,8 +599,18 @@ export function GeminiImageGenerator({
       // Save shotConfigs to ref for regeneration
       editorialContextRef.current!.shotConfigs = shotConfigs;
 
+      // Detail mode: assign detail types per shot for close-up variety
+      const detailModeAssignments: (string | undefined)[] = (() => {
+        if (!isDetailMode) return Array(storyCount).fill(undefined);
+        // Balanced distribution: shoes, face, upper-body
+        if (storyCount === 6) return ['shoes', 'face', 'upper-body', 'shoes', 'face', 'upper-body'];
+        if (storyCount === 4) return ['shoes', 'face', 'upper-body', 'face'];
+        if (storyCount === 3) return ['shoes', 'face', 'upper-body'];
+        return [undefined];
+      })();
+
       // Phase 1: Generate all images in parallel
-      const imagePromises = shotConfigs.map((config) =>
+      const imagePromises = shotConfigs.map((config, shotIdx) =>
         fetch('/api/ai/gemini-image', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -625,6 +636,7 @@ export function GeminiImageGenerator({
             customPrompt: config.customPrompt,
             locale,
             storeId,
+            ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
           }),
         }).then(r => r.json())
       );
@@ -677,6 +689,7 @@ export function GeminiImageGenerator({
               locale,
               shotIndex: i,
               totalShots: storyCount,
+              ...(detailModeAssignments[i] ? { detailMode: detailModeAssignments[i] } : {}),
             };
             if (updatedSavedUrls[i]) {
               copyPayload.lookImageUrl = updatedSavedUrls[i]!;
@@ -1127,6 +1140,23 @@ export function GeminiImageGenerator({
             ))}
           </div>
         </div>
+
+        {/* Detail Mode Toggle */}
+        {storyCount > 1 && (
+          <>
+            <div className="w-px h-5 bg-[var(--color-line)]" />
+            <button
+              onClick={() => setIsDetailMode(!isDetailMode)}
+              className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
+                isDetailMode
+                  ? 'bg-[var(--color-accent)] text-white'
+                  : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
+              }`}
+            >
+              {locale === 'ja' ? 'ディテール' : 'Detail'}
+            </button>
+          </>
+        )}
 
         <div className="w-px h-5 bg-[var(--color-line)]" />
 

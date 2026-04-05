@@ -60,6 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
+  detailMode?: 'shoes' | 'face' | 'upper-body';
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
@@ -535,7 +536,7 @@ function isFullPromptMode(prompt: string, locale?: string): boolean {
 }
 
 function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImageCount: number = 0, thirdImageCount: number = 0, fourthImageCount: number = 0, fifthImageCount: number = 0): string {
-  const { modelSettings, modelImage, garmentSize, garmentSizeSpecs, vtonBase, background, customPrompt, locale } = body;
+  const { modelSettings, modelImage, garmentSize, garmentSizeSpecs, vtonBase, background, customPrompt, locale, detailMode } = body;
 
   let sizeDescription = '';
   if (garmentSizeSpecs && garmentSizeSpecs.rows.length > 0) {
@@ -636,6 +637,51 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     outerInstruction = 'MANDATORY STYLING RULE: The jacket/coat/outer garment MUST be worn OPEN and UNBUTTONED — the front panels hang apart, fully revealing the garment underneath. Do NOT button, zip, or close the outer layer.';
   } else if (outerStyle === 'closed') {
     outerInstruction = 'MANDATORY STYLING RULE: The jacket/coat/outer garment MUST be worn CLOSED — fully buttoned, zipped, or fastened. The front must be neatly closed with no gap showing the garment underneath.';
+  }
+
+  // Detail mode: close-up editorial shots (shoes, face, upper body)
+  if (detailMode) {
+    const detailPrompts: Record<string, string> = {
+      'shoes': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP:
+Generate a cinematic close-up photograph of the model's feet and shoes.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below knee). The shoes must be the EXACT ones from the reference images.
+LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth. The interplay of light and shadow should feel poetic and intentional.
+MOOD: Emotional, luxurious, editorial — like a first-class brand campaign (Bottega Veneta, The Row, Celine level).
+The ground texture (stone, cobblestone, marble, wood) should complement the shoes. Shallow depth of field with the shoes razor-sharp.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'face': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP:
+Generate a cinematic close-up portrait of the model.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show enough of the garment neckline/collar to establish what they're wearing.
+EXPRESSION: Confident, magnetic, slightly contemplative — looking away from camera (three-quarter profile or gazing into distance) OR direct intense eye contact. Natural, unforced.
+LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
+MOOD: Intimate, editorial, emotionally resonant — like a Vogue portrait or perfume campaign.
+Hair should be natural and undisturbed. Shallow depth of field with background softly blurred.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body': `DETAIL SHOT — UPPER BODY CLOSE-UP:
+Generate a cinematic upper-body photograph of the model from waist up.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist/hip up, showing garment details — texture, drape, buttons, seams, fabric movement. The garment must be the EXACT one from reference images.
+The model's hands may rest naturally at sides, in pockets, or holding an accessory. No hair touching.
+LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
+MOOD: Luxurious, tactile, editorial — you can almost feel the fabric. Like a high-end lookbook detail shot.
+Background slightly out of focus but recognizable. Sharp focus on garment details and texture.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+    };
+
+    return detailPrompts[detailMode] || detailPrompts['upper-body'];
   }
 
   const parts = [
