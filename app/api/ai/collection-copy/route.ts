@@ -42,14 +42,14 @@ export async function POST(request: NextRequest) {
     }
 
     const langInstruction = locale.startsWith('ja')
-      ? 'Output MUST be in Japanese (日本語).'
+      ? 'LANGUAGE RULE: "title" and "description" MUST be written in Japanese (日本語). Do NOT use Chinese, English, Korean, or any other language for these fields. If you are unsure, write in Japanese.'
       : locale.startsWith('fr')
-        ? 'Output MUST be in French.'
+        ? 'LANGUAGE RULE: "title" and "description" MUST be written in French. Do NOT use any other language for these fields.'
         : locale.startsWith('ko')
-          ? 'Output MUST be in Korean.'
+          ? 'LANGUAGE RULE: "title" and "description" MUST be written in Korean. Do NOT use any other language for these fields.'
           : locale.startsWith('zh')
-            ? 'Output MUST be in Chinese.'
-            : `Output MUST be in the language matching locale "${locale}". If unsure, use English.`;
+            ? 'LANGUAGE RULE: "title" and "description" MUST be written in Chinese. Do NOT use any other language for these fields.'
+            : `LANGUAGE RULE: "title" and "description" MUST be written in the language matching locale "${locale}". If unsure, use English.`;
 
     const sceneContext = scenePrompt
       ? `\nScene direction:\n${scenePrompt}`
@@ -99,7 +99,8 @@ Given the scene direction and/or the styled look image, generate:
 7. TELOP_CAPTION_EN (English, max 40 characters): English version of the same poetic subtitle. NOT a translation of the title.
 ${sceneContext}
 
-${langInstruction} (applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST be in English, telop_caption_ja MUST be in Japanese)
+${langInstruction}
+(The language rule above applies to TITLE and DESCRIPTION only — video prompts and telop_caption_en MUST always be in English, telop_caption_ja MUST always be in Japanese, regardless of locale.)
 
 CRITICAL RULES:
 - NEVER mention specific fabric or material names (silk, cotton, linen, polyester, cashmere, wool, leather, etc. / シルク、コットン、リネン、ポリエステル、カシミヤ、ウール、レザー等)
@@ -160,6 +161,15 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
         if (jsonMatch) {
           const parsed = JSON.parse(jsonMatch[0]);
           if (parsed.title) {
+            // Validate language: if locale is 'ja', title+description must contain hiragana or katakana
+            if (locale.startsWith('ja')) {
+              const hasJapanese = /[\u3040-\u309F\u30A0-\u30FF]/.test(parsed.title + (parsed.description || ''));
+              if (!hasJapanese && attempt < MAX_RETRIES - 1) {
+                console.warn(`[Collection Copy] Wrong language detected (attempt ${attempt + 1}), retrying...`, parsed.title.slice(0, 50));
+                await new Promise(r => setTimeout(r, 1000));
+                continue;
+              }
+            }
             // Snap to nearest valid Veo 3.1 duration (4, 6, or 8 only)
             const rawDur = parseInt(parsed.shot_duration_sec) || 6;
             const duration = rawDur <= 4 ? 4 : rawDur <= 5 ? 4 : rawDur <= 7 ? 6 : 8;
