@@ -243,6 +243,7 @@ export function GeminiImageGenerator({
   // Multi-story editorial state
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
+  const [isArtisticMode, setIsArtisticMode] = useState(false);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
@@ -637,6 +638,7 @@ export function GeminiImageGenerator({
             locale,
             storeId,
             ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
+            ...(isArtisticMode ? { artistic: true, shotIndex: shotIdx, totalShots: storyCount } : {}),
           }),
         }).then(r => r.json())
       );
@@ -1141,12 +1143,12 @@ export function GeminiImageGenerator({
           </div>
         </div>
 
-        {/* Detail Mode Toggle */}
+        {/* Detail & Artistic Mode Toggles */}
         {storyCount > 1 && (
           <>
             <div className="w-px h-5 bg-[var(--color-line)]" />
             <button
-              onClick={() => setIsDetailMode(!isDetailMode)}
+              onClick={() => { setIsDetailMode(!isDetailMode); if (!isDetailMode) setIsArtisticMode(false); }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 isDetailMode
                   ? 'bg-[var(--color-accent)] text-white'
@@ -1154,6 +1156,16 @@ export function GeminiImageGenerator({
               }`}
             >
               {locale === 'ja' ? 'ディテール' : 'Detail'}
+            </button>
+            <button
+              onClick={() => { setIsArtisticMode(!isArtisticMode); if (!isArtisticMode) setIsDetailMode(false); }}
+              className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
+                isArtisticMode
+                  ? 'bg-[var(--color-accent)] text-white'
+                  : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
+              }`}
+            >
+              {locale === 'ja' ? 'アーティスティック' : 'Artistic'}
             </button>
           </>
         )}

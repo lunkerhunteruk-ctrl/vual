@@ -61,6 +61,9 @@ interface RequestBody {
   customPrompt?: string;
   locale?: string;
   detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
+  artistic?: boolean;
+  shotIndex?: number;
+  totalShots?: number;
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
@@ -765,6 +768,19 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
+    // Artistic mode: add signature lens per shot for cinematic bokeh
+    ...(body.artistic ? [(() => {
+      const lenses = [
+        'LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH wide open — legendary creamy bokeh where background colors bleed and swirl organically like watercolor. The subject is razor-sharp but the world behind dissolves into a painterly wash of color. Extremely shallow depth of field with the Noctilux signature bokeh character.',
+        'LENS: Shot on Canon RF 85mm f/1.2L USM DS (Defocus Smoothing) — the DS coating creates the smoothest, most refined bokeh in existence. Background highlights become perfectly round, soft orbs. The transition from sharp to blur is impossibly gradual and creamy. Skin rendering is luminous.',
+        'LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness meets refined, dignified bokeh. Every texture on the garment is rendered with extraordinary clarity while the background falls away elegantly. The Otus delivers a three-dimensional pop that separates the subject from the scene.',
+        'LENS: Shot on Fujifilm GF 110mm f/2 (medium format sensor) — the larger format produces a distinctive three-dimensional separation with expansive, airy bokeh. Colors are rendered with extraordinary tonal depth and richness. The depth of field falloff feels natural and cinematic.',
+        'LENS: Shot on Sigma 35mm f/1.2 DG DN Art — wide-angle intimacy with environmental context. The f/1.2 aperture creates dramatic subject isolation while keeping enough scene to establish the location. Foreground and background blur wrap around the subject.',
+        'LENS: Shot on Nikon Nikkor Z 58mm f/0.95 S Noct — the fastest Nikon ever made. Otherworldly bokeh at f/0.95 with a dreamy, almost ethereal rendering. Point light sources become gorgeous, perfectly smooth circles. The subject seems to float in a sea of soft color.',
+      ];
+      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % lenses.length : 0;
+      return lenses[idx];
+    })()] : []),
   ];
 
   return parts.filter(Boolean).join(' ');
