@@ -110,7 +110,8 @@ CRITICAL RULES:
 - Do NOT mention brand names or product names
 - Video prompts must describe SUBTLE, ELEGANT movements — no dramatic action. Think breathing, gentle sway, wind in hair, slow turn of head, fabric catching light
 - PHYSICAL CONTINUITY: Items the model holds (bags, accessories) must STAY in the SAME hand/position throughout the entire clip. NEVER have items teleport, switch hands, appear, or disappear mid-shot. If a bag is on the left shoulder at the start, it must remain on the left shoulder for the entire duration. Explicitly state hand/arm positions in the prompt (e.g. "left hand holding a woven bag at her side throughout the shot"). Any item visible in the reference image must be described with a FIXED position that does not change.
-- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze, while subtly brushing hair back or sweeping it aside. This creates an emotionally captivating moment. Use 8s duration for gaze shift shots.
+- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze. This creates an emotionally captivating moment. Use 8s duration for gaze shift shots.
+- NEVER include hair-touching actions in video prompts. Do NOT write "brushing hair", "sweeping hair aside", "tucking hair behind ear", "running fingers through hair", "pushing hair back", "touching hair", or any similar gesture. Keep hands away from hair.
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
@@ -179,8 +180,15 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             const fixPrompt = (p: string) =>
               p.replace(/\[SHOT_DURATION_SEC\]/g, durStr);
 
-            let veoPrompt = fixPrompt(parsed.video_prompt_veo || '');
-            let klingPrompt = fixPrompt(parsed.video_prompt_kling || '');
+            // Remove hair-touching phrases from video prompts
+            const stripHairTouch = (p: string) =>
+              p.replace(/,?\s*(?:while\s+)?(?:subtly\s+|gently\s+|slowly\s+|softly\s+)?(?:brushing|sweeping|tucking|pushing|running\s+(?:her\s+)?fingers?\s+through|touching|playing\s+with|adjusting|flipping|tossing)\s+(?:her\s+)?hair\s*(?:back|aside|behind\s+(?:her\s+)?ear)?/gi, '')
+                .replace(/,?\s*(?:her\s+)?(?:fingers?\s+)?(?:lightly\s+|gently\s+|subtly\s+)?(?:grazing|caressing|lifting|sweeping)\s+(?:her\s+)?hair/gi, '')
+                .replace(/,?\s*(?:a\s+)?(?:subtle\s+|gentle\s+)?hair\s+(?:tuck|brush|sweep|flip|toss)/gi, '')
+                .replace(/\s{2,}/g, ' ').trim();
+
+            let veoPrompt = stripHairTouch(fixPrompt(parsed.video_prompt_veo || ''));
+            let klingPrompt = stripHairTouch(fixPrompt(parsed.video_prompt_kling || ''));
 
             // Auto-trim if over 150 words
             const MAX_WORDS = 150;
