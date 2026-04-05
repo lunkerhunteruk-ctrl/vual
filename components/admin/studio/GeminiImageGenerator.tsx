@@ -1434,6 +1434,8 @@ export function GeminiImageGenerator({
                           alt={`Shot ${i + 1}`}
                           className="max-w-full max-h-full object-contain cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => {
+                            setModalFilter('none');
+                            setModalFilteredUrl(null);
                             setModalImage({
                               id: `editorial-${i}`,
                               image_url: displaySrc,
