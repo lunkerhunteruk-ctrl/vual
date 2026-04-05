@@ -603,9 +603,9 @@ export function GeminiImageGenerator({
       const detailModeAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(storyCount).fill(undefined);
         // Balanced distribution: shoes, face, upper-body
-        if (storyCount === 6) return ['shoes', 'face', 'upper-body', 'shoes', 'face', 'upper-body'];
-        if (storyCount === 4) return ['shoes', 'face', 'upper-body', 'face'];
-        if (storyCount === 3) return ['shoes', 'face', 'upper-body'];
+        if (storyCount === 6) return ['shoes', 'face', 'upper-body', 'shoes', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 4) return ['shoes', 'face', 'upper-body', 'face-gaze'];
+        if (storyCount === 3) return ['shoes', 'face-gaze', 'upper-body'];
         return [undefined];
       })();
 

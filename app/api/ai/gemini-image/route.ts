@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'face' | 'upper-body';
+  detailMode?: 'shoes' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
@@ -661,9 +661,22 @@ The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmen
 ${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
 
 COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show enough of the garment neckline/collar to establish what they're wearing.
-EXPRESSION: Confident, magnetic, slightly contemplative — looking away from camera (three-quarter profile or gazing into distance) OR direct intense eye contact. Natural, unforced.
+EXPRESSION: Confident, magnetic, slightly contemplative — looking away from camera (three-quarter profile or gazing into distance). NOT looking at camera. Natural, unforced.
 LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
 MOOD: Intimate, editorial, emotionally resonant — like a Vogue portrait or perfume campaign.
+Hair should be natural and undisturbed. Shallow depth of field with background softly blurred.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'face-gaze': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP (DIRECT GAZE):
+Generate a cinematic close-up portrait of the model.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show enough of the garment neckline/collar to establish what they're wearing.
+EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Poised and commanding — not smiling, not cold, but quietly powerful. The kind of look that stops you mid-scroll. Chin slightly lifted, eyes sharp and clear.
+LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
+MOOD: Powerful, editorial, captivating — the hero portrait of the story. Like a luxury brand campaign key visual.
 Hair should be natural and undisturbed. Shallow depth of field with background softly blurred.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
@@ -678,6 +691,20 @@ The model's hands may rest naturally at sides, in pockets, or holding an accesso
 LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
 MOOD: Luxurious, tactile, editorial — you can almost feel the fabric. Like a high-end lookbook detail shot.
 Background slightly out of focus but recognizable. Sharp focus on garment details and texture.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-gaze': `DETAIL SHOT — UPPER BODY CLOSE-UP (DIRECT GAZE):
+Generate a cinematic upper-body photograph of the model from waist up.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist/hip up, showing garment details — texture, drape, buttons, seams, fabric movement. The garment must be the EXACT one from reference images.
+EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Quietly powerful and commanding. Chin slightly lifted.
+The model's hands may rest naturally at sides, in pockets, or holding an accessory. No hair touching.
+LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
+MOOD: Powerful, editorial, captivating — like a luxury campaign hero shot. Sharp focus on both garment details and the model's commanding presence.
+Background slightly out of focus but recognizable.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
     };
 
