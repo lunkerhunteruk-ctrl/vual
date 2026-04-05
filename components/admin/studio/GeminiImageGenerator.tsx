@@ -232,6 +232,7 @@ export function GeminiImageGenerator({
   const [isAddingToCollection, setIsAddingToCollection] = useState(false);
   const [collectionSuccess, setCollectionSuccess] = useState(false);
   const pendingAutoOpen = useRef(false);
+  const [savedImagesVersion, setSavedImagesVersion] = useState(0);
 
   // Video settings modal state
   const [showVideoSettingsModal, setShowVideoSettingsModal] = useState(false);
@@ -348,7 +349,7 @@ export function GeminiImageGenerator({
       }
     };
     fetchSavedImages();
-  }, [generatedImage, storeId]);
+  }, [generatedImage, storeId, savedImagesVersion]);
 
   useEffect(() => {
     if (selectedGarmentSizeSpecs && selectedGarmentSizeSpecs.rows.length > 0) {
@@ -792,6 +793,11 @@ export function GeminiImageGenerator({
       // Refresh credits
       fetchCredits();
 
+      // Refresh saved images list so 生成済み section shows new images
+      if (successfulShots.length > 0) {
+        setSavedImagesVersion(v => v + 1);
+      }
+
       const failCount = storyCount - successfulShots.length;
       if (failCount > 0 && successfulShots.length > 0) {
         setError(locale === 'ja'
@@ -970,6 +976,8 @@ export function GeminiImageGenerator({
             console.error(`[RegenerateShot] Collection swap failed (non-blocking):`, swapErr);
           }
         }
+        // Refresh saved images list
+        setSavedImagesVersion(v => v + 1);
       } else {
         setEditorialResults(prev => {
           if (!prev) return prev;
@@ -1648,6 +1656,7 @@ export function GeminiImageGenerator({
       <AnimatePresence>
         {modalImage && (
           <motion.div
+            key="modal-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -1698,6 +1707,7 @@ export function GeminiImageGenerator({
                 {/* Large Preview */}
                 <div className="bg-[var(--color-bg-element)] rounded-xl overflow-hidden flex items-center justify-center mb-3" style={{ maxHeight: '50vh' }}>
                   <img
+                    key={`${modalImage.id}-${modalImage.image_url}`}
                     src={modalFilteredUrl || modalImage.image_url}
                     alt="Generated"
                     style={{ maxWidth: '100%', maxHeight: '50vh', width: 'auto', height: 'auto', objectFit: 'contain', transition: 'opacity 0.3s', opacity: modalFilterProcessing ? 0.5 : 1 }}
