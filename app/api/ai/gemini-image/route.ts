@@ -3,6 +3,7 @@ import { createServerClient } from '@/lib/supabase';
 import { storage } from '@/lib/storage';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
 import { addCreditWatermark } from '@/lib/utils/image-watermark';
+import sharp from 'sharp';
 
 export const maxDuration = 120;
 
@@ -298,6 +299,25 @@ export async function POST(request: NextRequest) {
       const modelImageData = extractBase64(resolvedModelImage);
       if (modelImageData) {
         imageParts.push({ inline_data: { mime_type: modelImageData.mimeType, data: modelImageData.data } });
+
+        // Generate face close-up crop from the full-body model image
+        try {
+          const imgBuffer = Buffer.from(modelImageData.data, 'base64');
+          const metadata = await sharp(imgBuffer).metadata();
+          if (metadata.width && metadata.height) {
+            // Crop top 25% of the image (head + shoulders area)
+            const cropHeight = Math.round(metadata.height * 0.25);
+            const faceCrop = await sharp(imgBuffer)
+              .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
+              .resize({ width: 512, fit: 'inside' })
+              .jpeg({ quality: 90 })
+              .toBuffer();
+            const faceCropBase64 = faceCrop.toString('base64');
+            imageParts.push({ inline_data: { mime_type: 'image/jpeg', data: faceCropBase64 } });
+          }
+        } catch (cropErr) {
+          console.error('[Gemini] Face crop failed (non-blocking):', cropErr);
+        }
       }
     }
 
@@ -585,7 +605,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   if (vtonBase && modelImage) {
     modelDescription = `IMPORTANT: The first image shows a model ALREADY WEARING an outfit. Keep the model's appearance (face, body, pose) and their EXISTING CLOTHING exactly as shown. ADD the new garment items from the following reference images to complete the outfit.`;
   } else if (modelImage) {
-    modelDescription = `Generate an image using the EXACT model appearance from the provided model reference image (face, body type, skin tone must match exactly)`;
+    modelDescription = `Generate an image using the EXACT model appearance from the provided model reference images. A full-body reference AND a face close-up crop are provided — use the close-up to ensure the face, facial features, and expression are reproduced with maximum accuracy and consistency across all shots. Face, body type, and skin tone must match exactly.`;
   } else {
     modelDescription = `A ${ethnicityDescriptions[modelSettings.ethnicity] || modelSettings.ethnicity} ${modelSettings.gender === 'female' ? 'woman' : 'man'}`;
   }
