@@ -768,18 +768,41 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
-    // Artistic mode: add signature lens per shot for cinematic bokeh
+    // Artistic mode: signature lens + optimized scene direction per shot
     ...(body.artistic ? [(() => {
-      const lenses = [
-        'LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH wide open — legendary creamy bokeh where background colors bleed and swirl organically like watercolor. The subject is razor-sharp but the world behind dissolves into a painterly wash of color. Extremely shallow depth of field with the Noctilux signature bokeh character.',
-        'LENS: Shot on Canon RF 85mm f/1.2L USM DS (Defocus Smoothing) — the DS coating creates the smoothest, most refined bokeh in existence. Background highlights become perfectly round, soft orbs. The transition from sharp to blur is impossibly gradual and creamy. Skin rendering is luminous.',
-        'LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness meets refined, dignified bokeh. Every texture on the garment is rendered with extraordinary clarity while the background falls away elegantly. The Otus delivers a three-dimensional pop that separates the subject from the scene.',
-        'LENS: Shot on Fujifilm GF 110mm f/2 (medium format sensor) — the larger format produces a distinctive three-dimensional separation with expansive, airy bokeh. Colors are rendered with extraordinary tonal depth and richness. The depth of field falloff feels natural and cinematic.',
-        'LENS: Shot on Sigma 35mm f/1.2 DG DN Art — wide-angle intimacy with environmental context. The f/1.2 aperture creates dramatic subject isolation while keeping enough scene to establish the location. Foreground and background blur wrap around the subject.',
-        'LENS: Shot on Nikon Nikkor Z 58mm f/0.95 S Noct — the fastest Nikon ever made. Otherworldly bokeh at f/0.95 with a dreamy, almost ethereal rendering. Point light sources become gorgeous, perfectly smooth circles. The subject seems to float in a sea of soft color.',
+      const artisticShots = [
+        // Shot 1: Noctilux — golden hour backlight, bokeh swirl
+        `ARTISTIC DIRECTION: Shot on Leica Noctilux-M 50mm f/0.95 ASPH wide open.
+SCENE OVERRIDE: Position the model with strong BACKLIGHT — golden hour sun directly behind, creating a luminous rim light around hair and shoulders. The background should contain warm-toned architecture or foliage that dissolves into the Noctilux's legendary swirling bokeh. Colors bleed and merge organically like watercolor. Any specular highlights in the background become soft, glowing orbs. The model is razor-sharp against this painterly dissolution of color.
+LIGHTING: Strong backlight/rim light with soft fill from reflected surfaces. Lens flare is welcome and adds to the dreamy atmosphere.`,
+
+        // Shot 2: Canon DS — evening city lights, perfect round bokeh
+        `ARTISTIC DIRECTION: Shot on Canon RF 85mm f/1.2L USM DS (Defocus Smoothing).
+SCENE OVERRIDE: Evening or twilight setting with POINT LIGHT SOURCES in the background — street lamps, shop windows, warm interior lights, string lights, or city illumination. The DS coating transforms every light source into a perfectly smooth, round bokeh circle. The transition from sharp subject to blurred background is impossibly gradual. The model is lit by nearby warm light (window light, storefront glow), creating luminous, glowing skin.
+LIGHTING: Warm practical light sources illuminating the model. Background peppered with beautiful circular bokeh from city/architectural lights.`,
+
+        // Shot 3: Zeiss Otus — hard architectural light, 3D pop
+        `ARTISTIC DIRECTION: Shot on Zeiss Otus 85mm f/1.4.
+SCENE OVERRIDE: Strong DIRECTIONAL LIGHT cutting through architecture — a shaft of sunlight through a doorway, window, colonnade, or between buildings. The model stands partially in this dramatic light, creating bold light-and-shadow contrast across the body and garment. The Otus renders every fabric texture with extraordinary three-dimensional clarity. The background falls away with refined, dignified bokeh while the subject pops forward with an almost tangible depth.
+LIGHTING: Hard directional sunlight creating dramatic chiaroscuro. One side of the model is brilliantly lit, the other falls into rich shadow.`,
+
+        // Shot 4: Fujifilm GF medium format — dappled forest/garden light
+        `ARTISTIC DIRECTION: Shot on Fujifilm GF 110mm f/2 (medium format).
+SCENE OVERRIDE: The model stands in DAPPLED LIGHT filtering through trees, pergolas, or latticed architecture. Pools of warm light dance across the model and garment while the medium format sensor captures extraordinary tonal gradation in both highlights and shadows. The larger format creates an expansive, airy sense of depth — the model exists in three-dimensional space with the background gently receding. Leaves or architectural patterns create beautiful shadow play on the garment surface.
+LIGHTING: Natural dappled sunlight through foliage or architectural elements. Rich tonal range from deep shadows to bright highlights.`,
+
+        // Shot 5: Sigma 35mm — wide environmental, foreground bokeh
+        `ARTISTIC DIRECTION: Shot on Sigma 35mm f/1.2 DG DN Art.
+SCENE OVERRIDE: The wider focal length captures the model WITH their environment — shoot through FOREGROUND ELEMENTS (flowers, leaves, iron railings, glass, fabric) that blur into soft, colorful shapes in the near field. The f/1.2 aperture wraps both foreground and background blur around the subject, creating a cocoon of bokeh. The environmental context (architecture, street, garden) is visible but dreamy. The model occupies the sharp middle ground between two layers of beautiful blur.
+LIGHTING: Natural light with the environment providing depth layers. Foreground elements catch light and become luminous blur shapes.`,
+
+        // Shot 6: Nikon Noct — blue hour/twilight, ethereal floating
+        `ARTISTIC DIRECTION: Shot on Nikon Nikkor Z 58mm f/0.95 S Noct.
+SCENE OVERRIDE: BLUE HOUR or deep twilight setting — the sky holds the last traces of deep blue and amber. The model is lit by a single warm light source (a lamp, a doorway, reflected golden light) against the cool twilight background. At f/0.95, the depth of field is paper-thin — the model appears to float in an ethereal, dreamlike space. Any remaining ambient lights become impossibly smooth, large bokeh circles. The overall mood is contemplative, quiet, almost otherworldly.
+LIGHTING: Single warm practical light against cool blue-hour ambient. The contrast between warm subject and cool background creates emotional depth.`,
       ];
-      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % lenses.length : 0;
-      return lenses[idx];
+      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % artisticShots.length : 0;
+      return artisticShots[idx];
     })()] : []),
   ];
 
