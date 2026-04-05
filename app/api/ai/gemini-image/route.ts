@@ -97,13 +97,35 @@ const poseDescriptions: Record<string, string> = {
   leaning: 'leaning casually against a wall',
 };
 
-// Helper function to extract base64 data from data URL
+// Helper function to extract base64 data from data URL or fetch from URL
 function extractBase64(dataUrl: string): { data: string; mimeType: string } | null {
   const match = dataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
   if (match) {
     return { mimeType: match[1], data: match[2] };
   }
   return null;
+}
+
+// Convert URL to data URL by fetching server-side
+async function resolveImageToBase64(input: string): Promise<string> {
+  // Already a data URL
+  if (input.startsWith('data:')) return input;
+
+  // HTTP(S) URL — fetch server-side
+  if (input.startsWith('http://') || input.startsWith('https://')) {
+    const res = await fetch(input);
+    if (!res.ok) throw new Error(`Failed to fetch image: ${res.status} ${input}`);
+    const buffer = Buffer.from(await res.arrayBuffer());
+    const contentType = res.headers.get('content-type') || 'image/jpeg';
+    return `data:${contentType};base64,${buffer.toString('base64')}`;
+  }
+
+  return input;
+}
+
+// Resolve all images in an array from URLs to base64
+async function resolveImages(images: string[]): Promise<string[]> {
+  return Promise.all(images.map(resolveImageToBase64));
 }
 
 // Call Gemini API directly
@@ -150,12 +172,12 @@ export async function POST(request: NextRequest) {
   try {
     const body: RequestBody = await request.json();
 
-    // Support both single image and array format
-    const firstGarmentImages = body.garmentImages || (body.garmentImage ? [body.garmentImage] : []);
-    const secondGarmentImages = body.secondGarmentImages || (body.secondGarmentImage ? [body.secondGarmentImage] : []);
-    const thirdGarmentImages = body.thirdGarmentImages || (body.thirdGarmentImage ? [body.thirdGarmentImage] : []);
-    const fourthGarmentImages = body.fourthGarmentImages || (body.fourthGarmentImage ? [body.fourthGarmentImage] : []);
-    const fifthGarmentImages = body.fifthGarmentImages || (body.fifthGarmentImage ? [body.fifthGarmentImage] : []);
+    // Support both single image and array format — resolve URLs to base64 server-side
+    const firstGarmentImages = await resolveImages(body.garmentImages || (body.garmentImage ? [body.garmentImage] : []));
+    const secondGarmentImages = await resolveImages(body.secondGarmentImages || (body.secondGarmentImage ? [body.secondGarmentImage] : []));
+    const thirdGarmentImages = await resolveImages(body.thirdGarmentImages || (body.thirdGarmentImage ? [body.thirdGarmentImage] : []));
+    const fourthGarmentImages = await resolveImages(body.fourthGarmentImages || (body.fourthGarmentImage ? [body.fourthGarmentImage] : []));
+    const fifthGarmentImages = await resolveImages(body.fifthGarmentImages || (body.fifthGarmentImage ? [body.fifthGarmentImage] : []));
 
     const hasAdditionalGarments = secondGarmentImages.length > 0 || thirdGarmentImages.length > 0 || fourthGarmentImages.length > 0 || fifthGarmentImages.length > 0;
     if (firstGarmentImages.length === 0 && !body.vtonBase) {
@@ -272,7 +294,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (body.modelImage) {
-      const modelImageData = extractBase64(body.modelImage);
+      const resolvedModelImage = await resolveImageToBase64(body.modelImage);
+      const modelImageData = extractBase64(resolvedModelImage);
       if (modelImageData) {
         imageParts.push({ inline_data: { mime_type: modelImageData.mimeType, data: modelImageData.data } });
       }

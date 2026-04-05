@@ -78,6 +78,11 @@ interface SavedImage {
 async function imageToBase64(imageUrl: string): Promise<string> {
   if (imageUrl.startsWith('data:')) return imageUrl;
 
+  // For HTTP(S) URLs, pass URL as-is — server will fetch & convert to base64
+  if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    return imageUrl;
+  }
+
   if (imageUrl.startsWith('blob:')) {
     return new Promise((resolve, reject) => {
       const img = document.createElement('img');
@@ -97,6 +102,7 @@ async function imageToBase64(imageUrl: string): Promise<string> {
     });
   }
 
+  // Relative URLs: fetch via browser
   try {
     const response = await fetch(imageUrl);
     if (response.ok) {
@@ -112,7 +118,6 @@ async function imageToBase64(imageUrl: string): Promise<string> {
 
   return new Promise((resolve, reject) => {
     const img = document.createElement('img');
-    if (!imageUrl.startsWith('/')) img.crossOrigin = 'anonymous';
     img.onload = () => {
       try {
         const canvas = document.createElement('canvas');
