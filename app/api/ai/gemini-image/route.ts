@@ -651,7 +651,8 @@ ${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDesc
 COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below knee). The shoes must be the EXACT ones from the reference images.
 LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth. The interplay of light and shadow should feel poetic and intentional.
 MOOD: Emotional, luxurious, editorial — like a first-class brand campaign (Bottega Veneta, The Row, Celine level).
-The ground texture (stone, cobblestone, marble, wood) should complement the shoes. Shallow depth of field with the shoes razor-sharp.
+The ground texture (stone, cobblestone, marble, wood) should complement the shoes.
+LENS: Shot on Canon TS-E 90mm f/2.8L Macro — tilt-shift creating a unique, selective focus plane at low angle. The shoes are razor-sharp with a distinctive miniature-like depth falloff that only tilt-shift can produce.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'shoes-wall': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP (WALL LEAN POSE):
@@ -664,6 +665,7 @@ COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below
 POSE: The model stands on one foot with the other foot raised and pressing its sole flat against a wall behind — a casual, effortlessly cool editorial pose. The weight-bearing foot is sharp and in focus. The wall-pressed foot can be slightly out of focus with shallow depth of field, creating a natural bokeh effect. The pose should feel relaxed, nonchalant, and edgy — like a model leaning against a wall between takes.
 LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth.
 MOOD: Effortlessly cool, editorial, slightly rebellious — like a street-style campaign shot.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the legendary bokeh renders the wall-pressed foot and background into a dreamy, painterly blur while the weight-bearing foot and shoe remain impossibly sharp. Colors in the out-of-focus areas bleed and swirl organically.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'face': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP:
@@ -676,7 +678,8 @@ COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show 
 EXPRESSION: Confident, magnetic, slightly contemplative — looking away from camera (three-quarter profile or gazing into distance). NOT looking at camera. Natural, unforced.
 LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
 MOOD: Intimate, editorial, emotionally resonant — like a Vogue portrait or perfume campaign.
-Hair should be natural and undisturbed. Shallow depth of field with background softly blurred.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinically sharp on the subject with refined, dignified bokeh. The background falls away naturally and elegantly without being overly dramatic. Skin texture is rendered with extraordinary detail and clarity.
+Hair should be natural and undisturbed.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'face-gaze': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP (DIRECT GAZE):
@@ -689,7 +692,7 @@ COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show 
 EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Poised and commanding — not smiling, not cold, but quietly powerful. The kind of look that stops you mid-scroll. Chin slightly lifted, eyes sharp and clear.
 LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
 MOOD: Powerful, editorial, captivating — the hero portrait of the story. Like a luxury brand campaign key visual.
-LENS: Shot at f/1.2 — extremely shallow depth of field. The model's face and eyes are razor-sharp, but the background melts into a beautiful, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background colors (greens, golds, stone tones, sky) should create a painterly, dreamy wash of color that frames the subject.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the legendary wide-open rendering. The model's face and eyes are razor-sharp, but the background melts into a beautiful, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background colors (greens, golds, stone tones, sky) create a painterly, dreamy wash of color that frames the subject. The Noctilux's signature organic bokeh swirl is visible in the transition zone.
 Hair should be natural and undisturbed.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
@@ -703,7 +706,7 @@ COMPOSITION: Medium close-up from waist/hip up, showing garment details — text
 The model's hands may rest naturally at sides, in pockets, or holding an accessory. No hair touching.
 LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
 MOOD: Luxurious, tactile, editorial — you can almost feel the fabric. Like a high-end lookbook detail shot.
-Background slightly out of focus but recognizable. Sharp focus on garment details and texture.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — the larger sensor produces a distinctive three-dimensional separation between subject and background. Fabric texture is rendered with extraordinary resolution and tonal depth. The background falls off gradually with a smooth, medium-format bokeh quality that feels expansive and airy.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'upper-body-gaze': `DETAIL SHOT — UPPER BODY CLOSE-UP (DIRECT GAZE):
@@ -717,7 +720,7 @@ EXPRESSION: MUST look directly into the camera with a strong, dignified, unwaver
 The model's hands may rest naturally at sides, in pockets, or holding an accessory. No hair touching.
 LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
 MOOD: Powerful, editorial, captivating — like a luxury campaign hero shot.
-LENS: Shot at f/1.2 — extremely shallow depth of field. The model and garment details are razor-sharp, but the background dissolves into rich, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background should create a painterly wash of ambient color (architecture tones, foliage, sky) that beautifully frames the subject.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the legendary wide-open rendering. The model and garment details are razor-sharp, but the background dissolves into rich, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background creates a painterly wash of ambient color (architecture tones, foliage, sky) with the Noctilux's signature organic bokeh swirl in the transition zone.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
     };
 
