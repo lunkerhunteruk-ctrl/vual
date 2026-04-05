@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       lookImageBase64?: string;
       lookImageUrl?: string;
       locale?: string;
-      detailMode?: 'shoes' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
+      detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
       shotIndex?: number;
       totalShots?: number;
     };
@@ -84,6 +84,7 @@ WIND SHOT (MANDATORY for this shot): This shot MUST feature visible wind creatin
     // Detail mode: instruct for Ken Burns-optimized close-up video prompts
     const detailModeLabels: Record<string, string> = {
       'shoes': 'shoes/footwear close-up',
+      'shoes-wall': 'shoes close-up (one foot on wall, casual cool pose)',
       'face': 'face/portrait close-up (looking away)',
       'face-gaze': 'face/portrait close-up (direct camera gaze, powerful)',
       'upper-body': 'upper body/garment detail close-up',

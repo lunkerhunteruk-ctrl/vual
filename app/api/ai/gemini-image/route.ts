@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
+  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
   // Consumer billing fields (when called from customer try-on)
   lineUserId?: string;
   customerId?: string;
@@ -652,6 +652,18 @@ COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below
 LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth. The interplay of light and shadow should feel poetic and intentional.
 MOOD: Emotional, luxurious, editorial — like a first-class brand campaign (Bottega Veneta, The Row, Celine level).
 The ground texture (stone, cobblestone, marble, wood) should complement the shoes. Shallow depth of field with the shoes razor-sharp.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'shoes-wall': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP (WALL LEAN POSE):
+Generate a cinematic close-up photograph of the model's feet and shoes.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below knee). The shoes must be the EXACT ones from the reference images.
+POSE: The model stands on one foot with the other foot raised and pressing its sole flat against a wall behind — a casual, effortlessly cool editorial pose. The weight-bearing foot is sharp and in focus. The wall-pressed foot can be slightly out of focus with shallow depth of field, creating a natural bokeh effect. The pose should feel relaxed, nonchalant, and edgy — like a model leaning against a wall between takes.
+LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth.
+MOOD: Effortlessly cool, editorial, slightly rebellious — like a street-style campaign shot.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'face': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP:
