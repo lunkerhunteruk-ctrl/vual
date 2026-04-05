@@ -689,7 +689,8 @@ COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show 
 EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Poised and commanding — not smiling, not cold, but quietly powerful. The kind of look that stops you mid-scroll. Chin slightly lifted, eyes sharp and clear.
 LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones with beautiful shadow play.
 MOOD: Powerful, editorial, captivating — the hero portrait of the story. Like a luxury brand campaign key visual.
-Hair should be natural and undisturbed. Shallow depth of field with background softly blurred.
+LENS: Shot at f/1.2 — extremely shallow depth of field. The model's face and eyes are razor-sharp, but the background melts into a beautiful, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background colors (greens, golds, stone tones, sky) should create a painterly, dreamy wash of color that frames the subject.
+Hair should be natural and undisturbed.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'upper-body': `DETAIL SHOT — UPPER BODY CLOSE-UP:
@@ -715,8 +716,8 @@ COMPOSITION: Medium close-up from waist/hip up, showing garment details — text
 EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Quietly powerful and commanding. Chin slightly lifted.
 The model's hands may rest naturally at sides, in pockets, or holding an accessory. No hair touching.
 LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
-MOOD: Powerful, editorial, captivating — like a luxury campaign hero shot. Sharp focus on both garment details and the model's commanding presence.
-Background slightly out of focus but recognizable.
+MOOD: Powerful, editorial, captivating — like a luxury campaign hero shot.
+LENS: Shot at f/1.2 — extremely shallow depth of field. The model and garment details are razor-sharp, but the background dissolves into rich, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background should create a painterly wash of ambient color (architecture tones, foliage, sky) that beautifully frames the subject.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
     };
 
