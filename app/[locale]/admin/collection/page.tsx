@@ -766,22 +766,24 @@ function BundleDetailModal({
     setIsDownloading(true);
     try {
       const zip = new JSZip();
+      const zipFolderName = `glam_jobs_${bundle.id.slice(0, 8)}`;
+      const glamJobs = zip.folder(zipFolderName)!;
       const { applyFilter } = filterId !== 'none' ? await import('@/lib/photo-filters') : { applyFilter: null };
 
       for (let i = 0; i < orderedLooks.length; i++) {
         const look = orderedLooks[i];
-        const num = String(i + 1).padStart(2, '0');
+        const num = String(i + 1).padStart(3, '0');
         const title = look.title || `look_${i + 1}`;
-        const fileName = `${num}_${title}${filterId !== 'none' ? `_${filterId}` : ''}`;
+        const folder = glamJobs.folder(`${num}_${title}`)!;
 
         const proxyUrl = `/api/media/download?url=${encodeURIComponent(look.image_url)}`;
         const res = await fetch(proxyUrl);
         const blob = await res.blob();
 
         if (filterId === 'none' || !applyFilter) {
-          zip.file(`${fileName}.png`, blob);
+          const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+          folder.file(`image.${ext}`, blob);
         } else {
-          // Apply filter via canvas
           const img = new window.Image();
           img.crossOrigin = 'anonymous';
           img.src = URL.createObjectURL(blob);
@@ -797,15 +799,19 @@ function BundleDetailModal({
           URL.revokeObjectURL(img.src);
           const filtered = await applyFilter(base64, filterId as any);
           const filteredBlob = await fetch(filtered).then(r => r.blob());
-          zip.file(`${fileName}.png`, filteredBlob);
+          folder.file('image.png', filteredBlob);
         }
+
+        // Include prompt.txt for glam ai uploader compatibility
+        const prompt = look.video_prompt_veo || '';
+        folder.file('prompt.txt', prompt);
       }
 
       const zipBlob = await zip.generateAsync({ type: 'blob' });
       const url = URL.createObjectURL(zipBlob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `bundle_${bundle.id.slice(0, 8)}${filterId !== 'none' ? `_${filterId}` : ''}.zip`;
+      a.download = `glam_jobs_${bundle.id.slice(0, 8)}.zip`;
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
@@ -926,21 +932,6 @@ function BundleDetailModal({
                         {f.label}
                       </button>
                     ))}
-                    {isDevStore && (
-                      <>
-                        <div className="border-t border-[var(--color-line)] my-1" />
-                        <button
-                          className="w-full text-left px-3 py-1.5 text-xs text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors flex items-center gap-2"
-                          onClick={() => {
-                            setBundleDownloadFilterOpen(false);
-                            handleDownloadGlamJobsZip();
-                          }}
-                        >
-                          <Download size={12} className="text-[var(--color-text-label)]" />
-                          Glam Jobs ZIP
-                        </button>
-                      </>
-                    )}
                   </div>
                 </>
               )}
