@@ -88,6 +88,7 @@ WIND SHOT (MANDATORY for this shot): This shot MUST feature visible wind creatin
       'face': 'face/portrait close-up (looking away)',
       'face-gaze': 'face/portrait close-up (direct camera gaze, powerful)',
       'face-profile': 'face/portrait profile view (side angle)',
+      'face-glance-back': 'face/portrait glance back over shoulder (body away, eyes at camera)',
       'upper-body': 'upper body/garment detail close-up',
       'upper-body-gaze': 'upper body close-up (direct camera gaze, commanding)',
       'upper-body-texture': 'upper body close-up (fabric texture focus, looking away)',

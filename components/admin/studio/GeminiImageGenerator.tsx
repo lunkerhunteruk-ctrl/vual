@@ -612,9 +612,9 @@ export function GeminiImageGenerator({
           return [undefined];
         }
         // Detail A: face + upper body only (6 varied shots)
-        if (storyCount === 6) return ['face', 'upper-body', 'face-profile', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
-        if (storyCount === 4) return ['face', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
-        if (storyCount === 3) return ['face-profile', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 6) return ['face', 'upper-body', 'face-profile', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 4) return ['face', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 3) return ['face-profile', 'face-gaze', 'face-glance-back'];
         return [undefined];
       })();
 

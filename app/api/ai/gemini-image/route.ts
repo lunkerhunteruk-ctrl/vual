@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'bag' | 'bag-detail';
+  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'bag' | 'bag-detail';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   sceneVariant?: 'A' | 'B'; // Normal mode scene variant
   shotIndex?: number;
@@ -764,6 +764,19 @@ COMPOSITION: True PROFILE or strong three-quarter view — the model faces scree
 EXPRESSION: Serene, contemplative, looking into the distance. Completely absorbed in thought — the camera is invisible to them. Lips slightly parted or closed naturally.
 LIGHTING: Strong rim light or backlight outlining the profile. The face is lit by soft reflected fill, creating a beautiful gradient across the cheek. The profile edge is luminous against a darker or blurred background.
 LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness on the profile edge with elegant, dignified background separation. Every skin texture detail is rendered with extraordinary clarity.
+Hair should be natural and undisturbed.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'face-glance-back': `DETAIL SHOT — FACE/PORTRAIT (GLANCE BACK):
+Generate a cinematic portrait of the model glancing back over their shoulder.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: The model's BODY faces AWAY from the camera (back or 3/4 back view), but the HEAD is turned to look back DIRECTLY at the camera. This creates a captivating over-the-shoulder glance — the twist between body direction and gaze direction is the drama of the shot. Show from waist up with enough of the garment's back visible.
+EXPRESSION: Direct, intense eye contact through the glance back. Magnetic and slightly mysterious — as if the model sensed the camera and turned. Confident, unhurried.
+LIGHTING: Soft, cinematic light with emphasis on the face catching light as it turns. The back/shoulders may be slightly in shadow, creating depth between the turned body and the illuminated face.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the background dissolves into painterly bokeh while the model's face and eyes are razor-sharp. The bokeh swirl adds to the sense of motion in the glance.
 Hair should be natural and undisturbed.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
