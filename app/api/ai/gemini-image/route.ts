@@ -62,6 +62,7 @@ interface RequestBody {
   locale?: string;
   detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
+  sceneVariant?: 'A' | 'B'; // Normal mode scene variant
   shotIndex?: number;
   totalShots?: number;
   // Consumer billing fields (when called from customer try-on)
@@ -770,6 +771,30 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
+    // Normal mode Scene B: varied compositions and balanced walking directions
+    ...(body.sceneVariant === 'B' && !body.artistic ? [(() => {
+      const normalBShots = [
+        // Shot 1: walking LEFT, wide establishing
+        `COMPOSITION OVERRIDE: The model walks toward the LEFT side of the frame (screen-left direction). Wide shot establishing the full environment — the architecture/scene occupies 60% of the frame with the model at roughly one-third position. Walking motion is mid-stride with natural arm swing. The environment should feel expansive and cinematic.`,
+
+        // Shot 2: static, leaning/resting pose
+        `COMPOSITION OVERRIDE: The model is NOT walking — instead, standing still with weight shifted to one hip, or leaning lightly against a wall/column/railing. One hand may rest in a pocket or on the hip. Relaxed, effortless posture. Frame the shot as a medium-full body with the model slightly off-center. The pose should feel candid, as if caught between moments.`,
+
+        // Shot 3: walking RIGHT, medium shot
+        `COMPOSITION OVERRIDE: The model walks toward the RIGHT side of the frame (screen-right direction). Medium shot from roughly knee-up, capturing garment movement and stride. The walking direction and framing should feel like a counterbalance to any previous left-walking shots. Natural mid-stride pose with fabric in motion.`,
+
+        // Shot 4: looking back over shoulder
+        `COMPOSITION OVERRIDE: The model has just walked past the camera and LOOKS BACK over their shoulder. The body faces away (3/4 back view) while the head turns back toward the camera. This reveals the back construction of the garment while maintaining face visibility. Slight contrapposto stance. The "looking back" gesture should feel spontaneous, not posed.`,
+
+        // Shot 5: from below, power angle
+        `COMPOSITION OVERRIDE: LOW ANGLE shot — camera positioned below eye level, looking slightly upward at the model. This creates a powerful, commanding presence. The model stands tall and statuesque, with the sky or upper architecture visible behind. The low angle elongates the legs and emphasizes the garment's silhouette. Full body visible with dramatic perspective.`,
+
+        // Shot 6: walking toward camera
+        `COMPOSITION OVERRIDE: The model walks DIRECTLY TOWARD the camera — a classic runway-style approach. The model's gaze is straight ahead (not necessarily at camera). The body faces the camera head-on, garment movement visible in the stride. Slight natural sway. The background recedes behind the approaching figure, creating depth through motion.`,
+      ];
+      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % normalBShots.length : 0;
+      return normalBShots[idx];
+    })()] : []),
     // Artistic mode: signature lens + optimized scene direction per shot
     ...(body.artistic ? [(() => {
       const sceneVariant = typeof body.artistic === 'string' ? body.artistic : 'A';

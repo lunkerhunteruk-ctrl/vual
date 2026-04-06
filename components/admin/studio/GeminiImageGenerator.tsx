@@ -244,6 +244,7 @@ export function GeminiImageGenerator({
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
   const [artisticMode, setArtisticMode] = useState<false | 'A' | 'B'>(false);
+  const [sceneVariant, setSceneVariant] = useState<'A' | 'B'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
@@ -638,7 +639,7 @@ export function GeminiImageGenerator({
             locale,
             storeId,
             ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
-            ...(artisticMode ? { artistic: artisticMode, shotIndex: shotIdx, totalShots: storyCount } : {}),
+            ...(artisticMode ? { artistic: artisticMode, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
           }),
         }).then(r => r.json())
       );
@@ -1170,6 +1171,16 @@ export function GeminiImageGenerator({
               }`}
             >
               {artisticMode ? (locale === 'ja' ? `アーティスティック ${artisticMode}` : `Artistic ${artisticMode}`) : (locale === 'ja' ? 'アーティスティック' : 'Artistic')}
+            </button>
+            <button
+              onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : 'A')}
+              className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
+                sceneVariant === 'B'
+                  ? 'bg-[var(--color-accent)] text-white'
+                  : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
+              }`}
+            >
+              {locale === 'ja' ? `シーン ${sceneVariant}` : `Scene ${sceneVariant}`}
             </button>
           </>
         )}
