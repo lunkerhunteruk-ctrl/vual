@@ -311,8 +311,8 @@ export async function POST(request: NextRequest) {
           const imgBuffer = Buffer.from(modelImageData.data, 'base64');
           const metadata = await sharp(imgBuffer).metadata();
           if (metadata.width && metadata.height) {
-            // Crop top 25% of the image (head + shoulders area)
-            const cropHeight = Math.round(metadata.height * 0.25);
+            // Crop top 50% of the image (head + upper body area)
+            const cropHeight = Math.round(metadata.height * 0.50);
             const faceCrop = await sharp(imgBuffer)
               .extract({ left: 0, top: 0, width: metadata.width, height: cropHeight })
               .resize({ width: 512, fit: 'inside' })
