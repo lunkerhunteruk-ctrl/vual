@@ -243,7 +243,7 @@ export function GeminiImageGenerator({
   // Multi-story editorial state
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
-  const [isArtisticMode, setIsArtisticMode] = useState(false);
+  const [artisticMode, setArtisticMode] = useState<false | 'A' | 'B'>(false);
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
@@ -638,7 +638,7 @@ export function GeminiImageGenerator({
             locale,
             storeId,
             ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
-            ...(isArtisticMode ? { artistic: true, shotIndex: shotIdx, totalShots: storyCount } : {}),
+            ...(artisticMode ? { artistic: artisticMode, shotIndex: shotIdx, totalShots: storyCount } : {}),
           }),
         }).then(r => r.json())
       );
@@ -1148,7 +1148,7 @@ export function GeminiImageGenerator({
           <>
             <div className="w-px h-5 bg-[var(--color-line)]" />
             <button
-              onClick={() => { setIsDetailMode(!isDetailMode); if (!isDetailMode) setIsArtisticMode(false); }}
+              onClick={() => { setIsDetailMode(!isDetailMode); if (!isDetailMode) setArtisticMode(false); }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 isDetailMode
                   ? 'bg-[var(--color-accent)] text-white'
@@ -1158,14 +1158,18 @@ export function GeminiImageGenerator({
               {locale === 'ja' ? 'ディテール' : 'Detail'}
             </button>
             <button
-              onClick={() => { setIsArtisticMode(!isArtisticMode); if (!isArtisticMode) setIsDetailMode(false); }}
+              onClick={() => {
+                const next = artisticMode === false ? 'A' : artisticMode === 'A' ? 'B' : false;
+                setArtisticMode(next);
+                if (next) setIsDetailMode(false);
+              }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
-                isArtisticMode
+                artisticMode
                   ? 'bg-[var(--color-accent)] text-white'
                   : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
               }`}
             >
-              {locale === 'ja' ? 'アーティスティック' : 'Artistic'}
+              {artisticMode ? (locale === 'ja' ? `アーティスティック ${artisticMode}` : `Artistic ${artisticMode}`) : (locale === 'ja' ? 'アーティスティック' : 'Artistic')}
             </button>
           </>
         )}

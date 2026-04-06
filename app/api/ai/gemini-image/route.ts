@@ -61,7 +61,7 @@ interface RequestBody {
   customPrompt?: string;
   locale?: string;
   detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
-  artistic?: boolean;
+  artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   shotIndex?: number;
   totalShots?: number;
   // Consumer billing fields (when called from customer try-on)
@@ -772,7 +772,9 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
     // Artistic mode: signature lens + optimized scene direction per shot
     ...(body.artistic ? [(() => {
-      const artisticShots = [
+      const sceneVariant = typeof body.artistic === 'string' ? body.artistic : 'A';
+
+      const sceneA = [
         // Shot 1: Noctilux — golden hour backlight, bokeh swirl
         `ARTISTIC DIRECTION: Shot on Leica Noctilux-M 50mm f/0.95 ASPH wide open.
 SCENE OVERRIDE: Position the model with strong BACKLIGHT — golden hour sun directly behind, creating a luminous rim light around hair and shoulders. The background should contain warm-toned architecture or foliage that dissolves into the Noctilux's legendary swirling bokeh. Colors bleed and merge organically like watercolor. Any specular highlights in the background become soft, glowing orbs. The model is razor-sharp against this painterly dissolution of color.
@@ -803,8 +805,42 @@ LIGHTING: Natural light with the environment providing depth layers. Foreground 
 SCENE OVERRIDE: BLUE HOUR or deep twilight setting — the sky holds the last traces of deep blue and amber. The model is lit by a single warm light source (a lamp, a doorway, reflected golden light) against the cool twilight background. At f/0.95, the depth of field is paper-thin — the model appears to float in an ethereal, dreamlike space. Any remaining ambient lights become impossibly smooth, large bokeh circles. The overall mood is contemplative, quiet, almost otherworldly.
 LIGHTING: Single warm practical light against cool blue-hour ambient. The contrast between warm subject and cool background creates emotional depth.`,
       ];
-      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % artisticShots.length : 0;
-      return artisticShots[idx];
+
+      const sceneB = [
+        // Shot 1: Hasselblad — wet cobblestone reflections
+        `ARTISTIC DIRECTION: Shot on Hasselblad XCD 80mm f/1.9 (medium format).
+SCENE OVERRIDE: RAIN-WASHED COBBLESTONE or stone pavement — the ground is wet and reflective, mirroring the model's silhouette, fragments of architecture, and ambient light in glossy puddle reflections. The medium format sensor captures extraordinary surface texture — every wet stone, every ripple in the puddle is rendered with tactile realism. The model stands on dry ground near the edge of a puddle, NOT in water. The wet surface adds a cinematic, moody quality.
+LIGHTING: Overcast or post-rain diffused light with occasional breaks of warm sun reflecting off wet surfaces. The wet ground acts as a natural reflector, filling shadows from below.`,
+
+        // Shot 2: Leica Summilux — architectural corridor depth
+        `ARTISTIC DIRECTION: Shot on Leica Summilux-M 35mm f/1.4 ASPH FLE.
+SCENE OVERRIDE: The model stands inside a DEEP ARCHITECTURAL CORRIDOR, archway, or colonnade — receding columns, arches, or walls create strong perspective lines that draw the eye toward the model. The architecture frames the model like a living painting. The Summilux's characteristic warm color rendering and smooth tonal transitions give the stone and plaster surfaces a richness that digital lenses often miss. Shoot slightly wide to capture the full depth of the corridor.
+LIGHTING: Light enters from the far end or from side openings, creating a natural gradient from shadow to light along the corridor. The model is positioned at the threshold between light and shadow.`,
+
+        // Shot 3: Canon RF Macro — graphic shadow stripes
+        `ARTISTIC DIRECTION: Shot on Canon RF 100mm f/2.8L Macro IS USM.
+SCENE OVERRIDE: Strong afternoon sun casts GRAPHIC SHADOW PATTERNS across the model — from window blinds, iron gates, lattice screens, palm fronds, or architectural elements. The shadow stripes or geometric patterns fall across the model's body and garment, creating a bold, graphic editorial composition. The macro lens resolves every thread in the fabric where light meets shadow with surgical precision. The contrast between illuminated and shadowed areas should be stark and dramatic.
+LIGHTING: Hard, low-angle afternoon sunlight through a pattern-creating element. The shadows are sharp-edged and graphic, almost like body paint.`,
+
+        // Shot 4: Voigtlander Nokton — warm wall lean
+        `ARTISTIC DIRECTION: Shot on Voigtlander Nokton 50mm f/1.0 Aspherical.
+SCENE OVERRIDE: The model leans casually against a WARM-TONED WALL — terracotta, ochre, aged plaster, or sun-baked stone. The late afternoon sun paints the wall in deep orange and gold. The Nokton wide open at f/1.0 renders the wall texture with a distinctive softness that wraps around the sharp subject — a unique vintage quality that modern lenses cannot replicate. The overall palette is warm: amber, honey, burnt sienna. The model's pose is relaxed, almost candid.
+LIGHTING: Low, warm directional sunlight hitting the wall and model from the side. The wall itself becomes a giant warm reflector, wrapping the model in golden light.`,
+
+        // Shot 5: Sony 135mm GM — layered botanical foreground
+        `ARTISTIC DIRECTION: Shot on Sony FE 135mm f/1.8 GM.
+SCENE OVERRIDE: Shoot THROUGH BOTANICAL FOREGROUND — branches, leaves, flowers, or dried grasses create a layered, painterly frame in the near field. The 135mm compression stacks these layers together, creating depth and intimacy. The foreground foliage is rendered as soft, translucent color washes by the f/1.8 aperture. Behind the model, the background is equally compressed and melted into smooth bokeh. The model exists in a narrow band of sharpness between two worlds of soft color.
+LIGHTING: Natural backlight or sidelight filtering through the foliage, creating small lens flares and rim light on leaves. Dappled warm light on the model's face and garment.`,
+
+        // Shot 6: Zeiss Batis — geometric stairs/levels
+        `ARTISTIC DIRECTION: Shot on Zeiss Batis 40mm f/2 CF (Close Focus).
+SCENE OVERRIDE: The model is positioned on ARCHITECTURAL STAIRS, stepped terraces, or multilevel surfaces — the geometric lines of the steps create strong diagonal and horizontal lines that structure the composition. The model may sit on a step, lean against a railing, or stand at a landing where lines converge. The Batis 40mm captures enough environment to establish the graphic, geometric quality of the location while maintaining a natural perspective. The architectural lines should dominate the composition, with the model as the human element that breaks the geometry.
+LIGHTING: Even, diffused light (open shade or overcast) that reveals the full texture and geometry of the stone steps without harsh shadows. Subtle directional light to give the model dimension.`,
+      ];
+
+      const shots = sceneVariant === 'B' ? sceneB : sceneA;
+      const idx = typeof body.shotIndex === 'number' ? body.shotIndex % shots.length : 0;
+      return shots[idx];
     })()] : []),
   ];
 
