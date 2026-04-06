@@ -605,16 +605,16 @@ export function GeminiImageGenerator({
       const detailModeAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(storyCount).fill(undefined);
         if (sceneVariant === 'B') {
-          // Detail B: bag-focused + varied face/upper-body
-          if (storyCount === 6) return ['bag', 'face-profile', 'upper-body-texture', 'bag-detail', 'face-gaze', 'upper-body-gaze'];
-          if (storyCount === 4) return ['bag', 'face-profile', 'upper-body-texture', 'face-gaze'];
-          if (storyCount === 3) return ['bag', 'face-gaze', 'upper-body-texture'];
+          // Detail B: bags (3) + shoes (3)
+          if (storyCount === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
+          if (storyCount === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
+          if (storyCount === 3) return ['bag', 'shoes', 'bag-detail'];
           return [undefined];
         }
-        // Detail A: shoes-focused (existing)
-        if (storyCount === 6) return ['shoes', 'face', 'upper-body', 'shoes-wall', 'face-gaze', 'upper-body-gaze'];
-        if (storyCount === 4) return ['shoes', 'face', 'upper-body', 'face-gaze'];
-        if (storyCount === 3) return ['shoes', 'face-gaze', 'upper-body'];
+        // Detail A: face + upper body only (6 varied shots)
+        if (storyCount === 6) return ['face', 'upper-body', 'face-profile', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 4) return ['face', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
+        if (storyCount === 3) return ['face-profile', 'face-gaze', 'upper-body-gaze'];
         return [undefined];
       })();
 
