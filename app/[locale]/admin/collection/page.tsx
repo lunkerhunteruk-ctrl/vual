@@ -441,19 +441,8 @@ function LookDetailModal({
                           setDownloadFilterOpen(false);
                           try {
                             const proxyUrl = `/api/media/download?url=${encodeURIComponent(look.image_url)}`;
-                            if (f.id === 'none') {
-                              // Download original via proxy
-                              const res = await fetch(proxyUrl);
-                              const blob = await res.blob();
-                              const link = document.createElement('a');
-                              link.href = URL.createObjectURL(blob);
-                              link.download = `look-${look.id}.png`;
-                              document.body.appendChild(link);
-                              link.click();
-                              document.body.removeChild(link);
-                              URL.revokeObjectURL(link.href);
-                            } else {
-                              // Load image via proxy, draw to canvas, apply filter
+                            {
+                              // Load image via proxy, draw to canvas, optionally apply filter
                               const img = new window.Image();
                               img.crossOrigin = 'anonymous';
                               img.src = proxyUrl;
@@ -465,12 +454,14 @@ function LookDetailModal({
                               canvas.width = img.naturalWidth;
                               canvas.height = img.naturalHeight;
                               canvas.getContext('2d')!.drawImage(img, 0, 0);
-                              const base64 = canvas.toDataURL('image/png');
-                              const { applyFilter } = await import('@/lib/photo-filters');
-                              const filtered = await applyFilter(base64, f.id);
+                              let dataUrl = canvas.toDataURL('image/png');
+                              if (f.id !== 'none') {
+                                const { applyFilter } = await import('@/lib/photo-filters');
+                                dataUrl = await applyFilter(dataUrl, f.id);
+                              }
                               const link = document.createElement('a');
-                              link.href = filtered;
-                              link.download = `look-${look.id}-${f.id}.png`;
+                              link.href = dataUrl;
+                              link.download = `look-${look.id}${f.id !== 'none' ? `-${f.id}` : ''}.png`;
                               document.body.appendChild(link);
                               link.click();
                               document.body.removeChild(link);
