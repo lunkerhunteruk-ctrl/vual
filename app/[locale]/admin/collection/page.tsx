@@ -730,6 +730,7 @@ function BundleDetailModal({
   const store = useStoreContext((s) => s.store);
   const isDevStore = store?.slug === 'vualofficial';
   const [isDownloading, setIsDownloading] = useState(false);
+  const [bundleDownloadFilterOpen, setBundleDownloadFilterOpen] = useState(false);
 
   const handleAddLook = async (lookId: string) => {
     setIsAdding(lookId);
@@ -757,6 +758,60 @@ function BundleDetailModal({
       console.error('Failed to remove look from bundle:', err);
     } finally {
       setIsRemoving(null);
+    }
+  };
+
+  const handleDownloadBundleZip = async (filterId: string) => {
+    if (isDownloading) return;
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+      const { applyFilter } = filterId !== 'none' ? await import('@/lib/photo-filters') : { applyFilter: null };
+
+      for (let i = 0; i < orderedLooks.length; i++) {
+        const look = orderedLooks[i];
+        const num = String(i + 1).padStart(2, '0');
+        const title = look.title || `look_${i + 1}`;
+        const fileName = `${num}_${title}${filterId !== 'none' ? `_${filterId}` : ''}`;
+
+        const proxyUrl = `/api/media/download?url=${encodeURIComponent(look.image_url)}`;
+        const res = await fetch(proxyUrl);
+        const blob = await res.blob();
+
+        if (filterId === 'none' || !applyFilter) {
+          zip.file(`${fileName}.png`, blob);
+        } else {
+          // Apply filter via canvas
+          const img = new window.Image();
+          img.crossOrigin = 'anonymous';
+          img.src = URL.createObjectURL(blob);
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = () => reject(new Error('Image load failed'));
+          });
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          canvas.getContext('2d')!.drawImage(img, 0, 0);
+          const base64 = canvas.toDataURL('image/png');
+          URL.revokeObjectURL(img.src);
+          const filtered = await applyFilter(base64, filterId as any);
+          const filteredBlob = await fetch(filtered).then(r => r.blob());
+          zip.file(`${fileName}.png`, filteredBlob);
+        }
+      }
+
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `bundle_${bundle.id.slice(0, 8)}${filterId !== 'none' ? `_${filterId}` : ''}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Bundle ZIP download error:', err);
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -833,19 +888,63 @@ function BundleDetailModal({
             >
               <Plus size={18} className="text-[var(--color-text-label)]" />
             </button>
-            {isDevStore && (
+            <div className="relative">
               <button
-                onClick={handleDownloadGlamJobsZip}
+                onClick={() => setBundleDownloadFilterOpen(prev => !prev)}
                 disabled={isDownloading}
-                className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors disabled:opacity-50"
-                title={ja ? 'Glam Jobs ZIP をダウンロード' : 'Download Glam Jobs ZIP'}
+                className="flex items-center gap-0.5 p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors disabled:opacity-50"
+                title={ja ? 'バンドルをダウンロード' : 'Download bundle'}
               >
                 {isDownloading
                   ? <Loader2 size={18} className="animate-spin text-[var(--color-text-label)]" />
                   : <Download size={18} className="text-[var(--color-text-label)]" />
                 }
+                <ChevronDown size={12} className="text-[var(--color-text-label)]" />
               </button>
-            )}
+              {bundleDownloadFilterOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setBundleDownloadFilterOpen(false)} />
+                  <div className="absolute right-0 top-full mt-1 z-20 bg-white rounded-lg shadow-xl border border-[var(--color-line)] py-1 min-w-[150px]">
+                    {([
+                      { id: 'none' as const, label: 'Original' },
+                      { id: 'natural' as const, label: 'Natural' },
+                      { id: 'film' as const, label: 'Film' },
+                      { id: 'chrome' as const, label: 'Chrome' },
+                      { id: 'polaroid' as const, label: 'Polaroid' },
+                      { id: 'polaroidDusk' as const, label: 'Polaroid Dusk' },
+                      { id: 'polaroidBlue' as const, label: 'Polaroid Blue' },
+                    ]).map((f) => (
+                      <button
+                        key={f.id}
+                        className="w-full text-left px-3 py-1.5 text-xs text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors flex items-center gap-2"
+                        onClick={() => {
+                          setBundleDownloadFilterOpen(false);
+                          handleDownloadBundleZip(f.id);
+                        }}
+                      >
+                        <Download size={12} className="text-[var(--color-text-label)]" />
+                        {f.label}
+                      </button>
+                    ))}
+                    {isDevStore && (
+                      <>
+                        <div className="border-t border-[var(--color-line)] my-1" />
+                        <button
+                          className="w-full text-left px-3 py-1.5 text-xs text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors flex items-center gap-2"
+                          onClick={() => {
+                            setBundleDownloadFilterOpen(false);
+                            handleDownloadGlamJobsZip();
+                          }}
+                        >
+                          <Download size={12} className="text-[var(--color-text-label)]" />
+                          Glam Jobs ZIP
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
             <button onClick={onClose} className="p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors">
               <X size={20} className="text-[var(--color-text-label)]" />
             </button>
