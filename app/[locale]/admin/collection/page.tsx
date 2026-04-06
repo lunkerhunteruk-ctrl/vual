@@ -332,6 +332,7 @@ function LookDetailModal({
   const store = useStoreContext((s) => s.store);
   const isDevStore = store?.slug === 'vualofficial';
   const [downloadFilterOpen, setDownloadFilterOpen] = useState(false);
+  const [glamDownloadFilterOpen, setGlamDownloadFilterOpen] = useState(false);
   const [title, setTitle] = useState(look.title || '');
   const [description, setDescription] = useState(look.description || '');
   const [showCredits, setShowCredits] = useState(look.show_credits ?? true);
@@ -476,6 +477,92 @@ function LookDetailModal({
                             }
                           } catch (err) {
                             console.error('Download failed:', err);
+                          }
+                        }}
+                      >
+                        <Download size={12} className="text-[var(--color-text-label)]" />
+                        {f.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            {/* Glam AI folder download */}
+            <div className="relative">
+              <button
+                onClick={() => setGlamDownloadFilterOpen(prev => !prev)}
+                className="flex items-center gap-0.5 p-1.5 hover:bg-[var(--color-bg-element)] rounded-lg transition-colors"
+                title={ja ? 'Glam AI フォルダ形式' : 'Glam AI folder'}
+              >
+                <Layers size={18} className="text-[var(--color-text-label)]" />
+                <ChevronDown size={12} className="text-[var(--color-text-label)]" />
+              </button>
+              {glamDownloadFilterOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setGlamDownloadFilterOpen(false)} />
+                  <div className="absolute right-0 top-full mt-1 z-20 bg-white rounded-lg shadow-xl border border-[var(--color-line)] py-1 min-w-[150px]">
+                    {([
+                      { id: 'none' as const, label: 'Original' },
+                      { id: 'natural' as const, label: 'Natural' },
+                      { id: 'film' as const, label: 'Film' },
+                      { id: 'chrome' as const, label: 'Chrome' },
+                      { id: 'polaroid' as const, label: 'Polaroid' },
+                      { id: 'polaroidDusk' as const, label: 'Polaroid Dusk' },
+                      { id: 'polaroidBlue' as const, label: 'Polaroid Blue' },
+                    ]).map((f) => (
+                      <button
+                        key={f.id}
+                        className="w-full text-left px-3 py-1.5 text-xs text-[var(--color-text-body)] hover:bg-[var(--color-bg-element)] transition-colors flex items-center gap-2"
+                        onClick={async () => {
+                          setGlamDownloadFilterOpen(false);
+                          try {
+                            const idx = bundleLooks ? bundleLooks.findIndex(l => l.id === look.id) : -1;
+                            const num = String((idx >= 0 ? idx : 0) + 1).padStart(3, '0');
+                            const lookTitle = look.title || `look_${look.id.slice(0, 8)}`;
+                            const folderName = `${num}_${lookTitle}`;
+
+                            const zip = new JSZip();
+                            const folder = zip.folder(folderName)!;
+
+                            const proxyUrl = `/api/media/download?url=${encodeURIComponent(look.image_url)}`;
+                            const res = await fetch(proxyUrl);
+                            const blob = await res.blob();
+
+                            if (f.id === 'none') {
+                              const ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                              folder.file(`image.${ext}`, blob);
+                            } else {
+                              const img = new window.Image();
+                              img.crossOrigin = 'anonymous';
+                              img.src = URL.createObjectURL(blob);
+                              await new Promise<void>((resolve, reject) => {
+                                img.onload = () => resolve();
+                                img.onerror = () => reject(new Error('Image load failed'));
+                              });
+                              const canvas = document.createElement('canvas');
+                              canvas.width = img.naturalWidth;
+                              canvas.height = img.naturalHeight;
+                              canvas.getContext('2d')!.drawImage(img, 0, 0);
+                              const base64 = canvas.toDataURL('image/png');
+                              URL.revokeObjectURL(img.src);
+                              const { applyFilter } = await import('@/lib/photo-filters');
+                              const filtered = await applyFilter(base64, f.id);
+                              const filteredBlob = await fetch(filtered).then(r => r.blob());
+                              folder.file('image.png', filteredBlob);
+                            }
+
+                            folder.file('prompt.txt', look.video_prompt_veo || '');
+
+                            const zipBlob = await zip.generateAsync({ type: 'blob' });
+                            const url = URL.createObjectURL(zipBlob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = `${folderName}.zip`;
+                            a.click();
+                            URL.revokeObjectURL(url);
+                          } catch (err) {
+                            console.error('Glam folder download failed:', err);
                           }
                         }}
                       >
