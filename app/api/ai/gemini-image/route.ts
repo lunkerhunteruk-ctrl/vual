@@ -83,7 +83,8 @@ const backgroundDescriptions: Record<string, string> = {
 
 // Ethnicity descriptions
 const ethnicityDescriptions: Record<string, string> = {
-  japanese: 'Japanese',
+  japanese: 'ethnically ambiguous East Asian with subtle mixed-heritage features — not distinctly Japanese, Korean, or Chinese, but a unique blend that transcends any single nationality',
+  'no-ethnic': 'ethnically ambiguous East Asian with subtle mixed-heritage features — not distinctly Japanese, Korean, or Chinese, but a unique blend that transcends any single nationality',
   korean: 'Korean',
   chinese: 'Chinese',
   'eastern-european': 'Eastern European',
