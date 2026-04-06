@@ -1342,6 +1342,24 @@
       "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-028.png"
     },
     {
+      "id": "jp-f-18-stand-029",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-029.png",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-029.png"
+    },
+    {
+      "id": "jp-f-18-stand-030",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-030.png",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-030.png"
+    },
+    {
       "id": "cn-f-18-stand-001",
       "gender": "female",
       "ageRange": "18-24",
