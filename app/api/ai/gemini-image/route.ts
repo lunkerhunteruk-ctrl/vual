@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
+  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'bag' | 'bag-detail';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   sceneVariant?: 'A' | 'B'; // Normal mode scene variant
   shotIndex?: number;
@@ -726,6 +726,58 @@ The model's hands may rest naturally at sides, in pockets, or holding an accesso
 LIGHTING: Beautiful directional light emphasizing fabric texture and garment construction details. Architectural light, window light, or dappled natural light creating depth and dimension on the clothing surface.
 MOOD: Powerful, editorial, captivating — like a luxury campaign hero shot.
 LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the legendary wide-open rendering. The model and garment details are razor-sharp, but the background dissolves into rich, creamy bokeh where colors blend and bleed into each other like watercolor. The out-of-focus background creates a painterly wash of ambient color (architecture tones, foliage, sky) with the Noctilux's signature organic bokeh swirl in the transition zone.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      // ── Detail B variants ──
+
+      'bag': `DETAIL SHOT — BAG/ACCESSORY CLOSE-UP:
+Generate a cinematic close-up photograph focusing on the bag or accessory the model is carrying.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Close-up from waist down to mid-thigh, with the bag as the hero of the shot. The model's hand holding the bag should be visible. Show enough of the garment to establish the outfit context. The bag must be the EXACT one from the reference images.
+LIGHTING: Beautiful directional light that reveals the bag's material texture — leather grain, hardware gloss, stitching details. Warm, luxurious light that makes the materials look rich and tactile.
+MOOD: Luxurious, covetable, editorial — like a Bottega Veneta or Hermès accessory campaign. The bag should feel like the most important object in the frame.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary material texture rendering with smooth, airy bokeh behind.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'bag-detail': `DETAIL SHOT — BAG/ACCESSORY EXTREME CLOSE-UP:
+Generate a cinematic extreme close-up of the bag or accessory.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Tight crop on the bag — show hardware, clasp, zipper pull, or logo area. The model's hand grips or rests on the bag naturally. Only the hand, part of the arm, and the garment fabric near the bag are visible. This is about the object's craftsmanship and materiality.
+POSE: The model holds the bag casually at their side, or the bag rests on a surface (ledge, step) with the model's hand draped over it. One hand may be in a pocket while the other holds the bag — effortless, natural grip.
+LIGHTING: Raking sidelight that accentuates texture — every stitch, grain, and hardware edge catches the light. Shallow depth of field with the clasp or front face razor-sharp.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the bag hardware and texture are impossibly sharp while everything else dissolves into painterly bokeh.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'face-profile': `DETAIL SHOT — FACE/PORTRAIT (PROFILE):
+Generate a cinematic profile portrait of the model.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: True PROFILE or strong three-quarter view — the model faces screen-left or screen-right, NOT toward camera. Show the jawline, cheekbone, and silhouette of the face against the background. Include the neck and upper garment neckline/collar.
+EXPRESSION: Serene, contemplative, looking into the distance. Completely absorbed in thought — the camera is invisible to them. Lips slightly parted or closed naturally.
+LIGHTING: Strong rim light or backlight outlining the profile. The face is lit by soft reflected fill, creating a beautiful gradient across the cheek. The profile edge is luminous against a darker or blurred background.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness on the profile edge with elegant, dignified background separation. Every skin texture detail is rendered with extraordinary clarity.
+Hair should be natural and undisturbed.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-texture': `DETAIL SHOT — UPPER BODY (FABRIC TEXTURE FOCUS):
+Generate a cinematic upper-body photograph emphasizing garment texture and construction.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist up, slightly angled to show fabric drape and garment construction in three dimensions. NOT straight-on — a 3/4 body angle reveals how the garment wraps and falls. The garment must be the EXACT one from reference images.
+EXPRESSION: Looking slightly away from camera (three-quarter profile). NOT looking at camera. Calm, disengaged, statuesque.
+The model's hands may rest naturally, one hand holding a bag or accessory if included. No hair touching.
+LIGHTING: Raking sidelight that sculpts every fold, seam, and texture of the fabric surface. The light should create visible texture on the garment — you should almost feel the material. Window light or architectural sidelight is ideal.
+LENS: Shot on Hasselblad XCD 80mm f/1.9 (medium format) — the larger sensor captures micro-texture details in the fabric that smaller formats miss. Tonal gradation in the fabric folds is extraordinarily smooth and rich.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
     };
 

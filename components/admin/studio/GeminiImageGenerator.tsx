@@ -243,7 +243,7 @@ export function GeminiImageGenerator({
   // Multi-story editorial state
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
-  const [artisticMode, setArtisticMode] = useState<false | 'A' | 'B'>(false);
+  const [artisticMode, setArtisticMode] = useState(false);
   const [sceneVariant, setSceneVariant] = useState<'A' | 'B'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
@@ -604,7 +604,14 @@ export function GeminiImageGenerator({
       // Detail mode: assign detail types per shot for close-up variety
       const detailModeAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(storyCount).fill(undefined);
-        // Balanced distribution: shoes, face, upper-body
+        if (sceneVariant === 'B') {
+          // Detail B: bag-focused + varied face/upper-body
+          if (storyCount === 6) return ['bag', 'face-profile', 'upper-body-texture', 'bag-detail', 'face-gaze', 'upper-body-gaze'];
+          if (storyCount === 4) return ['bag', 'face-profile', 'upper-body-texture', 'face-gaze'];
+          if (storyCount === 3) return ['bag', 'face-gaze', 'upper-body-texture'];
+          return [undefined];
+        }
+        // Detail A: shoes-focused (existing)
         if (storyCount === 6) return ['shoes', 'face', 'upper-body', 'shoes-wall', 'face-gaze', 'upper-body-gaze'];
         if (storyCount === 4) return ['shoes', 'face', 'upper-body', 'face-gaze'];
         if (storyCount === 3) return ['shoes', 'face-gaze', 'upper-body'];
@@ -639,7 +646,7 @@ export function GeminiImageGenerator({
             locale,
             storeId,
             ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
-            ...(artisticMode ? { artistic: artisticMode, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
+            ...(artisticMode ? { artistic: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
           }),
         }).then(r => r.json())
       );
@@ -1160,9 +1167,8 @@ export function GeminiImageGenerator({
             </button>
             <button
               onClick={() => {
-                const next = artisticMode === false ? 'A' : artisticMode === 'A' ? 'B' : false;
-                setArtisticMode(next);
-                if (next) setIsDetailMode(false);
+                setArtisticMode(!artisticMode);
+                if (!artisticMode) setIsDetailMode(false);
               }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 artisticMode
@@ -1170,7 +1176,7 @@ export function GeminiImageGenerator({
                   : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
               }`}
             >
-              {artisticMode ? (locale === 'ja' ? `アーティスティック ${artisticMode}` : `Artistic ${artisticMode}`) : (locale === 'ja' ? 'アーティスティック' : 'Artistic')}
+              {locale === 'ja' ? 'アーティスティック' : 'Artistic'}
             </button>
             <button
               onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : 'A')}

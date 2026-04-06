@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       lookImageBase64?: string;
       lookImageUrl?: string;
       locale?: string;
-      detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'upper-body' | 'upper-body-gaze';
+      detailMode?: string;
       shotIndex?: number;
       totalShots?: number;
     };
@@ -87,8 +87,12 @@ WIND SHOT (MANDATORY for this shot): This shot MUST feature visible wind creatin
       'shoes-wall': 'shoes close-up (one foot on wall, casual cool pose)',
       'face': 'face/portrait close-up (looking away)',
       'face-gaze': 'face/portrait close-up (direct camera gaze, powerful)',
+      'face-profile': 'face/portrait profile view (side angle)',
       'upper-body': 'upper body/garment detail close-up',
       'upper-body-gaze': 'upper body close-up (direct camera gaze, commanding)',
+      'upper-body-texture': 'upper body close-up (fabric texture focus, looking away)',
+      'bag': 'bag/accessory close-up',
+      'bag-detail': 'bag/accessory extreme close-up (hardware, texture)',
     };
     const detailInstruction = detailMode
       ? `\nDETAIL SHOT MODE (${detailModeLabels[detailMode] || detailMode}): This is a CLOSE-UP detail shot, NOT a full-body shot. The video prompts must describe extremely subtle, almost imperceptible movement — this shot will use Ken Burns (slow pan/zoom on a still image). Focus on: gentle light shifts, subtle shadow movement, tiny fabric micro-movements from a breeze, dust particles in light beams. Camera should be nearly static with only a very slow drift. Use 4s duration for detail shots. The title and description should be poetic and focused on texture, light, and intimate details — NOT action or poses.`
