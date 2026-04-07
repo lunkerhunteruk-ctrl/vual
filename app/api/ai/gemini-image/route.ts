@@ -737,7 +737,7 @@ The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmen
 ${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
 
 COMPOSITION: Close-up from waist down to mid-thigh, with the bag as the hero of the shot. The model's hand holding the bag should be visible. Show enough of the garment to establish the outfit context. The bag must be the EXACT one from the reference images.
-LIGHTING: Beautiful directional light that reveals the bag's material texture — leather grain, hardware gloss, stitching details. Warm, luxurious light that makes the materials look rich and tactile.
+LIGHTING: Beautiful directional light that reveals the bag's material texture — surface grain, stitching details, and construction quality. Warm, luxurious light that makes the materials look rich and tactile.
 MOOD: Luxurious, covetable, editorial — like a Bottega Veneta or Hermès accessory campaign. The bag should feel like the most important object in the frame.
 LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary material texture rendering with smooth, airy bokeh behind.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
@@ -748,10 +748,10 @@ ${modelDescription}
 The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
 ${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
 
-COMPOSITION: Tight crop on the bag — show hardware, clasp, zipper pull, or logo area. The model's hand grips or rests on the bag naturally. Only the hand, part of the arm, and the garment fabric near the bag are visible. This is about the object's craftsmanship and materiality.
+COMPOSITION: Tight crop on the bag — focus on the most visually prominent detail area (surface texture, stitching, closure, or any defining design element visible in the reference image). Do NOT invent or add details that are not in the reference. The model's hand grips or rests on the bag naturally. Only the hand, part of the arm, and the garment fabric near the bag are visible. This is about the object's craftsmanship and materiality.
 POSE: The model holds the bag casually at their side, or the bag rests on a surface (ledge, step) with the model's hand draped over it. One hand may be in a pocket while the other holds the bag — effortless, natural grip.
-LIGHTING: Raking sidelight that accentuates texture — every stitch, grain, and hardware edge catches the light. Shallow depth of field with the clasp or front face razor-sharp.
-LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the bag hardware and texture are impossibly sharp while everything else dissolves into painterly bokeh.
+LIGHTING: Raking sidelight that accentuates texture — every stitch and surface detail catches the light. Shallow depth of field with the bag's front face razor-sharp.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the bag's surface and texture are impossibly sharp while everything else dissolves into painterly bokeh.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'face-profile': `DETAIL SHOT — FACE/PORTRAIT (PROFILE):
