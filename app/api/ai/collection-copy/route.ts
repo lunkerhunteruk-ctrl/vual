@@ -311,7 +311,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
     return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
   } catch (error: any) {
     console.error('[Collection Copy] Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
   }
 }
 
@@ -351,5 +351,13 @@ function fallbackCopy(locale: string) {
   const desc = locale.startsWith('ja')
     ? '光が織りなす一瞬の物語。'
     : 'A fleeting story woven in light.';
-  return { title: fallbackTitle(locale), description: desc };
+  return {
+    title: fallbackTitle(locale),
+    description: desc,
+    shot_duration_sec: 6,
+    video_prompt_veo: 'Scene: A fashion model stands in an architectural setting, still and composed. 35mm film grain, muted earth tones, editorial fashion. Camera movement: Slow push-in from medium-wide to medium shot. Main subject: The model remains perfectly still, a gentle breeze moves the fabric of the garment subtly. Emotionless, sculpted expression gazing into the distance. Background: Architectural elements with warm natural light. Lighting: Soft directional light with warm tones. Audio direction: No background music. Soft ambient sounds, faint wind, distant atmosphere. 6 second clip, cinematic aspect ratio, photorealistic quality, no background music.',
+    video_prompt_kling: 'Scene: Architectural fashion editorial setting with warm natural light. Character: Fashion model in editorial garments, standing still with composed posture. Action sequence: First subtle weight shift, then gentle fabric movement from breeze, finally hold still with distant gaze. Camera: Slow push-in from medium-wide, slight upward tilt. Style: Muted earth tones, 35mm film reference, motion intensity 0.3. Audio: No background music. Soft wind, ambient atmosphere, faint fabric rustle. Fashion editorial, photorealistic, no background music, 6 seconds.',
+    telop_caption_ja: '光の中に佇む',
+    telop_caption_en: 'standing in the light',
+  };
 }
