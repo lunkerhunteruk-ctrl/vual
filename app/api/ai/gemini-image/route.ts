@@ -837,6 +837,10 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
+    // Normal mode Scene A: catwalk shot on shot index 0
+    ...(body.sceneVariant !== 'B' && !body.artistic && typeof body.shotIndex === 'number' && body.shotIndex === 0 ? [
+      `COMPOSITION OVERRIDE: CATWALK SHOT — The model walks DIRECTLY TOWARD the camera through a corridor, archway, colonnade, or pathway. Center-framed, full body, confident stride. The architecture creates strong perspective lines converging toward the model. The background behind the model should be BRIGHT — light flooding in from behind or from the far end of the corridor. This is the hero establishing shot of the editorial.`
+    ] : []),
     // Normal mode Scene B: varied compositions and balanced walking directions
     ...(body.sceneVariant === 'B' && !body.artistic ? [(() => {
       const normalBShots = [
