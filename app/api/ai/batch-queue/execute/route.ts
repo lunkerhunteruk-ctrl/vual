@@ -343,16 +343,25 @@ export async function GET(request: NextRequest) {
   }
 }
 
+const APP_BASE_URL = process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://vualofficial.vual.jp';
+
 // Helper: resolve image URL or data URI to base64
 async function resolveImageToBase64(imageUrl: string): Promise<string> {
   if (imageUrl.startsWith('data:')) return imageUrl;
-  if (imageUrl.startsWith('http')) {
-    const res = await fetch(imageUrl);
-    const buf = Buffer.from(await res.arrayBuffer());
-    const contentType = res.headers.get('content-type') || 'image/jpeg';
-    return `data:${contentType};base64,${buf.toString('base64')}`;
+
+  // Resolve relative paths to full URL
+  let fullUrl = imageUrl;
+  if (!imageUrl.startsWith('http')) {
+    fullUrl = `${APP_BASE_URL}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
   }
-  return imageUrl;
+
+  const res = await fetch(fullUrl);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch image: ${fullUrl} (${res.status})`);
+  }
+  const buf = Buffer.from(await res.arrayBuffer());
+  const contentType = res.headers.get('content-type') || 'image/jpeg';
+  return `data:${contentType};base64,${buf.toString('base64')}`;
 }
 
 // Helper: extract base64 data and mime type
