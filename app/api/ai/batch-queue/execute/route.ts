@@ -343,7 +343,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-const APP_BASE_URL = process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://vualofficial.vual.jp';
+const APP_BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://vualofficial.vual.jp';
 
 // Helper: resolve image URL or data URI to base64
 async function resolveImageToBase64(imageUrl: string): Promise<string> {
