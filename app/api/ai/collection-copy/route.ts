@@ -311,7 +311,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
     return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
   } catch (error: any) {
     console.error('[Collection Copy] Error:', error);
-    return NextResponse.json({ ...fallbackCopy(locale), fallback: true });
+    return NextResponse.json({ ...fallbackCopy('ja'), fallback: true });
   }
 }
 
