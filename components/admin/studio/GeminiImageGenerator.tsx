@@ -1026,6 +1026,64 @@ export function GeminiImageGenerator({
   };
 
   const [queueCount, setQueueCount] = useState(0);
+  const [batchRunning, setBatchRunning] = useState(false);
+  const [batchStatus, setBatchStatus] = useState<string | null>(null);
+
+  const handleExecuteBatch = async () => {
+    if (!storeId || batchRunning) return;
+    setBatchRunning(true);
+    setBatchStatus(locale === 'ja' ? '送信中...' : 'Submitting...');
+
+    try {
+      // Submit batch
+      const res = await fetch('/api/ai/batch-queue/execute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storeId }),
+      });
+      const data = await res.json();
+
+      if (!data.success || !data.batchName) {
+        setBatchStatus(locale === 'ja' ? `エラー: ${data.error || '送信失敗'}` : `Error: ${data.error || 'Submit failed'}`);
+        setBatchRunning(false);
+        return;
+      }
+
+      const batchName = data.batchName;
+      setBatchStatus(locale === 'ja' ? `バッチ実行中 (${data.requestCount}件)...` : `Batch running (${data.requestCount} items)...`);
+      setQueueCount(0);
+
+      // Poll for completion
+      const pollInterval = setInterval(async () => {
+        try {
+          const pollRes = await fetch(`/api/ai/batch-queue/execute?batchName=${encodeURIComponent(batchName)}&storeId=${storeId}`);
+          const pollData = await pollRes.json();
+
+          if (pollData.state === 'JOB_STATE_SUCCEEDED') {
+            clearInterval(pollInterval);
+            setBatchStatus(locale === 'ja' ? `完了！ ${pollData.savedCount}枚保存` : `Done! ${pollData.savedCount} images saved`);
+            setBatchRunning(false);
+            // Refresh saved images
+            setSavedImagesVersion(v => v + 1);
+            setTimeout(() => setBatchStatus(null), 5000);
+          } else if (pollData.state === 'JOB_STATE_FAILED' || pollData.state === 'JOB_STATE_CANCELLED') {
+            clearInterval(pollInterval);
+            setBatchStatus(locale === 'ja' ? 'バッチ失敗' : 'Batch failed');
+            setBatchRunning(false);
+          } else {
+            setBatchStatus(locale === 'ja' ? `処理中 (${pollData.state})...` : `Processing (${pollData.state})...`);
+          }
+        } catch {
+          // Keep polling on network errors
+        }
+      }, 30000); // Poll every 30 seconds
+
+    } catch (err) {
+      console.error('Batch execute error:', err);
+      setBatchStatus(locale === 'ja' ? 'バッチ実行エラー' : 'Batch execute error');
+      setBatchRunning(false);
+    }
+  };
 
   const handleAddToQueue = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
@@ -1683,16 +1741,30 @@ export function GeminiImageGenerator({
       {/* Generate bar */}
       <div className="flex items-center justify-end gap-2 flex-shrink-0 py-3 border-t border-[var(--color-line)]">
         {isDevStore && (
-          <Button
-            variant="secondary"
-            size="lg"
-            disabled={!selectedGarmentImage}
-            leftIcon={<Layers size={16} />}
-            onClick={handleAddToQueue}
-            className="!px-4"
-          >
-            {locale === 'ja' ? `キューに追加${queueCount > 0 ? ` (${queueCount})` : ''}` : `Add to Queue${queueCount > 0 ? ` (${queueCount})` : ''}`}
-          </Button>
+          <>
+            <Button
+              variant="secondary"
+              size="lg"
+              disabled={!selectedGarmentImage}
+              leftIcon={<Layers size={16} />}
+              onClick={handleAddToQueue}
+              className="!px-4"
+            >
+              {locale === 'ja' ? `キューに追加${queueCount > 0 ? ` (${queueCount})` : ''}` : `Add to Queue${queueCount > 0 ? ` (${queueCount})` : ''}`}
+            </Button>
+            {(queueCount > 0 || batchRunning || batchStatus) && (
+              <Button
+                variant="secondary"
+                size="lg"
+                isLoading={batchRunning}
+                disabled={batchRunning || queueCount === 0}
+                onClick={handleExecuteBatch}
+                className="!px-4"
+              >
+                {batchStatus || (locale === 'ja' ? 'バッチ実行' : 'Run Batch')}
+              </Button>
+            )}
+          </>
         )}
         <Button
           variant="primary"
