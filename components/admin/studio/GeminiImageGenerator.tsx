@@ -1049,23 +1049,28 @@ export function GeminiImageGenerator({
         return;
       }
 
-      const batchName = data.batchName;
       setQueueCount(0);
       setBatchRunning(false);
-      setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み` : `✓ ${data.requestCount} submitted`);
-      setTimeout(() => setBatchStatus(null), 5000);
+      setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み（バックグラウンド処理中）` : `✓ ${data.requestCount} submitted (processing in background)`);
 
-      // Poll in background for completion — refresh saved images when done
+      // Poll in background for completion — uses DB-stored batchName
       const pollInterval = setInterval(async () => {
         try {
-          const pollRes = await fetch(`/api/ai/batch-queue/execute?batchName=${encodeURIComponent(batchName)}&storeId=${storeId}`);
+          const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}`);
           const pollData = await pollRes.json();
 
           if (pollData.state === 'JOB_STATE_SUCCEEDED') {
             clearInterval(pollInterval);
+            setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount}枚生成完了` : `✓ ${pollData.savedCount} images generated`);
             setSavedImagesVersion(v => v + 1);
+            setTimeout(() => setBatchStatus(null), 8000);
           } else if (pollData.state === 'JOB_STATE_FAILED' || pollData.state === 'JOB_STATE_CANCELLED') {
             clearInterval(pollInterval);
+            setBatchStatus(locale === 'ja' ? 'バッチ失敗/キャンセル' : 'Batch failed/cancelled');
+            setTimeout(() => setBatchStatus(null), 5000);
+          } else if (pollData.state === 'NO_PENDING_BATCH') {
+            clearInterval(pollInterval);
+            setBatchStatus(null);
           }
         } catch {
           // Keep polling on network errors
@@ -1076,6 +1081,24 @@ export function GeminiImageGenerator({
       console.error('Batch execute error:', err);
       setBatchStatus(locale === 'ja' ? 'バッチ実行エラー' : 'Batch execute error');
       setBatchRunning(false);
+    }
+  };
+
+  const handleCancelBatch = async () => {
+    if (!storeId) return;
+    try {
+      const res = await fetch('/api/ai/batch-queue/execute', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storeId }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setBatchStatus(locale === 'ja' ? 'キャンセルしました' : 'Cancelled');
+        setTimeout(() => setBatchStatus(null), 3000);
+      }
+    } catch {
+      setBatchStatus(locale === 'ja' ? 'キャンセル失敗' : 'Cancel failed');
     }
   };
 
@@ -1790,12 +1813,20 @@ export function GeminiImageGenerator({
                 variant="secondary"
                 size="lg"
                 isLoading={batchRunning}
-                disabled={batchRunning || queueCount === 0}
+                disabled={batchRunning || (queueCount === 0 && !batchStatus)}
                 onClick={handleExecuteBatch}
                 className="!px-4"
               >
                 {batchStatus || (locale === 'ja' ? 'バッチ実行' : 'Run Batch')}
               </Button>
+            )}
+            {batchStatus && batchStatus.includes('処理中') && (
+              <button
+                onClick={handleCancelBatch}
+                className="px-3 py-1.5 text-xs text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+              >
+                {locale === 'ja' ? 'キャンセル' : 'Cancel'}
+              </button>
             )}
           </>
         )}

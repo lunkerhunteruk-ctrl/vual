@@ -180,6 +180,11 @@ export async function POST(request: NextRequest) {
     const batchName = batchData.name;
     console.log(`[BatchExecute] Batch job created: ${batchName}`);
 
+    // Save batchName to all processing items
+    for (const item of queueItems) {
+      await supabase.from('batch_queue').update({ batch_name: batchName }).eq('id', item.id).eq('status', 'processing');
+    }
+
     return NextResponse.json({
       success: true,
       batchName,
@@ -207,9 +212,10 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * GET /api/ai/batch-queue/execute?batchName=xxx&storeId=xxx
+ * GET /api/ai/batch-queue/execute?storeId=xxx[&batchName=xxx]
  *
- * Poll batch job status and process results when complete
+ * Poll batch job status and process results when complete.
+ * If batchName not provided, looks up processing items in DB.
  */
 export async function GET(request: NextRequest) {
   try {
@@ -219,11 +225,28 @@ export async function GET(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url);
-    const batchName = searchParams.get('batchName');
+    let batchName = searchParams.get('batchName');
     const storeId = searchParams.get('storeId');
 
-    if (!batchName || !storeId) {
-      return NextResponse.json({ error: 'batchName and storeId required' }, { status: 400 });
+    if (!storeId) {
+      return NextResponse.json({ error: 'storeId required' }, { status: 400 });
+    }
+
+    // If no batchName provided, look up from DB
+    if (!batchName) {
+      const { data: processingItem } = await supabase
+        .from('batch_queue')
+        .select('batch_name')
+        .eq('store_id', storeId)
+        .eq('status', 'processing')
+        .not('batch_name', 'is', null)
+        .limit(1)
+        .single();
+
+      if (!processingItem?.batch_name) {
+        return NextResponse.json({ success: true, state: 'NO_PENDING_BATCH' });
+      }
+      batchName = processingItem.batch_name;
     }
 
     // Check batch status
@@ -413,6 +436,72 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('[BatchExecute] Error:', error);
+    return NextResponse.json({ error: String(error) }, { status: 500 });
+  }
+}
+
+/**
+ * DELETE /api/ai/batch-queue/execute
+ *
+ * Cancel a running batch job
+ */
+export async function DELETE(request: NextRequest) {
+  try {
+    const supabase = createServerClient();
+    if (!supabase || !GEMINI_API_KEY) {
+      return NextResponse.json({ error: 'Not configured' }, { status: 500 });
+    }
+
+    const { storeId, batchName: providedBatchName } = await request.json();
+    if (!storeId) {
+      return NextResponse.json({ error: 'storeId required' }, { status: 400 });
+    }
+
+    // Find batchName from DB if not provided
+    let batchName = providedBatchName;
+    if (!batchName) {
+      const { data: item } = await supabase
+        .from('batch_queue')
+        .select('batch_name')
+        .eq('store_id', storeId)
+        .eq('status', 'processing')
+        .not('batch_name', 'is', null)
+        .limit(1)
+        .single();
+
+      batchName = item?.batch_name;
+    }
+
+    if (!batchName) {
+      return NextResponse.json({ error: 'No active batch found' }, { status: 404 });
+    }
+
+    // Cancel via Gemini API
+    const cancelRes = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/${batchName}:cancel?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'x-goog-api-key': GEMINI_API_KEY! },
+      }
+    );
+
+    // Update queue items to cancelled
+    await supabase.from('batch_queue').update({
+      status: 'failed',
+      error: 'Cancelled by user',
+      completed_at: new Date().toISOString(),
+    }).eq('batch_name', batchName).eq('store_id', storeId);
+
+    if (!cancelRes.ok) {
+      const errText = await cancelRes.text();
+      console.error('[BatchExecute] Cancel API error:', errText);
+      return NextResponse.json({ success: true, warning: 'Queue cleared but Gemini cancel may have failed', details: errText });
+    }
+
+    console.log(`[BatchExecute] Batch cancelled: ${batchName}`);
+    return NextResponse.json({ success: true, batchName, cancelled: true });
+  } catch (error) {
+    console.error('[BatchExecute] Cancel error:', error);
     return NextResponse.json({ error: String(error) }, { status: 500 });
   }
 }
