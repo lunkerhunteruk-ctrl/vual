@@ -7,6 +7,7 @@ import { Sparkles, Loader2, Download, User, Check, Image as ImageIcon, ChevronDo
 import { Button } from '@/components/ui';
 import Image from 'next/image';
 import { VideoSettingsModal } from './VideoSettingsModal';
+import { useStoreContext } from '@/lib/store/store-context';
 
 interface GarmentSize {
   bodyWidth?: number;
@@ -212,6 +213,8 @@ export function GeminiImageGenerator({
   storeId,
 }: GeminiImageGeneratorProps) {
   const locale = useLocale();
+  const store = useStoreContext((s) => s.store);
+  const isDevStore = store?.slug === 'vualofficial';
   const [modelDatabase, setModelDatabase] = useState<ModelDatabase | null>(null);
   const [selectedModel, setSelectedModel] = useState<ModelData | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -1022,6 +1025,59 @@ export function GeminiImageGenerator({
     }
   };
 
+  const [queueCount, setQueueCount] = useState(0);
+
+  const handleAddToQueue = async () => {
+    if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
+    if (!storeId) return;
+
+    try {
+      const payload = {
+        garmentImages: selectedGarmentImages.length > 0 ? selectedGarmentImages : (selectedGarmentImage ? [selectedGarmentImage] : []),
+        garmentName: selectedGarmentName,
+        garmentSizeSpecs: selectedGarmentSizeSpecs,
+        secondGarmentImages: secondGarmentImages.length > 0 ? secondGarmentImages : (secondGarmentImage ? [secondGarmentImage] : []),
+        secondGarmentName,
+        thirdGarmentImages: thirdGarmentImages.length > 0 ? thirdGarmentImages : (thirdGarmentImage ? [thirdGarmentImage] : []),
+        thirdGarmentName,
+        fourthGarmentImages: fourthGarmentImages.length > 0 ? fourthGarmentImages : (fourthGarmentImage ? [fourthGarmentImage] : []),
+        fourthGarmentName,
+        fifthGarmentImages: fifthGarmentImages.length > 0 ? fifthGarmentImages : (fifthGarmentImage ? [fifthGarmentImage] : []),
+        fifthGarmentName,
+        productIds: selectedProductIds,
+        modelSettings: settings,
+        modelImage: selectedModel?.fullImage || null,
+        background: settings.background,
+        aspectRatio: settings.aspectRatio,
+        resolution: settings.resolution,
+        customPrompt: settings.customPrompt,
+        locale,
+        storeId,
+        artistic: artisticMode ? sceneVariant : undefined,
+        sceneVariant,
+        detailMode: isDetailMode ? undefined : undefined, // will be set per shot for editorial
+        storyCount,
+        isDetailMode,
+        isArtisticMode: artisticMode,
+      };
+
+      const res = await fetch('/api/ai/batch-queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storeId, payload }),
+      });
+
+      if (res.ok) {
+        setQueueCount(prev => prev + 1);
+      } else {
+        setError(locale === 'ja' ? 'キューへの追加に失敗しました' : 'Failed to add to queue');
+      }
+    } catch (err) {
+      console.error('Queue add error:', err);
+      setError(locale === 'ja' ? 'キューへの追加に失敗しました' : 'Failed to add to queue');
+    }
+  };
+
   const handleGenerate = async () => {
     if (!selectedGarmentImage && selectedGarmentImages.length === 0) return;
 
@@ -1626,6 +1682,18 @@ export function GeminiImageGenerator({
 
       {/* Generate bar */}
       <div className="flex items-center justify-end gap-2 flex-shrink-0 py-3 border-t border-[var(--color-line)]">
+        {isDevStore && (
+          <Button
+            variant="secondary"
+            size="lg"
+            disabled={!selectedGarmentImage}
+            leftIcon={<Layers size={16} />}
+            onClick={handleAddToQueue}
+            className="!px-4"
+          >
+            {locale === 'ja' ? `キューに追加${queueCount > 0 ? ` (${queueCount})` : ''}` : `Add to Queue${queueCount > 0 ? ` (${queueCount})` : ''}`}
+          </Button>
+        )}
         <Button
           variant="primary"
           size="lg"
