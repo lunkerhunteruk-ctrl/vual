@@ -1084,43 +1084,82 @@ export function GeminiImageGenerator({
     if (!storeId) return;
 
     try {
-      const payload = {
-        garmentImages: selectedGarmentImages.length > 0 ? selectedGarmentImages : (selectedGarmentImage ? [selectedGarmentImage] : []),
-        garmentName: selectedGarmentName,
-        garmentSizeSpecs: selectedGarmentSizeSpecs,
-        secondGarmentImages: secondGarmentImages.length > 0 ? secondGarmentImages : (secondGarmentImage ? [secondGarmentImage] : []),
-        secondGarmentName,
-        thirdGarmentImages: thirdGarmentImages.length > 0 ? thirdGarmentImages : (thirdGarmentImage ? [thirdGarmentImage] : []),
-        thirdGarmentName,
-        fourthGarmentImages: fourthGarmentImages.length > 0 ? fourthGarmentImages : (fourthGarmentImage ? [fourthGarmentImage] : []),
-        fourthGarmentName,
-        fifthGarmentImages: fifthGarmentImages.length > 0 ? fifthGarmentImages : (fifthGarmentImage ? [fifthGarmentImage] : []),
-        fifthGarmentName,
-        productIds: selectedProductIds,
-        modelSettings: settings,
-        modelImage: selectedModel?.fullImage || null,
-        background: settings.background,
-        aspectRatio: settings.aspectRatio,
-        resolution: settings.resolution,
-        customPrompt: settings.customPrompt,
-        locale,
-        storeId,
-        artistic: artisticMode ? sceneVariant : undefined,
-        sceneVariant,
-        detailMode: isDetailMode ? undefined : undefined, // will be set per shot for editorial
-        storyCount,
-        isDetailMode,
-        isArtisticMode: artisticMode,
-      };
+      // Build common payload
+      const garmentImagesResolved = selectedGarmentImages.length > 0 ? selectedGarmentImages : (selectedGarmentImage ? [selectedGarmentImage] : []);
+      const secondResolved = secondGarmentImages.length > 0 ? secondGarmentImages : (secondGarmentImage ? [secondGarmentImage] : []);
+      const thirdResolved = thirdGarmentImages.length > 0 ? thirdGarmentImages : (thirdGarmentImage ? [thirdGarmentImage] : []);
+      const fourthResolved = fourthGarmentImages.length > 0 ? fourthGarmentImages : (fourthGarmentImage ? [fourthGarmentImage] : []);
+      const fifthResolved = fifthGarmentImages.length > 0 ? fifthGarmentImages : (fifthGarmentImage ? [fifthGarmentImage] : []);
 
-      const res = await fetch('/api/ai/batch-queue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ storeId, payload }),
-      });
+      const shotsToQueue = storyCount > 1 ? storyCount : 1;
 
-      if (res.ok) {
-        setQueueCount(prev => prev + 1);
+      // Detail mode assignments (same logic as handleEditorialGenerate)
+      const detailAssignments: (string | undefined)[] = (() => {
+        if (!isDetailMode) return Array(shotsToQueue).fill(undefined);
+        if (sceneVariant === 'B') {
+          if (shotsToQueue === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
+          if (shotsToQueue === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
+          if (shotsToQueue === 3) return ['bag', 'shoes', 'bag-detail'];
+          return [undefined];
+        }
+        if (shotsToQueue === 6) return ['face', 'upper-body', 'face-profile', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
+        if (shotsToQueue === 4) return ['face', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
+        if (shotsToQueue === 3) return ['face-profile', 'face-gaze', 'upper-body-gaze'];
+        return [undefined];
+      })();
+
+      // Build per-shot configs
+      const userPickedAR = settings.aspectRatio !== '3:4';
+      let addedCount = 0;
+
+      for (let i = 0; i < shotsToQueue; i++) {
+        // Per-shot customPrompt and aspectRatio (from story generation if available)
+        const shotPrompt = storyCount > 1 && sceneMode === 'custom'
+          ? (customScenePrompts[i] || settings.customPrompt)
+          : settings.customPrompt;
+        const shotAR = storyCount > 1 && sceneMode === 'custom' && !userPickedAR
+          ? (perShotAspectRatios[i] || settings.aspectRatio)
+          : settings.aspectRatio;
+
+        const payload = {
+          garmentImages: garmentImagesResolved,
+          garmentName: selectedGarmentName,
+          garmentSizeSpecs: selectedGarmentSizeSpecs,
+          secondGarmentImages: secondResolved,
+          secondGarmentName,
+          thirdGarmentImages: thirdResolved,
+          thirdGarmentName,
+          fourthGarmentImages: fourthResolved,
+          fourthGarmentName,
+          fifthGarmentImages: fifthResolved,
+          fifthGarmentName,
+          productIds: selectedProductIds,
+          modelSettings: settings,
+          modelImage: selectedModel?.fullImage || null,
+          background: settings.background,
+          aspectRatio: shotAR,
+          resolution: settings.resolution,
+          customPrompt: shotPrompt,
+          locale,
+          storeId,
+          artistic: artisticMode ? sceneVariant : undefined,
+          sceneVariant,
+          shotIndex: i,
+          totalShots: shotsToQueue,
+          detailMode: detailAssignments[i],
+        };
+
+        const res = await fetch('/api/ai/batch-queue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ storeId, payload }),
+        });
+
+        if (res.ok) addedCount++;
+      }
+
+      if (addedCount > 0) {
+        setQueueCount(prev => prev + addedCount);
       } else {
         setError(locale === 'ja' ? 'キューへの追加に失敗しました' : 'Failed to add to queue');
       }
