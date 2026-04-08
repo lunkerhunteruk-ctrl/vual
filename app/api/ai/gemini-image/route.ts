@@ -872,65 +872,65 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
       const sceneA = [
         // Shot 1: Noctilux — golden hour backlight, bokeh swirl
         `ARTISTIC DIRECTION: Shot on Leica Noctilux-M 50mm f/0.95 ASPH wide open.
-SCENE OVERRIDE: Position the model with strong BACKLIGHT — golden hour sun directly behind, creating a luminous rim light around hair and shoulders. The background should contain warm-toned architecture or foliage that dissolves into the Noctilux's legendary swirling bokeh. Colors bleed and merge organically like watercolor. Any specular highlights in the background become soft, glowing orbs. The model is razor-sharp against this painterly dissolution of color.
-LIGHTING: Strong backlight/rim light with soft fill from reflected surfaces. Lens flare is welcome and adds to the dreamy atmosphere.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Position the model with strong BACKLIGHT — golden hour sun directly behind, creating a luminous rim light around hair and shoulders. The background dissolves into the Noctilux's legendary swirling bokeh. Colors bleed and merge organically like watercolor. Specular highlights become soft, glowing orbs. Lens flare is welcome.`,
 
-        // Shot 2: Canon DS — evening city lights, perfect round bokeh
+        // Shot 2: Canon DS — evening/twilight mood, perfect round bokeh
         `ARTISTIC DIRECTION: Shot on Canon RF 85mm f/1.2L USM DS (Defocus Smoothing).
-SCENE OVERRIDE: Evening or twilight setting with POINT LIGHT SOURCES in the background — street lamps, shop windows, warm interior lights, string lights, or city illumination. The DS coating transforms every light source into a perfectly smooth, round bokeh circle. The transition from sharp subject to blurred background is impossibly gradual. The model is lit by nearby warm light (window light, storefront glow), creating luminous, glowing skin.
-LIGHTING: Warm practical light sources illuminating the model. Background peppered with beautiful circular bokeh from city/architectural lights.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Evening or twilight mood at the specified location. Look for any available POINT LIGHT SOURCES (lamps, windows, ambient lights) in the scene. The DS coating transforms every light source into perfectly smooth, round bokeh circles. The model is lit by nearby warm light, creating luminous, glowing skin. The transition from sharp to blur is impossibly gradual.`,
 
-        // Shot 3: Zeiss Otus — hard architectural light, 3D pop
+        // Shot 3: Zeiss Otus — hard directional light, 3D pop
         `ARTISTIC DIRECTION: Shot on Zeiss Otus 85mm f/1.4.
-SCENE OVERRIDE: Strong DIRECTIONAL LIGHT cutting through architecture — a shaft of sunlight through a doorway, window, colonnade, or between buildings. The model stands partially in this dramatic light, creating bold light-and-shadow contrast across the body and garment. The Otus renders every fabric texture with extraordinary three-dimensional clarity. The background falls away with refined, dignified bokeh while the subject pops forward with an almost tangible depth.
-LIGHTING: Hard directional sunlight creating dramatic chiaroscuro. One side of the model is brilliantly lit, the other falls into rich shadow.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Find strong DIRECTIONAL LIGHT within the specified location — a shaft of sunlight through any opening, archway, or gap in the architecture. The model stands partially in this dramatic light, creating bold chiaroscuro. The Otus renders every fabric texture with extraordinary three-dimensional clarity. One side brilliantly lit, the other in rich shadow.`,
 
-        // Shot 4: Fujifilm GF medium format — dappled forest/garden light
+        // Shot 4: Fujifilm GF medium format — dappled light within the location
         `ARTISTIC DIRECTION: Shot on Fujifilm GF 110mm f/2 (medium format).
-SCENE OVERRIDE: The model stands in DAPPLED LIGHT filtering through trees, pergolas, or latticed architecture. Pools of warm light dance across the model and garment while the medium format sensor captures extraordinary tonal gradation in both highlights and shadows. The larger format creates an expansive, airy sense of depth — the model exists in three-dimensional space with the background gently receding. Leaves or architectural patterns create beautiful shadow play on the garment surface.
-LIGHTING: Natural dappled sunlight through foliage or architectural elements. Rich tonal range from deep shadows to bright highlights.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting. Do NOT add trees, forests, or gardens unless the user specified them.
+LIGHTING & LENS: Find areas of DAPPLED or FILTERED LIGHT within the specified location — light coming through architectural elements, lattice, screens, or any structure that breaks the light into pools and patterns. The medium format sensor captures extraordinary tonal gradation. The model exists in three-dimensional space with the background gently receding.`,
 
         // Shot 5: Sigma 35mm — wide environmental, foreground bokeh
         `ARTISTIC DIRECTION: Shot on Sigma 35mm f/1.2 DG DN Art.
-SCENE OVERRIDE: The wider focal length captures the model WITH their environment — shoot through FOREGROUND ELEMENTS (flowers, leaves, iron railings, glass, fabric) that blur into soft, colorful shapes in the near field. The f/1.2 aperture wraps both foreground and background blur around the subject, creating a cocoon of bokeh. The environmental context (architecture, street, garden) is visible but dreamy. The model occupies the sharp middle ground between two layers of beautiful blur.
-LIGHTING: Natural light with the environment providing depth layers. Foreground elements catch light and become luminous blur shapes.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: The wider focal length captures the model WITH their environment. Shoot through any available FOREGROUND ELEMENTS native to the location (architectural details, railings, columns, edges) that blur into soft shapes in the near field. The f/1.2 aperture wraps both foreground and background blur around the subject. The model occupies the sharp middle ground between two layers of beautiful blur.`,
 
-        // Shot 6: Nikon Noct — blue hour/twilight, ethereal floating
+        // Shot 6: Nikon Noct — blue hour/twilight, ethereal
         `ARTISTIC DIRECTION: Shot on Nikon Nikkor Z 58mm f/0.95 S Noct.
-SCENE OVERRIDE: BLUE HOUR or deep twilight setting — the sky holds the last traces of deep blue and amber. The model is lit by a single warm light source (a lamp, a doorway, reflected golden light) against the cool twilight background. At f/0.95, the depth of field is paper-thin — the model appears to float in an ethereal, dreamlike space. Any remaining ambient lights become impossibly smooth, large bokeh circles. The overall mood is contemplative, quiet, almost otherworldly.
-LIGHTING: Single warm practical light against cool blue-hour ambient. The contrast between warm subject and cool background creates emotional depth.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: BLUE HOUR or deep twilight mood at the specified location. The model is lit by a single warm light source against the cool ambient. At f/0.95, the depth of field is paper-thin — the model appears to float in an ethereal, dreamlike space. Any ambient lights become impossibly smooth, large bokeh circles. Contemplative, quiet, almost otherworldly.`,
       ];
 
       const sceneB = [
-        // Shot 1: Hasselblad — wet cobblestone reflections
+        // Shot 1: Hasselblad — wet ground reflections
         `ARTISTIC DIRECTION: Shot on Hasselblad XCD 80mm f/1.9 (medium format).
-SCENE OVERRIDE: RAIN-WASHED COBBLESTONE or stone pavement — the ground is wet and reflective, mirroring the model's silhouette, fragments of architecture, and ambient light in glossy puddle reflections. The medium format sensor captures extraordinary surface texture — every wet stone, every ripple in the puddle is rendered with tactile realism. The model stands on dry ground near the edge of a puddle, NOT in water. The wet surface adds a cinematic, moody quality.
-LIGHTING: Overcast or post-rain diffused light with occasional breaks of warm sun reflecting off wet surfaces. The wet ground acts as a natural reflector, filling shadows from below.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Post-rain or wet-ground mood at the specified location. The ground surface is wet and reflective, mirroring the model's silhouette and ambient light. The medium format sensor captures extraordinary surface texture. The model stands on dry ground, NOT in water. Overcast or diffused light with wet surfaces acting as natural reflectors.`,
 
-        // Shot 2: Leica Summilux — architectural corridor depth
+        // Shot 2: Leica Summilux — architectural depth
         `ARTISTIC DIRECTION: Shot on Leica Summilux-M 35mm f/1.4 ASPH FLE.
-SCENE OVERRIDE: The model stands inside a DEEP ARCHITECTURAL CORRIDOR, archway, or colonnade — receding columns, arches, or walls create strong perspective lines that draw the eye toward the model. The architecture frames the model like a living painting. The Summilux's characteristic warm color rendering and smooth tonal transitions give the stone and plaster surfaces a richness that digital lenses often miss. Shoot slightly wide to capture the full depth of the corridor.
-LIGHTING: Light enters from the far end or from side openings, creating a natural gradient from shadow to light along the corridor. The model is positioned at the threshold between light and shadow.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Use the DEPTH of the specified location — find receding lines, arches, or structural elements that create perspective. The Summilux's warm color rendering gives surfaces a richness that digital lenses miss. Light enters from the far end or from side openings, creating a natural gradient. The model is positioned at the threshold between light and shadow.`,
 
-        // Shot 3: Canon RF Macro — graphic shadow stripes
+        // Shot 3: Canon RF Macro — graphic shadow patterns
         `ARTISTIC DIRECTION: Shot on Canon RF 100mm f/2.8L Macro IS USM.
-SCENE OVERRIDE: Strong afternoon sun casts GRAPHIC SHADOW PATTERNS across the model — from window blinds, iron gates, lattice screens, palm fronds, or architectural elements. The shadow stripes or geometric patterns fall across the model's body and garment, creating a bold, graphic editorial composition. The macro lens resolves every thread in the fabric where light meets shadow with surgical precision. The contrast between illuminated and shadowed areas should be stark and dramatic.
-LIGHTING: Hard, low-angle afternoon sunlight through a pattern-creating element. The shadows are sharp-edged and graphic, almost like body paint.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Find elements within the specified location that cast GRAPHIC SHADOW PATTERNS — architectural details, screens, structures, any element that breaks strong sunlight into geometric shapes on the model. The macro lens resolves every detail with surgical precision. Hard, low-angle afternoon sunlight creating stark, graphic contrast.`,
 
-        // Shot 4: Voigtlander Nokton — warm wall lean
+        // Shot 4: Voigtlander Nokton — warm wall/surface lean
         `ARTISTIC DIRECTION: Shot on Voigtlander Nokton 50mm f/1.0 Aspherical.
-SCENE OVERRIDE: The model leans casually against a WARM-TONED WALL — terracotta, ochre, aged plaster, or sun-baked stone. The late afternoon sun paints the wall in deep orange and gold. The Nokton wide open at f/1.0 renders the wall texture with a distinctive softness that wraps around the sharp subject — a unique vintage quality that modern lenses cannot replicate. The overall palette is warm: amber, honey, burnt sienna. The model's pose is relaxed, almost candid.
-LIGHTING: Low, warm directional sunlight hitting the wall and model from the side. The wall itself becomes a giant warm reflector, wrapping the model in golden light.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting. Do NOT default to terracotta or ochre walls unless the user specified them.
+LIGHTING & LENS: The model leans casually against a wall or surface WITHIN the specified location. Late afternoon warm light. The Nokton at f/1.0 renders the surface texture with a distinctive vintage softness that wraps around the sharp subject. Warm palette from the sunlight. The model's pose is relaxed, almost candid.`,
 
-        // Shot 5: Sony 135mm GM — layered botanical foreground
+        // Shot 5: Sony 135mm GM — layered foreground bokeh
         `ARTISTIC DIRECTION: Shot on Sony FE 135mm f/1.8 GM.
-SCENE OVERRIDE: Shoot THROUGH BOTANICAL FOREGROUND — branches, leaves, flowers, or dried grasses create a layered, painterly frame in the near field. The 135mm compression stacks these layers together, creating depth and intimacy. The foreground foliage is rendered as soft, translucent color washes by the f/1.8 aperture. Behind the model, the background is equally compressed and melted into smooth bokeh. The model exists in a narrow band of sharpness between two worlds of soft color.
-LIGHTING: Natural backlight or sidelight filtering through the foliage, creating small lens flares and rim light on leaves. Dappled warm light on the model's face and garment.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting. Do NOT add botanical elements unless they exist in the specified location.
+LIGHTING & LENS: Shoot THROUGH available FOREGROUND ELEMENTS native to the specified location (architectural edges, columns, railings, or any objects in the scene). The 135mm compression stacks layers together. The foreground is rendered as soft, translucent color washes by the f/1.8 aperture. The model exists in a narrow band of sharpness between two layers of blur. Natural backlight or sidelight creating depth.`,
 
-        // Shot 6: Zeiss Batis — geometric stairs/levels
+        // Shot 6: Zeiss Batis — geometric lines/levels
         `ARTISTIC DIRECTION: Shot on Zeiss Batis 40mm f/2 CF (Close Focus).
-SCENE OVERRIDE: The model is positioned on ARCHITECTURAL STAIRS, stepped terraces, or multilevel surfaces — the geometric lines of the steps create strong diagonal and horizontal lines that structure the composition. The model may sit on a step, lean against a railing, or stand at a landing where lines converge. The Batis 40mm captures enough environment to establish the graphic, geometric quality of the location while maintaining a natural perspective. The architectural lines should dominate the composition, with the model as the human element that breaks the geometry.
-LIGHTING: Even, diffused light (open shade or overcast) that reveals the full texture and geometry of the stone steps without harsh shadows. Subtle directional light to give the model dimension.`,
+IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
+LIGHTING & LENS: Find geometric lines within the specified location — stairs, levels, repeated architectural patterns, columns, or structural lines that create graphic composition. The model may lean against or stand near these elements. The Batis 40mm captures enough environment to establish the geometric quality while maintaining a natural perspective. Even, diffused light that reveals texture without harsh shadows.`,
       ];
 
       const shots = sceneVariant === 'B' ? sceneB : sceneA;
