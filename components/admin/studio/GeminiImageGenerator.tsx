@@ -1050,10 +1050,12 @@ export function GeminiImageGenerator({
       }
 
       const batchName = data.batchName;
-      setBatchStatus(locale === 'ja' ? `バッチ実行中 (${data.requestCount}件)...` : `Batch running (${data.requestCount} items)...`);
       setQueueCount(0);
+      setBatchRunning(false);
+      setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み` : `✓ ${data.requestCount} submitted`);
+      setTimeout(() => setBatchStatus(null), 5000);
 
-      // Poll for completion
+      // Poll in background for completion — refresh saved images when done
       const pollInterval = setInterval(async () => {
         try {
           const pollRes = await fetch(`/api/ai/batch-queue/execute?batchName=${encodeURIComponent(batchName)}&storeId=${storeId}`);
@@ -1061,17 +1063,9 @@ export function GeminiImageGenerator({
 
           if (pollData.state === 'JOB_STATE_SUCCEEDED') {
             clearInterval(pollInterval);
-            setBatchStatus(locale === 'ja' ? `完了！ ${pollData.savedCount}枚保存` : `Done! ${pollData.savedCount} images saved`);
-            setBatchRunning(false);
-            // Refresh saved images
             setSavedImagesVersion(v => v + 1);
-            setTimeout(() => setBatchStatus(null), 5000);
           } else if (pollData.state === 'JOB_STATE_FAILED' || pollData.state === 'JOB_STATE_CANCELLED') {
             clearInterval(pollInterval);
-            setBatchStatus(locale === 'ja' ? 'バッチ失敗' : 'Batch failed');
-            setBatchRunning(false);
-          } else {
-            setBatchStatus(locale === 'ja' ? `処理中 (${pollData.state})...` : `Processing (${pollData.state})...`);
           }
         } catch {
           // Keep polling on network errors
