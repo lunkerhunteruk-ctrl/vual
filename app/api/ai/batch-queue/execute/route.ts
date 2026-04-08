@@ -185,9 +185,24 @@ export async function POST(request: NextRequest) {
       batchName,
       requestCount: batchRequests.length,
     });
-  } catch (error) {
-    console.error('[BatchExecute] Error:', error);
-    return NextResponse.json({ error: String(error) }, { status: 500 });
+  } catch (error: any) {
+    const errMsg = error?.message || String(error);
+    const errStack = error?.stack || '';
+    console.error('[BatchExecute] Error:', errMsg, errStack);
+
+    // Try to save error to queue items for debugging
+    try {
+      const supabase2 = createServerClient();
+      if (supabase2) {
+        await supabase2.from('batch_queue').update({
+          status: 'failed',
+          error: `${errMsg}\n${errStack}`.slice(0, 1000),
+          completed_at: new Date().toISOString(),
+        }).eq('status', 'processing');
+      }
+    } catch { /* ignore */ }
+
+    return NextResponse.json({ error: errMsg, stack: errStack.slice(0, 500) }, { status: 500 });
   }
 }
 
