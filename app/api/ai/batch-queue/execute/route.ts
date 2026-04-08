@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase';
 import { storage } from '@/lib/storage';
 
+export const maxDuration = 120;
+
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
 const BATCH_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:batchGenerateContent`;
@@ -99,22 +101,9 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Build prompt by calling gemini-image endpoint internally
-        // For batch, we call the prompt builder directly
-        const promptRes = await fetch(new URL('/api/ai/gemini-image/prompt', request.url).toString(), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-
-        let prompt: string;
-        if (promptRes.ok) {
-          const promptData = await promptRes.json();
-          prompt = promptData.prompt;
-        } else {
-          // Fallback: basic prompt
-          prompt = `Fashion editorial photography. Generate a high-quality fashion image with the garments from the reference images. ${payload.customPrompt || ''} ${payload.aspectRatio} aspect ratio.`;
-        }
+        // Build prompt directly
+        const { buildPromptFromPayload } = await import('@/app/api/ai/gemini-image/prompt-builder');
+        const prompt = buildPromptFromPayload(payload);
 
         const parts = [{ text: prompt }, ...imageParts];
 
@@ -161,7 +150,10 @@ export async function POST(request: NextRequest) {
     // 3. Submit batch job
     const batchRes = await fetch(`${BATCH_URL}?key=${GEMINI_API_KEY}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': GEMINI_API_KEY!,
+      },
       body: JSON.stringify({
         batch: {
           display_name: `vual-batch-${Date.now()}`,
@@ -221,7 +213,8 @@ export async function GET(request: NextRequest) {
 
     // Check batch status
     const statusRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/${batchName}?key=${GEMINI_API_KEY}`
+      `https://generativelanguage.googleapis.com/v1beta/${batchName}?key=${GEMINI_API_KEY}`,
+      { headers: { 'x-goog-api-key': GEMINI_API_KEY! } }
     );
 
     if (!statusRes.ok) {
