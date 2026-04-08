@@ -1360,6 +1360,15 @@
       "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-030.png"
     },
     {
+      "id": "jp-f-18-stand-031",
+      "gender": "female",
+      "ageRange": "18-24",
+      "ethnicity": "japanese",
+      "pose": "standing",
+      "thumbnail": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-031.png",
+      "fullImage": "/models/images/female/18-24/japanese/standing/jp-f-18-stand-031.png"
+    },
+    {
       "id": "cn-f-18-stand-001",
       "gender": "female",
       "ageRange": "18-24",
