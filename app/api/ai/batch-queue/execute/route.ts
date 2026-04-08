@@ -250,6 +250,7 @@ export async function GET(request: NextRequest) {
     // Job succeeded — process results
     const responses = statusData.response?.inlinedResponses || [];
     let savedCount = 0;
+    const savedLooks: { queueId: string; imageUrl: string; productIds: string[] }[] = [];
 
     for (const resp of responses) {
       const queueId = resp.metadata?.key;
@@ -312,6 +313,14 @@ export async function GET(request: NextRequest) {
           store_id: storeId,
         });
 
+        // Get product IDs from queue payload
+        const { data: queueItem } = await supabase
+          .from('batch_queue')
+          .select('payload')
+          .eq('id', queueId)
+          .single();
+        const productIds = queueItem?.payload?.productIds || [];
+
         // Update queue item
         await supabase.from('batch_queue').update({
           status: 'completed',
@@ -320,6 +329,7 @@ export async function GET(request: NextRequest) {
           completed_at: new Date().toISOString(),
         }).eq('id', queueId);
 
+        savedLooks.push({ queueId, imageUrl: savedImageUrl, productIds });
         savedCount++;
       } catch (processErr) {
         console.error(`[BatchExecute] Error processing result for ${queueId}:`, processErr);
@@ -328,6 +338,70 @@ export async function GET(request: NextRequest) {
           error: String(processErr),
           completed_at: new Date().toISOString(),
         }).eq('id', queueId);
+      }
+    }
+
+    // Auto-add to collection as a bundle
+    if (savedLooks.length > 0) {
+      try {
+        // Get current min position
+        const { data: minPos } = await supabase
+          .from('collection_looks')
+          .select('position')
+          .eq('store_id', storeId)
+          .order('position', { ascending: true })
+          .limit(1)
+          .single();
+
+        let nextPosition = (minPos?.position ?? 1) - savedLooks.length;
+        const editorialGroupId = crypto.randomUUID();
+        const lookIds: string[] = [];
+
+        for (const look of savedLooks) {
+          // Copy image to permanent storage
+          const imgRes = await fetch(look.imageUrl);
+          const imgBuf = Buffer.from(await imgRes.arrayBuffer());
+          const permFilename = `collection-batch-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
+          await storage.from('model-images').upload(permFilename, imgBuf, { contentType: 'image/png' });
+          const { data: permUrl } = storage.from('model-images').getPublicUrl(permFilename);
+
+          const { data: inserted } = await supabase
+            .from('collection_looks')
+            .insert({
+              store_id: storeId,
+              image_url: permUrl.publicUrl,
+              product_ids: look.productIds.slice(0, 4),
+              position: nextPosition++,
+              editorial_group_id: editorialGroupId,
+              show_credits: true,
+            })
+            .select('id')
+            .single();
+
+          if (inserted) lookIds.push(inserted.id);
+        }
+
+        // Create bundle if multiple looks
+        if (lookIds.length > 1) {
+          const { data: bundle } = await supabase
+            .from('collection_bundles')
+            .insert({ store_id: storeId })
+            .select('id')
+            .single();
+
+          if (bundle) {
+            for (let i = 0; i < lookIds.length; i++) {
+              await supabase
+                .from('collection_looks')
+                .update({ bundle_id: bundle.id, bundle_position: i })
+                .eq('id', lookIds[i]);
+            }
+          }
+        }
+
+        console.log(`[BatchExecute] Added ${lookIds.length} looks to collection, bundle created`);
+      } catch (collErr) {
+        console.error('[BatchExecute] Collection save error (non-blocking):', collErr);
       }
     }
 
