@@ -260,18 +260,26 @@ export async function GET(request: NextRequest) {
     }
 
     const statusData = await statusRes.json();
-    const state = statusData.state;
+    // State can be at top level or inside metadata
+    const state = statusData.metadata?.state || statusData.state;
 
-    if (state !== 'JOB_STATE_SUCCEEDED') {
+    const succeededStates = ['JOB_STATE_SUCCEEDED', 'BATCH_STATE_SUCCEEDED'];
+    const failedStates = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'];
+
+    if (!succeededStates.includes(state)) {
       return NextResponse.json({
         success: true,
         state,
-        progress: statusData.batchStats || null,
+        progress: statusData.metadata?.batchStats || statusData.batchStats || null,
       });
     }
 
     // Job succeeded — process results
-    const responses = statusData.response?.inlinedResponses || [];
+    // Response structure: metadata.output.inlinedResponses.inlinedResponses[] or response.inlinedResponses[]
+    const responses =
+      statusData.metadata?.output?.inlinedResponses?.inlinedResponses ||
+      statusData.response?.inlinedResponses ||
+      [];
     let savedCount = 0;
     const savedLooks: { queueId: string; imageUrl: string; productIds: string[] }[] = [];
 

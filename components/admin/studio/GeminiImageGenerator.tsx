@@ -1059,12 +1059,15 @@ export function GeminiImageGenerator({
           const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}`);
           const pollData = await pollRes.json();
 
-          if (pollData.state === 'JOB_STATE_SUCCEEDED') {
+          const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
+          const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
+
+          if (succeeded) {
             clearInterval(pollInterval);
-            setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount}枚生成完了` : `✓ ${pollData.savedCount} images generated`);
+            setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount || 0}枚生成完了` : `✓ ${pollData.savedCount || 0} images generated`);
             setSavedImagesVersion(v => v + 1);
             setTimeout(() => setBatchStatus(null), 8000);
-          } else if (pollData.state === 'JOB_STATE_FAILED' || pollData.state === 'JOB_STATE_CANCELLED') {
+          } else if (failed) {
             clearInterval(pollInterval);
             setBatchStatus(locale === 'ja' ? 'バッチ失敗/キャンセル' : 'Batch failed/cancelled');
             setTimeout(() => setBatchStatus(null), 5000);
