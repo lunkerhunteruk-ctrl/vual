@@ -15,24 +15,19 @@ export async function POST(request: NextRequest) {
     }
 
     const { storeId, batchName } = await request.json();
-    if (!storeId) {
-      return NextResponse.json({ error: 'storeId required' }, { status: 400 });
+    if (!storeId || !batchName) {
+      return NextResponse.json({ error: 'storeId and batchName required' }, { status: 400 });
     }
 
-    // Find completed items not yet saved to collection
-    const query = supabase
+    // Find completed items for this specific batch only
+    const { data: items, error: fetchErr } = await supabase
       .from('batch_queue')
       .select('id, result_image_url, payload')
       .eq('store_id', storeId)
+      .eq('batch_name', batchName)
       .eq('status', 'completed')
-      .eq('result_saved', true)
-      .not('result_image_url', 'is', null);
-
-    if (batchName) {
-      query.eq('batch_name', batchName);
-    }
-
-    const { data: items, error: fetchErr } = await query.order('created_at', { ascending: true });
+      .not('result_image_url', 'is', null)
+      .order('created_at', { ascending: true });
 
     if (fetchErr || !items?.length) {
       return NextResponse.json({ error: 'No completed items to save', count: 0 }, { status: 400 });

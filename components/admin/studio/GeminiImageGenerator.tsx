@@ -1060,10 +1060,12 @@ export function GeminiImageGenerator({
       setBatchRunning(false);
       setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み（バックグラウンド処理中）` : `✓ ${data.requestCount} submitted (processing in background)`);
 
-      // Poll in background for completion — uses DB-stored batchName
+      const submittedBatchName = data.batchName;
+
+      // Poll in background for completion — uses batchName from submit response
       const pollInterval = setInterval(async () => {
         try {
-          const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}`);
+          const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(submittedBatchName)}`);
           const pollData = await pollRes.json();
 
           const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
@@ -1072,12 +1074,12 @@ export function GeminiImageGenerator({
           if (succeeded) {
             clearInterval(pollInterval);
             setSavedImagesVersion(v => v + 1);
-            // Save to collection as bundle
+            // Save to collection as bundle — only for THIS batch
             try {
               const saveRes = await fetch('/api/ai/batch-queue/save-to-collection', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ storeId }),
+                body: JSON.stringify({ storeId, batchName: submittedBatchName }),
               });
               const saveData = await saveRes.json();
               setBatchStatus(locale === 'ja' ? `✓ ${saveData.count || pollData.savedCount || 0}枚生成完了` : `✓ ${saveData.count || pollData.savedCount || 0} images generated`);
