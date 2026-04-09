@@ -276,14 +276,31 @@ export async function GET(request: NextRequest) {
 
     // Job succeeded — process results
     // Response structure: metadata.output.inlinedResponses.inlinedResponses[] or response.inlinedResponses[]
-    const responses =
+    const allResponses =
       statusData.metadata?.output?.inlinedResponses?.inlinedResponses ||
       statusData.response?.inlinedResponses ||
       [];
+
+    // Process only items that haven't been processed yet (avoid timeout)
+    // Check which queue items are still in 'processing' status for this batch
+    const { data: stillProcessing } = await supabase
+      .from('batch_queue')
+      .select('id')
+      .eq('batch_name', batchName)
+      .eq('status', 'processing');
+
+    const processingIds = new Set(stillProcessing?.map(r => r.id) || []);
+    const responses = allResponses.filter((r: any) => processingIds.has(r.metadata?.key));
+
+    // Process max 6 items per invocation to stay within timeout
+    const CHUNK_SIZE = 6;
+    const chunk = responses.slice(0, CHUNK_SIZE);
+    const hasMore = responses.length > CHUNK_SIZE;
+
     let savedCount = 0;
     const savedLooks: { queueId: string; imageUrl: string; productIds: string[] }[] = [];
 
-    for (const resp of responses) {
+    for (const resp of chunk) {
       const queueId = resp.metadata?.key;
       if (!queueId) continue;
 
@@ -374,9 +391,11 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      state: 'JOB_STATE_SUCCEEDED',
+      // If more items to process, keep state as running so polling continues
+      state: hasMore ? 'BATCH_STATE_RUNNING' : 'BATCH_STATE_SUCCEEDED',
       savedCount,
       totalResponses: responses.length,
+      remaining: responses.length - chunk.length,
     });
   } catch (error) {
     console.error('[BatchExecute] Error:', error);
