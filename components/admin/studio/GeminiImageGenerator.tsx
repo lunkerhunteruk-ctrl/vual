@@ -1049,7 +1049,14 @@ export function GeminiImageGenerator({
         return;
       }
 
-      setQueueCount(0);
+      // Sync queueCount with actual DB state (in case items were added during submit)
+      try {
+        const statusRes = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=queued`);
+        const statusData = await statusRes.json();
+        setQueueCount(statusData.items?.length || 0);
+      } catch {
+        setQueueCount(0);
+      }
       setBatchRunning(false);
       setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み（バックグラウンド処理中）` : `✓ ${data.requestCount} submitted (processing in background)`);
 
@@ -1196,7 +1203,14 @@ export function GeminiImageGenerator({
       }
 
       if (addedCount > 0) {
-        setQueueCount(prev => prev + addedCount);
+        // Fetch actual queued count from DB to stay in sync
+        try {
+          const statusRes = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=queued`);
+          const statusData = await statusRes.json();
+          setQueueCount(statusData.items?.length || 0);
+        } catch {
+          setQueueCount(prev => prev + addedCount);
+        }
       } else {
         setError(locale === 'ja' ? 'キューへの追加に失敗しました' : 'Failed to add to queue');
       }
