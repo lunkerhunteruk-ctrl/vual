@@ -2192,9 +2192,10 @@ export function GeminiImageGenerator({
                           link.click();
                           document.body.removeChild(link);
                         } else {
-                          // Original image from URL
+                          // Original image from URL — use proxy to avoid CORS
                           const { detectImageExt } = await import('@/lib/utils/detect-image-ext');
-                          const response = await fetch(downloadSrc);
+                          const proxyUrl = `/api/media/download?url=${encodeURIComponent(downloadSrc)}`;
+                          const response = await fetch(proxyUrl);
                           const blob = await response.blob();
                           const ext = await detectImageExt(blob);
                           const blobUrl = URL.createObjectURL(blob);
