@@ -389,18 +389,12 @@ export async function GET(request: NextRequest) {
         const lookIds: string[] = [];
 
         for (const look of savedLooks) {
-          // Copy image to permanent storage
-          const imgRes = await fetch(look.imageUrl);
-          const imgBuf = Buffer.from(await imgRes.arrayBuffer());
-          const permFilename = `collection-batch-${Date.now()}-${Math.random().toString(36).substr(2, 9)}.png`;
-          await storage.from('model-images').upload(permFilename, imgBuf, { contentType: 'image/png' });
-          const { data: permUrl } = storage.from('model-images').getPublicUrl(permFilename);
-
+          // Use R2 URL directly — no need to re-upload
           const { data: inserted } = await supabase
             .from('collection_looks')
             .insert({
               store_id: storeId,
-              image_url: permUrl.publicUrl,
+              image_url: look.imageUrl,
               product_ids: look.productIds.slice(0, 4),
               position: nextPosition++,
               editorial_group_id: editorialGroupId,
