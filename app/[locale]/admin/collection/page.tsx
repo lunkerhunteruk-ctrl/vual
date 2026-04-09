@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video } from 'lucide-react';
+import { Plus, Trash2, GripVertical, Layers, Loader2, X, Check, Download, Link2, Unlink, ChevronLeft, ChevronRight, ChevronDown, Copy, Video, Sparkles } from 'lucide-react';
 import JSZip from 'jszip';
 import { useStoreContext } from '@/lib/store/store-context';
 import {
@@ -343,6 +343,7 @@ function LookDetailModal({
   const [shotDuration, setShotDuration] = useState(look.shot_duration_sec || 6);
   const [videoPromptsOpen, setVideoPromptsOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [isGeneratingPrompt, setIsGeneratingPrompt] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const products = look.collection_look_products || [];
@@ -382,6 +383,45 @@ function LookDetailModal({
     }
   };
 
+  const handleGeneratePrompt = async () => {
+    if (isGeneratingPrompt) return;
+    setIsGeneratingPrompt(true);
+    try {
+      const res = await fetch('/api/ai/collection-copy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          lookImageUrl: look.image_url,
+          locale,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.title) setTitle(data.title);
+        if (data.description) setDescription(data.description);
+        if (data.video_prompt_veo) setVideoPromptVeo(data.video_prompt_veo);
+        if (data.telop_caption_ja) setTelopCaptionJa(data.telop_caption_ja);
+        if (data.telop_caption_en) setTelopCaptionEn(data.telop_caption_en);
+        if (data.shot_duration_sec) setShotDuration(data.shot_duration_sec);
+        // Auto-save
+        await onSave(look.id, {
+          title: data.title || title,
+          description: data.description || description,
+          video_prompt_veo: data.video_prompt_veo || videoPromptVeo,
+          video_prompt_kling: data.video_prompt_kling || videoPromptKling,
+          telop_caption_ja: data.telop_caption_ja || telopCaptionJa,
+          telop_caption_en: data.telop_caption_en || telopCaptionEn,
+          shot_duration_sec: data.shot_duration_sec || shotDuration,
+          show_credits: showCredits,
+        });
+      }
+    } catch (err) {
+      console.error('Prompt generation error:', err);
+    } finally {
+      setIsGeneratingPrompt(false);
+    }
+  };
+
   const handleSave = async () => {
     setIsSaving(true);
     try {
@@ -412,6 +452,17 @@ function LookDetailModal({
             )}
           </div>
           <div className="flex items-center gap-1">
+            {!videoPromptVeo && (
+              <button
+                onClick={handleGeneratePrompt}
+                disabled={isGeneratingPrompt}
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-[var(--color-accent)] hover:bg-[var(--color-accent)]/5 rounded-lg transition-colors disabled:opacity-50"
+                title={ja ? 'プロンプト生成' : 'Generate Prompt'}
+              >
+                {isGeneratingPrompt ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
+                {ja ? 'プロンプト生成' : 'Generate Prompt'}
+              </button>
+            )}
             <div className="relative">
               <button
                 onClick={() => setDownloadFilterOpen(prev => !prev)}
