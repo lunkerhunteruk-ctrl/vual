@@ -1811,17 +1811,22 @@ export function GeminiImageGenerator({
             >
               {locale === 'ja' ? `キューに追加${queueCount > 0 ? ` (${queueCount})` : ''}` : `Add to Queue${queueCount > 0 ? ` (${queueCount})` : ''}`}
             </Button>
-            {(queueCount > 0 || batchRunning || batchStatus) && (
+            {queueCount > 0 && (
               <Button
                 variant="secondary"
                 size="lg"
                 isLoading={batchRunning}
-                disabled={batchRunning || (queueCount === 0 && !batchStatus)}
+                disabled={batchRunning}
                 onClick={handleExecuteBatch}
                 className="!px-4"
               >
-                {batchStatus || (locale === 'ja' ? 'バッチ実行' : 'Run Batch')}
+                {batchRunning ? (locale === 'ja' ? '送信中...' : 'Submitting...') : (locale === 'ja' ? `バッチ送信 (${queueCount})` : `Send Batch (${queueCount})`)}
               </Button>
+            )}
+            {batchStatus && (
+              <span className="text-xs text-[var(--color-text-label)] px-2">
+                {batchStatus}
+              </span>
             )}
             {batchStatus && batchStatus.includes('処理中') && (
               <button
