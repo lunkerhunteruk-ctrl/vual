@@ -74,7 +74,6 @@ export async function POST(request: NextRequest) {
         .insert({
           store_id: storeId,
           image_url: item.result_image_url,
-          product_ids: productIds.slice(0, 4),
           position: nextPosition++,
           editorial_group_id: editorialGroupId,
           show_credits: true,
@@ -82,7 +81,18 @@ export async function POST(request: NextRequest) {
         .select('id')
         .single();
 
-      if (inserted) lookIds.push(inserted.id);
+      if (inserted) {
+        lookIds.push(inserted.id);
+        // Link products via collection_look_products
+        if (productIds.length > 0) {
+          const productLinks = productIds.slice(0, 4).map((productId: string, idx: number) => ({
+            look_id: inserted.id,
+            product_id: productId,
+            position: idx,
+          }));
+          await supabase.from('collection_look_products').insert(productLinks);
+        }
+      }
     }
 
     // Create bundle if multiple looks
