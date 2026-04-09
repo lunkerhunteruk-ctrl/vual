@@ -283,14 +283,21 @@ export async function GET(request: NextRequest) {
 
     // Process only items that haven't been processed yet (avoid timeout)
     // Check which queue items are still in 'processing' status for this batch
-    const { data: stillProcessing } = await supabase
-      .from('batch_queue')
-      .select('id')
-      .eq('batch_name', batchName)
-      .eq('status', 'processing');
+    let responses = allResponses;
+    try {
+      const { data: stillProcessing } = await supabase
+        .from('batch_queue')
+        .select('id')
+        .eq('batch_name', batchName)
+        .eq('status', 'processing');
 
-    const processingIds = new Set(stillProcessing?.map(r => r.id) || []);
-    const responses = allResponses.filter((r: any) => processingIds.has(r.metadata?.key));
+      if (stillProcessing && stillProcessing.length > 0) {
+        const processingIds = new Set(stillProcessing.map(r => r.id));
+        responses = allResponses.filter((r: any) => processingIds.has(r.metadata?.key));
+      }
+    } catch (filterErr) {
+      console.error('[BatchExecute] Filter error:', filterErr);
+    }
 
     // Process max 6 items per invocation to stay within timeout
     const CHUNK_SIZE = 6;
