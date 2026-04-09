@@ -372,64 +372,6 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Auto-add to collection as a bundle
-    if (savedLooks.length > 0) {
-      try {
-        // Get current min position
-        const { data: minPos } = await supabase
-          .from('collection_looks')
-          .select('position')
-          .eq('store_id', storeId)
-          .order('position', { ascending: true })
-          .limit(1)
-          .single();
-
-        let nextPosition = (minPos?.position ?? 1) - savedLooks.length;
-        const editorialGroupId = crypto.randomUUID();
-        const lookIds: string[] = [];
-
-        for (const look of savedLooks) {
-          // Use R2 URL directly — no need to re-upload
-          const { data: inserted } = await supabase
-            .from('collection_looks')
-            .insert({
-              store_id: storeId,
-              image_url: look.imageUrl,
-              product_ids: look.productIds.slice(0, 4),
-              position: nextPosition++,
-              editorial_group_id: editorialGroupId,
-              show_credits: true,
-            })
-            .select('id')
-            .single();
-
-          if (inserted) lookIds.push(inserted.id);
-        }
-
-        // Create bundle if multiple looks
-        if (lookIds.length > 1) {
-          const { data: bundle } = await supabase
-            .from('collection_bundles')
-            .insert({ store_id: storeId })
-            .select('id')
-            .single();
-
-          if (bundle) {
-            for (let i = 0; i < lookIds.length; i++) {
-              await supabase
-                .from('collection_looks')
-                .update({ bundle_id: bundle.id, bundle_position: i })
-                .eq('id', lookIds[i]);
-            }
-          }
-        }
-
-        console.log(`[BatchExecute] Added ${lookIds.length} looks to collection, bundle created`);
-      } catch (collErr) {
-        console.error('[BatchExecute] Collection save error (non-blocking):', collErr);
-      }
-    }
-
     return NextResponse.json({
       success: true,
       state: 'JOB_STATE_SUCCEEDED',

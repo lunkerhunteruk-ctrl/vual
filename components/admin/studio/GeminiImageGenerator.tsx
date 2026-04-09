@@ -1064,8 +1064,19 @@ export function GeminiImageGenerator({
 
           if (succeeded) {
             clearInterval(pollInterval);
-            setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount || 0}枚生成完了` : `✓ ${pollData.savedCount || 0} images generated`);
             setSavedImagesVersion(v => v + 1);
+            // Save to collection as bundle
+            try {
+              const saveRes = await fetch('/api/ai/batch-queue/save-to-collection', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ storeId }),
+              });
+              const saveData = await saveRes.json();
+              setBatchStatus(locale === 'ja' ? `✓ ${saveData.count || pollData.savedCount || 0}枚生成完了` : `✓ ${saveData.count || pollData.savedCount || 0} images generated`);
+            } catch {
+              setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount || 0}枚生成完了` : `✓ ${pollData.savedCount || 0} images generated`);
+            }
             setTimeout(() => setBatchStatus(null), 8000);
           } else if (failed) {
             clearInterval(pollInterval);
