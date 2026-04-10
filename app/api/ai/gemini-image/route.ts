@@ -648,84 +648,135 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   }
 
   // Detail mode: close-up editorial shots (shoes, face, upper body)
-  // Off-shot mode: private/behind-the-scenes snapshots
+  // Off-shot mode: private/behind-the-scenes snapshots with randomized actions
   if (body.offshot) {
-    const offshotScenes = [
-      // Shot 1: Before the shoot — waiting with coffee
-      `OFF-SHOT — BEHIND THE SCENES (BEFORE SHOOT):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
-${modelDescription}
-The model is wearing casual clothes OR partially styled for the shoot — maybe the garment from the reference images thrown over a plain t-shirt, not fully styled yet.
-${customPrompt ? `LOCATION: ${customPrompt} — this is the backstage/waiting area of this location.` : `Setting: backstage area near ${backgroundDescriptions[background] || background}.`}
+    // Deterministic random based on shotIndex + timestamp seed
+    const seed = (body.shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
+    const pick = (arr: string[]) => arr[seed % arr.length];
 
-SCENE: The model sits on a folding chair, equipment case, or ledge, holding a paper coffee cup with both hands. Steam rises faintly. She looks slightly sleepy, not yet "on" for the camera. Early morning light.
-EXPRESSION: Drowsy, private, unguarded — a real human moment before the mask goes on. NOT posing. She barely notices the camera.
-QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
+    const locationNote = customPrompt
+      ? `LOCATION: ${customPrompt}`
+      : `Setting: ${backgroundDescriptions[background] || background}`;
 
-      // Shot 2: Getting ready — mirror/makeup check
-      `OFF-SHOT — BEHIND THE SCENES (GETTING READY):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
-${modelDescription}
-The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
-${customPrompt ? `LOCATION: ${customPrompt} — nearby makeshift prep area.` : `Setting: prep area near ${backgroundDescriptions[background] || background}.`}
+    const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.';
+    const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film.';
+    const qualityColor = 'QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
+    const qualityBW = 'QUALITY: Black and white, strong grain, high contrast, documentary style. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
+    const qualityGolden = 'QUALITY: Film grain STRONG, golden late-afternoon light, slightly faded warm colors. Candid composition with environmental context. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
 
-SCENE: The model checks herself in a small mirror or reflective surface, adjusting something — a collar, a cuff, an earring. Half-dressed in the shoot wardrobe. The setting is improvised — a corner of the location repurposed as a dressing area.
-EXPRESSION: Focused, self-contained, absorbed in the small task. NOT looking at camera. Private concentration.
-QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
-
-      // Shot 3: In transit — walking to set
-      `OFF-SHOT — BEHIND THE SCENES (MOVING TO SET):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film.
-${modelDescription}
-The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
-${customPrompt ? `LOCATION: corridor or pathway at ${customPrompt}.` : `Setting: corridor or pathway near ${backgroundDescriptions[background] || background}.`}
-
-SCENE: The model walks through a corridor, hallway, or pathway toward the shoot location. She's looking at her phone, or gazing ahead absently. Fully dressed in wardrobe but the energy is "between moments" — she's just walking from A to B.
-EXPRESSION: Absent-minded, private, looking at phone or straight ahead. NOT performing. Just existing.
-QUALITY: Black and white, strong grain, high contrast, documentary style. Slightly motion-blurred from walking. 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
-
-      // Shot 4: Break time — resting against wall
-      `OFF-SHOT — BEHIND THE SCENES (BREAK):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
-${modelDescription}
-The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
-${customPrompt ? `LOCATION: ${customPrompt} — quiet corner during a break.` : `Setting: quiet corner near ${backgroundDescriptions[background] || background}.`}
-
-SCENE: The model leans against a wall, sits on steps, or perches on a ledge during a break. She drinks water from a plastic bottle, or just rests with eyes half-closed. Still in full wardrobe but the posture is completely relaxed — slouched, weight off, guard down.
-EXPRESSION: Tired but beautiful. The exhaustion of a long shoot day showing through the perfect makeup. A moment of genuine rest.
-QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. The framing is casual — not centered, some negative space. 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
-
-      // Shot 5: Caught looking — notices the camera
-      `OFF-SHOT — BEHIND THE SCENES (CAUGHT LOOKING):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
-${modelDescription}
-The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
-${customPrompt ? `LOCATION: ${customPrompt}.` : `Setting: ${backgroundDescriptions[background] || background}.`}
-
-SCENE: The model has just noticed the photographer (Sachio) taking a candid shot. She turns toward the camera with a look that's somewhere between "really?" and a suppressed smile. One eyebrow may be slightly raised. It's the split-second of being caught off-guard.
-EXPRESSION: A flicker of amusement, slight eye contact with the camera, the beginning of a smile that hasn't fully formed. NOT a posed smile — more of a "you caught me" moment. Warm, human, real.
-QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly, not perfectly focused), natural light. The moment feels stolen. 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
-
-      // Shot 6: After the shoot — done for the day
-      `OFF-SHOT — BEHIND THE SCENES (WRAP):
-Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
-${modelDescription}
-The model is still wearing the garments from the shoot but has visibly relaxed — maybe shoes kicked off, jacket unbuttoned, hair slightly mussed from a long day.
-${customPrompt ? `LOCATION: ${customPrompt} — the location after the crew has started packing up.` : `Setting: ${backgroundDescriptions[background] || background} — after the shoot, crew packing up.`}
-
-SCENE: The shoot is done. The model sits or stands in the now-quiet location, scrolling her phone, or just staring into space. Equipment cases visible in the background. The energy is "it's over, I can be myself now."
-EXPRESSION: Quiet relief, private contentment, completely off-duty. The face behind the face. Beautiful in a completely different way than during the shoot — real, tired, serene.
-QUALITY: Film grain STRONG, golden late-afternoon light or warm practical lights, slightly faded colors. Candid composition with environmental context (equipment, cases, cables visible). 4:5 aspect ratio (Instagram portrait format).
-No text, no watermarks.`,
+    const offshotCategories = [
+      // Category 1: WAITING / DOWNTIME (before shoot)
+      {
+        actions: [
+          'holding a paper coffee cup with both hands, steam rising faintly. She looks slightly sleepy, not yet "on" for the camera',
+          'sitting cross-legged reading a worn paperback book, completely absorbed. The book cover is slightly bent from being in a bag',
+          'wearing wired earphones, eyes closed, head tilted slightly, lost in music. One hand rests on her knee, the other holds her phone',
+          'scrolling through her phone with one thumb, a faint private smile on her lips as she reads something — maybe a message from a friend',
+          'staring out a window or into the empty distance, chin resting on her hand. Completely zoned out, mind somewhere else entirely',
+          'warming her hands around a paper cup of tea, blowing gently on the surface. Her breath is faintly visible in the cool morning air',
+          'sitting with legs stretched out, eating a pastry from a paper bag on her lap. A few crumbs on her shirt. Completely unglamorous and real',
+        ],
+        wardrobe: 'wearing casual clothes OR partially styled — maybe the garment from the reference images thrown over a plain t-shirt, not fully styled yet',
+        location: `${locationNote} — this is the backstage/waiting area of this location.`,
+        film: leica,
+        quality: qualityColor,
+        expression: 'Drowsy, private, unguarded — a real human moment before the mask goes on. NOT posing.',
+      },
+      // Category 2: GETTING READY
+      {
+        actions: [
+          'checking herself in a small mirror, adjusting a collar with precise fingers',
+          'applying lip balm from a small tube while looking at her phone camera as a mirror',
+          'tying her shoes, crouched down, hair falling forward — a surprisingly vulnerable angle',
+          'standing in front of a makeshift clothes rack, holding two options on hangers, comparing them with a slight frown',
+          'having her hair touched up — a pair of hands (hair stylist) visible at the edge of frame arranging strands',
+          'buttoning the cuff of her sleeve with focused attention, mouth slightly open in concentration',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — partially dressed, still getting ready`,
+        location: `${locationNote} — nearby makeshift prep area.`,
+        film: leica,
+        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        expression: 'Focused, self-contained, absorbed in the task. NOT looking at camera. Private concentration.',
+      },
+      // Category 3: IN TRANSIT / MOVEMENT
+      {
+        actions: [
+          'walking through a corridor toward the shoot location, looking at her phone',
+          'walking ahead of the camera, seen from behind, her silhouette framed by the architecture. Slightly motion-blurred',
+          'climbing stairs, one hand on the railing, looking up toward the light at the top',
+          'standing in a doorway between two spaces, half in shadow and half in light, about to step through',
+          'walking while adjusting an earring, mid-stride, caught in a moment of multitasking',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
+        location: `${locationNote} — corridor or pathway.`,
+        film: leicaBW,
+        quality: qualityBW,
+        expression: 'Absent-minded, private. NOT performing. Just existing between moments.',
+      },
+      // Category 4: BREAK / REST
+      {
+        actions: [
+          'leaning against a wall with eyes half-closed, drinking water from a plastic bottle',
+          'sitting on stone steps, knees drawn up, arms wrapped around them, staring at nothing',
+          'lying flat on her back on a bench or ledge, one arm over her eyes, completely surrendered to exhaustion',
+          'sitting on the floor against a wall, legs stretched out, scrolling through photos from today on her phone',
+          'perched on a windowsill, one leg dangling, looking out at the view with a quiet, private expression',
+          'leaning forward with elbows on knees, both hands holding a water bottle, head slightly bowed — the weight of a long day',
+          'sitting with a blanket or jacket draped over her shoulders like a shawl, hands hidden underneath, curled up',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in full wardrobe but posture completely relaxed`,
+        location: `${locationNote} — quiet corner during a break.`,
+        film: leica,
+        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        expression: 'Tired but beautiful. The exhaustion showing through the perfect makeup. A moment of genuine rest.',
+      },
+      // Category 5: CAUGHT LOOKING / INTERACTION
+      {
+        actions: [
+          'has just noticed the photographer taking a candid shot. She turns toward the camera with a look between "really?" and a suppressed smile',
+          'glances sideways at the camera with one eyebrow slightly raised, a barely-there smirk — "I see you"',
+          'covers her face partially with one hand, laughing silently — caught mid-laugh at something someone said off-camera',
+          'looks directly into the lens with a deadpan expression, deliberately NOT smiling — a playful standoff with the photographer',
+          'waves the camera away with a lazy hand gesture, half-smiling, clearly saying "enough photos" but not really meaning it',
+          'peeks out from behind a pillar or doorframe, only half her face visible, one eye looking at camera with mock suspicion',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
+        location: `${locationNote}.`,
+        film: leica,
+        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        expression: 'A flicker of real personality. NOT a posed expression — genuine, spontaneous, human.',
+      },
+      // Category 6: AFTER THE SHOOT / WRAP
+      {
+        actions: [
+          'scrolling her phone in the now-quiet location, completely off-duty. Equipment cases visible in background',
+          'shoes kicked off beside her, sitting barefoot on the floor, texting someone with both thumbs',
+          'walking away from camera toward the exit, silhouetted against the light outside. The day is done',
+          'leaning on a railing or ledge, looking at the sunset or evening sky through a window, still in wardrobe but with the energy of "done"',
+          'sitting in the back seat of a car, head tilted against the window, eyes heavy, wardrobe jacket draped over her like a blanket',
+          'standing alone in the empty set, the last one there, looking around the space one final time before leaving',
+        ],
+        wardrobe: 'still wearing the garments from the shoot but visibly relaxed — maybe shoes kicked off, jacket unbuttoned, hair slightly mussed from a long day',
+        location: `${locationNote} — after the shoot, crew packing up.`,
+        film: leica,
+        quality: qualityGolden,
+        expression: 'Quiet relief, private contentment, completely off-duty. The face behind the face.',
+      },
     ];
 
-    const idx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotScenes.length : 0;
-    return offshotScenes[idx];
+    const shotIdx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotCategories.length : 0;
+    const category = offshotCategories[shotIdx];
+    const action = pick(category.actions);
+
+    return `OFF-SHOT — BEHIND THE SCENES:
+${category.film}
+${modelDescription}
+The model is ${category.wardrobe}.
+${category.location}
+
+SCENE: The model ${action}.
+EXPRESSION: ${category.expression}
+${category.quality}`;
   }
 
   if (detailMode) {
