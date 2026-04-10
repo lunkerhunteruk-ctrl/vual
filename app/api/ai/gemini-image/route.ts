@@ -372,7 +372,8 @@ export async function POST(request: NextRequest) {
         if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
-        const effectiveAR = body.offshot ? '4:5' : body.aspectRatio;
+        // Off-shot: generate 1:1 (Gemini-supported), then crop to 4:5 after generation
+        const effectiveAR = body.offshot ? '1:1' : body.aspectRatio;
         const effectiveRes = body.offshot ? '1K' : (body.resolution || '1K');
         const data = await callGeminiAPI(parts, effectiveAR, effectiveRes);
 
@@ -404,10 +405,31 @@ export async function POST(request: NextRequest) {
             }
             const inlineData = part.inline_data || part.inlineData;
             if (inlineData?.data) {
-              const base64 = inlineData.data;
+              let base64 = inlineData.data;
               const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
+
+              // Off-shot: crop 1:1 → 4:5 (trim left/right 10% each)
+              if (body.offshot) {
+                try {
+                  const buf = Buffer.from(base64, 'base64');
+                  const meta = await sharp(buf).metadata();
+                  if (meta.width && meta.height) {
+                    const targetWidth = Math.round(meta.height * 4 / 5);
+                    const left = Math.round((meta.width - targetWidth) / 2);
+                    const cropped = await sharp(buf)
+                      .extract({ left, top: 0, width: targetWidth, height: meta.height })
+                      .png()
+                      .toBuffer();
+                    base64 = cropped.toString('base64');
+                    console.log(`[Offshot] Cropped ${meta.width}x${meta.height} → ${targetWidth}x${meta.height} (4:5)`);
+                  }
+                } catch (cropErr) {
+                  console.error('[Offshot] Crop failed, using original:', cropErr);
+                }
+              }
+
               console.log(`[Freestyle] Success on attempt ${attempt + 1}, mimeType: ${mimeType}, size: ${base64.length}`);
-              images.push(`data:${mimeType};base64,${base64}`);
+              images.push(`data:image/png;base64,${base64}`);
             }
           }
         }
@@ -658,11 +680,21 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
       ? `LOCATION: ${customPrompt}`
       : `Setting: ${backgroundDescriptions[background] || background}`;
 
-    const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.';
-    const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film.';
-    const qualityColor = 'QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
-    const qualityBW = 'QUALITY: Black and white, strong grain, high contrast, documentary style. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
-    const qualityGolden = 'QUALITY: Film grain STRONG, golden late-afternoon light, slightly faded warm colors. Candid composition with environmental context. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.';
+    // Core off-shot directive — placed at top and bottom of prompt for maximum weight
+    const offshotDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a RAW, CANDID, BEHIND-THE-SCENES snapshot taken by a crew member with a film camera during downtime. The model is NOT posing, NOT performing, NOT aware of being photographed (or only just noticed). This must look like a REAL moment captured by accident — like a photo you'd find on a photographer's contact sheet that was never meant to be published.
+
+ANTI-FASHION RULES:
+- The model must NOT be centered perfectly in frame. Off-center composition, cut-off limbs, tilted horizon are OK and encouraged.
+- NO perfect lighting setup. Use only available ambient light — overhead fluorescent, window light, practical lamps.
+- The model's body language must be RELAXED and UNPOSED — slouching, leaning, curled up, mid-motion. Never standing straight with good posture like a fashion model.
+- Background should show REAL environment clutter — cables, equipment cases, paper cups, chairs, bags, coats on hooks, etc.
+- The overall feeling should be intimate, voyeuristic, unpolished — like a diary photo, NOT a magazine spread.`;
+
+    const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, slightly imperfect focus.';
+    const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film. Handheld, motion blur allowed.';
+    const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. Square 1:1 format. No text, no watermarks.';
+    const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. Square 1:1 format. No text, no watermarks.';
+    const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. Square 1:1 format. No text, no watermarks.';
 
     const offshotCategories = [
       // Category 1: WAITING / DOWNTIME (before shoot)
@@ -695,7 +727,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — partially dressed, still getting ready`,
         location: `${locationNote} — nearby makeshift prep area.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. Square 1:1 aspect ratio. No text, no watermarks.',
         expression: 'Focused, self-contained, absorbed in the task. NOT looking at camera. Private concentration.',
       },
       // Category 3: IN TRANSIT / MOVEMENT
@@ -727,7 +759,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in full wardrobe but posture completely relaxed`,
         location: `${locationNote} — quiet corner during a break.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. Square 1:1 aspect ratio. No text, no watermarks.',
         expression: 'Tired but beautiful. The exhaustion showing through the perfect makeup. A moment of genuine rest.',
       },
       // Category 5: CAUGHT LOOKING / INTERACTION
@@ -743,7 +775,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
         location: `${locationNote}.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. 4:5 aspect ratio (Instagram portrait format). No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. Square 1:1 aspect ratio. No text, no watermarks.',
         expression: 'A flicker of real personality. NOT a posed expression — genuine, spontaneous, human.',
       },
       // Category 6: AFTER THE SHOOT / WRAP
@@ -768,7 +800,8 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     const category = offshotCategories[shotIdx];
     const action = pick(category.actions);
 
-    return `OFF-SHOT — BEHIND THE SCENES:
+    return `${offshotDirective}
+
 ${category.film}
 ${modelDescription}
 The model is ${category.wardrobe}.
@@ -776,7 +809,9 @@ ${category.location}
 
 SCENE: The model ${action}.
 EXPRESSION: ${category.expression}
-${category.quality}`;
+${category.quality}
+
+REMINDER: This is a BEHIND-THE-SCENES candid snapshot, NOT a fashion photo. Imperfect framing, relaxed posture, real environment.`;
   }
 
   if (detailMode) {
