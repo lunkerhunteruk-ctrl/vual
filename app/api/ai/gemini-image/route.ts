@@ -62,7 +62,8 @@ interface RequestBody {
   locale?: string;
   detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'face-diagonal' | 'face-upward' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'upper-body-side' | 'upper-body-upward' | 'upper-body-glance-back' | 'upper-body-hair-tuck' | 'bag' | 'bag-detail';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
-  sceneVariant?: 'A' | 'B'; // Normal mode scene variant
+  sceneVariant?: 'A' | 'B' | 'C'; // Normal mode scene variant
+  offshot?: boolean; // Off-shot mode: private/behind-the-scenes
   shotIndex?: number;
   totalShots?: number;
   // Consumer billing fields (when called from customer try-on)
@@ -645,6 +646,86 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
   }
 
   // Detail mode: close-up editorial shots (shoes, face, upper body)
+  // Off-shot mode: private/behind-the-scenes snapshots
+  if (body.offshot) {
+    const offshotScenes = [
+      // Shot 1: Before the shoot — waiting with coffee
+      `OFF-SHOT — BEHIND THE SCENES (BEFORE SHOOT):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
+${modelDescription}
+The model is wearing casual clothes OR partially styled for the shoot — maybe the garment from the reference images thrown over a plain t-shirt, not fully styled yet.
+${customPrompt ? `LOCATION: ${customPrompt} — this is the backstage/waiting area of this location.` : `Setting: backstage area near ${backgroundDescriptions[background] || background}.`}
+
+SCENE: The model sits on a folding chair, equipment case, or ledge, holding a paper coffee cup with both hands. Steam rises faintly. She looks slightly sleepy, not yet "on" for the camera. Early morning light.
+EXPRESSION: Drowsy, private, unguarded — a real human moment before the mask goes on. NOT posing. She barely notices the camera.
+QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 3:2 aspect ratio.
+No text, no watermarks.`,
+
+      // Shot 2: Getting ready — mirror/makeup check
+      `OFF-SHOT — BEHIND THE SCENES (GETTING READY):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `LOCATION: ${customPrompt} — nearby makeshift prep area.` : `Setting: prep area near ${backgroundDescriptions[background] || background}.`}
+
+SCENE: The model checks herself in a small mirror or reflective surface, adjusting something — a collar, a cuff, an earring. Half-dressed in the shoot wardrobe. The setting is improvised — a corner of the location repurposed as a dressing area.
+EXPRESSION: Focused, self-contained, absorbed in the small task. NOT looking at camera. Private concentration.
+QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 3:2 aspect ratio.
+No text, no watermarks.`,
+
+      // Shot 3: In transit — walking to set
+      `OFF-SHOT — BEHIND THE SCENES (MOVING TO SET):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `LOCATION: corridor or pathway at ${customPrompt}.` : `Setting: corridor or pathway near ${backgroundDescriptions[background] || background}.`}
+
+SCENE: The model walks through a corridor, hallway, or pathway toward the shoot location. She's looking at her phone, or gazing ahead absently. Fully dressed in wardrobe but the energy is "between moments" — she's just walking from A to B.
+EXPRESSION: Absent-minded, private, looking at phone or straight ahead. NOT performing. Just existing.
+QUALITY: Black and white, strong grain, high contrast, documentary style. Slightly motion-blurred from walking. 3:2 aspect ratio.
+No text, no watermarks.`,
+
+      // Shot 4: Break time — resting against wall
+      `OFF-SHOT — BEHIND THE SCENES (BREAK):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `LOCATION: ${customPrompt} — quiet corner during a break.` : `Setting: quiet corner near ${backgroundDescriptions[background] || background}.`}
+
+SCENE: The model leans against a wall, sits on steps, or perches on a ledge during a break. She drinks water from a plastic bottle, or just rests with eyes half-closed. Still in full wardrobe but the posture is completely relaxed — slouched, weight off, guard down.
+EXPRESSION: Tired but beautiful. The exhaustion of a long shoot day showing through the perfect makeup. A moment of genuine rest.
+QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. The framing is casual — not centered, some negative space. 3:2 aspect ratio.
+No text, no watermarks.`,
+
+      // Shot 5: Caught looking — notices the camera
+      `OFF-SHOT — BEHIND THE SCENES (CAUGHT LOOKING):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `LOCATION: ${customPrompt}.` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+SCENE: The model has just noticed the photographer (Sachio) taking a candid shot. She turns toward the camera with a look that's somewhere between "really?" and a suppressed smile. One eyebrow may be slightly raised. It's the split-second of being caught off-guard.
+EXPRESSION: A flicker of amusement, slight eye contact with the camera, the beginning of a smile that hasn't fully formed. NOT a posed smile — more of a "you caught me" moment. Warm, human, real.
+QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly, not perfectly focused), natural light. The moment feels stolen. 3:2 aspect ratio.
+No text, no watermarks.`,
+
+      // Shot 6: After the shoot — done for the day
+      `OFF-SHOT — BEHIND THE SCENES (WRAP):
+Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film.
+${modelDescription}
+The model is still wearing the garments from the shoot but has visibly relaxed — maybe shoes kicked off, jacket unbuttoned, hair slightly mussed from a long day.
+${customPrompt ? `LOCATION: ${customPrompt} — the location after the crew has started packing up.` : `Setting: ${backgroundDescriptions[background] || background} — after the shoot, crew packing up.`}
+
+SCENE: The shoot is done. The model sits or stands in the now-quiet location, scrolling her phone, or just staring into space. Equipment cases visible in the background. The energy is "it's over, I can be myself now."
+EXPRESSION: Quiet relief, private contentment, completely off-duty. The face behind the face. Beautiful in a completely different way than during the shoot — real, tired, serene.
+QUALITY: Film grain STRONG, golden late-afternoon light or warm practical lights, slightly faded colors. Candid composition with environmental context (equipment, cases, cables visible). 3:2 aspect ratio.
+No text, no watermarks.`,
+    ];
+
+    const idx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotScenes.length : 0;
+    return offshotScenes[idx];
+  }
+
   if (detailMode) {
     const detailPrompts: Record<string, string> = {
       'shoes': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP:

@@ -247,6 +247,7 @@ export function GeminiImageGenerator({
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
   const [artisticMode, setArtisticMode] = useState(false);
+  const [isOffshot, setIsOffshot] = useState(false);
   const [sceneVariant, setSceneVariant] = useState<'A' | 'B' | 'C'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
@@ -655,8 +656,10 @@ export function GeminiImageGenerator({
             customPrompt: config.customPrompt,
             locale,
             storeId,
-            ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
-            ...(artisticMode ? { artistic: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
+            ...(isOffshot ? { offshot: true, shotIndex: shotIdx, totalShots: storyCount } : {
+              ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
+              ...(artisticMode ? { artistic: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
+            }),
           }),
         }).then(r => r.json())
       );
@@ -1201,11 +1204,13 @@ export function GeminiImageGenerator({
           customPrompt: shotPrompt,
           locale,
           storeId,
-          artistic: artisticMode ? sceneVariant : undefined,
-          sceneVariant,
+          ...(isOffshot ? { offshot: true } : {
+            artistic: artisticMode ? sceneVariant : undefined,
+            sceneVariant,
+            detailMode: detailAssignments[i],
+          }),
           shotIndex: i,
           totalShots: shotsToQueue,
-          detailMode: detailAssignments[i],
         };
 
         const res = await fetch('/api/ai/batch-queue', {
@@ -1369,7 +1374,7 @@ export function GeminiImageGenerator({
           <>
             <div className="w-px h-5 bg-[var(--color-line)]" />
             <button
-              onClick={() => { setIsDetailMode(!isDetailMode); if (!isDetailMode) setArtisticMode(false); }}
+              onClick={() => { setIsDetailMode(!isDetailMode); if (!isDetailMode) { setArtisticMode(false); setIsOffshot(false); } }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 isDetailMode
                   ? 'bg-[var(--color-accent)] text-white'
@@ -1381,7 +1386,7 @@ export function GeminiImageGenerator({
             <button
               onClick={() => {
                 setArtisticMode(!artisticMode);
-                if (!artisticMode) setIsDetailMode(false);
+                if (!artisticMode) { setIsDetailMode(false); setIsOffshot(false); }
               }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 artisticMode
@@ -1390,6 +1395,19 @@ export function GeminiImageGenerator({
               }`}
             >
               {locale === 'ja' ? 'アーティスティック' : 'Artistic'}
+            </button>
+            <button
+              onClick={() => {
+                setIsOffshot(!isOffshot);
+                if (!isOffshot) { setIsDetailMode(false); setArtisticMode(false); }
+              }}
+              className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
+                isOffshot
+                  ? 'bg-[var(--color-accent)] text-white'
+                  : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
+              }`}
+            >
+              {locale === 'ja' ? 'オフショット' : 'Off-shot'}
             </button>
             <button
               onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : prev === 'B' ? 'C' : 'A')}
