@@ -179,6 +179,7 @@ const allPoseLabels: Record<string, { labelEn: string; labelJa: string }> = {
 const aspectRatioOptions = [
   { id: '1:1', labelEn: '1:1 Square', labelJa: '1:1 正方形' },
   { id: '3:4', labelEn: '3:4 Portrait', labelJa: '3:4 縦長' },
+  { id: '4:5', labelEn: '4:5 Instagram', labelJa: '4:5 Instagram' },
   { id: '4:3', labelEn: '4:3 Landscape', labelJa: '4:3 横長' },
   { id: '9:16', labelEn: '9:16 Story', labelJa: '9:16 ストーリー' },
   { id: '16:9', labelEn: '16:9 Wide', labelJa: '16:9 ワイド' },
