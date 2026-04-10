@@ -1394,7 +1394,7 @@ export function GeminiImageGenerator({
             <button
               onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : prev === 'B' ? 'C' : 'A')}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
-                sceneVariant === 'B'
+                sceneVariant !== 'A'
                   ? 'bg-[var(--color-accent)] text-white'
                   : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
               }`}
