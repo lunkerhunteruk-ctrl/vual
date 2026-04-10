@@ -247,7 +247,7 @@ export function GeminiImageGenerator({
   const [storyCount, setStoryCount] = useState<1 | 3 | 4 | 6>(1);
   const [isDetailMode, setIsDetailMode] = useState(false);
   const [artisticMode, setArtisticMode] = useState(false);
-  const [sceneVariant, setSceneVariant] = useState<'A' | 'B'>('A');
+  const [sceneVariant, setSceneVariant] = useState<'A' | 'B' | 'C'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
   const [selectedPoses, setSelectedPoses] = useState<string[]>([]);
@@ -607,17 +607,24 @@ export function GeminiImageGenerator({
       // Detail mode: assign detail types per shot for close-up variety
       const detailModeAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(storyCount).fill(undefined);
-        if (sceneVariant === 'B') {
-          // Detail B: bags (3) + shoes (3)
+        if (sceneVariant === 'C') {
+          // Detail C: bags + shoes
           if (storyCount === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
           if (storyCount === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
           if (storyCount === 3) return ['bag', 'shoes', 'bag-detail'];
           return [undefined];
         }
-        // Detail A: face + upper body only (6 varied shots)
-        if (storyCount === 6) return ['face', 'upper-body', 'face-profile', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
-        if (storyCount === 4) return ['face', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
-        if (storyCount === 3) return ['face-profile', 'face-gaze', 'face-glance-back'];
+        if (sceneVariant === 'B') {
+          // Detail B: upper body (waist-to-knee up) — varied angles
+          if (storyCount === 6) return ['upper-body', 'upper-body-side', 'upper-body-upward', 'upper-body-glance-back', 'upper-body-hair-tuck', 'upper-body-gaze'];
+          if (storyCount === 4) return ['upper-body', 'upper-body-side', 'upper-body-glance-back', 'upper-body-gaze'];
+          if (storyCount === 3) return ['upper-body', 'upper-body-glance-back', 'upper-body-gaze'];
+          return [undefined];
+        }
+        // Detail A: face (chest up) — varied angles
+        if (storyCount === 6) return ['face', 'face-profile', 'face-diagonal', 'face-upward', 'face-glance-back', 'face-gaze'];
+        if (storyCount === 4) return ['face', 'face-diagonal', 'face-glance-back', 'face-gaze'];
+        if (storyCount === 3) return ['face-profile', 'face-glance-back', 'face-gaze'];
         return [undefined];
       })();
 
@@ -1142,15 +1149,21 @@ export function GeminiImageGenerator({
       // Detail mode assignments (same logic as handleEditorialGenerate)
       const detailAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(shotsToQueue).fill(undefined);
-        if (sceneVariant === 'B') {
+        if (sceneVariant === 'C') {
           if (shotsToQueue === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
           if (shotsToQueue === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
           if (shotsToQueue === 3) return ['bag', 'shoes', 'bag-detail'];
           return [undefined];
         }
-        if (shotsToQueue === 6) return ['face', 'upper-body', 'face-profile', 'face-glance-back', 'face-gaze', 'upper-body-gaze'];
-        if (shotsToQueue === 4) return ['face', 'upper-body-texture', 'face-gaze', 'upper-body-gaze'];
-        if (shotsToQueue === 3) return ['face-profile', 'face-gaze', 'upper-body-gaze'];
+        if (sceneVariant === 'B') {
+          if (shotsToQueue === 6) return ['upper-body', 'upper-body-side', 'upper-body-upward', 'upper-body-glance-back', 'upper-body-hair-tuck', 'upper-body-gaze'];
+          if (shotsToQueue === 4) return ['upper-body', 'upper-body-side', 'upper-body-glance-back', 'upper-body-gaze'];
+          if (shotsToQueue === 3) return ['upper-body', 'upper-body-glance-back', 'upper-body-gaze'];
+          return [undefined];
+        }
+        if (shotsToQueue === 6) return ['face', 'face-profile', 'face-diagonal', 'face-upward', 'face-glance-back', 'face-gaze'];
+        if (shotsToQueue === 4) return ['face', 'face-diagonal', 'face-glance-back', 'face-gaze'];
+        if (shotsToQueue === 3) return ['face-profile', 'face-glance-back', 'face-gaze'];
         return [undefined];
       })();
 
@@ -1379,7 +1392,7 @@ export function GeminiImageGenerator({
               {locale === 'ja' ? 'アーティスティック' : 'Artistic'}
             </button>
             <button
-              onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : 'A')}
+              onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : prev === 'B' ? 'C' : 'A')}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 sceneVariant === 'B'
                   ? 'bg-[var(--color-accent)] text-white'

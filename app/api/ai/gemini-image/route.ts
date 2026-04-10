@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'bag' | 'bag-detail';
+  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'face-diagonal' | 'face-upward' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'upper-body-side' | 'upper-body-upward' | 'upper-body-glance-back' | 'upper-body-hair-tuck' | 'bag' | 'bag-detail';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   sceneVariant?: 'A' | 'B'; // Normal mode scene variant
   shotIndex?: number;
@@ -780,6 +780,32 @@ LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the background dissolves int
 Hair should be natural and undisturbed.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
+      'face-diagonal': `DETAIL SHOT — FACE/PORTRAIT (DIAGONAL THREE-QUARTER):
+Generate a cinematic close-up portrait of the model at a diagonal three-quarter angle.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Tight close-up from chest/shoulders up. The model's face is at a DIAGONAL three-quarter angle — not full profile, not straight on, but angled approximately 30-40 degrees from camera. Show the jawline, one cheekbone prominently, the bridge of the nose. The angle reveals the face's sculptural quality.
+EXPRESSION: Calm, distant, emotionless. Eyes looking slightly past the camera into the middle distance. NOT at camera. Lips closed naturally.
+LIGHTING: Beautiful directional light sculpting the face from the angled side, creating a soft gradient of light to shadow across the cheek. The lit side is luminous, the shadow side has gentle fill.
+LENS: Shot on Canon RF 85mm f/1.2L USM DS — impossibly smooth bokeh transition, luminous skin rendering.
+Hair should be natural and undisturbed.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'face-upward': `DETAIL SHOT — FACE/PORTRAIT (UPWARD GAZE):
+Generate a cinematic close-up portrait of the model gazing slightly upward.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Tight close-up from chest/shoulders up, shot from a slightly lower angle. The model tilts her chin slightly upward, gazing diagonally up — as if drawn by something above (light, architecture, sky). The upward tilt elongates the neck and creates an elegant, aspirational silhouette.
+EXPRESSION: Serene, contemplative, quietly awed. NOT at camera. Eyes directed upward and slightly to one side. Emotionless but with a hint of wonder.
+LIGHTING: Light from above, catching the face as it tilts upward. Beautiful catchlights in the upward-looking eyes. The neck and jawline are elegantly illuminated.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness on the face with refined bokeh. The sky or ceiling above melts into soft background.
+Hair should be natural and undisturbed.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
       'upper-body-texture': `DETAIL SHOT — UPPER BODY (FABRIC TEXTURE FOCUS):
 Generate a cinematic upper-body photograph emphasizing garment texture and construction.
 ${modelDescription}
@@ -791,6 +817,57 @@ EXPRESSION: Looking slightly away from camera (three-quarter profile). NOT looki
 The model's hands may rest naturally, one hand holding a bag or accessory if included. No hair touching.
 LIGHTING: Raking sidelight that sculpts every fold, seam, and texture of the fabric surface. The light should create visible texture on the garment — you should almost feel the material. Window light or architectural sidelight is ideal.
 LENS: Shot on Hasselblad XCD 80mm f/1.9 (medium format) — the larger sensor captures micro-texture details in the fabric that smaller formats miss. Tonal gradation in the fabric folds is extraordinarily smooth and rich.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-side': `DETAIL SHOT — UPPER BODY (SIDE VIEW):
+Generate a cinematic upper-body photograph from the side.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist up, shot from the SIDE (true profile or strong 3/4 body angle). Show how the garment's silhouette, drape, and fit look from the side — sleeve shape, back line, hem drop. NOT looking at camera.
+EXPRESSION: Looking away, calm, emotionless. Profile or near-profile of the face.
+The model's hands rest naturally at sides. No hair touching.
+LIGHTING: Strong rim light or backlight outlining the garment's silhouette edge. Soft fill on the visible side of the garment.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary silhouette rendering with smooth tonal depth.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-upward': `DETAIL SHOT — UPPER BODY (UPWARD GAZE):
+Generate a cinematic upper-body photograph with the model gazing upward.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist up. The model tilts her chin slightly upward, gazing diagonally up at the sky or architecture above. The upward angle shows the garment's neckline, collar, and upper construction beautifully. Shot from slightly below eye level.
+EXPRESSION: Serene, contemplative, emotionless. NOT at camera. Chin tilted up, eyes directed above.
+The model's hands rest naturally. No hair touching.
+LIGHTING: Light from above catching the garment's upper surfaces. The upward gaze creates elegant shadows under the jawline.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness with dignified bokeh.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-glance-back': `DETAIL SHOT — UPPER BODY (GLANCE BACK):
+Generate a cinematic upper-body photograph of the model glancing back over her shoulder.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist up. The model's body faces AWAY from camera (back/3/4 back view), head turned to look back DIRECTLY at camera. This reveals the garment's back construction — shoulder seams, back panel, collar from behind — while maintaining face visibility. Show enough garment detail to appreciate the back design.
+EXPRESSION: Direct, confident eye contact through the glance back. Magnetic, unhurried.
+The model's hands rest naturally at sides. No hair touching.
+LIGHTING: Soft light catching the face as it turns. The back of the garment may be in slightly different light, creating depth.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — painterly bokeh with sharp face.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'upper-body-hair-tuck': `DETAIL SHOT — UPPER BODY (HAIR BEHIND EAR):
+Generate a cinematic upper-body photograph of the model tucking hair behind her ear.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Medium close-up from waist up. The model raises one hand to gently tuck a strand of hair behind her ear — a single, natural, feminine gesture captured mid-motion. The raised arm reveals the garment's sleeve construction and armhole. The other hand rests naturally or holds a bag/accessory.
+EXPRESSION: Looking slightly away from camera with a calm, private expression. NOT at camera. The gesture should feel natural and unposed — as if she's simply adjusting her hair while lost in thought.
+LIGHTING: Soft, flattering light. The raised hand and exposed ear/neck area should be well-lit. Beautiful light on the garment's shoulder and sleeve.
+LENS: Shot on Canon RF 85mm f/1.2L USM DS — smooth, dreamy bokeh, luminous skin.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
     };
 
