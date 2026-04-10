@@ -1039,27 +1039,80 @@ export function GeminiImageGenerator({
   const [batchRunning, setBatchRunning] = useState(false);
   const [batchStatus, setBatchStatus] = useState<string | null>(null);
 
+  // Submit a single batch (max 6 items) and start polling
+  const submitAndPollBatch = async (): Promise<void> => {
+    if (!storeId) return;
+
+    const res = await fetch('/api/ai/batch-queue/execute', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ storeId }),
+    });
+    const data = await res.json();
+
+    if (!data.success || !data.batchName) {
+      throw new Error(data.error || 'Submit failed');
+    }
+
+    const batchName = data.batchName;
+    const hasMore = (data.remaining || 0) > 0;
+
+    setBatchStatus(locale === 'ja'
+      ? `✓ ${data.requestCount}件送信済み${hasMore ? `（残り${data.remaining}件）` : ''}（処理中...）`
+      : `✓ ${data.requestCount} sent${hasMore ? ` (${data.remaining} remaining)` : ''} (processing...)`);
+
+    // If more items remain, submit next batch immediately
+    if (hasMore) {
+      setTimeout(() => submitAndPollBatch().catch(console.error), 1000);
+    }
+
+    // Poll this batch for completion
+    const pollInterval = setInterval(async () => {
+      try {
+        const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
+        const pollData = await pollRes.json();
+
+        const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
+        const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
+
+        if (succeeded) {
+          clearInterval(pollInterval);
+          setSavedImagesVersion(v => v + 1);
+          try {
+            const saveRes = await fetch('/api/ai/batch-queue/save-to-collection', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ storeId, batchName }),
+            });
+            const saveData = await saveRes.json();
+            setBatchStatus(locale === 'ja' ? `✓ ${saveData.count || pollData.savedCount || 0}枚生成完了` : `✓ ${saveData.count || pollData.savedCount || 0} images generated`);
+          } catch {
+            setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount || 0}枚生成完了` : `✓ ${pollData.savedCount || 0} images generated`);
+          }
+          setTimeout(() => setBatchStatus(null), 8000);
+        } else if (failed) {
+          clearInterval(pollInterval);
+          setBatchStatus(locale === 'ja' ? 'バッチ失敗/キャンセル' : 'Batch failed/cancelled');
+          setTimeout(() => setBatchStatus(null), 5000);
+        } else if (pollData.state === 'NO_PENDING_BATCH') {
+          clearInterval(pollInterval);
+          setBatchStatus(null);
+        }
+      } catch {
+        // Keep polling on network errors
+      }
+    }, 30000);
+  };
+
   const handleExecuteBatch = async () => {
     if (!storeId || batchRunning) return;
     setBatchRunning(true);
     setBatchStatus(locale === 'ja' ? '送信中...' : 'Submitting...');
 
     try {
-      // Submit batch
-      const res = await fetch('/api/ai/batch-queue/execute', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ storeId }),
-      });
-      const data = await res.json();
+      await submitAndPollBatch();
 
-      if (!data.success || !data.batchName) {
-        setBatchStatus(locale === 'ja' ? `エラー: ${data.error || '送信失敗'}` : `Error: ${data.error || 'Submit failed'}`);
-        setBatchRunning(false);
-        return;
-      }
-
-      // Sync queueCount with actual DB state (in case items were added during submit)
+      // Sync queueCount
       try {
         const statusRes = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=queued`);
         const statusData = await statusRes.json();
@@ -1068,51 +1121,9 @@ export function GeminiImageGenerator({
         setQueueCount(0);
       }
       setBatchRunning(false);
-      setBatchStatus(locale === 'ja' ? `✓ ${data.requestCount}件送信済み（バックグラウンド処理中）` : `✓ ${data.requestCount} submitted (processing in background)`);
-
-      const submittedBatchName = data.batchName;
-
-      // Poll in background for completion — uses batchName from submit response
-      const pollInterval = setInterval(async () => {
-        try {
-          const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(submittedBatchName)}`);
-          const pollData = await pollRes.json();
-
-          const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
-          const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
-
-          if (succeeded) {
-            clearInterval(pollInterval);
-            setSavedImagesVersion(v => v + 1);
-            // Save to collection as bundle — only for THIS batch
-            try {
-              const saveRes = await fetch('/api/ai/batch-queue/save-to-collection', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ storeId, batchName: submittedBatchName }),
-              });
-              const saveData = await saveRes.json();
-              setBatchStatus(locale === 'ja' ? `✓ ${saveData.count || pollData.savedCount || 0}枚生成完了` : `✓ ${saveData.count || pollData.savedCount || 0} images generated`);
-            } catch {
-              setBatchStatus(locale === 'ja' ? `✓ ${pollData.savedCount || 0}枚生成完了` : `✓ ${pollData.savedCount || 0} images generated`);
-            }
-            setTimeout(() => setBatchStatus(null), 8000);
-          } else if (failed) {
-            clearInterval(pollInterval);
-            setBatchStatus(locale === 'ja' ? 'バッチ失敗/キャンセル' : 'Batch failed/cancelled');
-            setTimeout(() => setBatchStatus(null), 5000);
-          } else if (pollData.state === 'NO_PENDING_BATCH') {
-            clearInterval(pollInterval);
-            setBatchStatus(null);
-          }
-        } catch {
-          // Keep polling on network errors
-        }
-      }, 30000); // Poll every 30 seconds
-
     } catch (err) {
       console.error('Batch execute error:', err);
-      setBatchStatus(locale === 'ja' ? 'バッチ実行エラー' : 'Batch execute error');
+      setBatchStatus(locale === 'ja' ? `エラー: ${err}` : `Error: ${err}`);
       setBatchRunning(false);
     }
   };

@@ -31,18 +31,25 @@ export async function POST(request: NextRequest) {
     }
 
     // 1. Fetch queued items
-    const { data: queueItems, error: fetchErr } = await supabase
+    // Max 6 items per batch to keep response size manageable for Vercel
+    const MAX_BATCH_SIZE = 6;
+
+    const { data: allQueueItems, error: fetchErr } = await supabase
       .from('batch_queue')
       .select('*')
       .eq('store_id', storeId)
       .eq('status', 'queued')
       .order('created_at', { ascending: true });
 
-    if (fetchErr || !queueItems?.length) {
+    if (fetchErr || !allQueueItems?.length) {
       return NextResponse.json({ error: 'No queued items', count: 0 }, { status: 400 });
     }
 
-    console.log(`[BatchExecute] Processing ${queueItems.length} queued items`);
+    // Take only first 6
+    const queueItems = allQueueItems.slice(0, MAX_BATCH_SIZE);
+    const remaining = allQueueItems.length - queueItems.length;
+
+    console.log(`[BatchExecute] Processing ${queueItems.length} of ${allQueueItems.length} queued items (${remaining} remaining)`);
 
     // 2. Build batch requests
     const batchRequests: any[] = [];
@@ -189,6 +196,7 @@ export async function POST(request: NextRequest) {
       success: true,
       batchName,
       requestCount: batchRequests.length,
+      remaining,
     });
   } catch (error: any) {
     const errMsg = error?.message || String(error);
