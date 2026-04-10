@@ -373,7 +373,8 @@ export async function POST(request: NextRequest) {
 
         const parts = [{ text: prompt }, ...imageParts];
         const effectiveAR = body.offshot ? '4:5' : body.aspectRatio;
-        const data = await callGeminiAPI(parts, effectiveAR, body.resolution || '1K');
+        const effectiveRes = body.offshot ? '1K' : (body.resolution || '1K');
+        const data = await callGeminiAPI(parts, effectiveAR, effectiveRes);
 
         const candidates = data.candidates || [];
         const finishReason = candidates[0]?.finishReason;
