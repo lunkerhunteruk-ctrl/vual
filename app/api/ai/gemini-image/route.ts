@@ -372,7 +372,8 @@ export async function POST(request: NextRequest) {
         if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
-        const data = await callGeminiAPI(parts, body.aspectRatio, body.resolution || '1K');
+        const effectiveAR = body.offshot ? '4:5' : body.aspectRatio;
+        const data = await callGeminiAPI(parts, effectiveAR, body.resolution || '1K');
 
         const candidates = data.candidates || [];
         const finishReason = candidates[0]?.finishReason;
@@ -658,7 +659,7 @@ ${customPrompt ? `LOCATION: ${customPrompt} — this is the backstage/waiting ar
 
 SCENE: The model sits on a folding chair, equipment case, or ledge, holding a paper coffee cup with both hands. Steam rises faintly. She looks slightly sleepy, not yet "on" for the camera. Early morning light.
 EXPRESSION: Drowsy, private, unguarded — a real human moment before the mask goes on. NOT posing. She barely notices the camera.
-QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 3:2 aspect ratio.
+QUALITY: Film grain STRONG, slightly warm color cast, soft focus edges, natural available light only. Candid snapshot aesthetic — NOT a fashion photo. The framing may be slightly imperfect (extra headroom, slight tilt). 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
 
       // Shot 2: Getting ready — mirror/makeup check
@@ -670,7 +671,7 @@ ${customPrompt ? `LOCATION: ${customPrompt} — nearby makeshift prep area.` : `
 
 SCENE: The model checks herself in a small mirror or reflective surface, adjusting something — a collar, a cuff, an earring. Half-dressed in the shoot wardrobe. The setting is improvised — a corner of the location repurposed as a dressing area.
 EXPRESSION: Focused, self-contained, absorbed in the small task. NOT looking at camera. Private concentration.
-QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 3:2 aspect ratio.
+QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
 
       // Shot 3: In transit — walking to set
@@ -682,7 +683,7 @@ ${customPrompt ? `LOCATION: corridor or pathway at ${customPrompt}.` : `Setting:
 
 SCENE: The model walks through a corridor, hallway, or pathway toward the shoot location. She's looking at her phone, or gazing ahead absently. Fully dressed in wardrobe but the energy is "between moments" — she's just walking from A to B.
 EXPRESSION: Absent-minded, private, looking at phone or straight ahead. NOT performing. Just existing.
-QUALITY: Black and white, strong grain, high contrast, documentary style. Slightly motion-blurred from walking. 3:2 aspect ratio.
+QUALITY: Black and white, strong grain, high contrast, documentary style. Slightly motion-blurred from walking. 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
 
       // Shot 4: Break time — resting against wall
@@ -694,7 +695,7 @@ ${customPrompt ? `LOCATION: ${customPrompt} — quiet corner during a break.` : 
 
 SCENE: The model leans against a wall, sits on steps, or perches on a ledge during a break. She drinks water from a plastic bottle, or just rests with eyes half-closed. Still in full wardrobe but the posture is completely relaxed — slouched, weight off, guard down.
 EXPRESSION: Tired but beautiful. The exhaustion of a long shoot day showing through the perfect makeup. A moment of genuine rest.
-QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. The framing is casual — not centered, some negative space. 3:2 aspect ratio.
+QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. The framing is casual — not centered, some negative space. 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
 
       // Shot 5: Caught looking — notices the camera
@@ -706,7 +707,7 @@ ${customPrompt ? `LOCATION: ${customPrompt}.` : `Setting: ${backgroundDescriptio
 
 SCENE: The model has just noticed the photographer (Sachio) taking a candid shot. She turns toward the camera with a look that's somewhere between "really?" and a suppressed smile. One eyebrow may be slightly raised. It's the split-second of being caught off-guard.
 EXPRESSION: A flicker of amusement, slight eye contact with the camera, the beginning of a smile that hasn't fully formed. NOT a posed smile — more of a "you caught me" moment. Warm, human, real.
-QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly, not perfectly focused), natural light. The moment feels stolen. 3:2 aspect ratio.
+QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly, not perfectly focused), natural light. The moment feels stolen. 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
 
       // Shot 6: After the shoot — done for the day
@@ -718,7 +719,7 @@ ${customPrompt ? `LOCATION: ${customPrompt} — the location after the crew has 
 
 SCENE: The shoot is done. The model sits or stands in the now-quiet location, scrolling her phone, or just staring into space. Equipment cases visible in the background. The energy is "it's over, I can be myself now."
 EXPRESSION: Quiet relief, private contentment, completely off-duty. The face behind the face. Beautiful in a completely different way than during the shoot — real, tired, serene.
-QUALITY: Film grain STRONG, golden late-afternoon light or warm practical lights, slightly faded colors. Candid composition with environmental context (equipment, cases, cables visible). 3:2 aspect ratio.
+QUALITY: Film grain STRONG, golden late-afternoon light or warm practical lights, slightly faded colors. Candid composition with environmental context (equipment, cases, cables visible). 4:5 aspect ratio (Instagram portrait format).
 No text, no watermarks.`,
     ];
 
