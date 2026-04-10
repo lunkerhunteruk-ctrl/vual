@@ -330,6 +330,57 @@ export function GeminiImageGenerator({
       .catch(err => console.error('Failed to load model database:', err));
   }, []);
 
+  // Resume polling for any processing batches on page load
+  useEffect(() => {
+    if (!storeId || !isDevStore) return;
+    (async () => {
+      try {
+        const res = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=processing`);
+        const data = await res.json();
+        if (!data.items?.length) return;
+
+        // Group by batch_name
+        const batchNames = new Set<string>();
+        for (const item of data.items) {
+          if (item.batch_name) batchNames.add(item.batch_name);
+        }
+        if (batchNames.size === 0) return;
+
+        setBatchStatus(locale === 'ja' ? `${data.items.length}件処理中...` : `${data.items.length} items processing...`);
+
+        // Start polling for each unique batch
+        for (const batchName of batchNames) {
+          const pollInterval = setInterval(async () => {
+            try {
+              const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
+              const pollData = await pollRes.json();
+
+              const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
+              const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
+
+              if (succeeded) {
+                clearInterval(pollInterval);
+                setSavedImagesVersion(v => v + 1);
+                try {
+                  await fetch('/api/ai/batch-queue/save-to-collection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ storeId, batchName }),
+                  });
+                } catch { /* non-blocking */ }
+                setBatchStatus(locale === 'ja' ? `✓ バッチ完了` : `✓ Batch complete`);
+                setTimeout(() => setBatchStatus(null), 8000);
+              } else if (failed || pollData.state === 'NO_PENDING_BATCH') {
+                clearInterval(pollInterval);
+                setBatchStatus(null);
+              }
+            } catch { /* keep polling */ }
+          }, 30000);
+        }
+      } catch { /* ignore */ }
+    })();
+  }, [storeId, isDevStore]);
+
   useEffect(() => {
     const fetchSavedImages = async () => {
       if (!storeId) return;
