@@ -64,6 +64,7 @@ interface RequestBody {
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   sceneVariant?: 'A' | 'B' | 'C'; // Normal mode scene variant
   offshot?: boolean; // Off-shot mode: private/behind-the-scenes
+  offshotVariant?: 'A' | 'B'; // A = on-set BTS, B = after-party/dinner/nightlife
   shotIndex?: number;
   totalShots?: number;
   // Consumer billing fields (when called from customer try-on)
@@ -408,20 +409,20 @@ export async function POST(request: NextRequest) {
               let base64 = inlineData.data;
               const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
 
-              // Off-shot: crop 1:1 → 4:5 (trim left/right 10% each)
+              // Off-shot: crop 1:1 → 3:4 (trim left/right)
               if (body.offshot) {
                 try {
                   const buf = Buffer.from(base64, 'base64');
                   const meta = await sharp(buf).metadata();
                   if (meta.width && meta.height) {
-                    const targetWidth = Math.round(meta.height * 4 / 5);
+                    const targetWidth = Math.round(meta.height * 3 / 4);
                     const left = Math.round((meta.width - targetWidth) / 2);
                     const cropped = await sharp(buf)
                       .extract({ left, top: 0, width: targetWidth, height: meta.height })
                       .png()
                       .toBuffer();
                     base64 = cropped.toString('base64');
-                    console.log(`[Offshot] Cropped ${meta.width}x${meta.height} → ${targetWidth}x${meta.height} (4:5)`);
+                    console.log(`[Offshot] Cropped ${meta.width}x${meta.height} → ${targetWidth}x${meta.height} (3:4)`);
                   }
                 } catch (cropErr) {
                   console.error('[Offshot] Crop failed, using original:', cropErr);
@@ -675,10 +676,14 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     // Deterministic random based on shotIndex + timestamp seed
     const seed = (body.shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
     const pick = (arr: string[]) => arr[seed % arr.length];
+    const offshotVariant = body.offshotVariant || 'A';
 
     const locationNote = customPrompt
       ? `LOCATION: ${customPrompt}`
       : `Setting: ${backgroundDescriptions[background] || background}`;
+
+    // The user's customPrompt is used as the location/city name for offshot B
+    const cityName = customPrompt || '';
 
     // Core off-shot directive — placed at top and bottom of prompt for maximum weight
     const offshotDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a RAW, CANDID, BEHIND-THE-SCENES snapshot taken by a crew member with a film camera during downtime. The model is NOT posing, NOT performing, NOT aware of being photographed (or only just noticed). This must look like a REAL moment captured by accident — like a photo you'd find on a photographer's contact sheet that was never meant to be published.
@@ -727,7 +732,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — partially dressed, still getting ready`,
         location: `${locationNote} — nearby makeshift prep area.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. Square 1:1 aspect ratio. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. Square 1:1 format. No text, no watermarks.',
         expression: 'Focused, self-contained, absorbed in the task. NOT looking at camera. Private concentration.',
       },
       // Category 3: IN TRANSIT / MOVEMENT
@@ -759,7 +764,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in full wardrobe but posture completely relaxed`,
         location: `${locationNote} — quiet corner during a break.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. Square 1:1 aspect ratio. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. Square 1:1 format. No text, no watermarks.',
         expression: 'Tired but beautiful. The exhaustion showing through the perfect makeup. A moment of genuine rest.',
       },
       // Category 5: CAUGHT LOOKING / INTERACTION
@@ -775,7 +780,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
         location: `${locationNote}.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. Square 1:1 aspect ratio. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. Square 1:1 format. No text, no watermarks.',
         expression: 'A flicker of real personality. NOT a posed expression — genuine, spontaneous, human.',
       },
       // Category 6: AFTER THE SHOOT / WRAP
@@ -796,11 +801,13 @@ ANTI-FASHION RULES:
       },
     ];
 
-    const shotIdx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotCategories.length : 0;
-    const category = offshotCategories[shotIdx];
-    const action = pick(category.actions);
+    // ============ OFFSHOT VARIANT A: On-set BTS ============
+    if (offshotVariant === 'A') {
+      const shotIdx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotCategories.length : 0;
+      const category = offshotCategories[shotIdx];
+      const action = pick(category.actions);
 
-    return `${offshotDirective}
+      return `${offshotDirective}
 
 ${category.film}
 ${modelDescription}
@@ -812,6 +819,125 @@ EXPRESSION: ${category.expression}
 ${category.quality}
 
 REMINDER: This is a BEHIND-THE-SCENES candid snapshot, NOT a fashion photo. Imperfect framing, relaxed posture, real environment.`;
+    }
+
+    // ============ OFFSHOT VARIANT B: After-party / Dinner / Nightlife ============
+    const offshotBDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID, AFTER-HOURS snapshot taken after the fashion shoot is done for the day. The model has wrapped the shoot, changed into more relaxed styling, and is now out with the crew — eating, drinking, celebrating, or traveling. The vibe is EVENING/NIGHT, warm lighting, intimate, real.
+
+ANTI-FASHION RULES:
+- This is a social moment, NOT a photoshoot. The model is relaxed, laughing, eating, drinking — being a real person.
+- Framing is imperfect — shot on a phone or a small camera by a friend at the table. Off-center, slightly tilted, maybe someone's arm or glass partially blocking the frame.
+- Lighting is warm ambient — restaurant candles, pub pendant lights, neon signs, car dashboard glow, street lamps. NO studio lighting.
+- Other people (crew members, friends) may be partially visible — arms, shoulders, backs of heads, hands holding glasses.
+- The overall feeling is private, warm, celebratory — like a photo posted on someone's close friends Instagram story.`;
+
+    const leicaNight = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 800 film pushed to 1600. Handheld, available light only, warm color cast from ambient lighting.';
+    const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing — feels like a friend took this photo. Square 1:1 format. No text, no watermarks.';
+    const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon. Cinematic night-time feel. Slightly underexposed with bright highlights from signs and lights. Square 1:1 format. No text, no watermarks.';
+    const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. Square 1:1 format. No text, no watermarks.';
+
+    const cityContext = cityName
+      ? `The location is in or near ${cityName}. The restaurant/bar/venue should feel authentic to this city — local cuisine, local atmosphere, local architectural style. For example: if ${cityName} is in Japan, think izakaya or yakiniku; if in Spain, think tapas bar or seafood restaurant by the harbor; if in Paris, think bistro or wine bar; if in London, think traditional pub.`
+      : 'The venue should feel authentic and local to the shooting location.';
+
+    const offshotBCategories = [
+      // Category 1: WRAP PARTY / CELEBRATION
+      {
+        actions: [
+          'raising a glass in a toast with crew members around a table full of food and drinks. Everyone is mid-cheer, glasses clinking',
+          'laughing hard at something someone just said, leaning back in her chair, one hand on the table for balance. Her eyes are squeezed shut from laughing',
+          'taking a group selfie with 2-3 crew members, all squeezing into frame, phone held at arm\'s length. Big genuine smiles',
+          'arm around a crew member\'s shoulder, both holding drinks, posing for someone else\'s camera with relaxed, happy expressions',
+          'standing up from the table making a playful speech or toast, one hand holding a glass up, the other gesturing. Everyone at the table is looking up at her, amused',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in the shoot outfit but slightly loosened up: top button undone, sleeves pushed up, jacket draped over chair`,
+        location: `A lively restaurant or dining venue. ${cityContext} The table is full of shared plates, glasses, bottles, napkins. Warm pendant lights overhead.`,
+        film: leicaNight,
+        quality: qualityNight,
+        expression: 'Pure joy and relief. The shoot is done, the work was good, and now it\'s time to celebrate. Genuine, unguarded happiness.',
+      },
+      // Category 2: RESTAURANT DINNER
+      {
+        actions: [
+          'mid-bite of food, chopsticks or fork halfway to her mouth, looking at the camera with a surprised "don\'t photograph me eating" expression mixed with amusement',
+          'leaning over the table to look at someone\'s phone screen, pointing at something on it while holding her wine glass in the other hand',
+          'resting her chin on both hands, elbows on the table, listening to a story being told across the table with a warm, engaged smile',
+          'picking food from a shared plate in the center of the table, concentrating on choosing the best piece, tongue slightly out in focus',
+          'holding up a piece of food on her chopsticks/fork toward the camera, showing it off proudly — "look how good this is"',
+          'sitting sideways in her chair, legs crossed, one arm draped over the back, wine glass dangling from her fingers. Completely at ease',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — jacket removed, draped over the back of her chair. More relaxed than during the shoot`,
+        location: `An authentic local restaurant. ${cityContext} The table has beautiful food, ceramic dishes, cloth napkins, candles. The restaurant interior is visible — wooden furniture, warm lighting, maybe an open kitchen in the background.`,
+        film: leicaNight,
+        quality: qualityNight,
+        expression: 'Relaxed, social, enjoying the food and company. The face of someone who has earned this meal.',
+      },
+      // Category 3: PUB / BEER
+      {
+        actions: [
+          'holding a pint of beer up at eye level, examining the golden color against the warm pub light, with a satisfied expression',
+          'mid-sip of beer, foam on her upper lip, eyes looking over the rim of the glass at the camera with a playful glint',
+          'sitting at a worn wooden bar counter, one elbow on the bar, beer in hand, turned toward the camera with a relaxed, easy smile',
+          'playing darts or a pub game in the background, captured mid-throw or mid-action, slightly blurred from movement',
+          'leaning against the bar with a beer, deep in conversation with a crew member (seen from behind). Her face is animated, mid-story',
+          'cheers-ing beer glasses with someone, the glasses meeting in the center of frame, her face visible behind the glasses, grinning',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — casual, jacket off, sleeves rolled up. Looks like she's been here a while and is completely comfortable`,
+        location: `A cozy, authentic pub or beer hall. ${cityContext} Worn wooden bar, brass taps, warm amber lighting, maybe chalkboard menus on the wall. The atmosphere is lively but intimate.`,
+        film: leicaNight,
+        quality: qualityNight,
+        expression: 'Easy confidence, warmth. The relaxed version of her that only comes out after a few beers with friends.',
+      },
+      // Category 4: BAR / COCKTAILS
+      {
+        actions: [
+          'holding an elegant cocktail — the glass catches the light from the bar, colorful liquid glowing. She looks at the camera over the rim with a subtle, knowing smile',
+          'sitting at a dimly lit bar, leaning on one elbow, cocktail in hand, watching the bartender make drinks with quiet fascination',
+          'stirring her cocktail absently with a straw, looking directly at the camera with a warm, slightly tipsy smile — eyes soft and happy',
+          'laughing with her head thrown back slightly, cocktail held safely to the side, reacting to something hilarious someone just said',
+          'taking a photo of her cocktail with her phone, the drink beautifully lit by a candle on the bar. Caught being "that person" and not caring',
+          'sitting in a velvet booth, cocktail on the table, one leg tucked under her, turned sideways to talk to someone just out of frame',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — styled but relaxed, the shoot look transformed into a night-out look`,
+        location: `A stylish but not pretentious cocktail bar. ${cityContext} Dim lighting, candles, dark wood or marble bar top. Bottles backlit on shelves. Moody and atmospheric.`,
+        film: leicaNight,
+        quality: qualityNeon,
+        expression: 'Magnetic, slightly mysterious. The nighttime version of her — more relaxed, more real, more captivating.',
+      },
+      // Category 5: CAR RIDE / TRANSIT
+      {
+        actions: [
+          'sitting in the back seat of a car, head leaned against the window, city lights streaking past outside. She looks at the camera with tired but content eyes',
+          'in the back seat, showing her phone screen to the person next to her (partially visible), both laughing at something. Dashboard lights illuminating their faces',
+          'leaning forward between the front seats, pointing at something through the windshield, excited — maybe they\'re driving past a landmark or the shoot location at night',
+          'asleep in the back seat, head tilted to one side, jacket used as a blanket. The city lights play across her face through the window. Peaceful and unguarded',
+          'sitting in the back seat, scrolling through the day\'s photos on her phone, face lit by the screen glow. A quiet, private smile as she reviews a good shot',
+          'looking out the car window at the night city, chin resting on her hand, reflections of neon signs and streetlights on the glass overlapping her face',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — wrapped in a jacket or coat for warmth, slightly disheveled from a long day and evening out`,
+        location: `Inside a car (taxi, van, or crew vehicle) driving through the city at night. ${cityContext} City lights, neon signs, and architecture visible through the windows. Dashboard instruments glowing softly.`,
+        film: leicaNight,
+        quality: qualityCar,
+        expression: 'Tired contentment. The quiet aftermath of a great day and a great evening. Vulnerable and beautiful in the way only exhaustion can make someone.',
+      },
+    ];
+
+    const shotIdx = typeof body.shotIndex === 'number' ? body.shotIndex % offshotBCategories.length : 0;
+    const category = offshotBCategories[shotIdx];
+    const action = pick(category.actions);
+
+    return `${offshotBDirective}
+
+${category.film}
+${modelDescription}
+The model is ${category.wardrobe}.
+${category.location}
+
+SCENE: The model ${action}.
+EXPRESSION: ${category.expression}
+${category.quality}
+
+REMINDER: This is an AFTER-HOURS candid snapshot — evening/night, warm ambient lighting, real social moment. NOT a fashion photo.`;
   }
 
   if (detailMode) {
