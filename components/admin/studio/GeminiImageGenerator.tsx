@@ -331,16 +331,17 @@ export function GeminiImageGenerator({
       .catch(err => console.error('Failed to load model database:', err));
   }, []);
 
-  // Resume polling for any processing batches on page load
+  // Resume polling for any processing batches on page load + tab wake
   useEffect(() => {
     if (!storeId || !isDevStore) return;
-    (async () => {
+    const intervals: ReturnType<typeof setInterval>[] = [];
+
+    const checkAndResumeBatch = async () => {
       try {
         const res = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=processing`);
         const data = await res.json();
         if (!data.items?.length) return;
 
-        // Group by batch_name
         const batchNames = new Set<string>();
         for (const item of data.items) {
           if (item.batch_name) batchNames.add(item.batch_name);
@@ -349,9 +350,9 @@ export function GeminiImageGenerator({
 
         setBatchStatus(locale === 'ja' ? `${data.items.length}件処理中...` : `${data.items.length} items processing...`);
 
-        // Start polling for each unique batch
         for (const batchName of batchNames) {
-          const pollInterval = setInterval(async () => {
+          // Immediately poll once (don't wait 30s)
+          const poll = async () => {
             try {
               const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
               const pollData = await pollRes.json();
@@ -360,7 +361,8 @@ export function GeminiImageGenerator({
               const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
 
               if (succeeded) {
-                clearInterval(pollInterval);
+                intervals.forEach(clearInterval);
+                intervals.length = 0;
                 setSavedImagesVersion(v => v + 1);
                 try {
                   await fetch('/api/ai/batch-queue/save-to-collection', {
@@ -371,15 +373,44 @@ export function GeminiImageGenerator({
                 } catch { /* non-blocking */ }
                 setBatchStatus(locale === 'ja' ? `✓ バッチ完了` : `✓ Batch complete`);
                 setTimeout(() => setBatchStatus(null), 8000);
+                return true;
               } else if (failed || pollData.state === 'NO_PENDING_BATCH') {
-                clearInterval(pollInterval);
+                intervals.forEach(clearInterval);
+                intervals.length = 0;
                 setBatchStatus(null);
+                return true;
               }
             } catch { /* keep polling */ }
-          }, 30000);
+            return false;
+          };
+
+          // Poll immediately on load/wake
+          const done = await poll();
+          if (!done) {
+            const interval = setInterval(poll, 30000);
+            intervals.push(interval);
+          }
         }
       } catch { /* ignore */ }
-    })();
+    };
+
+    checkAndResumeBatch();
+
+    // Resume polling when tab becomes visible again (recovers from sleep)
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        // Clear stale intervals and re-check
+        intervals.forEach(clearInterval);
+        intervals.length = 0;
+        checkAndResumeBatch();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      intervals.forEach(clearInterval);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [storeId, isDevStore]);
 
   useEffect(() => {
