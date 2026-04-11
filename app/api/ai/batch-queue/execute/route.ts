@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
             generationConfig: {
               responseModalities: ['TEXT', 'IMAGE'],
               imageConfig: {
-                aspectRatio: payload.offshot ? '1:1' : (payload.aspectRatio || '3:4'),
+                aspectRatio: payload.offshot ? '3:4' : (payload.aspectRatio || '3:4'),
                 imageSize: payload.offshot ? '1K' : (payload.resolution || '1K'),
               },
             },
@@ -342,33 +342,6 @@ export async function GET(request: NextRequest) {
             completed_at: new Date().toISOString(),
           }).eq('id', queueId);
           continue;
-        }
-
-        // Off-shot: crop 1:1 → 3:4
-        const { data: queueItemForCrop } = await supabase
-          .from('batch_queue')
-          .select('payload')
-          .eq('id', queueId)
-          .single();
-        if (queueItemForCrop?.payload?.offshot) {
-          try {
-            const sharp = (await import('sharp')).default;
-            const buf = Buffer.from(imageBase64, 'base64');
-            const meta = await sharp(buf).metadata();
-            if (meta.width && meta.height) {
-              const targetWidth = Math.round(meta.height * 3 / 4);
-              const left = Math.round((meta.width - targetWidth) / 2);
-              const cropped = await sharp(buf)
-                .extract({ left, top: 0, width: targetWidth, height: meta.height })
-                .png()
-                .toBuffer();
-              imageBase64 = cropped.toString('base64');
-              mimeType = 'image/png';
-              console.log(`[BatchExecute] Offshot cropped ${meta.width}x${meta.height} → ${targetWidth}x${meta.height} (3:4)`);
-            }
-          } catch (cropErr) {
-            console.error('[BatchExecute] Offshot crop failed, using original:', cropErr);
-          }
         }
 
         // Save to R2

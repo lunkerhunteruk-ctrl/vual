@@ -110,9 +110,9 @@ ANTI-FASHION RULES:
 
   const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, slightly imperfect focus.';
   const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film. Handheld, motion blur allowed.';
-  const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. Square 1:1 format. No text, no watermarks.';
-  const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. Square 1:1 format. No text, no watermarks.';
-  const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. Square 1:1 format. No text, no watermarks.';
+  const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. 3:4 portrait format. No text, no watermarks.';
+  const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. 3:4 portrait format. No text, no watermarks.';
+  const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. 3:4 portrait format. No text, no watermarks.';
 
   const categories = [
     {
@@ -137,7 +137,7 @@ ANTI-FASHION RULES:
       wardrobe: `${garmentDesc} — partially dressed, still getting ready`,
       location: `${locationNote} — nearby makeshift prep area.`,
       film: leica,
-      quality: 'QUALITY: Heavy film grain, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. Square 1:1 format. No text, no watermarks.',
+      quality: 'QUALITY: Heavy film grain, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 3:4 portrait format. No text, no watermarks.',
       expression: 'Focused, self-contained, absorbed in the task. NOT looking at camera.',
     },
     {
@@ -160,7 +160,7 @@ ANTI-FASHION RULES:
       wardrobe: `${garmentDesc} — still in full wardrobe but posture completely relaxed`,
       location: `${locationNote} — quiet corner during a break.`,
       film: leica,
-      quality: 'QUALITY: Heavy film grain, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. Square 1:1 format. No text, no watermarks.',
+      quality: 'QUALITY: Heavy film grain, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. 3:4 portrait format. No text, no watermarks.',
       expression: 'Tired but beautiful. The exhaustion showing through the perfect makeup.',
     },
     {
@@ -172,7 +172,7 @@ ANTI-FASHION RULES:
       wardrobe: garmentDesc,
       location: `${locationNote}.`,
       film: leica,
-      quality: 'QUALITY: Heavy film grain, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. Square 1:1 format. No text, no watermarks.',
+      quality: 'QUALITY: Heavy film grain, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. 3:4 portrait format. No text, no watermarks.',
       expression: 'A flicker of real personality. NOT a posed expression — genuine, spontaneous, human.',
     },
     {
@@ -218,9 +218,9 @@ ANTI-FASHION RULES:
 - The overall feeling is private, warm, celebratory — like a photo posted on someone's close friends Instagram story.`;
 
   const leicaNight = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 800 film pushed to 1600. Handheld, available light only, warm color cast from ambient lighting.';
-  const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing — feels like a friend took this photo. Square 1:1 format. No text, no watermarks.';
-  const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon. Cinematic night-time feel. Slightly underexposed with bright highlights from signs and lights. Square 1:1 format. No text, no watermarks.';
-  const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. Square 1:1 format. No text, no watermarks.';
+  const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing — feels like a friend took this photo. 3:4 portrait format. No text, no watermarks.';
+  const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon. Cinematic night-time feel. Slightly underexposed with bright highlights from signs and lights. 3:4 portrait format. No text, no watermarks.';
+  const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. 3:4 portrait format. No text, no watermarks.';
 
   const cityContext = cityName
     ? `The location is in or near ${cityName}. The restaurant/bar/venue should feel authentic to this city — local cuisine, local atmosphere, local architectural style. For example: if ${cityName} is in Japan, think izakaya or yakiniku; if in Spain, think tapas bar or seafood restaurant by the harbor; if in Paris, think bistro or wine bar; if in London, think traditional pub.`

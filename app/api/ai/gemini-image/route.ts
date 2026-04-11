@@ -373,8 +373,7 @@ export async function POST(request: NextRequest) {
         if (body.customPrompt) console.log(`[Freestyle] customPrompt: "${body.customPrompt}"`);
 
         const parts = [{ text: prompt }, ...imageParts];
-        // Off-shot: generate 1:1 (Gemini-supported), then crop to 4:5 after generation
-        const effectiveAR = body.offshot ? '1:1' : body.aspectRatio;
+        const effectiveAR = body.offshot ? '3:4' : body.aspectRatio;
         const effectiveRes = body.offshot ? '1K' : (body.resolution || '1K');
         const data = await callGeminiAPI(parts, effectiveAR, effectiveRes);
 
@@ -408,26 +407,6 @@ export async function POST(request: NextRequest) {
             if (inlineData?.data) {
               let base64 = inlineData.data;
               const mimeType = inlineData.mime_type || inlineData.mimeType || 'image/png';
-
-              // Off-shot: crop 1:1 → 3:4 (trim left/right)
-              if (body.offshot) {
-                try {
-                  const buf = Buffer.from(base64, 'base64');
-                  const meta = await sharp(buf).metadata();
-                  if (meta.width && meta.height) {
-                    const targetWidth = Math.round(meta.height * 3 / 4);
-                    const left = Math.round((meta.width - targetWidth) / 2);
-                    const cropped = await sharp(buf)
-                      .extract({ left, top: 0, width: targetWidth, height: meta.height })
-                      .png()
-                      .toBuffer();
-                    base64 = cropped.toString('base64');
-                    console.log(`[Offshot] Cropped ${meta.width}x${meta.height} → ${targetWidth}x${meta.height} (3:4)`);
-                  }
-                } catch (cropErr) {
-                  console.error('[Offshot] Crop failed, using original:', cropErr);
-                }
-              }
 
               console.log(`[Freestyle] Success on attempt ${attempt + 1}, mimeType: ${mimeType}, size: ${base64.length}`);
               images.push(`data:image/png;base64,${base64}`);
@@ -697,9 +676,9 @@ ANTI-FASHION RULES:
 
     const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, slightly imperfect focus.';
     const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film. Handheld, motion blur allowed.';
-    const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. Square 1:1 format. No text, no watermarks.';
-    const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. Square 1:1 format. No text, no watermarks.';
-    const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. Square 1:1 format. No text, no watermarks.';
+    const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. 3:4 portrait format. No text, no watermarks.';
+    const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. 3:4 portrait format. No text, no watermarks.';
+    const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. 3:4 portrait format. No text, no watermarks.';
 
     const offshotCategories = [
       // Category 1: WAITING / DOWNTIME (before shoot)
@@ -732,7 +711,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — partially dressed, still getting ready`,
         location: `${locationNote} — nearby makeshift prep area.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. Square 1:1 format. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tungsten color from practical lights, slightly underexposed, candid. Shallow depth of field. 3:4 portrait format. No text, no watermarks.',
         expression: 'Focused, self-contained, absorbed in the task. NOT looking at camera. Private concentration.',
       },
       // Category 3: IN TRANSIT / MOVEMENT
@@ -764,7 +743,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in full wardrobe but posture completely relaxed`,
         location: `${locationNote} — quiet corner during a break.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. Square 1:1 format. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, available light, slightly overexposed highlights, warm. Casual framing — not centered, some negative space. 3:4 portrait format. No text, no watermarks.',
         expression: 'Tired but beautiful. The exhaustion showing through the perfect makeup. A moment of genuine rest.',
       },
       // Category 5: CAUGHT LOOKING / INTERACTION
@@ -780,7 +759,7 @@ ANTI-FASHION RULES:
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
         location: `${locationNote}.`,
         film: leica,
-        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. Square 1:1 format. No text, no watermarks.',
+        quality: 'QUALITY: Film grain STRONG, warm tones, slightly soft focus (shot quickly), natural light. The moment feels stolen. 3:4 portrait format. No text, no watermarks.',
         expression: 'A flicker of real personality. NOT a posed expression — genuine, spontaneous, human.',
       },
       // Category 6: AFTER THE SHOOT / WRAP
@@ -832,9 +811,9 @@ ANTI-FASHION RULES:
 - The overall feeling is private, warm, celebratory — like a photo posted on someone's close friends Instagram story.`;
 
     const leicaNight = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 800 film pushed to 1600. Handheld, available light only, warm color cast from ambient lighting.';
-    const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing — feels like a friend took this photo. Square 1:1 format. No text, no watermarks.';
-    const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon. Cinematic night-time feel. Slightly underexposed with bright highlights from signs and lights. Square 1:1 format. No text, no watermarks.';
-    const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. Square 1:1 format. No text, no watermarks.';
+    const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing — feels like a friend took this photo. 3:4 portrait format. No text, no watermarks.';
+    const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon. Cinematic night-time feel. Slightly underexposed with bright highlights from signs and lights. 3:4 portrait format. No text, no watermarks.';
+    const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. 3:4 portrait format. No text, no watermarks.';
 
     const cityContext = cityName
       ? `The location is in or near ${cityName}. The restaurant/bar/venue should feel authentic to this city — local cuisine, local atmosphere, local architectural style. For example: if ${cityName} is in Japan, think izakaya or yakiniku; if in Spain, think tapas bar or seafood restaurant by the harbor; if in Paris, think bistro or wine bar; if in London, think traditional pub.`
