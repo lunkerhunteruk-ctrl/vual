@@ -675,9 +675,7 @@ ANTI-FASHION RULES:
 - The overall feeling should be intimate, voyeuristic, unpolished — like a diary photo, NOT a magazine spread.`;
 
     const leica = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, slightly imperfect focus.';
-    const leicaBW = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Tri-X 400 black and white film. Handheld, motion blur allowed.';
     const qualityColor = 'QUALITY: Heavy film grain, slightly warm color cast, soft focus edges, natural available light only. The framing is deliberately imperfect — extra headroom, slight tilt, subject off-center. Looks like it was shot quickly without careful composition. 3:4 portrait format. No text, no watermarks.';
-    const qualityBW = 'QUALITY: Black and white, heavy grain, high contrast, documentary style. Imperfect framing. 3:4 portrait format. No text, no watermarks.';
     const qualityGolden = 'QUALITY: Heavy film grain, golden late-afternoon light, slightly faded warm colors. Casual, imperfect composition with environmental context. 3:4 portrait format. No text, no watermarks.';
 
     const offshotCategories = [
@@ -725,8 +723,8 @@ ANTI-FASHION RULES:
         ],
         wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`,
         location: `${locationNote} — corridor or pathway.`,
-        film: leicaBW,
-        quality: qualityBW,
+        film: leica,
+        quality: qualityColor,
         expression: 'Absent-minded, private. NOT performing. Just existing between moments.',
       },
       // Category 4: BREAK / REST
