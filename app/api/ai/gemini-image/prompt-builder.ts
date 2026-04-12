@@ -571,6 +571,54 @@ POSE: Model holds bag casually at side, or bag rests on a surface with model's h
 LIGHTING: Raking sidelight accentuating texture. Shallow depth of field with bag's front face razor-sharp.
 LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — bag surface impossibly sharp, everything else dissolves into painterly bokeh.
 ${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'walk-side-full': `DETAIL SHOT — CATWALK SIDE VIEW (FULL BODY):
+Generate a cinematic side-view photograph of the model walking.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: FULL BODY from the SIDE — model walks across the frame in editorial stride. Camera perpendicular to walking direction. Both SHOES and BAG clearly visible. Full outfit head-to-toe from side angle.
+POSE: Mid-stride, confident, unhurried. Bag swings naturally with walking motion.
+LIGHTING: Beautiful directional light revealing full silhouette. Side angle creates depth in garment layers.
+LENS: Shot on Contax Planar 45mm f/2 — natural perspective.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'walk-side-lower': `DETAIL SHOT — CATWALK SIDE VIEW (LOWER BODY):
+Generate a cinematic side-view photograph focusing on the lower body while walking.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Cropped from waist/hip down to the ground — SHOES and lower garment are heroes. Shot from SIDE as model walks. BAG visible if carried at side. Ground texture visible.
+POSE: Mid-stride from the side — one leg forward, one back, dynamic walking motion. Shoe detail sharp and clear.
+LIGHTING: Low-angle light raking across the ground, long shadows from shoes and legs.
+LENS: Shot on Canon TS-E 90mm f/2.8L Macro — tilt-shift selective focus.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'lean-side': `DETAIL SHOT — LEANING AGAINST WALL (SIDE VIEW):
+Generate a cinematic side-view photograph of the model leaning against a wall or pillar.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: FULL BODY from the SIDE — model leans against a wall, pillar, or column. Both SHOES and BAG clearly visible. Side angle reveals garment drape at rest.
+POSE: One shoulder against surface, weight on one leg, other leg bent or crossed. One hand holding bag, other relaxed. Candid, natural.
+LIGHTING: Beautiful sidelight from architecture — window light, doorway, or ambient.
+LENS: Shot on Leica Summilux-M 35mm f/1.4 ASPH — warm rendering with environmental context.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'bench-side': `DETAIL SHOT — SEATED ON BENCH (SIDE VIEW):
+Generate a cinematic side-view photograph of the model seated on a bench or ledge.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: FULL BODY from the SIDE — model sits on bench, stone ledge, or low wall. Legs crossed elegantly. BAG placed beside her on the surface, casually but visible. SHOES clearly visible with crossed legs showcasing them.
+POSE: Seated, legs crossed, posture relaxed but elegant. One hand on bag, other on knee. A natural pause moment.
+LIGHTING: Warm, natural directional light from the side. Seated pose creates interesting garment folds.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary tonal depth.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
   };
 
   return detailPrompts[detailMode] || detailPrompts['upper-body'];

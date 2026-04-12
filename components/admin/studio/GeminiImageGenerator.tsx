@@ -703,10 +703,10 @@ export function GeminiImageGenerator({
       const detailModeAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(storyCount).fill(undefined);
         if (sceneVariant === 'C') {
-          // Detail C: bags + shoes
-          if (storyCount === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
-          if (storyCount === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
-          if (storyCount === 3) return ['bag', 'shoes', 'bag-detail'];
+          // Detail C: bags + shoes — side views showing both accessories
+          if (storyCount === 6) return ['bag', 'shoes', 'walk-side-full', 'walk-side-lower', 'lean-side', 'bench-side'];
+          if (storyCount === 4) return ['walk-side-full', 'walk-side-lower', 'lean-side', 'bench-side'];
+          if (storyCount === 3) return ['walk-side-full', 'lean-side', 'bench-side'];
           return [undefined];
         }
         if (sceneVariant === 'B') {
@@ -1258,9 +1258,9 @@ export function GeminiImageGenerator({
       const detailAssignments: (string | undefined)[] = (() => {
         if (!isDetailMode) return Array(shotsToQueue).fill(undefined);
         if (sceneVariant === 'C') {
-          if (shotsToQueue === 6) return ['bag', 'shoes', 'bag-detail', 'shoes-wall', 'bag', 'shoes'];
-          if (shotsToQueue === 4) return ['bag', 'shoes', 'bag-detail', 'shoes-wall'];
-          if (shotsToQueue === 3) return ['bag', 'shoes', 'bag-detail'];
+          if (shotsToQueue === 6) return ['bag', 'shoes', 'walk-side-full', 'walk-side-lower', 'lean-side', 'bench-side'];
+          if (shotsToQueue === 4) return ['walk-side-full', 'walk-side-lower', 'lean-side', 'bench-side'];
+          if (shotsToQueue === 3) return ['walk-side-full', 'lean-side', 'bench-side'];
           return [undefined];
         }
         if (sceneVariant === 'B') {

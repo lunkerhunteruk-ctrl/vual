@@ -60,7 +60,7 @@ interface RequestBody {
   resolution?: string;
   customPrompt?: string;
   locale?: string;
-  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'face-diagonal' | 'face-upward' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'upper-body-side' | 'upper-body-upward' | 'upper-body-glance-back' | 'upper-body-hair-tuck' | 'bag' | 'bag-detail';
+  detailMode?: 'shoes' | 'shoes-wall' | 'face' | 'face-gaze' | 'face-profile' | 'face-glance-back' | 'face-diagonal' | 'face-upward' | 'upper-body' | 'upper-body-gaze' | 'upper-body-texture' | 'upper-body-side' | 'upper-body-upward' | 'upper-body-glance-back' | 'upper-body-hair-tuck' | 'bag' | 'bag-detail' | 'walk-side-full' | 'walk-side-lower' | 'lean-side' | 'bench-side';
   artistic?: boolean | string; // true/'A' = Scene A, 'B' = Scene B
   sceneVariant?: 'A' | 'B' | 'C'; // Normal mode scene variant
   offshot?: boolean; // Off-shot mode: private/behind-the-scenes
@@ -1058,6 +1058,57 @@ COMPOSITION: Tight crop on the bag — focus on the most visually prominent deta
 POSE: The model holds the bag casually at their side, or the bag rests on a surface (ledge, step) with the model's hand draped over it. One hand may be in a pocket while the other holds the bag — effortless, natural grip.
 LIGHTING: Raking sidelight that accentuates texture — every stitch and surface detail catches the light. Shallow depth of field with the bag's front face razor-sharp.
 LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — the bag's surface and texture are impossibly sharp while everything else dissolves into painterly bokeh.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'walk-side-full': `DETAIL SHOT — CATWALK SIDE VIEW (FULL BODY):
+Generate a cinematic side-view photograph of the model walking.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: FULL BODY shot from the SIDE — the model walks across the frame (left to right or right to left) in a confident editorial stride. The camera is positioned perpendicular to her walking direction. Both the SHOES and BAG/ACCESSORIES must be clearly visible in the frame. The full outfit is shown head-to-toe from a side angle, revealing the garment's silhouette, drape, and movement.
+POSE: Mid-stride, one foot ahead, weight shifting forward. The bag swings naturally with the walking motion. Arms in natural walking position. Confident, unhurried pace.
+LIGHTING: Beautiful directional light that reveals the full silhouette. The side angle creates depth in the garment's layers and folds.
+MOOD: Editorial catwalk energy — this is the money shot that shows everything: outfit, shoes, bag, movement, attitude.
+LENS: Shot on Contax Planar 45mm f/2 — natural perspective, the model and her environment in perfect balance.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'walk-side-lower': `DETAIL SHOT — CATWALK SIDE VIEW (LOWER BODY FOCUS):
+Generate a cinematic side-view photograph focusing on the lower body while the model walks.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: Cropped from roughly waist/hip down to the ground — the SHOES and lower garment are the heroes. Shot from the SIDE as the model walks across the frame. The BAG is visible if carried at the side (handle, strap, or body of the bag entering the frame from above). The ground texture (stone, concrete, gravel) is visible and tactile. This is about the stride, the shoes, the bag in motion.
+POSE: Mid-stride from the side — one leg forward, one back, capturing the dynamic motion of walking. The shoe detail is sharp and clear. The garment's hem moves with the stride.
+LIGHTING: Low-angle light raking across the ground, creating long shadows from the shoes and legs. The shoes and bag catch the light beautifully.
+LENS: Shot on Canon TS-E 90mm f/2.8L Macro — tilt-shift creating a selective focus plane. The shoes are razor-sharp with a distinctive depth falloff.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'lean-side': `DETAIL SHOT — LEANING AGAINST WALL/PILLAR (SIDE VIEW):
+Generate a cinematic side-view photograph of the model leaning against a wall or pillar.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: FULL BODY shot from the SIDE — the model leans casually against a wall, pillar, or column within the location. Shot from a perpendicular side angle. Both SHOES and BAG are clearly visible. The lean creates a relaxed, effortless silhouette that reveals how the garment drapes when the body is at rest. One foot may be flat against the wall behind her.
+POSE: Leaning with one shoulder against the surface, weight on one leg, the other leg bent or crossed. Arms relaxed — one hand holding the bag, the other in a pocket or resting at her side. The pose feels candid and natural, not stiff.
+LIGHTING: Beautiful sidelight from the location's architecture — window light, open doorway, or natural ambient. The wall texture provides visual contrast with the garment.
+MOOD: Effortlessly cool, editorial. The lean says "I belong here."
+LENS: Shot on Leica Summilux-M 35mm f/1.4 ASPH — warm rendering, enough environmental context to show the location.
+${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+      'bench-side': `DETAIL SHOT — SEATED ON BENCH (SIDE VIEW):
+Generate a cinematic side-view photograph of the model seated on a bench or ledge.
+${modelDescription}
+The model is ${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}.
+${customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${backgroundDescriptions[background] || background}.`}
+
+COMPOSITION: FULL BODY shot from the SIDE — the model sits on a bench, stone ledge, or low wall within the location. Legs crossed elegantly. The BAG is placed beside her on the bench surface, casually but visible. SHOES are clearly visible — the crossed legs showcase them. Shot from a side angle that shows the full seated silhouette.
+POSE: Seated with legs crossed (one over the other), posture relaxed but elegant. One hand may rest on the bag beside her, the other on her knee or lap. The pose should feel like a pause — she sat down for a moment and someone captured it.
+LIGHTING: Warm, natural directional light from the side. The seated pose creates interesting garment folds and drape that the light reveals.
+MOOD: A quiet, composed moment. The accessories (bag beside her, shoes on display) tell the full story of the outfit without the model needing to stand.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary tonal depth, the bag's texture and shoe details rendered with medium-format richness.
 ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
 
       'face-profile': `DETAIL SHOT — FACE/PORTRAIT (PROFILE):
