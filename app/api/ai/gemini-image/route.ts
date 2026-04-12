@@ -1265,10 +1265,12 @@ LIGHTING & LENS: Position the model with strong BACKLIGHT — golden hour sun di
 IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
 LIGHTING & LENS: Evening or twilight mood at the specified location. Look for any available POINT LIGHT SOURCES (lamps, windows, ambient lights) in the scene. The DS coating transforms every light source into perfectly smooth, round bokeh circles. The model is lit by nearby warm light, creating luminous, glowing skin. The transition from sharp to blur is impossibly gradual.`,
 
-        // Shot 3: Zeiss Otus — hard directional light, 3D pop
-        `ARTISTIC DIRECTION: Shot on Zeiss Otus 85mm f/1.4.
+        // Shot 3: Contax Planar — bright wide full-body, walking toward camera
+        `ARTISTIC DIRECTION: Shot on Contax Planar 45mm f/2 (Contax G2 rangefinder, 35mm film feel).
 IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
-LIGHTING & LENS: Find strong DIRECTIONAL LIGHT within the specified location — a shaft of sunlight through any opening, archway, or gap in the architecture. The model stands partially in this dramatic light, creating bold chiaroscuro. The Otus renders every fabric texture with extraordinary three-dimensional clarity. One side brilliantly lit, the other in rich shadow.`,
+COMPOSITION: FULL BODY wide shot — the model is shown head-to-toe with generous environment visible on both sides. The 45mm focal length captures a natural, slightly wide perspective without distortion.
+POSE: The model walks DIRECTLY TOWARD the camera in a confident, unhurried stride — mid-step, one foot ahead, weight shifting forward. Arms relaxed at sides with natural swing. The movement creates a subtle sense of approaching presence.
+LIGHTING & LENS: BRIGHT, open natural light — the scene should feel sun-drenched and luminous. Position the model in the brightest part of the location — open courtyard, wide pathway, or any area flooded with daylight. The Planar's legendary rendering gives skin a warm, three-dimensional glow with a subtle vintage character. Background gently falls off but remains recognizable. The overall image should feel airy, bright, and alive with motion.`,
 
         // Shot 4: Fujifilm GF medium format — dappled light within the location
         `ARTISTIC DIRECTION: Shot on Fujifilm GF 110mm f/2 (medium format).
@@ -1297,10 +1299,12 @@ LIGHTING & LENS: Post-rain or wet-ground mood at the specified location. The gro
 IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
 LIGHTING & LENS: Use the DEPTH of the specified location — find receding lines, arches, or structural elements that create perspective. The Summilux's warm color rendering gives surfaces a richness that digital lenses miss. Light enters from the far end or from side openings, creating a natural gradient. The model is positioned at the threshold between light and shadow.`,
 
-        // Shot 3: Canon RF Macro — graphic shadow patterns
-        `ARTISTIC DIRECTION: Shot on Canon RF 100mm f/2.8L Macro IS USM.
+        // Shot 3: Mamiya 7 — bright full-body, wind/movement
+        `ARTISTIC DIRECTION: Shot on Mamiya 7 II with 80mm f/4 (medium format rangefinder, 6x7 film feel).
 IMPORTANT: Use the user's specified location/background — do NOT replace it with a different setting.
-LIGHTING & LENS: Find elements within the specified location that cast GRAPHIC SHADOW PATTERNS — architectural details, screens, structures, any element that breaks strong sunlight into geometric shapes on the model. The macro lens resolves every detail with surgical precision. Hard, low-angle afternoon sunlight creating stark, graphic contrast.`,
+COMPOSITION: FULL BODY wide shot — the model is shown head-to-toe with ample environment. The medium format 6x7 frame gives the image a distinctive, expansive quality with extraordinary tonal depth.
+POSE: The model is mid-stride, walking across the frame from left to right. Wind catches her hair and the fabric of the garment, creating natural movement and flow. Her expression is focused, purposeful — she is going somewhere. One hand may hold hair back from her face.
+LIGHTING & LENS: BRIGHT, wide-open natural light — late morning or early afternoon. The scene should feel spacious and luminous. The Mamiya 7's legendary sharpness and medium format tonal range render every detail with a smooth, analog richness. The background is in gentle soft focus but clearly recognizable as the location. The image should feel cinematic, dynamic, and full of life.`,
 
         // Shot 4: Voigtlander Nokton — warm wall/surface lean
         `ARTISTIC DIRECTION: Shot on Voigtlander Nokton 50mm f/1.0 Aspherical.
