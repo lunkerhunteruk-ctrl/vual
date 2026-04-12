@@ -56,6 +56,11 @@ export function buildPromptFromPayload(payload: any): string {
     }
   }
 
+  // ============ DETAIL MODE ============
+  if (detailMode) {
+    return buildDetailPrompt(detailMode, modelDesc, fullGarmentDesc, customPrompt, background, aspectRatio);
+  }
+
   // ============ NORMAL MODE ============
   const parts = [
     'CRITICAL INSTRUCTION - GARMENT FIDELITY IS THE TOP PRIORITY:',
@@ -348,4 +353,227 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is an AFTER-HOURS candid snapshot — evening/night, warm ambient lighting, real social moment. NOT a fashion photo.`;
+}
+
+
+function buildDetailPrompt(detailMode: string, modelDesc: string, garmentDesc: string, customPrompt: string, background: string, aspectRatio: string): string {
+  const scene = customPrompt ? `SCENE DIRECTION: ${customPrompt}` : `Setting: ${background}.`;
+
+  const detailPrompts: Record<string, string> = {
+    'shoes': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP:
+Generate a cinematic close-up photograph of the model's feet and shoes.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below knee). The shoes must be the EXACT ones from the reference images.
+LIGHTING: Beautiful dappled light filtering through architecture or trees, casting artistic light patterns and shadows on the shoes. Golden hour warmth.
+MOOD: Emotional, luxurious, editorial — like a first-class brand campaign.
+LENS: Shot on Canon TS-E 90mm f/2.8L Macro — tilt-shift creating a unique, selective focus plane at low angle.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'shoes-wall': `DETAIL SHOT — SHOES/FOOTWEAR CLOSE-UP (WALL LEAN POSE):
+Generate a cinematic close-up photograph of the model's feet and shoes.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Low-angle close-up focusing on the shoes/feet and lower legs (below knee). The shoes must be the EXACT ones from the reference images.
+POSE: The model stands on one foot with the other foot raised and pressing its sole flat against a wall behind — casual, effortlessly cool editorial pose.
+LIGHTING: Beautiful dappled light, golden hour warmth.
+MOOD: Effortlessly cool, editorial, slightly rebellious.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — legendary bokeh renders the background into dreamy, painterly blur.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP:
+Generate a cinematic close-up portrait of the model.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face. Show enough of the garment neckline/collar.
+EXPRESSION: Confident, magnetic, slightly contemplative — looking away from camera (three-quarter profile or gazing into distance). NOT looking at camera.
+LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight creating depth. Warm skin tones.
+MOOD: Intimate, editorial, emotionally resonant — like a Vogue portrait.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinically sharp with refined, dignified bokeh.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face-gaze': `DETAIL SHOT — FACE/PORTRAIT CLOSE-UP (DIRECT GAZE):
+Generate a cinematic close-up portrait of the model.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Tight close-up from chest/shoulders up, focusing on the face.
+EXPRESSION: MUST look directly into the camera with a strong, dignified, unwavering gaze. Quietly powerful. Chin slightly lifted, eyes sharp and clear.
+LIGHTING: Soft, cinematic light wrapping around the face. Subtle rim light or backlight. Warm skin tones.
+MOOD: Powerful, editorial, captivating — luxury brand campaign key visual.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — razor-sharp face, background melts into creamy bokeh with organic swirl.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face-profile': `DETAIL SHOT — FACE/PORTRAIT (PROFILE):
+Generate a cinematic profile portrait of the model.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: True PROFILE or strong three-quarter view — the model faces screen-left or screen-right, NOT toward camera. Show jawline, cheekbone, silhouette.
+EXPRESSION: Serene, contemplative, looking into the distance. Camera is invisible to them.
+LIGHTING: Strong rim light outlining the profile. Soft reflected fill on the face.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness on the profile edge.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face-glance-back': `DETAIL SHOT — FACE/PORTRAIT (GLANCE BACK):
+Generate a cinematic portrait of the model glancing back over their shoulder.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: The model's BODY faces AWAY from camera, but HEAD is turned to look back DIRECTLY at camera. Over-the-shoulder glance. Show from waist up.
+EXPRESSION: Direct, intense eye contact. Magnetic, slightly mysterious, unhurried.
+LIGHTING: Soft light catching the face as it turns. Back/shoulders slightly in shadow.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — painterly bokeh with sharp face.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face-diagonal': `DETAIL SHOT — FACE/PORTRAIT (DIAGONAL THREE-QUARTER):
+Generate a cinematic close-up portrait at a diagonal three-quarter angle.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Tight close-up from chest/shoulders up. Face at DIAGONAL three-quarter angle — approximately 30-40 degrees from camera. Shows jawline, one cheekbone prominently.
+EXPRESSION: Calm, distant, emotionless. Eyes looking slightly past camera. NOT at camera.
+LIGHTING: Beautiful directional light sculpting the face from the angled side.
+LENS: Shot on Canon RF 85mm f/1.2L USM DS — smooth bokeh, luminous skin.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'face-upward': `DETAIL SHOT — FACE/PORTRAIT (UPWARD GAZE):
+Generate a cinematic close-up portrait of the model gazing slightly upward.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Tight close-up from chest/shoulders up, shot from slightly lower angle. Model tilts chin slightly upward, gazing diagonally up.
+EXPRESSION: Serene, contemplative, quietly awed. NOT at camera. Eyes directed upward.
+LIGHTING: Light from above, catching the face. Beautiful catchlights in upward-looking eyes.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness with refined bokeh.
+Hair should be natural and undisturbed.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body': `DETAIL SHOT — UPPER BODY CLOSE-UP:
+Generate a cinematic upper-body photograph from waist up.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist/hip up, showing garment details — texture, drape, buttons, seams. The garment must be the EXACT one from reference images.
+LIGHTING: Beautiful directional light emphasizing fabric texture. Architectural light, window light, or dappled natural light.
+MOOD: Luxurious, tactile, editorial — like a high-end lookbook detail shot.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary tonal depth, smooth medium-format bokeh.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-gaze': `DETAIL SHOT — UPPER BODY CLOSE-UP (DIRECT GAZE):
+Generate a cinematic upper-body photograph from waist up.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist/hip up, showing garment details.
+EXPRESSION: MUST look directly into the camera with a strong, dignified gaze. Quietly powerful. Chin slightly lifted.
+LIGHTING: Beautiful directional light emphasizing fabric texture.
+MOOD: Powerful, editorial, captivating — luxury campaign hero shot.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — razor-sharp subject, painterly bokeh.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-texture': `DETAIL SHOT — UPPER BODY (FABRIC TEXTURE FOCUS):
+Generate a cinematic upper-body photograph emphasizing garment texture and construction.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist up, slightly angled 3/4 body to show fabric drape in three dimensions.
+EXPRESSION: Looking slightly away from camera. Calm, disengaged, statuesque.
+LIGHTING: Raking sidelight sculpting every fold, seam, and texture of the fabric surface.
+LENS: Shot on Hasselblad XCD 80mm f/1.9 (medium format) — micro-texture details, extraordinarily smooth tonal gradation.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-side': `DETAIL SHOT — UPPER BODY (SIDE VIEW):
+Generate a cinematic upper-body photograph from the side.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist up, shot from the SIDE (profile or strong 3/4 body angle). Shows garment silhouette, drape, and fit from the side.
+EXPRESSION: Looking away, calm, emotionless. Profile or near-profile of the face.
+LIGHTING: Strong rim light outlining the garment's silhouette edge. Soft fill on visible side.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary silhouette rendering.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-upward': `DETAIL SHOT — UPPER BODY (UPWARD GAZE):
+Generate a cinematic upper-body photograph with the model gazing upward.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist up. Model tilts chin slightly upward. Shot from slightly below eye level. Shows garment neckline and collar.
+EXPRESSION: Serene, contemplative, emotionless. NOT at camera. Chin tilted up.
+LIGHTING: Light from above catching the garment's upper surfaces.
+LENS: Shot on Zeiss Otus 85mm f/1.4 — clinical sharpness with dignified bokeh.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-glance-back': `DETAIL SHOT — UPPER BODY (GLANCE BACK):
+Generate a cinematic upper-body photograph of the model glancing back over her shoulder.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist up. Body faces AWAY from camera (back/3/4 back view), head turned to look back DIRECTLY at camera. Shows garment's back construction.
+EXPRESSION: Direct, confident eye contact through the glance back. Magnetic, unhurried.
+LIGHTING: Soft light catching the face as it turns. Back of garment in slightly different light.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — painterly bokeh with sharp face.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'upper-body-hair-tuck': `DETAIL SHOT — UPPER BODY (HAIR BEHIND EAR):
+Generate a cinematic upper-body photograph of the model tucking hair behind her ear.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Medium close-up from waist up. Model raises one hand to gently tuck a strand of hair behind her ear — natural, feminine gesture mid-motion. Reveals garment sleeve construction.
+EXPRESSION: Looking slightly away from camera, calm, private. NOT at camera. Unposed, natural.
+LIGHTING: Soft, flattering light. Raised hand and exposed ear/neck well-lit.
+LENS: Shot on Canon RF 85mm f/1.2L USM DS — smooth, dreamy bokeh, luminous skin.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'bag': `DETAIL SHOT — BAG/ACCESSORY CLOSE-UP:
+Generate a cinematic close-up focusing on the bag or accessory the model is carrying.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Close-up from waist down to mid-thigh, with the bag as the hero. Model's hand holding the bag visible. Show enough garment for outfit context. Bag must be EXACT from reference.
+LIGHTING: Beautiful directional light revealing bag material texture — surface grain, stitching, construction quality.
+MOOD: Luxurious, covetable, editorial — like an Hermès accessory campaign.
+LENS: Shot on Fujifilm GF 110mm f/2 (medium format) — extraordinary material texture rendering.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+
+    'bag-detail': `DETAIL SHOT — BAG/ACCESSORY EXTREME CLOSE-UP:
+Generate a cinematic extreme close-up of the bag or accessory.
+${modelDesc}
+The model is ${garmentDesc}.
+${scene}
+
+COMPOSITION: Tight crop on the bag — focus on the most prominent detail area (surface texture, stitching, closure, or defining design element). Model's hand grips or rests on the bag naturally. Only hand, arm, and nearby garment fabric visible.
+POSE: Model holds bag casually at side, or bag rests on a surface with model's hand draped over it. Effortless, natural grip.
+LIGHTING: Raking sidelight accentuating texture. Shallow depth of field with bag's front face razor-sharp.
+LENS: Shot on Leica Noctilux-M 50mm f/0.95 ASPH — bag surface impossibly sharp, everything else dissolves into painterly bokeh.
+${aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K quality.`,
+  };
+
+  return detailPrompts[detailMode] || detailPrompts['upper-body'];
 }
