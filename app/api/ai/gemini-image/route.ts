@@ -816,7 +816,7 @@ ANTI-FASHION RULES:
     const qualityCar = 'QUALITY: Heavy film grain, mixed lighting — dashboard glow, passing streetlights creating moving shadows. Intimate, private, documentary feel. 3:4 portrait format. No text, no watermarks.';
 
     const cityContext = cityName
-      ? `The location is in or near ${cityName}. The restaurant/bar/venue should feel authentic to this city — local cuisine, local atmosphere, local architectural style. For example: if ${cityName} is in Japan, think izakaya or yakiniku; if in Spain, think tapas bar or seafood restaurant by the harbor; if in Paris, think bistro or wine bar; if in London, think traditional pub.`
+      ? `MANDATORY LOCATION: The venue MUST be in or very near ${cityName}. The restaurant, bar, or venue must look and feel authentically local to ${cityName} — local cuisine, local language on signs and menus, local architectural style, local people in the background. Do NOT set this in Japan, Tokyo, or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
       : 'The venue should feel authentic and local to the shooting location.';
 
     const offshotBCategories = [
