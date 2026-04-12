@@ -226,66 +226,109 @@ ANTI-FASHION RULES:
     ? `MANDATORY LOCATION: The venue MUST be in or very near ${cityName}. The restaurant, bar, or venue must look and feel authentically local to ${cityName} — local cuisine, local language on signs and menus, local architectural style, local people in the background. Do NOT set this in Japan, Tokyo, or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
     : 'The venue should feel authentic and local to the shooting location.';
 
+  const seed = (shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
+  const restaurantGenres = [
+    'traditional local cuisine restaurant',
+    'Italian restaurant or trattoria',
+    'French bistro or brasserie',
+    'yakiniku (grilled meat) restaurant',
+    'yakitori (grilled chicken skewer) bar',
+    'izakaya (Japanese pub-style dining)',
+    'seafood restaurant',
+    'steakhouse',
+    'ramen shop',
+    'tapas bar',
+    'wine bar with small plates',
+    'Korean BBQ restaurant',
+  ];
+  const genreA = restaurantGenres[seed % restaurantGenres.length];
+  const genreB = restaurantGenres[(seed + 3) % restaurantGenres.length];
+
   const categories = [
+    // Shot 1: CAFE
     {
       actions: [
-        'raising a glass in a toast with crew members around a table full of food and drinks. Everyone is mid-cheer, glasses clinking',
-        'laughing hard at something someone just said, leaning back in her chair, one hand on the table for balance',
-        'taking a group selfie with 2-3 crew members, all squeezing into frame, phone held at arm\'s length',
-        'arm around a crew member\'s shoulder, both holding drinks, posing for someone else\'s camera with relaxed, happy expressions',
+        'holding a latte or cappuccino, steam rising, looking out the window with a quiet, content expression',
+        'mid-bite of a pastry or cake, fork in hand, looking at the camera with a "this is amazing" expression',
+        'leaning back in her cafe chair, both hands wrapped around a warm coffee cup, watching people walk by outside',
+        'laughing at something on her phone while stirring her coffee absently, completely relaxed',
+        'sitting at a window seat, face half-lit by golden afternoon light, coffee cup on the table, reading her phone with a soft smile',
       ],
-      wardrobe: `${garmentDesc} — still in the shoot outfit but slightly loosened up: top button undone, sleeves pushed up, jacket draped over chair`,
-      location: `A lively restaurant or dining venue. ${cityContext} The table is full of shared plates, glasses, bottles, napkins. Warm pendant lights overhead.`,
+      wardrobe: `${garmentDesc} — still in the shoot outfit but jacket draped over the chair, slightly loosened up`,
+      location: `A cozy local cafe near ${cityName || 'the shooting location'}. ${cityContext} Afternoon to early evening light. Coffee cups, pastries, warm interior.`,
       film: leicaNight, quality: qualityNight,
-      expression: 'Pure joy and relief. The shoot is done, the work was good, and now it\'s time to celebrate.',
+      expression: 'Quiet contentment. The first moment of real relaxation after wrapping the shoot.',
     },
+    // Shot 2: RESTAURANT A
     {
       actions: [
-        'mid-bite of food, chopsticks or fork halfway to her mouth, looking at the camera with a surprised "don\'t photograph me eating" expression',
+        'mid-bite of food, chopsticks or fork halfway to her mouth, looking at the camera with a surprised expression mixed with amusement',
         'resting her chin on both hands, elbows on the table, listening to a story with a warm, engaged smile',
-        'holding up a piece of food toward the camera, showing it off proudly — "look how good this is"',
-        'sitting sideways in her chair, legs crossed, one arm draped over the back, wine glass dangling from her fingers',
+        'holding up a piece of food toward the camera, showing it off proudly',
+        'raising a glass in a toast with crew members, everyone mid-cheer',
+        'sitting sideways in her chair, legs crossed, one arm draped over the back, drink dangling from her fingers',
       ],
-      wardrobe: `${garmentDesc} — jacket removed, draped over the back of her chair. More relaxed than during the shoot`,
-      location: `An authentic local restaurant. ${cityContext} Beautiful food, ceramic dishes, candles. Warm lighting.`,
+      wardrobe: `${garmentDesc} — jacket removed, draped over chair. More relaxed than during the shoot`,
+      location: `A ${genreA} near ${cityName || 'the shooting location'}. ${cityContext} Beautiful food, drinks, lively atmosphere. Warm lighting, authentic interior.`,
       film: leicaNight, quality: qualityNight,
       expression: 'Relaxed, social, enjoying the food and company.',
     },
+    // Shot 3: RESTAURANT B
     {
       actions: [
-        'holding a pint of beer up at eye level, examining the golden color against the warm pub light',
-        'mid-sip of beer, foam on her upper lip, eyes looking over the rim of the glass at the camera with a playful glint',
-        'sitting at a worn wooden bar counter, one elbow on the bar, beer in hand, turned toward the camera with a relaxed smile',
-        'cheers-ing beer glasses with someone, the glasses meeting in the center of frame, her face visible behind, grinning',
+        'laughing hard at something someone just said, leaning back in her chair, eyes squeezed shut',
+        'leaning over the table to look at someone\'s phone screen, pointing at something while holding her drink',
+        'taking a group selfie with 2-3 crew members, all squeezing into frame',
+        'standing up making a playful speech or toast, one hand holding a glass up',
+        'mid-chew, cheeks slightly full, eyes wide as she realizes the camera is on her',
       ],
-      wardrobe: `${garmentDesc} — casual, jacket off, sleeves rolled up`,
-      location: `A cozy, authentic pub or beer hall. ${cityContext} Worn wooden bar, brass taps, warm amber lighting.`,
+      wardrobe: `${garmentDesc} — outfit slightly loosened, sleeves pushed up, top button undone`,
+      location: `A ${genreB} near ${cityName || 'the shooting location'}. ${cityContext} A second stop of the evening. Shared plates, bottles, warm pendant lights.`,
       film: leicaNight, quality: qualityNight,
-      expression: 'Easy confidence, warmth. The relaxed version of her that only comes out after a few beers.',
+      expression: 'Pure joy and relief. Celebrating with the crew.',
     },
+    // Shot 4: BAR / PUB
     {
       actions: [
-        'holding an elegant cocktail — the glass catches the light, colorful liquid glowing. She looks at the camera over the rim with a knowing smile',
-        'stirring her cocktail absently with a straw, looking directly at the camera with a warm, slightly tipsy smile',
-        'laughing with her head thrown back slightly, cocktail held safely to the side',
-        'taking a photo of her cocktail with her phone, caught being "that person" and not caring',
+        'holding a drink up at eye level, examining it against the warm bar light with a satisfied expression',
+        'mid-sip, eyes looking over the rim at the camera with a playful glint',
+        'sitting at a bar counter, one elbow on the bar, drink in hand, turned toward the camera with a relaxed smile',
+        'cheers-ing glasses with someone, her face visible behind the glasses, grinning',
+        'stirring her cocktail absently, looking directly at the camera with a warm smile',
       ],
-      wardrobe: `${garmentDesc} — styled but relaxed, the shoot look transformed into a night-out look`,
-      location: `A stylish cocktail bar. ${cityContext} Dim lighting, candles, dark wood or marble bar top. Bottles backlit on shelves.`,
+      wardrobe: `${garmentDesc} — casual, jacket off, sleeves rolled up. Completely comfortable`,
+      location: `A cozy bar, pub, or drinking spot near ${cityName || 'the shooting location'}. ${cityContext} Warm amber lighting, bottles on shelves, lively but intimate.`,
       film: leicaNight, quality: qualityNeon,
-      expression: 'Magnetic, slightly mysterious. The nighttime version of her.',
+      expression: 'Easy confidence, warmth. The relaxed nighttime version of her.',
     },
+    // Shot 5: CAR RIDE
     {
       actions: [
-        'sitting in the back seat of a car, head leaned against the window, city lights streaking past outside. She looks at the camera with tired but content eyes',
-        'in the back seat, showing her phone screen to the person next to her, both laughing. Dashboard lights illuminating their faces',
-        'looking out the car window at the night city, chin resting on her hand, reflections of neon signs on the glass overlapping her face',
-        'sitting in the back seat, scrolling through the day\'s photos on her phone, face lit by the screen glow. A quiet smile',
+        'sitting in the back seat, head leaned against the window, city lights streaking past. Tired but content eyes looking at camera',
+        'in the back seat, showing her phone screen to the person next to her, both laughing',
+        'looking out the car window at the night city, chin resting on her hand, reflections of lights on the glass',
+        'asleep in the back seat, head tilted to one side, jacket used as a blanket',
+        'scrolling through the day\'s photos on her phone, face lit by screen glow, a quiet private smile',
       ],
-      wardrobe: `${garmentDesc} — wrapped in a jacket or coat for warmth, slightly disheveled from a long day`,
-      location: `Inside a car driving through the city at night. ${cityContext} City lights, neon signs visible through the windows. Dashboard instruments glowing softly.`,
+      wardrobe: `${garmentDesc} — wrapped in a jacket for warmth, slightly disheveled from a long day`,
+      location: `Inside a car driving through ${cityName || 'the city'} at night. ${cityContext} Local architecture and city lights visible through windows.`,
       film: leicaNight, quality: qualityCar,
       expression: 'Tired contentment. The quiet aftermath of a great day and evening.',
+    },
+    // Shot 6: NIGHT STREET
+    {
+      actions: [
+        'walking down a narrow street at night, slightly ahead of camera, turning back with a warm smile — streetlights creating rim light',
+        'standing under a neon sign or streetlight, leaning against a wall, phone in hand, looking at camera with a relaxed gaze',
+        'crouching to pet a stray cat on the sidewalk, laughing, her drink placed on the ground beside her',
+        'walking arm-in-arm with a crew member (partially visible), mid-laugh, on an empty street',
+        'standing at a crosswalk, wind in her hair, city lights reflecting off wet pavement',
+        'sitting on a low wall on the street, eating street food or ice cream, looking up at camera with a content smile',
+      ],
+      wardrobe: `${garmentDesc} — jacket on for the cool night air, styled but lived-in`,
+      location: `A street near ${cityName || 'the shooting location'} at night. ${cityContext} Local architecture, shop fronts, street signs in the local language, warm streetlights. Authentic to this specific area.`,
+      film: leicaNight, quality: qualityNeon,
+      expression: 'Free, unguarded, magnetic. Off-duty, walking through a city she\'s falling in love with.',
     },
   ];
 

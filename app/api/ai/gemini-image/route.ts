@@ -819,85 +819,119 @@ ANTI-FASHION RULES:
       ? `MANDATORY LOCATION: The venue MUST be in or very near ${cityName}. The restaurant, bar, or venue must look and feel authentically local to ${cityName} — local cuisine, local language on signs and menus, local architectural style, local people in the background. Do NOT set this in Japan, Tokyo, or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
       : 'The venue should feel authentic and local to the shooting location.';
 
+    // Restaurant genre randomization — pick 2 different genres for shots 2 & 3
+    const restaurantGenres = [
+      'traditional local cuisine restaurant',
+      'Italian restaurant or trattoria',
+      'French bistro or brasserie',
+      'yakiniku (grilled meat) restaurant',
+      'yakitori (grilled chicken skewer) bar',
+      'izakaya (Japanese pub-style dining)',
+      'seafood restaurant',
+      'steakhouse',
+      'ramen shop',
+      'tapas bar',
+      'wine bar with small plates',
+      'Korean BBQ restaurant',
+    ];
+    const genreA = restaurantGenres[seed % restaurantGenres.length];
+    const genreB = restaurantGenres[(seed + 3) % restaurantGenres.length];
+
     const offshotBCategories = [
-      // Category 1: WRAP PARTY / CELEBRATION
+      // Shot 1: CAFE
       {
         actions: [
-          'raising a glass in a toast with crew members around a table full of food and drinks. Everyone is mid-cheer, glasses clinking',
-          'laughing hard at something someone just said, leaning back in her chair, one hand on the table for balance. Her eyes are squeezed shut from laughing',
-          'taking a group selfie with 2-3 crew members, all squeezing into frame, phone held at arm\'s length. Big genuine smiles',
-          'arm around a crew member\'s shoulder, both holding drinks, posing for someone else\'s camera with relaxed, happy expressions',
-          'standing up from the table making a playful speech or toast, one hand holding a glass up, the other gesturing. Everyone at the table is looking up at her, amused',
+          'holding a latte or cappuccino, steam rising, looking out the window at the late afternoon light with a quiet, content expression',
+          'mid-bite of a pastry or cake, fork in hand, looking at the camera with a "this is amazing" expression. Crumbs on the plate',
+          'leaning back in her cafe chair, both hands wrapped around a warm coffee cup, legs crossed, watching people walk by outside',
+          'laughing at something on her phone while stirring her coffee absently, completely relaxed and off-duty',
+          'taking a photo of her latte art or dessert with her phone, concentrating on getting the angle right',
+          'sitting at a window seat, face half-lit by golden afternoon light, coffee cup on the table, reading something on her phone with a soft smile',
         ],
-        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in the shoot outfit but slightly loosened up: top button undone, sleeves pushed up, jacket draped over chair`,
-        location: `A lively restaurant or dining venue. ${cityContext} The table is full of shared plates, glasses, bottles, napkins. Warm pendant lights overhead.`,
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — still in the shoot outfit but jacket draped over the chair, slightly loosened up`,
+        location: `A cozy local cafe near ${cityName || 'the shooting location'}. ${cityContext} Afternoon to early evening light streaming through the windows. Coffee cups, pastries, warm wood or tile interior. The cafe should feel authentic to the area.`,
         film: leicaNight,
         quality: qualityNight,
-        expression: 'Pure joy and relief. The shoot is done, the work was good, and now it\'s time to celebrate. Genuine, unguarded happiness.',
+        expression: 'Quiet contentment. The first moment of real relaxation after wrapping the shoot.',
       },
-      // Category 2: RESTAURANT DINNER
+      // Shot 2: RESTAURANT A (random genre)
       {
         actions: [
           'mid-bite of food, chopsticks or fork halfway to her mouth, looking at the camera with a surprised "don\'t photograph me eating" expression mixed with amusement',
-          'leaning over the table to look at someone\'s phone screen, pointing at something on it while holding her wine glass in the other hand',
           'resting her chin on both hands, elbows on the table, listening to a story being told across the table with a warm, engaged smile',
-          'picking food from a shared plate in the center of the table, concentrating on choosing the best piece, tongue slightly out in focus',
-          'holding up a piece of food on her chopsticks/fork toward the camera, showing it off proudly — "look how good this is"',
-          'sitting sideways in her chair, legs crossed, one arm draped over the back, wine glass dangling from her fingers. Completely at ease',
+          'holding up a piece of food toward the camera, showing it off proudly — "look how good this is"',
+          'raising a glass in a toast with crew members, everyone mid-cheer, glasses clinking',
+          'picking food from a shared plate, concentrating on choosing the best piece',
+          'sitting sideways in her chair, legs crossed, one arm draped over the back, drink dangling from her fingers. Completely at ease',
         ],
-        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — jacket removed, draped over the back of her chair. More relaxed than during the shoot`,
-        location: `An authentic local restaurant. ${cityContext} The table has beautiful food, ceramic dishes, cloth napkins, candles. The restaurant interior is visible — wooden furniture, warm lighting, maybe an open kitchen in the background.`,
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — jacket removed, draped over chair. More relaxed than during the shoot`,
+        location: `A ${genreA} near ${cityName || 'the shooting location'}. ${cityContext} The table has beautiful food, drinks, and a lively atmosphere. Warm lighting, authentic interior decor.`,
         film: leicaNight,
         quality: qualityNight,
         expression: 'Relaxed, social, enjoying the food and company. The face of someone who has earned this meal.',
       },
-      // Category 3: PUB / BEER
+      // Shot 3: RESTAURANT B (different random genre)
       {
         actions: [
-          'holding a pint of beer up at eye level, examining the golden color against the warm pub light, with a satisfied expression',
-          'mid-sip of beer, foam on her upper lip, eyes looking over the rim of the glass at the camera with a playful glint',
-          'sitting at a worn wooden bar counter, one elbow on the bar, beer in hand, turned toward the camera with a relaxed, easy smile',
-          'playing darts or a pub game in the background, captured mid-throw or mid-action, slightly blurred from movement',
-          'leaning against the bar with a beer, deep in conversation with a crew member (seen from behind). Her face is animated, mid-story',
-          'cheers-ing beer glasses with someone, the glasses meeting in the center of frame, her face visible behind the glasses, grinning',
+          'laughing hard at something someone just said, leaning back in her chair, one hand on the table for balance. Eyes squeezed shut from laughing',
+          'leaning over the table to look at someone\'s phone screen, pointing at something while holding her drink in the other hand',
+          'taking a group selfie with 2-3 crew members, all squeezing into frame, phone held at arm\'s length. Big genuine smiles',
+          'arm around a crew member\'s shoulder, both holding drinks, posing for someone else\'s camera with relaxed, happy expressions',
+          'standing up making a playful speech or toast, one hand holding a glass up. Everyone at the table looking up at her, amused',
+          'mid-chew, cheeks slightly full, eyes wide as she realizes the camera is on her — guilty but amused',
         ],
-        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — casual, jacket off, sleeves rolled up. Looks like she's been here a while and is completely comfortable`,
-        location: `A cozy, authentic pub or beer hall. ${cityContext} Worn wooden bar, brass taps, warm amber lighting, maybe chalkboard menus on the wall. The atmosphere is lively but intimate.`,
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — outfit slightly loosened, sleeves pushed up, top button undone`,
+        location: `A ${genreB} near ${cityName || 'the shooting location'}. ${cityContext} Different vibe from the previous restaurant — a second stop of the evening. Shared plates, bottles, warm pendant lights.`,
         film: leicaNight,
         quality: qualityNight,
-        expression: 'Easy confidence, warmth. The relaxed version of her that only comes out after a few beers with friends.',
+        expression: 'Pure joy and relief. The shoot is done, the work was good, celebrating with the crew.',
       },
-      // Category 4: BAR / COCKTAILS
+      // Shot 4: BAR / PUB
       {
         actions: [
-          'holding an elegant cocktail — the glass catches the light from the bar, colorful liquid glowing. She looks at the camera over the rim with a subtle, knowing smile',
-          'sitting at a dimly lit bar, leaning on one elbow, cocktail in hand, watching the bartender make drinks with quiet fascination',
-          'stirring her cocktail absently with a straw, looking directly at the camera with a warm, slightly tipsy smile — eyes soft and happy',
-          'laughing with her head thrown back slightly, cocktail held safely to the side, reacting to something hilarious someone just said',
-          'taking a photo of her cocktail with her phone, the drink beautifully lit by a candle on the bar. Caught being "that person" and not caring',
-          'sitting in a velvet booth, cocktail on the table, one leg tucked under her, turned sideways to talk to someone just out of frame',
+          'holding a drink (beer, cocktail, or local spirit) up at eye level, examining it against the warm bar light with a satisfied expression',
+          'mid-sip, foam or condensation on the glass, eyes looking over the rim at the camera with a playful glint',
+          'sitting at a worn bar counter, one elbow on the bar, drink in hand, turned toward the camera with a relaxed smile',
+          'cheers-ing glasses with someone, the glasses meeting in the center of frame, her face visible behind them, grinning',
+          'stirring her cocktail absently, looking directly at the camera with a warm, slightly tipsy smile',
+          'laughing with her head thrown back slightly, drink held safely to the side, reacting to something hilarious',
         ],
-        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — styled but relaxed, the shoot look transformed into a night-out look`,
-        location: `A stylish but not pretentious cocktail bar. ${cityContext} Dim lighting, candles, dark wood or marble bar top. Bottles backlit on shelves. Moody and atmospheric.`,
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — casual, jacket off, sleeves rolled up. Completely comfortable`,
+        location: `A cozy bar, pub, or drinking spot near ${cityName || 'the shooting location'}. ${cityContext} Worn wooden or marble bar, warm amber lighting, bottles on shelves. Lively but intimate atmosphere.`,
         film: leicaNight,
         quality: qualityNeon,
-        expression: 'Magnetic, slightly mysterious. The nighttime version of her — more relaxed, more real, more captivating.',
+        expression: 'Easy confidence, warmth. The relaxed nighttime version of her.',
       },
-      // Category 5: CAR RIDE / TRANSIT
+      // Shot 5: CAR RIDE
       {
         actions: [
           'sitting in the back seat of a car, head leaned against the window, city lights streaking past outside. She looks at the camera with tired but content eyes',
-          'in the back seat, showing her phone screen to the person next to her (partially visible), both laughing at something. Dashboard lights illuminating their faces',
-          'leaning forward between the front seats, pointing at something through the windshield, excited — maybe they\'re driving past a landmark or the shoot location at night',
-          'asleep in the back seat, head tilted to one side, jacket used as a blanket. The city lights play across her face through the window. Peaceful and unguarded',
-          'sitting in the back seat, scrolling through the day\'s photos on her phone, face lit by the screen glow. A quiet, private smile as she reviews a good shot',
-          'looking out the car window at the night city, chin resting on her hand, reflections of neon signs and streetlights on the glass overlapping her face',
+          'in the back seat, showing her phone screen to the person next to her, both laughing. Dashboard lights illuminating their faces',
+          'looking out the car window at the night city, chin resting on her hand, reflections of lights on the glass overlapping her face',
+          'asleep in the back seat, head tilted to one side, jacket used as a blanket. City lights play across her face through the window',
+          'scrolling through the day\'s photos on her phone in the back seat, face lit by screen glow, a quiet private smile',
         ],
-        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — wrapped in a jacket or coat for warmth, slightly disheveled from a long day and evening out`,
-        location: `Inside a car (taxi, van, or crew vehicle) driving through the city at night. ${cityContext} City lights, neon signs, and architecture visible through the windows. Dashboard instruments glowing softly.`,
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — wrapped in a jacket for warmth, slightly disheveled from a long day`,
+        location: `Inside a car (taxi, van, or crew vehicle) driving through ${cityName || 'the city'} at night. ${cityContext} Local architecture, street signs, and city lights visible through the windows.`,
         film: leicaNight,
         quality: qualityCar,
-        expression: 'Tired contentment. The quiet aftermath of a great day and a great evening. Vulnerable and beautiful in the way only exhaustion can make someone.',
+        expression: 'Tired contentment. The quiet aftermath of a great day and evening.',
+      },
+      // Shot 6: NIGHT STREET
+      {
+        actions: [
+          'walking down a narrow street at night, slightly ahead of the camera, turning back with a warm smile — streetlights creating a rim light around her hair',
+          'standing under a neon sign or streetlight, leaning against a wall, phone in hand, looking at the camera with a relaxed, magnetic gaze',
+          'crouching down to pet a stray cat on the sidewalk, laughing, her drink placed on the ground beside her',
+          'walking arm-in-arm with a crew member (partially visible), mid-laugh, caught in a moment of genuine friendship on an empty street',
+          'standing at a crosswalk waiting for the light, caught in a candid moment — wind in her hair, city lights reflecting off wet pavement',
+          'sitting on a low wall or bench on the street, legs dangling, eating street food or ice cream from a cone, looking up at the camera with a content smile',
+        ],
+        wardrobe: `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc} — jacket on for the cool night air, styled but lived-in`,
+        location: `A street near ${cityName || 'the shooting location'} at night. ${cityContext} Local architecture, shop fronts, street signs in the local language, warm streetlights, maybe some neon. The street should feel authentic to this specific area — not generic.`,
+        film: leicaNight,
+        quality: qualityNeon,
+        expression: 'Free, unguarded, magnetic. The best version of her — off-duty, walking through a city she\'s falling in love with.',
       },
     ];
 
