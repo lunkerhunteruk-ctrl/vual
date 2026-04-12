@@ -335,23 +335,28 @@ export function GeminiImageGenerator({
   useEffect(() => {
     if (!storeId || !isDevStore) return;
     const intervals: ReturnType<typeof setInterval>[] = [];
+    const completedBatches = new Set<string>();
+    let isPolling = false;
 
     const checkAndResumeBatch = async () => {
+      if (isPolling) return; // Prevent concurrent checks
+      isPolling = true;
       try {
         const res = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=processing`);
         const data = await res.json();
-        if (!data.items?.length) return;
+        if (!data.items?.length) { isPolling = false; return; }
 
         const batchNames = new Set<string>();
         for (const item of data.items) {
-          if (item.batch_name) batchNames.add(item.batch_name);
+          if (item.batch_name && !completedBatches.has(item.batch_name)) {
+            batchNames.add(item.batch_name);
+          }
         }
-        if (batchNames.size === 0) return;
+        if (batchNames.size === 0) { isPolling = false; return; }
 
         setBatchStatus(locale === 'ja' ? `${data.items.length}件処理中...` : `${data.items.length} items processing...`);
 
         for (const batchName of batchNames) {
-          // Immediately poll once (don't wait 30s)
           const poll = async () => {
             try {
               const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
@@ -361,6 +366,7 @@ export function GeminiImageGenerator({
               const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
 
               if (succeeded) {
+                completedBatches.add(batchName);
                 intervals.forEach(clearInterval);
                 intervals.length = 0;
                 setSavedImagesVersion(v => v + 1);
@@ -375,6 +381,7 @@ export function GeminiImageGenerator({
                 setTimeout(() => setBatchStatus(null), 8000);
                 return true;
               } else if (failed || pollData.state === 'NO_PENDING_BATCH') {
+                completedBatches.add(batchName);
                 intervals.forEach(clearInterval);
                 intervals.length = 0;
                 setBatchStatus(null);
@@ -384,7 +391,6 @@ export function GeminiImageGenerator({
             return false;
           };
 
-          // Poll immediately on load/wake
           const done = await poll();
           if (!done) {
             const interval = setInterval(poll, 30000);
@@ -392,6 +398,7 @@ export function GeminiImageGenerator({
           }
         }
       } catch { /* ignore */ }
+      isPolling = false;
     };
 
     checkAndResumeBatch();
@@ -399,7 +406,6 @@ export function GeminiImageGenerator({
     // Resume polling when tab becomes visible again (recovers from sleep)
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
-        // Clear stale intervals and re-check
         intervals.forEach(clearInterval);
         intervals.length = 0;
         checkAndResumeBatch();
