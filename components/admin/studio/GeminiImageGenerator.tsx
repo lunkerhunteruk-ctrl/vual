@@ -334,71 +334,77 @@ export function GeminiImageGenerator({
   // Resume polling for any processing batches on page load + tab wake
   useEffect(() => {
     if (!storeId || !isDevStore) return;
-    const intervals: ReturnType<typeof setInterval>[] = [];
+    // Per-batch interval tracking — each batch has its own independent interval
+    const batchIntervals = new Map<string, ReturnType<typeof setInterval>>();
     const completedBatches = new Set<string>();
-    let isPolling = false;
+    let checking = false;
+
+    const pollBatch = async (batchName: string): Promise<boolean> => {
+      try {
+        const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
+        const pollData = await pollRes.json();
+
+        const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
+        const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
+
+        if (succeeded) {
+          completedBatches.add(batchName);
+          const iv = batchIntervals.get(batchName);
+          if (iv) { clearInterval(iv); batchIntervals.delete(batchName); }
+          setSavedImagesVersion(v => v + 1);
+          try {
+            await fetch('/api/ai/batch-queue/save-to-collection', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ storeId, batchName }),
+            });
+          } catch { /* non-blocking */ }
+          if (batchIntervals.size === 0) {
+            setBatchStatus(locale === 'ja' ? `✓ バッチ完了` : `✓ Batch complete`);
+            setTimeout(() => setBatchStatus(null), 8000);
+          }
+          return true;
+        } else if (failed || pollData.state === 'NO_PENDING_BATCH') {
+          completedBatches.add(batchName);
+          const iv = batchIntervals.get(batchName);
+          if (iv) { clearInterval(iv); batchIntervals.delete(batchName); }
+          if (batchIntervals.size === 0) setBatchStatus(null);
+          return true;
+        }
+      } catch { /* keep polling */ }
+      return false;
+    };
 
     const checkAndResumeBatch = async () => {
-      if (isPolling) return; // Prevent concurrent checks
-      isPolling = true;
+      if (checking) return;
+      checking = true;
       try {
         const res = await fetch(`/api/ai/batch-queue?storeId=${storeId}&status=processing`);
         const data = await res.json();
-        if (!data.items?.length) { isPolling = false; return; }
+        if (!data.items?.length) { checking = false; return; }
 
         const batchNames = new Set<string>();
         for (const item of data.items) {
-          if (item.batch_name && !completedBatches.has(item.batch_name)) {
+          if (item.batch_name && !completedBatches.has(item.batch_name) && !batchIntervals.has(item.batch_name)) {
             batchNames.add(item.batch_name);
           }
         }
-        if (batchNames.size === 0) { isPolling = false; return; }
+        if (batchNames.size === 0) { checking = false; return; }
 
-        setBatchStatus(locale === 'ja' ? `${data.items.length}件処理中...` : `${data.items.length} items processing...`);
+        const totalProcessing = data.items.filter((i: any) => !completedBatches.has(i.batch_name)).length;
+        setBatchStatus(locale === 'ja' ? `${totalProcessing}件処理中...` : `${totalProcessing} items processing...`);
 
         for (const batchName of batchNames) {
-          const poll = async () => {
-            try {
-              const pollRes = await fetch(`/api/ai/batch-queue/execute?storeId=${storeId}&batchName=${encodeURIComponent(batchName)}`);
-              const pollData = await pollRes.json();
-
-              const succeeded = pollData.state === 'JOB_STATE_SUCCEEDED' || pollData.state === 'BATCH_STATE_SUCCEEDED';
-              const failed = ['JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'BATCH_STATE_FAILED', 'BATCH_STATE_CANCELLED'].includes(pollData.state);
-
-              if (succeeded) {
-                completedBatches.add(batchName);
-                intervals.forEach(clearInterval);
-                intervals.length = 0;
-                setSavedImagesVersion(v => v + 1);
-                try {
-                  await fetch('/api/ai/batch-queue/save-to-collection', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ storeId, batchName }),
-                  });
-                } catch { /* non-blocking */ }
-                setBatchStatus(locale === 'ja' ? `✓ バッチ完了` : `✓ Batch complete`);
-                setTimeout(() => setBatchStatus(null), 8000);
-                return true;
-              } else if (failed || pollData.state === 'NO_PENDING_BATCH') {
-                completedBatches.add(batchName);
-                intervals.forEach(clearInterval);
-                intervals.length = 0;
-                setBatchStatus(null);
-                return true;
-              }
-            } catch { /* keep polling */ }
-            return false;
-          };
-
-          const done = await poll();
+          // Poll immediately
+          const done = await pollBatch(batchName);
           if (!done) {
-            const interval = setInterval(poll, 30000);
-            intervals.push(interval);
+            // Start independent interval for this batch
+            const interval = setInterval(() => pollBatch(batchName), 30000);
+            batchIntervals.set(batchName, interval);
           }
         }
       } catch { /* ignore */ }
-      isPolling = false;
+      checking = false;
     };
 
     checkAndResumeBatch();
@@ -406,15 +412,13 @@ export function GeminiImageGenerator({
     // Resume polling when tab becomes visible again (recovers from sleep)
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
-        intervals.forEach(clearInterval);
-        intervals.length = 0;
         checkAndResumeBatch();
       }
     };
     document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
-      intervals.forEach(clearInterval);
+      for (const iv of batchIntervals.values()) clearInterval(iv);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, [storeId, isDevStore]);
