@@ -1990,16 +1990,28 @@ export function GeminiImageGenerator({
               {locale === 'ja' ? `キューに追加${queueCount > 0 ? ` (${queueCount})` : ''}` : `Add to Queue${queueCount > 0 ? ` (${queueCount})` : ''}`}
             </Button>
             {queueCount > 0 && (
-              <Button
-                variant="secondary"
-                size="lg"
-                isLoading={batchRunning}
-                disabled={batchRunning}
-                onClick={handleExecuteBatch}
-                className="!px-4"
-              >
-                {batchRunning ? (locale === 'ja' ? '送信中...' : 'Submitting...') : (locale === 'ja' ? `バッチ送信 (${queueCount})` : `Send Batch (${queueCount})`)}
-              </Button>
+              <>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  isLoading={batchRunning}
+                  disabled={batchRunning}
+                  onClick={handleExecuteBatch}
+                  className="!px-4"
+                >
+                  {batchRunning ? (locale === 'ja' ? '送信中...' : 'Submitting...') : (locale === 'ja' ? `バッチ送信 (${queueCount})` : `Send Batch (${queueCount})`)}
+                </Button>
+                <button
+                  onClick={async () => {
+                    await fetch(`/api/ai/batch-queue?storeId=${storeId}`, { method: 'DELETE' });
+                    setQueueCount(0);
+                  }}
+                  disabled={batchRunning}
+                  className="px-2 py-1.5 text-xs text-[var(--color-text-label)] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                >
+                  {locale === 'ja' ? 'クリア' : 'Clear'}
+                </button>
+              </>
             )}
             {batchStatus && (
               <span className="text-xs text-[var(--color-text-label)] px-2">
