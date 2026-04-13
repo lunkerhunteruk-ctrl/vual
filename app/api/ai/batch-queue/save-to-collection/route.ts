@@ -19,8 +19,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'storeId and batchName required' }, { status: 400 });
     }
 
-    // Atomically mark items as saved to prevent duplicate saves
-    // Only select items where result_saved is NOT true
+    // Find completed items not yet saved
     const { data: items, error: fetchErr } = await supabase
       .from('batch_queue')
       .select('id, result_image_url, payload')
@@ -35,14 +34,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'Already saved or no items', count: 0 });
     }
 
-    // Immediately mark as saved BEFORE inserting to collection (prevents race condition)
-    const itemIds = items.map(i => i.id);
-    await supabase
-      .from('batch_queue')
-      .update({ result_saved: true })
-      .in('id', itemIds);
+    // Double-check: skip any images already in collection (race condition guard)
+    const imageUrls = items.map(i => i.result_image_url);
+    const { data: existing } = await supabase
+      .from('collection_looks')
+      .select('image_url')
+      .eq('store_id', storeId)
+      .in('image_url', imageUrls);
+    const existingUrls = new Set(existing?.map(e => e.image_url) || []);
+    const newItems = items.filter(i => !existingUrls.has(i.result_image_url));
 
-    const newItems = items;
+    if (newItems.length === 0) {
+      // Mark as saved even if already in collection
+      await supabase.from('batch_queue').update({ result_saved: true }).in('id', items.map(i => i.id));
+      return NextResponse.json({ success: true, message: 'Already in collection', count: 0 });
+    }
 
     // Get current min position
     const { data: minPos } = await supabase
@@ -105,6 +111,12 @@ export async function POST(request: NextRequest) {
         }
       }
     }
+
+    // Mark as saved AFTER successful insert
+    await supabase
+      .from('batch_queue')
+      .update({ result_saved: true })
+      .in('id', newItems.map(i => i.id));
 
     return NextResponse.json({
       success: true,
