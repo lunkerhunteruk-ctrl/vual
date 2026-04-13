@@ -170,7 +170,10 @@ CRITICAL RULES:
     - Removing, opening, or adjusting any garment or accessory
     - Any movement that feels "performed" or self-conscious — the model should appear unaware of the camera
 - PHYSICAL CONTINUITY: Items the model holds (bags, accessories) must STAY in the SAME hand/position throughout the entire clip. NEVER have items teleport, switch hands, appear, or disappear mid-shot. If a bag is on the left shoulder at the start, it must remain on the left shoulder for the entire duration. Explicitly state hand/arm positions in the prompt (e.g. "left hand holding a woven bag at her side throughout the shot"). Any item visible in the reference image must be described with a FIXED position that does not change.
-- GAZE SHIFT detection: If the image shows the model looking AWAY from camera (profile, three-quarter, looking down/aside), describe a "gaze shift" sequence in the video prompt — the model starts in the pose shown, then slowly turns to look directly into the camera with a confident, magnetic gaze. This creates an emotionally captivating moment. Use 8s duration for gaze shift shots.
+- GAZE SHIFT detection — LOOK AT THE ATTACHED IMAGE and determine the model's head angle:
+  - DIAGONAL/THREE-QUARTER (face partially visible, both eyes visible or one eye + nose + mouth visible, roughly 30-60° from camera): YES, describe a "gaze shift" — the model slowly turns to look directly into the camera. Use 8s duration.
+  - FULL PROFILE (complete side view, roughly 90°, you can see the silhouette of the face but at most one eye) or FULL BACK VIEW (you see the back of the head): Do NOT turn the model's head. Keep the exact same head direction as shown. Instead, add wind in hair/fabric, slight weight shift, or slow camera movement along the profile. Turning from full profile/back to frontal WILL produce a completely different face — this is FORBIDDEN.
+  - LOOKING DOWN: the model may slowly lift her gaze upward (keeping the same head angle), but do NOT rotate the head toward camera.
 - Telop captions should feel like film subtitles — atmospheric fragments, not descriptions
 
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
