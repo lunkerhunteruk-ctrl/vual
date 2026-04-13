@@ -95,6 +95,7 @@ export function buildPromptFromPayload(payload: any): string {
     'IMPORTANT: Show the full body including feet if shoes/footwear are included.',
     'IMPORTANT: The model must ALWAYS stand on dry ground.',
     'CRITICAL: DO NOT render any text, labels, watermarks, or words on the image.',
+    'ACCESSORIES RULE: The model must NOT wear any rings, bracelets, necklaces, or jewelry unless they are explicitly provided as reference images.',
     `OUTPUT FORMAT: Generate the image in ${aspectRatio} aspect ratio.`,
     'REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.',
   ];

@@ -1269,6 +1269,7 @@ ${body.aspectRatio} aspect ratio. No text, no watermarks. Photorealistic 8K qual
     `IMPORTANT: Show the full body including feet if shoes/footwear are included.`,
     `IMPORTANT: The model must ALWAYS stand on dry ground. Never place the model inside water, puddles, or wet surfaces. For beach, lake, river, or ocean scenes, the model must stand on dry shore, sand, rocks, or a pier — never wading or stepping into the water.`,
     `CRITICAL: DO NOT render any text, labels, watermarks, or words on the image. The output must be a clean photograph with no text overlays.`,
+    `ACCESSORIES RULE: The model must NOT wear any rings, bracelets, necklaces, or jewelry unless they are explicitly provided as reference images in the garment/accessory slots. Do NOT add rings or jewelry by default.`,
     `OUTPUT FORMAT: Generate the image in ${body.aspectRatio} aspect ratio.`,
     `REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.`,
     // Normal mode Scene A: catwalk shot on shot index 0
@@ -1409,7 +1410,7 @@ function buildSimplifiedPrompt(body: RequestBody, firstImageCount: number, secon
   const styleNote = fullPrompt ? ` SCENE DIRECTION: ${customPrompt}.` : customPrompt ? ` IMPORTANT STYLING: ${customPrompt}.` : '';
   const poseNote = modelSettings.pose ? `${poseDescriptions[modelSettings.pose] || modelSettings.pose}, ` : '';
   const bgNote = fullPrompt ? '' : ` ${backgroundDescriptions[background] || background}.`;
-  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
+  return `E-commerce fashion photography: ${model}, ${modelSettings.height}cm tall, ${poseNote}wearing the garment(s) from the provided reference images.${tuckNote}${outerNote}${styleNote}${bgNote} No rings or jewelry unless provided as reference. ${body.aspectRatio} aspect ratio. Full body shot, professional quality, no text or watermarks.`;
 }
 
 function buildMinimalPrompt(body: RequestBody): string {
@@ -1422,5 +1423,5 @@ function buildMinimalPrompt(body: RequestBody): string {
   const fullPrompt = customPrompt && isFullPromptMode(customPrompt, locale);
   const styleNote = customPrompt ? ` ${customPrompt}.` : '';
   const bgNote = fullPrompt ? '' : ` ${backgroundDescriptions[background] || 'White background'}.`;
-  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${outerNote}${styleNote}${bgNote} ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
+  return `Fashion catalog photo: ${model} wearing the garment(s) from the reference images.${tuckNote}${outerNote}${styleNote}${bgNote} No rings or jewelry unless provided. ${body.aspectRatio} aspect ratio. Full body, clean photo.`;
 }
