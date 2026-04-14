@@ -249,6 +249,7 @@ export function GeminiImageGenerator({
   const [isDetailMode, setIsDetailMode] = useState(false);
   const [artisticMode, setArtisticMode] = useState(false);
   const [isOffshot, setIsOffshot] = useState(false);
+  const [offshotScene, setOffshotScene] = useState<string | null>(null); // null = use sceneVariant A/B/C, string = scene-specific
   // offshotVariant removed — sceneVariant now controls offshot A/B/C too
   const [sceneVariant, setSceneVariant] = useState<'A' | 'B' | 'C'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
@@ -750,7 +751,7 @@ export function GeminiImageGenerator({
             customPrompt: config.customPrompt,
             locale,
             storeId,
-            ...(isOffshot ? { offshot: true, offshotVariant: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : {
+            ...(isOffshot ? { offshot: true, offshotVariant: offshotScene || sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : {
               ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
               ...(artisticMode ? { artistic: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
             }),
@@ -1309,7 +1310,7 @@ export function GeminiImageGenerator({
           customPrompt: shotPrompt,
           locale,
           storeId,
-          ...(isOffshot ? { offshot: true, offshotVariant: sceneVariant } : {
+          ...(isOffshot ? { offshot: true, offshotVariant: offshotScene || sceneVariant } : {
             artistic: artisticMode ? sceneVariant : undefined,
             sceneVariant,
             detailMode: detailAssignments[i],
@@ -1505,6 +1506,7 @@ export function GeminiImageGenerator({
               onClick={() => {
                 setIsOffshot(!isOffshot);
                 if (!isOffshot) { setIsDetailMode(false); setArtisticMode(false); }
+                if (isOffshot) { setOffshotScene(null); }
               }}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
                 isOffshot
@@ -1514,6 +1516,29 @@ export function GeminiImageGenerator({
             >
               {locale === 'ja' ? 'オフショット' : 'Off-shot'}
             </button>
+            {isOffshot && (
+              <>
+                {([
+                  { id: 'breakfast', ja: '朝食', en: 'Breakfast' },
+                  { id: 'lunch', ja: 'ランチ', en: 'Lunch' },
+                  { id: 'dinner', ja: '夕食', en: 'Dinner' },
+                  { id: 'nightclub', ja: 'クラブ', en: 'Club' },
+                  { id: 'pub-bar', ja: 'バー', en: 'Bar' },
+                ] as const).map(s => (
+                  <button
+                    key={s.id}
+                    onClick={() => setOffshotScene(prev => prev === s.id ? null : s.id)}
+                    className={`px-2 py-1 text-xs font-medium rounded-lg transition-all ${
+                      offshotScene === s.id
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-[var(--color-bg-element)] text-[var(--color-text-body)] hover:bg-[var(--color-bg-input)]'
+                    }`}
+                  >
+                    {locale === 'ja' ? s.ja : s.en}
+                  </button>
+                ))}
+              </>
+            )}
             <button
               onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : prev === 'B' ? 'C' : 'A')}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${

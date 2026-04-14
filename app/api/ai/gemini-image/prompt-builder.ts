@@ -53,8 +53,11 @@ export function buildPromptFromPayload(payload: any): string {
       return buildOffshotA(modelDesc, fullGarmentDesc, locationNote, pick, shotIndex);
     } else if (offshotVariant === 'C') {
       return buildOffshotC(modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
-    } else {
+    } else if (offshotVariant === 'B') {
       return buildOffshotB(modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
+    } else {
+      // Scene-specific offshot (breakfast, lunch, dinner, nightclub, pub-bar)
+      return buildOffshotScene(offshotVariant, modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
     }
   }
 
@@ -479,6 +482,225 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, real daily routines, pre-shoot energy. NOT a fashion photo.`;
+}
+
+
+// ============ OFFSHOT SCENE-SPECIFIC BUILDERS ============
+
+export function buildOffshotScene(
+  sceneId: string,
+  modelDesc: string,
+  garmentDesc: string,
+  cityName: string,
+  pick: (arr: string[]) => string,
+  shotIndex?: number,
+): string {
+  const seed = (shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
+
+  const cityContext = cityName
+    ? `MANDATORY LOCATION: The venue MUST be in or very near ${cityName}. It must look and feel authentically local to ${cityName} — local cuisine, local language on signs/menus, local architectural style, local people in the background. Do NOT set this in Japan or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
+    : 'The venue should feel authentic and local to the shooting location.';
+
+  const leicaMorning = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, natural light, slightly warm color cast.';
+  const leicaNight = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 800 film pushed to 1600. Handheld, available light only, warm color cast from ambient lighting.';
+  const qualityMorning = 'QUALITY: Fine film grain (Portra 400), soft warm morning light, natural color palette. Casual framing — feels like a crew member snapped this. 3:4 portrait format. No text, no watermarks.';
+  const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing. 3:4 portrait format. No text, no watermarks.';
+  const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon/LED. Cinematic night-time feel. Slightly underexposed with bright highlights from lights. 3:4 portrait format. No text, no watermarks.';
+
+  const baseDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID snapshot taken by a crew member. The model is a real person in a real social moment. Framing is imperfect — shot on a phone or small camera by a friend. Off-center, slightly tilted, casual.
+Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, hands holding glasses or phones.
+The overall feeling is private, warm, real — like a photo posted on someone's close friends Instagram story.`;
+
+  const scenes: Record<string, {
+    actions: string[];
+    wardrobe: string;
+    location: string;
+    film: string;
+    quality: string;
+    expression: string;
+    reminder: string;
+  }> = {
+    // ============ BREAKFAST ============
+    'breakfast': (() => {
+      const breakfastVenues = [
+        'hotel breakfast buffet restaurant',
+        'local bakery and cafe serving breakfast',
+        'charming neighborhood breakfast spot',
+        'hotel restaurant with a la carte breakfast',
+        'popular local brunch cafe',
+        'street-side cafe serving morning pastries and coffee',
+      ];
+      const venue = breakfastVenues[seed % breakfastVenues.length];
+      return {
+        actions: [
+          'at the breakfast buffet, picking up a fruit bowl with a shy, bashful smile — caught by the camera mid-reach. Plates of pastries and bread behind her on the buffet line',
+          'seated at the table with a continental breakfast spread — croissants, jam, butter, orange juice, coffee. She looks at the camera mid-bite with a natural, relaxed smile',
+          'at the breakfast table with various plates spread out, she has just accidentally spilled a glass of water — looking at the camera with a surprised, embarrassed laugh, one hand reaching for a napkin',
+          'eating a bowl of granola yogurt, giving a peace sign to the camera with a big genuine grin. Coffee cup and fresh fruit on the table beside her',
+          'standing at the buffet holding a plate, deciding what to take — she notices the camera and gives a warm candid smile. Morning light from restaurant windows illuminating her face',
+          'pouring coffee from a carafe at the breakfast table, concentrating on not spilling, then looking up at the camera with a sleepy but warm smile. Toast and eggs on her plate',
+          'laughing with a crew member (partially visible) over breakfast, one hand holding a coffee cup, the other gesturing mid-story. Plates of food between them',
+          'sitting at the breakfast table, holding a piece of toast up to the camera like showing off a trophy — playful, silly, genuine morning energy',
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Hair neatly styled. Natural makeup`,
+        location: `A ${venue} in ${cityName || 'the shooting location'}. ${cityContext} A comfortable, approachable place (NOT a luxury 5-star hotel). Morning light through windows, other guests in the background. Fresh bread, fruits, cereals, coffee visible.`,
+        film: leicaMorning,
+        quality: qualityMorning,
+        expression: 'Bright, warm, genuine — a natural morning smile. Friendly and approachable.',
+        reminder: 'This is a MORNING breakfast candid snapshot — fresh natural light, real morning routine. NOT a fashion photo.',
+      };
+    })(),
+
+    // ============ LUNCH ============
+    'lunch': (() => {
+      const lunchVenues = [
+        'trendy local bistro',
+        'casual outdoor terrace restaurant',
+        'authentic local street food market with seating',
+        'cozy neighborhood sandwich and salad shop',
+        'popular local noodle or rice spot',
+        'bright cafe with large windows serving lunch sets',
+        'local food hall with communal tables',
+        'garden restaurant with natural shade',
+      ];
+      const venue = lunchVenues[seed % lunchVenues.length];
+      return {
+        actions: [
+          'sitting at a terrace table in bright daylight, fork in hand over a plate of local food, looking directly at the camera with a "this is SO good" expression — a crew member across the table partially visible',
+          'taking a photo of her beautifully plated lunch with her phone — concentrating on getting the angle right, then looking up at the camera with a grin',
+          'mid-bite of a sandwich or local dish, cheeks slightly full, caught by the camera — she covers her mouth with one hand, laughing with her eyes',
+          'leaning back in her chair, legs crossed, holding a glass of sparkling water or lemonade, looking directly at the camera with a relaxed, content post-meal smile',
+          'pointing excitedly at something on the menu, turning to the camera with wide eyes — "we HAVE to order this" energy. A crew member\'s hand visible holding another menu',
+          'sharing a plate of appetizers with crew members, reaching across the table for the last piece — looking at the camera with a playful "it\'s mine" expression',
+          'sitting at the table with empty plates pushed aside, chin resting on her hands, looking directly at the camera with a lazy, satisfied smile — bright midday light on her face',
+          'walking out of the restaurant into bright sunshine, sunglasses going on, takeaway coffee in hand — she looks back at the camera with a bright, energized smile',
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Sunglasses on top of head or on the table`,
+        location: `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Bright daylight, outdoor seating or large windows. Local cuisine, handwritten menus or chalkboards in the local language. Relaxed midday atmosphere.`,
+        film: leicaMorning,
+        quality: 'QUALITY: Fine film grain (Portra 400), bright natural daylight, vibrant but natural colors. Casual framing with outdoor light. 3:4 portrait format. No text, no watermarks.',
+        expression: 'Looking at camera. Relaxed, happy, energized — midday break with good food and good company.',
+        reminder: 'This is a DAYTIME lunch candid snapshot — bright daylight, outdoor atmosphere, real social moment. NOT a fashion photo.',
+      };
+    })(),
+
+    // ============ DINNER ============
+    'dinner': (() => {
+      const dinnerVenues = [
+        'traditional local cuisine restaurant',
+        'Italian restaurant or trattoria',
+        'French bistro or brasserie',
+        'seafood restaurant near the waterfront',
+        'cozy neighborhood restaurant with candlelight',
+        'modern farm-to-table restaurant',
+        'family-run local restaurant with home-style cooking',
+        'rooftop restaurant with city views',
+      ];
+      const venueA = dinnerVenues[seed % dinnerVenues.length];
+      const venueB = dinnerVenues[(seed + 3) % dinnerVenues.length];
+      const venue = (shotIndex || 0) % 2 === 0 ? venueA : venueB;
+      return {
+        actions: [
+          'mid-bite of food, chopsticks or fork halfway to her mouth, looking at the camera with a surprised "don\'t photograph me eating" expression mixed with amusement — warm candlelight on her face',
+          'resting her chin on both hands, elbows on the table, listening to a story with a warm, engaged smile — dinner plates and wine glasses between her and the partially visible crew member across the table',
+          'raising a glass in a toast toward the camera — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): harsh direct flash illuminates her face and the glass brightly against the dark restaurant background. Flash reflects in the wine/drink. Her smile is big and genuine, caught in the stark white flash light. The background falls into darkness beyond the flash range',
+          'laughing hard at something someone just said, leaning back in her chair, one hand on the table — eyes squeezed shut from genuine laughter. Beautiful food on the table',
+          'taking a group selfie with 2-3 crew members, all squeezing into frame — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): the flash washes their faces in bright white light, red-eye possible, background goes dark. Big genuine smiles, slightly overexposed skin from the direct flash. Classic party photo look',
+          'holding up a piece of food toward the camera on her fork or chopsticks, showing it off proudly — "look how good this is" expression. Sharing plates and bottles on the table',
+          'standing up making a playful speech or toast, one hand holding a glass up — the crew at the table looking up at her, amused. Warm restaurant lighting',
+          'sitting sideways in her chair, legs crossed, one arm draped over the back, drink dangling from her fingers — looking at the camera with completely relaxed confidence. The energy of someone who has earned this meal',
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Jacket removed and draped over chair, slightly more relaxed than during the shoot`,
+        location: `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Warm interior lighting — candles, pendant lights, warm wall sconces. Beautiful food and drinks on the table. Lively but intimate dinner atmosphere. Authentic local restaurant — not a tourist trap.`,
+        film: leicaNight,
+        quality: qualityNight,
+        expression: 'Relaxed, social, warm — celebrating the end of a shoot day with the crew over great food.',
+        reminder: 'This is an EVENING dinner candid snapshot — warm ambient lighting, real social moment, great food. NOT a fashion photo.',
+      };
+    })(),
+
+    // ============ NIGHTCLUB ============
+    'nightclub': (() => {
+      const clubTypes = [
+        'underground techno club',
+        'stylish rooftop lounge club',
+        'intimate house music venue',
+        'trendy cocktail bar with a dance floor',
+        'converted warehouse club space',
+        'upscale nightclub with DJ booth',
+      ];
+      const clubType = clubTypes[seed % clubTypes.length];
+      return {
+        actions: [
+          'on the dance floor, caught mid-movement — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): harsh direct flash freezes her mid-dance, hair flying, body in motion. The flash blows out her skin and outfit brightly against the pitch-dark club background. Other dancers are ghostly silhouettes. Wild, free grin captured in the stark flash light',
+          'standing near the DJ booth or speakers, eyes closed, head tilted, completely lost in the music — a crew member next to her (partially visible) also dancing. Strobe lights and smoke',
+          'at a standing table near the dance floor, holding a drink, leaning toward a crew member to say something over the music — she looks at the camera mid-sentence with a knowing smile. Pulsing colored lights',
+          'sitting in a booth or on a couch in the VIP or chill-out area, legs tucked under her, drink in hand — looking at the camera with tired but happy eyes. Bass-heavy ambient light, other people around',
+          'walking through the club crowd — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): the flash catches her turning back to the camera laughing, face brightly lit against the dark crowd behind her. Eyes slightly squinted from the flash. Other clubgoers reduced to dark shapes. The harsh flash creates a raw, documentary nightlife photo feel',
+          'taking a selfie with a crew member in the club bathroom mirror — flash reflecting in the mirror, makeup slightly worn from dancing, huge smiles. Real party energy',
+          'leaning against the bar, one elbow propped, cocktail in hand — the bartender mixing drinks behind her, colored bottles backlit. She looks at the camera with magnetic, confident nightlife energy',
+          'outside the club entrance, cooling off — hair slightly damp, drink in hand, laughing with crew members in the night air. Neon sign of the club visible, smokers and other clubgoers around',
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Slightly lived-in from dancing — sleeves pushed up, top button undone, hair slightly tousled`,
+        location: `A ${clubType} in ${cityName || 'the shooting location'}. ${cityContext} Dark interior with dramatic colored lighting — LED strips, lasers, strobes, neon. Smoke/haze machine atmosphere. DJ booth visible. Other clubgoers dancing or socializing. The venue should feel authentic to the local nightlife scene.`,
+        film: leicaNight,
+        quality: qualityNeon,
+        expression: 'Free, electric, alive — the uninhibited nightlife version of her. Pure joy of being off-duty and dancing.',
+        reminder: 'This is a NIGHTCLUB candid snapshot — dramatic colored lighting, dancing energy, real nightlife moment. NOT a fashion photo.',
+      };
+    })(),
+
+    // ============ PUB & BAR ============
+    'pub-bar': (() => {
+      const barTypes = [
+        'cozy traditional pub with worn wooden bar',
+        'craft beer bar with taps lining the wall',
+        'intimate wine bar with exposed brick',
+        'neighborhood dive bar with character',
+        'rooftop cocktail bar with city views',
+        'jazz bar with live music corner',
+        'local sake bar or izakaya-style standing bar',
+        'speakeasy-style cocktail bar with dim lighting',
+      ];
+      const barType = barTypes[seed % barTypes.length];
+      return {
+        actions: [
+          'sitting at the bar counter, one elbow on the bar, cocktail or beer in hand — turned toward the camera with a relaxed, warm smile. Bottles and warm lighting behind the bartender',
+          'mid-sip of her drink, eyes looking over the rim directly at the camera with a playful glint — foam or condensation on the glass',
+          'cheers-ing glasses with a crew member, the glasses meeting in the center of frame — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): harsh direct flash lights up their faces and the clinking glasses brightly. The warm bar background goes dark beyond the flash range. Big grins, slightly overexposed skin, flash reflecting in the glass surfaces. Raw party snapshot feel',
+          'laughing with her head thrown back slightly, drink held safely to the side — reacting to something hilarious. Bar regulars and warm pendant lights in the background',
+          'sitting in a corner booth, legs tucked under her, cradling a warm drink — looking directly at the camera with a quiet, intimate smile. The bar buzzes softly around her',
+          'standing at a high table, leaning on it with both arms, drink between her hands — SHOT WITH ON-CAMERA FLASH (small hotshoe flash unit mounted on the Leica): the flash harshly illuminates her face and upper body against the dim bar behind her. She looks at the camera with easy confidence, caught in the bright white flash. A crew member beside her mid-gesture is partially lit. The flash creates deep shadows and a candid, unpolished nightlife photo look',
+          'at the bar, examining a cocktail held up to the warm light, admiring the color — she turns to the camera with a satisfied "this is perfect" expression',
+          'playing darts, pool, or a bar game with crew members — caught mid-throw or mid-shot, competitive grin, one eye squinted. Drinks on a nearby table, bar atmosphere around them',
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Casual, jacket off, sleeves rolled up. Completely comfortable and at ease`,
+        location: `A ${barType} in ${cityName || 'the shooting location'}. ${cityContext} Warm amber/golden lighting from pendant lights, bar back-lighting, candles. Worn surfaces, character. A real bar where locals drink — not a hotel lobby bar. Lively but intimate atmosphere.`,
+        film: leicaNight,
+        quality: qualityNight,
+        expression: 'Easy confidence, warmth, connection — the relaxed nighttime version of her. Real conversation, real drinks, real laughter.',
+        reminder: 'This is a PUB/BAR candid snapshot — warm amber lighting, drinks, intimate social atmosphere. NOT a fashion photo.',
+      };
+    })(),
+  };
+
+  const scene = scenes[sceneId];
+  if (!scene) return '';
+
+  const action = pick(scene.actions);
+
+  return `${baseDirective}
+
+${scene.film}
+${modelDesc}
+The model is ${scene.wardrobe}.
+${scene.location}
+
+SCENE: The model ${action}.
+EXPRESSION: ${scene.expression}
+${scene.quality}
+
+REMINDER: ${scene.reminder}`;
 }
 
 

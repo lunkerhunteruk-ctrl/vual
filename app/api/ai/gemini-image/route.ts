@@ -4,6 +4,7 @@ import { storage } from '@/lib/storage';
 import { checkAndDeductCredit } from '@/lib/billing/credit-check';
 import { addCreditWatermark } from '@/lib/utils/image-watermark';
 import sharp from 'sharp';
+import { buildOffshotScene } from './prompt-builder';
 
 export const maxDuration = 120;
 
@@ -953,6 +954,7 @@ REMINDER: This is an AFTER-HOURS candid snapshot — evening/night, warm ambient
     }
 
     // ============ OFFSHOT VARIANT C: Morning & Daytime ============
+    if (offshotVariant === 'C') {
     const offshotCDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID, MORNING/DAYTIME snapshot taken BEFORE the fashion shoot begins. The model woke up at the hotel, got ready, and is now heading to the shoot location. The vibe is MORNING to MIDDAY — fresh, bright natural light, real daily routines of a working model on location.
 
 ANTI-FASHION RULES:
@@ -1074,6 +1076,13 @@ EXPRESSION: ${categoryC.expression}
 ${categoryC.quality}
 
 REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, real daily routines, pre-shoot energy. NOT a fashion photo.`;
+    }
+
+    // ============ OFFSHOT SCENE-SPECIFIC (breakfast, lunch, dinner, nightclub, pub-bar) ============
+    if (['breakfast', 'lunch', 'dinner', 'nightclub', 'pub-bar'].includes(offshotVariant)) {
+      const fullGarmentDesc = `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`;
+      return buildOffshotScene(offshotVariant, modelDescription, fullGarmentDesc, cityName, pick, body.shotIndex);
+    }
   }
 
   if (detailMode) {
