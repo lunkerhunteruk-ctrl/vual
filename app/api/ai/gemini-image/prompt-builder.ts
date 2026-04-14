@@ -51,6 +51,8 @@ export function buildPromptFromPayload(payload: any): string {
 
     if (offshotVariant === 'A') {
       return buildOffshotA(modelDesc, fullGarmentDesc, locationNote, pick, shotIndex);
+    } else if (offshotVariant === 'C') {
+      return buildOffshotC(modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
     } else {
       return buildOffshotB(modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
     }
@@ -352,6 +354,142 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is an AFTER-HOURS candid snapshot — evening/night, warm ambient lighting, real social moment. NOT a fashion photo.`;
+}
+
+
+function buildOffshotC(modelDesc: string, garmentDesc: string, cityName: string, pick: (arr: string[]) => string, shotIndex?: number): string {
+  const directive = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID, MORNING/DAYTIME snapshot taken BEFORE the fashion shoot begins. The model woke up at the hotel, got ready, and is now heading to the shoot location. The vibe is MORNING to MIDDAY — fresh, bright natural light, real daily routines of a working model on location.
+
+ANTI-FASHION RULES:
+- This is a private morning/daytime moment, NOT a photoshoot. The model is getting ready, eating breakfast, commuting — being a real person before work starts.
+- Framing is imperfect — shot on a phone or small camera by a crew member who is also getting ready. Off-center, casual, unstaged.
+- Lighting is natural morning/daytime light — hotel room window light, restaurant ambient, taxi window light, cafe daylight. NO studio lighting.
+- Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, someone checking their phone, a makeup artist with a coffee.
+- The overall feeling is fresh, optimistic, real — like a photo from a model's "day in my life" Instagram story.`;
+
+  const leicaMorning = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, natural morning light, slightly warm color cast.';
+  const qualityMorning = 'QUALITY: Fine film grain (Portra 400), soft warm morning light, natural color palette. Casual framing — feels like a crew member snapped this between tasks. 3:4 portrait format. No text, no watermarks.';
+  const qualityBright = 'QUALITY: Fine film grain, bright natural daylight, clean colors with slight warmth. Fresh, airy feeling. Casual composition. 3:4 portrait format. No text, no watermarks.';
+  const qualityInterior = 'QUALITY: Fine film grain, soft window light mixing with warm interior lighting, gentle shadows. Intimate, private morning atmosphere. 3:4 portrait format. No text, no watermarks.';
+
+  const cityContext = cityName
+    ? `MANDATORY LOCATION: The setting MUST be in or very near ${cityName}. The hotel, cafe, restaurant, or street must look and feel authentically local to ${cityName} — local architecture, local language on signs and menus, local style, local people in the background. Do NOT set this in Japan, Tokyo, or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
+    : 'The setting should feel authentic and local to the shooting location.';
+
+  const seed = (shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
+  const breakfastTypes = [
+    'Western-style hotel breakfast buffet with local specialties',
+    'traditional local breakfast cuisine',
+    'simple continental breakfast — croissants, fruit, coffee',
+    'Japanese-style hotel breakfast with rice, miso soup, and grilled fish',
+    'hotel room service breakfast on a tray',
+    'light healthy breakfast — yogurt, granola, fresh juice',
+  ];
+  const breakfastType = breakfastTypes[seed % breakfastTypes.length];
+
+  const categories = [
+    // Shot 1: HOTEL BREAKFAST
+    {
+      actions: [
+        'sitting at a hotel restaurant table with a plate of food and coffee, scrolling her phone while eating absently — hair still slightly damp from the shower',
+        'holding a coffee cup with both hands at the breakfast table, eyes half-closed, not yet fully awake. Plates of food in front of her',
+        'mid-bite of toast or pastry at the breakfast buffet table, looking at the camera with a sleepy "don\'t photograph me yet" expression',
+        'laughing with a crew member (partially visible) over breakfast, pointing at something on the menu or her phone',
+        'pouring coffee from a pot into her cup at the breakfast table, concentrating on not spilling, morning sunlight streaming through the restaurant windows',
+      ],
+      wardrobe: 'wearing casual morning clothes — oversized hoodie or cardigan over a simple top, comfortable pants or joggers. Hair loosely tied or still slightly messy from sleep. Minimal makeup — just moisturizer and maybe light concealer',
+      location: `A hotel restaurant or breakfast area in ${cityName || 'the shooting location'} serving ${breakfastType}. ${cityContext} Morning light through large windows, other hotel guests visible in background. White tablecloths or clean modern tables.`,
+      film: leicaMorning, quality: qualityMorning,
+      expression: 'Sleepy, warm, unguarded — the soft vulnerability of early morning before the professional mask goes on.',
+    },
+    // Shot 2: HOTEL ROOM — GETTING READY
+    {
+      actions: [
+        'standing at the bathroom vanity mirror, applying makeup with focused precision — foundation brush in hand, leaning close to the mirror',
+        'sitting on the edge of the hotel bathroom counter, one leg crossed, doing her eye makeup in the mirror — makeup products scattered around the sink',
+        'blow-drying her hair in the bathroom mirror, one hand holding the dryer, the other running through her hair — warm bathroom light',
+        'looking at herself in the bathroom mirror, adjusting her hair with both hands, head tilted — halfway through getting ready',
+        'standing at the vanity in a hotel bathrobe, selecting from several lipsticks or products laid out on the counter, face half-done with makeup',
+      ],
+      wardrobe: 'wearing a hotel bathrobe or casual loungewear — tank top and shorts. Hair partially styled, makeup in progress. Bare feet on bathroom tiles',
+      location: `A hotel bathroom/vanity area in ${cityName || 'the shooting location'}. ${cityContext} Clean, modern hotel bathroom with large mirror, bright vanity lights, marble or tile countertop. Makeup products, brushes, hair tools scattered on the counter. Morning window light mixing with vanity lighting.`,
+      film: leicaMorning, quality: qualityInterior,
+      expression: 'Focused, self-contained, absorbed in the ritual of transformation. A private, intimate moment.',
+    },
+    // Shot 3: HOTEL ROOM — BED SCENE (STILL LIFE WITH MODEL)
+    {
+      actions: [
+        'sitting cross-legged on the unmade hotel bed, phone in hand, surrounded by scattered items — sunglasses, room key, lip balm, a magazine. Morning light streaming through sheer curtains',
+        'lying on her stomach on the hotel bed, feet kicked up behind her, scrolling her phone — the bed strewn with clothes options for the day, sunglasses, and a coffee cup on the nightstand',
+        'sitting on the edge of the unmade bed, pulling on socks or shoes, getting ready to leave — bed behind her covered with items: sunglasses, phone charger, a scarf, makeup bag',
+        'standing by the bed taking a mirror selfie in the full-length hotel room mirror — bed behind her is unmade with personal items scattered: sunglasses, hat, phone, earbuds, snacks',
+        'reaching across the messy bed to grab her sunglasses from the pillows, hair falling forward — the bed is covered with the beautiful chaos of a model getting ready: clothes, accessories, charger cables, a water bottle',
+      ],
+      wardrobe: 'wearing comfortable travel clothes — a simple t-shirt and jeans, or a casual dress. Partially ready for the day — makeup done but outfit still casual. Barefoot or in hotel slippers',
+      location: `A hotel room in ${cityName || 'the shooting location'}. ${cityContext} Unmade king-size bed with white sheets, scattered personal items creating an editorial still-life. Soft morning light through curtains. The room shows signs of someone living in it — open suitcase, hanging clothes, shoes by the door.`,
+      film: leicaMorning, quality: qualityInterior,
+      expression: 'Relaxed, unhurried morning energy. The comfortable mess of real life on location.',
+    },
+    // Shot 4: HOTEL CHECKOUT / LOBBY
+    {
+      actions: [
+        'standing at the hotel front desk, handing over a room key card, small luggage or tote bag at her feet — a crew member waiting nearby with coffee',
+        'walking through the hotel lobby pulling a small carry-on, phone in other hand, looking at the screen for directions or messages',
+        'sitting in the hotel lobby on a sofa, legs crossed, waiting for the crew with her bag beside her — scrolling her phone, a takeaway coffee on the side table',
+        'standing near the hotel entrance, putting on sunglasses as morning light floods through the glass doors — ready to head out, bag over her shoulder',
+        'in the hotel elevator with a crew member (partially visible), both looking at their phones, reflected in the mirror — bags at their feet, heading down to the lobby',
+      ],
+      wardrobe: `${garmentDesc} — now dressed for the day in the shoot wardrobe or a stylish travel outfit. Sunglasses pushed up on her head or hanging from the collar. A tote bag or small carry-on`,
+      location: `The lobby or front desk of a hotel in ${cityName || 'the shooting location'}. ${cityContext} Modern or boutique hotel interior, clean design, morning activity — other guests checking out, staff behind the desk. Bright natural light from the entrance.`,
+      film: leicaMorning, quality: qualityBright,
+      expression: 'Alert, organized, transitioning from private morning mode to work mode. A professional getting her day started.',
+    },
+    // Shot 5: TAXI / CAR RIDE TO LOCATION
+    {
+      actions: [
+        'in the back seat of a taxi, looking out the window at the passing cityscape — morning light illuminating her face, buildings and streets of the city visible through the glass',
+        'sitting in the back of a taxi, reviewing photos or notes on her phone, face lit by screen and window light — the city visible through the window behind her',
+        'in the back seat, laughing at something a crew member beside her (partially visible) said, the city\'s downtown area rolling past outside the window',
+        'leaning forward in the taxi to look at something through the windshield — a landmark or busy intersection of the city visible ahead, morning traffic around them',
+        'resting her head against the taxi window, eyes half-closed, catching a few minutes of rest — the commercial district of the city blurring past outside',
+      ],
+      wardrobe: `${garmentDesc} — fully dressed for the shoot, sunglasses on or pushed up, bag on the seat beside her`,
+      location: `Inside a taxi or car driving through the busy downtown area near ${cityName || 'the shooting location'}. ${cityContext} Local street signs, shops, architecture, and morning commuters visible through windows. The route passes through a recognizable commercial or entertainment district.`,
+      film: leicaMorning, quality: 'QUALITY: Fine film grain, mixed lighting — soft morning daylight through car windows, occasional shadow from buildings. Documentary feel, intimate car interior framing. 3:4 portrait format. No text, no watermarks.',
+      expression: 'Quiet anticipation, observing a city she\'s working in. The calm before the creative storm.',
+    },
+    // Shot 6: CAFE — COFFEE & LUNCH
+    {
+      actions: [
+        'sitting at a cafe terrace table, latte in hand, looking up from a conversation with a warm, genuine smile — pastries and a laptop or magazine on the table',
+        'standing at a cafe counter ordering, pointing at something in the display case, a crew member (partially visible) beside her also choosing — morning bustle around them',
+        'sitting by a cafe window with a sandwich or salad plate, taking a photo of the food with her phone before eating — natural light on her face',
+        'leaning on the cafe table with both elbows, chin in hands, listening intently to a crew member across the table — empty coffee cups and crumbs suggesting they\'ve been talking a while',
+        'walking out of a cafe holding a takeaway coffee and a paper bag of food, pushing the door open with her shoulder, sunglasses on — about to head to the shoot location',
+      ],
+      wardrobe: `${garmentDesc} — dressed and styled for the day. Sunglasses on top of head or on the table. A light jacket or bag draped over the chair`,
+      location: `A local cafe near ${cityName || 'the shooting location'}. ${cityContext} Authentic local cafe — not a chain. Local pastries or food in the display, local language on the menu board, neighborhood regulars in the background. Bright daylight, outdoor terrace or large windows. Plants, wooden furniture, warm atmosphere.`,
+      film: leicaMorning, quality: qualityBright,
+      expression: 'Relaxed, social, present. Enjoying a real moment of connection before work begins.',
+    },
+  ];
+
+  const idx = typeof shotIndex === 'number' ? shotIndex % categories.length : 0;
+  const cat = categories[idx];
+  const action = pick(cat.actions);
+
+  return `${directive}
+
+${cat.film}
+${modelDesc}
+The model is ${cat.wardrobe}.
+${cat.location}
+
+SCENE: The model ${action}.
+EXPRESSION: ${cat.expression}
+${cat.quality}
+
+REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, real daily routines, pre-shoot energy. NOT a fashion photo.`;
 }
 
 

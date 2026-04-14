@@ -249,7 +249,7 @@ export function GeminiImageGenerator({
   const [isDetailMode, setIsDetailMode] = useState(false);
   const [artisticMode, setArtisticMode] = useState(false);
   const [isOffshot, setIsOffshot] = useState(false);
-  const [offshotVariant, setOffshotVariant] = useState<'A' | 'B'>('A');
+  // offshotVariant removed — sceneVariant now controls offshot A/B/C too
   const [sceneVariant, setSceneVariant] = useState<'A' | 'B' | 'C'>('A');
   const [sceneMode, setSceneMode] = useState<'auto' | 'custom'>('auto');
   const [selectedScenes, setSelectedScenes] = useState<string[]>([]);
@@ -750,7 +750,7 @@ export function GeminiImageGenerator({
             customPrompt: config.customPrompt,
             locale,
             storeId,
-            ...(isOffshot ? { offshot: true, offshotVariant, shotIndex: shotIdx, totalShots: storyCount } : {
+            ...(isOffshot ? { offshot: true, offshotVariant: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : {
               ...(detailModeAssignments[shotIdx] ? { detailMode: detailModeAssignments[shotIdx] } : {}),
               ...(artisticMode ? { artistic: sceneVariant, shotIndex: shotIdx, totalShots: storyCount } : { sceneVariant, shotIndex: shotIdx, totalShots: storyCount }),
             }),
@@ -1309,7 +1309,7 @@ export function GeminiImageGenerator({
           customPrompt: shotPrompt,
           locale,
           storeId,
-          ...(isOffshot ? { offshot: true, offshotVariant } : {
+          ...(isOffshot ? { offshot: true, offshotVariant: sceneVariant } : {
             artistic: artisticMode ? sceneVariant : undefined,
             sceneVariant,
             detailMode: detailAssignments[i],
@@ -1514,21 +1514,6 @@ export function GeminiImageGenerator({
             >
               {locale === 'ja' ? 'オフショット' : 'Off-shot'}
             </button>
-            {isOffshot && (
-              <button
-                onClick={() => setOffshotVariant(prev => prev === 'A' ? 'B' : 'A')}
-                className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
-                  offshotVariant === 'B'
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-[var(--color-accent)] text-white'
-                }`}
-              >
-                {locale === 'ja'
-                  ? (offshotVariant === 'A' ? '撮影中' : 'アフター')
-                  : (offshotVariant === 'A' ? 'On-set' : 'After')
-                }
-              </button>
-            )}
             <button
               onClick={() => setSceneVariant(prev => prev === 'A' ? 'B' : prev === 'B' ? 'C' : 'A')}
               className={`px-2.5 py-1 text-xs font-medium rounded-lg transition-all ${
