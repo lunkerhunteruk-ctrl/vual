@@ -497,8 +497,12 @@ export function buildOffshotScene(
 ): string {
   const seed = (shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
 
+  // If the user typed a specific venue/place (more than just a city name), use it directly
+  // Simple heuristic: if input contains 2+ words or non-ASCII (Japanese etc), treat as specific venue
+  const isSpecificVenue = cityName && (cityName.trim().split(/\s+/).length >= 2 || /[^\x00-\x7F]/.test(cityName));
+
   const cityContext = cityName
-    ? `MANDATORY LOCATION: The venue MUST be in or very near ${cityName}. It must look and feel authentically local to ${cityName} — local cuisine, local language on signs/menus, local architectural style, local people in the background. Do NOT set this in Japan or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
+    ? `MANDATORY LOCATION: The venue MUST be ${isSpecificVenue ? cityName : `in or very near ${cityName}`}. It must look and feel authentically local to ${cityName} — local cuisine, local language on signs/menus, local architectural style, local people in the background. Do NOT set this in Japan or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
     : 'The venue should feel authentic and local to the shooting location.';
 
   const leicaMorning = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, natural light, slightly warm color cast.';
@@ -543,7 +547,9 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
           'sitting at the breakfast table, holding a piece of toast up to the camera like showing off a trophy — playful, silly, genuine morning energy',
         ],
         wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Hair neatly styled. Natural makeup`,
-        location: `A ${venue} in ${cityName || 'the shooting location'}. ${cityContext} A comfortable, approachable place (NOT a luxury 5-star hotel). Morning light through windows, other guests in the background. Fresh bread, fruits, cereals, coffee visible.`,
+        location: isSpecificVenue
+          ? `At ${cityName}. ${cityContext} Morning light, other guests in the background. Breakfast food, fresh bread, fruits, cereals, coffee visible.`
+          : `A ${venue} in ${cityName || 'the shooting location'}. ${cityContext} A comfortable, approachable place (NOT a luxury 5-star hotel). Morning light through windows, other guests in the background. Fresh bread, fruits, cereals, coffee visible.`,
         film: leicaMorning,
         quality: qualityMorning,
         expression: 'Bright, warm, genuine — a natural morning smile. Friendly and approachable.',
@@ -576,7 +582,9 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
           'walking out of the restaurant into bright sunshine, sunglasses going on, takeaway coffee in hand — she looks back at the camera with a bright, energized smile',
         ],
         wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Sunglasses on top of head or on the table`,
-        location: `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Bright daylight, outdoor seating or large windows. Local cuisine, handwritten menus or chalkboards in the local language. Relaxed midday atmosphere.`,
+        location: isSpecificVenue
+          ? `At ${cityName}. ${cityContext} Bright daylight, outdoor seating or large windows. Local cuisine visible. Relaxed midday atmosphere.`
+          : `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Bright daylight, outdoor seating or large windows. Local cuisine, handwritten menus or chalkboards in the local language. Relaxed midday atmosphere.`,
         film: leicaMorning,
         quality: 'QUALITY: Fine film grain (Portra 400), bright natural daylight, vibrant but natural colors. Casual framing with outdoor light. 3:4 portrait format. No text, no watermarks.',
         expression: 'Looking at camera. Relaxed, happy, energized — midday break with good food and good company.',
@@ -611,7 +619,9 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
           'sitting sideways in her chair, legs crossed, one arm draped over the back, drink dangling from her fingers — looking at the camera with completely relaxed confidence. The energy of someone who has earned this meal',
         ],
         wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Jacket removed and draped over chair, slightly more relaxed than during the shoot`,
-        location: `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Warm interior lighting — candles, pendant lights, warm wall sconces. Beautiful food and drinks on the table. Lively but intimate dinner atmosphere. Authentic local restaurant — not a tourist trap.`,
+        location: isSpecificVenue
+          ? `At ${cityName}. ${cityContext} Warm interior lighting — candles, pendant lights, warm wall sconces. Beautiful food and drinks on the table. Lively but intimate dinner atmosphere.`
+          : `A ${venue} near ${cityName || 'the shooting location'}. ${cityContext} Warm interior lighting — candles, pendant lights, warm wall sconces. Beautiful food and drinks on the table. Lively but intimate dinner atmosphere. Authentic local restaurant — not a tourist trap.`,
         film: leicaNight,
         quality: qualityNight,
         expression: 'Relaxed, social, warm — celebrating the end of a shoot day with the crew over great food.',
@@ -642,7 +652,9 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
           'outside the club entrance, cooling off — hair slightly damp, drink in hand, laughing with crew members in the night air. Neon sign of the club visible, smokers and other clubgoers around',
         ],
         wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Slightly lived-in from dancing — sleeves pushed up, top button undone, hair slightly tousled`,
-        location: `A ${clubType} in ${cityName || 'the shooting location'}. ${cityContext} Dark interior with dramatic colored lighting — LED strips, lasers, strobes, neon. Smoke/haze machine atmosphere. DJ booth visible. Other clubgoers dancing or socializing. The venue should feel authentic to the local nightlife scene.`,
+        location: isSpecificVenue
+          ? `At ${cityName}. ${cityContext} Dark interior with dramatic colored lighting — LED strips, lasers, strobes, neon. Smoke/haze machine atmosphere. DJ booth visible. Other clubgoers dancing or socializing.`
+          : `A ${clubType} in ${cityName || 'the shooting location'}. ${cityContext} Dark interior with dramatic colored lighting — LED strips, lasers, strobes, neon. Smoke/haze machine atmosphere. DJ booth visible. Other clubgoers dancing or socializing. The venue should feel authentic to the local nightlife scene.`,
         film: leicaNight,
         quality: qualityNeon,
         expression: 'Free, electric, alive — the uninhibited nightlife version of her. Pure joy of being off-duty and dancing.',
@@ -675,7 +687,9 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
           'playing darts, pool, or a bar game with crew members — caught mid-throw or mid-shot, competitive grin, one eye squinted. Drinks on a nearby table, bar atmosphere around them',
         ],
         wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Casual, jacket off, sleeves rolled up. Completely comfortable and at ease`,
-        location: `A ${barType} in ${cityName || 'the shooting location'}. ${cityContext} Warm amber/golden lighting from pendant lights, bar back-lighting, candles. Worn surfaces, character. A real bar where locals drink — not a hotel lobby bar. Lively but intimate atmosphere.`,
+        location: isSpecificVenue
+          ? `At ${cityName}. ${cityContext} Warm amber/golden lighting from pendant lights, bar back-lighting, candles. Worn surfaces, character. Lively but intimate atmosphere.`
+          : `A ${barType} in ${cityName || 'the shooting location'}. ${cityContext} Warm amber/golden lighting from pendant lights, bar back-lighting, candles. Worn surfaces, character. A real bar where locals drink — not a hotel lobby bar. Lively but intimate atmosphere.`,
         film: leicaNight,
         quality: qualityNight,
         expression: 'Easy confidence, warmth, connection — the relaxed nighttime version of her. Real conversation, real drinks, real laughter.',
