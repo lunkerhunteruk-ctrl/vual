@@ -101,6 +101,9 @@ export function buildPromptFromPayload(payload: any): string {
     'IMPORTANT: The model must ALWAYS stand on dry ground.',
     'CRITICAL: DO NOT render any text, labels, watermarks, or words on the image.',
     'ACCESSORIES RULE: The model must NOT wear any rings, bracelets, necklaces, or jewelry unless they are explicitly provided as reference images.',
+    aspectRatio === '9:16'
+      ? 'VERTICAL FORMAT (9:16 PORTRAIT ORIENTATION): Compose the image vertically. Use the height of the frame to show both the model AND the environment. For full-body shots, place the model in the lower half with the location/sky/architecture filling the upper half. The vertical format should emphasize the HEIGHT and DEPTH of the location. Do NOT crop the scene tightly around the model — let the environment breathe and dominate.'
+      : '',
     `OUTPUT FORMAT: Generate the image in ${aspectRatio} aspect ratio.`,
     'REMINDER: The garments MUST be exact copies from the reference images - not interpretations or similar items.',
   ];

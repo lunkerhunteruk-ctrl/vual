@@ -18,17 +18,19 @@ Reads numbered subfolders (001_*, 002_*, ...) and for each:
 import sys
 import os
 import time
+import random
 from pathlib import Path
 from playwright.sync_api import sync_playwright, Page, TimeoutError as PlaywrightTimeout
 
 GLAM_URL = "https://glam.ai/generate/video"
-WAIT_AFTER_GENERATE_SEC = 120  # 2 minutes wait after clicking Generate
+WAIT_MIN_SEC = 130   # minimum wait (2m10s)
+WAIT_MAX_SEC = 230   # maximum wait (3m50s)
 BROWSER_DATA_DIR = os.path.expanduser("~/.glam-playwright-profile")
 
 # ── Video settings ──
 VIDEO_RESOLUTION = "1080p"   # 720p | 1080p | 4K
-VIDEO_DURATION = "6s"        # 4s | 6s | 8s
-VIDEO_RATIO = "16:9"         # auto | 16:9 | 9:16
+VIDEO_DURATION = "4s"        # 4s | 6s | 8s
+VIDEO_RATIO = "9:16"         # auto | 16:9 | 9:16
 
 
 def get_job_folders(jobs_dir: Path) -> list[Path]:
@@ -40,20 +42,42 @@ def get_job_folders(jobs_dir: Path) -> list[Path]:
 
 
 def upload_image(page: Page, image_path: Path):
-    """Upload image.jpg via the file input. Waits for preview to appear."""
+    """Upload image.jpg via the file input. Waits until upload is fully complete."""
+    # Wait for file input to be available
     file_input = page.locator('input[type="file"]').first
+    file_input.wait_for(state="attached", timeout=10000)
     file_input.set_input_files(str(image_path))
 
     # Wait for the image preview thumbnail to appear (confirms upload is done)
+    preview_found = False
     try:
         page.locator("img[src*='blob:'], img[src*='data:'], img[src*='upload'], img[src*='glam']").first.wait_for(
-            state="visible", timeout=15000
+            state="visible", timeout=30000
         )
+        preview_found = True
         print("  Image preview confirmed")
     except Exception:
-        pass
-    # Extra safety wait for any processing
-    page.wait_for_timeout(3000)
+        print("  [WARN] Preview not detected, waiting extra time...")
+
+    # Wait for any upload progress / processing to finish
+    # Check that no spinner or loading indicator is active
+    for _ in range(10):
+        page.wait_for_timeout(1000)
+        # Check if Generate button is enabled (indicates upload is ready)
+        try:
+            gen_btn = page.get_by_role("button", name="Generate")
+            if gen_btn.is_enabled(timeout=500):
+                print("  Upload ready (Generate button enabled)")
+                break
+        except Exception:
+            pass
+    else:
+        # Final safety wait if we couldn't confirm via button
+        page.wait_for_timeout(3000)
+
+    if not preview_found:
+        # Extra long wait if preview was never confirmed
+        page.wait_for_timeout(5000)
 
 
 def open_advanced_settings(page: Page):
@@ -273,13 +297,15 @@ def click_generate(page: Page):
 
 
 def wait_for_completion(page: Page):
-    """Wait fixed time after clicking Generate before moving to next job."""
-    wait_sec = WAIT_AFTER_GENERATE_SEC
+    """Wait random time after clicking Generate before moving to next job."""
+    wait_sec = random.randint(WAIT_MIN_SEC, WAIT_MAX_SEC)
     print(f"    Waiting {wait_sec}s for generation...")
     for elapsed in range(0, wait_sec, 10):
         page.wait_for_timeout(10000)
-        print(f"    {elapsed + 10}s / {wait_sec}s")
-    print("    Wait complete.")
+        remaining = wait_sec - (elapsed + 10)
+        if remaining > 0:
+            print(f"    {elapsed + 10}s / {wait_sec}s")
+    print(f"    Wait complete ({wait_sec}s).")
 
 
 def clear_previous_upload(page: Page):
