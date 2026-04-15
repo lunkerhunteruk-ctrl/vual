@@ -501,18 +501,29 @@ export function buildOffshotScene(
   // Simple heuristic: if input contains 2+ words or non-ASCII (Japanese etc), treat as specific venue
   const isSpecificVenue = cityName && (cityName.trim().split(/\s+/).length >= 2 || /[^\x00-\x7F]/.test(cityName));
 
+  // Japan mode: if "日本" is in the prompt, switch to "hanging out with a close female friend" setting
+  const isJapan = cityName.includes('日本');
+
   const cityContext = cityName
-    ? `MANDATORY LOCATION: The venue MUST be ${isSpecificVenue ? cityName : `in or very near ${cityName}`}. It must look and feel authentically local to ${cityName} — local cuisine, local language on signs/menus, local architectural style, local people in the background. Do NOT set this in Japan or any Asian city unless ${cityName} is explicitly in that region. The location must be geographically accurate to ${cityName}.`
+    ? `MANDATORY LOCATION: The venue MUST be ${isSpecificVenue ? cityName.replace('日本', '').trim() : `in or very near ${cityName.replace('日本', '').trim()}`}. It must look and feel authentically local — local cuisine, local language on signs/menus, local architectural style, local people in the background.${isJapan ? ' This is in JAPAN.' : ` Do NOT set this in Japan or any Asian city unless ${cityName} is explicitly in that region.`} The location must be geographically accurate.`
     : 'The venue should feel authentic and local to the shooting location.';
 
   const leicaMorning = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 400 film. Handheld, natural light, slightly warm color cast.';
   const leicaNight = 'Shot on Leica M6 with Summicron 35mm f/2, Kodak Portra 800 film pushed to 1600. Handheld, available light only, warm color cast from ambient lighting.';
-  const qualityMorning = 'QUALITY: Fine film grain (Portra 400), soft warm morning light, natural color palette. Casual framing — feels like a crew member snapped this. 3:4 portrait format. No text, no watermarks.';
+  const qualityMorning = 'QUALITY: Fine film grain (Portra 400), soft warm morning light, natural color palette. Casual framing — feels like a friend snapped this. 3:4 portrait format. No text, no watermarks.';
   const qualityNight = 'QUALITY: Heavy film grain (Portra 800 pushed), warm amber/golden color cast from candles and ambient light, shallow depth of field, slightly soft focus. Intimate framing. 3:4 portrait format. No text, no watermarks.';
   const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon/LED. Cinematic night-time feel. Slightly underexposed with bright highlights from lights. 3:4 portrait format. No text, no watermarks.';
 
-  const baseDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID snapshot taken by a crew member. The model is a real person in a real social moment. Framing is imperfect — shot on a phone or small camera by a friend. Off-center, slightly tilted, casual.
-Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, hands holding glasses or phones.
+  const companionDesc = isJapan
+    ? 'She is hanging out with her close female friend (a stylish Japanese woman of similar age). The friend may be partially visible — arm, shoulder, hand holding a drink/phone, or sitting across the table. Sometimes they pose together for a photo. The vibe is two close friends on a day out — NOT a work crew.'
+    : 'Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, hands holding glasses or phones.';
+
+  const photographerDesc = isJapan
+    ? 'shot on a phone or small camera by her friend'
+    : 'shot on a phone or small camera by a crew member';
+
+  const baseDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID snapshot ${photographerDesc}. The model is a real person in a real social moment. Framing is imperfect — off-center, slightly tilted, casual.
+${companionDesc}
 The overall feeling is private, warm, real — like a photo posted on someone's close friends Instagram story.`;
 
   const scenes: Record<string, {
