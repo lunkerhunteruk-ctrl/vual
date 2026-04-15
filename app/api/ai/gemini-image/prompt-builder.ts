@@ -740,7 +740,23 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
   const scene = scenes[sceneId];
   if (!scene) return '';
 
-  const action = pick(scene.actions);
+  // Japan mode: replace "crew member" references with "friend" and add selfie shots
+  let actions = scene.actions;
+  if (isJapan) {
+    actions = actions.map(a => a
+      .replace(/a crew member/gi, 'her close female friend (a stylish Japanese woman of similar age)')
+      .replace(/crew members/gi, 'her close female friend')
+      .replace(/crew member/gi, 'her close female friend')
+    );
+    // Add selfie shots for Japan mode
+    const locationName = cityName.replace('日本', '').trim() || 'the location';
+    actions.push(
+      `taking a selfie together with her close female friend — both squeezing into frame, the model holding the phone at arm's length. ${locationName} is clearly visible in the background behind them. Both are smiling naturally, heads close together. The photo has the warm, intimate feel of a best-friends selfie posted on Instagram stories`,
+      `posing for a two-shot with her close female friend — another person (partially visible hand) is taking the photo with a phone. They stand side by side or with arms linked, both looking at the camera with relaxed, genuine smiles. The distinctive surroundings of ${locationName} frame them. This looks like a treasured travel photo between close friends`,
+    );
+  }
+
+  const action = pick(actions);
 
   return `${baseDirective}
 
