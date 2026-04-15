@@ -240,15 +240,15 @@ ANTI-FASHION RULES:
     'traditional local cuisine restaurant',
     'Italian restaurant or trattoria',
     'French bistro or brasserie',
-    'yakiniku (grilled meat) restaurant',
-    'yakitori (grilled chicken skewer) bar',
-    'izakaya (Japanese pub-style dining)',
+    'grilled meat restaurant',
+    'local grill bar',
+    'local pub with home-style bar food',
     'seafood restaurant',
     'steakhouse',
-    'ramen shop',
+    'noodle or soup restaurant',
     'tapas bar',
     'wine bar with small plates',
-    'Korean BBQ restaurant',
+    'local BBQ restaurant',
   ];
   const genreA = restaurantGenres[seed % restaurantGenres.length];
   const genreB = restaurantGenres[(seed + 3) % restaurantGenres.length];
@@ -659,7 +659,7 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
         'neighborhood dive bar with character',
         'rooftop cocktail bar with city views',
         'jazz bar with live music corner',
-        'local sake bar or izakaya-style standing bar',
+        'local standing bar or neighborhood watering hole',
         'speakeasy-style cocktail bar with dim lighting',
       ];
       const barType = barTypes[seed % barTypes.length];
@@ -680,6 +680,31 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
         quality: qualityNight,
         expression: 'Easy confidence, warmth, connection — the relaxed nighttime version of her. Real conversation, real drinks, real laughter.',
         reminder: 'This is a PUB/BAR candid snapshot — warm amber lighting, drinks, intimate social atmosphere. NOT a fashion photo.',
+      };
+    })(),
+
+    // ============ SNAP — STREET SNAPSHOT AT ANY LOCATION ============
+    'snap': (() => {
+      const locationName = cityName || 'the location';
+      return {
+        actions: [
+          `walking through ${locationName}, mid-stride, one hand holding her bag strap — she glances at the camera with a natural, effortless expression. A crew member walking beside her is partially visible. People and the environment of ${locationName} surround her`,
+          `standing still for a moment at ${locationName}, scrolling her phone with one thumb — she looks up at the camera with a relaxed half-smile. The specific architecture and atmosphere of ${locationName} visible behind her`,
+          `sitting on a bench, ledge, or seating area at ${locationName}, legs crossed, takeaway coffee in hand — looking directly at the camera with a calm, content expression. The surroundings of ${locationName} frame the shot`,
+          `leaning against a wall, column, or railing at ${locationName}, arms crossed or one hand in her pocket — looking at the camera with quiet confidence. The distinct environment of ${locationName} provides context`,
+          `holding a takeaway coffee or drink, walking through ${locationName} — she turns back toward the camera with a bright, spontaneous smile. Motion blur on the background, sharp focus on her face`,
+          `crouching down or bending slightly to look at something interesting at ${locationName} — she looks up at the camera with a curious, playful expression. The unique details of ${locationName} visible around her`,
+          `standing at a window or glass wall at ${locationName}, looking out at the view — she turns to the camera, backlit by the light from outside. Silhouette-edge lighting, the interior of ${locationName} softly visible`,
+          `caught mid-laugh with a crew member (partially visible) at ${locationName} — genuine, unscripted moment. Both are carrying bags or coffee. The character of ${locationName} is clear in the background`,
+          `waiting — sitting or standing casually at ${locationName}, people-watching with a relaxed, zoned-out expression — then notices the camera and gives a warm, natural smile. The energy and flow of ${locationName} visible around her`,
+          `taking a selfie or photo of something at ${locationName} with her phone — the camera catches her from the side or slightly behind, showing both her and what she is photographing. The distinctive features of ${locationName} are prominent`,
+        ],
+        wardrobe: `${garmentDesc} — IMPORTANT: The garments, shoes, and all accessories must be EXACTLY as shown in the reference images. Styled and ready, but body language is completely casual and off-duty`,
+        location: `At ${locationName}. Pick a SPECIFIC area within ${locationName} that would make a visually interesting candid snapshot — choose from the various spaces, corridors, waiting areas, entrances, restaurants, shops, platforms, concourses, outdoor areas, or any distinctive spot within ${locationName}. The chosen area must be recognizable as part of ${locationName} — show local signage, architecture, distinctive design elements, or environmental cues that make the location identifiable. Other people going about their day should be visible in the background.`,
+        film: cityName ? leicaMorning : leicaNight,
+        quality: cityName ? qualityMorning : qualityNight,
+        expression: 'Natural, off-duty, real — NOT a model pose. The relaxed body language of someone between work moments.',
+        reminder: `This is a CANDID STREET SNAPSHOT at ${locationName} — the model is a real person passing through, not posing for a fashion shoot. The location should be clearly identifiable. NOT a fashion photo.`,
       };
     })(),
   };

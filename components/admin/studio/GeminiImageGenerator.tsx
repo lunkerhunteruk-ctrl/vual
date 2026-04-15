@@ -1519,6 +1519,7 @@ export function GeminiImageGenerator({
             {isOffshot && (
               <>
                 {([
+                  { id: 'snap', ja: 'スナップ', en: 'Snap' },
                   { id: 'breakfast', ja: '朝食', en: 'Breakfast' },
                   { id: 'lunch', ja: 'ランチ', en: 'Lunch' },
                   { id: 'dinner', ja: '夕食', en: 'Dinner' },

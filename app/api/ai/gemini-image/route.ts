@@ -824,15 +824,15 @@ ANTI-FASHION RULES:
       'traditional local cuisine restaurant',
       'Italian restaurant or trattoria',
       'French bistro or brasserie',
-      'yakiniku (grilled meat) restaurant',
-      'yakitori (grilled chicken skewer) bar',
-      'izakaya (Japanese pub-style dining)',
+      'grilled meat restaurant',
+      'local grill bar',
+      'local pub with home-style bar food',
       'seafood restaurant',
       'steakhouse',
-      'ramen shop',
+      'noodle or soup restaurant',
       'tapas bar',
       'wine bar with small plates',
-      'Korean BBQ restaurant',
+      'local BBQ restaurant',
     ];
     const genreA = restaurantGenres[seed % restaurantGenres.length];
     const genreB = restaurantGenres[(seed + 3) % restaurantGenres.length];
@@ -1079,7 +1079,7 @@ REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, rea
     }
 
     // ============ OFFSHOT SCENE-SPECIFIC (breakfast, lunch, dinner, nightclub, pub-bar) ============
-    if (['breakfast', 'lunch', 'dinner', 'nightclub', 'pub-bar'].includes(offshotVariant)) {
+    if (['snap', 'breakfast', 'lunch', 'dinner', 'nightclub', 'pub-bar'].includes(offshotVariant)) {
       const fullGarmentDesc = `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`;
       return buildOffshotScene(offshotVariant, modelDescription, fullGarmentDesc, cityName, pick, body.shotIndex);
     }
