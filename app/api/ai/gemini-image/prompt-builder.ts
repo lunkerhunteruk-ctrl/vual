@@ -115,13 +115,14 @@ export function buildPromptFromPayload(payload: any): string {
 /** Apply Japan mode transformations to offshot prompt text */
 function applyJapanMode(text: string, locationSource: string): string {
   if (!locationSource.includes('日本')) return text;
-  return text
+  const replaced = text
     .replace(/taken by a crew member/gi, 'taken by her close female friend')
     .replace(/a crew member/gi, 'her close female friend (a stylish Japanese woman of similar age)')
     .replace(/crew members/gi, 'her close female friend')
     .replace(/crew member/gi, 'her close female friend')
     .replace(/crew packing up/gi, 'a quiet moment together')
     .replace(/a mix of Japanese and international staff/gi, 'her close female friend, a stylish Japanese woman of similar age');
+  return replaced + '\n\nCRITICAL COMPANION RULE: The model is with ONLY ONE other person — her close female friend. There must be EXACTLY TWO people together in this scene. Do NOT add any other companions, crew, staff, or groups. No men in their party.';
 }
 
 function buildOffshotA(modelDesc: string, garmentDesc: string, locationNote: string, pick: (arr: string[]) => string, shotIndex?: number): string {
@@ -536,7 +537,7 @@ export function buildOffshotScene(
   const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon/LED. Cinematic night-time feel. Slightly underexposed with bright highlights from lights. 3:4 portrait format. No text, no watermarks.';
 
   const companionDesc = isJapan
-    ? 'She is hanging out with her close female friend (a stylish Japanese woman of similar age). The friend may be partially visible — arm, shoulder, hand holding a drink/phone, or sitting across the table. Sometimes they pose together for a photo. The vibe is two close friends on a day out — NOT a work crew.'
+    ? 'CRITICAL COMPANION RULE: The model is with ONLY ONE other person — her close female friend (a stylish Japanese woman of similar age). There are EXACTLY TWO people who are together in this scene: the model and her ONE friend. Do NOT add any other companions, crew members, staff, or groups. No men in their party. The friend may be partially visible — arm, shoulder, hand holding a drink/phone, or sitting across the table. The vibe is two close friends hanging out — NOT a work dinner or group event.'
     : 'Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, hands holding glasses or phones.';
 
   const photographerDesc = isJapan
