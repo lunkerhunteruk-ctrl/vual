@@ -112,6 +112,18 @@ export function buildPromptFromPayload(payload: any): string {
 }
 
 
+/** Apply Japan mode transformations to offshot prompt text */
+function applyJapanMode(text: string, locationSource: string): string {
+  if (!locationSource.includes('日本')) return text;
+  return text
+    .replace(/taken by a crew member/gi, 'taken by her close female friend')
+    .replace(/a crew member/gi, 'her close female friend (a stylish Japanese woman of similar age)')
+    .replace(/crew members/gi, 'her close female friend')
+    .replace(/crew member/gi, 'her close female friend')
+    .replace(/crew packing up/gi, 'a quiet moment together')
+    .replace(/a mix of Japanese and international staff/gi, 'her close female friend, a stylish Japanese woman of similar age');
+}
+
 function buildOffshotA(modelDesc: string, garmentDesc: string, locationNote: string, pick: (arr: string[]) => string, shotIndex?: number): string {
   const offshotDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a RAW, CANDID, BEHIND-THE-SCENES snapshot taken by a crew member with a film camera during downtime. The model is NOT posing, NOT performing, NOT aware of being photographed (or only just noticed). This must look like a REAL moment captured by accident — like a photo you'd find on a photographer's contact sheet that was never meant to be published.
 
@@ -204,7 +216,7 @@ ANTI-FASHION RULES:
   const cat = categories[idx];
   const action = pick(cat.actions);
 
-  return `${offshotDirective}
+  const raw = `${offshotDirective}
 
 ${cat.film}
 ${modelDesc}
@@ -216,6 +228,8 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is a BEHIND-THE-SCENES candid snapshot, NOT a fashion photo. Imperfect framing, relaxed posture, real environment.`;
+
+  return applyJapanMode(raw, locationNote);
 }
 
 
@@ -348,7 +362,7 @@ ANTI-FASHION RULES:
   const cat = categories[idx];
   const action = pick(cat.actions);
 
-  return `${directive}
+  const raw = `${directive}
 
 ${cat.film}
 ${modelDesc}
@@ -360,6 +374,8 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is an AFTER-HOURS candid snapshot — evening/night, warm ambient lighting, real social moment. NOT a fashion photo.`;
+
+  return applyJapanMode(raw, cityName);
 }
 
 
@@ -473,7 +489,7 @@ ANTI-FASHION RULES:
   const cat = categories[idx];
   const action = pick(cat.actions);
 
-  return `${directive}
+  const raw = `${directive}
 
 ${cat.film}
 ${modelDesc}
@@ -485,6 +501,8 @@ EXPRESSION: ${cat.expression}
 ${cat.quality}
 
 REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, real daily routines, pre-shoot energy. NOT a fashion photo.`;
+
+  return applyJapanMode(raw, cityName);
 }
 
 
