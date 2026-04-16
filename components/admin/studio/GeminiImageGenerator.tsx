@@ -691,7 +691,7 @@ export function GeminiImageGenerator({
           return {
             background: settings.background,
             // Offshot mode: always use user's original prompt (not editorial-story generated)
-            customPrompt: isOffshot ? settings.customPrompt : (customScenePrompts[i] || settings.customPrompt),
+            customPrompt: isOffshot ? (storyConcept || settings.customPrompt) : (customScenePrompts[i] || settings.customPrompt),
             pose: '',
             aspectRatio: userPickedAR ? settings.aspectRatio : (perShotAspectRatios[i] || settings.aspectRatio),
           };
@@ -1284,7 +1284,7 @@ export function GeminiImageGenerator({
       for (let i = 0; i < shotsToQueue; i++) {
         // Per-shot customPrompt and aspectRatio (from story generation if available)
         const shotPrompt = isOffshot
-          ? settings.customPrompt
+          ? (storyConcept || settings.customPrompt)
           : (storyCount > 1 && sceneMode === 'custom'
             ? (customScenePrompts[i] || settings.customPrompt)
             : settings.customPrompt);
