@@ -124,7 +124,12 @@ function applyJapanMode(text: string, locationSource: string): string {
     .replace(/a mix of Japanese and international staff/gi, 'her close female friend')
     .replace(/Celebrating with the crew/gi, 'Enjoying the moment with her friend')
     .replace(/Other people \(.*?\) may be partially visible[^.]*\./gi, '')
-    .replace(/partially visible/gi, 'sitting across from her or next to her');
+    .replace(/partially visible/gi, 'sitting across from her or next to her')
+    .replace(/BEHIND-THE-SCENES/gi, 'CANDID')
+    .replace(/photographer's contact sheet that was never meant to be published/gi, "friend's phone gallery — a private memory between two close friends")
+    .replace(/with a film camera during downtime/gi, 'with a phone or small camera')
+    .replace(/equipment cases, paper cups, chairs, bags, coats on hooks, etc\./gi, 'personal belongings — bags, phones, coffee cups.')
+    .replace(/cables, equipment cases/gi, 'personal items');
   return replaced + `
 
 ABSOLUTE RULE — PEOPLE IN THE SCENE:
