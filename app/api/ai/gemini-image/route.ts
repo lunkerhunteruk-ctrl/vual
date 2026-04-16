@@ -657,6 +657,7 @@ function buildPrompt(body: RequestBody, firstImageCount: number = 1, secondImage
     const seed = (body.shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
     const pick = (arr: string[]) => arr[seed % arr.length];
     const offshotVariant = body.offshotVariant || 'A';
+    console.log(`[OFFSHOT DEBUG] variant=${offshotVariant}, customPrompt=${body.customPrompt}, shotIndex=${body.shotIndex}`);
 
     const locationNote = customPrompt
       ? `LOCATION: ${customPrompt}`
