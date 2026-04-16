@@ -1283,9 +1283,11 @@ export function GeminiImageGenerator({
 
       for (let i = 0; i < shotsToQueue; i++) {
         // Per-shot customPrompt and aspectRatio (from story generation if available)
-        const shotPrompt = storyCount > 1 && sceneMode === 'custom'
-          ? (customScenePrompts[i] || settings.customPrompt)
-          : settings.customPrompt;
+        const shotPrompt = isOffshot
+          ? settings.customPrompt
+          : (storyCount > 1 && sceneMode === 'custom'
+            ? (customScenePrompts[i] || settings.customPrompt)
+            : settings.customPrompt);
         const shotAR = storyCount > 1 && sceneMode === 'custom' && !userPickedAR
           ? (perShotAspectRatios[i] || settings.aspectRatio)
           : settings.aspectRatio;
