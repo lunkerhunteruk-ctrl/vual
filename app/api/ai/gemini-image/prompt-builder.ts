@@ -560,7 +560,13 @@ export function buildOffshotScene(
     ? 'shot on a phone or small camera by her friend'
     : 'shot on a phone or small camera by a crew member';
 
-  const baseDirective = `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID snapshot ${photographerDesc}. The model is a real person in a real social moment. Framing is imperfect — off-center, slightly tilted, casual.
+  const baseDirective = isJapan
+    ? `MOST IMPORTANT RULE — READ THIS FIRST: This image must show EXACTLY 2 women and NOBODY else near them. The model and ONE female friend. ZERO men. No male hands, arms, or bodies anywhere in the frame. No other women at or near their table. No waiters, no bartenders, no other diners at adjacent tables visible in the foreground. Only distant blurred strangers in the far background are acceptable.
+
+This is a CANDID snapshot ${photographerDesc}. The model is a real person hanging out with her one close female friend. Framing is imperfect — off-center, slightly tilted, casual.
+${companionDesc}
+The overall feeling is private, warm, real — like a photo posted on someone's close friends Instagram story.`
+    : `CRITICAL INSTRUCTION: This is NOT a fashion photograph. This is a CANDID snapshot ${photographerDesc}. The model is a real person in a real social moment. Framing is imperfect — off-center, slightly tilted, casual.
 ${companionDesc}
 The overall feeling is private, warm, real — like a photo posted on someone's close friends Instagram story.`;
 
