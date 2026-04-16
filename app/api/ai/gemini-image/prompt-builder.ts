@@ -117,12 +117,23 @@ function applyJapanMode(text: string, locationSource: string): string {
   if (!locationSource.includes('日本')) return text;
   const replaced = text
     .replace(/taken by a crew member/gi, 'taken by her close female friend')
-    .replace(/a crew member/gi, 'her close female friend (a stylish Japanese woman of similar age)')
+    .replace(/a crew member/gi, 'her close female friend')
     .replace(/crew members/gi, 'her close female friend')
     .replace(/crew member/gi, 'her close female friend')
     .replace(/crew packing up/gi, 'a quiet moment together')
-    .replace(/a mix of Japanese and international staff/gi, 'her close female friend, a stylish Japanese woman of similar age');
-  return replaced + '\n\nCRITICAL COMPANION RULE: The model is with ONLY ONE other person — her close female friend. There must be EXACTLY TWO people together in this scene. Do NOT add any other companions, crew, staff, or groups. No men in their party.';
+    .replace(/a mix of Japanese and international staff/gi, 'her close female friend')
+    .replace(/Celebrating with the crew/gi, 'Enjoying the moment with her friend')
+    .replace(/Other people \(.*?\) may be partially visible[^.]*\./gi, '')
+    .replace(/partially visible/gi, 'sitting across from her or next to her');
+  return replaced + `
+
+ABSOLUTE RULE — PEOPLE IN THE SCENE:
+- The image must contain ONLY the model and her ONE close female friend (a stylish Japanese woman of similar age with a different hairstyle).
+- There must be EXACTLY 2 women in this image. No more, no less.
+- There must be ZERO men visible in the image — no male hands, arms, backs, or silhouettes.
+- No other diners, no other friends, no staff serving, no bartenders, no passersby in the foreground.
+- Background people (random strangers far away, blurred) are acceptable, but NO ONE should appear to be part of their group.
+- If this rule conflicts with any other instruction, THIS RULE WINS.`;
 }
 
 function buildOffshotA(modelDesc: string, garmentDesc: string, locationNote: string, pick: (arr: string[]) => string, shotIndex?: number): string {
@@ -537,7 +548,7 @@ export function buildOffshotScene(
   const qualityNeon = 'QUALITY: Heavy film grain, mixed color temperature — warm practicals vs cool neon/LED. Cinematic night-time feel. Slightly underexposed with bright highlights from lights. 3:4 portrait format. No text, no watermarks.';
 
   const companionDesc = isJapan
-    ? 'CRITICAL COMPANION RULE: The model is with ONLY ONE other person — her close female friend (a stylish Japanese woman of similar age). There are EXACTLY TWO people who are together in this scene: the model and her ONE friend. Do NOT add any other companions, crew members, staff, or groups. No men in their party. The friend may be partially visible — arm, shoulder, hand holding a drink/phone, or sitting across the table. The vibe is two close friends hanging out — NOT a work dinner or group event.'
+    ? 'The model is hanging out with ONLY her close female friend (a stylish Japanese woman of similar age, with a DIFFERENT hairstyle from the model). They are the ONLY two people in their group. The friend is sitting across from her or next to her. The vibe is two close friends on a day out.'
     : 'Other people (crew members — a mix of Japanese and international staff) may be partially visible — arms, backs, hands holding glasses or phones.';
 
   const photographerDesc = isJapan
