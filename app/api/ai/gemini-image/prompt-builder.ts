@@ -777,7 +777,7 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
 
   const action = pick(actions);
 
-  return `${baseDirective}
+  const raw = `${baseDirective}
 
 ${scene.film}
 ${modelDesc}
@@ -789,6 +789,8 @@ EXPRESSION: ${scene.expression}
 ${scene.quality}
 
 REMINDER: ${scene.reminder}`;
+
+  return applyJapanMode(raw, cityName);
 }
 
 
