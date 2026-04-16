@@ -1085,7 +1085,7 @@ REMINDER: This is a MORNING/DAYTIME candid snapshot — fresh natural light, rea
     // ============ OFFSHOT SCENE-SPECIFIC (breakfast, lunch, dinner, nightclub, pub-bar) ============
     if (['snap', 'breakfast', 'lunch', 'dinner', 'nightclub', 'pub-bar'].includes(offshotVariant)) {
       const fullGarmentDesc = `${garmentDesc}${secondGarmentDesc}${thirdGarmentDesc}${fourthGarmentDesc}${fifthGarmentDesc}`;
-      return buildOffshotScene(offshotVariant, modelDescription, fullGarmentDesc, cityName, pick, body.shotIndex);
+      return buildOffshotScene(offshotVariant, modelDescription, fullGarmentDesc, cityName, pick, body.shotIndex, body.totalShots);
     }
   }
 

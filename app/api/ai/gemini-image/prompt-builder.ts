@@ -57,7 +57,7 @@ export function buildPromptFromPayload(payload: any): string {
       return buildOffshotB(modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
     } else {
       // Scene-specific offshot (breakfast, lunch, dinner, nightclub, pub-bar)
-      return buildOffshotScene(offshotVariant, modelDesc, fullGarmentDesc, cityName, pick, shotIndex);
+      return buildOffshotScene(offshotVariant, modelDesc, fullGarmentDesc, cityName, pick, shotIndex, totalShots);
     }
   }
 
@@ -532,6 +532,7 @@ export function buildOffshotScene(
   cityName: string,
   pick: (arr: string[]) => string,
   shotIndex?: number,
+  totalShots?: number,
 ): string {
   const seed = (shotIndex || 0) * 7 + Math.floor(Date.now() / 60000);
 
@@ -785,63 +786,88 @@ The overall feeling is private, warm, real — like a photo posted on someone's 
   let actions = scene.actions;
   if (isJapan) {
     const loc = cityName.replace('日本', '').trim() || 'the location';
-    const japanActions: Record<string, string[]> = {
-      'breakfast': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone. She sits alone at a small cafe table with a coffee and croissant, looking at the camera with a warm morning smile. Her friend is NOT visible — she is behind the camera. Morning light through the window. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She stands at a bakery counter pointing at a pastry, looking back at the camera with a laugh. Her friend is NOT visible — she is the photographer. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She holds a coffee cup with both hands, sitting at a small table, looking at the camera with a sleepy but happy expression. Her friend is behind the camera, NOT in the photo. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length, taking a selfie with her friend at the breakfast table — CLOSE-UP of both faces, heads close together, big smiles. Coffee cups barely visible at the bottom of frame. Shot from the phone's perspective — arms-length distance, slightly from above. A best-friends morning selfie`,
-        `holding her phone at arm's length, taking a selfie with her friend outside the cafe — both grinning, takeaway coffees in their other hands. CLOSE-UP selfie angle, the cafe storefront blurred behind them`,
-      ],
-      'lunch': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone. She sits alone at a small outdoor table with a plate of food, fork in hand, looking at the camera with a "this is SO good" expression. Her friend is NOT visible — she is behind the camera. Bright daylight. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She is mid-bite, covering her mouth with one hand, laughing with her eyes at the camera. Plate of food on the small table. Her friend is the photographer, NOT in the photo. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She holds up a piece of food on her fork toward the camera, showing it off proudly. Small table, bright daylight. Her friend is NOT visible — she is behind the camera. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length, taking a selfie with her friend — CLOSE-UP of both faces leaning across the small lunch table, heads close together, big smiles. Plates of food barely visible at bottom. Shot from phone's perspective, slightly from above. A lunch-date selfie`,
-        `holding her phone at arm's length for a selfie with her friend, both holding up their forks with food — CLOSE-UP selfie angle, both laughing. The restaurant blurred behind them`,
-      ],
-      'dinner': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone. She sits at a small candlelit restaurant table, raising her wine glass toward the camera with a warm smile. Her friend is NOT visible — she is behind the camera. Warm candlelight on her face. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She rests her chin on both hands, elbows on the table, smiling warmly at the camera. Candles and food on the table. Her friend is NOT visible — she is the photographer. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She holds up a piece of food on her fork, showing it off with a proud expression. Warm restaurant lighting. Her friend is behind the camera, NOT in the photo. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length, taking a selfie with her friend at the dinner table — CLOSE-UP of both faces lit by warm candlelight, both smiling. Wine glasses barely visible. Shot from phone's perspective. A close-friends dinner selfie`,
-        `holding her phone at arm's length for a selfie with her friend, both holding up their wine glasses — CLOSE-UP selfie angle, candlelight on both faces, big smiles. A girls-night-out dinner selfie`,
-      ],
-      'nightclub': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone (with flash). She is on the dance floor, caught mid-movement, hair flying — phone flash harshly illuminates her face against the dark club. Her friend is NOT visible — she is behind the camera. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She leans against the bar, cocktail in hand, looking at the camera with magnetic confidence. Colored bottles backlit behind her. Her friend is the photographer, NOT in the photo. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length on the dance floor, taking a selfie with her friend — phone flash illuminating both faces against the dark club. CLOSE-UP selfie, both have huge smiles, hair messy from dancing. A classic girls-night-out selfie`,
-        `holding her phone at arm's length for a selfie with her friend at the bar — CLOSE-UP of both faces, colored bar lights behind them, drinks held up. A nightlife selfie`,
-        `outside the club entrance, taking a selfie with her friend — phone flash on both faces, neon sign of the club blurred behind them. CLOSE-UP selfie angle, both laughing, slightly sweaty from dancing`,
-      ],
-      'pub-bar': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone. She sits at the bar counter, cocktail in hand, looking at the camera with a relaxed smile. Warm amber bar lighting, bottles behind her. Her friend is NOT visible — she is behind the camera. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She holds a cocktail up to the warm light, admiring the color, then turns to the camera. Warm bar atmosphere. Her friend is the photographer, NOT in the photo. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She sits in a corner booth, drink in hand, looking at the camera with a quiet, intimate smile. Her friend is behind the camera, NOT in the photo. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length, taking a selfie with her friend — CLOSE-UP of both faces, warm amber bar light, heads close together, drinks held up. A girls-night bar selfie`,
-        `holding her phone at arm's length for a selfie with her friend, cheers-ing their glasses — CLOSE-UP selfie angle, both grinning, warm bar lighting on their faces`,
-      ],
-      'snap': [
-        // Friend takes photo of model (model solo)
-        `her friend is taking a photo of her with a phone. She stands at ${loc}, one hand on her hip, looking at the camera with a relaxed smile. The distinctive scenery of ${loc} behind her. Her friend is NOT visible — she is behind the camera. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She walks through ${loc}, turning back to the camera with a bright smile. The environment of ${loc} surrounds her. Her friend is the photographer, NOT in the photo. Only the model is in the frame`,
-        `her friend is taking a photo of her with a phone. She sits on a bench at ${loc}, takeaway coffee in hand, looking at the camera with a content expression. Her friend is behind the camera, NOT visible. Only the model is in the frame`,
-        // Selfie (2 people, phone at arm's length, close-up)
-        `holding her phone at arm's length, taking a selfie with her friend at ${loc} — CLOSE-UP of both faces, the distinctive scenery of ${loc} blurred behind them. Heads close together, big smiles. A travel selfie between best friends`,
-        `holding her phone at arm's length for a selfie with her friend at ${loc} — CLOSE-UP selfie angle, both laughing, the unique character of ${loc} visible behind them. A candid best-friends selfie`,
-      ],
+    const shotCount = totalShots || 6;
+    const japanActions: Record<string, { solo: string[]; withFriend: string[] }> = {
+      'breakfast': {
+        solo: [
+          `her friend is taking a photo of her with a phone. She sits at a cafe table, bringing a forkful of pancake toward her mouth, looking at the camera with a charming, playful expression. Her friend is NOT visible — she is behind the camera. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She holds a coffee cup with both hands, looking at the camera with a warm smile over the rim. Breakfast plate on the table. Her friend is NOT in the photo. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She gives a peace sign to the camera with a big grin, a half-eaten pastry on the plate in front of her. Morning light. Her friend is behind the camera. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She is sipping orange juice through a straw, eyes looking at the camera with a cute, playful expression. Breakfast spread on the table. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She leans forward on the table, chin resting on one hand, giving the camera a charming, relaxed smile. Coffee and toast visible. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens. CLOSE-UP of both the model and her friend (a stylish Japanese woman with a different hairstyle), heads close together, both looking directly at the camera with big morning smiles. Coffee cups barely visible at the bottom. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective, slightly from above`,
+        ],
+      },
+      'lunch': {
+        solo: [
+          `her friend is taking a photo of her with a phone. She sits at a small outdoor table, fork in hand over a plate of food, looking at the camera with a "this is SO good" expression. Bright daylight. Her friend is NOT visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She is mid-bite, covering her mouth with one hand, laughing at the camera with her eyes. Her friend is NOT in the photo. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She holds up a piece of food on her fork toward the camera, showing it off proudly. Bright daylight. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She sips a drink through a straw, eyes peeking over the glass at the camera with a playful look. Lunch plate visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She gives a peace sign next to her plate of food, big cheerful grin at the camera. Bright midday light. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens. CLOSE-UP of both the model and her friend, heads close together over the lunch table, both looking directly at the camera, big smiles. Food barely visible at bottom. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective`,
+        ],
+      },
+      'dinner': {
+        solo: [
+          `her friend is taking a photo of her with a phone. She raises her wine glass toward the camera with a warm smile. Candlelight illuminates her face. Her friend is NOT visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She rests her chin on both hands, looking at the camera with a charming, relaxed smile. Candles and food on the table. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She holds up a piece of food on her fork, showing it off with a playful "look at this" expression. Warm lighting. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She takes a sip of wine, eyes looking at the camera over the glass with a subtle smile. Warm candlelight. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She laughs with her head tilted slightly, one hand near her face, genuinely happy. Warm restaurant glow. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens. CLOSE-UP of both the model and her friend, faces lit by warm candlelight, both looking directly at the camera with warm smiles. Wine glasses barely visible. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective`,
+        ],
+      },
+      'nightclub': {
+        solo: [
+          `her friend is taking a photo of her with a phone (with flash). She is on the dance floor, hair flying mid-movement, looking at the camera with a wild grin. Flash illuminates her face against the dark club. Her friend is NOT visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She leans against the bar, cocktail in hand, looking at the camera with magnetic confidence. Colored bottles behind her. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone (with flash). She poses with a drink, giving a playful expression to the camera. Flash creates harsh light against the dark club. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She stands outside the club, cooling off, looking at the camera with a happy, tired smile. Neon sign behind her. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens and flash. CLOSE-UP of both the model and her friend, flash illuminating both faces against the dark club. Both looking directly at the camera with huge smiles, hair messy from dancing. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective`,
+        ],
+      },
+      'pub-bar': {
+        solo: [
+          `her friend is taking a photo of her with a phone. She sits at the bar, cocktail in hand, looking at the camera with a relaxed smile. Warm amber lighting, bottles behind her. Her friend is NOT visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She holds a cocktail up to the light, admiring the color, then turns to the camera with a satisfied look. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She gives a peace sign with her drink, grinning at the camera. Warm bar atmosphere. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She takes a sip of her drink, eyes looking over the rim at the camera with a playful glint. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens. CLOSE-UP of both the model and her friend, warm amber bar light on both faces, heads close together, both looking directly at the camera, drinks held up. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective`,
+        ],
+      },
+      'snap': {
+        solo: [
+          `her friend is taking a photo of her with a phone. She stands at ${loc}, one hand on her hip, looking at the camera with a relaxed smile. The scenery of ${loc} behind her. Her friend is NOT visible. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She walks through ${loc}, turning back to the camera with a bright smile. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She sits on a bench at ${loc}, takeaway coffee in hand, looking at the camera with a content expression. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She gives a peace sign at ${loc}, big smile at the camera. The distinctive scenery behind her. Only the model is in the frame`,
+          `her friend is taking a photo of her with a phone. She holds up a takeaway drink, posing cutely at the camera. The environment of ${loc} surrounds her. Only the model is in the frame`,
+        ],
+        withFriend: [
+          `a SELFIE shot from the model's front-facing phone camera with a wide-angle lens. CLOSE-UP of both the model and her friend at ${loc}, heads close together, both looking directly at the camera with big smiles. The scenery of ${loc} blurred behind them. The phone is NOT visible in the image — this is the view FROM the phone camera. Wide-angle selfie perspective`,
+        ],
+      },
     };
-    actions = japanActions[sceneId] || actions;
+    const japanScene = japanActions[sceneId];
+    if (japanScene) {
+      // Determine if this shot should include friend
+      // 3 shots: friend on last (idx 2). 4 shots: friend on last (idx 3). 6 shots: friend on idx 4,5
+      const idx = shotIndex || 0;
+      const isFriendShot = (shotCount <= 4 && idx === shotCount - 1)
+        || (shotCount >= 5 && idx >= shotCount - 2);
+      actions = isFriendShot ? japanScene.withFriend : japanScene.solo;
+    }
   }
 
   const action = pick(actions);
