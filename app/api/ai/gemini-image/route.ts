@@ -358,6 +358,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Debug: log offshot params
+    console.log(`[BODY DEBUG] offshot=${body.offshot}, offshotVariant=${body.offshotVariant}, customPrompt=${body.customPrompt?.substring(0, 50)}`);
+
     // Prompt variants for retry
     const promptVariants = [
       buildPrompt(body, firstGarmentImages.length, secondGarmentImages.length, thirdGarmentImages.length, fourthGarmentImages.length, fifthGarmentImages.length),
