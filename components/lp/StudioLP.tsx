@@ -195,32 +195,20 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative h-screen w-full overflow-hidden">
-      {/* Video background — Cloudflare Stream (iframe cover hack) */}
+      {/* Video background — Cloudflare Stream, covers viewport with no black bars */}
       <motion.div style={{ scale }} className="absolute inset-0">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="hero-stream-cover" style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            minWidth: '100%',
-            minHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            aspectRatio: '16/9',
-          }}>
-            <Stream
-              src={HERO_STREAM_ID}
-              autoplay
-              muted={muted}
-              loop
-              controls={false}
-              responsive={false}
-            />
-          </div>
+        <div className="absolute inset-0 overflow-hidden hero-stream-cover">
+          <Stream
+            src={HERO_STREAM_ID}
+            autoplay
+            muted={muted}
+            loop
+            controls={false}
+            responsive={false}
+          />
         </div>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/20" />
       </motion.div>
 
       {/* Logo — bottom left */}
@@ -719,17 +707,19 @@ export function StudioLP() {
           70% { transform: translate(8vw, 5vh) scale(0.9); opacity: 0.1; }
         }
 
-        /* Force Cloudflare Stream iframe to fill its container */
+        /* Force Cloudflare Stream iframe to cover viewport — no black bars on any screen ratio */
         .hero-stream-cover iframe {
           position: absolute !important;
           top: 50% !important;
           left: 50% !important;
           transform: translate(-50%, -50%) !important;
-          min-width: 100vw !important;
-          min-height: 100vh !important;
-          width: auto !important;
-          height: auto !important;
+          min-width: 100% !important;
+          min-height: 100% !important;
+          /* On portrait screens (mobile), width must be tall enough to cover viewport height */
+          width: max(100%, calc(100vh * 16 / 9)) !important;
+          height: max(100%, calc(100vw * 9 / 16)) !important;
           border: none !important;
+          object-fit: cover !important;
         }
         /* Works section Stream player */
         .works-stream-container iframe {
