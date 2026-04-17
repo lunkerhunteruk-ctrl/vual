@@ -18,6 +18,7 @@ import { useHasCollections } from '@/lib/hooks';
 import { useStoreContext } from '@/lib/store/store-context';
 import { getTaxInclusivePrice, formatPriceWithTax } from '@/lib/utils/currency';
 import { VualLandingPage } from '@/components/lp/LandingPage';
+import { StudioLP } from '@/components/lp/StudioLP';
 
 // ============================================================
 // Under Construction page for root domain (vual.jp)
@@ -154,7 +155,7 @@ export default function HomePage() {
   const isRootDomain = useStoreContext((s) => s.isRootDomain);
 
   if (isRootDomain) {
-    return <UnderConstruction />;
+    return <StudioLP />;
   }
 
   return <ShopHomePage />;

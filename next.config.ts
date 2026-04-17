@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'pub-06cdb49d80dd4dd58d0b4d1f6adf4203.r2.dev',
       },
+      {
+        protocol: 'https',
+        hostname: 'lufis.net',
+      },
     ],
   },
 };
