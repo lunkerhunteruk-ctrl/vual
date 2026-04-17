@@ -110,11 +110,11 @@ const TALENT = {
   measurements: 'B80 / W59 / H86',
   images: {
     editorial: [
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/01.png',
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/02.png',
+      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/01.jpg',
+      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/02.jpg',
     ],
     offshot: [
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/03.png',
+      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/03.jpg',
       'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/04.png',
     ],
   },
