@@ -125,12 +125,12 @@ const TALENT = {
 // ============================================================
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.2, ease: 'easeOut' } },
+  visible: { opacity: 1, transition: { duration: 1.2, ease: 'easeOut' as const } },
 };
 
 const stagger = {
@@ -139,7 +139,7 @@ const stagger = {
 
 const lineReveal = {
   hidden: { scaleX: 0 },
-  visible: { scaleX: 1, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { scaleX: 1, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 // ============================================================
@@ -198,27 +198,26 @@ function HeroSection() {
       {/* Video background — Cloudflare Stream (iframe cover hack) */}
       <motion.div style={{ scale }} className="absolute inset-0">
         <div className="absolute inset-0 overflow-hidden">
-          <Stream
-            src={HERO_STREAM_ID}
-            autoplay
-            muted={muted}
-            loop
-            controls={false}
-            responsive={false}
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              minWidth: '100%',
-              minHeight: '100%',
-              width: 'auto',
-              height: 'auto',
-              // 16:9 aspect — ensure it always covers the viewport
-              aspectRatio: '16/9',
-            }}
-            className="hero-stream-cover"
-          />
+          <div className="hero-stream-cover" style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            minWidth: '100%',
+            minHeight: '100%',
+            width: 'auto',
+            height: 'auto',
+            aspectRatio: '16/9',
+          }}>
+            <Stream
+              src={HERO_STREAM_ID}
+              autoplay
+              muted={muted}
+              loop
+              controls={false}
+              responsive={false}
+            />
+          </div>
         </div>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/30" />
