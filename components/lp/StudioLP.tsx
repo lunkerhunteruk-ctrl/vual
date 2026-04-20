@@ -12,8 +12,8 @@ import { Volume2, VolumeX } from 'lucide-react';
 // ============================================================
 const LP_MEDIA_BASE = 'https://lufis.net/vual';
 
-// Hero video — ALT CUT on Cloudflare Stream
-const HERO_STREAM_ID = 'c316a141a9b755590f3aee0aefe33179';
+// Hero video — Eclipse on Cloudflare Stream
+const HERO_STREAM_ID = 'ddbec5f627e61b18df34e561e0b81bcb';
 
 // ============================================================
 // Locale content
@@ -76,15 +76,27 @@ const CONTENT = {
 // ============================================================
 // Works data
 // ============================================================
-const WORKS = [
+// Latest work — displayed full-width at the top of Selected Works
+const LATEST_WORK = {
+  id: 'eclipse',
+  title: 'Eclipse',
+  subtitle: '聖域の終焉',
+  location: 'Inspired by Mont Saint-Michel, France',
+  year: '2026',
+  concept: 'The water doesn\'t purify her; she consumes it.\nStealing a millennium of devotion in a single breath.\nThe sanctuary dies, so the Muse can reign.',
+  conceptJa: '聖水が彼女を浄化するのではない。彼女がそれを飲み込むのだ。\nその一歩が、1000年の祈りを一瞬にして奪い去る。\n聖域は死に、ミューズが君臨する。',
+  thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ddbec5f627e61b18df34e561e0b81bcb/thumbnails/thumbnail.jpg?time=40s&width=1280',
+  streamId: 'ddbec5f627e61b18df34e561e0b81bcb',
+};
+
+// Past works — displayed as grid below
+const PAST_WORKS = [
   {
     id: 'shattered-utopia-vol1',
     title: 'The Shattered Utopia',
     subtitle: 'Vol.1',
     location: 'Buzludzha, Bulgaria',
     year: '2025',
-    concept: 'A fashion film set inside the abandoned Buzludzha Monument — a brutalist relic of a collapsed ideology, now reclaimed by silence and decay.',
-    conceptJa: '崩壊したイデオロギーの遺物、ブズルジャ記念堂。沈黙と崩壊に支配された廃墟を舞台にしたファッションフィルム。',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/368ea2f9115c8d848ce10f6a7e6f2868/thumbnails/thumbnail.jpg?time=15s&width=1280',
     streamId: '368ea2f9115c8d848ce10f6a7e6f2868',
   },
@@ -94,8 +106,6 @@ const WORKS = [
     subtitle: 'Vol.2',
     location: 'Buzludzha, Bulgaria',
     year: '2025',
-    concept: 'The continuation — deeper into the monument\'s core. Light fractures through concrete wounds as fabric moves through stillness.',
-    conceptJa: '続章 — 記念堂の深部へ。コンクリートの傷跡から光が差し込み、静寂の中を布が流れる。',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ad4459ed0dd133140df55ba6f8720509/thumbnails/thumbnail.jpg?time=22.5s&width=1280',
     streamId: 'ad4459ed0dd133140df55ba6f8720509',
   },
@@ -296,15 +306,34 @@ function ManifestoSection({ locale }: { locale: string }) {
 // ============================================================
 function WorksSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
+  const latestRef = useRef(null);
+  const latestInView = useInView(latestRef, { once: true, margin: '-100px' });
 
   return (
     <section className="relative py-24 md:py-40">
       <div className="px-6 md:px-16 max-w-7xl mx-auto">
         <SectionLabel>{t.works.sectionLabel}</SectionLabel>
 
-        <div className="space-y-32 md:space-y-48">
-          {WORKS.map((work, i) => (
-            <WorkCard key={work.id} work={work} index={i} locale={locale} />
+        {/* Latest work — full width */}
+        <motion.div
+          ref={latestRef}
+          initial="hidden"
+          animate={latestInView ? 'visible' : 'hidden'}
+          variants={stagger}
+          className="mb-24 md:mb-40"
+        >
+          <LatestWorkCard work={LATEST_WORK} locale={locale} />
+        </motion.div>
+
+        {/* Past works label */}
+        <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8">
+          Past Works
+        </p>
+
+        {/* Past works — 2-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {PAST_WORKS.map((work) => (
+            <PastWorkCard key={work.id} work={work} />
           ))}
         </div>
       </div>
@@ -312,30 +341,22 @@ function WorksSection({ locale }: { locale: string }) {
   );
 }
 
-function WorkCard({ work, index, locale }: { work: typeof WORKS[0]; index: number; locale: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+// Latest work — full-width hero card
+function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: string }) {
+  const [playing, setPlaying] = useState(false);
   const imgRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: imgRef, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
-  const [playing, setPlaying] = useState(false);
+  const y = useTransform(scrollYProgress, [0, 1], ['-3%', '3%']);
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      variants={stagger}
-      className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center"
-    >
-      {/* Video / Thumbnail */}
+    <div>
+      {/* Full-width video/thumbnail */}
       <motion.div
         ref={imgRef}
         variants={fadeIn}
-        className={`relative aspect-video overflow-hidden rounded-sm col-span-1 md:col-span-7 ${index % 2 === 1 ? 'md:order-2' : ''}`}
+        className="relative aspect-video overflow-hidden rounded-sm mb-8"
       >
         {work.streamId && playing ? (
-          /* Cloudflare Stream player */
           <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
             <Stream
               src={work.streamId}
@@ -347,29 +368,22 @@ function WorkCard({ work, index, locale }: { work: typeof WORKS[0]; index: numbe
             />
           </div>
         ) : (
-          /* Thumbnail / placeholder with play button */
           <>
             <motion.div style={{ y }} className="absolute inset-0">
               {work.thumbnail ? (
-                <img
-                  src={work.thumbnail}
-                  alt={work.title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
               )}
             </motion.div>
-            {/* Subtle gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            {/* Play button */}
             {work.streamId && (
               <button
                 onClick={() => setPlaying(true)}
                 className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
-                  <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6 md:w-8 md:h-8 ml-1">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 md:w-10 md:h-10 ml-1">
                     <polygon points="5,3 19,12 5,21" />
                   </svg>
                 </div>
@@ -379,38 +393,91 @@ function WorkCard({ work, index, locale }: { work: typeof WORKS[0]; index: numbe
         )}
       </motion.div>
 
-      {/* Text */}
-      <div className={`col-span-1 md:col-span-5 ${index % 2 === 1 ? 'md:order-1 md:text-right' : ''}`}>
-        <motion.p variants={fadeUp} className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-3">
+      {/* Text below */}
+      <motion.div variants={fadeUp} className="max-w-2xl">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-3">
           {work.location} — {work.year}
-        </motion.p>
-        <motion.h3
-          variants={fadeUp}
-          className="text-2xl md:text-3xl font-light text-white/90 mb-1"
+        </p>
+        <h3
+          className="text-3xl md:text-5xl font-light text-white/90 mb-2"
           style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
         >
           {work.title}
-        </motion.h3>
+        </h3>
         {work.subtitle && (
-          <motion.p
-            variants={fadeUp}
-            className="text-lg font-light text-white/50 mb-6"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic' }}
-          >
+          <p className="text-lg font-light text-white/50 mb-6"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic' }}>
             {work.subtitle}
-          </motion.p>
+          </p>
         )}
-        <motion.p
-          variants={fadeUp}
-          className="text-sm leading-[1.9] text-white/40"
-          style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
-        >
+        <p className="text-sm leading-[1.9] text-white/40"
+          style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}>
           {locale === 'ja' ? work.conceptJa : work.concept}
-        </motion.p>
+        </p>
+      </motion.div>
+    </div>
+  );
+}
+
+// Past work — compact grid card
+function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
+  const [playing, setPlaying] = useState(false);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={fadeIn}
+    >
+      <div className="relative aspect-video overflow-hidden rounded-sm mb-4">
+        {work.streamId && playing ? (
+          <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
+            <Stream
+              src={work.streamId}
+              autoplay
+              controls
+              muted={false}
+              loop={false}
+              responsive={false}
+            />
+          </div>
+        ) : (
+          <>
+            {work.thumbnail ? (
+              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            {work.streamId && (
+              <button
+                onClick={() => setPlaying(true)}
+                className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+              </button>
+            )}
+          </>
+        )}
       </div>
+      <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">
+        {work.location} — {work.year}
+      </p>
+      <h4 className="text-base font-light text-white/70" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+        {work.title} {work.subtitle && <span className="text-white/40 italic">{work.subtitle}</span>}
+      </h4>
     </motion.div>
   );
 }
+
+// Old WorkCard removed — replaced by LatestWorkCard + PastWorkCard above
 
 // ============================================================
 // TALENT / RIN
