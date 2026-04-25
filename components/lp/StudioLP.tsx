@@ -12,8 +12,8 @@ import { Volume2, VolumeX } from 'lucide-react';
 // ============================================================
 const LP_MEDIA_BASE = 'https://lufis.net/vual';
 
-// Hero video — Eclipse on Cloudflare Stream
-const HERO_STREAM_ID = 'ddbec5f627e61b18df34e561e0b81bcb';
+// Hero video — Naica Mine on Cloudflare Stream
+const HERO_STREAM_ID = '6ff799cd8547ed733d84ae06e3dc70e2';
 
 // ============================================================
 // Locale content
@@ -78,19 +78,28 @@ const CONTENT = {
 // ============================================================
 // Latest work — displayed full-width at the top of Selected Works
 const LATEST_WORK = {
-  id: 'eclipse',
-  title: 'Eclipse',
-  subtitle: '聖域の終焉',
-  location: 'Inspired by Mont Saint-Michel, France',
+  id: 'naica-mine',
+  title: '[ DATA_LOG ]',
+  subtitle: '',
+  location: 'Naica Mine, Chihuahua, Mexico',
   year: '2026',
-  concept: 'The water doesn\'t purify her; she consumes it.\nStealing a millennium of devotion in a single breath.\nThe sanctuary dies, so the Muse can reign.',
-  conceptJa: '聖水が彼女を浄化するのではない。彼女がそれを飲み込むのだ。\nその一歩が、1000年の祈りを一瞬にして奪い去る。\n聖域は死に、ミューズが君臨する。',
-  thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ddbec5f627e61b18df34e561e0b81bcb/thumbnails/thumbnail.jpg?time=40s&width=1280',
-  streamId: 'ddbec5f627e61b18df34e561e0b81bcb',
+  concept: 'LOCATION : NAICA MINE, CHIHUAHUA, MEXICO.\nENVIRONMENT : 50°C / 100% HUMIDITY.\nARCHIVE : BALENCIAGA A/W 2005.',
+  conceptJa: 'LOCATION : NAICA MINE, CHIHUAHUA, MEXICO.\nENVIRONMENT : 50°C / 100% HUMIDITY.\nARCHIVE : BALENCIAGA A/W 2005.',
+  thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/6ff799cd8547ed733d84ae06e3dc70e2/thumbnails/thumbnail.jpg?time=30s&width=1280',
+  streamId: '6ff799cd8547ed733d84ae06e3dc70e2',
 };
 
 // Past works — displayed as grid below
 const PAST_WORKS = [
+  {
+    id: 'eclipse',
+    title: 'Eclipse',
+    subtitle: '聖域の終焉',
+    location: 'Inspired by Mont Saint-Michel, France',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ddbec5f627e61b18df34e561e0b81bcb/thumbnails/thumbnail.jpg?time=40s&width=1280',
+    streamId: 'ddbec5f627e61b18df34e561e0b81bcb',
+  },
   {
     id: 'shattered-utopia-vol1',
     title: 'The Shattered Utopia',
