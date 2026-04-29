@@ -28,7 +28,7 @@ const CONTENT = {
       sectionLabel: 'Selected Works',
     },
     talent: {
-      sectionLabel: 'Talent',
+      sectionLabel: 'Entity_01',
     },
     capabilities: {
       sectionLabel: 'Capabilities',
@@ -36,7 +36,7 @@ const CONTENT = {
         'Art Direction',
         'Cinematic Video Production',
         'High-End Fashion Photography',
-        'Talent Casting & Management',
+        'Entity Design & Management',
       ],
     },
     contact: {
@@ -54,7 +54,7 @@ const CONTENT = {
       sectionLabel: 'Selected Works',
     },
     talent: {
-      sectionLabel: 'Talent',
+      sectionLabel: 'Entity_01',
     },
     capabilities: {
       sectionLabel: 'Capabilities',
@@ -62,7 +62,7 @@ const CONTENT = {
         'Art Direction',
         'Cinematic Video Production',
         'High-End Fashion Photography',
-        'Talent Casting & Management',
+        'Entity Design & Management',
       ],
     },
     contact: {
@@ -127,16 +127,12 @@ const TALENT = {
   name: 'RIN',
   height: '175cm',
   measurements: 'B80 / W59 / H86',
-  images: {
-    editorial: [
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/01.jpg',
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/02.jpg',
-    ],
-    offshot: [
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/03.jpg',
-      'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/rin/04.png',
-    ],
-  },
+  images: [
+    { src: 'https://lufis.net/vual/entity/01.jpg', logRight: '[ SYNC: //unverified.vual.jp ]' },
+    { src: 'https://lufis.net/vual/entity/02.jpg', logRight: '[ MNT: //unverified.vual.jp/dump/ ]' },
+    { src: 'https://lufis.net/vual/entity/03.jpg', logRight: '[ NODE: unverified.vual.jp ]' },
+    { src: 'https://lufis.net/vual/entity/04.jpg', logRight: '[ OUT: //unverified.vual.jp ]' },
+  ],
 };
 
 // ============================================================
@@ -526,23 +522,36 @@ function TalentSection({ locale }: { locale: string }) {
           {/* Right: Photo grid */}
           <motion.div variants={fadeUp} className="col-span-1 md:col-span-8">
             <div className="grid grid-cols-2 gap-3">
-              {[...TALENT.images.editorial, ...TALENT.images.offshot].length > 0 ? (
-                [...TALENT.images.editorial, ...TALENT.images.offshot].map((src, i) => (
-                  <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-sm">
-                    <img
-                      src={src}
-                      alt={`${TALENT.name} ${i + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                ))
-              ) : (
-                <>
-                  {[0, 1, 2, 3].map((i) => (
-                    <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-sm bg-white/5" />
-                  ))}
-                </>
-              )}
+              {TALENT.images.map((item, i) => (
+                <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-sm">
+                  <img
+                    src={item.src}
+                    alt={`${TALENT.name} ${i + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  {/* Hidden log link — blends with existing log bar */}
+                  <a
+                    href="https://unverified.vual.jp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      position: 'absolute',
+                      bottom: '2.8%',
+                      right: '3%',
+                      fontFamily: "'SF Mono', 'Menlo', 'Consolas', monospace",
+                      fontSize: '7px',
+                      letterSpacing: '0.5px',
+                      color: 'rgba(255,255,255,0.55)',
+                      textDecoration: 'none',
+                      pointerEvents: 'auto',
+                      zIndex: 10,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {item.logRight}
+                  </a>
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
