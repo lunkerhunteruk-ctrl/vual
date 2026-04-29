@@ -128,10 +128,10 @@ const TALENT = {
   height: '175cm',
   measurements: 'B80 / W59 / H86',
   images: [
-    { src: 'https://lufis.net/vual/entity/01.jpg', logRight: '[ SYNC: //unverified.vual.jp ]' },
-    { src: 'https://lufis.net/vual/entity/02.jpg', logRight: '[ MNT: //unverified.vual.jp/dump/ ]' },
-    { src: 'https://lufis.net/vual/entity/03.jpg', logRight: '[ NODE: unverified.vual.jp ]' },
-    { src: 'https://lufis.net/vual/entity/04.jpg', logRight: '[ OUT: //unverified.vual.jp ]' },
+    { src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/entity/01.jpg', logRight: '[ SYNC: //unverified.vual.jp ]' },
+    { src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/entity/02.jpg', logRight: '[ MNT: //unverified.vual.jp/dump/ ]' },
+    { src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/entity/03.jpg', logRight: '[ NODE: unverified.vual.jp ]' },
+    { src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/lp/entity/04.jpg', logRight: '[ OUT: //unverified.vual.jp ]' },
   ],
 };
 
