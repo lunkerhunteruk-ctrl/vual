@@ -14,8 +14,8 @@ export default function DailyPage() {
         fontFamily: "'JetBrains Mono', 'SF Mono', 'Courier New', monospace",
       }}
     >
-      {/* Theme toggle — fixed bottom left */}
-      <div className="fixed bottom-5 left-5 z-50">
+      {/* Theme toggle — fixed bottom center */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <ThemeToggle />
       </div>
 
