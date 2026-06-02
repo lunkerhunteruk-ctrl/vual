@@ -50,11 +50,19 @@ export async function POST(request: NextRequest) {
     }
     const recipeBase = lookMatch[1] + '-recipe';
 
-    const promptBuf = await fetchR2File(`${recipeBase}/prompt.txt`);
-    if (!promptBuf) {
-      return NextResponse.json({ success: false, error: `Recipe not found: ${recipeBase}` }, { status: 404 });
+    // Read recipe: try recipe.json first, fallback to prompt.txt for legacy
+    let basePrompt: string;
+    const recipeBuf = await fetchR2File(`${recipeBase}/recipe.json`);
+    if (recipeBuf) {
+      const recipe = JSON.parse(recipeBuf.toString('utf-8'));
+      basePrompt = recipe.prompt || '';
+    } else {
+      const promptBuf = await fetchR2File(`${recipeBase}/prompt.txt`);
+      if (!promptBuf) {
+        return NextResponse.json({ success: false, error: `Recipe not found: ${recipeBase}` }, { status: 404 });
+      }
+      basePrompt = promptBuf.toString('utf-8');
     }
-    const basePrompt = promptBuf.toString('utf-8');
     const prompt = `The model is ${modelHeight}cm tall with a slim build.\n${basePrompt}`;
 
     const imageParts: any[] = [];
