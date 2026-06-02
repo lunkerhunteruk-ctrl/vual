@@ -62,7 +62,7 @@ export function CreditSheet({ open, onClose }: CreditSheetProps) {
             GET CREDITS
           </h2>
           <p className="text-[10px] tracking-[2px] text-white/30 font-light">
-            1 credit = 1 IMPLANT generation
+            1 credit = 1 generation
           </p>
         </div>
 

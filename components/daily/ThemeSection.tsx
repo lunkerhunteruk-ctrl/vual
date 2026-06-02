@@ -69,7 +69,7 @@ export function ThemeSection({ theme, isLatest, hasRecipe, onImageClick, onVideo
                   border: "1px solid var(--vault-cyan-dim)",
                 }}
               >
-                INJECT
+                TRY ON
               </span>
             )}
           </div>

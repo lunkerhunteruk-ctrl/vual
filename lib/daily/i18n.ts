@@ -1,7 +1,7 @@
 const dict = {
   // AuthModal
   "auth.subtitle": { ja: "メンバー登録で5回無料生成", en: "Sign up for 5 free generations" },
-  "auth.benefit1": { ja: "5回無料で IMPLANT 生成", en: "5 free IMPLANT generations" },
+  "auth.benefit1": { ja: "5回無料で試着生成", en: "5 free try-on generations" },
   "auth.benefit2": { ja: "高解像度エクスポート", en: "High-resolution export" },
   "auth.benefit3": { ja: "生成履歴の管理", en: "Generation history" },
   "auth.signInButton": { ja: "GOOGLE でサインイン", en: "SIGN IN WITH GOOGLE" },
@@ -21,7 +21,7 @@ const dict = {
   "billing.noCredits": { ja: "クレジットが不足しています", en: "No credits remaining" },
 
   // Grid
-  "grid.tryOn": { ja: "INJECT", en: "INJECT" },
+  "grid.tryOn": { ja: "TRY ON", en: "TRY ON" },
 
   // ImplantModal - camera
   "implant.selfie": { ja: "📸 セルフィーを撮る", en: "📸 TAKE A SELFIE" },

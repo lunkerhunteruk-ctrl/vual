@@ -23,10 +23,10 @@ interface ImplantModalProps {
 type ModalState = "select" | "implanting" | "result";
 
 const INJECT_STEPS = [
-  "EXTRACTING DNA",
-  "INJECTING INTO SCENE",
-  "FUSING LAYERS",
-  "SEALING OUTPUT",
+  "ANALYZING",
+  "STYLING",
+  "COMPOSING",
+  "FINALIZING",
 ];
 
 export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }: ImplantModalProps) {
@@ -298,13 +298,13 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                 {userPhoto ? (
                   <div className="relative z-10">
                     <p className="text-[14px] tracking-[8px] font-light" style={{ color: "var(--vault-cyan)" }}>
-                      INJECTING DNA
+                      PROCESSING
                     </p>
                   </div>
                 ) : (
                   <p className="relative z-10 text-[12px] tracking-[6px] font-light inject-flicker"
                      style={{ color: "var(--vault-cyan)" }}>
-                    INJECTING
+                    PROCESSING
                   </p>
                 )}
               </div>
@@ -336,10 +336,10 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                   <div className="flex-1" />
                   <div className="flex items-center gap-3">
                     {sceneCorrupted ? (
-                      <span className="text-[9px] tracking-[2px] font-light text-red-500/50">SCENE CORRUPTED</span>
+                      <span className="text-[9px] tracking-[2px] font-light text-red-500/50">SOLD OUT</span>
                     ) : (
                       <>
-                        <span className="text-[9px] tracking-[2px] font-light text-white/20">INJECTIONS REMAINING</span>
+                        <span className="text-[9px] tracking-[2px] font-light text-white/20">TRIES LEFT</span>
                         <span className="text-[24px] font-light tabular-nums" style={{ color: "var(--vault-cyan)", opacity: 0.6 }}>
                           {sceneRemaining ?? "—"}
                         </span>
@@ -425,13 +425,13 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
 
                 {sceneCorrupted ? (
                   <div className="w-full py-4 text-center">
-                    <p className="text-[13px] tracking-[6px] font-light text-red-500/60">SCENE CORRUPTED</p>
-                    <p className="text-[9px] tracking-[2px] text-white/15 font-light mt-2">THIS SCENE HAS REACHED CAPACITY</p>
+                    <p className="text-[13px] tracking-[6px] font-light text-red-500/60">SOLD OUT</p>
+                    <p className="text-[9px] tracking-[2px] text-white/15 font-light mt-2">THIS LOOK IS NO LONGER AVAILABLE</p>
                   </div>
                 ) : userPhoto ? (
                   <button onClick={handleImplant} className="w-full py-4 inject-warning-pulse transition-all duration-300 cursor-pointer" style={{ background: "linear-gradient(135deg, #cc2020 0%, #991010 100%)" }}>
                     <div className="pointer-events-none">
-                      <ShuffleText lines={["WARNING: READY TO INJECT YOUR DNA"]} startDelay={0} shuffleDuration={600} stagger={25} glowColor="#ff4444" fontSize="12px" letterSpacing="4px" />
+                      <ShuffleText lines={["READY TO TRY ON"]} startDelay={0} shuffleDuration={600} stagger={25} glowColor="#ff4444" fontSize="12px" letterSpacing="4px" />
                     </div>
                   </button>
                 ) : (
@@ -444,7 +444,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                       color: selectedEntity ? "#000" : "rgba(255,255,255,0.2)",
                     }}
                   >
-                    INJECT
+                    TRY ON
                   </button>
                 )}
               </>
@@ -459,7 +459,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                   onClick={() => { setResultUrl(null); setState("select"); }}
                   className="flex-1 py-3 text-[11px] tracking-[4px] font-light border border-white/10 hover:border-white/30 text-white/30 hover:text-white/50 transition-colors cursor-pointer"
                 >
-                  RE-INJECT
+                  RE-TRY
                 </button>
               </div>
             )}
