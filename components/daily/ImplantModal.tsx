@@ -146,10 +146,12 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
         setResultUrl(withEffects);
         incrementGeneration();
 
+        // Always decrement scene injection count
+        const lookId = lookFileToId(image.file);
+        const newRemaining = await decrementInjection(lookId);
+        setSceneRemaining(newRemaining);
+
         if (!isFreeGeneration) {
-          const lookId = lookFileToId(image.file);
-          const newRemaining = await decrementInjection(lookId);
-          setSceneRemaining(newRemaining);
           addPoints(10);
         }
 
@@ -360,7 +362,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                 </div>
 
                 <div className="relative">
-                  <p className="text-[10px] tracking-[4px] text-white/40 font-light mb-3">SELECT ENTITY</p>
+                  <p className="text-[10px] tracking-[4px] text-white/40 font-light mb-3">SELECT MODEL</p>
                   <div className="flex gap-2 overflow-x-auto pb-2 relative">
                     {entities.map((entity) => (
                       <button
