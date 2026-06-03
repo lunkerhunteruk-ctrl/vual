@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import type { VaultUser } from './auth';
 import { syncCreditsToFirestore, addPointsToFirestore } from './auth';
 
-const GUEST_FREE = 1;
+const GUEST_FREE = 3;
 const DAILY_FREE = 5;
 
 function todayStr(): string {
