@@ -190,11 +190,6 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
   };
 
   const handleExport = async () => {
-    if (!user) {
-      setShowAuth(true);
-      return;
-    }
-
     if (!resultUrl) return;
     try {
       const fileName = `vault-inject-${Date.now()}.jpg`;
