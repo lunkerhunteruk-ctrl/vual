@@ -132,6 +132,7 @@ export function UserBadge() {
               }}
               className="w-full text-left text-[10px] tracking-[2px] transition-colors font-light"
               style={{ color: "var(--vault-text-dim)" }}
+
             >
               SIGN OUT
             </button>
