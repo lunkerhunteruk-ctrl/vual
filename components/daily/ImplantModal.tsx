@@ -367,13 +367,9 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
                         key={entity.id}
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (previewEntity?.id === entity.id) {
-                            setSelectedEntity(entity);
-                            setUserPhoto(null);
-                            setPreviewEntity(null);
-                          } else {
-                            setPreviewEntity(entity);
-                          }
+                          setSelectedEntity(entity);
+                          setUserPhoto(null);
+                          setPreviewEntity(entity);
                         }}
                         onMouseEnter={() => { if (!("ontouchstart" in window)) setPreviewEntity(entity); }}
                         onMouseLeave={() => { if (!("ontouchstart" in window)) setPreviewEntity(null); }}
