@@ -262,65 +262,69 @@ function videoPlus8Layout(): PlacedCell[] {
 
 function videoPlus12Portrait(patternIndex: number): PlacedCell[] {
   const patterns: PlacedCell[][] = [
+    // Pattern A: video hero left (7×10 ≈ 3:4) + 3 small right, 3 equal, hero right + 2 small left, 3 equal
     [
-      { colStart: 1, colEnd: 8, rowStart: 1, rowEnd: 8 },
-      { colStart: 8, colEnd: 13, rowStart: 1, rowEnd: 4 },
-      { colStart: 8, colEnd: 13, rowStart: 4, rowEnd: 8 },
-      { colStart: 1, colEnd: 5, rowStart: 8, rowEnd: 13 },
-      { colStart: 5, colEnd: 9, rowStart: 8, rowEnd: 13 },
-      { colStart: 9, colEnd: 13, rowStart: 8, rowEnd: 13 },
-      { colStart: 1, colEnd: 5, rowStart: 13, rowEnd: 16 },
-      { colStart: 5, colEnd: 13, rowStart: 13, rowEnd: 20 },
-      { colStart: 1, colEnd: 5, rowStart: 16, rowEnd: 20 },
-      { colStart: 1, colEnd: 5, rowStart: 20, rowEnd: 25 },
-      { colStart: 5, colEnd: 9, rowStart: 20, rowEnd: 25 },
-      { colStart: 9, colEnd: 13, rowStart: 20, rowEnd: 25 },
-      { colStart: 1, colEnd: 13, rowStart: 25, rowEnd: 30 },
+      { colStart: 1, colEnd: 8, rowStart: 1, rowEnd: 10 },    // VIDEO 7×9 (≈3:4)
+      { colStart: 8, colEnd: 13, rowStart: 1, rowEnd: 4 },    // i1 5×3
+      { colStart: 8, colEnd: 13, rowStart: 4, rowEnd: 7 },    // i2 5×3
+      { colStart: 8, colEnd: 13, rowStart: 7, rowEnd: 10 },   // i3 5×3
+      { colStart: 1, colEnd: 5, rowStart: 10, rowEnd: 15 },   // i4 4×5
+      { colStart: 5, colEnd: 9, rowStart: 10, rowEnd: 15 },   // i5 4×5
+      { colStart: 9, colEnd: 13, rowStart: 10, rowEnd: 15 },  // i6 4×5
+      { colStart: 1, colEnd: 5, rowStart: 15, rowEnd: 18 },   // i7 4×3
+      { colStart: 5, colEnd: 13, rowStart: 15, rowEnd: 22 },  // i8 hero 8×7
+      { colStart: 1, colEnd: 5, rowStart: 18, rowEnd: 22 },   // i9 4×4
+      { colStart: 1, colEnd: 5, rowStart: 22, rowEnd: 27 },   // i10 4×5
+      { colStart: 5, colEnd: 9, rowStart: 22, rowEnd: 27 },   // i11 4×5
+      { colStart: 9, colEnd: 13, rowStart: 22, rowEnd: 27 },  // i12 4×5
     ],
+    // Pattern B: 3 equal, video hero (7×9) + 2 small, 4 equal, hero left + 2 small right, 2 equal bottom
     [
       { colStart: 1, colEnd: 5, rowStart: 1, rowEnd: 6 },
       { colStart: 5, colEnd: 9, rowStart: 1, rowEnd: 6 },
       { colStart: 9, colEnd: 13, rowStart: 1, rowEnd: 6 },
-      { colStart: 1, colEnd: 8, rowStart: 6, rowEnd: 13 },
+      { colStart: 1, colEnd: 8, rowStart: 6, rowEnd: 15 },    // VIDEO 7×9
       { colStart: 8, colEnd: 13, rowStart: 6, rowEnd: 10 },
-      { colStart: 8, colEnd: 13, rowStart: 10, rowEnd: 13 },
-      { colStart: 1, colEnd: 4, rowStart: 13, rowEnd: 17 },
-      { colStart: 4, colEnd: 7, rowStart: 13, rowEnd: 17 },
-      { colStart: 7, colEnd: 10, rowStart: 13, rowEnd: 17 },
-      { colStart: 10, colEnd: 13, rowStart: 13, rowEnd: 17 },
-      { colStart: 1, colEnd: 7, rowStart: 17, rowEnd: 23 },
-      { colStart: 7, colEnd: 13, rowStart: 17, rowEnd: 20 },
-      { colStart: 7, colEnd: 13, rowStart: 20, rowEnd: 23 },
+      { colStart: 8, colEnd: 13, rowStart: 10, rowEnd: 15 },
+      { colStart: 1, colEnd: 4, rowStart: 15, rowEnd: 19 },
+      { colStart: 4, colEnd: 7, rowStart: 15, rowEnd: 19 },
+      { colStart: 7, colEnd: 10, rowStart: 15, rowEnd: 19 },
+      { colStart: 10, colEnd: 13, rowStart: 15, rowEnd: 19 },
+      { colStart: 1, colEnd: 7, rowStart: 19, rowEnd: 25 },   // i10 hero 6×6
+      { colStart: 7, colEnd: 13, rowStart: 19, rowEnd: 22 },  // i11 6×3
+      { colStart: 7, colEnd: 13, rowStart: 22, rowEnd: 25 },  // i12 6×3
     ],
+    // Pattern C: full video (12×8 ≈ 3:2 crop acceptable for full-width), 4 equal, 2 hero, 3 equal, 2 equal
     [
-      { colStart: 1, colEnd: 13, rowStart: 1, rowEnd: 6 },
-      { colStart: 1, colEnd: 4, rowStart: 6, rowEnd: 10 },
-      { colStart: 4, colEnd: 7, rowStart: 6, rowEnd: 10 },
-      { colStart: 7, colEnd: 10, rowStart: 6, rowEnd: 10 },
-      { colStart: 10, colEnd: 13, rowStart: 6, rowEnd: 10 },
-      { colStart: 1, colEnd: 7, rowStart: 10, rowEnd: 17 },
-      { colStart: 7, colEnd: 13, rowStart: 10, rowEnd: 17 },
-      { colStart: 1, colEnd: 5, rowStart: 17, rowEnd: 22 },
-      { colStart: 5, colEnd: 9, rowStart: 17, rowEnd: 22 },
-      { colStart: 9, colEnd: 13, rowStart: 17, rowEnd: 22 },
-      { colStart: 1, colEnd: 7, rowStart: 22, rowEnd: 27 },
-      { colStart: 7, colEnd: 13, rowStart: 22, rowEnd: 27 },
-      { colStart: 1, colEnd: 13, rowStart: 27, rowEnd: 32 },
+      { colStart: 1, colEnd: 13, rowStart: 1, rowEnd: 8 },    // VIDEO full 12×7
+      { colStart: 1, colEnd: 4, rowStart: 8, rowEnd: 12 },
+      { colStart: 4, colEnd: 7, rowStart: 8, rowEnd: 12 },
+      { colStart: 7, colEnd: 10, rowStart: 8, rowEnd: 12 },
+      { colStart: 10, colEnd: 13, rowStart: 8, rowEnd: 12 },
+      { colStart: 1, colEnd: 7, rowStart: 12, rowEnd: 19 },
+      { colStart: 7, colEnd: 13, rowStart: 12, rowEnd: 19 },
+      { colStart: 1, colEnd: 5, rowStart: 19, rowEnd: 24 },
+      { colStart: 5, colEnd: 9, rowStart: 19, rowEnd: 24 },
+      { colStart: 9, colEnd: 13, rowStart: 19, rowEnd: 24 },
+      { colStart: 1, colEnd: 7, rowStart: 24, rowEnd: 29 },
+      { colStart: 7, colEnd: 13, rowStart: 24, rowEnd: 29 },
+      { colStart: 1, colEnd: 13, rowStart: 29, rowEnd: 34 },
     ],
+    // Pattern D: 2 hero top, video (8×9 ≈ 3:4) + 2 small, 3 equal, full wide, 3 equal
     [
       { colStart: 1, colEnd: 7, rowStart: 1, rowEnd: 8 },
       { colStart: 7, colEnd: 13, rowStart: 1, rowEnd: 8 },
       { colStart: 1, colEnd: 5, rowStart: 8, rowEnd: 12 },
-      { colStart: 5, colEnd: 13, rowStart: 8, rowEnd: 15 },
-      { colStart: 1, colEnd: 5, rowStart: 12, rowEnd: 15 },
-      { colStart: 1, colEnd: 5, rowStart: 15, rowEnd: 20 },
-      { colStart: 5, colEnd: 9, rowStart: 15, rowEnd: 20 },
-      { colStart: 9, colEnd: 13, rowStart: 15, rowEnd: 20 },
-      { colStart: 1, colEnd: 13, rowStart: 20, rowEnd: 24 },
-      { colStart: 1, colEnd: 5, rowStart: 24, rowEnd: 29 },
-      { colStart: 5, colEnd: 9, rowStart: 24, rowEnd: 29 },
-      { colStart: 9, colEnd: 13, rowStart: 24, rowEnd: 29 },
-      { colStart: 1, colEnd: 13, rowStart: 29, rowEnd: 34 },
+      { colStart: 5, colEnd: 13, rowStart: 8, rowEnd: 17 },   // VIDEO 8×9 (≈3:4)
+      { colStart: 1, colEnd: 5, rowStart: 12, rowEnd: 17 },
+      { colStart: 1, colEnd: 5, rowStart: 17, rowEnd: 22 },
+      { colStart: 5, colEnd: 9, rowStart: 17, rowEnd: 22 },
+      { colStart: 9, colEnd: 13, rowStart: 17, rowEnd: 22 },
+      { colStart: 1, colEnd: 13, rowStart: 22, rowEnd: 26 },
+      { colStart: 1, colEnd: 5, rowStart: 26, rowEnd: 31 },
+      { colStart: 5, colEnd: 9, rowStart: 26, rowEnd: 31 },
+      { colStart: 9, colEnd: 13, rowStart: 26, rowEnd: 31 },
+      { colStart: 1, colEnd: 13, rowStart: 31, rowEnd: 36 },
     ],
   ];
   return patterns[patternIndex % patterns.length];
