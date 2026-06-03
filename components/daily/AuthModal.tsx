@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signInWithGoogle } from "@/lib/daily/auth";
 import { useVaultStore } from "@/lib/daily/store";
 import { t } from "@/lib/daily/i18n";
@@ -14,7 +14,18 @@ interface AuthModalProps {
 export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isLight, setIsLight] = useState(false);
   const setUser = useVaultStore((s) => s.setUser);
+
+  useEffect(() => {
+    const wrapper = document.querySelector(".daily-vault");
+    setIsLight(wrapper?.getAttribute("data-theme") === "light");
+    const observer = new MutationObserver(() => {
+      setIsLight(wrapper?.getAttribute("data-theme") === "light");
+    });
+    if (wrapper) observer.observe(wrapper, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 
   if (!open) return null;
 
@@ -35,22 +46,33 @@ export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
     }
   };
 
+  const bg = isLight ? "#f5f3ef" : "#0d0d0d";
+  const borderCol = isLight ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.1)";
+  const title = isLight ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.9)";
+  const sub = isLight ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.4)";
+  const benefit = isLight ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.5)";
+  const accent = isLight ? "#c9a84c" : "#00d4ff";
+  const closeCol = isLight ? "rgba(0,0,0,0.2)" : "rgba(255,255,255,0.2)";
+  const closeHover = isLight ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.4)";
+  const backdrop = isLight ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0.7)";
+
   return (
     <div
       className="fixed inset-0 z-[60] flex items-center justify-center"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 backdrop-blur-sm" style={{ background: backdrop }} />
 
       <div
-        className="relative w-full max-w-sm mx-6 bg-[#0d0d0d] border border-white/10 rounded-2xl p-8 space-y-6"
+        className="relative w-full max-w-sm mx-6 rounded-2xl p-8 space-y-6"
+        style={{ background: bg, border: `1px solid ${borderCol}` }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-center space-y-2">
-          <h2 className="text-[18px] tracking-[6px] font-light text-white/90">
+          <h2 className="text-[18px] tracking-[6px] font-light" style={{ color: title }}>
             JOIN VAULT
           </h2>
-          <p className="text-[11px] tracking-[2px] text-white/40 font-light leading-relaxed">
+          <p className="text-[11px] tracking-[2px] font-light leading-relaxed" style={{ color: sub }}>
             {t("auth.subtitle")}
           </p>
         </div>
@@ -60,11 +82,11 @@ export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
             t("auth.benefit1"),
             t("auth.benefit2"),
             t("auth.benefit3"),
-          ].map((benefit) => (
-            <div key={benefit} className="flex items-center gap-3">
-              <span className="text-[var(--vault-cyan)] text-[10px]">+</span>
-              <span className="text-[11px] tracking-[1px] text-white/50 font-light">
-                {benefit}
+          ].map((b) => (
+            <div key={b} className="flex items-center gap-3">
+              <span className="text-[10px]" style={{ color: accent }}>+</span>
+              <span className="text-[11px] tracking-[1px] font-light" style={{ color: benefit }}>
+                {b}
               </span>
             </div>
           ))}
@@ -73,7 +95,11 @@ export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="w-full py-4 flex items-center justify-center gap-3 bg-white text-black rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50"
+          className="w-full py-4 flex items-center justify-center gap-3 rounded-lg transition-colors disabled:opacity-50"
+          style={{
+            background: isLight ? "#000" : "#fff",
+            color: isLight ? "#fff" : "#000",
+          }}
         >
           <svg width="18" height="18" viewBox="0 0 18 18">
             <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4" />
@@ -92,7 +118,10 @@ export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
 
         <button
           onClick={onClose}
-          className="w-full py-2 text-[10px] tracking-[3px] text-white/20 hover:text-white/40 transition-colors font-light"
+          className="w-full py-2 text-[10px] tracking-[3px] transition-colors font-light"
+          style={{ color: closeCol }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = closeHover; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = closeCol; }}
         >
           CLOSE
         </button>
