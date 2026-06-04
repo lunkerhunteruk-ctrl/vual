@@ -492,7 +492,7 @@ function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: st
       <motion.div
         ref={imgRef}
         variants={fadeIn}
-        className="relative aspect-video overflow-hidden rounded-sm mb-8"
+        className="group relative aspect-video overflow-hidden rounded-sm mb-8"
       >
         {work.streamId && playing ? (
           <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
@@ -509,18 +509,18 @@ function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: st
           <>
             <motion.div style={{ y }} className="absolute inset-0">
               {work.thumbnail ? (
-                <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+                <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
               )}
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/20" />
             {work.streamId && (
               <button
                 onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
+                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
               >
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+                <div className="gallery-zoom-btn w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
                   <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 md:w-10 md:h-10 ml-1">
                     <polygon points="5,3 19,12 5,21" />
                   </svg>
@@ -570,7 +570,7 @@ function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
       animate={inView ? 'visible' : 'hidden'}
       variants={fadeIn}
     >
-      <div className="relative aspect-video overflow-hidden rounded-sm mb-4">
+      <div className="group relative aspect-video overflow-hidden rounded-sm mb-4">
         {work.streamId && playing ? (
           <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
             <Stream
@@ -585,17 +585,17 @@ function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
         ) : (
           <>
             {work.thumbnail ? (
-              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
             ) : (
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/10" />
             {work.streamId && (
               <button
                 onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
+                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+                <div className="gallery-zoom-btn w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
                   <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
                     <polygon points="5,3 19,12 5,21" />
                   </svg>
@@ -632,13 +632,13 @@ function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpe
         className="relative aspect-[9/16] w-full overflow-hidden rounded-sm mb-3 block group cursor-pointer"
       >
         {work.thumbnail ? (
-          <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/20" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="shrink-0 aspect-square w-11 rounded-full border border-white/40 flex items-center justify-center bg-black/30 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+          <div className="gallery-zoom-btn shrink-0 aspect-square w-11 rounded-full border border-white/40 flex items-center justify-center bg-black/30 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/70">
             <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4 ml-0.5 shrink-0">
               <polygon points="5,3 19,12 5,21" />
             </svg>
