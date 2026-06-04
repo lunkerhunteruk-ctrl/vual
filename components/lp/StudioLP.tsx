@@ -28,7 +28,10 @@ const CONTENT = {
       sectionLabel: 'Selected Works',
     },
     talent: {
-      sectionLabel: 'Entity_01',
+      sectionLabel: 'Immersive Try-On',
+      heading: 'Step Into the World',
+      subtitle: 'Wear the story. Become the editorial.',
+      body: 'ECサイトでも、ブランドのイメージサイトでも。\n一瞬で埋め込んで、これまでにない全く新しい体験を顧客に。',
     },
     capabilities: {
       sectionLabel: 'Capabilities',
@@ -36,7 +39,7 @@ const CONTENT = {
         'Art Direction',
         'Cinematic Video Production',
         'High-End Fashion Photography',
-        'Entity Design & Management',
+        'Immersive Virtual Try-On',
       ],
     },
     contact: {
@@ -54,7 +57,10 @@ const CONTENT = {
       sectionLabel: 'Selected Works',
     },
     talent: {
-      sectionLabel: 'Entity_01',
+      sectionLabel: 'Immersive Try-On',
+      heading: 'Step Into the World',
+      subtitle: 'Wear the story. Become the editorial.',
+      body: 'From e-commerce to brand storefronts — embed it in an instant and give your audience an entirely new way to experience your collection.',
     },
     capabilities: {
       sectionLabel: 'Capabilities',
@@ -62,7 +68,7 @@ const CONTENT = {
         'Art Direction',
         'Cinematic Video Production',
         'High-End Fashion Photography',
-        'Entity Design & Management',
+        'Immersive Virtual Try-On',
       ],
     },
     contact: {
@@ -122,7 +128,7 @@ const PAST_WORKS = [
     id: 'cern',
     title: 'CERN',
     subtitle: '',
-    location: 'CERN',
+    location: 'CERN, Geneva, Switzerland',
     year: '2026',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/3cee1988832aa59aa8ad52c945f0b323/thumbnails/thumbnail.jpg?time=5s&width=1280',
     streamId: '3cee1988832aa59aa8ad52c945f0b323',
@@ -194,13 +200,39 @@ const TALENT = {
   name: 'RIN',
   height: '175cm',
   measurements: 'B80 / W59 / H86',
+  // Up to 6 images for the Mondrian grid (cells 5 & 6 fall back to a placeholder
+  // until the final 6-look set is supplied). Order matches TALENT_CELLS.
   images: [
-    { src: 'https://lufis.net/vual/entity/01.jpg', logRight: '[ SYNC: //unverified.vual.jp ]' },
-    { src: 'https://lufis.net/vual/entity/02.jpg', logRight: '[ MNT: //unverified.vual.jp/dump/ ]' },
-    { src: 'https://lufis.net/vual/entity/03.jpg', logRight: '[ NODE: unverified.vual.jp ]' },
-    { src: 'https://lufis.net/vual/entity/04.jpg', logRight: '[ OUT: //unverified.vual.jp ]' },
+    { src: 'https://lufis.net/vual/entity/01.jpg' },
+    { src: 'https://lufis.net/vual/entity/02.jpg' },
+    { src: 'https://lufis.net/vual/entity/03.jpg' },
+    { src: 'https://lufis.net/vual/entity/04.jpg' },
   ],
 };
+
+// Staggered Mondrian cell placements (same layout as the demo Experience grid).
+// 12-col grid, row height = 1 col width * 4/3. Order: 16:9, 9:16, 4:3, 1:1, 3:4, 3:4.
+const TALENT_CELLS = [
+  { colStart: 6, colEnd: 11, rowStart: 1, rowEnd: 3 },
+  { colStart: 8, colEnd: 13, rowStart: 3, rowEnd: 9 },
+  { colStart: 1, colEnd: 8, rowStart: 5, rowEnd: 9 },
+  { colStart: 1, colEnd: 6, rowStart: 1, rowEnd: 5 },
+  { colStart: 11, colEnd: 13, rowStart: 1, rowEnd: 3 },
+  { colStart: 6, colEnd: 8, rowStart: 3, rowEnd: 5 },
+];
+
+// Per-cell independent Ken Burns (zoom + pan, ping-pong), seeded by index.
+const TALENT_KB_DIRS = ['kenBurnsTL', 'kenBurnsTR', 'kenBurnsBL', 'kenBurnsBR'];
+function talentKenBurns(i: number): React.CSSProperties {
+  const dir = TALENT_KB_DIRS[i % TALENT_KB_DIRS.length];
+  const duration = 14 + ((i * 5) % 9);
+  const offset = -((i * 3.3) % duration);
+  const direction = i % 2 === 0 ? 'alternate-reverse' : 'alternate';
+  return {
+    animation: `${dir} ${duration}s ease-in-out ${offset}s infinite ${direction}`,
+    willChange: 'transform',
+  };
+}
 
 // ============================================================
 // Animation variants
@@ -384,7 +416,7 @@ function WorksSection({ locale }: { locale: string }) {
 
   return (
     <section className="relative py-24 md:py-40">
-      <div className="px-6 md:px-16 max-w-7xl mx-auto">
+      <div className="mx-auto" style={{ paddingLeft: 'clamp(2rem, 16vw, 24rem)', paddingRight: 'clamp(2rem, 16vw, 24rem)' }}>
         <SectionLabel>{t.works.sectionLabel}</SectionLabel>
 
         {/* Latest work — full width */}
@@ -637,10 +669,11 @@ function TalentSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const [tryonOpen, setTryonOpen] = useState(false);
 
   return (
     <section className="relative py-24 md:py-40">
-      <div className="px-6 md:px-16 max-w-7xl mx-auto">
+      <div className="mx-auto" style={{ paddingLeft: 'clamp(2rem, 16vw, 24rem)', paddingRight: 'clamp(2rem, 16vw, 24rem)' }}>
         <SectionLabel>{t.talent.sectionLabel}</SectionLabel>
 
         <motion.div
@@ -650,58 +683,103 @@ function TalentSection({ locale }: { locale: string }) {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
         >
-          {/* Left: Name & stats */}
+          {/* Left: Title & description */}
           <div className="col-span-1 md:col-span-4">
             <motion.h3
               variants={fadeUp}
-              className="text-6xl md:text-8xl font-light text-white/90 mb-8"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic' }}
+              className="text-4xl md:text-6xl font-light text-white/90 mb-5 leading-[1.1]"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
-              {TALENT.name}
+              {t.talent.heading}
             </motion.h3>
-            <motion.div variants={fadeUp} className="space-y-2 text-[11px] tracking-[0.2em] text-white/30 uppercase">
-              <p>{TALENT.height}</p>
-              <p>{TALENT.measurements}</p>
-            </motion.div>
+            <motion.p
+              variants={fadeUp}
+              className="text-lg md:text-xl font-light italic text-white/55 mb-8"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            >
+              {t.talent.subtitle}
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="text-sm leading-[1.9] text-white/40 max-w-sm whitespace-pre-line"
+              style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
+            >
+              {t.talent.body}
+            </motion.p>
           </div>
 
-          {/* Right: Photo grid */}
+          {/* Right: Mondrian photo grid */}
           <motion.div variants={fadeUp} className="col-span-1 md:col-span-8">
-            <div className="grid grid-cols-2 gap-3">
-              {TALENT.images.map((item, i) => (
-                <div key={i} className="relative aspect-[3/4] overflow-hidden rounded-sm">
-                  <img
-                    src={item.src}
-                    alt={`${TALENT.name} ${i + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  {/* Hidden log link — blends with existing log bar */}
-                  <a
-                    href="https://unverified.vual.jp"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <div
+              className="grid w-full"
+              style={{
+                gap: '4px',
+                gridTemplateColumns: 'repeat(12, 1fr)',
+                gridTemplateRows: 'repeat(8, 1fr)',
+                // height = 8 rows where each row = (width/12)*4/3  →  width * 8*4/(12*3)
+                aspectRatio: '12 / 10.667',
+              }}
+            >
+              {TALENT_CELLS.map((cell, i) => {
+                const item = TALENT.images[i];
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setTryonOpen(true)}
+                    className="relative overflow-hidden rounded-sm group cursor-pointer"
                     style={{
-                      position: 'absolute',
-                      bottom: '2.8%',
-                      right: '3%',
-                      fontFamily: "'SF Mono', 'Menlo', 'Consolas', monospace",
-                      fontSize: '7px',
-                      letterSpacing: '0.5px',
-                      color: 'rgba(255,255,255,0.55)',
-                      textDecoration: 'none',
-                      pointerEvents: 'auto',
-                      zIndex: 10,
-                      whiteSpace: 'nowrap',
+                      gridColumn: `${cell.colStart} / ${cell.colEnd}`,
+                      gridRow: `${cell.rowStart} / ${cell.rowEnd}`,
                     }}
                   >
-                    {item.logRight}
-                  </a>
-                </div>
-              ))}
+                    {item ? (
+                      <img
+                        src={item.src}
+                        alt={`${TALENT.name} ${i + 1}`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        style={talentKenBurns(i)}
+                      />
+                    ) : (
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: 'linear-gradient(135deg, #1a1626 0%, #0d0a12 100%)', ...talentKenBurns(i) }}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-[9px] tracking-[0.3em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 px-3 py-1.5">
+                        Try On
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Try-on modal */}
+      {tryonOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setTryonOpen(false)}
+        >
+          <button
+            onClick={() => setTryonOpen(false)}
+            className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <div
+            className="relative bg-black rounded-sm overflow-hidden"
+            style={{ height: 'min(90vh, calc(92vw * 16 / 9))', width: 'min(calc(90vh * 9 / 16), 92vw)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe src="/tryon?look=entity/look1&city=VAULT" style={{ width: '100%', height: '100%', border: 'none' }} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -839,6 +917,14 @@ function LanguageToggle() {
 // ============================================================
 export function StudioLP() {
   const locale = useLocale();
+
+  // Always open at the top (the fullscreen hero), ignoring browser scroll restoration.
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="studio-lp relative bg-[#0d0a12] text-white selection:bg-white/20">
