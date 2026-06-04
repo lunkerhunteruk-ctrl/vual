@@ -380,6 +380,7 @@ function WorksSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const latestRef = useRef(null);
   const latestInView = useInView(latestRef, { once: true, margin: '-100px' });
+  const [activeReel, setActiveReel] = useState<typeof REELS_WORKS[0] | null>(null);
 
   return (
     <section className="relative py-24 md:py-40">
@@ -413,12 +414,35 @@ function WorksSection({ locale }: { locale: string }) {
         <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8 mt-24 md:mt-40">
           Reels — Vertical
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+        <div className="grid grid-cols-5 gap-2 md:gap-4">
           {REELS_WORKS.map((work) => (
-            <VerticalWorkCard key={work.id} work={work} />
+            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveReel(work)} />
           ))}
         </div>
       </div>
+
+      {/* Reel fullscreen modal */}
+      {activeReel && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setActiveReel(null)}
+        >
+          <button
+            onClick={() => setActiveReel(null)}
+            className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <div
+            className="relative bg-black rounded-sm overflow-hidden works-stream-container"
+            style={{ height: 'min(85vh, calc(95vw * 16 / 9))', width: 'min(calc(85vh * 9 / 16), 95vw)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Stream src={activeReel.streamId} autoplay controls muted={false} loop={false} responsive={false} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -559,9 +583,8 @@ function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
   );
 }
 
-// Vertical (9:16) reel card — for Instagram-format works
-function VerticalWorkCard({ work }: { work: typeof REELS_WORKS[0] }) {
-  const [playing, setPlaying] = useState(false);
+// Vertical (9:16) reel card — clickable thumbnail; playback opens a fullscreen modal
+function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpen: () => void }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-50px' });
 
@@ -572,41 +595,24 @@ function VerticalWorkCard({ work }: { work: typeof REELS_WORKS[0] }) {
       animate={inView ? 'visible' : 'hidden'}
       variants={fadeIn}
     >
-      <div className="relative aspect-[9/16] overflow-hidden rounded-sm mb-3">
-        {work.streamId && playing ? (
-          <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
-            <Stream
-              src={work.streamId}
-              autoplay
-              controls
-              muted={false}
-              loop={false}
-              responsive={false}
-            />
-          </div>
+      <button
+        onClick={onOpen}
+        className="relative aspect-[9/16] w-full overflow-hidden rounded-sm mb-3 block group cursor-pointer"
+      >
+        {work.thumbnail ? (
+          <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
         ) : (
-          <>
-            {work.thumbnail ? (
-              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            {work.streamId && (
-              <button
-                onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
-              >
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
-                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
-                    <polygon points="5,3 19,12 5,21" />
-                  </svg>
-                </div>
-              </button>
-            )}
-          </>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
         )}
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="shrink-0 aspect-square w-11 rounded-full border border-white/40 flex items-center justify-center bg-black/30 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+            <svg viewBox="0 0 24 24" fill="white" className="w-4 h-4 ml-0.5 shrink-0">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+          </div>
+        </div>
+      </button>
       <p className="text-[9px] tracking-[0.2em] uppercase text-white/30 mb-1">
         {work.location} — {work.year}
       </p>
