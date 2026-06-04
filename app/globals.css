@@ -45,6 +45,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: var(--letter-spacing-wide);
 }
 
+/* Studio LP heading color override lives in the component's <style jsx> block
+   (Tailwind v4 + Turbopack can drop raw rules that reference utility class names
+   from globals.css). See components/lp/StudioLP.tsx. */
+
 /* Links — only apply default color when no explicit color is set */
 a:where(:not([style*="color"])) {
   color: var(--color-title-active);

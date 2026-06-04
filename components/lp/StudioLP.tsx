@@ -13,7 +13,7 @@ import { Volume2, VolumeX } from 'lucide-react';
 const LP_MEDIA_BASE = 'https://lufis.net/vual';
 
 // Hero video — Naica Mine on Cloudflare Stream
-const HERO_STREAM_ID = '6ff799cd8547ed733d84ae06e3dc70e2';
+const HERO_STREAM_ID = 'ddbec5f627e61b18df34e561e0b81bcb'; // Eclipse — The End of Sanctuary
 
 // ============================================================
 // Locale content
@@ -78,15 +78,15 @@ const CONTENT = {
 // ============================================================
 // Latest work — displayed full-width at the top of Selected Works
 const LATEST_WORK = {
-  id: 'naica-mine',
-  title: '[ DATA_LOG ]',
+  id: 'galleria-borghese',
+  title: 'Galleria Borghese',
   subtitle: '',
-  location: 'Naica Mine, Chihuahua, Mexico',
+  location: 'Galleria Borghese, Rome',
   year: '2026',
-  concept: 'LOCATION : NAICA MINE, CHIHUAHUA, MEXICO.\nENVIRONMENT : 50°C / 100% HUMIDITY.\nARCHIVE : BALENCIAGA A/W 2005.',
-  conceptJa: 'LOCATION : NAICA MINE, CHIHUAHUA, MEXICO.\nENVIRONMENT : 50°C / 100% HUMIDITY.\nARCHIVE : BALENCIAGA A/W 2005.',
-  thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/6ff799cd8547ed733d84ae06e3dc70e2/thumbnails/thumbnail.jpg?time=30s&width=1280',
-  streamId: '6ff799cd8547ed733d84ae06e3dc70e2',
+  concept: '',
+  conceptJa: '',
+  thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/3741d143827003bb2e685515e084a7b4/thumbnails/thumbnail.jpg?time=5s&width=1280',
+  streamId: '3741d143827003bb2e685515e084a7b4',
 };
 
 // Past works — displayed as grid below
@@ -94,7 +94,7 @@ const PAST_WORKS = [
   {
     id: 'eclipse',
     title: 'Eclipse',
-    subtitle: '聖域の終焉',
+    subtitle: 'The End of Sanctuary',
     location: 'Inspired by Mont Saint-Michel, France',
     year: '2026',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ddbec5f627e61b18df34e561e0b81bcb/thumbnails/thumbnail.jpg?time=40s&width=1280',
@@ -105,7 +105,7 @@ const PAST_WORKS = [
     title: 'The Shattered Utopia',
     subtitle: 'Vol.1',
     location: 'Buzludzha, Bulgaria',
-    year: '2025',
+    year: '2026',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/368ea2f9115c8d848ce10f6a7e6f2868/thumbnails/thumbnail.jpg?time=15s&width=1280',
     streamId: '368ea2f9115c8d848ce10f6a7e6f2868',
   },
@@ -114,9 +114,76 @@ const PAST_WORKS = [
     title: 'The Shattered Utopia',
     subtitle: 'Vol.2',
     location: 'Buzludzha, Bulgaria',
-    year: '2025',
+    year: '2026',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/ad4459ed0dd133140df55ba6f8720509/thumbnails/thumbnail.jpg?time=22.5s&width=1280',
     streamId: 'ad4459ed0dd133140df55ba6f8720509',
+  },
+  {
+    id: 'cern',
+    title: 'CERN',
+    subtitle: '',
+    location: 'CERN',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/3cee1988832aa59aa8ad52c945f0b323/thumbnails/thumbnail.jpg?time=5s&width=1280',
+    streamId: '3cee1988832aa59aa8ad52c945f0b323',
+  },
+  {
+    id: 'naica-mine',
+    title: 'Naica Mine',
+    subtitle: '',
+    location: 'Naica Mine, Chihuahua, Mexico',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/6ff799cd8547ed733d84ae06e3dc70e2/thumbnails/thumbnail.jpg?time=30s&width=1280',
+    streamId: '6ff799cd8547ed733d84ae06e3dc70e2',
+  },
+];
+
+// Reels / vertical works — 9:16, displayed in a dedicated vertical grid
+const REELS_WORKS = [
+  {
+    id: 'galleria-borghese-cinema',
+    title: 'Galleria Borghese',
+    subtitle: 'Cinema',
+    location: 'Galleria Borghese, Rome',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/198dcebeb51d412961aff963c8052222/thumbnails/thumbnail.jpg?time=3s&height=1280',
+    streamId: '198dcebeb51d412961aff963c8052222',
+  },
+  {
+    id: 'maunsell-forts-catwalk',
+    title: 'Maunsell Forts',
+    subtitle: 'Catwalk',
+    location: 'Maunsell Forts, UK',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/8ca78e8b48e2b8090f974ff684fe5515/thumbnails/thumbnail.jpg?time=3s&height=1280',
+    streamId: '8ca78e8b48e2b8090f974ff684fe5515',
+  },
+  {
+    id: 'maunsell-forts-cinema',
+    title: 'Maunsell Forts',
+    subtitle: 'Cinema',
+    location: 'Maunsell Forts, UK',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/82c09d7465c242255ef10a5f0e352c1d/thumbnails/thumbnail.jpg?time=3s&height=1280',
+    streamId: '82c09d7465c242255ef10a5f0e352c1d',
+  },
+  {
+    id: 'shibuya-laundromat',
+    title: 'Shibuya Laundromat',
+    subtitle: 'Catwalk',
+    location: 'Shibuya, Tokyo',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/73f7ebc4c2b631e5fa56f49a19de01f8/thumbnails/thumbnail.jpg?time=3s&height=1280',
+    streamId: '73f7ebc4c2b631e5fa56f49a19de01f8',
+  },
+  {
+    id: 'cyber-neon',
+    title: 'Cyber Neon',
+    subtitle: 'Cinema',
+    location: 'Tokyo',
+    year: '2026',
+    thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/c0ed0a6f04f09505b37b5c45c37c006e/thumbnails/thumbnail.jpg?time=3s&height=1280',
+    streamId: 'c0ed0a6f04f09505b37b5c45c37c006e',
   },
 ];
 
@@ -341,6 +408,16 @@ function WorksSection({ locale }: { locale: string }) {
             <PastWorkCard key={work.id} work={work} />
           ))}
         </div>
+
+        {/* Reels / vertical works */}
+        <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8 mt-24 md:mt-40">
+          Reels — Vertical
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          {REELS_WORKS.map((work) => (
+            <VerticalWorkCard key={work.id} work={work} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -478,6 +555,69 @@ function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
       <h4 className="text-base font-light text-white/70" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
         {work.title} {work.subtitle && <span className="text-white/40 italic">{work.subtitle}</span>}
       </h4>
+    </motion.div>
+  );
+}
+
+// Vertical (9:16) reel card — for Instagram-format works
+function VerticalWorkCard({ work }: { work: typeof REELS_WORKS[0] }) {
+  const [playing, setPlaying] = useState(false);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={fadeIn}
+    >
+      <div className="relative aspect-[9/16] overflow-hidden rounded-sm mb-3">
+        {work.streamId && playing ? (
+          <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
+            <Stream
+              src={work.streamId}
+              autoplay
+              controls
+              muted={false}
+              loop={false}
+              responsive={false}
+            />
+          </div>
+        ) : (
+          <>
+            {work.thumbnail ? (
+              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover" />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            {work.streamId && (
+              <button
+                onClick={() => setPlaying(true)}
+                className="absolute inset-0 z-10 flex items-center justify-center group cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 transition-colors duration-300">
+                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+              </button>
+            )}
+          </>
+        )}
+      </div>
+      <p className="text-[9px] tracking-[0.2em] uppercase text-white/30 mb-1">
+        {work.location} — {work.year}
+      </p>
+      <h4 className="text-sm font-light text-white/70 leading-snug" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+        {work.title}
+      </h4>
+      {work.subtitle && (
+        <p className="text-xs italic text-white/40 mt-0.5" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+          {work.subtitle}
+        </p>
+      )}
     </motion.div>
   );
 }
@@ -695,7 +835,7 @@ export function StudioLP() {
   const locale = useLocale();
 
   return (
-    <div className="relative bg-[#0d0a12] text-white selection:bg-white/20">
+    <div className="studio-lp relative bg-[#0d0a12] text-white selection:bg-white/20">
       {/* Aurora background — fixed behind all content */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="slp-blob slp-purple-1" />
@@ -708,6 +848,11 @@ export function StudioLP() {
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")' }} />
       </div>
       <style>{`
+        /* Override the global dark heading color — this LP is dark-themed. */
+        .studio-lp h1, .studio-lp h2, .studio-lp h3,
+        .studio-lp h4, .studio-lp h5, .studio-lp h6 {
+          color: rgba(255, 255, 255, 0.9) !important;
+        }
         .slp-blob {
           position: absolute;
           border-radius: 50%;
@@ -833,7 +978,7 @@ export function StudioLP() {
       {/* Footer */}
       <footer className="py-8 text-center">
         <p className="text-[10px] tracking-[0.2em] text-white/15">
-          &copy; 2025 VUAL Studio
+          &copy; 2026 VUAL Studio
         </p>
       </footer>
     </div>
