@@ -273,3 +273,22 @@ img {
   50% { transform: scale(1.06); }
   100% { transform: scale(1.0); }
 }
+
+/* Ken Burns — slow directional zoom + pan, used with animation-direction: alternate
+   so each cell drifts one way then back. 4 directions for variety per cell. */
+@keyframes kenBurnsTL {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.12) translate(2.5%, 2.5%); }
+}
+@keyframes kenBurnsTR {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-2.5%, 2.5%); }
+}
+@keyframes kenBurnsBL {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.12) translate(2.5%, -2.5%); }
+}
+@keyframes kenBurnsBR {
+  0%   { transform: scale(1.0) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-2.5%, -2.5%); }
+}

@@ -41,14 +41,21 @@ export function InteractiveCell({ item, isVideo, style, onImageClick, onVideoCli
     const el = imgRef.current;
     if (!el) return;
 
+    // Seeded per cell for unique, independent Ken Burns motion
     const seed = style.gridColumn?.toString().charCodeAt(0) || 0;
-    const duration = 8 + (seed % 7);
-    const delay = (seed * 1.3) % 5;
+    const dirs = ["kenBurnsTL", "kenBurnsTR", "kenBurnsBL", "kenBurnsBR"];
+    const dir = dirs[seed % dirs.length];
+    const duration = 14 + (seed % 9); // 14-22s per leg (slow)
+    // Negative delay = start mid-cycle so motion is already underway on load.
+    const offset = -((seed * 3.3) % duration);
+    // Half the cells start zoomed-in and pull OUT, half start wide and push IN.
+    const direction = seed % 2 === 0 ? "alternate-reverse" : "alternate";
     const origins = ["30% 30%", "70% 30%", "30% 70%", "70% 70%", "50% 40%", "40% 60%"];
     const origin = origins[seed % origins.length];
 
     el.style.transformOrigin = origin;
-    el.style.animation = `cellBreathe ${duration}s ease-in-out ${delay}s infinite`;
+    el.style.willChange = "transform";
+    el.style.animation = `${dir} ${duration}s ease-in-out ${offset}s infinite ${direction}`;
 
     return () => { el.style.animation = ""; };
   }, [isVideo, style]);

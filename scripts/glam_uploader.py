@@ -29,7 +29,7 @@ BROWSER_DATA_DIR = os.path.expanduser("~/.glam-playwright-profile")
 
 # ── Video settings ──
 VIDEO_RESOLUTION = "1080p"   # 720p | 1080p | 4K
-VIDEO_DURATION = "4s"        # 4s | 6s | 8s
+VIDEO_DURATION = "6s"        # 4s | 6s | 8s
 VIDEO_RATIO = "9:16"         # auto | 16:9 | 9:16
 
 
@@ -335,8 +335,11 @@ def clear_previous_upload(page: Page):
 
 def process_job(page: Page, folder: Path, index: int, total: int):
     """Process a single glam job folder."""
+    global VIDEO_DURATION
+
     image_path = folder / "image.jpg"
     prompt_path = folder / "prompt.txt"
+    duration_path = folder / "duration.txt"
 
     if not image_path.exists():
         image_path = folder / "image.png"
@@ -350,8 +353,13 @@ def process_job(page: Page, folder: Path, index: int, total: int):
 
     prompt_text = prompt_path.read_text(encoding="utf-8").strip()
 
+    # Per-folder duration override
+    if duration_path.exists():
+        VIDEO_DURATION = duration_path.read_text(encoding="utf-8").strip()
+
     print(f"\n[{index}/{total}] {folder.name}")
     print(f"  Prompt: {prompt_text[:80]}...")
+    print(f"  Duration: {VIDEO_DURATION}")
 
     # 1. Clear previous state
     clear_previous_upload(page)
