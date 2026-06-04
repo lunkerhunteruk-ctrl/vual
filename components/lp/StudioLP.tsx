@@ -776,7 +776,7 @@ function TalentSection({ locale }: { locale: string }) {
             style={{ height: 'min(90vh, calc(92vw * 16 / 9))', width: 'min(calc(90vh * 9 / 16), 92vw)' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <iframe src="/tryon?look=entity/look1&city=VAULT" style={{ width: '100%', height: '100%', border: 'none' }} />
+            <iframe src="https://vault.vual.jp/tryon?look=entity/look1&city=VAULT" style={{ width: '100%', height: '100%', border: 'none' }} />
           </div>
         </div>
       )}
