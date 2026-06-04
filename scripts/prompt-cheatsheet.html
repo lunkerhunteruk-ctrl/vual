@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VUAL Studio Prompt Generator — Cheat Sheet</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Helvetica Neue', sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 24px; font-weight: 300; letter-spacing: 0.2em; margin-bottom: 8px; color: #fff; }
+  .subtitle { font-size: 13px; color: #666; margin-bottom: 40px; letter-spacing: 0.05em; }
+  h2 { font-size: 14px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 16px; margin-top: 40px; }
+  .card { background: #141414; border: 1px solid #222; border-radius: 8px; padding: 16px; margin-bottom: 12px; position: relative; }
+  .card-title { font-size: 13px; font-weight: 600; color: #ccc; margin-bottom: 4px; }
+  .card-desc { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
+  .cmd { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 12px 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: #a0e8b0; word-break: break-all; line-height: 1.6; position: relative; cursor: pointer; transition: border-color 0.2s; }
+  .cmd:hover { border-color: #444; }
+  .cmd::after { content: 'COPY'; position: absolute; top: 8px; right: 10px; font-size: 9px; letter-spacing: 0.1em; color: #555; font-family: -apple-system, sans-serif; pointer-events: none; transition: color 0.2s; }
+  .cmd:hover::after { color: #888; }
+  .cmd.copied { border-color: #4a8; }
+  .cmd.copied::after { content: 'COPIED'; color: #4a8; }
+  .note { font-size: 11px; color: #555; margin-top: 8px; line-height: 1.5; }
+  .tag { display: inline-block; font-size: 10px; letter-spacing: 0.1em; padding: 2px 8px; border-radius: 3px; margin-right: 6px; margin-bottom: 4px; }
+  .tag-free { background: #1a2e1a; color: #6d6; border: 1px solid #2a4a2a; }
+  .tag-cost { background: #2e2a1a; color: #da6; border: 1px solid #4a3a2a; }
+  .divider { height: 1px; background: #1a1a1a; margin: 32px 0; }
+  .section-note { font-size: 12px; color: #555; line-height: 1.7; margin-bottom: 20px; }
+  .placeholder { color: #e8a060; font-weight: 600; }
+  .options { margin-top: 12px; }
+  .option-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+  .option-chip { font-size: 11px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 4px; padding: 4px 10px; color: #888; cursor: pointer; transition: all 0.2s; font-family: 'SF Mono', monospace; }
+  .option-chip:hover { border-color: #444; color: #ccc; }
+  .option-chip.active { border-color: #4a8; color: #4a8; background: #1a2a1a; }
+</style>
+</head>
+<body>
+
+<h1>VUAL PROMPT GENERATOR</h1>
+<p class="subtitle">Cheat Sheet — click any command to copy</p>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>AI-Optimized (Recommended)</h2>
+<p class="section-note">Gemini Flashがストーリーに最適な6枚の構図をScene A/B + Artistic A/B + Detail A/B/Cの39テンプレートから自動選択。</p>
+
+<div class="card">
+  <div class="card-title">Standard</div>
+  <div class="card-desc">ストーリーやロケ地を入力 → 最適な6構図を自動選択</div>
+  <div class="cmd" onclick="copyCmd(this)">npx tsx scripts/generate-prompts.ts "<span class="placeholder">ロケ地やストーリーをここに入力</span>"</div>
+  <div class="note"><span class="tag tag-cost">~0.1円</span> Gemini Flash 1回</div>
+</div>
+
+<div class="card">
+  <div class="card-title">+ Styling Options</div>
+  <div class="card-desc">着こなし指定を追加</div>
+  <div class="cmd" onclick="copyCmd(this)">npx tsx scripts/generate-prompts.ts "<span class="placeholder">ロケ地</span>" --outer-open --tuck-in</div>
+  <div class="options">
+    <div class="option-row">
+      <span class="option-chip" onclick="copyText(this, '--outer-open')">--outer-open</span>
+      <span class="option-chip" onclick="copyText(this, '--outer-closed')">--outer-closed</span>
+    </div>
+    <div class="option-row">
+      <span class="option-chip" onclick="copyText(this, '--tuck-in')">--tuck-in</span>
+      <span class="option-chip" onclick="copyText(this, '--tuck-out')">--tuck-out</span>
+      <span class="option-chip" onclick="copyText(this, '--french-tuck')">--french-tuck</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>Example Stories</h2>
+<p class="section-note">ロケ地名の部分に使えるストーリー例。クリックでコピー。</p>
+
+<div class="card">
+  <div class="card-title">A.D.2226 浸水ラウンジ</div>
+  <div class="cmd" onclick="copyCmd(this)">npx tsx scripts/generate-prompts.ts "A.D.2226 浸水するラウンジの残照。200年後の未来。半分水没し海と直接繋がったかつての最高級ホテルのラウンジ。色褪せたベルベットのソファや金装飾の螺旋階段の残骸が浅瀬に浸かり朽ちている。窓の外には果てしない水平線。"</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Buzludzha Monument</div>
+  <div class="cmd" onclick="copyCmd(this)">npx tsx scripts/generate-prompts.ts "the abandoned Buzludzha Monument in Bulgaria — a brutalist concrete UFO perched on a mountain peak, its mosaic interior crumbling, wind howling through broken windows"</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Angkor Wat</div>
+  <div class="cmd" onclick="copyCmd(this)">npx tsx scripts/generate-prompts.ts "Angkor Wat at dawn — ancient Khmer temple complex, tree roots consuming stone corridors, golden morning light piercing through carved doorways" --outer-open</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>Flow Workflow</h2>
+<p class="section-note">プロンプト生成後のFLOWでの使い方</p>
+
+<div class="card" style="border-color: #2a2a3a;">
+  <div class="card-title" style="color: #aab;">Step 1 — Generate</div>
+  <div class="card-desc">ターミナルでコマンド実行 → 6枚分のプロンプトが出力される</div>
+</div>
+
+<div class="card" style="border-color: #2a2a3a;">
+  <div class="card-title" style="color: #aab;">Step 2 — Flow に貼る</div>
+  <div class="card-desc">各 SHOT のプロンプトテキストを1枚ずつFLOWにコピペ</div>
+</div>
+
+<div class="card" style="border-color: #2a2a3a;">
+  <div class="card-title" style="color: #aab;">Step 3 — 画像を添付</div>
+  <div class="card-desc">モデル顔写真 + 服の画像をドラッグ&ドロップ。順番は気にしなくてOK。<br>複数アングルの同一アイテムもまとめて添付可。</div>
+</div>
+
+<div class="card" style="border-color: #2a2a3a;">
+  <div class="card-title" style="color: #aab;">Step 4 — 生成</div>
+  <div class="card-desc">Gemini が画像生成。コスト: Flow無料枠内</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>Template Categories (39 total)</h2>
+<p class="section-note">AI が自動選択する構図テンプレートの一覧</p>
+
+<div class="card">
+  <div class="card-title">Scene A (1)</div>
+  <div class="card-desc">SA1: Hero catwalk — 正面キャットウォーク</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Scene B (6)</div>
+  <div class="card-desc">SB1: 左歩き / SB2: 静止ポーズ / SB3: 右歩き / SB4: 振り返り / SB5: ローアングル / SB6: lo-fi キャットウォーク</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Artistic A (6)</div>
+  <div class="card-desc">AA1: Noctilux / AA2: Canon DS / AA3: Contax Planar / AA4: Fujifilm GF / AA5: Sigma 35mm / AA6: Nikon Noct</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Artistic B (6)</div>
+  <div class="card-desc">AB1: Hasselblad / AB2: Summilux / AB3: Mamiya 7 / AB4: Nokton / AB5: Sony 135mm GM / AB6: Zeiss Batis</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Detail A — Face (6)</div>
+  <div class="card-desc">DA1: 横顔方向 / DA2: 直視 / DA3: プロフィール / DA4: 振り返り / DA5: 斜め3/4 / DA6: 見上げ</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Detail B — Upper Body & Bag (8)</div>
+  <div class="card-desc">DB1: テクスチャ / DB2: 直視 / DB3: 素材感 / DB4: サイドビュー / DB5: 髪耳かけ / DB6: 振り返り / DB7: バッグ / DB8: バッグ超接写</div>
+</div>
+
+<div class="card">
+  <div class="card-title">Detail C — Movement & Shoes (6)</div>
+  <div class="card-desc">DC1: 横歩き全身 / DC2: 横歩き下半身 / DC3: 壁もたれ / DC4: ベンチ座り / DC5: 靴接写 / DC6: 靴壁ポーズ</div>
+</div>
+
+<div style="height: 60px;"></div>
+
+<script>
+function copyCmd(el) {
+  navigator.clipboard.writeText(el.textContent.trim());
+  el.classList.add('copied');
+  setTimeout(() => el.classList.remove('copied'), 1500);
+}
+function copyText(el, text) {
+  navigator.clipboard.writeText(text);
+  el.classList.add('active');
+  setTimeout(() => el.classList.remove('active'), 1500);
+}
+</script>
+</body>
+</html>
