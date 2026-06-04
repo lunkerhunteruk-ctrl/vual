@@ -13,10 +13,7 @@ export function LightboxModal({ src, onClose }: LightboxModalProps) {
       className="fixed inset-0 z-50 flex items-center justify-center"
       onClick={onClose}
     >
-      <div
-        className="absolute inset-0 backdrop-blur-md"
-        style={{ background: "color-mix(in srgb, var(--vault-bg) 85%, transparent)" }}
-      />
+      <div className="absolute inset-0 backdrop-blur-md vault-overlay" />
 
       <div
         className="relative max-w-[90vw] max-h-[90vh]"

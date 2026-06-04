@@ -255,7 +255,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
         className="fixed inset-0 z-50 flex items-center justify-center p-8"
         onClick={handleClose}
       >
-        <div className="absolute inset-0 backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--vault-bg) 80%, transparent)" }} />
+        <div className="absolute inset-0 backdrop-blur-sm vault-overlay" />
 
         <div
           className="relative w-full max-w-lg max-h-[80vh] rounded-2xl overflow-y-auto animate-slide-up"
@@ -267,7 +267,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
           </div>
 
           <div
-            className="relative w-full select-none"
+            className="relative w-full select-none vault-ar-fallback"
             style={{ aspectRatio: image.aspect.replace(":", "/") }}
           >
             {state === "implanting" ? (

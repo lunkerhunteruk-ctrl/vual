@@ -220,6 +220,29 @@ img {
 /* ========================================
    VAULT Daily — Scoped CSS Variables
    ======================================== */
+/* Modal overlay with a graceful fallback for older iOS Safari (< 16.2) that
+   lacks color-mix(): use rgba first, then upgrade to color-mix where supported. */
+.vault-overlay {
+  background: rgba(10, 10, 10, 0.8); /* fallback (dark) */
+}
+.daily-vault[data-theme="light"] .vault-overlay {
+  background: rgba(245, 243, 239, 0.8); /* fallback (light) */
+}
+@supports (background: color-mix(in srgb, red, blue)) {
+  .vault-overlay {
+    background: color-mix(in srgb, var(--vault-bg) 80%, transparent);
+  }
+}
+
+/* aspect-ratio fallback for older iOS Safari (< 15): without it the box
+   collapses to 0 height and the modal renders blank/black. Give it a sane
+   minimum height so the content (and generated image) is still visible. */
+@supports not (aspect-ratio: 1 / 1) {
+  .vault-ar-fallback {
+    min-height: 60vh;
+  }
+}
+
 /* Dark mode (default when no data-theme) */
 .daily-vault {
   --vault-bg: #0a0a0a;

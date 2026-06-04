@@ -37,7 +37,7 @@ export function MyVault({ open, onClose }: MyVaultProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={onClose}>
-      <div className="absolute inset-0 backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--vault-bg) 80%, transparent)" }} />
+      <div className="absolute inset-0 backdrop-blur-sm vault-overlay" />
 
       <div
         className="relative w-full max-w-lg max-h-[85vh] rounded-t-2xl overflow-hidden animate-slide-up"
