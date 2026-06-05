@@ -39,9 +39,20 @@ export function ProductsTable({ categoryFilter }: ProductsTableProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [isBulkDeleting, setIsBulkDeleting] = useState(false);
 
   const handleRowClick = (productId: string) => {
     router.push(`/${locale}/admin/products/edit/${productId}`);
+  };
+
+  const toggleSelect = (productId: string) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(productId)) next.delete(productId);
+      else next.add(productId);
+      return next;
+    });
   };
 
   // Fetch products from Supabase API
@@ -170,6 +181,33 @@ export function ProductsTable({ categoryFilter }: ProductsTableProps) {
     }
   };
 
+  const handleBulkDelete = async () => {
+    const ids = Array.from(selectedIds);
+    if (ids.length === 0) return;
+    if (!confirm(
+      locale === 'ja'
+        ? `選択した${ids.length}件の商品を削除しますか？`
+        : `Delete ${ids.length} selected product(s)?`
+    )) return;
+
+    setIsBulkDeleting(true);
+    const results = await Promise.allSettled(
+      ids.map(id => fetch(`/api/products?id=${id}`, { method: 'DELETE' }))
+    );
+    const deleted = ids.filter((_, i) => results[i].status === 'fulfilled' && (results[i] as PromiseFulfilledResult<Response>).value.ok);
+    const failedCount = ids.length - deleted.length;
+
+    setProducts(prev => prev.filter(p => !deleted.includes(p.id)));
+    setSelectedIds(new Set());
+    setIsBulkDeleting(false);
+
+    if (failedCount > 0) {
+      alert(locale === 'ja'
+        ? `${deleted.length}件削除、${failedCount}件失敗しました`
+        : `${deleted.length} deleted, ${failedCount} failed`);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -219,6 +257,31 @@ export function ProductsTable({ categoryFilter }: ProductsTableProps) {
             className="w-full h-10 pl-9 pr-4 text-sm bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] text-[var(--color-text-body)] placeholder:text-[var(--color-text-placeholder)] focus:outline-none focus:border-[var(--color-accent)]"
           />
         </div>
+
+        {/* Bulk action bar — shown when one or more products are selected */}
+        {selectedIds.size > 0 && (
+          <div className="mt-4 flex items-center justify-between bg-[var(--color-bg-element)] border border-[var(--color-line)] rounded-[var(--radius-md)] px-4 py-2.5">
+            <span className="text-sm text-[var(--color-text-body)]">
+              {locale === 'ja' ? `${selectedIds.size}件を選択中` : `${selectedIds.size} selected`}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setSelectedIds(new Set())}
+                className="text-xs px-3 py-1.5 rounded-[var(--radius-sm)] text-[var(--color-text-label)] hover:bg-white transition-colors"
+              >
+                {locale === 'ja' ? '選択解除' : 'Clear'}
+              </button>
+              <button
+                onClick={handleBulkDelete}
+                disabled={isBulkDeleting}
+                className="text-xs px-3 py-1.5 rounded-[var(--radius-sm)] bg-red-500 text-white font-medium hover:bg-red-600 transition-colors disabled:opacity-50 flex items-center gap-1.5"
+              >
+                {isBulkDeleting ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />}
+                {locale === 'ja' ? '削除' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Table */}
@@ -241,7 +304,25 @@ export function ProductsTable({ categoryFilter }: ProductsTableProps) {
             <thead>
               <tr className="border-b border-[var(--color-line)] bg-[var(--color-bg-element)]">
                 <th className="w-12 py-3 px-4">
-                  <input type="checkbox" className="w-4 h-4 rounded border-[var(--color-line)]" />
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded border-[var(--color-line)] cursor-pointer"
+                    checked={filteredProducts.length > 0 && filteredProducts.every(p => selectedIds.has(p.id))}
+                    ref={(el) => {
+                      if (el) {
+                        const some = filteredProducts.some(p => selectedIds.has(p.id));
+                        const all = filteredProducts.length > 0 && filteredProducts.every(p => selectedIds.has(p.id));
+                        el.indeterminate = some && !all;
+                      }
+                    }}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedIds(new Set(filteredProducts.map(p => p.id)));
+                      } else {
+                        setSelectedIds(new Set());
+                      }
+                    }}
+                  />
                 </th>
                 <th className="text-left py-3 px-4 text-xs font-medium text-[var(--color-text-label)] uppercase">
                   {t('product') || '商品'}
@@ -269,7 +350,12 @@ export function ProductsTable({ categoryFilter }: ProductsTableProps) {
                   className="border-b border-[var(--color-line)] last:border-0 hover:bg-[var(--color-bg-element)] transition-colors cursor-pointer"
                 >
                   <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
-                    <input type="checkbox" className="w-4 h-4 rounded border-[var(--color-line)]" />
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 rounded border-[var(--color-line)] cursor-pointer"
+                      checked={selectedIds.has(product.id)}
+                      onChange={() => toggleSelect(product.id)}
+                    />
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
