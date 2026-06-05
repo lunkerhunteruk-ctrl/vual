@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Stream } from '@cloudflare/stream-react';
 import { Volume2, VolumeX } from 'lucide-react';
+import { sampleEntities } from '@/lib/daily/sample';
 
 // ============================================================
 // Constants
@@ -200,13 +201,41 @@ const TALENT = {
   name: 'RIN',
   height: '175cm',
   measurements: 'B80 / W59 / H86',
-  // Up to 6 images for the Mondrian grid (cells 5 & 6 fall back to a placeholder
-  // until the final 6-look set is supplied). Order matches TALENT_CELLS.
+  // 6 looks for the Mondrian grid. Order matches TALENT_CELLS (16:9, 9:16, 4:3,
+  // 1:1, 3:4, 3:4). `src` = AR grid image, `modal` = preview shown when the
+  // try-on modal opens, `lookFile` = R2 look image the implant API resolves the
+  // recipe/garments from. All hosted on the vault R2 bucket.
   images: [
-    { src: 'https://lufis.net/vual/entity/01.jpg' },
-    { src: 'https://lufis.net/vual/entity/02.jpg' },
-    { src: 'https://lufis.net/vual/entity/03.jpg' },
-    { src: 'https://lufis.net/vual/entity/04.jpg' },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look1.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal1.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look1.jpg',
+    },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look2.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal2.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look2.jpg',
+    },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look3.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal3.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look3.jpg',
+    },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look4.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal4.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look4.jpg',
+    },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look5.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal5.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look5.jpg',
+    },
+    {
+      src: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look6.jpg',
+      modal: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/modal6.jpg',
+      lookFile: 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/vault/collections/05-06-2026_cs-rin/look6.jpg',
+    },
   ],
 };
 
@@ -412,7 +441,9 @@ function WorksSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const latestRef = useRef(null);
   const latestInView = useInView(latestRef, { once: true, margin: '-100px' });
-  const [activeReel, setActiveReel] = useState<typeof REELS_WORKS[0] | null>(null);
+  // Unified video modal: holds a streamId + orientation so both the vertical
+  // reels (9:16) and the horizontal gallery videos (16:9) open the same way.
+  const [activeVideo, setActiveVideo] = useState<{ streamId: string; vertical: boolean } | null>(null);
 
   return (
     <section className="relative py-24 md:py-40">
@@ -427,7 +458,11 @@ function WorksSection({ locale }: { locale: string }) {
           variants={stagger}
           className="mb-24 md:mb-40"
         >
-          <LatestWorkCard work={LATEST_WORK} locale={locale} />
+          <LatestWorkCard
+            work={LATEST_WORK}
+            locale={locale}
+            onOpenVideo={(streamId) => setActiveVideo({ streamId, vertical: false })}
+          />
         </motion.div>
 
         {/* Past works label */}
@@ -438,7 +473,11 @@ function WorksSection({ locale }: { locale: string }) {
         {/* Past works — 2-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {PAST_WORKS.map((work) => (
-            <PastWorkCard key={work.id} work={work} />
+            <PastWorkCard
+              key={work.id}
+              work={work}
+              onOpenVideo={(streamId) => setActiveVideo({ streamId, vertical: false })}
+            />
           ))}
         </div>
 
@@ -448,19 +487,21 @@ function WorksSection({ locale }: { locale: string }) {
         </p>
         <div className="grid grid-cols-5 gap-2 md:gap-4">
           {REELS_WORKS.map((work) => (
-            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveReel(work)} />
+            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
         </div>
       </div>
 
-      {/* Reel fullscreen modal */}
-      {activeReel && (
+      {/* Video modal — same centered modal for both vertical reels and
+          horizontal gallery videos. Aspect-correct sizing per orientation. */}
+      {activeVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
-          onClick={() => setActiveReel(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(13, 10, 18, 0.5)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
+          onClick={() => setActiveVideo(null)}
         >
           <button
-            onClick={() => setActiveReel(null)}
+            onClick={() => setActiveVideo(null)}
             className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
             aria-label="Close"
           >
@@ -468,10 +509,14 @@ function WorksSection({ locale }: { locale: string }) {
           </button>
           <div
             className="relative bg-black rounded-sm overflow-hidden works-stream-container"
-            style={{ height: 'min(85vh, calc(95vw * 16 / 9))', width: 'min(calc(85vh * 9 / 16), 95vw)' }}
+            style={
+              activeVideo.vertical
+                ? { height: 'min(85vh, calc(95vw * 16 / 9))', width: 'min(calc(85vh * 9 / 16), 95vw)' }
+                : { width: 'min(90vw, calc(85vh * 16 / 9))', height: 'min(calc(90vw * 9 / 16), 85vh)' }
+            }
             onClick={(e) => e.stopPropagation()}
           >
-            <Stream src={activeReel.streamId} autoplay controls muted={false} loop={false} responsive={false} />
+            <Stream src={activeVideo.streamId} autoplay controls muted={false} loop={false} responsive={false} />
           </div>
         </div>
       )}
@@ -480,8 +525,7 @@ function WorksSection({ locale }: { locale: string }) {
 }
 
 // Latest work — full-width hero card
-function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: string }) {
-  const [playing, setPlaying] = useState(false);
+function LatestWorkCard({ work, locale, onOpenVideo }: { work: typeof LATEST_WORK; locale: string; onOpenVideo: (streamId: string) => void }) {
   const imgRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: imgRef, offset: ['start end', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['-3%', '3%']);
@@ -494,40 +538,25 @@ function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: st
         variants={fadeIn}
         className="group relative aspect-video overflow-hidden rounded-sm mb-8"
       >
-        {work.streamId && playing ? (
-          <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
-            <Stream
-              src={work.streamId}
-              autoplay
-              controls
-              muted={false}
-              loop={false}
-              responsive={false}
-            />
-          </div>
-        ) : (
-          <>
-            <motion.div style={{ y }} className="absolute inset-0">
-              {work.thumbnail ? (
-                <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-              )}
-            </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/20" />
-            {work.streamId && (
-              <button
-                onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
-              >
-                <div className="gallery-zoom-btn w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
-                  <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 md:w-10 md:h-10 ml-1">
-                    <polygon points="5,3 19,12 5,21" />
-                  </svg>
-                </div>
-              </button>
-            )}
-          </>
+        <motion.div style={{ y }} className="absolute inset-0">
+          {work.thumbnail ? (
+            <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+          )}
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/20" />
+        {work.streamId && (
+          <button
+            onClick={() => onOpenVideo(work.streamId)}
+            className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
+          >
+            <div className="gallery-zoom-btn w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
+              <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 md:w-10 md:h-10 ml-1">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            </div>
+          </button>
         )}
       </motion.div>
 
@@ -558,8 +587,7 @@ function LatestWorkCard({ work, locale }: { work: typeof LATEST_WORK; locale: st
 }
 
 // Past work — compact grid card
-function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
-  const [playing, setPlaying] = useState(false);
+function PastWorkCard({ work, onOpenVideo }: { work: typeof PAST_WORKS[0]; onOpenVideo: (streamId: string) => void }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-50px' });
 
@@ -571,38 +599,23 @@ function PastWorkCard({ work }: { work: typeof PAST_WORKS[0] }) {
       variants={fadeIn}
     >
       <div className="group relative aspect-video overflow-hidden rounded-sm mb-4">
-        {work.streamId && playing ? (
-          <div className="absolute inset-0 bg-black overflow-hidden works-stream-container">
-            <Stream
-              src={work.streamId}
-              autoplay
-              controls
-              muted={false}
-              loop={false}
-              responsive={false}
-            />
-          </div>
+        {work.thumbnail ? (
+          <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
         ) : (
-          <>
-            {work.thumbnail ? (
-              <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/10" />
-            {work.streamId && (
-              <button
-                onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
-              >
-                <div className="gallery-zoom-btn w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
-                  <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
-                    <polygon points="5,3 19,12 5,21" />
-                  </svg>
-                </div>
-              </button>
-            )}
-          </>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent transition-colors duration-500 group-hover:from-black/10" />
+        {work.streamId && (
+          <button
+            onClick={() => onOpenVideo(work.streamId)}
+            className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
+          >
+            <div className="gallery-zoom-btn w-12 h-12 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-sm group-hover:bg-white/10 group-hover:border-white/60">
+              <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5 ml-0.5">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
+            </div>
+          </button>
         )}
       </div>
       <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">
@@ -663,13 +676,204 @@ function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpe
 // Old WorkCard removed — replaced by LatestWorkCard + PastWorkCard above
 
 // ============================================================
+// TRY-ON MODAL — credit-free virtual try-on for the RIN grid.
+// Shows the sample preview (modal image), lets the visitor either upload a
+// face or pick one of the model lineup, then calls the same /api/daily/implant
+// endpoint the daily experience uses. No auth, no credits, no Firestore.
+// ============================================================
+type TryOnLook = { src: string; modal: string; lookFile: string };
+
+const TRYON_STEPS = ['ANALYZING', 'STYLING', 'COMPOSING', 'FINALIZING'];
+
+function TryOnModal({ look, onClose }: { look: TryOnLook; onClose: () => void }) {
+  const [userPhoto, setUserPhoto] = useState<string | null>(null);
+  const [selectedEntity, setSelectedEntity] = useState<(typeof sampleEntities)[number] | null>(null);
+  const [height, setHeight] = useState(170);
+  const [state, setState] = useState<'select' | 'implanting' | 'result'>('select');
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [stepIdx, setStepIdx] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setUserPhoto(reader.result as string);
+      setSelectedEntity(null);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const toDataUrl = async (url: string): Promise<string> => {
+    if (url.startsWith('data:')) return url;
+    const res = await fetch(url);
+    const blob = await res.blob();
+    return new Promise((resolve) => {
+      const r = new FileReader();
+      r.onloadend = () => resolve(r.result as string);
+      r.readAsDataURL(blob);
+    });
+  };
+
+  const handleGenerate = async () => {
+    if (!userPhoto && !selectedEntity) return;
+    setState('implanting');
+    setError(null);
+
+    const steps = (async () => {
+      for (let i = 0; i < TRYON_STEPS.length - 1; i++) {
+        setStepIdx(i);
+        await new Promise((r) => setTimeout(r, 1200 + Math.random() * 600));
+      }
+    })();
+
+    try {
+      const entityImage = userPhoto || (await toDataUrl(selectedEntity!.referenceUrl));
+      const res = await fetch('/api/daily/implant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entityImage, lookFile: look.lookFile, height }),
+      });
+      const data = await res.json();
+      await steps;
+      if (!res.ok || !data.success) throw new Error(data.error || 'Generation failed');
+      setResultUrl(data.resultImage);
+      setStepIdx(TRYON_STEPS.length - 1);
+      setState('result');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Generation failed');
+      setState('select');
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(13, 10, 18, 0.5)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
+        aria-label="Close"
+      >
+        ✕
+      </button>
+
+      <div
+        className="relative bg-[#0d0a12] rounded-sm overflow-hidden w-full max-w-md max-h-[92vh] overflow-y-auto border border-white/10"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Preview image (sample) or generated result */}
+        <div className="relative w-full bg-black" style={{ aspectRatio: '3/4' }}>
+          <img
+            src={state === 'result' && resultUrl ? resultUrl : look.modal}
+            alt="Try-on preview"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {state === 'implanting' && (
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center gap-3">
+              <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <p className="text-[10px] tracking-[0.4em] text-white/70 font-light">{TRYON_STEPS[stepIdx]}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="p-5">
+          {state === 'result' ? (
+            <div className="flex flex-col gap-3">
+              <p className="text-[10px] tracking-[0.3em] text-white/40 uppercase">Your Look</p>
+              {resultUrl && (
+                <a
+                  href={resultUrl}
+                  download="vual-tryon.jpg"
+                  className="text-center text-[11px] tracking-[0.2em] uppercase border border-white/30 text-white/80 py-3 hover:bg-white/10 transition-colors"
+                >
+                  Download
+                </a>
+              )}
+              <button
+                onClick={() => { setState('select'); setResultUrl(null); }}
+                className="text-center text-[11px] tracking-[0.2em] uppercase text-white/50 py-2 hover:text-white/80 transition-colors"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Face upload */}
+              <p className="text-[10px] tracking-[0.4em] text-white/40 font-light mb-3">YOUR FACE</p>
+              <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFile} />
+              <button
+                onClick={() => fileRef.current?.click()}
+                className="w-full flex items-center gap-3 mb-5 p-2 border border-white/15 rounded-sm hover:border-white/30 transition-colors"
+              >
+                <span className="w-12 h-12 rounded-full overflow-hidden border-2 flex-shrink-0 flex items-center justify-center bg-white/5"
+                  style={{ borderColor: userPhoto ? 'var(--vault-cyan, #22d3ee)' : 'rgba(255,255,255,0.1)' }}>
+                  {userPhoto ? (
+                    <img src={userPhoto} alt="you" className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-white/40 text-lg">+</span>
+                  )}
+                </span>
+                <span className="text-[11px] tracking-[0.2em] text-white/50 uppercase">
+                  {userPhoto ? 'Photo selected' : 'Upload a selfie'}
+                </span>
+              </button>
+
+              {/* Model lineup */}
+              <p className="text-[10px] tracking-[0.4em] text-white/40 font-light mb-3">OR SELECT MODEL</p>
+              <div className="flex gap-2 overflow-x-auto pb-2 mb-5">
+                {sampleEntities.map((entity) => (
+                  <button
+                    key={entity.id}
+                    onClick={() => { setSelectedEntity(entity); setUserPhoto(null); }}
+                    className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 transition-colors"
+                    style={{ borderColor: selectedEntity?.id === entity.id ? 'var(--vault-cyan, #22d3ee)' : 'rgba(255,255,255,0.1)' }}
+                  >
+                    <img src={entity.thumbnailUrl} alt={entity.name} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Height */}
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-[10px] tracking-[0.3em] text-white/40 uppercase">Height</span>
+                <input
+                  type="range" min={150} max={195} value={height}
+                  onChange={(e) => setHeight(Number(e.target.value))}
+                  className="flex-1 accent-white"
+                />
+                <span className="text-[12px] text-white/60 w-12 text-right">{height}cm</span>
+              </div>
+
+              {error && <p className="text-[11px] text-red-400/80 mb-3">{error}</p>}
+
+              <button
+                onClick={handleGenerate}
+                disabled={!userPhoto && !selectedEntity}
+                className="w-full text-center text-[11px] tracking-[0.3em] uppercase py-4 border border-white/30 text-white/90 hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                Try It On
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
 // TALENT / RIN
 // ============================================================
 function TalentSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
-  const [tryonOpen, setTryonOpen] = useState(false);
+  const [activeLook, setActiveLook] = useState<number | null>(null);
 
   return (
     <section className="relative py-24 md:py-40">
@@ -725,7 +929,7 @@ function TalentSection({ locale }: { locale: string }) {
                 return (
                   <button
                     key={i}
-                    onClick={() => setTryonOpen(true)}
+                    onClick={() => setActiveLook(i)}
                     className="relative overflow-hidden rounded-sm group cursor-pointer"
                     style={{
                       gridColumn: `${cell.colStart} / ${cell.colEnd}`,
@@ -758,27 +962,12 @@ function TalentSection({ locale }: { locale: string }) {
         </motion.div>
       </div>
 
-      {/* Try-on modal */}
-      {tryonOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
-          onClick={() => setTryonOpen(false)}
-        >
-          <button
-            onClick={() => setTryonOpen(false)}
-            className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-          <div
-            className="relative bg-black rounded-sm overflow-hidden"
-            style={{ height: 'min(90vh, calc(92vw * 16 / 9))', width: 'min(calc(90vh * 9 / 16), 92vw)' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <iframe src="https://vault.vual.jp/tryon?look=entity/look1&city=VAULT" style={{ width: '100%', height: '100%', border: 'none' }} />
-          </div>
-        </div>
+      {/* Try-on modal — credit-free, model lineup + face upload, daily implant API */}
+      {activeLook !== null && (
+        <TryOnModal
+          look={TALENT.images[activeLook]}
+          onClose={() => setActiveLook(null)}
+        />
       )}
     </section>
   );
