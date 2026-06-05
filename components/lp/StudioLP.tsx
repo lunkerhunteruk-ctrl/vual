@@ -477,8 +477,19 @@ function WorksSection({ locale }: { locale: string }) {
           />
         </motion.div>
 
-        {/* Past works label */}
+        {/* Reels / vertical works — placed before Past Works so the layout
+            alternates wide hero → vertical reels → wide grid for rhythm. */}
         <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8">
+          Reels — Vertical
+        </p>
+        <div className="grid grid-cols-5 gap-2 md:gap-4">
+          {REELS_WORKS.map((work) => (
+            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
+          ))}
+        </div>
+
+        {/* Past works label */}
+        <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8 mt-24 md:mt-40">
           Past Works
         </p>
 
@@ -490,16 +501,6 @@ function WorksSection({ locale }: { locale: string }) {
               work={work}
               onOpenVideo={(streamId) => setActiveVideo({ streamId, vertical: false })}
             />
-          ))}
-        </div>
-
-        {/* Reels / vertical works */}
-        <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8 mt-24 md:mt-40">
-          Reels — Vertical
-        </p>
-        <div className="grid grid-cols-5 gap-2 md:gap-4">
-          {REELS_WORKS.map((work) => (
-            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
         </div>
       </div>
