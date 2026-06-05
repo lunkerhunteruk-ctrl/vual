@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
@@ -153,6 +153,22 @@ function UnderConstruction() {
 // ============================================================
 export default function HomePage() {
   const isRootDomain = useStoreContext((s) => s.isRootDomain);
+  const [mounted, setMounted] = useState(false);
+
+  // isRootDomain is hydrated client-side from the store cookie. On the server
+  // (and the very first client render) the store defaults to isRootDomain=false,
+  // which would briefly flash the shop homepage before StudioLP takes over.
+  // Hold a neutral LP-colored screen until mounted so that flash never shows.
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    // Hold an LP-dark placeholder until hydration resolves isRootDomain.
+    // Always dark: a direct vual.jp visit (the overwhelmingly common case)
+    // becomes StudioLP, and a dark hold avoids both the grey shop homepage
+    // AND the white page background flashing before it mounts. Shop
+    // subdomains take a brief dark beat — an acceptable trade for the root.
+    return <div className="fixed inset-0 z-[200] bg-[#0d0a12]" />;
+  }
 
   if (isRootDomain) {
     return <StudioLP />;
