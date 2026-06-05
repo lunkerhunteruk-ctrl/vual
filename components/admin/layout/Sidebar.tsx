@@ -31,6 +31,7 @@ import {
   MessageCircle,
   Coins,
   Video,
+  Shirt,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/auth';
@@ -73,6 +74,7 @@ const menuSections: MenuSection[] = [
     sectionKey: '',
     items: [
       { icon: Sparkles, labelKey: 'aiStudio', href: '/admin/studio', highlight: true },
+      { icon: Shirt, labelKey: 'coordinate', href: '/admin/coordinate', highlight: true },
       { icon: Layers, labelKey: 'collection', href: '/admin/collection', highlight: true },
       { icon: Video, labelKey: 'video', href: '/admin/video', highlight: true },
       { icon: Radio, labelKey: 'liveBroadcast', href: '/admin/live', highlight: true },
