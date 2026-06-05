@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import { Stream } from '@cloudflare/stream-react';
@@ -676,6 +676,46 @@ function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpe
 // Old WorkCard removed — replaced by LatestWorkCard + PastWorkCard above
 
 // ============================================================
+// GLASS ARROW — liquid-glass carousel nav button (refraction + glow)
+// ============================================================
+function GlassArrow({ dir, onClick }: { dir: 'left' | 'right'; onClick: () => void }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      aria-label={dir === 'left' ? 'Previous' : 'Next'}
+      className="relative w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center text-lg overflow-hidden"
+      style={{
+        color: 'rgba(255,255,255,0.85)',
+        border: `1px solid ${hover ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.18)'}`,
+        background: hover
+          ? 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08))'
+          : 'linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04))',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        boxShadow:
+          'inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -2px 4px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.25)',
+        transform: hover ? 'scale(1.06)' : 'scale(1)',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease',
+      }}
+    >
+      {/* Top highlight (soft glass) */}
+      <span
+        className="absolute top-0 left-0 right-0 pointer-events-none"
+        style={{
+          height: '50%',
+          borderRadius: '50% 50% 0 0',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.22), transparent)',
+        }}
+      />
+      <span className="relative">{dir === 'left' ? '‹' : '›'}</span>
+    </button>
+  );
+}
+
+// ============================================================
 // TRY-ON MODAL — credit-free virtual try-on for the RIN grid.
 // Shows the sample preview (modal image), lets the visitor either upload a
 // face or pick one of the model lineup, then calls the same /api/daily/implant
@@ -873,11 +913,25 @@ function TalentSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  // activeLook is a GLOBAL index into TALENT.images (spans all pages).
   const [activeLook, setActiveLook] = useState<number | null>(null);
+
+  // Split looks into pages of 6 (one Mondrian grid each). New pages appear
+  // automatically as TALENT.images grows.
+  const PER_PAGE = TALENT_CELLS.length; // 6
+  const pageCount = Math.max(1, Math.ceil(TALENT.images.length / PER_PAGE));
+  const [page, setPage] = useState(0);
+  const [dir, setDir] = useState(0); // slide direction: 1 = next, -1 = prev
+
+  const goTo = (next: number) => {
+    const clamped = (next + pageCount) % pageCount;
+    setDir(next > page || (page === pageCount - 1 && clamped === 0) ? 1 : -1);
+    setPage(clamped);
+  };
 
   return (
     <section className="relative py-24 md:py-40">
-      <div className="mx-auto" style={{ paddingLeft: 'clamp(2rem, 16vw, 24rem)', paddingRight: 'clamp(2rem, 16vw, 24rem)' }}>
+      <div className="mx-auto" style={{ paddingLeft: 'clamp(2rem, 8vw, 12rem)', paddingRight: 'clamp(2rem, 8vw, 12rem)' }}>
         <SectionLabel>{t.talent.sectionLabel}</SectionLabel>
 
         <motion.div
@@ -885,85 +939,142 @@ function TalentSection({ locale }: { locale: string }) {
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
           variants={stagger}
-          className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start"
         >
-          {/* Left: Title & description */}
-          <div className="col-span-1 md:col-span-4">
-            <motion.h3
-              variants={fadeUp}
-              className="text-4xl md:text-6xl font-light text-white/90 mb-5 leading-[1.1]"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-            >
-              {t.talent.heading}
-            </motion.h3>
+          {/* Top row: heading/subtitle (left) + description (right) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end mb-20 md:mb-28">
+            <div className="col-span-1 md:col-span-7">
+              <motion.h3
+                variants={fadeUp}
+                className="text-4xl md:text-6xl font-light text-white/90 mb-4 leading-[1.1]"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                {t.talent.heading}
+              </motion.h3>
+              <motion.p
+                variants={fadeUp}
+                className="text-lg md:text-xl font-light italic text-white/55"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                {t.talent.subtitle}
+              </motion.p>
+            </div>
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl font-light italic text-white/55 mb-8"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-            >
-              {t.talent.subtitle}
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="text-sm leading-[1.9] text-white/40 max-w-sm whitespace-pre-line"
+              className="col-span-1 md:col-span-5 text-sm leading-[1.9] text-white/40 whitespace-pre-line"
               style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
             >
               {t.talent.body}
             </motion.p>
           </div>
 
-          {/* Right: Mondrian photo grid */}
-          <motion.div variants={fadeUp} className="col-span-1 md:col-span-8">
-            <div
-              className="grid w-full"
-              style={{
-                gap: '4px',
-                gridTemplateColumns: 'repeat(12, 1fr)',
-                gridTemplateRows: 'repeat(8, 1fr)',
-                // height = 8 rows where each row = (width/12)*4/3  →  width * 8*4/(12*3)
-                aspectRatio: '12 / 10.667',
-              }}
-            >
-              {TALENT_CELLS.map((cell, i) => {
-                const item = TALENT.images[i];
-                return (
-                  <button
-                    key={i}
-                    onClick={() => setActiveLook(i)}
-                    className="relative overflow-hidden rounded-sm group cursor-pointer"
-                    style={{
-                      gridColumn: `${cell.colStart} / ${cell.colEnd}`,
-                      gridRow: `${cell.rowStart} / ${cell.rowEnd}`,
-                    }}
-                  >
-                    {item ? (
-                      <img
-                        src={item.src}
-                        alt={`${TALENT.name} ${i + 1}`}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        style={talentKenBurns(i)}
-                      />
-                    ) : (
-                      <div
-                        className="absolute inset-0"
-                        style={{ background: 'linear-gradient(135deg, #1a1626 0%, #0d0a12 100%)', ...talentKenBurns(i) }}
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                      <span className="text-[9px] tracking-[0.3em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 px-3 py-1.5">
-                        Try On
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
+          {/* Bottom: wide Mondrian carousel — arrows flank the grid so their
+              space is reserved even on a single page; the grid width stays
+              constant when a 2nd page (and the arrows) appear. */}
+          <motion.div variants={fadeUp} className="relative flex items-center gap-6 md:gap-12">
+            {/* Left arrow rail (space always reserved) */}
+            <div className="flex-shrink-0 w-9 md:w-11 flex items-center justify-center">
+              {pageCount > 1 && <GlassArrow dir="left" onClick={() => goTo(page - 1)} />}
+            </div>
+
+            <div className="relative overflow-hidden flex-1 min-w-0">
+              <AnimatePresence initial={false} mode="popLayout" custom={dir}>
+                <motion.div
+                  key={page}
+                  custom={dir}
+                  variants={{
+                    enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%', opacity: 0 }),
+                    center: { x: 0, opacity: 1 },
+                    exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ x: { type: 'spring', stiffness: 260, damping: 32 }, opacity: { duration: 0.3 } }}
+                  drag={pageCount > 1 ? 'x' : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.18}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x < -80) goTo(page + 1);
+                    else if (info.offset.x > 80) goTo(page - 1);
+                  }}
+                  className="grid w-full"
+                  style={{
+                    gap: '6px',
+                    gridTemplateColumns: 'repeat(12, 1fr)',
+                    gridTemplateRows: 'repeat(8, 1fr)',
+                    aspectRatio: '12 / 10.667',
+                  }}
+                >
+                  {TALENT_CELLS.map((cell, c) => {
+                    const globalIdx = page * PER_PAGE + c;
+                    const item = TALENT.images[globalIdx];
+                    return (
+                      <button
+                        key={c}
+                        onClick={() => item && setActiveLook(globalIdx)}
+                        disabled={!item}
+                        className="relative overflow-hidden rounded-sm group cursor-pointer disabled:cursor-default"
+                        style={{
+                          gridColumn: `${cell.colStart} / ${cell.colEnd}`,
+                          gridRow: `${cell.rowStart} / ${cell.rowEnd}`,
+                        }}
+                      >
+                        {item ? (
+                          <img
+                            src={item.src}
+                            alt={`${TALENT.name} ${globalIdx + 1}`}
+                            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                            style={talentKenBurns(c)}
+                            draggable={false}
+                          />
+                        ) : (
+                          <div
+                            className="absolute inset-0"
+                            style={{ background: 'linear-gradient(135deg, #1a1626 0%, #0d0a12 100%)', ...talentKenBurns(c) }}
+                          />
+                        )}
+                        {item && (
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                            <span className="text-[9px] tracking-[0.3em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 px-3 py-1.5">
+                              Try On
+                            </span>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right arrow rail (space always reserved) */}
+            <div className="flex-shrink-0 w-9 md:w-11 flex items-center justify-center">
+              {pageCount > 1 && <GlassArrow dir="right" onClick={() => goTo(page + 1)} />}
             </div>
           </motion.div>
+
+          {/* Dots indicator (only when multiple pages) */}
+          {pageCount > 1 && (
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mt-8">
+              {Array.from({ length: pageCount }).map((_, p) => (
+                <button
+                  key={p}
+                  onClick={() => goTo(p)}
+                  aria-label={`Page ${p + 1}`}
+                  className="h-1.5 rounded-full transition-all duration-300"
+                  style={{
+                    width: p === page ? 24 : 6,
+                    backgroundColor: p === page ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.25)',
+                  }}
+                />
+              ))}
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
       {/* Try-on modal — credit-free, model lineup + face upload, daily implant API */}
-      {activeLook !== null && (
+      {activeLook !== null && TALENT.images[activeLook] && (
         <TryOnModal
           look={TALENT.images[activeLook]}
           onClose={() => setActiveLook(null)}
