@@ -43,6 +43,12 @@ const CONTENT = {
         'Immersive Virtual Try-On',
       ],
     },
+    founder: {
+      sectionLabel: 'Founder',
+      name: 'Sachio Kawasaki',
+      role: 'Founder & Creative Director',
+      bio: 'Central Saint Martins MA Fashion修了。Balenciagaでの経験を経て、自身のブランドを設立・運営。ハイファッションの現場で培った視点と最先端のテクノロジーを融合させ、これまでにないビジュアル体験を構築する。',
+    },
     contact: {
       sectionLabel: 'Contact',
       inquiry: 'For inquiries and commissions',
@@ -71,6 +77,12 @@ const CONTENT = {
         'High-End Fashion Photography',
         'Immersive Virtual Try-On',
       ],
+    },
+    founder: {
+      sectionLabel: 'Founder',
+      name: 'Sachio Kawasaki',
+      role: 'Founder & Creative Director',
+      bio: 'MA Fashion, Central Saint Martins. After working at Balenciaga, he founded and ran his own label. He fuses a perspective forged on the floor of high fashion with cutting-edge technology to construct visual experiences unlike any before.',
     },
     contact: {
       sectionLabel: 'Contact',
@@ -1129,6 +1141,69 @@ function CapabilitiesSection({ locale }: { locale: string }) {
 // ============================================================
 // CONTACT
 // ============================================================
+// ============================================================
+// FOUNDER
+// ============================================================
+function FounderSection({ locale }: { locale: string }) {
+  const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-100px' });
+
+  return (
+    <section className="relative py-24 md:py-32">
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          variants={stagger}
+        >
+          <SectionLabel>{t.founder.sectionLabel}</SectionLabel>
+
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+            <motion.div
+              variants={fadeUp}
+              className="shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-white/15"
+            >
+              <img
+                src="/lp/founder-bw.jpeg"
+                alt={t.founder.name}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+
+            <div className="text-center md:text-left">
+              <motion.p
+                variants={fadeUp}
+                className="text-2xl md:text-3xl font-light text-white/90 mb-1"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                {t.founder.name}
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="text-[11px] tracking-[0.25em] uppercase text-white/35 mb-6"
+              >
+                {t.founder.role}
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="text-sm md:text-base leading-[1.9] text-white/45"
+                style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
+              >
+                {t.founder.bio}
+              </motion.p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// CONTACT
+// ============================================================
 function ContactSection({ locale }: { locale: string }) {
   const t = CONTENT[locale as keyof typeof CONTENT] || CONTENT.en;
   const ref = useRef(null);
@@ -1170,15 +1245,6 @@ function ContactSection({ locale }: { locale: string }) {
               className="text-[11px] tracking-[0.2em] text-white/30 hover:text-white/60 transition-colors duration-500"
             >
               @sachio_kawasaki
-            </a>
-            <span className="text-white/10">|</span>
-            <a
-              href="https://www.instagram.com/rin.vual/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[11px] tracking-[0.2em] text-white/30 hover:text-white/60 transition-colors duration-500"
-            >
-              @rin.vual
             </a>
           </motion.div>
 
@@ -1364,6 +1430,8 @@ export function StudioLP() {
       <TalentSection locale={locale} />
       <Divider />
       <CapabilitiesSection locale={locale} />
+      <Divider />
+      <FounderSection locale={locale} />
       <Divider />
       <ContactSection locale={locale} />
 
