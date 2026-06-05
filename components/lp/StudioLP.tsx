@@ -960,7 +960,7 @@ function TalentSection({ locale }: { locale: string }) {
             </div>
             <motion.p
               variants={fadeUp}
-              className="col-span-1 md:col-span-5 text-sm leading-[1.9] text-white/40 whitespace-pre-line"
+              className="col-span-1 md:col-span-5 text-sm md:text-base leading-[1.9] text-white/40 whitespace-pre-line"
               style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
             >
               {t.talent.body}
