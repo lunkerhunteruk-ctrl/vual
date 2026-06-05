@@ -170,3 +170,60 @@ export const storage = {
     };
   },
 };
+
+/**
+ * Ingest an external image URL into our own R2 bucket and return the new
+ * public URL. Used when migrating products from Shopify/BASE/etc — their CSV
+ * exports reference the source CDN, which dies once the merchant leaves that
+ * platform. Copying the bytes to R2 makes the migration self-contained.
+ *
+ * Already-internal URLs (our own R2 public URL or data: URIs) are returned
+ * untouched. On any failure the original URL is returned so the import never
+ * breaks — worst case the image stays a remote reference, same as before.
+ */
+export async function ingestExternalImage(
+  sourceUrl: string,
+  destPrefix = 'imported',
+): Promise<string> {
+  if (!sourceUrl || sourceUrl.startsWith('data:')) return sourceUrl;
+
+  // Skip if already on our own R2 public URL.
+  const ownPublic = process.env.R2_PUBLIC_URL_MEDIA;
+  if (ownPublic && sourceUrl.startsWith(ownPublic)) return sourceUrl;
+
+  try {
+    const res = await fetch(sourceUrl);
+    if (!res.ok) {
+      console.warn(`[ingest] fetch ${res.status} for ${sourceUrl} — keeping original`);
+      return sourceUrl;
+    }
+    const contentType = res.headers.get('content-type') || 'image/jpeg';
+    const buf = Buffer.from(await res.arrayBuffer());
+
+    // Derive an extension from the content type or the URL.
+    const extFromType = contentType.split('/')[1]?.split(';')[0];
+    const extFromUrl = sourceUrl.split('?')[0].split('.').pop();
+    const ext = (extFromType || extFromUrl || 'jpg').toLowerCase().replace('jpeg', 'jpg');
+
+    // Deterministic-ish unique key without Date.now/random (unavailable here):
+    // hash the source URL so re-imports dedupe to the same key.
+    let hash = 0;
+    for (let i = 0; i < sourceUrl.length; i++) {
+      hash = ((hash << 5) - hash + sourceUrl.charCodeAt(i)) | 0;
+    }
+    const key = `${destPrefix}/${Math.abs(hash).toString(36)}-${buf.length}.${ext}`;
+
+    const { error } = await storage.from('media').upload(key, buf, {
+      contentType,
+      upsert: true,
+    });
+    if (error) {
+      console.warn(`[ingest] R2 upload failed for ${sourceUrl} — keeping original`, error);
+      return sourceUrl;
+    }
+    return storage.from('media').getPublicUrl(key).data.publicUrl;
+  } catch (err) {
+    console.warn(`[ingest] error for ${sourceUrl} — keeping original`, err);
+    return sourceUrl;
+  }
+}

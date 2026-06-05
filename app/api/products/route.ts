@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
+import { ingestExternalImage } from '@/lib/storage';
 
 // Japanese → English category slug mapping for search
 const CATEGORY_SEARCH_MAP: Record<string, string> = {
@@ -190,15 +191,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert images if provided
+    // Insert images if provided. Ingest any external image URLs (e.g. Shopify
+    // CDN links from a CSV migration) into our own R2 so the product survives
+    // the merchant leaving the source platform.
     if (images && images.length > 0) {
-      const imageInserts = images.map((img: { url: string; color: string | null }, index: number) => ({
-        product_id: product.id,
-        url: img.url,
-        color: img.color,
-        position: index,
-        is_primary: index === 0,
-      }));
+      const imageInserts = await Promise.all(
+        images.map(async (img: { url: string; color: string | null }, index: number) => ({
+          product_id: product.id,
+          url: await ingestExternalImage(img.url, `products/${product.id}`),
+          color: img.color,
+          position: index,
+          is_primary: index === 0,
+        }))
+      );
 
       const { error: imageError } = await supabase
         .from('product_images')
@@ -300,17 +305,21 @@ export async function PUT(request: NextRequest) {
 
     // Update images if provided
     if (images) {
-      // Delete existing and re-insert
+      // Delete existing and re-insert. Ingest external URLs into R2 (already
+      // internal R2 URLs are skipped inside ingestExternalImage, so existing
+      // images aren't re-fetched).
       await supabase.from('product_images').delete().eq('product_id', id);
 
       if (images.length > 0) {
-        const imageInserts = images.map((img: { url: string; color: string | null }, index: number) => ({
-          product_id: id,
-          url: img.url,
-          color: img.color,
-          position: index,
-          is_primary: index === 0,
-        }));
+        const imageInserts = await Promise.all(
+          images.map(async (img: { url: string; color: string | null }, index: number) => ({
+            product_id: id,
+            url: await ingestExternalImage(img.url, `products/${id}`),
+            color: img.color,
+            position: index,
+            is_primary: index === 0,
+          }))
+        );
 
         await supabase.from('product_images').insert(imageInserts);
       }
