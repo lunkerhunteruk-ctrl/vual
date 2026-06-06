@@ -482,9 +482,11 @@ function WorksSection({ locale }: { locale: string }) {
         <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8">
           Reels — Vertical
         </p>
-        <div className="grid grid-cols-5 gap-2 md:gap-4">
-          {REELS_WORKS.map((work) => (
-            <VerticalWorkCard key={work.id} work={work} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
+        {/* Mobile: single column, image/text alternating left↔right per row.
+            Desktop (md+): 5-up grid of stacked vertical cards. */}
+        <div className="flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-4">
+          {REELS_WORKS.map((work, i) => (
+            <VerticalWorkCard key={work.id} work={work} index={i} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
         </div>
 
@@ -642,7 +644,7 @@ function PastWorkCard({ work, onOpenVideo }: { work: typeof PAST_WORKS[0]; onOpe
 }
 
 // Vertical (9:16) reel card — clickable thumbnail; playback opens a fullscreen modal
-function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpen: () => void }) {
+function VerticalWorkCard({ work, index, onOpen }: { work: typeof REELS_WORKS[0]; index: number; onOpen: () => void }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-50px' });
 
@@ -652,10 +654,11 @@ function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpe
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       variants={fadeIn}
+      className={`flex items-center gap-12 md:block md:gap-0 ${index % 2 === 1 ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <button
         onClick={onOpen}
-        className="relative aspect-[9/16] w-full overflow-hidden rounded-sm mb-3 block group cursor-pointer"
+        className="relative aspect-[9/16] w-2/5 shrink-0 md:w-full overflow-hidden rounded-sm mb-0 md:mb-3 block group cursor-pointer"
       >
         {work.thumbnail ? (
           <img src={work.thumbnail} alt={work.title} className="absolute inset-0 w-full h-full object-cover gallery-zoom" />
@@ -671,17 +674,19 @@ function VerticalWorkCard({ work, onOpen }: { work: typeof REELS_WORKS[0]; onOpe
           </div>
         </div>
       </button>
-      <p className="text-[9px] tracking-[0.2em] uppercase text-white/30 mb-1">
-        {work.location} — {work.year}
-      </p>
-      <h4 className="text-sm font-light text-white/70 leading-snug" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
-        {work.title}
-      </h4>
-      {work.subtitle && (
-        <p className="text-xs italic text-white/40 mt-0.5" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
-          {work.subtitle}
+      <div className="flex-1 min-w-0 md:flex-none">
+        <p className="text-[9px] tracking-[0.2em] uppercase text-white/30 mb-1">
+          {work.location} — {work.year}
         </p>
-      )}
+        <h4 className="text-sm font-light text-white/70 leading-snug" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+          {work.title}
+        </h4>
+        {work.subtitle && (
+          <p className="text-xs italic text-white/40 mt-0.5" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+            {work.subtitle}
+          </p>
+        )}
+      </div>
     </motion.div>
   );
 }
