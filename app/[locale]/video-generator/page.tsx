@@ -18,8 +18,25 @@ const MODELS = [
 
 const POLL_INTERVAL_MS = 8000;
 const POLL_TIMEOUT_MS = 6 * 60 * 1000; // 6 min
+const HISTORY_KEY = 'vg-history';
+const HISTORY_LIMIT = 30;
 
-type Phase = 'idle' | 'submitting' | 'generating' | 'done' | 'error';
+type JobStatus = 'generating' | 'done' | 'error';
+
+interface Job {
+  localId: string;
+  taskId: string | null;
+  prompt: string;
+  aspect: string;
+  duration: number;
+  model: string;
+  status: JobStatus;
+  videoUrl: string | null;
+  error: string | null;
+}
+
+const downloadHref = (taskId: string) =>
+  `/api/video-generator/download?taskId=${encodeURIComponent(taskId)}&passcode=${encodeURIComponent(STUDIO_PASSCODE)}`;
 
 export default function VideoGeneratorPage() {
   const [image, setImage] = useState<File | null>(null);
@@ -29,19 +46,83 @@ export default function VideoGeneratorPage() {
   const [aspect, setAspect] = useState<(typeof ASPECTS)[number]['value']>('9:16');
   const [model, setModel] = useState<(typeof MODELS)[number]['value']>('veo3');
 
-  const [phase, setPhase] = useState<Phase>('idle');
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
-  const [taskId, setTaskId] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [submitting, setSubmitting] = useState(false);
   const [dragging, setDragging] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const pollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const restored = useRef(false);
 
-  // Revoke object URLs and clear timers on unmount.
+  // Merge a partial update into one job by localId.
+  const updateJob = useCallback((localId: string, patch: Partial<Job>) => {
+    setJobs((prev) => prev.map((j) => (j.localId === localId ? { ...j, ...patch } : j)));
+  }, []);
+
+  const poll = useCallback((localId: string, taskId: string, startedAt: number) => {
+    const tick = async () => {
+      if (Date.now() - startedAt > POLL_TIMEOUT_MS) {
+        updateJob(localId, { status: 'error', error: 'タイムアウトしました（6分）。' });
+        return;
+      }
+      try {
+        const res = await fetch(
+          `/api/video-generator/status?taskId=${encodeURIComponent(taskId)}&passcode=${encodeURIComponent(STUDIO_PASSCODE)}`,
+        );
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'ステータス取得に失敗');
+
+        if (data.status === 'success' && data.videoUrls?.[0]) {
+          updateJob(localId, { status: 'done', videoUrl: data.videoUrls[0] });
+          return;
+        }
+        if (data.status === 'failed') {
+          updateJob(localId, { status: 'error', error: data.errorMessage || '生成に失敗しました。' });
+          return;
+        }
+        setTimeout(tick, POLL_INTERVAL_MS);
+      } catch (err: any) {
+        updateJob(localId, { status: 'error', error: err.message || 'ステータス取得に失敗' });
+      }
+    };
+    setTimeout(tick, POLL_INTERVAL_MS);
+  }, [updateJob]);
+
+  // Restore history from localStorage on mount, and resume polling for any
+  // job that was still generating when the app was last closed.
+  useEffect(() => {
+    if (restored.current) return;
+    restored.current = true;
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      if (!raw) return;
+      const saved: Job[] = JSON.parse(raw);
+      // Generating jobs with no taskId never really started — mark them errored.
+      const normalized = saved.map((j) =>
+        j.status === 'generating' && !j.taskId
+          ? { ...j, status: 'error' as JobStatus, error: '中断されました' }
+          : j,
+      );
+      setJobs(normalized);
+      normalized.forEach((j) => {
+        if (j.status === 'generating' && j.taskId) poll(j.localId, j.taskId, Date.now());
+      });
+    } catch {
+      // ignore corrupt history
+    }
+  }, [poll]);
+
+  // Persist history whenever it changes (skip the very first empty render).
+  useEffect(() => {
+    if (!restored.current) return;
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(jobs.slice(0, HISTORY_LIMIT)));
+    } catch {
+      // storage full / unavailable — non-fatal
+    }
+  }, [jobs]);
+
   useEffect(() => () => {
     if (imagePreview) URL.revokeObjectURL(imagePreview);
-    if (pollTimer.current) clearTimeout(pollTimer.current);
   }, [imagePreview]);
 
   const setFile = useCallback((file: File | null) => {
@@ -57,46 +138,25 @@ export default function VideoGeneratorPage() {
     if (file && file.type.startsWith('image/')) setFile(file);
   }, [setFile]);
 
-  const busy = phase === 'submitting' || phase === 'generating';
-
-  const poll = useCallback((taskId: string, startedAt: number) => {
-    const tick = async () => {
-      if (Date.now() - startedAt > POLL_TIMEOUT_MS) {
-        setError('タイムアウトしました（6分）。もう一度お試しください。');
-        setPhase('error');
-        return;
-      }
-      try {
-        const res = await fetch(
-          `/api/video-generator/status?taskId=${encodeURIComponent(taskId)}&passcode=${encodeURIComponent(STUDIO_PASSCODE)}`,
-        );
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'ステータス取得に失敗');
-
-        if (data.status === 'success' && data.videoUrls?.[0]) {
-          setVideoUrl(data.videoUrls[0]);
-          setPhase('done');
-          return;
-        }
-        if (data.status === 'failed') {
-          setError(data.errorMessage || '生成に失敗しました。プロンプトや画像を変えてお試しください。');
-          setPhase('error');
-          return;
-        }
-        pollTimer.current = setTimeout(tick, POLL_INTERVAL_MS);
-      } catch (err: any) {
-        setError(err.message || 'ステータス取得に失敗');
-        setPhase('error');
-      }
-    };
-    pollTimer.current = setTimeout(tick, POLL_INTERVAL_MS);
-  }, []);
-
   const handleGenerate = useCallback(async () => {
-    if (!prompt.trim() || busy) return;
-    setError(null);
-    setVideoUrl(null);
-    setPhase('submitting');
+    if (!prompt.trim() || submitting) return;
+    setSubmitting(true);
+
+    const localId =
+      typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}`;
+    const job: Job = {
+      localId,
+      taskId: null,
+      prompt: prompt.trim(),
+      aspect,
+      duration,
+      model,
+      status: 'generating',
+      videoUrl: null,
+      error: null,
+    };
+    // Prepend so the newest is on top; older results stay below (scrollable).
+    setJobs((prev) => [job, ...prev]);
 
     try {
       const form = new FormData();
@@ -111,14 +171,18 @@ export default function VideoGeneratorPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || '生成リクエストに失敗');
 
-      setTaskId(data.taskId);
-      setPhase('generating');
-      poll(data.taskId, Date.now());
+      updateJob(localId, { taskId: data.taskId });
+      poll(localId, data.taskId, Date.now());
     } catch (err: any) {
-      setError(err.message || '生成リクエストに失敗');
-      setPhase('error');
+      updateJob(localId, { status: 'error', error: err.message || '生成リクエストに失敗' });
+    } finally {
+      setSubmitting(false);
     }
-  }, [prompt, duration, aspect, model, image, busy, poll]);
+  }, [prompt, duration, aspect, model, image, submitting, poll, updateJob]);
+
+  const removeJob = useCallback((localId: string) => {
+    setJobs((prev) => prev.filter((j) => j.localId !== localId));
+  }, []);
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
@@ -235,51 +299,86 @@ export default function VideoGeneratorPage() {
 
             <button
               onClick={handleGenerate}
-              disabled={!prompt.trim() || busy}
+              disabled={!prompt.trim() || submitting}
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-violet-600 px-4 py-3 font-medium transition hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {busy ? <Loader2 className="h-5 w-5 animate-spin" /> : <Film className="h-5 w-5" />}
-              {phase === 'submitting' ? '送信中…' : phase === 'generating' ? '生成中…' : '動画を生成'}
+              {submitting ? <Loader2 className="h-5 w-5 animate-spin" /> : <Film className="h-5 w-5" />}
+              {submitting ? '送信中…' : '動画を生成'}
             </button>
+            <p className="text-center text-xs text-neutral-600">
+              生成中も続けて作成できます。結果は右に積み上がります。
+            </p>
           </div>
 
-          {/* ── Right: result ── */}
-          <div className="flex min-h-[320px] flex-col items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900/50 p-5">
-            {phase === 'done' && videoUrl ? (
-              <div className="w-full space-y-3">
-                <video
-                  src={videoUrl}
-                  controls
-                  autoPlay
-                  loop
-                  className={`w-full rounded-lg bg-black ${aspect === '9:16' ? 'mx-auto max-h-[60vh] w-auto' : ''}`}
-                />
-                <a
-                  href={`/api/video-generator/download?taskId=${encodeURIComponent(taskId || '')}&passcode=${encodeURIComponent(STUDIO_PASSCODE)}`}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-neutral-700 px-4 py-2 text-sm hover:border-neutral-500"
-                >
-                  <Download className="h-4 w-4" /> ダウンロード
-                </a>
-              </div>
-            ) : phase === 'error' ? (
-              <div className="flex flex-col items-center gap-3 text-center text-red-400">
-                <AlertCircle className="h-8 w-8" />
-                <p className="text-sm">{error}</p>
-              </div>
-            ) : busy ? (
-              <div className="flex flex-col items-center gap-3 text-neutral-400">
-                <Loader2 className="h-8 w-8 animate-spin text-violet-400" />
-                <p className="text-sm">生成中… 1〜数分かかります</p>
+          {/* ── Right: results history ── */}
+          <div className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-4">
+            {jobs.length === 0 ? (
+              <div className="flex min-h-[320px] flex-col items-center justify-center gap-3 text-neutral-600">
+                <Film className="h-10 w-10" />
+                <p className="text-sm">ここに生成結果が積み上がります</p>
               </div>
             ) : (
-              <div className="flex flex-col items-center gap-3 text-neutral-600">
-                <Film className="h-10 w-10" />
-                <p className="text-sm">ここに生成結果が表示されます</p>
+              <div className="max-h-[75vh] space-y-4 overflow-y-auto pr-1">
+                {jobs.map((job) => (
+                  <ResultCard key={job.localId} job={job} onRemove={removeJob} />
+                ))}
               </div>
             )}
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ResultCard({ job, onRemove }: { job: Job; onRemove: (id: string) => void }) {
+  return (
+    <div className="rounded-lg border border-neutral-800 bg-neutral-950/60 p-3">
+      <div className="mb-2 flex items-start justify-between gap-2">
+        <p className="line-clamp-2 text-xs text-neutral-400">{job.prompt}</p>
+        <button
+          onClick={() => onRemove(job.localId)}
+          className="shrink-0 rounded p-1 text-neutral-500 hover:text-neutral-300"
+          title="リストから削除"
+        >
+          <X className="h-3.5 w-3.5" />
+        </button>
+      </div>
+
+      <div className="mb-2 flex flex-wrap gap-1.5 text-[10px] text-neutral-500">
+        <span className="rounded bg-neutral-800 px-1.5 py-0.5">{job.aspect}</span>
+        <span className="rounded bg-neutral-800 px-1.5 py-0.5">{job.duration}秒</span>
+        <span className="rounded bg-neutral-800 px-1.5 py-0.5">{job.model}</span>
+      </div>
+
+      {job.status === 'done' && job.videoUrl ? (
+        <div className="space-y-2">
+          <video
+            src={job.videoUrl}
+            controls
+            loop
+            className={`w-full rounded-lg bg-black ${job.aspect === '9:16' ? 'mx-auto max-h-[60vh] w-auto' : ''}`}
+          />
+          {job.taskId && (
+            <a
+              href={downloadHref(job.taskId)}
+              className="flex items-center justify-center gap-2 rounded-lg border border-neutral-700 px-4 py-2 text-sm hover:border-neutral-500"
+            >
+              <Download className="h-4 w-4" /> ダウンロード
+            </a>
+          )}
+        </div>
+      ) : job.status === 'error' ? (
+        <div className="flex items-center gap-2 rounded-lg bg-red-500/10 px-3 py-4 text-sm text-red-400">
+          <AlertCircle className="h-4 w-4 shrink-0" />
+          <span>{job.error}</span>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center gap-3 rounded-lg bg-neutral-900 px-3 py-8 text-neutral-400">
+          <Loader2 className="h-6 w-6 animate-spin text-violet-400" />
+          <span className="text-sm">生成中… 1〜数分</span>
+        </div>
+      )}
     </div>
   );
 }
