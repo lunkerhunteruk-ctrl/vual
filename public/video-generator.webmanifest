@@ -1,0 +1,13 @@
+{
+  "name": "Video Generator",
+  "short_name": "Video Gen",
+  "start_url": "/ja/video-generator",
+  "scope": "/ja/video-generator",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    { "src": "/video-generator-icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/video-generator-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
