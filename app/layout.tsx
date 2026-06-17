@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "VUAL - AI Fashion VTON & Live Commerce",
-  description: "High-end AI Fashion Virtual Try-On and Live Commerce SaaS Platform",
+  title: "VUAL — Creative Engineering Studio",
+  description: "Design, technology & fashion — powered by AI",
 };
 
 export default function RootLayout({

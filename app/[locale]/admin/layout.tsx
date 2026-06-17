@@ -98,9 +98,10 @@ export default function AdminLayout({
     }
   }, [user, isLoading, isLoginPage, locale, router]);
 
-  // On root domain, redirect logged-in user to their shop's subdomain
+  // On root domain, redirect logged-in user to their shop's subdomain (skip on localhost)
+  const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
   useEffect(() => {
-    if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && supabase) {
+    if (!isLoading && user && isRootDomain && !isLoginPage && !redirecting && supabase && !isLocalhost) {
       setRedirecting(true);
       (async () => {
         try {
@@ -117,7 +118,8 @@ export default function AdminLayout({
           }
           if (slug) {
             const baseDomain = window.location.hostname.split('.').slice(-2).join('.');
-            window.location.href = `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin`;
+            const port = window.location.port ? `:${window.location.port}` : '';
+            window.location.href = `${window.location.protocol}//${slug}.${baseDomain}${port}/${locale}/admin`;
           } else {
             setRedirecting(false);
           }

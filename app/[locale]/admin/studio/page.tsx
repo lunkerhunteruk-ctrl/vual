@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Search, Check, Loader2, Plus, X } from 'lucide-react';
+import { Search, Check, Loader2, Plus, X, Shirt, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { GeminiImageGenerator } from '@/components/admin/studio';
 import { useStoreContext } from '@/lib/store/store-context';
@@ -26,6 +26,20 @@ interface Product {
   description?: string;
   size_specs?: SizeSpec;
   product_images?: { id: string; url: string; is_primary: boolean }[];
+}
+
+interface CoordinateItem {
+  productId: string;
+  category: string;
+  position: number;
+}
+
+interface Coordinate {
+  id: string;
+  name: string;
+  items: CoordinateItem[];
+  cover_image_url: string | null;
+  created_at: string;
 }
 
 export default function AIStudioPage() {
@@ -57,22 +71,32 @@ export default function AIStudioPage() {
   const [selectedFifthImages, setSelectedFifthImages] = useState<string[]>([]);
   const [showFifthSlot, setShowFifthSlot] = useState(false);
 
+  // Coordinate insertion mode
+  const [coordinates, setCoordinates] = useState<Coordinate[]>([]);
+  const [coordinateMode, setCoordinateMode] = useState(false);
+  const [selectedCoordinate, setSelectedCoordinate] = useState<Coordinate | null>(null);
+  const [showCoordinatePicker, setShowCoordinatePicker] = useState(false);
 
-  // Fetch products
+  // Fetch products + coordinates
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/api/products?status=all&limit=100');
-        const data = await response.json();
-        if (data.products) setProducts(data.products);
+        const [pRes, cRes] = await Promise.all([
+          fetch('/api/products?status=all&limit=100'),
+          fetch('/api/coordinates'),
+        ]);
+        const pData = await pRes.json();
+        const cData = await cRes.json();
+        if (pData.products) setProducts(pData.products);
+        if (cData.coordinates) setCoordinates(cData.coordinates);
       } catch (error) {
-        console.error('Failed to fetch products:', error);
+        console.error('Failed to fetch data:', error);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchProducts();
+    fetchData();
   }, []);
 
   // Helpers
@@ -138,6 +162,51 @@ export default function AIStudioPage() {
       const rankB = idxB >= 0 ? idxB : priority.length;
       return rankA - rankB;
     });
+  };
+
+  // Apply a saved coordinate to the slots
+  const applyCoordinate = (coord: Coordinate) => {
+    // Clear all slots first
+    const setters = [setSelectedProduct, setSelectedSecondProduct, setSelectedThirdProduct, setSelectedFourthProduct, setSelectedFifthProduct];
+    const imgSetters = [setSelectedFirstImages, setSelectedSecondImages, setSelectedThirdImages, setSelectedFourthImages, setSelectedFifthImages];
+    setters.forEach(s => s(null));
+    imgSetters.forEach(s => s([]));
+
+    // Sort items by position and fill slots
+    const sorted = [...coord.items].sort((a, b) => a.position - b.position);
+    sorted.forEach((item, idx) => {
+      if (idx >= 5) return;
+      const p = products.find(prod => prod.id === item.productId);
+      if (!p) return;
+      setters[idx](p);
+      const img = getProductImage(p);
+      imgSetters[idx](img ? [img] : []);
+    });
+
+    // Show 5th slot if coordinate has 5 items
+    if (sorted.length >= 5) {
+      setShowFifthSlot(true);
+    }
+
+    setSelectedCoordinate(coord);
+    setShowCoordinatePicker(false);
+  };
+
+  // Clear coordinate mode and reset slots
+  const clearCoordinateSelection = () => {
+    setSelectedCoordinate(null);
+    setCoordinateMode(false);
+    setSelectedProduct(null);
+    setSelectedSecondProduct(null);
+    setSelectedThirdProduct(null);
+    setSelectedFourthProduct(null);
+    setSelectedFifthProduct(null);
+    setSelectedFirstImages([]);
+    setSelectedSecondImages([]);
+    setSelectedThirdImages([]);
+    setSelectedFourthImages([]);
+    setSelectedFifthImages([]);
+    setShowFifthSlot(false);
   };
 
   const toggleImageSelection = (
@@ -291,8 +360,118 @@ export default function AIStudioPage() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
-      {/* Item Selection Grid */}
-      <div className="flex-shrink-0 flex gap-2 mb-2">
+      {/* Mode Toggle: Individual vs Coordinate */}
+      <div className="flex-shrink-0 flex items-center gap-2 mb-2">
+        <div className="flex bg-[var(--color-bg-element)] rounded-lg p-0.5 border border-[var(--color-line)]">
+          <button
+            onClick={() => { setCoordinateMode(false); setSelectedCoordinate(null); setShowCoordinatePicker(false); }}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+              !coordinateMode
+                ? 'bg-white text-[var(--color-accent)] shadow-sm'
+                : 'text-[var(--color-text-label)] hover:text-[var(--color-text-body)]'
+            }`}
+          >
+            {locale === 'ja' ? '個別選択' : 'Individual'}
+          </button>
+          <button
+            onClick={() => { setCoordinateMode(true); setShowCoordinatePicker(true); }}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1.5 ${
+              coordinateMode
+                ? 'bg-white text-[var(--color-accent)] shadow-sm'
+                : 'text-[var(--color-text-label)] hover:text-[var(--color-text-body)]'
+            }`}
+          >
+            <Shirt size={12} />
+            {locale === 'ja' ? 'コーデ挿入' : 'Coordinate'}
+            {coordinates.length > 0 && (
+              <span className="ml-0.5 px-1.5 py-0 rounded-full bg-[var(--color-accent)]/10 text-[10px] text-[var(--color-accent)]">
+                {coordinates.length}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Selected coordinate indicator */}
+        {coordinateMode && selectedCoordinate && (
+          <div className="flex items-center gap-2 bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/20 rounded-lg px-3 py-1.5">
+            <Shirt size={12} className="text-[var(--color-accent)]" />
+            <span className="text-xs font-medium text-[var(--color-accent)]">
+              {selectedCoordinate.name || (locale === 'ja' ? '無題のコーデ' : 'Untitled')}
+            </span>
+            <span className="text-[10px] text-[var(--color-text-label)]">
+              ({selectedCoordinate.items.length} {locale === 'ja' ? 'アイテム' : 'items'})
+            </span>
+            <button
+              onClick={() => setShowCoordinatePicker(true)}
+              className="text-[10px] text-[var(--color-accent)] hover:underline"
+            >
+              {locale === 'ja' ? '変更' : 'Change'}
+            </button>
+            <button
+              onClick={clearCoordinateSelection}
+              className="p-0.5 rounded hover:bg-[var(--color-accent)]/10"
+            >
+              <X size={12} className="text-[var(--color-text-label)]" />
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Coordinate Picker Dropdown */}
+      {coordinateMode && showCoordinatePicker && (
+        <div className="flex-shrink-0 mb-2 bg-white border border-[var(--color-line)] rounded-xl p-3 max-h-[200px] overflow-y-auto">
+          {coordinates.length === 0 ? (
+            <p className="text-xs text-[var(--color-text-label)] text-center py-4">
+              {locale === 'ja' ? 'コーディネートがありません。先にコーデ画面で作成してください。' : 'No coordinates. Create one in the Coordinate page first.'}
+            </p>
+          ) : (
+            <div className="grid grid-cols-3 gap-2">
+              {coordinates.map((coord) => {
+                const isActive = selectedCoordinate?.id === coord.id;
+                return (
+                  <button
+                    key={coord.id}
+                    onClick={() => applyCoordinate(coord)}
+                    className={`text-left p-2 rounded-lg border transition-all ${
+                      isActive
+                        ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/5'
+                        : 'border-[var(--color-line)] hover:border-[var(--color-accent)]/50'
+                    }`}
+                  >
+                    {/* Coordinate preview thumbnails */}
+                    <div className="flex gap-0.5 mb-1.5">
+                      {coord.items.slice(0, 5).map((item, idx) => {
+                        const p = products.find(prod => prod.id === item.productId);
+                        const img = getProductImage(p || null);
+                        return (
+                          <div key={idx} className="flex-1 aspect-[3/4] bg-[var(--color-bg-element)] rounded overflow-hidden">
+                            {img ? (
+                              <Image src={img} alt="" width={40} height={53} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-[var(--color-text-label)]">
+                                <Shirt size={10} />
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <p className="text-[10px] font-medium text-[var(--color-text-body)] truncate">
+                      {coord.name || (locale === 'ja' ? '無題のコーデ' : 'Untitled')}
+                    </p>
+                    <p className="text-[9px] text-[var(--color-text-label)]">
+                      {coord.items.length} {locale === 'ja' ? 'アイテム' : 'items'}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Item Selection Grid — hidden in coordinate mode */}
+      {!coordinateMode && <div className="flex-shrink-0 flex gap-2 mb-2">
         <div className={`grid gap-2 flex-1 ${showFifthSlot ? 'grid-cols-5' : 'grid-cols-4'}`}>
           {renderItemColumn({
             num: 1,
@@ -378,7 +557,7 @@ export default function AIStudioPage() {
             <X size={14} />
           </button>
         )}
-      </div>
+      </div>}
 
       {/* Generator - fills remaining space */}
       <div className="flex-1 min-h-0">

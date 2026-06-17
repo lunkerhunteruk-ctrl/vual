@@ -39,7 +39,8 @@ const CONTENT = {
       items: [
         'Art Direction',
         'Cinematic Video Production',
-        'High-End Fashion Photography',
+        'Editorial Photography',
+        'AI Garment Design',
         'Immersive Virtual Try-On',
       ],
     },
@@ -74,7 +75,8 @@ const CONTENT = {
       items: [
         'Art Direction',
         'Cinematic Video Production',
-        'High-End Fashion Photography',
+        'Editorial Photography',
+        'AI Garment Design',
         'Immersive Virtual Try-On',
       ],
     },

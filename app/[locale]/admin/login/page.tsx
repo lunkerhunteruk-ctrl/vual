@@ -36,8 +36,15 @@ async function redirectToShop(locale: string) {
   const hostname = window.location.hostname;
   const parts = hostname.split('.');
   const isRootDomain = parts.length <= 2 || parts[0] === 'www';
+  const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
 
   if (!isRootDomain || !supabase) {
+    window.location.href = `${window.location.origin}/${locale}/admin`;
+    return;
+  }
+
+  // Skip subdomain redirect on localhost — Firebase authorized domains won't include subdomains
+  if (isLocalhost) {
     window.location.href = `${window.location.origin}/${locale}/admin`;
     return;
   }
@@ -72,9 +79,10 @@ async function redirectToShop(locale: string) {
       console.log('Custom token result:', customToken ? 'success' : 'null');
 
       const baseDomain = hostname.split('.').slice(-2).join('.');
+      const port = window.location.port ? `:${window.location.port}` : '';
       const targetUrl = customToken
-        ? `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login?token=${encodeURIComponent(customToken)}`
-        : `${window.location.protocol}//${slug}.${baseDomain}/${locale}/admin/login`;
+        ? `${window.location.protocol}//${slug}.${baseDomain}${port}/${locale}/admin/login?token=${encodeURIComponent(customToken)}`
+        : `${window.location.protocol}//${slug}.${baseDomain}${port}/${locale}/admin/login`;
       console.log('Redirecting to:', targetUrl);
       window.location.href = targetUrl;
       return;
