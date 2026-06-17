@@ -1315,7 +1315,10 @@ function ContactSection({ locale }: { locale: string }) {
               href="https://www.instagram.com/sachio_kawasaki/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] tracking-[0.2em] text-white/30 hover:text-white/60 transition-colors duration-500"
+              className="text-[11px] tracking-[0.2em]"
+              style={{ color: 'rgba(255,255,255,0.4)', transition: 'color 500ms' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,1)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
             >
               @sachio_kawasaki
             </a>
