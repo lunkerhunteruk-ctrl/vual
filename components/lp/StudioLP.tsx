@@ -38,6 +38,7 @@ const CONTENT = {
       sectionLabel: 'Capabilities',
       items: [
         'Art Direction',
+        'AI Model Direction',
         'Cinematic Video Production',
         'Editorial Photography',
         'AI Garment Design',
@@ -74,6 +75,7 @@ const CONTENT = {
       sectionLabel: 'Capabilities',
       items: [
         'Art Direction',
+        'AI Model Direction',
         'Cinematic Video Production',
         'Editorial Photography',
         'AI Garment Design',
