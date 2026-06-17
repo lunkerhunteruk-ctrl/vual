@@ -1304,7 +1304,7 @@ function ContactSection({ locale }: { locale: string }) {
             variants={fadeUp}
             href="mailto:studio@vual.jp"
             className="text-xl md:text-2xl font-light text-white hover:text-white/80 transition-colors duration-500 block mb-16"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', color: 'white' }}
           >
             studio@vual.jp
           </motion.a>
