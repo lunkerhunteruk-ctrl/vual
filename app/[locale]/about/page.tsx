@@ -16,10 +16,7 @@ const content = {
       { name: 'VUAL Studio（Shopify App）', desc: 'Shopifyストア向けAIルック生成・バーチャル試着アドオン。' },
     ],
     achievements_heading: '実績',
-    achievements: [
-      'adidas × Y-3（Yohji Yamamoto）コラボキャンペーン画像制作',
-      'commons and sense 誌 掲載（AIクリエイタークレジット：GAC_VUAL）',
-    ],
+    achievements: [] as string[],
     faq_heading: 'よくある質問',
     faqs: [
       { q: 'AIで生成した画像の品質は？', a: 'プロのスタジオ撮影と同等のクオリティ。雑誌掲載レベルの画像を生成します。adidas × Y-3キャンペーンでの実績があります。' },
@@ -48,10 +45,7 @@ const content = {
       { name: 'VUAL Studio (Shopify App)', desc: 'AI look generation and virtual try-on add-on for Shopify stores.' },
     ],
     achievements_heading: 'Work',
-    achievements: [
-      'adidas × Y-3 (Yohji Yamamoto) collaboration campaign imagery',
-      'commons and sense magazine feature (AI creator credit: GAC_VUAL)',
-    ],
+    achievements: [] as string[],
     faq_heading: 'FAQ',
     faqs: [
       { q: 'What is the quality of AI-generated images?', a: 'We produce magazine-quality images comparable to professional studio photography. Our work has been featured in the adidas × Y-3 campaign.' },
