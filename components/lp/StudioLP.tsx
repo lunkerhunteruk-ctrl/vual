@@ -99,6 +99,31 @@ const CONTENT = {
 // ============================================================
 // Works data
 // ============================================================
+
+// Client commissions — add entries here when work is released publicly.
+// When this array is empty, the "Commissions" subsection is hidden automatically.
+const COMMISSIONS: {
+  id: string;
+  client: string;
+  project: string;
+  medium: string;         // e.g. "commons and sense No.XX"
+  year: string;
+  credit: string;         // e.g. "GAC_VUAL"
+  thumbnail: string;      // image URL
+  link?: string;          // optional external link
+}[] = [
+  // Example (uncomment and fill when ready):
+  // {
+  //   id: 'y3-adidas-2026',
+  //   client: 'adidas × Y-3',
+  //   project: 'Campaign Imagery',
+  //   medium: 'commons and sense No.XX',
+  //   year: '2026',
+  //   credit: 'GAC_VUAL',
+  //   thumbnail: '',
+  // },
+];
+
 // Latest work — displayed full-width at the top of Selected Works
 const LATEST_WORK = {
   id: 'galleria-borghese',
@@ -493,6 +518,44 @@ function WorksSection({ locale }: { locale: string }) {
             <VerticalWorkCard key={work.id} work={work} index={i} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
         </div>
+
+        {/* Commissions — only rendered when COMMISSIONS array is non-empty */}
+        {COMMISSIONS.length > 0 && (
+          <div className="mt-24 md:mt-40">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8">
+              Commissions
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {COMMISSIONS.map((work) => (
+                <div key={work.id} className="group relative overflow-hidden rounded-sm bg-white/5">
+                  {work.thumbnail && (
+                    <img
+                      src={work.thumbnail}
+                      alt={`${work.client} — ${work.project}`}
+                      className="w-full aspect-[3/2] object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+                  )}
+                  <div className="p-5">
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">{work.medium} — {work.year}</p>
+                    <p className="text-base font-light text-white/90">{work.client}</p>
+                    <p className="text-sm text-white/50 mb-3">{work.project}</p>
+                    <p className="text-[10px] tracking-[0.15em] text-white/25">{work.credit}</p>
+                    {work.link && (
+                      <a
+                        href={work.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-block text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors"
+                      >
+                        View →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Past works label */}
         <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8 mt-24 md:mt-40">
