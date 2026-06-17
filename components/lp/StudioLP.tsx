@@ -1016,7 +1016,7 @@ function TalentSection({ locale }: { locale: string }) {
 
   return (
     <section className="relative py-24 md:py-40">
-      <div className="mx-auto" style={{ paddingLeft: 'clamp(1rem, 6vw, 12rem)', paddingRight: 'clamp(1rem, 6vw, 12rem)' }}>
+      <div className="mx-auto" style={{ paddingLeft: 'clamp(0.5rem, 3vw, 12rem)', paddingRight: 'clamp(0.5rem, 3vw, 12rem)' }}>
         <SectionLabel>{t.talent.sectionLabel}</SectionLabel>
 
         <motion.div
@@ -1055,9 +1055,9 @@ function TalentSection({ locale }: { locale: string }) {
           {/* Bottom: wide Mondrian carousel — arrows flank the grid so their
               space is reserved even on a single page; the grid width stays
               constant when a 2nd page (and the arrows) appear. */}
-          <motion.div variants={fadeUp} className="relative flex items-center gap-2 md:gap-12">
+          <motion.div variants={fadeUp} className="relative flex items-center gap-1 md:gap-12">
             {/* Left arrow rail (space always reserved) */}
-            <div className="flex-shrink-0 w-6 md:w-11 flex items-center justify-center">
+            <div className="flex-shrink-0 w-5 md:w-11 flex items-center justify-center">
               {pageCount > 1 && <GlassArrow dir="left" onClick={() => goTo(page - 1)} />}
             </div>
 
@@ -1133,7 +1133,7 @@ function TalentSection({ locale }: { locale: string }) {
             </div>
 
             {/* Right arrow rail (space always reserved) */}
-            <div className="flex-shrink-0 w-6 md:w-11 flex items-center justify-center">
+            <div className="flex-shrink-0 w-5 md:w-11 flex items-center justify-center">
               {pageCount > 1 && <GlassArrow dir="right" onClick={() => goTo(page + 1)} />}
             </div>
           </motion.div>
