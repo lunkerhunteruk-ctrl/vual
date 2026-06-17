@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: '/business', priority: 1.0, changeFrequency: 'weekly' as const },
     { path: '/shopify', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
   ];
 
   return routes.flatMap(({ path, priority, changeFrequency }) =>
