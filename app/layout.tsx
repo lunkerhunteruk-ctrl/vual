@@ -15,8 +15,32 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "VUAL — Creative Engineering Studio",
-  description: "Design, technology & fashion — powered by AI",
+  title: "VUAL — AIファッション撮影・ルック生成・バーチャル試着",
+  description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIイメージ生成・AIモデル撮影SaaSプラットフォーム。",
+  keywords: [
+    "AIファッション撮影", "AIルック生成", "AIイメージ生成", "AIモデル撮影",
+    "バーチャル試着", "AI試着", "アパレル AI", "ファッション AI",
+    "ECサイト 商品撮影", "AI fashion photography", "AI model generation",
+    "virtual try-on", "VTON", "VUAL",
+  ],
+  metadataBase: new URL("https://vual.jp"),
+  alternates: {
+    canonical: "/",
+    languages: { "ja": "/ja", "en": "/en" },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "VUAL",
+    title: "VUAL — AIファッション撮影・ルック生成・バーチャル試着",
+    description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIイメージ生成・AIモデル撮影SaaSプラットフォーム。",
+    url: "https://vual.jp",
+    locale: "ja_JP",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VUAL — AIファッション撮影・ルック生成",
+    description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIプラットフォーム。",
+  },
 };
 
 export default function RootLayout({
