@@ -146,7 +146,7 @@ function PricingCard({ plan, isPopular }: {
         )}
       </div>
       <a
-        href="https://apps.shopify.com/"
+        href="https://apps.shopify.com/vual-studio"
         target="_blank"
         rel="noopener noreferrer"
         style={isPopular ? { color: '#111', backgroundColor: '#fff' } : undefined}
@@ -316,7 +316,7 @@ export default function ShopifyLP() {
             className="flex flex-col items-center gap-3"
           >
             <a
-              href="https://apps.shopify.com/"
+              href="https://apps.shopify.com/vual-studio"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#111', backgroundColor: '#fff' }} className="inline-flex items-center gap-2 px-8 py-4 text-base font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-white/10"
@@ -527,7 +527,7 @@ export default function ShopifyLP() {
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-col items-center gap-4">
             <a
-              href="https://apps.shopify.com/"
+              href="https://apps.shopify.com/vual-studio"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#111', backgroundColor: '#fff' }} className="inline-flex items-center gap-2 px-8 py-4 text-base font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-white/10"
