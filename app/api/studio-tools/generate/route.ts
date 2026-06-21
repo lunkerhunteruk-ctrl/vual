@@ -937,7 +937,7 @@ Respond in JSON only. No explanation. Format:
   // Helper to call Gemini
   async function callGemini(prompt: string, sysPrompt: string): Promise<{ id: string; customNote: string; cameraLabel?: string }[]> {
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

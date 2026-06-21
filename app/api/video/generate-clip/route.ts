@@ -8,7 +8,7 @@ export const maxDuration = 300;
 
 const MAX_POLL_TIME_MS = 240000; // 4 minutes per attempt (leave room for retry)
 const POLL_INTERVAL_MS = 10000;  // 10 seconds
-const GEMINI_MODEL = 'gemini-2.5-flash-lite';
+const GEMINI_MODEL = 'gemini-3.1-flash-lite';
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 /**
