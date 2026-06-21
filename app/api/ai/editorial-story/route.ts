@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const GEMINI_MODEL = 'gemini-3.1-flash-lite';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const APIMART_URL = 'https://api.apimart.ai/v1/chat/completions';
+const APIMART_MODEL = 'gemini-3.5-flash';
 
 interface EditorialStoryRequest {
   storyConcept: string;
@@ -24,9 +24,9 @@ interface EditorialStoryRequest {
  */
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.APIMART_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'GEMINI_API_KEY not configured' }, { status: 500 });
+      return NextResponse.json({ error: 'APIMART_API_KEY not configured' }, { status: 500 });
     }
 
     const body: EditorialStoryRequest = await request.json();
@@ -130,15 +130,14 @@ CRITICAL RULES:
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 {"shots": [{"prompt": "Editorial fashion photography, ...", "aspectRatio": "3:4", "label": "Dawn Arrival"}, ...]}`;
 
-    const response = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+    const response = await fetch(APIMART_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.9,
-          maxOutputTokens: 4000,
-        },
+        model: APIMART_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.9,
+        max_tokens: 4000,
       }),
     });
 
@@ -151,7 +150,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
     }
 
     const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const text = data.choices?.[0]?.message?.content || '';
 
     try {
       const jsonMatch = text.match(/\{[\s\S]*\}/);

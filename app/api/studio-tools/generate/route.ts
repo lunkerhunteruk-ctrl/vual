@@ -181,8 +181,8 @@ IMPORTANT: This is a fashion photograph with the gravitas of fine art — like P
   const isStillPhoto = filmMode === 'still';
   const filmText = (filmMode && filmMode !== 'still' && filmPresets[filmMode]) ? filmPresets[filmMode] : null;
 
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) return NextResponse.json({ error: 'GEMINI_API_KEY not set' }, { status: 500 });
+  const apiKey = process.env.APIMART_API_KEY;
+  if (!apiKey) return NextResponse.json({ error: 'APIMART_API_KEY not set' }, { status: 500 });
 
   // Build tuck/outer notes
   const tuckNote = tuck === 'tuck-in' ? ' The inner top/shirt MUST be fully TUCKED IN (not jackets/coats).'
@@ -934,23 +934,27 @@ Respond in JSON only. No explanation. Format:
   ...
 ]`;
 
-  // Helper to call Gemini
+  // Helper to call Gemini via APIMart (OpenAI-compatible)
   async function callGemini(prompt: string, sysPrompt: string): Promise<{ id: string; customNote: string; cameraLabel?: string }[]> {
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${apiKey}`,
+      'https://api.apimart.ai/v1/chat/completions',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          systemInstruction: { parts: [{ text: sysPrompt }] },
-          generationConfig: { temperature: 0.7, responseMimeType: 'application/json' },
+          model: 'gemini-3.5-flash',
+          messages: [
+            { role: 'system', content: sysPrompt },
+            { role: 'user', content: prompt },
+          ],
+          temperature: 0.7,
+          response_format: { type: 'json_object' },
         }),
       }
     );
     const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) throw new Error('Gemini returned no response: ' + JSON.stringify(data).substring(0, 200));
+    const text = data.choices?.[0]?.message?.content;
+    if (!text) throw new Error('APIMart returned no response: ' + JSON.stringify(data).substring(0, 200));
     return JSON.parse(text);
   }
 

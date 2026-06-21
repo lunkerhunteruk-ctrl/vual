@@ -8,25 +8,24 @@ export const maxDuration = 300;
 
 const MAX_POLL_TIME_MS = 240000; // 4 minutes per attempt (leave room for retry)
 const POLL_INTERVAL_MS = 10000;  // 10 seconds
-const GEMINI_MODEL = 'gemini-3.1-flash-lite';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const APIMART_URL = 'https://api.apimart.ai/v1/chat/completions';
+const APIMART_MODEL = 'gemini-3.5-flash';
 
 /**
  * Use Gemini to simplify a video prompt that Veo rejected.
  * Returns a shorter, safer prompt.
  */
 async function simplifyPrompt(originalPrompt: string, durationSec: number): Promise<string | null> {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.APIMART_API_KEY;
   if (!apiKey) return null;
 
   try {
-    const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+    const res = await fetch(APIMART_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: `You are rewriting a video generation prompt that was rejected by the Veo AI model.
+        model: APIMART_MODEL,
+        messages: [{ role: 'user', content: `You are rewriting a video generation prompt that was rejected by the Veo AI model.
 
 REJECTED PROMPT:
 ${originalPrompt}
@@ -37,16 +36,15 @@ Rewrite this as a simpler, shorter prompt (max 2 sentences) that describes the s
 - Keep the fashion editorial style
 - End with: "${durationSec} second clip, cinematic aspect ratio, photorealistic quality, no background music"
 
-Return ONLY the new prompt text, nothing else.`
-          }]
-        }],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 200 },
+Return ONLY the new prompt text, nothing else.` }],
+        temperature: 0.3,
+        max_tokens: 200,
       }),
     });
 
     if (!res.ok) return null;
     const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    const text = data.choices?.[0]?.message?.content?.trim();
     if (text && text.length > 20) {
       console.log(`[Generate Clip] Simplified prompt: ${text}`);
       return text;

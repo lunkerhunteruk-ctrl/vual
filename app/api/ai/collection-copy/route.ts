@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const GEMINI_MODEL = 'gemini-3.1-flash-lite';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const APIMART_URL = 'https://api.apimart.ai/v1/chat/completions';
+const APIMART_MODEL = 'gemini-3.5-flash';
 
 /**
  * POST /api/ai/collection-copy
@@ -10,9 +10,9 @@ const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GE
  */
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.APIMART_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: 'GEMINI_API_KEY not configured' }, { status: 500 });
+      return NextResponse.json({ error: 'APIMART_API_KEY not configured' }, { status: 500 });
     }
 
     const body = await request.json();
@@ -179,31 +179,25 @@ CRITICAL RULES:
 IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 {"title": "Your Title Here", "description": "Your description here as plain text.", "shot_duration_sec": 6, "video_prompt_veo": "Scene: ...", "video_prompt_kling": "Scene: ...", "telop_caption_ja": "光の中で息をする", "telop_caption_en": "breathing in the light"}`;
 
-    const parts: any[] = [{ text: prompt }];
-    if (resolvedImageBase64) {
-      // Strip data URI prefix if present
-      const base64Data = resolvedImageBase64.replace(/^data:image\/\w+;base64,/, '');
-      parts.push({
-        inline_data: {
-          mime_type: 'image/png',
-          data: base64Data,
-        },
-      });
-    }
+    const messageContent: any = resolvedImageBase64
+      ? [
+          { type: 'text', text: prompt },
+          { type: 'image_url', image_url: { url: `data:image/png;base64,${resolvedImageBase64.replace(/^data:image\/\w+;base64,/, '')}` } },
+        ]
+      : prompt;
 
     // Retry up to 3 times on API errors (rate limits, transient failures)
     const MAX_RETRIES = 3;
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
       try {
-        const response = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+        const response = await fetch(APIMART_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
           body: JSON.stringify({
-            contents: [{ parts }],
-            generationConfig: {
-              temperature: 1.0,
-              maxOutputTokens: 2000,
-            },
+            model: APIMART_MODEL,
+            messages: [{ role: 'user', content: messageContent }],
+            temperature: 1.0,
+            max_tokens: 2000,
           }),
         });
 
@@ -218,7 +212,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
         }
 
         const data = await response.json();
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const text = data.choices?.[0]?.message?.content || '';
 
         const jsonMatch = text.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
@@ -320,21 +314,19 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
 
 async function trimVideoPrompt(prompt: string, duration: number, apiKey: string): Promise<string | null> {
   try {
-    const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+    const res = await fetch(APIMART_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
       body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: `Shorten this video generation prompt to under 120 words while keeping all essential details (scene, subject, camera, style, audio). Keep the ending line about duration and aspect ratio. Remove redundant adjectives and merge similar descriptions. Do NOT add new details.\n\nOriginal prompt:\n${prompt}\n\nReturn ONLY the shortened prompt, nothing else.`,
-          }],
-        }],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 300 },
+        model: APIMART_MODEL,
+        messages: [{ role: 'user', content: `Shorten this video generation prompt to under 120 words while keeping all essential details (scene, subject, camera, style, audio). Keep the ending line about duration and aspect ratio. Remove redundant adjectives and merge similar descriptions. Do NOT add new details.\n\nOriginal prompt:\n${prompt}\n\nReturn ONLY the shortened prompt, nothing else.` }],
+        temperature: 0.3,
+        max_tokens: 300,
       }),
     });
     if (!res.ok) return null;
     const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    const text = data.choices?.[0]?.message?.content?.trim();
     if (text && text.split(/\s+/).filter(Boolean).length <= 150) {
       return text;
     }
