@@ -137,6 +137,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
         model: APIMART_MODEL,
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.9,
+        stream: false,
         max_tokens: 4000,
       }),
     });

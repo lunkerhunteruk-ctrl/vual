@@ -948,6 +948,7 @@ Respond in JSON only. No explanation. Format:
             { role: 'user', content: prompt },
           ],
           temperature: 0.7,
+          stream: false,
           response_format: { type: 'json_object' },
         }),
       }

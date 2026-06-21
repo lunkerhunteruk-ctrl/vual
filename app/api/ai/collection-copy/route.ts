@@ -197,6 +197,7 @@ IMPORTANT: Respond in EXACTLY this JSON format, nothing else:
             model: APIMART_MODEL,
             messages: [{ role: 'user', content: messageContent }],
             temperature: 1.0,
+            stream: false,
             max_tokens: 2000,
           }),
         });
@@ -321,6 +322,7 @@ async function trimVideoPrompt(prompt: string, duration: number, apiKey: string)
         model: APIMART_MODEL,
         messages: [{ role: 'user', content: `Shorten this video generation prompt to under 120 words while keeping all essential details (scene, subject, camera, style, audio). Keep the ending line about duration and aspect ratio. Remove redundant adjectives and merge similar descriptions. Do NOT add new details.\n\nOriginal prompt:\n${prompt}\n\nReturn ONLY the shortened prompt, nothing else.` }],
         temperature: 0.3,
+        stream: false,
         max_tokens: 300,
       }),
     });

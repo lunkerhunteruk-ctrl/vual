@@ -38,6 +38,7 @@ Rewrite this as a simpler, shorter prompt (max 2 sentences) that describes the s
 
 Return ONLY the new prompt text, nothing else.` }],
         temperature: 0.3,
+        stream: false,
         max_tokens: 200,
       }),
     });
