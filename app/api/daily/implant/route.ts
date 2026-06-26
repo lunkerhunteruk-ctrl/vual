@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createServerClient } from '@/lib/supabase';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
@@ -36,10 +37,32 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { entityImage, lookFile, height } = body;
+    const { entityImage, lookFile, height, firebaseUid } = body;
 
     if (!entityImage || !lookFile) {
       return NextResponse.json({ error: 'entityImage and lookFile are required' }, { status: 400 });
+    }
+
+    // Server-side credit guard for logged-in users
+    if (firebaseUid) {
+      const supa = createServerClient();
+      if (supa) {
+        const { data: credit } = await supa
+          .from('consumer_credits')
+          .select('id, free_tickets_remaining, paid_credits, subscription_credits')
+          .eq('firebase_uid', firebaseUid)
+          .single();
+        if (credit) {
+          const hasCredits =
+            (credit.free_tickets_remaining ?? 0) > 0 ||
+            (credit.subscription_credits ?? 0) > 0 ||
+            (credit.paid_credits ?? 0) > 0;
+          if (!hasCredits) {
+            return NextResponse.json({ error: 'No credits remaining', code: 'INSUFFICIENT_CREDITS' }, { status: 402 });
+          }
+          await supa.rpc('deduct_consumer_credit', { p_consumer_credit_id: credit.id });
+        }
+      }
     }
 
     const modelHeight = height || 170;

@@ -1,5 +1,4 @@
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { supabase } from '@/lib/supabase';
 
 export interface VaultCollection {
   id: string;
@@ -9,61 +8,108 @@ export interface VaultCollection {
   publishAt: Date | null;
   createdAt: Date;
   hasRecipe?: boolean;
-  tier?: "high" | "daily";
+  tier?: 'high' | 'daily';
   media: {
     file: string;
     previewFile?: string;
-    type: "image" | "video";
-    aspect: "3:4" | "4:3" | "9:16" | "16:9" | "1:1";
+    type: 'image' | 'video';
+    aspect: '3:4' | '4:3' | '9:16' | '16:9' | '1:1';
     isHero?: boolean;
     hidden?: boolean;
   }[];
 }
 
-// Fetch published collections filtered by tier
-export async function getPublishedCollections(tier?: "high" | "daily"): Promise<VaultCollection[]> {
-  if (!db) return [];
-  const snapshot = await getDocs(collection(db, 'vault_collections'));
-  const now = new Date();
-  const results: VaultCollection[] = [];
+// Map category → legacy tier for backward compat
+function categoryToTier(category: string | null): 'high' | 'daily' | undefined {
+  if (category === 'high_fashion') return 'high';
+  if (category) return 'daily';
+  return undefined;
+}
 
-  snapshot.forEach((d) => {
-    const data = d.data();
-    const publishAt = data.publishAt?.toDate?.() || null;
-    const published = data.published ?? false;
+export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<VaultCollection[]> {
+  if (!supabase) return [];
 
-    // Show if published=true AND (no schedule OR schedule has passed)
-    if (published && (!publishAt || publishAt <= now)) {
-      const docTier = data.tier || undefined;
+  let q = supabase
+    .from('collection_looks')
+    .select(`
+      id,
+      image_url,
+      position,
+      published_at,
+      category,
+      bundle_id,
+      collection_bundles!inner (
+        id,
+        title,
+        subtitle,
+        published_at,
+        created_at
+      )
+    `)
+    .eq('is_public', true)
+    .not('bundle_id', 'is', null);
 
-      // Tier filter
-      if (tier && docTier !== tier) return;
+  if (tier === 'high') {
+    q = q.eq('category', 'high_fashion');
+  } else if (tier === 'daily') {
+    q = q.neq('category', 'high_fashion');
+  }
 
-      results.push({
-        id: d.id,
-        city: data.city || '',
-        subtitle: data.subtitle || '',
-        published,
-        publishAt,
-        createdAt: data.createdAt?.toDate?.() || new Date(),
-        hasRecipe: data.hasRecipe ?? false,
-        tier: docTier,
-        media: (data.media || []).filter((m: any) => !m.hidden),
-      });
+  const { data, error } = await q.order('published_at', { ascending: false });
+  if (error || !data) return [];
+
+  // Group by bundle_id
+  const bundleMap = new Map<string, {
+    bundle: { id: string; title: string; subtitle?: string; published_at: string | null; created_at: string };
+    looks: typeof data;
+  }>();
+
+  for (const look of data) {
+    const b = (look as any).collection_bundles;
+    if (!b) continue;
+    const bId = look.bundle_id as string;
+    if (!bundleMap.has(bId)) {
+      bundleMap.set(bId, { bundle: b, looks: [] });
     }
-  });
+    bundleMap.get(bId)!.looks.push(look);
+  }
 
-  // Sort by publishAt descending (newest first)
+  const results: VaultCollection[] = [];
+  for (const [bundleId, { bundle, looks }] of bundleMap) {
+    const sortedLooks = looks.sort((a, b) => (a.position ?? 0) - (b.position ?? 0));
+    const publishAt = bundle.published_at ? new Date(bundle.published_at) : null;
+    const createdAt = bundle.created_at ? new Date(bundle.created_at) : new Date();
+    const firstLook = sortedLooks[0];
+    const tierValue = categoryToTier((firstLook as any).category ?? null);
+
+    results.push({
+      id: bundleId,
+      city: bundle.title || '',
+      subtitle: bundle.subtitle || '',
+      published: true,
+      publishAt,
+      createdAt,
+      hasRecipe: true,
+      tier: tierValue,
+      media: sortedLooks.map((look, i) => ({
+        file: (look as any).image_url || '',
+        type: 'image' as const,
+        aspect: '3:4' as const,
+        isHero: i === 0,
+      })),
+    });
+  }
+
+  // Sort by publishAt desc
   results.sort((a, b) => {
-    const aTime = a.publishAt?.getTime() || a.createdAt.getTime();
-    const bTime = b.publishAt?.getTime() || b.createdAt.getTime();
+    const aTime = a.publishAt?.getTime() ?? a.createdAt.getTime();
+    const bTime = b.publishAt?.getTime() ?? b.createdAt.getTime();
     return bTime - aTime;
   });
 
   return results;
 }
 
-// Format publishAt date for display: "5.27"
 export function formatCollectionDate(col: VaultCollection): string {
   const d = col.publishAt || col.createdAt;
   return `${d.getMonth() + 1}.${d.getDate()}`;

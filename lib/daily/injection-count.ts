@@ -1,6 +1,13 @@
-import { doc, getDoc, setDoc, runTransaction } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { supabase } from '@/lib/supabase';
 
+// Extract the matchable key from a look file path
+// e.g. "collections/01-06-2026_1247/look3.webp" → "01-06-2026_1247/look3"
+function lookFileToKey(lookFile: string): string | null {
+  const m = lookFile.match(/collections\/([^/]+\/look\d+)\./);
+  return m ? m[1] : null;
+}
+
+// Kept for backward compat — callers that still call lookFileToId can use this
 export function lookFileToId(file: string): string {
   const dateMatch = file.match(/(\d{2}-\d{2}-\d{4})\/look(\d+)\.\w+/);
   if (dateMatch) return `${dateMatch[1]}_look${dateMatch[2]}`;
@@ -9,61 +16,57 @@ export function lookFileToId(file: string): string {
   return file.replace(/[^a-zA-Z0-9]/g, '_');
 }
 
-function seededInitialCount(lookId: string): number {
+function seededInitialCount(key: string): number {
   let hash = 0;
-  for (let i = 0; i < lookId.length; i++) {
-    hash = ((hash << 5) - hash) + lookId.charCodeAt(i);
+  for (let i = 0; i < key.length; i++) {
+    hash = ((hash << 5) - hash) + key.charCodeAt(i);
     hash |= 0;
   }
   const seed = Math.sin(hash * 9301 + 49297) * 49297;
   return 3 + Math.floor((seed - Math.floor(seed)) * 3);
 }
 
-export async function getRemainingInjections(lookId: string): Promise<number> {
-  if (!db) return 0;
-  const ref = doc(db, 'injection_counts', lookId);
-  const snap = await getDoc(ref);
-  if (snap.exists()) {
-    return snap.data().remaining ?? 0;
-  }
-  const initial = seededInitialCount(lookId);
-  await setDoc(ref, { remaining: initial, initial, createdAt: new Date() });
-  return initial;
+async function findLook(lookFile: string): Promise<{ id: string; injection_remaining: number | null; injection_initial: number | null } | null> {
+  if (!supabase) return null;
+  const key = lookFileToKey(lookFile);
+  if (!key) return null;
+  const { data } = await supabase
+    .from('collection_looks')
+    .select('id, injection_remaining, injection_initial')
+    .ilike('image_url', `%${key}%`)
+    .limit(1)
+    .single();
+  return data ?? null;
 }
 
-export async function getInjectionInfo(lookId: string): Promise<{ remaining: number; initial: number }> {
-  if (!db) return { remaining: 0, initial: 0 };
-  const ref = doc(db, 'injection_counts', lookId);
-  const snap = await getDoc(ref);
-  if (snap.exists()) {
-    const data = snap.data();
-    return { remaining: data.remaining ?? 0, initial: data.initial ?? data.remaining ?? 0 };
+// lookFile: raw file path like "collections/01-06-2026_1247/look3.webp"
+export async function getRemainingInjections(lookFile: string): Promise<number> {
+  const look = await findLook(lookFile);
+  if (look?.injection_remaining != null) return look.injection_remaining;
+  return seededInitialCount(lookFile);
+}
+
+export async function getInjectionInfo(lookFile: string): Promise<{ remaining: number; initial: number }> {
+  const look = await findLook(lookFile);
+  if (look?.injection_remaining != null) {
+    return {
+      remaining: look.injection_remaining,
+      initial: look.injection_initial ?? look.injection_remaining,
+    };
   }
-  const initial = seededInitialCount(lookId);
-  await setDoc(ref, { remaining: initial, initial, createdAt: new Date() });
+  const initial = seededInitialCount(lookFile);
   return { remaining: initial, initial };
 }
 
-export async function decrementInjection(lookId: string): Promise<number> {
-  if (!db) return -1;
-  const ref = doc(db, 'injection_counts', lookId);
+export async function decrementInjection(lookFile: string): Promise<number> {
+  if (!supabase) return -1;
+  const look = await findLook(lookFile);
+  if (!look) return seededInitialCount(lookFile) - 1;
 
-  try {
-    const newRemaining = await runTransaction(db, async (transaction) => {
-      const snap = await transaction.get(ref);
-      if (!snap.exists()) {
-        const initial = seededInitialCount(lookId);
-        transaction.set(ref, { remaining: initial - 1, initial, createdAt: new Date() });
-        return initial - 1;
-      }
-      const current = snap.data().remaining ?? 0;
-      if (current <= 0) return -1;
-      transaction.update(ref, { remaining: current - 1 });
-      return current - 1;
-    });
-    return newRemaining;
-  } catch (err) {
-    console.error('Failed to decrement injection:', err);
+  const { data, error } = await supabase.rpc('decrement_injection', { p_look_id: look.id });
+  if (error) {
+    console.error('decrement_injection error:', error);
     return -1;
   }
+  return data ?? -1;
 }

@@ -4,7 +4,7 @@ import type { VaultUser } from './auth';
 import { syncCreditsToFirestore, addPointsToFirestore } from './auth';
 
 const GUEST_FREE = 3;
-const DAILY_FREE = 5;
+const DAILY_FREE = 3;
 
 function todayStr(): string {
   return new Date().toISOString().slice(0, 10);

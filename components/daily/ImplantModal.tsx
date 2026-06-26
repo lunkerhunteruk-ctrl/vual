@@ -9,7 +9,7 @@ import { CreditSheet } from "./CreditSheet";
 import { t } from "@/lib/daily/i18n";
 import { applyFilmEffects } from "@/lib/daily/film-effects";
 import { ShuffleText } from "./ShuffleText";
-import { decrementInjection, lookFileToId, getInjectionInfo } from "@/lib/daily/injection-count";
+import { decrementInjection, getInjectionInfo } from "@/lib/daily/injection-count";
 import { saveGenerationRecord } from "@/lib/daily/generations";
 
 interface ImplantModalProps {
@@ -54,8 +54,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
 
   useEffect(() => {
     if (image) {
-      const lookId = lookFileToId(image.file);
-      getInjectionInfo(lookId).then(({ remaining, initial }) => {
+      getInjectionInfo(image.file).then(({ remaining, initial }) => {
         setSceneRemaining(remaining);
         setSceneInitial(initial);
       });
@@ -114,6 +113,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
           entityImage,
           lookFile: image.file,
           height,
+          firebaseUid: user?.id ?? null,
         }),
       });
 
@@ -147,8 +147,7 @@ export function ImplantModal({ image, entities, themeCity, totalLooks, onClose }
         incrementGeneration();
 
         // Always decrement scene injection count
-        const lookId = lookFileToId(image.file);
-        const newRemaining = await decrementInjection(lookId);
+        const newRemaining = await decrementInjection(image.file);
         setSceneRemaining(newRemaining);
 
         if (!isFreeGeneration) {
