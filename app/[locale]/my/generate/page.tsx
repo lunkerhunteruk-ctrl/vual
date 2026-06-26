@@ -405,7 +405,7 @@ export default function QuickGeneratePage() {
                           disabled={look.saved || look.loading}
                           className="flex-1 text-xs py-2 border border-zinc-700 text-zinc-400 hover:border-zinc-400 hover:text-zinc-200 transition-colors rounded-sm disabled:opacity-40 disabled:cursor-not-allowed"
                         >
-                          {look.saved ? '保存済み' : look.loading ? '...' : '金庫に保存'}
+                          {look.saved ? '保存済み' : look.loading ? '...' : 'ワードローブに保存'}
                         </button>
                       ) : (
                         <button

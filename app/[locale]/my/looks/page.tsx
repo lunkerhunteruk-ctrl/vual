@@ -92,7 +92,7 @@ export default function MyLooksPage() {
       {/* Header */}
       <div className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
         <div>
-          <h1 className="text-sm font-medium tracking-widest uppercase text-zinc-400">My Vault</h1>
+          <h1 className="text-sm font-medium tracking-widest uppercase text-zinc-400">My Wardrobe</h1>
           <p className="text-xs text-zinc-600 mt-0.5">保存したルック</p>
         </div>
         <div className="flex items-center gap-4">
