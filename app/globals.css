@@ -313,6 +313,80 @@ img {
 .daily-vault[data-theme="light"] .hover\:text-white\/50:hover { color: rgba(0,0,0,0.5) !important; }
 .daily-vault[data-theme="light"] .hover\:text-white\/70:hover { color: rgba(0,0,0,0.7) !important; }
 
+/* ========================================
+   Wardrobe Pages Theme (.my-wardrobe)
+   Default: LIGHT  |  data-theme absent: DARK
+   ======================================== */
+
+/* Dark (no data-theme) */
+.my-wardrobe {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Light (data-theme="light") */
+.my-wardrobe[data-theme="light"] {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* Light: layout backgrounds */
+.my-wardrobe[data-theme="light"] .bg-black          { background-color: #ffffff !important; }
+.my-wardrobe[data-theme="light"] .bg-zinc-900        { background-color: #f4f4f5 !important; }
+.my-wardrobe[data-theme="light"] .bg-zinc-800        { background-color: #e4e4e7 !important; }
+.my-wardrobe[data-theme="light"] .bg-zinc-700        { background-color: #d4d4d8 !important; }
+
+/* Light: borders */
+.my-wardrobe[data-theme="light"] .border-zinc-800    { border-color: #e4e4e7 !important; }
+.my-wardrobe[data-theme="light"] .border-zinc-700    { border-color: #d4d4d8 !important; }
+.my-wardrobe[data-theme="light"] .border-zinc-600    { border-color: #a1a1aa !important; }
+.my-wardrobe[data-theme="light"] .border-dashed      { border-color: #d4d4d8; }
+
+/* Light: text */
+.my-wardrobe[data-theme="light"] .text-white         { color: #111111 !important; }
+.my-wardrobe[data-theme="light"] .text-zinc-200      { color: #18181b !important; }
+.my-wardrobe[data-theme="light"] .text-zinc-300      { color: #3f3f46 !important; }
+.my-wardrobe[data-theme="light"] .text-zinc-400      { color: #52525b !important; }
+.my-wardrobe[data-theme="light"] .text-zinc-500      { color: #71717a !important; }
+.my-wardrobe[data-theme="light"] .text-zinc-600      { color: #71717a !important; }
+
+/* Light: primary button (bg-white text-black → dark button) */
+.my-wardrobe[data-theme="light"] .bg-white           { background-color: #111111 !important; }
+.my-wardrobe[data-theme="light"] .text-black         { color: #ffffff !important; }
+.my-wardrobe[data-theme="light"] .hover\:bg-zinc-100:hover { background-color: #27272a !important; }
+
+/* Light: select dropdowns */
+.my-wardrobe[data-theme="light"] select {
+  background-color: #f4f4f5 !important;
+  color: #111111 !important;
+  border-color: #e4e4e7 !important;
+}
+
+/* Light: hover states */
+.my-wardrobe[data-theme="light"] .hover\:border-zinc-400:hover { border-color: #a1a1aa !important; }
+.my-wardrobe[data-theme="light"] .hover\:border-zinc-500:hover { border-color: #71717a !important; }
+.my-wardrobe[data-theme="light"] .hover\:text-zinc-200:hover   { color: #18181b !important; }
+.my-wardrobe[data-theme="light"] .hover\:text-zinc-300:hover   { color: #27272a !important; }
+.my-wardrobe[data-theme="light"] .hover\:border-zinc-400:hover { border-color: #a1a1aa !important; }
+
+/* Light: image overlays */
+.my-wardrobe[data-theme="light"] .bg-black\/40       { background-color: rgba(0,0,0,0.25) !important; }
+.my-wardrobe[data-theme="light"] .bg-black\/60       { background-color: rgba(0,0,0,0.35) !important; }
+.my-wardrobe[data-theme="light"] .bg-white\/10       { background-color: rgba(0,0,0,0.06) !important; }
+.my-wardrobe[data-theme="light"] .bg-white\/20       { background-color: rgba(0,0,0,0.08) !important; }
+.my-wardrobe[data-theme="light"] .backdrop-blur-sm   { backdrop-filter: blur(4px); }
+
+/* Light: spinner & misc */
+.my-wardrobe[data-theme="light"] .border-t-white     { border-top-color: #111111 !important; }
+.my-wardrobe[data-theme="light"] .accent-white        { accent-color: #111111; }
+
+/* Light: status colors */
+.my-wardrobe[data-theme="light"] .text-red-400       { color: #dc2626 !important; }
+.my-wardrobe[data-theme="light"] .text-red-300       { color: #dc2626 !important; }
+.my-wardrobe[data-theme="light"] .bg-red-900\/60     { background-color: rgba(239,68,68,0.08) !important; }
+.my-wardrobe[data-theme="light"] .hover\:bg-red-800\/80:hover { background-color: rgba(239,68,68,0.15) !important; }
+.my-wardrobe[data-theme="light"] .text-amber-600     { color: #d97706 !important; }
+
 /* Cell breathing animation for Mondrian grid */
 @keyframes cellBreathe {
   0% { transform: scale(1.0); }

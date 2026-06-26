@@ -6,6 +6,7 @@ import { auth } from '@/lib/firebase';
 import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle } from '@/lib/daily/auth';
 import Link from 'next/link';
+import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
 
 interface Look {
   id: string;
@@ -88,7 +89,7 @@ export default function MyLooksPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="my-wardrobe min-h-screen" data-theme="light">
       {/* Header */}
       <div className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
         <div>
@@ -96,6 +97,7 @@ export default function MyLooksPage() {
           <p className="text-xs text-zinc-600 mt-0.5">保存したルック</p>
         </div>
         <div className="flex items-center gap-4">
+          <WardrobeThemeToggle />
           {user ? (
             <Link
               href="../generate"

@@ -5,6 +5,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
+import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
 
 // ─── Types ───────────────────────────────────────────────────
 type Variant = 'A' | 'B';
@@ -209,7 +210,7 @@ export default function QuickGeneratePage() {
     : `ゲスト: 残 ${freeRemaining()} 回`;
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="my-wardrobe min-h-screen" data-theme="light">
       {/* Header */}
       <div className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
         <div>
@@ -218,6 +219,7 @@ export default function QuickGeneratePage() {
         </div>
         <div className="flex items-center gap-4">
           <span className="text-xs text-zinc-500">{creditLabel}</span>
+          <WardrobeThemeToggle />
           {!user && (
             <button
               onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
