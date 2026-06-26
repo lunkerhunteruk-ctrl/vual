@@ -176,7 +176,7 @@ export default function QuickGeneratePage() {
       <WardrobeUserBadge />
 
       <Link
-        href={`/${locale}/daily`}
+        href={`/${locale}/wardrobe`}
         className="fixed top-5 left-5 z-50 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-60"
         style={{ color: 'var(--vault-text-dim)' }}
       >

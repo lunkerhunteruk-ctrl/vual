@@ -1,5 +1,5 @@
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { locales, defaultLocale } from './i18n';
 import { extractSubdomain, STORE_SLUG_HEADER, STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG } from './lib/store-resolver';
 
@@ -9,8 +9,23 @@ const intlMiddleware = createIntlMiddleware({
   localePrefix: 'always',
 });
 
+const WARDROBE_HOSTS = ['vwardrobe.com', 'www.vwardrobe.com', 'v-wardrobe.com', 'www.v-wardrobe.com'];
+
 export default function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
+  const pathname = request.nextUrl.pathname;
+
+  // vwardrobe.com: redirect root locale paths → /[locale]/wardrobe
+  const cleanHost = host.split(':')[0];
+  if (WARDROBE_HOSTS.includes(cleanHost)) {
+    const matchedLocale = locales.find((l) => pathname === `/${l}` || pathname === `/${l}/`);
+    const isRoot = pathname === '/' || pathname === '';
+    if (isRoot || matchedLocale) {
+      const locale = matchedLocale ?? defaultLocale;
+      return NextResponse.redirect(new URL(`/${locale}/wardrobe`, request.url));
+    }
+  }
+
   const subdomain = extractSubdomain(host);
 
   // Delegate to next-intl middleware for locale routing
