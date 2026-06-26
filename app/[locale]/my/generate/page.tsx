@@ -5,10 +5,11 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
-import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
+import { ThemeToggle } from '@/components/daily/ThemeToggle';
 import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-// ─── Types ───────────────────────────────────────────────────
 type Variant = 'A' | 'B';
 
 interface LookResult {
@@ -25,7 +26,6 @@ interface ModelSettings {
   ethnicity: string;
 }
 
-// ─── Constants ────────────────────────────────────────────────
 const BACKGROUNDS = [
   { value: 'studioWhite', label: 'スタジオ (白)' },
   { value: 'studioGray', label: 'スタジオ (グレー)' },
@@ -44,23 +44,22 @@ const ETHNICITIES = [
   { value: 'southeast-asian', label: '東南アジア系' },
 ];
 
-const GARMENT_SLOTS = ['トップス', 'ボトムス / スカート', 'シューズ / バッグ'] as const;
+const GARMENT_SLOTS = ['トップス', 'ボトムス', 'シューズ / バッグ'] as const;
 
-// ─── Component ───────────────────────────────────────────────
+const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
+
 export default function QuickGeneratePage() {
   const [garmentImages, setGarmentImages] = useState<(string | null)[]>([null, null, null]);
   const [background, setBackground] = useState('studioWhite');
-  const [modelSettings, setModelSettings] = useState<ModelSettings>({
-    gender: 'female',
-    height: 170,
-    ethnicity: 'japanese',
-  });
+  const [modelSettings, setModelSettings] = useState<ModelSettings>({ gender: 'female', height: 170, ethnicity: 'japanese' });
   const [looks, setLooks] = useState<LookResult[]>([
     { variant: 'A', image: null, loading: false, saved: false, error: null },
     { variant: 'B', image: null, loading: false, saved: false, error: null },
   ]);
   const [generating, setGenerating] = useState(false);
   const fileRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'ja';
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
@@ -68,13 +67,12 @@ export default function QuickGeneratePage() {
   const canGenerate = useVaultStore((s) => s.canGenerate);
   const incrementGeneration = useVaultStore((s) => s.incrementGeneration);
 
-  // Sync Firebase auth → Zustand
   useEffect(() => {
     if (!auth) return;
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser && !user) {
         const credits = await fetchCreditsFromSupabase(firebaseUser.uid);
-        const vaultUser = {
+        setUser({
           id: firebaseUser.uid,
           email: firebaseUser.email || '',
           displayName: firebaseUser.displayName || '',
@@ -83,8 +81,7 @@ export default function QuickGeneratePage() {
           freeUsed: credits?.freeUsed ?? 0,
           points: 0,
           createdAt: new Date(),
-        };
-        setUser(vaultUser);
+        });
         if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
       }
     });
@@ -95,30 +92,19 @@ export default function QuickGeneratePage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const result = e.target?.result as string;
-      setGarmentImages((prev) => {
-        const next = [...prev];
-        next[slot] = result;
-        return next;
-      });
+      setGarmentImages((prev) => { const next = [...prev]; next[slot] = result; return next; });
     };
     reader.readAsDataURL(file);
   }, []);
 
-  const handleDrop = useCallback(
-    (slot: number, e: React.DragEvent) => {
-      e.preventDefault();
-      const file = e.dataTransfer.files[0];
-      if (file && file.type.startsWith('image/')) handleUpload(slot, file);
-    },
-    [handleUpload]
-  );
+  const handleDrop = useCallback((slot: number, e: React.DragEvent) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) handleUpload(slot, file);
+  }, [handleUpload]);
 
   const clearSlot = (slot: number) => {
-    setGarmentImages((prev) => {
-      const next = [...prev];
-      next[slot] = null;
-      return next;
-    });
+    setGarmentImages((prev) => { const next = [...prev]; next[slot] = null; return next; });
     if (fileRefs.current[slot]) fileRefs.current[slot]!.value = '';
   };
 
@@ -132,14 +118,7 @@ export default function QuickGeneratePage() {
       { variant: 'A', image: null, loading: true, saved: false, error: null },
       { variant: 'B', image: null, loading: true, saved: false, error: null },
     ]);
-
-    const requestBase = {
-      garmentImages: activeImages,
-      background,
-      modelSettings,
-      firebaseUid: user?.id ?? null,
-    };
-
+    const requestBase = { garmentImages: activeImages, background, modelSettings, firebaseUid: user?.id ?? null };
     const fetchVariant = async (variant: Variant): Promise<LookResult> => {
       try {
         const res = await fetch('/api/my/generate', {
@@ -148,19 +127,14 @@ export default function QuickGeneratePage() {
           body: JSON.stringify({ ...requestBase, variant }),
         });
         const data = await res.json();
-        if (!res.ok || !data.image) {
-          return { variant, image: null, loading: false, saved: false, error: data.error || '生成失敗' };
-        }
+        if (!res.ok || !data.image) return { variant, image: null, loading: false, saved: false, error: data.error || '生成失敗' };
         return { variant, image: data.image, loading: false, saved: false, error: null };
       } catch {
         return { variant, image: null, loading: false, saved: false, error: 'ネットワークエラー' };
       }
     };
-
     const [resultA, resultB] = await Promise.all([fetchVariant('A'), fetchVariant('B')]);
     setLooks([resultA, resultB]);
-
-    // Consume credits from Zustand (2 credits = A + B)
     incrementGeneration();
     incrementGeneration();
     setGenerating(false);
@@ -176,58 +150,67 @@ export default function QuickGeneratePage() {
 
   const handleSave = async (look: LookResult, idx: number) => {
     if (!look.image || !user) return;
-    setLooks((prev) =>
-      prev.map((l, i) => (i === idx ? { ...l, loading: true } : l))
-    );
+    setLooks((prev) => prev.map((l, i) => (i === idx ? { ...l, loading: true } : l)));
     try {
       const res = await fetch('/api/my/save-look', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          imageDataUrl: look.image,
-          firebaseUid: user.id,
-          variant: look.variant,
-        }),
+        body: JSON.stringify({ imageDataUrl: look.image, firebaseUid: user.id, variant: look.variant }),
       });
       const data = await res.json();
-      setLooks((prev) =>
-        prev.map((l, i) =>
-          i === idx
-            ? { ...l, loading: false, saved: data.success, error: data.success ? null : '保存失敗' }
-            : l
-        )
-      );
+      setLooks((prev) => prev.map((l, i) =>
+        i === idx ? { ...l, loading: false, saved: data.success, error: data.success ? null : '保存失敗' } : l
+      ));
     } catch {
-      setLooks((prev) =>
-        prev.map((l, i) => (i === idx ? { ...l, loading: false, error: 'ネットワークエラー' } : l))
-      );
+      setLooks((prev) => prev.map((l, i) => (i === idx ? { ...l, loading: false, error: 'ネットワークエラー' } : l)));
     }
   };
 
   return (
-    <div className="my-wardrobe min-h-screen" data-theme="light">
-      {/* Header */}
-      <div className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-sm font-medium tracking-widest uppercase text-zinc-400">Quick Generate</h1>
-          <p className="text-xs text-zinc-600 mt-0.5">1コーデ → 2ルック生成</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <WardrobeThemeToggle />
-          <WardrobeUserBadge />
-        </div>
+    <div
+      className="daily-vault min-h-screen"
+      data-theme="light"
+      style={{ background: 'var(--vault-bg)', color: 'var(--vault-text)', fontFamily: MONO }}
+    >
+      {/* Fixed nav */}
+      <WardrobeUserBadge />
+
+      <Link
+        href={`/${locale}/daily`}
+        className="fixed top-5 left-5 z-50 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-60"
+        style={{ color: 'var(--vault-text-dim)' }}
+      >
+        ← GRID
+      </Link>
+
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <ThemeToggle />
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-10 space-y-10">
+      {/* Content */}
+      <div className="max-w-2xl mx-auto px-6 pt-24 pb-32 space-y-16">
+
+        {/* Page title */}
+        <div className="space-y-1">
+          <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+            QUICK GENERATE
+          </p>
+          <h1 className="text-[13px] font-light" style={{ color: 'var(--vault-text)' }}>
+            1コーデ → 2ルック生成
+          </h1>
+        </div>
+
         {/* Garment upload */}
-        <section>
-          <h2 className="text-xs tracking-widest uppercase text-zinc-500 mb-4">アイテムをアップロード</h2>
-          <div className="grid grid-cols-3 gap-4">
+        <section className="space-y-4">
+          <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+            ITEMS
+          </p>
+          <div className="grid grid-cols-3 gap-[2px]">
             {GARMENT_SLOTS.map((label, i) => (
-              <div key={i} className="space-y-2">
-                <label className="text-xs text-zinc-600">{label}</label>
+              <div key={i}>
                 <div
-                  className="relative aspect-[3/4] border border-dashed border-zinc-700 rounded-sm overflow-hidden cursor-pointer hover:border-zinc-500 transition-colors group"
+                  className="relative aspect-[3/4] overflow-hidden cursor-pointer group"
+                  style={{ background: 'var(--vault-border)' }}
                   onClick={() => fileRefs.current[i]?.click()}
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => handleDrop(i, e)}
@@ -235,33 +218,30 @@ export default function QuickGeneratePage() {
                   {garmentImages[i] ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={garmentImages[i]!}
-                        alt={label}
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={garmentImages[i]!} alt={label} className="w-full h-full object-cover" />
                       <button
-                        className="absolute top-1 right-1 bg-black/60 rounded-sm p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        style={{ background: 'var(--vault-bg)', color: 'var(--vault-text)' }}
                         onClick={(e) => { e.stopPropagation(); clearSlot(i); }}
                       >
-                        <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                       </button>
                     </>
                   ) : (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                      <svg className="w-5 h-5 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1">
+                        <path d="M12 4v16m8-8H4" />
                       </svg>
-                      <span className="text-xs text-zinc-700">追加</span>
+                      <span className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                        {label.toUpperCase()}
+                      </span>
                     </div>
                   )}
                   <input
                     ref={(el) => { fileRefs.current[i] = el; }}
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
+                    type="file" accept="image/*" className="hidden"
                     onChange={(e) => e.target.files?.[0] && handleUpload(i, e.target.files[0])}
                   />
                 </div>
@@ -271,22 +251,25 @@ export default function QuickGeneratePage() {
         </section>
 
         {/* Settings */}
-        <section>
-          <h2 className="text-xs tracking-widest uppercase text-zinc-500 mb-4">設定</h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <section className="space-y-4">
+          <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+            MODEL
+          </p>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {/* Gender */}
-            <div className="space-y-1.5">
-              <label className="text-xs text-zinc-600">性別</label>
-              <div className="flex rounded-sm border border-zinc-800 overflow-hidden">
+            <div className="space-y-2">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
+              <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
                 {(['female', 'male'] as const).map((g) => (
                   <button
                     key={g}
                     onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
-                    className={`flex-1 text-xs py-2 transition-colors ${
-                      modelSettings.gender === g
-                        ? 'bg-zinc-700 text-white'
-                        : 'text-zinc-500 hover:text-zinc-300'
-                    }`}
+                    className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
+                    style={{
+                      color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                      borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
+                      marginBottom: -1,
+                    }}
                   >
                     {g === 'female' ? '女性' : '男性'}
                   </button>
@@ -295,78 +278,88 @@ export default function QuickGeneratePage() {
             </div>
 
             {/* Height */}
-            <div className="space-y-1.5">
-              <label className="text-xs text-zinc-600">身長 {modelSettings.height}cm</label>
+            <div className="space-y-2">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                HEIGHT — {modelSettings.height}cm
+              </p>
               <input
-                type="range"
-                min={155}
-                max={185}
-                step={5}
+                type="range" min={155} max={185} step={5}
                 value={modelSettings.height}
                 onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
-                className="w-full accent-white"
+                className="w-full mt-3"
+                style={{ accentColor: 'var(--vault-text)' }}
               />
             </div>
 
             {/* Ethnicity */}
-            <div className="space-y-1.5">
-              <label className="text-xs text-zinc-600">モデル</label>
+            <div className="space-y-2">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
               <select
                 value={modelSettings.ethnicity}
                 onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-sm text-xs text-zinc-300 py-2 px-2"
+                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
               >
-                {ETHNICITIES.map((e) => (
-                  <option key={e.value} value={e.value}>{e.label}</option>
-                ))}
+                {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
               </select>
             </div>
 
             {/* Background */}
-            <div className="space-y-1.5">
-              <label className="text-xs text-zinc-600">背景</label>
+            <div className="space-y-2">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
               <select
                 value={background}
                 onChange={(e) => setBackground(e.target.value)}
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-sm text-xs text-zinc-300 py-2 px-2"
+                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
               >
-                {BACKGROUNDS.map((b) => (
-                  <option key={b.value} value={b.value}>{b.label}</option>
-                ))}
+                {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
               </select>
             </div>
           </div>
         </section>
 
-        {/* Generate button */}
-        <section>
+        {/* Generate */}
+        <section className="space-y-3">
           {activeImages.length === 0 && (
-            <p className="text-xs text-zinc-600 mb-3">※ アイテムを1枚以上アップロードしてください</p>
+            <p className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+              ※ アイテムを1枚以上追加してください
+            </p>
           )}
           {!canGenerate() && activeImages.length > 0 && (
-            <p className="text-xs text-amber-600 mb-3">クレジットが不足しています</p>
+            <p className="text-[10px] tracking-widest" style={{ color: 'var(--vault-cyan)' }}>
+              クレジットが不足しています
+            </p>
           )}
           <button
             onClick={handleGenerate}
             disabled={!canGen}
-            className="w-full py-4 text-sm tracking-widest uppercase transition-colors disabled:opacity-30 disabled:cursor-not-allowed bg-white text-black hover:bg-zinc-100 rounded-sm font-medium"
+            className="w-full py-5 text-[11px] tracking-[4px] font-light transition-opacity disabled:opacity-20"
+            style={{
+              background: 'var(--vault-text)',
+              color: 'var(--vault-bg)',
+            }}
           >
-            {generating ? '生成中...' : '生成する — 2クレジット'}
+            {generating ? 'GENERATING...' : 'GENERATE — 2 CREDITS'}
           </button>
         </section>
 
         {/* Results */}
-        {(looks.some((l) => l.loading || l.image || l.error)) && (
-          <section>
-            <h2 className="text-xs tracking-widest uppercase text-zinc-500 mb-4">生成結果</h2>
-            <div className="grid grid-cols-2 gap-4">
+        {looks.some((l) => l.loading || l.image || l.error) && (
+          <section className="space-y-4">
+            <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+              RESULTS
+            </p>
+            <div className="grid grid-cols-2 gap-[2px]">
               {looks.map((look, idx) => (
-                <div key={look.variant} className="space-y-3">
-                  <div className="text-xs text-zinc-600 tracking-widest">Look {look.variant}</div>
-                  <div className="aspect-[3/4] bg-zinc-900 rounded-sm overflow-hidden relative">
+                <div key={look.variant}>
+                  <div className="aspect-[3/4] relative overflow-hidden" style={{ background: 'var(--vault-border)' }}>
                     {look.loading && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-6 h-6 border border-zinc-600 border-t-white rounded-full animate-spin" />
+                        <div
+                          className="w-5 h-5 rounded-full border border-t-transparent animate-spin"
+                          style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }}
+                        />
                       </div>
                     )}
                     {look.image && (
@@ -375,37 +368,47 @@ export default function QuickGeneratePage() {
                     )}
                     {look.error && (
                       <div className="absolute inset-0 flex items-center justify-center p-4">
-                        <p className="text-xs text-red-400 text-center">{look.error}</p>
+                        <p className="text-[10px] text-center" style={{ color: 'var(--vault-text-dim)' }}>{look.error}</p>
+                      </div>
+                    )}
+
+                    {/* Overlay actions */}
+                    {look.image && (
+                      <div
+                        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity flex items-end gap-[2px] p-2"
+                        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }}
+                      >
+                        <button
+                          onClick={() => handleDownload(look)}
+                          className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
+                          style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                        >
+                          DL
+                        </button>
+                        {user ? (
+                          <button
+                            onClick={() => handleSave(look, idx)}
+                            disabled={look.saved || look.loading}
+                            className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
+                            style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                          >
+                            {look.saved ? 'SAVED' : look.loading ? '...' : 'SAVE'}
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
+                            className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
+                            style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                          >
+                            LOGIN
+                          </button>
+                        )}
                       </div>
                     )}
                   </div>
-
-                  {look.image && (
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => handleDownload(look)}
-                        className="flex-1 text-xs py-2 border border-zinc-700 text-zinc-400 hover:border-zinc-400 hover:text-zinc-200 transition-colors rounded-sm"
-                      >
-                        DL
-                      </button>
-                      {user ? (
-                        <button
-                          onClick={() => handleSave(look, idx)}
-                          disabled={look.saved || look.loading}
-                          className="flex-1 text-xs py-2 border border-zinc-700 text-zinc-400 hover:border-zinc-400 hover:text-zinc-200 transition-colors rounded-sm disabled:opacity-40 disabled:cursor-not-allowed"
-                        >
-                          {look.saved ? '保存済み' : look.loading ? '...' : 'ワードローブに保存'}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-                          className="flex-1 text-xs py-2 border border-zinc-700 text-zinc-500 hover:border-zinc-500 hover:text-zinc-300 transition-colors rounded-sm"
-                        >
-                          ログインして保存
-                        </button>
-                      )}
-                    </div>
-                  )}
+                  <p className="text-[9px] tracking-[2px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
+                    LOOK {look.variant}
+                  </p>
                 </div>
               ))}
             </div>

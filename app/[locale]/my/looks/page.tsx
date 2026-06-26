@@ -4,16 +4,19 @@ import { useState, useEffect, useCallback } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useVaultStore } from '@/lib/daily/store';
-import { signInWithGoogle } from '@/lib/daily/auth';
-import Link from 'next/link';
-import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
+import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
+import { ThemeToggle } from '@/components/daily/ThemeToggle';
 import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface Look {
   id: string;
   image_url: string;
   created_at: string;
 }
+
+const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
 export default function MyLooksPage() {
   const [looks, setLooks] = useState<Look[]>([]);
@@ -22,6 +25,9 @@ export default function MyLooksPage() {
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
+  const syncFromFirestore = useVaultStore((s) => s.syncFromFirestore);
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'ja';
 
   const fetchLooks = useCallback(async (uid: string) => {
     setLoading(true);
@@ -39,7 +45,6 @@ export default function MyLooksPage() {
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         if (!user) {
-          const { fetchCreditsFromSupabase } = await import('@/lib/daily/auth');
           const credits = await fetchCreditsFromSupabase(firebaseUser.uid);
           setUser({
             id: firebaseUser.uid,
@@ -51,6 +56,7 @@ export default function MyLooksPage() {
             points: 0,
             createdAt: new Date(),
           });
+          if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
         }
         fetchLooks(firebaseUser.uid);
       } else {
@@ -61,8 +67,7 @@ export default function MyLooksPage() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDelete = async (look: Look) => {
-    if (!user) return;
-    if (!confirm('このルックを削除しますか？')) return;
+    if (!user || !confirm('このルックを削除しますか？')) return;
     setDeleting(look.id);
     try {
       await fetch(`/api/my/looks/${look.id}`, {
@@ -90,91 +95,125 @@ export default function MyLooksPage() {
   };
 
   return (
-    <div className="my-wardrobe min-h-screen" data-theme="light">
-      {/* Header */}
-      <div className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-sm font-medium tracking-widest uppercase text-zinc-400">My Wardrobe</h1>
-          <p className="text-xs text-zinc-600 mt-0.5">保存したルック</p>
-        </div>
-        <div className="flex items-center gap-4">
-          {user && (
-            <Link
-              href="../generate"
-              className="text-xs px-3 py-1.5 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
-            >
-              + 新規生成
-            </Link>
-          )}
-          <WardrobeThemeToggle />
-          <WardrobeUserBadge />
-        </div>
+    <div
+      className="daily-vault min-h-screen"
+      data-theme="light"
+      style={{ background: 'var(--vault-bg)', color: 'var(--vault-text)', fontFamily: MONO }}
+    >
+      {/* Fixed nav */}
+      <WardrobeUserBadge />
+
+      <Link
+        href={`/${locale}/daily`}
+        className="fixed top-5 left-5 z-50 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-60"
+        style={{ color: 'var(--vault-text-dim)' }}
+      >
+        ← GRID
+      </Link>
+
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <ThemeToggle />
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-10">
+      {/* Generate FAB */}
+      <Link
+        href={`/${locale}/my/generate`}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70"
+        style={{
+          background: 'var(--vault-text)',
+          color: 'var(--vault-bg)',
+        }}
+      >
+        ＋ GENERATE
+      </Link>
+
+      {/* Content */}
+      <div className="max-w-2xl mx-auto px-6 pt-24 pb-32 space-y-12">
+
+        {/* Page title */}
+        <div className="space-y-1">
+          <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+            MY WARDROBE
+          </p>
+          <h1 className="text-[13px] font-light" style={{ color: 'var(--vault-text)' }}>
+            保存したルック
+          </h1>
+        </div>
+
         {/* Not logged in */}
         {!user && !loading && (
-          <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <p className="text-zinc-500 text-sm">ログインして保存したルックを見る</p>
+          <div className="flex flex-col items-center justify-center py-32 gap-6">
+            <p className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+              LOGIN TO VIEW YOUR WARDROBE
+            </p>
             <button
               onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-              className="text-xs px-4 py-2 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
+              className="px-6 py-3 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70"
+              style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text)' }}
             >
-              Googleでログイン
+              SIGN IN WITH GOOGLE
             </button>
           </div>
         )}
 
         {/* Loading */}
         {loading && (
-          <div className="flex items-center justify-center py-24">
-            <div className="w-5 h-5 border border-zinc-600 border-t-white rounded-full animate-spin" />
+          <div className="flex items-center justify-center py-32">
+            <div
+              className="w-4 h-4 rounded-full border border-t-transparent animate-spin"
+              style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }}
+            />
           </div>
         )}
 
         {/* Empty */}
         {!loading && user && looks.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <p className="text-zinc-500 text-sm">まだルックが保存されていません</p>
+          <div className="flex flex-col items-center justify-center py-32 gap-6">
+            <p className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+              NO LOOKS SAVED YET
+            </p>
             <Link
-              href="../generate"
-              className="text-xs px-4 py-2 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
+              href={`/${locale}/my/generate`}
+              className="px-6 py-3 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70"
+              style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text)' }}
             >
-              ルックを生成する
+              GENERATE YOUR FIRST LOOK
             </Link>
           </div>
         )}
 
         {/* Grid */}
         {!loading && looks.length > 0 && (
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-[2px]">
             {looks.map((look) => (
-              <div key={look.id} className="group relative space-y-2">
-                <div className="aspect-[3/4] bg-zinc-900 rounded-sm overflow-hidden relative">
+              <div key={look.id} className="group">
+                <div className="aspect-[3/4] relative overflow-hidden" style={{ background: 'var(--vault-border)' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={look.image_url}
-                    alt="look"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Overlay buttons */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-2">
+                  <img src={look.image_url} alt="look" className="w-full h-full object-cover" />
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-end gap-[2px] p-2"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }}
+                  >
                     <button
                       onClick={() => handleDownload(look)}
-                      className="text-xs px-2 py-1 bg-white/10 hover:bg-white/20 rounded-sm text-white backdrop-blur-sm transition-colors"
+                      className="flex-1 py-1.5 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
+                      style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
                     >
                       DL
                     </button>
                     <button
                       onClick={() => handleDelete(look)}
                       disabled={deleting === look.id}
-                      className="text-xs px-2 py-1 bg-red-900/60 hover:bg-red-800/80 rounded-sm text-red-300 backdrop-blur-sm transition-colors disabled:opacity-50"
+                      className="flex-1 py-1.5 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
+                      style={{ background: 'rgba(180,0,0,0.3)', backdropFilter: 'blur(8px)' }}
                     >
-                      {deleting === look.id ? '...' : '削除'}
+                      {deleting === look.id ? '...' : 'DEL'}
                     </button>
                   </div>
                 </div>
-                <p className="text-xs text-zinc-600">{formatDate(look.created_at)}</p>
+                <p className="text-[9px] tracking-[2px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
+                  {formatDate(look.created_at)}
+                </p>
               </div>
             ))}
           </div>
