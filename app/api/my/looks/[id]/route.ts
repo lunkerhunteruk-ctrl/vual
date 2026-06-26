@@ -4,8 +4,9 @@ import { storage } from '@/lib/storage';
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const { firebaseUid } = await request.json();
   if (!firebaseUid) return NextResponse.json({ error: 'firebaseUid required' }, { status: 400 });
 
@@ -16,7 +17,7 @@ export async function DELETE(
   const { data: row, error: fetchErr } = await supa
     .from('user_generations')
     .select('id, image_url, firebase_uid')
-    .eq('id', params.id)
+    .eq('id', id)
     .single();
 
   if (fetchErr || !row) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -30,7 +31,7 @@ export async function DELETE(
   }
 
   // Delete from DB
-  const { error: delErr } = await supa.from('user_generations').delete().eq('id', params.id);
+  const { error: delErr } = await supa.from('user_generations').delete().eq('id', id);
   if (delErr) return NextResponse.json({ error: delErr.message }, { status: 500 });
 
   return NextResponse.json({ success: true });
