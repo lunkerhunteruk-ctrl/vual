@@ -7,6 +7,7 @@ import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle } from '@/lib/daily/auth';
 import Link from 'next/link';
 import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
+import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
 
 interface Look {
   id: string;
@@ -97,22 +98,16 @@ export default function MyLooksPage() {
           <p className="text-xs text-zinc-600 mt-0.5">保存したルック</p>
         </div>
         <div className="flex items-center gap-4">
-          <WardrobeThemeToggle />
-          {user ? (
+          {user && (
             <Link
               href="../generate"
               className="text-xs px-3 py-1.5 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
             >
               + 新規生成
             </Link>
-          ) : (
-            <button
-              onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-              className="text-xs px-3 py-1.5 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
-            >
-              ログイン
-            </button>
           )}
+          <WardrobeThemeToggle />
+          <WardrobeUserBadge />
         </div>
       </div>
 

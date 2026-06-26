@@ -6,6 +6,7 @@ import { auth } from '@/lib/firebase';
 import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
 import { WardrobeThemeToggle } from '@/components/wardrobe/ThemeToggle';
+import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
 
 // ─── Types ───────────────────────────────────────────────────
 type Variant = 'A' | 'B';
@@ -66,8 +67,6 @@ export default function QuickGeneratePage() {
   const syncFromFirestore = useVaultStore((s) => s.syncFromFirestore);
   const canGenerate = useVaultStore((s) => s.canGenerate);
   const incrementGeneration = useVaultStore((s) => s.incrementGeneration);
-  const freeRemaining = useVaultStore((s) => s.freeRemaining);
-  const totalRemaining = useVaultStore((s) => s.totalRemaining);
 
   // Sync Firebase auth → Zustand
   useEffect(() => {
@@ -205,10 +204,6 @@ export default function QuickGeneratePage() {
     }
   };
 
-  const creditLabel = user
-    ? `無料 ${freeRemaining()} / 合計 ${totalRemaining()} クレジット`
-    : `ゲスト: 残 ${freeRemaining()} 回`;
-
   return (
     <div className="my-wardrobe min-h-screen" data-theme="light">
       {/* Header */}
@@ -217,17 +212,9 @@ export default function QuickGeneratePage() {
           <h1 className="text-sm font-medium tracking-widest uppercase text-zinc-400">Quick Generate</h1>
           <p className="text-xs text-zinc-600 mt-0.5">1コーデ → 2ルック生成</p>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-xs text-zinc-500">{creditLabel}</span>
+        <div className="flex items-center gap-3">
           <WardrobeThemeToggle />
-          {!user && (
-            <button
-              onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-              className="text-xs px-3 py-1.5 border border-zinc-700 rounded-sm text-zinc-300 hover:border-zinc-400 transition-colors"
-            >
-              ログイン
-            </button>
-          )}
+          <WardrobeUserBadge />
         </div>
       </div>
 
