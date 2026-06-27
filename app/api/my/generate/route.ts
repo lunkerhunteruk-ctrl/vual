@@ -65,7 +65,10 @@ function buildPrompt(
 ): string {
   const { location, situation, filmMode, hasFaceRef } = options;
 
-  const bgDesc = location ? location : (BACKGROUNDS[background] || background);
+  // BG="" → use location prompt; BG=preset → use that preset (location ignored)
+  const bgDesc = background
+    ? (BACKGROUNDS[background] || background)
+    : (location || 'natural fashion setting with soft ambient lighting');
   const ethnicDesc = ETHNICITIES[ethnicity] || ethnicity;
   const genderWord = gender === 'male' ? 'man' : 'woman';
 

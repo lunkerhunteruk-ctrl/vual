@@ -55,6 +55,7 @@ const MODES: { value: Mode; label: string; outfits: number; looks: number; credi
 ];
 
 const BACKGROUNDS = [
+  { value: '',              label: 'LOCATION 優先'      },
   { value: 'studioWhite',   label: 'スタジオ (白)'     },
   { value: 'studioGray',    label: 'スタジオ (グレー)' },
   { value: 'outdoorUrban',  label: 'アーバン / 街'      },
@@ -321,7 +322,7 @@ function OutfitRow({
 export default function GeneratePage() {
   const [mode, setMode] = useState<Mode>('quick');
   const [outfits, setOutfits] = useState<AllOutfits>(buildInitialOutfits(1));
-  const [background, setBackground] = useState('studioWhite');
+  const [background, setBackground] = useState('');
   const [modelSettings, setModelSettings] = useState<ModelSettings>({ gender: 'female', height: 170, ethnicity: 'japanese' });
   const [sceneSettings, setSceneSettings] = useState<SceneSettings>({ location: '', situation: '', filmMode: '' });
   const [faceImage, setFaceImage] = useState<string | null>(null);
@@ -587,86 +588,113 @@ export default function GeneratePage() {
               </p>
             </div>
 
-            {/* Gender / Height / Model / BG */}
-            <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div className="space-y-2">
-                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
-                <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
-                  {(['female', 'male'] as const).map((g) => (
-                    <button
-                      key={g}
-                      onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
-                      className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
-                      style={{
-                        color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
-                        borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
-                        marginBottom: -1,
-                      }}
-                    >
-                      {g === 'female' ? '女性' : '男性'}
-                    </button>
-                  ))}
+            {/* Model selectors — SEX + MODEL hidden when face photo is uploaded */}
+            {faceImage ? (
+              <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                    HEIGHT — {modelSettings.height}cm
+                  </p>
+                  <input
+                    type="range" min={150} max={195} step={1}
+                    value={modelSettings.height}
+                    onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
+                    className="w-full mt-3"
+                    style={{ accentColor: 'var(--vault-text)' }}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
+                  <select
+                    value={background}
+                    onChange={(e) => setBackground(e.target.value)}
+                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
+                  >
+                    {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
+                  </select>
                 </div>
               </div>
+            ) : (
+              <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
+                  <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
+                    {(['female', 'male'] as const).map((g) => (
+                      <button
+                        key={g}
+                        onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
+                        className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
+                        style={{
+                          color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                          borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
+                          marginBottom: -1,
+                        }}
+                      >
+                        {g === 'female' ? '女性' : '男性'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
-                  HEIGHT — {modelSettings.height}cm
-                </p>
-                <input
-                  type="range" min={155} max={185} step={5}
-                  value={modelSettings.height}
-                  onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
-                  className="w-full mt-3"
-                  style={{ accentColor: 'var(--vault-text)' }}
-                />
-              </div>
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                    HEIGHT — {modelSettings.height}cm
+                  </p>
+                  <input
+                    type="range" min={150} max={195} step={1}
+                    value={modelSettings.height}
+                    onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
+                    className="w-full mt-3"
+                    style={{ accentColor: 'var(--vault-text)' }}
+                  />
+                </div>
 
-              <div className="space-y-2">
-                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
-                <select
-                  value={modelSettings.ethnicity}
-                  onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
-                  className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
-                  style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
-                >
-                  {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
-                </select>
-              </div>
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
+                  <select
+                    value={modelSettings.ethnicity}
+                    onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
+                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
+                  >
+                    {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
+                  </select>
+                </div>
 
-              <div className="space-y-2">
-                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
-                <select
-                  value={background}
-                  onChange={(e) => setBackground(e.target.value)}
-                  disabled={!!sceneSettings.location}
-                  className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none disabled:opacity-40"
-                  style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
-                >
-                  {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
-                </select>
+                <div className="space-y-2">
+                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
+                  <select
+                    value={background}
+                    onChange={(e) => setBackground(e.target.value)}
+                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
+                  >
+                    {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
+                  </select>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Scene settings */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {/* Location */}
+            {/* Location — disabled when a specific BG is chosen */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>LOCATION</p>
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                LOCATION
+                {background && <span className="ml-2" style={{ opacity: 0.4 }}>— BG優先</span>}
+              </p>
               <input
                 type="text"
                 value={sceneSettings.location}
                 onChange={(e) => setSceneSettings((s) => ({ ...s, location: e.target.value }))}
                 placeholder="東京 / Paris / Studio..."
-                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                disabled={!!background}
+                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30 disabled:opacity-30"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
-              {sceneSettings.location && (
-                <p className="text-[7px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>
-                  ※ BGより優先されます
-                </p>
-              )}
             </div>
 
             {/* Situation */}
