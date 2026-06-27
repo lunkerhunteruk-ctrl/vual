@@ -2,7 +2,7 @@
 
 import { VaultContent } from "@/components/daily/VaultContent";
 import { ThemeToggle } from "@/components/daily/ThemeToggle";
-import Link from "next/link";
+import { NavPill } from "@/components/wardrobe/NavPill";
 import { usePathname } from "next/navigation";
 
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
@@ -21,23 +21,12 @@ export default function WardrobePage() {
         fontFamily: MONO,
       }}
     >
+      <NavPill active="wardrobe" locale={locale} />
+
       {/* Theme toggle — fixed bottom center */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <ThemeToggle />
       </div>
-
-      {/* Generate FAB — fixed bottom right */}
-      <Link
-        href={`/${locale}/my/generate`}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70"
-        style={{
-          background: "var(--vault-text)",
-          color: "var(--vault-bg)",
-          fontFamily: MONO,
-        }}
-      >
-        ＋ GENERATE
-      </Link>
 
       <VaultContent />
     </div>
