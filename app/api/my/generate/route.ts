@@ -5,7 +5,8 @@ export const maxDuration = 60;
 
 const APIMART_API_KEY = process.env.APIMART_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
-const GEMINI_URL = `https://api.apimart.ai/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const APIMART_GENERATE_URL = 'https://api.apimart.ai/v1/images/generations';
+const APIMART_TASK_URL = 'https://api.apimart.ai/v1/tasks';
 
 const BACKGROUNDS: Record<string, string> = {
   studioWhite: 'clean white studio with soft professional fashion lighting',
@@ -102,64 +103,86 @@ COMPOSITION: ${variant === 'A' ? compA : compB}
 QUALITY: High-end fashion editorial photography. Sharp focus on the garments. Beautiful professional lighting. No text, no watermarks, no logos.${filmText ? `\n\n${filmText}` : ''}${faceNote ? `\n\n${faceNote}` : ''}`;
 }
 
-async function callGemini(
-  garmentParts: any[],
-  faceImagePart: any | null,
-  prompt: string
+async function callAPIMart(
+  imageDataUrls: string[],  // base64 data URIs (garments + optional face last)
+  prompt: string,
+  aspectRatio: string,
 ): Promise<string | null> {
   if (!APIMART_API_KEY) return null;
 
-  const allParts = faceImagePart
-    ? [...garmentParts, faceImagePart, { text: prompt }]
-    : [...garmentParts, { text: prompt }];
-
-  const res = await fetch(GEMINI_URL, {
+  // 1. Submit job
+  const submitRes = await fetch(APIMART_GENERATE_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${APIMART_API_KEY}`,
     },
     body: JSON.stringify({
-      contents: [{ parts: allParts }],
-      generationConfig: {
-        responseModalities: ['TEXT', 'IMAGE'],
-        imageConfig: { aspectRatio },
-      },
-      safetySettings: [
-        { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-        { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
-      ],
+      model: GEMINI_MODEL,
+      prompt,
+      size: aspectRatio,   // '3:4' | '9:16' | '1:1'
+      resolution: '1K',
+      n: 1,
+      image_urls: imageDataUrls,
     }),
   });
 
-  if (!res.ok) {
-    console.error('[QuickGen] APIMART error:', await res.text());
+  if (!submitRes.ok) {
+    console.error('[APIMart] Submit failed:', submitRes.status, await submitRes.text());
     return null;
   }
 
-  const data = await res.json();
-  console.log('[Gemini] response keys:', Object.keys(data));
-  console.log('[Gemini] candidates count:', data.candidates?.length ?? 0);
-  const firstParts = data.candidates?.[0]?.content?.parts || [];
-  console.log('[Gemini] first candidate parts:', JSON.stringify(firstParts.map((p: any) => ({
-    hasText: !!p.text,
-    textSnippet: p.text?.slice(0, 100),
-    hasInlineData: !!(p.inline_data || p.inlineData),
-    mimeType: (p.inline_data || p.inlineData)?.mime_type,
-  }))));
-  if (data.promptFeedback) console.log('[Gemini] promptFeedback:', JSON.stringify(data.promptFeedback));
+  const submitData = await submitRes.json();
+  console.log('[APIMart] Submit response:', JSON.stringify(submitData));
 
-  const candidates = data.candidates || [];
-  for (const candidate of candidates) {
-    for (const part of candidate.content?.parts || []) {
-      const inlineData = part.inline_data || part.inlineData;
-      if (inlineData?.data) {
-        return `data:image/png;base64,${inlineData.data}`;
-      }
-    }
+  const taskId = submitData.data?.[0]?.task_id;
+  if (!taskId) {
+    console.error('[APIMart] No task_id in submit response');
+    return null;
   }
+
+  // 2. Poll until complete (18 × 2.5s ≈ 45s, well within maxDuration=60)
+  for (let i = 0; i < 18; i++) {
+    await new Promise((r) => setTimeout(r, 2500));
+
+    const pollRes = await fetch(`${APIMART_TASK_URL}/${taskId}`, {
+      headers: { 'Authorization': `Bearer ${APIMART_API_KEY}` },
+    });
+
+    if (!pollRes.ok) {
+      console.log(`[APIMart] Poll ${i + 1} HTTP ${pollRes.status}`);
+      continue;
+    }
+
+    const pollData = await pollRes.json();
+    console.log(`[APIMart] Poll ${i + 1}:`, JSON.stringify(pollData).slice(0, 300));
+
+    const status: string = pollData.data?.status ?? pollData.status ?? '';
+
+    if (status === 'failed' || status === 'error') {
+      console.error('[APIMart] Task failed:', JSON.stringify(pollData));
+      return null;
+    }
+
+    if (['completed', 'success', 'done', 'finish'].includes(status)) {
+      // Try various image URL / base64 paths in the response
+      const images: any[] = pollData.data?.images ?? pollData.data?.result?.images ?? [];
+      const first = images[0];
+      if (typeof first === 'string') return first;
+      if (first?.url) return first.url;
+      if (first?.b64_json) return `data:image/png;base64,${first.b64_json}`;
+
+      const directUrl = pollData.data?.url ?? pollData.data?.image_url;
+      if (directUrl) return directUrl;
+
+      console.error('[APIMart] Completed but no image found:', JSON.stringify(pollData));
+      return null;
+    }
+
+    // still processing (submitted / processing / pending) — keep polling
+  }
+
+  console.error('[APIMart] Timeout: task not completed within limit');
   return null;
 }
 
@@ -211,43 +234,30 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // ── Build garment image parts ──
-    const garmentParts: any[] = [];
-    for (const img of garmentImages) {
-      const match = img.match(/^data:(image\/\w+);base64,(.+)$/);
-      if (match) garmentParts.push({ inline_data: { mime_type: match[1], data: match[2] } });
-    }
-
-    if (garmentParts.length === 0) {
+    // ── Validate garment images ──
+    const validGarments = garmentImages.filter((img: string) => /^data:image\/\w+;base64,/.test(img));
+    if (validGarments.length === 0) {
       return NextResponse.json({ error: 'Invalid garment image format' }, { status: 400 });
-    }
-
-    // ── Face reference image part ──
-    let faceImagePart: any | null = null;
-    if (faceImage) {
-      const match = faceImage.match(/^data:(image\/\w+);base64,(.+)$/);
-      if (match) faceImagePart = { inline_data: { mime_type: match[1], data: match[2] } };
     }
 
     // ── Build prompt ──
     const prompt = buildPrompt(
-      garmentParts.length,
+      validGarments.length,
       background,
       gender,
       height,
       ethnicity,
       variant,
-      { location, situation, filmMode, hasFaceRef: !!faceImagePart }
+      { location, situation, filmMode, hasFaceRef: !!faceImage }
     );
 
-    console.log(`[Generate] variant=${variant} film=${filmMode || 'none'} uid=${firebaseUid || 'guest'}`);
+    console.log(`[Generate] variant=${variant} film=${filmMode || 'none'} uid=${firebaseUid || 'guest'} ar=${aspectRatio}`);
 
-    // Retry once on empty result
-    let image = await callGemini(garmentParts, faceImagePart, prompt);
-    if (!image) {
-      await new Promise((r) => setTimeout(r, 1500));
-      image = await callGemini(garmentParts, faceImagePart, prompt);
-    }
+    // Build flat array of data URIs: garments first, face ref last
+    const imageDataUrls: string[] = [...validGarments];
+    if (faceImage && /^data:image\/\w+;base64,/.test(faceImage)) imageDataUrls.push(faceImage);
+
+    const image = await callAPIMart(imageDataUrls, prompt, aspectRatio);
 
     if (!image) {
       return NextResponse.json({ error: '生成に失敗しました。再度お試しください。' }, { status: 500 });
