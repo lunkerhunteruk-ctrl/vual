@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "VUAL — AIファッション撮影・ルック生成・バーチャル試着",
-  description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIイメージ生成・AIモデル撮影SaaSプラットフォーム。",
+  title: "VUAL — AIクリエイティブ・エンジニアリング",
+  description: "デザイン × テクノロジー × ファッション。AIが力を与える",
   keywords: [
     "AIファッション撮影", "AIルック生成", "AIイメージ生成", "AIモデル撮影",
     "バーチャル試着", "AI試着", "アパレル AI", "ファッション AI",
@@ -31,15 +31,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "VUAL",
-    title: "VUAL — AIファッション撮影・ルック生成・バーチャル試着",
-    description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIイメージ生成・AIモデル撮影SaaSプラットフォーム。",
+    title: "VUAL — AIクリエイティブ・エンジニアリング",
+    description: "デザイン × テクノロジー × ファッション。AIが力を与える",
     url: "https://vual.jp",
     locale: "ja_JP",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VUAL — AIファッション撮影・ルック生成",
-    description: "AIでファッション撮影・ルック生成・バーチャル試着を実現。アパレルブランド向けAIプラットフォーム。",
+    title: "VUAL — AIクリエイティブ・エンジニアリング",
+    description: "デザイン × テクノロジー × ファッション。AIが力を与える",
   },
 };
 
