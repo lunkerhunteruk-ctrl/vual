@@ -146,7 +146,7 @@ function ItemCard({
         </button>
       )}
 
-      <p className="text-[8px] tracking-[2px] mb-2" style={{ color: 'var(--vault-text-dim)' }}>
+      <p className="text-[11px] mb-2" style={{ color: 'var(--vault-text-dim)' }}>
         ITEM {itemIdx + 1}
       </p>
 
@@ -177,7 +177,7 @@ function ItemCard({
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.2">
               <path d="M12 4v16m8-8H4" />
             </svg>
-            <span className="text-[8px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MAIN</span>
+            <span className="text-[11px]" style={{ color: 'var(--vault-text-dim)' }}>MAIN</span>
           </div>
         )}
       </div>
@@ -216,7 +216,7 @@ function ItemCard({
                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
                     <path d="M12 4v16m8-8H4" />
                   </svg>
-                  <span className="text-[6px] tracking-[0.5px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  <span className="text-[9px]" style={{ color: 'var(--vault-text-dim)' }}>
                     {label}
                   </span>
                 </div>
@@ -226,7 +226,7 @@ function ItemCard({
         })}
       </div>
 
-      <p className="text-[7px] tracking-[1px] mt-1.5" style={{ color: 'var(--vault-text-dim)' }}>
+      <p className="text-[11px] mt-2" style={{ color: 'var(--vault-text-dim)' }}>
         {images.filter(Boolean).length}/{MAX_IMAGES}枚
       </p>
     </div>
@@ -272,7 +272,7 @@ function OutfitRow({
   return (
     <div className="space-y-3">
       {showLabel && (
-        <p className="text-[9px] tracking-[3px]" style={{ color: 'var(--vault-text-dim)' }}>
+        <p className="text-[12px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
           OUTFIT {outfitIdx + 1}
           <span className="ml-3" style={{ color: totalImages >= MAX_TOTAL ? 'var(--vault-cyan)' : 'var(--vault-text-dim)' }}>
             {totalImages}/{MAX_TOTAL}
@@ -501,7 +501,7 @@ export default function GeneratePage() {
 
         {/* Mode selector */}
         <section className="space-y-4">
-          <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+          <p className="text-[13px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
             MODE
           </p>
           <div className="flex gap-[2px]">
@@ -509,7 +509,7 @@ export default function GeneratePage() {
               <button
                 key={m.value}
                 onClick={() => handleModeChange(m.value)}
-                className="flex-1 py-3 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70"
+                className="flex-1 py-4 text-[13px] tracking-wide transition-opacity hover:opacity-70"
                 style={{
                   background: mode === m.value ? 'var(--vault-text)' : 'var(--vault-border)',
                   color: mode === m.value ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
@@ -519,7 +519,7 @@ export default function GeneratePage() {
               </button>
             ))}
           </div>
-          <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+          <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>
             {modeConfig.outfits} コーデ → {modeConfig.looks} ルック生成 — {modeConfig.credits} クレジット
           </p>
         </section>
@@ -539,7 +539,7 @@ export default function GeneratePage() {
 
         {/* Model settings */}
         <section className="space-y-6">
-          <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+          <p className="text-[13px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
             MODEL
           </p>
 
@@ -547,7 +547,7 @@ export default function GeneratePage() {
           <div className="flex gap-4 items-start">
             {/* Face photo upload */}
             <div className="flex-shrink-0 space-y-1">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>FACE</p>
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>FACE</p>
               <button
                 onClick={faceImage ? () => setFaceImage(null) : pickFaceImage}
                 className="relative group overflow-hidden"
@@ -569,7 +569,7 @@ export default function GeneratePage() {
                   </div>
                 )}
               </button>
-              <p className="text-[7px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>
+              <p className="text-[10px]" style={{ color: 'var(--vault-text-dim)' }}>
                 {faceImage ? 'CLEAR' : 'OPT'}
               </p>
             </div>
@@ -578,7 +578,7 @@ export default function GeneratePage() {
             {faceImage ? (
               <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>
                     HEIGHT — {modelSettings.height}cm
                   </p>
                   <input
@@ -591,11 +591,11 @@ export default function GeneratePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
                   <select
                     value={background}
                     onChange={(e) => setBackground(e.target.value)}
-                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    className="w-full text-[13px] py-2 bg-transparent border-b outline-none"
                     style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
                   >
                     {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
@@ -605,13 +605,13 @@ export default function GeneratePage() {
             ) : (
               <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
                   <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
                     {(['female', 'male'] as const).map((g) => (
                       <button
                         key={g}
                         onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
-                        className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
+                        className="flex-1 py-2 text-[12px] tracking-wide transition-opacity"
                         style={{
                           color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
                           borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
@@ -625,7 +625,7 @@ export default function GeneratePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>
                     HEIGHT — {modelSettings.height}cm
                   </p>
                   <input
@@ -638,11 +638,11 @@ export default function GeneratePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
                   <select
                     value={modelSettings.ethnicity}
                     onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
-                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    className="w-full text-[13px] py-2 bg-transparent border-b outline-none"
                     style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
                   >
                     {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
@@ -650,11 +650,11 @@ export default function GeneratePage() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
                   <select
                     value={background}
                     onChange={(e) => setBackground(e.target.value)}
-                    className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                    className="w-full text-[13px] py-2 bg-transparent border-b outline-none"
                     style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
                   >
                     {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
@@ -668,7 +668,7 @@ export default function GeneratePage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {/* Location — disabled when a specific BG is chosen */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>
                 LOCATION
                 {background && <span className="ml-2" style={{ opacity: 0.4 }}>— BG優先</span>}
               </p>
@@ -678,31 +678,31 @@ export default function GeneratePage() {
                 onChange={(e) => setSceneSettings((s) => ({ ...s, location: e.target.value }))}
                 placeholder="東京 / Paris / Studio..."
                 disabled={!!background}
-                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30 disabled:opacity-30"
+                className="w-full text-[13px] py-2 bg-transparent border-b outline-none placeholder:opacity-30 disabled:opacity-30"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
             </div>
 
             {/* Situation */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SITUATION <span style={{ opacity: 0.4 }}>— OPT</span></p>
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>SITUATION <span style={{ opacity: 0.4 }}>— OPT</span></p>
               <input
                 type="text"
                 value={sceneSettings.situation}
                 onChange={(e) => setSceneSettings((s) => ({ ...s, situation: e.target.value }))}
                 placeholder="未記入でGeminiが考える"
-                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                className="w-full text-[13px] py-2 bg-transparent border-b outline-none placeholder:opacity-30"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
             </div>
 
             {/* Film look */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>FILM LOOK</p>
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>FILM LOOK</p>
               <select
                 value={sceneSettings.filmMode}
                 onChange={(e) => setSceneSettings((s) => ({ ...s, filmMode: e.target.value }))}
-                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                className="w-full text-[13px] py-2 bg-transparent border-b outline-none"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
               >
                 {FILM_OPTIONS.map((f) => (
@@ -716,19 +716,19 @@ export default function GeneratePage() {
         {/* Generate */}
         <section className="space-y-3">
           {!hasAnyImage && (
-            <p className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+            <p className="text-[12px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
               ※ アイテムを1枚以上追加してください
             </p>
           )}
           {!canGenerate() && hasAnyImage && (
-            <p className="text-[10px] tracking-widest" style={{ color: 'var(--vault-cyan)' }}>
+            <p className="text-[12px] tracking-wide" style={{ color: 'var(--vault-cyan)' }}>
               クレジットが不足しています
             </p>
           )}
           <button
             onClick={handleGenerate}
             disabled={!canGen}
-            className="w-full py-5 text-[11px] tracking-[4px] font-light transition-opacity disabled:opacity-20"
+            className="w-full py-5 text-[14px] tracking-wider transition-opacity disabled:opacity-20"
             style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
           >
             {generating ? 'GENERATING...' : `GENERATE — ${modeConfig.credits} CREDITS`}
@@ -738,7 +738,7 @@ export default function GeneratePage() {
         {/* Results */}
         {hasResults && (
           <section className="space-y-10">
-            <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+            <p className="text-[13px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
               RESULTS
             </p>
 
@@ -747,7 +747,7 @@ export default function GeneratePage() {
               return (
                 <div key={outfitIdx} className="space-y-2">
                   {modeConfig.outfits > 1 && (
-                    <p className="text-[9px] tracking-[3px]" style={{ color: 'var(--vault-text-dim)' }}>
+                    <p className="text-[12px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>
                       OUTFIT {outfitIdx + 1}
                     </p>
                   )}
@@ -771,7 +771,7 @@ export default function GeneratePage() {
                             )}
                             {look.error && (
                               <div className="absolute inset-0 flex items-center justify-center p-4">
-                                <p className="text-[10px] text-center" style={{ color: 'var(--vault-text-dim)' }}>{look.error}</p>
+                                <p className="text-[12px] text-center" style={{ color: 'var(--vault-text-dim)' }}>{look.error}</p>
                               </div>
                             )}
                             {look.image && (
@@ -781,7 +781,7 @@ export default function GeneratePage() {
                               >
                                 <button
                                   onClick={() => handleDownload(look)}
-                                  className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
+                                  className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70"
                                   style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
                                 >
                                   DL
@@ -790,7 +790,7 @@ export default function GeneratePage() {
                                   <button
                                     onClick={() => handleSave(look, taskIdx)}
                                     disabled={look.saved || look.loading}
-                                    className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
+                                    className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
                                     style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
                                   >
                                     {look.saved ? 'SAVED' : look.loading ? '...' : 'SAVE'}
@@ -798,7 +798,7 @@ export default function GeneratePage() {
                                 ) : (
                                   <button
                                     onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-                                    className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
+                                    className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70"
                                     style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
                                   >
                                     LOGIN
@@ -807,7 +807,7 @@ export default function GeneratePage() {
                               </div>
                             )}
                           </div>
-                          <p className="text-[9px] tracking-[2px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
+                          <p className="text-[12px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
                             LOOK {outfitIdx + 1}{look.variant}
                           </p>
                         </div>
@@ -823,7 +823,7 @@ export default function GeneratePage() {
                 <button
                   onClick={handleSaveAll}
                   disabled={allSaved}
-                  className="flex-1 py-3 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70 disabled:opacity-30"
+                  className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
                   style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}
                 >
                   {allSaved ? 'ALL SAVED' : 'SAVE ALL'}
@@ -831,7 +831,7 @@ export default function GeneratePage() {
                 <button
                   onClick={handlePublishAll}
                   disabled={publishingAll}
-                  className="flex-1 py-3 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-70 disabled:opacity-30"
+                  className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
                   style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
                 >
                   {publishingAll ? 'PUBLISHING...' : 'PUBLISH TO GRID'}
