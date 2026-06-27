@@ -28,7 +28,7 @@ export default function WardrobePage() {
         <ThemeToggle />
       </div>
 
-      <VaultContent />
+      <VaultContent tier={undefined} />
     </div>
   );
 }

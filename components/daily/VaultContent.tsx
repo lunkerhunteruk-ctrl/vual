@@ -12,7 +12,7 @@ import { VideoModal } from "./VideoModal";
 import { getPublishedCollections, formatCollectionDate, VaultCollection } from "@/lib/daily/collections";
 import { LightboxModal } from "./LightboxModal";
 
-export function VaultContent() {
+export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
   const [collections, setCollections] = useState<VaultCollection[]>([]);
   const [selectedImage, setSelectedImage] = useState<
     (VaultMedia & { locationId: string }) | null
@@ -29,7 +29,7 @@ export function VaultContent() {
 
   // Fetch published collections with tier="daily" filter
   useEffect(() => {
-    getPublishedCollections("daily").then(setCollections);
+    getPublishedCollections(tier).then(setCollections);
   }, []);
 
   useEffect(() => {

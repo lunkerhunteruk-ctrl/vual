@@ -332,6 +332,10 @@ export default function GeneratePage() {
   const [looks, setLooks] = useState<LookResult[]>([]);
   const [generating, setGenerating] = useState(false);
   const [publishingAll, setPublishingAll] = useState(false);
+  const [showPublishModal, setShowPublishModal] = useState(false);
+  const [publishCategory, setPublishCategory] = useState('casual');
+  const [publishTitle, setPublishTitle] = useState('');
+  const [published, setPublished] = useState(false);
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'ja';
 
@@ -478,9 +482,25 @@ export default function GeneratePage() {
   const handlePublishAll = async () => {
     if (!user) return;
     setPublishingAll(true);
-    await handleSaveAll();
-    // TODO Step 4: set is_public = true
-    setPublishingAll(false);
+    try {
+      const images = looks.filter((l) => l.image).map((l) => l.image as string);
+      const res = await fetch('/api/my/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          images,
+          category: publishCategory,
+          title: publishTitle || sceneSettings.location || null,
+          firebaseUid: user.id,
+        }),
+      });
+      if (res.ok) {
+        setPublished(true);
+        setShowPublishModal(false);
+      }
+    } finally {
+      setPublishingAll(false);
+    }
   };
 
   const looksByOutfit = outfits.map((_, idx) => looks.filter((l) => l.outfitIdx === idx));
@@ -836,13 +856,91 @@ export default function GeneratePage() {
                   {allSaved ? 'ALL SAVED' : 'SAVE ALL'}
                 </button>
                 <button
-                  onClick={handlePublishAll}
-                  disabled={publishingAll}
+                  onClick={() => published ? undefined : setShowPublishModal(true)}
+                  disabled={publishingAll || published}
                   className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
                   style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
                 >
-                  {publishingAll ? 'PUBLISHING...' : 'PUBLISH TO GRID'}
+                  {published ? '公開済み ✓' : 'このワードローブを公開'}
                 </button>
+              </div>
+            )}
+
+            {/* Publish modal */}
+            {showPublishModal && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center"
+                style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+                onClick={(e) => { if (e.target === e.currentTarget) setShowPublishModal(false); }}
+              >
+                <div
+                  className="w-full max-w-sm mx-4 p-6 flex flex-col gap-5"
+                  style={{ background: 'var(--vault-bg)', border: '1px solid var(--vault-border)' }}
+                >
+                  <div className="text-[13px] tracking-wide" style={{ color: 'var(--vault-text)' }}>
+                    このワードローブを公開
+                  </div>
+
+                  {/* Category */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>カテゴリ</span>
+                    <div className="grid grid-cols-4 gap-[2px]">
+                      {[
+                        { value: 'high_fashion', label: 'HIGH' },
+                        { value: 'street',       label: 'STREET' },
+                        { value: 'casual',       label: 'CASUAL' },
+                        { value: 'minimal',      label: 'MINIMAL' },
+                        { value: 'feminine',     label: 'FEMININE' },
+                        { value: 'classic',      label: 'CLASSIC' },
+                        { value: 'vintage',      label: 'VINTAGE' },
+                        { value: 'resort',       label: 'RESORT' },
+                      ].map((c) => (
+                        <button
+                          key={c.value}
+                          onClick={() => setPublishCategory(c.value)}
+                          className="py-2 text-[9px] tracking-wider transition-opacity hover:opacity-80"
+                          style={{
+                            background: publishCategory === c.value ? 'var(--vault-text)' : 'var(--vault-border)',
+                            color: publishCategory === c.value ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
+                          }}
+                        >
+                          {c.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Title (optional) */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>タイトル（任意）</span>
+                    <input
+                      type="text"
+                      value={publishTitle}
+                      onChange={(e) => setPublishTitle(e.target.value)}
+                      placeholder={sceneSettings.location || 'My Look'}
+                      className="w-full px-3 py-2 text-[12px] outline-none bg-transparent"
+                      style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text)' }}
+                    />
+                  </div>
+
+                  <div className="flex gap-[2px]">
+                    <button
+                      onClick={() => setShowPublishModal(false)}
+                      className="flex-1 py-3 text-[12px] tracking-wide hover:opacity-70"
+                      style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}
+                    >
+                      キャンセル
+                    </button>
+                    <button
+                      onClick={handlePublishAll}
+                      disabled={publishingAll}
+                      className="flex-1 py-3 text-[12px] tracking-wide hover:opacity-80 disabled:opacity-40"
+                      style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
+                    >
+                      {publishingAll ? '公開中...' : '公開する'}
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </section>
