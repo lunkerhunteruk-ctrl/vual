@@ -1,18 +1,20 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useVaultStore } from "@/lib/daily/store";
 import { signOutVault } from "@/lib/daily/auth";
 import { AuthModal } from "./AuthModal";
 import { CreditSheet } from "./CreditSheet";
-import { MyVault } from "./MyVault";
 
 export function UserBadge() {
   const [open, setOpen] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showCredits, setShowCredits] = useState(false);
-  const [showMyVault, setShowMyVault] = useState(false);
   const [isLight, setIsLight] = useState(false);
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] || 'ja';
   const menuRef = useRef<HTMLDivElement>(null);
 
   const user = useVaultStore((s) => s.user);
@@ -125,13 +127,14 @@ export function UserBadge() {
               </span>
             </div>
 
-            <button
-              onClick={() => { setOpen(false); setShowMyVault(true); }}
-              className="w-full py-2.5 text-[10px] tracking-[3px] font-light rounded-lg transition-colors"
+            <Link
+              href={`/${locale}/my/looks`}
+              onClick={() => setOpen(false)}
+              className="w-full py-2.5 text-[10px] tracking-[3px] font-light rounded-lg transition-colors flex items-center justify-center"
               style={{ border: `1px solid ${t.border}`, color: t.dim }}
             >
               MY WARDROBE
-            </button>
+            </Link>
 
             <button
               onClick={() => { setOpen(false); setShowCredits(true); }}
@@ -160,7 +163,6 @@ export function UserBadge() {
 
       <AuthModal open={showAuth} onClose={() => setShowAuth(false)} onSuccess={() => setShowAuth(false)} />
       <CreditSheet open={showCredits} onClose={() => setShowCredits(false)} />
-      <MyVault open={showMyVault} onClose={() => setShowMyVault(false)} />
     </>
   );
 }
