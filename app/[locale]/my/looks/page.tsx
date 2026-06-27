@@ -630,18 +630,21 @@ export default function MyLooksPage() {
               const isSelected = selectedIds.has(look.id);
               const selectable = selectMode && isOwn;
 
+              const ar = (look.recipe?.aspectRatio ?? '3:4').replace(':', '/');
+
               return (
                 <div key={look.id} className="group">
                   <div
-                    className="aspect-[3/4] relative overflow-hidden"
+                    className="relative overflow-hidden"
                     style={{
                       background: 'var(--vault-border)',
                       cursor: 'pointer',
+                      aspectRatio: ar,
                     }}
                     onClick={() => selectable ? toggleSelect(look) : openDetail(look)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={look.image_url} alt="look" className="w-full h-full object-cover" />
+                    <img src={look.image_url} alt="look" className="absolute inset-0 w-full h-full object-cover" />
 
                     {/* Selection overlay */}
                     {selectable && isSelected && (
