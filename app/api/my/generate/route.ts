@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
       background = 'studioWhite',
       modelSettings = {},
       sceneSettings = {},       // { location, situation, filmMode }
-      aspectRatio = '3:4',      // '3:4' | '9:16' | '1:1' | '16:9' | '4:3'
+      aspectRatio = '3:4',      // '3:4' | '9:16' | '1:1' | '16:9' | '4:3' | '4:5'
       firebaseUid = null,
       variant = 'A',
     } = body;
