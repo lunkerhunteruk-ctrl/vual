@@ -99,13 +99,7 @@ SUBJECT: A ${ethnicDesc} ${genderWord}, ${height}cm tall, slim fashion model bui
 OUTFIT: The model wears EXACTLY the garment(s) shown in ${garmentRef}. Reproduce all visible details faithfully — color, texture, pattern, cut, silhouette, and fit. Do NOT alter, substitute, or simplify any garment.
 BACKGROUND: ${bgDesc}.${situationNote ? `\n${situationNote}` : ''}
 POSE: The model is ${variant === 'A' ? poseA : poseB}.
-FRAMING: Full body from head to toe. ${
-    aspectRatio === '9:16'
-      ? '9:16 vertical — include ample background above and below the figure'
-      : aspectRatio === '1:1'
-      ? '1:1 square — upper-body to knee composition'
-      : '3:4 portrait orientation'
-  }.
+FRAMING: Full body from head to toe. Aspect ratio ${aspectRatio}. Use the optimal editorial composition for this ratio while keeping the full body visible.
 COMPOSITION: ${variant === 'A' ? compA : compB}
 QUALITY: High-end fashion editorial photography. Sharp focus on the garments. Beautiful professional lighting. No text, no watermarks, no logos.${filmText ? `\n\n${filmText}` : ''}${faceNote ? `\n\n${faceNote}` : ''}`;
 }
@@ -160,7 +154,7 @@ export async function POST(request: NextRequest) {
       background = 'studioWhite',
       modelSettings = {},
       sceneSettings = {},       // { location, situation, filmMode }
-      aspectRatio = '3:4',      // '3:4' | '9:16' | '1:1'
+      aspectRatio = '3:4',      // '3:4' | '9:16' | '1:1' | '16:9' | '4:3'
       firebaseUid = null,
       variant = 'A',
     } = body;
