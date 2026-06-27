@@ -284,7 +284,7 @@ function OutfitRow({
         Outer: clips overflow and enables horizontal scroll.
         Inner: fit-content + mx-auto → centered when narrow, scrolls when wide.
       */}
-      <div className="overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+      <div className="overflow-x-auto pt-3 pb-2 px-1" style={{ scrollbarWidth: 'none' }}>
         <div className="flex gap-4 items-start mx-auto" style={{ width: 'fit-content' }}>
           {outfit.map((item, itemIdx) => (
             <ItemCard
