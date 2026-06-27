@@ -216,17 +216,34 @@ export default function MyLooksPage() {
     if (!detailLook || !user) return;
     setSavingGarments(true);
     try {
-      const res = await fetch(`/api/my/looks/${detailLook.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firebaseUid: user.id, garmentNames: editNames, garmentLinks: editLinks }),
+      // Find sibling looks from the same outfit (same outfitIdx + same garmentUrls)
+      const outfitIdx = detailLook.recipe?.outfitIdx;
+      const garmentKey = (detailLook.recipe?.garmentUrls ?? []).join('|');
+      const siblings = looks.filter((l) =>
+        l.id !== detailLook.id &&
+        l.recipe?.outfitIdx === outfitIdx &&
+        (l.recipe?.garmentUrls ?? []).join('|') === garmentKey
+      );
+
+      const targets = [detailLook, ...siblings];
+      const results = await Promise.all(
+        targets.map((look) =>
+          fetch(`/api/my/looks/${look.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ firebaseUid: user.id, garmentNames: editNames, garmentLinks: editLinks }),
+          }).then((r) => r.ok ? r.json() : null)
+        )
+      );
+
+      results.forEach((result, i) => {
+        if (!result?.recipe) return;
+        const id = targets[i].id;
+        if (id === detailLook.id) setDetailLook((prev) => prev ? { ...prev, recipe: result.recipe } : prev);
+        setLooks((prev) => prev.map((l) => l.id === id ? { ...l, recipe: result.recipe } : l));
       });
-      if (res.ok) {
-        const { recipe } = await res.json();
-        setDetailLook((prev) => prev ? { ...prev, recipe } : prev);
-        setLooks((prev) => prev.map((l) => l.id === detailLook.id ? { ...l, recipe } : l));
-        setGarmentSaved(true);
-      }
+
+      setGarmentSaved(true);
     } finally {
       setSavingGarments(false);
     }
