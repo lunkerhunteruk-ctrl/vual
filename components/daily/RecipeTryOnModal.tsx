@@ -62,6 +62,7 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
@@ -238,8 +239,9 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
               <img
                 src={lookImageUrl}
                 alt="original look"
-                className="w-full object-cover"
+                className="w-full object-cover cursor-zoom-in"
                 style={{ aspectRatio: (recipe.aspectRatio || '3:4').replace(':', '/') }}
+                onClick={() => setLightbox(lookImageUrl)}
               />
             </div>
             <div>
@@ -256,7 +258,12 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
                 )}
                 {resultImage && !generating && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={resultImage} alt="try-on result" className="absolute inset-0 w-full h-full object-cover" />
+                  <img
+                    src={resultImage}
+                    alt="try-on result"
+                    className="absolute inset-0 w-full h-full object-cover cursor-zoom-in"
+                    onClick={() => setLightbox(resultImage)}
+                  />
                 )}
                 {error && !generating && !resultImage && (
                   <p className="text-[9px] text-center px-2" style={{ color: 'var(--vault-text-dim)' }}>{error}</p>
@@ -448,5 +455,23 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
         </div>
       </div>
     </div>
+
+    {/* Lightbox — z-[60] sits above this modal's z-50 */}
+    {lightbox && (
+      <div
+        className="fixed inset-0 z-[60] flex items-center justify-center"
+        style={{ background: 'rgba(0,0,0,0.92)' }}
+        onClick={() => setLightbox(null)}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={lightbox}
+          alt=""
+          className="max-w-full max-h-full object-contain"
+          style={{ maxWidth: '95vw', maxHeight: '95dvh' }}
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+    )}
   );
 }
