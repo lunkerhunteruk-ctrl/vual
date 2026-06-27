@@ -48,12 +48,13 @@ async function getOrCreatePersonalStore(
 
 export async function POST(request: NextRequest) {
   try {
-    // recipes: per-look recipe objects (same order as images)
+    // images: base64 data URLs (generate page flow)
+    // imageUrls: pre-uploaded R2 URLs (my-wardrobe publish flow — no re-upload needed)
     // garmentUrlSets: pre-uploaded garment URLs per outfit { [outfitIdx]: string[] }
-    const { images, category, title, firebaseUid, recipes, garmentUrlSets } = await request.json();
+    const { images, imageUrls: preUploadedUrls, category, title, firebaseUid, recipes, garmentUrlSets } = await request.json();
 
-    if (!images?.length || !firebaseUid) {
-      return NextResponse.json({ error: 'images and firebaseUid required' }, { status: 400 });
+    if ((!images?.length && !preUploadedUrls?.length) || !firebaseUid) {
+      return NextResponse.json({ error: 'images (or imageUrls) and firebaseUid required' }, { status: 400 });
     }
     if (!VALID_CATEGORIES.includes(category)) {
       return NextResponse.json({ error: 'Invalid category' }, { status: 400 });
@@ -68,11 +69,15 @@ export async function POST(request: NextRequest) {
     const bundleKey = `wardrobe/${firebaseUid}/${Date.now()}`;
     const garmentUrlsMap: Record<number, string[]> = garmentUrlSets ?? {};
 
-    // Upload look images
-    const imageUrls: string[] = [];
-    for (let i = 0; i < images.length; i++) {
-      const url = await uploadBase64(images[i], `${bundleKey}/look-${i}.jpg`);
-      if (url) imageUrls.push(url);
+    // Use pre-uploaded URLs or upload from base64
+    let imageUrls: string[] = [];
+    if (preUploadedUrls?.length) {
+      imageUrls = preUploadedUrls;
+    } else {
+      for (let i = 0; i < images.length; i++) {
+        const url = await uploadBase64(images[i], `${bundleKey}/look-${i}.jpg`);
+        if (url) imageUrls.push(url);
+      }
     }
 
     if (imageUrls.length === 0) {

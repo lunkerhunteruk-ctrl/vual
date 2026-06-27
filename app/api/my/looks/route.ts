@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
   const { data, error } = await supa
     .from('user_generations')
-    .select('id, image_url, created_at')
+    .select('id, image_url, created_at, recipe')
     .eq('firebase_uid', firebaseUid)
     .order('created_at', { ascending: false });
 

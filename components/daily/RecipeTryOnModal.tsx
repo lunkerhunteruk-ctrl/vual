@@ -170,7 +170,7 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
           imageDataUrl: resultImage,
           firebaseUid: user.id,
           variant: recipe.variant || 'A',
-          recipe,
+          // recipe intentionally omitted — try-on results are personal saves, not own creations
         }),
       });
       if (res.ok) setSaved(true);
