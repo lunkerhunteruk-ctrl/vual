@@ -7,6 +7,7 @@ import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
 import { ThemeToggle } from '@/components/daily/ThemeToggle';
 import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
+import { NavPill } from '@/components/wardrobe/NavPill';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -269,15 +270,8 @@ export default function MyLooksPage() {
       data-theme="light"
       style={{ background: 'var(--vault-bg)', color: 'var(--vault-text)', fontFamily: MONO }}
     >
+      <NavPill active="wardrobe" locale={locale} />
       <WardrobeUserBadge />
-
-      <Link
-        href={`/${locale}/wardrobe`}
-        className="fixed top-5 left-5 z-50 text-[10px] tracking-[3px] font-light transition-opacity hover:opacity-60"
-        style={{ color: 'var(--vault-text-dim)' }}
-      >
-        ← GRID
-      </Link>
 
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <ThemeToggle />
