@@ -141,9 +141,10 @@ async function callAPIMart(
     return null;
   }
 
-  // 2. Poll until complete (18 × 2.5s ≈ 45s, well within maxDuration=60)
-  for (let i = 0; i < 18; i++) {
-    await new Promise((r) => setTimeout(r, 2500));
+  // 2. Poll until complete (17 × 3s = 51s, well within maxDuration=60)
+  // Response: { data: { status, result: { images: [{ url: ["https://..."] }] } } }
+  for (let i = 0; i < 17; i++) {
+    await new Promise((r) => setTimeout(r, 3000));
 
     const pollRes = await fetch(`${APIMART_TASK_URL}/${taskId}`, {
       headers: { 'Authorization': `Bearer ${APIMART_API_KEY}` },
@@ -155,31 +156,40 @@ async function callAPIMart(
     }
 
     const pollData = await pollRes.json();
-    console.log(`[APIMart] Poll ${i + 1}:`, JSON.stringify(pollData).slice(0, 300));
-
     const status: string = pollData.data?.status ?? pollData.status ?? '';
+    console.log(`[APIMart] Poll ${i + 1}: status=${status}`);
 
     if (status === 'failed' || status === 'error') {
       console.error('[APIMart] Task failed:', JSON.stringify(pollData));
       return null;
     }
 
-    if (['completed', 'success', 'done', 'finish'].includes(status)) {
-      // Try various image URL / base64 paths in the response
-      const images: any[] = pollData.data?.images ?? pollData.data?.result?.images ?? [];
-      const first = images[0];
-      if (typeof first === 'string') return first;
-      if (first?.url) return first.url;
-      if (first?.b64_json) return `data:image/png;base64,${first.b64_json}`;
+    if (status === 'completed') {
+      // Extract CDN URLs: result.images[].url is itself an array
+      const cdnUrls: string[] = [];
+      for (const img of pollData.data?.result?.images ?? []) {
+        const urls = img.url;
+        if (Array.isArray(urls)) {
+          for (const u of urls) { if (typeof u === 'string' && u) cdnUrls.push(u); }
+        } else if (typeof urls === 'string' && urls) {
+          cdnUrls.push(urls);
+        }
+      }
 
-      const directUrl = pollData.data?.url ?? pollData.data?.image_url;
-      if (directUrl) return directUrl;
+      if (cdnUrls.length === 0) {
+        console.error('[APIMart] Completed but no image URLs found:', JSON.stringify(pollData));
+        return null;
+      }
 
-      console.error('[APIMart] Completed but no image found:', JSON.stringify(pollData));
-      return null;
+      // Download CDN image and return as base64 data URL
+      const imgRes = await fetch(cdnUrls[0]);
+      const buf = await imgRes.arrayBuffer();
+      const b64 = Buffer.from(buf).toString('base64');
+      const ct = imgRes.headers.get('content-type') || 'image/png';
+      return `data:${ct};base64,${b64}`;
     }
 
-    // still processing (submitted / processing / pending) — keep polling
+    // still processing (submitted / processing) — keep polling
   }
 
   console.error('[APIMart] Timeout: task not completed within limit');
