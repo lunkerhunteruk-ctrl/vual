@@ -23,6 +23,20 @@ interface Look {
   recipe?: LookRecipe | null;
 }
 
+interface CollectionLook {
+  id: string;
+  image_url: string;
+  bundle_position: number;
+  recipe?: LookRecipe | null;
+}
+
+interface Collection {
+  id: string;
+  title: string | null;
+  created_at: string;
+  looks: CollectionLook[];
+}
+
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
 const CATEGORIES = [
@@ -40,6 +54,14 @@ export default function MyLooksPage() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  // published collections
+  const [collections, setCollections] = useState<Collection[]>([]);
+  const [collectionsLoading, setCollectionsLoading] = useState(true);
+  const [deletingLook, setDeletingLook] = useState<string | null>(null);
+  // add-to-collection picker
+  const [addTarget, setAddTarget] = useState<string | null>(null); // bundleId
+  const [adding, setAdding] = useState<string | null>(null); // generationId being added
 
   // select + publish
   const [selectMode, setSelectMode] = useState(false);
@@ -67,6 +89,17 @@ export default function MyLooksPage() {
     }
   }, []);
 
+  const fetchCollections = useCallback(async (uid: string) => {
+    setCollectionsLoading(true);
+    try {
+      const res = await fetch(`/api/my/collections?uid=${uid}`);
+      const data = await res.json();
+      setCollections(data.collections ?? []);
+    } finally {
+      setCollectionsLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (!auth) return;
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -86,12 +119,58 @@ export default function MyLooksPage() {
           if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
         }
         fetchLooks(firebaseUser.uid);
+        fetchCollections(firebaseUser.uid);
       } else {
         setLoading(false);
+        setCollectionsLoading(false);
       }
     });
     return () => unsub();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleDeleteCollectionLook = async (lookId: string, bundleId: string) => {
+    if (!user || !confirm('このルックをコレクションから削除しますか？')) return;
+    setDeletingLook(lookId);
+    try {
+      const res = await fetch('/api/my/collection-look', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lookId, firebaseUid: user.id }),
+      });
+      if (res.ok) {
+        setCollections((prev) =>
+          prev.map((c) =>
+            c.id === bundleId
+              ? { ...c, looks: c.looks.filter((l) => l.id !== lookId) }
+              : c
+          ).filter((c) => c.looks.length > 0)
+        );
+      }
+    } finally {
+      setDeletingLook(null);
+    }
+  };
+
+  const handleAddToCollection = async (bundleId: string, generationId: string) => {
+    if (!user) return;
+    setAdding(generationId);
+    try {
+      const res = await fetch('/api/my/collection-look', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bundleId, generationId, firebaseUid: user.id }),
+      });
+      if (res.ok) {
+        await fetchCollections(user.id);
+        setAddTarget(null);
+      } else {
+        const err = await res.json().catch(() => ({}));
+        alert(`追加失敗: ${err.error || res.status}`);
+      }
+    } finally {
+      setAdding(null);
+    }
+  };
 
   const toggleSelect = (look: Look) => {
     if (!look.recipe) return; // only own creations can be selected
@@ -265,6 +344,69 @@ export default function MyLooksPage() {
           )}
         </div>
 
+        {/* Published collections */}
+        {user && !collectionsLoading && collections.length > 0 && (
+          <div className="space-y-6">
+            <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+              PUBLISHED COLLECTIONS
+            </p>
+            {collections.map((col) => (
+              <div key={col.id} className="space-y-3">
+                {/* Collection header */}
+                <div className="flex items-baseline justify-between">
+                  <p className="text-[12px]" style={{ color: 'var(--vault-text)' }}>
+                    {col.title || '—'}{' '}
+                    <span className="text-[10px]" style={{ color: 'var(--vault-text-dim)' }}>
+                      · {col.looks.length}枚
+                    </span>
+                  </p>
+                  <button
+                    onClick={() => setAddTarget(col.id)}
+                    className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
+                    style={{ color: 'var(--vault-text-dim)' }}
+                  >
+                    ＋ ADD
+                  </button>
+                </div>
+
+                {/* Horizontal look strip */}
+                <div className="flex gap-[2px] overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+                  {col.looks.map((look) => (
+                    <div
+                      key={look.id}
+                      className="relative flex-shrink-0 group"
+                      style={{ width: 80, height: 107 }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={look.image_url}
+                        alt=""
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Delete overlay */}
+                      <button
+                        onClick={() => handleDeleteCollectionLook(look.id, col.id)}
+                        disabled={deletingLook === look.id}
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-40"
+                        style={{ background: 'rgba(0,0,0,0.45)' }}
+                      >
+                        {deletingLook === look.id ? (
+                          <div className="w-3 h-3 rounded-full border border-white border-t-transparent animate-spin" />
+                        ) : (
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div style={{ borderBottom: '1px solid var(--vault-border)' }} />
+          </div>
+        )}
+
         {/* Not logged in */}
         {!user && !loading && (
           <div className="flex flex-col items-center justify-center py-32 gap-6">
@@ -391,6 +533,61 @@ export default function MyLooksPage() {
           </p>
         )}
       </div>
+
+      {/* Add-to-collection picker */}
+      {addTarget && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+          style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}
+          onClick={(e) => { if (e.target === e.currentTarget) setAddTarget(null); }}
+        >
+          <div
+            className="w-full sm:max-w-sm mx-auto flex flex-col"
+            style={{ background: 'var(--vault-bg)', maxHeight: '75dvh', fontFamily: MONO }}
+          >
+            <div
+              className="flex items-center justify-between px-5 py-4 flex-shrink-0"
+              style={{ borderBottom: '1px solid var(--vault-border)' }}
+            >
+              <span className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+                ルックを追加
+              </span>
+              <button onClick={() => setAddTarget(null)} style={{ color: 'var(--vault-text-dim)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="overflow-y-auto px-5 py-4">
+              {looks.filter((l) => !!l.recipe).length === 0 ? (
+                <p className="text-[11px] text-center py-8" style={{ color: 'var(--vault-text-dim)' }}>
+                  追加できるルックがありません
+                </p>
+              ) : (
+                <div className="grid grid-cols-3 gap-[2px]">
+                  {looks.filter((l) => !!l.recipe).map((look) => (
+                    <button
+                      key={look.id}
+                      onClick={() => handleAddToCollection(addTarget, look.id)}
+                      disabled={!!adding}
+                      className="relative aspect-[3/4] overflow-hidden disabled:opacity-40"
+                      style={{ background: 'var(--vault-border)' }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={look.image_url} alt="" className="w-full h-full object-cover" />
+                      {adding === look.id && (
+                        <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.4)' }}>
+                          <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Publish modal */}
       {showPublishModal && (
