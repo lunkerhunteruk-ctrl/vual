@@ -3,9 +3,9 @@ import { createServerClient } from '@/lib/supabase';
 
 export const maxDuration = 60;
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const APIMART_API_KEY = process.env.APIMART_API_KEY;
 const GEMINI_MODEL = 'gemini-3.1-flash-image-preview';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_URL = `https://api.apimart.ai/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 const BACKGROUNDS: Record<string, string> = {
   studioWhite: 'clean white studio with soft professional fashion lighting',
@@ -65,11 +65,14 @@ QUALITY: High-end fashion editorial photography. Sharp focus on the garments. Be
 }
 
 async function callGemini(imageParts: any[], prompt: string): Promise<string | null> {
-  if (!GEMINI_API_KEY) return null;
+  if (!APIMART_API_KEY) return null;
 
-  const res = await fetch(`${GEMINI_URL}?key=${GEMINI_API_KEY}`, {
+  const res = await fetch(GEMINI_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${APIMART_API_KEY}`,
+    },
     body: JSON.stringify({
       contents: [{ parts: [...imageParts, { text: prompt }] }],
       generationConfig: {
@@ -86,7 +89,7 @@ async function callGemini(imageParts: any[], prompt: string): Promise<string | n
   });
 
   if (!res.ok) {
-    console.error('[QuickGen] Gemini error:', await res.text());
+    console.error('[QuickGen] APIMART error:', await res.text());
     return null;
   }
 
