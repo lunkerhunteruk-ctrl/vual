@@ -172,7 +172,8 @@ export async function POST(request: NextRequest) {
     const { gender = 'female', height = 170, ethnicity = 'japanese' } = modelSettings;
     const { location, situation, filmMode } = sceneSettings;
 
-    // ── Server-side credit check ──
+    // ── Server-side credit check (check only — deduct after successful generation) ──
+    let creditId: string | null = null;
     if (firebaseUid) {
       const supa = createServerClient();
       if (supa) {
@@ -193,16 +194,7 @@ export async function POST(request: NextRequest) {
               { status: 402 }
             );
           }
-          const { data: result } = await supa.rpc('deduct_consumer_credit', {
-            p_consumer_credit_id: credit.id,
-          });
-          const deducted = Array.isArray(result) ? result[0] : result;
-          if (deducted && !deducted.success) {
-            return NextResponse.json(
-              { error: 'クレジット消費に失敗しました', code: 'DEDUCT_FAILED' },
-              { status: 402 }
-            );
-          }
+          creditId = credit.id;
         }
       }
     }
@@ -247,6 +239,14 @@ export async function POST(request: NextRequest) {
 
     if (!image) {
       return NextResponse.json({ error: '生成に失敗しました。再度お試しください。' }, { status: 500 });
+    }
+
+    // ── Deduct credit only after successful generation ──
+    if (creditId) {
+      const supa = createServerClient();
+      if (supa) {
+        await supa.rpc('deduct_consumer_credit', { p_consumer_credit_id: creditId });
+      }
     }
 
     return NextResponse.json({ success: true, image, variant });
