@@ -31,6 +31,23 @@ interface ModelSettings {
   ethnicity: string;
 }
 
+interface SceneSettings {
+  location: string;
+  situation: string;
+  filmMode: string; // '' = AI AUTO
+}
+
+const FILM_OPTIONS = [
+  { value: '',              label: 'AI AUTO'           },
+  { value: 'leicaPortra800',label: 'Leica Portra 800'  },
+  { value: 'leica',         label: 'Leica Portra 400'  },
+  { value: 'contax',        label: 'Contax T3'         },
+  { value: 'pentax',        label: 'Pentax 67'         },
+  { value: 'nikon',         label: 'Nikon Tri-X (B&W)' },
+  { value: 'nikon800',      label: 'Nikon Cinestill 800T' },
+  { value: 'superia',       label: 'Nikon Superia 800' },
+];
+
 const MODES: { value: Mode; label: string; outfits: number; looks: number; credits: number }[] = [
   { value: 'quick',    label: 'QUICK',    outfits: 1, looks: 2,  credits: 2  },
   { value: 'standard', label: 'STANDARD', outfits: 3, looks: 6,  credits: 6  },
@@ -56,12 +73,12 @@ const ETHNICITIES = [
 ];
 
 const MAX_ITEMS  = 6;
-const MAX_IMAGES = 3; // per item
+const MAX_IMAGES = 4; // per item: 1 main + 3 detail
 const MAX_TOTAL  = 14; // per outfit (Gemini limit)
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
 function buildOutfit(itemCount = 1): (string | null)[][] {
-  return Array.from({ length: itemCount }, () => [null, null, null]);
+  return Array.from({ length: itemCount }, () => [null, null, null, null]);
 }
 
 function buildInitialOutfits(outfitCount: number): AllOutfits {
@@ -108,8 +125,9 @@ function ItemCard({
   };
 
   const mainImg = images[0];
-  const det1    = images[1];
-  const det2    = images[2];
+
+  // Detail slot width: 3 slots fit in 120px with 2px gaps → (120 - 4) / 3 ≈ 38px
+  const DET_SIZE = 38;
 
   return (
     <div className="flex-shrink-0 relative" style={{ width: 120 }}>
@@ -162,16 +180,16 @@ function ItemCard({
         )}
       </div>
 
-      {/* Detail slots row */}
+      {/* Detail slots row — 3 slots (DET 1/2/3) */}
       <div className="flex gap-[2px] mt-[2px]">
-        {[1, 2].map((slot) => {
+        {[1, 2, 3].map((slot) => {
           const img = images[slot];
           const canAdd = totalImages < MAX_TOTAL || !!img;
           return (
             <div
               key={slot}
               className="relative overflow-hidden cursor-pointer group"
-              style={{ width: 59, height: 59, background: 'var(--vault-border)', opacity: canAdd ? 1 : 0.4 }}
+              style={{ width: DET_SIZE, height: DET_SIZE, background: 'var(--vault-border)', opacity: canAdd ? 1 : 0.4, flexShrink: 0 }}
               onClick={() => canAdd && pickFile(slot)}
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => canAdd && handleDrop(slot, e)}
@@ -181,7 +199,7 @@ function ItemCard({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={img} alt="" className="w-full h-full object-cover" />
                   <button
-                    className="absolute top-1 right-1 w-4 h-4 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-0.5 right-0.5 w-4 h-4 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                     style={{ background: 'var(--vault-bg)' }}
                     onClick={(e) => { e.stopPropagation(); onRemove(slot); }}
                   >
@@ -192,11 +210,11 @@ function ItemCard({
                 </>
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
+                  <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
                     <path d="M12 4v16m8-8H4" />
                   </svg>
-                  <span className="text-[6px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>
-                    {slot === 1 ? 'DET 1' : 'DET 2'}
+                  <span className="text-[5px] tracking-[0.5px]" style={{ color: 'var(--vault-text-dim)' }}>
+                    {slot === 1 ? 'DET 1' : slot === 2 ? 'DET 2' : 'DET 3'}
                   </span>
                 </div>
               )}
@@ -204,7 +222,6 @@ function ItemCard({
           );
         })}
       </div>
-      {/* Slot 1=det1 only needed above — det1 det2 already rendered above */}
       <p className="text-[7px] tracking-[1px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
         {images.filter(Boolean).length}/{MAX_IMAGES}枚
       </p>
@@ -224,7 +241,6 @@ function OutfitRow({
   showLabel: boolean;
   onUpdate: (updated: (string | null)[][]) => void;
 }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const totalImages = countImages(outfit);
 
   const updateItem = useCallback((itemIdx: number, imageIdx: number, value: string | null) => {
@@ -235,9 +251,8 @@ function OutfitRow({
 
   const addItem = () => {
     if (outfit.length >= MAX_ITEMS) return;
-    const next = [...outfit, [null, null, null]];
+    const next = [...outfit, [null, null, null, null]];
     onUpdate(next);
-    setTimeout(() => scrollRef.current?.scrollTo({ left: 9999, behavior: 'smooth' }), 50);
   };
 
   const removeItem = (itemIdx: number) => {
@@ -262,11 +277,8 @@ function OutfitRow({
         </p>
       )}
 
-      <div
-        ref={scrollRef}
-        className="flex gap-[6px] overflow-x-auto pb-2"
-        style={{ scrollbarWidth: 'none' }}
-      >
+      {/* Items row — centered, expands outward as slots are added */}
+      <div className="flex gap-3 justify-center items-start flex-wrap">
         {outfit.map((item, itemIdx) => (
           <ItemCard
             key={itemIdx}
@@ -279,15 +291,15 @@ function OutfitRow({
           />
         ))}
 
-        {/* Add Item button */}
+        {/* Add Item — circle button, vertically centered with the card */}
         {outfit.length < MAX_ITEMS && (
-          <div className="flex-shrink-0 flex items-center justify-center" style={{ width: 48 }}>
+          <div className="flex items-center" style={{ paddingTop: 16, alignSelf: 'flex-start', marginTop: 60 }}>
             <button
               onClick={addItem}
-              className="w-10 h-10 flex items-center justify-center transition-opacity hover:opacity-60"
-              style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}
+              className="w-9 h-9 rounded-full flex items-center justify-center transition-opacity hover:opacity-60"
+              style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)', flexShrink: 0 }}
             >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M12 4v16m8-8H4" />
               </svg>
             </button>
@@ -304,6 +316,8 @@ export default function GeneratePage() {
   const [outfits, setOutfits] = useState<AllOutfits>(buildInitialOutfits(1));
   const [background, setBackground] = useState('studioWhite');
   const [modelSettings, setModelSettings] = useState<ModelSettings>({ gender: 'female', height: 170, ethnicity: 'japanese' });
+  const [sceneSettings, setSceneSettings] = useState<SceneSettings>({ location: '', situation: '', filmMode: '' });
+  const [faceImage, setFaceImage] = useState<string | null>(null);
   const [looks, setLooks] = useState<LookResult[]>([]);
   const [generating, setGenerating] = useState(false);
   const [publishingAll, setPublishingAll] = useState(false);
@@ -338,6 +352,20 @@ export default function GeneratePage() {
     });
     return () => unsub();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const pickFaceImage = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => setFaceImage(ev.target?.result as string);
+      reader.readAsDataURL(file);
+    };
+    input.click();
+  };
 
   const handleModeChange = (newMode: Mode) => {
     const cfg = MODES.find((m) => m.value === newMode)!;
@@ -378,8 +406,10 @@ export default function GeneratePage() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               garmentImages: task.garmentImages,
+              faceImage,
               background,
               modelSettings,
+              sceneSettings,
               firebaseUid: user?.id ?? null,
               variant: task.variant,
             }),
@@ -498,7 +528,7 @@ export default function GeneratePage() {
           <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
             OUTFITS
             <span className="ml-3 text-[8px]" style={{ color: 'var(--vault-text-dim)' }}>
-              各アイテム最大3枚・最大{MAX_ITEMS}アイテム・合計{MAX_TOTAL}枚
+              各アイテム最大{MAX_IMAGES}枚・最大{MAX_ITEMS}アイテム・合計{MAX_TOTAL}枚
             </span>
           </p>
 
@@ -514,65 +544,149 @@ export default function GeneratePage() {
         </section>
 
         {/* Model settings */}
-        <section className="space-y-4">
+        <section className="space-y-6">
           <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
             MODEL
           </p>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
-              <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
-                {(['female', 'male'] as const).map((g) => (
-                  <button
-                    key={g}
-                    onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
-                    className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
-                    style={{
-                      color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
-                      borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
-                      marginBottom: -1,
-                    }}
-                  >
-                    {g === 'female' ? '女性' : '男性'}
-                  </button>
-                ))}
-              </div>
+
+          {/* Face photo + basic settings row */}
+          <div className="flex gap-4 items-start">
+            {/* Face photo upload */}
+            <div className="flex-shrink-0 space-y-1">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>FACE</p>
+              <button
+                onClick={faceImage ? () => setFaceImage(null) : pickFaceImage}
+                className="relative group overflow-hidden"
+                style={{ width: 52, height: 52, background: 'var(--vault-border)', border: faceImage ? 'none' : '1px dashed var(--vault-border)' }}
+              >
+                {faceImage ? (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={faceImage} alt="face" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'rgba(0,0,0,0.5)' }}>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                    </div>
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
+                      <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                    </svg>
+                  </div>
+                )}
+              </button>
+              <p className="text-[7px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>
+                {faceImage ? 'CLEAR' : 'OPT'}
+              </p>
             </div>
 
+            {/* Gender / Height / Model / BG */}
+            <div className="flex-1 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="space-y-2">
+                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SEX</p>
+                <div className="flex" style={{ borderBottom: '1px solid var(--vault-border)' }}>
+                  {(['female', 'male'] as const).map((g) => (
+                    <button
+                      key={g}
+                      onClick={() => setModelSettings((s) => ({ ...s, gender: g }))}
+                      className="flex-1 py-1.5 text-[10px] tracking-widest transition-opacity"
+                      style={{
+                        color: modelSettings.gender === g ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                        borderBottom: modelSettings.gender === g ? '1px solid var(--vault-text)' : '1px solid transparent',
+                        marginBottom: -1,
+                      }}
+                    >
+                      {g === 'female' ? '女性' : '男性'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  HEIGHT — {modelSettings.height}cm
+                </p>
+                <input
+                  type="range" min={155} max={185} step={5}
+                  value={modelSettings.height}
+                  onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
+                  className="w-full mt-3"
+                  style={{ accentColor: 'var(--vault-text)' }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
+                <select
+                  value={modelSettings.ethnicity}
+                  onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
+                  className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
+                  style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
+                >
+                  {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
+                <select
+                  value={background}
+                  onChange={(e) => setBackground(e.target.value)}
+                  disabled={!!sceneSettings.location}
+                  className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none disabled:opacity-40"
+                  style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
+                >
+                  {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Scene settings */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {/* Location */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
-                HEIGHT — {modelSettings.height}cm
-              </p>
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>LOCATION</p>
               <input
-                type="range" min={155} max={185} step={5}
-                value={modelSettings.height}
-                onChange={(e) => setModelSettings((s) => ({ ...s, height: parseInt(e.target.value) }))}
-                className="w-full mt-3"
-                style={{ accentColor: 'var(--vault-text)' }}
+                type="text"
+                value={sceneSettings.location}
+                onChange={(e) => setSceneSettings((s) => ({ ...s, location: e.target.value }))}
+                placeholder="東京 / Paris / Studio..."
+                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
+              />
+              {sceneSettings.location && (
+                <p className="text-[7px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  ※ BGより優先されます
+                </p>
+              )}
+            </div>
+
+            {/* Situation */}
+            <div className="space-y-2">
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>SITUATION <span style={{ opacity: 0.4 }}>— OPT</span></p>
+              <input
+                type="text"
+                value={sceneSettings.situation}
+                onChange={(e) => setSceneSettings((s) => ({ ...s, situation: e.target.value }))}
+                placeholder="未記入でGeminiが考える"
+                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
             </div>
 
+            {/* Film look */}
             <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MODEL</p>
+              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>FILM LOOK</p>
               <select
-                value={modelSettings.ethnicity}
-                onChange={(e) => setModelSettings((s) => ({ ...s, ethnicity: e.target.value }))}
+                value={sceneSettings.filmMode}
+                onChange={(e) => setSceneSettings((s) => ({ ...s, filmMode: e.target.value }))}
                 className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
               >
-                {ETHNICITIES.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
-              </select>
-            </div>
-
-            <div className="space-y-2">
-              <p className="text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>BG</p>
-              <select
-                value={background}
-                onChange={(e) => setBackground(e.target.value)}
-                className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none"
-                style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)' }}
-              >
-                {BACKGROUNDS.map((b) => <option key={b.value} value={b.value}>{b.label}</option>)}
+                {FILM_OPTIONS.map((f) => (
+                  <option key={f.value} value={f.value}>{f.label}</option>
+                ))}
               </select>
             </div>
           </div>
