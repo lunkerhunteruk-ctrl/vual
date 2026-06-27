@@ -363,6 +363,8 @@ export default function GeneratePage() {
           createdAt: new Date(),
         });
         if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
+        // Restore saved face image
+        if (credits?.faceImageUrl) setFaceImage(credits.faceImageUrl);
       }
     });
     return () => unsub();
@@ -376,10 +378,32 @@ export default function GeneratePage() {
       const file = (e.target as HTMLInputElement).files?.[0];
       if (!file) return;
       const reader = new FileReader();
-      reader.onload = (ev) => setFaceImage(ev.target?.result as string);
+      reader.onload = async (ev) => {
+        const dataUrl = ev.target?.result as string;
+        setFaceImage(dataUrl);
+        // Persist to R2 + DB if logged in
+        if (user?.id) {
+          fetch('/api/my/face', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageDataUrl: dataUrl, firebaseUid: user.id }),
+          });
+        }
+      };
       reader.readAsDataURL(file);
     };
     input.click();
+  };
+
+  const clearFaceImage = () => {
+    setFaceImage(null);
+    if (user?.id) {
+      fetch('/api/my/face', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firebaseUid: user.id }),
+      });
+    }
   };
 
   const handleModeChange = (newMode: Mode) => {
@@ -572,7 +596,7 @@ export default function GeneratePage() {
             <div className="flex-shrink-0 space-y-1">
               <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>FACE</p>
               <button
-                onClick={faceImage ? () => setFaceImage(null) : pickFaceImage}
+                onClick={faceImage ? clearFaceImage : pickFaceImage}
                 className="relative group overflow-hidden"
                 style={{ width: 52, height: 52, background: 'var(--vault-border)', border: faceImage ? 'none' : '1px dashed var(--vault-border)' }}
               >

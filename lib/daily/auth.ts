@@ -83,11 +83,11 @@ export async function handleGoogleRedirectResult(): Promise<VaultUser | null> {
 
 export async function fetchCreditsFromSupabase(
   userId: string
-): Promise<{ paidCredits: number; freeUsed: number; freeResetDate?: string; points?: number } | null> {
+): Promise<{ paidCredits: number; freeUsed: number; freeResetDate?: string; points?: number; faceImageUrl?: string } | null> {
   if (!supabase) return null;
   const { data } = await supabase
     .from('consumer_credits')
-    .select('paid_credits, free_tickets_remaining, free_tickets_reset_at, points')
+    .select('paid_credits, free_tickets_remaining, free_tickets_reset_at, points, face_image_url')
     .eq('firebase_uid', userId)
     .single();
   if (!data) return null;
@@ -98,6 +98,7 @@ export async function fetchCreditsFromSupabase(
     freeUsed: Math.max(0, 3 - (data.free_tickets_remaining ?? 3)),
     freeResetDate: resetAt ? resetAt.toISOString().slice(0, 10) : undefined,
     points: data.points ?? 0,
+    faceImageUrl: data.face_image_url ?? undefined,
   };
 }
 
