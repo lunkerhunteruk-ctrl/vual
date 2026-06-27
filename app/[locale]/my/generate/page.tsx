@@ -90,9 +90,9 @@ function countImages(outfit: (string | null)[][]): number {
   return outfit.flat().filter(Boolean).length;
 }
 
-const CARD_W  = 160;  // item card width
-const MAIN_H  = 214;  // main slot height (≈3:4 ratio)
-const DET_H   = 56;   // detail slot height
+const CARD_W  = 220;  // item card width
+const MAIN_H  = 294;  // main slot height (≈3:4 ratio)
+const DET_H   = 76;   // detail slot height
 
 // ── ItemCard ──────────────────────────────────────────────────────────────────
 function ItemCard({
@@ -535,9 +535,6 @@ export default function GeneratePage() {
         <section className="space-y-10">
           <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
             OUTFITS
-            <span className="ml-3 text-[8px]" style={{ color: 'var(--vault-text-dim)' }}>
-              各アイテム最大{MAX_IMAGES}枚・最大{MAX_ITEMS}アイテム・合計{MAX_TOTAL}枚
-            </span>
           </p>
 
           {outfits.map((outfit, outfitIdx) => (
