@@ -216,14 +216,16 @@ export default function MyLooksPage() {
     if (!detailLook || !user) return;
     setSavingGarments(true);
     try {
-      // Find sibling looks from the same outfit (same outfitIdx + same garmentUrls)
+      // Find sibling looks from the same outfit (same outfitIdx)
+      // garmentUrls differ per save (different R2 timestamps), so we match by outfitIdx only
       const outfitIdx = detailLook.recipe?.outfitIdx;
-      const garmentKey = (detailLook.recipe?.garmentUrls ?? []).join('|');
-      const siblings = looks.filter((l) =>
-        l.id !== detailLook.id &&
-        l.recipe?.outfitIdx === outfitIdx &&
-        (l.recipe?.garmentUrls ?? []).join('|') === garmentKey
-      );
+      const siblings = (typeof outfitIdx === 'number')
+        ? looks.filter((l) =>
+            l.id !== detailLook.id &&
+            typeof l.recipe?.outfitIdx === 'number' &&
+            l.recipe.outfitIdx === outfitIdx
+          )
+        : [];
 
       const targets = [detailLook, ...siblings];
       const results = await Promise.all(
