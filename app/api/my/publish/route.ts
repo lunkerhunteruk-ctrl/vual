@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     // images: base64 data URLs (generate page flow)
     // imageUrls: pre-uploaded R2 URLs (my-wardrobe publish flow — no re-upload needed)
     // garmentUrlSets: pre-uploaded garment URLs per outfit { [outfitIdx]: string[] }
-    const { images, imageUrls: preUploadedUrls, category, title, firebaseUid, recipes, garmentUrlSets } = await request.json();
+    const { images, imageUrls: preUploadedUrls, category, title, firebaseUid, recipes, garmentUrlSets, lookIds } = await request.json();
 
     if ((!images?.length && !preUploadedUrls?.length) || !firebaseUid) {
       return NextResponse.json({ error: 'images (or imageUrls) and firebaseUid required' }, { status: 400 });
@@ -113,6 +113,7 @@ export async function POST(request: NextRequest) {
         published_at: new Date().toISOString(),
         category,
         recipe: finalRecipe,
+        generation_id: lookIds?.[i] ?? null,
       };
     });
 

@@ -323,6 +323,7 @@ export default function MyLooksPage() {
       const selected = looks.filter((l) => selectedIds.has(l.id));
       const imageUrls = selected.map((l) => l.image_url);
       const recipes = selected.map((l) => l.recipe ?? null);
+      const lookIds = selected.map((l) => l.id);
 
       // Build garmentUrlSets from recipes (keyed by outfitIdx)
       const garmentUrlSets: Record<number, string[]> = {};
@@ -343,6 +344,7 @@ export default function MyLooksPage() {
           firebaseUid: user.id,
           recipes,
           garmentUrlSets,
+          lookIds,
         }),
       });
 
@@ -854,7 +856,7 @@ export default function MyLooksPage() {
                 const alreadyAdded = new Set(
                   (targetCol?.looks ?? []).map((l) => l.generation_id).filter(Boolean)
                 );
-                const addable = looks.filter((l) => !!l.recipe && !alreadyAdded.has(l.id));
+                const addable = looks.filter((l) => !!l.recipe && !!l.image_url && !alreadyAdded.has(l.id));
                 return addable.length === 0 ? (
                   <p className="text-[11px] text-center py-8" style={{ color: 'var(--vault-text-dim)' }}>
                     追加できるルックがありません
@@ -863,11 +865,12 @@ export default function MyLooksPage() {
                   <div className="grid grid-cols-3 gap-[2px]">
                     {addable.map((look) => {
                     const isChosen = pickerSelected.has(look.id);
+                    const ar = (look.recipe?.aspectRatio ?? '3:4').replace(':', '/');
                     return (
                       <div
                         key={look.id}
-                        className="relative aspect-[3/4] overflow-hidden cursor-pointer"
-                        style={{ background: 'var(--vault-border)' }}
+                        className="relative overflow-hidden cursor-pointer"
+                        style={{ background: 'var(--vault-border)', aspectRatio: ar }}
                         onClick={() => setPickerSelected((prev) => {
                           const next = new Set(prev);
                           if (next.has(look.id)) next.delete(look.id); else next.add(look.id);
@@ -875,7 +878,7 @@ export default function MyLooksPage() {
                         })}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={look.image_url} alt="" className="w-full h-full object-cover" />
+                        <img src={look.image_url} alt="" className="absolute inset-0 w-full h-full object-cover" />
                         {isChosen && (
                           <>
                             <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 2px #fff' }} />
