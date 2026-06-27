@@ -34,12 +34,15 @@ async function getOrCreatePersonalStore(
   if (existing) return existing.id;
 
   const slug = `user-${firebaseUid.slice(0, 12).toLowerCase()}`;
-  const { data: created } = await supa
+  const { data: created, error: insertError } = await supa
     .from('stores')
     .insert({ slug, type: 'personal', firebase_uid: firebaseUid, name: 'My Wardrobe' })
     .select('id')
     .single();
 
+  if (insertError) {
+    console.error('[Publish] store insert error:', insertError.message, insertError.details);
+  }
   return created?.id ?? null;
 }
 
