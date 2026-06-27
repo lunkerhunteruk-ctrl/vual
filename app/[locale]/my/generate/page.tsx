@@ -438,9 +438,11 @@ export default function GeneratePage() {
       image: null, loading: true, saved: false, error: null,
     })));
 
-    const results = await Promise.all(
-      tasks.map(async (task) => {
+    // Submit all jobs in parallel, then poll each independently
+    await Promise.all(
+      tasks.map(async (task, taskIdx) => {
         try {
+          // 1. Submit
           const res = await fetch('/api/my/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -455,19 +457,51 @@ export default function GeneratePage() {
               variant: task.variant,
             }),
           });
-          const data = await res.json();
-          if (!res.ok || !data.image) {
-            return { ...task, image: null, loading: false, saved: false, error: data.error || '生成失敗' };
+          const submit = await res.json();
+          if (!res.ok || !submit.taskId) {
+            setLooks((prev) => prev.map((l, i) => i === taskIdx
+              ? { ...l, loading: false, error: submit.error || '生成失敗' } : l));
+            return;
           }
-          return { ...task, image: data.image, loading: false, saved: false, error: null };
+
+          const { taskId, creditId } = submit;
+
+          // 2. Poll until completed (client-side, no serverless timeout)
+          const maxAttempts = 60; // 60 × 3s = 3 min max
+          for (let i = 0; i < maxAttempts; i++) {
+            await new Promise((r) => setTimeout(r, 3000));
+            try {
+              const params = new URLSearchParams({ taskId });
+              if (creditId) params.set('creditId', creditId);
+              if (user?.id) params.set('firebaseUid', user.id);
+              const pollRes = await fetch(`/api/my/generate/poll?${params}`);
+              const poll = await pollRes.json();
+
+              if (poll.status === 'completed' && poll.image) {
+                setLooks((prev) => prev.map((l, i) => i === taskIdx
+                  ? { ...l, image: poll.image, loading: false, error: null } : l));
+                incrementGeneration();
+                return;
+              }
+              if (poll.status === 'failed') {
+                setLooks((prev) => prev.map((l, i) => i === taskIdx
+                  ? { ...l, loading: false, error: poll.error || '生成失敗' } : l));
+                return;
+              }
+            } catch {
+              // network hiccup — keep polling
+            }
+          }
+          // timeout
+          setLooks((prev) => prev.map((l, i) => i === taskIdx
+            ? { ...l, loading: false, error: '生成がタイムアウトしました' } : l));
         } catch {
-          return { ...task, image: null, loading: false, saved: false, error: 'ネットワークエラー' };
+          setLooks((prev) => prev.map((l, i) => i === taskIdx
+            ? { ...l, loading: false, error: 'ネットワークエラー' } : l));
         }
       })
     );
 
-    setLooks(results);
-    results.forEach(() => incrementGeneration());
     setGenerating(false);
   };
 

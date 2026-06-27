@@ -62,9 +62,10 @@ function buildPrompt(
     situation?: string;
     filmMode?: string;
     hasFaceRef?: boolean;
+    aspectRatio?: string;
   } = {}
 ): string {
-  const { location, situation, filmMode, hasFaceRef } = options;
+  const { location, situation, filmMode, hasFaceRef, aspectRatio = '3:4' } = options;
 
   // BG="" → use location prompt; BG=preset → use that preset (location ignored)
   const bgDesc = background
@@ -98,20 +99,26 @@ SUBJECT: A ${ethnicDesc} ${genderWord}, ${height}cm tall, slim fashion model bui
 OUTFIT: The model wears EXACTLY the garment(s) shown in ${garmentRef}. Reproduce all visible details faithfully — color, texture, pattern, cut, silhouette, and fit. Do NOT alter, substitute, or simplify any garment.
 BACKGROUND: ${bgDesc}.${situationNote ? `\n${situationNote}` : ''}
 POSE: The model is ${variant === 'A' ? poseA : poseB}.
-FRAMING: Full body from head to toe. 3:4 portrait orientation.
+FRAMING: Full body from head to toe. ${
+    aspectRatio === '9:16'
+      ? '9:16 vertical — include ample background above and below the figure'
+      : aspectRatio === '1:1'
+      ? '1:1 square — upper-body to knee composition'
+      : '3:4 portrait orientation'
+  }.
 COMPOSITION: ${variant === 'A' ? compA : compB}
 QUALITY: High-end fashion editorial photography. Sharp focus on the garments. Beautiful professional lighting. No text, no watermarks, no logos.${filmText ? `\n\n${filmText}` : ''}${faceNote ? `\n\n${faceNote}` : ''}`;
 }
 
-async function callAPIMart(
-  imageDataUrls: string[],  // base64 data URIs (garments + optional face last)
+// Submit job to APIMart and return task_id immediately (no polling here)
+async function submitAPIMart(
+  imageDataUrls: string[],
   prompt: string,
   aspectRatio: string,
 ): Promise<string | null> {
   if (!APIMART_API_KEY) return null;
 
-  // 1. Submit job
-  const submitRes = await fetch(APIMART_GENERATE_URL, {
+  const res = await fetch(APIMART_GENERATE_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -120,80 +127,28 @@ async function callAPIMart(
     body: JSON.stringify({
       model: GEMINI_MODEL,
       prompt,
-      size: aspectRatio,   // '3:4' | '9:16' | '1:1'
+      size: aspectRatio,
       resolution: '1K',
       n: 1,
       image_urls: imageDataUrls,
     }),
   });
 
-  if (!submitRes.ok) {
-    console.error('[APIMart] Submit failed:', submitRes.status, await submitRes.text());
+  if (!res.ok) {
+    console.error('[APIMart] Submit failed:', res.status, await res.text());
     return null;
   }
 
-  const submitData = await submitRes.json();
-  console.log('[APIMart] Submit response:', JSON.stringify(submitData));
+  const data = await res.json();
+  console.log('[APIMart] Submit response:', JSON.stringify(data));
 
-  const taskId = submitData.data?.[0]?.task_id;
+  const taskId: string | undefined =
+    data.data?.[0]?.task_id ?? data.data?.task_id ?? data.task_id;
   if (!taskId) {
-    console.error('[APIMart] No task_id in submit response');
+    console.error('[APIMart] No task_id in response');
     return null;
   }
-
-  // 2. Poll until complete (17 × 3s = 51s, well within maxDuration=60)
-  // Response: { data: { status, result: { images: [{ url: ["https://..."] }] } } }
-  for (let i = 0; i < 17; i++) {
-    await new Promise((r) => setTimeout(r, 3000));
-
-    const pollRes = await fetch(`${APIMART_TASK_URL}/${taskId}`, {
-      headers: { 'Authorization': `Bearer ${APIMART_API_KEY}` },
-    });
-
-    if (!pollRes.ok) {
-      console.log(`[APIMart] Poll ${i + 1} HTTP ${pollRes.status}`);
-      continue;
-    }
-
-    const pollData = await pollRes.json();
-    const status: string = pollData.data?.status ?? pollData.status ?? '';
-    console.log(`[APIMart] Poll ${i + 1}: status=${status}`);
-
-    if (status === 'failed' || status === 'error') {
-      console.error('[APIMart] Task failed:', JSON.stringify(pollData));
-      return null;
-    }
-
-    if (status === 'completed') {
-      // Extract CDN URLs: result.images[].url is itself an array
-      const cdnUrls: string[] = [];
-      for (const img of pollData.data?.result?.images ?? []) {
-        const urls = img.url;
-        if (Array.isArray(urls)) {
-          for (const u of urls) { if (typeof u === 'string' && u) cdnUrls.push(u); }
-        } else if (typeof urls === 'string' && urls) {
-          cdnUrls.push(urls);
-        }
-      }
-
-      if (cdnUrls.length === 0) {
-        console.error('[APIMart] Completed but no image URLs found:', JSON.stringify(pollData));
-        return null;
-      }
-
-      // Download CDN image and return as base64 data URL
-      const imgRes = await fetch(cdnUrls[0]);
-      const buf = await imgRes.arrayBuffer();
-      const b64 = Buffer.from(buf).toString('base64');
-      const ct = imgRes.headers.get('content-type') || 'image/png';
-      return `data:${ct};base64,${b64}`;
-    }
-
-    // still processing (submitted / processing) — keep polling
-  }
-
-  console.error('[APIMart] Timeout: task not completed within limit');
-  return null;
+  return taskId;
 }
 
 export async function POST(request: NextRequest) {
@@ -258,7 +213,7 @@ export async function POST(request: NextRequest) {
       height,
       ethnicity,
       variant,
-      { location, situation, filmMode, hasFaceRef: !!faceImage }
+      { location, situation, filmMode, hasFaceRef: !!faceImage, aspectRatio }
     );
 
     console.log(`[Generate] variant=${variant} film=${filmMode || 'none'} uid=${firebaseUid || 'guest'} ar=${aspectRatio}`);
@@ -267,21 +222,13 @@ export async function POST(request: NextRequest) {
     const imageDataUrls: string[] = [...validGarments];
     if (faceImage && /^data:image\/\w+;base64,/.test(faceImage)) imageDataUrls.push(faceImage);
 
-    const image = await callAPIMart(imageDataUrls, prompt, aspectRatio);
-
-    if (!image) {
-      return NextResponse.json({ error: '生成に失敗しました。再度お試しください。' }, { status: 500 });
+    // Submit job — return taskId immediately, client polls /api/my/generate/poll
+    const taskId = await submitAPIMart(imageDataUrls, prompt, aspectRatio);
+    if (!taskId) {
+      return NextResponse.json({ error: '生成ジョブの送信に失敗しました。再度お試しください。' }, { status: 500 });
     }
 
-    // ── Deduct credit only after successful generation ──
-    if (creditId) {
-      const supa = createServerClient();
-      if (supa) {
-        await supa.rpc('deduct_consumer_credit', { p_consumer_credit_id: creditId });
-      }
-    }
-
-    return NextResponse.json({ success: true, image, variant });
+    return NextResponse.json({ success: true, taskId, creditId, variant });
   } catch (err) {
     console.error('[Generate] Error:', err);
     return NextResponse.json({ error: String(err) }, { status: 500 });
