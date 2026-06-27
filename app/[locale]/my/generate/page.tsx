@@ -89,6 +89,10 @@ function countImages(outfit: (string | null)[][]): number {
   return outfit.flat().filter(Boolean).length;
 }
 
+const CARD_W  = 160;  // item card width
+const MAIN_H  = 214;  // main slot height (≈3:4 ratio)
+const DET_H   = 56;   // detail slot height
+
 // ── ItemCard ──────────────────────────────────────────────────────────────────
 function ItemCard({
   images,
@@ -126,11 +130,8 @@ function ItemCard({
 
   const mainImg = images[0];
 
-  // Detail slot width: 3 slots fit in 120px with 2px gaps → (120 - 4) / 3 ≈ 38px
-  const DET_SIZE = 38;
-
   return (
-    <div className="flex-shrink-0 relative" style={{ width: 120 }}>
+    <div className="flex-shrink-0 relative" style={{ width: CARD_W }}>
       {/* Remove item button */}
       {itemIdx > 0 && (
         <button
@@ -144,14 +145,14 @@ function ItemCard({
         </button>
       )}
 
-      <p className="text-[8px] tracking-[2px] mb-1" style={{ color: 'var(--vault-text-dim)' }}>
+      <p className="text-[8px] tracking-[2px] mb-2" style={{ color: 'var(--vault-text-dim)' }}>
         ITEM {itemIdx + 1}
       </p>
 
       {/* Main image slot */}
       <div
         className="relative overflow-hidden cursor-pointer group"
-        style={{ width: 120, height: 160, background: 'var(--vault-border)' }}
+        style={{ width: CARD_W, height: MAIN_H, background: 'var(--vault-border)' }}
         onClick={() => pickFile(0)}
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => handleDrop(0, e)}
@@ -161,35 +162,36 @@ function ItemCard({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={mainImg} alt="" className="w-full h-full object-cover" />
             <button
-              className="absolute top-1.5 right-1.5 w-5 h-5 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
               style={{ background: 'var(--vault-bg)' }}
               onClick={(e) => { e.stopPropagation(); onRemove(0); }}
             >
-              <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
           </>
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.2">
               <path d="M12 4v16m8-8H4" />
             </svg>
-            <span className="text-[7px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)' }}>MAIN</span>
+            <span className="text-[8px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>MAIN</span>
           </div>
         )}
       </div>
 
-      {/* Detail slots row — 3 slots (DET 1/2/3) */}
+      {/* Detail slots — 3 equal columns */}
       <div className="flex gap-[2px] mt-[2px]">
         {[1, 2, 3].map((slot) => {
           const img = images[slot];
           const canAdd = totalImages < MAX_TOTAL || !!img;
+          const label = slot === 1 ? 'DET 1' : slot === 2 ? 'DET 2' : 'DET 3';
           return (
             <div
               key={slot}
-              className="relative overflow-hidden cursor-pointer group"
-              style={{ width: DET_SIZE, height: DET_SIZE, background: 'var(--vault-border)', opacity: canAdd ? 1 : 0.4, flexShrink: 0 }}
+              className="relative overflow-hidden cursor-pointer group flex-1"
+              style={{ height: DET_H, background: 'var(--vault-border)', opacity: canAdd ? 1 : 0.35 }}
               onClick={() => canAdd && pickFile(slot)}
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => canAdd && handleDrop(slot, e)}
@@ -210,11 +212,11 @@ function ItemCard({
                 </>
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-                  <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.5">
                     <path d="M12 4v16m8-8H4" />
                   </svg>
-                  <span className="text-[5px] tracking-[0.5px]" style={{ color: 'var(--vault-text-dim)' }}>
-                    {slot === 1 ? 'DET 1' : slot === 2 ? 'DET 2' : 'DET 3'}
+                  <span className="text-[6px] tracking-[0.5px]" style={{ color: 'var(--vault-text-dim)' }}>
+                    {label}
                   </span>
                 </div>
               )}
@@ -222,7 +224,8 @@ function ItemCard({
           );
         })}
       </div>
-      <p className="text-[7px] tracking-[1px] mt-1" style={{ color: 'var(--vault-text-dim)' }}>
+
+      <p className="text-[7px] tracking-[1px] mt-1.5" style={{ color: 'var(--vault-text-dim)' }}>
         {images.filter(Boolean).length}/{MAX_IMAGES}枚
       </p>
     </div>
@@ -251,8 +254,7 @@ function OutfitRow({
 
   const addItem = () => {
     if (outfit.length >= MAX_ITEMS) return;
-    const next = [...outfit, [null, null, null, null]];
-    onUpdate(next);
+    onUpdate([...outfit, [null, null, null, null]]);
   };
 
   const removeItem = (itemIdx: number) => {
@@ -267,7 +269,7 @@ function OutfitRow({
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {showLabel && (
         <p className="text-[9px] tracking-[3px]" style={{ color: 'var(--vault-text-dim)' }}>
           OUTFIT {outfitIdx + 1}
@@ -277,34 +279,39 @@ function OutfitRow({
         </p>
       )}
 
-      {/* Items row — centered, expands outward as slots are added */}
-      <div className="flex gap-3 justify-center items-start flex-wrap">
-        {outfit.map((item, itemIdx) => (
-          <ItemCard
-            key={itemIdx}
-            images={item}
-            itemIdx={itemIdx}
-            totalImages={totalImages}
-            onAdd={(slot, file) => handleAdd(itemIdx, slot, file)}
-            onRemove={(slot) => updateItem(itemIdx, slot, null)}
-            onRemoveItem={() => removeItem(itemIdx)}
-          />
-        ))}
+      {/*
+        Outer: clips overflow and enables horizontal scroll.
+        Inner: fit-content + mx-auto → centered when narrow, scrolls when wide.
+      */}
+      <div className="overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex gap-4 items-start mx-auto" style={{ width: 'fit-content' }}>
+          {outfit.map((item, itemIdx) => (
+            <ItemCard
+              key={itemIdx}
+              images={item}
+              itemIdx={itemIdx}
+              totalImages={totalImages}
+              onAdd={(slot, file) => handleAdd(itemIdx, slot, file)}
+              onRemove={(slot) => updateItem(itemIdx, slot, null)}
+              onRemoveItem={() => removeItem(itemIdx)}
+            />
+          ))}
 
-        {/* Add Item — circle button, vertically centered with the card */}
-        {outfit.length < MAX_ITEMS && (
-          <div className="flex items-center" style={{ paddingTop: 16, alignSelf: 'flex-start', marginTop: 60 }}>
-            <button
-              onClick={addItem}
-              className="w-9 h-9 rounded-full flex items-center justify-center transition-opacity hover:opacity-60"
-              style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)', flexShrink: 0 }}
-            >
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 4v16m8-8H4" />
-              </svg>
-            </button>
-          </div>
-        )}
+          {/* Circle add button — sits at the vertical midpoint of the main slot */}
+          {outfit.length < MAX_ITEMS && (
+            <div style={{ paddingTop: 22, alignSelf: 'flex-start' }}>
+              <button
+                onClick={addItem}
+                className="w-10 h-10 rounded-full flex items-center justify-center transition-opacity hover:opacity-50"
+                style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)', marginTop: MAIN_H / 2 - 20 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
