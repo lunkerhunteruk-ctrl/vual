@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     .from('collection_bundles')
     .select(`
       id, title, created_at,
-      collection_looks ( id, image_url, bundle_position, recipe, is_public )
+      collection_looks ( id, image_url, bundle_position, recipe, is_public, generation_id )
     `)
     .eq('store_id', store.id)
     .order('created_at', { ascending: false });

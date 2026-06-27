@@ -32,6 +32,7 @@ interface CollectionLook {
   image_url: string;
   bundle_position: number;
   recipe?: LookRecipe | null;
+  generation_id?: string | null;
 }
 
 interface Collection {
@@ -848,13 +849,19 @@ export default function MyLooksPage() {
 
             {/* Grid */}
             <div className="overflow-y-auto px-5 py-4 flex-1">
-              {looks.filter((l) => !!l.recipe).length === 0 ? (
-                <p className="text-[11px] text-center py-8" style={{ color: 'var(--vault-text-dim)' }}>
-                  追加できるルックがありません
-                </p>
-              ) : (
-                <div className="grid grid-cols-3 gap-[2px]">
-                  {looks.filter((l) => !!l.recipe).map((look) => {
+              {(() => {
+                const targetCol = collections.find((c) => c.id === addTarget);
+                const alreadyAdded = new Set(
+                  (targetCol?.looks ?? []).map((l) => l.generation_id).filter(Boolean)
+                );
+                const addable = looks.filter((l) => !!l.recipe && !alreadyAdded.has(l.id));
+                return addable.length === 0 ? (
+                  <p className="text-[11px] text-center py-8" style={{ color: 'var(--vault-text-dim)' }}>
+                    追加できるルックがありません
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-3 gap-[2px]">
+                    {addable.map((look) => {
                     const isChosen = pickerSelected.has(look.id);
                     return (
                       <div
@@ -886,7 +893,8 @@ export default function MyLooksPage() {
                     );
                   })}
                 </div>
-              )}
+              );
+              })()}
             </div>
 
             {/* Confirm button */}

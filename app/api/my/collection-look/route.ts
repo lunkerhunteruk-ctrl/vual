@@ -97,6 +97,7 @@ export async function POST(request: NextRequest) {
     is_public: true,
     published_at: new Date().toISOString(),
     recipe,
+    generation_id: generationId,
   });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
