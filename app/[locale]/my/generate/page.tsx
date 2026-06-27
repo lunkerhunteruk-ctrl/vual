@@ -334,9 +334,12 @@ export default function GeneratePage() {
   const [generating, setGenerating] = useState(false);
   const [publishingAll, setPublishingAll] = useState(false);
   const [showPublishModal, setShowPublishModal] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [publishCategory, setPublishCategory] = useState('casual');
   const [publishTitle, setPublishTitle] = useState('');
   const [published, setPublished] = useState(false);
+  const [selectedLooks, setSelectedLooks] = useState<Set<string>>(new Set());
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'ja';
 
@@ -345,6 +348,12 @@ export default function GeneratePage() {
   const syncFromFirestore = useVaultStore((s) => s.syncFromFirestore);
   const canGenerate = useVaultStore((s) => s.canGenerate);
   const incrementGeneration = useVaultStore((s) => s.incrementGeneration);
+
+  const showToast = (msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2500);
+  };
 
   const modeConfig = MODES.find((m) => m.value === mode)!;
 
@@ -407,11 +416,26 @@ export default function GeneratePage() {
     }
   };
 
+  const lookKey = (l: { outfitIdx: number; variant: string }) => `${l.outfitIdx}${l.variant}`;
+
+  const toggleLookSelection = (look: LookResult) => {
+    if (!look.image) return;
+    setSelectedLooks((prev) => {
+      const next = new Set(prev);
+      const k = lookKey(look);
+      if (next.has(k)) next.delete(k);
+      else next.add(k);
+      return next;
+    });
+  };
+
   const handleModeChange = (newMode: Mode) => {
     const cfg = MODES.find((m) => m.value === newMode)!;
     setMode(newMode);
     setOutfits(buildInitialOutfits(cfg.outfits));
     setLooks([]);
+    setSelectedLooks(new Set());
+    setPublished(false);
   };
 
   const updateOutfit = useCallback((outfitIdx: number, updated: (string | null)[][]) => {
@@ -424,6 +448,8 @@ export default function GeneratePage() {
   const handleGenerate = async () => {
     if (!canGen) return;
     setGenerating(true);
+    setSelectedLooks(new Set());
+    setPublished(false);
 
     const tasks: { outfitIdx: number; variant: Variant; garmentImages: string[] }[] = [];
     outfits.forEach((outfit, idx) => {
@@ -505,27 +531,60 @@ export default function GeneratePage() {
     setGenerating(false);
   };
 
-  const handleDownload = (look: LookResult) => {
+  const handleDownload = async (look: LookResult) => {
     if (!look.image) return;
+    const filename = `look-${look.outfitIdx + 1}${look.variant}-${Date.now()}.jpg`;
+    try {
+      const res = await fetch(look.image);
+      const blob = await res.blob();
+      const file = new File([blob], filename, { type: blob.type || 'image/jpeg' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] });
+        return;
+      }
+    } catch {
+      // share failed or not supported — fall through to link download
+    }
     const a = document.createElement('a');
     a.href = look.image;
-    a.download = `look-${look.outfitIdx + 1}${look.variant}-${Date.now()}.png`;
+    a.download = filename;
     a.click();
   };
+
+  const buildRecipe = (look: LookResult) => ({
+    aspectRatio,
+    background,
+    location: sceneSettings.location,
+    situation: sceneSettings.situation,
+    filmMode: sceneSettings.filmMode,
+    variant: look.variant,
+    gender: modelSettings.gender,
+    height: modelSettings.height,
+    ethnicity: modelSettings.ethnicity,
+    outfitIdx: look.outfitIdx,
+  });
 
   const handleSave = async (look: LookResult, taskIdx: number) => {
     if (!look.image || !user) return;
     setLooks((prev) => prev.map((l, i) => (i === taskIdx ? { ...l, loading: true } : l)));
+    const garmentImages = outfits[look.outfitIdx]?.flat().filter(Boolean) as string[];
     try {
       const res = await fetch('/api/my/save-look', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageDataUrl: look.image, firebaseUid: user.id, variant: look.variant }),
+        body: JSON.stringify({
+          imageDataUrl: look.image,
+          firebaseUid: user.id,
+          variant: look.variant,
+          garmentImages,
+          recipe: buildRecipe(look),
+        }),
       });
       const data = await res.json();
       setLooks((prev) => prev.map((l, i) =>
         i === taskIdx ? { ...l, loading: false, saved: data.success, error: data.success ? null : '保存失敗' } : l
       ));
+      if (data.success) showToast('MY WARDROBE に保存されました');
     } catch {
       setLooks((prev) => prev.map((l, i) =>
         i === taskIdx ? { ...l, loading: false, error: 'ネットワークエラー' } : l
@@ -543,7 +602,36 @@ export default function GeneratePage() {
     if (!user) return;
     setPublishingAll(true);
     try {
-      const images = looks.filter((l) => l.image).map((l) => l.image as string);
+      const publishedLooks = looks.filter((l) => l.image && selectedLooks.has(lookKey(l)));
+      const images = publishedLooks.map((l) => l.image as string);
+      const recipes = publishedLooks.map((l) => buildRecipe(l));
+
+      // Step 1: Upload garment images separately to keep publish payload small
+      const garmentImageSets: Record<number, string[]> = {};
+      const selectedOutfitIdxs = new Set(publishedLooks.map((l) => l.outfitIdx));
+      outfits.forEach((outfit, idx) => {
+        if (!selectedOutfitIdxs.has(idx)) return;
+        const imgs = outfit.flat().filter(Boolean) as string[];
+        if (imgs.length > 0) garmentImageSets[idx] = imgs;
+      });
+
+      let garmentUrlSets: Record<number, string[]> = {};
+      if (Object.keys(garmentImageSets).length > 0) {
+        const garmentRes = await fetch('/api/my/upload-garments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ garmentImageSets, firebaseUid: user.id }),
+        });
+        if (garmentRes.ok) {
+          const garmentData = await garmentRes.json();
+          garmentUrlSets = garmentData.garmentUrlSets ?? {};
+        } else {
+          const err = await garmentRes.json().catch(() => ({}));
+          console.error('[Publish] garment upload failed:', err);
+        }
+      }
+
+      // Step 2: Publish looks with garment URLs (no base64 in body)
       const res = await fetch('/api/my/publish', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -552,12 +640,22 @@ export default function GeneratePage() {
           category: publishCategory,
           title: publishTitle || sceneSettings.location || null,
           firebaseUid: user.id,
+          recipes,
+          garmentUrlSets,
         }),
       });
+
       if (res.ok) {
         setPublished(true);
         setShowPublishModal(false);
+      } else {
+        const err = await res.json().catch(() => ({}));
+        console.error('[Publish] publish failed:', err);
+        alert(`公開に失敗しました: ${err.error || res.status}`);
       }
+    } catch (e) {
+      console.error('[Publish] exception:', e);
+      alert(`公開エラー: ${String(e)}`);
     } finally {
       setPublishingAll(false);
     }
@@ -579,6 +677,21 @@ export default function GeneratePage() {
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
         <ThemeToggle />
       </div>
+
+      {/* Toast */}
+      {toast && (
+        <div
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 px-5 py-3 text-[12px] tracking-wider whitespace-nowrap"
+          style={{
+            background: 'var(--vault-text)',
+            color: 'var(--vault-bg)',
+            fontFamily: MONO,
+            animation: 'slideUp 0.2s ease',
+          }}
+        >
+          {toast}
+        </div>
+      )}
 
       <div className="max-w-2xl mx-auto px-6 pt-24 pb-32 space-y-16">
 
@@ -861,9 +974,24 @@ export default function GeneratePage() {
                   <div className="grid grid-cols-2 gap-[2px]">
                     {outfitLooks.map((look) => {
                       const taskIdx = looks.indexOf(look);
+                      const arRatioMap: Record<string, string> = {
+                        '3:4': '3/4', '9:16': '9/16', '1:1': '1/1',
+                        '16:9': '16/9', '4:3': '4/3', '4:5': '4/5',
+                      };
+                      const arRatio = arRatioMap[aspectRatio] || '3/4';
+                      const isSelected = selectedLooks.has(lookKey(look));
+                      const canSelect = !!look.image && mode !== 'quick';
                       return (
                         <div key={`${outfitIdx}-${look.variant}`}>
-                          <div className="aspect-[3/4] relative overflow-hidden" style={{ background: 'var(--vault-border)' }}>
+                          <div
+                            className="relative overflow-hidden"
+                            style={{
+                              background: 'var(--vault-border)',
+                              aspectRatio: arRatio,
+                              cursor: canSelect ? 'pointer' : 'default',
+                            }}
+                            onClick={() => canSelect && toggleLookSelection(look)}
+                          >
                             {look.loading && (
                               <div className="absolute inset-0 flex items-center justify-center">
                                 <div
@@ -881,32 +1009,53 @@ export default function GeneratePage() {
                                 <p className="text-[12px] text-center" style={{ color: 'var(--vault-text-dim)' }}>{look.error}</p>
                               </div>
                             )}
+
+                            {/* Selection overlay */}
+                            {canSelect && !isSelected && (
+                              <div className="absolute inset-0 pointer-events-none transition-opacity" style={{ background: 'rgba(0,0,0,0.32)' }} />
+                            )}
+                            {canSelect && isSelected && (
+                              <>
+                                <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 2px #fff' }} />
+                                <div
+                                  className="absolute top-2 right-2 pointer-events-none flex items-center justify-center rounded-full"
+                                  style={{ width: 22, height: 22, background: '#fff' }}
+                                >
+                                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M5 13l4 4L19 7" />
+                                  </svg>
+                                </div>
+                              </>
+                            )}
+
                             {look.image && (
-                              <div
-                                className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity flex items-end gap-[2px] p-2"
-                                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }}
-                              >
+                              <div className="absolute bottom-0 left-0 right-0 flex">
                                 <button
-                                  onClick={() => handleDownload(look)}
-                                  className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70"
-                                  style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                                  onClick={(e) => { e.stopPropagation(); handleDownload(look); }}
+                                  className="flex-1 py-[10px] text-[11px] tracking-widest transition-opacity hover:opacity-75"
+                                  style={{ background: 'rgba(0,0,0,0.70)', color: '#fff', backdropFilter: 'blur(6px)' }}
                                 >
                                   DL
                                 </button>
+                                <div style={{ width: 1, background: 'rgba(255,255,255,0.15)', flexShrink: 0 }} />
                                 {user ? (
                                   <button
-                                    onClick={() => handleSave(look, taskIdx)}
+                                    onClick={(e) => { e.stopPropagation(); handleSave(look, taskIdx); }}
                                     disabled={look.saved || look.loading}
-                                    className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
-                                    style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                                    className="flex-1 py-[10px] text-[11px] tracking-widest transition-opacity hover:opacity-75 disabled:opacity-50"
+                                    style={{
+                                      background: 'rgba(0,0,0,0.70)',
+                                      color: look.saved ? '#7ecfb3' : '#fff',
+                                      backdropFilter: 'blur(6px)',
+                                    }}
                                   >
                                     {look.saved ? 'SAVED' : look.loading ? '...' : 'SAVE'}
                                   </button>
                                 ) : (
                                   <button
-                                    onClick={() => signInWithGoogle().then((u) => u && setUser(u))}
-                                    className="flex-1 py-2 text-[12px] text-white transition-opacity hover:opacity-70"
-                                    style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+                                    onClick={(e) => { e.stopPropagation(); signInWithGoogle().then((u) => u && setUser(u)); }}
+                                    className="flex-1 py-[10px] text-[11px] tracking-widest transition-opacity hover:opacity-75"
+                                    style={{ background: 'rgba(0,0,0,0.70)', color: '#fff', backdropFilter: 'blur(6px)' }}
                                   >
                                     LOGIN
                                   </button>
@@ -926,23 +1075,32 @@ export default function GeneratePage() {
             })}
 
             {mode !== 'quick' && user && !generating && looks.some((l) => l.image) && (
-              <div className="flex gap-[2px] pt-4">
-                <button
-                  onClick={handleSaveAll}
-                  disabled={allSaved}
-                  className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
-                  style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}
-                >
-                  {allSaved ? 'ALL SAVED' : 'SAVE ALL'}
-                </button>
-                <button
-                  onClick={() => published ? undefined : setShowPublishModal(true)}
-                  disabled={publishingAll || published}
-                  className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
-                  style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
-                >
-                  {published ? '公開済み ✓' : 'このワードローブを公開'}
-                </button>
+              <div className="space-y-2 pt-4">
+                <p className="text-[11px] tracking-widest text-center" style={{ color: 'var(--vault-text-dim)' }}>
+                  タップして公開するルックを選択
+                </p>
+                <div className="flex gap-[2px]">
+                  <button
+                    onClick={handleSaveAll}
+                    disabled={allSaved}
+                    className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-30"
+                    style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}
+                  >
+                    {allSaved ? 'ALL SAVED' : 'SAVE ALL'}
+                  </button>
+                  <button
+                    onClick={() => (!published && selectedLooks.size >= 3) ? setShowPublishModal(true) : undefined}
+                    disabled={publishingAll || published || selectedLooks.size < 3}
+                    className="flex-1 py-3 text-[13px] tracking-wide transition-opacity hover:opacity-70 disabled:opacity-40"
+                    style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
+                  >
+                    {published
+                      ? '公開済み ✓'
+                      : selectedLooks.size >= 3
+                        ? `${selectedLooks.size}枚を公開`
+                        : `${selectedLooks.size} / 3 選択`}
+                  </button>
+                </div>
               </div>
             )}
 

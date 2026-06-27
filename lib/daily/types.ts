@@ -1,3 +1,19 @@
+export interface LookRecipe {
+  garmentUrls: string[];
+  aspectRatio: string;
+  background: string;
+  location: string;
+  situation: string;
+  filmMode: string;
+  variant: 'A' | 'B';
+  gender: 'female' | 'male';
+  height: number;
+  ethnicity: string;
+  outfitIdx?: number;
+  templateId?: string;
+  mode?: string;
+}
+
 export interface VaultMedia {
   file: string;          // main file (image for INJECT, or video)
   previewFile?: string;  // optional: video preview for grid display (clicks still use file)
@@ -5,6 +21,8 @@ export interface VaultMedia {
   aspect: "9:16" | "3:4" | "4:3" | "16:9" | "1:1";
   isHero?: boolean;
   isCatwalk?: boolean;
+  recipe?: LookRecipe;
+  lookId?: string;
 }
 
 // Backward compat alias

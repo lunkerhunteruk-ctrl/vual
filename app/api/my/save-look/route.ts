@@ -4,9 +4,20 @@ import { storage } from '@/lib/storage';
 
 export const maxDuration = 30;
 
+async function uploadBase64(dataUrl: string, path: string): Promise<string | null> {
+  const match = dataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+  if (!match) return null;
+  const [, mimeType, base64Data] = match;
+  const buffer = Buffer.from(base64Data, 'base64');
+  const { error } = await storage.from('model-images').upload(path, buffer, { contentType: mimeType, upsert: false });
+  if (error) return null;
+  const { data } = storage.from('model-images').getPublicUrl(path);
+  return data.publicUrl;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { imageDataUrl, firebaseUid, variant } = await request.json();
+    const { imageDataUrl, firebaseUid, variant, garmentImages, recipe } = await request.json();
 
     if (!imageDataUrl || !firebaseUid) {
       return NextResponse.json({ error: 'imageDataUrl and firebaseUid required' }, { status: 400 });
@@ -18,22 +29,36 @@ export async function POST(request: NextRequest) {
     }
     const [, mimeType, base64Data] = match;
     const ext = mimeType === 'image/png' ? 'png' : 'jpg';
-    const filename = `user-looks/${firebaseUid}/${Date.now()}-${variant || 'A'}.${ext}`;
+    const ts = Date.now();
+    const lookPath = `user-looks/${firebaseUid}/${ts}-${variant || 'A'}.${ext}`;
     const buffer = Buffer.from(base64Data, 'base64');
 
-    // Upload to R2 (model-images bucket = permanent)
-    const { error: uploadError } = await storage.from('model-images').upload(filename, buffer, {
+    // Upload generated look image
+    const { error: uploadError } = await storage.from('model-images').upload(lookPath, buffer, {
       contentType: mimeType,
       upsert: false,
     });
-
     if (uploadError) {
       console.error('[SaveLook] R2 upload error:', uploadError);
       return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
     }
-
-    const { data: urlData } = storage.from('model-images').getPublicUrl(filename);
+    const { data: urlData } = storage.from('model-images').getPublicUrl(lookPath);
     const imageUrl = urlData.publicUrl;
+
+    // Upload garment images to R2 and build garmentUrls for recipe
+    let garmentUrls: string[] = [];
+    if (Array.isArray(garmentImages) && garmentImages.length > 0) {
+      const uploads = await Promise.all(
+        garmentImages.map((img: string, i: number) => {
+          const gPath = `user-looks/${firebaseUid}/garments/${ts}-${i}.jpg`;
+          return uploadBase64(img, gPath);
+        })
+      );
+      garmentUrls = uploads.filter(Boolean) as string[];
+    }
+
+    // Build final recipe (merge garmentUrls in)
+    const finalRecipe = recipe ? { ...recipe, garmentUrls } : null;
 
     // Insert into user_generations
     const supa = createServerClient();
@@ -42,7 +67,8 @@ export async function POST(request: NextRequest) {
         firebase_uid: firebaseUid,
         image_url: imageUrl,
         look_file: null,
-        city: null,
+        city: recipe?.location ?? null,
+        recipe: finalRecipe,
       });
     }
 

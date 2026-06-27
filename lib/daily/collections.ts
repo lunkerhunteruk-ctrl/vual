@@ -38,6 +38,7 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
       published_at,
       category,
       bundle_id,
+      recipe,
       collection_bundles!inner (
         id,
         title,
@@ -89,13 +90,17 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
       published: true,
       publishAt,
       createdAt,
-      hasRecipe: true,
+      hasRecipe: sortedLooks.some((l) => !!(l as any).recipe),
       tier: tierValue,
       media: sortedLooks.map((look, i) => ({
         file: (look as any).image_url || '',
         type: 'image' as const,
-        aspect: '3:4' as const,
+        aspect: (['3:4','9:16','1:1','16:9','4:3'].includes((look as any).recipe?.aspectRatio)
+          ? (look as any).recipe.aspectRatio
+          : '3:4') as '3:4' | '9:16' | '1:1' | '16:9' | '4:3',
         isHero: i === 0,
+        recipe: (look as any).recipe ?? undefined,
+        lookId: (look as any).id ?? undefined,
       })),
     });
   }

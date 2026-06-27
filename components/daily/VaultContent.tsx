@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { ThemeSection } from "./ThemeSection";
 import { ImplantModal } from "./ImplantModal";
-import { VaultMedia } from "@/lib/daily/types";
+import { RecipeTryOnModal } from "./RecipeTryOnModal";
+import { VaultMedia, LookRecipe } from "@/lib/daily/types";
 import { sampleEntities } from "@/lib/daily/sample";
 import { handleGoogleRedirectResult, fetchCreditsFromFirestore } from "@/lib/daily/auth";
 import { useVaultStore } from "@/lib/daily/store";
@@ -22,6 +23,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [selectedHasRecipe, setSelectedHasRecipe] = useState(false);
+  const [recipeTryOn, setRecipeTryOn] = useState<{ recipe: LookRecipe; imageUrl: string } | null>(null);
   const setUser = useVaultStore((s) => s.setUser);
   const addPaidCredits = useVaultStore((s) => s.addPaidCredits);
   const user = useVaultStore((s) => s.user);
@@ -86,7 +88,9 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
           isLatest={idx === 0}
           hasRecipe={theme.hasRecipe}
           onImageClick={(img) => {
-            if (theme.hasRecipe) {
+            if (img.recipe) {
+              setRecipeTryOn({ recipe: img.recipe, imageUrl: img.file });
+            } else if (theme.hasRecipe) {
               setSelectedImage(img);
               setSelectedCity(theme.city);
               setSelectedHasRecipe(true);
@@ -113,6 +117,14 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
         src={lightboxSrc}
         onClose={() => setLightboxSrc(null)}
       />
+
+      {recipeTryOn && (
+        <RecipeTryOnModal
+          lookImageUrl={recipeTryOn.imageUrl}
+          recipe={recipeTryOn.recipe}
+          onClose={() => setRecipeTryOn(null)}
+        />
+      )}
     </>
   );
 }
