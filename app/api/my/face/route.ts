@@ -29,10 +29,17 @@ export async function POST(request: NextRequest) {
 
     const supa = createServerClient();
     if (supa) {
-      await supa
+      // UPSERT: INSERT if no row exists for this firebase_uid, UPDATE if it does
+      const { error: dbError } = await supa
         .from('consumer_credits')
-        .update({ face_image_url: faceImageUrl })
-        .eq('firebase_uid', firebaseUid);
+        .upsert(
+          { firebase_uid: firebaseUid, face_image_url: faceImageUrl },
+          { onConflict: 'firebase_uid' }
+        );
+      if (dbError) {
+        console.error('[Face] DB upsert error:', dbError);
+        // R2 upload succeeded, return the URL even if DB failed
+      }
     }
 
     return NextResponse.json({ success: true, faceImageUrl });
