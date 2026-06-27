@@ -526,10 +526,6 @@ export default function GeneratePage() {
 
         {/* Outfit rows */}
         <section className="space-y-10">
-          <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
-            OUTFITS
-          </p>
-
           {outfits.map((outfit, outfitIdx) => (
             <OutfitRow
               key={outfitIdx}
