@@ -57,8 +57,9 @@ export async function POST(request: NextRequest) {
       garmentUrls = uploads.filter(Boolean) as string[];
     }
 
-    // Build final recipe (merge garmentUrls in)
-    const finalRecipe = recipe ? { ...recipe, garmentUrls } : null;
+    // Build final recipe — keep existing garmentUrls if no new uploads
+    const finalGarmentUrls = garmentUrls.length > 0 ? garmentUrls : (recipe?.garmentUrls ?? []);
+    const finalRecipe = recipe ? { ...recipe, garmentUrls: finalGarmentUrls } : null;
 
     // Insert into user_generations
     const supa = createServerClient();

@@ -60,6 +60,8 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
   const [generating, setGenerating] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
@@ -154,6 +156,26 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
     } catch (e) {
       setError(String(e));
       setGenerating(false);
+    }
+  };
+
+  const handleSave = async () => {
+    if (!resultImage || !user?.id || saved) return;
+    setSaving(true);
+    try {
+      const res = await fetch('/api/my/save-look', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imageDataUrl: resultImage,
+          firebaseUid: user.id,
+          variant: recipe.variant || 'A',
+          recipe,
+        }),
+      });
+      if (res.ok) setSaved(true);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -386,13 +408,25 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
 
           {/* CTA */}
           {resultImage ? (
-            <button
-              onClick={handleDownload}
-              className="w-full py-4 text-[12px] tracking-widest transition-opacity hover:opacity-70"
-              style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
-            >
-              DOWNLOAD
-            </button>
+            <div className="flex gap-[2px]">
+              {user && (
+                <button
+                  onClick={handleSave}
+                  disabled={saving || saved}
+                  className="flex-1 py-4 text-[12px] tracking-widest transition-opacity hover:opacity-70 disabled:opacity-40"
+                  style={{ background: saved ? 'var(--vault-border)' : 'var(--vault-text)', color: saved ? 'var(--vault-text-dim)' : 'var(--vault-bg)' }}
+                >
+                  {saved ? 'SAVED ✓' : saving ? '...' : 'SAVE'}
+                </button>
+              )}
+              <button
+                onClick={handleDownload}
+                className="flex-1 py-4 text-[12px] tracking-widest transition-opacity hover:opacity-70"
+                style={{ background: 'var(--vault-border)', color: 'var(--vault-text)' }}
+              >
+                DOWNLOAD
+              </button>
+            </div>
           ) : user ? (
             <button
               onClick={handleGenerate}
