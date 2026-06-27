@@ -90,9 +90,9 @@ function countImages(outfit: (string | null)[][]): number {
   return outfit.flat().filter(Boolean).length;
 }
 
-const CARD_W  = 220;  // item card width
-const MAIN_H  = 294;  // main slot height (≈3:4 ratio)
-const DET_H   = 76;   // detail slot height
+const CARD_W  = 280;  // item card width
+const MAIN_H  = 374;  // main slot height (≈3:4 ratio)
+const DET_H   = 96;   // detail slot height
 
 // ── ItemCard ──────────────────────────────────────────────────────────────────
 function ItemCard({
@@ -173,11 +173,14 @@ function ItemCard({
             </button>
           </>
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.2">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.2">
               <path d="M12 4v16m8-8H4" />
             </svg>
-            <span className="text-[11px]" style={{ color: 'var(--vault-text-dim)' }}>MAIN</span>
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-[13px] tracking-wide" style={{ color: 'var(--vault-text)' }}>服の写真をここへ</span>
+              <span className="text-[10px] tracking-wide" style={{ color: 'var(--vault-text-dim)' }}>タップまたはドロップ</span>
+            </div>
           </div>
         )}
       </div>
