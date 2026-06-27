@@ -18,7 +18,7 @@ const FILM_OPTIONS = [
   { value: 'superia', label: 'Nikon Superia 800' },
 ];
 
-const AR_OPTIONS = ['3:4', '9:16', '1:1', '4:3'] as const;
+const AR_OPTIONS = ['3:4', '9:16', '4:5', '1:1', '4:3', '16:9'] as const;
 
 const ETHNICITIES = [
   { value: 'japanese', label: 'アジア系' },
@@ -285,7 +285,7 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
                   color: tryMode === m ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
                 }}
               >
-                {m === 'match' ? 'MATCH LOOK' : 'CUSTOMIZE'}
+                {m === 'match' ? 'WEAR THE LOOK' : 'CUSTOMIZE'}
               </button>
             ))}
           </div>
