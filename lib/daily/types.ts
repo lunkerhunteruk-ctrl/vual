@@ -1,5 +1,7 @@
 export interface LookRecipe {
   garmentUrls: string[];
+  garmentNames?: (string | null)[];
+  garmentLinks?: (string | null)[];
   aspectRatio: string;
   background: string;
   location: string;

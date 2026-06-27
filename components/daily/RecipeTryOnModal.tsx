@@ -202,6 +202,7 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
   const arStyle = activeAr.replace(':', '/');
 
   return (
+    <>
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
       style={{ background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)' }}
@@ -473,5 +474,6 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
         />
       </div>
     )}
+    </>
   );
 }

@@ -13,6 +13,9 @@ import { usePathname } from 'next/navigation';
 
 interface LookRecipe {
   garmentUrls?: string[];
+  garmentNames?: (string | null)[];
+  garmentLinks?: (string | null)[];
+  aspectRatio?: string;
   outfitIdx?: number;
   [key: string]: unknown;
 }
@@ -55,6 +58,13 @@ export default function MyLooksPage() {
   const [looks, setLooks] = useState<Look[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  // look detail modal
+  const [detailLook, setDetailLook] = useState<Look | null>(null);
+  const [editNames, setEditNames] = useState<string[]>([]);
+  const [editLinks, setEditLinks] = useState<string[]>([]);
+  const [savingGarments, setSavingGarments] = useState(false);
+  const [garmentSaved, setGarmentSaved] = useState(false);
 
   // published collections
   const [collections, setCollections] = useState<Collection[]>([]);
@@ -128,6 +138,34 @@ export default function MyLooksPage() {
     });
     return () => unsub();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const openDetail = (look: Look) => {
+    setDetailLook(look);
+    setGarmentSaved(false);
+    const urls = look.recipe?.garmentUrls ?? [];
+    setEditNames(urls.map((_, i) => look.recipe?.garmentNames?.[i] ?? ''));
+    setEditLinks(urls.map((_, i) => look.recipe?.garmentLinks?.[i] ?? ''));
+  };
+
+  const handleSaveGarments = async () => {
+    if (!detailLook || !user) return;
+    setSavingGarments(true);
+    try {
+      const res = await fetch(`/api/my/looks/${detailLook.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firebaseUid: user.id, garmentNames: editNames, garmentLinks: editLinks }),
+      });
+      if (res.ok) {
+        const { recipe } = await res.json();
+        setDetailLook((prev) => prev ? { ...prev, recipe } : prev);
+        setLooks((prev) => prev.map((l) => l.id === detailLook.id ? { ...l, recipe } : l));
+        setGarmentSaved(true);
+      }
+    } finally {
+      setSavingGarments(false);
+    }
+  };
 
   const handleDeleteCollectionLook = async (lookId: string, bundleId: string) => {
     if (!user || !confirm('このルックをコレクションから削除しますか？')) return;
@@ -447,9 +485,9 @@ export default function MyLooksPage() {
                     className="aspect-[3/4] relative overflow-hidden"
                     style={{
                       background: 'var(--vault-border)',
-                      cursor: selectable ? 'pointer' : 'default',
+                      cursor: 'pointer',
                     }}
-                    onClick={() => selectable && toggleSelect(look)}
+                    onClick={() => selectable ? toggleSelect(look) : openDetail(look)}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={look.image_url} alt="look" className="w-full h-full object-cover" />
@@ -520,6 +558,119 @@ export default function MyLooksPage() {
           </p>
         )}
       </div>
+
+      {/* Look detail modal */}
+      {detailLook && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+          style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}
+          onClick={(e) => { if (e.target === e.currentTarget) setDetailLook(null); }}
+        >
+          <div
+            className="w-full sm:max-w-sm mx-auto flex flex-col overflow-y-auto"
+            style={{ background: 'var(--vault-bg)', maxHeight: '92dvh', fontFamily: MONO }}
+          >
+            {/* Header */}
+            <div
+              className="flex items-center justify-between px-5 py-4 flex-shrink-0"
+              style={{ borderBottom: '1px solid var(--vault-border)' }}
+            >
+              <span className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+                {formatDate(detailLook.created_at)}
+              </span>
+              <button onClick={() => setDetailLook(null)} style={{ color: 'var(--vault-text-dim)' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-5 px-5 py-5 overflow-y-auto">
+              {/* Look image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={detailLook.image_url}
+                alt="look"
+                className="w-full object-cover"
+                style={{ aspectRatio: (detailLook.recipe?.aspectRatio || '3:4').replace(':', '/') }}
+              />
+
+              {/* DL + DEL */}
+              <div className="flex gap-[2px]">
+                <button
+                  onClick={() => handleDownload(detailLook)}
+                  className="flex-1 py-3 text-[11px] tracking-widest hover:opacity-70"
+                  style={{ background: 'var(--vault-border)', color: 'var(--vault-text-dim)' }}
+                >
+                  DOWNLOAD
+                </button>
+                <button
+                  onClick={async () => {
+                    await handleDelete(detailLook);
+                    setDetailLook(null);
+                  }}
+                  disabled={deleting === detailLook.id}
+                  className="flex-1 py-3 text-[11px] tracking-widest hover:opacity-70 disabled:opacity-40"
+                  style={{ background: 'rgba(160,0,0,0.12)', color: 'rgba(160,0,0,0.7)' }}
+                >
+                  {deleting === detailLook.id ? '...' : 'DELETE'}
+                </button>
+              </div>
+
+              {/* Garment editor — only for own creations (recipe exists) */}
+              {detailLook.recipe?.garmentUrls?.length ? (
+                <div className="space-y-4">
+                  <p className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+                    GARMENTS — 購入リンク設定
+                  </p>
+                  {detailLook.recipe.garmentUrls.map((url, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      {/* Thumbnail */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={url}
+                        alt={`garment ${i + 1}`}
+                        className="object-cover flex-shrink-0"
+                        style={{ width: 48, height: 64 }}
+                      />
+                      <div className="flex-1 space-y-2 min-w-0">
+                        <input
+                          type="text"
+                          value={editNames[i] ?? ''}
+                          onChange={(e) => setEditNames((prev) => { const n = [...prev]; n[i] = e.target.value; return n; })}
+                          placeholder={`アイテム名 ${i + 1}`}
+                          className="w-full text-[11px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                          style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
+                        />
+                        <input
+                          type="url"
+                          value={editLinks[i] ?? ''}
+                          onChange={(e) => setEditLinks((prev) => { const n = [...prev]; n[i] = e.target.value; return n; })}
+                          placeholder="https://..."
+                          className="w-full text-[10px] py-1.5 bg-transparent border-b outline-none placeholder:opacity-30"
+                          style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text-dim)', fontFamily: MONO }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+
+                  <button
+                    onClick={handleSaveGarments}
+                    disabled={savingGarments}
+                    className="w-full py-3 text-[11px] tracking-widest hover:opacity-80 disabled:opacity-40 transition-opacity"
+                    style={{
+                      background: garmentSaved ? 'var(--vault-border)' : 'var(--vault-text)',
+                      color: garmentSaved ? 'var(--vault-text-dim)' : 'var(--vault-bg)',
+                    }}
+                  >
+                    {garmentSaved ? 'SAVED ✓' : savingGarments ? '...' : 'SAVE'}
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Add-to-collection picker */}
       {addTarget && (
