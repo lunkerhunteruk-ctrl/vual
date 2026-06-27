@@ -1011,9 +1011,6 @@ export default function GeneratePage() {
                             )}
 
                             {/* Selection overlay */}
-                            {canSelect && !isSelected && (
-                              <div className="absolute inset-0 pointer-events-none transition-opacity" style={{ background: 'rgba(0,0,0,0.32)' }} />
-                            )}
                             {canSelect && isSelected && (
                               <>
                                 <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 2px #fff' }} />
