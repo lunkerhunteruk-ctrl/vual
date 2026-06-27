@@ -140,6 +140,17 @@ async function callGemini(
   }
 
   const data = await res.json();
+  console.log('[Gemini] response keys:', Object.keys(data));
+  console.log('[Gemini] candidates count:', data.candidates?.length ?? 0);
+  const firstParts = data.candidates?.[0]?.content?.parts || [];
+  console.log('[Gemini] first candidate parts:', JSON.stringify(firstParts.map((p: any) => ({
+    hasText: !!p.text,
+    textSnippet: p.text?.slice(0, 100),
+    hasInlineData: !!(p.inline_data || p.inlineData),
+    mimeType: (p.inline_data || p.inlineData)?.mime_type,
+  }))));
+  if (data.promptFeedback) console.log('[Gemini] promptFeedback:', JSON.stringify(data.promptFeedback));
+
   const candidates = data.candidates || [];
   for (const candidate of candidates) {
     for (const part of candidate.content?.parts || []) {
