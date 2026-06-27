@@ -72,7 +72,8 @@ export default function MyLooksPage() {
   const [deletingLook, setDeletingLook] = useState<string | null>(null);
   // add-to-collection picker
   const [addTarget, setAddTarget] = useState<string | null>(null); // bundleId
-  const [adding, setAdding] = useState<string | null>(null); // generationId being added
+  const [pickerSelected, setPickerSelected] = useState<Set<string>>(new Set());
+  const [addingBulk, setAddingBulk] = useState(false);
 
   // select + publish
   const [selectMode, setSelectMode] = useState(false);
@@ -190,24 +191,26 @@ export default function MyLooksPage() {
     }
   };
 
-  const handleAddToCollection = async (bundleId: string, generationId: string) => {
-    if (!user) return;
-    setAdding(generationId);
+  const handleAddBulk = async () => {
+    if (!user || !addTarget || pickerSelected.size === 0) return;
+    setAddingBulk(true);
     try {
-      const res = await fetch('/api/my/collection-look', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bundleId, generationId, firebaseUid: user.id }),
-      });
-      if (res.ok) {
-        await fetchCollections(user.id);
-        setAddTarget(null);
-      } else {
-        const err = await res.json().catch(() => ({}));
-        alert(`追加失敗: ${err.error || res.status}`);
-      }
+      await Promise.all(
+        [...pickerSelected].map((generationId) =>
+          fetch('/api/my/collection-look', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ bundleId: addTarget, generationId, firebaseUid: user.id }),
+          })
+        )
+      );
+      await fetchCollections(user.id);
+      setAddTarget(null);
+      setPickerSelected(new Set());
+    } catch {
+      alert('追加に失敗しました');
     } finally {
-      setAdding(null);
+      setAddingBulk(false);
     }
   };
 
@@ -383,7 +386,7 @@ export default function MyLooksPage() {
                     </span>
                   </p>
                   <button
-                    onClick={() => setAddTarget(col.id)}
+                    onClick={() => { setAddTarget(col.id); setPickerSelected(new Set()); }}
                     className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
                     style={{ color: 'var(--vault-text-dim)' }}
                   >
@@ -677,51 +680,80 @@ export default function MyLooksPage() {
         <div
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
           style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}
-          onClick={(e) => { if (e.target === e.currentTarget) setAddTarget(null); }}
+          onClick={(e) => { if (e.target === e.currentTarget) { setAddTarget(null); setPickerSelected(new Set()); } }}
         >
           <div
             className="w-full sm:max-w-sm mx-auto flex flex-col"
-            style={{ background: 'var(--vault-bg)', maxHeight: '75dvh', fontFamily: MONO }}
+            style={{ background: 'var(--vault-bg)', maxHeight: '80dvh', fontFamily: MONO }}
           >
+            {/* Header */}
             <div
               className="flex items-center justify-between px-5 py-4 flex-shrink-0"
               style={{ borderBottom: '1px solid var(--vault-border)' }}
             >
               <span className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
-                ルックを追加
+                {pickerSelected.size > 0 ? `${pickerSelected.size}枚選択中` : 'ルックを選択'}
               </span>
-              <button onClick={() => setAddTarget(null)} style={{ color: 'var(--vault-text-dim)' }}>
+              <button onClick={() => { setAddTarget(null); setPickerSelected(new Set()); }} style={{ color: 'var(--vault-text-dim)' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
             </div>
-            <div className="overflow-y-auto px-5 py-4">
+
+            {/* Grid */}
+            <div className="overflow-y-auto px-5 py-4 flex-1">
               {looks.filter((l) => !!l.recipe).length === 0 ? (
                 <p className="text-[11px] text-center py-8" style={{ color: 'var(--vault-text-dim)' }}>
                   追加できるルックがありません
                 </p>
               ) : (
                 <div className="grid grid-cols-3 gap-[2px]">
-                  {looks.filter((l) => !!l.recipe).map((look) => (
-                    <button
-                      key={look.id}
-                      onClick={() => handleAddToCollection(addTarget, look.id)}
-                      disabled={!!adding}
-                      className="relative aspect-[3/4] overflow-hidden disabled:opacity-40"
-                      style={{ background: 'var(--vault-border)' }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={look.image_url} alt="" className="w-full h-full object-cover" />
-                      {adding === look.id && (
-                        <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.4)' }}>
-                          <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                        </div>
-                      )}
-                    </button>
-                  ))}
+                  {looks.filter((l) => !!l.recipe).map((look) => {
+                    const isChosen = pickerSelected.has(look.id);
+                    return (
+                      <div
+                        key={look.id}
+                        className="relative aspect-[3/4] overflow-hidden cursor-pointer"
+                        style={{ background: 'var(--vault-border)' }}
+                        onClick={() => setPickerSelected((prev) => {
+                          const next = new Set(prev);
+                          if (next.has(look.id)) next.delete(look.id); else next.add(look.id);
+                          return next;
+                        })}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={look.image_url} alt="" className="w-full h-full object-cover" />
+                        {isChosen && (
+                          <>
+                            <div className="absolute inset-0 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 2px #fff' }} />
+                            <div
+                              className="absolute top-1.5 right-1.5 flex items-center justify-center rounded-full"
+                              style={{ width: 20, height: 20, background: '#fff' }}
+                            >
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2.5">
+                                <path d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
+            </div>
+
+            {/* Confirm button */}
+            <div className="flex-shrink-0 px-5 py-4" style={{ borderTop: '1px solid var(--vault-border)' }}>
+              <button
+                onClick={handleAddBulk}
+                disabled={pickerSelected.size === 0 || addingBulk}
+                className="w-full py-3 text-[11px] tracking-widest transition-opacity hover:opacity-80 disabled:opacity-30"
+                style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
+              >
+                {addingBulk ? '追加中...' : pickerSelected.size > 0 ? `${pickerSelected.size}枚を追加` : '選択してください'}
+              </button>
             </div>
           </div>
         </div>
