@@ -123,6 +123,7 @@ async function callGemini(
       contents: [{ parts: allParts }],
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
+        imageConfig: { aspectRatio },
       },
       safetySettings: [
         { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
@@ -171,6 +172,7 @@ export async function POST(request: NextRequest) {
       background = 'studioWhite',
       modelSettings = {},
       sceneSettings = {},       // { location, situation, filmMode }
+      aspectRatio = '3:4',      // '3:4' | '9:16' | '1:1'
       firebaseUid = null,
       variant = 'A',
     } = body;

@@ -328,6 +328,7 @@ export default function GeneratePage() {
   const [background, setBackground] = useState('');
   const [modelSettings, setModelSettings] = useState<ModelSettings>({ gender: 'female', height: 170, ethnicity: 'japanese' });
   const [sceneSettings, setSceneSettings] = useState<SceneSettings>({ location: '', situation: '', filmMode: '' });
+  const [aspectRatio, setAspectRatio] = useState<'3:4' | '9:16' | '1:1'>('3:4');
   const [faceImage, setFaceImage] = useState<string | null>(null);
   const [looks, setLooks] = useState<LookResult[]>([]);
   const [generating, setGenerating] = useState(false);
@@ -449,6 +450,7 @@ export default function GeneratePage() {
               background,
               modelSettings,
               sceneSettings,
+              aspectRatio,
               firebaseUid: user?.id ?? null,
               variant: task.variant,
             }),
@@ -760,6 +762,26 @@ export default function GeneratePage() {
                   <option key={f.value} value={f.value}>{f.label}</option>
                 ))}
               </select>
+            </div>
+
+            {/* Aspect ratio */}
+            <div className="space-y-2">
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>AR</p>
+              <div className="flex gap-[2px]">
+                {(['3:4', '9:16', '1:1'] as const).map((ar) => (
+                  <button
+                    key={ar}
+                    onClick={() => setAspectRatio(ar)}
+                    className="flex-1 py-2 text-[11px] tracking-wider transition-opacity hover:opacity-80"
+                    style={{
+                      background: aspectRatio === ar ? 'var(--vault-text)' : 'var(--vault-border)',
+                      color: aspectRatio === ar ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
+                    }}
+                  >
+                    {ar}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </section>
