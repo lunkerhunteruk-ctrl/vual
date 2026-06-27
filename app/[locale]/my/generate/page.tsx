@@ -685,13 +685,17 @@ export default function GeneratePage() {
 
             {/* Situation */}
             <div className="space-y-2">
-              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>SITUATION <span style={{ opacity: 0.4 }}>— OPT</span></p>
+              <p className="text-[12px]" style={{ color: 'var(--vault-text-dim)' }}>
+                SITUATION
+                {background ? <span className="ml-2" style={{ opacity: 0.4 }}>— BG優先</span> : <span style={{ opacity: 0.4 }}> — OPT</span>}
+              </p>
               <input
                 type="text"
                 value={sceneSettings.situation}
                 onChange={(e) => setSceneSettings((s) => ({ ...s, situation: e.target.value }))}
                 placeholder="未記入でGeminiが考える"
-                className="w-full text-[13px] py-2 bg-transparent border-b outline-none placeholder:opacity-30"
+                disabled={!!background}
+                className="w-full text-[13px] py-2 bg-transparent border-b outline-none placeholder:opacity-30 disabled:opacity-30"
                 style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
             </div>
