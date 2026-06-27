@@ -130,7 +130,7 @@ export function UserBadge() {
               className="w-full py-2.5 text-[10px] tracking-[3px] font-light rounded-lg transition-colors"
               style={{ border: `1px solid ${t.border}`, color: t.dim }}
             >
-              MY VAULT
+              MY WARDROBE
             </button>
 
             <button
