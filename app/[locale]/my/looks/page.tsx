@@ -479,25 +479,28 @@ export default function MyLooksPage() {
 
                     {/* Hover actions (normal mode only) */}
                     {!selectMode && (
-                      <div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-end gap-[2px] p-2"
-                        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }}
-                      >
-                        <button
-                          onClick={(e) => { e.stopPropagation(); handleDownload(look); }}
-                          className="flex-1 py-1.5 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70"
-                          style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
-                        >
-                          DL
-                        </button>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); handleDelete(look); }}
-                          disabled={deleting === look.id}
-                          className="flex-1 py-1.5 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-70 disabled:opacity-40"
-                          style={{ background: 'rgba(180,0,0,0.3)', backdropFilter: 'blur(8px)' }}
-                        >
-                          {deleting === look.id ? '...' : 'DEL'}
-                        </button>
+                      <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div
+                          className="absolute inset-x-0 bottom-0 pointer-events-none"
+                          style={{ height: '50%', background: 'linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 100%)' }}
+                        />
+                        <div className="relative flex gap-[1px]">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleDownload(look); }}
+                            className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-80"
+                            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(10px)' }}
+                          >
+                            DL
+                          </button>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleDelete(look); }}
+                            disabled={deleting === look.id}
+                            className="flex-1 py-2 text-[9px] tracking-[2px] text-white transition-opacity hover:opacity-80 disabled:opacity-40"
+                            style={{ background: 'rgba(160,0,0,0.55)', backdropFilter: 'blur(10px)' }}
+                          >
+                            {deleting === look.id ? '...' : 'DEL'}
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>
