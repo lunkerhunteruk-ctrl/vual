@@ -68,6 +68,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
     city: col.city,
     subtitle: col.subtitle || '',
     hasRecipe: col.hasRecipe ?? false,
+    storeProfile: col.storeProfile ?? null,
     locations: [{
       id: col.id,
       name: col.city,
@@ -87,6 +88,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
           theme={theme}
           isLatest={idx === 0}
           hasRecipe={theme.hasRecipe}
+          storeProfile={theme.storeProfile}
           onImageClick={(img) => {
             if (img.recipe) {
               setRecipeTryOn({ recipe: img.recipe, imageUrl: img.file });

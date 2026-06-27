@@ -1,5 +1,11 @@
 import { supabase } from '@/lib/supabase';
 
+export interface StoreProfile {
+  displayName: string | null;
+  avatarUrl: string | null;
+  slug: string | null;
+}
+
 export interface VaultCollection {
   id: string;
   city: string;
@@ -9,6 +15,7 @@ export interface VaultCollection {
   createdAt: Date;
   hasRecipe?: boolean;
   tier?: 'high' | 'daily';
+  storeProfile?: StoreProfile | null;
   media: {
     file: string;
     previewFile?: string;
@@ -44,7 +51,8 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
         title,
         subtitle,
         published_at,
-        created_at
+        created_at,
+        stores ( display_name, avatar_url, slug )
       )
     `)
     .eq('is_public', true)
@@ -61,7 +69,7 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
 
   // Group by bundle_id
   const bundleMap = new Map<string, {
-    bundle: { id: string; title: string; subtitle?: string; published_at: string | null; created_at: string };
+    bundle: { id: string; title: string; subtitle?: string; published_at: string | null; created_at: string; stores?: { display_name: string | null; avatar_url: string | null; slug: string | null } | null };
     looks: typeof data;
   }>();
 
@@ -83,6 +91,11 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
     const firstLook = sortedLooks[0];
     const tierValue = categoryToTier((firstLook as any).category ?? null);
 
+    const store = (bundle as any).stores;
+    const storeProfile: StoreProfile | null = store
+      ? { displayName: store.display_name ?? null, avatarUrl: store.avatar_url ?? null, slug: store.slug ?? null }
+      : null;
+
     results.push({
       id: bundleId,
       city: bundle.title || '',
@@ -92,6 +105,7 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
       createdAt,
       hasRecipe: sortedLooks.some((l) => !!(l as any).recipe),
       tier: tierValue,
+      storeProfile,
       media: sortedLooks.map((look, i) => ({
         file: (look as any).image_url || '',
         type: 'image' as const,

@@ -41,6 +41,11 @@ interface Collection {
   looks: CollectionLook[];
 }
 
+interface UserProfile {
+  displayName: string;
+  avatarUrl: string;
+}
+
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
 const CATEGORIES = [
@@ -74,6 +79,15 @@ export default function MyLooksPage() {
   const [addTarget, setAddTarget] = useState<string | null>(null); // bundleId
   const [pickerSelected, setPickerSelected] = useState<Set<string>>(new Set());
   const [addingBulk, setAddingBulk] = useState(false);
+
+  // user profile
+  const [profile, setProfile] = useState<UserProfile>({ displayName: '', avatarUrl: '' });
+  const [editDisplayName, setEditDisplayName] = useState('');
+  const [avatarPreview, setAvatarPreview] = useState<string>('');
+  const [avatarDataUrl, setAvatarDataUrl] = useState<string>('');
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [profileSaved, setProfileSaved] = useState(false);
+  const [showProfileEditor, setShowProfileEditor] = useState(false);
 
   // select + publish
   const [selectMode, setSelectMode] = useState(false);
@@ -112,6 +126,16 @@ export default function MyLooksPage() {
     }
   }, []);
 
+  const fetchProfile = useCallback(async (uid: string) => {
+    const res = await fetch(`/api/my/profile?uid=${uid}`);
+    const data = await res.json();
+    if (data.profile) {
+      setProfile({ displayName: data.profile.display_name ?? '', avatarUrl: data.profile.avatar_url ?? '' });
+      setEditDisplayName(data.profile.display_name ?? '');
+      setAvatarPreview(data.profile.avatar_url ?? '');
+    }
+  }, []);
+
   useEffect(() => {
     if (!auth) return;
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -132,6 +156,7 @@ export default function MyLooksPage() {
         }
         fetchLooks(firebaseUser.uid);
         fetchCollections(firebaseUser.uid);
+        fetchProfile(firebaseUser.uid);
       } else {
         setLoading(false);
         setCollectionsLoading(false);
@@ -139,6 +164,44 @@ export default function MyLooksPage() {
     });
     return () => unsub();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleAvatarPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const result = ev.target?.result as string;
+      setAvatarPreview(result);
+      setAvatarDataUrl(result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSaveProfile = async () => {
+    if (!user) return;
+    setSavingProfile(true);
+    setProfileSaved(false);
+    try {
+      const res = await fetch('/api/my/profile', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firebaseUid: user.id,
+          displayName: editDisplayName,
+          avatarDataUrl: avatarDataUrl || undefined,
+        }),
+      });
+      if (res.ok) {
+        const { profile: updated } = await res.json();
+        setProfile({ displayName: updated.display_name ?? '', avatarUrl: updated.avatar_url ?? '' });
+        setAvatarDataUrl('');
+        setProfileSaved(true);
+        setTimeout(() => { setProfileSaved(false); setShowProfileEditor(false); }, 1500);
+      }
+    } finally {
+      setSavingProfile(false);
+    }
+  };
 
   const openDetail = (look: Look) => {
     setDetailLook(look);
@@ -321,6 +384,88 @@ export default function MyLooksPage() {
 
       {/* Content */}
       <div className="max-w-2xl mx-auto px-6 pt-24 pb-32 space-y-12">
+
+        {/* Profile section */}
+        {user && (
+          <div className="flex items-center gap-4">
+            {/* Avatar */}
+            <label className="cursor-pointer flex-shrink-0" style={{ position: 'relative' }}>
+              <input type="file" accept="image/*" className="sr-only" onChange={handleAvatarPick} />
+              {avatarPreview || profile.avatarUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={avatarPreview || profile.avatarUrl}
+                  alt="avatar"
+                  className="rounded-full object-cover"
+                  style={{ width: 52, height: 52 }}
+                />
+              ) : (
+                <div
+                  className="rounded-full flex items-center justify-center"
+                  style={{ width: 52, height: 52, background: 'var(--vault-border)' }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" style={{ color: 'var(--vault-text-dim)' }}>
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                  </svg>
+                </div>
+              )}
+              {/* Camera overlay */}
+              <div
+                className="absolute inset-0 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
+                style={{ background: 'rgba(0,0,0,0.4)' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                  <circle cx="12" cy="13" r="4" />
+                </svg>
+              </div>
+            </label>
+
+            {/* Name + save */}
+            {showProfileEditor ? (
+              <div className="flex-1 flex gap-2 items-center min-w-0">
+                <input
+                  type="text"
+                  value={editDisplayName}
+                  onChange={(e) => setEditDisplayName(e.target.value)}
+                  placeholder="ニックネーム"
+                  className="flex-1 text-[12px] py-1.5 bg-transparent border-b outline-none min-w-0"
+                  style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
+                  autoFocus
+                />
+                <button
+                  onClick={handleSaveProfile}
+                  disabled={savingProfile}
+                  className="text-[10px] tracking-[2px] px-3 py-1.5 transition-opacity hover:opacity-70 disabled:opacity-40 flex-shrink-0"
+                  style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
+                >
+                  {profileSaved ? '✓' : savingProfile ? '...' : 'SAVE'}
+                </button>
+                <button
+                  onClick={() => { setShowProfileEditor(false); setEditDisplayName(profile.displayName); setAvatarPreview(profile.avatarUrl); setAvatarDataUrl(''); }}
+                  className="text-[10px] flex-shrink-0 transition-opacity hover:opacity-60"
+                  style={{ color: 'var(--vault-text-dim)' }}
+                >
+                  ✕
+                </button>
+              </div>
+            ) : (
+              <div className="flex-1 flex items-center gap-3 min-w-0">
+                <span className="text-[12px] truncate" style={{ color: 'var(--vault-text)' }}>
+                  {profile.displayName || <span style={{ color: 'var(--vault-text-dim)', fontStyle: 'italic' }}>ニックネーム未設定</span>}
+                </span>
+                <button
+                  onClick={() => setShowProfileEditor(true)}
+                  className="text-[9px] tracking-[2px] flex-shrink-0 transition-opacity hover:opacity-60"
+                  style={{ color: 'var(--vault-text-dim)' }}
+                >
+                  EDIT
+                </button>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Page title + select toggle */}
         <div className="flex items-end justify-between">

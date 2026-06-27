@@ -4,15 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import { VaultTheme, VaultMedia } from "@/lib/daily/types";
 import { MondrianGrid } from "./MondrianGrid";
 
+interface StoreProfile {
+  displayName: string | null;
+  avatarUrl: string | null;
+  slug: string | null;
+}
+
 interface ThemeSectionProps {
   theme: VaultTheme;
   isLatest?: boolean;
   hasRecipe?: boolean;
+  storeProfile?: StoreProfile | null;
   onImageClick: (media: VaultMedia & { locationId: string }) => void;
   onVideoClick: (src: string) => void;
 }
 
-export function ThemeSection({ theme, isLatest, hasRecipe, onImageClick, onVideoClick }: ThemeSectionProps) {
+export function ThemeSection({ theme, isLatest, hasRecipe, storeProfile, onImageClick, onVideoClick }: ThemeSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
 
@@ -71,6 +78,31 @@ export function ThemeSection({ theme, isLatest, hasRecipe, onImageClick, onVideo
               >
                 TRY ON
               </span>
+            )}
+
+            {storeProfile && (
+              <div className="flex items-center gap-2 mt-2">
+                {storeProfile.avatarUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={storeProfile.avatarUrl}
+                    alt=""
+                    className="rounded-full object-cover flex-shrink-0"
+                    style={{ width: 22, height: 22 }}
+                  />
+                ) : (
+                  <div
+                    className="rounded-full flex-shrink-0"
+                    style={{ width: 22, height: 22, background: "var(--vault-border)" }}
+                  />
+                )}
+                <span
+                  className="text-[9px] tracking-[2px] font-light"
+                  style={{ color: "var(--vault-text-dim)" }}
+                >
+                  {storeProfile.displayName || storeProfile.slug || 'anonymous'}
+                </span>
+              </div>
             )}
           </div>
 

@@ -90,7 +90,7 @@ export function NavPill({
           />
         </div>
 
-        {/* WARDROBE */}
+        {/* FEED */}
         <Link
           href={`/${locale}/wardrobe`}
           className="relative flex-1 flex items-center justify-center z-10 text-[9px] tracking-[2.5px] font-light"
@@ -101,7 +101,7 @@ export function NavPill({
                 : isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)",
           }}
         >
-          WARDROBE
+          FEED
         </Link>
 
         {/* GENERATE */}
