@@ -123,7 +123,6 @@ async function callGemini(
       contents: [{ parts: allParts }],
       generationConfig: {
         responseModalities: ['TEXT', 'IMAGE'],
-        imageConfig: { aspectRatio: '3:4', imageSize: '1K' },
       },
       safetySettings: [
         { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
