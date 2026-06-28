@@ -17,8 +17,7 @@ export function WardrobeUserBadge() {
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
-  const freeRemaining = useVaultStore((s) => s.freeRemaining);
-  const paidCredits = useVaultStore((s) => s.paidCredits);
+  const earnedCredits = useVaultStore((s) => s.earnedCredits);
   const totalRemaining = useVaultStore((s) => s.totalRemaining);
   const points = useVaultStore((s) => s.points);
 
@@ -31,7 +30,6 @@ export function WardrobeUserBadge() {
     return () => document.removeEventListener('mousedown', handler);
   }, [open]);
 
-  const free = freeRemaining();
   const total = totalRemaining();
 
   // Derive locale from pathname (/ja/... or /en/...)
@@ -86,12 +84,12 @@ export function WardrobeUserBadge() {
               <p className="text-[10px] tracking-[3px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
                 CREDITS
               </p>
-              <div className="flex justify-between text-[11px] font-light">
-                <span style={{ color: 'var(--vault-text-dim)' }}>フリー (本日)</span>
-                <span style={{ color: free > 0 ? 'var(--vault-cyan)' : 'var(--vault-text-dim)' }}>
-                  {free} / 3
-                </span>
-              </div>
+              {earnedCredits > 0 && (
+                <div className="flex justify-between text-[11px] font-light">
+                  <span style={{ color: 'var(--vault-text-dim)' }}>獲得CR</span>
+                  <span style={{ color: 'var(--vault-gold)' }}>{earnedCredits}</span>
+                </div>
+              )}
               <div className="flex justify-between text-[11px] font-light">
                 <span style={{ color: 'var(--vault-text-dim)' }}>合計残り</span>
                 <span style={{ color: total > 0 ? 'var(--vault-cyan)' : 'var(--vault-text-dim)' }}>

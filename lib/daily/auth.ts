@@ -59,9 +59,9 @@ async function upsertUser(firebaseUser: import('firebase/auth').User): Promise<V
     .from('consumer_credits')
     .insert({
       firebase_uid: firebaseUser.uid,
-      free_tickets_remaining: 3,
+      free_tickets_remaining: 0,
       free_tickets_reset_at: resetAt.toISOString(),
-      paid_credits: 0,
+      paid_credits: 16,
       subscription_credits: 0,
       points: 0,
     })
@@ -122,21 +122,16 @@ export const fetchCreditsFromFirestore = fetchCreditsFromSupabase;
 export async function syncCreditsToSupabase(
   userId: string,
   paidCredits: number,
-  freeUsed: number,
-  freeResetDate?: string,
+  _freeUsed: number,
+  _freeResetDate?: string,
   points?: number
 ): Promise<void> {
   if (!supabase) return;
-  const remaining = Math.max(0, 3 - freeUsed);
   const update: Record<string, unknown> = {
     paid_credits: paidCredits,
-    free_tickets_remaining: remaining,
     updated_at: new Date().toISOString(),
   };
   if (points !== undefined) update.points = points;
-  if (freeResetDate) {
-    update.free_tickets_reset_at = new Date(freeResetDate + 'T00:00:00+09:00').toISOString();
-  }
   await supabase.from('consumer_credits').update(update).eq('firebase_uid', userId);
 }
 

@@ -3,8 +3,8 @@ import { persist } from 'zustand/middleware';
 import type { VaultUser } from './auth';
 import { syncCreditsToFirestore, addPointsToFirestore, syncEarnedCreditsToFirestore } from './auth';
 
-const GUEST_FREE = 3;
-const DAILY_FREE = 3;
+const GUEST_FREE = 2;
+const DAILY_FREE = 0;
 
 function todayStr(): string {
   return new Date().toISOString().slice(0, 10);
@@ -53,12 +53,11 @@ export const useVaultStore = create<VaultStore>()(
         if (user) {
           const localFreeUsed = get().freeUsed;
           const mergedFreeUsed = Math.max(localFreeUsed, user.freeUsed);
-          const mergedPaidCredits = Math.max(get().paidCredits, user.paidCredits);
           const freeResetDate = get().freeResetDate || todayStr();
-          set({ user, paidCredits: mergedPaidCredits, freeUsed: mergedFreeUsed, freeResetDate });
+          // Trust server for paidCredits/earnedCredits — never Math.max (prevents stale local winning)
+          set({ user, paidCredits: user.paidCredits, earnedCredits: user.earnedCredits, freeUsed: mergedFreeUsed, freeResetDate });
           const reset = checkDailyReset({ user, freeUsed: mergedFreeUsed, freeResetDate });
           set(reset);
-          syncToFirestore({ user, paidCredits: mergedPaidCredits, ...reset });
         } else {
           set({ user: null });
         }
@@ -97,7 +96,7 @@ export const useVaultStore = create<VaultStore>()(
         const local = get();
         const freeResetDate = serverResetDate || local.freeResetDate;
         set({
-          paidCredits: Math.max(local.paidCredits, serverPaid),
+          paidCredits: serverPaid, // trust server — ensures cross-browser consistency
           freeUsed: Math.max(local.freeUsed, serverFreeUsed),
           freeResetDate,
           points: serverPoints ?? local.points,
