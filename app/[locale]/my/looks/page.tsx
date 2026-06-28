@@ -525,7 +525,7 @@ export default function MyLooksPage() {
       data-theme="light"
       style={{ background: 'var(--vault-bg)', color: 'var(--vault-text)', fontFamily: MONO }}
     >
-      <NavPill active="wardrobe" locale={locale} />
+      <NavPill active="looks" locale={locale} />
       <WardrobeUserBadge />
 
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">

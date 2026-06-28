@@ -3,11 +3,25 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+type ActiveTab = "feed" | "generate" | "looks";
+
+const TABS: { key: ActiveTab; label: string; href: (locale: string) => string }[] = [
+  { key: "feed",     label: "FEED",        href: (l) => `/${l}/wardrobe` },
+  { key: "generate", label: "GENERATE",    href: (l) => `/${l}/my/generate` },
+  { key: "looks",    label: "MY WARDROBE", href: (l) => `/${l}/my/looks` },
+];
+
+const PILL_WIDTH  = 414;
+const PILL_PAD    = 4;
+const TAB_WIDTH   = (PILL_WIDTH - PILL_PAD * 2) / 3; // 135.3
+const IND_WIDTH   = TAB_WIDTH - 4;                    // 131.3
+const IND_LEFT    = (i: number) => PILL_PAD + i * TAB_WIDTH;
+
 export function NavPill({
   active,
   locale,
 }: {
-  active: "wardrobe" | "generate";
+  active: ActiveTab | "wardrobe"; // "wardrobe" kept for legacy FEED page
   locale: string;
 }) {
   const [isDark, setIsDark] = useState(false);
@@ -24,17 +38,19 @@ export function NavPill({
     return () => observer.disconnect();
   }, []);
 
-  const isGenerate = active === "generate";
+  // legacy "wardrobe" = FEED tab
+  const activeKey: ActiveTab = active === "wardrobe" ? "feed" : active as ActiveTab;
+  const activeIdx = TABS.findIndex((t) => t.key === activeKey);
 
   return (
     <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
       <div
         className="relative flex"
         style={{
-          width: 288,
+          width: PILL_WIDTH,
           height: 44,
           borderRadius: 22,
-          padding: 4,
+          padding: PILL_PAD,
           background: isDark
             ? "linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%)"
             : "linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.03) 100%)",
@@ -62,8 +78,8 @@ export function NavPill({
         <div
           className="absolute top-[4px] transition-all duration-500 ease-[cubic-bezier(0.68,-0.15,0.32,1.15)]"
           style={{
-            left: isGenerate ? 144 : 4,
-            width: 136,
+            left: IND_LEFT(activeIdx),
+            width: IND_WIDTH,
             height: 34,
             borderRadius: 17,
             background: isDark
@@ -77,7 +93,6 @@ export function NavPill({
             WebkitBackdropFilter: "blur(10px)",
           }}
         >
-          {/* Indicator inner reflection */}
           <div
             className="absolute top-[3px] left-[5px] right-[5px] pointer-events-none"
             style={{
@@ -90,33 +105,24 @@ export function NavPill({
           />
         </div>
 
-        {/* FEED */}
-        <Link
-          href={`/${locale}/wardrobe`}
-          className="relative flex-1 flex items-center justify-center z-10 text-[9px] tracking-[2.5px] font-light"
-          style={{
-            color:
-              active === "wardrobe"
-                ? isDark ? "rgba(255,255,255,0.88)" : "rgba(0,0,0,0.75)"
-                : isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)",
-          }}
-        >
-          FEED
-        </Link>
-
-        {/* GENERATE */}
-        <Link
-          href={`/${locale}/my/generate`}
-          className="relative flex-1 flex items-center justify-center z-10 text-[9px] tracking-[2.5px] font-light"
-          style={{
-            color:
-              active === "generate"
-                ? isDark ? "rgba(255,255,255,0.88)" : "rgba(0,0,0,0.75)"
-                : isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)",
-          }}
-        >
-          GENERATE
-        </Link>
+        {/* Tab links */}
+        {TABS.map((tab) => (
+          <Link
+            key={tab.key}
+            href={tab.href(locale)}
+            className="relative flex-1 flex items-center justify-center z-10 font-light"
+            style={{
+              fontSize: 8,
+              letterSpacing: tab.key === "looks" ? "1.8px" : "2.5px",
+              color:
+                activeKey === tab.key
+                  ? isDark ? "rgba(255,255,255,0.88)" : "rgba(0,0,0,0.75)"
+                  : isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.3)",
+            }}
+          >
+            {tab.label}
+          </Link>
+        ))}
       </div>
     </div>
   );
