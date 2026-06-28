@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
 
   let q = supa
     .from('user_garments')
-    .select('id, image_url, category, name, created_at')
+    .select('id, image_url, category, name, created_at, detail_urls')
     .eq('firebase_uid', uid)
     .order('created_at', { ascending: false });
 

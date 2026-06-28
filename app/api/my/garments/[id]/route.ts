@@ -3,23 +3,24 @@ import { createServerClient } from '@/lib/supabase';
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const { firebaseUid, name, category } = await request.json();
+  const { firebaseUid, name, category, detailUrls } = await request.json();
 
   if (!firebaseUid) return NextResponse.json({ error: 'firebaseUid required' }, { status: 400 });
 
   const supa = createServerClient();
   if (!supa) return NextResponse.json({ error: 'DB unavailable' }, { status: 500 });
 
-  const update: Record<string, string> = {};
+  const update: Record<string, unknown> = {};
   if (name !== undefined) update.name = name;
   if (category !== undefined) update.category = category;
+  if (detailUrls !== undefined) update.detail_urls = detailUrls;
 
   const { data, error } = await supa
     .from('user_garments')
     .update(update)
     .eq('id', id)
     .eq('firebase_uid', firebaseUid)
-    .select('id, image_url, category, name')
+    .select('id, image_url, category, name, detail_urls')
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

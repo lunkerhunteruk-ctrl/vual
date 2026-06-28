@@ -8,6 +8,7 @@ import { signInWithGoogle, fetchCreditsFromSupabase } from '@/lib/daily/auth';
 import { ThemeToggle } from '@/components/daily/ThemeToggle';
 import { WardrobeUserBadge } from '@/components/wardrobe/UserBadge';
 import { NavPill } from '@/components/wardrobe/NavPill';
+import { GarmentDetailModal } from '@/components/wardrobe/GarmentDetailModal';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -55,6 +56,7 @@ interface Garment {
   category: string;
   name: string | null;
   created_at: string;
+  detail_urls?: string[];
 }
 
 const GARMENT_CATEGORIES = ['トップス', 'アウター', 'パンツ', 'スカート', 'ワンピース', 'シューズ', 'バッグ', 'アクセサリー', 'その他'];
@@ -121,6 +123,7 @@ export default function MyLooksPage() {
   const [garments, setGarments] = useState<Garment[]>([]);
   const [garmentsLoading, setGarmentsLoading] = useState(false);
   const [garmentCategory, setGarmentCategory] = useState('');
+  const [garmentDetail, setGarmentDetail] = useState<Garment | null>(null);
   const [uploadCategory, setUploadCategory] = useState('その他');
   const [uploadingGarments, setUploadingGarments] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -547,6 +550,22 @@ export default function MyLooksPage() {
         <ThemeToggle />
       </div>
 
+      {garmentDetail && user && (
+        <GarmentDetailModal
+          garment={garmentDetail}
+          firebaseUid={user.id}
+          onClose={() => setGarmentDetail(null)}
+          onUpdate={(updated) => {
+            setGarments((prev) => prev.map((g) => g.id === updated.id ? { ...g, ...updated } : g));
+            setGarmentDetail(null);
+          }}
+          onDelete={(id) => {
+            setGarments((prev) => prev.filter((g) => g.id !== id));
+            setGarmentDetail(null);
+          }}
+        />
+      )}
+
 
       {/* Content */}
       <div className="max-w-2xl mx-auto px-6 pt-24 pb-32 space-y-12">
@@ -694,29 +713,7 @@ export default function MyLooksPage() {
 
         {/* Items tab */}
         {tab === 'items' && user && (
-          <div className="space-y-4">
-            {/* Category filter */}
-            <div className="flex gap-[2px] flex-wrap">
-              <button
-                onClick={() => { setGarmentCategory(''); fetchGarments(user.id); }}
-                className="px-3 py-1.5 text-[10px] tracking-[2px] transition-opacity hover:opacity-70"
-                style={{ background: !garmentCategory ? 'var(--vault-text)' : 'var(--vault-border)', color: !garmentCategory ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
-              >
-                ALL
-              </button>
-              {GARMENT_CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => { setGarmentCategory(cat); fetchGarments(user.id, cat); }}
-                  className="px-3 py-1.5 text-[10px] tracking-[2px] transition-opacity hover:opacity-70"
-                  style={{ background: garmentCategory === cat ? 'var(--vault-text)' : 'var(--vault-border)', color: garmentCategory === cat ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Garment grid */}
+          <div className="space-y-6">
             {garmentsLoading ? (
               <div className="flex items-center justify-center py-16">
                 <div className="w-4 h-4 rounded-full border border-t-transparent animate-spin" style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }} />
@@ -731,33 +728,43 @@ export default function MyLooksPage() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-4 gap-[2px]">
-                {garments.map((g) => (
-                  <div key={g.id} className="group relative" style={{ aspectRatio: '3/4' }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={g.image_url} alt={g.name ?? g.category} className="absolute inset-0 w-full h-full object-cover" />
-                    <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div
-                        className="absolute inset-x-0 bottom-0 pointer-events-none"
-                        style={{ height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)' }}
-                      />
-                      <div className="relative flex justify-end p-1">
-                        <button
-                          onClick={() => handleDeleteGarment(g.id)}
-                          className="w-5 h-5 flex items-center justify-center rounded-full"
-                          style={{ background: 'rgba(160,0,0,0.7)' }}
+              <div className="space-y-6">
+                {GARMENT_CATEGORIES.map((cat) => {
+                  const catGarments = garments.filter((g) => g.category === cat);
+                  if (catGarments.length === 0) return null;
+                  return (
+                    <div key={cat} className="flex gap-3">
+                      {/* Left: category label */}
+                      <div className="flex-shrink-0 flex items-start pt-1" style={{ width: 40 }}>
+                        <span
+                          className="text-[8px] tracking-[2px]"
+                          style={{ color: 'var(--vault-text-dim)', writingMode: 'vertical-lr', lineHeight: 1.2 }}
                         >
-                          <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                            <path d="M18 6L6 18M6 6l12 12" />
-                          </svg>
-                        </button>
+                          {cat}
+                        </span>
+                      </div>
+                      {/* Right: grid */}
+                      <div className="flex-1 grid grid-cols-3 gap-[2px]">
+                        {catGarments.map((g) => (
+                          <button
+                            key={g.id}
+                            className="relative"
+                            style={{ aspectRatio: '3/4' }}
+                            onClick={() => setGarmentDetail(g)}
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={g.image_url} alt={g.name ?? g.category} className="absolute inset-0 w-full h-full object-cover" />
+                            {(g.detail_urls?.length ?? 0) > 0 && (
+                              <div className="absolute bottom-1 right-1 w-3.5 h-3.5 rounded-full flex items-center justify-center" style={{ background: 'var(--vault-text)', opacity: 0.7 }}>
+                                <span className="text-[6px]" style={{ color: 'var(--vault-bg)' }}>{g.detail_urls!.length}</span>
+                              </div>
+                            )}
+                          </button>
+                        ))}
                       </div>
                     </div>
-                    <div className="absolute bottom-1 left-1 pointer-events-none">
-                      <p className="text-[8px] text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{g.category}</p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

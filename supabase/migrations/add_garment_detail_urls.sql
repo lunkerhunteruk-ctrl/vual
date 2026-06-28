@@ -1,0 +1,2 @@
+ALTER TABLE user_garments
+  ADD COLUMN IF NOT EXISTS detail_urls JSONB NOT NULL DEFAULT '[]';
