@@ -115,12 +115,14 @@ export default function MyLooksPage() {
   const [unpublishingId, setUnpublishingId] = useState<string | null>(null);
   const [unpublishError, setUnpublishError] = useState<string | null>(null);
 
-  // items tab
-  const [tab, setTab] = useState<'looks' | 'items'>('looks');
+  // items / upload tab
+  const [tab, setTab] = useState<'looks' | 'items' | 'upload'>('looks');
   const [garments, setGarments] = useState<Garment[]>([]);
   const [garmentsLoading, setGarmentsLoading] = useState(false);
   const [garmentCategory, setGarmentCategory] = useState('');
+  const [uploadCategory, setUploadCategory] = useState('その他');
   const [uploadingGarments, setUploadingGarments] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
@@ -175,7 +177,7 @@ export default function MyLooksPage() {
     }
   }, []);
 
-  const switchTab = (newTab: 'looks' | 'items') => {
+  const switchTab = (newTab: 'looks' | 'items' | 'upload') => {
     setTab(newTab);
     if (newTab === 'items' && user) {
       setGarmentCategory('');
@@ -193,18 +195,16 @@ export default function MyLooksPage() {
     setGarments((prev) => prev.filter((g) => g.id !== id));
   };
 
-  const handleGarmentUpload = async (files: FileList) => {
+  const handleGarmentUpload = async (files: FileList, category?: string) => {
     if (!user || files.length === 0) return;
     setUploadingGarments(true);
     try {
+      const cat = category ?? garmentCategory ?? 'その他';
       const items = await Promise.all(
         Array.from(files).map((file) =>
           new Promise<{ imageDataUrl: string; category: string }>((resolve) => {
             const reader = new FileReader();
-            reader.onload = (e) => resolve({
-              imageDataUrl: e.target?.result as string,
-              category: garmentCategory || 'その他',
-            });
+            reader.onload = (e) => resolve({ imageDataUrl: e.target?.result as string, category: cat });
             reader.readAsDataURL(file);
           })
         )
@@ -214,7 +214,7 @@ export default function MyLooksPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firebaseUid: user.id, items }),
       });
-      await fetchGarments(user.id, garmentCategory || undefined);
+      if (tab === 'items') await fetchGarments(user.id, garmentCategory || undefined);
     } finally {
       setUploadingGarments(false);
     }
@@ -625,26 +625,19 @@ export default function MyLooksPage() {
               MY WARDROBE
             </p>
             <div className="flex gap-5">
-              <button
-                onClick={() => switchTab('looks')}
-                className="text-[13px] font-light pb-0.5"
-                style={{
-                  color: tab === 'looks' ? 'var(--vault-text)' : 'var(--vault-text-dim)',
-                  borderBottom: tab === 'looks' ? '1px solid var(--vault-text)' : '1px solid transparent',
-                }}
-              >
-                ルック
-              </button>
-              <button
-                onClick={() => switchTab('items')}
-                className="text-[13px] font-light pb-0.5"
-                style={{
-                  color: tab === 'items' ? 'var(--vault-text)' : 'var(--vault-text-dim)',
-                  borderBottom: tab === 'items' ? '1px solid var(--vault-text)' : '1px solid transparent',
-                }}
-              >
-                アイテム
-              </button>
+              {(['looks', 'items', 'upload'] as const).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => switchTab(t)}
+                  className="text-[13px] font-light pb-0.5"
+                  style={{
+                    color: tab === t ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                    borderBottom: tab === t ? '1px solid var(--vault-text)' : '1px solid transparent',
+                  }}
+                >
+                  {t === 'looks' ? 'ルック' : t === 'items' ? 'アイテム' : 'アップロード'}
+                </button>
+              ))}
             </div>
           </div>
           {tab === 'looks' && !loading && user && ownCreationCount > 0 && (
@@ -708,28 +701,6 @@ export default function MyLooksPage() {
               ))}
             </div>
 
-            {/* Upload button */}
-            <div className="flex justify-end">
-              <button
-                onClick={() => {
-                  const input = document.createElement('input');
-                  input.type = 'file';
-                  input.accept = 'image/*';
-                  input.multiple = true;
-                  input.onchange = (e) => {
-                    const files = (e.target as HTMLInputElement).files;
-                    if (files) handleGarmentUpload(files);
-                  };
-                  input.click();
-                }}
-                disabled={uploadingGarments}
-                className="px-4 py-2 text-[10px] tracking-[2px] transition-opacity hover:opacity-70 disabled:opacity-40"
-                style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
-              >
-                {uploadingGarments ? 'アップロード中...' : 'アップロード'}
-              </button>
-            </div>
-
             {/* Garment grid */}
             {garmentsLoading ? (
               <div className="flex items-center justify-center py-16">
@@ -774,6 +745,86 @@ export default function MyLooksPage() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* Upload tab */}
+        {tab === 'upload' && user && (
+          <div className="space-y-6">
+            {/* Category selector */}
+            <div className="space-y-2">
+              <p className="text-[10px] tracking-[3px]" style={{ color: 'var(--vault-text-dim)' }}>カテゴリ</p>
+              <div className="flex gap-[3px] flex-wrap">
+                {GARMENT_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setUploadCategory(cat)}
+                    className="px-3 py-1.5 text-[10px] tracking-[1px] transition-opacity hover:opacity-70"
+                    style={{
+                      background: uploadCategory === cat ? 'var(--vault-text)' : 'var(--vault-border)',
+                      color: uploadCategory === cat ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
+                    }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Drop zone */}
+            <div
+              className="relative flex flex-col items-center justify-center gap-4 transition-colors"
+              style={{
+                border: `2px dashed ${dragOver ? 'var(--vault-text)' : 'var(--vault-border)'}`,
+                borderRadius: 20,
+                minHeight: 280,
+                background: dragOver ? 'rgba(128,128,128,0.06)' : 'transparent',
+                cursor: 'pointer',
+              }}
+              onClick={() => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.multiple = true;
+                input.onchange = (e) => {
+                  const files = (e.target as HTMLInputElement).files;
+                  if (files) handleGarmentUpload(files, uploadCategory);
+                };
+                input.click();
+              }}
+              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragOver(false);
+                const files = e.dataTransfer.files;
+                if (files.length > 0) handleGarmentUpload(files, uploadCategory);
+              }}
+            >
+              {uploadingGarments ? (
+                <div className="w-5 h-5 rounded-full border border-t-transparent animate-spin" style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }} />
+              ) : (
+                <>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  <div className="text-center space-y-1">
+                    <p className="text-[11px]" style={{ color: 'var(--vault-text-dim)' }}>
+                      ここに画像をドロップ
+                    </p>
+                    <p className="text-[10px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)', opacity: 0.5 }}>
+                      またはタップして選択
+                    </p>
+                  </div>
+                  <p className="text-[10px] tracking-[2px] px-5 py-2"
+                    style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text-dim)' }}>
+                    {uploadCategory}
+                  </p>
+                </>
+              )}
+            </div>
           </div>
         )}
 
