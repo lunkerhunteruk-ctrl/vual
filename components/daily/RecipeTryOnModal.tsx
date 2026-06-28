@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { LookRecipe } from '@/lib/daily/types';
 import { useVaultStore } from '@/lib/daily/store';
 import { signInWithGoogle } from '@/lib/daily/auth';
@@ -32,6 +32,7 @@ const ETHNICITIES = [
 interface Props {
   lookImageUrl: string;
   recipe: LookRecipe;
+  bundleId?: string;
   onClose: () => void;
 }
 
@@ -46,7 +47,7 @@ async function urlToBase64(url: string): Promise<string> {
   });
 }
 
-export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
+export function RecipeTryOnModal({ lookImageUrl, recipe, bundleId, onClose }: Props) {
   const [tryMode, setTryMode] = useState<'match' | 'customize'>('match');
   const [faceImage, setFaceImage] = useState<string | null>(null);
   const [height, setHeight] = useState(recipe.height || 170);
@@ -68,6 +69,16 @@ export function RecipeTryOnModal({ lookImageUrl, recipe, onClose }: Props) {
   const setUser = useVaultStore((s) => s.setUser);
   const canGenerate = useVaultStore((s) => s.canGenerate);
   const incrementGeneration = useVaultStore((s) => s.incrementGeneration);
+
+  // Log めぐり footprint when modal opens
+  useEffect(() => {
+    if (!bundleId) return;
+    fetch('/api/my/meguri', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bundleId, viewerUid: user?.id ?? null }),
+    }).catch(() => {});
+  }, [bundleId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const pickFace = () => {
     const input = document.createElement('input');

@@ -116,14 +116,19 @@ export default function MyLooksPage() {
   const [unpublishingId, setUnpublishingId] = useState<string | null>(null);
   const [unpublishError, setUnpublishError] = useState<string | null>(null);
 
-  // items / upload tab
-  const [tab, setTab] = useState<'looks' | 'items' | 'upload'>('looks');
+  // tabs
+  const [tab, setTab] = useState<'looks' | 'items' | 'upload' | 'meguri'>('looks');
   const [garments, setGarments] = useState<Garment[]>([]);
   const [garmentsLoading, setGarmentsLoading] = useState(false);
   const [garmentCategory, setGarmentCategory] = useState('');
   const [uploadCategory, setUploadCategory] = useState('その他');
   const [uploadingGarments, setUploadingGarments] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+
+  // めぐり tab
+  interface MeguriLog { id: string; bundleId: string; bundleTitle: string | null; hasViewer: boolean; createdAt: string; }
+  const [meguriLogs, setMeguriLogs] = useState<MeguriLog[]>([]);
+  const [meguriLoading, setMeguriLoading] = useState(false);
 
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
@@ -178,11 +183,18 @@ export default function MyLooksPage() {
     }
   }, []);
 
-  const switchTab = (newTab: 'looks' | 'items' | 'upload') => {
+  const switchTab = (newTab: 'looks' | 'items' | 'upload' | 'meguri') => {
     setTab(newTab);
     if (newTab === 'items' && user) {
       setGarmentCategory('');
       fetchGarments(user.id);
+    }
+    if (newTab === 'meguri' && user) {
+      setMeguriLoading(true);
+      fetch(`/api/my/meguri?uid=${user.id}`)
+        .then((r) => r.json())
+        .then((d) => setMeguriLogs(d.logs ?? []))
+        .finally(() => setMeguriLoading(false));
     }
   };
 
@@ -628,7 +640,7 @@ export default function MyLooksPage() {
               MY WARDROBE
             </p>
             <div className="flex gap-5">
-              {(['looks', 'items', 'upload'] as const).map((t) => (
+              {(['looks', 'items', 'upload', 'meguri'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => switchTab(t)}
@@ -638,7 +650,7 @@ export default function MyLooksPage() {
                     borderBottom: tab === t ? '1px solid var(--vault-text)' : '1px solid transparent',
                   }}
                 >
-                  {t === 'looks' ? 'ルック' : t === 'items' ? 'アイテム' : 'アップロード'}
+                  {t === 'looks' ? 'ルック' : t === 'items' ? 'アイテム' : t === 'upload' ? 'アップロード' : 'めぐり'}
                 </button>
               ))}
             </div>
@@ -828,6 +840,67 @@ export default function MyLooksPage() {
                 </>
               )}
             </div>
+          </div>
+        )}
+
+        {/* めぐり tab */}
+        {tab === 'meguri' && user && (
+          <div className="space-y-1">
+            {meguriLoading ? (
+              <div className="flex items-center justify-center py-24">
+                <div className="w-4 h-4 rounded-full border border-t-transparent animate-spin" style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }} />
+              </div>
+            ) : meguriLogs.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 gap-3">
+                <p className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+                  まだ誰もいません
+                </p>
+                <p className="text-[10px] text-center" style={{ color: 'var(--vault-text-dim)', opacity: 0.5 }}>
+                  コレクションを公開すると気配が届きます
+                </p>
+              </div>
+            ) : (
+              meguriLogs.map((log) => (
+                <div
+                  key={log.id}
+                  className="flex items-center justify-between py-3"
+                  style={{ borderBottom: '1px solid var(--vault-border)' }}
+                >
+                  <div className="flex items-center gap-3">
+                    {/* Gender silhouette */}
+                    <div
+                      className="flex items-center justify-center rounded-full flex-shrink-0"
+                      style={{ width: 32, height: 32, background: 'var(--vault-border)' }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--vault-text-dim)" strokeWidth="1.2">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 21c0-4.418 3.582-7 8-7s8 2.582 8 7" />
+                      </svg>
+                    </div>
+                    <div className="space-y-0.5">
+                      <p className="text-[11px]" style={{ color: 'var(--vault-text)' }}>
+                        {log.bundleTitle || '—'}
+                      </p>
+                      <p className="text-[10px]" style={{ color: 'var(--vault-text-dim)' }}>
+                        を試着しました
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-[9px] tracking-[1px] flex-shrink-0 ml-3" style={{ color: 'var(--vault-text-dim)' }}>
+                    {(() => {
+                      const d = new Date(log.createdAt);
+                      const diff = Date.now() - d.getTime();
+                      const h = Math.floor(diff / 3600000);
+                      if (h < 1) return 'たった今';
+                      if (h < 24) return `${h}時間前`;
+                      const days = Math.floor(h / 24);
+                      if (days < 7) return `${days}日前`;
+                      return `${d.getMonth() + 1}/${d.getDate()}`;
+                    })()}
+                  </p>
+                </div>
+              ))
+            )}
           </div>
         )}
 

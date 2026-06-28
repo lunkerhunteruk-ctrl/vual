@@ -23,7 +23,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   const [selectedHasRecipe, setSelectedHasRecipe] = useState(false);
-  const [recipeTryOn, setRecipeTryOn] = useState<{ recipe: LookRecipe; imageUrl: string } | null>(null);
+  const [recipeTryOn, setRecipeTryOn] = useState<{ recipe: LookRecipe; imageUrl: string; bundleId: string } | null>(null);
   const setUser = useVaultStore((s) => s.setUser);
   const addPaidCredits = useVaultStore((s) => s.addPaidCredits);
   const user = useVaultStore((s) => s.user);
@@ -91,7 +91,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
           storeProfile={theme.storeProfile}
           onImageClick={(img) => {
             if (img.recipe) {
-              setRecipeTryOn({ recipe: img.recipe, imageUrl: img.file });
+              setRecipeTryOn({ recipe: img.recipe, imageUrl: img.file, bundleId: theme.id });
             } else if (theme.hasRecipe) {
               setSelectedImage(img);
               setSelectedCity(theme.city);
@@ -124,6 +124,7 @@ export function VaultContent({ tier }: { tier?: 'high' | 'daily' } = {}) {
         <RecipeTryOnModal
           lookImageUrl={recipeTryOn.imageUrl}
           recipe={recipeTryOn.recipe}
+          bundleId={recipeTryOn.bundleId}
           onClose={() => setRecipeTryOn(null)}
         />
       )}
