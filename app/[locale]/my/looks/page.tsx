@@ -40,6 +40,7 @@ interface Collection {
   title: string | null;
   created_at: string;
   credits_back: number;
+  is_public: boolean;
   looks: CollectionLook[];
 }
 
@@ -393,10 +394,32 @@ export default function MyLooksPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setCollections((prev) => prev.filter((c) => c.id !== col.id));
+        setCollections((prev) => prev.map((c) => c.id === col.id ? { ...c, is_public: false } : c));
         setEarnedCredits(data.earnedCredits);
       } else {
         setUnpublishError(data.error || '非公開に失敗しました');
+      }
+    } finally {
+      setUnpublishingId(null);
+    }
+  };
+
+  const handleRepublish = async (col: Collection) => {
+    if (!user) return;
+    setUnpublishingId(col.id);
+    setUnpublishError(null);
+    try {
+      const res = await fetch('/api/my/republish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bundleId: col.id, firebaseUid: user.id }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setCollections((prev) => prev.map((c) => c.id === col.id ? { ...c, is_public: true } : c));
+        setEarnedCredits(data.earnedCredits);
+      } else {
+        setUnpublishError(data.error || '再公開に失敗しました');
       }
     } finally {
       setUnpublishingId(null);
@@ -754,12 +777,12 @@ export default function MyLooksPage() {
           </div>
         )}
 
-        {/* Published collections */}
+        {/* Collections */}
         {tab === 'looks' && user && !collectionsLoading && collections.length > 0 && (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
-                PUBLISHED COLLECTIONS
+                COLLECTIONS
               </p>
               {earnedCredits > 0 && (
                 <p className="text-[10px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
@@ -771,7 +794,7 @@ export default function MyLooksPage() {
               <p className="text-[11px]" style={{ color: 'rgba(160,0,0,0.8)' }}>{unpublishError}</p>
             )}
             {collections.map((col) => (
-              <div key={col.id} className="space-y-3">
+              <div key={col.id} className="space-y-3" style={{ opacity: col.is_public ? 1 : 0.45 }}>
                 {/* Collection header */}
                 <div className="flex items-baseline justify-between">
                   <p className="text-[12px]" style={{ color: 'var(--vault-text)' }}>
@@ -779,23 +802,41 @@ export default function MyLooksPage() {
                     <span className="text-[10px]" style={{ color: 'var(--vault-text-dim)' }}>
                       · {col.looks.length}枚
                     </span>
+                    {!col.is_public && (
+                      <span className="ml-2 text-[9px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                        非公開
+                      </span>
+                    )}
                   </p>
                   <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => { setAddTarget(col.id); setPickerSelected(new Set()); }}
-                      className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
-                      style={{ color: 'var(--vault-text-dim)' }}
-                    >
-                      ＋ ADD
-                    </button>
-                    <button
-                      onClick={() => handleUnpublish(col)}
-                      disabled={unpublishingId === col.id}
-                      className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60 disabled:opacity-30"
-                      style={{ color: 'rgba(160,0,0,0.7)' }}
-                    >
-                      {unpublishingId === col.id ? '...' : '非公開'}
-                    </button>
+                    {col.is_public && (
+                      <button
+                        onClick={() => { setAddTarget(col.id); setPickerSelected(new Set()); }}
+                        className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
+                        style={{ color: 'var(--vault-text-dim)' }}
+                      >
+                        ＋ ADD
+                      </button>
+                    )}
+                    {col.is_public ? (
+                      <button
+                        onClick={() => handleUnpublish(col)}
+                        disabled={unpublishingId === col.id}
+                        className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60 disabled:opacity-30"
+                        style={{ color: 'rgba(160,0,0,0.7)' }}
+                      >
+                        {unpublishingId === col.id ? '...' : '非公開'}
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleRepublish(col)}
+                        disabled={unpublishingId === col.id}
+                        className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60 disabled:opacity-30"
+                        style={{ color: 'var(--vault-cyan)' }}
+                      >
+                        {unpublishingId === col.id ? '...' : '再公開'}
+                      </button>
+                    )}
                   </div>
                 </div>
 

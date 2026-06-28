@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (!bundle) return NextResponse.json({ error: 'Bundle not found' }, { status: 404 });
-    if (!(bundle as any).is_public) return NextResponse.json({ error: 'Already unpublished' }, { status: 400 });
+    if ((bundle as any).is_public) return NextResponse.json({ error: 'Already public' }, { status: 400 });
 
     // Verify ownership
     const { data: store } = await supa
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
     const creditsBack: number = (bundle as any).credits_back ?? 0;
 
-    // Check earned_credits balance
+    // Restore earned_credits
     const { data: credRow } = await supa
       .from('consumer_credits')
       .select('earned_credits')
@@ -40,38 +40,28 @@ export async function POST(request: NextRequest) {
       .single();
 
     const currentEarned: number = (credRow as any)?.earned_credits ?? 0;
+    const newEarned = currentEarned + creditsBack;
 
-    if (currentEarned < creditsBack) {
-      return NextResponse.json({
-        error: `獲得クレジットが不足しています（必要: ${creditsBack}、残高: ${currentEarned}）`,
-        required: creditsBack,
-        available: currentEarned,
-      }, { status: 402 });
-    }
-
-    const newEarned = currentEarned - creditsBack;
-
-    // Deduct earned_credits
     await supa
       .from('consumer_credits')
       .update({ earned_credits: newEarned })
       .eq('firebase_uid', firebaseUid);
 
-    // Unpublish bundle (keep credits_back so republish can restore earned credits)
+    // Re-publish bundle
     await supa
       .from('collection_bundles')
-      .update({ is_public: false })
+      .update({ is_public: true })
       .eq('id', bundleId);
 
-    // Unpublish all looks in bundle
+    // Re-publish all looks in bundle
     await supa
       .from('collection_looks')
-      .update({ is_public: false })
+      .update({ is_public: true })
       .eq('bundle_id', bundleId);
 
     return NextResponse.json({ success: true, earnedCredits: newEarned });
   } catch (err) {
-    console.error('[Unpublish] Error:', err);
+    console.error('[Republish] Error:', err);
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

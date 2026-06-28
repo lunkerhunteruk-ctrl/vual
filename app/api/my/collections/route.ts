@@ -25,7 +25,6 @@ export async function GET(request: NextRequest) {
       collection_looks ( id, image_url, bundle_position, recipe, is_public, generation_id )
     `)
     .eq('store_id', store.id)
-    .eq('is_public', true)
     .order('created_at', { ascending: false });
 
   if (error || !data) return NextResponse.json({ collections: [] });
@@ -35,8 +34,8 @@ export async function GET(request: NextRequest) {
     title: bundle.title,
     created_at: bundle.created_at,
     credits_back: (bundle as any).credits_back ?? 0,
+    is_public: (bundle as any).is_public ?? true,
     looks: ((bundle as any).collection_looks ?? [])
-      .filter((l: any) => l.is_public)
       .sort((a: any, b: any) => (a.bundle_position ?? 0) - (b.bundle_position ?? 0)),
   }));
 
