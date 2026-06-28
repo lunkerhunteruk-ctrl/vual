@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { VaultTheme, VaultMedia } from "@/lib/daily/types";
 import { MondrianGrid } from "./MondrianGrid";
 
@@ -22,6 +24,8 @@ interface ThemeSectionProps {
 export function ThemeSection({ theme, isLatest, hasRecipe, storeProfile, onImageClick, onVideoClick }: ThemeSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const pathname = usePathname();
+  const locale = pathname?.split("/")[1] || "ja";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,7 +85,11 @@ export function ThemeSection({ theme, isLatest, hasRecipe, storeProfile, onImage
             )}
 
             {storeProfile && (
-              <div className="flex items-center gap-2 mt-2">
+              <Link
+                href={storeProfile.slug ? `/${locale}/p/${storeProfile.slug}` : '#'}
+                className="flex items-center gap-2 mt-2"
+                style={{ textDecoration: 'none' }}
+              >
                 {storeProfile.avatarUrl ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -102,7 +110,7 @@ export function ThemeSection({ theme, isLatest, hasRecipe, storeProfile, onImage
                 >
                   {storeProfile.displayName || storeProfile.slug || 'anonymous'}
                 </span>
-              </div>
+              </Link>
             )}
           </div>
 
