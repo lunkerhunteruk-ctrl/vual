@@ -69,12 +69,122 @@ function hashString(str: string): number {
   return Math.abs(hash);
 }
 
+// 9:16 tall-portrait layouts — exact-AR cell sizes:
+//   6col × 8row = exact 9:16  |  3col × 4row = exact 9:16  |  4col × 5row ≈ 9:16 (6% off)
+function layout6TallPortrait(patternIndex: number): PlacedCell[] {
+  const patterns: PlacedCell[][] = [
+    // Pattern 0: 3×2 compact grid
+    [
+      { colStart: 1,  colEnd: 5,  rowStart: 1,  rowEnd: 6  },
+      { colStart: 5,  colEnd: 9,  rowStart: 1,  rowEnd: 6  },
+      { colStart: 9,  colEnd: 13, rowStart: 1,  rowEnd: 6  },
+      { colStart: 1,  colEnd: 5,  rowStart: 6,  rowEnd: 11 },
+      { colStart: 5,  colEnd: 9,  rowStart: 6,  rowEnd: 11 },
+      { colStart: 9,  colEnd: 13, rowStart: 6,  rowEnd: 11 },
+    ],
+    // Pattern 1: 2 large + 4 narrow
+    [
+      { colStart: 1,  colEnd: 7,  rowStart: 1,  rowEnd: 9  },
+      { colStart: 7,  colEnd: 13, rowStart: 1,  rowEnd: 9  },
+      { colStart: 1,  colEnd: 4,  rowStart: 9,  rowEnd: 13 },
+      { colStart: 4,  colEnd: 7,  rowStart: 9,  rowEnd: 13 },
+      { colStart: 7,  colEnd: 10, rowStart: 9,  rowEnd: 13 },
+      { colStart: 10, colEnd: 13, rowStart: 9,  rowEnd: 13 },
+    ],
+    // Pattern 2: 4 narrow + 2 large
+    [
+      { colStart: 1,  colEnd: 4,  rowStart: 1,  rowEnd: 5  },
+      { colStart: 4,  colEnd: 7,  rowStart: 1,  rowEnd: 5  },
+      { colStart: 7,  colEnd: 10, rowStart: 1,  rowEnd: 5  },
+      { colStart: 10, colEnd: 13, rowStart: 1,  rowEnd: 5  },
+      { colStart: 1,  colEnd: 7,  rowStart: 5,  rowEnd: 13 },
+      { colStart: 7,  colEnd: 13, rowStart: 5,  rowEnd: 13 },
+    ],
+    // Pattern 3: asymmetric Mondrian (2 narrow left-top + 1 large right | 1 large left + 2 narrow right-bottom)
+    [
+      { colStart: 1,  colEnd: 4,  rowStart: 1,  rowEnd: 5  },
+      { colStart: 4,  colEnd: 7,  rowStart: 1,  rowEnd: 5  },
+      { colStart: 7,  colEnd: 13, rowStart: 1,  rowEnd: 9  },
+      { colStart: 1,  colEnd: 7,  rowStart: 5,  rowEnd: 13 },
+      { colStart: 7,  colEnd: 10, rowStart: 9,  rowEnd: 13 },
+      { colStart: 10, colEnd: 13, rowStart: 9,  rowEnd: 13 },
+    ],
+  ];
+  return patterns[patternIndex % patterns.length];
+}
+
+// All-landscape (16:9 or 4:3) layouts — row heights sized for landscape cells
+// Base row = vw/12 * 4/3, so landscape cells need fewer rows:
+//   full-width 16:9 → 5 rows  |  half-width 16:9 → 3 rows  |  third-width 16:9 → 2 rows
+function layout6Landscape(patternIndex: number): PlacedCell[] {
+  const patterns: PlacedCell[][] = [
+    // hero → 3 equal thirds → 2 halves
+    [
+      { colStart: 1, colEnd: 13, rowStart: 1,  rowEnd: 6  },
+      { colStart: 1, colEnd: 5,  rowStart: 6,  rowEnd: 8  },
+      { colStart: 5, colEnd: 9,  rowStart: 6,  rowEnd: 8  },
+      { colStart: 9, colEnd: 13, rowStart: 6,  rowEnd: 8  },
+      { colStart: 1, colEnd: 7,  rowStart: 8,  rowEnd: 11 },
+      { colStart: 7, colEnd: 13, rowStart: 8,  rowEnd: 11 },
+    ],
+    // 2 halves → hero → 3 equal thirds
+    [
+      { colStart: 1, colEnd: 7,  rowStart: 1,  rowEnd: 4  },
+      { colStart: 7, colEnd: 13, rowStart: 1,  rowEnd: 4  },
+      { colStart: 1, colEnd: 13, rowStart: 4,  rowEnd: 9  },
+      { colStart: 1, colEnd: 5,  rowStart: 9,  rowEnd: 11 },
+      { colStart: 5, colEnd: 9,  rowStart: 9,  rowEnd: 11 },
+      { colStart: 9, colEnd: 13, rowStart: 9,  rowEnd: 11 },
+    ],
+    // 3 equal thirds → 2 halves → hero
+    [
+      { colStart: 1, colEnd: 5,  rowStart: 1,  rowEnd: 3  },
+      { colStart: 5, colEnd: 9,  rowStart: 1,  rowEnd: 3  },
+      { colStart: 9, colEnd: 13, rowStart: 1,  rowEnd: 3  },
+      { colStart: 1, colEnd: 7,  rowStart: 3,  rowEnd: 6  },
+      { colStart: 7, colEnd: 13, rowStart: 3,  rowEnd: 6  },
+      { colStart: 1, colEnd: 13, rowStart: 6,  rowEnd: 11 },
+    ],
+    // even 2×3 grid
+    [
+      { colStart: 1, colEnd: 7,  rowStart: 1,  rowEnd: 4  },
+      { colStart: 7, colEnd: 13, rowStart: 1,  rowEnd: 4  },
+      { colStart: 1, colEnd: 7,  rowStart: 4,  rowEnd: 7  },
+      { colStart: 7, colEnd: 13, rowStart: 4,  rowEnd: 7  },
+      { colStart: 1, colEnd: 7,  rowStart: 7,  rowEnd: 10 },
+      { colStart: 7, colEnd: 13, rowStart: 7,  rowEnd: 10 },
+    ],
+  ];
+  return patterns[patternIndex % patterns.length];
+}
+
+// 4 portrait/square images — 2×2 grid (6col×6row ≈ 3:4, 7% off for 4:5, fine for 1:1)
 function layout4Images(): PlacedCell[] {
   return [
-    { colStart: 1, colEnd: 7, rowStart: 1, rowEnd: 7 },
-    { colStart: 7, colEnd: 13, rowStart: 1, rowEnd: 7 },
-    { colStart: 1, colEnd: 7, rowStart: 7, rowEnd: 13 },
+    { colStart: 1, colEnd: 7,  rowStart: 1, rowEnd: 7  },
+    { colStart: 7, colEnd: 13, rowStart: 1, rowEnd: 7  },
+    { colStart: 1, colEnd: 7,  rowStart: 7, rowEnd: 13 },
     { colStart: 7, colEnd: 13, rowStart: 7, rowEnd: 13 },
+  ];
+}
+
+// 4 landscape (16:9 or 4:3) images — 2×2 grid with landscape-height cells (6col×3row)
+function layout4Landscape(): PlacedCell[] {
+  return [
+    { colStart: 1, colEnd: 7,  rowStart: 1, rowEnd: 4 },
+    { colStart: 7, colEnd: 13, rowStart: 1, rowEnd: 4 },
+    { colStart: 1, colEnd: 7,  rowStart: 4, rowEnd: 7 },
+    { colStart: 7, colEnd: 13, rowStart: 4, rowEnd: 7 },
+  ];
+}
+
+// 4 tall-portrait (9:16) images — 4-in-a-row; 3col×4row = exact 9:16 AR
+function layout4TallPortrait(): PlacedCell[] {
+  return [
+    { colStart: 1,  colEnd: 4,  rowStart: 1, rowEnd: 5 },
+    { colStart: 4,  colEnd: 7,  rowStart: 1, rowEnd: 5 },
+    { colStart: 7,  colEnd: 10, rowStart: 1, rowEnd: 5 },
+    { colStart: 10, colEnd: 13, rowStart: 1, rowEnd: 5 },
   ];
 }
 
@@ -361,10 +471,25 @@ function layoutMondrian(media: { aspect: string; type: string }[]): PlacedCell[]
     return s;
   };
 
+  const isLandscape = (aspect: string) => aspect === "16:9" || aspect === "4:3";
+
   while (i < media.length) {
     const remaining = media.length - i;
 
-    if (remaining >= 3 && (media[i].aspect === "16:9" || media[i].aspect === "4:3")) {
+    // Two consecutive landscape images → pair side by side (avoids wasteful full-width + tiny pair)
+    if (remaining >= 2 && isLandscape(media[i].aspect) && isLandscape(media[i + 1]?.aspect)) {
+      const spanA = rowSpanForAspect(media[i].aspect, 6);
+      const spanB = rowSpanForAspect(media[i + 1].aspect, 6);
+      const sharedSpan = Math.max(spanA, spanB);
+      placements.push({ colStart: 1, colEnd: 7,  rowStart: row, rowEnd: row + sharedSpan });
+      placements.push({ colStart: 7, colEnd: 13, rowStart: row, rowEnd: row + sharedSpan });
+      row += sharedSpan;
+      i += 2;
+      continue;
+    }
+
+    // Single landscape followed by portrait images → full-width landscape as hero, then pair below
+    if (remaining >= 3 && isLandscape(media[i].aspect)) {
       const spanWide = rowSpanForAspect(media[i].aspect, 12);
       placements.push({ colStart: 1, colEnd: 13, rowStart: row, rowEnd: row + spanWide });
       row += spanWide;
@@ -435,12 +560,24 @@ export function MondrianGrid({ media, collectionId, onImageClick, onVideoClick }
     aspects.filter(a => a === "9:16").length === 1;
 
   const is6Portrait = !hasVideo && media.length === 6 &&
-    aspects.every(a => a === "3:4");
+    aspects.every(a => a === "3:4" || a === "4:5");
+
+  const is6TallPortrait = !hasVideo && media.length === 6 &&
+    aspects.every(a => a === "9:16");
+
+  const is6Landscape = !hasVideo && media.length === 6 &&
+    aspects.every(a => a === "16:9" || a === "4:3");
 
   let placements: PlacedCell[];
   if (is6Portrait) {
     const patternIdx = hashString(collectionId || 'default') % 4;
     placements = layout6Portrait(patternIdx);
+  } else if (is6TallPortrait) {
+    const patternIdx = hashString(collectionId || 'default') % 4;
+    placements = layout6TallPortrait(patternIdx);
+  } else if (is6Landscape) {
+    const patternIdx = hashString(collectionId || 'default') % 4;
+    placements = layout6Landscape(patternIdx);
   } else if (is6Mixed) {
     placements = layout6Mixed();
   } else if (hasVideo && imageCount === 12) {
@@ -497,7 +634,12 @@ export function MondrianGrid({ media, collectionId, onImageClick, onVideoClick }
 
     placements = [...topPlacements, ...belowPlacements];
   } else if (!hasVideo && imageCount === 4) {
-    placements = layout4Images();
+    if (aspects.every(a => a === "9:16"))
+      placements = layout4TallPortrait();
+    else if (aspects.every(a => a === "16:9" || a === "4:3"))
+      placements = layout4Landscape();
+    else
+      placements = layout4Images(); // portrait family (3:4, 4:5, 1:1)
   } else {
     placements = layoutMondrian(media.map((m) => ({ aspect: m.aspect, type: m.type })));
   }

@@ -20,7 +20,7 @@ export interface VaultCollection {
     file: string;
     previewFile?: string;
     type: 'image' | 'video';
-    aspect: '3:4' | '4:3' | '9:16' | '16:9' | '1:1';
+    aspect: '3:4' | '4:3' | '9:16' | '16:9' | '1:1' | '4:5';
     isHero?: boolean;
     hidden?: boolean;
   }[];
@@ -109,9 +109,9 @@ export async function getPublishedCollections(tier?: 'high' | 'daily'): Promise<
       media: sortedLooks.map((look, i) => ({
         file: (look as any).image_url || '',
         type: 'image' as const,
-        aspect: (['3:4','9:16','1:1','16:9','4:3'].includes((look as any).recipe?.aspectRatio)
+        aspect: (['3:4','9:16','1:1','16:9','4:3','4:5'].includes((look as any).recipe?.aspectRatio)
           ? (look as any).recipe.aspectRatio
-          : '3:4') as '3:4' | '9:16' | '1:1' | '16:9' | '4:3',
+          : '3:4') as '3:4' | '9:16' | '1:1' | '16:9' | '4:3' | '4:5',
         isHero: i === 0,
         recipe: (look as any).recipe ?? undefined,
         lookId: (look as any).id ?? undefined,

@@ -47,6 +47,16 @@ interface UserProfile {
   avatarUrl: string;
 }
 
+interface Garment {
+  id: string;
+  image_url: string;
+  category: string;
+  name: string | null;
+  created_at: string;
+}
+
+const GARMENT_CATEGORIES = ['トップス', 'アウター', 'パンツ', 'スカート', 'ワンピース', 'シューズ', 'バッグ', 'アクセサリー', 'その他'];
+
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
 const CATEGORIES = [
@@ -99,6 +109,13 @@ export default function MyLooksPage() {
   const [publishing, setPublishing] = useState(false);
   const [published, setPublished] = useState(false);
 
+  // items tab
+  const [tab, setTab] = useState<'looks' | 'items'>('looks');
+  const [garments, setGarments] = useState<Garment[]>([]);
+  const [garmentsLoading, setGarmentsLoading] = useState(false);
+  const [garmentCategory, setGarmentCategory] = useState('');
+  const [uploadingGarments, setUploadingGarments] = useState(false);
+
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
   const syncFromFirestore = useVaultStore((s) => s.syncFromFirestore);
@@ -136,6 +153,64 @@ export default function MyLooksPage() {
       setAvatarPreview(data.profile.avatar_url ?? '');
     }
   }, []);
+
+  const fetchGarments = useCallback(async (uid: string, category?: string) => {
+    setGarmentsLoading(true);
+    try {
+      const params = new URLSearchParams({ uid });
+      if (category) params.set('category', category);
+      const res = await fetch(`/api/my/garments?${params}`);
+      const data = await res.json();
+      setGarments(data.garments ?? []);
+    } finally {
+      setGarmentsLoading(false);
+    }
+  }, []);
+
+  const switchTab = (newTab: 'looks' | 'items') => {
+    setTab(newTab);
+    if (newTab === 'items' && user) {
+      setGarmentCategory('');
+      fetchGarments(user.id);
+    }
+  };
+
+  const handleDeleteGarment = async (id: string) => {
+    if (!user) return;
+    await fetch(`/api/my/garments/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firebaseUid: user.id }),
+    });
+    setGarments((prev) => prev.filter((g) => g.id !== id));
+  };
+
+  const handleGarmentUpload = async (files: FileList) => {
+    if (!user || files.length === 0) return;
+    setUploadingGarments(true);
+    try {
+      const items = await Promise.all(
+        Array.from(files).map((file) =>
+          new Promise<{ imageDataUrl: string; category: string }>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve({
+              imageDataUrl: e.target?.result as string,
+              category: garmentCategory || 'その他',
+            });
+            reader.readAsDataURL(file);
+          })
+        )
+      );
+      await fetch('/api/my/garments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firebaseUid: user.id, items }),
+      });
+      await fetchGarments(user.id, garmentCategory || undefined);
+    } finally {
+      setUploadingGarments(false);
+    }
+  };
 
   useEffect(() => {
     if (!auth) return;
@@ -489,17 +564,36 @@ export default function MyLooksPage() {
           </div>
         )}
 
-        {/* Page title + select toggle */}
+        {/* Page title + tab switcher + select toggle */}
         <div className="flex items-end justify-between">
-          <div className="space-y-1">
+          <div className="space-y-2">
             <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
               MY WARDROBE
             </p>
-            <h1 className="text-[13px] font-light" style={{ color: 'var(--vault-text)' }}>
-              保存したルック
-            </h1>
+            <div className="flex gap-5">
+              <button
+                onClick={() => switchTab('looks')}
+                className="text-[13px] font-light pb-0.5"
+                style={{
+                  color: tab === 'looks' ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                  borderBottom: tab === 'looks' ? '1px solid var(--vault-text)' : '1px solid transparent',
+                }}
+              >
+                ルック
+              </button>
+              <button
+                onClick={() => switchTab('items')}
+                className="text-[13px] font-light pb-0.5"
+                style={{
+                  color: tab === 'items' ? 'var(--vault-text)' : 'var(--vault-text-dim)',
+                  borderBottom: tab === 'items' ? '1px solid var(--vault-text)' : '1px solid transparent',
+                }}
+              >
+                アイテム
+              </button>
+            </div>
           </div>
-          {!loading && user && ownCreationCount > 0 && (
+          {tab === 'looks' && !loading && user && ownCreationCount > 0 && (
             selectMode ? (
               <div className="flex items-center gap-3">
                 {selectedIds.size > 0 && !published && (
@@ -536,8 +630,101 @@ export default function MyLooksPage() {
           )}
         </div>
 
+        {/* Items tab */}
+        {tab === 'items' && user && (
+          <div className="space-y-4">
+            {/* Category filter */}
+            <div className="flex gap-[2px] flex-wrap">
+              <button
+                onClick={() => { setGarmentCategory(''); fetchGarments(user.id); }}
+                className="px-3 py-1.5 text-[10px] tracking-[2px] transition-opacity hover:opacity-70"
+                style={{ background: !garmentCategory ? 'var(--vault-text)' : 'var(--vault-border)', color: !garmentCategory ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
+              >
+                ALL
+              </button>
+              {GARMENT_CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setGarmentCategory(cat); fetchGarments(user.id, cat); }}
+                  className="px-3 py-1.5 text-[10px] tracking-[2px] transition-opacity hover:opacity-70"
+                  style={{ background: garmentCategory === cat ? 'var(--vault-text)' : 'var(--vault-border)', color: garmentCategory === cat ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Upload button */}
+            <div className="flex justify-end">
+              <button
+                onClick={() => {
+                  const input = document.createElement('input');
+                  input.type = 'file';
+                  input.accept = 'image/*';
+                  input.multiple = true;
+                  input.onchange = (e) => {
+                    const files = (e.target as HTMLInputElement).files;
+                    if (files) handleGarmentUpload(files);
+                  };
+                  input.click();
+                }}
+                disabled={uploadingGarments}
+                className="px-4 py-2 text-[10px] tracking-[2px] transition-opacity hover:opacity-70 disabled:opacity-40"
+                style={{ background: 'var(--vault-text)', color: 'var(--vault-bg)' }}
+              >
+                {uploadingGarments ? 'アップロード中...' : 'アップロード'}
+              </button>
+            </div>
+
+            {/* Garment grid */}
+            {garmentsLoading ? (
+              <div className="flex items-center justify-center py-16">
+                <div className="w-4 h-4 rounded-full border border-t-transparent animate-spin" style={{ borderColor: 'var(--vault-text-dim)', borderTopColor: 'transparent' }} />
+              </div>
+            ) : garments.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 gap-4">
+                <p className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
+                  アイテムがありません
+                </p>
+                <p className="text-[10px] text-center" style={{ color: 'var(--vault-text-dim)' }}>
+                  ルックを保存すると自動で追加されます
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-4 gap-[2px]">
+                {garments.map((g) => (
+                  <div key={g.id} className="group relative" style={{ aspectRatio: '3/4' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={g.image_url} alt={g.name ?? g.category} className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div
+                        className="absolute inset-x-0 bottom-0 pointer-events-none"
+                        style={{ height: '40%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)' }}
+                      />
+                      <div className="relative flex justify-end p-1">
+                        <button
+                          onClick={() => handleDeleteGarment(g.id)}
+                          className="w-5 h-5 flex items-center justify-center rounded-full"
+                          style={{ background: 'rgba(160,0,0,0.7)' }}
+                        >
+                          <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-1 left-1 pointer-events-none">
+                      <p className="text-[8px] text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{g.category}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Published collections */}
-        {user && !collectionsLoading && collections.length > 0 && (
+        {tab === 'looks' && user && !collectionsLoading && collections.length > 0 && (
           <div className="space-y-6">
             <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
               PUBLISHED COLLECTIONS
@@ -626,7 +813,7 @@ export default function MyLooksPage() {
         )}
 
         {/* Empty */}
-        {!loading && user && looks.length === 0 && (
+        {tab === 'looks' && !loading && user && looks.length === 0 && (
           <div className="flex flex-col items-center justify-center py-32 gap-6">
             <p className="text-[11px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>
               NO LOOKS SAVED YET
@@ -642,7 +829,7 @@ export default function MyLooksPage() {
         )}
 
         {/* Grid */}
-        {!loading && looks.length > 0 && (
+        {tab === 'looks' && !loading && looks.length > 0 && (
           <div className="grid grid-cols-3 gap-[2px]">
             {looks.map((look) => {
               const isOwn = !!look.recipe;
@@ -725,7 +912,7 @@ export default function MyLooksPage() {
         )}
 
         {/* Hint */}
-        {!loading && user && ownCreationCount > 0 && !selectMode && (
+        {tab === 'looks' && !loading && user && ownCreationCount > 0 && !selectMode && (
           <p className="text-[9px] tracking-[2px] text-center" style={{ color: 'var(--vault-text-dim)' }}>
             ● 自分が生成したルック — SELECT で公開できます
           </p>

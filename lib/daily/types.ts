@@ -20,7 +20,7 @@ export interface VaultMedia {
   file: string;          // main file (image for INJECT, or video)
   previewFile?: string;  // optional: video preview for grid display (clicks still use file)
   type: "image" | "video";
-  aspect: "9:16" | "3:4" | "4:3" | "16:9" | "1:1";
+  aspect: "9:16" | "3:4" | "4:3" | "16:9" | "1:1" | "4:5";
   isHero?: boolean;
   isCatwalk?: boolean;
   recipe?: LookRecipe;

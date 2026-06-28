@@ -78,6 +78,18 @@ const MAX_IMAGES = 4; // per item: 1 main + 3 detail
 const MAX_TOTAL  = 14; // per outfit (Gemini limit)
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 
+const GARMENT_CATEGORIES = [
+  { value: 'トップス',     label: 'トップス'     },
+  { value: 'アウター',     label: 'アウター'     },
+  { value: 'パンツ',       label: 'パンツ'       },
+  { value: 'スカート',     label: 'スカート'     },
+  { value: 'ワンピース',   label: 'ワンピース'   },
+  { value: 'シューズ',     label: 'シューズ'     },
+  { value: 'バッグ',       label: 'バッグ'       },
+  { value: 'アクセサリー', label: 'アクセサリー' },
+  { value: 'その他',       label: 'その他'       },
+];
+
 function buildOutfit(itemCount = 1): (string | null)[][] {
   return Array.from({ length: itemCount }, () => [null, null, null, null]);
 }
@@ -99,16 +111,20 @@ function ItemCard({
   images,
   itemIdx,
   totalImages,
+  category,
   onAdd,
   onRemove,
   onRemoveItem,
+  onCategoryChange,
 }: {
   images: (string | null)[];
   itemIdx: number;
   totalImages: number;
+  category: string;
   onAdd: (slot: number, file: File) => void;
   onRemove: (slot: number) => void;
   onRemoveItem: () => void;
+  onCategoryChange: (cat: string) => void;
 }) {
   const pickFile = (slot: number) => {
     if (totalImages >= MAX_TOTAL && !images[slot]) return;
@@ -146,9 +162,21 @@ function ItemCard({
         </button>
       )}
 
-      <p className="text-[11px] mb-2" style={{ color: 'var(--vault-text-dim)' }}>
-        ITEM {itemIdx + 1}
-      </p>
+      <div className="flex items-baseline gap-2 mb-1">
+        <p className="text-[11px] flex-shrink-0" style={{ color: 'var(--vault-text-dim)' }}>
+          ITEM {itemIdx + 1}
+        </p>
+        <select
+          value={category}
+          onChange={(e) => onCategoryChange(e.target.value)}
+          className="flex-1 text-[10px] bg-transparent outline-none border-b"
+          style={{ borderColor: 'var(--vault-border)', color: 'var(--vault-text-dim)' }}
+        >
+          {GARMENT_CATEGORIES.map((c) => (
+            <option key={c.value} value={c.value}>{c.label}</option>
+          ))}
+        </select>
+      </div>
 
       {/* Main image slot */}
       <div
@@ -264,12 +292,16 @@ function OutfitRow({
   outfit,
   outfitIdx,
   showLabel,
+  categories,
   onUpdate,
+  onCategoriesUpdate,
 }: {
   outfit: (string | null)[][];
   outfitIdx: number;
   showLabel: boolean;
+  categories: string[];
   onUpdate: (updated: (string | null)[][]) => void;
+  onCategoriesUpdate: (updated: string[]) => void;
 }) {
   const totalImages = countImages(outfit);
 
@@ -282,11 +314,13 @@ function OutfitRow({
   const addItem = () => {
     if (outfit.length >= MAX_ITEMS) return;
     onUpdate([...outfit, [null, null, null, null]]);
+    onCategoriesUpdate([...categories, 'その他']);
   };
 
   const removeItem = (itemIdx: number) => {
     if (outfit.length <= 1) return;
     onUpdate(outfit.filter((_, i) => i !== itemIdx));
+    onCategoriesUpdate(categories.filter((_, i) => i !== itemIdx));
   };
 
   const handleAdd = (itemIdx: number, slot: number, file: File) => {
@@ -316,9 +350,15 @@ function OutfitRow({
               images={item}
               itemIdx={itemIdx}
               totalImages={totalImages}
+              category={categories[itemIdx] ?? 'その他'}
               onAdd={(slot, file) => handleAdd(itemIdx, slot, file)}
               onRemove={(slot) => updateItem(itemIdx, slot, null)}
               onRemoveItem={() => removeItem(itemIdx)}
+              onCategoryChange={(cat) => {
+                const next = [...categories];
+                next[itemIdx] = cat;
+                onCategoriesUpdate(next);
+              }}
             />
           ))}
 
@@ -346,6 +386,7 @@ function OutfitRow({
 export default function GeneratePage() {
   const [mode, setMode] = useState<Mode>('quick');
   const [outfits, setOutfits] = useState<AllOutfits>(buildInitialOutfits(1));
+  const [outfitCategories, setOutfitCategories] = useState<string[][]>([['その他']]);
   const [background, setBackground] = useState('');
   const [modelSettings, setModelSettings] = useState<ModelSettings>({ gender: 'female', height: 170, ethnicity: 'japanese' });
   const [sceneSettings, setSceneSettings] = useState<SceneSettings>({ location: '', situation: '', filmMode: '' });
@@ -454,6 +495,7 @@ export default function GeneratePage() {
     const cfg = MODES.find((m) => m.value === newMode)!;
     setMode(newMode);
     setOutfits(buildInitialOutfits(cfg.outfits));
+    setOutfitCategories(Array.from({ length: cfg.outfits }, () => ['その他']));
     setLooks([]);
     setSelectedLooks(new Set());
     setPublished(false);
@@ -461,6 +503,10 @@ export default function GeneratePage() {
 
   const updateOutfit = useCallback((outfitIdx: number, updated: (string | null)[][]) => {
     setOutfits((prev) => prev.map((o, i) => (i === outfitIdx ? updated : o)));
+  }, []);
+
+  const updateCategories = useCallback((outfitIdx: number, updated: string[]) => {
+    setOutfitCategories((prev) => prev.map((c, i) => (i === outfitIdx ? updated : c)));
   }, []);
 
   const hasAnyImage = outfits.some((o) => o.some((item) => item.some(Boolean)));
@@ -605,7 +651,23 @@ export default function GeneratePage() {
       setLooks((prev) => prev.map((l, i) =>
         i === taskIdx ? { ...l, loading: false, saved: data.success, error: data.success ? null : '保存失敗' } : l
       ));
-      if (data.success) showToast('MY WARDROBE に保存されました');
+      if (data.success) {
+        showToast('MY WARDROBE に保存されました');
+        if (look.variant === 'A') {
+          const outfitItems = outfits[look.outfitIdx] ?? [];
+          const cats = outfitCategories[look.outfitIdx] ?? [];
+          const garmentPayload = outfitItems
+            .map((item, i) => ({ imageDataUrl: item[0] ?? null, category: cats[i] ?? 'その他' }))
+            .filter((g): g is { imageDataUrl: string; category: string } => !!g.imageDataUrl);
+          if (garmentPayload.length > 0) {
+            fetch('/api/my/garments', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ firebaseUid: user.id, items: garmentPayload }),
+            }).catch(() => {});
+          }
+        }
+      }
     } catch {
       setLooks((prev) => prev.map((l, i) =>
         i === taskIdx ? { ...l, loading: false, error: 'ネットワークエラー' } : l
@@ -749,7 +811,9 @@ export default function GeneratePage() {
               outfit={outfit}
               outfitIdx={outfitIdx}
               showLabel={modeConfig.outfits > 1}
+              categories={outfitCategories[outfitIdx] ?? []}
               onUpdate={(updated) => updateOutfit(outfitIdx, updated)}
+              onCategoriesUpdate={(updated) => updateCategories(outfitIdx, updated)}
             />
           ))}
         </section>
