@@ -12,6 +12,7 @@ export interface VaultUser {
   paidCredits: number;
   freeUsed: number;
   points: number;
+  earnedCredits: number;
   createdAt: Date;
 }
 
@@ -24,6 +25,7 @@ async function upsertUser(firebaseUser: import('firebase/auth').User): Promise<V
     paidCredits: 0,
     freeUsed: 0,
     points: 0,
+    earnedCredits: 0,
     createdAt: new Date(),
   };
   if (!supabase) return fallback;
@@ -43,6 +45,7 @@ async function upsertUser(firebaseUser: import('firebase/auth').User): Promise<V
       paidCredits: data.paid_credits ?? 0,
       freeUsed: Math.max(0, 3 - (data.free_tickets_remaining ?? 3)),
       points: data.points ?? 0,
+      earnedCredits: (data as any).earned_credits ?? 0,
       createdAt: data.created_at ? new Date(data.created_at) : new Date(),
     };
   }
@@ -83,11 +86,11 @@ export async function handleGoogleRedirectResult(): Promise<VaultUser | null> {
 
 export async function fetchCreditsFromSupabase(
   userId: string
-): Promise<{ paidCredits: number; freeUsed: number; freeResetDate?: string; points?: number; faceImageUrl?: string } | null> {
+): Promise<{ paidCredits: number; freeUsed: number; freeResetDate?: string; points?: number; faceImageUrl?: string; earnedCredits: number } | null> {
   if (!supabase) return null;
   const { data } = await supabase
     .from('consumer_credits')
-    .select('paid_credits, free_tickets_remaining, free_tickets_reset_at, points, face_image_url')
+    .select('paid_credits, free_tickets_remaining, free_tickets_reset_at, points, face_image_url, earned_credits')
     .eq('firebase_uid', userId)
     .single();
   if (!data) return null;
@@ -99,8 +102,19 @@ export async function fetchCreditsFromSupabase(
     freeResetDate: resetAt ? resetAt.toISOString().slice(0, 10) : undefined,
     points: data.points ?? 0,
     faceImageUrl: data.face_image_url ?? undefined,
+    earnedCredits: (data as any).earned_credits ?? 0,
   };
 }
+
+export async function syncEarnedCreditsToSupabase(userId: string, earnedCredits: number): Promise<void> {
+  if (!supabase) return;
+  await supabase
+    .from('consumer_credits')
+    .update({ earned_credits: Math.max(0, earnedCredits), updated_at: new Date().toISOString() })
+    .eq('firebase_uid', userId);
+}
+
+export const syncEarnedCreditsToFirestore = syncEarnedCreditsToSupabase;
 
 // Backward-compat alias (VaultContent imports this name)
 export const fetchCreditsFromFirestore = fetchCreditsFromSupabase;

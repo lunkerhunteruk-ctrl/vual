@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { VaultUser } from './auth';
-import { syncCreditsToFirestore, addPointsToFirestore } from './auth';
+import { syncCreditsToFirestore, addPointsToFirestore, syncEarnedCreditsToFirestore } from './auth';
 
 const GUEST_FREE = 3;
 const DAILY_FREE = 3;
@@ -17,11 +17,13 @@ interface VaultStore {
   freeUsed: number;
   freeResetDate: string;
   paidCredits: number;
+  earnedCredits: number;
   points: number;
   incrementGeneration: () => void;
   addPaidCredits: (amount: number) => void;
   addPoints: (amount: number) => void;
-  syncFromFirestore: (paidCredits: number, freeUsed: number, freeResetDate?: string, points?: number) => void;
+  setEarnedCredits: (amount: number) => void;
+  syncFromFirestore: (paidCredits: number, freeUsed: number, freeResetDate?: string, points?: number, earnedCredits?: number) => void;
 
   canGenerate: () => boolean;
   freeRemaining: () => number;
@@ -65,6 +67,7 @@ export const useVaultStore = create<VaultStore>()(
       freeUsed: 0,
       freeResetDate: todayStr(),
       paidCredits: 0,
+      earnedCredits: 0,
       points: 0,
 
       incrementGeneration: () => {
@@ -72,13 +75,17 @@ export const useVaultStore = create<VaultStore>()(
         const reset = checkDailyReset(state);
         const freeUsed = reset.freeUsed;
         const freeResetDate = reset.freeResetDate;
-        const { user, paidCredits } = state;
+        const { user, paidCredits, earnedCredits } = state;
         const freeMax = user ? DAILY_FREE : GUEST_FREE;
 
         if (freeUsed < freeMax) {
           const newFreeUsed = freeUsed + 1;
           set({ freeUsed: newFreeUsed, freeResetDate });
           syncToFirestore({ user, paidCredits, freeUsed: newFreeUsed, freeResetDate });
+        } else if (earnedCredits > 0) {
+          const newEarned = Math.max(0, earnedCredits - 1);
+          set({ earnedCredits: newEarned });
+          if (user) syncEarnedCreditsToFirestore(user.id, newEarned).catch(() => {});
         } else if (paidCredits > 0) {
           const newPaid = paidCredits - 1;
           set({ paidCredits: newPaid, freeResetDate });
@@ -86,7 +93,7 @@ export const useVaultStore = create<VaultStore>()(
         }
       },
 
-      syncFromFirestore: (serverPaid, serverFreeUsed, serverResetDate, serverPoints) => {
+      syncFromFirestore: (serverPaid, serverFreeUsed, serverResetDate, serverPoints, serverEarnedCredits) => {
         const local = get();
         const freeResetDate = serverResetDate || local.freeResetDate;
         set({
@@ -94,9 +101,14 @@ export const useVaultStore = create<VaultStore>()(
           freeUsed: Math.max(local.freeUsed, serverFreeUsed),
           freeResetDate,
           points: serverPoints ?? local.points,
+          earnedCredits: serverEarnedCredits ?? local.earnedCredits,
         });
         const reset = checkDailyReset({ user: local.user, freeUsed: Math.max(local.freeUsed, serverFreeUsed), freeResetDate });
         set(reset);
+      },
+
+      setEarnedCredits: (amount) => {
+        set({ earnedCredits: Math.max(0, amount) });
       },
 
       addPaidCredits: (amount) => {
@@ -119,7 +131,7 @@ export const useVaultStore = create<VaultStore>()(
         const state = get();
         const reset = checkDailyReset(state);
         const freeMax = state.user ? DAILY_FREE : GUEST_FREE;
-        return reset.freeUsed < freeMax || state.paidCredits > 0;
+        return reset.freeUsed < freeMax || state.earnedCredits > 0 || state.paidCredits > 0;
       },
 
       freeRemaining: () => {
@@ -133,7 +145,7 @@ export const useVaultStore = create<VaultStore>()(
         const state = get();
         const reset = checkDailyReset(state);
         const freeMax = state.user ? DAILY_FREE : GUEST_FREE;
-        return Math.max(0, freeMax - reset.freeUsed) + state.paidCredits;
+        return Math.max(0, freeMax - reset.freeUsed) + state.earnedCredits + state.paidCredits;
       },
     }),
     {
@@ -143,6 +155,7 @@ export const useVaultStore = create<VaultStore>()(
         freeUsed: state.freeUsed,
         freeResetDate: state.freeResetDate,
         paidCredits: state.paidCredits,
+        earnedCredits: state.earnedCredits,
         points: state.points,
       }),
     }

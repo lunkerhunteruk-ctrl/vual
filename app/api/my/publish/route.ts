@@ -84,10 +84,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'All uploads failed' }, { status: 500 });
     }
 
+    const creditsBack = imageUrls.length * 0.5;
+
     // Create collection_bundle
     const { data: bundle, error: bundleErr } = await supa
       .from('collection_bundles')
-      .insert({ store_id: storeId, title: title || null })
+      .insert({ store_id: storeId, title: title || null, credits_back: creditsBack })
       .select('id')
       .single();
 
@@ -123,7 +125,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to save looks' }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, bundleId: bundle.id, count: imageUrls.length });
+    // Grant earned_credits to user
+    let newEarnedCredits = creditsBack;
+    const { data: credRow } = await supa
+      .from('consumer_credits')
+      .select('earned_credits')
+      .eq('firebase_uid', firebaseUid)
+      .single();
+    if (credRow) {
+      newEarnedCredits = ((credRow as any).earned_credits ?? 0) + creditsBack;
+      await supa
+        .from('consumer_credits')
+        .update({ earned_credits: newEarnedCredits })
+        .eq('firebase_uid', firebaseUid);
+    }
+
+    return NextResponse.json({ success: true, bundleId: bundle.id, count: imageUrls.length, creditsBack, earnedCredits: newEarnedCredits });
   } catch (err) {
     console.error('[Publish] Error:', err);
     return NextResponse.json({ error: String(err) }, { status: 500 });

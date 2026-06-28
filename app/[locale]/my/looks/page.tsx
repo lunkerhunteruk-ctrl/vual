@@ -39,6 +39,7 @@ interface Collection {
   id: string;
   title: string | null;
   created_at: string;
+  credits_back: number;
   looks: CollectionLook[];
 }
 
@@ -109,6 +110,10 @@ export default function MyLooksPage() {
   const [publishing, setPublishing] = useState(false);
   const [published, setPublished] = useState(false);
 
+  // unpublish
+  const [unpublishingId, setUnpublishingId] = useState<string | null>(null);
+  const [unpublishError, setUnpublishError] = useState<string | null>(null);
+
   // items tab
   const [tab, setTab] = useState<'looks' | 'items'>('looks');
   const [garments, setGarments] = useState<Garment[]>([]);
@@ -119,6 +124,8 @@ export default function MyLooksPage() {
   const user = useVaultStore((s) => s.user);
   const setUser = useVaultStore((s) => s.setUser);
   const syncFromFirestore = useVaultStore((s) => s.syncFromFirestore);
+  const earnedCredits = useVaultStore((s) => s.earnedCredits);
+  const setEarnedCredits = useVaultStore((s) => s.setEarnedCredits);
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'ja';
 
@@ -226,9 +233,10 @@ export default function MyLooksPage() {
             paidCredits: credits?.paidCredits ?? 0,
             freeUsed: credits?.freeUsed ?? 0,
             points: 0,
+            earnedCredits: credits?.earnedCredits ?? 0,
             createdAt: new Date(),
           });
-          if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
+          if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate, undefined, credits.earnedCredits);
         }
         fetchLooks(firebaseUser.uid);
         fetchCollections(firebaseUser.uid);
@@ -369,6 +377,29 @@ export default function MyLooksPage() {
       alert('追加に失敗しました');
     } finally {
       setAddingBulk(false);
+    }
+  };
+
+  const handleUnpublish = async (col: Collection) => {
+    if (!user) return;
+    if (!confirm(`「${col.title || 'このコレクション'}」を非公開にしますか？\n獲得した ${col.credits_back} クレジットが取り消されます。`)) return;
+    setUnpublishingId(col.id);
+    setUnpublishError(null);
+    try {
+      const res = await fetch('/api/my/unpublish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bundleId: col.id, firebaseUid: user.id }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setCollections((prev) => prev.filter((c) => c.id !== col.id));
+        setEarnedCredits(data.earnedCredits);
+      } else {
+        setUnpublishError(data.error || '非公開に失敗しました');
+      }
+    } finally {
+      setUnpublishingId(null);
     }
   };
 
@@ -726,9 +757,19 @@ export default function MyLooksPage() {
         {/* Published collections */}
         {tab === 'looks' && user && !collectionsLoading && collections.length > 0 && (
           <div className="space-y-6">
-            <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
-              PUBLISHED COLLECTIONS
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] tracking-[4px] font-light" style={{ color: 'var(--vault-text-dim)' }}>
+                PUBLISHED COLLECTIONS
+              </p>
+              {earnedCredits > 0 && (
+                <p className="text-[10px] tracking-[2px]" style={{ color: 'var(--vault-text-dim)' }}>
+                  獲得 {earnedCredits} CR
+                </p>
+              )}
+            </div>
+            {unpublishError && (
+              <p className="text-[11px]" style={{ color: 'rgba(160,0,0,0.8)' }}>{unpublishError}</p>
+            )}
             {collections.map((col) => (
               <div key={col.id} className="space-y-3">
                 {/* Collection header */}
@@ -739,13 +780,23 @@ export default function MyLooksPage() {
                       · {col.looks.length}枚
                     </span>
                   </p>
-                  <button
-                    onClick={() => { setAddTarget(col.id); setPickerSelected(new Set()); }}
-                    className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
-                    style={{ color: 'var(--vault-text-dim)' }}
-                  >
-                    ＋ ADD
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => { setAddTarget(col.id); setPickerSelected(new Set()); }}
+                      className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60"
+                      style={{ color: 'var(--vault-text-dim)' }}
+                    >
+                      ＋ ADD
+                    </button>
+                    <button
+                      onClick={() => handleUnpublish(col)}
+                      disabled={unpublishingId === col.id}
+                      className="text-[10px] tracking-[2px] transition-opacity hover:opacity-60 disabled:opacity-30"
+                      style={{ color: 'rgba(160,0,0,0.7)' }}
+                    >
+                      {unpublishingId === col.id ? '...' : '非公開'}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Horizontal look strip */}

@@ -432,9 +432,10 @@ export default function GeneratePage() {
           paidCredits: credits?.paidCredits ?? 0,
           freeUsed: credits?.freeUsed ?? 0,
           points: 0,
+          earnedCredits: credits?.earnedCredits ?? 0,
           createdAt: new Date(),
         });
-        if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate);
+        if (credits) syncFromFirestore(credits.paidCredits, credits.freeUsed, credits.freeResetDate, undefined, credits.earnedCredits);
         // Restore saved face image
         if (credits?.faceImageUrl) setFaceImage(credits.faceImageUrl);
       }
