@@ -110,6 +110,7 @@ export default function MyLooksPage() {
   const [publishTitle, setPublishTitle] = useState('');
   const [publishing, setPublishing] = useState(false);
   const [published, setPublished] = useState(false);
+  const [publishTarget, setPublishTarget] = useState<'self' | 'same' | 'opposite'>('self');
 
   // unpublish
   const [unpublishingId, setUnpublishingId] = useState<string | null>(null);
@@ -490,6 +491,7 @@ export default function MyLooksPage() {
           imageUrls,
           category: publishCategory,
           title: publishTitle || null,
+          targetAudience: publishTarget,
           firebaseUid: user.id,
           recipes,
           garmentUrlSets,
@@ -1352,6 +1354,30 @@ export default function MyLooksPage() {
                 className="w-full px-3 py-2 text-[12px] outline-none bg-transparent"
                 style={{ border: '1px solid var(--vault-border)', color: 'var(--vault-text)', fontFamily: MONO }}
               />
+            </div>
+
+            {/* Target audience */}
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] tracking-widest" style={{ color: 'var(--vault-text-dim)' }}>このコレクションは誰のため？</span>
+              <div className="flex gap-[2px]">
+                {([
+                  { value: 'self',     label: '自分用' },
+                  { value: 'same',     label: '同性向け' },
+                  { value: 'opposite', label: '異性向け' },
+                ] as const).map((opt) => (
+                  <button
+                    key={opt.value}
+                    onClick={() => setPublishTarget(opt.value)}
+                    className="flex-1 py-2 text-[10px] tracking-wide transition-opacity hover:opacity-80"
+                    style={{
+                      background: publishTarget === opt.value ? 'var(--vault-text)' : 'var(--vault-border)',
+                      color: publishTarget === opt.value ? 'var(--vault-bg)' : 'var(--vault-text-dim)',
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="flex gap-[2px]">

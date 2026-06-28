@@ -51,7 +51,9 @@ export async function POST(request: NextRequest) {
     // images: base64 data URLs (generate page flow)
     // imageUrls: pre-uploaded R2 URLs (my-wardrobe publish flow — no re-upload needed)
     // garmentUrlSets: pre-uploaded garment URLs per outfit { [outfitIdx]: string[] }
-    const { images, imageUrls: preUploadedUrls, category, title, firebaseUid, recipes, garmentUrlSets, lookIds } = await request.json();
+    const { images, imageUrls: preUploadedUrls, category, title, targetAudience, firebaseUid, recipes, garmentUrlSets, lookIds } = await request.json();
+    const VALID_TARGETS = ['self', 'same', 'opposite'];
+    const target_audience = VALID_TARGETS.includes(targetAudience) ? targetAudience : 'self';
 
     if ((!images?.length && !preUploadedUrls?.length) || !firebaseUid) {
       return NextResponse.json({ error: 'images (or imageUrls) and firebaseUid required' }, { status: 400 });
@@ -89,7 +91,7 @@ export async function POST(request: NextRequest) {
     // Create collection_bundle
     const { data: bundle, error: bundleErr } = await supa
       .from('collection_bundles')
-      .insert({ store_id: storeId, title: title || null, credits_back: creditsBack })
+      .insert({ store_id: storeId, title: title || null, credits_back: creditsBack, target_audience })
       .select('id')
       .single();
 
