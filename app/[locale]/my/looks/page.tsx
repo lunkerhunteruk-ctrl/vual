@@ -773,6 +773,12 @@ export default function MyLooksPage() {
         {/* Upload tab */}
         {tab === 'upload' && user && (
           <div className="space-y-6">
+            {/* Note */}
+            <p className="text-[9px] tracking-[1px] leading-relaxed" style={{ color: 'var(--vault-text-dim)' }}>
+              ここではアイテムのメイン画像のみアップロードしてください。<br />
+              詳細画像はアイテムタブのアイテムをタップして追加できます。
+            </p>
+
             {/* Category selector */}
             <div className="space-y-2">
               <p className="text-[10px] tracking-[3px]" style={{ color: 'var(--vault-text-dim)' }}>カテゴリ</p>
