@@ -10,6 +10,7 @@ const intlMiddleware = createIntlMiddleware({
 });
 
 const WARDROBE_HOSTS = ['vwardrobe.com', 'www.vwardrobe.com', 'v-wardrobe.com', 'www.v-wardrobe.com'];
+const VWARDROBE_ADMIN_HOSTS = ['admin.vwardrobe.com'];
 
 export default function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
@@ -24,6 +25,26 @@ export default function middleware(request: NextRequest) {
       const locale = matchedLocale ?? defaultLocale;
       return NextResponse.redirect(new URL(`/${locale}/wardrobe`, request.url));
     }
+  }
+
+  // admin.vwardrobe.com → route to /vwardrobe-admin namespace
+  if (VWARDROBE_ADMIN_HOSTS.includes(cleanHost)) {
+    const url = request.nextUrl.clone();
+    const localeMatch = pathname.match(/^\/(en|ja)(\/.*)?$/);
+    const locale = localeMatch?.[1] ?? defaultLocale;
+    const subpath = localeMatch?.[2] ?? '';
+
+    if (subpath.startsWith('/vwardrobe-admin')) {
+      // Already under vwardrobe-admin — process normally
+      const response = intlMiddleware(request);
+      response.headers.set(STORE_SLUG_HEADER, FALLBACK_STORE_SLUG);
+      response.cookies.set(STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG, { httpOnly: false, path: '/', sameSite: 'lax' });
+      return response;
+    }
+
+    // Redirect to vwardrobe-admin path
+    url.pathname = `/${locale}/vwardrobe-admin${subpath}`;
+    return NextResponse.redirect(url);
   }
 
   const subdomain = extractSubdomain(host);
