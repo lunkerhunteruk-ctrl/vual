@@ -37,6 +37,19 @@ interface SceneSettings {
   filmMode: string; // '' = AI AUTO
 }
 
+interface GarmentItem {
+  id: string;
+  image_url: string;
+  category: string;
+  detail_urls?: string[];
+}
+
+interface GarmentDropData {
+  imageUrl: string;
+  detailUrls: string[];
+  category: string;
+}
+
 const FILM_OPTIONS = [
   { value: '',              label: 'AI AUTO'           },
   { value: 'leicaPortra800',label: 'Leica Portra 800'  },
@@ -116,6 +129,7 @@ function ItemCard({
   onRemove,
   onRemoveItem,
   onCategoryChange,
+  onGarmentDrop,
 }: {
   images: (string | null)[];
   itemIdx: number;
@@ -125,6 +139,7 @@ function ItemCard({
   onRemove: (slot: number) => void;
   onRemoveItem: () => void;
   onCategoryChange: (cat: string) => void;
+  onGarmentDrop?: (data: GarmentDropData) => void;
 }) {
   const pickFile = (slot: number) => {
     if (totalImages >= MAX_TOTAL && !images[slot]) return;
@@ -140,6 +155,14 @@ function ItemCard({
 
   const handleDrop = (slot: number, e: React.DragEvent) => {
     e.preventDefault();
+    // Garment drop from MY ITEMS picker (main slot only)
+    if (slot === 0) {
+      const garmentJson = e.dataTransfer.getData('application/x-garment');
+      if (garmentJson) {
+        try { onGarmentDrop?.(JSON.parse(garmentJson)); } catch {}
+        return;
+      }
+    }
     if (totalImages >= MAX_TOTAL && !images[slot]) return;
     const file = e.dataTransfer.files[0];
     if (file?.type.startsWith('image/')) onAdd(slot, file);
@@ -264,6 +287,17 @@ function ItemCard({
   );
 }
 
+async function urlToDataUrl(url: string): Promise<string> {
+  const res = await fetch(url);
+  const blob = await res.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => resolve(e.target?.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
 function compressImage(file: File, maxPx = 1024, quality = 0.82): Promise<string> {
   return new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
@@ -295,6 +329,7 @@ function OutfitRow({
   categories,
   onUpdate,
   onCategoriesUpdate,
+  onGarmentDrop,
 }: {
   outfit: (string | null)[][];
   outfitIdx: number;
@@ -302,6 +337,7 @@ function OutfitRow({
   categories: string[];
   onUpdate: (updated: (string | null)[][]) => void;
   onCategoriesUpdate: (updated: string[]) => void;
+  onGarmentDrop?: (outfitIdx: number, itemIdx: number, data: GarmentDropData) => void;
 }) {
   const totalImages = countImages(outfit);
 
@@ -359,6 +395,7 @@ function OutfitRow({
                 next[itemIdx] = cat;
                 onCategoriesUpdate(next);
               }}
+              onGarmentDrop={(data) => onGarmentDrop?.(outfitIdx, itemIdx, data)}
             />
           ))}
 
@@ -402,6 +439,10 @@ export default function GeneratePage() {
   const [publishTitle, setPublishTitle] = useState('');
   const [published, setPublished] = useState(false);
   const [selectedLooks, setSelectedLooks] = useState<Set<string>>(new Set());
+  const [wardrobe, setWardrobe] = useState<GarmentItem[]>([]);
+  const [wardrobeOpen, setWardrobeOpen] = useState(false);
+  const [wardrobeLoaded, setWardrobeLoaded] = useState(false);
+  const [wardrobeCat, setWardrobeCat] = useState('');
   const pathname = usePathname();
   const locale = pathname.split('/')[1] || 'ja';
 
@@ -442,6 +483,14 @@ export default function GeneratePage() {
     });
     return () => unsub();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (user?.id && !wardrobeLoaded) {
+      fetch(`/api/my/garments?uid=${user.id}`)
+        .then((r) => r.json())
+        .then((d) => { setWardrobe(d.garments ?? []); setWardrobeLoaded(true); });
+    }
+  }, [user?.id, wardrobeLoaded]);
 
   const pickFaceImage = () => {
     const input = document.createElement('input');
@@ -509,6 +558,53 @@ export default function GeneratePage() {
   const updateCategories = useCallback((outfitIdx: number, updated: string[]) => {
     setOutfitCategories((prev) => prev.map((c, i) => (i === outfitIdx ? updated : c)));
   }, []);
+
+  // Drag-drop from MY ITEMS picker onto a specific ITEM slot
+  const handleGarmentDrop = useCallback(async (outfitIdx: number, itemIdx: number, data: GarmentDropData) => {
+    const allUrls = [data.imageUrl, ...data.detailUrls.slice(0, 3)];
+    const converted = await Promise.all(allUrls.map(urlToDataUrl));
+    const [main, d1 = null, d2 = null, d3 = null] = converted;
+    setOutfits((prev) => {
+      const next = prev.map((o) => o.map((item) => [...item]));
+      next[outfitIdx][itemIdx] = [main, d1, d2, d3];
+      return next;
+    });
+    setOutfitCategories((prev) => {
+      const next = prev.map((c) => [...c]);
+      next[outfitIdx][itemIdx] = data.category;
+      return next;
+    });
+  }, []);
+
+  // Tap in MY ITEMS picker → insert into first empty slot
+  const insertGarment = useCallback(async (garment: GarmentItem) => {
+    let targetOi = -1, targetIi = -1, isNew = false;
+    const snap = outfits;
+    outer: for (let oi = 0; oi < snap.length; oi++) {
+      for (let ii = 0; ii < snap[oi].length; ii++) {
+        if (!snap[oi][ii][0]) { targetOi = oi; targetIi = ii; break outer; }
+      }
+      if (snap[oi].length < MAX_ITEMS) { targetOi = oi; targetIi = snap[oi].length; isNew = true; break; }
+    }
+    if (targetOi === -1) return;
+
+    const allUrls = [garment.image_url, ...(garment.detail_urls ?? []).slice(0, 3)];
+    const converted = await Promise.all(allUrls.map(urlToDataUrl));
+    const [main, d1 = null, d2 = null, d3 = null] = converted;
+
+    setOutfits((prev) => {
+      const next = prev.map((o) => o.map((item) => [...item]));
+      if (isNew) next[targetOi] = [...next[targetOi], [main, d1, d2, d3]];
+      else next[targetOi][targetIi] = [main, d1, d2, d3];
+      return next;
+    });
+    setOutfitCategories((prev) => {
+      const next = prev.map((c) => [...c]);
+      if (isNew) next[targetOi] = [...next[targetOi], garment.category];
+      else next[targetOi][targetIi] = garment.category;
+      return next;
+    });
+  }, [outfits]);
 
   const hasAnyImage = outfits.some((o) => o.some((item) => item.some(Boolean)));
   const canGen = hasAnyImage && canGenerate() && !generating;
@@ -804,6 +900,103 @@ export default function GeneratePage() {
           </p>
         </section>
 
+        {/* MY ITEMS picker */}
+        {user && (
+          <section className="space-y-3">
+            <button
+              onClick={() => setWardrobeOpen((v) => !v)}
+              className="flex items-center gap-2 text-[11px] tracking-[3px] transition-opacity hover:opacity-60"
+              style={{ color: 'var(--vault-text-dim)' }}
+            >
+              MY ITEMS
+              <svg
+                width="8" height="8" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2.5"
+                style={{ transform: wardrobeOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              {wardrobe.length > 0 && (
+                <span className="text-[9px] tracking-normal" style={{ opacity: 0.5 }}>
+                  {wardrobe.length}
+                </span>
+              )}
+            </button>
+
+            {wardrobeOpen && (
+              <div className="space-y-3">
+                {/* Category chips — only show cats that have items */}
+                <div className="flex gap-[2px] flex-wrap">
+                  <button
+                    onClick={() => setWardrobeCat('')}
+                    className="px-2.5 py-1 text-[9px] tracking-[2px] transition-opacity hover:opacity-70"
+                    style={{ background: !wardrobeCat ? 'var(--vault-text)' : 'var(--vault-border)', color: !wardrobeCat ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
+                  >ALL</button>
+                  {GARMENT_CATEGORIES.map((c) => {
+                    if (!wardrobe.some((g) => g.category === c.value)) return null;
+                    return (
+                      <button
+                        key={c.value}
+                        onClick={() => setWardrobeCat(c.value)}
+                        className="px-2.5 py-1 text-[9px] tracking-[2px] transition-opacity hover:opacity-70"
+                        style={{ background: wardrobeCat === c.value ? 'var(--vault-text)' : 'var(--vault-border)', color: wardrobeCat === c.value ? 'var(--vault-bg)' : 'var(--vault-text-dim)' }}
+                      >{c.label}</button>
+                    );
+                  })}
+                </div>
+
+                {wardrobe.length === 0 ? (
+                  <p className="text-[10px] py-6 text-center" style={{ color: 'var(--vault-text-dim)' }}>
+                    MY WARDROBE にアイテムがありません
+                  </p>
+                ) : (
+                  <div className="overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+                    <div className="flex gap-[3px]" style={{ width: 'fit-content' }}>
+                      {wardrobe
+                        .filter((g) => !wardrobeCat || g.category === wardrobeCat)
+                        .map((g) => (
+                          <div
+                            key={g.id}
+                            draggable
+                            onDragStart={(e) => {
+                              e.dataTransfer.setData('application/x-garment', JSON.stringify({
+                                imageUrl: g.image_url,
+                                detailUrls: g.detail_urls ?? [],
+                                category: g.category,
+                              }));
+                              e.dataTransfer.effectAllowed = 'copy';
+                            }}
+                            onClick={() => insertGarment(g)}
+                            className="flex-shrink-0 relative cursor-grab active:cursor-grabbing"
+                            style={{ width: 72, height: 96, background: 'var(--vault-border)' }}
+                            title={`${g.category}${(g.detail_urls?.length ?? 0) > 0 ? ` +${g.detail_urls!.length}枚` : ''}`}
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={g.image_url} alt="" className="absolute inset-0 w-full h-full object-cover" draggable={false} />
+                            {(g.detail_urls?.length ?? 0) > 0 && (
+                              <div
+                                className="absolute bottom-1 right-1 rounded-full flex items-center justify-center"
+                                style={{ width: 14, height: 14, background: 'var(--vault-text)', opacity: 0.75 }}
+                              >
+                                <span className="text-[6px]" style={{ color: 'var(--vault-bg)' }}>
+                                  +{g.detail_urls!.length}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-[9px] tracking-[1px]" style={{ color: 'var(--vault-text-dim)', opacity: 0.5 }}>
+                  タップで挿入 / ドラッグ&ドロップでスロット指定
+                </p>
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Outfit rows */}
         <section className="space-y-10">
           {outfits.map((outfit, outfitIdx) => (
@@ -815,6 +1008,7 @@ export default function GeneratePage() {
               categories={outfitCategories[outfitIdx] ?? []}
               onUpdate={(updated) => updateOutfit(outfitIdx, updated)}
               onCategoriesUpdate={(updated) => updateCategories(outfitIdx, updated)}
+              onGarmentDrop={handleGarmentDrop}
             />
           ))}
         </section>
