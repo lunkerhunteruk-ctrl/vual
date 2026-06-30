@@ -7,7 +7,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import { LayoutDashboard } from 'lucide-react';
 import Link from 'next/link';
 
-const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 const ADMIN_EMAIL = 'sachiokawasaki@gmail.com';
 
 export default function VWardrobeAdminLayout({ children }: { children: React.ReactNode }) {
@@ -24,7 +23,6 @@ export default function VWardrobeAdminLayout({ children }: { children: React.Rea
       router.replace(`/${locale}/vwardrobe-admin/login`);
       return;
     }
-    // Kick out anyone who isn't the platform admin
     if (user && user.email !== ADMIN_EMAIL && !isLoginPage) {
       signOut();
       router.replace(`/${locale}/vwardrobe-admin/login`);
@@ -35,8 +33,8 @@ export default function VWardrobeAdminLayout({ children }: { children: React.Rea
 
   if (isLoading || !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#0a0a0a', fontFamily: MONO }}>
-        <div className="w-3 h-3 rounded-full border animate-spin" style={{ borderColor: '#333', borderTopColor: '#888' }} />
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="w-4 h-4 rounded-full border-2 border-gray-200 border-t-gray-500 animate-spin" />
       </div>
     );
   }
@@ -47,50 +45,43 @@ export default function VWardrobeAdminLayout({ children }: { children: React.Rea
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#0a0a0a', fontFamily: MONO }}>
+    <div className="min-h-screen bg-gray-50">
       {/* Top bar */}
-      <header
-        className="fixed top-0 left-0 right-0 h-11 flex items-center justify-between px-5 z-40"
-        style={{ background: '#0d0d0d', borderBottom: '1px solid #1c1c1c' }}
-      >
-        <span className="text-[11px] tracking-[5px] font-medium" style={{ color: '#e0e0e0' }}>
-          VWARDROBE <span style={{ color: '#3a3a3a' }}>ADMIN</span>
+      <header className="fixed top-0 left-0 right-0 h-14 flex items-center justify-between px-6 z-40 bg-white border-b border-gray-200">
+        <span className="text-base font-semibold tracking-tight text-gray-900">
+          VWARDROBE <span className="font-normal text-gray-400">Admin</span>
         </span>
-        <div className="flex items-center gap-5">
-          <span className="text-[9px] tracking-[1px]" style={{ color: '#3a3a3a' }}>{user.email}</span>
+        <div className="flex items-center gap-6">
+          <span className="text-sm text-gray-400">{user.email}</span>
           <button
             onClick={handleSignOut}
-            className="text-[9px] tracking-[2px] transition-opacity hover:opacity-60"
-            style={{ color: '#555' }}
+            className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
           >
-            OUT
+            ログアウト
           </button>
         </div>
       </header>
 
-      <div className="flex pt-11">
+      <div className="flex pt-14">
         {/* Sidebar */}
-        <aside
-          className="fixed left-0 top-11 h-[calc(100vh-44px)] w-44 py-5 px-2"
-          style={{ background: '#0d0d0d', borderRight: '1px solid #1c1c1c' }}
-        >
+        <aside className="fixed left-0 top-14 h-[calc(100vh-56px)] w-52 bg-white border-r border-gray-200 py-6 px-3">
           <nav className="space-y-0.5">
             <Link
               href={`/${locale}/vwardrobe-admin`}
-              className="flex items-center gap-2.5 px-3 py-2 rounded text-[9px] tracking-[2px] transition-colors"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
               style={{
-                color: pathname === `/${locale}/vwardrobe-admin` ? '#e0e0e0' : '#444',
-                background: pathname === `/${locale}/vwardrobe-admin` ? '#1a1a1a' : 'transparent',
+                color: pathname === `/${locale}/vwardrobe-admin` ? '#111' : '#888',
+                background: pathname === `/${locale}/vwardrobe-admin` ? '#f3f4f6' : 'transparent',
               }}
             >
-              <LayoutDashboard size={11} />
-              DASHBOARD
+              <LayoutDashboard size={15} />
+              ダッシュボード
             </Link>
           </nav>
         </aside>
 
         {/* Main content */}
-        <main className="ml-44 flex-1 p-6 min-h-[calc(100vh-44px)]">
+        <main className="ml-52 flex-1 p-8 min-h-[calc(100vh-56px)]">
           {children}
         </main>
       </div>
