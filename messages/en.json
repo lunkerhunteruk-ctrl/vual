@@ -69,7 +69,9 @@
       "storePolicies": "Store Policies",
       "video": "Video",
       "blog": "Blog",
-      "yourShop": "Your Shop"
+      "yourShop": "Your Shop",
+      "vualPlatform": "VUAL PLATFORM",
+      "vualAdmin": "Platform Admin"
     },
     "topnav": {
       "searchPlaceholder": "Search products, orders, or customers...",

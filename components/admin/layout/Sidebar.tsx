@@ -32,6 +32,7 @@ import {
   Coins,
   Video,
   Shirt,
+  Activity,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/auth';
@@ -90,6 +91,12 @@ const menuSections: MenuSection[] = [
       { icon: UsersRound, labelKey: 'teamMembers', href: '/admin/settings/team' },
       { icon: MessageCircle, labelKey: 'lineIntegration', href: '/admin/settings/line' },
       { icon: FileText, labelKey: 'storePolicies', href: '/admin/settings/policies' },
+    ],
+  },
+  {
+    sectionKey: 'vualPlatform',
+    items: [
+      { icon: Activity, labelKey: 'vualAdmin', href: '/admin/vual', highlight: true },
     ],
   },
 ];

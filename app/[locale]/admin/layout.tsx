@@ -31,6 +31,7 @@ const pageTitles: Record<string, string> = {
   '/admin/settings/policies': 'storePolicies',
   '/admin/settings/line': 'lineIntegration',
   '/admin/video': 'video',
+  '/admin/vual': 'vualAdmin',
 };
 
 function getPageTitleKey(pathname: string, locale: string): string {
