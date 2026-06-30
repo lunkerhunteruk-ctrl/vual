@@ -156,12 +156,10 @@ function ItemCard({
   const handleDrop = (slot: number, e: React.DragEvent) => {
     e.preventDefault();
     // Garment drop from MY ITEMS picker (main slot only)
-    if (slot === 0) {
-      const garmentJson = e.dataTransfer.getData('application/x-garment');
-      if (garmentJson) {
-        try { onGarmentDrop?.(JSON.parse(garmentJson)); } catch {}
-        return;
-      }
+    if (slot === 0 && _draggedGarment) {
+      onGarmentDrop?.(_draggedGarment);
+      _draggedGarment = null;
+      return;
     }
     if (totalImages >= MAX_TOTAL && !images[slot]) return;
     const file = e.dataTransfer.files[0];
@@ -286,6 +284,9 @@ function ItemCard({
     </div>
   );
 }
+
+// Module-level ref for drag — avoids custom MIME type restrictions in browsers
+let _draggedGarment: GarmentDropData | null = null;
 
 async function urlToDataUrl(url: string): Promise<string> {
   const res = await fetch(url);
@@ -959,13 +960,11 @@ export default function GeneratePage() {
                             key={g.id}
                             draggable
                             onDragStart={(e) => {
-                              e.dataTransfer.setData('application/x-garment', JSON.stringify({
-                                imageUrl: g.image_url,
-                                detailUrls: g.detail_urls ?? [],
-                                category: g.category,
-                              }));
+                              _draggedGarment = { imageUrl: g.image_url, detailUrls: g.detail_urls ?? [], category: g.category };
+                              e.dataTransfer.setData('text/plain', 'garment');
                               e.dataTransfer.effectAllowed = 'copy';
                             }}
+                            onDragEnd={() => { _draggedGarment = null; }}
                             onClick={() => insertGarment(g)}
                             className="flex-shrink-0 relative cursor-grab active:cursor-grabbing"
                             style={{ width: 72, height: 96, background: 'var(--vault-border)' }}
