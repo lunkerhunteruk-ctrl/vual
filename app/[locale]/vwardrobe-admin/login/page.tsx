@@ -3,13 +3,14 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, signOut as firebaseSignOut, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useAuthStore } from '@/lib/store/auth';
 import { Loader2, AlertCircle } from 'lucide-react';
 
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
 const googleProvider = new GoogleAuthProvider();
+const ADMIN_EMAIL = 'sachiokawasaki@gmail.com';
 
 export default function VWardrobeAdminLoginPage() {
   const locale = useLocale();
@@ -22,7 +23,11 @@ export default function VWardrobeAdminLoginPage() {
 
   useEffect(() => {
     if (!isLoading && user) {
-      router.replace(`/${locale}/vwardrobe-admin`);
+      if (user.email === ADMIN_EMAIL) {
+        router.replace(`/${locale}/vwardrobe-admin`);
+      } else {
+        firebaseSignOut(auth);
+      }
     }
   }, [user, isLoading, locale, router]);
 
@@ -31,7 +36,12 @@ export default function VWardrobeAdminLoginPage() {
     setSubmitting(true);
     setError('');
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      if (result.user.email !== ADMIN_EMAIL) {
+        await firebaseSignOut(auth);
+        setError('アクセス権限がありません');
+        return;
+      }
       router.replace(`/${locale}/vwardrobe-admin`);
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;
@@ -49,7 +59,12 @@ export default function VWardrobeAdminLoginPage() {
     setSubmitting(true);
     setError('');
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      if (result.user.email !== ADMIN_EMAIL) {
+        await firebaseSignOut(auth);
+        setError('アクセス権限がありません');
+        return;
+      }
       router.replace(`/${locale}/vwardrobe-admin`);
     } catch (err: unknown) {
       const code = (err as { code?: string }).code;

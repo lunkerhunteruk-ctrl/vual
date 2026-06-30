@@ -8,6 +8,7 @@ import { LayoutDashboard } from 'lucide-react';
 import Link from 'next/link';
 
 const MONO = "'JetBrains Mono', 'SF Mono', 'Courier New', monospace";
+const ADMIN_EMAIL = 'sachiokawasaki@gmail.com';
 
 export default function VWardrobeAdminLayout({ children }: { children: React.ReactNode }) {
   const { user, isLoading, signOut } = useAuthStore();
@@ -18,10 +19,17 @@ export default function VWardrobeAdminLayout({ children }: { children: React.Rea
   const isLoginPage = pathname.includes('/vwardrobe-admin/login');
 
   useEffect(() => {
-    if (!isLoading && !user && !isLoginPage) {
+    if (isLoading) return;
+    if (!user && !isLoginPage) {
+      router.replace(`/${locale}/vwardrobe-admin/login`);
+      return;
+    }
+    // Kick out anyone who isn't the platform admin
+    if (user && user.email !== ADMIN_EMAIL && !isLoginPage) {
+      signOut();
       router.replace(`/${locale}/vwardrobe-admin/login`);
     }
-  }, [user, isLoading, isLoginPage, locale, router]);
+  }, [user, isLoading, isLoginPage, locale, router, signOut]);
 
   if (isLoginPage) return <>{children}</>;
 
