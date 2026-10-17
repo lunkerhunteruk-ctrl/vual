@@ -610,9 +610,9 @@ function StillsWork({ work }: { work: typeof STILLS_WORKS[0] }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [open, work.images.length]);
 
-  const Frame = ({ k, className }: { k: string; className: string }) => (
+  const Frame = ({ k, className, size = 'thumb' }: { k: string; className: string; size?: 'thumb' | 'web' }) => (
     <button onClick={() => setOpen(indexOf(k))} className={`group relative overflow-hidden rounded-sm cursor-zoom-in ${className}`}>
-      <img src={stillUrl(work.id, k, 'thumb')} alt={`${work.client} — ${work.project}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover gallery-zoom" style={{ height: '100%' }} />
+      <img src={stillUrl(work.id, k, size)} alt={`${work.client} — ${work.project}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover gallery-zoom" style={{ height: '100%' }} />
     </button>
   );
 
@@ -626,7 +626,7 @@ function StillsWork({ work }: { work: typeof STILLS_WORKS[0] }) {
       </h4>
       {work.credit && <p className="-mt-4 mb-6 text-[10px] tracking-[0.2em] text-white/30">{work.credit}</p>}
       {lead.map((im) => (
-        <Frame key={im.key} k={im.key} className="block w-full aspect-[3/2] mb-3 md:mb-4" />
+        <Frame key={im.key} k={im.key} size="web" className="block w-full aspect-[3/2] mb-3 md:mb-4" />
       ))}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         {rest.map((im) => (
