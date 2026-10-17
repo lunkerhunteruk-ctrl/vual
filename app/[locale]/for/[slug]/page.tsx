@@ -33,6 +33,10 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
     ? `ご提案のために ${p.brand} の商品で作った見本です。${p.postedOnRin ? '' : '公開はしていません。'}映像・画像はAIで制作しています。`
     : `制作例：${p.brand} の商品で組んだ見本です。ブランドとは関係のない、当方の制作見本です。映像・画像はAIで制作しています。`;
   const contact = p.contactEmail ? `mailto:${p.contactEmail}` : `/${locale}/contact`;
+  // 相手の服で作った見本（private）は、そのまま買える（1本4万円・解説版とモード版の2本セット5.5万円）
+  const buyout = p.private
+    ? `mailto:${p.contactEmail ?? 'studio@vual.jp'}?subject=${encodeURIComponent(`見本の購入について（${p.brand}）`)}`
+    : null;
   const bw = new Set(p.feedBW ?? []);
 
   return (
@@ -84,12 +88,28 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
                 </div>
               ))}
             </div>
+            {buyout && (
+              <p className="mt-8 text-[14px] leading-relaxed text-white/85" style={{ fontFamily: MINCHO }}>
+                この見本は、このまま 4万円 でお使いいただけます。
+                <br />
+                解説版とモード版の2本セットは 5.5万円 です。
+              </p>
+            )}
             <div className="mt-auto flex flex-wrap gap-3 pt-10">
+              {buyout && (
+                <a
+                  href={buyout}
+                  className="pp-solid border border-white/80 bg-white px-6 py-3 text-[12px] tracking-[0.25em] text-[#0d0a12] transition hover:bg-white/85"
+                  style={{ fontFamily: MINCHO }}
+                >
+                  この見本を使う
+                </a>
+              )}
               <a
                 href={p.pdf}
                 target="_blank"
                 rel="noopener"
-                className="pp-solid border border-white/80 bg-white px-6 py-3 text-[12px] tracking-[0.25em] text-[#0d0a12] transition hover:bg-white/85"
+                className={buyout ? 'pp-ghost border border-white/40 px-6 py-3 text-[12px] tracking-[0.25em] text-white/85 transition hover:border-white' : 'pp-solid border border-white/80 bg-white px-6 py-3 text-[12px] tracking-[0.25em] text-[#0d0a12] transition hover:bg-white/85'}
                 style={{ fontFamily: SERIF_EN }}
               >
                 PROPOSAL (PDF)
