@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: ['/', '/ja/', '/en/'],
-        disallow: ['/admin/', '/api/', '/(customer)/'],
+        disallow: ['/admin/', '/api/', '/(customer)/', '/proposals/', '/ja/for/', '/en/for/'],
       },
     ],
     sitemap: 'https://vual.jp/sitemap.xml',

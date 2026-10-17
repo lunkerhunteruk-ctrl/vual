@@ -1,5 +1,5 @@
 // 営業用の見本ページ（vual.jp/ja/for/<slug>）の中身。ブランドごとに1件ずつ足す。
-// 写真とPDFは R2（vual-media の proposals/<slug>/）、動画は Cloudflare Stream に置く。
+// 写真とPDFは public/proposals/<slug>/、動画は Cloudflare Stream に置く。
 // ページは検索に出さず、サイトのメニューにも載せない（リンクを知っている人だけが見る）。
 
 export type BrandProposal = {
@@ -20,7 +20,7 @@ export type BrandProposal = {
 };
 
 const CONTACT = 'studio@vual.jp';
-const R2 = 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/proposals';
+const R2 = '/proposals';
 const img = (slug: string, name: string) => `${R2}/${slug}/img/${name}.jpg`;
 
 function make(p: Omit<BrandProposal, 'looks' | 'feed' | 'pdf'> & { pdfName: string }): BrandProposal {
