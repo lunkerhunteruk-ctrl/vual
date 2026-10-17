@@ -158,6 +158,9 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
           <p className="mt-2 text-[12px] text-white/50" style={{ fontFamily: SERIF_EN }}>
             Visual Director | CSM MA Fashion / Ex-Balenciaga | UK / Japan
           </p>
+          <p className="mt-1 text-[12px] text-white/50" style={{ fontFamily: MINCHO }}>
+            {p.contactEmail ?? 'studio@vual.jp'}　／　運営：株式会社LUFIS
+          </p>
           <p className="mt-6 text-[11px] leading-relaxed text-white/40" style={{ fontFamily: MINCHO }}>
             {note}
           </p>
