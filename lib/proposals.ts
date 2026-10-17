@@ -19,12 +19,14 @@ export type BrandProposal = {
   contactEmail?: string;
 };
 
+const CONTACT = 'studio@vual.jp';
 const R2 = 'https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/proposals';
 const img = (slug: string, name: string) => `${R2}/${slug}/img/${name}.jpg`;
 
 function make(p: Omit<BrandProposal, 'looks' | 'feed' | 'pdf'> & { pdfName: string }): BrandProposal {
   const { pdfName, ...rest } = p;
   return {
+    contactEmail: CONTACT,
     ...rest,
     looks: [1, 2, 3].map((n) => [img(p.slug, `W${n}`), img(p.slug, `M${n}`), img(p.slug, `D${n}`)]) as [string, string, string][],
     feed: [1, 2, 3, 4, 5].map((n) => img(p.slug, `E${n}`)),
