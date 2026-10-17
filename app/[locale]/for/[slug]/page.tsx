@@ -146,7 +146,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
             ))}
           </div>
           <p className="mt-4 text-[13px] leading-relaxed text-white/60" style={{ fontFamily: MINCHO }}>
-            縦3:4・5枚組。リールとセットのご注文で ＋3万円（税別）。
+            縦3:4・5枚組。リールとセットのご注文で ＋3万円（消費税の上乗せなし）。
           </p>
         </section>
 
