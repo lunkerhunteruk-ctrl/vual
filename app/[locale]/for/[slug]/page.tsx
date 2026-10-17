@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProposal } from '@/lib/proposals';
+import { getProposal, proposalExpiry, isProposalExpired, proposalTokenExp } from '@/lib/proposals';
+import { createSignedStreamToken } from '@/lib/cloudflare-stream';
 import { ProposalPlayer } from '@/components/proposal/ProposalPlayer';
 
 // 営業用の見本ページ。ブランドごとに lib/proposals.ts へ1件足すと出る。
 // 検索に出さない（noindex）。サイトのメニューやサイトマップにも載せない。
+
+// 期限の判定と署名付き動画のため、毎回その場で作る
+export const dynamic = 'force-dynamic';
 
 const SERIF_EN = 'var(--font-playfair), "Playfair Display", Georgia, serif';
 const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
@@ -28,6 +32,33 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
   const { locale, slug } = await params;
   const p = getProposal(slug);
   if (!p) notFound();
+
+  // 案内の期限（営業メールを送った日から validDays 日）。過ぎたら中身を出さない
+  const expiry = proposalExpiry(p);
+  if (isProposalExpired(p)) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0d0a12] px-6 text-white">
+        <div className="text-center">
+          <p className="text-[11px] uppercase tracking-[0.38em] text-[#b9a8c9]" style={{ fontFamily: SERIF_EN }}>
+            VUAL Studio
+          </p>
+          <p className="mt-6 text-[15px] leading-loose text-white/75" style={{ fontFamily: MINCHO }}>
+            このご案内は終了しました。
+            <br />
+            ご相談は studio@vual.jp までお寄せください。
+          </p>
+        </div>
+      </div>
+    );
+  }
+  const expiryLabel = expiry
+    ? new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', month: 'long', day: 'numeric' }).format(expiry)
+    : null;
+  // 相手の服で作った見本の動画は、期限付きの署名URLで出す（期限が過ぎると動画も再生できない）
+  let videoSrc: string | null = p.streamId;
+  if (p.signedVideo ?? p.private) {
+    videoSrc = await createSignedStreamToken(p.streamId, proposalTokenExp(p)).catch(() => p.streamId);
+  }
 
   const note = p.private
     ? `ご提案のために ${p.brand} の商品で作った見本です。${p.postedOnRin ? '' : '公開はしていません。'}映像・画像はAIで制作しています。`
@@ -66,7 +97,13 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
 
         {/* 動画と説明 */}
         <section className="mt-12 grid gap-10 border-t border-[#b9a8c9]/30 pt-10 md:grid-cols-[minmax(0,360px)_1fr] md:gap-14">
-          <ProposalPlayer streamId={p.streamId} title={`${p.brand} — sample reel`} />
+          {videoSrc ? (
+            <ProposalPlayer streamId={videoSrc} title={`${p.brand} — sample reel`} />
+          ) : (
+            <div className="flex w-full items-center justify-center bg-black/40 text-[13px] text-white/60" style={{ aspectRatio: '9 / 16', fontFamily: MINCHO }}>
+              動画を読み込めませんでした
+            </div>
+          )}
           <div className="flex flex-col">
             <h2 className="text-[19px] leading-relaxed sm:text-3xl" style={{ fontFamily: MINCHO }}>
               1本のリールに、
@@ -88,11 +125,16 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
                 </div>
               ))}
             </div>
+            {expiryLabel && (
+              <p className="mt-8 text-[12px] tracking-[0.05em] text-[#b9a8c9]" style={{ fontFamily: MINCHO }}>
+                このご案内は {expiryLabel} まで有効です。
+              </p>
+            )}
             {buyout && (
-              <p className="mt-8 text-[14px] leading-relaxed text-white/85" style={{ fontFamily: MINCHO }}>
-                この見本は、このまま 4万円 でお使いいただけます。
+              <p className="mt-4 text-[14px] leading-relaxed text-white/85" style={{ fontFamily: MINCHO }}>
+                この見本は、このままお使いいただけます。
                 <br />
-                解説版とモード版の2本セットは 5.5万円 です。
+                解説版とモード版の2本セットもご用意できます。
               </p>
             )}
             <div className="mt-auto flex flex-wrap gap-3 pt-10">

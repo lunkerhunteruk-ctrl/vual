@@ -127,3 +127,16 @@ export const PLAYER_CONFIG = {
   autoplay: 'muted' as const,
   defaultShowControls: true,
 };
+
+// 期限付きの再生トークン（動画を requireSignedURLs にしてある時に使う）。exp は UNIX 秒。
+export async function createSignedStreamToken(videoUid: string, exp: number) {
+  const res = await fetch(`${CF_API_BASE}/${CF_ACCOUNT_ID}/stream/${videoUid}/token`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ exp }),
+    cache: 'no-store',
+  });
+  if (!res.ok) throw new Error(`Cloudflare Stream token error: ${await res.text()}`);
+  const data = await res.json();
+  return data.result.token as string;
+}

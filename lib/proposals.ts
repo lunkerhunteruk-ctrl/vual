@@ -19,6 +19,12 @@ export type BrandProposal = {
   feedBW?: number[];
   pdf: string;
   contactEmail?: string;
+  /** 営業メールを送った日（日本時間 YYYY-MM-DD）。入れると、その日から validDays 日でページが終わる */
+  sentAt?: string;
+  /** 案内の有効日数。既定14日（大手の傘下は21日） */
+  validDays?: number;
+  /** true = Stream の動画を期限付きの署名URLで出す（動画側も requireSignedURLs にしておく）。既定は private と同じ */
+  signedVideo?: boolean;
 };
 
 const CONTACT = 'studio@vual.jp';
@@ -51,4 +57,24 @@ export const PROPOSALS: BrandProposal[] = [
 
 export function getProposal(slug: string) {
   return PROPOSALS.find((p) => p.slug === slug) ?? null;
+}
+
+/** 案内の最終日（日本時間のその日の終わり）。sentAt が無ければ null（期限なし） */
+export function proposalExpiry(p: BrandProposal): Date | null {
+  if (!p.sentAt) return null;
+  const end = new Date(`${p.sentAt}T23:59:59+09:00`);
+  end.setUTCDate(end.getUTCDate() + (p.validDays ?? 14));
+  return end;
+}
+
+export function isProposalExpired(p: BrandProposal, now = Date.now()) {
+  const end = proposalExpiry(p);
+  return !!end && now > end.getTime();
+}
+
+/** 署名付き動画の有効期限（UNIX秒）。Stream は最長24時間なので、ページを開くたびに作り直す。案内の最終日を越えない */
+export function proposalTokenExp(p: BrandProposal, now = Date.now()) {
+  const dayLater = now + 23 * 3600000;
+  const end = proposalExpiry(p)?.getTime();
+  return Math.floor(Math.min(dayLater, end ?? dayLater) / 1000);
 }
