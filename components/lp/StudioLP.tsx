@@ -109,14 +109,16 @@ const STILLS_WORKS: {
   project: string;
   medium: string;
   year: string;
+  credit?: string;
   images: { key: string; landscape?: boolean }[];
 }[] = [
   {
     id: 'y3-commons-03',
-    client: 'Y-3 × adidas',
-    project: 'Footwear Editorial',
+    client: 'Major Tom! Do You Read Me?',
+    project: 'All sneakers by Y-3',
     medium: 'commons and sense free magazine Issue #03',
     year: '2026',
+    credit: 'gac_VUAL  ·  fashion_RenRen',
     images: [
       { key: 'y3-01', landscape: true },
       { key: 'y3-02' },
@@ -622,6 +624,7 @@ function StillsWork({ work }: { work: typeof STILLS_WORKS[0] }) {
       <h4 className="text-base font-light text-white/70 mb-6" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
         {work.client} <span className="text-white/40 italic">{work.project}</span>
       </h4>
+      {work.credit && <p className="-mt-4 mb-6 text-[10px] tracking-[0.2em] text-white/30">{work.credit}</p>}
       {lead.map((im) => (
         <Frame key={im.key} k={im.key} className="block w-full aspect-[3/2] mb-3 md:mb-4" />
       ))}
