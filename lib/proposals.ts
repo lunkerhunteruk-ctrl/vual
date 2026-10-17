@@ -9,6 +9,8 @@ export type BrandProposal = {
   place: string;
   /** true = 相手の商品で作った非公開の見本。false = 一般の制作見本 */
   private: boolean;
+  /** true = 凛のアカウントでも同じ服を出している。注意書きから「公開はしていません」を外す */
+  postedOnRin?: boolean;
   streamId: string;
   /** LOOK1〜3 の順。各 [全身, 中景, 寄り] */
   looks: [string, string, string][];
