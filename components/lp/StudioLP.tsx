@@ -100,29 +100,35 @@ const CONTENT = {
 // Works data
 // ============================================================
 
-// Client commissions — add entries here when work is released publicly.
-// When this array is empty, the "Commissions" subsection is hidden automatically.
-const COMMISSIONS: {
+// Stills — editorial / campaign photography. Images live in public/works/<id>/{thumb,web}/ (long side 900px / 2000px JPEG).
+// Add a project here to show it in the "Stills" subsection; the subsection hides when empty.
+const STILLS_BASE = '/works';
+const STILLS_WORKS: {
   id: string;
   client: string;
   project: string;
-  medium: string;         // e.g. "commons and sense No.XX"
+  medium: string;
   year: string;
-  credit: string;         // e.g. "GAC_VUAL"
-  thumbnail: string;      // image URL
-  link?: string;          // optional external link
+  images: { key: string; landscape?: boolean }[];
 }[] = [
-  // Example (uncomment and fill when ready):
-  // {
-  //   id: 'y3-adidas-2026',
-  //   client: 'adidas × Y-3',
-  //   project: 'Campaign Imagery',
-  //   medium: 'commons and sense No.XX',
-  //   year: '2026',
-  //   credit: 'GAC_VUAL',
-  //   thumbnail: '',
-  // },
+  {
+    id: 'y3-commons-03',
+    client: 'Y-3 × adidas',
+    project: 'Footwear Editorial',
+    medium: 'commons and sense free magazine Issue #03',
+    year: '2026',
+    images: [
+      { key: 'y3-01', landscape: true },
+      { key: 'y3-02' },
+      { key: 'y3-03' },
+      { key: 'y3-04' },
+      { key: 'y3-05' },
+      { key: 'y3-06' },
+      { key: 'y3-07' },
+    ],
+  },
 ];
+const stillUrl = (id: string, key: string, size: 'thumb' | 'web') => `${STILLS_BASE}/${id}/${size}/${key}.jpg`;
 
 // Latest work — displayed full-width at the top of Selected Works
 const LATEST_WORK = {
@@ -519,39 +525,15 @@ function WorksSection({ locale }: { locale: string }) {
           ))}
         </div>
 
-        {/* Commissions — only rendered when COMMISSIONS array is non-empty */}
-        {COMMISSIONS.length > 0 && (
+        {/* Stills — editorial / campaign photography */}
+        {STILLS_WORKS.length > 0 && (
           <div className="mt-24 md:mt-40">
             <p className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-8">
-              Commissions
+              Stills
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {COMMISSIONS.map((work) => (
-                <div key={work.id} className="group relative overflow-hidden rounded-sm bg-white/5">
-                  {work.thumbnail && (
-                    <img
-                      src={work.thumbnail}
-                      alt={`${work.client} — ${work.project}`}
-                      className="w-full aspect-[3/2] object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-                  )}
-                  <div className="p-5">
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">{work.medium} — {work.year}</p>
-                    <p className="text-base font-light text-white/90">{work.client}</p>
-                    <p className="text-sm text-white/50 mb-3">{work.project}</p>
-                    <p className="text-[10px] tracking-[0.15em] text-white/25">{work.credit}</p>
-                    {work.link && (
-                      <a
-                        href={work.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-block text-[10px] tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors"
-                      >
-                        View →
-                      </a>
-                    )}
-                  </div>
-                </div>
+            <div className="flex flex-col gap-20 md:gap-28">
+              {STILLS_WORKS.map((work) => (
+                <StillsWork key={work.id} work={work} />
               ))}
             </div>
           </div>
@@ -603,6 +585,96 @@ function WorksSection({ locale }: { locale: string }) {
         </div>
       )}
     </section>
+  );
+}
+
+// Stills project — a wide lead image, then the portrait frames in a grid. Click opens a lightbox.
+function StillsWork({ work }: { work: typeof STILLS_WORKS[0] }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
+  const [open, setOpen] = useState<number | null>(null);
+  const lead = work.images.filter((im) => im.landscape);
+  const rest = work.images.filter((im) => !im.landscape);
+  const indexOf = (key: string) => work.images.findIndex((im) => im.key === key);
+
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null);
+      if (e.key === 'ArrowRight') setOpen((i) => (i === null ? i : (i + 1) % work.images.length));
+      if (e.key === 'ArrowLeft') setOpen((i) => (i === null ? i : (i - 1 + work.images.length) % work.images.length));
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, work.images.length]);
+
+  const Frame = ({ k, className }: { k: string; className: string }) => (
+    <button onClick={() => setOpen(indexOf(k))} className={`group relative overflow-hidden rounded-sm cursor-zoom-in ${className}`}>
+      <img src={stillUrl(work.id, k, 'thumb')} alt={`${work.client} — ${work.project}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover gallery-zoom" style={{ height: '100%' }} />
+    </button>
+  );
+
+  return (
+    <motion.div ref={ref} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={fadeIn}>
+      <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-1">
+        {work.medium} — {work.year}
+      </p>
+      <h4 className="text-base font-light text-white/70 mb-6" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+        {work.client} <span className="text-white/40 italic">{work.project}</span>
+      </h4>
+      {lead.map((im) => (
+        <Frame key={im.key} k={im.key} className="block w-full aspect-[3/2] mb-3 md:mb-4" />
+      ))}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {rest.map((im) => (
+          <Frame key={im.key} k={im.key} className="block w-full aspect-[3/4]" />
+        ))}
+      </div>
+
+      {open !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ backgroundColor: 'rgba(13, 10, 18, 0.85)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
+          onClick={() => setOpen(null)}
+        >
+          <button
+            onClick={() => setOpen(null)}
+            className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10 transition-colors"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <img
+            src={stillUrl(work.id, work.images[open].key, 'web')}
+            alt={`${work.client} — ${work.project}`}
+            className="max-h-[88vh] max-w-[92vw] object-contain rounded-sm"
+            style={{ height: 'auto', width: 'auto' }}
+            onClick={(e) => e.stopPropagation()}
+          />
+          {work.images.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); setOpen((open - 1 + work.images.length) % work.images.length); }}
+                className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10"
+                aria-label="Previous"
+              >
+                ‹
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); setOpen((open + 1) % work.images.length); }}
+                className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:bg-white/10"
+                aria-label="Next"
+              >
+                ›
+              </button>
+              <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.3em] text-white/40">
+                {String(open + 1).padStart(2, '0')} / {String(work.images.length).padStart(2, '0')}
+              </p>
+            </>
+          )}
+        </div>
+      )}
+    </motion.div>
   );
 }
 
