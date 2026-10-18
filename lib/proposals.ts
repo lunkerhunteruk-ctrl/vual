@@ -49,7 +49,7 @@ export const PROPOSALS: BrandProposal[] = [
     season: 'AUTUMN / WINTER 2026',
     place: 'KYOTO',
     private: false,
-    streamId: 'cccdd712ff5f7f11aa800dfc3a86cd5a',
+    streamId: 'd97a9f2267a8e657b5e41d94ed034e0b', // モード版（声なし）
     feedBW: [3],
     pdfName: 'VUAL-proposal-DRIES-VAN-NOTEN.pdf',
   }),

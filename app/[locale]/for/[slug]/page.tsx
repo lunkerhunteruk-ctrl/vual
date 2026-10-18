@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const CUTS = [
   { en: 'WIDE', ja: '全身でコーデ全体の形を見せる。場所ごとに背景が変わる。' },
-  { en: 'MID', ja: '重ね方と色の合わせ方。ここでスタイリングのポイントを一言、声と字幕で。' },
-  { en: 'DETAIL', ja: 'ポイントが見える寄り。刺繍・柄・足元・首元など。' },
+  { en: 'MID', ja: '重ね方と色の合わせ方を、動きのある中景で。' },
+  { en: 'DETAIL', ja: '顔の寄りと、生地・釦・足元の一瞬のカット。' },
 ];
 
 export default async function ProposalPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
@@ -64,7 +64,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
     ? `ご提案のために ${p.brand} の商品で作った見本です。${p.postedOnRin ? '' : '公開はしていません。'}映像・画像はAIで制作しています。`
     : `制作例：${p.brand} の商品で組んだ見本です。ブランドとは関係のない、当方の制作見本です。映像・画像はAIで制作しています。`;
   const contact = p.contactEmail ? `mailto:${p.contactEmail}` : `/${locale}/contact`;
-  // 相手の服で作った見本（private）は、そのまま買える（1本4万円・解説版とモード版の2本セット5.5万円）
+  // 相手の服で作った見本（private）は、そのまま買える（1本4万円。値段はページに出さず、提案書とメールだけに書く）
   const buyout = p.private
     ? `mailto:${p.contactEmail ?? 'studio@vual.jp'}?subject=${encodeURIComponent(`見本の購入について（${p.brand}）`)}`
     : null;
@@ -111,7 +111,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
               3コーデ・9カット・3ロケーション。
             </h2>
             <p className="mt-6 text-[15px] leading-loose text-white/75" style={{ fontFamily: MINCHO }}>
-              貴社の服でスタイリングを組み、実在の街を舞台に、スタイリングのポイントを一言で添えて、そのまま投稿できる20秒のリールにして納めます。撮影・モデル手配・ロケは要りません。季節の撮影の代わりではなく、撮影と撮影の合間のSNSを埋めるためのリールです。
+              貴社の服でスタイリングを組み、実在の街を舞台に、生地や細部の一瞬まで見せる20秒のリールにして納めます。言葉は入れず、映像と音楽で見せます。撮影・モデル手配・ロケは要りません。季節の撮影の代わりではなく、撮影と撮影の合間のSNSを埋めるためのリールです。
             </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               {CUTS.map((c) => (
@@ -134,7 +134,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
               <p className="mt-4 text-[14px] leading-relaxed text-white/85" style={{ fontFamily: MINCHO }}>
                 この見本は、このままお使いいただけます。
                 <br />
-                解説版とモード版の2本セットもご用意できます。
+                曲の差し替えにも1回まで対応します。
               </p>
             )}
             <div className="mt-auto flex flex-wrap gap-3 pt-10">
