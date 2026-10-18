@@ -111,7 +111,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
               3コーデ・9カット・3ロケーション。
             </h2>
             <p className="mt-6 text-[15px] leading-loose text-white/75" style={{ fontFamily: MINCHO }}>
-              貴社の服でスタイリングを組み、実在の街を舞台に、スタイリングのポイントを一言で添えて、そのまま投稿できる20秒のリールにして納めます。撮影・モデル手配・ロケは要りません。
+              貴社の服でスタイリングを組み、実在の街を舞台に、スタイリングのポイントを一言で添えて、そのまま投稿できる20秒のリールにして納めます。撮影・モデル手配・ロケは要りません。季節の撮影の代わりではなく、撮影と撮影の合間のSNSを埋めるためのリールです。
             </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               {CUTS.map((c) => (
