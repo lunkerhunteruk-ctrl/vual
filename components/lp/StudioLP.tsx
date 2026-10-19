@@ -1358,7 +1358,7 @@ function ContactSection({ locale }: { locale: string }) {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-32 md:py-48">
+    <section id="contact" className="relative py-32 md:py-48 scroll-mt-8">
       <div className="px-6 md:px-16 max-w-3xl mx-auto text-center">
         <motion.div
           ref={ref}
@@ -1419,13 +1419,24 @@ function LanguageToggle() {
   const locale = useLocale();
   const otherLocale = locale === 'ja' ? 'en' : 'ja';
 
+  // Top-right: a quiet CONTACT link (jumps to the contact section) next to the language toggle.
+  const toContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    window.history.replaceState(null, '', '#contact');
+  };
+  // The page styles force link colours, so the colour is set inline (the contact links below do the same).
+  const cls = 'text-[11px] tracking-[0.2em] uppercase';
+  const style = { color: 'rgba(255,255,255,0.7)', transition: 'color 500ms' };
+  const on = (e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'rgba(255,255,255,1)');
+  const off = (e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)');
   return (
-    <Link
-      href={`/${otherLocale}`}
-      className="fixed top-6 right-6 z-50 text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors duration-500 mix-blend-difference"
-    >
-      {otherLocale === 'ja' ? 'JA' : 'EN'}
-    </Link>
+    <div className="fixed top-6 right-6 z-50 flex items-center gap-6 mix-blend-difference">
+      <a href="#contact" onClick={toContact} className={cls} style={style} onMouseEnter={on} onMouseLeave={off}>Contact</a>
+      <Link href={`/${otherLocale}`} className={cls} style={style} onMouseEnter={on} onMouseLeave={off}>
+        {otherLocale === 'ja' ? 'JA' : 'EN'}
+      </Link>
+    </div>
   );
 }
 
@@ -1439,6 +1450,11 @@ export function StudioLP() {
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
+    }
+    // A link to vual.jp/#contact (e.g. from Instagram) opens at the contact section instead.
+    if (window.location.hash === '#contact') {
+      setTimeout(() => document.getElementById('contact')?.scrollIntoView(), 300);
+      return;
     }
     window.scrollTo(0, 0);
   }, []);
