@@ -88,7 +88,7 @@ export const ISSUES: LatitudeIssue[] = [
       'A little to the north, the Royal Playhouse lays a long oak deck over the water. Across the harbour, the Opera House holds its roof far out over the forecourt, and at dusk its underside catches the last low light.',
     ],
     pages: pages(10, [6]),
-    streamId: '6d674f1fb3701dbd639a31a5527e380c',
+    streamId: 'f6eb75a65e74cc751cba8874a37dab62', // v27b（ラスト手前にオペラの空撮）
     credits: ['Map data © OpenStreetMap contributors'],
   },
   {
