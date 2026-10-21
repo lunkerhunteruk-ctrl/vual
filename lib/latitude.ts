@@ -118,7 +118,7 @@ export const ISSUES: LatitudeIssue[] = [
       'A short walk north, the Barbican Estate was built between 1965 and 1976 on ground bombed in the war: towers, raised walkways and podiums paved in dark brick.',
       'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
     ],
-    pages: pages(10, [6]),
+    pages: pages(18, [8]), // 2026-10-21 旅の1日を追う18枚に（8は動くページ）
     streamId: '460e485d748479bb46ff6349fee8705d',
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
