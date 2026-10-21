@@ -44,35 +44,29 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
   );
 }
 
-// リール：最初は音なしで自動再生、操作バーで音を出せる
+// リール：最初は音なしで自動再生、操作バーで音を出せる。
+// Stream の埋め込み（iframe）は、トップから押して来ると再生と同時にフォーカスを取り、ページを勝手に下へ動かすので、
+// Stream が出す MP4 を普通の video で流す（Stream 側で downloads を有効にしてある）
 export function Reel({ issue }: { issue: LatitudeIssue }) {
   const title = `LATITUDE ${issueNo(issue)} — ${issue.latitude} ${issue.city}`;
+  const src = issue.streamId ? `${STREAM_HOST}/${issue.streamId}/downloads/default.mp4` : assetUrl(issue, 'reel.mp4');
+  const poster = issue.streamId
+    ? `${STREAM_HOST}/${issue.streamId}/thumbnails/thumbnail.jpg?time=1s&height=1280`
+    : assetUrl(issue, 'cover.jpg');
   return (
     <div className="relative mx-auto w-full max-w-[420px] overflow-hidden bg-black" style={{ aspectRatio: '9 / 16' }}>
-      {issue.streamId ? (
-        <iframe
-          src={`${STREAM_HOST}/${issue.streamId}/iframe?autoplay=true&muted=true&loop=true&preload=auto&poster=${encodeURIComponent(
-            `${STREAM_HOST}/${issue.streamId}/thumbnails/thumbnail.jpg?time=1s&height=1280`,
-          )}`}
-          title={title}
-          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full border-0"
-        />
-      ) : (
-        <video
-          src={assetUrl(issue, 'reel.mp4')}
-          poster={assetUrl(issue, 'cover.jpg')}
-          title={title}
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      )}
+      <video
+        src={src}
+        poster={poster}
+        title={title}
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls
+        preload="metadata"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
     </div>
   );
 }
@@ -102,7 +96,7 @@ export function Pages({ issue }: { issue: LatitudeIssue }) {
     <>
       {/* スマホ：横にめくる */}
       <div className="md:hidden">
-        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory overflow-x-auto px-4 pb-2">
           {issue.pages.map((p, i) => (
             <figure key={p.file} className="relative w-[84vw] shrink-0 snap-center" style={{ aspectRatio: '3 / 4' }}>
               {page(p, i + 1)}
