@@ -134,6 +134,7 @@ const STILLS_WORKS: {
 const stillUrl = (id: string, key: string, size: 'thumb' | 'web') => `${STILLS_BASE}/${id}/${size}/${key}.jpg`;
 
 // Latest work — displayed full-width at the top of Selected Works
+const SHOW_LATEST_WORK = true;
 const LATEST_WORK = {
   id: 'galleria-borghese',
   title: 'Galleria Borghese',
@@ -372,6 +373,74 @@ function Divider() {
 // ============================================================
 // HERO
 // ============================================================
+// ============================================================
+// LATITUDE — top of the page (replaces the full-screen hero video while SHOW_HERO_VIDEO is false)
+// ============================================================
+const SHOW_HERO_VIDEO = false;
+
+function LatitudeHero({ locale }: { locale: string }) {
+  return (
+    <section className="relative flex min-h-screen w-full flex-col justify-between px-8 pb-16 pt-10 md:px-12 md:pb-20">
+      <style>{'.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}'}</style>
+      <motion.h1
+        initial={{ opacity: 0, letterSpacing: '0.6em' }}
+        animate={{ opacity: 1, letterSpacing: '0.35em' }}
+        transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
+        className="text-2xl md:text-3xl font-light text-white"
+        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      >
+        VUAL
+      </motion.h1>
+
+      <div className="mt-16 md:mt-10">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 0.8 }}>
+          <p className="text-[10px] tracking-[0.35em] uppercase text-white/40">The travelling issue</p>
+          <p
+            className="mt-4 text-5xl md:text-7xl font-light uppercase text-white"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', letterSpacing: '0.12em' }}
+          >
+            Latitude
+          </p>
+          <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+            One city, one latitude, three places from morning to dusk.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 1.2 }}
+          className="latitude-noscroll -mx-8 mt-12 flex snap-x gap-4 overflow-x-auto px-8 pb-2 md:mx-0 md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:px-0"
+        >
+          {LATITUDE_ISSUES.map((i) => (
+            <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[58vw] shrink-0 snap-start md:w-auto">
+              <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={latitudeAsset(i, 'cover.jpg')}
+                  alt={`LATITUDE ${latitudeNo(i)} — ${i.latitude} ${i.city}`}
+                  className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
+                />
+              </div>
+              <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-white/35">{latitudeNo(i)}</p>
+              <p className="mt-1 text-sm text-white/85" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+                {i.latitude}&nbsp;&nbsp;{i.city}
+              </p>
+            </Link>
+          ))}
+        </motion.div>
+
+        <Link
+          href={`/${locale}/latitude`}
+          className="mt-10 inline-block text-[10px] tracking-[0.3em] uppercase text-white/40 transition-colors hover:text-white/75"
+        >
+          All issues →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function HeroSection() {
   const ref = useRef(null);
   const [muted, setMuted] = useState(true);
@@ -501,6 +570,7 @@ function WorksSection({ locale }: { locale: string }) {
         <SectionLabel>{t.works.sectionLabel}</SectionLabel>
 
         {/* Latest work — full width */}
+        {SHOW_LATEST_WORK && (
         <motion.div
           ref={latestRef}
           initial="hidden"
@@ -514,6 +584,7 @@ function WorksSection({ locale }: { locale: string }) {
             onOpenVideo={(streamId) => setActiveVideo({ streamId, vertical: false })}
           />
         </motion.div>
+        )}
 
         {/* Reels / vertical works — placed before Past Works so the layout
             alternates wide hero → vertical reels → wide grid for rhythm. */}
@@ -526,35 +597,6 @@ function WorksSection({ locale }: { locale: string }) {
           {REELS_WORKS.map((work, i) => (
             <VerticalWorkCard key={work.id} work={work} index={i} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
-        </div>
-
-        {/* LATITUDE — the travelling issue. Covers in issue order; each opens its own page. */}
-        <div className="mt-24 md:mt-40">
-          <div className="mb-8 flex items-baseline justify-between">
-            <p className="text-[10px] tracking-[0.3em] uppercase text-white/25">Latitude — Series</p>
-            <Link href={`/${locale}/latitude`} className="text-[10px] tracking-[0.3em] uppercase text-white/40 hover:text-white/70 transition-colors">
-              All issues →
-            </Link>
-          </div>
-          <div className="-mx-2 flex snap-x gap-4 overflow-x-auto px-2 pb-2 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
-            {LATITUDE_ISSUES.map((i) => (
-              <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[44vw] shrink-0 snap-start md:w-auto">
-                <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={latitudeAsset(i, 'cover.jpg')}
-                    alt={`LATITUDE ${latitudeNo(i)} — ${i.latitude} ${i.city}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
-                  />
-                </div>
-                <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-white/35">{latitudeNo(i)}</p>
-                <p className="mt-1 text-sm text-white/80" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
-                  {i.latitude}&nbsp;&nbsp;{i.city}
-                </p>
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* Stills — editorial / campaign photography */}
@@ -1618,7 +1660,7 @@ export function StudioLP() {
       `}</style>
 
       <LanguageToggle />
-      <HeroSection />
+      {SHOW_HERO_VIDEO ? <HeroSection /> : <LatitudeHero locale={locale} />}
       <Divider />
       <ManifestoSection locale={locale} />
       <Divider />

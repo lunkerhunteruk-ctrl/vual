@@ -56,6 +56,7 @@ export const ISSUES: LatitudeIssue[] = [
       "In Reykjavík the same geometry comes indoors. The glass skin of Harpa, the concert hall on the harbour, was made with the artist Olafur Eliasson, its cells drawn from the island's basalt.",
     ],
     pages: pages(9, [7]),
+    streamId: 'a2bf5a9ef215e16d1906c6a2199241fa',
   },
   {
     slug: 'copenhagen',
@@ -83,6 +84,7 @@ export const ISSUES: LatitudeIssue[] = [
       'A little to the north, the Royal Playhouse lays a long oak deck over the water. Across the harbour, the Opera House holds its roof far out over the forecourt, and at dusk its underside catches the last low light.',
     ],
     pages: pages(10, [6]),
+    streamId: '6d674f1fb3701dbd639a31a5527e380c',
     credits: ['Map data © OpenStreetMap contributors'],
   },
 ];
