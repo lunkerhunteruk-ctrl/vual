@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ISSUES, assetUrl, getIssue, issueNo } from '@/lib/latitude';
+import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues } from '@/lib/latitude';
 import { INK, IssueStrip, LatitudeFigure, MUTE, PAPER, Pages, Palette, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
@@ -10,10 +10,15 @@ export function generateStaticParams() {
   return ISSUES.map((i) => ({ slug: i.slug }));
 }
 
+// 公開予約の号は、時刻まで ?preview=<LATITUDE_PREVIEW_KEY> を付けた時だけ見られる
+type SP = Promise<{ preview?: string }>;
+const canPreview = (key?: string) => !!key && !!process.env.LATITUDE_PREVIEW_KEY && key === process.env.LATITUDE_PREVIEW_KEY;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const i = getIssue(slug);
   if (!i) return { title: 'LATITUDE — VUAL' };
+  if (!isLive(i)) return { title: 'LATITUDE — VUAL', robots: { index: false, follow: false } };
   const title = `LATITUDE ${issueNo(i)} — ${i.latitude} ${i.city} | VUAL`;
   return {
     title,
@@ -29,13 +34,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function LatitudeIssuePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+export default async function LatitudeIssuePage({ params, searchParams }: { params: Promise<{ locale: string; slug: string }>; searchParams: SP }) {
   const { locale, slug } = await params;
+  const { preview } = await searchParams;
   const issue = getIssue(slug);
   if (!issue) notFound();
-  const idx = ISSUES.indexOf(issue);
-  const prev = ISSUES[idx - 1];
-  const next = ISSUES[idx + 1];
+  const previewing = !isLive(issue);
+  if (previewing && !canPreview(preview)) notFound();
+  const list = previewing ? ISSUES : liveIssues();
+  const idx = list.indexOf(issue);
+  const prev = list[idx - 1];
+  const next = list[idx + 1];
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>

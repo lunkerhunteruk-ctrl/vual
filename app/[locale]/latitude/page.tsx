@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ISSUES, assetUrl, issueNo } from '@/lib/latitude';
+import { assetUrl, issueNo, liveIssues } from '@/lib/latitude';
 import { INK, IssueStrip, MUTE, PAPER, SERIF } from '@/components/latitude/Latitude';
 
-// LATITUDE の一覧：全号の表紙を、緯度の数字と一緒に並べる
+// LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
+export const revalidate = 300;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -29,7 +30,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         </p>
       </header>
       <main className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-14 px-4 pb-28 md:grid-cols-4 md:gap-x-8 md:px-8">
-        {ISSUES.map((i) => (
+        {liveIssues().map((i) => (
           <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block" style={{ color: INK }}>
             <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}

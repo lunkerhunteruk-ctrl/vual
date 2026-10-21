@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ISSUES, assetUrl, issueNo, type LatitudeIssue } from '@/lib/latitude';
+import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
 
 // LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
 export const PAPER = '#f2eee7';
@@ -25,7 +25,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
           Latitude
         </Link>
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
-        {ISSUES.map((i) => {
+        {liveIssues().map((i) => {
           const on = i.slug === current;
           return (
             <Link

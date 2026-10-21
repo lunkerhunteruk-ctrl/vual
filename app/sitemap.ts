@@ -1,5 +1,8 @@
 import type { MetadataRoute } from 'next';
-import { ISSUES } from '@/lib/latitude';
+import { liveIssues } from '@/lib/latitude';
+
+// 公開予約の号が時刻を過ぎたら載るよう、数分ごとに作り直す
+export const revalidate = 300;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://vual.jp';
@@ -11,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/shopify', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/company', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/latitude', priority: 0.7, changeFrequency: 'weekly' as const },
-    ...ISSUES.map((i) => ({ path: `/latitude/${i.slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
+    ...liveIssues().map((i) => ({ path: `/latitude/${i.slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
   ];
 
   return routes.flatMap(({ path, priority, changeFrequency }) =>

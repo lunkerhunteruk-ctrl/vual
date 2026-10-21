@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Stream } from '@cloudflare/stream-react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { sampleEntities } from '@/lib/daily/sample';
-import { ISSUES as LATITUDE_ISSUES, assetUrl as latitudeAsset, issueNo as latitudeNo } from '@/lib/latitude';
+import { liveIssues as latitudeLiveIssues, assetUrl as latitudeAsset, issueNo as latitudeNo } from '@/lib/latitude';
 
 // ============================================================
 // Constants
@@ -412,7 +412,7 @@ function LatitudeHero({ locale }: { locale: string }) {
           transition={{ duration: 1.2, delay: 1.2 }}
           className="latitude-noscroll -mx-8 mt-12 flex snap-x gap-4 overflow-x-auto px-8 pb-2 md:mx-0 md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:px-0"
         >
-          {LATITUDE_ISSUES.map((i) => (
+          {latitudeLiveIssues().map((i) => (
             <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[58vw] shrink-0 snap-start md:w-auto">
               <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

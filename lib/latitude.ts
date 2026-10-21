@@ -1,6 +1,8 @@
 // LATITUDE — VUAL が街ごとに出している連載（Instagram のリール＋カルーセル）を、サイトで1号ずつ読めるようにするデータ。
 // 新しい号は ISSUES に1件足し、public/latitude/<slug>/ に cover.jpg・pages/NN.jpg（動くページは NN.mp4 も）を置く。
 // リールは本番では Cloudflare Stream（streamId）。streamId が無い間は public の reel.mp4（git には入れない）で確かめる。
+// 公開予約：publishAt（日本時間で書く。例 '2026-10-25T20:00:00+09:00'）を入れた号は、その時刻まで一覧・トップ・サイトマップに出ず、
+// 号のページも開けない（URL に ?preview=<LATITUDE_PREVIEW_KEY> を付けた時だけ先に見られる）。時刻を過ぎると数分以内に自動で出る。
 
 export type LatitudeColour = { name: string; hex: string };
 export type LatitudeChapter = { no: string; place: string; time: string };
@@ -20,6 +22,7 @@ export type LatitudeIssue = {
   pages: LatitudePage[];
   streamId?: string;
   credits?: string[];
+  publishAt?: string; // 公開予約の時刻（無ければすぐ公開）
 };
 
 const pages = (n: number, animated: number[] = []): LatitudePage[] =>
@@ -88,8 +91,42 @@ export const ISSUES: LatitudeIssue[] = [
     streamId: '6d674f1fb3701dbd639a31a5527e380c',
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    slug: 'london',
+    no: 3,
+    latitude: '51.5° N',
+    city: 'London',
+    published: '2026-10',
+    line: 'Concrete at 09:10, brick at noon, iron over the river at dusk.',
+    chapters: [
+      { no: 'I', place: 'National Theatre', time: '09:10' },
+      { no: 'II', place: 'Barbican', time: '12:30' },
+      { no: 'III', place: 'Blackfriars Bridge', time: '16:40' },
+    ],
+    colours: [
+      { name: 'Navy Coat', hex: '#101822' },
+      { name: 'Blackfriars Iron', hex: '#49463a' },
+      { name: 'Thames', hex: '#7d7860' },
+      { name: 'Concrete', hex: '#c0cad2' },
+      { name: 'Camel', hex: '#b7a88f' },
+      { name: 'Pier Red', hex: '#76362c' },
+      { name: 'Barbican Brick', hex: '#4b332e' },
+    ],
+    notesTitle: 'Concrete, brick, iron',
+    notes: [
+      "London keeps its grey in three materials. On the South Bank, Denys Lasdun's National Theatre, opened in 1976, steps down toward the river in terraces of board-marked concrete, the grain of the timber moulds still printed in the walls.",
+      'A short walk north, the Barbican Estate was built between 1965 and 1976 on ground bombed in the war: towers, raised walkways and podiums paved in dark brick.',
+      'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
+    ],
+    pages: pages(10, [6]),
+    streamId: '460e485d748479bb46ff6349fee8705d',
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
+// 公開予約：今の時刻で出してよい号か
+export const isLive = (i: LatitudeIssue, now: number = Date.now()) => !i.publishAt || new Date(i.publishAt).getTime() <= now;
+export const liveIssues = (now: number = Date.now()) => ISSUES.filter((i) => isLive(i, now));
 export const getIssue = (slug: string) => ISSUES.find((i) => i.slug === slug);
 export const issueNo = (i: LatitudeIssue) => `No. ${String(i.no).padStart(2, '0')}`;
 export const assetUrl = (i: LatitudeIssue, file: string) => `/latitude/${i.slug}/${file}`;
