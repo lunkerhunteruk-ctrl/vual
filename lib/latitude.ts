@@ -120,7 +120,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
       'Years ago, as a student in London, I heard Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-21 編集者本人の記憶（事実）
     ],
-    pages: pages(18, [8]), // 2026-10-21 旅の1日を追う18枚に（8は動くページ）
+    pages: pages(18, [9]), // 2026-10-21 旅の1日を追う18枚に（8は動くページ）
     streamId: '460e485d748479bb46ff6349fee8705d',
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
