@@ -36,7 +36,6 @@ export default async function LatitudeIssuePage({ params }: { params: Promise<{ 
   const idx = ISSUES.indexOf(issue);
   const prev = ISSUES[idx - 1];
   const next = ISSUES[idx + 1];
-  const ja = locale === 'ja';
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
@@ -119,9 +118,7 @@ export default async function LatitudeIssuePage({ params }: { params: Promise<{ 
             {issue.chapters.map((c) => c.place).join('  ·  ')}
           </p>
           <p className="mt-10 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
-            {ja
-              ? 'この号は VUAL が撮影から編集まで手がけました。ブランドのための号もお作りします。'
-              : 'This issue was shot and edited by VUAL. We make issues for brands, too.'}{' '}
+            This issue was shot and edited by VUAL. We make issues for brands, too.{' '}
             <a href="mailto:studio@vual.jp" className="underline underline-offset-4" style={{ color: INK }}>
               studio@vual.jp
             </a>
@@ -144,7 +141,7 @@ export default async function LatitudeIssuePage({ params }: { params: Promise<{ 
               </Link>
             ) : (
               <Link href={`/${locale}/latitude`} style={{ color: MUTE }}>
-                {ja ? 'すべての号' : 'All issues'}
+                All issues
               </Link>
             )}
           </div>
