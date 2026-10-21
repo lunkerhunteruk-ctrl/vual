@@ -120,6 +120,7 @@ export const ISSUES: LatitudeIssue[] = [
     ],
     pages: pages(10, [6]),
     streamId: '460e485d748479bb46ff6349fee8705d',
+    publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
   },
 ];
