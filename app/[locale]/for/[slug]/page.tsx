@@ -64,7 +64,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
     ? `ご提案のために ${p.brand} の商品で作った見本です。${p.postedOnRin ? '' : '公開はしていません。'}映像・画像はAIで制作しています。`
     : `制作例：${p.brand} の商品で組んだ見本です。ブランドとは関係のない、当方の制作見本です。映像・画像はAIで制作しています。`;
   const contact = p.contactEmail ? `mailto:${p.contactEmail}` : `/${locale}/contact`;
-  // 相手の服で作った見本（private）は、そのまま買える（1本4万円。値段はページに出さず、提案書とメールだけに書く）
+  // 相手の服で作った見本（private）は、そのまま買える（値段はページに出さず、聞かれた時にメールで伝える）。2026-10-21：見本ページには料金を一切出さない（最初の営業では値段を書かない）
   const buyout = p.private
     ? `mailto:${p.contactEmail ?? 'studio@vual.jp'}?subject=${encodeURIComponent(`見本の購入について（${p.brand}）`)}`
     : null;
@@ -208,7 +208,7 @@ export default async function ProposalPage({ params }: { params: Promise<{ local
             ))}
           </div>
           <p className="mt-4 text-[13px] leading-relaxed text-white/60" style={{ fontFamily: MINCHO }}>
-            縦3:4・5枚組。リールとセットのご注文で ＋3万円（消費税の上乗せなし）。
+            縦3:4・5枚組。リールとセットで承ります。
           </p>
         </section>
 
