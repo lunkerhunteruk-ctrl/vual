@@ -72,9 +72,9 @@ export const ISSUES: LatitudeIssue[] = [
     ],
     colours: [
       { name: 'Black Granite', hex: '#10130f' },
-      { name: 'Harbour', hex: '#b6bbb8' },
       { name: 'Green Glass', hex: '#3c524b' },
       { name: 'Dusk Water', hex: '#2c4b63' },
+      { name: 'Harbour', hex: '#b6bbb8' },
       { name: 'Oak Deck', hex: '#cfc3b9' },
       { name: 'Mohair', hex: '#c09774' },
       { name: 'Opera Gold', hex: '#cb7025' },
