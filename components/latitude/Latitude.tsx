@@ -130,21 +130,46 @@ export function Pages({ issue }: { issue: LatitudeIssue }) {
   );
 }
 
+// 号の色：何色でも横一列。1色の幅は色の数で決まる。スマホは色だけを一列に並べ、名前は下に1行ずつ書く
 export function Palette({ issue }: { issue: LatitudeIssue }) {
+  const cols = { gridTemplateColumns: `repeat(${issue.colours.length}, minmax(0, 1fr))` };
+  const chip = (hex: string) => (
+    <div className="w-full" style={{ background: hex, aspectRatio: '1 / 1', boxShadow: 'inset 0 0 0 1px rgba(30,29,27,0.08)' }} />
+  );
   return (
-    <div className="grid grid-cols-3 gap-x-4 gap-y-6 md:grid-cols-6">
-      {issue.colours.map((c) => (
-        <div key={c.name}>
-          <div className="w-full" style={{ background: c.hex, aspectRatio: '5 / 3', boxShadow: 'inset 0 0 0 1px rgba(30,29,27,0.08)' }} />
-          <p className="mt-2 text-[10px] uppercase tracking-[0.2em]" style={{ color: INK }}>
-            {c.name}
-          </p>
-          <p className="mt-1 text-[10px] tracking-[0.15em]" style={{ color: MUTE }}>
-            {c.hex.toUpperCase()}
-          </p>
+    <>
+      <div className="hidden gap-3 md:grid lg:gap-4" style={cols}>
+        {issue.colours.map((c) => (
+          <div key={c.name} className="min-w-0">
+            {chip(c.hex)}
+            <p className="mt-3 text-[10px] uppercase leading-snug tracking-[0.2em]" style={{ color: INK }}>
+              {c.name}
+            </p>
+            <p className="mt-1 text-[10px] tracking-[0.15em]" style={{ color: MUTE }}>
+              {c.hex.toUpperCase()}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="md:hidden">
+        <div className="grid" style={cols}>
+          {issue.colours.map((c) => (
+            <div key={c.name}>{chip(c.hex)}</div>
+          ))}
         </div>
-      ))}
-    </div>
+        <ol className="mt-5 grid grid-cols-1 gap-y-2.5">
+          {issue.colours.map((c) => (
+            <li key={c.name} className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em]" style={{ color: INK }}>
+              <span className="inline-block h-2.5 w-2.5 shrink-0" style={{ background: c.hex }} />
+              <span className="truncate">{c.name}</span>
+              <span className="ml-auto shrink-0" style={{ color: MUTE }}>
+                {c.hex.toUpperCase()}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </>
   );
 }
 
