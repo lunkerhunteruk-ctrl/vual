@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Stream } from '@cloudflare/stream-react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { sampleEntities } from '@/lib/daily/sample';
+import { ISSUES as LATITUDE_ISSUES, assetUrl as latitudeAsset, issueNo as latitudeNo } from '@/lib/latitude';
 
 // ============================================================
 // Constants
@@ -525,6 +526,35 @@ function WorksSection({ locale }: { locale: string }) {
           {REELS_WORKS.map((work, i) => (
             <VerticalWorkCard key={work.id} work={work} index={i} onOpen={() => setActiveVideo({ streamId: work.streamId, vertical: true })} />
           ))}
+        </div>
+
+        {/* LATITUDE — the travelling issue. Covers in issue order; each opens its own page. */}
+        <div className="mt-24 md:mt-40">
+          <div className="mb-8 flex items-baseline justify-between">
+            <p className="text-[10px] tracking-[0.3em] uppercase text-white/25">Latitude — Series</p>
+            <Link href={`/${locale}/latitude`} className="text-[10px] tracking-[0.3em] uppercase text-white/40 hover:text-white/70 transition-colors">
+              All issues →
+            </Link>
+          </div>
+          <div className="-mx-2 flex snap-x gap-4 overflow-x-auto px-2 pb-2 md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
+            {LATITUDE_ISSUES.map((i) => (
+              <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[44vw] shrink-0 snap-start md:w-auto">
+                <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={latitudeAsset(i, 'cover.jpg')}
+                    alt={`LATITUDE ${latitudeNo(i)} — ${i.latitude} ${i.city}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
+                  />
+                </div>
+                <p className="mt-3 text-[10px] tracking-[0.25em] uppercase text-white/35">{latitudeNo(i)}</p>
+                <p className="mt-1 text-sm text-white/80" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+                  {i.latitude}&nbsp;&nbsp;{i.city}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Stills — editorial / campaign photography */}

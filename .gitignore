@@ -47,3 +47,6 @@ next-env.d.ts
 # LP videos (hosted on Xserver)
 public/lp/hero.mp4
 public/lp/videos/*.mp4
+
+# LATITUDE のリール動画（本番は Cloudflare Stream から出す。手元の確認用だけ）
+/public/latitude/*/reel.mp4
