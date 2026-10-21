@@ -86,6 +86,7 @@ export const ISSUES: LatitudeIssue[] = [
     notes: [
       "Copenhagen spends its days at the water's edge. The Black Diamond, the 1999 extension of the Royal Library, is clad in polished black granite and leans toward the harbour, so the water moves across its face.",
       'A little to the north, the Royal Playhouse lays a long oak deck over the water. Across the harbour, the Opera House holds its roof far out over the forecourt, and at dusk its underside catches the last low light.',
+      'At art school in London there was a girl from Copenhagen who studied graphic design. I hope she is well, somewhere out there in this city.', // 2026-10-21 編集者本人の記憶（名前は出さない）
     ],
     pages: pages(19, [10]), // 2026-10-21 旅の1日を追う19枚に（10は動くページ）
     streamId: 'f6eb75a65e74cc751cba8874a37dab62', // v27b（ラスト手前にオペラの空撮）
