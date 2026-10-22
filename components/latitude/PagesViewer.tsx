@@ -1,6 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PageVideo } from './PageVideo';
+import { Pic } from './Pic';
 import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 
 // カルーセルのページ：スマホは横にめくる、パソコンは2ページずつの見開き。
@@ -24,8 +25,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
     p.video ? (
       <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={n} />
     ) : (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={url(p.file)} alt={`Page ${n}`} loading={n <= 2 ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
+      <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" />
     );
   const spreads: Page[][] = [];
   for (let i = 0; i < pages.length; i += 2) spreads.push(pages.slice(i, i + 2));
@@ -106,8 +106,7 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
         ) : p.video ? (
           <PageVideo key={at} src={url(p.video)} poster={url(p.file)} label={`Page ${at}`} eager />
         ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={url(p.file)} alt={`Page ${at}`} className="h-full w-full object-cover" />
+          <Pic src={url(p.file)} alt={`Page ${at}`} eager className="h-full w-full object-cover" />
         )}
         {!(mine && showMine) && HOTSPOTS[slug]?.[at] && !sheet && <HotspotLayer key={at} h={HOTSPOTS[slug][at]} />}
       </div>

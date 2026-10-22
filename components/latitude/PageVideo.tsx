@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { Pic } from './Pic';
 
 // カルーセルの動くページ。2026-10-22 ユーザー指定：土台の静止画は、ほかのページと同じように最初から出しておき、
 // 動画は読み込めて動き出したら上にふわっと重ねる（読み込み中にページが空になったり、途中のコマで止まって見えたりしない）。
@@ -26,10 +27,12 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
     const v = ref.current;
     if (!v) return;
     v.muted = true;
+    // 軽い WebM（VP9）が再生できるブラウザにはそちらを、だめなら MP4
+    const file = v.canPlayType('video/webm; codecs="vp9"') ? src.replace(/\.mp4$/, '.webm') : src;
     const shown = () => v.getClientRects().length > 0;
     const start = () => {
       if (!shown()) return;
-      if (!v.getAttribute('src')) { v.src = src; v.load(); }
+      if (!v.getAttribute('src')) { v.src = file; v.load(); }
       v.play().catch(() => {});
     };
     const again = () => { v.currentTime = 0; v.play().catch(() => {}); };
@@ -55,7 +58,7 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
         const fin = () => { window.clearTimeout(t); v.removeEventListener('canplaythrough', fin); done(); };
         const t = window.setTimeout(fin, 8000);
         v.addEventListener('canplaythrough', fin);
-        v.preload = 'auto'; v.src = src; v.load();
+        v.preload = 'auto'; v.src = file; v.load();
       }));
     }
     return () => {
@@ -66,8 +69,7 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
   }, [src, order]);
   return (
     <span className="relative block h-full w-full">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={poster} alt={label} loading={eager ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
+      <Pic src={poster} alt={label} eager={eager} className="block h-full w-full object-cover" />
       <video ref={ref} muted loop playsInline preload="none" aria-hidden="true"
         className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0 }} />
     </span>
