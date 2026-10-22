@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react';
 // 2) 描き終わったら、AIに静止画で描かせた歩く4コマ（f1〜f4）を順に切り替えて、その場で歩かせる
 type Strokes = { w: number; h: number; stroke: number; paths: { d: string; len: number }[] };
 
-export function DrawWalk({ base, speed = 1100, fps = 6 }: { base: string; speed?: number; fps?: number }) {
+// draw=false：描く動きを省き、最初から4コマを繰り返すだけ（2026-10-22 ユーザー指定）
+export function DrawWalk({ base, speed = 1100, fps = 6, draw = true }: { base: string; speed?: number; fps?: number; draw?: boolean }) {
   const [s, setS] = useState<Strokes | null>(null);
   const [run, setRun] = useState(0);
-  const [walk, setWalk] = useState(false);
+  const [walk, setWalk] = useState(!draw);
   const [frame, setFrame] = useState(0);
   useEffect(() => { fetch(`${base}/strokes.json`).then((r) => r.json()).then(setS); }, [base]);
   // 線の長さに比例した時間で、上から順に描く（speed＝1秒に描く長さ）
@@ -21,11 +22,11 @@ export function DrawWalk({ base, speed = 1100, fps = 6 }: { base: string; speed?
   }, []);
   const total = timed.length ? timed[timed.length - 1].start + timed[timed.length - 1].dur : 0;
   useEffect(() => {
-    if (!s) return;
+    if (!s || !draw) return;
     setWalk(false);
     const t = window.setTimeout(() => setWalk(true), (total + 0.3) * 1000);
     return () => window.clearTimeout(t);
-  }, [s, run, total]);
+  }, [s, run, total, draw]);
   useEffect(() => {
     if (!walk) return;
     const t = window.setInterval(() => setFrame((f) => (f + 1) % 4), 1000 / fps);
@@ -53,7 +54,7 @@ export function DrawWalk({ base, speed = 1100, fps = 6 }: { base: string; speed?
         <img src={`${base}/f${frame + 1}.png`} alt="" className="absolute inset-0 h-full w-full" />
       )}
       {[2, 3, 4].map((n) => <link key={n} rel="preload" as="image" href={`${base}/f${n}.png`} />)}
-      <button type="button" onClick={() => { setFrame(0); setRun(run + 1); }} className="absolute -bottom-8 right-0 text-[10px] uppercase tracking-[0.3em] text-neutral-500">Replay</button>
+      {draw && <button type="button" onClick={() => { setFrame(0); setRun(run + 1); }} className="absolute -bottom-8 right-0 text-[10px] uppercase tracking-[0.3em] text-neutral-500">Replay</button>}
     </div>
   );
 }
