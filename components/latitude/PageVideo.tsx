@@ -1,11 +1,13 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-// カルーセルの動くページ。iPhone の Safari は同時に動かせる動画の数が少なく、読み込みが重なると途中のコマで止まる。
-// そこで、画面に入った1本だけを読み込んで動かし、外れたら止める。パソコン用の見開き（スマホでは隠れている側）は読み込まない。
-// 終わりまで来たら頭に戻して繰り返す（loop が効かない時のための念押し）。再生できない時は、ポスター（静止画）のまま見せる
-export function PageVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
+// カルーセルの動くページ。2026-10-22 ユーザー指定：土台の静止画は、ほかのページと同じように最初から出しておき、
+// 動画は読み込めて動き出したら上にふわっと重ねる（読み込み中にページが空になったり、途中のコマで止まって見えたりしない）。
+// iPhone の Safari は同時に動かせる動画の数が少ないので、画面に入った1本だけを読み込んで動かし、外れたら止める。
+// 終わりまで来たら頭に戻して繰り返す。再生できない時（省電力モードなど）は静止画のまま。
+export function PageVideo({ src, poster, label, eager = false }: { src: string; poster: string; label: string; eager?: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [on, setOn] = useState(false);
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
@@ -17,25 +19,31 @@ export function PageVideo({ src, poster, label }: { src: string; poster: string;
       v.play().catch(() => {});
     };
     const again = () => { v.currentTime = 0; v.play().catch(() => {}); };
-    // 画面に3割以上入っているか（IntersectionObserver が動かない環境もあるので、位置を直接見る）
     const inView = () => {
       const r = v.getBoundingClientRect(); if (!r.width || !r.height) return false;
       const w = Math.min(r.right, window.innerWidth) - Math.max(r.left, 0), h = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
       return w > 0 && h > 0 && (w * h) / (r.width * r.height) > 0.3;
     };
     const check = () => (inView() ? (v.paused || !v.getAttribute('src') ? start() : null) : !v.paused && v.pause());
+    const playing = () => setOn(true);
     const timer = window.setInterval(check, 500);
     window.addEventListener('scroll', check, { passive: true });
     document.addEventListener('scroll', check, { passive: true, capture: true });
     v.addEventListener('ended', again);
     v.addEventListener('canplay', check);
+    v.addEventListener('playing', playing);
     check();
     return () => {
       window.clearInterval(timer); window.removeEventListener('scroll', check); document.removeEventListener('scroll', check, { capture: true });
-      v.removeEventListener('ended', again); v.removeEventListener('canplay', check);
+      v.removeEventListener('ended', again); v.removeEventListener('canplay', check); v.removeEventListener('playing', playing);
     };
   }, [src]);
   return (
-    <video ref={ref} poster={poster} muted loop playsInline preload="none" aria-label={label} className="block h-full w-full object-cover" />
+    <span className="relative block h-full w-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={poster} alt={label} loading={eager ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
+      <video ref={ref} muted loop playsInline preload="none" aria-hidden="true"
+        className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0 }} />
+    </span>
   );
 }

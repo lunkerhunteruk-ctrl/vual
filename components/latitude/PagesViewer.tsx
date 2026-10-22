@@ -22,7 +22,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   const url = (f: string) => `${base}/pages/${f}`;
   const thumb = (p: Page, n: number) =>
     p.video ? (
-      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} />
+      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={url(p.file)} alt={`Page ${n}`} loading={n <= 2 ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
@@ -104,7 +104,7 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={mine} alt="You, in this look" className="h-full w-full object-cover" />
         ) : p.video ? (
-          <video src={url(p.video)} poster={url(p.file)} autoPlay muted loop playsInline className="h-full w-full object-cover" />
+          <PageVideo key={at} src={url(p.video)} poster={url(p.file)} label={`Page ${at}`} eager />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={url(p.file)} alt={`Page ${at}`} className="h-full w-full object-cover" />
