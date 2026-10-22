@@ -165,7 +165,8 @@ export const ISSUES: LatitudeIssue[] = [
 
 // 公開予約：今の時刻で出してよい号か
 export const isLive = (i: LatitudeIssue, now: number = Date.now()) => !i.publishAt || new Date(i.publishAt).getTime() <= now;
-export const liveIssues = (now: number = Date.now()) => ISSUES.filter((i) => isLive(i, now));
+// 2026-10-22 ユーザー指定：一覧・号の帯・トップの列は、新しい号を左（先頭）に並べる
+export const liveIssues = (now: number = Date.now()) => ISSUES.filter((i) => isLive(i, now)).sort((a, b) => b.no - a.no);
 export const getIssue = (slug: string) => ISSUES.find((i) => i.slug === slug);
 export const issueNo = (i: LatitudeIssue) => `No. ${String(i.no).padStart(2, '0')}`;
 export const assetUrl = (i: LatitudeIssue, file: string) => `/latitude/${i.slug}/${file}`;

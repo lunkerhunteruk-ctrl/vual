@@ -41,7 +41,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
   if (!issue) notFound();
   const previewing = !isLive(issue);
   if (previewing && !canPreview(preview)) notFound();
-  const list = previewing ? ISSUES : liveIssues();
+  const list = (previewing ? [...ISSUES] : liveIssues()).sort((a, b) => a.no - b.no); // 前の号・次の号は号数の順
   const idx = list.indexOf(issue);
   const prev = list[idx - 1];
   const next = list[idx + 1];
