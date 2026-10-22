@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues } from '@/lib/latitude';
+import { stepIntoAllowed, stepIntoPages } from '@/lib/latitude-recipe';
+import { existsSync } from 'fs';
+import path from 'path';
 import { INK, IssueStrip, LatitudeFigure, MUTE, PAPER, Pages, Palette, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
@@ -11,7 +14,7 @@ export function generateStaticParams() {
 }
 
 // 公開予約の号は、時刻まで ?preview=<LATITUDE_PREVIEW_KEY> を付けた時だけ見られる
-type SP = Promise<{ preview?: string }>;
+type SP = Promise<{ preview?: string; step?: string }>;
 const canPreview = (key?: string) => !!key && !!process.env.LATITUDE_PREVIEW_KEY && key === process.env.LATITUDE_PREVIEW_KEY;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
@@ -36,11 +39,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function LatitudeIssuePage({ params, searchParams }: { params: Promise<{ locale: string; slug: string }>; searchParams: SP }) {
   const { locale, slug } = await params;
-  const { preview } = await searchParams;
+  const { preview, step } = await searchParams;
   const issue = getIssue(slug);
   if (!issue) notFound();
   const previewing = !isLive(issue);
   if (previewing && !canPreview(preview)) notFound();
+  // 2026-10-22 体験「Step into this look」は、今は ?step=<合言葉> の時だけ（公開前の確認用）
+  const stepOn = stepIntoAllowed(step);
+  const sampleDir = path.join(process.cwd(), 'public', 'latitude', issue.slug, 'stepinto');
+  const sample = existsSync(path.join(sampleDir, 'sample-result.jpg')) ? { face: assetUrl(issue, 'stepinto/sample-face.jpg'), result: assetUrl(issue, 'stepinto/sample-result.jpg') } : null;
   const list = (previewing ? [...ISSUES] : liveIssues()).sort((a, b) => a.no - b.no); // 前の号・次の号は号数の順
   const idx = list.indexOf(issue);
   const prev = list[idx - 1];
@@ -83,7 +90,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>The issue</SectionLabel>
-          <Pages issue={issue} />
+          <Pages issue={issue} stepPages={stepOn ? await stepIntoPages(issue.slug) : []} stepKey={stepOn ? step : undefined} sample={stepOn ? sample : null} />
         </div>
       </section>
 

@@ -4,6 +4,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 const nextConfig: NextConfig = {
+  // LATITUDE のレシピ（服・場面の写真）を体験の API と号のページから読めるように
+  outputFileTracingIncludes: {
+    '/api/latitude/step-into': ['./data/latitude-recipes/**/*'],
+    '/[locale]/latitude/[slug]': ['./data/latitude-recipes/**/recipe.json'],
+  },
   images: {
     remotePatterns: [
       {

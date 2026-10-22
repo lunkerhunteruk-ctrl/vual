@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
-import { PageVideo } from './PageVideo';
+import { PagesViewer } from './PagesViewer';
+import type { StepIntoPage } from '@/lib/latitude-recipe';
 
 // LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
 export const PAPER = '#f2eee7';
@@ -72,47 +73,11 @@ export function Reel({ issue }: { issue: LatitudeIssue }) {
   );
 }
 
-// カルーセルのページ：スマホは横にめくる、パソコンは2ページずつの見開き
-export function Pages({ issue }: { issue: LatitudeIssue }) {
-  const spreads: (typeof issue.pages)[] = [];
-  for (let i = 0; i < issue.pages.length; i += 2) spreads.push(issue.pages.slice(i, i + 2));
-  const page = (p: (typeof issue.pages)[number], n: number) =>
-    p.video ? (
-      <PageVideo src={assetUrl(issue, `pages/${p.video}`)} poster={assetUrl(issue, `pages/${p.file}`)} label={`Page ${n}`} />
-    ) : (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={assetUrl(issue, `pages/${p.file}`)} alt={`Page ${n}`} loading={n <= 2 ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
-    );
-  return (
-    <>
-      {/* スマホ：横にめくる */}
-      <div className="md:hidden">
-        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory overflow-x-auto px-4 pb-2">
-          {issue.pages.map((p, i) => (
-            <figure key={p.file} className="relative w-[84vw] shrink-0 snap-center" style={{ aspectRatio: '3 / 4' }}>
-              {page(p, i + 1)}
-            </figure>
-          ))}
-        </div>
-        <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
-          {issue.pages.length} pages — swipe
-        </p>
-      </div>
-      {/* パソコン：見開き */}
-      <div className="hidden flex-col gap-10 md:flex">
-        {spreads.map((s, k) => (
-          <div key={k} className="mx-auto grid w-full max-w-5xl grid-cols-2 shadow-[0_30px_60px_-30px_rgba(30,29,27,0.35)]">
-            {s.map((p, j) => (
-              <div key={p.file} className="relative" style={{ aspectRatio: '3 / 4' }}>
-                {page(p, k * 2 + j + 1)}
-              </div>
-            ))}
-            {s.length === 1 && <div style={{ background: PAPER }} />}
-          </div>
-        ))}
-      </div>
-    </>
-  );
+// カルーセルのページ（拡大写真と「Step into this look」は PagesViewer）
+export function Pages({ issue, stepPages = [], stepKey, sample }: {
+  issue: LatitudeIssue; stepPages?: StepIntoPage[]; stepKey?: string; sample?: { face: string; result: string } | null;
+}) {
+  return <PagesViewer slug={issue.slug} base={assetUrl(issue, '').replace(/\/$/, '')} pages={issue.pages} stepPages={stepPages} stepKey={stepKey} sample={sample} />;
 }
 
 // 号の色：何色でも横一列。1色の幅は色の数で決まる。スマホは色だけを一列に並べ、名前は下に1行ずつ書く
