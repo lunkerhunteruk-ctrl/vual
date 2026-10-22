@@ -22,7 +22,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   const url = (f: string) => `${base}/pages/${f}`;
   const thumb = (p: Page, n: number) =>
     p.video ? (
-      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} />
+      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={n} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={url(p.file)} alt={`Page ${n}`} loading={n <= 2 ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />

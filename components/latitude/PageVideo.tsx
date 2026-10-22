@@ -5,7 +5,21 @@ import { useEffect, useRef, useState } from 'react';
 // 動画は読み込めて動き出したら上にふわっと重ねる（読み込み中にページが空になったり、途中のコマで止まって見えたりしない）。
 // iPhone の Safari は同時に動かせる動画の数が少ないので、画面に入った1本だけを読み込んで動かし、外れたら止める。
 // 終わりまで来たら頭に戻して繰り返す。再生できない時（省電力モードなど）は静止画のまま。
-export function PageVideo({ src, poster, label, eager = false }: { src: string; poster: string; label: string; eager?: boolean }) {
+// 2026-10-22 ユーザー指定：ページを開いたら、若い番号の動くページから1本ずつ順に、裏で先に読み込んでおく（3枚目→10枚目→12枚目）。
+const queue: { order: number; load: () => Promise<void> }[] = [];
+let running = false;
+function enqueue(order: number, load: () => Promise<void>) {
+  queue.push({ order, load });
+  queue.sort((a, b) => a.order - b.order);
+  if (!running) window.setTimeout(drain, 0);
+}
+async function drain() {
+  running = true;
+  while (queue.length) await queue.shift()!.load();
+  running = false;
+}
+
+export function PageVideo({ src, poster, label, eager = false, order }: { src: string; poster: string; label: string; eager?: boolean; order?: number }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
@@ -33,11 +47,23 @@ export function PageVideo({ src, poster, label, eager = false }: { src: string; 
     v.addEventListener('canplay', check);
     v.addEventListener('playing', playing);
     check();
+    // 先読み：見えている側（スマホの列かパソコンの見開き）だけ、番号順に1本ずつ読み込む。次へ進むのは読み込めたか8秒たった時
+    let cancelled = false;
+    if (order !== undefined) {
+      enqueue(order, () => new Promise<void>((done) => {
+        if (cancelled || !shown() || v.getAttribute('src')) return done();
+        const fin = () => { window.clearTimeout(t); v.removeEventListener('canplaythrough', fin); done(); };
+        const t = window.setTimeout(fin, 8000);
+        v.addEventListener('canplaythrough', fin);
+        v.preload = 'auto'; v.src = src; v.load();
+      }));
+    }
     return () => {
+      cancelled = true;
       window.clearInterval(timer); window.removeEventListener('scroll', check); document.removeEventListener('scroll', check, { capture: true });
       v.removeEventListener('ended', again); v.removeEventListener('canplay', check); v.removeEventListener('playing', playing);
     };
-  }, [src]);
+  }, [src, order]);
   return (
     <span className="relative block h-full w-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
