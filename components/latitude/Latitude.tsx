@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
+import { PageVideo } from './PageVideo';
 
 // LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
 export const PAPER = '#f2eee7';
@@ -77,17 +78,7 @@ export function Pages({ issue }: { issue: LatitudeIssue }) {
   for (let i = 0; i < issue.pages.length; i += 2) spreads.push(issue.pages.slice(i, i + 2));
   const page = (p: (typeof issue.pages)[number], n: number) =>
     p.video ? (
-      <video
-        src={assetUrl(issue, `pages/${p.video}`)}
-        poster={assetUrl(issue, `pages/${p.file}`)}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label={`Page ${n}`}
-        className="block h-full w-full object-cover"
-      />
+      <PageVideo src={assetUrl(issue, `pages/${p.video}`)} poster={assetUrl(issue, `pages/${p.file}`)} label={`Page ${n}`} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={assetUrl(issue, `pages/${p.file}`)} alt={`Page ${n}`} loading={n <= 2 ? 'eager' : 'lazy'} className="block h-full w-full object-cover" />
