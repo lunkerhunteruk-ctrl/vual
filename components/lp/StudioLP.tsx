@@ -87,7 +87,7 @@ const CONTENT = {
       sectionLabel: 'Founder',
       name: 'Sachio Kawasaki',
       role: 'Founder & Creative Director',
-      bio: 'MA Fashion, Central Saint Martins. Trained at Balenciaga, he went on to found and ran his own label. He fuses a perspective forged on the floor of high fashion with cutting-edge technology to construct visual experiences unlike any before.',
+      bio: 'MA Fashion, Central Saint Martins. Trained at Balenciaga, he went on to found and run his own label. He fuses a perspective forged on the floor of high fashion with cutting-edge technology to construct visual experiences unlike any before.',
     },
     contact: {
       sectionLabel: 'Contact',
