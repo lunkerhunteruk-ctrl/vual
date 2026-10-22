@@ -121,7 +121,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Years ago, as a student in London, I heard Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-21 編集者本人の記憶（事実）
     ],
     pages: pages(18, [9]), // 2026-10-21 旅の1日を追う18枚に（9は動くページ）
-    streamId: '460e485d748479bb46ff6349fee8705d',
+    streamId: 'be1e0d53c1e4fb36d3fca08e3a82b81a', // v13（大きな緯度が縮んで落ち着く冒頭。前は 460e485d…）
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
   },
