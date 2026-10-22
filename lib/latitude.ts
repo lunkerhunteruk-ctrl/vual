@@ -125,6 +125,40 @@ export const ISSUES: LatitudeIssue[] = [
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    slug: 'edinburgh',
+    no: 4,
+    latitude: '55.9° N',
+    city: 'Edinburgh',
+    published: '2026-10',
+    line: 'Sandstone at 08:30, wind on an old volcano at 14:40, lamps in the Old Town by 17:30.',
+    chapters: [
+      { no: 'I', place: 'The Shore, Leith', time: '08:30' },
+      { no: 'II', place: 'Calton Hill', time: '11:50' },
+      { no: 'III', place: "Arthur's Seat", time: '14:40' },
+      { no: 'IV', place: 'Victoria Street', time: '17:30' },
+    ],
+    colours: [
+      { name: 'Crag Black', hex: '#13191d' },
+      { name: 'Moor Grass', hex: '#6d5e39' },
+      { name: 'Victoria Teal', hex: '#457f8f' },
+      { name: 'Haar', hex: '#dae7f1' },
+      { name: 'Leith Sandstone', hex: '#d6bd9d' },
+      { name: 'Camel Gold', hex: '#896242' },
+      { name: 'Lamp Amber', hex: '#c2853f' },
+    ],
+    notesTitle: 'Stone, sea, an old volcano',
+    notes: [
+      "Edinburgh is built on old volcanoes and the sea. The day starts at Leith, the city's port on the Firth of Forth, where sandstone warehouses still line the quay of the Water of Leith.",
+      'Calton Hill stands above the end of Princes Street. Its National Monument, begun in the 1820s to copy the Parthenon, was left with twelve columns when the money ran out.',
+      "Across the valley, Arthur's Seat rises out of Holyrood Park: the remains of a volcano, with the long cliff of Salisbury Crags at its side.",
+      'By the time the Old Town lamps come on, the sun has long gone. In late October it never climbs higher than about twenty degrees.',
+    ],
+    pages: pages(16), // 2026-10-22 夜行列車から夜のクロースまで16枚
+    streamId: '3d9411b6caaa3452ed7144df3a8b4ac6', // v26（環境音だけ・-15 LUFS）
+    publishAt: '2026-10-23T10:00:00+01:00', // ロンドン号の翌日、イギリス時間（BST）10:00 = 日本時間 18:00
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
