@@ -1,6 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { PageVideo } from './PageVideo';
+import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 
 // カルーセルのページ：スマホは横にめくる、パソコンは2ページずつの見開き。
 // ページを押すと拡大写真（左右にめくれる）。LOOKのあるページだけ、少し遅れて「Step into this look」が出て、
@@ -108,6 +109,7 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={url(p.file)} alt={`Page ${at}`} className="h-full w-full object-cover" />
         )}
+        {!(mine && showMine) && HOTSPOTS[slug]?.[at] && !sheet && <HotspotLayer key={at} h={HOTSPOTS[slug][at]} />}
       </div>
       <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 text-[11px] uppercase tracking-[0.3em] text-white/80 hover:text-white">Close ✕</button>
       <p className="absolute left-4 top-4 z-10 text-[10px] uppercase tracking-[0.3em] text-white/50">{at} / {pages.length}</p>
@@ -217,5 +219,36 @@ function StepSheet({ slug, step, sample, onClose, onDone }: {
       {!busy && left !== null && <p className="mt-2 text-center text-[11px]" style={{ color: MUTE }}>Three a day · {left} left today</p>}
       {err && <p className="mt-2 text-center text-[12px]" style={{ color: '#8a2d22' }}>{err}</p>}
     </div>
+  );
+}
+
+// 仕掛け：写真の上の小さな光る点。押すと、写っていない物が線で一本ずつ描かれ、最後に一言が出る。もう一度押すと消える
+function HotspotLayer({ h }: { h: Hotspot }) {
+  const [run, setRun] = useState(0);
+  const on = run > 0;
+  let t = 0;
+  const timed = h.paths.map((p) => { const start = t; t += p.dur + h.gap; return { ...p, start }; });
+  const noteAt = t + 0.2;
+  return (
+    <>
+      <style>{`@keyframes lat-draw{to{stroke-dashoffset:0}}@keyframes lat-in{to{opacity:1}}@keyframes lat-ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}`}</style>
+      {on && (
+        <svg key={run} viewBox="0 0 1080 1440" className="pointer-events-none absolute inset-0 h-full w-full">
+          {timed.map((p, i) => (
+            <path key={i} d={p.d} fill="none" stroke={h.color} strokeWidth={h.width} strokeLinecap="round" strokeLinejoin="round" pathLength={1}
+              style={{ strokeDasharray: 1, strokeDashoffset: 1, animation: `lat-draw ${p.dur}s ease-in-out ${p.start}s forwards` }} />
+          ))}
+          <text x={h.note.x} y={h.note.y} fill={h.note.color} style={{ opacity: 0, animation: `lat-in 0.9s ease ${noteAt}s forwards`, fontFamily: SERIF, fontStyle: 'italic', fontSize: 30 }}>
+            {h.note.text.split('\n').map((ln, i) => <tspan key={i} x={h.note.x} dy={i ? 40 : 0}>{ln}</tspan>)}
+          </text>
+        </svg>
+      )}
+      <button type="button" aria-label={on ? 'Hide the drawing' : 'Reveal a drawing'} onClick={() => setRun(on ? 0 : run + 1)}
+        className="absolute z-10 -translate-x-1/2 -translate-y-1/2 p-3" style={{ left: `${(h.x / 1080) * 100}%`, top: `${(h.y / 1440) * 100}%` }}>
+        <span className="relative block h-3.5 w-3.5 rounded-full" style={{ background: on ? 'transparent' : PAPER, boxShadow: '0 0 0 1px rgba(30,29,27,0.35)', border: on ? `1px solid ${PAPER}` : 'none' }}>
+          {!on && <span className="absolute inset-0 rounded-full" style={{ background: PAPER, animation: 'lat-ping 1.8s ease-out infinite' }} />}
+        </span>
+      </button>
+    </>
   );
 }
