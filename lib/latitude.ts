@@ -23,6 +23,7 @@ export type LatitudeIssue = {
   streamId?: string;
   credits?: string[];
   publishAt?: string; // 公開予約の時刻（無ければすぐ公開）
+  capColour?: string; // 読み物の頭の大きな1文字（ドロップキャップ）の色。無ければ墨
 };
 
 const pages = (n: number, animated: number[] = []): LatitudePage[] =>
@@ -123,6 +124,7 @@ export const ISSUES: LatitudeIssue[] = [
     pages: pages(18, [9]), // 2026-10-21 旅の1日を追う18枚に（9は動くページ）
     streamId: '30f4c48d6eb48a19068bc51740d8a23d', // v17（白黒で始まり、大きな緯度が縮む冒頭・LOOK3 の2カットを細い顔の絵に）
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
+    capColour: '#76362c', // Pier Red
     credits: ['Map data © OpenStreetMap contributors'],
   },
   {
@@ -156,6 +158,7 @@ export const ISSUES: LatitudeIssue[] = [
     ],
     pages: pages(16), // 2026-10-22 夜行列車から夜のクロースまで16枚
     streamId: '3d9411b6caaa3452ed7144df3a8b4ac6', // v26（環境音だけ・-15 LUFS）
+    capColour: '#896242', // Camel Gold
     publishAt: '2026-10-23T10:00:00+01:00', // ロンドン号の翌日、イギリス時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
   },

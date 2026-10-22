@@ -99,7 +99,22 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <div className="mt-8 flex max-w-2xl flex-col gap-5 md:mt-0">
             {issue.notes.map((t, k) => (
               <p key={k} className="text-[16px] leading-[1.8] md:text-[17px]">
-                {t}
+                {k === 0 ? (
+                  <>
+                    {/* 2026-10-22 雑誌のドロップキャップ：最初の1文字を3行ぶん大きく沈める */}
+                    <span
+                      aria-hidden="true"
+                      className="float-left mr-3 mt-[0.035em] text-[6em] leading-[0.72]"
+                      style={{ fontFamily: SERIF, fontWeight: 400, color: issue.capColour ?? INK }}
+                    >
+                      {t[0]}
+                    </span>
+                    <span className="sr-only">{t[0]}</span>
+                    {t.slice(1)}
+                  </>
+                ) : (
+                  t
+                )}
               </p>
             ))}
           </div>
