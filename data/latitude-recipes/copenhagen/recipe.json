@@ -1,0 +1,253 @@
+{
+ "issue": "copenhagen",
+ "project": "clane-mode-20261018",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "looks": {
+  "1": {
+   "garments": [
+    "garments/LOOK1N-2-knit.jpg",
+    "garments/LOOK1N-3-shirt.jpg",
+    "garments/LOOK1N-4-pants.jpg",
+    "garments/LOOK1N-5-boots.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK1N-fitting-nohead.jpg"
+   ],
+   "outfitText": "- CLANE yak over knit top: deep navy, a soft brushed yak-wool knit, a wide crew neck, a very oversized boxy body with dropped shoulders and long wide sleeves. Worn OVER the shirt. - CLANE volume sleeve shirt: crisp pure white cotton, a pointed shirt collar, full volume sleeves. Its pointed white collar sits OUT over the navy knit neckline; its white cuffs show below the knit sleeves; its curved white hem shows below the knit hem. No bare skin at the waist. - CLANE corduroy panel melange pants: a grey-green flecked tweed, with a wide band of dark chocolate-brown corduroy running straight down the outside of each leg, long and wide, slightly flared, the hems falling over the boots. - CLANE composition wide quarter boots: black smooth leather, a sharp pointed toe, a low slim kitten heel, a wide loose shaft hidden under the trouser hem. No bag, no jewellery, no scarf, no hat, no other accessories. Her hands are empty."
+  },
+  "2": {
+   "garments": [
+    "garments/LOOK2-2-tops.jpg",
+    "garments/LOOK2-3-skirt.jpg",
+    "garments/LOOK2-4-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK2-fitting-nohead.jpg"
+   ],
+   "outfitText": "- CLANE check shaggy hand-knit top: camel beige, a long shaggy brushed pile with a faint checked pattern in the knit, a crew neck, a boxy slightly cropped shape, long wide sleeves. Its hem is worn OUT over the skirt. No bare skin at the waist. - CLANE satin straight maxi skirt: pale champagne beige satin with a soft sheen, a narrow straight shape falling to the ankles, moving softly. - CLANE side-cut stacked flat shoes: ivory white smooth leather, a deep V cut at the sides, a low stacked heel. - Grey socks, only a sliver showing at the ankle. No bag, no jewellery, no scarf, no hat, no other accessories. Her hands are empty."
+  },
+  "3": {
+   "garments": [
+    "garments/LOOK3-2-outer.jpg",
+    "garments/LOOK3-3-tops.jpg",
+    "garments/LOOK3-4-pants.jpg",
+    "garments/LOOK3-5-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK3-fitting-nohead.jpg"
+   ],
+   "outfitText": "- CLANE bulky line single leather jacket: dark chocolate brown leather, a wide pointed shirt collar, a zip front, epaulettes, a ribbed elasticated hem band, a short boxy bomber shape with full sleeves. Worn OPEN. Both arms are inside the sleeves; the hands come out of the cuffs. - CLANE check shaggy hand-knit top: ivory cream, a long shaggy brushed pile with a faint checked pattern in the knit, a crew neck. Its hem is worn OUT, a little below the jacket hem. No bare skin at the waist. - CLANE low-waist tucked loose slacks: mid charcoal grey wool, front tucks, a sharp centre crease, wide loose legs, full length, the hems resting on the shoes. - CLANE side-cut stacked flat shoes: ivory white smooth leather, a deep V cut at the sides, a low stacked heel. No other bag, no jewellery, no scarf, no hat, no other accessories. She carries one small dark leather weekend bag with two short handles."
+  }
+ },
+ "pages": [
+  {
+   "page": 1,
+   "look": 2,
+   "kind": "photo",
+   "still": "clane-mode-20261018/FEED-PACK-COPENHAGEN/01_CPH-I6-03.jpg",
+   "prompt": "clane-mode-20261018/prompts-feed/I6.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Royal Playhouse, a long low building of dark smoked brick under a band of tall green-tinted glass, standing on a wide promenade of weathered pale oak planks raised over the harbour water on piers. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She stands with her body turned slightly to one side, her weight on one hip and that knee soft, both hands deep in the pockets of the long champagne satin skirt or hanging loose; the shaggy camel knit bright in the flash, the satin skirt catching hard highlights.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immediate, a li"
+  },
+  {
+   "page": 2,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-ARRIVE2-04.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/ARRIVE2.txt",
+   "aspectRatio": "3:4",
+   "location": "Copenhagen Central Station at night, around 21:30, the evening before: the great hall's tall arched timber roof trusses and big round-topped windows, warm lamps, an almost empty platform edge with a long dark train beside it, steam-like haze in the cold air.",
+   "situation": "A VERTICAL 3:4 frame, cinematic, composed for a magazine page with room for text. She is placed in the LEFT THIRD of the frame and walks along the platform on a diagonal toward the lower left, seen full length, her head at about one third from the top, her shoes about 8% above the bottom edge. The whole RIGHT HALF of the upper two thirds of the frame is calm empty dark space: the deep shadowed underside of the station's high arched timber roof and dark night air, with no lamps, no windows, no bright spots and no strong lines in that area. Camera low, a 35mm lens, about 40 degrees off her front",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 3,
+   "look": 3,
+   "kind": "flatlay",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-PACKED-02.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/PACKED.txt",
+   "aspectRatio": "3:4",
+   "location": "",
+   "situation": "",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour. No digital sharpening."
+  },
+  {
+   "page": 4,
+   "look": null,
+   "kind": "no-model",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-MORNING-02.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/MORNING.txt",
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour. No digital sharpening."
+  },
+  {
+   "page": 5,
+   "look": 1,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-BIKE-02.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/BIKE.txt",
+   "aspectRatio": "3:4",
+   "location": "a quiet cobbled street beside a canal in Christianshavn, Copenhagen, around 08:30 on a cool October morning. Old ochre and dark red townhouses, moored wooden boats without writing on the canal, a few yellow leaves on the cobbles. A tall black Danish city bicycle with a front basket.",
+   "situation": "She has just stopped with one foot on the cobbles; her breath shows faintly in the cold air; she looks along the canal.",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
+  },
+  {
+   "page": 6,
+   "look": 1,
+   "kind": "photo",
+   "still": "clane-mode-20261018/FEED-PACK-COPENHAGEN/03_CPH-I5-04.jpg",
+   "prompt": "clane-mode-20261018/prompts-feed/I5.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Black Diamond library, a huge leaning block of polished black granite and dark glass rising straight out of the harbour water, a wide quay of pale grey granite slabs along its foot, the grey-blue harbour water beside it. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She leans her back and one shoulder against the slanting black wall, her body straight and tilted with it, her feet planted together a little away from the base of the wall on the paving, both hands deep in her trouser pockets; the oversized navy knit falls straight, the white collar crisp.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immediate, a li"
+  },
+  {
+   "page": 7,
+   "look": null,
+   "kind": "no-model",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-GRANITE-03.jpg",
+   "prompt": null,
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 8,
+   "look": 2,
+   "kind": "photo",
+   "still": "clane-mode-20261018/FEED-PACK-COPENHAGEN/08_CPH-I2-02.jpg",
+   "prompt": "clane-mode-20261018/prompts-feed/I2.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Royal Playhouse, a long low building of dark smoked brick under a band of tall green-tinted glass, standing on a wide promenade of weathered pale oak planks raised over the harbour water on piers. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She stands close to the brick wall, shoulders square, one hand gripping a fistful of the shaggy camel knit at her collarbone.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immediate, a li"
+  },
+  {
+   "page": 9,
+   "look": 2,
+   "kind": "photo",
+   "still": "clane-mode-20261018/FEED-PACK-COPENHAGEN/05_CPH-C2-01.jpg",
+   "prompt": "clane-mode-20261018/prompts-feed/C2.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Royal Playhouse, a long low building of dark smoked brick under a band of tall green-tinted glass, standing on a wide promenade of weathered pale oak planks raised over the harbour water on piers. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She sits on the edge of the oak planks with her knees drawn up together and turned to one side, one forearm resting across her knees; the long champagne satin skirt pools on the wood; the camel shaggy knit catches the light.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. A 50mm lens, natural depth: she is sharp, the architecture behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 10,
+   "look": 1,
+   "kind": "illustration",
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 11,
+   "look": null,
+   "kind": "text",
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 12,
+   "look": 2,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-LUNCH-04.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/LUNCH.txt",
+   "aspectRatio": "4:3",
+   "location": "a small old Danish lunch room in a cellar-level townhouse near the Copenhagen harbour, around 13:00 on a grey October day. Low white-washed ceiling, dark wood panelling, a deep window at street level letting in soft grey daylight. A small table by the window with a white linen cloth.",
+   "situation": "She holds the knife and fork, about to cut into the herring smørrebrød, her eyes on the plate, calm and focused; the camel shaggy knit sleeves pushed a little up her wrists.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 13,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-FERRY-04.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/FERRY.txt",
+   "aspectRatio": "3:4",
+   "location": "the open stern deck of a small plain harbour ferry crossing the Copenhagen inner harbour around 17:30 in October, just after sunset. A low steel railing painted dark grey, a wet deck, the wake spreading behind the boat in a pale V. Across the wide dark water, low in the distance, the Copenhagen Opera House under its flat roof with the first warm lights coming on, and a low skyline of old warehouses.",
+   "situation": "She stands with both hands resting on the railing, the open brown leather jacket lifted a little by the wind, looking out across the water toward the lights on the far shore.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 14,
+   "look": null,
+   "kind": "text",
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 15,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-feed/I3/CPH-F-I3-FLASH-FLOOR-02.jpg",
+   "prompt": "clane-mode-20261018/prompts-feed/I3.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Opera House, a vast thin flat roof cantilevered far out over a wide forecourt of pale stone slabs at the water's edge, a curved front of glass and metal bands beneath it, the harbour water around it. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She sits on the stone with one knee drawn up high and her forearm resting across it, the other leg stretched long toward the lens so the shoe is big in the foreground; her other hand flat on the stone behind her; the open brown leather jacket falls open over the ivory shaggy knit.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immediate, a li"
+  },
+  {
+   "page": 16,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-43/CPH-43-OPERA-DUSK-01.jpg",
+   "prompt": "clane-mode-20261018/prompts-43/CPH-43-OPERA-DUSK.txt",
+   "aspectRatio": "4:3",
+   "location": "outdoors on the harbour front in Copenhagen, as in the location photo: the Opera House, a vast thin flat roof cantilevered far out over a wide forecourt of pale stone slabs at the water's edge, a curved front of glass and metal bands beneath it, the harbour water around it. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She walks past the camera in a long stride, hands in the pockets of her slacks, the open brown leather jacket swinging; her head turns just enough toward the lens to catch it.",
+   "film": "i-D magazine street editorial at dusk. A compact 35mm film camera, on-camera DIRECT FLASH combined with a slow shutter (dragging the shutter): she is frozen crisp and bright by the flash, with a faint ghost edge of motion, while the lights and the place behind her smear into soft horizontal streaks. Kodak Portra 800, visible grain, punchy natural colour. Raw, immediate, never polished. No cut-out "
+  },
+  {
+   "page": 17,
+   "look": null,
+   "kind": "no-model",
+   "still": "clane-mode-20261018/stills-43/CPH-11-AERIAL-OPERA-02.jpg",
+   "prompt": null,
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 18,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-DINNER-03.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/DINNER.txt",
+   "aspectRatio": "1:1",
+   "location": "a small New Nordic restaurant in an old Copenhagen warehouse, around 20:30. Raw brick walls, a heavy plank table of dark oak, no tablecloth. The room is dark; only candles on the tables.",
+   "situation": "Her fingers hold the stem of the wine glass on the table; she looks past the candle toward the dark room, still.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 19,
+   "look": 3,
+   "kind": "photo",
+   "still": "clane-mode-20261018/stills-extra/CPH-X-ROOM2-03.jpg",
+   "prompt": "clane-mode-20261018/prompts-extra/ROOM2.txt",
+   "aspectRatio": "4:3",
+   "location": "a quiet Scandinavian hotel room above the Copenhagen inner harbour at dusk, blue hour. Pale oak floor, white walls, a low linen-covered bed, a large window with thin pale curtains pulled back. Through the window, across the dark harbour water, the Copenhagen Opera House glows warm amber under its flat roof, and city lights reflect on the water.",
+   "situation": "She sits still in the armchair, one leg crossed over the other, one arm resting on the armrest, the other hand loosely on her knee; the open brown leather jacket on, the ivory shaggy top under it. She gazes out at the glowing opera house, lost in thought.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  }
+ ]
+}

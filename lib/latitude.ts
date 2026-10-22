@@ -24,6 +24,7 @@ export type LatitudeIssue = {
   credits?: string[];
   publishAt?: string; // 公開予約の時刻（無ければすぐ公開）
   capColour?: string; // 読み物の頭の大きな1文字（ドロップキャップ）の色。無ければ墨
+  recipe?: string; // 2026-10-22 体験（顔を入れてその服の世界に入る）用のレシピの目印。data/latitude-recipes/<slug>/recipe.json（ページ→LOOK・服の写真・場所・フィルム）
 };
 
 const pages = (n: number, animated: number[] = []): LatitudePage[] =>
@@ -35,6 +36,7 @@ const pages = (n: number, animated: number[] = []): LatitudePage[] =>
 export const ISSUES: LatitudeIssue[] = [
   {
     slug: 'iceland',
+    recipe: 'data/latitude-recipes/iceland/recipe.json',
     no: 1,
     latitude: '64.1° N',
     city: 'Iceland',
@@ -64,6 +66,7 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'copenhagen',
+    recipe: 'data/latitude-recipes/copenhagen/recipe.json',
     no: 2,
     latitude: '55.7° N',
     city: 'Copenhagen',
@@ -95,6 +98,7 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'london',
+    recipe: 'data/latitude-recipes/london/recipe.json',
     no: 3,
     latitude: '51.5° N',
     city: 'London',

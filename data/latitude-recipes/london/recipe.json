@@ -1,0 +1,255 @@
+{
+ "issue": "london",
+ "project": "yleve-mode-20261019",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "looks": {
+  "1": {
+   "garments": [
+    "garments/LOOK1-2-outer.jpg",
+    "garments/LOOK1-3-top.jpg",
+    "garments/LOOK1-4-pants.jpg",
+    "garments/LOOK1-5-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK1-fitting-nohead.jpg"
+   ],
+   "outfitText": "- YLÈVE wool double-cloth coat: warm sand beige, a high stand-up collar, raglan sleeves, mid-thigh length, a self belt. Worn OPEN with the belt hanging loose at the sides. Both arms are inside the sleeves; the hands come out of the cuffs. - YLÈVE frayed-edge V-neck knit: heather grey, a deep V neck, a slightly cropped boxy shape with raw frayed edges at the hem and cuffs. Hem worn OUT. No bare skin at the waist. - YLÈVE baggy denim: light washed blue, high-rise, very wide and straight, full length, the hems pooling over the boots. - Black smooth leather Chelsea boots with a chunky lug sole, mostly hidden under the jeans. No bag, no jewellery, no scarf, no hat. Her hands are empty."
+  },
+  "2": {
+   "garments": [
+    "garments/LOOK2-2-outer.jpg",
+    "garments/LOOK2-3-top.jpg",
+    "garments/LOOK2-4-pants.jpg",
+    "garments/LOOK2-5-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK2-fitting-nohead.jpg"
+   ],
+   "outfitText": "- YLÈVE light flannel jacket: charcoal grey wool, a relaxed single-breasted tailored shape with soft shoulders and notch lapels, hip length. Worn OPEN. - YLÈVE stripe pyjama shirt: brown and ecru fine vertical stripes, a soft fluid cupro, an open camp collar, long sleeves. Hem worn OUT, loose over the trousers. - YLÈVE high-twist wool trousers: a deep wine-tinged dark chocolate brown, front pleats, wide straight legs, full length, the hems breaking on the shoes. - Black glossy patent penny loafers worn with fine charcoal-grey socks; a band of grey sock shows at the ankle. Never bare ankles, never white socks. No bag, no jewellery, no scarf, no hat. Her hands are empty."
+  },
+  "3": {
+   "garments": [
+    "garments/LOOK3-2-outer.jpg",
+    "garments/LOOK3-3-cardigan.jpg",
+    "garments/LOOK3-4-pants.jpg",
+    "garments/LOOK3-5-bag.jpg",
+    "garments/LOOK3-6-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK3-fitting-nohead.jpg"
+   ],
+   "outfitText": "- YLÈVE blanket-brushed wool long coat: deep navy, a softly brushed surface, wide notch lapels, below-the-knee length. Worn OPEN, never buttoned; no belt tied. - YLÈVE cashmere cardigan: warm camel, a crew neck, small round buttons ALL fastened, fitted at the hip. - YLÈVE rough wool trousers: mid charcoal grey with a rough flecked texture, front pleats, wide tapered legs, full length. - YLÈVE knot hang bag: a soft slouchy black leather pouch with a single knotted strap, held tucked under one arm with the hand supporting its base. - Taupe-khaki leather square-toe ankle boots with a slim block heel, mostly hidden under the trousers. Only the one black knot bag. No jewellery, no scarf, no hat."
+  }
+ },
+ "pages": [
+  {
+   "page": 1,
+   "look": 1,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/FEED-PACK-LONDON/01_LDN-LID8-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-feed2/LID8.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the South Bank in London, as in the location photo: the National Theatre, a brutalist building of pale board-marked concrete with deep horizontal terraces stacked in layers, wide concrete stairs and broad concrete landings. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She stands with one hand at the back of her own neck, elbow raised high and pointing out of the frame, the other hand in the coat pocket; the open sand coat and its loose belt lift in the wind.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the overcast place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immedi"
+  },
+  {
+   "page": 2,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-ARRIVE2-01.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/ARRIVE2.txt",
+   "aspectRatio": "3:4",
+   "location": "St Pancras station in London at night, around 21:30, the evening before: the huge single-span arched roof of iron ribs and glass overhead, the deep Victorian red-brick walls, an almost empty platform with a long sleek train beside it, warm lamps.",
+   "situation": "A VERTICAL 3:4 frame, cinematic, composed for a magazine page with room for text. She is placed in the LEFT THIRD of the frame and walks along the platform on a diagonal toward the lower left, seen full length, her head at about one third from the top, her shoes about 8% above the bottom edge. The whole RIGHT HALF of the upper two thirds of the frame is calm empty dark space: the deep shadowed underside of the great arched iron-and-glass roof against the night sky, with no lamps, no bright windows, no bright spots there. Camera low, a 35mm lens, about 40 degrees off her front. The open navy co",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 3,
+   "look": 3,
+   "kind": "illustration",
+   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
+   "prompt": null,
+   "aspectRatio": "9:16",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 4,
+   "look": 1,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-BREAKFAST-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/BREAKFAST.txt",
+   "aspectRatio": "4:3",
+   "location": "a small old London cafe, a classic working cafe near the South Bank, 08:15 on a cold October morning. Formica table tops, wooden chairs, cream tiled walls, a big front window misted with steam, the street outside soft and grey.",
+   "situation": "She holds the mug of tea in both hands just above the table, the sand coat on, looking out through the misted window, calm.",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
+  },
+  {
+   "page": 5,
+   "look": null,
+   "kind": "text",
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 6,
+   "look": 1,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/FEED-PACK-LONDON/02_LDN-L1C2R-05.jpg",
+   "prompt": "yleve-mode-20261019/prompts/L1C2R.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the South Bank in London, as in the location photo: the National Theatre, a brutalist building of pale board-marked concrete with deep horizontal terraces stacked in layers, wide concrete stairs and broad concrete landings. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She leans one shoulder and the side of her back against a thick pale concrete pier on the LEFT side of the picture, her body twisted so her hips face the camera and her shoulders turn away from it, her weight on the leg nearest the pier, the other foot crossed in front at the ankle. Both hands deep in the coat pockets, the open coat pulled back, the grey frayed knit showing.",
+   "film": "Shot on 35mm film, Kodak Portra 400 under a flat overcast sky, fine visible grain, a cool, muted, slightly desaturated palette. A cinematic high-fashion editorial for a European magazine, not a catalogue: graphic, architectural, quiet and strong. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she is pin-sharp, and the architecture behin"
+  },
+  {
+   "page": 7,
+   "look": 1,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-feed/F1B/LDN-F1B-SMALL-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-feed/F1B.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the South Bank in London, as in the location photo: the National Theatre, a brutalist building of pale board-marked concrete with deep horizontal terraces stacked in layers, wide concrete stairs and broad concrete landings. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She stands perfectly still facing the camera, hands in the coat pockets, the open coat hanging straight.",
+   "film": "Leica M6, Summicron 35mm, Kodak Vision3 500T cinema negative with a bleach-bypass process, handheld. A greyish, desaturated image with a cool blue-grey cast through the shadows and midtones: colours are muted to about half strength, reds and greens are dull, skin is pale and cool, blacks are dense, highlights are clean and slightly silvery. Visible fine grain. It looks overcast-cool even in sunlig"
+  },
+  {
+   "page": 8,
+   "look": 1,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-feed2/LID2/LDN-LID2-FLASH-CROP-01.jpg",
+   "prompt": "yleve-mode-20261019/prompts-feed2/LID2.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the South Bank in London, as in the location photo: the National Theatre, a brutalist building of pale board-marked concrete with deep horizontal terraces stacked in layers, wide concrete stairs and broad concrete landings. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She stands close to the concrete wall, shoulders square, one hand gripping the edge of the coat collar.",
+   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the overcast place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immedi"
+  },
+  {
+   "page": 9,
+   "look": 2,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/FEED-PACK-LONDON/05_LDN-F2B-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-feed/F2B.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the raised highwalks of the Barbican Estate in London, as in the location photo: a walkway paved in dark brick-red tiles, heavy rough bush-hammered concrete balustrades and thick round concrete columns, the stacked concrete balconies of the estate behind. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She crouches low on the brick-red paving, her body turned sideways, in profile to the camera, her knees close together and pointing to the side, one forearm resting across her knees, the open jacket folding around her; her face turns over her shoulder to look straight into the lens.",
+   "film": "Leica M6, Summicron 35mm, Kodak Vision3 500T cinema negative with a bleach-bypass process, handheld. A greyish, desaturated image with a cool blue-grey cast through the shadows and midtones: colours are muted to about half strength, reds and greens are dull, skin is pale and cool, blacks are dense, highlights are clean and slightly silvery. Visible fine grain. It looks overcast-cool even in sunlig"
+  },
+  {
+   "page": 10,
+   "look": 2,
+   "kind": "illustration",
+   "still": "yleve-mode-20261019/stills-feed/F2A/LDN-F2A-LEDGE-03.jpg",
+   "prompt": "yleve-mode-20261019/prompts-feed/F2A.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on the raised highwalks of the Barbican Estate in London, as in the location photo: a walkway paved in dark brick-red tiles, heavy rough bush-hammered concrete balustrades and thick round concrete columns, the stacked concrete balconies of the estate behind. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She sits on a low, wide rough-concrete ledge, one long leg crossed high over the other, leaning forward with one elbow resting on her top knee, the other hand flat on the ledge beside her, the open charcoal jacket falling forward; the grey socks show above the loafers.",
+   "film": "Leica M6, Summicron 35mm, Kodak Vision3 500T cinema negative with a bleach-bypass process, handheld. A greyish, desaturated image with a cool blue-grey cast through the shadows and midtones: colours are muted to about half strength, reds and greens are dull, skin is pale and cool, blacks are dense, highlights are clean and slightly silvery. Visible fine grain. It looks overcast-cool even in sunlig"
+  },
+  {
+   "page": 11,
+   "look": 2,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-BUS3-01.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/BUS3.txt",
+   "aspectRatio": "3:4",
+   "location": "the top deck of a red London double-decker bus crossing the Thames on London Bridge, around 13:15 on a grey October day. The narrow centre aisle between two rows of red-and-grey patterned seats, the low curved ceiling close above, the big front window at the far end with the bridge, the river and the City towers in soft haze. A yellow grab rail.",
+   "situation": "She STANDS in the centre aisle between the seats, feet apart for balance. With her LEFT hand she grips the top of the seat back on her left, and with her RIGHT hand the top of the seat back on her right, arms spread a little, both hands clearly on the seat-back rails. The ceiling of the top deck is low and almost touches her hair, so she clearly bends her neck and ducks her head forward and down under it, chin tucked, shoulders a little rounded, but her eyes look UP and straight into the lens from under her brow. The charcoal jacket hangs open, the striped shirt loose.",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
+  },
+  {
+   "page": 12,
+   "look": 2,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-MARKET-01.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/MARKET.txt",
+   "aspectRatio": "3:4",
+   "location": "an old covered food market in Southwark, London, around 13:40: tall Victorian green-painted iron columns and a glass roof, a brick railway viaduct with arches behind, wooden stalls with crates of apples, wheels of cheese and loaves of bread, warm stall lamps. Busy but the people are far behind her and blurred. No signs, no readable text on stalls.",
+   "situation": "She holds a hot toasted cheese sandwich wrapped in brown paper in one hand, melted cheese at its edge, not yet eaten; the charcoal jacket open; she looks at the stalls, calm.",
+   "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
+  },
+  {
+   "page": 13,
+   "look": null,
+   "kind": "text",
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 14,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-43/LDN-43-BW-IRON-03.jpg",
+   "prompt": "yleve-mode-20261019/prompts-43/LDN-43-BW-IRON.txt",
+   "aspectRatio": "4:3",
+   "location": "outdoors on the Thames riverside in London at Blackfriars, as in the location photo: the great wrought-iron arches of Blackfriars Bridge overhead, rows of riveted iron ribs curving out over the river, a massive grey granite pier beside her, and out in the river the old red-painted iron columns of a vanished railway bridge standing in rows on stone bases; the wide river and the far bank beyond. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She leans one shoulder on the granite pier and holds the black knot bag up beside her face, dangling it from ONE finger hooked through its strap; the other hand in the pocket of the open navy coat; the cardigan buttoned.",
+   "film": ""
+  },
+  {
+   "page": 15,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-end/LDN-Y1-IRON-STAND-02.jpg",
+   "prompt": null,
+   "aspectRatio": "9:16",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 16,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
+   "prompt": null,
+   "aspectRatio": "9:16",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 17,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-PUB-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/PUB.txt",
+   "aspectRatio": "4:3",
+   "location": "an old Victorian pub near Blackfriars, London, around 18:30: a long dark mahogany bar, brass rails, cut and etched glass panels, small warm lamps, polished brass beer taps without any badges or writing, deep red upholstered stools. A few people far behind, blurred, in the dark.",
+   "situation": "Her hand rests by the pint on the bar; the navy coat open, the camel cardigan buttoned; the black knot bag tucked under her other arm. She looks along the bar, calm.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 18,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-CHIPS-02.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/CHIPS.txt",
+   "aspectRatio": "1:1",
+   "location": "the South Bank of the Thames in London, around 19:45, dark. A low stone river wall with old iron lamp posts glowing warm; across the black river, the dome of St Paul's Cathedral lit up softly in the distance, city lights reflecting in long lines on the water.",
+   "situation": "An open paper parcel of fish and chips rests on her lap: golden battered fish and thick chips, a small wooden fork in her hand; the navy coat open around her, the black knot bag beside her on the wall. She looks out over the river, calm.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool shadows, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 19,
+   "look": 3,
+   "kind": "photo",
+   "still": "yleve-mode-20261019/stills-extra/LDN-X-NIGHTBRIDGE-03.jpg",
+   "prompt": "yleve-mode-20261019/prompts-extra/NIGHTBRIDGE.txt",
+   "aspectRatio": "3:4",
+   "location": "the Millennium Bridge in London at 21:30: a low, flat steel footbridge with thin cables at the sides and a pale aluminium deck, leading north across the dark Thames straight toward the dome of St Paul's Cathedral, lit softly gold at the end of the bridge. Very few people, far away.",
+   "situation": "She walks with a long stride, the open navy coat swinging, the black knot bag tucked under her arm, hair moving in the river wind.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool shadows, slight halation around the lights. No digital sharpening."
+  }
+ ]
+}
