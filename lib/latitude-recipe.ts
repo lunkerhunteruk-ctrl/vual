@@ -24,7 +24,7 @@ export async function stepIntoPages(slug: string): Promise<StepIntoPage[]> {
   const r = await loadRecipe(slug);
   if (!r) return [];
   return r.pages
-    .filter((p) => p.look && p.scene)
+    .filter((p) => p.look && p.scene && p.kind === 'photo') // 2026-10-22 写真のページだけ（イラスト・平置きのページには出さない）
     .map((p) => ({ page: p.page, look: p.look as number, garments: r.looks[String(p.look)]?.garments ?? [] }));
 }
 

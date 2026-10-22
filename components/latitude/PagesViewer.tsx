@@ -97,7 +97,8 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
     <div className="fixed inset-0 z-[60] flex items-center justify-center" style={{ background: '#0c0c0b' }}
       onTouchStart={(e) => { touch.current = e.touches[0].clientX; }}
       onTouchEnd={(e) => { if (touch.current === null || sheet) return; const dx = e.changedTouches[0].clientX - touch.current; if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1); touch.current = null; }}>
-      <div className={`relative h-full max-h-[100svh] transition-all duration-500 ${sheet ? 'md:mr-[420px] opacity-40 md:opacity-100' : ''}`} style={{ aspectRatio: '3 / 4', maxWidth: '100vw' }}>
+      {/* 2026-10-22 スマホで左右が切れていたので、幅を「画面の幅」と「高さの3/4」の小さい方にして、ページ全体を収める */}
+      <div className={`relative transition-all duration-500 ${sheet ? 'md:mr-[420px] opacity-40 md:opacity-100' : ''}`} style={{ aspectRatio: '3 / 4', width: 'min(100vw, 75svh)' }}>
         {mine && showMine ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={mine} alt="You, in this look" className="h-full w-full object-cover" />
