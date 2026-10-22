@@ -123,7 +123,6 @@ export const ISSUES: LatitudeIssue[] = [
     ],
     pages: pages(19, [3, 10, 12]), // 2026-10-22 19枚（3は地図の上で筆の線が描かれて歩く、10は額の中で動くイラスト、12は Concrete の油絵の具で枠を描く市場）
     streamId: '30f4c48d6eb48a19068bc51740d8a23d', // v17（白黒で始まり、大きな緯度が縮む冒頭・LOOK3 の2カットを細い顔の絵に）
-    publishAt: '2099-01-01T00:00:00+00:00', // 2026-10-22 ユーザー指定で公開を保留（元は 2026-10-22T10:00:00+01:00）
     capColour: '#76362c', // Pier Red
     credits: ['Map data © OpenStreetMap contributors'],
   },
