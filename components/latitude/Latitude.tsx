@@ -74,10 +74,10 @@ export function Reel({ issue }: { issue: LatitudeIssue }) {
 }
 
 // カルーセルのページ（拡大写真と「Step into this look」は PagesViewer）
-export function Pages({ issue, stepPages = [], stepKey, sample }: {
-  issue: LatitudeIssue; stepPages?: StepIntoPage[]; stepKey?: string; sample?: { face: string; result: string } | null;
+export function Pages({ issue, stepPages = [], stepOn, sample }: {
+  issue: LatitudeIssue; stepPages?: StepIntoPage[]; stepOn?: boolean; sample?: { face: string; result: string } | null;
 }) {
-  return <PagesViewer slug={issue.slug} base={assetUrl(issue, '').replace(/\/$/, '')} pages={issue.pages} stepPages={stepPages} stepKey={stepKey} sample={sample} />;
+  return <PagesViewer slug={issue.slug} base={assetUrl(issue, '').replace(/\/$/, '')} pages={issue.pages} stepPages={stepPages} stepOn={stepOn} sample={sample} />;
 }
 
 // 号の色：何色でも横一列。1色の幅は色の数で決まる。スマホは色だけを一列に並べ、名前は下に1行ずつ書く

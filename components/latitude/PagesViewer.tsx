@@ -5,7 +5,7 @@ import { PageVideo } from './PageVideo';
 // カルーセルのページ：スマホは横にめくる、パソコンは2ページずつの見開き。
 // ページを押すと拡大写真（左右にめくれる）。LOOKのあるページだけ、少し遅れて「Step into this look」が出て、
 // 押すと下（パソコンは右）から体験の画面がせり上がる：見本（凛）・服・顔の写真・作るボタン。
-// 体験は stepKey（公開前の確認用の合言葉）がある時だけ出す。
+// 2026-10-22 体験はログインなしで公開・1人1日3回まで（回数はサーバーで数える）。stepOn が false の号では出さない。
 
 type Page = { file: string; video?: string };
 type StepPage = { page: number; look: number; garments: string[] };
@@ -14,8 +14,8 @@ const INK = '#1e1d1b';
 const MUTE = '#78746c';
 const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 
-export function PagesViewer({ slug, base, pages, stepPages, stepKey, sample }: {
-  slug: string; base: string; pages: Page[]; stepPages: StepPage[]; stepKey?: string; sample?: { face: string; result: string } | null;
+export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
+  slug: string; base: string; pages: Page[]; stepPages: StepPage[]; stepOn?: boolean; sample?: { face: string; result: string } | null;
 }) {
   const [open, setOpen] = useState<number | null>(null);
   const url = (f: string) => `${base}/pages/${f}`;
@@ -62,16 +62,16 @@ export function PagesViewer({ slug, base, pages, stepPages, stepKey, sample }: {
       {open !== null && (
         <Lightbox
           slug={slug} pages={pages} url={url} at={open} setAt={setOpen} onClose={() => setOpen(null)}
-          stepPages={stepKey ? stepPages : []} stepKey={stepKey} sample={sample}
+          stepPages={stepOn ? stepPages : []} sample={sample}
         />
       )}
     </>
   );
 }
 
-function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, stepKey, sample }: {
+function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
   slug: string; pages: Page[]; url: (f: string) => string; at: number; setAt: (n: number) => void; onClose: () => void;
-  stepPages: StepPage[]; stepKey?: string; sample?: { face: string; result: string } | null;
+  stepPages: StepPage[]; sample?: { face: string; result: string } | null;
 }) {
   const p = pages[at - 1];
   const step = stepPages.find((s) => s.page === at);
@@ -124,8 +124,8 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, stepKey, sa
           {mine ? 'Try again' : 'Step into this look'} →
         </button>
       )}
-      {step && sheet && stepKey && (
-        <StepSheet slug={slug} step={step} stepKey={stepKey} sample={sample} onClose={() => setSheet(false)}
+      {step && sheet && (
+        <StepSheet slug={slug} step={step} sample={sample} onClose={() => setSheet(false)}
           onDone={(u) => { setResult({ ...result, [at]: u }); setShowMine(true); setSheet(false); }} />
       )}
     </div>
@@ -141,22 +141,30 @@ async function fileToDataUrl(file: File): Promise<string> {
   return c.toDataURL('image/jpeg', 0.9);
 }
 
-function StepSheet({ slug, step, stepKey, sample, onClose, onDone }: {
-  slug: string; step: StepPage; stepKey: string; sample?: { face: string; result: string } | null; onClose: () => void; onDone: (url: string) => void;
+function StepSheet({ slug, step, sample, onClose, onDone }: {
+  slug: string; step: StepPage; sample?: { face: string; result: string } | null; onClose: () => void; onDone: (url: string) => void;
 }) {
   const [face, setFace] = useState<string | null>(null);
+  const [left, setLeft] = useState<number | null>(null);
+  useEffect(() => {  // 開いた記録（関心の数）と、今日あと何回か
+    fetch('/api/latitude/step-into', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug, page: step.page }) })
+      .then((r) => r.json()).then((d) => setLeft(typeof d.remaining === 'number' ? d.remaining : null)).catch(() => {});
+  }, [slug, step.page]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
   const run = async () => {
     if (!face) return;
     setBusy(true); setErr('');
     try {
-      const r = await fetch('/api/latitude/step-into', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug, page: step.page, face, key: stepKey }) });
-      const { taskId } = await r.json();
+      const r = await fetch('/api/latitude/step-into', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug, page: step.page, face }) });
+      const d = await r.json();
+      if (typeof d.remaining === 'number') setLeft(d.remaining);
+      if (r.status === 429) { setErr("That's today's three. Come back tomorrow."); return; }
+      const taskId = d.taskId;
       if (!taskId) throw new Error('submit');
       for (let i = 0; i < 60; i++) {
         await new Promise((res) => setTimeout(res, 4000));
-        const q = await (await fetch(`/api/latitude/step-into?task=${taskId}&key=${encodeURIComponent(stepKey)}`)).json();
+        const q = await (await fetch(`/api/latitude/step-into?task=${taskId}`)).json();
         if (q.status === 'completed' && q.url) { onDone(q.url); return; }
         if (q.status === 'failed') throw new Error('failed');
       }
@@ -200,11 +208,12 @@ function StepSheet({ slug, step, stepKey, sample, onClose, onDone }: {
         <input type="file" accept="image/*" className="hidden" onChange={async (e) => { const f = e.target.files?.[0]; if (f) setFace(await fileToDataUrl(f)); }} />
       </label>
       <p className="mt-2 text-[11px] leading-relaxed" style={{ color: MUTE }}>Your photo is used only to make this one image. We don&apos;t keep it.</p>
-      <button type="button" disabled={!face || busy} onClick={run}
+      <button type="button" disabled={!face || busy || left === 0} onClick={run}
         className="mt-5 w-full py-4 text-[12px] uppercase tracking-[0.3em] disabled:opacity-40" style={{ background: INK, color: PAPER }}>
         {busy ? 'Developing…' : 'Step in'}
       </button>
       {busy && <p className="mt-2 text-center text-[11px]" style={{ color: MUTE }}>About a minute.</p>}
+      {!busy && left !== null && <p className="mt-2 text-center text-[11px]" style={{ color: MUTE }}>Three a day · {left} left today</p>}
       {err && <p className="mt-2 text-center text-[12px]" style={{ color: '#8a2d22' }}>{err}</p>}
     </div>
   );

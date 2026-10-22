@@ -1,20 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { loadRecipe, readRecipeFile, stepIntoAllowed } from '@/lib/latitude-recipe';
+import { DAILY_LIMIT, logUse, remainingToday, visitor } from '@/lib/latitude-usage';
 
 // LATITUDE「Step into this look」：見る人の顔で、そのページの場所・光・服の1枚を作る（APIMart の Nano Banana 2.1 EXT）。
 // GET ?slug=&file=garments/..&key=  服の写真（シートの小さな写真）
 // POST { slug, page, face(dataURL), key }  生成を送る → { taskId }
 // GET ?task=&key=  できたか → { status, url }
-// 今は合言葉（公開前の確認用）がある時だけ動く。顔の写真は生成に送るだけで、ここでは保存しない。
+// 2026-10-22 ログインなしで公開。1人1日3回まで（lib/latitude-usage.ts）。顔の写真は生成に送るだけで、ここでは保存しない。
+// PUT { slug, page } 体験の画面を開いた記録（関心の数を見るため）→ { remaining }
 
 const APIMART_API_KEY = process.env.APIMART_API_KEY;
 const MODEL = 'gemini-nano-banana-2.1-ext';
 
 export async function GET(req: NextRequest) {
   const sp = new URL(req.url).searchParams;
-  if (!stepIntoAllowed(sp.get('key'))) return NextResponse.json({ error: 'not available' }, { status: 404 });
   const file = sp.get('file');
   if (file) {
+    if (!stepIntoAllowed(sp.get('key'))) return NextResponse.json({ error: 'not available' }, { status: 404 });
     const buf = await readRecipeFile(sp.get('slug') || '', file);
     if (!buf) return NextResponse.json({ error: 'not found' }, { status: 404 });
     return new NextResponse(new Uint8Array(buf), { headers: { 'Content-Type': 'image/jpeg', 'Cache-Control': 'private, max-age=3600' } });
@@ -38,7 +40,10 @@ const toDataUrl = (buf: Buffer) => `data:image/jpeg;base64,${buf.toString('base6
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
-  if (!body || !stepIntoAllowed(body.key)) return NextResponse.json({ error: 'not available' }, { status: 404 });
+  if (!body) return NextResponse.json({ error: 'bad request' }, { status: 400 });
+  const v = visitor(req);
+  const left = await remainingToday(v);
+  if (left <= 0) return withCookie(NextResponse.json({ error: 'limit', remaining: 0, limit: DAILY_LIMIT }, { status: 429 }), v);
   if (!APIMART_API_KEY) return NextResponse.json({ error: 'not configured' }, { status: 500 });
   const { slug, page, face } = body as { slug: string; page: number; face: string };
   if (typeof face !== 'string' || !/^data:image\/(jpeg|png|webp);base64,/.test(face) || face.length > 8_000_000) {
@@ -76,5 +81,18 @@ export async function POST(req: NextRequest) {
   const d = await res.json();
   const taskId = d.data?.[0]?.task_id ?? d.data?.task_id ?? d.task_id;
   if (!taskId) return NextResponse.json({ error: 'submit failed' }, { status: 502 });
-  return NextResponse.json({ taskId });
+  await logUse('stepinto', v, { slug, page: Number(page), look: p.look, taskId });
+  return withCookie(NextResponse.json({ taskId, remaining: left - 1, limit: DAILY_LIMIT }), v);
+}
+
+export async function PUT(req: NextRequest) {
+  const body = await req.json().catch(() => ({}));
+  const v = visitor(req);
+  await logUse('open', v, { slug: String(body.slug || ''), page: Number(body.page) || null });
+  return withCookie(NextResponse.json({ remaining: await remainingToday(v), limit: DAILY_LIMIT }), v);
+}
+
+function withCookie(res: NextResponse, v: { vid: string; isNew: boolean }) {
+  if (v.isNew) res.cookies.set('lat_vid', v.vid, { httpOnly: true, sameSite: 'lax', secure: true, maxAge: 60 * 60 * 24 * 365, path: '/' });
+  return res;
 }
