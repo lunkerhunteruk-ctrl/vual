@@ -50,7 +50,7 @@ const CONTENT = {
       sectionLabel: 'Founder',
       name: 'Sachio Kawasaki',
       role: 'Founder & Creative Director',
-      bio: 'Central Saint Martins MA Fashion修了。Balenciagaでの経験を経て、自身のブランドを設立・運営。ハイファッションの現場で培った視点と最先端のテクノロジーを融合させ、これまでにないビジュアル体験を構築する。',
+      bio: 'Central Saint Martins MA Fashion修了。Balenciagaで研鑽を積んだのち、自身のブランドを設立・運営。ハイファッションの現場で培った視点と最先端のテクノロジーを融合させ、これまでにないビジュアル体験を構築する。',
     },
     contact: {
       sectionLabel: 'Contact',
@@ -87,7 +87,7 @@ const CONTENT = {
       sectionLabel: 'Founder',
       name: 'Sachio Kawasaki',
       role: 'Founder & Creative Director',
-      bio: 'MA Fashion, Central Saint Martins. After working at Balenciaga, he founded and ran his own label. He fuses a perspective forged on the floor of high fashion with cutting-edge technology to construct visual experiences unlike any before.',
+      bio: 'MA Fashion, Central Saint Martins. Trained at Balenciaga, he went on to found and ran his own label. He fuses a perspective forged on the floor of high fashion with cutting-edge technology to construct visual experiences unlike any before.',
     },
     contact: {
       sectionLabel: 'Contact',
