@@ -68,21 +68,9 @@
   },
   {
    "page": 3,
-   "look": 3,
-   "kind": "illustration",
-   "scene": "scenes/p03.jpg",
-   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
-   "prompt": null,
-   "aspectRatio": "9:16",
-   "location": "",
-   "situation": "",
-   "film": ""
-  },
-  {
-   "page": 4,
    "look": 1,
    "kind": "photo",
-   "scene": "scenes/p04.jpg",
+   "scene": "scenes/p03.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-BREAKFAST-02.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/BREAKFAST.txt",
    "aspectRatio": "4:3",
@@ -91,13 +79,25 @@
    "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
   },
   {
-   "page": 5,
+   "page": 4,
    "look": null,
    "kind": "text",
    "scene": null,
    "still": null,
    "prompt": null,
    "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 5,
+   "look": 3,
+   "kind": "illustration",
+   "scene": "scenes/p05.jpg",
+   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
+   "prompt": null,
+   "aspectRatio": "9:16",
    "location": "",
    "situation": "",
    "film": ""
@@ -128,21 +128,9 @@
   },
   {
    "page": 8,
-   "look": 1,
-   "kind": "photo",
-   "scene": "scenes/p08.jpg",
-   "still": "yleve-mode-20261019/stills-feed2/LID2/LDN-LID2-FLASH-CROP-01.jpg",
-   "prompt": "yleve-mode-20261019/prompts-feed2/LID2.txt",
-   "aspectRatio": "3:4",
-   "location": "outdoors on the South Bank in London, as in the location photo: the National Theatre, a brutalist building of pale board-marked concrete with deep horizontal terraces stacked in layers, wide concrete stairs and broad concrete landings. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
-   "situation": "She stands close to the concrete wall, shoulders square, one hand gripping the edge of the coat collar.",
-   "film": "i-D magazine street editorial. Shot on a compact 35mm film camera with an on-camera DIRECT FLASH fired straight at her from the front, even in daylight: her face and clothes are hard-lit and bright with a crisp flash shadow just behind her, while the overcast place behind her falls a stop darker. Kodak Portra 800, visible grain, punchy natural colour, slight flash falloff at the edges. Raw, immedi"
-  },
-  {
-   "page": 9,
    "look": 2,
    "kind": "photo",
-   "scene": "scenes/p09.jpg",
+   "scene": "scenes/p08.jpg",
    "still": "yleve-mode-20261019/FEED-PACK-LONDON/05_LDN-F2B-02.jpg",
    "prompt": "yleve-mode-20261019/prompts-feed/F2B.txt",
    "aspectRatio": "3:4",
@@ -151,10 +139,10 @@
    "film": "Leica M6, Summicron 35mm, Kodak Vision3 500T cinema negative with a bleach-bypass process, handheld. A greyish, desaturated image with a cool blue-grey cast through the shadows and midtones: colours are muted to about half strength, reds and greens are dull, skin is pale and cool, blacks are dense, highlights are clean and slightly silvery. Visible fine grain. It looks overcast-cool even in sunlig"
   },
   {
-   "page": 10,
+   "page": 9,
    "look": 2,
    "kind": "illustration",
-   "scene": "scenes/p10.jpg",
+   "scene": "scenes/p09.jpg",
    "still": "yleve-mode-20261019/stills-feed/F2A/LDN-F2A-LEDGE-03.jpg",
    "prompt": "yleve-mode-20261019/prompts-feed/F2A.txt",
    "aspectRatio": "3:4",
@@ -163,10 +151,10 @@
    "film": "Leica M6, Summicron 35mm, Kodak Vision3 500T cinema negative with a bleach-bypass process, handheld. A greyish, desaturated image with a cool blue-grey cast through the shadows and midtones: colours are muted to about half strength, reds and greens are dull, skin is pale and cool, blacks are dense, highlights are clean and slightly silvery. Visible fine grain. It looks overcast-cool even in sunlig"
   },
   {
-   "page": 11,
+   "page": 10,
    "look": 2,
    "kind": "photo",
-   "scene": "scenes/p11.jpg",
+   "scene": "scenes/p10.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-BUS3-01.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/BUS3.txt",
    "aspectRatio": "3:4",
@@ -175,16 +163,28 @@
    "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
   },
   {
-   "page": 12,
+   "page": 11,
    "look": 2,
    "kind": "photo",
-   "scene": "scenes/p12.jpg",
+   "scene": "scenes/p11.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-MARKET-01.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/MARKET.txt",
    "aspectRatio": "3:4",
    "location": "an old covered food market in Southwark, London, around 13:40: tall Victorian green-painted iron columns and a glass roof, a brick railway viaduct with arches behind, wooden stalls with crates of apples, wheels of cheese and loaves of bread, warm stall lamps. Busy but the people are far behind her and blurred. No signs, no readable text on stalls.",
    "situation": "She holds a hot toasted cheese sandwich wrapped in brown paper in one hand, melted cheese at its edge, not yet eaten; the charcoal jacket open; she looks at the stalls, calm.",
    "film": "35mm film camera, Kodak Portra 400, fine grain, soft natural muted colour, cool shadows and warm highlights. No digital sharpening."
+  },
+  {
+   "page": 12,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p12.jpg",
+   "still": "yleve-mode-20261019/stills-43/LDN-43-BW-IRON-03.jpg",
+   "prompt": "yleve-mode-20261019/prompts-43/LDN-43-BW-IRON.txt",
+   "aspectRatio": "4:3",
+   "location": "outdoors on the Thames riverside in London at Blackfriars, as in the location photo: the great wrought-iron arches of Blackfriars Bridge overhead, rows of riveted iron ribs curving out over the river, a massive grey granite pier beside her, and out in the river the old red-painted iron columns of a vanished railway bridge standing in rows on stone bases; the wide river and the far bank beyond. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
+   "situation": "She leans one shoulder on the granite pier and holds the black knot bag up beside her face, dangling it from ONE finger hooked through its strap; the other hand in the pocket of the open navy coat; the cardigan buttoned.",
+   "film": ""
   },
   {
    "page": 13,
@@ -203,11 +203,11 @@
    "look": 3,
    "kind": "photo",
    "scene": "scenes/p14.jpg",
-   "still": "yleve-mode-20261019/stills-43/LDN-43-BW-IRON-03.jpg",
-   "prompt": "yleve-mode-20261019/prompts-43/LDN-43-BW-IRON.txt",
-   "aspectRatio": "4:3",
-   "location": "outdoors on the Thames riverside in London at Blackfriars, as in the location photo: the great wrought-iron arches of Blackfriars Bridge overhead, rows of riveted iron ribs curving out over the river, a massive grey granite pier beside her, and out in the river the old red-painted iron columns of a vanished railway bridge standing in rows on stone bases; the wide river and the far bank beyond. No trees, no branches, no leaves inside the frame. No other people near her, no signs, no readable text, no logos, no flags, no boats with writing.",
-   "situation": "She leans one shoulder on the granite pier and holds the black knot bag up beside her face, dangling it from ONE finger hooked through its strap; the other hand in the pocket of the open navy coat; the cardigan buttoned.",
+   "still": "yleve-mode-20261019/stills-end/LDN-Y1-IRON-STAND-02.jpg",
+   "prompt": null,
+   "aspectRatio": "9:16",
+   "location": "",
+   "situation": "",
    "film": ""
   },
   {
@@ -215,7 +215,7 @@
    "look": 3,
    "kind": "photo",
    "scene": "scenes/p15.jpg",
-   "still": "yleve-mode-20261019/stills-end/LDN-Y1-IRON-STAND-02.jpg",
+   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
    "prompt": null,
    "aspectRatio": "9:16",
    "location": "",
@@ -227,18 +227,6 @@
    "look": 3,
    "kind": "photo",
    "scene": "scenes/p16.jpg",
-   "still": "yleve-mode-20261019/stills-end/LDN-X4-BW-SIDEWALK-04.jpg",
-   "prompt": null,
-   "aspectRatio": "9:16",
-   "location": "",
-   "situation": "",
-   "film": ""
-  },
-  {
-   "page": 17,
-   "look": 3,
-   "kind": "photo",
-   "scene": "scenes/p17.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-PUB-02.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/PUB.txt",
    "aspectRatio": "4:3",
@@ -247,10 +235,10 @@
    "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool shadows, slight halation around the lights. No digital sharpening."
   },
   {
-   "page": 18,
+   "page": 17,
    "look": 3,
    "kind": "photo",
-   "scene": "scenes/p18.jpg",
+   "scene": "scenes/p17.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-CHIPS-02.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/CHIPS.txt",
    "aspectRatio": "1:1",
@@ -259,10 +247,10 @@
    "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool shadows, slight halation around the lights. No digital sharpening."
   },
   {
-   "page": 19,
+   "page": 18,
    "look": 3,
    "kind": "photo",
-   "scene": "scenes/p19.jpg",
+   "scene": "scenes/p18.jpg",
    "still": "yleve-mode-20261019/stills-extra/LDN-X-NIGHTBRIDGE-03.jpg",
    "prompt": "yleve-mode-20261019/prompts-extra/NIGHTBRIDGE.txt",
    "aspectRatio": "3:4",
