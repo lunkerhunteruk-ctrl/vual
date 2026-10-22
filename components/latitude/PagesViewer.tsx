@@ -147,7 +147,6 @@ function StepSheet({ slug, step, stepKey, sample, onClose, onDone }: {
   const [face, setFace] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
-  const asset = (f: string) => `/api/latitude/step-into?slug=${slug}&file=${encodeURIComponent(f)}&key=${encodeURIComponent(stepKey)}`;
   const run = async () => {
     if (!face) return;
     setBusy(true); setErr('');
@@ -189,15 +188,7 @@ function StepSheet({ slug, step, stepKey, sample, onClose, onDone }: {
           </div>
         </div>
       )}
-      <div className="mt-6">
-        <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>You will wear</p>
-        <div className="mt-2 flex gap-2 overflow-x-auto">
-          {step.garments.map((g) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={g} src={asset(g)} alt="" className="h-20 w-16 shrink-0 bg-white object-contain" />
-          ))}
-        </div>
-      </div>
+      {/* 2026-10-22 ユーザー指定：服（素材アイテム）の写真は出さない */}
       <label className="mt-6 flex cursor-pointer items-center gap-4 border p-3" style={{ borderColor: 'rgba(30,29,27,0.2)' }}>
         {face ? (
           // eslint-disable-next-line @next/next/no-img-element
