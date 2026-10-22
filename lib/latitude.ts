@@ -125,7 +125,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
       'London was my city for about seven years, when I was a fashion student. I lived all over it, north, south, east and west, one neighbourhood after another. I rarely go back now, but one memory has stayed: hearing Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-22 編集者本人の記憶（事実）：ファッションの学生として約7年・東西南北に住んだ・今はあまり行かない
     ],
-    pages: pages(19, [3, 10, 12, 13]), // 2026-10-22 19枚（3は地図の上で筆の線が描かれて歩く、10は額の中で動くイラスト、12は Concrete の油絵の具で枠を描く市場、13は色見本の右で線だけの4ポーズを繰り返す）
+    pages: pages(19, [3, 10, 12]), // 2026-10-22 19枚（3は地図の上で筆の線が描かれて歩く、10は額の中で動くイラスト、12は Concrete の油絵の具で枠を描く市場）
     streamId: '30f4c48d6eb48a19068bc51740d8a23d', // v17（白黒で始まり、大きな緯度が縮む冒頭・LOOK3 の2カットを細い顔の絵に）
     capColour: '#76362c', // Pier Red
     credits: ['Map data © OpenStreetMap contributors'],
@@ -159,7 +159,7 @@ export const ISSUES: LatitudeIssue[] = [
       "Across the valley, Arthur's Seat rises out of Holyrood Park: the remains of a volcano, with the long cliff of Salisbury Crags at its side.",
       'By the time the Old Town lamps come on, the sun has long gone. In late October it never climbs higher than about twenty degrees.',
     ],
-    pages: pages(16), // 2026-10-22 夜行列車から夜のクロースまで16枚
+    pages: pages(16, [5]), // 2026-10-22 夜行列車から夜のクロースまで16枚（5は色見本の右で線だけの4ポーズを繰り返す）
     streamId: '3d9411b6caaa3452ed7144df3a8b4ac6', // v26（環境音だけ・-15 LUFS）
     capColour: '#896242', // Camel Gold
     publishAt: '2026-10-23T10:00:00+01:00', // ロンドン号の翌日、イギリス時間（BST）10:00 = 日本時間 18:00
