@@ -17,11 +17,23 @@ export function PageVideo({ src, poster, label }: { src: string; poster: string;
       v.play().catch(() => {});
     };
     const again = () => { v.currentTime = 0; v.play().catch(() => {}); };
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : v.pause()), { threshold: 0.3 });
-    io.observe(v);
+    // 画面に3割以上入っているか（IntersectionObserver が動かない環境もあるので、位置を直接見る）
+    const inView = () => {
+      const r = v.getBoundingClientRect(); if (!r.width || !r.height) return false;
+      const w = Math.min(r.right, window.innerWidth) - Math.max(r.left, 0), h = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+      return w > 0 && h > 0 && (w * h) / (r.width * r.height) > 0.3;
+    };
+    const check = () => (inView() ? (v.paused || !v.getAttribute('src') ? start() : null) : !v.paused && v.pause());
+    const timer = window.setInterval(check, 500);
+    window.addEventListener('scroll', check, { passive: true });
+    document.addEventListener('scroll', check, { passive: true, capture: true });
     v.addEventListener('ended', again);
-    v.addEventListener('canplay', () => { if (shown()) v.play().catch(() => {}); });
-    return () => { io.disconnect(); v.removeEventListener('ended', again); };
+    v.addEventListener('canplay', check);
+    check();
+    return () => {
+      window.clearInterval(timer); window.removeEventListener('scroll', check); document.removeEventListener('scroll', check, { capture: true });
+      v.removeEventListener('ended', again); v.removeEventListener('canplay', check);
+    };
   }, [src]);
   return (
     <video ref={ref} poster={poster} muted loop playsInline preload="none" aria-label={label} className="block h-full w-full object-cover" />
