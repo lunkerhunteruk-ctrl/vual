@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // 2) 描き終わったら、AIに静止画で描かせた歩く4コマ（f1〜f4）を順に切り替えて、その場で歩かせる
 type Strokes = { w: number; h: number; stroke: number; paths: { d: string; len: number }[] };
 
-export function DrawWalk({ base, speed = 900, fps = 6 }: { base: string; speed?: number; fps?: number }) {
+export function DrawWalk({ base, speed = 1100, fps = 6 }: { base: string; speed?: number; fps?: number }) {
   const [s, setS] = useState<Strokes | null>(null);
   const [run, setRun] = useState(0);
   const [walk, setWalk] = useState(false);
@@ -14,8 +14,9 @@ export function DrawWalk({ base, speed = 900, fps = 6 }: { base: string; speed?:
   useEffect(() => { fetch(`${base}/strokes.json`).then((r) => r.json()).then(setS); }, [base]);
   // 線の長さに比例した時間で、上から順に描く（speed＝1秒に描く長さ）
   const timed = (s?.paths ?? []).reduce<{ d: string; start: number; dur: number }[]>((acc, p) => {
-    const start = acc.length ? acc[acc.length - 1].start + acc[acc.length - 1].dur * 0.85 : 0.2;
-    acc.push({ d: p.d, start, dur: Math.max(0.12, p.len / speed) });
+    // 1本ずつ順に（前の線を描き終えてから次へ。筆を持ち上げて次の線へ移る間をほんの少し）
+    const start = acc.length ? acc[acc.length - 1].start + acc[acc.length - 1].dur + 0.03 : 0.2;
+    acc.push({ d: p.d, start, dur: Math.max(0.06, p.len / speed) });
     return acc;
   }, []);
   const total = timed.length ? timed[timed.length - 1].start + timed[timed.length - 1].dur : 0;
@@ -33,14 +34,15 @@ export function DrawWalk({ base, speed = 900, fps = 6 }: { base: string; speed?:
   if (!s) return null;
   return (
     <div className="relative h-full w-full">
-      <style>{'@keyframes dw-draw{to{stroke-dashoffset:0}}'}</style>
+      <style>{'@keyframes dw-draw{to{stroke-dashoffset:0}}@keyframes dw-on{to{opacity:1}}'}</style>
       {!walk ? (
         <svg key={run} viewBox={`0 0 ${s.w} ${s.h}`} className="absolute inset-0 h-full w-full">
           <defs>
             <mask id={`dw-mask-${run}`} maskUnits="userSpaceOnUse" x="0" y="0" width={s.w} height={s.h}>
               {timed.map((p, i) => (
                 <path key={i} d={p.d} fill="none" stroke="#fff" strokeWidth={s.stroke} strokeLinecap="round" strokeLinejoin="round" pathLength={1}
-                  style={{ strokeDasharray: 1, strokeDashoffset: 1, animation: `dw-draw ${p.dur}s linear ${p.start}s forwards` }} />
+                  // iPhone の Safari は、描き始める前の線の端の丸みだけを点として先に出すので、描き始めるまで線ごと隠しておく
+                  style={{ strokeDasharray: 1, strokeDashoffset: 1, opacity: 0, animation: `dw-on 0s linear ${p.start}s forwards, dw-draw ${p.dur}s ease-in-out ${p.start}s forwards` }} />
               ))}
             </mask>
           </defs>
