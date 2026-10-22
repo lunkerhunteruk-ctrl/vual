@@ -118,7 +118,7 @@ export const ISSUES: LatitudeIssue[] = [
       "London keeps its grey in three materials. On the South Bank, Denys Lasdun's National Theatre, opened in 1976, steps down toward the river in terraces of board-marked concrete, the grain of the timber moulds still printed in the walls.",
       'A short walk north, the Barbican Estate was built between 1965 and 1976 on ground bombed in the war: towers, raised walkways and podiums paved in dark brick.',
       'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
-      'Years ago, as a student in London, I heard Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-21 編集者本人の記憶（事実）
+      'London was my city for about seven years, when I was a fashion student. I lived all over it, north, south, east and west, one neighbourhood after another. I rarely go back now, but one memory has stayed: hearing Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-22 編集者本人の記憶（事実）：ファッションの学生として約7年・東西南北に住んだ・今はあまり行かない
     ],
     pages: pages(18, [9]), // 2026-10-21 旅の1日を追う18枚に（9は動くページ）
     streamId: 'be1e0d53c1e4fb36d3fca08e3a82b81a', // v13（大きな緯度が縮んで落ち着く冒頭。前は 460e485d…）
