@@ -121,7 +121,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Back at the water, Blackfriars Bridge has carried the road on wrought-iron arches since 1869. Beside it stand rows of red columns, the piers of an older railway bridge, left in the river when the bridge itself was taken down.',
       'London was my city for about seven years, when I was a fashion student. I lived all over it, north, south, east and west, one neighbourhood after another. I rarely go back now, but one memory has stayed: hearing Music for 18 Musicians at the Barbican. The pulse is still in these walls.', // 2026-10-22 編集者本人の記憶（事実）：ファッションの学生として約7年・東西南北に住んだ・今はあまり行かない
     ],
-    pages: pages(18, [9]), // 2026-10-21 旅の1日を追う18枚に（9は動くページ）
+    pages: pages(19, [9]), // 2026-10-22 19枚（9はバービカンの動くイラストを額に入れたページ）
     streamId: '30f4c48d6eb48a19068bc51740d8a23d', // v17（白黒で始まり、大きな緯度が縮む冒頭・LOOK3 の2カットを細い顔の絵に）
     publishAt: '2026-10-22T10:00:00+01:00', // ロンドン時間（BST）10:00 = 日本時間 18:00
     capColour: '#76362c', // Pier Red
