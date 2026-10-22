@@ -5,8 +5,8 @@ import { DrawWalk } from '@/components/latitude/DrawWalk';
 export const metadata: Metadata = { title: 'LATITUDE lab', robots: { index: false, follow: false } };
 
 export default function DrawWalkLab() {
-  // 地図のページ（1080×1440）の上の、歩く絵の場所（x600 y640、高さ587。絵は 493×692 の比）
-  const h = 587, w = Math.round((587 * 493) / 692); // 4コマの枠 493×692
+  // 地図のページ（1080×1440）の上の、歩く絵の場所（x600 y640、高さ587。絵は 919×1371 の比）
+  const h = 587, w = Math.round((587 * 919) / 1371); // 4コマの枠 919×1371
   return (
     <div className="flex min-h-screen items-center justify-center p-4" style={{ background: '#0c0c0b' }}>
       <div className="relative" style={{ aspectRatio: '3 / 4', width: 'min(100vw - 2rem, 75svh)' }}>
