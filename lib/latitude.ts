@@ -160,7 +160,7 @@ export const ISSUES: LatitudeIssue[] = [
       'By the time the Old Town lamps come on, the sun has long gone. In late October it never climbs higher than about twenty degrees.',
     ],
     pages: pages(16, [5]), // 2026-10-22 夜行列車から夜のクロースまで16枚（5は色見本の右で線だけの4ポーズを繰り返す）
-    streamId: '3d9411b6caaa3452ed7144df3a8b4ac6', // v26（環境音だけ・-15 LUFS）
+    streamId: '32f9348e76c8382e46d1f2e6f187cecb', // v30（左上に LATITUDE と 55.9° N がふわっと出て、列車に入ってすぐ消える冒頭）
     capColour: '#896242', // Camel Gold
     publishAt: '2026-10-23T10:00:00+01:00', // ロンドン号の翌日、イギリス時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
