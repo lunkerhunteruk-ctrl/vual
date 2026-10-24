@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
       model: MODEL,
       prompt,
       size: p.aspectRatio || '3:4',
-      resolution: '2K',
+      resolution: '1K',
       n: 1,
       image_urls: [toDataUrl(scene), ...garments.map(toDataUrl), face],
     }),
