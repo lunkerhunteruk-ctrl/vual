@@ -1,40 +1,31 @@
 {
  "issue": "copenhagen",
  "project": "clane-mode-20261018",
- "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garmentRefs は vault.vual.jp/outputs の中の商品写真の道（写真そのものはここに置かない）。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
  "looks": {
   "1": {
-   "garments": [
-    "garments/LOOK1N-2-knit.jpg",
-    "garments/LOOK1N-3-shirt.jpg",
-    "garments/LOOK1N-4-pants.jpg",
-    "garments/LOOK1N-5-boots.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK1N-fitting-nohead.jpg"
+   "garmentRefs": [
+    "clane-mode-20261018/refs-m02/LOOK-01/LOOK1N-2-knit.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-01/LOOK1N-3-shirt.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-01/LOOK1N-4-pants.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-01/LOOK1N-5-boots.jpg"
    ],
    "outfitText": "- CLANE yak over knit top: deep navy, a soft brushed yak-wool knit, a wide crew neck, a very oversized boxy body with dropped shoulders and long wide sleeves. Worn OVER the shirt. - CLANE volume sleeve shirt: crisp pure white cotton, a pointed shirt collar, full volume sleeves. Its pointed white collar sits OUT over the navy knit neckline; its white cuffs show below the knit sleeves; its curved white hem shows below the knit hem. No bare skin at the waist. - CLANE corduroy panel melange pants: a grey-green flecked tweed, with a wide band of dark chocolate-brown corduroy running straight down the outside of each leg, long and wide, slightly flared, the hems falling over the boots. - CLANE composition wide quarter boots: black smooth leather, a sharp pointed toe, a low slim kitten heel, a wide loose shaft hidden under the trouser hem. No bag, no jewellery, no scarf, no hat, no other accessories. Her hands are empty."
   },
   "2": {
-   "garments": [
-    "garments/LOOK2-2-tops.jpg",
-    "garments/LOOK2-3-skirt.jpg",
-    "garments/LOOK2-4-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK2-fitting-nohead.jpg"
+   "garmentRefs": [
+    "clane-mode-20261018/refs-m02/LOOK-02/LOOK2-2-tops.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-02/LOOK2-3-skirt.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-02/LOOK2-4-shoes.jpg"
    ],
    "outfitText": "- CLANE check shaggy hand-knit top: camel beige, a long shaggy brushed pile with a faint checked pattern in the knit, a crew neck, a boxy slightly cropped shape, long wide sleeves. Its hem is worn OUT over the skirt. No bare skin at the waist. - CLANE satin straight maxi skirt: pale champagne beige satin with a soft sheen, a narrow straight shape falling to the ankles, moving softly. - CLANE side-cut stacked flat shoes: ivory white smooth leather, a deep V cut at the sides, a low stacked heel. - Grey socks, only a sliver showing at the ankle. No bag, no jewellery, no scarf, no hat, no other accessories. Her hands are empty."
   },
   "3": {
-   "garments": [
-    "garments/LOOK3-2-outer.jpg",
-    "garments/LOOK3-3-tops.jpg",
-    "garments/LOOK3-4-pants.jpg",
-    "garments/LOOK3-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK3-fitting-nohead.jpg"
+   "garmentRefs": [
+    "clane-mode-20261018/refs-m02/LOOK-03/LOOK3-2-outer.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-03/LOOK3-3-tops.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-03/LOOK3-4-pants.jpg",
+    "clane-mode-20261018/refs-m02/LOOK-03/LOOK3-5-shoes.jpg"
    ],
    "outfitText": "- CLANE bulky line single leather jacket: dark chocolate brown leather, a wide pointed shirt collar, a zip front, epaulettes, a ribbed elasticated hem band, a short boxy bomber shape with full sleeves. Worn OPEN. Both arms are inside the sleeves; the hands come out of the cuffs. - CLANE check shaggy hand-knit top: ivory cream, a long shaggy brushed pile with a faint checked pattern in the knit, a crew neck. Its hem is worn OUT, a little below the jacket hem. No bare skin at the waist. - CLANE low-waist tucked loose slacks: mid charcoal grey wool, front tucks, a sharp centre crease, wide loose legs, full length, the hems resting on the shoes. - CLANE side-cut stacked flat shoes: ivory white smooth leather, a deep V cut at the sides, a low stacked heel. No other bag, no jewellery, no scarf, no hat, no other accessories. She carries one small dark leather weekend bag with two short handles."
   }

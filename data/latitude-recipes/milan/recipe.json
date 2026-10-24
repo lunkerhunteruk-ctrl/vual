@@ -1,40 +1,31 @@
 {
  "issue": "milan",
  "project": "harunobu-mode-20261019",
- "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garmentRefs は vault.vual.jp/outputs の中の商品写真の道（写真そのものはここに置かない）。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
  "looks": {
   "1": {
-   "garments": [
-    "garments/LOOK1-2-dress.jpg",
-    "garments/LOOK1-3-shoes.jpg",
-    "garments/LOOK1-4-bag.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK1-fitting-nohead.jpg"
+   "garmentRefs": [
+    "harunobu-mode-20261019/refs/LOOK-01/LOOK1-2-dress.jpg",
+    "harunobu-mode-20261019/refs/LOOK-01/LOOK1-3-shoes.jpg",
+    "harunobu-mode-20261019/refs/LOOK-01/LOOK1-4-bag.jpg"
    ],
    "outfitText": "- HARUNOBUMURATA ELIANA silk-wool volume dress: warm ivory (off-white, never pure white, never beige), a matte, softly structured fabric. A small stand-up collar with a keyhole slit opening down the centre front; below the keyhole, a single CLOSED vertical seam runs down the centre front to the hem: the skirt has NO slit and NO opening, it never parts when she walks, her legs never show through the front; a long narrow strip of the same ivory fabric comes from the collar, fastened at the side of her neck by one large polished SILVER dome button, and hangs down her chest. Dropped shoulders, full rounded sleeves to the wrist, a seam across the body under the chest, hidden side pockets, a wide rounded cocoon body that falls to just above the ankle. Nothing worn over it. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA suede bag: dark chocolate-brown suede, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Its two handles are SHORT rounded top handles, too short to go over the shoulder: the bag is carried in one hand by both handles together, the arm hanging down, the bag at her thigh (or held in the crook of the elbow). Never on the shoulder. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
   },
   "2": {
-   "garments": [
-    "garments/LOOK2-2-top.jpg",
-    "garments/LOOK2-3-skirt.jpg",
-    "garments/LOOK2-4-shoes.jpg",
-    "garments/LOOK2-5-bag.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK2-fitting-nohead.jpg"
+   "garmentRefs": [
+    "harunobu-mode-20261019/refs/LOOK-02/LOOK2-2-top.jpg",
+    "harunobu-mode-20261019/refs/LOOK-02/LOOK2-3-skirt.jpg",
+    "harunobu-mode-20261019/refs/LOOK-02/LOOK2-4-shoes.jpg",
+    "harunobu-mode-20261019/refs/LOOK-02/LOOK2-5-bag.jpg"
    ],
    "outfitText": "- HARUNOBUMURATA OATH virgin wool sweater: charcoal heather grey (never blue), a soft brushed sweatshirt shape, crew neck, dropped shoulders, oversized and boxy, hip length. One irregular oval SILVER ring buckle sits at the waist just off centre on her left side, gathering the wool into deep radiating folds around it — this gathered buckle is shown at the front. The full sleeves are pushed up to mid-forearm, bunching softly. The hem is worn OUT over the skirt waistband; no bare skin at the waist. - HARUNOBUMURATA OPHELIA virgin wool skirt: black, a flat waistband, deep pressed pleats from the waist that open into a full bell shape, mid-calf length. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA MEDIA leather bag: greige (warm grey-taupe) smooth leather, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Held in one hand by both handles together, hanging at her side. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
   },
   "3": {
-   "garments": [
-    "garments/LOOK3-2-top.jpg",
-    "garments/LOOK3-3-pants.jpg",
-    "garments/LOOK3-4-shoes.jpg",
-    "garments/LOOK3-5-bag.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK3-fitting-nohead.jpg"
+   "garmentRefs": [
+    "harunobu-mode-20261019/refs/LOOK-03/LOOK3-2-top.jpg",
+    "harunobu-mode-20261019/refs/LOOK-03/LOOK3-3-pants.jpg",
+    "harunobu-mode-20261019/refs/LOOK-03/LOOK3-4-shoes.jpg",
+    "harunobu-mode-20261019/refs/LOOK-03/LOOK3-5-bag.jpg"
    ],
    "outfitText": "- HARUNOBUMURATA HEPBURN wool blouse: deep navy, a fine matte wool, a small stand-up collar with a keyhole slit down the centre front; a long narrow strip of the same navy fabric comes from the collar, fastened at the side of her neck by one large polished SILVER ball button, and hangs down her chest. Dropped shoulders, full long sleeves gathered by elastic into soft balloon cuffs at the wrist (sleeves down). Boxy, hip length, short side slits. Hem worn OUT over the trousers. - HARUNOBUMURATA ISPARTA satin trousers: deep navy matching the blouse, a soft back-satin sheen, deep front pleats, very wide straight legs falling to the floor and covering most of the shoe. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA MEDIA grain leather bag: black pebbled leather, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Cradled against her body in the crook of one arm, the forearm under its base, both handles upright. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
   }

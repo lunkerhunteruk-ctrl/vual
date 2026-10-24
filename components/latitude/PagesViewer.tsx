@@ -10,7 +10,7 @@ import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 // 2026-10-22 体験はログインなしで公開・1人1日3回まで（回数はサーバーで数える）。stepOn が false の号では出さない。
 
 type Page = { file: string; video?: string };
-type StepPage = { page: number; look: number; garments: string[] };
+type StepPage = { page: number; look: number };
 const PAPER = '#f2eee7';
 const INK = '#1e1d1b';
 const MUTE = '#78746c';

@@ -1,57 +1,45 @@
 {
  "issue": "edinburgh",
  "project": "aton-mode-20261019",
- "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garmentRefs は vault.vual.jp/outputs の中の商品写真の道（写真そのものはここに置かない）。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
  "looks": {
   "1": {
-   "garments": [
-    "garments/LOOK1-2-outer.jpg",
-    "garments/LOOK1-3-top.jpg",
-    "garments/LOOK1-4-pants.jpg",
-    "garments/LOOK1-5-bag.jpg",
-    "garments/LOOK1-6-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK1-fitting-nohead.jpg"
+   "garmentRefs": [
+    "aton-mode-20261019/refs/LOOK-01/LOOK1-2-outer.jpg",
+    "aton-mode-20261019/refs/LOOK-01/LOOK1-3-top.jpg",
+    "aton-mode-20261019/refs/LOOK-01/LOOK1-4-pants.jpg",
+    "aton-mode-20261019/refs/LOOK-01/LOOK1-5-bag.jpg",
+    "aton-mode-20261019/refs/LOOK-01/LOOK1-6-shoes.jpg"
    ],
    "outfitText": "- ATON flight jacket: a muted olive-taupe brown cotton twill with a softly crinkled surface, a pointed shirt collar, a full-length front zip, two slanted patch pockets, an elastic gathered hem at the waist and dark brown ribbed knit cuffs. Short and boxy, ending at the waist, dropped shoulders. Worn OPEN with the zip undone. Both arms are inside the sleeves; the sleeves are pushed up to just below the elbow and gather softly; the hands come out of the ribbed cuffs. - ATON V-neck sweater: oatmeal beige heathered wool-alpaca, a deep V neck with a wide ribbed band, a wide ribbed hem, slightly cropped and boxy. Hem worn OUT, lying over the waist of the trousers. No bare skin at the waist. - ATON wide tapered trousers: deep dark chocolate-brown wool gabardine, a high gathered paper-bag waist with a long thin drawstring tied and hanging, front pleats, very full balloon legs that narrow toward the ankle, ending at the ankle bone. - ATON east-west shoulder bag: dark brown nubuck suede, a long low rectangle with softly rounded top corners, exactly TWO long slim parallel handles; worn on one shoulder so the bag sits under her arm at the hip. - ATON Carla flats: pale beige smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
   },
   "2": {
-   "garments": [
-    "garments/LOOK2-2-outer.jpg",
-    "garments/LOOK2-3-cardigan.jpg",
-    "garments/LOOK2-4-pants.jpg",
-    "garments/LOOK2-5-bag.jpg",
-    "garments/LOOK2-6-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK2-fitting-nohead.jpg"
+   "garmentRefs": [
+    "aton-mode-20261019/refs/LOOK-02/LOOK2-2-outer.jpg",
+    "aton-mode-20261019/refs/LOOK-02/LOOK2-3-cardigan.jpg",
+    "aton-mode-20261019/refs/LOOK-02/LOOK2-4-pants.jpg",
+    "aton-mode-20261019/refs/LOOK-02/LOOK2-5-bag.jpg",
+    "aton-mode-20261019/refs/LOOK-02/LOOK2-6-shoes.jpg"
    ],
    "outfitText": "- ATON double-breasted coat: pale white camel (a light sandy beige) camel hair, wide peak lapels, six dark brown horn buttons, two flap pockets, long and straight, falling to mid-calf. Worn OPEN, never buttoned, no belt. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON crew-neck cardigan: ivory brushed cashmere with a soft fluffy surface, a round crew neck, small dark buttons ALL fastened, boxy, ending at the hip. Hem worn OUT. - ATON sweatpants: warm white soft loopback cotton, an elastic waist with a white drawstring, relaxed straight legs, elastic cuffs gathered at the ankle so the ankle shows. - ATON small N bag: a small soft pouch of pale warm white-grey nylon satin with exactly ONE strap-loop handle; held in one hand, hanging at her side. - ATON Carla flats: pale beige smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
   },
   "3": {
-   "garments": [
-    "garments/LOOK3-2-outer.jpg",
-    "garments/LOOK3-3-top.jpg",
-    "garments/LOOK3-4-pants.jpg",
-    "garments/LOOK3-5-bag.jpg",
-    "garments/LOOK3-6-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK3-fitting-nohead.jpg"
+   "garmentRefs": [
+    "aton-mode-20261019/refs/LOOK-03/LOOK3-2-outer.jpg",
+    "aton-mode-20261019/refs/LOOK-03/LOOK3-3-top.jpg",
+    "aton-mode-20261019/refs/LOOK-03/LOOK3-4-pants.jpg",
+    "aton-mode-20261019/refs/LOOK-03/LOOK3-5-bag.jpg",
+    "aton-mode-20261019/refs/LOOK-03/LOOK3-6-shoes.jpg"
    ],
    "outfitText": "- ATON hunting jacket: a very dark charcoal wool-cotton kersey that reads almost black, a black smooth leather pointed collar, a full-length front zip, one zipped chest pocket with a small black leather pull on her left chest, two hip pockets with small snaps. Straight, boxy, hip length. Worn OPEN with the zip undone. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON crew-neck sweater: dark charcoal grey brushed fluffy knit, a round crew neck, boxy. Hem worn OUT, ending just over the top of the trouser pleats. - ATON wide easy trousers: grey black-and-white glen check wool, deep double front pleats, very wide straight legs at full length, a drawstring tied with long cords hanging at the front. - ATON medium N bag: a slouchy dark olive-green nylon satin shoulder bag with exactly ONE wide flat strap; worn on one shoulder, both hands free. - ATON Carla flats: black smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
   },
   "4": {
-   "garments": [
-    "garments/LOOK4-2-outer.jpg",
-    "garments/LOOK4-3-shirt.jpg",
-    "garments/LOOK4-4-pants.jpg",
-    "garments/LOOK4-5-bag.jpg",
-    "garments/LOOK4-6-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK4-fitting-nohead.jpg"
+   "garmentRefs": [
+    "aton-mode-20261019/refs/LOOK-04/LOOK4-2-outer.jpg",
+    "aton-mode-20261019/refs/LOOK-04/LOOK4-3-shirt.jpg",
+    "aton-mode-20261019/refs/LOOK-04/LOOK4-4-pants.jpg",
+    "aton-mode-20261019/refs/LOOK-04/LOOK4-5-bag.jpg",
+    "aton-mode-20261019/refs/LOOK-04/LOOK4-6-shoes.jpg"
    ],
    "outfitText": "- ATON double-breasted coat: golden camel brown camel hair, wide peak lapels, six dark buttons, two flap pockets, long and straight, falling below the knee. Worn OPEN, never buttoned, no belt, so the dark shirt and trousers show as one long vertical band between the coat fronts. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON skipper shirt: a deep burgundy-brown silk taffeta with a soft sheen, so dark it reads almost chocolate, a small point collar with an open slit placket at the neck (no buttons at the top), long loose sleeves, a long loose body with side slits. Hem worn OUT over the trousers. - ATON wide easy trousers: dark brown heathered wool, front pleats, wide straight legs, full length breaking over the shoes, a drawstring tied with the cords hanging. - ATON Trag bag: soft rust-brown suede, a slouchy shopping-bag shape with exactly ONE loop handle formed by the cut-out top; held in one hand by that loop, hanging at her side. - ATON Carla flats: black smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
   }

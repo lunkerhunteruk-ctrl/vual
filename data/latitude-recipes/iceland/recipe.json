@@ -1,41 +1,32 @@
 {
  "issue": "iceland",
  "project": "hyke-mode-20261020",
- "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garmentRefs は vault.vual.jp/outputs の中の商品写真の道（写真そのものはここに置かない）。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
  "looks": {
   "1": {
-   "garments": [
-    "garments/LOOK1-2-outer.jpg",
-    "garments/LOOK1-3-top.jpg",
-    "garments/LOOK1-4-pants.jpg",
-    "garments/LOOK1-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK1-fitting-nohead.jpg"
+   "garmentRefs": [
+    "hyke-mode-20261020/refs/LOOK-01/LOOK1-2-outer.jpg",
+    "hyke-mode-20261020/refs/LOOK-01/LOOK1-3-top.jpg",
+    "hyke-mode-20261020/refs/LOOK-01/LOOK1-4-pants.jpg",
+    "hyke-mode-20261020/refs/LOOK-01/LOOK1-5-shoes.jpg"
    ],
    "outfitText": "- HYKE PERTEX logger coat: a matte khaki-beige (warm sand-brown) technical shell with a smooth, faintly crisp surface. A tall funnel stand collar standing up around her neck, a covered front placket closed with a few small matte snaps, raglan sleeves, two large chest patch pockets under wide snapped flaps, a straight easy body falling to mid-calf, a drawcord hem with small toggles at the sides. Worn CLOSED all the way up to the collar. Both arms are inside the sleeves; the hands come out of the cuffs. The same khaki-beige outside and at every edge. - HYKE lambswool sweater: charcoal-grey soft wool crew neck; only a narrow band of grey knit shows inside the stand collar. - HYKE TA wide leg pants: black, matte, fluid, very wide straight legs with front pleats, full length, the hem falling over the boots so only the toes and the chunky soles show. - FABIO RUSCONI side-gore short boots: black smooth leather, round toe, black elastic side gores, a thick black lug tank sole. Mostly hidden under the trouser hem; never a close-up of the boots. No bag, no jewellery, no scarf, no hat, no gloves."
   },
   "2": {
-   "garments": [
-    "garments/LOOK2-2-outer.jpg",
-    "garments/LOOK2-3-shirt.jpg",
-    "garments/LOOK2-4-pants.jpg",
-    "garments/LOOK2-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK2-fitting-nohead.jpg"
+   "garmentRefs": [
+    "hyke-mode-20261020/refs/LOOK-02/LOOK2-2-outer.jpg",
+    "hyke-mode-20261020/refs/LOOK-02/LOOK2-3-shirt.jpg",
+    "hyke-mode-20261020/refs/LOOK-02/LOOK2-4-pants.jpg",
+    "hyke-mode-20261020/refs/LOOK-02/LOOK2-5-shoes.jpg"
    ],
    "outfitText": "- HYKE double-faced faux shearling pea coat: deep navy double-faced wool, collarless round neck. A large rectangular bib of curly navy faux shearling covers the chest and the tops of the shoulders like a yoke. Below it, double-breasted with SIX black buttons in two rows, ALL buttoned closed. Two long vertical welt pockets at the chest edges, two flap pockets at the hips, wide rounded sleeves, a long straight body falling just below the knee. Both arms are inside the sleeves; the hands come out of the cuffs. - HYKE broad long shirt: a clear mid-blue cotton shirt with a pointed collar; the blue collar comes out at the neck above the shearling bib, a narrow blue cuff shows below each coat sleeve, and its long hem hangs OUT a little below the coat hem as a band of blue. - HYKE denim tapered jeans: dark raw indigo rigid denim, almost navy-black, high waist, curved barrel legs that taper to the ankle, the hem resting on the top of the boots. - FABIO RUSCONI side-gore short boots: black smooth leather, round toe, black elastic side gores, a pull tab front and back, a black lug sole. No bag, no jewellery, no scarf, no hat, no gloves."
   },
   "3": {
-   "garments": [
-    "garments/LOOK3-2-outer.jpg",
-    "garments/LOOK3-3-top.jpg",
-    "garments/LOOK3-4-pants.jpg",
-    "garments/LOOK3-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK3-fitting-nohead.jpg"
+   "garmentRefs": [
+    "hyke-mode-20261020/refs/LOOK-03/LOOK3-2-outer.jpg",
+    "hyke-mode-20261020/refs/LOOK-03/LOOK3-3-top.jpg",
+    "hyke-mode-20261020/refs/LOOK-03/LOOK3-4-pants.jpg",
+    "hyke-mode-20261020/refs/LOOK-03/LOOK3-5-shoes.jpg"
    ],
    "outfitText": "- HYKE double-faced trench coat: warm camel double-faced wool with a soft brushed surface. Collarless round neck, a squared storm flap over the right shoulder and chest, the front wraps across and fastens with a self-fabric belt and a small dark buckle at her right side, the belt end hanging down. Huge rounded cocoon sleeves that balloon out from the shoulder and narrow at the cuff. Long and straight, falling to mid-calf. Worn CLOSED with that side belt. Both arms are inside the sleeves; the hands come out of the cuffs. Camel at every edge, no lapels. - HYKE ribbed zip sweater: chocolate-brown chunky rib knit, zipped all the way up, its big ribbed funnel collar standing up around her neck above the round neck of the coat, a small silver zip pull at the throat. - HYKE TA wide leg pants: ecru cream, matte and fluid, very wide straight legs with front pleats, full length, pooling over the boots. - FABIO RUSCONI square-toe short boots: smooth leather in a muted oak taupe (grey-brown), square toe, a low block heel; only the square toes show under the cream trousers. No bag, no jewellery, no scarf, no hat, no gloves."
   }

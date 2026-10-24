@@ -1,42 +1,33 @@
 {
  "issue": "london",
  "project": "yleve-mode-20261019",
- "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garmentRefs は vault.vual.jp/outputs の中の商品写真の道（写真そのものはここに置かない）。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
  "looks": {
   "1": {
-   "garments": [
-    "garments/LOOK1-2-outer.jpg",
-    "garments/LOOK1-3-top.jpg",
-    "garments/LOOK1-4-pants.jpg",
-    "garments/LOOK1-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK1-fitting-nohead.jpg"
+   "garmentRefs": [
+    "yleve-mode-20261019/refs/LOOK-01/LOOK1-2-outer.jpg",
+    "yleve-mode-20261019/refs/LOOK-01/LOOK1-3-top.jpg",
+    "yleve-mode-20261019/refs/LOOK-01/LOOK1-4-pants.jpg",
+    "yleve-mode-20261019/refs/LOOK-01/LOOK1-5-shoes.jpg"
    ],
    "outfitText": "- YLÈVE wool double-cloth coat: warm sand beige, a high stand-up collar, raglan sleeves, mid-thigh length, a self belt. Worn OPEN with the belt hanging loose at the sides. Both arms are inside the sleeves; the hands come out of the cuffs. - YLÈVE frayed-edge V-neck knit: heather grey, a deep V neck, a slightly cropped boxy shape with raw frayed edges at the hem and cuffs. Hem worn OUT. No bare skin at the waist. - YLÈVE baggy denim: light washed blue, high-rise, very wide and straight, full length, the hems pooling over the boots. - Black smooth leather Chelsea boots with a chunky lug sole, mostly hidden under the jeans. No bag, no jewellery, no scarf, no hat. Her hands are empty."
   },
   "2": {
-   "garments": [
-    "garments/LOOK2-2-outer.jpg",
-    "garments/LOOK2-3-top.jpg",
-    "garments/LOOK2-4-pants.jpg",
-    "garments/LOOK2-5-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK2-fitting-nohead.jpg"
+   "garmentRefs": [
+    "yleve-mode-20261019/refs/LOOK-02/LOOK2-2-outer.jpg",
+    "yleve-mode-20261019/refs/LOOK-02/LOOK2-3-top.jpg",
+    "yleve-mode-20261019/refs/LOOK-02/LOOK2-4-pants.jpg",
+    "yleve-mode-20261019/refs/LOOK-02/LOOK2-5-shoes.jpg"
    ],
    "outfitText": "- YLÈVE light flannel jacket: charcoal grey wool, a relaxed single-breasted tailored shape with soft shoulders and notch lapels, hip length. Worn OPEN. - YLÈVE stripe pyjama shirt: brown and ecru fine vertical stripes, a soft fluid cupro, an open camp collar, long sleeves. Hem worn OUT, loose over the trousers. - YLÈVE high-twist wool trousers: a deep wine-tinged dark chocolate brown, front pleats, wide straight legs, full length, the hems breaking on the shoes. - Black glossy patent penny loafers worn with fine charcoal-grey socks; a band of grey sock shows at the ankle. Never bare ankles, never white socks. No bag, no jewellery, no scarf, no hat. Her hands are empty."
   },
   "3": {
-   "garments": [
-    "garments/LOOK3-2-outer.jpg",
-    "garments/LOOK3-3-cardigan.jpg",
-    "garments/LOOK3-4-pants.jpg",
-    "garments/LOOK3-5-bag.jpg",
-    "garments/LOOK3-6-shoes.jpg"
-   ],
-   "fitting": [
-    "garments/LOOK3-fitting-nohead.jpg"
+   "garmentRefs": [
+    "yleve-mode-20261019/refs/LOOK-03/LOOK3-2-outer.jpg",
+    "yleve-mode-20261019/refs/LOOK-03/LOOK3-3-cardigan.jpg",
+    "yleve-mode-20261019/refs/LOOK-03/LOOK3-4-pants.jpg",
+    "yleve-mode-20261019/refs/LOOK-03/LOOK3-5-bag.jpg",
+    "yleve-mode-20261019/refs/LOOK-03/LOOK3-6-shoes.jpg"
    ],
    "outfitText": "- YLÈVE blanket-brushed wool long coat: deep navy, a softly brushed surface, wide notch lapels, below-the-knee length. Worn OPEN, never buttoned; no belt tied. - YLÈVE cashmere cardigan: warm camel, a crew neck, small round buttons ALL fastened, fitted at the hip. - YLÈVE rough wool trousers: mid charcoal grey with a rough flecked texture, front pleats, wide tapered legs, full length. - YLÈVE knot hang bag: a soft slouchy black leather pouch with a single knotted strap, held tucked under one arm with the hand supporting its base. - Taupe-khaki leather square-toe ankle boots with a slim block heel, mostly hidden under the trousers. Only the one black knot bag. No jewellery, no scarf, no hat."
   }

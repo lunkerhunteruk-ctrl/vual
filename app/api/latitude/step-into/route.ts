@@ -3,7 +3,7 @@ import { loadRecipe, readRecipeFile, stepIntoAllowed } from '@/lib/latitude-reci
 import { DAILY_LIMIT, logUse, remainingToday, visitor } from '@/lib/latitude-usage';
 
 // LATITUDE「Step into this look」：見る人の顔で、そのページの場所・光・服の1枚を作る（APIMart の Nano Banana 2.1 EXT）。
-// GET ?slug=&file=garments/..&key=  服の写真（シートの小さな写真）
+// GET ?slug=&file=scenes/..&key=  場面の写真（確認用）
 // POST { slug, page, face(dataURL), key }  生成を送る → { taskId }
 // GET ?task=&key=  できたか → { status, url }
 // 2026-10-22 ログインなしで公開。1人1日3回まで（lib/latitude-usage.ts）。顔の写真は生成に送るだけで、ここでは保存しない。
@@ -52,17 +52,15 @@ export async function POST(req: NextRequest) {
   const recipe = await loadRecipe(slug);
   const p = recipe?.pages.find((x) => x.page === Number(page));
   if (!recipe || !p || !p.look || !p.scene) return NextResponse.json({ error: 'no look on this page' }, { status: 400 });
-  const look = recipe.looks[String(p.look)];
   const scene = await readRecipeFile(slug, p.scene);
-  const garments = (await Promise.all(look.garments.map((g) => readRecipeFile(slug, g)))).filter((b): b is Buffer => !!b);
-  if (!scene || !garments.length) return NextResponse.json({ error: 'recipe files missing' }, { status: 500 });
+  if (!scene) return NextResponse.json({ error: 'recipe files missing' }, { status: 500 });
 
-  const n = garments.length;
+  // 2026-10-24 服の商品写真は送らない：服はページの写真に写っているので、それをそのまま写させる
   const prompt =
     `Image 1 is a photograph from a fashion magazine. Recreate Image 1 as the same photograph: the same place, the same camera position and framing, ` +
     `the same light, colours and film look, the same background and any other people exactly as they are. ` +
-    `Replace the woman in Image 1 with the person in the LAST image: reproduce that person's face, facial features, hair and skin exactly. ` +
-    `She wears EXACTLY the garments in images 2 to ${n + 1}, worn the same way as in Image 1, and keeps the same pose and gesture. ` +
+    `Replace the woman in Image 1 with the person in Image 2: reproduce that person's face, facial features, hair and skin exactly. ` +
+    `Keep everything she wears and carries exactly as in Image 1: the same garments, colours, fabrics, buttons, shoes and bag, worn the same way, and the same pose and gesture. ` +
     `Photorealistic and natural. No text, no logos, no watermark.`;
 
   const res = await fetch('https://api.apimart.ai/v1/images/generations', {
@@ -74,7 +72,7 @@ export async function POST(req: NextRequest) {
       size: p.aspectRatio || '3:4',
       resolution: '1K',
       n: 1,
-      image_urls: [toDataUrl(scene), ...garments.map(toDataUrl), face],
+      image_urls: [toDataUrl(scene), face],
     }),
   });
   if (!res.ok) return NextResponse.json({ error: 'submit failed' }, { status: 502 });
