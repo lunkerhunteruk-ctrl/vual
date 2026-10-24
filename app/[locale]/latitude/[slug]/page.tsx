@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title,
       description: i.line,
       url: `https://vual.jp/${locale}/latitude/${i.slug}`,
-      images: [{ url: assetUrl(i, 'pages/01.jpg'), width: 1080, height: 1440 }],
+      images: [i.pages.length ? { url: assetUrl(i, 'pages/01.jpg'), width: 1080, height: 1440 } : { url: assetUrl(i, 'cover.jpg'), width: 720, height: 1280 }],
     },
   };
 }
@@ -86,6 +86,9 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         </div>
       </section>
 
+      {/* filmOnly の号は、カルーセルのページ・読み物・色を出さない（2026-10-24） */}
+      {!issue.filmOnly && (
+        <>
       {/* カルーセルのページ */}
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl">
@@ -137,6 +140,8 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <Palette issue={issue} />
         </div>
       </section>
+        </>
+      )}
 
       {/* 奥付 */}
       <footer className="border-t px-4 py-16 md:px-8 md:py-24" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>

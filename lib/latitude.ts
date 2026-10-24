@@ -24,6 +24,7 @@ export type LatitudeIssue = {
   credits?: string[];
   publishAt?: string; // 公開予約の時刻（無ければすぐ公開）
   capColour?: string; // 読み物の頭の大きな1文字（ドロップキャップ）の色。無ければ墨
+  filmOnly?: boolean; // 2026-10-24 ユーザー：カルーセルを整理し終わるまで、リール（と題字・奥付）だけを出す。ページ・読み物・色は隠す。出す時は外して pages を入れる
   recipe?: string; // 2026-10-22 体験（顔を入れてその服の世界に入る）用のレシピの目印。data/latitude-recipes/<slug>/recipe.json（ページ→LOOK・服の写真・場所・フィルム）
 };
 
@@ -164,6 +165,39 @@ export const ISSUES: LatitudeIssue[] = [
     capColour: '#896242', // Camel Gold
     publishAt: '2026-10-23T10:00:00+01:00', // ロンドン号の翌日、イギリス時間（BST）10:00 = 日本時間 18:00
     credits: ['Map data © OpenStreetMap contributors'],
+  },
+  {
+    slug: 'milan',
+    no: 5,
+    latitude: '45.5° N',
+    city: 'Milan',
+    published: '2026-10',
+    line: 'One day in Milan, from Malpensa at dawn to the Galleria after dark.',
+    chapters: [
+      { no: 'I', place: 'Villa Necchi', time: '09:30' },
+      { no: 'II', place: 'The foundation', time: '14:30' },
+      { no: 'III', place: 'The Duomo', time: '16:30' },
+      { no: 'IV', place: 'Torre Velasca', time: '17:30' },
+    ],
+    colours: [
+      { name: 'Villa Ivory', hex: '#e5ddd3' },
+      { name: 'Pool Blue', hex: '#7da3b0' },
+      { name: 'Brera Charcoal', hex: '#303935' },
+      { name: 'Gold Leaf', hex: '#d6bd86' },
+      { name: 'Velasca Rose', hex: '#837060' },
+      { name: 'Navy Dusk', hex: '#04131d' },
+      { name: 'Negroni', hex: '#a14209' },
+    ],
+    notesTitle: 'Rings, marble, gold',
+    notes: [
+      'Milan is a city of rings. The Duomo stands at the centre; around it ran the old canals of the Navigli, filled in during the 1930s, and further out the Spanish walls. Only to the south-west do the canals still run in the open, from the Darsena basin.',
+      'The cathedral was begun in 1386; its facade was finished under Napoleon. Beside it, the Galleria Vittorio Emanuele II opened in 1867 under a dome of iron and glass.',
+      'Torre Velasca rose in 1958, its upper floors wider than the shaft below. The orange trams called Ventotto have run since 1928.',
+    ],
+    pages: [], // カルーセルは整理中（filmOnly）
+    filmOnly: true,
+    streamId: '2dbd08206252c18a3a533355430ebd35', // v22（章は場所と時刻・Prism & Motion・電車の環境音・ドゥオーモの衣の差し込み）
+    capColour: '#a14209', // Negroni
   },
 ];
 
