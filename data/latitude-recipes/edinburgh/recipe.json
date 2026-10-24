@@ -1,0 +1,253 @@
+{
+ "issue": "edinburgh",
+ "project": "aton-mode-20261019",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "looks": {
+  "1": {
+   "garments": [
+    "garments/LOOK1-2-outer.jpg",
+    "garments/LOOK1-3-top.jpg",
+    "garments/LOOK1-4-pants.jpg",
+    "garments/LOOK1-5-bag.jpg",
+    "garments/LOOK1-6-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK1-fitting-nohead.jpg"
+   ],
+   "outfitText": "- ATON flight jacket: a muted olive-taupe brown cotton twill with a softly crinkled surface, a pointed shirt collar, a full-length front zip, two slanted patch pockets, an elastic gathered hem at the waist and dark brown ribbed knit cuffs. Short and boxy, ending at the waist, dropped shoulders. Worn OPEN with the zip undone. Both arms are inside the sleeves; the sleeves are pushed up to just below the elbow and gather softly; the hands come out of the ribbed cuffs. - ATON V-neck sweater: oatmeal beige heathered wool-alpaca, a deep V neck with a wide ribbed band, a wide ribbed hem, slightly cropped and boxy. Hem worn OUT, lying over the waist of the trousers. No bare skin at the waist. - ATON wide tapered trousers: deep dark chocolate-brown wool gabardine, a high gathered paper-bag waist with a long thin drawstring tied and hanging, front pleats, very full balloon legs that narrow toward the ankle, ending at the ankle bone. - ATON east-west shoulder bag: dark brown nubuck suede, a long low rectangle with softly rounded top corners, exactly TWO long slim parallel handles; worn on one shoulder so the bag sits under her arm at the hip. - ATON Carla flats: pale beige smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
+  },
+  "2": {
+   "garments": [
+    "garments/LOOK2-2-outer.jpg",
+    "garments/LOOK2-3-cardigan.jpg",
+    "garments/LOOK2-4-pants.jpg",
+    "garments/LOOK2-5-bag.jpg",
+    "garments/LOOK2-6-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK2-fitting-nohead.jpg"
+   ],
+   "outfitText": "- ATON double-breasted coat: pale white camel (a light sandy beige) camel hair, wide peak lapels, six dark brown horn buttons, two flap pockets, long and straight, falling to mid-calf. Worn OPEN, never buttoned, no belt. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON crew-neck cardigan: ivory brushed cashmere with a soft fluffy surface, a round crew neck, small dark buttons ALL fastened, boxy, ending at the hip. Hem worn OUT. - ATON sweatpants: warm white soft loopback cotton, an elastic waist with a white drawstring, relaxed straight legs, elastic cuffs gathered at the ankle so the ankle shows. - ATON small N bag: a small soft pouch of pale warm white-grey nylon satin with exactly ONE strap-loop handle; held in one hand, hanging at her side. - ATON Carla flats: pale beige smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
+  },
+  "3": {
+   "garments": [
+    "garments/LOOK3-2-outer.jpg",
+    "garments/LOOK3-3-top.jpg",
+    "garments/LOOK3-4-pants.jpg",
+    "garments/LOOK3-5-bag.jpg",
+    "garments/LOOK3-6-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK3-fitting-nohead.jpg"
+   ],
+   "outfitText": "- ATON hunting jacket: a very dark charcoal wool-cotton kersey that reads almost black, a black smooth leather pointed collar, a full-length front zip, one zipped chest pocket with a small black leather pull on her left chest, two hip pockets with small snaps. Straight, boxy, hip length. Worn OPEN with the zip undone. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON crew-neck sweater: dark charcoal grey brushed fluffy knit, a round crew neck, boxy. Hem worn OUT, ending just over the top of the trouser pleats. - ATON wide easy trousers: grey black-and-white glen check wool, deep double front pleats, very wide straight legs at full length, a drawstring tied with long cords hanging at the front. - ATON medium N bag: a slouchy dark olive-green nylon satin shoulder bag with exactly ONE wide flat strap; worn on one shoulder, both hands free. - ATON Carla flats: black smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
+  },
+  "4": {
+   "garments": [
+    "garments/LOOK4-2-outer.jpg",
+    "garments/LOOK4-3-shirt.jpg",
+    "garments/LOOK4-4-pants.jpg",
+    "garments/LOOK4-5-bag.jpg",
+    "garments/LOOK4-6-shoes.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK4-fitting-nohead.jpg"
+   ],
+   "outfitText": "- ATON double-breasted coat: golden camel brown camel hair, wide peak lapels, six dark buttons, two flap pockets, long and straight, falling below the knee. Worn OPEN, never buttoned, no belt, so the dark shirt and trousers show as one long vertical band between the coat fronts. Both arms are inside the sleeves; the hands come out of the cuffs. - ATON skipper shirt: a deep burgundy-brown silk taffeta with a soft sheen, so dark it reads almost chocolate, a small point collar with an open slit placket at the neck (no buttons at the top), long loose sleeves, a long loose body with side slits. Hem worn OUT over the trousers. - ATON wide easy trousers: dark brown heathered wool, front pleats, wide straight legs, full length breaking over the shoes, a drawstring tied with the cords hanging. - ATON Trag bag: soft rust-brown suede, a slouchy shopping-bag shape with exactly ONE loop handle formed by the cut-out top; held in one hand by that loop, hanging at her side. - ATON Carla flats: black smooth leather, pointed toe, a low-cut throat, flat thin sole, worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. Only the one bag described. No jewellery, no scarf, no hat, no gloves."
+  }
+ },
+ "pages": [
+  {
+   "page": 1,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p01.jpg",
+   "still": "aton-mode-20261019/FEED-PACK-EDINBURGH/01_EDI-B2-04.jpg",
+   "prompt": "aton-mode-20261019/prompts-feed/B2.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on Calton Hill in Edinburgh, at the National Monument, as in the location photo: a row of huge pale grey fluted Doric stone columns on a massive stepped stone plinth, unfinished, open to the sky, short grass around. No other people near her, no signs, no readable text, no logos, no flags, no shop names. No other visitors; trees only far away and small, never the subject.",
+   "situation": "She sits upright on top of it, her legs hanging DOWN over its edge, parallel, NOT crossed, the shoes well off the ground; both hands rest flat on the stone at her sides.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. Natural depth: she is sharp, the place behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 2,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p02.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-SLEEPER916B-01.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/SLEEPER916B.txt",
+   "aspectRatio": "9:16",
+   "location": "a small cabin of an overnight sleeper train from London, arriving in Scotland at dawn, around 07:10 in late October. A narrow bunk made up with crisp white bedding and a dark tartan-free grey blanket, dark wood-grain panels, a small window with the blind pulled up: outside, the grey sea of the Firth of Forth and low hills slide past in blue morning haze.",
+   "situation": "She holds a small paper cup of tea in both hands on her knee, the brown suede bag beside her on the bunk; she looks out of the window at the sea.",
+   "film": "35mm film camera, Kodak Portra 400, fine visible grain, a cool, muted northern palette: blue-grey shadows, soft desaturated stone and sky. No digital sharpening."
+  },
+  {
+   "page": 3,
+   "look": null,
+   "kind": "no-model",
+   "scene": null,
+   "still": "aton-mode-20261019/stills-extra/EDI-X-ROLL-02.jpg",
+   "prompt": null,
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 4,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p04.jpg",
+   "still": "aton-mode-20261019/FEED-PACK-EDINBURGH/03_EDI-A1-04.jpg",
+   "prompt": "aton-mode-20261019/prompts-feed/A1.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on The Shore at Leith, the old port of Edinburgh, as in the location photo: tall old warehouses of rough honey-grey sandstone blocks, a cobbled quayside of worn granite setts, the stone edge of the harbour water. No other people near her, no signs, no readable text, no logos, no flags, no shop names. No cars, no boats with writing; trees only far away and small, never the subject.",
+   "situation": "She stands on the very edge with BOTH feet firmly planted side by side on the surface, weight in one hip, both hands deep in her pockets; nothing hangs over the edge; the wind lifts her hair and the olive flight jacket.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. Natural depth: she is sharp, the place behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 5,
+   "look": null,
+   "kind": "text",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 6,
+   "look": null,
+   "kind": "text",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 7,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p07.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-LUNCH-01.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/LUNCH.txt",
+   "aspectRatio": "4:3",
+   "location": "an old wood-panelled pub in the Old Town of Edinburgh, around 13:00 on a grey day: dark varnished wood, small-paned windows with grey daylight, an old fireplace glowing low at the back. A small dark wooden table by the window.",
+   "situation": "She holds the small whisky glass by its base, about to taste it, looking at it, calm.",
+   "film": "35mm film camera, Kodak Portra 400, fine visible grain, a cool, muted northern palette: blue-grey shadows, soft desaturated stone and sky. No digital sharpening."
+  },
+  {
+   "page": 8,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p08.jpg",
+   "still": "aton-mode-20261019/FEED-PACK-EDINBURGH/04_EDI-B1-03.jpg",
+   "prompt": "aton-mode-20261019/prompts-feed/B1.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors on Calton Hill in Edinburgh, at the National Monument, as in the location photo: a row of huge pale grey fluted Doric stone columns on a massive stepped stone plinth, unfinished, open to the sky, short grass around. No other people near her, no signs, no readable text, no logos, no flags, no shop names. No other visitors; trees only far away and small, never the subject.",
+   "situation": "She stands tall and raises BOTH ARMS straight up above her head, elbows straight, one hand gripping the other wrist, stretching her whole body into a single vertical line; feet together, weight on one hip. the long open pale camel coat lifts and shifts naturally with the stretch; the hem of the top stays over the waistband, the small white nylon pouch bag set down on the stone step beside her feet.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. Natural depth: she is sharp, the place behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 9,
+   "look": 3,
+   "kind": "illustration",
+   "scene": "scenes/p09.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-ILLUS-03.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/ILLUS.txt",
+   "aspectRatio": "3:4",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 10,
+   "look": null,
+   "kind": "no-model",
+   "scene": null,
+   "still": "aton-mode-20261019/stills-extra/EDI-X-AERIAL-01.jpg",
+   "prompt": null,
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 11,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p11.jpg",
+   "still": "aton-mode-20261019/FEED-PACK-EDINBURGH/06_EDI-C2-02.jpg",
+   "prompt": "aton-mode-20261019/prompts-feed/C2.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors high on Arthur's Seat in Edinburgh, as in the location photo: open rough moorland of wind-flattened grass, heather and gorse, the long dark volcanic rock wall of Salisbury Crags, a wide grey northern sky. No other people near her, no signs, no readable text, no logos, no flags, no shop names. Trees only far away and small, never the subject.",
+   "situation": "She stands on the very edge of a low outcrop of dark volcanic rock in the heather, both shoes planted, weight in one hip, both hands in the jacket pockets, the olive nylon bag on one shoulder; the wind throws the dark charcoal hunting jacket out to one side and lifts her hair.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. Natural depth: she is sharp, the place behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 12,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p12.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-WINDBW-02.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/WINDBW.txt",
+   "aspectRatio": "3:4",
+   "location": "high on Arthur's Seat in Edinburgh, as in the location photo: rough wind-flattened grass and the dark cliff of Salisbury Crags behind, a wide grey sky. No other people.",
+   "situation": "Her head is bowed a little and turned away to the side; her eyes look down at the grass, half hidden by the long blonde hair the wind blows across her face; one hand lifts to pull the hair back from her cheek. The dark jacket open, the olive bag on her shoulder.",
+   "film": ""
+  },
+  {
+   "page": 13,
+   "look": 4,
+   "kind": "photo",
+   "scene": "scenes/p13.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-WINDOW-04.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/WINDOW.txt",
+   "aspectRatio": "3:4",
+   "location": "Victoria Street in Edinburgh's Old Town at dusk, as in the location photo: a small painted shopfront with a warmly lit window full of soft out-of-focus shapes (no readable text), the wet cobbles, the cool blue-grey dusk.",
+   "situation": "She leans slightly toward the window, one hand holding the loop of the rust suede bag, the camel coat open; a faint reflection of her face in the glass.",
+   "film": "35mm film camera, Kodak Portra 800, visible grain, the cool blue-grey of northern dusk, with only the warm amber glow of the street lamps and lit shop windows kept warm. No digital sharpening."
+  },
+  {
+   "page": 14,
+   "look": 4,
+   "kind": "photo",
+   "scene": "scenes/p14.jpg",
+   "still": "aton-mode-20261019/FEED-PACK-EDINBURGH/07_EDI-D1-02.jpg",
+   "prompt": "aton-mode-20261019/prompts-feed/D1.txt",
+   "aspectRatio": "3:4",
+   "location": "outdoors in the Old Town of Edinburgh, on Victoria Street, as in the location photo: a steep curving cobbled street between tall old stone buildings, small painted shopfronts with lit windows, the iron railing of the raised terrace above the street. No other people near her, no signs, no readable text, no logos, no flags, no shop names. No cars.",
+   "situation": "She stops dead mid-stride, one foot forward, weight caught between steps, the rust suede Trag bag hanging from one hand by its loop, the other hand in her coat pocket, the long open golden camel coat swinging forward from the arrested motion.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain. A quiet, graphic high-fashion editorial for a European magazine, not a catalogue: cool, minimal, architectural. Natural depth: she is sharp, the place behind her stays readable but soft. True garment colours, exactly as the product photos. No cut-out edge, no digital sharpening."
+  },
+  {
+   "page": 15,
+   "look": 4,
+   "kind": "photo",
+   "scene": "scenes/p15.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-DRAM2-01.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/DRAM2.txt",
+   "aspectRatio": "4:3",
+   "location": "a small old whisky bar in the Old Town of Edinburgh, around 19:30: dark wood, a wall of unlabelled amber bottles softly out of focus, low brass lamps, deep shadow.",
+   "situation": "Both forearms rest on the bar; she looks down into the small tulip glass of amber whisky she turns slowly between her fingers, lost in thought. The camel coat open, the rust suede bag on the bar beside her.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, slight halation around the lights. No digital sharpening."
+  },
+  {
+   "page": 16,
+   "look": 4,
+   "kind": "photo",
+   "scene": "scenes/p16.jpg",
+   "still": "aton-mode-20261019/stills-extra/EDI-X-CLOSE-02.jpg",
+   "prompt": "aton-mode-20261019/prompts-extra/CLOSE.txt",
+   "aspectRatio": "3:4",
+   "location": "a narrow Old Town close in Edinburgh at 21:30: a steep stone stairway between tall dark stone walls, worn stone steps going down, a single old wall lantern glowing warm halfway down, the stone wet and shining. At the bottom of the close, far away, a glimpse of distant city lights.",
+   "situation": "She walks down carefully with a long stride, the open camel coat swinging, the rust suede bag held by its loop in one hand.",
+   "film": "35mm film camera, Kodak Vision3 500T cinema film, visible grain, deep inky shadows, rich warm highlights, cool blue shadows, slight halation around the lights. No digital sharpening."
+  }
+ ]
+}

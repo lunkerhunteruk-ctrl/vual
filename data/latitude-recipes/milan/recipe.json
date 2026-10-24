@@ -1,0 +1,284 @@
+{
+ "issue": "milan",
+ "project": "harunobu-mode-20261019",
+ "note": "公開済みの号のページ→LOOK・服・場所の目印。garments はリポジトリ内のコピー。still / prompt は vault.vual.jp/outputs からの道。体験（RecipeTryOnModal）を付ける時に LookRecipe へ変換する。",
+ "looks": {
+  "1": {
+   "garments": [
+    "garments/LOOK1-2-dress.jpg",
+    "garments/LOOK1-3-shoes.jpg",
+    "garments/LOOK1-4-bag.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK1-fitting-nohead.jpg"
+   ],
+   "outfitText": "- HARUNOBUMURATA ELIANA silk-wool volume dress: warm ivory (off-white, never pure white, never beige), a matte, softly structured fabric. A small stand-up collar with a keyhole slit opening down the centre front; below the keyhole, a single CLOSED vertical seam runs down the centre front to the hem: the skirt has NO slit and NO opening, it never parts when she walks, her legs never show through the front; a long narrow strip of the same ivory fabric comes from the collar, fastened at the side of her neck by one large polished SILVER dome button, and hangs down her chest. Dropped shoulders, full rounded sleeves to the wrist, a seam across the body under the chest, hidden side pockets, a wide rounded cocoon body that falls to just above the ankle. Nothing worn over it. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA suede bag: dark chocolate-brown suede, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Its two handles are SHORT rounded top handles, too short to go over the shoulder: the bag is carried in one hand by both handles together, the arm hanging down, the bag at her thigh (or held in the crook of the elbow). Never on the shoulder. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
+  },
+  "2": {
+   "garments": [
+    "garments/LOOK2-2-top.jpg",
+    "garments/LOOK2-3-skirt.jpg",
+    "garments/LOOK2-4-shoes.jpg",
+    "garments/LOOK2-5-bag.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK2-fitting-nohead.jpg"
+   ],
+   "outfitText": "- HARUNOBUMURATA OATH virgin wool sweater: charcoal heather grey (never blue), a soft brushed sweatshirt shape, crew neck, dropped shoulders, oversized and boxy, hip length. One irregular oval SILVER ring buckle sits at the waist just off centre on her left side, gathering the wool into deep radiating folds around it — this gathered buckle is shown at the front. The full sleeves are pushed up to mid-forearm, bunching softly. The hem is worn OUT over the skirt waistband; no bare skin at the waist. - HARUNOBUMURATA OPHELIA virgin wool skirt: black, a flat waistband, deep pressed pleats from the waist that open into a full bell shape, mid-calf length. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA MEDIA leather bag: greige (warm grey-taupe) smooth leather, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Held in one hand by both handles together, hanging at her side. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
+  },
+  "3": {
+   "garments": [
+    "garments/LOOK3-2-top.jpg",
+    "garments/LOOK3-3-pants.jpg",
+    "garments/LOOK3-4-shoes.jpg",
+    "garments/LOOK3-5-bag.jpg"
+   ],
+   "fitting": [
+    "garments/LOOK3-fitting-nohead.jpg"
+   ],
+   "outfitText": "- HARUNOBUMURATA HEPBURN wool blouse: deep navy, a fine matte wool, a small stand-up collar with a keyhole slit down the centre front; a long narrow strip of the same navy fabric comes from the collar, fastened at the side of her neck by one large polished SILVER ball button, and hangs down her chest. Dropped shoulders, full long sleeves gathered by elastic into soft balloon cuffs at the wrist (sleeves down). Boxy, hip length, short side slits. Hem worn OUT over the trousers. - HARUNOBUMURATA ISPARTA satin trousers: deep navy matching the blouse, a soft back-satin sheen, deep front pleats, very wide straight legs falling to the floor and covering most of the shoe. - HARUNOBUMURATA platform shoes: black smooth leather, a closed rounded toe like a clog, a thick flat platform sole, an open back held by a black elastic slingback strap, and ONE large round hammered GOLD metal disc on the OUTER side of each shoe only: the inner sides, facing each other, are plain black leather with no disc, so from any one side you see the disc on one foot only. Worn with charcoal-grey (or black) socks visible at the ankle; never bare ankles, never white socks. - HARUNOBUMURATA PIADA MEDIA grain leather bag: black pebbled leather, a half-moon (dome) shaped boston bag: a flat bottom, a rounded top edge, TWO rounded top handles of the same leather standing side by side, and a wide self-leather strap belted across the front with one small gold bar buckle. No visible lettering. Exactly two handles, never one, never a shoulder strap. Cradled against her body in the crook of one arm, the forearm under its base, both handles upright. Only the one bag. No jewellery, no scarf, no hat, no belt, no coat."
+  }
+ },
+ "pages": [
+  {
+   "page": 1,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p01.jpg",
+   "still": "harunobu-mode-20261019/stills/N01M/MIL-N01M-COVER-GOLD-CROP-01-2K.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N01M.txt",
+   "aspectRatio": "3:4",
+   "location": "the courtyard of a contemporary art foundation in southern Milan, as in the location photo: a former industrial distillery complex of pale grey and white factory buildings, grey stone paving, and the tower covered entirely in matte GOLD leaf with arched windows, against a grey concrete wall. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No name, no lettering and no signage anywhere in the picture.",
+   "situation": "She stands close to the gold wall, still; no hands in the picture at all.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with an 85mm portrait lens wide open at f/1.4, close to her. Very shallow depth of field, the background a s"
+  },
+  {
+   "page": 2,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p02.jpg",
+   "still": "harunobu-mode-20261019/stills/N02Q/MIL-N02Q-MALPENSA-DEADSTOP-01.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N02Q.txt",
+   "aspectRatio": "1:1",
+   "location": "inside Milan Malpensa airport, in the long tube-shaped walkway of curved glass and white steel ribs, as in the location photo, with a moving walkway along one side. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No signs, no screens, no lettering, no logos, no advertising.",
+   "situation": "She has frozen mid-stride toward the lens, one foot forward, weight caught between steps, one hand deep in the dress pocket, the suede bag carried in one hand by its two short handles, never on the shoulder; the long dress swings forward from the arrested motion.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 28mm lens, the frame tilted about 8 degrees. Her outline is shaped by the light; no cut-out edge, no "
+  },
+  {
+   "page": 3,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p03.jpg",
+   "still": "harunobu-mode-20261019/stills/N02N/MIL-N02N-CENTRALE-WIDE-07.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N02N.txt",
+   "aspectRatio": "4:3",
+   "location": "the vast main hall of Milano Centrale railway station in the early morning, as in the location photo: a monumental vaulted gallery of pale stone with a huge arched glass-and-iron roof, carved stone walls. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No departure boards, no screens, no advertising.",
+   "situation": "She has just stepped off the airport train and walks across the hall with a long, unhurried stride, caught mid-step, her body at about three-quarters to the camera; she carries the suede bag in one hand by its two short handles, the arm hanging down, the bag at her thigh, never on the shoulder.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 28mm wide lens close to her, deep focus: the place around her stays sharp and graphic, its lines conv"
+  },
+  {
+   "page": 4,
+   "look": null,
+   "kind": "text",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 5,
+   "look": null,
+   "kind": "text",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 6,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p06.jpg",
+   "still": "harunobu-mode-20261019/stills/L1C2/MIL-L1C2-MID-SIT-02.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L1C2.txt",
+   "aspectRatio": "9:16",
+   "location": "the garden of Villa Necchi Campiglio in Milan, a 1930s rationalist villa, as in the location photo: a pale stone facade with tall dark-framed windows, a rectangular swimming pool with clear blue water edged in pale travertine and marble, clipped green hedges. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No trees in the foreground.",
+   "situation": "She sits upright on the low, wide travertine edge of the pool, one leg crossed high over the other so the ivory dress drapes over her knees and one black platform shoe with its gold disc points toward the camera. The suede bag stands on the stone beside her, her hand resting on top of its two handles; the other forearm lies along her thigh.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she "
+  },
+  {
+   "page": 7,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p07.jpg",
+   "still": "harunobu-mode-20261019/stills/L1C1/MIL-L1C1-WIDE-POOL-07.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L1C1.txt",
+   "aspectRatio": "9:16",
+   "location": "the garden of Villa Necchi Campiglio in Milan, a 1930s rationalist villa, as in the location photo: a pale stone facade with tall dark-framed windows, a rectangular swimming pool with clear blue water edged in pale travertine and marble, clipped green hedges. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No trees in the foreground.",
+   "situation": "She stands on the pool edge, body turned about 30 degrees to the right of the picture, weight in her back hip, the front knee softly bent so the black platform shoe and grey sock show below the ivory hem. The suede bag hangs from her shoulder by both handles, one hand resting on the handles, the other hand in the dress pocket.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she "
+  },
+  {
+   "page": 8,
+   "look": 1,
+   "kind": "illustration",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 9,
+   "look": 1,
+   "kind": "photo",
+   "scene": "scenes/p09.jpg",
+   "still": "harunobu-mode-20261019/stills/N09C/MIL-N09C-TRAM-GRIP-04.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N09C.txt",
+   "aspectRatio": "1:1",
+   "location": "inside a 1928 Milan tram (the old orange-and-cream 'Ventotto'), as in the location photo: varnished wooden benches along both sides, wooden window frames, hanging leather straps, small glass ceiling lamps, a worn wooden floor. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars.",
+   "situation": "She stands in the aisle with her feet together and holds ONE of the tram's own hanging hand grips: a small rigid TRIANGULAR grip hanging from the ceiling rail on a short strap, exactly like the other grips in the row, her hand closed around the bottom bar of the triangle, her arm raised; she never holds a loose strap, a belt or a bag strap. In her other hand, hanging down, she carries the suede bag by its two short handles at her thigh, never on the shoulder. The dress hangs straight and closed down the front.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 28mm wide lens close to her, deep focus: the place around her stays sharp and graphic, its lines conv"
+  },
+  {
+   "page": 10,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p10.jpg",
+   "still": "harunobu-mode-20261019/stills/N10B/MIL-N10B-RISOTTO-WINDOW-07.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N10B.txt",
+   "aspectRatio": "1:1",
+   "location": "a classic Milanese trattoria table, as in the location photo: a white tablecloth, a plate of saffron risotto alla milanese, golden yellow and glossy, a glass of water, cutlery. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars.",
+   "situation": "She sits upright at the table and lifts a forkful of risotto halfway toward her lips, the fork held still below her mouth, not yet eating; her other forearm rests on the table edge.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 50mm lens from the other side of the table, slightly below her eye level, shallow depth of field: she"
+  },
+  {
+   "page": 11,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p11.jpg",
+   "still": "harunobu-mode-20261019/stills/L2C2/MIL-L2C2-MID-FINS-08.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L2C2.txt",
+   "aspectRatio": "9:16",
+   "location": "the courtyard of a contemporary art foundation in southern Milan, as in the location photo: a former industrial distillery complex of pale grey and white factory buildings, grey stone paving, and the tower covered entirely in matte GOLD leaf with arched windows, against a grey concrete wall. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No name, no lettering and no signage anywhere in the picture.",
+   "situation": "She leans her right shoulder and the side of her back against one of the white concrete fins on the RIGHT side of the picture, her hips turned toward the camera and her shoulders twisted away, weight on the leg nearest the fin, the other foot crossed in front at the ankle. The greige bag hangs from the hand of her far arm by both handles; the near hand is in the skirt's side pocket. The silver buckle and the gathered wool face the camera.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she "
+  },
+  {
+   "page": 12,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p12.jpg",
+   "still": "harunobu-mode-20261019/stills/L2C1/MIL-L2C1-WIDE-WALK-06.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L2C1.txt",
+   "aspectRatio": "9:16",
+   "location": "the courtyard of a contemporary art foundation in southern Milan, as in the location photo: a former industrial distillery complex of pale grey and white factory buildings, grey stone paving, and the tower covered entirely in matte GOLD leaf with arched windows, against a grey concrete wall. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No name, no lettering and no signage anywhere in the picture.",
+   "situation": "She walks with a long, unhurried stride, caught mid-step with the front heel just landing, the black pleated skirt swinging open into its bell, the platform shoes and grey socks showing. The greige bag hangs from one hand by both handles; the other arm swings loosely, the pushed-up sleeve bunched at the forearm. The silver buckle and its gathered folds face the camera.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she "
+  },
+  {
+   "page": 13,
+   "look": 2,
+   "kind": "photo",
+   "scene": "scenes/p13.jpg",
+   "still": "harunobu-mode-20261019/stills/L2C3/MIL-L2C3-CLOSE-LOOKUP-02.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L2C3.txt",
+   "aspectRatio": "9:16",
+   "location": "the courtyard of a contemporary art foundation in southern Milan, as in the location photo: a former industrial distillery complex of pale grey and white factory buildings, grey stone paving, and the tower covered entirely in matte GOLD leaf with arched windows, against a grey concrete wall. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No name, no lettering and no signage anywhere in the picture.",
+   "situation": "She stands still, shoulders low, hands out of the frame.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with an 85mm portrait lens wide open at f/1.4, close to her. Very shallow depth of field, the background a s"
+  },
+  {
+   "page": 14,
+   "look": null,
+   "kind": "no-model",
+   "scene": null,
+   "still": "harunobu-mode-20261019/stills/AERIAL2/MIL-AERIAL2-HELI-OBLIQUE-03.jpg",
+   "prompt": null,
+   "aspectRatio": "1:1",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 15,
+   "look": null,
+   "kind": "no-model",
+   "scene": null,
+   "still": "harunobu-mode-20261019/stills/N15BW/MIL-N15BW-DUOMO-VIEW-TRIX-05.jpg",
+   "prompt": null,
+   "aspectRatio": "3:4",
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 16,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p16.jpg",
+   "still": "harunobu-mode-20261019/stills/N14/MIL-N14-DUOMO-STRIDE-07.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N14.txt",
+   "aspectRatio": "1:1",
+   "location": "the roof terraces of Milan Cathedral (the Duomo), as in the location photo: the pale marble walkway and the gently sloping marble roof among white marble spires and pinnacles with statues, the city of Milan spreading beyond the parapet. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars.",
+   "situation": "She strides along the marble walkway with a long, powerful step, caught mid-stride, the wide navy trousers swinging; the black bag is cradled against her body in the crook of one arm, both handles upright.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 28mm wide lens close to her, deep focus: the place around her stays sharp and graphic, its lines conv"
+  },
+  {
+   "page": 17,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p17.jpg",
+   "still": "harunobu-mode-20261019/stills/L3C1/MIL-L3C1-WIDE-CROUCH-08.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/L3C1.txt",
+   "aspectRatio": "9:16",
+   "location": "central Milan near Torre Velasca and the Brera district, as in the location photo: the brutalist Torre Velasca, a tall tower of warm rose-brown concrete whose wider upper floors sit on slanted concrete buttresses, and old palazzi of red-brown brick and stone over grey stone paving. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars.",
+   "situation": "She crouches low on the grey stone paving with her body in profile to the camera, knees close together and folded to one side, the wide navy trousers pooling over the platform shoes; her face turns over her shoulder to the lens. The black bag is held upright against her body in the crook of one arm, both handles upright; the other hand rests on her knee.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot from far away with a long telephoto lens (about 200mm) wide open at f/2.8. Very shallow depth of field: she "
+  },
+  {
+   "page": 18,
+   "look": null,
+   "kind": "text",
+   "scene": null,
+   "still": null,
+   "prompt": null,
+   "aspectRatio": null,
+   "location": "",
+   "situation": "",
+   "film": ""
+  },
+  {
+   "page": 19,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p19.jpg",
+   "still": "harunobu-mode-20261019/stills/N19B/MIL-N19B-APERITIVO-PROFILE-06.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N19B.txt",
+   "aspectRatio": "1:1",
+   "location": "a dim, old Milanese cocktail bar at the hour of aperitivo, as in the location photo: a dark wooden bar, warm low lamps, glasses of red Negroni Sbagliato with orange peel on the counter. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars.",
+   "situation": "She sits on a high bar stool with her body and knees turned TOWARD THE BAR COUNTER, facing along it, one leg crossed over the other; her near forearm rests on the counter with her fingers lightly beside the stem of the one glass. The black bag stands on the stool next to her, both handles upright. Only her head turns toward the camera over her shoulder.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 35mm lens and a soft direct flash, at the height of the bar counter, from the side, as if a friend qu"
+  },
+  {
+   "page": 20,
+   "look": 3,
+   "kind": "photo",
+   "scene": "scenes/p20.jpg",
+   "still": "harunobu-mode-20261019/stills/N20B/MIL-N20B-GALLERIA-LOWDOME-04.jpg",
+   "prompt": "harunobu-mode-20261019/prompts/N20B.txt",
+   "aspectRatio": "3:4",
+   "location": "inside the Galleria Vittorio Emanuele II in Milan at night, as in the location photo: the great glass-and-iron vaulted roof and dome, ornate stone facades of the arcade, a polished mosaic floor, warm golden lamps. No other people near her, no signs, no readable text, no logos, no lettering on any building, no flags, no cars. No shop names, no brand names, no lettering, no signs anywhere.",
+   "situation": "A long powerful stride across the frame, the wide navy trousers swinging, the black bag cradled in the crook of one arm with both handles upright.",
+   "film": "Shot on 35mm film, Kodak Portra 400, fine visible grain, an elegant, calm, slightly warm Milanese palette, muted and refined. A high-fashion editorial for a European magazine, not a catalogue: graphic and architectural, the strong lines and geometry of the building composing the frame. Shot with a 20mm ultra-wide lens from the floor, deep focus, strong converging lines. Her outline is shaped by th"
+  }
+ ]
+}
