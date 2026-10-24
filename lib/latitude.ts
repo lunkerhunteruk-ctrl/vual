@@ -194,7 +194,7 @@ export const ISSUES: LatitudeIssue[] = [
       'The cathedral was begun in 1386; its facade was finished under Napoleon. Beside it, the Galleria Vittorio Emanuele II opened in 1867 under a dome of iron and glass.',
       'Torre Velasca rose in 1958, its upper floors wider than the shaft below. The orange trams called Ventotto have run since 1928.',
     ],
-    pages: pages(20, [5, 18]), // 2026-10-24 章を4つ（III ドゥオーモ・IV トッレ・ヴェラスカ）にして公開。5は地図の上を歩く、18は7色の絵の具
+    pages: pages(20, [2, 3, 5, 18]), // 2026-10-24 章を4つ（III ドゥオーモ・IV トッレ・ヴェラスカ）にして公開。2・3は時刻表がすりガラスの上に浮かぶ、5は地図の上を歩く、18は7色の絵の具
     streamId: '2dbd08206252c18a3a533355430ebd35', // v22（章は場所と時刻・Prism & Motion・電車の環境音・ドゥオーモの衣の差し込み）
     capColour: '#a14209', // Negroni
   },
