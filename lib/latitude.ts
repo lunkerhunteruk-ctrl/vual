@@ -228,7 +228,7 @@ export const ISSUES: LatitudeIssue[] = [
       'In November the light is short. By half past four, the fishermen’s huts on the shingle are dark.',
     ],
     pages: pages(20, [2, 4, 5, 6]), // 2026-10-26 2は時刻表がすりガラスに浮かぶ、4・5はマティス風のペン画が動く、6は7色を斜めの筆で塗る
-    streamId: '04c3a84c4ce657fc669bd1cc82e4dda7', // v23（v21 からカット1の風とフェリーの音を控えめに。前の v21 は eb046363…）
+    streamId: '48cb26e5fc22a4ee262498f2939c2467', // v24（冒頭の題字を表紙と同じ C の形に：下に太い FÅRÖ。前の v23 は 04c3a84c…）
     capColour: '#aa5c40', // Kyrka Roof
     credits: ['Map data © OpenStreetMap contributors'],
   },
