@@ -229,7 +229,7 @@ export const ISSUES: LatitudeIssue[] = [
     ],
     pages: [],
     filmOnly: true, // 2026-10-26 ユーザー：まずリールと表紙だけ。カルーセルは整理が終わってから pages を入れて外す
-    streamId: 'eb046363cc7187945c4ad79b82c81211', // v21（題字はまん中にふわっと・曲 M11・終わりはストーブの音で暗くなる）
+    streamId: '04c3a84c4ce657fc669bd1cc82e4dda7', // v23（v21 からカット1の風とフェリーの音を控えめに。前の v21 は eb046363…）
     capColour: '#aa5c40', // Kyrka Roof
     credits: ['Map data © OpenStreetMap contributors'],
   },
