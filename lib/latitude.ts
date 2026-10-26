@@ -198,6 +198,41 @@ export const ISSUES: LatitudeIssue[] = [
     streamId: '2dbd08206252c18a3a533355430ebd35', // v22（章は場所と時刻・Prism & Motion・電車の環境音・ドゥオーモの衣の差し込み）
     capColour: '#a14209', // Negroni
   },
+  {
+    slug: 'faro',
+    no: 6,
+    latitude: '57.9° N',
+    city: 'Fårö',
+    published: '2026-10',
+    line: 'One November day on Fårö, from the six-minute ferry to a fire in a fishermen’s hut.',
+    chapters: [
+      { no: 'I', place: 'Fårösund', time: '08:40' },
+      { no: 'II', place: 'Langhammars', time: '10:15' },
+      { no: 'III', place: 'Fårö kyrka', time: '12:40' },
+      { no: 'IV', place: 'Holmudden', time: '15:35' },
+      { no: 'V', place: 'Helgumannen', time: '16:20' },
+    ],
+    colours: [
+      { name: 'Limestone', hex: '#9d9684' },
+      { name: 'Baltic Grey', hex: '#647175' },
+      { name: 'Juniper', hex: '#474936' },
+      { name: 'Olive Wool', hex: '#786e46' },
+      { name: 'Kyrka Roof', hex: '#aa5c40' },
+      { name: 'Shearling', hex: '#3e2f26' },
+      { name: 'Dusk Violet', hex: '#788db7' },
+    ],
+    notesTitle: 'Stone that was a reef',
+    notes: [
+      'Fårö lies off the northern tip of Gotland. A free car ferry crosses the sound in about six minutes.',
+      'Along the shore stand the raukar, pillars of limestone. They are the cores of coral reefs that grew in a warm Silurian sea, more than four hundred million years ago. After the ice age the land rose, the waves cut away the softer rock, and the pillars stayed.',
+      'In November the light is short. By half past four, the fishermen’s huts on the shingle are dark.',
+    ],
+    pages: [],
+    filmOnly: true, // 2026-10-26 ユーザー：まずリールと表紙だけ。カルーセルは整理が終わってから pages を入れて外す
+    streamId: 'eb046363cc7187945c4ad79b82c81211', // v21（題字はまん中にふわっと・曲 M11・終わりはストーブの音で暗くなる）
+    capColour: '#aa5c40', // Kyrka Roof
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
