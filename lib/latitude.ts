@@ -219,7 +219,7 @@ export const ISSUES: LatitudeIssue[] = [
       { name: 'Olive Wool', hex: '#786e46' },
       { name: 'Kyrka Roof', hex: '#aa5c40' },
       { name: 'Shearling', hex: '#3e2f26' },
-      { name: 'Dusk Violet', hex: '#788db7' },
+      { name: 'Night Navy', hex: '#12243a' },
     ],
     notesTitle: 'Stone that was a reef',
     notes: [
@@ -227,8 +227,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Along the shore stand the raukar, pillars of limestone. They are the cores of coral reefs that grew in a warm Silurian sea, more than four hundred million years ago. After the ice age the land rose, the waves cut away the softer rock, and the pillars stayed.',
       'In November the light is short. By half past four, the fishermen’s huts on the shingle are dark.',
     ],
-    pages: [],
-    filmOnly: true, // 2026-10-26 ユーザー：まずリールと表紙だけ。カルーセルは整理が終わってから pages を入れて外す
+    pages: pages(20, [2, 4, 5, 6]), // 2026-10-26 2は時刻表がすりガラスに浮かぶ、4・5はマティス風のペン画が動く、6は7色を斜めの筆で塗る
     streamId: '04c3a84c4ce657fc669bd1cc82e4dda7', // v23（v21 からカット1の風とフェリーの音を控えめに。前の v21 は eb046363…）
     capColour: '#aa5c40', // Kyrka Roof
     credits: ['Map data © OpenStreetMap contributors'],
