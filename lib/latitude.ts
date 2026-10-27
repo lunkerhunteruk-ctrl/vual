@@ -232,6 +232,32 @@ export const ISSUES: LatitudeIssue[] = [
     capColour: '#aa5c40', // Kyrka Roof
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    // 2026-10-27 未公開。TOTEME 本社に No.06 と一緒に聞く時、?preview=<LATITUDE_PREVIEW_KEY> 付きのアドレスで先方にだけ見せる。
+    // 了解が出たら publishAt を外し（クレジット「Wardrobe courtesy of TOTEME」を足し）、カルーセルができたら filmOnly を外す
+    slug: 'klippan',
+    no: 7,
+    latitude: '56.1° N',
+    city: 'Klippan',
+    published: '2026-10',
+    line: 'One day in Skåne, from the Malmö train to a church built without cutting a single brick.',
+    chapters: [
+      { no: 'I', place: 'Malmö C', time: '09:10' },
+      { no: 'II', place: 'S:t Petri kyrka', time: '11:00' },
+      { no: 'III', place: 'Söderåsen', time: '14:30' },
+      { no: 'IV', place: 'Lilla Torg', time: '17:30' },
+    ],
+    colours: [],
+    notesTitle: 'Not a single brick cut',
+    notes: [
+      'St Peter’s Church in Klippan was built by Sigurd Lewerentz between 1962 and 1966. Not one brick was cut to fit; the mortar joints take up the difference.',
+      'The window panes are not set in frames. They are clipped to the outside of the wall.',
+    ],
+    pages: [],
+    streamId: '56882efe911faa06428637d7b07173d1', // v11（K5 の曲・最後は LATITUDE → VUAL）
+    publishAt: '2099-01-01T00:00:00+09:00',
+    filmOnly: true,
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
