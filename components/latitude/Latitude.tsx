@@ -74,9 +74,9 @@ export function Reel({ issue }: { issue: LatitudeIssue }) {
     ? `${STREAM_HOST}/${issue.streamId}/thumbnails/thumbnail.jpg?time=1s&height=1280`
     : assetUrl(issue, 'cover.jpg');
   return (
-    // スマホは画面の幅いっぱい（ページと同じ大きさ。字は余白の中に残す）。縦に長すぎる時だけ、画面の高さに収まる幅まで縮める
+    // スマホは画面の幅いっぱい（ページと同じ大きさ。字は余白の中に残す）。高さで縮めると iPhone の Safari では左右にすき間が出たので、縮めない
     <div className="-mx-4 md:mx-0">
-    <div className="relative mx-auto w-[min(100vw,calc(100svh*9/16))] overflow-hidden bg-black md:w-full md:max-w-[420px]" style={{ aspectRatio: '9 / 16' }}>
+    <div className="relative mx-auto w-full overflow-hidden bg-black md:w-full md:max-w-[420px]" style={{ aspectRatio: '9 / 16' }}>
       <video
         src={src}
         poster={poster}
