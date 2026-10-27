@@ -161,3 +161,15 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
     </p>
   );
 }
+
+// 発行元の一行：雑誌の奥付のように、いちばん下に小さく。押すと VUAL のトップへ戻る
+export function PublishedBy({ locale }: { locale: string }) {
+  return (
+    <p className="text-center text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+      Published by{' '}
+      <Link href={`/${locale}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+        VUAL
+      </Link>
+    </p>
+  );
+}
