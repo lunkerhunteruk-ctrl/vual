@@ -33,8 +33,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title,
       description: i.line,
       url: `https://vual.jp/${locale}/latitude/${i.slug}`,
-      images: [i.pages.length ? { url: assetUrl(i, 'pages/01.jpg'), width: 1080, height: 1440 } : { url: assetUrl(i, 'cover.jpg'), width: 720, height: 1280 }],
+      // リンクの見え方は 1200×630 の og.jpg（1ページ目＋紙の色に緯度と一行。scripts/latitude-og.py で作る）。無い号は表紙
+      images: [existsSync(path.join(process.cwd(), 'public', 'latitude', i.slug, 'og.jpg'))
+        ? { url: assetUrl(i, 'og.jpg'), width: 1200, height: 630 }
+        : { url: assetUrl(i, 'cover.jpg'), width: 720, height: 1280 }],
     },
+    twitter: { card: 'summary_large_image', title, description: i.line, images: [assetUrl(i, 'og.jpg')] },
   };
 }
 
