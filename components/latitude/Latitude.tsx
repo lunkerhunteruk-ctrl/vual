@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
 import { PagesViewer } from './PagesViewer';
+import { ReelPlayer } from './ReelPlayer';
 import type { StepIntoPage } from '@/lib/latitude-recipe';
 
 // LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
@@ -77,18 +78,7 @@ export function Reel({ issue }: { issue: LatitudeIssue }) {
     // スマホは画面の幅いっぱい（ページと同じ大きさ。字は余白の中に残す）。高さで縮めると iPhone の Safari では左右にすき間が出たので、縮めない
     <div className="-mx-4 md:mx-0">
     <div className="relative mx-auto w-full overflow-hidden bg-black md:w-full md:max-w-[420px]" style={{ aspectRatio: '9 / 16' }}>
-      <video
-        src={src}
-        poster={poster}
-        title={title}
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls
-        preload="metadata"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      <ReelPlayer src={src} poster={poster} title={title} />
     </div>
     </div>
   );
