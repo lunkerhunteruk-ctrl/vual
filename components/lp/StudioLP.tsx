@@ -119,7 +119,7 @@ const STILLS_WORKS: {
     project: 'All sneakers by Y-3',
     medium: 'commons and sense free magazine Issue #03',
     year: '2026',
-    credit: 'gac_VUAL  ·  fashion_RenRen',
+    credit: 'AI_VUAL  ·  fashion_RenRen',
     images: [
       { key: 'y3-01', landscape: true },
       { key: 'y3-02' },
