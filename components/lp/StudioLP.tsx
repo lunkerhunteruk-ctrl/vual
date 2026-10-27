@@ -25,7 +25,7 @@ const CONTENT = {
     manifesto: {
       heading: 'One world,\nin stills and film.',
       // | は折り返してよい所。句の途中では折り返さない
-      body: 'UKと日本を拠点とする|ビジュアル・クリエイティブスタジオ。\n最先端のテクノロジーと|シネマティックな視点を融合させ、\n現実と非現実の境界を|曖昧にする映像体験を構築する。',
+      body: 'UKと日本を拠点とする、|ファッションのビジュアルスタジオ。\n実物の服から、|写真と映像を|一つの世界観でつくる。\nすべてAIで、|企画から仕上げまで。',
     },
     works: {
       sectionLabel: 'Selected Works',
@@ -61,7 +61,7 @@ const CONTENT = {
   en: {
     manifesto: {
       heading: 'One world,\nin stills and film.',
-      body: 'A visual creative studio based in the UK and Japan.\nFusing cutting-edge technology with a cinematic eye\nto construct visual experiences that blur the line\nbetween the real and the unreal.',
+      body: 'A fashion visual studio based in the UK and Japan.\nFrom the real garments, we make stills and film in one world —\nentirely with AI, from concept to final cut.',
     },
     works: {
       sectionLabel: 'Selected Works',

@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = "VUAL — One world, in stills and film.";
   const description = en
     ? "Fashion stills and film made from real garments, in one world — entirely with AI. A visual studio in the UK and Japan."
-    : "実物の服から、写真と映像を一つの世界観で。撮影をせず、すべてAIで作るファッションのビジュアルスタジオ。UK / Japan";
+    : "実物の服から、写真と映像を一つの世界観で。すべてAIで、企画から仕上げまで手がけるファッションのビジュアルスタジオ。UK / Japan";
   const image = { url: "/og/vual-3.jpg", width: 1200, height: 630, alt: "VUAL — Galleria Borghese" };
   return {
     title,
