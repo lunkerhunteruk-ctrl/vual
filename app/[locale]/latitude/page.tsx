@@ -15,7 +15,7 @@ const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const description = STATEMENT_EN;
+  const description = locale === 'ja' ? STATEMENT_JA : STATEMENT_EN;
   return {
     title: 'LATITUDE — VUAL',
     description,
@@ -35,12 +35,13 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <p className="mt-6 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
           A travelling issue by VUAL
         </p>
-        <p className="mt-4 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
-          {STATEMENT_EN}
-        </p>
-        {locale === 'ja' && (
-          <p className="mt-5 max-w-xl text-[13px] leading-[2] md:text-[14px]" style={{ fontFamily: MINCHO, color: MUTE }}>
+        {locale === 'ja' ? (
+          <p className="mt-4 max-w-xl text-[15px] leading-[2.1] md:text-[17px]" style={{ fontFamily: MINCHO }}>
             {STATEMENT_JA}
+          </p>
+        ) : (
+          <p className="mt-4 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
+            {STATEMENT_EN}
           </p>
         )}
       </header>

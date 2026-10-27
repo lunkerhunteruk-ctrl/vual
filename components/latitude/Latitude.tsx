@@ -22,7 +22,8 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
       style={{ background: 'rgba(242,238,231,0.92)', borderColor: 'rgba(30,29,27,0.12)' }}
     >
       <style>{NOSCROLL_CSS}</style>
-      <div className="latitude-noscroll mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-4 py-3 md:px-8">
+      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:px-8">
+      <div className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto py-3">
         <Link href={`/${locale}/latitude`} className="shrink-0 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
           Latitude
         </Link>
@@ -41,6 +42,23 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
             </Link>
           );
         })}
+      </div>
+      {/* 言語の切り替え：同じページの日本語版・英語版へ */}
+      <div className="flex shrink-0 items-center gap-2 py-3 text-[10px] uppercase tracking-[0.25em]">
+        {(['ja', 'en'] as const).map((l, n) => (
+          <span key={l} className="flex items-center gap-2">
+            {n > 0 && <span style={{ color: MUTE }}>/</span>}
+            <Link
+              href={`/${l}/latitude${current ? `/${current}` : ''}`}
+              hrefLang={l}
+              aria-current={l === locale ? 'true' : undefined}
+              style={{ color: l === locale ? INK : MUTE }}
+            >
+              {l}
+            </Link>
+          </span>
+        ))}
+      </div>
       </div>
     </nav>
   );
