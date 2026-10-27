@@ -48,14 +48,14 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   // VUAL のリンクの見え方（LINE・SNS で送った時の題・説明・画像）。2026-10-27 作り直し：
-  // 題はトップの見出しと同じ「One world, in stills and film.」、画像は Galleria Borghese の映像の一場面（public/og/vual-2.jpg。アイコンの印・サイトの白・モーブに合わせた版）、
+  // 題はトップの見出しと同じ「One world, in stills and film.」、画像は Galleria Borghese の映像の一場面（public/og/vual-3.jpg。字だけ・サイトの白とモーブ。印はアイコンの係なので画像には入れない）、
   // アイコンは app/icon.png（黒地に生成りの V）。言葉は見ている言語に合わせる
   const en = headersList.get("x-next-intl-locale") === "en";
   const title = "VUAL — One world, in stills and film.";
   const description = en
     ? "Fashion stills and film made from real garments, in one world — entirely with AI. A visual studio in the UK and Japan."
     : "実物の服から、写真と映像を一つの世界観で。撮影をせず、すべてAIで作るファッションのビジュアルスタジオ。UK / Japan";
-  const image = { url: "/og/vual-2.jpg", width: 1200, height: 630, alt: "VUAL — Galleria Borghese" };
+  const image = { url: "/og/vual-3.jpg", width: 1200, height: 630, alt: "VUAL — Galleria Borghese" };
   return {
     title,
     description,
