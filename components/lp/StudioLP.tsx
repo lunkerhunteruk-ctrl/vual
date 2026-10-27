@@ -44,7 +44,6 @@ const CONTENT = {
         'Full-AI Catwalk',
         'Editorial Photography',
         'Web Editorials & Carousels',
-        'Immersive Virtual Try-On',
       ],
     },
     founder: {
@@ -81,7 +80,6 @@ const CONTENT = {
         'Full-AI Catwalk',
         'Editorial Photography',
         'Web Editorials & Carousels',
-        'Immersive Virtual Try-On',
       ],
     },
     founder: {
