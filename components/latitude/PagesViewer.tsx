@@ -1,10 +1,11 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { PageVideo } from './PageVideo';
 import { Pic } from './Pic';
 import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 
-// カルーセルのページ：スマホは横にめくる、パソコンは2ページずつの見開き。
+// カルーセルのページ：スマホもパソコンも横一列。見開きはページの境目をまたぐので、決まった2枚の組にすると切れる（2026-10-27）。
+// パソコンは矢印と ← → で1ページずつ送り、隣り合うどの2枚も並べて見られる。
 // ページを押すと拡大写真（左右にめくれる）。LOOKのあるページだけ、少し遅れて「Step into this look」が出て、
 // 押すと下（パソコンは右）から体験の画面がせり上がる：見本（凛）・服・顔の写真・作るボタン。
 // 2026-10-22 体験はログインなしで公開・1人1日3回まで（回数はサーバーで数える）。stepOn が false の号では出さない。
@@ -27,8 +28,6 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
     ) : (
       <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" />
     );
-  const spreads: Page[][] = [];
-  for (let i = 0; i < pages.length; i += 2) spreads.push(pages.slice(i, i + 2));
   const hit = (n: number) => (
     <button type="button" aria-label={`Open page ${n}`} onClick={() => setOpen(n)} className="absolute inset-0 cursor-zoom-in" />
   );
@@ -47,18 +46,8 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
           {pages.length} pages — swipe
         </p>
       </div>
-      <div className="hidden flex-col gap-10 md:flex">
-        {spreads.map((s, k) => (
-          <div key={k} className="mx-auto grid w-full max-w-5xl grid-cols-2 shadow-[0_30px_60px_-30px_rgba(30,29,27,0.35)]">
-            {s.map((p, j) => (
-              <div key={p.file} className="relative" style={{ aspectRatio: '3 / 4' }}>
-                {thumb(p, k * 2 + j + 1)}
-                {hit(k * 2 + j + 1)}
-              </div>
-            ))}
-            {s.length === 1 && <div style={{ background: PAPER }} />}
-          </div>
-        ))}
+      <div className="hidden md:block">
+        <DesktopStrip pages={pages} thumb={thumb} hit={hit} paused={open !== null} />
       </div>
       {open !== null && (
         <Lightbox
@@ -67,6 +56,65 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
         />
       )}
     </>
+  );
+}
+
+const PAGE_H = 'min(76vh, 720px)';
+
+// パソコンの横一列。1ページずつ送る（2ページずつだと、またいだ見開きがまた切れる）
+function DesktopStrip({ pages, thumb, hit, paused }: {
+  pages: Page[]; thumb: (p: Page, n: number) => ReactNode; hit: (n: number) => ReactNode; paused: boolean;
+}) {
+  const strip = useRef<HTMLDivElement>(null);
+  const [first, setFirst] = useState(1);
+  const [shown, setShown] = useState(2);
+  const [inView, setInView] = useState(false);
+  const pageW = () => (strip.current?.firstElementChild as HTMLElement | null)?.offsetWidth ?? 1;
+  const measure = useCallback(() => {
+    const el = strip.current;
+    if (!el) return;
+    const w = pageW();
+    setFirst(Math.round(el.scrollLeft / w) + 1);
+    setShown(Math.max(1, Math.floor((el.clientWidth + 2) / w)));
+  }, []);
+  const step = useCallback((d: number) => strip.current?.scrollBy({ left: d * pageW(), behavior: 'smooth' }), []);
+  useEffect(() => {
+    measure();
+    window.addEventListener('resize', measure);
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.5 });
+    if (strip.current) io.observe(strip.current);
+    return () => { window.removeEventListener('resize', measure); io.disconnect(); };
+  }, [measure]);
+  useEffect(() => {
+    if (!inView || paused) return;
+    const k = (e: KeyboardEvent) => { if (e.key === 'ArrowRight') { e.preventDefault(); step(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); } };
+    window.addEventListener('keydown', k);
+    return () => window.removeEventListener('keydown', k);
+  }, [inView, paused, step]);
+  const last = Math.min(pages.length, first + shown - 1);
+  const arrow = 'absolute top-1/2 z-10 -translate-y-1/2 px-3 py-6 text-3xl transition-opacity disabled:pointer-events-none disabled:opacity-0';
+  // 枠の幅はちょうど2ページぶん。見開き1つを、欠けた3枚目なしで見せる
+  return (
+    <div>
+      <div className="relative mx-auto" style={{ width: `min(100%, calc(2 * 0.75 * ${PAGE_H}))` }}>
+        <div ref={strip} onScroll={measure}
+          className="latitude-noscroll flex snap-x snap-mandatory overflow-x-auto shadow-[0_30px_60px_-30px_rgba(30,29,27,0.35)]">
+          {pages.map((p, i) => (
+            <div key={p.file} className="relative shrink-0 snap-start" style={{ height: PAGE_H, aspectRatio: '3 / 4' }}>
+              {thumb(p, i + 1)}
+              {hit(i + 1)}
+            </div>
+          ))}
+        </div>
+        <button type="button" aria-label="Previous page" onClick={() => step(-1)} disabled={first <= 1}
+          className={`${arrow} left-0`} style={{ color: PAPER, textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>‹</button>
+        <button type="button" aria-label="Next page" onClick={() => step(1)} disabled={last >= pages.length}
+          className={`${arrow} right-0`} style={{ color: PAPER, textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>›</button>
+      </div>
+      <p className="mt-4 text-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+        {first === last ? first : `${first}–${last}`} / {pages.length}
+      </p>
+    </div>
   );
 }
 

@@ -24,7 +24,8 @@ const CONTENT = {
   ja: {
     manifesto: {
       heading: 'Dressing the world\'s\nuntouchable places.',
-      body: 'UKと日本を拠点とするビジュアル・クリエイティブスタジオ。\n最先端のテクノロジーとシネマティックな視点を融合させ、\n現実と非現実の境界を曖昧にする映像体験を構築する。',
+      // | は折り返してよい所。句の途中では折り返さない
+      body: 'UKと日本を拠点とする|ビジュアル・クリエイティブスタジオ。\n最先端のテクノロジーと|シネマティックな視点を融合させ、\n現実と非現実の境界を|曖昧にする映像体験を構築する。',
     },
     works: {
       sectionLabel: 'Selected Works',
@@ -38,11 +39,11 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
-        'Art Direction',
-        'AI Model Direction',
         'Cinematic Video Production',
+        'Full-AI Catwalk',
         'Editorial Photography',
-        'AI Garment Design',
+        'Editorial Pages & Carousels',
+        'Art Direction',
         'Immersive Virtual Try-On',
       ],
     },
@@ -75,11 +76,11 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
-        'Art Direction',
-        'AI Model Direction',
         'Cinematic Video Production',
+        'Full-AI Catwalk',
         'Editorial Photography',
-        'AI Garment Design',
+        'Editorial Pages & Carousels',
+        'Art Direction',
         'Immersive Virtual Try-On',
       ],
     },
@@ -546,7 +547,13 @@ function ManifestoSection({ locale }: { locale: string }) {
           className="text-sm md:text-base leading-[2.2] text-white/50 whitespace-pre-line tracking-wide"
           style={{ fontFamily: locale === 'ja' ? "'Noto Sans JP', sans-serif" : 'var(--font-inter), sans-serif' }}
         >
-          {t.manifesto.body}
+          {t.manifesto.body.split('\n').map((line, i) => (
+            <span key={i} className="block">
+              {line.includes('|')
+                ? line.split('|').map((part, j) => <span key={j} className="inline-block">{part}</span>)
+                : line}
+            </span>
+          ))}
         </motion.p>
       </motion.div>
     </section>
