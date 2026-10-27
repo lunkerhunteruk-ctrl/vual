@@ -34,18 +34,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   return (
     <>
       <div className="md:hidden">
-        {/* 1ページ＝画面の幅ちょうど。すき間・隣ののぞきなしで、Instagram と同じ位置に毎回止まる（2026-10-27） */}
-        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory overflow-x-auto">
-          {pages.map((p, i) => (
-            <figure key={p.file} className="relative w-full shrink-0 snap-start snap-always" style={{ aspectRatio: '3 / 4' }}>
-              {thumb(p, i + 1)}
-              {hit(i + 1)}
-            </figure>
-          ))}
-        </div>
-        <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
-          {pages.length} pages — swipe
-        </p>
+        <MobileStrip pages={pages} thumb={thumb} hit={hit} />
       </div>
       <div className="hidden md:block">
         <DesktopStrip pages={pages} thumb={thumb} hit={hit} paused={open !== null} />
@@ -57,6 +46,47 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
         />
       )}
     </>
+  );
+}
+
+// スマホ：1ページ＝画面の幅ちょうど。すき間・隣ののぞきなしで、Instagram と同じ位置に毎回止まる（2026-10-27）
+// 写真が1枚に見えて横にめくれると気づかないので、Instagram と同じ「右上の 1/20」と「下の点」を付ける。
+// 点は全部並べると長いので、今のページのまわり7つだけ。端の点は小さくして、まだ先があると分かるように
+const DOTS = 7;
+function MobileStrip({ pages, thumb, hit }: {
+  pages: Page[]; thumb: (p: Page, n: number) => ReactNode; hit: (n: number) => ReactNode;
+}) {
+  const strip = useRef<HTMLDivElement>(null);
+  const [at, setAt] = useState(0);
+  const n = pages.length;
+  const onScroll = () => { const el = strip.current; if (el) setAt(Math.round(el.scrollLeft / el.clientWidth)); };
+  const from = Math.max(0, Math.min(at - Math.floor(DOTS / 2), n - DOTS));
+  const to = Math.min(n, from + DOTS);
+  return (
+    <div>
+      <div className="relative -mx-4">
+        <div ref={strip} onScroll={onScroll} className="latitude-noscroll flex snap-x snap-mandatory overflow-x-auto">
+          {pages.map((p, i) => (
+            <figure key={p.file} className="relative w-full shrink-0 snap-start snap-always" style={{ aspectRatio: '3 / 4' }}>
+              {thumb(p, i + 1)}
+              {hit(i + 1)}
+            </figure>
+          ))}
+        </div>
+        <p className="pointer-events-none absolute right-3 top-3 rounded-full px-2.5 py-1 text-[11px] tracking-[0.08em] text-white"
+          style={{ background: 'rgba(20,20,18,0.55)' }}>
+          {at + 1}/{n}
+        </p>
+      </div>
+      <div className="mt-3 flex items-center justify-center gap-[6px]" aria-hidden="true">
+        {pages.slice(from, to).map((p, k) => {
+          const i = from + k;
+          const edge = (i === from && from > 0) || (i === to - 1 && to < n);
+          const d = edge ? 4 : 6;
+          return <span key={p.file} className="rounded-full transition-colors duration-300" style={{ width: d, height: d, background: i === at ? INK : 'rgba(30,29,27,0.22)' }} />;
+        })}
+      </div>
+    </div>
   );
 }
 
