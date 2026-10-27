@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
 import { PagesViewer } from './PagesViewer';
 import { ReelPlayer } from './ReelPlayer';
+import { FadeScroller } from './FadeScroller';
 import type { StepIntoPage } from '@/lib/latitude-recipe';
 
 // LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
@@ -24,7 +25,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
     >
       <style>{NOSCROLL_CSS}</style>
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:px-8">
-      <div className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto py-3">
+      <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto py-3">
         <Link href={`/${locale}/latitude`} className="shrink-0 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
           Latitude
         </Link>
@@ -43,7 +44,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
             </Link>
           );
         })}
-      </div>
+      </FadeScroller>
       {/* 言語の切り替え：同じページの日本語版・英語版へ */}
       <div className="flex shrink-0 items-center gap-2 py-3 text-[10px] uppercase tracking-[0.25em]">
         {(['ja', 'en'] as const).map((l, n) => (
@@ -81,6 +82,34 @@ export function Reel({ issue }: { issue: LatitudeIssue }) {
       <ReelPlayer src={src} poster={poster} title={title} />
     </div>
     </div>
+  );
+}
+
+// ほかの号（2026-10-27）：号の最後、奥付の手前に表紙を横に並べる。読み終えた人がそのまま次の号へ。
+// 今の号を除き、新しい号から。スマホは1枚が画面の4割ほどで次の表紙がのぞく（めくれると分かる）、パソコンは1列に収まる
+export function MoreIssues({ locale, current }: { locale: string; current: string }) {
+  const others = liveIssues().filter((i) => i.slug !== current);
+  if (!others.length) return null;
+  return (
+    <section className="pb-20 md:pb-28">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
+        <SectionLabel>More issues</SectionLabel>
+      </div>
+      <FadeScroller className="latitude-noscroll mx-auto flex max-w-6xl snap-x scroll-px-4 gap-4 overflow-x-auto px-4 md:scroll-px-8 md:gap-6 md:px-8">
+        {others.map((i) => (
+          <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[40vw] shrink-0 snap-start md:w-auto md:flex-1" style={{ color: INK }}>
+            <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={assetUrl(i, 'cover.jpg')} alt={`LATITUDE ${issueNo(i)} — ${i.latitude} ${i.city}`} loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+            </div>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{issueNo(i)}</p>
+            <p className="mt-1 text-[20px] leading-tight" style={{ fontFamily: SERIF }}>{i.latitude}</p>
+            <p className="mt-1 text-[10px] uppercase tracking-[0.3em]">{i.city}</p>
+          </Link>
+        ))}
+      </FadeScroller>
+    </section>
   );
 }
 

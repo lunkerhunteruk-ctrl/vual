@@ -5,7 +5,7 @@ import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, type LatitudeI
 import { stepIntoPages } from '@/lib/latitude-recipe';
 import { existsSync } from 'fs';
 import path from 'path';
-import { INK, IssueStrip, LatitudeFigure, MUTE, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
 
@@ -145,6 +145,8 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       )}
 
       {/* 奥付 */}
+      <MoreIssues locale={locale} current={issue.slug} />
+
       <footer className="border-t px-4 py-16 md:px-8 md:py-24" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
         <div className="mx-auto max-w-6xl">
           <p className="text-[11px] uppercase tracking-[0.3em]">Latitude&nbsp;&nbsp;{issueNo(issue)}</p>
