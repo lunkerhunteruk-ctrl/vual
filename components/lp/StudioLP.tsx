@@ -23,7 +23,7 @@ const HERO_STREAM_ID = 'ddbec5f627e61b18df34e561e0b81bcb'; // Eclipse — The En
 const CONTENT = {
   ja: {
     manifesto: {
-      heading: 'Dressing the world\'s\nuntouchable places.',
+      heading: 'One world,\nin stills and film.',
       // | は折り返してよい所。句の途中では折り返さない
       body: 'UKと日本を拠点とする|ビジュアル・クリエイティブスタジオ。\n最先端のテクノロジーと|シネマティックな視点を融合させ、\n現実と非現実の境界を|曖昧にする映像体験を構築する。',
     },
@@ -61,7 +61,7 @@ const CONTENT = {
   },
   en: {
     manifesto: {
-      heading: 'Dressing the world\'s\nuntouchable places.',
+      heading: 'One world,\nin stills and film.',
       body: 'A visual creative studio based in the UK and Japan.\nFusing cutting-edge technology with a cinematic eye\nto construct visual experiences that blur the line\nbetween the real and the unreal.',
     },
     works: {
