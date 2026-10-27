@@ -138,7 +138,7 @@ const SHOW_LATEST_WORK = true;
 const LATEST_WORK = {
   id: 'galleria-borghese',
   title: 'Galleria Borghese',
-  subtitle: '',
+  subtitle: 'Cinema',
   location: 'Galleria Borghese, Rome',
   year: '2026',
   concept: '',
@@ -201,7 +201,7 @@ const REELS_WORKS = [
   {
     id: 'galleria-borghese-cinema',
     title: 'Galleria Borghese',
-    subtitle: 'Cinema',
+    subtitle: 'Catwalk',
     location: 'Galleria Borghese, Rome',
     year: '2026',
     thumbnail: 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com/198dcebeb51d412961aff963c8052222/thumbnails/thumbnail.jpg?time=3s&height=1280',
