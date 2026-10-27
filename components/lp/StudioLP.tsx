@@ -39,11 +39,11 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
+        'Creative Direction',
         'Cinematic Video Production',
         'Full-AI Catwalk',
         'Editorial Photography',
         'Editorial Pages & Carousels',
-        'Art Direction',
         'Immersive Virtual Try-On',
       ],
     },
@@ -76,11 +76,11 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
+        'Creative Direction',
         'Cinematic Video Production',
         'Full-AI Catwalk',
         'Editorial Photography',
         'Editorial Pages & Carousels',
-        'Art Direction',
         'Immersive Virtual Try-On',
       ],
     },
