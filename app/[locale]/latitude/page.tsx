@@ -19,10 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: 'LATITUDE — VUAL',
     description,
-    // リンクの見え方：新しい2号の表紙＋LATITUDE の題（public/latitude/og.jpg。scripts/latitude-og.py で作る）
+    // リンクの見え方：Fårö の灯台のページ＋LATITUDE の題（public/latitude/og-index.jpg。scripts/latitude-og.py で作る）
     openGraph: { type: 'website', siteName: 'VUAL', title: 'LATITUDE — VUAL', description, url: `https://vual.jp/${locale}/latitude`,
-      images: [{ url: '/latitude/og.jpg', width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', title: 'LATITUDE — VUAL', description, images: ['/latitude/og.jpg'] },
+      images: [{ url: '/latitude/og-index.jpg', width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title: 'LATITUDE — VUAL', description, images: ['/latitude/og-index.jpg'] },
   };
 }
 
