@@ -34,9 +34,10 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   return (
     <>
       <div className="md:hidden">
-        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory overflow-x-auto px-4 pb-2">
+        {/* 1ページ＝画面の幅ちょうど。すき間・隣ののぞきなしで、Instagram と同じ位置に毎回止まる（2026-10-27） */}
+        <div className="latitude-noscroll -mx-4 flex snap-x snap-mandatory overflow-x-auto">
           {pages.map((p, i) => (
-            <figure key={p.file} className="relative w-[84vw] shrink-0 snap-center" style={{ aspectRatio: '3 / 4' }}>
+            <figure key={p.file} className="relative w-full shrink-0 snap-start snap-always" style={{ aspectRatio: '3 / 4' }}>
               {thumb(p, i + 1)}
               {hit(i + 1)}
             </figure>
