@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues } from '@/lib/latitude';
+import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
 import { stepIntoPages } from '@/lib/latitude-recipe';
 import { existsSync } from 'fs';
 import path from 'path';
@@ -13,9 +13,10 @@ export function generateStaticParams() {
   return ISSUES.map((i) => ({ slug: i.slug }));
 }
 
-// 公開予約の号は、時刻まで ?preview=<LATITUDE_PREVIEW_KEY> を付けた時だけ見られる
+// 公開予約の号は、時刻まで ?preview=<LATITUDE_PREVIEW_KEY> か、その号の previewToken を付けた時だけ見られる
 type SP = Promise<{ preview?: string }>;
-const canPreview = (key?: string) => !!key && !!process.env.LATITUDE_PREVIEW_KEY && key === process.env.LATITUDE_PREVIEW_KEY;
+const canPreview = (issue: LatitudeIssue, key?: string) =>
+  !!key && ((!!issue.previewToken && key === issue.previewToken) || (!!process.env.LATITUDE_PREVIEW_KEY && key === process.env.LATITUDE_PREVIEW_KEY));
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -43,7 +44,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
   const issue = getIssue(slug);
   if (!issue) notFound();
   const previewing = !isLive(issue);
-  if (previewing && !canPreview(preview)) notFound();
+  if (previewing && !canPreview(issue, preview)) notFound();
   // 2026-10-22 体験「Step into this look」はログインなしで公開（1人1日3回）。止める時は環境変数 LATITUDE_STEPINTO=off
   const stepOn = process.env.LATITUDE_STEPINTO !== 'off';
   const sampleDir = path.join(process.cwd(), 'public', 'latitude', issue.slug, 'stepinto');

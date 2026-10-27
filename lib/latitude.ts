@@ -23,6 +23,7 @@ export type LatitudeIssue = {
   streamId?: string;
   credits?: string[];
   publishAt?: string; // 公開予約の時刻（無ければすぐ公開）
+  previewToken?: string; // 公開前の号を1社だけに見せる鍵（?preview=<これ>）。本番に LATITUDE_PREVIEW_KEY が無くても効く。ほかの号の鍵は渡さずに済む
   capColour?: string; // 読み物の頭の大きな1文字（ドロップキャップ）の色。無ければ墨
   filmOnly?: boolean; // 2026-10-24 ユーザー：カルーセルを整理し終わるまで、リール（と題字・奥付）だけを出す。ページ・読み物・色は隠す。出す時は外して pages を入れる
   recipe?: string; // 2026-10-22 体験（顔を入れてその服の世界に入る）用のレシピの目印。data/latitude-recipes/<slug>/recipe.json（ページ→LOOK・服の写真・場所・フィルム）
@@ -233,7 +234,7 @@ export const ISSUES: LatitudeIssue[] = [
     credits: ['Map data © OpenStreetMap contributors'],
   },
   {
-    // 2026-10-27 未公開。TOTEME 本社に No.06 と一緒に聞く時、?preview=<LATITUDE_PREVIEW_KEY> 付きのアドレスで先方にだけ見せる。
+    // 2026-10-27 未公開。TOTEME 本社に No.06 と一緒に聞く時、?preview=<previewToken> 付きのアドレスで先方にだけ見せる。
     // 了解が出たら publishAt を外し（クレジット「Wardrobe courtesy of TOTEME」を足し）、カルーセルができたら filmOnly を外す
     slug: 'klippan',
     no: 7,
@@ -256,6 +257,7 @@ export const ISSUES: LatitudeIssue[] = [
     pages: [],
     streamId: '56882efe911faa06428637d7b07173d1', // v11（K5 の曲・最後は LATITUDE → VUAL）
     publishAt: '2099-01-01T00:00:00+09:00',
+    previewToken: '9WXITq75DC00xzbo', // TOTEME 用
     filmOnly: true,
   },
 ];
