@@ -1364,6 +1364,66 @@ function CapabilitiesSection({ locale }: { locale: string }) {
 }
 
 // ============================================================
+// FOR BRANDS（2026-10-28）：できる事の一覧のすぐ下に、頼み方を3段で。期間の数字と料金は書かない
+// （短い日数を書くと安い仕事に見えるため。速さは問い合わせの会話で伝える）。見出しは | の所でだけ折り返す
+// ============================================================
+const FOR_BRANDS = {
+  ja: {
+    label: 'For Brands',
+    lead: '貴ブランドの服で、|一つの世界を。',
+    steps: [
+      ['お洋服の画像を共有いただく', '商品写真や、ルックブックの画像から。'],
+      ['世界観と場所を決める', '季節・土地・モデルを、一緒に。'],
+      ['写真と映像を届ける', '映像、雑誌のように組んだページ、静止画。'],
+    ],
+    note: '期間と料金は、内容に合わせてご相談いたします。',
+  },
+  en: {
+    label: 'For Brands',
+    lead: 'Your garments, in one world.',
+    steps: [
+      ['Share images of the garments', 'Product shots and lookbook images are all we need.'],
+      ['Set the world', 'Season, place and model, decided together.'],
+      ['Receive stills and film', 'A film, magazine-style pages, and stills.'],
+    ],
+    note: 'Timing and fees are tailored to each project.',
+  },
+} as const;
+
+function ForBrandsSection({ locale }: { locale: string }) {
+  const t = FOR_BRANDS[locale as keyof typeof FOR_BRANDS] || FOR_BRANDS.en;
+  const serif = { fontFamily: 'var(--font-playfair), Georgia, serif' };
+  return (
+    <section className="relative pb-24 md:pb-40">
+      <div className="px-6 md:px-16 max-w-3xl mx-auto">
+        <SectionLabel>{t.label}</SectionLabel>
+        <p className="mt-10 text-2xl md:text-4xl font-light text-white/85" style={serif}>
+          {t.lead.includes('|') ? t.lead.split('|').map((part, j) => <span key={j} className="inline-block">{part}</span>) : t.lead}
+        </p>
+        <ol className="mt-12 space-y-0">
+          {t.steps.map(([h, d], i) => (
+            <li key={i}>
+              <div className="py-6 md:py-7 flex items-baseline gap-6 md:gap-10">
+                <span className="text-[10px] tracking-[0.2em] text-white/25 w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <p className="text-lg md:text-xl font-light text-white/80" style={serif}>{h}</p>
+                  <p className="mt-1 text-sm text-white/45">{d}</p>
+                </div>
+              </div>
+              <Divider />
+            </li>
+          ))}
+        </ol>
+        <p className="mt-8 text-sm text-white/45">{t.note}</p>
+        <a href="mailto:studio@vual.jp" className="mt-6 inline-block text-sm tracking-[0.15em] text-white/80 underline underline-offset-8 decoration-white/30 hover:text-white">
+          studio@vual.jp
+        </a>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
 // CONTACT
 // ============================================================
 // ============================================================
@@ -1674,6 +1734,8 @@ export function StudioLP() {
       <TalentSection locale={locale} />
       <Divider />
       <CapabilitiesSection locale={locale} />
+
+      <ForBrandsSection locale={locale} />
       <Divider />
       <FounderSection locale={locale} />
       <Divider />
