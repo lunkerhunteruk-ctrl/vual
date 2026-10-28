@@ -160,8 +160,16 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
             {issue.chapters.map((c) => c.place).join('  ·  ')}
           </p>
+          {/* 制作の案内（2026-10-28）：号を見たブランドが VUAL に頼めると分かるように、号のいちばん最後にだけ置く。
+              読む人に向けた文なので言語で切り替える（クレジットの行は奥付の慣習どおり英語のまま） */}
           <p className="mt-10 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
-            This issue was shot and edited by VUAL. We make issues for brands, too.{' '}
+            {locale === 'ja'
+              ? 'LATITUDE は、ファッションのクリエイティブスタジオ VUAL が制作しています。VUAL では、ブランドの実物の服から、映像と誌面の制作も承っています。'
+              : 'LATITUDE is made by VUAL, a fashion creative studio. VUAL also makes films and editorial for brands, from the real garments.'}{' '}
+            <Link href={`/${locale}`} className="underline underline-offset-4" style={{ color: INK }}>
+              vual.jp
+            </Link>
+            {'  ·  '}
             <a href="mailto:studio@vual.jp" className="underline underline-offset-4" style={{ color: INK }}>
               studio@vual.jp
             </a>
