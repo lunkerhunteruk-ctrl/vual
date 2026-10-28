@@ -380,7 +380,7 @@ const SHOW_HERO_VIDEO = false;
 function LatitudeHero({ locale }: { locale: string }) {
   return (
     <section className="relative flex min-h-screen w-full flex-col justify-between px-8 pb-16 pt-10 md:px-12 md:pb-20">
-      <style>{'.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}'}</style>
+      <style>{'@media (max-width:767px){.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}}@media (min-width:768px){.latitude-noscroll{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent}}'}</style>
       <motion.h1
         initial={{ opacity: 0, letterSpacing: '0.6em' }}
         animate={{ opacity: 1, letterSpacing: '0.35em' }}
@@ -409,10 +409,10 @@ function LatitudeHero({ locale }: { locale: string }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.2 }}
-          className="latitude-noscroll -mx-8 mt-12 flex snap-x gap-4 overflow-x-auto px-8 pb-2 md:mx-0 md:grid md:grid-cols-5 md:gap-5 md:overflow-visible md:px-0"
+          className="latitude-noscroll -mx-8 mt-12 flex snap-x gap-4 overflow-x-auto px-8 pb-4 md:-mx-12 md:gap-5 md:px-12"
         >
           {latitudeLiveIssues().map((i) => (
-            <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[58vw] shrink-0 snap-start md:w-auto">
+            <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[58vw] shrink-0 snap-start md:w-[17vw] md:max-w-[280px]">
               <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

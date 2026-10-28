@@ -48,9 +48,9 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           </p>
         )}
       </header>
-      <main className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-14 px-4 pb-28 md:grid-cols-4 md:gap-x-8 md:px-8">
+      <main className="flex snap-x gap-4 overflow-x-auto px-4 pb-28 md:gap-8 md:px-8 lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))]" style={{ scrollbarWidth: 'thin' }}>
         {liveIssues().map((i) => (
-          <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block" style={{ color: INK }}>
+          <Link key={i.slug} href={`/${locale}/latitude/${i.slug}`} className="group block w-[62vw] shrink-0 snap-start md:w-[24vw] md:max-w-[300px]" style={{ color: INK }}>
             <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
