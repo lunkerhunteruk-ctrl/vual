@@ -65,6 +65,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const c = locale === 'ja' ? content.ja : content.en;
   return {
+    // 2026-10-30 本体の印はこのページ自身（ja・en は中身がちがうので、それぞれが本体で、たがいに言語ちがいとして結ぶ）
+    alternates: {
+      canonical: `/${locale}/company`,
+      languages: { ja: '/ja/company', en: '/en/company', 'x-default': '/en/company' },
+    },
     title: c.title,
     description: c.description,
     keywords: locale === 'ja'

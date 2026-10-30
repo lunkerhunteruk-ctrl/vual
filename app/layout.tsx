@@ -66,10 +66,8 @@ export async function generateMetadata(): Promise<Metadata> {
       "virtual try-on", "VTON", "VUAL",
     ],
     metadataBase: new URL("https://vual.jp"),
-    alternates: {
-      canonical: "/",
-      languages: { "ja": "/ja", "en": "/en" },
-    },
+    // 2026-10-30 ここで canonical "/" を置くと、上書きしない全ページが「トップの写し」と見なされて検索に出ない。
+    // 本体の印は各ページ（business・shopify・company・latitude）で付ける。
     openGraph: {
       type: "website",
       siteName: "VUAL",

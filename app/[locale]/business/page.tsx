@@ -11,6 +11,11 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'lp.hero' });
   const isJa = locale === 'ja';
   return {
+    // 2026-10-30 本体の印はこのページ自身（ja・en は中身がちがうので、それぞれが本体で、たがいに言語ちがいとして結ぶ）
+    alternates: {
+      canonical: `/${locale}/business`,
+      languages: { ja: '/ja/business', en: '/en/business', 'x-default': '/en/business' },
+    },
     title: isJa
       ? 'VUAL — AIファッション撮影・AIルック生成・バーチャル試着 | アパレル向けAIプラットフォーム'
       : 'VUAL — AI Fashion Photography, Look Generation & Virtual Try-On',

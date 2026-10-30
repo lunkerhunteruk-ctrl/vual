@@ -10,6 +10,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'shopify.meta' });
   return {
+    // 2026-10-30 本体の印はこのページ自身（ja・en は中身がちがうので、それぞれが本体で、たがいに言語ちがいとして結ぶ）
+    alternates: {
+      canonical: `/${locale}/shopify`,
+      languages: { ja: '/ja/shopify', en: '/en/shopify', 'x-default': '/en/shopify' },
+    },
     title: t('title'),
     description: t('description'),
   };
