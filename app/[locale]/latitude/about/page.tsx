@@ -10,13 +10,13 @@ const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 const T = {
   en: {
     title: 'About LATITUDE — VUAL',
-    description: 'LATITUDE is a travelling issue published by VUAL, a publisher and creative studio in Tokyo and London.',
+    description: 'LATITUDE is a travelling issue published by VUAL, a publisher and creative studio in Japan and the United Kingdom.',
     label: 'About',
     lead: 'LATITUDE is a travelling issue published by VUAL.',
     rows: [
       ['Publisher', 'VUAL (LUFIS Co., Ltd.)'],
       ['Founding Editor', 'Sachio Kawasaki'],
-      ['Offices', 'Tokyo · London'],
+      ['Offices', 'Japan · United Kingdom'],
       ['Languages', 'English · 日本語'],
       ['Contact', 'editor@vual.jp'],
     ],
@@ -34,13 +34,13 @@ const T = {
   },
   ja: {
     title: 'LATITUDE について — VUAL',
-    description: 'LATITUDE は、東京とロンドンの出版・制作スタジオ VUAL が出している、旅の連作です。',
+    description: 'LATITUDE は、日本とイギリスの出版・制作スタジオ VUAL が出している、旅の連作です。',
     label: '奥付',
     lead: 'LATITUDE は、VUAL が出している旅の連作です。',
     rows: [
       ['出版', 'VUAL（LUFIS Co., Ltd.）'],
       ['編集', '川崎 祥央（Founding Editor）'],
-      ['拠点', '東京・ロンドン'],
+      ['拠点', '日本・イギリス'],
       ['言語', '日本語・English'],
       ['連絡先', 'editor@vual.jp'],
     ],

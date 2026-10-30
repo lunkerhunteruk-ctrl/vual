@@ -10,7 +10,7 @@ export const PUBLISHER = {
   name: 'VUAL',
   legalName: 'LUFIS Co., Ltd.',
   url: SITE,
-  description: 'A publisher and creative studio based in Tokyo and London. Publisher of LATITUDE.',
+  description: 'A publisher and creative studio based in Japan and the United Kingdom. Publisher of LATITUDE.',
   email: 'editor@vual.jp',
 };
 
