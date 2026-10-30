@@ -196,3 +196,26 @@ export function PublishedBy({ locale }: { locale: string }) {
     </p>
   );
 }
+
+// 2026-10-30 次の号をメールで受け取る（Substack の LATITUDE）。メールアドレスはサイトで預からず、Substack の登録ページへ案内する
+export const NEWSLETTER_URL = 'https://sachiokawasaki.substack.com/subscribe';
+export function NewsletterSignup({ locale }: { locale: string }) {
+  const ja = locale === 'ja';
+  return (
+    <div className="max-w-xl">
+      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>The next day, by email</p>
+      <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
+        {ja ? '次の1日が公開された時だけ、メールを1通。それ以外は送りません。' : 'One email when a new day is published. Nothing else.'}
+      </p>
+      <a
+        href={NEWSLETTER_URL}
+        target="_blank"
+        rel="noopener"
+        className="mt-5 inline-block border px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
+        style={{ borderColor: INK, color: INK }}
+      >
+        {ja ? 'メールで受け取る' : 'Subscribe'}&nbsp;&nbsp;→
+      </a>
+    </div>
+  );
+}

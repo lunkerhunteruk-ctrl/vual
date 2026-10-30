@@ -5,7 +5,7 @@ import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, personOf, type
 import { stepIntoPages } from '@/lib/latitude-recipe';
 import { existsSync } from 'fs';
 import path from 'path';
-import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
 
@@ -179,6 +179,13 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           </div>
         </section>
       )}
+
+      {/* 2026-10-30 次の号をメールで（Substack） */}
+      <section className="px-4 pb-20 md:px-8 md:pb-28">
+        <div className="mx-auto max-w-6xl">
+          <NewsletterSignup locale={locale} />
+        </div>
+      </section>
 
       {/* 奥付 */}
       <MoreIssues locale={locale} current={issue.slug} />

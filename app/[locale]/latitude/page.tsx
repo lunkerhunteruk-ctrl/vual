@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PEOPLE, assetUrl, issueNo, liveIssues } from '@/lib/latitude';
-import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -85,6 +85,10 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           </Link>
         ))}
       </main>
+      {/* 2026-10-30 次の号をメールで（Substack） */}
+      <section className="mx-auto max-w-6xl px-4 pb-24 md:px-8">
+        <NewsletterSignup locale={locale} />
+      </section>
       <footer className="pb-16">
         <PublishedBy locale={locale} />
       </footer>
