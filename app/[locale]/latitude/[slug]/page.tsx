@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
 import { stepIntoPages } from '@/lib/latitude-recipe';
+import { JsonLd, issueJsonLd } from '@/lib/latitude-publication';
 import { existsSync } from 'fs';
 import path from 'path';
 import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
@@ -66,6 +67,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
+      {isLive(issue) && <JsonLd data={issueJsonLd(issue)} />}
       <IssueStrip locale={locale} current={issue.slug} />
 
       {/* 題字 */}

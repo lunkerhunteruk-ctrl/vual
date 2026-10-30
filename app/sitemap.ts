@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/shopify', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/company', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/latitude', priority: 0.7, changeFrequency: 'weekly' as const },
+    { path: '/latitude/about', priority: 0.5, changeFrequency: 'monthly' as const },
   ];
   // 2026-10-30 号のページは本文が英語で、本体（canonical）は /en だけ。サイトマップにも本体だけを載せる
   const issues = liveIssues().map((i) => ({

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PEOPLE, assetUrl, issueNo, liveIssues } from '@/lib/latitude';
 import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import TravellerMap from '@/components/latitude/TravellerMap';
+import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 import { mapTravellers } from '@/lib/latitude-map';
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
@@ -37,6 +38,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
   const { locale } = await params;
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
+      <JsonLd data={periodicalJsonLd()} />
       <IssueStrip locale={locale} />
       <header className="mx-auto max-w-6xl px-4 pb-14 pt-16 md:px-8 md:pb-24 md:pt-28">
         <h1 className="text-[56px] uppercase leading-none md:text-[104px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '0.12em', color: INK }}>

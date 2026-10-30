@@ -393,7 +393,8 @@ function LatitudeHero({ locale }: { locale: string }) {
 
       <div className="mt-16 md:mt-10">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 0.8 }}>
-          <p className="text-[10px] tracking-[0.35em] uppercase text-white/40">The travelling issue</p>
+          {/* 2026-10-30 VUAL が出している出版物として見せる（コンデナストと Vogue の関係） */}
+          <p className="text-[10px] tracking-[0.35em] uppercase text-white/40">Publications&nbsp;&nbsp;·&nbsp;&nbsp;The travelling issue</p>
           {/* 2026-10-30 題字を押すと LATITUDE のトップへ（号に入らないとトップへ行けなかった） */}
           <Link
             href={`/${locale}/latitude`}
