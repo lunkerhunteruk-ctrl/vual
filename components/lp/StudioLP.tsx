@@ -394,15 +394,24 @@ function LatitudeHero({ locale }: { locale: string }) {
       <div className="mt-16 md:mt-10">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, delay: 0.8 }}>
           <p className="text-[10px] tracking-[0.35em] uppercase text-white/40">The travelling issue</p>
-          <p
-            className="mt-4 text-5xl md:text-7xl font-light uppercase text-white"
-            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', letterSpacing: '0.12em' }}
+          {/* 2026-10-30 題字を押すと LATITUDE のトップへ（号に入らないとトップへ行けなかった） */}
+          <Link
+            href={`/${locale}/latitude`}
+            className="mt-4 inline-block text-5xl md:text-7xl font-light uppercase transition-opacity hover:opacity-80"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', letterSpacing: '0.12em', color: '#fff' }}
           >
             Latitude
-          </p>
+          </Link>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
             One city, one latitude, three places from morning to dusk.
           </p>
+          <Link
+            href={`/${locale}/latitude`}
+            className="mt-6 inline-block border-b border-white/30 pb-1 text-[10px] tracking-[0.3em] uppercase"
+            style={{ color: '#fff', opacity: 0.7 }}
+          >
+            Enter Latitude&nbsp;&nbsp;→
+          </Link>
         </motion.div>
 
         <motion.div
@@ -427,14 +436,14 @@ function LatitudeHero({ locale }: { locale: string }) {
               </p>
             </Link>
           ))}
+          {/* 横に流した最後に、LATITUDE のトップへのカード */}
+          <Link href={`/${locale}/latitude`} className="group block w-[58vw] shrink-0 snap-start md:w-[17vw] md:max-w-[280px]">
+            <div className="flex flex-col items-center justify-center gap-4 border border-white/15 transition-colors group-hover:border-white/40" style={{ aspectRatio: '9 / 16' }}>
+              <span className="text-2xl font-light uppercase text-white/85" style={{ fontFamily: 'var(--font-playfair), Georgia, serif', letterSpacing: '0.12em' }}>Latitude</span>
+              <span className="text-[10px] tracking-[0.3em] uppercase text-white/50 group-hover:text-white/80">All issues&nbsp;&nbsp;→</span>
+            </div>
+          </Link>
         </motion.div>
-
-        <Link
-          href={`/${locale}/latitude`}
-          className="mt-10 inline-block text-[10px] tracking-[0.3em] uppercase text-white/40 transition-colors hover:text-white/75"
-        >
-          All issues →
-        </Link>
       </div>
     </section>
   );
