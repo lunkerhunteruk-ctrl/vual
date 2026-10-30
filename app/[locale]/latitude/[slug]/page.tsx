@@ -27,6 +27,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title,
     description: i.line,
+    // 2026-10-30 号の本文は英語で ja・en とも同じなので、本体は英語のページにそろえる（親の layout の canonical "/" を上書きする。上書きしないとトップの写しと見なされ、検索に出ない）
+    alternates: {
+      canonical: `/en/latitude/${i.slug}`,
+      languages: { en: `/en/latitude/${i.slug}`, 'x-default': `/en/latitude/${i.slug}` }, // ja は本体でないので並べない（並べると食い違いになる）
+    },
     openGraph: {
       type: 'article',
       siteName: 'VUAL',

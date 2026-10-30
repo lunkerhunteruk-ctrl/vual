@@ -14,20 +14,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/shopify', priority: 0.9, changeFrequency: 'monthly' as const },
     { path: '/company', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/latitude', priority: 0.7, changeFrequency: 'weekly' as const },
-    ...liveIssues().map((i) => ({ path: `/latitude/${i.slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
   ];
+  // 2026-10-30 号のページは本文が英語で、本体（canonical）は /en だけ。サイトマップにも本体だけを載せる
+  const issues = liveIssues().map((i) => ({
+    url: `${base}/en/latitude/${i.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
 
-  return routes.flatMap(({ path, priority, changeFrequency }) =>
-    locales.map((locale) => ({
-      url: `${base}/${locale}${path}`,
-      lastModified: now,
-      changeFrequency,
-      priority,
-      alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${base}/${l}${path}`])
-        ),
-      },
-    }))
-  );
+  return [
+    ...routes.flatMap(({ path, priority, changeFrequency }) =>
+      locales.map((locale) => ({
+        url: `${base}/${locale}${path}`,
+        lastModified: now,
+        changeFrequency,
+        priority,
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [l, `${base}/${l}${path}`])
+          ),
+        },
+      }))
+    ),
+    ...issues,
+  ];
 }

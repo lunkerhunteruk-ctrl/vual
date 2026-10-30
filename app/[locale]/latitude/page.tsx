@@ -19,6 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: 'LATITUDE — VUAL',
     description,
+    // 2026-10-30 本体の場所はこのページ自身（親の layout の canonical "/" を上書きする。上書きしないとトップの写しと見なされる）
+    alternates: {
+      canonical: `/${locale}/latitude`,
+      languages: { en: '/en/latitude', ja: '/ja/latitude', 'x-default': '/en/latitude' },
+    },
     // リンクの見え方：Fårö の灯台のページ＋LATITUDE の題（public/latitude/og-index.jpg。scripts/latitude-og.py で作る）
     openGraph: { type: 'website', siteName: 'VUAL', title: 'LATITUDE — VUAL', description, url: `https://vual.jp/${locale}/latitude`,
       images: [{ url: '/latitude/og-index.jpg', width: 1200, height: 630 }] },
