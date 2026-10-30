@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # LATITUDE のリンクの見え方の画像（2026-10-27）：LINE・SNS で送った時に出る 1200×630。
-#   号ごと  public/latitude/<slug>/og.jpg … 左にその号の1ページ目（3:4）、右に紙の色で「LATITUDE · No. 06」・大きな緯度・街・号の一行
+#   号ごと  public/latitude/<slug>/og.jpg … 左にその号の1ページ目（3:4）、右に紙の色で「LATITUDE · SOLVEIG · NOVEMBER」・大きな緯度・街・号の一行
 #   一覧    public/latitude/og-index.jpg  … 左に INDEX_PAGE の1枚（2026-10-27 ユーザー選択：Fårö の16ページ・灯台）、右に LATITUDE の題と「A travelling issue by VUAL」
 # 誌面と同じ紙・墨・灰と、細い明朝体（Didot）。号を足したら、もう一度これを流す。 使い方：python3 scripts/latitude-og.py
 import os, re, textwrap
@@ -25,6 +25,8 @@ def fill(path, w, h):
 
 # 号の一覧は lib/latitude.ts から読む（公開中の号・番号・緯度・街・一行）
 src = open(os.path.join(ROOT, 'lib', 'latitude.ts'), encoding='utf-8').read()
+# 2026-10-30 号の番号は出さない。「LATITUDE · 人 · 月」にする（人の名前は PEOPLE から）
+NAMES = dict(re.findall(r"\{ slug: '([a-z]+)', name: '([^']+)'", src))
 issues = []
 for block in re.split(r"\n\s*slug: ", src)[1:]:
     g = lambda k: (re.search(k + r": '((?:[^'\\]|\\.)*)'", block) or [None, None])[1]
@@ -32,7 +34,8 @@ for block in re.split(r"\n\s*slug: ", src)[1:]:
     slug = block.split("'")[1]
     if not no or not os.path.exists(os.path.join(PUB, slug, 'pages', '01.jpg')): continue
     future = g('publishAt') and g('publishAt') > __import__('datetime').datetime.utcnow().isoformat()
-    issues.append(dict(slug=slug, no=int(no[1]), lat=g('latitude'), city=g('city'), line=g('line').replace("\\'", "'"), live=not future))
+    issues.append(dict(slug=slug, no=int(no[1]), lat=g('latitude'), city=g('city'), line=g('line').replace("\\'", "'"), live=not future,
+                       person=NAMES.get(g('person') or '', ''), month=g('month') or ''))
 issues.sort(key=lambda i: -i['no'])
 
 for i in issues:
@@ -40,7 +43,7 @@ for i in issues:
     PW = H * 3 // 4  # 472
     im.paste(fill(os.path.join(PUB, i['slug'], 'pages', '01.jpg'), PW, H), (0, 0))
     d = ImageDraw.Draw(im); X = PW + 64
-    spaced(d, (X, 92), f"LATITUDE  ·  NO. {i['no']:02d}", sans(15), MUTE, 4)
+    spaced(d, (X, 92), '  ·  '.join(['LATITUDE'] + [t.upper() for t in (i['person'], i['month']) if t]), sans(15), MUTE, 4)
     d.text((X - 4, 140), i['lat'], font=serif(120), fill=INK)
     spaced(d, (X, 300), i['city'].upper(), sans(19), INK, 9)
     y = 368
