@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { assetUrl, issueNo, liveIssues } from '@/lib/latitude';
+import { PEOPLE, assetUrl, issueNo, liveIssues } from '@/lib/latitude';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
@@ -52,6 +52,17 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             {STATEMENT_EN}
           </p>
         )}
+        {/* 2026-10-30 6人それぞれの旅。名前からその人のページへ */}
+        <nav className="mt-10">
+          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>People</p>
+          <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2 text-[12px] uppercase tracking-[0.3em]">
+            {PEOPLE.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/${locale}/latitude/people/${p.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
       <main className="flex snap-x gap-4 overflow-x-auto px-4 pb-28 md:gap-8 md:px-8 lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))]" style={{ scrollbarWidth: 'thin' }}>
         {liveIssues().map((i) => (

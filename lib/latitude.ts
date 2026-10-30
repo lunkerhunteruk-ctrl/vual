@@ -8,8 +8,55 @@ export type LatitudeColour = { name: string; hex: string };
 export type LatitudeChapter = { no: string; place: string; time: string };
 export type LatitudePage = { file: string; video?: string };
 
+// 2026-10-30 ユーザー決定：号の番号をやめ、名前のある6人がそれぞれ旅する形にする（設定書は vault.vual.jp/docs/LATITUDE-CHARACTERS.md）。
+// 1本＝「その人の、ある街の、ある月の1日」。人と1日は架空、場所とひとつの事実は本物。
+export type LatitudePerson = {
+  slug: string;
+  name: string;
+  home: string; // 例 'Bergen, Norway'
+  age: number;
+  line: string; // 一行の紹介
+  about: string[]; // 旅をする理由・よくやる仕草
+  mark: string; // どの旅にも持っている物（服ではない印）
+};
+
+export const PEOPLE: LatitudePerson[] = [
+  { slug: 'solveig', name: 'Solveig', home: 'Bergen, Norway', age: 27,
+    line: 'She records sound for documentaries, and goes north for the wind.',
+    about: ['Solveig lives in Bergen, the rainiest city in Norway, and records sound for documentary films: wind, waves, the horn of a ferry.',
+      'She travels to islands and coasts. She stops to listen, shields the recorder from the wind with her hand, and never minds the weather.'],
+    mark: 'An old palm-sized recorder with a small furry windshield.' },
+  { slug: 'klara', name: 'Klára', home: 'Prague, Czechia', age: 24,
+    line: 'An architecture student who travels by night train to see buildings.',
+    about: ['Klára studies architecture in Prague. She travels on night trains: they are cheap, and she can start walking the moment she arrives in the morning.',
+      'She looks up at ceilings, touches walls and railings with her fingertips, and stops to draw a few lines in a small notebook.'],
+    mark: 'A small black notebook with a pencil tucked into it.' },
+  { slug: 'maeve', name: 'Maeve', home: 'London (born in Ireland)', age: 22,
+    line: 'She goes to the places she has read about, by bus and slow train.',
+    about: ['Maeve was born in Ireland and lives in east London. She works in a second-hand bookshop and studies at art school in the evenings.',
+      'She travels to places she has met in books, staying within Britain and Ireland. She reads by the bus window, gets lost in bookshops, and does not open an umbrella in the rain.'],
+    mark: 'The same faded paperback, always.' },
+  { slug: 'liv', name: 'Liv', home: 'Gothenburg, Sweden', age: 25,
+    line: 'A potter who looks for clay and stone, and swims in cold water wherever she goes.',
+    about: ['Liv is a potter in Gothenburg. She travels to look at earth and stone, and in every city she finds a place to swim in the sea or a river, in any season.',
+      'She picks up small stones on the shore and keeps them in her pocket, holds hot drinks in both hands, and walks with her hair still wet.'],
+    mark: 'A well-used towel in a faded colour, and a stone in her pocket.' },
+  { slug: 'helene', name: 'Hélène', home: 'Lyon, France', age: 36,
+    line: 'A perfumer who goes south to find where scents begin.',
+    about: ['Hélène is a perfumer in Lyon. She travels south, to Italy, Spain and Portugal, to find where scents begin.',
+      'She leans close to cups and flowers to smell them, collects matchbooks from bars, and is very good at eating alone.'],
+    mark: 'A small brown glass vial, and a stack of matchbooks.' },
+  { slug: 'rin', name: 'Rin', home: 'Tokyo, Japan', age: 23,
+    line: 'On her days off she goes to see handwork and food, in Japan and across Asia.',
+    about: ['Rin lives in Tokyo and is training as a stylist. On her days off she travels in Japan and across Asia to see handwork and to eat.',
+      'She eats in concentrated silence, turns bowls over to look at the base, and stretches her legs out once her socks are off at the end of the day.'],
+    mark: 'Her own chopsticks, in a slim case.' },
+];
+
 export type LatitudeIssue = {
   slug: string;
+  person?: string; // PEOPLE の slug
+  month?: string; // 描いた月（英語。例 'November'）
   no: number;
   latitude: string; // 例 '64.1° N'
   city: string;
@@ -41,6 +88,8 @@ const pages = (n: number, animated: number[] = []): LatitudePage[] =>
 export const ISSUES: LatitudeIssue[] = [
   {
     slug: 'iceland',
+    person: 'solveig',
+    month: 'October',
     seo: {
       title: "What to wear in Iceland in October — one day from Reynisfjara to Reykjavík | LATITUDE 64.1° N",
       description: "Iceland in October is around 8°C by day and near 3°C at night, with wind off the sea. One day in long coats, wide trousers and lug-soled boots, from the black beach at Reynisfjara to Harpa at dusk.",
@@ -79,6 +128,8 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'copenhagen',
+    person: 'klara',
+    month: 'October',
     seo: {
       title: "What to wear in Copenhagen in October — one day by the harbour | LATITUDE 55.7° N",
       description: "Copenhagen in October is around 12°C by day and 7°C at night. One day of knitwear, a crisp white collar and wide tweed trousers, from the Black Diamond to the Opera House at dusk.",
@@ -119,6 +170,8 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'london',
+    person: 'maeve',
+    month: 'November',
     seo: {
       title: "What to wear in London in November — concrete, brick and the river | LATITUDE 51.5° N",
       description: "London in November is around 12°C by day and 4°C at night. One day in a sand coat, a long navy coat and wide trousers, from the National Theatre to Blackfriars Bridge at dusk.",
@@ -161,6 +214,8 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'edinburgh',
+    person: 'liv',
+    month: 'October',
     seo: {
       title: "What to wear in Edinburgh in October — from Leith to the Old Town | LATITUDE 55.9° N",
       description: "Edinburgh in late October is around 13°C by day and 7°C at night, and the sun never climbs above about twenty degrees. One day in a flight jacket, a camel coat and soft flats, from Leith to Victoria Street.",
@@ -204,6 +259,8 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'milan',
+    person: 'helene',
+    month: 'November',
     seo: {
       title: "What to wear in Milan in November — one day from Villa Necchi to the Duomo | LATITUDE 45.5° N",
       description: "Milan in November is around 12°C by day and 5°C at night. One day in an ivory dress, a grey sweater over a pleated skirt and navy satin trousers, from Villa Necchi to the Duomo at dusk.",
@@ -244,6 +301,8 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'faro',
+    person: 'solveig',
+    month: 'November',
     seo: {
       title: "What to wear on Fårö and Gotland in November — from the ferry to the raukar | LATITUDE 57.9° N",
       description: "Fårö in November is around 6°C by day and 3°C at night, with wind from the Baltic. One day in shearling, a long olive coat and wide flannel trousers, from the six-minute ferry to a fire in a fishermen's hut.",
@@ -288,6 +347,8 @@ export const ISSUES: LatitudeIssue[] = [
     // 2026-10-27 未公開。TOTEME 本社に No.06 と一緒に聞く時、?preview=<previewToken> 付きのアドレスで先方にだけ見せる。
     // 了解が出たら publishAt を外し（クレジット「Wardrobe courtesy of TOTEME」を足し）、カルーセルができたら filmOnly を外す
     slug: 'klippan',
+    person: 'solveig',
+    month: 'October',
     no: 7,
     latitude: '56.1° N',
     city: 'Klippan',
@@ -318,5 +379,9 @@ export const isLive = (i: LatitudeIssue, now: number = Date.now()) => !i.publish
 // 2026-10-22 ユーザー指定：一覧・号の帯・トップの列は、新しい号を左（先頭）に並べる
 export const liveIssues = (now: number = Date.now()) => ISSUES.filter((i) => isLive(i, now)).sort((a, b) => b.no - a.no);
 export const getIssue = (slug: string) => ISSUES.find((i) => i.slug === slug);
-export const issueNo = (i: LatitudeIssue) => `No. ${String(i.no).padStart(2, '0')}`;
+export const getPerson = (slug: string) => PEOPLE.find((p) => p.slug === slug);
+export const personOf = (i: LatitudeIssue) => (i.person ? getPerson(i.person) : undefined);
+export const issuesOf = (person: string, now: number = Date.now()) => liveIssues(now).filter((i) => i.person === person);
+// 2026-10-30 号の番号は出さない。見出しは「人 · 月」（例 Klára · November）。no は並べる順にだけ使う
+export const issueNo = (i: LatitudeIssue) => [personOf(i)?.name, i.month].filter(Boolean).join(' · ') || `No. ${String(i.no).padStart(2, '0')}`;
 export const assetUrl = (i: LatitudeIssue, file: string) => `/latitude/${i.slug}/${file}`;

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { liveIssues } from '@/lib/latitude';
+import { PEOPLE, liveIssues } from '@/lib/latitude';
 
 // 公開予約の号が時刻を過ぎたら載るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -23,7 +23,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // 2026-10-30 人のページ（本文は英語。本体は /en）
+  const people = PEOPLE.map((p) => ({
+    url: `${base}/en/latitude/people/${p.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }));
+
   return [
+    ...people,
     ...routes.flatMap(({ path, priority, changeFrequency }) =>
       locales.map((locale) => ({
         url: `${base}/${locale}${path}`,

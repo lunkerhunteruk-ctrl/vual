@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { assetUrl, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
+import { assetUrl, issueNo, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
 import { PagesViewer } from './PagesViewer';
 import { ReelPlayer } from './ReelPlayer';
 import { FadeScroller } from './FadeScroller';
@@ -40,7 +40,8 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
               className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] transition-opacity hover:opacity-100"
               style={{ color: on ? INK : MUTE, opacity: on ? 1 : 0.8, borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}
             >
-              {issueNo(i)}&nbsp;&nbsp;{i.city}
+              {/* 2026-10-30 号の番号の代わりに人の名前 */}
+              {personOf(i)?.name ?? issueNo(i)}&nbsp;&nbsp;{i.city}
             </Link>
           );
         })}

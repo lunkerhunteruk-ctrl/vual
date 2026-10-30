@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, type LatitudeIssue } from '@/lib/latitude';
+import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
 import { stepIntoPages } from '@/lib/latitude-recipe';
 import { existsSync } from 'fs';
 import path from 'path';
@@ -71,7 +71,18 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {/* 題字 */}
       <header className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:px-8 md:pb-20 md:pt-28">
         <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
-          Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{issueNo(issue)}
+          Latitude&nbsp;&nbsp;·&nbsp;&nbsp;
+          {/* 2026-10-30 号の番号の代わりに「人 · 月」。名前はその人のページへ */}
+          {personOf(issue) ? (
+            <>
+              <Link href={`/${locale}/latitude/people/${issue.person}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+                {personOf(issue)!.name}
+              </Link>
+              {issue.month ? <>&nbsp;&nbsp;·&nbsp;&nbsp;{issue.month}</> : null}
+            </>
+          ) : (
+            issueNo(issue)
+          )}
         </p>
         <h1 className="mt-5 text-[64px] leading-[0.95] md:text-[120px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em', color: INK }}>
           <LatitudeFigure value={issue.latitude} />
