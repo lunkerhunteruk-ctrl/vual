@@ -205,7 +205,7 @@ export function NewsletterSignup({ locale }: { locale: string }) {
     <div className="max-w-xl">
       <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>The next day, by email</p>
       <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
-        {ja ? '次の1日が公開された時だけ、メールを1通。それ以外は送りません。' : 'One email when a new day is published. Nothing else.'}
+        {ja ? <>次の1日が公開された時だけ、メールを1通。<br />それ以外は送りません。</> : 'One email when a new day is published. Nothing else.'}
       </p>
       <a
         href={NEWSLETTER_URL}

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PEOPLE, assetUrl, issueNo, liveIssues } from '@/lib/latitude';
-import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import TravellerMap from '@/components/latitude/TravellerMap';
+import { mapTravellers } from '@/lib/latitude-map';
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -85,6 +87,13 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           </Link>
         ))}
       </main>
+      {/* 2026-10-30 6人が今どこにいるか（最後の1日の場所がまたたく）。押すとその人のページへ */}
+      <section className="mx-auto max-w-6xl pb-24 md:px-8 md:pb-32">
+        <div className="px-4 md:px-0">
+          <SectionLabel>Where they are</SectionLabel>
+        </div>
+        <TravellerMap travellers={mapTravellers()} locale={locale} />
+      </section>
       {/* 2026-10-30 次の号をメールで（Substack） */}
       <section className="mx-auto max-w-6xl px-4 pb-24 md:px-8">
         <NewsletterSignup locale={locale} />
