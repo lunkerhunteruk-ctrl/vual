@@ -26,6 +26,9 @@ export type LatitudeIssue = {
   previewToken?: string; // 公開前の号を1社だけに見せる鍵（?preview=<これ>）。本番に LATITUDE_PREVIEW_KEY が無くても効く。ほかの号の鍵は渡さずに済む
   capColour?: string; // 読み物の頭の大きな1文字（ドロップキャップ）の色。無ければ墨
   filmOnly?: boolean; // 2026-10-24 ユーザー：カルーセルを整理し終わるまで、リール（と題字・奥付）だけを出す。ページ・読み物・色は隠す。出す時は外して pages を入れる
+  // 2026-10-30 検索の入口：題・説明文は検索結果に出る文（その街・その月・何を着るか）。trip はページの下に小さく置く「Notes for the trip」
+  // （入口は役立つ情報、ねらいは雑誌として読ませること。ブランド名は書かない。気温は 1991–2020 の平年値）
+  seo?: { title: string; description: string; month: string; weather: string; wore: string; season: string };
   recipe?: string; // 2026-10-22 体験（顔を入れてその服の世界に入る）用のレシピの目印。data/latitude-recipes/<slug>/recipe.json（ページ→LOOK・服の写真・場所・フィルム）
 };
 
@@ -38,6 +41,14 @@ const pages = (n: number, animated: number[] = []): LatitudePage[] =>
 export const ISSUES: LatitudeIssue[] = [
   {
     slug: 'iceland',
+    seo: {
+      title: "What to wear in Iceland in October — one day from Reynisfjara to Reykjavík | LATITUDE 64.1° N",
+      description: "Iceland in October is around 8°C by day and near 3°C at night, with wind off the sea. One day in long coats, wide trousers and lug-soled boots, from the black beach at Reynisfjara to Harpa at dusk.",
+      month: "October",
+      weather: "Reykjavík in October averages 7.6°C by day and 2.7°C at night (1991–2020). The south coast is windier.",
+      wore: "A long technical coat with a high collar over a grey crew-neck, wide black trousers falling over lug-soled boots; a navy faux-shearling pea coat over a blue shirt; a camel double-faced coat over a brown ribbed zip-neck knit.",
+      season: "In September a light shell over a knit is enough. In November, add a hat and gloves; the day is much shorter.",
+    },
     recipe: 'data/latitude-recipes/iceland/recipe.json',
     no: 1,
     latitude: '64.1° N',
@@ -68,6 +79,14 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'copenhagen',
+    seo: {
+      title: "What to wear in Copenhagen in October — one day by the harbour | LATITUDE 55.7° N",
+      description: "Copenhagen in October is around 12°C by day and 7°C at night. One day of knitwear, a crisp white collar and wide tweed trousers, from the Black Diamond to the Opera House at dusk.",
+      month: "October",
+      weather: "Copenhagen in October averages 12.2°C by day and 7.2°C at night (Copenhagen Airport, 1991–2020). Expect wind on the water.",
+      wore: "A navy knit with the collar of a white volume-sleeve shirt worn out over it, grey-green tweed trousers with a corduroy band, pointed black boots.",
+      season: "In September the shirt and knit alone are enough. In November, add a wool coat; it is about 5°C colder.",
+    },
     recipe: 'data/latitude-recipes/copenhagen/recipe.json',
     no: 2,
     latitude: '55.7° N',
@@ -100,6 +119,14 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'london',
+    seo: {
+      title: "What to wear in London in November — concrete, brick and the river | LATITUDE 51.5° N",
+      description: "London in November is around 12°C by day and 4°C at night. One day in a sand coat, a long navy coat and wide trousers, from the National Theatre to Blackfriars Bridge at dusk.",
+      month: "November",
+      weather: "London in November averages 11.6°C by day and 4.3°C at night (Kew Gardens, 1991–2020). Rain is likely; the light goes before five.",
+      wore: "A sand double-cloth coat worn open over a grey V-neck and wide light denim; a charcoal flannel jacket over a striped camp-collar shirt and dark brown pleated trousers with patent loafers; a long navy coat over a camel cardigan buttoned to the top and grey wide trousers.",
+      season: "In October a jacket over a knit is enough. In December, wear the long coat and add a scarf.",
+    },
     recipe: 'data/latitude-recipes/london/recipe.json',
     no: 3,
     latitude: '51.5° N',
@@ -134,6 +161,14 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'edinburgh',
+    seo: {
+      title: "What to wear in Edinburgh in October — from Leith to the Old Town | LATITUDE 55.9° N",
+      description: "Edinburgh in late October is around 13°C by day and 7°C at night, and the sun never climbs above about twenty degrees. One day in a flight jacket, a camel coat and soft flats, from Leith to Victoria Street.",
+      month: "October",
+      weather: "Edinburgh in October averages 13.4°C by day and 6.7°C at night (Royal Botanic Garden, 1991–2020). The wind on Calton Hill and Arthur's Seat is stronger than in the streets.",
+      wore: "An olive flight jacket over an oatmeal V-neck and dark brown drawstring trousers; a pale camel double-breasted coat over an ivory cardigan and soft white trousers; a near-black hunting jacket over a charcoal knit and wide glen-check trousers. Flat pointed shoes with socks all day.",
+      season: "In September, the jacket alone. In November it drops about 3°C; wear the coat and add a scarf for the hills.",
+    },
     no: 4,
     latitude: '55.9° N',
     city: 'Edinburgh',
@@ -169,6 +204,14 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'milan',
+    seo: {
+      title: "What to wear in Milan in November — one day from Villa Necchi to the Duomo | LATITUDE 45.5° N",
+      description: "Milan in November is around 12°C by day and 5°C at night. One day in an ivory dress, a grey sweater over a pleated skirt and navy satin trousers, from Villa Necchi to the Duomo at dusk.",
+      month: "November",
+      weather: "Milan in November averages 12.4°C by day and 5.3°C at night (Linate, 1991–2020). Fog is common in the morning.",
+      wore: "An ivory wool dress with a small stand collar; a charcoal sweater over a black pleated bell skirt; a navy wool blouse with wide navy satin trousers. Platform shoes with grey socks.",
+      season: "In October a knit over the dress is enough. In December it drops to about 7°C by day; add a long coat.",
+    },
     no: 5,
     latitude: '45.5° N',
     city: 'Milan',
@@ -201,6 +244,14 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'faro',
+    seo: {
+      title: "What to wear on Fårö and Gotland in November — from the ferry to the raukar | LATITUDE 57.9° N",
+      description: "Fårö in November is around 6°C by day and 3°C at night, with wind from the Baltic. One day in shearling, a long olive coat and wide flannel trousers, from the six-minute ferry to a fire in a fishermen's hut.",
+      month: "November",
+      weather: "Gotland in November averages 6.3°C by day and 2.5°C at night (Visby, 1991–2020). By half past four it is dark.",
+      wore: "A dark brown shearling wrap coat over a powder-blue turtleneck and taupe flannel trousers; a long olive double-faced coat with a draped shawl collar over an oatmeal turtleneck and black trousers; a curly dark shearling coat over an ecru cable knit and black leather trousers. Ankle boots all day.",
+      season: "In October a long coat over a knit is enough. In December add a hat; the day is under seven hours.",
+    },
     no: 6,
     latitude: '57.9° N',
     city: 'Fårö',

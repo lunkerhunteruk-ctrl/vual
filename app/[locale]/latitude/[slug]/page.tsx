@@ -25,8 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!isLive(i)) return { title: 'LATITUDE — VUAL', robots: { index: false, follow: false } };
   const title = `LATITUDE ${issueNo(i)} — ${i.latitude} ${i.city} | VUAL`;
   return {
-    title,
-    description: i.line,
+    // 2026-10-30 検索結果に出る題と説明は「その街・その月・何を着るか」（seo）。SNS のリンクの見え方（openGraph）は雑誌の題と一行のまま
+    title: i.seo?.title ?? title,
+    description: i.seo?.description ?? i.line,
     // 2026-10-30 号の本文は英語で ja・en とも同じなので、本体は英語のページにそろえる（親の layout の canonical "/" を上書きする。上書きしないとトップの写しと見なされ、検索に出ない）
     alternates: {
       canonical: `/en/latitude/${i.slug}`,
@@ -151,6 +152,21 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         </div>
       </section>
         </>
+      )}
+
+      {/* 2026-10-30 旅のメモ：検索から来た人への入口の情報。雑誌の邪魔をしないよう、奥付の前に小さく */}
+      {issue.seo && (
+        <section className="px-4 pb-16 md:px-8 md:pb-24">
+          <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
+            <SectionLabel>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</SectionLabel>
+            <dl className="flex max-w-2xl flex-col gap-4 text-[14px] leading-relaxed" style={{ color: MUTE }}>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>Weather</dt><dd className="mt-1">{issue.seo.weather}</dd></div>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>What she wore</dt><dd className="mt-1">{issue.seo.wore}</dd></div>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>Earlier or later</dt><dd className="mt-1">{issue.seo.season}</dd></div>
+              <p className="text-[12px]">The images in this issue were made with AI by VUAL. The places, the routes and the facts are real.</p>
+            </dl>
+          </div>
+        </section>
       )}
 
       {/* 奥付 */}
