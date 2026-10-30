@@ -12,7 +12,9 @@ for block in re.split(r"\n\s*slug: ", src)[1:]:
     slug = block.split("'")[1]
     if not re.search(r"\bno: \d+", block): continue
     person = re.search(r"person: '([a-z]+)'", block); pub = re.search(r"publishAt: '([^']+)'", block)
-    issues[slug] = dict(person=person[1] if person else None, scheduled=bool(pub))
+    # 公開予約の時刻が過ぎた号は公開中として扱う
+    from datetime import datetime, timezone
+    issues[slug] = dict(person=person[1] if person else None, scheduled=bool(pub) and datetime.fromisoformat(pub[1]) > datetime.now(timezone.utc))
 B = 'https://vual.jp/en/latitude'
 args = sys.argv[1:]
 if not args: sys.exit(__doc__ or 'slug か --all か --url を渡す')
