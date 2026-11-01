@@ -393,7 +393,7 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     // 2026-11-01 金沢（凛・2026年11月26日・時雨）。ドキュメンタリー回。1日＝1コーデ（LOOK1）。全部 VUAL オリジナルの服。
-    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_kanazawa_doc.py・kanazawa/colours.json）と同じ
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_kanazawa_mag.py・kanazawa/colours.json）と同じ
     slug: 'kanazawa',
     recipe: 'data/latitude-recipes/kanazawa/recipe.json',
     person: 'rin',
@@ -432,14 +432,14 @@ export const ISSUES: LatitudeIssue[] = [
       'On the east bank of the Asano river, the teahouse quarter of Higashi Chaya was opened with the licence of the Kaga domain in 1820. Its fronts are lined with kimusuko, fine wooden lattices: from inside you can see the street, from the street you cannot see in.',
       'In late November the rain here comes and goes in short, cold showers. They call it shigure.',
     ],
-    pages: pages(14, [11]), // 2026-11-01 ドキュメンタリー回のカルーセル v2（14枚。2–3 緯度と地図、6–7 兼六園のイラスト、11は号の7色を油絵の具で1色ずつ塗る）
+    pages: pages(16, [2, 13]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_kanazawa_mag.py。2は駅のドームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、9は兼六園のイラスト、13は号の7色を油絵の具で1色ずつ塗る）
     streamId: 'c03d7c0ec63e91c20f1fc9ffac98a9bb', // v11＋粒子11（ユーザーが Final Cut で仕上げた版に、いつもの粒子）。前の v11（粒子なし）は cdc8a017c3dc0978c07a0af9704e3e8a
     capColour: '#bc5632', // Kobako
     credits: ['Map data © OpenStreetMap contributors'],
   },
   {
     // 2026-11-01 ウィーン（Klára・2026年11月19日・木・灰色の1日）。ドキュメンタリー回。1日＝1コーデ（LOOK1：茶色のフード付きシアリングのコート）。全部 VUAL オリジナルの服。
-    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_vienna_doc.py・vienna/colours.json）と同じ。
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_vienna_mag.py・vienna/colours.json）と同じ。
     // 気温は GeoSphere Austria の Wien Innere Stadt（5925）の月の値（klima-v2-1m）から 1991–2020 を平均した物
     slug: 'vienna',
     recipe: 'data/latitude-recipes/vienna/recipe.json',
@@ -477,14 +477,14 @@ export const ISSUES: LatitudeIssue[] = [
       "Wagner's Postal Savings Bank, begun in 1904, is faced with thin plates of marble, held by rows of bolts with aluminium heads.",
       'Off Kärntner Strasse, Adolf Loos fitted out a bar of about 27 square metres in 1908. Onyx above the door glows the colour of honey, and mirrors on the walls make the room look larger.',
     ],
-    pages: pages(15, [6, 13]), // 2026-11-01 ドキュメンタリー回のカルーセル v2（15枚。2–3 緯度と地図、6はマティス風の線のイラストが動く、13は号の6色を油絵の具で1色ずつ塗る）
+    pages: pages(16, [3, 8, 15]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_vienna_mag.py。3は駅のホームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、8はマティス風の線のイラストが動く、15は号の6色を油絵の具で1色ずつ塗る）
     streamId: '624819ff55b7dca5c93722271b4f3f0a', // v20＋粒子11（ユーザーが Final Cut で仕上げた版）
     capColour: '#583224', // Mahogany
     credits: ['Map data © OpenStreetMap contributors'],
   },
   {
     // 2026-11-01 ハワース（Maeve・2026年11月の土曜・くもりで強い西風）。ドキュメンタリー回。1日＝1コーデ（黒の立ち襟レザーロングコート）。全部 VUAL オリジナルの服。
-    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_haworth_doc.py・haworth/colours.json。色はページ12の塗る順）と同じ。
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_haworth_mag.py・haworth/colours.json。色はページ12の塗る順）と同じ。
     // 気温は Met Office の近い観測所 Bingley No 2 の 1991–2020 平年値
     slug: 'haworth',
     recipe: 'data/latitude-recipes/haworth/recipe.json',
@@ -523,7 +523,7 @@ export const ISSUES: LatitudeIssue[] = [
       'At the top of the steep cobbled Main Street, beside the church, stands the parsonage where the Brontë family lived from 1820. It has been a museum since 1928.',
       'Top Withens, a ruined farmhouse at about 420 metres on the moor, is 6.6 km from the village by the path. A plaque put up by the Brontë Society in 1964 says only that it “has been associated with” Wuthering Heights.',
     ],
-    pages: pages(15, [10, 12]), // 2026-11-01 ドキュメンタリー回のカルーセル（15枚。6–7 緯度と歩いた道の地図、10は線の4コマが切り替わる、12は号の6色を油絵の具で1色ずつ塗る）
+    pages: pages(16, [2, 11, 12]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_haworth_mag.py。2は駅のホームにすりガラスの時刻表が浮かぶ、6–7 緯度と歩いた道の地図、11は線の4コマが切り替わる、12は号の6色を油絵の具で1色ずつ塗る）
     streamId: 'ce8d0cff8d84d4d7af280ba591eda82c', // v4e＋粒子11
     capColour: '#68221e', // Moquette
     credits: ['Map data © OpenStreetMap contributors'],
