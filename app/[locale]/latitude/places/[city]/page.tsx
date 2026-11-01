@@ -72,9 +72,11 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       <section className="pb-16 md:pb-24">
         <div className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 md:gap-6 md:px-8" style={{ scrollbarWidth: 'thin' }}>
           {c.images.map((im) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={im.file} src={`/latitude/places/${c.slug}/${im.file}`} alt={ja ? im.altJa : im.alt} loading="lazy"
-              className="w-[56vw] shrink-0 snap-start object-cover md:w-[22vw] md:max-w-[260px]" style={{ aspectRatio: '9 / 16' }} />
+            // 2026-11-01 data-lat-photo：その街が夜の間だけ、写真をうすく暗く・青くする（NowLine の <style>）
+            <span key={im.file} data-lat-photo className="block w-[56vw] shrink-0 snap-start md:w-[22vw] md:max-w-[260px]" style={{ aspectRatio: '9 / 16' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/latitude/places/${c.slug}/${im.file}`} alt={ja ? im.altJa : im.alt} loading="lazy" className="block h-full w-full object-cover" />
+            </span>
           ))}
         </div>
         <div className="mx-auto mt-5 max-w-6xl px-4 text-[11px] uppercase tracking-[0.3em] md:px-8">

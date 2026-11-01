@@ -44,8 +44,9 @@ async function fetchNow(lat: number, lon: number): Promise<NowData | null> {
 }
 
 // place：号の slug（lib/latitude-map.ts の PLACES）か、直接の座標
-export async function NowInCity({ place, coords, name, ja, className }: {
+export async function NowInCity({ place, coords, name, ja, chapters, className }: {
   place?: string;
+  chapters?: { time: string }[]; // 号のページだけ：章の時刻（いまが重なる章に小さな印を出す）
   coords?: [number, number];
   name: string; // 表示する街の名前（言語に合わせて渡す）
   ja: boolean;
@@ -55,5 +56,5 @@ export async function NowInCity({ place, coords, name, ja, className }: {
   if (!at) return null;
   const data = await fetchNow(at[0], at[1]);
   if (!data) return null;
-  return <NowLine data={data} name={name} ja={ja} className={className} />;
+  return <NowLine data={data} name={name} ja={ja} chapters={chapters} className={className} />;
 }

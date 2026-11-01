@@ -75,6 +75,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
   const city = CITIES.find((c) => c.issue === issue.slug || (c.person === issue.person && c.name.toLowerCase() === issue.city.toLowerCase()));
   const ja = locale === 'ja';
   const who = person ? (ja ? person.ja.name : person.name) : '';
+  const nowName = ja ? (city?.nameJa ?? ISSUE_CITY_JA[issue.slug] ?? issue.city) : (ISSUE_CITY_EN[issue.slug] ?? issue.city);
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
@@ -102,15 +103,19 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         </h1>
         <p className="mt-6 text-[13px] uppercase tracking-[0.5em] md:mt-8 md:text-[15px]">{issue.city}</p>
         {/* 2026-11-01 この街のいま（号の月の話ではなく、見ている今の時刻・気温・天気。取れない時は出ない） */}
-        <NowInCity place={issue.slug} coords={city?.coords} ja={ja} className="mt-6"
-          name={ja ? (city?.nameJa ?? ISSUE_CITY_JA[issue.slug] ?? issue.city) : (ISSUE_CITY_EN[issue.slug] ?? issue.city)} />
+        <NowInCity place={issue.slug} coords={city?.coords} ja={ja} className="mt-6" name={nowName} chapters={issue.chapters} />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
           {issue.line}
         </p>
-        <ol className="mt-8 flex flex-col gap-2 md:flex-row md:gap-10">
-          {issue.chapters.map((c) => (
-            <li key={c.no} className="text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+        <ol className="mt-8 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2">
+          {issue.chapters.map((c, k) => (
+            <li key={c.no} data-lat-chapter={k} className="text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
               <span style={{ color: INK }}>{c.no}</span>&nbsp;&nbsp;—&nbsp;&nbsp;{c.place}, {c.time}
+              {/* 2026-11-01 いまの街の時刻がこの章に重なる時だけ、NowLine が出す（ふだんは隠す） */}
+              <span data-lat-now className="ml-3 hidden items-center gap-1.5 normal-case tracking-[0.08em]" style={{ color: INK }}>
+                <span aria-hidden="true" className="inline-block h-[5px] w-[5px] rounded-full" style={{ background: 'var(--lat-now-chip, #1e1d1b)' }} />
+                {ja ? `いまの${nowName}は、この章の時間` : `${nowName} is at this hour now`}
+              </span>
             </li>
           ))}
         </ol>

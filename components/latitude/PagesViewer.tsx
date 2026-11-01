@@ -26,7 +26,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
     p.video ? (
       <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={n} />
     ) : (
-      <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" />
+      <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" photo />
     );
   const hit = (n: number) => (
     <button type="button" aria-label={`Open page ${n}`} onClick={() => setOpen(n)} className="absolute inset-0 cursor-zoom-in" />

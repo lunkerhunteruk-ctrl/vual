@@ -155,3 +155,74 @@ export const ISSUE_CITY_JA: Record<string, string> = {
 };
 // 号の city が国の名前などの時に、時刻と天気を取る街の名前で言い直す
 export const ISSUE_CITY_EN: Record<string, string> = { iceland: 'Reykjavík' };
+
+// ── 2026-11-01 追加：時差・夜の写真・章の印・天気の動き ─────────────────────────────
+
+// 時差：そのタイムゾーンの、その時刻での UTC からのずれ（分）。見る人の位置は使わず、ブラウザの時計の設定（Intl）だけを使う
+export function offsetMin(tz: string, t: number): number | null {
+  try {
+    const p = Object.fromEntries(
+      new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+        .formatToParts(t)
+        .map((x) => [x.type, x.value]),
+    );
+    const asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    return Math.round((asUtc - Math.floor(t / MIN) * MIN) / MIN);
+  } catch {
+    return null;
+  }
+}
+
+// 同じ時刻の時も一言出すか（false にすると、同じ時刻の時は何も出さない）
+export const SHOW_SAME_TIME = true;
+
+// 「あなたより8時間先」「1時間後ろ」「5時間30分先」／"8 hours ahead of you" "1 hour behind you" "5 h 30 min ahead of you"
+export function diffText(cityTz: string, viewerTz: string, t: number, ja: boolean): string | null {
+  const a = offsetMin(cityTz, t);
+  const b = offsetMin(viewerTz, t);
+  if (a === null || b === null) return null;
+  const d = a - b;
+  if (d === 0) return SHOW_SAME_TIME ? (ja ? 'あなたと同じ時刻' : 'same time as you') : null;
+  const h = Math.floor(Math.abs(d) / 60);
+  const m = Math.abs(d) % 60;
+  if (ja) return `あなたより${h ? `${h}時間` : ''}${m ? `${m}分` : ''}${d > 0 ? '先' : '後ろ'}`;
+  const span = m ? `${h ? `${h} h ` : ''}${m} min` : `${h} hour${h === 1 ? '' : 's'}`;
+  return `${span} ${d > 0 ? 'ahead of' : 'behind'} you`;
+}
+
+// 夜の間だけ、号の写真にかける色の膜（multiply で重ねる）。強さは NIGHT_PHOTO_ALPHA（0＝なし）。
+// 今の値 0.10 で、赤 −7.7%・緑 −6.7%・青 −4.1%（全体で約 −6% 暗く、ほんの少し青い）
+export const NIGHT_PHOTO_TINT = '60, 85, 150'; // 膜の色（R, G, B）。青を強めたい時は B を上げ R を下げる
+export const NIGHT_PHOTO_ALPHA = 0.1;
+
+// 章の印：街のいまの時刻（分）が、ある章の時刻から次の章の時刻の前までにある時、その章の番号（0から）を返す。
+// 最初の章より前と、最後の章から LAST_CHAPTER_SPAN 分より後（深夜など）は null
+export const LAST_CHAPTER_SPAN = 180;
+const hm = (s: string) => {
+  const m = s.match(/^(\d{1,2}):(\d{2})/);
+  return m ? +m[1] * 60 + +m[2] : null;
+};
+export function chapterNow(chapters: { time: string }[], clock: string): number | null {
+  const now = hm(clock);
+  if (now === null) return null;
+  const ts = chapters.map((c) => hm(c.time));
+  let at: number | null = null;
+  ts.forEach((t, k) => {
+    if (t !== null && t <= now && (at === null || t >= (ts[at] ?? -1))) at = k;
+  });
+  if (at === null) return null;
+  const start = ts[at]!;
+  const later = ts.filter((t): t is number => t !== null && t > start);
+  const end = later.length ? Math.min(...later) : start + LAST_CHAPTER_SPAN;
+  return now < end ? at : null;
+}
+
+// 天気の小さな動き（「その街のいま」の欄の中だけ）。晴れ・くもり・霧は null
+export type Weather = 'drizzle' | 'rain' | 'snow';
+export function motionOf(code: number): Weather | null {
+  if (code >= 51 && code <= 57) return 'drizzle';
+  const w = weatherOf(code);
+  if (w?.sky === 'rain' || w?.sky === 'storm') return 'rain';
+  if (w?.sky === 'snow') return 'snow';
+  return null;
+}
