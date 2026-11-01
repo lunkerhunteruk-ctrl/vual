@@ -12,6 +12,7 @@ import { CITIES } from '@/lib/latitude-places';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
 import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { latAsset } from '@/lib/latitude-assets';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
 
@@ -123,7 +124,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         {person && (
           <Link href={`/${locale}/latitude/people/${person.slug}`} className="group mt-10 flex max-w-xl items-center gap-4 border-t pt-6" style={{ borderColor: 'rgba(30,29,27,0.15)', color: INK }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/latitude/people/${person.slug}.jpg`} alt={who} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
+            <img src={latAsset(`people/${person.slug}.jpg`)} alt={who} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
             <span className="flex flex-col gap-1">
               <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? 'この日を旅した人' : 'The traveller'}</span>
               <span className="text-[18px] leading-snug" style={{ fontFamily: SERIF }}>

@@ -1,4 +1,5 @@
 import { personOf, type LatitudeIssue } from '@/lib/latitude';
+import { latAssetAbs } from './latitude-assets';
 
 // 2026-10-30 LATITUDE は VUAL が出している出版物（コンデナストと Vogue の関係）。
 // Google や AI のチャットが「LATITUDE を出しているのは VUAL」と読めるよう、構造化データで出版元と号のつながりを書く。
@@ -45,7 +46,7 @@ export const issueJsonLd = (i: LatitudeIssue) => {
         isPartOf: { '@id': PERIODICAL['@id'] },
         publisher: { '@id': PUBLISHER['@id'] },
         contentLocation: { '@type': 'Place', name: i.city },
-        image: `${SITE}/latitude/${i.slug}/cover.jpg`,
+        image: latAssetAbs(`${i.slug}/cover.jpg`, SITE),
       },
     ],
   };

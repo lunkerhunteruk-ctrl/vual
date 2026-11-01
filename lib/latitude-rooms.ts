@@ -1,6 +1,7 @@
 // 2026-10-30 LATITUDE の部屋。旅人と文字で話せて、話したい人は自分から「通話する」を押した時だけ声で話す（ElevenAgents）。
 // 会話の設定（人物・声・決まり）は ElevenLabs 側にあり、vault.vual.jp/tools/rin-call-agent.cjs で作る・直す（人物の説明は vault の config/rin-call-agent-prompt.md）。
 // まず凛だけ。公開は LATITUDE_ROOMS=open の時だけ（手元の試作では開く）。登録者だけに出す仕組みは、メールの登録先を決めてから足す。
+import { latAsset } from './latitude-assets';
 
 // 部屋の中継ふうの動画。from〜to は日本の時刻（時。0:00 をまたぐ時は from > to）。reactions を使うのは、反応の動画と光が合う場面だけ
 export type RoomCam = {
@@ -11,7 +12,7 @@ export type RoomCam = {
 
 // 金沢の宿の部屋（凛は浴衣。場面の一覧は vault の outputs/rin-room-kanazawa-20261030/SCENES.md）。金沢のページにも小さく流す
 export const KANAZAWA_INN: RoomCam = {
-  base: '/latitude/rooms/rin-kanazawa/',
+  base: latAsset('rooms/rin-kanazawa/'),
   slots: [
     { from: 6.5, to: 11, clip: 'M2.mp4' },
     { from: 11, to: 16.5, clip: 'D1.mp4' },
@@ -24,7 +25,7 @@ export const KANAZAWA_INN: RoomCam = {
 
 // 凛の東京の自宅（2026-10-30 ユーザー決定：部屋は自宅で固定。家の服。場面と指示文は vault の outputs/rin-room-tokyo-20261030/）
 export const TOKYO_HOME: RoomCam = {
-  base: '/latitude/rooms/rin-tokyo/',
+  base: latAsset('rooms/rin-tokyo/'),
   slots: [
     { from: 6.5, to: 10, clip: 'M2.mp4' }, // 朝ごはん
     { from: 10, to: 13, clip: 'D1.mp4' }, // シャツにスチーム（6.5秒から歩き出すので0〜6秒）

@@ -10,6 +10,7 @@ import RoomCam from '@/components/latitude/RoomCam';
 import { CityRoute, CityWear } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
 // のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。店の写真は載せない。
@@ -81,7 +82,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             // 2026-11-01 data-lat-photo：その街が夜の間だけ、写真をうすく暗く・青くする（NowLine の <style>）
             <span key={im.file} data-lat-photo className="block w-[56vw] shrink-0 snap-start md:w-[22vw] md:max-w-[260px]" style={{ aspectRatio: '9 / 16' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/latitude/places/${c.slug}/${im.file}`} alt={ja ? im.altJa : im.alt} loading="lazy" className="block h-full w-full object-cover" />
+              <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="block h-full w-full object-cover" />
             </span>
           ))}
         </div>

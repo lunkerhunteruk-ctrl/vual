@@ -4,6 +4,7 @@ import { AskAboutButton } from '@/components/latitude/AskTraveller';
 import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 街のページと「街×種類」のページで共通の、店の並び。
 // 種類の見出しの横に旅人の1日の場面を1枚（その店の写真ではないと分かるように、店の行には置かない）。
@@ -35,7 +36,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
         {im && (
           <figure className="mt-4 w-[46vw] max-w-[200px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/latitude/places/${c.slug}/${im.file}`} alt={ja ? im.altJa : im.alt} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
+            <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
             <figcaption className="mt-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</figcaption>
           </figure>
         )}

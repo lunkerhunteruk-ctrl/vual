@@ -1,5 +1,6 @@
 import { INK, MUTE, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { slugify, type CityPlace, type LatitudeCity } from '@/lib/latitude-places';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
@@ -23,7 +24,7 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
             <figure key={l.time} className="flex w-[68vw] min-w-0 shrink-0 snap-start flex-col gap-3 sm:w-auto">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {/* 服が頭から靴まで見えるように、号の絵の縦長のまま（切ると顔や足が切れる） */}
-              <img src={`/latitude/places/${c.slug}/${l.image}`} alt={ja ? l.itemsJa : l.items} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '9 / 16' }} />
+              <img src={latAsset(`places/${c.slug}/${l.image}`)} alt={ja ? l.itemsJa : l.items} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '9 / 16' }} />
               <figcaption className="flex flex-col gap-2">
                 <span className="text-[10px] uppercase tracking-[0.3em] tabular-nums" style={{ color: MUTE }}>{l.time}</span>
                 <span className="text-[14px] leading-relaxed">{ja ? l.itemsJa : l.items}</span>
@@ -72,7 +73,7 @@ export function CityRoute({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: s
                 </div>
                 {r.image && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={`/latitude/places/${c.slug}/${r.image}`} alt="" loading="lazy" className="col-start-2 w-28 object-cover md:col-start-3 md:w-full" style={{ aspectRatio: '4 / 5' }} />
+                  <img src={latAsset(`places/${c.slug}/${r.image}`)} alt="" loading="lazy" className="col-start-2 w-28 object-cover md:col-start-3 md:w-full" style={{ aspectRatio: '4 / 5' }} />
                 )}
               </li>
             );

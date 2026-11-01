@@ -5,6 +5,7 @@ import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF, Sec
 import TravellerMap from '@/components/latitude/TravellerMap';
 import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 import { mapTravellers } from '@/lib/latitude-map';
+import { latAssetAbs } from '@/lib/latitude-assets';
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     // リンクの見え方：Fårö の灯台のページ＋LATITUDE の題（public/latitude/og-index.jpg。scripts/latitude-og.py で作る）
     openGraph: { type: 'website', siteName: 'VUAL', title: 'LATITUDE — VUAL', description, url: `https://vual.jp/${locale}/latitude`,
-      images: [{ url: '/latitude/og-index.jpg', width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', title: 'LATITUDE — VUAL', description, images: ['/latitude/og-index.jpg'] },
+      images: [{ url: latAssetAbs('og-index.jpg'), width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title: 'LATITUDE — VUAL', description, images: [latAssetAbs('og-index.jpg')] },
   };
 }
 

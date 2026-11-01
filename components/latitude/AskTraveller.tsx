@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import RoomChat from '@/components/latitude/RoomChat';
 import { track } from '@/lib/latitude-track';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 街のページの「凛に聞く」。画面の下にいつも小さく出し、押すとその場で会話の窓が開く（部屋へ移らない）。
 // 店の「この店について聞く」（AskAboutButton）は、window の 'latitude:ask' で質問を渡し、窓を開いて送る。
@@ -39,7 +40,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
           className="fixed z-40 flex items-center gap-3 py-2 pl-2 pr-5 shadow-[0_6px_24px_rgba(30,29,27,0.18)]"
           style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: '#f2eee7' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`/latitude/people/${slug}.jpg`} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
+          <img src={latAsset(`people/${slug}.jpg`)} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
           <span className="text-[11px] uppercase tracking-[0.3em]">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
         </button>
       )}
@@ -50,7 +51,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
           <div className="flex items-center justify-between gap-4 pb-3">
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/latitude/people/${slug}.jpg`} alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+              <img src={latAsset(`people/${slug}.jpg`)} alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
               <div>
                 <p className="text-[22px] leading-none" style={{ fontFamily: SERIF }}>{name}</p>
                 <p className="mt-1 text-[10px] leading-snug" style={{ color: MUTE }}>{ja ? `${name}はAIです。文字は30日だけ残します。` : `${name} is an AI. Text is kept for 30 days.`}</p>

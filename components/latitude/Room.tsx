@@ -5,6 +5,7 @@ import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import RoomCam from '@/components/latitude/RoomCam';
 import RoomChat, { type ChatStage } from '@/components/latitude/RoomChat';
 import type { RoomCam as Cam } from '@/lib/latitude-rooms';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 LATITUDE の部屋。上に部屋の中継ふうの動画、下に旅人との会話（RoomChat）。
 // 声で話すのは、自分から「通話する」を押して、もう一度確かめた人だけ（思い切って話したい人にしぼるため・声の料金は通話中だけ）。
@@ -21,7 +22,7 @@ export default function Room({ locale, slug, name, city, month, callSeconds, cam
       </p>
       <div className="mt-5 flex items-center gap-5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`/latitude/people/${slug}.jpg`} alt="" width={64} height={64} className="h-16 w-16 rounded-full object-cover" />
+        <img src={latAsset(`people/${slug}.jpg`)} alt="" width={64} height={64} className="h-16 w-16 rounded-full object-cover" />
         <div>
           <h1 className="text-[48px] leading-none md:text-[64px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>
             <Link href={`/${locale}/latitude/people/${slug}`} style={{ color: INK }}>{name}</Link>

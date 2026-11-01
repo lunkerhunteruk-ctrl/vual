@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { LAND_PATH, MAP_H, MAP_W, project } from '@/lib/latitude-map';
+import { latAsset } from '@/lib/latitude-assets';
 
 // 2026-10-30 LATITUDE の旅人の地図。6人が最後にいた所に点がまたたき、マウスを乗せると顔・名前・街と月が出る。押すとその人のページへ。
 // 細い点線はその人の旅の跡（住む街 → 1日ずつ、号の順）。focus を渡すと、その人だけを濃くする（人のページ用）。
@@ -157,7 +158,7 @@ function Card({ p, locale }: { p: MapTraveller; locale: string }) {
     <Link href={`/${locale}/latitude/people/${p.slug}`} className="inline-flex w-max items-center gap-3 whitespace-nowrap py-2 pl-2 pr-5 shadow-[0_6px_24px_rgba(30,29,27,0.12)]"
       style={{ background: '#faf8f4', color: INK }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`/latitude/people/${p.slug}.jpg`} alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+      <img src={latAsset(`people/${p.slug}.jpg`)} alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
       <span className="flex flex-col">
         <span className="text-[20px] leading-none" style={{ fontFamily: SERIF }}>{p.name}</span>
         <span className="mt-1.5 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>

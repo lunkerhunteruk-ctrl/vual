@@ -1,9 +1,11 @@
 // LATITUDE — VUAL が街ごとに出している連載（Instagram のリール＋カルーセル）を、サイトで1号ずつ読めるようにするデータ。
-// 新しい号は ISSUES に1件足し、public/latitude/<slug>/ に cover.jpg・pages/NN.jpg（動くページは NN.mp4 も）を置く。
+// 新しい号は ISSUES に1件足し、public/latitude/<slug>/ に cover.jpg・pages/NN.jpg（動くページは NN.mp4 も）を置き、
+// node --env-file=.env.local scripts/latitude-assets-upload.mjs <slug> で R2 へ上げる（サイトは R2 から読む。lib/latitude-assets.ts）。
 // リールは本番では Cloudflare Stream（streamId）。streamId が無い間は public の reel.mp4（git には入れない）で確かめる。
 // 公開予約：publishAt（日本時間で書く。例 '2026-10-25T20:00:00+09:00'）を入れた号は、その時刻まで一覧・トップ・サイトマップに出ず、
 // 号のページも開けない（URL に ?preview=<LATITUDE_PREVIEW_KEY> を付けた時だけ先に見られる）。時刻を過ぎると数分以内に自動で出る。
 
+import { latAsset } from './latitude-assets';
 export type LatitudeColour = { name: string; hex: string };
 export type LatitudeChapter = { no: string; place: string; time: string };
 export type LatitudePage = { file: string; video?: string };
@@ -540,4 +542,4 @@ export const personOf = (i: LatitudeIssue) => (i.person ? getPerson(i.person) : 
 export const issuesOf = (person: string, now: number = Date.now()) => liveIssues(now).filter((i) => i.person === person);
 // 2026-10-30 号の番号は出さない。見出しは「人 · 月」（例 Klára · November）。no は並べる順にだけ使う
 export const issueNo = (i: LatitudeIssue) => [personOf(i)?.name, i.month].filter(Boolean).join(' · ') || `No. ${String(i.no).padStart(2, '0')}`;
-export const assetUrl = (i: LatitudeIssue, file: string) => `/latitude/${i.slug}/${file}`;
+export const assetUrl = (i: LatitudeIssue, file: string) => latAsset(`${i.slug}/${file}`); // 置き場は lib/latitude-assets.ts（R2）
