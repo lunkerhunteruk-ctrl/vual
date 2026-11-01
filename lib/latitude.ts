@@ -21,6 +21,15 @@ export type LatitudePerson = {
 };
 
 export const PEOPLE: LatitudePerson[] = [
+  // 2026-11-01 ユーザー：一覧などで凛をいちばん左に
+  { slug: 'rin', name: 'Rin', home: 'Tokyo, Japan', age: 23,
+    line: 'On her days off she goes to see handwork and food, in Japan and across Asia.',
+    about: ['Rin works at a gallery for ceramics in Tokyo. On her days off she travels in Japan and across Asia to see where tableware is made, and the places that serve food on it.',
+      'She chooses where to go by what can only be eaten there, and what can only be made there. Usually alone, usually one night.'],
+    ja: { name: '凛', home: '東京',
+      line: '休みの日に、日本とアジアの街へ、手仕事と食べ物を見に行く。',
+      about: ['東京の、器のギャラリーで働いている。休みの日に、日本とアジアの街へ、器が作られる所と、それで食べる店を見に行く。',
+        '行き先は、その土地でしか食べられない物と、その土地でしか作られていない物で決める。たいてい一人で、一泊だけ。'] } },
   { slug: 'solveig', name: 'Solveig', home: 'Bergen, Norway', age: 27,
     line: 'She records sound for documentaries, and goes north for the wind.',
     about: ['Solveig lives in Bergen, the rainiest city in Norway, and records sound for documentary films: wind, waves, the horn of a ferry.',
@@ -61,14 +70,6 @@ export const PEOPLE: LatitudePerson[] = [
       line: '香りの始まる場所を探しに、南へ行く調香師。',
       about: ['リヨンで香水をつくっている。香りの元を探しに、南へ旅をする。イタリア、スペイン、ポルトガル。',
         '行き先は、香りの元になる植物の、いちばん良い季節で決める。'] } },
-  { slug: 'rin', name: 'Rin', home: 'Tokyo, Japan', age: 23,
-    line: 'On her days off she goes to see handwork and food, in Japan and across Asia.',
-    about: ['Rin works at a gallery for ceramics in Tokyo. On her days off she travels in Japan and across Asia to see where tableware is made, and the places that serve food on it.',
-      'She chooses where to go by what can only be eaten there, and what can only be made there. Usually alone, usually one night.'],
-    ja: { name: '凛', home: '東京',
-      line: '休みの日に、日本とアジアの街へ、手仕事と食べ物を見に行く。',
-      about: ['東京の、器のギャラリーで働いている。休みの日に、日本とアジアの街へ、器が作られる所と、それで食べる店を見に行く。',
-        '行き先は、その土地でしか食べられない物と、その土地でしか作られていない物で決める。たいてい一人で、一泊だけ。'] } },
 ];
 
 export type LatitudeIssue = {
