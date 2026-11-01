@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
-import { CITIES, areasOf, getCity } from '@/lib/latitude-places';
+import { CITIES, areasOf, getCity, sectionsOf } from '@/lib/latitude-places';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
-import { CATEGORY_ORDER, CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
 
 // 2026-10-30 地区のページ（例 /latitude/places/kanazawa/area/higashi-chaya）。その場で地区の名前で調べる人の入口。
 // 店が AREA_MIN 軒以上ある地区だけ（lib/latitude-places.ts の areasOf）。中身は街のページと同じ一覧から、その地区の店だけを種類ごとに。
@@ -48,7 +48,7 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
   const who = p ? (ja ? p.ja.name : p.name) : '';
   const cityName = ja ? c.nameJa : c.name;
   const areaName = ja ? a.name : a.nameEn;
-  const groups = CATEGORY_ORDER.map((k) => ({ k, items: a.places.filter((x) => x.category === k) })).filter((g) => g.items.length);
+  const groups = sectionsOf(c, a.places);
   const room = roomsOpen() ? getRoom(c.person) : undefined;
 
   return (
@@ -62,7 +62,7 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
         </p>
         <h1 className="mt-5 text-[48px] leading-[1] md:text-[88px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>{areaName}</h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
-          {ja ? `${who}がすすめる、${a.name}の店を${a.places.length}軒。どれも編集部が営業を確かめた所です。` : `${a.places.length} places in ${a.nameEn}, chosen by ${who} and checked by the editors.`}
+          {ja ? `${who}がすすめる、${a.name}の${a.places.length}か所。どれも編集部が実在と営業を確かめた所です。` : `${a.places.length} places in ${a.nameEn}, chosen by ${who} and checked by the editors.`}
         </p>
       </header>
 
@@ -70,7 +70,7 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col gap-14">
             {groups.map((g) => (
-              <PlaceGroup key={g.k} c={c} k={g.k} items={g.items} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading />
+              <PlaceGroup key={g.key} c={c} sec={g} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading />
             ))}
           </div>
           <div className="mt-16 flex flex-col gap-4">

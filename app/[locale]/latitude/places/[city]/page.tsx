@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
-import { CITIES, getCity } from '@/lib/latitude-places';
-import { AreaLinks, CATEGORY_ORDER, CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import { CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
+import { AreaLinks, CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
@@ -44,7 +44,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
   const ja = locale === 'ja';
   const p = getPerson(c.person);
   const who = p ? (ja ? p.ja.name : p.name) : '';
-  const groups = CATEGORY_ORDER.map((k) => ({ k, items: c.places.filter((x) => x.category === k) })).filter((g) => g.items.length);
+  const groups = sectionsOf(c); // その街ならではの産業が先、飲食と器があと
   const checked = c.places.map((x) => x.verifiedAt).sort().at(-1);
   // 旅人に部屋（会話）があれば、このページからその場で聞ける
   const room = roomsOpen() ? getRoom(c.person) : undefined;
@@ -112,7 +112,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
           <div className="mb-12 flex flex-col gap-3"><CategoryLinks c={c} locale={locale} ja={ja} /><AreaLinks c={c} locale={locale} ja={ja} /></div>
           <div className="flex flex-col gap-14">
             {groups.map((g) => (
-              <PlaceGroup key={g.k} c={c} k={g.k} items={g.items} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading />
+              <PlaceGroup key={g.key} c={c} sec={g} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading />
             ))}
           </div>
           <p className="mt-16 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>

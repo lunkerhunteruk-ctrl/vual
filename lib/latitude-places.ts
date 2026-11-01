@@ -11,14 +11,19 @@ import copenhagen from './latitude-places/copenhagen.json';
 import milan from './latitude-places/milan.json';
 import edinburgh from './latitude-places/edinburgh.json';
 import reykjavik from './latitude-places/reykjavik.json';
+import vienna from './latitude-places/vienna.json';
+import haworth from './latitude-places/haworth.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
 
-export type PlaceCategory = 'matcha' | 'sweets' | 'food' | 'coffee' | 'craft';
+// 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
+// その店は category 'local' ＋ industry（街の industries の key）。ページは産業ごと（/latitude/places/<街>/<産業の key>。例 /latitude/places/kanazawa/gold-leaf）
+export type PlaceCategory = 'local' | 'matcha' | 'sweets' | 'food' | 'coffee' | 'craft';
 
 export type CityPlace = {
   name: string; // 正式な店名（日本語）
   nameEn: string;
   category: PlaceCategory;
+  industry?: string; // category が 'local' の時だけ。街の industries の key
   area: string;
   areaEn: string;
   address: string; // 町名まで
@@ -30,6 +35,9 @@ export type CityPlace = {
   verifiedAt: string; // 編集部が営業を確かめた日
   ad?: boolean;
 };
+
+// その街ならではの産業（例 金沢の金箔）。key は URL になる（種類の key と 'area' は使わない）
+export type CityIndustry = { key: string; en: string; ja: string; about: string; aboutJa: string };
 
 export type LatitudeCity = {
   slug: string;
@@ -48,6 +56,7 @@ export type LatitudeCity = {
   // 種類の見出しの横に置く号の場面（「凛の1日から」と添える。店の行には置かない＝その店の写真に見せない）
   categoryImages?: Partial<Record<PlaceCategory, { file: string; alt: string; altJa: string }>>;
   places: CityPlace[];
+  industries?: CityIndustry[]; // 並べる順。街のページでは飲食より先に出す（その街らしさが先に来るように）
   // この季節にこの街で何を着るか（号の服＝VUAL オリジナル。旅人の一言つき）。2026-10-30 ユーザー指定：AI のチャットにない「旅の服」を見せる
   wear?: {
     season: string; seasonJa: string;
@@ -63,6 +72,7 @@ export type LatitudeCity = {
 };
 
 export const CATEGORY_LABEL: Record<PlaceCategory, { en: string; ja: string }> = {
+  local: { en: 'Made here', ja: 'この街の仕事' },
   matcha: { en: 'Matcha', ja: '抹茶' },
   sweets: { en: 'Sweets', ja: '甘味' },
   food: { en: 'To eat', ja: 'ごはん' },
@@ -92,6 +102,10 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'crab.jpg', alt: 'From Rin\'s day: crab at a wooden counter', altJa: '凛の1日から：木のカウンターで蟹' },
     },
     places: kanazawa as CityPlace[],
+    industries: [
+      { key: "gold-leaf", en: "Gold leaf", ja: "金箔", about: "Kanazawa makes over 99% of Japan's gold leaf, according to Ishikawa Prefecture. Gold the size of a ten-yen coin is beaten out to about the area of four tatami mats.", aboutJa: "石川県によると、全国の金箔の99％以上が金沢で作られる。10円玉ほどの金を、畳4枚ほどの広さまで打ち延ばす。" },
+      { key: "kaga-yuzen", en: "Kaga yuzen dyeing", ja: "加賀友禅", about: "Kaga yuzen is Kanazawa's hand-painted silk dyeing, a nationally designated traditional craft of Ishikawa, known for patterns drawn from flowers, plants and landscapes in many colours. Working dye studios still operate in the city.", aboutJa: "金沢の、絹に手で模様を描いて染める技法。石川県の国指定の伝統的工芸品で、草花や風景など自然を描いた模様と、多くの色を使うのが特徴。市内にはいまも染めの工房がある。" },
+    ],
     wear: {
       season: 'Late November',
       seasonJa: '11月の終わり',
@@ -158,6 +172,10 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'breakfast.jpg', alt: "From Maeve's day: tea and a full breakfast at a café", altJa: 'メイヴの1日から：カフェで紅茶と朝ごはん' },
     },
     places: london as CityPlace[],
+    industries: [
+      { key: "antiquarian-books", en: "Antiquarian books and bookshops", ja: "古書と本屋", about: "London has long been the centre of British publishing and the rare-book trade. Cecil Court, Bloomsbury and Mayfair still hold dealers with long histories, such as Sotheran's (1761) and Maggs (1850s).", aboutJa: "ロンドンは長くイギリスの出版と古書の商いの中心だった。セシル・コート、ブルームズベリー、メイフェアには、1761年からのソザランズや1850年代からのマッグズのような古い店がいまも残る。" },
+      { key: "bespoke-tailoring", en: "Bespoke tailoring and London makers", ja: "仕立てと手仕事の店", about: "Savile Row in Mayfair has been the street of bespoke tailors since the 19th century, and nearby old makers of hats and umbrellas still make and repair by hand on their own premises.", aboutJa: "メイフェアのサヴィル・ロウは19世紀から仕立て屋の通り。近くには、帽子や傘をいまも店の工房で手で作り、直す古い店が残る。" },
+    ],
     wear: {
       season: 'November',
       seasonJa: '11月',
@@ -216,6 +234,9 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'lunch.jpg', alt: "From Klára's day: smørrebrød at lunch", altJa: 'クラーラの1日から：昼のスモーブロー' },
     },
     places: copenhagen as CityPlace[],
+    industries: [
+      { key: "danish-modern-furniture", en: "Danish modern furniture", ja: "デンマーク・モダンの家具", about: "Danish modern furniture took shape in Copenhagen: Kaare Klint began teaching furniture design at the Royal Danish Academy in 1924, and from 1927 to 1966 the city's Cabinetmakers' Guild held a yearly exhibition where architects and cabinetmakers showed new pieces together. The city still has the makers' showrooms and dealers in original pieces from that time.", aboutJa: "デンマーク・モダンの家具は、コペンハーゲンで形になった。1924年に王立芸術アカデミーでカーレ・クリントが家具の授業を始め、1927年から1966年まで、市の家具職人組合が毎年展示会を開いて、建築家と職人が新しい家具を一緒に見せた。いまも街には、作り手の展示室と、当時の家具を扱う店が残る。" },
+    ],
     wear: {
       season: 'October',
       seasonJa: '10月',
@@ -273,6 +294,10 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'risotto.jpg', alt: "From Hélène's day: risotto alla milanese", altJa: 'エレーヌの1日から：ミラノ風リゾット' },
     },
     places: milan as CityPlace[],
+    industries: [
+      { key: "artistic-perfumery", en: "Artistic perfumery", ja: "香水", about: "Milan hosts Esxence, the international fair of artistic perfumery, every year (its 16th edition was in June 2026). The city has several perfumeries that specialise in niche houses.", aboutJa: "ミラノでは毎年、ニッチな香水の国際見本市「エクセンス」がひらかれる（2026年6月で16回目）。ニッチな香水を専門に扱う店もいくつもある。" },
+      { key: "design-furniture", en: "Design furniture", ja: "デザインの家具", about: "Every April Milan holds the Salone del Mobile furniture fair and Design Week, and galleries and showrooms across the city sell 20th-century and contemporary furniture and objects all year.", aboutJa: "ミラノでは毎年4月に家具見本市サローネ・デル・モービレとデザインウィークがひらかれる。街のギャラリーや店は、20世紀からいまの家具と器を一年中売っている。" },
+    ],
     wear: {
       season: 'November',
       seasonJa: '11月',
@@ -324,6 +349,10 @@ export const CITIES: LatitudeCity[] = [
       { file: 'close.jpg', alt: 'Liv walking down a stone close at night', altJa: '夜の石の小路を下りるリヴ' },
     ],
     places: edinburgh as CityPlace[],
+    industries: [
+      { key: "scottish-textiles", en: "Tweed, knitwear & kiltmaking", ja: "ツイード・ニット・キルト", about: "Scotland's tweed, tartan and knitwear are known worldwide, and Edinburgh still has kiltmakers, tailors and knitters who cut, sew and knit in the city — one kiltmaker has been here since 1868.", aboutJa: "スコットランドのツイードやタータン、ニットは世界に知られる。エディンバラにはいまも、街の中で布を裁ち、縫い、編むキルト職人や仕立て屋、ニットの工房がある。1868年から続くキルトの店もある。" },
+      { key: "whisky", en: "Scotch whisky", ja: "スコッチ・ウイスキー", about: "Leith, Edinburgh's port, was long a centre for storing, blending and bottling Scotch whisky; at one point it is said to have had about a hundred bonded warehouses. Independent bottlers and a new distillery on the quay keep the trade in the city.", aboutJa: "エディンバラの港町リースは、長くスコッチ・ウイスキーを寝かせ、混ぜ合わせ、瓶に詰める場所だった。一時は保税倉庫が100ほどあったとされる。いまも独立系のボトラーや、岸壁の新しい蒸留所がその仕事を続ける。" },
+    ],
     wear: {
       season: 'Late October',
       seasonJa: '10月の終わり',
@@ -383,6 +412,10 @@ export const CITIES: LatitudeCity[] = [
       { file: 'harpa-floor.jpg', alt: 'Solveig sitting on the floor inside Harpa', altJa: 'ハルパの中で床に座るソルヴェイ' },
     ],
     places: reykjavik as CityPlace[],
+    industries: [
+      { key: "record-shops", en: "Record shops", ja: "レコード店", about: "Reykjavík's music scene, from the Sugarcubes onward, is served by small record shops that are often also labels and venues. Smekkleysa (Bad Taste) has run its label since 1986 and 12 Tónar since 1998.", aboutJa: "シュガーキューブス以来のレイキャビクの音楽を、小さなレコード店が支える。店がレーベルやライブの場を兼ねる事が多い。スメクレイサは1986年から、12トゥナルは1998年からレーベルを続ける。" },
+      { key: "icelandic-wool", en: "Icelandic wool", ja: "アイスランドの羊毛", about: "Icelandic sheep grow a two-layer fleece, a long water-shedding outer coat and a soft inner one, spun into lopi yarn. The lopapeysa, the round-yoke sweater knitted from it, is still hand-knitted in Iceland.", aboutJa: "アイスランドの羊の毛は、雨をはじく長い外毛と、やわらかい内毛の二層になっている。これを紡いだ糸がロピで、丸ヨークのセーター、ロパペイサは今も国内で手編みされる。" },
+    ],
     wear: {
       season: 'October',
       seasonJa: '10月',
@@ -413,6 +446,129 @@ export const CITIES: LatitudeCity[] = [
       { time: '17:50', place: 'Harpa', placeJa: 'ハルパ', what: 'Inside the glass, facing her own reflection.', whatJa: 'ガラスの中で、自分の映りこみと向き合う。', image: 'harpa.jpg', near: ['Hnoss Bistro', 'Kaffi Ó-le'] },
     ],
   },
+  // 2026-11-01 ウィーン（クラーラ・号 vienna）。1日＝1コーデで、服はすべて VUAL のオリジナル。写真は号の静止画（vault.vual.jp outputs/vual-vienna-20261029/stills と data/latitude-recipes/vienna/scenes）を 9:16 に切った物。
+  // 回り方の時刻は号の章とカルーセルの時刻。号に書いてある事だけ。
+  {
+    slug: 'vienna',
+    name: 'Vienna',
+    nameJa: 'ウィーン',
+    latitude: '48.2° N',
+    country: 'Austria',
+    countryJa: 'オーストリア',
+    countryCode: 'AT',
+    person: 'klara',
+    issue: 'vienna',
+    intro: "Klára spent one grey November day here: off the night train at the Hauptbahnhof, Gumpendorfer Strasse in the morning, Otto Wagner's pavilions on Karlsplatz and his Postal Savings Bank, the Ringstrasse at dusk, a tram, and a small bar of onyx and mirrors off Kärntner Strasse at night.",
+    introJa: 'クラーラが11月の灰色の1日を過ごした街。夜行列車で中央駅に着いて、朝のグンペンドルファー通り、カールス広場のオットー・ワーグナーの駅舎と、彼の郵便貯金局。夕暮れのリンク通り、路面電車、夜はケルントナー通りから入った、オニキスと鏡の小さなバー。',
+    images: [
+      { file: 'cafe.jpg', alt: 'Klára passing the window of an old coffee house on Gumpendorfer Strasse', altJa: 'グンペンドルファー通りの古いカフェの窓の前を歩くクラーラ' },
+      { file: 'karlsplatz.jpg', alt: "Klára walking past Otto Wagner's pavilion on Karlsplatz", altJa: 'カールス広場のオットー・ワーグナーの駅舎の前を歩くクラーラ' },
+      { file: 'postsparkasse.jpg', alt: 'Klára under the glass ceiling of the Postal Savings Bank', altJa: '郵便貯金局のガラスの天井の下に立つクラーラ' },
+      { file: 'passage.jpg', alt: 'Klára in a narrow stone passage at night', altJa: '夜の石の細い抜け道のクラーラ' },
+      { file: 'bar.jpg', alt: 'Klára in a small bar under a wall of onyx', altJa: 'オニキスの壁の下、小さなバーのクラーラ' },
+    ],
+    places: vienna as CityPlace[],
+    industries: [
+      { key: "glass-porcelain-silver", en: "Glass, porcelain and silver", ja: "ガラス・磁器・銀器", about: "Vienna's old court suppliers still make glass, porcelain and silver by hand in the city. Designers of the Wiener Werkstätte era such as Josef Hoffmann and Adolf Loos designed pieces for these workshops.", aboutJa: "宮廷に納めていた工房が、いまも市内でガラス・磁器・銀器を手で作る。ヨーゼフ・ホフマンやアドルフ・ロースなど、ウィーン工房の時代の建築家がこうした工房のために器をデザインした。" },
+      { key: "leather-hats-shoes", en: "Leather goods, hats and shoes", ja: "革小物・帽子・靴", about: "Small family workshops in Vienna have made shoes, hats and leather goods by hand for generations, some since the time they supplied the imperial court.", aboutJa: "ウィーンでは、靴・帽子・革小物を手で作る家族の工房が何代も続く。宮廷に納めていた時代からの店もある。" },
+    ],
+    wear: {
+      season: 'November',
+      seasonJa: '11月',
+      facts: [
+        { en: 'Around 9.5°C by day and 5°C at night, with about 40 mm of rain (Innere Stadt, 1991–2020 averages).', ja: '昼は9.5℃前後、夜は5℃前後。雨は月に40ミリほど（インネレ・シュタット、1991〜2020年の平年値）。' },
+        { en: 'Skies are often grey, and the sun sets soon after four.', ja: '空は灰色の日が多い。日の入りは4時を少し過ぎたころ。' },
+        { en: 'In October a knit and a light coat are enough; it is about 15°C by day. In December it drops to about 5°C by day; add gloves and a hat.', ja: '10月ならニットに軽いコートで足りる。昼は15℃ほど。12月は昼でも5℃ほどになるので、手袋と帽子を足す。' },
+      ],
+      looks: [
+        { time: '08:40', image: 'train.jpg',
+          items: 'Under the coat: an off-white turtleneck, a dark brown croc-embossed skirt that narrows at the hem, black tights.',
+          itemsJa: 'コートの下は、生成りのタートルネックに、すそへ細くなるこげ茶の型押しのスカート、黒いタイツ。',
+          note: 'On the night train the coat comes off. Under it, one knit and one skirt.', noteJa: '夜行列車ではコートを脱ぐ。下はニットとスカートだけ。' },
+        { time: '09:00', image: 'cafe.jpg',
+          items: 'A long dark brown hooded shearling coat, closed from hem to chin; black suede platform ankle boots, an olive-brown suede top-handle bag.',
+          itemsJa: 'こげ茶のフード付きの長いシアリングのコートを、すそからあごまで閉じて。黒いスエードの厚底のショートブーツ、オリーブブラウンのスエードの手提げ。',
+          note: 'A grey day. Close it to the chin and walk.', noteJa: '灰色の日。あごまで閉めて歩く。' },
+        { time: '17:10', image: 'tram.jpg',
+          items: 'The same coat with the hood up.',
+          itemsJa: '同じコートで、フードをかぶる。',
+          note: 'After dark, the hood. One coat for the whole day.', noteJa: '暗くなったらフード。一日、コートは一枚でいい。' },
+      ],
+    },
+    route: [
+      { time: '08:40', place: 'Hauptbahnhof', placeJa: '中央駅', what: 'Off the night train in the morning.', whatJa: '夜行列車で、朝に着く。', image: 'train.jpg', near: ['Café Goldegg'] },
+      { time: '09:00', place: 'I Gumpendorfer Strasse', placeJa: 'I グンペンドルファー通り', what: 'Past the window of an old coffee house.', whatJa: '古いカフェの窓の前を通る。', image: 'cafe.jpg', near: ['Café Sperl', 'Gastwirtschaft Steman'] },
+      { time: '10:40', place: 'Karlsplatz', placeJa: 'カールス広場', what: "Past Otto Wagner's pavilion of green iron, marble and gold sunflowers.", whatJa: 'オットー・ワーグナーの、緑の鉄と大理石と金のひまわりの駅舎の前を歩く。', image: 'karlsplatz.jpg', near: ['Café Museum', 'Vollpension', 'Feinedinge*'] },
+      { time: '12:30', place: 'A sausage stand', placeJa: 'ソーセージの屋台', what: 'Lunch standing up.', whatJa: '昼は立って食べる。', near: ['Bitzinger Würstelstand Albertina'] },
+      { time: '14:20', place: 'Postal Savings Bank', placeJa: '郵便貯金局', what: 'Under the glass ceiling of the banking hall.', whatJa: '窓口の広間の、ガラスの天井の下に立つ。', image: 'postsparkasse.jpg', near: ['Café Prückel'] },
+      { time: '15:20', place: 'Michaelerplatz', placeJa: 'ミヒャエラー広場', what: 'Leaning on the railing in the square.', whatJa: '広場の柵に手をかける。', image: 'michaelerplatz.jpg', near: ['Demel', "R. Horn's Wien", 'Scheer', 'Zum Schwarzen Kameel'] },
+      { time: '16:00', place: 'II Ringstrasse', placeJa: 'II リンク通り', what: 'Along the tram lines as the lamps come on.', whatJa: '灯りがつき始めた、路面電車の線路ぞいを歩く。', image: 'ring.jpg' },
+      { time: '17:10', place: 'The tram', placeJa: '路面電車', what: 'Hood up, by a red tram.', whatJa: 'フードをかぶって、赤い路面電車のそばに立つ。', image: 'tram.jpg' },
+      { time: '21:40', place: 'III Kärntner Durchgang', placeJa: 'III ケルントナー・ドゥルヒガング', what: 'Down a narrow passage off Kärntner Strasse.', whatJa: 'ケルントナー通りから、細い抜け道に入る。', image: 'passage.jpg', near: ['J. & L. Lobmeyr', 'Wiener Porzellanmanufaktur Augarten'] },
+      { time: '22:40', place: 'A small bar', placeJa: '小さなバー', what: 'Onyx above the door, mirrors on the walls.', whatJa: '戸の上にオニキス、壁には鏡。', image: 'bar.jpg' },
+      { time: '23:20', place: 'The hotel', placeJa: 'ホテル', what: 'Boots off in the room.', whatJa: '部屋で、ブーツを脱ぐ。' },
+    ],
+  },
+  // 2026-11-01 ハワース（メイヴ・号 haworth）。小さな村なので、店は村と、メイヴが乗ったワース・ヴァレー線の沿線（キースリー・オクセンホープ）から。服はすべて VUAL のオリジナル。
+  // 写真は号の静止画（vault.vual.jp outputs/vual-maeve-20261031/stills と data/latitude-recipes/haworth/scenes）を 9:16 に切った物。駅（字の入った看板）と墓地（墓石の刻字）の絵は使っていない
+  {
+    slug: 'haworth',
+    name: 'Haworth',
+    nameJa: 'ハワース',
+    latitude: '53.8° N',
+    country: 'West Yorkshire, England',
+    countryJa: 'イギリス・ウェスト・ヨークシャー',
+    countryCode: 'GB',
+    person: 'maeve',
+    issue: 'haworth',
+    intro: 'Maeve spent one November Saturday here, in a west wind: the valley line from Keighley, the steep cobbles of Main Street, the churchyard by the Brontë parsonage, the moor to Top Withens, and a fire at the inn.',
+    introJa: 'メイヴが11月の土曜日を過ごした村。強い西風の日。キースリーからの谷の鉄道、急な石畳のメイン・ストリート、ブロンテ家の牧師館の隣の墓地、荒野を歩いてトップ・ウィゼンズまで。最後は宿の暖炉のそば。',
+    images: [
+      { file: 'train.jpg', alt: 'Maeve by the window of a carriage on the Worth Valley line', altJa: 'ワース・ヴァレー線の客車の窓ぎわのメイヴ' },
+      { file: 'main-street.jpg', alt: 'Maeve buttoning her coat on the cobbles of Main Street', altJa: 'メイン・ストリートの石畳で、コートのボタンを留めるメイヴ' },
+      { file: 'moor.jpg', alt: 'A small figure crossing the heather on the moor', altJa: '荒野のヒースを横切るメイヴ' },
+      { file: 'withens.jpg', alt: 'Maeve in the doorway of the ruin at Top Withens', altJa: 'トップ・ウィゼンズの廃屋の戸口に立つメイヴ' },
+      { file: 'fire.jpg', alt: 'Maeve by the fire at the inn', altJa: '宿の暖炉のそばのメイヴ' },
+    ],
+    places: haworth as CityPlace[],
+    industries: [
+      { key: "bookshops", en: "Bookshops", ja: "本屋", about: "Haworth is the village where the Brontë sisters lived and wrote. The literary visitors who come for them keep independent bookshops going on Main Street, among them a second-hand dealer trading since 1988.", aboutJa: "ブロンテ姉妹が暮らし、小説を書いた村。姉妹を目当てに来る人に支えられ、メイン・ストリートに個人の本屋が続く。1988年からの古本屋もある。" },
+      { key: "brewing", en: "Brewing", ja: "ビール醸造", about: "Timothy Taylor's has brewed cask ale in Keighley, where the Worth Valley line begins, since 1858, and at Knowle Spring since 1863. The family brewery's pubs run up the valley to Haworth's Main Street.", aboutJa: "ワース・ヴァレー線の起点キースリーで、ティモシー・テイラーが1858年からカスクエールを造る。1863年からはノウル・スプリングの醸造所で。この醸造所のパブが、谷を上ってハワースのメイン・ストリートまで続く。" },
+    ],
+    wear: {
+      season: 'November',
+      seasonJa: '11月',
+      facts: [
+        { en: 'At Bingley, the nearest long record, November averages 8.5°C by day and 3.5°C at night, with about 110 mm of rain (1991–2020).', ja: 'いちばん近いビングリーの観測では、11月は昼8.5℃前後、夜3.5℃前後。雨は月に110ミリほど（1991〜2020年の平年値）。' },
+        { en: 'On the moor the wind is stronger, and the light goes around four.', ja: '荒野は村より風が強い。4時ごろには暗くなる。' },
+        { en: 'In October a jacket over a knit is enough; it is about 12°C by day. In December it is about 6°C by day; add a scarf and gloves for the moor.', ja: '10月ならニットにジャケットで足りる。昼は12℃ほど。12月は昼でも6℃ほど。荒野へはマフラーと手袋を足す。' },
+      ],
+      looks: [
+        { time: '09:25', image: 'main-street.jpg',
+          items: 'A long black leather coat with a stand collar, buttoned to the top; taupe flannel barrel trousers, black patent penny loafers with black socks.',
+          itemsJa: '立ち襟の黒い革のロングコートを、いちばん上まで留めて。トープのフランネルの丸いシルエットのパンツ、黒い靴下に黒いエナメルのペニーローファー。',
+          note: 'The wind comes up the hill. Button it to the collar.', noteJa: '風が坂を上がってくる。襟まで留める。' },
+        { time: '13:10', image: 'reading.jpg',
+          items: 'Out of the wind, the coat open over a grey cashmere shirt; an olive-brown suede top-handle bag.',
+          itemsJa: '風のあたらない所では、コートの前を開けて。中はグレーのカシミヤのシャツ。オリーブブラウンのスエードの手提げ。',
+          note: 'Behind a wall on the moor, the coat can open.', noteJa: '荒野でも、壁の陰ならコートを開けられる。' },
+        { time: '16:20', image: 'fire.jpg',
+          items: 'By the fire, the same coat worn open.',
+          itemsJa: '暖炉のそばでは、同じコートを開けたまま。',
+          note: 'One coat for the train, the moor and the inn.', noteJa: '列車も、荒野も、宿も、このコート一枚。' },
+      ],
+    },
+    route: [
+      { time: '08:40', place: 'The valley line', placeJa: '谷の鉄道（ワース・ヴァレー線）', what: 'By the window of an old carriage, up the valley from Keighley.', whatJa: 'キースリーから谷を上る、古い客車の窓ぎわ。', image: 'train.jpg', near: ['The Old Parcels Office', "Taylor's on the Green", 'The Boltmakers Arms'] },
+      { time: '09:05', place: 'Haworth station', placeJa: 'ハワース駅', what: 'Off the train at the line\'s headquarters.', whatJa: 'この鉄道の本部がある駅で降りる。', near: ['The Royal Oak'] },
+      { time: '09:25', place: 'Main Street', placeJa: 'メイン・ストリート', what: 'Up the steep cobbles, buttoning the coat.', whatJa: 'コートのボタンを留めながら、急な石畳を上る。', image: 'main-street.jpg', near: ['Hatchard & Daughters', 'Wave of Nostalgia', "Mrs Beighton's Sweet Shop", 'Hunters of Haworth', 'The Fleece Inn', 'Pavé Charcuterie and Bistro'] },
+      { time: '09:50', place: 'I Churchyard', placeJa: 'I 墓地', what: 'Among the flat gravestones beside the parsonage.', whatJa: '牧師館の隣、平らに並ぶ墓石のあいだ。' },
+      { time: '12:30', place: 'II The moor', placeJa: 'II 荒野', what: 'Across the heather in the west wind.', whatJa: '西風の中、ヒースの荒野を横切る。', image: 'moor.jpg' },
+      { time: '13:10', place: 'Top Withens', placeJa: 'トップ・ウィゼンズ', what: 'A book open, her back to the ruined wall.', whatJa: '廃屋の壁に背をあずけて、本を開く。', image: 'reading.jpg' },
+      { time: '16:00', place: 'III The inn', placeJa: 'III 宿', what: 'Through the old door as the light goes.', whatJa: '暗くなるころ、古い戸を開ける。', image: 'inn.jpg' },
+      { time: '16:20', place: 'By the fire', placeJa: '暖炉のそば', what: 'Standing by the fire, the coat still on.', whatJa: 'コートを着たまま、暖炉のそばに立つ。', image: 'fire.jpg' },
+    ],
+  },
 ];
 
 export const getCity = (slug: string) => CITIES.find((c) => c.slug === slug);
@@ -434,3 +590,36 @@ export function areasOf(c: LatitudeCity) {
   }
   return [...m.values()].filter((a) => a.places.length >= AREA_MIN).sort((a, b) => b.places.length - a.places.length);
 }
+
+// 2026-11-01 店の並びの「節」。その街ならではの産業（industries の順）を先に、そのあと飲食と器の種類。
+// 節の key がそのまま種類のページの URL（/latitude/places/<街>/<key>）になる。
+// 産業ごとにページを分けるのは、「金沢 金箔」「ウィーン 帽子」のように産業の名前で調べる人が多く、1ページ1つの言葉の方が検索で合うため。
+export const CATEGORY_ORDER: Exclude<PlaceCategory, 'local'>[] = ['matcha', 'sweets', 'food', 'coffee', 'craft'];
+const RESERVED = new Set<string>([...CATEGORY_ORDER, 'local', 'area']);
+export type PlaceSection = {
+  key: string;
+  kind: 'industry' | 'category';
+  category: PlaceCategory;
+  label: { en: string; ja: string };
+  about?: { en: string; ja: string };
+  items: CityPlace[];
+};
+export function sectionsOf(c: LatitudeCity, places: CityPlace[] = c.places): PlaceSection[] {
+  const out: PlaceSection[] = [];
+  const known = new Set<string>();
+  for (const ind of c.industries ?? []) {
+    if (RESERVED.has(ind.key)) continue; // 種類や地区のページと URL がぶつかる key は使わない
+    known.add(ind.key);
+    const items = places.filter((x) => x.category === 'local' && x.industry === ind.key);
+    if (items.length) out.push({ key: ind.key, kind: 'industry', category: 'local', label: { en: ind.en, ja: ind.ja }, about: { en: ind.about, ja: ind.aboutJa }, items });
+  }
+  // 産業が書かれていない local の店（念のため）は「この街の仕事」にまとめる
+  const rest = places.filter((x) => x.category === 'local' && !known.has(x.industry ?? ''));
+  if (rest.length) out.push({ key: 'local', kind: 'category', category: 'local', label: CATEGORY_LABEL.local, items: rest });
+  for (const k of CATEGORY_ORDER) {
+    const items = places.filter((x) => x.category === k);
+    if (items.length) out.push({ key: k, kind: 'category', category: k, label: CATEGORY_LABEL[k], items });
+  }
+  return out;
+}
+export const getSection = (c: LatitudeCity, key: string) => sectionsOf(c).find((s) => s.key === key);

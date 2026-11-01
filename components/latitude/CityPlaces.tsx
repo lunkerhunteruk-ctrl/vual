@@ -3,26 +3,34 @@ import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import { AskAboutButton } from '@/components/latitude/AskTraveller';
 import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
-import { CATEGORY_LABEL, areasOf, type CityPlace, type LatitudeCity, type PlaceCategory } from '@/lib/latitude-places';
+import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 
 // 2026-10-30 街のページと「街×種類」のページで共通の、店の並び。
 // 種類の見出しの横に旅人の1日の場面を1枚（その店の写真ではないと分かるように、店の行には置かない）。
+// 2026-11-01 節（sectionsOf）ごとに並べる：その街ならではの産業が先、飲食と器があと。産業の節は見出しの下に短い説明。
 
-export const CATEGORY_ORDER: PlaceCategory[] = ['matcha', 'sweets', 'food', 'coffee', 'craft'];
+export { CATEGORY_ORDER } from '@/lib/latitude-places';
 const mapUrl = (name: string, address: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${address}`)}`;
 
-export function PlaceGroup({ c, k, items, ja, locale, who, canAsk, linkHeading }: {
-  c: LatitudeCity; k: PlaceCategory; items: CityPlace[]; ja: boolean; locale: string; who: string; canAsk: boolean; linkHeading: boolean;
+export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
+  c: LatitudeCity; sec: PlaceSection; ja: boolean; locale: string; who: string; canAsk: boolean; linkHeading: boolean;
 }) {
-  const label = ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en;
-  const im = c.categoryImages?.[k];
+  const items = sec.items;
+  const label = ja ? sec.label.ja : sec.label.en;
+  const im = sec.kind === 'category' ? c.categoryImages?.[sec.category] : undefined;
   return (
     <div className="md:grid md:grid-cols-[1fr_3fr] md:gap-12">
       <div className="mb-5 md:mb-0">
         {linkHeading ? (
-          <Link href={`/${locale}/latitude/places/${c.slug}/${k}`} className="text-[22px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
-            {label}
-          </Link>
+          <>
+            {sec.kind === 'industry' && (
+              <p className="mb-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
+            )}
+            <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="text-[22px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
+              {label}
+            </Link>
+            {sec.about && <p className="mt-3 max-w-xs text-[13px] leading-relaxed" style={{ color: MUTE }}>{ja ? sec.about.ja : sec.about.en}</p>}
+          </>
         ) : null /* 街×種類のページでは、題が同じ言葉なので見出しを出さない */}
         {im && (
           <figure className="mt-4 w-[46vw] max-w-[200px]">
@@ -60,7 +68,7 @@ export function PlaceGroup({ c, k, items, ja, locale, who, canAsk, linkHeading }
 }
 
 // 検索エンジン向けの店の一覧（ItemList）。店の種類ごとに schema.org の型を合わせる
-const TYPE: Record<PlaceCategory, string> = { matcha: 'CafeOrCoffeeShop', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', coffee: 'CafeOrCoffeeShop', craft: 'Store' };
+const TYPE: Record<PlaceCategory, string> = { local: 'LocalBusiness', matcha: 'CafeOrCoffeeShop', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', coffee: 'CafeOrCoffeeShop', craft: 'Store' };
 export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: CityPlace[]; ja: boolean; name: string }) {
   const data = {
     '@context': 'https://schema.org',
@@ -82,14 +90,14 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
 }
 
 // ほかの種類へのリンク（街×種類のページの下と、街のページの見出しの下）
-export function CategoryLinks({ c, locale, ja, current }: { c: LatitudeCity; locale: string; ja: boolean; current?: PlaceCategory }) {
-  const ks = CATEGORY_ORDER.filter((k) => c.places.some((x) => x.category === k));
+export function CategoryLinks({ c, locale, ja, current }: { c: LatitudeCity; locale: string; ja: boolean; current?: string }) {
+  const secs = sectionsOf(c);
   return (
     <p className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.3em]">
-      {ks.map((k) => (
-        <Link key={k} href={`/${locale}/latitude/places/${c.slug}/${k}`} className="underline-offset-4 hover:underline"
-          style={{ color: k === current ? MUTE : INK }} aria-current={k === current ? 'page' : undefined}>
-          {(ja ? c.nameJa : c.name)}{ja ? 'の' : ' · '}{ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en}
+      {secs.map((s) => (
+        <Link key={s.key} href={`/${locale}/latitude/places/${c.slug}/${s.key}`} className="underline-offset-4 hover:underline"
+          style={{ color: s.key === current ? MUTE : INK }} aria-current={s.key === current ? 'page' : undefined}>
+          {(ja ? c.nameJa : c.name)}{ja ? 'の' : ' · '}{ja ? s.label.ja : s.label.en}
         </Link>
       ))}
     </p>

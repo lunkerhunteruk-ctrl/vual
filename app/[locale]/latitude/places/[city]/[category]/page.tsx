@@ -2,38 +2,44 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
-import { CATEGORY_LABEL, CITIES, getCity, type PlaceCategory } from '@/lib/latitude-places';
+import { CITIES, getCity, getSection, sectionsOf, type PlaceSection } from '@/lib/latitude-places';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
-import { CATEGORY_ORDER, CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
 
 // 2026-10-30 「街×種類」のページ（例 /latitude/places/kanazawa/matcha）。検索の細かい言葉（金沢 抹茶 など）の入口。
 // 中身は街のページと同じ一覧から、その種類の店だけ。
+// 2026-11-01 その街ならではの産業も同じ形のページにする（例 /latitude/places/kanazawa/gold-leaf・/latitude/places/vienna/glass-porcelain-silver）。
+// 産業を1ページにまとめず産業ごとに分けるのは、「金沢 金箔」のように産業の名前で調べる人に、題と中身が1つの言葉でそろったページを返すため。
 
 export function generateStaticParams() {
-  return CITIES.flatMap((c) => CATEGORY_ORDER.filter((k) => c.places.some((x) => x.category === k)).map((k) => ({ city: c.slug, category: k })));
+  return CITIES.flatMap((c) => sectionsOf(c).map((s) => ({ city: c.slug, category: s.key })));
 }
 
-const isCategory = (k: string): k is PlaceCategory => (CATEGORY_ORDER as string[]).includes(k);
-
-function words(cityName: string, k: PlaceCategory, ja: boolean, who: string, n: number) {
-  const label = ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en.toLowerCase();
+function words(cityName: string, sec: PlaceSection, ja: boolean, who: string, n: number) {
+  const label = ja ? sec.label.ja : sec.label.en;
+  if (sec.kind === 'industry') {
+    return ja
+      ? { title: `${cityName}の${label}`, lead: `${sec.about?.ja ?? ''} ${who}がすすめる${n}か所。どれも編集部が実在と営業を確かめた所です。`.trim() }
+      : { title: `${label} in ${cityName}`, lead: `${sec.about?.en ?? ''} ${n} places, chosen by ${who} and checked by the editors.`.trim() };
+  }
   return ja
     ? { title: `${cityName}の${label}`, lead: `${who}がすすめる、${cityName}の${label}の店を${n}軒。どれも編集部が営業を確かめた所です。` }
-    : { title: `${CATEGORY_LABEL[k].en} in ${cityName}`, lead: `${n} places for ${label} in ${cityName}, chosen by ${who} and checked by the editors.` };
+    : { title: `${sec.label.en} in ${cityName}`, lead: `${n} places for ${label.toLowerCase()} in ${cityName}, chosen by ${who} and checked by the editors.` };
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; city: string; category: string }> }): Promise<Metadata> {
   const { locale, city, category } = await params;
   const c = getCity(city);
-  if (!c || !isCategory(category)) return { title: 'LATITUDE — VUAL' };
+  const sec = c && getSection(c, category);
+  if (!c || !sec) return { title: 'LATITUDE — VUAL' };
   const ja = locale === 'ja';
   const p = getPerson(c.person);
   const who = p ? (ja ? p.ja.name : p.name) : '';
-  const items = c.places.filter((x) => x.category === category);
-  const w = words(ja ? c.nameJa : c.name, category, ja, who, items.length);
-  const path = `/latitude/places/${c.slug}/${category}`;
+  const items = sec.items;
+  const w = words(ja ? c.nameJa : c.name, sec, ja, who, items.length);
+  const path = `/latitude/places/${c.slug}/${sec.key}`;
   return {
     title: `${w.title} — ${ja ? `${who}のおすすめ` : `where ${who} would go`} | LATITUDE`,
     description: `${w.lead} ${items.map((x) => (ja ? x.name : x.nameEn)).join(ja ? '、' : ', ')}`,
@@ -44,14 +50,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function LatitudeCityCategoryPage({ params }: { params: Promise<{ locale: string; city: string; category: string }> }) {
   const { locale, city, category } = await params;
   const c = getCity(city);
-  if (!c || !isCategory(category)) notFound();
-  const items = c.places.filter((x) => x.category === category);
-  if (!items.length) notFound();
+  const sec = c && getSection(c, category);
+  if (!c || !sec) notFound();
+  const items = sec.items;
   const ja = locale === 'ja';
   const p = getPerson(c.person);
   const who = p ? (ja ? p.ja.name : p.name) : '';
   const cityName = ja ? c.nameJa : c.name;
-  const w = words(cityName, category, ja, who, items.length);
+  const w = words(cityName, sec, ja, who, items.length);
   const room = roomsOpen() ? getRoom(c.person) : undefined;
 
   return (
@@ -69,9 +75,9 @@ export default async function LatitudeCityCategoryPage({ params }: { params: Pro
 
       <section className="px-4 pb-16 md:px-8 md:pb-24">
         <div className="mx-auto max-w-6xl">
-          <PlaceGroup c={c} k={category} items={items} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading={false} />
+          <PlaceGroup c={c} sec={sec} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading={false} />
           <div className="mt-16 flex flex-col gap-4">
-            <CategoryLinks c={c} locale={locale} ja={ja} current={category} />
+            <CategoryLinks c={c} locale={locale} ja={ja} current={sec.key} />
             <Link href={`/${locale}/latitude/places/${c.slug}`} className="text-[11px] uppercase tracking-[0.3em]" style={{ color: INK }}>
               {ja ? `${who}の${cityName}をすべて見る` : `All of ${who}'s ${cityName}`}&nbsp;&nbsp;→
             </Link>
@@ -90,7 +96,7 @@ export default async function LatitudeCityCategoryPage({ params }: { params: Pro
 
       {room && p && (
         <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds}
-          context={`The visitor is reading your guide page for ${CATEGORY_LABEL[category].en.toLowerCase()} in ${c.name} on the website. Answer about those places.`} />
+          context={`The visitor is reading your guide page for ${sec.label.en.toLowerCase()} in ${c.name} on the website. Answer about those places.`} />
       )}
     </div>
   );
