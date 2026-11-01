@@ -1,10 +1,10 @@
 import { INK, MUTE, SERIF, SectionLabel } from '@/components/latitude/Latitude';
-import type { CityPlace, LatitudeCity } from '@/lib/latitude-places';
+import { slugify, type CityPlace, type LatitudeCity } from '@/lib/latitude-places';
 
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
 
-export const placeAnchor = (x: CityPlace) => `place-${x.nameEn.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+export const placeAnchor = (x: CityPlace) => `place-${slugify(x.nameEn)}`;
 
 export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: string }) {
   const w = c.wear;
@@ -35,7 +35,8 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
             </figure>
           ))}
         </div>
-        <p className="mt-8 text-[12px]" style={{ color: MUTE }}>{ja ? '服はすべて VUAL のオリジナルです。' : 'All clothes are VUAL originals.'}</p>
+        {/* 実在ブランドの服で撮った号（vualOriginals: false）は出さない。ブランド名も書かない */}
+        {w.vualOriginals !== false && <p className="mt-8 text-[12px]" style={{ color: MUTE }}>{ja ? '服はすべて VUAL のオリジナルです。' : 'All clothes are VUAL originals.'}</p>}
       </div>
     </section>
   );

@@ -73,7 +73,7 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
         '@type': TYPE[x.category],
         name: ja ? x.name : x.nameEn,
         url: x.url,
-        address: { '@type': 'PostalAddress', streetAddress: x.address, addressLocality: c.name, addressCountry: 'JP' },
+        address: { '@type': 'PostalAddress', streetAddress: x.address, addressLocality: c.name, addressCountry: c.countryCode ?? 'JP' },
         description: ja ? x.what : x.whatEn,
       },
     })),

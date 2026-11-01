@@ -6,6 +6,7 @@ import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '
 import TravellerMap from '@/components/latitude/TravellerMap';
 import { mapTravellers } from '@/lib/latitude-map';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
+import { CITIES } from '@/lib/latitude-places';
 
 // 2026-10-30 LATITUDE の人のページ。号の番号をやめ、名前のある6人がそれぞれ旅する形にした（設定書は vault.vual.jp/docs/LATITUDE-CHARACTERS.md）。
 // 名前・住む街・旅をする理由・持ち物の印・その人の全部の1日。のちの部屋（3D）や会話の入口もここに置く
@@ -100,6 +101,16 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
           </div>
         ) : (
           <p className="mx-auto max-w-6xl px-4 text-[14px] md:px-8" style={{ color: MUTE }}>{ja ? '最初の1日を準備しています。' : 'Her first day is on its way.'}</p>
+        )}
+        {/* 2026-11-01 その人の街のページ（おすすめの店・回り方・何を着るか）へ */}
+        {CITIES.some((c) => c.person === p.slug) && (
+          <p className="mx-auto mt-8 flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-4 text-[11px] uppercase tracking-[0.3em] md:px-8">
+            {CITIES.filter((c) => c.person === p.slug).map((c) => (
+              <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+                {ja ? `${p.ja.name}の${c.nameJa}のおすすめ` : `Where ${p.name} would go in ${c.name}`}&nbsp;&nbsp;→
+              </Link>
+            ))}
+          </p>
         )}
       </section>
 
