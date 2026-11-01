@@ -28,7 +28,13 @@ export async function GET(req: NextRequest) {
     ? `https://api.elevenlabs.io/v1/convai/conversation/token?agent_id=${agent}`
     : `https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=${agent}`;
   const res = await fetch(url, { headers: { 'xi-api-key': KEY }, cache: 'no-store' });
-  if (!res.ok) return NextResponse.json({ error: 'upstream', status: res.status }, { status: 502 });
+  if (!res.ok) {
+    // ElevenLabs の断りの理由（code・message）だけを返す。鍵は返さない
+    const detail = await res.json().catch(() => null) as { detail?: { code?: string; message?: string } | string } | null;
+    const dd = detail?.detail; const why = typeof dd === 'string' ? dd.slice(0, 200) : { code: dd?.code, message: dd?.message?.slice(0, 200) };
+    console.error('latitude room upstream', res.status, JSON.stringify(why));
+    return NextResponse.json({ error: 'upstream', status: res.status, why }, { status: 502 });
+  }
   const d = await res.json();
 
   await logUse(kind, v, { mode, person: room.person, page: (sp.get('page') || '').slice(0, 80) });
