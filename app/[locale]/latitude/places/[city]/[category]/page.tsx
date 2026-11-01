@@ -37,8 +37,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: `${w.title} — ${ja ? `${who}のおすすめ` : `where ${who} would go`} | LATITUDE`,
     description: `${w.lead} ${items.map((x) => (ja ? x.name : x.nameEn)).join(ja ? '、' : ', ')}`,
-    // 試作の間は検索に出さない（公開を決めたら外す）
-    robots: { index: false, follow: false },
     alternates: { canonical: `/${ja ? 'ja' : 'en'}${path}`, languages: { en: `/en${path}`, ja: `/ja${path}`, 'x-default': `/en${path}` } },
   };
 }

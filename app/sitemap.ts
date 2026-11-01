@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { PEOPLE, liveIssues } from '@/lib/latitude';
+import { CITIES, areasOf } from '@/lib/latitude-places';
 
 // 公開予約の号が時刻を過ぎたら載るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -32,6 +33,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
+  // 2026-11-01 街のページ（店の一覧）。日本語と英語の両方が本体（canonical はそれぞれの言語）。街・種類・地区（店が4軒以上の地区だけ）
+  const placePaths = CITIES.flatMap((c) => [
+    `/latitude/places/${c.slug}`,
+    ...[...new Set(c.places.map((x) => x.category))].map((k) => `/latitude/places/${c.slug}/${k}`),
+    ...areasOf(c).map((a) => `/latitude/places/${c.slug}/area/${a.slug}`),
+  ]);
+  const places = placePaths.flatMap((path) =>
+    locales.map((locale) => ({
+      url: `${base}/${locale}${path}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+      alternates: { languages: Object.fromEntries(locales.map((l) => [l, `${base}/${l}${path}`])) },
+    }))
+  );
+
   return [
     ...people,
     ...routes.flatMap(({ path, priority, changeFrequency }) =>
@@ -48,5 +65,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }))
     ),
     ...issues,
+    ...places,
   ];
 }
