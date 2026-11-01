@@ -1,10 +1,12 @@
 [
  {
+  "id": "kanazawa-morihachi-matcha-cafe-higashi",
   "name": "森八 Matcha Cafe ひがし三番丁店",
   "nameEn": "Morihachi Matcha Cafe, Higashi",
   "category": "matcha",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-13-9",
   "url": "https://www.morihachi.co.jp/shop_higashi03",
   "what": "1625年創業の和菓子店・森八が、江戸時代の町家で営む茶寮。抹茶と上生菓子。",
@@ -14,11 +16,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-moroeya-nishi-chaya-karyo-miwai",
   "name": "諸江屋 西茶屋菓寮「味和以」",
   "nameEn": "Moroeya Nishi-chaya Karyo \"Miwai\"",
   "category": "matcha",
   "area": "にし茶屋街",
   "areaEn": "Nishi Chaya",
+  "areaKey": "nishi-chaya",
   "address": "金沢市野町2-26-1",
   "url": "https://moroeya.co.jp/",
   "what": "1849年創業の落雁の店・諸江屋の喫茶。干菓子や生菓子と抹茶、七輪で餅を焼くぜんざい。",
@@ -28,11 +32,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-kenjotei-cafe-kenrokuen",
   "name": "兼六園茶屋 見城亭 カフェ",
   "nameEn": "Kenjotei Café, Kenrokuen",
   "category": "matcha",
   "area": "兼六園まわり",
   "areaEn": "Kenrokuen",
+  "areaKey": "kenrokuen",
   "address": "金沢市兼六町1-19",
   "url": "https://kenrokuen.jp/cafe/",
   "what": "兼六園の桂坂口にある茶屋の1階のカフェ。老舗の茶店の抹茶と、諸江屋の生落雁。",
@@ -42,11 +48,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-salon-de-the-kawamura",
   "name": "サロン・ド・テ・カワムラ",
   "nameEn": "salon de thé kawamura",
   "category": "sweets",
   "area": "にし茶屋街",
   "areaEn": "Nishi Chaya",
+  "areaKey": "nishi-chaya",
   "address": "金沢市野町2-24-7",
   "url": "https://mame-kawamura.com/",
   "what": "甘納豆の専門店「甘納豆かわむら」の2階のサロン。豆を使ったパルフェとお茶。",
@@ -56,11 +64,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-oden-takasago",
   "name": "おでん高砂",
   "nameEn": "Oden Takasago",
   "category": "food",
   "area": "片町",
   "areaEn": "Katamachi",
+  "areaKey": "katamachi",
   "address": "金沢市片町1-3-29",
   "url": "http://oden-takasago.com/",
   "what": "1936年創業の金沢おでんの店。継ぎ足しの濃い出汁。",
@@ -70,11 +80,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-taishu-kappo-ozeki",
   "name": "大衆割烹 大関",
   "nameEn": "Taishu Kappo Ozeki",
   "category": "food",
   "area": "木倉町",
   "areaEn": "Kiguramachi",
+  "areaKey": "kiguramachi",
   "address": "金沢市木倉町1-5",
   "url": "https://kiguramachi.com/shop/132/",
   "what": "1957年創業の大衆割烹。おでん、だし巻き玉子、うなぎ。",
@@ -84,11 +96,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-ichiba-meshi-amatsubo",
   "name": "市場めし あまつぼ",
   "nameEn": "Ichiba Meshi Amatsubo",
   "category": "food",
   "area": "近江町市場",
   "areaEn": "Omicho Market",
+  "areaKey": "omicho-market",
   "address": "金沢市下堤町38-1",
   "url": "https://amatsubo.com/shop02/",
   "what": "近江町市場の海鮮食堂。海鮮丼と金沢おでん。朝8時から。",
@@ -98,11 +112,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-kaburaki-shokudo-nagamachi",
   "name": "鏑木食堂 武家屋敷店",
   "nameEn": "Kaburaki Shokudo, Nagamachi",
   "category": "food",
   "area": "長町武家屋敷跡",
   "areaEn": "Nagamachi",
+  "areaKey": "nagamachi",
   "address": "金沢市長町1-3-16",
   "url": "https://kaburaki.jp/shops/ippuku",
   "what": "九谷焼の窯元商家・鏑木商舗の敷地の食事処。市場の食材のおばんざいを九谷焼の器で出す。",
@@ -112,11 +128,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-kanazawa-ya-coffee",
   "name": "金澤屋珈琲店 本店",
   "nameEn": "Kanazawa-ya Coffee",
   "category": "coffee",
   "area": "金沢城公園",
   "areaEn": "Kanazawa Castle Park",
+  "areaKey": "kanazawa-castle-park",
   "address": "金沢市丸の内5-26",
   "url": "https://www.krf.co.jp/kanazawa/",
   "what": "金沢城公園の黒門口の横の町家。自家焙煎のネルドリップ。",
@@ -126,12 +144,17 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-tachibana-coffee",
   "name": "橘珈琲店",
   "nameEn": "Tachibana Coffee",
   "category": "coffee",
   "area": "石引",
   "areaEn": "Ishibiki",
+  "areaKey": "ishibiki",
   "address": "金沢市石引4-5-1",
+  "lat": 36.55711,
+  "lng": 136.668277,
+  "coordsSource": "openstreetmap-nominatim:name:node/8509728323",
   "url": "https://tachicoffee.thebase.in/",
   "what": "石引のスペシャルティコーヒーの店。ミルクも砂糖も付かない。",
   "whatEn": "A specialty coffee shop in Ishibiki. No milk, no sugar.",
@@ -140,11 +163,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-kanazawa-choemon",
   "name": "金沢長右衛門",
   "nameEn": "Kanazawa Choemon",
   "category": "craft",
   "area": "香林坊",
   "areaEn": "Korinbo",
+  "areaKey": "korinbo",
   "address": "金沢市香林坊2-12-10",
   "url": "http://www.choemon.com/",
   "what": "1879年創業の九谷焼の窯元・上出長右衛門窯の直営店。割烹の器が中心。",
@@ -154,11 +179,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-on-la-cru",
   "name": "on la CRU.",
   "nameEn": "on la CRU.",
   "category": "craft",
   "area": "大額",
   "areaEn": "Ohnuka",
+  "areaKey": "ohnuka",
   "address": "金沢市大額町ル1-1",
   "url": "https://on-la-cru.com/",
   "what": "全国の作家の器と生活の道具の店。",
@@ -168,12 +195,17 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-nosaku",
   "name": "能作（金沢漆器）",
   "nameEn": "Nosaku (Kanazawa lacquer)",
   "category": "craft",
   "area": "広坂",
   "areaEn": "Hirosaka",
+  "areaKey": "hirosaka",
   "address": "金沢市広坂1-1-60",
+  "lat": 36.561826,
+  "lng": 136.656254,
+  "coordsSource": "openstreetmap-nominatim:name:node/8557308046",
   "url": "https://nosaku1780.jp/",
   "what": "1780年創業の漆器の店。金沢漆器・輪島塗・山中塗。修理も受ける。",
   "whatEn": "A lacquerware shop since 1780: Kanazawa, Wajima and Yamanaka lacquer. They repair it too.",
@@ -182,11 +214,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-nabe-kappo-taro",
   "name": "なべ・割烹 太郎",
   "nameEn": "Nabe Kappo Taro",
   "category": "food",
   "area": "主計町",
   "areaEn": "Kazuemachi",
+  "areaKey": "kazuemachi",
   "address": "金沢市主計町2-7",
   "url": "https://nabe-taro.com/",
   "what": "芸妓だった先代が始めた鍋の店。秘伝の出汁で鯛や牡蠣などを炊く寄せ鍋。全室個室で、仲居さんが取り分けてくれる。予約が前提。",
@@ -196,11 +230,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-ichirin",
   "name": "いち凛",
   "nameEn": "Ichirin",
   "category": "food",
   "area": "主計町",
   "areaEn": "Kazuemachi",
+  "areaKey": "kazuemachi",
   "address": "金沢市主計町2-6",
   "url": "https://www.ichi-rin.com/",
   "what": "アメリカ人の版画家クリフトン・カーフが晩年を過ごした町家を改修した日本料理店。目の前が浅野川。旬のコース。",
@@ -210,11 +246,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-mayuzuki-kuragarizaka",
   "name": "まゆ月 くらがり坂",
   "nameEn": "Mayuzuki Kuragarizaka",
   "category": "coffee",
   "area": "主計町",
   "areaEn": "Kazuemachi",
+  "areaKey": "kazuemachi",
   "address": "金沢市主計町3-19",
   "url": "https://mayuzuki-kuragarizaka.jp/",
   "what": "暗がり坂の下のお茶屋。昼はカフェ、夜は酒。予約のみの営業。",
@@ -224,11 +262,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-kureha",
   "name": "久連波",
   "nameEn": "Kureha",
   "category": "matcha",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-24-3",
   "url": "https://higashi-kureha.com/",
   "what": "老舗の呉服屋が営む店。1階は加賀友禅や工芸のギャラリー、2階は通りを見渡す座敷のカフェで、上生菓子と抹茶。",
@@ -238,11 +278,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-issho",
   "name": "一笑",
   "nameEn": "Issho",
   "category": "sweets",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-26-13",
   "url": "https://issho.kagaboucha.com/",
   "what": "加賀の製茶場が営む、ほうじ茶だけの喫茶とギャラリー。元お茶屋の町家に中庭がある。",
@@ -252,11 +294,13 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-enishira",
   "name": "縁煌",
   "nameEn": "Enishira",
   "category": "craft",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-13-10",
   "url": "https://enishira.co.jp/",
   "what": "北陸ゆかりの作家の工芸と器のセレクトショップ。2階は月替わりの個展。",
@@ -266,12 +310,14 @@
   "verifiedAt": "2026-10-30"
  },
  {
+  "id": "kanazawa-imai-kinpaku",
   "name": "今井金箔 本店",
   "nameEn": "Imai Kinpaku (main shop)",
   "category": "local",
   "industry": "gold-leaf",
   "area": "幸町",
   "areaEn": "Saiwaimachi",
+  "areaKey": "saiwaimachi",
   "address": "金沢市幸町7-3",
   "url": "https://www.kinpaku.co.jp/",
   "what": "1898年（明治31年）創業の、金箔を作って売る会社の本店。金箔貼りの体験ができ、ユネスコ無形文化遺産に登録された縁付金箔の工程の一部を、日によって店で見られる。日・月・祝は休み。",
@@ -281,12 +327,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-kanazawa-katani",
   "name": "かなざわカタニ",
   "nameEn": "Kanazawa Katani",
   "category": "local",
   "industry": "gold-leaf",
   "area": "尾張町",
   "areaEn": "Owaricho",
+  "areaKey": "owaricho",
   "address": "金沢市下新町6-33",
   "url": "https://www.k-katani.com/",
   "what": "1899年（明治32年）創業の金箔メーカー、カタニ産業の金沢の店。工芸用の金箔・銀箔、食用金箔「華ふぶき」などを扱い、金箔貼りの体験ができる。",
@@ -296,12 +344,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-kanazawa-yasue-gold-leaf-museum",
   "name": "金沢市立安江金箔工芸館",
   "nameEn": "Kanazawa Yasue Gold Leaf Museum",
   "category": "local",
   "industry": "gold-leaf",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-3-10",
   "url": "https://www.kanazawa-museum.jp/kinpaku/",
   "what": "元金箔職人の安江孝明が私財で集めた、金箔の美術品と道具を元にした市立の館。国内でただ一つの金箔の博物館として、2010年秋にいまの東山へ移った。火曜休み。",
@@ -311,13 +361,18 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-kinpakuya-sakuda",
   "name": "金箔屋さくだ 本店",
   "nameEn": "Kinpakuya Sakuda (main shop)",
   "category": "local",
   "industry": "gold-leaf",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-3-27",
+  "lat": 36.573849,
+  "lng": 136.666315,
+  "coordsSource": "openstreetmap-nominatim:name:node/4849389030",
   "url": "https://goldleaf-sakuda.jp/",
   "what": "1919年（大正8年）創業の金箔の製造元。職人が箔を打つ仕事を見られ、金箔の工芸品を扱う。",
   "whatEn": "A gold-leaf maker founded in 1919. You can watch the leaf being beaten, and buy what the workshop makes.",
@@ -326,12 +381,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-hakuza-hikarigura",
   "name": "箔座 ひかり藏",
   "nameEn": "Hakuza Hikarigura",
   "category": "local",
   "industry": "gold-leaf",
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
+  "areaKey": "higashi-chaya",
   "address": "金沢市東山1-13-17",
   "url": "https://www.hakuza.co.jp/",
   "what": "ひがし茶屋街の金箔の専門店。純金とプラチナを合わせた箔の器や小物を扱い、中庭に金箔張りの蔵がある。",
@@ -341,12 +398,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-kaga-yuzen-kimono-center",
   "name": "加賀友禅会館",
   "nameEn": "Kaga Yuzen Kimono Center",
   "category": "local",
   "industry": "kaga-yuzen",
   "area": "兼六園まわり",
   "areaEn": "Kenrokuen",
+  "areaKey": "kenrokuen",
   "address": "金沢市小将町8-8",
   "url": "https://www.kagayuzen.or.jp/",
   "what": "協同組合加賀染振興協会の館。加賀友禅の新作を見せるミュージアム「そめりあ」と、染めの体験コーナーがあり、友禅の小物も売る。9時〜17時、水曜休み（祝日は開く）。",
@@ -356,12 +415,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-akaneya-archive-gallery",
   "name": "茜やアーカイブギャラリー",
   "nameEn": "Akaneya Archive Gallery",
   "category": "local",
   "industry": "kaga-yuzen",
   "area": "香林坊",
   "areaEn": "Korinbo",
+  "areaKey": "korinbo",
   "address": "金沢市里見町53-1",
   "url": "https://akaneya-web.com/archive/",
   "what": "2025年に創業120年を迎えた加賀友禅の工房「茜や」（奥田染色）のギャラリー。明治期の町家をいまも工房として使い、制作の工程を見せ、彩色の体験ができる。土日10時〜16時、ほかの日は予約で開ける。金沢21世紀美術館から歩いて5分。",
@@ -371,12 +432,14 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "id": "kanazawa-maida-senga-kogei",
   "name": "加賀友禅 毎田染画工芸",
   "nameEn": "Maida Senga Kogei (Kaga yuzen studio)",
   "category": "local",
   "industry": "kaga-yuzen",
   "area": "本多町",
   "areaEn": "Hondamachi",
+  "areaKey": "hondamachi",
   "address": "金沢市本多町3-9-19",
   "url": "https://www.maida-yuzen.com/",
   "what": "加賀友禅作家の毎田健治と毎田仁嗣の工房。工房見学を受け付け、着物の誂えや、手描きの友禅のピアスや手ぬぐいなどの小物も扱う。10時〜17時、不定休。",

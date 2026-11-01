@@ -13,6 +13,15 @@ import edinburgh from './latitude-places/edinburgh.json';
 import reykjavik from './latitude-places/reykjavik.json';
 import vienna from './latitude-places/vienna.json';
 import haworth from './latitude-places/haworth.json';
+// 2026-11-01 街の中の地区の一覧（key は地区のページの URL と同じ。parent は大きい地区の key）
+import kanazawaAreas from './latitude-places/areas/kanazawa.json';
+import londonAreas from './latitude-places/areas/london.json';
+import copenhagenAreas from './latitude-places/areas/copenhagen.json';
+import milanAreas from './latitude-places/areas/milan.json';
+import edinburghAreas from './latitude-places/areas/edinburgh.json';
+import reykjavikAreas from './latitude-places/areas/reykjavik.json';
+import viennaAreas from './latitude-places/areas/vienna.json';
+import haworthAreas from './latitude-places/areas/haworth.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
 
 // 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
@@ -34,7 +43,16 @@ export type CityPlace = {
   noteEn: string;
   verifiedAt: string; // 編集部が営業を確かめた日
   ad?: boolean;
+  // 2026-11-01 号が増えても店を見分けられるように足した項目（前からの項目の名前と意味は変えない。vault.vual.jp も同じ JSON を読む）
+  id: string; // 全部の街で重ならない店の番号（例 kanazawa-morihachi-matcha-cafe-higashi）。一度付けたら変えない・使い回さない
+  areaKey: string; // 街の areas の key（地区のページの URL と同じ）
+  lat?: number; // 公式の住所から確かに分かった時だけ（推測で入れない）
+  lng?: number;
+  coordsSource?: string; // 座標の出どころ（例 openstreetmap-nominatim:address:node/123）
 };
+
+// 街の中の地区。key は地区のページの URL（/latitude/places/<街>/area/<key>）と同じ。parent は、その地区を含む大きい地区の key（はっきりしている時だけ）
+export type CityArea = { key: string; en: string; ja: string; parent?: string };
 
 // その街ならではの産業（例 金沢の金箔）。key は URL になる（種類の key と 'area' は使わない）
 export type CityIndustry = { key: string; en: string; ja: string; about: string; aboutJa: string };
@@ -56,6 +74,7 @@ export type LatitudeCity = {
   // 種類の見出しの横に置く号の場面（「凛の1日から」と添える。店の行には置かない＝その店の写真に見せない）
   categoryImages?: Partial<Record<PlaceCategory, { file: string; alt: string; altJa: string }>>;
   places: CityPlace[];
+  areas: CityArea[]; // その街の地区の一覧（店の areaKey が指す先）
   industries?: CityIndustry[]; // 並べる順。街のページでは飲食より先に出す（その街らしさが先に来るように）
   // この季節にこの街で何を着るか（号の服＝VUAL オリジナル。旅人の一言つき）。2026-10-30 ユーザー指定：AI のチャットにない「旅の服」を見せる
   wear?: {
@@ -102,6 +121,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'crab.jpg', alt: 'From Rin\'s day: crab at a wooden counter', altJa: '凛の1日から：木のカウンターで蟹' },
     },
     places: kanazawa as CityPlace[],
+    areas: kanazawaAreas as CityArea[],
     industries: [
       { key: "gold-leaf", en: "Gold leaf", ja: "金箔", about: "Kanazawa makes over 99% of Japan's gold leaf, according to Ishikawa Prefecture. Gold the size of a ten-yen coin is beaten out to about the area of four tatami mats.", aboutJa: "石川県によると、全国の金箔の99％以上が金沢で作られる。10円玉ほどの金を、畳4枚ほどの広さまで打ち延ばす。" },
       { key: "kaga-yuzen", en: "Kaga yuzen dyeing", ja: "加賀友禅", about: "Kaga yuzen is Kanazawa's hand-painted silk dyeing, a nationally designated traditional craft of Ishikawa, known for patterns drawn from flowers, plants and landscapes in many colours. Working dye studios still operate in the city.", aboutJa: "金沢の、絹に手で模様を描いて染める技法。石川県の国指定の伝統的工芸品で、草花や風景など自然を描いた模様と、多くの色を使うのが特徴。市内にはいまも染めの工房がある。" },
@@ -172,6 +192,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'breakfast.jpg', alt: "From Maeve's day: tea and a full breakfast at a café", altJa: 'メイヴの1日から：カフェで紅茶と朝ごはん' },
     },
     places: london as CityPlace[],
+    areas: londonAreas as CityArea[],
     industries: [
       { key: "antiquarian-books", en: "Antiquarian books and bookshops", ja: "古書と本屋", about: "London has long been the centre of British publishing and the rare-book trade. Cecil Court, Bloomsbury and Mayfair still hold dealers with long histories, such as Sotheran's (1761) and Maggs (1850s).", aboutJa: "ロンドンは長くイギリスの出版と古書の商いの中心だった。セシル・コート、ブルームズベリー、メイフェアには、1761年からのソザランズや1850年代からのマッグズのような古い店がいまも残る。" },
       { key: "bespoke-tailoring", en: "Bespoke tailoring and London makers", ja: "仕立てと手仕事の店", about: "Savile Row in Mayfair has been the street of bespoke tailors since the 19th century, and nearby old makers of hats and umbrellas still make and repair by hand on their own premises.", aboutJa: "メイフェアのサヴィル・ロウは19世紀から仕立て屋の通り。近くには、帽子や傘をいまも店の工房で手で作り、直す古い店が残る。" },
@@ -234,6 +255,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'lunch.jpg', alt: "From Klára's day: smørrebrød at lunch", altJa: 'クラーラの1日から：昼のスモーブロー' },
     },
     places: copenhagen as CityPlace[],
+    areas: copenhagenAreas as CityArea[],
     industries: [
       { key: "danish-modern-furniture", en: "Danish modern furniture", ja: "デンマーク・モダンの家具", about: "Danish modern furniture took shape in Copenhagen: Kaare Klint began teaching furniture design at the Royal Danish Academy in 1924, and from 1927 to 1966 the city's Cabinetmakers' Guild held a yearly exhibition where architects and cabinetmakers showed new pieces together. The city still has the makers' showrooms and dealers in original pieces from that time.", aboutJa: "デンマーク・モダンの家具は、コペンハーゲンで形になった。1924年に王立芸術アカデミーでカーレ・クリントが家具の授業を始め、1927年から1966年まで、市の家具職人組合が毎年展示会を開いて、建築家と職人が新しい家具を一緒に見せた。いまも街には、作り手の展示室と、当時の家具を扱う店が残る。" },
     ],
@@ -294,6 +316,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'risotto.jpg', alt: "From Hélène's day: risotto alla milanese", altJa: 'エレーヌの1日から：ミラノ風リゾット' },
     },
     places: milan as CityPlace[],
+    areas: milanAreas as CityArea[],
     industries: [
       { key: "artistic-perfumery", en: "Artistic perfumery", ja: "香水", about: "Milan hosts Esxence, the international fair of artistic perfumery, every year (its 16th edition was in June 2026). The city has several perfumeries that specialise in niche houses.", aboutJa: "ミラノでは毎年、ニッチな香水の国際見本市「エクセンス」がひらかれる（2026年6月で16回目）。ニッチな香水を専門に扱う店もいくつもある。" },
       { key: "design-furniture", en: "Design furniture", ja: "デザインの家具", about: "Every April Milan holds the Salone del Mobile furniture fair and Design Week, and galleries and showrooms across the city sell 20th-century and contemporary furniture and objects all year.", aboutJa: "ミラノでは毎年4月に家具見本市サローネ・デル・モービレとデザインウィークがひらかれる。街のギャラリーや店は、20世紀からいまの家具と器を一年中売っている。" },
@@ -349,6 +372,7 @@ export const CITIES: LatitudeCity[] = [
       { file: 'close.jpg', alt: 'Liv walking down a stone close at night', altJa: '夜の石の小路を下りるリヴ' },
     ],
     places: edinburgh as CityPlace[],
+    areas: edinburghAreas as CityArea[],
     industries: [
       { key: "scottish-textiles", en: "Tweed, knitwear & kiltmaking", ja: "ツイード・ニット・キルト", about: "Scotland's tweed, tartan and knitwear are known worldwide, and Edinburgh still has kiltmakers, tailors and knitters who cut, sew and knit in the city — one kiltmaker has been here since 1868.", aboutJa: "スコットランドのツイードやタータン、ニットは世界に知られる。エディンバラにはいまも、街の中で布を裁ち、縫い、編むキルト職人や仕立て屋、ニットの工房がある。1868年から続くキルトの店もある。" },
       { key: "whisky", en: "Scotch whisky", ja: "スコッチ・ウイスキー", about: "Leith, Edinburgh's port, was long a centre for storing, blending and bottling Scotch whisky; at one point it is said to have had about a hundred bonded warehouses. Independent bottlers and a new distillery on the quay keep the trade in the city.", aboutJa: "エディンバラの港町リースは、長くスコッチ・ウイスキーを寝かせ、混ぜ合わせ、瓶に詰める場所だった。一時は保税倉庫が100ほどあったとされる。いまも独立系のボトラーや、岸壁の新しい蒸留所がその仕事を続ける。" },
@@ -412,6 +436,7 @@ export const CITIES: LatitudeCity[] = [
       { file: 'harpa-floor.jpg', alt: 'Solveig sitting on the floor inside Harpa', altJa: 'ハルパの中で床に座るソルヴェイ' },
     ],
     places: reykjavik as CityPlace[],
+    areas: reykjavikAreas as CityArea[],
     industries: [
       { key: "record-shops", en: "Record shops", ja: "レコード店", about: "Reykjavík's music scene, from the Sugarcubes onward, is served by small record shops that are often also labels and venues. Smekkleysa (Bad Taste) has run its label since 1986 and 12 Tónar since 1998.", aboutJa: "シュガーキューブス以来のレイキャビクの音楽を、小さなレコード店が支える。店がレーベルやライブの場を兼ねる事が多い。スメクレイサは1986年から、12トゥナルは1998年からレーベルを続ける。" },
       { key: "icelandic-wool", en: "Icelandic wool", ja: "アイスランドの羊毛", about: "Icelandic sheep grow a two-layer fleece, a long water-shedding outer coat and a soft inner one, spun into lopi yarn. The lopapeysa, the round-yoke sweater knitted from it, is still hand-knitted in Iceland.", aboutJa: "アイスランドの羊の毛は、雨をはじく長い外毛と、やわらかい内毛の二層になっている。これを紡いだ糸がロピで、丸ヨークのセーター、ロパペイサは今も国内で手編みされる。" },
@@ -468,6 +493,7 @@ export const CITIES: LatitudeCity[] = [
       { file: 'bar.jpg', alt: 'Klára in a small bar under a wall of onyx', altJa: 'オニキスの壁の下、小さなバーのクラーラ' },
     ],
     places: vienna as CityPlace[],
+    areas: viennaAreas as CityArea[],
     industries: [
       { key: "glass-porcelain-silver", en: "Glass, porcelain and silver", ja: "ガラス・磁器・銀器", about: "Vienna's old court suppliers still make glass, porcelain and silver by hand in the city. Designers of the Wiener Werkstätte era such as Josef Hoffmann and Adolf Loos designed pieces for these workshops.", aboutJa: "宮廷に納めていた工房が、いまも市内でガラス・磁器・銀器を手で作る。ヨーゼフ・ホフマンやアドルフ・ロースなど、ウィーン工房の時代の建築家がこうした工房のために器をデザインした。" },
       { key: "leather-hats-shoes", en: "Leather goods, hats and shoes", ja: "革小物・帽子・靴", about: "Small family workshops in Vienna have made shoes, hats and leather goods by hand for generations, some since the time they supplied the imperial court.", aboutJa: "ウィーンでは、靴・帽子・革小物を手で作る家族の工房が何代も続く。宮廷に納めていた時代からの店もある。" },
@@ -531,6 +557,7 @@ export const CITIES: LatitudeCity[] = [
       { file: 'fire.jpg', alt: 'Maeve by the fire at the inn', altJa: '宿の暖炉のそばのメイヴ' },
     ],
     places: haworth as CityPlace[],
+    areas: haworthAreas as CityArea[],
     industries: [
       { key: "bookshops", en: "Bookshops", ja: "本屋", about: "Haworth is the village where the Brontë sisters lived and wrote. The literary visitors who come for them keep independent bookshops going on Main Street, among them a second-hand dealer trading since 1988.", aboutJa: "ブロンテ姉妹が暮らし、小説を書いた村。姉妹を目当てに来る人に支えられ、メイン・ストリートに個人の本屋が続く。1988年からの古本屋もある。" },
       { key: "brewing", en: "Brewing", ja: "ビール醸造", about: "Timothy Taylor's has brewed cask ale in Keighley, where the Worth Valley line begins, since 1858, and at Knowle Spring since 1863. The family brewery's pubs run up the valley to Haworth's Main Street.", aboutJa: "ワース・ヴァレー線の起点キースリーで、ティモシー・テイラーが1858年からカスクエールを造る。1863年からはノウル・スプリングの醸造所で。この醸造所のパブが、谷を上ってハワースのメイン・ストリートまで続く。" },

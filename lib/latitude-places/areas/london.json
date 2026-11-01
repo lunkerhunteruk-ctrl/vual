@@ -1,0 +1,52 @@
+[
+ {
+  "key": "south-bank",
+  "en": "South Bank",
+  "ja": "サウスバンク"
+ },
+ {
+  "key": "clerkenwell",
+  "en": "Clerkenwell",
+  "ja": "クラーケンウェル"
+ },
+ {
+  "key": "bermondsey",
+  "en": "Bermondsey",
+  "ja": "バーモンジー"
+ },
+ {
+  "key": "shoreditch",
+  "en": "Shoreditch",
+  "ja": "ショーディッチ"
+ },
+ {
+  "key": "holborn",
+  "en": "Holborn",
+  "ja": "ホルボーン"
+ },
+ {
+  "key": "hackney",
+  "en": "Hackney",
+  "ja": "ハックニー"
+ },
+ {
+  "key": "covent-garden",
+  "en": "Covent Garden",
+  "ja": "コヴェント・ガーデン"
+ },
+ {
+  "key": "mayfair",
+  "en": "Mayfair",
+  "ja": "メイフェア"
+ },
+ {
+  "key": "bloomsbury",
+  "en": "Bloomsbury",
+  "ja": "ブルームズベリー"
+ },
+ {
+  "key": "st-james-s",
+  "en": "St James's",
+  "ja": "セント・ジェームズ"
+ }
+]
