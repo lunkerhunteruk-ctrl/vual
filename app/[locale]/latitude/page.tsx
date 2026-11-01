@@ -59,7 +59,8 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         {/* 2026-10-30 6人それぞれの旅。名前からその人のページへ */}
         <nav className="mt-10">
           <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>People</p>
-          <ul className="mt-3 flex flex-wrap gap-x-7 gap-y-2 text-[12px] uppercase tracking-[0.3em]">
+          {/* 2026-11-01 ユーザー：スマホで6人が1行に収まるように（字を少し小さく・字間を詰め、幅いっぱいに均等に並べる） */}
+          <ul className="mt-3 flex flex-nowrap justify-between text-[10px] uppercase tracking-[0.16em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-2 md:text-[12px] md:tracking-[0.3em]">
             {PEOPLE.map((p) => (
               <li key={p.slug}>
                 <Link href={`/${locale}/latitude/people/${p.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
