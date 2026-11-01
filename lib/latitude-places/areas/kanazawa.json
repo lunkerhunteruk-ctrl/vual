@@ -1,0 +1,82 @@
+[
+ {
+  "key": "higashi-chaya",
+  "en": "Higashi Chaya",
+  "ja": "ひがし茶屋街"
+ },
+ {
+  "key": "nishi-chaya",
+  "en": "Nishi Chaya",
+  "ja": "にし茶屋街"
+ },
+ {
+  "key": "kenrokuen",
+  "en": "Kenrokuen",
+  "ja": "兼六園まわり"
+ },
+ {
+  "key": "katamachi",
+  "en": "Katamachi",
+  "ja": "片町"
+ },
+ {
+  "key": "kiguramachi",
+  "en": "Kiguramachi",
+  "ja": "木倉町"
+ },
+ {
+  "key": "omicho-market",
+  "en": "Omicho Market",
+  "ja": "近江町市場"
+ },
+ {
+  "key": "nagamachi",
+  "en": "Nagamachi",
+  "ja": "長町武家屋敷跡"
+ },
+ {
+  "key": "kanazawa-castle-park",
+  "en": "Kanazawa Castle Park",
+  "ja": "金沢城公園"
+ },
+ {
+  "key": "ishibiki",
+  "en": "Ishibiki",
+  "ja": "石引"
+ },
+ {
+  "key": "korinbo",
+  "en": "Korinbo",
+  "ja": "香林坊"
+ },
+ {
+  "key": "ohnuka",
+  "en": "Ohnuka",
+  "ja": "大額"
+ },
+ {
+  "key": "hirosaka",
+  "en": "Hirosaka",
+  "ja": "広坂"
+ },
+ {
+  "key": "kazuemachi",
+  "en": "Kazuemachi",
+  "ja": "主計町"
+ },
+ {
+  "key": "saiwaimachi",
+  "en": "Saiwaimachi",
+  "ja": "幸町"
+ },
+ {
+  "key": "owaricho",
+  "en": "Owaricho",
+  "ja": "尾張町"
+ },
+ {
+  "key": "hondamachi",
+  "en": "Hondamachi",
+  "ja": "本多町"
+ }
+]

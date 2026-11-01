@@ -1,0 +1,37 @@
+[
+ {
+  "key": "porta-venezia",
+  "en": "Porta Venezia",
+  "ja": "ポルタ・ヴェネツィア"
+ },
+ {
+  "key": "porta-romana",
+  "en": "Porta Romana",
+  "ja": "ポルタ・ロマーナ"
+ },
+ {
+  "key": "navigli",
+  "en": "Navigli",
+  "ja": "ナヴィリ"
+ },
+ {
+  "key": "duomo",
+  "en": "Duomo",
+  "ja": "ドゥオーモ"
+ },
+ {
+  "key": "cinque-vie",
+  "en": "Cinque Vie",
+  "ja": "チンクエ・ヴィエ"
+ },
+ {
+  "key": "quadrilatero",
+  "en": "Quadrilatero",
+  "ja": "クアドリラテロ（モンテナポレオーネ）"
+ },
+ {
+  "key": "tortona",
+  "en": "Tortona",
+  "ja": "トルトーナ"
+ }
+]

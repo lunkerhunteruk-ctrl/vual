@@ -1,0 +1,23 @@
+[
+ {
+  "key": "main-street",
+  "en": "Main Street",
+  "ja": "メイン・ストリート",
+  "parent": "haworth"
+ },
+ {
+  "key": "keighley",
+  "en": "Keighley",
+  "ja": "キースリー"
+ },
+ {
+  "key": "haworth",
+  "en": "Haworth",
+  "ja": "ハワース"
+ },
+ {
+  "key": "oxenhope",
+  "en": "Oxenhope",
+  "ja": "オクセンホープ"
+ }
+]

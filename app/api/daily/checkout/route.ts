@@ -2,9 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { CREDIT_PACKS } from '@/lib/daily/credits';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-01-28.clover',
-});
+// 鍵の無い環境（プレビューのビルド）でも組み立てられるよう、使う時に作る（他の Stripe の API と同じ形）
+function getStripeClient(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) throw new Error('STRIPE_SECRET_KEY is not configured');
+  return new Stripe(secretKey, { apiVersion: '2026-01-28.clover' });
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     const origin = request.headers.get('origin') || 'https://vual.jp';
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripeClient().checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'],
       customer_email: email || undefined,
