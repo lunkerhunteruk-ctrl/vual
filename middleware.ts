@@ -1,7 +1,8 @@
 import createIntlMiddleware from 'next-intl/middleware';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, type NextFetchEvent } from 'next/server';
 import { locales, defaultLocale } from './i18n';
 import { extractSubdomain, STORE_SLUG_HEADER, STORE_SLUG_COOKIE, FALLBACK_STORE_SLUG } from './lib/store-resolver';
+import { aiCrawlerName, isAiCrawlPath, logAiCrawl } from './lib/ai-crawl-log';
 
 const intlMiddleware = createIntlMiddleware({
   locales,
@@ -12,9 +13,17 @@ const intlMiddleware = createIntlMiddleware({
 const WARDROBE_HOSTS = ['vwardrobe.com', 'www.vwardrobe.com', 'v-wardrobe.com', 'www.v-wardrobe.com'];
 const VWARDROBE_ADMIN_HOSTS = ['admin.vwardrobe.com'];
 
-export default function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest, event: NextFetchEvent) {
   const host = request.headers.get('host') || '';
   const pathname = request.nextUrl.pathname;
+
+  // [ai-crawl 2026-11-01] AI のクローラが LATITUDE・llms.txt・robots.txt・sitemap.xml を読んだ記録（応答は待たせない）。lib/ai-crawl-log.ts
+  if (isAiCrawlPath(host, pathname)) {
+    const bot = aiCrawlerName(request.headers.get('user-agent'));
+    if (bot) event.waitUntil(logAiCrawl(bot, pathname, request.method));
+  }
+  // 記録のためだけに matcher へ足したファイルは、ここで素通しする（言語の振り分けにかけない）
+  if (/^\/(llms(-full)?\.txt|robots\.txt|sitemap\.xml)$/.test(pathname)) return NextResponse.next();
 
   // vwardrobe.com: redirect root locale paths → /[locale]/wardrobe
   const cleanHost = host.split(':')[0];
@@ -76,6 +85,11 @@ export default function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/',
+    // [ai-crawl 2026-11-01] 下の行は「.」の付くパスを外すので、記録したいファイルだけ足す
+    '/llms.txt',
+    '/llms-full.txt',
+    '/robots.txt',
+    '/sitemap.xml',
     '/(en|ja)/:path*',
     '/((?!api|_next|_vercel|auth|.*\\..*).*)',
   ],
