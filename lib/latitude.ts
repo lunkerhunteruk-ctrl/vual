@@ -403,6 +403,51 @@ export const ISSUES: LatitudeIssue[] = [
     previewToken: '9WXITq75DC00xzbo', // TOTEME 用
     filmOnly: true,
   },
+  {
+    // 2026-11-01 金沢（凛・2026年11月26日・時雨）。ドキュメンタリー回。1日＝1コーデ（LOOK1）。全部 VUAL オリジナルの服。
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_kanazawa_doc.py・kanazawa/colours.json）と同じ
+    slug: 'kanazawa',
+    person: 'rin',
+    month: 'November',
+    seo: {
+      title: "What to wear in Kanazawa in November — from Tsuzumi-mon to Higashi Chaya in the rain | LATITUDE 36.6° N",
+      description: "Kanazawa in November is around 16°C by day and 8°C at night, with showers that come and go. One day in a long hooded olive coat, a speckled turtleneck and white barrel trousers, from the station gate to an inn by the Asano river.",
+      month: "November",
+      weather: "Kanazawa in November averages 15.9°C by day and 8.1°C at night, with about 250 mm of rain (1991–2020). Late in the month it is colder, and short showers come and go.",
+      wore: "A long olive double-faced coat with a hood, over a black-and-ecru turtleneck and white barrel trousers; leopard-print square-toe ballet flats with black socks, and a large dark brown suede drawstring bag.",
+      season: "In October a knit and a light jacket are enough. In December it drops to about 10°C by day and the first snow comes; wear boots.",
+    },
+    no: 8,
+    latitude: '36.6° N',
+    city: 'Kanazawa',
+    published: '2026-11',
+    line: 'One November day in Kanazawa, from the morning train to a wet coat hung up at the inn.',
+    chapters: [
+      { no: 'I', place: 'Tsuzumi-mon', time: '08:50' },
+      { no: 'II', place: 'Omicho', time: '12:00' },
+      { no: 'III', place: 'Higashi Chaya', time: '16:10' },
+      { no: 'IV', place: 'Ryokan', time: '19:30' },
+    ],
+    colours: [
+      { name: 'Kinpaku', hex: '#c4a058' },
+      { name: 'Kobako', hex: '#bc5632' },
+      { name: 'Tatami', hex: '#bea674' },
+      { name: 'Kimusuko', hex: '#60361e' },
+      { name: 'Hood Olive', hex: '#766a44' },
+      { name: 'Water Mirror', hex: '#3a4244' },
+      { name: 'Asano Dusk', hex: '#364a68' },
+    ],
+    notesTitle: 'Gold, lattice, rain',
+    notes: [
+      'Almost all of the gold leaf made in Japan is beaten in Kanazawa, to about one ten-thousandth of a millimetre. Held up to the light, it lets a bluish glow through.',
+      'On the east bank of the Asano river, the teahouse quarter of Higashi Chaya was opened with the licence of the Kaga domain in 1820. Its fronts are lined with kimusuko, fine wooden lattices: from inside you can see the street, from the street you cannot see in.',
+      'In late November the rain here comes and goes in short, cold showers. They call it shigure.',
+    ],
+    pages: pages(14, [11]), // 2026-11-01 ドキュメンタリー回のカルーセル v2（14枚。2–3 緯度と地図、6–7 兼六園のイラスト、11は号の7色を油絵の具で1色ずつ塗る）
+    streamId: 'c03d7c0ec63e91c20f1fc9ffac98a9bb', // v11＋粒子11（ユーザーが Final Cut で仕上げた版に、いつもの粒子）。前の v11（粒子なし）は cdc8a017c3dc0978c07a0af9704e3e8a
+    capColour: '#bc5632', // Kobako
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
