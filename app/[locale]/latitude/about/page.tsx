@@ -35,7 +35,7 @@ const T = {
   ja: {
     title: 'LATITUDE について — VUAL',
     description: 'LATITUDE は、日本とイギリスの出版・制作スタジオ VUAL が出している、旅の連作です。',
-    label: '奥付',
+    label: 'この雑誌について',
     lead: 'LATITUDE は、VUAL が出している旅の連作です。',
     rows: [
       ['出版', 'VUAL（LUFIS Co., Ltd.）'],
