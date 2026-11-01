@@ -9,6 +9,8 @@ import path from 'path';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { CITIES } from '@/lib/latitude-places';
+import { NowInCity } from '@/components/latitude/NowInCity';
+import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
 import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
@@ -99,6 +101,9 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <LatitudeFigure value={issue.latitude} />
         </h1>
         <p className="mt-6 text-[13px] uppercase tracking-[0.5em] md:mt-8 md:text-[15px]">{issue.city}</p>
+        {/* 2026-11-01 この街のいま（号の月の話ではなく、見ている今の時刻・気温・天気。取れない時は出ない） */}
+        <NowInCity place={issue.slug} coords={city?.coords} ja={ja} className="mt-6"
+          name={ja ? (city?.nameJa ?? ISSUE_CITY_JA[issue.slug] ?? issue.city) : (ISSUE_CITY_EN[issue.slug] ?? issue.city)} />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
           {issue.line}
         </p>

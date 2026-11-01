@@ -9,6 +9,7 @@ import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
 import { CityRoute, CityWear } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
+import { NowInCity } from '@/components/latitude/NowInCity';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
 // のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。店の写真は載せない。
@@ -62,6 +63,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
           {ja ? c.nameJa : c.name}
         </h1>
         <p className="mt-5 text-[12px] uppercase tracking-[0.4em]">{ja ? c.countryJa : c.country}</p>
+        {/* 2026-11-01 その街のいま（時刻・気温・天気。Open-Meteo を30分ためる。取れない時は出ない） */}
+        <NowInCity place={c.issue ?? c.slug} coords={c.coords} name={ja ? c.nameJa : c.name} ja={ja} className="mt-7" />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
 

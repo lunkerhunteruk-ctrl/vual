@@ -41,6 +41,7 @@ export type LatitudeCity = {
   countryCode?: string; // 検索エンジン向けの住所の国（ISO 3166-1）。無ければ 'JP'
   person: string; // その街を旅した人（PEOPLE の slug）
   issue?: string; // 公開した号の slug（まだなら無し）
+  coords?: [number, number]; // 2026-11-01「その街のいま」の天気を取る座標。無ければ lib/latitude-map.ts の PLACES（issue か slug）
   intro: string;
   introJa: string;
   images: { file: string; alt: string; altJa: string }[]; // public/latitude/places/<slug>/ の号の場面
