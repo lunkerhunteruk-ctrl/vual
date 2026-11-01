@@ -63,11 +63,11 @@ export const PEOPLE: LatitudePerson[] = [
         '行き先は、香りの元になる植物の、いちばん良い季節で決める。'] } },
   { slug: 'rin', name: 'Rin', home: 'Tokyo, Japan', age: 23,
     line: 'On her days off she goes to see handwork and food, in Japan and across Asia.',
-    about: ['Rin lives in Tokyo and is training as a stylist. On her days off she travels in Japan and across Asia to see handwork and to eat.',
+    about: ['Rin works at a gallery for ceramics in Tokyo. On her days off she travels in Japan and across Asia to see where tableware is made, and the places that serve food on it.',
       'She chooses where to go by what can only be eaten there, and what can only be made there. Usually alone, usually one night.'],
     ja: { name: '凛', home: '東京',
       line: '休みの日に、日本とアジアの街へ、手仕事と食べ物を見に行く。',
-      about: ['東京に住む、スタイリストの見習い。休みの日に、日本とアジアの街へ、手仕事を見て、食べに行く。',
+      about: ['東京の、器のギャラリーで働いている。休みの日に、日本とアジアの街へ、器が作られる所と、それで食べる店を見に行く。',
         '行き先は、その土地でしか食べられない物と、その土地でしか作られていない物で決める。たいてい一人で、一泊だけ。'] } },
 ];
 
