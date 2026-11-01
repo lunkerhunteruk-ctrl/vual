@@ -478,7 +478,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Off Kärntner Strasse, Adolf Loos fitted out a bar of about 27 square metres in 1908. Onyx above the door glows the colour of honey, and mirrors on the walls make the room look larger.',
     ],
     pages: pages(16, [3, 8, 15]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_vienna_mag.py。3は駅のホームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、8はマティス風の線のイラストが動く、15は号の6色を油絵の具で1色ずつ塗る）
-    streamId: '624819ff55b7dca5c93722271b4f3f0a', // v20＋粒子11（ユーザーが Final Cut で仕上げた版）
+    streamId: '76104aca2fd8841228cc41d66b2a23b5', // v20＋粒子11・横組みの白い題字（2026-11-01）。前の縦組みの版は 624819ff55b7dca5c93722271b4f3f0a
     capColour: '#583224', // Mahogany
     credits: ['Map data © OpenStreetMap contributors'],
   },
@@ -523,7 +523,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Top Withens, a ruined farmhouse at about 420 metres on the moor, is 6.6 km from the village by the path. A plaque put up by the Brontë Society in 1964 says only that it “has been associated with” Wuthering Heights.',
     ],
     pages: pages(16, [2, 11, 12]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_haworth_mag.py。2は駅のホームにすりガラスの時刻表が浮かぶ、6–7 緯度と歩いた道の地図、11は線の4コマが切り替わる、12は号の6色を油絵の具で1色ずつ塗る）
-    streamId: 'ce8d0cff8d84d4d7af280ba591eda82c', // v4e＋粒子11
+    streamId: 'a104e5372df0ed4d5da49b50125825a7', // v4e＋粒子11・横組みの白い題字（2026-11-01）。前の版は ce8d0cff8d84d4d7af280ba591eda82c
     capColour: '#68221e', // Moquette
     credits: ['Map data © OpenStreetMap contributors'],
   },

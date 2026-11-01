@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ISSUES, assetUrl, getIssue, isLive, issueNo, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
+import { ISSUES, assetUrl, getIssue, isLive, issueNo, issuesOf, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
 import { stepIntoPages } from '@/lib/latitude-recipe';
 import { JsonLd, issueJsonLd } from '@/lib/latitude-publication';
 import { existsSync } from 'fs';
@@ -109,6 +109,22 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
             </li>
           ))}
         </ol>
+        {/* 2026-11-01 ユーザー：旅人が誰で、ほかのどの号に出ているかを分かりやすく。小さな名前のリンクだけでは気づきにくい */}
+        {person && (
+          <Link href={`/${locale}/latitude/people/${person.slug}`} className="group mt-10 flex max-w-xl items-center gap-4 border-t pt-6" style={{ borderColor: 'rgba(30,29,27,0.15)', color: INK }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/latitude/people/${person.slug}.jpg`} alt={who} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
+            <span className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? 'この日を旅した人' : 'The traveller'}</span>
+              <span className="text-[18px] leading-snug" style={{ fontFamily: SERIF }}>
+                {who}{ja ? `（${person.ja.home}・${person.age}歳）` : `, ${person.home}, ${person.age}`}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.25em] underline-offset-4 group-hover:underline">
+                {ja ? `${who}のほかの1日を見る` : `See all of ${who}'s days`}&nbsp;&nbsp;→
+              </span>
+            </span>
+          </Link>
+        )}
       </header>
 
       {/* リール */}
@@ -190,6 +206,39 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           </div>
         </section>
       )}
+
+      {/* 2026-11-01 同じ旅人のほかの号（表紙を並べる） */}
+      {person && (() => {
+        const others = issuesOf(person.slug).filter((o) => o.slug !== issue.slug);
+        return (
+          <section className="px-4 pb-16 md:px-8 md:pb-24">
+            <div className="mx-auto max-w-6xl">
+              <SectionLabel>{ja ? `${who}のほかの1日` : `${who}'s other days`}</SectionLabel>
+              {others.length ? (
+                <div className="flex snap-x gap-4 overflow-x-auto md:gap-8" style={{ scrollbarWidth: 'thin' }}>
+                  {others.map((o) => (
+                    <Link key={o.slug} href={`/${locale}/latitude/${o.slug}`} className="group block w-[44vw] shrink-0 snap-start md:w-[18vw] md:max-w-[220px]" style={{ color: INK }}>
+                      <div className="overflow-hidden" style={{ aspectRatio: '9 / 16' }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={assetUrl(o, 'cover.jpg')} alt={`${person.name} in ${o.city}, ${o.month} — LATITUDE ${o.latitude}`} loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                      </div>
+                      <p className="mt-3 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{o.month}</p>
+                      <p className="mt-1 text-[22px] leading-tight" style={{ fontFamily: SERIF }}>{o.latitude}</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.35em]">{o.city}</p>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-[14px]" style={{ color: MUTE }}>{ja ? `${who}の旅は、この1日から。` : `This is ${who}'s first day.`}</p>
+              )}
+              <Link href={`/${locale}/latitude/people/${person.slug}`} className="mt-6 inline-block text-[11px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+                {ja ? `${who}について` : `About ${who}`}&nbsp;&nbsp;→
+              </Link>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* 2026-11-01 旅人と話す（部屋・通話）と、街の案内 */}
       {room && person && (
