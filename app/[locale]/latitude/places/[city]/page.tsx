@@ -25,7 +25,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const ja = locale === 'ja';
   const p = getPerson(c.person);
   const who = p ? (ja ? p.ja.name : p.name) : '';
-  const title = ja ? `${c.nameJa} — ${who}のおすすめ | LATITUDE` : `${c.name} — where ${who} would go | LATITUDE`;
+  // 2026-11-01 ユーザー了承：号のページは「何を着るか」、街のページは「どこへ行くか・何を見つけるか」。題にその街ならではの産業を入れる
+  const inds = (c.industries || []).slice(0, 2);
+  const indEn = inds.map((x) => x.en).join(' and ');
+  const indJa = inds.map((x) => x.ja).join('と');
+  const title = ja
+    ? `${c.nameJa}で行く所${indJa ? `——${indJa}の店と、食べる所` : ''}｜${who}のおすすめ | LATITUDE`
+    : `Where to go in ${c.name}${indEn ? ` — ${indEn}, and where to eat` : ''} | ${who}'s list, LATITUDE`;
   const description = ja ? c.introJa : c.intro;
   const path = `/latitude/places/${c.slug}`;
   return {
