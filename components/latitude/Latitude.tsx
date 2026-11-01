@@ -196,7 +196,7 @@ export function PublishedBy({ locale }: { locale: string }) {
       {/* 2026-10-30 奥付（出版元・編集・号の作り方）へ */}
       &nbsp;&nbsp;·&nbsp;&nbsp;
       <Link href={`/${locale}/latitude/about`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
-        {locale === 'ja' ? '奥付' : 'About'}
+        {locale === 'ja' ? 'この雑誌について' : 'About'}
       </Link>
     </p>
   );
