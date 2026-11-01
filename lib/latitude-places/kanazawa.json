@@ -311,6 +311,36 @@
   "verifiedAt": "2026-11-01"
  },
  {
+  "name": "金箔屋さくだ 本店",
+  "nameEn": "Kinpakuya Sakuda (main shop)",
+  "category": "local",
+  "industry": "gold-leaf",
+  "area": "ひがし茶屋街",
+  "areaEn": "Higashi Chaya",
+  "address": "金沢市東山1-3-27",
+  "url": "https://goldleaf-sakuda.jp/",
+  "what": "1919年（大正8年）創業の金箔の製造元。職人が箔を打つ仕事を見られ、金箔の工芸品を扱う。",
+  "whatEn": "A gold-leaf maker founded in 1919. You can watch the leaf being beaten, and buy what the workshop makes.",
+  "note": "箔を打つ音が聞ける。買う前に、まず見る。",
+  "noteEn": "You can hear the leaf being beaten. Watch first, buy later.",
+  "verifiedAt": "2026-11-01"
+ },
+ {
+  "name": "箔座 ひかり藏",
+  "nameEn": "Hakuza Hikarigura",
+  "category": "local",
+  "industry": "gold-leaf",
+  "area": "ひがし茶屋街",
+  "areaEn": "Higashi Chaya",
+  "address": "金沢市東山1-13-17",
+  "url": "https://www.hakuza.co.jp/",
+  "what": "ひがし茶屋街の金箔の専門店。純金とプラチナを合わせた箔の器や小物を扱い、中庭に金箔張りの蔵がある。",
+  "whatEn": "A gold-leaf house in Higashi Chaya, with tableware and small things in its own gold-and-platinum leaf, and a storehouse in the courtyard covered in leaf.",
+  "note": "中庭の金の蔵は、曇りの日のほうがきれい。",
+  "noteEn": "The gold storehouse in the courtyard looks better on a grey day.",
+  "verifiedAt": "2026-11-01"
+ },
+ {
   "name": "加賀友禅会館",
   "nameEn": "Kaga Yuzen Kimono Center",
   "category": "local",
