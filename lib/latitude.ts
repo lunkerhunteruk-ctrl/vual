@@ -413,7 +413,7 @@ export const ISSUES: LatitudeIssue[] = [
     line: 'One November day in Kanazawa, from the morning train to a wet coat hung up at the inn.',
     chapters: [
       { no: 'I', place: 'Tsuzumi-mon', time: '08:50' },
-      { no: 'II', place: 'Omicho', time: '12:00' },
+      { no: 'II', place: 'Omicho', time: '12:30' },
       { no: 'III', place: 'Higashi Chaya', time: '16:10' },
       { no: 'IV', place: 'Ryokan', time: '19:30' },
     ],
@@ -459,7 +459,7 @@ export const ISSUES: LatitudeIssue[] = [
     published: '2026-11',
     line: 'One November day in Vienna, from the night train to a hotel room, by way of gold, bolts and onyx.',
     chapters: [
-      { no: 'I', place: 'Wien Hauptbahnhof', time: '08:40' },
+      { no: 'I', place: 'Gumpendorfer Strasse', time: '09:00' },
       { no: 'II', place: 'Ringstrasse', time: '16:00' },
       { no: 'III', place: 'Kärntner Durchgang', time: '21:40' },
     ],
@@ -504,10 +504,9 @@ export const ISSUES: LatitudeIssue[] = [
     published: '2026-11',
     line: 'One November day in Haworth, from the valley train across the moor to a fire at the inn.',
     chapters: [
-      { no: 'I', place: 'Haworth Station', time: '09:05' },
-      { no: 'II', place: 'The Churchyard', time: '09:50' },
-      { no: 'III', place: 'The Moor', time: '12:00' },
-      { no: 'IV', place: 'The Inn', time: '15:55' },
+      { no: 'I', place: 'Churchyard', time: '09:50' },
+      { no: 'II', place: 'The Moor', time: '12:30' },
+      { no: 'III', place: 'The Inn', time: '16:00' },
     ],
     colours: [
       { name: 'Moquette', hex: '#68221e' },
