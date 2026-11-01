@@ -6,6 +6,9 @@ import { stepIntoPages } from '@/lib/latitude-recipe';
 import { JsonLd, issueJsonLd } from '@/lib/latitude-publication';
 import { existsSync } from 'fs';
 import path from 'path';
+import AskTraveller from '@/components/latitude/AskTraveller';
+import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
+import { CITIES } from '@/lib/latitude-places';
 import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
@@ -64,6 +67,12 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
   const idx = list.indexOf(issue);
   const prev = list[idx - 1];
   const next = list[idx + 1];
+  // 2026-11-01 号の旅人に部屋（会話・通話）があれば、号のページからも話しかけられる。街のページがあれば案内も
+  const person = personOf(issue);
+  const room = person && roomsOpen() ? getRoom(person.slug) : undefined;
+  const city = CITIES.find((c) => c.issue === issue.slug || (c.person === issue.person && c.name.toLowerCase() === issue.city.toLowerCase()));
+  const ja = locale === 'ja';
+  const who = person ? (ja ? person.ja.name : person.name) : '';
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
@@ -182,6 +191,22 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         </section>
       )}
 
+      {/* 2026-11-01 旅人と話す（部屋・通話）と、街の案内 */}
+      {room && person && (
+        <section className="px-4 pb-16 md:px-8 md:pb-24">
+          <div className="mx-auto flex max-w-6xl flex-wrap gap-3">
+            <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+              {ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`}&nbsp;&nbsp;→
+            </Link>
+            {city && (
+              <Link href={`/${locale}/latitude/places/${city.slug}`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, color: INK }}>
+                {ja ? `${who}の${city.nameJa}のおすすめ` : `Where ${who} would go in ${city.name}`}&nbsp;&nbsp;→
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* 2026-10-30 次の号をメールで（Substack） */}
       <section className="px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-6xl">
@@ -243,6 +268,11 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           </div>
         </div>
       </footer>
+
+      {room && person && (
+        <AskTraveller locale={locale} slug={person.slug} name={who} callSeconds={room.callSeconds}
+          context={`The visitor is reading your LATITUDE issue about ${issue.city} on the website.`} />
+      )}
     </div>
   );
 }

@@ -57,7 +57,7 @@ export const ROOMS: LatitudeRoom[] = [
     month: 'November',
     textAgentId: 'agent_7901m65xnakse66s2ve1330w12av',
     callAgentId: 'agent_9601m65swfnhe8ztv973cy31vrar',
-    callSeconds: 300,
+    callSeconds: 180,
     callsPerDay: 2,
     textPerDay: 40,
     cam: TOKYO_HOME,

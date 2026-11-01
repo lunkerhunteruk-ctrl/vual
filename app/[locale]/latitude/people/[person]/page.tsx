@@ -38,7 +38,7 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
   if (!p) notFound();
   const days = issuesOf(p.slug);
   const ja = locale === 'ja';
-  const t = ja ? { ...p.ja, age: `${p.age}歳` } : { name: p.name, home: p.home, line: p.line, about: p.about, mark: p.mark, age: String(p.age) };
+  const t = ja ? { ...p.ja, age: `${p.age}歳` } : { name: p.name, home: p.home, line: p.line, about: p.about, age: String(p.age) };
   // 大きな名前：日本語でも凛は漢字、ほかの5人は綴りのまま大きく出し、読みを小さく添える
   const big = ja && p.slug === 'rin' ? p.ja.name : p.name;
 
@@ -75,11 +75,6 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
             {t.about.map((a, k) => (
               <p key={k} className="text-[16px] leading-[1.8] md:text-[17px]">{a}</p>
             ))}
-            <p className="text-[14px] leading-relaxed" style={{ color: MUTE }}>
-              <span className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{ja ? 'いつも持っている物' : 'Always with her'}</span>
-              <br />
-              {t.mark}
-            </p>
           </div>
         </div>
       </section>

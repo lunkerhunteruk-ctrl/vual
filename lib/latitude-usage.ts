@@ -32,8 +32,16 @@ export async function remainingToday(v: { vid: string; ipHash: string }) {
   return Math.max(0, DAILY_LIMIT - Math.max(byVid, byIp));
 }
 
-// 1回ぶんを記録（kind: stepinto＝生成した／open＝体験の画面を開いた）
-export async function logUse(kind: 'stepinto' | 'open', v: { vid: string; ipHash: string }, data: Record<string, unknown>) {
+// 今日もう何回使ったか（部屋の通話・文字など、kind ごと）
+export async function usedToday(kind: string, v: { vid: string; ipHash: string }) {
+  const names = await listToday(kind);
+  const byVid = names.filter((n) => n.startsWith(`${v.vid}__`)).length;
+  const byIp = names.filter((n) => n.split('__')[1] === v.ipHash).length;
+  return Math.max(byVid, byIp);
+}
+
+// 1回ぶんを記録（kind: stepinto＝生成した／open＝体験の画面を開いた／room-text・room-call＝部屋に入った・通話した／track/<e>＝街のページと会話の記録）
+export async function logUse(kind: 'stepinto' | 'open' | `room-${'text' | 'call'}/${string}` | `track/${string}`, v: { vid: string; ipHash: string }, data: Record<string, unknown>) {
   const s = createServerClient();
   if (!s) return;
   const name = `${kind}/${today()}/${v.vid}__${v.ipHash}__${Date.now()}.json`;
