@@ -319,6 +319,7 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     slug: 'faro',
+    recipe: 'data/latitude-recipes/faro/recipe.json',
     person: 'solveig',
     month: 'November',
     seo: {
@@ -394,6 +395,7 @@ export const ISSUES: LatitudeIssue[] = [
     // 2026-11-01 金沢（凛・2026年11月26日・時雨）。ドキュメンタリー回。1日＝1コーデ（LOOK1）。全部 VUAL オリジナルの服。
     // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_kanazawa_doc.py・kanazawa/colours.json）と同じ
     slug: 'kanazawa',
+    recipe: 'data/latitude-recipes/kanazawa/recipe.json',
     person: 'rin',
     month: 'November',
     seo: {
@@ -433,6 +435,97 @@ export const ISSUES: LatitudeIssue[] = [
     pages: pages(14, [11]), // 2026-11-01 ドキュメンタリー回のカルーセル v2（14枚。2–3 緯度と地図、6–7 兼六園のイラスト、11は号の7色を油絵の具で1色ずつ塗る）
     streamId: 'c03d7c0ec63e91c20f1fc9ffac98a9bb', // v11＋粒子11（ユーザーが Final Cut で仕上げた版に、いつもの粒子）。前の v11（粒子なし）は cdc8a017c3dc0978c07a0af9704e3e8a
     capColour: '#bc5632', // Kobako
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
+  {
+    // 2026-11-01 ウィーン（Klára・2026年11月19日・木・灰色の1日）。ドキュメンタリー回。1日＝1コーデ（LOOK1：茶色のフード付きシアリングのコート）。全部 VUAL オリジナルの服。
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_vienna_doc.py・vienna/colours.json）と同じ。
+    // 気温は GeoSphere Austria の Wien Innere Stadt（5925）の月の値（klima-v2-1m）から 1991–2020 を平均した物
+    slug: 'vienna',
+    recipe: 'data/latitude-recipes/vienna/recipe.json',
+    person: 'klara',
+    month: 'November',
+    seo: {
+      title: "What to wear in Vienna in November — from the night train to a bar of onyx and mirrors | LATITUDE 48.2° N",
+      description: "Vienna in November is around 9°C by day and 5°C at night, under grey skies. One day in a long hooded shearling coat, a croc-embossed skirt and platform boots, from the Hauptbahnhof to a small bar off Kärntner Strasse.",
+      month: "November",
+      weather: "Vienna in November averages 9.5°C by day and 5.0°C at night, with about 40 mm of rain (Innere Stadt, 1991–2020). Skies are often grey, and the sun sets soon after four.",
+      wore: "A long dark brown hooded shearling coat, closed from hem to chin, over an off-white sleeveless turtleneck and a dark brown croc-embossed skirt that narrows at the hem; black tights, black suede platform ankle boots and an olive-brown suede top-handle bag.",
+      season: "In October a knit and a light coat are enough; it is about 15°C by day. In December it drops to about 5°C by day; add gloves and a hat.",
+    },
+    no: 9,
+    latitude: '48.2° N',
+    city: 'Vienna',
+    published: '2026-11',
+    line: 'One November day in Vienna, from the night train to a hotel room, by way of gold, bolts and onyx.',
+    chapters: [
+      { no: 'I', place: 'Wien Hauptbahnhof', time: '08:40' },
+      { no: 'II', place: 'Ringstrasse', time: '16:00' },
+      { no: 'III', place: 'Kärntner Durchgang', time: '21:40' },
+    ],
+    colours: [
+      { name: 'Wagner Green', hex: '#688258' },
+      { name: 'Sunflower Gold', hex: '#b89248' },
+      { name: 'Cipollino', hex: '#808470' },
+      { name: 'Hofburg Verdigris', hex: '#7aa692' },
+      { name: 'Onyx Honey', hex: '#cc8e34' },
+      { name: 'Mahogany', hex: '#583224' },
+    ],
+    notesTitle: 'Gold, bolts, onyx',
+    notes: [
+      'The two pavilions on Karlsplatz were built in 1898–99 by Otto Wagner as entrances to the city railway: green iron, marble panels and gold sunflowers. When the U-Bahn was dug beneath them they were taken down, and in 1977 they were put back, about one and a half metres higher.',
+      "Wagner's Postal Savings Bank, begun in 1904, is faced with thin plates of marble, held by rows of bolts with aluminium heads.",
+      'Off Kärntner Strasse, Adolf Loos fitted out a bar of about 27 square metres in 1908. Onyx above the door glows the colour of honey, and mirrors on the walls make the room look larger.',
+    ],
+    pages: pages(15, [6, 13]), // 2026-11-01 ドキュメンタリー回のカルーセル v2（15枚。2–3 緯度と地図、6はマティス風の線のイラストが動く、13は号の6色を油絵の具で1色ずつ塗る）
+    streamId: '624819ff55b7dca5c93722271b4f3f0a', // v20＋粒子11（ユーザーが Final Cut で仕上げた版）
+    capColour: '#583224', // Mahogany
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
+  {
+    // 2026-11-01 ハワース（Maeve・2026年11月の土曜・くもりで強い西風）。ドキュメンタリー回。1日＝1コーデ（黒の立ち襟レザーロングコート）。全部 VUAL オリジナルの服。
+    // 章と色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_haworth_doc.py・haworth/colours.json。色はページ12の塗る順）と同じ。
+    // 気温は Met Office の近い観測所 Bingley No 2 の 1991–2020 平年値
+    slug: 'haworth',
+    recipe: 'data/latitude-recipes/haworth/recipe.json',
+    person: 'maeve',
+    month: 'November',
+    seo: {
+      title: "What to wear in Haworth in November — from the steam train to Top Withens in the west wind | LATITUDE 53.8° N",
+      description: "Haworth in November is around 8°C by day and 4°C at night, with wind across the moor. One day in a long black leather coat, a grey shirt and taupe flannel trousers, from the station to Top Withens and a fire at the inn.",
+      month: "November",
+      weather: "At Bingley, the nearest long record, November averages 8.5°C by day and 3.5°C at night, with about 110 mm of rain (1991–2020). On the moor the wind is stronger, and the light goes around four.",
+      wore: "A long black leather coat with a stand collar, buttoned to the top, over a grey cashmere shirt and taupe flannel barrel trousers; black patent penny loafers with black socks, and an olive-brown suede top-handle bag.",
+      season: "In October a jacket over a knit is enough; it is about 12°C by day. In December it is about 6°C by day; add a scarf and gloves for the moor.",
+    },
+    no: 10,
+    latitude: '53.8° N',
+    city: 'Haworth',
+    published: '2026-11',
+    line: 'One November day in Haworth, from the valley train across the moor to a fire at the inn.',
+    chapters: [
+      { no: 'I', place: 'Haworth Station', time: '09:05' },
+      { no: 'II', place: 'The Churchyard', time: '09:50' },
+      { no: 'III', place: 'The Moor', time: '12:00' },
+      { no: 'IV', place: 'The Inn', time: '15:55' },
+    ],
+    colours: [
+      { name: 'Moquette', hex: '#68221e' },
+      { name: 'Millstone', hex: '#766e60' },
+      { name: 'Wet Slate', hex: '#42515f' },
+      { name: 'Moor Heather', hex: '#705642' },
+      { name: 'Pennine Sky', hex: '#8d9ba3' },
+      { name: 'Inn Window', hex: '#ce883e' },
+    ],
+    notesTitle: 'A line, a parsonage, a ruin',
+    notes: [
+      'The branch line up the Worth valley from Keighley was closed in 1962. Volunteers reopened it in June 1968 and still run it; Haworth station is its headquarters.',
+      'At the top of the steep cobbled Main Street, beside the church, stands the parsonage where the Brontë family lived from 1820. It has been a museum since 1928.',
+      'Top Withens, a ruined farmhouse at about 420 metres on the moor, is 6.6 km from the village by the path. A plaque put up by the Brontë Society in 1964 says only that it “has been associated with” Wuthering Heights.',
+    ],
+    pages: pages(15, [10, 12]), // 2026-11-01 ドキュメンタリー回のカルーセル（15枚。6–7 緯度と歩いた道の地図、10は線の4コマが切り替わる、12は号の6色を油絵の具で1色ずつ塗る）
+    streamId: 'ce8d0cff8d84d4d7af280ba591eda82c', // v4e＋粒子11
+    capColour: '#68221e', // Moquette
     credits: ['Map data © OpenStreetMap contributors'],
   },
 ];
