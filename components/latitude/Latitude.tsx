@@ -209,8 +209,9 @@ export function NewsletterSignup({ locale }: { locale: string }) {
   return (
     <div className="max-w-xl">
       <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>The next day, by email</p>
+      {/* 2026-11-02 Substack を Issues と Notes の2つの欄に分けた。新しく登録した人は両方を受け取り、Notes は止められる（前の登録者は Issues だけ） */}
       <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
-        {ja ? <>次の1日が公開された時だけ、メールを1通。<br />それ以外は送りません。</> : 'One email when a new day is published. Nothing else.'}
+        {ja ? <>新しい1日が公開された時と、その作り方のノート。<br />ノートは止められます。</> : 'A new day when it is published, and a short note on how it was made. You can turn the notes off.'}
       </p>
       <a
         href={NEWSLETTER_URL}
