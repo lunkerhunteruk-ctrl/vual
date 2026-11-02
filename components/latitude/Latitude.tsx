@@ -204,6 +204,8 @@ export function PublishedBy({ locale }: { locale: string }) {
 
 // 2026-10-30 次の号をメールで受け取る（Substack の LATITUDE）。メールアドレスはサイトで預からず、Substack の登録ページへ案内する
 export const NEWSLETTER_URL = 'https://sachiokawasaki.substack.com/subscribe';
+// 2026-11-02 日本語のページの登録は Substack の「ノート（日本語）」の欄から（その欄のページに登録の入口がある）
+export const NEWSLETTER_URL_JA = 'https://sachiokawasaki.substack.com/s/7a4';
 export function NewsletterSignup({ locale }: { locale: string }) {
   const ja = locale === 'ja';
   return (
@@ -214,7 +216,7 @@ export function NewsletterSignup({ locale }: { locale: string }) {
         {ja ? <>新しい1日が公開された時と、その作り方のノート。<br />ノートは止められます。</> : 'A new day when it is published, and a short note on how it was made. You can turn the notes off.'}
       </p>
       <a
-        href={NEWSLETTER_URL}
+        href={ja ? NEWSLETTER_URL_JA : NEWSLETTER_URL}
         target="_blank"
         rel="noopener"
         className="mt-5 inline-block border px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"

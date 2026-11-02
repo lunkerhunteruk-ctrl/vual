@@ -8,8 +8,11 @@ const nextConfig: NextConfig = {
   // 行き先が変わってもここだけ直す（一時的な転送 307 にしてある）
   async redirects() {
     return [
+      // 2026-11-02 ブラウザの第一言語が日本語 → Substack の「ノート（日本語）」の欄、それ以外 → 英語（サイトの既定は ja なので middleware には任せない）
+      { source: '/notes', has: [{ type: 'header', key: 'accept-language', value: '^\\s*ja.*' }], destination: 'https://sachiokawasaki.substack.com/s/7a4', permanent: false },
       { source: '/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
-      { source: '/:locale(en|ja)/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
+      { source: '/ja/notes', destination: 'https://sachiokawasaki.substack.com/s/7a4', permanent: false },
+      { source: '/en/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
     ];
   },
   // LATITUDE のレシピ（服・場面の写真）を体験の API と号のページから読めるように
