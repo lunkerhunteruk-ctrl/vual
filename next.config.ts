@@ -4,6 +4,14 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 const nextConfig: NextConfig = {
+  // 2026-11-02 LATITUDE の制作ノート（Substack）への短いアドレス。Instagram の画像・投稿文に書く（押せないので覚えやすい形）。
+  // 行き先が変わってもここだけ直す（一時的な転送 307 にしてある）
+  async redirects() {
+    return [
+      { source: '/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
+      { source: '/:locale(en|ja)/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
+    ];
+  },
   // LATITUDE のレシピ（服・場面の写真）を体験の API と号のページから読めるように
   outputFileTracingIncludes: {
     '/api/latitude/step-into': ['./data/latitude-recipes/**/*'],
