@@ -69,6 +69,18 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             ))}
           </ul>
         </nav>
+        {/* 2026-11-02 制作ノート（Substack）への入口。プロフィールのリンク（vual.jp/latitude）から来た人が迷わず行けるよう上に。
+            People と同じ組み方（小さな見出し＋一行）にして、宣伝の帯にしない。行き先は短いアドレス /notes（next.config の転送） */}
+        <div className="mt-8">
+          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>Notes</p>
+          <a href="/notes" target="_blank" rel="noopener" className="mt-2 inline-block underline-offset-4 hover:underline" style={{ color: INK }}>
+            {locale === 'ja' ? (
+              <span className="text-[14px] md:text-[15px]" style={{ fontFamily: MINCHO }}>一号ずつ、どう作ったか。&nbsp;→</span>
+            ) : (
+              <span className="text-[16px] italic md:text-[18px]" style={{ fontFamily: SERIF }}>How each issue is made.&nbsp;&nbsp;→</span>
+            )}
+          </a>
+        </div>
       </header>
       <main className="flex snap-x gap-4 overflow-x-auto px-4 pb-28 md:gap-8 md:px-8 lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))]" style={{ scrollbarWidth: 'thin' }}>
         {liveIssues().map((i) => (
