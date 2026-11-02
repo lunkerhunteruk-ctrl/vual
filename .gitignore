@@ -50,3 +50,7 @@ public/lp/videos/*.mp4
 
 # LATITUDE のリール動画（本番は Cloudflare Stream から出す。手元の確認用だけ）
 /public/latitude/*/reel.mp4
+
+# 2026-11-02 号のページ画像・動画は R2 から配信（scripts/latitude-assets-upload.mjs）。新しい号のページは git に入れない（og.jpg だけ入れる）
+/public/latitude/*/pages/
+/public/latitude/*/cover.jpg

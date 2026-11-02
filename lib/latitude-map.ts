@@ -22,6 +22,7 @@ export const PLACES: Record<string, [number, number]> = {
   vienna: [48.21, 16.37],
   kanazawa: [36.56, 136.66],
   haworth: [53.83, -1.96],
+  reggio: [38.11, 15.65],
 };
 
 // 6人の住む街（person slug → [緯度, 経度]）
