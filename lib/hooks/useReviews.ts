@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { authFetch } from '@/lib/auth-fetch';
 
 type ReviewStatus = 'pending' | 'approved' | 'rejected';
 
@@ -57,7 +58,7 @@ export function useReviews(options: UseReviewsOptions = {}): UseReviewsReturn {
         params.set('status', options.status);
       }
 
-      const response = await fetch(`/api/reviews?${params.toString()}`);
+      const response = await authFetch(`/api/reviews?${params.toString()}`);
       const data = await response.json();
 
       if (data.reviews) {
@@ -90,7 +91,7 @@ export function useReviews(options: UseReviewsOptions = {}): UseReviewsReturn {
   };
 
   const updateStatus = async (id: string, status: ReviewStatus): Promise<void> => {
-    const response = await fetch('/api/reviews', {
+    const response = await authFetch('/api/reviews', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, status }),
@@ -116,7 +117,7 @@ export function useReviews(options: UseReviewsOptions = {}): UseReviewsReturn {
   };
 
   const deleteReview = async (id: string): Promise<void> => {
-    const response = await fetch(`/api/reviews?id=${id}`, {
+    const response = await authFetch(`/api/reviews?id=${id}`, {
       method: 'DELETE',
     });
 
@@ -144,7 +145,7 @@ export function useReview(reviewId: string | null) {
     const fetchReview = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/reviews?id=${reviewId}`);
+        const response = await authFetch(`/api/reviews?id=${reviewId}`);
         const data = await response.json();
 
         if (data && data.id) {
@@ -182,7 +183,7 @@ export function useProductRating(productId: string | null) {
     const fetchRatings = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/reviews?productId=${productId}&status=approved&limit=1000`);
+        const response = await authFetch(`/api/reviews?productId=${productId}&status=approved&limit=1000`);
         const data = await response.json();
 
         if (data.reviews && data.reviews.length > 0) {

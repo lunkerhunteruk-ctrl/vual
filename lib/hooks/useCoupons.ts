@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { authFetch } from '@/lib/auth-fetch';
 
 interface Coupon {
   id: string;
@@ -55,7 +56,7 @@ export function useCoupons(options: UseCouponsOptions = {}): UseCouponsReturn {
       const params = new URLSearchParams();
       params.set('limit', pageLimit.toString());
 
-      const response = await fetch(`/api/coupons?${params.toString()}`);
+      const response = await authFetch(`/api/coupons?${params.toString()}`);
       const data = await response.json();
 
       if (data.coupons) {
@@ -95,7 +96,7 @@ export function useCoupons(options: UseCouponsOptions = {}): UseCouponsReturn {
   };
 
   const createCoupon = async (data: Omit<Coupon, 'id' | 'created_at' | 'used_count'>): Promise<string> => {
-    const response = await fetch('/api/coupons', {
+    const response = await authFetch('/api/coupons', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -111,7 +112,7 @@ export function useCoupons(options: UseCouponsOptions = {}): UseCouponsReturn {
   };
 
   const updateCoupon = async (id: string, data: Partial<Coupon>): Promise<void> => {
-    const response = await fetch('/api/coupons', {
+    const response = await authFetch('/api/coupons', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, ...data }),
@@ -129,7 +130,7 @@ export function useCoupons(options: UseCouponsOptions = {}): UseCouponsReturn {
   };
 
   const deleteCoupon = async (id: string): Promise<void> => {
-    const response = await fetch(`/api/coupons?id=${id}`, {
+    const response = await authFetch(`/api/coupons?id=${id}`, {
       method: 'DELETE',
     });
 
@@ -157,7 +158,7 @@ export function useCoupon(couponId: string | null) {
     const fetchCoupon = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/coupons?id=${couponId}`);
+        const response = await authFetch(`/api/coupons?id=${couponId}`);
         const data = await response.json();
 
         if (data && data.id) {

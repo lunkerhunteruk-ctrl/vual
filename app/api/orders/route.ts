@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
 import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
+import { canManageStore, getRequestUser, requireStoreOwner } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -24,6 +25,13 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    // 注文はログイン必須。見られるのは「そのショップのオーナー」か「注文したお客さん本人」だけ
+    const user = await getRequestUser(request);
+    if (!user) {
+      return NextResponse.json({ error: 'ログインが必要です' }, { status: 401 });
+    }
+    const verifiedEmail = user.email_verified ? user.email?.toLowerCase() : undefined;
+
     // Fetch single order by ID
     if (id) {
       const { data, error } = await supabase
@@ -36,8 +44,15 @@ export async function GET(request: NextRequest) {
         .single();
 
       if (error) throw error;
+      const isCustomer = !!verifiedEmail && data?.customer_email?.toLowerCase() === verifiedEmail;
+      if (!isCustomer && !(await canManageStore(user, data.store_id))) {
+        return NextResponse.json({ error: 'Not found' }, { status: 404 });
+      }
       return NextResponse.json(data);
     }
+
+    const storeId = await resolveStoreIdFromRequest(request);
+    const isOwner = await canManageStore(user, storeId);
 
     // Fetch multiple orders
     let query = supabase
@@ -46,7 +61,7 @@ export async function GET(request: NextRequest) {
         *,
         order_items (*)
       `)
-      .eq('store_id', await resolveStoreIdFromRequest(request))
+      .eq('store_id', storeId)
       .order('created_at', { ascending: false })
       .limit(pageLimit);
 
@@ -54,13 +69,21 @@ export async function GET(request: NextRequest) {
       query = query.eq('status', status);
     }
 
-    if (customerId) {
-      query = query.eq('customer_id', customerId);
-    }
-
-    const customerEmail = searchParams.get('customerEmail');
-    if (customerEmail) {
-      query = query.eq('customer_email', customerEmail);
+    if (isOwner) {
+      if (customerId) {
+        query = query.eq('customer_id', customerId);
+      }
+      const customerEmail = searchParams.get('customerEmail');
+      if (customerEmail) {
+        query = query.eq('customer_email', customerEmail);
+      }
+    } else {
+      // お客さんは自分の注文だけ。指定されたメール/IDは使わず、ログイン中のメールで絞る
+      if (!verifiedEmail) {
+        return NextResponse.json({ orders: [] });
+      }
+      // 大文字小文字だけ無視して完全一致（_ や % をワイルドカード扱いさせない）
+      query = query.ilike('customer_email', verifiedEmail.replace(/[\\%_]/g, '\\$&'));
     }
 
     const { data, error } = await query;
@@ -83,9 +106,13 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
   }
 
+  const owner = await requireStoreOwner(request);
+  if (owner instanceof Response) return owner;
+
   try {
     const body = await request.json();
     const { id, status, ...updates } = body;
+    delete updates.store_id; // 別ショップへ付け替えさせない
 
     if (!id) {
       return NextResponse.json({ error: 'Order ID required' }, { status: 400 });
@@ -104,6 +131,7 @@ export async function PUT(request: NextRequest) {
       .from('orders')
       .update(updateData)
       .eq('id', id)
+      .eq('store_id', owner.storeId)
       .select()
       .single();
 

@@ -22,6 +22,7 @@ import {
 import { useOrder, OrderStatus } from '@/lib/hooks/useOrders';
 import { formatPrice } from '@/lib/utils/currency';
 import { toast } from '@/lib/store/toast';
+import { authFetch } from '@/lib/auth-fetch';
 
 const STATUS_FLOW: OrderStatus[] = ['pending', 'confirmed', 'processing', 'shipped', 'delivered'];
 
@@ -60,7 +61,7 @@ export default function OrderDetailPage() {
     setIsUpdating(true);
     setUpdateError(null);
     try {
-      const res = await fetch('/api/orders', {
+      const res = await authFetch('/api/orders', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: orderId, status: newStatus }),

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { OrderStatusBadge, OrderTimeline } from '@/components/customer/orders';
 import { formatPrice as formatCurrencyPrice } from '@/lib/utils/currency';
+import { authFetch } from '@/lib/auth-fetch';
 
 type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
@@ -46,7 +47,7 @@ export default function OrderDetailPage() {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const res = await fetch(`/api/orders?id=${orderId}`);
+        const res = await authFetch(`/api/orders?id=${orderId}`);
         const data = await res.json();
         if (data && data.id) {
           setOrder(data);

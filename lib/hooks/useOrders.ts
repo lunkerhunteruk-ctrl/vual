@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { authFetch } from '@/lib/auth-fetch';
 
 export type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
@@ -72,7 +73,7 @@ export function useOrders(options: UseOrdersOptions = {}): UseOrdersReturn {
         params.set('customerId', options.customerId);
       }
 
-      const response = await fetch(`/api/orders?${params.toString()}`);
+      const response = await authFetch(`/api/orders?${params.toString()}`);
       const data = await response.json();
 
       if (data.orders) {
@@ -106,7 +107,7 @@ export function useOrders(options: UseOrdersOptions = {}): UseOrdersReturn {
 
   const updateOrderStatus = async (orderId: string, status: OrderStatus) => {
     try {
-      const response = await fetch('/api/orders', {
+      const response = await authFetch('/api/orders', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: orderId, status }),
@@ -145,7 +146,7 @@ export function useOrder(orderId: string | null) {
     const fetchOrder = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/orders?id=${orderId}`);
+        const response = await authFetch(`/api/orders?id=${orderId}`);
         const data = await response.json();
 
         if (data && data.id) {

@@ -8,6 +8,7 @@ import { useLocale } from 'next-intl';
 import { useAuthStore } from '@/lib/store';
 import { OrderStatusBadge } from '@/components/customer/orders';
 import { formatPrice as formatCurrencyPrice } from '@/lib/utils/currency';
+import { authFetch } from '@/lib/auth-fetch';
 
 type OrderStatus = 'pending' | 'confirmed' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 
@@ -53,7 +54,7 @@ export default function OrdersPage() {
           params.set('customerId', customer.id);
         }
 
-        const res = await fetch(`/api/orders?${params.toString()}`);
+        const res = await authFetch(`/api/orders?${params.toString()}`);
         const data = await res.json();
         setOrders(data.orders || []);
       } catch (err) {

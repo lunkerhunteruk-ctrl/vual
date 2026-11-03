@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient, isSupabaseConfigured } from '@/lib/supabase';
-import { resolveStoreIdFromRequest } from '@/lib/store-resolver-api';
+import { requireStoreOwner } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -21,6 +21,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
   }
 
+  // クーポン一覧・詳細は管理画面専用（お客さんのコード確認は /api/coupons/validate）
+  const owner = await requireStoreOwner(request);
+  if (owner instanceof Response) return owner;
+
   try {
     // Fetch single coupon by ID
     if (id) {
@@ -28,6 +32,7 @@ export async function GET(request: NextRequest) {
         .from('coupons')
         .select('*')
         .eq('id', id)
+        .eq('store_id', owner.storeId)
         .single();
 
       if (error) throw error;
@@ -39,7 +44,7 @@ export async function GET(request: NextRequest) {
       const { data, error } = await supabase
         .from('coupons')
         .select('*')
-        .eq('store_id', await resolveStoreIdFromRequest(request))
+        .eq('store_id', owner.storeId)
         .eq('code', code)
         .single();
 
@@ -51,7 +56,7 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabase
       .from('coupons')
       .select('*')
-      .eq('store_id', await resolveStoreIdFromRequest(request))
+      .eq('store_id', owner.storeId)
       .order('created_at', { ascending: false })
       .limit(pageLimit);
 
@@ -73,13 +78,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
   }
 
+  const owner = await requireStoreOwner(request);
+  if (owner instanceof Response) return owner;
+
   try {
     const body = await request.json();
     const { data, error } = await supabase
       .from('coupons')
       .insert({
-        store_id: await resolveStoreIdFromRequest(request),
         ...body,
+        store_id: owner.storeId,
       })
       .select()
       .single();
@@ -102,9 +110,13 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
   }
 
+  const owner = await requireStoreOwner(request);
+  if (owner instanceof Response) return owner;
+
   try {
     const body = await request.json();
     const { id, ...updates } = body;
+    delete updates.store_id; // 別ショップへ付け替えさせない
 
     if (!id) {
       return NextResponse.json({ error: 'Coupon ID required' }, { status: 400 });
@@ -114,6 +126,7 @@ export async function PUT(request: NextRequest) {
       .from('coupons')
       .update(updates)
       .eq('id', id)
+      .eq('store_id', owner.storeId)
       .select()
       .single();
 
@@ -142,11 +155,15 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: 'Database connection failed' }, { status: 500 });
   }
 
+  const owner = await requireStoreOwner(request);
+  if (owner instanceof Response) return owner;
+
   try {
     const { error } = await supabase
       .from('coupons')
       .delete()
-      .eq('id', id);
+      .eq('id', id)
+      .eq('store_id', owner.storeId);
 
     if (error) throw error;
     return NextResponse.json({ success: true });
