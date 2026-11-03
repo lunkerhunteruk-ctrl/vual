@@ -251,7 +251,7 @@ export const ISSUES: LatitudeIssue[] = [
       description: "Edinburgh in late October is around 13°C by day and 7°C at night, and the sun never climbs above about twenty degrees. One day in a flight jacket, a camel coat and soft flats, from Leith to Victoria Street.",
       month: "October",
       weather: "Edinburgh in October averages 13.4°C by day and 6.7°C at night (Royal Botanic Garden, 1991–2020). The wind on Calton Hill and Arthur's Seat is stronger than in the streets.",
-      wore: "An olive flight jacket over an oatmeal V-neck and dark brown drawstring trousers; a pale camel double-breasted coat over an ivory cardigan and soft white trousers; a near-black hunting jacket over a charcoal knit and wide glen-check trousers. Flat pointed shoes with socks all day.",
+      wore: "An olive flight jacket over an oatmeal V-neck and dark brown drawstring trousers; a pale camel double-breasted coat over an ivory cardigan and soft white trousers; a near-black hunting jacket over a charcoal knit and wide glen-check trousers; and for the evening, a golden camel double-breasted coat worn open over a deep burgundy silk shirt and wide dark brown wool trousers, with a rust suede bag. Flat pointed shoes with socks all day.",
       season: "In September, the jacket alone. In November it drops about 3°C; wear the coat and add a scarf for the hills.",
     },
     no: 4,
