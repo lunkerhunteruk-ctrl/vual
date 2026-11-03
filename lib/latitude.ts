@@ -412,10 +412,10 @@ export const ISSUES: LatitudeIssue[] = [
     month: 'November',
     seo: {
       title: "What to wear in Kanazawa in November — from Tsuzumi-mon to Higashi Chaya in the rain | LATITUDE 36.6° N",
-      description: "Kanazawa in November is around 16°C by day and 8°C at night, with showers that come and go. One day in a long hooded olive coat, a speckled turtleneck and white barrel trousers, from the station gate to an inn by the Asano river.",
+      description: "Kanazawa in November is around 16°C by day and 8°C at night, with showers that come and go. One day in a long hooded olive coat, a speckled turtleneck and wide white trousers, from the station gate to an inn by the Asano river.",
       month: "November",
       weather: "Kanazawa in November averages 15.9°C by day and 8.1°C at night, with about 250 mm of rain (1991–2020). Late in the month it is colder, and short showers come and go.",
-      wore: "A long olive double-faced coat with a hood, over a black-and-ecru turtleneck and white barrel trousers; leopard-print square-toe ballet flats with black socks, and a large dark brown suede drawstring bag.",
+      wore: "A long olive double-faced coat with a hood, over a black-and-ecru turtleneck and wide, full-length white trousers; leopard-print square-toe ballet flats with black socks, and a large dark brown suede drawstring bag.",
       season: "In October a knit and a light jacket are enough. In December it drops to about 10°C by day and the first snow comes; wear boots.",
     },
     no: 8,
