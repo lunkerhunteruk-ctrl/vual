@@ -481,7 +481,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Off Kärntner Strasse, Adolf Loos fitted out a bar of about 27 square metres in 1908. Onyx above the door glows the colour of honey, and mirrors on the walls make the room look larger.',
     ],
     pages: pages(16, [3, 8, 15]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_vienna_mag.py。3は駅のホームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、8はマティス風の線のイラストが動く、15は号の6色を油絵の具で1色ずつ塗る）
-    streamId: '76104aca2fd8841228cc41d66b2a23b5', // v20＋粒子11・横組みの白い題字（2026-11-01）。前の縦組みの版は 624819ff55b7dca5c93722271b4f3f0a
+    streamId: '24eb4840c630591f7ac9e429cb059e74', // 編集長の Final Cut の書き出し v20（元の音＋作った音・カット4の歩きを差し替え・左右の黒い線を6pxずつ切る・2026-11-03）。前の v20＋粒子11 は 76104aca2fd8841228cc41d66b2a23b5
     capColour: '#583224', // Mahogany
     credits: ['Map data © OpenStreetMap contributors'],
   },
