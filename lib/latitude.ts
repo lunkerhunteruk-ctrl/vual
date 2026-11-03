@@ -8,7 +8,8 @@
 import { latAsset } from './latitude-assets';
 export type LatitudeColour = { name: string; hex: string };
 export type LatitudeChapter = { no: string; place: string; time: string };
-export type LatitudePage = { file: string; video?: string };
+import type { Pano } from '@/components/latitude/PanoPage';
+export type LatitudePage = { file: string; video?: string; pano?: Pano };
 
 // 2026-10-30 ユーザー決定：号の番号をやめ、名前のある6人がそれぞれ旅する形にする（設定書は vault.vual.jp/docs/LATITUDE-CHARACTERS.md）。
 // 1本＝「その人の、ある街の、ある月の1日」。人と1日は架空、場所とひとつの事実は本物。
@@ -105,6 +106,14 @@ const pages = (n: number, animated: number[] = []): LatitudePage[] =>
     const k = String(i + 1).padStart(2, '0');
     return animated.includes(i + 1) ? { file: `${k}.jpg`, video: `${k}.mp4` } : { file: `${k}.jpg` };
   });
+
+// 2026-11-03 試作：ウィーンの3ページを、傾けて見回せる横長のホームに（components/latitude/PanoPage.tsx）
+const VIENNA_PANO: Pano = {
+  src: latAsset('vienna/pano/03-pano.webp'),
+  overlay: latAsset('vienna/pano/03-overlay.webp'),
+  frost: [600, 110, 420, 800],
+  tint: 'rgba(54,31,22,0.5)',
+};
 
 export const ISSUES: LatitudeIssue[] = [
   {
@@ -480,7 +489,7 @@ export const ISSUES: LatitudeIssue[] = [
       "Wagner's Postal Savings Bank, begun in 1904, is faced with thin plates of marble, held by rows of bolts with aluminium heads.",
       'Off Kärntner Strasse, Adolf Loos fitted out a bar of about 27 square metres in 1908. Onyx above the door glows the colour of honey, and mirrors on the walls make the room look larger.',
     ],
-    pages: pages(16, [3, 8, 15]), // 2026-11-01 雑誌版のカルーセル（16枚・make_issue_vienna_mag.py。3は駅のホームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、8はマティス風の線のイラストが動く、15は号の6色を油絵の具で1色ずつ塗る）
+    pages: pages(16, [3, 8, 15]).map((p, i) => (i === 2 ? { ...p, pano: VIENNA_PANO } : p)), // 2026-11-03 3は傾けて見回すホーム（試作）。2026-11-01 雑誌版のカルーセル（16枚・make_issue_vienna_mag.py。3は駅のホームにすりガラスの時刻表が浮かぶ、4–5 日照と地図、8はマティス風の線のイラストが動く、15は号の6色を油絵の具で1色ずつ塗る）
     streamId: '60160fe3a30ffd4a9a323143fefbacc5', // 編集長の Final Cut の書き出し v20（元の音＋作った音・カット4の歩きを差し替え）＋左右の黒い線を6pxずつ切る＋粒子11（2026-11-03）。粒子なしは 24eb4840c630591f7ac9e429cb059e74、前の v20＋粒子11 は 76104aca2fd8841228cc41d66b2a23b5
     capColour: '#583224', // Mahogany
     credits: ['Map data © OpenStreetMap contributors'],

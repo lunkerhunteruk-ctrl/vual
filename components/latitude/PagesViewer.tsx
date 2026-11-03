@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { PageVideo } from './PageVideo';
 import { Pic } from './Pic';
+import { PanoPage, type Pano } from './PanoPage';
 import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 
 // カルーセルのページ：スマホもパソコンも横一列。見開きはページの境目をまたぐので、決まった2枚の組にすると切れる（2026-10-27）。
@@ -10,7 +11,7 @@ import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 // 押すと下（パソコンは右）から体験の画面がせり上がる：見本（凛）・服・顔の写真・作るボタン。
 // 2026-10-22 体験はログインなしで公開・1人1日3回まで（回数はサーバーで数える）。stepOn が false の号では出さない。
 
-type Page = { file: string; video?: string };
+type Page = { file: string; video?: string; pano?: Pano };
 type StepPage = { page: number; look: number };
 const PAPER = '#f2eee7';
 const INK = '#1e1d1b';
@@ -23,7 +24,9 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   const [open, setOpen] = useState<number | null>(null);
   const url = (f: string) => `${base}/pages/${f}`;
   const thumb = (p: Page, n: number) =>
-    p.video ? (
+    p.pano ? (
+      <PanoPage pano={p.pano} label={`Page ${n}`} eager={n <= 2} />
+    ) : p.video ? (
       <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={n} />
     ) : (
       <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" photo />
@@ -182,6 +185,8 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
         {mine && showMine ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={mine} alt="You, in this look" className="h-full w-full object-cover" />
+        ) : p.pano ? (
+          <PanoPage key={at} pano={p.pano} label={`Page ${at}`} eager />
         ) : p.video ? (
           <PageVideo key={at} src={url(p.video)} poster={url(p.file)} label={`Page ${at}`} eager />
         ) : (
