@@ -204,25 +204,25 @@ export function PublishedBy({ locale }: { locale: string }) {
 
 // 2026-10-30 次の号をメールで受け取る（Substack の LATITUDE）。メールアドレスはサイトで預からず、Substack の登録ページへ案内する
 export const NEWSLETTER_URL = 'https://sachiokawasaki.substack.com/subscribe';
-// 2026-11-02 日本語のページの登録は Substack の「ノート（日本語）」の欄から（その欄のページに登録の入口がある）
-export const NEWSLETTER_URL_JA = 'https://sachiokawasaki.substack.com/s/7a4';
+// 2026-11-04 日本語の制作ノートは note のマガジンへ移した（Substack は英語だけ）。note はメールで届けないので、日本語のページは「note で読む」にする
+export const NOTE_URL_JA = 'https://note.com/sachiokawasaki/m/mf5725176786b';
 export function NewsletterSignup({ locale }: { locale: string }) {
   const ja = locale === 'ja';
   return (
     <div className="max-w-xl">
-      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>The next day, by email</p>
+      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? 'Notes' : 'The next day, by email'}</p>
       {/* 2026-11-02 Substack を Issues と Notes の2つの欄に分けた。新しく登録した人は両方を受け取り、Notes は止められる（前の登録者は Issues だけ） */}
       <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
-        {ja ? <>新しい1日が公開された時と、その作り方のノート。<br />ノートは止められます。</> : 'A new day when it is published, and a short note on how it was made. You can turn the notes off.'}
+        {ja ? <>一号ずつ、どう作ったか。<br />制作ノートを note に書いています。</> : 'A new day when it is published, and a short note on how it was made. You can turn the notes off.'}
       </p>
       <a
-        href={ja ? NEWSLETTER_URL_JA : NEWSLETTER_URL}
+        href={ja ? NOTE_URL_JA : NEWSLETTER_URL}
         target="_blank"
         rel="noopener"
         className="mt-5 inline-block border px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
         style={{ borderColor: INK, color: INK }}
       >
-        {ja ? 'メールで受け取る' : 'Subscribe'}&nbsp;&nbsp;→
+        {ja ? 'note で読む' : 'Subscribe'}&nbsp;&nbsp;→
       </a>
     </div>
   );

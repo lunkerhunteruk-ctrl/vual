@@ -3,15 +3,19 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
+// 2026-11-04 日本語の制作ノートの置き場（note のマガジン「LATITUDE 制作ノート」）
+const NOTE_JA_URL = 'https://note.com/sachiokawasaki/m/mf5725176786b';
+
 const nextConfig: NextConfig = {
-  // 2026-11-02 LATITUDE の制作ノート（Substack）への短いアドレス。Instagram の画像・投稿文に書く（押せないので覚えやすい形）。
+  // 2026-11-02 LATITUDE の制作ノート（英語は Substack・日本語は note）への短いアドレス。Instagram の画像・投稿文に書く（押せないので覚えやすい形）。
   // 行き先が変わってもここだけ直す（一時的な転送 307 にしてある）
   async redirects() {
     return [
-      // 2026-11-02 ブラウザの第一言語が日本語 → Substack の「ノート（日本語）」の欄、それ以外 → 英語（サイトの既定は ja なので middleware には任せない）
-      { source: '/notes', has: [{ type: 'header', key: 'accept-language', value: '^\\s*ja.*' }], destination: 'https://sachiokawasaki.substack.com/s/7a4', permanent: false },
+      // 2026-11-02 ブラウザの第一言語が日本語 → 日本語のノート、それ以外 → 英語（サイトの既定は ja なので middleware には任せない）
+      // 2026-11-04 日本語のノートは note のマガジンへ移した（Substack は英語だけ）
+      { source: '/notes', has: [{ type: 'header', key: 'accept-language', value: '^\\s*ja.*' }], destination: NOTE_JA_URL, permanent: false },
       { source: '/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
-      { source: '/ja/notes', destination: 'https://sachiokawasaki.substack.com/s/7a4', permanent: false },
+      { source: '/ja/notes', destination: NOTE_JA_URL, permanent: false },
       { source: '/en/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
     ];
   },
