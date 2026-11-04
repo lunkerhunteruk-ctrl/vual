@@ -3,14 +3,14 @@ import type { Metadata } from 'next';
 const content = {
   ja: {
     title: 'VUAL について | AIファッションクリエイティブスタジオ',
-    description: 'VUALは日本・UKを拠点とするAIファッションクリエイティブスタジオ。AIルック生成・バーチャル試着・AIショート動画制作を提供。アパレルブランドのスタジオ撮影コストを最大90%削減。',
+    description: 'VUALは日本・UKを拠点とするファッションクリエイティブスタジオ。実物の服の写真を出発点にしたハイブリッドAIプロダクションで、ルック・エディトリアル・ショート動画を制作。バーチャル試着も提供。アパレルブランドのスタジオ撮影コストを最大90%削減。',
     heading: 'VUALについて',
     tagline: 'AIで、ファッションクリエイティブを再定義する。',
-    description_body: 'VUAL（運営：LUFIS Co., Ltd.）は、日本・UKを拠点とするAIファッションクリエイティブスタジオです。アパレルブランドおよびファッションEC向けに、AIを活用した画像生成・バーチャル試着・動画制作を提供しています。',
+    description_body: 'VUAL（運営：LUFIS Co., Ltd.）は、日本・UKを拠点とするファッションクリエイティブスタジオです。ブランドの実物の服・小物・商品の写真を出発点に、AIでキャンペーン・ルックブック・商品のビジュアルと映像をつくる「ハイブリッドAIプロダクション」を、アパレルブランドおよびファッションEC向けに提供しています。',
     services_heading: 'サービス',
     services: [
       { name: 'AIルック生成', desc: '平置き商品画像からAIモデルを使ったルックブック画像を自動生成。スタジオ撮影コストを最大90%削減。' },
-      { name: 'AIファッション撮影', desc: 'テキストプロンプトとブランドの世界観をもとに、プロ品質のエディトリアル画像を生成。' },
+      { name: 'ハイブリッドAIプロダクション', desc: '実物の服・小物・商品の写真を出発点に、ブランドの世界観でキャンペーン・ルックブック・エディトリアルの写真と映像を制作。' },
       { name: 'バーチャル試着（VTON）', desc: 'ECサイトに組み込み可能な顧客向けAI試着体験。返品率削減・CVR向上に貢献。' },
       { name: 'AIショート動画制作', desc: 'AIによるファッションエディトリアル動画・プロモーション映像の制作。' },
       { name: 'VUAL Studio（Shopify App）', desc: 'Shopifyストア向けAIルック生成・バーチャル試着アドオン。' },
@@ -30,14 +30,14 @@ const content = {
   },
   en: {
     title: 'About VUAL | AI Fashion Creative Studio',
-    description: 'VUAL is an AI fashion creative studio based in Japan and the UK. We offer AI look generation, virtual try-on, and AI short video production — cutting studio costs by up to 90% for apparel brands.',
+    description: 'VUAL is a fashion creative studio based in Japan and the UK. Hybrid AI production — campaign, lookbook and short-film imagery that starts from the real garments — plus virtual try-on — cutting studio costs by up to 90% for apparel brands.',
     heading: 'About VUAL',
     tagline: 'Redefining fashion creativity with AI.',
-    description_body: 'VUAL (operated by LUFIS Co., Ltd.) is an AI fashion creative studio based in Japan and the UK. We provide AI-powered image generation, virtual try-on, and video production for apparel brands and fashion e-commerce.',
+    description_body: 'VUAL (operated by LUFIS Co., Ltd.) is a fashion creative studio based in Japan and the UK. For apparel brands and fashion e-commerce we offer hybrid AI production: real garments, accessories and products are the starting point for campaign imagery, lookbooks and film, built with AI in the brand\'s world.',
     services_heading: 'Services',
     services: [
       { name: 'AI Look Generation', desc: 'Automatically generate lookbook images with AI models from flat-lay product photos. Cut studio costs by up to 90%.' },
-      { name: 'AI Fashion Photography', desc: 'Generate professional editorial images based on text prompts and brand aesthetic.' },
+      { name: 'Hybrid AI Production', desc: 'Campaign, lookbook and editorial stills and film that start from photographs of your real garments, accessories and products.' },
       { name: 'Virtual Try-On (VTON)', desc: 'Embeddable AI try-on experience for e-commerce. Reduces returns and improves conversion rates.' },
       { name: 'AI Fashion Video', desc: 'AI-generated fashion editorial videos and promotional content.' },
       { name: 'VUAL Studio (Shopify App)', desc: 'AI look generation and virtual try-on add-on for Shopify stores.' },

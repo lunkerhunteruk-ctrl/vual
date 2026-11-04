@@ -25,7 +25,7 @@ const CONTENT = {
     manifesto: {
       heading: 'One world,\nin stills and film.',
       // | は折り返してよい所。句の途中では折り返さない
-      body: 'UKと日本を拠点とする、|ファッションのクリエイティブスタジオ。\n実物の服から、|写真と映像を|一つの世界観でつくる。\nすべてAIで、|企画から仕上げまで。',
+      body: 'UKと日本を拠点とする、|ファッションのクリエイティブスタジオ。\n実物の服の写真を出発点に、|写真と映像を|一つの世界観でつくる。\n実物とAIをつなぐ、|ハイブリッドAIプロダクション。',
     },
     works: {
       sectionLabel: 'Selected Works',
@@ -39,9 +39,10 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
+        'Hybrid AI Production',
         'Creative Direction',
         'Cinematic Video Production',
-        'Full-AI Catwalk',
+        'AI Catwalk',
         'Editorial Photography',
         'Web Editorials & Carousels',
       ],
@@ -61,7 +62,7 @@ const CONTENT = {
   en: {
     manifesto: {
       heading: 'One world,\nin stills and film.',
-      body: 'A fashion creative studio based in the UK and Japan.\nFrom the real garments, we make stills and film in one world —\nentirely with AI, from concept to final cut.',
+      body: 'A fashion creative studio based in the UK and Japan.\nStarting from photographs of the real garments, we make stills and film in one world —\nhybrid AI production, from concept to final cut.',
     },
     works: {
       sectionLabel: 'Selected Works',
@@ -75,9 +76,10 @@ const CONTENT = {
     capabilities: {
       sectionLabel: 'Capabilities',
       items: [
+        'Hybrid AI Production',
         'Creative Direction',
         'Cinematic Video Production',
-        'Full-AI Catwalk',
+        'AI Catwalk',
         'Editorial Photography',
         'Web Editorials & Carousels',
       ],

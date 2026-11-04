@@ -53,8 +53,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const en = headersList.get("x-next-intl-locale") === "en";
   const title = "VUAL — One world, in stills and film.";
   const description = en
-    ? "Fashion stills and film made from real garments, in one world — entirely with AI. A creative studio in the UK and Japan."
-    : "実物の服から、写真と映像を一つの世界観で。すべてAIで、企画から仕上げまで手がけるファッションのクリエイティブスタジオ。UK / Japan";
+    ? "Hybrid AI production: fashion stills and film that start from photographs of the real garments, in one world. A creative studio in the UK and Japan."
+    : "実物の服の写真を出発点に、写真と映像を一つの世界観で。ハイブリッドAIプロダクションで、企画から仕上げまで手がけるファッションのクリエイティブスタジオ。UK / Japan";
   const image = { url: "/og/vual-3.jpg", width: 1200, height: 630, alt: "VUAL — Galleria Borghese" };
   return {
     title,
