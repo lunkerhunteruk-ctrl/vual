@@ -152,6 +152,7 @@ export const ISSUE_CITY_JA: Record<string, string> = {
   vienna: 'ウィーン',
   kanazawa: '金沢',
   haworth: 'ハワース',
+  morioka: '盛岡',
 };
 // 号の city が国の名前などの時に、時刻と天気を取る街の名前で言い直す
 export const ISSUE_CITY_EN: Record<string, string> = { iceland: 'Reykjavík' };

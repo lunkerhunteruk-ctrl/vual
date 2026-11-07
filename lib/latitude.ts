@@ -589,6 +589,53 @@ export const ISSUES: LatitudeIssue[] = [
     capColour: '#a8a549', // Bergamot
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    // 2026-11-07 盛岡（凛・2026年11月24日・くもりで乾いた冷たい日）。ドキュメンタリー回。1日＝1コーデ（C000898：チャコールのウールのシャツジャケット・巻き毛のシアリングの襟）。全部 VUAL オリジナルの服。
+    // 章はリール（v6・vault.vual.jp outputs/vual-rin-morioka-20261101/edit/final_morioka.py の CHAP。II 紺屋町は 10:30。カルーセル6ページの章の扉は 10:40 のまま）、
+    // 色とメモはカルーセル（outputs/latitude-magazine/make_issue_morioka_mag.py・morioka/colours.json。色は11ページの塗る順）と同じ。
+    // 気温・雨は気象庁の盛岡（47584）の 1991–2020 平年値（11月 最高10.9℃・最低1.8℃・降水85.6mm・降雪6cm／10月 最高17.9℃／12月 最高4.5℃）。日の入りはカルーセルと同じ計算（11月24日 16:15）
+    slug: 'morioka',
+    recipe: 'data/latitude-recipes/morioka/recipe.json',
+    person: 'rin',
+    month: 'November',
+    seo: {
+      title: "What to wear in Morioka in November — from Kaminohashi to the Nakatsu river and back after dark | LATITUDE 39.7° N",
+      description: "Morioka in November is around 11°C by day and 2°C at night, dry, cold and often grey. One day in a charcoal wool jacket with a curly shearling collar, a grey knit and taupe flannel trousers, from the morning train to the bronze finials of Kaminohashi at night.",
+      month: "November",
+      weather: "Morioka in November averages 10.9°C by day and 1.8°C at night, with about 86 mm of rain (1991–2020). A little snow can fall late in the month, and the sun sets around a quarter past four.",
+      wore: "A dark charcoal wool shirt jacket with silver snaps and a large black curly shearling collar, over a grey marl crew-neck knit with a pointed hem worn out and long taupe pleated flannel barrel trousers; black suede kitten-heel ankle boots with pointed toes, and a dark brown suede belted satchel with two handles.",
+      season: "In October a knit and a light jacket are enough; it is about 18°C by day. In December it is about 4.5°C by day and snow begins to lie; add gloves, a scarf and shoes with grip.",
+    },
+    no: 12,
+    latitude: '39.7° N',
+    city: 'Morioka',
+    published: '2026-11',
+    line: 'One November day in Morioka, from the morning train to the same bridge after dark.',
+    chapters: [
+      { no: 'I', place: 'Kaminohashi', time: '08:50' },
+      { no: 'II', place: 'Konyacho', time: '10:30' },
+      { no: 'III', place: 'Nakatsu River', time: '15:00' },
+      { no: 'IV', place: 'Kaminohashi', time: '18:20' },
+    ],
+    colours: [
+      { name: 'Tokiwa Green', hex: '#2c6265' },
+      { name: 'Tsutsuji Pink', hex: '#723c5b' },
+      { name: 'Nambu Iron', hex: '#243036' },
+      { name: 'Niku-miso', hex: '#43331d' },
+      { name: 'Lattice Amber', hex: '#ca955f' },
+      { name: 'Rokusho', hex: '#415a58' },
+    ],
+    notesTitle: 'Salmon, bronze, a volcano',
+    notes: [
+      'In autumn, chum salmon that have swum some two hundred kilometres up from the sea hold in the shallows of the Nakatsu river, in the middle of the city.',
+      'Some of the bronze finials on the railings of the Kaminohashi bridge carry the years 1609 and 1611.',
+      'From the Kaiun bridge, Mount Iwate, 2,038 metres, stands at the end of the river.',
+    ],
+    pages: pages(14, [2, 11]), // 2026-11-01 雑誌版のカルーセル（14枚・make_issue_morioka_mag.py。2は着いたホームにすりガラスの時刻表が浮かぶ、3 日照と地図、11は号の6色を油絵の具で1色ずつ塗る、12は夕方の帰り道のイラスト）。1は 2026-11-07 の差し替え版
+    streamId: '2ea6426dd111f3c4a9f3ba0497dc0127', // v6＋題字＋粒子（LATITUDE-39.7N-MORIOKA-reel-v6-title-grain.mp4・2026-11-07）
+    capColour: '#ca955f', // Lattice Amber（カルーセル5ページの頭の文字と同じ系統）
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か

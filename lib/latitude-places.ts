@@ -13,6 +13,7 @@ import edinburgh from './latitude-places/edinburgh.json';
 import reykjavik from './latitude-places/reykjavik.json';
 import vienna from './latitude-places/vienna.json';
 import haworth from './latitude-places/haworth.json';
+import morioka from './latitude-places/morioka.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
 
 // 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
@@ -146,6 +147,76 @@ export const CITIES: LatitudeCity[] = [
       note: 'The room by the Asano river where she stayed. It follows the time in Japan.',
       noteJa: '浅野川のそばの、凛が泊まった宿の部屋。日本の時刻に合わせて動いています。',
     },
+  },
+  // 2026-11-07 盛岡（凛・号 morioka・2026年11月24日・くもりで乾いた冷たい日）。服はすべて VUAL のオリジナル（1日1コーデ）。
+  // 店は vault.vual.jp outputs/vual-rin-morioka-20261101/places（agy で集め → Haiku が公式で確かめ → 迷った店を Sonnet が見直し。最終15軒）。
+  // 写真は号の静止画（リールの R01〜R11・カルーセルの K01）を 9:16 に切った物。店の名前・看板の字の出る絵は使っていない。
+  // 回り方の時刻はリールの章とカルーセルの時刻（II 紺屋町はリールの 10:30）。気温は気象庁の盛岡の 1991–2020 平年値
+  {
+    slug: 'morioka',
+    name: 'Morioka',
+    nameJa: '盛岡',
+    latitude: '39.7° N',
+    country: 'Iwate, Japan',
+    countryJa: '岩手県',
+    person: 'rin',
+    issue: 'morioka',
+    intro: 'Rin spent one cold, grey November day here: off the morning train, Mount Iwate from the Kaiun bridge, salmon in the river below the bronze finials of Kaminohashi, iron kettles in Konyacho, jajamen at noon, a café window over the Nakatsu river, and the same bridge again at night.',
+    introJa: '凛が11月の、くもりの冷たい1日を過ごした街。朝の新幹線で着いて、開運橋から岩手山。上の橋の青銅の擬宝珠の下の川に鮭。紺屋町の鉄瓶、昼のじゃじゃ麺、中津川に面した喫茶店の窓。夜にもう一度、同じ橋へ。',
+    images: [
+      { file: 'bridge.jpg', alt: 'Rin on the Kaiun bridge in the morning, Mount Iwate at the end of the river', altJa: '朝の開運橋の凛。川の先に岩手山' },
+      { file: 'kaminohashi.jpg', alt: 'Rin by a bronze finial on the Kaminohashi bridge', altJa: '上の橋の青銅の擬宝珠のそばの凛' },
+      { file: 'konyacho.jpg', alt: 'Rin walking past iron kettles on the shopfronts of Konyacho', altJa: '紺屋町の店先の鉄瓶の前を歩く凛' },
+      { file: 'cafe.jpg', alt: 'Rin at a café window over the Nakatsu river, a cup in both hands', altJa: '中津川に面した喫茶店の窓ぎわで、カップを両手で包む凛' },
+      { file: 'night.jpg', alt: 'Rin on the Kaminohashi bridge at night, a hand on the wooden rail', altJa: '夜の上の橋で、木の欄干に手を置く凛' },
+    ],
+    categoryImages: {
+      food: { file: 'jajamen.jpg', alt: 'From Rin\'s day: jajamen at a counter', altJa: '凛の1日から：カウンターでじゃじゃ麺' },
+      coffee: { file: 'cafe.jpg', alt: 'From Rin\'s day: a cup by the window', altJa: '凛の1日から：窓ぎわのカップ' },
+    },
+    places: morioka as CityPlace[],
+    industries: [
+      { key: "nambu-tekki", en: "Nambu ironware", ja: "南部鉄器", about: "Nambu ironware is cast iron from Morioka and Oshu in Iwate, a nationally designated traditional craft. In Morioka it goes back to the seventeenth century, when the Nambu domain brought kettle makers to its castle town; workshops in Konyacho still cast kettles by hand.", aboutJa: "南部鉄器は、岩手の盛岡と奥州で作られる鋳物で、国の伝統的工芸品。盛岡では17世紀、南部藩が城下に釜師を招いたのが始まりとされる。紺屋町には、いまも手で鉄瓶を鋳る工房がある。" },
+      { key: "morioka-three-noodles", en: "Morioka's three noodles", ja: "盛岡の三つの麺", about: "Morioka is known for three noodles: wanko soba, mouthfuls of soba poured into your bowl one after another; reimen, a firm cold noodle in beef broth, first served here in 1954; and jajamen, flat noodles with meat miso, finished with chitantan, an egg soup made in the dish you ate from.", aboutJa: "盛岡には三つの麺がある。お椀に次々とそばが入るわんこそば、1954年にこの街で始まった、こしの強い盛岡冷麺、肉みそをのせた平たい麺のじゃじゃ麺。じゃじゃ麺は、食べ終えた皿に卵を溶いて、チータンタンにして締める。" },
+      { key: "katazome", en: "Stencil dyeing", ja: "型染め", about: "In Zaimokucho a dye house still makes Nambu kodai katazome: cloth dyed through cut paper stencils, with patterns that go back to the samurai of the Nambu domain.", aboutJa: "材木町では、いまも染元が南部古代型染を作る。切り抜いた型紙を通して布を染める技法で、文様は南部藩の武士の時代にさかのぼる。" },
+    ],
+    wear: {
+      season: 'Late November',
+      seasonJa: '11月の終わり',
+      facts: [
+        { en: 'Around 11°C by day and 2°C at night, with about 86 mm of rain (Morioka, 1991–2020 averages).', ja: '昼は11℃前後、夜は2℃前後。雨は月に86ミリほど（盛岡、1991〜2020年の平年値）。' },
+        { en: 'A little snow can fall late in the month. The sun sets at about 16:15.', ja: '月の終わりには、雪が少し降ることもある。日の入りは16時15分ごろ。' },
+        { en: 'In October a knit and a light jacket are enough; it is about 18°C by day. In December it is about 4.5°C by day and snow begins to lie; add gloves, a scarf and shoes with grip.', ja: '10月ならニットに軽い上着で足りる。昼は18℃ほど。12月は昼でも4.5℃ほどで、雪が積もり始める。手袋とマフラー、すべりにくい靴を足す。' },
+      ],
+      looks: [
+        { time: '08:16', image: 'train.jpg',
+          items: 'A dark charcoal wool shirt jacket with silver snaps and a large black curly shearling collar, turned up; a grey marl crew-neck knit, long taupe flannel barrel trousers, black suede kitten-heel ankle boots, a dark brown suede satchel.',
+          itemsJa: '銀のスナップに、黒い巻き毛の大きなシアリングの襟のチャコールのウールのシャツジャケット。襟は立てて。グレーの丸首ニット、長めのトープのフランネルの丸いパンツ、黒いスエードの細いヒールのショートブーツ、こげ茶のスエードの鞄。',
+          note: 'Off the train, the collar goes up to the chin.', noteJa: '新幹線を降りたら、襟をあごまで立てる。' },
+        { time: '10:45', image: 'kettle.jpg',
+          items: 'Inside the shop, the jacket open and the collar down over the shoulders; the knit, with its pointed hem, left out.',
+          itemsJa: '店の中では、上着の前を開けて、襟は肩に広げる。とがった裾のニットは外に出したまま。',
+          note: 'Indoors, open the front. The knit stays out.', noteJa: '店の中では前を開ける。ニットの裾は出したまま。' },
+        { time: '15:00', image: 'cafe.jpg',
+          items: 'In the café, the jacket off on the chair; the grey knit on its own.',
+          itemsJa: '喫茶店では、上着を脱いで椅子に。グレーのニット一枚。',
+          note: 'One jacket for the whole day. Under it, one knit is enough.', noteJa: '上着は一日これ一枚。下はニット一枚で足りる。' },
+      ],
+    },
+    route: [
+      { time: '08:16', place: 'Morioka Station', placeJa: '盛岡駅', what: 'Off the morning train from Tokyo.', whatJa: '東京からの朝の新幹線で着く。', image: 'train.jpg', near: ['盛楼閣', '東家 盛岡駅前店', 'KANEIRI STANDARD STORE 盛岡店'] },
+      { time: '08:30', place: 'Kaiun Bridge', placeJa: '開運橋', what: 'Mount Iwate at the end of the river.', whatJa: '川の先に岩手山。', image: 'bridge.jpg', near: ['pono books & time', 'Some Blue Coffee'] },
+      { time: '08:50', place: 'I Kaminohashi', placeJa: 'I 上の橋', what: 'Looking down at the river beside the bronze finials.', whatJa: '青銅の擬宝珠のそばで、川を見下ろす。', image: 'kaminohashi.jpg' },
+      { time: '09:40', place: 'The castle walls', placeJa: '盛岡城跡の石垣', what: 'Under the stone walls of the castle, where no keep stands.', whatJa: '天守のない城跡の、石垣の下。', near: ['食道園'] },
+      { time: '10:30', place: 'II Konyacho', placeJa: 'II 紺屋町', what: 'Past the shopfronts of the old street, fingertips brushing an iron kettle.', whatJa: '古い通りの店先を歩く。指先が鉄瓶にふれる。', image: 'konyacho.jpg', near: ['釜定', '老舗 白沢せんべい店', 'shop+space ひめくり', 'cafe & grocery NOOK', 'クラムボン'] },
+      { time: '10:45', place: 'An ironware shop', placeJa: '鉄器の店', what: 'Lifting a cold iron kettle with both hands.', whatJa: '冷たい鉄瓶を、両手で持ち上げる。', image: 'kettle.jpg' },
+      { time: '12:50', place: 'Jajamen', placeJa: 'じゃじゃ麺', what: 'Jajamen, then an egg stirred into what is left: chitantan.', whatJa: 'じゃじゃ麺。残りに卵を溶いて、チータンタン。', image: 'jajamen.jpg' },
+      { time: '13:50', place: 'The riverbed', placeJa: '河原', what: 'On the stones below Kaminohashi, salmon in the shallows.', whatJa: '上の橋の下手の河原。浅瀬に鮭。', image: 'salmon.jpg' },
+      { time: '15:00', place: 'III Nakatsu River', placeJa: 'III 中津川', what: 'A window seat in a café over the river, the jacket off.', whatJa: '川に面した喫茶店の窓ぎわ。上着を脱ぐ。', image: 'cafe.jpg' },
+      { time: '16:25', place: 'Out of the café', placeJa: '店の外へ', what: 'Out as the lamps come on, the collar held to her throat.', whatJa: '街灯がつき始めたころ、襟をのどへ寄せて店を出る。', image: 'door.jpg' },
+      { time: '17:50', place: 'Konyacho, after dark', placeJa: '夜の紺屋町', what: 'Back along the old street after dark.', whatJa: '暗くなった古い通りを戻る。' },
+      { time: '18:20', place: 'IV Kaminohashi', placeJa: 'IV 上の橋', what: 'The same bridge at night, a hand on the wooden rail.', whatJa: '夜、同じ橋。木の欄干に手を置く。', image: 'night.jpg' },
+    ],
   },
   // 2026-11-01 海外の5号の街。日本語のページが本命（docs/LATITUDE-CITY-GUIDE.md「誰に向けて書くか」）。
   // 写真は号の元の静止画（data/latitude-recipes/<号>/scenes/）から切り出した物。号の服は実在ブランドの物なので vualOriginals: false（ブランド名は書かない）
