@@ -1490,6 +1490,29 @@ function FounderSection({ locale }: { locale: string }) {
               >
                 {t.founder.bio}
               </motion.p>
+              {/* 2026-11-08 LATITUDE 編集長のページ（経歴を文字で読める所）へつなぐ。同じ人物の目印（@id）も置く */}
+              <motion.p variants={fadeUp} className="mt-6 text-[11px] tracking-[0.25em] uppercase">
+                <Link href={`/${locale}/latitude/editor`} rel="author" className="text-white/55 underline-offset-4 hover:underline hover:text-white/80">
+                  {locale === 'ja' ? 'LATITUDE 編集長として  →' : 'As editor of LATITUDE  →'}
+                </Link>
+              </motion.p>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'Person',
+                    '@id': 'https://vual.jp/en/latitude/editor#person',
+                    name: 'Sachio Kawasaki',
+                    alternateName: '川崎 祥央',
+                    jobTitle: ['Founder & Creative Director, VUAL', 'Founding Editor, LATITUDE'],
+                    url: 'https://vual.jp/en/latitude/editor',
+                    image: 'https://vual.jp/lp/founder-bw.jpeg',
+                    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Central Saint Martins' },
+                    worksFor: { '@id': 'https://vual.jp/#organization' },
+                  }),
+                }}
+              />
             </div>
           </div>
         </motion.div>

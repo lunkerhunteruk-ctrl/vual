@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { liveIssues } from '@/lib/latitude';
 import { getNote } from '@/lib/latitude-notes';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
-import { JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
+import { EDITOR_ID, JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
 
 // 2026-11-08 編集長の紹介ページ。制作ノートの書き手が誰で、どんな経験から判断しているかを、検索と AI に分かる形で置く。
 // 書くのは、本人が制作ノートに書いた事実と、確かめた事だけ（経歴を足す時は本人に確かめる）。
+// 経歴（CSM・Balenciaga・自分のブランド）は vual.jp トップの FOUNDER 欄と同じ文（2026-11-08 ユーザー確認）。トップは画面を JS で組むので、文字で読めるのはこのページ。
 
 const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 const INSTAGRAM = 'https://www.instagram.com/sachio_kawasaki/';
@@ -16,15 +17,16 @@ const SUBSTACK = 'https://sachiokawasaki.substack.com';
 const T = {
   en: {
     title: 'Sachio Kawasaki, Founding Editor of LATITUDE — VUAL',
-    description: 'Sachio Kawasaki is the founding editor of LATITUDE, the travelling issue published by VUAL in Japan and the United Kingdom. The pictures are made with AI; what is filmed, what stays and what goes is the editor’s decision.',
+    description: 'Sachio Kawasaki (MA Fashion, Central Saint Martins; trained at Balenciaga) is the founder and creative director of VUAL and the founding editor of LATITUDE, its travelling issue. The pictures are made with AI; what is filmed, what stays and what goes is the editor’s decision.',
     label: 'The editor',
     name: 'Sachio Kawasaki',
-    role: 'Founding Editor, LATITUDE',
-    rows: [['Publisher', 'VUAL (LUFIS Co., Ltd.)'], ['Based in', 'United Kingdom'], ['Studied', 'Fashion, in London, for about seven years']],
+    role: 'Founding Editor, LATITUDE  ·  Founder & Creative Director, VUAL',
+    rows: [['Education', 'MA Fashion, Central Saint Martins'], ['Career', 'Trained at Balenciaga. Founded and ran his own label'], ['Now', 'Founder & Creative Director, VUAL. Founding Editor, LATITUDE'], ['Publisher', 'VUAL (LUFIS Co., Ltd.)'], ['Based in', 'United Kingdom']],
     bio: [
       'Sachio Kawasaki is the founding editor of LATITUDE, a travelling issue published by VUAL. Each issue is one day in one real place: the traveller is imagined, the place and one fact about it are real.',
       'The pictures and films are made with AI. The editor decides what is filmed and what stays: the route of the day, the light at each hour, which of hundreds of stills are used, what is cut, and when an issue is finished by hand.',
-      'Kawasaki spent about seven years in London as a fashion student, and some of the issues carry a memory from those years.',
+      'Kawasaki completed the MA Fashion at Central Saint Martins, trained at Balenciaga, and went on to found and run his own label. VUAL brings that eye, formed on the floor of high fashion, together with new technology.',
+      'He spent about seven years in London as a fashion student, and some of the issues carry a memory from those years.',
     ],
     rulesTitle: 'Rules kept across every issue',
     rules: [
@@ -46,14 +48,15 @@ const T = {
   },
   ja: {
     title: '川崎 祥央（LATITUDE 編集長）— VUAL',
-    description: '川崎 祥央は、日本とイギリスの VUAL が出す旅の連作 LATITUDE の編集長。絵と映像は AI で作り、何を撮り、何を残し、何を捨てるかを決めています。',
+    description: '川崎 祥央（Central Saint Martins MA Fashion 修了・Balenciaga で研鑽）。VUAL の創業者・クリエイティブディレクターで、旅の連作 LATITUDE の編集長。絵と映像は AI で作り、何を撮り、何を残し、何を捨てるかを決めています。',
     label: '編集長',
     name: '川崎 祥央',
-    role: 'LATITUDE 編集長',
-    rows: [['発行', 'VUAL（LUFIS Co., Ltd.）'], ['拠点', 'イギリス'], ['学んだこと', 'ロンドンで約7年、ファッション']],
+    role: 'LATITUDE 編集長  ·  VUAL 創業者・クリエイティブディレクター',
+    rows: [['学歴', 'Central Saint Martins MA Fashion 修了'], ['経歴', 'Balenciaga で研鑽を積んだのち、自身のブランドを設立・運営'], ['現在', 'VUAL 創業者・クリエイティブディレクター／LATITUDE 編集長'], ['発行', 'VUAL（LUFIS Co., Ltd.）'], ['拠点', 'イギリス']],
     bio: [
       '川崎 祥央は、VUAL が出している旅の連作 LATITUDE の編集長です。1号につき、実在の街の1日。旅人は架空、場所とその土地の事実は本物です。',
       '絵と映像は AI で作ります。何を撮り、何を残すかは編集長が決めます。一日の道すじ、時刻ごとの光、数百枚の静止画のどれを使うか、何を外すか、最後に自分の手で仕上げるかどうか。',
+      'Central Saint Martins の MA Fashion を修了。Balenciaga で研鑽を積んだのち、自身のブランドを設立・運営しました。ハイファッションの現場で培った視点と、新しい技術を合わせて、VUAL を作っています。',
       'ファッションの学生として、ロンドンで約7年を過ごしました。号のいくつかには、そのころの記憶が入っています。',
     ],
     rulesTitle: 'どの号でも変えないこと',
@@ -97,10 +100,14 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
   const url = `${SITE}/${ja ? 'ja' : 'en'}/latitude/editor`;
   const person = {
     '@type': 'Person',
-    '@id': `${SITE}/en/latitude/editor#person`,
+    '@id': EDITOR_ID,
     name: 'Sachio Kawasaki',
     alternateName: '川崎 祥央',
-    jobTitle: 'Founding Editor, LATITUDE',
+    jobTitle: ['Founding Editor, LATITUDE', 'Founder & Creative Director, VUAL'],
+    description: 'MA Fashion, Central Saint Martins. Trained at Balenciaga, then founded and ran his own label. Founder and creative director of VUAL; founding editor of LATITUDE.',
+    image: `${SITE}/lp/founder-bw.jpeg`,
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Central Saint Martins', parentOrganization: { '@type': 'CollegeOrUniversity', name: 'University of the Arts London' }, sameAs: 'https://en.wikipedia.org/wiki/Central_Saint_Martins' },
+    hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'degree', name: 'MA Fashion', recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Central Saint Martins' } },
     worksFor: { '@id': PUBLISHER['@id'] },
     email: 'editor@vual.jp',
     url: `${SITE}/en/latitude/editor`,
@@ -130,6 +137,8 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
         </h1>
         {ja && <p className="mt-3 text-[13px] tracking-[0.3em]" style={{ color: MUTE }}>Sachio Kawasaki</p>}
         <p className="mt-6 text-[13px] uppercase tracking-[0.35em]">{t.role}</p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/lp/founder-bw.jpeg" alt={t.name} width={160} height={160} className="mt-10 h-28 w-28 rounded-full object-cover md:h-36 md:w-36" style={{ filter: 'grayscale(1)' }} />
       </header>
 
       <section className="px-4 pb-16 md:px-8 md:pb-24">
@@ -201,6 +210,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
             <li><a href={INSTAGRAM} target="_blank" rel="noopener me" className="underline-offset-4 hover:underline">Instagram @sachio_kawasaki</a></li>
             <li><a href={ja ? NOTE : SUBSTACK} target="_blank" rel="noopener me" className="underline-offset-4 hover:underline">{ja ? 'note（制作ノートのマガジン）' : 'Substack (the working notes by email)'}</a></li>
             <li><Link href={`/${locale}/latitude/about`} className="underline-offset-4 hover:underline">{ja ? 'LATITUDE について' : 'About LATITUDE'}</Link></li>
+            <li><Link href={`/${locale}`} className="underline-offset-4 hover:underline">{ja ? 'VUAL（スタジオ）' : 'VUAL, the studio'}</Link></li>
           </ul>
         </div>
       </section>

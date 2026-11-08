@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { assetUrl, getIssue, isLive, issueNo, liveIssues, personOf } from '@/lib/latitude';
 import { getNote, noteLead, noteText, type NoteBlock, type NoteRun } from '@/lib/latitude-notes';
-import { JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
+import { EDITOR_ID, JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // 2026-11-08 号ごとの制作ノート（監督の記録）。日本語（/ja）と英語（/en）は別の文章なので、それぞれを本体（canonical）にする。
@@ -101,7 +101,7 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
         url,
         mainEntityOfPage: url,
         datePublished: issue.published,
-        author: { '@type': 'Person', '@id': `${SITE}/en/latitude/editor#person`, name: 'Sachio Kawasaki', alternateName: '川崎 祥央', jobTitle: 'Founding Editor, LATITUDE', url: `${SITE}/en/latitude/editor`, worksFor: { '@id': PUBLISHER['@id'] } },
+        author: { '@type': 'Person', '@id': EDITOR_ID, name: 'Sachio Kawasaki', alternateName: '川崎 祥央', jobTitle: 'Founding Editor, LATITUDE', url: `${SITE}/en/latitude/editor`, worksFor: { '@id': PUBLISHER['@id'] } },
         publisher: { '@id': PUBLISHER['@id'] },
         isPartOf: { '@id': PERIODICAL['@id'] },
         about: { '@type': 'PublicationIssue', '@id': `${SITE}/en/latitude/${issue.slug}#issue`, name: `${issue.latitude} ${issue.city}${person ? ` — ${person.name}` : ''}` },

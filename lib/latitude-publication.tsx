@@ -4,6 +4,8 @@ import { latAssetAbs } from './latitude-assets';
 // 2026-10-30 LATITUDE は VUAL が出している出版物（コンデナストと Vogue の関係）。
 // Google や AI のチャットが「LATITUDE を出しているのは VUAL」と読めるよう、構造化データで出版元と号のつながりを書く。
 export const SITE = 'https://vual.jp';
+// 2026-11-08 編集長（＝VUAL の創業者）の人物の目印。どのページからも同じ @id を指し、1人の人として結びつける。
+export const EDITOR_ID = `${SITE}/en/latitude/editor#person`;
 
 export const PUBLISHER = {
   '@type': 'Organization',
@@ -13,6 +15,7 @@ export const PUBLISHER = {
   url: SITE,
   description: 'A publisher and creative studio based in Japan and the United Kingdom. Publisher of LATITUDE.',
   email: 'editor@vual.jp',
+  founder: { '@id': EDITOR_ID },
 };
 
 export const PERIODICAL = {
@@ -24,7 +27,7 @@ export const PERIODICAL = {
   description: 'A travelling issue by VUAL. Six named travellers each spend one day in a real place, at one latitude. The people are fictional; the places and one fact about each place are real.',
   inLanguage: ['en', 'ja'],
   publisher: { '@id': PUBLISHER['@id'] },
-  editor: { '@type': 'Person', name: 'Sachio Kawasaki', jobTitle: 'Founding Editor' },
+  editor: { '@type': 'Person', '@id': EDITOR_ID, name: 'Sachio Kawasaki', jobTitle: 'Founding Editor' },
 };
 
 export const periodicalJsonLd = () => ({ '@context': 'https://schema.org', '@graph': [PUBLISHER, PERIODICAL] });
