@@ -621,7 +621,7 @@ export const ISSUES: LatitudeIssue[] = [
       { name: 'Tokiwa Green', hex: '#2c6265' },
       { name: 'Tsutsuji Pink', hex: '#723c5b' },
       { name: 'Nambu Iron', hex: '#243036' },
-      { name: 'Niku-miso', hex: '#43331d' },
+      { name: 'Miso Umber', hex: '#43331d' },
       { name: 'Lattice Amber', hex: '#ca955f' },
       { name: 'Rokusho', hex: '#415a58' },
     ],
@@ -631,7 +631,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Some of the bronze finials on the railings of the Kaminohashi bridge carry the years 1609 and 1611.',
       'From the Kaiun bridge, Mount Iwate, 2,038 metres, stands at the end of the river.',
     ],
-    pages: pages(14, [2, 11]), // 2026-11-01 雑誌版のカルーセル（14枚・make_issue_morioka_mag.py。2は着いたホームにすりガラスの時刻表が浮かぶ、3 日照と地図、11は号の6色を油絵の具で1色ずつ塗る、12は夕方の帰り道のイラスト）。1は 2026-11-07 の差し替え版
+    pages: pages(18, [2, 3, 16]), // 2026-11-08 組み直した18ページ版（vault.vual.jp outputs/latitude-magazine/make_issue_morioka_mag18final.py）。2 時刻表がすりガラスに浮かぶ、3 動く地図、16 6色を油絵の具で塗る＋挿絵。前の14ページ版は 2026-11-01
     streamId: '2ea6426dd111f3c4a9f3ba0497dc0127', // v6＋題字＋粒子（LATITUDE-39.7N-MORIOKA-reel-v6-title-grain.mp4・2026-11-07）
     capColour: '#ca955f', // Lattice Amber（カルーセル5ページの頭の文字と同じ系統）
     credits: ['Map data © OpenStreetMap contributors'],
