@@ -210,10 +210,10 @@ export function NewsletterSignup({ locale }: { locale: string }) {
   const ja = locale === 'ja';
   return (
     <div className="max-w-xl">
-      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? 'Notes' : 'The next day, by email'}</p>
-      {/* 2026-11-02 Substack を Issues と Notes の2つの欄に分けた。新しく登録した人は両方を受け取り、Notes は止められる（前の登録者は Issues だけ） */}
+      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? 'Notes' : 'Notes, by email'}</p>
+      {/* 2026-11-08 Substack の Issues の欄を消した（ユーザー決定）。届くのは制作ノート（Notes）だけ */}
       <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
-        {ja ? <>一号ずつ、どう作ったか。<br />制作ノートを note に書いています。</> : 'A new day when it is published, and a short note on how it was made. You can turn the notes off.'}
+        {ja ? <>一号ずつ、どう作ったか。<br />制作ノートを note に書いています。</> : 'A note on how each issue was made, by email.'}
       </p>
       <a
         href={ja ? NOTE_URL_JA : NEWSLETTER_URL}
