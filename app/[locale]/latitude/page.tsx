@@ -115,6 +115,13 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <NewsletterSignup locale={locale} />
       </section>
       <footer className="pb-16">
+        {/* 2026-11-08 奥付の編集長の名前。編集長のページ（経歴・制作ノートの一覧）へ */}
+        <p className="mb-4 text-center text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+          {locale === 'ja' ? '編集長' : 'Edited by'}{' '}
+          <Link href={`/${locale}/latitude/editor`} rel="author" className="underline-offset-4 hover:underline" style={{ color: INK }}>
+            {locale === 'ja' ? '川崎 祥央' : 'Sachio Kawasaki'}
+          </Link>
+        </p>
         <PublishedBy locale={locale} />
       </footer>
     </div>

@@ -1427,7 +1427,7 @@ function ForBrandsSection({ locale }: { locale: string }) {
           ))}
         </ol>
         <p className="mt-8 text-sm text-white/45">{t.note}</p>
-        <a href="mailto:studio@vual.jp" className="mt-6 inline-block text-sm tracking-[0.15em] text-white/80 underline underline-offset-8 decoration-white/30 hover:text-white">
+        <a href="mailto:studio@vual.jp" className="mt-6 inline-block text-sm tracking-[0.15em] text-white! underline underline-offset-8 decoration-white/30 transition-colors hover:text-[#c4b5fd]! hover:decoration-[#c4b5fd]/60">
           studio@vual.jp
         </a>
       </div>
@@ -1490,9 +1490,10 @@ function FounderSection({ locale }: { locale: string }) {
               >
                 {t.founder.bio}
               </motion.p>
-              {/* 2026-11-08 LATITUDE 編集長のページ（経歴を文字で読める所）へつなぐ。同じ人物の目印（@id）も置く */}
+              {/* 2026-11-08 LATITUDE 編集長のページ（経歴を文字で読める所）へつなぐ。同じ人物の目印（@id）も置く。
+                  色は ! を付ける：サイト全体の a:where(:not([style*=color])) が黒にするため（ユーザー指摘：黒で見えない）。白、乗せると薄紫 */}
               <motion.p variants={fadeUp} className="mt-6 text-[11px] tracking-[0.25em] uppercase">
-                <Link href={`/${locale}/latitude/editor`} rel="author" className="text-white/55 underline-offset-4 hover:underline hover:text-white/80">
+                <Link href={`/${locale}/latitude/editor`} rel="author" className="text-white! underline-offset-4 transition-colors hover:underline hover:text-[#c4b5fd]!">
                   {locale === 'ja' ? 'LATITUDE 編集長として  →' : 'As editor of LATITUDE  →'}
                 </Link>
               </motion.p>

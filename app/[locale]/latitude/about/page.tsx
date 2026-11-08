@@ -98,7 +98,12 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
             <div key={k} className="flex gap-6 border-b py-4" style={{ borderColor: 'rgba(30,29,27,0.15)' }}>
               <dt className="w-36 shrink-0 pt-[3px] text-[10px] uppercase tracking-[0.3em] md:w-48" style={{ color: MUTE }}>{k}</dt>
               <dd className="text-[15px]" style={body}>
-                {v.includes('@') ? <a href={`mailto:${v}`} style={{ color: INK }}>{v}</a> : v}
+                {v.includes('@') ? (
+                  <a href={`mailto:${v}`} style={{ color: INK }}>{v}</a>
+                ) : v.includes('Kawasaki') || v.includes('川崎') ? (
+                  /* 2026-11-08 編集長のページ（経歴・制作ノートの一覧）へ */
+                  <Link href={`/${locale}/latitude/editor`} rel="author" className="underline underline-offset-4" style={{ color: INK, textDecorationColor: 'rgba(30,29,27,0.3)' }}>{v}</Link>
+                ) : v}
               </dd>
             </div>
           ))}
