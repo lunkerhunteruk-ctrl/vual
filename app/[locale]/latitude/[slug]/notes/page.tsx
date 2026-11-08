@@ -101,7 +101,7 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
         url,
         mainEntityOfPage: url,
         datePublished: issue.published,
-        author: { '@type': 'Person', name: 'Sachio Kawasaki', alternateName: '川崎 祥央', jobTitle: 'Founding Editor, LATITUDE', worksFor: { '@id': PUBLISHER['@id'] } },
+        author: { '@type': 'Person', '@id': `${SITE}/en/latitude/editor#person`, name: 'Sachio Kawasaki', alternateName: '川崎 祥央', jobTitle: 'Founding Editor, LATITUDE', url: `${SITE}/en/latitude/editor`, worksFor: { '@id': PUBLISHER['@id'] } },
         publisher: { '@id': PUBLISHER['@id'] },
         isPartOf: { '@id': PERIODICAL['@id'] },
         about: { '@type': 'PublicationIssue', '@id': `${SITE}/en/latitude/${issue.slug}#issue`, name: `${issue.latitude} ${issue.city}${person ? ` — ${person.name}` : ''}` },
@@ -127,7 +127,9 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
         </h1>
         {!ja && b.subtitle && <p className="mt-4 text-[17px] leading-relaxed" style={{ color: MUTE }}>{b.subtitle}</p>}
         <p className="mt-6 text-[12px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
-          {ja ? '川崎 祥央　LATITUDE 編集長' : 'Sachio Kawasaki, Founding Editor'}
+          <Link href={`/${locale}/latitude/editor`} rel="author" className="underline-offset-4 hover:underline" style={{ color: MUTE }}>
+            {ja ? '川崎 祥央　LATITUDE 編集長' : 'Sachio Kawasaki, Founding Editor'}
+          </Link>
         </p>
 
         <div

@@ -56,6 +56,7 @@ LATITUDE は VUAL の出版物です。名前のある6人の旅人が、実在�
 
 - 一覧: https://vual.jp/en/latitude
 - 旅人: https://vual.jp/en/latitude/people
+- 編集長（川崎 祥央 / Sachio Kawasaki）: https://vual.jp/en/latitude/editor ・ https://vual.jp/ja/latitude/editor
 
 - 64.1° N Iceland: 号 https://vual.jp/en/latitude/iceland ／ 制作ノート（日本語）「地名が、数字に変わった朝｜LATITUDE アイスランド編」 https://vual.jp/ja/latitude/iceland/notes ／ Notes (English) "The morning the title became a number" https://vual.jp/en/latitude/iceland/notes
 - 55.7° N Copenhagen: 号 https://vual.jp/en/latitude/copenhagen ／ 制作ノート（日本語）「3つのルックが、一日になった｜LATITUDE コペンハーゲン編」 https://vual.jp/ja/latitude/copenhagen/notes ／ Notes (English) "The magazine that became a day" https://vual.jp/en/latitude/copenhagen/notes
