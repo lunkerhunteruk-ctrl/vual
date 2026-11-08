@@ -13,6 +13,7 @@ import { NowInCity } from '@/components/latitude/NowInCity';
 import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
 import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { latAsset } from '@/lib/latitude-assets';
+import { getNote, noteLead } from '@/lib/latitude-notes';
 
 // LATITUDE の1号を1ページで読む。上から：題字 → リール → カルーセルのページ → 読み物 → 色 → 奥付 → 前後の号
 
@@ -217,6 +218,27 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           </div>
         </section>
       )}
+
+      {/* 2026-11-08 制作ノート（監督の記録）への入口。全文は /latitude/<号>/notes に置き、検索と AI の引用で vual.jp を元にする */}
+      {(() => {
+        const n = getNote(issue.slug);
+        if (!n) return null;
+        const b = ja ? n.ja : n.en;
+        return (
+          <section className="px-4 pb-16 md:px-8 md:pb-24">
+            <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
+              <SectionLabel>{ja ? '制作ノート' : 'How this issue was made'}</SectionLabel>
+              <div className="max-w-2xl">
+                <Link href={`/${locale}/latitude/${issue.slug}/notes`} className="group block" style={{ color: INK }}>
+                  <p className="text-[24px] leading-snug md:text-[30px]" style={{ fontFamily: ja ? '"Hiragino Mincho ProN", "Yu Mincho", serif' : SERIF }}>{b.title}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? noteLead(b, 120) : b.subtitle || noteLead(b)}</p>
+                  <p className="mt-4 text-[11px] uppercase tracking-[0.3em] underline-offset-4 group-hover:underline">{ja ? '全文を読む' : 'Read the notes'}&nbsp;&nbsp;→</p>
+                </Link>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* 2026-11-01 同じ旅人のほかの号（表紙を並べる） */}
       {person && (() => {

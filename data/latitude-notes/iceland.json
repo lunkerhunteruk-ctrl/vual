@@ -1,0 +1,469 @@
+{
+ "slug": "iceland",
+ "ja": {
+  "title": "地名が、数字に変わった朝｜LATITUDE アイスランド編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "10月20日の朝、編集の途中まで「ICELAND」だった題字が、34分のあいだに3回作り直され、「64.1° N」という緯度に変わりました。連作の名前が LATITUDE に決まったのは、その朝です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、本物の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "アイスランド編は、その最初の号です。朝7時40分、レイニスフィヤラの黒い砂浜。昼12時15分、レイキャビクの港で係船柱に片足をのせる。夕方5時50分、ガラスの壁のコンサートホール、ハルパ。コートは3着でした。高い襟まで閉じたカーキベージュのコート、胸と肩にボアののった紺のピーコート、襟のないキャメルのコート。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/iceland/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "名前は、編集の途中でつきました"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "10月20日の朝、編集の途中まで、題字はただの「ICELAND」でした。下に小さく、3つの場所の名前。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "9時9分に書き出した次の版で、国の名前を題からはずし、かわりに座標を置きました。大きく「64°N」、その下に小さく「ICELAND」。同じ版から、章ごとに画面のすみへ場所と時刻を出しています。「REYNISFJARA　07:40」。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "9時23分の版で、数字の上に小さく「LATITUDE」の文字が乗り、数字は「64.1° N」になりました。「64」だけだと、64本目のようにも読めてしまいます。上に LATITUDE とあれば、地球の上の一本の線だと分かります。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/iceland-compare.jpg",
+    "cap": "同じ黒い砂浜の冒頭で、左の「ICELAND」の題字をやめ、国の名前をはずして緯度を主役にした右の題字を使いました。地名の題は、どこかで見た旅の映像になるからです。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "題字を3回作り直して、34分。それで連作の名前が決まりました。投稿の文には「ひとつの日、ひとつの場所、そこにいるのが自然な誰か。題は、撮った場所の緯度」と書きました。その晩、同じ題字を9ページの雑誌の表紙にも入れ、翌朝には映像も雑誌もサイトに載りました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "あの朝に決めたことのうち、2つは今も変えていません。"
+     },
+     {
+      "b": true,
+      "s": "題は緯度と街の名前。章は時刻で進む。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "一日は、光と天気で組みました。くもりの朝の、南海岸の黒い砂浜と玄武岩の柱。風の強い昼の、レイキャビクの港。夕方の、ハルパのガラスの壁。朝の玄武岩の柱と夕方のガラスは、号の読み物に書いたとおり、同じ形でつながっています。人物は、10月20日に「旅をするのは一人の人物ではなく、カメラ。街ごとに、その土地にいる人でいい」と決めました。終わりは、ガラス越しに目を伏せた夕方の寄りを、そのまま流しながら暗くしています。ロゴのために別の絵へ替えない、とその日に決めた終わり方です。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "実在の場所の写真を、公開されている資料から133枚集めました。使ったのは12枚で、カットごとに別の1枚を当てています。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/iceland-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "静止画は168枚。映像用の縦の絵が72枚、浜辺を横に流すたった1カットのための横長の絵が28枚、雑誌のページ用が68枚です。動画は13本。編集は、朝7時19分から11時2分までのあいだに20回書き出しました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "映像に入ったのは、縦の72枚のうち9枚。22秒の映像です。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "最初のカットで、音が切り替わってしまいました。昼の港の顔の寄りで始まり、すぐ朝の浜辺に戻る構成です。港のカットには港の空気の音がついていて、始まって1秒で部屋が変わったように聞こえました。今は、最初の場所の音を1コマ目から流しています。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "頼んでいない音楽が入った動画がありました。ハルパを歩く足音の下にも音楽が混じっていたので、その足音は使いませんでした。今は、動画の音を使う前に必ず確かめています。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "章の字が低すぎました。インスタグラムでは、アカウント名が出る位置と重なります。次の号から位置を上げましたが、アイスランド編は投稿したときのままです。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "あとから変えたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "一日に3回、着替えていました。服が変わるたびに、見ている人は物語から一度降りてしまいます。10月30日からは、1号は一日、一着です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "アイスランド編の女性には、名前がありませんでした。今は名前があります。ソルヴェイ。ノルウェーのベルゲンで、ドキュメンタリーの音を録る仕事をしています。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "中身より先に、枠が要った。座標と時刻なら、お金はかかりません。それだけで、新しい1本を前の1本と並べて見られるようになりました。服も街も人も変わっていい。変えないのは枠のほうでした。"
+      }
+     ],
+     [
+      {
+       "s": "場所の写真は、カットごとに別々に要る。1枚の参考写真ですべてを作ると、どのカットにも同じ壁が写ります。"
+      }
+     ],
+     [
+      {
+       "s": "音は、信じる前に聞く。AI の動画には、音楽や別の場所の空気が入ることがありました。今は手や指と同じように確かめています。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "指示書には、どのカットにも同じ一文を入れていました。彼女はここになじんでいて、ここにあるものに何ひとつ感心していない。9枚と浜辺の横長の1枚を選んだのは私です。まだ誰もこの連作を知らないので、映像は景色ではなく顔から始めることにしました。浜辺を横に流すカットは、朝の章の最後へ動かしました。雑誌のためには写真2枚をそれぞれ5通りに描き直させ、鉛筆や水彩のまねをした絵はやめて、筆の線と平らな色の絵を残しました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "そして、題から国の名前をはずし、緯度を置きました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "地名を題にすると、どこかで見たことのある旅の映像になります。"
+     },
+     {
+      "b": true,
+      "s": "緯度そのものを題にして、数字を主役にする。"
+     },
+     {
+      "s": "その考え方が面白いと思いました。理由は、それだけです。座標はその場所がどんな所かを説明せず、どこに立っているかを言うだけ。始めるには、それで十分でした。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "The morning the title became a number",
+  "subtitle": "How LATITUDE began with 64.1° N Iceland — a place name that became a coordinate in 34 minutes, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/iceland/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "On the morning of 20 October, a title card that said ICELAND was remade three times in 34 minutes and became 64.1° N. That was the morning the series got its name."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Iceland was the first issue. A woman stands on the black sand at Reynisfjara at 07:40, puts one boot up on a bollard in Reykjavík harbour at 12:15, and stands among the glass walls of Harpa at 17:50. Three coats: khaki-beige, closed up to a tall collar, over very wide black trousers; a navy pea coat with shearling across the chest and shoulders; a collarless camel coat, belted at the sides, over cream wide trousers."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "HOW IT BEGAN"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The film did not start with a name. On the morning of 20 October I was cutting it, and the title card simply said ICELAND, with the three places in small letters underneath."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "At 09:09 the next version took the country off the title and put a coordinate there: 64°N, with ICELAND small below it. In the same version each chapter got the place and the time in the corner of the screen. REYNISFJARA 07:40."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "At 09:23 the word LATITUDE appeared above the number, and the number became 64.1° N. On its own, 64 reads like a count. With the word above it, it reads as a line on the globe."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/iceland-compare.jpg",
+    "cap": "The same opening on the black beach: I dropped the ICELAND title on the left for the one on the right, with the country taken off and the latitude as the lead, because a place name as a title looks like every travel film you have already seen."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Thirty-four minutes, three title cards, and the series had its name. The caption said it plainly: one day, one place, and someone who belongs there; each film is named after the latitude where it was set. That evening the same title went on the cover of a nine-page magazine issue. The next morning both were on the site."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Two things from that morning have not changed since: the title is a latitude and a city, and the chapters move by the clock."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The day was built from light and weather: an overcast morning on the black beach and basalt columns of the south coast, a windy noon at the harbour in Reykjavík, dusk against the glass walls of Harpa. As the issue's field notes say, the basalt columns of the morning and the glass of the evening share one shape. On 20 October I decided who would be in it: the traveller is not one person but the camera, and in each city it can be someone who lives there. The film ends on a close-up at dusk, her eyes lowered behind the glass, left running as it goes dark. I decided that day not to swap in another picture for the logo."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/iceland-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "133 photographs of the real places, from a public archive; 12 used, a different one for each shot. 168 still images: 72 upright frames for the film, 28 wide frames for a single sweep across the beach, 68 for the magazine pages. 13 video clips. 20 versions of the edit, between 07:19 and 11:02."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Nine of the 72 upright frames are in the film. It runs 22 seconds."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The sound jumped at the first cut. The film opens on a face from the harbour at noon, then cuts to the beach in the morning. The harbour clip brought its own air, so the film changed rooms one second in. Now the sound of the first place runs from the very first frame."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Some clips arrived with music in them. Video models sometimes add a score nobody asked for. The footsteps at Harpa had music underneath, so they came out. Now every clip is checked for music before its sound is used."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The chapter labels sit too low: on Instagram they fall where the account name is printed. Later issues raised them. Iceland stays as it was posted."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I CHANGED LATER"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Three outfits in one day. Each change of clothes lets the viewer step out of the story, so since 30 October an issue is one day in one outfit. And in Iceland the woman had no name. She has one now: Solveig, from Bergen, who records sound for documentaries."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "The frame had to come before the content. A coordinate and a clock cost nothing, and they made every new film readable against the last. The clothes, the city and the person could change. The frame did not."
+      }
+     ],
+     [
+      {
+       "s": "Each shot needed its own photograph of the real place. One reference for everything gives you the same wall in every frame."
+      }
+     ],
+     [
+      {
+       "s": "Sound has to be heard before it is trusted. Some clips carried music or the wrong room. I now check a clip's sound as carefully as its hands."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Every frame carried one line about attitude: she belongs here, and nothing here impresses her. I chose nine frames of 72, and the wide one for the beach. I asked for the film to open on a face, because no one knew the series yet. I moved the sweep across the beach to the end of the morning. For the magazine I had two photographs redrawn five ways each, and ruled out anything pretending to be pencil or watercolour; brush-ink lines and flat colour stayed."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "And I took the country off the title and put a latitude there."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A place name as a title looks like every travel film you have already seen. Making the latitude itself the title, the number as the lead, struck me as the more interesting idea. That was the whole reason. A coordinate does not describe a place; it only says where you are standing. That was enough to begin."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

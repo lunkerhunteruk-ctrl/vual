@@ -1,0 +1,413 @@
+{
+ "slug": "vienna",
+ "ja": {
+  "title": "寒くなるほど、閉じていくコート｜LATITUDE ウィーン編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "絵を1枚も作らないうちに、物語を6回直しました。そのあと作った静止画は436枚。残したのは、そのうちのほんのわずかです。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、本物の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "ウィーン編では、主人公のクラーラが朝7時20分に夜行列車で着き、夜11時すぎにホテルの部屋で一日を終えます。服は一日中同じです。内側がムートンの、大きなフード付きのこげ茶のレザーコート。オフホワイトのタートルネック。クロコ型押しのレザースカート。黒のスエードブーツ。小さなスエードのバッグをひとつ。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/vienna/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "クラーラは、プラハで建築を学ぶ学生で、コペンハーゲン編と同じ人です。ウィーンには、その続きとして、前の街から夜行で着く形にしました。この街で最初に決めた芯は「飾り」でした。駅の入口として建てられたワーグナーの金のひまわりから、飾りがボルトになった郵便貯金局、壁を鏡にした27㎡のバーまで、一日を建物の飾りでたどります。終わりは、オチを作らず静かな場面で閉じると先に決めていました。バーで脚を組む絵は広告のポーズに見えるので外し、ホテルの部屋でブーツを脱ぐ場面にしました。絵コンテのそのコマには、作り物とは思えない色っぽさがあり、それを見て、品のある色っぽさを毎号どこかに入れると決めました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "絵を作る前に"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "最初に作ったのは、絵ではありません。水彩でざっと描いた20コマの絵コンテです。これを、会社の違う3つの AI に見せ、物語として面白いか、私が「品のある色っぽさ」と呼んでいるもの（いやらしさではなく、女性が見ても美しいと思える瞬間）があるかを聞きました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "直して、また見せる。これを6回くり返し、20コマは11コマになりました。最初の版は、山場のバーに着く前に、店のスープや夕日や市の金色で、暖かさを使い切っていました。名所の前に立つ絵も多く、彼女の体に寒さが出ていませんでした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "どう直すかは、私が決めました。軸にしたのは、次の2つです。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "暖かい場所は、一日中ガラス越しにしか見えない。カフェの窓、明かりのついた店、路面電車の向こうの市場。暖かさはいつも向こう側にあります。夜9時40分、彼女は重いカーテンを押し分けてバーに入り、そこで通りの音がふっと消えます。"
+      }
+     ],
+     [
+      {
+       "s": "寒くなるにつれて、コートの前が閉じていく。朝は指に引っかけて持ち、昼は前を開けて着る。午後にはボタンを留め、風の中では襟元を押さえ、暗くなるとフードをかぶる。そしてバーに入ったところで、一気に開けます。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "静止画436枚、動画64本。編集は21回やり直しました。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/vienna-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "AI のおかげで、絵を作ること自体は安くなりました。"
+     },
+     {
+      "b": true,
+      "s": "安くならないのは、選ぶことです。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "2つのカットにだけ、雪が積もっていました。通りの参考にした写真が、たまたま雪の日に撮られたもので、AI はその雪まで写してしまったのです。その日のほかの場面は、雪のない乾いた日だったのに。参考写真には、天気までついてきます。今は、すべての指示文にその日の天気を同じ言葉で書き、参考写真からは通りの形だけを使うように指定しています。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/vienna-compare.jpg",
+    "cap": "夜の停留所。左は参考写真の雪まで写っていた前の版で、ほかの場面と同じ雪のない夜に撮り直した右を、仕上げに使いました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "フードの表と裏が逆でした。AI で作った試着画像では、フードの外側が毛皮になっていました。本物のコートは外側がレザーで、毛皮は内側だけです。試着画像をそのまま信じてしまったのが原因でした。今は、商品写真だけを正解として、全カットで見比べています。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "真上から撮ったカットが2枚ありました。朝ごはんと、スープの鍋。1枚ずつ見れば悪くないのですが、2枚並ぶと、いかにも型どおりに見えました。今は、真上からのカットは1号に1枚まで。料理は、実際に人がテーブルで見る高さから撮ります。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "ウィーン編で分かったことは、3つあります。"
+     }
+    ]
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "服は、ポーズを4つ並べるより、一日の中で働く姿を追ったほうが伝わりました。寒くなるほど閉じていくコートを見ると、そのコートが何のためにあるのかが分かります。ルックブックでは、なかなかそこまで届きません。"
+      }
+     ],
+     [
+      {
+       "s": "正解は商品写真で、AI の試着画像は下書きでした。フードの表裏を逆にされて、それがはっきりしました。それからは、フード、裏地、袖口、バッグの持ち手の数を、毎回商品写真と見比べています。AI は何も言わずに、そこを変えてくるからです。"
+      }
+     ],
+     [
+      {
+       "s": "時間をかける所は、指示書と選ぶことでした。この号では、物語を絵の前に批評にかけました。間違えても一番安くすむのが、その段階だったからです。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "批評役の AI の意見は聞きましたが、決めたのは私です。暖かさは、カーテンをくぐるまでガラスの向こうに置いておく。コートは時間とともに閉じていく。436枚のうち、残すのはほんのわずか。そして最後は、決めポーズではなく、ブーツを脱いで椅子に沈みこむ姿で終える。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "b": true,
+      "s": "私の仕事は、絵を作ることではありません。その一日に、どの絵が必要かを見きわめることです。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "A coat that closes over one day",
+  "subtitle": "How I directed 48.2° N Vienna — six rounds of critique before a single picture, 436 stills, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/vienna/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In Vienna, Klára arrives on the night train at 07:20 and ends the day in a hotel room after 23:00. One outfit, all day: a dark brown leather coat lined with shearling, with a big hood; an off-white turtleneck; a croc-embossed leather skirt; black suede boots; one small suede bag."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Klára studies architecture in Prague; she is the same woman as in the Copenhagen issue. Vienna continues from there, so she arrives by night train from the city before. The first thing I fixed for this city was its core: ornament. The day follows the decoration of buildings — from Otto Wagner's golden sunflowers on a station built as an entrance to the city railway, to the Postal Savings Bank where the ornament became bolts, to a bar of 27 square metres with mirrored walls. I had already decided the day would end without a twist, on a quiet scene. A frame of her crossing her legs in the bar looked like an advertising pose, so I took it out and ended in the hotel room, with her boots coming off. That frame in the storyboard had a sensuality that did not feel made, and seeing it, I decided every issue would carry one moment of that quiet sensuality somewhere."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "BEFORE ANY PICTURE"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I did not start with images. I started with a rough storyboard of twenty frames, drawn quickly in watercolour, and put it in front of three AI models from three different companies. I asked whether the story held, and whether it had something I call quiet sensuality — the kind of moment a woman would call beautiful, not sexy."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I revised and asked again. Six rounds, and twenty frames became eleven. The first version spent all its warmth — soup in a shop, a sunset, the gold of the market — before she ever reached the bar at the peak of the day. Too many frames stood her in front of landmarks, and her body showed no cold."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "How to fix it was my call. Two decisions made the issue:"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "All day, she only sees warm places through glass. A café window, a lit shop, a market behind a tram. The warmth is always on the other side. At 21:40 she pushes through a heavy curtain into a bar, and the sound of the street drops away."
+      }
+     ],
+     [
+      {
+       "s": "The coat closes as the day gets colder. Hooked on one finger in the morning, open at noon, buttoned in the afternoon, collar gripped in the wind, hood up after dark — and then, inside the bar, opened in one go."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/vienna-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "436 still images. 64 video clips. 21 versions of the edit."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "With AI, making images is the cheap part. Choosing is not."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Snow in two shots. My location photographs for two streets had been taken on snowy days, and the model copied the snow. The rest of the day was dry. Reference photos carry their weather with them. Now every prompt states the weather of the day in the same words, and tells the model to take only the shape of the street."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/vienna-compare.jpg",
+    "cap": "The tram stop at night: the earlier version on the left had copied the snow from the reference photo, so I reshot it on the same dry night as the rest of the day and used the one on the right."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A hood that was the wrong way out. The generated try-on showed fur on the outside of the hood. The real coat is leather outside, fur only inside. I had trusted the try-on. Now I treat the product photograph as the only truth, checked in every frame."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Two shots from directly above — breakfast, and a pot of soup. Each one looked fine. Together they looked like a template. Now an issue gets at most one overhead shot, and food is shot from the height of the table, where a person actually sees it."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Vienna taught me three things."
+     }
+    ]
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "A garment came across better followed through a day than set out in four poses. A coat that closes as it gets colder tells you what the coat is for. A lookbook rarely gets that far."
+      }
+     ],
+     [
+      {
+       "s": "The product photo was the truth; the generated try-on was a sketch. The hood turned inside out made that plain. Since then I check hoods, linings, cuffs and the number of handles on a bag against the product photo in every frame, because AI changes them without a word."
+      }
+     ],
+     [
+      {
+       "s": "The time belonged in the brief and in the choosing. In this issue the story went to critique before any picture was made. That was the cheapest place to be wrong."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I listened to the critics; the decisions were mine. The warmth stays behind glass until the curtain. The coat closes hour by hour. Of 436 images, only a few stay. And the film ends with her boots off, sinking back into a chair — not on a pose."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "That is the job: not making the pictures, but knowing which ones the day needs."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

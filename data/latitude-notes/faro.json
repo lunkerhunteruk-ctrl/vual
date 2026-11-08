@@ -1,0 +1,497 @@
+{
+ "slug": "faro",
+ "ja": {
+  "title": "4時前に日が沈む島で｜LATITUDE フォーレ島編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "昼が8時間44分しかない島で、一日を撮りました。日の入りは15時49分。夕日を頼んだのに昼の絵が返ってきて、原因は私が毎回書いていた一行でした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、実在の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "フォーレ島は、バルト海のゴットランド島の北の端にある小さな島です。無料のフェリーで6分。朝8時40分にフェリーで渡り、10時15分に石灰岩の柱が並ぶランゲハンマルスの浜、12時40分に白い教会、午後3時35分に灯台のあるホルムッデンの岬、4時20分にヘルグマンネンの漁師小屋。最後は小屋のストーブの前です。コートは3着。内側がムートンのこげ茶のレザーコート、オリーブ色のウールのロングコート、夕方からは毛足を表にした縮れたこげ茶のムートン。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/faro/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "フォーレ島の女性は、最初の号、アイスランド編と同じ人です。モデルを順に回して、同じ人にまた会えるようにする。そう決めた次の日に組んだのが、この号でした。一人には同じ国を2か所めぐってもらう決まりで、フォーレ島はスウェーデンの1か所めです。一日は朝のフェリーで島に着くところから始め、夜の場面で閉じました。どちらも、前の号で決めた形です。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "先に決めたのは、光でした"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "計画書の一日の段は、太陽の一行から始まっています。11月の初め、日の出は8時前、日の入りは4時ごろ。あとで雑誌の「光」のページのために、11月5日のフォーレ教会の位置で計算しました。日の出は7時5分、日の入りは15時49分。昼は8時間44分しかなく、正午でも太陽は17度まで上がりません。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "この光の中に一日を収めるために、光を言葉で書きました。場面ごとに、その時刻の光を一行。一日を通して使ったのは、次の5つです。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "朝：横から差す、低く冷たい太陽。長く淡い影。"
+      }
+     ],
+     [
+      {
+       "s": "昼：白っぽい曇り空。やわらかく、むらのない光。"
+      }
+     ],
+     [
+      {
+       "s": "夕方：地平線すれすれの太陽。横から琥珀色の光、空は冷たい青。"
+      }
+     ],
+     [
+      {
+       "s": "日の入りの直後：水平線にオレンジの帯、その上は紫がかった青。"
+      }
+     ],
+     [
+      {
+       "s": "夜の小屋：薪ストーブと、小さな油のランプがひとつだけ。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "章も、この時刻の上に置きました。3時35分のホルムッデンは、日が沈むまで残り15分ほど。4時20分のヘルグマンネンは、沈んで30分後。映像の最後の8秒は、火の明かりだけです。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "実在の場所の写真を公開資料から94枚集め、28枚を参考に使いました。静止画は349枚、動画は19本で、映像に入ったのは18本。編集は10月26日の朝7時16分から11時までに24回書き出しました。映像は33.5秒、雑誌は20ページです。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/faro-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "349枚のうち、使ったのは39枚。映像に18枚、映像の表紙に1枚、雑誌に22枚（2枚は両方に入っています）。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "夕日を頼んだのに、昼の絵が来ました。漁師小屋の角にもたれる場面を夕日の中で8枚作ったら、全部が平らな昼の光でした。原因は、私が書いた一行です。ほとんどの指示文に、この号の色として「淡い銀色がかった青空」というフィルムの説明を入れていました。"
+     },
+     {
+      "b": true,
+      "s": "毎回同じ空が書いてあるので、時刻の指定より、その空が勝ったのです。"
+     },
+     {
+      "s": "作り直しでは夕方専用のフィルムの説明を書き、「はっきりと夕方。昼の光にしない」と足しました。映像に入っているのは、この2回目の1枚です。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/faro-compare.jpg",
+    "cap": "漁師小屋の角にもたれる場面は、夕日を頼んだのに平らな昼の光になった左の1枚をやめ、夕方専用のフィルムの説明で作り直した右の1枚を映像に使いました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "ストーブの火が、フラッシュのように写りました。薪をくべる場面が、部屋ごと平らに明るく写っていたのです。作り直させ、明かりは開いたストーブとランプひとつだけ、顔の向こう側は影、と書きました。「フラッシュ」は写してはいけない物に入れています。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "頼んでいない音楽が入りました。動画の指示文にはすべて「音楽は絶対に入れない」と書いたのに、映像に使った18本のうち5本に曲がついてきました。そのカットは、前のカットの音を引き伸ばしています。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "あとから変えたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "11月1日から、指示文には必ずその時刻の光を書き、夜は明かりを名指ししています。フラッシュは、ポーズを決めた1枚でねらう時だけ。10月30日からは、1号は一日、一着です。フォーレ島の女性には、いまは名前があります。ソルヴェイ。ベルゲンで、ドキュメンタリーの音を録る仕事をしています。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "一日の予定は、本当の光の中で組む。この号では、計画書の一日の段を太陽の一行から書き始め、場面ごとにその時刻の光を書きました。"
+      }
+     ],
+     [
+      {
+       "s": "光は時刻ごとに書き、それを上書きする一行がないか探す。どの指示文にも入れていた「いつもの雰囲気」の一行が、自分の空を連れてきました。"
+      }
+     ],
+     [
+      {
+       "s": "夜は、明かりを名指しするだけでは足りなかった。ストーブとランプを名指ししても、部屋ごと平らに明るく写りました。顔の向こう側の影まで書いて、ようやく火の明かりになりました。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "この号で決めたのは、まず配分です。映像はファッションに寄せて、ポーズを決めた強いカットを入れる。雑誌はその一日の裏側として、ポーズのない場面を中心にし、写真は雑誌の形で作り直す。同じ絵の使い回しに見えないようにするためです。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "送り返した場面が3つあります。表紙と似すぎた、石の柱の前の立ち姿。証明写真のように真正面を向いた、教会の前の寄り。真上から撮った昼ごはん。これは窓ぎわのカフェに変えました。石垣の道で羊に出会う場面は、同じカメラの位置から8コマ、フィルムの一列のように撮りました。作ったのは32枚、残したのは8枚です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "編集では、この映像のために作った16曲から1曲を選び、カットの切り替えをすべてその拍の上に置きました。羊と砂丘と火の場面だけは曲を下げて、その場の音を聞かせています。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "表紙には、島の名前を太い字で置きました。FÅRÖ。のちに決まりとして書き残しています。表紙で地名を主役にしてよいのは、名前が短く、字の形が強い時だけ。その例が、フォーレでした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "私の仕事は、絵を作ることではありません。その一日に、どの絵が必要かを見きわめること。"
+     },
+     {
+      "b": true,
+      "s": "フォーレ島では、それぞれの絵が何時の光の中にあるべきかを、見きわめることでした。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "The island where the sun sets before four",
+  "subtitle": "How I directed 57.9° N Fårö — a day written inside 8 hours and 44 minutes of light, 349 stills, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/faro/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Fårö lies off the northern tip of Gotland, six minutes by a free ferry. The day: the ferry at 08:40, the limestone stacks at Langhammars at 10:15, the white church at 12:40, the lighthouse point at Holmudden at 15:35, the fishermen's huts at Helgumannen at 16:20 — then a stove. Three coats: dark brown leather lined with shearling; long olive double-faced wool; and, at dusk, curly dark shearling worn fleece-out over an ecru cable knit."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The woman on Fårö is the same woman as in the first issue, Iceland. I had decided to rotate the models so that the same person comes back and can be met again; this issue was put together the day after. Each of them visits two places in one country, and Fårö is her first in Sweden. The day opens with arriving on the island by the morning ferry and closes on a night scene. Both were forms I had settled in the issue before."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "THE LIGHT CAME FIRST"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The plan's outline of the day opens with the sun: early November, sunrise before eight, sunset around four. The magazine's light page later worked it out for Fårö church on 5 November: 07:05 to 15:49. Eight hours and forty-four minutes, and at noon the sun stays under 17 degrees."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "So the light had to be written, hour by hour. Each scene got a line for its hour; these are the five that run through the day:"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "Morning: a low, cold sun from one side, long pale shadows."
+      }
+     ],
+     [
+      {
+       "s": "Midday: grey-white overcast, soft and even."
+      }
+     ],
+     [
+      {
+       "s": "Late afternoon: the sun very low, amber from the side, the rest of the sky cold blue."
+      }
+     ],
+     [
+      {
+       "s": "Just after sunset: an orange band on the horizon, violet-blue above."
+      }
+     ],
+     [
+      {
+       "s": "Night in the hut: only a wood stove and one oil lamp."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The chapters sit on those hours. Holmudden at 15:35 is the last quarter of an hour of sun. Helgumannen at 16:20 is half an hour after it. The last eight seconds of the film are lit by fire."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/faro-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "94 photographs of the real places, from a public archive; 28 used as references. 349 still images. 19 video clips, 18 in the film. 24 versions of the edit, 07:16 to 11:00 on 26 October. The film runs 33.5 seconds; the magazine has 20 pages."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "39 of the 349 stills were used: 18 in the film, one for its cover, 22 in the magazine, two of them in both."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Sunset came out at noon. Eight pictures of her at the corner of a fishermen's hut, asked for in the setting sun, came back in flat daylight. The cause was my own line: almost every prompt described the film with the same \"pale silver-blue sky\", and repeated in prompt after prompt, that sky beat the hour. The redo got its own evening film line and the words \"clearly evening, never daylight\". The shot in the film is from that second set."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/faro-compare.jpg",
+    "cap": "At the corner of the fishermen's hut I dropped the frame on the left, which came back in flat noon light although I had asked for sunset, and used the one on the right, remade with its own evening film line, in the film."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Firelight that looked like flash. The first pictures of her feeding the stove were lit flat and even, the whole room bright. I sent them back. The new prompt: only the open stove and one oil lamp, the far side of her face in shadow, nothing brightly lit, and flash on the list of things never to show."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Music nobody asked for. Every video prompt said \"absolutely no music\". Five of the 18 clips in the film came back with a score anyway. Those cuts borrow the sound of the cut before."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I CHANGED LATER"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Since 1 November every prompt writes the light of its own hour and names the light source at night; flash only when a posed shot asks for it. Since 30 October an issue is one day in one outfit. And the woman on Fårö has a name now: Solveig, from Bergen, who records sound for documentaries."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "Plan the day inside the real light. Here the plan's outline of the day began with a line about the sun, and every scene got the light of its own hour."
+      }
+     ],
+     [
+      {
+       "s": "Write the light for each hour, then look for the line that overrides it. The house style I had put in every prompt brought its own sky with it."
+      }
+     ],
+     [
+      {
+       "s": "At night, naming the light was not enough. The stove and the lamp were named, and the room still came back flat and bright. Only when I wrote the shadow on the far side of her face did it become firelight."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "What I decided first was the balance. The film would lean toward fashion, with strong posed frames, and the magazine would be the day behind it, mostly unposed, its pictures made in their own shapes so the two would not look recycled."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I sent three scenes back: a pose at the stacks too close to the cover, a frontal at the church like a passport photo, and a lunch shot from directly above, which became a café table by the window. For the sheep by the stone wall I asked for eight frames from one camera position, like a strip of film: 32 pictures, eight kept."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In the edit I chose one score from sixteen made for the film and put every cut on its beat; the music drops away for the sheep, the dune and the fire, so the place can be heard. And I put the island's name on the cover in heavy letters: FÅRÖ. Later I wrote the rule: a place name leads the cover only when it is short and its letters are strong. Fårö was the example."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "That is the job: not making the pictures, but knowing which ones the day needs — and, on Fårö, which hour each one belongs to."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

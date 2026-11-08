@@ -1,0 +1,496 @@
+{
+ "slug": "london",
+ "ja": {
+  "title": "描かれてから、歩き出す線｜LATITUDE ロンドン編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "公開の9分前に、止めました。ロンドン編は10月22日の朝10時に出す予定でしたが、9時51分に止め、12時19分に出したときには、動くページが3枚ありました。そのひとつは、テムズ川の地図の上で女性の姿が筆の線でひとりでに描かれ、描き終わると歩き出すページです。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、本物の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "ロンドンは、ファッションの学生だった私が7年ほど暮らした街です。この号では、若い女性がその街を一日で歩きます。朝9時10分、ナショナル・シアターのコンクリートのテラス。昼12時30分、バービカンのれんがの空中歩廊。夕方4時40分、ブラックフライアーズ橋の鉄のアーチの下。服は3着。前を開けた砂色のコートに淡い色のワイドデニム、チャコールのジャケットにストライプの開襟シャツ、長い紺のコートにボタンを上まで留めたキャメルのカーディガン。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/london/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "絵が「現れる」ところまで"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "ふだん私が決めるのは、絵に何が写っているかです。"
+     },
+     {
+      "b": true,
+      "s": "ロンドン編では、絵がページにどう現れるかまで決めました。"
+     },
+     {
+      "s": "12時19分に出した版の、動くページ3枚はこうです。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "テムズ川の地図の上で、女性の姿が、太い筆の線でひとりでに描かれていきます。髪と横顔、コート、脚、靴の順。描き終わると、その場で歩き出します。"
+      }
+     ],
+     [
+      {
+       "s": "市場で昼ごはんを手にした彼女の写真のまわりに、号の色の「コンクリートのグレー」の油絵の具が、一筆ずつ置かれて額縁になります。"
+      }
+     ],
+     [
+      {
+       "s": "バービカンの彼女を筆で描いた絵が、れんがの壁に掛けた樫の額の中でだけ、髪を風に揺らします。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "その晩には4枚目として、この日の7つの色を油絵の具で1色ずつ塗っていくページが加わりました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "始まりは10月19日のメモで、「曇りのロンドンの、ブルータリズム建築」とあります。メモには、インフラ・コンクリート・曇り空・素の顔という手ざわりはそのままに、もっと建築的に、映画のように撮る、とも書いています。そこから、コンクリートのナショナル・シアター、れんがのバービカン、テムズの橋の下という3つの場所が決まりました。人物は、10月20日に「旅をするのは一人の人物ではなくカメラ。街ごとに、その土地にいる人でよい」と決めています。雑誌を夜の橋の写真で終えたのは、10月21日に「クレジットのページはなくし、最後は余韻のある写真で終える」と決めたからです。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "実在の場所の写真を、公開されている資料から59枚集め、12枚を使いました。静止画は307枚。動画は28本作り、映像に使ったのは12本。人のいない場所の静止画を3枚はさんでいます。映像は22.5秒、白黒で始まります。編集は、10月19日の夜から22日の朝までに28回書き出しました。雑誌は21日に10ページ、22日の夜には18ページになりました。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/london-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "307枚の静止画のうち、映像とページに入ったのは28枚です。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "筆が画面に入ってきました。「線がひとりでに描かれていく動画」を頼んだら、AI は筆が絵を描いている映像を返してきました。次の指示書に、筆も手も道具の影も出さないと書き、11分後には線だけが現れる版に差し替えました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "自分で作った絵の具は、管のように見えました。最初は筆の動きをプログラムで再現しようとしましたが、線はどこも同じ太さで、絞り出したチューブのようでした。そこで、質感は画像の AI に描かせ、筆の進む順に見せるところだけをプログラムでやることにしました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "4枚の絵では、歩けませんでした。その晩、同じ歩く線を、動画を使わず4コマの絵のくり返しで作ろうとしました。1枚に4コマを描かせると左右の脚が同じ形になり、1コマずつ描かせて片方の靴を黒くしても、ぎこちないまま。なめらかな歩きは動画の得意分野です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "押しても、面白くありませんでした。サイトに、押すと線が描かれる仕掛けを2つ足したのです。1985年に取り壊された鉄道橋をブラックフライアーズ橋の横に描き戻すものと、バービカンの柱に拍の線を積み上げるもの。"
+     },
+     {
+      "b": true,
+      "s": "驚きには意味が要ります。"
+     },
+     {
+      "s": "その晩のうちに外しました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "映像でも、橋の下の2カットだけ顔が丸くなり、22日の朝に替えました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "あとから変えたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "10月22日から、号ごとに試したこと・残したこと・捨てたことを帳面に書いています。最初の記録がロンドン編です。この号は3着でしたが、10月30日からは1号一着。女性にも名前がつきました。メイヴ、22歳、古本屋で働いています。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "絵だけでなく、絵の現れ方も設計するものだった。どの順で、どの速さで、何をきっかけに、何の上に現れるか。"
+      }
+     ],
+     [
+      {
+       "s": "道具には、得意なことだけを任せるのがいい。歩く動きは動画に。絵の具の質感は画像の AI に。順番と間合いはプログラムに。"
+      }
+     ],
+     [
+      {
+       "s": "驚きには意味が要る。なくなっても誰も困らない仕掛けは、その晩のうちに外しました。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "写真では、まっすぐ立った正面の1回目をやめ、10月19日に、座る・もたれる・見上げる形で撮り直しました。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/london-compare.jpg",
+    "cap": "朝のナショナル・シアターの大階段。左の1回目は、正面に立つカタログのような形で背景もくっきりしていたので、階段に座る形にして背景を大きくぼかした右の1枚を選びました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "マティスのような数本の筆の線で描かれてから歩き出す姿にし、その地図をこの日の案内として前のほうへ置くと決めたのは私です。市場の写真のどこに絵の具を置くかはざっと描いて渡し、色はナショナル・シアターのコンクリートにしました。押すと線が描かれる仕掛けを頼んだのも、外したのも私です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "バービカンのページには、私自身の記憶を一文だけ置きました。「ファッションの学生として、ロンドンで7年。バービカンで聴いた『18人の音楽家のための音楽』。あの拍は、今もこの壁の中にある。」言葉は残しました。線で描いた拍のほうは、外しました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "私の仕事は、絵を作ることではありません。その一日に、どの絵が必要かを見きわめることです。ロンドン編では、それぞれの絵がどう現れるべきかも。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "A line that draws itself, then walks",
+  "subtitle": "How I directed 51.5° N London — four pages that move, 307 stills, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/london/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Nine minutes before it went live, I held it back. The London issue was due on the site at 10:00 on 22 October. At 09:51 I stopped it. When it went up at 12:19, three of its pages moved — on one, a figure draws itself in brush lines over a map of the Thames and, once finished, starts to walk."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "London was my city for about seven years, as a fashion student. Here a young woman crosses it in one day: the concrete terraces of the National Theatre at 09:10, the brick highwalks of the Barbican at 12:30, the iron arches of Blackfriars Bridge at 16:40. Three outfits: a sand coat worn open over a grey V-neck and wide light jeans; a charcoal jacket over a striped camp-collar shirt and wine-brown pleated trousers; a long navy coat over a camel cardigan buttoned to the top and wide grey trousers."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "HOW A PICTURE ARRIVES"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Usually I decide what a picture shows. In London I also decided how it arrives on the page. The three pages that moved at 12:19:"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "On a map of the Thames, a figure draws itself in a few thick brush lines — hair and profile, then the coat, the legs, the shoes — and, once finished, starts to walk in place."
+      }
+     ],
+     [
+      {
+       "s": "Around a photograph of her at the market, four strokes of oil paint in the issue's concrete grey are laid down one after another, as a frame."
+      }
+     ],
+     [
+      {
+       "s": "A brush-ink drawing of her at the Barbican hangs in an oak frame on a brick wall; only the drawing moves."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "That evening a fourth followed: the issue's seven colours, painted on one at a time."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "It began with a note on 19 October: overcast London, brutalist architecture. The same note kept the texture — infrastructure, concrete, grey sky, bare faces — and asked for it to be shot more architecturally, more like cinema. That gave the three places: the concrete of the National Theatre, the brick of the Barbican, the underside of a Thames bridge. On 20 October I had decided who travels: not one character but the camera, with whoever lives in each city. And the magazine ends on a photograph of a bridge at night because on 21 October I decided to drop the credits page and close on a picture that lingers."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/london-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "59 photographs of the real places from a public archive; 12 used. 307 still images. 28 video clips for the film; 12 are in it, with three stills of empty places. It runs 22.5 seconds and opens in black and white. 28 versions of the edit, from the evening of 19 October to the morning of the 22nd. The magazine grew from 10 pages on 21 October to 18 by the night of the 22nd."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "28 of the 307 stills made it into the film and onto the pages."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The brush drew itself in. Asked for a drawing that makes itself, the video model painted in a brush doing the drawing. The next brief ruled out any tool, hand or shadow. Eleven minutes later the lines appeared on their own."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "My paint looked like tubing. Simulated in code, the oil strokes came out even, like piped tubes. So the work was split: an image model painted the texture, and code revealed it stroke by stroke, in the order a brush moves."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A walk in four drawings. That evening I tried the same walk without video: four drawn frames, looped. Drawn as one sheet, the left and right legs came out the same; drawn one at a time, with one shoe black to tell the legs apart, it still stuttered. Smooth walking is what video is good at."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Lines nobody missed. On the site I added two things to tap: one drew back the railway bridge beside Blackfriars that came down in 1985; the other stacked a pulse up a Barbican column. Neither was interesting: a surprise needs a meaning. They came out the same night."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In the film, two shots at the bridge gave her a rounder face. On the morning of the 22nd I replaced them."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I CHANGED LATER"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "On 22 October I started a notebook: what each issue tried, what it kept, what it threw away. London is its first entry. Since 30 October an issue is one day in one outfit; London had three. And she has a name now: Maeve, 22, who works in a second-hand bookshop."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "The picture was only half of it. How it arrives had to be designed too: the order, the speed, what starts it, what it lands on."
+      }
+     ],
+     [
+      {
+       "s": "Each tool did best at one job. Video for walking. The image model for the texture of paint. Code for order and timing."
+      }
+     ],
+     [
+      {
+       "s": "A surprise needs a meaning. The lines nobody would have missed came out that same night."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In the photographs, I dropped the first round — standing straight, facing the camera — and on 19 October reshot it sitting, leaning, looking up."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/london-compare.jpg",
+    "cap": "The grand stairs of the National Theatre in the morning — the first round (left) stood front-on like a catalogue against a sharp background, so I chose her sitting on the steps, the background thrown far out of focus (right)."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I asked for a figure in a few Matisse-like brush lines that draws itself and then walks, and placed that map near the front, as a guide to the day. I sketched where the four strokes should go around the market photograph, and set their colour to the concrete of the National Theatre. I asked for the tap-to-draw lines, and took them out."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "One thing I kept from my own years there, on a Barbican page: Seven years a fashion student in London. Music for 18 Musicians at the Barbican. The pulse is still in these walls. The words stayed. The drawn pulse went."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "That is the job: not making the pictures, but knowing which ones the day needs — and, in London, how each one should arrive."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

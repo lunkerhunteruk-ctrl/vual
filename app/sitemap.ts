@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { PEOPLE, liveIssues } from '@/lib/latitude';
 import { CITIES, areasOf, sectionsOf } from '@/lib/latitude-places';
+import { getNote } from '@/lib/latitude-notes';
 
 // 公開予約の号が時刻を過ぎたら載るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -24,6 +25,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
+
+  // 2026-11-08 号ごとの制作ノート。日本語と英語は別の文章で、それぞれが本体
+  const notes = liveIssues().filter((i) => getNote(i.slug)).flatMap((i) =>
+    locales.map((locale) => ({
+      url: `${base}/${locale}/latitude/${i.slug}/notes`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      alternates: { languages: Object.fromEntries(locales.map((l) => [l, `${base}/${l}/latitude/${i.slug}/notes`])) },
+    }))
+  );
 
   // 2026-10-30 人のページ（本文は英語。本体は /en）
   const people = PEOPLE.map((p) => ({
@@ -65,6 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }))
     ),
     ...issues,
+    ...notes,
     ...places,
   ];
 }

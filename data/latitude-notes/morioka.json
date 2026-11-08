@@ -1,0 +1,781 @@
+{
+ "slug": "morioka",
+ "ja": {
+  "title": "冬の街に、手のひらで触れる｜LATITUDE 盛岡編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "11月の盛岡では、街のまん中を流れる中津川に、海から200キロほど上ってきた鮭が見えます。絵コンテを見た AI の批評役は、その鮭を「ひれがすり切れ、体が白くまだらにはげた姿」で撮るべきだと言いました。実際の鮭はそうなっているからです。できあがった絵を見て、私が言ったのは「露出しすぎ」でした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、本物の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "盛岡編は、11月24日、くもりで乾いた冷たい一日です。凛は朝の東北新幹線で着き、夜、中津川にかかる上の橋で一日を終えます。服は一日中同じです。黒い巻き毛の大きな襟が付いた、ダークチャコールのウールのシャツジャケット。裾が斜めにとがるグレーのニット。灰色がかった茶色の、丸くふくらむフランネルのパンツ。黒いスエードの、細いヒールのショートブーツ。こげ茶のスエードの、持ち手が2本のバッグ。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/morioka/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "凛は東京の器のギャラリーで働いていて、休みの日に、その土地でしか食べられない物と、その土地でしか作られていない物を見に行きます。盛岡なら、南部鉄器とじゃじゃ麺です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "筋は、3つの案を作者を伏せて比べて決めました。選んだのは「冬の街に、手のひらで触れていく一日」。朝は橋の冷たい青銅、昼前は思ったより重い鉄瓶、午後は両手で包む熱いカップ。寒い日に冷たい手すりへうっかり触れる、持った物が思ったより重い。誰の手にも覚えのある感覚なので、話を追わなくても、自分の手のひらの記憶で見ていられると考えました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "終わりは、朝と同じ上の橋に、夜もう一度立つ場面です。最初の案は、買った小さな鉄の器が手の中でぬるくなっていく場面で終わっていました。買った物で締めるとオチに見え、金沢編の「部屋で座って終わる」とも重なるので、外しました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "3回の「触れる」を、同じ形にしない"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "最初の絵コンテは16コマでした。批評役に見せると、まず「盛岡の名所めぐりに見える」と言われました。新幹線、岩手山、鮭、南部鉄器、じゃじゃ麺、喫茶店、城跡。どの場面も、凛がそこで何をしていたかより「盛岡にはこれがある」が先に立っていました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "もうひとつの指摘は、触れる場面がどれも「中くらいの距離で、物に手を置き、手元を見る」同じ構図だということでした。同じ形が3回来ると、2回目で先が読めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "絵コンテは3回描き、16コマは12コマ、10コマと減りました。"
+     },
+     {
+      "b": true,
+      "s": "触れるたびに、距離と動きを変えました。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "8時53分、上の橋。胸から上と手。川をのぞきこむ時に擬宝珠に置いていた手が、冷たさで少し浮く。手は見ない。"
+      }
+     ],
+     [
+      {
+       "s": "10時45分、鉄器の店。腰から上を横から。低い台から鉄瓶を2〜3センチだけ持ち上げて、手首が少し沈む。"
+      }
+     ],
+     [
+      {
+       "s": "15時、喫茶店の窓ぎわ。顔と両手が入る距離。台に置いたままのカップを両手で包み、息を一度はいて、肩が落ちる。そのまま2秒ほど居る。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "手をきれいに見せる形にもしない、と決めました。指をそろえて浮かせた「見せる手」や、胸の高さで鉄瓶を構える形は、商品の紹介になってしまいます。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "静止画は、リール用に120枚、カルーセル用に44枚、合わせて164枚作りました。1カットにつき8枚作り、その中から選びます。選んだ絵を並べて見ると、夜の橋の凛は前から平らに照らされて B級映画のようで、喫茶店の扉の前で止まる姿は決めのポーズに見えました。喫茶店・扉の外・夜の橋の3カットは、8枚ずつ作り直しました。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "動画は32本、書き出しは6回。絵コンテから6回目の書き出しまでは、記録の上では11月1日の1日で済んでいます。最後は11月7日に、私が Final Cut で仕上げました。10カット、26秒です。カルーセルは14ページで、写真はすべて、リールで飛ばした「間」の場面を、ページの形に合わせて新しく作りました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "狙いを伏せて見せると"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "仕上がった版を、狙いを伝えずに3つの AI に見せました。3つとも「冷えた体が少しずつ温まる」と「ひとりでいる時間」を受け取り、2つは「手で触れる」をはっきり言葉にしました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "途切れたと言われたのは2か所です。喫茶店の扉の外で立ち止まる姿は、3つともポーズに見えると言いました。段を下りて、止まらずに歩き出す動画に作り直しました。鉄瓶を持つ手つきは、2つが商品の紹介に見えると言いました。これも作り直し、重さが手首にかかる区間だけを使っています。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "露出しすぎた鮭。最初の絵コンテの鮭は、つやのある元気な魚で、ただの川魚に見えました。批評役は「200キロ上ってきた鮭は、ひれがすり切れ、体が白くまだらにはげ、流れの中でじっと止まっている」と言い、その通りに作ると、浅瀬で背中が水から出た、白くはげた鮭になりました。事実としては正しい絵です。でも画面の中では、露出しすぎでした。流れのまん中で、水の中に体を保つ2匹に作り直しました。傷みは、ひれの先だけです。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-compare.jpg",
+    "cap": "浅瀬で背中が水から出て、全身が白くまだらな左の鮭を「露出しすぎ」としてやめ、流れのまん中で水の中に体を保つ右の2匹にしました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "床の砂から立つ湯気。鉄器の店で、炭にかけた鉄瓶の湯気が、鉄瓶の口ではなく床の砂から立っていました。部分直しで、口から立つ1本の湯気にしました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "後光になった街灯。夜の橋で、凛の頭の真後ろに街灯が来て、後光のように見えました。街灯だけを横へずらしました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "絵コンテから、どこを変えたか"
+   },
+   {
+    "t": "img",
+    "k": "storyboard",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-compare-storyboard.jpg",
+    "cap": "絵コンテの4コマ目は、上の橋の擬宝珠から手が浮く寄りでした。仕上げでは外し、紺屋町の鉄器の店先を歩きながら、指先が鉄瓶に触れる場面に替えました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "6回目の書き出しの前に、擬宝珠のカットを外しました。手がおそるおそる触れているように見えました。ただの橋の飾りに、そこまで慎重に触れる場面は合わない。触るなら気軽に触るし、触れることそのものを取り上げるほどの重さも感じませんでした。 代わりに足したのは、10時30分、紺屋町の鉄器の店先が続く通りを歩き、指先が店先の鉄瓶のつるにふと触れて離れる場面です。最初の「触れる」は、冷たい青銅から、歩きながらの鉄瓶に変わりました。そのまま店に入って、鉄瓶の重さを確かめる場面につながります。じゃじゃ麺のカットは残しました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "11月7日の仕上げ"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE のドキュメンタリー回は、その場の音だけで仕上げると決めています。盛岡編には、曲を1曲付けました。もともと静かな話なので、全体にまとまりが欲しかったからです。少しほっとした空気でまとめたくて、邪魔にならない、しっとりした曲を選びました。少し感傷的になれるくらいの曲です。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "冒頭の「39.7° N」は、はじめ左上に置いていました。明るい空と屋根の骨の上で、白い字が読みにくかったので、「白文字が見やすい位置に」と右上の暗い屋根の上へ移しました。リールの表紙は紺屋町の鉄瓶の店先に替え、カルーセルの表紙（開運橋）とは別の絵にして、緯度の位置と大きさだけをそろえました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "11月8日、カルーセルを組み直す"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "公開の翌日、カルーセルを見返して、めくり終えたあとに何も残らないと感じました。残るのは、帰り道のイラストくらいでした。14ページのうち、黒い上着の凛を少し離れて撮った全身が4回続き、数字を並べたページは観光案内に見えました。服の手ざわりも、凛という人の目も、ページから見えてきませんでした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "組み直す時に決めたのは、ページの数ではなく「めくって無駄じゃなかった」と思えるかどうかです。20ページまで使ってよいことにして、組むたびに3つの AI に、見る価値があるか、何が足りないかを聞きました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "足したもの。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "モードの強い写真。表紙は開運橋での寄り（白い息と巻き毛の襟）。城跡の石垣の前に立つ全身。鉄器の店で鉄瓶に顔を近づける横顔。Nikon FM2 と Tri-X で撮った想定の、白黒の寄り。夜の格子の灯りの寄り。"
+      }
+     ],
+     [
+      {
+       "s": "服の寄り4つ（襟・裾・鞄・ブーツ）のページ。"
+      }
+     ],
+     [
+      {
+       "s": "凛の言葉を2つ。鉄器の店で「鉄瓶は、思ったより重くて、冷たかった」。夕方に「五時には、川が鉄瓶と同じ色になっていた」。はじめ、鉄器の店の一言は「ギャラリーでは、触らないでとお願いしている。ここでは、全部の鉄瓶に触った」にしていました。器のギャラリーで働く人だから出てくる言葉のつもりでしたが、読み返すと、説明しないと意味が伝わりませんでした。手が覚えた重さと冷たさだけを書く一言に替えました。"
+      }
+     ],
+     [
+      {
+       "s": "河原の見開きは水彩にしました。凛が水面をのぞいている、その先の水の上に、鮭の写真を1枚の札にして置きました。"
+      }
+     ],
+     [
+      {
+       "s": "喫茶店は横長で作り直し、左のページに店の空間、右のページに座る凛が来る見開きにしました。"
+      }
+     ],
+     [
+      {
+       "s": "地図は、点線が道をたどり、着いた所ごとにその場の写真が丸く出る、動く地図にしました。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "外したもの。数字のページ、夜の歩く全身、窓辺で頬杖をつく凛。窓辺の絵は、リールと同じ瞬間でした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "AI の意見と、私の判断がぶつかった所もあります。AI は最後まで「白黒の寄りの、襟に手を当てるポーズを替えて」「喫茶店の座り姿を替えて」「挿絵は外して」と言いました。白黒は鉄器の店の強い1枚として私が頼んだもので、座り姿は、そのページをモードにすると決めた所です。挿絵は、14ページの時に唯一残ると感じたものです。3つとも残しました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "うまくいかなかったのは、首すじです。品のある色っぽさが足りないと何度も言われ、喫茶店で上着を肩から外す1枚を作りました。きれいな絵でしたが、拡大すると、ニットの襟ぐりが広く開いた、別のニットになっていました。商品は首の詰まった丸首です。首すじを見せるために服を変えたら、作品として成り立ちません。外しました。代わりに戻した窓辺の1枚も、椅子の上の鞄が丸い別の鞄になっていたので、鞄だけを消しました。チータンタンの写真は、皿の脇の卵の殻だけを消しました。卵は途中で足した、という流れのままです。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "組み直しで静止画を112枚足し、全部で276枚になりました。最後に、18ページの版と20ページの版を並べて比べました。AI は3つとも18ページの版を選びましたが、私は20ページの版の方が好きでした。20ページの版をもとに、水彩と鮭をひとつの見開きに、6色と挿絵をひとつのページにまとめ、18ページで仕上げました。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "同じ感覚を3回描くなら、3回とも形を変える。同じ距離・同じ手つきが続くと、2回目で先が読めました。距離と動きの順を変えて、ようやく三段になりました。"
+      }
+     ],
+     [
+      {
+       "s": "事実どおりの絵と、見ていられる絵は、同じとは限らない。傷んだ鮭は本当の姿でしたが、画面の中では露出しすぎでした。土地の事実は、見る人が受け取れる形で入れました。"
+      }
+     ],
+     [
+      {
+       "s": "立ち止まった姿は、それだけでポーズに見える。扉の外で止まった凛は、3つの目すべてに「決め」に見えました。歩き出す途中で切ると、服は、着ている人の一日の中に戻りました。"
+      }
+     ],
+     [
+      {
+       "s": "ページの見る価値は、写真の数より、その人の目から生まれる。凛の2つの言葉と、鉄に触れる手が入って、カルーセルははじめて「この人の一日」になりました。ただし言葉は、説明なしで伝わるものだけ。込めた意味を説明しないと分からない一言は、替えました。"
+      }
+     ],
+     [
+      {
+       "s": "色っぽさのために、服を変えない。首すじを見せた1枚は、服が別物でした。見せ方は、服の形を変えずに、横顔と手と光で探します。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "鮭は露出しすぎ。擬宝珠のカットを外し、紺屋町の店先を歩く場面を足す。じゃじゃ麺は残す。曲を付ける。最後は自分で Final Cut で仕上げ、緯度を白い字が読める場所へ動かし、リールの表紙を鉄瓶の店先に替えました。翌日、カルーセルを18ページに組み直しました。AI に替えるよう言われても、白黒の寄りと喫茶店の座り姿と挿絵は残し、首すじの1枚は、服が別物だったので捨てました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "b": true,
+      "s": "AI は、事実どおりの絵を作れます。それが画面の中で多すぎないかを決めるのは、私の仕事です。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "Touching a winter town",
+  "subtitle": "How I directed 39.7° N Morioka — a day told through the hands, a salmon that showed too much, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/morioka/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In Morioka, on 24 November, the day is overcast, dry and cold. Rin arrives on the morning Shinkansen and ends the day on the Kaminohashi bridge over the Nakatsu river. One outfit, all day: a dark charcoal wool shirt-jacket with a large black curly shearling collar; a grey knit whose hem falls to a point at one side; taupe flannel barrel trousers; black suede kitten-heel ankle boots; a dark brown suede satchel with two handles."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Rin works at a ceramics gallery in Tokyo. On her days off she travels to see the food you can only eat in one place and the things that are only made there. In Morioka, that means cast-iron kettles and jajamen noodles."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The story was chosen from three plans, compared with their authors hidden: a winter town, touched with the palms of the hands. Cold bronze in the morning, an iron kettle heavier than expected before noon, a hot cup held in both hands in the afternoon. Everyone has touched a freezing handrail by mistake, or lifted something heavier than it looked. The viewer can follow thirty seconds with the memory of their own hands, not a plot."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The day ends where the morning began, on the same bridge, at night. The first plan ended with a small iron cup she had bought, going lukewarm in her hand. Closing on a purchase read as a punchline, and it repeated Kanazawa, which ended sitting in a room. It went."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "THREE TOUCHES, THREE SHAPES"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The first storyboard had sixteen frames. The first thing a critic said was that it looked like a tour of Morioka's sights: the train, the volcano, the salmon, the ironware, the noodles, the coffee shop, the castle walls. Every frame said \"Morioka has this\" before it said what Rin was doing there."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The second note: every touch had the same shape. Medium distance, a hand placed on an object, eyes on the hand. Three times the same shape, and by the second you know what is coming."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The storyboard was drawn three times, and sixteen frames became twelve, then ten. Each touch now has its own distance and its own movement."
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "08:53, the Kaminohashi bridge. Chest and hand. Her hand had been resting on the bronze finial while she leaned to look at the river; the cold lifts it slightly. She does not look at it."
+      }
+     ],
+     [
+      {
+       "s": "10:45, the ironware shop. From the side, waist up. She lifts a kettle two or three centimetres off a low table, and her wrist sinks a little."
+      }
+     ],
+     [
+      {
+       "s": "15:00, a coffee shop window. Face and both hands. She wraps her palms around a cup still on the table, breathes out once, her shoulders drop, and she stays like that for about two seconds."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The hands were never to be arranged for the camera. Fingers held together and floating, a kettle raised to chest height: those turn a moment into a product demonstration."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "164 stills: 120 for the film and 44 for the pages, eight per shot to choose from. Laid side by side, the chosen frames had problems: at night on the bridge she was lit flat from the front like a B movie, and at the coffee shop door she stood in a pose. The coffee shop, the door and the night bridge were each made again, eight more stills each."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "32 video clips, six exports. According to the files, everything from the storyboard to the sixth export happened on 1 November. I finished the film myself in Final Cut on 7 November: ten cuts, 26 seconds. The carousel has fourteen pages, and every photograph in it is new, made to the shape of its page, of the moments the film skips."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "SHOWN BLIND"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I showed the finished cut to three AI models without telling them what it was meant to do. All three came back with a cold body slowly warming, and with time spent alone. Two of them named touching outright."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Two moments broke the spell. All three saw a pose in Rin stopping outside the coffee shop door; I had that clip remade so she steps down and keeps walking. Two saw a product demonstration in the way she held the kettle; that clip was remade too, and only the stretch where the weight settles into her wrist is used."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A salmon that showed too much. In the first storyboard the salmon was a glossy, healthy fish, any river's fish. A critic pointed out that a salmon that has swum two hundred kilometres upriver has frayed fins and a body flaking white, and holds still in the current. Made that way, it became a white, peeling salmon in the shallows with its back out of the water. True to fact. On screen, it showed too much. I had it remade: two fish holding in the middle of the current, under the water, worn only at the tips of the fins."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-compare.jpg",
+    "cap": "I dropped the salmon on the left, back out of the water and white all over, as showing too much, for the two on the right holding under the water in the middle of the current."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Steam from the floor. In the ironware shop, the steam rose from the sand on the floor instead of from the kettle's spout. A retouch gave it one thread of steam from the spout."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A street lamp as a halo. On the bridge at night, a lamp sat directly behind her head. Only the lamp was moved aside."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "FROM STORYBOARD TO FILM"
+   },
+   {
+    "t": "img",
+    "k": "storyboard",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/morioka-compare-storyboard.jpg",
+    "cap": "Frame four of the storyboard was a close shot of her hand lifting off the bronze finial. In the film it is gone, replaced by a walk past the ironware shops of Konyacho, her fingertips brushing a kettle."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Before the sixth export I cut the finial shot. Her hand looked as if it were touching the finial with great care, almost nervously. It is only an ornament on a bridge; nobody touches one that carefully. If you touched it at all you would do it in passing, and the touch did not seem to matter enough to give it a shot of its own. In its place: 10:30, a street in Konyacho lined with ironware shops, and her fingertips brushing the handle of a kettle on a shop front as she walks past. The first touch is no longer cold bronze but an iron kettle in passing, and it leads straight into the shop where she feels a kettle's weight. The jajamen shot stayed."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "NOVEMBER 7"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE's documentary issues are finished with the sound of the place only. Morioka has one piece of music. The story is a quiet one, and I wanted it to hold together. I wanted the whole thing to settle into a feeling of quiet relief, so I chose something soft that stays out of the way — music that lets you feel a little wistful."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The opening \"39.7° N\" first sat at the top left, where the white letters were hard to read against the bright sky and the bones of a roof. I asked for a place where white letters could be read, and it moved to the top right, over a dark roof. The reel cover became the kettle shop front in Konyacho, a different picture from the carousel cover on the Kaiun bridge, with the latitude in the same place and at the same size on both."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "8 NOVEMBER: THE CAROUSEL, REBUILT"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The day after it went up, I went back through the carousel and felt that nothing stayed with me once I reached the end. The only thing that did was the drawing of the walk back. Of its fourteen pages, four were full-length pictures of Rin in the black jacket, seen from a little way off, and the page of numbers read like a tourist leaflet. Neither the touch of the clothes nor the eye of the person wearing them came through."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "What I set out to change was not the number of pages but whether turning them felt worth it. I allowed myself up to twenty, and each time I laid it out I asked three AI readers whether it was worth looking at and what was missing."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "What went in:"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "Strong fashion pictures. The cover became a close portrait on the Kaiun bridge, white breath and the curly collar. A full-length figure against the castle walls. A profile leaning in to a kettle in the ironware shop. A black-and-white close-up, as if shot on a Nikon FM2 with Tri-X. A close portrait in the lattice light at night."
+      }
+     ],
+     [
+      {
+       "s": "A page of four details: the collar, the hem, the bag, the boots."
+      }
+     ],
+     [
+      {
+       "s": "Two lines in Rin's own words. In the kettle shop: \"The kettles were heavier than I thought, and cold.\" In the evening: \"By five the river had turned the colour of the kettles.\" At first the kettle-shop line was \"At the gallery we ask people not to touch. Here I touched every kettle.\" I meant it as something only someone who works at a ceramics gallery would say, but reading it back, it needed explaining. I replaced it with a line about what the hand remembered: the weight and the cold."
+      }
+     ],
+     [
+      {
+       "s": "The riverbed spread became a watercolour. Where Rin looks down into the water, the photograph of the salmon lies on the page like a print."
+      }
+     ],
+     [
+      {
+       "s": "The coffee shop was remade as one wide picture across two pages: the room on the left, Rin seated on the right."
+      }
+     ],
+     [
+      {
+       "s": "The map now moves: a dotted line follows the streets and, at each stop, a round photograph of the place appears."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "What came out: the page of numbers, the night walk, and Rin at the window with her cheek on her hand. The window picture was the same moment as the film."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Sometimes the AI readers and I disagreed. To the end they asked me to change the black-and-white close-up with her hand at the collar, to change the seated portrait in the coffee shop, and to drop the drawing. I had asked for the black-and-white picture as the strong one in the kettle shop, and I had decided that the coffee-shop page should be a fashion picture. The drawing was the one thing that stayed with me in the fourteen-page version. All three stayed."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "What went wrong was the neck. I was told again and again that the issue lacked a quiet sensuality, so I made a picture of Rin letting her jacket slip from her shoulders in the coffee shop. It was a beautiful picture, and when I looked closer the knit had become a different knit, with a wide open neckline. The real one has a close crew neck. Changing the clothes to show the neck would break the work. It went. The window picture I brought back had a different, round bag on the chair, so I removed the bag. In the noodle picture, I removed only the eggshells beside the plate; the egg is still being stirred in."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The rebuild added 112 stills, 276 in all. At the end I put an eighteen-page and a twenty-page version side by side. All three AI readers chose the eighteen pages. I preferred the twenty. I finished from the twenty-page version, putting the watercolour and the salmon into one spread and the six colours and the drawing onto one page, at eighteen pages."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "A feeling shown three times needs three shapes. The same distance and the same hand told the viewer what was next by the second time. Changing the distance and the order of the movement made it three steps."
+      }
+     ],
+     [
+      {
+       "s": "A picture true to fact is not always a picture you can watch. The worn salmon was the real thing, and on screen it was too much. The fact of the place went in, in a form the viewer could take."
+      }
+     ],
+     [
+      {
+       "s": "Standing still reads as a pose. Stopped outside the door, Rin looked posed to all three viewers. Cut in the middle of a step, the clothes went back into the day of the person wearing them."
+      }
+     ],
+     [
+      {
+       "s": "What makes pages worth turning is not the number of pictures but the eye of the person in them. Her two lines and a hand on cold iron made the carousel, for the first time, this person's day. But a line has to work without explanation; the one that needed explaining went."
+      }
+     ],
+     [
+      {
+       "s": "Do not change the clothes for sensuality. The picture that showed the neck was wearing a different knit. Look for it in the profile, the hands and the light, with the clothes as they are."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I decided the salmon showed too much. I cut the finial shot and added the walk through Konyacho. I kept the noodles. I added the music. I finished the edit myself in Final Cut, moved the latitude where the white letters could be read, and changed the reel cover to the kettle shop. The next day I rebuilt the carousel at eighteen pages. I kept the black-and-white close-up, the seated coffee-shop portrait and the drawing when the AI readers asked me to change them, and threw out the picture of the neck because the clothes were not the clothes."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "AI can make a picture that is true to the facts. Deciding that it shows too much is still the job."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

@@ -1,0 +1,443 @@
+{
+ "slug": "kanazawa",
+ "ja": {
+  "title": "雨上がりを、フードで撮る｜LATITUDE 金沢編",
+  "blocks": [
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "雨が止んだことを、どうやって映像で見せるか。11月の金沢編でいちばん悩んだのはそこで、答えはコートのフードを下ろす、ひとつの動きでした。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE は、架空の誰かの一日を、本物の街で、ドキュメンタリーのように撮る連作です。1号につき、ひとつの街の一日。時刻ごとに章が進みます。撮影スタッフは AI。私は何を撮り、何を残すかを決めます。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "金沢編では、11月の終わりに主人公の凛が朝の新幹線で着き、浅野川のそばの宿で一日を終えます。服は一日中同じです。フード付きの、オリーブ色のロングコート。黒と生成りが混ざったタートルネック。丈の長い白いパンツ。豹柄のバレエシューズに黒いソックス。こげ茶のスエードの大きな巾着をひとつ。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/kanazawa/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "h",
+    "s": "なぜこの一日だったか"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "金沢は、LATITUDE で初めてのアジアの号です。日付は、服の厚さに合わせて11月の終わりに移しました。終わり方は、組み始めた日に決めています。オチも気持ちの変化も作らず、静かな場面で閉じる。狙って作ったオチはわざとらしく、見覚えのある光景の方が、見る人が自分を重ねられるからです。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "雨が止むのは、写らない"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "11月の終わりの金沢は、冷たいにわか雨が降っては止みます。時雨です。これをそのまま筋にしました。降って、止んで、また降る。止むたびに、町が光る。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "水彩で描いた16コマの絵コンテを、3つの AI の批評役に見せ、直しては見せるのを5回くり返しました。最初の版は、景色だけのコマが多く、雨が止む瞬間がひと続きになっていない、と言われました。景色だけのコマを削り、16コマは10コマになりました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "いちばん難しかったのは、この筋のいちばん大事なところです。降っている雨は撮れます。でも雨が止むのは「なくなる」ことなので、写りません。最初につないだ版を見せると、批評役のひとつがそこを突いてきました。止んだ瞬間がどこにもない。水面の輪は、まだ降っているように見える。変わっているのは音だけだ、と。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "答えは絵コンテの段階で出ていました。フードを雨の目印にする。降ればかぶり、止めば下ろす。ところがその版では、フードはもう下りていました。次の版で、下ろす瞬間そのものを入れました。"
+     },
+     {
+      "b": true,
+      "s": "動きなら、カメラに写ります。"
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "8時50分、鼓門の下。最初の雨で、フードをかぶる。"
+      }
+     ],
+     [
+      {
+       "s": "12時30分、近江町。昼の店のカウンターで、コートを脱いで熱い器を両手で包む。"
+      }
+     ],
+     [
+      {
+       "s": "16時10分、ひがし茶屋街の軒下。フードのまま、雨が過ぎるのを待つ。"
+      }
+     ],
+     [
+      {
+       "s": "水たまりが静まる。フードが下りて、濡れた石畳へ歩き出す。"
+      }
+     ],
+     [
+      {
+       "s": "19時30分、宿。暗い部屋に行灯がひとつ。窓辺に腕を置いて、外を見ている。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "数字で言うと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "これは2つめの金沢です。1つめは試しでした。服だけを私が選び、あとは AI のスタッフに任せました。戻ってきたのは、3つのコーデを着替える一日に、拍に合わせて切ったハウスの曲。静止画204枚、動画16本。仕上げの版も、AI の判定役が見比べて選んでいました。でも、一日にはなっていませんでした。服が変わるたびに、見ている人は物語から降りてしまいます。私は「1本は1日、1コーデ」「曲は付けない」と決めて、最初からやり直しました。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/kanazawa-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "時雨の金沢にかかったのは、静止画220枚、動画43本、書き出し11回。最後は私が Final Cut で仕上げました。9カット、24.5秒です。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "うまくいかなかったこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "窓の外に出した手のひら。ラストに、批評役のひとつが「窓から手のひらを出して、雨が止んだか確かめる」案を出しました。筋を伏せた確認では、そこをいちばん効いた場面に挙げた AI もいました。でも私が見ると、B級映画でした。そう伝えると、3つの AI はそろって原因を挙げました。どこから来たか分からない平らな光と、カメラに見せるために止めた仕草です。今は窓辺に座っているだけです。"
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/kanazawa-compare.jpg",
+    "cap": "宿のラストは、平らな光と見せるための仕草が B級映画に見えたので、手のひらを差し出す左の1枚をやめ、行灯ひとつの暗い部屋で窓辺に腕を置くだけの右の1枚にしました。"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "消えた雨のしみ。部分直しのときに、コートの雨のしみを汚れとして消してしまい、宿に掛けた濡れたコートとつながらなくなりました。今は1カットごとに「状態の表」を作り、そこにある濡れ方は消しません。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "畳の上の靴。ラフの絵コンテでは、畳の上にバレエシューズが描かれていました。宿の窓が、西洋式の上げ下げ窓になったこともあります。日本では靴は玄関で脱ぎ、窓は横に引きます。"
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "この一日から分かったこと"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "写らないことは、服に運ばせる。雨が止むのは「なくなる」ことで写りませんでしたが、フードを下ろすのは「動き」なので写りました。"
+      }
+     ],
+     [
+      {
+       "s": "服の状態は、カットごとに書いておく。肩が濡れたコートは、つながりであって傷ではありませんでした。部分直しは、それを黙って消してしまいました。"
+      }
+     ],
+     [
+      {
+       "s": "できることは、服が決める。「首すじを水が伝う」と書いたら、批評役に、タートルネックにフードでは首は見えないと言われました。この服で見せられるのは、耳、あごの線、濡れた毛先、袖口の手首。服に合わせて書き直しました。"
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "私が決めたこと"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "金沢は1コーデで、曲は付けない。私の手を離れて仕上がった版は、号にしない。手のひらを差し出すラストは、B級映画。髪を拭くのは、ふつうの明るさの洗面所の鏡の前。歩くカットは速く、静かな場面へは音を重ねずに切る。最後の編集は、自分の手でやりました。"
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "b": true,
+      "s": "AI は、仕上がったように見える一日を作れます。それがまだ一日になっていない、と言うのが私の仕事です。"
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— 川崎 祥央 / LATITUDE 編集長"
+   }
+  ]
+ },
+ "en": {
+  "title": "When the hood comes down",
+  "subtitle": "How I directed 36.6° N Kanazawa — how to film rain stopping, and what the day taught me.",
+  "blocks": [
+   {
+    "t": "img",
+    "k": "cover",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/kanazawa/pages/01.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "LATITUDE is a series of fictional days filmed as if documented. Each issue is one day in one city, told in chapters by the clock. The crew is AI. I decide what is filmed and what stays."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In Kanazawa, Rin arrives on the morning train in late November and ends the day at an inn by the Asano river. One outfit, all day: a long olive double-faced coat with a hood; a black-and-ecru turtleneck; long white trousers; leopard-print ballet flats with black socks; a large dark brown suede drawstring bag."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHY THIS DAY"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Kanazawa is LATITUDE's first issue in Asia. I moved the date to late November to match the weight of the clothes. The ending was decided on the day I began: no twist, no change of heart, close on a quiet scene. A twist made on purpose looks staged; a sight the viewer has seen before is one they can put themselves into."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "RAIN THAT STOPS"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "In late November the rain here comes and goes in short, cold showers. They call it shigure. That was the story: it rains, it stops, it rains again, and each time it stops, the town shines."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I drew it as a rough watercolour storyboard of sixteen frames and showed it to three AI critics, revised it and showed it again, five times over. The first version, they said, had too many frames of scenery alone, and the moment the rain stops never ran as one continuous beat. I cut the scenery-only frames, and sixteen frames became ten."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The hardest thing to film was the one the story depends on. Rain falling is easy. Rain stopping is an absence. In the first full cut, a critic said so: the moment it stops is never on screen, and the rings on the water look like rain still falling. Only the sound changed."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The answer was already in the storyboard: make the hood the signal, up when it rains, down when it stops. But in that cut her hood was already down. The next edit shows the moment itself, because a hood coming down is something a camera can see."
+     }
+    ]
+   },
+   {
+    "t": "ul",
+    "items": [
+     [
+      {
+       "s": "08:50, under the wooden Tsuzumi-mon gate. The first shower. Hood up."
+      }
+     ],
+     [
+      {
+       "s": "12:30, Omicho. At a lunch counter, coat off, a hot bowl in both hands."
+      }
+     ],
+     [
+      {
+       "s": "16:10, Higashi Chaya, under an old eave. Hood up, waiting."
+      }
+     ],
+     [
+      {
+       "s": "A puddle goes still. The hood comes down. She walks into the wet lane."
+      }
+     ],
+     [
+      {
+       "s": "19:30, the inn. A dark room, one paper lamp, her arm on the window sill."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT IT TOOK"
+   },
+   {
+    "t": "img",
+    "k": "contact",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/kanazawa-contact.jpg",
+    "cap": ""
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "This is the second Kanazawa. The first was a test: I chose the clothes and let the AI crew do the rest without me. It came back finished — three outfits, a house track cut to the beat, 204 stills, 16 clips. Even the final version had been picked by an AI judge comparing cuts. It was competent, and it was not a day: each change of clothes lets the viewer step out of the story. I set two rules — one outfit per day, no music — and started again."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "The rain day took 220 stills, 43 video clips and eleven edits. I finished the last pass myself in Final Cut. Nine cuts, 24.5 seconds."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT WENT WRONG"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "A hand out of the window. For the ending, a critic suggested she hold her palm out to check the rain had stopped. In a blind check, one of the models even named it the best moment. I watched it and saw a B movie. When I said so, all three found the reasons: flat light from nowhere, a gesture held for the camera. Now she just sits by the window, and the prompt says: no hand out of the window, no palm turned up."
+     }
+    ]
+   },
+   {
+    "t": "img",
+    "k": "compare",
+    "src": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/notes/kanazawa-compare.jpg",
+    "cap": "For the last scene at the inn I dropped the frame on the left, where the open palm and flat light looked like a B movie, for the one on the right: a dark room, one paper lamp, her arm resting on the sill."
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Rain marks cleaned away. A retouch removed the rain marks on her coat as if they were dirt, and the wet coat at the inn no longer matched. Now every cut has a state table — hood up or down, where the coat is wet — and nothing in it gets cleaned."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "Shoes on the tatami. The rough storyboard put her flats on the tatami, and later the inn got a Western sash window. In Japan, shoes come off at the door, and windows slide."
+     }
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT THIS DAY TAUGHT ME"
+   },
+   {
+    "t": "ol",
+    "items": [
+     [
+      {
+       "s": "Let the clothes carry what the camera cannot. Rain stopping is an absence and never showed; a hood coming down is an action, and it did."
+      }
+     ],
+     [
+      {
+       "s": "Write down the state of the garment, cut by cut. Wet shoulders were continuity, not a flaw, and the retouch quietly removed them."
+      }
+     ],
+     [
+      {
+       "s": "The outfit decides what is possible. I had written water running down her neck; a critic pointed out she wore a turtleneck and a hood. This outfit could show the ear, the jaw, the wet ends of the hair, a wrist at the cuff, and I rewrote the scene for that."
+      }
+     ]
+    ]
+   },
+   {
+    "t": "h",
+    "s": "WHAT I DIRECTED"
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "I decided that Kanazawa would be one outfit and no music, and that the version made without me would not be the issue. I decided the open palm was a B movie, that she dries her hair at an ordinary washroom mirror, that the walk runs faster and the sound cuts hard into the quiet scenes. I finished the edit by hand."
+     }
+    ]
+   },
+   {
+    "t": "p",
+    "c": [
+     {
+      "s": "AI can make a day that looks finished. Saying it is not a day yet is still the job."
+     }
+    ]
+   },
+   {
+    "t": "sign",
+    "s": "— SACHIO KAWASAKI / FOUNDING EDITOR"
+   }
+  ]
+ }
+}

@@ -48,3 +48,22 @@ A: Shopifyアプリは即日利用開始可能。カスタム導入は要件に�
 
 **Q: 日本語での対応は可能ですか？**
 A: はい。日本語・英語どちらでも対応しています。
+
+## LATITUDE（VUAL が出している連作）
+
+LATITUDE は VUAL の出版物です。名前のある6人の旅人が、実在の街で1日を過ごします。人物は架空、場所とその土地の事実は本物。映像（リール）と雑誌のページ（カルーセル）で、題は撮った場所の緯度、章は時刻で進みます。画像と映像は AI で作り、何を撮り何を残すかは編集長の川崎 祥央（Sachio Kawasaki, Founding Editor）が決めています。
+号ごとに、監督の判断を記録した「制作ノート」があります（日本語 /ja・英語 /en。日英は別の文章）。
+
+- 一覧: https://vual.jp/en/latitude
+- 旅人: https://vual.jp/en/latitude/people
+
+- 64.1° N Iceland: 号 https://vual.jp/en/latitude/iceland ／ 制作ノート（日本語）「地名が、数字に変わった朝｜LATITUDE アイスランド編」 https://vual.jp/ja/latitude/iceland/notes ／ Notes (English) "The morning the title became a number" https://vual.jp/en/latitude/iceland/notes
+- 55.7° N Copenhagen: 号 https://vual.jp/en/latitude/copenhagen ／ 制作ノート（日本語）「3つのルックが、一日になった｜LATITUDE コペンハーゲン編」 https://vual.jp/ja/latitude/copenhagen/notes ／ Notes (English) "The magazine that became a day" https://vual.jp/en/latitude/copenhagen/notes
+- 51.5° N London: 号 https://vual.jp/en/latitude/london ／ 制作ノート（日本語）「描かれてから、歩き出す線｜LATITUDE ロンドン編」 https://vual.jp/ja/latitude/london/notes ／ Notes (English) "A line that draws itself, then walks" https://vual.jp/en/latitude/london/notes
+- 55.9° N Edinburgh: 号 https://vual.jp/en/latitude/edinburgh ／ 制作ノート（日本語）「曲を外して、街の音だけで｜LATITUDE エジンバラ編」 https://vual.jp/ja/latitude/edinburgh/notes ／ Notes (English) "The issue where I took the music out" https://vual.jp/en/latitude/edinburgh/notes
+- 45.5° N Milan: 号 https://vual.jp/en/latitude/milan ／ 制作ノート（日本語）「カメラを見なくなった午後｜LATITUDE ミラノ編」 https://vual.jp/ja/latitude/milan/notes ／ Notes (English) "The afternoon she stopped looking at the camera" https://vual.jp/en/latitude/milan/notes
+- 57.9° N Fårö: 号 https://vual.jp/en/latitude/faro ／ 制作ノート（日本語）「4時前に日が沈む島で｜LATITUDE フォーレ島編」 https://vual.jp/ja/latitude/faro/notes ／ Notes (English) "The island where the sun sets before four" https://vual.jp/en/latitude/faro/notes
+- 36.6° N Kanazawa: 号 https://vual.jp/en/latitude/kanazawa ／ 制作ノート（日本語）「雨上がりを、フードで撮る｜LATITUDE 金沢編」 https://vual.jp/ja/latitude/kanazawa/notes ／ Notes (English) "When the hood comes down" https://vual.jp/en/latitude/kanazawa/notes
+- 48.2° N Vienna: 号 https://vual.jp/en/latitude/vienna ／ 制作ノート（日本語）「寒くなるほど、閉じていくコート｜LATITUDE ウィーン編」 https://vual.jp/ja/latitude/vienna/notes ／ Notes (English) "A coat that closes over one day" https://vual.jp/en/latitude/vienna/notes
+- 53.8° N Haworth: 号 https://vual.jp/en/latitude/haworth ／ 制作ノート（日本語）「西風と、扉ひとつ｜LATITUDE ハワース編」 https://vual.jp/ja/latitude/haworth/notes ／ Notes (English) "A west wind, and one door" https://vual.jp/en/latitude/haworth/notes
+- 39.7° N Morioka: 号 https://vual.jp/en/latitude/morioka ／ 制作ノート（日本語）「冬の街に、手のひらで触れる｜LATITUDE 盛岡編」 https://vual.jp/ja/latitude/morioka/notes ／ Notes (English) "Touching a winter town" https://vual.jp/en/latitude/morioka/notes
