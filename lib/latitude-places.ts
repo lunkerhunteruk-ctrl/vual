@@ -14,6 +14,8 @@ import reykjavik from './latitude-places/reykjavik.json';
 import vienna from './latitude-places/vienna.json';
 import haworth from './latitude-places/haworth.json';
 import morioka from './latitude-places/morioka.json';
+import reggio from './latitude-places/reggio.json';
+import faro from './latitude-places/faro.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
 
 // 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
@@ -638,6 +640,57 @@ export const CITIES: LatitudeCity[] = [
       { time: '13:10', place: 'Top Withens', placeJa: 'トップ・ウィゼンズ', what: 'A book open, her back to the ruined wall.', whatJa: '廃屋の壁に背をあずけて、本を開く。', image: 'reading.jpg' },
       { time: '16:00', place: 'III The inn', placeJa: 'III 宿', what: 'Through the old door as the light goes.', whatJa: '暗くなるころ、古い戸を開ける。', image: 'inn.jpg' },
       { time: '16:20', place: 'By the fire', placeJa: '暖炉のそば', what: 'Standing by the fire, the coat still on.', whatJa: 'コートを着たまま、暖炉のそばに立つ。', image: 'fire.jpg' },
+    ],
+  },
+  // 2026-11-09 店は agy（Gemini 3.8 Flash）で集めて確かめ、Haiku が迷った店と抜き取りを確認。文は AG の Sonnet の下書き（vault outputs/latitude-places-20261109）
+  {
+    slug: 'reggio',
+    name: 'Reggio Calabria',
+    nameJa: 'レッジョ・カラブリア',
+    latitude: '38.1° N',
+    country: 'Calabria, Italy',
+    countryJa: 'イタリア・カラブリア',
+    countryCode: 'IT',
+    person: 'helene',
+    issue: 'reggio',
+    coords: [38.11, 15.65],
+    intro: 'Hélène spent one dry, sunny November day here, in a sea wind: the bergamot groves of the Ionian coast, the coast train, a bar at lunchtime, the seafront on the Strait of Messina, and a quiet room at night.',
+    introJa: 'エレーヌが11月の晴れた乾いた日を過ごした街。海風の日。イオニア海側のベルガモット畑、海沿いの列車、昼のバー、メッシーナ海峡に面した海岸通り。夜は静かな部屋で。',
+    images: [
+      { file: 'station.jpg', alt: 'Hélène on the platform at Bova Marina, the train leaving behind her', altJa: 'ボーヴァ・マリーナの駅のホームのエレーヌ。後ろを列車が出ていく' },
+      { file: 'grove.jpg', alt: 'Hélène choosing a bergamot from a harvest crate in the grove', altJa: 'ベルガモット畑で、収穫箱の実を選ぶエレーヌ' },
+      { file: 'bar.jpg', alt: 'Hélène at the counter of an old bar on Corso Garibaldi', altJa: 'コルソ・ガリバルディの古いバールのカウンターのエレーヌ' },
+      { file: 'lungomare.jpg', alt: 'Hélène on the seafront at sunset, Sicily across the strait', altJa: '日没の海岸通りのエレーヌ。海峡の向こうにシチリア' },
+      { file: 'room.jpg', alt: 'Hélène sitting on the edge of the bed, one boot off', altJa: 'ベッドの端に座るエレーヌ。ブーツを片方脱いで' },
+    ],
+    places: reggio as CityPlace[],
+    industries: [
+      { key: "bergamot", en: "Bergamot", ja: "ベルガモット", about: "Bergamot, the citrus behind Earl Grey tea and many perfumes, is grown almost only on a short strip of coast in the province of Reggio Calabria. The city has a museum of bergamot, and shops and bars that cook and brew with it.", aboutJa: "紅茶のアールグレイや、多くの香水の元になる柑橘。ほとんどが、レッジョ・カラブリア県の短い海沿いの帯でだけ育つ。街にはベルガモットの博物館があり、店やバーもこの実を料理や酒に使う。" },
+    ],
+  },
+  // 2026-11-09 店は agy（Gemini 3.8 Flash）で集めて確かめ、Haiku が迷った店と抜き取りを確認。文は AG の Sonnet の下書き（vault outputs/latitude-places-20261109）
+  {
+    slug: 'faro',
+    name: 'Fårö',
+    nameJa: 'フォーレ島',
+    latitude: '57.9° N',
+    country: 'Gotland, Sweden',
+    countryJa: 'スウェーデン・ゴットランド',
+    countryCode: 'SE',
+    person: 'solveig',
+    issue: 'faro',
+    intro: 'Solveig spent one November day here, in the wind from the Baltic: the six-minute ferry from Fårösund, the limestone raukar at Langhammars, Fårö church, Holmudden, and a fire in a fishermen\'s hut at Helgumannen.',
+    introJa: 'ソルヴェイが11月の1日を過ごした島。バルト海からの風の日。フォーレスンドから6分のフェリー、ラングハンマルスの石灰岩の岩柱、フォーレ教会、ホルムッデン。最後は、ヘルグマンネンの漁師小屋の火のそば。',
+    images: [
+      { file: 'bun.jpg', alt: 'Solveig with a cardamom bun by the ferry at Fårösund', altJa: 'フォーレスンドのフェリーのそばで、カルダモンのパンを持つソルヴェイ' },
+      { file: 'rauk.jpg', alt: 'Solveig sitting by a limestone rauk at Langhammars', altJa: 'ラングハンマルスの石灰岩の岩柱のそばに座るソルヴェイ' },
+      { file: 'sheep.jpg', alt: 'Solveig by a stone wall with sheep', altJa: '石垣のそばで羊と並ぶソルヴェイ' },
+      { file: 'cafe.jpg', alt: 'Solveig with a cup of coffee at a window table', altJa: '窓ぎわの席でコーヒーを持つソルヴェイ' },
+      { file: 'fire.jpg', alt: 'Solveig feeding the stove in the fishermen\'s hut at Helgumannen', altJa: 'ヘルグマンネンの漁師小屋で、ストーブに薪をくべるソルヴェイ' },
+    ],
+    places: faro as CityPlace[],
+    industries: [
+      { key: "gotland-food", en: "Gotland food", ja: "ゴットランドの郷土食", about: "Gotland saffron pancake (saffranspannkaka) is baked with milk and rice and served with salmbär, a dewberry jam. The cottage café in the Bunge open-air museum serves it.", aboutJa: "ゴットランドのサフランパンケーキは、牛乳と米で焼き、サルムベリ（ブラックベリーの仲間）のジャムを添える。ブンゲ野外博物館の中の小屋のカフェで出している。" },
     ],
   },
 ];
