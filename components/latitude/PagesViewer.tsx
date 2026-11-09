@@ -23,11 +23,12 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
 }) {
   const [open, setOpen] = useState<number | null>(null);
   const url = (f: string) => `${base}/pages/${f}`;
-  const thumb = (p: Page, n: number) =>
+  // live=false の時は動くページも静止画だけ（スマホの列で、止まって見ているページ以外に動画を置かない・2026-11-09）
+  const thumb = (p: Page, n: number, live = true) =>
     p.pano ? (
       <PanoPage pano={p.pano} label={`Page ${n}`} eager={n <= 2} />
     ) : p.video ? (
-      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={n} />
+      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={live ? n : undefined} live={live} />
     ) : (
       <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" photo />
     );
@@ -57,12 +58,21 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
 // 点は全部並べると長いので、今のページのまわり7つだけ。端の点は小さくして、まだ先があると分かるように
 const DOTS = 7;
 function MobileStrip({ pages, thumb, hit }: {
-  pages: Page[]; thumb: (p: Page, n: number) => ReactNode; hit: (n: number) => ReactNode;
+  pages: Page[]; thumb: (p: Page, n: number, live?: boolean) => ReactNode; hit: (n: number) => ReactNode;
 }) {
   const strip = useRef<HTMLDivElement>(null);
   const [at, setAt] = useState(0);
+  // 2026-11-09 iPhone で、次が動画のページの所でめくれず一瞬光って戻った（盛岡1→2・レッジョ2→3）。
+  // 動画は、めくりが止まってから、そのページにだけ置く（隣のページは静止画のまま）
+  const [settled, setSettled] = useState(0);
+  const still = useRef<number | undefined>(undefined);
   const n = pages.length;
-  const onScroll = () => { const el = strip.current; if (el) setAt(Math.round(el.scrollLeft / el.clientWidth)); };
+  const onScroll = () => {
+    const el = strip.current; if (!el) return;
+    setAt(Math.round(el.scrollLeft / el.clientWidth));
+    window.clearTimeout(still.current);
+    still.current = window.setTimeout(() => { const e = strip.current; if (e) setSettled(Math.round(e.scrollLeft / e.clientWidth)); }, 300);
+  };
   const from = Math.max(0, Math.min(at - Math.floor(DOTS / 2), n - DOTS));
   const to = Math.min(n, from + DOTS);
   return (
@@ -71,7 +81,7 @@ function MobileStrip({ pages, thumb, hit }: {
         <div ref={strip} onScroll={onScroll} className="latitude-noscroll flex snap-x snap-mandatory overflow-x-auto">
           {pages.map((p, i) => (
             <figure key={p.file} className="relative w-full shrink-0 snap-start snap-always" style={{ aspectRatio: '3 / 4' }}>
-              {thumb(p, i + 1)}
+              {thumb(p, i + 1, i === settled)}
               {hit(i + 1)}
             </figure>
           ))}

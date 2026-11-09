@@ -20,12 +20,12 @@ async function drain() {
   running = false;
 }
 
-export function PageVideo({ src, poster, label, eager = false, order }: { src: string; poster: string; label: string; eager?: boolean; order?: number }) {
+export function PageVideo({ src, poster, label, eager = false, order, live = true }: { src: string; poster: string; label: string; eager?: boolean; order?: number; live?: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [on, setOn] = useState(false);
   useEffect(() => {
     const v = ref.current;
-    if (!v) return;
+    if (!v) { setOn(false); return; } // 動画を外したら、次に置いた時は静止画から（黒い画面を見せない）
     v.muted = true;
     // 軽い WebM（VP9）が再生できるブラウザにはそちらを、だめなら MP4
     const file = v.canPlayType('video/webm; codecs="vp9"') ? src.replace(/\.mp4$/, '.webm') : src;
@@ -78,12 +78,12 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
       window.clearInterval(timer); window.clearTimeout(still); window.removeEventListener('scroll', onScroll); document.removeEventListener('scroll', onScroll, { capture: true });
       v.removeEventListener('ended', again); v.removeEventListener('canplay', check); v.removeEventListener('playing', playing);
     };
-  }, [src, order]);
+  }, [src, order, live]);
   return (
     <span className="relative block h-full w-full">
       <Pic src={poster} alt={label} eager={eager} className="block h-full w-full object-cover" />
-      <video ref={ref} muted loop playsInline preload="none" aria-hidden="true"
-        className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0, transform: 'translateZ(0)', willChange: 'opacity' }} />
+      {live && <video ref={ref} muted loop playsInline preload="none" aria-hidden="true"
+        className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0, transform: 'translateZ(0)', willChange: 'opacity' }} />}
     </span>
   );
 }
