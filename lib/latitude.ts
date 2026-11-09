@@ -556,7 +556,7 @@ export const ISSUES: LatitudeIssue[] = [
       wore: "A chunky black-and-white marl knit coat with a wide shawl collar, worn open over an ink-blue and white striped cotton shirt and a dark brown crocodile-embossed leather skirt; black tights, black suede square-toe ankle boots, and a grey-green leather hobo bag.",
       season: "In October it is still warm by day; a shirt and a light jacket are enough. In December it is cooler and wetter; add a scarf for the wind off the strait.",
     },
-    no: 11,
+    no: 12, // 2026-11-09 公開した順に（盛岡 11/7 → レッジョ 11/9）。一覧の左端に来る
     latitude: '38.1° N',
     city: 'Reggio Calabria',
     published: '2026-11',
@@ -604,7 +604,7 @@ export const ISSUES: LatitudeIssue[] = [
       wore: "A dark charcoal wool shirt jacket with silver snaps and a large black curly shearling collar, over a grey marl crew-neck knit with a pointed hem worn out and long taupe pleated flannel barrel trousers; black suede kitten-heel ankle boots with pointed toes, and a dark brown suede belted satchel with two handles.",
       season: "In October a knit and a light jacket are enough; it is about 18°C by day. In December it is about 4.5°C by day and snow begins to lie; add gloves, a scarf and shoes with grip.",
     },
-    no: 12,
+    no: 11, // 2026-11-09 レッジョと入れ替え（公開した順）
     latitude: '39.7° N',
     city: 'Morioka',
     published: '2026-11',
