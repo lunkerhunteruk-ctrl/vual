@@ -24,13 +24,14 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   const [open, setOpen] = useState<number | null>(null);
   const url = (f: string) => `${base}/pages/${f}`;
   // live=false の時は動くページも静止画だけ（スマホの列で、止まって見ているページ以外に動画を置かない・2026-11-09）
-  const thumb = (p: Page, n: number, live = true) =>
+  // near：スマホの列で、今いるページの先3ページまでは写真を先に読んでおく（速くめくると読み込みが間に合わなかった・2026-11-09）
+  const thumb = (p: Page, n: number, live = true, near = false) =>
     p.pano ? (
-      <PanoPage pano={p.pano} label={`Page ${n}`} eager={n <= 2} />
+      <PanoPage pano={p.pano} label={`Page ${n}`} eager={n <= 2 || near} />
     ) : p.video ? (
-      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2} order={live ? n : undefined} live={live} />
+      <PageVideo src={url(p.video)} poster={url(p.file)} label={`Page ${n}`} eager={n <= 2 || near} order={live ? n : undefined} live={live} />
     ) : (
-      <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2} className="block h-full w-full object-cover" photo />
+      <Pic src={url(p.file)} alt={`Page ${n}`} eager={n <= 2 || near} className="block h-full w-full object-cover" photo />
     );
   const hit = (n: number) => (
     <button type="button" aria-label={`Open page ${n}`} onClick={() => setOpen(n)} className="absolute inset-0 cursor-zoom-in" />
@@ -58,7 +59,7 @@ export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
 // 点は全部並べると長いので、今のページのまわり7つだけ。端の点は小さくして、まだ先があると分かるように
 const DOTS = 7;
 function MobileStrip({ pages, thumb, hit }: {
-  pages: Page[]; thumb: (p: Page, n: number, live?: boolean) => ReactNode; hit: (n: number) => ReactNode;
+  pages: Page[]; thumb: (p: Page, n: number, live?: boolean, near?: boolean) => ReactNode; hit: (n: number) => ReactNode;
 }) {
   const strip = useRef<HTMLDivElement>(null);
   const [at, setAt] = useState(0);
@@ -81,7 +82,7 @@ function MobileStrip({ pages, thumb, hit }: {
         <div ref={strip} onScroll={onScroll} className="latitude-noscroll flex snap-x snap-mandatory overflow-x-auto">
           {pages.map((p, i) => (
             <figure key={p.file} className="relative w-full shrink-0 snap-start snap-always" style={{ aspectRatio: '3 / 4' }}>
-              {thumb(p, i + 1, i === settled)}
+              {thumb(p, i + 1, i === settled, i >= at - 1 && i <= at + 3)}
               {hit(i + 1)}
             </figure>
           ))}
