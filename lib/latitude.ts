@@ -542,14 +542,12 @@ export const ISSUES: LatitudeIssue[] = [
   {
     // 2026-11-02 レッジョ・カラブリア（Hélène・11月7日・晴れて乾いた1日・海風）。ドキュメンタリー回。1日＝1コーデ（ごま塩のショール襟ニットコート・インクブルーの縦じまシャツ・クロコ型押しの革スカート）。
     // 章はリール（v2）、色はカルーセル（vault.vual.jp outputs/latitude-magazine/make_issue_reggio_mag.py・reggio/colours.json）と同じ。
-    // 公開準備の段階：publishAt を遠い先にして隠してある。公開する時は publishAt と previewToken を外す（街の店の一覧はまだ無い・作り直し待ち）。
+    // 2026-11-09 公開（ユーザー指定）。街の店の一覧は公開の後に足す。
     // 気温は複数の気候の案内（平年の値の期間は未確認）のおおよそ。確かめたら直す
     slug: 'reggio',
     recipe: 'data/latitude-recipes/reggio/recipe.json',
     person: 'helene',
     month: 'November',
-    publishAt: '2099-01-01T00:00:00+09:00',
-    previewToken: 'TNNmIQMolFKPurYx',
     seo: {
       title: "What to wear in Reggio Calabria in November — from the bergamot groves to the strait | LATITUDE 38.1° N",
       description: "Reggio Calabria in November is mild, around 19°C by day and 13°C at night, with a sea wind. One day in a salt-and-pepper knit coat and a striped shirt, from the bergamot groves of the Ionian coast to the seafront on the Strait of Messina.",
@@ -584,8 +582,8 @@ export const ISSUES: LatitudeIssue[] = [
       'At its narrowest the Strait of Messina is a little over three kilometres wide. From the seafront in Reggio, Sicily and the town of Messina are always in view.',
       'The regional train from Reggio to Bova Marina runs along the shore almost the whole way, past Capo dell’Armi, about forty kilometres to the Ionian side.',
     ],
-    pages: pages(14, [5, 10]), // 2026-11-02 雑誌版のカルーセル（14枚・make_issue_reggio_mag.py。5はヒラ塗りのイラストの周りに筆で額縁を描く、10は号の6色を油絵の具で1色ずつ塗る）
-    streamId: '54faf714fc0987501d5b8ffdcd47f929', // 編集長の Final Cut の書き出し v2（元の音＋作った音・2026-11-02）
+    pages: pages(19, [3, 14, 19]), // 2026-11-09 雑誌版2のカルーセル（19枚・vault.vual.jp outputs/latitude-magazine/make_issue_reggio_mag2.py。3は日照と地図、14は出会った6色、19はすりガラスの奥付が動く。表紙は大きな「38.1°」を人物の後ろに・濃いオリーブ）
+    streamId: 'db2e5aaf029d3b9ab887eaba2ad3aa68', // 2026-11-09 編集長の Final Cut の書き出し（ベッドのカットを直した版。前は 54faf714…）
     capColour: '#a8a549', // Bergamot
     credits: ['Map data © OpenStreetMap contributors'],
   },
