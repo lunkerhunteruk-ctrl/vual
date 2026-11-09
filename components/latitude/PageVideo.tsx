@@ -41,11 +41,23 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
       const w = Math.min(r.right, window.innerWidth) - Math.max(r.left, 0), h = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
       return w > 0 && h > 0 && (w * h) / (r.width * r.height) > 0.3;
     };
-    const check = () => (inView() ? (v.paused || !v.getAttribute('src') ? start() : null) : !v.paused && v.pause());
+    // 2026-11-09 iPhone の Safari で、横にめくっている途中に次のページの動画を動かし始めると、めくりが取り消されて前のページへ戻った
+    // （盛岡は1→2、レッジョは2→3で止まり、一瞬光るだけで進めない）。めくり（スクロール）が止まってから動かし始める。
+    // 見えなくなった時に止めるのは、めくっている途中でもよい
+    let moving = false; let still: number | undefined;
+    const check = () => {
+      if (!inView()) { if (!v.paused) v.pause(); return; }
+      if (!moving && (v.paused || !v.getAttribute('src'))) start();
+    };
+    const onScroll = () => {
+      moving = true; window.clearTimeout(still);
+      still = window.setTimeout(() => { moving = false; check(); }, 250);
+      if (!inView() && !v.paused) v.pause();
+    };
     const playing = () => setOn(true);
     const timer = window.setInterval(check, 500);
-    window.addEventListener('scroll', check, { passive: true });
-    document.addEventListener('scroll', check, { passive: true, capture: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
     v.addEventListener('ended', again);
     v.addEventListener('canplay', check);
     v.addEventListener('playing', playing);
@@ -63,7 +75,7 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
     }
     return () => {
       cancelled = true;
-      window.clearInterval(timer); window.removeEventListener('scroll', check); document.removeEventListener('scroll', check, { capture: true });
+      window.clearInterval(timer); window.clearTimeout(still); window.removeEventListener('scroll', onScroll); document.removeEventListener('scroll', onScroll, { capture: true });
       v.removeEventListener('ended', again); v.removeEventListener('canplay', check); v.removeEventListener('playing', playing);
     };
   }, [src, order]);
@@ -71,7 +83,7 @@ export function PageVideo({ src, poster, label, eager = false, order }: { src: s
     <span className="relative block h-full w-full">
       <Pic src={poster} alt={label} eager={eager} className="block h-full w-full object-cover" />
       <video ref={ref} muted loop playsInline preload="none" aria-hidden="true"
-        className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0 }} />
+        className="absolute inset-0 block h-full w-full object-cover transition-opacity duration-500" style={{ opacity: on ? 1 : 0, transform: 'translateZ(0)', willChange: 'opacity' }} />
     </span>
   );
 }
