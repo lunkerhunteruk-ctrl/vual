@@ -44,10 +44,10 @@ export function mapTravellers(now: number = Date.now()) {
     return {
       slug: p.slug,
       name: p.name,
-      home: { ...project(hl, hn), city: p.home.split(',')[0].replace(/ \(.*\)/, '') },
+      home: { ...project(hl, hn), city: p.home.split(',')[0].replace(/ \(.*\)/, ''), lat: `${hl.toFixed(1)}° N` },
       stops: days.filter((i) => i.person === p.slug).map((i) => {
         const [la, lo] = PLACES[i.slug];
-        return { ...project(la, lo), city: i.city, month: i.month, slug: i.slug };
+        return { ...project(la, lo), city: i.city, month: i.month, slug: i.slug, lat: i.latitude };
       }),
     };
   });
