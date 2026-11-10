@@ -582,7 +582,8 @@ export const ISSUES: LatitudeIssue[] = [
       'At its narrowest the Strait of Messina is a little over three kilometres wide. From the seafront in Reggio, Sicily and the town of Messina are always in view.',
       'The regional train from Reggio to Bova Marina runs along the shore almost the whole way, past Capo dell’Armi, about forty kilometres to the Ionian side.',
     ],
-    pages: pages(19, [3, 14, 19]), // 2026-11-09 雑誌版2のカルーセル（19枚・vault.vual.jp outputs/latitude-magazine/make_issue_reggio_mag2.py。3は日照と地図、14は出会った6色、19はすりガラスの奥付が動く。表紙は大きな「38.1°」を人物の後ろに・濃いオリーブ）
+    // 2026-11-10 12・13は11/9に同じ名前で差し替えたので、版の印を付けてブラウザに古い絵を使わせない
+    pages: pages(19, [3, 14, 19]).map((p) => (['12.jpg', '13.jpg'].includes(p.file) ? { ...p, file: `${p.file}?v=20261109b` } : p)), // 2026-11-09 雑誌版2のカルーセル（19枚・vault.vual.jp outputs/latitude-magazine/make_issue_reggio_mag2.py。3は日照と地図、14は出会った6色、19はすりガラスの奥付が動く。表紙は大きな「38.1°」を人物の後ろに・濃いオリーブ）
     streamId: 'db2e5aaf029d3b9ab887eaba2ad3aa68', // 2026-11-09 編集長の Final Cut の書き出し（ベッドのカットを直した版。前は 54faf714…）
     capColour: '#a8a549', // Bergamot
     credits: ['Map data © OpenStreetMap contributors'],
