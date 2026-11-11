@@ -168,8 +168,8 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     industries: [
       {"key": "sanuki-wasanbon", "en": "Sanuki Wasanbon sugar & wooden molds", "ja": "讃岐和三盆・菓子木型", "about": "Wasanbon is a sugar made from a rare slender sugarcane called hosokibi. Takamatsu studios press it into hand-carved wooden molds and turn out dry sweets. Confectionery molds date from the Edo period and carry the seasons, flowers and birds. Mold carvers have dwindled; Mamehana's site says Yoshihiro Ichihara is the only one left in Shikoku.", "aboutJa": "和三盆は、「ほそきび」という希少なサトウキビから作る砂糖。高松の工房では、これを手彫りの木型に詰めて抜き、干菓子にする。菓子木型は江戸時代に始まり、四季の草花や花鳥風月が彫られる。職人は減り、豆花のサイトによると、四国では市原吉博ひとりになった。"},
     ],
-    shopMap: false,
-    routeBuilder: false,
+    shopMap: true,
+    routeBuilder: true,
     places: takamatsuPlaces as CityPlace[],
     sights: takamatsuSights as CitySight[],
   },
