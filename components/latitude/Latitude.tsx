@@ -29,6 +29,15 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
         <Link href={`/${locale}/latitude`} className="shrink-0 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
           Latitude
         </Link>
+        {/* 2026-11-11 号（右の並び）・場所・人の3つの入口。人の一覧は一覧ページの People の段 */}
+        <Link href={`/${locale}/latitude/places`} aria-current={current === 'places' ? 'page' : undefined}
+          className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em]"
+          style={{ color: current === 'places' ? INK : MUTE, borderBottom: current === 'places' ? `1px solid ${INK}` : '1px solid transparent' }}>
+          Places
+        </Link>
+        <Link href={`/${locale}/latitude#people`} className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE, borderBottom: '1px solid transparent' }}>
+          People
+        </Link>
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
         {liveIssues().map((i) => {
           const on = i.slug === current;
