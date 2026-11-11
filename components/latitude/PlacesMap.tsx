@@ -61,13 +61,17 @@ function fit(box: [number, number, number, number], W: number, H: number, pad: {
   return { x: cx - w / 2, y: cy - (w * (H / W)) / 2, w };
 }
 
-export default function PlacesMap({ countries, locale, src }: { countries: PlaceCountry[]; locale: string; src: string }) {
+// initial：最初から寄っておく国（国のページ。世界地図を通らない）。worldHref があれば「← 世界」はそのページへのリンク。
+// syncUrl：国へ寄った時に、アドレスを国のページ（/latitude/places/<国>）に合わせる（場所のページ）
+export default function PlacesMap({ countries, locale, src, initial, worldHref, syncUrl }: {
+  countries: PlaceCountry[]; locale: string; src: string; initial?: string; worldHref?: string; syncUrl?: boolean;
+}) {
   const ja = locale === 'ja';
   const [geo, setGeo] = useState<Geo | null>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [anim, setAnim] = useState<Anim | null>(null);
   const [now, setNow] = useState(0);
-  const [sel, setSel] = useState<string | null>(null);
+  const [sel, setSel] = useState<string | null>(initial ?? null);
   const box = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -132,9 +136,15 @@ export default function PlacesMap({ countries, locale, src }: { countries: Place
   }, [geo, size.w, size.h]);
 
   const animating = !!anim && now < anim.t0 + anim.dur;
-  const view = anim ? viewAt(anim, now, r) : worldView();
+  const view = anim ? viewAt(anim, now, r) : target(sel);
 
-  const goTo = (code: string | null) => {
+  const base = `/${locale}/latitude/places`;
+  const goTo = (code: string | null, push = true) => {
+    if (worldHref && code === null) return; // 国のページでは、世界へは「← 世界」のリンクで移る
+    if (syncUrl && push && code !== sel) {
+      const slug = countries.find((c) => c.code === code)?.slug;
+      window.history.pushState(null, '', code && slug ? `${base}/${slug}` : base);
+    }
     const t = performance.now();
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const from = anim ? viewAt(anim, t, r) : worldView();
@@ -152,6 +162,16 @@ export default function PlacesMap({ countries, locale, src }: { countries: Place
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [animating, anim]);
+  // 戻る・進むで、アドレスに合わせて寄り直す（場所のページで国へ寄った後）
+  useEffect(() => {
+    if (!syncUrl) return;
+    const onPop = () => {
+      const last = window.location.pathname.replace(/\/$/, '').split('/').pop();
+      goRef.current(countries.find((c) => c.slug === last)?.code ?? null, false);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, [syncUrl, countries]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') goRef.current(null); };
     window.addEventListener('keydown', onKey);
@@ -186,8 +206,8 @@ export default function PlacesMap({ countries, locale, src }: { countries: Place
 
   return (
     <div>
-      {/* 国の名前の並び（押すとその国へ。狭い画面で点を押しにくい時のため） */}
-      <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.28em]">
+      {/* 国の名前の並び（押すとその国へ。狭い画面で点を押しにくい時のため）。国のページ（1国だけ）では出さない */}
+      {countries.length > 1 && <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.28em]">
         {countries.map((c) => (
           <li key={c.code}>
             <button type="button" onClick={() => goTo(sel === c.code ? null : c.code)} aria-pressed={sel === c.code}
@@ -196,7 +216,7 @@ export default function PlacesMap({ countries, locale, src }: { countries: Place
             </button>
           </li>
         ))}
-      </ul>
+      </ul>}
       <div ref={box} className="relative aspect-square w-full overflow-hidden md:aspect-[2/1]"
         style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '80vh', touchAction: 'pan-y' }}
         onClick={(e) => { if (sel && !(e.target as Element).closest('button, a')) goTo(null); }}>
@@ -279,12 +299,17 @@ export default function PlacesMap({ countries, locale, src }: { countries: Place
           );
         })}
 
-        {ready && sel && (
+        {ready && sel && (worldHref ? (
+          <Link href={worldHref} className="absolute left-3 top-3 z-[4] text-[10px] uppercase tracking-[0.3em]"
+            style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
+            {ja ? '← 世界' : '← World'}
+          </Link>
+        ) : (
           <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] cursor-pointer text-[10px] uppercase tracking-[0.3em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
             {ja ? '← 世界' : '← World'}
           </button>
-        )}
+        ))}
         <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}'}</style>
       </div>
       <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>

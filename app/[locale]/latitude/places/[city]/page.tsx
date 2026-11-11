@@ -14,16 +14,22 @@ import { NowInCity } from '@/components/latitude/NowInCity';
 import { latAsset } from '@/lib/latitude-assets';
 import { CityLocator } from '@/components/latitude/CityLocator';
 import { PLACES } from '@/lib/latitude-map';
+import { breadcrumbJsonLd, countryOfCity, getPlaceCountry, placeCountries } from '@/lib/latitude-places-index';
+import CountryPlacesPage, { countryMetadata } from '@/components/latitude/CountryPlacesPage';
+import { JsonLd } from '@/lib/latitude-publication';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
 // のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。店の写真は載せない。
 
+// 2026-11-11 同じ段に国のページも出す（/latitude/places/japan）。国と街の slug は重ならない（lib/latitude-places-index.ts で確かめる）
 export function generateStaticParams() {
-  return CITIES.map((c) => ({ city: c.slug }));
+  return [...CITIES.map((c) => ({ city: c.slug })), ...placeCountries().map((c) => ({ city: c.slug }))];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; city: string }> }): Promise<Metadata> {
   const { locale, city } = await params;
+  const country = getPlaceCountry(city);
+  if (country) return countryMetadata(country, locale);
   const c = getCity(city);
   if (!c) return { title: 'LATITUDE — VUAL' };
   const ja = locale === 'ja';
@@ -49,9 +55,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function LatitudeCityPage({ params }: { params: Promise<{ locale: string; city: string }> }) {
   const { locale, city } = await params;
+  const country = getPlaceCountry(city);
+  if (country) return <CountryPlacesPage c={country} locale={locale} />;
   const c = getCity(city);
   if (!c) notFound();
   const ja = locale === 'ja';
+  const home = countryOfCity(c.slug); // 道しるべ「場所 › 日本 › 金沢」の国
   const p = getPerson(c.person);
   const who = p ? (ja ? p.ja.name : p.name) : '';
   const groups = sectionsOf(c); // その街ならではの産業が先、飲食と器があと
@@ -88,13 +97,31 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
-      <IssueStrip locale={locale} />
+      <IssueStrip locale={locale} current={`places/${c.slug}`} />
+      {home && (
+        <JsonLd data={breadcrumbJsonLd(ja, [
+          [ja ? '場所' : 'Places', '/latitude/places'],
+          [ja ? home.name.ja : home.name.en, `/latitude/places/${home.slug}`],
+          [ja ? c.nameJa : c.name, `/latitude/places/${c.slug}`],
+        ])} />
+      )}
       <PlacesJsonLd c={c} items={c.places} ja={ja} name={ja ? `${c.nameJa} — ${who}のおすすめ` : `${c.name} — where ${who} would go`} />
 
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-16 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
-          Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '街' : 'Places'}
-        </p>
+        {/* 2026-11-11 道しるべ：場所 › 国 › 街 */}
+        {home ? (
+          <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+            <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
+            <span className="mx-2">›</span>
+            <Link href={`/${locale}/latitude/places/${home.slug}`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? home.name.ja : home.name.en}</Link>
+            <span className="mx-2">›</span>
+            <span aria-current="page" style={{ color: INK }}>{ja ? c.nameJa : c.name}</span>
+          </nav>
+        ) : (
+          <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+            Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '街' : 'Places'}
+          </p>
+        )}
         <p className="mt-5 text-[40px] leading-none md:text-[64px]" style={{ fontFamily: SERIF }}>{c.latitude}</p>
         <h1 className="mt-3 text-[56px] leading-[0.95] md:text-[110px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>
           {ja ? c.nameJa : c.name}
@@ -104,7 +131,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         {c.locator && (c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug]) && (
           <CityLocator className="mt-7" country={c.countryCode ?? 'JP'} at={(c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug])!}
             text={ja ? c.locator.ja : c.locator.en}
-            label={ja ? `地図：${c.nameJa}の位置` : `Map: where ${c.name} is`} />
+            label={ja ? `地図：${c.nameJa}の位置` : `Map: where ${c.name} is`}
+            href={home ? `/${locale}/latitude/places/${home.slug}` : undefined} />
         )}
         {/* 2026-11-01 その街のいま（時刻・気温・天気。Open-Meteo を30分ためる。取れない時は出ない） */}
         <NowInCity place={c.issue ?? c.slug} coords={c.coords} name={ja ? c.nameJa : c.name} ja={ja} className="mt-7" />

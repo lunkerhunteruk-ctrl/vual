@@ -9,15 +9,22 @@ import { assetUrl, getIssue, getPerson, isLive } from '@/lib/latitude';
 
 export const SHOW_UPCOMING = false;
 
-export const COUNTRY_NAMES: Record<string, { en: string; ja: string }> = {
-  JP: { en: 'Japan', ja: '日本' },
-  GB: { en: 'United Kingdom', ja: 'イギリス' },
-  DK: { en: 'Denmark', ja: 'デンマーク' },
-  IT: { en: 'Italy', ja: 'イタリア' },
-  IS: { en: 'Iceland', ja: 'アイスランド' },
-  AT: { en: 'Austria', ja: 'オーストリア' },
-  SE: { en: 'Sweden', ja: 'スウェーデン' },
+// slug は国のページの URL（/latitude/places/<slug>）。街の slug と同じ物は作らない（下の確かめで止まる）
+export const COUNTRY_NAMES: Record<string, { en: string; ja: string; slug: string }> = {
+  JP: { en: 'Japan', ja: '日本', slug: 'japan' },
+  GB: { en: 'United Kingdom', ja: 'イギリス', slug: 'united-kingdom' },
+  DK: { en: 'Denmark', ja: 'デンマーク', slug: 'denmark' },
+  IT: { en: 'Italy', ja: 'イタリア', slug: 'italy' },
+  IS: { en: 'Iceland', ja: 'アイスランド', slug: 'iceland' },
+  AT: { en: 'Austria', ja: 'オーストリア', slug: 'austria' },
+  SE: { en: 'Sweden', ja: 'スウェーデン', slug: 'sweden' },
 };
+// 2026-11-11 国のページは街のページと同じ /latitude/places/<slug>（app/[locale]/latitude/places/[city]/page.tsx で分ける）。
+// 国と街の slug が重なると片方のページが見えなくなるので、重なったら作る時に止める
+{
+  const clash = CITIES.filter((c) => Object.values(COUNTRY_NAMES).some((n) => n.slug === c.slug)).map((c) => c.slug);
+  if (clash.length) throw new Error(`LATITUDE: city slug(s) equal a country slug: ${clash.join(', ')}`);
+}
 // 国の並び（凛の日本が先、あとは北から）
 const ORDER = ['JP', 'IS', 'SE', 'DK', 'GB', 'AT', 'IT'];
 
@@ -34,7 +41,7 @@ export type PlaceCity = {
   issue?: { slug: string; cover: string; month?: string }; // 公開ずみの号
   upcoming: boolean; // 号がまだ無い（これから行く街）
 };
-export type PlaceCountry = { code: string; name: { en: string; ja: string }; cities: PlaceCity[] };
+export type PlaceCountry = { code: string; slug: string; name: { en: string; ja: string }; cities: PlaceCity[] };
 
 function pointOf(c: LatitudeCity): [number, number] | undefined {
   return c.coords ?? PLACES[c.issue ?? c.slug];
@@ -67,8 +74,45 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
   const codes = [...m.keys()].sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99));
   return codes.map((code) => ({
     code,
-    name: COUNTRY_NAMES[code] ?? { en: code, ja: code },
+    slug: COUNTRY_NAMES[code]?.slug ?? code.toLowerCase(),
+    name: { en: COUNTRY_NAMES[code]?.en ?? code, ja: COUNTRY_NAMES[code]?.ja ?? code },
     // 国の中は北から
     cities: m.get(code)!.sort((a, b) => b.lat - a.lat),
   }));
+}
+
+export const getPlaceCountry = (slug: string, now: number = Date.now()) => placeCountries(now).find((c) => c.slug === slug);
+export const countryOfCity = (citySlug: string, now: number = Date.now()) => placeCountries(now).find((c) => c.cities.some((q) => q.slug === citySlug));
+
+// 検索エンジン向け：街の一覧（ItemList of City）
+export function citiesJsonLd(countries: PlaceCountry[], ja: boolean, name: string) {
+  const site = `https://vual.jp/${ja ? 'ja' : 'en'}/latitude`;
+  let n = 0;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    itemListElement: countries.flatMap((c) => c.cities.map((q) => ({
+      '@type': 'ListItem',
+      position: ++n,
+      item: {
+        '@type': 'City',
+        name: ja ? q.nameJa : q.name,
+        url: `${site}/places/${q.slug}`,
+        geo: { '@type': 'GeoCoordinates', latitude: q.lat, longitude: q.lon },
+        containedInPlace: { '@type': 'Country', name: ja ? c.name.ja : c.name.en, identifier: c.code, url: `${site}/places/${c.slug}` },
+        ...(q.issue ? { subjectOf: { '@type': 'CreativeWork', name: `LATITUDE ${q.latitude} ${q.name}`, url: `${site}/${q.issue.slug}` } } : {}),
+      },
+    }))),
+  };
+}
+
+// 道しるべ（BreadcrumbList）。items は [名前, パス（/latitude から下）]
+export function breadcrumbJsonLd(ja: boolean, items: [string, string][]) {
+  const site = `https://vual.jp/${ja ? 'ja' : 'en'}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${site}${path}` })),
+  };
 }
