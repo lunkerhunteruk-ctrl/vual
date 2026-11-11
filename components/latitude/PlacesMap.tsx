@@ -19,6 +19,7 @@ import HScroller from '@/components/latitude/HScroller';
 //  3段目（町の中）は作らない。町のページの店の地図がその役。
 //  スマホは地図の下に、地方ごとの横に流れる一覧（地方の見出し＋町のカード）。
 // 2026-11-11 世界の段階の国の点：マウスを重ねる（スマホは1回押す）と、点が少し大きくなり、その国の号の写真が丸く出る（国旗は使わない）。
+//  写真はリールの途中の字の無いコマ（lib/latitude-places-index.ts の ISSUE_PHOTO_FRAME。丸はパソコン80px・スマホ64px）。
 //  最初はいちばん新しい号（lib/latitude-places-index.ts の COUNTRY_PHOTO_PIN で国ごとに固定できる）。重ねたままなら1.5秒ごとに
 //  ほかの号へふわっと切り替わる（号が1つの国は切り替えない）。横に「イギリス · 3つの号」。スマホはもう1回押すとその国へ寄る。
 // 試しの町：URL に ?preview=50 を付けた時だけ public/latitude/placesmap-preview-cities.json を読み、日本に足す（本番には出さない。ページは無い）。
@@ -107,6 +108,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   const [seen, setSeen] = useState<string[]>([]);
   const loaded = useRef(new Set<string>());
   const lastPointer = useRef('mouse');
+  const [hovTouch, setHovTouch] = useState(false); // 指で押して出した時だけ、写真の丸と名前も押せる（もう1回でその国へ）
   const box = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -138,12 +140,23 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     if (code) setLastHov(code);
     if (code) setSeen((p) => (p.includes(code) ? p : [...p, code]));
   };
+  // 写真は、地図が出てから少し後に先読みしておく（Stream のコマは初めて頼むと作るのに時間がかかり、重ねた時に丸が空になるため）
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      for (const c of given) for (const q of c.issues) {
+        const im = new Image();
+        im.onload = () => loaded.current.add(q.src);
+        im.src = q.src;
+      }
+    }, 1200);
+    return () => window.clearTimeout(t);
+  }, [given]);
   // 重ねている間、1.5秒ごとに次の号の写真へ。次の写真がまだ読み込めていなければ、読み込めるまで待つ
   useEffect(() => {
     const list = hov ? countries.find((c) => c.code === hov)?.issues ?? [] : [];
     if (list.length < 2) return;
     const t = window.setInterval(() => {
-      setHovI((i) => (loaded.current.has(list[(i + 1) % list.length].cover) ? (i + 1) % list.length : i));
+      setHovI((i) => (loaded.current.has(list[(i + 1) % list.length].src) ? (i + 1) % list.length : i));
     }, 1500);
     return () => window.clearInterval(t);
   }, [hov, countries]);
@@ -502,41 +515,42 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           const name = ja ? c.name.ja : c.name.en;
           const count = n ? (ja ? `${n}${n < 10 ? 'つ' : ''}の号` : `${n} ${n === 1 ? 'issue' : 'issues'}`)
             : c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(' · ');
-          const left = x > size.w - 220; // 右の端に近い点は、写真と名前を左へ
+          const left = x > size.w - (wide ? 300 : 240); // 右の端に近い点は、写真と名前を左へ（写真の丸＋名前の幅）
           const ms = 300;
           return (
             <button key={c.code} type="button"
               onPointerDown={(e) => { lastPointer.current = e.pointerType; }}
-              onPointerEnter={(e) => { if (e.pointerType === 'mouse') showCountry(c.code); }}
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') { setHovTouch(false); showCountry(c.code); } }}
               onPointerLeave={(e) => { if (e.pointerType === 'mouse' && hov === c.code) setHov(null); }}
               onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) showCountry(c.code); }}
               onBlur={() => { if (hov === c.code) setHov(null); }}
               onClick={(e) => {
                 e.stopPropagation();
                 // スマホ（指・ペン）：1回目は写真と名前だけ。もう1回押すとその国へ
-                if (lastPointer.current !== 'mouse' && e.detail > 0 && !on) { showCountry(c.code); return; }
+                if (lastPointer.current !== 'mouse' && e.detail > 0 && !on) { setHovTouch(true); showCountry(c.code); return; }
                 goTo(c.code);
               }}
               className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 ${on ? 'z-[3]' : 'z-[1] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: animating ? 0 : 1, transition: 'opacity 200ms' }}
               aria-label={`${name} · ${count}`}>
               <span className="block h-3 w-3 rounded-full" style={{ background: RED, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1.5' : '1', transition: `scale ${ms}ms ease-out` }} />
+              {/* 写真の丸と名前。マウスの時は押せない（大きな丸が近くの国の点を覆っても、その点に重ねられるように）。指で出した時は押すとその国へ */}
               <span className={`absolute top-1/2 flex items-center gap-2 ${left ? 'right-full mr-1 flex-row-reverse' : 'left-full ml-1'}`}
-                style={{ transform: 'translateY(-50%)', pointerEvents: on ? 'auto' : 'none', opacity: on ? 1 : 0, transition: `opacity ${ms}ms ease-out` }}>
+                style={{ transform: 'translateY(-50%)', pointerEvents: on && hovTouch ? 'auto' : 'none', opacity: on ? 1 : 0, transition: `opacity ${ms}ms ease-out` }}>
                 {n > 0 && (
                   <span className="relative block shrink-0 overflow-hidden rounded-full"
-                    style={{ width: 40, height: 40, background: LAND, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1' : '0.5', transition: `scale ${ms}ms ease-out` }}>
+                    style={{ width: wide ? 80 : 64, height: wide ? 80 : 64, background: LAND, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1' : '0.5', transition: `scale ${ms}ms ease-out` }}>
                     {seen.includes(c.code) && c.issues.map((q, k) => (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img key={q.slug} src={q.cover} alt="" onLoad={() => loaded.current.add(q.cover)}
+                      <img key={q.slug} src={q.src} alt="" onLoad={() => loaded.current.add(q.src)}
                         className="lat-cf absolute inset-0 block h-full w-full object-cover"
-                        style={{ maxWidth: 'none', opacity: (lastHov === c.code ? hovI : 0) === k ? 1 : 0, transition: 'opacity 700ms ease-in-out' }} />
+                        style={{ maxWidth: 'none', objectPosition: `50% ${q.y}%`, opacity: (lastHov === c.code ? hovI : 0) === k ? 1 : 0, transition: 'opacity 700ms ease-in-out' }} />
                     ))}
                   </span>
                 )}
-                <span className="whitespace-nowrap text-[13px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO, textAlign: left ? 'right' : 'left' }}>
+                <span className="whitespace-nowrap text-[16px] md:text-[18px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO, textAlign: left ? 'right' : 'left' }}>
                   {name}
-                  <span className="ml-2 text-[9px] uppercase tracking-[0.25em]" style={{ fontFamily: 'inherit', color: MUTE }}>
+                  <span className="ml-2 text-[11px] uppercase tracking-[0.22em]" style={{ fontFamily: 'inherit', color: MUTE }}>
                     · {count}
                   </span>
                 </span>
