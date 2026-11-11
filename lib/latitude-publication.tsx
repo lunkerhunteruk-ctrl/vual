@@ -28,6 +28,9 @@ export const PERIODICAL = {
   inLanguage: ['en', 'ja'],
   publisher: { '@id': PUBLISHER['@id'] },
   editor: { '@type': 'Person', '@id': EDITOR_ID, name: 'Sachio Kawasaki', jobTitle: 'Founding Editor' },
+  // 2026-11-11 同じ LATITUDE だと AI がつなげられるよう、制作ノートの置き場所（英語・日本語）を並べる
+  sameAs: ['https://sachiokawasaki.substack.com', 'https://note.com/sachiokawasaki/m/mf5725176786b'],
+  genre: ['Fashion', 'Fiction', 'Travel'],
 };
 
 export const periodicalJsonLd = () => ({ '@context': 'https://schema.org', '@graph': [PUBLISHER, PERIODICAL] });
@@ -49,6 +52,8 @@ export const issueJsonLd = (i: LatitudeIssue) => {
         isPartOf: { '@id': PERIODICAL['@id'] },
         publisher: { '@id': PUBLISHER['@id'] },
         contentLocation: { '@type': 'Place', name: i.city },
+        // 2026-11-11 旅人は架空の人物だと構造化データでも明かす（AI が実在の人と取りちがえないように）
+        ...(p ? { character: { '@type': 'Person', name: p.name, description: `A fictional traveller in LATITUDE, ${p.age}, from ${p.home}.`, url: `${SITE}/en/latitude/people/${p.slug}` } } : {}),
         image: latAssetAbs(`${i.slug}/cover.jpg`, SITE),
       },
     ],

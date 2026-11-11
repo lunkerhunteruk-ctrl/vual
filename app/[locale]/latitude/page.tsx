@@ -6,6 +6,23 @@ import TravellerMap from '@/components/latitude/TravellerMap';
 import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 import { mapTravellers } from '@/lib/latitude-map';
 import { latAssetAbs } from '@/lib/latitude-assets';
+import { CITIES } from '@/lib/latitude-places';
+
+// 2026-11-11 よくある質問：LATITUDE が何かを、言い切りの短い文で（検索や AI のチャットが答えに使いやすいように）。llms.txt の FAQ と同じ中身
+const FAQ = {
+  en: [
+    ['What is LATITUDE?', 'A serial fiction about clothes and places, published by VUAL. In each issue a fictional traveller spends one day in a real place, filmed as if documented, and the issue is titled by the latitude of that place.'],
+    ['Are the people real?', 'No. The six travellers are fictional. The places, the routes and one true fact about each place are real.'],
+    ['How are the images made?', 'With AI, by VUAL, a fashion creative studio in Japan and the UK. The editor, Sachio Kawasaki, decides what is kept, and writes those decisions down in the notes for each issue.'],
+    ['Are the shops in the city guides real?', 'Yes. The city guides list only places whose opening the editors checked on official sources. The issues themselves never name a shop.'],
+  ],
+  ja: [
+    ['LATITUDE とは何ですか？', 'VUAL が出している、服と場所の連作フィクションです。毎号、架空の旅人が実在の街で過ごす1日を、記録のように描きます。題はその場所の緯度です。'],
+    ['人物は実在しますか？', 'いいえ。6人の旅人は架空です。場所・道すじ・その土地のひとつの事実は本物です。'],
+    ['画像や映像はどう作っていますか？', 'ファッションのクリエイティブスタジオ VUAL（日本・イギリス）が AI で作っています。何を残すかは編集長の川崎 祥央が決め、その判断を号ごとの制作ノートに書いています。'],
+    ['街の案内の店は本当にありますか？', 'はい。編集部が公式の情報で営業を確かめた店だけを載せています。作品の中には店の名前を出していません。'],
+  ],
+} as const;
 
 // LATITUDE の一覧：公開中の号の表紙を、緯度の数字と一緒に並べる。公開予約の時刻を過ぎた号が出るよう、数分ごとに作り直す
 export const revalidate = 300;
@@ -69,6 +86,17 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             ))}
           </ul>
         </nav>
+        {/* 2026-11-11 街の案内（旅人のおすすめの店）への入口。号のページの奥にしか無かった */}
+        <nav className="mt-8">
+          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>City guides</p>
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.3em]">
+            {CITIES.filter((c) => !c.issue || liveIssues().some((i) => i.slug === c.issue)).map((c) => (
+              <li key={c.slug}>
+                <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{locale === 'ja' ? c.nameJa : c.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         {/* 2026-11-02 制作ノート（Substack）への入口。プロフィールのリンク（vual.jp/latitude）から来た人が迷わず行けるよう上に。
             People と同じ組み方（小さな見出し＋一行）にして、宣伝の帯にしない。行き先は短いアドレス /notes（next.config の転送） */}
         <div className="mt-8">
@@ -109,6 +137,19 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           <SectionLabel>Where they are</SectionLabel>
         </div>
         <TravellerMap travellers={mapTravellers()} locale={locale} />
+      </section>
+      {/* 2026-11-11 よくある質問（小さく。雑誌の邪魔をしない） */}
+      <section className="mx-auto max-w-6xl px-4 pb-20 md:px-8 md:pb-28">
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: (locale === 'ja' ? FAQ.ja : FAQ.en).map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }} />
+        <SectionLabel>{locale === 'ja' ? 'よくある質問' : 'Questions'}</SectionLabel>
+        <dl className="grid max-w-4xl gap-8 md:grid-cols-2 md:gap-x-16">
+          {(locale === 'ja' ? FAQ.ja : FAQ.en).map(([q, a]) => (
+            <div key={q}>
+              <dt className="text-[17px] leading-snug" style={{ fontFamily: locale === 'ja' ? MINCHO : SERIF }}>{q}</dt>
+              <dd className="mt-2 text-[14px] leading-relaxed" style={{ color: MUTE }}>{a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
       {/* 2026-10-30 次の号をメールで（Substack） */}
       <section className="mx-auto max-w-6xl px-4 pb-24 md:px-8">

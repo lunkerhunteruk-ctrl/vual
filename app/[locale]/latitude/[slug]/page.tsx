@@ -137,6 +137,26 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
             </span>
           </Link>
         )}
+        {/* 2026-11-11 ユーザー：号を開いてすぐ街の案内へ行けない（ページのいちばん下の、部屋が開いている時だけのボタンしか無かった）。旅人の下に並べる */}
+        {city && (
+          <Link href={`/${locale}/latitude/places/${city.slug}`} className="group mt-4 flex max-w-xl items-center gap-4 border-t pt-6" style={{ borderColor: 'rgba(30,29,27,0.15)', color: INK }}>
+            {city.images[0] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={latAsset(`places/${city.slug}/${city.images[0].file}`)} alt="" width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
+            ) : (
+              <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-[11px]" style={{ borderColor: 'rgba(30,29,27,0.25)', fontFamily: SERIF }}>{city.latitude.replace(' N', '')}</span>
+            )}
+            <span className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '街の案内' : 'The city guide'}</span>
+              <span className="text-[18px] leading-snug" style={{ fontFamily: SERIF }}>
+                {ja ? `${who}の${city.nameJa}のおすすめ・${city.places.length}軒` : `${city.places.length} places ${who} would go in ${city.name}`}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.25em] underline-offset-4 group-hover:underline">
+                {ja ? `${city.nameJa}の案内を見る` : `Open the ${city.name} guide`}&nbsp;&nbsp;→
+              </span>
+            </span>
+          </Link>
+        )}
       </header>
 
       {/* リール */}
@@ -274,12 +294,15 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       })()}
 
       {/* 2026-11-01 旅人と話す（部屋・通話）と、街の案内 */}
-      {room && person && (
+      {/* 2026-11-11 街の案内のボタンは、部屋が閉じていても出す */}
+      {((room && person) || city) && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto flex max-w-6xl flex-wrap gap-3">
-            <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
-              {ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`}&nbsp;&nbsp;→
-            </Link>
+            {room && person && (
+              <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+                {ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`}&nbsp;&nbsp;→
+              </Link>
+            )}
             {city && (
               <Link href={`/${locale}/latitude/places/${city.slug}`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, color: INK }}>
                 {ja ? `${who}の${city.nameJa}のおすすめ` : `Where ${who} would go in ${city.name}`}&nbsp;&nbsp;→
@@ -307,6 +330,12 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           </p>
           <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
             {issue.chapters.map((c) => c.place).join('  ·  ')}
+          </p>
+          {/* 2026-11-11 この号が何かを、言い切りの1段落で（検索や AI のチャットが引用しやすいように。雑誌の邪魔をしないよう奥付に小さく） */}
+          <p className="mt-6 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
+            {ja
+              ? `LATITUDE ${issue.latitude} ${nowName}は、${person ? `${who}（${person.ja.home}・${person.age}歳）が` : ''}${nowName}で過ごす架空の1日${issue.month ? `（${issue.month}）` : ''}を、記録のように描いた号です。場所とその土地のひとつの事実は本物、人と1日は架空です。映像と誌面は、VUAL が AI で作りました。`
+              : `LATITUDE ${issue.latitude} ${issue.city} is one fictional day in ${issue.city}${issue.month ? `, in ${issue.month}` : ''}${person ? `, with ${person.name}, ${person.age}, from ${person.home}` : ''}, filmed as if documented. The place and one true thing about it are real; the traveller and her day are imagined. The film and pages were made with AI by VUAL.`}
           </p>
           {/* 制作の案内（2026-10-28）：号を見たブランドが VUAL に頼めると分かるように、号のいちばん最後にだけ置く。
               読む人に向けた文なので言語で切り替える（クレジットの行は奥付の慣習どおり英語のまま） */}
