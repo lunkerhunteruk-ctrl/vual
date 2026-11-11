@@ -79,7 +79,13 @@ export type LatitudeCity = {
     looks: { time: string; image: string; items: string; itemsJa: string; note: string; noteJa: string }[];
   };
   // 旅人の1日の回り方（号の順番）。near は、その場所の近くにある一覧の店（店の name）。旅人がその店に行ったとは書かない
-  route?: { time: string; place: string; placeJa: string; what: string; whatJa: string; image?: string; near?: string[] }[];
+  // 2026-11-11 試作：coords があれば、街のページの「凛の1日の道」の地図（components/latitude/CityDayRoute.tsx）に点を置く。
+  // 位置は OpenStreetMap（Nominatim）で確かめた物だけ。作らない・推測しない（宿のように場所を決めていない所は付けない＝地図に出ない）。
+  // short / shortJa は地図の上の短い名前、gmaps は Google マップの道案内に渡す検索の言葉（地点の名前＋金沢）
+  route?: {
+    time: string; place: string; placeJa: string; what: string; whatJa: string; image?: string; near?: string[];
+    coords?: [number, number]; short?: string; shortJa?: string; gmaps?: string;
+  }[];
   // 2026-11-11 国の形の小さな位置の図（components/latitude/CityLocator.tsx）と、その横の一文。無い街は出さない。
   // 一文に県・国は入れない（すぐ上の行に出ている）。点は at、無ければ coords、無ければ lib/latitude-map.ts の PLACES。国は countryCode（無ければ 'JP'）。事実は確かめて書く
   locator?: { en: string; ja: string; at?: [number, number] };
@@ -154,13 +160,21 @@ export const CITIES: LatitudeCity[] = [
           note: 'After dark, a hood. Shoes that come off easily, for the inn.', noteJa: '暗くなったらフード。宿で脱ぐから、すぐ脱げる靴。' },
       ],
     },
+    // 地点の位置（coords）は OpenStreetMap の Nominatim で確かめた（2026-11-11）：鼓門 node 6201257217・近江町市場 node 10792965205・
+    // 鈴木大拙館 node 2143998242・兼六園 way 50288147（園の中ほど）・ひがし茶屋街 node 2146147848・主計町茶屋街 node 2146147851。宿は場所を決めていないので付けない
     route: [
-      { time: '08:43', place: 'Kanazawa Station, Tsuzumi Gate', placeJa: '金沢駅・鼓門', what: 'Off the morning train, under the wooden gate.', whatJa: '朝の新幹線で着いて、木の門の下を歩く。', image: 'gate.jpg' },
-      { time: '09:40', place: 'Omicho Market', placeJa: '近江町市場', what: 'Stopping at the crabs on ice.', whatJa: '氷の上の香箱蟹の前で立ち止まる。', image: 'market.jpg', near: ['市場めし あまつぼ'] },
-      { time: '11:20', place: 'D.T. Suzuki Museum', placeJa: '鈴木大拙館', what: 'Sitting by the water mirror garden.', whatJa: '水鏡の庭のそばに座って、水面を見る。', image: 'water.jpg', near: ['能作（金沢漆器）', '金澤屋珈琲店 本店'] },
-      { time: '14:10', place: 'Kenrokuen', placeJa: '兼六園', what: 'Looking up at the straw ropes of the yukitsuri.', whatJa: '雪吊りの縄を見上げる。', image: 'garden.jpg', near: ['兼六園茶屋 見城亭 カフェ'] },
-      { time: '16:25', place: 'Higashi Chaya', placeJa: 'ひがし茶屋街', what: 'The lanterns come on along the stone lane.', whatJa: '灯りがともり始めた石畳を歩く。', image: 'chaya.jpg', near: ['森八 Matcha Cafe ひがし三番丁店', '一笑', '久連波', '縁煌'] },
-      { time: '17:10', place: 'Asano River, Kazuemachi', placeJa: '浅野川・主計町', what: 'Sitting on the stone steps by the river, heels out of her shoes.', whatJa: '川べりの石段に座って、靴のかかとを少し浮かせる。', image: 'steps.jpg', near: ['いち凛', 'なべ・割烹 太郎', 'まゆ月 くらがり坂'] },
+      { time: '08:43', place: 'Kanazawa Station, Tsuzumi Gate', placeJa: '金沢駅・鼓門', what: 'Off the morning train, under the wooden gate.', whatJa: '朝の新幹線で着いて、木の門の下を歩く。', image: 'gate.jpg',
+        coords: [36.57778, 136.64912], short: 'Tsuzumi Gate', shortJa: '鼓門', gmaps: '鼓門 金沢' },
+      { time: '09:40', place: 'Omicho Market', placeJa: '近江町市場', what: 'Stopping at the crabs on ice.', whatJa: '氷の上の香箱蟹の前で立ち止まる。', image: 'market.jpg', near: ['市場めし あまつぼ'],
+        coords: [36.57187, 136.65578], short: 'Omicho', shortJa: '近江町市場', gmaps: '近江町市場 金沢' },
+      { time: '11:20', place: 'D.T. Suzuki Museum', placeJa: '鈴木大拙館', what: 'Sitting by the water mirror garden.', whatJa: '水鏡の庭のそばに座って、水面を見る。', image: 'water.jpg', near: ['能作（金沢漆器）', '金澤屋珈琲店 本店'],
+        coords: [36.55772, 136.66137], short: 'D.T. Suzuki Museum', shortJa: '鈴木大拙館', gmaps: '鈴木大拙館 金沢' },
+      { time: '14:10', place: 'Kenrokuen', placeJa: '兼六園', what: 'Looking up at the straw ropes of the yukitsuri.', whatJa: '雪吊りの縄を見上げる。', image: 'garden.jpg', near: ['兼六園茶屋 見城亭 カフェ'],
+        coords: [36.56243, 136.66235], short: 'Kenrokuen', shortJa: '兼六園', gmaps: '兼六園 金沢' },
+      { time: '16:25', place: 'Higashi Chaya', placeJa: 'ひがし茶屋街', what: 'The lanterns come on along the stone lane.', whatJa: '灯りがともり始めた石畳を歩く。', image: 'chaya.jpg', near: ['森八 Matcha Cafe ひがし三番丁店', '一笑', '久連波', '縁煌'],
+        coords: [36.57256, 136.66668], short: 'Higashi Chaya', shortJa: 'ひがし茶屋街', gmaps: 'ひがし茶屋街 金沢' },
+      { time: '17:10', place: 'Asano River, Kazuemachi', placeJa: '浅野川・主計町', what: 'Sitting on the stone steps by the river, heels out of her shoes.', whatJa: '川べりの石段に座って、靴のかかとを少し浮かせる。', image: 'steps.jpg', near: ['いち凛', 'なべ・割烹 太郎', 'まゆ月 くらがり坂'],
+        coords: [36.57230, 136.66363], short: 'Kazuemachi', shortJa: '主計町', gmaps: '主計町茶屋街 金沢' },
       { time: '19:30', place: 'The inn', placeJa: '宿', what: 'Socks off, legs stretched out on the tatami.', whatJa: '畳の部屋で靴下を脱いで、足を伸ばす。' },
     ],
     inn: {

@@ -79,12 +79,18 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
 // リール：最初は音なしで自動再生、操作バーで音を出せる。
 // Stream の埋め込み（iframe）は、トップから押して来ると再生と同時にフォーカスを取り、ページを勝手に下へ動かすので、
 // Stream が出す MP4 を普通の video で流す（Stream 側で downloads を有効にしてある）
-export function Reel({ issue }: { issue: LatitudeIssue }) {
+// 2026-11-11 街のページの「凛の1日の道」（CityDayRoute）でも同じリールを流すので、アドレスの作り方を分けた
+export function reelSources(issue: LatitudeIssue) {
   const title = `LATITUDE ${issueNo(issue)} — ${issue.latitude} ${issue.city}`;
   const src = issue.streamId ? `${STREAM_HOST}/${issue.streamId}/downloads/default.mp4` : assetUrl(issue, 'reel.mp4');
   const poster = issue.streamId
     ? `${STREAM_HOST}/${issue.streamId}/thumbnails/thumbnail.jpg?time=1s&height=1280`
     : assetUrl(issue, 'cover.jpg');
+  return { title, src, poster };
+}
+
+export function Reel({ issue }: { issue: LatitudeIssue }) {
+  const { title, src, poster } = reelSources(issue);
   return (
     // スマホは画面の幅いっぱい（ページと同じ大きさ。字は余白の中に残す）。高さで縮めると iPhone の Safari では左右にすき間が出たので、縮めない
     <div className="-mx-4 md:mx-0">

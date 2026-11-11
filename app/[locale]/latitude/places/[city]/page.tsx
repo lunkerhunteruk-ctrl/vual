@@ -8,7 +8,7 @@ import CityShopMap, { type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
-import { CityRoute, CityWear, placeAnchor } from '@/components/latitude/CityGuideExtras';
+import { CityDayRoute, CityRoute, CityWear, hasDayRoute, placeAnchor } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { latAsset } from '@/lib/latitude-assets';
@@ -139,6 +139,9 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
 
+      {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
+      <CityDayRoute c={c} ja={ja} who={who} locale={locale} />
+
       {pins.length > 0 && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl">
@@ -183,7 +186,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </section>
       )}
 
-      <CityRoute c={c} ja={ja} who={who} />
+      {!hasDayRoute(c) && <CityRoute c={c} ja={ja} who={who} />}
       <CityWear c={c} ja={ja} who={who} />
 
       <section className="px-4 pb-20 md:px-8 md:pb-28">

@@ -31,7 +31,7 @@ export type ShopPin = {
   mapUrl: string;
 };
 
-type BaseMap = {
+export type BaseMap = {
   center: [number, number];
   k: [number, number];
   home: [number, number, number, number]; // x, y, w, h（メートル）
@@ -273,9 +273,6 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const shop = pins.find((p) => p.id === shown) ?? null;
   const open = !!sel && !!shop;
   const ready = !!base && size.w > 0;
-  const pathOpacity = clamp((2.6 - mpp) / 1.2);
-  const minorW = mpp > 3 ? 0.55 : mpp > 1.5 ? 0.8 : 1.1;
-
   return (
     <div>
       <div
@@ -287,17 +284,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
         {ready && (
           <svg viewBox={`${view.x} ${view.y} ${view.w} ${h}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true"
 >
-            <path d={base.layers.park} fill={PARK} stroke="none" />
-            <path d={base.layers.water} fill={WATER} stroke="none" />
-            <g fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <path d={base.layers.stream} stroke={WATER} strokeWidth={1.4} vectorEffect="non-scaling-stroke" />
-              {/* 犀川・浅野川の幅は water の面（OSM の川の面）で出る。線は、面の切れ目を埋めるのと、引いた時に細く消えないためだけ */}
-              <path d={base.layers.river} stroke={WATER} strokeWidth={mpp > 3 ? 4 : 2.5} vectorEffect="non-scaling-stroke" />
-              {pathOpacity > 0 && <path d={base.layers.path} stroke={PATH} strokeWidth={0.8} opacity={pathOpacity} vectorEffect="non-scaling-stroke" />}
-              <path d={base.layers.minor} stroke={ROAD} strokeWidth={minorW} opacity={0.85} vectorEffect="non-scaling-stroke" />
-              <path d={base.layers.major} stroke={ROAD} strokeWidth={mpp > 3 ? 1.6 : 2.4} vectorEffect="non-scaling-stroke" />
-              <path d={base.layers.rail} stroke={INK} strokeWidth={1.8} vectorEffect="non-scaling-stroke" />
-            </g>
+            <PaperLayers base={base} mpp={mpp} />
           </svg>
         )}
 
@@ -408,6 +395,27 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
         </p>
       </div>
     </div>
+  );
+}
+
+// 紙の地図の線（川・公園・道・線路）。街のページの「凛の1日の道」（CityDayRoute）でも同じ描き方で使う
+export function PaperLayers({ base, mpp }: { base: BaseMap; mpp: number }) {
+  const pathOpacity = clamp((2.6 - mpp) / 1.2);
+  const minorW = mpp > 3 ? 0.55 : mpp > 1.5 ? 0.8 : 1.1;
+  return (
+    <>
+      <path d={base.layers.park} fill={PARK} stroke="none" />
+      <path d={base.layers.water} fill={WATER} stroke="none" />
+      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path d={base.layers.stream} stroke={WATER} strokeWidth={1.4} vectorEffect="non-scaling-stroke" />
+        {/* 犀川・浅野川の幅は water の面（OSM の川の面）で出る。線は、面の切れ目を埋めるのと、引いた時に細く消えないためだけ */}
+        <path d={base.layers.river} stroke={WATER} strokeWidth={mpp > 3 ? 4 : 2.5} vectorEffect="non-scaling-stroke" />
+        {pathOpacity > 0 && <path d={base.layers.path} stroke={PATH} strokeWidth={0.8} opacity={pathOpacity} vectorEffect="non-scaling-stroke" />}
+        <path d={base.layers.minor} stroke={ROAD} strokeWidth={minorW} opacity={0.85} vectorEffect="non-scaling-stroke" />
+        <path d={base.layers.major} stroke={ROAD} strokeWidth={mpp > 3 ? 1.6 : 2.4} vectorEffect="non-scaling-stroke" />
+        <path d={base.layers.rail} stroke={INK} strokeWidth={1.8} vectorEffect="non-scaling-stroke" />
+      </g>
+    </>
   );
 }
 
