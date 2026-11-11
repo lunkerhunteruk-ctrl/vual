@@ -1,23 +1,41 @@
 'use client';
 import Link from 'next/link';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { LAND_PATH, MAP_H, MAP_W } from '@/lib/latitude-map';
-import type { PlaceCountry } from '@/lib/latitude-places-index';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { LAND_PATH, MAP_H, MAP_W, project } from '@/lib/latitude-map';
+import type { PlaceCity, PlaceCountry } from '@/lib/latitude-places-index';
+import { REGIONS, type PlaceRegion } from '@/lib/latitude-regions';
+import HScroller from '@/components/latitude/HScroller';
 
 // 2026-11-11 試作：「場所から探す」の地図（/latitude/places）。
-// 世界の地図（一覧ページの「Where they are」＝TravellerMap と同じ図法・同じ色）に国の点。国を押すと、その国へなめらかに寄り、
-// 街の点・街の名前・緯度・その街の号の表紙の小さな丸が出る。街を押すと街の案内（/latitude/places/<街>）へ。
+// 世界の地図（一覧ページの「Where they are」＝TravellerMap と同じ図法・同じ色）に国の点。国を押すと、その国へなめらかに寄る。
 // 寄った時の細かい国の形は public/latitude/placesmap.json（Natural Earth 50m。scripts/latitude-places-map.py）を、開いてから読む。
 // マウスのある画面では、点に乗せると少し大きくなり名前が出る（金沢の店の地図と同じ）。スマホは押して寄る。
 // 号がまだ無い街（upcoming）は白抜きの点と「これから」。いまは lib/latitude-places-index.ts の SHOW_UPCOMING で出していない。
+//
+// 2026-11-11 町が40〜50に増えても見やすいように、地方のある国（lib/latitude-regions.ts。いまは日本）は2段にする：
+//  1. 国の段階：地方ごとの数字の丸（「九州 8」）。号のある町（旅人が1日を過ごした町）だけは、写真の丸＋名前のまま。
+//     案内だけの町は数字の中。地方の町がみな号の町なら、その地方の数字の丸は出さない（本番の2町では今までどおりの見た目）。
+//  2. 地方の段階：数字の丸を押すと、その地方へ寄り、町が小さな点と名前で全部出る。写真はマウスを重ねた時・押した時だけ。「← 日本」で戻る。
+//  3段目（町の中）は作らない。町のページの店の地図がその役。
+//  スマホは地図の下に、地方ごとの横に流れる一覧（地方の見出し＋町のカード）。
+// 試しの町：URL に ?preview=50 を付けた時だけ public/latitude/placesmap-preview-cities.json を読み、日本に足す（本番には出さない。ページは無い）。
 
+type Inset = {
+  box: [number, number, number, number];
+  d: string;
+  src?: [number, number, number, number]; // 元の範囲（西・南・東・北）。この中の町は枠の中へ移して描く
+  move?: { from: [number, number]; o: [number, number]; k: number };
+};
 type Geo = {
-  countries: Record<string, { view: [number, number, number, number]; d: string; inset?: { box: [number, number, number, number]; d: string } }>;
+  countries: Record<string, { view: [number, number, number, number]; d: string; inset?: Inset }>;
   context: string;
 };
 type View = { x: number; y: number; w: number };
 type Anim = { from: View; to: View; t0: number; dur: number };
+type Rect = { x: number; y: number; w: number; h: number };
+type PreviewTown = { slug: string; name: string; nameJa: string; prefecture: string; prefectureJa: string; region: string; lat: number; lon: number };
 
+const PREVIEW_SRC = '/latitude/placesmap-preview-cities.json';
 const INK = '#1e1d1b';
 const MUTE = '#78746c';
 const PAPER = '#f2eee7';
@@ -60,10 +78,13 @@ function fit(box: [number, number, number, number], W: number, H: number, pad: {
   const cy = by + bh / 2 - ((pad.t - pad.b) / 2) / k;
   return { x: cx - w / 2, y: cy - (w * (H / W)) / 2, w };
 }
+// 字の幅の見当（px）。かな・漢字は字の大きさと同じ、英字はその半分強
+const textW = (s: string, px: number) => [...s].reduce((w, ch) => w + (/[　-鿿＀-￯]/.test(ch) ? px : px * 0.56), 0);
+const hit = (a: Rect, b: Rect, gap = 0) => a.x < b.x + b.w + gap && b.x < a.x + a.w + gap && a.y < b.y + b.h + gap && b.y < a.y + a.h + gap;
 
 // initial：最初から寄っておく国（国のページ。世界地図を通らない）。worldHref があれば「← 世界」はそのページへのリンク。
 // syncUrl：国へ寄った時に、アドレスを国のページ（/latitude/places/<国>）に合わせる（場所のページ）
-export default function PlacesMap({ countries, locale, src, initial, worldHref, syncUrl }: {
+export default function PlacesMap({ countries: given, locale, src, initial, worldHref, syncUrl }: {
   countries: PlaceCountry[]; locale: string; src: string; initial?: string; worldHref?: string; syncUrl?: boolean;
 }) {
   const ja = locale === 'ja';
@@ -72,6 +93,9 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
   const [anim, setAnim] = useState<Anim | null>(null);
   const [now, setNow] = useState(0);
   const [sel, setSel] = useState<string | null>(initial ?? null);
+  const [reg, setReg] = useState<string | null>(null); // 寄っている地方
+  const [picked, setPicked] = useState<string | null>(null); // 押した町（試しの町はページが無いので、名前を強める）
+  const [extra, setExtra] = useState<PlaceCity[]>([]);
   const box = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,6 +103,24 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
     fetch(src).then((r) => (r.ok ? r.json() : null)).then((d) => { if (live && d) setGeo(d); }).catch(() => {});
     return () => { live = false; };
   }, [src]);
+  // 試しの町（?preview=50 の時だけ）
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('preview') !== '50') return;
+    let live = true;
+    fetch(PREVIEW_SRC).then((r) => (r.ok ? r.json() : null)).then((d: { cities: PreviewTown[] } | null) => {
+      if (!live || !d) return;
+      setExtra(d.cities.map((t) => ({
+        slug: t.slug, name: t.name, nameJa: t.nameJa, latitude: `${t.lat.toFixed(1)}° N`, lat: t.lat, lon: t.lon,
+        ...project(t.lat, t.lon), upcoming: false, region: t.region, preview: true,
+      })));
+    }).catch(() => {});
+    return () => { live = false; };
+  }, []);
+  const countries = useMemo(() => (extra.length ? given.map((c) => (c.code !== 'JP' ? c : {
+    ...c,
+    cities: [...c.cities, ...extra.filter((e) => !c.cities.some((q) => q.slug === e.slug))].sort((a, b) => b.lat - a.lat),
+  })) : given), [given, extra]);
+
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
@@ -95,6 +137,19 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
     x: c.cities.reduce((s, q) => s + q.x, 0) / c.cities.length,
     y: c.cities.reduce((s, q) => s + q.y, 0) / c.cities.length,
   });
+  // 寄った時の町の位置：小さな枠（日本の沖縄）の範囲の町は、枠の中へ移す
+  const pos = useCallback((code: string, q: PlaceCity) => {
+    const ins = geo?.countries[code]?.inset;
+    if (!ins?.move || !ins.src) return { x: q.x, y: q.y };
+    const [w, s, e, n] = ins.src;
+    if (q.lon < w || q.lon > e || q.lat < s || q.lat > n) return { x: q.x, y: q.y };
+    const { from, o, k } = ins.move;
+    return { x: o[0] + (q.x - from[0]) * k, y: o[1] + (q.y - from[1]) * k };
+  }, [geo]);
+  const regionAt = useCallback((code: string, g: PlaceRegion) => {
+    const p = project(g.at[0], g.at[1]);
+    return g.inset ? pos(code, { ...p, lat: g.at[0], lon: g.at[1] } as PlaceCity) : p;
+  }, [pos]);
 
   // 世界の範囲：街のある所がみな入る範囲（狭い画面では、それより広く引かない）
   const worldView = useCallback((): View => {
@@ -123,38 +178,75 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
     return fit(b, size.w, size.h, { t: 52, r: wide ? 120 : 40, b: 20, l: 20 });
   }, [countries, geo, size.w, size.h, wide, worldView]);
 
-  const target = useCallback((code: string | null) => (code ? countryView(code) : worldView()), [countryView, worldView]);
+  // 地方の範囲：決めてある範囲（沖縄は小さな枠）に、その地方の町がみな入るように
+  const regionView = useCallback((code: string, key: string): View => {
+    const g = REGIONS[code]?.find((x) => x.key === key);
+    const c = countries.find((q) => q.code === code);
+    if (!g || !c || !size.w) return countryView(code);
+    let x0: number, y0: number, x1: number, y1: number;
+    const ins = geo?.countries[code]?.inset;
+    if (g.inset && ins) {
+      [x0, y0] = ins.box; x1 = x0 + ins.box[2]; y1 = y0 + ins.box[3];
+    } else {
+      const a = project(g.box[3], g.box[0]), b = project(g.box[1], g.box[2]);
+      x0 = a.x; y0 = a.y; x1 = b.x; y1 = b.y;
+    }
+    for (const q of c.cities) {
+      if (q.region !== key) continue;
+      const p = pos(code, q);
+      x0 = Math.min(x0, p.x - 3); y0 = Math.min(y0, p.y - 3); x1 = Math.max(x1, p.x + 3); y1 = Math.max(y1, p.y + 3);
+    }
+    return fit([x0, y0, x1 - x0, y1 - y0], size.w, size.h, { t: 56, r: wide ? 70 : 24, b: 24, l: wide ? 70 : 24 });
+  }, [countries, countryView, geo, pos, size.w, size.h, wide]);
+
+  const target = useCallback((code: string | null, key: string | null) => (code ? (key ? regionView(code, key) : countryView(code)) : worldView()), [countryView, regionView, worldView]);
   const targetRef = useRef(target);
   useEffect(() => { targetRef.current = target; });
   const selRef = useRef(sel);
   useEffect(() => { selRef.current = sel; });
+  const regRef = useRef(reg);
+  useEffect(() => { regRef.current = reg; });
   // 形が届いた時・大きさが変わった時は、いまの所へ合わせ直す（動きなし）
   useEffect(() => {
     if (!size.w) return;
-    const to = targetRef.current(selRef.current);
+    const to = targetRef.current(selRef.current, regRef.current);
     setAnim({ from: to, to, t0: 0, dur: 0 });
   }, [geo, size.w, size.h]);
 
   const animating = !!anim && now < anim.t0 + anim.dur;
-  const view = anim ? viewAt(anim, now, r) : target(sel);
+  const view = anim ? viewAt(anim, now, r) : target(sel, reg);
 
   const base = `/${locale}/latitude/places`;
+  // 国（code）と地方（key）へ、なめらかに寄る
+  const fly = (code: string | null, key: string | null) => {
+    const t = performance.now();
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const from = anim ? viewAt(anim, t, r) : worldView();
+    const to = target(code, key);
+    setAnim({ from, to, t0: t, dur: still ? 0 : duration(from, to, r) });
+    setSel(code);
+    setReg(key);
+    setNow(t);
+  };
   const goTo = (code: string | null, push = true) => {
     if (worldHref && code === null) return; // 国のページでは、世界へは「← 世界」のリンクで移る
     if (syncUrl && push && code !== sel) {
       const slug = countries.find((c) => c.code === code)?.slug;
       window.history.pushState(null, '', code && slug ? `${base}/${slug}` : base);
     }
-    const t = performance.now();
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const from = anim ? viewAt(anim, t, r) : worldView();
-    const to = target(code);
-    setAnim({ from, to, t0: t, dur: still ? 0 : duration(from, to, r) });
-    setSel(code);
-    setNow(t);
+    setPicked(null);
+    fly(code, null);
+  };
+  const goRegion = (key: string | null, pick: string | null = null) => {
+    if (!sel) return;
+    setPicked(pick);
+    if (key === reg) return;
+    fly(sel, key);
   };
   const goRef = useRef(goTo);
   useEffect(() => { goRef.current = goTo; });
+  const backRef = useRef(() => {});
+  useEffect(() => { backRef.current = () => (regRef.current ? goRegion(null) : goTo(null)); });
   useEffect(() => {
     if (!animating) return;
     let raf = 0;
@@ -173,7 +265,7 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
     return () => window.removeEventListener('popstate', onPop);
   }, [syncUrl, countries]);
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') goRef.current(null); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') backRef.current(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
@@ -183,7 +275,8 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
   const detail = clamp((zoom - 2.2) / 2); // 寄るほど、細かい国の形に入れ替える
   const ready = size.w > 0;
   const toScreen = (x: number, y: number) => ({ sx: ((x - view.x) / view.w) * size.w, sy: ((y - view.y) / h) * size.h });
-  const showCities = !!sel && (!animating || (anim ? (now - anim.t0) / anim.dur > 0.55 : true));
+  const settled = !animating || (anim ? (now - anim.t0) / anim.dur > 0.55 : true);
+  const showCities = !!sel && settled;
 
   // 国の点（世界の範囲の時だけ）。近い国は、画面の上で重ならないよう少し押し合わせる
   const cdots = countries.map((c) => {
@@ -203,6 +296,121 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
     }
   }
   const selC = countries.find((c) => c.code === sel);
+  const regs = sel ? REGIONS[sel] : undefined;
+  const regionMode = !!(selC && regs && selC.cities.some((q) => q.region));
+  const regG = regionMode && reg ? regs!.find((g) => g.key === reg) : undefined;
+  const cityName = (q: PlaceCity) => (ja ? q.nameJa : q.name);
+  // 国のまん中：寄った時の国の範囲のまん中（形が届く前は町の位置のまん中）
+  const gv = sel ? geo?.countries[sel]?.view : undefined;
+  const countryMid = gv ? { x: gv[0] + gv[2] / 2, y: gv[1] + gv[3] / 2 } : selC ? centre(selC) : { x: 0, y: 0 };
+
+  // ── 国の段階（地方のある国）：号の町の写真の丸と、地方の数字の丸 ──
+  // 数字の丸が出るか（地方に、号の町でない町がある時）。出ない時（本番の2町）は、号の町の名前の向きも今までどおり
+  const anyBubble = regionMode && !reg && selC!.cities.some((q) => q.region && !(q.issue || q.upcoming));
+  const pins = regionMode && !reg ? selC!.cities.filter((q) => q.issue || q.upcoming).map((q) => {
+    const p = pos(selC!.code, q);
+    const { sx, sy } = toScreen(p.x, p.y);
+    // 数字の丸がある時は、名前は国のまん中から外へ（金沢は日本海、盛岡は太平洋の側）。丸とぶつかりにくい
+    const left = anyBubble ? p.x < countryMid.x : sx > size.w - 170;
+    const w = 14 + 8 + (q.issue ? 40 : 0) + Math.max(textW(cityName(q), 15), 64);
+    return { q, sx, sy, left, rect: { x: left ? sx + 7 - w : sx - 7, y: sy - 18, w, h: 36 } };
+  }) : [];
+  const bubbles = regionMode && !reg ? regs!.map((g) => {
+    const list = selC!.cities.filter((q) => q.region === g.key);
+    if (!list.length || list.every((q) => q.issue || q.upcoming)) return null; // 号の町だけの地方は、写真の丸で足りる
+    const n = list.length;
+    const d = Math.round((wide ? 30 : 26) + Math.min(n, 16) * (wide ? 0.9 : 0.6));
+    const name = ja ? g.ja : g.en;
+    const nw = textW(name, wide ? 13 : 12) + 4;
+    const at = regionAt(selC!.code, g);
+    const { sx, sy } = toScreen(at.x, at.y);
+    return { g, list, n, d, name, x: sx, y: sy, w: Math.max(d, nw), h: d + 16 };
+  }).filter((b): b is NonNullable<typeof b> => !!b) : [];
+  // 数字の丸（丸の下に地方の名前）を、ほかの丸・号の町の丸と重ならないよう押し合わせる。号の町は動かさない
+  {
+    const rectOf = (b: (typeof bubbles)[number]): Rect => ({ x: b.x - b.w / 2, y: b.y - b.d / 2, w: b.w, h: b.h });
+    for (let it = 0; it < 60; it++) {
+      let moved = false;
+      for (let i = 0; i < bubbles.length; i++) {
+        const a = bubbles[i];
+        const others: { rect: Rect; fixed: boolean; j: number }[] = [
+          ...bubbles.map((b, j) => ({ rect: rectOf(b), fixed: false, j })).filter((o) => o.j !== i),
+          ...pins.map((p) => ({ rect: p.rect, fixed: true, j: -1 })),
+        ];
+        for (const o of others) {
+          const ra = rectOf(a);
+          if (!hit(ra, o.rect, 6)) continue;
+          const ox = Math.min(ra.x + ra.w, o.rect.x + o.rect.w) - Math.max(ra.x, o.rect.x) + 6;
+          const oy = Math.min(ra.y + ra.h, o.rect.y + o.rect.h) - Math.max(ra.y, o.rect.y) + 6;
+          const ca = { x: ra.x + ra.w / 2, y: ra.y + ra.h / 2 }, cb = { x: o.rect.x + o.rect.w / 2, y: o.rect.y + o.rect.h / 2 };
+          const share = o.fixed ? 1 : 0.5;
+          if (ox < oy) {
+            const s = (ca.x <= cb.x ? -1 : 1) * ox * share;
+            a.x += s; if (!o.fixed) bubbles[o.j].x -= s;
+          } else {
+            const s = (ca.y <= cb.y ? -1 : 1) * oy * share;
+            a.y += s; if (!o.fixed) bubbles[o.j].y -= s;
+          }
+          moved = true;
+        }
+      }
+      for (const b of bubbles) {
+        b.x = clamp(b.x, b.w / 2 + 4, size.w - b.w / 2 - 4);
+        b.y = clamp(b.y, 48 + b.d / 2, size.h - b.h + b.d / 2 - 4);
+      }
+      if (!moved) break;
+    }
+  }
+
+  // ── 地方の段階：町の点と名前。名前は右 → 左 → 上 → 下 → ななめの順に、重ならない所へ。どこにも置けない名前は、点に乗せた時だけ出す ──
+  const marks = regG ? (() => {
+    const list = selC!.cities.filter((q) => q.region === regG.key);
+    const dots = list.map((q) => {
+      const p = pos(selC!.code, q);
+      const { sx, sy } = toScreen(p.x, p.y);
+      return { q, sx, sy };
+    });
+    const taken: Rect[] = [{ x: 0, y: 0, w: 120, h: 44 }, ...dots.map((d) => ({ x: d.sx - 4, y: d.sy - 4, w: 8, h: 8 }))];
+    const order = [...dots].sort((a, b) => Number(b.q.slug === picked) - Number(a.q.slug === picked) || Number(!!b.q.issue) - Number(!!a.q.issue) || b.q.lat - a.q.lat);
+    const fs = wide ? 14 : 13;
+    const place = new Map<string, { dx: number; dy: number } | null>();
+    for (const d of order) {
+      const w = textW(cityName(d.q), fs) + 2, hh = fs + 4;
+      const cands = [
+        { dx: 8, dy: -hh / 2 }, { dx: -8 - w, dy: -hh / 2 },
+        { dx: -w / 2, dy: -8 - hh }, { dx: -w / 2, dy: 8 },
+        { dx: 5, dy: -5 - hh }, { dx: 5, dy: 5 }, { dx: -5 - w, dy: -5 - hh }, { dx: -5 - w, dy: 5 },
+      ];
+      let got: { dx: number; dy: number } | null = null;
+      for (const c of cands) {
+        const rr = { x: d.sx + c.dx, y: d.sy + c.dy, w, h: hh };
+        if (rr.x < 2 || rr.y < 2 || rr.x + rr.w > size.w - 2 || rr.y + rr.h > size.h - 2) continue;
+        if (taken.some((t) => !(t.x === d.sx - 4 && t.y === d.sy - 4) && hit(rr, t))) continue;
+        got = c; taken.push(rr); break;
+      }
+      place.set(d.q.slug, got);
+    }
+    return dots.map((d) => ({ ...d, label: place.get(d.q.slug) ?? null, fs }));
+  })() : [];
+
+  // スマホの地図の下の一覧（地方のある国）
+  const listC = countries.find((c) => REGIONS[c.code] && c.cities.some((q) => q.region));
+  const showOnMap = (code: string, key: string, slug: string | null) => {
+    box.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    if (sel !== code) {
+      if (syncUrl) {
+        const slugC = countries.find((c) => c.code === code)?.slug;
+        if (slugC) window.history.pushState(null, '', `${base}/${slugC}`);
+      }
+      setPicked(slug);
+      fly(code, key);
+      return;
+    }
+    goRegion(key, slug);
+  };
+
+  const backBtn = 'absolute left-3 top-3 z-[4] cursor-pointer text-[10px] uppercase tracking-[0.3em]';
+  const backStyle = { color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` };
 
   return (
     <div>
@@ -210,7 +418,7 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
       {countries.length > 1 && <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.28em]">
         {countries.map((c) => (
           <li key={c.code}>
-            <button type="button" onClick={() => goTo(sel === c.code ? null : c.code)} aria-pressed={sel === c.code}
+            <button type="button" onClick={() => goTo(sel === c.code && !reg ? null : c.code)} aria-pressed={sel === c.code}
               className="cursor-pointer underline-offset-4 hover:underline" style={{ color: sel === c.code ? INK : MUTE, borderBottom: sel === c.code ? `1px solid ${INK}` : '1px solid transparent' }}>
               {ja ? c.name.ja : c.name.en}
             </button>
@@ -219,7 +427,7 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
       </ul>}
       <div ref={box} className="relative aspect-square w-full overflow-hidden md:aspect-[2/1]"
         style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '80vh', touchAction: 'pan-y' }}
-        onClick={(e) => { if (sel && !(e.target as Element).closest('button, a')) goTo(null); }}>
+        onClick={(e) => { if (sel && !(e.target as Element).closest('button, a')) backRef.current(); }}>
         {ready && (
           <svg viewBox={`${view.x} ${view.y} ${view.w} ${h}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
             {PARALLELS.map((lat) => (
@@ -244,10 +452,10 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
           </svg>
         )}
 
-        {/* 緯度の線の数字（左の端） */}
+        {/* 緯度の線の数字（左の端）。地方に寄った時は、地方の名前と重なるので左上を空ける */}
         {ready && PARALLELS.map((lat) => {
           const { sy } = toScreen(0, (73 - lat) * SC);
-          if (sy < 14 || sy > size.h - 8) return null;
+          if (sy < (reg ? 52 : 14) || sy > size.h - 8) return null;
           return (
             <span key={lat} className="pointer-events-none absolute left-2 -translate-y-full pb-0.5 text-[9px] tracking-[0.2em]" style={{ top: sy, color: MUTE }}>
               {lat}° N
@@ -260,53 +468,108 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
           <button key={c.code} type="button" onClick={(e) => { e.stopPropagation(); goTo(c.code); }}
             className="group absolute z-[1] -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 hover:z-[3] focus-visible:z-[3]"
             style={{ left: x, top: y, opacity: animating ? 0 : 1, transition: 'opacity 200ms' }}
-            aria-label={`${ja ? c.name.ja : c.name.en} · ${c.cities.map((q) => (ja ? q.nameJa : q.name)).join(', ')}`}>
+            aria-label={`${ja ? c.name.ja : c.name.en} · ${c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(', ')}`}>
             <span className="block h-3 w-3 rounded-full group-hover:scale-[1.4]" style={{ background: RED, boxShadow: `0 0 0 2px ${PAPER}`, transition: 'scale 180ms ease-out' }} />
             <span className="pointer-events-none absolute left-full top-1/2 ml-1 hidden -translate-y-1/2 whitespace-nowrap text-[13px] group-hover:block group-focus-visible:block"
               style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>
               {ja ? c.name.ja : c.name.en}
               <span className="ml-2 text-[9px] uppercase tracking-[0.25em]" style={{ fontFamily: 'inherit', color: MUTE }}>
-                {c.cities.map((q) => (ja ? q.nameJa : q.name)).join(' · ')}
+                {c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(' · ')}
               </span>
             </span>
           </button>
         ))}
 
-        {/* 街の点（国に寄った時）。押すと街の案内へ */}
-        {ready && selC && showCities && selC.cities.map((q) => {
+        {/* 街の点（地方の無い国に寄った時）。押すと街の案内へ */}
+        {ready && selC && !regionMode && showCities && selC.cities.map((q) => {
           const { sx, sy } = toScreen(q.x, q.y);
-          const left = sx > size.w - 170;
-          return (
-            <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`}
-              className="group absolute z-[2] flex cursor-pointer items-center gap-2 hover:z-[3]"
-              style={{ left: sx, top: sy, transform: `translate(${left ? 'calc(-100% + 7px)' : '-7px'}, -50%)`, flexDirection: left ? 'row-reverse' : 'row', animation: 'lat-fade 400ms ease-out' }}
-              aria-label={ja ? `${q.nameJa}の案内（${q.latitude}）` : `${q.name} city guide (${q.latitude})`}>
-              <span className="block h-[14px] w-[14px] shrink-0 rounded-full group-hover:scale-[1.4]"
-                style={{ background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, transition: 'scale 180ms ease-out' }} />
+          return <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={sx > size.w - 170} locale={locale} ja={ja} />;
+        })}
+
+        {/* 国の段階（地方のある国）：号の町の写真の丸 */}
+        {ready && showCities && pins.map(({ q, sx, sy, left }) => (
+          <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={left} locale={locale} ja={ja} />
+        ))}
+
+        {/* 国の段階：地方の数字の丸。押すとその地方へ */}
+        {ready && showCities && bubbles.map((b) => (
+          <button key={b.g.key} type="button" onClick={(e) => { e.stopPropagation(); goRegion(b.g.key); }}
+            className="group absolute z-[2] flex -translate-x-1/2 cursor-pointer flex-col items-center hover:z-[3] focus-visible:z-[3]"
+            style={{ left: b.x, top: b.y - b.d / 2, animation: 'lat-fade 400ms ease-out' }}
+            title={b.list.map((q) => cityName(q)).join(ja ? '・' : ', ')}
+            aria-label={ja ? `${b.name}（${b.n}の町）` : `${b.name} (${b.n} towns)`}>
+            <span className="flex items-center justify-center rounded-full tabular-nums transition-transform duration-200 group-hover:scale-110"
+              style={{ width: b.d, height: b.d, background: RED, color: PAPER, boxShadow: `0 0 0 2px ${PAPER}`, fontFamily: SERIF, fontSize: wide ? 16 : 14, lineHeight: 1 }}>
+              {b.n}
+            </span>
+            <span className="mt-1 whitespace-nowrap leading-none group-hover:underline underline-offset-4"
+              style={{ fontFamily: SERIF, fontSize: wide ? 13 : 12, color: INK, textShadow: HALO }}>
+              {b.name}
+            </span>
+          </button>
+        ))}
+
+        {/* 地方の段階：町の点と名前。押すと町のページへ（試しの町は名前を強めるだけ）。写真は乗せた時・押した時だけ */}
+        {ready && regG && settled && marks.map(({ q, sx, sy, label, fs }) => {
+          const on = picked === q.slug;
+          const inner = (
+            <>
+              <span className="absolute block rounded-full transition-transform duration-150 group-hover:scale-[1.5]"
+                style={{ width: q.issue ? 11 : 8, height: q.issue ? 11 : 8, left: q.issue ? -5.5 : -4, top: q.issue ? -5.5 : -4, background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1.5' : undefined }} />
               {q.issue && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={q.issue.cover} alt="" loading="lazy" className="block h-8 w-8 shrink-0 rounded-full object-cover" style={{ boxShadow: `0 0 0 2px ${PAPER}` }} />
+                <img src={q.issue.cover} alt="" loading="lazy"
+                  className={`pointer-events-none absolute rounded-full object-cover ${on ? 'block' : 'hidden group-hover:block group-focus-visible:block'}`}
+                  style={{ width: 44, height: 44, maxWidth: 'none', left: -22, top: -58, boxShadow: `0 0 0 2px ${PAPER}` }} />
               )}
-              <span className="flex flex-col" style={{ textAlign: left ? 'right' : 'left' }}>
-                <span className="whitespace-nowrap text-[15px] leading-tight group-hover:underline underline-offset-4" style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>
-                  {ja ? q.nameJa : q.name}
-                </span>
-                <span className="whitespace-nowrap text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
-                  {q.latitude}{q.upcoming ? (ja ? '・これから' : ' · Next') : ''}
-                </span>
+              <span className={`absolute whitespace-nowrap leading-none underline-offset-4 group-hover:underline ${label || on ? '' : 'hidden group-hover:block group-focus-visible:block'}`}
+                style={{
+                  left: label ? label.dx : 8, top: label ? label.dy + 2 : -fs / 2,
+                  fontFamily: SERIF, fontSize: fs, color: on ? RED : INK, textShadow: HALO,
+                  textDecoration: on ? 'underline' : undefined, textDecorationThickness: on ? 1 : undefined,
+                }}>
+                {cityName(q)}
               </span>
+            </>
+          );
+          const cls = `group absolute block h-0 w-0 cursor-pointer outline-none ${on ? 'z-[3]' : 'z-[2] hover:z-[3] focus-visible:z-[3]'}`;
+          const st = { left: sx, top: sy, animation: 'lat-fade 400ms ease-out' };
+          return q.preview ? (
+            <button key={q.slug} type="button" className={cls} style={st} aria-pressed={on}
+              onClick={(e) => { e.stopPropagation(); setPicked(on ? null : q.slug); }}
+              aria-label={ja ? `${q.nameJa}（${q.latitude}・試しの町）` : `${q.name} (${q.latitude}, preview)`}>
+              <span className="absolute -left-3 -top-3 block h-6 w-6" />
+              {inner}
+            </button>
+          ) : (
+            <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`} className={cls} style={st}
+              aria-label={ja ? `${q.nameJa}の案内（${q.latitude}）` : `${q.name} city guide (${q.latitude})`}>
+              <span className="absolute -left-3 -top-3 block h-6 w-6" />
+              {inner}
             </Link>
           );
         })}
 
-        {ready && sel && (worldHref ? (
-          <Link href={worldHref} className="absolute left-3 top-3 z-[4] text-[10px] uppercase tracking-[0.3em]"
-            style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
+        {/* 地方の段階：右上に地方の名前と町の数 */}
+        {ready && regG && settled && (
+          <p className="pointer-events-none absolute right-3 top-3 z-[4] text-right" style={{ animation: 'lat-fade 400ms ease-out' }}>
+            <span className="block text-[20px] leading-none md:text-[26px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>{ja ? regG.ja : regG.en}</span>
+            <span className="mt-1 block text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
+              {(() => { const n = marks.length; return ja ? `${n}の町` : `${n} ${n === 1 ? 'town' : 'towns'}`; })()}
+            </span>
+          </p>
+        )}
+
+        {ready && sel && (reg ? (
+          <button type="button" onClick={() => goRegion(null)} className={backBtn} style={backStyle}>
+            ← {ja ? selC?.name.ja : selC?.name.en}
+          </button>
+        ) : worldHref ? (
+          <Link href={worldHref} className={backBtn} style={backStyle}>
             {ja ? '← 世界' : '← World'}
           </Link>
         ) : (
-          <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] cursor-pointer text-[10px] uppercase tracking-[0.3em]"
-            style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
+          <button type="button" onClick={() => goTo(null)} className={backBtn} style={backStyle}>
             {ja ? '← 世界' : '← World'}
           </button>
         ))}
@@ -316,6 +579,88 @@ export default function PlacesMap({ countries, locale, src, initial, worldHref, 
         {ja ? '地図データ ' : 'Map data '}
         <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>Natural Earth</a>
       </p>
+
+      {/* スマホ：地図の下に、地方ごとの横に流れる一覧（街のページの横スクロールと同じ作り） */}
+      {listC && (
+        <div className="mt-10 flex flex-col gap-10 md:hidden">
+          <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? `${listC.name.ja}の地方から` : `${listC.name.en}, by region`}</p>
+          {REGIONS[listC.code].map((g) => {
+            const list = listC.cities.filter((q) => q.region === g.key);
+            if (!list.length) return null;
+            const name = ja ? g.ja : g.en;
+            return (
+              <HScroller key={g.key} count={list.length} label={ja ? `${name}の町` : `Towns in ${name}`} ja={ja}
+                head={
+                  <div className="flex items-baseline gap-3">
+                    <h3 className="text-[24px] leading-none" style={{ fontFamily: SERIF, fontWeight: 400 }}>{name}</h3>
+                    <button type="button" onClick={() => showOnMap(listC.code, g.key, null)}
+                      className="cursor-pointer text-[10px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+                      {ja ? '地図' : 'Map'}
+                    </button>
+                  </div>
+                }>
+                {list.map((q) => (
+                  <li key={q.slug} className="w-[36vw] max-w-[160px] shrink-0 snap-start">
+                    <TownCard q={q} locale={locale} ja={ja} on={picked === q.slug}
+                      onPick={() => showOnMap(listC.code, g.key, q.slug)} />
+                  </li>
+                ))}
+              </HScroller>
+            );
+          })}
+        </div>
+      )}
     </div>
+  );
+}
+
+// 号の町の印（点＋号の表紙の小さな丸＋名前と緯度）。押すと街の案内へ
+function CityPin({ q, sx, sy, left, locale, ja }: { q: PlaceCity; sx: number; sy: number; left: boolean; locale: string; ja: boolean }) {
+  return (
+    <Link href={`/${locale}/latitude/places/${q.slug}`}
+      className="group absolute z-[2] flex cursor-pointer items-center gap-2 hover:z-[3]"
+      style={{ left: sx, top: sy, transform: `translate(${left ? 'calc(-100% + 7px)' : '-7px'}, -50%)`, flexDirection: left ? 'row-reverse' : 'row', animation: 'lat-fade 400ms ease-out' }}
+      aria-label={ja ? `${q.nameJa}の案内（${q.latitude}）` : `${q.name} city guide (${q.latitude})`}>
+      <span className="block h-[14px] w-[14px] shrink-0 rounded-full group-hover:scale-[1.4]"
+        style={{ background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, transition: 'scale 180ms ease-out' }} />
+      {q.issue && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={q.issue.cover} alt="" loading="lazy" className="block shrink-0 rounded-full object-cover" style={{ width: 32, height: 32, boxShadow: `0 0 0 2px ${PAPER}` }} />
+      )}
+      <span className="flex flex-col" style={{ textAlign: left ? 'right' : 'left' }}>
+        <span className="whitespace-nowrap text-[15px] leading-tight group-hover:underline underline-offset-4" style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>
+          {ja ? q.nameJa : q.name}
+        </span>
+        <span className="whitespace-nowrap text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
+          {q.latitude}{q.upcoming ? (ja ? '・これから' : ' · Next') : ''}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+// スマホの一覧の町のカード。号の町は表紙、ほかは紙に緯度だけ（街のページの「1日の回り方」の写真の無い時刻と同じ形）。
+// 街のページのある町は押すとそのページへ。試しの町は、地図でその町に寄って名前を強める
+function TownCard({ q, locale, ja, on, onPick }: { q: PlaceCity; locale: string; ja: boolean; on: boolean; onPick: () => void }) {
+  const face = q.issue ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={q.issue.cover} alt="" loading="lazy" className="block w-full object-cover" style={{ aspectRatio: '4 / 3' }} />
+  ) : (
+    <div className="flex w-full items-end p-3" style={{ aspectRatio: '4 / 3', border: `1px solid ${on ? RED : LINE}` }}>
+      <span className="text-[26px] leading-none tabular-nums" style={{ fontFamily: SERIF, color: MUTE }}>{q.latitude.replace(' N', '')}</span>
+    </div>
+  );
+  const text = (
+    <>
+      <p className="mt-3 text-[18px] leading-snug" style={{ fontFamily: SERIF, color: on ? RED : INK }}>{ja ? q.nameJa : q.name}</p>
+      <p className="mt-1 text-[9px] uppercase tabular-nums tracking-[0.25em]" style={{ color: MUTE }}>
+        {q.latitude}{q.issue ? (ja ? '・号' : ' · Issue') : ''}
+      </p>
+    </>
+  );
+  return q.preview ? (
+    <button type="button" onClick={onPick} aria-pressed={on} className="block w-full cursor-pointer text-left">{face}{text}</button>
+  ) : (
+    <Link href={`/${locale}/latitude/places/${q.slug}`} className="block">{face}{text}</Link>
   );
 }

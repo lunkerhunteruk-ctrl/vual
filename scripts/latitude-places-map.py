@@ -92,7 +92,10 @@ def main():
             ox, oy = c0 + ((c1 - c0) - (a1 - a0) * k) / 2, d0 + ((d1 - d0) - (b1 - b0) * k) / 2
             T = lambda x, y: (ox + (x - a0) * k, oy + (y - b0) * k)
             irings = [[T(*P(lon, lat)) for lon, lat in r] for r in rings_of(f) if inside(r, INSET_JP['src']) and not inside(r, box)]
-            item['inset'] = {'box': [round(c0, 2), round(d0, 2), round(c1 - c0, 2), round(d1 - d0, 2)], 'd': path(irings, TOL / 2, 0.0005)}
+            # move：元の位置（地図の単位）→ 枠の中の位置。x' = o[0] + (x - from[0]) * k（画面で沖縄の街の点を枠の中に置くため）。
+            # src：元の範囲（西・南・東・北）。この中の点（沖縄の街）は枠の中へ移して描く
+            item['inset'] = {'box': [round(c0, 2), round(d0, 2), round(c1 - c0, 2), round(d1 - d0, 2)], 'd': path(irings, TOL / 2, 0.0005),
+                             'src': list(INSET_JP['src']), 'move': {'from': [round(a0, 4), round(b0, 4)], 'o': [round(ox, 4), round(oy, 4)], 'k': round(k, 6)}}
         out['countries'][c] = item
     ctx = []
     for f in feats:

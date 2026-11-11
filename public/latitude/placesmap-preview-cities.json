@@ -1,0 +1,515 @@
+{
+ "note": "2026-11-11 PREVIEW ONLY (?preview=50 on /latitude/places). Test towns from the city-guide research; no pages exist. Centres from city-maps config or OpenStreetMap Nominatim.",
+ "cities": [
+  {
+   "slug": "aizuwakamatsu",
+   "name": "Aizu-Wakamatsu",
+   "nameJa": "会津若松",
+   "prefecture": "Fukushima",
+   "prefectureJa": "福島県",
+   "region": "tohoku",
+   "lat": 37.4985,
+   "lon": 139.9265
+  },
+  {
+   "slug": "arita",
+   "name": "Arita",
+   "nameJa": "有田",
+   "prefecture": "Saga",
+   "prefectureJa": "佐賀県",
+   "region": "kyushu",
+   "lat": 33.187,
+   "lon": 129.89
+  },
+  {
+   "slug": "beppu",
+   "name": "Beppu",
+   "nameJa": "別府",
+   "prefecture": "Oita",
+   "prefectureJa": "大分県",
+   "region": "kyushu",
+   "lat": 33.2795,
+   "lon": 131.5003
+  },
+  {
+   "slug": "chichibu",
+   "name": "Chichibu",
+   "nameJa": "秩父",
+   "prefecture": "Saitama",
+   "prefectureJa": "埼玉県",
+   "region": "kanto",
+   "lat": 35.9915,
+   "lon": 139.0858
+  },
+  {
+   "slug": "echizen",
+   "name": "Echizen",
+   "nameJa": "越前",
+   "prefecture": "Fukui",
+   "prefectureJa": "福井県",
+   "region": "chubu",
+   "lat": 35.9035,
+   "lon": 136.1689
+  },
+  {
+   "slug": "fujiyoshida",
+   "name": "Fujiyoshida",
+   "nameJa": "富士吉田",
+   "prefecture": "Yamanashi",
+   "prefectureJa": "山梨県",
+   "region": "chubu",
+   "lat": 35.4875,
+   "lon": 138.8078
+  },
+  {
+   "slug": "hachinohe",
+   "name": "Hachinohe",
+   "nameJa": "八戸",
+   "prefecture": "Aomori",
+   "prefectureJa": "青森県",
+   "region": "tohoku",
+   "lat": 40.5122,
+   "lon": 141.4883
+  },
+  {
+   "slug": "hagi",
+   "name": "Hagi",
+   "nameJa": "萩",
+   "prefecture": "Yamaguchi",
+   "prefectureJa": "山口県",
+   "region": "chugoku",
+   "lat": 34.4135,
+   "lon": 131.4015
+  },
+  {
+   "slug": "hakodate",
+   "name": "Hakodate",
+   "nameJa": "函館",
+   "prefecture": "Hokkaido",
+   "prefectureJa": "北海道",
+   "region": "hokkaido",
+   "lat": 41.7645,
+   "lon": 140.716
+  },
+  {
+   "slug": "hanamaki",
+   "name": "Hanamaki",
+   "nameJa": "花巻",
+   "prefecture": "Iwate",
+   "prefectureJa": "岩手県",
+   "region": "tohoku",
+   "lat": 39.3884,
+   "lon": 141.117
+  },
+  {
+   "slug": "hasami",
+   "name": "Hasami",
+   "nameJa": "波佐見",
+   "prefecture": "Nagasaki",
+   "prefectureJa": "長崎県",
+   "region": "kyushu",
+   "lat": 33.1395,
+   "lon": 129.9105
+  },
+  {
+   "slug": "hita",
+   "name": "Hita",
+   "nameJa": "日田",
+   "prefecture": "Oita",
+   "prefectureJa": "大分県",
+   "region": "kyushu",
+   "lat": 33.3225,
+   "lon": 130.9365
+  },
+  {
+   "slug": "ise",
+   "name": "Ise",
+   "nameJa": "伊勢",
+   "prefecture": "Mie",
+   "prefectureJa": "三重県",
+   "region": "kinki",
+   "lat": 34.4911,
+   "lon": 136.7098
+  },
+  {
+   "slug": "izumo",
+   "name": "Izumo",
+   "nameJa": "出雲",
+   "prefecture": "Shimane",
+   "prefectureJa": "島根県",
+   "region": "chugoku",
+   "lat": 35.3635,
+   "lon": 132.7575
+  },
+  {
+   "slug": "kagoshima",
+   "name": "Kagoshima",
+   "nameJa": "鹿児島",
+   "prefecture": "Kagoshima",
+   "prefectureJa": "鹿児島県",
+   "region": "kyushu",
+   "lat": 31.5925,
+   "lon": 130.5555
+  },
+  {
+   "slug": "kakunodate",
+   "name": "Kakunodate",
+   "nameJa": "角館",
+   "prefecture": "Akita",
+   "prefectureJa": "秋田県",
+   "region": "tohoku",
+   "lat": 39.596,
+   "lon": 140.5635
+  },
+  {
+   "slug": "karatsu",
+   "name": "Karatsu",
+   "nameJa": "唐津",
+   "prefecture": "Saga",
+   "prefectureJa": "佐賀県",
+   "region": "kyushu",
+   "lat": 33.448,
+   "lon": 129.97
+  },
+  {
+   "slug": "kasama",
+   "name": "Kasama",
+   "nameJa": "笠間",
+   "prefecture": "Ibaraki",
+   "prefectureJa": "茨城県",
+   "region": "kanto",
+   "lat": 36.3452,
+   "lon": 140.3042
+  },
+  {
+   "slug": "kashihara",
+   "name": "Kashihara (Imaicho)",
+   "nameJa": "橿原（今井町）",
+   "prefecture": "Nara",
+   "prefectureJa": "奈良県",
+   "region": "kinki",
+   "lat": 34.5075,
+   "lon": 135.7884
+  },
+  {
+   "slug": "kiryu",
+   "name": "Kiryu",
+   "nameJa": "桐生",
+   "prefecture": "Gunma",
+   "prefectureJa": "群馬県",
+   "region": "kanto",
+   "lat": 36.4164,
+   "lon": 139.3434
+  },
+  {
+   "slug": "kochi",
+   "name": "Kochi",
+   "nameJa": "高知",
+   "prefecture": "Kochi",
+   "prefectureJa": "高知県",
+   "region": "shikoku",
+   "lat": 33.5605,
+   "lon": 133.542
+  },
+  {
+   "slug": "kurashiki",
+   "name": "Kurashiki",
+   "nameJa": "倉敷",
+   "prefecture": "Okayama",
+   "prefectureJa": "岡山県",
+   "region": "chugoku",
+   "lat": 34.5965,
+   "lon": 133.7712
+  },
+  {
+   "slug": "kurayoshi",
+   "name": "Kurayoshi",
+   "nameJa": "倉吉",
+   "prefecture": "Tottori",
+   "prefectureJa": "鳥取県",
+   "region": "chugoku",
+   "lat": 35.4302,
+   "lon": 133.8255
+  },
+  {
+   "slug": "mashiko",
+   "name": "Mashiko",
+   "nameJa": "益子",
+   "prefecture": "Tochigi",
+   "prefectureJa": "栃木県",
+   "region": "kanto",
+   "lat": 36.465,
+   "lon": 140.104
+  },
+  {
+   "slug": "nagasaki",
+   "name": "Nagasaki",
+   "nameJa": "長崎",
+   "prefecture": "Nagasaki",
+   "prefectureJa": "長崎県",
+   "region": "kyushu",
+   "lat": 32.7445,
+   "lon": 129.8755
+  },
+  {
+   "slug": "naha",
+   "name": "Naha (Tsuboya)",
+   "nameJa": "那覇（壺屋）",
+   "prefecture": "Okinawa",
+   "prefectureJa": "沖縄県",
+   "region": "okinawa",
+   "lat": 26.2108,
+   "lon": 127.6928
+  },
+  {
+   "slug": "naruto",
+   "name": "Naruto",
+   "nameJa": "鳴門",
+   "prefecture": "Tokushima",
+   "prefectureJa": "徳島県",
+   "region": "shikoku",
+   "lat": 34.1726,
+   "lon": 134.6084
+  },
+  {
+   "slug": "nichinan",
+   "name": "Nichinan (Obi)",
+   "nameJa": "日南（飫肥）",
+   "prefecture": "Miyazaki",
+   "prefectureJa": "宮崎県",
+   "region": "kyushu",
+   "lat": 31.6274,
+   "lon": 131.362
+  },
+  {
+   "slug": "odawara",
+   "name": "Odawara",
+   "nameJa": "小田原",
+   "prefecture": "Kanagawa",
+   "prefectureJa": "神奈川県",
+   "region": "kanto",
+   "lat": 35.2645,
+   "lon": 139.1522
+  },
+  {
+   "slug": "omihachiman",
+   "name": "Omihachiman",
+   "nameJa": "近江八幡",
+   "prefecture": "Shiga",
+   "prefectureJa": "滋賀県",
+   "region": "kinki",
+   "lat": 35.1385,
+   "lon": 136.0905
+  },
+  {
+   "slug": "onomichi",
+   "name": "Onomichi",
+   "nameJa": "尾道",
+   "prefecture": "Hiroshima",
+   "prefectureJa": "広島県",
+   "region": "chugoku",
+   "lat": 34.409,
+   "lon": 133.2
+  },
+  {
+   "slug": "ozu",
+   "name": "Ozu",
+   "nameJa": "大洲",
+   "prefecture": "Ehime",
+   "prefectureJa": "愛媛県",
+   "region": "shikoku",
+   "lat": 33.5065,
+   "lon": 132.5447
+  },
+  {
+   "slug": "sakai",
+   "name": "Sakai",
+   "nameJa": "堺",
+   "prefecture": "Osaka",
+   "prefectureJa": "大阪府",
+   "region": "kinki",
+   "lat": 34.5737,
+   "lon": 135.4829
+  },
+  {
+   "slug": "sawara",
+   "name": "Sawara",
+   "nameJa": "佐原",
+   "prefecture": "Chiba",
+   "prefectureJa": "千葉県",
+   "region": "kanto",
+   "lat": 35.8945,
+   "lon": 140.4941
+  },
+  {
+   "slug": "shiogama",
+   "name": "Shiogama",
+   "nameJa": "塩竈",
+   "prefecture": "Miyagi",
+   "prefectureJa": "宮城県",
+   "region": "tohoku",
+   "lat": 38.3143,
+   "lon": 141.0218
+  },
+  {
+   "slug": "shizuoka",
+   "name": "Shizuoka",
+   "nameJa": "静岡",
+   "prefecture": "Shizuoka",
+   "prefectureJa": "静岡県",
+   "region": "chubu",
+   "lat": 34.9716,
+   "lon": 138.3887
+  },
+  {
+   "slug": "suwa",
+   "name": "Suwa",
+   "nameJa": "諏訪",
+   "prefecture": "Nagano",
+   "prefectureJa": "長野県",
+   "region": "chubu",
+   "lat": 36.0392,
+   "lon": 138.114
+  },
+  {
+   "slug": "tajimi",
+   "name": "Tajimi",
+   "nameJa": "多治見",
+   "prefecture": "Gifu",
+   "prefectureJa": "岐阜県",
+   "region": "chubu",
+   "lat": 35.333,
+   "lon": 137.1319
+  },
+  {
+   "slug": "takamatsu",
+   "name": "Takamatsu",
+   "nameJa": "高松",
+   "prefecture": "Kagawa",
+   "prefectureJa": "香川県",
+   "region": "shikoku",
+   "lat": 34.341,
+   "lon": 134.05
+  },
+  {
+   "slug": "takaoka",
+   "name": "Takaoka",
+   "nameJa": "高岡",
+   "prefecture": "Toyama",
+   "prefectureJa": "富山県",
+   "region": "chubu",
+   "lat": 36.7362,
+   "lon": 137.0187
+  },
+  {
+   "slug": "takayama",
+   "name": "Takayama",
+   "nameJa": "高山",
+   "prefecture": "Gifu",
+   "prefectureJa": "岐阜県",
+   "region": "chubu",
+   "lat": 36.1407,
+   "lon": 137.2595
+  },
+  {
+   "slug": "tambasasayama",
+   "name": "Tamba-Sasayama",
+   "nameJa": "丹波篠山",
+   "prefecture": "Hyogo",
+   "prefectureJa": "兵庫県",
+   "region": "kinki",
+   "lat": 35.0758,
+   "lon": 135.2193
+  },
+  {
+   "slug": "tanabe",
+   "name": "Tanabe",
+   "nameJa": "田辺",
+   "prefecture": "Wakayama",
+   "prefectureJa": "和歌山県",
+   "region": "kinki",
+   "lat": 33.7279,
+   "lon": 135.3778
+  },
+  {
+   "slug": "tokoname",
+   "name": "Tokoname",
+   "nameJa": "常滑",
+   "prefecture": "Aichi",
+   "prefectureJa": "愛知県",
+   "region": "chubu",
+   "lat": 34.8906,
+   "lon": 136.8355
+  },
+  {
+   "slug": "tsubamesanjo",
+   "name": "Tsubame-Sanjo",
+   "nameJa": "燕三条",
+   "prefecture": "Niigata",
+   "prefectureJa": "新潟県",
+   "region": "chubu",
+   "lat": 37.6731,
+   "lon": 138.8825
+  },
+  {
+   "slug": "uji",
+   "name": "Uji",
+   "nameJa": "宇治",
+   "prefecture": "Kyoto",
+   "prefectureJa": "京都府",
+   "region": "kinki",
+   "lat": 34.8851,
+   "lon": 135.7996
+  },
+  {
+   "slug": "yamaga",
+   "name": "Yamaga",
+   "nameJa": "山鹿",
+   "prefecture": "Kumamoto",
+   "prefectureJa": "熊本県",
+   "region": "kyushu",
+   "lat": 33.0177,
+   "lon": 130.6912
+  },
+  {
+   "slug": "yamagata",
+   "name": "Yamagata",
+   "nameJa": "山形",
+   "prefecture": "Yamagata",
+   "prefectureJa": "山形県",
+   "region": "tohoku",
+   "lat": 38.2553,
+   "lon": 140.34
+  },
+  {
+   "slug": "yamanakaonsen",
+   "name": "Yamanaka Onsen",
+   "nameJa": "山中温泉",
+   "prefecture": "Ishikawa",
+   "prefectureJa": "石川県",
+   "region": "chubu",
+   "lat": 36.2501,
+   "lon": 136.3747
+  },
+  {
+   "slug": "yame",
+   "name": "Yame",
+   "nameJa": "八女",
+   "prefecture": "Fukuoka",
+   "prefectureJa": "福岡県",
+   "region": "kyushu",
+   "lat": 33.2117,
+   "lon": 130.558
+  },
+  {
+   "slug": "yufuin",
+   "name": "Yufuin",
+   "nameJa": "由布院",
+   "prefecture": "Oita",
+   "prefectureJa": "大分県",
+   "region": "kyushu",
+   "lat": 33.2625,
+   "lon": 131.355
+  }
+ ]
+}

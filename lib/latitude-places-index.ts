@@ -6,6 +6,7 @@
 import { CITIES, type LatitudeCity } from '@/lib/latitude-places';
 import { PLACES, project } from '@/lib/latitude-map';
 import { assetUrl, getIssue, getPerson, isLive } from '@/lib/latitude';
+import { regionOf } from '@/lib/latitude-regions';
 
 export const SHOW_UPCOMING = false;
 
@@ -40,6 +41,8 @@ export type PlaceCity = {
   person?: { slug: string; name: string };
   issue?: { slug: string; cover: string; month?: string }; // 公開ずみの号
   upcoming: boolean; // 号がまだ無い（これから行く街）
+  region?: string; // 国の中の地方（lib/latitude-regions.ts。いまは日本だけ）。地図で地方ごとにまとめる
+  preview?: boolean; // 2026-11-11 試しの町（?preview=50 の時だけ地図に足す。街のページは無い）
 };
 export type PlaceCountry = { code: string; slug: string; name: { en: string; ja: string }; cities: PlaceCity[] };
 
@@ -68,6 +71,8 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
       person: p ? { slug: p.slug, name: p.name } : undefined,
       issue: live && i ? { slug: i.slug, cover: assetUrl(i, 'cover.jpg'), month: i.month } : undefined,
       upcoming: !live,
+      // 日本の町の countryJa は県名
+      region: regionOf(code, c.countryJa, at[0], at[1]),
     };
     m.set(code, [...(m.get(code) ?? []), city]);
   }
