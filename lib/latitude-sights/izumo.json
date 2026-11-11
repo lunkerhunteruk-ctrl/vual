@@ -1,0 +1,74 @@
+[
+ {
+  "name": "出雲大社",
+  "nameEn": "Izumo Taisha",
+  "kind": "sight",
+  "area": "大社",
+  "areaEn": "Taisha",
+  "address": "出雲市大社町杵築東195",
+  "url": "https://izumooyashiro.or.jp/",
+  "what": "大国主大神を祀る神社。人々の幸せの縁を結ぶ神として知られる。旧暦10月に全国の神々が集まるとされ、2026年の神在祭は11月18日の夕方から25日の夕方まで。",
+  "whatEn": "The shrine of Okuninushi no Okami, known as the god who ties people's good fortune together. In the tenth month of the old calendar the gods of Japan are said to gather here; in 2026 the Kamiari festival runs from the evening of 18 to the evening of 25 November.",
+  "coords": [
+   35.3998,
+   132.68515
+  ],
+  "notice": "神在祭の期間は混み合う。11月19日と21〜23日は、周辺で交通規制がある。",
+  "noticeEn": "It is crowded during the Kamiari festival. On 19 and 21 to 23 November there is traffic control around the shrine.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "島根県立古代出雲歴史博物館",
+  "nameEn": "Shimane Museum of Ancient Izumo",
+  "kind": "art",
+  "area": "大社",
+  "areaEn": "Taisha",
+  "address": "出雲市大社町杵築東99番地4",
+  "url": "https://www.izm.ed.jp/",
+  "what": "出雲大社の東隣にある県立の博物館。出雲大社の境内から出た宇豆柱、出雲國風土記、青銅器と金色の大刀などを、常設展で見せる。",
+  "whatEn": "A prefectural museum next to Izumo Taisha on its east side. The permanent exhibits include the huge uzu pillar found in the shrine grounds, the Izumo no Kuni Fudoki, and bronze ware and gilded swords.",
+  "coords": [
+   35.39878,
+   132.68856
+  ],
+  "notice": "2026年10月1日にリニューアルオープン。開館は9時から17時（最終入館16時30分）。11月は17日が休館。特別展「その後のヲロチとスサノヲ」は11月29日まで。",
+  "noticeEn": "Reopened after renovation on 1 October 2026. Open 9:00 to 17:00 (last entry 16:30). Closed on 17 November. The special exhibition runs until 29 November.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "出雲日御碕灯台",
+  "nameEn": "Izumo Hinomisaki Lighthouse",
+  "kind": "sight",
+  "area": "日御碕",
+  "areaEn": "Hinomisaki",
+  "address": "出雲市大社町日御碕1478",
+  "url": "https://www.izumo-kankou.gr.jp/677",
+  "what": "島根半島の西の端に立つ白い石造りの灯台。明治36年（1903年）の設置で、石造りの灯台では日本一の高さ（塔高43.65m）。国の重要文化財。内部の163段のらせん階段で、展望台に上がれる。",
+  "whatEn": "A white stone lighthouse at the western tip of the Shimane Peninsula, lit in 1903 and the tallest stone lighthouse in Japan (43.65 m). A national important cultural property. A spiral staircase of 163 steps leads up to the observation deck.",
+  "coords": [
+   35.43374,
+   132.62927
+  ],
+  "notice": "12時から13時は昼休みで、参観できない。10月から2月は16時30分まで。入場は終わりの20分前まで。",
+  "noticeEn": "Closed for lunch from 12:00 to 13:00. From October to February it closes at 16:30, and the last entry is 20 minutes before.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "木綿街道",
+  "nameEn": "Momen Kaido",
+  "kind": "sight",
+  "area": "平田",
+  "areaEn": "Hirata",
+  "address": "出雲市平田町841（木綿街道交流館）",
+  "url": "https://izumo-kankou.gr.jp/5294",
+  "what": "江戸時代に木綿の集散地として栄えた、平田のL字型の通り。切妻妻入りの塗屋造の家や海鼠壁が残り、酒蔵、醤油蔵、生姜糖の老舗が並ぶ。",
+  "whatEn": "An L-shaped street in Hirata that grew in the Edo period as a market for cotton. Gabled plastered houses and namako-kabe walls survive, and a sake brewery, soy sauce houses and an old ginger-sugar maker line the street.",
+  "coords": [
+   35.43836,
+   132.82119
+  ],
+  "notice": "案内所の木綿街道交流館は、火曜が休み（祝日の場合は翌日）。",
+  "noticeEn": "The information centre, Momen Kaido Kōryūkan, is closed on Tuesdays (the next day if Tuesday is a holiday).",
+  "verifiedAt": "2026-11-11"
+ }
+]

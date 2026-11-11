@@ -1,0 +1,355 @@
+{
+ "slug": "kagoshima",
+ "city": {
+  "name": "Kagoshima",
+  "nameJa": "鹿児島",
+  "latitude": "31.6° N",
+  "country": "",
+  "countryJa": "",
+  "person": "rin",
+  "coords": [
+   31.5925,
+   130.5555
+  ],
+  "intro": "",
+  "introJa": "",
+  "locator": {
+   "en": "",
+   "ja": ""
+  },
+  "industries": [
+   {
+    "key": "satsuma-kiriko",
+    "en": "Satsuma Kiriko Cut Glass",
+    "ja": "薩摩切子",
+    "about": "",
+    "aboutJa": "",
+    "_src": "Thick cased crystal glass developed by the Shimadzu clan in the 1840s and revived beside Sengan-en, prized for hand-cut facets with soft colour gradations (bokashi)."
+   },
+   {
+    "key": "satsuma-ware",
+    "en": "Satsuma Ware",
+    "ja": "薩摩焼",
+    "about": "",
+    "aboutJa": "",
+    "_src": "A 400-year ceramic tradition splitting into ivory crackle-glazed Shiro-Satsuma and iron-dark everyday Kuro-Satsuma vessels such as kuro-joka shochu warmers."
+   }
+  ]
+ },
+ "places": {
+  "島津薩摩切子ギャラリーショップ 磯工芸館": {
+   "nameEn": "",
+   "area": "磯",
+   "areaEn": "Iso",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "satsuma-kiriko",
+    "nameKana": "しまづさつまきりこぎゃらりーしょっぷ いそこうげいかん",
+    "address": "9688-24 Yoshino-cho, Kagoshima-shi",
+    "url": "https://satsumakiriko.co.jp/",
+    "whatJa": "仙巌園の隣に佇む、島津薩摩切子の直営ギャラリーショップと見学可能なガラス工場。",
+    "whatEn": "Factory showroom and open glassworks of Shimadzu Satsuma Kiriko set beside Sengan-en on the Iso coast.",
+    "facts": "Housed in a Registered Tangible Cultural Property Western-style building designed in the early Showa era; visitors can watch glassblowers and facet-cutters at work free of charge in the adjoining Satsuma Glass Kogei workshop, where Shimadzu Satsuma Kiriko was revived in 1985 after vanishing for over a century.",
+    "weak": "",
+    "verifiedBy": "https://satsumakiriko.co.jp/",
+    "quote": "2026.10.28 薩摩切子工場　11月定休日のお知らせ",
+    "fixes": "",
+    "coords": [
+     31.61694,
+     130.57569
+    ]
+   }
+  },
+  "ぢゃんぼ餅 平田屋": {
+   "nameEn": "",
+   "area": "磯",
+   "areaEn": "Iso",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぢゃんぼもち ひらたや",
+    "address": "9673 Yoshino-cho, Kagoshima-shi",
+    "url": "https://jyanbomochi.com/",
+    "whatJa": "桜島と錦江湾を目の前に望む、明治7年創業の両棒餅（ぢゃんぼ餅）専門店。",
+    "whatEn": "Meiji-era coastal sweet shop grilling freshly pounded rice cakes skewered on twin bamboo sticks facing Sakurajima.",
+    "facts": "Founded in 1874 along the Iso shoreline; serves bite-sized grilled mochi pierced with two bamboo skewers—evoking a samurai's twin swords—glazed to order in warm sweet soy-starch sauce using local Kagoshima soy sauce.",
+    "weak": "",
+    "verifiedBy": "https://jyanbomochi.com/",
+    "quote": "2026/11/04 ぢゃんぼ餅平田屋です、今日と明日はお休みです。",
+    "fixes": "",
+    "coords": [
+     31.61279,
+     130.575
+    ]
+   }
+  },
+  "FUKU+RE": {
+   "nameEn": "",
+   "area": "名山・みなと",
+   "areaEn": "Meizan & Harbourfront",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ふくれ",
+    "address": "Retroft Chitose Bldg 1F-2F, 2-1 Meizan-cho, Kagoshima-shi",
+    "url": "https://www.fukure.com/",
+    "whatJa": "レトロビルの一角で鹿児島の郷土菓子「ふくれ菓子」を現代的に仕立てる創作焼菓子店。",
+    "whatEn": "Botanical-inspired confectionery reimagining Kagoshima's traditional steamed brown-sugar fukure-gashi cake inside a retro concrete building.",
+    "facts": "Located inside the 1960s Retroft Chitose building in Meizan-cho; layers Kagoshima brown sugar, local herbs, spices, and seasonal fruit into colourful steamed fukure-gashi loaves alongside owl-shaped monaka florentines (Fukurou no Frolan).",
+    "weak": "",
+    "verifiedBy": "https://www.fukure.com/c/contents03",
+    "quote": "※おばけにつきましては2026年10月20日~10月31日の期間限定販売です。",
+    "fixes": "Page lists the Meizan store as 鹿児島市名山町2-1 レトロフトチトセビル1F （11時-17時/日月火休）, cash-less only; address says 1F only (not 1F-2F).",
+    "coords": [
+     31.59511,
+     130.55769
+    ]
+   }
+  },
+  "AKAYA COFFEE": {
+   "nameEn": "",
+   "area": "天文館・城山",
+   "areaEn": "Tenmonkan & Shiroyama",
+   "tags": [
+    "coffee"
+   ],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "あかやこーひー",
+    "address": "7-13 Kinsei-cho, Kagoshima-shi",
+    "url": "http://akayacoffee.com/",
+    "whatJa": "山形屋近くの路地に佇む、中庭のある2階建ての自家焙煎珈琲店。",
+    "whatEn": "Quiet two-storey home-roasting coffee shop with a small courtyard steps from Yamakataya department store.",
+    "facts": "Celebrated its 20th anniversary in November 2025; roasts specialty coffee beans in-house in small batches and serves hand-dripped cups with homemade toast and cakes in a calm timber-lined upstairs room.",
+    "weak": "Official website uses HTTP only (HTTPS returns 403).",
+    "verifiedBy": "http://akayacoffee.com/",
+    "quote": "１０月をもちましてネットでの珈琲豆販売は終了いたします。 あしからずご了承ください。 　今後は、電話、ファックスでの発注(代金引換)のみ承ります。",
+    "fixes": "Page says online bean sales ended Oct 2026 (phone/fax orders only); do not mention online bean shop. Address says Kinsei-cho (金生町) in a customer review; street number not re-verified.",
+    "coords": [
+     31.59275,
+     130.55789
+    ]
+   }
+  },
+  "熊襲亭": {
+   "nameEn": "",
+   "area": "天文館・城山",
+   "areaEn": "Tenmonkan & Shiroyama",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "くまそてい",
+    "address": "6-10 Higashisengoku-cho, Kagoshima-shi",
+    "url": "https://www.kumasotei.com/",
+    "whatJa": "豚骨や黒豚しゃぶしゃぶ、きびなごなど正調さつま料理を伝える天文館の老舗。",
+    "whatEn": "Long-established Satsuma regional restaurant in Tenmonkan serving Kurobuta pork stew, satsuma-age, and kibinago.",
+    "facts": "Founded in 1966 in the heart of Tenmonkan; prepares classic Satsuma dishes from scratch including miso-braised Kurobuta pork ribs (tonkotsu), freshly fried satsuma-age fish cakes, sashimi of silver-stripe round herring (kibinago), and sake-infused sakesushi.",
+    "weak": "",
+    "verifiedBy": "https://www.kumasotei.com/",
+    "quote": "【年越しオードブル、お鍋の販売】",
+    "fixes": "",
+    "coords": [
+     31.59209,
+     130.55331
+    ]
+   }
+  },
+  "鶴丸喫茶室": {
+   "nameEn": "",
+   "area": "天文館・城山",
+   "areaEn": "Tenmonkan & Shiroyama",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "satsuma-ware",
+    "nameKana": "つるまるきっさしつ",
+    "address": "Reimeikan 1F, 7-2 Shiroyama-cho, Kagoshima-shi",
+    "url": "https://www.instagram.com/chinjukanpotterycafe/",
+    "whatJa": "鶴丸城跡の黎明館内にあり、沈壽官窯が手がける白薩摩・黒薩摩の器で喫茶と買い物ができる直営空間。",
+    "whatEn": "Gallery shop and tearoom at Tsurumaru Castle serving drinks in—and selling—contemporary Shiro- and Kuro-Satsuma ware from 400-year-old Chin Jukan Kiln.",
+    "facts": "Opened as CHIN JUKAN POTTERY Kissashitsu—a collaboration between 15-generation Chin Jukan Kiln and Landscape Products—inside Reimeikan on the former Shimadzu castle grounds; guests drink tea and coffee from crackle-glazed Shiro-Satsuma and iron-rich Kuro-Satsuma cups before buying the vessels.",
+    "weak": "Formerly named CHIN JUKAN POTTERY 喫茶室; official Instagram account now lists the name 鶴丸喫茶室（元CHIN JUKAN POTTERY 喫茶室）.",
+    "verifiedBy": "https://www.instagram.com/chinjukanpotterycafe/",
+    "quote": "2026年9月1日より鶴丸喫茶室へ名称のみ変更となりました。",
+    "fixes": "Name changed to 鶴丸喫茶室 on 2026-09-01 (formerly CHIN JUKAN POTTERY 喫茶室). Bio: open weekdays 11:00-, Sun/holidays 10:00- (L.O 17:00); closed Mondays and the 25th.",
+    "coords": [
+     31.59861,
+     130.55457
+    ]
+   }
+  },
+  "器楽": {
+   "nameEn": "",
+   "area": "天文館・城山",
+   "areaEn": "Tenmonkan & Shiroyama",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きらく",
+    "address": "7-17 Nakamachi, Kagoshima-shi",
+    "url": "https://kiraku-utsuwa.com/",
+    "whatJa": "天文館・なや通りで日々の陶磁器やガラス器、漆器を幅広く揃える器専門店。",
+    "whatEn": "Everyday ceramic, glassware, and lacquerware shop along Tenmonkan's historic Naya-dori market arcade.",
+    "facts": "Stands on Naya-dori, Tenmonkan's old merchant street; packs shelves with practical Kyushu and Japanese kilnware including Hasami and Mino pottery, blown glasses, wooden lacquer bowls, and chopstick rests for daily home cooking.",
+    "weak": "",
+    "verifiedBy": "https://kiraku-utsuwa.com/",
+    "quote": "アウトレットの重箱入荷いたしました！",
+    "fixes": "Address on site: 〒892-0827 鹿児島市中町7-17, TEL 099-805-1231. Matches.",
+    "coords": [
+     31.59257,
+     130.55643
+    ]
+   }
+  },
+  "tsutsumu": {
+   "nameEn": "",
+   "area": "荒田",
+   "areaEn": "Arata",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "つつむ",
+    "address": "#102, 2-37-7 Arata, Kagoshima-shi",
+    "url": "https://tsutsumu-c.com/",
+    "whatJa": "荒田に本店を構える、カカオの香りと口溶けにこだわるチョコレート菓子専門店。",
+    "whatEn": "Independent chocolate confectionery in Arata crafting airy single-origin cacao cakes and French-butter sables.",
+    "facts": "Uses aromatic Arriba Nacional cacao, French cultured butter, and Marcona almonds to bake two-layer Chocolat Soie cakes and crisp Sable Plume biscuits at its Arata flagship.",
+    "weak": "",
+    "verifiedBy": "https://tsutsumu-c.com/view/news/20261106165119",
+    "quote": "11／7（土）より常温の宅急便にてお届けいたします。",
+    "fixes": "Address #102, 2-37-7 Arata matches. Site also has 2026-09-07 notice about Arata flagship closure for shipping/holiday.",
+    "coords": [
+     31.57138,
+     130.55115
+    ]
+   }
+  },
+  "珈琲豆専門店 mikoya134": {
+   "nameEn": "",
+   "area": "荒田",
+   "areaEn": "Arata",
+   "tags": [
+    "coffee"
+   ],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こーひーまめせんもんてん みこやいちさんよん",
+    "address": "3-37-1 Shimo-Arata, Kagoshima-shi",
+    "url": "https://mikoya134.com/",
+    "whatJa": "下荒田で熟成スペシャルティコーヒー豆の自家焙煎とハンドドリップを行う専門店。",
+    "whatEn": "Small-batch coffee bean roaster and takeaway stand in Shimo-Arata specializing in aged specialty beans.",
+    "facts": "Roasts carefully rested single-origin specialty beans in Shimo-Arata to bring out round, low-acidity sweetness, offering freshly ground beans, cold-brew bottles, and hand-dripped takeaway cups.",
+    "weak": "",
+    "verifiedBy": "https://mikoya134.com/",
+    "quote": "2026.10.02 送料無料新入荷SP！グアテマラ産「カフェ・ピューマSHB」200g",
+    "fixes": "Site address is 〒890-0056 鹿児島県鹿児島市下荒田３丁目３７−１ (matches). Site is mainly an online shop with takeout page; whatEn 'takeaway stand' not confirmed on top page.",
+    "coords": [
+     31.56964,
+     130.5529
+    ]
+   }
+  }
+ },
+ "sights": [],
+ "_dropped": [
+  {
+   "name": "THE COFFEE SOLDIER",
+   "verdict": "doubt",
+   "reason": "Official site (WordPress) has latest blog 2023-03 and Copyright © 2018; no 2026 dated evidence found. Instagram not readable without login."
+  },
+  {
+   "name": "錫彦 浅田錫器",
+   "verdict": "doubt",
+   "reason": "Static page with only copyright 2012; no 2026 evidence."
+  },
+  {
+   "name": "大瀬商店 PONGEE",
+   "verdict": "doubt",
+   "reason": "Site news/blog only 2020; home page dateModified 2025-09-25; no 2026 dated evidence found."
+  },
+  {
+   "name": "とんかつ川久",
+   "verdict": "doubt",
+   "reason": "Page opened (定休日 毎週火曜日) but no 2026 dated text; footer is © 2021 only."
+  },
+  {
+   "name": "GOOD NEIGHBORs",
+   "verdict": "doubt",
+   "reason": "Site opened (雑貨 11:00〜19:00、カフェ L.o.16:00 定休日 火 / 第2･4 水) but only undated hours; no dated 2026 post found."
+  },
+  {
+   "name": "トキノフネ",
+   "verdict": "doubt",
+   "reason": "Instagram is login-gated; no post text/date readable."
+  },
+  {
+   "name": "アトリエ ユニ",
+   "verdict": "doubt",
+   "reason": "Instagram is login-gated; no post text/date readable."
+  },
+  {
+   "name": "Coffeer",
+   "verdict": "doubt",
+   "reason": "Instagram page only shows bio (hours, closed Sundays, cash only); no dated 2026 post visible without login."
+  },
+  {
+   "name": "名山 VOUL",
+   "verdict": "doubt",
+   "reason": "No dated 2026 post visible without login."
+  },
+  {
+   "name": "Sweet William",
+   "verdict": "doubt",
+   "reason": "No dated 2026 post visible without login."
+  },
+  {
+   "name": "お出汁麺食堂 HARADA",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but only shows profile meta (9,788 followers, 1,223 posts); no dated 2026 post visible without login. No 2026 sentence could be copied."
+  }
+ ]
+}

@@ -1,0 +1,253 @@
+[
+ {
+  "name": "鈴善漆器店",
+  "nameEn": "Suzuzen Lacquerware",
+  "category": "local",
+  "industry": "aizu-nuri",
+  "tags": [
+   "lacquer"
+  ],
+  "area": "大町・中町",
+  "areaEn": "Omachi & Nakamachi",
+  "address": "中央1-3-28",
+  "url": "https://suzuzen.com/",
+  "what": "天保3年（1832年）創業の漆器問屋。蔵を公開した「会津塗伝承館」で、漆器の展示と販売があり、蒔絵体験もできる。",
+  "whatEn": "A lacquerware wholesaler founded in 1832. Its storehouses are open as a hall of Aizu lacquer, with a shop and a maki-e workshop.",
+  "note": "蒔絵体験は予約が要る。二人から。",
+  "noteEn": "The maki-e workshop needs a booking, for two or more.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49955,
+   139.92948
+  ]
+ },
+ {
+  "name": "小澤蝋燭店",
+  "nameEn": "Ozawa Candle Shop",
+  "category": "local",
+  "industry": "aizu-erosoku",
+  "tags": [
+   "candles"
+  ],
+  "area": "大町・中町",
+  "areaEn": "Omachi & Nakamachi",
+  "address": "西栄町6-27",
+  "url": "https://www.aizuerousoku.com/",
+  "what": "天明5年（1785年）創業の和ろうそくの店。1887年建築の町家で、草花を手で描いた会津絵ろうそくを作り、絵付け体験もできる。",
+  "whatEn": "A Japanese candle shop founded in 1785, in a townhouse built in 1887. It makes Aizu painted candles by hand and runs a painting workshop.",
+  "note": "絵付けは予約して行く。土日は香りの体験もある。",
+  "noteEn": "Book the painting workshop. On weekends there is also a scent session.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49532,
+   139.92734
+  ]
+ },
+ {
+  "name": "山田木綿織元",
+  "nameEn": "Yamada Momen",
+  "category": "local",
+  "industry": "aizu-momen",
+  "tags": [
+   "textile"
+  ],
+  "area": "七日町",
+  "areaEn": "Nanukamachi",
+  "address": "七日町11-5",
+  "url": "https://yamadamomen.com/",
+  "what": "会津木綿の織元。昭和の初めから使う豊田式の織機が今も動く工場と、直営の生地ショップが七日町にある。",
+  "whatEn": "A weaver of Aizu cotton on Nanukamachi. Its factory still runs a Toyoda loom from the early Showa era, and it has its own cloth shop.",
+  "note": "織機が動くのは平日。昼の12時から1時は止まる。",
+  "noteEn": "The looms run on weekdays, and stop from noon to one.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.50096,
+   139.92529
+  ]
+ },
+ {
+  "name": "鶴乃江酒造",
+  "nameEn": "Tsurunoe Sake Brewery",
+  "category": "local",
+  "industry": "aizu-sake",
+  "tags": [
+   "sake"
+  ],
+  "area": "七日町",
+  "areaEn": "Nanukamachi",
+  "address": "七日町2-46",
+  "url": "https://www.tsurunoe.com/",
+  "what": "寛政6年（1794年）創業の酒蔵。七日町通り沿いの店で、会津中将とゆりを試飲と販売。9時から18時で、元日が休み。",
+  "whatEn": "A sake brewery founded in 1794, on Nanukamachi-dori. The shop pours tastings and sells Aizu Chujo and Yuri, from nine to six, closed on New Year’s Day.",
+  "note": "試飲は朝の九時から。会津中将から。",
+  "noteEn": "Tastings start at nine in the morning. Begin with the Aizu Chujo.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49965,
+   139.92357
+  ]
+ },
+ {
+  "name": "会津慶山焼 やま陶",
+  "nameEn": "Aizu Keizanyaki Yamato",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "飯盛山・東山",
+  "areaEn": "Iimoriyama & Higashiyama",
+  "address": "東山町石山天寧67",
+  "url": "https://www.keizanyaki.com/",
+  "what": "福島県の伝統的工芸品、会津慶山焼の窯元。日用の器を焼き、陶芸教室や絵つけ体験もある。9時から18時で、元日のほかは無休。",
+  "whatEn": "A kiln for Aizu Keizanyaki, a traditional craft of Fukushima. It makes everyday tableware and runs pottery classes and painting sessions. Open nine to six, every day except New Year’s Day.",
+  "note": "年中無休。日用の器を、手に取って選ぶ。",
+  "noteEn": "Open every day. Pick up the everyday pieces and choose by hand.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49035,
+   139.9497
+  ]
+ },
+ {
+  "name": "りんどん",
+  "nameEn": "Ringdon Bakery",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "飯盛山・東山",
+  "areaEn": "Iimoriyama & Higashiyama",
+  "address": "和田2-3-1",
+  "url": "https://ringdongbakery.com/",
+  "what": "自家製の天然酵母と、小麦粉のオリジナルブレンドで焼くパン屋。看板はミルクフランスパン。月・火・水は休み。",
+  "whatEn": "A bakery that uses its own wild yeast and a house blend of flour. The milk French bread is the signature. Closed Monday to Wednesday.",
+  "note": "ミルクフランスパンから。月・火・水は休み。",
+  "noteEn": "Start with the milk French bread. Closed Monday to Wednesday.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49963,
+   139.95063
+  ]
+ },
+ {
+  "name": "本家長門屋",
+  "nameEn": "Honke Nagatoya",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "鶴ヶ城周辺",
+  "areaEn": "Tsurugajo",
+  "address": "川原町2-10",
+  "url": "https://nagatoya.net/",
+  "what": "嘉永元年（1848年）創業の和菓子店。シャンパンや鬼くるみ、レーズンを使った羊羹ファンタジアは、2017年のグッドデザイン賞。日曜休み。",
+  "whatEn": "A wagashi shop founded in 1848. Its Yokan Fantasia, made with champagne, oni-walnuts and raisins, won a Good Design Award in 2017. Closed on Sundays.",
+  "note": "羊羹ファンタジアは、紅茶かワインと。",
+  "noteEn": "Have the Yokan Fantasia with tea or wine.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49002,
+   139.91545
+  ]
+ },
+ {
+  "name": "満田屋",
+  "nameEn": "Mitsutaya",
+  "category": "food",
+  "tags": [
+   "miso"
+  ],
+  "area": "大町・中町",
+  "areaEn": "Omachi & Nakamachi",
+  "address": "大町1-1-25",
+  "url": "https://www.mitsutaya.jp/",
+  "what": "天保5年（1834年）創業の味噌屋。味噌蔵を改装した店で、囲炉裏の炭火で一本ずつ焼く会津の郷土料理、みそ田楽を出す。",
+  "whatEn": "A miso maker founded in 1834. In a converted miso storehouse it serves miso dengaku, an Aizu dish grilled skewer by skewer over charcoal at the hearth.",
+  "note": "みそ田楽は10時半から。一本ずつ焼くから、待つ。",
+  "noteEn": "Dengaku starts at 10:30. Each skewer is grilled one by one, so you wait.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49878,
+   139.92517
+  ]
+ },
+ {
+  "name": "桐屋・権現亭",
+  "nameEn": "Kiriya Gongentei",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "大町・中町",
+  "areaEn": "Omachi & Nakamachi",
+  "address": "上町2-34",
+  "url": "http://kiriyasoba.co.jp/",
+  "what": "昭和46年（1971年）に「きりやそば店」として始まった、手打ちそばと会津料理の店。水曜休み。",
+  "whatEn": "A hand-cut soba and Aizu cooking restaurant that began in 1971 as Kiriya Soba. Closed on Wednesdays.",
+  "note": "平日は15時まで。昼のうちに行く。",
+  "noteEn": "On weekdays it closes at three. Go at lunch.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.4973,
+   139.93354
+  ]
+ },
+ {
+  "name": "料理旅館 田事",
+  "nameEn": "Tagoto",
+  "category": "food",
+  "area": "鶴ヶ城周辺",
+  "areaEn": "Tsurugajo",
+  "address": "城北町5-15",
+  "url": "https://www.tagoto-aizu.com/",
+  "what": "城北町の料理旅館。七日町の旅籠として続き、店先に旅人が腰かけた休み石が残る。せいろのめっぱめしなど、会津の郷土料理を出す。",
+  "whatEn": "A kappo inn in Johokumachi that began as a travellers’ inn on Nanukamachi; the resting stone where travellers sat still stands at the door. It serves Aizu dishes such as steamed meppa-meshi.",
+  "note": "昼は11時半から。休みは不定だから、電話してから。",
+  "noteEn": "Lunch starts at 11:30. Days off vary, so call first.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.50193,
+   139.92343
+  ]
+ },
+ {
+  "name": "渋川問屋",
+  "nameEn": "Shibukawa Donya",
+  "category": "food",
+  "area": "七日町",
+  "areaEn": "Nanukamachi",
+  "address": "七日町3-28",
+  "url": "https://shibukawadonya.com/",
+  "what": "明治15年（1882年）創業の海産物問屋の建物で、身欠きにしんや棒だら、昆布、貝柱を使う会津の郷土料理を出す。喫茶「開化」もある。",
+  "whatEn": "The building of a seafood wholesaler founded in 1882, serving Aizu dishes made with dried herring, cod, kelp and scallops. It also has a café, Kaika.",
+  "note": "昼は年中無休。夜は休みの日がある。",
+  "noteEn": "Lunch runs every day. Dinner has days off.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.50064,
+   139.91995
+  ]
+ },
+ {
+  "name": "蔵喫茶 杏",
+  "nameEn": "Kura Kissa Kyo",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "七日町",
+  "areaEn": "Nanukamachi",
+  "address": "日新町12-38",
+  "url": "https://suehiro-kyo.com/",
+  "what": "末廣酒造の嘉永蔵の中にある、明治25年（1892年）築の蔵座敷の喫茶。酒の仕込み水で淹れたコーヒーや、酒粕の甘酒、日本酒を使った菓子を出す。",
+  "whatEn": "A café in a storehouse hall built in 1892, inside the Kaeigura of Suehiro Sake Brewery. It serves coffee made with the brewing water, amazake from sake lees, and sweets made with sake.",
+  "note": "仕込み水で淹れたコーヒーを。水・木は休み。",
+  "noteEn": "Coffee made with the brewing water. Closed Wednesday and Thursday.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   37.49799,
+   139.92318
+  ]
+ }
+]

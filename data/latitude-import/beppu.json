@@ -1,0 +1,364 @@
+{
+ "slug": "beppu",
+ "city": {
+  "name": "Beppu",
+  "nameJa": "別府",
+  "latitude": "33.3° N",
+  "country": "",
+  "countryJa": "",
+  "person": "rin",
+  "coords": [
+   33.2795,
+   131.5003
+  ],
+  "intro": "",
+  "introJa": "",
+  "locator": {
+   "en": "",
+   "ja": ""
+  },
+  "industries": [
+   {
+    "key": "beppu-takezaiku",
+    "en": "Beppu Bamboo Craft",
+    "ja": "別府竹細工",
+    "about": "",
+    "aboutJa": "",
+    "_src": "Nationally designated traditional bamboo basketry that grew alongside Beppu's hot-spring culture as woven colanders and baskets for toji visitors."
+   },
+   {
+    "key": "jigoku-mushi",
+    "en": "Onsen Steam Cooking (Jigoku-mushi)",
+    "ja": "地獄蒸し",
+    "about": "",
+    "aboutJa": "",
+    "_src": "An Edo-period Kannawa culinary tradition of steaming local vegetables, seafood, and eggs directly in 98°C geothermal hot-spring vents."
+   },
+   {
+    "key": "yunohana",
+    "en": "Myoban Yunohana Mineral Crystals",
+    "ja": "明礬温泉の湯の花",
+    "about": "",
+    "aboutJa": "",
+    "_src": "A centuries-old craft in Myoban where geothermal steam reacts with blue clay inside thatched huts to grow natural mineral bath crystals."
+   }
+  ]
+ },
+ "places": {
+  "永井製竹株式会社": {
+   "nameEn": "",
+   "area": "北浜・別府駅周辺",
+   "areaEn": "Kitahama & Beppu Station",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "beppu-takezaiku",
+    "nameKana": "ながいせいちくかぶしきがいしゃ",
+    "address": "3-14 Hikarimachi, Beppu",
+    "url": "https://www.nagaiseichiku.com/",
+    "whatJa": "明治41年（1908年）創業、別府で唯一現存する製竹所で、白竹の湯抜き・天日干し加工から日用竹製品の製造までを手がける。",
+    "whatEn": "Founded in 1908, Beppu's sole surviving bamboo processing mill boiling, sun-drying, and crafting white madake bamboo for local artisans and everyday utensils.",
+    "facts": "Founded in 1908 near Asami Shrine along the Asami River; boils green madake bamboo in caustic soda vats to remove oils and sun-dries poles into ivory shiratake for Beppu weavers; also crafts original bamboo tumblers and camp rice cookers.",
+    "weak": "Working bamboo processing mill rather than a walk-in retail storefront; visits require advance inquiry, though its own bamboo goods are also sold online and at local shops.",
+    "verifiedBy": "https://www.nagaiseichiku.com/",
+    "quote": "8/8（土）～8/16（日）までお盆休みに入ります。",
+    "fixes": "Address on site is 別府市光町3-15 (not 3-14). Site says 明治41年創業 but 'sole surviving' claim is not on the page.",
+    "coords": [
+     33.2728,
+     131.49816
+    ]
+   }
+  },
+  "地獄蒸し工房 鉄輪": {
+   "nameEn": "",
+   "area": "鉄輪",
+   "areaEn": "Kannawa",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "jigoku-mushi",
+    "nameKana": "じごくむしこうぼう かんなわ",
+    "address": "5 Furohon, Beppu",
+    "url": "https://jigokumushi.com/",
+    "whatJa": "約98度の温泉噴気が噴き出す地獄釜を使い、旬の野菜や魚介を竹ざるに並べて蒸し上げる鉄輪伝統の地獄蒸し体験施設。",
+    "whatEn": "Kannawa's communal geothermal steam kitchen where visitors and locals steam seasonal vegetables, seafood, and eggs in natural 98°C hot-spring vents.",
+    "facts": "Located along Ideyuzaka in Kannawa; uses 100% geothermal steam at around 98°C with bamboo colanders set into stone steam kettles; guests can either buy local produce sets on-site or bring ingredients from nearby Kannawa grocers.",
+    "weak": "",
+    "verifiedBy": "https://jigokumushi.com/",
+    "quote": "2026-11-05 ＯＡＢ「れじゃぐる」の撮影がありました",
+    "fixes": "Site also lists 2026-27 closure days (Wednesdays 11/18, 12/16, 1/20, 2/17, 3/17). Address not verified on page.",
+    "coords": [
+     33.31546,
+     131.4762
+    ]
+   }
+  },
+  "みょうばん湯の里": {
+   "nameEn": "",
+   "area": "明礬",
+   "areaEn": "Myoban",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "yunohana",
+    "nameKana": "みょうばんゆのさと",
+    "address": "6 Myoban, Beppu",
+    "url": "https://yuno-hana.jp/",
+    "whatJa": "明礬温泉の噴気と青粘土を用いた江戸時代からの製法で、茅葺きの湯の花小屋の中で天然入浴剤「湯の花」を製造・直売する施設。",
+    "whatEn": "A traditional yunohana mineral-crystal producer in Myoban where thatched huts cultivate hot-spring crystals over blue clay and volcanic steam.",
+    "facts": "Preserves the thatched-hut yunohana manufacturing technique designated an Important Intangible Folk Cultural Property; visitors can look inside a working crystal-growing hut; sells pure yunohana harvested on the premises.",
+    "weak": "",
+    "verifiedBy": "https://yuno-hana.jp/",
+    "quote": "【重要なお知らせ】2026年11月1日～ 価格改定のお知らせ",
+    "fixes": "Also 2026.10.25 notice: 台風30号に伴う 露天風呂・貸切湯 臨時休業 (temporary). Address/yunohana details not verified on page.",
+    "coords": [
+     33.31775,
+     131.45547
+    ]
+   }
+  },
+  "和菓子処 茶郎本舗": {
+   "nameEn": "",
+   "area": "石垣・上人",
+   "areaEn": "Ishigaki & Shonin",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "わがしどころ ちゃろうほんぽ",
+    "address": "10-6-5 Ishigakinishi, Beppu",
+    "url": "https://charou-honpo.com/",
+    "whatJa": "創業50年を超える石垣エリアの老舗和菓子店で、季節の生菓子やどら焼き、大福、おはぎを丁寧に手作りしている。",
+    "whatEn": "A long-standing local wagashi shop in Ishigaki crafting seasonal nerikiri, dorayaki, daifuku, and ohagi for over fifty years.",
+    "facts": "Over half a century of history in Beppu's residential Ishigaki district; lines its showcase with seasonal nerikiri sweets alongside everyday dorayaki and mugwort mochi; beloved by locals for daily tea sweets.",
+    "weak": "",
+    "verifiedBy": "https://charou-honpo.com/",
+    "quote": "2026.10.26 2026年11月度 営業カレンダー",
+    "fixes": "Page lists address 〒874-0910 大分県別府市石垣西10-6-5 (matches).",
+    "coords": [
+     33.30623,
+     131.49048
+    ]
+   }
+  },
+  "御菓子司 紅屋": {
+   "nameEn": "",
+   "area": "石垣・上人",
+   "areaEn": "Ishigaki & Shonin",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おかしつかさ べにや",
+    "address": "2-12-3 Higashisoen, Beppu",
+    "url": "https://beniya-wagashi.com/",
+    "whatJa": "明治42年（1909年）創業の老舗和菓子店で、銘菓「鶴見の嶺」最中や季節の上生菓子など伝統の味を守り続けている。",
+    "whatEn": "A Meiji-era traditional confectioner founded in 1909, known for crisp Tsurumi-no-Mine monaka wafers and seasonal wagashi.",
+    "facts": "Founded in 1909 (Meiji 42) in Beppu; awarded prizes at the National Confectionery Exposition; signature sweets include the Tsurumi-no-Mine monaka named after Mount Tsurumi rising behind Beppu.",
+    "weak": "",
+    "verifiedBy": "https://beniya-wagashi.com/",
+    "quote": "2026年11月6日 11月の店休日のお知らせ",
+    "fixes": "Page says 御菓子司紅屋は1909年(明治42年)創業の別府の中心地にある和菓子店です (matches). Address not confirmed on the top page.",
+    "coords": [
+     33.29094,
+     131.48853
+    ]
+   }
+  },
+  "SPICA": {
+   "nameEn": "",
+   "area": "北浜・別府駅周辺",
+   "areaEn": "Kitahama & Beppu Station",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "スピカ",
+    "address": "1-34 Tatemachi, Beppu",
+    "url": "https://spica-beppu.com/",
+    "whatJa": "元表具屋の倉庫を改装したセレクトショップで、大分ゆかりの陶芸家の器やガラス、オリジナルの竹製カレースプーンなどを扱う。",
+    "whatEn": "A craft and tableware shop in a renovated warehouse carrying Oita potters' ceramics, blown glass, and original bamboo curry spoons.",
+    "facts": "Housed in a converted former mounting-studio warehouse a 10-minute walk from Beppu Station; stocks ceramics by Oita potters such as Chietsu Mizugaki alongside handmade glass and original Beppu bamboo spoons; hosts regular solo exhibitions.",
+    "weak": "",
+    "verifiedBy": "https://spica-beppu.com/",
+    "quote": "Yoshihiro Nishiyama Solo Exhibition 2026",
+    "fixes": "Address not confirmed on the page I opened.",
+    "coords": [
+     33.27305,
+     131.50282
+    ]
+   }
+  },
+  "蒸士茶楼": {
+   "nameEn": "",
+   "area": "鉄輪",
+   "areaEn": "Kannawa",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "むしちゃろう",
+    "address": "5 Kannawa-Furohon, Beppu",
+    "url": "https://mushicharou.com/",
+    "whatJa": "鉄輪の温泉蒸気や50度洗い、蒸気蒸留スープを取り入れた薬膳中華のコース料理を提供する一軒家レストラン。",
+    "whatEn": "A reservation-only house restaurant in Kannawa serving medicinal Chinese courses cooked with geothermal steam and distilled hot-spring soup.",
+    "facts": "Uses Kannawa geothermal steam at controlled temperatures alongside 50°C washing to preserve vegetable sweetness; signature clay-pot soups condense hot-spring steam into clear broth; intimate standalone house restaurant in Kannawa.",
+    "weak": "",
+    "verifiedBy": "https://mushicharou.com/",
+    "quote": "蒸士茶楼 令和8年11月度 営業日カレンダー",
+    "fixes": "Site says 所在地: 大分県別府市風呂本5組, reservation by phone until the day before only, max 20 seats, cash only, 3 min walk from 鉄輪バスのりば.",
+    "coords": [
+     33.31634,
+     131.47667
+    ]
+   }
+  },
+  "甘味茶屋": {
+   "nameEn": "",
+   "area": "石垣・上人",
+   "areaEn": "Ishigaki & Shonin",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "あまみちゃや",
+    "address": "27-3 Jissojimachi, Beppu",
+    "url": "https://amamichaya.greater.jp/",
+    "whatJa": "手延べのだんご汁やとり天、きな粉をまぶしたやせうまなど、大分の郷土料理と甘味が味わえる地元で人気の食事処。",
+    "whatEn": "A folk-style dining room loved by locals for Oita's signature hand-pulled dango-jiru flat-noodle soup, toriten, and yaseuma.",
+    "facts": "Specializes in Oita home cooking led by miso-based dango-jiru soup with wide hand-stretched wheat ribbons and root vegetables; also serves freshly fried toriten chicken tempura and freshly pounded mochi; only 2 branches (Beppu flagship and Oita).",
+    "weak": "",
+    "verifiedBy": "https://amamichaya.greater.jp/",
+    "quote": "別府店「別府甘味茶屋大石第二駐車場」をお使いいただけます。場所は「大石の大石」で検索を。",
+    "fixes": "Address on page: 〒874-0835 大分県別府市実相寺町27番3号 (matches). factsForNote says only 2 branches, but the page has a post dated 2026.10.19 about the 由布院店 (11月4日・5日 closed), so there is also a Yufuin branch.",
+    "coords": [
+     33.31058,
+     131.4867
+    ]
+   }
+  },
+  "レストラン東洋軒": {
+   "nameEn": "",
+   "area": "石垣・上人",
+   "areaEn": "Ishigaki & Shonin",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "レストランとうようけん",
+    "address": "7-8-22 Ishigakihigashi, Beppu",
+    "url": "https://www.toyoken-beppu.co.jp/",
+    "whatJa": "大正15年（1926年）創業、大分名物「とり天」発祥の店として地元民から長く愛される老舗レストラン。",
+    "whatEn": "Founded in 1926 in Beppu, the historic restaurant credited as the birthplace of Oita's crisp, kabosu-dipped toriten chicken tempura.",
+    "facts": "Established in 1926 by chef Katsumi Miyamoto, who created Oita's iconic toriten using boneless chicken thighs fried in an egg-rich batter without water; served with kabosu citrus soy sauce and mustard.",
+    "weak": "",
+    "verifiedBy": "https://www.toyoken-beppu.co.jp/",
+    "quote": "【本店】10/2　営業時間変更のお知らせ",
+    "fixes": "Main shop address on page: 〒874-0919 大分県別府市石垣東7丁目8番22号 (matches). Site says 大正15年創業 and 元祖とり天発祥の店. Also has a Tokiwa Beppu food-court branch.",
+    "coords": [
+     33.30092,
+     131.49954
+    ]
+   }
+  }
+ },
+ "sights": [],
+ "_dropped": [
+  {
+   "name": "cotake",
+   "verdict": "doubt",
+   "reason": "No dated 2026 content on the official site (only undated copyright); no 2026 evidence found."
+  },
+  {
+   "name": "岡本屋売店",
+   "verdict": "doubt",
+   "reason": "2026 delivery-notice text (2026年8月8日(土)～2026年8月16日(日)まで 配送不可) appears to sit inside an HTML comment, so not clearly public; the visible Obon notice is undated; the 令和8年 notice concerns 山の湯 bath closure, not the shop."
+  },
+  {
+   "name": "ナチュラルベーカリー クラム",
+   "verdict": "doubt",
+   "reason": "Only a copyright footer 2026; no dated post (Instagram not opened)."
+  },
+  {
+   "name": "うみとじかん",
+   "verdict": "doubt",
+   "reason": "No 2026 text found. Footer reads 2022©, so it is not evidence. Instagram not opened."
+  },
+  {
+   "name": "SELECT BEPPU",
+   "verdict": "doubt",
+   "reason": "Online shop is up, but I found no dated 2026 post or notice. Only product titles like 'Kiyoshima Apartment record 2025–2026' and a '2027 calendar' appear."
+  },
+  {
+   "name": "冨士屋一也百ホール＆ギャラリー",
+   "verdict": "doubt",
+   "reason": "Page content looks stale (2025 news). No 2026 evidence; cafe on temporary closure."
+  },
+  {
+   "name": "Otto e Sette Oita",
+   "verdict": "doubt",
+   "reason": "Official Wix site opened but shows no dated 2026 post/notice. Only the host inn site beppu-yanagiya.jp has 2026 dates, which concerns the inn, not the restaurant."
+  },
+  {
+   "name": "TANE",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login; no dated 2026 sentence could be copied."
+  },
+  {
+   "name": "別府湯けむりカフェ油屋 BYCA",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login (profile shows 29 posts, no dates visible); no dated 2026 sentence could be copied."
+  },
+  {
+   "name": "珈琲専科 グリーンスポット",
+   "verdict": "doubt",
+   "reason": "Instagram profile opens but only follower counts are visible without login; no dated 2026 post text could be read, so 2026 operation is unconfirmed."
+  },
+  {
+   "name": "SHIYA COFFEE",
+   "verdict": "doubt",
+   "reason": "Instagram profile opens but only follower counts are visible without login; no dated 2026 post text could be read, so 2026 operation is unconfirmed."
+  },
+  {
+   "name": "Phew. Coffee Stand",
+   "verdict": "doubt",
+   "reason": "Instagram profile opens but only follower counts are visible without login; no dated 2026 post text could be read, so 2026 operation is unconfirmed."
+  }
+ ]
+}

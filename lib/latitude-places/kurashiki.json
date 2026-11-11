@@ -1,0 +1,294 @@
+[
+ {
+  "name": "倉敷帆布 美観地区店",
+  "nameEn": "Kurashiki Hampu, Bikan Shop",
+  "category": "local",
+  "industry": "kurashiki-textiles",
+  "tags": [
+   "canvas",
+   "bags"
+  ],
+  "area": "本町",
+  "areaEn": "Honmachi",
+  "address": "Honmachi 11-33, Kurashiki",
+  "url": "https://www.kurashikihampu.co.jp/shop",
+  "what": "本町の古民家を再生した、倉敷帆布の直営店。帆布のバッグと小物を扱い、生地の販売はしない。",
+  "whatEn": "The Kurashiki Hampu shop in a restored old house in Honmachi. Canvas bags and small goods; fabric is not sold here.",
+  "note": "生地は売っていないので、普段使うバッグから選ぶ。",
+  "noteEn": "No fabric here, so start with a bag for everyday use.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59644,
+   133.77372
+  ]
+ },
+ {
+  "name": "FLAT 倉敷美観地区店",
+  "nameEn": "FLAT Kurashiki Bikan Shop",
+  "category": "local",
+  "industry": "kurashiki-textiles",
+  "tags": [
+   "textiles",
+   "tatami-beri"
+  ],
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "Chuo 1-4-16, Kurashiki",
+  "url": "https://flat-kojimaberi.com/",
+  "what": "畳縁の織元・髙田織物の直営店。手芸用の畳縁や、畳縁で作った小物と制作レシピを扱う。",
+  "whatEn": "A shop run by tatami-edging weaver Takata Orimono. Woven edging for sewing, small goods made from it, and craft patterns.",
+  "note": "畳縁を選ぶなら、作りたい小物のレシピも一緒に見る。",
+  "noteEn": "Choose a pattern for something to make along with the woven edging.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59505,
+   133.77153
+  ]
+ },
+ {
+  "name": "T.S.L Kurashiki",
+  "nameEn": "T.S.L Kurashiki",
+  "category": "local",
+  "industry": "kurashiki-textiles",
+  "tags": [
+   "canvas",
+   "leather",
+   "stationery"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-23-10, Kurashiki",
+  "url": "https://nap-dog.com/blogs/stores",
+  "what": "林源十郎商店の敷地にある、THE SUPERIOR LABORの直営店。1階に鞄や革小物、2階にトラベラーズノートや中古レコードが並ぶ。",
+  "whatEn": "The shop of THE SUPERIOR LABOR at Hayashi Genjuro Shoten. Bags and leather goods downstairs; TRAVELER’S notebooks and used records upstairs.",
+  "note": "ノートの加工を頼むなら、国内客は後日発送と覚えておく。",
+  "noteEn": "If you live in Japan, notebook custom orders are shipped later.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59723,
+   133.77025
+  ]
+ },
+ {
+  "name": "融民藝店",
+  "nameEn": "Toworu Mingei",
+  "category": "local",
+  "industry": "mingei-and-glass",
+  "tags": [
+   "mingei"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-25-48, Kurashiki",
+  "url": "https://toworu-mingei.studio.site/",
+  "what": "1971年から倉敷美観地区で続く民藝の店。",
+  "whatEn": "A folk-craft shop in the Bikan quarter, here since 1971.",
+  "note": "1971年から続く店で、毎日使うものを探したい。",
+  "noteEn": "I would look for something to use every day in this shop, here since 1971.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59815,
+   133.77034
+  ]
+ },
+ {
+  "name": "日本郷土玩具館",
+  "nameEn": "Japan Rural Toy Museum",
+  "category": "local",
+  "industry": "mingei-and-glass",
+  "tags": [
+   "folk-toys",
+   "glass",
+   "tableware"
+  ],
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "Chuo 1-4-16, Kurashiki",
+  "url": "https://gangukan.shopinfo.jp/",
+  "what": "倉敷川沿いの米倉を使った郷土玩具の博物館。敷地内に玩具の店とギャラリー、倉敷ガラスや日常の器を扱うサイドテラスがある。",
+  "whatEn": "A folk-toy museum in former rice storehouses along the Kurashiki River. Toy shops, a gallery and the Side Terrace shop for Kurashiki glass and everyday tableware share the grounds.",
+  "note": "玩具を見たあと、中庭のサイドテラスでガラスを見る。",
+  "noteEn": "After the toys, look at the glass in the courtyard’s Side Terrace.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59507,
+   133.77139
+  ]
+ },
+ {
+  "name": "滔々 toutou",
+  "nameEn": "toutou",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "mingei"
+  ],
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "Chuo 1-6-8, Kurashiki",
+  "url": "https://toutou-kurashiki.jp/",
+  "what": "現代の作り手の工芸を扱うギャラリー。別の倉敷民藝館南店では、日用の器や倉敷手毬、籠などを扱う。",
+  "whatEn": "A gallery for crafts by contemporary makers. Its separate shop south of the folk-craft museum sells everyday vessels, Kurashiki temari balls and baskets.",
+  "note": "器を見る日は、ギャラリーと民藝館南店を両方回る。",
+  "noteEn": "For tableware, look in both the gallery and the shop south of the museum.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59523,
+   133.77042
+  ]
+ },
+ {
+  "name": "工房イクコ",
+  "nameEn": "Koubou Ikuko",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "wood"
+  ],
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "Chuo 1-12-9, Kurashiki",
+  "url": "https://www.koubou-ikuko.com/",
+  "what": "作家の陶器や硝子、木の器などを扱うギャラリー。個展と常設の展示があり、展覧会のない週は月・火曜が休み。",
+  "whatEn": "A gallery for studio ceramics, glass and wooden vessels, with solo shows and a regular display. Closed Mondays and also Tuesdays in weeks without an exhibition.",
+  "note": "木の器も気になるので、個展の予定を見てから行く。",
+  "noteEn": "I would check the show list first; wooden vessels interest me too.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59381,
+   133.77134
+  ]
+ },
+ {
+  "name": "アチブランチ",
+  "nameEn": "atiburanti",
+  "category": "craft",
+  "tags": [
+   "crafts",
+   "textiles"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-23-10, Kurashiki",
+  "url": "https://atiburanti.jp/",
+  "what": "1934年築の林源十郎商店の1階にある生活用品の店。倉敷意匠計画室のパートナーショップで、作り手の企画展も開く。",
+  "whatEn": "A shop for everyday goods on the ground floor of the 1934 Hayashi Genjuro Shoten building. A partner shop of Kurashiki Isho Keikakushitsu, with exhibitions of makers’ work.",
+  "note": "11月は、ヤクやウールの服の展示に合わせて行きたい。",
+  "noteEn": "In November, I would go for the show of yak and wool clothing.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59737,
+   133.77047
+  ]
+ },
+ {
+  "name": "Café＆Ceramics うつわ四季",
+  "nameEn": "Café & Ceramics Utsuwa Shiki",
+  "category": "craft",
+  "tags": [
+   "ceramics"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-16-38, Kurashiki",
+  "url": "https://www.instagram.com/utuwasiki.0311/",
+  "what": "阿知の、カフェを併設した器の店。土〜水曜は8時から、木・金曜は10時30分からで、木曜は不定休。",
+  "whatEn": "A ceramics shop with a café in Achi. Open from 8 a.m. Saturday to Wednesday, and 10:30 a.m. on Thursdays and Fridays; some Thursdays closed.",
+  "note": "朝に器も見たいなら、8時から開く土〜水曜を選ぶ。",
+  "noteEn": "For an early look at the pots, choose Saturday to Wednesday, from 8 a.m.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59854,
+   133.77017
+  ]
+ },
+ {
+  "name": "atelier & salon はしまや",
+  "nameEn": "atelier & salon Hashimaya",
+  "category": "food",
+  "tags": [
+   "fermentation",
+   "pickles"
+  ],
+  "area": "東町",
+  "areaEn": "Higashimachi",
+  "address": "Higashimachi 1-20, Kurashiki",
+  "url": "https://hashimaya.com/",
+  "what": "東町の築約150年の米蔵を再生した、発酵料理のサロン。発酵調味料を使うランチや甘酒、併設アトリエで作るピクルスがある。",
+  "whatEn": "A salon for fermented food in a restored rice storehouse, about 150 years old, in Higashimachi. Lunches with fermented seasonings, amazake and pickles made in the adjoining atelier.",
+  "note": "発酵の飲み物を試すなら、甘酸っぱい白麹あま酒にする。",
+  "noteEn": "For a fermented drink, I would choose the sweet-sour white-koji amazake.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.5975,
+   133.77583
+  ]
+ },
+ {
+  "name": "kobacoffee 倉敷川店",
+  "nameEn": "kobacoffee Kurashikigawa",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "本町",
+  "areaEn": "Honmachi",
+  "address": "Honmachi 5-27, Kurashiki",
+  "url": "https://www.koba-coffee.com/",
+  "what": "本町の自家焙煎珈琲の店。ペーパードリップ、サイフォン、コーヒープレスで淹れる。",
+  "whatEn": "A coffee shop and roaster in Honmachi. Coffee brewed by paper drip, siphon or coffee press.",
+  "note": "いつもの豆でも、淹れ方を変えて頼んでみたい。",
+  "noteEn": "I would try a different brewing method, even with familiar beans.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.59483,
+   133.77195
+  ]
+ },
+ {
+  "name": "Coffee+Bar FIDELITY",
+  "nameEn": "Coffee+Bar FIDELITY",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "espresso"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-3-2 Konishi Bldg 2F, Kurashiki",
+  "url": "https://www.hifi-coffeeroasters.com/",
+  "what": "倉敷駅前の自家焙煎珈琲店。直火で焙煎した豆を注文ごとに挽き、ハンドドリップやエスプレッソで出す。",
+  "whatEn": "A coffee roaster by Kurashiki Station. Direct-flame roasted beans, ground to order for hand-drip coffee and espresso.",
+  "note": "深煎りの豆を使うラテを、駅前で一杯飲んでから歩く。",
+  "noteEn": "I would have a dark-roast latte by the station before setting off.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.60136,
+   133.76759
+  ]
+ },
+ {
+  "name": "天領倉敷珈琲",
+  "nameEn": "Tenryo Kurashiki Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "beans"
+  ],
+  "area": "阿知",
+  "areaEn": "Achi",
+  "address": "Achi 2-7-19, Kurashiki",
+  "url": "https://www.tenryo-coffee.com/",
+  "what": "倉敷駅前商店街の、注文を受けてから焙煎する珈琲豆の店。好みの煎り具合で、10分ほどで仕上がる。",
+  "whatEn": "A roast-to-order coffee bean shop in the station-front shopping arcade. Beans roasted to your preferred level in about ten minutes.",
+  "note": "豆を買うなら、焙煎を待つ10分も予定に入れておく。",
+  "noteEn": "Allow ten minutes for roasting when you buy beans.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.60009,
+   133.76838
+  ]
+ }
+]

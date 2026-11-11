@@ -1,0 +1,72 @@
+[
+ {
+  "name": "角館の武家屋敷通り",
+  "nameEn": "Kakunodate Samurai Houses Street",
+  "kind": "sight",
+  "area": "内町",
+  "areaEn": "Uchimachi",
+  "address": "仙北市角館町東勝楽丁ほか",
+  "url": "https://www.city.semboku.akita.jp/sightseeing/spot/07_matinami.html",
+  "what": "1620年に芦名義勝が造った城下町の、武家が住んだ内町。木立の中に武家屋敷が並ぶ通りの区域は、1976年に国の重要伝統的建造物群保存地区に選ばれた。",
+  "whatEn": "The Uchimachi quarter where samurai lived, in the castle town laid out by Ashina Yoshikatsu in 1620. The area of the street lined with samurai houses among tall trees became a national preservation district for groups of traditional buildings in 1976.",
+  "coords": [
+   39.59783,
+   140.56216
+  ],
+  "notice": "屋敷の内部の公開は、家ごとに期間と休みが違う。市の案内では、岩橋家は11月30日まで、旧松本家は11月10日まで。",
+  "noticeEn": "Each house opens on its own dates and days off. The city's guide lists Iwahashi house until 30 November and the former Matsumoto house until 10 November.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "桧木内川堤（サクラ）",
+  "nameEn": "Hinokinai River Bank Cherry Trees",
+  "kind": "sight",
+  "area": "桧木内川",
+  "areaEn": "Hinokinai River",
+  "address": "仙北市角館町 桧木内川左岸",
+  "url": "https://www.city.semboku.akita.jp/sightseeing/spot/07_someiyoshino.html",
+  "what": "桧木内川の左岸の堤防に、約1,950メートル、409本のソメイヨシノが並ぶ。1934年に植えられ、国の名勝に指定されている。",
+  "whatEn": "About 1,950 metres of Somei-yoshino cherry trees, 409 of them, line the left bank of the Hinokinai river. They were planted in 1934 and the bank is a national place of scenic beauty.",
+  "coords": [
+   39.59965,
+   140.55863
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "角館町平福記念美術館",
+  "nameEn": "Kakunodate Hirafuku Memorial Art Museum",
+  "kind": "art",
+  "area": "内町",
+  "areaEn": "Uchimachi",
+  "address": "仙北市角館町表町上丁4-4",
+  "url": "https://www.city.semboku.akita.jp/sightseeing/hirafuku/index.html",
+  "what": "角館に生まれた日本画家、平福穂庵と、その子の平福百穂の作品を見せる、仙北市の美術館。",
+  "whatEn": "A city museum showing the work of the Nihonga painter Hirafuku Suian, born in Kakunodate, and of his son Hirafuku Hyakusui.",
+  "coords": [
+   39.60194,
+   140.56007
+  ],
+  "notice": "月曜は休み。4月から11月は9時から17時で、入館は閉館の30分前まで。10月1日から11月15日は「平福穂庵・百穂展」。",
+  "noticeEn": "Closed on Mondays. Open 9:00–17:00 from April to November, last entry 30 minutes before closing. The Hirafuku Suian and Hyakusui exhibition runs from 1 October to 15 November.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "新潮社記念文学館",
+  "nameEn": "Shinchosha Memorial Literature Museum",
+  "kind": "art",
+  "area": "田町",
+  "areaEn": "Tamachi",
+  "address": "仙北市角館町田町上丁23",
+  "url": "https://www.city.semboku.akita.jp/sightseeing/bungakukan/index.html",
+  "what": "新潮社を創った佐藤義亮（角館町の出身）をたたえて、2000年に開いた文学館。新潮社の歩みと、近代日本文学の歴史をたどる。",
+  "whatEn": "A literature museum opened in 2000 in honour of Sato Giryo, the founder of the publisher Shinchosha, who came from Kakunodate. It follows the history of Shinchosha and of modern Japanese literature.",
+  "coords": [
+   39.59289,
+   140.56556
+  ],
+  "notice": "月曜は休み。4月から11月は9時から17時で、入館は閉館の30分前まで。10月10日から2027年1月17日は企画展「角館武家屋敷の成り立ちと文化展」。",
+  "noticeEn": "Closed on Mondays. Open 9:00–17:00 from April to November, last entry 30 minutes before closing. The exhibition on the making and culture of the Kakunodate samurai houses runs from 10 October to 17 January 2027.",
+  "verifiedAt": "2026-11-11"
+ }
+]

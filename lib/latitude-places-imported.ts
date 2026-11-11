@@ -1,14 +1,48 @@
 // 自動で作るファイル（scripts/latitude-import-city.py）。手で直さない：文は data/latitude-import/<町>.json を直して、台本を回し直す。
 // 号のない町の「街の案内」。店は編集部が2026年の営業を確かめた物（keep）だけ。凛のおすすめで、凛が訪ねたとは書かない。
 import type { CityPlace, CitySight, LatitudeCity } from './latitude-places';
+import aizuwakamatsuPlaces from './latitude-places/aizuwakamatsu.json';
+import aizuwakamatsuSights from './latitude-sights/aizuwakamatsu.json';
 import hagiPlaces from './latitude-places/hagi.json';
 import hagiSights from './latitude-sights/hagi.json';
 import hakodatePlaces from './latitude-places/hakodate.json';
 import hakodateSights from './latitude-sights/hakodate.json';
+import izumoPlaces from './latitude-places/izumo.json';
+import izumoSights from './latitude-sights/izumo.json';
+import kakunodatePlaces from './latitude-places/kakunodate.json';
+import kakunodateSights from './latitude-sights/kakunodate.json';
+import kurashikiPlaces from './latitude-places/kurashiki.json';
+import kurashikiSights from './latitude-sights/kurashiki.json';
+import takamatsuPlaces from './latitude-places/takamatsu.json';
+import takamatsuSights from './latitude-sights/takamatsu.json';
 import takayamaPlaces from './latitude-places/takayama.json';
 import takayamaSights from './latitude-sights/takayama.json';
 
 export const IMPORTED_CITIES: LatitudeCity[] = [
+  {
+    slug: "aizuwakamatsu",
+    name: "Aizuwakamatsu",
+    nameJa: "会津若松",
+    latitude: "37.5° N",
+    country: "Fukushima, Japan",
+    countryJa: "福島県",
+    person: "rin",
+    coords: [37.4985, 139.9265],
+    intro: "A castle town in the Aizu basin of Fukushima, around the red-tiled Tsurugajo. Lacquerware, painted candles, striped cotton and sake from the old merchant streets, then miso dengaku, soba and coffee: Rin's picks.",
+    introJa: "福島県、会津盆地の城下町。赤瓦の鶴ヶ城のまわりに、会津塗、絵ろうそく、縞の木綿、造り酒屋が残る。それから味噌田楽とそばと喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In the Aizu basin · a castle town around Tsurugajo", "ja": "会津盆地・鶴ヶ城のある城下町"},
+    industries: [
+      {"key": "aizu-nuri", "en": "Aizu lacquerware", "ja": "会津塗", "about": "Aizu lacquerware is a craft of the castle town's merchant houses. Suzuzen, a lacquerware wholesaler founded in 1832, keeps its storehouses open to visitors, with exhibits, a shop and a workshop where you paint a maki-e design yourself.", "aboutJa": "会津塗は、城下の問屋が支えてきた漆器。1832年創業の漆器問屋、鈴善は蔵を公開していて、展示と販売のほか、器に自分で蒔絵を描く体験もできる。"},
+      {"key": "aizu-erosoku", "en": "Aizu painted sumac-wax candles", "ja": "会津絵ろうそく", "about": "Aizu painted candles are Japanese candles whose shafts are painted by hand with chrysanthemums, peonies, plum blossoms and lucky patterns. They are named among the exhibits at the 1873 Vienna World Exposition. Ozawa, founded in 1785, still paints them and runs a painting workshop.", "aboutJa": "会津絵ろうそくは、和ろうそくの表面に菊や牡丹、梅、縁起のよい文様を手で描いたもの。1873年のウィーン万博の出品記録にも名がある。1785年創業の小澤は、いまも絵を描き、絵付け体験を開く。"},
+      {"key": "aizu-momen", "en": "Aizu cotton", "ja": "会津木綿", "about": "Aizu cotton is a striped plain weave made with warp threads of two or more colours. Aizu lies at the northern limit of cotton growing in Japan, so the cloth is thick and warm. Yamada Momen still runs a Toyoda power loom from the early Showa era.", "aboutJa": "会津木綿は、二色以上の縦糸で縞を織る平織りの木綿。会津は日本の綿花栽培の北限とされ、布は厚くて丈夫。山田木綿織元では、昭和の初めから使う豊田式の織機が、いまも動いている。"},
+      {"key": "aizu-sake", "en": "Aizu sake brewing", "ja": "会津清酒", "about": "Tsurunoe, founded in 1794 on Nanukamachi-dori, is a sake brewery in the castle town. It makes Aizu Chujo and Yuri, and the shop pours tastings and sells from nine in the morning to six.", "aboutJa": "鶴乃江酒造は、七日町通り沿いにある、1794年創業の城下町の酒蔵。会津中将とゆりを造り、店では朝9時から18時まで試飲と販売をしている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: aizuwakamatsuPlaces as CityPlace[],
+    sights: aizuwakamatsuSights as CitySight[],
+  },
   {
     slug: "hagi",
     name: "Hagi",
@@ -51,6 +85,93 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: hakodatePlaces as CityPlace[],
     sights: hakodateSights as CitySight[],
+  },
+  {
+    slug: "izumo",
+    name: "Izumo",
+    nameJa: "出雲",
+    latitude: "35.4° N",
+    country: "Shimane, Japan",
+    countryJa: "島根県",
+    person: "rin",
+    coords: [35.3635, 132.7575],
+    intro: "A town on the Izumo plain in eastern Shimane, home of Izumo Taisha, where the gods are said to gather in the tenth month of the old calendar. Mingei pottery and glass in Hikawa, sake and ginger sweets on Momen Kaido in Hirata, and soba and wagashi around the shrine — Rin's picks.",
+    introJa: "出雲大社のある町。旧暦10月に全国の神々が集まるとされ、2026年の神在祭は11月18日の夕方から25日の夕方まで。斐川の民藝の窯元とガラス、平田・木綿街道の酒蔵と生姜糖、大社のそばと和菓子を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Sea of Japan side · the Izumo plain beside Lake Shinji", "ja": "日本海側・宍道湖のそばに広がる出雲平野の町"},
+    industries: [
+      {"key": "izumo-mingei-craft", "en": "Izumo Mingei & Folk Handcrafts", "ja": "出雲の民藝・手仕事", "about": "Izumo's folk-craft tradition grew from Shussai-gama, started in 1947 by five young men in Hikawa and guided by Yanagi Soetsu, Kawai Kanjiro, Hamada Shoji and Bernard Leach. Pottery, glass and woodwork for daily use are still made and sold in the area, and the Izumo Mingeikan shows crafts from Shimane and elsewhere.", "aboutJa": "出雲の民藝は、昭和22年（1947年）に斐川の出西で5人の若者が始めた出西窯から広がった。柳宗悦、河井寬次郎、濱田庄司、バーナード・リーチらが指導した。いまも、くらしの器や木工が作られ、売られている。出雲民藝館では、島根や各地の手仕事を見られる。"},
+      {"key": "momen-kaido-brewing", "en": "Momen Kaido Sake & Soy Brewing", "ja": "木綿街道の醸造文化", "about": "Hirata's Momen Kaido, the 'cotton road', grew in the Edo period as a market for cotton. Along the L-shaped street, a sake brewery, soy sauce houses and an old ginger-sugar maker still work, and the brewery buildings of Sakemochida are registered national cultural properties.", "aboutJa": "平田の木綿街道は、江戸時代に木綿の集散地として栄えたL字型の通り。いまも酒蔵、醤油蔵、生姜糖の老舗が仕事を続けている。酒持田本店の蔵は、国の登録文化財。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: izumoPlaces as CityPlace[],
+    sights: izumoSights as CitySight[],
+  },
+  {
+    slug: "kakunodate",
+    name: "Kakunodate",
+    nameJa: "角館",
+    latitude: "39.6° N",
+    country: "Akita, Japan",
+    countryJa: "秋田県",
+    person: "rin",
+    coords: [39.596, 140.5635],
+    intro: "A castle town in inland Akita, laid out in 1620 with a samurai quarter, Uchimachi, and a merchant quarter, Tomachi. Cherry-bark kabazaiku craft, a miso and soy sauce brewer, Shiraiwa-yaki pottery, then chestnut sweets, pudding and coffee: Rin's picks.",
+    introJa: "秋田県の内陸にある、1620年に造られた城下町。武家の住んだ内町と、町人の住んだ外町に分かれる。樺細工、味噌と醤油の蔵、白岩焼、それから栗の菓子とプリンと喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "Inland Akita · a castle town among mountains, with the Hinokinai river on its west", "ja": "秋田県の内陸・三方を山に囲まれ、西に桧木内川が流れる城下町"},
+    industries: [
+      {"key": "kabazaiku", "en": "Kabazaiku (Wild Cherry-Bark Craft)", "ja": "樺細工", "about": "Kabazaiku is a designated traditional craft made from the bark of wild mountain cherry. The bark is stripped in August and September and dried for about two years. Tea caddies are the typical piece, and they gain a shine as hands touch them. The craft in Kakunodate has about 240 years of history.", "aboutJa": "樺細工は、山桜の樹皮で作る、伝統的工芸品に指定された工芸。樹皮は8〜9月にはぎ、約2年かけて乾かしてから使う。茶筒が代表的で、手でふれるほど艶が出る。角館では240年あまりの歴史がある。"},
+      {"key": "fermentation", "en": "Miso and Soy Sauce Brewing", "ja": "味噌・醤油醸造", "about": "In Shimoshinmachi, in the merchant quarter, Ando Jozo has brewed since 1853. It makes additive-free, naturally fermented miso, soy sauce and pickles, and opens the brick storehouse parlor of its main shop, built in the middle of the Meiji era, to visitors.", "aboutJa": "外町の下新町では、1853年に創業した安藤醸造が、いまも醸造を続ける。無添加・天然醸造の味噌、醤油、漬物を作り、本店の明治中期のレンガ造りの蔵座敷を、見学に開いている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kakunodatePlaces as CityPlace[],
+    sights: kakunodateSights as CitySight[],
+  },
+  {
+    slug: "kurashiki",
+    name: "Kurashiki",
+    nameJa: "倉敷",
+    latitude: "34.6° N",
+    country: "Okayama, Japan",
+    countryJa: "岡山県",
+    person: "rin",
+    coords: [34.5965, 133.7712],
+    intro: "A town of white-walled storehouses along the Kurashiki River. Canvas and woven tatami edging, folk-craft tableware and coffee: Rin’s picks. In autumn, the art and folk-craft museums have exhibitions to see along the way.",
+    introJa: "倉敷川沿いに白壁の蔵が残る町。帆布と畳縁の店、民藝の器と喫茶を、凛のおすすめで。秋は美術館と民藝館の企画展も見て歩ける。",
+    images: [],
+    locator: {"en": "In Okayama, western Honshu · along the Kurashiki River, below Tsurugatayama hill", "ja": "本州西部の岡山県・倉敷川沿い、鶴形山のふもと"},
+    industries: [
+      {"key": "kurashiki-textiles", "en": "Kurashiki canvas and woven textiles", "ja": "倉敷帆布・織物", "about": "Cotton growing on reclaimed land led to weaving in the Kojima district. Thick cotton canvas and narrow woven tatami edging are still made here, and their makers sell bags and sewing materials in the old town.", "aboutJa": "干拓地での綿づくりから、児島の織物が育った。厚手の綿帆布と細幅の畳縁が今も作られ、織元の店ではバッグや手芸の材料を扱う。"},
+      {"key": "mingei-and-glass", "en": "Kurashiki mingei and handblown glass", "ja": "倉敷の民藝と吹きガラス", "about": "The Kurashiki Museum of Folk Crafts opened in 1948 in former rice storehouses, with textile researcher Kichinosuke Tonomura as its first director. Shops in the town carry everyday pottery and the blown Kurashiki glass of Shinzo and Eiji Kotani.", "aboutJa": "1948年、米倉を使って倉敷民藝館が開き、織物の研究者・外村吉之介が初代館長になった。町の店には日常の器と、小谷真三・栄次親子の吹きガラス「倉敷ガラス」が並ぶ。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kurashikiPlaces as CityPlace[],
+    sights: kurashikiSights as CitySight[],
+  },
+  {
+    slug: "takamatsu",
+    name: "Takamatsu",
+    nameJa: "高松",
+    latitude: "34.3° N",
+    country: "Kagawa, Japan",
+    countryJa: "香川県",
+    person: "rin",
+    coords: [34.341, 134.05],
+    intro: "A castle town on the Seto Inland Sea, where Takamatsu Castle draws seawater into its moats and Ritsurin Garden lies below Mount Shiun. Wasanbon studios and craft shops, with quiche and parfaits around the Marugamemachi arcade and Kitahama Alley, as Rin's picks. The leaves at Ritsurin begin to turn in November.",
+    introJa: "海に面した城下町。海水を引き込んだ高松城の堀と、紫雲山を背にした栗林公園がある。和三盆の工房と工芸の店、丸亀町商店街や北浜アリーのまわりのキッシュとパフェを、凛のおすすめで。栗林公園の紅葉は、11月に色づく。",
+    images: [],
+    locator: {"en": "On the Seto Inland Sea in northern Shikoku · a castle town", "ja": "四国の北・瀬戸内海に面した城下町"},
+    industries: [
+      {"key": "sanuki-wasanbon", "en": "Sanuki Wasanbon sugar & wooden molds", "ja": "讃岐和三盆・菓子木型", "about": "Wasanbon is a sugar made from a rare slender sugarcane called hosokibi. Takamatsu studios press it into hand-carved wooden molds and turn out dry sweets. Confectionery molds date from the Edo period and carry the seasons, flowers and birds. Mold carvers have dwindled; Mamehana's site says Yoshihiro Ichihara is the only one left in Shikoku.", "aboutJa": "和三盆は、「ほそきび」という希少なサトウキビから作る砂糖。高松の工房では、これを手彫りの木型に詰めて抜き、干菓子にする。菓子木型は江戸時代に始まり、四季の草花や花鳥風月が彫られる。職人は減り、豆花のサイトによると、四国では市原吉博ひとりになった。"},
+    ],
+    shopMap: false,
+    routeBuilder: false,
+    places: takamatsuPlaces as CityPlace[],
+    sights: takamatsuSights as CitySight[],
   },
   {
     slug: "takayama",

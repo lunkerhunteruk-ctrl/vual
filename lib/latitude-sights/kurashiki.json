@@ -1,0 +1,54 @@
+[
+ {
+  "name": "大原美術館",
+  "nameEn": "Ohara Museum of Art",
+  "kind": "art",
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "倉敷市中央1-1-15",
+  "url": "https://www.ohara.or.jp/",
+  "what": "大原孫三郎が画家・児島虎次郎を記念して1930年に設立した美術館。西洋と日本の近現代美術のほか、工芸や東洋の美術を収蔵する。",
+  "whatEn": "Founded in 1930 by Ohara Magosaburo in memory of the painter Kojima Torajiro. Modern Western and Japanese art, alongside crafts and Asian art.",
+  "coords": [
+   34.59603,
+   133.77044
+  ],
+  "notice": "分館は長期休館中。",
+  "noticeEn": "The Annex is closed for an extended period.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "倉敷民藝館",
+  "nameEn": "Kurashiki Museum of Folk Crafts",
+  "kind": "art",
+  "area": "中央",
+  "areaEn": "Chuo",
+  "address": "倉敷市中央1-4-11",
+  "url": "https://kurashiki-mingeikan.com/",
+  "what": "江戸時代後期の米倉を使い、1948年に開いた民藝館。岡山の手仕事のほか、世界各地の器、籠、金工品や家具を展示する。",
+  "whatEn": "A folk-craft museum opened in 1948 in late-Edo rice storehouses. Crafts from Okayama, with vessels, baskets, metalwork and furniture from around the world.",
+  "coords": [
+   34.59548,
+   133.7715
+  ],
+  "notice": "2026年12月8〜10日は展示替えで臨時休館、7日も月曜休館。開館は10〜17時、入館は16時30分まで。",
+  "noticeEn": "Closed for exhibition changes on 8–10 December 2026, and for the regular Monday closure on 7 December. Open 10:00–17:00, last admission 16:30.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "阿智神社",
+  "nameEn": "Achi Shrine",
+  "kind": "sight",
+  "area": "本町",
+  "areaEn": "Honmachi",
+  "address": "倉敷市本町12-1",
+  "url": "https://achi.or.jp/",
+  "what": "美観地区の鎮守で、宗像三女神を祀る神社。檜皮葺きの本殿は倉敷市の文化財で、2024年に屋根を葺き替えた。境内は終日参拝できる。",
+  "whatEn": "The guardian shrine of the Bikan quarter, dedicated to the three Munakata goddesses. Its cypress-bark-roofed main hall is a city cultural property; the roof was renewed in 2024. The grounds are open for worship at any hour.",
+  "coords": [
+   34.59753,
+   133.77344
+  ],
+  "verifiedAt": "2026-11-11"
+ }
+]

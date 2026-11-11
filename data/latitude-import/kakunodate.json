@@ -1,0 +1,462 @@
+{
+ "slug": "kakunodate",
+ "city": {
+  "name": "Kakunodate",
+  "nameJa": "角館",
+  "latitude": "39.6° N",
+  "country": "Akita, Japan",
+  "countryJa": "秋田県",
+  "person": "rin",
+  "coords": [
+   39.596,
+   140.5635
+  ],
+  "intro": "A castle town in inland Akita, laid out in 1620 with a samurai quarter, Uchimachi, and a merchant quarter, Tomachi. Cherry-bark kabazaiku craft, a miso and soy sauce brewer, Shiraiwa-yaki pottery, then chestnut sweets, pudding and coffee: Rin's picks.",
+  "introJa": "秋田県の内陸にある、1620年に造られた城下町。武家の住んだ内町と、町人の住んだ外町に分かれる。樺細工、味噌と醤油の蔵、白岩焼、それから栗の菓子とプリンと喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "Inland Akita · a castle town among mountains, with the Hinokinai river on its west",
+   "ja": "秋田県の内陸・三方を山に囲まれ、西に桧木内川が流れる城下町"
+  },
+  "industries": [
+   {
+    "key": "kabazaiku",
+    "en": "Kabazaiku (Wild Cherry-Bark Craft)",
+    "ja": "樺細工",
+    "about": "Kabazaiku is a designated traditional craft made from the bark of wild mountain cherry. The bark is stripped in August and September and dried for about two years. Tea caddies are the typical piece, and they gain a shine as hands touch them. The craft in Kakunodate has about 240 years of history.",
+    "aboutJa": "樺細工は、山桜の樹皮で作る、伝統的工芸品に指定された工芸。樹皮は8〜9月にはぎ、約2年かけて乾かしてから使う。茶筒が代表的で、手でふれるほど艶が出る。角館では240年あまりの歴史がある。",
+    "_src": "Developed in late-18th-century Kakunodate as samurai side-work using wild mountain cherry bark from nearby foothills, Kakunodate remains the sole designated production center of Kabazaiku in Japan."
+   },
+   {
+    "key": "fermentation",
+    "en": "Miso and Soy Sauce Brewing",
+    "ja": "味噌・醤油醸造",
+    "about": "In Shimoshinmachi, in the merchant quarter, Ando Jozo has brewed since 1853. It makes additive-free, naturally fermented miso, soy sauce and pickles, and opens the brick storehouse parlor of its main shop, built in the middle of the Meiji era, to visitors.",
+    "aboutJa": "外町の下新町では、1853年に創業した安藤醸造が、いまも醸造を続ける。無添加・天然醸造の味噌、醤油、漬物を作り、本店の明治中期のレンガ造りの蔵座敷を、見学に開いている。",
+    "_src": "Fed by snowmelt groundwater and Akita rice and soybeans, merchant houses in Kakunodate's southern Tomachi quarter have brewed natural-fermentation miso, soy sauce, and koji pickles since the Edo period."
+   }
+  ]
+ },
+ "places": {
+  "藤木伝四郎商店": {
+   "nameEn": "Fujiki Denshiro Shoten",
+   "area": "外町",
+   "areaEn": "Tomachi",
+   "tags": [
+    "kabazaiku",
+    "tea caddy"
+   ],
+   "what": "下新町の樺細工の店。1851年の創業。江戸時代末期の蔵を直した本店で、山桜の樹皮の茶筒や茶道具を売る。10時から17時、水曜は休み。",
+   "whatEn": "A kabazaiku house in Shimoshinmachi, founded in 1851. Its main shop is a renovated storehouse from the end of the Edo period, selling tea caddies and tea ware made of wild cherry bark. Open 10:00–17:00, closed on Wednesdays.",
+   "note": "茶筒は使うほど艶が出る。手に持って確かめる。",
+   "noteEn": "A tea caddy gains a shine as it is used. Hold one first.",
+   "_src": {
+    "category": "local",
+    "industry": "kabazaiku",
+    "nameKana": "ふじきでんしろうしょうてん",
+    "address": "45 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://denshiro.jp/",
+    "whatJa": "1851年創業、山桜の樹皮を用いた伝統工芸・樺細工の茶筒や現代の暮らしの道具を蔵造りの本店で伝える老舗製造元。",
+    "whatEn": "Founded in 1851, Kakunodate's oldest Kabazaiku cherry-bark craft house displays airtight tea caddies and contemporary woodware inside an Edo-era merchant storehouse.",
+    "facts": "Founded in Kaei 4 (1851) with its flagship storehouse in Tomachi and own factory in Kakunodate; artisans shave and polish wild mountain cherry bark with heated trowels to craft moisture-regulating tea canisters and repairable tableware.",
+    "weak": "",
+    "verifiedBy": "https://denshiro.jp/",
+    "quote": "2026.08.12 【8月・9月　休業日のお知らせ】",
+    "fixes": "",
+    "coords": [
+     39.59208,
+     140.56373
+    ]
+   }
+  },
+  "仙北市立角館樺細工伝承館": {
+   "nameEn": "Kakunodate Kabazaiku Craft Center",
+   "area": "内町",
+   "areaEn": "Uchimachi",
+   "tags": [
+    "kabazaiku",
+    "demonstration",
+    "museum"
+   ],
+   "what": "武家屋敷通りに近い、樺細工の展示館。職人の製作実演を見られる。実演は4月から11月は毎日で、9時30分から16時（12時から13時は休み）。",
+   "whatEn": "A hall for kabazaiku near the samurai houses, where craftsmen demonstrate the work. The demonstration runs daily from April to November, 9:30–16:00, with a break from 12:00 to 13:00.",
+   "note": "実演を見るなら、12時から13時は避ける。",
+   "noteEn": "To see the demonstration, avoid 12 to 1.",
+   "_src": {
+    "category": "local",
+    "industry": "kabazaiku",
+    "nameKana": "せんぼくしりつかくのだてかばざいくでんしょうかん",
+    "address": "10-1 Omotemachi-shimocho, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://www.city.semboku.akita.jp/sightseeing/densyo/",
+    "whatJa": "武家屋敷通り沿いに建つ樺細工の拠点施設で、伝統工芸士による桜皮削り・コテ仕上げの実演見学と地元工房作品の購入ができる。",
+    "whatEn": "Kakunodate's dedicated Kabazaiku craft hall along Bukeyashiki-dori where master artisans demonstrate shaving wild mountain cherry bark with heated trowels and local makers sell certified pieces.",
+    "facts": "Opened in 1978 to support Kakunodate's traditional crafts; hosts live Kabazaiku artisan demonstrations, displays historical cherry-bark tea chests alongside Itaya-zaiku split-maple basketry and Shiraiwa-yaki pottery, and sells works from local workshops.",
+    "weak": "Municipal craft hall and guild sales counter rather than a private workshop.",
+    "verifiedBy": "https://www.city.semboku.akita.jp/sightseeing/densyo/tokubetuten2026.html",
+    "quote": "「打掛展」 期間：令和8年4月4日（土）～6月14日（日）",
+    "fixes": "Address on page: 秋田県仙北市角館町表町下丁10-1 matches.",
+    "coords": [
+     39.59965,
+     140.56101
+    ]
+   }
+  },
+  "安藤醸造 本店": {
+   "nameEn": "Ando Jozo Honten",
+   "area": "外町",
+   "areaEn": "Tomachi",
+   "tags": [
+    "miso",
+    "soy sauce",
+    "pickles"
+   ],
+   "what": "下新町の味噌・醤油の醸造元の本店。嘉永6年（1853年）の創業で、無添加・天然醸造。明治中期のレンガ造りの蔵座敷（角館町指定文化財）を無料で見られ、味噌と醤油と漬物の試食もある。8時30分から17時。",
+   "whatEn": "The main shop of a miso and soy sauce brewer in Shimoshinmachi, founded in 1853 and brewing without additives, naturally fermented. Its brick storehouse parlor from the middle of the Meiji era, a designated local cultural property, is free to see, and miso, soy sauce and pickles are set out to taste. Open 8:30–17:00.",
+   "note": "蔵座敷は無料。試食をしてから買う。",
+   "noteEn": "The parlor is free. Taste first, then buy.",
+   "_src": {
+    "category": "local",
+    "industry": "fermentation",
+    "nameKana": "あんどうじょうぞう ほんてん",
+    "address": "27 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://www.andojyozo.co.jp/",
+    "whatJa": "嘉永6年（1853年）創業、東北最古の明治期レンガ造蔵座敷を備える天然醸造の味噌・醤油・寒こうじの醸造元本店。",
+    "whatEn": "An 1853 miso and soy sauce brewery in Tomachi housing Tohoku's oldest surviving Meiji-era brick kura parlor and a natural-fermentation shop.",
+    "facts": "Brews additive-free miso, soy sauce, kanko-ji rice-malt seasoning, and smoked iburigakko pickles using Akita soybeans, rice, and snowmelt groundwater; operates 3 shops in Kakunodate and opens its Meiji brick zashiki parlor free to visitors.",
+    "weak": "",
+    "verifiedBy": "https://www.andojyozo.co.jp/",
+    "quote": "令和8年9月1日出荷分から、ペットボトル容器入り商品の価格を改定させていただきます。",
+    "fixes": "Address 角館町下新町27 matches.",
+    "coords": [
+     39.59064,
+     140.56368
+    ]
+   }
+  },
+  "白岩焼和兵衛窯": {
+   "nameEn": "Wahee-gama (Shiraiwa-yaki)",
+   "area": "白岩",
+   "areaEn": "Shiraiwa",
+   "tags": [
+    "ceramics",
+    "glaze"
+   ],
+   "what": "江戸時代から伝わる白岩焼を受け継ぐ、ただ一つの窯元。家族3人の小さな窯で、あきたこまちのもみ殻の灰を使い、青い海鼠釉をかける。ギャラリー「白渓荘」は11時から16時、水曜は休み（不定休もある）。予約が先。",
+   "whatEn": "The only kiln that carries on Shiraiwa-yaki, a ware handed down since the Edo period. A small kiln of three family members, it glazes with the ash of Akitakomachi rice husks for a blue namako glaze. Its gallery Hakkeiso is open 11:00–16:00, closed on Wednesdays (and some other days), and reservations come first.",
+   "note": "ギャラリーは予約が先。前日と当日は電話で。",
+   "noteEn": "Reserve for the gallery first. For the day before or the same day, call.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "しらいわやきわへえがま",
+    "address": "36-2 Shiraiwa-honcho, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://www.waheegama.com/",
+    "whatJa": "江戸期から伝わる白岩焼を唯一受け継ぐ家族経営の窯元で、あきたこまち籾灰の青い海鼠釉が映える器を併設ギャラリー「白渓荘」で展示販売。",
+    "whatEn": "A three-person family pottery kiln and adjoining Hakkeiso gallery keeping Kakunodate's 18th-century Shiraiwa-yaki ware alive with deep blue rice-husk-ash glazes.",
+    "facts": "Revived Kakunodate's 1771 Shiraiwa pottery tradition half a century ago after Meiji-era closure; glazes local clay with Akitakomachi rice-husk ash for vivid namako blues and sells tableware and vases at its timber gallery Hakkeiso.",
+    "weak": "Advance phone contact recommended before visiting the kiln gallery as the three potters handle visitors alongside firing.",
+    "verifiedBy": "https://www.waheegama.com/",
+    "quote": "久しぶりの窯焚きを終え、一息つきました今日この頃。各地へのご注文の品をお届けした後は、今年最後の展示へ向けて制作に邁進してまいります。(2026年10月27日更新)",
+    "fixes": "Gallery 白渓荘 is by reservation preference, 11:00-16:00, closed Wednesdays (irregular closures).",
+    "coords": [
+     39.58813,
+     140.61707
+    ]
+   }
+  },
+  "有頂天喫茶": {
+   "nameEn": "Uchoten Kissa",
+   "area": "外町",
+   "areaEn": "Tomachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "上新町、しんまちビル1階の喫茶店。自家焙煎のコーヒーをネルドリップで淹れ、2.2mmの極太麺のナポリタンも出す。営業日は、月ごとにサイトで知らせる。",
+   "whatEn": "A kissaten on the first floor of the Shinmachi Building in Kamishinmachi. It brews house-roasted coffee by flannel drip and serves Napolitan with 2.2 mm extra-thick noodles. The open days are posted on its site each month.",
+   "note": "営業日をサイトで見てから行く。",
+   "noteEn": "Check the open days on the site first.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "うちょうてんきっさ",
+    "address": "Shinmachi Bldg 1F, 3 Kamishinmachi, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "http://ucho-ten.com/",
+    "whatJa": "上新町の雑居ビル奥にひそむ、丁寧なハンドドリップ珈琲と太麺ナポリタンが人気の隠れ家喫茶店。",
+    "whatEn": "A nostalgic, tucked-away kissaten at the back of a small commercial building serving carefully brewed coffee and chewy-noodle Napolitan.",
+    "facts": "Opened in 2014 in the historic Tomachi merchant quarter; loved by locals for dark-roast hand-drip coffee, cream soda, homemade pudding, and thick, chewy Napolitan spaghetti.",
+    "weak": "",
+    "verifiedBy": "http://ucho-ten.com/news",
+    "quote": "11月 営業日 真冬より 着るもの悩む この季節 カテゴリー: 未分類 | 投稿日: 2026年11月3日",
+    "fixes": "Address on access page: 〒014-0327 秋田県仙北市角館町上新町3 しんまちビル1F; open Mon-Wed 11-18, Fri-Sun 10-19 (access page lists 定休日 木曜・金曜, inconsistent). 'Opened in 2014' not verified (only © 2014).",
+    "coords": [
+     39.59518,
+     140.56379
+    ]
+   }
+  },
+  "RÉGAL RITZ": {
+   "nameEn": "RÉGAL RITZ",
+   "area": "外町",
+   "areaEn": "Tomachi",
+   "tags": [
+    "chestnut",
+    "mont blanc"
+   ],
+   "what": "下新町の、モンブランの専門店。地元の西明寺栗で、焼きモンブランやモンブランプリン、モンブランソフトを作る。醤油・味噌の醸造元から受け継いだ、築120年以上の糀蔵を直した店。10時から17時で、休みは年末年始だけ。",
+   "whatEn": "A Mont Blanc specialist in Shimoshinmachi, making baked Mont Blanc, Mont Blanc pudding and soft serve from local Saimyoji chestnuts. The shop is a koji storehouse over 120 years old, taken over from a soy sauce and miso brewer. Open 10:00–17:00, closed only at the New Year.",
+   "note": "西明寺栗は10月に収穫が始まる。栗の季節に行く。",
+   "noteEn": "The Saimyoji chestnuts are harvested from October. Go in chestnut season.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "れがーるりっつ",
+    "address": "34 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://regal-ritz.com/",
+    "whatJa": "日本一の大きさを誇る地元産・西明寺栗のモンブランやマロンプリンを工房で一つずつ手作りするモンブランスイーツ専門店。",
+    "whatEn": "Kakunodate's first specialty chestnut patisserie, handcrafting Saimyoji chestnut Mont Blanc sweets, chestnut pudding, and soft-serve on Shimoshinmachi.",
+    "facts": "Single-location patisserie in Tomachi using locally harvested Saimyoji chestnuts and Akita rice flour; makes freshly piped Mont Blanc, baked chestnut cakes, chestnut pudding with candied chestnuts, and Mont Blanc soft-serve.",
+    "weak": "",
+    "verifiedBy": "https://regal-ritz.com/",
+    "quote": "秋田空港ANAFESTA様での商品販売開始について",
+    "fixes": "",
+    "coords": [
+     39.59114,
+     140.56383
+    ]
+   }
+  },
+  "みちのく懐かしの味 あきたプリン亭": {
+   "nameEn": "Akita Purin-tei",
+   "area": "外町",
+   "areaEn": "Tomachi",
+   "tags": [
+    "pudding"
+   ],
+   "what": "横町のプリン専門店。マダガスカル産のバニラビーンズと国産の卵や牛乳で、なめらかプリンを店内の工房で手作りする。秋はかぼちゃプリンが出る。10時から17時で、休みは年末年始だけ。",
+   "whatEn": "A pudding specialist in Yokomachi, making its smooth pudding by hand in a workshop at the back, with Madagascar vanilla beans and domestic eggs and milk. A pumpkin pudding comes out in autumn. Open 10:00–17:00, closed only at the New Year.",
+   "note": "かぼちゃプリンは秋限定。取り置きは電話で頼める。",
+   "noteEn": "The pumpkin pudding is autumn only. Holds can be asked for by phone.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "みちのくなつかしのあじ あきたぷりんてい",
+    "address": "16 Yokomachi, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://akita-pudding.com/",
+    "whatJa": "国産素材とマダガスカル産バニラビーンズを使い、レトロな瓶入りなめらかプリンを手作りする角館唯一の店舗。",
+    "whatEn": "A single-shop custard pudding specialist in a retro timber storefront crafting silky bottled puddings with domestic milk, eggs, and Madagascar vanilla beans.",
+    "facts": "Operates solely from its Yokomachi storefront in Kakunodate; makes smooth classic vanilla pudding, pastel 'Take-komorebi' pudding inspired by samurai street sunlight, and seasonal pumpkin and chestnut puddings.",
+    "weak": "",
+    "verifiedBy": "https://akita-pudding.com/",
+    "quote": "秋限定！「かぼちゃプリン」発売開始！",
+    "fixes": "",
+    "coords": [
+     39.59608,
+     140.56261
+    ]
+   }
+  },
+  "食堂いなほ": {
+   "nameEn": "Shokudo Inaho",
+   "area": "田町",
+   "areaEn": "Tamachi",
+   "tags": [
+    "local dish",
+    "udon"
+   ],
+   "what": "料亭「稲穂」の食堂。予約なしで入れて、メニューは単品。角館の郷土料理の御狩場焼（佐竹北家に伝わる遊山料理）の御膳や、稲庭うどんがある。木曜は休み。臨時の休みはSNSで知らせる。",
+   "whatEn": "The dining room of the Ryotei Inaho. No reservation is needed and the menu is à la carte. It serves a set of Okaribayaki, a local dish handed down in the Satake Kita family as an outing meal, and Inaniwa udon. Closed on Thursdays; extra days off are posted on social media.",
+   "note": "御狩場焼は山椒味噌で食べる。ごはんと一緒に。",
+   "noteEn": "Okaribayaki is eaten with sansho miso. Have it with rice.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "しょくどういなほ",
+    "address": "4-1 Tamachi-kamicho, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "http://inaho.pepper.jp/",
+    "whatJa": "老舗「料亭 稲穂」に併設された食堂で、山椒味噌仕立ての郷土料理「御狩場焼」や季節の秋田料理を気軽に味わえる。",
+    "whatEn": "The casual, walk-in dining room of historic Ryotei Inaho where locals and travelers eat Kakunodate's traditional Okaribayaki sansho-miso hotpot and seasonal Akita dishes.",
+    "facts": "Serves Kakunodate's feudal-lord hunting dish Okaribayaki—chicken and seasonal mountain vegetables cooked with sansho pepper miso—alongside Inaniwa udon and local pickles without requiring advance kaiseki reservations.",
+    "weak": "",
+    "verifiedBy": "http://inaho.pepper.jp/",
+    "quote": "食堂 いなほ     木曜日  臨時休業　有  臨時休業の際は、SNSでお知らせ致します。",
+    "fixes": "Page confirms 食堂いなほ allows same-day/no reservation. Street address not shown on the fetched page; unverified. Closed Thursdays.",
+    "coords": [
+     39.59384,
+     140.56499
+    ]
+   }
+  },
+  "お食事処 桜の里": {
+   "nameEn": "Shokujidokoro Sakura no Sato",
+   "area": "内町",
+   "areaEn": "Uchimachi",
+   "tags": [
+    "chicken",
+    "udon"
+   ],
+   "what": "武家屋敷通りの古民家の食事処。比内地鶏の親子丼と、稲庭うどんが人気。10時から15時30分で、食事は11時から（ラストオーダー15時）。休みは不定で、お知らせに出る。",
+   "whatEn": "A restaurant in an old house on the samurai street, known for Hinai-jidori oyakodon and Inaniwa udon. Open 10:00–15:30, with meals from 11:00 (last order 15:00). Days off vary and are posted in its news.",
+   "note": "親子丼は卵を3個使う。お腹をすかせて行く。",
+   "noteEn": "The oyakodon uses three eggs. Go hungry.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おしょくじどころ さくらのさと",
+    "address": "9 Higashikatsurakucho, Kakunodate-machi, Semboku-shi, Akita",
+    "url": "https://kakunodate-sakuranosato.com/",
+    "whatJa": "武家屋敷エリアの古民家で、炭火焼き比内地鶏の親子丼と喉ごしの良い稲庭うどんを提供する食事処。",
+    "whatEn": "A traditional kominka restaurant in the samurai quarter pairing charcoal-grilled Hinai-jidori chicken oyakodon with silky hand-stretched Inaniwa udon.",
+    "facts": "Operates only two sister dining rooms in Kakunodate; grills Akita Hinai-jidori chicken over charcoal before simmering in runny egg for oyakodon and serves Sato Yoetsu Inaniwa udon alongside Akita sake.",
+    "weak": "",
+    "verifiedBy": "https://kakunodate-sakuranosato.com/",
+    "quote": "2026.10.12 新作メニュー 稲庭釜揚げうどん",
+    "fixes": "Address matches: 〒014-0325 秋田県仙北市角館町東勝楽丁9番地. Page also lists a second shop at 角館町横町27 (さくら小路).",
+    "coords": [
+     39.59742,
+     140.56236
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "角館の武家屋敷通り",
+   "nameEn": "Kakunodate Samurai Houses Street",
+   "kind": "sight",
+   "area": "内町",
+   "areaEn": "Uchimachi",
+   "address": "仙北市角館町東勝楽丁ほか",
+   "url": "https://www.city.semboku.akita.jp/sightseeing/spot/07_matinami.html",
+   "what": "1620年に芦名義勝が造った城下町の、武家が住んだ内町。木立の中に武家屋敷が並ぶ通りの区域は、1976年に国の重要伝統的建造物群保存地区に選ばれた。",
+   "whatEn": "The Uchimachi quarter where samurai lived, in the castle town laid out by Ashina Yoshikatsu in 1620. The area of the street lined with samurai houses among tall trees became a national preservation district for groups of traditional buildings in 1976.",
+   "coords": [
+    39.59783,
+    140.56216
+   ],
+   "notice": "屋敷の内部の公開は、家ごとに期間と休みが違う。市の案内では、岩橋家は11月30日まで、旧松本家は11月10日まで。",
+   "noticeEn": "Each house opens on its own dates and days off. The city's guide lists Iwahashi house until 30 November and the former Matsumoto house until 10 November.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.semboku.akita.jp/sightseeing/spot/07_matinami.html (仙北市公式): 1620年（元和6年）芦名義勝が造った城下、火除けで武家居住区の内町と町人居住区の外町に分け、武家屋敷通りは昭和51年9月に重要伝統的建造物群保存地区に選定。公開期間は https://www.city.semboku.akita.jp/sightseeing/spot/07_buke.html（岩橋家 4/3〜11/30、旧松本家 4/10〜11/10、青柳家 年中無休）",
+   "_coordsSource": "OSM node 5670412921（武家屋敷 tourism=attraction）"
+  },
+  {
+   "name": "桧木内川堤（サクラ）",
+   "nameEn": "Hinokinai River Bank Cherry Trees",
+   "kind": "sight",
+   "area": "桧木内川",
+   "areaEn": "Hinokinai River",
+   "address": "仙北市角館町 桧木内川左岸",
+   "url": "https://www.city.semboku.akita.jp/sightseeing/spot/07_someiyoshino.html",
+   "what": "桧木内川の左岸の堤防に、約1,950メートル、409本のソメイヨシノが並ぶ。1934年に植えられ、国の名勝に指定されている。",
+   "whatEn": "About 1,950 metres of Somei-yoshino cherry trees, 409 of them, line the left bank of the Hinokinai river. They were planted in 1934 and the bank is a national place of scenic beauty.",
+   "coords": [
+    39.59965,
+    140.55863
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.semboku.akita.jp/sightseeing/spot/07_someiyoshino.html (仙北市公式): 国指定名勝、左岸堤防上、総延長約1,950m、409本、昭和9年（1934）植栽、昭和50年に国の名勝指定、平成2年日本さくら名所100選。",
+   "_coordsSource": "OSM way 755931873（桧木内川堤公園 leisure=park。名勝の堤防に沿う公園の中心）"
+  },
+  {
+   "name": "角館町平福記念美術館",
+   "nameEn": "Kakunodate Hirafuku Memorial Art Museum",
+   "kind": "art",
+   "area": "内町",
+   "areaEn": "Uchimachi",
+   "address": "仙北市角館町表町上丁4-4",
+   "url": "https://www.city.semboku.akita.jp/sightseeing/hirafuku/index.html",
+   "what": "角館に生まれた日本画家、平福穂庵と、その子の平福百穂の作品を見せる、仙北市の美術館。",
+   "whatEn": "A city museum showing the work of the Nihonga painter Hirafuku Suian, born in Kakunodate, and of his son Hirafuku Hyakusui.",
+   "coords": [
+    39.60194,
+    140.56007
+   ],
+   "notice": "月曜は休み。4月から11月は9時から17時で、入館は閉館の30分前まで。10月1日から11月15日は「平福穂庵・百穂展」。",
+   "noticeEn": "Closed on Mondays. Open 9:00–17:00 from April to November, last entry 30 minutes before closing. The Hirafuku Suian and Hyakusui exhibition runs from 1 October to 15 November.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.semboku.akita.jp/sightseeing/hirafuku/riyou.html と tenji2026.html（仙北市公式）: 4〜11月 9〜17時（入場は閉館30分前まで）、毎週月曜休館、令和8年度 10/1〜11/15 平福穂庵・百穂展。https://www.city.semboku.akita.jp/sightseeing/hirafuku/hira.html : 平福穂庵（1844〜1890）角館町生まれ、百穂（1877〜1933）穂庵の第4子。住所 表町上丁4-4（index.html）。",
+   "_coordsSource": "OSM way 253970113（平福記念美術館 tourism=museum）"
+  },
+  {
+   "name": "新潮社記念文学館",
+   "nameEn": "Shinchosha Memorial Literature Museum",
+   "kind": "art",
+   "area": "田町",
+   "areaEn": "Tamachi",
+   "address": "仙北市角館町田町上丁23",
+   "url": "https://www.city.semboku.akita.jp/sightseeing/bungakukan/index.html",
+   "what": "新潮社を創った佐藤義亮（角館町の出身）をたたえて、2000年に開いた文学館。新潮社の歩みと、近代日本文学の歴史をたどる。",
+   "whatEn": "A literature museum opened in 2000 in honour of Sato Giryo, the founder of the publisher Shinchosha, who came from Kakunodate. It follows the history of Shinchosha and of modern Japanese literature.",
+   "coords": [
+    39.59289,
+    140.56556
+   ],
+   "notice": "月曜は休み。4月から11月は9時から17時で、入館は閉館の30分前まで。10月10日から2027年1月17日は企画展「角館武家屋敷の成り立ちと文化展」。",
+   "noticeEn": "Closed on Mondays. Open 9:00–17:00 from April to November, last entry 30 minutes before closing. The exhibition on the making and culture of the Kakunodate samurai houses runs from 10 October to 17 January 2027.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.semboku.akita.jp/sightseeing/bungakukan/kanran.html, kikaku.html, kaku.html（仙北市公式）: 4〜11月 9〜17時（入館は閉館30分前）、毎週月曜休館、企画展 10/10〜令和9年1/17、新潮社を創設した佐藤義亮の顕彰、平成12年4月オープン。住所 角館町田町上丁23 は検索結果（複数の情報源）で一致。",
+   "_coordsSource": "OSM way 253970106（新潮社記念文学館 tourism=museum）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "八柳商店",
+   "verdict": "doubt",
+   "reason": "Only an undated business calendar for 2026年11月 and undated notices; no dated 2026 sentence."
+  },
+  {
+   "name": "器とお香の店 十月",
+   "verdict": "doubt",
+   "reason": "Site shows only stale/undated notices ('今年は4月9日（日）の10時から開店いたします', a year when Apr 9 is Sunday, i.e. 2023; winter-closure notice undated). No 2026 evidence."
+  },
+  {
+   "name": "アート＆クラフト香月",
+   "verdict": "doubt",
+   "reason": "Shop page opened (products, TEL 0187-54-1565) but no dated 2026 post/notice found; blog/about pages were rate-limited."
+  },
+  {
+   "name": "暮らしの器ミケ 角館のミケ",
+   "verdict": "doubt",
+   "reason": "Official site undated; linked Seesaa blog last post 2024-04-03; no 2026 exhibition notice found."
+  },
+  {
+   "name": "櫻丸珈琲",
+   "verdict": "doubt",
+   "reason": "Instagram loads only a title without login; no post content visible; no 2026 evidence. Seasonal (approx. mid-April to late Nov per secondary source)."
+  },
+  {
+   "name": "Caffe felice Bar bellissimo",
+   "verdict": "doubt",
+   "reason": "Official site opened; footer only © 2022, NEWS page empty; no 2026 evidence."
+  },
+  {
+   "name": "Kenny Tone",
+   "verdict": "doubt",
+   "reason": "Facebook shows only a title without login; no 2026 post readable."
+  },
+  {
+   "name": "洋菓子＆喫茶 プチ・フレーズ",
+   "verdict": "doubt",
+   "reason": "Official site opened; hours/年中無休 text has no 2026 date, no dated 2026 post or notice found."
+  },
+  {
+   "name": "さかい屋",
+   "verdict": "doubt",
+   "reason": "Only a live date widget (2026.11.11 Wednesday) and ©2026 footer; the お知らせ entries are dated 2025-02-08 and 2025-01-09, so no 2026 evidence."
+  },
+  {
+   "name": "レストラン風雅",
+   "verdict": "doubt",
+   "reason": "Site news is old (2018 and COVID notice). Only a holiday-calendar plugin listing 2026 dates (up to 2026-10-27) was found, which is not a dated notice sentence."
+  },
+  {
+   "name": "そばきり長助",
+   "verdict": "doubt",
+   "reason": "Instagram profile exists (334 posts, 1,483 followers) but, without login, no dated 2026 post could be read."
+  },
+  {
+   "name": "お食事処 ふきや",
+   "verdict": "doubt",
+   "reason": "Site is open and consistent but has no dated 2026 post, notice or season dates; no 2026 evidence found."
+  }
+ ]
+}

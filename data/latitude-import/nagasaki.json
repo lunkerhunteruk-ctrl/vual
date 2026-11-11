@@ -1,0 +1,332 @@
+{
+ "slug": "nagasaki",
+ "city": {
+  "name": "Nagasaki",
+  "nameJa": "長崎",
+  "latitude": "32.7° N",
+  "country": "",
+  "countryJa": "",
+  "person": "rin",
+  "coords": [
+   32.7445,
+   129.8755
+  ],
+  "intro": "",
+  "introJa": "",
+  "locator": {
+   "en": "",
+   "ja": ""
+  },
+  "industries": [
+   {
+    "key": "castella",
+    "en": "Castella & Nanban Confectionery",
+    "ja": "長崎カステラ・南蛮菓子",
+    "about": "",
+    "aboutJa": "",
+    "_src": "Sugar, egg, and flour baking introduced via Portuguese trade evolved in Nagasaki into hand-baked castella and sugar confections still made by small single-shop workshops."
+   },
+   {
+    "key": "nagasaki-glass",
+    "en": "Nagasaki Vidro & Glasswork",
+    "ja": "長崎びいどろ・ガラス工芸",
+    "about": "",
+    "aboutJa": "",
+    "_src": "Blown glass (vidro) and church stained-glass techniques entered Japan through Nagasaki's port and continue in local glassblowing and stained-glass studios."
+   }
+  ]
+ },
+ "places": {
+  "岩永梅寿軒": {
+   "nameEn": "",
+   "area": "眼鏡橋・中島川",
+   "areaEn": "Meganebashi",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "castella",
+    "nameKana": "いわながばいじゅけん",
+    "address": "7-1 Suwa-machi, Nagasaki",
+    "url": "https://www.baijyuken.com/",
+    "whatJa": "天保元年（1830年）創業、本店1店舗のみで職人が手焼きする長崎カステラと伝統和菓子の老舗。",
+    "whatEn": "Single-shop traditional confectionery founded in 1830, known for small-batch hand-baked Nagasaki castella and seasonal wagashi.",
+    "facts": "Founded in Tenpo 1 (1830) and operates only its historic Suwa-machi shop with no department-store branches. Its Nagasaki castella is baked in small daily batches and rested overnight for a moist, elastic crumb, alongside house specialties like Kankiku and Moshiogusa.",
+    "weak": "",
+    "verifiedBy": "https://www.baijyuken.com/posts/news29.html",
+    "quote": "月・水・金・土曜日に営業致しますが、一部変更がございます。 8/5（水）、8/26（水）は店休予定日です。",
+    "fixes": "Castella over-the-counter sales were paused 10/30 to about 11/6, 2026 (temporary). Site says 創業天保元年, 寒菊・もしほ草本家. Address not re-verified (page text had no 諏訪町 match).",
+    "coords": [
+     32.74667,
+     129.88095
+    ]
+   }
+  },
+  "瑠璃庵": {
+   "nameEn": "",
+   "area": "大浦・南山手",
+   "areaEn": "Oura",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "local",
+    "industry": "nagasaki-glass",
+    "nameKana": "るりあん",
+    "address": "5-11 Matsugae-machi, Nagasaki",
+    "url": "https://rurian.com/",
+    "whatJa": "大浦天主堂近くに工房を構え、長崎びいどろの吹きガラス器やステンドグラスを制作・販売するガラス工房。",
+    "whatEn": "Glassblowing and stained-glass workshop near Oura Cathedral producing traditional Nagasaki vidro vessels and architectural stained glass.",
+    "facts": "Craftsmen mix raw glass materials and blow pieces in-house, reviving Edo-period Nagasaki vidro forms such as Nagasaki Chirori sake decanters and poppen glass toys. The studio also handled restoration work on the stained glass of National Treasure Oura Cathedral and offers glassblowing and stained-glass workshops.",
+    "weak": "",
+    "verifiedBy": "https://rurian.com/news/2026%e5%b9%b4%e3%82%b7%e3%83%ab%e3%83%90%e3%83%bc%e3%82%a6%e3%82%a3%e3%83%bc%e3%82%af%e3%81%ae%e5%96%b6%e6%a5%ad%e3%81%ab%e3%81%a4%e3%81%8d%e3%81%be%e3%81%97%e3%81%a6/",
+    "quote": "シルバーウィーク期間、9月19日(土)〜9月23日(水) は毎日開館いたします。 通常、火曜定休ですが9月22日(火)を特別営業、24日(木)を代休とさせていただきます。",
+    "fixes": "",
+    "coords": [
+     32.73591,
+     129.86882
+    ]
+   }
+  },
+  "長崎雑貨 たてまつる": {
+   "nameEn": "",
+   "area": "出島・大波止",
+   "areaEn": "Dejima",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ながさきざっか たてまつる",
+    "address": "2-19 Edo-machi, Nagasaki",
+    "url": "https://tatematsuru.thebase.in/",
+    "whatJa": "江戸町の築70年の古民家で、オリジナル手ぬぐい「たてま手ぬ」や地元作家の陶器・箸置きを扱うクラフト雑貨店。",
+    "whatEn": "Craft and textile shop in a 70-year-old Edo-machi townhouse offering original hand-dyed tenugui cloths and ceramics by Nagasaki potters.",
+    "facts": "Located on the historic Edo-machi street where the Edo-period Nagasaki Magistrate's Western Office once stood, just north of Dejima. Designs original chusen-dyed tenugui textiles depicting Nagasaki's seasons alongside small-batch ceramic tableware and chopstick rests.",
+    "weak": "",
+    "verifiedBy": "https://tatematsuru.thebase.in/blog",
+    "quote": "11月の営業スケジュール 2026/10/31 11:12",
+    "fixes": "Site shows no street address in text I read; Edo-machi address not confirmed on page.",
+    "coords": [
+     32.74471,
+     129.87453
+    ]
+   }
+  },
+  "珈琲人町": {
+   "nameEn": "",
+   "area": "眼鏡橋・中島川",
+   "areaEn": "Meganebashi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "コーヒーひとまち",
+    "address": "4-25 Higashifurukawa-machi, Nagasaki",
+    "url": "https://kasa-hitomachi.com/hitomachi/",
+    "whatJa": "眼鏡橋近くの東古川町・ししとき川通りの路地に佇む、ハンドドリップ珈琲と自家製菓子の専門店。",
+    "whatEn": "Quiet alley-side specialty coffee shop along old Shishitoki River lane near Meganebashi, pouring hand-dripped coffee and house sweets.",
+    "facts": "Tucked on the ground floor along historic Shishitoki River lane in Higashifurukawa-machi, a short walk from Nakashima River. Brews carefully selected specialty beans to order in a calm wooden interior frequented by neighborhood regulars.",
+    "weak": "",
+    "verifiedBy": "https://kasa-hitomachi.com/hitomachi/",
+    "quote": "2026.09.28 / コーヒー教室 ADACOFFEE 2026 席のご予約承ります！",
+    "fixes": "Address 長崎市東古川町4-25-1F matches. Hours 11:00-18:00, closed Mondays.",
+    "coords": [
+     32.74502,
+     129.88098
+    ]
+   }
+  },
+  "Museum Cafe 南山手八番館": {
+   "nameEn": "",
+   "area": "大浦・南山手",
+   "areaEn": "Oura",
+   "tags": [
+    "coffee"
+   ],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ミュージアムカフェ みなみやまてはちばんかん",
+    "address": "4-3 Minamiyamate-machi, Nagasaki",
+    "url": "https://www.minamiyamate-museum.jp/",
+    "whatJa": "グラバー園入口前の赤レンガ館・長崎南山手美術館に併設された、自家焙煎珈琲を楽しめる喫茶室。",
+    "whatEn": "Quiet cafe inside a red-brick art gallery right below Glover Garden, serving house-roasted drip coffee with views toward Nagasaki Harbor.",
+    "facts": "Located inside the brick Nagasaki Minamiyamate Museum building on the former Lot 8 of the Minamiyamate foreign settlement. Serves house-roasted coffee (also sold as original drip bags) and castella ice cream alongside local paintings and crafts.",
+    "weak": "",
+    "verifiedBy": "https://www.minamiyamate-museum.jp/",
+    "quote": "2026/10/31 「貸画廊」ページに、 ≪carillon 作品展≫ の紹介を追加しました。",
+    "fixes": "Cafe is 喫茶「Museum Cafe 南山手八番館」 attached to the museum; take-out coffee and castella ice cream confirmed.",
+    "coords": [
+     32.73467,
+     129.86972
+    ]
+   }
+  },
+  "ニューヨーク堂": {
+   "nameEn": "",
+   "area": "眼鏡橋・中島川",
+   "areaEn": "Meganebashi",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ニューヨークどう",
+    "address": "3-17 Furukawa-machi, Nagasaki",
+    "url": "https://www.nyu-yo-ku-do.jp/",
+    "whatJa": "昭和12年（1937年）創業、自家焼きカステラで手作りアイスを挟む「長崎カステラアイス」で知られる古川町の洋菓子店。",
+    "whatEn": "Confectionery shop founded in 1937 near Nakashima River, famous for ice cream sandwiched between slices of house-baked Nagasaki castella.",
+    "facts": "Opened in 1937 in Furukawa-machi and operates only this single shop attached to its small factory. Both the zarame-crusted castella sponge and the ice cream are made in-house by dedicated craftsmen, alongside freshly spun castella soft-serve.",
+    "weak": "",
+    "verifiedBy": "https://www.nyu-yo-ku-do.jp/",
+    "quote": "【１１月店休日】 １０(火)・１７(火)・１８(水)・１９(木)・２０(金)・２４(火)",
+    "fixes": "Page says 昭和１２年開業、創業８９年目; 眼鏡橋から徒歩３分; store hours 11:00-16:00. Address not shown on top page.",
+    "coords": [
+     32.74646,
+     129.88062
+    ]
+   }
+  },
+  "吉宗": {
+   "nameEn": "",
+   "area": "思案橋・浜町",
+   "areaEn": "Shianbashi",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "よっそう",
+    "address": "8-9 Hamamachi, Nagasaki",
+    "url": "https://yossou.co.jp/",
+    "whatJa": "慶応2年（1866年）創業、名物の「茶碗むし」と「蒸寿し」の夫婦蒸しで親しまれる浜町の老舗料理店。",
+    "whatEn": "Historic dining hall founded in 1866 in Hamamachi, celebrated for its paired bowls of silky chawanmushi savory custard and steamed sushi.",
+    "facts": "Founded in 1866 and preserves a classic wooden facade with tatami and table seating in its Hamamachi flagship (plus one nearby takeout counter). Its signature Meoto-mushi pairs a large dashi-rich chawanmushi packed with nine ingredients alongside warm vinegared mushizushi topped with shredded egg and eel.",
+    "weak": "",
+    "verifiedBy": "https://yossou.co.jp/",
+    "quote": "【物産展】2026年11月18日(水)～24日(火) 『バナナマンのせっかくグルメ！！博覧会』",
+    "fixes": "Page confirms 慶応二年(1866年) founding, 茶碗むし・蒸寿し; note it says founded in 万屋町 (moved later); flagship 浜町本店, plus 観光通り店 takeout.",
+    "coords": [
+     32.74452,
+     129.87875
+    ]
+   }
+  },
+  "bistro ボルドー": {
+   "nameEn": "",
+   "area": "思案橋・浜町",
+   "areaEn": "Shianbashi",
+   "tags": [],
+   "what": "",
+   "whatEn": "",
+   "note": "",
+   "noteEn": "",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ビストロ ボルドー",
+    "address": "8-28 Hamamachi, Nagasaki",
+    "url": "https://bistro-bordeaux.com/",
+    "whatJa": "浜町で親子二代にわたり愛される、本格フレンチの技法で作る名物トルコライスと洋食の老舗ビストロ。",
+    "whatEn": "Long-running French-trained bistro in Hamamachi known as a pioneer of Nagasaki's Toruko Rice plate and casual bistro lunches.",
+    "facts": "Single-location bistro tracing its Toruko Rice roots back over six decades to the current chef's father. Combines pork cutlet, demi-glace sauce, Neapolitan spaghetti, and saffron-butter pilaf on one plate alongside French bistro courses.",
+    "weak": "",
+    "verifiedBy": "https://bistro-bordeaux.com/",
+    "quote": "5月31日（日）、長崎浜市商店街で行われた 長崎ヴェルカ B1優勝記念パレード。",
+    "fixes": "Page: 60数年前に料理長の父が考案したトルコライス, open daily 11:00-23:00. Site news section itself is stale (2024).",
+    "coords": [
+     32.74361,
+     129.87955
+    ]
+   }
+  }
+ },
+ "sights": [],
+ "_dropped": [
+  {
+   "name": "長崎菓寮 匠寛堂",
+   "verdict": "doubt",
+   "reason": "Official site loads but the news page's newest items are 令和3年 (2021) and older; no 2026 sentence found."
+  },
+  {
+   "name": "grace 3",
+   "verdict": "doubt",
+   "reason": "No dated 2026 post could be read."
+  },
+  {
+   "name": "ガラス屋グラスロード1571",
+   "verdict": "doubt",
+   "reason": "Site loads (title 長崎市グラバー園・大浦天主堂下) but no 2026-dated text found; /access returned page-not-found."
+  },
+  {
+   "name": "うつわや 洒舎",
+   "verdict": "doubt",
+   "reason": "Instagram profile exists (876 posts) but no dated 2026 post readable without login."
+  },
+  {
+   "name": "陶彩 花と風",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a title with no readable posts; no 2026 sentence could be copied. Address '1-1-1 Tateyama' not confirmed."
+  },
+  {
+   "name": "珈琲 冨士男",
+   "verdict": "doubt",
+   "reason": "Newest notice on site is 2025.07.29 (price revision); no 2026 evidence."
+  },
+  {
+   "name": "KARIOMONS COFFEE NAGASAKI",
+   "verdict": "doubt",
+   "reason": "Pages show no dated 2026 post (newest blog 2023.5.24; no 2026 notice)."
+  },
+  {
+   "name": "フランス菓子 コアンコアン",
+   "verdict": "doubt",
+   "reason": "Site has no dated 2026 post or notice; calendar page only has undated weekly closure rule."
+  },
+  {
+   "name": "御菓子処 双葉屋",
+   "verdict": "doubt",
+   "reason": "Newest news post is July 2021; no 2026 dated sentence (2026 only appears in an auto calendar widget)."
+  },
+  {
+   "name": "エフラボ",
+   "verdict": "doubt",
+   "reason": "Could not see any dated 2026 post (login-gated); whatJa/whatEn details unverified."
+  },
+  {
+   "name": "絲屋",
+   "verdict": "doubt",
+   "reason": "Official site opened; newest dated notice is the 20th anniversary (2024-08-17). No 2026 sentence found."
+  },
+  {
+   "name": "chikapan",
+   "verdict": "doubt",
+   "reason": "Instagram opened but only the profile meta (301 posts) was readable without login; no dated 2026 post could be copied."
+  }
+ ]
+}

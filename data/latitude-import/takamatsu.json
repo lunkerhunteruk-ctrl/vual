@@ -1,0 +1,469 @@
+{
+ "slug": "takamatsu",
+ "city": {
+  "name": "Takamatsu",
+  "nameJa": "高松",
+  "latitude": "34.3° N",
+  "country": "Kagawa, Japan",
+  "countryJa": "香川県",
+  "person": "rin",
+  "coords": [
+   34.341,
+   134.05
+  ],
+  "intro": "A castle town on the Seto Inland Sea, where Takamatsu Castle draws seawater into its moats and Ritsurin Garden lies below Mount Shiun. Wasanbon studios and craft shops, with quiche and parfaits around the Marugamemachi arcade and Kitahama Alley, as Rin's picks. The leaves at Ritsurin begin to turn in November.",
+  "introJa": "海に面した城下町。海水を引き込んだ高松城の堀と、紫雲山を背にした栗林公園がある。和三盆の工房と工芸の店、丸亀町商店街や北浜アリーのまわりのキッシュとパフェを、凛のおすすめで。栗林公園の紅葉は、11月に色づく。",
+  "locator": {
+   "en": "On the Seto Inland Sea in northern Shikoku · a castle town",
+   "ja": "四国の北・瀬戸内海に面した城下町"
+  },
+  "industries": [
+   {
+    "key": "sanuki-wasanbon",
+    "en": "Sanuki Wasanbon sugar & wooden molds",
+    "ja": "讃岐和三盆・菓子木型",
+    "about": "Wasanbon is a sugar made from a rare slender sugarcane called hosokibi. Takamatsu studios press it into hand-carved wooden molds and turn out dry sweets. Confectionery molds date from the Edo period and carry the seasons, flowers and birds. Mold carvers have dwindled; Mamehana's site says Yoshihiro Ichihara is the only one left in Shikoku.",
+    "aboutJa": "和三盆は、「ほそきび」という希少なサトウキビから作る砂糖。高松の工房では、これを手彫りの木型に詰めて抜き、干菓子にする。菓子木型は江戸時代に始まり、四季の草花や花鳥風月が彫られる。職人は減り、豆花のサイトによると、四国では市原吉博ひとりになった。",
+    "_src": "Refined from Kagawa sugarcane and hand-pressed into carved cherrywood molds, Sanuki Wasanbon dry confections preserve one of Shikoku's signature Edo-era crafts."
+   }
+  ]
+ },
+ "places": {
+  "木型工房 市原・豆花": {
+   "nameEn": "Mamehana (Kigata Kobo Ichihara)",
+   "area": "栗林",
+   "areaEn": "Ritsurin",
+   "tags": [
+    "wasanbon",
+    "wooden-molds",
+    "workshop"
+   ],
+   "what": "菓子木型で和三盆の干菓子や練りきりを作る体験ルーム。上原あゆみが2009年に始めた。予約制で、休みは木曜。",
+   "whatEn": "A workshop room where you make wasanbon sweets and nerikiri with wooden confectionery molds, started by Ayumi Uehara in 2009. By reservation; closed on Thursdays.",
+   "note": "木曜は休み。体験は、前の日までに予約。",
+   "noteEn": "Closed on Thursdays. Book by the day before.",
+   "_src": {
+    "category": "local",
+    "industry": "sanuki-wasanbon",
+    "nameKana": "きがたこうぼういちはら・まめはな",
+    "address": "1-7-30 Hanazonocho, Takamatsu",
+    "url": "https://www.mamehana-kasikigata.com/",
+    "whatJa": "四国で数少ない菓子木型職人の工房と、手彫りの桜材木型を使った讃岐和三盆づくりを体験できる併設アトリエ。",
+    "whatEn": "The studio and reservation-only Wasanbon workshop of Shikoku's master confectionery wood-mold carver, where cherrywood molds and dry sugar sweets are made side by side.",
+    "facts": "Led by traditional master craftsman Yoshihiro Ichihara near Kotoden Hanazono Station; carves dense mountain-cherry confectionery molds and hosts Wasanbon pressing sessions at adjacent Mamehana.",
+    "weak": "By reservation only.",
+    "verifiedBy": "https://www.mamehana-kasikigata.com/",
+    "quote": "2026年10月営業について 10月7日~13日まで臨時休業いたします。",
+    "fixes": "Street address 1-7-30 Hanazonocho not confirmed on the opened top page.",
+    "coords": [
+     34.33469,
+     134.05783
+    ]
+   },
+   "address": "香川県高松市花園町1-9-13",
+   "coordsApprox": true
+  },
+  "HIYORI WASANBON 日和制作所": {
+   "nameEn": "Hiyori Wasanbon",
+   "area": "栗林",
+   "areaEn": "Ritsurin",
+   "tags": [
+    "wasanbon",
+    "tea"
+   ],
+   "what": "手彫りの菓子木型と手作りの和三盆糖で干菓子を作る工房。栗林公園の入口の前に、お茶と和三盆の店とギャラリーがある。11〜17時で、休みの日はInstagramで知らせる。",
+   "whatEn": "A studio making dry sweets from hand-carved wooden molds and handmade wasanbon sugar. In front of the Ritsurin Garden entrance it runs a tea stand and a shop with a gallery, open 11 to 5; days off are posted on Instagram.",
+   "note": "栗林公園の帰りに、お茶と和三盆。",
+   "noteEn": "Tea and wasanbon on the way back from Ritsurin Garden.",
+   "_src": {
+    "category": "local",
+    "industry": "sanuki-wasanbon",
+    "nameKana": "ひよりわさんぼん ひよりせいさくじょ",
+    "address": "2-9-2 Fujitsukacho, Takamatsu",
+    "url": "https://hiyori-wasanbon.jp/",
+    "whatJa": "香川県産の竹糖から作られる和三盆糖を用い、職人彫りの木型で現代的な意匠の干菓子を一つずつ手打ちする工房。",
+    "whatEn": "An independent Takamatsu Wasanbon studio hand-pressing Kagawa sugarcane into playful modern wooden-mold dry sweets.",
+    "facts": "Produces small-batch Sanuki Wasanbon in Fujitsukacho (with a tea stand near Ritsurin Garden), pairing traditional wooden-mold pressing with Setouchi fruit and tea flavors.",
+    "weak": "",
+    "verifiedBy": "https://hiyori-wasanbon.jp/",
+    "quote": "2026 / 10 / 30 お知らせ 11/1-12/26「お茶とお菓子のいい時間」をお届けします。",
+    "fixes": "Page address: 〒760-0071 香川県高松市藤塚町2丁目9-2-1階, workshop by reservation / visits allowed (予約制 / 見学可).",
+    "coords": [
+     34.33331,
+     134.05082
+    ]
+   },
+   "address": "香川県高松市栗林町1丁目7番29",
+   "coords": [
+    34.32997,
+    134.046
+   ],
+   "coordsApprox": true
+  },
+  "kitahama blue stories": {
+   "nameEn": "kitahama blue stories",
+   "area": "北浜アリー",
+   "areaEn": "Kitahama Alley",
+   "tags": [
+    "ceramics",
+    "glass",
+    "lacquer",
+    "woodwork"
+   ],
+   "what": "北浜アリーのギャラリーショップ。香川や瀬戸内の作り手の器、ガラス、漆、木工、革、布を並べ、展示会を開く。11〜18時、火曜休み。2027年春に牟礼への移転を予定している。",
+   "whatEn": "A gallery shop in Kitahama Alley with vessels, glass, lacquer, woodwork, leather and cloth by makers from Kagawa and the Seto Inland Sea, and regular exhibitions. Open 11 to 6, closed on Tuesdays. A move to Mure is planned for spring 2027.",
+   "note": "移転の予定があるので、北浜で見るなら今のうちに。",
+   "noteEn": "It plans to move, so see it in Kitahama now.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きたはまぶるーすとーりーず",
+    "address": "4-10 Kitahamacho, Takamatsu",
+    "url": "https://blue-stories.com/",
+    "whatJa": "北浜アリーの海辺の古い倉庫を活かした空間で、瀬戸内ゆかりの作家の器や木工、香川の工芸品を扱うギャラリーショップ。",
+    "whatEn": "A waterfront warehouse gallery-shop in Kitahama Alley curating Setouchi studio ceramics, woodwork, lacquerware, and independent publications.",
+    "facts": "Housed in a renovated port warehouse inside Kitahama Alley; stocks regional studio pottery, Kagawa crafts, and hosts regular maker exhibitions.",
+    "weak": "",
+    "verifiedBy": "https://blue-stories.com/",
+    "quote": "\\新宮茶の試飲会/ 2026/10/24（土）12：00～ 場所/kitahama blue stories 香川県高松市北浜町4-10　北浜アリー内",
+    "fixes": "Hours on page: OPEN 11:00-18:00, CLOSED Tuesday.",
+    "coords": [
+     34.35077,
+     134.05685
+    ]
+   }
+  },
+  "まちのシューレ963": {
+   "nameEn": "Machi no Schule 963",
+   "area": "丸亀町",
+   "areaEn": "Marugamemachi",
+   "tags": [
+    "tableware",
+    "lacquer",
+    "cafe"
+   ],
+   "what": "丸亀町の参番街東館2階にある、作家の器や漆器を紹介する店。展示を重ね、カフェも併設する。店は11〜19時で、第3月曜は休み。",
+   "whatEn": "A shop on the second floor of the Marugamemachi Sanbangai East Building showing tableware and lacquerware by makers, with a changing programme of exhibitions and a café. Open 11 to 7; closed on the third Monday.",
+   "note": "展示は入れ替わる。行く前に、サイトで見ておく。",
+   "noteEn": "The shows change. Look at the site before you go.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "まちのしゅーれきゅうろくさん",
+    "address": "13-3 Marugamemachi, Takamatsu",
+    "url": "https://www.schule.jp/",
+    "whatJa": "丸亀町商店街の2階に構え、香川・四国の手仕事や全国の作家のうつわ、企画ギャラリーを併設するライフスタイルショップ。",
+    "whatEn": "A spacious craft, tableware, and lifestyle shop in the Marugamemachi arcade featuring Shikoku handwork and twice-monthly ceramic and craft exhibitions.",
+    "facts": "Located on the 2nd floor of Marugamemachi Sanbangai East Building; runs a dedicated gallery hosting roughly two solo or group craft exhibitions a month alongside a local-ingredient cafe.",
+    "weak": "",
+    "verifiedBy": "https://www.schule.jp/",
+    "quote": "2026.11.09 Hibinokoto 樋上純 展 「すこし、やわらかい」開催中です",
+    "fixes": "Address on page: 〒760-0029 香川県高松市丸亀町13-3 高松丸亀町参番街東館2F (matches).",
+    "coords": [
+     34.34456,
+     134.05042
+    ]
+   }
+  },
+  "暮らすうつわ とうもん": {
+   "nameEn": "Kurasu Utsuwa Toumon",
+   "area": "牟礼・屋島",
+   "areaEn": "Mure & Yashima",
+   "tags": [
+    "tableware",
+    "ceramics",
+    "kintsugi"
+   ],
+   "what": "春日町にある、全国の作家の器を選ぶ店。1999年にネットで始まり、2010年に高松で店を開いた。営業は主に木・金・土の11〜17時。金継ぎ教室も開く。",
+   "whatEn": "A tableware shop in Kasugacho choosing pieces by makers from across Japan. It began online in 1999 and opened a shop in Takamatsu in 2010. Open mainly Thursday to Saturday, 11 to 5. It also holds kintsugi classes.",
+   "note": "営業は木・金・土だけ。行く日は、お知らせで確かめる。",
+   "noteEn": "Open only Thursday to Saturday. Check the notice for the day you go.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "くらすうつわ とうもん",
+    "address": "682-3 Kasugacho, Takamatsu",
+    "url": "https://toumon.shop-pro.jp/",
+    "whatJa": "全国の陶芸家や木工作家による普段使いの器をセレクトし、金継ぎ教室や企画展も開くうつわ専門店。",
+    "whatEn": "An independent tableware shop and kintsugi studio on Takamatsu's eastern side showcasing everyday vessels by Japanese ceramic and wood artists.",
+    "facts": "Situated in quiet Kasugacho on the eastern side of Takamatsu; curates handmade Japanese ceramics and offers kintsugi repair consultations (typically open Thu-Sat).",
+    "weak": "Limited weekly opening days (mainly Thu-Sat).",
+    "verifiedBy": "https://toumon.shop-pro.jp/",
+    "quote": "11月のSHOP営業日",
+    "fixes": "Address on page: 香川県高松市春日町682-3 (matches). Page lists monthly SHOP opening days (2026 posts Jan-Nov); kintsugi/Thu-Sat not verified on page.",
+    "coords": [
+     34.32618,
+     134.08735
+    ]
+   }
+  },
+  "IKUNAS（讃岐おもちゃ美術館 shop）": {
+   "nameEn": "IKUNAS (Sanuki Toy Museum shop)",
+   "area": "丸亀町",
+   "areaEn": "Marugamemachi",
+   "tags": [
+    "crafts",
+    "tableware"
+   ],
+   "what": "香川の手仕事を伝える地元誌 IKUNAS の実店舗で、讃岐おもちゃ美術館に併設。県内の工芸品や食べものを扱う。10〜16時で、木曜は休み。",
+   "whatEn": "The shop of IKUNAS, a Kagawa magazine on local handwork, attached to the Sanuki Toy Museum. It sells crafts and food from the prefecture. Open 10 to 4; closed on Thursdays.",
+   "note": "香川の伝統工芸は、ここでひと通り見られる。",
+   "noteEn": "Here you can see Kagawa's traditional crafts in one go.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "いくなす",
+    "address": "8-1 Daikumachi, Takamatsu",
+    "url": "https://www.ikunas.com/",
+    "whatJa": "香川の暮らしと手仕事を伝える地元誌『IKUNAS』が手がけ、県内の陶磁器や庵治ガラス、香川漆器、染織品を揃えるクラフトショップ。",
+    "whatEn": "A Kagawa craft and tableware shop curated by local lifestyle magazine IKUNAS, stocking regional ceramics, Aji-stone glass, lacquerware, and textiles.",
+    "facts": "Ground-floor street shop in Daikumachi just off the Marugamemachi arcade; run by Kagawa craft publication IKUNAS and highlights local potters, woodworkers, and Sanuki Kagari Temari.",
+    "weak": "",
+    "verifiedBy": "https://www.ikunas.com/",
+    "quote": "2026.10.06 　IKUNAS vol.24 販売開始",
+    "fixes": "Page says site is run by 株式会社tao. (Takamatsu), shop+cafe attached to Sanuki Toy Museum, address 香川県高松市大工町8-1［丸亀町くるりん駐車場1階］ tel 087-887-6762 (matches). IKUNAS is described as business/magazine of tao.; whatEn 'ceramics, Aji-stone glass, lacquerware' not verified on top page.",
+    "coords": [
+     34.34462,
+     134.05065
+    ]
+   }
+  },
+  "206 TSU MA MU": {
+   "nameEn": "206 TSU MA MU",
+   "area": "北浜アリー",
+   "areaEn": "Kitahama Alley",
+   "tags": [
+    "quiche"
+   ],
+   "what": "北浜アリーのキッシュ専門店。焼き上がり次第11時ごろに開け、なくなり次第16時半ごろに閉める。休みは月・火曜で、営業日はInstagramで知らせる。",
+   "whatEn": "A quiche specialist in Kitahama Alley. It opens around 11 once the quiches are baked and closes around 4:30 when they run out. Closed Monday and Tuesday; open days are posted on Instagram.",
+   "note": "なくなり次第閉まる。昼のうちに行く。",
+   "noteEn": "It closes when they sell out. Go during the day.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "にーまるろく つまむ",
+    "address": "4-14 Kitahamacho, Takamatsu",
+    "url": "https://www.206quiche.com/",
+    "whatJa": "北浜アリーの一角で、旬の野菜や魚介を使った常時20種以上の手作りキッシュとカヌレ・ガトーバスクを焼き上げる専門店。",
+    "whatEn": "A specialty quiche and French bake shop in Kitahama Alley baking over twenty savory vegetable, seafood, and meat quiches daily.",
+    "facts": "Bakes crisp-crusted savory quiches and Bordeaux-style caneles fresh each morning in a renovated Kitahama Alley storefront until sold out.",
+    "weak": "Closes once daily bakes sell out.",
+    "verifiedBy": "https://www.206quiche.com/",
+    "quote": "《変更日》2026/10/8（THU）〜",
+    "fixes": "Address 香川県高松市北浜町4-14 matches. Page says closed Mon/Tue and hours depend on quiche supply (open about 11:00 to about 16:30). '20+ varieties' is not on the page; page shows quiche and canele (gateau basque not seen).",
+    "coords": [
+     34.35094,
+     134.05653
+    ]
+   }
+  },
+  "御菓子処 湊屋": {
+   "nameEn": "Okashidokoro Minatoya",
+   "area": "寿町",
+   "areaEn": "Kotobukicho",
+   "tags": [
+    "wagashi",
+    "chestnut"
+   ],
+   "what": "1953年から寿町で続く和菓子店。栗林公園にちなんだ栗菓子「栗林のくり」を、変わらぬ姿で売り続けている。カフェもある。9〜18時、水曜休み。",
+   "whatEn": "A wagashi shop in Kotobukicho since 1953. It still sells Ritsurin no Kuri, a chestnut sweet named after Ritsurin Garden, in its original form. There is a café too. Open 9 to 6; closed on Wednesdays.",
+   "note": "まず、栗林のくり。",
+   "noteEn": "Start with Ritsurin no Kuri.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おかしどころ みなとや",
+    "address": "1-1-3 Kotobukicho, Takamatsu",
+    "url": "https://minatoya.com/",
+    "whatJa": "高松城跡に近い寿町に店を構え、栗菓子や季節の上生菓子、モダンな洋風羊羹を手づくりする和菓子店。",
+    "whatEn": "An independent Takamatsu wagashi confectioner near Takamatsu Castle crafting seasonal Japanese sweets, chestnut confections, and modern fruit yokan.",
+    "facts": "Located a short walk from Takamatsu-Chikko Station and Marugamemachi; beloved locally for chestnut wagashi, Setouchi fruit confections, and seasonal nerikiri.",
+    "weak": "",
+    "verifiedBy": "https://minatoya.com/news/%e3%82%ab%e3%83%95%e3%82%a7%e3%81%ae%e4%bc%91%e6%a5%ad%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+    "quote": "令和８年５月８日(金)は母の日の注文対応によりカフェ営業を中止いたします。",
+    "fixes": "Address 〒760-0023 香川県高松市寿町1-1-3 matches. Site also shows a cafe; hours 9:00-18:00, closed Wednesdays. 'modern fruit yokan' / 'Setouchi fruit' not confirmed on the page; the page stresses chestnut sweets (栗林のくり), seasonal wagashi, pudding.",
+    "coords": [
+     34.35085,
+     134.04873
+    ]
+   }
+  },
+  "三びきの子ぶた": {
+   "nameEn": "Sanbiki no Kobuta",
+   "area": "瓦町",
+   "areaEn": "Kawaramachi",
+   "tags": [
+    "parfait",
+    "fruit"
+   ],
+   "what": "瓦町駅から歩いて2分の、カフェとフルーツパーラー。昭和23年に青果店として始まった。パフェ、ケーキ、サンドイッチ、10種類以上から選べるホットサンド。11〜19時、火・水曜休み。",
+   "whatEn": "A café and fruit parlour two minutes on foot from Kawaramachi Station, begun as a greengrocer in 1948. Parfaits, cakes, sandwiches and hot sandwiches in over ten kinds. Open 11 to 7; closed on Tuesdays and Wednesdays.",
+   "note": "青果店から続く店。まず、パフェ。",
+   "noteEn": "It began as a greengrocer. Start with the parfait.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "さんびきのこぶた",
+    "address": "1-4-2 Tokiwacho, Takamatsu",
+    "url": "https://www.sanbiki-no-kobuta.com/",
+    "whatJa": "常磐町商店街で40年以上愛される果物店発祥のパーラーで、旬の果実を贅沢に使ったケーキやパフェ、ジェラートが名物。",
+    "whatEn": "A fruit-shop-born parlor in the Tokiwacho arcade loved for over forty years for seasonal Kagawa fruit cakes, parfaits, and gelato.",
+    "facts": "Located right inside the Tokiwagai arcade by Kawaramachi Station; originated as a greengrocer and showcases peak-season Kagawa strawberries, figs, and citrus in tarts and parfaits.",
+    "weak": "",
+    "verifiedBy": "https://www.sanbiki-no-kobuta.com/fcblog/177022.html",
+    "quote": "当店「三びきの子ぶた」のふるさと納税専用のサイトを立ち上げ中です！",
+    "fixes": "The address on the official site is 〒760-0054 香川県高松市常磐町1-4-9, not 1-4-2. It is a cafe and fruit parlor, 2 min walk from Kawaramachi Station; 11:00-19:00, closed Tuesdays and Wednesdays. The page does not mention 'over forty years' or gelato, so remove those. Parfait, cake, hot sandwich and pasta are confirmed. The site says the latest schedule is on Instagram.",
+    "coords": [
+     34.33871,
+     134.05164
+    ]
+   },
+   "address": "香川県高松市常磐町1-4-9"
+  }
+ },
+ "sights": [
+  {
+   "name": "栗林公園",
+   "nameEn": "Ritsurin Garden",
+   "kind": "sight",
+   "area": "栗林",
+   "areaEn": "Ritsurin",
+   "address": "高松市栗林町1丁目20番16号",
+   "url": "https://www.my-kagawa.jp/ritsuringarden",
+   "what": "高松藩主・松平家の別邸だった大名庭園。紫雲山を背に、6つの池と13の築山を配する。国の特別名勝に指定されている。",
+   "whatEn": "A daimyo garden that was a villa of the Matsudaira lords of Takamatsu. Six ponds and thirteen hills are set against Mount Shiun. A Special Place of Scenic Beauty.",
+   "coords": [
+    34.32949,
+    134.04392
+   ],
+   "notice": "年中無休。11月の開園は6時30分〜17時。園内に照明はなく、日没30分後には暗い。",
+   "noticeEn": "Open every day. In November, 6:30 am to 5 pm. There are no lights in the garden, and it is dark 30 minutes after sunset.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.my-kagawa.jp/ritsuringarden/feature/ritsuringarden/guide (香川県観光協会の公式ページ・栗林公園): 年中無休、11月 6:30〜17:00、日没30分後は暗い。/ …/garden: 6つの池・13の築山、紫雲山を背景、1953年に特別名勝、松平家の下屋敷。住所 高松市栗林町1丁目20番16号。トップページに2026.11.10「紅葉が色づき始めました」。",
+   "_coordsSource": "OSM way 60252671（栗林公園）の位置（Nominatim）"
+  },
+  {
+   "name": "玉藻公園（高松城跡）",
+   "nameEn": "Tamamo Park (Takamatsu Castle Ruins)",
+   "kind": "sight",
+   "area": "玉藻町",
+   "areaEn": "Tamamocho",
+   "address": "高松市玉藻町2-1",
+   "url": "https://www.city.takamatsu.kagawa.jp/kurashi/kurashi/shisetsu/park/tamamo/index.html",
+   "what": "生駒親正が1588年に築いた海城の跡。堀のすべてに海水を引いた。天守は1884年に解体され、天守台と、月見櫓や水手御門などの重要文化財が残る。",
+   "whatEn": "The site of a sea castle built by Ikoma Chikamasa in 1588, with seawater drawn into every moat. The keep was taken down in 1884; the keep base remains, with the Tsukimi turret, the Mizunote Gate and other Important Cultural Properties.",
+   "coords": [
+    34.35011,
+    134.05101
+   ],
+   "notice": "12月29日〜31日は休園。11月の開門は、西門が6時30分〜17時、東門が8時30分〜17時。",
+   "noticeEn": "Closed 29 to 31 December. In November the west gate is open 6:30 am to 5 pm and the east gate 8:30 am to 5 pm.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.takamatsu.kagawa.jp/kurashi/kurashi/shisetsu/park/tamamo/bunzai2018060.html（高松市・2026年4月1日更新）: 11月 西門6:30〜17:00・東門8:30〜17:00、12/29〜31休園。…/bunzai201806051.html（高松城の歴史）: 天正16年(1588)築城・生駒親正、堀すべてに海水、明治17年(1884)天守解体、艮櫓・月見櫓・渡櫓・水手御門が重要文化財。住所は https://www.my-kagawa.jp/point/285/ （高松市玉藻町2-1）。",
+   "_coordsSource": "OSM way 89183927（玉藻公園）の位置（Nominatim）"
+  },
+  {
+   "name": "高松市美術館",
+   "nameEn": "Takamatsu Art Museum",
+   "kind": "art",
+   "area": "紺屋町",
+   "areaEn": "Konyamachi",
+   "address": "高松市紺屋町10番地4",
+   "url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/index.html",
+   "what": "紺屋町にある高松市立の美術館。コレクション展と特別展を開き、讃岐漆芸を紹介する頁もある。",
+   "whatEn": "The municipal art museum of Takamatsu in Konyamachi, holding collection shows and special exhibitions. Its site also has a page on Sanuki lacquer.",
+   "coords": [
+    34.34404,
+    134.04914
+   ],
+   "notice": "月曜休館（祝休日の場合は翌平日）。9時30分〜17時。特別展「動く！展」は11月29日まで、特別展の期間中の金・土は19時まで。",
+   "noticeEn": "Closed on Mondays (the next weekday if a holiday). Open 9:30 am to 5 pm. The special exhibition Ugoku! (Moving) runs to 29 November, and is open until 7 pm on Fridays and Saturdays during it.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/index.html: 開館 9:30〜17:00、休館 月曜（祝休日の場合は翌平日）・12/29〜1/3、特別展開催中の金土は19時まで、特別展「動く！展 光と音と運動の芸術」2026/10/10〜11/29、コレクション展3 2026/9/30〜12/27。住所 紺屋町10番地4。/collection/index.html に「讃岐漆芸について」。",
+   "_coordsSource": "OSM way 331774182（高松市美術館）の位置（Nominatim）"
+  },
+  {
+   "name": "四国村",
+   "nameEn": "Shikokumura",
+   "kind": "sight",
+   "area": "屋島",
+   "areaEn": "Yashima",
+   "address": "高松市屋島中町91",
+   "url": "https://www.shikokumura.or.jp/",
+   "what": "屋島のふもとの野外博物館。四国の4県から、江戸から大正の民家、米蔵、醤油蔵など33棟を移し建てた。安藤忠雄設計のギャラリーもある。",
+   "whatEn": "An open-air museum at the foot of Yashima, with 33 buildings moved from the four prefectures of Shikoku: houses, rice stores and a soy sauce brewery from the Edo to Taisho periods. It also has a gallery designed by Tadao Ando.",
+   "coords": [
+    34.34509,
+    134.10959
+   ],
+   "notice": "火曜休村（祝休日の場合は翌日）。9時30分〜17時で、入村は16時30分まで。",
+   "noticeEn": "Closed on Tuesdays (the next day if a holiday). Open 9:30 am to 5 pm; last entry 4:30 pm.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.shikokumura.or.jp/ と /information/: 四国四県から33棟を移築復元、江戸〜大正の住宅・米倉・醤油醸造所、安藤忠雄設計の四国村ギャラリー、9:30〜17:00（入村受付16:30まで）、定休 火曜（祝休日の場合は翌日）、2026年度休村日カレンダー、最新情報 2026/10/20。住所 屋島中町91。",
+   "_coordsSource": "OSM way 468242591（四国村）の位置（Nominatim）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "一和堂工芸",
+   "verdict": "doubt",
+   "reason": "Site opened, shop info present, but only 'Ⓒ2025' footer and a 2021 date; no 2026 evidence found."
+  },
+  {
+   "name": "AJI PROJECT（株式会社蒼島）",
+   "verdict": "doubt",
+   "reason": "Only a 2026.07 catalog version label, no dated post or notice; showroom claim not confirmed."
+  },
+  {
+   "name": "umie",
+   "verdict": "drop",
+   "reason": "Cafe Umie will close at Kitahama Alley in late Feb 2027 (カフェウミエ 2027年2月下旬) and move to Mure; Kitahama Alley description will no longer be valid."
+  },
+  {
+   "name": "珈琲と本と音楽 半空",
+   "verdict": "doubt",
+   "reason": "Official site footer is © 2023; no dated 2026 post found. Instagram not readable with tools."
+  },
+  {
+   "name": "ABUKU COFFEE & LATTEART",
+   "verdict": "doubt",
+   "reason": "Latest dated news is 2025/03/31; only © Copyright 2026 footer, no 2026 dated post."
+  },
+  {
+   "name": "LUSHLIFE COFFEE",
+   "verdict": "doubt",
+   "reason": "Wix page yields only template text, no readable shop info, address or dated 2026 content."
+  },
+  {
+   "name": "松下製麺所",
+   "verdict": "doubt",
+   "reason": "Only undated hours and a copyright line; no 2026 evidence."
+  },
+  {
+   "name": "手打十段 うどんバカ一代",
+   "verdict": "doubt",
+   "reason": "https://www.udonbakaichidai.co.jp/ did not respond; the http page has only 2017 content and undated hours."
+  },
+  {
+   "name": "Bistro Bon",
+   "verdict": "doubt",
+   "reason": "Only a Christmas course notice dated 2025/12/20～12/25; no 2026 evidence."
+  },
+  {
+   "name": "コルベール",
+   "verdict": "doubt",
+   "reason": "No dated 2026 content; only undated menu and hours."
+  },
+  {
+   "name": "iam. with bread",
+   "verdict": "doubt",
+   "reason": "Online shop has no products and no dated 2026 evidence; the physical bakery is not confirmed."
+  },
+  {
+   "name": "Pâtisserie LIEU DE SURPRISE",
+   "verdict": "doubt",
+   "reason": "The site is live, but the newest News post is 2024.11.18 and the footer says © 2022. I found no 2026 dated post or notice."
+  }
+ ]
+}

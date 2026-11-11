@@ -1,0 +1,74 @@
+[
+ {
+  "name": "栗林公園",
+  "nameEn": "Ritsurin Garden",
+  "kind": "sight",
+  "area": "栗林",
+  "areaEn": "Ritsurin",
+  "address": "高松市栗林町1丁目20番16号",
+  "url": "https://www.my-kagawa.jp/ritsuringarden",
+  "what": "高松藩主・松平家の別邸だった大名庭園。紫雲山を背に、6つの池と13の築山を配する。国の特別名勝に指定されている。",
+  "whatEn": "A daimyo garden that was a villa of the Matsudaira lords of Takamatsu. Six ponds and thirteen hills are set against Mount Shiun. A Special Place of Scenic Beauty.",
+  "coords": [
+   34.32949,
+   134.04392
+  ],
+  "notice": "年中無休。11月の開園は6時30分〜17時。園内に照明はなく、日没30分後には暗い。",
+  "noticeEn": "Open every day. In November, 6:30 am to 5 pm. There are no lights in the garden, and it is dark 30 minutes after sunset.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "玉藻公園（高松城跡）",
+  "nameEn": "Tamamo Park (Takamatsu Castle Ruins)",
+  "kind": "sight",
+  "area": "玉藻町",
+  "areaEn": "Tamamocho",
+  "address": "高松市玉藻町2-1",
+  "url": "https://www.city.takamatsu.kagawa.jp/kurashi/kurashi/shisetsu/park/tamamo/index.html",
+  "what": "生駒親正が1588年に築いた海城の跡。堀のすべてに海水を引いた。天守は1884年に解体され、天守台と、月見櫓や水手御門などの重要文化財が残る。",
+  "whatEn": "The site of a sea castle built by Ikoma Chikamasa in 1588, with seawater drawn into every moat. The keep was taken down in 1884; the keep base remains, with the Tsukimi turret, the Mizunote Gate and other Important Cultural Properties.",
+  "coords": [
+   34.35011,
+   134.05101
+  ],
+  "notice": "12月29日〜31日は休園。11月の開門は、西門が6時30分〜17時、東門が8時30分〜17時。",
+  "noticeEn": "Closed 29 to 31 December. In November the west gate is open 6:30 am to 5 pm and the east gate 8:30 am to 5 pm.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "高松市美術館",
+  "nameEn": "Takamatsu Art Museum",
+  "kind": "art",
+  "area": "紺屋町",
+  "areaEn": "Konyamachi",
+  "address": "高松市紺屋町10番地4",
+  "url": "https://www.city.takamatsu.kagawa.jp/museum/takamatsu/index.html",
+  "what": "紺屋町にある高松市立の美術館。コレクション展と特別展を開き、讃岐漆芸を紹介する頁もある。",
+  "whatEn": "The municipal art museum of Takamatsu in Konyamachi, holding collection shows and special exhibitions. Its site also has a page on Sanuki lacquer.",
+  "coords": [
+   34.34404,
+   134.04914
+  ],
+  "notice": "月曜休館（祝休日の場合は翌平日）。9時30分〜17時。特別展「動く！展」は11月29日まで、特別展の期間中の金・土は19時まで。",
+  "noticeEn": "Closed on Mondays (the next weekday if a holiday). Open 9:30 am to 5 pm. The special exhibition Ugoku! (Moving) runs to 29 November, and is open until 7 pm on Fridays and Saturdays during it.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "四国村",
+  "nameEn": "Shikokumura",
+  "kind": "sight",
+  "area": "屋島",
+  "areaEn": "Yashima",
+  "address": "高松市屋島中町91",
+  "url": "https://www.shikokumura.or.jp/",
+  "what": "屋島のふもとの野外博物館。四国の4県から、江戸から大正の民家、米蔵、醤油蔵など33棟を移し建てた。安藤忠雄設計のギャラリーもある。",
+  "whatEn": "An open-air museum at the foot of Yashima, with 33 buildings moved from the four prefectures of Shikoku: houses, rice stores and a soy sauce brewery from the Edo to Taisho periods. It also has a gallery designed by Tadao Ando.",
+  "coords": [
+   34.34509,
+   134.10959
+  ],
+  "notice": "火曜休村（祝休日の場合は翌日）。9時30分〜17時で、入村は16時30分まで。",
+  "noticeEn": "Closed on Tuesdays (the next day if a holiday). Open 9:30 am to 5 pm; last entry 4:30 pm.",
+  "verifiedAt": "2026-11-11"
+ }
+]

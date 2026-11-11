@@ -1,0 +1,68 @@
+[
+ {
+  "name": "鶴ヶ城",
+  "nameEn": "Tsurugajo Castle",
+  "kind": "sight",
+  "area": "鶴ヶ城周辺",
+  "areaEn": "Tsurugajo",
+  "address": "会津若松市追手町1-1",
+  "url": "https://www.tsurugajo.com/tsurugajo/",
+  "what": "会津若松のシンボルの城で、正式には若松城。1868年の戊辰戦争に耐えた。赤瓦の五層の天守閣は博物館で、無休、8時30分から17時（最終入場16時30分）。",
+  "whatEn": "The symbol of Aizuwakamatsu, officially Wakamatsu Castle, which withstood the Boshin War of 1868. The red-tiled five-storey keep is a museum, open every day, 8:30 to 17:00 (last entry 16:30).",
+  "coords": [
+   37.48774,
+   139.92977
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "御薬園",
+  "nameEn": "Oyakuen Garden",
+  "kind": "sight",
+  "area": "鶴ヶ城周辺",
+  "areaEn": "Tsurugajo",
+  "address": "会津若松市花春町8-1",
+  "url": "https://www.tsurugajo.com/oyakuen/",
+  "what": "会津松平氏の庭園で、国指定の名勝。約1.7ヘクタールの敷地の中央に心字の池があり、薬草園が続く。無休、8時30分から17時（最終入園16時30分）。",
+  "whatEn": "The garden of the Aizu Matsudaira clan, a national place of scenic beauty. A stroll garden of about 1.7 hectares around a heart-shaped pond, with a medicinal herb garden. Open every day, 8:30 to 17:00 (last entry 16:30).",
+  "coords": [
+   37.49108,
+   139.94392
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "会津武家屋敷",
+  "nameEn": "Aizu Buke Yashiki",
+  "kind": "sight",
+  "area": "飯盛山・東山",
+  "areaEn": "Iimoriyama & Higashiyama",
+  "address": "会津若松市東山町石山院内1",
+  "url": "https://bukeyashiki.com/",
+  "what": "西郷頼母邸を中心に、家老屋敷や中畑陣屋など重要文化財の建物が並ぶ、武家の暮らしを見せる施設。4〜11月は8時30分から17時、12〜3月は9時から16時30分。",
+  "whatEn": "A museum of samurai life centred on the Saigo Tanomo residence, with listed buildings such as the chief retainer’s house and the Nakahata outpost. Open 8:30 to 17:00 from April to November, 9:00 to 16:30 from December to March.",
+  "coords": [
+   37.48555,
+   139.95353
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "会津さざえ堂",
+  "nameEn": "Aizu Sazaedo",
+  "kind": "sight",
+  "area": "飯盛山・東山",
+  "areaEn": "Iimoriyama & Higashiyama",
+  "address": "会津若松市一箕町八幡飯盛山",
+  "url": "https://sazaedo.jp/",
+  "what": "1796年に飯盛山に建った、高さ16.5メートル、六角三層のお堂。正式名は円通三匝堂。上りと下りが別の通路の二重らせんのスロープを持つ木造建築で、国の重要文化財。",
+  "whatEn": "A hexagonal three-storey hall, 16.5 metres high, built on Mount Iimori in 1796; its formal name is Entsu Sanso-do. A wooden building with a double-spiral ramp, one way up and a separate way down, and a national Important Cultural Property.",
+  "coords": [
+   37.5045,
+   139.95393
+  ],
+  "notice": "2026年3月の雪害による入口屋根の工事は、4月10日に終わった。拝観は12〜3月が9時から16時、4〜11月は8時15分から日没。",
+  "noticeEn": "Repair work on the entrance roof after snow damage in March 2026 was completed on 10 April. Open 9:00 to 16:00 from December to March, and 8:15 to sunset from April to November.",
+  "verifiedAt": "2026-11-11"
+ }
+]

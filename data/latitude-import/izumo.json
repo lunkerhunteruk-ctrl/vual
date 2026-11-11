@@ -1,0 +1,508 @@
+{
+ "slug": "izumo",
+ "city": {
+  "name": "Izumo",
+  "nameJa": "出雲",
+  "latitude": "35.4° N",
+  "country": "Shimane, Japan",
+  "countryJa": "島根県",
+  "person": "rin",
+  "coords": [
+   35.3635,
+   132.7575
+  ],
+  "intro": "A town on the Izumo plain in eastern Shimane, home of Izumo Taisha, where the gods are said to gather in the tenth month of the old calendar. Mingei pottery and glass in Hikawa, sake and ginger sweets on Momen Kaido in Hirata, and soba and wagashi around the shrine — Rin's picks.",
+  "introJa": "出雲大社のある町。旧暦10月に全国の神々が集まるとされ、2026年の神在祭は11月18日の夕方から25日の夕方まで。斐川の民藝の窯元とガラス、平田・木綿街道の酒蔵と生姜糖、大社のそばと和菓子を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Sea of Japan side · the Izumo plain beside Lake Shinji",
+   "ja": "日本海側・宍道湖のそばに広がる出雲平野の町"
+  },
+  "industries": [
+   {
+    "key": "izumo-mingei-craft",
+    "en": "Izumo Mingei & Folk Handcrafts",
+    "ja": "出雲の民藝・手仕事",
+    "about": "Izumo's folk-craft tradition grew from Shussai-gama, started in 1947 by five young men in Hikawa and guided by Yanagi Soetsu, Kawai Kanjiro, Hamada Shoji and Bernard Leach. Pottery, glass and woodwork for daily use are still made and sold in the area, and the Izumo Mingeikan shows crafts from Shimane and elsewhere.",
+    "aboutJa": "出雲の民藝は、昭和22年（1947年）に斐川の出西で5人の若者が始めた出西窯から広がった。柳宗悦、河井寬次郎、濱田庄司、バーナード・リーチらが指導した。いまも、くらしの器や木工が作られ、売られている。出雲民藝館では、島根や各地の手仕事を見られる。",
+    "_src": "Mentored directly by Yanagi Soetsu, Kawai Kanjiro, and Bernard Leach, Izumo sustained one of Japan's most vital living mingei traditions across collective stoneware kilns, hand-spun indigo weaving, and paste-resist indigo dyeing."
+   },
+   {
+    "key": "momen-kaido-brewing",
+    "en": "Momen Kaido Sake & Soy Brewing",
+    "ja": "木綿街道の醸造文化",
+    "about": "Hirata's Momen Kaido, the 'cotton road', grew in the Edo period as a market for cotton. Along the L-shaped street, a sake brewery, soy sauce houses and an old ginger-sugar maker still work, and the brewery buildings of Sakemochida are registered national cultural properties.",
+    "aboutJa": "平田の木綿街道は、江戸時代に木綿の集散地として栄えたL字型の通り。いまも酒蔵、醤油蔵、生姜糖の老舗が仕事を続けている。酒持田本店の蔵は、国の登録文化財。",
+    "_src": "Along Hirata's Edo-period canal-side Cotton Road, merchant houses turned abundant Izumo Plain rice and soft groundwater into centuries-old sake and soy sauce breweries that still ferment in earthen storehouses."
+   }
+  ]
+ },
+ "places": {
+  "出西窯": {
+   "nameEn": "Shussai-gama",
+   "area": "斐川",
+   "areaEn": "Hikawa",
+   "tags": [
+    "ceramics",
+    "tableware",
+    "mingei"
+   ],
+   "what": "斐川・出西の民藝の窯元。昭和22年（1947年）に5人の若者が始め、柳宗悦、河井寬次郎、濱田庄司、バーナード・リーチらの指導を受けた。展示販売場は「くらしの陶・無自性館」で、火曜は休み（祝日は開く）。",
+   "whatEn": "A mingei kiln in Shussai, Hikawa, started in 1947 by five young men and guided by Yanagi Soetsu, Kawai Kanjiro, Hamada Shoji and Bernard Leach. The showroom is Kurashi no To Mujishokan, closed on Tuesdays except holidays.",
+   "note": "火曜は休み。無自性館が開く9時半に合わせて行く。",
+   "noteEn": "Closed on Tuesdays. Go when the showroom opens at 9:30.",
+   "_src": {
+    "category": "local",
+    "industry": "izumo-mingei-craft",
+    "nameKana": "しゅっさいがま",
+    "address": "斐川町出西3368",
+    "url": "https://www.shussai.jp/",
+    "whatJa": "1947年創業の共同体による民藝の窯元で、陶工たちのろくろや釉掛けの手仕事と連房式登り窯を見学でき、明治期の米蔵を移築した展示販売館で日々の器を選べる。",
+    "whatEn": "A collective mingei pottery kiln founded in 1947 where visitors can watch potters throw and glaze everyday stoneware beside a multi-chambered climbing kiln and browse a two-story Meiji-era rice-granary showroom.",
+    "facts": "Founded in 1947 by five local youths mentored by Yanagi Soetsu, Kawai Kanjiro, Hamada Shoji, and Bernard Leach; renowned for vivid cobalt 'Shussai Blue' glaze and local clay; showroom Kurashi no To Mujishokan occupies a relocated Meiji-era earthen-walled rice granary.",
+    "weak": "",
+    "verifiedBy": "https://www.shussai.jp/",
+    "quote": "出西くらしのヴィレッジ11月営業日のお知らせ",
+    "fixes": "Address 島根県出雲市斐川町出西3368 matches. Showroom is named 「くらしの陶・無自性館」, closed Tuesdays (except holidays), 9:30-18:00. I did not confirm the 'watch potters throw' or 'Meiji-era granary' claims on the page I read.",
+    "coords": [
+     35.35848,
+     132.79579
+    ]
+   }
+  },
+  "酒持田本店": {
+   "nameEn": "Sakemochida Honten",
+   "area": "平田",
+   "areaEn": "Hirata",
+   "tags": [
+    "sake"
+   ],
+   "what": "木綿街道の酒蔵。明治10年（1877年）の創業で、「ヤマサン正宗」を全量島根県産の酒米で造る。母屋や蔵など5棟が国の登録文化財。店先で利き酒ができ、蔵の見学は予約が要る。",
+   "whatEn": "A sake brewery on Momen Kaido, founded in 1877, making Yamasan Masamune from Shimane rice only. Five of its buildings, including the main house and the storehouses, are registered national cultural properties. There is a tasting at the shop; a brewery visit needs a booking.",
+   "note": "蔵の見学は予約が要る。店先の利き酒だけでもいい。",
+   "noteEn": "A brewery visit needs a booking. The tasting at the shop is fine on its own.",
+   "_src": {
+    "category": "local",
+    "industry": "momen-kaido-brewing",
+    "nameKana": "さけもちだほんてん",
+    "address": "平田町785",
+    "url": "https://www.sakemochida.jp/",
+    "whatJa": "1877年創業の木綿街道の造り酒屋で、築140年余りの土蔵で出雲杜氏の技を受け継ぐ銘酒「ヤマサン正宗」を醸し、店頭で試飲や購入ができる。",
+    "whatEn": "A sake brewery founded in 1877 on Hirata's historic Momen Kaido canal street, brewing small-batch Yamasan Masamune sake inside a 140-year-old earthen-walled storehouse with tastings at the shop counter.",
+    "facts": "Founded in Meiji 10 (1877) along Hirata's Edo-era Momen Kaido; brews Yamasan Masamune using Shimane sake rice and local groundwater in registered tangible cultural property buildings.",
+    "weak": "",
+    "verifiedBy": "https://www.sakemochida.jp/",
+    "quote": "「おいしい出雲フェア」　【日比谷しまね館　11月24日（火）～29日（日）】",
+    "fixes": "Address 島根県出雲市平田町785 matches. The site also lists 「しまね地酒フェア2026」 posted 2026.09.14.",
+    "coords": [
+     35.43714,
+     132.82095
+    ]
+   }
+  },
+  "出雲民藝館": {
+   "nameEn": "Izumo Mingeikan (Izumo Folk Crafts Museum)",
+   "area": "出雲市街",
+   "areaEn": "Central Izumo",
+   "tags": [
+    "mingei",
+    "ceramics",
+    "textile"
+   ],
+   "what": "昭和49年（1974年）に開いた民藝館。陶磁器、漆器、木工品、染織など、島根を中心に全国から集めた品を展示する。火曜と年末年始は休み。",
+   "whatEn": "A folk-craft museum opened in 1974. It shows ceramics, lacquerware, woodwork and textiles gathered mainly from Shimane and from across Japan. Closed on Tuesdays and over the New Year.",
+   "note": "閉館は17時。16時半までに入る。",
+   "noteEn": "It closes at 5. Be inside by 4:30.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "いずもみんげいかん",
+    "address": "知井宮町628",
+    "url": "http://izumomingeikan.com/",
+    "whatJa": "1974年に豪農・山本家の屋敷を活かして開館した民藝館で、1746年築の長屋門にある売店で山陰の窯元の器や木工・和紙・染織を購入できる。",
+    "whatEn": "A folk-craft museum and nagayamon gatehouse shop opened in 1974 inside the 18th-century Yamamoto merchant-farmer estate, selling San'in stoneware, woodwork, washi, and textiles.",
+    "facts": "Opened in 1974 on the historic Yamamoto family estate; its entrance nagayamon gatehouse was built in 1746 by the master carpenter of Izumo Taisha and houses a curated mingei shop (cash only) stocked with San'in ceramics, glass, and woodwork.",
+    "weak": "",
+    "verifiedBy": "https://izumomingeikan.com/archives/784",
+    "quote": "展示替え作業のため、出雲民藝館は以下日程で臨時休館いたします。 2026年5月12日（火）　〜5月13日（水）",
+    "fixes": "Address 島根県出雲市知井宮町628 matches. Hours 10:00-17:00, closed Tuesdays and the New Year period. A later notice dated 2026年08月13日 lists monthly guided tours through 2027. The page says it opened in 昭和49年 (1974). I did not see the nagayamon shop or 'cash only' on the pages I read.",
+    "coords": [
+     35.33918,
+     132.72187
+    ]
+   }
+  },
+  "ガラス工房Izumo": {
+   "nameEn": "Glass Studio Izumo",
+   "area": "斐川",
+   "areaEn": "Hikawa",
+   "tags": [
+    "glass",
+    "tableware"
+   ],
+   "what": "出西にある、吹きガラスの作家の工房とギャラリー。制作の様子を自由に見学でき、300点以上の作品を見て買える。月曜は休み（祝日の場合は翌日）。",
+   "whatEn": "A glassblowers’ studio and gallery in Shussai. Visitors can watch the work freely, and over 300 pieces are on show and for sale. Closed on Mondays (the next day if Monday is a holiday).",
+   "note": "作っている所を見てから、グラスを選ぶ。",
+   "noteEn": "Watch the glass being made, then choose a glass.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "がらすこうぼういずも",
+    "address": "斐川町出西1341-1",
+    "url": "https://glass-studio-izumo.com/",
+    "whatJa": "出西エリアにあるガラス作家夫妻の工房兼ギャラリーで、吹きガラスの制作風景を自由に見学でき、グラスや酒器など300点以上の作品を展示販売している。",
+    "whatEn": "A husband-and-wife glassblowing studio and gallery in Shussai displaying over 300 hand-blown drinking glasses, sake vessels, and tableware pieces right beside an open hot shop.",
+    "facts": "Run by Izumo-born glass artist Kaori Kawanabe and her partner in Hikawa-cho Shussai; visitors can freely watch hot-shop glassblowing and browse over 300 everyday vessels and objects in the attached gallery.",
+    "weak": "",
+    "verifiedBy": "https://glass-studio-izumo.com/",
+    "quote": "26.08.09 吹きガラス体験のお申し込みサイト",
+    "fixes": "Address 出雲市斐川町出西1341-1 matches. Hours 9:00-18:00, closed Mondays. Page says watching production is free and there are 300+ works on display. The artist is かわなべ かおり.",
+    "coords": [
+     35.35703,
+     132.79516
+    ]
+   }
+  },
+  "おかや木芸": {
+   "nameEn": "Okaya Mokugei",
+   "area": "斐川",
+   "areaEn": "Hikawa",
+   "tags": [
+    "woodwork",
+    "tableware"
+   ],
+   "what": "斐川の木工の店。黒柿、栗、欅などの天然木で、家具や食器、カトラリーなどの木工品を作り、工房の隣の店で売る。併設の本店ギャラリーで、作家の展示会も開く。",
+   "whatEn": "A woodcraft shop in Hikawa making furniture, tableware and cutlery from natural wood such as black persimmon, chestnut and zelkova, and selling it in the shop beside the workshop. The gallery next door holds exhibitions by makers.",
+   "note": "黒柿は、木目の黒い模様から見る。",
+   "noteEn": "With kurogaki, look at the black pattern in the grain first.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "おかやもくげい",
+    "address": "斐川町直江4844-1",
+    "url": "https://www.okaya.ne.jp/",
+    "whatJa": "希少な「出雲黒柿」や栗・欅を用いた木の器やカトラリーを販売し、併設の本店ギャラリーで全国の工芸作家の企画展も開く木工芸ショップ。",
+    "whatEn": "A woodcraft tableware shop and exhibition gallery in Hikawa crafting bowls, plates, and cutlery from rare ink-grained Izumo black persimmon (kurogaki), chestnut, and zelkova alongside rotating craft shows.",
+    "facts": "Specializes in rare Izumo kurogaki (black persimmon wood prized for natural sumi-ink grain patterns) alongside Japanese chestnut and zelkova tableware; attached showroom gallery hosts regular craft exhibitions.",
+    "weak": "",
+    "verifiedBy": "https://www.okaya.ne.jp/",
+    "quote": "2026／10／04 お知らせ 柿渋染 衣展 SIND",
+    "fixes": "Address 島根県出雲市斐川町直江4844-1 matches. Page lists 本店ギャラリー exhibitions and kurogaki/chestnut/zelkova woodwork.",
+    "coords": [
+     35.39047,
+     132.82154
+    ]
+   }
+  },
+  "ル コションドール出西": {
+   "nameEn": "Le Cochon d'Or Shussai",
+   "area": "斐川",
+   "areaEn": "Hikawa",
+   "tags": [
+    "bread"
+   ],
+   "what": "出西窯の敷地にある「出西くらしのvillage」のベーカリーカフェ。9時半から17時まで。火曜と、第2・第4水曜は休み。",
+   "whatEn": "The bakery café in Shussai Kurashi no Village, on the grounds of Shussai-gama. Open 9:30 to 17:00; closed on Tuesdays and the second and fourth Wednesdays.",
+   "note": "窯元の売り場より1時間早く閉まる。先に寄る。",
+   "noteEn": "It closes an hour before the kiln showroom. Go here first.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "る こしょんどーる しゅっさい",
+    "address": "斐川町出西3368",
+    "url": "https://www.shussai-village.jp/",
+    "whatJa": "出西窯の敷地内「出西くらしのvillage」にあるベーカリー＆カフェで、ハード系パンや地元食材のサンドイッチ、焼き菓子を出西窯の器で楽しめる。",
+    "whatEn": "An artisan bakery and café on the Shussai-gama grounds baking crusty rustic loaves, pastries, and local-ingredient sandwiches served on Shussai-gama stoneware.",
+    "facts": "Part of Shussai Kurashi no Village right beside Shussai-gama's showroom in Hikawa-cho Shussai; dine-in bread plates, soups, and drinks are served on handmade Shussai-gama pottery.",
+    "weak": "",
+    "verifiedBy": "https://www.shussai-village.jp/",
+    "quote": "11月営業日のご案内",
+    "fixes": "Page: bakery café 'ル コションドール' within 出西くらしのvillage, 斐川町出西3368, open 9:30〜17:00 (closed Tue, 2nd/4th Wed). Page does not mention Shussai-gama stoneware serving, sandwiches or crusty loaves specifically.",
+    "coords": [
+     35.35821,
+     132.79554
+    ]
+   }
+  },
+  "來間屋生姜糖本舗": {
+   "nameEn": "Kurumaya Shogato Honpo",
+   "area": "平田",
+   "areaEn": "Hirata",
+   "tags": [
+    "ginger",
+    "wagashi"
+   ],
+   "what": "木綿街道の生姜糖の老舗。正徳5年（1715年）の創業。斐川町出西の「出西生姜」だけを使い、炭火で絞り汁と砂糖を煮て、銅の型に流して作る。店で試食ができる。",
+   "whatEn": "An old ginger-sugar maker on Momen Kaido, founded in 1715. It uses only Shussai ginger from Hikawa, boiling the juice with sugar over charcoal and pouring it into copper moulds. There are samples at the shop.",
+   "note": "試食をして、白・抹茶・紅から選ぶ。",
+   "noteEn": "Try a sample, then choose from white, matcha or red.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "くりまやしょうがとうほんぽ",
+    "address": "平田町774",
+    "url": "https://syougatou-honpo.jp/",
+    "whatJa": "木綿街道で創業300年余りを数える老舗菓子舗で、地元特産の「出西生姜」の絞り汁と砂糖を炭火の銅鍋で煮詰める伝統製法で生姜糖を手づくりしている。",
+    "whatEn": "A 300-year-old confectionery on Hirata's Momen Kaido hand-making crisp, aromatic ginger-sugar tablets over charcoal fire from locally grown Shussai ginger and pure sugar.",
+    "facts": "Founded over 300 years ago in Hirata-cho; boils freshly pressed local Shussai ginger juice with sugar over charcoal in copper pans and sets it in traditional rectangular molds without additives.",
+    "weak": "",
+    "verifiedBy": "https://syougatou-honpo.jp/",
+    "quote": "2026.08.01　今シーズンの葉付出西生姜・新しょうがのセット品の販売を開始します。",
+    "fixes": "Address 〒691-0001 出雲市平田町774 matches. Founding '300 years' / charcoal fire not confirmed in the text I extracted.",
+    "coords": [
+     35.43686,
+     132.82052
+    ]
+   }
+  },
+  "御菓子とみや": {
+   "nameEn": "Onkashi Tomiya",
+   "area": "大社",
+   "areaEn": "Taisha",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "出雲大社から歩いて3分の和菓子店。1947年創業で3代続き、餡は北海道産の小豆から店で炊く。雲のかすてらや、黒米・赤米の饅頭がある。定休は水曜。",
+   "whatEn": "A wagashi shop three minutes on foot from Izumo Taisha, in the family for three generations since 1947. The red bean paste is cooked in the shop from Hokkaido azuki. Kumo no Kasutera (cloud castella) and black- and red-rice manju are among the sweets. Closed on Wednesdays.",
+   "note": "雲のかすてらは、予約してから行く。",
+   "noteEn": "Book the kumo no kasutera before you go.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おんかしとみや",
+    "address": "大社町杵築東571",
+    "url": "https://onkashitomiya.com/",
+    "whatJa": "出雲大社から徒歩3分の場所で約80年続く和菓子店で、古代米の黒米・赤米饅頭や「雲のかすてら」、季節の生大福を毎朝手づくりしている。",
+    "whatEn": "A 79-year-old family wagashi shop three minutes' walk from Izumo Taisha, crafting heirloom black-and-red-rice steamed buns, cloud-soft castella, and seasonal fruit daifuku by hand.",
+    "facts": "Hand-making wagashi for 79 years in Taisha-cho Kitsuki-higashi; its heirloom black-rice and red-rice manju were once presented to Prince and Princess Akishino.",
+    "weak": "",
+    "verifiedBy": "https://onkashitomiya.com/",
+    "quote": "2026年11月19日（木）、21～23日（月）　9:00～16:00に出雲大社周辺交通規制",
+    "fixes": "Page title: 手作りにこだわって79年。出雲大社から徒歩三分の和菓子店; 創業1947年. Black/red rice manju & 雲のかすてら confirmed. Page says black rice 古代米(黒米) and red rice from Tonbara; Akishino claim not checked. Street address 杵築東571 not seen in extracted text.",
+    "coords": [
+     35.39793,
+     132.68158
+    ]
+   }
+  },
+  "グランシェノン": {
+   "nameEn": "Grand Chainon",
+   "area": "出雲市街",
+   "areaEn": "Central Izumo",
+   "tags": [
+    "flowers",
+    "patisserie"
+   ],
+   "what": "渡橋町の花屋とパティスリー。同じ店で花と洋菓子を扱う。9時半から19時まで、定休日はない。",
+   "whatEn": "A florist and patisserie in Watarihashi, selling flowers and cakes under one roof. Open 9:30 to 19:00, with no regular closing day.",
+   "note": "定休日がないので、予定の空いた日に。",
+   "noteEn": "It has no closing day, so go whenever you are free.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぐらんしぇのん",
+    "address": "渡橋町735-1",
+    "url": "https://www.grand-chainon.com/",
+    "whatJa": "全国洋菓子大会優勝歴を持つパティシエが手がける渡橋町のフラワー＆パティスリーで、繊細なショコラや美しい季節のプチガトーが地元で人気を集める。",
+    "whatEn": "A patisserie and flower shop in Watarihashi led by a national competition-winning pastry chef, favored by locals for jewel-like bonbon chocolates, entremets, and seasonal fruit cakes.",
+    "facts": "Combines a boutique florist and French-style patisserie at Watarihashi-cho 735-1; led by a chef who won top honors at major domestic pastry and chocolate competitions.",
+    "weak": "",
+    "verifiedBy": "https://www.grand-chainon.com/",
+    "quote": "クリスマスケーキ2026 ご予約受付開始",
+    "fixes": "Address 〒693-0004 出雲市渡橋町735-1 matches. Flower shop + patisserie confirmed. Chef's national competition win not confirmed on the top page.",
+    "coords": [
+     35.36588,
+     132.74003
+    ]
+   }
+  },
+  "献上そば 羽根屋 本店": {
+   "nameEn": "Kenjo Soba Haneya Honten",
+   "area": "出雲市街",
+   "areaEn": "Central Izumo",
+   "tags": [
+    "soba"
+   ],
+   "what": "今市町の出雲そばの店。江戸時代末期の創業で、石臼で挽いた出雲産のそば粉を手打ちにする。割子そばと釜揚げそばを出す。JR出雲市駅から歩いて5分。",
+   "whatEn": "An Izumo soba restaurant in Imaichi, founded at the end of the Edo period. It hand-cuts soba from stone-milled Izumo buckwheat and serves warigo and kamaage soba. Five minutes on foot from JR Izumoshi Station.",
+   "note": "15時から17時は休憩。昼か、夕方に。",
+   "noteEn": "Closed from 3 to 5 in the afternoon. Go for lunch or in the evening.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "けんじょうそば はねや ほんてん",
+    "address": "今市町本町549",
+    "url": "https://kenjosoba-haneya.com/",
+    "whatJa": "江戸末期創業の今市町の老舗そば処で、そばの実を甘皮ごと挽いた香り高い手打ちの割子そばや釜揚げそばが地元の定番として愛されている。",
+    "whatEn": "A late-Edo Izumo soba institution in central Imaichi hand-cutting dark, whole-grain buckwheat warigo and kamaage soba long trusted by local families.",
+    "facts": "Founded at the end of the Edo period in Imaichi-cho Honmachi (operates 3 local branches within Izumo); earned the 'Kenjo Soba' title after presenting its soba to Emperor Taisho.",
+    "weak": "",
+    "verifiedBy": "https://kenjosoba-haneya.com/",
+    "quote": "11月17日、24日臨時休業のお知らせ",
+    "fixes": "Address 〒693-0001 出雲市今市町本町549 matches. 献上そば confirmed. Late-Edo founding / 3 branches / Emperor Taisho not confirmed on top page (site lists 本店 and 大津店 at least).",
+    "coords": [
+     35.36443,
+     132.7608
+    ]
+   }
+  },
+  "本格手打蕎麦 出雲 砂屋": {
+   "nameEn": "Sunaya",
+   "area": "大社",
+   "areaEn": "Taisha",
+   "tags": [
+    "soba"
+   ],
+   "what": "「出雲大社で唯一」と名乗る、十割そばの専門店。つなぎを使わず、国産の石臼挽きのそば粉と水だけで打ち、太めに仕上げる。2階にある。火曜と第3月曜は休み。",
+   "whatEn": "A soba shop that calls itself the only juwari (100 percent buckwheat) specialist at Izumo Taisha. The soba is made from domestic stone-milled flour and water alone, and cut thick. It is on the second floor. Closed on Tuesdays and the third Monday.",
+   "note": "そばがなくなり次第、閉まる。昼のうちに。",
+   "noteEn": "It closes when the soba runs out. Go early in the day.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ほんかくてうちそば いずも すなや",
+    "address": "大社町杵築南772 2F",
+    "url": "https://www.sunaya-izumosoba.com/",
+    "whatJa": "出雲大社エリアで唯一の十割そば（生粉打ち蕎麦）専門店で、石臼挽きの国産そば粉と浜山の天然湧き水のみで打つ香り高い手打ちそばを提供する。",
+    "whatEn": "Taisha's sole 100-percent pure buckwheat hand-cut soba specialist, stone-milling domestic whole buckwheat and binding it only with local Hamayama natural spring water.",
+    "facts": "Located on the second floor along Shinmon-dori at Taisha-cho Kitsuki-minami 772; uses zero wheat binder (100% juwari soba) yet achieves a smooth, springy texture with Hamayama spring water.",
+    "weak": "",
+    "verifiedBy": "https://www.sunaya-izumosoba.com/",
+    "quote": "年越しそばのご注文受付開始のお知らせ",
+    "fixes": "Address '772 2F' (杵築南) matches; 出雲大社で唯一の十割そば専門店, 浜山の天然湧き水 confirmed.",
+    "coords": [
+     35.39606,
+     132.68676
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "出雲大社",
+   "nameEn": "Izumo Taisha",
+   "kind": "sight",
+   "area": "大社",
+   "areaEn": "Taisha",
+   "address": "出雲市大社町杵築東195",
+   "url": "https://izumooyashiro.or.jp/",
+   "what": "大国主大神を祀る神社。人々の幸せの縁を結ぶ神として知られる。旧暦10月に全国の神々が集まるとされ、2026年の神在祭は11月18日の夕方から25日の夕方まで。",
+   "whatEn": "The shrine of Okuninushi no Okami, known as the god who ties people's good fortune together. In the tenth month of the old calendar the gods of Japan are said to gather here; in 2026 the Kamiari festival runs from the evening of 18 to the evening of 25 November.",
+   "coords": [
+    35.3998,
+    132.68515
+   ],
+   "notice": "神在祭の期間は混み合う。11月19日と21〜23日は、周辺で交通規制がある。",
+   "noticeEn": "It is crowded during the Kamiari festival. On 19 and 21 to 23 November there is traffic control around the shrine.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://izumooyashiro.or.jp/ (公式): 祭神 大国主大神、令和8年神在祭 11/18夕刻〜11/25夕刻、トップに『神在祭期間中（11/19.21～23）の交通規制』。住所 出雲市大社町杵築東195。",
+   "_coordsSource": "OSM way 52958212（出雲大社 amenity=place_of_worship）"
+  },
+  {
+   "name": "島根県立古代出雲歴史博物館",
+   "nameEn": "Shimane Museum of Ancient Izumo",
+   "kind": "art",
+   "area": "大社",
+   "areaEn": "Taisha",
+   "address": "出雲市大社町杵築東99番地4",
+   "url": "https://www.izm.ed.jp/",
+   "what": "出雲大社の東隣にある県立の博物館。出雲大社の境内から出た宇豆柱、出雲國風土記、青銅器と金色の大刀などを、常設展で見せる。",
+   "whatEn": "A prefectural museum next to Izumo Taisha on its east side. The permanent exhibits include the huge uzu pillar found in the shrine grounds, the Izumo no Kuni Fudoki, and bronze ware and gilded swords.",
+   "coords": [
+    35.39878,
+    132.68856
+   ],
+   "notice": "2026年10月1日にリニューアルオープン。開館は9時から17時（最終入館16時30分）。11月は17日が休館。特別展「その後のヲロチとスサノヲ」は11月29日まで。",
+   "noticeEn": "Reopened after renovation on 1 October 2026. Open 9:00 to 17:00 (last entry 16:30). Closed on 17 November. The special exhibition runs until 29 November.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.izm.ed.jp/ (公式・2026.11.12付): 『本日開館しています』9:00〜17:00、最終入館16:30、特別展 令和8年10月9日〜11月29日（会期中の休館日 10/20, 11/10, 11/17）、リニューアルオープン10/1。常設展: 出雲大社境内遺跡出土の宇豆柱・出雲國風土記の世界・青銅器と金色の大刀。住所 大社町杵築東99番地4（出雲大社東隣）。",
+   "_coordsSource": "OSM way 413140682（島根県立古代出雲歴史博物館 tourism=museum）"
+  },
+  {
+   "name": "出雲日御碕灯台",
+   "nameEn": "Izumo Hinomisaki Lighthouse",
+   "kind": "sight",
+   "area": "日御碕",
+   "areaEn": "Hinomisaki",
+   "address": "出雲市大社町日御碕1478",
+   "url": "https://www.izumo-kankou.gr.jp/677",
+   "what": "島根半島の西の端に立つ白い石造りの灯台。明治36年（1903年）の設置で、石造りの灯台では日本一の高さ（塔高43.65m）。国の重要文化財。内部の163段のらせん階段で、展望台に上がれる。",
+   "whatEn": "A white stone lighthouse at the western tip of the Shimane Peninsula, lit in 1903 and the tallest stone lighthouse in Japan (43.65 m). A national important cultural property. A spiral staircase of 163 steps leads up to the observation deck.",
+   "coords": [
+    35.43374,
+    132.62927
+   ],
+   "notice": "12時から13時は昼休みで、参観できない。10月から2月は16時30分まで。入場は終わりの20分前まで。",
+   "noticeEn": "Closed for lunch from 12:00 to 13:00. From October to February it closes at 16:30, and the last entry is 20 minutes before.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.izumo-kankou.gr.jp/677 (出雲観光協会公式): 明治36年設置、塔高43.65m、石造灯台日本一、令和4年国指定重要文化財、163段のらせん階段、営業時間 10〜2月 9:00〜12:00／13:00〜16:30、定休日なし、住所 出雲市大社町日御碕1478。出雲市 https://www.city.izumo.shimane.jp/www/contents/1769395852119/index.html (2026-10-01更新): 参観時間、10/6・10/8のみ終日参観不可（すでに過ぎた日）。",
+   "_coordsSource": "OSM way 454970181（出雲日御碕灯台 man_made=lighthouse）"
+  },
+  {
+   "name": "木綿街道",
+   "nameEn": "Momen Kaido",
+   "kind": "sight",
+   "area": "平田",
+   "areaEn": "Hirata",
+   "address": "出雲市平田町841（木綿街道交流館）",
+   "url": "https://izumo-kankou.gr.jp/5294",
+   "what": "江戸時代に木綿の集散地として栄えた、平田のL字型の通り。切妻妻入りの塗屋造の家や海鼠壁が残り、酒蔵、醤油蔵、生姜糖の老舗が並ぶ。",
+   "whatEn": "An L-shaped street in Hirata that grew in the Edo period as a market for cotton. Gabled plastered houses and namako-kabe walls survive, and a sake brewery, soy sauce houses and an old ginger-sugar maker line the street.",
+   "coords": [
+    35.43836,
+    132.82119
+   ],
+   "notice": "案内所の木綿街道交流館は、火曜が休み（祝日の場合は翌日）。",
+   "noticeEn": "The information centre, Momen Kaido Kōryūkan, is closed on Tuesdays (the next day if Tuesday is a holiday).",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://izumo-kankou.gr.jp/5294 (出雲観光協会公式): 新町・片原町・宮の町からなるL字型の街道、切妻妻入塗壁造・海鼠壁・出雲格子、醤油蔵3軒、木綿街道交流館 9:00〜17:00 火曜休み、酒持田本店・來間屋の営業中の記述。",
+   "_coordsSource": "OSM way 1344741837（木綿街道交流館）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "長田染工場",
+   "verdict": "doubt",
+   "reason": "The news page says 登録されている記事はございません, so there is no dated 2026 evidence. The site looks unmaintained."
+  },
+  {
+   "name": "出西織 多々納工房",
+   "verdict": "doubt",
+   "reason": "The Instagram page exists (385 posts, 5,162 followers), but without login I could not read any post text or date. No 2026 sentence could be copied. Address 斐川町出西3655 not confirmed."
+  },
+  {
+   "name": "ANTWORKS GALLERY",
+   "verdict": "doubt",
+   "reason": "kichiya.jp has no dated 2026 text; ameblo blog top post undated (page metadata 2025-09); antworksgallery.com is behind a bot challenge (not bypassed); Instagram not readable. A web-search summary mentioned a 2026-10 exhibition but I could not open the page."
+  },
+  {
+   "name": "珈琲しの",
+   "verdict": "doubt",
+   "reason": "Square site is JS-rendered; only the title '出雲大社のそば、小さな珈琲焙煎所 | 珈琲しの' is readable. No 2026 text; Instagram not readable."
+  },
+  {
+   "name": "BLANKS IZUMO",
+   "verdict": "doubt",
+   "reason": "Only undated hours/menu; no 2026 dated text readable. Instagram not readable."
+  },
+  {
+   "name": "自家焙煎珈琲 香房 はぜ屋",
+   "verdict": "doubt",
+   "reason": "Only undated product list; blog 'まだ記事がありません'; no 2026 evidence."
+  },
+  {
+   "name": "ふじひろ珈琲",
+   "verdict": "doubt",
+   "reason": "No 2026 text; store blog (fujihiro-coffee.blog.jp) newest post 2021-08-28; お知らせ is only a generic thank-you."
+  },
+  {
+   "name": "trattorìa 814",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but only shows follower counts; no dated 2026 post text retrievable (login-gated). No 2026 sentence could be copied."
+  },
+  {
+   "name": "holo",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but only shows follower counts; no dated 2026 post text retrievable (login-gated). No 2026 sentence could be copied."
+  }
+ ]
+}

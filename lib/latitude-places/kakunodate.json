@@ -1,0 +1,203 @@
+[
+ {
+  "name": "藤木伝四郎商店",
+  "nameEn": "Fujiki Denshiro Shoten",
+  "category": "local",
+  "industry": "kabazaiku",
+  "tags": [
+   "kabazaiku",
+   "tea caddy"
+  ],
+  "area": "外町",
+  "areaEn": "Tomachi",
+  "address": "45 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://denshiro.jp/",
+  "what": "下新町の樺細工の店。1851年の創業。江戸時代末期の蔵を直した本店で、山桜の樹皮の茶筒や茶道具を売る。10時から17時、水曜は休み。",
+  "whatEn": "A kabazaiku house in Shimoshinmachi, founded in 1851. Its main shop is a renovated storehouse from the end of the Edo period, selling tea caddies and tea ware made of wild cherry bark. Open 10:00–17:00, closed on Wednesdays.",
+  "note": "茶筒は使うほど艶が出る。手に持って確かめる。",
+  "noteEn": "A tea caddy gains a shine as it is used. Hold one first.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59208,
+   140.56373
+  ]
+ },
+ {
+  "name": "仙北市立角館樺細工伝承館",
+  "nameEn": "Kakunodate Kabazaiku Craft Center",
+  "category": "local",
+  "industry": "kabazaiku",
+  "tags": [
+   "kabazaiku",
+   "demonstration",
+   "museum"
+  ],
+  "area": "内町",
+  "areaEn": "Uchimachi",
+  "address": "10-1 Omotemachi-shimocho, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://www.city.semboku.akita.jp/sightseeing/densyo/",
+  "what": "武家屋敷通りに近い、樺細工の展示館。職人の製作実演を見られる。実演は4月から11月は毎日で、9時30分から16時（12時から13時は休み）。",
+  "whatEn": "A hall for kabazaiku near the samurai houses, where craftsmen demonstrate the work. The demonstration runs daily from April to November, 9:30–16:00, with a break from 12:00 to 13:00.",
+  "note": "実演を見るなら、12時から13時は避ける。",
+  "noteEn": "To see the demonstration, avoid 12 to 1.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59965,
+   140.56101
+  ]
+ },
+ {
+  "name": "安藤醸造 本店",
+  "nameEn": "Ando Jozo Honten",
+  "category": "local",
+  "industry": "fermentation",
+  "tags": [
+   "miso",
+   "soy sauce",
+   "pickles"
+  ],
+  "area": "外町",
+  "areaEn": "Tomachi",
+  "address": "27 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://www.andojyozo.co.jp/",
+  "what": "下新町の味噌・醤油の醸造元の本店。嘉永6年（1853年）の創業で、無添加・天然醸造。明治中期のレンガ造りの蔵座敷（角館町指定文化財）を無料で見られ、味噌と醤油と漬物の試食もある。8時30分から17時。",
+  "whatEn": "The main shop of a miso and soy sauce brewer in Shimoshinmachi, founded in 1853 and brewing without additives, naturally fermented. Its brick storehouse parlor from the middle of the Meiji era, a designated local cultural property, is free to see, and miso, soy sauce and pickles are set out to taste. Open 8:30–17:00.",
+  "note": "蔵座敷は無料。試食をしてから買う。",
+  "noteEn": "The parlor is free. Taste first, then buy.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59064,
+   140.56368
+  ]
+ },
+ {
+  "name": "白岩焼和兵衛窯",
+  "nameEn": "Wahee-gama (Shiraiwa-yaki)",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glaze"
+  ],
+  "area": "白岩",
+  "areaEn": "Shiraiwa",
+  "address": "36-2 Shiraiwa-honcho, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://www.waheegama.com/",
+  "what": "江戸時代から伝わる白岩焼を受け継ぐ、ただ一つの窯元。家族3人の小さな窯で、あきたこまちのもみ殻の灰を使い、青い海鼠釉をかける。ギャラリー「白渓荘」は11時から16時、水曜は休み（不定休もある）。予約が先。",
+  "whatEn": "The only kiln that carries on Shiraiwa-yaki, a ware handed down since the Edo period. A small kiln of three family members, it glazes with the ash of Akitakomachi rice husks for a blue namako glaze. Its gallery Hakkeiso is open 11:00–16:00, closed on Wednesdays (and some other days), and reservations come first.",
+  "note": "ギャラリーは予約が先。前日と当日は電話で。",
+  "noteEn": "Reserve for the gallery first. For the day before or the same day, call.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.58813,
+   140.61707
+  ]
+ },
+ {
+  "name": "有頂天喫茶",
+  "nameEn": "Uchoten Kissa",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "外町",
+  "areaEn": "Tomachi",
+  "address": "Shinmachi Bldg 1F, 3 Kamishinmachi, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "http://ucho-ten.com/",
+  "what": "上新町、しんまちビル1階の喫茶店。自家焙煎のコーヒーをネルドリップで淹れ、2.2mmの極太麺のナポリタンも出す。営業日は、月ごとにサイトで知らせる。",
+  "whatEn": "A kissaten on the first floor of the Shinmachi Building in Kamishinmachi. It brews house-roasted coffee by flannel drip and serves Napolitan with 2.2 mm extra-thick noodles. The open days are posted on its site each month.",
+  "note": "営業日をサイトで見てから行く。",
+  "noteEn": "Check the open days on the site first.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59518,
+   140.56379
+  ]
+ },
+ {
+  "name": "RÉGAL RITZ",
+  "nameEn": "RÉGAL RITZ",
+  "category": "sweets",
+  "tags": [
+   "chestnut",
+   "mont blanc"
+  ],
+  "area": "外町",
+  "areaEn": "Tomachi",
+  "address": "34 Shimoshinmachi, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://regal-ritz.com/",
+  "what": "下新町の、モンブランの専門店。地元の西明寺栗で、焼きモンブランやモンブランプリン、モンブランソフトを作る。醤油・味噌の醸造元から受け継いだ、築120年以上の糀蔵を直した店。10時から17時で、休みは年末年始だけ。",
+  "whatEn": "A Mont Blanc specialist in Shimoshinmachi, making baked Mont Blanc, Mont Blanc pudding and soft serve from local Saimyoji chestnuts. The shop is a koji storehouse over 120 years old, taken over from a soy sauce and miso brewer. Open 10:00–17:00, closed only at the New Year.",
+  "note": "西明寺栗は10月に収穫が始まる。栗の季節に行く。",
+  "noteEn": "The Saimyoji chestnuts are harvested from October. Go in chestnut season.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59114,
+   140.56383
+  ]
+ },
+ {
+  "name": "みちのく懐かしの味 あきたプリン亭",
+  "nameEn": "Akita Purin-tei",
+  "category": "sweets",
+  "tags": [
+   "pudding"
+  ],
+  "area": "外町",
+  "areaEn": "Tomachi",
+  "address": "16 Yokomachi, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://akita-pudding.com/",
+  "what": "横町のプリン専門店。マダガスカル産のバニラビーンズと国産の卵や牛乳で、なめらかプリンを店内の工房で手作りする。秋はかぼちゃプリンが出る。10時から17時で、休みは年末年始だけ。",
+  "whatEn": "A pudding specialist in Yokomachi, making its smooth pudding by hand in a workshop at the back, with Madagascar vanilla beans and domestic eggs and milk. A pumpkin pudding comes out in autumn. Open 10:00–17:00, closed only at the New Year.",
+  "note": "かぼちゃプリンは秋限定。取り置きは電話で頼める。",
+  "noteEn": "The pumpkin pudding is autumn only. Holds can be asked for by phone.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59608,
+   140.56261
+  ]
+ },
+ {
+  "name": "食堂いなほ",
+  "nameEn": "Shokudo Inaho",
+  "category": "food",
+  "tags": [
+   "local dish",
+   "udon"
+  ],
+  "area": "田町",
+  "areaEn": "Tamachi",
+  "address": "4-1 Tamachi-kamicho, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "http://inaho.pepper.jp/",
+  "what": "料亭「稲穂」の食堂。予約なしで入れて、メニューは単品。角館の郷土料理の御狩場焼（佐竹北家に伝わる遊山料理）の御膳や、稲庭うどんがある。木曜は休み。臨時の休みはSNSで知らせる。",
+  "whatEn": "The dining room of the Ryotei Inaho. No reservation is needed and the menu is à la carte. It serves a set of Okaribayaki, a local dish handed down in the Satake Kita family as an outing meal, and Inaniwa udon. Closed on Thursdays; extra days off are posted on social media.",
+  "note": "御狩場焼は山椒味噌で食べる。ごはんと一緒に。",
+  "noteEn": "Okaribayaki is eaten with sansho miso. Have it with rice.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59384,
+   140.56499
+  ]
+ },
+ {
+  "name": "お食事処 桜の里",
+  "nameEn": "Shokujidokoro Sakura no Sato",
+  "category": "food",
+  "tags": [
+   "chicken",
+   "udon"
+  ],
+  "area": "内町",
+  "areaEn": "Uchimachi",
+  "address": "9 Higashikatsurakucho, Kakunodate-machi, Semboku-shi, Akita",
+  "url": "https://kakunodate-sakuranosato.com/",
+  "what": "武家屋敷通りの古民家の食事処。比内地鶏の親子丼と、稲庭うどんが人気。10時から15時30分で、食事は11時から（ラストオーダー15時）。休みは不定で、お知らせに出る。",
+  "whatEn": "A restaurant in an old house on the samurai street, known for Hinai-jidori oyakodon and Inaniwa udon. Open 10:00–15:30, with meals from 11:00 (last order 15:00). Days off vary and are posted in its news.",
+  "note": "親子丼は卵を3個使う。お腹をすかせて行く。",
+  "noteEn": "The oyakodon uses three eggs. Go hungry.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   39.59742,
+   140.56236
+  ]
+ }
+]

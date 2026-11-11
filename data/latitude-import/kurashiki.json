@@ -1,0 +1,532 @@
+{
+ "slug": "kurashiki",
+ "city": {
+  "name": "Kurashiki",
+  "nameJa": "倉敷",
+  "latitude": "34.6° N",
+  "country": "Okayama, Japan",
+  "countryJa": "岡山県",
+  "person": "rin",
+  "coords": [
+   34.5965,
+   133.7712
+  ],
+  "intro": "A town of white-walled storehouses along the Kurashiki River. Canvas and woven tatami edging, folk-craft tableware and coffee: Rin’s picks. In autumn, the art and folk-craft museums have exhibitions to see along the way.",
+  "introJa": "倉敷川沿いに白壁の蔵が残る町。帆布と畳縁の店、民藝の器と喫茶を、凛のおすすめで。秋は美術館と民藝館の企画展も見て歩ける。",
+  "locator": {
+   "en": "In Okayama, western Honshu · along the Kurashiki River, below Tsurugatayama hill",
+   "ja": "本州西部の岡山県・倉敷川沿い、鶴形山のふもと"
+  },
+  "industries": [
+   {
+    "key": "kurashiki-textiles",
+    "en": "Kurashiki canvas and woven textiles",
+    "ja": "倉敷帆布・織物",
+    "about": "Cotton growing on reclaimed land led to weaving in the Kojima district. Thick cotton canvas and narrow woven tatami edging are still made here, and their makers sell bags and sewing materials in the old town.",
+    "aboutJa": "干拓地での綿づくりから、児島の織物が育った。厚手の綿帆布と細幅の畳縁が今も作られ、織元の店ではバッグや手芸の材料を扱う。",
+    "_src": "Rooted in Edo-period cotton cultivation on reclaimed land, Kurashiki weaves roughly 70% of Japan's domestic shuttle-loom cotton canvas alongside narrow-loom tatami edging and heavy utility textiles."
+   },
+   {
+    "key": "mingei-and-glass",
+    "en": "Kurashiki mingei and handblown glass",
+    "ja": "倉敷の民藝と吹きガラス",
+    "about": "The Kurashiki Museum of Folk Crafts opened in 1948 in former rice storehouses, with textile researcher Kichinosuke Tonomura as its first director. Shops in the town carry everyday pottery and the blown Kurashiki glass of Shinzo and Eiji Kotani.",
+    "aboutJa": "1948年、米倉を使って倉敷民藝館が開き、織物の研究者・外村吉之介が初代館長になった。町の店には日常の器と、小谷真三・栄次親子の吹きガラス「倉敷ガラス」が並ぶ。",
+    "_src": "Anchored by Japan's second folk crafts museum founded in 1948 under Kichinosuke Tonomura, Kurashiki sustains a living everyday-craft culture led by handblown Kurashiki Glass, local kilns, and handwoven mats."
+   }
+  ]
+ },
+ "places": {
+  "倉敷帆布 美観地区店": {
+   "nameEn": "Kurashiki Hampu, Bikan Shop",
+   "area": "本町",
+   "areaEn": "Honmachi",
+   "tags": [
+    "canvas",
+    "bags"
+   ],
+   "what": "本町の古民家を再生した、倉敷帆布の直営店。帆布のバッグと小物を扱い、生地の販売はしない。",
+   "whatEn": "The Kurashiki Hampu shop in a restored old house in Honmachi. Canvas bags and small goods; fabric is not sold here.",
+   "note": "生地は売っていないので、普段使うバッグから選ぶ。",
+   "noteEn": "No fabric here, so start with a bag for everyday use.",
+   "_src": {
+    "category": "local",
+    "industry": "kurashiki-textiles",
+    "nameKana": "クラシキハンプ ビカンチクテン",
+    "address": "Honmachi 11-33, Kurashiki",
+    "url": "https://www.kurashikihampu.co.jp/shop",
+    "whatJa": "1888年創業の織元・倉敷帆布株式会社が本町通りの古民家を再生して営む直営店で、シャトル織機で織り上げた国産綿帆布のバッグや日用小物を扱う。",
+    "whatEn": "Direct store of the 1888-founded weaver Kurashiki Canvas, set inside a restored townhouse on Honmachi Street and stocking bags and daily goods sewn from shuttle-loomed cotton duck.",
+    "facts": "Operated directly by Kurashiki Canvas (which has only two direct stores, the Sosori factory flagship and this Honmachi shop opened in April 2008); its canvas is woven slowly on vintage shuttle looms that leave a characteristic selvedge edge; carries store-exclusive seasonal colors alongside standard No. 4 to No. 11 weight canvas totes.",
+    "weak": "Uncut bolts of raw canvas fabric are only sold at the Sosori factory head store, not at this Bikan branch.",
+    "verifiedBy": "https://www.kurashikihampu.co.jp/news/brand/2026%e2%80%9001-31.html",
+    "quote": "2026年1月31日 【美観地区店】バレンタイン限定商品を販売します いつも倉敷帆布をご利用いただき、誠にありがとうございます。",
+    "fixes": "",
+    "coords": [
+     34.59644,
+     133.77372
+    ]
+   }
+  },
+  "FLAT 倉敷美観地区店": {
+   "nameEn": "FLAT Kurashiki Bikan Shop",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "tags": [
+    "textiles",
+    "tatami-beri"
+   ],
+   "what": "畳縁の織元・髙田織物の直営店。手芸用の畳縁や、畳縁で作った小物と制作レシピを扱う。",
+   "whatEn": "A shop run by tatami-edging weaver Takata Orimono. Woven edging for sewing, small goods made from it, and craft patterns.",
+   "note": "畳縁を選ぶなら、作りたい小物のレシピも一緒に見る。",
+   "noteEn": "Choose a pattern for something to make along with the woven edging.",
+   "_src": {
+    "category": "local",
+    "industry": "kurashiki-textiles",
+    "nameKana": "フラット クラシキビカンチクテン",
+    "address": "Chuo 1-4-16, Kurashiki",
+    "url": "https://flat-kojimaberi.com/",
+    "whatJa": "畳縁の国内シェアトップを誇る織元・髙田織物株式会社の直営ファクトリーショップで、幅80ミリの多彩な畳縁ロールや手芸資材が壁一面に並ぶ。",
+    "whatEn": "Factory shop of Takata Orimono, Japan's largest weaver of tatami-beri edging ribbons, lining its walls with rolls of 80-millimeter patterned woven tape and sewing materials.",
+    "facts": "One of only two direct shops run by Takata Orimono, which produces over 40% of Japan's tatami edging; stocks more than 1,000 woven patterns ranging from classic geometric weaves to reversible jacquards; sells 1.5-meter craft rolls, sewing recipes, and factory-exclusive card cases and pouches.",
+    "weak": "Closed on Wednesdays during January, February, and June, and has no dedicated customer parking.",
+    "verifiedBy": "https://flat-kojimaberi.com/",
+    "quote": "来年の干支 午をイメージした畳縁 「招福 未」を数量限定にて2026年10月1日(木)より発売いたします。",
+    "fixes": "Page says 定休日 日曜・祝祭日（土曜不定休）and 駐車場 あり; address 中央1-4-16 matches.",
+    "coords": [
+     34.59505,
+     133.77153
+    ]
+   }
+  },
+  "T.S.L Kurashiki": {
+   "nameEn": "T.S.L Kurashiki",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "canvas",
+    "leather",
+    "stationery"
+   ],
+   "what": "林源十郎商店の敷地にある、THE SUPERIOR LABORの直営店。1階に鞄や革小物、2階にトラベラーズノートや中古レコードが並ぶ。",
+   "whatEn": "The shop of THE SUPERIOR LABOR at Hayashi Genjuro Shoten. Bags and leather goods downstairs; TRAVELER’S notebooks and used records upstairs.",
+   "note": "ノートの加工を頼むなら、国内客は後日発送と覚えておく。",
+   "noteEn": "If you live in Japan, notebook custom orders are shipped later.",
+   "_src": {
+    "category": "local",
+    "industry": "kurashiki-textiles",
+    "nameKana": "ティーエスエル クラシキ",
+    "address": "Achi 2-23-10, Kurashiki",
+    "url": "https://nap-dog.com/blogs/stores",
+    "whatJa": "林源十郎商店の昭和初期の木造棟に入る岡山発ファクトリーブランド「THE SUPERIOR LABOR」の直営旗艦店で、厚手帆布と革・真鍮を組み合わせた鞄やカスタムオーダーを展開する。",
+    "whatEn": "Flagship store of Okayama maker THE SUPERIOR LABOR in a 1930s wooden building at Hayashi Genjuro Shoten, pairing heavy canvas, vegetable-tanned leather, and brass hardware with custom stamping and patchwork.",
+    "facts": "One of just two direct stores run by nap Inc. (alongside the nearby T.S.L STORE & LAB workshop); opened in 2022 on the historic site of the 1657 Hayashi apothecary; serves as an official TRAVELER'S notebook partner and customization shop on the second floor alongside vintage records and film cameras.",
+    "weak": "Closed Mondays and Tuesdays, and custom notebook orders for domestic residents require six to eight weeks for delivery rather than same-day pickup.",
+    "verifiedBy": "https://nap-dog.com/blogs/news/travelers-notebook-customization-classics-reservation-site-now-open",
+    "quote": "Published: 2026年10月21日",
+    "fixes": "Opened page is the nap Inc. news page; store details (address, hours) not verified on it.",
+    "coords": [
+     34.59723,
+     133.77025
+    ]
+   }
+  },
+  "融民藝店": {
+   "nameEn": "Toworu Mingei",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "mingei"
+   ],
+   "what": "1971年から倉敷美観地区で続く民藝の店。",
+   "whatEn": "A folk-craft shop in the Bikan quarter, here since 1971.",
+   "note": "1971年から続く店で、毎日使うものを探したい。",
+   "noteEn": "I would look for something to use every day in this shop, here since 1971.",
+   "_src": {
+    "category": "local",
+    "industry": "mingei-and-glass",
+    "nameKana": "トヲルミンゲイテン",
+    "address": "Achi 2-25-48, Kurashiki",
+    "url": "https://toworu-mingei.studio.site/",
+    "whatJa": "1971年創業の倉敷を代表する民藝専門店で、地元の吹きガラスや岡山の窯元の器、倉敷ノッティングなど実用本位の手仕事を扱う。",
+    "whatEn": "Founded in 1971, this benchmark Kurashiki mingei shop curates handblown local glass, Okayama slipware and stoneware, Kurashiki notting chair mats, and functional folk crafts from across Japan.",
+    "facts": "Works closely with Okayama glassblower Masahiro Ishikawa (who trained under Kurashiki Glass founder Shinzo Kotani) and hosts collaborative exhibitions with Nihon Kyodo Gangukan; carries regional kilns such as Sakazu-yaki alongside Okinawa pottery and bamboo basketry; single-location independent shop.",
+    "weak": "Compact interior where handblown glass and one-off kiln pieces sell out quickly after exhibitions.",
+    "verifiedBy": "https://gangukan.shopinfo.jp/posts/58873610?categoryIds=578150",
+    "quote": "「色絵と無地」石川昌浩と豊永盛人 2026年7月3日〜12日 硝子の往復書簡。 続けること難しさを思うと この継続を嬉しく思います。 2024年に続き 日本郷土玩具館と融民藝店で 並べさせていただきます。",
+    "fixes": "Official site toworu-mingei.studio.site has no dated 2026 content; evidence is the partner shop's post.",
+    "coords": [
+     34.59815,
+     133.77034
+    ]
+   }
+  },
+  "日本郷土玩具館": {
+   "nameEn": "Japan Rural Toy Museum",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "tags": [
+    "folk-toys",
+    "glass",
+    "tableware"
+   ],
+   "what": "倉敷川沿いの米倉を使った郷土玩具の博物館。敷地内に玩具の店とギャラリー、倉敷ガラスや日常の器を扱うサイドテラスがある。",
+   "whatEn": "A folk-toy museum in former rice storehouses along the Kurashiki River. Toy shops, a gallery and the Side Terrace shop for Kurashiki glass and everyday tableware share the grounds.",
+   "note": "玩具を見たあと、中庭のサイドテラスでガラスを見る。",
+   "noteEn": "After the toys, look at the glass in the courtyard’s Side Terrace.",
+   "_src": {
+    "category": "local",
+    "industry": "mingei-and-glass",
+    "nameKana": "ニホンキョウドガングカン",
+    "address": "Chuo 1-4-16, Kurashiki",
+    "url": "https://gangukan.shopinfo.jp/",
+    "whatJa": "倉敷川沿いの江戸時代の米倉群を活かした施設で、中庭に面したショップ「サイドテラス」にて小谷真三・栄次親子の「倉敷ガラス」や日常の器、倉敷緞通、郷土玩具を扱う。",
+    "whatEn": "An Edo-period rice-granary complex along the Kurashiki Canal whose glass-walled Side Terrace shop has championed Shinzo and Eiji Kotani's handblown Kurashiki Glass alongside local Kurashiki dantsu rugs and folk toys since the 1960s.",
+    "facts": "Opened in 1967 after its founder first used Shinzo Kotani's early blown tumblers at an on-site mingei tearoom in spring 1965 on Kichinosuke Tonomura's recommendation; authentic Kurashiki Glass—defined strictly as pieces blown by Shinzo or Eiji Kotani in Kurashiki—lines the sunlit Side Terrace windows; also houses the +1GALLERY inside a former inner storehouse for craft exhibitions.",
+    "weak": "Authentic Eiji Kotani Kurashiki Glass arrives in small handblown batches and cannot be used with boiling liquids, microwaves, or dishwashers.",
+    "verifiedBy": "https://gangukan.shopinfo.jp/posts/59304743?categoryIds=577074",
+    "quote": "干支づくし【未】 2026年11月20日〜2027年1月3日",
+    "fixes": "",
+    "coords": [
+     34.59507,
+     133.77139
+    ]
+   }
+  },
+  "滔々 toutou": {
+   "nameEn": "toutou",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "tags": [
+    "ceramics",
+    "tableware",
+    "mingei"
+   ],
+   "what": "現代の作り手の工芸を扱うギャラリー。別の倉敷民藝館南店では、日用の器や倉敷手毬、籠などを扱う。",
+   "whatEn": "A gallery for crafts by contemporary makers. Its separate shop south of the folk-craft museum sells everyday vessels, Kurashiki temari balls and baskets.",
+   "note": "器を見る日は、ギャラリーと民藝館南店を両方回る。",
+   "noteEn": "For tableware, look in both the gallery and the shop south of the museum.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "トウトウ",
+    "address": "Chuo 1-6-8, Kurashiki",
+    "url": "https://toutou-kurashiki.jp/",
+    "whatJa": "大原美術館南側の路地に佇む工芸ギャラリー＆ショップで、現代作家の器やガラスの企画展を行うギャラリーと、手仕事の生活道具を揃える「倉敷民藝館南店」を展開する。",
+    "whatEn": "A quiet craft gallery and tableware shop in the back lanes south of the Ohara Museum, pairing solo exhibitions of contemporary ceramic, glass, and wood makers with a dedicated mingei annex beside the Kurashiki Museum of Folk Crafts.",
+    "facts": "Operates both toutou Gallery for solo craft exhibitions and Kurashiki Mingeikan Minamiten for everyday folk pottery, Kurashiki temari thread balls, and woven baskets; set inside carefully restored century-old machiya spaces; open afternoon hours from 12:00 to 17:00.",
+    "weak": "Opens only at noon (12:00–17:00), and the gallery closes briefly between solo exhibitions for installation.",
+    "verifiedBy": "https://toutou-kurashiki.jp/",
+    "quote": "2027年1月 冬期休業のお知らせ 平素より滔々をご愛顧いただき、誠にありがとうございます。",
+    "fixes": "Page lists hours 12:00〜17:00 無休 (no regular closing day).",
+    "coords": [
+     34.59523,
+     133.77042
+    ]
+   }
+  },
+  "工房イクコ": {
+   "nameEn": "Koubou Ikuko",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "tags": [
+    "ceramics",
+    "glass",
+    "wood"
+   ],
+   "what": "作家の陶器や硝子、木の器などを扱うギャラリー。個展と常設の展示があり、展覧会のない週は月・火曜が休み。",
+   "whatEn": "A gallery for studio ceramics, glass and wooden vessels, with solo shows and a regular display. Closed Mondays and also Tuesdays in weeks without an exhibition.",
+   "note": "木の器も気になるので、個展の予定を見てから行く。",
+   "noteEn": "I would check the show list first; wooden vessels interest me too.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "コウボウイクコ",
+    "address": "Chuo 1-12-9, Kurashiki",
+    "url": "https://www.koubou-ikuko.com/",
+    "whatJa": "蔵を改装した空間で長年営まれるクラフトギャラリー＆ショップで、陶磁器、手吹き硝子、木のうつわ、倉敷緞通など実力派作家の仕事を展示販売する。",
+    "whatEn": "Long-running Kurashiki craft gallery and tableware shop inside a converted storehouse, presenting museum-caliber studio ceramics, handblown glass, wooden vessels, and handwoven Kurashiki dantsu rugs.",
+    "facts": "Regularly hosts solo shows for leading Japanese craftspeople including Okayama glassblower Hideki Yokoyama, potter Koichi Uchida, and woodturner Ikkei Ninjo; stocks permanent everyday tableware alongside rotating exhibitions; closed Mondays unless a national holiday.",
+    "weak": "Popular solo exhibitions such as Hideki Yokoyama's blown-glass shows may require advance or first-day entry procedures.",
+    "verifiedBy": "https://www.koubou-ikuko.com/",
+    "quote": "仁城逸景　木のうつわ展 2026年11月28日(土)→12月6日(日)〈11月30日(月)休廊日〉 営業時間：午前10時～午後6時〈最終日は午後4時まで〉",
+    "fixes": "",
+    "coords": [
+     34.59381,
+     133.77134
+    ]
+   }
+  },
+  "アチブランチ": {
+   "nameEn": "atiburanti",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "crafts",
+    "textiles"
+   ],
+   "what": "1934年築の林源十郎商店の1階にある生活用品の店。倉敷意匠計画室のパートナーショップで、作り手の企画展も開く。",
+   "whatEn": "A shop for everyday goods on the ground floor of the 1934 Hayashi Genjuro Shoten building. A partner shop of Kurashiki Isho Keikakushitsu, with exhibitions of makers’ work.",
+   "note": "11月は、ヤクやウールの服の展示に合わせて行きたい。",
+   "noteEn": "In November, I would go for the show of yak and wool clothing.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "アチブランチ",
+    "address": "Achi 2-23-10, Kurashiki",
+    "url": "https://atiburanti.jp/",
+    "whatJa": "1934年築の林源十郎商店本館1階にある「倉敷意匠計画室」のパートナーショップで、作家の陶磁器や吹きガラス、紙もの、リネンなどの生活道具と企画展を扱う。",
+    "whatEn": "Partner select shop and exhibition space of Kurashiki design label Kurashiki Isho Keikakushitsu on the ground floor of the 1934 Hayashi Genjuro Shoten building, carrying studio tableware, blown glass, paper goods, and linen.",
+    "facts": "Occupies the street level of the renovated three-story wooden headquarters of a former Edo-era pharmacy; pairs Kurashiki Isho's craft collaborations with solo and group shows of ceramic, glass, and textile makers; closed Mondays.",
+    "weak": "Closed on Mondays, and no dedicated parking is attached to the Hayashi Genjuro Shoten complex.",
+    "verifiedBy": "https://atiburanti.jp/archives/display/196",
+    "quote": "OTOR 遊牧 2026 from Mongolia 2026年11月14日（土）〜 12月6日（日） 定休日／月曜日 営業時間／10:00 - 18:00",
+    "fixes": "",
+    "coords": [
+     34.59737,
+     133.77047
+    ]
+   }
+  },
+  "Café＆Ceramics うつわ四季": {
+   "nameEn": "Café & Ceramics Utsuwa Shiki",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "ceramics"
+   ],
+   "what": "阿知の、カフェを併設した器の店。土〜水曜は8時から、木・金曜は10時30分からで、木曜は不定休。",
+   "whatEn": "A ceramics shop with a café in Achi. Open from 8 a.m. Saturday to Wednesday, and 10:30 a.m. on Thursdays and Fridays; some Thursdays closed.",
+   "note": "朝に器も見たいなら、8時から開く土〜水曜を選ぶ。",
+   "noteEn": "For an early look at the pots, choose Saturday to Wednesday, from 8 a.m.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "カフェアンドセラミックス ウツワシキ",
+    "address": "Achi 2-16-38, Kurashiki",
+    "url": "https://www.instagram.com/utuwasiki.0311/",
+    "whatJa": "元百貨店美術画廊担当の店主が目利きした窯元・作家の器が並ぶえびす通り商店街の器セレクトショップで、2026年3月に店の奥へ静かなカフェを新設した。",
+    "whatEn": "A ceramic select shop near the south end of the covered Ebisu-dori arcade curated by a former department-store fine-art gallery buyer, with a quiet back-room cafe added in March 2026.",
+    "facts": "Stocks everyday mugs, rice bowls, and plates from major Japanese pottery regions and individual ceramic artists; the back-room cafe opens from 8:00 a.m. Saturday through Wednesday for toast plates, Okayama Chiya beef curry, and iced coffee from local roaster kobacoffee.",
+    "weak": "While the ceramics shop is open daily, the back-room cafe is closed on Thursdays and Fridays.",
+    "verifiedBy": "https://www.okayama-kanko.jp/okatabi/detail_1813.html",
+    "quote": "こちらが2026年3月にリニューアルして、店の奥にカフェがオープンしました。",
+    "fixes": "",
+    "coords": [
+     34.59854,
+     133.77017
+    ]
+   }
+  },
+  "atelier & salon はしまや": {
+   "nameEn": "atelier & salon Hashimaya",
+   "area": "東町",
+   "areaEn": "Higashimachi",
+   "tags": [
+    "fermentation",
+    "pickles"
+   ],
+   "what": "東町の築約150年の米蔵を再生した、発酵料理のサロン。発酵調味料を使うランチや甘酒、併設アトリエで作るピクルスがある。",
+   "whatEn": "A salon for fermented food in a restored rice storehouse, about 150 years old, in Higashimachi. Lunches with fermented seasonings, amazake and pickles made in the adjoining atelier.",
+   "note": "発酵の飲み物を試すなら、甘酸っぱい白麹あま酒にする。",
+   "noteEn": "For a fermented drink, I would choose the sweet-sour white-koji amazake.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "アトリエ アンド サロン ハシマヤ",
+    "address": "Higashimachi 1-20, Kurashiki",
+    "url": "https://hashimaya.com/",
+    "whatJa": "静かな東町の楠戸家住宅に残る築約150年の米蔵を再生した発酵サロン＆ランチ処で、自家製麹や季節野菜のピクルスを取り入れた昼食を提供する。",
+    "whatEn": "A fermentation-focused lunch salon and pickle atelier inside a 150-year-old renovated rice storehouse on the grounds of the historic Kusudo Residence in quiet Higashimachi.",
+    "facts": "Housed in a Meiji-era kura behind the former kimono merchant Kusudo family residence in 'Oku-Kurashiki' (Higashimachi); serves koji-seasoned hamburg steak, fermented spice curry, smørrebrød, and seasonal fermented deli boxes alongside house-jarred pickles; also runs small-batch fermentation workshops.",
+    "weak": "Lunch menus vary by day of the week and seating in the historic storehouse is limited, so advance reservation is advisable.",
+    "verifiedBy": "https://hashimaya.com/",
+    "quote": "2026.10.28 発酵×腸活　デリBOX を販売します",
+    "fixes": "",
+    "coords": [
+     34.5975,
+     133.77583
+    ]
+   }
+  },
+  "kobacoffee 倉敷川店": {
+   "nameEn": "kobacoffee Kurashikigawa",
+   "area": "本町",
+   "areaEn": "Honmachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "本町の自家焙煎珈琲の店。ペーパードリップ、サイフォン、コーヒープレスで淹れる。",
+   "whatEn": "A coffee shop and roaster in Honmachi. Coffee brewed by paper drip, siphon or coffee press.",
+   "note": "いつもの豆でも、淹れ方を変えて頼んでみたい。",
+   "noteEn": "I would try a different brewing method, even with familiar beans.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "コバコーヒー クラシキガワテン",
+    "address": "Honmachi 5-27, Kurashiki",
+    "url": "https://www.koba-coffee.com/",
+    "whatJa": "倉敷珈琲館で長年焙煎と抽出を担った店主が本町で営む自家焙煎スペシャルティコーヒー専門店で、豆ごとに好みの抽出器具を選べる。",
+    "whatEn": "A tucked-away specialty coffee shop and roaster in Honmachi founded by a former longtime roaster of Kurashiki Kohikan, letting guests choose how each single-origin bean is brewed.",
+    "facts": "Operates three small local spots within Kurashiki city (this canal-side cafe, a nearby bean counter, and the Nishitomii roastery workshop); guests can select cone paper drip, siphon, or French press extraction; also serves handmade soufflé cheesecake and reservation-only Okayama fruit afternoon tea.",
+    "weak": "Tucked inside a courtyard setback that is easy to walk past, and full afternoon tea sets require booking at least two days ahead.",
+    "verifiedBy": "https://www.koba-coffee.com/",
+    "quote": "kobacoffe　INFO 2026アフタヌーンティー(スイーツタワー)",
+    "fixes": "Autumn afternoun tea period 10/1〜12/28 stated on page.",
+    "coords": [
+     34.59483,
+     133.77195
+    ]
+   }
+  },
+  "Coffee+Bar FIDELITY": {
+   "nameEn": "Coffee+Bar FIDELITY",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "coffee",
+    "espresso"
+   ],
+   "what": "倉敷駅前の自家焙煎珈琲店。直火で焙煎した豆を注文ごとに挽き、ハンドドリップやエスプレッソで出す。",
+   "whatEn": "A coffee roaster by Kurashiki Station. Direct-flame roasted beans, ground to order for hand-drip coffee and espresso.",
+   "note": "深煎りの豆を使うラテを、駅前で一杯飲んでから歩く。",
+   "noteEn": "I would have a dark-roast latte by the station before setting off.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "コーヒーアンドバー フィデリティ",
+    "address": "Achi 2-3-2 Konishi Bldg 2F, Kurashiki",
+    "url": "https://www.hifi-coffeeroasters.com/",
+    "whatJa": "倉敷駅前のビル2階にある自家焙煎カフェ＆バーで、直火焙煎の「Hi-Fi Coffee Roasters」のスペシャルティコーヒーや瀬戸内レモンのアレンジドリンクを提供する。",
+    "whatEn": "A second-floor specialty coffee stand and bar directly opposite Kurashiki Station, pouring direct-flame beans roasted in-house under its Hi-Fi Coffee Roasters label alongside Setouchi citrus drinks.",
+    "facts": "Independent roaster operating this station-front second-floor cafe-bar and a tiny local bean counter; roasts small batches on a direct-flame roaster and sells whole beans and drip bags; pairs light-roast specialty espresso and pour-over with homemade Setoda lemon drinks and music.",
+    "weak": "Reached by stairs to the second floor of a small commercial building with compact seating.",
+    "verifiedBy": "https://www.hifi-coffeeroasters.com/posts/58939456",
+    "quote": "2026.06.18 12:00 Rock With You",
+    "fixes": "",
+    "coords": [
+     34.60136,
+     133.76759
+    ]
+   }
+  },
+  "天領倉敷珈琲": {
+   "nameEn": "Tenryo Kurashiki Coffee",
+   "area": "阿知",
+   "areaEn": "Achi",
+   "tags": [
+    "coffee",
+    "beans"
+   ],
+   "what": "倉敷駅前商店街の、注文を受けてから焙煎する珈琲豆の店。好みの煎り具合で、10分ほどで仕上がる。",
+   "whatEn": "A roast-to-order coffee bean shop in the station-front shopping arcade. Beans roasted to your preferred level in about ten minutes.",
+   "note": "豆を買うなら、焙煎を待つ10分も予定に入れておく。",
+   "noteEn": "Allow ten minutes for roasting when you buy beans.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "テンリョウクラシキコーヒー",
+    "address": "Achi 2-7-19, Kurashiki",
+    "url": "https://www.tenryo-coffee.com/",
+    "whatJa": "倉敷駅前商店街にあるオーダー焙煎スタイルの珈琲豆専門店で、ハンドピックした生豆を注文ごとに好みの煎り具合へ約10分で焙煎する。",
+    "whatEn": "An order-roasting coffee bean shop in the Kurashiki station-front arcade that hand-picks raw beans and roasts each customer's batch to their chosen roast level in about ten minutes.",
+    "facts": "Single-shop local roaster using a high-velocity hot-air 'Tornado King' roaster for even heat transfer across every bean; carries signature blends like Tenryo Kurashiki Blend and Bitchu Kuro Blend alongside seasonal single-origin micro-lots; collaborates with local Okayama sweets makers on seasonal coffee desserts.",
+    "weak": "Primarily a roast-to-order coffee bean retail shop rather than a full sit-down kissaten, with a ~10-minute wait while beans roast.",
+    "verifiedBy": "https://www.tenryo-coffee.com/",
+    "quote": "2026 年 11 月 06 日 期間限定でコスタリカ セントタラス SHBが入荷いたしました",
+    "fixes": "",
+    "coords": [
+     34.60009,
+     133.76838
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "大原美術館",
+   "nameEn": "Ohara Museum of Art",
+   "kind": "art",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "address": "倉敷市中央1-1-15",
+   "url": "https://www.ohara.or.jp/",
+   "what": "大原孫三郎が画家・児島虎次郎を記念して1930年に設立した美術館。西洋と日本の近現代美術のほか、工芸や東洋の美術を収蔵する。",
+   "whatEn": "Founded in 1930 by Ohara Magosaburo in memory of the painter Kojima Torajiro. Modern Western and Japanese art, alongside crafts and Asian art.",
+   "coords": [
+    34.59603,
+    133.77044
+   ],
+   "notice": "分館は長期休館中。",
+   "noticeEn": "The Annex is closed for an extended period.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.ohara.or.jp/ : 2026年の開館カレンダー、11月の開館情報、分館は長期休館中。https://www.ohara.or.jp/history/ : 1930年、大原孫三郎が児島虎次郎を記念して設立。https://www.ohara.or.jp/about/ : 所蔵分野と住所 倉敷市中央1-1-15。",
+   "_coordsSource": "OSM Nominatim: way 616920786 (tourism=museum), lat 34.5960325, lon 133.7704385; rounded to 5 decimals."
+  },
+  {
+   "name": "倉敷民藝館",
+   "nameEn": "Kurashiki Museum of Folk Crafts",
+   "kind": "art",
+   "area": "中央",
+   "areaEn": "Chuo",
+   "address": "倉敷市中央1-4-11",
+   "url": "https://kurashiki-mingeikan.com/",
+   "what": "江戸時代後期の米倉を使い、1948年に開いた民藝館。岡山の手仕事のほか、世界各地の器、籠、金工品や家具を展示する。",
+   "whatEn": "A folk-craft museum opened in 1948 in late-Edo rice storehouses. Crafts from Okayama, with vessels, baskets, metalwork and furniture from around the world.",
+   "coords": [
+    34.59548,
+    133.7715
+   ],
+   "notice": "2026年12月8〜10日は展示替えで臨時休館、7日も月曜休館。開館は10〜17時、入館は16時30分まで。",
+   "noticeEn": "Closed for exhibition changes on 8–10 December 2026, and for the regular Monday closure on 7 December. Open 10:00–17:00, last admission 16:30.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://kurashiki-mingeikan.com/ : 企画展 Formosa Taiwan（2026/6/24〜12/6）、文字の模様性（2026/9/9〜12/6）。12/8〜10展示替え休館、12/7月曜休館。10〜17時、受付16:30まで。住所 中央1-4-11。https://kurashiki-mingeikan.com/about.html : 昭和23年開館、江戸時代後期の米倉、初代館長外村吉之介。https://kurashiki-mingeikan.com/guide.html : 岡山の民藝、焼物、金工、籠、家具の展示。",
+   "_coordsSource": "OSM Nominatim: way 332091575 (tourism=museum), lat 34.5954816, lon 133.7715039; rounded to 5 decimals."
+  },
+  {
+   "name": "阿智神社",
+   "nameEn": "Achi Shrine",
+   "kind": "sight",
+   "area": "本町",
+   "areaEn": "Honmachi",
+   "address": "倉敷市本町12-1",
+   "url": "https://achi.or.jp/",
+   "what": "美観地区の鎮守で、宗像三女神を祀る神社。檜皮葺きの本殿は倉敷市の文化財で、2024年に屋根を葺き替えた。境内は終日参拝できる。",
+   "whatEn": "The guardian shrine of the Bikan quarter, dedicated to the three Munakata goddesses. Its cypress-bark-roofed main hall is a city cultural property; the roof was renewed in 2024. The grounds are open for worship at any hour.",
+   "coords": [
+    34.59753,
+    133.77344
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://achi.or.jp/ : 2026/10/26更新、11/1〜30令和9年新年団体祈祷受付。参拝時間は終日可能、所在地 本町12-1。https://achi.or.jp/achi : 美観地区の鎮守、宗像三女神、本殿は倉敷市文化財、令和6年3月檜皮葺き替え完了。",
+   "_coordsSource": "OSM Nominatim: way 367205655 (amenity=place_of_worship), lat 34.5975294, lon 133.7734429; rounded to 5 decimals."
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "大手まんぢゅうカフェ",
+   "verdict": "doubt",
+   "reason": "Official page shows hours 12:00〜17:00, closed Mon-Wed but no dated 2026 sentence; no 2026 notice found."
+  },
+  {
+   "name": "ブーランジェリー ムギ",
+   "verdict": "doubt",
+   "reason": "Official site news last entry 2021/3/1; no 2026 evidence on official page."
+  },
+  {
+   "name": "名代とんかつかっぱ",
+   "verdict": "doubt",
+   "reason": "Instagram page opened without readable dated 2026 posts."
+  },
+  {
+   "name": "カレーハウス神戸屋",
+   "verdict": "doubt",
+   "reason": "No 2026 sentence found on official shop page."
+  },
+  {
+   "name": "倉敷珈琲館",
+   "verdict": "doubt",
+   "reason": "Only a 'Tabelog 百名店 2021・2022・2026' badge; no dated operating notice. Page says 年中無休 OPEN 10:00〜17:00."
+  }
+ ]
+}

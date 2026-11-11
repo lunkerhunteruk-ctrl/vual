@@ -1,0 +1,537 @@
+{
+ "slug": "aizuwakamatsu",
+ "city": {
+  "name": "Aizuwakamatsu",
+  "nameJa": "会津若松",
+  "latitude": "37.5° N",
+  "country": "Fukushima, Japan",
+  "countryJa": "福島県",
+  "person": "rin",
+  "coords": [
+   37.4985,
+   139.9265
+  ],
+  "intro": "A castle town in the Aizu basin of Fukushima, around the red-tiled Tsurugajo. Lacquerware, painted candles, striped cotton and sake from the old merchant streets, then miso dengaku, soba and coffee: Rin's picks.",
+  "introJa": "福島県、会津盆地の城下町。赤瓦の鶴ヶ城のまわりに、会津塗、絵ろうそく、縞の木綿、造り酒屋が残る。それから味噌田楽とそばと喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "In the Aizu basin · a castle town around Tsurugajo",
+   "ja": "会津盆地・鶴ヶ城のある城下町"
+  },
+  "industries": [
+   {
+    "key": "aizu-nuri",
+    "en": "Aizu lacquerware",
+    "ja": "会津塗",
+    "about": "Aizu lacquerware is a craft of the castle town's merchant houses. Suzuzen, a lacquerware wholesaler founded in 1832, keeps its storehouses open to visitors, with exhibits, a shop and a workshop where you paint a maki-e design yourself.",
+    "aboutJa": "会津塗は、城下の問屋が支えてきた漆器。1832年創業の漆器問屋、鈴善は蔵を公開していて、展示と販売のほか、器に自分で蒔絵を描く体験もできる。",
+    "_src": "Fostered since late-16th-century castle lord Gamo Ujisato invited master woodturners and lacquerers from Omi, Aizu lacquerware pairs local horse-chestnut and zelkova timber with luminous urushi and maki-e gold dust."
+   },
+   {
+    "key": "aizu-erosoku",
+    "en": "Aizu painted sumac-wax candles",
+    "ja": "会津絵ろうそく",
+    "about": "Aizu painted candles are Japanese candles whose shafts are painted by hand with chrysanthemums, peonies, plum blossoms and lucky patterns. They are named among the exhibits at the 1873 Vienna World Exposition. Ozawa, founded in 1785, still paints them and runs a painting workshop.",
+    "aboutJa": "会津絵ろうそくは、和ろうそくの表面に菊や牡丹、梅、縁起のよい文様を手で描いたもの。1873年のウィーン万博の出品記録にも名がある。1785年創業の小澤は、いまも絵を描き、絵付け体験を開く。",
+    "_src": "Hand-dipped sumac-wax candles painted petal by petal with chrysanthemums, peonies, and wisteria were developed to stand in for fresh altar flowers during Aizu's deep basin winters."
+   },
+   {
+    "key": "aizu-momen",
+    "en": "Aizu cotton",
+    "ja": "会津木綿",
+    "about": "Aizu cotton is a striped plain weave made with warp threads of two or more colours. Aizu lies at the northern limit of cotton growing in Japan, so the cloth is thick and warm. Yamada Momen still runs a Toyoda power loom from the early Showa era.",
+    "aboutJa": "会津木綿は、二色以上の縦糸で縞を織る平織りの木綿。会津は日本の綿花栽培の北限とされ、布は厚くて丈夫。山田木綿織元では、昭和の初めから使う豊田式の織機が、いまも動いている。",
+    "_src": "Tightly woven plain-weave cotton striped in indigo and madder hues has been woven on shuttle looms here for four centuries to insulate against bitter winters and breathe in humid summers."
+   },
+   {
+    "key": "aizu-sake",
+    "en": "Aizu sake brewing",
+    "ja": "会津清酒",
+    "about": "Tsurunoe, founded in 1794 on Nanukamachi-dori, is a sake brewery in the castle town. It makes Aizu Chujo and Yuri, and the shop pours tastings and sells from nine in the morning to six.",
+    "aboutJa": "鶴乃江酒造は、七日町通り沿いにある、1794年創業の城下町の酒蔵。会津中将とゆりを造り、店では朝9時から18時まで試飲と販売をしている。",
+    "_src": "Soft snowmelt from the Bandai and Iide mountains and basin-grown brewer's rice sustain historic family kura right inside the castle town."
+   }
+  ]
+ },
+ "places": {
+  "鈴善漆器店": {
+   "nameEn": "Suzuzen Lacquerware",
+   "area": "大町・中町",
+   "areaEn": "Omachi & Nakamachi",
+   "tags": [
+    "lacquer"
+   ],
+   "what": "天保3年（1832年）創業の漆器問屋。蔵を公開した「会津塗伝承館」で、漆器の展示と販売があり、蒔絵体験もできる。",
+   "whatEn": "A lacquerware wholesaler founded in 1832. Its storehouses are open as a hall of Aizu lacquer, with a shop and a maki-e workshop.",
+   "note": "蒔絵体験は予約が要る。二人から。",
+   "noteEn": "The maki-e workshop needs a booking, for two or more.",
+   "_src": {
+    "category": "local",
+    "industry": "aizu-nuri",
+    "nameKana": "すずぜんしっきてん",
+    "address": "中央1-3-28",
+    "url": "https://suzuzen.com/",
+    "whatJa": "天保3年（1832年）創業の会津漆器老舗問屋で、歴史ある蔵座敷での漆器展示販売や蒔絵の絵付け体験を行う。",
+    "whatEn": "1832-founded Aizu lacquerware merchant-workshop displaying turned urushi soup bowls, stacked jubako boxes, and a hands-on maki-e decoration studio inside vintage kura storehouses.",
+    "facts": "Founded in 1832 (Tenpo 3) at the eastern head of the Nanukamachi-dori corridor; compound preserves Meiji-era kura storehouses; runs hands-on maki-e brushwork sessions dusting metallic powders onto lacquered bowls and trays.",
+    "weak": "",
+    "verifiedBy": "https://suzuzen.com/",
+    "quote": "ひょうたんの展覧会",
+    "fixes": "Address 福島県会津若松市中央1-3-28 matches. Site title is 会津塗伝承館 鈴善. Page also lists a notice about reducing the 「地酒蔵」 business (2026 news list); it does not say the shop closed.",
+    "coords": [
+     37.49955,
+     139.92948
+    ]
+   }
+  },
+  "小澤蝋燭店": {
+   "nameEn": "Ozawa Candle Shop",
+   "area": "大町・中町",
+   "areaEn": "Omachi & Nakamachi",
+   "tags": [
+    "candles"
+   ],
+   "what": "天明5年（1785年）創業の和ろうそくの店。1887年建築の町家で、草花を手で描いた会津絵ろうそくを作り、絵付け体験もできる。",
+   "whatEn": "A Japanese candle shop founded in 1785, in a townhouse built in 1887. It makes Aizu painted candles by hand and runs a painting workshop.",
+   "note": "絵付けは予約して行く。土日は香りの体験もある。",
+   "noteEn": "Book the painting workshop. On weekends there is also a scent session.",
+   "_src": {
+    "category": "local",
+    "industry": "aizu-erosoku",
+    "nameKana": "おざわろうそくてん",
+    "address": "西栄町6-27",
+    "url": "https://www.aizuerousoku.com/",
+    "whatJa": "天明5年（1785年）創業の老舗和蝋燭店で、木蝋と灯芯草の芯から手掛けた会津絵ろうそくに季節の草花を手描きする。",
+    "whatEn": "1785-founded family candle workshop hand-dipping sumac-wax tapers on rush-pith wicks and painting seasonal blossoms onto each white shaft.",
+    "facts": "Founded in 1785 (Tenmei 5) and once supplied candles to the Matsudaira feudal clan; moulds tapers by hand from haze (sumac) wax around washi-and-rush wicks; visitors can paint chrysanthemums or peonies onto real sumac-wax candles at the workbench.",
+    "weak": "",
+    "verifiedBy": "https://www.aizuerousoku.com/",
+    "quote": "【11/7〜11/15】「會津SAMURAI WEEK 2026」参加！和ろうそくづくり絵付け＆香りの体験（土日限定）受付中",
+    "fixes": "Address 西栄町6番27号 matches.",
+    "coords": [
+     37.49532,
+     139.92734
+    ]
+   }
+  },
+  "山田木綿織元": {
+   "nameEn": "Yamada Momen",
+   "area": "七日町",
+   "areaEn": "Nanukamachi",
+   "tags": [
+    "textile"
+   ],
+   "what": "会津木綿の織元。昭和の初めから使う豊田式の織機が今も動く工場と、直営の生地ショップが七日町にある。",
+   "whatEn": "A weaver of Aizu cotton on Nanukamachi. Its factory still runs a Toyoda loom from the early Showa era, and it has its own cloth shop.",
+   "note": "織機が動くのは平日。昼の12時から1時は止まる。",
+   "noteEn": "The looms run on weekdays, and stop from noon to one.",
+   "_src": {
+    "category": "local",
+    "industry": "aizu-momen",
+    "nameKana": "やまだもめんおりもと",
+    "address": "七日町11-5",
+    "url": "https://yamadamomen.com/",
+    "whatJa": "明治38年（1905年）創業の会津木綿の織元で、七日町通りの店舗に昭和初期の豊田式自動織機を展示し反物や小物を直販する。",
+    "whatEn": "1905-founded Aizu cotton weaver on Nanukamachi-dori selling striped bolts, stoles, and everyday goods alongside an early-Showa Toyoda shuttle loom on display.",
+    "facts": "Established in 1905 (Meiji 38) on Nanukamachi-dori; weaves thick, striped plain-weave cotton that softens with repeated washing; displays a retired Toyoda wooden-and-iron shuttle loom inside its timber-fronted shop.",
+    "weak": "",
+    "verifiedBy": "https://yamadamomen.com/11%e3%81%ae%e5%96%b6%e6%a5%ad%e6%97%a5%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/",
+    "quote": "11月は直営店は休まず営業しております。",
+    "fixes": "Address 七日町11-5 matches. The page says the shop and factory are on the back street of Nanukamachi-dori, so whatJa saying '七日町通りの店舗' is slightly loose.",
+    "coords": [
+     37.50096,
+     139.92529
+    ]
+   }
+  },
+  "鶴乃江酒造": {
+   "nameEn": "Tsurunoe Sake Brewery",
+   "area": "七日町",
+   "areaEn": "Nanukamachi",
+   "tags": [
+    "sake"
+   ],
+   "what": "寛政6年（1794年）創業の酒蔵。七日町通り沿いの店で、会津中将とゆりを試飲と販売。9時から18時で、元日が休み。",
+   "whatEn": "A sake brewery founded in 1794, on Nanukamachi-dori. The shop pours tastings and sells Aizu Chujo and Yuri, from nine to six, closed on New Year’s Day.",
+   "note": "試飲は朝の九時から。会津中将から。",
+   "noteEn": "Tastings start at nine in the morning. Begin with the Aizu Chujo.",
+   "_src": {
+    "category": "local",
+    "industry": "aizu-sake",
+    "nameKana": "つるのえしゅぞう",
+    "address": "七日町2-46",
+    "url": "https://www.tsurunoe.com/",
+    "whatJa": "寛政6年（1794年）創業の七日町通りに面した酒蔵で、会津産酒米と軟水から「会津中将」や女性杜氏が醸す「ゆり」を仕込む。",
+    "whatEn": "1794-founded family sake brewery on Nanukamachi-dori brewing small-lot Aizu Chujo and Yuri labels from local rice inside whitewashed Edo-and-Meiji storehouses.",
+    "facts": "Founded in 1794 (Kansei 6) along historic Nanukamachi-dori; flagship labels include Aizu Chujo (named after feudal lord Matsudaira Katamori's court rank) and Yuri brewed by female master brewer Yuri Hayashi; offers tastings in its timber-beam storefront.",
+    "weak": "",
+    "verifiedBy": "https://www.tsurunoe.com/blog-feed.xml",
+    "quote": "2.2026年10月22日(木)〜25日(日) 東京:新宿　京王百貨店新宿店MB階　酒商山田様にて",
+    "fixes": "Address 七日町2番46号 matches; tasting/sales hours 9:00-18:00 on the site. The page did not confirm the female master brewer for Yuri or the 1794 founding date.",
+    "coords": [
+     37.49965,
+     139.92357
+    ]
+   }
+  },
+  "会津慶山焼 やま陶": {
+   "nameEn": "Aizu Keizanyaki Yamato",
+   "area": "飯盛山・東山",
+   "areaEn": "Iimoriyama & Higashiyama",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "福島県の伝統的工芸品、会津慶山焼の窯元。日用の器を焼き、陶芸教室や絵つけ体験もある。9時から18時で、元日のほかは無休。",
+   "whatEn": "A kiln for Aizu Keizanyaki, a traditional craft of Fukushima. It makes everyday tableware and runs pottery classes and painting sessions. Open nine to six, every day except New Year’s Day.",
+   "note": "年中無休。日用の器を、手に取って選ぶ。",
+   "noteEn": "Open every day. Pick up the everyday pieces and choose by hand.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "あいづけいざんやき やまとう",
+    "address": "東山町石山天寧67",
+    "url": "https://www.keizanyaki.com/",
+    "whatJa": "東山麓に窯を構える会津慶山焼の窯元で、ケヤキや籾殻の灰釉が生む青紫色の味わい深い日常陶器を焼き上げる。",
+    "whatEn": "Foothill stoneware kiln at the edge of Higashiyama firing rustic tea bowls, sake vessels, and plates glazed in blue-purple zelkova and rice-husk ash.",
+    "facts": "Revives the 1592 Keizan-yaki pottery lineage begun when castle builders fired roof tiles here under Gamo Ujisato; blends zelkova-bark ash and rice-husk ash glazes over iron-bearing local clay; studio shop displays everyday guinomi, mugs, and hand-built plates.",
+    "weak": "",
+    "verifiedBy": "https://www.keizanyaki.com/",
+    "quote": "【大切なお知らせ】価格改定のご案内 （2026年4月より）",
+    "fixes": "Official name on page is 会津慶山焼 (aizukeizanyaki); address 福島県会津若松市東山町石山天寧67 matches.",
+    "coords": [
+     37.49035,
+     139.9497
+    ]
+   }
+  },
+  "りんどん": {
+   "nameEn": "Ringdon Bakery",
+   "area": "飯盛山・東山",
+   "areaEn": "Iimoriyama & Higashiyama",
+   "tags": [
+    "bread"
+   ],
+   "what": "自家製の天然酵母と、小麦粉のオリジナルブレンドで焼くパン屋。看板はミルクフランスパン。月・火・水は休み。",
+   "whatEn": "A bakery that uses its own wild yeast and a house blend of flour. The milk French bread is the signature. Closed Monday to Wednesday.",
+   "note": "ミルクフランスパンから。月・火・水は休み。",
+   "noteEn": "Start with the milk French bread. Closed Monday to Wednesday.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "りんどん",
+    "address": "和田2-3-1",
+    "url": "https://ringdongbakery.com/",
+    "whatJa": "飯盛山・会津さざえ堂から徒歩圏内にある地元密着のパン屋で、自家製天然酵母のパンや長さ約30cmの看板商品ミルクフランスで知られる。",
+    "whatEn": "Long-loved residential bakery a ten-minute walk from Mount Iimori and Aizu Sazaedo, famous for 30-centimeter soft baguettes filled with condensed-milk cream.",
+    "facts": "Bakes roughly 50–60 varieties daily using house-cultured wild yeast and a custom domestic wheat blend; signature Milk France pipes rich sweetened-milk cream down a 30 cm soft French loaf; located in Wada below Mount Iimori.",
+    "weak": "",
+    "verifiedBy": "https://ringdongbakery.com/",
+    "quote": "11月の営業カレンダー 2026.10.30",
+    "fixes": "Address on page: 〒965-0811 会津若松市和田２丁目３−１ matches. Hours 9:30〜16:00, closed Mon/Tue/Wed.",
+    "coords": [
+     37.49963,
+     139.95063
+    ]
+   }
+  },
+  "本家長門屋": {
+   "nameEn": "Honke Nagatoya",
+   "area": "鶴ヶ城周辺",
+   "areaEn": "Tsurugajo",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "嘉永元年（1848年）創業の和菓子店。シャンパンや鬼くるみ、レーズンを使った羊羹ファンタジアは、2017年のグッドデザイン賞。日曜休み。",
+   "whatEn": "A wagashi shop founded in 1848. Its Yokan Fantasia, made with champagne, oni-walnuts and raisins, won a Good Design Award in 2017. Closed on Sundays.",
+   "note": "羊羹ファンタジアは、紅茶かワインと。",
+   "noteEn": "Have the Yokan Fantasia with tea or wine.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ほんけながとや",
+    "address": "川原町2-10",
+    "url": "https://nagatoya.net/",
+    "whatJa": "嘉永元年（1848年）創業の老舗和菓子本舗で、庶民のための駄菓子づくりの伝統を受け継ぎ、切るたびに絵柄が変わる羊羹なども手掛ける。",
+    "whatEn": "1848-founded castle-town confectioner crafting traditional brown-sugar dagashi alongside pictorial agar-and-bean-paste yokan studded with Aizu walnuts and raisins.",
+    "facts": "Founded in 1848 (Kaei 1) near the western castle moat in Kawaramachi (operates only its Kawaramachi flagship and a Nanukamachi branch); signature Fly Me to The Moon Yokan Fantasia reveals shifting scenes of a bird flying toward a lemon-champagne moon with every slice.",
+    "weak": "",
+    "verifiedBy": "https://nagatoya.net/",
+    "quote": "2026/03/03 会員登録方法のごあんない",
+    "fixes": "Page shows 創業嘉永元年 (matches). Online shop notice dated 2026/03/03; address 川原町2-10 not confirmed on top page.",
+    "coords": [
+     37.49002,
+     139.91545
+    ]
+   }
+  },
+  "満田屋": {
+   "nameEn": "Mitsutaya",
+   "area": "大町・中町",
+   "areaEn": "Omachi & Nakamachi",
+   "tags": [
+    "miso"
+   ],
+   "what": "天保5年（1834年）創業の味噌屋。味噌蔵を改装した店で、囲炉裏の炭火で一本ずつ焼く会津の郷土料理、みそ田楽を出す。",
+   "whatEn": "A miso maker founded in 1834. In a converted miso storehouse it serves miso dengaku, an Aizu dish grilled skewer by skewer over charcoal at the hearth.",
+   "note": "みそ田楽は10時半から。一本ずつ焼くから、待つ。",
+   "noteEn": "Dengaku starts at 10:30. Each skewer is grilled one by one, so you wait.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "みつたや",
+    "address": "大町1-1-25",
+    "url": "https://www.mitsutaya.jp/",
+    "whatJa": "天保5年（1834年）創業の味噌蔵で、改装した味噌蔵の囲炉裏端で自家製味噌だれを塗って炭火焼きにする会津郷土料理「みそ田楽」を供する。",
+    "whatEn": "1834-founded miso and rapeseed-oil storehouse grilling skewered konjac, tofu, taro, and pounded rice cakes over sunken charcoal hearths inside a Meiji-era kura.",
+    "facts": "Founded in 1834 (Tenpo 5) as a brewer of miso, soy sauce, and cold-pressed natane oil; diners sit around open irori charcoal pits inside a former miso warehouse; skewers of konnyaku, nama-age tofu, satoimo taro, and singed shingoro rice cylinders are glazed with sweet yuzu, perilla, and red miso pastes.",
+    "weak": "",
+    "verifiedBy": "https://www.mitsutaya.jp/",
+    "quote": "9月1日(火)～９月3日(木)の３日間、お盆の振り替え休日としてお休みいた",
+    "fixes": "",
+    "coords": [
+     37.49878,
+     139.92517
+    ]
+   }
+  },
+  "桐屋・権現亭": {
+   "nameEn": "Kiriya Gongentei",
+   "area": "大町・中町",
+   "areaEn": "Omachi & Nakamachi",
+   "tags": [
+    "soba"
+   ],
+   "what": "昭和46年（1971年）に「きりやそば店」として始まった、手打ちそばと会津料理の店。水曜休み。",
+   "whatEn": "A hand-cut soba and Aizu cooking restaurant that began in 1971 as Kiriya Soba. Closed on Wednesdays.",
+   "note": "平日は15時まで。昼のうちに行く。",
+   "noteEn": "On weekdays it closes at three. Go at lunch.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "きりや ごんげんてい",
+    "address": "上町2-34",
+    "url": "http://kiriyasoba.co.jp/",
+    "whatJa": "1971年創業の手打ち蕎麦の名店で、会津産玄そばを自家製粉し、挽き方や品種の異なる三種の蕎麦を食べ比べできる。",
+    "whatEn": "1971-founded soba restaurant stone-milling Aizu-grown buckwheat in-house and serving side-by-side flights of three distinct regional noodle cuts inside a heavy-timbered hall.",
+    "facts": "Hulls and stone-mills Aizu-harvested buckwheat in its own mill; signature Soba Zanmai flight compares translucent Iide Gongen soba, rustic whole-grain Ganko soba, and fragrant Aizu no Kaori 100% buckwheat noodles; interior reuses aged beams from traditional Aizu farmhouses.",
+    "weak": "",
+    "verifiedBy": "http://kiriyasoba.co.jp/",
+    "quote": "2026年9月28日、桐屋は創業55周年を迎えます。",
+    "fixes": "Footer address of 有限会社會津きり屋 is 会津若松市上町2−34, which matches. Page says the shop was founded as きりやそば店 in 昭和46年 (1971).",
+    "coords": [
+     37.4973,
+     139.93354
+    ]
+   }
+  },
+  "料理旅館 田事": {
+   "nameEn": "Tagoto",
+   "area": "鶴ヶ城周辺",
+   "areaEn": "Tsurugajo",
+   "tags": [],
+   "what": "城北町の料理旅館。七日町の旅籠として続き、店先に旅人が腰かけた休み石が残る。せいろのめっぱめしなど、会津の郷土料理を出す。",
+   "whatEn": "A kappo inn in Johokumachi that began as a travellers’ inn on Nanukamachi; the resting stone where travellers sat still stands at the door. It serves Aizu dishes such as steamed meppa-meshi.",
+   "note": "昼は11時半から。休みは不定だから、電話してから。",
+   "noteEn": "Lunch starts at 11:30. Days off vary, so call first.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "りょうりりょかん たごと",
+    "address": "城北町5-15",
+    "url": "https://www.tagoto-aizu.com/",
+    "whatJa": "鶴ヶ城北側に佇む料理旅館で、丸い曲げわっぱで蒸し上げる名物「めっぱめし」や郷土汁こづゆを昼膳でも味わえる。",
+    "whatEn": "Timbered culinary inn north of Tsuruga Castle serving lunch sets of rice and seasonal toppings steamed in round cedar meppa bentwood boxes alongside scallop-broth kozuyu.",
+    "facts": "Quiet timbered kappo inn on Johokumachi; steams Aizu Koshihikari rice in aromatic round bent-cedar vessels (called meppa-meshi in house) topped with salmon roe, wild mountain greens, or shirasu; pairs meals with traditional dried-scallop kozuyu soup in Aizu lacquer bowls.",
+    "weak": "",
+    "verifiedBy": "https://www.tagoto-aizu.com/",
+    "quote": "コストコフェア出店致します。",
+    "fixes": "",
+    "coords": [
+     37.50193,
+     139.92343
+    ]
+   }
+  },
+  "渋川問屋": {
+   "nameEn": "Shibukawa Donya",
+   "area": "七日町",
+   "areaEn": "Nanukamachi",
+   "tags": [],
+   "what": "明治15年（1882年）創業の海産物問屋の建物で、身欠きにしんや棒だら、昆布、貝柱を使う会津の郷土料理を出す。喫茶「開化」もある。",
+   "whatEn": "The building of a seafood wholesaler founded in 1882, serving Aizu dishes made with dried herring, cod, kelp and scallops. It also has a café, Kaika.",
+   "note": "昼は年中無休。夜は休みの日がある。",
+   "noteEn": "Lunch runs every day. Dinner has days off.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "しぶかわどんや",
+    "address": "七日町3-28",
+    "url": "https://shibukawadonya.com/",
+    "whatJa": "明治・大正期の海産物問屋の蔵と本館を活かした七日町通りの郷土料理店で、にしんの山椒漬やこづゆ、会津牛料理を供する。",
+    "whatEn": "Former Meiji-Taisho marine-produce wholesaler on Nanukamachi-dori serving Aizu festival dishes, pickled herring with sansho leaves, and Aizu beef inside historic brick-and-plaster storehouses.",
+    "facts": "Occupies the preserved Meiji- and Taisho-era merchant compound of a former dried-seafood wholesaler near Nanukamachi Station; serves classic castle-town celebratory fare including kozuyu, bo-tara simmered cod, and sansho-marinated herring in Aizu lacquerware.",
+    "weak": "",
+    "verifiedBy": "https://shibukawadonya.com/",
+    "quote": "11月の夜の営業お休みのお知らせ",
+    "fixes": "",
+    "coords": [
+     37.50064,
+     139.91995
+    ]
+   }
+  },
+  "蔵喫茶 杏": {
+   "nameEn": "Kura Kissa Kyo",
+   "area": "七日町",
+   "areaEn": "Nanukamachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "末廣酒造の嘉永蔵の中にある、明治25年（1892年）築の蔵座敷の喫茶。酒の仕込み水で淹れたコーヒーや、酒粕の甘酒、日本酒を使った菓子を出す。",
+   "whatEn": "A café in a storehouse hall built in 1892, inside the Kaeigura of Suehiro Sake Brewery. It serves coffee made with the brewing water, amazake from sake lees, and sweets made with sake.",
+   "note": "仕込み水で淹れたコーヒーを。水・木は休み。",
+   "noteEn": "Coffee made with the brewing water. Closed Wednesday and Thursday.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "くらきっさ きょう",
+    "address": "日新町12-38",
+    "url": "https://suehiro-kyo.com/",
+    "whatJa": "明治25年築の末廣酒造・嘉永蔵の一角にある蔵喫茶で、酒造りの仕込み水で淹れる水出し・ドリップ珈琲や大吟醸シフォンケーキを供する。",
+    "whatEn": "Coffeehouse set inside an 1892 earthen sake storehouse at Suehiro Kaeigura, brewing coffee with the brewery's soft shikomimizu well water alongside daiginjo chiffon cake.",
+    "facts": "Occupies a renovated 1892 (Meiji 25) kura attached to Suehiro Sake Brewery's Kaeigura south of Nanukamachi-dori; brews hot and cold-drip coffee using the brewery's natural underground brewing water; pairs cups with non-alcoholic sake-lees sweets and daiginjo chiffon cake.",
+    "weak": "",
+    "verifiedBy": "https://suehiro-kyo.com/",
+    "quote": "2026年度版、喫茶杏のメニューを一新。ゆったりと流れる時間をお楽しみいただけます。ぜひお越しください。",
+    "fixes": "",
+    "coords": [
+     37.49799,
+     139.92318
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "鶴ヶ城",
+   "nameEn": "Tsurugajo Castle",
+   "kind": "sight",
+   "area": "鶴ヶ城周辺",
+   "areaEn": "Tsurugajo",
+   "address": "会津若松市追手町1-1",
+   "url": "https://www.tsurugajo.com/tsurugajo/",
+   "what": "会津若松のシンボルの城で、正式には若松城。1868年の戊辰戦争に耐えた。赤瓦の五層の天守閣は博物館で、無休、8時30分から17時（最終入場16時30分）。",
+   "whatEn": "The symbol of Aizuwakamatsu, officially Wakamatsu Castle, which withstood the Boshin War of 1868. The red-tiled five-storey keep is a museum, open every day, 8:30 to 17:00 (last entry 16:30).",
+   "coords": [
+    37.48774,
+    139.92977
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.tsurugajo.com/ と /tsurugajo/tensyukaku（公式・会津若松観光ビューロー）: 「正式には若松城」「1868年の戊辰戦争で激しい攻撃に耐え」「赤瓦が美しい五層の天守閣…内部は博物館」、開館 8:30〜17:00・最終入場16:30・休館日 無休、住所 追手町1-1。新着情報は2026.11.10。収蔵品展 2026-11-07〜11-24 開催予定",
+   "_coordsSource": "OSM way 24270507 (鶴ヶ城, historic=castle)"
+  },
+  {
+   "name": "御薬園",
+   "nameEn": "Oyakuen Garden",
+   "kind": "sight",
+   "area": "鶴ヶ城周辺",
+   "areaEn": "Tsurugajo",
+   "address": "会津若松市花春町8-1",
+   "url": "https://www.tsurugajo.com/oyakuen/",
+   "what": "会津松平氏の庭園で、国指定の名勝。約1.7ヘクタールの敷地の中央に心字の池があり、薬草園が続く。無休、8時30分から17時（最終入園16時30分）。",
+   "whatEn": "The garden of the Aizu Matsudaira clan, a national place of scenic beauty. A stroll garden of about 1.7 hectares around a heart-shaped pond, with a medicinal herb garden. Open every day, 8:30 to 17:00 (last entry 16:30).",
+   "coords": [
+    37.49108,
+    139.94392
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.tsurugajo.com/oyakuen/ と https://www.tsurugajo.com/ （公式）: 「約一・七ヘクタールの敷地の中央に心字の池を有する回遊式大庭園」「国指定名勝」、開園 8:30〜17:00（16:30受付終了）・無休、住所 花春町8-1。最新情報 2026.10.28",
+   "_coordsSource": "OSM way 235463581 (御薬園, leisure=garden)"
+  },
+  {
+   "name": "会津武家屋敷",
+   "nameEn": "Aizu Buke Yashiki",
+   "kind": "sight",
+   "area": "飯盛山・東山",
+   "areaEn": "Iimoriyama & Higashiyama",
+   "address": "会津若松市東山町石山院内1",
+   "url": "https://bukeyashiki.com/",
+   "what": "西郷頼母邸を中心に、家老屋敷や中畑陣屋など重要文化財の建物が並ぶ、武家の暮らしを見せる施設。4〜11月は8時30分から17時、12〜3月は9時から16時30分。",
+   "whatEn": "A museum of samurai life centred on the Saigo Tanomo residence, with listed buildings such as the chief retainer’s house and the Nakahata outpost. Open 8:30 to 17:00 from April to November, 9:00 to 16:30 from December to March.",
+   "coords": [
+    37.48555,
+    139.95353
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://bukeyashiki.com/ （公式）: 「家老屋敷や中畑陣屋など数々の重要文化財」「西郷頼母邸を中心とした歴史的観覧ゾーン」、開館 4〜11月 8:30〜17:00・12〜3月 9:00〜16:30、住所 東山町大字石山字院内1。お知らせ 2026.10.9",
+   "_coordsSource": "OSM way 397739223 (会津武家屋敷, tourism=museum)"
+  },
+  {
+   "name": "会津さざえ堂",
+   "nameEn": "Aizu Sazaedo",
+   "kind": "sight",
+   "area": "飯盛山・東山",
+   "areaEn": "Iimoriyama & Higashiyama",
+   "address": "会津若松市一箕町八幡飯盛山",
+   "url": "https://sazaedo.jp/",
+   "what": "1796年に飯盛山に建った、高さ16.5メートル、六角三層のお堂。正式名は円通三匝堂。上りと下りが別の通路の二重らせんのスロープを持つ木造建築で、国の重要文化財。",
+   "whatEn": "A hexagonal three-storey hall, 16.5 metres high, built on Mount Iimori in 1796; its formal name is Entsu Sanso-do. A wooden building with a double-spiral ramp, one way up and a separate way down, and a national Important Cultural Property.",
+   "coords": [
+    37.5045,
+    139.95393
+   ],
+   "notice": "2026年3月の雪害による入口屋根の工事は、4月10日に終わった。拝観は12〜3月が9時から16時、4〜11月は8時15分から日没。",
+   "noticeEn": "Repair work on the entrance roof after snow damage in March 2026 was completed on 10 April. Open 9:00 to 16:00 from December to March, and 8:15 to sunset from April to November.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://sazaedo.jp/ （公式・JSバンドル内の本文）: 「1796年…高さ16.5メートル、六角三層」「世界唯一 二重螺旋構造の木造建築」「平成7年に国重要文化財」、拝観時間 8:15〜日没（4〜11月）・9:00〜16:00（12〜3月）、お知らせ 2026-04-10 緊急工事完了。住所は公式「福島県会津若松市一箕町八幡飯盛山」",
+   "_coordsSource": "OSM way 258640103 (会津さざえ堂, building=shrine)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "工房鈴蘭",
+   "verdict": "doubt",
+   "reason": "The site is live and has a shop calendar headed 2026年11月 and 2026年12月, plus the note 工房での作業状況により、大変申し訳ありませんが、営業時間の変更や、臨時休業をいただくことがございます。 That note is undated. I found no dated 2026 post or notice sentence to copy. The address 七日町3-29 was not found as text."
+  },
+  {
+   "name": "白木屋漆器店",
+   "verdict": "doubt",
+   "reason": "The page has no 2026 date, notice or post. The notices (WA-NO, card cash-on-delivery) are undated, and there is a 年間カレンダー link but no 2026 sentence."
+  },
+  {
+   "name": "美工堂",
+   "verdict": "doubt",
+   "reason": "Site news newest item is 2024-03-21; no 2026 post. Shop relocated in Oct 2022 (店舗移転のお知らせ) but page still shows 天寧寺町7-38, 年中無休（年末年始を除く）. Page does not mention Human Hub or lacquer tableware (site is about Aizu momen, Nodate, zakka)."
+  },
+  {
+   "name": "菓子司 熊野屋",
+   "verdict": "doubt",
+   "reason": "No dated 2026 content on the site (no news; feed empty); address mismatch."
+  },
+  {
+   "name": "Panfeel SHUN",
+   "verdict": "doubt",
+   "reason": "Latest blog post on site is 2021-11-08; no 2026 evidence."
+  },
+  {
+   "name": ".NŌEN",
+   "verdict": "doubt",
+   "reason": "Instagram page only returns a login-walled shell; no dated 2026 post could be read."
+  },
+  {
+   "name": "PonoLea Coffee",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence could be read: Instagram is behind a login wall; only profile meta (981 posts) visible, no dated post."
+  },
+  {
+   "name": "AdoriA 北出丸カフェ",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence could be read: Official page opened but has no dated 2026 post, notice or season; only undated description/menu."
+  },
+  {
+   "name": "1/3Cafe",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence could be read: Instagram is behind a login wall; only profile meta (84 posts) visible, no dated post."
+  }
+ ]
+}
