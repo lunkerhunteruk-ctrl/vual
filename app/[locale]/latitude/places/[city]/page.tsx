@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
 import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
 import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
-import CityShopMap, { type ShopPin } from '@/components/latitude/CityShopMap';
+import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
@@ -88,8 +88,18 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         instagram: x.instagram ?? (isIg(x.url) ? x.url : undefined),
         photo: x.photo ? latAsset(`places/${c.slug}/shops/${x.photo}`) : undefined,
         mapUrl: mapUrl(x.name, x.address),
+        gq: `${x.name} ${x.address}`,
       };
     })
+    : [];
+  // 2026-11-11 試作：「自分でルートを組む」で選べる、凛の1日の地点（上の段の地図と同じ番号）。道の組み合わせは scripts/latitude-route-pairs.py の stop:番号
+  const rinStops: RinStop[] = c.routeBuilder
+    ? (c.route || []).filter((r) => r.coords).map((r, k) => ({
+      id: `stop:${k + 1}`, n: k + 1,
+      name: (ja ? r.shortJa : r.short) ?? (ja ? r.placeJa : r.place),
+      lat: r.coords![0], lon: r.coords![1],
+      gq: r.gmaps ?? `${r.placeJa} ${c.nameJa}`,
+    }))
     : [];
   const mapCats = (['local', ...CATEGORY_ORDER] as const)
     .filter((k) => pins.some((p) => p.category === k))
@@ -145,8 +155,13 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       {pins.length > 0 && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl">
-            <SectionLabel>{ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`}</SectionLabel>
-            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={pins} ja={ja} who={who} person={c.person} cats={mapCats} />
+            <SectionLabel>
+              {c.routeBuilder
+                ? (ja ? `${who}のおすすめを地図で見る・自分でルートを組む` : `Where ${who} would go, on the map — or build your own route`)
+                : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
+            </SectionLabel>
+            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={pins} ja={ja} who={who} person={c.person} cats={mapCats}
+              pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
           </div>
         </section>
       )}

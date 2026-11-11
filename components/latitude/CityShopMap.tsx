@@ -1,7 +1,9 @@
 'use client';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import TrackLink from '@/components/latitude/TrackLink';
 import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
+import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
+import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
 // 号の「動く地図」と同じ紙の地図の上に、店を小さな丸で並べる。丸を押すとその店へなめらかに寄り、店のカードが出る。
@@ -12,6 +14,12 @@ import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 // 寄る動きは TravellerMap と同じ考え（見えている範囲を毎コマ計算して viewBox を動かす。幅は対数で、中心は加減速で）。
 // 店の写真は、店からもらった物（photo）だけ。号の場面の写真は使わない（その店の写真に見えるため）。
 // Instagram の埋めこみは、店のカードを開いた時だけ読みこむ（ページを重くしない）。
+//
+// 2026-11-11 試作（金沢）「自分でルートを組む」：凛のおすすめのルート（上の段）とは別に、見る人が自分の道を組める。
+//  ・種類のスイッチ（凡例を押す）：オフの種類の丸は地図と「名前から選ぶ」から消える（どちらのモードでも）。組んだ道に入っている店は残す
+//  ・「自分でルートを組む」にすると、丸を押した順に 1・2・3… と番号が付き、歩く道の点線でつながる。もう一度押すと外れる（番号は詰める）
+//  ・道は scripts/latitude-route-pairs.py が先に計算した全部の組み合わせ（public/latitude/routes/<街>-pairs.json）をつなぐ。外の計算は呼ばない
+//  ・並べ替え・合計・Google マップは RouteBuilderPanel
 
 export type ShopPin = {
   id: string; // リストの店の id（#place-…）
@@ -29,7 +37,11 @@ export type ShopPin = {
   instagram?: string;
   photo?: string; // 店からもらった写真の URL
   mapUrl: string;
+  gq?: string; // Google マップの道案内に渡す言葉（店の名前＋住所）
 };
+
+// 「自分でルートを組む」で選べる、凛の1日の地点（上の段の番号と同じ n）
+export type RinStop = { id: string; n: number; name: string; lat: number; lon: number; gq: string };
 
 export type BaseMap = {
   center: [number, number];
@@ -83,14 +95,25 @@ function duration(a: View, b: View, r: number) {
   return clamp(700 + 160 * zoom + 200 * Math.min(d, 2), 700, 1300);
 }
 
-export default function CityShopMap({ src, pins, ja, who, person, cats }: {
+const RED = '#7a241e'; // 凛のルートと同じ暗い赤の点線
+const RIN = 'rin'; // 種類のスイッチの「凛の1日の場所」
+
+export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [] }: {
   src: string; // 土台の JSON の URL
   pins: ShopPin[];
   ja: boolean;
   who: string;
   person: string;
   cats: { key: string; label: string }[]; // 凡例（並べる順）
+  pairsSrc?: string; // あれば「自分でルートを組む」を出す（組み合わせの歩く道の JSON）
+  rinStops?: RinStop[];
 }) {
+  const [mode, setMode] = useState<'look' | 'build'>('look');
+  const build = mode === 'build';
+  const [off, setOff] = useState<Set<string>>(() => new Set());
+  const [route, setRoute] = useState<string[]>([]);
+  const [pairs, setPairs] = useState<PairsFile | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const [base, setBase] = useState<BaseMap | null>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [anim, setAnim] = useState<Anim | null>(null);
@@ -120,19 +143,55 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const r = size.w ? size.h / size.w : 1; // 見えている範囲の 高さ ÷ 幅
 
   // 店の位置（メートル。y は南が正）
-  const pos = useCallback((p: ShopPin) => {
+  const toM = useCallback((lat: number, lon: number) => {
     if (!base) return { x: 0, y: 0 };
-    return { x: (p.lon - base.center[1]) * base.k[0], y: (base.center[0] - p.lat) * base.k[1] };
+    return { x: (lon - base.center[1]) * base.k[0], y: (base.center[0] - lat) * base.k[1] };
   }, [base]);
+  const pos = useCallback((p: { lat: number; lon: number }) => toM(p.lat, p.lon), [toM]);
 
+  // 範囲（メートルの箱）が、余白ごと収まる範囲
+  const boxView = useCallback((hx: number, hy: number, hw: number, hh: number): View => {
+    if (!size.w) return { x: 0, y: 0, w: 1 };
+    const pad = Math.min(48, size.w * 0.06);
+    const w = Math.max((hw * size.w) / Math.max(size.w - 2 * pad, 40), (hh * size.w) / Math.max(size.h - 2 * pad, 40));
+    return { x: hx + hw / 2 - w / 2, y: hy + hh / 2 - (w * r) / 2, w };
+  }, [size.w, size.h, r]);
   // 最初の範囲：店の多い真ん中（home）が、余白ごと収まる範囲
   const homeView = useCallback((): View => {
     if (!base || !size.w) return { x: 0, y: 0, w: 1 };
     const [hx, hy, hw, hh] = base.home;
-    const pad = Math.min(48, size.w * 0.06);
-    const w = Math.max((hw * size.w) / Math.max(size.w - 2 * pad, 40), (hh * size.w) / Math.max(size.h - 2 * pad, 40));
-    return { x: hx + hw / 2 - w / 2, y: hy + hh / 2 - (w * r) / 2, w };
-  }, [base, size.w, size.h, r]);
+    return boxView(hx, hy, hw, hh);
+  }, [base, size.w, boxView]);
+
+  // 「自分でルートを組む」で選べる地点（店＋凛の1日の地点）と、地点どうしの歩く道
+  const points: BuildPoint[] = useMemo(() => [
+    ...pins.map((p) => ({ id: p.id, key: p.key, name: p.name, sub: p.catLabel, lat: p.lat, lon: p.lon, gq: p.gq ?? p.name, color: CATEGORY_COLOR[p.category] ?? INK, cat: p.category, kind: 'shop' as const })),
+    ...rinStops.map((x) => ({ id: x.id, key: x.id, name: x.name, sub: ja ? `${who}の1日 ${x.n}` : `${who}'s day ${x.n}`, lat: x.lat, lon: x.lon, gq: x.gq, color: INK, cat: RIN, kind: 'stop' as const })),
+  ], [pins, rinStops, ja, who]);
+  const pointById = useMemo(() => new Map(points.map((p) => [p.id, p])), [points]);
+  const [pairsState, setPairsState] = useState<'idle' | 'loading' | 'ok' | 'fail'>('idle');
+  const leg = useMemo(() => makePairLookup(pairs, points), [pairs, points]);
+  // 組み合わせの道は、「自分でルートを組む」を開いた時に初めて読む
+  useEffect(() => {
+    if (!build || !pairsSrc || pairsState !== 'idle') return;
+    setPairsState('loading');
+    fetch(pairsSrc).then((r) => (r.ok ? r.json() : null))
+      .then((d) => { if (d?.pairs) { setPairs(d); setPairsState('ok'); } else setPairsState('fail'); })
+      .catch(() => setPairsState('fail'));
+  }, [build, pairsSrc, pairsState]);
+  // 組んだ地点が見えている範囲の外に出たら、真ん中（home）と組んだ地点の全部が入る所まで引く
+  const fitView = useCallback((ids: string[]): View => {
+    if (!base) return homeView();
+    const [hx, hy, hw, hh] = base.home;
+    let x0 = hx, y0 = hy, x1 = hx + hw, y1 = hy + hh;
+    ids.forEach((id) => {
+      const q = pointById.get(id);
+      if (!q) return;
+      const m = toM(q.lat, q.lon);
+      x0 = Math.min(x0, m.x); y0 = Math.min(y0, m.y); x1 = Math.max(x1, m.x); y1 = Math.max(y1, m.y);
+    });
+    return boxView(x0, y0, x1 - x0, y1 - y0);
+  }, [base, homeView, pointById, toM, boxView]);
 
   // 店へ寄った範囲：広い画面は店をカードの左の空きのまん中に、狭い画面は上から4割の所に置く
   const shopView = useCallback((id: string): View => {
@@ -181,6 +240,72 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   };
   const goRef = useRef(goTo);
   useEffect(() => { goRef.current = goTo; });
+  // 店を選ばずに、見えている範囲だけ動かす（自分でルートを組む時）
+  const flyView = (to: View) => {
+    const t = performance.now();
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const from = anim ? viewAt(anim, t, r) : homeView();
+    if (Math.abs(from.x - to.x) < 1 && Math.abs(from.y - to.y) < 1 && Math.abs(from.w - to.w) < 1) return;
+    setAnim({ from, to, t0: t, dur: still ? 0 : duration(from, to, r) });
+    setNow(t);
+  };
+  const flyRef = useRef(flyView);
+  useEffect(() => { flyRef.current = flyView; });
+  const fitRef = useRef(fitView);
+  useEffect(() => { fitRef.current = fitView; });
+
+  // 押した順に足す・もう一度押すと外す（番号は詰まる）。11軒目は足さずに、ひとことお知らせ
+  const toggle = (id: string) => {
+    if (route.includes(id)) { setRoute(route.filter((x) => x !== id)); setNotice(null); return; }
+    if (route.length >= MAX_STOPS) {
+      setNotice(ja ? `選べるのは${MAX_STOPS}か所までです（Google マップの道案内の上限）。どれかを外すと足せます。` : `Up to ${MAX_STOPS} stops (the Google Maps limit). Remove one to add another.`);
+      return;
+    }
+    setRoute([...route, id]);
+    setNotice(null);
+  };
+  // 組んだ地点が今の範囲の外なら、全部が入る所まで引く（押すたびに動かさない）
+  useEffect(() => {
+    if (!build || !base || !size.w || !route.length) return;
+    const t = performance.now();
+    const v = anim ? viewAt(anim, t, r) : homeView();
+    const vh = v.w * r, m = (v.w / size.w) * 16;
+    const out = route.some((id) => {
+      const q = pointById.get(id);
+      if (!q) return false;
+      const p = toM(q.lat, q.lon);
+      return p.x < v.x + m || p.x > v.x + v.w - m || p.y < v.y + m || p.y > v.y + vh - m;
+    });
+    if (out) flyRef.current(fitRef.current(route));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route, build]);
+  const setModeTo = (m: 'look' | 'build') => {
+    if (m === mode) return;
+    if (sel) goTo(null);
+    setMode(m);
+    setNotice(null);
+    if (m === 'look') flyView(homeView());
+    else if (route.length) flyView(fitView(route));
+  };
+  // お知らせは5秒で消す
+  useEffect(() => {
+    if (!notice) return;
+    const t = window.setTimeout(() => setNotice(null), 5000);
+    return () => window.clearTimeout(t);
+  }, [notice]);
+  const toggleCat = (k: string) => {
+    const next = new Set(off);
+    if (next.has(k)) next.delete(k); else next.add(k);
+    setOff(next);
+    // 見ている店の種類を消した時は、カードを閉じる
+    const cur = pins.find((p) => p.id === sel);
+    if (cur && next.has(cur.category)) goTo(null);
+  };
+  const catKeys = [...cats.map((c) => c.key), ...(build && rinStops.length ? [RIN] : [])];
+  const allOn = catKeys.every((k) => !off.has(k));
+  const setAll = () => {
+    if (allOn) { setOff(new Set(catKeys)); if (sel) goTo(null); } else setOff(new Set());
+  };
 
   useEffect(() => {
     if (!animating) return;
@@ -218,6 +343,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
     const onShow = (e: Event) => {
       const id = (e as CustomEvent<string>).detail;
       if (!pins.some((p) => p.id === id)) return;
+      setMode('look');
+      setOff((o) => { const p = pins.find((q) => q.id === id); if (!p || !o.has(p.category)) return o; const n = new Set(o); n.delete(p.category); return n; });
       if (window.innerWidth >= WIDE) box.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       goRef.current(id); // 狭い画面では goTo が地図の上の端まで流す
     };
@@ -251,14 +378,23 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const dia = (p: ShopPin) => (big(p) ? 32 : p.id === sel ? 22 : 12);
 
   // 画面の上で丸が重ならないように、少しずつ押し合わせる（位置は数メートルしか違わない店があるため）
-  const placed = pins.map((p) => {
+  // 種類のスイッチで消した店は出さない（組んだ道に入っている店は残す）
+  const placed = pins.filter((p) => !off.has(p.category) || (build && route.includes(p.id))).map((p) => {
     const m = pos(p);
     const s = toScreen(m.x, m.y);
-    return { p, x: s.sx, y: s.sy, d: dia(p) };
+    return { p, x: s.sx, y: s.sy, d: build ? (route.includes(p.id) ? 22 : 12) : dia(p) };
   });
+  // 組む時だけ、凛の1日の地点も選べる（ひし形）
+  const placedStops = build ? rinStops.filter((x) => !off.has(RIN) || route.includes(x.id)).map((x) => {
+    const m = pos(x);
+    const sc = toScreen(m.x, m.y);
+    return { x: sc.sx, y: sc.sy, d: route.includes(x.id) ? 22 : 11, q: pointById.get(x.id)! };
+  }) : [];
+  const buildPlaced = build ? [...placed.map(({ p, x, y, d }) => ({ x, y, d, q: pointById.get(p.id)! })), ...placedStops] : [];
+  const spread: { x: number; y: number; d: number }[] = build ? buildPlaced : placed;
   for (let it = 0; it < 6; it++) {
-    for (let i = 0; i < placed.length; i++) for (let j = i + 1; j < placed.length; j++) {
-      const a = placed[i], b = placed[j];
+    for (let i = 0; i < spread.length; i++) for (let j = i + 1; j < spread.length; j++) {
+      const a = spread[i], b = spread[j];
       const need = (a.d + b.d) / 2 + 2;
       let dx = b.x - a.x, dy = b.y - a.y;
       let dd = Math.hypot(dx, dy);
@@ -273,8 +409,53 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const shop = pins.find((p) => p.id === shown) ?? null;
   const open = !!sel && !!shop;
   const ready = !!base && size.w > 0;
+  const routeLines = build && route.length >= 2 && (pairsState === 'ok' || pairsState === 'fail' || !pairsSrc)
+    ? route.slice(1).map((id, k) => {
+      const L = leg(route[k], id);
+      return { est: L.estimate, d: L.line.map(([la, lo]) => { const m = toM(la, lo); const sc = toScreen(m.x, m.y); return `${sc.sx.toFixed(1)},${sc.sy.toFixed(1)}`; }).join(' ') };
+    })
+    : [];
+  const full = route.length >= MAX_STOPS;
+  const chip = (on: boolean) => ({ border: `1px solid ${on ? 'rgba(30,29,27,0.32)' : LINE}`, color: on ? INK : MUTE, background: on ? 'rgba(255,255,255,0.35)' : 'transparent' });
+
   return (
     <div>
+      {/* 2026-11-11 店を見る ／ 自分でルートを組む。組み合わせの道のある街だけ */}
+      {pairsSrc && (
+        <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-8">
+          <div role="tablist" aria-label={ja ? '地図の使い方' : 'Map mode'} className="inline-flex self-start" style={{ border: `1px solid ${INK}` }}>
+            {(['look', 'build'] as const).map((m) => (
+              <button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setModeTo(m)}
+                className="min-h-[40px] cursor-pointer px-4 text-[11px] uppercase tracking-[0.22em] transition-colors md:px-5"
+                style={{ background: mode === m ? INK : 'transparent', color: mode === m ? PAPER : INK }}>
+                {m === 'look' ? (ja ? '店を見る' : 'Browse') : (ja ? '自分でルートを組む' : 'Build your own route')}
+              </button>
+            ))}
+          </div>
+          <p className="max-w-md text-[13px] leading-relaxed" style={{ color: MUTE }}>
+            {build
+              ? (ja ? `行きたい店を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${who}の道をなぞるのは、上の地図です。` : `Tap places in the order you want; a walking line joins them. Tap again to remove. ${who}'s own day is the map above.`)
+              : (ja ? `丸を押すと、その店へ寄ります。「自分でルートを組む」で、行きたい店だけの道を作れます。` : `Tap a dot to see the place. Use “Build your own route” to make a walk of your own.`)}
+          </p>
+        </div>
+      )}
+      {/* 種類のスイッチ（押すと、その種類の丸を消す・出す） */}
+      <div className="mb-3 flex flex-wrap items-center gap-2" role="group" aria-label={ja ? '店の種類' : 'Kinds of place'}>
+        {[...cats, ...(build && rinStops.length ? [{ key: RIN, label: ja ? `${who}の1日の場所` : `${who}'s day` }] : [])].map((c) => {
+          const on = !off.has(c.key);
+          return (
+            <button key={c.key} type="button" aria-pressed={on} onClick={() => toggleCat(c.key)}
+              className="flex min-h-[34px] cursor-pointer items-center gap-2 rounded-full px-3 text-[10px] uppercase tracking-[0.2em] transition-colors"
+              style={chip(on)}>
+              <span className="block h-[9px] w-[9px]" style={{ background: c.key === RIN ? INK : CATEGORY_COLOR[c.key] ?? INK, opacity: on ? 1 : 0.3, borderRadius: c.key === RIN ? 1 : 999, transform: c.key === RIN ? 'rotate(45deg)' : undefined }} />
+              {c.label}
+            </button>
+          );
+        })}
+        <button type="button" onClick={setAll} className="min-h-[34px] cursor-pointer px-2 text-[10px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
+          {allOn ? (ja ? 'すべて消す' : 'Hide all') : (ja ? 'すべて出す' : 'Show all')}
+        </button>
+      </div>
       <div
         ref={box}
         className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[16/9]"
@@ -285,6 +466,17 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
           <svg viewBox={`${view.x} ${view.y} ${view.w} ${h}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true"
 >
             <PaperLayers base={base} mpp={mpp} />
+          </svg>
+        )}
+
+        {/* 組んだ道の点線（px の座標）。道の計算が無い区間は、細かい点のまっすぐの線（目安） */}
+        {ready && routeLines.length > 0 && (
+          // 大きさは丸と同じ px で固定（枠の大きさが変わった直後に、線だけ伸び縮みして丸からずれないように）
+          <svg className="pointer-events-none absolute left-0 top-0" width={size.w} height={size.h} viewBox={`0 0 ${size.w} ${size.h}`} aria-hidden="true">
+            {routeLines.map((l, k) => (
+              <polyline key={k} points={l.d} fill="none" stroke={RED} strokeWidth={l.est ? 2 : 2.2}
+                strokeDasharray={l.est ? '0.5 5' : '6 4'} strokeLinecap={l.est ? 'round' : 'butt'} strokeLinejoin="round" />
+            ))}
           </svg>
         )}
 
@@ -301,7 +493,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
         })}
 
         {/* 店の丸。見えている範囲の外の店は、枠のふちに小さな印と距離 */}
-        {ready && placed.map(({ p, x, y, d }) => {
+        {ready && !build && placed.map(({ p, x, y, d }) => {
           const color = CATEGORY_COLOR[p.category] ?? INK;
           const inside = x >= -d && x <= size.w + d && y >= -d && y <= size.h + d;
           const active = p.id === sel;
@@ -346,6 +538,52 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
           );
         })}
 
+        {/* 自分でルートを組む：押した順の番号。外の店は、枠のふちの印（押すと足して、全部が入る所まで引く） */}
+        {ready && build && buildPlaced.map(({ q, x, y, d }) => {
+          const si = route.indexOf(q.id);
+          const picked = si >= 0;
+          const dim = full && !picked;
+          const stop = q.kind === 'stop';
+          const inside = x >= -d && x <= size.w + d && y >= -d && y <= size.h + d;
+          const label = `${q.name} · ${q.sub}${picked ? (ja ? `（${si + 1}番目・押すと外す）` : ` (stop ${si + 1}, tap to remove)`) : (ja ? '（押すと道に足す）' : ' (tap to add)')}`;
+          if (!inside) {
+            if (animating) return null;
+            const ex = clamp(x, 18, size.w - 18), ey = clamp(y, 18, size.h - 18);
+            const m = pos(q);
+            const kmA = Math.hypot(m.x - (view.x + view.w / 2), m.y - (view.y + h / 2)) / 1000;
+            const below = ey > size.h / 2;
+            return (
+              <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
+                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1 }}>
+                <span className="block" style={{ width: 10, height: 10, background: q.color, borderRadius: stop ? 1 : 999, transform: stop ? 'rotate(45deg)' : undefined, boxShadow: `0 0 0 2px ${PAPER}` }} />
+                <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
+              </button>
+            );
+          }
+          return (
+            <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
+              <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
+                style={{ width: d, height: d, transition: 'width 200ms, height 200ms, scale 180ms ease-out', background: q.color, color: PAPER, fontFamily: SERIF, fontSize: 13,
+                  borderRadius: stop && !picked ? 1 : 999, transform: stop && !picked ? 'rotate(45deg)' : undefined,
+                  boxShadow: picked ? `0 0 0 2px ${PAPER}, 0 0 0 3px ${INK}, 0 2px 8px 2px rgba(30,29,27,0.2)` : `0 0 0 2px ${PAPER}` }}>
+                {picked ? si + 1 : null}
+              </span>
+              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px] ${picked ? 'hidden md:block' : 'hidden group-hover:block group-focus-visible:block'}`}
+                style={{ fontFamily: SERIF, color: INK, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
+                {q.name}
+              </span>
+            </button>
+          );
+        })}
+        {ready && build && notice && (
+          <p role="status" className="absolute inset-x-3 bottom-3 z-[6] px-3 py-2 text-[12px] leading-snug" style={{ background: PAPER, border: `1px solid ${INK}`, color: INK }}>
+            {notice}
+          </p>
+        )}
+
         {ready && sel && (
           <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] text-[10px] uppercase tracking-[0.3em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
@@ -379,21 +617,20 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
         </aside>
       </div>
 
-      {/* 凡例と、地図の出どころ */}
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>
-          {cats.map((c) => (
-            <li key={c.key} className="flex items-center gap-2">
-              <span className="block h-[9px] w-[9px] rounded-full" style={{ background: CATEGORY_COLOR[c.key] ?? INK }} />
-              {c.label}
-            </li>
-          ))}
-        </ul>
-        <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
-          {ja ? '地図データ ' : 'Map data '}
-          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>© OpenStreetMap contributors</a>
-        </p>
-      </div>
+      {/* 自分でルートを組む：選んだ順・合計・並べ替え・リセット・Google マップ */}
+      {build && (
+        <RouteBuilderPanel points={points} visible={points.filter((q) => !off.has(q.cat))} route={route} setRoute={(r) => { setRoute(r); setNotice(null); }}
+          leg={leg} ready={pairsState === 'ok' || pairsState === 'fail' || !pairsSrc} ja={ja} who={who}
+          onToggle={toggle} rinIds={rinStops.map((x) => x.id)}
+          onReset={() => { setRoute([]); setNotice(null); flyView(homeView()); }} />
+      )}
+
+      {/* 地図の出どころ */}
+      <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+        {ja ? '地図データ ' : 'Map data '}
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>© OpenStreetMap contributors</a>
+        {build && (ja ? '（道の計算 FOSSGIS OSRM）' : ' (routes: FOSSGIS OSRM)')}
+      </p>
     </div>
   );
 }

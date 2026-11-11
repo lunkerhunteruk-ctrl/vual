@@ -158,7 +158,12 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
   return (
     <section className="px-4 pb-16 md:px-8 md:pb-24">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel>{ja ? `${who}の${city}の1日を見て、同じ道を歩く` : `Watch ${who}'s day in ${city}, then walk it`}</SectionLabel>
+        {/* 2026-11-11 下の店の地図に「自分でルートを組む」がある街は、こちらが「凛のルートをなぞる」と分かる見出しに */}
+        <SectionLabel>
+          {c.routeBuilder
+            ? (ja ? `${who}のルートをなぞる——${city}の1日を見て、同じ道を歩く` : `Follow ${who}'s route — watch the day in ${city}, then walk it`)
+            : (ja ? `${who}の${city}の1日を見て、同じ道を歩く` : `Watch ${who}'s day in ${city}, then walk it`)}
+        </SectionLabel>
         <p className="-mt-4 mb-8 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
           {ja
             ? `先に映像で1日を見て、地図で同じ順をたどれます。最後は Google マップで、そのまま歩く道案内に。`

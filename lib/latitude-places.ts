@@ -91,6 +91,9 @@ export type LatitudeCity = {
   locator?: { en: string; ja: string; at?: [number, number] };
   // 2026-11-11 店の地図の土台（public/latitude/citymaps/<slug>.json。scripts/latitude-citymap.py で作る）がある街だけ true
   shopMap?: boolean;
+  // 2026-11-11 試作：店の地図の「自分でルートを組む」。地点どうしの歩く道（public/latitude/routes/<slug>-pairs.json。
+  // scripts/latitude-route-pairs.py で全部の組み合わせを一度だけ計算）がある街だけ true
+  routeBuilder?: boolean;
   // 深掘りの街だけ：旅人が泊まった宿の部屋の中継ふうの動画（部屋のページは自宅で固定。2026-10-30 ユーザー決定）
   inn?: { cam: RoomCam; title: string; titleJa: string; note: string; noteJa: string };
 };
@@ -127,6 +130,7 @@ export const CITIES: LatitudeCity[] = [
     },
     places: kanazawa as CityPlace[],
     shopMap: true,
+    routeBuilder: true,
     // 所要時間は JR 西日本のニュースリリース（2025-12-12「2026年春ダイヤ改正について」）：東京〜金沢の最速は、2026年3月14日から2時間24分
     locator: {
       en: 'On the Sea of Japan coast · 2 hr 24 min from Tokyo by the fastest Shinkansen',
