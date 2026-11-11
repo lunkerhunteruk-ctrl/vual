@@ -1,7 +1,8 @@
 // 2026-11-11 試作：「場所から探す」ページ（/latitude/places）のデータ。国ごとに、街の案内がある街を並べる。
 // 地図の形は public/latitude/placesmap.json（scripts/latitude-places-map.py）、点の位置は lib/latitude-map.ts と同じ図法。
-// 号のある街（いまは全部）は「行った街」。号がまだ無い街（店のデータだけ先に作った街）は「これから行く街」として
+// 号のある街は「行った街」。号を予定していてまだ公開していない街は「これから行く街」として
 // 別の印で出せる作り。ただし SHOW_UPCOMING が false の間は、地図にも一覧にも出さない。
+// 2026-11-11 号を予定していない「街の案内」だけの町（scripts/latitude-import-city.py で足す町）は、案内の町としてそのまま出す。
 
 import { CITIES, type LatitudeCity } from '@/lib/latitude-places';
 import { PLACES, project } from '@/lib/latitude-map';
@@ -90,7 +91,10 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
     if (!at) continue;
     const i = getIssue(c.issue ?? c.slug);
     const live = !!i && isLive(i, now);
-    if (!live && !SHOW_UPCOMING) continue;
+    // 2026-11-11 号を予定していない町（号のない「街の案内」だけの町。萩・高山・函館…）は、ふつうの案内の町として出す（地方の数字の丸の中・小さな点）。
+    // 号を予定していて、まだ公開していない町だけが「これから」（upcoming）
+    const planned = !!c.issue || !!i;
+    if (!live && planned && !SHOW_UPCOMING) continue;
     const p = getPerson(c.person);
     const code = c.countryCode ?? 'JP';
     const city: PlaceCity = {
@@ -103,7 +107,7 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
       ...project(at[0], at[1]),
       person: p ? { slug: p.slug, name: p.name } : undefined,
       issue: live && i ? { slug: i.slug, cover: assetUrl(i, 'cover.jpg'), month: i.month, no: i.no } : undefined,
-      upcoming: !live,
+      upcoming: !live && planned,
       // 日本の町の countryJa は県名
       region: regionOf(code, c.countryJa, at[0], at[1]),
     };

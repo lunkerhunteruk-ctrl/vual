@@ -1,0 +1,676 @@
+{
+ "slug": "hagi",
+ "city": {
+  "name": "Hagi",
+  "nameJa": "萩",
+  "latitude": "34.4° N",
+  "country": "Yamaguchi, Japan",
+  "countryJa": "山口県",
+  "person": "rin",
+  "coords": [
+   34.4135,
+   131.4015
+  ],
+  "intro": "A former castle town of the Mori lords on the Sea of Japan. Hagi-yaki kilns, yakinuki kamaboko makers, and sweets and coffee in the old castle town and the port quarter of Hamasaki, as Rin's picks.",
+  "introJa": "日本海に面した、毛利家の城下町だった町。萩焼の窯元と、焼き抜き蒲鉾の店、城下町と港町・浜崎の甘味と喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Sea of Japan coast · a town on a river delta",
+   "ja": "日本海側・川にはさまれた三角州の町"
+  },
+  "industries": [
+   {
+    "key": "hagi-yaki",
+    "en": "Hagi-yaki pottery",
+    "ja": "萩焼",
+    "about": "Hagi-yaki began with the kilns of the Mori domain about four hundred years ago and is a nationally designated traditional craft. The soft clay takes in tea and sake, so a piece changes colour and character as it is used.",
+    "aboutJa": "萩焼は、萩藩・毛利家の御用窯から始まり、400年ほど続く焼き物で、国の伝統的工芸品。土がやわらかく水を吸うので、使ううちに茶や酒がしみて、色や表情が変わっていく。",
+    "_src": "Founded in 1604 under feudal lord Mori Terumoto, Hagi's four-century stoneware tradition is prized across Japan for porous local clays and milky white or loquat-tinted glazes whose fine crackle shifts in tone over years of tea and table use."
+   },
+   {
+    "key": "yakinuki-kamaboko",
+    "en": "Yakinuki kamaboko fish cake",
+    "ja": "焼き抜きかまぼこ",
+    "about": "Hagi's yakinuki kamaboko is not steamed but roasted slowly from beneath its wooden board, mostly from lizardfish (eso). It comes out firmer and more fish-flavoured than steamed kamaboko.",
+    "aboutJa": "萩の焼き抜き蒲鉾は、蒸さずに、板の下からじっくり焼いて仕上げる。主な魚はエソ。蒸した蒲鉾より弾力が強く、魚の味が濃い。",
+    "_src": "Developed in portside Hagi during the Edo period using fresh Sea of Japan lizardfish, yakinuki kamaboko is roasted slowly from beneath its wooden board rather than steamed, yielding a snow-white, finely textured, and springy fish cake unique to the region."
+   }
+  ]
+ },
+ "places": {
+  "Gallery JIBITA": {
+   "nameEn": "Gallery JIBITA",
+   "area": "浜崎",
+   "areaEn": "Hamasaki",
+   "tags": [
+    "ceramics",
+    "glass",
+    "tableware"
+   ],
+   "what": "東浜崎町の器のギャラリー。陶・ガラス・漆・木工などの作り手の個展を、年に何度も開く。",
+   "whatEn": "A gallery for vessels in Higashi-Hamasaki, holding solo shows of ceramics, glass, lacquer and woodwork through the year.",
+   "note": "個展の週に合わせて行く。",
+   "noteEn": "Go in the week of a show.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "ギャラリージビタ",
+    "address": "山口県萩市東浜崎町138-6",
+    "url": "https://www.jibita.com/",
+    "whatJa": "浜崎の港町に構える、萩をはじめ全国の陶芸・ガラス・漆・木工作家の個展や常設展示を行う器のギャラリー。",
+    "whatEn": "A contemporary craft gallery in the Hamasaki port district curating solo exhibitions and permanent displays of ceramic, glass, lacquer, and wood vessels by makers from Hagi and across Japan.",
+    "facts": "Represents more than thirty contemporary makers including Shiro Hamanaka, Eiichi Shibuya, Etsuji Noguchi, and Satoshi Nishigaki; hosts monthly solo exhibitions of ceramics, blown glass, woodwork, and copperplate prints; located on Higashi-Hamasakimachi near the historic port warehouses.",
+    "weak": "",
+    "verifiedBy": "https://www.jibita.com/schedule",
+    "quote": "渋谷英一 陶展 11月14日（土）～19日（木）",
+    "fixes": "",
+    "coords": [
+     34.42224,
+     131.40052
+    ]
+   }
+  },
+  "甘味処あんず": {
+   "nameEn": "Kanmidokoro Anzu",
+   "area": "浜崎",
+   "areaEn": "Hamasaki",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "浜崎の、明治5年（1872年）の古い家を直した甘味処。手作りの団子。休みは不定で、Instagramで知らせる。",
+   "whatEn": "A sweets house in a restored 1872 house in Hamasaki, with handmade dango. Days off vary and are posted on Instagram.",
+   "note": "開いているかは、Instagramで見てから。",
+   "noteEn": "Check Instagram first to see if it is open.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "カンミドコロアンズ",
+    "address": "山口県萩市浜崎町4区160",
+    "url": "https://www.instagram.com/annzu_kanmi/",
+    "whatJa": "明治5年創建の三層構造の古民家を改装した浜崎の甘味処で、手作りの団子や季節の大福を萩焼の器で提供する。",
+    "whatEn": "A traditional Japanese sweets cafe in a renovated 1872 three-story merchant residence in Hamasaki serving handmade dango and seasonal daifuku on Hagi-yaki tableware.",
+    "facts": "Housed in the former Ikebe family residence built in 1872 and renovated by the dietitian owner; the signature Yaki-Dango Set (880 yen) lets guests toast skewered rice dumplings over a tabletop shichirin charcoal brazier with kinako, mitarashi, and sweet red bean toppings; second-floor seating overlooks the preserved Hamasaki streetscape.",
+    "weak": "Closed on irregular days announced via Instagram.",
+    "verifiedBy": "https://buchi-yamaguchi.net/recommend/hagi-city-gintama-collaboration-food/",
+    "quote": "開催期間 2026年10月1日(木)〜12月31日(木) 対象店舗 萩市内の8店舗",
+    "fixes": "Article lists あんず as a collab-food shop. Opened Nov 2025 (tryangle article, Mar 2026). Hours per article 10:00–17:00 (L.O 16:30) / 11:00–17:00 on buchi page; irregular holidays via Instagram; address 萩市浜崎町4区160 matches. whatEn 'three-story' etc. match tryangle.",
+    "coords": [
+     34.42154,
+     131.40068
+    ]
+   }
+  },
+  "中村船具店 むらやカフェ": {
+   "nameEn": "Muraya Cafe",
+   "area": "浜崎",
+   "areaEn": "Hamasaki",
+   "tags": [
+    "coffee"
+   ],
+   "what": "浜崎の、もと船具店の建物のカフェ。明治時代の船具が残る。ふだんは昼だけ開き、支払いは現金のみ。",
+   "whatEn": "A café in a former ship chandler's in Hamasaki, still holding Meiji-era ship fittings. Usually open by day only; cash only.",
+   "note": "現金を持って行く。",
+   "noteEn": "Bring cash.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "ナカムラセングテン ムラヤカフェ",
+    "address": "山口県萩市浜崎町205",
+    "url": "https://www.instagram.com/murayacafe/",
+    "whatJa": "浜崎伝統的建造物群保存地区に残る江戸時代からの旧船具店を活かした、明治期の船具ランプとレコード音楽が彩るカフェ。",
+    "whatEn": "A neighborhood coffeehouse inside a former Edo-period ship chandlery in the Hamasaki preservation district, furnished with Meiji-era glass ship lamps and 1960s–70s vinyl records.",
+    "facts": "Set inside an Edo-period ship chandlery displaying Meiji- and Taisho-era glass hoya ship lanterns; serves coffee, cafe au lait, and zenzai sweet bean soup by day (9:00–16:00, closed Thursdays) plus occasional evening vinyl-record cafe nights.",
+    "weak": "Cash only.",
+    "verifiedBy": "https://hagi-machihaku.com/html/events/event/32/",
+    "quote": "このイベントは 2026年 11月 11日 から 2026年 12月 9日 まで開催しています。",
+    "fixes": "Address 萩市浜崎町205 matches; cash only matches. Night cafe on 2026-11-11 and 2026-12-09 17:00–21:00. Buchi page says Monday opens 11:00.",
+    "coords": [
+     34.42102,
+     131.40059
+    ]
+   }
+  },
+  "三好蒲鉾": {
+   "nameEn": "Miyoshi Kamaboko",
+   "area": "浜崎",
+   "areaEn": "Hamasaki",
+   "tags": [
+    "kamaboko"
+   ],
+   "what": "浜崎新町の蒲鉾屋。萩で揚がるエソなどを石臼で練り、焼き抜き蒲鉾と揚げ蒲鉾を作る。2026年、ごぼう天が山口県知事賞。",
+   "whatEn": "A kamaboko maker in Hamasaki-shinmachi, grinding local lizardfish in a stone mortar for yakinuki and fried fish cakes. Its gobo-ten won the Yamaguchi Governor's Prize in 2026.",
+   "note": "焼き抜きと一緒に、ごぼう天も。",
+   "noteEn": "The yakinuki, and the gobo-ten too.",
+   "_src": {
+    "category": "local",
+    "industry": "yakinuki-kamaboko",
+    "nameKana": "ミヨシカマボコ",
+    "address": "山口県萩市浜崎新町53",
+    "url": "https://www.miyoshikamaboko.com/",
+    "whatJa": "日本海産の新鮮なエソを石臼で丁寧に練り上げ、焼き抜き蒲鉾と揚げ蒲鉾を製造販売する浜崎の蒲鉾工房。",
+    "whatEn": "An artisanal kamaboko workshop in Hamasaki grinding fresh Sea of Japan lizardfish in stone mortars to make additive-free yakinuki kamaboko and fried fish cakes.",
+    "facts": "All products are completely egg-free and fried varieties use organic safflower and rice bran oils; its reservation-only additive-free kamaboko 'Hagi' uses 100% domestic fresh fish and organic sugar with zero starch, wheat, preservatives, or phosphates; awarded the Minister of Agriculture, Forestry and Fisheries Prize in 2024 and the Yamaguchi Governor's Prize in October 2026.",
+    "weak": "Closed Sundays; the 100% fish additive-free 'Hagi' kamaboko requires advance reservation.",
+    "verifiedBy": "https://www.miyoshikamaboko.com/news-detail/32",
+    "quote": "令和8年10月22日に開催された、山口県水産加工展 練製品部門において、山口県知事賞を受賞いたしました。",
+    "fixes": "The 2026 Governor's Prize was for 「ごぼう天」 (58th Yamaguchi Fisheries Processing Fair), not for the additive-free 'Hagi' kamaboko; fix factsForNote accordingly. MAFF 2024 prize not verified.",
+    "coords": [
+     34.4189,
+     131.39987
+    ]
+   }
+  },
+  "晦事": {
+   "nameEn": "Kotokoto",
+   "area": "城下町",
+   "areaEn": "Jokamachi",
+   "tags": [
+    "ceramics",
+    "textile",
+    "coffee"
+   ],
+   "what": "呉服町の、200年前の町家を直した店とカフェ。大屋窯の器や手ぬぐい、自家製の夏みかんのマーマレード。第2・第4火曜は休み。",
+   "whatEn": "A shop and café in a 200-year-old townhouse on Gofukumachi: Ooyagama pottery, tenugui, and its own natsumikan marmalade. Closed on the second and fourth Tuesdays.",
+   "note": "マーマレードは、夏みかんと砂糖だけのを。",
+   "noteEn": "The marmalade made of nothing but natsumikan and sugar.",
+   "address": "萩市呉服町2-32",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "コトコト",
+    "address": "山口県萩市呉服町2-32",
+    "url": "https://www.kurumayado.com/pages/3964022/concept",
+    "whatJa": "呉服町の築200年の町家を改装し、坪庭を望む喫茶室とともに萩の器や手仕事雑貨、自家製夏みかんマーマレードを扱うセレクトショップ。",
+    "whatEn": "A craft-select shop and courtyard cafe in a renovated 200-year-old merchant townhouse on Gofukumachi carrying Hagi-yaki tableware, hand-dyed textiles, and house-made natsumikan marmalade.",
+    "facts": "Stocks ceramics from Ooyagama, hand-dyed tenugui from Iwakawa Hataten, Takako Hamanaka accessories, indigo-dyed textiles, and leatherwork; makes additive-free 'Hagi Marmalet' using only Hagi natsumikan bitter oranges and sugar after Yukichi Fukuzawa's 1893 recipe; cafe space with Nordic chairs serves coffee, natsumikan squash, and Spicy Hagi Curry.",
+    "weak": "",
+    "verifiedBy": "https://hagi-machihaku.com/html/4382/",
+    "quote": "◆実施期間 2026年10月1日（木）～12月13日（日）",
+    "fixes": "Page confirms 晦事（コトコト） is a 2026 stamp-rally participant; address/menu details not verified on this page.",
+    "coords": [
+     34.41287,
+     131.3941
+    ]
+   }
+  },
+  "ホトリテイ": {
+   "nameEn": "Hotoritei",
+   "area": "城下町",
+   "areaEn": "Jokamachi",
+   "tags": [],
+   "what": "南片河町の、古い家を使ったカフェレストラン。枯山水の庭を前に、昼の食事。休みは不定。",
+   "whatEn": "A café-restaurant in an old house in Minami-Katakawa, facing a dry-landscape garden. Lunch; days off vary.",
+   "note": "庭の見える席で。",
+   "noteEn": "A seat facing the garden.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "ホトリテイ",
+    "address": "山口県萩市南片河町62",
+    "url": "https://www.instagram.com/hotoritei.hagi/",
+    "whatJa": "南片河町の枯山水庭園に囲まれた古民家をモダンに改装し、地元食材のワンプレートランチを提供するカフェレストラン。",
+    "whatEn": "A lunch restaurant and cafe in a modernized historic residence in Minami-Katakawamachi overlooking a karesansui dry-landscape Japanese garden.",
+    "facts": "Serves lunch plates featuring local Choshu Kuroge Wagyu hamburg steak in wine sauce and mixed fry of seasonal Hagi offshore fish; dining room frames a traditional dry-landscape garden; open 11:00–16:00 (last order 15:30).",
+    "weak": "Daytime service only (closes 16:00) with irregular holidays.",
+    "verifiedBy": "https://buchi-yamaguchi.net/recommend/hagi-city-gintama-collaboration-food/",
+    "quote": "開催期間 2026年10月1日(木)〜12月31日(木) 対象店舗 萩市内の8店舗",
+    "fixes": "Listed as collab-food shop (鬼兵隊ハンバーグ 2,300円 as of article). Page shows hamburg item; address/hours not verified.",
+    "coords": [
+     34.4112,
+     131.39205
+    ]
+   }
+  },
+  "ブーランジェリー住吉丸": {
+   "nameEn": "Boulangerie Sumiyoshimaru",
+   "area": "城下町",
+   "areaEn": "Jokamachi",
+   "tags": [
+    "bread"
+   ],
+   "what": "萩のパン屋。カレーパングランプリ2026で、最高金賞1つと金賞4つ。最高金賞は「パリパリカレーパン」。",
+   "whatEn": "A Hagi bakery that took one top gold and four golds at the Curry Bread Grand Prix 2026. The top gold went to its crisp curry bread.",
+   "note": "カレーパンは、パリパリのを。",
+   "noteEn": "For curry bread, the crisp one.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "ブーランジェリースミヨシマル",
+    "address": "山口県萩市今古萩町18-1",
+    "url": "https://www.instagram.com/boulangerie_sumiyoshimaru/",
+    "whatJa": "今古萩町に構える夫婦営みのベーカリーで、自家製スパイスのカレーパンや萩産の柑橘・野菜を使ったハード系パンを焼き上げる。",
+    "whatEn": "An independent neighborhood boulangerie in Imakohagi-machi celebrated locally and nationally for crisp-crusted curry breads and rustic loaves baked with seasonal Hagi produce.",
+    "facts": "Opened in August 2018 and named after the squid-fishing boat of the owner's father-in-law; bakes rustic loaves with Nagato yuzukichi citrus, Hagi apples, and Oi onions; won five simultaneous awards including a Grand Gold Prize at the Curry Bread Grand Prix 2026.",
+    "weak": "",
+    "verifiedBy": "https://pr-free.jp/2026/176722/",
+    "quote": "山口県萩市に店舗を構えるパン屋「ブーランジェリー住吉丸」（代表：丸岡弘一）は、一般社団法人日本カレーパン協会が主催する「カレーパングランプリ®2026」において、最高金賞1部門および金賞4部門の合計5部門を同時受賞いたしました。",
+    "fixes": "Press release does not state the address, opening year or ingredients; only the 5-award Curry Bread Grand Prix 2026 (1 top gold, 4 gold) is confirmed. Do not claim 'Grand Gold Prize' as the sole award.",
+    "coords": [
+     34.41616,
+     131.40319
+    ]
+   }
+  },
+  "光國本店": {
+   "nameEn": "Mitsukuni Honten",
+   "area": "城下町",
+   "areaEn": "Jokamachi",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "熊谷町の夏みかん菓子の店。皮に羊羹を詰めた「夏蜜柑丸漬」を、明治13年（1880年）からの製法で一子相伝で作る。火曜は休み。",
+   "whatEn": "A natsumikan confectioner in Kumagai-machi. Its natsumikan marutsuke, a whole candied peel filled with yokan, follows a method finished in 1880 and passed to one heir each generation. Closed on Tuesdays.",
+   "note": "皮の苦みが残っているのがいい。",
+   "noteEn": "The bitterness left in the peel is the point.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "ミツクニホンテン",
+    "address": "山口県萩市大字熊谷町42",
+    "url": "https://mitsukuni-honten.com/",
+    "whatJa": "明治13年完成の一子相伝の製法を守り、萩特産の夏蜜柑を使った伝統菓子を手づくりする熊谷町の老舗菓子舗。",
+    "whatEn": "A family-run confectionery founded in the Meiji era in Kumagai-cho that handcrafts Hagi's original candied natsumikan bitter orange sweets by a single-heir technique perfected in 1880.",
+    "facts": "Developed its signature Natsumikan Maruzuke—whole hollowed Hagi natsumikan peel candied over days and filled with not-too-sweet white yokan—in 1880 (Meiji 13); also makes candied peel strips 'Hagi no Kaori' and whole-fruit natsumikan marmalade; closed Tuesdays.",
+    "weak": "",
+    "verifiedBy": "https://www.mbs.jp/4chantv/corner/anomachi/article/2026/11/112293.shtml",
+    "quote": "■有限会社 光國本店 住所:山口県萩市大字熊谷町42 ... 2026年11月06日（金）現在の情報です",
+    "fixes": "Address matches. Official site (mitsukuni-honten.com) confirms Meiji 13 single-heir method, products, closed every Tuesday from March 2025 (open during Golden Week and Obon). Official notices seen were 2024/2025 only; the 2026 evidence is the MBS article.",
+    "coords": [
+     34.41601,
+     131.40075
+    ]
+   }
+  },
+  "坂髙麗左衛門窯": {
+   "nameEn": "Saka Koraizaemon Kiln",
+   "area": "椿東",
+   "areaEn": "Chinto",
+   "tags": [
+    "ceramics"
+   ],
+   "what": "萩焼が始まった地を四百年守る窯元。十四世 坂髙麗左衛門が2022年（令和4年）に名を継いだ。訪ねる時は予約が要る。",
+   "whatEn": "A kiln that has kept the founding site of Hagi ware for four hundred years; Saka Koraizaemon XIV took the name in 2022. Visits by reservation only.",
+   "note": "行く前に、必ず予約。",
+   "noteEn": "Book before you go.",
+   "_src": {
+    "category": "local",
+    "industry": "hagi-yaki",
+    "nameKana": "サカコウライザエモンガマ",
+    "address": "山口県萩市椿東1922",
+    "url": "https://www.sakakoraizaemon.co.jp/",
+    "whatJa": "毛利公より拝領した名跡を受け継ぎ、開窯四百年の伝統様式と現代の造形を追求する椿東の萩焼宗家窯元。",
+    "whatEn": "One of Hagi-yaki's founding four-hundred-year tea-ceremony kilns in Chinto, continuing the lineage bestowed with the name Koraizaemon by the Mori clan.",
+    "facts": "Guards a 400-year kiln lineage dating back to the founding of Hagi ware under the Mori domain; led by 14th-generation master Saka Koraizaemon XIV, who succeeded to the title in 2022; produces tea bowls and sculptural stoneware at its Chinto workshop.",
+    "weak": "Visits to the kiln require an advance reservation.",
+    "verifiedBy": "https://www.sakakoraizaemon.co.jp/archives/293/",
+    "quote": "この度山口井筒屋にて、十四世の襲名記念展を開催させていただきます。",
+    "fixes": "Address 山口県萩市椿東1922 matches. Page says visits by reservation only (定休日：なし（要予約）, 9:00～17:00). The '2022 succession' year was not on the pages I read; remove it.",
+    "coords": [
+     34.41889,
+     131.43353
+    ]
+   }
+  },
+  "萩焼窯元 泉流山": {
+   "nameEn": "Senryuzan",
+   "area": "椿東",
+   "areaEn": "Chinto",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "文政9年（1826年）に開いた萩焼の窯元。薪の登り窯と蹴ろくろを続ける。敷地に吉賀大眉記念館。水曜は休み（祝日は開く）。",
+   "whatEn": "A Hagi-yaki kiln founded in 1826, still firing a wood climbing kiln and throwing on kick wheels, with its own clay and glazes. The Yoshika Taibi Memorial museum is on the grounds. Closed on Wednesdays, except holidays.",
+   "note": "器の前に、登り窯を見る。",
+   "noteEn": "See the climbing kiln before the pots.",
+   "_src": {
+    "category": "local",
+    "industry": "hagi-yaki",
+    "nameKana": "ハギヤキカマモト センリュウザン",
+    "address": "山口県萩市大字椿東4481",
+    "url": "https://senryuzan.jp/",
+    "whatJa": "文政9年（1826年）創窯、薪の登り窯焼成と蹴り轆轤の伝統製法を守りながら日常の和食器から抹茶茶碗まで一貫制作する椿東の窯元。",
+    "whatEn": "A historic Hagi-yaki kiln founded in 1826 in Chinto that still fires a large wood-burning climbing kiln and throws vessels on kick wheels alongside an on-site museum and gallery.",
+    "facts": "Established in 1826 (Bunsei 9) under the Choshu domain's ceramics encouragement policy; refines its own clay and glazes in-house and fires a traditional multi-chamber wood climbing kiln; shares its grounds with the Yoshika Taibi Memorial Hagi Ceramic Art Museum and a pottery workshop.",
+    "weak": "Closed Wednesdays (open if Wednesday is a national holiday).",
+    "verifiedBy": "https://senryuzan.jp/",
+    "quote": "2026年GW期間中の営業および陶芸体験について",
+    "fixes": "Address 萩市大字椿東4481 and 1826 (文政9年) founding match. Closed Wednesdays (open if a national holiday), 9:00-17:00. Only the headline of the 2026 notice was visible on the top page; the body was not opened. Newest dated item is April 2026.",
+    "coords": [
+     34.42462,
+     131.41531
+    ]
+   }
+  },
+  "萩焼窯元 勝景庵": {
+   "nameEn": "Shokeian",
+   "area": "椿東",
+   "areaEn": "Chinto",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "椿東・前小畑の萩焼の窯元。親子二人が、山で掘った土で、一点ものの茶碗や酒器、食卓の器を作る。日曜は休み。",
+   "whatEn": "A Hagi-yaki kiln in Maeobata, Chinto, where a father and son dig their own clay for one-off tea bowls, sake cups and tableware. Closed on Sundays.",
+   "note": "一点ものだから、その場で決める。",
+   "noteEn": "Every piece is one of a kind. Decide on the spot.",
+   "_src": {
+    "category": "local",
+    "industry": "hagi-yaki",
+    "nameKana": "ハギヤキカマモト ショウケイアン",
+    "address": "山口県萩市椿東4831-3",
+    "url": "https://shoukeian.jp/",
+    "whatJa": "椿東・前小畑で自ら山を切り開いて掘った萩の土と向き合い、一点ものの茶碗や酒器、食卓の器を手掛ける親子二代の萩焼窯元。",
+    "whatEn": "A father-and-son Hagi-yaki studio in the Maeobata kiln district of Chinto digging its own mountain clay to craft one-of-a-kind tea bowls, sake vessels, and everyday tableware.",
+    "facts": "Potters Kaen and Tomoaki Kaneta prospect and prepare local mountain clay from scratch to create one-off vessels meant to mature with tea and sake patina; Tomoaki Kaneta's incised Hagi tea bowl (Hagi Senkoku Chawan) won the Tono Shinkin Bank Prize at the 27th Mino Chawan Exhibition in 2026.",
+    "weak": "Closed Sundays.",
+    "verifiedBy": "https://shoukeian.jp/2026/04/13/2026-%e7%ac%ac27%e5%9b%9e%e7%be%8e%e6%bf%83%e8%8c%b6%e7%9b%8c%e5%b1%95%e3%80%80%e5%85%a5%e8%b3%9e/",
+    "quote": "この度、当窯　兼田知明　作　萩線刻茶碗が2026 第27回美濃茶盌展におきまして、東濃信用金庫賞を受賞いたしました。",
+    "fixes": "Award text matches. I did not confirm the address, Sunday closure or father-and-son details on the pages I read.",
+    "coords": [
+     34.42922,
+     131.42442
+    ]
+   }
+  },
+  "萩ガラス工房": {
+   "nameEn": "Hagi Glass Studio",
+   "area": "椿東",
+   "areaEn": "Chinto",
+   "tags": [
+    "glass"
+   ],
+   "what": "笠山でだけ採れる石英玄武岩からガラスを作る工房。淡い緑のガラスや萩切り子。年中無休で、体験の予約は電話だけ。",
+   "whatEn": "A glass studio making glass from quartz basalt found only on Mount Kasayama: pale-green glass and Hagi kiriko. Open every day; workshops are booked by phone only.",
+   "note": "淡い緑は、笠山の石の色。",
+   "noteEn": "The pale green is the colour of the Kasayama stone.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "ハギガラスコウボウ",
+    "address": "山口県萩市大字椿東越ヶ浜1189-453",
+    "url": "https://www.hagi-glass.jp/",
+    "whatJa": "笠山産の石英玄武岩を原石から一貫精製し、淡緑色の玄武岩ガラスや三層構造の内貫入ガラス、萩切り子を制作販売する市内唯一のガラス工房。",
+    "whatEn": "Hagi's sole handblown glass studio near Mount Kasayama, smelting local quartz basalt from raw stone to produce pale-green basalt glassware, three-layer crackled glass, and cut Hagi kiriko.",
+    "facts": "Revived late-Edo Hagi glassmaking after a 130-year hiatus using hard potash glass that resists clouding over decades; melts quartz basalt mined exclusively on nearby Mount Kasayama into pale green Genbugarasu and three-layer crackled Kannyu glass; includes a second-floor exhibition room, shop, and glassblowing studio.",
+    "weak": "Glassblowing workshops require phone reservation.",
+    "verifiedBy": "https://www.hagi-glass.jp/",
+    "quote": "【重要】溶解炉メンテナンスに伴う「宙吹きガラス体験」一時休止のお知らせ",
+    "fixes": "Address 〒758-0011 山口県萩市大字椿東越ヶ浜1189-453 matches. The site says 9:00～16:30 (年中無休) and that experiences are booked by phone. The glassblowing experience was paused in June 2026 for furnace maintenance; do not promise it without checking. The MBS article of 2026-11-06 also lists the studio.",
+    "coords": [
+     34.44864,
+     131.40573
+    ]
+   }
+  },
+  "長屋門珈琲 カフェ・ティカル": {
+   "nameEn": "Nagayamon Coffee Cafe Tikal",
+   "area": "土原",
+   "areaEn": "Hijiwara",
+   "tags": [
+    "coffee"
+   ],
+   "what": "土原の、萩市指定有形文化財「小川家長屋門」の敷地にある自家焙煎の珈琲店。豆は常時20〜30種類。月曜は休み。",
+   "whatEn": "A house-roasting coffee shop in Hijiwara, on the grounds of the Ogawa family nagayamon gate, a city cultural property. Twenty to thirty kinds of beans at any time. Closed on Mondays.",
+   "note": "豆は100グラムから買える。",
+   "noteEn": "Beans are sold from 100 g.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "ナガヤモンコーヒー カフェ・ティカル",
+    "address": "山口県萩市土原298-1",
+    "url": "https://nagayamon-coffee.com/",
+    "whatJa": "萩市指定有形文化財「小川家長屋門」の敷地内で、開業30年以上にわたり常時20種の自家焙煎豆を抽出する土原の珈琲店。",
+    "whatEn": "A thirty-year-old in-house coffee roastery and kissaten set on the grounds of the Tangible Cultural Property Ogawa Family Nagayamon samurai gatehouse in Hijiwara.",
+    "facts": "Operates beside the preserved Edo-period gatehouse of the 500-koku samurai Ogawa family near the Matsumoto River; roasts beans tailored to Hagi's climate and pours from an everyday lineup of roughly twenty single-origin and blended coffees.",
+    "weak": "",
+    "verifiedBy": "https://hagi-machihaku.com/html/events/event/15/",
+    "quote": "このイベントは 2026年 11月 10日 から 2026年 11月 21日 まで開催しています。",
+    "fixes": "Host listed as 長屋門珈琲 カフェ・ティカル; address 山口県萩市土原298-1 matches official site. Official site says 20-30 kinds and master roasting 40+ years; company founded 平成4年 (1992), so 'thirty-year-old' ok. Official site hours 09:30-19:00, closed Monday.",
+    "coords": [
+     34.41135,
+     131.40895
+    ]
+   }
+  },
+  "Jantique coffee": {
+   "nameEn": "Jantique coffee",
+   "area": "田町",
+   "areaEn": "Tamachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "東田町の、映画館の下のスペシャルティコーヒーの店。フレンチプレスで淹れる。13時から24時、月曜は休み。",
+   "whatEn": "A specialty coffee bar beneath the cinema in Higashi-Tamachi, brewing by French press. 13:00 to midnight; closed on Mondays.",
+   "note": "夜のコーヒーは、ここ。",
+   "noteEn": "For coffee at night, here.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "ジャンティーク コーヒー",
+    "address": "山口県萩市東田町18-4 ヤングプラザ萩1F",
+    "url": "https://jantique.net/",
+    "whatJa": "東田町の映画館階下に構えるスペシャルティコーヒー専門店で、フレンチプレス抽出の珈琲やエスプレッソ、季節の手作りスイーツを夜遅くまで提供する。",
+    "whatEn": "A late-evening specialty coffeehouse on the ground floor beneath Hagi's sole cinema in Higashitamachi, serving French-press coffee, espresso drinks, and seasonal house-baked choux.",
+    "facts": "Grew out of a self-converted mobile coffee van started in 2003 before settling beneath the cinema in Young Plaza Hagi; brews 100% specialty coffee trained under Fukuoka pioneer Honey Coffee; open 13:00–24:00 (closed Mondays) and bakes seasonal cookie-crust cream puffs such as autumn purple-sweet-potato and caramel-mascarpone choux.",
+    "weak": "Opens at 13:00 and closed Mondays.",
+    "verifiedBy": "https://jantique.net/2026/10/27/jantique%e3%81%ae%e3%82%b7%e3%83%a5%e3%83%bc%e3%82%af%e3%83%aa%e3%83%bc%e3%83%a02026/",
+    "quote": "Jantiqueのシュークリーム、2026秋。",
+    "fixes": "Address 山口県萩市東田町１８−４ヤングプラザ萩１F and 'open 13:00-24:00 off Monday' match. Page does not state 'Hagi's sole cinema' or French-press/Honey Coffee training; not confirmed on this page.",
+    "coords": [
+     34.41306,
+     131.40332
+    ]
+   }
+  },
+  "en_PELORI": {
+   "nameEn": "en_PELORI",
+   "area": "田町",
+   "areaEn": "Tamachi",
+   "tags": [],
+   "what": "唐樋町・札場前の角のバーガーの店。2025年12月に開いた。カウンターだけで、前菜2品のあとにバーガー。開く日はInstagramで。",
+   "whatEn": "A burger counter on the corner of the Fudaba-mae crossing in Karahi-machi, opened in December 2025. Two small starters, then the burger. Opening days are posted on Instagram.",
+   "note": "席はカウンターだけ。開く日を見てから。",
+   "noteEn": "Counter seats only. Check the days first.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "エンペロリ",
+    "address": "山口県萩市唐樋町9",
+    "url": "https://www.instagram.com/pelori_burger_hagi/",
+    "whatJa": "唐樋町・札場前交差点角で、県産小麦の焼きたて特製バンズに長萩和牛や萩の鮮魚を合わせ前菜2品付きのコース仕立てで供するカウンター席のバーガー専門店。",
+    "whatEn": "A counter-only course-burger dining room at Fudabamae intersection in Karahimachi where Hagi baker Masayo Nakahara pairs custom-baked Yamaguchi wheat buns with local Choshu Wagyu and offshore fish.",
+    "facts": "Created by the baker behind Hagi's yuQuri with recipes developed alongside Yamaguchi French restaurant mitsuwa and inspired by Copenhagen's New Nordic burger shop POPL; serves a 100% binder-free Choshu Wagyu shank burger with Madeira Chaliapin sauce and a Hagi fresh-fish burger on a hijiki-kneaded Setokirara wheat bun, preceded by two seasonal local appetizers.",
+    "weak": "Counter seating only; irregular opening hours and holidays announced on Instagram.",
+    "verifiedBy": "https://yamaguchi-san.com/post-40023/",
+    "quote": "歴史ある萩の中心部、札場前交差点の角に2025年12月15日に誕生した「en_PELORI」（山口県萩市唐樋町9）。",
+    "fixes": "Article from Jan 2026 (third-party; Instagram page not readable without login). Address and counter/course burger match; hours irregular per Instagram. Open since 2025-12-15.",
+    "coords": [
+     34.41092,
+     131.4027
+    ]
+   }
+  },
+  "大屋窯": {
+   "nameEn": "Ooyagama",
+   "area": "椿",
+   "areaEn": "Tsubaki",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "1969年、萩の南の日輪山のふもとに開いた萩焼の窯元。陶器と磁器、ジュエリーを作る。店の開く日はサイトで知らせる。",
+   "whatEn": "A Hagi-yaki kiln founded in 1969 at the foot of Mount Nichirin, south of Hagi, making pottery, porcelain and jewellery. Shop days are posted on its website.",
+   "note": "庭から萩の町が見える。器のあとに。",
+   "noteEn": "The garden looks out over Hagi. After the pots.",
+   "_src": {
+    "category": "local",
+    "industry": "hagi-yaki",
+    "nameKana": "オオヤガマ",
+    "address": "山口県萩市椿905",
+    "url": "https://www.ooyagama.com/",
+    "whatJa": "1969年に日輪山の麓・椿で開窯し、萩焼の伝統に根ざした普段使いの器から造形作品、磁器、ジュエリーまでを手掛ける窯元。",
+    "whatEn": "An influential Hagi-yaki kiln and gallery founded in 1969 at the foot of Mount Nichirin in Tsubaki, producing stoneware, porcelain, everyday tableware, and ceramic jewelry.",
+    "facts": "Founded by Gesson Hamanaka in 1969 and today home to ceramist Shiro Hamanaka and jeweler Takako Hamanaka alongside Ooyagama's studio tableware line; hosts seasonal kiln festivals, imperfect 'sankaku' tableware sales, and exhibitions on its wooded Tsubaki grounds.",
+    "weak": "Shop opening hours vary by day of the week according to the kiln calendar.",
+    "verifiedBy": "https://www.ooyagama.com/news",
+    "quote": "ガレージセール開催＠大屋窯 日付 2026年11月14(土).15(日) 時間 11時-17時 会場 大屋窯",
+    "fixes": "Address 山口県萩市椿905 matches (autumn festival notice). Page does not confirm 1969 founding or 日輪山 on the news page.",
+    "coords": [
+     34.38667,
+     131.40876
+    ]
+   }
+  },
+  "忠小兵衛蒲鉾本店": {
+   "nameEn": "Chukobee Kamaboko",
+   "area": "椿",
+   "areaEn": "Tsubaki",
+   "tags": [
+    "kamaboko"
+   ],
+   "what": "安政2年（1855年）創業、八代目が継ぐ焼き抜き蒲鉾の本店。かまぼこ作りの体験と、カフェ「はちのたね」もある。水曜は休み。",
+   "whatEn": "The main shop of a yakinuki kamaboko maker founded in 1855, now in its eighth generation. Kamaboko-making sessions and the café Hachi no Tane. Closed on Wednesdays.",
+   "note": "最初は、何もつけずに。",
+   "noteEn": "First, with nothing on it.",
+   "_src": {
+    "category": "local",
+    "industry": "yakinuki-kamaboko",
+    "nameKana": "チュウコベエカマボコホンテン",
+    "address": "山口県萩市椿陣ヶ原2757-1",
+    "url": "https://chukobee.co.jp/html/",
+    "whatJa": "安政二年（1855年）創業、八代にわたり板の下から遠火でじっくり焼き上げる長州・萩伝統の焼き抜き蒲鉾を受け継ぐ市内最古の蒲鉾本店。",
+    "whatEn": "Hagi's oldest yakinuki-kamaboko maker, founded in 1855 in Tsubaki and now in its eighth generation of slow-roasting fish cakes from beneath wooden boards.",
+    "facts": "Founded in Ansei 2 (1855) and currently led by eighth-generation head Akira Nagatani; roasts fish paste from beneath the board over indirect heat rather than steaming to preserve firm springiness and deep fish umami; also runs a hands-on kamaboko-making workshop and adjacent cafe Hachi no Tane at its Tsubaki flagship.",
+    "weak": "",
+    "verifiedBy": "https://chukobee.co.jp/html/news/5217",
+    "quote": "2026.11.10 価格改定のお知らせ 平素より忠小兵衛蒲鉾本店をご愛顧いただき、誠にありがとうございます。",
+    "fixes": "Address 山口県萩市椿陣ヶ原2757-1 matches; site nav lists かまぼこ職人体験 and はちのたね.",
+    "coords": [
+     34.39595,
+     131.40352
+    ]
+   }
+  },
+  "山本食堂": {
+   "nameEn": "Yamamoto Shokudo",
+   "area": "椿",
+   "areaEn": "Tsubaki",
+   "tags": [],
+   "what": "椿の大衆食堂。自然農法の米と、なるべく無添加の調味料で、70種近くの献立。日曜は休み、15時から17時は閉まる。",
+   "whatEn": "A neighbourhood diner in Tsubaki: close to seventy dishes, with natural-farming rice and seasonings kept as additive-free as possible. Closed on Sundays and from 15:00 to 17:00.",
+   "note": "ご飯ものにする。米が自然農法だから。",
+   "noteEn": "Pick something with rice. The rice is natural-farmed.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "ヤマモトショクドウ",
+    "address": "山口県萩市大字椿3606-4",
+    "url": "https://www.instagram.com/yamamotosyokudou_hagi/",
+    "whatJa": "椿で60年以上地元客に愛され、自然農法産米と無添加調味料を使ったちゃんぽんや定食など約70種の献立を供する大衆食堂。",
+    "whatEn": "A sixty-year-old neighborhood shokudo near JR Hagi Station in Tsubaki cooking nearly seventy homestyle set meals and noodle dishes with natural-farming rice and additive-free seasonings.",
+    "facts": "Run for over sixty years with its ninety-year-old proprietor still in the kitchen; signature Toromi Champon set meal pairs thick vegetable-and-seafood noodle soup with natural-farming rice or inari sushi; hosts a monthly organic and natural-farming vegetable market.",
+    "weak": "Closed Sundays and between 15:00 and 17:00.",
+    "verifiedBy": "https://tryangle.yamaguchi.jp/tryangle/hagi-yamamotoshokudo",
+    "quote": "店主の山本さんは御年90歳！ 自然農法産米やできる限り無添加調味料を使用し、丹精こめた70種近くのメニューが楽しめます。",
+    "fixes": "Address 萩市大字椿3606-4, closed Sunday, 10:00-15:00/17:00-19:00 match. Page does not say 'near JR Hagi Station' - remove. Third-party magazine article, not official Instagram (not readable).",
+    "coords": [
+     34.39434,
+     131.40071
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "萩城跡・指月公園",
+   "nameEn": "Hagi Castle Ruins (Shizuki Park)",
+   "kind": "sight",
+   "area": "堀内",
+   "areaEn": "Horiuchi",
+   "address": "萩市堀内1-1",
+   "url": "https://www.hagishi.com/search/detail.php?d=100049",
+   "what": "1604年に毛利輝元が指月山のふもとに築いた萩城の跡。天守は明治7年に解体され、石垣と堀が残る国の史跡。",
+   "whatEn": "The site of Hagi Castle, built by Mori Terumoto in 1604 at the foot of Mount Shizuki. The keep was pulled down in 1874; the stone walls and moat remain, a national historic site.",
+   "coords": [
+    34.41752,
+    131.38378
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.hagishi.com/search/detail.php?d=100049 (萩市観光協会公式): 慶長9年（1604）毛利輝元が指月山麓に築城、明治7年（1874）に天守など解体、石垣と堀の一部が残り国の史跡。住所 萩市堀内1-1、休日 無休、11～2月 8:30～16:30。2026年の桜の開花情報あり。",
+   "_coordsSource": "OSM node 11630385962（萩城 historic=castle）"
+  },
+  {
+   "name": "萩博物館",
+   "nameEn": "Hagi Museum",
+   "kind": "art",
+   "area": "堀内",
+   "areaEn": "Horiuchi",
+   "address": "萩市堀内355",
+   "url": "https://hagimuseum.jp/",
+   "what": "萩の自然・歴史・文化を見せる博物館。旧萩城三の丸の堀内地区にあり、高杉晋作資料室や萩城下町の展示がある。",
+   "whatEn": "A museum of Hagi's nature, history and culture in Horiuchi, the castle's former outer enclosure, with a Takasugi Shinsaku room and displays on the castle town.",
+   "coords": [
+    34.41338,
+    131.3906
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://hagimuseum.jp/ : 開館 9:00〜17:00、2026年11月は無休、企画展「萩の昭和大博覧会」2026/10/10〜12/13、休館 12/30・31。所在地 萩市大字堀内355。高杉晋作資料室・萩城下町の展示室。三の丸・堀内地区の記述は萩市観光協会 https://www.hagishi.com/search/detail.php?d=100058",
+   "_coordsSource": "OSM relation 7974371（萩博物館 tourism=museum）"
+  },
+  {
+   "name": "山口県立萩美術館・浦上記念館",
+   "nameEn": "Hagi Uragami Museum",
+   "kind": "art",
+   "area": "平安古",
+   "areaEn": "Hiyako",
+   "address": "萩市平安古町586-1",
+   "url": "https://hum-web.jp/",
+   "what": "萩出身の浦上敏朗のコレクションをもとに開いた県立美術館。浮世絵と東洋の陶磁、萩焼を見せる陶芸館がある。",
+   "whatEn": "A prefectural museum built on the collection of Hagi-born Uragami Toshiro: ukiyo-e prints, East Asian ceramics, and a ceramics wing for Hagi-yaki.",
+   "coords": [
+    34.40947,
+    131.39424
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://hum-web.jp/ : 2026年11月12日 本日開館 9:00-17:00、特別展 歌川広重Ⅱ 2026/10/31〜12/20、休館日 月曜（祝日は開館）。浦上敏朗コレクション・浮世絵と東洋陶磁・陶芸館は萩市観光協会 https://www.hagishi.com/search/detail.php?d=100059",
+   "_coordsSource": "OSM way 561533123（山口県立萩美術館・浦上記念館 tourism=museum）"
+  },
+  {
+   "name": "松陰神社",
+   "nameEn": "Shoin Shrine",
+   "kind": "sight",
+   "area": "椿東",
+   "areaEn": "Chinto",
+   "address": "萩市椿東1537",
+   "url": "https://showin-jinja.or.jp/",
+   "what": "吉田松陰を祀る神社。松陰が教えた松下村塾の塾舎が境内に残り、2015年に世界遺産になった。境内は自由に歩ける。",
+   "whatEn": "The shrine to Yoshida Shoin. The building of Shokasonjuku, the school where he taught, stands in the grounds and became part of a World Heritage site in 2015. The grounds are open to walk.",
+   "coords": [
+    34.41212,
+    131.41829
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://showin-jinja.or.jp/ : 〒758-0011 山口県萩市椿東1537番地、拝観時間 境内自由（夜間は松下村塾などは戸締り）、2026年11月の更新あり。/about/syokasonjuku/ 「塾舎は今も松陰神社境内に現存しており、平成27年（2015）には世界遺産となりました」。宝物殿至誠館の休館（2026/9/16・17）は終了。",
+   "_coordsSource": "OSM way 555592254（松蔭神社の社殿 building。松下村塾 way 555592247 の東隣）"
+  },
+  {
+   "name": "萩市浜崎伝統的建造物群保存地区",
+   "nameEn": "Hamasaki Preservation District",
+   "kind": "sight",
+   "area": "浜崎",
+   "areaEn": "Hamasaki",
+   "address": "萩市浜崎町・浜崎新町・東浜崎町・熊谷町の一部",
+   "url": "https://hagi-hamasaki.jp/html/",
+   "what": "萩城下の港町。江戸時代から昭和初期の町家や土蔵が残り、2001年に国の重要伝統的建造物群保存地区に選ばれた。散策は自由。",
+   "whatEn": "The port quarter of the castle town, with townhouses and storehouses from the Edo period to the early Showa era; a national preservation district for groups of traditional buildings since 2001. Free to walk.",
+   "coords": [
+    34.42093,
+    131.40061
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://hagi-hamasaki.jp/html/ （浜崎しっちょる会）: 2026年9月のお知らせあり。萩市観光協会 https://www.hagishi.com/search/detail.php?d=100080 : 城下町の形成にともなって開かれた港町、江戸時代から昭和初期の町家、平成13年11月に重要伝統的建造物群保存地区に選定、散策自由。",
+   "_coordsSource": "OSM node 8479011107（浜崎町 place=quarter）"
+  }
+ ],
+ "_dropped": []
+}

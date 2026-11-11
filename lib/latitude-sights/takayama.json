@@ -1,0 +1,66 @@
+[
+ {
+  "name": "高山陣屋",
+  "nameEn": "Takayama Jinya",
+  "kind": "sight",
+  "area": "八軒町",
+  "areaEn": "Hachikenmachi",
+  "address": "高山市八軒町1-5",
+  "url": "https://jinya.gifu.jp/",
+  "what": "江戸幕府が飛騨を治めた役所の跡で、国の史跡。当時の主な建物が残る、全国でただ一つの代官・郡代所。",
+  "whatEn": "The office from which the Edo shogunate governed Hida, a national historic site, and the only one of its kind whose main buildings survive.",
+  "coords": [
+   36.13969,
+   137.25762
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "三町の古い町並",
+  "nameEn": "Sanmachi Old Town",
+  "kind": "sight",
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市上三之町ほか",
+  "url": "https://www.hidatakayama.or.jp/spot/detail_1101.html",
+  "what": "江戸時代の城下町の商人町。出格子の町家が並ぶ三筋の通りは、国の重要伝統的建造物群保存地区。",
+  "whatEn": "The merchant quarter of the Edo-period castle town. Its three streets of latticed townhouses are a national preservation district for groups of traditional buildings.",
+  "coords": [
+   36.14126,
+   137.25963
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "宮川朝市",
+  "nameEn": "Miyagawa Morning Market",
+  "kind": "sight",
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市下三之町",
+  "url": "https://www.asaichi.net/",
+  "what": "宮川沿いに白いテントが並ぶ朝市。野菜や漬物、民芸品。1960年からこの河川敷で開く。毎日7時から12時（12〜3月は8時から）。",
+  "whatEn": "A morning market of white tents along the Miyagawa: vegetables, pickles, folk crafts. Held on this riverbank since 1960, daily 7:00–12:00 (from 8:00, December to March).",
+  "coords": [
+   36.14469,
+   137.25785
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "日下部民藝館",
+  "nameEn": "Kusakabe Mingeikan",
+  "kind": "art",
+  "area": "大新町",
+  "areaEn": "Oshinmachi",
+  "address": "高山市大新町1-52",
+  "url": "https://kusakabe-mingeikan.com/",
+  "what": "代官所の御用商人だった日下部家の町家。明治12年に建て直され、国の重要文化財。土蔵で渋草焼などの民藝品を見せる。火曜は休み。",
+  "whatEn": "The townhouse of the Kusakabe, merchants to the Edo-era magistrate's office, rebuilt in 1879 and a national Important Cultural Property. Its storehouses show folk crafts such as Shibukusa ware. Closed Tuesdays.",
+  "coords": [
+   36.14644,
+   137.25846
+  ],
+  "verifiedAt": "2026-11-11"
+ }
+]

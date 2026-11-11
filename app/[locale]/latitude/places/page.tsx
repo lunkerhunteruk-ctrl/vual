@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const ja = locale === 'ja';
   const title = ja ? '場所から探す — LATITUDE の街と、旅人のおすすめ | VUAL' : 'Places — the cities of LATITUDE, and where the travellers would go | VUAL';
   const description = ja
-    ? 'LATITUDE の旅人が1日を過ごした街を、地図から。日本・アイスランド・スウェーデン・デンマーク・イギリス・オーストリア・イタリアの街の案内（編集部が営業を確かめた店）と、その街の号へ。'
-    : 'The cities where the LATITUDE travellers spent a day, on a map: Japan, Iceland, Sweden, Denmark, the United Kingdom, Austria and Italy. Each has a city guide of places the editors checked, and the issue set there.';
+    ? 'LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町を、地図から。日本・アイスランド・スウェーデン・デンマーク・イギリス・オーストリア・イタリアの街の案内（編集部が営業を確かめた店）と、その街の号へ。'
+    : 'The cities where the LATITUDE travellers spent a day, and towns with their picks, on a map: Japan, Iceland, Sweden, Denmark, the United Kingdom, Austria and Italy. Each has a city guide of places the editors checked, and the issue set there if there is one.';
   return {
     title,
     description,
@@ -43,8 +43,8 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
         </h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
           {ja
-            ? '旅人が1日を過ごした街。国を押すとその国へ寄り、街を押すとその街の案内へ。'
-            : 'The cities where the travellers spent a day. Choose a country to go closer, then a city for its guide.'}
+            ? '旅人が1日を過ごした街と、旅人のおすすめの町。国を押すとその国へ寄り、街を押すとその街の案内へ。'
+            : 'The cities where the travellers spent a day, and towns with their picks. Choose a country to go closer, then a city for its guide.'}
         </p>
       </header>
 

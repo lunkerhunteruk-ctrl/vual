@@ -1,0 +1,360 @@
+[
+ {
+  "name": "小糸焼窯元",
+  "nameEn": "Koito Pottery",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "駅の西",
+  "areaEn": "West of the Station",
+  "address": "高山市上岡本町1-136",
+  "url": "https://koitoyaki.jp/",
+  "what": "親子で営む小さな窯元。飛騨の赤土と木の灰の伊羅保釉で、普段の器や茶道具を手で作る。直売店は閉まっている日が多い。",
+  "whatEn": "A small family kiln making everyday tableware and tea ware by hand, glazed in irabo made from Hida red clay and wood ash. The shop is often closed.",
+  "note": "行く前に、電話で開いているかを聞く。",
+  "noteEn": "Call ahead to ask if it is open.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.13557,
+   137.24007
+  ]
+ },
+ {
+  "name": "クラフト雑貨 kochi",
+  "nameEn": "kochi",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "ceramics",
+   "glass"
+  ],
+  "area": "駅の西",
+  "areaEn": "West of the Station",
+  "address": "高山市西之一色町3-813-7",
+  "url": "https://www.kochi-net.jp/",
+  "what": "木工家の夫婦の店。自分たちの木の雑貨と、作家の陶磁器やガラスの器。木・金と第3日曜は休み。",
+  "whatEn": "A shop run by a woodworking couple: their own wooden pieces, with ceramics and glass by other makers. Closed Thursdays, Fridays and the third Sunday.",
+  "note": "木の物から見る。作った人の店だから。",
+  "noteEn": "Look at the wood first. The makers run the shop.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.13386,
+   137.23719
+  ]
+ },
+ {
+  "name": "やわい屋",
+  "nameEn": "Yawaiya",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "国府町",
+  "areaEn": "Kokufu",
+  "address": "高山市国府町宇津江1372-2",
+  "url": "https://yawaiya.netlify.app/",
+  "what": "国府町宇津江の山あいに古民家を移して開く、民藝の器の店。13時から17時、木曜は休み。論考集「雑考」も出す。",
+  "whatEn": "A shop for mingei tableware in an old farmhouse moved to a mountain hamlet in Kokufu. 13:00–17:00, closed Thursdays. It also publishes a small essay series, Zakko.",
+  "note": "開くのは午後から。臨時の休みはInstagramで見る。",
+  "noteEn": "It opens in the afternoon. Check Instagram for days off.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.20326,
+   137.17844
+  ]
+ },
+ {
+  "name": "Panove",
+  "nameEn": "Panove",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "駅の西",
+  "areaEn": "West of the Station",
+  "address": "高山市岡本町2-140-4",
+  "url": "https://panove.jp/",
+  "what": "岡本町のパン屋。パンとサンドイッチ、秋は久々野のりんごのアップルパイ。日曜は休み。",
+  "whatEn": "A bakery in Okamoto-machi: bread, sandwiches, and in autumn an apple pie made with apples from Kuguno. Closed Sundays.",
+  "note": "焼き上がりの時間を見てから行く。",
+  "noteEn": "Check the baking times before you go.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14385,
+   137.246
+  ]
+ },
+ {
+  "name": "TRAIN BLEU",
+  "nameEn": "TRAIN BLEU",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "駅の西",
+  "areaEn": "West of the Station",
+  "address": "高山市西之一色町1丁目73-5",
+  "url": "https://www.trainbleu.com/",
+  "what": "1989年開店のブーランジェリー。店主の成瀬正は、2005年のクープ・デュ・モンドで日本チームを率いて3位。売り切れたら閉まる。",
+  "whatEn": "A boulangerie opened in 1989. Its baker, Tadashi Naruse, led Japan to third place at the 2005 Coupe du Monde de la Boulangerie. It closes when the bread runs out.",
+  "note": "クロワッサンは昼ごろに焼ける。",
+  "noteEn": "The croissants come out around noon.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.13338,
+   137.24969
+  ]
+ },
+ {
+  "name": "稲豊園",
+  "nameEn": "Tohoen",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "駅の東",
+  "areaEn": "East of the Station",
+  "address": "高山市朝日町2",
+  "url": "https://tohoen.com/",
+  "what": "1901年創業の和菓子の店。秋は栗よせと栗きんとん、猫の形のまんじゅうもある。火曜は休み。",
+  "whatEn": "A wagashi shop since 1901. Kuriyose and chestnut kinton in autumn, and a cat-shaped manju. Closed Tuesdays.",
+  "note": "秋なら、栗よせを一本。",
+  "noteEn": "In autumn, one kuriyose.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.1429,
+   137.25696
+  ]
+ },
+ {
+  "name": "ざる蕎麦・せと",
+  "nameEn": "Zarusoba Seto",
+  "category": "food",
+  "area": "駅の西",
+  "areaEn": "West of the Station",
+  "address": "高山市下岡本町1660-1",
+  "url": "https://zarusoba.com/",
+  "what": "国道41号沿いのそば屋。毎年約15種の玄そばから、日替わりで4種を打つ。11時から16時、水曜は休み。",
+  "whatEn": "A soba house on Route 41. From about fifteen kinds of buckwheat a year, four are served each day. 11:00–16:00, closed Wednesdays.",
+  "note": "二種で並盛。一種だけにしない。",
+  "noteEn": "Two kinds make one regular serving. Don't stop at one.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.15088,
+   137.24532
+  ]
+ },
+ {
+  "name": "pizzeria SERICO",
+  "nameEn": "pizzeria SERICO",
+  "category": "food",
+  "area": "冬頭町",
+  "areaEn": "Fuyuto",
+  "address": "高山市冬頭町38",
+  "url": "https://serico.jp/",
+  "what": "冬頭町のピッツェリア。イタリアから入れた薪窯で焼くピッツァと、地元の野菜の料理。月曜は休み。",
+  "whatEn": "A pizzeria in Fuyuto-cho: pizza from a wood-fired oven brought from Italy, and dishes with local vegetables. Closed Mondays.",
+  "note": "最初はマルゲリータ。",
+  "noteEn": "Start with the margherita.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.16173,
+   137.24471
+  ]
+ },
+ {
+  "name": "パスタとお酒 Logica docco",
+  "nameEn": "Logica docco",
+  "category": "food",
+  "area": "駅の東",
+  "areaEn": "East of the Station",
+  "address": "高山市有楽町18",
+  "url": "https://logicadocco.studio.site/",
+  "what": "有楽町の小さなパスタと酒の店。昼は生パスタ、夜はお酒とイタリアの料理。カウンター席がある。木・日は休み。",
+  "whatEn": "A small pasta and wine place in Yurakucho: fresh pasta at lunch, drinks and Italian dishes at night, with a counter. Closed Thursdays and Sundays.",
+  "note": "一人ならカウンター。",
+  "noteEn": "On your own, take the counter.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14187,
+   137.2577
+  ]
+ },
+ {
+  "name": "山猿珈琲焙煎所",
+  "nameEn": "Yamazaru Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "駅の東",
+  "areaEn": "East of the Station",
+  "address": "高山市花里町4-1",
+  "url": "https://www.instagram.com/yamazarucoffee/",
+  "what": "花里町の自家焙煎のコーヒースタンド。シングルオリジンの豆を、いつも5〜6種。",
+  "whatEn": "A coffee stand in Hanasato-machi that roasts its own beans, with five or six single origins at any time.",
+  "note": "豆を選んで、持って帰る。",
+  "noteEn": "Pick a bean and take it home.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.13857,
+   137.25359
+  ]
+ },
+ {
+  "name": "JAZZ喫茶 LAWNS",
+  "nameEn": "Jazz Kissa LAWNS",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "駅の東",
+  "areaEn": "East of the Station",
+  "address": "高山市花岡町3-79 花岡ビル1F",
+  "url": "https://www.instagram.com/jazzkissa.lawns.hidatakayama/",
+  "what": "花岡町のジャズ喫茶。英国VITAVOXのスピーカーでレコードをかけ、ハンドドリップのコーヒーと軽食。",
+  "whatEn": "A jazz kissa in Hanaoka-machi, playing records through British Vitavox speakers, with hand-drip coffee and light food.",
+  "note": "夜も開いてる。遅い時間に。",
+  "noteEn": "Open into the night. Go late.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14729,
+   137.25156
+  ]
+ },
+ {
+  "name": "飛騨高山 匠館",
+  "nameEn": "Takumikan",
+  "category": "local",
+  "industry": "hida-woodwork",
+  "tags": [
+   "wood"
+  ],
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市下三之町1-22",
+  "url": "https://takumikan.com/",
+  "what": "宮川の朝市通りに面した、木の器と家具の館。1階に自社ブランドの木の器や小物、2階に家具メーカー・シラカワの家具。火曜は休み。",
+  "whatEn": "A house of wood on the morning-market street by the Miyagawa: its own wooden tableware and small things downstairs, furniture by the maker Shirakawa upstairs. Closed Tuesdays.",
+  "note": "椅子は、座って決める。",
+  "noteEn": "Choose a chair by sitting in it.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14371,
+   137.2585
+  ]
+ },
+ {
+  "name": "山田春慶店",
+  "nameEn": "Yamada Shunkei",
+  "category": "local",
+  "industry": "hida-woodwork",
+  "tags": [
+   "lacquer"
+  ],
+  "area": "大新町",
+  "areaEn": "Oshinmachi",
+  "address": "高山市大新町1丁目111番地",
+  "url": "https://www.yamada-shunkei.com/",
+  "what": "桜山八幡宮の表参道沿いの、飛騨春慶塗の製造元。職人の手塗りで、弁当箱や重箱から時計やタンブラーまで。日曜は休み。",
+  "whatEn": "A maker of Hida Shunkei lacquerware on the approach to Sakurayama Hachiman shrine, all brushed by hand: bento boxes and tiered boxes, and clocks and tumblers too. Closed Sundays.",
+  "note": "春慶は、木目で選ぶ。",
+  "noteEn": "Choose Shunkei by the grain.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14782,
+   137.25908
+  ]
+ },
+ {
+  "name": "日進木工タカヤマギャラリー",
+  "nameEn": "Nissin Mokko Takayama Gallery",
+  "category": "local",
+  "industry": "hida-woodwork",
+  "tags": [
+   "wood"
+  ],
+  "area": "桐生町",
+  "areaEn": "Kiryucho",
+  "address": "高山市桐生町7丁目78",
+  "url": "https://www.nissin-mokkou.co.jp/company/gallery/",
+  "what": "1946年創業の家具メーカー・日進木工の、本社屋1・2階のギャラリー。祝日は休み、12〜2月は日曜も休み。",
+  "whatEn": "The gallery of furniture maker Nissin Mokko, founded in 1946, on two floors of its head office. Closed on public holidays, and on Sundays from December to February.",
+  "note": "行く前に、電話を一本。",
+  "noteEn": "Phone before you go.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.15811,
+   137.25026
+  ]
+ },
+ {
+  "name": "原田酒造場",
+  "nameEn": "Harada Sake Brewery",
+  "category": "local",
+  "industry": "sake-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市上三之町10番地",
+  "url": "https://www.sansya.co.jp/",
+  "what": "上三之町で江戸の末から十代続く造り酒屋。銘柄の「山車（さんしゃ）」は、高山祭の屋台から。",
+  "whatEn": "A sake brewery on Kami-sannomachi, ten generations since the late Edo period. Its label, Sansya, is named after the floats of the Takayama festival.",
+  "note": "まずは辛口から。",
+  "noteEn": "Begin with the dry one.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14073,
+   137.25953
+  ]
+ },
+ {
+  "name": "川尻酒造場",
+  "nameEn": "Kawashiri Sake Brewery",
+  "category": "local",
+  "industry": "sake-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市上二之町68",
+  "url": "https://www.hidamasamune.com/",
+  "what": "1839年創業、上二之町の熟成古酒の蔵。地元の酒米ひだほまれを100％使う。有料の試飲がある。蔵の見学は受けていない。",
+  "whatEn": "A brewery on Kami-ninomachi since 1839 that ages its sake for years, using only local Hidahomare rice. Paid tastings; no brewery tours.",
+  "note": "古酒に、氷は入れない。",
+  "noteEn": "No ice in aged sake.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14242,
+   137.26027
+  ]
+ },
+ {
+  "name": "平田酒造場",
+  "nameEn": "Hirata Sake Brewery",
+  "category": "local",
+  "industry": "sake-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "三町",
+  "areaEn": "Sanmachi",
+  "address": "高山市上二之町60",
+  "url": "https://h-sake.jp/",
+  "what": "1895年創業、上二之町の酒蔵。宮川の伏流水と、ひだほまれやイセヒカリで醸す。酒蔵の見学ツアーがある。",
+  "whatEn": "A brewery on Kami-ninomachi since 1895, brewing with underground water of the Miyagawa and rice such as Hidahomare and Isehikari. It runs brewery tours.",
+  "note": "蔵の中は、ツアーで見る。",
+  "noteEn": "See inside the brewery on the tour.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   36.14314,
+   137.2599
+  ]
+ }
+]

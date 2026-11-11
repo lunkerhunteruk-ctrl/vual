@@ -19,6 +19,8 @@ import faro from './latitude-places/faro.json';
 import kanazawaSights from './latitude-sights/kanazawa.json';
 import moriokaSights from './latitude-sights/morioka.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
+// 2026-11-11 号のない町の「街の案内」（萩・高山・函館…）。scripts/latitude-import-city.py が書く（文は data/latitude-import/<町>.json）
+import { IMPORTED_CITIES } from './latitude-places-imported';
 
 // 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
 // その店は category 'local' ＋ industry（街の industries の key）。ページは産業ごと（/latitude/places/<街>/<産業の key>。例 /latitude/places/kanazawa/gold-leaf）
@@ -779,6 +781,8 @@ export const CITIES: LatitudeCity[] = [
       { key: "gotland-food", en: "Gotland food", ja: "ゴットランドの郷土食", about: "Gotland saffron pancake (saffranspannkaka) is baked with milk and rice and served with salmbär, a dewberry jam. The cottage café in the Bunge open-air museum serves it.", aboutJa: "ゴットランドのサフランパンケーキは、牛乳と米で焼き、サルムベリ（ブラックベリーの仲間）のジャムを添える。ブンゲ野外博物館の中の小屋のカフェで出している。" },
     ],
   },
+  // 号のない町（images は空・route なし。ページは凛のおすすめと店の地図・自分でルートを組む・国の位置の図まで）
+  ...IMPORTED_CITIES,
 ];
 
 export const getCity = (slug: string) => CITIES.find((c) => c.slug === slug);

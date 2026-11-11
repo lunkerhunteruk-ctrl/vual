@@ -1,0 +1,82 @@
+[
+ {
+  "name": "萩城跡・指月公園",
+  "nameEn": "Hagi Castle Ruins (Shizuki Park)",
+  "kind": "sight",
+  "area": "堀内",
+  "areaEn": "Horiuchi",
+  "address": "萩市堀内1-1",
+  "url": "https://www.hagishi.com/search/detail.php?d=100049",
+  "what": "1604年に毛利輝元が指月山のふもとに築いた萩城の跡。天守は明治7年に解体され、石垣と堀が残る国の史跡。",
+  "whatEn": "The site of Hagi Castle, built by Mori Terumoto in 1604 at the foot of Mount Shizuki. The keep was pulled down in 1874; the stone walls and moat remain, a national historic site.",
+  "coords": [
+   34.41752,
+   131.38378
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "萩博物館",
+  "nameEn": "Hagi Museum",
+  "kind": "art",
+  "area": "堀内",
+  "areaEn": "Horiuchi",
+  "address": "萩市堀内355",
+  "url": "https://hagimuseum.jp/",
+  "what": "萩の自然・歴史・文化を見せる博物館。旧萩城三の丸の堀内地区にあり、高杉晋作資料室や萩城下町の展示がある。",
+  "whatEn": "A museum of Hagi's nature, history and culture in Horiuchi, the castle's former outer enclosure, with a Takasugi Shinsaku room and displays on the castle town.",
+  "coords": [
+   34.41338,
+   131.3906
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "山口県立萩美術館・浦上記念館",
+  "nameEn": "Hagi Uragami Museum",
+  "kind": "art",
+  "area": "平安古",
+  "areaEn": "Hiyako",
+  "address": "萩市平安古町586-1",
+  "url": "https://hum-web.jp/",
+  "what": "萩出身の浦上敏朗のコレクションをもとに開いた県立美術館。浮世絵と東洋の陶磁、萩焼を見せる陶芸館がある。",
+  "whatEn": "A prefectural museum built on the collection of Hagi-born Uragami Toshiro: ukiyo-e prints, East Asian ceramics, and a ceramics wing for Hagi-yaki.",
+  "coords": [
+   34.40947,
+   131.39424
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "松陰神社",
+  "nameEn": "Shoin Shrine",
+  "kind": "sight",
+  "area": "椿東",
+  "areaEn": "Chinto",
+  "address": "萩市椿東1537",
+  "url": "https://showin-jinja.or.jp/",
+  "what": "吉田松陰を祀る神社。松陰が教えた松下村塾の塾舎が境内に残り、2015年に世界遺産になった。境内は自由に歩ける。",
+  "whatEn": "The shrine to Yoshida Shoin. The building of Shokasonjuku, the school where he taught, stands in the grounds and became part of a World Heritage site in 2015. The grounds are open to walk.",
+  "coords": [
+   34.41212,
+   131.41829
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "萩市浜崎伝統的建造物群保存地区",
+  "nameEn": "Hamasaki Preservation District",
+  "kind": "sight",
+  "area": "浜崎",
+  "areaEn": "Hamasaki",
+  "address": "萩市浜崎町・浜崎新町・東浜崎町・熊谷町の一部",
+  "url": "https://hagi-hamasaki.jp/html/",
+  "what": "萩城下の港町。江戸時代から昭和初期の町家や土蔵が残り、2001年に国の重要伝統的建造物群保存地区に選ばれた。散策は自由。",
+  "whatEn": "The port quarter of the castle town, with townhouses and storehouses from the Edo period to the early Showa era; a national preservation district for groups of traditional buildings since 2001. Free to walk.",
+  "coords": [
+   34.42093,
+   131.40061
+  ],
+  "verifiedAt": "2026-11-11"
+ }
+]

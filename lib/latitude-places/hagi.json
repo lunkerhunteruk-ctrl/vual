@@ -1,0 +1,384 @@
+[
+ {
+  "name": "Gallery JIBITA",
+  "nameEn": "Gallery JIBITA",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "tableware"
+  ],
+  "area": "浜崎",
+  "areaEn": "Hamasaki",
+  "address": "萩市東浜崎町138-6",
+  "url": "https://www.jibita.com/",
+  "what": "東浜崎町の器のギャラリー。陶・ガラス・漆・木工などの作り手の個展を、年に何度も開く。",
+  "whatEn": "A gallery for vessels in Higashi-Hamasaki, holding solo shows of ceramics, glass, lacquer and woodwork through the year.",
+  "note": "個展の週に合わせて行く。",
+  "noteEn": "Go in the week of a show.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.42224,
+   131.40052
+  ]
+ },
+ {
+  "name": "甘味処あんず",
+  "nameEn": "Kanmidokoro Anzu",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "浜崎",
+  "areaEn": "Hamasaki",
+  "address": "萩市浜崎町4区160",
+  "url": "https://www.instagram.com/annzu_kanmi/",
+  "what": "浜崎の、明治5年（1872年）の古い家を直した甘味処。手作りの団子。休みは不定で、Instagramで知らせる。",
+  "whatEn": "A sweets house in a restored 1872 house in Hamasaki, with handmade dango. Days off vary and are posted on Instagram.",
+  "note": "開いているかは、Instagramで見てから。",
+  "noteEn": "Check Instagram first to see if it is open.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.42154,
+   131.40068
+  ]
+ },
+ {
+  "name": "中村船具店 むらやカフェ",
+  "nameEn": "Muraya Cafe",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "浜崎",
+  "areaEn": "Hamasaki",
+  "address": "萩市浜崎町205",
+  "url": "https://www.instagram.com/murayacafe/",
+  "what": "浜崎の、もと船具店の建物のカフェ。明治時代の船具が残る。ふだんは昼だけ開き、支払いは現金のみ。",
+  "whatEn": "A café in a former ship chandler's in Hamasaki, still holding Meiji-era ship fittings. Usually open by day only; cash only.",
+  "note": "現金を持って行く。",
+  "noteEn": "Bring cash.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.42102,
+   131.40059
+  ]
+ },
+ {
+  "name": "三好蒲鉾",
+  "nameEn": "Miyoshi Kamaboko",
+  "category": "local",
+  "industry": "yakinuki-kamaboko",
+  "tags": [
+   "kamaboko"
+  ],
+  "area": "浜崎",
+  "areaEn": "Hamasaki",
+  "address": "萩市浜崎新町53",
+  "url": "https://www.miyoshikamaboko.com/",
+  "what": "浜崎新町の蒲鉾屋。萩で揚がるエソなどを石臼で練り、焼き抜き蒲鉾と揚げ蒲鉾を作る。2026年、ごぼう天が山口県知事賞。",
+  "whatEn": "A kamaboko maker in Hamasaki-shinmachi, grinding local lizardfish in a stone mortar for yakinuki and fried fish cakes. Its gobo-ten won the Yamaguchi Governor's Prize in 2026.",
+  "note": "焼き抜きと一緒に、ごぼう天も。",
+  "noteEn": "The yakinuki, and the gobo-ten too.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.4189,
+   131.39987
+  ]
+ },
+ {
+  "name": "晦事",
+  "nameEn": "Kotokoto",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "textile",
+   "coffee"
+  ],
+  "area": "城下町",
+  "areaEn": "Jokamachi",
+  "address": "萩市呉服町2-32",
+  "url": "https://www.kurumayado.com/pages/3964022/concept",
+  "what": "呉服町の、200年前の町家を直した店とカフェ。大屋窯の器や手ぬぐい、自家製の夏みかんのマーマレード。第2・第4火曜は休み。",
+  "whatEn": "A shop and café in a 200-year-old townhouse on Gofukumachi: Ooyagama pottery, tenugui, and its own natsumikan marmalade. Closed on the second and fourth Tuesdays.",
+  "note": "マーマレードは、夏みかんと砂糖だけのを。",
+  "noteEn": "The marmalade made of nothing but natsumikan and sugar.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41287,
+   131.3941
+  ]
+ },
+ {
+  "name": "ホトリテイ",
+  "nameEn": "Hotoritei",
+  "category": "food",
+  "area": "城下町",
+  "areaEn": "Jokamachi",
+  "address": "萩市南片河町62",
+  "url": "https://www.instagram.com/hotoritei.hagi/",
+  "what": "南片河町の、古い家を使ったカフェレストラン。枯山水の庭を前に、昼の食事。休みは不定。",
+  "whatEn": "A café-restaurant in an old house in Minami-Katakawa, facing a dry-landscape garden. Lunch; days off vary.",
+  "note": "庭の見える席で。",
+  "noteEn": "A seat facing the garden.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.4112,
+   131.39205
+  ]
+ },
+ {
+  "name": "ブーランジェリー住吉丸",
+  "nameEn": "Boulangerie Sumiyoshimaru",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "城下町",
+  "areaEn": "Jokamachi",
+  "address": "萩市今古萩町18-1",
+  "url": "https://www.instagram.com/boulangerie_sumiyoshimaru/",
+  "what": "萩のパン屋。カレーパングランプリ2026で、最高金賞1つと金賞4つ。最高金賞は「パリパリカレーパン」。",
+  "whatEn": "A Hagi bakery that took one top gold and four golds at the Curry Bread Grand Prix 2026. The top gold went to its crisp curry bread.",
+  "note": "カレーパンは、パリパリのを。",
+  "noteEn": "For curry bread, the crisp one.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41616,
+   131.40319
+  ]
+ },
+ {
+  "name": "光國本店",
+  "nameEn": "Mitsukuni Honten",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "城下町",
+  "areaEn": "Jokamachi",
+  "address": "萩市大字熊谷町42",
+  "url": "https://mitsukuni-honten.com/",
+  "what": "熊谷町の夏みかん菓子の店。皮に羊羹を詰めた「夏蜜柑丸漬」を、明治13年（1880年）からの製法で一子相伝で作る。火曜は休み。",
+  "whatEn": "A natsumikan confectioner in Kumagai-machi. Its natsumikan marutsuke, a whole candied peel filled with yokan, follows a method finished in 1880 and passed to one heir each generation. Closed on Tuesdays.",
+  "note": "皮の苦みが残っているのがいい。",
+  "noteEn": "The bitterness left in the peel is the point.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41601,
+   131.40075
+  ]
+ },
+ {
+  "name": "坂髙麗左衛門窯",
+  "nameEn": "Saka Koraizaemon Kiln",
+  "category": "local",
+  "industry": "hagi-yaki",
+  "tags": [
+   "ceramics"
+  ],
+  "area": "椿東",
+  "areaEn": "Chinto",
+  "address": "萩市椿東1922",
+  "url": "https://www.sakakoraizaemon.co.jp/",
+  "what": "萩焼が始まった地を四百年守る窯元。十四世 坂髙麗左衛門が2022年（令和4年）に名を継いだ。訪ねる時は予約が要る。",
+  "whatEn": "A kiln that has kept the founding site of Hagi ware for four hundred years; Saka Koraizaemon XIV took the name in 2022. Visits by reservation only.",
+  "note": "行く前に、必ず予約。",
+  "noteEn": "Book before you go.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41889,
+   131.43353
+  ]
+ },
+ {
+  "name": "萩焼窯元 泉流山",
+  "nameEn": "Senryuzan",
+  "category": "local",
+  "industry": "hagi-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "椿東",
+  "areaEn": "Chinto",
+  "address": "萩市大字椿東4481",
+  "url": "https://senryuzan.jp/",
+  "what": "文政9年（1826年）に開いた萩焼の窯元。薪の登り窯と蹴ろくろを続ける。敷地に吉賀大眉記念館。水曜は休み（祝日は開く）。",
+  "whatEn": "A Hagi-yaki kiln founded in 1826, still firing a wood climbing kiln and throwing on kick wheels, with its own clay and glazes. The Yoshika Taibi Memorial museum is on the grounds. Closed on Wednesdays, except holidays.",
+  "note": "器の前に、登り窯を見る。",
+  "noteEn": "See the climbing kiln before the pots.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.42462,
+   131.41531
+  ]
+ },
+ {
+  "name": "萩焼窯元 勝景庵",
+  "nameEn": "Shokeian",
+  "category": "local",
+  "industry": "hagi-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "椿東",
+  "areaEn": "Chinto",
+  "address": "萩市椿東4831-3",
+  "url": "https://shoukeian.jp/",
+  "what": "椿東・前小畑の萩焼の窯元。親子二人が、山で掘った土で、一点ものの茶碗や酒器、食卓の器を作る。日曜は休み。",
+  "whatEn": "A Hagi-yaki kiln in Maeobata, Chinto, where a father and son dig their own clay for one-off tea bowls, sake cups and tableware. Closed on Sundays.",
+  "note": "一点ものだから、その場で決める。",
+  "noteEn": "Every piece is one of a kind. Decide on the spot.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.42922,
+   131.42442
+  ]
+ },
+ {
+  "name": "萩ガラス工房",
+  "nameEn": "Hagi Glass Studio",
+  "category": "craft",
+  "tags": [
+   "glass"
+  ],
+  "area": "椿東",
+  "areaEn": "Chinto",
+  "address": "萩市大字椿東越ヶ浜1189-453",
+  "url": "https://www.hagi-glass.jp/",
+  "what": "笠山でだけ採れる石英玄武岩からガラスを作る工房。淡い緑のガラスや萩切り子。年中無休で、体験の予約は電話だけ。",
+  "whatEn": "A glass studio making glass from quartz basalt found only on Mount Kasayama: pale-green glass and Hagi kiriko. Open every day; workshops are booked by phone only.",
+  "note": "淡い緑は、笠山の石の色。",
+  "noteEn": "The pale green is the colour of the Kasayama stone.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.44864,
+   131.40573
+  ]
+ },
+ {
+  "name": "長屋門珈琲 カフェ・ティカル",
+  "nameEn": "Nagayamon Coffee Cafe Tikal",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "土原",
+  "areaEn": "Hijiwara",
+  "address": "萩市土原298-1",
+  "url": "https://nagayamon-coffee.com/",
+  "what": "土原の、萩市指定有形文化財「小川家長屋門」の敷地にある自家焙煎の珈琲店。豆は常時20〜30種類。月曜は休み。",
+  "whatEn": "A house-roasting coffee shop in Hijiwara, on the grounds of the Ogawa family nagayamon gate, a city cultural property. Twenty to thirty kinds of beans at any time. Closed on Mondays.",
+  "note": "豆は100グラムから買える。",
+  "noteEn": "Beans are sold from 100 g.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41135,
+   131.40895
+  ]
+ },
+ {
+  "name": "Jantique coffee",
+  "nameEn": "Jantique coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "田町",
+  "areaEn": "Tamachi",
+  "address": "萩市東田町18-4 ヤングプラザ萩1F",
+  "url": "https://jantique.net/",
+  "what": "東田町の、映画館の下のスペシャルティコーヒーの店。フレンチプレスで淹れる。13時から24時、月曜は休み。",
+  "whatEn": "A specialty coffee bar beneath the cinema in Higashi-Tamachi, brewing by French press. 13:00 to midnight; closed on Mondays.",
+  "note": "夜のコーヒーは、ここ。",
+  "noteEn": "For coffee at night, here.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41306,
+   131.40332
+  ]
+ },
+ {
+  "name": "en_PELORI",
+  "nameEn": "en_PELORI",
+  "category": "food",
+  "area": "田町",
+  "areaEn": "Tamachi",
+  "address": "萩市唐樋町9",
+  "url": "https://www.instagram.com/pelori_burger_hagi/",
+  "what": "唐樋町・札場前の角のバーガーの店。2025年12月に開いた。カウンターだけで、前菜2品のあとにバーガー。開く日はInstagramで。",
+  "whatEn": "A burger counter on the corner of the Fudaba-mae crossing in Karahi-machi, opened in December 2025. Two small starters, then the burger. Opening days are posted on Instagram.",
+  "note": "席はカウンターだけ。開く日を見てから。",
+  "noteEn": "Counter seats only. Check the days first.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.41092,
+   131.4027
+  ]
+ },
+ {
+  "name": "大屋窯",
+  "nameEn": "Ooyagama",
+  "category": "local",
+  "industry": "hagi-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "椿",
+  "areaEn": "Tsubaki",
+  "address": "萩市椿905",
+  "url": "https://www.ooyagama.com/",
+  "what": "1969年、萩の南の日輪山のふもとに開いた萩焼の窯元。陶器と磁器、ジュエリーを作る。店の開く日はサイトで知らせる。",
+  "whatEn": "A Hagi-yaki kiln founded in 1969 at the foot of Mount Nichirin, south of Hagi, making pottery, porcelain and jewellery. Shop days are posted on its website.",
+  "note": "庭から萩の町が見える。器のあとに。",
+  "noteEn": "The garden looks out over Hagi. After the pots.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.38667,
+   131.40876
+  ]
+ },
+ {
+  "name": "忠小兵衛蒲鉾本店",
+  "nameEn": "Chukobee Kamaboko",
+  "category": "local",
+  "industry": "yakinuki-kamaboko",
+  "tags": [
+   "kamaboko"
+  ],
+  "area": "椿",
+  "areaEn": "Tsubaki",
+  "address": "萩市椿陣ヶ原2757-1",
+  "url": "https://chukobee.co.jp/html/",
+  "what": "安政2年（1855年）創業、八代目が継ぐ焼き抜き蒲鉾の本店。かまぼこ作りの体験と、カフェ「はちのたね」もある。水曜は休み。",
+  "whatEn": "The main shop of a yakinuki kamaboko maker founded in 1855, now in its eighth generation. Kamaboko-making sessions and the café Hachi no Tane. Closed on Wednesdays.",
+  "note": "最初は、何もつけずに。",
+  "noteEn": "First, with nothing on it.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.39595,
+   131.40352
+  ]
+ },
+ {
+  "name": "山本食堂",
+  "nameEn": "Yamamoto Shokudo",
+  "category": "food",
+  "area": "椿",
+  "areaEn": "Tsubaki",
+  "address": "萩市大字椿3606-4",
+  "url": "https://www.instagram.com/yamamotosyokudou_hagi/",
+  "what": "椿の大衆食堂。自然農法の米と、なるべく無添加の調味料で、70種近くの献立。日曜は休み、15時から17時は閉まる。",
+  "whatEn": "A neighbourhood diner in Tsubaki: close to seventy dishes, with natural-farming rice and seasonings kept as additive-free as possible. Closed on Sundays and from 15:00 to 17:00.",
+  "note": "ご飯ものにする。米が自然農法だから。",
+  "noteEn": "Pick something with rice. The rice is natural-farmed.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   34.39434,
+   131.40071
+  ]
+ }
+]

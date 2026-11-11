@@ -16,13 +16,15 @@ const list = (names: string[], ja: boolean) =>
 
 export function countryMetadata(c: PlaceCountry, locale: string): Metadata {
   const ja = locale === 'ja';
+  // 2026-11-11 号のない「街の案内」だけの町がある国は「1日を過ごした街」とだけは書かない
+  const guides = c.cities.some((q) => !q.issue);
   const names = c.cities.map((q) => (ja ? q.nameJa : q.name));
   const title = ja
     ? `${c.name.ja} — LATITUDE の街（${list(names, true)}）｜旅人のおすすめの店と街の案内`
     : `${c.name.en} — places from LATITUDE: ${list(names, false)} | city guides`;
   const description = ja
-    ? `LATITUDE の旅人が1日を過ごした${c.name.ja}の街、${list(names, true)}の案内。その街ならではの店、食べる所、器や工芸の店を、編集部が営業を確かめて載せています。`
-    : `City guides to ${list(names, false)} in ${c.name.en}, from LATITUDE: where to eat, what is made there, and shops the editors checked are open, from a traveller who spent a day in each.`;
+    ? `${guides ? `LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町、${c.name.ja}の` : `LATITUDE の旅人が1日を過ごした${c.name.ja}の街、`}${list(names, true)}の案内。その街ならではの店、食べる所、器や工芸の店を、編集部が営業を確かめて載せています。`
+    : `City guides to ${list(names, false)} in ${c.name.en}, from LATITUDE: where to eat, what is made there, and shops the editors checked are open, from ${guides ? 'a traveller who spent a day there, or whose picks they are' : 'a traveller who spent a day in each'}.`;
   const path = `/latitude/places/${c.slug}`;
   return {
     title,
@@ -34,6 +36,7 @@ export function countryMetadata(c: PlaceCountry, locale: string): Metadata {
 
 export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; locale: string }) {
   const ja = locale === 'ja';
+  const guides = c.cities.some((q) => !q.issue);
   const name = ja ? c.name.ja : c.name.en;
   const names = c.cities.map((q) => (ja ? q.nameJa : q.name));
   return (
@@ -50,8 +53,8 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
         <h1 className="mt-5 text-[56px] leading-[0.95] md:text-[110px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>{name}</h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
           {ja
-            ? `LATITUDE の旅人が1日を過ごした${c.name.ja}の街：${list(names, true)}。街を押すと、その街の案内へ。`
-            : `The cities in ${c.name.en} where a LATITUDE traveller spent a day: ${list(names, false)}. Choose one for its city guide.`}
+            ? `${guides ? `${c.name.ja}の、LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町` : `LATITUDE の旅人が1日を過ごした${c.name.ja}の街`}：${list(names, true)}。街を押すと、その街の案内へ。`
+            : `${guides ? `The cities in ${c.name.en} where a LATITUDE traveller spent a day, and towns with their picks` : `The cities in ${c.name.en} where a LATITUDE traveller spent a day`}: ${list(names, false)}. Choose one for its city guide.`}
         </p>
       </header>
 

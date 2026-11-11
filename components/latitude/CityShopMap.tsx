@@ -53,7 +53,7 @@ export type BaseMap = {
   k: [number, number];
   home: [number, number, number, number]; // x, y, w, h（メートル）
   labels: { x: number; y: number; ja: string; en: string; kind?: string }[];
-  layers: Record<'water' | 'park' | 'river' | 'stream' | 'path' | 'minor' | 'major' | 'rail', string>;
+  layers: Record<'water' | 'park' | 'river' | 'stream' | 'path' | 'minor' | 'major' | 'rail', string> & { coast?: string }; // coast：海岸線（2026-11-11 萩・函館。線だけ）
 };
 
 const INK = '#1e1d1b';
@@ -101,6 +101,10 @@ function duration(a: View, b: View, r: number) {
 }
 
 const RED = '#7a241e'; // 凛のルートと同じ暗い赤の点線
+// 2026-11-11 枠のふちの印の字が、左右の端で切れないように（印は ex のまま、字を内側へ寄せる）
+const edgeAlign = (ex: number, w: number) => (ex < w * 0.22
+  ? { alignItems: 'flex-start' as const, translate: '-5px -50%' }
+  : ex > w * 0.78 ? { alignItems: 'flex-end' as const, translate: 'calc(-100% + 5px) -50%' } : {});
 const RIN = 'rin'; // 種類のスイッチの「凛の1日の場所」
 
 export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [] }: {
@@ -439,7 +443,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           </div>
           <p className="max-w-md text-[13px] leading-relaxed" style={{ color: MUTE }}>
             {build
-              ? (ja ? `行きたい店や場所を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${who}の道をなぞるのは、上の地図です。` : `Tap places in the order you want; a walking line joins them. Tap again to remove. ${who}'s own day is the map above.`)
+              ? (ja ? `行きたい店や場所を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${rinStops.length ? `${who}の道をなぞるのは、上の地図です。` : ''}` : `Tap places in the order you want; a walking line joins them. Tap again to remove.${rinStops.length ? ` ${who}'s own day is the map above.` : ''}`)
               : (ja ? `印を押すと、その店や場所へ寄ります。□は美術館や名所（目印）。「自分でルートを組む」で、行きたい所だけの道を作れます。` : `Tap a mark to see the place; squares are museums and sights (landmarks). Use “Build your own route” to make a walk of your own.`)}
           </p>
         </div>
@@ -512,7 +516,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             return (
               <button key={p.id} type="button" onClick={(e) => { e.stopPropagation(); goTo(p.id); }}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
-                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column' }}
+                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w) }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
                 <span className="block" style={markStyle(kindOf(p), 10, color, false, `0 0 0 2px ${PAPER}`)} />
                 <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{p.area} · {km.toFixed(1)} km</span>
@@ -559,7 +563,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             return (
               <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
-                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1 }}>
+                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1, ...edgeAlign(ex, size.w) }}>
                 <span className="block" style={markStyle(q.kind, 10, q.color, false, `0 0 0 2px ${PAPER}`)} />
                 <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
               </button>
@@ -647,6 +651,7 @@ export function PaperLayers({ base, mpp }: { base: BaseMap; mpp: number }) {
       <path d={base.layers.park} fill={PARK} stroke="none" />
       <path d={base.layers.water} fill={WATER} stroke="none" />
       <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+        {base.layers.coast && <path d={base.layers.coast} stroke={WATER} strokeWidth={mpp > 3 ? 2 : 2.6} vectorEffect="non-scaling-stroke" />}
         <path d={base.layers.stream} stroke={WATER} strokeWidth={1.4} vectorEffect="non-scaling-stroke" />
         {/* 犀川・浅野川の幅は water の面（OSM の川の面）で出る。線は、面の切れ目を埋めるのと、引いた時に細く消えないためだけ */}
         <path d={base.layers.river} stroke={WATER} strokeWidth={mpp > 3 ? 4 : 2.5} vectorEffect="non-scaling-stroke" />

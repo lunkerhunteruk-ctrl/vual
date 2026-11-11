@@ -1,0 +1,470 @@
+{
+ "slug": "hakodate",
+ "city": {
+  "name": "Hakodate",
+  "nameJa": "函館",
+  "latitude": "41.8° N",
+  "country": "Hokkaido, Japan",
+  "countryJa": "北海道",
+  "person": "rin",
+  "coords": [
+   41.7645,
+   140.716
+  ],
+  "intro": "A town of slopes and a harbour. Shops in old merchant houses and storehouses in the Seibu district, and coffee and chocolate around Goryokaku — Rin’s picks.",
+  "introJa": "坂と港の町。古い商家や蔵を生かした西部地区の店と、五稜郭のまわりの喫茶とショコラを、凛のおすすめで。",
+  "locator": {
+   "en": "At the southern tip of the island, on the Tsugaru Strait",
+   "ja": "島の南の端・津軽海峡に面した港町"
+  },
+  "industries": [
+   {
+    "key": "treaty-port-charcuterie",
+    "en": "Hams and sausages",
+    "ja": "ハムとソーセージ",
+    "about": "In 1925 Carl Raymon, a master butcher born in Bohemia, opened a ham shop in front of Hakodate station. After the war he started again beside his house in Motomachi. A Hakodate company still makes hams and sausages by his German methods, and his old factory site in Motomachi holds a shop and a small museum.",
+    "aboutJa": "1925年、ボヘミア生まれの食肉加工のマイスター、カール・レイモンが函館駅前にハムの店を開いた。戦後は元町の自宅の横で作りを再開した。その製法はいまも函館の会社が受け継ぎ、元町の工場の跡には店と歴史展示館がある。",
+    "_src": "Opened to foreign trade in 1859, Hakodate's cool port climate drew German master butcher Karl Weidl Raymon to Motomachi in 1925, establishing a century-old local craft of additive-light Hokkaido pork sausages, cured hams, and dry salami."
+   }
+  ]
+ },
+ "places": {
+  "はこだて工芸舎": {
+   "nameEn": "Hakodate Kogeisha",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [
+    "ceramics",
+    "antiques"
+   ],
+   "what": "陶芸家・堂前守人が主宰する工芸の店。1934年の大火のあとに建った旧梅津商店の建物で、中庭の奥の工房で焼いた器と、全国の作家の工芸を並べる。",
+   "whatEn": "A craft shop run by the potter Morito Domae, in the old Umetsu Shoten building put up after the 1934 fire. Pots from the studio behind the courtyard, and crafts by makers from across Japan.",
+   "note": "まず、ここで焼いた器から。",
+   "noteEn": "Start with the pots made here.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "はこだてこうげいしゃ",
+    "address": "北海道函館市末広町8-8",
+    "url": "https://kogeisha-hakodate.com/",
+    "whatJa": "十字街電停前の旧梅津商店の歴史的建築で陶芸家・堂前守人が主宰する、陶芸工房と箱庭カフェ併設の工芸ギャラリー。",
+    "whatEn": "A craft gallery and pottery studio led by potter Morito Domae inside the post-1934 Great Fire merchant building of former Umetsu Shoten opposite Jujigai tram stop.",
+    "facts": "Occupies the former Umetsu Shoten soy-sauce and liquor merchant building rebuilt after Hakodate's 1934 Great Fire; exhibits pottery fired in Morito Domae's courtyard studio alongside Hokkaido and national ceramics, glass, and folk crafts; includes a courtyard Hakoniwa Cafe serving drinks in Domae's vessels and a second-floor Masaru Shibayama memorial room.",
+    "weak": "",
+    "verifiedBy": "https://shinhakodate.com/2026/gallery/",
+    "quote": "陶芸家・堂前守人が主宰する、函館の工芸ギャラリーで、箱庭カフェも併設。はこだてトリエンナーレの会場は2階です。",
+    "fixes": "Page says building (梅津商店) was built in 昭和10年; page does not mention 1934 Great Fire, the second-floor Shibayama room or courtyard studio. Address 函館市末広町8-8 matches. Official site kogeisha-hakodate.com shows only a © 2026 footer.",
+    "coords": [
+     41.76403,
+     140.71903
+    ]
+   }
+  },
+  "バル・レストラン ラ・コンチャ・イ・バスク": {
+   "nameEn": "Bar Restaurant La Concha y Vascu",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [],
+   "what": "大三坂の下、旧深谷米穀店の建物を生かしたスペイン料理のバル。シェフは深谷宏治。月曜と第1火曜は休み。",
+   "whatEn": "A Spanish bar and restaurant at the foot of the Daisan-zaka slope, in the old Fukaya rice shop. The chef is Koji Fukaya. Closed on Mondays and the first Tuesday of the month.",
+   "note": "ピンチョス一つ、ワイン一杯。立ったままでいい。",
+   "noteEn": "One pintxo, one glass of wine. Standing is fine.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "ばる・れすとらん ら・こんちゃ・い・ばすく",
+    "address": "北海道函館市末広町14-6",
+    "url": "https://www.vascu.com/laconcha/",
+    "whatJa": "旧深谷米穀店の建物を生かし、深谷宏治シェフ率いるバスクのチームが営むピンチョスバル＆スペイン料理店。",
+    "whatEn": "A San Sebastián-style pinchos bar and Basque dining room run by chef Koji Fukaya's Vascu team inside the historic former Fukaya Rice Shop in Suehirocho.",
+    "facts": "Housed in the preserved former Fukaya Rice Shop building along the Suehirocho tram line; run by the team of Basque-trained Hakodate chef Koji Fukaya, who pioneered two-year sea-salt-cured southern Hokkaido pork prosciutto in 1985; pairs local Funka Bay seafood and Hakodate Ma-konbu with Spanish pinchos and wines.",
+    "weak": "",
+    "verifiedBy": "https://www.vascu.com/laconcha/",
+    "quote": "2026年年末オードブルのご案内",
+    "fixes": "Address 函館市末広町14-6 matches; closed Mondays and 1st Tuesday. Page says reopened 2024年1月19日. Page does not mention a former Fukaya Rice Shop building; Fukaya Koji appears as chef. Page also has 2025年12月28日 ~ 2026年1月21日までお休み.",
+    "coords": [
+     41.76577,
+     140.71628
+    ]
+   }
+  },
+  "ヤマザキ洋服店": {
+   "nameEn": "Yamazaki Yofukuten",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [],
+   "what": "約90年前に洋服の仕立て屋として始まった建物の、函館の塩ラーメンの店。真昆布と干し貝柱のスープに、道内3か所の塩。",
+   "whatEn": "Hakodate shio ramen in a building that opened about 90 years ago as the Yamazaki tailor’s. A broth of ma-konbu kelp and dried scallop, seasoned with salts from three places in Hokkaido.",
+   "note": "名前は洋服店。頼むのは、塩。",
+   "noteEn": "The name says tailor. Order the shio.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "やまざきようふくてん",
+    "address": "北海道函館市末広町16-3",
+    "url": "https://yamazaki-yofukuten.jp/",
+    "whatJa": "築約90年の旧洋装店を受け継ぎ、函館産真昆布と道産ホタテ、3種の塩で澄んだ塩ラーメンを仕立てる専門店。",
+    "whatEn": "A Hakodate shio ramen shop inside a ~90-year-old former tailor storefront in Suehirocho, simmering clear broth from Hakodate Ma-konbu, Hokkaido scallops, and three regional sea salts.",
+    "facts": "Keeps the name and retro facade of the ~90-year-old Yamazaki Tailor Shop in Suehirocho; builds its signature clear shio broth from Hakodate Ma-konbu and Hokkaido dried scallops seasoned with Okushiri wine salt, Kumaishi sea salt, and Funka Bay salt; pairs the soup with noodles made from 100% Hokkaido Haru yo Koi wheat.",
+    "weak": "",
+    "verifiedBy": "https://bar-gai.com/bar40_38/",
+    "quote": "函館西部地区2026 第40回 秋のバル街 概要はこちら",
+    "fixes": "Address 末広町16-3 matches; regular hours 11:00-19:00, no closing day. Page says 'Participation as shop [38] with ハピラリ'. Official site confirms 塩ラーメン and 末広町16-3, but I did not see ~90-year or three-salts claims in the text I read.",
+    "coords": [
+     41.76471,
+     140.71573
+    ]
+   }
+  },
+  "天然酵母パン tombolo": {
+   "nameEn": "tombolo",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [
+    "bread"
+   ],
+   "what": "函館山の坂の途中のパン屋。自家製の天然酵母と北海道産小麦、塩、水だけで、薪窯で焼く。店の中に陶芸家のギャラリーがある。",
+   "whatEn": "A bakery partway up a slope of Mount Hakodate. Homemade wild yeast, Hokkaido wheat, salt and water only, baked in a wood-fired oven. A potter’s gallery shares the room.",
+   "note": "カンパーニュは、厚く切る。",
+   "noteEn": "Cut the campagne thick.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "てんねんこうぼぱん とんぼろ",
+    "address": "北海道函館市元町30-6",
+    "url": "https://tombolo.jpn.org/",
+    "whatJa": "元町の坂下に佇み、自家製天然酵母と北海道産小麦でカンパーニュやタルトを焼き上げるベーカリー＆カフェ。",
+    "whatEn": "A natural-levain bakery and café at the foot of Motomachi's slopes baking country loaves, quiches, and tarts with homemade wild yeast and Hokkaido wheat.",
+    "facts": "Ferments homemade wild yeast slowly with Hokkaido wheat, water, and salt for rustic country loaves, open-faced sandwiches, quiches, and tarts; housed in a renovated wooden townhouse at Motomachi 30-6 that also contains potter Morito Domae's ceramic gallery STUDIO OVAL.",
+    "weak": "",
+    "verifiedBy": "https://bar-gai.com/bar40_24/",
+    "quote": "トンボロカフェは元町にてカンパーニュを使ったサンドイッチやキッシュ・タルトを提供しています。バル街当日は熱々のオープンサンドをご用意。",
+    "fixes": "Address 元町30-6 matches; regular hours 11:00-17:00 (Mon to 13:00), closed Tue/Wed. Official tombolo.jpn.org has only a © 2026 footer.",
+    "coords": [
+     41.76375,
+     140.71411
+    ]
+   }
+  },
+  "箱館元町珈琲店": {
+   "nameEn": "Hakodate Motomachi Coffee",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [
+    "coffee"
+   ],
+   "what": "元町の八幡坂の、自家焙煎の深煎りのコーヒーの店。",
+   "whatEn": "A coffee shop on the Hachiman-zaka slope in Motomachi that roasts its own beans dark.",
+   "note": "迷ったら、いちばん深いのを。",
+   "noteEn": "If unsure, take the darkest.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "はこだてもとまちこーひーてん",
+    "address": "北海道函館市元町31-11",
+    "url": "https://hakocoffee.base.shop/",
+    "whatJa": "八幡坂近くの元町で香り高い自家焙煎の深煎りブレンド珈琲と手づくりスイーツを供する珈琲専門店。",
+    "whatEn": "A home-roasting dark-roast coffeehouse near Hachiman-zaka in Motomachi serving low-acidity house blends alongside firm custard pudding and baked sweets.",
+    "facts": "Roasts its own dark-roast beans tailored for low acidity, balanced bitterness, and deep aroma; located at the foot of Hachiman-zaka next door to tombolo along the Motomachi tram corridor; pairs hand-dripped Motomachi blends with house-made custard pudding and baked cakes.",
+    "weak": "",
+    "verifiedBy": "https://www.oishii-hakodate.jp/news/260326/",
+    "quote": "八幡坂にある自家焙煎の深煎り珈琲専門店「箱館元町珈琲店」では、酸味を抑えた程よい苦味と香りの「ブレンド珈琲」を提供しており、ブース周辺にコーヒーの芳ばしい香りが広がっていました。",
+    "fixes": "Article does not give the address 元町31-11 and does not mention custard pudding or baked sweets. Shop is at a food-fair booth; shop page hakocoffee.base.shop has no dated notice.",
+    "coords": [
+     41.76454,
+     140.71271
+    ]
+   }
+  },
+  "レイモンハウス 元町店": {
+   "nameEn": "Raymon House Motomachi",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [],
+   "what": "函館カール・レイモンの店。戦後にレイモンが作りを再開した元町の工場の跡に建つ。1階で焼きソーセージを出し、2階は無料の歴史展示館。",
+   "whatEn": "The shop of Hakodate Carl Raymon, on the Motomachi site where Raymon restarted production after the war. Grilled sausages downstairs; upstairs, a free history exhibition.",
+   "note": "焼きソーセージは、その場で。2階は無料。",
+   "noteEn": "Eat the grilled sausage on the spot. Upstairs is free.",
+   "_src": {
+    "category": "local",
+    "industry": "treaty-port-charcuterie",
+    "nameKana": "れいもんはうす もとまちてん",
+    "address": "北海道函館市元町30-3",
+    "url": "https://www.raymon.co.jp/shop/",
+    "whatJa": "1925年にドイツ人マイスターのカール・レイモンが創業した旧工場跡地に立つ、歴史展示館併設のハム・ソーセージ直営店。",
+    "whatEn": "The Motomachi flagship shop and historical museum built on the former workshop site where German master butcher Karl Weidl Raymon founded Hakodate's charcuterie tradition in 1925.",
+    "facts": "Stands on the Motomachi site where German master Karl Weidl Raymon resumed post-war sausage and ham making using Hokkaido pork and minimal additives; serves freshly grilled sausages downstairs and houses a free second-floor Raymon Historical Exhibition Hall; operates only two shops in Hakodate.",
+    "weak": "",
+    "verifiedBy": "https://www.raymon.co.jp/",
+    "quote": "「秋のレイモン感謝フェア」を開始いたします。",
+    "fixes": "Shop page (raymon.co.jp/shop/) confirms 函館市元町30-3 and free 2F レイモン歴史展示館. It says the site is the former factory where production resumed after the war; the 1925 founding is not stated on that page.",
+    "coords": [
+     41.76367,
+     140.71432
+    ]
+   }
+  },
+  "阿佐利本店": {
+   "nameEn": "Asari Honten",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [],
+   "what": "明治34年（1901年）創業、宝来町の電停前のすき焼きの店。和室で食べる。併設の精肉店はコロッケなどの惣菜も売る。水曜休み。",
+   "whatEn": "A sukiyaki house opposite the Horaicho tram stop since 1901, eaten in tatami rooms. Its butcher’s counter also sells croquettes and other ready food. Closed on Wednesdays.",
+   "note": "昼なら平日。ランチは1日30食。",
+   "noteEn": "For lunch, a weekday. Thirty a day.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "あさりほんてん",
+    "address": "北海道函館市宝来町10-11",
+    "url": "https://asarihonten.com/",
+    "whatJa": "1901年創業、宝来町電停前で1階の精肉店と2階の座敷すき焼き処を営む老舗。",
+    "whatEn": "A 1901 neighborhood butcher shop and upstairs tatami sukiyaki house directly opposite Horaicho tram stop, celebrated for Kuroge Wagyu sukiyaki and freshly fried croquettes.",
+    "facts": "Founded in 1901 (Meiji 34) facing the Horaicho tram stop; pairs A4–A5 Wagyu beef with a century-old house warishita sauce in upstairs tatami rooms; draws neighborhood regulars every morning to its street-level butcher counter for freshly fried pork-and-onion croquettes.",
+    "weak": "",
+    "verifiedBy": "https://asarihonten.com/info/2026/1020-173/",
+    "quote": "2026年11月2日よりランチセットの価格が改定となります。",
+    "fixes": "Address on page: 北海道函館市宝来町10番11号 (宝来町電停前) matches. The page says the lunch set is weekday-only; 1901 founding not checked on this page.",
+    "coords": [
+     41.76055,
+     140.71998
+    ]
+   }
+  },
+  "アンティークひし伊エレガンス": {
+   "nameEn": "Antique Hishii Elegance",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "tags": [
+    "antiques",
+    "textile"
+   ],
+   "what": "明治38年（1905年）に建った質店の黒漆喰の土蔵で、和洋の骨董、古着物や古布を扱う。同じ蔵に茶房ひし伊。水曜休み。",
+   "whatEn": "Antiques in a black-plastered storehouse built in 1905 for a pawnshop: Japanese and Western pieces, old kimono and cloth. The tearoom Sabo Hishii is in the same storehouse. Closed on Wednesdays.",
+   "note": "見終わったら、同じ蔵の茶房で座る。",
+   "noteEn": "When you are done, sit down in the tearoom in the same storehouse.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "あんてぃーくひしいえれがんす",
+    "address": "北海道函館市宝来町9-4",
+    "url": "http://hishii.info/antiques.html",
+    "whatJa": "1905年創業の旧質店の黒漆喰土蔵（質蔵）を生かし、和洋骨董の器や古布・裂織を扱うアンティークショップ＆茶房。",
+    "whatEn": "An antique tableware, kimono, and sakiori rag-weave shop housed inside the 1905 Meiji-era fireproof pawnshop storehouse in Horaicho alongside Sabo Hishii.",
+    "facts": "Set inside the thick-walled black-plastered shichigura storehouse of the 1905 Hishii Irimura Pawnshop, where North Pacific fishery workers once pawned and stored household goods; stocks Japanese and Western antique ceramics, glassware, vintage kimonos, and handwoven sakiori textiles beside the adjoining tearoom Sabo Hishii.",
+    "weak": "",
+    "verifiedBy": "http://hishii.info/topics/",
+    "quote": "10月15日(木)11:00より通常通り営業させていただきます。",
+    "fixes": "",
+    "coords": [
+     41.76085,
+     140.71881
+    ]
+   }
+  },
+  "TAILORED COFFEE 本町店": {
+   "nameEn": "TAILORED COFFEE Honcho",
+   "area": "五稜郭",
+   "areaEn": "Goryokaku",
+   "tags": [
+    "coffee"
+   ],
+   "what": "本町の、スペシャルティコーヒーだけを仕入れて自家焙煎する店。本町店だけのブレンドがある。木曜と第2・第4水曜は休み。",
+   "whatEn": "A Honcho roaster that buys only specialty-grade coffee. One blend is sold only at this branch. Closed on Thursdays and the second and fourth Wednesdays.",
+   "note": "豆は、ここだけのブレンドを。",
+   "noteEn": "For beans, the blend sold only here.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "ていらーどこーひー ほんちょうてん",
+    "address": "北海道函館市本町7-13",
+    "url": "https://tailored-hakodate.com/",
+    "whatJa": "五稜郭公園前電停近くの本町で、厳選したスペシャルティコーヒー豆を自家焙煎し好みに合わせて提案するロースタリーカフェ。",
+    "whatEn": "A specialty coffee roaster and café near Goryokaku-koen-mae tram stop roasting traceable single-origin beans and house blends tailored to each drinker's taste.",
+    "facts": "Sources exclusively specialty-grade green beans and roasts them in-house across light to dark profiles, including a Honcho-exclusive house blend; operates only two locations in Hakodate (Honcho and Miyamae).",
+    "weak": "",
+    "verifiedBy": "https://tailored-hakodate.com/",
+    "quote": "店長のおすすめセットは11月3日発売予定です。",
+    "fixes": "Page shows address 〒040-0011 函館市本町7-13 and a separate 宮前店, matching two locations.",
+    "coords": [
+     41.78984,
+     140.75144
+    ]
+   }
+  },
+  "シュウェットカカオ": {
+   "nameEn": "Chouette Cacao",
+   "area": "五稜郭",
+   "areaEn": "Goryokaku",
+   "tags": [
+    "chocolate"
+   ],
+   "what": "五稜郭のそばのショコラの店。ボンボンショコラ、焼き菓子、ケーキ、バウムクーヘン。木曜休み（水曜は不定休）。4月中旬〜9月末は隣でアイスの店も開く。",
+   "whatEn": "A chocolate shop near Goryokaku: bonbons, baked sweets, cakes and baumkuchen. Closed on Thursdays, some Wednesdays. From mid-April to the end of September an ice-cream shop opens next door.",
+   "note": "箱より、一粒ずつ。",
+   "noteEn": "One at a time, not a box.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "しゅうぇっとかかお",
+    "address": "北海道函館市梁川町27-16",
+    "url": "https://chouette-cacao.com/",
+    "whatJa": "五稜郭エリアの梁川町でボンボンショコラやカカオ焼菓子を手づくりし、夏季限定の氷菓店も併設するショコラトリー。",
+    "whatEn": "An artisanal chocolaterie in the Goryokaku district handcrafting bonbons chocolats, cacao cakes, and seasonal ice cream next door at Glacier C'est Chouette.",
+    "facts": "Handcrafts bonbons chocolats, orangettes, entremets, and cacao baked sweets at Yanagawacho 27-16 a short walk from Goryokaku-koen-mae tram stop; opens an adjoining warm-season artisanal ice-cream counter, Glacier C'est Chouette!, each spring.",
+    "weak": "",
+    "verifiedBy": "https://chouette-cacao.com/archives/category/news",
+    "quote": "✨アイスのお店「グラシエ　セ・シュウェット！」今季の営業をスタート致しました✨",
+    "fixes": "",
+    "coords": [
+     41.79437,
+     140.7486
+    ]
+   }
+  },
+  "石窯ピッツァと和食と酒 そる": {
+   "nameEn": "Sol",
+   "area": "五稜郭",
+   "areaEn": "Goryokaku",
+   "tags": [],
+   "what": "五稜郭公園前の電停から歩いて2分。漁師の店主が仕入れる魚の和食と、道産小麦の石窯ピッツァ。日曜休み。",
+   "whatEn": "Two minutes’ walk from the Goryokaku-koen-mae tram stop. Japanese plates of fish brought in by the owner, a fisherman, and stone-oven pizza made with Hokkaido wheat. Closed on Sundays.",
+   "note": "刺身は、店の黒板で今日の魚を見てから。",
+   "noteEn": "Check the board for today’s fish before ordering sashimi.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "いしがまぴっつぁとわしょくとさけ そる",
+    "address": "北海道函館市本町6-14",
+    "url": "https://sol-hakodate.owst.jp/",
+    "whatJa": "五稜郭公園前電停そばで、漁師の店主自ら仕入れる朝獲れ魚介の和食と道産小麦の石窯ピッツァを供する一軒。",
+    "whatEn": "An independent Goryokaku dining spot two minutes from Goryokaku-koen-mae tram stop where a fisherman-owner serves his own catch alongside stone-oven Hokkaido-wheat pizza.",
+    "facts": "Run by an active fisherman whose own fishery division supplies daily sashimi and seasonal seafood dishes; bakes crisp stone-oven pizzas from a custom blend of Hokkaido wheat; pairs local squid shiokara and konbu small plates with sake and wine.",
+    "weak": "",
+    "verifiedBy": "https://goryokaku-bar.com/join.php",
+    "quote": "北海道産の良質な小麦を使用した当店看板メニューのPizzaと、弊社漁業部より仕入れられる新鮮な海産物もおすすめメニューです。",
+    "fixes": "Official site has no dated 2026 post; evidence is the 2026 event page of Goryokaku Bar listing the shop as participant. Official site says 2 min walk from Goryokaku-koen-mae tram stop.",
+    "coords": [
+     41.78916,
+     140.75105
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "箱館奉行所",
+   "nameEn": "Hakodate Magistrate’s Office",
+   "kind": "sight",
+   "area": "五稜郭",
+   "areaEn": "Goryokaku",
+   "address": "函館市五稜郭町44-3",
+   "url": "https://www.hakodate-bugyosho.jp/",
+   "what": "五稜郭の中の、江戸幕府の奉行所。1864年に完成し1871年に解体され、2010年に庁舎の3分の1を当時の工法で復元した。",
+   "whatEn": "The shogunate’s magistrate’s office inside Goryokaku. Completed in 1864 and taken down in 1871, one third of it was rebuilt with period methods in 2010.",
+   "coords": [
+    41.79693,
+    140.75673
+   ],
+   "notice": "2026年11月24日（火）は臨時休館。11月〜3月は17時まで。",
+   "noticeEn": "Closed on Tuesday 24 November 2026. Open until 5 pm from November to March.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.hakodate-bugyosho.jp/ (+ /information/): 「その外構となる五稜郭と共に元治元（1864）年に完成」「明治4（1871）年に解体」「平成22（2010）年…庁舎の1/3の範囲を忠実に復元」; news 2026-09-25「１１月２４日（火）臨時休館日のお知らせ」; 開館時間 11月〜3月 午前9時〜午後5時。 Address 函館市五稜郭町44番3号.",
+   "_coordsSource": "OSM way 260879409 (五稜郭跡 箱館奉行所, tourism=attraction)"
+  },
+  {
+   "name": "旧函館区公会堂",
+   "nameEn": "Old Public Hall of Hakodate Ward",
+   "kind": "sight",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "address": "函館市元町11-13",
+   "url": "https://hakodate-kokaido.jp/",
+   "what": "1907年の大火のあと、1910年に建った木造の洋館。区民の集会所と商業会議所に使われた。国の重要文化財。",
+   "whatEn": "A wooden Western-style hall built in 1910 after the fire of 1907, for the town’s gatherings and its chamber of commerce. A national Important Cultural Property.",
+   "coords": [
+    41.76504,
+    140.70892
+   ],
+   "notice": "工事のため、2026年10月21日からシアタールームと順路の一部を閉鎖。11月17日（火）は臨時休館。",
+   "noticeEn": "Because of works, the theatre room and part of the route are closed from 21 October 2026. Closed on Tuesday 17 November.",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://hakodate-kokaido.jp/2021/04/20/history/: 「明治40年（1907）8月の大火により…明治43年（1910）9月に竣工」「昭和49年（1974）、国の重要文化財」; notices 2026-10-14 (theatre room & part of route closed from 10/21) and 2026-10-16 (臨時休館 11/17). Address 元町11番13号.",
+   "_coordsSource": "OSM node 2519645005 (旧函館区公会堂, historic=building)"
+  },
+  {
+   "name": "北海道立函館美術館",
+   "nameEn": "Hakodate Museum of Art, Hokkaido",
+   "kind": "art",
+   "area": "五稜郭",
+   "areaEn": "Goryokaku",
+   "address": "函館市五稜郭町37-6",
+   "url": "https://artmuseum.pref.hokkaido.lg.jp/hbj",
+   "what": "1986年に開館した道立の美術館。道南ゆかりの美術、書と東洋美術、文字と記号に関わる現代美術を集める。",
+   "whatEn": "Hokkaido’s prefectural art museum in Hakodate, opened in 1986. It collects art linked to southern Hokkaido, calligraphy and East Asian art, and contemporary art about letters and signs.",
+   "coords": [
+    41.79337,
+    140.75467
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://artmuseum.pref.hokkaido.lg.jp/hbj/about/outline: 「1986(昭和61)年9月に開館」「道南ゆかりの美術」「書と東洋美術」「文字と記号に関わる現代美術」; top page 2026-11-12 本日は開館日, exhibitions to 2026-12-13. Address 五稜郭町37-6.",
+   "_coordsSource": "OSM way 260879631 (北海道立函館美術館, tourism=museum)"
+  },
+  {
+   "name": "函館市北方民族資料館",
+   "nameEn": "Hakodate City Museum of Northern Peoples",
+   "kind": "art",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "address": "函館市末広町21-7",
+   "url": "https://www.zaidan-hakodate.com/hoppominzoku/",
+   "what": "1926年に建った旧日本銀行函館支店の建物で、北方の諸民族の暮らしの資料を見せる市の資料館。",
+   "whatEn": "A city museum of the peoples of the north, in the former Bank of Japan Hakodate branch, built in 1926.",
+   "coords": [
+    41.76721,
+    140.71185
+   ],
+   "notice": "2026年12月8日と12月12日〜19日は、館内整理のため休館（予定）。",
+   "noticeEn": "Closed for maintenance on 8 December and 12–19 December 2026 (planned).",
+   "verifiedAt": "2026-11-11",
+   "_source": "https://www.zaidan-hakodate.com/hoppominzoku/ and /gaiyou.html: 「日本銀行函館支店」「大正15年（1926年）に建築」; 令和8年度 館内整理休館日「12月8日（火）,12日(土)～19日(土)」; 2026-10-10 news. Address 末広町21-7.",
+   "_coordsSource": "OSM node 2519645004 (函館市北方民族資料館, tourism=museum)"
+  },
+  {
+   "name": "金森赤レンガ倉庫",
+   "nameEn": "Kanemori Red Brick Warehouse",
+   "kind": "sight",
+   "area": "西部地区",
+   "areaEn": "Seibu district",
+   "address": "函館市末広町14-12",
+   "url": "https://hakodate-kanemori.com/",
+   "what": "1887年に倉庫業を始めた金森の、港に面したレンガ倉庫。1907年の大火のあと1909年に建て直され、1988年から店と食事の施設。",
+   "whatEn": "The Kanemori company’s brick warehouses on the harbour. The firm began warehousing in 1887; the buildings were rebuilt in 1909 after the 1907 fire and have held shops and restaurants since 1988.",
+   "coords": [
+    41.76618,
+    140.71645
+   ],
+   "verifiedAt": "2026-11-11",
+   "_source": "https://hakodate-kanemori.com/about/history/: 「明治20年（1887年）に営業倉庫業」「明治40年（1907年）8月…大火」「明治42年（1909年）5月に完成」「昭和63年（1988年）4月…金森赤レンガ倉庫へ」; topics 2026-10-31 (洋物館 closed 11/9–11/12 only). Address 末広町14番12号 (/access/).",
+   "_coordsSource": "OSM node 2476094422 (金森赤レンガ倉庫, shop=mall)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "クラフトベース モノクラ",
+   "verdict": "doubt",
+   "reason": "Article only shows a one-off workshop at Hakodate Kokusai Hotel (2026/5/3-6). Shop address 末広町14-5, the 1909 building and leather/papercraft details are not confirmed on any page I opened. Official linkfly page shows no dated 2026 notice."
+  },
+  {
+   "name": "まるたま小屋",
+   "verdict": "doubt",
+   "reason": "Evidence is only an event booth (Hakodate FOOD Festa 2026); official wixsite has no dated 2026 post or holiday notice, so shop operation itself in 2026 is not shown."
+  },
+  {
+   "name": "小田島水産食品",
+   "verdict": "doubt",
+   "reason": "The article is about another company's product that uses Odajima shiokara; official site odajimasuisan-hakodate.com was not confirmed with a dated 2026 notice, and the 'only maker in Hakodate' / factory shop claims were not confirmed."
+  }
+ ]
+}

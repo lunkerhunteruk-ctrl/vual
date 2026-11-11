@@ -49,6 +49,18 @@ CITIES = {
     },
 }
 
+# 2026-11-11 号のない町（scripts/latitude-import-city.py が足す）の設定は scripts/latitude-citymap-towns.json。
+# 形は集めた時の config.json と同じ（center・home・clip は [南, 西, 北, 東]、labels は {ja, en, at}、mainRivers は太く描く川）。
+# 川の名前の目印（「〜川」）は水の色の字にする
+TOWNS = Path(__file__).resolve().parent / 'latitude-citymap-towns.json'
+if TOWNS.exists():
+    for _slug, _c in json.loads(TOWNS.read_text()).items():
+        CITIES.setdefault(_slug, {
+            'center': tuple(_c['center']), 'home': tuple(_c['home']), 'clip': tuple(_c['clip']),
+            'labels': [{'ja': L['ja'], 'en': L['en'], 'at': tuple(L['at']), **({'kind': 'water'} if L['ja'].endswith('川') else {})} for L in _c.get('labels', [])],
+            'rivers': tuple(_c.get('mainRivers', [])),
+        })
+
 def rdp(pts, tol):
     if len(pts) < 3: return pts
     (x0, y0), (x1, y1) = pts[0], pts[-1]
@@ -93,8 +105,9 @@ def main():
             k = (e['type'], e['id'])
             if k in seen: continue
             seen.add(k); els.append(e)
-    layers = {k: [] for k in ('water', 'park', 'river', 'stream', 'path', 'minor', 'major', 'rail')}
-    tol = {'water': 3, 'park': 3, 'river': 3, 'stream': 3, 'path': 2, 'minor': 1.5, 'major': 2.5, 'rail': 3}
+    # coast：海岸線（2026-11-11 萩・函館のような海の町。線だけで、海は塗らない）
+    layers = {k: [] for k in ('water', 'park', 'river', 'stream', 'path', 'minor', 'major', 'rail', 'coast')}
+    tol = {'water': 3, 'park': 3, 'river': 3, 'stream': 3, 'path': 2, 'minor': 1.5, 'major': 2.5, 'rail': 3, 'coast': 3}
 
     cs, cw, cn, ce = cfg['clip']
     def add(layer, geom, closed=False):
@@ -128,7 +141,8 @@ def main():
             continue
         if not g: continue
         hw = t.get('highway')
-        if (t.get('natural') == 'water' or t.get('waterway') == 'riverbank') and len(g) > 3 and (g[0]['lat'], g[0]['lon']) == (g[-1]['lat'], g[-1]['lon']): add('water', g, True)
+        if t.get('natural') == 'coastline': add('coast', g)
+        elif (t.get('natural') == 'water' or t.get('waterway') == 'riverbank') and len(g) > 3 and (g[0]['lat'], g[0]['lon']) == (g[-1]['lat'], g[-1]['lon']): add('water', g, True)
         elif t.get('waterway') in ('river', 'canal'):
             add('river' if t.get('waterway') == 'river' and t.get('name') in cfg['rivers'] else 'stream', g)
             rivers.setdefault(t.get('name'), []).extend(P(p['lat'], p['lon']) for p in g)
@@ -162,7 +176,7 @@ def main():
         'k': [round(KX, 3), KY],
         'home': [round(hx0), round(hy0), round(hx1 - hx0), round(hy1 - hy0)],
         'labels': labels,
-        'layers': {k: ''.join(v) for k, v in layers.items()},
+        'layers': {k: ''.join(v) for k, v in layers.items() if v or k != 'coast'},
     }
     dst = ROOT / 'public' / 'latitude' / 'citymaps' / f'{slug}.json'  # 画面で fetch する（ページの HTML に入れると重いため）
     dst.parent.mkdir(parents=True, exist_ok=True)

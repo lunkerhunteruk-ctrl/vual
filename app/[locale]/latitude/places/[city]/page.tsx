@@ -193,8 +193,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </section>
       )}
 
-      {/* 旅人の1日の場面（号の静止画）。横に流す */}
-      <section className="pb-16 md:pb-24">
+      {/* 旅人の1日の場面（号の静止画）。横に流す。2026-11-11 号のない町（場面の写真が無い）は出さない＝「凛の〇〇の1日」とも書かない */}
+      {c.images.length > 0 && <section className="pb-16 md:pb-24">
         <div className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 md:gap-6 md:px-8" style={{ scrollbarWidth: 'thin' }}>
           {c.images.map((im) => (
             // 2026-11-01 data-lat-photo：その街が夜の間だけ、写真をうすく暗く・青くする（NowLine の <style>）
@@ -211,7 +211,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             </Link>
           )}
         </div>
-      </section>
+      </section>}
 
       {/* 深掘りの街だけ：旅人が泊まった宿の部屋（日本の時刻で場面が変わる） */}
       {c.inn && (

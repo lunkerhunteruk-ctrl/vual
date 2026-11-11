@@ -1,0 +1,88 @@
+[
+ {
+  "name": "箱館奉行所",
+  "nameEn": "Hakodate Magistrate’s Office",
+  "kind": "sight",
+  "area": "五稜郭",
+  "areaEn": "Goryokaku",
+  "address": "函館市五稜郭町44-3",
+  "url": "https://www.hakodate-bugyosho.jp/",
+  "what": "五稜郭の中の、江戸幕府の奉行所。1864年に完成し1871年に解体され、2010年に庁舎の3分の1を当時の工法で復元した。",
+  "whatEn": "The shogunate’s magistrate’s office inside Goryokaku. Completed in 1864 and taken down in 1871, one third of it was rebuilt with period methods in 2010.",
+  "coords": [
+   41.79693,
+   140.75673
+  ],
+  "notice": "2026年11月24日（火）は臨時休館。11月〜3月は17時まで。",
+  "noticeEn": "Closed on Tuesday 24 November 2026. Open until 5 pm from November to March.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "旧函館区公会堂",
+  "nameEn": "Old Public Hall of Hakodate Ward",
+  "kind": "sight",
+  "area": "西部地区",
+  "areaEn": "Seibu district",
+  "address": "函館市元町11-13",
+  "url": "https://hakodate-kokaido.jp/",
+  "what": "1907年の大火のあと、1910年に建った木造の洋館。区民の集会所と商業会議所に使われた。国の重要文化財。",
+  "whatEn": "A wooden Western-style hall built in 1910 after the fire of 1907, for the town’s gatherings and its chamber of commerce. A national Important Cultural Property.",
+  "coords": [
+   41.76504,
+   140.70892
+  ],
+  "notice": "工事のため、2026年10月21日からシアタールームと順路の一部を閉鎖。11月17日（火）は臨時休館。",
+  "noticeEn": "Because of works, the theatre room and part of the route are closed from 21 October 2026. Closed on Tuesday 17 November.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "北海道立函館美術館",
+  "nameEn": "Hakodate Museum of Art, Hokkaido",
+  "kind": "art",
+  "area": "五稜郭",
+  "areaEn": "Goryokaku",
+  "address": "函館市五稜郭町37-6",
+  "url": "https://artmuseum.pref.hokkaido.lg.jp/hbj",
+  "what": "1986年に開館した道立の美術館。道南ゆかりの美術、書と東洋美術、文字と記号に関わる現代美術を集める。",
+  "whatEn": "Hokkaido’s prefectural art museum in Hakodate, opened in 1986. It collects art linked to southern Hokkaido, calligraphy and East Asian art, and contemporary art about letters and signs.",
+  "coords": [
+   41.79337,
+   140.75467
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "函館市北方民族資料館",
+  "nameEn": "Hakodate City Museum of Northern Peoples",
+  "kind": "art",
+  "area": "西部地区",
+  "areaEn": "Seibu district",
+  "address": "函館市末広町21-7",
+  "url": "https://www.zaidan-hakodate.com/hoppominzoku/",
+  "what": "1926年に建った旧日本銀行函館支店の建物で、北方の諸民族の暮らしの資料を見せる市の資料館。",
+  "whatEn": "A city museum of the peoples of the north, in the former Bank of Japan Hakodate branch, built in 1926.",
+  "coords": [
+   41.76721,
+   140.71185
+  ],
+  "notice": "2026年12月8日と12月12日〜19日は、館内整理のため休館（予定）。",
+  "noticeEn": "Closed for maintenance on 8 December and 12–19 December 2026 (planned).",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "金森赤レンガ倉庫",
+  "nameEn": "Kanemori Red Brick Warehouse",
+  "kind": "sight",
+  "area": "西部地区",
+  "areaEn": "Seibu district",
+  "address": "函館市末広町14-12",
+  "url": "https://hakodate-kanemori.com/",
+  "what": "1887年に倉庫業を始めた金森の、港に面したレンガ倉庫。1907年の大火のあと1909年に建て直され、1988年から店と食事の施設。",
+  "whatEn": "The Kanemori company’s brick warehouses on the harbour. The firm began warehousing in 1887; the buildings were rebuilt in 1909 after the 1907 fire and have held shops and restaurants since 1988.",
+  "coords": [
+   41.76618,
+   140.71645
+  ],
+  "verifiedAt": "2026-11-11"
+ }
+]
