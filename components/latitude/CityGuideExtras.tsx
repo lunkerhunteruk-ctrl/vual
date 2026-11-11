@@ -188,7 +188,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
           <div>
             <p className="mb-3 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? '③ 歩く' : '3 · Walk it'}</p>
             <a href={googleDirectionsUrl(c)} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
+              className="inline-flex items-center gap-3 px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[rgba(30,29,27,0.06)]"
               style={{ border: `1px solid ${INK}`, color: INK }}>
               {ja ? `Google マップで、この道を開く` : 'Open this walk in Google Maps'}&nbsp;↗
             </a>
