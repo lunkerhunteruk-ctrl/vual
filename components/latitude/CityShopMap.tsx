@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import TrackLink from '@/components/latitude/TrackLink';
 import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
@@ -107,6 +107,17 @@ const edgeAlign = (ex: number, w: number) => (ex < w * 0.22
   : ex > w * 0.78 ? { alignItems: 'flex-end' as const, translate: 'calc(-100% + 5px) -50%' } : {});
 const RIN = 'rin'; // 種類のスイッチの「凛の1日の場所」
 
+// 2026-11-11 マウスで重ねた時の概要のプレビュー（地図の隅）
+type Corner = 'tl' | 'tr' | 'bl' | 'br';
+const CORNERS: Corner[] = ['tl', 'tr', 'bl', 'br']; // 既定は左上。だめな時はこの順で、印の少ない隅へ
+const PV_W = 280;
+const PV_M = 12; // 枠のふちからの余白
+type Rect = { x0: number; y0: number; x1: number; y1: number };
+const hits = (a: Rect, b: Rect) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+const inRect = (x: number, y: number, a: Rect) => x >= a.x0 && x <= a.x1 && y >= a.y0 && y <= a.y1;
+// 名前の字の幅の目安（13px の明朝。全角は約1字、半角は約0.55字）
+const textW = (s: string, px = 13) => [...s].reduce((n, ch) => n + (ch.charCodeAt(0) > 0x2e80 ? px : px * 0.55), 0);
+
 export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [] }: {
   src: string; // 土台の JSON の URL
   pins: ShopPin[];
@@ -133,6 +144,45 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   const sheet = useRef<HTMLElement>(null);
   // 下から出たカードの高さ（px）。狭い画面では、選んだ丸をカードの上に見えている地図のまん中へ寄せるのに使う
   const [sheetH, setSheetH] = useState(0);
+
+  // 2026-11-11 ユーザー：パソコン（マウスで重ねられる画面）だけ、印に重ねると地図の隅に概要のプレビューを出す。
+  // 押した時のカード・スマホの動きは変えない。プレビューは pointer-events なし（下の印もそのまま重ねられる）
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const on = () => setCanHover(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  const [hov, setHov] = useState<string | null>(null); // いま重ねている印
+  const [pvId, setPvId] = useState<string | null>(null); // プレビューに出している中身（消える動きの間も残す）
+  const hovTimer = useRef(0);
+  const pvBox = useRef<HTMLDivElement>(null);
+  const [pvH, setPvH] = useState(150);
+  const pvCorner = useRef<Corner>('tl');
+  // 印から印へ移る時は、離れた瞬間に消さず少し待つ（次の印に入れば中身だけ替わる・ちらつかない）
+  const hoverIn = (id: string) => (e: RPointerEvent) => {
+    if (!canHover || e.pointerType !== 'mouse') return;
+    window.clearTimeout(hovTimer.current);
+    setHov(id);
+    setPvId(id);
+  };
+  const hoverOut = (e: RPointerEvent) => {
+    if (e.pointerType !== 'mouse') return;
+    window.clearTimeout(hovTimer.current);
+    hovTimer.current = window.setTimeout(() => setHov(null), 90);
+  };
+  useEffect(() => () => window.clearTimeout(hovTimer.current), []);
+  const sized = size.w > 0;
+  // プレビューの高さを測る（中身の長さは店ごとに違う。隅を決める時に、下に入る印を数えるのに使う）
+  useLayoutEffect(() => {
+    const el = pvBox.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setPvH((v) => (Math.abs(v - el.offsetHeight) < 1 ? v : el.offsetHeight)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [canHover, base, sized]);
 
   useEffect(() => {
     let live = true;
@@ -427,6 +477,61 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   const full = route.length >= MAX_STOPS;
   const chip = (on: boolean) => ({ border: `1px solid ${on ? 'rgba(30,29,27,0.32)' : LINE}`, color: on ? INK : MUTE, background: on ? 'rgba(255,255,255,0.35)' : 'transparent' });
 
+  // ── マウスで重ねた時の概要のプレビュー ──
+  // 地図に出ている印（枠の外の店は、ふちの印の位置）。動いている間・寄っている間は、ふちの印は出ていない
+  const marks: { id: string; x: number; y: number; d: number; edge: boolean }[] = (build
+    ? buildPlaced.map(({ q, x, y, d }) => ({ id: q.id, x, y, d }))
+    : placed.map(({ p, x, y, d }) => ({ id: p.id, x, y, d })))
+    .map((m) => {
+      const inside = m.x >= -m.d && m.x <= size.w + m.d && m.y >= -m.d && m.y <= size.h + m.d;
+      return { ...m, x: inside ? m.x : clamp(m.x, 18, size.w - 18), y: inside ? m.y : clamp(m.y, 18, size.h - 18), edge: !inside };
+    })
+    .filter((m) => !m.edge || (!animating && (build || !sel)));
+  const hovMark = hov ? marks.find((m) => m.id === hov) : undefined;
+  const pvPin = pvId ? pins.find((p) => p.id === pvId) : undefined;
+  const pvStop = pvId && !pvPin ? rinStops.find((x) => x.id === pvId) : undefined;
+  // 押して開いたカードと同じ店は出さない（カードに全部ある）。寄る動きの間も出さない
+  const pvOn = canHover && ready && !!hovMark && !animating && hov !== sel && (!!pvPin || !!pvStop);
+  const pvW = Math.min(PV_W, Math.max(200, size.w * 0.6));
+  const rectAt = (c: Corner): Rect => {
+    // 左上は「← 全体へ」のボタンの下から。右はカードが開いている時は使わない（下の candidates で外す）
+    const top = sel ? 52 : PV_M;
+    const x0 = c === 'tl' || c === 'bl' ? PV_M : size.w - PV_M - pvW;
+    const y0 = c === 'tl' || c === 'tr' ? top : size.h - PV_M - pvH;
+    return { x0, y0, x1: x0 + pvW, y1: y0 + pvH };
+  };
+  let corner: Corner = pvCorner.current;
+  if (pvOn && hovMark) {
+    // 重ねた印そのもの（大きくなった丸と、右に出る名前）がプレビューの下に入らないように
+    const name = pvPin?.name ?? pvStop?.name ?? '';
+    const rr = (hovMark.d * 1.4) / 2 + 6;
+    const hr: Rect = hovMark.edge
+      ? { x0: hovMark.x - 70, y0: hovMark.y - 24, x1: hovMark.x + 70, y1: hovMark.y + 24 }
+      : { x0: hovMark.x - rr, y0: hovMark.y - rr, x1: hovMark.x + rr + 6 + textW(name), y1: hovMark.y + Math.max(rr, 12) };
+    const wideCard = wide && open; // 広い画面で右にカードが出ている時は、左の隅だけ
+    const candidates = CORNERS.filter((c) => !(wideCard && (c === 'tr' || c === 'br')) && !(build && notice && (c === 'bl' || c === 'br')));
+    const score = (c: Corner) => {
+      const a = rectAt(c);
+      const pad = { x0: a.x0 - 8, y0: a.y0 - 8, x1: a.x1 + 8, y1: a.y1 + 8 };
+      return { c, onHov: hits(pad, hr), n: marks.filter((m) => m.id !== hovMark.id && inRect(m.x, m.y, pad)).length };
+    };
+    const all = candidates.map(score);
+    const ok = all.filter((s) => !s.onHov);
+    const pool = ok.length ? ok : all;
+    const least = Math.min(...pool.map((s) => s.n));
+    const tl = pool.find((s) => s.c === 'tl');
+    // 左上に印が1つも入らなければ左上。そうでなければ印のいちばん少ない隅（同じ数なら、いま出ている隅 → 右上 → 左下 → 右下）
+    if (tl && tl.n === 0) corner = 'tl';
+    else {
+      const best = pool.filter((s) => s.n === least);
+      corner = (best.find((s) => s.c === pvCorner.current) ?? best[0])?.c ?? 'tl';
+    }
+  }
+  useEffect(() => { pvCorner.current = corner; });
+  // 重ねていた印が地図から消えた時（寄った・種類を消した・ふちの印が隠れた）は、重ねていない事にする（あとで同じ印が出た時に、マウスが無いのに出ないように）
+  const hovGone = !!hov && !hovMark && !animating;
+  useEffect(() => { if (hovGone) setHov(null); }, [hovGone]);
+
   return (
     <div>
       {/* 2026-11-11 店を見る ／ 自分でルートを組む。組み合わせの道のある街だけ */}
@@ -514,7 +619,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             const km = Math.hypot(m.x - (view.x + view.w / 2), m.y - (view.y + h / 2)) / 1000;
             const below = ey > size.h / 2;
             return (
-              <button key={p.id} type="button" onClick={(e) => { e.stopPropagation(); goTo(p.id); }}
+              <button key={p.id} type="button" onClick={(e) => { e.stopPropagation(); goTo(p.id); }} onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w) }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
@@ -526,6 +631,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           return (
             <button key={p.id} type="button"
               onClick={(e) => { e.stopPropagation(); goTo(active ? null : p.id); }}
+              onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
               // 2026-11-11 ユーザー：マウスのある画面では、乗せた丸を 1.4倍に・前面へ・名前を横に・指のカーソル。
               // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
@@ -561,7 +667,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             const kmA = Math.hypot(m.x - (view.x + view.w / 2), m.y - (view.y + h / 2)) / 1000;
             const below = ey > size.h / 2;
             return (
-              <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked}
+              <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1, ...edgeAlign(ex, size.w) }}>
                 <span className="block" style={markStyle(q.kind, 10, q.color, false, `0 0 0 2px ${PAPER}`)} />
@@ -570,7 +676,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             );
           }
           return (
-            <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
+            <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
               <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
@@ -597,6 +703,52 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             {ja ? '← 全体へ' : '← Whole map'}
           </button>
         )}
+        {/* 2026-11-11 マウスで重ねた時の概要のプレビュー（パソコンだけ）。既定は左上。重ねた印や、ほかの印が下に入る時は、印の少ない隅へ */}
+        {canHover && ready && (pvPin || pvStop) && (() => {
+          const kind: MarkKind = pvPin ? kindOf(pvPin) : 'stop';
+          const color = pvPin ? CATEGORY_COLOR[pvPin.category] ?? INK : INK;
+          const sight = !!pvPin && kind !== 'shop';
+          const si = pvId ? route.indexOf(pvId) : -1;
+          const a = rectAt(corner);
+          return (
+            <div ref={pvBox} aria-hidden="true"
+              className="pointer-events-none absolute z-[5]"
+              style={{
+                left: a.x0, top: a.y0, width: pvW,
+                padding: '12px 14px 13px',
+                background: 'rgba(242,238,231,0.74)',
+                backdropFilter: 'blur(12px) saturate(1.05)',
+                WebkitBackdropFilter: 'blur(12px) saturate(1.05)',
+                border: '1px solid rgba(30,29,27,0.12)',
+                boxShadow: '0 6px 24px rgba(30,29,27,0.08)',
+                opacity: pvOn ? 1 : 0,
+                transform: pvOn ? 'none' : 'translateY(3px)',
+                transition: 'opacity 170ms ease-out, transform 170ms ease-out',
+              }}>
+              <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: MUTE }}>
+                <span className="block shrink-0" style={markStyle(kind, 8, color)} />
+                {pvPin
+                  ? <>{pvPin.catLabel}{sight && (ja ? '・目印' : ' · landmark')}</>
+                  : pvStop && (ja ? `${who}の1日 ${pvStop.n}` : `${who}'s day ${pvStop.n}`)}
+              </p>
+              <p className="mt-1.5 text-[18px] leading-snug" style={{ fontFamily: SERIF, color: INK }}>{pvPin?.name ?? pvStop?.name}</p>
+              {pvPin?.area && <p className="mt-0.5 text-[10px] uppercase tracking-[0.24em]" style={{ color: MUTE }}>{pvPin.area}</p>}
+              {pvPin?.what && <p className="mt-2 line-clamp-2 text-[12.5px] leading-[1.6]" style={{ color: INK }}>{pvPin.what}</p>}
+              {pvPin && !sight && pvPin.note && (
+                <p className="mt-1.5 line-clamp-2 text-[13px] leading-[1.55]" style={{ fontFamily: SERIF, color: INK }}>
+                  <span className="mr-1.5 text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
+                  {pvPin.note}
+                </p>
+              )}
+              {pvPin?.notice && <p className="mt-1.5 line-clamp-1 text-[11px]" style={{ color: RED }}>{pvPin.notice}</p>}
+              {build && (
+                <p className="mt-2 text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+                  {si >= 0 ? (ja ? `道の${si + 1}番目・押すと外す` : `Stop ${si + 1} · click to remove`) : (ja ? '押すと道に足す' : 'Click to add')}
+                </p>
+              )}
+            </div>
+          );
+        })()}
         {!ready && (
           <p className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
             {ja ? '地図を読みこんでいます' : 'Loading the map'}
