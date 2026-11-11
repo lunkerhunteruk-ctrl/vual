@@ -14,7 +14,6 @@ import { NowInCity } from '@/components/latitude/NowInCity';
 import { latAsset } from '@/lib/latitude-assets';
 import { CityLocator } from '@/components/latitude/CityLocator';
 import { PLACES } from '@/lib/latitude-map';
-import { getIssue } from '@/lib/latitude';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
 // のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。店の写真は載せない。
@@ -104,7 +103,6 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         {/* 2026-11-11 国の形の小さな図に街の点（外国の人が、その街がどこかすぐ分かるように） */}
         {c.locator && (c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug]) && (
           <CityLocator className="mt-7" country={c.countryCode ?? 'JP'} at={(c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug])!}
-            dot={getIssue(c.issue ?? c.slug)?.colours[0]?.hex ?? INK}
             text={ja ? c.locator.ja : c.locator.en}
             label={ja ? `地図：${c.nameJa}の位置` : `Map: where ${c.name} is`} />
         )}

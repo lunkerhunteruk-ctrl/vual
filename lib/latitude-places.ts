@@ -81,7 +81,7 @@ export type LatitudeCity = {
   // 旅人の1日の回り方（号の順番）。near は、その場所の近くにある一覧の店（店の name）。旅人がその店に行ったとは書かない
   route?: { time: string; place: string; placeJa: string; what: string; whatJa: string; image?: string; near?: string[] }[];
   // 2026-11-11 国の形の小さな位置の図（components/latitude/CityLocator.tsx）と、その横の一文。無い街は出さない。
-  // 点は at、無ければ coords、無ければ lib/latitude-map.ts の PLACES。国は countryCode（無ければ 'JP'）。事実は確かめて書く
+  // 一文に県・国は入れない（すぐ上の行に出ている）。点は at、無ければ coords、無ければ lib/latitude-map.ts の PLACES。国は countryCode（無ければ 'JP'）。事実は確かめて書く
   locator?: { en: string; ja: string; at?: [number, number] };
   // 2026-11-11 店の地図の土台（public/latitude/citymaps/<slug>.json。scripts/latitude-citymap.py で作る）がある街だけ true
   shopMap?: boolean;
@@ -123,8 +123,8 @@ export const CITIES: LatitudeCity[] = [
     shopMap: true,
     // 所要時間は JR 西日本のニュースリリース（2025-12-12「2026年春ダイヤ改正について」）：東京〜金沢の最速は、2026年3月14日から2時間24分
     locator: {
-      en: 'On the Sea of Japan coast · 2 hr 24 min from Tokyo by the fastest Shinkansen · Ishikawa',
-      ja: '日本海側・東京から新幹線で最速2時間24分・石川県',
+      en: 'On the Sea of Japan coast · 2 hr 24 min from Tokyo by the fastest Shinkansen',
+      ja: '日本海側・東京から新幹線で最速2時間24分',
     },
     industries: [
       { key: "gold-leaf", en: "Gold leaf", ja: "金箔", about: "Kanazawa makes over 99% of Japan's gold leaf, according to Ishikawa Prefecture. Gold the size of a ten-yen coin is beaten out to about the area of four tatami mats.", aboutJa: "石川県によると、全国の金箔の99％以上が金沢で作られる。10円玉ほどの金を、畳4枚ほどの広さまで打ち延ばす。" },
