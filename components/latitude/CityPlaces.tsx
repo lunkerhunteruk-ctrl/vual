@@ -72,7 +72,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
 }
 
 // 検索エンジン向けの店の一覧（ItemList）。店の種類ごとに schema.org の型を合わせる
-const TYPE: Record<PlaceCategory, string> = { local: 'LocalBusiness', matcha: 'CafeOrCoffeeShop', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', coffee: 'CafeOrCoffeeShop', craft: 'Store' };
+const TYPE: Record<PlaceCategory, string> = { local: 'LocalBusiness', craft: 'Store', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', cafe: 'CafeOrCoffeeShop' };
 export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: CityPlace[]; ja: boolean; name: string }) {
   const data = {
     '@context': 'https://schema.org',

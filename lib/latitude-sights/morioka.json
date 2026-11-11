@@ -1,0 +1,56 @@
+[
+ {
+  "name": "盛岡城跡公園",
+  "nameEn": "Morioka Castle Site Park",
+  "kind": "sight",
+  "area": "内丸",
+  "areaEn": "Uchimaru",
+  "address": "盛岡市内丸1-37",
+  "url": "https://www.city.morioka.iwate.jp/kurashi/midori/koen/1010491.html",
+  "what": "南部氏の居城だった盛岡城の跡で、花崗岩の高い石垣が残る国史跡の公園。",
+  "whatEn": "The site of Morioka Castle, seat of the Nanbu clan, a national historic site park with tall granite stone walls.",
+  "coords": [39.70061, 141.15163],
+  "notice": "本丸北面の石垣のあたりは、通行が制限されています。",
+  "noticeEn": "Access is restricted near the north stone wall of the main enclosure.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "岩手県立美術館",
+  "nameEn": "Iwate Museum of Art",
+  "kind": "art",
+  "area": "本宮",
+  "areaEn": "Motomiya",
+  "address": "盛岡市本宮字松幅12-3",
+  "url": "https://www.ima.or.jp/",
+  "what": "萬鉄五郎・松本竣介・舟越保武ら岩手ゆかりの作家を中心に集める県立美術館。",
+  "whatEn": "Iwate's prefectural art museum, centred on artists linked to the region such as Yorozu Tetsugoro, Matsumoto Shunsuke and Funakoshi Yasutake.",
+  "coords": [39.69325, 141.12457],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "もりおか啄木・賢治青春館",
+  "nameEn": "Morioka Takuboku-Kenji Seishunkan",
+  "kind": "art",
+  "area": "中ノ橋通",
+  "areaEn": "Nakanohashidori",
+  "address": "盛岡市中ノ橋通1-1-25",
+  "url": "https://seishunkan.jp/",
+  "what": "明治43年築の旧第九十銀行本店（国重要文化財）を使い、啄木と賢治の盛岡時代を伝える館。",
+  "whatEn": "A museum on the Morioka youth of Ishikawa Takuboku and Miyazawa Kenji, in the 1910 former Ninetieth Bank head office, an Important Cultural Property.",
+  "coords": [39.69963, 141.15437],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "岩手銀行赤レンガ館",
+  "nameEn": "The Bank of Iwate Red Brick Building",
+  "kind": "sight",
+  "area": "中ノ橋通",
+  "areaEn": "Nakanohashidori",
+  "address": "盛岡市中ノ橋通1-2-20",
+  "url": "https://www.iwagin-akarengakan.jp/",
+  "what": "辰野金吾らが設計した明治44年完成の旧盛岡銀行本店で、国の重要文化財。",
+  "whatEn": "The former Morioka Bank head office, completed in 1911 to a design by Tatsuno Kingo's firm, a national Important Cultural Property.",
+  "coords": [39.70069, 141.15513],
+  "verifiedAt": "2026-11-11"
+ }
+]

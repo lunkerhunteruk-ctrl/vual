@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import { km, mins } from '@/lib/latitude-routes/format';
 import { MAX_STOPS, WALK_M_PER_MIN, googleWalkUrl, shortestOrder, type Leg } from '@/lib/latitude-routes/pairs';
+import { markStyle, type MarkKind } from '@/lib/latitude-markers';
 
 // 2026-11-11 試作（金沢）：店の地図の「自分でルートを組む」の下の段。選んだ順・区間の距離・合計（分速80m）・
 // 近い順に並べ替え（最初の1軒は固定）・リセット・Google マップの歩きの道案内・名前から選ぶ。
@@ -17,7 +18,7 @@ export type BuildPoint = {
   gq: string; // Google マップに渡す言葉
   color: string;
   cat: string;
-  kind: 'shop' | 'stop';
+  kind: MarkKind; // 店・凛の地点・アート・名所
 };
 
 const INK = '#1e1d1b';
@@ -80,7 +81,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
                 </span>
               )}
               <span className="flex items-center gap-1.5 py-1 pl-1.5 pr-0.5" style={{ border: `1px solid ${LINE}`, background: 'rgba(255,255,255,0.35)' }}>
-                <span className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full text-[12px] leading-none tabular-nums" style={{ background: s.color, color: PAPER, fontFamily: SERIF }}>{k + 1}</span>
+                <span className="flex shrink-0 items-center justify-center text-[12px] leading-none tabular-nums" style={{ ...markStyle(s.kind, 20, s.color, true), color: PAPER, fontFamily: SERIF }}>{k + 1}</span>
                 <span className="text-[13px]" style={{ fontFamily: SERIF }}>{s.name}</span>
                 <button type="button" onClick={() => onToggle(s.id)} aria-label={ja ? `${s.name}を外す` : `Remove ${s.name}`}
                   className="flex h-[30px] w-[28px] cursor-pointer items-center justify-center text-[16px] leading-none" style={{ color: MUTE }}>×</button>
@@ -147,8 +148,8 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
                     className="flex min-h-[36px] cursor-pointer items-center gap-2 px-3 text-[13px]"
                     style={{ border: `1px solid ${k >= 0 ? INK : LINE}`, opacity: dim ? 0.4 : 1, fontFamily: SERIF }}>
                     {k >= 0
-                      ? <span className="flex h-[18px] w-[18px] items-center justify-center rounded-full text-[11px] leading-none" style={{ background: p.color, color: PAPER }}>{k + 1}</span>
-                      : <span className="block h-[9px] w-[9px]" style={{ background: p.color, borderRadius: p.kind === 'stop' ? 1 : 999, transform: p.kind === 'stop' ? 'rotate(45deg)' : undefined }} />}
+                      ? <span className="flex items-center justify-center text-[11px] leading-none" style={{ ...markStyle(p.kind, 18, p.color, true), color: PAPER }}>{k + 1}</span>
+                      : <span className="block shrink-0" style={markStyle(p.kind, 9, p.color)} />}
                     {p.name}
                   </button>
                 </li>

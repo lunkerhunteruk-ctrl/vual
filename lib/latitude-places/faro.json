@@ -16,7 +16,8 @@
  {
   "name": "Kafé Smultronstället",
   "nameEn": "Kafé Smultronstället",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "フォーレ島",
   "areaEn": "Fårö",
   "address": "Fårö Svens 1118, 624 66 Fårö",
@@ -45,6 +46,7 @@
   "name": "Fårö Krukmakeri",
   "nameEn": "Fårö Krukmakeri",
   "category": "craft",
+  "tags": ["ceramics", "tableware"],
   "area": "フォーレ島",
   "areaEn": "Fårö",
   "address": "Fårö Nystugu 3111, 624 66 Fårö",
@@ -72,7 +74,8 @@
  {
   "name": "Prima Gård",
   "nameEn": "Prima Gård",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ブンゲ",
   "areaEn": "Bunge",
   "address": "Bunge Ducker 405, 624 64 Fårösund",

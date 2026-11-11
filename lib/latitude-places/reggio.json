@@ -2,7 +2,8 @@
  {
   "name": "Cafè Noir",
   "nameEn": "Cafè Noir",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "チェントロ",
   "areaEn": "Centro",
   "address": "Via Tommaso Campanella, 36, Reggio Calabria",
@@ -16,7 +17,8 @@
  {
   "name": "Malavenda Café",
   "nameEn": "Malavenda Café",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ルンゴマーレ",
   "areaEn": "Lungomare",
   "address": "Via Zecca, 1, Reggio Calabria",

@@ -2,7 +2,8 @@
  {
   "name": "Orsonero Coffee",
   "nameEn": "Orsonero Coffee",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ポルタ・ヴェネツィア",
   "areaEn": "Porta Venezia",
   "address": "Via Giuseppe Broggi 15, 20129 Milano",
@@ -16,7 +17,8 @@
  {
   "name": "Coffee Studio 7Gr.",
   "nameEn": "Coffee Studio 7Gr.",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ポルタ・ヴェネツィア",
   "areaEn": "Porta Venezia",
   "address": "Corso Venezia 31, 20121 Milano",
@@ -114,7 +116,8 @@
  {
   "name": "Bugan Coffee Lab",
   "nameEn": "Bugan Coffee Lab",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ナヴィリ",
   "areaEn": "Navigli",
   "address": "Via Vigevano 15, 20144 Milano",
@@ -185,6 +188,7 @@
   "name": "Laboratorio Paravicini",
   "nameEn": "Laboratorio Paravicini",
   "category": "craft",
+  "tags": ["ceramics", "tableware"],
   "area": "チンクエ・ヴィエ",
   "areaEn": "Cinque Vie",
   "address": "Via Nerino 8, 20123 Milano",

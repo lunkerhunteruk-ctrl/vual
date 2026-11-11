@@ -4,7 +4,7 @@
 見る人が店を押すたびに外の道の計算を呼ばないため（無料の計算の仕組みを大量に使わない）、町ごとに一度だけ回して保存する。
 ページ（components/latitude/CityRouteBuilder.tsx）は、2軒以上選ばれた時に初めてこのファイルを読む。
 
-地点：店（lib/latitude-places/<街>.json の coords）＋ 凛の1日の地点（lib/latitude-routes/<街>.json の stops）。
+地点：店（lib/latitude-places/<街>.json の coords）＋ 見る所（lib/latitude-sights/<街>.json）＋ 凛の1日の地点（lib/latitude-routes/<街>.json の stops）。
 計算：FOSSGIS の OSRM（歩行者 routed-foot。https://routing.openstreetmap.de/）。地図データ © OpenStreetMap contributors。
   1回ずつ間を1秒あけ、User-Agent を付ける。歩きの道は行きと帰りでほぼ同じなので、組み合わせ（順番なし）ごとに1回だけ。
 線：地点の印から道の線へまっすぐつなぎ、3m 単位で単純化（Ramer–Douglas–Peucker）して、Google の polyline 形式（精度 1e-5）で詰める。
@@ -96,6 +96,10 @@ def main():
 
     shops = json.load(open(ROOT / 'lib' / 'latitude-places' / f'{a.slug}.json'))
     points = [{'id': s['name'], 'lat': s['coords'][0], 'lon': s['coords'][1]} for s in shops if s.get('coords')]
+    # 2026-11-11 見る所（アート・名所。lib/latitude-sights/<街>.json）も選べるので、組み合わせに入れる
+    sights = ROOT / 'lib' / 'latitude-sights' / f'{a.slug}.json'
+    if sights.exists():
+        points += [{'id': s['name'], 'lat': s['coords'][0], 'lon': s['coords'][1]} for s in json.load(open(sights))]
     walk = ROOT / 'lib' / 'latitude-routes' / f'{a.slug}.json'
     if walk.exists():
         for k, (lat, lon) in enumerate(json.load(open(walk))['stops']):

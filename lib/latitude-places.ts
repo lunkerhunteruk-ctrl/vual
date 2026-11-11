@@ -16,17 +16,22 @@ import haworth from './latitude-places/haworth.json';
 import morioka from './latitude-places/morioka.json';
 import reggio from './latitude-places/reggio.json';
 import faro from './latitude-places/faro.json';
+import kanazawaSights from './latitude-sights/kanazawa.json';
+import moriokaSights from './latitude-sights/morioka.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
 
 // 2026-11-01 ユーザー：小さい町は飲食と器に限らず「その街ならではの産業」で強みのある店を取り上げる（これまでの街も）。
 // その店は category 'local' ＋ industry（街の industries の key）。ページは産業ごと（/latitude/places/<街>/<産業の key>。例 /latitude/places/kanazawa/gold-leaf）
-export type PlaceCategory = 'local' | 'matcha' | 'sweets' | 'food' | 'coffee' | 'craft';
+// 2026-11-11 ユーザー確認：種類は5つ（この街の仕事・工芸・甘味・ごはん・喫茶）。前の「抹茶」「コーヒー」は「喫茶（cafe）」に、「器」は「工芸（craft）」に。
+// 細かい違い（抹茶・コーヒー・器・ガラス・漆・布など）は店ごとの tags に持つ（今は表示しない）。古い種類のページのアドレスは next.config.ts で 301
+export type PlaceCategory = 'local' | 'craft' | 'sweets' | 'food' | 'cafe';
 
 export type CityPlace = {
   name: string; // 正式な店名（日本語）
   nameEn: string;
   category: PlaceCategory;
   industry?: string; // category が 'local' の時だけ。街の industries の key
+  tags?: string[]; // 細かい種類（matcha・coffee・ceramics・glass・lacquer・textile・tableware・everyday など）。今は表示しない
   area: string;
   areaEn: string;
   address: string; // 町名まで
@@ -69,6 +74,9 @@ export type LatitudeCity = {
   // 種類の見出しの横に置く号の場面（「凛の1日から」と添える。店の行には置かない＝その店の写真に見せない）
   categoryImages?: Partial<Record<PlaceCategory, { file: string; alt: string; altJa: string }>>;
   places: CityPlace[];
+  // 2026-11-11 見る所（アート＝美術館・ギャラリー、名所＝寺社・城・庭園・象徴的な建物）。店とは別：凛のおすすめの店ではなく「目印」。
+  // lib/latitude-sights/<slug>.json。公式で開いている事を確かめた所だけ・位置は OSM で確かめた物だけ
+  sights?: CitySight[];
   industries?: CityIndustry[]; // 並べる順。街のページでは飲食より先に出す（その街らしさが先に来るように）
   // この季節にこの街で何を着るか（号の服＝VUAL オリジナル。旅人の一言つき）。2026-10-30 ユーザー指定：AI のチャットにない「旅の服」を見せる
   wear?: {
@@ -100,11 +108,32 @@ export type LatitudeCity = {
 
 export const CATEGORY_LABEL: Record<PlaceCategory, { en: string; ja: string }> = {
   local: { en: 'Made here', ja: 'この街の仕事' },
-  matcha: { en: 'Matcha', ja: '抹茶' },
+  craft: { en: 'Craft', ja: '工芸' },
   sweets: { en: 'Sweets', ja: '甘味' },
-  food: { en: 'To eat', ja: 'ごはん' },
-  coffee: { en: 'Coffee', ja: 'コーヒー' },
-  craft: { en: 'Vessels', ja: '器' },
+  food: { en: 'Food', ja: 'ごはん' },
+  cafe: { en: 'Cafés', ja: '喫茶' },
+};
+
+// 2026-11-11 見る所。店（凛のおすすめ・営業を確かめた）とは扱いを分ける。地図では白抜きの四角
+export type SightKind = 'art' | 'sight';
+export const SIGHT_LABEL: Record<SightKind, { en: string; ja: string }> = {
+  art: { en: 'Art', ja: 'アート' },
+  sight: { en: 'Sights', ja: '名所' },
+};
+export type CitySight = {
+  name: string;
+  nameEn: string;
+  kind: SightKind;
+  area: string;
+  areaEn: string;
+  address: string;
+  url: string; // 運営する所の公式
+  what: string;
+  whatEn: string;
+  coords: [number, number]; // OpenStreetMap（Nominatim）で確かめた位置
+  notice?: string; // 休館の予定など、行く人が知っておく事
+  noticeEn?: string;
+  verifiedAt: string; // 公式で開いている事を確かめた日
 };
 
 export const CITIES: LatitudeCity[] = [
@@ -129,6 +158,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'crab.jpg', alt: 'From Rin\'s day: crab at a wooden counter', altJa: '凛の1日から：木のカウンターで蟹' },
     },
     places: kanazawa as CityPlace[],
+    sights: kanazawaSights as CitySight[],
     shopMap: true,
     routeBuilder: true,
     // 所要時間は JR 西日本のニュースリリース（2025-12-12「2026年春ダイヤ改正について」）：東京〜金沢の最速は、2026年3月14日から2時間24分
@@ -213,10 +243,12 @@ export const CITIES: LatitudeCity[] = [
     ],
     categoryImages: {
       food: { file: 'jajamen.jpg', alt: 'From Rin\'s day: jajamen at a counter', altJa: '凛の1日から：カウンターでじゃじゃ麺' },
-      coffee: { file: 'cafe.jpg', alt: 'From Rin\'s day: a cup by the window', altJa: '凛の1日から：窓ぎわのカップ' },
+      cafe: { file: 'cafe.jpg', alt: 'From Rin\'s day: a cup by the window', altJa: '凛の1日から：窓ぎわのカップ' },
     },
     places: morioka as CityPlace[],
+    sights: moriokaSights as CitySight[],
     shopMap: true,
+    routeBuilder: true,
     // 所要時間は JR 東日本の記事「盛岡観光を日帰りで満喫！東京から最短約2時間10分」（media.jreast.co.jp/articles/5697・2026-06-24 更新）。川は北上川（開運橋・上の橋が架かる）
     locator: {
       en: 'Inland, on the Kitakami river · about 2 hr 10 min from Tokyo by the fastest Shinkansen',
@@ -772,8 +804,9 @@ export function areasOf(c: LatitudeCity) {
 // 2026-11-01 店の並びの「節」。その街ならではの産業（industries の順）を先に、そのあと飲食と器の種類。
 // 節の key がそのまま種類のページの URL（/latitude/places/<街>/<key>）になる。
 // 産業ごとにページを分けるのは、「金沢 金箔」「ウィーン 帽子」のように産業の名前で調べる人が多く、1ページ1つの言葉の方が検索で合うため。
-export const CATEGORY_ORDER: Exclude<PlaceCategory, 'local'>[] = ['matcha', 'sweets', 'food', 'coffee', 'craft'];
-const RESERVED = new Set<string>([...CATEGORY_ORDER, 'local', 'area']);
+export const CATEGORY_ORDER: Exclude<PlaceCategory, 'local'>[] = ['craft', 'sweets', 'food', 'cafe'];
+// 古い種類の key（matcha・coffee）も、転送のために産業の key には使わない
+const RESERVED = new Set<string>([...CATEGORY_ORDER, 'local', 'area', 'matcha', 'coffee', 'art', 'sight', 'sights']);
 export type PlaceSection = {
   key: string;
   kind: 'industry' | 'category';

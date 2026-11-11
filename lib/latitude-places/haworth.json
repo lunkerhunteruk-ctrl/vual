@@ -132,7 +132,8 @@
  {
   "name": "The Old Parcels Office",
   "nameEn": "The Old Parcels Office",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "キースリー",
   "areaEn": "Keighley",
   "address": "Station Bridge, Keighley Station, Keighley BD21 4HP",

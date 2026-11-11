@@ -161,7 +161,8 @@
  {
   "name": "Café Sperl",
   "nameEn": "Café Sperl",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "マリアヒルフ",
   "areaEn": "Mariahilf",
   "address": "Gumpendorfer Straße 11, 1060 Wien",
@@ -175,7 +176,8 @@
  {
   "name": "Café Museum",
   "nameEn": "Café Museum",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "インネレ・シュタット（旧市街）",
   "areaEn": "Innere Stadt",
   "address": "Operngasse 7, 1010 Wien",
@@ -189,7 +191,8 @@
  {
   "name": "Café Prückel",
   "nameEn": "Café Prückel",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "インネレ・シュタット（旧市街）",
   "areaEn": "Innere Stadt",
   "address": "Stubenring 24, 1010 Wien",
@@ -203,7 +206,8 @@
  {
   "name": "Café Goldegg",
   "nameEn": "Café Goldegg",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ヴィーデン",
   "areaEn": "Wieden",
   "address": "Argentinierstraße 49, 1040 Wien",
@@ -217,7 +221,8 @@
  {
   "name": "Jonas Reindl Coffee Roasters",
   "nameEn": "Jonas Reindl Coffee Roasters",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "ノイバウ",
   "areaEn": "Neubau",
   "address": "Westbahnstraße 13, 1070 Wien",
@@ -232,6 +237,7 @@
   "name": "Feinedinge*",
   "nameEn": "Feinedinge",
   "category": "craft",
+  "tags": ["ceramics", "tableware"],
   "area": "ヴィーデン",
   "areaEn": "Wieden",
   "address": "Margaretenstraße 35, 1040 Wien",

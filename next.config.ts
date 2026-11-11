@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
       { source: '/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
       { source: '/ja/notes', destination: NOTE_JA_URL, permanent: false },
       { source: '/en/notes', destination: 'https://sachiokawasaki.substack.com', permanent: false },
+      // 2026-11-11 LATITUDE の店の種類を5つにまとめた：抹茶（matcha）とコーヒー（coffee）は喫茶（cafe）へ。古い種類のページを 301 で転送（器 craft は同じアドレスのまま「工芸」）
+      { source: '/:locale(ja|en)/latitude/places/:city/:old(matcha|coffee)', destination: '/:locale/latitude/places/:city/cafe', statusCode: 301 },
+      { source: '/latitude/places/:city/:old(matcha|coffee)', destination: '/latitude/places/:city/cafe', statusCode: 301 },
     ];
   },
   // LATITUDE のレシピ（服・場面の写真）を体験の API と号のページから読めるように

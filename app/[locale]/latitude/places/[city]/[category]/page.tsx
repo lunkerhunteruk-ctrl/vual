@@ -8,7 +8,8 @@ import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/l
 import AskTraveller from '@/components/latitude/AskTraveller';
 import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
 
-// 2026-10-30 「街×種類」のページ（例 /latitude/places/kanazawa/matcha）。検索の細かい言葉（金沢 抹茶 など）の入口。
+// 2026-10-30 「街×種類」のページ（例 /latitude/places/kanazawa/cafe）。検索の細かい言葉（金沢 喫茶 など）の入口。
+// 2026-11-11 種類を5つにまとめた（抹茶・コーヒー → 喫茶 cafe、器 → 工芸 craft）。古い /matcha・/coffee は next.config.ts で /cafe へ 301
 // 中身は街のページと同じ一覧から、その種類の店だけ。
 // 2026-11-01 その街ならではの産業も同じ形のページにする（例 /latitude/places/kanazawa/gold-leaf・/latitude/places/vienna/glass-porcelain-silver）。
 // 産業を1ページにまとめず産業ごとに分けるのは、「金沢 金箔」のように産業の名前で調べる人に、題と中身が1つの言葉でそろったページを返すため。

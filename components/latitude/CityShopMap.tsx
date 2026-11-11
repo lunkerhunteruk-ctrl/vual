@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import TrackLink from '@/components/latitude/TrackLink';
 import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
+import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 
@@ -38,7 +39,11 @@ export type ShopPin = {
   photo?: string; // 店からもらった写真の URL
   mapUrl: string;
   gq?: string; // Google マップの道案内に渡す言葉（店の名前＋住所）
+  // 2026-11-11 見る所（アート・名所）。category は 'art' か 'sight'。店ではなく目印（凛の一言なし・カードに「目印」）
+  kind?: 'shop' | 'art' | 'sight';
+  notice?: string; // 休館の予定など
 };
+const kindOf = (p: ShopPin): MarkKind => p.kind ?? 'shop';
 
 // 「自分でルートを組む」で選べる、凛の1日の地点（上の段の番号と同じ n）
 export type RinStop = { id: string; n: number; name: string; lat: number; lon: number; gq: string };
@@ -165,7 +170,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
 
   // 「自分でルートを組む」で選べる地点（店＋凛の1日の地点）と、地点どうしの歩く道
   const points: BuildPoint[] = useMemo(() => [
-    ...pins.map((p) => ({ id: p.id, key: p.key, name: p.name, sub: p.catLabel, lat: p.lat, lon: p.lon, gq: p.gq ?? p.name, color: CATEGORY_COLOR[p.category] ?? INK, cat: p.category, kind: 'shop' as const })),
+    ...pins.map((p) => ({ id: p.id, key: p.key, name: p.name, sub: p.catLabel, lat: p.lat, lon: p.lon, gq: p.gq ?? p.name, color: CATEGORY_COLOR[p.category] ?? INK, cat: p.category, kind: kindOf(p) })),
     ...rinStops.map((x) => ({ id: x.id, key: x.id, name: x.name, sub: ja ? `${who}の1日 ${x.n}` : `${who}'s day ${x.n}`, lat: x.lat, lon: x.lon, gq: x.gq, color: INK, cat: RIN, kind: 'stop' as const })),
   ], [pins, rinStops, ja, who]);
   const pointById = useMemo(() => new Map(points.map((p) => [p.id, p])), [points]);
@@ -434,8 +439,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           </div>
           <p className="max-w-md text-[13px] leading-relaxed" style={{ color: MUTE }}>
             {build
-              ? (ja ? `行きたい店を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${who}の道をなぞるのは、上の地図です。` : `Tap places in the order you want; a walking line joins them. Tap again to remove. ${who}'s own day is the map above.`)
-              : (ja ? `丸を押すと、その店へ寄ります。「自分でルートを組む」で、行きたい店だけの道を作れます。` : `Tap a dot to see the place. Use “Build your own route” to make a walk of your own.`)}
+              ? (ja ? `行きたい店や場所を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${who}の道をなぞるのは、上の地図です。` : `Tap places in the order you want; a walking line joins them. Tap again to remove. ${who}'s own day is the map above.`)
+              : (ja ? `印を押すと、その店や場所へ寄ります。□は美術館や名所（目印）。「自分でルートを組む」で、行きたい所だけの道を作れます。` : `Tap a mark to see the place; squares are museums and sights (landmarks). Use “Build your own route” to make a walk of your own.`)}
           </p>
         </div>
       )}
@@ -447,7 +452,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             <button key={c.key} type="button" aria-pressed={on} onClick={() => toggleCat(c.key)}
               className="flex min-h-[34px] cursor-pointer items-center gap-2 rounded-full px-3 text-[10px] uppercase tracking-[0.2em] transition-colors"
               style={chip(on)}>
-              <span className="block h-[9px] w-[9px]" style={{ background: c.key === RIN ? INK : CATEGORY_COLOR[c.key] ?? INK, opacity: on ? 1 : 0.3, borderRadius: c.key === RIN ? 1 : 999, transform: c.key === RIN ? 'rotate(45deg)' : undefined }} />
+              <span className="block shrink-0" style={{ ...markStyle(c.key === RIN ? 'stop' : isSightKind(c.key) ? c.key : 'shop', 9, CATEGORY_COLOR[c.key] ?? INK), opacity: on ? 1 : 0.3 }} />
               {c.label}
             </button>
           );
@@ -509,7 +514,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column' }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
-                <span className="block rounded-full" style={{ width: 10, height: 10, background: color, boxShadow: `0 0 0 2px ${PAPER}` }} />
+                <span className="block" style={markStyle(kindOf(p), 10, color, false, `0 0 0 2px ${PAPER}`)} />
                 <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{p.area} · {km.toFixed(1)} km</span>
               </button>
             );
@@ -522,8 +527,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
-              <span className="block overflow-hidden rounded-full group-hover:scale-[1.4]"
-                style={{ width: d, height: d, transition: 'width 300ms, height 300ms, scale 180ms ease-out', background: color, boxShadow: active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}` }}>
+              <span className="block overflow-hidden group-hover:scale-[1.4]"
+                style={{ ...markStyle(kindOf(p), d, color, false, active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}`), transition: 'width 300ms, height 300ms, scale 180ms ease-out' }}>
                 {big(p) && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={p.photo} alt="" loading="lazy" className="block h-full w-full object-cover" />
@@ -543,7 +548,6 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           const si = route.indexOf(q.id);
           const picked = si >= 0;
           const dim = full && !picked;
-          const stop = q.kind === 'stop';
           const inside = x >= -d && x <= size.w + d && y >= -d && y <= size.h + d;
           const label = `${q.name} · ${q.sub}${picked ? (ja ? `（${si + 1}番目・押すと外す）` : ` (stop ${si + 1}, tap to remove)`) : (ja ? '（押すと道に足す）' : ' (tap to add)')}`;
           if (!inside) {
@@ -556,7 +560,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} aria-label={label} aria-pressed={picked}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1 }}>
-                <span className="block" style={{ width: 10, height: 10, background: q.color, borderRadius: stop ? 1 : 999, transform: stop ? 'rotate(45deg)' : undefined, boxShadow: `0 0 0 2px ${PAPER}` }} />
+                <span className="block" style={markStyle(q.kind, 10, q.color, false, `0 0 0 2px ${PAPER}`)} />
                 <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
               </button>
             );
@@ -566,9 +570,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
               <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
-                style={{ width: d, height: d, transition: 'width 200ms, height 200ms, scale 180ms ease-out', background: q.color, color: PAPER, fontFamily: SERIF, fontSize: 13,
-                  borderRadius: stop && !picked ? 1 : 999, transform: stop && !picked ? 'rotate(45deg)' : undefined,
-                  boxShadow: picked ? `0 0 0 2px ${PAPER}, 0 0 0 3px ${INK}, 0 2px 8px 2px rgba(30,29,27,0.2)` : `0 0 0 2px ${PAPER}` }}>
+                style={{ ...markStyle(q.kind, d, q.color, picked, picked ? `0 0 0 2px ${PAPER}, 0 0 0 3px ${INK}, 0 2px 8px 2px rgba(30,29,27,0.2)` : `0 0 0 2px ${PAPER}`),
+                  transition: 'width 200ms, height 200ms, scale 180ms ease-out', color: PAPER, fontFamily: SERIF, fontSize: 13 }}>
                 {picked ? si + 1 : null}
               </span>
               <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px] ${picked ? 'hidden md:block' : 'hidden group-hover:block group-focus-visible:block'}`}
@@ -658,14 +661,15 @@ export function PaperLayers({ base, mpp }: { base: BaseMap; mpp: number }) {
 
 function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; who: string; person: string; onClose: () => void }) {
   const color = CATEGORY_COLOR[p.category] ?? INK;
+  const sight = kindOf(p) !== 'shop';
   return (
     <div className="px-5 pb-6 pt-4">
       {/* 狭い画面の、下から出たカードのつまみ */}
       <div className="mx-auto mb-3 h-[3px] w-10 rounded-full md:hidden" style={{ background: LINE }} />
       <div className="flex items-center justify-between gap-4">
         <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
-          <span className="block h-[9px] w-[9px] rounded-full" style={{ background: color }} />
-          {p.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{p.area}
+          <span className="block shrink-0" style={markStyle(kindOf(p), 9, color)} />
+          {p.catLabel}{sight && (ja ? '・目印' : ' · landmark')}&nbsp;&nbsp;·&nbsp;&nbsp;{p.area}
         </p>
         <button type="button" onClick={onClose} aria-label={ja ? '閉じる' : 'Close'} className="-mr-2 px-2 text-[20px] leading-none" style={{ color: MUTE }}>×</button>
       </div>
@@ -678,10 +682,14 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
         </figure>
       )}
       <p className="mt-3 text-[14px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
-      <p className="mt-3 text-[15px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
-        <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
-        {p.note}
-      </p>
+      {/* 見る所は凛のおすすめの店ではないので、凛の一言は付けない。休館の予定などを出す */}
+      {!sight && p.note && (
+        <p className="mt-3 text-[15px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
+          <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
+          {p.note}
+        </p>
+      )}
+      {p.notice && <p className="mt-3 text-[12px] leading-relaxed" style={{ color: '#7a241e' }}>{p.notice}</p>}
       {p.approx && <p className="mt-3 text-[11px]" style={{ color: MUTE }}>{ja ? '地図の位置はおおよそです。' : 'The position on the map is approximate.'}</p>}
       <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.3em]">
         {p.site && <TrackLink href={p.site} label={ja ? '公式サイト' : 'Website'} shop={p.key} kind="site" person={person} />}

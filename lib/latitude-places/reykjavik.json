@@ -58,7 +58,8 @@
  {
   "name": "Kaffibrugghúsið",
   "nameEn": "Kaffibrugghúsið",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "グランディ（旧港）",
   "areaEn": "Grandi",
   "address": "Fiskislóð 59, 101 Reykjavík",
@@ -86,7 +87,8 @@
  {
   "name": "Kaffi Ó-le",
   "nameEn": "Kaffi Ó-le",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Hafnarstræti 11, 101 Reykjavík",
@@ -100,7 +102,8 @@
  {
   "name": "Kaktus Espressobar",
   "nameEn": "Kaktus Espressobar",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Vitastígur 12, 101 Reykjavík",
@@ -115,6 +118,7 @@
   "name": "Kaolin Ceramic Gallery",
   "nameEn": "Kaolin Ceramic Gallery",
   "category": "craft",
+  "tags": ["ceramics", "tableware"],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Skólavörðustígur 5, 101 Reykjavík",
@@ -170,7 +174,8 @@
  {
   "name": "Mokka Kaffi",
   "nameEn": "Mokka Kaffi",
-  "category": "coffee",
+  "category": "cafe",
+  "tags": ["coffee"],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Skólavörðustígur 3a, 101 Reykjavík",

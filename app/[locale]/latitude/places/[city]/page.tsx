@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
-import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
+import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, SIGHT_LABEL, getCity, sectionsOf, slugify } from '@/lib/latitude-places';
 import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
+import { ShowOnMap } from '@/components/latitude/HScroller';
 import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
@@ -92,18 +93,44 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       };
     })
     : [];
+  // 2026-11-11 見る所（アート・名所）も同じ地図に。店とは形を分け、カードは「目印」（凛の一言なし）
+  const sightPins: ShopPin[] = c.shopMap
+    ? (c.sights || []).map((x) => ({
+      id: `sight-${slugify(x.nameEn)}`,
+      key: x.name,
+      kind: x.kind,
+      name: ja ? x.name : x.nameEn,
+      area: ja ? x.area : x.areaEn,
+      category: x.kind,
+      catLabel: ja ? SIGHT_LABEL[x.kind].ja : SIGHT_LABEL[x.kind].en,
+      lat: x.coords[0],
+      lon: x.coords[1],
+      what: ja ? x.what : x.whatEn,
+      note: '',
+      notice: ja ? x.notice : x.noticeEn,
+      site: x.url,
+      mapUrl: mapUrl(x.name, x.address),
+      gq: `${x.name} ${x.address}`,
+    }))
+    : [];
   // 2026-11-11 試作：「自分でルートを組む」で選べる、凛の1日の地点（上の段の地図と同じ番号）。道の組み合わせは scripts/latitude-route-pairs.py の stop:番号
+  // 同じ場所に2度来る日（盛岡の上の橋）は、最初の1つだけ
   const rinStops: RinStop[] = c.routeBuilder
     ? (c.route || []).filter((r) => r.coords).map((r, k) => ({
       id: `stop:${k + 1}`, n: k + 1,
       name: (ja ? r.shortJa : r.short) ?? (ja ? r.placeJa : r.place),
       lat: r.coords![0], lon: r.coords![1],
       gq: r.gmaps ?? `${r.placeJa} ${c.nameJa}`,
-    }))
+    })).filter((x, k, all) => all.findIndex((y) => y.lat === x.lat && y.lon === x.lon) === k)
     : [];
-  const mapCats = (['local', ...CATEGORY_ORDER] as const)
-    .filter((k) => pins.some((p) => p.category === k))
-    .map((k) => ({ key: k, label: ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en }));
+  const mapCats = [
+    ...(['local', ...CATEGORY_ORDER] as const)
+      .filter((k) => pins.some((p) => p.category === k))
+      .map((k) => ({ key: k as string, label: ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en })),
+    ...(['art', 'sight'] as const)
+      .filter((k) => sightPins.some((p) => p.category === k))
+      .map((k) => ({ key: k as string, label: ja ? SIGHT_LABEL[k].ja : SIGHT_LABEL[k].en })),
+  ];
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
@@ -152,7 +179,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
       <CityDayRoute c={c} ja={ja} who={who} locale={locale} />
 
-      {pins.length > 0 && (
+      {pins.length + sightPins.length > 0 && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl">
             <SectionLabel>
@@ -160,7 +187,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                 ? (ja ? `${who}のおすすめを地図で見る・自分でルートを組む` : `Where ${who} would go, on the map — or build your own route`)
                 : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
             </SectionLabel>
-            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={pins} ja={ja} who={who} person={c.person} cats={mapCats}
+            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
               pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
           </div>
         </section>
@@ -224,6 +251,35 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
           </p>
         </div>
       </section>
+
+      {/* 2026-11-11 見る所（アート・名所）。店とは別：凛のおすすめの店ではなく、街の目印。公式で開いている事を確かめた所だけ */}
+      {sightPins.length > 0 && (
+        <section className="px-4 pb-20 md:px-8 md:pb-28">
+          <div className="mx-auto max-w-6xl">
+            <SectionLabel>{ja ? `見る所——美術館と名所（目印）` : `To see — art and sights (landmarks)`}</SectionLabel>
+            <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+              {sightPins.map((x) => (
+                <li key={x.id} id={x.id} className="scroll-mt-24">
+                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{x.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{x.area}</p>
+                  <p className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{x.name}</p>
+                  <p className="mt-1 text-[14px] leading-relaxed">{x.what}</p>
+                  {x.notice && <p className="mt-2 text-[12px] leading-relaxed" style={{ color: '#7a241e' }}>{x.notice}</p>}
+                  <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[10px] uppercase tracking-[0.3em]">
+                    <a href={x.site} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? '公式サイト' : 'Website'}</a>
+                    <a href={x.mapUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? 'Google マップ' : 'Google Maps'}</a>
+                    <ShowOnMap id={x.id} label={ja ? '地図で見る ↑' : 'On the map ↑'} />
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-10 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
+              {ja
+                ? `見る所は、${who}のおすすめの店とは別の、街の目印です。開いていることを公式で確かめています（${(c.sights || []).map((x) => x.verifiedAt).sort().at(-1)}確認）。時間や休みは、行く前に公式サイトで。`
+                : `These are landmarks, not ${who}'s picks. Each was checked to be open on its official site (checked ${(c.sights || []).map((x) => x.verifiedAt).sort().at(-1)}). Please confirm hours before you go.`}
+            </p>
+          </div>
+        </section>
+      )}
 
       <footer className="pb-28">
         <PublishedBy locale={locale} />
