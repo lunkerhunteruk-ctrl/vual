@@ -104,7 +104,6 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const [now, setNow] = useState(0);
   const [sel, setSel] = useState<string | null>(null);
   const [shown, setShown] = useState<string | null>(null); // カードに出している店（閉じる動きの間も中身を残す）
-  const [hover, setHover] = useState<string | null>(null);
   const box = useRef<HTMLDivElement>(null);
   const sheet = useRef<HTMLElement>(null);
   // 下から出たカードの高さ（px）。狭い画面では、選んだ丸をカードの上に見えている地図のまん中へ寄せるのに使う
@@ -330,24 +329,23 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
           return (
             <button key={p.id} type="button"
               onClick={(e) => { e.stopPropagation(); goTo(active ? null : p.id); }}
-              onMouseEnter={() => setHover(p.id)} onMouseLeave={() => setHover((v) => (v === p.id ? null : v))}
-              onFocus={() => setHover(p.id)} onBlur={() => setHover((v) => (v === p.id ? null : v))}
-              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full p-2 outline-offset-2"
-              style={{ left: x, top: y, zIndex: active ? 3 : hover === p.id ? 2 : 1 }}
+              // 2026-11-11 ユーザー：マウスのある画面では、乗せた丸を 1.4倍に・前面へ・名前を横に・指のカーソル。
+              // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              style={{ left: x, top: y }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
-              <span className="block overflow-hidden rounded-full transition-[width,height] duration-300"
-                style={{ width: d, height: d, background: color, boxShadow: active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}` }}>
+              <span className="block overflow-hidden rounded-full group-hover:scale-[1.4]"
+                style={{ width: d, height: d, transition: 'width 300ms, height 300ms, scale 180ms ease-out', background: color, boxShadow: active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}` }}>
                 {big(p) && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={p.photo} alt="" loading="lazy" className="block h-full w-full object-cover" />
                 )}
               </span>
-              {(active || hover === p.id) && (
-                <span className="pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px]"
-                  style={{ fontFamily: SERIF, color: INK, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
-                  {p.name}
-                </span>
-              )}
+              {/* 名前：選んだ店はいつも、ほかはマウスを乗せた時（とキーボードで選んだ時）だけ */}
+              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px] ${active ? 'block' : 'hidden group-hover:block group-focus-visible:block'}`}
+                style={{ fontFamily: SERIF, color: INK, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
+                {p.name}
+              </span>
             </button>
           );
         })}
