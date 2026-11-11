@@ -32,6 +32,20 @@ CITIES = {
             {'ja': '浅野川', 'en': 'Asano River', 'river': '浅野川', 'near': (36.5735, 136.6625), 'kind': 'water'},
             {'ja': '犀川', 'en': 'Sai River', 'river': '犀川', 'near': (36.5545, 136.6535), 'kind': 'water'},
         ],
+        'rivers': ('犀川', '浅野川'),  # 太い線で描く川（ほかの川・用水は細い線）
+    },
+    # 2026-11-11 盛岡：駅（西）〜材木町（北西）〜紺屋町（東）の店が入る広さ。home は駅から紺屋町・岩手公園まで
+    'morioka': {
+        'center': (39.702, 141.148),
+        'home': (39.6935, 141.1305, 39.7105, 141.1640),
+        'clip': (39.67, 141.105, 39.735, 141.195),
+        'labels': [
+            {'ja': '盛岡駅', 'en': 'Morioka Sta.', 'station': '盛岡', 'at': (39.70150, 141.13655)},
+            {'ja': '岩手公園', 'en': 'Castle Park', 'park': '岩手公園'},
+            {'ja': '北上川', 'en': 'Kitakami River', 'river': '北上川', 'near': (39.7048, 141.1455), 'kind': 'water'},
+            {'ja': '中津川', 'en': 'Nakatsu River', 'river': '中津川', 'near': (39.7040, 141.1530), 'kind': 'water'},
+        ],
+        'rivers': ('北上川', '中津川'),
     },
 }
 
@@ -45,6 +59,27 @@ def rdp(pts, tol):
         if d > dmax: i, dmax = k, d
     if dmax <= tol: return [pts[0], pts[-1]]
     return rdp(pts[: i + 1], tol)[:-1] + rdp(pts[i:], tol)
+
+def join_rings(segs):
+    """multipolygon の外側の線は、何本かに分かれている事がある。端がつながる物をつないで、閉じた輪にして返す（閉じない物は返さない）"""
+    key = lambda p: (p['lat'], p['lon'])
+    chains = [list(s) for s in segs if len(s) >= 2]
+    rings = []
+    while chains:
+        cur = chains.pop()
+        while key(cur[0]) != key(cur[-1]):
+            hit = None
+            for i, c in enumerate(chains):
+                if key(c[0]) == key(cur[-1]): hit = (i, c)
+                elif key(c[-1]) == key(cur[-1]): hit = (i, c[::-1])
+                elif key(c[-1]) == key(cur[0]): hit = (i, c, 'pre')
+                elif key(c[0]) == key(cur[0]): hit = (i, c[::-1], 'pre')
+                if hit: break
+            if not hit: break
+            chains.pop(hit[0])
+            cur = hit[1] + cur[1:] if len(hit) == 3 else cur + hit[1][1:]
+        if key(cur[0]) == key(cur[-1]) and len(cur) > 3: rings.append(cur)
+    return rings
 
 def main():
     slug, files = sys.argv[1], sys.argv[2:]
@@ -87,15 +122,15 @@ def main():
             if t.get('railway') == 'station': stations[t.get('name')] = P(e['lat'], e['lon'])
             continue
         if e['type'] == 'relation':
-            if t.get('natural') == 'water':
-                for m in e.get('members', []):
-                    if m.get('role') == 'outer' and m.get('geometry'): add('water', m['geometry'], True)
+            if t.get('natural') == 'water' or t.get('waterway') == 'riverbank':
+                for ring in join_rings([m['geometry'] for m in e.get('members', []) if m.get('role') == 'outer' and m.get('geometry')]):
+                    add('water', ring, True)
             continue
         if not g: continue
         hw = t.get('highway')
-        if t.get('natural') == 'water' and len(g) > 3: add('water', g, True)
+        if (t.get('natural') == 'water' or t.get('waterway') == 'riverbank') and len(g) > 3 and (g[0]['lat'], g[0]['lon']) == (g[-1]['lat'], g[-1]['lon']): add('water', g, True)
         elif t.get('waterway') in ('river', 'canal'):
-            add('river' if t.get('waterway') == 'river' and t.get('name') in ('犀川', '浅野川') else 'stream', g)
+            add('river' if t.get('waterway') == 'river' and t.get('name') in cfg['rivers'] else 'stream', g)
             rivers.setdefault(t.get('name'), []).extend(P(p['lat'], p['lon']) for p in g)
         elif t.get('leisure') in ('park', 'garden') or t.get('historic') == 'castle':
             a = area(g)
@@ -111,7 +146,8 @@ def main():
 
     labels = []
     for L in cfg['labels']:
-        if 'station' in L: x, y = stations[L['station']]
+        if 'at' in L: x, y = P(*L['at'])  # 駅の点が1つに決まらない街は、位置を直接書く
+        elif 'station' in L: x, y = stations[L['station']]
         elif 'park' in L: x, y, _ = parks[L['park']]
         else:
             nx, ny = P(*L['near'])

@@ -150,7 +150,8 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
     what: ja ? r.whatJa : r.what,
     photo: r.image ? latAsset(`places/${c.slug}/${r.image}`) : undefined,
   }] : []));
-  const offMap = (c.route || []).filter((r) => !r.coords);
+  // 号の章の番号（I・II・III・IV）は、地図に出さない時刻の名前からは外す
+  const offMap = (c.route || []).filter((r) => !r.coords).map((r) => ({ place: r.place.replace(/^[IVX]+ /, ''), placeJa: r.placeJa.replace(/^[IVX]+ /, '') }));
   // 歩く道の線（OpenStreetMap の歩行者ルートで一度だけ計算した物）。無い街・地点を直した後は、地点の間をゆるい曲線でつなぐ
   const walk = getWalk(c.slug, stops.map((s) => [s.lat, s.lon]));
   const city = ja ? c.nameJa : c.name;

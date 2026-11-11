@@ -12,6 +12,7 @@
   "whatEn": "A Nambu cast-iron workshop and shop on Konyacho. Closed on Sundays.",
   "note": "鉄瓶は、両手で持った重さで決める。",
   "noteEn": "Choose a kettle by its weight in both hands.",
+  "coords": [39.70141, 141.15572],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -26,6 +27,7 @@
   "whatEn": "A shop for tableware and everyday tools on Konyacho, with a run of makers' exhibitions. Closed on Wednesdays and Thursdays.",
   "note": "行く前に、いま何の展示かを見る。",
   "noteEn": "Check what is on show before you go.",
+  "coords": [39.70328, 141.15604],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -40,6 +42,7 @@
   "whatEn": "A nanbu senbei shop on a corner of Konyacho since 1936, baked by hand. The hand-baking experience is paused until about the end of November 2026.",
   "note": "南部せんべいは、ごまから。",
   "noteEn": "With nanbu senbei, start with sesame.",
+  "coords": [39.70231, 141.15618],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -54,6 +57,7 @@
   "whatEn": "A coffee house on Konyacho that roasts its own beans.",
   "note": "豆を買って帰る店。",
   "noteEn": "A place to take beans home from.",
+  "coords": [39.70374, 141.15675],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -82,6 +86,7 @@
   "whatEn": "Kogensha published Kenji Miyazawa's first book of stories in 1924. Today its buildings around a courtyard hold folk-craft pottery, lacquer and cloth. Closed on the 15th of each month.",
   "note": "中庭は、急いで抜けない。",
   "noteEn": "Don't hurry through the courtyard.",
+  "coords": [39.70611, 141.13815],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -96,6 +101,7 @@
   "whatEn": "The coffee room at the back of the Kogensha grounds. 10:00–17:00 (last orders 16:30); closed on the 15th of each month.",
   "note": "器を見たあとは、ここで座る。",
   "noteEn": "After the crafts, sit down here.",
+  "coords": [39.70611, 141.13815],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -111,6 +117,7 @@
   "whatEn": "A dye house in Zaimokucho making Nambu kodai katazome: small things in cloth dyed through paper stencils. Usually closed on Sundays.",
   "note": "布は、柄より色で選ぶ。",
   "noteEn": "Choose the cloth by its colour, not its pattern.",
+  "coords": [39.70864, 141.13564],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -125,6 +132,7 @@
   "whatEn": "A wagashi shop in Zaimokucho: seasonal fresh sweets, dry sweets, and its best seller, mochimochi-yaki. Closed only on New Year's Day.",
   "note": "上生菓子は、その季節のものを一つ。",
   "noteEn": "One fresh sweet, the one for the season.",
+  "coords": [39.70589, 141.13835],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -140,6 +148,7 @@
   "whatEn": "Morioka reimen and yakiniku on the second floor of a building opposite Morioka Station.",
   "note": "駅に着いたら、まず冷麺。寒い日でも。",
   "noteEn": "Off the train, reimen first. Even on a cold day.",
+  "coords": [39.70283, 141.13655],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -155,6 +164,8 @@
   "whatEn": "The station branch of Azumaya, a soba house since 1907: wanko soba and local dishes.",
   "note": "わんこそばは、空きを公式で見てから。",
   "noteEn": "Check the wanko soba bookings on their site first.",
+  "coords": [39.70179, 141.13808],
+  "coordsApprox": true,
   "verifiedAt": "2026-11-01"
  },
  {
@@ -169,6 +180,8 @@
   "whatEn": "On the ground floor of the Fesan building at Morioka Station: crafts and everyday things from the six prefectures of Tohoku.",
   "note": "帰りの新幹線の前に、ここで一つ。",
   "noteEn": "One thing from here before the train home.",
+  "coords": [39.70266, 141.13577],
+  "coordsApprox": true,
   "verifiedAt": "2026-11-01"
  },
  {
@@ -184,6 +197,7 @@
   "whatEn": "Opened in 1954, the restaurant where Morioka reimen began; yakiniku too. There are no branches.",
   "note": "冷麺は、始まりの店で一度。",
   "noteEn": "Once, at the place where reimen began.",
+  "coords": [39.70327, 141.14812],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -198,6 +212,7 @@
   "whatEn": "A bookshop with a café on the second floor of a building in Odori 3-chome. Tue–Fri 12:00–18:00, Sat 13:00–17:00; closed Sundays and Mondays.",
   "note": "本と、コーヒー一杯。それだけ。",
   "noteEn": "A book and one coffee. That's all.",
+  "coords": [39.70301, 141.14095],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -212,6 +227,7 @@
   "whatEn": "A coffee shop that opened upstairs in Odori 3-chome in June 2026. From 07:30 on Mon, Tue and Fri; closed Wednesdays and Thursdays.",
   "note": "朝いちばんは、ここから。",
   "noteEn": "First thing in the morning, start here.",
+  "coords": [39.70331, 141.14151],
   "verifiedAt": "2026-11-01"
  }
 ]

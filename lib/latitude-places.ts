@@ -212,6 +212,12 @@ export const CITIES: LatitudeCity[] = [
       coffee: { file: 'cafe.jpg', alt: 'From Rin\'s day: a cup by the window', altJa: '凛の1日から：窓ぎわのカップ' },
     },
     places: morioka as CityPlace[],
+    shopMap: true,
+    // 所要時間は JR 東日本の記事「盛岡観光を日帰りで満喫！東京から最短約2時間10分」（media.jreast.co.jp/articles/5697・2026-06-24 更新）。川は北上川（開運橋・上の橋が架かる）
+    locator: {
+      en: 'Inland, on the Kitakami river · about 2 hr 10 min from Tokyo by the fastest Shinkansen',
+      ja: '内陸の北上川のほとり・東京から新幹線で最短約2時間10分',
+    },
     industries: [
       { key: "nambu-tekki", en: "Nambu ironware", ja: "南部鉄器", about: "Nambu ironware is cast iron from Morioka and Oshu in Iwate, a nationally designated traditional craft. In Morioka it goes back to the seventeenth century, when the Nambu domain brought kettle makers to its castle town; workshops in Konyacho still cast kettles by hand.", aboutJa: "南部鉄器は、岩手の盛岡と奥州で作られる鋳物で、国の伝統的工芸品。盛岡では17世紀、南部藩が城下に釜師を招いたのが始まりとされる。紺屋町には、いまも手で鉄瓶を鋳る工房がある。" },
       { key: "morioka-three-noodles", en: "Morioka's three noodles", ja: "盛岡の三つの麺", about: "Morioka is known for three noodles: wanko soba, mouthfuls of soba poured into your bowl one after another; reimen, a firm cold noodle in beef broth, first served here in 1954; and jajamen, flat noodles with meat miso, finished with chitantan, an egg soup made in the dish you ate from.", aboutJa: "盛岡には三つの麺がある。お椀に次々とそばが入るわんこそば、1954年にこの街で始まった、こしの強い盛岡冷麺、肉みそをのせた平たい麺のじゃじゃ麺。じゃじゃ麺は、食べ終えた皿に卵を溶いて、チータンタンにして締める。" },
@@ -240,19 +246,28 @@ export const CITIES: LatitudeCity[] = [
           note: 'One jacket for the whole day. Under it, one knit is enough.', noteJa: '上着は一日これ一枚。下はニット一枚で足りる。' },
       ],
     },
+    // 地点の位置（coords）の出どころ（2026-11-11）：盛岡駅＝OSM の駅の点 node 11522007330／開運橋＝OSM way 1207758358（橋の中ほど）／上の橋＝OSM way 1246240936（橋の中ほど。夜の上の橋も同じ点）／
+    // 盛岡城跡＝OSM node 1945044787（盛岡城）／紺屋町＝国土地理院の住所検索の町の中心（OSM の紺屋町の店 3 軒の間）。
+    // 店の名前が決まっていない所（鉄器の店・じゃじゃ麺・河原・喫茶店・店の外）と、10:30 と同じ紺屋町の夜は付けない（地図に出ない）
     route: [
-      { time: '08:16', place: 'Morioka Station', placeJa: '盛岡駅', what: 'Off the morning train from Tokyo.', whatJa: '東京からの朝の新幹線で着く。', image: 'train.jpg', near: ['盛楼閣', '東家 盛岡駅前店', 'KANEIRI STANDARD STORE 盛岡店'] },
-      { time: '08:30', place: 'Kaiun Bridge', placeJa: '開運橋', what: 'Mount Iwate at the end of the river.', whatJa: '川の先に岩手山。', image: 'bridge.jpg', near: ['pono books & time', 'Some Blue Coffee'] },
-      { time: '08:50', place: 'I Kaminohashi', placeJa: 'I 上の橋', what: 'Looking down at the river beside the bronze finials.', whatJa: '青銅の擬宝珠のそばで、川を見下ろす。', image: 'kaminohashi.jpg' },
-      { time: '09:40', place: 'The castle walls', placeJa: '盛岡城跡の石垣', what: 'Under the stone walls of the castle, where no keep stands.', whatJa: '天守のない城跡の、石垣の下。', near: ['食道園'] },
-      { time: '10:30', place: 'II Konyacho', placeJa: 'II 紺屋町', what: 'Past the shopfronts of the old street, fingertips brushing an iron kettle.', whatJa: '古い通りの店先を歩く。指先が鉄瓶にふれる。', image: 'konyacho.jpg', near: ['釜定', '老舗 白沢せんべい店', 'shop+space ひめくり', 'cafe & grocery NOOK', 'クラムボン'] },
+      { time: '08:16', place: 'Morioka Station', placeJa: '盛岡駅', what: 'Off the morning train from Tokyo.', whatJa: '東京からの朝の新幹線で着く。', image: 'train.jpg', near: ['盛楼閣', '東家 盛岡駅前店', 'KANEIRI STANDARD STORE 盛岡店'],
+        coords: [39.70150, 141.13655], short: 'Morioka Sta.', shortJa: '盛岡駅', gmaps: '盛岡駅' },
+      { time: '08:30', place: 'Kaiun Bridge', placeJa: '開運橋', what: 'Mount Iwate at the end of the river.', whatJa: '川の先に岩手山。', image: 'bridge.jpg', near: ['pono books & time', 'Some Blue Coffee'],
+        coords: [39.70244, 141.13975], short: 'Kaiun Bridge', shortJa: '開運橋', gmaps: '開運橋 盛岡' },
+      { time: '08:50', place: 'I Kaminohashi', placeJa: 'I 上の橋', what: 'Looking down at the river beside the bronze finials.', whatJa: '青銅の擬宝珠のそばで、川を見下ろす。', image: 'kaminohashi.jpg',
+        coords: [39.70516, 141.15643], short: 'Kaminohashi', shortJa: '上の橋', gmaps: '上の橋 盛岡' },
+      { time: '09:40', place: 'The castle walls', placeJa: '盛岡城跡の石垣', what: 'Under the stone walls of the castle, where no keep stands.', whatJa: '天守のない城跡の、石垣の下。', near: ['食道園'],
+        coords: [39.70012, 141.15021], short: 'Castle ruins', shortJa: '盛岡城跡', gmaps: '盛岡城跡公園' },
+      { time: '10:30', place: 'II Konyacho', placeJa: 'II 紺屋町', what: 'Past the shopfronts of the old street, fingertips brushing an iron kettle.', whatJa: '古い通りの店先を歩く。指先が鉄瓶にふれる。', image: 'konyacho.jpg', near: ['釜定', '老舗 白沢せんべい店', 'shop+space ひめくり', 'cafe & grocery NOOK', 'クラムボン'],
+        coords: [39.70306, 141.15653], short: 'Konyacho', shortJa: '紺屋町', gmaps: '紺屋町 盛岡' },
       { time: '10:45', place: 'An ironware shop', placeJa: '鉄器の店', what: 'Lifting a cold iron kettle with both hands.', whatJa: '冷たい鉄瓶を、両手で持ち上げる。', image: 'kettle.jpg' },
       { time: '12:50', place: 'Jajamen', placeJa: 'じゃじゃ麺', what: 'Jajamen, then an egg stirred into what is left: chitantan.', whatJa: 'じゃじゃ麺。残りに卵を溶いて、チータンタン。', image: 'jajamen.jpg' },
       { time: '13:50', place: 'The riverbed', placeJa: '河原', what: 'On the stones below Kaminohashi, salmon in the shallows.', whatJa: '上の橋の下手の河原。浅瀬に鮭。', image: 'salmon.jpg' },
       { time: '15:00', place: 'III Nakatsu River', placeJa: 'III 中津川', what: 'A window seat in a café over the river, the jacket off.', whatJa: '川に面した喫茶店の窓ぎわ。上着を脱ぐ。', image: 'cafe.jpg' },
       { time: '16:25', place: 'Out of the café', placeJa: '店の外へ', what: 'Out as the lamps come on, the collar held to her throat.', whatJa: '街灯がつき始めたころ、襟をのどへ寄せて店を出る。', image: 'door.jpg' },
       { time: '17:50', place: 'Konyacho, after dark', placeJa: '夜の紺屋町', what: 'Back along the old street after dark.', whatJa: '暗くなった古い通りを戻る。' },
-      { time: '18:20', place: 'IV Kaminohashi', placeJa: 'IV 上の橋', what: 'The same bridge at night, a hand on the wooden rail.', whatJa: '夜、同じ橋。木の欄干に手を置く。', image: 'night.jpg' },
+      { time: '18:20', place: 'IV Kaminohashi', placeJa: 'IV 上の橋', what: 'The same bridge at night, a hand on the wooden rail.', whatJa: '夜、同じ橋。木の欄干に手を置く。', image: 'night.jpg',
+        coords: [39.70516, 141.15643], short: 'Kaminohashi', shortJa: '上の橋', gmaps: '上の橋 盛岡' },
     ],
   },
   // 2026-11-01 海外の5号の街。日本語のページが本命（docs/LATITUDE-CITY-GUIDE.md「誰に向けて書くか」）。
