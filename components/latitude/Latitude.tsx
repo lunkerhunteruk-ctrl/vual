@@ -17,6 +17,25 @@ const STREAM_HOST = 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com';
 // 横に流れる列のスクロールバーを隠す（指やトラックパッドでは動かせる）
 const NOSCROLL_CSS = '.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}';
 
+function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolean }) {
+  const item = 'relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap text-[10px] uppercase tracking-[0.22em] transition-colors duration-300';
+  return (
+    <div role="group" aria-label="People / Places"
+      className="relative grid h-[26px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px]"
+      style={{ background: 'rgba(30,29,27,0.06)', boxShadow: 'inset 0 1px 2px rgba(30,29,27,0.10), inset 0 0 0 1px rgba(30,29,27,0.07)' }}>
+      <span aria-hidden className="absolute bottom-[2px] top-[2px] w-[calc(50%-2px)] rounded-full transition-transform duration-500"
+        style={{
+          left: 2, transform: places ? 'translateX(100%)' : 'translateX(0)', transitionTimingFunction: 'cubic-bezier(.3,1.4,.5,1)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.62) 100%)',
+          backdropFilter: 'blur(8px) saturate(1.6)', WebkitBackdropFilter: 'blur(8px) saturate(1.6)',
+          boxShadow: '0 1px 1px rgba(255,255,255,0.9) inset, 0 -1px 1px rgba(30,29,27,0.05) inset, 0 2px 6px rgba(30,29,27,0.14), 0 0 0 0.5px rgba(30,29,27,0.10)',
+        }} />
+      <Link href={`/${locale}/latitude#people`} aria-current={!places ? 'page' : undefined} className={item} style={{ color: !places ? INK : MUTE }}>People</Link>
+      <Link href={`/${locale}/latitude/places`} aria-current={places ? 'page' : undefined} className={item} style={{ color: places ? INK : MUTE }}>Places</Link>
+    </div>
+  );
+}
+
 export function IssueStrip({ locale, current }: { locale: string; current?: string }) {
   return (
     <nav
@@ -25,19 +44,13 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
     >
       <style>{NOSCROLL_CSS}</style>
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:px-8">
+      <Link href={`/${locale}/latitude`} className="shrink-0 py-3 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
+        Latitude
+      </Link>
+      {/* 2026-11-11 ユーザー：人と場所を、横長のカプセルのトグルに（左＝People が既定・右＝Places）。今どちらのモードかが分かるように。
+            つまみはすりガラス（リキッドグラス）風：うすい白・ぼかし・上の縁の光・やわらかい影 */}
+        <PeoplePlacesToggle locale={locale} places={!!current?.startsWith('places')} />
       <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto py-3">
-        <Link href={`/${locale}/latitude`} className="shrink-0 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
-          Latitude
-        </Link>
-        {/* 2026-11-11 号（右の並び）・場所・人の3つの入口。人の一覧は一覧ページの People の段 */}
-        <Link href={`/${locale}/latitude/places`} aria-current={current === 'places' ? 'page' : undefined}
-          className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em]"
-          style={{ color: current?.startsWith('places') ? INK : MUTE, borderBottom: current?.startsWith('places') ? `1px solid ${INK}` : '1px solid transparent' }}>
-          Places
-        </Link>
-        <Link href={`/${locale}/latitude#people`} className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE, borderBottom: '1px solid transparent' }}>
-          People
-        </Link>
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
         {liveIssues().map((i) => {
           const on = i.slug === current;
