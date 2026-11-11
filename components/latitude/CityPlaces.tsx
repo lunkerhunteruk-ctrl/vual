@@ -57,7 +57,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
               {ja ? x.note : x.noteEn}
             </p>
             <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-[10px] uppercase tracking-[0.3em]">
-              <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />
+              {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
               <TrackLink href={mapUrl(x.name, x.address)} label={ja ? '地図' : 'Map'} shop={x.name} kind="map" person={c.person} />
               {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
             </p>
@@ -81,7 +81,7 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
       item: {
         '@type': TYPE[x.category],
         name: ja ? x.name : x.nameEn,
-        url: x.url,
+        ...(x.url ? { url: x.url } : {}),
         address: { '@type': 'PostalAddress', streetAddress: x.address, addressLocality: c.name, addressCountry: c.countryCode ?? 'JP' },
         description: ja ? x.what : x.whatEn,
       },

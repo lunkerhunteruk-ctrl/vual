@@ -30,7 +30,7 @@ export type CityPlace = {
   area: string;
   areaEn: string;
   address: string; // 町名まで
-  url: string; // 公式
+  url?: string; // 公式（店のサイト、無ければ公式の Instagram・Facebook）。2026-11-11 公式が見つからない店は書かない（Website を出さず地図だけ）。記事・まとめ・予約サイトは入れない
   what: string; // 何の店か（事実）
   whatEn: string;
   note: string; // 旅人の一言（事実に基づく好み）

@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/latitude', priority: 0.7, changeFrequency: 'weekly' as const },
     { path: '/latitude/about', priority: 0.5, changeFrequency: 'monthly' as const },
     { path: '/latitude/editor', priority: 0.5, changeFrequency: 'monthly' as const }, // 2026-11-08 編集長の紹介
+    { path: '/latitude/press', priority: 0.4, changeFrequency: 'monthly' as const }, // 2026-11-11 紹介用のページ（プレス用）
   ];
   // 2026-10-30 号のページは本文が英語で、本体（canonical）は /en だけ。サイトマップにも本体だけを載せる
   const issues = liveIssues().map((i) => ({

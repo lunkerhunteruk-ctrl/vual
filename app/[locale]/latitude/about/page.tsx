@@ -19,6 +19,7 @@ const T = {
       ['Offices', 'Japan · United Kingdom'],
       ['Languages', 'English · 日本語'],
       ['Contact', 'editor@vual.jp'],
+      ['Press', 'Press information and images'],
     ],
     howTitle: 'How an issue is made',
     how: [
@@ -43,6 +44,7 @@ const T = {
       ['拠点', '日本・イギリス'],
       ['言語', '日本語・English'],
       ['連絡先', 'editor@vual.jp'],
+      ['プレス', '紹介用の情報と画像'],
     ],
     howTitle: '号の作り方',
     how: [
@@ -100,6 +102,9 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
               <dd className="text-[15px]" style={body}>
                 {v.includes('@') ? (
                   <a href={`mailto:${v}`} style={{ color: INK }}>{v}</a>
+                ) : k === 'Press' || k === 'プレス' ? (
+                  /* 2026-11-11 紹介用のページ（プレス用）へ */
+                  <Link href={`/${locale}/latitude/press`} className="underline underline-offset-4" style={{ color: INK, textDecorationColor: 'rgba(30,29,27,0.3)' }}>{v}</Link>
                 ) : v.includes('Kawasaki') || v.includes('川崎') ? (
                   /* 2026-11-08 編集長のページ（経歴・制作ノートの一覧）へ */
                   <Link href={`/${locale}/latitude/editor`} rel="author" className="underline underline-offset-4" style={{ color: INK, textDecorationColor: 'rgba(30,29,27,0.3)' }}>{v}</Link>
