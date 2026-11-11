@@ -4,6 +4,8 @@ import { latAsset } from '@/lib/latitude-assets';
 import HScroller from '@/components/latitude/HScroller';
 import { CARD_W } from '@/lib/latitude-card';
 import CityRouteMap, { ShowRouteStop, type RouteStop } from '@/components/latitude/CityRouteMap';
+import { getWalk } from '@/lib/latitude-routes';
+import { km, mins } from '@/lib/latitude-routes/format';
 import { ReelPlayer } from '@/components/latitude/ReelPlayer';
 import { reelSources } from '@/components/latitude/Latitude';
 import { getIssue, isLive } from '@/lib/latitude';
@@ -149,6 +151,8 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
     photo: r.image ? latAsset(`places/${c.slug}/${r.image}`) : undefined,
   }] : []));
   const offMap = (c.route || []).filter((r) => !r.coords);
+  // 歩く道の線（OpenStreetMap の歩行者ルートで一度だけ計算した物）。無い街・地点を直した後は、地点の間をゆるい曲線でつなぐ
+  const walk = getWalk(c.slug, stops.map((s) => [s.lat, s.lon]));
   const city = ja ? c.nameJa : c.name;
   return (
     <section className="px-4 pb-16 md:px-8 md:pb-24">
@@ -180,7 +184,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
           <div className="flex min-w-0 flex-col">
             <p className="mb-3 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? '② 同じ道を、地図で' : '2 · The same day, on the map'}</p>
             <div className="min-h-0 flex-1">
-              <CityRouteMap src={`/latitude/citymaps/${c.slug}.json`} stops={stops} ja={ja} />
+              <CityRouteMap src={`/latitude/citymaps/${c.slug}.json`} stops={stops} ja={ja} walk={walk} />
             </div>
           </div>
         </div>
@@ -194,9 +198,19 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
             </a>
           </div>
           <p className="max-w-md text-[11px] leading-relaxed md:pt-7 md:text-right" style={{ color: MUTE }}>
+            {walk && (
+              <span className="mb-1 block tabular-nums" style={{ color: INK }}>
+                {ja ? `歩くと約${km(walk.distance)}・${mins(walk.duration, true)}（寄り道なし）` : `About ${km(walk.distance)} on foot, ${mins(walk.duration, false)} without stops`}
+              </span>
+            )}
+            {walk
+              ? (ja
+                ? `点線は、歩いた場合の目安の道です（OpenStreetMap の歩行者ルート）。Google マップの案内とは、細い道が違うことがあります。`
+                : `The dotted line is a likely walking route (OpenStreetMap). Google Maps may choose different side streets.`)
+              : (ja ? '地図の点線は回る順の目安で、実際の道ではありません。' : 'The dotted line shows the order, not the actual streets.')}
             {ja
-              ? `地図の点線は回る順の目安で、実際の道ではありません。${offMap.map((r) => r.placeJa).join('・')}${offMap.length ? 'は地図に出していません。' : ''}地図データ © OpenStreetMap contributors`
-              : `The dotted line shows the order, not the actual streets.${offMap.length ? ` ${offMap.map((r) => r.place).join(', ')} is not on the map.` : ''} Map data © OpenStreetMap contributors`}
+              ? `${offMap.length ? `${offMap.map((r) => r.placeJa).join('・')}は地図に出していません。` : ''}地図データ © OpenStreetMap contributors${walk ? '（道の計算 FOSSGIS OSRM）' : ''}`
+              : `${offMap.length ? ` ${offMap.map((r) => r.place).join(', ')} is not on the map.` : ''} Map data © OpenStreetMap contributors${walk ? ' (route: FOSSGIS OSRM)' : ''}`}
           </p>
         </div>
         <div className="mt-14">

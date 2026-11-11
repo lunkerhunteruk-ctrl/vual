@@ -1,14 +1,17 @@
 'use client';
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { PaperLayers, type BaseMap } from '@/components/latitude/CityShopMap';
+import { km, mins, type RouteWalk } from '@/lib/latitude-routes/format';
 
 // 2026-11-11 試作：街のページの「凛の1日の道」の地図。ユーザーの案：
 // ほかのサイトのモデルコースは文字と写真だけ。LATITUDE は先に凛の映像でその1日を見て、同じ道を地図でたどれる。
 // 描き方は号のカルーセルの「動く地図」（vault.vual.jp docs/LATITUDE-ROUTE-MAP.md）と同じ：
 //  紙の地図（店の地図 CityShopMap と同じ土台）に、暗い赤の点線が時刻の順に伸びる → 着いた所の印がゆっくり点滅（1.6秒に1回、輪がうすく広がる）
 //  → 点滅している間だけ、その場面の写真を丸く出す（字の反対側。細い線で印とつなぐ） → 次の線が伸び始めると丸は消える → 最後は丸なしで止まる。
-//  区間を描くのに1.2秒、着いて止まるのに1.9秒（カルーセルと同じ）。
-// 線は実際の道ではなく、ゆるい曲線で「この順」を見せるだけ（下に断り書き）。画面に入った時に始まり、「もう一度見る」で最初から。
+//  区間を描くのに約1.2秒（長い区間は少し長く。1kmで約1.35秒・2kmで約1.7秒）、着いて止まるのに1.9秒（カルーセルと同じ）。
+// 2026-11-11 ユーザー：点線は実際に歩く道に沿わせる。walk（lib/latitude-routes/<街>.json。scripts/latitude-route.py が
+//  OpenStreetMap の歩行者ルート＝FOSSGIS の OSRM で一度だけ計算して保存した線）があればその線を、無ければ地点の間をゆるい曲線でつなぐ。
+// 画面に入った時に始まり、「もう一度見る」で最初から。
 // 下の1日の回り方のカードの「地図で見る」で、その地点を点滅させる。地図の印を押すと、カードの帯がその地点まで流れる。
 
 export type RouteStop = {
@@ -22,6 +25,7 @@ export type RouteStop = {
   photo?: string; // 号の場面の写真（丸く出す）
 };
 
+
 const INK = '#1e1d1b';
 const MUTE = '#78746c';
 const PAPER = '#f2eee7';
@@ -30,7 +34,8 @@ const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const RED = '#7a241e'; // 号の動く地図の点線（reel_overlays2.py の RED = 122, 36, 30）
 
 const FIRST = 0.5; // 画面に入ってから最初の印が出るまで
-const LEG = 1.2; // 区間を描く秒
+const LEG = 1.2; // 区間を描く秒（道の線が無い時。道の線がある時は legSec）
+const legSec = (m?: number) => (m ? clamp(1.0 + (m / 1000) * 0.35, 1.0, 2.0) : LEG);
 const HOLD = 1.9; // 着いて止まる秒（写真の丸を見る時間）
 const PULSE = 1.6; // 輪が広がる周期
 
@@ -39,8 +44,7 @@ const ease = (u: number) => { const t = clamp(u); return t * t * (3 - 2 * t); };
 
 type View = { x: number; y: number; w: number };
 type Box = { x: number; y: number; w: number; h: number };
-const hit = (a: Box, b: Box) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
-// 重なる面積（px²）。写真の丸の置き場所は、少しかかるだけなら許す（狭い画面では、まったくかからない所が無い事がある）
+// 重なる面積（px²）。字と写真の丸の置き場所は、重なりのいちばん小さい所を選ぶ（狭い画面では、まったくかからない所が無い事がある）
 const overlap = (a: Box, b: Box) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
 
 // 土台の線は重いので、見えている範囲が変わらない限り描き直さない
@@ -52,7 +56,7 @@ const Base = memo(function Base({ base, view, h, mpp }: { base: BaseMap; view: V
   );
 });
 
-export default function CityRouteMap({ src, stops, ja }: { src: string; stops: RouteStop[]; ja: boolean }) {
+export default function CityRouteMap({ src, stops, ja, walk }: { src: string; stops: RouteStop[]; ja: boolean; walk?: RouteWalk | null }) {
   const [base, setBase] = useState<BaseMap | null>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const box = useRef<HTMLDivElement>(null);
@@ -64,7 +68,11 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
   const [lw, setLw] = useState<number[]>([]);
   const t0 = useRef(0);
   const n = stops.length;
-  const on = (i: number) => FIRST + i * (HOLD + LEG); // i 番目の印が出る時刻
+  const useWalk = !!walk && walk.legs.length === n - 1;
+  const legDur = Array.from({ length: Math.max(0, n - 1) }, (_, k) => legSec(useWalk ? walk!.legs[k].distance : undefined));
+  const onAt = [FIRST];
+  for (let k = 0; k < n - 1; k++) onAt.push(onAt[k] + HOLD + legDur[k]);
+  const on = (i: number) => onAt[i]; // i 番目の印が出る時刻
   const END = on(n - 1) + HOLD;
   const playing = t !== null && t < END;
 
@@ -90,6 +98,8 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
     setT(0);
   };
   const startRef = useRef(start);
+  const focusRef = useRef(focus);
+  useEffect(() => { focusRef.current = focus; });
   useEffect(() => { startRef.current = start; });
 
   // 画面に4割ほど入ったら、一度だけ始める
@@ -97,7 +107,8 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
     const el = box.current;
     if (!el || !base) return;
     const io = new IntersectionObserver(([e]) => {
-      if (e.intersectionRatio >= 0.4) { startRef.current(); io.disconnect(); }
+      // 先にカードで地点を選んでいた時は、自動では始めない（選んだ地点を消さないように）
+      if (e.intersectionRatio >= 0.4) { if (!focusRef.current) startRef.current(); io.disconnect(); }
     }, { threshold: [0, 0.4] });
     io.observe(el);
     return () => io.disconnect();
@@ -110,7 +121,8 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
     const tick = () => {
       const now = performance.now();
       setClock(now);
-      if (playing) setT(Math.min(END, (now - t0.current) / 1000));
+      // 前の値を見て進める（カードで地点を選んで END にした直後に、古いコマが動きの途中へ戻さないように）
+      if (playing) setT((p) => (p === null || p >= END ? p : Math.min(END, (now - t0.current) / 1000)));
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -150,9 +162,17 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
   }, [stops]);
 
   // 字の幅を測る（字の置き場所を決めるため。字は見えない間も置いておき、透明にしている）
+  // 字の形（Web フォント）が後から届くと幅が変わるので、字の箱の大きさの変化でも測り直す
   useLayoutEffect(() => {
-    const ws = labelRefs.current.slice(0, stops.length).map((el) => (el ? Math.ceil(el.offsetWidth) : 0));
-    setLw((p) => (p.length === ws.length && p.every((v, k) => v === ws[k]) ? p : ws));
+    const els = labelRefs.current.slice(0, stops.length);
+    const measure = () => {
+      const ws = els.map((el) => (el ? Math.ceil(el.offsetWidth) : 0));
+      setLw((p) => (p.length === ws.length && p.every((v, k) => v === ws[k]) ? p : ws));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    els.forEach((el) => el && ro.observe(el));
+    return () => ro.disconnect();
   }, [base, size.w, ja, stops]);
 
   // ---- 見えている範囲：全部の地点が、字と写真の丸の余白ごと収まる範囲
@@ -160,10 +180,14 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
   const narrow = size.w < 520;
   const R = narrow ? 34 : 48; // 写真の丸の半径
   const pad = narrow ? { l: 26, r: 26, t: 60, b: 92 } : { l: 70, r: 70, t: 70, b: 104 };
-  const meters = stops.map((s) => (base ? { x: (s.lon - base.center[1]) * base.k[0], y: (base.center[0] - s.lat) * base.k[1] } : { x: 0, y: 0 }));
+  const toM = (lat: number, lon: number) => (base ? { x: (lon - base.center[1]) * base.k[0], y: (base.center[0] - lat) * base.k[1] } : { x: 0, y: 0 });
+  const meters = stops.map((s) => toM(s.lat, s.lon));
+  const walkM = useWalk ? walk!.legs.map((l) => l.line.map(([la, lo]) => toM(la, lo))) : null;
   let view: View = { x: 0, y: 0, w: 1 };
   if (ready) {
-    const xs = meters.map((m) => m.x), ys = meters.map((m) => m.y);
+    // 地点だけでなく、道の線もはみ出さないように
+    const all = [...meters, ...(walkM ?? []).flat()];
+    const xs = all.map((m) => m.x), ys = all.map((m) => m.y);
     const bx = Math.min(...xs), by = Math.min(...ys), bw = Math.max(...xs) - bx, bh = Math.max(...ys) - by;
     const iw = Math.max(40, size.w - pad.l - pad.r), ih = Math.max(40, size.h - pad.t - pad.b);
     const mpp = Math.max(bw / iw, bh / ih, 0.5);
@@ -173,8 +197,8 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
   const vh = view.w * (size.w ? size.h / size.w : 1);
   const pts = meters.map((m) => ({ x: (m.x - view.x) / mpp, y: (m.y - view.y) / mpp }));
 
-  // ---- 区間の線（ゆるい曲線）。画面の px で作り、伸びた長さのところで切る
-  const legs = pts.slice(1).map((b, k) => {
+  // ---- 区間の線（歩く道。無ければゆるい曲線）。画面の px で作り、伸びた長さのところで切る
+  const legs = walkM ? walkM.map((ms) => ms.map((m) => ({ x: (m.x - view.x) / mpp, y: (m.y - view.y) / mpp }))) : pts.slice(1).map((b, k) => {
     const a = pts[k];
     const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy) || 1;
     const c = { x: (a.x + b.x) / 2 - (dy / L) * L * 0.12, y: (a.y + b.y) / 2 + (dx / L) * L * 0.12 };
@@ -188,8 +212,8 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
   const tt = t ?? -1;
   const drawn: string[] = [];
   legs.forEach((ps, k) => {
-    const s0 = on(k) + HOLD;
-    const u = tt >= s0 + LEG ? 1 : tt <= s0 ? 0 : ease((tt - s0) / LEG);
+    const s0 = on(k) + HOLD, D = legDur[k];
+    const u = tt >= s0 + D ? 1 : tt <= s0 ? 0 : ease((tt - s0) / D);
     if (u <= 0) return;
     let total = 0;
     const seg = ps.slice(1).map((p, j) => { const d = Math.hypot(p.x - ps[j].x, p.y - ps[j].y); total += d; return d; });
@@ -230,10 +254,18 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
       { side: 'L', x: p.x - 11 - w, y: p.y - h / 2 },
       { side: 'B', x: p.x - w / 2, y: p.y + 11 },
       { side: 'T', x: p.x - w / 2, y: p.y - 11 - h },
+      { side: 'BR', x: p.x + 6, y: p.y + 6 },
+      { side: 'TR', x: p.x + 6, y: p.y - 6 - h },
+      { side: 'BL', x: p.x - 6 - w, y: p.y + 6 },
+      { side: 'TL', x: p.x - 6 - w, y: p.y - 6 - h },
     ].map((c) => ({ ...c, w, h }));
-    const inFrame = (b: Box) => b.x >= 4 && b.y >= 4 && b.x + b.w <= size.w - 4 && b.y + b.h <= size.h - 64;
-    const free = (b: Box) => dots.every((d, j) => j === i || !hit(b, d)) && labels.every((l) => !hit(b, l)) && !hit(b, replayBox);
-    const pick = cand.find((b) => inFrame(b) && free(b)) ?? cand.find(inFrame) ?? cand[0];
+    // 重なる面積がいちばん小さい所（同じなら R・L・B・T の順）。枠の外は使わない
+    const cost = (b: Box, k: number) => {
+      const out = b.x < 4 || b.y < 4 || b.x + b.w > size.w - 4 || b.y + b.h > size.h - 64;
+      return (out ? 1e7 : 0) + dots.reduce((v, d, j) => v + (j === i ? 0 : overlap(b, d) * 5), 0)
+        + labels.reduce((v, l) => v + overlap(b, l) * 5, 0) + overlap(b, replayBox) * 5 + k * 2;
+    };
+    const pick = cand.map((b, k) => ({ b, c: cost(b, k) })).sort((x, y) => x.c - y.c)[0].b;
     labels.push({ ...pick, x: clamp(pick.x, 4, Math.max(4, size.w - pick.w - 4)) });
   });
 
@@ -296,6 +328,20 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
           </svg>
         )}
 
+        {/* 写真の丸（その場面の号の静止画）。字より下に置く（重なった時に字が読めるように） */}
+        {ready && cur !== null && circleA > 0.01 && stops[cur].photo && (() => {
+          const c = circleAt(cur);
+          const sc = 0.86 + 0.14 * ease(since / 0.35);
+          return (
+            <span className="pointer-events-none absolute block overflow-hidden rounded-full"
+              style={{ left: c.x - R, top: c.y - R, width: 2 * R, height: 2 * R, opacity: circleA, transform: `scale(${sc})`,
+                boxShadow: `0 0 0 1.5px ${INK}, 0 0 0 5px ${PAPER}` }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={stops[cur].photo} alt="" className="block h-full w-full object-cover" />
+            </span>
+          );
+        })()}
+
         {/* 字：Didot の番号と、短い名前・時刻（カルーセルと同じ並び） */}
         {ready && stops.map((s, i) => {
           const b = labels[i];
@@ -321,20 +367,6 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
             className="absolute h-7 w-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full" style={{ left: pts[i].x, top: pts[i].y }} />
         ))}
 
-        {/* 写真の丸（その場面の号の静止画） */}
-        {ready && cur !== null && circleA > 0.01 && stops[cur].photo && (() => {
-          const c = circleAt(cur);
-          const sc = 0.86 + 0.14 * ease(since / 0.35);
-          return (
-            <span className="pointer-events-none absolute block overflow-hidden rounded-full"
-              style={{ left: c.x - R, top: c.y - R, width: 2 * R, height: 2 * R, opacity: circleA, transform: `scale(${sc})`,
-                boxShadow: `0 0 0 1.5px ${INK}, 0 0 0 5px ${PAPER}` }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={stops[cur].photo} alt="" className="block h-full w-full object-cover" />
-            </span>
-          );
-        })()}
-
         {/* 今の地点のひとこと（下の帯）。終わって止まった時は、全体の時刻 */}
         {ready && (
           <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-3 pt-2.5 md:px-5" style={{ background: 'rgba(242,238,231,0.94)', borderTop: `1px solid ${LINE}` }}>
@@ -342,12 +374,19 @@ export default function CityRouteMap({ src, stops, ja }: { src: string; stops: R
               <p key={capStop.n} className="text-[13px] leading-snug md:text-[14px]" style={{ color: INK }}>
                 <span className="mr-2 text-[10px] tabular-nums tracking-[0.25em]" style={{ color: MUTE }}>{capStop.n} · {capStop.time}</span>
                 <span style={{ fontFamily: SERIF }}>{capStop.place}</span>
+                {useWalk && cur !== null && cur > 0 && (
+                  <span className="ml-2 text-[10px] tabular-nums tracking-[0.15em]" style={{ color: MUTE }}>
+                    {ja ? `（前から ${km(walk!.legs[cur - 1].distance)}）` : `(${km(walk!.legs[cur - 1].distance)} from the last stop)`}
+                  </span>
+                )}
                 <span className="mt-0.5 block text-[12px] md:text-[13px]" style={{ color: MUTE }}>{capStop.what}</span>
               </p>
             ) : (
-              <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+              <p className="text-[10px] tracking-[0.3em]" style={{ color: MUTE }}>
                 {done
-                  ? (ja ? `${n}か所 · ${stops[0].time}–${stops[n - 1].time} · 番号を押すと、その場面` : `${n} stops · ${stops[0].time}–${stops[n - 1].time} · tap a number for the scene`)
+                  ? (useWalk
+                    ? (ja ? `${n}か所 · 歩いて約${km(walk!.distance)}・${mins(walk!.duration, true)} · 番号を押すと、その場面` : `${n} stops · about ${km(walk!.distance)} on foot, ${mins(walk!.duration, false)} · tap a number for the scene`)
+                    : (ja ? `${n}か所 · ${stops[0].time}–${stops[n - 1].time} · 番号を押すと、その場面` : `${n} stops · ${stops[0].time}–${stops[n - 1].time} · tap a number for the scene`))
                   : (ja ? 'この1日の道' : 'The day, in order')}
               </p>
             )}
