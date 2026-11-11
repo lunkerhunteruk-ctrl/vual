@@ -35,7 +35,8 @@ export function GET() {
   for (const i of issues) {
     const p = personOf(i);
     const parts = [`号 ${SITE}/en/latitude/${i.slug}`];
-    const city = CITIES.find((c) => c.issue === i.slug);
+    // 号のページと同じ探し方（金沢のように issue の無い街は、旅人と街の名前で）
+    const city = CITIES.find((c) => c.issue === i.slug || (c.person === i.person && c.name.toLowerCase() === i.city.toLowerCase()));
     if (city) parts.push(`街の案内（${city.places.length}軒）${SITE}/ja/latitude/places/${city.slug} ・ City guide ${SITE}/en/latitude/places/${city.slug}`);
     const n = getNote(i.slug);
     if (n) parts.push(`制作ノート（日本語）「${n.ja.title}」 ${SITE}/ja/latitude/${i.slug}/notes ／ Notes (English) "${n.en.title}" ${SITE}/en/latitude/${i.slug}/notes`);
