@@ -3,6 +3,8 @@
 # 使い方： python3 scripts/indexnow.py vienna           … その号・その人のページ・一覧を知らせる
 #          python3 scripts/indexnow.py --all            … 公開中の全部の号と人のページ（初回や大きな直しの時）
 #          python3 scripts/indexnow.py --url https://vual.jp/en/...  … 好きなページ
+#          python3 scripts/indexnow.py --places nagasaki beppu  … 街の案内（その街の日英のページと、種類・地区のページ。本番の sitemap から拾う）
+#          python3 scripts/indexnow.py --places               … 本番に出ている街の案内の全部（2026-11-11 街を本番に出したら必ず流す）
 import json, os, re, sys, urllib.request
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 KEY = re.search(r"INDEXNOW_KEY = '([0-9a-f]+)'", open(os.path.join(ROOT, 'lib', 'indexnow.ts')).read())[1]
@@ -20,6 +22,17 @@ args = sys.argv[1:]
 if not args: sys.exit(__doc__ or 'slug か --all か --url を渡す')
 urls = []
 if args[0] == '--url': urls = args[1:]
+elif args[0] == '--places':
+    sm = urllib.request.urlopen('https://vual.jp/sitemap.xml', timeout=30).read().decode()
+    locs = re.findall(r'<loc>(https://vual\.jp/(?:en|ja)/latitude/places[^<]*)</loc>', sm)
+    want = args[1:]
+    if want:
+        missing = [t for t in want if not any(re.search(rf'/latitude/places/{t}(/|$)', u) for u in locs)]
+        if missing: sys.exit(f'本番の sitemap にまだ無い街: {missing}（本番に出て数分たってから流す）')
+        urls = [u for u in locs if any(re.search(rf'/latitude/places/{t}(/|$)', u) for t in want)]
+    else:
+        urls = locs
+    urls += ['https://vual.jp/en/latitude/places', 'https://vual.jp/ja/latitude/places', 'https://vual.jp/llms.txt']
 elif args[0] == '--all':
     live = [s for s, v in issues.items() if not v['scheduled']]
     urls = [B] + [f'{B}/{s}' for s in live] + sorted({f'{B}/people/{issues[s]["person"]}' for s in live if issues[s]['person']})

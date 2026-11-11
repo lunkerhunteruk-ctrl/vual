@@ -44,6 +44,23 @@ export function GET() {
     L.push(`  ${parts.join(' ／ ')}`);
   }
   L.push('');
+  // 2026-11-11 号の無い街も含めて、街の案内を全部並べる（街を足すと自動でここにも出る）
+  L.push('### 街の案内 / City guides');
+  L.push('旅人のおすすめの店（編集部が公式の情報で営業を確かめた店だけ）と、見る所・歩く道の地図。 / Shops the travellers would recommend (only places the editors checked on official sources), with sights and walking maps.');
+  L.push(`- 地図と一覧 / Map of all guides: ${SITE}/en/latitude/places ・ ${SITE}/ja/latitude/places`);
+  const groups: [string, typeof CITIES][] = [
+    ['日本 / Japan', CITIES.filter((c) => c.places.length && (c.countryCode || 'JP') === 'JP')],
+    ['日本の外 / Outside Japan', CITIES.filter((c) => c.places.length && (c.countryCode || 'JP') !== 'JP')],
+  ];
+  for (const [label, cs] of groups) {
+    if (!cs.length) continue;
+    L.push(`- ${label}`);
+    for (const c of cs) {
+      const sights = c.sights?.length ? `・見る所${c.sights.length}` : '';
+      L.push(`  - ${c.nameJa}（${c.name}, ${c.country}）${c.latitude}・${c.places.length}軒${sights}: ${SITE}/ja/latitude/places/${c.slug} ・ ${SITE}/en/latitude/places/${c.slug}`);
+    }
+  }
+  L.push('');
   L.push('### よくある質問 / FAQ');
   L.push('**Q: LATITUDE とは何ですか？ / What is LATITUDE?**');
   L.push('A: VUAL が出している、AI で作るファッションの連作フィクションです。実在の街の1日を、架空の旅人が記録のように過ごします。 / A serial fiction by VUAL, made with AI: a fictional traveller spends one documented-looking day in a real place.');
