@@ -28,7 +28,13 @@ export function CityLocator({ country, at, dot = RED, text, label, className }: 
         <circle cx={x} cy={y} r={10.5} fill="none" stroke={dot} strokeWidth={0.8} opacity={0.6} />
         <circle cx={x} cy={y} r={5.4} fill={dot} stroke={PAPER} strokeWidth={1.2} />
       </svg>
-      <p className="max-w-[16rem] text-[10px] uppercase leading-[1.9] tracking-[0.28em]">{text}</p>
+      <p className="max-w-[16rem] text-[10px] uppercase leading-[1.9] tracking-[0.28em]">{keepUnits(text)}</p>
     </div>
   );
+}
+
+// 数と単位（「2時間24分」「2 hr 24 min」「6 km」）を折り返さない
+const UNIT = /(\d+\s*(?:時間|hr)\s*\d+\s*(?:分|min)|\d+(?:\.\d+)?\s*(?:時間|分|hr|min|km|°C|℃))/;
+function keepUnits(t: string) {
+  return t.split(UNIT).map((part, i) => (i % 2 ? <span key={i} className="whitespace-nowrap">{part}</span> : part));
 }
