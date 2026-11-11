@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
-import { CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
-import { AreaLinks, CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
+import { AreaLinks, CategoryLinks, PlaceGroup, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
+import CityShopMap, { type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
-import { CityRoute, CityWear } from '@/components/latitude/CityGuideExtras';
+import { CityRoute, CityWear, placeAnchor } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { latAsset } from '@/lib/latitude-assets';
@@ -55,6 +56,33 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
   const checked = c.places.map((x) => x.verifiedAt).sort().at(-1);
   // 旅人に部屋（会話）があれば、このページからその場で聞ける
   const room = roomsOpen() ? getRoom(c.person) : undefined;
+  // 2026-11-11 試作：店の地図（土台のある街だけ）。位置（coords）のある店だけを丸にする。リストはこの下にそのまま
+  const isIg = (u?: string) => !!u && /^https?:\/\/(www\.)?instagram\.com\//.test(u);
+  const pins: ShopPin[] = c.shopMap
+    ? c.places.filter((x) => x.coords).map((x) => {
+      const ind = x.category === 'local' ? c.industries?.find((i) => i.key === x.industry) : undefined;
+      return {
+        id: placeAnchor(x),
+        key: x.name,
+        name: ja ? x.name : x.nameEn,
+        area: ja ? x.area : x.areaEn,
+        category: x.category,
+        catLabel: ind ? (ja ? ind.ja : ind.en) : (ja ? CATEGORY_LABEL[x.category].ja : CATEGORY_LABEL[x.category].en),
+        lat: x.coords![0],
+        lon: x.coords![1],
+        approx: x.coordsApprox,
+        what: ja ? x.what : x.whatEn,
+        note: ja ? x.note : x.noteEn,
+        site: isIg(x.url) ? undefined : x.url,
+        instagram: x.instagram ?? (isIg(x.url) ? x.url : undefined),
+        photo: x.photo ? latAsset(`places/${c.slug}/shops/${x.photo}`) : undefined,
+        mapUrl: mapUrl(x.name, x.address),
+      };
+    })
+    : [];
+  const mapCats = (['local', ...CATEGORY_ORDER] as const)
+    .filter((k) => pins.some((p) => p.category === k))
+    .map((k) => ({ key: k, label: ja ? CATEGORY_LABEL[k].ja : CATEGORY_LABEL[k].en }));
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
@@ -74,6 +102,15 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <NowInCity place={c.issue ?? c.slug} coords={c.coords} name={ja ? c.nameJa : c.name} ja={ja} className="mt-7" />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
+
+      {pins.length > 0 && (
+        <section className="px-4 pb-16 md:px-8 md:pb-24">
+          <div className="mx-auto max-w-6xl">
+            <SectionLabel>{ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`}</SectionLabel>
+            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={pins} ja={ja} who={who} person={c.person} cats={mapCats} />
+          </div>
+        </section>
+      )}
 
       {/* 旅人の1日の場面（号の静止画）。横に流す */}
       <section className="pb-16 md:pb-24">

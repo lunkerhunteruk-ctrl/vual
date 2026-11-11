@@ -11,6 +11,7 @@
   "whatEn": "A tea room run by Morihachi, a confectioner since 1625, in an Edo-period townhouse. Matcha with fresh wagashi.",
   "note": "朝9時から開いてる。茶屋街が混む前に行く。",
   "noteEn": "It opens at nine. Go before the teahouse street fills up.",
+  "coords": [36.57285, 136.66708],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -25,6 +26,7 @@
   "whatEn": "The café of Moroeya, makers of rakugan since 1849. Dry or fresh sweets with matcha, and zenzai with mochi toasted on a charcoal grill.",
   "note": "まずは干菓子と抹茶。落雁の店だから。",
   "noteEn": "Dry sweets and matcha, to begin. It is a house of rakugan.",
+  "coords": [36.55725, 136.6476],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -39,6 +41,8 @@
   "whatEn": "The ground-floor café of a teahouse at the Katsurazaka gate of Kenrokuen. Matcha from an old tea merchant and fresh rakugan from Moroeya.",
   "note": "カウンターが広いから、一人でも座れる。庭のあとに。",
   "noteEn": "A long counter, so one person is fine. After the garden.",
+  "coords": [36.56344, 136.66162],
+  "coordsApprox": true,
   "verifiedAt": "2026-10-30"
  },
  {
@@ -53,6 +57,7 @@
   "whatEn": "The salon upstairs at Amanatto Kawamura, a sweet-bean specialist. Parfaits and teas made with beans.",
   "note": "三色豆茶は砂時計で5分待つ。待つのも込みで頼む。",
   "noteEn": "The three-bean tea comes with a five-minute sandglass. The wait is part of it.",
+  "coords": [36.55664, 136.64711],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -67,6 +72,7 @@
   "whatEn": "A Kanazawa oden house since 1936, with a dark broth kept going for decades.",
   "note": "車麩は頼む。ネタがなくなったら終わりだから、早めに。",
   "noteEn": "Order the kuruma-fu. When the pot runs out, they close. Go early.",
+  "coords": [36.56175, 136.65395],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -81,6 +87,7 @@
   "whatEn": "A neighbourhood kappo since 1957: oden, rolled omelette, eel.",
   "note": "だし巻きは、だしが卵と半々。最初に頼む。",
   "noteEn": "The omelette is half broth. Order it first.",
+  "coords": [36.56136, 136.65259],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -95,6 +102,7 @@
   "whatEn": "A seafood canteen in Omicho Market. Seafood bowls and Kanazawa oden, from 8 a.m.",
   "note": "朝ごはんにする。予約はできない。",
   "noteEn": "Make it breakfast. No reservations.",
+  "coords": [36.5712, 136.65567],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -109,6 +117,7 @@
   "whatEn": "A dining room inside Kaburaki, a Kutani porcelain house. Market food served on Kutani ware.",
   "note": "器で選んだ店。食べ終わったら、器を見る。",
   "noteEn": "I would go for the dishes. When you finish, look at the plate.",
+  "coords": [36.56375, 136.65079],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -123,6 +132,7 @@
   "whatEn": "A townhouse by the Kuromon gate of the castle park. House-roasted, flannel-drip coffee.",
   "note": "城を歩いたあとに座る所。",
   "noteEn": "Where to sit down after the castle.",
+  "coords": [36.5686, 136.65855],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -137,6 +147,7 @@
   "whatEn": "A specialty coffee shop in Ishibiki. No milk, no sugar.",
   "note": "ブラックだけ。それでいい。",
   "noteEn": "Black only. That is fine.",
+  "coords": [36.55711, 136.66828],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -151,6 +162,7 @@
   "whatEn": "The shop of Kamide Choemon, a Kutani kiln since 1879, making tableware for restaurants.",
   "note": "料理屋の器だから、飾らずに使える。底も見て。",
   "noteEn": "Made for restaurants, so made to be used. Look at the base too.",
+  "coords": [36.56373, 136.65242],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -165,6 +177,7 @@
   "whatEn": "Pottery by makers from all over Japan, and things for daily life.",
   "note": "少し遠い。名前で選ばず、手に持って選ぶ。",
   "noteEn": "A bit out of the way. Choose with your hands, not by the name.",
+  "coords": [36.51377, 136.63109],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -179,6 +192,7 @@
   "whatEn": "A lacquerware shop since 1780: Kanazawa, Wajima and Yamanaka lacquer. They repair it too.",
   "note": "直してくれる店は、信用できる。",
   "noteEn": "A shop that repairs what it sells. I trust that.",
+  "coords": [36.5618, 136.65649],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -193,6 +207,7 @@
   "whatEn": "A hot-pot house started by a former geiko. Seafood simmered in a house broth, served in private rooms by the staff. Reservations needed.",
   "note": "自分で何もしなくていい鍋。〆のおじやまで任せる。",
   "noteEn": "A hot pot where you do nothing yourself. Leave it to them, right up to the rice at the end.",
+  "coords": [36.57214, 136.66383],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -207,6 +222,7 @@
   "whatEn": "A Japanese restaurant in the riverside townhouse where the American printmaker Clifton Karhu spent his last years. Seasonal courses.",
   "note": "版画家の家で食べる。川を見ながら、黙って。",
   "noteEn": "You eat in a printmaker's house. Look at the river and keep quiet.",
+  "coords": [36.57219, 136.66377],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -221,6 +237,7 @@
   "whatEn": "A teahouse at the foot of the Kuragari slope. Café by day, drinks at night. By reservation only.",
   "note": "予約してから行く。格子の窓ごしの茶屋街がいい。",
   "noteEn": "Book first. The teahouse street through the lattice is the point.",
+  "coords": [36.57208, 136.66339],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -235,6 +252,7 @@
   "whatEn": "Run by an old kimono house. Kaga-yuzen and crafts on the ground floor; upstairs, a tatami café over the street with matcha and fresh sweets.",
   "note": "2階から通りを見下ろす。1階の展示も見て。",
   "noteEn": "Look down at the street from upstairs. See the show downstairs too.",
+  "coords": [36.57239, 136.66737],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -249,6 +267,7 @@
   "whatEn": "A café and gallery run by a Kaga tea maker, serving only roasted hojicha, in a former teahouse with a courtyard.",
   "note": "抹茶はない。ほうじ茶だけ。それがいい。",
   "noteEn": "No matcha. Only hojicha. That is the good part.",
+  "coords": [36.57236, 136.66783],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -263,6 +282,7 @@
   "whatEn": "A shop for crafts and vessels by makers from the Hokuriku region, with a different solo show upstairs every month.",
   "note": "金箔の土産だけの店じゃない。2階の個展から見る。",
   "noteEn": "Not just gold-leaf souvenirs. Start with the show upstairs.",
+  "coords": [36.57283, 136.66719],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -278,6 +298,7 @@
   "whatEn": "The main shop of a gold-leaf maker founded in 1898. It offers leaf-application workshops and, on some days, shows part of the engitsuke leaf-making process, a technique on UNESCO's intangible heritage list. Closed Sundays, Mondays and holidays.",
   "note": "明治三十一年からの箔屋。縁付金箔の仕事を、日によって店で見せる。",
   "noteEn": "Leaf makers since 1898. Some days, the engitsuke work is shown in the shop.",
+  "coords": [36.55399, 136.66119],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -293,6 +314,8 @@
   "whatEn": "The Kanazawa shop of Katani, a gold-leaf maker founded in 1899. It sells craft gold and silver leaf and its Hanafubuki edible leaf, and runs leaf-application workshops.",
   "note": "食べる箔は、工芸の箔と工程を分けて作る。",
   "noteEn": "The edible leaf is made on a separate line from the craft leaf.",
+  "coords": [36.572, 136.66258],
+  "coordsApprox": true,
   "verifiedAt": "2026-11-01"
  },
  {
@@ -308,6 +331,7 @@
   "whatEn": "A city museum built on the gold-leaf artworks and tools collected by former leaf craftsman Yasue Takaaki; Japan's only gold-leaf museum, moved to Higashiyama in autumn 2010. Closed Tuesdays.",
   "note": "箔を打つ道具が見られる、国内でただ一つの金箔の館。",
   "noteEn": "Japan's only gold-leaf museum, with the beating tools on show.",
+  "coords": [36.57376, 136.66599],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -323,6 +347,7 @@
   "whatEn": "A gold-leaf maker founded in 1919. You can watch the leaf being beaten, and buy what the workshop makes.",
   "note": "箔を打つ音が聞ける。買う前に、まず見る。",
   "noteEn": "You can hear the leaf being beaten. Watch first, buy later.",
+  "coords": [36.57385, 136.66631],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -338,6 +363,7 @@
   "whatEn": "A gold-leaf house in Higashi Chaya, with tableware and small things in its own gold-and-platinum leaf, and a storehouse in the courtyard covered in leaf.",
   "note": "中庭の金の蔵は、曇りの日のほうがきれい。",
   "noteEn": "The gold storehouse in the courtyard looks better on a grey day.",
+  "coords": [36.57246, 136.66725],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -353,6 +379,7 @@
   "whatEn": "The hall of the Kaga-zome Promotion Cooperative, with the Someria museum of new Kaga yuzen works, a hands-on dyeing corner and yuzen goods for sale. 9:00–17:00, closed Wednesdays except holidays.",
   "note": "染め手の組合の館。いまの加賀友禅の新作が並ぶ。",
   "noteEn": "The dyers' guild hall. New Kaga yuzen work on show.",
+  "coords": [36.56401, 136.66438],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -368,6 +395,7 @@
   "whatEn": "The gallery of Akaneya (Okuda Senshoku), a Kaga yuzen dye studio that marked 120 years in 2025. A Meiji-era machiya still used as the studio shows the process and offers colouring workshops; open Sat–Sun 10:00–16:00, other days by appointment. Five minutes' walk from the 21st Century Museum.",
   "note": "いまも工房として使う明治の町家。開くのは土日だけ。",
   "noteEn": "A Meiji townhouse still used as the dye studio. Open weekends only.",
+  "coords": [36.55944, 136.65553],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -383,6 +411,7 @@
   "whatEn": "The studio of Kaga yuzen artists Maida Kenji and Maida Hitoshi. It takes studio-tour visitors, makes kimono to order and sells small hand-dyed pieces such as earrings and tenugui. 10:00–17:00, irregular closing days.",
   "note": "できた着物でなく、作る途中を見せる工房。",
   "noteEn": "A studio that shows the work in progress, not only the finished kimono.",
+  "coords": [36.55603, 136.65985],
   "verifiedAt": "2026-11-01"
  }
 ]

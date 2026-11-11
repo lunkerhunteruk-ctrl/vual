@@ -11,7 +11,7 @@ import { latAsset } from '@/lib/latitude-assets';
 // 2026-11-01 節（sectionsOf）ごとに並べる：その街ならではの産業が先、飲食と器があと。産業の節は見出しの下に短い説明。
 
 export { CATEGORY_ORDER } from '@/lib/latitude-places';
-const mapUrl = (name: string, address: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${address}`)}`;
+export const mapUrl = (name: string, address: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${address}`)}`;
 
 export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
   c: LatitudeCity; sec: PlaceSection; ja: boolean; locale: string; who: string; canAsk: boolean; linkHeading: boolean;

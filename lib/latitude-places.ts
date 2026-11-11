@@ -37,6 +37,16 @@ export type CityPlace = {
   noteEn: string;
   verifiedAt: string; // 編集部が営業を確かめた日
   ad?: boolean;
+  // 2026-11-11 街のページの店の地図（components/latitude/CityShopMap.tsx）。[緯度, 経度]。
+  // 住所から求める（OSM の Nominatim で店そのものが見つかればその位置、無ければ国土地理院の住所検索で番地・号の位置）。
+  // 番地・号まで出ない店は coordsApprox: true（カードに「位置はおおよそ」と出す）。coords の無い店は地図に出ない（リストには出る）
+  coords?: [number, number];
+  coordsApprox?: boolean;
+  // 店からもらった写真だけ（public/latitude/places/<街>/shops/ のファイル名。R2 へ上げる）。公式サイトや Instagram の画像を切り抜いて使わない。
+  // 号の場面の写真も入れない（その店の写真に見えるため）。あれば地図の丸の中とカードに出る
+  photo?: string;
+  // 公式の Instagram（プロフィールか投稿の URL）。url が Instagram の店は書かなくてよい。あれば地図のカードに Instagram の正式な埋めこみを出す
+  instagram?: string;
 };
 
 // その街ならではの産業（例 金沢の金箔）。key は URL になる（種類の key と 'area' は使わない）
@@ -70,6 +80,8 @@ export type LatitudeCity = {
   };
   // 旅人の1日の回り方（号の順番）。near は、その場所の近くにある一覧の店（店の name）。旅人がその店に行ったとは書かない
   route?: { time: string; place: string; placeJa: string; what: string; whatJa: string; image?: string; near?: string[] }[];
+  // 2026-11-11 店の地図の土台（public/latitude/citymaps/<slug>.json。scripts/latitude-citymap.py で作る）がある街だけ true
+  shopMap?: boolean;
   // 深掘りの街だけ：旅人が泊まった宿の部屋の中継ふうの動画（部屋のページは自宅で固定。2026-10-30 ユーザー決定）
   inn?: { cam: RoomCam; title: string; titleJa: string; note: string; noteJa: string };
 };
@@ -105,6 +117,7 @@ export const CITIES: LatitudeCity[] = [
       food: { file: 'crab.jpg', alt: 'From Rin\'s day: crab at a wooden counter', altJa: '凛の1日から：木のカウンターで蟹' },
     },
     places: kanazawa as CityPlace[],
+    shopMap: true,
     industries: [
       { key: "gold-leaf", en: "Gold leaf", ja: "金箔", about: "Kanazawa makes over 99% of Japan's gold leaf, according to Ishikawa Prefecture. Gold the size of a ten-yen coin is beaten out to about the area of four tatami mats.", aboutJa: "石川県によると、全国の金箔の99％以上が金沢で作られる。10円玉ほどの金を、畳4枚ほどの広さまで打ち延ばす。" },
       { key: "kaga-yuzen", en: "Kaga yuzen dyeing", ja: "加賀友禅", about: "Kaga yuzen is Kanazawa's hand-painted silk dyeing, a nationally designated traditional craft of Ishikawa, known for patterns drawn from flowers, plants and landscapes in many colours. Working dye studios still operate in the city.", aboutJa: "金沢の、絹に手で模様を描いて染める技法。石川県の国指定の伝統的工芸品で、草花や風景など自然を描いた模様と、多くの色を使うのが特徴。市内にはいまも染めの工房がある。" },
