@@ -94,6 +94,8 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <head>
+        {/* 2026-11-11 Pinterest（LATITUDE by VUAL・editor@vual.jp）で vual.jp の持ち主だと確かめる印 */}
+        <meta name="p:domain_verify" content="873b92227ddb2f7f001d84f224652d9e" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-81H2X3FF55" />
         <script
           dangerouslySetInnerHTML={{
