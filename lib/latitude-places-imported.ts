@@ -17,6 +17,8 @@ import kakunodatePlaces from './latitude-places/kakunodate.json';
 import kakunodateSights from './latitude-sights/kakunodate.json';
 import kurashikiPlaces from './latitude-places/kurashiki.json';
 import kurashikiSights from './latitude-sights/kurashiki.json';
+import nagasakiPlaces from './latitude-places/nagasaki.json';
+import nagasakiSights from './latitude-sights/nagasaki.json';
 import takamatsuPlaces from './latitude-places/takamatsu.json';
 import takamatsuSights from './latitude-sights/takamatsu.json';
 import takayamaPlaces from './latitude-places/takayama.json';
@@ -200,6 +202,28 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: kurashikiPlaces as CityPlace[],
     sights: kurashikiSights as CitySight[],
+  },
+  {
+    slug: "nagasaki",
+    name: "Nagasaki",
+    nameJa: "長崎",
+    latitude: "32.7° N",
+    country: "Nagasaki, Japan",
+    countryJa: "長崎県",
+    person: "rin",
+    coords: [32.7445, 129.8755],
+    intro: "A port town that was open to trade with Portuguese and Dutch ships for centuries. Castella and glass-blowing shops, sweets and coffee by the stone bridges of the Nakashima River, and the slope below Glover Garden: Rin's picks.",
+    introJa: "南蛮貿易と和蘭貿易の時代から、海の向こうへ開いていた港町。カステラとびいどろの店、中島川の石橋のまわりの菓子と珈琲、グラバー園の坂の下の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Nagasaki, on Kyushu · around the harbour, on hillsides", "ja": "九州の長崎県・長崎港をとりまく坂の町"},
+    industries: [
+      {"key": "castella", "en": "Castella & Nanban Confectionery", "ja": "長崎カステラ・南蛮菓子", "about": "Castella is said to come from the sweets that arrived with the Nanban trade. In Nagasaki small shops still bake it. Iwanaga Baijuken, open since 1830, bakes its castella and then rests it overnight.", "aboutJa": "カステラは、南蛮貿易で伝わった菓子がもとといわれる。長崎では、いまも小さな店が焼き続けている。岩永梅寿軒は1830年の創業で、焼いたカステラを一晩寝かせる。"},
+      {"key": "nagasaki-glass", "en": "Nagasaki Vidro & Glasswork", "ja": "長崎びいどろ・ガラス工芸", "about": "Records of the Nagasaki magistrate show vidro blowers in the town by 1670, and Nagasaki glass became a local speciality. The line stopped after the war. Today studios such as Rurian blow vidro by hand again.", "aboutJa": "長崎奉行の記録に、1670年にはびいどろ吹きが長崎にいたと残る。長崎ガラスは名産になったが、戦後に一度途絶えた。いまは瑠璃庵のような工房が、びいどろを手で吹いている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: nagasakiPlaces as CityPlace[],
+    sights: nagasakiSights as CitySight[],
   },
   {
     slug: "takamatsu",

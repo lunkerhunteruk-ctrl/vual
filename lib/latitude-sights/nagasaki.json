@@ -1,0 +1,72 @@
+[
+ {
+  "name": "出島",
+  "nameEn": "Dejima",
+  "kind": "sight",
+  "area": "出島・大波止",
+  "areaEn": "Dejima",
+  "address": "長崎市出島町6-1",
+  "url": "https://nagasakidejima.jp/",
+  "what": "南蛮貿易の時代の1636年に完成し、のちにオランダ商館が置かれた島。19世紀初頭の姿を目指す復元整備で、カピタン部屋など16棟が復元されている。",
+  "whatEn": "The island completed in 1636, in the time of the Nanban trade, and later the site of the Dutch trading post. A restoration aimed at the early nineteenth century has rebuilt 16 buildings, including the Capitan’s room.",
+  "coords": [
+   32.74366,
+   129.87255
+  ],
+  "notice": "旧出島神学校は、安全のため入室できない。観覧は8時から21時（最終入場20時40分）で、年中無休。",
+  "noticeEn": "The old Dejima seminary is closed to entry for safety reasons. Open 8 am to 9 pm (last entry 8:40 pm), every day of the year.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "グラバー園",
+  "nameEn": "Glover Garden",
+  "kind": "sight",
+  "area": "大浦・南山手",
+  "areaEn": "Oura",
+  "address": "長崎市南山手町8-1",
+  "url": "https://glover-garden.jp/",
+  "what": "旧グラバー住宅を中心に、長崎市内の古い洋風建築を移築復元した庭園。旧グラバー住宅は世界遺産の構成資産で、3棟が国の重要文化財。",
+  "whatEn": "A garden of Meiji-era Western-style buildings moved and rebuilt around the former Glover House, a World Heritage component. Three of the buildings are national Important Cultural Properties.",
+  "coords": [
+   32.73337,
+   129.86906
+  ],
+  "notice": "旧オルト住宅は保存修理工事のため観覧できない（再開は2027年3月の予定）。11月と12月は20時まで開園。",
+  "noticeEn": "The former Alt House is closed for repair works (reopening planned for March 2027). Open until 8 pm in November and December.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "眼鏡橋",
+  "nameEn": "Meganebashi Bridge",
+  "kind": "sight",
+  "area": "眼鏡橋・中島川",
+  "areaEn": "Meganebashi",
+  "address": "長崎市魚の町（中島川）",
+  "url": "https://www.city.nagasaki.lg.jp/nagazine/hakken0206/ishibashigun/index.html",
+  "what": "1634年に興福寺の唐僧・黙子如定が架けた、日本で最初のアーチ型の石橋。国の重要文化財で、中島川の石橋群の一つ。1982年の大水害で半壊し、1983年に復元された。",
+  "whatEn": "The first arched stone bridge in Japan, built in 1634 by Mokushi Nyojo, a Chinese monk of Kofukuji temple. A national Important Cultural Property over the Nakashima River. It was half destroyed in the 1982 flood and rebuilt in 1983.",
+  "coords": [
+   32.74729,
+   129.87999
+  ],
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "長崎歴史文化博物館",
+  "nameEn": "Nagasaki Museum of History and Culture",
+  "kind": "art",
+  "area": "立山",
+  "areaEn": "Tateyama",
+  "address": "長崎市立山1-1-1",
+  "url": "https://www.nmhc.jp/",
+  "what": "長崎の歴史と文化を伝える博物館。常設展に、歴史文化展示ゾーンと、町屋、長崎奉行所ゾーンがある。",
+  "whatEn": "A museum of the history and culture of Nagasaki. Its permanent exhibition has a history and culture zone, a machiya townhouse and a zone on the Nagasaki magistrate’s office.",
+  "coords": [
+   32.75299,
+   129.87945
+  ],
+  "notice": "休館日は毎月第1・第3月曜（祝日の場合は翌平日）。11月は16日が休館で、19時まで開館（最終入館18時30分）。",
+  "noticeEn": "Closed on the first and third Mondays of each month (the next weekday if a holiday). In November it is closed on the 16th, and open until 7 pm (last entry 6:30 pm).",
+  "verifiedAt": "2026-11-11"
+ }
+]

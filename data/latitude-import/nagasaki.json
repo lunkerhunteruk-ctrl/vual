@@ -4,48 +4,51 @@
   "name": "Nagasaki",
   "nameJa": "長崎",
   "latitude": "32.7° N",
-  "country": "",
-  "countryJa": "",
+  "country": "Nagasaki, Japan",
+  "countryJa": "長崎県",
   "person": "rin",
   "coords": [
    32.7445,
    129.8755
   ],
-  "intro": "",
-  "introJa": "",
+  "intro": "A port town that was open to trade with Portuguese and Dutch ships for centuries. Castella and glass-blowing shops, sweets and coffee by the stone bridges of the Nakashima River, and the slope below Glover Garden: Rin's picks.",
+  "introJa": "南蛮貿易と和蘭貿易の時代から、海の向こうへ開いていた港町。カステラとびいどろの店、中島川の石橋のまわりの菓子と珈琲、グラバー園の坂の下の店を、凛のおすすめで。",
   "locator": {
-   "en": "",
-   "ja": ""
+   "en": "In Nagasaki, on Kyushu · around the harbour, on hillsides",
+   "ja": "九州の長崎県・長崎港をとりまく坂の町"
   },
   "industries": [
    {
     "key": "castella",
     "en": "Castella & Nanban Confectionery",
     "ja": "長崎カステラ・南蛮菓子",
-    "about": "",
-    "aboutJa": "",
+    "about": "Castella is said to come from the sweets that arrived with the Nanban trade. In Nagasaki small shops still bake it. Iwanaga Baijuken, open since 1830, bakes its castella and then rests it overnight.",
+    "aboutJa": "カステラは、南蛮貿易で伝わった菓子がもとといわれる。長崎では、いまも小さな店が焼き続けている。岩永梅寿軒は1830年の創業で、焼いたカステラを一晩寝かせる。",
     "_src": "Sugar, egg, and flour baking introduced via Portuguese trade evolved in Nagasaki into hand-baked castella and sugar confections still made by small single-shop workshops."
    },
    {
     "key": "nagasaki-glass",
     "en": "Nagasaki Vidro & Glasswork",
     "ja": "長崎びいどろ・ガラス工芸",
-    "about": "",
-    "aboutJa": "",
+    "about": "Records of the Nagasaki magistrate show vidro blowers in the town by 1670, and Nagasaki glass became a local speciality. The line stopped after the war. Today studios such as Rurian blow vidro by hand again.",
+    "aboutJa": "長崎奉行の記録に、1670年にはびいどろ吹きが長崎にいたと残る。長崎ガラスは名産になったが、戦後に一度途絶えた。いまは瑠璃庵のような工房が、びいどろを手で吹いている。",
     "_src": "Blown glass (vidro) and church stained-glass techniques entered Japan through Nagasaki's port and continue in local glassblowing and stained-glass studios."
    }
   ]
  },
  "places": {
   "岩永梅寿軒": {
-   "nameEn": "",
+   "nameEn": "Iwanaga Baijuken",
    "area": "眼鏡橋・中島川",
    "areaEn": "Meganebashi",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "castella",
+    "wagashi"
+   ],
+   "what": "天保元年（1830年）創業の和菓子店で、「寒菊」「もしほ草」の本家。カステラは焼いたあと一晩寝かせる。営業は月・水・金・土曜の10時から16時で、時期により変わる。",
+   "whatEn": "A wagashi shop open since 1830, home of the sweets Kankiku and Moshiogusa. Its castella is baked and then rested overnight. Open Monday, Wednesday, Friday and Saturday, 10 am to 4 pm, with changes by season.",
+   "note": "カステラは、店先に出ない日もある。行く前に営業の案内を見る。",
+   "noteEn": "Some days there is no castella at the counter. Check the opening notice before you go.",
    "_src": {
     "category": "local",
     "industry": "castella",
@@ -63,17 +66,21 @@
      32.74667,
      129.88095
     ]
-   }
+   },
+   "address": "長崎市諏訪町7-1"
   },
   "瑠璃庵": {
-   "nameEn": "",
+   "nameEn": "Rurian Glass Studios",
    "area": "大浦・南山手",
    "areaEn": "Oura",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "glass",
+    "stained-glass"
+   ],
+   "what": "大浦天主堂の近くにある、長崎びいどろの工房。原料の調合から吹きガラスまでを自分たちで行い、ステンドグラスも作る。9時半から17時で、火曜は休み。",
+   "whatEn": "A studio for Nagasaki vidro near Oura Cathedral. They mix the glass, design and blow it themselves, and also make stained glass. Open 9:30 am to 5 pm, closed on Tuesdays.",
+   "note": "大浦天主堂電停から歩いて3分。火曜は休み。",
+   "noteEn": "Three minutes on foot from Oura Cathedral tram stop. Closed on Tuesdays.",
    "_src": {
     "category": "local",
     "industry": "nagasaki-glass",
@@ -91,17 +98,21 @@
      32.73591,
      129.86882
     ]
-   }
+   },
+   "address": "長崎市松が枝町5-11"
   },
   "長崎雑貨 たてまつる": {
-   "nameEn": "",
+   "nameEn": "Nagasaki Zakka Tatematsuru",
    "area": "出島・大波止",
    "areaEn": "Dejima",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "tenugui",
+    "textile"
+   ],
+   "what": "長崎奉行所の西役所があった江戸町の店。長崎の四季や風景、歴史を描いた手ぬぐい「たてま手ぬ」を作って売る。10時から18時半で、火曜は休み。",
+   "whatEn": "A shop on Edo-machi, where the Nagasaki magistrate’s western office once stood. It makes and sells tenugui hand towels printed with the seasons, views and history of Nagasaki. Open 10 am to 6:30 pm, closed on Tuesdays.",
+   "note": "手ぬぐいは、絵に込めた話を読んでから選ぶ。",
+   "noteEn": "Read the story behind a tenugui design before you choose.",
    "_src": {
     "category": "craft",
     "industry": "",
@@ -119,19 +130,20 @@
      32.74471,
      129.87453
     ]
-   }
+   },
+   "address": "長崎市江戸町2-19"
   },
   "珈琲人町": {
-   "nameEn": "",
+   "nameEn": "Coffee Hitomachi",
    "area": "眼鏡橋・中島川",
    "areaEn": "Meganebashi",
    "tags": [
     "coffee"
    ],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "what": "東古川町のししとき川通りにある珈琲店。朝の珈琲教室も開く。11時から18時で、月曜は休み。",
+   "whatEn": "A coffee shop on Shishitoki River street in Higashifurukawa-machi. It also holds morning coffee classes. Open 11 am to 6 pm, closed on Mondays.",
+   "note": "朝の珈琲教室の日程は、お知らせに出る。月曜は休み。",
+   "noteEn": "The dates of the morning coffee classes are in the news. Closed on Mondays.",
    "_src": {
     "category": "coffee",
     "industry": "",
@@ -149,19 +161,21 @@
      32.74502,
      129.88098
     ]
-   }
+   },
+   "address": "長崎市東古川町4-25"
   },
   "Museum Cafe 南山手八番館": {
-   "nameEn": "",
+   "nameEn": "Museum Cafe Minamiyamate Hachibankan",
    "area": "大浦・南山手",
    "areaEn": "Oura",
    "tags": [
-    "coffee"
+    "coffee",
+    "castella ice cream"
    ],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "what": "グラバー園の入口前にあるレンガ造りの建物の喫茶。長崎南山手美術館に併設され、自家焙煎の珈琲やカステラアイスを出す。10時から16時で、木曜と毎月1日・16日は休み。",
+   "whatEn": "A cafe in the brick building in front of the Glover Garden entrance, attached to the Nagasaki Minamiyamate Museum. House-roasted coffee and castella ice cream. Open 10 am to 4 pm, closed on Thursdays and on the 1st and 16th of each month.",
+   "note": "「幕末コーヒー」という一杯がある。まず、それを。",
+   "noteEn": "There is a cup called Bakumatsu Coffee. Start with that.",
    "_src": {
     "category": "coffee",
     "industry": "",
@@ -179,17 +193,21 @@
      32.73467,
      129.86972
     ]
-   }
+   },
+   "address": "長崎市南山手町4-3"
   },
   "ニューヨーク堂": {
-   "nameEn": "",
+   "nameEn": "New York-do",
    "area": "眼鏡橋・中島川",
    "areaEn": "Meganebashi",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "castella",
+    "ice cream"
+   ],
+   "what": "昭和12年（1937年）開業の洋菓子店で、店はここ1軒だけ。カステラでアイスをはさんだ「長崎カステラアイス」が名物。11時から16時で、休みは月ごとに公式サイトに出る。",
+   "whatEn": "A confectioner open since 1937, with this one shop only. Its speciality is Nagasaki castella ice cream, ice cream between slices of castella. Open 11 am to 4 pm, with the closing days posted monthly on the official site.",
+   "note": "休みは月ごとに変わる。行く日を、公式サイトで確かめる。",
+   "noteEn": "The closing days change every month. Check the official site for your day.",
    "_src": {
     "category": "sweets",
     "industry": "",
@@ -207,17 +225,20 @@
      32.74646,
      129.88062
     ]
-   }
+   },
+   "address": "長崎市古川町3-17"
   },
   "吉宗": {
-   "nameEn": "",
+   "nameEn": "Yossou",
    "area": "思案橋・浜町",
    "areaEn": "Shianbashi",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "chawanmushi"
+   ],
+   "what": "慶応2年（1866年）創業の、茶碗むしと蒸寿しの店。丼の大きさの茶碗むしに蒸寿しを添えた「夫婦蒸し」が名物。本店は昭和2年に建った建物で、火曜は休み。",
+   "whatEn": "A restaurant open since 1866, known for chawanmushi and steamed sushi. Its speciality, Meoto-mushi, is a bowl-sized chawanmushi served with steamed sushi. The main shop is in a building put up in 1927. Closed on Tuesdays.",
+   "note": "茶碗むしは丼の大きさ。ほかの料理は控えめに。",
+   "noteEn": "The chawanmushi comes in a bowl. Order lightly for the rest.",
    "_src": {
     "category": "food",
     "industry": "",
@@ -235,17 +256,20 @@
      32.74452,
      129.87875
     ]
-   }
+   },
+   "address": "長崎市浜町8-9"
   },
   "bistro ボルドー": {
-   "nameEn": "",
+   "nameEn": "Bistro Bordeaux",
    "area": "思案橋・浜町",
    "areaEn": "Shianbashi",
-   "tags": [],
-   "what": "",
-   "whatEn": "",
-   "note": "",
-   "noteEn": "",
+   "tags": [
+    "toruko rice"
+   ],
+   "what": "浜町のビストロ。トルコライスの原型を考えたというシェフの父の味を受け継ぎ、トルコライスを看板に、フレンチや創作料理も出す。11時から23時。",
+   "whatEn": "A bistro in Hamamachi. The chef carries on the Toruko rice of his father, who devised its original form, and serves it alongside French and creative dishes. Open 11 am to 11 pm.",
+   "note": "トルコライスは、昼にも夜にもある。ランチは17時まで。",
+   "noteEn": "Toruko rice is on at lunch and at dinner. Lunch runs until 5 pm.",
    "_src": {
     "category": "food",
     "industry": "",
@@ -263,10 +287,82 @@
      32.74361,
      129.87955
     ]
-   }
+   },
+   "address": "長崎市浜町8-28"
   }
  },
- "sights": [],
+ "sights": [
+  {
+   "name": "出島",
+   "nameEn": "Dejima",
+   "kind": "sight",
+   "area": "出島・大波止",
+   "areaEn": "Dejima",
+   "address": "長崎市出島町6-1",
+   "url": "https://nagasakidejima.jp/",
+   "what": "南蛮貿易の時代の1636年に完成し、のちにオランダ商館が置かれた島。19世紀初頭の姿を目指す復元整備で、カピタン部屋など16棟が復元されている。",
+   "whatEn": "The island completed in 1636, in the time of the Nanban trade, and later the site of the Dutch trading post. A restoration aimed at the early nineteenth century has rebuilt 16 buildings, including the Capitan’s room.",
+   "coords": [
+    32.74366,
+    129.87255
+   ],
+   "notice": "旧出島神学校は、安全のため入室できない。観覧は8時から21時（最終入場20時40分）で、年中無休。",
+   "noticeEn": "The old Dejima seminary is closed to entry for safety reasons. Open 8 am to 9 pm (last entry 8:40 pm), every day of the year.",
+   "verifiedAt": "2026-11-11"
+  },
+  {
+   "name": "グラバー園",
+   "nameEn": "Glover Garden",
+   "kind": "sight",
+   "area": "大浦・南山手",
+   "areaEn": "Oura",
+   "address": "長崎市南山手町8-1",
+   "url": "https://glover-garden.jp/",
+   "what": "旧グラバー住宅を中心に、長崎市内の古い洋風建築を移築復元した庭園。旧グラバー住宅は世界遺産の構成資産で、3棟が国の重要文化財。",
+   "whatEn": "A garden of Meiji-era Western-style buildings moved and rebuilt around the former Glover House, a World Heritage component. Three of the buildings are national Important Cultural Properties.",
+   "coords": [
+    32.73337,
+    129.86906
+   ],
+   "notice": "旧オルト住宅は保存修理工事のため観覧できない（再開は2027年3月の予定）。11月と12月は20時まで開園。",
+   "noticeEn": "The former Alt House is closed for repair works (reopening planned for March 2027). Open until 8 pm in November and December.",
+   "verifiedAt": "2026-11-11"
+  },
+  {
+   "name": "眼鏡橋",
+   "nameEn": "Meganebashi Bridge",
+   "kind": "sight",
+   "area": "眼鏡橋・中島川",
+   "areaEn": "Meganebashi",
+   "address": "長崎市魚の町（中島川）",
+   "url": "https://www.city.nagasaki.lg.jp/nagazine/hakken0206/ishibashigun/index.html",
+   "what": "1634年に興福寺の唐僧・黙子如定が架けた、日本で最初のアーチ型の石橋。国の重要文化財で、中島川の石橋群の一つ。1982年の大水害で半壊し、1983年に復元された。",
+   "whatEn": "The first arched stone bridge in Japan, built in 1634 by Mokushi Nyojo, a Chinese monk of Kofukuji temple. A national Important Cultural Property over the Nakashima River. It was half destroyed in the 1982 flood and rebuilt in 1983.",
+   "coords": [
+    32.74729,
+    129.87999
+   ],
+   "verifiedAt": "2026-11-11"
+  },
+  {
+   "name": "長崎歴史文化博物館",
+   "nameEn": "Nagasaki Museum of History and Culture",
+   "kind": "art",
+   "area": "立山",
+   "areaEn": "Tateyama",
+   "address": "長崎市立山1-1-1",
+   "url": "https://www.nmhc.jp/",
+   "what": "長崎の歴史と文化を伝える博物館。常設展に、歴史文化展示ゾーンと、町屋、長崎奉行所ゾーンがある。",
+   "whatEn": "A museum of the history and culture of Nagasaki. Its permanent exhibition has a history and culture zone, a machiya townhouse and a zone on the Nagasaki magistrate’s office.",
+   "coords": [
+    32.75299,
+    129.87945
+   ],
+   "notice": "休館日は毎月第1・第3月曜（祝日の場合は翌平日）。11月は16日が休館で、19時まで開館（最終入館18時30分）。",
+   "noticeEn": "Closed on the first and third Mondays of each month (the next weekday if a holiday). In November it is closed on the 16th, and open until 7 pm (last entry 6:30 pm).",
+   "verifiedAt": "2026-11-11"
+  }
+ ],
  "_dropped": [
   {
    "name": "長崎菓寮 匠寛堂",
