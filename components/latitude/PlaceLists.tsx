@@ -23,7 +23,7 @@ export function CountryCityList({ countries, locale, linkCountry = true }: { cou
                   </Link>
                   <span className="text-[10px] uppercase tracking-[0.3em] tabular-nums" style={{ color: MUTE }}>{q.latitude}</span>
                 </span>
-                <span className="flex gap-x-5 text-[10px] uppercase tracking-[0.3em]">
+                <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[10px] uppercase tracking-[0.3em]">
                   <Link href={`/${locale}/latitude/places/${q.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
                     {ja ? '街の案内' : 'City guide'}
                   </Link>
