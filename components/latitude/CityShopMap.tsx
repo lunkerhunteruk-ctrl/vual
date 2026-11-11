@@ -66,6 +66,7 @@ const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const WIDE = 768; // これより広い画面では、カードを地図の右に重ねる。狭い画面では下からせり上がる
 const CARD_W = 360;
+const TOP_GAP = 8; // 狭い画面で店を選んだ時、地図の上の端を置く画面の上からの位置（px）
 
 function viewAt(a: Anim, now: number, r: number): View {
   const t = a.dur > 0 ? clamp((now - a.t0) / a.dur) : 1;
@@ -105,6 +106,9 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   const [shown, setShown] = useState<string | null>(null); // カードに出している店（閉じる動きの間も中身を残す）
   const [hover, setHover] = useState<string | null>(null);
   const box = useRef<HTMLDivElement>(null);
+  const sheet = useRef<HTMLElement>(null);
+  // 下から出たカードの高さ（px）。狭い画面では、選んだ丸をカードの上に見えている地図のまん中へ寄せるのに使う
+  const [sheetH, setSheetH] = useState(0);
 
   useEffect(() => {
     let live = true;
@@ -143,12 +147,16 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
     const p = pins.find((q) => q.id === id);
     if (!p || !size.w) return homeView();
     const { x, y } = pos(p);
-    const mpp = wide ? 0.8 : 1.0; // 1px あたりのメートル
+    // 2026-11-11 ユーザー：寄りすぎで街の様子が分からない → 寄る強さを半分に（周りの通り数本と、近くの店の丸がいくつか見える程度）
+    const mpp = wide ? 1.6 : 2.0; // 1px あたりのメートル
     const w = size.w * mpp;
     const sx = wide ? (size.w - CARD_W - 32) / 2 : size.w / 2;
-    const sy = wide ? size.h / 2 : size.h * 0.4;
+    // 狭い画面：地図の上の端を画面の上（TOP_GAP）へ流してから、カードの上に見えている地図のまん中へ置く
+    const sheetPx = sheetH > 100 ? sheetH : window.innerHeight * 0.5; // まだ測れていない時（最初に開く時）は画面の半分と見こむ
+    const visible = Math.max(80, Math.min(size.h, window.innerHeight - sheetPx - TOP_GAP));
+    const sy = wide ? size.h / 2 : visible / 2;
     return { x: x - sx * mpp, y: y - sy * mpp, w };
-  }, [pins, size.w, size.h, wide, pos, homeView]);
+  }, [pins, size.w, size.h, wide, pos, homeView, sheetH]);
 
   const target = useCallback((id: string | null) => (id ? shopView(id) : homeView()), [shopView, homeView]);
   const animating = !!anim && now < anim.t0 + anim.dur;
@@ -173,6 +181,11 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
     setSel(id);
     if (id) setShown(id);
     setNow(t);
+    // 狭い画面：下から出るカードに隠れないよう、地図の上の端を画面の上へ流す
+    if (id && !wide && box.current) {
+      const top = box.current.getBoundingClientRect().top - TOP_GAP;
+      if (Math.abs(top) > 2) window.scrollBy({ top, behavior: still ? 'auto' : 'smooth' });
+    }
   };
   const goRef = useRef(goTo);
   useEffect(() => { goRef.current = goTo; });
@@ -184,6 +197,28 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [animating, anim]);
+
+  // カードの高さを測る。選んでいる間に高さが変わったら（中身の長さは店ごとに違う）、狙いを合わせ直す
+  useLayoutEffect(() => {
+    const el = sheet.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setSheetH((v) => (Math.abs(v - el.offsetHeight) < 1 ? v : el.offsetHeight)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!sel || wide || sheetH <= 100) return;
+    const t = performance.now();
+    setAnim((a) => {
+      if (!a) return a;
+      const from = viewAt(a, t, r);
+      const to = shopView(sel);
+      const left = Math.max(0, a.t0 + a.dur - t);
+      return { from, to, t0: t, dur: Math.max(left, 250) };
+    });
+    setNow(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sheetH]);
 
   // Esc で全体へ。狭い画面で地図が見えなくなったら、カードを閉じる（下から出たカードが、ほかの所の上に残らないように）
   useEffect(() => {
@@ -205,7 +240,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
 
   // 丸の大きさ：写真のある店は、寄った時だけ写真の丸になる
   const big = (p: ShopPin) => !!p.photo && mpp < 1.6;
-  const dia = (p: ShopPin) => (big(p) ? 32 : p.id === sel ? 16 : 12);
+  const dia = (p: ShopPin) => (big(p) ? 32 : p.id === sel ? 22 : 12);
 
   // 画面の上で丸が重ならないように、少しずつ押し合わせる（位置は数メートルしか違わない店があるため）
   const placed = pins.map((p) => {
@@ -301,7 +336,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
               style={{ left: x, top: y, zIndex: active ? 3 : hover === p.id ? 2 : 1 }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
               <span className="block overflow-hidden rounded-full transition-[width,height] duration-300"
-                style={{ width: d, height: d, background: color, boxShadow: active ? `0 0 0 2px ${PAPER}, 0 0 0 3.5px ${color}` : `0 0 0 2px ${PAPER}` }}>
+                style={{ width: d, height: d, background: color, boxShadow: active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}` }}>
                 {big(p) && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={p.photo} alt="" loading="lazy" className="block h-full w-full object-cover" />
@@ -331,6 +366,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
 
         {/* 店のカード。広い画面は地図の右に重ね、狭い画面は下からせり上がる */}
         <aside
+          ref={sheet}
           aria-hidden={!open}
           className={`overflow-y-auto transition-[transform,opacity] duration-300 ${wide ? 'absolute right-4 top-4 z-[5]' : 'fixed inset-x-0 bottom-0 z-[45]'}`}
           style={{
