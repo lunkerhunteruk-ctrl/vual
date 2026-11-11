@@ -1,0 +1,92 @@
+[
+ {
+  "name": "仙巌園（磯庭園）",
+  "nameEn": "Sengan-en Garden",
+  "kind": "sight",
+  "area": "磯",
+  "areaEn": "Iso",
+  "address": "鹿児島市吉野町9700-1",
+  "url": "https://www.senganen.jp/",
+  "what": "1658年に島津光久が築いた、島津家の別邸の庭。桜島と錦江湾を庭の景色に取り入れた借景庭園で、国の名勝。",
+  "whatEn": "The garden of a Shimadzu villa built by Shimadzu Mitsuhisa in 1658. It borrows Sakurajima and Kinko Bay as its scenery, and is a nationally designated place of scenic beauty.",
+  "coords": [
+   31.61866,
+   130.58055
+  ],
+  "notice": "9時から17時、年中無休。11月は菊まつり（30日まで）。土日・祝日は駐車場が満車になることがあり、公式は公共交通機関を勧めている。",
+  "noticeEn": "Open nine to five, every day. The chrysanthemum festival runs through 30 November. Car parks can fill on weekends and holidays, and the garden asks visitors to use public transport.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "尚古集成館",
+  "nameEn": "Shoko Shuseikan Museum",
+  "kind": "art",
+  "area": "磯",
+  "areaEn": "Iso",
+  "address": "鹿児島市吉野町9698-1",
+  "url": "https://www.shuseikan.jp/",
+  "what": "島津家の歴史と南九州の文化を見せる博物館。建物は、日本最古の石造の洋式機械工場だった旧集成館機械工場で、世界文化遺産「明治日本の産業革命遺産」の構成資産。",
+  "whatEn": "A museum of the Shimadzu family's history and the culture of southern Kyushu. The building is the former Shuseikan machine factory, Japan's oldest Western-style stone factory, a component of the World Heritage Meiji Industrial Revolution sites.",
+  "coords": [
+   31.61732,
+   130.5763
+  ],
+  "notice": "9時から17時。休館日は3月の第1日曜。仙巌園との共通入場券がある。",
+  "noticeEn": "Open 9:00 to 17:00. Closed on the first Sunday of March. A joint ticket with Sengan-en is sold.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "鹿児島県歴史・美術センター黎明館",
+  "nameEn": "Reimeikan, Kagoshima Prefectural Center for Historical Material",
+  "kind": "art",
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市城山町7-2",
+  "url": "https://www.pref.kagoshima.jp/reimeikan/index.html",
+  "what": "鹿児島（鶴丸）城跡に建つ、県の歴史と美術の博物館。常設展示と企画展がある。1階に喫茶の鶴丸喫茶室がある。",
+  "whatEn": "The prefecture's museum of history and art, on the site of Kagoshima (Tsurumaru) Castle. It has permanent displays and special exhibitions, and the tea room Tsurumaru Kissashitsu on the ground floor.",
+  "coords": [
+   31.59863,
+   130.55452
+  ],
+  "notice": "9時から18時（入館は17時30分まで）。休館は毎週月曜（11月23日は開館）と、11月24日・25日。企画展「没後120年十二代沈壽官と苗代川」は11月29日まで。12月1日から2027年4月26日までは、常設展示室の2階が使えない。",
+  "noticeEn": "Open 9:00 to 18:00 (last entry 17:30). Closed every Monday except 23 November, and on 24 and 25 November. The exhibition on the twelfth Chin Jukan and Naeshirogawa runs until 29 November. From 1 December to 26 April 2027 the second floor of the permanent exhibition is closed.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "鹿児島市立美術館",
+  "nameEn": "Kagoshima City Museum of Art",
+  "kind": "art",
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市城山町4-36",
+  "url": "https://www.city.kagoshima.lg.jp/artmuseum/",
+  "what": "鹿児島市の美術館。黒田清輝、東郷青児、海老原喜之助ら、鹿児島ゆかりの作家の作品を所蔵し、特別企画展も開く。",
+  "whatEn": "The city art museum. Its collection includes works by Kagoshima-linked artists such as Kuroda Seiki, Togo Seiji and Ebihara Kinosuke, and it holds special exhibitions.",
+  "coords": [
+   31.59584,
+   130.5534
+  ],
+  "notice": "9時30分から18時（入館は17時30分まで）。休館は月曜（祝日の場合は翌平日）と12月29日〜1月1日。特別企画展「ソール・ライターの原点」は11月15日まで。",
+  "noticeEn": "Open 9:30 to 18:00 (last entry 17:30). Closed on Mondays (the next weekday if a holiday) and from 29 December to 1 January. The Saul Leiter special exhibition runs until 15 November.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "照國神社",
+  "nameEn": "Terukuni Shrine",
+  "kind": "sight",
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市照国町19-35",
+  "url": "https://terukunijinja.jp/",
+  "what": "集成館事業を進めた薩摩藩主・島津斉彬を祀る神社。1864年に社殿ができた。境内の照國文庫資料館では、島津家の歴史を映像と展示で紹介する。",
+  "whatEn": "A shrine to Shimadzu Nariakira, the lord of Satsuma who pushed the Shuseikan industrial projects. The buildings date from 1864. The Terukuni Bunko museum in the precinct presents the Shimadzu family's history in film and displays.",
+  "coords": [
+   31.59448,
+   130.55059
+  ],
+  "notice": "受付は9時から16時30分、年中無休。境内の照國文庫資料館（入館無料）は、改修を終えて11月1日に開館した。",
+  "noticeEn": "The office is open 9:00 to 16:30, every day. The museum in the precinct (free) reopened on 1 November after renovation.",
+  "verifiedAt": "2026-11-11"
+ }
+]

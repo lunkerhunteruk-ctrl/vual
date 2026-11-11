@@ -1,0 +1,205 @@
+[
+ {
+  "name": "島津薩摩切子ギャラリーショップ 磯工芸館",
+  "nameEn": "Shimadzu Satsuma Kiriko Gallery Shop, Iso Kogeikan",
+  "category": "local",
+  "industry": "satsuma-kiriko",
+  "tags": [
+   "glass",
+   "kiriko"
+  ],
+  "area": "磯",
+  "areaEn": "Iso",
+  "address": "鹿児島市吉野町9688-24",
+  "url": "https://satsumakiriko.co.jp/",
+  "what": "仙巌園のとなりにある、島津薩摩切子の直営ギャラリーショップ。国の登録有形文化財の洋館で、切子を見て買える。9時から17時、年中無休。",
+  "whatEn": "The gallery shop of Shimadzu Satsuma Kiriko, next to Sengan-en, in a Western-style building registered as a national tangible cultural property. Open nine to five, every day of the year.",
+  "note": "となりの工場は月曜と第3日曜が休み。見るなら、その日を避ける。",
+  "noteEn": "The workshop next door is closed on Mondays and the third Sunday. Avoid those days to see it.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.61694,
+   130.57569
+  ]
+ },
+ {
+  "name": "ぢゃんぼ餅 平田屋",
+  "nameEn": "Jyanbo Mochi Hirataya",
+  "category": "sweets",
+  "tags": [
+   "mochi",
+   "wagashi"
+  ],
+  "area": "磯",
+  "areaEn": "Iso",
+  "address": "鹿児島市吉野町9673",
+  "url": "https://jyanbomochi.com/",
+  "what": "磯の、桜島と錦江湾が見える場所にある、両棒餅（ぢゃんぼ餅）の店。9時半から17時、木曜は休み。座敷とテーブルで、最大100席。",
+  "whatEn": "A shop for jyanbo mochi, grilled rice cakes on two skewers, on the Iso coast with a view of Sakurajima and Kinko Bay. Open 9:30 to 17:00, closed on Thursdays. Seats up to 100, on tatami and at tables.",
+  "note": "餅がなくなり次第、終わる。午前のうちに行く。",
+  "noteEn": "It closes when the mochi runs out. Go in the morning.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.61279,
+   130.575
+  ]
+ },
+ {
+  "name": "FUKU+RE",
+  "nameEn": "FUKU+RE",
+  "category": "sweets",
+  "tags": [
+   "sweets",
+   "takeout"
+  ],
+  "area": "名山町",
+  "areaEn": "Meizan",
+  "address": "鹿児島市名山町2-1 レトロフトチトセビル1F",
+  "url": "https://www.fukure.com/",
+  "what": "名山町のビルの1階にある、持ち帰り専門の菓子店。鹿児島の郷土菓子「ふくれ菓子」を、蒸して作る。11時から17時、日・月・火は休み。支払いはキャッシュレスのみ。",
+  "whatEn": "A takeaway-only sweets shop on the ground floor of a building in Meizan-cho. It makes fukure-gashi, the steamed cake of Kagoshima. Open 11:00 to 17:00, closed Sunday to Tuesday. Cashless payment only.",
+  "note": "現金は使えない。座って食べるなら、となりの喫茶店で一杯頼む。",
+  "noteEn": "No cash. To sit down, order a drink at the café next door.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.59511,
+   130.55769
+  ]
+ },
+ {
+  "name": "AKAYA COFFEE",
+  "nameEn": "Akaya Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "beans"
+  ],
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市金生町7-13",
+  "url": "http://akayacoffee.com/",
+  "what": "山形屋の前にある、2005年開業のコーヒー店。2014年から自家焙煎で、ストレートはすべてシングルオリジン。中庭と、2階のロフト席がある。平日は9時、土日祝は10時から。不定休。",
+  "whatEn": "A coffee shop in front of the Yamakataya department store, open since 2005. It has roasted its own beans since 2014, and every straight coffee is single origin. There is a courtyard and a loft seating area upstairs. Opens at nine on weekdays and ten on weekends and holidays. Days off vary.",
+  "note": "モーニングは11時まで。ストレートは、全部シングルオリジン。",
+  "noteEn": "Morning set until eleven. Every straight coffee is single origin.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.59275,
+   130.55789
+  ]
+ },
+ {
+  "name": "熊襲亭",
+  "nameEn": "Kumasotei",
+  "category": "food",
+  "tags": [
+   "local dish",
+   "satsuma-age"
+  ],
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市東千石町6-10",
+  "url": "https://www.kumasotei.com/",
+  "what": "天文館の、さつま料理の店。とんこつ、さつま揚げ、きびなごの刺身、酒ずしなど。昼と夜の2部で、休みは年末年始だけ。1階にカウンターがある。",
+  "whatEn": "A restaurant of Satsuma cooking in Tenmonkan: tonkotsu stewed pork ribs, satsuma-age, kibinago sashimi and sake-sushi. Open for lunch and dinner, closed only over the new year. There is a counter on the ground floor.",
+  "note": "さつま揚げは、揚げたてをそのまま。次に、わさび醤油。",
+  "noteEn": "Satsuma-age first as it comes, hot. Then with wasabi soy sauce.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.59209,
+   130.55331
+  ]
+ },
+ {
+  "name": "鶴丸喫茶室",
+  "nameEn": "Tsurumaru Kissashitsu",
+  "category": "local",
+  "industry": "satsuma-ware",
+  "tags": [
+   "ceramics",
+   "satsuma ware",
+   "coffee"
+  ],
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市城山町7-2 黎明館1F",
+  "url": "https://www.instagram.com/chinjukanpotterycafe/",
+  "what": "鶴丸城跡の黎明館の1階にある喫茶。沈壽官窯の白薩摩・黒薩摩の器で、お茶やコーヒーを出し、器も買える。月曜と25日は休み。2026年9月に、CHIN JUKAN POTTERY 喫茶室から名前が変わった。",
+  "whatEn": "A tea room on the ground floor of Reimeikan, on the Tsurumaru Castle grounds. Tea and coffee come in white and black Satsuma ware from the Chin Jukan kiln, and the cups are on sale. Closed on Mondays and the 25th. It was renamed in September 2026, from CHIN JUKAN POTTERY Kissashitsu.",
+  "note": "器は、使ってから買える。まず一杯。",
+  "noteEn": "You can buy a cup after using one. Start with a drink.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.59861,
+   130.55457
+  ]
+ },
+ {
+  "name": "器楽",
+  "nameEn": "Kiraku",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "lacquer",
+   "tableware"
+  ],
+  "area": "天文館・城山",
+  "areaEn": "Tenmonkan & Shiroyama",
+  "address": "鹿児島市中町7-17",
+  "url": "https://kiraku-utsuwa.com/",
+  "what": "天文館にある、器と台所用品の店。波佐見焼などの陶磁器、ガラス、漆器、箸置きなど。アウトレットや訳あり品もある。10時半から18時、元日だけ休み。",
+  "whatEn": "A shop for tableware and kitchen goods in Tenmonkan: Hasami-yaki and other ceramics, glass, lacquerware, chopstick rests. Outlet and imperfect pieces too. Open 10:30 to 18:00, closed only on New Year's Day.",
+  "note": "買った器は、預かってもらえる。先に買って、街を歩く。",
+  "noteEn": "They keep what you buy for the day. Buy first, then walk the town.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.59257,
+   130.55643
+  ]
+ },
+ {
+  "name": "tsutsumu",
+  "nameEn": "tsutsumu",
+  "category": "sweets",
+  "tags": [
+   "chocolate",
+   "sweets"
+  ],
+  "area": "荒田",
+  "areaEn": "Arata",
+  "address": "鹿児島市荒田2-37-7 102",
+  "url": "https://tsutsumu-c.com/",
+  "what": "荒田のショコラ菓子の店。ケーキの「ショコラソワ」と、サブレ「サブレプリュム」。2023年の開店。通信販売があり、店舗受取りも選べる。",
+  "whatEn": "A chocolate confectioner in Arata, opened in 2023. Its cake is Chocolat Soie and its sablé is Sablé Plume. Orders can be shipped, or picked up at the shop.",
+  "note": "店頭の営業日は、公式に載っていない。行く前に、電話かLINEで聞く。",
+  "noteEn": "The site does not list shop opening days. Ask by phone or LINE before you go.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.57138,
+   130.55115
+  ]
+ },
+ {
+  "name": "珈琲豆専門店 mikoya134",
+  "nameEn": "Mikoya134",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "beans"
+  ],
+  "area": "荒田",
+  "areaEn": "Arata",
+  "address": "鹿児島市下荒田3-37-1",
+  "url": "https://mikoya134.com/",
+  "what": "下荒田の、コーヒー豆の店。熟成させた豆を、自家焙煎で売る。テイクアウトに、ハンドドリップ、ラテ、アフォガートがある。水〜土は10時から、日・祝は12時から18時まで。月・火は休み。",
+  "whatEn": "A coffee bean shop in Shimo-Arata that roasts aged beans. Takeaway has hand-drip coffee, lattes and affogato. Open 10:00 to 18:00 Wednesday to Saturday and 12:00 to 18:00 on Sundays and holidays. Closed on Mondays and Tuesdays.",
+  "note": "月曜と火曜は休み。迷ったら、ハンドドリップの旬こーひー。",
+  "noteEn": "Closed Monday and Tuesday. If unsure, take the seasonal hand-drip coffee.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   31.56964,
+   130.5529
+  ]
+ }
+]

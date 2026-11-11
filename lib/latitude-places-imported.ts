@@ -3,12 +3,16 @@
 import type { CityPlace, CitySight, LatitudeCity } from './latitude-places';
 import aizuwakamatsuPlaces from './latitude-places/aizuwakamatsu.json';
 import aizuwakamatsuSights from './latitude-sights/aizuwakamatsu.json';
+import beppuPlaces from './latitude-places/beppu.json';
+import beppuSights from './latitude-sights/beppu.json';
 import hagiPlaces from './latitude-places/hagi.json';
 import hagiSights from './latitude-sights/hagi.json';
 import hakodatePlaces from './latitude-places/hakodate.json';
 import hakodateSights from './latitude-sights/hakodate.json';
 import izumoPlaces from './latitude-places/izumo.json';
 import izumoSights from './latitude-sights/izumo.json';
+import kagoshimaPlaces from './latitude-places/kagoshima.json';
+import kagoshimaSights from './latitude-sights/kagoshima.json';
 import kakunodatePlaces from './latitude-places/kakunodate.json';
 import kakunodateSights from './latitude-sights/kakunodate.json';
 import kurashikiPlaces from './latitude-places/kurashiki.json';
@@ -42,6 +46,29 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: aizuwakamatsuPlaces as CityPlace[],
     sights: aizuwakamatsuSights as CitySight[],
+  },
+  {
+    slug: "beppu",
+    name: "Beppu",
+    nameJa: "別府",
+    latitude: "33.3° N",
+    country: "Oita, Japan",
+    countryJa: "大分県",
+    person: "rin",
+    coords: [33.2795, 131.5003],
+    intro: "A hot-spring town on Beppu Bay. In Kannawa and Myoban steam comes up out of the ground, and there are a kitchen that steams food in it and huts where yunohana bath salt is made. Bamboo craft, wagashi, and the restaurant that calls itself the home of toriten — Rin’s picks.",
+    introJa: "別府湾に面した温泉の町。鉄輪や明礬では地面から湯けむりが上がり、その蒸気で食材を蒸す工房や、湯の花を作る小屋がある。竹細工と和菓子、とり天の元祖の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Oita, on Kyushu · facing Beppu Bay", "ja": "九州の大分県・別府湾に面した温泉地"},
+    industries: [
+      {"key": "beppu-takezaiku", "en": "Beppu Bamboo Craft", "ja": "別府竹細工", "about": "Beppu bamboo craft is the only craft in Oita designated a traditional craft by the Minister of Economy, Trade and Industry. A bamboo mill founded in Beppu in 1908 still makes bamboo goods, and the city’s Traditional Bamboo Crafts Center shows the craft.", "aboutJa": "別府竹細工は、大分県で唯一、経済産業大臣が指定した伝統的工芸品。別府には1908年創業の竹材・竹加工品のメーカーがいまもあり、市の竹細工伝統産業会館でその仕事を見られる。"},
+      {"key": "jigoku-mushi", "en": "Onsen Steam Cooking (Jigoku-mushi)", "ja": "地獄蒸し", "about": "In Kannawa you set the food on a colander, put it in a steam kettle where steam of about 100 degrees rises, and close the lid. That is jigoku-mushi. At Jigokumushi Kobo Kannawa you steam it yourself, and at Mushicharou the course is cooked in hot-spring steam.", "aboutJa": "鉄輪では、食材をざるにのせ、約100度の蒸気が噴き出す釜に入れて、蓋をして蒸す。これが地獄蒸し。地獄蒸し工房鉄輪では自分で蒸せ、蒸士茶楼では温泉の蒸気でコース料理を仕立てる。"},
+      {"key": "yunohana", "en": "Myoban Yunohana Mineral Crystals", "ja": "明礬温泉の湯の花", "about": "Yunohana is a natural bath salt from the Myoban hot spring. Its way of making goes back to the Edo period, and in March 2006 it was designated a national Important Intangible Folk Cultural Property. At Myoban Yunosato you can watch the making in the yunohana huts for free.", "aboutJa": "湯の花は、明礬温泉でとれる天然の入浴剤。作り方は江戸時代から続き、2006年3月に国の重要無形民俗文化財に指定された。みょうばん湯の里では、湯の花小屋での製造を無料で見学できる。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: beppuPlaces as CityPlace[],
+    sights: beppuSights as CitySight[],
   },
   {
     slug: "hagi",
@@ -107,6 +134,28 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: izumoPlaces as CityPlace[],
     sights: izumoSights as CitySight[],
+  },
+  {
+    slug: "kagoshima",
+    name: "Kagoshima",
+    nameJa: "鹿児島",
+    latitude: "31.6° N",
+    country: "Kagoshima, Japan",
+    countryJa: "鹿児島県",
+    person: "rin",
+    coords: [31.5925, 130.5555],
+    intro: "A port town facing the active volcano Sakurajima across Kinko Bay, and the seat of the Shimadzu lords. Satsuma kiriko glass and Satsuma ware, regional cooking and coffee in Tenmonkan, sweets on the Iso coast, and chocolate and coffee beans in Arata, as Rin's picks. In November, Sengan-en holds its chrysanthemum festival.",
+    introJa: "桜島を錦江湾ごしに望む、島津家の城下だった港町。薩摩切子と薩摩焼、天文館の郷土料理と喫茶、磯の餅菓子、荒田のショコラとコーヒー豆を、凛のおすすめで。11月は、仙巌園で菊まつりがある。",
+    images: [],
+    locator: {"en": "In southern Kyushu · a port town on Kinko Bay, facing Sakurajima", "ja": "南九州・錦江湾に面して桜島を望む港町"},
+    industries: [
+      {"key": "satsuma-kiriko", "en": "Satsuma Kiriko Cut Glass", "ja": "薩摩切子", "about": "Satsuma kiriko is cut glass made by the Shimadzu domain at the end of the Edo period; it soon died out and was revived, after more than a hundred years, in the same place beside Sengan-en. The crystal glass is cut by hand, and the cutting gives the colour its soft gradation, called bokashi. At the glassworks next to Sengan-en you can watch the blowing, cutting and polishing for free.", "aboutJa": "薩摩切子は、幕末に薩摩藩が作ったカットガラス。まもなく途絶え、百年あまりのち、仙巌園のとなりの同じ場所で復元された。クリスタルガラスを手で切り、「ぼかし」と呼ぶ色のやわらかな濃淡が出る。仙巌園のとなりの工場では、吹き、カット、磨きを、無料で見学できる。"},
+      {"key": "satsuma-ware", "en": "Satsuma Ware", "ja": "薩摩焼", "about": "Satsuma ware is said to have begun when the lord Shimazu Yoshihiro brought potters back from Korea in the 1590s, and it is a nationally designated traditional craft. White Satsuma, which grew out of the lord's own kilns, has an ivory surface with a fine crackle. Black Satsuma, glossy and plain, was made as everyday ware.", "aboutJa": "薩摩焼は、1590年代に島津義弘が朝鮮から陶工を連れ帰ったのが始まりといわれる、国の伝統的工芸品。藩主の御用窯から発展した白薩摩は、象牙色の肌に細かなひびが入る。黒薩摩は、黒く光る素朴な、暮らしの器として作られた。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kagoshimaPlaces as CityPlace[],
+    sights: kagoshimaSights as CitySight[],
   },
   {
     slug: "kakunodate",

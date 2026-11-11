@@ -1,0 +1,201 @@
+[
+ {
+  "name": "永井製竹株式会社",
+  "nameEn": "Nagai Seichiku",
+  "category": "local",
+  "industry": "beppu-takezaiku",
+  "tags": [
+   "bamboo"
+  ],
+  "area": "北浜・別府駅周辺",
+  "areaEn": "Kitahama & Beppu Station",
+  "address": "3-14 Hikarimachi, Beppu",
+  "url": "https://www.nagaiseichiku.com/",
+  "what": "明治41年（1908年）に別府で創業した、竹材と竹加工品のメーカー。大分の竹を使い、職人が手で作る。問い合わせは平日の9時から17時で、土日と祝日は休み。",
+  "whatEn": "A maker of bamboo material and bamboo goods, founded in Beppu in 1908. Craftsmen make the pieces by hand from Oita bamboo. Enquiries are taken on weekdays from 9 am to 5 pm; closed on weekends and holidays.",
+  "note": "竹のタンブラーは、公式サイトのリンクから買う。",
+  "noteEn": "Buy the bamboo tumbler through the link on the official site.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.2728,
+   131.49816
+  ]
+ },
+ {
+  "name": "地獄蒸し工房 鉄輪",
+  "nameEn": "Jigokumushi Kobo Kannawa",
+  "category": "local",
+  "industry": "jigoku-mushi",
+  "tags": [
+   "steam",
+   "onsen"
+  ],
+  "area": "鉄輪",
+  "areaEn": "Kannawa",
+  "address": "5 Furohon, Beppu",
+  "url": "https://jigokumushi.com/",
+  "what": "鉄輪のいでゆ坂沿いにある地獄蒸しの施設。食材をざるにのせ、約100度の蒸気が噴き出す釜に入れて蓋をするだけで蒸せる。予約は受けず、受付番号札の順。休みは毎月第3水曜（祝日の場合は翌日）。",
+  "whatEn": "A jigoku-mushi kitchen on the Ideyu slope in Kannawa. Put the food on a colander, set it in a kettle where steam of about 100 degrees comes up, and close the lid. No bookings; people are called in the order of their number tickets. Closed on the third Wednesday of each month (the next day if it is a holiday).",
+  "note": "予約はできないので、番号札を取って待つ。",
+  "noteEn": "No bookings. Take a number and wait.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.31546,
+   131.4762
+  ]
+ },
+ {
+  "name": "みょうばん湯の里",
+  "nameEn": "Myoban Yunosato",
+  "category": "local",
+  "industry": "yunohana",
+  "tags": [
+   "yunohana",
+   "onsen"
+  ],
+  "area": "明礬",
+  "areaEn": "Myoban",
+  "address": "6 Myoban, Beppu",
+  "url": "https://yuno-hana.jp/",
+  "what": "明礬温泉にある、「薬用 湯の花」の製造・直売所。製造技術は国の重要無形民俗文化財で、湯の花小屋の見学は無料（9時から17時30分）。露天風呂と売店もある。",
+  "whatEn": "A maker and direct seller of medicinal yunohana in Myoban. The way of making it is a national Important Intangible Folk Cultural Property, and the yunohana huts can be seen for free (9:00 to 17:30). There are also an open-air bath and a shop.",
+  "note": "湯の花は、作っている小屋を見てから買う。",
+  "noteEn": "See the huts where yunohana is made, then buy it.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.31775,
+   131.45547
+  ]
+ },
+ {
+  "name": "和菓子処 茶郎本舗",
+  "nameEn": "Charou Honpo",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "石垣・上人",
+  "areaEn": "Ishigaki & Shonin",
+  "address": "10-6-5 Ishigakinishi, Beppu",
+  "url": "https://charou-honpo.com/",
+  "what": "石垣にある和菓子店。毎朝手作りの朝生菓子と、季節の上生菓子、赤飯やお餅を店頭で売る。9時から18時で、水曜は休み（月に不定期で火曜も）。",
+  "whatEn": "A wagashi shop in Ishigaki. At the counter it sells fresh sweets made by hand every morning, seasonal jo-namagashi, red-bean rice and mochi. Open 9:00 to 18:00; closed on Wednesdays, and on some Tuesdays in the month.",
+  "note": "朝生菓子は毎朝の手作り。午前のうちに行く。",
+  "noteEn": "The fresh sweets are made each morning. Go in the morning.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.30623,
+   131.49048
+  ]
+ },
+ {
+  "name": "御菓子司 紅屋",
+  "nameEn": "Okashitsukasa Beniya",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "石垣・上人",
+  "areaEn": "Ishigaki & Shonin",
+  "address": "2-12-3 Higashisoen, Beppu",
+  "url": "https://beniya-wagashi.com/",
+  "what": "1909年に初代が上海で開いた店に始まる和菓子店。三代目が東荘園に移り、もなか「鶴見の嶺」が評判になった。9時から17時で、月曜は休み。",
+  "whatEn": "A wagashi shop that began with a Western-and-Japanese confectioner the first owner opened in Shanghai in 1909. After the third generation moved it to Higashisoen, its monaka Tsurumi no Mine became known. Open 9:00 to 17:00; closed on Mondays.",
+  "note": "まず、もなかの「鶴見の嶺」から。",
+  "noteEn": "Start with the monaka Tsurumi no Mine.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.29094,
+   131.48853
+  ]
+ },
+ {
+  "name": "SPICA",
+  "nameEn": "SPICA",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "bamboo",
+   "tableware"
+  ],
+  "area": "北浜・別府駅周辺",
+  "areaEn": "Kitahama & Beppu Station",
+  "address": "1-34 Tatemachi, Beppu",
+  "url": "https://spica-beppu.com/",
+  "what": "立田町にある、作り手の器やガラス、衣服と布、紙、本、古道具を扱う店。竹のカレースプーンもあり、個展も開く。平日は11時から17時、土日祝は10時から17時で、水曜は休み。",
+  "whatEn": "A shop in Tatemachi with makers’ tableware and glass, clothing and cloth, paper, books and old tools. It also has a bamboo curry spoon and holds solo exhibitions. Open 11:00 to 17:00 on weekdays and 10:00 to 17:00 on weekends and holidays; closed on Wednesdays.",
+  "note": "竹のカレースプーンから見る。水曜は休み。",
+  "noteEn": "Start with the bamboo curry spoon. Closed on Wednesdays.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.27305,
+   131.50282
+  ]
+ },
+ {
+  "name": "蒸士茶楼",
+  "nameEn": "Mushicharou",
+  "category": "food",
+  "tags": [
+   "steam",
+   "yakuzen"
+  ],
+  "area": "鉄輪",
+  "areaEn": "Kannawa",
+  "address": "5 Kannawa-Furohon, Beppu",
+  "url": "https://mushicharou.com/",
+  "what": "鉄輪の、地獄蒸しと薬膳を合わせたコース料理の店。スープは水を使わず、温泉蒸気100%で作る。前日までの電話予約のみで、席は最大20、支払いは現金のみ。",
+  "whatEn": "A restaurant in Kannawa serving courses that combine jigoku-mushi and medicinal cooking. The soup is made with hot-spring steam alone, without water. Booking by phone by the day before only; up to 20 seats; cash only.",
+  "note": "予約は前日まで、電話で。現金を用意する。",
+  "noteEn": "Book by phone by the day before. Bring cash.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.31634,
+   131.47667
+  ]
+ },
+ {
+  "name": "甘味茶屋",
+  "nameEn": "Amamichaya",
+  "category": "food",
+  "tags": [
+   "dango-jiru",
+   "mochi"
+  ],
+  "area": "石垣・上人",
+  "areaEn": "Ishigaki & Shonin",
+  "address": "27-3 Jissojimachi, Beppu",
+  "url": "https://amamichaya.greater.jp/",
+  "what": "実相寺町にある、大分の郷土料理と甘味の店。自家製の手延べのだんご汁、とり天、きな粉をまぶしたやせうま、餅の料理が並ぶ。10時から21時（ラストオーダー20時30分）で、定休日はない。",
+  "whatEn": "A shop in Jissoji-cho for Oita home cooking and sweets. Handmade, hand-pulled dango-jiru, toriten, yaseuma dusted with soybean flour, and mochi dishes. Open 10:00 to 21:00 (last order 20:30), with no regular closing day.",
+  "note": "ふるさと定食なら、だんご汁もやせうまもとり天も一度に食べられる。",
+  "noteEn": "The Furusato set has dango-jiru, yaseuma and toriten in one meal.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.31058,
+   131.4867
+  ]
+ },
+ {
+  "name": "レストラン東洋軒",
+  "nameEn": "Restaurant Toyoken",
+  "category": "food",
+  "tags": [
+   "toriten"
+  ],
+  "area": "石垣・上人",
+  "areaEn": "Ishigaki & Shonin",
+  "address": "7-8-22 Ishigakihigashi, Beppu",
+  "url": "https://www.toyoken-beppu.co.jp/",
+  "what": "大正15年（1926年）創業。中華料理を主体とした大分の郷土料理「元祖とり天」の発祥の店。本店は石垣東にあり、毎月第2火曜は休み。",
+  "whatEn": "Founded in 1926. The restaurant that calls itself the home of toriten, an Oita home dish based on Chinese cooking. The main shop is in Ishigaki-higashi and is closed on the second Tuesday of each month.",
+  "note": "土日祝の15時から17時は、本家とり天だけ。",
+  "noteEn": "On weekends and holidays, from 3 to 5 pm, only the honke toriten is served.",
+  "verifiedAt": "2026-11-11",
+  "coords": [
+   33.30092,
+   131.49954
+  ]
+ }
+]

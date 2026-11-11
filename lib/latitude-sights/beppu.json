@@ -1,0 +1,74 @@
+[
+ {
+  "name": "竹瓦温泉",
+  "nameEn": "Takegawara Onsen",
+  "kind": "sight",
+  "area": "北浜・別府駅周辺",
+  "areaEn": "Kitahama & Beppu Station",
+  "address": "別府市元町16番23号",
+  "url": "https://www.city.beppu.oita.jp/sisetu/shieionsen/detail4.html",
+  "what": "1879年に創設された、別府市営の温泉。いまの建物は1938年のもので、正面に唐破風の屋根がある。普通浴のほか、浴衣で砂に埋まる砂湯がある。",
+  "whatEn": "A municipal hot spring founded in 1879. The present building dates from 1938 and has a karahafu gable on the front. Besides the ordinary bath there is a sand bath, taken in a yukata under warm sand.",
+  "coords": [
+   33.27745,
+   131.50598
+  ],
+  "notice": "毎月第3水曜は休み（11月は18日）。普通浴は6時30分から22時30分、砂湯は8時から22時30分（最終受付21時30分）。砂湯の予約はできない。",
+  "noticeEn": "Closed on the third Wednesday of each month (18 November). Ordinary bath 6:30 to 22:30; sand bath 8:00 to 22:30 (last entry 21:30). The sand bath cannot be booked.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "別府市竹細工伝統産業会館",
+  "nameEn": "Beppu City Traditional Bamboo Crafts Center",
+  "kind": "sight",
+  "area": "石垣・上人",
+  "areaEn": "Ishigaki & Shonin",
+  "address": "別府市東荘園8丁目2番13号",
+  "url": "https://takezaikudensankaikan.jp/",
+  "what": "別府竹細工の歴史と作品を見せる市の施設。別府竹細工は、大分県で唯一、経済産業大臣が指定した伝統的工芸品。展示室とミュージアムショップがあり、体験学習は予約が要る。",
+  "whatEn": "A city facility showing the history and work of Beppu bamboo craft, the only craft in Oita designated a traditional craft by the Minister of Economy, Trade and Industry. It has exhibition rooms and a museum shop; the hands-on classes need a booking.",
+  "coords": [
+   33.29797,
+   131.4849
+  ],
+  "notice": "月曜（祝日の場合は翌日）と年末年始（12月29日から1月3日）は休み。8時30分から17時（ミュージアムショップは16時30分まで）。",
+  "noticeEn": "Closed on Mondays (the next day if it is a holiday) and from 29 December to 3 January. Open 8:30 to 17:00 (museum shop until 16:30).",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "海地獄",
+  "nameEn": "Umi Jigoku",
+  "kind": "sight",
+  "area": "鉄輪",
+  "areaEn": "Kannawa",
+  "address": "別府市鉄輪559-1",
+  "url": "https://www.beppu-jigoku.com/umi/index.html",
+  "what": "べっぷ地獄めぐりの地獄のなかで最大の池。コバルトブルーの湯は約98度で、青い色は温泉に溶けた硫酸鉄による。国の名勝に指定されている。",
+  "whatEn": "The largest of the Beppu Jigoku. The cobalt-blue water is about 98 degrees, and its blue comes from iron sulphate dissolved in the spring. It is a nationally designated Place of Scenic Beauty.",
+  "coords": [
+   33.31683,
+   131.46873
+  ],
+  "notice": "8時から17時、年中無休。7つの地獄に入れる共通観覧券は、買った日と翌日の2日間使える。",
+  "noticeEn": "Open 8:00 to 17:00 every day of the year. The shared ticket for all seven jigoku is valid on the day of purchase and the next day.",
+  "verifiedAt": "2026-11-11"
+ },
+ {
+  "name": "鉄輪むし湯",
+  "nameEn": "Kannawa Mushiyu",
+  "kind": "sight",
+  "area": "鉄輪",
+  "areaEn": "Kannawa",
+  "address": "別府市鉄輪上1組",
+  "url": "https://www.city.beppu.oita.jp/sisetu/shieionsen/detail11.html",
+  "what": "鎌倉時代の1276年に一遍上人が創設したとされる、別府市営のむし湯。温泉で熱した石室の床に石菖（せきしょう）を敷きつめ、その上に横たわる。",
+  "whatEn": "A municipal steam bath said to have been founded by the priest Ippen in 1276, in the Kamakura period. You lie on sekisho herbs spread over the floor of a stone room heated by the hot spring.",
+  "coords": [
+   33.31638,
+   131.47807
+  ],
+  "notice": "毎月第4木曜は休み（11月は26日）。10月1日から1月31日は7時30分から19時30分（最終受付19時）。むし湯は中学生から入れる。",
+  "noticeEn": "Closed on the fourth Thursday of each month (26 November). From 1 October to 31 January open 7:30 to 19:30 (last entry 19:00). The steam bath is for junior high school age and older.",
+  "verifiedAt": "2026-11-11"
+ }
+]
