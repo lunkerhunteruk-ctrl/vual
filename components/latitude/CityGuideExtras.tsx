@@ -1,6 +1,8 @@
 import { INK, MUTE, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { slugify, type CityPlace, type LatitudeCity } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
+import HScroller from '@/components/latitude/HScroller';
+import { CARD_W } from '@/lib/latitude-card';
 
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
@@ -46,39 +48,43 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
 export function CityRoute({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: string }) {
   if (!c.route?.length) return null;
   const byName = new Map(c.places.map((x) => [x.name, x]));
+  // 2026-11-11 ユーザー「縦スクロールが多すぎる」→ 1つの時刻＝1枚のカードを横に流す（上に写真 4:5、下に時刻・場所・一文・近くのおすすめ）
   return (
     <section className="px-4 pb-20 md:px-8 md:pb-28">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel>{ja ? `${who}の1日の回り方` : `${who}'s day, in order`}</SectionLabel>
-        <ol className="flex flex-col">
+        <HScroller count={c.route.length} label={ja ? `${who}の1日の回り方` : `${who}'s day, in order`} ja={ja}
+          head={<p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? `${who}の1日の回り方` : `${who}'s day, in order`}</p>}>
           {c.route.map((r) => {
             const near = (r.near || []).map((n) => byName.get(n)).filter(Boolean) as CityPlace[];
             return (
-              <li key={r.time} className="grid grid-cols-[64px_1fr] gap-4 border-t py-6 md:grid-cols-[96px_1fr_160px] md:gap-8" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
-                <span className="pt-1 text-[13px] tabular-nums tracking-[0.1em]" style={{ color: MUTE }}>{r.time}</span>
-                <div className="min-w-0">
-                  <p className="text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{ja ? r.placeJa : r.place}</p>
-                  <p className="mt-1 text-[15px] leading-relaxed">{ja ? r.whatJa : r.what}</p>
-                  {near.length > 0 && (
-                    <p className="mt-3 text-[12px] leading-relaxed" style={{ color: MUTE }}>
-                      {ja ? `近くの、${who}のおすすめ：` : `Nearby, ${who} would go to: `}
-                      {near.map((x, k) => (
-                        <span key={x.name}>
-                          {k > 0 && (ja ? '、' : ', ')}
-                          <a href={`#${placeAnchor(x)}`} className="underline underline-offset-4" style={{ color: INK }}>{ja ? x.name : x.nameEn}</a>
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                </div>
-                {r.image && (
+              <li key={r.time} className={`${CARD_W} shrink-0 snap-start`}>
+                {r.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={latAsset(`places/${c.slug}/${r.image}`)} alt="" loading="lazy" className="col-start-2 w-28 object-cover md:col-start-3 md:w-full" style={{ aspectRatio: '4 / 5' }} />
+                  <img src={latAsset(`places/${c.slug}/${r.image}`)} alt={ja ? r.whatJa : r.what} loading="lazy" className="block w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
+                ) : (
+                  // 写真の無い時刻は、紙に時刻だけ（店や場面の写真を作らない）
+                  <div className="flex w-full items-end p-5" style={{ aspectRatio: '4 / 5', border: '1px solid rgba(30,29,27,0.14)' }}>
+                    <span className="text-[44px] leading-none tabular-nums" style={{ fontFamily: SERIF, color: MUTE }}>{r.time}</span>
+                  </div>
+                )}
+                <p className="mt-4 text-[11px] uppercase tabular-nums tracking-[0.3em]" style={{ color: MUTE }}>{r.time}</p>
+                <p className="mt-1 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{ja ? r.placeJa : r.place}</p>
+                <p className="mt-1 text-[15px] leading-relaxed">{ja ? r.whatJa : r.what}</p>
+                {near.length > 0 && (
+                  <p className="mt-3 text-[12px] leading-relaxed" style={{ color: MUTE }}>
+                    {ja ? `近くの、${who}のおすすめ：` : `Nearby, ${who} would go to: `}
+                    {near.map((x, k) => (
+                      <span key={x.name}>
+                        {k > 0 && (ja ? '、' : ', ')}
+                        <a href={`#${placeAnchor(x)}`} className="underline underline-offset-4" style={{ color: INK }}>{ja ? x.name : x.nameEn}</a>
+                      </span>
+                    ))}
+                  </p>
                 )}
               </li>
             );
           })}
-        </ol>
+        </HScroller>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 'use client';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import TrackLink from '@/components/latitude/TrackLink';
+import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
 // 号の「動く地図」と同じ紙の地図の上に、店を小さな丸で並べる。丸を押すとその店へなめらかに寄り、店のカードが出る。
@@ -49,15 +50,7 @@ const PATH = '#cbc6bd';
 const WATER = '#a9b2b8';
 const PARK = 'rgba(112,120,92,0.10)';
 
-// 種類ごとの丸の色（紙の上で見分けられる、くすんだ色）
-export const CATEGORY_COLOR: Record<string, string> = {
-  local: '#a47e2c', // この街の仕事
-  matcha: '#5d7547', // 抹茶
-  sweets: '#b4616e', // 甘味
-  food: '#8f3a2c', // ごはん
-  coffee: '#5b4030', // コーヒー
-  craft: '#3f5d78', // 器
-};
+// 種類ごとの丸の色は lib/latitude-category-colors.ts（一覧の見出しの点と同じ）
 
 type View = { x: number; y: number; w: number }; // 左上と幅（メートル）。高さは枠の縦横比から
 type Anim = { from: View; to: View; t0: number; dur: number };
@@ -220,6 +213,17 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   }, [sheetH]);
 
   // Esc で全体へ。狭い画面で地図が見えなくなったら、カードを閉じる（下から出たカードが、ほかの所の上に残らないように）
+  // 2026-11-11 下の一覧のカードの「地図で見る」（ShowOnMap）：地図までスクロールして、その店に寄る
+  useEffect(() => {
+    const onShow = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      if (!pins.some((p) => p.id === id)) return;
+      if (window.innerWidth >= WIDE) box.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      goRef.current(id); // 狭い画面では goTo が地図の上の端まで流す
+    };
+    window.addEventListener('latitude:shop-map', onShow);
+    return () => window.removeEventListener('latitude:shop-map', onShow);
+  }, [pins]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') goRef.current(null); };
     window.addEventListener('keydown', onKey);
@@ -228,7 +232,12 @@ export default function CityShopMap({ src, pins, ja, who, person, cats }: {
   useEffect(() => {
     const el = box.current;
     if (!el || !sel) return;
-    const io = new IntersectionObserver(([en]) => { if (!en.isIntersecting && window.innerWidth < WIDE) goRef.current(null); }, { threshold: 0 });
+    // 一度見えてから外れた時だけ閉じる（下の一覧の「地図で見る」で、地図まで流れていく途中に閉じないように）
+    let seen = false;
+    const io = new IntersectionObserver(([en]) => {
+      if (en.isIntersecting) seen = true;
+      else if (seen && window.innerWidth < WIDE) goRef.current(null);
+    }, { threshold: 0 });
     io.observe(el);
     return () => io.disconnect();
   }, [sel]);

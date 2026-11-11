@@ -5,6 +5,9 @@ import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
+import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
+import { CARD_W } from '@/lib/latitude-card';
+import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 
 // 2026-10-30 街のページと「街×種類」のページで共通の、店の並び。
 // 種類の見出しの横に旅人の1日の場面を1枚（その店の写真ではないと分かるように、店の行には置かない）。
@@ -117,5 +120,71 @@ export function AreaLinks({ c, locale, ja }: { c: LatitudeCity; locale: string; 
         </Link>
       ))}
     </p>
+  );
+}
+
+// 2026-11-11 街のページの「おすすめ」：種類ごとに、店のカードを横に流す（ユーザー「縦スクロールが多すぎる」）。
+// 見出しの左に地図の丸と同じ色の点、右に「すべて見る →」（種類のページ）。カードは字の組みだけ（店の写真は載せない決まり）。
+// カードの中の字は今のリストと同じ文（検索と AI のチャットが読む）。横に隠れたカードも最初から全部描く。
+// mapIds：上の店の地図に丸のある店（「地図で見る」を出す）
+export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
+  c: LatitudeCity; sec: PlaceSection; ja: boolean; locale: string; who: string; canAsk: boolean; mapIds: Set<string>;
+}) {
+  const label = ja ? sec.label.ja : sec.label.en;
+  const im = sec.kind === 'category' ? c.categoryImages?.[sec.category] : undefined;
+  const count = sec.items.length + (im ? 1 : 0) + (sec.about ? 1 : 0);
+  const head = (
+    <div className="flex flex-col gap-1">
+      <h3 className="flex items-center gap-3 text-[22px] leading-tight" style={{ fontFamily: SERIF, fontWeight: 400 }}>
+        <span className="block h-[10px] w-[10px] shrink-0 rounded-full" style={{ background: CATEGORY_COLOR[sec.category] ?? INK }} aria-hidden="true" />
+        {sec.kind === 'industry' && <span className="sr-only">{ja ? `${c.nameJa}ならでは：` : `Made in ${c.name}: `}</span>}
+        {label}
+        <span className="text-[10px] uppercase tabular-nums tracking-[0.3em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{sec.items.length}</span>
+      </h3>
+      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="pl-[22px] text-[10px] uppercase tracking-[0.3em] underline-offset-4 hover:underline" style={{ color: INK }}>
+        {ja ? `${label}をすべて見る →` : `All ${label.toLowerCase()} →`}
+      </Link>
+    </div>
+  );
+  return (
+    <div>
+      <HScroller count={count} label={ja ? `${c.nameJa}の${label}` : `${label} in ${c.name}`} ja={ja} head={head}>
+        {sec.about && (
+          // その街ならではの仕事の説明は、列の最初のカードに（見出しの下に置くより縦が短い。字はそのまま）
+          <li className={`${CARD_W} flex shrink-0 snap-start flex-col justify-end p-5`} style={{ background: 'rgba(30,29,27,0.04)' }}>
+            <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
+            <p className="mt-3 text-[14px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
+          </li>
+        )}
+        {sec.items.map((x) => (
+          <li key={x.name} id={placeAnchor(x)} className={`${CARD_W} flex shrink-0 snap-start flex-col scroll-mt-24 border p-5`} style={{ borderColor: 'rgba(30,29,27,0.16)' }}>
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+              {ja ? x.area : x.areaEn}
+              {x.ad && <span className="ml-3">{ja ? '広告' : 'Ad'}</span>}
+            </p>
+            <h4 className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>{ja ? x.name : x.nameEn}</h4>
+            <p className="mt-3 text-[14px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
+            <p className="mt-3 text-[15px] leading-relaxed" style={{ fontFamily: SERIF }}>
+              <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
+              {ja ? x.note : x.noteEn}
+            </p>
+            <p className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5 text-[10px] uppercase tracking-[0.3em]">
+              {mapIds.has(placeAnchor(x)) && <ShowOnMap id={placeAnchor(x)} label={ja ? '地図で見る' : 'On the map'} />}
+              {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
+              <TrackLink href={mapUrl(x.name, x.address)} label={ja ? 'Google マップ' : 'Google Maps'} shop={x.name} kind="map" person={c.person} />
+              {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
+            </p>
+          </li>
+        ))}
+        {im && (
+          // 号の場面（その店の写真ではないと分かるよう、カードの列の最後に「凛の1日から」と添えて置く）
+          <li className={`${CARD_W} shrink-0 snap-start`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="block w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
+            <p className="mt-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</p>
+          </li>
+        )}
+      </HScroller>
+    </div>
   );
 }

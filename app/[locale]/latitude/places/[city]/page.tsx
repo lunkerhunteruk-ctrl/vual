@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
 import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, getCity, sectionsOf } from '@/lib/latitude-places';
-import { AreaLinks, CategoryLinks, PlaceGroup, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
+import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
 import CityShopMap, { type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
@@ -189,11 +189,15 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       <section className="px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>{ja ? `${who}のおすすめ` : `Where ${who} would go`}</SectionLabel>
-          <div className="mb-12 flex flex-col gap-3"><CategoryLinks c={c} locale={locale} ja={ja} /><AreaLinks c={c} locale={locale} ja={ja} /></div>
-          <div className="flex flex-col gap-14">
+          {/* 2026-11-11 種類ごとに横に流す（ユーザー「縦スクロールが多すぎる」）。地区のページへのリンクは下に小さく */}
+          <div className="flex flex-col gap-11">
             {groups.map((g) => (
-              <PlaceGroup key={g.key} c={c} sec={g} ja={ja} locale={locale} who={who} canAsk={!!room} linkHeading />
+              <PlaceRow key={g.key} c={c} sec={g} ja={ja} locale={locale} who={who} canAsk={!!room} mapIds={new Set(pins.map((p) => p.id))} />
             ))}
+          </div>
+          <div className="mt-14 flex flex-col gap-3">
+            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '地区から' : 'By area'}</p>
+            <AreaLinks c={c} locale={locale} ja={ja} />
           </div>
           <p className="mt-16 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
             {ja
