@@ -671,7 +671,7 @@ export const ISSUES: LatitudeIssue[] = [
       'At weekends the camels by the entrance to the dunes are there for photographs only.',
     ],
     pages: [],
-    streamId: 'f3657a3855cd15668e8b0190890143ce', // 2026-11-11 編集長の Final Cut の書き出し「TOTTORI v16 - HD 1080p.mov」をそのまま
+    streamId: '46206db4b063afc54c7356dfbe4b8719', // 2026-11-11 v16 にフィルムの仕上げ（tools/filmic_look.py level 2・粒子11）をかけた版 LATITUDE-35.5N-TOTTORI-reel-v16-filmic.mp4（前は f3657a38… の仕上げなし）
     filmOnly: true,
   },
 ];
