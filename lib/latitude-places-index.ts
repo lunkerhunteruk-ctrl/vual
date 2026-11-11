@@ -26,6 +26,10 @@ export const COUNTRY_NAMES: Record<string, { en: string; ja: string; slug: strin
   const clash = CITIES.filter((c) => Object.values(COUNTRY_NAMES).some((n) => n.slug === c.slug)).map((c) => c.slug);
   if (clash.length) throw new Error(`LATITUDE: city slug(s) equal a country slug: ${clash.join(', ')}`);
 }
+// 2026-11-11 世界の地図で国の点に重ねた時に出す号の写真。ふだんは、その国のいちばん新しい号から始めて、ほかの号へ切り替える。
+// 国ごとに最初に見せたい1枚を決める時だけ、ここに 国コード → 号の slug を書く（例 GB: 'haworth'）。書いた号が先頭、あとは新しい順
+export const COUNTRY_PHOTO_PIN: Record<string, string> = {};
+
 // 国の並び（凛の日本が先、あとは北から）
 const ORDER = ['JP', 'IS', 'SE', 'DK', 'GB', 'AT', 'IT'];
 
@@ -39,12 +43,13 @@ export type PlaceCity = {
   x: number; // 世界の地図の上の位置（lib/latitude-map.ts の project）
   y: number;
   person?: { slug: string; name: string };
-  issue?: { slug: string; cover: string; month?: string }; // 公開ずみの号
+  issue?: { slug: string; cover: string; month?: string; no: number }; // 公開ずみの号（no は号の番号。大きいほど新しい）
   upcoming: boolean; // 号がまだ無い（これから行く街）
   region?: string; // 国の中の地方（lib/latitude-regions.ts。いまは日本だけ）。地図で地方ごとにまとめる
   preview?: boolean; // 2026-11-11 試しの町（?preview=50 の時だけ地図に足す。街のページは無い）
 };
-export type PlaceCountry = { code: string; slug: string; name: { en: string; ja: string }; cities: PlaceCity[] };
+// issues：その国の公開ずみの号の写真（COUNTRY_PHOTO_PIN の号が先頭、あとは新しい順）。世界の地図で国の点に重ねた時に出す
+export type PlaceCountry = { code: string; slug: string; name: { en: string; ja: string }; cities: PlaceCity[]; issues: { slug: string; cover: string }[] };
 
 function pointOf(c: LatitudeCity): [number, number] | undefined {
   return c.coords ?? PLACES[c.issue ?? c.slug];
@@ -69,7 +74,7 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
       lon: at[1],
       ...project(at[0], at[1]),
       person: p ? { slug: p.slug, name: p.name } : undefined,
-      issue: live && i ? { slug: i.slug, cover: assetUrl(i, 'cover.jpg'), month: i.month } : undefined,
+      issue: live && i ? { slug: i.slug, cover: assetUrl(i, 'cover.jpg'), month: i.month, no: i.no } : undefined,
       upcoming: !live,
       // 日本の町の countryJa は県名
       region: regionOf(code, c.countryJa, at[0], at[1]),
@@ -77,13 +82,20 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
     m.set(code, [...(m.get(code) ?? []), city]);
   }
   const codes = [...m.keys()].sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99));
-  return codes.map((code) => ({
-    code,
-    slug: COUNTRY_NAMES[code]?.slug ?? code.toLowerCase(),
-    name: { en: COUNTRY_NAMES[code]?.en ?? code, ja: COUNTRY_NAMES[code]?.ja ?? code },
-    // 国の中は北から
-    cities: m.get(code)!.sort((a, b) => b.lat - a.lat),
-  }));
+  return codes.map((code) => {
+    const pin = COUNTRY_PHOTO_PIN[code];
+    const issues = m.get(code)!.flatMap((q) => (q.issue ? [q.issue] : []))
+      .sort((a, b) => Number(b.slug === pin) - Number(a.slug === pin) || b.no - a.no)
+      .map(({ slug, cover }) => ({ slug, cover }));
+    return {
+      code,
+      slug: COUNTRY_NAMES[code]?.slug ?? code.toLowerCase(),
+      name: { en: COUNTRY_NAMES[code]?.en ?? code, ja: COUNTRY_NAMES[code]?.ja ?? code },
+      // 国の中は北から
+      cities: m.get(code)!.sort((a, b) => b.lat - a.lat),
+      issues,
+    };
+  });
 }
 
 export const getPlaceCountry = (slug: string, now: number = Date.now()) => placeCountries(now).find((c) => c.slug === slug);

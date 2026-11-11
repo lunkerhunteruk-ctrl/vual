@@ -18,6 +18,9 @@ import HScroller from '@/components/latitude/HScroller';
 //  2. 地方の段階：数字の丸を押すと、その地方へ寄り、町が小さな点と名前で全部出る。写真はマウスを重ねた時・押した時だけ。「← 日本」で戻る。
 //  3段目（町の中）は作らない。町のページの店の地図がその役。
 //  スマホは地図の下に、地方ごとの横に流れる一覧（地方の見出し＋町のカード）。
+// 2026-11-11 世界の段階の国の点：マウスを重ねる（スマホは1回押す）と、点が少し大きくなり、その国の号の写真が丸く出る（国旗は使わない）。
+//  最初はいちばん新しい号（lib/latitude-places-index.ts の COUNTRY_PHOTO_PIN で国ごとに固定できる）。重ねたままなら1.5秒ごとに
+//  ほかの号へふわっと切り替わる（号が1つの国は切り替えない）。横に「イギリス · 3つの号」。スマホはもう1回押すとその国へ寄る。
 // 試しの町：URL に ?preview=50 を付けた時だけ public/latitude/placesmap-preview-cities.json を読み、日本に足す（本番には出さない。ページは無い）。
 
 type Inset = {
@@ -96,6 +99,14 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   const [reg, setReg] = useState<string | null>(null); // 寄っている地方
   const [picked, setPicked] = useState<string | null>(null); // 押した町（試しの町はページが無いので、名前を強める）
   const [extra, setExtra] = useState<PlaceCity[]>([]);
+  // 世界の段階で写真を出している国（hov）と、いま見せている号の番号（hovI）。seen は一度でも出した国（写真を読み込み始めた国）
+  const [hov, setHov] = useState<string | null>(null);
+  const [hovI, setHovI] = useState(0);
+  const [lastHov, setLastHov] = useState<string | null>(null); // 離れた後も、消えていく間は同じ写真のまま
+
+  const [seen, setSeen] = useState<string[]>([]);
+  const loaded = useRef(new Set<string>());
+  const lastPointer = useRef('mouse');
   const box = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -120,6 +131,22 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     ...c,
     cities: [...c.cities, ...extra.filter((e) => !c.cities.some((q) => q.slug === e.slug))].sort((a, b) => b.lat - a.lat),
   })) : given), [given, extra]);
+
+  const showCountry = (code: string | null) => {
+    setHov(code);
+    if (code) setHovI(0);
+    if (code) setLastHov(code);
+    if (code) setSeen((p) => (p.includes(code) ? p : [...p, code]));
+  };
+  // 重ねている間、1.5秒ごとに次の号の写真へ。次の写真がまだ読み込めていなければ、読み込めるまで待つ
+  useEffect(() => {
+    const list = hov ? countries.find((c) => c.code === hov)?.issues ?? [] : [];
+    if (list.length < 2) return;
+    const t = window.setInterval(() => {
+      setHovI((i) => (loaded.current.has(list[(i + 1) % list.length].cover) ? (i + 1) % list.length : i));
+    }, 1500);
+    return () => window.clearInterval(t);
+  }, [hov, countries]);
 
   useLayoutEffect(() => {
     const el = box.current;
@@ -235,6 +262,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
       window.history.pushState(null, '', code && slug ? `${base}/${slug}` : base);
     }
     setPicked(null);
+    setHov(null);
     fly(code, null);
   };
   const goRegion = (key: string | null, pick: string | null = null) => {
@@ -427,7 +455,11 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
       </ul>}
       <div ref={box} className="relative aspect-square w-full overflow-hidden md:aspect-[2/1]"
         style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '80vh', touchAction: 'pan-y' }}
-        onClick={(e) => { if (sel && !(e.target as Element).closest('button, a')) backRef.current(); }}>
+        onClick={(e) => {
+          if ((e.target as Element).closest('button, a')) return;
+          if (sel) backRef.current();
+          else if (hov) setHov(null); // スマホで写真を出した国を、地図の空いた所を押してしまう
+        }}>
         {ready && (
           <svg viewBox={`${view.x} ${view.y} ${view.w} ${h}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
             {PARALLELS.map((lat) => (
@@ -463,22 +495,55 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           );
         })}
 
-        {/* 国の点（世界の範囲の時） */}
-        {ready && !sel && cdots.map(({ c, x, y }) => (
-          <button key={c.code} type="button" onClick={(e) => { e.stopPropagation(); goTo(c.code); }}
-            className="group absolute z-[1] -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 hover:z-[3] focus-visible:z-[3]"
-            style={{ left: x, top: y, opacity: animating ? 0 : 1, transition: 'opacity 200ms' }}
-            aria-label={`${ja ? c.name.ja : c.name.en} · ${c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(', ')}`}>
-            <span className="block h-3 w-3 rounded-full group-hover:scale-[1.4]" style={{ background: RED, boxShadow: `0 0 0 2px ${PAPER}`, transition: 'scale 180ms ease-out' }} />
-            <span className="pointer-events-none absolute left-full top-1/2 ml-1 hidden -translate-y-1/2 whitespace-nowrap text-[13px] group-hover:block group-focus-visible:block"
-              style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>
-              {ja ? c.name.ja : c.name.en}
-              <span className="ml-2 text-[9px] uppercase tracking-[0.25em]" style={{ fontFamily: 'inherit', color: MUTE }}>
-                {c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(' · ')}
+        {/* 国の点（世界の範囲の時）。重ねる（スマホは1回押す）と、点が大きくなり、号の写真の丸と「国の名前 · 号の数」が出る */}
+        {ready && !sel && cdots.map(({ c, x, y }) => {
+          const on = hov === c.code;
+          const n = c.issues.length;
+          const name = ja ? c.name.ja : c.name.en;
+          const count = n ? (ja ? `${n}${n < 10 ? 'つ' : ''}の号` : `${n} ${n === 1 ? 'issue' : 'issues'}`)
+            : c.cities.length > 6 ? (ja ? `${c.cities.length}の街` : `${c.cities.length} cities`) : c.cities.map((q) => cityName(q)).join(' · ');
+          const left = x > size.w - 220; // 右の端に近い点は、写真と名前を左へ
+          const ms = 300;
+          return (
+            <button key={c.code} type="button"
+              onPointerDown={(e) => { lastPointer.current = e.pointerType; }}
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') showCountry(c.code); }}
+              onPointerLeave={(e) => { if (e.pointerType === 'mouse' && hov === c.code) setHov(null); }}
+              onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) showCountry(c.code); }}
+              onBlur={() => { if (hov === c.code) setHov(null); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                // スマホ（指・ペン）：1回目は写真と名前だけ。もう1回押すとその国へ
+                if (lastPointer.current !== 'mouse' && e.detail > 0 && !on) { showCountry(c.code); return; }
+                goTo(c.code);
+              }}
+              className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 ${on ? 'z-[3]' : 'z-[1] focus-visible:z-[3]'}`}
+              style={{ left: x, top: y, opacity: animating ? 0 : 1, transition: 'opacity 200ms' }}
+              aria-label={`${name} · ${count}`}>
+              <span className="block h-3 w-3 rounded-full" style={{ background: RED, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1.5' : '1', transition: `scale ${ms}ms ease-out` }} />
+              <span className={`absolute top-1/2 flex items-center gap-2 ${left ? 'right-full mr-1 flex-row-reverse' : 'left-full ml-1'}`}
+                style={{ transform: 'translateY(-50%)', pointerEvents: on ? 'auto' : 'none', opacity: on ? 1 : 0, transition: `opacity ${ms}ms ease-out` }}>
+                {n > 0 && (
+                  <span className="relative block shrink-0 overflow-hidden rounded-full"
+                    style={{ width: 40, height: 40, background: LAND, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1' : '0.5', transition: `scale ${ms}ms ease-out` }}>
+                    {seen.includes(c.code) && c.issues.map((q, k) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img key={q.slug} src={q.cover} alt="" onLoad={() => loaded.current.add(q.cover)}
+                        className="lat-cf absolute inset-0 block h-full w-full object-cover"
+                        style={{ maxWidth: 'none', opacity: (lastHov === c.code ? hovI : 0) === k ? 1 : 0, transition: 'opacity 700ms ease-in-out' }} />
+                    ))}
+                  </span>
+                )}
+                <span className="whitespace-nowrap text-[13px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO, textAlign: left ? 'right' : 'left' }}>
+                  {name}
+                  <span className="ml-2 text-[9px] uppercase tracking-[0.25em]" style={{ fontFamily: 'inherit', color: MUTE }}>
+                    · {count}
+                  </span>
+                </span>
               </span>
-            </span>
-          </button>
-        ))}
+            </button>
+          );
+        })}
 
         {/* 街の点（地方の無い国に寄った時）。押すと街の案内へ */}
         {ready && selC && !regionMode && showCities && selC.cities.map((q) => {
@@ -573,7 +638,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             {ja ? '← 世界' : '← World'}
           </button>
         ))}
-        <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}'}</style>
+        <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}@media (prefers-reduced-motion: reduce){.lat-cf{transition:none!important}}'}</style>
       </div>
       <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
         {ja ? '地図データ ' : 'Map data '}
