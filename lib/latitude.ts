@@ -635,6 +635,45 @@ export const ISSUES: LatitudeIssue[] = [
     capColour: '#ca955f', // Lattice Amber（カルーセル5ページの頭の文字と同じ系統）
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    // 2026-11-11 鳥取（凛・2026年11月28日（土）・晴れて乾いた冬の日・北西の海風）。ファッションシュート回。1日＝1コーデ（C000911）。全部 VUAL オリジナルの服。
+    // リールだけ先に公開（ユーザー指定 2026-11-11）。カルーセル・読み物・色はまだ出さない → filmOnly。カルーセルを出す時に filmOnly を外して pages・colours・recipe を入れる。
+    // 章はリール v16 の字幕。気温は気象庁の鳥取（47746）の 1991–2020 平年値（11月 最高16.8℃・最低7.7℃・降水145.9mm／10月 最高22.4℃／12月 最高10.9℃）。
+    // 事実の出どころ：馬の背 約47m・土日祝のらくだは記念撮影のみ（gltjp.com/ja/article/item/20380）、毎秒5m以上の風で砂が動く（pref.tottori.lg.jp/item/1023188.htm）
+    slug: 'tottori',
+    person: 'rin',
+    month: 'November',
+    seo: {
+      title: "What to wear in Tottori in November — a day on the sand dunes, from the camels to Umanose | LATITUDE 35.5° N",
+      description: "Tottori in November is around 17°C by day and 8°C at night, with wind off the Sea of Japan. One day in a black padded leather coat, a grey knit and taupe flannel trousers, from the camels at the dunes to a ryokan after dark.",
+      month: "November",
+      weather: "Tottori in November averages 16.8°C by day and 7.7°C at night, with about 146 mm of rain (1991–2020). On the dunes the wind off the Sea of Japan is stronger, and the sun sets before five.",
+      wore: "A black padded leather coat with a small stand collar, worn open over a grey marl crew-neck knit with gathered sleeves and taupe flannel barrel trousers; black croc-embossed boots with an ankle strap, and a round chocolate-brown suede handbag.",
+      season: "In October it is about 22°C by day; a knit and a light jacket are enough. In December it is about 11°C by day and wetter; add a scarf and gloves for the wind on the dunes.",
+    },
+    no: 13, // 2026-11-11 公開した順（レッジョ 11/9 の次）
+    latitude: '35.5° N',
+    city: 'Tottori',
+    published: '2026-11',
+    line: 'One November day on the Tottori dunes, from the camels in the morning to a ryokan where the sand is still in her boot.',
+    chapters: [
+      { no: 'I', place: 'Sakyu', time: '09:45' },
+      { no: 'II', place: 'Umanose', time: '10:20' },
+      { no: 'III', place: 'Sakyu Lift', time: '12:30' },
+      { no: 'IV', place: 'Umanose', time: '16:20' },
+      { no: 'V', place: 'Ryokan', time: '19:15' },
+    ],
+    colours: [],
+    notesTitle: 'Sand, wind, a ridge',
+    notes: [
+      'Umanose, the horse’s back, the highest ridge of the Tottori dunes, stands about 47 metres, roughly the height of a fifteen-storey building.',
+      'Once the wind passes about five metres a second, the dry sand starts to move and draws ripples across the slopes.',
+      'At weekends the camels by the entrance to the dunes are there for photographs only.',
+    ],
+    pages: [],
+    streamId: 'f3657a3855cd15668e8b0190890143ce', // 2026-11-11 編集長の Final Cut の書き出し「TOTTORI v16 - HD 1080p.mov」をそのまま
+    filmOnly: true,
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
