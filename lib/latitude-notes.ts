@@ -12,6 +12,7 @@ import kanazawa from '@/data/latitude-notes/kanazawa.json';
 import vienna from '@/data/latitude-notes/vienna.json';
 import haworth from '@/data/latitude-notes/haworth.json';
 import morioka from '@/data/latitude-notes/morioka.json';
+import reggio from '@/data/latitude-notes/reggio.json';
 
 export type NoteRun = { s: string; b?: boolean };
 export type NoteBlock =
@@ -23,7 +24,7 @@ export type NoteBlock =
 export type NoteBody = { title: string; subtitle?: string; blocks: NoteBlock[] };
 export type IssueNote = { slug: string; ja: NoteBody; en: NoteBody };
 
-const ALL = [iceland, copenhagen, london, edinburgh, milan, faro, kanazawa, vienna, haworth, morioka] as unknown as IssueNote[];
+const ALL = [iceland, copenhagen, london, edinburgh, milan, faro, kanazawa, vienna, haworth, morioka, reggio] as unknown as IssueNote[];
 
 export const NOTES: Record<string, IssueNote> = Object.fromEntries(ALL.map((n) => [n.slug, n]));
 export const getNote = (slug: string) => NOTES[slug];
