@@ -637,7 +637,7 @@ export const ISSUES: LatitudeIssue[] = [
   },
   {
     // 2026-11-11 鳥取（凛・2026年11月28日（土）・晴れて乾いた冬の日・北西の海風）。ファッションシュート回。1日＝1コーデ（C000911）。全部 VUAL オリジナルの服。
-    // リールだけ先に公開（ユーザー指定 2026-11-11）。カルーセル・読み物・色はまだ出さない → filmOnly。カルーセルを出す時に filmOnly を外して pages・colours・recipe を入れる。
+    // リールだけ先に公開（ユーザー指定 2026-11-11）。2026-11-12 カルーセル・読み物・色も公開（ユーザー：カルーセルはサイトだけに出す）。レシピの目印（recipe）はまだ
     // 章はリール v16 の字幕。気温は気象庁の鳥取（47746）の 1991–2020 平年値（11月 最高16.8℃・最低7.7℃・降水145.9mm／10月 最高22.4℃／12月 最高10.9℃）。
     // 事実の出どころ：馬の背 約47m・土日祝のらくだは記念撮影のみ（gltjp.com/ja/article/item/20380）、毎秒5m以上の風で砂が動く（pref.tottori.lg.jp/item/1023188.htm）
     slug: 'tottori',
@@ -663,16 +663,25 @@ export const ISSUES: LatitudeIssue[] = [
       { no: 'IV', place: 'Umanose', time: '16:20' },
       { no: 'V', place: 'Ryokan', time: '19:15' },
     ],
-    colours: [],
+    colours: [
+      { name: 'Dune Sand', hex: '#e0ceb2' },
+      { name: 'Lift Red', hex: '#a83e32' },
+      { name: 'Kiln Green', hex: '#32563c' },
+      { name: 'Camel', hex: '#8c6842' },
+      { name: 'Sea of Japan', hex: '#5c7078' },
+      { name: 'Dusk Gold', hex: '#d69e70' },
+      { name: 'Lantern Amber', hex: '#bc7836' },
+    ],
     notesTitle: 'Sand, wind, a ridge',
     notes: [
       'Umanose, the horse’s back, the highest ridge of the Tottori dunes, stands about 47 metres, roughly the height of a fifteen-storey building.',
       'Once the wind passes about five metres a second, the dry sand starts to move and draws ripples across the slopes.',
       'At weekends the camels by the entrance to the dunes are there for photographs only.',
     ],
-    pages: [],
+    pages: pages(18, [2, 3, 11, 15]), // 2026-11-12 雑誌版のカルーセル（18枚・vault.vual.jp outputs/latitude-magazine/make_issue_tottori_mag.py → tottori/carousel-final）。2 時刻表がすりガラスに浮かぶ、3 日照と歩いた道の地図、11 器の線画、15 その日の7色
     streamId: '46206db4b063afc54c7356dfbe4b8719', // 2026-11-11 v16 にフィルムの仕上げ（tools/filmic_look.py level 2・粒子11）をかけた版 LATITUDE-35.5N-TOTTORI-reel-v16-filmic.mp4（前は f3657a38… の仕上げなし）
-    filmOnly: true,
+    capColour: '#a83e32', // Lift Red
+    credits: ['Map data © OpenStreetMap contributors'],
   },
 ];
 
