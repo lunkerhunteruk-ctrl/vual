@@ -65,6 +65,10 @@ export const ROOMS: LatitudeRoom[] = [
   },
 ];
 
+// 2026-11-12 ユーザー：ElevenLabs の契約を止めている間は、声の通話を出さない（ボタン・確かめの画面・「通話する」の文言）。文字のチャット（Gemini）だけ。
+// 契約を戻したら true にする。
+export const VOICE_CALLS = false;
+
 export const getRoom = (person: string) => ROOMS.find((r) => r.person === person);
 
 export const roomsOpen = () => process.env.NODE_ENV !== 'production' || process.env.LATITUDE_ROOMS === 'open';

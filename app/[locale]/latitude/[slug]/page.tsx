@@ -7,7 +7,7 @@ import { JsonLd, issueJsonLd } from '@/lib/latitude-publication';
 import { existsSync } from 'fs';
 import path from 'path';
 import AskTraveller from '@/components/latitude/AskTraveller';
-import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
+import { getRoom, roomsOpen, VOICE_CALLS } from '@/lib/latitude-rooms';
 import { CITIES } from '@/lib/latitude-places';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
@@ -300,7 +300,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <div className="mx-auto flex max-w-6xl flex-wrap gap-3">
             {room && person && (
               <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
-                {ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`}&nbsp;&nbsp;→
+                {VOICE_CALLS ? (ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`) : ja ? `${who}と話す` : `Talk to ${who}`}&nbsp;&nbsp;→
               </Link>
             )}
             {city && (

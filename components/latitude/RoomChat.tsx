@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ConversationProvider, useConversation } from '@elevenlabs/react';
 import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import { track } from '@/lib/latitude-track';
+import { VOICE_CALLS } from '@/lib/latitude-rooms';
 
 // 2026-10-30 旅人との会話（文字＋自分から押した時だけの通話）。部屋のページと、街のページの「凛に聞く」の両方で使う。
 // 入口は /api/latitude/room（署名つき・1人1日の回数あり）。会話の設定は ElevenLabs 側（vault.vual.jp/tools/rin-call-agent.cjs）。
@@ -150,6 +151,8 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
       return;
     }
     viaSite.current = false;
+    // 2026-11-12 ElevenLabs を止めている間は、文字の会話もそちらへはつながない
+    if (!VOICE_CALLS) { add({ who: 'note', text: ja ? 'いまは話せません。少しあとで。' : 'She cannot talk right now. Try again later.' }); setStage('outside'); return; }
     try {
       const { signedUrl } = await ticket('text');
       conv.startSession({
@@ -207,7 +210,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
   };
 
   // 通話の入口は、部屋に入るのと同じ大きさの黒いボタン（声で話したい人が迷わないように、こちらを主に見せる）
-  const CallButton = () => (
+  const CallButton = () => !VOICE_CALLS ? null : (
     <button onClick={() => { if (conv.status === 'connected') conv.endSession(); setStage('confirm'); }}
       className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
       {ja ? `${name}と通話する` : `Call ${name}`}
@@ -264,7 +267,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
 
         {stage === 'text' && <div><CallButton /></div>}
 
-        {stage === 'confirm' && (
+        {VOICE_CALLS && stage === 'confirm' && (
           <div className="flex flex-col gap-4 border p-5" style={{ borderColor: INK }}>
             <p className="text-[18px]" style={{ fontFamily: SERIF }}>{ja ? `${name}と、声で話しますか。` : `Talk to ${name} out loud?`}</p>
             <ul className="flex flex-col gap-1 text-[13px] leading-relaxed" style={{ color: '#3d3a35' }}>
