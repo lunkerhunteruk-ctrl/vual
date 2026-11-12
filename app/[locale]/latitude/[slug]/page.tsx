@@ -8,6 +8,7 @@ import { existsSync } from 'fs';
 import path from 'path';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import { getRoom, roomsOpen, VOICE_CALLS } from '@/lib/latitude-rooms';
+import { ISSUES_JA } from '@/lib/latitude-issues-ja';
 import { CITIES } from '@/lib/latitude-places';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
@@ -26,33 +27,38 @@ type SP = Promise<{ preview?: string }>;
 const canPreview = (issue: LatitudeIssue, key?: string) =>
   !!key && ((!!issue.previewToken && key === issue.previewToken) || (!!process.env.LATITUDE_PREVIEW_KEY && key === process.env.LATITUDE_PREVIEW_KEY));
 
+// 2026-11-12 ユーザー：日本語のページで号の一行・読み物・旅の覚え書きが英語のままだった。ISSUES_JA があればそれを出す
+const MONTH_JA: Record<string, string> = { January: '1月', February: '2月', March: '3月', April: '4月', May: '5月', June: '6月', July: '7月', August: '8月', September: '9月', October: '10月', November: '11月', December: '12月' };
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const i = getIssue(slug);
   if (!i) return { title: 'LATITUDE — VUAL' };
   if (!isLive(i)) return { title: 'LATITUDE — VUAL', robots: { index: false, follow: false } };
   const title = `LATITUDE ${issueNo(i)} — ${i.latitude} ${i.city} | VUAL`;
+  const J = locale === 'ja' ? ISSUES_JA[i.slug] : undefined;
+  const line = J?.line ?? i.line;
   return {
     // 2026-10-30 検索結果に出る題と説明は「その街・その月・何を着るか」（seo）。SNS のリンクの見え方（openGraph）は雑誌の題と一行のまま
-    title: i.seo?.title ?? title,
-    description: i.seo?.description ?? i.line,
+    title: (J?.seo?.title ?? i.seo?.title) ?? title,
+    description: (J?.seo?.description ?? i.seo?.description) ?? line,
     // 2026-10-30 号の本文は英語で ja・en とも同じなので、本体は英語のページにそろえる（親の layout の canonical "/" を上書きする。上書きしないとトップの写しと見なされ、検索に出ない）
-    alternates: {
-      canonical: `/en/latitude/${i.slug}`,
-      languages: { en: `/en/latitude/${i.slug}`, 'x-default': `/en/latitude/${i.slug}` }, // ja は本体でないので並べない（並べると食い違いになる）
-    },
+    // 2026-11-12 日本語の文がある号は、日本語のページもそれぞれの本体にする（ja と en を対で並べる）
+    alternates: ISSUES_JA[i.slug]
+      ? { canonical: `/${locale}/latitude/${i.slug}`, languages: { en: `/en/latitude/${i.slug}`, ja: `/ja/latitude/${i.slug}`, 'x-default': `/en/latitude/${i.slug}` } }
+      : { canonical: `/en/latitude/${i.slug}`, languages: { en: `/en/latitude/${i.slug}`, 'x-default': `/en/latitude/${i.slug}` } },
     openGraph: {
       type: 'article',
       siteName: 'VUAL',
       title,
-      description: i.line,
+      description: line,
       url: `https://vual.jp/${locale}/latitude/${i.slug}`,
       // リンクの見え方は 1200×630 の og.jpg（1ページ目＋紙の色に緯度と一行。scripts/latitude-og.py で作る）。無い号は表紙
       images: [existsSync(path.join(process.cwd(), 'public', 'latitude', i.slug, 'og.jpg'))
         ? { url: assetUrl(i, 'og.jpg'), width: 1200, height: 630 }
         : { url: assetUrl(i, 'cover.jpg'), width: 720, height: 1280 }],
     },
-    twitter: { card: 'summary_large_image', title, description: i.line, images: [assetUrl(i, 'og.jpg')] },
+    twitter: { card: 'summary_large_image', title, description: line, images: [assetUrl(i, 'og.jpg')] },
   };
 }
 
@@ -76,6 +82,11 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
   const room = person && roomsOpen() ? getRoom(person.slug) : undefined;
   const city = CITIES.find((c) => c.issue === issue.slug || (c.person === issue.person && c.name.toLowerCase() === issue.city.toLowerCase()));
   const ja = locale === 'ja';
+  const J = ja ? ISSUES_JA[issue.slug] : undefined;
+  const place = (k: number) => J?.chapters[k] ?? issue.chapters[k].place;
+  const notesTitle = J?.notesTitle ?? issue.notesTitle;
+  const notes = J?.notes?.length ? J.notes : issue.notes;
+  const trip = J?.seo ?? issue.seo;
   const who = person ? (ja ? person.ja.name : person.name) : '';
   const nowName = ja ? (city?.nameJa ?? ISSUE_CITY_JA[issue.slug] ?? issue.city) : (ISSUE_CITY_EN[issue.slug] ?? issue.city);
 
@@ -107,12 +118,12 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         {/* 2026-11-01 この街のいま（号の月の話ではなく、見ている今の時刻・気温・天気。取れない時は出ない） */}
         <NowInCity place={issue.slug} coords={city?.coords} ja={ja} className="mt-6" name={nowName} chapters={issue.chapters} />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
-          {issue.line}
+          {J?.line ?? issue.line}
         </p>
         <ol className="mt-8 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2">
           {issue.chapters.map((c, k) => (
             <li key={c.no} data-lat-chapter={k} className="text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
-              <span style={{ color: INK }}>{c.no}</span>&nbsp;&nbsp;—&nbsp;&nbsp;{c.place}, {c.time}
+              <span style={{ color: INK }}>{c.no}</span>&nbsp;&nbsp;—&nbsp;&nbsp;{place(k)}{J ? '　' : ', '}{c.time}
               {/* 2026-11-01 いまの街の時刻がこの章に重なる時だけ、NowLine が出す（ふだんは隠す） */}
               <span data-lat-now className="ml-3 hidden items-center gap-1.5 normal-case tracking-[0.08em]" style={{ color: INK }}>
                 <span aria-hidden="true" className="inline-block h-[5px] w-[5px] rounded-full" style={{ background: 'var(--lat-now-chip, #1e1d1b)' }} />
@@ -184,13 +195,14 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
           <div>
             <SectionLabel>Field notes&nbsp;&nbsp;—&nbsp;&nbsp;{issue.latitude}</SectionLabel>
             <h2 className="text-[36px] leading-tight md:text-[48px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: 0, color: INK }}>
-              {issue.notesTitle}
+              {notesTitle}
             </h2>
           </div>
           <div className="mt-8 flex max-w-2xl flex-col gap-5 md:mt-0">
-            {issue.notes.map((t, k) => (
+            {notes.map((t, k) => (
               <p key={k} className="text-[16px] leading-[1.8] md:text-[17px]">
-                {k === 0 ? (
+                {/* 2026-11-12 日本語は大きな1文字を沈めない（「秋、」のように読点が行頭に残るため） */}
+                {k === 0 && !J ? (
                   <>
                     {/* 2026-10-22 雑誌のドロップキャップ：最初の1文字を3行ぶん大きく沈める */}
                     <span
@@ -228,12 +240,12 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {issue.seo && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <SectionLabel>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</SectionLabel>
+            <SectionLabel>{J?.seo ? <>旅の覚え書き&nbsp;&nbsp;—&nbsp;&nbsp;{MONTH_JA[issue.seo.month] ?? issue.seo.month}の{nowName}</> : <>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</>}</SectionLabel>
             <dl className="flex max-w-2xl flex-col gap-4 text-[14px] leading-relaxed" style={{ color: MUTE }}>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>Weather</dt><dd className="mt-1">{issue.seo.weather}</dd></div>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>What she wore</dt><dd className="mt-1">{issue.seo.wore}</dd></div>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>Earlier or later</dt><dd className="mt-1">{issue.seo.season}</dd></div>
-              <p className="text-[12px]">The images in this issue were made with AI by VUAL. The places, the routes and the facts are real.</p>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '天気' : 'Weather'}</dt><dd className="mt-1">{trip!.weather}</dd></div>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '着ていた服' : 'What she wore'}</dt><dd className="mt-1">{trip!.wore}</dd></div>
+              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '前の月・後の月なら' : 'Earlier or later'}</dt><dd className="mt-1">{trip!.season}</dd></div>
+              <p className="text-[12px]">{ja ? 'この号の画像は、VUAL が AI で作りました。場所・道すじ・事実は本物です。' : 'The images in this issue were made with AI by VUAL. The places, the routes and the facts are real.'}</p>
             </dl>
           </div>
         </section>
@@ -329,7 +341,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
             {issue.latitude}&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city}
           </p>
           <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
-            {issue.chapters.map((c) => c.place).join('  ·  ')}
+            {issue.chapters.map((_, k) => place(k)).join('  ·  ')}
           </p>
           {/* 2026-11-11 この号が何かを、言い切りの1段落で（検索や AI のチャットが引用しやすいように。雑誌の邪魔をしないよう奥付に小さく） */}
           <p className="mt-6 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
