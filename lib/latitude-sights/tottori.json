@@ -1,0 +1,56 @@
+[
+ {
+  "name": "鳥取民藝美術館",
+  "nameEn": "Tottori Folk Crafts Museum",
+  "kind": "art",
+  "area": "栄町",
+  "areaEn": "Sakae-machi",
+  "address": "鳥取市栄町651",
+  "url": "https://www.tottori-mingei.jp/",
+  "what": "昭和24年に医師の吉田璋也が開いた民藝美術館。日本や朝鮮、中国、西洋の古民藝と、吉田が手がけた新作民藝を収蔵する。",
+  "whatEn": "A folk-craft museum founded in 1949 by the doctor Shoya Yoshida. Its collection includes older crafts from Japan, Korea, China and the West, and new mingei work developed by Yoshida.",
+  "coords": [
+   35.49612,
+   134.22716
+  ],
+  "notice": "10時から17時。水曜休館で、祝日の場合は開館し翌日休館。年末年始と展示替えにも休む。",
+  "noticeEn": "Open 10 am to 5 pm. Closed Wednesdays, or the following day if Wednesday is a holiday, over New Year and for exhibition changes.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鳥取砂丘 砂の美術館",
+  "nameEn": "The Sand Museum",
+  "kind": "art",
+  "area": "福部町湯山",
+  "areaEn": "Fukube-cho Yuyama",
+  "address": "鳥取市福部町湯山2083-17",
+  "url": "https://www.sand-museum.jp/",
+  "what": "砂を素材にした彫刻を展示する美術館。海外の砂像彫刻家を招き、毎年テーマを変えて作品を作る。",
+  "whatEn": "A museum of sculpture made from sand. Sculptors are invited from overseas to make works on a different theme each year.",
+  "coords": [
+   35.53965,
+   134.23834
+  ],
+  "notice": "スペインをテーマにした第17期展は2027年1月3日まで。会期中無休、9時から18時、最終入館17時30分。",
+  "noticeEn": "The seventeenth exhibition, on Spain, runs until 3 January 2027. Open daily during the exhibition, 9 am to 6 pm, with last entry at 5:30 pm.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鳥取城跡",
+  "nameEn": "Tottori Castle Ruins",
+  "kind": "sight",
+  "area": "東町",
+  "areaEn": "Higashi-machi",
+  "address": "鳥取市東町2丁目",
+  "url": "https://www.torican.jp/spot/detail_1001.html",
+  "what": "久松山の山頂からふもとに広がる城跡。石垣や天守台が残り、江戸時代の大手門だった中ノ御門は2025年に復元が完成した。",
+  "whatEn": "Castle ruins extending from the summit to the foot of Mount Kyusho, with stone walls and the keep platform remaining. Restoration of Nakanogomon, the main gate in the Edo period, was completed in 2025.",
+  "coords": [
+   35.51001,
+   134.24117
+  ],
+  "notice": "隣接する仁風閣は保存修理で長期休館中。2025年9月末から外観も覆われているが、宝隆院庭園と宝扇庵は公開を続ける。",
+  "noticeEn": "Nearby Jinpukaku is closed for conservation work, with its exterior covered since late September 2025. Horyuin Garden and Hosennan remain open.",
+  "verifiedAt": "2026-11-12"
+ }
+]

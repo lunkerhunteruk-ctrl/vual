@@ -205,6 +205,8 @@ def write_ts():
             **({'countryCode': c['countryCode']} if c.get('countryCode') else {}),
             'person': c.get('person', 'rin'), 'coords': c['coords'], 'intro': c['intro'], 'introJa': c['introJa'],
             'images': [], 'locator': c['locator'],
+            **({'issue': c['issue']} if c.get('issue') else {}),   # 2026-11-12 号のある町（鳥取）：号へのリンク
+            **({'route': c['route']} if c.get('route') else {}),   # 凛の1日の回り方（lib/latitude-places.ts の route と同じ形）
             'industries': [{k: i[k] for k in ('key', 'en', 'ja', 'about', 'aboutJa')} for i in c.get('industries', [])],
             'shopMap': (ROOT / 'public' / 'latitude' / 'citymaps' / f'{s}.json').exists(),
             'routeBuilder': (ROOT / 'public' / 'latitude' / 'routes' / f'{s}-pairs.json').exists(),

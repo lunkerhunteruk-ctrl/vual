@@ -1,0 +1,338 @@
+[
+ {
+  "name": "鳥取たくみ工芸店",
+  "nameEn": "Tottori Takumi Kogeiten",
+  "category": "local",
+  "industry": "tottori-mingei",
+  "tags": [
+   "ceramics",
+   "glass",
+   "wood"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakae-machi",
+  "address": "鳥取市栄町651",
+  "url": "https://www.tottori-mingei.jp/#sec02",
+  "what": "昭和7年創業の民藝専門店。鳥取を中心に、全国の陶器・硝子・木工・染織品を扱う。",
+  "whatEn": "A mingei shop founded in 1932, selling pottery, glass, woodwork and textiles from Tottori and across Japan.",
+  "note": "家で使う器を探すなら、まず鳥取のものから見たい。",
+  "noteEn": "For something to use at home, I would start with the Tottori pieces.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49613,
+   134.22707
+  ]
+ },
+ {
+  "name": "因州・中井窯",
+  "nameEn": "Inshu Nakaigama",
+  "category": "local",
+  "industry": "tottori-mingei",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "河原町中井",
+  "areaEn": "Kawahara-cho Nakai",
+  "address": "鳥取市河原町中井243-5",
+  "url": "https://nakaigama.jp/",
+  "what": "河原町中井の窯元。地元の山土と、わらの灰から作る釉薬で器を作り、作業場の隣にギャラリーがある。",
+  "whatEn": "A kiln in Kawahara-cho Nakai, making pottery with local mountain clay and straw-ash glazes. There is a gallery beside the workshop.",
+  "note": "作業場の隣のギャラリーで、器を手に取って選びたい。",
+  "noteEn": "I would choose a piece in the gallery beside the workshop, holding it first.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.38237,
+   134.16927
+  ]
+ },
+ {
+  "name": "加路屋",
+  "nameEn": "Karoya",
+  "category": "local",
+  "industry": "tofu-chikuwa",
+  "tags": [
+   "tofu-chikuwa",
+   "fish-cake"
+  ],
+  "area": "元魚町",
+  "areaEn": "Motouo-machi",
+  "address": "鳥取市元魚町3丁目201",
+  "url": "https://karoya.net/",
+  "what": "元魚町の練り物店。機械を使う工程を抑え、とうふ竹輪やあご竹輪を手仕事で作る。",
+  "whatEn": "A fish-cake maker in Motouo-machi, keeping machinery to a minimum to make tofu chikuwa and flying-fish chikuwa by hand.",
+  "note": "とうふ竹輪とあご竹輪を、一つずつ選んでみたい。",
+  "noteEn": "I would choose one tofu chikuwa and one flying-fish chikuwa.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.50186,
+   134.2288
+  ]
+ },
+ {
+  "name": "武蔵屋食堂",
+  "nameEn": "Musashiya Shokudo",
+  "category": "food",
+  "tags": [
+   "noodles",
+   "dashi"
+  ],
+  "area": "職人町",
+  "areaEn": "Shokunin-machi",
+  "address": "鳥取市職人町15",
+  "url": "https://6348.jp/",
+  "what": "明治45年創業の食堂で、素ラーメンの発祥の店。鳥取県産小麦の自家製麺に、かつおと昆布などの和風だしを合わせる。",
+  "whatEn": "A diner founded in 1912, where su-ramen began. House-made noodles from Tottori wheat are served in a Japanese broth of bonito, kelp and other ingredients.",
+  "note": "まずは素ラーメンを頼んで、だしの味を確かめたい。",
+  "noteEn": "I would start with su-ramen to taste the broth.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49971,
+   134.23323
+  ]
+ },
+ {
+  "name": "たくみ割烹店",
+  "nameEn": "Takumi Kappoten",
+  "category": "food",
+  "tags": [
+   "mingei",
+   "hot-pot"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakae-machi",
+  "address": "鳥取市栄町652",
+  "url": "https://www.tottori-mingei.jp/takumikappou.html",
+  "what": "吉田璋也がデザインした空間で、民藝品を使って食事をする店。昭和37年に開き、名物はすすぎ鍋。",
+  "whatEn": "A restaurant opened in 1962, serving food with mingei craftwork in a space designed by Shoya Yoshida. Its speciality is susugi-nabe hot pot.",
+  "note": "すすぎ鍋を頼んで、食事に使う器もゆっくり見たい。",
+  "noteEn": "I would order susugi-nabe and take a look at the pottery used for the meal.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49613,
+   134.22697
+  ]
+ },
+ {
+  "name": "cafe restaurant SUKATTO",
+  "nameEn": "cafe restaurant SUKATTO",
+  "category": "food",
+  "tags": [
+   "curry",
+   "shrimp"
+  ],
+  "area": "福部町湯山",
+  "areaEn": "Fukube-cho Yuyama",
+  "address": "鳥取市福部町湯山2164-806",
+  "url": "https://sukatto-tottori.com/",
+  "what": "鳥取砂丘リフト乗り場近くのカフェレストラン。鳥取牛のビーフカレーや、猛者海老のクリームパスタを出す。",
+  "whatEn": "A café restaurant near the sand-dune chairlift, serving Tottori beef curry and cream pasta with local mosa shrimp.",
+  "note": "砂丘を歩いたあとは、猛者海老のパスタで昼にしたい。",
+  "noteEn": "After walking the dunes, I would have the mosa-shrimp pasta for lunch.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.54259,
+   134.23683
+  ]
+ },
+ {
+  "name": "春歌秋灯 川端店",
+  "nameEn": "Shunka Shuto, Kawabata",
+  "category": "food",
+  "tags": [
+   "seafood",
+   "dashimaki"
+  ],
+  "area": "川端",
+  "areaEn": "Kawabata",
+  "address": "鳥取市川端1丁目107",
+  "url": "https://www.hananoren.net/shunkashutou/",
+  "what": "網代港や夏泊港から旬の魚を仕入れる和食店。昼は定食、夜は会席と一品料理があり、出汁巻き玉子は注文ごとに焼く。",
+  "whatEn": "A Japanese restaurant sourcing seasonal fish from Ajiro and Natsudomari ports. Lunch sets, evening courses and individual dishes, with dashimaki omelettes cooked to order.",
+  "note": "夜は、注文してから焼く出汁巻き玉子を一皿頼みたい。",
+  "noteEn": "In the evening, I would order a freshly made dashimaki omelette.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49922,
+   134.23127
+  ]
+ },
+ {
+  "name": "タカハマカフェ",
+  "nameEn": "Takahama Cafe",
+  "category": "cafe",
+  "tags": [
+   "architecture",
+   "washi",
+   "wood"
+  ],
+  "area": "福部町湯山",
+  "areaEn": "Fukube-cho Yuyama",
+  "address": "鳥取市福部町湯山2164",
+  "url": "https://takahama-cafe.com/",
+  "what": "鳥取砂丘の目の前にある、隈研吾設計のカフェ。県産杉の家具と、砂丘の砂をあしらった和紙の照明がある。",
+  "whatEn": "A café facing the Tottori Sand Dunes, designed by Kengo Kuma. Furniture uses Tottori cedar, and the paper lamps are finished with sand from the dunes.",
+  "note": "砂丘の砂をあしらった和紙の照明も、ゆっくり見たい。",
+  "noteEn": "I would take a moment to look at the paper lamps finished with dune sand.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.54337,
+   134.23731
+  ]
+ },
+ {
+  "name": "喫茶 ベニ屋",
+  "nameEn": "Kissa Beniya",
+  "category": "cafe",
+  "tags": [
+   "curry",
+   "shaved-ice"
+  ],
+  "area": "末広温泉町",
+  "areaEn": "Suehiro-onsen-cho",
+  "address": "鳥取市末広温泉町129",
+  "url": "https://beniya.shopselect.net/",
+  "what": "昭和23年創業の喫茶店。看板のカレーと、夏のかき氷「インドミルク」がある。",
+  "whatEn": "A café founded in 1948, known for its curry and summer Indian Milk shaved ice.",
+  "note": "昼はカレーを頼んで、夏ならインドミルクも選びたい。",
+  "noteEn": "I would have curry for lunch, and Indian Milk shaved ice in summer.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49669,
+   134.22914
+  ]
+ },
+ {
+  "name": "WEEKDAY COFFEE ROASTERS",
+  "nameEn": "WEEKDAY COFFEE ROASTERS",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "espresso"
+  ],
+  "area": "天神町",
+  "areaEn": "Tenjin-cho",
+  "address": "鳥取市天神町67-2",
+  "url": "https://www.instagram.com/weekdaycoffeeroasters/",
+  "what": "天神町の焙煎所。水洗い珈琲とエスプレッソを出し、豆の販売や持ち帰りもある。",
+  "whatEn": "A coffee roaster in Tenjin-cho, serving washed-bean coffee and espresso, with beans and drinks to take away.",
+  "note": "朝8時から開くので、散歩の前にコーヒーを飲みたい。",
+  "noteEn": "It opens at eight, so I would have coffee before a walk.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49377,
+   134.21926
+  ]
+ },
+ {
+  "name": "Totto PURIN",
+  "nameEn": "Totto PURIN",
+  "category": "sweets",
+  "tags": [
+   "pudding"
+  ],
+  "area": "福部町湯山",
+  "areaEn": "Fukube-cho Yuyama",
+  "address": "鳥取市福部町湯山2164-657",
+  "url": "https://tottopurin.com/",
+  "what": "鳥取砂丘のそばのプリン専門店。「砂プリン」や、固めのカスタードプリン、季節のプリンを作る。",
+  "whatEn": "A pudding shop by the Tottori Sand Dunes, making Suna Purin, firm custard pudding and seasonal flavours.",
+  "note": "砂丘のそばで食べるなら、まず砂プリンを一つ選ぶ。",
+  "noteEn": "By the dunes, I would start with a Suna Purin.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.54184,
+   134.23675
+  ]
+ },
+ {
+  "name": "鳥取宝月堂",
+  "nameEn": "Tottori Hougetsudou",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "ginger"
+  ],
+  "area": "二階町",
+  "areaEn": "Nikai-machi",
+  "address": "鳥取市二階町3丁目121",
+  "url": "https://hougetsudou.jp/",
+  "what": "二階町の和菓子店。生姜せんべい、砂の丘、MOCHI cubeなどを作る。",
+  "whatEn": "A wagashi shop in Nikai-machi, making ginger senbei, Suna no Oka cookies and MOCHI cube sweets.",
+  "note": "お土産には、生姜せんべいと砂の丘を少しずつ選ぶ。",
+  "noteEn": "For something to take home, I would choose a few ginger senbei and Suna no Oka cookies.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.50247,
+   134.22973
+  ]
+ },
+ {
+  "name": "yonayona焼き菓子店",
+  "nameEn": "yonayona Bake",
+  "category": "sweets",
+  "tags": [
+   "canele",
+   "cookies"
+  ],
+  "area": "吉方",
+  "areaEn": "Yoshikata",
+  "address": "鳥取市吉方127-2 103号",
+  "url": "https://shop.yonayonabake.com/",
+  "what": "吉方の焼き菓子店。おばけカヌレを中心に、クッキー缶やフィナンシェ、レーズンバターサンドを作る。",
+  "whatEn": "A bake shop in Yoshikata, making Obake canelés, cookie tins, financiers and raisin-butter sandwiches.",
+  "note": "まずはプレーンのおばけカヌレを、一つ選んでみたい。",
+  "noteEn": "I would start with one plain Obake canelé.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.48828,
+   134.23685
+  ]
+ },
+ {
+  "name": "Gallery そら",
+  "nameEn": "Gallery Sora",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "wood"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakae-machi",
+  "address": "鳥取市栄町658-3",
+  "url": "https://gallery-sora-kuu.com/",
+  "what": "サンロード商店街のギャラリーとクラフトショップ。山陰の若手作家を中心に、陶器・木工・ガラスなどの手仕事品を展示販売する。",
+  "whatEn": "A gallery and craft shop on the Sun Road shopping street, showing and selling pottery, woodwork, glass and other handwork, mainly by younger Sanin makers.",
+  "note": "器を選ぶ前に、いま開いている展示も見ておきたい。",
+  "noteEn": "Before choosing pottery, I would look at the current exhibition too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49595,
+   134.22709
+  ]
+ },
+ {
+  "name": "Am's",
+  "nameEn": "Am’s",
+  "category": "craft",
+  "tags": [
+   "tableware",
+   "ceramics",
+   "homeware"
+  ],
+  "area": "行徳",
+  "areaEn": "Gyotoku",
+  "address": "鳥取市行徳1丁目155",
+  "url": "https://ams-tottori.jp/",
+  "what": "行徳の、衣・食・住を扱う店。家具や日用品のほか、日本の食器と道具、山陰の窯元の器もそろえる。",
+  "whatEn": "A shop in Gyotoku for clothing, food and the home, with furniture, everyday goods, Japanese tableware and tools, and pottery from Sanin kilns.",
+  "note": "家で使うものを探すなら、山陰の窯元の器から見る。",
+  "noteEn": "For something to use at home, I would start with the Sanin pottery.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.49811,
+   134.22207
+  ]
+ }
+]

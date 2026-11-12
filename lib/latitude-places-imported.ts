@@ -23,6 +23,8 @@ import takamatsuPlaces from './latitude-places/takamatsu.json';
 import takamatsuSights from './latitude-sights/takamatsu.json';
 import takayamaPlaces from './latitude-places/takayama.json';
 import takayamaSights from './latitude-sights/takayama.json';
+import tottoriPlaces from './latitude-places/tottori.json';
+import tottoriSights from './latitude-sights/tottori.json';
 
 export const IMPORTED_CITIES: LatitudeCity[] = [
   {
@@ -267,5 +269,29 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: takayamaPlaces as CityPlace[],
     sights: takayamaSights as CitySight[],
+  },
+  {
+    slug: "tottori",
+    name: "Tottori",
+    nameJa: "鳥取",
+    latitude: "35.5° N",
+    country: "Tottori, Japan",
+    countryJa: "鳥取県",
+    person: "rin",
+    coords: [35.4985, 134.23],
+    intro: "A former castle town between the Sea of Japan and the Chugoku mountains, known for its coastal sand dunes. Mingei pottery and tofu chikuwa, with Matsuba crab in winter.",
+    introJa: "日本海と中国山地にはさまれた、砂丘で知られる城下町。民藝の器ととうふちくわがあり、冬は松葉ガニの季節になる。",
+    images: [],
+    locator: {"en": "On the Sea of Japan coast · between the sea and the Chugoku mountains", "ja": "日本海側・海と中国山地にはさまれた町"},
+    issue: "tottori",
+    route: [{"time": "09:15", "place": "The camels at the dune entrance", "placeJa": "砂丘の入口のらくだ", "what": "Past the camels by the entrance; at weekends they are there for photographs only.", "whatJa": "入口のらくだの前を通る。週末のらくだは、記念撮影のためだけにいる。", "image": "camels.jpg", "coords": [35.5431, 134.2354], "short": "The camels", "shortJa": "らくだ", "gmaps": "鳥取砂丘 らくだ"}, {"time": "09:40", "place": "The great slope of Umanose", "placeJa": "馬の背の大斜面", "what": "Up the long landward slope, the boots sinking with every step.", "whatJa": "陸側の長い斜面を、一歩ごとにブーツを沈ませて上る。", "image": "slope.jpg", "coords": [35.5447, 134.2328], "short": "The great slope", "shortJa": "大斜面", "gmaps": "馬の背 鳥取砂丘"}, {"time": "10:21", "place": "The top of Umanose", "placeJa": "馬の背のてっぺん", "what": "On the ridge, the sea on one side; she empties the sand out of one boot.", "whatJa": "片側に海が見える稜線で、ブーツを片方逆さにして砂を出す。", "image": "top.jpg", "coords": [35.545, 134.232], "short": "The top", "shortJa": "てっぺん", "gmaps": "馬の背 鳥取砂丘"}, {"time": "12:30", "place": "The Sakyu lift", "placeJa": "砂丘のリフト", "what": "Back up to the dune centre on the sightseeing chairlift.", "whatJa": "観光リフトで、砂丘センターへ上がる。", "image": "lift.jpg", "coords": [35.54151, 134.2381], "short": "The lift", "shortJa": "リフト", "gmaps": "鳥取砂丘 観光リフト"}, {"time": "13:45", "place": "A cup in town, by the Mingei Museum", "placeJa": "町の器（民藝美術館のそば）", "what": "In town, a small cup glazed half green, half black.", "whatJa": "町で、緑と黒に掛け分けた小さな湯のみを選ぶ。", "image": "cup.jpg", "coords": [35.49612, 134.22716], "near": ["鳥取たくみ工芸店", "たくみ割烹店", "Gallery そら"], "short": "A cup in town", "shortJa": "町の器", "gmaps": "鳥取民藝美術館"}, {"time": "16:58", "place": "The last light on Umanose", "placeJa": "夕方の馬の背", "what": "Back on the ridge for the last light; the wind draws ripples across the sand.", "whatJa": "夕方の馬の背へ戻る。風が砂に模様を描く。", "image": "dusk.jpg", "coords": [35.5461, 134.2337], "short": "The last light", "shortJa": "夕方の馬の背", "gmaps": "馬の背 鳥取砂丘"}, {"time": "19:15", "place": "The inn", "placeJa": "宿", "what": "Boots by the step, a little sand still in one of them.", "whatJa": "上がりかまちのブーツ。片方に、まだ少し砂が残っている。", "image": "inn.jpg"}],
+    industries: [
+      {"key": "tottori-mingei", "en": "Tottori Mingei Folk Craft & Pottery", "ja": "鳥取民藝・陶芸", "about": "In 1931, the doctor Shoya Yoshida began a new mingei movement in Tottori. Local materials and traditional techniques were used to make pottery, furniture, textiles and other things for everyday life.", "aboutJa": "昭和6年、医師の吉田璋也が鳥取で新作民藝運動を始めた。地元の材料と伝統的な技法で、陶器や家具、染織など、暮らしに使う工芸を作ってきた。"},
+      {"key": "tofu-chikuwa", "en": "Tofu Chikuwa", "ja": "とうふちくわ", "about": "A local food of eastern Tottori, made from firm tofu and fish paste. The pale steamed rolls are sold alongside browned, grilled versions, and have long been eaten as a snack.", "aboutJa": "木綿豆腐と魚のすり身を合わせる、鳥取県東部の郷土食。白く蒸した竹輪のほかに焼いて仕上げるものもあり、昔からおやつとしても食べられてきた。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tottoriPlaces as CityPlace[],
+    sights: tottoriSights as CitySight[],
   },
 ];
