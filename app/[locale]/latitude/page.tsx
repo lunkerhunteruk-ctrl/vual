@@ -93,26 +93,37 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             Places
             <Link href={`/${locale}/latitude/places`} className="underline underline-offset-4" style={{ color: INK }}>{locale === 'ja' ? '地図で見る →' : 'On the map →'}</Link>
           </p>
-          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.3em]">
-            {CITIES.filter((c) => !c.issue || liveIssues().some((i) => i.slug === c.issue)).map((c) => (
-              <li key={c.slug}>
-                <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{locale === 'ja' ? c.nameJa : c.name}</Link>
-              </li>
-            ))}
-          </ul>
+          {/* 2026-11-12 ユーザー：街が増えると名前の壁になる。ここには号のある街だけを並べ、案内だけの街は数を1行で（一覧は場所のページで地方ごとに） */}
+          {(() => {
+            const live = liveIssues();
+            // 号のページと同じ探し方（金沢のように issue の無い街は、旅人と街の名前で）
+            const hasIssue = (c: (typeof CITIES)[number]) => live.some((i) => i.slug === c.issue || (c.person === i.person && c.name.toLowerCase() === i.city.toLowerCase()));
+            const withIssue = CITIES.filter(hasIssue);
+            const rest = CITIES.filter((c) => !hasIssue(c) && !c.issue && c.places.length);
+            const jp = rest.filter((c) => (c.countryCode || 'JP') === 'JP').length;
+            const abroad = rest.length - jp;
+            const ja = locale === 'ja';
+            return (
+              <>
+                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.3em]">
+                  {withIssue.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.nameJa : c.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+                {rest.length > 0 && (
+                  <Link href={`/${locale}/latitude/places`} className="mt-4 inline-block text-[12px] underline-offset-4 hover:underline md:text-[13px]" style={{ color: MUTE }}>
+                    {ja
+                      ? `ほか、${[jp && `日本の${jp}`, abroad && `海外の${abroad}`].filter(Boolean).join('と、')}の街の案内　→`
+                      : `And city guides to ${[jp && `${jp} more town${jp > 1 ? 's' : ''} in Japan`, abroad && `${abroad} abroad`].filter(Boolean).join(' and ')}  →`}
+                  </Link>
+                )}
+              </>
+            );
+          })()}
         </nav>
-        {/* 2026-11-02 制作ノート（Substack）への入口。プロフィールのリンク（vual.jp/latitude）から来た人が迷わず行けるよう上に。
-            People と同じ組み方（小さな見出し＋一行）にして、宣伝の帯にしない。行き先は短いアドレス /notes（next.config の転送） */}
-        <div className="mt-8">
-          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>Notes</p>
-          <a href="/notes" target="_blank" rel="noopener" className="mt-2 inline-block underline-offset-4 hover:underline" style={{ color: INK }}>
-            {locale === 'ja' ? (
-              <span className="text-[14px] md:text-[15px]" style={{ fontFamily: MINCHO }}>一号ずつ、どう作ったか。&nbsp;→</span>
-            ) : (
-              <span className="text-[16px] italic md:text-[18px]" style={{ fontFamily: SERIF }}>How each issue is made.&nbsp;&nbsp;→</span>
-            )}
-          </a>
-        </div>
+        {/* 2026-11-12 ユーザー：Places の下の Notes（一号ずつ、どう作ったか）は外す。画面の下に同じ入口がある */}
       </header>
       <main className="flex snap-x gap-4 overflow-x-auto px-4 pb-28 md:gap-8 md:px-8 lg:px-[max(2rem,calc((100vw-72rem)/2+2rem))]" style={{ scrollbarWidth: 'thin' }}>
         {liveIssues().map((i) => (

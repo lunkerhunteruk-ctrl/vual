@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import type { PlaceCountry } from '@/lib/latitude-places-index';
+import { REGIONS } from '@/lib/latitude-regions';
 
 // 2026-11-11 場所のページと国のページの、国ごと・街ごとの文字の一覧（街の案内と号へのリンク）。検索と AI のチャットが読む
 export function CountryCityList({ countries, locale, linkCountry = true }: { countries: PlaceCountry[]; locale: string; linkCountry?: boolean }) {
@@ -14,8 +15,12 @@ export function CountryCityList({ countries, locale, linkCountry = true }: { cou
               <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.name.ja : c.name.en}</Link>
             ) : (ja ? c.name.ja : c.name.en)}
           </h2>
-          <ul className="mt-4 flex flex-col">
-            {c.cities.map((q) => (
+          {/* 2026-11-12 町が多い国（いまは日本）は、地方ごとに小見出しを付けて並べる（北から。lib/latitude-regions.ts の順） */}
+          {(REGIONS[c.code] && c.cities.length > 8 ? REGIONS[c.code].map((r) => ({ r, qs: c.cities.filter((q) => q.region === r.key) })).filter((g) => g.qs.length) : [{ r: null, qs: c.cities }]).map(({ r, qs }) => (
+          <div key={r?.key ?? 'all'}>
+          {r && <p className="mt-6 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? r.ja : r.en}</p>}
+          <ul className={r ? 'mt-2 flex flex-col' : 'mt-4 flex flex-col'}>
+            {qs.map((q) => (
               <li key={q.slug} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t py-4" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                 <span className="flex items-baseline gap-4">
                   <Link href={`/${locale}/latitude/places/${q.slug}`} className="text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
@@ -36,6 +41,8 @@ export function CountryCityList({ countries, locale, linkCountry = true }: { cou
               </li>
             ))}
           </ul>
+          </div>
+          ))}
         </div>
       ))}
     </div>
