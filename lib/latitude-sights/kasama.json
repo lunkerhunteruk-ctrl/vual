@@ -1,0 +1,72 @@
+[
+ {
+  "name": "笠間稲荷神社",
+  "nameEn": "Kasama Inari Shrine",
+  "kind": "sight",
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "笠間市笠間1",
+  "url": "https://www.kasama.or.jp/",
+  "what": "宇迦之御魂神を祀る神社で、社伝では651年の創建。江戸末期に再建された本殿は国の重要文化財で、秋は境内に菊を飾る。",
+  "whatEn": "A shrine to Ukanomitama, said in shrine tradition to have been founded in 651. Its late-Edo main sanctuary is a national Important Cultural Property; chrysanthemums fill the grounds in autumn.",
+  "coords": [
+   36.38547,
+   140.25438
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "茨城県陶芸美術館",
+  "nameEn": "Ibaraki Ceramic Art Museum",
+  "kind": "art",
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "笠間市笠間2345",
+  "url": "https://www.tougei.museum.ibk.ed.jp/",
+  "what": "笠間芸術の森公園にある、陶芸を専門とする県立美術館。陶芸作品をコレクション展や企画展で見せる。",
+  "whatEn": "A prefectural ceramics museum in Kasama Geijutsu no Mori Park, showing pottery in collection displays and special exhibitions.",
+  "coords": [
+   36.37239,
+   140.263
+  ],
+  "notice": "第1展示室は照明工事で2026年11月30日〜2027年2月9日閉室。全館は2026年12月25日〜2027年1月1日休館。通常は月曜休館（祝日は開館し翌平日休館）。",
+  "noticeEn": "Gallery 1 closes for lighting works from 30 November 2026 to 9 February 2027. The whole museum closes from 25 December 2026 to 1 January 2027. Usually closed Mondays, or the next weekday after a Monday holiday.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "笠間日動美術館",
+  "nameEn": "Kasama Nichido Museum of Art",
+  "kind": "art",
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "笠間市笠間978-4",
+  "url": "https://www.nichido-museum.or.jp/",
+  "what": "日本とフランスの絵画を中心に集めた美術館。鴨居玲の部屋や画家のパレット展示室があり、野外には彫刻庭園が広がる。",
+  "whatEn": "A museum centred on Japanese and French painting, with a room devoted to Kamoi Ryo, a display of painters' palettes and an outdoor sculpture garden.",
+  "coords": [
+   36.38448,
+   140.25833
+  ],
+  "notice": "2026年11月12日は日本館2階小品展示室、19日は金山平三・佐竹徳記念室が展示替えで閉室。月曜休館だが、11月23日は開館し24日は休館。",
+  "noticeEn": "The small-works room on floor 2 of the Japan Wing closes for rehanging on 12 November 2026; the Kanayama Heizo and Satake Toku room closes on 19 November. Closed Mondays, with 23 November open and 24 November closed.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "春風萬里荘",
+  "nameEn": "Shunpu Banri-so",
+  "kind": "sight",
+  "area": "下市毛",
+  "areaEn": "Shimoichige",
+  "address": "笠間市下市毛1371-1",
+  "url": "https://www.nichido-museum.or.jp/shunpu/",
+  "what": "北大路魯山人が住んだ茅葺きの家を、1965年に北鎌倉から移築した日動美術館の分館。魯山人の陶芸作品と、自ら設計した茶室、枯山水の庭がある。",
+  "whatEn": "An annex of the Nichido museum in the thatched house where Kitaoji Rosanjin lived, moved from North Kamakura in 1965. It has his pottery, a tea room he designed and a dry-landscape garden.",
+  "coords": [
+   36.36446,
+   140.25117
+  ],
+  "notice": "月曜休館。2026年11月23日は開館し、24日は休館。1〜2月と8月は土日祝のみ開館し、12〜2月は10時〜16時。",
+  "noticeEn": "Closed Mondays; open 23 November 2026 and closed 24 November. Open only weekends and public holidays in January, February and August, with winter hours of 10 am to 4 pm from December to February.",
+  "verifiedAt": "2026-11-12"
+ }
+]

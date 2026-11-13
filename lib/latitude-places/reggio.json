@@ -3,7 +3,9 @@
   "name": "Cafè Noir",
   "nameEn": "Cafè Noir",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "チェントロ",
   "areaEn": "Centro",
   "address": "Via Tommaso Campanella, 36, Reggio Calabria",
@@ -12,13 +14,19 @@
   "whatEn": "A café and cocktail bar in the centre, with specialty coffee. It uses local ingredients such as bergamot. It won the cocktail contest at the October 2026 Bergarè bergamot festival.",
   "note": "ベルガモットを、グラスの中で試す店。",
   "noteEn": "Bergamot, tried in a glass.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10734,
+   15.64355
+  ]
  },
  {
   "name": "Malavenda Café",
   "nameEn": "Malavenda Café",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ルンゴマーレ",
   "areaEn": "Lungomare",
   "address": "Via Zecca, 1, Reggio Calabria",
@@ -27,7 +35,11 @@
   "whatEn": "A café on a lane between Corso Garibaldi and the seafront, with coffee, brioche and aperitifs. At the 2026 bergamot festival it served a brioche with smoked salmon and bergamot mayonnaise.",
   "note": "ベルガモットを、甘くない料理に。",
   "noteEn": "Bergamot in a savoury dish.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11064,
+   15.64571
+  ]
  },
  {
   "name": "Pasticceria Fragomeni",
@@ -41,7 +53,11 @@
   "whatEn": "A family pastry shop founded in 1988, known for cannoli and granita. In 2026 it made a new cannolo with bergamot.",
   "note": "ベルガモットのカンノーロ。香りが主役の菓子。",
   "noteEn": "A bergamot cannolo. Scent is the point.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10781,
+   15.64165
+  ]
  },
  {
   "name": "Gelateria Trebottoni",
@@ -55,7 +71,11 @@
   "whatEn": "A gelateria near the National Archaeological Museum, described as using seasonal Calabrian ingredients and no additives. At the 2026 bergamot festival it served bergamot gelato.",
   "note": "ベルガモットを、ジェラートで。",
   "noteEn": "Bergamot, as gelato.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11913,
+   15.65302
+  ]
  },
  {
   "name": "Ke Gelato",
@@ -69,7 +89,11 @@
   "whatEn": "A gelato and dessert bar by the sea. It is known for a chocolate affogato and bubble waffles. The owner is gelato maker Consolato Namia.",
   "note": "温かいチョコを、ジェラートにかける一杯。",
   "noteEn": "Warm chocolate poured over gelato.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10835,
+   15.64163
+  ]
  },
  {
   "name": "Cordon Bleu",
@@ -83,7 +107,11 @@
   "whatEn": "A bar and tavola calda on Corso Garibaldi, open since 1976 and known for savoury crispelline. It marked its 50th anniversary in March 2026.",
   "note": "朝のエスプレッソと、塩味のクリスペッリーネ。",
   "noteEn": "Morning espresso and salty crispelline.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11109,
+   15.64752
+  ]
  },
  {
   "name": "Biondo Lab",
@@ -97,7 +125,11 @@
   "whatEn": "A rosticceria in the old centre that makes Reggio's panzerotti and calzoni. It reopened on Via Filippini in October 2026.",
   "note": "注文を受けてから揚げる店。",
   "noteEn": "Fried to order.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10906,
+   15.6481
+  ]
  },
  {
   "name": "Gastronomia del Carmine",
@@ -111,7 +143,11 @@
   "whatEn": "A deli near Piazza del Carmine with home-style Calabrian dishes and stockfish dishes. At the 2026 bergamot festival it served stockfish meatballs with bergamot.",
   "note": "ベルガモットを、魚の料理に。",
   "noteEn": "Bergamot with fish.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10429,
+   15.64177
+  ]
  },
  {
   "name": "Piro Piro",
@@ -125,7 +161,11 @@
   "whatEn": "A waterfront restaurant and lounge bar on the Lungomare, with seafood and Calabrian dishes. Sicily is in view across the water.",
   "note": "海の向こうに、シチリア。",
   "noteEn": "Sicily, across the water.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10998,
+   15.64357
+  ]
  },
  {
   "name": "Scialò – Finestra sul Mare",
@@ -139,7 +179,11 @@
   "whatEn": "A kiosk bistro on the seafront, with stuffed focaccia and local cured meats. In October 2026 it opened a second place on Corso Garibaldi.",
   "note": "ベルガモットのピンサを出した店。",
   "noteEn": "They put bergamot on a pinsa.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11073,
+   15.64425
+  ]
  },
  {
   "name": "Pizza Roma",
@@ -153,7 +197,11 @@
   "whatEn": "A pizza-by-the-slice shop on Corso Vittorio Emanuele. The dough rises for up to 72 hours. At the 2026 bergamot festival it served a slice with bergamot gel.",
   "note": "ベルガモットのジェルが、ピザの上に。",
   "noteEn": "Bergamot gel, on a pizza.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11368,
+   15.6498
+  ]
  },
  {
   "name": "Funky Drop",
@@ -168,7 +216,11 @@
   "whatEn": "A craft brewery in Reggio with a taproom on Via Zecca. It brews beer with local bergamot.",
   "note": "ベルガモットを、ビールの香りに。",
   "noteEn": "Bergamot as a beer aroma.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11035,
+   15.64528
+  ]
  },
  {
   "name": "Gelato Cesare",
@@ -182,7 +234,11 @@
   "whatEn": "A green gelato kiosk on the seafront, open since 1918. It is known for local flavours such as annona and bergamot.",
   "note": "アンノーナ、ベルガモット。土地の果物の味。",
   "noteEn": "Annona, bergamot. Local fruit flavours.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11425,
+   15.65021
+  ]
  },
  {
   "name": "Museo Nazionale del Bergamotto (MuBer)",
@@ -197,7 +253,11 @@
   "whatEn": "A museum of bergamot in the former covered market. It runs workshops on the essential oil and perfumery.",
   "note": "香りの元を知りたい人へ。体験教室がある。",
   "noteEn": "For those who want to know where a scent begins. It has workshops.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10814,
+   15.64678
+  ]
  },
  {
   "name": "Azienda Agricola Patea",
@@ -212,7 +272,11 @@
   "whatEn": "A bergamot farm in Brancaleone. It sells fruit, juice and essential oil and makes the Cardus liqueurs; visits and tastings are offered. About 100 km from Reggio.",
   "note": "香りの元は、畑にある。",
   "noteEn": "The scent begins in the field.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   37.9461,
+   16.08113
+  ]
  },
  {
   "name": "Pasticceria La Mimosa",
@@ -226,7 +290,11 @@
   "whatEn": "A pastry shop that began as a workshop in 1985 and has been on Piazza Sant'Anna since 1992. The Musolino family runs it. Known for bergamot sweets.",
   "note": "ベルガモットの菓子が、広場の店に並ぶ。",
   "noteEn": "Bergamot sweets, in a shop on the piazza.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10293,
+   15.64768
+  ]
  },
  {
   "name": "Royal Reef",
@@ -239,7 +307,11 @@
   "whatEn": "A seafront fish restaurant. It won the Reggio Calabria episode of the TV show 4 Ristoranti.",
   "note": "海を見ながら、魚。",
   "noteEn": "Fish, with the sea in view.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10856,
+   15.64018
+  ]
  },
  {
   "name": "Timo Restaurant",
@@ -253,7 +325,11 @@
   "whatEn": "A restaurant near the Duomo in the old centre, with traditional dishes. Giovanna runs the room.",
   "note": "旧市街で、昔からの料理を。",
   "noteEn": "Old dishes, in the old town.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10388,
+   15.64136
+  ]
  },
  {
   "name": "Lisca Bianca",
@@ -267,7 +343,11 @@
   "whatEn": "A seafood restaurant in an elegant side street near Villa Zerbi. The kitchen is open to view.",
   "note": "魚介の日に。厨房が見える。",
   "noteEn": "For a seafood day. The kitchen is open.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.10977,
+   15.64843
+  ]
  },
  {
   "name": "Cremeria Sottozero",
@@ -281,6 +361,10 @@
   "whatEn": "A cremeria and pasticceria founded in 1974, on the seafront since 1992. The Pennestrì family runs it.",
   "note": "50年以上続く、海沿いのジェラート。",
   "noteEn": "Seafront gelato, for over fifty years.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [
+   38.11154,
+   15.6465
+  ]
  }
 ]

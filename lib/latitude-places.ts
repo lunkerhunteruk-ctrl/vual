@@ -628,6 +628,8 @@ export const CITIES: LatitudeCity[] = [
       { file: 'passage.jpg', alt: 'Klára in a narrow stone passage at night', altJa: '夜の石の細い抜け道のクラーラ' },
       { file: 'bar.jpg', alt: 'Klára in a small bar under a wall of onyx', altJa: 'オニキスの壁の下、小さなバーのクラーラ' },
     ],
+    // 2026-11-13 店の位置と、クラーラの1日の位置（Hydrogen が地図のデータで確かめて直した）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: vienna as CityPlace[],
     industries: [
       { key: "glass-porcelain-silver", en: "Glass, porcelain and silver", ja: "ガラス・磁器・銀器", about: "Vienna's old court suppliers still make glass, porcelain and silver by hand in the city. Designers of the Wiener Werkstätte era such as Josef Hoffmann and Adolf Loos designed pieces for these workshops.", aboutJa: "宮廷に納めていた工房が、いまも市内でガラス・磁器・銀器を手で作る。ヨーゼフ・ホフマンやアドルフ・ロースなど、ウィーン工房の時代の建築家がこうした工房のために器をデザインした。" },
@@ -657,17 +659,17 @@ export const CITIES: LatitudeCity[] = [
       ],
     },
     route: [
-      { time: '08:40', place: 'Hauptbahnhof', placeJa: '中央駅', what: 'Off the night train in the morning.', whatJa: '夜行列車で、朝に着く。', image: 'train.jpg', near: ['Café Goldegg'] },
-      { time: '09:00', place: 'I Gumpendorfer Strasse', placeJa: 'I グンペンドルファー通り', what: 'Past the window of an old coffee house.', whatJa: '古いカフェの窓の前を通る。', image: 'cafe.jpg', near: ['Café Sperl', 'Gastwirtschaft Steman'] },
-      { time: '10:40', place: 'Karlsplatz', placeJa: 'カールス広場', what: "Past Otto Wagner's pavilion of green iron, marble and gold sunflowers.", whatJa: 'オットー・ワーグナーの、緑の鉄と大理石と金のひまわりの駅舎の前を歩く。', image: 'karlsplatz.jpg', near: ['Café Museum', 'Vollpension', 'Feinedinge*'] },
-      { time: '12:30', place: 'A sausage stand', placeJa: 'ソーセージの屋台', what: 'Lunch standing up.', whatJa: '昼は立って食べる。', near: ['Bitzinger Würstelstand Albertina'] },
-      { time: '14:20', place: 'Postal Savings Bank', placeJa: '郵便貯金局', what: 'Under the glass ceiling of the banking hall.', whatJa: '窓口の広間の、ガラスの天井の下に立つ。', image: 'postsparkasse.jpg', near: ['Café Prückel'] },
-      { time: '15:20', place: 'Michaelerplatz', placeJa: 'ミヒャエラー広場', what: 'Leaning on the railing in the square.', whatJa: '広場の柵に手をかける。', image: 'michaelerplatz.jpg', near: ['Demel', "R. Horn's Wien", 'Scheer', 'Zum Schwarzen Kameel'] },
-      { time: '16:00', place: 'II Ringstrasse', placeJa: 'II リンク通り', what: 'Along the tram lines as the lamps come on.', whatJa: '灯りがつき始めた、路面電車の線路ぞいを歩く。', image: 'ring.jpg' },
-      { time: '17:10', place: 'The tram', placeJa: '路面電車', what: 'Hood up, by a red tram.', whatJa: 'フードをかぶって、赤い路面電車のそばに立つ。', image: 'tram.jpg' },
-      { time: '21:40', place: 'III Kärntner Durchgang', placeJa: 'III ケルントナー・ドゥルヒガング', what: 'Down a narrow passage off Kärntner Strasse.', whatJa: 'ケルントナー通りから、細い抜け道に入る。', image: 'passage.jpg', near: ['J. & L. Lobmeyr', 'Wiener Porzellanmanufaktur Augarten'] },
-      { time: '22:40', place: 'A small bar', placeJa: '小さなバー', what: 'Onyx above the door, mirrors on the walls.', whatJa: '戸の上にオニキス、壁には鏡。', image: 'bar.jpg' },
-      { time: '23:20', place: 'The hotel', placeJa: 'ホテル', what: 'Boots off in the room.', whatJa: '部屋で、ブーツを脱ぐ。' },
+      { time: '08:40', place: 'Hauptbahnhof', placeJa: '中央駅', what: 'Off the night train in the morning.', whatJa: '夜行列車で、朝に着く。', image: 'train.jpg', near: ['Café Goldegg'], coords: [48.18530, 16.37600], short: 'Hauptbahnhof', shortJa: '中央駅', gmaps: 'Wien Hauptbahnhof' },
+      { time: '09:00', place: 'I Gumpendorfer Strasse', placeJa: 'I グンペンドルファー通り', what: 'Past the window of an old coffee house.', whatJa: '古いカフェの窓の前を通る。', image: 'cafe.jpg', near: ['Café Sperl', 'Gastwirtschaft Steman'], coords: [48.19984, 16.36117], short: 'Gumpendorfer Str.', shortJa: 'グンペンドルファー通り', gmaps: 'Café Sperl Wien' },
+      { time: '10:40', place: 'Karlsplatz', placeJa: 'カールス広場', what: "Past Otto Wagner's pavilion of green iron, marble and gold sunflowers.", whatJa: 'オットー・ワーグナーの、緑の鉄と大理石と金のひまわりの駅舎の前を歩く。', image: 'karlsplatz.jpg', near: ['Café Museum', 'Vollpension', 'Feinedinge*'], coords: [48.20025, 16.37025], short: 'Karlsplatz', shortJa: 'カールス広場', gmaps: 'Otto Wagner Pavillon Karlsplatz' },
+      { time: '12:30', place: 'A sausage stand', placeJa: 'ソーセージの屋台', what: 'Lunch standing up.', whatJa: '昼は立って食べる。', near: ['Bitzinger Würstelstand Albertina'], coords: [48.20408, 16.36848], short: 'Albertinaplatz', shortJa: 'アルベルティーナ広場', gmaps: 'Bitzinger Würstelstand Albertina' },
+      { time: '14:20', place: 'Postal Savings Bank', placeJa: '郵便貯金局', what: 'Under the glass ceiling of the banking hall.', whatJa: '窓口の広間の、ガラスの天井の下に立つ。', image: 'postsparkasse.jpg', near: ['Café Prückel'], coords: [48.20998, 16.38065], short: 'Postsparkasse', shortJa: '郵便貯金局', gmaps: 'Postsparkasse Wien' },
+      { time: '15:20', place: 'Michaelerplatz', placeJa: 'ミヒャエラー広場', what: 'Leaning on the railing in the square.', whatJa: '広場の柵に手をかける。', image: 'michaelerplatz.jpg', near: ['Demel', "R. Horn's Wien", 'Scheer', 'Zum Schwarzen Kameel'], coords: [48.20810, 16.36710], short: 'Michaelerplatz', shortJa: 'ミヒャエル広場', gmaps: 'Michaelerplatz Wien' },
+      { time: '16:00', place: 'II Ringstrasse', placeJa: 'II リンク通り', what: 'Along the tram lines as the lamps come on.', whatJa: '灯りがつき始めた、路面電車の線路ぞいを歩く。', image: 'ring.jpg', coords: [48.20490, 16.36240], short: 'Ringstrasse', shortJa: 'リンク通り', gmaps: 'Burgring Wien' },
+      { time: '17:10', place: 'The tram', placeJa: '路面電車', what: 'Hood up, by a red tram.', whatJa: 'フードをかぶって、赤い路面電車のそばに立つ。', image: 'tram.jpg', coords: [48.20250, 16.36760], short: 'Opernring', shortJa: 'オーパーンリング', gmaps: 'Oper Wien' },
+      { time: '21:40', place: 'III Kärntner Durchgang', placeJa: 'III ケルントナー・ドゥルヒガング', what: 'Down a narrow passage off Kärntner Strasse.', whatJa: 'ケルントナー通りから、細い抜け道に入る。', image: 'passage.jpg', near: ['J. & L. Lobmeyr', 'Wiener Porzellanmanufaktur Augarten'], coords: [48.20722, 16.37124], short: 'Kärntner Durchgang', shortJa: 'ケルントナー小路', gmaps: 'Kärntner Durchgang Wien' },
+      { time: '22:40', place: 'A small bar', placeJa: '小さなバー', what: 'Onyx above the door, mirrors on the walls.', whatJa: '戸の上にオニキス、壁には鏡。', image: 'bar.jpg', coords: [48.20725, 16.37105], short: 'American Bar', shortJa: 'アメリカン・バー', gmaps: 'American Bar Adolf Loos Wien' },
+      { time: '23:20', place: 'The hotel', placeJa: 'ホテル', what: 'Boots off in the room.', whatJa: '部屋で、ブーツを脱ぐ。', coords: [48.20140, 16.37300], short: 'Hotel', shortJa: 'ホテル' },
     ],
   },
   // 2026-11-01 ハワース（メイヴ・号 haworth）。小さな村なので、店は村と、メイヴが乗ったワース・ヴァレー線の沿線（キースリー・オクセンホープ）から。服はすべて VUAL のオリジナル。
@@ -691,6 +693,8 @@ export const CITIES: LatitudeCity[] = [
       { file: 'withens.jpg', alt: 'Maeve in the doorway of the ruin at Top Withens', altJa: 'トップ・ウィゼンズの廃屋の戸口に立つメイヴ' },
       { file: 'fire.jpg', alt: 'Maeve by the fire at the inn', altJa: '宿の暖炉のそばのメイヴ' },
     ],
+    // 2026-11-13 店の位置と、メイヴの1日の位置（Hydrogen が確かめた）。トップ・ウィゼンズ（6.6km 先の荒野）と暖炉は地図の外なので位置を付けない
+    shopMap: true,
     places: haworth as CityPlace[],
     industries: [
       { key: "bookshops", en: "Bookshops", ja: "本屋", about: "Haworth is the village where the Brontë sisters lived and wrote. The literary visitors who come for them keep independent bookshops going on Main Street, among them a second-hand dealer trading since 1988.", aboutJa: "ブロンテ姉妹が暮らし、小説を書いた村。姉妹を目当てに来る人に支えられ、メイン・ストリートに個人の本屋が続く。1988年からの古本屋もある。" },
@@ -721,12 +725,12 @@ export const CITIES: LatitudeCity[] = [
     },
     route: [
       { time: '08:40', place: 'The valley line', placeJa: '谷の鉄道（ワース・ヴァレー線）', what: 'By the window of an old carriage, up the valley from Keighley.', whatJa: 'キースリーから谷を上る、古い客車の窓ぎわ。', image: 'train.jpg', near: ['The Old Parcels Office', "Taylor's on the Green", 'The Boltmakers Arms'] },
-      { time: '09:05', place: 'Haworth station', placeJa: 'ハワース駅', what: 'Off the train at the line\'s headquarters.', whatJa: 'この鉄道の本部がある駅で降りる。', near: ['The Royal Oak'] },
-      { time: '09:25', place: 'Main Street', placeJa: 'メイン・ストリート', what: 'Up the steep cobbles, buttoning the coat.', whatJa: 'コートのボタンを留めながら、急な石畳を上る。', image: 'main-street.jpg', near: ['Hatchard & Daughters', 'Wave of Nostalgia', "Mrs Beighton's Sweet Shop", 'Hunters of Haworth', 'The Fleece Inn', 'Pavé Charcuterie and Bistro'] },
-      { time: '09:50', place: 'I Churchyard', placeJa: 'I 墓地', what: 'Among the flat gravestones beside the parsonage.', whatJa: '牧師館の隣、平らに並ぶ墓石のあいだ。' },
-      { time: '12:30', place: 'II The moor', placeJa: 'II 荒野', what: 'Across the heather in the west wind.', whatJa: '西風の中、ヒースの荒野を横切る。', image: 'moor.jpg' },
+      { time: '09:05', place: 'Haworth station', placeJa: 'ハワース駅', what: 'Off the train at the line\'s headquarters.', whatJa: 'この鉄道の本部がある駅で降りる。', near: ['The Royal Oak'], coords: [53.83130, -1.94880], short: 'Haworth Sta.', shortJa: 'ハワース駅', gmaps: 'Haworth railway station' },
+      { time: '09:25', place: 'Main Street', placeJa: 'メイン・ストリート', what: 'Up the steep cobbles, buttoning the coat.', whatJa: 'コートのボタンを留めながら、急な石畳を上る。', image: 'main-street.jpg', near: ['Hatchard & Daughters', 'Wave of Nostalgia', "Mrs Beighton's Sweet Shop", 'Hunters of Haworth', 'The Fleece Inn', 'Pavé Charcuterie and Bistro'], coords: [53.82990, -1.95440], short: 'Main Street', shortJa: 'メイン・ストリート', gmaps: 'Main Street Haworth' },
+      { time: '09:50', place: 'I Churchyard', placeJa: 'I 墓地', what: 'Among the flat gravestones beside the parsonage.', whatJa: '牧師館の隣、平らに並ぶ墓石のあいだ。', coords: [53.83120, -1.95610], short: 'Churchyard', shortJa: '教会', gmaps: 'St Michael and All Angels Haworth' },
+      { time: '12:30', place: 'II The moor', placeJa: 'II 荒野', what: 'Across the heather in the west wind.', whatJa: '西風の中、ヒースの荒野を横切る。', image: 'moor.jpg', coords: [53.82220, -1.98000], short: 'The Moor', shortJa: '荒野', gmaps: 'Haworth Moor' },
       { time: '13:10', place: 'Top Withens', placeJa: 'トップ・ウィゼンズ', what: 'A book open, her back to the ruined wall.', whatJa: '廃屋の壁に背をあずけて、本を開く。', image: 'reading.jpg' },
-      { time: '16:00', place: 'III The inn', placeJa: 'III 宿', what: 'Through the old door as the light goes.', whatJa: '暗くなるころ、古い戸を開ける。', image: 'inn.jpg' },
+      { time: '16:00', place: 'III The inn', placeJa: 'III 宿', what: 'Through the old door as the light goes.', whatJa: '暗くなるころ、古い戸を開ける。', image: 'inn.jpg', coords: [53.83090, -1.95520], short: 'The Inn', shortJa: '宿' },
       { time: '16:20', place: 'By the fire', placeJa: '暖炉のそば', what: 'Standing by the fire, the coat still on.', whatJa: 'コートを着たまま、暖炉のそばに立つ。', image: 'fire.jpg' },
     ],
   },
@@ -750,6 +754,18 @@ export const CITIES: LatitudeCity[] = [
       { file: 'bar.jpg', alt: 'Hélène at the counter of an old bar on Corso Garibaldi', altJa: 'コルソ・ガリバルディの古いバールのカウンターのエレーヌ' },
       { file: 'lungomare.jpg', alt: 'Hélène on the seafront at sunset, Sicily across the strait', altJa: '日没の海岸通りのエレーヌ。海峡の向こうにシチリア' },
       { file: 'room.jpg', alt: 'Hélène sitting on the edge of the bed, one boot off', altJa: 'ベッドの端に座るエレーヌ。ブーツを片方脱いで' },
+    ],
+    // 2026-11-13 店の位置と、エレーヌの1日の位置（Hydrogen が確かめた）。ボーヴァ・マリーナ（30km 先）は街の地図の外なので位置を付けない
+    shopMap: true,
+    // 2026-11-13 エレーヌの1日（位置は Hydrogen が地図のデータで確かめた）。ボーヴァ・マリーナ（30km 先）は街の地図の外なので位置を付けない
+    route: [
+      { time: '07:50', place: 'Bova Marina station', placeJa: 'ボーヴァ・マリーナ駅', what: 'Off the early coast train.', whatJa: '朝の海ぞいの列車を降りる。', image: 'station.jpg' },
+      { time: '09:05', place: 'I Bergamot grove', placeJa: 'I ベルガモット畑', what: 'Choosing a bergamot from a harvest crate.', whatJa: '収穫箱から、ベルガモットを一つ選ぶ。', image: 'grove.jpg' },
+      { time: '10:40', place: 'The coast train', placeJa: '海ぞいの列車', what: 'Back along the Ionian coast to the city.', whatJa: 'イオニア海ぞいに、街へ戻る。' },
+      { time: '11:40', place: 'Reggio Calabria Centrale', placeJa: 'レッジョ・カラブリア中央駅', what: 'Arrives in the city.', whatJa: '街に着く。', coords: [38.10381, 15.63594], short: 'Centrale', shortJa: '中央駅', gmaps: 'Reggio di Calabria Centrale' },
+      { time: '13:25', place: 'II The bar', placeJa: 'II バール', what: 'Lunch at the counter on Corso Garibaldi.', whatJa: 'コルソ・ガリバルディのカウンターで昼。', image: 'bar.jpg', coords: [38.10806, 15.64371], short: 'Corso Garibaldi', shortJa: 'コルソ・ガリバルディ', gmaps: 'Corso Garibaldi Reggio Calabria' },
+      { time: '16:50', place: 'III Lungomare', placeJa: 'III 海岸通り', what: 'Sunset over the strait, Sicily across the water.', whatJa: '海峡に日が沈む。向こうにシチリア。', image: 'lungomare.jpg', coords: [38.11169, 15.64614], short: 'Lungomare', shortJa: '海岸通り', gmaps: 'Lungomare Falcomatà' },
+      { time: '20:30', place: 'IV The room', placeJa: 'IV 部屋', what: 'One boot off, on the edge of the bed.', whatJa: 'ベッドの端で、ブーツを片方脱ぐ。', image: 'room.jpg', coords: [38.10980, 15.64920], short: 'The room', shortJa: '部屋' },
     ],
     places: reggio as CityPlace[],
     industries: [

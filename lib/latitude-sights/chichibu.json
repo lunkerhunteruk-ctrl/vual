@@ -1,0 +1,50 @@
+[
+ {
+  "name": "秩父神社",
+  "nameEn": "Chichibu Shrine",
+  "kind": "sight",
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "埼玉県秩父市番場町1-3",
+  "url": "https://www.chichibu-jinja.or.jp/",
+  "what": "知知夫国の総鎮守として古くから祀られる神社。現存する社殿は1592年に徳川家康が寄進したもので、毎年12月3日の例祭「秩父夜祭」で知られる。",
+  "whatEn": "An ancient shrine revered as the chief tutelary shrine of Chichibu. Its present sanctuary was donated by Tokugawa Ieyasu in 1592, and its annual December 3 festival is the Chichibu Night Festival.",
+  "coords": [
+   35.99758,
+   139.08424
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "秩父まつり会館",
+  "nameEn": "Chichibu Festival Museum",
+  "kind": "art",
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "埼玉県秩父市番場町2-8",
+  "url": "https://www.chichibu-matsuri.jp/",
+  "what": "秩父神社の隣にある、秩父夜祭の資料館。常設展示のために作られた笠鉾と屋台や、音と映像の展示で祭りの様子を見せる。",
+  "whatEn": "A museum next to Chichibu Shrine dedicated to the Chichibu Night Festival, exhibiting kasaboko and yatai floats built for display alongside sound and projection shows.",
+  "coords": [
+   35.99721,
+   139.08527
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "羊山公園",
+  "nameEn": "Hitsujiyama Park",
+  "kind": "sight",
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "埼玉県秩父市大宮",
+  "url": "https://navi.city.chichibu.lg.jp/p_flower/1808/",
+  "what": "武甲山のふもとに広がる公園。春には「芝桜の丘」に10品種・40万株以上の芝桜が咲く。",
+  "whatEn": "A hillside park at the foot of Mount Buko. In spring, more than 400,000 shibazakura moss phlox plants of ten varieties bloom on Shibazakura Hill.",
+  "coords": [
+   35.98532,
+   139.08831
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

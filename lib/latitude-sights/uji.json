@@ -1,0 +1,92 @@
+[
+ {
+  "name": "平等院",
+  "nameEn": "Byodoin Temple",
+  "kind": "sight",
+  "area": "宇治・妙楽",
+  "areaEn": "Uji & Myoraku",
+  "address": "宇治市宇治蓮華116",
+  "url": "https://www.byodoin.or.jp/",
+  "what": "1052年に藤原頼通が父・道長の別業を仏寺に改め、翌1053年に阿弥陀堂（鳳凰堂）を建立した寺院。阿字池の中島に鳳凰堂が建ち、境内にミュージアム鳳翔館がある。世界遺産。",
+  "whatEn": "Founded in 1052 when Fujiwara no Yorimichi turned his father Michinaga's villa into a temple, with the Phoenix Hall (Amida Hall) completed in 1053 on an island in Aji Pond. Includes the Hoshokan Museum; a World Heritage site.",
+  "coords": [
+   34.8895,
+   135.80745
+  ],
+  "notice": "観音堂は修理のため非公開。ミュージアム鳳翔館の扉絵の間は2026年11月27日まで平日に閉鎖（土日祝は公開）、遺物コーナーは11月13日〜12月6日休止。鳳凰堂の内部拝観は各回35名、夜間特別拝観は2026年秋は休止。庭園は8時45分〜17時30分、鳳翔館は9時〜17時（年中無休）。",
+  "noticeEn": "The Kannondo Hall is closed for repairs. Inside the Hoshokan Museum, the Tobira-e room is closed weekdays through November 27, 2026 (open weekends and holidays), and the Relics section is closed November 13 to December 6. Phoenix Hall interior tours are capped at 35 per group; autumn night openings are suspended in 2026. Garden 8:45 am–5:30 pm, museum 9 am–5 pm, open daily.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "宇治上神社",
+  "nameEn": "Ujigami Shrine",
+  "kind": "sight",
+  "area": "東宇治・菟道",
+  "areaEn": "Higashi-Uji & Todo",
+  "address": "宇治市宇治山田59",
+  "url": "https://www.ujikamijinja.jp/",
+  "what": "宇治川の東岸、朝日山のふもとに鎮座する神社。菟道稚郎子・応神天皇・仁徳天皇を祀る。平安時代後期に建てられた本殿は現存する日本最古の神社建築で、拝殿とともに国宝、世界遺産。",
+  "whatEn": "A shrine at the foot of Mount Asahi on the east bank of the Uji River, dedicated to Uji no Wakiiratsuko and Emperors Ojin and Nintoku. Its late-Heian main sanctuary is the oldest surviving shrine architecture in Japan; both main and worship halls are National Treasures and a World Heritage site.",
+  "coords": [
+   34.89205,
+   135.81146
+  ],
+  "notice": "御守や御朱印の授与所は9時から。初穂料は現金のみ。",
+  "noticeEn": "The office for amulets and goshuin opens at 9 am; cash only.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "宇治市源氏物語ミュージアム",
+  "nameEn": "The Tale of Genji Museum, Uji",
+  "kind": "art",
+  "area": "東宇治・菟道",
+  "areaEn": "Higashi-Uji & Todo",
+  "address": "宇治市宇治東内45-26",
+  "url": "https://www.city.uji.kyoto.jp/site/genji/",
+  "what": "『源氏物語』と平安貴族の暮らしを伝える市立博物館。光源氏の物語の「平安の間」と、最後の十帖の舞台・宇治を紹介する「宇治の間」、映像展示室や「物語の間」がある。",
+  "whatEn": "A municipal museum on The Tale of Genji and Heian court life, with galleries on Hikaru Genji, the final ten Uji chapters, short films and interactive exhibits.",
+  "coords": [
+   34.8941,
+   135.81017
+  ],
+  "notice": "9時から17時（入館16時30分まで）。月曜（祝日の場合は翌平日）と年末年始は休館。",
+  "noticeEn": "Open 9 am to 5 pm (last entry 4:30 pm). Closed Mondays (or the following day if a holiday) and over New Year.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "萬福寺",
+  "nameEn": "Manpuku-ji Temple",
+  "kind": "sight",
+  "area": "黄檗・木幡",
+  "areaEn": "Obaku & Kohata",
+  "address": "宇治市五ケ庄三番割34",
+  "url": "https://www.obakusan.or.jp/",
+  "what": "1661年に中国から渡来した隠元隆琦禅師が開創した、黄檗宗の大本山。中国明朝様式を取り入れた禅宗の伽藍建築が残り、日本の三禅宗の一つに数えられる。",
+  "whatEn": "The head temple of the Obaku Zen school, founded in 1661 by the Chinese monk Ingen Ryuki, preserving Zen temple buildings in late-Ming Chinese style.",
+  "coords": [
+   34.91399,
+   135.80684
+  ],
+  "notice": "拝観は9時から17時（受付16時30分まで）。2026年10月10日〜2027年2月21日は夜間特別拝観を実施。",
+  "noticeEn": "Open 9 am to 5 pm (last entry 4:30 pm). Special night openings run from October 10, 2026 to February 21, 2027.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "興聖寺",
+  "nameEn": "Kosho-ji Temple",
+  "kind": "sight",
+  "area": "東宇治・菟道",
+  "areaEn": "Higashi-Uji & Todo",
+  "address": "宇治市宇治山田27-1",
+  "url": "https://www.uji-koushouji.jp/",
+  "what": "1233年に道元禅師が伏見深草に開いた日本最古の曹洞宗の修行道場。1648年に淀城主の永井尚政が宇治に再興し、仏徳山と朝日山のあいだに伽藍が建つ。",
+  "whatEn": "The oldest Soto Zen training monastery in Japan, founded by Dogen in 1233 in Fushimi and rebuilt in Uji in 1648 by Nagai Naomasa, lord of Yodo Castle, between Mount Buttoku and Mount Asahi.",
+  "coords": [
+   34.88946,
+   135.8134
+  ],
+  "notice": "拝観受付は10時から16時（行事により入山規制あり）。",
+  "noticeEn": "Reception 10 am to 4 pm (entry may be restricted during temple events).",
+  "verifiedAt": "2026-11-12"
+ }
+]

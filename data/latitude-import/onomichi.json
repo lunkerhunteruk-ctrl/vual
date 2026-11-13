@@ -1,0 +1,736 @@
+{
+ "slug": "onomichi",
+ "city": {
+  "name": "Onomichi",
+  "nameJa": "尾道",
+  "latitude": "34.4° N",
+  "country": "Hiroshima, Japan",
+  "countryJa": "広島県",
+  "person": "rin",
+  "coords": [
+   34.409,
+   133.2
+  ],
+  "intro": "A port town on the Seto Inland Sea, with stone-stepped slopes rising behind the harbour. Onomichi sailcloth, kamaboko and Bingo denim, then bread, sweets and coffee in the arcade, on the hillside, and across the channel on Mukaishima and Setoda: Rin's picks.",
+  "introJa": "瀬戸内海に面し、港の後ろに石段の坂が続く町。尾道帆布とかまぼこ、備後デニム、それから商店街と坂道、向島や瀬戸田のパンと喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Seto Inland Sea · between harbour and hillside",
+   "ja": "瀬戸内海側・港と坂の町"
+  },
+  "industries": [
+   {
+    "key": "onomichi-hanpu",
+    "en": "Onomichi sailcloth canvas",
+    "ja": "尾道帆布",
+    "about": "Mills around Onomichi have woven heavy cotton sailcloth on shuttle looms since the 1930s, originally for Seto Inland Sea cargo boats and fishing vessels. Today local workshops sew the cloth into bags, aprons and everyday goods.",
+    "aboutJa": "尾道では1930年代から、瀬戸内海を行く貨物船や漁船のために、シャトル織機で厚手の綿帆布が織られてきた。いまも地元の工房が、その帆布で鞄やエプロン、日用品を仕立てている。",
+    "_src": "Since the 1930s, mills around the port of Onomichi have woven heavy cotton sailcloth on shuttle looms for Seto Inland Sea cargo vessels and fishing boats."
+   },
+   {
+    "key": "onomichi-kamaboko",
+    "en": "Onomichi fish-paste kamaboko making",
+    "ja": "尾道かまぼこ",
+    "about": "Seaside workshops in Onomichi have made kamaboko from fresh local fish since the Edo and Taisho eras, grinding the flesh and shaping steamed and fried fish cakes by hand. Shops such as Keima Kamaboko, founded in 1913, still make them without preservatives.",
+    "aboutJa": "尾道の海沿いでは、江戸から大正のころより新鮮な魚をすり身にして、蒸しや揚げのかまぼこを手で作ってきた。1913年創業の桂馬蒲鉾商店のように、保存料を使わずに作り続ける店もある。",
+    "_src": "Since the Edo and Taisho eras, seaside workshops in Onomichi have ground fresh Seto Inland Sea whitefish in stone mortars to hand-form additive-free steamed and fried kamaboko."
+   },
+   {
+    "key": "bingo-denim",
+    "en": "Bingo shuttle-woven denim",
+    "ja": "備後デニム",
+    "about": "Growing out of the older Bingo kasuri indigo-cotton tradition, mills in Onomichi and the surrounding Bingo region weave, dye and sew heavyweight denim. In Onomichi, the Onomichi Denim Project has local fishermen and farmers wear pairs on the job for a year before selling them.",
+    "aboutJa": "古くからの備後絣の藍染や綿織物の流れをくみ、尾道を含む備後地方では厚手のデニム生地の織りから染め、縫製までが行われている。尾道では、漁師や農家など働く人が一年間穿き込んだジーンズを扱う店もある。",
+    "_src": "Grown out of centuries-old Bingo kasuri indigo cotton weaving, mills across Onomichi and the neighboring Bingo basin weave, dye, and sew heavyweight rope-dyed selvedge denim."
+   }
+  ]
+ },
+ "places": {
+  "工房尾道帆布": {
+   "nameEn": "Kobo Onomichi Hanpu",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "canvas",
+    "bags"
+   ],
+   "what": "本通り商店街にある帆布の工房と店。尾道帆布でトートやリュック、小袋などの鞄を仕立てる。",
+   "whatEn": "A canvas workshop and shop in the Hondori arcade, sewing totes, backpacks and pouches from Onomichi sailcloth.",
+   "note": "色見本を見てから、柿渋染めか生成りかを選ぶ。",
+   "noteEn": "Check the colour swatches before choosing between unbleached and persimmon-dyed.",
+   "_src": {
+    "category": "local",
+    "industry": "onomichi-hanpu",
+    "nameKana": "こうぼうおのみちはんぷ",
+    "address": "2-1-16 Tsuchido, Onomichi",
+    "url": "https://www.onomichihanpu.jp/",
+    "whatJa": "尾道産シャトル織機で織られた厚手の綿帆布を使い、店内の工房で鞄やエプロン、日用品を仕立てる帆布工房。",
+    "whatEn": "A workshop and shop sewing bags, aprons, and everyday goods in-house from shuttle-loomed Onomichi cotton canvas.",
+    "facts": "Located inside the Hondori shopping arcade; artisans cut and stitch unbleached and dyed Onomichi sailcloth on industrial sewing machines visible from the shop floor, and offer stencil-painting workshops.",
+    "weak": "",
+    "verifiedBy": "https://www.onomichihanpu.jp/",
+    "quote": "2026.04.15 ～GWのお知らせ・駐車場について～",
+    "fixes": "Address not confirmed on page (not shown on top page).",
+    "coords": [
+     34.40813,
+     133.20062
+    ]
+   }
+  },
+  "尾道帆布鞄 彩工房": {
+   "nameEn": "Onomichi Hanpu Kaban Saikobo",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "canvas",
+    "bags"
+   ],
+   "what": "土堂の本通り商店街にある帆布鞄の工房。6号の厚手帆布などで、トートやリュック、帆布ランドセルを仕立てる。",
+   "whatEn": "A canvas bag workshop in the Hondori arcade in Tsuchido, making totes, rucksacks and canvas satchels from heavy No. 6 sailcloth.",
+   "note": "柿渋染めかべんがら染めか、色の組み合わせを相談できる。",
+   "noteEn": "You can ask about colour combinations, such as persimmon or bengara dye.",
+   "_src": {
+    "category": "local",
+    "industry": "onomichi-hanpu",
+    "nameKana": "おのみちはんぷかばん さいこうぼう",
+    "address": "1-6-9 Tsuchido, Onomichi",
+    "url": "https://www.saikobo-shop.jp/",
+    "whatJa": "本通り商店街に工房を構え、尾道帆布でランドセルやトート、リュックを仕立てる鞄工房。",
+    "whatEn": "A bag maker in the port arcade crafting custom-ordered and ready-made satchels, totes, and rucksacks from heavy Onomichi canvas.",
+    "facts": "Works with No. 4, No. 6, and No. 8 shuttle-loomed cotton sailcloth; accepts custom color combinations and builds canvas randoseru satchels for both children and adults.",
+    "weak": "",
+    "verifiedBy": "https://www.saikobo-shop.jp/",
+    "quote": "2026.11.7 【Black Friday 特別企画】 *期間 2026.11.7 15時 ～2026.11.15（日）",
+    "fixes": "Address 1-6-9 Tsuchido matches (〒722-0035 広島県尾道市土堂1-6-9).",
+    "coords": [
+     34.40737,
+     133.20026
+    ]
+   }
+  },
+  "からさわ": {
+   "nameEn": "Karasawa",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "ice cream",
+    "monaka"
+   ],
+   "what": "土堂の海岸通りにある手づくりアイスクリームの店。たまごあいすや、注文ごとに挟むアイスモナカ、クリームぜんざいを出す。火曜と第2水曜が休み。",
+   "whatEn": "A handmade ice cream shop on the Tsuchido waterfront, serving egg ice cream, crisp ice monaka and cream zenzai. Closed Tuesdays and the second Wednesday.",
+   "note": "海辺のベンチで、まず定番のアイスモナカ。",
+   "noteEn": "Start with the classic ice monaka on the seaside bench.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "からさわ",
+    "address": "1-15-19 Tsuchido, Onomichi",
+    "url": "https://www.ice.jcom.to/",
+    "whatJa": "昭和14年（1939年）創業の海岸通りの老舗アイスクリーム店で、注文後に詰める香ばしい「アイスモナカ」や「たまごあいす」で知られる。",
+    "whatEn": "A seaside ice cream parlor operating since 1939, famous for crisp wafer monaka filled to order with egg-rich homemade ice cream.",
+    "facts": "Faces the Onomichi Channel promenade; signature Ice Monaka pairs crisp custom-baked wafers with custard-style Tamago Ice Cream, alongside hot red-bean zenzai with ice cream.",
+    "weak": "",
+    "verifiedBy": "https://karasawa.apap.co4.jp/",
+    "quote": "2026年4月22日水曜日 RNC西日本放送 瀬戸内アニメ聖地巡礼＆ご当地グルメお宝ツアーで紹介されました。",
+    "fixes": "Address 1-15-19 Tsuchido matches. Official site lists closed Tuesdays and 2nd Wednesdays, 10:00-17:00.",
+    "coords": [
+     34.40659,
+     133.19912
+    ]
+   }
+  },
+  "ネコノテパン工場": {
+   "nameEn": "Nekonote Pan Kojo",
+   "area": "千光寺坂・猫の細道",
+   "areaEn": "Senkoji Slope & Neko no Hosomichi",
+   "tags": [
+    "bakery",
+    "bread"
+   ],
+   "what": "東土堂町の車も入らない坂道にある小さなパン屋。保存料を使わないパンやビスコッティを焼く。定休日は火曜と水曜。",
+   "whatEn": "A small bakery on a car-free slope in Higashitsuchido-cho, baking preservative-free bread and biscotti. Closed Tuesdays and Wednesdays.",
+   "note": "急な石段の途中なので、歩きやすい靴で行く。",
+   "noteEn": "It is partway up steep stone steps, so wear shoes for walking.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ねこのてぱんこうじょう",
+    "address": "7-7 Higashitsuchido-cho, Onomichi",
+    "url": "https://pan.catnote.co.jp/",
+    "whatJa": "千光寺へ続く車の通れない石段坂の途中、古い木造民家を改装した極小のパン屋で、ハード系パンやスコーン、ビスコッティを焼く。",
+    "whatEn": "A tiny hillside bakery in a renovated wooden house along the car-free stone steps toward Senkoji, baking crusty loaves, scones, and biscotti.",
+    "facts": "Customer space behind the sliding wooden lattice door fits roughly one person at a time; reachable only on foot up the steep stone stairways of Higashitsuchido-cho.",
+    "weak": "",
+    "verifiedBy": "https://pan.catnote.co.jp/",
+    "quote": "次の臨時休業日のお知らせ 2026年11月5日、11月23日、大変申し訳ございませんが臨時休業とさせていただきます。",
+    "fixes": "Regular closed days Tuesday and Wednesday. Page does not show street address in text.",
+    "coords": [
+     34.40868,
+     133.19766
+    ]
+   }
+  },
+  "珈琲豆ましろ": {
+   "nameEn": "Coffee Beans Mashiro",
+   "area": "向島",
+   "areaEn": "Mukaishima",
+   "tags": [
+    "coffee",
+    "roastery"
+   ],
+   "what": "向島の自家焙煎スペシャルティコーヒー豆の店。シングルオリジンやブレンドの豆のほか、ダンク式バッグやカフェオレベースも扱う。営業は10時から18時で、月・木曜が休み。",
+   "whatEn": "A specialty coffee roastery on Mukaishima selling single-origin and blended beans, dip-style coffee bags and café au lait bases. Open 10 am to 6 pm; closed Mondays and Thursdays.",
+   "note": "淹れる道具がなければ、ダンク式のコーヒーバッグを。",
+   "noteEn": "If you have no brewing gear, pick up the dip-style coffee bags.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こーひーまめましろ",
+    "address": "5557-17 Mukaishima-cho, Onomichi",
+    "url": "https://coffeebeans-mashiro.com/",
+    "whatJa": "尾道渡船の向島側乗り場から徒歩8分にある自家焙煎スペシャルティコーヒー豆専門店で、シングルオリジン豆やカフェオレベースを扱う。",
+    "whatEn": "A specialty coffee roastery on Mukaishima island, an eight-minute walk from the commuter ferry landing, selling freshly roasted single-origin beans and dip bags.",
+    "facts": "Solo-run small-batch roaster frequented by island locals; stocks whole and ground specialty beans, tea-bag-style coffee dip bags, and cafe au lait bases.",
+    "weak": "Bean retail shop rather than a sit-down cafe.",
+    "verifiedBy": "https://coffeebeans-mashiro.com/",
+    "quote": "2026.07.29 価格改定のお知らせ",
+    "fixes": "Page: 〒722-0073 向島町5557-17; open Tue/Wed/Fri/Sat/Sun 10:00-18:00. whatEn 'eight-minute walk from ferry landing' not verified on page; page says online shop/roastery, dip bags and cafe au lait bases confirmed.",
+    "coords": [
+     34.39489,
+     133.19615
+    ]
+   }
+  },
+  "watarite": {
+   "nameEn": "watarite",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "ceramics",
+    "brooches"
+   ],
+   "what": "土堂にある尾道在住作家の小さな陶器店。手描きの模様に色ガラスや金彩を重ねて焼き上げた器やブローチが並ぶ。月・木曜が休み。",
+   "whatEn": "A small pottery shop in Tsuchido run by an Onomichi ceramicist, making vessels and brooches with hand-painted patterns, coloured glass and gold overglaze. Closed Mondays and Thursdays.",
+   "note": "出展で閉まる週もある。行く前に予定を確かめる。",
+   "noteEn": "Some weeks it closes for department-store shows. Check the schedule first.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "わたりて",
+    "address": "1-10-3 Tsuchido, Onomichi",
+    "url": "https://watarite.net/",
+    "whatJa": "尾道在住の陶芸作家が営む小さな陶器店で、手描きの絵付けに色ガラスや金彩を重ねて焼き上げた器やブローチが並ぶ。",
+    "whatEn": "A small pottery shop run by an Onomichi ceramicist firing hand-painted vessels and brooches layered with colored glass and gold overglaze.",
+    "facts": "Located along Fumiko-dori at the western entrance to the Hondori arcade; pieces combine warm stoneware clay with pooled translucent glass glazes and gold accents.",
+    "weak": "",
+    "verifiedBy": "https://watarite.net/",
+    "quote": "広島三越 ３F 100年アパートメント前 下りエスカレーター前イベントスペース 11/11(水)～11/17(火) 10:30-19:30",
+    "fixes": "Page: 〒722-0035 土堂1丁目10-3; closed Mon/Thu; hours weekends 11:00-16:00, weekdays 12:00-17:00; Hiroshima Mitsukoshi event 11/11 Wed (2026) - shop may be closed during events.",
+    "coords": [
+     34.40608,
+     133.19685
+    ]
+   }
+  },
+  "桂馬蒲鉾商店": {
+   "nameEn": "Keima Kamaboko",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "kamaboko"
+   ],
+   "what": "大正2年（1913年）創業の、土堂にある蒲鉾店。瀬戸内以西の天然の生魚を使い、保存料や化学調味料を入れずに柿天や梅焼などを作る。",
+   "whatEn": "A kamaboko shop in Tsuchido founded in 1913, hand-shaping kakiten, umeyaki and other fish cakes from wild fish caught in the Seto Inland Sea and further west, without preservatives or chemical seasonings.",
+   "note": "柿天と梅焼を少しずつ、持ち帰りに選ぶ。",
+   "noteEn": "Pick out a few kakiten and umeyaki to take back.",
+   "_src": {
+    "category": "local",
+    "industry": "onomichi-kamaboko",
+    "nameKana": "けいまかまぼこしょうてん",
+    "address": "1-9-3 Tsuchido, Onomichi",
+    "url": "https://www.keima-kamaboko.com/",
+    "whatJa": "大正2年（1913年）創業の本通り商店街の老舗蒲鉾店で、瀬戸内の新鮮な生魚から保存料・化学調味料無添加の蒲鉾や天ぷらを職人が手作りする。",
+    "whatEn": "Founded in 1913 in the Hondori arcade, an artisan kamaboko workshop hand-shaping additive-free fish cakes from fresh Seto Inland Sea whitefish.",
+    "facts": "Grinds fresh Setouchi lizardfish, croaker, and conger eel daily without preservatives or chemical seasoning; signature pieces include persimmon-shaped Kakiten, plum-blossom Umeyaki, and burdock Goboten.",
+    "weak": "",
+    "verifiedBy": "https://www.keima-kamaboko.shop/view/news/20261031120333",
+    "quote": "2026 冬の桂馬蒲鉾カタログを掲載しました",
+    "fixes": "whatEn/whatJa: 原料の範囲は『瀬戸内以西の天然生魚(ハモ、グチ、イカ…)』。瀬戸内海産の白身魚だけとの限定を修正。住所は尾道市土堂一丁目9番3号で一致。",
+    "coords": null
+   }
+  },
+  "ONOMICHI DENIM SHOP": {
+   "nameEn": "ONOMICHI DENIM SHOP",
+   "area": "久保・長江",
+   "areaEn": "Kubo & Nagae",
+   "tags": [
+    "denim"
+   ],
+   "what": "久保の商店街にあるデニムの店。尾道で働く人が実際に一年間穿いて育てたユーズドデニムや、オリジナルのデニムを扱う。",
+   "whatEn": "A denim shop in the Kubo arcade selling jeans worn in for a year by people working in Onomichi, alongside original denim goods.",
+   "note": "一本ごとに色落ちが違うので、棚を順に見ていく。",
+   "noteEn": "Each pair fades differently, so take your time going along the shelves.",
+   "_src": {
+    "category": "local",
+    "industry": "bingo-denim",
+    "nameKana": "おのみちでにむしょっぷ",
+    "address": "1-2-23 Kubo, Onomichi",
+    "url": "https://www.onomichidenim.com/",
+    "whatJa": "備後地方のシャトル織機で織られたセルビッジデニムと、尾道の漁師や柑橘農家、職人が仕事着として穿き込んだデニムを扱う専門店。",
+    "whatEn": "A Kubo arcade denim shop presenting Bingo shuttle-loomed selvedge jeans alongside pairs genuinely worn in on the job by Onomichi fishermen, farmers, and artisans.",
+    "facts": "Single physical shop of the Onomichi Denim Project, founded in 2013; collaborates with local workers across Onomichi who wear and launder two pairs weekly for a year to create one-of-a-kind fades.",
+    "weak": "",
+    "verifiedBy": "https://www.onomichidenim.com/archives/176743",
+    "quote": "公式オンラインショップを除き尾道デニムの商品は尾道の店舗のみでの販売に限定しております。",
+    "fixes": "住所は広島県尾道市久保1-2-23で一致。whatEn/whatJaは尾道で働く人が実際に一年間穿いて育てたユーズドデニム、デニムパンツ・関連グッズの販売という公式説明に合わせる。全商品がシャトル織機のセルビッジ生地との断定は取得本文で未確認。",
+    "coords": null
+   }
+  },
+  "Nahui Xocolatl": {
+   "nameEn": "Nahui Xocolatl",
+   "area": "向島",
+   "areaEn": "Mukaishima",
+   "tags": [
+    "chocolate"
+   ],
+   "what": "向島の向東町にあるBean to Barのチョコレートメーカー。カカオ豆の仕入れから板チョコレートまで一貫して作り、生産者や作家と組んだタブレットが並ぶ。",
+   "whatEn": "A bean-to-bar chocolate maker in Mukaihigashi on Mukaishima, roasting cacao from bean to tablet in collaboration with growers and artists.",
+   "note": "包み紙の絵を見ながら、味の組み合わせを選ぶ。",
+   "noteEn": "Look at the wrapper art while choosing a flavour.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "なうぃ ちょこらとる",
+    "address": "8626-8 Mukaihigashi-cho, Onomichi",
+    "url": "https://nahui.jp/",
+    "whatJa": "向島・向東町にあるBean to Barのクラフトチョコレート工房兼カフェスタンドで、カカオ豆の焙煎から手がける板チョコレートや焼菓子、カカオドリンクを供する。",
+    "whatEn": "A bean-to-bar craft chocolate maker and outdoor cafe stand on Mukaishima island, roasting single-origin cacao beans into artist-wrapped tablets, cakes, and cacao drinks.",
+    "facts": "Roasts and conches organic Tanzanian and single-origin cacao in-house on Mukaishima; serves spiced cacao sodas, chocolate barks, and baked sweets at its walk-up stand.",
+    "weak": "",
+    "verifiedBy": "https://nahui.jp/news/20260211news/",
+    "quote": "Nahui XocolatlのECサイトオープンしました。",
+    "fixes": "住所に『しまなみハイツA 1F』を補足（広島県尾道市向東町8626-8）。whatEn/whatJaはカカオ豆の仕入れから板チョコレートまで一貫製造するBean to Barメーカー、Nahui Xocolatl Labとする。取得本文に屋外カフェ・ケーキ・カカオドリンクの提供記載なし。",
+    "coords": null
+   }
+  },
+  "金萬堂本舗 本店": {
+   "nameEn": "Kinmando Honpo",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "wagashi",
+    "lemon cake"
+   ],
+   "what": "大正5年（1916年）創業の、土堂にある和洋菓子店。瀬戸田のエコレモンを使ったレモンバターケーキや、玉浦煎餅、尾道田楽を作る。木曜が休み。",
+   "whatEn": "A Japanese and Western confectioner in Tsuchido founded in 1916, making lemon butter cakes with Setoda eco-lemons, Tamaura senbei and Onomichi dengaku. Closed Thursdays.",
+   "note": "レモンバターケーキと尾道田楽を一つずつ。",
+   "noteEn": "One lemon butter cake and one Onomichi dengaku.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "きんまんどうほんぽ ほんてん",
+    "address": "2-6-4 Tsuchido, Onomichi",
+    "url": "https://kinmando.jp/",
+    "whatJa": "大正5年（1916年）創業の本通り商店街の老舗和洋菓子店で、丸ごと瀬戸田エコレモンを使ったレモンバターケーキや銘菓「尾道田楽」「玉浦煎餅」を製造販売する。",
+    "whatEn": "Founded in 1916 in the Hondori arcade, a traditional and western confectioner baking Setoda eco-lemon butter cakes, crisp Tamaura senbei, and walnut miso dengaku mochi.",
+    "facts": "Operates only two direct shops in Onomichi, with its main bakery-storefront next to Onomichi Post Office; uses whole Setoda eco-lemons including peel for its signature lemon cakes.",
+    "weak": "",
+    "verifiedBy": "https://kinmando.jp/",
+    "quote": "2026年2月より、\n新浜店の定休日を\n毎週木曜日とさせていただきます。",
+    "fixes": "住所・創業年・主要商品の説明は一致。2026年の告知に『(本店におきましても木曜日は定休日となっております)』と明記。",
+    "coords": null
+   }
+  },
+  "住田製パン所": {
+   "nameEn": "Sumida Bakery",
+   "area": "向島",
+   "areaEn": "Mukaishima",
+   "tags": [
+    "bakery",
+    "bread"
+   ],
+   "what": "明治2年（1869年）築の建物で営む、大正5年（1916年）創業の向島のパン屋。あんぱんやネジパン、メロンパンが定番。年中無休で朝6時から開く。",
+   "whatEn": "A bakery on Mukaishima founded in 1916 in an 1869 building, known for anpan, twisted nejipan and melonpan. Open daily from 6 am.",
+   "note": "朝6時から開いている。ネジパンとあんぱんを買う。",
+   "noteEn": "Open from 6 am. Pick up a nejipan and an anpan.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "すみだせいぱんしょ",
+    "address": "24-1 Mukaishima-cho, Onomichi",
+    "url": "http://www.sumidapan.jp/",
+    "whatJa": "大正5年（1916年）創業、向島の渡船乗り場近くの明治2年築の建物で営む老舗パン屋で、名物のネジパンやあんぱん、レトロケーキが地元客に愛される。",
+    "whatEn": "Founded in 1916 inside an 1869 Meiji-era townhouse near the Mukaishima ferry landing, a beloved island bakery famous for sugar-dusted twisted nejipan and anpan.",
+    "facts": "Three minutes on foot from the three-minute Onomichi Tosen commuter ferry; opens at 6:00 a.m. daily baking additive-free loaves, fried twisted nejipan, and old-fashioned rusks.",
+    "weak": "",
+    "verifiedBy": "https://note.com/j_godfather/n/nce9d0f12ffc1",
+    "quote": "👆️2016年時点で創業100年だったので、今年は創業110年だ！",
+    "fixes": "住所・1916年創業・明治2年築・ネジパンとあんぱんは公式サイトと一致。『添加物不使用』を全商品に拡張しない。公式の食パン説明にもショートニング原料に乳化剤を含む旨の注記あり。",
+    "coords": null
+   }
+  },
+  "短編食堂": {
+   "nameEn": "Tanpen Shokudo",
+   "area": "久保・長江",
+   "areaEn": "Kubo & Nagae",
+   "tags": [
+    "yoshoku"
+   ],
+   "what": "久保の路地にある4枚扉の洋食店。昼の部と金・土曜の夜の部があり、予約制で営業している。不定休で、撮影は手元の料理のみ。",
+   "whatEn": "A yoshoku dining room behind four doors in Kubo, open for lunch and Friday–Saturday dinner by reservation. Irregular holidays; photos are of your own plate only.",
+   "note": "予約制なので、行く日が決まったら先に申し込む。",
+   "noteEn": "It is by reservation, so book once you know your day.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "たんぺんしょくどう",
+    "address": "1-11-2 Kubo, Onomichi",
+    "url": "https://tanpensyokudou.com/",
+    "whatJa": "久保の路地に佇む「4枚扉の洋食店」で、尾道の旬野菜を取り入れたハンバーグやチキン南蛮、カニクリームコロッケなどの洋食と季節の焼菓子を供する。",
+    "whatEn": "An independent yoshoku dining room behind four wooden doors in Kubo, cooking hamburg steaks, chicken nanban, and crab cream croquettes with seasonal Onomichi vegetables.",
+    "facts": "Serves lunch daily and Friday–Saturday dinners in an intimate backstreet space; seasonal specials include stuffed chicken Kiev and warm Kogyoku apple tatin pound cake.",
+    "weak": "",
+    "verifiedBy": "https://tanpensyokudou.com/diary/",
+    "quote": "夜の部では、お酒を飲まれる方用に、季節野菜のポタージュに、自家製パンとピクルスを添えてお出ししています。",
+    "fixes": "住所は広島県尾道市久保1丁目11-2で一致。公式に『ご予約制にて営業中』『小学6年生よりご入店可』。昼の部を毎日営業とする補足は削除し、店休日不定休とする。",
+    "coords": null
+   }
+  },
+  "尾道の食事処 青柳": {
+   "nameEn": "Aoyagi",
+   "area": "本通り商店街・海岸通り",
+   "areaEn": "Hondori Arcade & Port",
+   "tags": [
+    "seafood",
+    "washoku"
+   ],
+   "what": "土堂の海岸通りにある三代続く食事処。瀬戸内の地魚を中心とした和食や昼の定食を出す。水曜が休み。",
+   "whatEn": "A third-generation dining room on the Tsuchido waterfront serving local Seto Inland Sea fish dishes and midday set meals. Closed Wednesdays.",
+   "note": "昼の定食から。オコゼの入荷はその日の状況次第。",
+   "noteEn": "Start with a midday set meal; okoze depends on the catch.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おのみちのしょくじどころ あおやぎ",
+    "address": "2-8-15 Tsuchido, Onomichi",
+    "url": "https://aoyagi-okoze.com/",
+    "whatJa": "土堂の海岸通り近くにある三代続く老舗の食事処で、瀬戸内産のオコゼの薄造りや唐揚げ、名物のうにめしなど地魚料理と昼定食を供する。",
+    "whatEn": "A third-generation seafood dining room along the Tsuchido waterfront, celebrated for Seto Inland Sea stonefish (okoze) sashimi, deep-fried okoze, and sea-urchin rice.",
+    "facts": "Specializes in locally landed Setouchi okoze prepared as translucent sashimi, crisp whole karaage, and miso soup, alongside casual midday set meals.",
+    "weak": "",
+    "verifiedBy": "https://aoyagi-okoze.com/",
+    "quote": "おこぜ暫く入荷がなさそうです",
+    "fixes": "住所・三代目・瀬戸内の地魚とオコゼ中心の和食という説明は一致。オコゼは2026-10-08に暫く入荷見込みなしとの告知があるため、常時提供としない。",
+    "coords": null
+   }
+  },
+  "AIR CAFÉ": {
+   "nameEn": "AIR CAFÉ",
+   "area": "千光寺坂・猫の細道",
+   "areaEn": "Senkoji Slope & Neko no Hosomichi",
+   "tags": [
+    "cafe",
+    "lunch"
+   ],
+   "what": "東土堂町の光明寺會舘にある8席の小さなカフェ。できる限り尾道産の野菜などを使った食事を出す。営業は金〜月曜の11時から18時。",
+   "whatEn": "An eight-seat café inside Komyoji Kaikan in Higashitsuchido-cho, cooking with Onomichi produce where possible. Open Friday to Monday, 11 am to 6 pm.",
+   "note": "8席だけなので、少人数で静かな時間に。",
+   "noteEn": "Only eight seats, so go in a small group when it is quiet.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "えあーかふぇ",
+    "address": "2-1 Higashitsuchido-cho, Onomichi",
+    "url": "http://komyoji-kaikan.blogspot.com/",
+    "whatJa": "東土堂町・光明寺下の木造会館「光明寺會舘」内にある8席の小さな食堂カフェで、尾道産の有機・自然栽培野菜を中心としたランチを供する。",
+    "whatEn": "An eight-seat solo-run lunch room inside the renovated parish hall of Komyoji Temple on the Senkoji slope, serving vegetable-forward plates made from organic Onomichi produce.",
+    "facts": "Housed in a community-restored wooden building beside Komyoji Temple that also hosts artist residencies and exhibitions; accommodates groups of up to four.",
+    "weak": "8 seats only; irregular opening days posted on the Komyoji Kaikan blog.",
+    "verifiedBy": "http://komyoji-kaikan.blogspot.com/",
+    "quote": "さて、AIR CAFEは10月24日(土)より営業を再開いたします。",
+    "fixes": "whatEn/whatJaの有機・自然栽培野菜に限定した断定を、公式の『できるだけ尾道産のもの、可能なら有機農法や自然農法』へ修正。8席・店主一人・一組最大4名は公式と一致。 公式MAPで住所『広島県尾道市東土堂町2-1』が一致。",
+    "coords": null
+   }
+  },
+  "茶房こもん": {
+   "nameEn": "Sabo Common",
+   "area": "久保・長江",
+   "areaEn": "Kubo & Nagae",
+   "tags": [
+    "coffee",
+    "waffles",
+    "ice cream"
+   ],
+   "what": "長江の千光寺山ロープウェイ乗り場前にある喫茶店。焼きたてのワッフルと自家製アイスクリームを供する。火曜が休み。",
+   "whatEn": "A coffeehouse in front of the Mount Senkoji ropeway station in Nagae, serving freshly griddled waffles and house-made ice cream. Closed Tuesdays.",
+   "note": "ロープウェイに乗る前か後に、焼きたてのワッフルを。",
+   "noteEn": "Have a fresh waffle before or after taking the ropeway.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "さぼうこもん",
+    "address": "1-2-2 Nagae, Onomichi",
+    "url": "https://common.cafe/",
+    "whatJa": "昭和52年（1977年）創業、千光寺山ロープウェイ山麓駅前に構える老舗カフェで、焼きたての自家製ワッフルや自家製アイスクリームとともに珈琲を供する。",
+    "whatEn": "An independent cafe operating at the foot of Mount Senkoji since 1977, pairing freshly griddled Belgian-style waffles and house-churned ice cream with coffee.",
+    "facts": "Single-location Nagae institution equipped with an Italian gelato machine; serves crisp-outside, airy-inside waffles topped with custard, seasonal citrus, or house milk ice cream.",
+    "weak": "",
+    "verifiedBy": "https://common.cafe/",
+    "quote": "カフェの営業、８月は４、１８、25日（11日山の日は営業）の火曜日をお休みいたします。",
+    "fixes": "公式店舗ページ https://common.jp/ で住所『尾道市長江1丁目2-2』とロープウェイ乗り場前を確認。公式サイトでワッフルと自家製アイスクリームの販売を確認。ベルギー風という呼称と1977年創業の詳細は店舗紹介本文では未確認（通販サイトの見出しにSince1977）。",
+    "coords": null
+   }
+  },
+  "Overview Coffee Setoda Roastery": {
+   "nameEn": "Overview Coffee Setoda Roastery",
+   "area": "因島・瀬戸田",
+   "areaEn": "Innoshima & Setoda",
+   "tags": [
+    "coffee",
+    "roastery"
+   ],
+   "what": "生口島の瀬戸田港前にある焙煎所兼カフェ。140年前に建てられた塩蔵を改装し、自家焙煎の豆をハンドドリップで出す。開くのは13時から17時。",
+   "whatEn": "A roastery and café facing Setoda Port on Ikuchijima, set in a converted 140-year-old salt storehouse serving hand-dripped house-roasted coffee. Open 1 pm to 5 pm.",
+   "note": "午後からの営業なので、瀬戸田の午後に立ち寄る。",
+   "noteEn": "It opens in the afternoon, so stop by later in the day in Setoda.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "おーばーびゅーこーひー せとだばいせんじょ",
+    "address": "254-2 Setoda, Setoda-cho, Onomichi",
+    "url": "https://overviewcoffee.jp/",
+    "whatJa": "生口島・瀬戸田港前の築140年の塩蔵を改装したスペシャルティコーヒー焙煎所兼カフェで、リジェネラティブ・オーガニック農法の豆を自家焙煎しハンドドリップで供する。",
+    "whatEn": "A specialty coffee roastery and cafe housed inside a renovated 140-year-old salt storehouse facing Setoda Port, roasting regenerative-organic beans.",
+    "facts": "Flagship Japanese roastery of Overview Coffee (operating three brick-and-mortar shops in Japan); roasts all beans for Japan inside a Meiji-era former salt warehouse on Setoda.",
+    "weak": "",
+    "verifiedBy": "https://overviewcoffee.jp/blogs/blogs/fieldwork2026_fazendasdutra",
+    "quote": "2026年6月22日から7月3日にかけて、ブラジルのミナスジェライス州にある3つの農園を訪問してきました。",
+    "fixes": "公式店舗ページ https://overviewcoffee.jp/pages/location_setoda で焙煎所兼カフェ、築140年の塩蔵、ハンドドリップ提供、住所『広島県尾道市瀬戸田町瀬戸田254-2』を確認。2026年の公式記事後段にも『間もなく瀬戸田の焙煎所に到着して、ローストプロファイルが整い次第お届けすることができます。』とある。",
+    "coords": null
+   }
+  },
+  "帆雨亭": {
+   "nameEn": "Han-utei",
+   "area": "千光寺坂・猫の細道",
+   "areaEn": "Senkoji Slope & Neko no Hosomichi",
+   "tags": [
+    "matcha",
+    "coffee"
+   ],
+   "what": "古寺巡りの石段途中、文学記念室のそばにある1999年開業の小さな茶店。抹茶やコーヒーを出し、志賀直哉の初版本などを置く「おのみち文庫」もある。不定休。",
+   "whatEn": "A small open-air teahouse opened in 1999 along the temple-walk stone steps beside the Literature Memorial Room, serving matcha and coffee with a small Shiga Naoya library. Irregular holidays.",
+   "note": "野点の茶店なので、雨が強い日は開いているか注意。",
+   "noteEn": "It is an open-air teahouse, so watch for closures on heavy rain days.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "はんうてい",
+    "address": "11-30 Higashitsuchido-cho, Onomichi",
+    "url": "https://onomichi.sakura.ne.jp/han-u/",
+    "whatJa": "千光寺坂の石段途中に佇む1999年創業の小さな茶店で、日本の陶芸作家の器で珈琲や抹茶を供する。",
+    "whatEn": "A quiet hillside tea and coffee house perched along the car-free stone steps toward Senkoji, serving coffee and matcha in vessels crafted by contemporary Japanese potters.",
+    "facts": "Tucked behind a garden gate halfway up the Higashitsuchido-cho slope; guests drink from museum-grade studio ceramics overlooking Onomichi's tiled roofs.",
+    "weak": "Open mainly Saturdays, Sundays, and holidays (10:00–17:00).",
+    "verifiedBy": "https://note.com/moe_flo_embro/n/n0651c7c9939a",
+    "quote": "尾道に着いてまず向かった先は、「帆雨亭」。",
+    "fixes": "公式紹介 https://onomichi.sakura.ne.jp/han-u/hanuteiprof.html で1999年4月開業、抹茶・コーヒー、石段の野点喫茶を確認。現代陶芸家の器という限定は取得本文に記載なし。住所の番地は取得した公式紹介本文では確認できない。",
+    "coords": null
+   }
+  },
+  "向島東製陶所": {
+   "nameEn": "Mukaishima Higashi Seitosho",
+   "area": "向島",
+   "areaEn": "Mukaishima",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "向島の向東町にある製陶所。日々の食器やランプシェードなどを手づくりし、予約制で陶芸体験も開いている。",
+   "whatEn": "A pottery workshop in Mukaihigashi on Mukaishima, hand-making everyday tableware and lampshades, with wheel-throwing sessions by reservation.",
+   "note": "開いている日は不定期なので、Instagramを見てから。",
+   "noteEn": "Open days are irregular, so check Instagram before going.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "むかいしまひがしせいとうしょ",
+    "address": "8762-1 Mukaihigashi-cho, Onomichi",
+    "url": "https://www.instagram.com/m_h_seitousho/",
+    "whatJa": "向島・向東町で陶芸家・惠谷幸史らが営む製陶所で、日常使いの皿や湯呑み、作家鉢、瀬戸内レモンの箸置きや照明シェードを手づくりする。",
+    "whatEn": "A small pottery kiln on Mukaishima island led by ceramist Koji Etani, hand-throwing everyday stoneware plates, tumblers, planters, and Setouchi lemon chopstick rests.",
+    "facts": "Produces custom tableware for local Setouchi cafes alongside studio planters and wheel-throwing workshops by reservation on Mukaishima.",
+    "weak": "Irregular open-studio sales; check Instagram or reserve ahead.",
+    "verifiedBy": "https://yumoto-mirai.jp/top-test/",
+    "quote": "初回のテーマは「夏」。器の向島東製陶所さん @m_h_seitousho 、帽子の石田製帽さん @ishidaseibou ほか、HEPさんのサンダル @hepsandal も明日まで。",
+    "fixes": "住所は取得した紹介記事 https://note.com/fureai_hometown/n/n4c4050fe435c の『尾道市向東町8762-1』と一致（記事は2022年）。同記事に食器類・ランプシェード等の受注製作と要予約の陶芸体験あり。レモン箸置き・作家鉢等の細目は当該記事本文では未確認。",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "千光寺",
+   "nameEn": "Senkoji Temple",
+   "kind": "sight",
+   "area": "千光寺坂・猫の細道",
+   "areaEn": "Senkoji Slope & Neko no Hosomichi",
+   "address": "尾道市東土堂町15-1",
+   "url": "https://www.senkouji.jp/",
+   "what": "千光寺山の中腹に建つ古寺。朱塗りの本堂や鐘楼、鼓岩（ポンポン岩）があり、境内から尾道の町と尾道水道を見渡せる。拝観時間は9時から17時。",
+   "whatEn": "An old temple partway up Mount Senkoji, with a vermilion main hall, bell tower and Tsudumi-iwa rock, looking out over the town and the Onomichi Channel. Open 9 am to 5 pm.",
+   "coords": [
+    34.41036,
+    133.19868
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.senkouji.jp/ : 〒722-0033 尾道市東土堂町15-1、拝観時間 9:00～17:00。2026/05/31 鼓岩（通称ポンポン岩）が音響遺産に選定。2026/04/14 納経所増築工事（5/18～7/31、参拝は通常通り）。",
+   "_coordsSource": "OSM node 3399246723（千光寺）"
+  },
+  {
+   "name": "尾道市立美術館",
+   "nameEn": "Onomichi City Museum of Art",
+   "kind": "art",
+   "area": "千光寺公園",
+   "areaEn": "Senkoji Park",
+   "address": "尾道市西土堂町17-19",
+   "url": "https://www.onomichi-museum.jp/",
+   "what": "千光寺公園の中にある市立美術館。2003年に安藤忠雄の設計で改修され、瀬戸内の景色を望む館内で企画展や所蔵品展を開く。祝日以外の月曜と展示替え期間が休館。",
+   "whatEn": "The city art museum in Senkoji Park, renovated in 2003 to a design by Tadao Ando, holding special and collection exhibitions overlooking the Seto Inland Sea. Closed Mondays (except holidays) and between exhibitions.",
+   "coords": [
+    34.41,
+    133.19573
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.onomichi-museum.jp/ : 広島県尾道市西土堂町17-19（千光寺公園内）、開館 9:00〜17:00（入館16:30まで）、休館 祝日以外の月曜・展示替え期間・12/29〜1/3。2026.11.08 山本基展関連のお知らせ。/about/ に平成15年（2003年）安藤忠雄設計による改修リニューアルオープン。",
+   "_coordsSource": "OSM way 679798418（尾道市立美術館）"
+  },
+  {
+   "name": "平山郁夫美術館",
+   "nameEn": "Hirayama Ikuo Museum of Art",
+   "kind": "art",
+   "area": "因島・瀬戸田",
+   "areaEn": "Innoshima & Setoda",
+   "address": "尾道市瀬戸田町沢200-2",
+   "url": "https://hirayama-museum.or.jp/",
+   "what": "瀬戸田町出身の日本画家・平山郁夫の美術館。生口島にあり、少年期の作品からシルクロードの取材作、しまなみ海道の作品までを展示する。開館は9時から17時。",
+   "whatEn": "A museum on Ikuchijima dedicated to Nihonga painter Hirayama Ikuo, born in Setoda, showing works from his youth, Silk Road travels and the Shimanami Kaido. Open 9 am to 5 pm.",
+   "notice": "2026年12月8日は展示替えのため休館。",
+   "noticeEn": "Closed on 8 December 2026 for exhibition changeover.",
+   "coords": [
+    34.30572,
+    133.09042
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://hirayama-museum.or.jp/ : 〒722-2413 広島県尾道市瀬戸田町沢200-2、営業時間 9:00〜17:00（入館16:30まで）、原則無休（2026年12月8日は展示替えのため休館）。2026年11月11日 中国新聞掲載のお知らせ、2026/7/10〜12/7「平山郁夫の旅路 ふたつの窟 －敦煌とカッパドキア－」。",
+   "_coordsSource": "OSM way 483993709（平山郁夫美術館）"
+  },
+  {
+   "name": "耕三寺博物館",
+   "nameEn": "Kosanji Museum",
+   "kind": "sight",
+   "area": "因島・瀬戸田",
+   "areaEn": "Innoshima & Setoda",
+   "address": "尾道市瀬戸田町瀬戸田553-2",
+   "url": "https://www.kousanji.or.jp/",
+   "what": "生口島・瀬戸田にある浄土真宗本願寺派の寺院で、寺域全体を博物館として公開している。15棟の堂塔が国の登録有形文化財で、奥に大理石の庭園「未来心の丘」がある。年中無休、9時から17時。",
+   "whatEn": "A Jodo Shinshu temple in Setoda on Ikuchijima open as a museum across its whole grounds, with fifteen registered tangible cultural property buildings and the marble garden Hill of Hope. Open daily, 9 am to 5 pm.",
+   "coords": [
+    34.30397,
+    133.09041
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kousanji.or.jp/ : 広島県尾道市瀬戸田町瀬戸田553-2、開館 9:00～17:00（最終入館16:30）、年中無休。15棟の堂塔が国の登録有形文化財、昭和28年開館の登録博物館（トップに開館73周年＝2026年展示情報あり）。",
+   "_coordsSource": "OSM way 461850131（耕三寺）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "立花テキスタイル研究所",
+   "verdict": "doubt",
+   "reason": "Site shows only '(C) 2016' footer and 2023 move notice; Instagram/Facebook pages not readable without login; no 2026-dated sentence found."
+  },
+  {
+   "name": "尾道造酢",
+   "verdict": "doubt",
+   "reason": "Newest news item on the site is 2023年06月29日; Instagram not readable; no 2026 evidence found."
+  },
+  {
+   "name": "昇福亭 長江店",
+   "verdict": "doubt",
+   "reason": "Official site opened; newest news post is Dec 2024 (RSS), no 2026 dated post found. Instagram not viewable."
+  },
+  {
+   "name": "水尾之路",
+   "verdict": "doubt",
+   "reason": "Official site opened; no dated 2026 content found."
+  },
+  {
+   "name": "天狗寿司",
+   "verdict": "doubt",
+   "reason": "Official site footer is Ⓒ2025, topics list empty, no 2026 dated evidence."
+  },
+  {
+   "name": "尾道ラーメン 丸ぼし",
+   "verdict": "doubt",
+   "reason": "Only '© 2026' footer and undated hours (水曜定休 10:50～20:00(売切れ次第終了)); blog last posts 2020. No 2026 dated evidence."
+  },
+  {
+   "name": "小料理屋 実",
+   "verdict": "doubt",
+   "reason": "Latest news on site is 2025/09/23; no 2026 evidence."
+  },
+  {
+   "name": "forumiest table",
+   "verdict": "drop",
+   "reason": "Official site news says forumiest table ended on 2026-08-31 (followed by 2026.9.19 リニューアルオープン of other facilities)."
+  },
+  {
+   "name": "喫茶キツネ雨",
+   "verdict": "doubt",
+   "reason": "Only online shop opened; no dated 2026 post (only '4/28入荷分' without year). Kissaten description (pudding, cream soda, interior) not confirmed on page."
+  },
+  {
+   "name": "LOG",
+   "verdict": "doubt",
+   "reason": "Top page only nav; news page last modified 2025-06-19 and shows no 2026 dated text. No copyable 2026 sentence."
+  },
+  {
+   "name": "梟の館",
+   "verdict": "doubt",
+   "reason": "Official site has 2026/09/15-16 blog posts about 猫の細道 (e.g. '尾道は、昔から猫の多い港町として親しまれてきました。') but no 2026 notice about cafe operating; last opening notice dated 2024/12/17."
+  },
+  {
+   "name": "うつわとくらしの道具 カルフ",
+   "verdict": "doubt",
+   "reason": "Latest news item 2025/10/16 (arkietti 2026 calendar UP); calendar for 2026年11月 present but no dated 2026 post/notice."
+  },
+  {
+   "name": "陶房CONEL",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but only a login-gated shell with profile counts was readable; no dated 2026 post text could be copied."
+  },
+  {
+   "name": "素白",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but only a login-gated shell with profile counts was readable; no dated 2026 post text could be copied."
+  },
+  {
+   "name": "いりこや佐藤商店",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "ほぺ",
+   "verdict": "doubt",
+   "reason": "公式サイトは取得したが、埋め込みInstagramの営業案内は月日だけで年の記載がなく、2026年と明示された営業文をコピーできない。検索でも日付付き2026年記事を確認できなかった。"
+  },
+  {
+   "name": "sora studio&gallery",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "吉野瞬 陶芸工房（Faro LUCE）",
+   "verdict": "doubt",
+   "reason": "2026年の作家活動は確認できるが、対象の因島の工房・週末ショップが営業していることを確認できない。移転を示唆する検索結果の候補記事 https://magazine.cliiip.jp/art/13582/ はcurl・ブラウジングとも503（メンテナンス中）で本文を開けず、検索結果だけを根拠にdropにはしない。"
+  }
+ ]
+}

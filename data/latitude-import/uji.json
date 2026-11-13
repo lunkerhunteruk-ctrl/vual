@@ -1,0 +1,623 @@
+{
+ "slug": "uji",
+ "city": {
+  "name": "Uji",
+  "nameJa": "宇治",
+  "latitude": "34.9° N",
+  "country": "Kyoto, Japan",
+  "countryJa": "京都府",
+  "person": "rin",
+  "coords": [
+   34.89296,
+   135.80626
+  ],
+  "intro": "A town of tea gardens and old temples along the Uji River. Tea merchants and kumihimo makers near the river, pottery and woodwork in the valley of Sumiyama, and sweets, bread and coffee stretching out to Obaku and Ogura. Rin's picks for November, when the autumn leaves turn.",
+  "introJa": "宇治川のほとりに茶園と寺社が連なる町。宇治茶の老舗や炭山の窯元と木工、門前の菓子と珈琲の店が、川の両岸と黄檗・小倉の住宅地まで続く。紅葉の11月に巡る、凛のおすすめ。",
+  "locator": {
+   "en": "South of Kyoto · along the Uji River",
+   "ja": "京都の南・宇治川の両岸に広がる町"
+  },
+  "industries": [
+   {
+    "key": "uji-tea",
+    "en": "Uji tea cultivation and processing",
+    "ja": "宇治茶の栽培・製茶",
+    "about": "Uji's matcha and gyokuro are made from shaded-grown leaves, steamed right after picking and ground on stone mills. Of the seven tea gardens named by the Ashikaga shoguns in the Muromachi period, Okunoyama still survives and is tended by Horii Shichimeien.",
+    "aboutJa": "宇治の抹茶や玉露は、覆い下栽培で育てた新芽を摘んですぐ蒸し、石臼で挽く製法でつくられる。室町時代に足利将軍が選んだ「宇治七茗園」のうち、奥ノ山茶園が今も残り、堀井七茗園が守り育てている。",
+    "_src": "Shaded tea cultivation, steaming, and stone-milling along the mist-prone Uji River valley have defined Uji's agricultural and craft economy since the medieval period."
+   },
+   {
+    "key": "kyo-kumihimo",
+    "en": "Braided silk cord making",
+    "ja": "京くみひも製造",
+    "about": "A traditional Kyoto braided cord craft, carried from yarn dyeing through braiding and finishing. In Uji, Showen Kumihimo, founded in 1948, braids cords both by hand on wooden stands and on braiding machines for kimono obijime, small accessories, and ties for tea caddies.",
+    "aboutJa": "京都の伝統的な組紐で、糸を染めるところから組み、仕上げまでを一貫して行う。宇治では1948年創業の昇苑くみひもが、組み台を使う手組と製紐機の機械組で、帯締めや和装小物のほか、茶缶の紐なども作っている。",
+    "_src": "Uji workshops dye, braid, and finish silk cords on traditional wooden stands for kimono, Buddhist vestments, and wooden tea-jar ties used by local tea masters."
+   }
+  ]
+ },
+ "places": {
+  "朝日焼 shop & gallery": {
+   "nameEn": "Asahiyaki shop & gallery",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "tags": [
+    "ceramics",
+    "teaware"
+   ],
+   "what": "宇治川を挟んで平等院の向かいにある、約400年続く茶陶の窯元・朝日焼の店とギャラリー。十六世松林豊斎の作品や窯元の器が並ぶ。10時から17時で、月曜と最終火曜は休み。",
+   "whatEn": "The shop and gallery of Asahiyaki, a tea-pottery kiln active for about 400 years across the Uji River from Byodoin, showing works by Matsubayashi Hosai XVI and kiln pieces. Open 10 am to 5 pm, closed Mondays and the last Tuesday.",
+   "note": "宇治の土の淡い色を、手に取って見る。",
+   "noteEn": "Hold a piece to see the pale colour of Uji clay.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "あさひやき ショップアンドギャラリー",
+    "address": "京都府宇治市宇治又振67",
+    "url": "https://asahiyaki.com/",
+    "whatJa": "創業約400年の宇治の茶陶窯元による、淡い鹿背（かせ）の斑紋が浮かぶ茶碗や現代の茶器が並ぶ宇治川畔のショップ＆ギャラリー。",
+    "whatEn": "Riverside gallery and shop of a 400-year-old Uji tea-ceramics kiln displaying pale blush-spotted tea bowls and contemporary teaware.",
+    "facts": "Founded around 1600 as one of Kobori Enshu's Seven Kilns; 16th-generation potter Matsubayashi Hosai fires local Uji clay in a pine-stoked climbing kiln across the lane; machiya gallery redesigned by Ryu Kosaka in 2017.",
+    "weak": "",
+    "verifiedBy": "https://asahiyaki.com/",
+    "quote": "Asahiyaki will share the story of osaa, its new tableware collection presented at 3daysofdesign in 2026.",
+    "fixes": "",
+    "coords": [
+     34.89083,
+     135.80951
+    ]
+   }
+  },
+  "龍豊窯": {
+   "nameEn": "Ryuhougama",
+   "area": "炭山",
+   "areaEn": "Sumiyama",
+   "tags": [
+    "ceramics",
+    "teaware"
+   ],
+   "what": "山あいの陶芸の里・炭山にある京焼・清水焼の窯元。繊細なろくろと絵付けの茶道具や割烹食器を作る。予約制の陶芸体験もある。電車やバスは通っていない。",
+   "whatEn": "A Kyo-yaki and Kiyomizu-yaki kiln in the mountain pottery village of Sumiyama, making finely potted, hand-painted tea utensils and tableware. Pottery workshops by reservation; no public transit reaches the valley.",
+   "note": "バスが通らないから、車かタクシーで。",
+   "noteEn": "No buses run there, so go by car or taxi.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "りゅうほうがま",
+    "address": "京都府宇治市炭山大西1-11",
+    "url": "https://ryuuhougama.com/",
+    "whatJa": "山あいの陶芸の里・炭山で、繊細なろくろ成形と緻密な絵付けの茶道具・器を手がける京焼窯元。",
+    "whatEn": "Kyo-yaki and Kiyomizu-yaki kiln in the mountain pottery village of Sumiyama specializing in finely potted, hand-painted teaware and tableware.",
+    "facts": "Staffed by certified traditional craftspeople producing thin-walled porcelain and stoneware vessels painted by hand; operates a studio and gallery in Uji's forested Sumiyama valley.",
+    "weak": "",
+    "verifiedBy": "https://ryuuhougama.com/",
+    "quote": "2026年2月26日～3月3日\n広島　福屋八丁堀本店　7F　美術画廊\n京焼・清水焼展　「現在から未来\n京もの認定工芸士として瑛人が出展しておりますので、ご都合宜しければ、是非、足をお運び下さい。",
+    "fixes": "address: 京都府宇治市炭山別所4",
+    "coords": [
+     34.93017,
+     135.83672
+    ]
+   },
+   "address": "宇治市炭山別所4"
+  },
+  "京都炭山朝倉木工": {
+   "nameEn": "Kyoto Sumiyama Asakura Mokkou",
+   "area": "炭山",
+   "areaEn": "Sumiyama",
+   "tags": [
+    "wood"
+   ],
+   "what": "炭山にある、無垢の木の家具と木の小物の工房兼ショールーム。椅子やテーブルから拭き漆の器まで作る。平日は10時から16時、土日祝は予約制。",
+   "whatEn": "A solid-wood furniture and small woodware workshop and showroom in Sumiyama, making chairs, tables and wiped-lacquer pieces. Open weekdays 10 am to 4 pm; weekends and holidays by reservation.",
+   "note": "土日祝は予約制。平日ならそのまま入れる。",
+   "noteEn": "Weekends and holidays need a booking; weekdays you can walk in.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きょうとすみやまあさくらもっこう",
+    "address": "京都府宇治市炭山堂ノ元23-3",
+    "url": "https://www.asakuramokkou.com/",
+    "whatJa": "炭山の工房にショールームを併設し、無垢材の家具や木製トレー・お盆を制作する木工所。",
+    "whatEn": "Solid-wood furniture and wooden tableware workshop with a showroom in the forested craft hamlet of Sumiyama.",
+    "facts": "Shapes domestic and North American hardwoods using joinery without nails into thin-rimmed serving trays, small tableware, and custom dining tables; showroom visits are by advance reservation.",
+    "weak": "Showroom visits require advance reservation.",
+    "verifiedBy": "https://www.asakuramokkou.com/",
+    "quote": "（終了）2026/9/23水～27日「第44回一匠会展」出展します",
+    "fixes": "Visiting information: 平日は予約なしでご来店頂けますが、オーダー相談はご予約頂くと確実です。土日祝はご予約制。",
+    "coords": [
+     34.92063,
+     135.83492
+    ]
+   }
+  },
+  "通圓": {
+   "nameEn": "Tsuen Tea",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "tags": [
+    "tea",
+    "matcha"
+   ],
+   "what": "宇治橋の東詰に立つ、1160年創業の茶商と茶屋。今の建物は1672年に建てられたもの。茶房で抹茶や茶そば、茶だんごを出す。10時半から17時半（茶房L.O. 16時）。",
+   "whatEn": "A tea merchant and teahouse at the east end of Uji Bridge, founded in 1160 in a building from 1672. The teahouse serves matcha, tea soba and tea dango overlooking the river. Open 10:30 am to 5:30 pm (teahouse last order 4 pm).",
+   "note": "茶房は16時がラストオーダー。川沿いを歩く前に。",
+   "noteEn": "Teahouse last order is 4 pm. Go before a walk along the river.",
+   "_src": {
+    "category": "local",
+    "industry": "uji-tea",
+    "nameKana": "つうえん",
+    "address": "京都府宇治市宇治東内1",
+    "url": "https://tsuentea.com/",
+    "whatJa": "宇治橋東詰で速い緑の流れを望む、一店舗主義を貫く歴史ある宇治茶商・茶屋。",
+    "whatEn": "Single-shop historic Uji tea merchant and teahouse standing at the eastern foot of Uji Bridge over the rushing green river.",
+    "facts": "Founded in 1160 originally as bridge guardians serving tea to travellers; housed in a dark-wood Edo-period townhouse built in 1672 with broad eaves and antique tea-storage jars displayed out front; sells house-blended Uji matcha, gyokuro, and sencha with no branch stores.",
+    "weak": "",
+    "verifiedBy": "https://tsuentea.com/blogs/news/%E3%81%8A%E4%BC%91%E3%81%BF%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85-notice-of-closure-2",
+    "quote": "Our shop will be closed on August 26th Wed.",
+    "fixes": "",
+    "coords": [
+     34.89326,
+     135.80724
+    ]
+   }
+  },
+  "堀井七茗園": {
+   "nameEn": "Horii Shichimeien",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [
+    "matcha",
+    "tea"
+   ],
+   "what": "1879年創業の宇治茶の老舗。室町時代から続く宇治七茗園で唯一残る奥ノ山茶園を育て、一番茶を石臼で挽く。店頭販売は平日の10時から16時半（12時から13時半は昼休み）。",
+   "whatEn": "A Uji tea house since 1879 that tends Okunoyama, the last surviving Muromachi-era Shichimeien garden, and stone-mills first-flush tea. Shop open weekdays 10 am to 4:30 pm (closed 12 pm to 1:30 pm, and weekends/holidays).",
+   "note": "12時から13時半は昼休み。店頭で茶園の資料ももらえる。",
+   "noteEn": "Closed 12 to 1:30 pm for lunch. Ask at the counter for notes on the tea garden.",
+   "_src": {
+    "category": "local",
+    "industry": "uji-tea",
+    "nameKana": "ほりいしちめいえん",
+    "address": "京都府宇治市宇治妙楽84",
+    "url": "https://horiishichimeien.com/",
+    "whatJa": "室町時代から唯一現存する「宇治七茗園」の奥ノ山茶園を守り、栽培から石臼挽きまで一貫して行う老舗茶舗。",
+    "whatEn": "Family-run Uji tea grower, refiner, and direct shop tending the last surviving medieval Shichimeien tea garden.",
+    "facts": "Established in 1879 and cultivates Okunoyama tea garden designated in the Muromachi era; invented the modern cylindrical tencha drying furnace (Horii-shiki) in 1924; factory and stone mills sit directly behind the single retail counter.",
+    "weak": "",
+    "verifiedBy": "https://horiishichimeien.com/blogs/topics/matcha-sales-resumption",
+    "quote": "多くのお客様よりご要望をいただいておりました「抹茶」の販売を、オンラインショップにて再開します。",
+    "fixes": "",
+    "coords": [
+     34.88852,
+     135.8053
+    ]
+   }
+  },
+  "昇苑くみひも 宇治本店": {
+   "nameEn": "Showen Kumihimo, Uji",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [
+    "kumihimo",
+    "textile"
+   ],
+   "what": "1948年創業の京くみひも工房が、築100年以上の町家を改装した宇治本店。手組と機械組で、帯締めや和装小物、茶缶の紐や雑貨を作る。10時から17時で無休（夏・冬休みあり）。",
+   "whatEn": "The Uji flagship of a Kyo-kumihimo maker founded in 1948, in a townhouse over a century old. It produces hand- and machine-braided obijime, tea-caddy cords and small goods. Open daily 10 am to 5 pm (seasonal breaks).",
+   "note": "1週間前までに予約すれば、手組の体験もできる。",
+   "noteEn": "Book a week ahead to try hand-braiding.",
+   "_src": {
+    "category": "local",
+    "industry": "kyo-kumihimo",
+    "nameKana": "しょうえんくみひも うじほんてん",
+    "address": "京都府宇治市宇治妙楽146-2",
+    "url": "https://www.showen.co.jp/",
+    "whatJa": "1948年創業の京くみひも工房が築100年超の京町家を改装して営む本店兼ギャラリー。",
+    "whatEn": "Flagship townhouse shop and nearby braiding workshop producing hand- and machine-braided silk cords since 1948.",
+    "facts": "Handles silk dyeing, marudai/kakudai hand-braiding, and finishing in-house in Uji Myoraku; crafts traditional cords for tea caddies in collaboration with Uji tea masters alongside pure-silk accessories and interior cords.",
+    "weak": "",
+    "verifiedBy": "https://www.showen.co.jp/%e5%96%b6%e6%a5%ad%e6%99%82%e9%96%93%e7%9f%ad%e7%b8%ae%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "※1月20日（火）より通常営業いたします。",
+    "fixes": "",
+    "coords": [
+     34.8902,
+     135.80411
+    ]
+   }
+  },
+  "たま木亭": {
+   "nameEn": "Tamaki-tei",
+   "area": "黄檗・木幡",
+   "areaEn": "Obaku & Kohata",
+   "tags": [
+    "bread"
+   ],
+   "what": "黄檗駅近くのパン屋。百貨店への出店や通販はせず、この店だけでバゲットやチャバタを焼く。8時から18時45分で、月・火・水曜は休み。",
+   "whatEn": "A bakery near Obaku Station that refuses branches and mail order, baking baguettes and ciabatta at this single shop. Open 8 am to 6:45 pm, closed Monday to Wednesday.",
+   "note": "月・火・水は休み。黄檗駅から歩いて5分ほど。",
+   "noteEn": "Closed Monday to Wednesday. About five minutes on foot from Obaku Station.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "たまきてい",
+    "address": "京都府宇治市五ケ庄平野57-14",
+    "url": "http://www.tamaki-tei.com/",
+    "whatJa": "京都大学宇治キャンパス前に一店舗のみを構え、焼きたてにこだわる全国屈指のベーカリー。",
+    "whatEn": "Fiercely independent single-location bakery opposite Kyoto University's Uji Campus known for shatteringly crisp laminated pastries and rich breads.",
+    "facts": "Refuses department-store branches or mail order so all ~80 breads are sold fresh from the Obaku oven; signature Kunyané pastry shell is piped to order with custard cream.",
+    "weak": "",
+    "verifiedBy": "https://www.japantripmap.com/kyoto/food/tama-ki-tei",
+    "quote": "An exceptionally popular artisan bakery in Uji, Kyoto, drawing long queues for its signature Kunyane pastry and a wide range of breads.",
+    "fixes": "",
+    "coords": [
+     34.91011,
+     135.80342
+    ]
+   }
+  },
+  "シェ・アガタ": {
+   "nameEn": "Chez Hagata",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "tags": [
+    "matcha",
+    "sweets"
+   ],
+   "what": "三室戸駅の近くにある小さな洋菓子店。抹茶とホワイトチョコレートなどで焼く「挽きたて抹茶の贅沢テリーヌ」のほか、チーズケーキやティラミスがある。10時から17時で、火・水・木曜は休み。",
+   "whatEn": "A small patisserie near Mimurodo Station known for its Uji matcha terrine made with matcha and white chocolate, alongside cheesecakes and tiramisu. Open Friday to Monday, 10 am to 5 pm.",
+   "note": "火・水・木が休み。週末か金曜・月曜に行く。",
+   "noteEn": "Closed Tuesday to Thursday. Go Friday to Monday.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "しぇ・あがた",
+    "address": "京都府宇治市菟道谷下り44-11",
+    "url": "https://www.kyoto-sweet.jp/",
+    "whatJa": "三室戸駅近くの住宅街に佇む、挽きたて抹茶の濃厚なテリーヌで知られる小さな洋菓子店。",
+    "whatEn": "Small residential-lane patisserie near Mimurodo Station celebrated for its dense, velvety Uji matcha terrine.",
+    "facts": "Run by husband-and-wife pastry chefs using custom-blended stone-ground Uji matcha white chocolate batter baked at low temperature; operates only a few days a week for direct storefront pickups and seasonal cakes.",
+    "weak": "",
+    "verifiedBy": "https://kyoto-sweet.jp/blog/%e5%ae%9a%e4%bc%91%e6%97%a5%e5%a4%89%e6%9b%b4%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "誠に勝手ながら、令和8年8月よりしばらくの間\n今までの定休日に加え\n火曜日もお休みさせて頂きます。",
+    "fixes": "",
+    "coords": [
+     34.89915,
+     135.80853
+    ]
+   }
+  },
+  "能登椽 稲房安兼": {
+   "nameEn": "Notonojo Inafusa Yasukane",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "1717年創業、平等院の表参道にある和菓子屋。石臼挽きのしんこ粉と砂糖、抹茶だけで作る茶だんごや、最中、季節の菓子が並ぶ。9時から17時で、木曜と第3水曜は休み。",
+   "whatEn": "A wagashi shop on the approach to Byodoin since 1717. Its cha-dango are steamed from stone-milled rice flour, sugar and matcha, alongside monaka and seasonal sweets. Open 9 am to 5 pm, closed Thursdays and the third Wednesday.",
+   "note": "茶だんごは18粒から買える。冬場は翌日まで。",
+   "noteEn": "Cha-dango start at eighteen pieces. Keeps until the next day outside summer.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "のとのじょう いなふさやすかね",
+    "address": "京都府宇治市宇治蓮華11",
+    "url": "http://www.inafusa-yasukane.com/",
+    "whatJa": "享保2年（1717年）創業、無添加・無着色の素朴な茶だんごを作り続ける老舗和菓子司。",
+    "whatEn": "Traditional wagashi maker founded in 1717 crafting additive-free green tea rice dumplings near Byodoin.",
+    "facts": "Uses only rice flour, sugar, and high-grade Uji matcha with no preservatives or artificial coloring so the cha-dango have a short shelf life and firm chew; also makes red-bean minazuki and warabimochi.",
+    "weak": "",
+    "verifiedBy": "https://www.lmaga.jp/news/2026/03/1030809/",
+    "quote": "平等院の表参道に店を構え、現在は、九代目となる稲房憲さんが暖簾を守り続けています。",
+    "fixes": "",
+    "coords": [
+     34.89128,
+     135.80647
+    ]
+   }
+  },
+  "Antica Pizzeria L'ASINELLO": {
+   "nameEn": "Antica Pizzeria L'ASINELLO",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [],
+   "what": "宇治妙楽の大阪屋マーケット内にある、真のナポリピッツァ協会認定のピッツェリア。7種の小麦粉を合わせた生地を8トンの石窯で焼く。昼と夜の二部制で不定休。",
+   "whatEn": "A pizzeria certified by the Associazione Verace Pizza Napoletana inside Osakaya Market in Myoraku, baking seven-flour dough in an eight-ton stone oven. Open for lunch and dinner; days off vary.",
+   "note": "席数が限られているから、電話で予約してから。",
+   "noteEn": "Seats are limited, so call to book ahead.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "あんてぃか ぴっつぇりあ らじねっろ",
+    "address": "京都府宇治市宇治妙楽41 大阪屋マーケット内",
+    "url": "https://www.anticapizzerialasinello.com/",
+    "whatJa": "昭和レトロな木造市場「大阪屋マーケット」内で、薪窯でナポリピッツァを焼き上げる専門店。",
+    "whatEn": "Wood-fired Neapolitan pizzeria tucked inside the retro Showa-era Osakaya Market arcade.",
+    "facts": "Certified by the Associazione Verace Pizza Napoletana (AVPN); Naples-trained pizzaiolo bakes blistered pies in a tiled wood-burning oven inside a renovated 1960s market stall.",
+    "weak": "",
+    "verifiedBy": "https://note.com/safe_toad6548/n/n460b4454a332",
+    "quote": "​宇治市宇治妙楽にある本格ナポリピッツァの人気店「アンティカ ピッツェリア ラジネッロ」さんへ行ってきました。",
+    "fixes": "",
+    "coords": [
+     34.89139,
+     135.80452
+    ]
+   }
+  },
+  "季節料理と天ぷら LovA": {
+   "nameEn": "LovA",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [],
+   "what": "JR宇治駅の近く、古民家を改装した天ぷらと煮込み料理の店。利尻昆布やマグロ節の出汁で仕込み、昼は11時15分から、夜は17時半から。惣菜の持ち帰りもできる。火曜は休み。",
+   "whatEn": "A seasonal tempura and simmered-dish restaurant in a renovated old house near JR Uji Station, cooking with Rishiri kelp and tuna-flake broth. Lunch, dinner and takeaway deli; closed Tuesdays.",
+   "note": "天丼や天ぷらの盛り合わせは持ち帰りもできる。",
+   "noteEn": "Tendon bowls and assorted tempura are available for takeaway too.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "きせつりょうりとてんぷら ろば",
+    "address": "京都府宇治市宇治壱番83",
+    "url": "https://lova2021.com/",
+    "whatJa": "JR宇治駅近くの古民家を改装し、季節野菜の天ぷらと煮込み料理を供する和食店（旧・御料理と喫茶 ロバ）。",
+    "whatEn": "Converted old townhouse restaurant near JR Uji Station serving seasonal vegetable tempura and slow-simmered dishes.",
+    "facts": "Evolved from Kohata's beloved cafe-restaurant Roba into a timber-beamed kominka in Uji Ichiban in 2021; plates crisp seasonal tempura, obanzai small dishes, and braised specialties on expressive ceramic vessels.",
+    "weak": "",
+    "verifiedBy": "https://lova2021.com/lova-enkai-2026/",
+    "quote": "ロバで宴会しませんか？",
+    "fixes": "",
+    "coords": [
+     34.88848,
+     135.80024
+    ]
+   }
+  },
+  "OUTSTANDING COFFEE ROASTER": {
+   "nameEn": "OUTSTANDING COFFEE ROASTER",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [
+    "coffee"
+   ],
+   "what": "明治末期の古民家を改装した、スペシャルティコーヒーのロースタリー兼スタンド。1974年創業の岡田珈琲店を母体に、焙煎後の豆を手で選別して一杯ずつ淹れる。火曜は休み。",
+   "whatEn": "A specialty coffee roastery and stand in a converted late-Meiji townhouse near Byodoin, grown out of Okada Coffee (founded 1974). Beans are hand-sorted after roasting and brewed to order. Closed Tuesdays.",
+   "note": "10種ほどの豆から、バリスタに好みを伝えて選ぶ。",
+   "noteEn": "Tell the barista what you like and pick from around ten roasts.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "あうとすたんでぃんぐ こーひー ろーすたー",
+    "address": "京都府宇治市宇治妙楽89-1",
+    "url": "https://thecoffee.co.jp/",
+    "whatJa": "明治期の町家を改装した空間で、徹底したハンドピックと自家焙煎を行うスペシャルティコーヒースタンド。",
+    "whatEn": "Specialty coffee roastery and espresso stand housed in a converted Meiji-era townhouse five minutes from Byodoin.",
+    "facts": "Grown out of Uji's 1974-founded Okada Coffee family; roasts light-to-dark single-origin lots on German Probat and vintage roasters with meticulous hand-sorting before and after roasting.",
+    "weak": "",
+    "verifiedBy": "https://mycoffeeawards.com/ca/vote",
+    "quote": "OUTSTANDING COFFEE ROASTER is located in a traditional machiya in Uji, Kyoto, dating from the Meiji era.",
+    "fixes": "",
+    "coords": [
+     34.88884,
+     135.80443
+    ]
+   }
+  },
+  "よこやま珈琲": {
+   "nameEn": "Yokoyama Coffee",
+   "area": "小倉・神明",
+   "areaEn": "Ogura & Shinmei",
+   "tags": [
+    "coffee"
+   ],
+   "what": "1986年創業、小倉の住宅地にある自家焙煎の珈琲店。必要な分だけ毎日焙煎し、ペーパードリップで淹れた一杯を100種以上のカップで出す。朝7時から19時で、月曜は休み。",
+   "whatEn": "A home-roasting coffee shop in residential Ogura since 1986, roasting only what is needed each day and pouring paper-drip cups into a collection of over a hundred cups. Open 7 am to 7 pm, closed Mondays.",
+   "note": "朝7時から開いている。月曜は休みで、店内は喫煙可。",
+   "noteEn": "Open from 7 am. Closed Mondays; smoking is allowed inside.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "よこやまこーひー",
+    "address": "京都府宇治市小倉町西浦5-9",
+    "url": "https://www.yokoyama1986.com/",
+    "whatJa": "1986年創業、小倉の住宅街で毎日少量ずつ自家焙煎する地元密着の珈琲専門店。",
+    "whatEn": "Neighborhood home-roasting kissaten founded in 1986 in residential Ogura, roasting small batches daily.",
+    "facts": "Run by an SCAJ-certified Coffee Meister who roasts only the day's needed beans for peak freshness; pours hand-dripped cups into a cup chosen for each guest from a wall of over 100 ceramic cups.",
+    "weak": "",
+    "verifiedBy": "https://www.yokoyama1986.com/SHOP/bl_xmas2026.html",
+    "quote": "販売期間:\n2026年11月03日12時00分～\n2026年12月20日18時59分",
+    "fixes": "",
+    "coords": [
+     34.89726,
+     135.78134
+    ]
+   }
+  },
+  "MONATIC COFFEE": {
+   "nameEn": "MONATIC COFFEE",
+   "area": "黄檗・木幡",
+   "areaEn": "Obaku & Kohata",
+   "tags": [
+    "coffee"
+   ],
+   "what": "木幡の住宅地にある、自家焙煎スペシャルティコーヒー豆と小さなカフェの店。店内にペットを連れて入れる。平日は休みで、週末も日によって開く日と時間が変わる。",
+   "whatEn": "A small specialty coffee roaster and café in residential Kohata where pets are welcome inside. Closed on weekdays, with weekend hours varying by week.",
+   "note": "平日は休み。開く日と時間はサイトの投稿を見てから。",
+   "noteEn": "Closed weekdays. Check the site's latest post for weekend hours.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "もなちっくこーひー",
+    "address": "京都府宇治市木幡御園20-167",
+    "url": "https://monaticcoffee.amebaownd.com/",
+    "whatJa": "木幡の御蔵山商店街の一角で自家焙煎スペシャルティコーヒーを淹れる小さなロースターカフェ。",
+    "whatEn": "Tiny neighborhood specialty coffee roaster and cafe tucked along Kohata's local Mikurayama shopping street.",
+    "facts": "Roasts seasonal single-origin beans and house blends in-house for pour-over, espresso, and whole-bean retail; beloved by Kohata locals on daily walks.",
+    "weak": "",
+    "verifiedBy": "https://monaticcoffee.amebaownd.com/posts/59296680",
+    "quote": "営業時間は、9:00-15:30 (ラストオーダー15:30) です。",
+    "fixes": "",
+    "coords": [
+     34.93333,
+     135.80064
+    ]
+   }
+  },
+  "AMATISTA Coffee": {
+   "nameEn": "AMATISTA Coffee",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "tags": [
+    "coffee"
+   ],
+   "what": "宇治妙楽にあるコーヒー豆の専門店。コロンビアから豆を直輸入し、シングルオリジンやブレンドの豆、カカオなどを扱う。10時から19時で、月曜は休み。",
+   "whatEn": "A coffee bean shop in Myoraku that imports beans directly from Colombia, stocking single-origin coffees, blends and cacao. Open 10 am to 7 pm, closed Mondays.",
+   "note": "コロンビアの豆が中心。月曜は休み。",
+   "noteEn": "Colombian beans are the focus. Closed Mondays.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "あまてぃすた こーひー",
+    "address": "京都府宇治市宇治妙楽171-13",
+    "url": "https://amatistacoffee.shop-pro.jp/",
+    "whatJa": "コロンビアの契約農園から生豆を直輸入し自家焙煎する、宇治妙楽のコーヒー豆専門店。",
+    "whatEn": "Direct-import Colombian specialty coffee roaster and takeaway bean shop on a quiet street in Myoraku.",
+    "facts": "Sources green beans directly from partner farms in Colombia and roasts on-site to draw out deep sweetness and clean body; sells freshly roasted whole beans, drip bags, and takeaway cups.",
+    "weak": "",
+    "verifiedBy": "https://note.com/maron_202602/n/ndb27513f15f3",
+    "quote": "色々豆の香りを比べさせてくれて、楽しい買い物ができた。",
+    "fixes": "",
+    "coords": [
+     34.89143,
+     135.80435
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "平等院",
+   "nameEn": "Byodoin Temple",
+   "kind": "sight",
+   "area": "宇治・妙楽",
+   "areaEn": "Uji & Myoraku",
+   "address": "宇治市宇治蓮華116",
+   "url": "https://www.byodoin.or.jp/",
+   "what": "1052年に藤原頼通が父・道長の別業を仏寺に改め、翌1053年に阿弥陀堂（鳳凰堂）を建立した寺院。阿字池の中島に鳳凰堂が建ち、境内にミュージアム鳳翔館がある。世界遺産。",
+   "whatEn": "Founded in 1052 when Fujiwara no Yorimichi turned his father Michinaga's villa into a temple, with the Phoenix Hall (Amida Hall) completed in 1053 on an island in Aji Pond. Includes the Hoshokan Museum; a World Heritage site.",
+   "coords": [
+    34.8895,
+    135.80745
+   ],
+   "notice": "観音堂は修理のため非公開。ミュージアム鳳翔館の扉絵の間は2026年11月27日まで平日に閉鎖（土日祝は公開）、遺物コーナーは11月13日〜12月6日休止。鳳凰堂の内部拝観は各回35名、夜間特別拝観は2026年秋は休止。庭園は8時45分〜17時30分、鳳翔館は9時〜17時（年中無休）。",
+   "noticeEn": "The Kannondo Hall is closed for repairs. Inside the Hoshokan Museum, the Tobira-e room is closed weekdays through November 27, 2026 (open weekends and holidays), and the Relics section is closed November 13 to December 6. Phoenix Hall interior tours are capped at 35 per group; autumn night openings are suspended in 2026. Garden 8:45 am–5:30 pm, museum 9 am–5 pm, open daily.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.byodoin.or.jp/ (公式): /learn/history/, /learn/architecture/, /guide/, /guide/access/, /news/ (2026.9.9, 2026.9.17, 2026.10.19, 2026.11.6)",
+   "_coordsSource": "OSM way 332883349 (amenity=place_of_worship, 平等院)"
+  },
+  {
+   "name": "宇治上神社",
+   "nameEn": "Ujigami Shrine",
+   "kind": "sight",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "address": "宇治市宇治山田59",
+   "url": "https://www.ujikamijinja.jp/",
+   "what": "宇治川の東岸、朝日山のふもとに鎮座する神社。菟道稚郎子・応神天皇・仁徳天皇を祀る。平安時代後期に建てられた本殿は現存する日本最古の神社建築で、拝殿とともに国宝、世界遺産。",
+   "whatEn": "A shrine at the foot of Mount Asahi on the east bank of the Uji River, dedicated to Uji no Wakiiratsuko and Emperors Ojin and Nintoku. Its late-Heian main sanctuary is the oldest surviving shrine architecture in Japan; both main and worship halls are National Treasures and a World Heritage site.",
+   "coords": [
+    34.89205,
+    135.81146
+   ],
+   "notice": "御守や御朱印の授与所は9時から。初穂料は現金のみ。",
+   "noticeEn": "The office for amulets and goshuin opens at 9 am; cash only.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.ujikamijinja.jp/ (公式, 2026.07.05更新): /profile.html (宇治市宇治山田59), /cont1/8.html, /cont1/24.html; 国宝・最古の神社建築は京都府公式 https://www.pref.kyoto.jp/isan/ujigami.html",
+   "_coordsSource": "OSM way 332816179 (amenity=place_of_worship, 宇治上神社)"
+  },
+  {
+   "name": "宇治市源氏物語ミュージアム",
+   "nameEn": "The Tale of Genji Museum, Uji",
+   "kind": "art",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "address": "宇治市宇治東内45-26",
+   "url": "https://www.city.uji.kyoto.jp/site/genji/",
+   "what": "『源氏物語』と平安貴族の暮らしを伝える市立博物館。光源氏の物語の「平安の間」と、最後の十帖の舞台・宇治を紹介する「宇治の間」、映像展示室や「物語の間」がある。",
+   "whatEn": "A municipal museum on The Tale of Genji and Heian court life, with galleries on Hikaru Genji, the final ten Uji chapters, short films and interactive exhibits.",
+   "coords": [
+    34.8941,
+    135.81017
+   ],
+   "notice": "9時から17時（入館16時30分まで）。月曜（祝日の場合は翌平日）と年末年始は休館。",
+   "noticeEn": "Open 9 am to 5 pm (last entry 4:30 pm). Closed Mondays (or the following day if a holiday) and over New Year.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.uji.kyoto.jp/site/genji/ (宇治市公式, 2026年10月31日更新): /site/genji/62918.html (利用案内・所在地 宇治市宇治東内45-26)",
+   "_coordsSource": "OSM node 1422963059 (tourism=museum, 宇治市源氏物語ミュージアム)"
+  },
+  {
+   "name": "萬福寺",
+   "nameEn": "Manpuku-ji Temple",
+   "kind": "sight",
+   "area": "黄檗・木幡",
+   "areaEn": "Obaku & Kohata",
+   "address": "宇治市五ケ庄三番割34",
+   "url": "https://www.obakusan.or.jp/",
+   "what": "1661年に中国から渡来した隠元隆琦禅師が開創した、黄檗宗の大本山。中国明朝様式を取り入れた禅宗の伽藍建築が残り、日本の三禅宗の一つに数えられる。",
+   "whatEn": "The head temple of the Obaku Zen school, founded in 1661 by the Chinese monk Ingen Ryuki, preserving Zen temple buildings in late-Ming Chinese style.",
+   "coords": [
+    34.91399,
+    135.80684
+   ],
+   "notice": "拝観は9時から17時（受付16時30分まで）。2026年10月10日〜2027年2月21日は夜間特別拝観を実施。",
+   "noticeEn": "Open 9 am to 5 pm (last entry 4:30 pm). Special night openings run from October 10, 2026 to February 21, 2027.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.obakusan.or.jp/ (公式, 夜間特別拝観 令和8年10月10日〜令和9年2月21日): /about/, /access/ (宇治市五ケ庄三番割34, 9:00〜17:00 受付16:30まで)",
+   "_coordsSource": "OSM way 638624925 (amenity=place_of_worship, 萬福寺)"
+  },
+  {
+   "name": "興聖寺",
+   "nameEn": "Kosho-ji Temple",
+   "kind": "sight",
+   "area": "東宇治・菟道",
+   "areaEn": "Higashi-Uji & Todo",
+   "address": "宇治市宇治山田27-1",
+   "url": "https://www.uji-koushouji.jp/",
+   "what": "1233年に道元禅師が伏見深草に開いた日本最古の曹洞宗の修行道場。1648年に淀城主の永井尚政が宇治に再興し、仏徳山と朝日山のあいだに伽藍が建つ。",
+   "whatEn": "The oldest Soto Zen training monastery in Japan, founded by Dogen in 1233 in Fushimi and rebuilt in Uji in 1648 by Nagai Naomasa, lord of Yodo Castle, between Mount Buttoku and Mount Asahi.",
+   "coords": [
+    34.88946,
+    135.8134
+   ],
+   "notice": "拝観受付は10時から16時（行事により入山規制あり）。",
+   "noticeEn": "Reception 10 am to 4 pm (entry may be restricted during temple events).",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.uji-koushouji.jp/ (公式, 2026.11.02更新): /access/ (宇治市宇治山田27-1, 10:00〜16:00)",
+   "_coordsSource": "OSM way 921340615 (landuse=religious, 興聖寺)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "うつわと暮らしの用品 ツナグ。",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only an unreadable shell through curl. Opened independent listings confirm the address and tableware shop, but no dated 2026 operating sentence was obtainable."
+  },
+  {
+   "name": "丸利吉田銘茶園",
+   "verdict": "doubt",
+   "reason": "Original official website has no dated 2026 sentence. Alternate official news page https://yoshida-meichaen.com/news returned a CAPTCHA through curl."
+  },
+  {
+   "name": "Gelato Bambi",
+   "verdict": "doubt",
+   "reason": "Official website has only undated shop/menu text and a copyright year. Its topics link returns 404 and official Instagram returns an unreadable shell. No dated 2026 sentence obtained."
+  },
+  {
+   "name": "カレー設計事務所",
+   "verdict": "doubt",
+   "reason": "Official website confirms the curry restaurant, architecture practice and address but contains no dated 2026 notice. Official Instagram returned only a shell and the alternative listing returned an access error through curl."
+  },
+  {
+   "name": "蕎麦 つばめ屋",
+   "verdict": "doubt",
+   "reason": "Official website confirms the soba restaurant and address. Its news page is empty, the alternative booking listing is blocked through curl, and a dated recruitment listing returns 404. No dated 2026 sentence obtained."
+  }
+ ]
+}

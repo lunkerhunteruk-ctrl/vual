@@ -1,0 +1,66 @@
+[
+ {
+  "name": "伊勢神宮 内宮（皇大神宮）",
+  "nameEn": "Ise Jingu Naiku",
+  "kind": "sight",
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治館町1",
+  "url": "https://www.isejingu.or.jp/about/naiku/",
+  "what": "五十鈴川のほとりに鎮まる皇大神宮。宇治橋をわたり、玉砂利の参道を進む。参拝時間は10〜12月が5時から17時。",
+  "whatEn": "Kotai Jingu (Naiku), by the Isuzu River, entered across the Uji Bridge along gravel paths. Open 5 am to 5 pm from October to December.",
+  "coords": [
+   34.45689,
+   136.72298
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊勢神宮 外宮（豊受大神宮）",
+  "nameEn": "Ise Jingu Geku",
+  "kind": "sight",
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市豊川町279",
+  "url": "https://www.isejingu.or.jp/about/geku/",
+  "what": "高倉山を背に伊勢市の中心部に鎮まる豊受大神宮。伊勢市駅から外宮参道を歩いて行ける。参拝時間は10〜12月が5時から17時。",
+  "whatEn": "Toyouke Daijingu (Geku), backed by Mount Takakura in central Ise, a short walk from Ise-shi Station along Geku Sando. Open 5 am to 5 pm from October to December.",
+  "coords": [
+   34.48735,
+   136.7037
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "式年遷宮記念 せんぐう館",
+  "nameEn": "Sengukan Museum",
+  "kind": "art",
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市豊川町前野126-1",
+  "url": "https://www.sengukan.jp/",
+  "what": "外宮の勾玉池のほとりにある式年遷宮の博物館。外宮正殿の原寸大模型などを展示する。第2・第4火曜休館。",
+  "whatEn": "A museum of the Shikinen Sengu renewal by Magatama Pond at Geku, featuring a full-scale model of the Geku main sanctuary. Closed second and fourth Tuesdays.",
+  "coords": [
+   34.48687,
+   136.70672
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "おかげ横丁",
+  "nameEn": "Okage Yokocho",
+  "kind": "sight",
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治中之切町52",
+  "url": "https://okageyokocho.com/",
+  "what": "内宮の宇治橋から歩いて5分、おはらい町の中ほどにある町並み。伊勢の食べ物や器の店が並び、季節の催しも開かれる。",
+  "whatEn": "A quarter of food and craft shops midway along Oharai-machi, five minutes on foot from Naiku's Uji Bridge, with seasonal events.",
+  "coords": [
+   34.46245,
+   136.72291
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

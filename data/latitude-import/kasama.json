@@ -1,0 +1,508 @@
+{
+ "slug": "kasama",
+ "city": {
+  "name": "Kasama",
+  "nameJa": "笠間",
+  "latitude": "36.4° N",
+  "country": "Ibaraki, Japan",
+  "countryJa": "茨城県",
+  "person": "rin",
+  "coords": [
+   36.38547,
+   140.25438
+  ],
+  "intro": "A pottery town in central Ibaraki, known for Kasama-yaki and Kasama Inari Shrine. Autumn brings chrysanthemums to the shrine grounds. Pottery shops, chestnut sweets and coffee, as Rin's picks.",
+  "introJa": "笠間焼と笠間稲荷神社で知られる、茨城県中央部の町。秋には稲荷の境内に菊が並ぶ。器の店と栗菓子、珈琲を、凛のおすすめで。",
+  "locator": {
+   "en": "In central Ibaraki, in Kanto · low hills, plateaus and the Hinuma River",
+   "ja": "関東・茨城県中央部、丘陵と台地に涸沼川が流れる町"
+  },
+  "industries": [
+   {
+    "key": "kasama-yaki",
+    "en": "Kasama-yaki ceramics",
+    "ja": "笠間焼",
+    "about": "Kasama-yaki began in Hakoda in the An'ei years (1772–1781), making everyday jars and grinding bowls. Now a nationally designated traditional craft, it includes tableware, vases and ceramic artworks.",
+    "aboutJa": "笠間焼は安永年間（1772〜1781年）に箱田で始まり、甕やすり鉢などの日用品を作ってきた。いまは国の伝統的工芸品で、食器や花器、美術工芸品まで作られている。",
+    "_src": "Dating back to the 1770s and designated a Traditional Craft of Japan, Kasama-yaki broke from rigid kiln rules after WWII to foster an 'anything-goes' studio culture of ~300 potters working in layered glazes, neriage marbled clay, and sculptural contemporary vessels."
+   }
+  ]
+ },
+ "places": {
+  "洋風笠間菓子 グリュイエール": {
+   "nameEn": "Gruyeres",
+   "area": "下市毛",
+   "areaEn": "Shimoichige",
+   "tags": [
+    "chestnut",
+    "cakes"
+   ],
+   "what": "笠間や茨城の食材を使う洋菓子店。笠間の栗菓子があり、店内のカフェには絵画や笠間焼を飾る。",
+   "whatEn": "A patisserie using ingredients from Kasama and Ibaraki, with local chestnut sweets and a café displaying paintings and Kasama-yaki.",
+   "note": "栗のお菓子を選んだら、カフェの笠間焼も見ていく。",
+   "noteEn": "Choose a chestnut sweet, then look at the pottery in the café.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ようふうかさまがし ぐりゅいえーる",
+    "address": "285 Shimoichige, Kasama-shi, Ibaraki",
+    "url": "https://kasamagashi.com/",
+    "whatJa": "JR笠間駅前で笠間産の地栗を使った洋菓子を作り続ける老舗パティスリー＆カフェ。",
+    "whatEn": "Long-running patisserie and salon across from JR Kasama Station specializing in pastries made with local Kasama chestnuts.",
+    "facts": "Opened in 1985 right in front of Kasama Station; stocks around 30 chestnut-based sweets year-round including its signature Kasama Jiguri Mont Blanc and whole-chestnut Roman Pie; uses local Ibaraki eggs and seasonal Kasama fruit.",
+    "weak": "",
+    "verifiedBy": "https://kasamagashi.com/",
+    "quote": "営業時間変更のお知らせ（当面の間・火曜日のみ）",
+    "fixes": "Address matches official page (〒309-1626 笠間市下市毛285). The home page does not state 'opened 1985', 'across from JR Kasama Station' or 'about 30 chestnut sweets' – only use what the page says (sweets made with Ibaraki/Kasama local ingredients; cafe with Kasama-yaki displays). Tuesday hours temporarily changed.",
+    "coords": [
+     36.37391,
+     140.24634
+    ]
+   }
+  },
+  "お菓子の店 くり～む": {
+   "nameEn": "La Crème",
+   "area": "東平",
+   "areaEn": "Higashidaira",
+   "tags": [
+    "chestnut",
+    "cakes",
+    "scones"
+   ],
+   "what": "東平の洋菓子店。笠間栗のモンブランや焼菓子を作り、季節ごとに菓子のフェアを開く。",
+   "whatEn": "A patisserie in Higashidaira making Kasama chestnut Mont Blanc and baked sweets, with seasonal sweets fairs.",
+   "note": "栗を選ぶなら、笠間栗を使う和栗のモンブランにする。",
+   "noteEn": "For chestnuts, choose the Japanese Mont Blanc made with Kasama chestnuts.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おかしのみせ くりーむ",
+    "address": "1-9-13 Higashidaira, Kasama-shi, Ibaraki",
+    "url": "https://la-creme.jp/",
+    "whatJa": "友部エリアで地元産の笠間栗を自社加工し、モンブランや焼き菓子を手作りする地域密着の洋菓子店。",
+    "whatEn": "Neighborhood patisserie near Tomobe Station that processes harvested Kasama chestnuts in-house for Mont Blanc tarts and baked confections.",
+    "facts": "Located in Higashidaira in the Tomobe district; steams and strains local Kasama chestnuts in its own kitchen rather than buying pre-made paste; popular with local families for seasonal fruit cakes and chestnut financiers.",
+    "weak": "",
+    "verifiedBy": "https://la-creme.jp/",
+    "quote": "🍰本日:火曜日は18時まで営業します🫖  11月10日(火) 10時〜18時までの営業となります。",
+    "fixes": "Address matches (〒309-1705 笠間市東平1-9-13). Hours 10:00-19:00 (Sat/Sun/holidays until 18:00), closed Wednesday; Tuesdays in Sep-Nov temporarily closed for chestnut processing. Page says '旧友部' area; 'near Tomobe Station' and 'steams/strains chestnuts in own kitchen' are not literally stated on the home page (the site has a 笠間の栗しごと section) – soften if not verified.",
+    "coords": [
+     36.35014,
+     140.31308
+    ]
+   }
+  },
+  "Lunch & Cafe 陶之助＋": {
+   "nameEn": "Lunch & Cafe Tounosuke＋",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "ceramics",
+    "lunch"
+   ],
+   "what": "笠間で採れた食材の料理を、笠間の作家の器で出すカフェ。木曜・金曜は休みで、祝日は開く。",
+   "whatEn": "A café serving food made with Kasama ingredients on vessels by local potters. Closed Thursdays and Fridays, except holidays.",
+   "note": "料理を待つ間に、笠間の作家が作った器も見ておく。",
+   "noteEn": "While waiting for the food, look at the vessels by Kasama potters.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "らんちあんどかふぇ とうのすけぷらす",
+    "address": "4036 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://www.tounosuke.com/",
+    "whatJa": "笠間焼ギャラリーに併設された吹き抜けの空間で、地元野菜のカレーや創作ランチを笠間焼の器で提供するカフェレストラン。",
+    "whatEn": "High-ceilinged café-restaurant beside a Kasama-yaki gallery serving vegetable-forward curries and set lunches on local potters' tableware.",
+    "facts": "Adjoins Gallery Tounosuke near the Gallery Road district; serves seasonal vegetable curries and lunch plates exclusively on handcrafted Kasama-yaki vessels; timber-beamed atrium dining room.",
+    "weak": "",
+    "verifiedBy": "https://blog.tounosuke.com/entry/2026/08/04/020923 (linked from the news list on https://www.tounosuke.com/; also https://blog.tounosuke.com/entry/2026/09/20/223632)",
+    "quote": "◾️8／8（土）から16（日）までの期間は休まず営業いたします。この間のカフェのご予約はお電話で承ります",
+    "fixes": "Address matches (〒309-1611 笠間市笠間4036). Latest notice 2026-09-20: 9／21は台風接近のため臨時休業いたします (one-day typhoon closure only). Regular closing days: Thursday and Friday (open on holidays); weekdays 11:00-16:00, Sat/Sun/holidays 11:00-17:00. Concept page: 笠間の料理を、笠間の器で。",
+    "coords": [
+     36.39086,
+     140.28411
+    ]
+   }
+  },
+  "HOME ROAST COFFEE 夢豆": {
+   "nameEn": "Home Roast Coffee Mutou",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "coffee"
+   ],
+   "what": "直火焙煎とハンドピックで豆を仕上げる自家焙煎珈琲店。豆は100gから買え、店内では一杯ずつハンドドリップする。",
+   "whatEn": "A coffee roaster using direct heat and hand-sorting. Beans are sold from 100 g, with hand-drip coffee served in the shop.",
+   "note": "朝八時から開くので、器を見に行く前の一杯にする。",
+   "noteEn": "Open from eight, for a cup before looking at pottery.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ほーむろーすとこーひー むとう",
+    "address": "1960 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://home-roast-coffee-mutou.jp/",
+    "whatJa": "徹底したハンドピックと直火ガス釜焙煎で香り高い珈琲豆を焼き上げる笠間の自家焙煎珈琲専門店。",
+    "whatEn": "Direct-fire coffee roastery in Kasama that hand-sorts green beans and supplies single-origin roasts to local cafés and home brewers.",
+    "facts": "Roasts small batches in a direct-flame gas drum roaster after meticulous hand-picking before and after roasting; supplies beans to beloved hilltop cafés in Kasama as well as retail bean buyers.",
+    "weak": "",
+    "verifiedBy": "https://home-roast-coffee-mutou.jp/ (embedded official Google Calendar 営業カレンダー, read via its public iCal feed)",
+    "quote": "SUMMARY:定休日 (DTSTART;VALUE=DATE:20260922, CREATED:20260824T014702Z)",
+    "fixes": "Address matches (〒309-1611 茨城県笠間市笠間1960). The page does not say it supplies beans to local cafés; it says it sells roasted beans (from 100g) and serves hand-drip coffee in the shop (8:00-18:00, closed Sun/Mon and some holidays), with art on display. Evidence is the closing-day calendar embedded on the official site, which has entries created in 2026 (for example 2026-03-18 for the Golden Week and Obon closures, 2026-08-24 for 2026-09-22 and 09-23). The page text itself has only 'Copyright 2025'.",
+    "coords": [
+     36.37639,
+     140.25294
+    ]
+   }
+  },
+  "カフェ モン・リヴル": {
+   "nameEn": "Café Mon Livre",
+   "area": "箱田",
+   "areaEn": "Hakoda",
+   "tags": [
+    "tea",
+    "lunch"
+   ],
+   "what": "箱田のカフェで、自家栽培の米や野菜を使う昼食を一日6食、予約で出す。大きな窓から笠間の風景が見え、木曜から土曜に開く。",
+   "whatEn": "A café in Hakoda serving six lunches a day by reservation, using home-grown rice and vegetables. Large windows look over Kasama; open Thursday to Saturday.",
+   "note": "昼食は一日六食なので、木曜から土曜の席を予約する。",
+   "noteEn": "Lunch is six meals a day; book a table for Thursday to Saturday.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇ もんりゔる",
+    "address": "3120-7 Hakoda, Kasama-shi, Ibaraki",
+    "url": "https://cafe-monlivre.com/",
+    "whatJa": "笠間の山並みを望む箱田の高台に佇み、地元「夢豆」の豆で淹れるハンドドリップ珈琲と自家製アップルパイが評判のカフェ。",
+    "whatEn": "Quiet hilltop café overlooking Kasama's mountain ridges, serving hand-drip pours made from local roaster Mutou's beans and homemade apple pie.",
+    "facts": "Perched on a quiet hillside in Hakoda north of central Kasama with panoramic mountain views; grinds beans from Kasama roaster Mutou to order for each hand-drip cup; open Thursdays through Saturdays.",
+    "weak": "Limited weekly schedule (typically closed Sun–Wed).",
+    "verifiedBy": "https://cafe-monlivre.com/ (embedded official Google Calendar 営業カレンダー, read via its public iCal feed)",
+    "quote": "SUMMARY:臨時休業 (DTSTART;VALUE=DATE:20260627, LAST-MODIFIED:20260625T095643Z)",
+    "fixes": "Address on the site is 茨城県笠間市箱田1439, NOT 3120-7 Hakoda. Tel 0296-72-2920. Hours: lunch 11:30-15:30 (Sat 16:00), tea time from about 11:00, closed Sun/Mon/Tue/Wed (open Thu-Sat), occasional temporary closures, no children, lunch limited to 6 meals a day by reservation. The page mentions a tea expert owner, home-grown rice, and a 180-degree panorama. It does not mention apple pie, hand-drip from Mutou's beans, or 'hilltop'; those are not confirmed.",
+    "coords": null
+   },
+   "address": "笠間市箱田1439"
+  },
+  "笠間工芸の丘": {
+   "nameEn": "Crafthills Kasama",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "ceramics",
+    "woodwork",
+    "lacquer"
+   ],
+   "what": "笠間焼や茨城の工芸品を扱い、陶芸体験ができる施設。松井康成の作品や、いまの作家の器を展示販売する。",
+   "whatEn": "A centre for Kasama-yaki and Ibaraki crafts, with pottery workshops. It displays and sells work by Matsui Kosei and contemporary makers.",
+   "note": "器を見る日は、松井康成の作品も一緒に見ておきたい。",
+   "noteEn": "On a day for looking at pottery, see the Matsui Kosei works too.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "かさまこうげいのおか",
+    "address": "2388-1 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://kasama-crafthills.com/",
+    "whatJa": "笠間芸術の森公園の丘にあり、約200名の作家の笠間焼が並ぶクラフトショップや陶芸体験工房を備えた工芸施設。",
+    "whatEn": "Craft center and gallery shop on the hillside of Kasama Geijutsu no Mori Park showcasing works by over 200 Kasama-yaki potters alongside wheel-throwing studios.",
+    "facts": "Known in English as Crafthills Kasama inside Kasama Geijutsu no Mori Park; stocks everyday vessels and exhibition pieces from emerging and established Kasama artists; houses a permanent tribute gallery to Living National Treasure Kosei Matsui (master of neriage marbled clay).",
+    "weak": "",
+    "verifiedBy": "https://kasama-crafthills.com/",
+    "quote": "「CHAWAN ランディ ウージィ展」11/11㈬より開催致します。",
+    "fixes": "Address 茨城県笠間市笠間2388-1 matches (ご利用案内). Page confirms craft shop, gallery, pottery experience atelier, and craft cafe; mentions Living National Treasure 松井康成 works. 'over 200 potters' is not stated on the pages I read. Do not state that without a source.",
+    "coords": [
+     36.37238,
+     140.26158
+    ]
+   }
+  },
+  "きらら館": {
+   "nameEn": "Kilala-kan",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "ceramics",
+    "tableware",
+    "coffee"
+   ],
+   "what": "約700人の陶芸家による器を扱う店。店外には週末限定・不定休のコーヒースタンドがある。",
+   "whatEn": "A shop carrying pottery by around 700 makers. An outdoor coffee counter opens on weekends, with irregular closing days.",
+   "note": "たくさん並ぶ器から、毎日使う茶碗を一つ選びたい。",
+   "noteEn": "From all these vessels, I would choose one rice bowl for everyday use.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きららかん",
+    "address": "2258-1 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://kilalakan.jp/",
+    "whatJa": "笠間ギャラリーロード沿いに約700名の作家による1万点の器が並び、週末限定の屋外コーヒースタンドも併設する大型陶芸ギャラリー。",
+    "whatEn": "Spacious ceramic gallery along Kasama Gallery Road displaying roughly 10,000 vessels and sculptural works from playful tableware to studio art pieces, with an outdoor weekend coffee stand.",
+    "facts": "Carries around 10,000 pieces across hundreds of independent studio potters on Kasama Gallery Road; hosts rotating solo artist exhibitions in its gallery room; operates a weekend counter-style coffee stand ('kilala caffe') outside.",
+    "weak": "",
+    "verifiedBy": "https://kilalakan.jp/free/gallery_schedule",
+    "quote": "11月3日(火) – 11月15日(日) 内藤 加奈子 作陶展 京都を中心に活動する華やかな絵付けといっちんの作品",
+    "fixes": "Address 茨城県笠間市笠間2258ー1 matches. Top page: 約700人の陶芸家、10,000点のアイテム; 営業時間 10:00-17:00 (年中無休); 'kilala caffe' counter coffee shop outside, 週末限定・不定休. whatEn/whatJa match.",
+    "coords": [
+     36.36872,
+     140.26137
+    ]
+   }
+  },
+  "Glass Gallery SUMITO": {
+   "nameEn": "Glass Gallery SUMITO",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "glass",
+    "tableware",
+    "accessories"
+   ],
+   "what": "国内のガラス作家の作品を、常設と企画展で展示販売するギャラリー。器やアクセサリー、インテリアの品を扱う。",
+   "whatEn": "A gallery showing and selling work by Japanese glass artists in permanent displays and exhibitions, from tableware to jewellery and interior pieces.",
+   "note": "器だけでなく、ガラスのアクセサリーも見て帰る。",
+   "noteEn": "Look at the glass jewellery as well as the vessels.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぐらすぎゃらりー すみと",
+    "address": "2192-35 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://www.glass-gallery.jp/",
+    "whatJa": "笠間ギャラリーロード沿いの自然光あふれる空間で、全国のガラス作家による器や花器を展示販売するガラス専門ギャラリー。",
+    "whatEn": "Light-filled contemporary glass gallery along Kasama Gallery Road exhibiting tableware, vases, and sculptural glass by studio artists across Japan.",
+    "facts": "Located right on Kasama Gallery Road; represents dozens of contemporary Japanese glassblowers and kiln-work glass artists with rotating solo shows; offers glass etching workshops by reservation upstairs.",
+    "weak": "",
+    "verifiedBy": "https://www.glass-gallery.jp/event.html",
+    "quote": "2026年10月31日（土）～11月24日（火） 谷美由紀ガラス展",
+    "fixes": "Address 〒309-1611 茨城県笠間市笠間2192-35 matches (shop.html); hours 10:00-17:00, closed Fri; opened 2005. Page says domestic glass artists, tableware, accessories, interior. The 'glass etching workshops upstairs' and 'light-filled' claims were not found on the pages I read.",
+    "coords": [
+     36.37286,
+     140.25858
+    ]
+   }
+  },
+  "向山窯": {
+   "nameEn": "Kouzangama",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "笠間焼の窯元・向山窯の直売店。箸置きや食器から陶製の照明まで、工房の製品を展示販売する。",
+   "whatEn": "The direct shop of the Kasama-yaki kiln Kouzangama, displaying and selling its work from chopstick rests and tableware to ceramic lighting.",
+   "note": "食器を選ぶついでに、陶器で作った照明も見ていく。",
+   "noteEn": "While choosing tableware, look at the ceramic lighting too.",
+   "_src": {
+    "category": "local",
+    "industry": "kasama-yaki",
+    "nameKana": "こうざんがま",
+    "address": "2290-4 Kasama, Kasama-shi, Ibaraki",
+    "url": "https://kasamayaki.co.jp/",
+    "whatJa": "下市毛に工房、ギャラリーロード入口に直営店を構え、料理人向けの器からモダンな日常食器まで手掛ける笠間焼窯元。",
+    "whatEn": "Major Kasama-yaki studio kiln with a workshop in Shimoichige and a flagship showroom at the entrance to Gallery Road producing layered-glaze vessels for chefs and everyday tables.",
+    "facts": "Employs a team of studio potters hand-forming and glazing small-lot tableware rather than mass-molded ceramics; famed for layered ash, copper-green, and iron glazes trusted by Japanese washoku restaurants; Kasamayaki Plaza showroom sits at the gateway to Gallery Road.",
+    "weak": "",
+    "verifiedBy": "https://kasama-crafthills.com/2026/01/10/%e5%b1%95%e7%a4%ba%e4%bc%9a%e3%80%8ckasama%e3%81%ae%e8%89%b2%ef%bd%9e%e7%ac%a0%e9%96%93%e9%95%b7%e7%9f%b3%e3%81%a8%e6%a0%97%e7%81%b0%e3%81%ab%e3%82%88%e3%82%8b%e6%96%b0%e3%81%9f%e3%81%aa%e8%a9%a6/",
+    "quote": "◆出展作家：阿部慎太朗／磯部祐介／植竹敏／大関信一／スタジオ・オーク／奥田いつ花／河野陶房／小林哲生／酒井敦志之／佐川義乱／佐藤剛／塩谷彩乃／庄司健／関川佳古／高田藍紗／武伸也／額賀章夫／増渕悠颯（向山窯）",
+    "fixes": "Address of the 笠間焼プラザ店 and of the company: 〒309-1611 茨城県笠間市笠間2290-4, TEL 0296-72-0194 (kasamayaki.co.jp/sales-info), by the Geijutsu no Mori Park entrance on Route 355. Wholesale/OEM/custom-order kiln; Instagram embed on the official site's homepage says: '只今、#笠間工芸の丘 にて開催されているグループ展「KASAMAの色～笠間長石と栗灰による新たな試み」に弊社従業員の増…'. The 'workshop in Shimoichige' and 'serving chefs' claims are not on the pages I read; the site says wholesale to restaurants/hotels, tagged 'ラグジュアリーホテル、レストラン、セレクトショップ等で扱われています'.",
+    "coords": [
+     36.36683,
+     140.26209
+    ]
+   }
+  },
+  "製陶ふくだ": {
+   "nameEn": "Fukuda Kiln",
+   "area": "下市毛",
+   "areaEn": "Shimoichige",
+   "tags": [
+    "ceramics",
+    "kiln"
+   ],
+   "what": "下市毛の笠間焼の窯元で、器の直売と陶芸体験を行う。震災で全壊した登り窯は、2013年に再建した。",
+   "whatEn": "A Kasama-yaki kiln in Shimoichige selling its pottery and offering workshops. Its climbing kiln was rebuilt in 2013 after being destroyed in the earthquake.",
+   "note": "器を選ぶ前に、震災のあとに再建された登り窯を見たい。",
+   "noteEn": "Before choosing a vessel, I would look at the climbing kiln rebuilt after the earthquake.",
+   "_src": {
+    "category": "local",
+    "industry": "kasama-yaki",
+    "nameKana": "せいとうふくだ",
+    "address": "754 Shimoichige, Kasama-shi, Ibaraki",
+    "url": "https://www.seitou-fukuda.com/",
+    "whatJa": "寛政8年（1796年）開窯、関東最古級の登り窯を残しながら現代の暮らしの器を作り続ける笠間焼最古参の窯元。",
+    "whatEn": "Kasama's oldest-lineage pottery kiln, founded in 1796, preserving Kanto's oldest climbing kiln alongside an active workshop and direct gallery.",
+    "facts": "Traces its origins to 1796 (Kansei 8), the dawn of Kasama-yaki; preserves a historic climbing kiln on site in Shimoichige while firing contemporary tableware and hosting studio workshops.",
+    "weak": "",
+    "verifiedBy": "https://www.seitou-fukuda.com/media/",
+    "quote": "2026年6月 ノジュール　に掲載いただきました。",
+    "fixes": "whatEn/whatJa claim 'preserving Kanto's oldest climbing kiln' is not supported: the 登り窯焼成 page says the old climbing kiln was totally destroyed in the 2011 earthquake and rebuilt (completed July 2013), so say 'rebuilt climbing kiln'. The site states 寛政八年(1796) the first-generation Giemon bought the kiln of Sonobe Zenroku, which came from Shigaraki ~230 years ago; '関東最古の焼物の里' refers to Kasama as a pottery town, not to the kiln. Address 754 Shimoichige confirmed on the English page (309-1626).",
+    "coords": [
+     36.3696,
+     140.25193
+    ]
+   }
+  },
+  "大津晃窯": {
+   "nameEn": "Ohtsukouyou",
+   "area": "手越",
+   "areaEn": "Tegoshi",
+   "tags": [
+    "ceramics",
+    "tableware",
+    "workshops"
+   ],
+   "what": "手越に150年以上続く笠間焼の窯元。食器や花器の直売所があり、ろくろ・手ひねり・絵付けの体験もできる。",
+   "whatEn": "A Kasama-yaki kiln in Tegoshi with over 150 years of history, selling tableware and vases and offering wheel-throwing, hand-building and painting workshops.",
+   "note": "買う器を見たあとに、手ひねりで自分の器も作りたい。",
+   "noteEn": "After looking at vessels to buy, I would hand-build one of my own.",
+   "_src": {
+    "category": "local",
+    "industry": "kasama-yaki",
+    "nameKana": "おおつこうよう",
+    "address": "68 Tegoshi, Kasama-shi, Ibaraki",
+    "url": "https://www.ohtsukouyou.com/",
+    "whatJa": "創業150余年、青油滴や粒状紋など独自の釉薬表現と伝統工芸士の技を受け継ぐ手越の笠間焼窯元。",
+    "whatEn": "Over-150-year-old Kasama-yaki studio kiln in Tegoshi known for experimental oil-spot and granular glazes crafted by certified traditional artisans.",
+    "facts": "Operating for over 150 years along Route 355 between Tomobe and Kasama; home to certified Traditional Craftspeople developing distinctive blue oil-spot (ao-yuteki) and textured glazes; includes a large direct kiln shop and throwing studio.",
+    "weak": "",
+    "verifiedBy": "https://www.ohtsukouyou.com/",
+    "quote": "4/28～5/5陶芸教室及び売店はイベント(陶炎祭)出店のためお休みします。",
+    "fixes": "Address 〒309-1621 茨城県笠間市手越68 matches. Page says '150年余りの伝統' (generations from late Edo, founder 宇津新助), OK. The 'blue oil-spot / granular glaze' and 'certified traditional craftspeople' details were NOT found on the pages read (top, about, store, access); the about page only mentions the 4th-generation head's glaze research. Route 355 mentioned on access page (国道355号).",
+    "coords": [
+     36.35726,
+     140.27247
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "笠間稲荷神社",
+   "nameEn": "Kasama Inari Shrine",
+   "kind": "sight",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "address": "笠間市笠間1",
+   "url": "https://www.kasama.or.jp/",
+   "what": "宇迦之御魂神を祀る神社で、社伝では651年の創建。江戸末期に再建された本殿は国の重要文化財で、秋は境内に菊を飾る。",
+   "whatEn": "A shrine to Ukanomitama, said in shrine tradition to have been founded in 651. Its late-Edo main sanctuary is a national Important Cultural Property; chrysanthemums fill the grounds in autumn.",
+   "coords": [
+    36.38547,
+    140.25438
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kasama.or.jp/about/index.html — 御祭神、社伝の創建651年、本殿は1854〜1860年再建・国重要文化財。https://www.kasama.or.jp/ — 2026年10月22日告知、菊まつりは2026年10月24日〜11月23日、神社ほかで開催。",
+   "_coordsSource": "OpenStreetMap node 745550349, amenity=place_of_worship, 笠間稲荷神社. Nominatim search returned 36.3854725, 140.2543843; rounded to 5 decimals."
+  },
+  {
+   "name": "茨城県陶芸美術館",
+   "nameEn": "Ibaraki Ceramic Art Museum",
+   "kind": "art",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "address": "笠間市笠間2345",
+   "url": "https://www.tougei.museum.ibk.ed.jp/",
+   "what": "笠間芸術の森公園にある、陶芸を専門とする県立美術館。陶芸作品をコレクション展や企画展で見せる。",
+   "whatEn": "A prefectural ceramics museum in Kasama Geijutsu no Mori Park, showing pottery in collection displays and special exhibitions.",
+   "coords": [
+    36.37239,
+    140.263
+   ],
+   "notice": "第1展示室は照明工事で2026年11月30日〜2027年2月9日閉室。全館は2026年12月25日〜2027年1月1日休館。通常は月曜休館（祝日は開館し翌平日休館）。",
+   "noticeEn": "Gallery 1 closes for lighting works from 30 November 2026 to 9 February 2027. The whole museum closes from 25 December 2026 to 1 January 2027. Usually closed Mondays, or the next weekday after a Monday holiday.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.tougei.museum.ibk.ed.jp/ — 企画展 THE HEADLINERS 2026 は2026年10月10日〜12月13日、所在地は笠間2345。https://www.tougei.museum.ibk.ed.jp/viewer/info.html?id=635 — 2026年11月5日発表の第1展示室閉室、12月25〜27日臨時休館、12月28日通常休館、12月29日〜1月1日年末年始休館。",
+   "_coordsSource": "OpenStreetMap node 4191897333, tourism=museum, 茨城県陶芸美術館. Nominatim search returned 36.3723876, 140.2630038; rounded to 5 decimals."
+  },
+  {
+   "name": "笠間日動美術館",
+   "nameEn": "Kasama Nichido Museum of Art",
+   "kind": "art",
+   "area": "笠間",
+   "areaEn": "Kasama",
+   "address": "笠間市笠間978-4",
+   "url": "https://www.nichido-museum.or.jp/",
+   "what": "日本とフランスの絵画を中心に集めた美術館。鴨居玲の部屋や画家のパレット展示室があり、野外には彫刻庭園が広がる。",
+   "whatEn": "A museum centred on Japanese and French painting, with a room devoted to Kamoi Ryo, a display of painters' palettes and an outdoor sculpture garden.",
+   "coords": [
+    36.38448,
+    140.25833
+   ],
+   "notice": "2026年11月12日は日本館2階小品展示室、19日は金山平三・佐竹徳記念室が展示替えで閉室。月曜休館だが、11月23日は開館し24日は休館。",
+   "noticeEn": "The small-works room on floor 2 of the Japan Wing closes for rehanging on 12 November 2026; the Kanayama Heizo and Satake Toku room closes on 19 November. Closed Mondays, with 23 November open and 24 November closed.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.nichido-museum.or.jp/ — 所在地、コレクション、野外彫刻庭園。https://www.nichido-museum.or.jp/news/exhibition-guide/ — 2026年11月4日付「11月の休館日 館内展示のご案内」から、11月12日・19日の閉室と23日開館・24日休館を確認。",
+   "_coordsSource": "OpenStreetMap way 741579283, tourism=museum, 笠間日動美術館. Nominatim search returned 36.3844798, 140.2583299; rounded to 5 decimals."
+  },
+  {
+   "name": "春風萬里荘",
+   "nameEn": "Shunpu Banri-so",
+   "kind": "sight",
+   "area": "下市毛",
+   "areaEn": "Shimoichige",
+   "address": "笠間市下市毛1371-1",
+   "url": "https://www.nichido-museum.or.jp/shunpu/",
+   "what": "北大路魯山人が住んだ茅葺きの家を、1965年に北鎌倉から移築した日動美術館の分館。魯山人の陶芸作品と、自ら設計した茶室、枯山水の庭がある。",
+   "whatEn": "An annex of the Nichido museum in the thatched house where Kitaoji Rosanjin lived, moved from North Kamakura in 1965. It has his pottery, a tea room he designed and a dry-landscape garden.",
+   "coords": [
+    36.36446,
+    140.25117
+   ],
+   "notice": "月曜休館。2026年11月23日は開館し、24日は休館。1〜2月と8月は土日祝のみ開館し、12〜2月は10時〜16時。",
+   "noticeEn": "Closed Mondays; open 23 November 2026 and closed 24 November. Open only weekends and public holidays in January, February and August, with winter hours of 10 am to 4 pm from December to February.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.nichido-museum.or.jp/shunpu/ — 1965年移築、北大路魯山人旧居、茶室・庭、住所と季節の営業。https://www.nichido-museum.or.jp/news/exhibition-guide/ — 2026年11月4日付案内で11月の開館時間9:30〜17:00、休館日、魯山人陶芸作品の展示を確認。",
+   "_coordsSource": "OpenStreetMap way 1338506530, tourism=museum, 春風萬里荘. Nominatim search returned 36.3644635, 140.2511672; rounded to 5 decimals."
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "ふる川製菓",
+   "verdict": "doubt",
+   "reason": "Official site has no dated 2026 content (footer '© 2016', no news). Instagram/Facebook links exist (furukawaseika) but I could not read any posts without login. No 2026 sentence found."
+  },
+  {
+   "name": "栗のいえ",
+   "verdict": "doubt",
+   "reason": "Could not read any dated 2026 post (Instagram requires login). Only a search-result summary mentioned a 2026 stamp-rally listing; not opened/copied, so not usable as evidence."
+  },
+  {
+   "name": "森の石窯パン屋さん",
+   "verdict": "doubt",
+   "reason": "Could not read any dated 2026 post or notice; no official website open (mori-pan.com reportedly offline). No 2026 sentence copied."
+  },
+  {
+   "name": "そば処 つたや",
+   "verdict": "doubt",
+   "reason": "Official Jimdo site (home + おしながき) has no dated 2026 content; Facebook page loaded without readable posts and Instagram (kasama.soba_dokoro.tutaya, 101 posts) is login-gated. No 2026 sentence found."
+  },
+  {
+   "name": "庭カフェ KULA",
+   "verdict": "doubt",
+   "reason": "Official site news page is empty and the embedded Instagram feed shows an error ('No posts found'). No dated 2026 post, notice or article could be read. Facebook and Instagram profile pages show only follower counts, with no 2026 post text. No closure signs found."
+  },
+  {
+   "name": "彩食酒房 吉",
+   "verdict": "doubt",
+   "reason": "The only news item is dated 2022.02.16 (site renewal). No 2026 post, notice or article found. Only a ©2026 footer, which is not evidence. The address in PLACES.json is wrong."
+  },
+  {
+   "name": "十人十豆",
+   "verdict": "doubt",
+   "reason": "The newest news item is 2025年8月29日. No 2026 post or notice could be read. The Instagram profile page shows only follower counts, with no dated post text. No closure signs found."
+  },
+  {
+   "name": "pain de musha musha and coffee",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence found. The site's closure notice has no year, the Instagram bio carries only a 2025/09 date, and the TINY COFFEE TABLE page notice (7/30~8/30) has no year either."
+  },
+  {
+   "name": "ギャラリー舞台",
+   "verdict": "doubt",
+   "reason": "The official site's newest exhibition is 櫻井理人・あゆみの陶展 2025年11月15日(土)～11/24(月祝); the blog ends 2024.12.22 and the exhibition diary ends 2024.08.16. The official Instagram bio (not a dated post) reads '11/28 - 12/20 ... まねきネコとまねかれネコ展 笠間市笠間2518-8 11-17時(冬期) 月曜定休日'. Nov 28 is a Saturday and Dec 20 a Sunday in 2026, which suggests it is current, but the bio has no year, so I have no dated 2026 sentence."
+  },
+  {
+   "name": "桧佐陶工房",
+   "verdict": "doubt",
+   "reason": "Only 2026 evidence is an undated price-revision notice about a change effective Jan 2026; the news list stops at 2020 and the top-page schedule is a stale 7/28-8/31 notice. No dated 2026 post found (Instagram/Facebook not readable without login). No sign of closure."
+  }
+ ]
+}

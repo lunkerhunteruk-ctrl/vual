@@ -1,0 +1,747 @@
+{
+ "slug": "takaoka",
+ "city": {
+  "name": "Takaoka",
+  "nameJa": "高岡",
+  "latitude": "36.7° N",
+  "country": "Toyama, Japan",
+  "countryJa": "富山県",
+  "person": "rin",
+  "coords": [
+   36.74781,
+   137.01225
+  ],
+  "intro": "A castle town founded by Maeda Toshinaga in 1609 on the Toyama Plain. Copperware and metal-casting workshops in Kanayamachi, wagashi and merchant houses along Yamachosuji, and coffee and dining around the station and Kojo Park, as Rin's picks.",
+  "introJa": "1609年に前田利長が開いた、富山平野の城下町。金屋町の銅器と鋳物の工房、山町筋の町並みと和菓子、大仏や古城公園のまわりの喫茶とごはんを、凛のおすすめで。",
+  "locator": {
+   "en": "On the Sea of Japan side · a castle town on the Toyama Plain",
+   "ja": "日本海側・富山県の平野に開かれた城下町"
+  },
+  "industries": [
+   {
+    "key": "takaoka-doki",
+    "en": "Takaoka Copperware & Metal Casting",
+    "ja": "高岡銅器・鋳物",
+    "about": "Takaoka copperware began in 1611 when Lord Maeda Toshinaga invited seven foundrymen to Kanayamachi. Today, workshops in the town still cast and hand-hammer bronze, brass, tin and aluminum into temple bells and everyday tableware.",
+    "aboutJa": "高岡銅器は、1611年に前田利長が7人の鋳物師を金屋町に招いたことから始まった。今も町内の工房が、青銅や黄銅、錫やアルミを鋳造・鍛金し、おりんや暮らしの器を作り続けている。",
+    "_src": "Founded in 1611 when Lord Maeda Toshinaga invited seven foundrymen to Kanayamachi, Takaoka produces the vast majority of Japan's cast bronze, brass, and pure tin craftwork."
+   }
+  ]
+ },
+ "places": {
+  "大野屋": {
+   "nameEn": "Ohnoya",
+   "area": "山町筋",
+   "areaEn": "Yamachosuji",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "山町筋で1838年（天保9年）から続く和菓子店。代表銘菓「とこなつ」や「高岡ラムネ」などを扱う。営業は8時30分から19時で、水曜定休（祝日を除く）。",
+   "whatEn": "A wagashi confectioner in Yamachosuji since 1838, making Tokonatsu and Takaoka Ramune. Open 8:30 a.m. to 7 p.m., closed Wednesdays except public holidays.",
+   "note": "朝8時半から開いている。まずは「とこなつ」。",
+   "noteEn": "Open from 8:30 a.m. Start with Tokonatsu.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おおのや",
+    "address": "富山県高岡市木舟町12",
+    "url": "https://ohno-ya.jp/",
+    "whatJa": "山町筋の伝統的建造物で1838年から続く、木型打ちの「高岡ラムネ」や代表銘菓「とこなつ」で知られる老舗和菓子店。",
+    "whatEn": "An 1838 wagashi confectioner in a traditional Yamachosuji merchant house making wooden-mold Takaoka Ramune candies and Tokonatsu sweets.",
+    "facts": "Founded in 1838 (Tenpo 9) and now in its ninth generation; presses pastel Takaoka Ramune sugar candies using heritage wooden molds alongside its signature gyuhi-wrapped Tokonatsu.",
+    "weak": "",
+    "verifiedBy": "https://ohno-ya.jp/",
+    "quote": "2026.10.03 製造・販売スタッフ、募集します",
+    "fixes": "",
+    "coords": [
+     36.74716,
+     137.01109
+    ]
+   }
+  },
+  "amida coffee": {
+   "nameEn": "amida coffee",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "tags": [
+    "coffee"
+   ],
+   "what": "高岡大仏のすぐ横にあるスペシャルティコーヒー専門店。自家焙煎のシングルオリジンやブレンドと、自家焙煎珈琲ロールケーキなどを出す。",
+   "whatEn": "A specialty coffee shop right beside the Takaoka Great Buddha, serving house-roasted single-origin beans, blends, and coffee roll cake.",
+   "note": "珈琲ロールケーキは、ドリンクとセットにできる。",
+   "noteEn": "The coffee roll cake can be ordered as a set with a drink.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "アミダコーヒー",
+    "address": "富山県高岡市定塚町1238",
+    "url": "https://amidacoffee.com/",
+    "whatJa": "高岡大仏のすぐ隣に佇む、ハンドドリップのスペシャルティコーヒーと自家製スイーツを提供するコーヒー専門店。",
+    "whatEn": "An independent specialty coffee shop right beside the Takaoka Great Buddha serving hand-dripped single-origin beans and house-made sweets.",
+    "facts": "Sits immediately beside Takaoka Daibutsu in Jozukamachi; brews specialty single-origin coffees and seasonal blends alongside house-made sweets.",
+    "weak": "",
+    "verifiedBy": "https://amidacoffee.com/",
+    "quote": "2026 / 10 / 01 2026年10月18日（日） 『第２回高岡大仏ねがい道マルシェ』 開催のご案内です！",
+    "fixes": "",
+    "coords": [
+     36.74574,
+     137.01681
+    ]
+   }
+  },
+  "シマタニ昇龍工房": {
+   "nameEn": "Shimatani Syouryu Studio",
+   "area": "金屋町",
+   "areaEn": "Kanayamachi",
+   "tags": [
+    "metalwork"
+   ],
+   "what": "千石町のおりん工房。黄銅の板からいくつもの金鎚で打ち出し、一つずつ調律して音色を作る。",
+   "whatEn": "An orin bell workshop in Sengokucho, near Kanayamachi. Craftsmen hand-hammer brass plates into resonant bells, tuning each one.",
+   "note": "それぞれの音色が違うので、耳を澄ませて聴き比べる。",
+   "noteEn": "Each bell has its own tone; listen closely and compare them.",
+   "_src": {
+    "category": "local",
+    "industry": "takaoka-doki",
+    "nameKana": "しまたにしょうりゅうこうぼう",
+    "address": "富山県高岡市千石町4-2",
+    "url": "https://syouryu.co.jp/",
+    "whatJa": "1909年創業のおりん工房で、職人の鍛金技術を生かした曲がる錫の器「すずがみ」やおりんを制作・直販している。",
+    "whatEn": "A 1909 temple-bell workshop near Kanayamachi where craftsmen hand-hammer resonant bronze singing bowls and bendable pure-tin Suzugami plates.",
+    "facts": "Founded in 1909 as a maker of Buddhist temple orin bells tuned by hand-hammering; applies the same hammering technique to roll and hammer pure tin sheets into flexible Suzugami tableware.",
+    "weak": "",
+    "verifiedBy": "https://syouryu.co.jp/",
+    "quote": "2026.10.14 秋谷「maison palmo」 さんにて10月16日-10月25日に展示会をいたします。",
+    "fixes": "Address 〒933-0847 富山県高岡市千石町4-2 matches. Home page did not show Suzugami or 1909 text; those claims unconfirmed.",
+    "coords": [
+     36.74682,
+     136.99581
+    ]
+   }
+  },
+  "パティスリー バレンタイン": {
+   "nameEn": "Patisserie Valentine",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "sweets",
+    "pastry"
+   ],
+   "what": "高岡駅南側の京田にある洋菓子店。季節のフルーツを使ったケーキや定番のケーキ、焼き菓子が並ぶ。営業は9時30分から18時。",
+   "whatEn": "A patisserie in Kyoden, south of Takaoka Station, lining its showcase with seasonal fruit cakes, classics, and baked sweets. Open 9:30 a.m. to 6 p.m.",
+   "note": "季節のフルーツのケーキと、手土産用の焼き菓子を見る。",
+   "noteEn": "Look for the seasonal fruit cakes and baked sweets for gifts.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "パティスリー バレンタイン",
+    "address": "富山県高岡市京田430",
+    "url": "https://patisserie-valentine.jp/",
+    "whatJa": "1991年創業の地元で愛される洋菓子店で、季節のケーキや豊富な焼き菓子のほか、喫茶スペースでパフェも楽しめる。",
+    "whatEn": "A long-loved independent patisserie south of Takaoka Station crafting seasonal fruit cakes, baked cookies, and eat-in parfaits since 1991.",
+    "facts": "Founded in 1991 in Kyoden south of Takaoka Station; lines its showcase with seasonal entremets and house-baked sablés and serves fruit parfaits in its tearoom.",
+    "weak": "",
+    "verifiedBy": "https://patisserie-valentine.jp/",
+    "quote": "クリスマスケーキのご注文は店頭のみで行っております。 混雑緩和の為12/20(日)までに店頭にてご予約、お支払いをお願いいたします。",
+    "fixes": "Address 高岡市京田430 matches; page does not mention 1991 founding or parfaits.",
+    "coords": [
+     36.73042,
+     137.01514
+    ]
+   }
+  },
+  "Le premier": {
+   "nameEn": "Le premier",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "french"
+   ],
+   "what": "高岡駅南口から歩いてすぐのフランス料理店。ランチもディナーも予約制で、火曜定休（不定休あり）。",
+   "whatEn": "A French restaurant a short walk from the south exit of Takaoka Station. Both lunch and dinner are by reservation; closed Tuesdays and irregular days.",
+   "note": "ランチもディナーも予約してから行く。",
+   "noteEn": "Reserve ahead for either lunch or dinner.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ル・プルミエ",
+    "address": "富山県高岡市駅南5-203",
+    "url": "https://le-premier.jp/",
+    "whatJa": "高岡駅南口近くに佇む予約制の個人フレンチレストランで、旬の地元食材を取り入れたコースランチやディナーが楽しめる。",
+    "whatEn": "An independent neighborhood French restaurant south of Takaoka Station serving reservation-based seasonal lunch and dinner courses.",
+    "facts": "Tucked into a quiet residential block in Ekiminami near National Treasure Zuiryu-ji Temple; offers multi-course French lunches and dinners in calm private-feeling dining rooms.",
+    "weak": "",
+    "verifiedBy": "https://le-premier.jp/",
+    "quote": "2026/10/07 お節料理受け付け　（少数限定）",
+    "fixes": "Address 高岡市駅南5-203 matches; reservation-based, closed Tuesdays; also has a 2026/04/01 notice about October/November closed days.",
+    "coords": [
+     36.73956,
+     137.01528
+    ]
+   }
+  },
+  "自家焙煎珈琲店 らんぶる": {
+   "nameEn": "Ramble",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "coffee"
+   ],
+   "what": "1972年開店の自家焙煎珈琲店。30kgの熱風焙煎機で月に約2,000kgの豆を焙煎し、喫茶では珈琲のほか軽食やデザートも出す。第1・第3日曜定休。",
+   "whatEn": "A coffeehouse roasting its own beans since 1972, turning out around 2,000 kg a month on a 30 kg hot-air roaster, with light meals and desserts. Closed 1st and 3rd Sundays.",
+   "note": "第1・第3日曜が休み。豆だけ買うこともできる。",
+   "noteEn": "Closed the first and third Sundays. You can also just buy beans.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "じかばいせんこーひーてん らんぶる",
+    "address": "富山県高岡市駅南3-1-5",
+    "url": "https://ramble.jp/",
+    "whatJa": "1972年創業の高岡を代表する老舗自家焙煎喫茶店で、30kgの大型熱風焙煎機で焼く「瑞龍寺ブレンド」や自家製カスタードプリンで親しまれる。",
+    "whatEn": "A 1972 Takaoka coffeehouse south of the station roasting house blends on a 30-kilogram hot-air roaster alongside classic custard pudding and kissaten fare.",
+    "facts": "Founded in 1972 in Ekiminami near Zuiryu-ji Temple; roasts beans in-house on an unusually large 30 kg hot-air roaster for its Zuiryu-ji Blend and serves house-made custard pudding.",
+    "weak": "",
+    "verifiedBy": "https://ramble.jp/",
+    "quote": "R8 ゴールデンウィーク営業について",
+    "fixes": "Address 〒933-0871 富山県高岡市駅南3-1-5 matches. Page says 1972 opening and 30kg hot-air roaster (about 2,000 kg/month). Closed 1st and 3rd Sundays. The page text does not mention custard pudding or a 瑞龍寺ブレンド; it does list a 瑞龍寺セット (bean set).",
+    "coords": [
+     36.73842,
+     137.01624
+    ]
+   }
+  },
+  "山口久乗": {
+   "nameEn": "Yamaguchi Kyujo",
+   "area": "金屋町",
+   "areaEn": "Kanayamachi",
+   "tags": [
+    "metalwork"
+   ],
+   "what": "1907年（明治40年）創業のおりんメーカー。内免の本社ショールームでは、仏具のおりんから暮らしの中の音の道具まで、すべての商品を鳴らして選べる。",
+   "whatEn": "An orin bell maker founded in 1907. At the showroom in Naimen, visitors can ring and choose from all of its bells, from altar orin to everyday sound pieces.",
+   "note": "ショールームで実際に鳴らして音を確かめる。",
+   "noteEn": "Try ringing the bells in the showroom to hear the tone.",
+   "_src": {
+    "category": "local",
+    "industry": "takaoka-doki",
+    "nameKana": "やまぐちきゅうじょう",
+    "address": "富山県高岡市内免2-8-50",
+    "url": "https://www.kyujo-orin.com/",
+    "whatJa": "1907年創業のおりん・仏具メーカーで、本社ショールームでは100種類以上の「久乗おりん」や音のインテリアを実際に鳴らして購入できる。",
+    "whatEn": "A 1907 Takaoka bronze bell maker near Kanayamachi with a dedicated showroom where visitors can ring and buy over a hundred hand-tuned Kyujo Orin sound objects.",
+    "facts": "Founded in 1907 (Meiji 40) just across the Senbo River from Kanayamachi; crafts contemporary 'Yurin' and 'Kyujo Orin' door chimes, wind bells, and desk bells tuned individually by ear, all testable in its showroom.",
+    "weak": "",
+    "verifiedBy": "https://www.kyujo-orin.com/news/2026/jrtrain_tvgood_move.html",
+    "quote": "2026年11月19日（木）から11月22日（日）まで、首都圏JR主要10路線と、\nゆりかもめの車両サイネージ車内モニターにて放映される「GOOD MOVE！」にて\n久乗おりんが紹介されます。",
+    "fixes": "Official showroom page confirms all products can be tried and purchased at 富山県高岡市内免2丁目8番50号. Replace the unsubstantiated over-a-hundred/100種類以上 count with all products/すべての商品.",
+    "coords": null
+   }
+  },
+  "鹿の子餅本舗 不破福寿堂": {
+   "nameEn": "Fuwa Fukujudo",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "京田の和菓子店。看板の「鹿の子餅」のほか、どら焼きや季節の菓子を作る。営業は9時から19時、火曜定休。",
+   "whatEn": "A wagashi shop in Kyoden making its signature Kanokomochi alongside dorayaki and seasonal sweets. Open 9 a.m. to 7 p.m., closed Tuesdays.",
+   "note": "名物の鹿の子餅と、季節の菓子を合わせて見る。",
+   "noteEn": "Look at the seasonal sweets alongside the signature Kanokomochi.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "かのこもちほんぽ ふわふくじゅどう",
+    "address": "富山県高岡市京田140-1",
+    "url": "https://www.kanokomochi.co.jp/",
+    "whatJa": "1889年創業、富山県産の新大正もち米と蜜漬け金時豆で作る真っ白でふわふわの銘菓「鹿の子餅」で知られる老舗和菓子店。",
+    "whatEn": "An 1889 Takaoka wagashi house celebrated for Kanokomochi, pillowy snow-white rice cakes studded with honey-simmered Kintoki beans.",
+    "facts": "Founded in 1889 (Meiji 22) and operating solely from its Kyoden flagship in Takaoka; whips steamed Toyama Shin-Taisho glutinous rice to meringue-like lightness around sweet Hokkaido Kintoki beans for its signature Kanokomochi.",
+    "weak": "",
+    "verifiedBy": "https://www.kanokomochi.co.jp/news/?p=2003",
+    "quote": "諸事情により１１月１６日（月）は\n１８時にて閉店\nさせていただきます。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "デザートと家庭料理の店 キャセロール": {
+   "nameEn": "Casserole",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "tags": [
+    "yoshoku",
+    "french"
+   ],
+   "what": "1994年創業、大野のフランス家庭料理と洋食の店。看板の特製ハンバーグステーキはマスタード・トマト・カレーの3種から選べ、2種のあいがけもできる。パンは姉妹店の自家製。",
+   "whatEn": "A yoshoku and country-French restaurant in Ono since 1994. Its signature hamburg steak comes with mustard, tomato, or curry sauce, or a mix of two, served with bread from its sister bakery.",
+   "note": "ハンバーグのソースは、二種類のあいがけにできる。",
+   "noteEn": "You can ask for two sauces on the hamburg steak.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "デザートとかていりょうりのみせ キャセロール",
+    "address": "富山県高岡市大野285-1",
+    "url": "https://casserole1994.com/",
+    "whatJa": "1994年創業の高岡を代表する洋食・南仏家庭料理店で、2種ソースを選べる特製和牛ハンバーグステーキと手作りタルトが名物。",
+    "whatEn": "A beloved 1994 Takaoka yoshoku and country-French restaurant famous for Wagyu hamburg steak with dual house sauces and seasonal fruit tarts.",
+    "facts": "Opened in 1994 in Ono; serves domestically raised Wagyu hamburg steaks with choices of grain-mustard, tomato, or curry sauces alongside bread from its sister boulangerie and house-baked pear tarts.",
+    "weak": "",
+    "verifiedBy": "https://tabigurume.net/casserole/",
+    "quote": "高岡市大野に、赤いシェードが目を引く欧風レストランがあります。",
+    "fixes": "whatEn/whatJa: sauces are マスタード・トマト・カレーの3種類, with 2種類のあいがけも可能; describe three choices with an optional two-sauce combination. Address matches 富山県高岡市大野285-1.",
+    "coords": null
+   }
+  },
+  "茶寮 和香": {
+   "nameEn": "Saryo Nicoca",
+   "area": "金屋町",
+   "areaEn": "Kanayamachi",
+   "tags": [
+    "japanese",
+    "kaiseki"
+   ],
+   "what": "金屋町の石畳通り沿い、江戸末期の町屋を改装した日本料理店。昼のおまかせコースと和香のおまかせコースがあり、昼・夜とも前日までの完全予約制（月曜昼定休）。",
+   "whatEn": "A Japanese restaurant in a renovated late-Edo townhouse along Kanayamachi's stone-paved street, serving omakase courses. Both lunch and dinner require reservation by the previous day; closed Monday lunch.",
+   "note": "昼も夜も、前日までに電話で予約していく。",
+   "noteEn": "Reserve by phone at least a day ahead, for lunch or dinner.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "さりょう にこか",
+    "address": "富山県高岡市金屋本町2-26",
+    "url": "https://www.nicoca.jp/",
+    "whatJa": "金屋本町の江戸末期の町家を改装した日本料理店で、富山湾の魚介や旬菜を使った懐石・昼御膳を高岡の器に盛り付けて供する。",
+    "whatEn": "A refined Japanese restaurant in a renovated late-Edo merchant townhouse in Kanayamachi serving seasonal Toyama Bay kaiseki on local craft vessels.",
+    "facts": "Housed in a restored late-Edo townhouse in the historic Kanayamachi foundry district; Michelin-recognized chef prepares seasonal lunch and dinner courses showcasing Toyama Bay seafood on local lacquer and metalware.",
+    "weak": "",
+    "verifiedBy": "https://tsutaeru-toyama.com/saryo-nicoca/",
+    "quote": "今回は、\n結婚記念日\nのお祝いに、高岡市金屋町の日本料理のお店「\n茶寮 和香\n(にこか)」さんへ行ってきました。",
+    "fixes": "whatEn/whatJa: meals are 昼のおまかせコース and 和香のおまかせコース; both lunch and dinner require telephone reservations by the previous day. Replace the casual-sounding 昼御膳 with 昼のおまかせコース. Address matches 富山県高岡市金屋本町2-26.",
+    "coords": null
+   }
+  },
+  "洋食 no ARIKA": {
+   "nameEn": "Yoshoku no ARIKA",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "yoshoku"
+   ],
+   "what": "高岡南部の洋食店。「たかおかオムライス」やハンバーグ、パスタのほか、ジンギスカンも出す。水曜定休（不定休あり）、ディナーはワンドリンク制。",
+   "whatEn": "A yoshoku restaurant in southern Takaoka serving Takaoka omurice, hamburg steaks, pasta, and Genghis Khan. Closed Wednesdays and irregular days; one-drink minimum at dinner.",
+   "note": "昼のセットランチか、名物の「たかおかオムライス」を。",
+   "noteEn": "Go for the lunch set or the Takaoka omurice.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ようしょく ノ アリカ",
+    "address": "富山県高岡市下黒田780-6",
+    "url": "https://y-arika.com/",
+    "whatJa": "高岡南部の下黒田で地元客に親しまれる洋食レストランで、「たかおかオムライス」やハンバーグ、パスタが評判。",
+    "whatEn": "A neighborhood yoshoku kitchen in southern Takaoka loved by locals for fluffy Takaoka omurice, hand-formed hamburg steaks, and fresh pasta.",
+    "facts": "Opened in May 2018 by Takaoka-born chef Akira Masuyuki; specializes in signature Takaoka omurice, rich demi-glace hamburg steaks, and evening Genghis Khan lamb platters.",
+    "weak": "",
+    "verifiedBy": "https://y-arika.com/make-the-most-of-your-location-spotting-tour-in-takaoka-city/",
+    "quote": "こんにちは、洋食noARIKAです！",
+    "fixes": "address: official homepage prints 富山県高岡市黒田780-6 (without 下). whatEn/whatJa: official homepage identifies pasta, omurice and hamburg steak; fresh pasta is not specified, so remove fresh.",
+    "coords": null
+   }
+  },
+  "カフェくらうん": {
+   "nameEn": "Cafe Crown",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "tags": [
+    "coffee",
+    "sweets"
+   ],
+   "what": "1958年（昭和33年）創業、古定塚の自家焙煎珈琲店。ひと粒ずつハンドピックした豆を焙煎し、富士山の溶岩石の炉床で焼いたパティシエのお菓子と出す。",
+   "whatEn": "A coffeehouse in Furujozuka roasting its own beans since 1958. Beans are hand-picked before roasting and served with sweets baked in a lava-stone oven.",
+   "note": "ハンドピックの珈琲と、富士溶岩石の窯の焼き菓子。",
+   "noteEn": "Hand-picked coffee and sweets baked in a lava-stone oven.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "カフェくらうん",
+    "address": "富山県高岡市古定塚9-33",
+    "url": "https://cafe-crown.com/",
+    "whatJa": "高岡古城公園近くの古定塚にある老舗の自家焙煎珈琲店で、丁寧なハンドピックで仕上げる珈琲と季節の手作りケーキが楽しめる。",
+    "whatEn": "A long-standing home-roasting kissaten near Kojo Park meticulously hand-picking specialty coffee beans to serve with seasonal cakes and morning toast sets.",
+    "facts": "Tucked into a quiet street in Furujozuka just northeast of Takaoka Kojo Park; roasts specialty beans in small batches after strict hand-sorting and serves siphon and pour-over coffee alongside seasonal tarts.",
+    "weak": "",
+    "verifiedBy": "https://cafe-crown.com/",
+    "quote": "開催期間：2026年7月9日（木）～7月20日（月・祝）\n期間中、コーヒー豆が20％OFFになります。",
+    "fixes": "Address matches 富山県高岡市古定塚9-33. Official site confirms self-roasted hand-picked coffee and patissier-made sweets; seasonal cakes, morning toast sets, siphon brewing and seasonal tarts were not specified in the opened text.",
+    "coords": null
+   }
+  },
+  "九谷屋": {
+   "nameEn": "Kutaniya",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "末広町の陶磁器・器の店。九谷焼や清水焼、有田焼の器から、漆器や能作の錫の酒器まで揃う。",
+   "whatEn": "A ceramics and tableware shop on Suehirocho carrying Kutani, Kiyomizu, and Arita porcelain alongside lacquerware and Nousaku tin sake vessels.",
+   "note": "九谷焼の器と、能作の錫の酒器を並べて見る。",
+   "noteEn": "Look at the Kutani ceramics alongside Nousaku tin sake cups.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "くたにや",
+    "address": "富山県高岡市末広町38",
+    "url": "https://kutaniya.jp/",
+    "whatJa": "昭和初期創業、末広町に店を構える陶磁器・器の専門店で、九谷焼や清水焼、有田焼の器から高岡の錫製酒器まで幅広く揃える。",
+    "whatEn": "An early-Showa porcelain and tableware specialist on Suehirocho carrying Kutani, Kiyomizu, and Arita ceramics alongside local Takaoka tinware.",
+    "facts": "Founded in the early Showa era along Suehirocho between Takaoka Station and the Daibutsu quarter; curates everyday and ceremonial Kutani, Arita, and Kiyomizu porcelain vessels together with Takaoka metal tableware.",
+    "weak": "",
+    "verifiedBy": "https://kotsutsubo.jp/2026/01/11/",
+    "quote": "弊社は大正十二年の創業以来、九谷焼をはじめ工芸品を専門に取り扱っております。",
+    "fixes": "whatEn/whatJa: change early-Showa/昭和初期 founding to 1923/大正12年 (company page specifies 大正12年12月). Official categories include Kutani, Kiyomizu, Arita ceramics, glass and lacquerware; local tinware was not established. Address matches 富山県高岡市末広町38番地.",
+    "coords": null
+   }
+  },
+  "KANAYA": {
+   "nameEn": "KANAYA",
+   "area": "金屋町",
+   "areaEn": "Kanayamachi",
+   "tags": [
+    "metalwork",
+    "tin",
+    "aluminum"
+   ],
+   "what": "金屋町の石畳通り沿いにショールームを構える鋳物の生活道具ブランド。アルミや青銅の鋳物、錫の酒器などを展示販売し、ショールームでは錫のうつわ製作体験も行う。",
+   "whatEn": "A cast-metal homeware brand with a showroom on Kanayamachi's stone-paved street, showing cast aluminum, bronze, and tin vessels and hosting tinware workshops.",
+   "note": "予約して錫のうつわ製作体験に参加できる。",
+   "noteEn": "You can book a tin-vessel workshop at the showroom.",
+   "_src": {
+    "category": "local",
+    "industry": "takaoka-doki",
+    "nameKana": "カナヤ",
+    "address": "富山県高岡市金屋町2-5",
+    "url": "https://kanaya-t.jp/",
+    "whatJa": "金屋町の石畳通り沿いにある築150年の町家ショールームで、鋳肌や鏡面アルミを生かした生活道具の展示販売と錫の鍛金体験を行う。",
+    "whatEn": "A cast-metal design brand showroom housed in a 150-year-old Kanayamachi lattice-front townhouse offering bronze, aluminum, and glass homeware and tin-hammering workshops.",
+    "facts": "Occupies a preserved 150-year-old senbon-goshi townhouse directly on Kanayamachi's stone-paved foundry street; showcases cast-bronze and mirror-polished aluminum homeware paired with glass and hosts pure-tin sake-cup hammering workshops.",
+    "weak": "",
+    "verifiedBy": "https://kanaya-t.jp/blog/2026/08/89530/",
+    "quote": "高岡クラフト市場街2026、ミラレ金屋町2026に今年もKANAYAは参加します！",
+    "fixes": "Address matches 富山県高岡市金屋町 2-5. The page confirms 錫のうつわ製作体験 at the showroom; its weekday/date pairs for September are inconsistent, so do not republish those event dates without checking.",
+    "coords": null
+   }
+  },
+  "うつわむすび": {
+   "nameEn": "Utsuwamusubi",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "metalwork",
+    "tableware"
+   ],
+   "what": "問屋町の株式会社砺波商店が手がける、割れにくいアルミ製の器ブランド。陶器のような質感の皿やカップ、ごはん鍋などを作る。",
+   "whatEn": "An unbreakable cast-aluminum tableware brand by Tonami Shoten in Tonyamachi, making ceramic-textured plates, cups, and rice pots.",
+   "note": "割れにくいアルミの器と、ごはん鍋が並ぶ。",
+   "noteEn": "Cast-aluminum tableware that will not break, plus rice pots.",
+   "_src": {
+    "category": "local",
+    "industry": "takaoka-doki",
+    "nameKana": "うつわむすび",
+    "address": "富山県高岡市問屋町75",
+    "url": "https://utsuwamusubi.jp/",
+    "whatJa": "高岡鋳物の技術を応用し、陶器のような風合いで割れずに塗り直しもできるアルミ鋳造の器を製造・直販する砺波商店の拠点。",
+    "whatEn": "The factory showroom of Tonami Shoten crafting unbreakable cast-aluminum plates, cups, and rice pots finished with ceramic-textured multi-layer coatings.",
+    "facts": "Operated by long-standing Takaoka metalware maker Tonami Shoten in Tonyamachi; casts lightweight aluminum plates, bowls, and kamado rice pots finished with food-safe ceramic-like coatings that can be recoated for decades.",
+    "weak": "",
+    "verifiedBy": "https://mimineta.com/blog/archives/23981",
+    "quote": "この「割れない」という特徴が縁起が良いとされ、現在は結婚式や長寿のお祝いの贈り物（ギフト）として大人気になっています。",
+    "fixes": "whatEn/whatJa: official about-us page identifies 株式会社砺波商店 at 富山県高岡市問屋町75, planning/manufacturing/selling repaintable aluminum tableware. It does not identify a visitor showroom; describe this as the maker's headquarters unless showroom access is separately confirmed. Official broadcaster's 2026-06-26 programme page also names 砺波商店 and うつわむすび.",
+    "coords": null
+   }
+  },
+  "紡・tsumugu": {
+   "nameEn": "tsumugu",
+   "area": "山町筋",
+   "areaEn": "Yamachosuji",
+   "tags": [
+    "craft",
+    "coffee"
+   ],
+   "what": "守山町の1970西繊ビル1階にあるカフェ。コーヒーやハーブティーのほか、パフェやケーキ、焼き菓子などを出す。専用駐車場はない。",
+   "whatEn": "A café on the ground floor of the 1970 Nishisen Building in Moriyamachi, serving coffee, herbal tea, parfaits, cakes, and baked sweets. No dedicated parking.",
+   "note": "専用駐車場がないので、歩いて寄るのがいい。",
+   "noteEn": "No dedicated parking, so it is best reached on foot.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "つむぐ",
+    "address": "富山県高岡市守山町35 西繊ビル1F",
+    "url": "https://www.instagram.com/tsumugu_takaoka/",
+    "whatJa": "山町筋エリアの1970年築レトロビル1階にあるギャラリーショップ＆カフェで、富山・高岡の若手作家による器を展示販売し実際の提供にも使う。",
+    "whatEn": "A craft gallery-shop and cafe on the ground floor of a renovated 1970 building in Yamachosuji exhibiting and selling ceramics and tableware by Toyama artisans.",
+    "facts": "Set inside the renovated 1970 Nishisen Building near Yamachosuji with patinated Orii copper accents; exhibits ceramics and craft vessels by Takaoka and Toyama makers that guests can experience with herbal tea and sweets before buying.",
+    "weak": "",
+    "verifiedBy": "https://toyamatch.jp/event/602",
+    "quote": "開催日時\n2026年12月12日(土)\n10：00～12：30頃(受付9：40～)\n開催場所\n1970西繊ビル　紡～tsumugu～",
+    "fixes": "Address: the tenant's official page https://www.nissen.nishijima35.com/tsumugu prints 西織ビル1F(高岡市守山町35), while the building branding is 1970 西繊ビル. It describes a cafe serving hot coffee, herbal tea, alcohol, parfaits, ice cream, cakes and baked sweets. Municipal 2026-09-09 event coverage also includes 紡tsumugu as a food-event venue.",
+    "coords": null
+   }
+  },
+  "石窯パン工房 VIVIR": {
+   "nameEn": "Bakery VIVIR",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "tags": [
+    "bread",
+    "bakery"
+   ],
+   "what": "2017年12月に高岡イオン近くで開いたパン屋。スペイン製の石窯で焼き、自家製カスタードのクリームパンや牛肉がごろっと入ったカレーパンが看板。",
+   "whatEn": "A bakery opened near Aeon Takaoka in December 2017, baking in a Spanish stone oven. Known for house-made custard cream buns and chunky beef curry bread.",
+   "note": "自家製カスタードのクリームパンとカレーパン。",
+   "noteEn": "The house-made custard cream bun and the curry bread.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "いしがまパンこうぼう ビビール",
+    "address": "富山県高岡市二塚415-1",
+    "url": "https://vivir-takaoka.com/",
+    "whatJa": "スペイン製の石窯で次々と焼き上げるベーカリーで、自家製カスタードのクリームパンや牛肉がごろっと入ったカレーパンが地元で人気。",
+    "whatEn": "A local stone-oven bakery in southern Takaoka baking custard cream buns, chunky beef curry bread, and hearth loaves in a Spanish masonry oven.",
+    "facts": "Opened in December 2017 in Futatsuka south of Shin-Takaoka Station; bakes crusty loaves, house-cooked custard cream buns, and slow-simmered beef curry bread inside a Spanish-built stone oven.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/enjoy1228/entry-12983594638.html",
+    "quote": "高岡市のパン工房VIVIRでパンを買って～",
+    "fixes": "Official shop page confirms 富山県高岡市二塚４１５－１. Official homepage confirms Spanish stone oven, homemade custard cream buns, chunky-beef curry bread and December 2017 opening; hearth loaves were not specified.",
+    "coords": null
+   }
+  },
+  "あんしんごはん": {
+   "nameEn": "Anshin Gohan",
+   "area": "山町筋",
+   "areaEn": "Yamachosuji",
+   "tags": [
+    "food",
+    "deli"
+   ],
+   "what": "守山町の手作りお惣菜と食事の店。保存料・着色料を使わないお惣菜や弁当、プリンを出す。2026年7月の再開後は、量り売りを休止してパック詰めで販売。",
+   "whatEn": "A handmade deli and eatery in Moriyamachi serving preservative- and coloring-free side dishes, bento, and pudding. Since reopening in July 2026, sides are sold prepacked rather than by weight.",
+   "note": "無添加のお惣菜や弁当と一緒に、プリンも見る。",
+   "noteEn": "Look for the pudding alongside the additive-free deli dishes and bento.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "あんしんごはん",
+    "address": "富山県高岡市守山町11",
+    "url": "https://www.instagram.com/anshingohan/",
+    "whatJa": "山町筋の土蔵造りの古民家を改装したお惣菜・食事処で、高岡産の旬食材を使い保存料・着色料無添加で仕込む手作りごはんとプリンを提供する。",
+    "whatEn": "A renovated storehouse eatery and deli in Yamachosuji preparing additive-free seasonal Toyama home-cooked dishes, lunch plates, and custard pudding.",
+    "facts": "Occupies a renovated kura-style merchant building opposite the Takaoka Mikurumayama Museum in Yamachosuji; prepares preservative-free daily obanzai side dishes sold by weight, eat-in lunches, and house pudding.",
+    "weak": "",
+    "verifiedBy": "https://takaoka.goguynet.jp/2026/07/11/anshingohan-kyuugyou/",
+    "quote": "営業は7月15日から再開予定です。",
+    "fixes": "whatEn/whatJa: the 2026 article says weighed deli sales are suspended after the July 15 reopening, with prepacked side dishes and bento continuing. Remove the factsForNote claim that sides are currently sold by weight. Official tourism listing confirms 富山県高岡市守山町11 and preservative-/coloring-free handmade dishes and pudding.",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "瑞龍寺",
+   "nameEn": "Zuiryu-ji Temple",
+   "kind": "sight",
+   "area": "駅南",
+   "areaEn": "Ekiminami",
+   "address": "高岡市関本町35",
+   "url": "https://www.zuiryuji.jp/",
+   "what": "加賀藩二代・前田利長の菩提を弔うため三代・利常が建てた曹洞宗の寺院。山門・仏殿・法堂が国宝に指定されている。拝観は9時から16時30分（冬期は16時まで）。",
+   "whatEn": "A Soto Zen temple built by Maeda Toshitsune for his predecessor Toshinaga, completed around 1663. Its gate, Buddha hall, and dharma hall are National Treasures. Open 9 a.m. to 4:30 p.m. (4 p.m. in winter).",
+   "coords": [
+    36.7356,
+    137.01054
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.zuiryuji.jp/ (2026-11-12確認): 住所 富山県高岡市関本町35、拝観時間 9:00〜16:30（冬季12/10〜1/31は16:00閉門）、大人500円。山門・仏殿・法堂が国宝。",
+   "_coordsSource": "OSM node 2493399308（瑞龍寺）"
+  },
+  {
+   "name": "高岡大仏",
+   "nameEn": "Takaoka Daibutsu",
+   "kind": "sight",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "address": "高岡市大手町11-29",
+   "url": "https://www.takaokadaibutsu.xyz/",
+   "what": "大仏寺の境内に鎮座する高さ約16メートルの阿弥陀如来坐像。昭和8年（1933年）の造立で、高岡の象徴として親しまれる。年中無休、台座回廊は6時から18時。",
+   "whatEn": "A 16-meter seated bronze Amida Buddha in the grounds of Daibutsu-ji Temple, completed in 1933. Open daily; the pedestal corridor is open 6 a.m. to 6 p.m.",
+   "coords": [
+    36.74556,
+    137.01712
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.takaokadaibutsu.xyz/enjoy_access.html (2026-11-12確認): 鳳徳山大仏寺 住所 富山県高岡市大手町11-29、拝観時間 6:00〜18:00、年中無休。能登半島地震後も安全に参拝可能と明記。",
+   "_coordsSource": "OSM way 551352705（高岡大仏）"
+  },
+  {
+   "name": "高岡古城公園",
+   "nameEn": "Takaoka Kojo Park",
+   "kind": "sight",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "address": "高岡市古城1-9",
+   "url": "http://www.kojyo.sakura.ne.jp/",
+   "what": "前田利長が築いた高岡城の跡を明治以降に公園として開いた国指定史跡。水堀と木々に囲まれ、市街地の中心にある。",
+   "whatEn": "A national historic site on the grounds of Takaoka Castle, built by Maeda Toshinaga and opened as a park in the Meiji era, ringed by moats and trees in the center of town.",
+   "coords": [
+    36.74901,
+    137.02194
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "http://www.kojyo.sakura.ne.jp/ (2026-11-12確認): 高岡古城公園管理事務所 富山県高岡市古城1番9号。国指定史跡。",
+   "_coordsSource": "OSM way 372220862（高岡古城公園）"
+  },
+  {
+   "name": "金屋町",
+   "nameEn": "Kanayamachi",
+   "kind": "sight",
+   "area": "金屋町",
+   "areaEn": "Kanayamachi",
+   "address": "高岡市金屋町",
+   "url": "https://www.denken.gr.jp/archive/takaoka-kanayamachi/",
+   "what": "高岡開町の際に前田利長が鋳物師を招いた高岡鋳物発祥の地。千本格子の町家が石畳の通りに連なり、国の重要伝統的建造物群保存地区に選ばれている。",
+   "whatEn": "The birthplace of Takaoka casting, where Maeda Toshinaga invited foundrymen when the town was founded. Lattice-front townhouses line a stone-paved street, designated a national preservation district.",
+   "coords": [
+    36.75017,
+    137.00544
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.denken.gr.jp/archive/takaoka-kanayamachi/ (2026-11-12確認): 全国伝統的建造物群保存地区協議会。江戸時代から昭和初期の町家が建ち並び、今も鋳物作業が行われる。",
+   "_coordsSource": "OSM node 7877520600（金屋町）"
+  },
+  {
+   "name": "高岡市美術館",
+   "nameEn": "Takaoka Art Museum",
+   "kind": "art",
+   "area": "高岡大仏・古城公園",
+   "areaEn": "Daibutsu & Kojo Park",
+   "address": "高岡市中川1-1-30",
+   "url": "https://www.e-tam.info/",
+   "what": "高岡にゆかりのある美術や工芸品などを収蔵・展示する市立美術館。開館は9時30分から17時（入館16時30分まで）、月曜休館（祝日の場合は翌平日）。",
+   "whatEn": "The municipal art museum exhibiting fine art and crafts linked to Takaoka. Open 9:30 a.m. to 5 p.m. (last entry 4:30 p.m.); closed Mondays (or the following weekday if Monday is a holiday).",
+   "coords": [
+    36.75133,
+    137.02653
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.e-tam.info/ (2026-11-12確認): 2026年11月開館カレンダー及び2026年度展覧会掲載。9:30〜17:00（入館16:30まで）、月曜休館。",
+   "_coordsSource": "OSM node 1420917815（高岡市美術館）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "Craftan",
+   "verdict": "doubt",
+   "reason": "Official site's newest news is 2023/01/09; no 2026 evidence found (Instagram not opened)."
+  },
+  {
+   "name": "Orii gallery 八ノ蔵",
+   "verdict": "drop",
+   "reason": "Gallery closed and merged into the head-office showroom (長江530) on 2026-01-08."
+  },
+  {
+   "name": "武蔵川工房",
+   "verdict": "doubt",
+   "reason": "Newest news on the official site is 2024-12-10; no 2026 evidence found."
+  },
+  {
+   "name": "雅覧堂",
+   "verdict": "doubt",
+   "reason": "Top page shows only an undated COVID-era closure notice (2月16日から6月30日（予定）まで実店舗を休業), no 2026 sentence."
+  },
+  {
+   "name": "漆器くにもと",
+   "verdict": "doubt",
+   "reason": "Only file timestamps in page source; no readable dated 2026 post or notice."
+  },
+  {
+   "name": "たたら庵 喜泉",
+   "verdict": "doubt",
+   "reason": "News item about 2026.9 exhibition is about the maker (四津川製作所), but page does not confirm the Kanayamachi gallery-shop 'たたら庵 喜泉' or its address/opening in 2026."
+  },
+  {
+   "name": "ラ・リベリュール",
+   "verdict": "doubt",
+   "reason": "Page has no dated 2026 news; only undated class info and history."
+  },
+  {
+   "name": "大寺幸八郎商店",
+   "verdict": "doubt",
+   "reason": "Instagram profile is login-walled; no dated 2026 post visible, only bio."
+  },
+  {
+   "name": "ブーランジュリー グラン・オム",
+   "verdict": "doubt",
+   "reason": "Instagram profile is login-walled; no dated 2026 post visible, only bio (hours/closed days undated)."
+  },
+  {
+   "name": "麦のかなた",
+   "verdict": "doubt",
+   "reason": "Site is JS-rendered; no 2026-dated sentence could be read."
+  },
+  {
+   "name": "お食事処 ゆづら",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login; no 2026 sentence."
+  },
+  {
+   "name": "Restaurant moku",
+   "verdict": "doubt",
+   "reason": "Page has no dated 2026 sentence."
+  },
+  {
+   "name": "COMMA, COFFEE STAND",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login; no 2026 sentence."
+  },
+  {
+   "name": "MATSUKI COFFEE ROASTERY",
+   "verdict": "doubt",
+   "reason": "Official site is image-based with no dated 2026 text; Instagram page (@matsuki_coffee_roastery) shows only follower counts, no readable dated post. Only undated search snippets confirm operation."
+  },
+  {
+   "name": "柴田漆器店",
+   "verdict": "doubt",
+   "reason": "Official blog's newest notice is dated 2024-08-09; no dated 2026 operating sentence found. Two-floor/500-item showroom claims were not substantiated by the opened text."
+  },
+  {
+   "name": "江出乃月本舗 志乃原",
+   "verdict": "doubt",
+   "reason": "Official notices give 2025 and 2024 dates; the New Year greeting has no year and ©2016-2026 is excluded. Two searched 2026 FNN article URLs returned not-found pages with curl, so their snippets were not used."
+  },
+  {
+   "name": "KENTOUCHU COFFEE",
+   "verdict": "doubt",
+   "reason": "The official news list ends at 2025-11-27. No dated 2026 operating sentence could be copied."
+  },
+  {
+   "name": "SSS",
+   "verdict": "doubt",
+   "reason": "Official company page is undated; linked Instagram was unreadable with curl. No dated 2026 sentence showing SSS shop/cafe operation was found."
+  },
+  {
+   "name": "Pâtisserie Petit Four",
+   "verdict": "doubt",
+   "reason": "Candidate Instagram was unreadable with curl. The neighbourhood listing is undated; a searched purported 2026 article returned no readable content, and the linked Mypl listing returned not found. No dated 2026 sentence could be copied."
+  },
+  {
+   "name": "MicT COFFEE ROASTERY",
+   "verdict": "doubt",
+   "reason": "Official Takaoka page has no dated 2026 operating notice; ©2025 is not evidence. No qualifying dated 2026 operating sentence was copied."
+  },
+  {
+   "name": "SUNNY COFFEE",
+   "verdict": "doubt",
+   "reason": "Candidate Instagram was unreadable with curl. The shop's own website is undated. HAMONI's opened review is February 2023 and its ©2026 footer is excluded. No dated 2026 operating sentence could be copied."
+  }
+ ]
+}

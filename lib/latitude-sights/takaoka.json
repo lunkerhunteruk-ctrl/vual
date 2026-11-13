@@ -1,0 +1,82 @@
+[
+ {
+  "name": "瑞龍寺",
+  "nameEn": "Zuiryu-ji Temple",
+  "kind": "sight",
+  "area": "駅南",
+  "areaEn": "Ekiminami",
+  "address": "高岡市関本町35",
+  "url": "https://www.zuiryuji.jp/",
+  "what": "加賀藩二代・前田利長の菩提を弔うため三代・利常が建てた曹洞宗の寺院。山門・仏殿・法堂が国宝に指定されている。拝観は9時から16時30分（冬期は16時まで）。",
+  "whatEn": "A Soto Zen temple built by Maeda Toshitsune for his predecessor Toshinaga, completed around 1663. Its gate, Buddha hall, and dharma hall are National Treasures. Open 9 a.m. to 4:30 p.m. (4 p.m. in winter).",
+  "coords": [
+   36.7356,
+   137.01054
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高岡大仏",
+  "nameEn": "Takaoka Daibutsu",
+  "kind": "sight",
+  "area": "高岡大仏・古城公園",
+  "areaEn": "Daibutsu & Kojo Park",
+  "address": "高岡市大手町11-29",
+  "url": "https://www.takaokadaibutsu.xyz/",
+  "what": "大仏寺の境内に鎮座する高さ約16メートルの阿弥陀如来坐像。昭和8年（1933年）の造立で、高岡の象徴として親しまれる。年中無休、台座回廊は6時から18時。",
+  "whatEn": "A 16-meter seated bronze Amida Buddha in the grounds of Daibutsu-ji Temple, completed in 1933. Open daily; the pedestal corridor is open 6 a.m. to 6 p.m.",
+  "coords": [
+   36.74556,
+   137.01712
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高岡古城公園",
+  "nameEn": "Takaoka Kojo Park",
+  "kind": "sight",
+  "area": "高岡大仏・古城公園",
+  "areaEn": "Daibutsu & Kojo Park",
+  "address": "高岡市古城1-9",
+  "url": "http://www.kojyo.sakura.ne.jp/",
+  "what": "前田利長が築いた高岡城の跡を明治以降に公園として開いた国指定史跡。水堀と木々に囲まれ、市街地の中心にある。",
+  "whatEn": "A national historic site on the grounds of Takaoka Castle, built by Maeda Toshinaga and opened as a park in the Meiji era, ringed by moats and trees in the center of town.",
+  "coords": [
+   36.74901,
+   137.02194
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "金屋町",
+  "nameEn": "Kanayamachi",
+  "kind": "sight",
+  "area": "金屋町",
+  "areaEn": "Kanayamachi",
+  "address": "高岡市金屋町",
+  "url": "https://www.denken.gr.jp/archive/takaoka-kanayamachi/",
+  "what": "高岡開町の際に前田利長が鋳物師を招いた高岡鋳物発祥の地。千本格子の町家が石畳の通りに連なり、国の重要伝統的建造物群保存地区に選ばれている。",
+  "whatEn": "The birthplace of Takaoka casting, where Maeda Toshinaga invited foundrymen when the town was founded. Lattice-front townhouses line a stone-paved street, designated a national preservation district.",
+  "coords": [
+   36.75017,
+   137.00544
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高岡市美術館",
+  "nameEn": "Takaoka Art Museum",
+  "kind": "art",
+  "area": "高岡大仏・古城公園",
+  "areaEn": "Daibutsu & Kojo Park",
+  "address": "高岡市中川1-1-30",
+  "url": "https://www.e-tam.info/",
+  "what": "高岡にゆかりのある美術や工芸品などを収蔵・展示する市立美術館。開館は9時30分から17時（入館16時30分まで）、月曜休館（祝日の場合は翌平日）。",
+  "whatEn": "The municipal art museum exhibiting fine art and crafts linked to Takaoka. Open 9:30 a.m. to 5 p.m. (last entry 4:30 p.m.); closed Mondays (or the following weekday if Monday is a holiday).",
+  "coords": [
+   36.75133,
+   137.02653
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

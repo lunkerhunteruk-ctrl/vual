@@ -1,0 +1,82 @@
+[
+ {
+  "name": "INAXライブミュージアム",
+  "nameEn": "INAX Live Museum",
+  "kind": "art",
+  "area": "奥栄町",
+  "areaEn": "Okusakae",
+  "address": "常滑市奥栄町1-130",
+  "url": "https://livingculture.lixil.com/ilm/",
+  "what": "土とやきものをテーマにした7つの館からなる体験型ミュージアム。1921年建造の土管工場を残す資料館や世界のタイル博物館がある。10時から17時、水曜（祝日は開館）と年末年始は休み。",
+  "whatEn": "A seven-pavilion museum of clay and ceramics, including a preserved 1921 pipe factory and the World Tile Museum. Open 10:00 to 17:00; closed Wednesdays (except public holidays) and year-end.",
+  "coords": [
+   34.88176,
+   136.8486
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "とこなめ陶の森",
+  "nameEn": "Tokoname Ceramic Forest",
+  "kind": "art",
+  "area": "瀬木町",
+  "areaEn": "Segicho",
+  "address": "常滑市瀬木町4-203",
+  "url": "https://www.tokoname-tounomori.jp/",
+  "what": "常滑焼の資料館、陶芸研究所、研修工房からなる市立の施設。堀口捨己設計の陶芸研究所では平安時代末期から現代までの常滑焼を展示する。9時から17時、月曜（祝日の場合翌日）と年末年始は休み、入場無料。",
+  "whatEn": "A municipal complex of museum, research institute and training studio; the institute designed by Sutemi Horiguchi exhibits Tokoname ware from the late Heian period to today. Open 9:00 to 17:00; closed Mondays (or next day) and year-end; free admission.",
+  "coords": [
+   34.88595,
+   136.84949
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "廻船問屋 瀧田家",
+  "nameEn": "Takita Residence",
+  "kind": "sight",
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "常滑市栄町4-75",
+  "url": "https://takitake.com/",
+  "what": "江戸から明治前期にかけて海運業を支えた廻船主・瀧田家の居宅で、1850年ごろの建築を復元した市指定有形文化財。9時半から16時半、水曜（祝日は開館）と年末年始は休み。",
+  "whatEn": "The restored c. 1850 residence of the Takita shipping merchants who supported Tokoname's coastal trade from the Edo to early Meiji eras; a city tangible cultural property. Open 9:30 to 16:30; closed Wednesdays (except holidays) and year-end.",
+  "coords": [
+   34.88807,
+   136.83904
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "常滑市登窯広場 展示工房館",
+  "nameEn": "Climbing Kiln Plaza Exhibition Hall",
+  "kind": "sight",
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "常滑市栄町6-145",
+  "url": "https://kobokan-tokoname.com/",
+  "what": "やきもの散歩道Aコースの登窯広場にある展示施設。昭和55年まで使われた両面焚倒焔式角窯を保存展示し、近くの国指定重要有形民俗文化財の登窯（陶栄窯）とあわせて見られる。9時半から16時半、水曜休み。",
+  "whatEn": "An exhibition hall in Climbing Kiln Plaza on Pottery Footpath Course A, preserving a two-sided downdraft kiln used until 1980 near the nationally designated Toei-gama climbing kiln. Open 9:30 to 16:30; closed Wednesdays.",
+  "coords": [
+   34.88653,
+   136.83978
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "やきもの散歩道（土管坂）",
+  "nameEn": "Pottery Footpath (Dokanzaka)",
+  "kind": "sight",
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "常滑市栄町・陶郷町ほか",
+  "url": "https://www.tokoname-kankou.net/spot/detail/1/",
+  "what": "中心市街地の小高い丘に残る散策路。レンガの煙突や黒壁の工房、土管や焼酎瓶を積んだ土管坂など、焼き物の町の風景を歩いて巡れる。",
+  "whatEn": "A hillside walking route above central Tokoname passing brick chimneys, black-walled workshops and Dokanzaka Slope lined with ceramic pipes and shochu jars.",
+  "coords": [
+   34.8876,
+   136.83986
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

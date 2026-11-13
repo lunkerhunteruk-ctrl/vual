@@ -1,0 +1,466 @@
+[
+ {
+  "name": "伊勢和紙館",
+  "nameEn": "Ise Washikan",
+  "category": "local",
+  "industry": "ise-washi",
+  "tags": [
+   "washi",
+   "paper"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市大世古1-10-30",
+  "url": "https://isewashi.co.jp/",
+  "what": "1899年創業の大豐和紙工業に併設された和紙の館。神宮御用紙や手漉き和紙、写真用のインクジェット和紙を扱い、紙漉きの道具の展示やギャラリーもある。",
+  "whatEn": "The hall attached to Taiho Washi Kougyo, a papermaker since 1899. It sells ritual washi made for Ise Jingu alongside handmade sheets and inkjet photo paper, with a display of papermaking tools and a gallery.",
+  "note": "土日は休館が多い。第2土曜か展示の日に。",
+  "noteEn": "Closed most weekends. Aim for the second Saturday or a gallery show.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.49171,
+   136.70274
+  ]
+ },
+ {
+  "name": "伊勢 宮忠",
+  "nameEn": "Ise Miyachu",
+  "category": "local",
+  "industry": "jingu-woodcraft",
+  "tags": [
+   "wood",
+   "craft"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市岡本1-2-38",
+  "url": "https://www.ise-miyachu.co.jp/",
+  "what": "1938年創業の神棚と神具の専門店で、外宮のせんぐう館前に本店がある。木曽檜を使った茅葺きの神棚や土器、しめ縄などを職人が手仕事で仕立てる。",
+  "whatEn": "A maker and shop of household shrines and ritual ware founded in 1938, with its main store opposite Geku's Sengukan. Craftsmen hand-finish thatched Kiso-hinoki kamidana, unglazed earthenware and shimenawa.",
+  "note": "神棚だけでなく、小さな盛り塩の器や土器も並ぶ。",
+  "noteEn": "Beyond full shrines, they also carry small salt dishes and unglazed earthenware.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.48654,
+   136.70837
+  ]
+ },
+ {
+  "name": "しろちどり",
+  "nameEn": "Shirochidori",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "tenugui"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市吹上1-4-7 足立ビル1F",
+  "url": "https://shirochidori.net/",
+  "what": "2014年に外宮の近くに開いたギャラリーと雑貨の店。地元や全国の作家の作品に加え、伊勢和紙の文具や伊勢柄の手ぬぐいを扱う。木曜定休。",
+  "whatEn": "A gallery and general goods shop opened near Geku in 2014. Alongside work by local and national makers, it carries Ise washi stationery and Ise-motif tenugui. Closed Thursdays.",
+  "note": "手ぬぐいや伊勢和紙の便箋など、小さな土産が探しやすい。",
+  "noteEn": "Easy to pick up small things here, like tenugui or Ise washi letter paper.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.48969,
+   136.70932
+  ]
+ },
+ {
+  "name": "他抜きだんらん亭",
+  "nameEn": "Tanuki Danrantei",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "lacquer",
+   "tableware"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治中之切町12",
+  "url": "https://okageyokocho.com/tenpo/danrantei/",
+  "what": "おかげ横丁にある器の専門店。三重県内を中心に全国の窯元や作家の陶器・漆器・ガラスを集め、年に15回の個展や企画展を開く。",
+  "whatEn": "A tableware shop in Okage Yokocho stocking ceramics, lacquerware and glass from Mie and kilns across Japan, with fifteen solo and themed shows a year.",
+  "note": "季節でガラスと土ものが入れ替わる。企画展の日なら新作も出る。",
+  "noteEn": "The shelves shift between glass and stoneware with the seasons; check if a show is on.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.46184,
+   136.72357
+  ]
+ },
+ {
+  "name": "御福餅本家",
+  "nameEn": "Ofukumochi Honke",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "mochi"
+  ],
+  "area": "二見",
+  "areaEn": "Futami",
+  "address": "伊勢市二見町茶屋197-1",
+  "url": "https://ofukumochi.com/",
+  "what": "二見浦で280年余続くあんころ餅の老舗。手作業であんを詰めたお福餅や、お福アイスマックを出し、甘味処もある。",
+  "whatEn": "An ankoromochi house in Futamiura with over 280 years of history. It shapes sweet bean paste onto mochi by hand, sells Ofuku Ice Mac bars, and has a tearoom.",
+  "note": "甘味処で食べるなら、定番のお福餅から。",
+  "noteEn": "If you sit in the tearoom, start with the classic Ofukumochi.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.50817,
+   136.78387
+  ]
+ },
+ {
+  "name": "なかむら珈琲",
+  "nameEn": "Nakamura Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "chocolate"
+  ],
+  "area": "河崎",
+  "areaEn": "Kawasaki",
+  "address": "伊勢市船江2-20-22",
+  "url": "https://nakamura-coffee.jp/",
+  "what": "河崎の隣、船江に焙煎所を構える自家焙煎コーヒー店。スペシャルティコーヒーの豆と、タンザニア産カカオ豆ときび砂糖だけで作るチョコレートを扱う。",
+  "whatEn": "A specialty coffee roaster in Funae, next to Kawasaki. Alongside house-roasted beans, they make chocolate from only Tanzanian cacao and cane sugar.",
+  "note": "日曜は休み。火曜は豆の販売だけ。",
+  "noteEn": "Closed Sundays; beans only on Tuesdays.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.49964,
+   136.71951
+  ]
+ },
+ {
+  "name": "PROUD COFFEE ROASTERY",
+  "nameEn": "PROUD COFFEE ROASTERY",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市一之木5-13-1",
+  "url": "https://www.proudcoffee-ise.com/",
+  "what": "一之木にある自家焙煎のコーヒー店。豆の卸や販売のほか、店内でコーヒーとケーキ、夏には桃パフェも出す。",
+  "whatEn": "A coffee roaster in Ichinoki, also supplying beans wholesale. In the shop they serve coffee with cake, and peach parfaits in summer.",
+  "note": "夏なら桃パフェ、ふだんはケーキとコーヒーを。",
+  "noteEn": "Peach parfaits in summer; cake and coffee the rest of the year.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.5015,
+   136.70741
+  ]
+ },
+ {
+  "name": "糀屋",
+  "nameEn": "Koujiya",
+  "category": "local",
+  "industry": "ise-brewing",
+  "tags": [
+   "tamari",
+   "miso"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市宮後1-10-39",
+  "url": "http://www.koujiya-ise.com/",
+  "what": "1816年創業の醤油と味噌の醸造元で、宮後1丁目に本社と直売店がある。伊勢うどんに使うたまり醤油や味噌のほか、米こうじや糀ぷりんを売る。",
+  "whatEn": "A soy sauce and miso brewery founded in 1816, with its shop in Miyajiri. Alongside tamari for Ise udon and miso, it sells rice koji and koji pudding.",
+  "note": "日祝は休み。甘酒の糀ドリンクはノンアルコール。",
+  "noteEn": "Closed Sundays and holidays. The koji amazake drink is non-alcoholic.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "三重県真珠",
+  "nameEn": "Mieken Pearl",
+  "category": "local",
+  "industry": "ise-pearl",
+  "tags": [
+   "pearl",
+   "jewelry"
+  ],
+  "area": "二見",
+  "areaEn": "Futami",
+  "address": "伊勢市二見町江681-16",
+  "url": "https://miekenpearl.jp/",
+  "what": "夫婦岩を望む二見町で70年以上続く真珠専門店。アコヤ真珠のジュエリーを扱い、貝から真珠を取り出す体験もできる。",
+  "whatEn": "A pearl shop in Futami looking out toward Meoto Iwa, open for over seventy years. It sells Akoya pearl jewellery and runs pearl-extraction sessions from live oysters.",
+  "note": "取り出した真珠は、その場でピアスなどに仕立ててもらえる。",
+  "noteEn": "A pearl you extract can be set into earrings or a pendant on the spot.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊勢 菊一",
+  "nameEn": "Ise Kikuichi",
+  "category": "local",
+  "industry": "ise-cutlery",
+  "tags": [
+   "cutlery",
+   "craft"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市本町18-18",
+  "url": "https://isekikuichi.com/",
+  "what": "外宮参道にある店。明治創業の打刃物店「菊一文字金近本店」を受け継ぎ、刃物のほかに地元の作家作品や参宮みやげも並べる。木曜定休。",
+  "whatEn": "A shop on Geku Sando descended from the Meiji-era Kikuichimonji Kanechika blade store. Alongside cutlery, it stocks work by local makers and shrine-town souvenirs. Closed Thursdays.",
+  "note": "木曜は休み。包丁だけでなく、外宮参りの小さな土産もある。",
+  "noteEn": "Closed Thursdays. Alongside knives, there are small souvenirs for Geku.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊勢焼陶芸体験工房",
+  "nameEn": "Iseyaki Pottery Studio",
+  "category": "craft",
+  "tags": [
+   "ceramics"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治浦田1-22-36",
+  "url": "https://iseyaki.com/",
+  "what": "おかげ横丁から歩いて7分ほどの陶芸工房。ギャラリーがあり、電動ろくろや手びねり、絵付けの体験ができる。予約優先で不定休。",
+  "whatEn": "A pottery studio and gallery about seven minutes on foot from Okage Yokocho, offering wheel-throwing, hand-building and painting sessions. Reservations preferred; irregular holidays.",
+  "note": "不定休で予約優先。電動ろくろは焼き上がりまで半年ほどかかる。",
+  "noteEn": "Irregular holidays, reservations preferred. Wheel-thrown pieces take about six months to fire.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "YAMADA",
+  "nameEn": "YAMADA",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "lacquer"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市岩渕1-16-11",
+  "url": "https://ise-yamada.com/",
+  "what": "1912年に伊勢春慶の製造販売から始まった、岩渕の器とギフトの店。今は和食器や北欧の食器、生活雑貨を幅広く並べる。",
+  "whatEn": "A tableware and gift shop in Iwabuchi founded in 1912 as a maker and seller of Ise Shunkei lacquerware. Today it stocks Japanese and Nordic tableware alongside home goods.",
+  "note": "宇治山田駅の近く。伊勢春慶の老舗が始めた器の店。",
+  "noteEn": "Near Ujiyamada Station; a tableware shop started by an old Ise Shunkei house.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "吉兆招福亭",
+  "nameEn": "Kiccho Shofukutei",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "folk-craft"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治中之切町52",
+  "url": "https://okageyokocho.com/works/20260625-2/",
+  "what": "1993年からおかげ横丁にある招き猫の専門店で、2026年7月に通りの中ほどへ移り広くなった。瀬戸焼や常滑焼、九谷焼など1,500点以上の招き猫と郷土玩具が並ぶ。",
+  "whatEn": "A maneki-neko shop in Okage Yokocho since 1993, moved to a larger space on the main street in July 2026. Over 1,500 ceramic lucky cats and folk toys from Seto, Tokoname and Kutani.",
+  "note": "旧店舗の「縁日処」では、時期ごとの小さな展示も開かれる。",
+  "noteEn": "Their old shop, now Ennichi-dokoro, holds changing pop-up shows.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊勢河崎商人館",
+  "nameEn": "Ise Kawasaki Shoninkan",
+  "category": "craft",
+  "tags": [
+   "craft",
+   "ceramics",
+   "wood"
+  ],
+  "area": "河崎",
+  "areaEn": "Kawasaki",
+  "address": "伊勢市河崎2-25-32",
+  "url": "http://www.isekawasaki.jp/",
+  "what": "勢田川沿いに残る江戸中期の酒問屋「小川酒店」を再生した、河崎の歴史文化交流施設。国の登録有形文化財の蔵7棟と町家2棟があり、商人蔵では手づくり作品の展示や販売を行う。",
+  "whatEn": "A local history and culture centre in a restored Edo-period liquor wholesaler along the Seta River. Seven storehouses and two townhouses are registered cultural properties, with craft displays and sales in the Shonin-gura.",
+  "note": "蔵のなかの「商人蔵」は月替わりの展示もある。",
+  "noteEn": "The Shonin-gura storehouse inside has monthly craft displays.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "藤屋窓月堂",
+  "nameEn": "Fujiya Sogetsudo",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市宇治中之切町46-1",
+  "url": "https://fujiyasogetsudo.com/",
+  "what": "1868年創業の和菓子店で、おはらい町に本店がある。銘菓「常若」や利休饅頭、塩豆大福などを作る。",
+  "whatEn": "A wagashi house founded in 1868 with its main shop on Oharai-machi, making Tokowaka sweets, Rikyu manju and salted-bean daifuku.",
+  "note": "11月と12月の土日は安納芋の利休饅頭も出る。",
+  "noteEn": "On weekends in November and December they also make Anno sweet-potato Rikyu manju.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "パティスリー・ラ・リシュテール",
+  "nameEn": "Patisserie La Riche-Terre",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "sweets"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市旭町193-1",
+  "url": "https://la-riche-terre.jp/",
+  "what": "旭町にある洋菓子店。不要な添加物を使わず、伊勢の食材を生かしたケーキや焼き菓子を作る。志摩産のあおさを使った伊勢ラスクもある。",
+  "whatEn": "A patisserie in Asahicho making cakes and baked sweets with local Ise ingredients and no unnecessary additives, including Ise rusks with Shima aosa seaweed.",
+  "note": "焼き菓子の「伊勢ラスク」は日持ちするので土産にもいい。",
+  "noteEn": "The Ise rusks keep well if you are buying a box to carry.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ドゥース・ド・フランス",
+  "nameEn": "Douce de France",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "sweets"
+  ],
+  "area": "河崎",
+  "areaEn": "Kawasaki",
+  "address": "伊勢市御薗町長屋691",
+  "url": "https://www.france-sweets.com/",
+  "what": "御薗町長屋にある洋菓子店。生菓子や焼き菓子を揃え、伊勢志摩サミットで提供された「伊勢志摩テリーヌ」を開発した店。水曜定休。",
+  "whatEn": "A patisserie in Misono-cho Nagaya selling fresh cakes and baked sweets, and the maker of the Ise-Shima Terrine served at the G7 Summit. Closed Wednesdays.",
+  "note": "水曜は休み。日曜と祝日は18時半で閉まる。",
+  "noteEn": "Closed Wednesdays; closes at 6:30 pm on Sundays and holidays.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "カミノコーヒー",
+  "nameEn": "Camino Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市吹上1-4-13",
+  "url": "https://ameblo.jp/yukakokassan/entrylist.html",
+  "what": "吹上1丁目にある自家焙煎のコーヒー専門店。季節ごとの豆を店内で焙煎して売っている。",
+  "whatEn": "A home-roasting coffee shop in Fukiage 1-chome, roasting and selling seasonal beans in-house.",
+  "note": "その時々の豆の様子は店のブログに出ている。",
+  "noteEn": "Their blog notes which beans have just been roasted.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "松孫喫茶店",
+  "nameEn": "Matsumago Kissaten",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "宮川・山田上口",
+  "areaEn": "Miyagawa",
+  "address": "伊勢市宮川1-6-25",
+  "url": "https://matsumago.com/",
+  "what": "宮川の古民家を使った静かな喫茶店。季節の生け花が飾られ、木・金・土曜の10時から17時まで開く。",
+  "whatEn": "A quiet kissaten in an old timber house in Miyagawa with seasonal ikebana, open Thursday to Saturday from 10 am to 5 pm.",
+  "note": "開くのは木・金・土だけ。ラストオーダーは16時。",
+  "noteEn": "Open only Thursday to Saturday; last order is 4 pm.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Antiques & Cafe Gallery Miko-Nonno",
+  "nameEn": "Antiques & Cafe Gallery Miko-Nonno",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "antiques"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市宮後1-2-20",
+  "url": "https://miko-nonno.com/",
+  "what": "伊勢市駅前の、もと洋服店だった建物にあるアンティークギャラリー兼カフェ。スージークーパーなどの古陶磁を眺めながら自家焙煎の珈琲が飲める。",
+  "whatEn": "An antique gallery and café in a former tailor's near Ise-shi Station, serving house-roasted coffee amid Susie Cooper and other vintage wares.",
+  "note": "店が開くのは、原則として金・土・日と祝日だけ。",
+  "noteEn": "Usually open only on Fridays, weekends and public holidays.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊勢うどんのまめや",
+  "nameEn": "Ise Udon Mameya",
+  "category": "food",
+  "tags": [
+   "ise udon",
+   "noodles"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市宮後2-19-11",
+  "url": "https://mameya.info/",
+  "what": "1923年創業の伊勢うどんの店。三重県産小麦「あやひかり」の自家製麺に、宗田節やムロアジとたまり醤油のつゆを合わせる。",
+  "whatEn": "An Ise udon house since 1923. House-made noodles from Mie wheat are served with a dark sauce of bonito, mackerel scad and local tamari.",
+  "note": "太くて柔らかい自家製麺に、濃いつゆを絡めて食べる。",
+  "noteEn": "Toss the thick, soft noodles well in the dark sauce.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "つきよみ食堂",
+  "nameEn": "Tsukiyomi Shokudo",
+  "category": "food",
+  "tags": [
+   "ise udon",
+   "noodles"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市中村町831",
+  "url": "http://tsukiyomi.biz/dining/",
+  "what": "夫婦で営む、手打ち伊勢うどんとかつ丼の食堂。朝5時から麺を打ち、昼の11時から14時まで開ける。",
+  "whatEn": "A diner run by a husband and wife, known for hand-cut Ise udon and katsudon. They knead dough from 5 am and open for lunch from 11 am to 2 pm.",
+  "note": "昼だけの営業で、ラストオーダーは13時半。",
+  "noteEn": "Lunch only; last order is 1:30 pm.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "フランス料理 ボンヴィヴァン",
+  "nameEn": "French Restaurant Bon Vivant",
+  "category": "food",
+  "tags": [
+   "french"
+  ],
+  "area": "外宮周辺",
+  "areaEn": "Geku",
+  "address": "伊勢市本町20-24",
+  "url": "https://bonvivant1983.com/",
+  "what": "外宮の近くにあるフランス料理店。伊勢志摩の魚介や松阪牛、地野菜を、伊賀焼や萬古焼の器で出す。",
+  "whatEn": "A French restaurant near Geku serving Ise-Shima seafood, Matsusaka beef and local vegetables on Iga and Banko ceramics.",
+  "note": "コースの料理だけでなく、載っている伊賀や萬古の器も見どころ。",
+  "noteEn": "Notice the Iga and Banko plates the courses arrive on.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "カンパーニュ",
+  "nameEn": "Campagne",
+  "category": "food",
+  "tags": [
+   "french",
+   "cake"
+  ],
+  "area": "内宮周辺",
+  "areaEn": "Naiku",
+  "address": "伊勢市勢田町115-3",
+  "url": "https://campagne-ise.co.jp/",
+  "what": "勢田町で30年続くフランス料理店。伊勢志摩や東紀州の食材を使った要予約のコース料理と、11時からのテイクアウト菓子がある。月・火曜定休。",
+  "whatEn": "A French restaurant in Setacho open for thirty years, serving reservation-only courses of Ise-Shima and Higashi-Kishu produce, plus takeaway cakes from 11 am. Closed Mondays and Tuesdays.",
+  "note": "食事は要予約。11時からの持ち帰りの菓子だけも買える。",
+  "noteEn": "Dining requires a booking; takeaway cakes can be bought from 11 am.",
+  "verifiedAt": "2026-11-12"
+ }
+]

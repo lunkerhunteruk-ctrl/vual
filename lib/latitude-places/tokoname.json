@@ -1,0 +1,399 @@
+[
+ {
+  "name": "にわのパン",
+  "nameEn": "Niwa no Pan",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "eggs"
+  ],
+  "area": "大谷・小鈴谷",
+  "areaEn": "Otani & Kosugaya",
+  "address": "250-1 Ashihazama, Otani, Tokoname",
+  "url": "https://www.coco-terrace.com/niwanopan/",
+  "what": "大谷のたまご農家が営むパン屋。地元産の小麦粉や常滑牛乳を使い、2階のイートインからは伊勢湾が見える。木曜は休み、売り切れ次第閉店。",
+  "whatEn": "A bakery run by a poultry farm in Otani, baking with local wheat and Tokoname milk; the upstairs eat-in looks out over Ise Bay. Closed Thursdays, and closes when sold out.",
+  "note": "塩パンとクリームパンを持って、二階の海側の席へ。",
+  "noteEn": "Take a salted roll and a cream bun up to the sea-facing seats.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.84619,
+   136.86671
+  ]
+ },
+ {
+  "name": "NOISETTE",
+  "nameEn": "NOISETTE",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "cafe"
+  ],
+  "area": "大谷・小鈴谷",
+  "areaEn": "Otani & Kosugaya",
+  "address": "2-5 Kobacho, Tokoname",
+  "url": "https://www.noisette-bakery.com/",
+  "what": "スイスのパン職人の家系を受け継ぎ、2022年に常滑へ移ったベーカリーカフェ。りんごから起こした自家製酵母で低温長時間発酵のパンを焼く。",
+  "whatEn": "A Swiss boulangerie and café that moved to Tokoname in 2022, carrying on a family baking line with slow, cold-fermented loaves from an apple starter.",
+  "note": "素朴なライ麦パンと、スイスのキャロットケーキを選ぶ。",
+  "noteEn": "A plain rye loaf and a slice of Swiss carrot cake.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.86024,
+   136.85953
+  ]
+ },
+ {
+  "name": "バー＆ビストロ 共栄窯",
+  "nameEn": "Bar & Bistro Kyoeigama",
+  "category": "food",
+  "tags": [
+   "bistro",
+   "bar"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "2-88 Hokujo, Tokoname",
+  "url": "https://bar-kyoueigama.com/",
+  "what": "北条の、明治から昭和にかけて土管を焼いていた窯を改装したバー＆ビストロ。昼はランチコース、夜はアラカルトやカクテルを出す。",
+  "whatEn": "A bar and bistro in Hokujo inside a brick kiln that fired ceramic pipes from the Meiji to Showa eras, serving lunch courses and evening plates with cocktails.",
+  "note": "昼のコースより、夜に窯のれんがの下で一杯飲みたい。",
+  "noteEn": "Rather than lunch, a quiet drink under the kiln brick at night.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.89206,
+   136.83569
+  ]
+ },
+ {
+  "name": "珈琲工房 しいの木",
+  "nameEn": "Shiinoki Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "roaster"
+  ],
+  "area": "大野町・金山",
+  "areaEn": "Onomachi & Kanayama",
+  "address": "25-1 Shobuike, Kanayama, Tokoname",
+  "url": "https://www.shiinoki-coffee.com/",
+  "what": "金山にある自家焙煎の珈琲工房。常滑焼の陶片を焙煎機に使い、遠赤外線で豆を焼く。13時から18時、水・木曜は休み。",
+  "whatEn": "A coffee roaster in Kanayama that roasts beans with far-infrared heat from crushed Tokoname ware shards. Open 13:00 to 18:00; closed Wednesdays and Thursdays.",
+  "note": "常滑焼で焼いた豆を、家で淹れる用に一袋。",
+  "noteEn": "A bag of beans roasted with Tokoname shards, to brew at home.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.92458,
+   136.84506
+  ]
+ },
+ {
+  "name": "急須と器 いそべ",
+  "nameEn": "Kyusu to Utsuwa Isobe",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "kyusu",
+   "tea"
+  ],
+  "area": "大野町・金山",
+  "areaEn": "Onomachi & Kanayama",
+  "address": "100 Kamisunahara, Kanayama, Tokoname",
+  "url": "https://isobe-shoten.com/",
+  "what": "1964年創業の急須問屋・磯部商店がセラモールに開く急須と器の店。量産品から若手・熟練作家の手作り急須まで揃う。9時から17時。",
+  "whatEn": "A teapot and vessel shop in Ceramall run by wholesaler Isobe Shoten, founded in 1964, stocking everyday and handmade Tokoname kyusu. Open 9:00 to 17:00.",
+  "note": "無釉の朱泥急須を手に取って、茶こしの目を見たい。",
+  "noteEn": "Pick up an unglazed shudei kyusu and check the clay strainer inside.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.91203,
+   136.84263
+  ]
+ },
+ {
+  "name": "グラスワークス・楽",
+  "nameEn": "Glassworks Luck",
+  "category": "craft",
+  "tags": [
+   "glass",
+   "tableware"
+  ],
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "3-128 Sakaemachi, Tokoname",
+  "url": "http://www.glassworks-luck.com/",
+  "what": "やきもの散歩道にある吹きガラス工房と店。グラスや酒器、花器を手作りし、吹きガラス体験（予約制）も行う。10時から17時。",
+  "whatEn": "A blown-glass studio and shop on the Pottery Footpath making drinking glasses, sake vessels and vases, with glassblowing sessions by booking. Open 10:00 to 17:00.",
+  "note": "焼き物の道の途中で、涼しげなぐい呑みをひとつ見る。",
+  "noteEn": "Stop along the pottery path to look at a single glass sake cup.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.88835,
+   136.84092
+  ]
+ },
+ {
+  "name": "陶房杉",
+  "nameEn": "Tohbohsugi",
+  "category": "local",
+  "industry": "tokoname-ware",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "1-20 Segicho, Tokoname",
+  "url": "http://www.tohbohsugi.co.jp/",
+  "what": "明治25年（1892年）創業、瀬木町で四代続く常滑焼の窯元。常滑の土の素朴さを残した現代の食卓向けの器や花器を作る。",
+  "whatEn": "A fourth-generation Tokoname kiln in Segicho founded in 1892, making modern tableware and vases that keep the raw feel of local clay.",
+  "note": "土のざらりとした手触りが残る皿を、一枚選びたい。",
+  "noteEn": "Choose a single plate that still keeps the grain of the clay.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.88641,
+   136.84418
+  ]
+ },
+ {
+  "name": "BAGEL CAFE SORARIN",
+  "nameEn": "BAGEL CAFE SORARIN",
+  "category": "sweets",
+  "tags": [
+   "bagels",
+   "cafe"
+  ],
+  "area": "大野町・金山",
+  "areaEn": "Onomachi & Kanayama",
+  "address": "1-3-10 Asukadai, Tokoname",
+  "url": "https://sorarin-bagel.jp/",
+  "what": "飛香台のベーグル専門店とカフェ。北海道産小麦「春よ恋」と自家製天然酵母で無添加のベーグルを焼き、自家菜園の野菜を使ったランチも出す。11時から15時、月・金曜は休み。",
+  "whatEn": "A bagel shop and café in Asukadai baking additive-free bagels with Hokkaido Haruyokoi wheat and house natural yeast, plus lunches with garden vegetables. Open 11:00 to 15:00; closed Mondays and Fridays.",
+  "note": "甘いのと惣菜系をひとつずつ、翌朝用に買う。",
+  "noteEn": "One sweet bagel and one savoury, saved for the next morning.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "カレット洋菓子店 常滑店",
+  "nameEn": "Carette Tokoname",
+  "category": "sweets",
+  "tags": [
+   "sweets",
+   "gelato",
+   "cafe"
+  ],
+  "area": "大野町・金山",
+  "areaEn": "Onomachi & Kanayama",
+  "address": "46-1 Gaidoguchi, Yata, Tokoname",
+  "url": "https://www.carette.co.jp/",
+  "what": "1936年創業の知多半島の洋菓子店。看板のブッセや季節のケーキのほか、カフェでは知多半島の食材を使ったクラフトジェラートやパフェを出す。",
+  "whatEn": "A Chita Peninsula patisserie founded in 1936. Alongside its signature bouchées and seasonal cakes, the café serves parfaits and craft gelato made with peninsula ingredients.",
+  "note": "ブッセと、知多半島の食材を使ったジェラートを。",
+  "noteEn": "A butter-cream bouchée, and gelato made from Chita ingredients.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "パン工房ヴィエノワ",
+  "nameEn": "Pan Kobo Viennois",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "pastry"
+  ],
+  "area": "榎戸・虹の丘",
+  "areaEn": "Enokido & Nijigaoka",
+  "address": "3-103 Nijigaoka, Tokoname",
+  "url": "https://viennois479.com/",
+  "what": "虹の丘のパン屋。職人歴30年以上の店主が、ヴィエノワズリーやハード系など毎日約80種類のパンと焼き菓子を焼く。8時から18時、月・火曜は休み。",
+  "whatEn": "A bakery in Nijigaoka where a baker of over thirty years turns out around eighty kinds of viennoiserie, crusty loaves and baked sweets daily. Open 8:00 to 18:00; closed Mondays and Tuesdays.",
+  "note": "朝いちばんに、焼きたてのクロワッサンとハード系を。",
+  "noteEn": "First thing in the morning for warm croissants and crusty loaves.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "地魚料理・うなぎ 丸一",
+  "nameEn": "Maruichi",
+  "category": "food",
+  "tags": [
+   "unagi",
+   "washoku"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "5-95 Haramatsucho, Tokoname",
+  "url": "https://tokonamemaruichi.jp/",
+  "what": "原松町の地魚料理・知多牛・うなぎの店。売り切れ次第閉店、火曜は休みで夜は2日前までの完全予約制。隣に紙雑貨の「プチギャラリー丸小屋」がある。",
+  "whatEn": "A restaurant in Haramatsucho for local fish, Chita beef and grilled eel; closes when sold out, closed Tuesdays, and dinner requires booking two days ahead. A tiny paper-goods gallery sits next door.",
+  "note": "うなぎを待ってから、隣の丸小屋で和紙の雑貨も見る。",
+  "noteEn": "Wait for the eel, then look at the washi paper goods next door.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "炭焼 政",
+  "nameEn": "Sumiyaki Masa",
+  "category": "food",
+  "tags": [
+   "charcoal-grill",
+   "washoku"
+  ],
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "2-128-1 Togoucho, Tokoname",
+  "url": "https://sumiyakimasa.com/",
+  "what": "やきもの散歩道沿いに2025年3月に開いた炭火焼の店。銀ムツや鶏ももなどを備長炭で焼き、常滑焼の作家の器に盛る。月曜は休み、カード不可。",
+  "whatEn": "A charcoal-grill restaurant opened on the Pottery Footpath in March 2025, grilling fish and chicken over Binchotan and plating on local Tokoname ware. Closed Mondays; cash only.",
+  "note": "炭火の定食を、常滑焼の作家の器ごと味わいたい。",
+  "noteEn": "Enjoy the charcoal-grilled set meal together with the potter's plates.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "カフェベレクー",
+  "nameEn": "Café Bellecour",
+  "category": "food",
+  "tags": [
+   "french",
+   "cafe"
+  ],
+  "area": "大野町・金山",
+  "areaEn": "Onomachi & Kanayama",
+  "address": "4-189 Oguracho, Tokoname",
+  "url": "https://cafebellecour.jp/",
+  "what": "小倉町にある、フランス・リヨン出身のシェフのカフェレストラン。朝8時からのモーニングやランチがあり、月・火曜は休み（ディナーは金・土曜のみ）。",
+  "whatEn": "A French café-bistro in Oguracho run by a chef from Lyon, serving morning plates from 8:00 and lunch; closed Mondays and Tuesdays (dinner on Fridays and Saturdays only).",
+  "note": "朝の時間に座って、リヨン風のモーニングをゆっくり。",
+  "noteEn": "Sit down in the morning for a slow Lyonnaise breakfast.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Organic Laundry & Cafe yuragi 1/f",
+  "nameEn": "Organic Laundry & Cafe yuragi 1/f",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "tea",
+   "cafe"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "2-10 Segicho, Tokoname",
+  "url": "https://yuragifbunno1.com/",
+  "what": "瀬木町のコインランドリー併設カフェ。常滑焼の急須で淹れるスペシャルティコーヒーや有機日本茶、無添加の焼き菓子を出す。8時から17時、木曜休み、現金のみ。",
+  "whatEn": "A café attached to an organic laundry in Segicho, serving specialty coffee and organic Japanese tea brewed in Tokoname kyusu alongside additive-free bakes. Open 8:00 to 17:00; closed Thursdays; cash only.",
+  "note": "常滑焼の急須で淹れたお茶と、無添加の焼き菓子で一息。",
+  "noteEn": "A quiet break with tea poured from a Tokoname kyusu and a plain bake.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "NoBlendCoffee",
+  "nameEn": "NoBlendCoffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "roaster"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "5-53 Koiehonmachi, Tokoname",
+  "url": "https://www.noblendcoffee.com/",
+  "what": "鯉江本町のスペシャルティコーヒー豆専門店。他の産地の豆を混ぜないシングルオリジンの豆を扱う。営業は平日の10時から18時（土・日・祝は休み）。",
+  "whatEn": "A specialty coffee bean shop in Koiehonmachi roasting strictly unblended single-origin lots. Open weekdays 10:00 to 18:00 (closed Saturdays, Sundays and public holidays).",
+  "note": "平日に寄って、エチオピアのシングルオリジンを選ぶ。",
+  "noteEn": "Stop by on a weekday to pick a single-origin Ethiopian lot.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "カフェ麦",
+  "nameEn": "Cafe Baku",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets",
+   "cafe"
+  ],
+  "area": "大谷・小鈴谷",
+  "areaEn": "Otani & Kosugaya",
+  "address": "3-138-1 Tarumizucho, Tokoname",
+  "url": "https://www.instagram.com/cafebaku2026/",
+  "what": "樽水町の高台にある、常滑の景色を見渡すカフェ。2026年4月にリニューアルし、カウンター席でコーヒーやクリームソーダ、手作りのチーズケーキを出している。",
+  "whatEn": "A hilltop café in Tarumizucho looking out over Tokoname, renewed in April 2026, serving coffee, cream soda and homemade cheesecake at window counter seats.",
+  "note": "景色が見えるカウンターに座って、チーズケーキを頼む。",
+  "noteEn": "Take a counter seat facing the view and order the cheesecake.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "HOUSE OF 12",
+  "nameEn": "HOUSE OF 12",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "gallery",
+   "craft"
+  ],
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "6-20-1 Sakaemachi, Tokoname",
+  "url": "https://www.house-of-12.com/house-of-12",
+  "what": "やきもの散歩道にある、手塚建築研究所の設計によるギャラリー。常滑の作家の器を中心に、ガラスや木工、布の作品を展示・販売する。金〜月曜の10時から16時。",
+  "whatEn": "A gallery on the Pottery Footpath in a building by Tezuka Architects, showing and selling Tokoname ceramics alongside glass, woodwork and textiles. Open Friday to Monday, 10:00 to 16:00.",
+  "note": "常滑の作家の器と建物のつくりを、静かに見比べたい。",
+  "noteEn": "Compare the Tokoname potters' vessels against the quiet building.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "にざまつ 散歩道店",
+  "nameEn": "Nizamatsu Sampomichi",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "wagashi",
+   "cafe"
+  ],
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "5-67 Haramatsucho, Tokoname",
+  "url": "https://www.tokoname-niza.jp/",
+  "what": "やきもの散歩道入口の、窯元が営む器と草もちの店。手作りの常滑焼や山ぶどうのつるかご、アンティーク雑貨が並び、草もちの喫茶もある。8時半から16時、無休。",
+  "whatEn": "A kiln-run pottery and mugwort mochi shop at the Pottery Footpath entrance, selling handmade Tokoname ware, wild-grapevine baskets and antiques, with a café for kusamochi. Open 8:30 to 16:00 daily.",
+  "note": "草もちと珈琲で一息ついてから、山ぶどうのかごを見る。",
+  "noteEn": "Pause over mugwort mochi and coffee, then look at the grapevine baskets.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "角山陶苑",
+  "nameEn": "Kakuzan Toen",
+  "category": "local",
+  "industry": "tokoname-ware",
+  "tags": [
+   "ceramics",
+   "workshop"
+  ],
+  "area": "やきもの散歩道",
+  "areaEn": "Pottery Footpath",
+  "address": "3-116 Sakaemachi, Tokoname",
+  "url": "https://kakuzantoen.com/",
+  "what": "やきもの散歩道で100年続く窯元。1900年ごろに前身が創業し、昔の工房を改装した建物で、職人の指導のもと電動ろくろ体験ができる。9時から16時。",
+  "whatEn": "A century-old kiln on the Pottery Footpath whose forerunner dates to around 1900; in its converted old workshop, craftsmen guide visitors on electric potter's wheels. Open 9:00 to 16:00.",
+  "note": "古い工房の空気のなかで、電動ろくろを一度回してみたい。",
+  "noteEn": "Try throwing on an electric wheel inside the old workshop.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "前川製陶所",
+  "nameEn": "Maekawa Seitosho",
+  "category": "local",
+  "industry": "tokoname-ware",
+  "tags": [
+   "ceramics",
+   "kyusu"
+  ],
+  "area": "鯉江・北条",
+  "areaEn": "Koie & Hokujo",
+  "address": "4-64 Hokujo, Tokoname",
+  "url": "https://maekawa-seito.com/",
+  "what": "大正初期に北条に築かれた窯元「賢山窯」。常滑市指定無形文化財の大物ヨリコ造りを受け継ぎ、四代・前川淳蔵が食器や急須を手がける。",
+  "whatEn": "The Taisho-era kiln Kenzan-gama in Hokujo, preserving Tokoname's large coil-built yoriko-zukuri method while fourth-generation potter Junzo Maekawa crafts tableware and kyusu.",
+  "note": "大物づくりの窯元で、四代目の繊細な急須を見てみたい。",
+  "noteEn": "At a kiln known for giant jars, see the fourth generation's fine kyusu.",
+  "verifiedAt": "2026-11-13"
+ }
+]

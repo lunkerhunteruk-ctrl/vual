@@ -1,0 +1,591 @@
+{
+ "slug": "chichibu",
+ "city": {
+  "name": "Chichibu",
+  "nameJa": "秩父",
+  "latitude": "36.0° N",
+  "country": "Saitama, Japan",
+  "countryJa": "埼玉県",
+  "person": "rin",
+  "coords": [
+   35.99758,
+   139.08424
+  ],
+  "intro": "A basin town in the Okuchichibu mountains, west of the Kanto plain. Chichibu Meisen silk, indigo dyers and an Edo-period sake brewer, with bakeries, coffee and soba around Banba-dori and Ohanabatake, as Rin's picks.",
+  "introJa": "関東平野の西、奥秩父の山に囲まれた盆地の町。秩父銘仙と藍染、江戸時代からの酒蔵、それに番場通りと御花畑のパンと珈琲、手打そばを、凛のおすすめで。",
+  "locator": {
+   "en": "In western Saitama · a basin in the Okuchichibu mountains",
+   "ja": "埼玉県西部・奥秩父の山に囲まれた盆地の町"
+  },
+  "industries": [
+   {
+    "key": "chichibu-meisen",
+    "en": "Chichibu Meisen Silk",
+    "ja": "秩父銘仙",
+    "about": "Chichibu Meisen is a silk textile known in the Taisho and early Showa eras for its vivid hogushi-nassen warp-printed patterns, and is a nationally designated traditional craft. At Chichibu Meisenkan, housed in a 1930 former prefectural textile testing hall, tools and kimono are on display.",
+    "aboutJa": "秩父銘仙は、大正から昭和初期にかけて親しまれた絹織物で、ほぐし捺染による鮮やかな柄が特徴の国の伝統的工芸品。1930年築の旧工業試験場を使ったちちぶ銘仙館では、資料や着物を展示している。",
+    "_src": "A nationally designated traditional silk craft famous in the Taisho and early Showa eras for its vivid hogushi-nassen warp-printed patterns."
+   },
+   {
+    "key": "chichibu-indigo",
+    "en": "Chichibu Indigo & Traditional Dyeing",
+    "ja": "秩父の藍染・伝統染物",
+    "about": "Dyers in Chichibu have used underground water from Mount Buko since the Meiji era to dye cotton hanten coats, noren curtains and tenugui. Founded in 1873, Saito Somemono still dyes indigo by hand.",
+    "aboutJa": "秩父の染物屋は、明治時代から武甲山の伏流水を使って、藍染の袢天や暖簾、手ぬぐいを染めてきた。1873年創業の齋藤染物店では、いまも藍染の手仕事を続けている。",
+    "_src": "Artisan dye houses in Chichibu have used Mount Buko's mineral-rich underground spring water since the Meiji era to dye indigo hanten coats, noren curtains, and festival textiles."
+   },
+   {
+    "key": "chichibu-brewing",
+    "en": "Chichibu Sake & Fermentation",
+    "ja": "秩父の酒造・発酵醸造",
+    "about": "Fed by underground water from Mount Buko and the sharp temperature swings of the basin, Chichibu's breweries have made sake here since the Edo period. Buko Shuzo, founded in 1753, still brews with Mount Buko well water.",
+    "aboutJa": "武甲山の伏流水と盆地の寒暖差に恵まれ、秩父では江戸時代から酒造りが続いてきた。1753年創業の武甲酒造は、いまも武甲山の伏流水で酒を仕込む。",
+    "_src": "Fed by Mount Buko's hard underground limestone water and sharp basin temperature swings, Chichibu's breweries have crafted local sake and fermented foods since the Edo period."
+   }
+  ]
+ },
+ "places": {
+  "ちちぶ銘仙館": {
+   "nameEn": "Chichibu Meisenkan",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "textile"
+   ],
+   "what": "1930年築の旧埼玉県秩父工業試験場（登録有形文化財）を使った秩父銘仙の展示・体験施設。ほぐし捺染の資料や着物を展示し、型染めや手織りの体験もできる。",
+   "whatEn": "A Chichibu Meisen silk museum and workshop in a 1930 former prefectural textile testing hall, a Registered Tangible Cultural Property. Displays hogushi-nassen warp-printing tools and kimono, with stencil-dyeing and weaving workshops.",
+   "note": "染めや織りの体験をするなら予約して行く。",
+   "noteEn": "Book ahead if you want to try dyeing or weaving.",
+   "_src": {
+    "category": "local",
+    "industry": "chichibu-meisen",
+    "nameKana": "ちちぶめいせんかん",
+    "address": "埼玉県秩父市熊木町28-1",
+    "url": "https://www.meisenkan.com/",
+    "whatJa": "1930年築の旧埼玉県秩父工業試験場を活用した、秩父銘仙の展示・染め織り体験施設。",
+    "whatEn": "A working Chichibu Meisen silk museum and dyeing-and-weaving workshop housed in a 1930 former prefectural textile testing hall.",
+    "facts": "Main building dates to 1930 and is a Registered Tangible Cultural Property; visitors can try stencil-dyeing (katazome) and handloom weaving; displays hogushi-nassen warp-printing equipment and early-Showa silk kimono.",
+    "weak": "",
+    "verifiedBy": "https://www.meisenkan.com/",
+    "quote": "秋の銘仙館まつりを開催します。日時：10月24日(土)25日（日）",
+    "fixes": "",
+    "coords": [
+     35.99049,
+     139.08777
+    ]
+   }
+  },
+  "齋藤染物店": {
+   "nameEn": "Saito Somemono",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "textile",
+    "indigo"
+   ],
+   "what": "1873年（明治6年）創業、5代目が営む藍染の染物店。武甲山の伏流水を使い、藍染の袢天や暖簾、手ぬぐいや小物を仕立てる。",
+   "whatEn": "A fifth-generation indigo-dyeing workshop founded in 1873, using Mount Buko underground water to dye hanten coats, noren curtains, tenugui and small goods.",
+   "note": "袢天や暖簾は注文仕立て。小物も置いてある。",
+   "noteEn": "Hanten and noren are made to order; small goods are on the shelf.",
+   "_src": {
+    "category": "local",
+    "industry": "chichibu-indigo",
+    "nameKana": "さいとうそめものてん",
+    "address": "埼玉県秩父市熊木町44-22",
+    "url": "https://www.saito-somemono.com/",
+    "whatJa": "1873年（明治6年）創業、武甲山伏流水を用いた藍染・引染で袢天や暖簾、手ぬぐいを仕立てる老舗染物店。",
+    "whatEn": "A fourth-generation indigo and pull-dyeing workshop founded in 1873 making custom hanten coats, noren curtains, and tenugui towels.",
+    "facts": "Founded in Meiji 6 (1873) and operating for over 150 years; washes and dyes cotton textiles with Mount Buko underground spring water; crafts indigo hanten festival coats, noren, tenugui, and small indigo goods under the Chichibu Konshichi name.",
+    "weak": "",
+    "verifiedBy": "https://www.saito-somemono.com/",
+    "quote": "５月１７日（日）小鹿野町にあるおがの化石館で開催されるイベントに出店します",
+    "fixes": "whatEn: A fifth-generation indigo-dyeing workshop founded in 1873 making made-to-order hanten coats, noren curtains and indigo goods. whatJa: 1873年（明治6年）創業、武甲山の伏流水を求めて現在地に開業し、5代目が藍染袢天や暖簾、小物を手がける染物店。住所一致。公式会社概要 https://www.saito-somemono.com/company/ は「私で5代目」と明記。",
+    "coords": [
+     35.99212,
+     139.09106
+    ]
+   }
+  },
+  "武甲酒造": {
+   "nameEn": "Buko Shuzo",
+   "area": "宮側町",
+   "areaEn": "Miyakawa-cho",
+   "tags": [
+    "sake"
+   ],
+   "what": "1753年（宝暦3年）創業、「武甲正宗」の酒蔵。登録有形文化財の店舗で直売し、武甲山の伏流水で仕込む。店内に非対面式の利き酒機がある。",
+   "whatEn": "A sake brewery founded in 1753, selling Buko Masamune at its Registered Tangible Cultural Property storefront. Brews with Mount Buko underground water; there is a self-serve tasting machine inside.",
+   "note": "店内の利き酒機で少しずつ試せる。",
+   "noteEn": "You can sample small pours at the tasting machine inside.",
+   "_src": {
+    "category": "local",
+    "industry": "chichibu-brewing",
+    "nameKana": "ぶこうしゅぞう",
+    "address": "埼玉県秩父市宮側町21-27",
+    "url": "https://www.bukou.co.jp/",
+    "whatJa": "1753年（宝暦3年）創業、登録有形文化財の店舗で銘酒「武甲正宗」を直売する老舗酒蔵。",
+    "whatEn": "An Edo-period sake brewery founded in 1753 selling Buko Masamune straight from an 18th-century wooden storefront.",
+    "facts": "Founded in 1753 (Horeki 3); its wooden storefront is over 200 years old and a Registered Tangible Cultural Property; brews with Mount Buko underground well water (selected among Japan's Heisei 100 Famous Waters) that flows into the courtyard.",
+    "weak": "",
+    "verifiedBy": "https://bukou.raku-uru.jp/item-detail/406604",
+    "quote": "販売期間\n2026/09/01～2026/11/20",
+    "fixes": "whatEn: A sake brewery founded in 1753 selling Buko Masamune from a Registered Tangible Cultural Property storefront. whatJa: 1753年（宝暦3年）創業、登録有形文化財の店舗を持つ「武甲正宗」の醸造元。住所一致。公式の歴史ページ https://www.bukou.co.jp/history/history/history.htm では店舗の建築年を18世紀と特定していない。",
+    "coords": [
+     36.00064,
+     139.08414
+    ]
+   }
+  },
+  "ラパンノワール くろうさぎ": {
+   "nameEn": "Lapin Noir Kurousagi",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "bread",
+    "coffee"
+   ],
+   "what": "国産小麦と自家培養酵母、オーガニック素材で毎日約60種類のパンを焼くベーカリー。店内のカフェで有機コーヒーや焼きたてのパンもいただける。火・金曜定休。",
+   "whatEn": "A bakery making around sixty kinds of bread daily with domestic wheat, house-cultured yeast and organic ingredients. A cafe inside serves organic coffee and fresh bread. Closed Tuesdays and Fridays.",
+   "note": "火曜と金曜は休み。奥のカフェでコーヒーも飲める。",
+   "noteEn": "Closed Tuesdays and Fridays. There is coffee at the cafe inside.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "らぱんのわーるくろうさぎ",
+    "address": "埼玉県秩父市野坂町1-18-12",
+    "url": "https://www.lapin-noir.co.jp/",
+    "whatJa": "国産小麦と自家製天然酵母、湧水で焼き上げるこだわりパンのベーカリー。",
+    "whatEn": "An artisan bakery baking naturally leavened whole-grain loaves, buns, and pastries with domestic wheat and spring water.",
+    "facts": "Uses domestic Japanese wheat, house-cultured natural yeast, and local spring water; popular with Chichibu locals for crusty country loaves, sweet bean buns, and seasonal fruit danishes; within walking distance of Seibu-Chichibu and Ohanabatake stations.",
+    "weak": "",
+    "verifiedBy": "https://www.lapin-noir.co.jp/2026/07/11/2026%e5%b9%b4%e5%a4%8f%e5%ad%a3%e4%bc%91%e6%a5%ad%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "7/28（火）～8/4（火）夏季休業\n8/5（水）営業再開",
+    "fixes": "whatEn: A bakery using domestic wheat, house-cultured yeast and organic ingredients, including stone-milled whole-grain bread. whatJa: 国産小麦と自家培養酵母、オーガニック素材を使い、石臼挽き全粒粉のパンなどを焼くベーカリー。住所一致。原材料の公式説明 https://www.lapin-noir.co.jp/pain/ に湧水の記載は確認できない。",
+    "coords": [
+     35.98786,
+     139.08325
+    ]
+   }
+  },
+  "パティスリーイシノ": {
+   "nameEn": "Patisserie Ishino",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "pastry",
+    "coffee"
+   ],
+   "what": "フランス菓子をベースに、旬の果物や地元の素材を使ったケーキ、焼き菓子、マカロン、ジャムを作る洋菓子店。持ち帰りのコーヒーもある。月・火曜定休。",
+   "whatEn": "A patisserie making French-style cakes, baked sweets, macarons and jams with seasonal fruit and local ingredients, plus takeaway coffee. Closed Mondays and Tuesdays.",
+   "note": "月曜と火曜は休み。持ち帰りのコーヒーもある。",
+   "noteEn": "Closed Mondays and Tuesdays. Takeaway coffee is available too.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりーいしの",
+    "address": "埼玉県秩父市熊木町15-2 KMGビル1F",
+    "url": "https://patisserie-ishino.com/",
+    "whatJa": "旬の果実や秩父の素材を使ったフランス菓子と焼き菓子、コンフィチュールを手がける洋菓子専門店。",
+    "whatEn": "A French-trained patisserie near Ohanabatake Station making seasonal entremets, baked financiers, and Chichibu fruit confitures.",
+    "facts": "Specializes in classic French pastries, tarts, and housemade fruit jams incorporating seasonal Chichibu produce; marked by a small sheep emblem on the ground floor of the KMG Building in Kumagi-machi.",
+    "weak": "",
+    "verifiedBy": "https://www.pref.saitama.lg.jp/saitama-wassyoi/buy/support/3776.html",
+    "quote": "地元の食材×フランス菓子をベースに、\nケーキ、焼き菓子、マカロン、ジャム、\nテイクアウトコーヒーなどをご用意しています。",
+    "fixes": "whatEn: A patisserie making French-style cakes, baked sweets, macarons and jams with local ingredients, also offering takeaway coffee. whatJa: 地元食材を使ったフランス菓子をベースに、ケーキ、焼き菓子、マカロン、ジャムやテイクアウトコーヒーを提供する菓子店。住所一致。フランスでの修業は掲載ページに記載なし。",
+    "coords": [
+     35.9917,
+     139.08709
+    ]
+   }
+  },
+  "喫茶 カルネ": {
+   "nameEn": "Kissa Carnet",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "tags": [
+    "coffee"
+   ],
+   "what": "番場町の喫茶店。熟成豆のネルドリップ珈琲や自家製ケーキ、スパイスカレーを出す。木曜定休で、月に数日、不定休や時間変更がある。",
+   "whatEn": "A coffee shop in Banba-machi serving aged-bean nel-drip coffee, housemade cakes and spice curry. Closed Thursdays, with occasional extra days off or shorter hours.",
+   "note": "営業日とカレーの有無は、お知らせを見てから行く。",
+   "noteEn": "Check the notice for days off and whether curry is on.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "きっさかるね",
+    "address": "埼玉県秩父市番場町18-7",
+    "url": "https://www.instagram.com/coffee_carnet/",
+    "whatJa": "番場町で熟成豆のネルドリップ珈琲や自家製ケーキ、スパイスカレーを提供する喫茶店。",
+    "whatEn": "An intimate coffee shop off Banba-dori brewing aged beans by flannel nel-drip alongside housemade cakes and spice curry.",
+    "facts": "Extracts aged coffee beans slowly using flannel nel-drip in a French kissaten style; serves housemade desserts and spice curry into the evening; carries small leather items made by a local craftsperson.",
+    "weak": "",
+    "verifiedBy": "https://www.carnet-chichibu.com/4",
+    "quote": "11月は定休の木曜日の他に、3日（火）もお休みさせていただきます。",
+    "fixes": "",
+    "coords": [
+     35.99416,
+     139.084
+    ]
+   }
+  },
+  "ちちぶコーヒー": {
+   "nameEn": "Chichibu Coffee",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "coffee"
+   ],
+   "what": "国際コーヒー鑑定士の資格を持つ焙煎士が、秩父地域をテーマにしたブレンドを淹れるコーヒースタンド。熊木町のKMGビル1階にある。",
+   "whatEn": "A coffee stand on the ground floor of the KMG Building in Kumagi-machi, where a licensed Q Grader roasts and brews blends themed after Chichibu.",
+   "note": "パティスリーイシノと同じビルの1階にある。",
+   "noteEn": "It shares the ground floor of the same building as Patisserie Ishino.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ちちぶこーひー",
+    "address": "埼玉県秩父市熊木町15-2 KMGビル1F",
+    "url": "https://www.instagram.com/chichibucoffee/",
+    "whatJa": "国際コーヒー鑑定士が秩父地域の風土をイメージした自家焙煎ブレンドを淹れるコーヒースタンド。",
+    "whatEn": "A micro-roaster and coffee stand near Ohanabatake Station run by a licensed Q Grader crafting blends inspired by Chichibu's towns.",
+    "facts": "Roasted in-house by a CQI-certified Q Arabica Grader; creates signature blends themed after Chichibu's one city and four surrounding towns; shares the ground floor of the KMG Building in Kumagi-machi.",
+    "weak": "",
+    "verifiedBy": "https://chichibu.keizai.biz/headline/1014/",
+    "quote": "秩父のコーヒースタンド「ちちぶコーヒー Roast ＆ Research（ロースト・アンド・リサーチ）」（秩父市熊木町）が3月12日、清雲寺（荒川）のしだれ桜を保護するプロジェクトの第2弾として、限定商品「SAKURAコーヒーバッグ2026」を発売する。",
+    "fixes": "",
+    "coords": [
+     35.99168,
+     139.08704
+    ]
+   }
+  },
+  "WAPLUS COFFEE": {
+   "nameEn": "WAPLUS COFFEE",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "coffee"
+   ],
+   "what": "上町にある自家焙煎のコーヒー店。建築家の夫妻が営み、持ち帰りもできる。営業は11時から19時、水曜定休。",
+   "whatEn": "A home-roasting coffee shop in Kamimachi run by an architect couple, with takeaway available. Open 11 am to 7 pm; closed Wednesdays.",
+   "note": "水曜は休み。持ち帰りもできる。",
+   "noteEn": "Closed Wednesdays. Takeaway is available.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "わぷらすこーひー",
+    "address": "埼玉県秩父市上町2-8-13",
+    "url": "https://waplus-coffee.com/",
+    "whatJa": "空間デザイン事務所が営む、自家焙煎スペシャルティコーヒーとスパイスカレーが人気のカフェ。",
+    "whatEn": "A home-roasting specialty coffee cafe run by an interior design studio in Kamimachi, pairing single-origin pours with spice curry and cheesecake.",
+    "facts": "Operated by a local spatial design and renovation studio; roasts specialty-grade beans in-house under strict temperature control; loved by locals for Sri Lankan-style spice curry and smooth rare cheesecake.",
+    "weak": "",
+    "verifiedBy": "https://note.com/graft_tsunashima/n/nd68acc64d09b",
+    "quote": "今は秩父で、自家焙煎の「ワプラスコーヒー」をやっている。",
+    "fixes": "whatEn: A home-roasting coffee shop in Chichibu run by architect Shimada and mainly managed by his wife. whatJa: 建築家の島田さん夫妻が営む、秩父の自家焙煎コーヒー店。住所は公式サイトの埼玉県秩父市上町2-8-13と一致。",
+    "coords": [
+     35.99028,
+     139.07892
+    ]
+   }
+  },
+  "パリー食堂": {
+   "nameEn": "Pari Shokudo",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "tags": [
+    "yoshoku"
+   ],
+   "what": "1927年（昭和2年）築の看板建築（登録有形文化財）で、100年以上続く大衆食堂。名物のオムライスやカツカレーなどを出す。11時半から19時、不定休。",
+   "whatEn": "A neighbourhood diner open for over a century in a 1927 kanban-kenchiku building, a Registered Tangible Cultural Property. Serves omurice, katsu curry and classics. 11:30 am to 7 pm; irregular holidays.",
+   "note": "予約はいらない。名物のオムライスを頼む。",
+   "noteEn": "No reservation needed. Order the omurice.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぱりーしょくどう",
+    "address": "埼玉県秩父市番場町19-8",
+    "url": "https://parishokudo-chichibu.com/",
+    "whatJa": "1927年（昭和2年）築の看板建築で昔ながらのオムライスやカツ丼を提供する大衆食堂。",
+    "whatEn": "A 1927 Western-facade neighborhood diner serving classic omurice, katsudon, and ramen in an unchanged early-Showa dining room.",
+    "facts": "Built in 1927 as a Registered Tangible Cultural Property kanban-kenchiku facade; signature omurice wraps chicken rice in a firm thin egg sheet; stands directly on stone-paved Banba-dori.",
+    "weak": "",
+    "verifiedBy": "https://parishokudo-chichibu.com/",
+    "quote": "TBS「王様のブランチ」でパリー食堂が紹介されました",
+    "fixes": "",
+    "coords": [
+     35.99421,
+     139.08357
+    ]
+   }
+  },
+  "クチーナ サルヴェ": {
+   "nameEn": "cucina salve",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "tags": [
+    "italian"
+   ],
+   "what": "自家農園で年間150種類以上の野菜を育て、お任せのコースを出す番場通りのイタリアン。事前の予約制。",
+   "whatEn": "An Italian restaurant on Banba-dori serving chef-selected courses with over 150 varieties of vegetables grown on its own farm. Reservations required.",
+   "note": "事前の予約が必要。コースのみ。",
+   "noteEn": "Reservations are required; course menu only.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "くちーなさるゔぇ",
+    "address": "埼玉県秩父市番場町17-14",
+    "url": "https://salvagest.jp/",
+    "whatJa": "自家農園の無農薬野菜や自然養鶏卵を使った料理を提供する番場通りのイタリアンレストラン。",
+    "whatEn": "An Italian restaurant on Banba-dori cooking with pesticide-free vegetables and natural-feed eggs raised on the chef's own Chichibu farm.",
+    "facts": "Chef grows seasonal vegetables without pesticides or chemical fertilizers on a dedicated Chichibu farm; occupies the ground floor of a renovated kominka on Banba-dori; serves housemade pasta and seasonal Chichibu produce.",
+    "weak": "",
+    "verifiedBy": "https://salvagest.jp/news/411",
+    "quote": "10月8日、秋の畑でお待ちしています🌿",
+    "fixes": "",
+    "coords": [
+     35.99489,
+     139.08401
+    ]
+   }
+  },
+  "手打そば 武蔵屋": {
+   "nameEn": "Teuchi Soba Musashiya",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "tags": [
+    "soba"
+   ],
+   "what": "秩父神社そばの手打そば店。自家製粉のそば粉を使い、せいろやごまだれ、まいたけの天ぷらなどを出す。火曜定休。",
+   "whatEn": "A hand-cut soba shop near Chichibu Shrine milling its own buckwheat flour, serving seiro, sesame dipping sauce and maitake tempura. Closed Tuesdays.",
+   "note": "入口のそばで手打ちが見られる。まいたけの天ぷらも。",
+   "noteEn": "You can watch the soba being cut near the entrance; order maitake tempura too.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "てうちそばむさしや",
+    "address": "埼玉県秩父市番場町4-11",
+    "url": "http://www.chichibu-musashiya.co.jp/",
+    "whatJa": "秩父神社そばで自家製粉の挽きたて・打ちたて蕎麦を提供する老舗手打そば店。",
+    "whatEn": "A long-standing soba shop steps from Chichibu Shrine milling its own buckwheat flour daily for freshly hand-cut noodles.",
+    "facts": "Mills buckwheat in-house for freshly ground, hand-cut soba; known for Chichibu walnut dipping sauce (kurumi-dare) and crisp maitake mushroom tempura; includes an adjoining gallery space.",
+    "weak": "",
+    "verifiedBy": "http://blog.livedoor.jp/dalesmivis/archives/1083806919.html",
+    "quote": "昼のみ営業しており、記帳制となっています。",
+    "fixes": "",
+    "coords": [
+     35.99648,
+     139.0848
+    ]
+   }
+  },
+  "WATAGE": {
+   "nameEn": "WATAGE",
+   "area": "宮側町",
+   "areaEn": "Miyakawa-cho",
+   "tags": [
+    "cafe",
+    "pizza"
+   ],
+   "what": "秩父駅近くのカフェ＆ダイニングバー。昼はランチやワッフル、夜はピザやパスタなどを出し、店内にギャラリーもある。火曜定休。",
+   "whatEn": "A cafe and dining bar near Chichibu Station serving lunch and waffles by day, pizza and pasta at night, with a small gallery inside. Closed Tuesdays.",
+   "note": "昼と夜で時間が分かれている。火曜は休み。",
+   "noteEn": "Lunch and dinner have separate hours; closed Tuesdays.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "わたげ",
+    "address": "埼玉県秩父市宮側町6-4",
+    "url": "https://www.watagecafechichibu.com/",
+    "whatJa": "秩父駅近くの改装建物で石窯ピザやワッフルを提供し、小さなギャラリーも併設するカフェダイニング。",
+    "whatEn": "A casual cafe-dining spot and small gallery in a renovated wooden building steps from Chichibu Station serving stone-oven pizza and waffles.",
+    "facts": "Located a one-minute walk from Chichibu Station in Miyakawa-cho; serves lunch plates and house waffles by day and stone-oven pizza by night; hosts small exhibitions in its WATAGE Gallery corner.",
+    "weak": "",
+    "verifiedBy": "https://www.chichibu-omotenashi.com/yorubar/2026autumnshop/watage/",
+    "quote": "ピザやパスタ・ワッフルなどを、オシャレなお酒やドリンクと一緒に、幅広いお客様に楽しんでいただけるよう まごころを込めてお作りしております。",
+    "fixes": "whatEn: A cafe and dining bar near Chichibu Station serving pizza, pasta and waffles. whatJa: 秩父駅近くでピザやパスタ、ワッフルを提供するカフェ＆ダイニングバー。住所一致。",
+    "coords": [
+     35.99913,
+     139.08483
+    ]
+   }
+  },
+  "きのこの里 鈴加園": {
+   "nameEn": "Kinoko no Sato Suzukaen",
+   "area": "荒川",
+   "areaEn": "Arakawa",
+   "tags": [
+    "mushroom",
+    "local food"
+   ],
+   "what": "1969年（昭和44年）開園の荒川の郷土料理店。自家栽培のきのこや山菜、ジビエを天然の砂岩で焼く石器焼料理で知られる。火曜と第1・3水曜定休。",
+   "whatEn": "A country restaurant opened in 1969 in Arakawa, known for sekki-yaki: grilling home-grown mushrooms, mountain vegetables and game on natural sandstone slabs. Closed Tuesdays and 1st/3rd Wednesdays.",
+   "note": "土日祝は予約できないので、開店に合わせて行く。",
+   "noteEn": "No bookings on weekends or holidays; go at opening.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "きのこのさとすずかえん",
+    "address": "埼玉県秩父市荒川小野原178",
+    "url": "https://suzukaen.com/",
+    "whatJa": "1969年創業、自家栽培きのこやジビエを天然砂岩の上で焼く「石器焼料理」で知られる荒川の郷土料理店。",
+    "whatEn": "A rustic country restaurant founded in 1969 in upper Arakawa grilling home-cultivated mushrooms, river fish, and wild game on natural Chichibu sandstone.",
+    "facts": "Opened in 1969 (Showa 44) in Chichibu's Arakawa valley; signature sekki-yaki grills home-grown mushrooms, mountain vegetables, wild boar, and venison over heated local sandstone slabs; also serves seasonal gyojaninniku (alpine leek) dishes.",
+    "weak": "",
+    "verifiedBy": "https://suzukaen.com/blog/2026/10/4274",
+    "quote": "鈴加園の囲炉裏で焼き上げた原木しいたけは絶品です。",
+    "fixes": "",
+    "coords": [
+     35.95856,
+     139.00942
+    ]
+   }
+  },
+  "Cafe & Gallery 武甲庵": {
+   "nameEn": "Cafe & Gallery Bukoan",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "tags": [
+    "coffee",
+    "gallery"
+   ],
+   "what": "熊木町にあるカフェ＆ギャラリー。地元の作家などの絵画展を定期的に開いている。",
+   "whatEn": "A cafe and gallery in Kumagi-machi hosting regular painting exhibitions by local and visiting artists.",
+   "note": "展示の予定を見てから立ち寄る。",
+   "noteEn": "Check the exhibition schedule before stopping by.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "かふぇあんどぎゃらりーぶこうあん",
+    "address": "埼玉県秩父市熊木町3-12",
+    "url": "https://www.facebook.com/bukouan/",
+    "whatJa": "有田焼の器を展示販売し、好みの器で珈琲も楽しめる中庭付きのギャラリー＆カフェ。",
+    "whatEn": "A porcelain gallery and morning cafe displaying and selling Arita ware bowls, plates, and cups beside a quiet courtyard garden.",
+    "facts": "Run by a couple with deep ties to Arita porcelain; shelves display hand-painted Arita cups, plates, and tableware for purchase; visitors can choose a favorite porcelain cup for their coffee overlooking the garden.",
+    "weak": "",
+    "verifiedBy": "https://titibu.sakura.ne.jp/webTajima/2026bukouan.html",
+    "quote": "武甲庵2026展　　　絵画展Ⅰ\n２０２６／１／７－１８",
+    "fixes": "whatEn: A cafe and gallery hosting painting exhibitions in Kumagimachi. whatJa: 熊木町で絵画展を開催するカフェ＆ギャラリー。住所は秩父市熊木町3-12で一致。有田焼の展示販売という説明は確認できない。",
+    "coords": [
+     35.99246,
+     139.0852
+    ]
+   }
+  },
+  "いたづら工作室 GALLERY SHOP": {
+   "nameEn": "Itaduraroom Gallery Shop",
+   "area": "荒川",
+   "areaEn": "Arakawa",
+   "tags": [
+    "glass",
+    "ceramics",
+    "metalwork",
+    "leather"
+   ],
+   "what": "荒川贄川にある地元作家のギャラリーショップ。吹きガラス、陶芸、金属工芸、革細工の作品を展示販売し、裏の工房で制作体験もできる。",
+   "whatEn": "A gallery shop in Arakawa Niekawa showing and selling blown glass, pottery, metalwork and leather goods by local makers, with a workshop behind for hands-on sessions.",
+   "note": "体験をするなら予約して行く。",
+   "noteEn": "Book ahead if you want to use the workshop.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "いたづらこうさくしつぎゃらりーしょっぷ",
+    "address": "埼玉県秩父市荒川贄川691-4",
+    "url": "https://www.itaduraroom.com/",
+    "whatJa": "秩父地域で活動する作家の吹きガラスや陶器、金属工芸、革細工を常設展示・販売するギャラリーショップ。",
+    "whatEn": "A craft gallery shop in Arakawa Niekawa exhibiting and selling blown glass, pottery, metalwork, and leather goods by Chichibu-area makers.",
+    "facts": "Showcases works by local Chichibu artisans including blown-glass drinking vessels from Glass Kobo Ashiji and studio ceramics; has an adjoining hands-on craft studio in the former post-town area of Niekawa.",
+    "weak": "",
+    "verifiedBy": "https://www.itaduraroom.com/2026/10/8958",
+    "quote": "ダンディーな男性のシルバーペアリング作りでした",
+    "fixes": "",
+    "coords": [
+     35.96375,
+     138.97954
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "秩父神社",
+   "nameEn": "Chichibu Shrine",
+   "kind": "sight",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "address": "埼玉県秩父市番場町1-3",
+   "url": "https://www.chichibu-jinja.or.jp/",
+   "what": "知知夫国の総鎮守として古くから祀られる神社。現存する社殿は1592年に徳川家康が寄進したもので、毎年12月3日の例祭「秩父夜祭」で知られる。",
+   "whatEn": "An ancient shrine revered as the chief tutelary shrine of Chichibu. Its present sanctuary was donated by Tokugawa Ieyasu in 1592, and its annual December 3 festival is the Chichibu Night Festival.",
+   "coords": [
+    35.99758,
+    139.08424
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.chichibu-jinja.or.jp/ および /saijin/ : 住所 埼玉県秩父市番場町1-3、天正20年（1592年）徳川家康公寄進の社殿、例祭は毎年12月3日「秩父夜祭」。2026年9月30日・9月4日・6月3日のお知らせ掲載。",
+   "_coordsSource": "OSM way 293866479（秩父神社）"
+  },
+  {
+   "name": "秩父まつり会館",
+   "nameEn": "Chichibu Festival Museum",
+   "kind": "art",
+   "area": "番場通り",
+   "areaEn": "Banba-dori",
+   "address": "埼玉県秩父市番場町2-8",
+   "url": "https://www.chichibu-matsuri.jp/",
+   "what": "秩父神社の隣にある、秩父夜祭の資料館。常設展示のために作られた笠鉾と屋台や、音と映像の展示で祭りの様子を見せる。",
+   "whatEn": "A museum next to Chichibu Shrine dedicated to the Chichibu Night Festival, exhibiting kasaboko and yatai floats built for display alongside sound and projection shows.",
+   "coords": [
+    35.99721,
+    139.08527
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.chichibu-matsuri.jp/ および /kannai/ : 住所 埼玉県秩父市番場町2-8、開館 9:00〜、常設展示用笠鉾・屋台、プロジェクションマッピング等。2026年10月26日付の2026年11月14日・12月1〜3日開館時間案内あり。",
+   "_coordsSource": "OSM node 1420202180（秩父まつり会館）"
+  },
+  {
+   "name": "羊山公園",
+   "nameEn": "Hitsujiyama Park",
+   "kind": "sight",
+   "area": "御花畑",
+   "areaEn": "Ohanabatake",
+   "address": "埼玉県秩父市大宮",
+   "url": "https://navi.city.chichibu.lg.jp/p_flower/1808/",
+   "what": "武甲山のふもとに広がる公園。春には「芝桜の丘」に10品種・40万株以上の芝桜が咲く。",
+   "whatEn": "A hillside park at the foot of Mount Buko. In spring, more than 400,000 shibazakura moss phlox plants of ten varieties bloom on Shibazakura Hill.",
+   "coords": [
+    35.98532,
+    139.08831
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://navi.city.chichibu.lg.jp/p_flower/1808/ （秩父市公式「秩父観光なび」）: 武甲山の麓、芝桜の丘は植栽面積約17,600m2、10品種、40万株以上、例年4月中旬〜5月初旬。2026年芝桜まつり（2026年4月3日〜5月6日、公開25周年）実施確認。",
+   "_coordsSource": "OSM way 475809878（羊山公園）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "泰山堂カフェ",
+   "verdict": "doubt",
+   "reason": "公式ブログの2026年9月6日投稿は個人的な近況のみで営業を示さない。公式Instagramの本文はcurlで取得できず、2026年営業を示す日付付き文を確認できない。住所と建物・ヌガーグラッセの説明は2025年記事 https://www.nippon.com/ja/japan-topics/b11704/ と一致。"
+  },
+  {
+   "name": "秩父庵 玉木家",
+   "verdict": "doubt",
+   "reason": "公式Instagramはcurlで本文を取得できず、公式サイトも本文取得に失敗。代替の店舗紹介もアクセス制限があり、2026年の営業を示す日付付き文、および住所と商品説明の一致を確認できない。"
+  },
+  {
+   "name": "小池カフェ",
+   "verdict": "doubt",
+   "reason": "公式Instagramはcurlで本文を取得できない。公式運営者の店舗紹介は日付がなく、2026年の営業を示す日付付き文を確認できない。"
+  },
+  {
+   "name": "ツグミ工芸舎・百果店 ひぐらしストア",
+   "verdict": "doubt",
+   "reason": "公式Instagramはcurlで本文を取得できない。公式工房サイトでも2026年の店舗営業を示す日付付き文を確認できない。 住所と木工品・やきもの・布物の説明は2019年記事 https://www.kominka.life/gallery/442/ と一致。"
+  },
+  {
+   "name": "gotica陶芸工房",
+   "verdict": "drop",
+   "reason": "公式サイトが「お店はしていません」と明記しており、立ち寄れる店舗・ギャラリーとしての候補説明と一致しない。"
+  }
+ ]
+}

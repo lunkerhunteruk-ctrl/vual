@@ -1,0 +1,329 @@
+[
+ {
+  "name": "ちちぶ銘仙館",
+  "nameEn": "Chichibu Meisenkan",
+  "category": "local",
+  "industry": "chichibu-meisen",
+  "tags": [
+   "textile"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市熊木町28-1",
+  "url": "https://www.meisenkan.com/",
+  "what": "1930年築の旧埼玉県秩父工業試験場（登録有形文化財）を使った秩父銘仙の展示・体験施設。ほぐし捺染の資料や着物を展示し、型染めや手織りの体験もできる。",
+  "whatEn": "A Chichibu Meisen silk museum and workshop in a 1930 former prefectural textile testing hall, a Registered Tangible Cultural Property. Displays hogushi-nassen warp-printing tools and kimono, with stencil-dyeing and weaving workshops.",
+  "note": "染めや織りの体験をするなら予約して行く。",
+  "noteEn": "Book ahead if you want to try dyeing or weaving.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99049,
+   139.08777
+  ]
+ },
+ {
+  "name": "齋藤染物店",
+  "nameEn": "Saito Somemono",
+  "category": "local",
+  "industry": "chichibu-indigo",
+  "tags": [
+   "textile",
+   "indigo"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市熊木町44-22",
+  "url": "https://www.saito-somemono.com/",
+  "what": "1873年（明治6年）創業、5代目が営む藍染の染物店。武甲山の伏流水を使い、藍染の袢天や暖簾、手ぬぐいや小物を仕立てる。",
+  "whatEn": "A fifth-generation indigo-dyeing workshop founded in 1873, using Mount Buko underground water to dye hanten coats, noren curtains, tenugui and small goods.",
+  "note": "袢天や暖簾は注文仕立て。小物も置いてある。",
+  "noteEn": "Hanten and noren are made to order; small goods are on the shelf.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99212,
+   139.09106
+  ]
+ },
+ {
+  "name": "武甲酒造",
+  "nameEn": "Buko Shuzo",
+  "category": "local",
+  "industry": "chichibu-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "宮側町",
+  "areaEn": "Miyakawa-cho",
+  "address": "秩父市宮側町21-27",
+  "url": "https://www.bukou.co.jp/",
+  "what": "1753年（宝暦3年）創業、「武甲正宗」の酒蔵。登録有形文化財の店舗で直売し、武甲山の伏流水で仕込む。店内に非対面式の利き酒機がある。",
+  "whatEn": "A sake brewery founded in 1753, selling Buko Masamune at its Registered Tangible Cultural Property storefront. Brews with Mount Buko underground water; there is a self-serve tasting machine inside.",
+  "note": "店内の利き酒機で少しずつ試せる。",
+  "noteEn": "You can sample small pours at the tasting machine inside.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.00064,
+   139.08414
+  ]
+ },
+ {
+  "name": "ラパンノワール くろうさぎ",
+  "nameEn": "Lapin Noir Kurousagi",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "coffee"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市野坂町1-18-12",
+  "url": "https://www.lapin-noir.co.jp/",
+  "what": "国産小麦と自家培養酵母、オーガニック素材で毎日約60種類のパンを焼くベーカリー。店内のカフェで有機コーヒーや焼きたてのパンもいただける。火・金曜定休。",
+  "whatEn": "A bakery making around sixty kinds of bread daily with domestic wheat, house-cultured yeast and organic ingredients. A cafe inside serves organic coffee and fresh bread. Closed Tuesdays and Fridays.",
+  "note": "火曜と金曜は休み。奥のカフェでコーヒーも飲める。",
+  "noteEn": "Closed Tuesdays and Fridays. There is coffee at the cafe inside.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.98786,
+   139.08325
+  ]
+ },
+ {
+  "name": "パティスリーイシノ",
+  "nameEn": "Patisserie Ishino",
+  "category": "sweets",
+  "tags": [
+   "pastry",
+   "coffee"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市熊木町15-2 KMGビル1F",
+  "url": "https://patisserie-ishino.com/",
+  "what": "フランス菓子をベースに、旬の果物や地元の素材を使ったケーキ、焼き菓子、マカロン、ジャムを作る洋菓子店。持ち帰りのコーヒーもある。月・火曜定休。",
+  "whatEn": "A patisserie making French-style cakes, baked sweets, macarons and jams with seasonal fruit and local ingredients, plus takeaway coffee. Closed Mondays and Tuesdays.",
+  "note": "月曜と火曜は休み。持ち帰りのコーヒーもある。",
+  "noteEn": "Closed Mondays and Tuesdays. Takeaway coffee is available too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.9917,
+   139.08709
+  ]
+ },
+ {
+  "name": "喫茶 カルネ",
+  "nameEn": "Kissa Carnet",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "秩父市番場町18-7",
+  "url": "https://www.instagram.com/coffee_carnet/",
+  "what": "番場町の喫茶店。熟成豆のネルドリップ珈琲や自家製ケーキ、スパイスカレーを出す。木曜定休で、月に数日、不定休や時間変更がある。",
+  "whatEn": "A coffee shop in Banba-machi serving aged-bean nel-drip coffee, housemade cakes and spice curry. Closed Thursdays, with occasional extra days off or shorter hours.",
+  "note": "営業日とカレーの有無は、お知らせを見てから行く。",
+  "noteEn": "Check the notice for days off and whether curry is on.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99416,
+   139.084
+  ]
+ },
+ {
+  "name": "ちちぶコーヒー",
+  "nameEn": "Chichibu Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市熊木町15-2 KMGビル1F",
+  "url": "https://www.instagram.com/chichibucoffee/",
+  "what": "国際コーヒー鑑定士の資格を持つ焙煎士が、秩父地域をテーマにしたブレンドを淹れるコーヒースタンド。熊木町のKMGビル1階にある。",
+  "whatEn": "A coffee stand on the ground floor of the KMG Building in Kumagi-machi, where a licensed Q Grader roasts and brews blends themed after Chichibu.",
+  "note": "パティスリーイシノと同じビルの1階にある。",
+  "noteEn": "It shares the ground floor of the same building as Patisserie Ishino.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99168,
+   139.08704
+  ]
+ },
+ {
+  "name": "WAPLUS COFFEE",
+  "nameEn": "WAPLUS COFFEE",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市上町2-8-13",
+  "url": "https://waplus-coffee.com/",
+  "what": "上町にある自家焙煎のコーヒー店。建築家の夫妻が営み、持ち帰りもできる。営業は11時から19時、水曜定休。",
+  "whatEn": "A home-roasting coffee shop in Kamimachi run by an architect couple, with takeaway available. Open 11 am to 7 pm; closed Wednesdays.",
+  "note": "水曜は休み。持ち帰りもできる。",
+  "noteEn": "Closed Wednesdays. Takeaway is available.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99028,
+   139.07892
+  ]
+ },
+ {
+  "name": "パリー食堂",
+  "nameEn": "Pari Shokudo",
+  "category": "food",
+  "tags": [
+   "yoshoku"
+  ],
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "秩父市番場町19-8",
+  "url": "https://parishokudo-chichibu.com/",
+  "what": "1927年（昭和2年）築の看板建築（登録有形文化財）で、100年以上続く大衆食堂。名物のオムライスやカツカレーなどを出す。11時半から19時、不定休。",
+  "whatEn": "A neighbourhood diner open for over a century in a 1927 kanban-kenchiku building, a Registered Tangible Cultural Property. Serves omurice, katsu curry and classics. 11:30 am to 7 pm; irregular holidays.",
+  "note": "予約はいらない。名物のオムライスを頼む。",
+  "noteEn": "No reservation needed. Order the omurice.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99421,
+   139.08357
+  ]
+ },
+ {
+  "name": "クチーナ サルヴェ",
+  "nameEn": "cucina salve",
+  "category": "food",
+  "tags": [
+   "italian"
+  ],
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "秩父市番場町17-14",
+  "url": "https://salvagest.jp/",
+  "what": "自家農園で年間150種類以上の野菜を育て、お任せのコースを出す番場通りのイタリアン。事前の予約制。",
+  "whatEn": "An Italian restaurant on Banba-dori serving chef-selected courses with over 150 varieties of vegetables grown on its own farm. Reservations required.",
+  "note": "事前の予約が必要。コースのみ。",
+  "noteEn": "Reservations are required; course menu only.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99489,
+   139.08401
+  ]
+ },
+ {
+  "name": "手打そば 武蔵屋",
+  "nameEn": "Teuchi Soba Musashiya",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "番場通り",
+  "areaEn": "Banba-dori",
+  "address": "秩父市番場町4-11",
+  "url": "http://www.chichibu-musashiya.co.jp/",
+  "what": "秩父神社そばの手打そば店。自家製粉のそば粉を使い、せいろやごまだれ、まいたけの天ぷらなどを出す。火曜定休。",
+  "whatEn": "A hand-cut soba shop near Chichibu Shrine milling its own buckwheat flour, serving seiro, sesame dipping sauce and maitake tempura. Closed Tuesdays.",
+  "note": "入口のそばで手打ちが見られる。まいたけの天ぷらも。",
+  "noteEn": "You can watch the soba being cut near the entrance; order maitake tempura too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99648,
+   139.0848
+  ]
+ },
+ {
+  "name": "WATAGE",
+  "nameEn": "WATAGE",
+  "category": "food",
+  "tags": [
+   "cafe",
+   "pizza"
+  ],
+  "area": "宮側町",
+  "areaEn": "Miyakawa-cho",
+  "address": "秩父市宮側町6-4",
+  "url": "https://www.watagecafechichibu.com/",
+  "what": "秩父駅近くのカフェ＆ダイニングバー。昼はランチやワッフル、夜はピザやパスタなどを出し、店内にギャラリーもある。火曜定休。",
+  "whatEn": "A cafe and dining bar near Chichibu Station serving lunch and waffles by day, pizza and pasta at night, with a small gallery inside. Closed Tuesdays.",
+  "note": "昼と夜で時間が分かれている。火曜は休み。",
+  "noteEn": "Lunch and dinner have separate hours; closed Tuesdays.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99913,
+   139.08483
+  ]
+ },
+ {
+  "name": "きのこの里 鈴加園",
+  "nameEn": "Kinoko no Sato Suzukaen",
+  "category": "food",
+  "tags": [
+   "mushroom",
+   "local food"
+  ],
+  "area": "荒川",
+  "areaEn": "Arakawa",
+  "address": "秩父市荒川小野原178",
+  "url": "https://suzukaen.com/",
+  "what": "1969年（昭和44年）開園の荒川の郷土料理店。自家栽培のきのこや山菜、ジビエを天然の砂岩で焼く石器焼料理で知られる。火曜と第1・3水曜定休。",
+  "whatEn": "A country restaurant opened in 1969 in Arakawa, known for sekki-yaki: grilling home-grown mushrooms, mountain vegetables and game on natural sandstone slabs. Closed Tuesdays and 1st/3rd Wednesdays.",
+  "note": "土日祝は予約できないので、開店に合わせて行く。",
+  "noteEn": "No bookings on weekends or holidays; go at opening.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.95856,
+   139.00942
+  ]
+ },
+ {
+  "name": "Cafe & Gallery 武甲庵",
+  "nameEn": "Cafe & Gallery Bukoan",
+  "category": "craft",
+  "tags": [
+   "coffee",
+   "gallery"
+  ],
+  "area": "御花畑",
+  "areaEn": "Ohanabatake",
+  "address": "秩父市熊木町3-12",
+  "url": "https://www.facebook.com/bukouan/",
+  "what": "熊木町にあるカフェ＆ギャラリー。地元の作家などの絵画展を定期的に開いている。",
+  "whatEn": "A cafe and gallery in Kumagi-machi hosting regular painting exhibitions by local and visiting artists.",
+  "note": "展示の予定を見てから立ち寄る。",
+  "noteEn": "Check the exhibition schedule before stopping by.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.99246,
+   139.0852
+  ]
+ },
+ {
+  "name": "いたづら工作室 GALLERY SHOP",
+  "nameEn": "Itaduraroom Gallery Shop",
+  "category": "craft",
+  "tags": [
+   "glass",
+   "ceramics",
+   "metalwork",
+   "leather"
+  ],
+  "area": "荒川",
+  "areaEn": "Arakawa",
+  "address": "秩父市荒川贄川691-4",
+  "url": "https://www.itaduraroom.com/",
+  "what": "荒川贄川にある地元作家のギャラリーショップ。吹きガラス、陶芸、金属工芸、革細工の作品を展示販売し、裏の工房で制作体験もできる。",
+  "whatEn": "A gallery shop in Arakawa Niekawa showing and selling blown glass, pottery, metalwork and leather goods by local makers, with a workshop behind for hands-on sessions.",
+  "note": "体験をするなら予約して行く。",
+  "noteEn": "Book ahead if you want to use the workshop.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.96375,
+   138.97954
+  ]
+ }
+]

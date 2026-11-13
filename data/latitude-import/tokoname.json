@@ -1,0 +1,789 @@
+{
+ "slug": "tokoname",
+ "city": {
+  "name": "Tokoname",
+  "nameJa": "常滑",
+  "latitude": "34.9° N",
+  "country": "Aichi, Japan",
+  "countryJa": "愛知県",
+  "person": "rin",
+  "coords": [
+   34.8885,
+   136.8395
+  ],
+  "intro": "A pottery town on the west coast of the Chita Peninsula, facing Ise Bay. Tokoname-yaki kilns and shudei teapots, studios and cafés along the hilly Pottery Footpath, and bakeries and roasters from Onomachi to Otani, as Rin's picks.",
+  "introJa": "伊勢湾に面した、知多半島西岸の焼き物の町。常滑焼の窯元と朱泥急須の店、やきもの散歩道の工房と喫茶、大野町から大谷までのパン屋と珈琲を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Chita Peninsula · a hillside pottery town facing Ise Bay",
+   "ja": "知多半島の西岸・伊勢湾に面した坂と窯の町"
+  },
+  "industries": [
+   {
+    "key": "tokoname-ware",
+    "en": "Tokoname Ware & Shudei Kyusu",
+    "ja": "常滑焼・朱泥急須",
+    "about": "One of Japan's Six Ancient Kilns, Tokoname has made pottery since the late Heian period. Its iron-rich red clay, fired without glaze into shudei kyusu teapots, takes on sheen with use and softens the astringency of green tea.",
+    "aboutJa": "常滑焼は日本六古窯のひとつで、平安時代末期から続く焼き物。鉄分を含む土を釉薬をかけずに焼く朱泥急須は、使い込むほど艶が増し、お茶の雑味をやわらげるといわれる。",
+    "_src": "One of Japan's Six Ancient Kilns, Tokoname has fired iron-rich Chita Peninsula clay since the Heian period and leads Japan in crafting unglazed shudei kyusu teapots with hand-pierced clay mesh filters."
+   }
+  ]
+ },
+ "places": {
+  "にわのパン": {
+   "nameEn": "Niwa no Pan",
+   "area": "大谷・小鈴谷",
+   "areaEn": "Otani & Kosugaya",
+   "tags": [
+    "bread",
+    "eggs"
+   ],
+   "what": "大谷のたまご農家が営むパン屋。地元産の小麦粉や常滑牛乳を使い、2階のイートインからは伊勢湾が見える。木曜は休み、売り切れ次第閉店。",
+   "whatEn": "A bakery run by a poultry farm in Otani, baking with local wheat and Tokoname milk; the upstairs eat-in looks out over Ise Bay. Closed Thursdays, and closes when sold out.",
+   "note": "塩パンとクリームパンを持って、二階の海側の席へ。",
+   "noteEn": "Take a salted roll and a cream bun up to the sea-facing seats.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "にわのぱん",
+    "address": "250-1 Ashihazama, Otani, Tokoname",
+    "url": "https://www.coco-terrace.com/niwanopan/",
+    "whatJa": "大谷のたまご農家が営む丘の上のベーカリーで、採れたて卵を贅沢に使った塩パンやクリームパンを焼き上げる。",
+    "whatEn": "Hilltop bakery run by a local Otani poultry farm, baking salted butter rolls, custard buns, and loaves rich with freshly laid eggs.",
+    "facts": "Run by Daily Farm on Cocoterrace Hill in southern Tokoname; uses fresh farm eggs and Hokkaido butter in its signature Niwa-no-Shiopan and custard cream buns; upstairs eat-in overlooks Ise Bay.",
+    "weak": "",
+    "verifiedBy": "https://www.coco-terrace.com/niwanopan/",
+    "quote": "2026.10.17 ✨11月1日はあつた朔日市に出店します✨",
+    "fixes": "Closed Thursdays; 10:00-17:00, closes when sold out.",
+    "coords": [
+     34.84619,
+     136.86671
+    ]
+   }
+  },
+  "NOISETTE": {
+   "nameEn": "NOISETTE",
+   "area": "大谷・小鈴谷",
+   "areaEn": "Otani & Kosugaya",
+   "tags": [
+    "bread",
+    "cafe"
+   ],
+   "what": "スイスのパン職人の家系を受け継ぎ、2022年に常滑へ移ったベーカリーカフェ。りんごから起こした自家製酵母で低温長時間発酵のパンを焼く。",
+   "whatEn": "A Swiss boulangerie and café that moved to Tokoname in 2022, carrying on a family baking line with slow, cold-fermented loaves from an apple starter.",
+   "note": "素朴なライ麦パンと、スイスのキャロットケーキを選ぶ。",
+   "noteEn": "A plain rye loaf and a slice of Swiss carrot cake.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "のあぜっと",
+    "address": "2-5 Kobacho, Tokoname",
+    "url": "https://www.noisette-bakery.com/",
+    "whatJa": "スイス人パン職人の家系を受け継ぎ古場町で営むベーカリーカフェで、りんご由来の自家製酵母で低温長時間発酵させたスイスパンを焼く。",
+    "whatEn": "Swiss boulangerie and cafe in Kobacho fermenting traditional Swiss breads slowly from a natural apple starter.",
+    "facts": "Relocated to southern Tokoname in spring 2022; traces its roots a century back to a family bakery in Rolle on Lake Geneva that created Petit pain de Rolle; ferments dough slowly with a starter fed from a Swiss apple.",
+    "weak": "",
+    "verifiedBy": "https://www.noisette-bakery.com/",
+    "quote": "2026.07.14 10:08 夏季休暇のお知らせ",
+    "fixes": "Site says moved from Nagoya to Tokoname in spring 2022 (matches). Address on page not verified.",
+    "coords": [
+     34.86024,
+     136.85953
+    ]
+   }
+  },
+  "バー＆ビストロ 共栄窯": {
+   "nameEn": "Bar & Bistro Kyoeigama",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "bistro",
+    "bar"
+   ],
+   "what": "北条の、明治から昭和にかけて土管を焼いていた窯を改装したバー＆ビストロ。昼はランチコース、夜はアラカルトやカクテルを出す。",
+   "whatEn": "A bar and bistro in Hokujo inside a brick kiln that fired ceramic pipes from the Meiji to Showa eras, serving lunch courses and evening plates with cocktails.",
+   "note": "昼のコースより、夜に窯のれんがの下で一杯飲みたい。",
+   "noteEn": "Rather than lunch, a quiet drink under the kiln brick at night.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ばーあんどびすとろ きょうえいがま",
+    "address": "2-88 Hokujo, Tokoname",
+    "url": "https://bar-kyoueigama.com/",
+    "whatJa": "明治から昭和にかけて使われた土管焼成窯を改装した空間で、知多牛や知多豚など地元食材のビストロ料理を提供する。",
+    "whatEn": "Bistro housed inside a preserved Meiji-to-Showa ceramic pipe kiln, serving Chita beef, Chita pork, and seasonal Peninsula produce.",
+    "facts": "Built inside an authentic brick ceramic-pipe firing kiln used from Meiji to Showa; serves Chita beef and Chita pork dishes plated on Tokoname ware.",
+    "weak": "",
+    "verifiedBy": "https://bar-kyoueigama.com/",
+    "quote": "2026.4.13 閉店時間を変更します。",
+    "fixes": "Page address: 〒479-0833 愛知県常滑市北条2丁目88番地 (matches). Page does not mention Chita beef/pork in what I read; menu details unverified.",
+    "coords": [
+     34.89206,
+     136.83569
+    ]
+   }
+  },
+  "珈琲工房 しいの木": {
+   "nameEn": "Shiinoki Coffee",
+   "area": "大野町・金山",
+   "areaEn": "Onomachi & Kanayama",
+   "tags": [
+    "coffee",
+    "roaster"
+   ],
+   "what": "金山にある自家焙煎の珈琲工房。常滑焼の陶片を焙煎機に使い、遠赤外線で豆を焼く。13時から18時、水・木曜は休み。",
+   "whatEn": "A coffee roaster in Kanayama that roasts beans with far-infrared heat from crushed Tokoname ware shards. Open 13:00 to 18:00; closed Wednesdays and Thursdays.",
+   "note": "常滑焼で焼いた豆を、家で淹れる用に一袋。",
+   "noteEn": "A bag of beans roasted with Tokoname shards, to brew at home.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こーひーこうぼう しいのき",
+    "address": "25-1 Shobuike, Kanayama, Tokoname",
+    "url": "https://www.shiinoki-coffee.com/",
+    "whatJa": "常滑焼の陶片が発する遠赤外線を利用した独自の「常滑焼焙煎珈琲」を手がける、金山の自家焙煎珈琲工房。",
+    "whatEn": "Specialty coffee roaster in Kanayama that roasts beans using far-infrared heat emitted from Tokoname ware ceramic shards.",
+    "facts": "Uses crushed Tokoname ware ceramic shards inside the roaster for gentle far-infrared heat to the core of each bean; sells freshly roasted beans and hosts hands-on roasting sessions.",
+    "weak": "",
+    "verifiedBy": "https://www.shiinoki-coffee.com/",
+    "quote": "12月珈琲教室開催日決定！　受講者募集（詳しくは、教室申込フォーム ご参照）",
+    "fixes": "",
+    "coords": [
+     34.92458,
+     136.84506
+    ]
+   }
+  },
+  "急須と器 いそべ": {
+   "nameEn": "Kyusu to Utsuwa Isobe",
+   "area": "大野町・金山",
+   "areaEn": "Onomachi & Kanayama",
+   "tags": [
+    "ceramics",
+    "kyusu",
+    "tea"
+   ],
+   "what": "1964年創業の急須問屋・磯部商店がセラモールに開く急須と器の店。量産品から若手・熟練作家の手作り急須まで揃う。9時から17時。",
+   "whatEn": "A teapot and vessel shop in Ceramall run by wholesaler Isobe Shoten, founded in 1964, stocking everyday and handmade Tokoname kyusu. Open 9:00 to 17:00.",
+   "note": "無釉の朱泥急須を手に取って、茶こしの目を見たい。",
+   "noteEn": "Pick up an unglazed shudei kyusu and check the clay strainer inside.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きゅうすとうつわ いそべ",
+    "address": "100 Kamisunahara, Kanayama, Tokoname",
+    "url": "https://isobe-shoten.com/",
+    "whatJa": "金山のセラモール内に店を構える急須と器の専門店で、熟練職人から若手作家まで常滑焼の手仕事急須を幅広く揃える。",
+    "whatEn": "Specialist Tokoname kyusu and tableware shop in Kanayama curating hand-thrown unglazed teapots from veteran and young local potters.",
+    "facts": "Operated by long-running teapot specialist Isobe Shoten; stocks hundreds of unglazed shudei and yakishime kyusu whose iron-rich clay softens green tea bitterness, alongside everyday vessels.",
+    "weak": "",
+    "verifiedBy": "https://isobe-shoten.com/blog/",
+    "quote": "【展示会のお知らせ】 「冬の陶しごと」 加賀美円/haruharu/平沼 秀祐 2026年11月7日",
+    "fixes": "Address on site: 愛知県常滑市金山字上砂原100 とこなめ焼卸団地（セラモール）, hours 9:00-17:00; whatEn/whatJa consistent.",
+    "coords": [
+     34.91203,
+     136.84263
+    ]
+   }
+  },
+  "グラスワークス・楽": {
+   "nameEn": "Glassworks Luck",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "tags": [
+    "glass",
+    "tableware"
+   ],
+   "what": "やきもの散歩道にある吹きガラス工房と店。グラスや酒器、花器を手作りし、吹きガラス体験（予約制）も行う。10時から17時。",
+   "whatEn": "A blown-glass studio and shop on the Pottery Footpath making drinking glasses, sake vessels and vases, with glassblowing sessions by booking. Open 10:00 to 17:00.",
+   "note": "焼き物の道の途中で、涼しげなぐい呑みをひとつ見る。",
+   "noteEn": "Stop along the pottery path to look at a single glass sake cup.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぐらすわーくす らく",
+    "address": "3-128 Sakaemachi, Tokoname",
+    "url": "http://www.glassworks-luck.com/",
+    "whatJa": "やきもの散歩道にある吹きガラス工房＆ショップで、手づくりのグラスやぐい呑み・小鉢の制作販売と吹きガラス体験を行う。",
+    "whatEn": "Blown-glass studio and shop along the Pottery Footpath crafting and selling handmade drinking glasses, bowls, and sake cups.",
+    "facts": "Independent glassblowing workshop on Sakaemachi; sells hand-blown tumblers, guinomi sake vessels, and small bowls made in its on-site furnace alongside introductory glassblowing sessions.",
+    "weak": "",
+    "verifiedBy": "http://www.glassworks-luck.com/",
+    "quote": "2026年4月1日（水）～4月17日（金）まで溶解炉修理の為、吹きガラスはお休みをさせていただきます。期間前後の御予約をお待ちしています。",
+    "fixes": "Address on site: 愛知県常滑市栄町3-128 matches.",
+    "coords": [
+     34.88835,
+     136.84092
+    ]
+   }
+  },
+  "陶房杉": {
+   "nameEn": "Tohbohsugi",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "明治25年（1892年）創業、瀬木町で四代続く常滑焼の窯元。常滑の土の素朴さを残した現代の食卓向けの器や花器を作る。",
+   "whatEn": "A fourth-generation Tokoname kiln in Segicho founded in 1892, making modern tableware and vases that keep the raw feel of local clay.",
+   "note": "土のざらりとした手触りが残る皿を、一枚選びたい。",
+   "noteEn": "Choose a single plate that still keeps the grain of the clay.",
+   "_src": {
+    "category": "local",
+    "industry": "tokoname-ware",
+    "nameKana": "とうぼうすぎ",
+    "address": "1-20 Segicho, Tokoname",
+    "url": "http://www.tohbohsugi.co.jp/",
+    "whatJa": "1892年（明治25年）創業、4代続く常滑の老舗窯元で、土の風合いを活かした現代の食卓になじむ器を制作・直売している。",
+    "whatEn": "Fourth-generation Tokoname kiln founded in 1892, producing warm, tactile stoneware tableware and craft pieces with an attached showroom.",
+    "facts": "Founded in Meiji 25 (1892) and now in its fourth generation; creates warm, textured stoneware dishes, cups, and vases sold at its Segicho workshop showroom and Pottery Footpath gallery.",
+    "weak": "",
+    "verifiedBy": "https://tokoname-kankou.net/event/detail/719/",
+    "quote": "開催期間：2026年10月30日(金) ～ 11月9日(月)",
+    "fixes": "Official site tohbohsugi.co.jp confirms address 479-0821 常滑市瀬木町1-20, 4th generation, TEL 0569-35-2985. Quote is from the 陶房杉 -冬支度のうつわ展- exhibition page (TOKONAMEギャラリー) on the Tokoname tourism site; the shop's own website has no dated 2026 content.",
+    "coords": [
+     34.88641,
+     136.84418
+    ]
+   }
+  },
+  "BAGEL CAFE SORARIN": {
+   "nameEn": "BAGEL CAFE SORARIN",
+   "area": "大野町・金山",
+   "areaEn": "Onomachi & Kanayama",
+   "tags": [
+    "bagels",
+    "cafe"
+   ],
+   "what": "飛香台のベーグル専門店とカフェ。北海道産小麦「春よ恋」と自家製天然酵母で無添加のベーグルを焼き、自家菜園の野菜を使ったランチも出す。11時から15時、月・金曜は休み。",
+   "whatEn": "A bagel shop and café in Asukadai baking additive-free bagels with Hokkaido Haruyokoi wheat and house natural yeast, plus lunches with garden vegetables. Open 11:00 to 15:00; closed Mondays and Fridays.",
+   "note": "甘いのと惣菜系をひとつずつ、翌朝用に買う。",
+   "noteEn": "One sweet bagel and one savoury, saved for the next morning.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "べーぐるかふぇ そらりん",
+    "address": "1-3-10 Asukadai, Tokoname",
+    "url": "https://sorarin-bagel.jp/",
+    "whatJa": "北海道産小麦「春よ恋」100％と自家製天然酵母で無添加ベーグルを焼き上げる、飛香台のベーグル専門店＆カフェ。",
+    "whatEn": "Neighborhood bagel bakery and cafe in Asukadai baking chewy additive-free bagels from 100% Hokkaido Haruyokoi wheat and house-cultured natural yeast.",
+    "facts": "Uses 100% Hokkaido Haruyokoi wheat and homemade natural yeast with zero additives; bakes seasonal sweet and savory bagels alongside monthly natural-yeast loaf days and vegetable-rich cafe lunches.",
+    "weak": "",
+    "verifiedBy": "https://sorarin-bagel.jp/news/news/post-554.html",
+    "quote": "11月のランチメニューです！",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "カレット洋菓子店 常滑店": {
+   "nameEn": "Carette Tokoname",
+   "area": "大野町・金山",
+   "areaEn": "Onomachi & Kanayama",
+   "tags": [
+    "sweets",
+    "gelato",
+    "cafe"
+   ],
+   "what": "1936年創業の知多半島の洋菓子店。看板のブッセや季節のケーキのほか、カフェでは知多半島の食材を使ったクラフトジェラートやパフェを出す。",
+   "whatEn": "A Chita Peninsula patisserie founded in 1936. Alongside its signature bouchées and seasonal cakes, the café serves parfaits and craft gelato made with peninsula ingredients.",
+   "note": "ブッセと、知多半島の食材を使ったジェラートを。",
+   "noteEn": "A butter-cream bouchée, and gelato made from Chita ingredients.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "かれっとようがしてん とこなめてん",
+    "address": "46-1 Gaidoguchi, Yata, Tokoname",
+    "url": "https://www.carette.co.jp/",
+    "whatJa": "知多半島で長年愛される洋菓子店の常滑店で、名物ブッセや季節のケーキ、常滑牛乳を使ったジェラートを提供する。",
+    "whatEn": "Long-loved Chita Peninsula patisserie in Yata crafting signature butter-cream bouchées, seasonal fruit cakes, and fresh Tokoname-milk gelato.",
+    "facts": "Two-branch local Chita Peninsula patisserie with nearly nine decades of history; renowned for its crisp-soft Carette Bouchée, seasonal cakes, crepes, and gelato churned with local Tokoname milk.",
+    "weak": "",
+    "verifiedBy": "https://www.carette.co.jp/news/361",
+    "quote": "カレットでは 11月1日㈰より\nクリスマスケーキのご予約受付を開始 いたします",
+    "fixes": "住所の公式表記は愛知県常滑市矢田垣出口46-1。whatEn/whatJaのジェラートは、公式カフェページの表現に合わせて「知多半島の食材を使用したクラフトジェラート」とする。",
+    "coords": null
+   }
+  },
+  "パン工房ヴィエノワ": {
+   "nameEn": "Pan Kobo Viennois",
+   "area": "榎戸・虹の丘",
+   "areaEn": "Enokido & Nijigaoka",
+   "tags": [
+    "bread",
+    "pastry"
+   ],
+   "what": "虹の丘のパン屋。職人歴30年以上の店主が、ヴィエノワズリーやハード系など毎日約80種類のパンと焼き菓子を焼く。8時から18時、月・火曜は休み。",
+   "whatEn": "A bakery in Nijigaoka where a baker of over thirty years turns out around eighty kinds of viennoiserie, crusty loaves and baked sweets daily. Open 8:00 to 18:00; closed Mondays and Tuesdays.",
+   "note": "朝いちばんに、焼きたてのクロワッサンとハード系を。",
+   "noteEn": "First thing in the morning for warm croissants and crusty loaves.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱんこうぼう ヴぃえのわ",
+    "address": "3-103 Nijigaoka, Tokoname",
+    "url": "https://viennois479.com/",
+    "whatJa": "職人歴30年以上の店主が虹の丘で営むベーカリーで、ヴィエノワズリーやハード系を中心に毎日約80種のパンと焼き菓子を焼く。",
+    "whatEn": "Independent neighborhood bakery in Nijigaoka where a baker of over thirty years turns out around eighty kinds of viennoiserie and crusty loaves daily.",
+    "facts": "Run by an artisan baker with more than 30 years of experience in Nijigaoka; bakes roughly 80 varieties daily led by flaky viennoiserie, crusty country loaves, sandwiches, and small baked sweets.",
+    "weak": "",
+    "verifiedBy": "https://furunavi.jp/municipal_message_news_list.aspx?municipalid=1002&p=2",
+    "quote": "当店では約80種類のパンを作っており、皆さまに当店のパンを知って頂きたいという思いから、いろいろな種類のパンを集めた詰め合わせを考えました💭",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "地魚料理・うなぎ 丸一": {
+   "nameEn": "Maruichi",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "unagi",
+    "washoku"
+   ],
+   "what": "原松町の地魚料理・知多牛・うなぎの店。売り切れ次第閉店、火曜は休みで夜は2日前までの完全予約制。隣に紙雑貨の「プチギャラリー丸小屋」がある。",
+   "whatEn": "A restaurant in Haramatsucho for local fish, Chita beef and grilled eel; closes when sold out, closed Tuesdays, and dinner requires booking two days ahead. A tiny paper-goods gallery sits next door.",
+   "note": "うなぎを待ってから、隣の丸小屋で和紙の雑貨も見る。",
+   "noteEn": "Wait for the eel, then look at the washi paper goods next door.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "じざかなりょうり うなぎ まるいち",
+    "address": "5-95 Haramatsucho, Tokoname",
+    "url": "https://tokonamemaruichi.jp/",
+    "whatJa": "原松町にある地魚とうなぎの料理店で、知多半島の鮮魚料理や香ばしいうなぎ、知多牛との合い盛りひつまぶしが味わえる。",
+    "whatEn": "Family-run seafood and eel restaurant near the Pottery Footpath serving Chita Peninsula catch, grilled unagi, and Chita beef hitsumabushi.",
+    "facts": "Located an eight-minute walk from Tokoname Station near the Pottery Footpath entrance; beloved for local Chita Peninsula seafood, grilled eel, and a signature unagi-and-Chita-beef hitsumabushi.",
+    "weak": "",
+    "verifiedBy": "https://tokonamemaruichi.jp/",
+    "quote": "・2026年10月16～18日の３日間、臨時休業とさせて頂きます。",
+    "fixes": "whatEn/whatJa: 地魚料理の現行提供を断定せず、公式の「地魚料理・知多牛・うなぎの店」とする。「丸一地魚膳」は仕入れ困難のため2023年3月に終了。「知多牛海老天丼」も2026年10月現在休止。住所は愛知県常滑市原松町5-95で一致。",
+    "coords": null
+   }
+  },
+  "炭焼 政": {
+   "nameEn": "Sumiyaki Masa",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "tags": [
+    "charcoal-grill",
+    "washoku"
+   ],
+   "what": "やきもの散歩道沿いに2025年3月に開いた炭火焼の店。銀ムツや鶏ももなどを備長炭で焼き、常滑焼の作家の器に盛る。月曜は休み、カード不可。",
+   "whatEn": "A charcoal-grill restaurant opened on the Pottery Footpath in March 2025, grilling fish and chicken over Binchotan and plating on local Tokoname ware. Closed Mondays; cash only.",
+   "note": "炭火の定食を、常滑焼の作家の器ごと味わいたい。",
+   "noteEn": "Enjoy the charcoal-grilled set meal together with the potter's plates.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "すみやき まさ",
+    "address": "2-128-1 Togoucho, Tokoname",
+    "url": "https://sumiyakimasa.com/",
+    "whatJa": "やきもの散歩道沿いの炭火焼料理店で、備長炭の遠火で焼き上げる魚や鶏の二種盛り定食やうなぎを常滑焼の器で提供する。",
+    "whatEn": "Charcoal-grill restaurant along the Pottery Footpath grilling seasonal fish, chicken, and unagi over Binchotan charcoal on local Tokoname ware.",
+    "facts": "Opened in March 2025 along Togoucho on the Pottery Footpath by a chef with 15 years of charcoal-grilling experience; grills silver black cod, salmon, chicken, and eel over Binchotan charcoal served on Tokoname ceramicists' plates.",
+    "weak": "",
+    "verifiedBy": "https://tokoname-kankou.net/gourmet/detail/275/",
+    "quote": "やきもの散歩道に沿いに佇み、本格炭焼料理が味わえます。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "カフェベレクー": {
+   "nameEn": "Café Bellecour",
+   "area": "大野町・金山",
+   "areaEn": "Onomachi & Kanayama",
+   "tags": [
+    "french",
+    "cafe"
+   ],
+   "what": "小倉町にある、フランス・リヨン出身のシェフのカフェレストラン。朝8時からのモーニングやランチがあり、月・火曜は休み（ディナーは金・土曜のみ）。",
+   "whatEn": "A French café-bistro in Oguracho run by a chef from Lyon, serving morning plates from 8:00 and lunch; closed Mondays and Tuesdays (dinner on Fridays and Saturdays only).",
+   "note": "朝の時間に座って、リヨン風のモーニングをゆっくり。",
+   "noteEn": "Sit down in the morning for a slow Lyonnaise breakfast.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "かふぇ べれくー",
+    "address": "4-189 Oguracho, Tokoname",
+    "url": "https://cafebellecour.jp/",
+    "whatJa": "大野町駅近くの小倉町にあるリヨン風フレンチカフェ・レストランで、フランスの朝食モーニングから伝統的な郷土料理ランチ・ディナーまで提供する。",
+    "whatEn": "Lyonnaise French cafe and bistro near Onomachi Station serving traditional French breakfasts, lunches, and rustic home-style dinners.",
+    "facts": "Independent Lyon-inspired French restaurant and cafe in Oguracho within walking distance of Onomachi Station; popular with locals from 8am French morning service through lunch and dinner.",
+    "weak": "",
+    "verifiedBy": "https://note.com/date_kumimasu/n/n2354fa242410",
+    "quote": "テラスや子どもの遊び場があり、家族で行き先を探すときにも。",
+    "fixes": "住所は公式サイトの愛知県常滑市小倉町4丁目189で一致。通常ディナーは金・土のみ18:00〜21:00。",
+    "coords": null
+   }
+  },
+  "Organic Laundry & Cafe yuragi 1/f": {
+   "nameEn": "Organic Laundry & Cafe yuragi 1/f",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "coffee",
+    "tea",
+    "cafe"
+   ],
+   "what": "瀬木町のコインランドリー併設カフェ。常滑焼の急須で淹れるスペシャルティコーヒーや有機日本茶、無添加の焼き菓子を出す。8時から17時、木曜休み、現金のみ。",
+   "whatEn": "A café attached to an organic laundry in Segicho, serving specialty coffee and organic Japanese tea brewed in Tokoname kyusu alongside additive-free bakes. Open 8:00 to 17:00; closed Thursdays; cash only.",
+   "note": "常滑焼の急須で淹れたお茶と、無添加の焼き菓子で一息。",
+   "noteEn": "A quiet break with tea poured from a Tokoname kyusu and a plain bake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "おーがにっくらんどりーあんどかふぇ ゆらぎ えふぶんのいち",
+    "address": "2-10 Segicho, Tokoname",
+    "url": "https://yuragifbunno1.com/",
+    "whatJa": "瀬木町にある落ち着いたカフェで、常滑焼の急須やカップで淹れるオーガニックコーヒーや日本茶を楽しめる。",
+    "whatEn": "Calm neighborhood cafe in Segicho brewing organic specialty coffee and Japanese green tea served in locally crafted Tokoname ware.",
+    "facts": "Combines an upscale organic-detergent laundry with a serene wood-toned cafe in Segicho; serves organic specialty coffee, house baked sweets, and Japanese teas brewed in local Tokoname ware vessels.",
+    "weak": "",
+    "verifiedBy": "https://yuragifbunno1.com/blog/detail/20261111161845/",
+    "quote": "卵・乳製品不使用のヴィーガン対応米粉焼きドーナツ、新作（季節限定）です。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "NoBlendCoffee": {
+   "nameEn": "NoBlendCoffee",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "coffee",
+    "roaster"
+   ],
+   "what": "鯉江本町のスペシャルティコーヒー豆専門店。他の産地の豆を混ぜないシングルオリジンの豆を扱う。営業は平日の10時から18時（土・日・祝は休み）。",
+   "whatEn": "A specialty coffee bean shop in Koiehonmachi roasting strictly unblended single-origin lots. Open weekdays 10:00 to 18:00 (closed Saturdays, Sundays and public holidays).",
+   "note": "平日に寄って、エチオピアのシングルオリジンを選ぶ。",
+   "noteEn": "Stop by on a weekday to pick a single-origin Ethiopian lot.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "のーぶれんどこーひー",
+    "address": "5-53 Koiehonmachi, Tokoname",
+    "url": "https://www.noblendcoffee.com/",
+    "whatJa": "常滑駅近くの鯉江本町にあるスペシャルティコーヒー豆専門店で、他産地の豆を一切混ぜない旬のシングルオリジン豆を焙煎する。",
+    "whatEn": "Single-origin specialty coffee roaster near Tokoname Station roasting strictly unblended seasonal lots to order.",
+    "facts": "Founded in 2020 in Koiehonmachi with a strict single-origin, never-blended philosophy; selects top-grade seasonal lots such as Ethiopia Guji Natural G1 and Guatemala SHB and roasts to order.",
+    "weak": "",
+    "verifiedBy": "https://www.noblendcoffee.com/new/2026-10-22-150400.html",
+    "quote": "The final shipping date before the closure is October 30th (Friday).",
+    "fixes": "短期休業は2026年11月2〜6日、発送再開は11月9日と明記。住所は愛知県常滑市鯉江本町5-53で一致。",
+    "coords": null
+   }
+  },
+  "カフェ麦": {
+   "nameEn": "Cafe Baku",
+   "area": "大谷・小鈴谷",
+   "areaEn": "Otani & Kosugaya",
+   "tags": [
+    "coffee",
+    "sweets",
+    "cafe"
+   ],
+   "what": "樽水町の高台にある、常滑の景色を見渡すカフェ。2026年4月にリニューアルし、カウンター席でコーヒーやクリームソーダ、手作りのチーズケーキを出している。",
+   "whatEn": "A hilltop café in Tarumizucho looking out over Tokoname, renewed in April 2026, serving coffee, cream soda and homemade cheesecake at window counter seats.",
+   "note": "景色が見えるカウンターに座って、チーズケーキを頼む。",
+   "noteEn": "Take a counter seat facing the view and order the cheesecake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇ ばく",
+    "address": "3-138-1 Tarumizucho, Tokoname",
+    "url": "https://www.instagram.com/cafebaku2026/",
+    "whatJa": "樽水町の高台から海と常滑の街並みを望む小さなカフェ＆ギャラリーで、丁寧なコーヒーと手作りチーズケーキが味わえる。",
+    "whatEn": "Hilltop neighborhood cafe and gallery in Tarumizucho overlooking Ise Bay, serving hand-brewed coffee and homemade cheesecake.",
+    "facts": "Perched on a quiet rise in southern Tokoname's Tarumizucho with wide views toward Ise Bay; pairs hand-brewed coffee and house-baked cheesecake with small rotating art displays.",
+    "weak": "",
+    "verifiedBy": "https://www.chitamaru.jp/art/9630/",
+    "quote": "チーズケーキは濃厚なのに重たさがなく、ペロリと食べてしまいました。",
+    "fixes": "住所は常滑市樽水町3-138-1で一致。2026年4月リニューアル。記事はコーヒーのハンドドリップについては述べていないため、whatEnのhand-brewedは裏付け未確認。",
+    "coords": null
+   }
+  },
+  "HOUSE OF 12": {
+   "nameEn": "HOUSE OF 12",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "tags": [
+    "ceramics",
+    "gallery",
+    "craft"
+   ],
+   "what": "やきもの散歩道にある、手塚建築研究所の設計によるギャラリー。常滑の作家の器を中心に、ガラスや木工、布の作品を展示・販売する。金〜月曜の10時から16時。",
+   "whatEn": "A gallery on the Pottery Footpath in a building by Tezuka Architects, showing and selling Tokoname ceramics alongside glass, woodwork and textiles. Open Friday to Monday, 10:00 to 16:00.",
+   "note": "常滑の作家の器と建物のつくりを、静かに見比べたい。",
+   "noteEn": "Compare the Tokoname potters' vessels against the quiet building.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "はうす おぶ とぅえるぶ",
+    "address": "6-20-1 Sakaemachi, Tokoname",
+    "url": "https://www.house-of-12.com/house-of-12",
+    "whatJa": "手塚建築研究所が設計を手がけたやきもの散歩道のギャラリーで、常滑をはじめとする陶芸作家の常設展示や個展を開催する。",
+    "whatEn": "Contemporary ceramics and craft gallery on the Pottery Footpath set in a Tezuka Architects building, exhibiting Tokoname and Japanese studio potters.",
+    "facts": "Opened in 2024 on Sakaemachi in a distinctive space designed by Tezuka Architects; hosts permanent selections and solo exhibitions by ceramicists such as Akane Koie, Eri Higashi, and Eiji Matsumura.",
+    "weak": "",
+    "verifiedBy": "https://www.house-of-12.com/house-of-12/%E3%82%A2%E3%82%AD%E3%83%8E%E3%83%A8%E3%83%BC%E3%82%B3-%E6%B2%B3%E5%86%85%E4%BC%AF%E7%A7%8B",
+    "quote": "神奈川県の藤野から美しいガラスと\n木工の作品をお招きします",
+    "fixes": "公式の常設作家一覧では東絵理の英字名はEri Azuma（Eri Higashiではない）。住所は愛知県常滑市栄町6-20-1で一致。",
+    "coords": null
+   }
+  },
+  "にざまつ 散歩道店": {
+   "nameEn": "Nizamatsu Sampomichi",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "tags": [
+    "ceramics",
+    "wagashi",
+    "cafe"
+   ],
+   "what": "やきもの散歩道入口の、窯元が営む器と草もちの店。手作りの常滑焼や山ぶどうのつるかご、アンティーク雑貨が並び、草もちの喫茶もある。8時半から16時、無休。",
+   "whatEn": "A kiln-run pottery and mugwort mochi shop at the Pottery Footpath entrance, selling handmade Tokoname ware, wild-grapevine baskets and antiques, with a café for kusamochi. Open 8:30 to 16:00 daily.",
+   "note": "草もちと珈琲で一息ついてから、山ぶどうのかごを見る。",
+   "noteEn": "Pause over mugwort mochi and coffee, then look at the grapevine baskets.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "にざまつ さんぽみちてん",
+    "address": "5-67 Haramatsucho, Tokoname",
+    "url": "https://www.tokoname-niza.jp/",
+    "whatJa": "やきもの散歩道入口にある窯元直営の器と雑貨の店で、手づくりの常滑焼や山ぶどう籠の販売とともに名物の草もちを提供する。",
+    "whatEn": "Kiln-run Tokoname ware and craft shop at the edge of the Pottery Footpath selling handmade pottery, wild-grapevine baskets, and freshly steamed mugwort mochi.",
+    "facts": "Operated by Nizamatsu Seitosho kiln at Haramatsucho; combines shelves of handmade Tokoname tableware, woven yamabudo baskets, and British/American antiques with a tea corner serving house-made mugwort kusamochi on Tokoname plates.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/yun-ak0408/entry-12982788133.html",
+    "quote": "草もちモーニング美味しかったです。",
+    "fixes": "住所は公式アクセスページの愛知県常滑市原松町5-67で一致。記事のdatePublishedは2026-10-27T12:39:47.000+09:00。",
+    "coords": null
+   }
+  },
+  "角山陶苑": {
+   "nameEn": "Kakuzan Toen",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "tags": [
+    "ceramics",
+    "workshop"
+   ],
+   "what": "やきもの散歩道で100年続く窯元。1900年ごろに前身が創業し、昔の工房を改装した建物で、職人の指導のもと電動ろくろ体験ができる。9時から16時。",
+   "whatEn": "A century-old kiln on the Pottery Footpath whose forerunner dates to around 1900; in its converted old workshop, craftsmen guide visitors on electric potter's wheels. Open 9:00 to 16:00.",
+   "note": "古い工房の空気のなかで、電動ろくろを一度回してみたい。",
+   "noteEn": "Try throwing on an electric wheel inside the old workshop.",
+   "_src": {
+    "category": "local",
+    "industry": "tokoname-ware",
+    "nameKana": "かくざんとうえん",
+    "address": "3-116 Sakaemachi, Tokoname",
+    "url": "https://kakuzantoen.com/",
+    "whatJa": "やきもの散歩道沿いで三代続く常滑焼の窯元で、伝統的な器づくりとともに職人指導の本格的な電動ろくろ体験を行う。",
+    "whatEn": "Three-generation Tokoname ware kiln on the Pottery Footpath producing traditional stoneware and hosting electric potter's wheel workshops with working craftsmen.",
+    "facts": "Three-generation family kiln on Sakaemachi along the Pottery Footpath; fires pieces in Chita clay and glaze palettes while craftsmen guide visitors directly at electric potter's wheels.",
+    "weak": "",
+    "verifiedBy": "https://kakuzantoen.com/",
+    "quote": "11月15日（日）は満席になりました。",
+    "fixes": "whatEn/whatJa: 公式の歴史ページでは1900年ごろに前身の渡角製陶所が創業、2000年頃から建物を改装して陶芸体験を開始とある。「三代続く」は今回開いた公式ページでは確認できないため、この記述に置き換える。住所は愛知県常滑市栄町3丁目116で一致。",
+    "coords": null
+   }
+  },
+  "前川製陶所": {
+   "nameEn": "Maekawa Seitosho",
+   "area": "鯉江・北条",
+   "areaEn": "Koie & Hokujo",
+   "tags": [
+    "ceramics",
+    "kyusu"
+   ],
+   "what": "大正初期に北条に築かれた窯元「賢山窯」。常滑市指定無形文化財の大物ヨリコ造りを受け継ぎ、四代・前川淳蔵が食器や急須を手がける。",
+   "whatEn": "The Taisho-era kiln Kenzan-gama in Hokujo, preserving Tokoname's large coil-built yoriko-zukuri method while fourth-generation potter Junzo Maekawa crafts tableware and kyusu.",
+   "note": "大物づくりの窯元で、四代目の繊細な急須を見てみたい。",
+   "noteEn": "At a kiln known for giant jars, see the fourth generation's fine kyusu.",
+   "_src": {
+    "category": "local",
+    "industry": "tokoname-ware",
+    "nameKana": "まえかわせいとうじょ",
+    "address": "4-64 Hokujo, Tokoname",
+    "url": "https://maekawa-seito.com/",
+    "whatJa": "大正初期創業の「賢山窯」として北条に窯を構え、大物ヨリコ造りの伝統と四代・前川淳蔵による精緻な急須・茶器を受け継ぐ窯元。",
+    "whatEn": "Taisho-era Tokoname kiln in Hokujo known as Kenzan-gama, preserving giant coil-built stoneware alongside fourth-generation master Junzo Maekawa's fine kyusu.",
+    "facts": "Established in early Taisho in Hokujo as Kenzan-gama; carries on Tokoname's intangible cultural heritage omono yoriko-zukuri coil-forming for large jars and bonsai pots while fourth-generation potter Junzo Maekawa throws prized kyusu and teaware.",
+    "weak": "",
+    "verifiedBy": "https://hugkum.sho.jp/808981",
+    "quote": "また、工房では直接前川さんから急須を購入することができます。",
+    "fixes": "",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "INAXライブミュージアム",
+   "nameEn": "INAX Live Museum",
+   "kind": "art",
+   "area": "奥栄町",
+   "areaEn": "Okusakae",
+   "address": "常滑市奥栄町1-130",
+   "url": "https://livingculture.lixil.com/ilm/",
+   "what": "土とやきものをテーマにした7つの館からなる体験型ミュージアム。1921年建造の土管工場を残す資料館や世界のタイル博物館がある。10時から17時、水曜（祝日は開館）と年末年始は休み。",
+   "whatEn": "A seven-pavilion museum of clay and ceramics, including a preserved 1921 pipe factory and the World Tile Museum. Open 10:00 to 17:00; closed Wednesdays (except public holidays) and year-end.",
+   "coords": [
+    34.88176,
+    136.8486
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://livingculture.lixil.com/ilm/ & /ilm/information/ : 2026/11/12更新あり。企画展「難題こそ、おもしろい。オーダーメイドの建築やきもの」2026/10/31〜2027/04/06。〒479-8586 愛知県常滑市奥栄町1-130、10:00〜17:00、水曜休館（祝日開館）・年末年始休。",
+   "_coordsSource": "OSM way 1009875636 (INAXライブミュージアム)"
+  },
+  {
+   "name": "とこなめ陶の森",
+   "nameEn": "Tokoname Ceramic Forest",
+   "kind": "art",
+   "area": "瀬木町",
+   "areaEn": "Segicho",
+   "address": "常滑市瀬木町4-203",
+   "url": "https://www.tokoname-tounomori.jp/",
+   "what": "常滑焼の資料館、陶芸研究所、研修工房からなる市立の施設。堀口捨己設計の陶芸研究所では平安時代末期から現代までの常滑焼を展示する。9時から17時、月曜（祝日の場合翌日）と年末年始は休み、入場無料。",
+   "whatEn": "A municipal complex of museum, research institute and training studio; the institute designed by Sutemi Horiguchi exhibits Tokoname ware from the late Heian period to today. Open 9:00 to 17:00; closed Mondays (or next day) and year-end; free admission.",
+   "coords": [
+    34.88595,
+    136.84949
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.tokoname-tounomori.jp/ : 2026.10.27・2026.10.16更新あり。〒479-0821 常滑市瀬木町4-203、9:00〜17:00、月曜休館（祝日の場合翌日）・年末年始、入場無料。",
+   "_coordsSource": "OSM way 115181653 (常滑市瀬木町4-203 とこなめ陶の森 資料館位置)"
+  },
+  {
+   "name": "廻船問屋 瀧田家",
+   "nameEn": "Takita Residence",
+   "kind": "sight",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "address": "常滑市栄町4-75",
+   "url": "https://takitake.com/",
+   "what": "江戸から明治前期にかけて海運業を支えた廻船主・瀧田家の居宅で、1850年ごろの建築を復元した市指定有形文化財。9時半から16時半、水曜（祝日は開館）と年末年始は休み。",
+   "whatEn": "The restored c. 1850 residence of the Takita shipping merchants who supported Tokoname's coastal trade from the Edo to early Meiji eras; a city tangible cultural property. Open 9:30 to 16:30; closed Wednesdays (except holidays) and year-end.",
+   "coords": [
+    34.88807,
+    136.83904
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://takitake.com/ : 2026.10.19更新あり。〒479-0836 常滑市栄町4-75、9:30〜16:30、水曜休館（祝日開館）・年末年始、入館料300円。",
+   "_coordsSource": "OSM way 570558746 (廻船問屋瀧田家)"
+  },
+  {
+   "name": "常滑市登窯広場 展示工房館",
+   "nameEn": "Climbing Kiln Plaza Exhibition Hall",
+   "kind": "sight",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "address": "常滑市栄町6-145",
+   "url": "https://kobokan-tokoname.com/",
+   "what": "やきもの散歩道Aコースの登窯広場にある展示施設。昭和55年まで使われた両面焚倒焔式角窯を保存展示し、近くの国指定重要有形民俗文化財の登窯（陶栄窯）とあわせて見られる。9時半から16時半、水曜休み。",
+   "whatEn": "An exhibition hall in Climbing Kiln Plaza on Pottery Footpath Course A, preserving a two-sided downdraft kiln used until 1980 near the nationally designated Toei-gama climbing kiln. Open 9:30 to 16:30; closed Wednesdays.",
+   "coords": [
+    34.88653,
+    136.83978
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kobokan-tokoname.com/ : 2026.10.19更新あり。〒479-0836 常滑市栄町6-145、9:30〜16:30、水曜定休（祝日の場合翌日）・年末年始。",
+   "_coordsSource": "OSM way 570558744 (登窯広場)"
+  },
+  {
+   "name": "やきもの散歩道（土管坂）",
+   "nameEn": "Pottery Footpath (Dokanzaka)",
+   "kind": "sight",
+   "area": "やきもの散歩道",
+   "areaEn": "Pottery Footpath",
+   "address": "常滑市栄町・陶郷町ほか",
+   "url": "https://www.tokoname-kankou.net/spot/detail/1/",
+   "what": "中心市街地の小高い丘に残る散策路。レンガの煙突や黒壁の工房、土管や焼酎瓶を積んだ土管坂など、焼き物の町の風景を歩いて巡れる。",
+   "whatEn": "A hillside walking route above central Tokoname passing brick chimneys, black-walled workshops and Dokanzaka Slope lined with ceramic pipes and shochu jars.",
+   "coords": [
+    34.8876,
+    136.83986
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.tokoname-kankou.net/spot/detail/1/ (とこなめ観光ナビ公式) : やきもの散歩道・土管坂・黒壁の工房・レンガ煙突。散策自由。",
+   "_coordsSource": "OSM way 570956504 (土管坂)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "大蔵餅",
+   "verdict": "doubt",
+   "reason": "Page opened but has no dated 2026 post; hours and closed-day info are undated. Founded 昭和26年10月 (1951) matches."
+  },
+  {
+   "name": "pâtisserie Horyu",
+   "verdict": "doubt",
+   "reason": "Instagram only returned a title without content (login wall); no 2026 post readable."
+  },
+  {
+   "name": "常滑屋",
+   "verdict": "doubt",
+   "reason": "Official page opened but shows no dated 2026 post, notice or article."
+  },
+  {
+   "name": "ビストロ バルフルール",
+   "verdict": "doubt",
+   "reason": "Official site opened; no dated 2026 content found, only undated promo/keywords."
+  },
+  {
+   "name": "大野町ダイニング kurama",
+   "verdict": "doubt",
+   "reason": "Only undated opening hours; no 2026 dated evidence."
+  },
+  {
+   "name": "TAKE COFFEE ROASTERY",
+   "verdict": "doubt",
+   "reason": "Instagram page only exposed profile bio with undated hours (closed Thu/Fri); no dated 2026 post readable."
+  },
+  {
+   "name": "Kedi Baskan",
+   "verdict": "doubt",
+   "reason": "Instagram profile bio only (11:30-19:00), no dated 2026 post readable."
+  },
+  {
+   "name": "cafe nicotto",
+   "verdict": null,
+   "reason": ""
+  },
+  {
+   "name": "morrina",
+   "verdict": "doubt",
+   "reason": "Instagram page only showed '72 Posts' meta without post dates; no 2026 sentence could be read."
+  },
+  {
+   "name": "K&A SO-CO",
+   "verdict": "doubt",
+   "reason": "Site footer only '@ 2026 K&A SO-CO All Rights Reserved'; blog feed latest post is 2020; gallery page only up to Galerie2025; no 2026 evidence."
+  },
+  {
+   "name": "TOKONAME STORE",
+   "verdict": "doubt",
+   "reason": "Footer '© 2014-2021'; news page latest dated 2017.07.13; no 2026 evidence."
+  },
+  {
+   "name": "玉光陶園",
+   "verdict": "doubt",
+   "reason": "Blog latest 2022年3月24日; footer © 2022; only cache stamps in 2026; no 2026 evidence."
+  },
+  {
+   "name": "一菁陶園",
+   "verdict": "doubt",
+   "reason": "Official site opened: newest news posts are from Nov 2021 (KOUGEI EXPO, Aichi Tabi e-money). Only generic 不定休 hours. The only dated exhibition found on tokoname-kankou.net (event/detail/536) is 2025年10月3日(金) ～ 10月13日(月). No opened page showing a 2026 operation."
+  },
+  {
+   "name": "まるたつ磯村商店",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "憲児陶苑",
+   "verdict": "doubt",
+   "reason": "公式サイトは商品・所在地・見学案内が無日付で、2026年の営業を示す文がない。公式Instagramはcurlで投稿本文を取得できなかった。2026年11月9日の第三者記事は憲児陶苑の人物との会話に触れるだけで、店舗・工房の営業確認には不十分。"
+  }
+ ]
+}

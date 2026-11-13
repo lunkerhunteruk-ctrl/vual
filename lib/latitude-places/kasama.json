@@ -1,0 +1,247 @@
+[
+ {
+  "name": "洋風笠間菓子 グリュイエール",
+  "nameEn": "Gruyeres",
+  "category": "sweets",
+  "tags": [
+   "chestnut",
+   "cakes"
+  ],
+  "area": "下市毛",
+  "areaEn": "Shimoichige",
+  "address": "285 Shimoichige, Kasama-shi, Ibaraki",
+  "url": "https://kasamagashi.com/",
+  "what": "笠間や茨城の食材を使う洋菓子店。笠間の栗菓子があり、店内のカフェには絵画や笠間焼を飾る。",
+  "whatEn": "A patisserie using ingredients from Kasama and Ibaraki, with local chestnut sweets and a café displaying paintings and Kasama-yaki.",
+  "note": "栗のお菓子を選んだら、カフェの笠間焼も見ていく。",
+  "noteEn": "Choose a chestnut sweet, then look at the pottery in the café.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.37391,
+   140.24634
+  ]
+ },
+ {
+  "name": "お菓子の店 くり～む",
+  "nameEn": "La Crème",
+  "category": "sweets",
+  "tags": [
+   "chestnut",
+   "cakes",
+   "scones"
+  ],
+  "area": "東平",
+  "areaEn": "Higashidaira",
+  "address": "1-9-13 Higashidaira, Kasama-shi, Ibaraki",
+  "url": "https://la-creme.jp/",
+  "what": "東平の洋菓子店。笠間栗のモンブランや焼菓子を作り、季節ごとに菓子のフェアを開く。",
+  "whatEn": "A patisserie in Higashidaira making Kasama chestnut Mont Blanc and baked sweets, with seasonal sweets fairs.",
+  "note": "栗を選ぶなら、笠間栗を使う和栗のモンブランにする。",
+  "noteEn": "For chestnuts, choose the Japanese Mont Blanc made with Kasama chestnuts.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.35014,
+   140.31308
+  ]
+ },
+ {
+  "name": "Lunch & Cafe 陶之助＋",
+  "nameEn": "Lunch & Cafe Tounosuke＋",
+  "category": "food",
+  "tags": [
+   "ceramics",
+   "lunch"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "4036 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://www.tounosuke.com/",
+  "what": "笠間で採れた食材の料理を、笠間の作家の器で出すカフェ。木曜・金曜は休みで、祝日は開く。",
+  "whatEn": "A café serving food made with Kasama ingredients on vessels by local potters. Closed Thursdays and Fridays, except holidays.",
+  "note": "料理を待つ間に、笠間の作家が作った器も見ておく。",
+  "noteEn": "While waiting for the food, look at the vessels by Kasama potters.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.39086,
+   140.28411
+  ]
+ },
+ {
+  "name": "HOME ROAST COFFEE 夢豆",
+  "nameEn": "Home Roast Coffee Mutou",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "1960 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://home-roast-coffee-mutou.jp/",
+  "what": "直火焙煎とハンドピックで豆を仕上げる自家焙煎珈琲店。豆は100gから買え、店内では一杯ずつハンドドリップする。",
+  "whatEn": "A coffee roaster using direct heat and hand-sorting. Beans are sold from 100 g, with hand-drip coffee served in the shop.",
+  "note": "朝八時から開くので、器を見に行く前の一杯にする。",
+  "noteEn": "Open from eight, for a cup before looking at pottery.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.37639,
+   140.25294
+  ]
+ },
+ {
+  "name": "カフェ モン・リヴル",
+  "nameEn": "Café Mon Livre",
+  "category": "cafe",
+  "tags": [
+   "tea",
+   "lunch"
+  ],
+  "area": "箱田",
+  "areaEn": "Hakoda",
+  "address": "笠間市箱田1439",
+  "url": "https://cafe-monlivre.com/",
+  "what": "箱田のカフェで、自家栽培の米や野菜を使う昼食を一日6食、予約で出す。大きな窓から笠間の風景が見え、木曜から土曜に開く。",
+  "whatEn": "A café in Hakoda serving six lunches a day by reservation, using home-grown rice and vegetables. Large windows look over Kasama; open Thursday to Saturday.",
+  "note": "昼食は一日六食なので、木曜から土曜の席を予約する。",
+  "noteEn": "Lunch is six meals a day; book a table for Thursday to Saturday.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "笠間工芸の丘",
+  "nameEn": "Crafthills Kasama",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "woodwork",
+   "lacquer"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "2388-1 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://kasama-crafthills.com/",
+  "what": "笠間焼や茨城の工芸品を扱い、陶芸体験ができる施設。松井康成の作品や、いまの作家の器を展示販売する。",
+  "whatEn": "A centre for Kasama-yaki and Ibaraki crafts, with pottery workshops. It displays and sells work by Matsui Kosei and contemporary makers.",
+  "note": "器を見る日は、松井康成の作品も一緒に見ておきたい。",
+  "noteEn": "On a day for looking at pottery, see the Matsui Kosei works too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.37238,
+   140.26158
+  ]
+ },
+ {
+  "name": "きらら館",
+  "nameEn": "Kilala-kan",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "coffee"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "2258-1 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://kilalakan.jp/",
+  "what": "約700人の陶芸家による器を扱う店。店外には週末限定・不定休のコーヒースタンドがある。",
+  "whatEn": "A shop carrying pottery by around 700 makers. An outdoor coffee counter opens on weekends, with irregular closing days.",
+  "note": "たくさん並ぶ器から、毎日使う茶碗を一つ選びたい。",
+  "noteEn": "From all these vessels, I would choose one rice bowl for everyday use.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.36872,
+   140.26137
+  ]
+ },
+ {
+  "name": "Glass Gallery SUMITO",
+  "nameEn": "Glass Gallery SUMITO",
+  "category": "craft",
+  "tags": [
+   "glass",
+   "tableware",
+   "accessories"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "2192-35 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://www.glass-gallery.jp/",
+  "what": "国内のガラス作家の作品を、常設と企画展で展示販売するギャラリー。器やアクセサリー、インテリアの品を扱う。",
+  "whatEn": "A gallery showing and selling work by Japanese glass artists in permanent displays and exhibitions, from tableware to jewellery and interior pieces.",
+  "note": "器だけでなく、ガラスのアクセサリーも見て帰る。",
+  "noteEn": "Look at the glass jewellery as well as the vessels.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.37286,
+   140.25858
+  ]
+ },
+ {
+  "name": "向山窯",
+  "nameEn": "Kouzangama",
+  "category": "local",
+  "industry": "kasama-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "笠間",
+  "areaEn": "Kasama",
+  "address": "2290-4 Kasama, Kasama-shi, Ibaraki",
+  "url": "https://kasamayaki.co.jp/",
+  "what": "笠間焼の窯元・向山窯の直売店。箸置きや食器から陶製の照明まで、工房の製品を展示販売する。",
+  "whatEn": "The direct shop of the Kasama-yaki kiln Kouzangama, displaying and selling its work from chopstick rests and tableware to ceramic lighting.",
+  "note": "食器を選ぶついでに、陶器で作った照明も見ていく。",
+  "noteEn": "While choosing tableware, look at the ceramic lighting too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.36683,
+   140.26209
+  ]
+ },
+ {
+  "name": "製陶ふくだ",
+  "nameEn": "Fukuda Kiln",
+  "category": "local",
+  "industry": "kasama-yaki",
+  "tags": [
+   "ceramics",
+   "kiln"
+  ],
+  "area": "下市毛",
+  "areaEn": "Shimoichige",
+  "address": "754 Shimoichige, Kasama-shi, Ibaraki",
+  "url": "https://www.seitou-fukuda.com/",
+  "what": "下市毛の笠間焼の窯元で、器の直売と陶芸体験を行う。震災で全壊した登り窯は、2013年に再建した。",
+  "whatEn": "A Kasama-yaki kiln in Shimoichige selling its pottery and offering workshops. Its climbing kiln was rebuilt in 2013 after being destroyed in the earthquake.",
+  "note": "器を選ぶ前に、震災のあとに再建された登り窯を見たい。",
+  "noteEn": "Before choosing a vessel, I would look at the climbing kiln rebuilt after the earthquake.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.3696,
+   140.25193
+  ]
+ },
+ {
+  "name": "大津晃窯",
+  "nameEn": "Ohtsukouyou",
+  "category": "local",
+  "industry": "kasama-yaki",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "workshops"
+  ],
+  "area": "手越",
+  "areaEn": "Tegoshi",
+  "address": "68 Tegoshi, Kasama-shi, Ibaraki",
+  "url": "https://www.ohtsukouyou.com/",
+  "what": "手越に150年以上続く笠間焼の窯元。食器や花器の直売所があり、ろくろ・手ひねり・絵付けの体験もできる。",
+  "whatEn": "A Kasama-yaki kiln in Tegoshi with over 150 years of history, selling tableware and vases and offering wheel-throwing, hand-building and painting workshops.",
+  "note": "買う器を見たあとに、手ひねりで自分の器も作りたい。",
+  "noteEn": "After looking at vessels to buy, I would hand-build one of my own.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   36.35726,
+   140.27247
+  ]
+ }
+]

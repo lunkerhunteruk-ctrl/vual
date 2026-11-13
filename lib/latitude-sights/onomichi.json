@@ -1,0 +1,68 @@
+[
+ {
+  "name": "千光寺",
+  "nameEn": "Senkoji Temple",
+  "kind": "sight",
+  "area": "千光寺坂・猫の細道",
+  "areaEn": "Senkoji Slope & Neko no Hosomichi",
+  "address": "尾道市東土堂町15-1",
+  "url": "https://www.senkouji.jp/",
+  "what": "千光寺山の中腹に建つ古寺。朱塗りの本堂や鐘楼、鼓岩（ポンポン岩）があり、境内から尾道の町と尾道水道を見渡せる。拝観時間は9時から17時。",
+  "whatEn": "An old temple partway up Mount Senkoji, with a vermilion main hall, bell tower and Tsudumi-iwa rock, looking out over the town and the Onomichi Channel. Open 9 am to 5 pm.",
+  "coords": [
+   34.41036,
+   133.19868
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "尾道市立美術館",
+  "nameEn": "Onomichi City Museum of Art",
+  "kind": "art",
+  "area": "千光寺公園",
+  "areaEn": "Senkoji Park",
+  "address": "尾道市西土堂町17-19",
+  "url": "https://www.onomichi-museum.jp/",
+  "what": "千光寺公園の中にある市立美術館。2003年に安藤忠雄の設計で改修され、瀬戸内の景色を望む館内で企画展や所蔵品展を開く。祝日以外の月曜と展示替え期間が休館。",
+  "whatEn": "The city art museum in Senkoji Park, renovated in 2003 to a design by Tadao Ando, holding special and collection exhibitions overlooking the Seto Inland Sea. Closed Mondays (except holidays) and between exhibitions.",
+  "coords": [
+   34.41,
+   133.19573
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "平山郁夫美術館",
+  "nameEn": "Hirayama Ikuo Museum of Art",
+  "kind": "art",
+  "area": "因島・瀬戸田",
+  "areaEn": "Innoshima & Setoda",
+  "address": "尾道市瀬戸田町沢200-2",
+  "url": "https://hirayama-museum.or.jp/",
+  "what": "瀬戸田町出身の日本画家・平山郁夫の美術館。生口島にあり、少年期の作品からシルクロードの取材作、しまなみ海道の作品までを展示する。開館は9時から17時。",
+  "whatEn": "A museum on Ikuchijima dedicated to Nihonga painter Hirayama Ikuo, born in Setoda, showing works from his youth, Silk Road travels and the Shimanami Kaido. Open 9 am to 5 pm.",
+  "coords": [
+   34.30572,
+   133.09042
+  ],
+  "notice": "2026年12月8日は展示替えのため休館。",
+  "noticeEn": "Closed on 8 December 2026 for exhibition changeover.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "耕三寺博物館",
+  "nameEn": "Kosanji Museum",
+  "kind": "sight",
+  "area": "因島・瀬戸田",
+  "areaEn": "Innoshima & Setoda",
+  "address": "尾道市瀬戸田町瀬戸田553-2",
+  "url": "https://www.kousanji.or.jp/",
+  "what": "生口島・瀬戸田にある浄土真宗本願寺派の寺院で、寺域全体を博物館として公開している。15棟の堂塔が国の登録有形文化財で、奥に大理石の庭園「未来心の丘」がある。年中無休、9時から17時。",
+  "whatEn": "A Jodo Shinshu temple in Setoda on Ikuchijima open as a museum across its whole grounds, with fifteen registered tangible cultural property buildings and the marble garden Hill of Hope. Open daily, 9 am to 5 pm.",
+  "coords": [
+   34.30397,
+   133.09041
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -5,26 +5,40 @@ import aizuwakamatsuPlaces from './latitude-places/aizuwakamatsu.json';
 import aizuwakamatsuSights from './latitude-sights/aizuwakamatsu.json';
 import beppuPlaces from './latitude-places/beppu.json';
 import beppuSights from './latitude-sights/beppu.json';
+import chichibuPlaces from './latitude-places/chichibu.json';
+import chichibuSights from './latitude-sights/chichibu.json';
 import hagiPlaces from './latitude-places/hagi.json';
 import hagiSights from './latitude-sights/hagi.json';
 import hakodatePlaces from './latitude-places/hakodate.json';
 import hakodateSights from './latitude-sights/hakodate.json';
+import isePlaces from './latitude-places/ise.json';
+import iseSights from './latitude-sights/ise.json';
 import izumoPlaces from './latitude-places/izumo.json';
 import izumoSights from './latitude-sights/izumo.json';
 import kagoshimaPlaces from './latitude-places/kagoshima.json';
 import kagoshimaSights from './latitude-sights/kagoshima.json';
 import kakunodatePlaces from './latitude-places/kakunodate.json';
 import kakunodateSights from './latitude-sights/kakunodate.json';
+import kasamaPlaces from './latitude-places/kasama.json';
+import kasamaSights from './latitude-sights/kasama.json';
 import kurashikiPlaces from './latitude-places/kurashiki.json';
 import kurashikiSights from './latitude-sights/kurashiki.json';
 import nagasakiPlaces from './latitude-places/nagasaki.json';
 import nagasakiSights from './latitude-sights/nagasaki.json';
+import onomichiPlaces from './latitude-places/onomichi.json';
+import onomichiSights from './latitude-sights/onomichi.json';
 import takamatsuPlaces from './latitude-places/takamatsu.json';
 import takamatsuSights from './latitude-sights/takamatsu.json';
+import takaokaPlaces from './latitude-places/takaoka.json';
+import takaokaSights from './latitude-sights/takaoka.json';
 import takayamaPlaces from './latitude-places/takayama.json';
 import takayamaSights from './latitude-sights/takayama.json';
+import tokonamePlaces from './latitude-places/tokoname.json';
+import tokonameSights from './latitude-sights/tokoname.json';
 import tottoriPlaces from './latitude-places/tottori.json';
 import tottoriSights from './latitude-sights/tottori.json';
+import ujiPlaces from './latitude-places/uji.json';
+import ujiSights from './latitude-sights/uji.json';
 
 export const IMPORTED_CITIES: LatitudeCity[] = [
   {
@@ -75,6 +89,29 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: beppuSights as CitySight[],
   },
   {
+    slug: "chichibu",
+    name: "Chichibu",
+    nameJa: "秩父",
+    latitude: "36.0° N",
+    country: "Saitama, Japan",
+    countryJa: "埼玉県",
+    person: "rin",
+    coords: [35.99758, 139.08424],
+    intro: "A basin town in the Okuchichibu mountains, west of the Kanto plain. Chichibu Meisen silk, indigo dyers and an Edo-period sake brewer, with bakeries, coffee and soba around Banba-dori and Ohanabatake, as Rin's picks.",
+    introJa: "関東平野の西、奥秩父の山に囲まれた盆地の町。秩父銘仙と藍染、江戸時代からの酒蔵、それに番場通りと御花畑のパンと珈琲、手打そばを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In western Saitama · a basin in the Okuchichibu mountains", "ja": "埼玉県西部・奥秩父の山に囲まれた盆地の町"},
+    industries: [
+      {"key": "chichibu-meisen", "en": "Chichibu Meisen Silk", "ja": "秩父銘仙", "about": "Chichibu Meisen is a silk textile known in the Taisho and early Showa eras for its vivid hogushi-nassen warp-printed patterns, and is a nationally designated traditional craft. At Chichibu Meisenkan, housed in a 1930 former prefectural textile testing hall, tools and kimono are on display.", "aboutJa": "秩父銘仙は、大正から昭和初期にかけて親しまれた絹織物で、ほぐし捺染による鮮やかな柄が特徴の国の伝統的工芸品。1930年築の旧工業試験場を使ったちちぶ銘仙館では、資料や着物を展示している。"},
+      {"key": "chichibu-indigo", "en": "Chichibu Indigo & Traditional Dyeing", "ja": "秩父の藍染・伝統染物", "about": "Dyers in Chichibu have used underground water from Mount Buko since the Meiji era to dye cotton hanten coats, noren curtains and tenugui. Founded in 1873, Saito Somemono still dyes indigo by hand.", "aboutJa": "秩父の染物屋は、明治時代から武甲山の伏流水を使って、藍染の袢天や暖簾、手ぬぐいを染めてきた。1873年創業の齋藤染物店では、いまも藍染の手仕事を続けている。"},
+      {"key": "chichibu-brewing", "en": "Chichibu Sake & Fermentation", "ja": "秩父の酒造・発酵醸造", "about": "Fed by underground water from Mount Buko and the sharp temperature swings of the basin, Chichibu's breweries have made sake here since the Edo period. Buko Shuzo, founded in 1753, still brews with Mount Buko well water.", "aboutJa": "武甲山の伏流水と盆地の寒暖差に恵まれ、秩父では江戸時代から酒造りが続いてきた。1753年創業の武甲酒造は、いまも武甲山の伏流水で酒を仕込む。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: chichibuPlaces as CityPlace[],
+    sights: chichibuSights as CitySight[],
+  },
+  {
     slug: "hagi",
     name: "Hagi",
     nameJa: "萩",
@@ -116,6 +153,31 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: hakodatePlaces as CityPlace[],
     sights: hakodateSights as CitySight[],
+  },
+  {
+    slug: "ise",
+    name: "Ise",
+    nameJa: "伊勢",
+    latitude: "34.5° N",
+    country: "Mie, Japan",
+    countryJa: "三重県",
+    person: "rin",
+    coords: [34.4911, 136.7098],
+    intro: "A shrine town built around the Outer and Inner Shrines of Ise Jingu. Ise washi, hinoki shrine woodwork, tamari soy sauce and Futami pearls, alongside Ise udon, sweets and coffee from Geku to Naiku, Kawasaki and Futami, as Rin's picks.",
+    introJa: "伊勢神宮の外宮と内宮の門前町。伊勢和紙と檜の神具、たまり醤油、二見の真珠、そして外宮から内宮、河崎、二見までの伊勢うどんと甘味と喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Mie, on the Kii Peninsula · between the Miya and Isuzu rivers", "ja": "三重県の伊勢平野・宮川と五十鈴川のあいだの町"},
+    industries: [
+      {"key": "ise-washi", "en": "Ise Washi Papermaking", "ja": "伊勢和紙", "about": "Ise washi began as ritual paper made for Ise Jingu talismans and ceremonies. Taiho Washi Kougyo, founded in 1899, still makes Jingu paper alongside handmade sheets and inkjet photo paper.", "aboutJa": "伊勢和紙は、伊勢神宮のお神札や祭事に使う御用紙として始まった。1899年創業の大豐和紙工業は、いまも神宮御用紙を奉製しつつ、手漉き和紙や写真用のインクジェット和紙を作っている。"},
+      {"key": "jingu-woodcraft", "en": "Hinoki Shrine Carpentry & Woodcarving", "ja": "神棚・木工神具", "about": "Sustained by the carpentry and timber culture around Ise Jingu, local workshops make unpainted cypress kamidana altars and ritual woodwork. Ise Miyachu, founded in 1938, builds thatched Kiso-hinoki shrines by hand.", "aboutJa": "伊勢神宮の宮造りに連なる木工の土地で、素木の檜を使った神棚や神具が作られてきた。1938年創業の伊勢 宮忠では、木曽檜の茅葺き神棚などを職人が手仕事で仕立てる。"},
+      {"key": "ise-brewing", "en": "Tamari Soy Sauce & Miso Brewing", "ja": "たまり醤油・味噌醸造", "about": "Local breweries mature dark tamari soy sauce, miso and rice koji, which also give Ise udon its thick dark sauce. Koujiya, founded in 1816 near Geku, still brews and sells tamari, miso and koji sweets.", "aboutJa": "伊勢うどんの濃いつゆのもとになるたまり醤油や、味噌、米こうじの醸造が続く町。外宮近くで1816年に創業した糀屋は、いまもたまり醤油や味噌、糀を使った菓子を作っている。"},
+      {"key": "ise-pearl", "en": "Ise-Shima Akoya Pearl Craft", "ja": "伊勢志摩真珠加工", "about": "Akoya pearls cultivated in the bays of Ise-Shima are graded and set into jewellery by specialist workshops along the coast. In Futami, Mieken Pearl has worked with Akoya pearls for over seventy years.", "aboutJa": "伊勢志摩の海で育てられたアコヤ真珠を、専門の店が選別して装身具に仕立てる。二見町では、三重県真珠が70年以上にわたり真珠を扱っている。"},
+      {"key": "ise-cutlery", "en": "Forged Cutlery & Artisan Guildwork", "ja": "打刃物・伊勢手仕事", "about": "Forged kitchen blades and everyday tools have served cooks and shrine visitors along the Geku approach since the Meiji era. Ise Kikuichi, descended from a Meiji blade store, carries forged knives alongside local craft.", "aboutJa": "明治のころから外宮参道で、料理人や参拝客に向けた打刃物や暮らしの道具が扱われてきた。明治創業の店を受け継ぐ伊勢 菊一では、刃物とあわせて地元の手仕事も並ぶ。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: isePlaces as CityPlace[],
+    sights: iseSights as CitySight[],
   },
   {
     slug: "izumo",
@@ -184,6 +246,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: kakunodateSights as CitySight[],
   },
   {
+    slug: "kasama",
+    name: "Kasama",
+    nameJa: "笠間",
+    latitude: "36.4° N",
+    country: "Ibaraki, Japan",
+    countryJa: "茨城県",
+    person: "rin",
+    coords: [36.38547, 140.25438],
+    intro: "A pottery town in central Ibaraki, known for Kasama-yaki and Kasama Inari Shrine. Autumn brings chrysanthemums to the shrine grounds. Pottery shops, chestnut sweets and coffee, as Rin's picks.",
+    introJa: "笠間焼と笠間稲荷神社で知られる、茨城県中央部の町。秋には稲荷の境内に菊が並ぶ。器の店と栗菓子、珈琲を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In central Ibaraki, in Kanto · low hills, plateaus and the Hinuma River", "ja": "関東・茨城県中央部、丘陵と台地に涸沼川が流れる町"},
+    industries: [
+      {"key": "kasama-yaki", "en": "Kasama-yaki ceramics", "ja": "笠間焼", "about": "Kasama-yaki began in Hakoda in the An'ei years (1772–1781), making everyday jars and grinding bowls. Now a nationally designated traditional craft, it includes tableware, vases and ceramic artworks.", "aboutJa": "笠間焼は安永年間（1772〜1781年）に箱田で始まり、甕やすり鉢などの日用品を作ってきた。いまは国の伝統的工芸品で、食器や花器、美術工芸品まで作られている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kasamaPlaces as CityPlace[],
+    sights: kasamaSights as CitySight[],
+  },
+  {
     slug: "kurashiki",
     name: "Kurashiki",
     nameJa: "倉敷",
@@ -228,6 +311,29 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: nagasakiSights as CitySight[],
   },
   {
+    slug: "onomichi",
+    name: "Onomichi",
+    nameJa: "尾道",
+    latitude: "34.4° N",
+    country: "Hiroshima, Japan",
+    countryJa: "広島県",
+    person: "rin",
+    coords: [34.409, 133.2],
+    intro: "A port town on the Seto Inland Sea, with stone-stepped slopes rising behind the harbour. Onomichi sailcloth, kamaboko and Bingo denim, then bread, sweets and coffee in the arcade, on the hillside, and across the channel on Mukaishima and Setoda: Rin's picks.",
+    introJa: "瀬戸内海に面し、港の後ろに石段の坂が続く町。尾道帆布とかまぼこ、備後デニム、それから商店街と坂道、向島や瀬戸田のパンと喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Seto Inland Sea · between harbour and hillside", "ja": "瀬戸内海側・港と坂の町"},
+    industries: [
+      {"key": "onomichi-hanpu", "en": "Onomichi sailcloth canvas", "ja": "尾道帆布", "about": "Mills around Onomichi have woven heavy cotton sailcloth on shuttle looms since the 1930s, originally for Seto Inland Sea cargo boats and fishing vessels. Today local workshops sew the cloth into bags, aprons and everyday goods.", "aboutJa": "尾道では1930年代から、瀬戸内海を行く貨物船や漁船のために、シャトル織機で厚手の綿帆布が織られてきた。いまも地元の工房が、その帆布で鞄やエプロン、日用品を仕立てている。"},
+      {"key": "onomichi-kamaboko", "en": "Onomichi fish-paste kamaboko making", "ja": "尾道かまぼこ", "about": "Seaside workshops in Onomichi have made kamaboko from fresh local fish since the Edo and Taisho eras, grinding the flesh and shaping steamed and fried fish cakes by hand. Shops such as Keima Kamaboko, founded in 1913, still make them without preservatives.", "aboutJa": "尾道の海沿いでは、江戸から大正のころより新鮮な魚をすり身にして、蒸しや揚げのかまぼこを手で作ってきた。1913年創業の桂馬蒲鉾商店のように、保存料を使わずに作り続ける店もある。"},
+      {"key": "bingo-denim", "en": "Bingo shuttle-woven denim", "ja": "備後デニム", "about": "Growing out of the older Bingo kasuri indigo-cotton tradition, mills in Onomichi and the surrounding Bingo region weave, dye and sew heavyweight denim. In Onomichi, the Onomichi Denim Project has local fishermen and farmers wear pairs on the job for a year before selling them.", "aboutJa": "古くからの備後絣の藍染や綿織物の流れをくみ、尾道を含む備後地方では厚手のデニム生地の織りから染め、縫製までが行われている。尾道では、漁師や農家など働く人が一年間穿き込んだジーンズを扱う店もある。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: onomichiPlaces as CityPlace[],
+    sights: onomichiSights as CitySight[],
+  },
+  {
     slug: "takamatsu",
     name: "Takamatsu",
     nameJa: "高松",
@@ -247,6 +353,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: takamatsuPlaces as CityPlace[],
     sights: takamatsuSights as CitySight[],
+  },
+  {
+    slug: "takaoka",
+    name: "Takaoka",
+    nameJa: "高岡",
+    latitude: "36.7° N",
+    country: "Toyama, Japan",
+    countryJa: "富山県",
+    person: "rin",
+    coords: [36.74781, 137.01225],
+    intro: "A castle town founded by Maeda Toshinaga in 1609 on the Toyama Plain. Copperware and metal-casting workshops in Kanayamachi, wagashi and merchant houses along Yamachosuji, and coffee and dining around the station and Kojo Park, as Rin's picks.",
+    introJa: "1609年に前田利長が開いた、富山平野の城下町。金屋町の銅器と鋳物の工房、山町筋の町並みと和菓子、大仏や古城公園のまわりの喫茶とごはんを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Sea of Japan side · a castle town on the Toyama Plain", "ja": "日本海側・富山県の平野に開かれた城下町"},
+    industries: [
+      {"key": "takaoka-doki", "en": "Takaoka Copperware & Metal Casting", "ja": "高岡銅器・鋳物", "about": "Takaoka copperware began in 1611 when Lord Maeda Toshinaga invited seven foundrymen to Kanayamachi. Today, workshops in the town still cast and hand-hammer bronze, brass, tin and aluminum into temple bells and everyday tableware.", "aboutJa": "高岡銅器は、1611年に前田利長が7人の鋳物師を金屋町に招いたことから始まった。今も町内の工房が、青銅や黄銅、錫やアルミを鋳造・鍛金し、おりんや暮らしの器を作り続けている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: takaokaPlaces as CityPlace[],
+    sights: takaokaSights as CitySight[],
   },
   {
     slug: "takayama",
@@ -271,6 +398,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: takayamaSights as CitySight[],
   },
   {
+    slug: "tokoname",
+    name: "Tokoname",
+    nameJa: "常滑",
+    latitude: "34.9° N",
+    country: "Aichi, Japan",
+    countryJa: "愛知県",
+    person: "rin",
+    coords: [34.8885, 136.8395],
+    intro: "A pottery town on the west coast of the Chita Peninsula, facing Ise Bay. Tokoname-yaki kilns and shudei teapots, studios and cafés along the hilly Pottery Footpath, and bakeries and roasters from Onomachi to Otani, as Rin's picks.",
+    introJa: "伊勢湾に面した、知多半島西岸の焼き物の町。常滑焼の窯元と朱泥急須の店、やきもの散歩道の工房と喫茶、大野町から大谷までのパン屋と珈琲を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Chita Peninsula · a hillside pottery town facing Ise Bay", "ja": "知多半島の西岸・伊勢湾に面した坂と窯の町"},
+    industries: [
+      {"key": "tokoname-ware", "en": "Tokoname Ware & Shudei Kyusu", "ja": "常滑焼・朱泥急須", "about": "One of Japan's Six Ancient Kilns, Tokoname has made pottery since the late Heian period. Its iron-rich red clay, fired without glaze into shudei kyusu teapots, takes on sheen with use and softens the astringency of green tea.", "aboutJa": "常滑焼は日本六古窯のひとつで、平安時代末期から続く焼き物。鉄分を含む土を釉薬をかけずに焼く朱泥急須は、使い込むほど艶が増し、お茶の雑味をやわらげるといわれる。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tokonamePlaces as CityPlace[],
+    sights: tokonameSights as CitySight[],
+  },
+  {
     slug: "tottori",
     name: "Tottori",
     nameJa: "鳥取",
@@ -293,5 +441,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: tottoriPlaces as CityPlace[],
     sights: tottoriSights as CitySight[],
+  },
+  {
+    slug: "uji",
+    name: "Uji",
+    nameJa: "宇治",
+    latitude: "34.9° N",
+    country: "Kyoto, Japan",
+    countryJa: "京都府",
+    person: "rin",
+    coords: [34.89296, 135.80626],
+    intro: "A town of tea gardens and old temples along the Uji River. Tea merchants and kumihimo makers near the river, pottery and woodwork in the valley of Sumiyama, and sweets, bread and coffee stretching out to Obaku and Ogura. Rin's picks for November, when the autumn leaves turn.",
+    introJa: "宇治川のほとりに茶園と寺社が連なる町。宇治茶の老舗や炭山の窯元と木工、門前の菓子と珈琲の店が、川の両岸と黄檗・小倉の住宅地まで続く。紅葉の11月に巡る、凛のおすすめ。",
+    images: [],
+    locator: {"en": "South of Kyoto · along the Uji River", "ja": "京都の南・宇治川の両岸に広がる町"},
+    industries: [
+      {"key": "uji-tea", "en": "Uji tea cultivation and processing", "ja": "宇治茶の栽培・製茶", "about": "Uji's matcha and gyokuro are made from shaded-grown leaves, steamed right after picking and ground on stone mills. Of the seven tea gardens named by the Ashikaga shoguns in the Muromachi period, Okunoyama still survives and is tended by Horii Shichimeien.", "aboutJa": "宇治の抹茶や玉露は、覆い下栽培で育てた新芽を摘んですぐ蒸し、石臼で挽く製法でつくられる。室町時代に足利将軍が選んだ「宇治七茗園」のうち、奥ノ山茶園が今も残り、堀井七茗園が守り育てている。"},
+      {"key": "kyo-kumihimo", "en": "Braided silk cord making", "ja": "京くみひも製造", "about": "A traditional Kyoto braided cord craft, carried from yarn dyeing through braiding and finishing. In Uji, Showen Kumihimo, founded in 1948, braids cords both by hand on wooden stands and on braiding machines for kimono obijime, small accessories, and ties for tea caddies.", "aboutJa": "京都の伝統的な組紐で、糸を染めるところから組み、仕上げまでを一貫して行う。宇治では1948年創業の昇苑くみひもが、組み台を使う手組と製紐機の機械組で、帯締めや和装小物のほか、茶缶の紐なども作っている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: ujiPlaces as CityPlace[],
+    sights: ujiSights as CitySight[],
   },
 ];
