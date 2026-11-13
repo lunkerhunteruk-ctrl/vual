@@ -11,7 +11,8 @@
   "whatEn": "A brasserie inside the National Theatre, named after its architect Denys Lasdun, serving seasonal British cooking from the team behind The Marksman in Hackney.",
   "note": "コンクリートの劇場の中で食べる。芝居の前の夕食にいい。",
   "noteEn": "Dinner inside the concrete. Best before a play.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50699, -0.11282]
  },
  {
   "name": "The Anchor & Hope",
@@ -25,7 +26,8 @@
   "whatEn": "A pub on The Cut, open since 2003 near the Young Vic, known for hearty cooking; bookings open 30 days ahead.",
   "note": "パブだけど、料理を食べに行く所。",
   "noteEn": "A pub, but you go for the food.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50348, -0.10659]
  },
  {
   "name": "Wagumi",
@@ -40,7 +42,8 @@
   "whatEn": "A shop for Japanese craft in Oxo Tower Wharf, open since 2011, with ceramics from Kasama potters, teaware and lacquerware, plus regular exhibitions.",
   "note": "川沿いで笠間の器に会える。ブラックフライアーズ橋へ歩く前に寄る。",
   "noteEn": "Kasama pottery by the river. Stop on the way to Blackfriars Bridge.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50838, -0.1083]
  },
  {
   "name": "The Quality Chop House",
@@ -54,7 +57,8 @@
   "whatEn": "A Farringdon Road dining room dating back to 1869, cooking British produce with a focus on steaks and chops.",
   "note": "看板に「チョップ」とある。だから、チョップを頼む。",
   "noteEn": "It says chop on the sign. Order the chop.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52477, -0.11005]
  },
  {
   "name": "Moro",
@@ -68,7 +72,8 @@
   "whatEn": "A Moorish restaurant on Exmouth Market, opened in 1997 by Sam and Sam Clark after a camper-van journey through Spain, Morocco and the Sahara.",
   "note": "レシピ本は古本屋の棚でもよく見る。本物は、ここで食べる。",
   "noteEn": "Their cookbooks turn up on second-hand shelves. The real thing is here.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52584, -0.109]
  },
  {
   "name": "Morito",
@@ -82,7 +87,8 @@
   "whatEn": "Moro's younger sibling next door, open since 2010, serving tapas and mezze at an orange counter against a blue wall.",
   "note": "モロの隣。一人なら、カウンターで小皿を。",
   "noteEn": "Next door to Moro. On your own, take the counter and small plates.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.5258, -0.10908]
  },
  {
   "name": "Sessions Arts Club",
@@ -96,7 +102,8 @@
   "whatEn": "A restaurant in the old judges' dining room of Sessions House, a listed courthouse on Clerkenwell Green, which also runs art and performance programmes; over-18s only.",
   "note": "昔の判事たちの食堂。予約は30日前の朝7時に開く。",
   "noteEn": "The old judges' dining room. Bookings open at 7am, thirty days ahead.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52254, -0.10598]
  },
  {
   "name": "José",
@@ -110,7 +117,8 @@
   "whatEn": "José Pizarro's original London tapas bar, opened in 2011: a blackboard menu built from the market and around fifty Spanish wines and sherries by the glass. No reservations.",
   "note": "予約はできない。黒板から選ぶ。",
   "noteEn": "No bookings. Choose from the blackboard.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50061, -0.0819]
  },
  {
   "name": "Pizarro",
@@ -124,7 +132,8 @@
   "whatEn": "José Pizarro's second Bermondsey Street restaurant, built around an open kitchen, with seasonal Spanish plates and a menú del día at weekday lunch.",
   "note": "平日の昼は、メヌー・デル・ディアで。",
   "noteEn": "Weekday lunch: the menú del día.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.49848, -0.08123]
  },
  {
   "name": "London Glassblowing",
@@ -139,7 +148,8 @@
   "whatEn": "A hot-glass studio and gallery founded by Peter Layton in 1976, showing and selling blown-glass vases, bowls and sculptural pieces.",
   "note": "ガラスは、光に透かして選ぶ。",
   "noteEn": "Hold the glass up to the light, then choose.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50159, -0.08236]
  },
  {
   "name": "Monmouth Coffee Company",
@@ -154,7 +164,8 @@
   "whatEn": "The Bermondsey shop of Monmouth Coffee, which began on Monmouth Street in 1978 and roasts coffee bought from single farms; no paper cups.",
   "note": "紙コップはない。座って飲むか、自分のカップで。",
   "noteEn": "No paper cups. Stay, or bring your own.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.4956, -0.06933]
  },
  {
   "name": "Rochelle Canteen",
@@ -168,7 +179,8 @@
   "whatEn": "Margot Henderson's canteen in a walled garden, opened in 2004 with one big shared table, cooking a small menu that changes daily.",
   "note": "塀の向こうの庭で食べる。昼に行く。",
   "noteEn": "A garden behind a wall. Go at lunchtime.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52562, -0.07417]
  },
  {
   "name": "The Clove Club",
@@ -182,7 +194,8 @@
   "whatEn": "A tasting-menu restaurant with an open kitchen inside the historic Shoreditch Town Hall.",
   "note": "特別な日のために取っておく店。古い区役所の建物ごと。",
   "noteEn": "One to save for a big day. The old town hall comes with it.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52708, -0.07916]
  },
  {
   "name": "Brat",
@@ -196,7 +209,8 @@
   "whatEn": "A first-floor restaurant in a former pub on Redchurch Street, inspired by Basque cooking and built around the fire.",
   "note": "火で焼く料理。階段を上がる。",
   "noteEn": "Cooking over fire. Up the stairs.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52427, -0.07669]
  },
  {
   "name": "Padella Shoreditch",
@@ -210,7 +224,8 @@
   "whatEn": "A fresh-pasta restaurant just off Great Eastern Street, where pasta is rolled daily in the open kitchen and there is counter seating.",
   "note": "並んでも、カウンターでパスタを一皿。",
   "noteEn": "Even if there's a queue, one plate of pasta at the counter.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52338, -0.08177]
  },
  {
   "name": "Prufrock Coffee",
@@ -225,7 +240,8 @@
   "whatEn": "A coffee bar on Leather Lane since 2011, serving Square Mile alongside guest roasters from Europe, with an ever-changing coffee list and its own barista training centre.",
   "note": "コーヒーの表は毎回変わる。聞いてから頼む。",
   "noteEn": "The coffee list keeps changing. Ask first, then order.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51995, -0.10952]
  },
  {
   "name": "Klei",
@@ -240,7 +256,8 @@
   "whatEn": "An independent ceramics shop on Hackney Road, founded in 2018 and run by potter Skye Corewijn, showing work by London and UK makers.",
   "note": "店の人も陶芸家。西コークの島で焼いた器もある。",
   "noteEn": "Run by a potter. Some of it was fired on an island in West Cork.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.53104, -0.06918]
  },
  {
   "name": "Sotheran's",
@@ -255,7 +272,8 @@
   "whatEn": "An antiquarian bookseller founded in York in 1761. Since summer 2025 its browsing shop has been on Cecil Court, holding much of its literature and poetry; the rarer books are at 22 Charing Cross Road.",
   "note": "1761年からの本屋が、いまは古書の路地にいる。詩の棚が長い。",
   "noteEn": "A bookseller since 1761, now on the booksellers' lane. Long shelves of poetry.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51078, -0.12761]
  },
  {
   "name": "Maggs Bros. Ltd",
@@ -270,7 +288,8 @@
   "whatEn": "Rare books and manuscripts dealers founded by Uriah Maggs in the 1850s. The Curzon Street shop is open on weekdays; the headquarters is at 48 Bedford Square, Bloomsbury.",
   "note": "手紙や手稿まで扱う。本になる前の文字が見られる。",
   "noteEn": "They deal in letters and manuscripts too. Words from before they became books.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.5067, -0.14648]
  },
  {
   "name": "Jarndyce Antiquarian Booksellers",
@@ -285,7 +304,8 @@
   "whatEn": "An antiquarian bookseller opposite the British Museum, dealing mainly in 18th- and 19th-century English books, pamphlets and broadsides, including Dickens catalogues. Open weekdays 11am–5.30pm.",
   "note": "大英博物館の向かいで、19世紀の小冊子を売っている。",
   "noteEn": "Opposite the British Museum, selling 19th-century pamphlets.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51805, -0.12626]
  },
  {
   "name": "Skoob Books",
@@ -300,7 +320,8 @@
   "whatEn": "A second-hand bookshop in the basement of the Brunswick Centre, with one of London's broadest selections of used books, strong in academic subjects and literature. Open seven days a week.",
   "note": "地下に降りると、学生の頃に読んだ本の古い版がある。",
   "noteEn": "Downstairs, old editions of the books you read as a student.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.52502, -0.12453]
  },
  {
   "name": "London Review Bookshop",
@@ -315,7 +336,8 @@
   "whatEn": "A bookshop opened in 2003 by the London Review of Books, near the British Museum, with about 20,000 titles and a busy programme of author talks.",
   "note": "雑誌の書評を書く人たちが選んだ棚。詩の量が多い。",
   "noteEn": "Shelves chosen by the people behind a review magazine. A lot of poetry.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51855, -0.12424]
  },
  {
   "name": "Heywood Hill",
@@ -330,7 +352,8 @@
   "whatEn": "A bookshop selling old and new books on Curzon Street since August 1936, also known for subscriptions of books chosen for each reader. Open weekdays 9.30am–6pm.",
   "note": "本を人に合わせて選ぶ店。私の仕事の、ずっと先にいる。",
   "noteEn": "A shop that chooses books for people. Far ahead of my own job.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50701, -0.14657]
  },
  {
   "name": "Stanfords",
@@ -345,7 +368,8 @@
   "whatEn": "A map and travel bookshop founded by Edward Stanford in 1853, selling maps, travel books, atlases and globes; it moved from its long-time Long Acre home to Mercer Walk in 2019.",
   "note": "本で読んだ場所を、地図で確かめられる。",
   "noteEn": "Where you check the places you met in books against a map.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51301, -0.12535]
  },
  {
   "name": "Henry Poole & Co",
@@ -360,7 +384,8 @@
   "whatEn": "A bespoke tailor founded in 1806, one of the oldest houses on Savile Row, still cutting each suit to an individual pattern; it marked its 220th year in 2026.",
   "note": "帳簿に、二百年前の客の注文が残っている店。",
   "noteEn": "Its ledgers still hold orders from two hundred years ago.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51115, -0.14043]
  },
  {
   "name": "Lock & Co. Hatters",
@@ -375,7 +400,8 @@
   "whatEn": "A hat shop whose business began in 1676 and has been at 6 St James's Street since 1765; women's couture hats are made by hand in the workroom under the roof, where repairs and re-blocking are also done. It turned 350 in 2026.",
   "note": "350年同じ通りにある帽子屋。屋根裏で、いまも縫っている。",
   "noteEn": "A hatter on the same street for 350 years. Still sewing under the roof.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.50573, -0.1382]
  },
  {
   "name": "James Smith & Sons",
@@ -390,6 +416,7 @@
   "whatEn": "An umbrella and walking-stick shop founded in 1830, with its Victorian shopfront intact; some umbrellas are made, and repairs done, in the basement workshop.",
   "note": "ヴィクトリア朝の店先がそのまま残る。雨の街の店。",
   "noteEn": "The Victorian shopfront still stands. A shop for a rainy city.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [51.51683, -0.12661]
  }
 ]

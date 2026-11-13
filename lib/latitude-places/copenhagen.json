@@ -12,7 +12,8 @@
   "whatEn": "The flagship of Studio Arhoj, a ceramics and glass studio, where you can watch the team blow glass, throw pots and glaze through the windows and shelves.",
   "note": "窓の外から、ガラスを吹くところが見える。棚より先に、工房を見る。",
   "noteEn": "You can watch them blow glass from the street. Look at the workshop before the shelves.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.6806, 12.57588]
  },
  {
   "name": "Conditori La Glace",
@@ -26,7 +27,8 @@
   "whatEn": "A confectioner opened in 1870 by Nicolaus Henningsen at Skoubogade 3, calling itself Denmark's oldest, known for layer cakes such as the Sportskage.",
   "note": "1870年から同じ通りの店。スポーツケーキを一切れ頼む。",
   "noteEn": "On the same street since 1870. A slice of the Sportskage.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67859, 12.57359]
  },
  {
   "name": "Restaurant Schønnemann",
@@ -40,7 +42,8 @@
   "whatEn": "A lunch restaurant serving classic Danish smørrebrød since 1877, open only at lunchtime.",
   "note": "昼しか開かない。図書館から歩いて行ける。",
   "noteEn": "Lunch only. An easy walk from the library.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.68277, 12.57608]
  },
  {
   "name": "Apotek 57",
@@ -54,7 +57,8 @@
   "whatEn": "An eatery inside the FRAMA Studio Store, where chef Chiara Barla curates a rotating menu of house-made seasonal dishes and drinks.",
   "note": "家具と同じ部屋で食べる。椅子を見るのも込みで。",
   "noteEn": "You eat in the same room as the furniture. Looking at the chairs is part of it.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.68695, 12.58583]
  },
  {
   "name": "Lars Rank Keramik",
@@ -69,7 +73,8 @@
   "whatEn": "The shop of ceramicist Lars Rank, called Made Here, selling porcelain and stoneware all handmade in his Christianshavn workshop.",
   "note": "作っている場所で買える。カップは手に持ってから選ぶ。",
   "noteEn": "Bought where it's made. Pick the cup up before you choose.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67295, 12.5895]
  },
  {
   "name": "POPL",
@@ -83,7 +88,8 @@
   "whatEn": "A burger restaurant on a waterside corner in Christianshavn, pairing local seasonal produce with the R&D of noma's fermentation lab, with a takeaway window on the corner.",
   "note": "持ち帰って、港の縁で食べる。",
   "noteEn": "Take it away and eat by the harbour.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67761, 12.59782]
  },
  {
   "name": "Barr",
@@ -97,7 +103,8 @@
   "whatEn": "A restaurant and bar in a historic warehouse on the waterfront, cooking from the traditions of the North Sea; its Wiener-style schnitzel is the signature.",
   "note": "古い倉庫の中で食べる。シュニッツェルで頼む。",
   "noteEn": "An old harbour warehouse. Order the schnitzel.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67793, 12.59624]
  },
  {
   "name": "Prolog Coffee (Papirøen)",
@@ -112,7 +119,8 @@
   "whatEn": "The Papirøen bar of Prolog, a Copenhagen coffee company that roasts its own beans and runs three bars in the city.",
   "note": "劇場の向かいの島。昼の前に一杯。",
   "noteEn": "The island across from the playhouse. One cup before noon.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67837, 12.59874]
  },
  {
   "name": "Christianshavns Færgecafé",
@@ -126,7 +134,8 @@
   "whatEn": "A traditional Danish restaurant in a Christianshavn house with maritime roots since 1850, serving smørrebrød and aquavit, with an 1880 ferry on the canal for private dining.",
   "note": "スモーブローに、アクアヴィットを小さく一杯。",
   "noteEn": "Smørrebrød and a small aquavit.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.6755, 12.59248]
  },
  {
   "name": "Lille Bakery",
@@ -140,7 +149,8 @@
   "whatEn": "A bakery and restaurant on the former shipyard island of Refshaleøen, cooking, baking and preserving what small Zealand farmers grow each season.",
   "note": "島のパン屋。サワードウを一本、持って帰る。",
   "noteEn": "A bakery on the island. Take a loaf home.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.69006, 12.61329]
  },
  {
   "name": "Andersen & Maillard",
@@ -155,7 +165,8 @@
   "whatEn": "A coffee shop and roastery opened in Nørrebro in 2018 that roasts and bakes in-house, with three locations; they say their day starts at 3 a.m.",
   "note": "朝3時から焼いている。クロワッサンとコーヒーを一緒に。",
   "noteEn": "They start at 3 a.m. Croissant and coffee, together.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.69042, 12.55503]
  },
  {
   "name": "Poulette",
@@ -169,7 +180,8 @@
   "whatEn": "A sandwich spot opened in December 2020 by the team behind the wine bar Pompette next door, serving fried chicken or fried mapo tofu sandwiches, spicy by default.",
   "note": "辛いのが標準。そのつもりで頼む。",
   "noteEn": "Spicy by default. Order knowing that.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.69046, 12.55521]
  },
  {
   "name": "Karamelleriet",
@@ -183,7 +195,8 @@
   "whatEn": "A maker of handmade caramels, with a shop on Jægersborggade in Nørrebro and another in Svaneke on Bornholm.",
   "note": "手作りのキャラメル。帰りの夜行列車の分も買う。",
   "noteEn": "Handmade caramels. Buy some for the night train home.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.6931, 12.54362]
  },
  {
   "name": "Mirabelle",
@@ -197,7 +210,8 @@
   "whatEn": "A bakery, deli and eatery that makes most things itself, from sourdough and pastries to its own mozzarella, charcuterie, fresh pasta and gelato.",
   "note": "朝はパン、夜はパスタ。同じ店で一日が回る。",
   "noteEn": "Bread in the morning, pasta at night.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.69236, 12.55615]
  },
  {
   "name": "Keramiker Inge Vincents",
@@ -212,7 +226,8 @@
   "whatEn": "The studio shop of ceramicist Inge Vincents, making and selling thin-walled porcelain.",
   "note": "薄い磁器。手に取って、重さを確かめる。",
   "noteEn": "Thin porcelain. Feel the weight in your hand.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.69311, 12.54306]
  },
  {
   "name": "Kødbyens Fiskebar",
@@ -226,7 +241,8 @@
   "whatEn": "A seafood restaurant beneath the bull on Flæsketorvet in the old Meatpacking District, a Michelin Bib Gourmand, serving fish and chips of lightly smoked haddock in a newspaper cone.",
   "note": "牛の像の下の店。フィッシュ＆チップスで頼む。",
   "noteEn": "Under the bull. Order the fish and chips.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.66788, 12.55926]
  },
  {
   "name": "Mangia",
@@ -240,7 +256,8 @@
   "whatEn": "An Italian bar and ristorante on a Vesterbro side street, with handmade pasta such as plin and ricotta-and-spinach tortelli.",
   "note": "パスタは手打ち。詰め物のパスタで頼む。",
   "noteEn": "The pasta is handmade. Order the plin.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.67328, 12.55442]
  },
  {
   "name": "KLASSIK",
@@ -255,7 +272,8 @@
   "whatEn": "A dealer in original Scandinavian furniture, lighting and ceramics since 1991, with a two-storey flagship on Bredgade showing pieces by Wegner, Jacobsen and Mogensen. It also restores furniture itself.",
   "note": "ヤコブセンもモーエンセンも、建築家として学んだ人。建物を描く手で引いた椅子が、ここに並ぶ。",
   "noteEn": "Jacobsen and Mogensen both trained as architects. Their chairs stand here.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.68131, 12.58759]
  },
  {
   "name": "Brdr. Krüger",
@@ -270,7 +288,8 @@
   "whatEn": "A woodturning workshop founded in Copenhagen in 1886, still family-owned and still making its furniture in Denmark. Its flagship next to the Odd Fellow Palace was redesigned in 2026, the firm's 140th year; visits are by appointment.",
   "note": "140年、木をろくろで挽いてきた家。椅子の脚の丸みに、その仕事が残る。",
   "noteEn": "A family that has turned wood for 140 years. You see it in the chair legs.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.68288, 12.58986]
  },
  {
   "name": "House of Finn Juhl",
@@ -285,7 +304,8 @@
   "whatEn": "The showroom of House of Finn Juhl, which still makes the architect Finn Juhl's furniture. It is in the Wilhelm Hansen House, a music publisher's home since 1879, whose shop Juhl himself redesigned in the 1960s. A showroom only, not a store.",
   "note": "ユール自身が60年前に手を入れた建物。椅子と部屋を、同じ人の仕事として見られる。",
   "noteEn": "Juhl remodelled this building himself. The room and the chairs are by one hand.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.68155, 12.58449]
  },
  {
   "name": "Dansk Møbelkunst",
@@ -300,7 +320,8 @@
   "whatEn": "A furniture gallery founded by Ole Høstbo in 1992, dealing only in rare original Danish furniture made between 1920 and 1970. The Østerbro gallery is open by appointment.",
   "note": "あるのは、1920年から70年に作られた本物だけ。クリントやユールの時代の木と革を、そのまま見る。",
   "noteEn": "Only originals from 1920 to 1970. The wood and leather of Klint's and Juhl's years.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.70694, 12.56101]
  },
  {
   "name": "Veirhanen",
@@ -315,6 +336,7 @@
   "whatEn": "An antiques and Scandinavian design shop trading since 1973 on Ravnsborggade, Nørrebro's antiques street: teak furniture, Holmegaard opal-glass pendants, glass and ceramics. It also has a large warehouse in Klippinge, by appointment.",
   "note": "乳白ガラスの吊り照明が多い。灯りの透け方を、店の中で並べて比べられる。",
   "noteEn": "Many opal-glass pendants. You can compare how each one lets the light through.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.6885, 12.56171]
  }
 ]

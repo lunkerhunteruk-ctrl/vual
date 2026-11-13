@@ -12,7 +12,8 @@
   "whatEn": "Opened in 2016 as one of Milan's first specialty coffee bars, a family-run multi-roaster café that also roasts its own small batches.",
   "note": "フィルターで頼む。香りがいちばん開く。",
   "noteEn": "Order the filter. That's where the aroma opens.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47778, 9.21122]
  },
  {
   "name": "Coffee Studio 7Gr.",
@@ -27,7 +28,8 @@
   "whatEn": "The coffee studio of Sevengrams, roasting in Milan since 2009; the Corso Venezia shop is a tiny espresso-focused room of about 22 square metres.",
   "note": "エスプレッソの店。朝、立ったまま一杯。",
   "noteEn": "An espresso room. One, standing, in the morning.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.46963, 9.19986]
  },
  {
   "name": "Røst",
@@ -41,7 +43,8 @@
   "whatEn": "A small bistro on Via Melzo in a former auto-parts shop, serving vegetable-forward small plates with a zero-waste approach, including mondeghili and tripe.",
   "note": "小皿をいくつか頼んで、分けて食べる。",
   "noteEn": "Order a few small plates and share them.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47261, 9.20987]
  },
  {
   "name": "Gelato Giusto",
@@ -55,7 +58,8 @@
   "whatEn": "A gelateria on Via San Gregorio that makes its gelato daily in its own workshop on the premises; for Milan's Gelato Week in April 2026 it served a Lambrusco and strawberry flavour.",
   "note": "果物の味を一つ。香りがまっすぐ。",
   "noteEn": "One fruit flavour. The scent comes through clean.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47848, 9.20645]
  },
  {
   "name": "Trippa",
@@ -69,7 +73,8 @@
   "whatEn": "A trattoria opened in 2015 by chef Diego Rossi and Pietro Caroli, known for nose-to-tail cooking and its fried tripe; the menu changes daily.",
   "note": "揚げたトリッパから。予約は早めに。",
   "noteEn": "Start with the fried tripe. Book well ahead.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.4522, 9.20552]
  },
  {
   "name": "Un Posto a Milano",
@@ -83,7 +88,8 @@
   "whatEn": "A restaurant and bar inside Cascina Cuccagna, a restored old farmhouse, open from morning to late, with Tuesday jazz nights and wine tastings in autumn 2026.",
   "note": "古い農家の中で、昼をゆっくり。",
   "noteEn": "A slow lunch inside the old farmhouse.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45105, 9.21148]
  },
  {
   "name": "Signor Lievito",
@@ -97,7 +103,8 @@
   "whatEn": "A small sourdough bakery opened in 2022 by Latvian-born Natalija Nikitina, using a century-old starter from a Naples bakery and baking breads and pastries with Nordic notes like cardamom and cinnamon.",
   "note": "カルダモンの入ったものを選ぶ。",
   "noteEn": "Pick the one with cardamom.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45632, 9.21535]
  },
  {
   "name": "Trattoria del Pescatore",
@@ -111,7 +118,8 @@
   "whatEn": "A Sardinian family's seafood trattoria in Milan since 1976, famous for astice alla catalana: shelled lobster with sweet tomatoes, red onion and olive oil.",
   "note": "オマールのカタルーニャ風。それで決まり。",
   "noteEn": "The Catalan lobster. That settles it.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.44947, 9.19822]
  },
  {
   "name": "Bugan Coffee Lab",
@@ -126,7 +134,8 @@
   "whatEn": "The Milan outpost of a Bergamo roastery founded in 2014, opened in July 2025, serving around 25 coffees brewed six ways, with no sugar offered.",
   "note": "砂糖は置いていない。そのまま香りを飲む。",
   "noteEn": "No sugar on offer. Drink the aroma as it is.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45285, 9.1739]
  },
  {
   "name": "28 Posti",
@@ -140,7 +149,8 @@
   "whatEn": "A 28-seat restaurant by the Naviglio Grande that has cooked with small producers' ingredients and a low-waste approach since 2013, with blind tasting menus.",
   "note": "おまかせのコースで。何が出るかは聞かない。",
   "noteEn": "Take the blind menu. Don't ask what's coming.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.4529, 9.17327]
  },
  {
   "name": "Pasticceria Gattullo",
@@ -154,7 +164,8 @@
   "whatEn": "A pastry shop opened on 1 May 1961 on Piazzale di Porta Lodovica, whose counter drew Milanese singers, actors and athletes; known for cannoncini and choux, it turned 65 in 2026.",
   "note": "カンノンチーニを一つ、カウンターで。",
   "noteEn": "One cannoncino, at the counter.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45227, 9.18587]
  },
  {
   "name": "Cucchi",
@@ -168,7 +179,8 @@
   "whatEn": "A pasticceria and café opened by Luigi Cucchi in 1936 as a café-concerto by the canals, keeping its 1930s feel and serving panettone all year round, plus zabaglione-filled chocolate cups called ambrogiotti.",
   "note": "朝のカプチーノにパネットーネ。ここは一年中ある。",
   "noteEn": "Panettone with a morning cappuccino. They have it all year.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45838, 9.17741]
  },
  {
   "name": "Luini",
@@ -182,7 +194,8 @@
   "whatEn": "A panzerotti shop just behind the Duomo, in a bakery dating to 1888 and run by a Puglian family since 1949; small fried turnovers filled with mozzarella, tomato and more.",
   "note": "モッツァレラとトマトのを一つ。歩きながらでいい。",
   "noteEn": "One with mozzarella and tomato. Eat it as you walk.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.4658, 9.19148]
  },
  {
   "name": "Laboratorio Paravicini",
@@ -197,7 +210,8 @@
   "whatEn": "A family-run studio of hand-painted ceramic tableware led by Costanza Paravicini and her three daughters in the old centre; in April 2026 it showed a tableware collection made with metalworker Natalia Criado.",
   "note": "皿を一枚だけ選ぶ。持って帰れる大きさで。",
   "noteEn": "Choose a single plate. One small enough to carry home.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.46127, 9.18353]
  },
  {
   "name": "Zhor Parfums",
@@ -212,7 +226,8 @@
   "whatEn": "A perfumery on Via Montenapoleone selling Middle-Eastern oud houses and other niche brands, its own Zhor Milano line and scents made exclusively for the shop. Its other boutiques are in Florence and Naples.",
   "note": "ウードの棚が厚い。木の樹脂から始まる香りを、まとめて嗅げる。",
   "noteEn": "Deep shelves of oud. Scents that start from a tree's resin, side by side.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.46878, 9.19473]
  },
  {
   "name": "Profumeria Oggioni",
@@ -227,7 +242,8 @@
   "whatEn": "A family perfumery founded in 1963 by the current owner's grandmother, selling niche perfumes and cosmetics, and running guided 'olfactory journeys' in the shop.",
   "note": "三代続く香水店。店の人が香りの順番を組んでくれる。",
   "noteEn": "A family perfumery in its third generation. They set the order you smell things in.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47522, 9.21021]
  },
  {
   "name": "LabSolue Perfume Laboratory",
@@ -242,7 +258,8 @@
   "whatEn": "A perfume laboratory and shop inside the Magna Pars hotel in the Tortona district, on the site of the Martone family's former Marvin perfume factory. Essences are kept in refrigerators at 5°C away from light, and scents are filled and labelled on the spot. Open Monday to Saturday.",
   "note": "香料を冷蔵庫で守っている。工場の跡で、香りを瓶に詰める。",
   "noteEn": "Essences kept in a fridge. Bottled where the factory used to be.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.45242, 9.16681]
  },
  {
   "name": "Nilufar Gallery",
@@ -257,7 +274,8 @@
   "whatEn": "A design gallery founded in Milan by Nina Yashar in 1979, showing and selling 20th-century furniture masterpieces alongside contemporary designers; it also runs a large Depot space on Viale Lancetti.",
   "note": "古い家具と新しい家具が同じ部屋にいる。素材の匂いがしそうな店。",
   "noteEn": "Old and new furniture in the same rooms. You can almost smell the materials.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47071, 9.19626]
  },
  {
   "name": "Fornasetti",
@@ -272,7 +290,8 @@
   "whatEn": "A Milanese atelier founded by Piero Fornasetti in 1940 and now led by his son Barnaba, making decorated objects and furniture. Its Corso Venezia store reopened after a redesign in April 2026, with a new entrance on Via Senato.",
   "note": "香りのろうそくも、絵付けの磁器に入っている。",
   "noteEn": "Even the scented candles come in hand-decorated porcelain.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.46899, 9.19926]
  },
  {
   "name": "Spotti Milano",
@@ -287,6 +306,7 @@
   "whatEn": "A design furniture and interiors store on Viale Piave since 1986, carrying a wide range of Italian design brands and changing its windows and in-store installations each season.",
   "note": "季節ごとに窓の飾りを変える。通りからでも店が読める。",
   "noteEn": "The windows change every season. You can read the shop from the street.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [45.47228, 9.2064]
  }
 ]

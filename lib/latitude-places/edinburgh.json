@@ -11,7 +11,8 @@
   "whatEn": "Chef Martin Wishart's French restaurant on The Shore at Leith, in the same place since 1999 and holding a Michelin star.",
   "note": "水辺のフランス料理。ショアを歩いた日の夜に予約する。",
   "noteEn": "French cooking on the water. Book it for the night after the Shore.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97545, -3.17037]
  },
  {
   "name": "The Kitchin",
@@ -25,7 +26,8 @@
   "whatEn": "Tom Kitchin's Michelin-starred modern Scottish restaurant on Leith's Commercial Quay, cooking with the Scottish seasons.",
   "note": "スコットランドの季節を、そのまま皿に。岸壁を歩いて行く。",
   "noteEn": "The Scottish season, straight onto the plate. Walk out along the quay.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97703, -3.17258]
  },
  {
   "name": "Heron",
@@ -39,7 +41,8 @@
   "whatEn": "A bright, uncluttered Michelin-starred corner restaurant just off The Shore in Leith, cooking seasonal Scottish produce.",
   "note": "飾らない部屋だから、皿だけを見ていられる。",
   "noteEn": "Plain walls, so you just look at the plate.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97481, -3.17195]
  },
  {
   "name": "Fishers in Leith",
@@ -53,7 +56,8 @@
   "whatEn": "A seafood restaurant in a seventeenth-century watchtower on The Shore, serving Leith since 1991.",
   "note": "17世紀の見張り塔の下で魚を食べる。泳いだあとにいい。",
   "noteEn": "Fish under a seventeenth-century watchtower. Good after a swim.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97756, -3.16894]
  },
  {
   "name": "Williams & Johnson Coffee Co.",
@@ -68,7 +72,8 @@
   "whatEn": "A roaster-café inside the Custom Lane design hub on The Shore since 2016, roasting single-origin coffee in small batches on a Probat in the same room.",
   "note": "焙煎機の横で飲む。水に入る前の一杯。",
   "noteEn": "Drink it beside the roaster. One cup before the water.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97686, -3.17053]
  },
  {
   "name": "Cyan Clayworks",
@@ -83,7 +88,8 @@
   "whatEn": "A pottery studio founded in 2012 by Fiona Thompson and Chris Donnelly, on Commercial Street in Leith since 2023, selling their tableware and hand-built vessels from the front room.",
   "note": "作業場の前に、二人の器が並ぶ。行く前に電話する。",
   "noteEn": "Two potters' work, set out in front of the studio. Call before you go.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.9764, -3.17096]
  },
  {
   "name": "Timberyard",
@@ -97,7 +103,8 @@
   "whatEn": "A family-run restaurant cooking with local growers and foragers, awarded a Michelin star in 2023 and a Green Star in 2026; the menu changes weekly.",
   "note": "畑と森の物だけで組む店。ワインは小さな作り手の物で頼む。",
   "noteEn": "Only what the fields and woods give. Ask for the small-producer wine.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.94635, -3.20173]
  },
  {
   "name": "Whirlybird",
@@ -111,7 +118,8 @@
   "whatEn": "An all-day café, bar and restaurant opened in May 2026 in a 250-year-old building on Victoria Street, with coffee and pastries in the morning and Scottish bistro dishes later.",
   "note": "らせん階段を上がる。坂を下りきる前に寄る。",
   "noteEn": "Take the spiral stair. Stop before the bottom of the hill.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.94856, -3.19435]
  },
  {
   "name": "Mary's Milk Bar",
@@ -125,7 +133,8 @@
   "whatEn": "A gelato and chocolate shop on the Grassmarket where Mary makes everything in the back; the flavours change daily, and gelato comes floated in hot chocolate.",
   "note": "味は毎日変わる。寒い日は、ホットチョコに浮かべて頼む。",
   "noteEn": "The flavours change daily. On a cold day, have it in hot chocolate.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.94684, -3.19739]
  },
  {
   "name": "Wedgwood the Restaurant",
@@ -139,7 +148,8 @@
   "whatEn": "Chef Paul Wedgwood's restaurant on the Canongate, cooking seasonal Scottish produce with foraged herbs, with foraging courses in spring and summer.",
   "note": "摘んだ草を使う店。アーサーズ・シートから下りてきて寄る。",
   "noteEn": "They cook with foraged herbs. Come down off Arthur's Seat and stop here.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95083, -3.18337]
  },
  {
   "name": "Lannan Bakery",
@@ -153,7 +163,8 @@
   "whatEn": "Darcie Maher's bakery, opened in 2023 and named after the Gaelic word for house; La Liste's Pastry Opening of the Year 2024, with a pantry shop next door.",
   "note": "朝に並ぶ。並ぶだけの店。",
   "noteEn": "Queue in the morning. It earns the queue.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.9598, -3.20669]
  },
  {
   "name": "The Scran & Scallie",
@@ -167,7 +178,8 @@
   "whatEn": "A Stockbridge gastropub from Tom Kitchin's group, serving pub classics with a modern twist; all meat and fish are bought whole and butchered in-house.",
   "note": "肉も魚も、丸ごと仕入れて店でさばく。パブの定番を頼む。",
   "noteEn": "Everything comes in whole and is butchered here. Order the pub classics.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95916, -3.21454]
  },
  {
   "name": "Stockbridge Ceramics",
@@ -182,7 +194,8 @@
   "whatEn": "A basement pottery and gallery thirteen steps below Henderson Row, begun as Adam Pottery in 1983 and now run by Andrea Scholes and Geoff Calder, selling contemporary ceramics beside the working studio.",
   "note": "通りから13段下りる。作っている所も見せてくれる。",
   "noteEn": "Thirteen steps down from the street. They let you watch the work.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95991, -3.20622]
  },
  {
   "name": "The Scottish Gallery",
@@ -197,7 +210,8 @@
   "whatEn": "A gallery founded in 1842 by Aitken Dott, showing contemporary and applied art, with ceramics and glass by makers from Scotland, Britain and abroad.",
   "note": "1842年からの画廊。絵より先に、器とガラスを見る。",
   "noteEn": "A gallery since 1842. See the pots and the glass first.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95656, -3.19913]
  },
  {
   "name": "L'Escargot Bleu",
@@ -211,7 +225,8 @@
   "whatEn": "A family-run French bistro and wine bar on Broughton Street led by chef Fred Berkmiller, with a seasonal blackboard menu of French classics.",
   "note": "黒板の献立から選ぶ。季節で変わる。",
   "noteEn": "Choose from the blackboard. It changes with the season.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95863, -3.19038]
  },
  {
   "name": "Stewart Christie & Co.",
@@ -226,7 +241,8 @@
   "whatEn": "A bespoke tailor on Queen Street, formed in 1933 from two older tailoring firms and tracing its roots to the 18th century. Tweed jackets and Highland dress are made in its on-site atelier, and its group also owns the Glenlyon tweed mill in Perthshire.",
   "note": "織る工場と仕立てる部屋が、同じ家の中にある。布が上着になるまでを、一本の線でたどれる。",
   "noteEn": "The mill and the cutting room belong to one house. Cloth to coat, in one line.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95361, -3.20484]
  },
  {
   "name": "Gordon Nicolson Kiltmakers",
@@ -241,7 +257,8 @@
   "whatEn": "A kiltmaker on the Canongate, part of the Royal Mile. It makes hand-sewn 8-yard wool kilts, which take up to 20 weeks; kilt hire is run from a second shop on nearby St Mary's Street.",
   "note": "一枚に8ヤードのウール。ひだは一本ずつ手で縫い留める。",
   "noteEn": "Eight yards of wool to a kilt. Every pleat stitched by hand.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.9512, -3.18095]
  },
  {
   "name": "Kinloch Anderson",
@@ -256,7 +273,8 @@
   "whatEn": "A kilt and tartan house that began as an Edinburgh tailor in 1868 and is still run by the same family. At the Leith shop a window looks into the workroom where kilts and skirts are sewn, and there is a heritage room. Its other shops are in St Andrews and London.",
   "note": "ザ・ショアから一本入った通り。窓の向こうで、ひだを縫う手が見える。",
   "noteEn": "One street back from the Shore. Through the window, hands sewing pleats.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.97679, -3.17368]
  },
  {
   "name": "Bill Baber Knitwear",
@@ -271,7 +289,8 @@
   "whatEn": "A knitwear workshop and shop opened by Bill and Helen Baber in 1977 and now run by their son. Garments are knitted and sewn from linen, cotton, silk and merino in the workshop behind the Grassmarket shop, which also holds pieces found nowhere else.",
   "note": "店の奥が編み場。麻や絹の糸が、目の前で布になっていく。",
   "noteEn": "The workshop is at the back. Linen and silk turn into cloth in front of you.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.94777, -3.19562]
  },
  {
   "name": "Cadenhead's Whisky Shop",
@@ -286,7 +305,8 @@
   "whatEn": "The Canongate shop of William Cadenhead, an independent bottler established in 1842 that calls itself Scotland's oldest. Its whiskies, many of them single-cask bottlings, have no added colour and are never chill-filtered. Its other shops are in Campbeltown and London.",
   "note": "色も足さず、冷やして濾しもしない。樽から出たままの色が、瓶ごとに違う。",
   "noteEn": "No colour added, no chill-filtering. Each bottle keeps its own cask colour.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.95121, -3.18038]
  },
  {
   "name": "Port of Leith Distillery",
@@ -301,6 +321,7 @@
   "whatEn": "The UK's first vertical distillery, built on the quay at the Port of Leith. Tours are booked in advance and end with a tasting (18+).",
   "note": "保税倉庫が並んだ港に、蒸留の工程を縦に積んだ建物。水辺から見上げる。",
   "noteEn": "A stacked distillery on the old bonded-warehouse quay. Look up at it from the water.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [55.9827, -3.17548]
  }
 ]

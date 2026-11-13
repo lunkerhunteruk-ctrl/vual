@@ -11,7 +11,8 @@
   "whatEn": "A bean-to-bar chocolate factory in Reykjavík, with a chocolate and soft-serve shop inside; organic cacao and Icelandic milk.",
   "note": "板チョコは一枚ずつ手で包んでいる。ソフトクリームは、ここで食べる。",
   "noteEn": "Every bar is wrapped by hand. Have the soft serve here.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15733, -21.94039]
  },
  {
   "name": "Ísbúðin Valdís",
@@ -25,7 +26,8 @@
   "whatEn": "An ice cream shop opened on Grandagarður in June 2013, making flavours with its customers — more than four hundred tried so far.",
   "note": "味はその日によって変わる。迷ったら、店の人に聞く。",
   "noteEn": "The flavours change. Ask which one today.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15357, -21.94898]
  },
  {
   "name": "Kaffivagninn",
@@ -39,7 +41,8 @@
   "whatEn": "Founded in 1935, Iceland's oldest restaurant, named after the little coffee van that served the harbour. Plokkfiskur fish stew and pan-fried cod tongues are on the menu.",
   "note": "港の前の店。プロックフィスクルを頼む。",
   "noteEn": "On the harbour. Order the plokkfiskur.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15358, -21.94754]
  },
  {
   "name": "La Primavera",
@@ -53,7 +56,8 @@
   "whatEn": "An Italian restaurant since 1993, with two rooms: the ground floor of the Marshall House on the old harbour and the fourth floor of Harpa. Lunch at the Marshall House runs Tuesday to Friday.",
   "note": "昼の皿で十分。そのあと港を歩く。",
   "noteEn": "Lunch is enough. Then walk the harbour.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15613, -21.93898]
  },
  {
   "name": "Kaffibrugghúsið",
@@ -68,7 +72,8 @@
   "whatEn": "A small craft roastery in Grandi that roasts everything in a 6 kg Giesen, buying some beans direct from farmers. It opens to the public on Wednesdays only, and runs coffee courses.",
   "note": "開くのは水曜だけ。その日に合わせて行く。",
   "noteEn": "Wednesdays only. Plan the day around it.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15656, -21.9442]
  },
  {
   "name": "Matur og Drykkur",
@@ -82,7 +87,8 @@
   "whatEn": "A restaurant that turns Iceland's old cooking into a seasonal tasting menu, with local produce, wild herbs and seaweed. In the Michelin Guide from 2017 to 2025. Dinner only.",
   "note": "夜だけの店。予約して、ゆっくり座る。",
   "noteEn": "Dinner only. Book, and stay a while.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.152, -21.95071]
  },
  {
   "name": "Kaffi Ó-le",
@@ -97,7 +103,8 @@
   "whatEn": "A specialty coffee and pastry bar on Hafnarstræti, near the harbour; ranked 58th among Europe's 100 best coffee shops in 2026.",
   "note": "ハルパへ歩く前に一杯。豆のことを聞くといい。",
   "noteEn": "One cup before the walk to Harpa. Ask about the beans.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14819, -21.93893]
  },
  {
   "name": "Kaktus Espressobar",
@@ -112,7 +119,8 @@
   "whatEn": "A small espresso bar on Vitastígur in the centre, with a second counter inside the National Gallery of Iceland.",
   "note": "小さい店。エスプレッソを一杯だけ。",
   "noteEn": "A small room. One espresso.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14391, -21.92236]
  },
  {
   "name": "Kaolin Ceramic Gallery",
@@ -127,7 +135,8 @@
   "whatEn": "A cooperative gallery owned by several ceramic artists, each with their own studio elsewhere, selling vases and tableware on Skólavörðustígur.",
   "note": "何人もの作家の器が一つの部屋にある。重さを手で確かめて選ぶ。",
   "noteEn": "Several potters, one room. Feel the weight before you choose.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14592, -21.93218]
  },
  {
   "name": "Sandholt",
@@ -141,7 +150,8 @@
   "whatEn": "A family bakery now run by its fourth generation of master bakers, one of the oldest working bakeries in Iceland, baking several sourdoughs every day.",
   "note": "朝7時半から開く。サワードウを一つ買って出る。",
   "noteEn": "Open from half past seven. Take a sourdough with you.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14503, -21.92636]
  },
  {
   "name": "Kaffi Loki",
@@ -155,7 +165,8 @@
   "whatEn": "A home-style Icelandic restaurant across the street from Hallgrímskirkja, known for its rye bread ice cream. No reservations.",
   "note": "教会を見たら、通りを渡るだけ。ライ麦パンのアイスを頼む。",
   "noteEn": "Cross the street from the church. Order the rye bread ice cream.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14247, -21.92893]
  },
  {
   "name": "Hnoss Bistro",
@@ -169,7 +180,8 @@
   "whatEn": "A bistro inside Harpa concert hall, open daily from 11: Nordic-leaning lunches, weekend brunch, and late hours on big concert nights.",
   "note": "ハルパの中。演奏会の夜は、終わるまで開いている。",
   "noteEn": "Inside Harpa. On concert nights it stays open until the music ends.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15043, -21.93285]
  },
  {
   "name": "Mokka Kaffi",
@@ -184,7 +196,8 @@
   "whatEn": "A café on Skólavörðustígur since 1958 — espresso, and art shows on its walls.",
   "note": "1958年からの店。壁の絵も見る。",
   "noteEn": "Here since 1958. Look at the walls too.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14604, -21.93231]
  },
  {
   "name": "Kaffihús Vesturbæjar",
@@ -198,7 +211,8 @@
   "whatEn": "A neighbourhood café on the corner of Hofsvallagata and Melhagi, serving food from morning to night, with coffee, beer and wine.",
   "note": "朝から夜まで開いている、住む人の店。",
   "noteEn": "Open morning to night. A place for people who live here.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14405, -21.96068]
  },
  {
   "name": "Kröst",
@@ -212,7 +226,8 @@
   "whatEn": "A grill and wine counter inside the Hlemmur food hall, led by head chef Böðvar Lemacks.",
   "note": "フードホールの中のグリル。ワインと一緒に。",
   "noteEn": "A grill counter in the food hall. Have it with wine.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14312, -21.91441]
  },
  {
   "name": "12 Tónar",
@@ -227,7 +242,8 @@
   "whatEn": "Record shop opened in 1998 that also runs a label. Strong on Icelandic music, with a bar and café inside and live sets.",
   "note": "アイスランドの盤が厚い。500クローナ以下の箱もある。",
   "noteEn": "Deep in Icelandic records, with a box of discs at 500 krónur or less.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14486, -21.93073]
  },
  {
   "name": "Smekkleysa",
@@ -242,7 +258,8 @@
   "whatEn": "Shop of Smekkleysa (Bad Taste), the label started by Björk and the Sugarcubes circle, marking 40 years in 2026. Café and bar upstairs, a performance space in the basement.",
   "note": "地下で鳴る音を、上の階で聞く店。",
   "noteEn": "The basement plays; you hear it upstairs.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14636, -21.9296]
  },
  {
   "name": "Space Odyssey",
@@ -257,7 +274,8 @@
   "whatEn": "Record shop for ambient, electronic and experimental music, with many releases from small Icelandic labels; also a label and a venue.",
   "note": "アンビエントと実験音楽の棚。小さなレーベルの盤を探す店。",
   "noteEn": "Ambient and experimental shelves. A place for small-label records.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14577, -21.93196]
  },
  {
   "name": "Lucky Records",
@@ -272,7 +290,8 @@
   "whatEn": "Reykjavík's largest record shop, with new releases, second-hand vinyl and old Icelandic records. Its operating company went bankrupt in early 2026, but another company took over and the shop stayed open.",
   "note": "アイスランドの古いレコードの棚が深い。",
   "noteEn": "Deep shelves of old Icelandic vinyl.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14266, -21.91426]
  },
  {
   "name": "Handprjónasamband Íslands",
@@ -287,7 +306,8 @@
   "whatEn": "Shop of a knitters' cooperative founded in 1977, selling lopapeysa sweaters hand-knitted from 100% Icelandic wool, and lopi yarn.",
   "note": "雨をはじく外毛の糸。風の中で録る人の上着。",
   "noteEn": "Yarn from the rain-shedding outer coat. A sweater for recording in wind.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.14464, -21.93029]
  },
  {
   "name": "Farmers Market",
@@ -302,6 +322,7 @@
   "whatEn": "Clothing label founded in 2005 by designer Bergþóra Guðnadóttir and musician Jóel Pálsson, making Icelandic-wool sweaters in a modern cut. Flagship in a former fish factory in Grandi.",
   "note": "港の元魚工場の店。外は海風。",
   "noteEn": "A former fish factory by the harbour. Sea wind outside.",
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "coords": [64.15683, -21.94038]
  }
 ]

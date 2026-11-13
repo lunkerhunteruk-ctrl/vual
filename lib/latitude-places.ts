@@ -332,10 +332,12 @@ export const CITIES: LatitudeCity[] = [
     categoryImages: {
       food: { file: 'breakfast.jpg', alt: "From Maeve's day: tea and a full breakfast at a café", altJa: 'メイヴの1日から：カフェで紅茶と朝ごはん' },
     },
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: london as CityPlace[],
     industries: [
       { key: "antiquarian-books", en: "Antiquarian books and bookshops", ja: "古書と本屋", about: "London has long been the centre of British publishing and the rare-book trade. Cecil Court, Bloomsbury and Mayfair still hold dealers with long histories, such as Sotheran's (1761) and Maggs (1850s).", aboutJa: "ロンドンは長くイギリスの出版と古書の商いの中心だった。セシル・コート、ブルームズベリー、メイフェアには、1761年からのソザランズや1850年代からのマッグズのような古い店がいまも残る。" },
-      { key: "bespoke-tailoring", en: "Bespoke tailoring and London makers", ja: "仕立てと手仕事の店", about: "Savile Row in Mayfair has been the street of bespoke tailors since the 19th century, and nearby old makers of hats and umbrellas still make and repair by hand on their own premises.", aboutJa: "メイフェアのサヴィル・ロウは19世紀から仕立て屋の通り。近くには、帽子や傘をいまも店の工房で手で作り、直す古い店が残る。" },
+      { key: "bespoke-tailoring", en: "Bespoke tailoring and London makers", ja: "仕立てと手仕事", about: "Savile Row in Mayfair has been the street of bespoke tailors since the 19th century, and nearby old makers of hats and umbrellas still make and repair by hand on their own premises.", aboutJa: "メイフェアのサヴィル・ロウは19世紀から仕立て屋の通り。近くには、帽子や傘をいまも店の工房で手で作り、直す古い店が残る。" },
     ],
     wear: {
       season: 'November',
@@ -363,13 +365,13 @@ export const CITIES: LatitudeCity[] = [
     },
     route: [
       { time: '08:15', place: 'A café on the South Bank', placeJa: 'サウスバンクのカフェ', what: 'Tea first, then breakfast.', whatJa: '先に紅茶。それから朝ごはん。', image: 'breakfast.jpg' },
-      { time: '09:10', place: 'National Theatre', placeJa: 'ナショナル・シアター', what: 'Leaning on the board-marked concrete.', whatJa: '木の型の跡が残るコンクリートの壁にもたれる。', image: 'nt.jpg', near: ['Lasdun', 'The Anchor & Hope'] },
-      { time: '12:30', place: 'Barbican', placeJa: 'バービカン', what: 'Crouching on the dark brick of the highwalks.', whatJa: '空中歩廊の暗いレンガの上にしゃがむ。', image: 'barbican.jpg', near: ['Sessions Arts Club', 'Prufrock Coffee', 'The Quality Chop House'] },
-      { time: '13:15', place: 'A bus over London Bridge', placeJa: 'ロンドン橋を渡るバス', what: 'Standing on the top deck.', whatJa: '2階建てバスの上の階に立つ。', image: 'bus.jpg' },
+      { time: '09:10', place: 'National Theatre', placeJa: 'ナショナル・シアター', what: 'Leaning on the board-marked concrete.', whatJa: '木の型の跡が残るコンクリートの壁にもたれる。', image: 'nt.jpg', near: ['Lasdun', 'The Anchor & Hope'], coords: [51.50699, -0.11282], short: "National Theatre", shortJa: "ナショナル・シアター", gmaps: "National Theatre London" },
+      { time: '12:30', place: 'Barbican', placeJa: 'バービカン', what: 'Crouching on the dark brick of the highwalks.', whatJa: '空中歩廊の暗いレンガの上にしゃがむ。', image: 'barbican.jpg', near: ['Sessions Arts Club', 'Prufrock Coffee', 'The Quality Chop House'], coords: [51.51953, -0.09330], short: "Barbican", shortJa: "バービカン", gmaps: "Barbican London" },
+      { time: '13:15', place: 'A bus over London Bridge', placeJa: 'ロンドン橋を渡るバス', what: 'Standing on the top deck.', whatJa: '2階建てバスの上の階に立つ。', image: 'bus.jpg', coords: [51.50805, -0.08767], short: "London Bridge", shortJa: "ロンドン橋", gmaps: "London Bridge London" },
       { time: '13:40', place: 'A covered market in Southwark', placeJa: 'サザークの屋根つきの市場', what: 'Lunch in brown paper, under an iron roof.', whatJa: '鉄の屋根の下で、茶色い紙に包んだ昼ごはん。', image: 'market.jpg', near: ['José', 'Pizarro', 'London Glassblowing'] },
-      { time: '16:40', place: 'Blackfriars Bridge', placeJa: 'ブラックフライアーズ橋', what: 'Under the bridge, by the red columns of the old railway bridge.', whatJa: '橋の下、古い鉄道橋の赤い柱のそばに立つ。', image: 'columns.jpg', near: ['Wagumi'] },
+      { time: '16:40', place: 'Blackfriars Bridge', placeJa: 'ブラックフライアーズ橋', what: 'Under the bridge, by the red columns of the old railway bridge.', whatJa: '橋の下、古い鉄道橋の赤い柱のそばに立つ。', image: 'columns.jpg', near: ['Wagumi'], coords: [51.50976, -0.10439], short: "Blackfriars Bridge", shortJa: "ブラックフライアーズ橋", gmaps: "Blackfriars Bridge London" },
       { time: '18:30', place: 'The pub', placeJa: 'パブ', what: 'A pint of bitter at the bar.', whatJa: 'カウンターでビターを1パイント。', image: 'pub.jpg' },
-      { time: '21:30', place: 'Millennium Bridge', placeJa: 'ミレニアム・ブリッジ', what: "Walking toward St Paul's.", whatJa: 'セント・ポール大聖堂へ向かって橋を歩く。', image: 'bridge.jpg' },
+      { time: '21:30', place: 'Millennium Bridge', placeJa: 'ミレニアム・ブリッジ', what: "Walking toward St Paul's.", whatJa: 'セント・ポール大聖堂へ向かって橋を歩く。', image: 'bridge.jpg', coords: [51.50989, -0.09851], short: "Millennium Bridge", shortJa: "ミレニアム・ブリッジ", gmaps: "Millennium Bridge London" },
     ],
   },
   {
@@ -394,6 +396,8 @@ export const CITIES: LatitudeCity[] = [
     categoryImages: {
       food: { file: 'lunch.jpg', alt: "From Klára's day: smørrebrød at lunch", altJa: 'クラーラの1日から：昼のスモーブロー' },
     },
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: copenhagen as CityPlace[],
     industries: [
       { key: "danish-modern-furniture", en: "Danish modern furniture", ja: "デンマーク・モダンの家具", about: "Danish modern furniture took shape in Copenhagen: Kaare Klint began teaching furniture design at the Royal Danish Academy in 1924, and from 1927 to 1966 the city's Cabinetmakers' Guild held a yearly exhibition where architects and cabinetmakers showed new pieces together. The city still has the makers' showrooms and dealers in original pieces from that time.", aboutJa: "デンマーク・モダンの家具は、コペンハーゲンで形になった。1924年に王立芸術アカデミーでカーレ・クリントが家具の授業を始め、1927年から1966年まで、市の家具職人組合が毎年展示会を開いて、建築家と職人が新しい家具を一緒に見せた。いまも街には、作り手の展示室と、当時の家具を扱う店が残る。" },
@@ -424,11 +428,11 @@ export const CITIES: LatitudeCity[] = [
     },
     route: [
       { time: '08:30', place: 'A canal in Christianshavn', placeJa: 'クリスチャンハウンの運河', what: 'Stopping on the cobbles with a bicycle.', whatJa: '自転車を押して、石畳で立ち止まる。', image: 'canal.jpg', near: ['Lars Rank Keramik', 'Christianshavns Færgecafé'] },
-      { time: '09:40', place: 'The Black Diamond', placeJa: 'ブラック・ダイヤモンド（王立図書館）', what: 'Leaning on the black granite by the water.', whatJa: '水辺の黒い花崗岩にもたれる。', image: 'diamond.jpg', near: ['Conditori La Glace', 'Studio Arhoj', 'Restaurant Schønnemann'] },
-      { time: '12:30', place: 'Royal Playhouse', placeJa: '王立劇場（プレイハウス）', what: 'Sitting on the oak deck over the water.', whatJa: '水の上に張り出したオークのデッキに座る。', image: 'deck.jpg', near: ['Prolog Coffee (Papirøen)', 'Barr'] },
+      { time: '09:40', place: 'The Black Diamond', placeJa: 'ブラック・ダイヤモンド（王立図書館）', what: 'Leaning on the black granite by the water.', whatJa: '水辺の黒い花崗岩にもたれる。', image: 'diamond.jpg', near: ['Conditori La Glace', 'Studio Arhoj', 'Restaurant Schønnemann'], coords: [55.67355, 12.58286], short: "Black Diamond", shortJa: "ブラック・ダイヤモンド", gmaps: "Den Sorte Diamant København" },
+      { time: '12:30', place: 'Royal Playhouse', placeJa: '王立劇場（プレイハウス）', what: 'Sitting on the oak deck over the water.', whatJa: '水の上に張り出したオークのデッキに座る。', image: 'deck.jpg', near: ['Prolog Coffee (Papirøen)', 'Barr'], coords: [55.68007, 12.59470], short: "Royal Playhouse", shortJa: "王立劇場", gmaps: "Skuespilhuset København" },
       { time: '13:00', place: 'A cellar lunch room', placeJa: '半地下の昼ごはんの店', what: 'Smørrebrød on a white tablecloth.', whatJa: '白いテーブルクロスで、スモーブロー。', image: 'lunch.jpg' },
       { time: '17:30', place: 'A harbour ferry', placeJa: '港の渡し船', what: 'Crossing the inner harbour just after sunset.', whatJa: '日の入りのすぐあと、港を渡る。', image: 'ferry.jpg' },
-      { time: '18:15', place: 'Opera House', placeJa: 'オペラハウス', what: 'Walking under the roof as the last light catches it.', whatJa: '最後の光が当たる屋根の下を歩く。', image: 'opera.jpg', near: ['POPL'] },
+      { time: '18:15', place: 'Opera House', placeJa: 'オペラハウス', what: 'Walking under the roof as the last light catches it.', whatJa: '最後の光が当たる屋根の下を歩く。', image: 'opera.jpg', near: ['POPL'], coords: [55.68199, 12.60074], short: "Opera House", shortJa: "オペラハウス", gmaps: "Operaen København" },
       { time: '20:30', place: 'Dinner in an old warehouse', placeJa: '古い倉庫の店で夕ごはん', what: 'Candles, a heavy oak table, a glass of wine.', whatJa: 'ろうそくと厚いオークの机で、ワインを一杯。', image: 'dinner.jpg' },
     ],
   },
@@ -454,6 +458,8 @@ export const CITIES: LatitudeCity[] = [
     categoryImages: {
       food: { file: 'risotto.jpg', alt: "From Hélène's day: risotto alla milanese", altJa: 'エレーヌの1日から：ミラノ風リゾット' },
     },
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: milan as CityPlace[],
     industries: [
       { key: "artistic-perfumery", en: "Artistic perfumery", ja: "香水", about: "Milan hosts Esxence, the international fair of artistic perfumery, every year (its 16th edition was in June 2026). The city has several perfumeries that specialise in niche houses.", aboutJa: "ミラノでは毎年、ニッチな香水の国際見本市「エクセンス」がひらかれる（2026年6月で16回目）。ニッチな香水を専門に扱う店もいくつもある。" },
@@ -484,10 +490,10 @@ export const CITIES: LatitudeCity[] = [
       ],
     },
     route: [
-      { time: '09:30', place: 'Villa Necchi', placeJa: 'ネッキ邸（ヴィッラ・ネッキ・カンピーリオ）', what: 'Sitting on the travertine edge of the garden pool.', whatJa: '庭のプールの、トラバーチンのふちに座る。', image: 'villa.jpg', near: ['Coffee Studio 7Gr.', 'Orsonero Coffee'] },
+      { time: '09:30', place: 'Villa Necchi', placeJa: 'ネッキ邸（ヴィッラ・ネッキ・カンピーリオ）', what: 'Sitting on the travertine edge of the garden pool.', whatJa: '庭のプールの、トラバーチンのふちに座る。', image: 'villa.jpg', near: ['Coffee Studio 7Gr.', 'Orsonero Coffee'], coords: [45.46822, 9.20183], short: "Villa Necchi", shortJa: "ネッキ邸", gmaps: "Villa Necchi Milano" },
       { time: '14:30', place: 'The foundation', placeJa: '街の南の美術の財団', what: 'Walking across the courtyard of an old distillery.', whatJa: '古い蒸留所の中庭を歩く。', image: 'foundation.jpg', near: ['Trippa', 'Un Posto a Milano', 'Signor Lievito', 'Trattoria del Pescatore'] },
-      { time: '16:30', place: 'The Duomo', placeJa: 'ドゥオーモ', what: 'On the roof terraces, a hand on the marble.', whatJa: '屋上のテラスで、大理石に手を置く。', image: 'duomo.jpg', near: ['Luini', 'Laboratorio Paravicini'] },
-      { time: '17:30', place: 'Torre Velasca', placeJa: 'トッレ・ヴェラスカ', what: 'Plain plates set out on a table at the foot of the tower.', whatJa: '塔のふもとで、店先の机に並んだ白い器を手に取る。', image: 'velasca.jpg' },
+      { time: '16:30', place: 'The Duomo', placeJa: 'ドゥオーモ', what: 'On the roof terraces, a hand on the marble.', whatJa: '屋上のテラスで、大理石に手を置く。', image: 'duomo.jpg', near: ['Luini', 'Laboratorio Paravicini'], coords: [45.46417, 9.19161], short: "Duomo", shortJa: "ドゥオーモ", gmaps: "Duomo di Milano" },
+      { time: '17:30', place: 'Torre Velasca', placeJa: 'トッレ・ヴェラスカ', what: 'Plain plates set out on a table at the foot of the tower.', whatJa: '塔のふもとで、店先の机に並んだ白い器を手に取る。', image: 'velasca.jpg', coords: [45.45991, 9.19074], short: "Torre Velasca", shortJa: "トッレ・ヴェラスカ", gmaps: "Torre Velasca Milano" },
     ],
   },
   {
@@ -509,6 +515,8 @@ export const CITIES: LatitudeCity[] = [
       { file: 'victoria.jpg', alt: 'Liv on Victoria Street at dusk', altJa: '夕暮れのヴィクトリア・ストリートのリヴ' },
       { file: 'close.jpg', alt: 'Liv walking down a stone close at night', altJa: '夜の石の小路を下りるリヴ' },
     ],
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: edinburgh as CityPlace[],
     industries: [
       { key: "scottish-textiles", en: "Tweed, knitwear & kiltmaking", ja: "ツイード・ニット・キルト", about: "Scotland's tweed, tartan and knitwear are known worldwide, and Edinburgh still has kiltmakers, tailors and knitters who cut, sew and knit in the city — one kiltmaker has been here since 1868.", aboutJa: "スコットランドのツイードやタータン、ニットは世界に知られる。エディンバラにはいまも、街の中で布を裁ち、縫い、編むキルト職人や仕立て屋、ニットの工房がある。1868年から続くキルトの店もある。" },
@@ -545,11 +553,11 @@ export const CITIES: LatitudeCity[] = [
     },
     route: [
       { time: '07:10', place: 'The sleeper train from London', placeJa: 'ロンドンからの夜行列車', what: 'Tea in the cabin as the train reaches Scotland.', whatJa: 'スコットランドに入った寝台で、紅茶を一杯。', image: 'train.jpg' },
-      { time: '08:30', place: 'The Shore, Leith', placeJa: 'リースのショア', what: 'At the edge of the quay, under the sandstone warehouses.', whatJa: '砂岩の倉庫の前、岸壁のふちに立つ。', image: 'shore.jpg', near: ['Williams & Johnson Coffee Co.', 'Fishers in Leith', 'Restaurant Martin Wishart', 'Cyan Clayworks'] },
-      { time: '11:50', place: 'Calton Hill', placeJa: 'カールトン・ヒル', what: 'Arms up between the unfinished columns.', whatJa: '未完成の柱のあいだで、両腕を上げる。', image: 'calton.jpg', near: ["L'Escargot Bleu"] },
+      { time: '08:30', place: 'The Shore, Leith', placeJa: 'リースのショア', what: 'At the edge of the quay, under the sandstone warehouses.', whatJa: '砂岩の倉庫の前、岸壁のふちに立つ。', image: 'shore.jpg', near: ['Williams & Johnson Coffee Co.', 'Fishers in Leith', 'Restaurant Martin Wishart', 'Cyan Clayworks'], coords: [55.97657, -3.16923], short: "The Shore", shortJa: "リースのショア", gmaps: "The Shore Leith Edinburgh" },
+      { time: '11:50', place: 'Calton Hill', placeJa: 'カールトン・ヒル', what: 'Arms up between the unfinished columns.', whatJa: '未完成の柱のあいだで、両腕を上げる。', image: 'calton.jpg', near: ["L'Escargot Bleu"], coords: [55.95525, -3.18280], short: "Calton Hill", shortJa: "カールトン・ヒル", gmaps: "Calton Hill Edinburgh" },
       { time: '13:00', place: 'A pub in the Old Town', placeJa: 'オールドタウンのパブ', what: 'A small whisky by the window.', whatJa: '窓ぎわで、小さなグラスのウイスキー。', image: 'pub.jpg' },
       { time: '14:40', place: "Arthur's Seat", placeJa: 'アーサーズ・シート', what: 'Wind on the edge of an old volcano.', whatJa: '古い火山のふちで、風を受ける。', image: 'arthurs-seat.jpg', near: ['Wedgwood the Restaurant'] },
-      { time: '17:30', place: 'Victoria Street', placeJa: 'ヴィクトリア・ストリート', what: 'Stopping on the wet cobbles as the shop windows light up.', whatJa: '店の窓に灯りがともる、濡れた石畳で立ち止まる。', image: 'victoria.jpg', near: ['Whirlybird', "Mary's Milk Bar", 'Timberyard'] },
+      { time: '17:30', place: 'Victoria Street', placeJa: 'ヴィクトリア・ストリート', what: 'Stopping on the wet cobbles as the shop windows light up.', whatJa: '店の窓に灯りがともる、濡れた石畳で立ち止まる。', image: 'victoria.jpg', near: ['Whirlybird', "Mary's Milk Bar", 'Timberyard'], coords: [55.94865, -3.19377], short: "Victoria Street", shortJa: "ヴィクトリア・ストリート", gmaps: "Victoria Street Edinburgh" },
       { time: '21:30', place: 'A close in the Old Town', placeJa: 'オールドタウンの小路（クロース）', what: 'Down the wet stone steps under one lantern.', whatJa: 'ひとつの灯りの下、濡れた石段を下りる。', image: 'close.jpg' },
     ],
   },
@@ -572,6 +580,8 @@ export const CITIES: LatitudeCity[] = [
       { file: 'harpa.jpg', alt: 'Solveig and her reflection in the glass of Harpa', altJa: 'ハルパのガラスに映るソルヴェイ' },
       { file: 'harpa-floor.jpg', alt: 'Solveig sitting on the floor inside Harpa', altJa: 'ハルパの中で床に座るソルヴェイ' },
     ],
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: reykjavik as CityPlace[],
     industries: [
       { key: "record-shops", en: "Record shops", ja: "レコード店", about: "Reykjavík's music scene, from the Sugarcubes onward, is served by small record shops that are often also labels and venues. Smekkleysa (Bad Taste) has run its label since 1986 and 12 Tónar since 1998.", aboutJa: "シュガーキューブス以来のレイキャビクの音楽を、小さなレコード店が支える。店がレーベルやライブの場を兼ねる事が多い。スメクレイサは1986年から、12トゥナルは1998年からレーベルを続ける。" },
@@ -603,8 +613,8 @@ export const CITIES: LatitudeCity[] = [
     },
     route: [
       { time: '07:40', place: 'Reynisfjara', placeJa: 'レイニスフィヤラ（南の海岸）', what: 'On the basalt columns above the black beach.', whatJa: '黒い浜を見下ろす、玄武岩の柱の上に立つ。', image: 'beach.jpg' },
-      { time: '12:15', place: 'Reykjavík Harbour', placeJa: 'レイキャビクの旧港', what: 'One boot on an iron bollard by the fishing boats.', whatJa: '漁船のそば、鉄の係船柱にブーツを片方のせる。', image: 'harbour.jpg', near: ['Kaffivagninn', 'Ísbúðin Valdís', 'La Primavera', 'Omnom Chocolate'] },
-      { time: '17:50', place: 'Harpa', placeJa: 'ハルパ', what: 'Inside the glass, facing her own reflection.', whatJa: 'ガラスの中で、自分の映りこみと向き合う。', image: 'harpa.jpg', near: ['Hnoss Bistro', 'Kaffi Ó-le'] },
+      { time: '12:15', place: 'Reykjavík Harbour', placeJa: 'レイキャビクの旧港', what: 'One boot on an iron bollard by the fishing boats.', whatJa: '漁船のそば、鉄の係船柱にブーツを片方のせる。', image: 'harbour.jpg', near: ['Kaffivagninn', 'Ísbúðin Valdís', 'La Primavera', 'Omnom Chocolate'], coords: [64.15167, -21.94210], short: "Reykjavík Harbour", shortJa: "レイキャビクの旧港", gmaps: "Old Harbour Reykjavík" },
+      { time: '17:50', place: 'Harpa', placeJa: 'ハルパ', what: 'Inside the glass, facing her own reflection.', whatJa: 'ガラスの中で、自分の映りこみと向き合う。', image: 'harpa.jpg', near: ['Hnoss Bistro', 'Kaffi Ó-le'], coords: [64.15043, -21.93285], short: "Harpa", shortJa: "ハルパ", gmaps: "Harpa Reykjavík" },
     ],
   },
   // 2026-11-01 ウィーン（クラーラ・号 vienna）。1日＝1コーデで、服はすべて VUAL のオリジナル。写真は号の静止画（vault.vual.jp outputs/vual-vienna-20261029/stills と data/latitude-recipes/vienna/scenes）を 9:16 に切った物。
@@ -792,6 +802,8 @@ export const CITIES: LatitudeCity[] = [
       { file: 'cafe.jpg', alt: 'Solveig with a cup of coffee at a window table', altJa: '窓ぎわの席でコーヒーを持つソルヴェイ' },
       { file: 'fire.jpg', alt: 'Solveig feeding the stove in the fishermen\'s hut at Helgumannen', altJa: 'ヘルグマンネンの漁師小屋で、ストーブに薪をくべるソルヴェイ' },
     ],
+    // 2026-11-13 店の位置と旅人の1日の位置（Hydrogen が地図のデータで確かめた）。地図は scripts/latitude-citymap.py
+    shopMap: true,
     places: faro as CityPlace[],
     industries: [
       { key: "gotland-food", en: "Gotland food", ja: "ゴットランドの郷土食", about: "Gotland saffron pancake (saffranspannkaka) is baked with milk and rice and served with salmbär, a dewberry jam. The cottage café in the Bunge open-air museum serves it.", aboutJa: "ゴットランドのサフランパンケーキは、牛乳と米で焼き、サルムベリ（ブラックベリーの仲間）のジャムを添える。ブンゲ野外博物館の中の小屋のカフェで出している。" },

@@ -11,7 +11,8 @@
   "whatEn": "A bakery and garden café in the north of Fårö. It bakes cardamom buns and sourdough bread.",
   "note": "島の店は、静かな季節の営業日を先に確かめる。",
   "noteEn": "On the island, check quiet-season hours first.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.96789, 19.23396]
  },
  {
   "name": "Kafé Smultronstället",
@@ -26,7 +27,8 @@
   "whatEn": "A café next to the Bergman Center, with lunch and seasonal fika. The terrace looks over Kyrkviken bay.",
   "note": "映画『野いちご』の名をもつカフェ。音を録る人に。",
   "noteEn": "A café named for the film Wild Strawberries. For someone who records sound.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.91882, 19.13836]
  },
  {
   "name": "Pastamakarna Fårö",
@@ -40,7 +42,8 @@
   "whatEn": "A farm eatery at Limor Gård. It serves fresh handmade pasta with island lamb and local cheese.",
   "note": "ひとつの農場に、パスタと陶器と羊の店。",
   "noteEn": "Pasta, ceramics and lamb, on one farm.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.90701, 19.10746]
  },
  {
   "name": "Fårö Krukmakeri",
@@ -55,7 +58,8 @@
   "whatEn": "A pottery workshop and farm shop at Nystugu, making stoneware tableware and decorative ceramics. In summer 2026 it was open daily from 20 June to 8 August.",
   "note": "夏の期間に開く工房。静かな季節は、先に問い合わせる。",
   "noteEn": "A summer workshop. In the quiet season, ask first.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.93864, 19.17747]
  },
  {
   "name": "Lilla Bageriet i Bunge",
@@ -69,7 +73,8 @@
   "whatEn": "A small home bakery in Bunge. It bakes saffron and cardamom buns and also stocks Italian olive oil and pasta.",
   "note": "サフランのパン。開くのは、ほぼ土曜だけ。",
   "noteEn": "Saffron buns. Open mostly on Saturdays.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.85236, 19.02775]
  },
  {
   "name": "Prima Gård",
@@ -84,7 +89,8 @@
   "whatEn": "A 17th-century limestone farm with an organic coffee roastery, a garden café and a ceramics workshop. Emma and Martin have run it since 2014.",
   "note": "島の農場で焙煎した、有機のコーヒー。",
   "noteEn": "Organic coffee, roasted on an island farm.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.85076, 19.02459]
  },
  {
   "name": "Bungemuseets Mat- och kaffestuga",
@@ -99,7 +105,8 @@
   "whatEn": "A food and coffee cottage inside the Bunge open-air museum. It serves Gotland saffron pancake with salmbär (dewberry) jam.",
   "note": "古い農家の景色の中で、土地の菓子。",
   "noteEn": "A local sweet, among old farmhouses.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.85389, 19.02864]
  },
  {
   "name": "Bungenäs Kalklada & Matsal",
@@ -113,7 +120,8 @@
   "whatEn": "A summer restaurant in a restored limestone-kiln barn, on the car-free Bungenäs peninsula.",
   "note": "車の入れない半島。門から歩く。",
   "noteEn": "A car-free peninsula. Walk in from the gate.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.82342, 19.07967]
  },
  {
   "name": "Bunge Krog",
@@ -127,7 +135,8 @@
   "whatEn": "A local tavern and pizzeria on the road to the Fårö ferry. It serves thin-crust pizza.",
   "note": "フェリーの前に寄る店。生地は自家製。",
   "noteEn": "A stop before the ferry. The dough is made in-house.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.86064, 19.05242]
  },
  {
   "name": "Fårösunds Fästning",
@@ -141,6 +150,7 @@
   "whatEn": "A restaurant and hotel in a coastal fortress built in 1886, above the strait. The menu mixes Gotland lamb and seafood with northern Swedish game such as reindeer and elk.",
   "note": "静かな季節も開いている、海峡の要塞。",
   "noteEn": "A fortress on the strait, open in the quiet season.",
-  "verifiedAt": "2026-11-09"
+  "verifiedAt": "2026-11-09",
+  "coords": [57.84639, 19.07862]
  }
 ]
