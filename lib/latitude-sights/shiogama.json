@@ -1,0 +1,90 @@
+[
+ {
+  "name": "志波彦神社・鹽竈神社",
+  "nameEn": "Shiwahiko Shrine & Shiogama Shrine",
+  "kind": "sight",
+  "area": "一森山",
+  "areaEn": "Ichimoriyama",
+  "address": "塩竈市一森山1-1",
+  "url": "http://www.shiogamajinja.jp/",
+  "what": "松島湾を望む一森山の丘に鎮座する陸奥国一之宮。鹽竈神社の本殿・拝殿などは国の重要文化財で、境内に志波彦神社と鹽竈神社博物館がある。",
+  "whatEn": "The chief shrine of former Mutsu Province, on Ichimoriyama hill overlooking Matsushima Bay. Its main halls are national Important Cultural Properties, with Shiwahiko Shrine and the shrine museum in the same grounds.",
+  "coords": [
+   38.31832,
+   141.01333
+  ],
+  "notice": "11〜12月の開門は鹽竈神社が5時〜17時、志波彦神社は11月が5時30分〜16時30分、12月が6時〜16時。閉門中も門外の境内は参拝できる。博物館は木曜休館。",
+  "noticeEn": "Nov–Dec gates: Shiogama Shrine 5 am–5 pm; Shiwahiko Shrine 5:30 am–4:30 pm in Nov and 6 am–4 pm in Dec (outer grounds open after hours). Museum closed Thursdays.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "塩竈市杉村惇美術館",
+  "nameEn": "Shiogama Sugimura Jun Museum of Art",
+  "kind": "art",
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町8-1",
+  "url": "https://sugimurajun.shiomo.jp/",
+  "what": "昭和25年建造の公民館を改修し、2014年に開館した美術館。外壁の一部に地元の塩竈石を使い、洋画家・杉村惇の作品の常設展と企画展を開く。",
+  "whatEn": "An art museum opened in 2014 in a renovated 1950 public hall clad partly in local Shiogama stone. Holds permanent displays of painter Sugimura Jun alongside temporary exhibitions.",
+  "coords": [
+   38.31581,
+   141.01661
+  ],
+  "notice": "10時〜17時、月曜休館（祝日の場合は翌日）。年末年始は2026年12月28日〜2027年1月3日休館。周辺工事に伴う駐車場の利用制限あり。",
+  "noticeEn": "Open 10 am–5 pm, closed Mondays (next day if a holiday), and Dec 28, 2026–Jan 3, 2027. Parking is restricted due to nearby slope works.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "菅野美術館",
+  "nameEn": "Kanno Museum of Art",
+  "kind": "art",
+  "area": "玉川",
+  "areaEn": "Tamagawa",
+  "address": "塩竈市玉川3-4-15",
+  "url": "http://www.kanno-museum.jp/",
+  "what": "建築家・阿部仁史の設計による小さな彫刻美術館。ロダンやブールデルなどの彫刻作品を展示する。",
+  "whatEn": "A small sculpture museum designed by architect Hitoshi Abe, showing works by Rodin, Bourdelle and other sculptors.",
+  "coords": [
+   38.31141,
+   141.00562
+  ],
+  "notice": "10時〜17時（最終入館16時30分）、月・火曜休館（祝日の場合は開館）。2026年11月は23日（月祝）開館、24日（火）休館。",
+  "noticeEn": "Open 10 am–5 pm (last entry 4:30 pm); closed Mondays and Tuesdays (open on holidays). In Nov 2026, open Nov 23 and closed Nov 24.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "海商の館 旧亀井邸",
+  "nameEn": "Former Kamei Residence",
+  "kind": "sight",
+  "area": "宮町",
+  "areaEn": "Miyamachi",
+  "address": "塩竈市宮町5-5",
+  "url": "https://kankoubussan.shiogama.miyagi.jp/shop/spot_history.php",
+  "what": "大正13年（1924年）に建てられた、和館と洋館を併せ持つ住宅。鹽竈神社の裏坂を上り始めてすぐの左手にあり、入館無料。",
+  "whatEn": "A 1924 residence combining Japanese- and Western-style wings, just off the start of Shiogama Shrine's Urazaka approach. Admission free.",
+  "coords": [
+   38.31757,
+   141.01697
+  ],
+  "notice": "10時〜15時30分、火・水・木曜休館。",
+  "noticeEn": "Open 10 am–3:30 pm; closed Tuesdays, Wednesdays and Thursdays.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "御釜神社",
+  "nameEn": "Okama Shrine",
+  "kind": "sight",
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町4-1",
+  "url": "http://www.shiogamajinja.jp/history/",
+  "what": "鹽竈神社の境外末社。製塩法を伝えたとされる塩土老翁神を祀り、古代製塩に使われたという四口の鉄釜「神釜」が奉安されている。",
+  "whatEn": "An outlying auxiliary shrine of Shiogama Shrine dedicated to Shiotsuchi-oji-no-kami, housing four ancient iron salt-making cauldrons.",
+  "coords": [
+   38.31609,
+   141.01791
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

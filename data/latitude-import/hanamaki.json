@@ -1,0 +1,706 @@
+{
+ "slug": "hanamaki",
+ "city": {
+  "name": "Hanamaki",
+  "nameJa": "花巻",
+  "latitude": "39.4° N",
+  "country": "Iwate, Japan",
+  "countryJa": "岩手県",
+  "person": "rin",
+  "coords": [
+   39.389,
+   141.1145
+  ],
+  "intro": "A hot-spring town in the Kitakami basin, where Kenji Miyazawa lived and wrote. Iwate homespun wool, wooden-vat miso and soy sauce in Towa, Ohasama wine, and downtown coffee and soba: Rin's picks.",
+  "introJa": "北上川の盆地にひらけた、宮沢賢治ゆかりの温泉の町。東和の木桶の味噌・醤油と岩手ホームスパン、大迫のワイン、それからまちなかの喫茶とそばを、凛のおすすめで。",
+  "locator": {
+   "en": "In central Iwate · along the Kitakami River basin",
+   "ja": "岩手県の中ほど・北上川に沿う盆地の町"
+  },
+  "industries": [
+   {
+    "key": "iwate-homespun",
+    "en": "Iwate Homespun Wool Weaving",
+    "ja": "岩手ホームスパン",
+    "about": "Iwate homespun began in the late Meiji era and survives in Hanamaki and Morioka. Wool is hand-dyed, spun by hand, and woven slowly on wooden looms into light, warm cloth.",
+    "aboutJa": "岩手ホームスパンは明治の終わりごろに始まり、花巻と盛岡に受け継がれている毛織物。羊毛を手で染め、手で紡ぎ、木の織機でゆっくりと軽くあたたかな布に織り上げる。",
+    "_src": "Introduced in the late Meiji era and preserved only in Hanamaki and Morioka, Iwate homespun transforms hand-dyed, hand-spun fleece into airy woolen textiles on wooden looms."
+   },
+   {
+    "key": "wooden-vat-brewing",
+    "en": "Wooden-Vat Miso & Soy Sauce Brewing",
+    "ja": "木桶仕込みの味噌・醤油醸造",
+    "about": "In Towa, century-old breweries draw soft underground water from Mount Hayachine and ferment Iwate soybeans and grains slowly in wooden cedar vats to make miso and soy sauce.",
+    "aboutJa": "東和町では、早池峰山系のやわらかな伏流水と岩手県産の丸大豆を使い、昔ながらの木桶で時間をかけて味噌や醤油を仕込んでいる。",
+    "_src": "Fed by soft subterranean water from Mount Hayachine and Iwate-grown whole soybeans and grains, Towa's century-old breweries ferment miso and soy sauce slowly in cedar vats."
+   },
+   {
+    "key": "ohasama-wine",
+    "en": "Ohasama Winemaking",
+    "ja": "大迫ワイン醸造",
+    "about": "At the foot of Mount Hayachine, Ohasama's limestone-rich slopes and wide day-to-night temperature swings have supported winemaking since the post-war era.",
+    "aboutJa": "早池峰山のふもとに位置する大迫町は、石灰質を含む土壌と昼夜の寒暖差を活かし、戦後からワインづくりが続いてきた土地。",
+    "_src": "Limestone-rich soils and sharp diurnal temperature swings at the foot of Mount Hayachine have made Ohasama Iwate's premier viticultural valley since the post-war era."
+   }
+  ]
+ },
+ "places": {
+  "マルカンビル大食堂": {
+   "nameEn": "Marukan Building Dining Hall",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "soft-serve",
+    "yoshoku",
+    "ramen"
+   ],
+   "what": "1973年開業の旧マルカン百貨店6階を引き継いだ、550席の展望大食堂。10段巻きのソフトクリームやナポリかつ、マルカンラーメンが名物。",
+   "whatEn": "A 550-seat panoramic dining hall on the sixth floor of the former Marukan Department Store, opened in 1973 and reopened in 2017. Known for its 10-tier soft-serve eaten with chopsticks, Napori-katsu, and Marukan ramen.",
+   "note": "10段のソフトクリームを、箸で崩さずに食べてみたい。",
+   "noteEn": "I want to try eating the 10-tier soft-serve with chopsticks without toppling it.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "まるかんびるだいしょくどう",
+    "address": "6F Marukan Bldg, 6-2 Kamicho, Hanamaki",
+    "url": "https://www.kamichoyamori.com/marukan-bldg-restaurant",
+    "whatJa": "旧マルカン百貨店6階にある、サンプルケースと箸で食べる25cmの10段ソフトクリームで知られる昭和レトロな展望大食堂。",
+    "whatEn": "Sixth-floor Showa-retro panoramic department-store dining hall famous for wax food cases and 10-tier soft-serve eaten with chopsticks.",
+    "facts": "Preserves a 550-seat 1973 department-store cafeteria revived by local citizens in 2017; diners buy meal tickets beside rows of wax food displays for Napori-katsu, Marukan ramen, and towering 25cm 10-tier soft-serve ice cream.",
+    "weak": "",
+    "verifiedBy": "https://edelwein.co.jp/6712",
+    "quote": "昨年、250名が参加し大好評だったコラボイベントを、花巻市の「エーデルワイン」と「マルカンビル大食堂」が今年もタッグを組んで開催！",
+    "fixes": "",
+    "coords": [
+     39.38577,
+     141.11719
+    ]
+   }
+  },
+  "やぶ屋 花巻総本店": {
+   "nameEn": "Yabuya Hanamaki Honten",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "soba",
+    "wanko soba"
+   ],
+   "what": "大正12年（1923年）創業の蕎麦屋で、花巻発祥のわんこそばや二八そばを出す。宮沢賢治も通い、天ぷらそばと三ツ矢サイダーを注文したという。",
+   "whatEn": "A soba shop founded in 1923, serving wanko soba and ni-hachi soba. Kenji Miyazawa used to come here and order tempura soba with Mitsuya Cider.",
+   "note": "賢治にならって、天ぷらそばにサイダーを合わせたい。",
+   "noteEn": "Following Miyazawa's habit, I would pair tempura soba with cider.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "やぶや はなまきそうほんてん",
+    "address": "7-17 Fupparicho, Hanamaki",
+    "url": "https://yabuya.jp/",
+    "whatJa": "大正12年創業、宮沢賢治が「ブッシュ」と呼んで通った花巻中心部の老舗蕎麦店。",
+    "whatEn": "Century-old soba restaurant in downtown Hanamaki once frequented by poet and teacher Kenji Miyazawa.",
+    "facts": "Founded in 1923 in downtown Hanamaki; serves handmade soba, wanko soba, and the 'Kenji Set' pairing tempura soba with Mitsuya Cider, recreating Kenji Miyazawa's favorite order.",
+    "weak": "",
+    "verifiedBy": "https://yabuya.jp/info/6973715",
+    "quote": "今月の店休日および営業時間をお知らせいたします。",
+    "fixes": "",
+    "coords": [
+     39.3878,
+     141.11495
+    ]
+   }
+  },
+  "HAIKARA-YA": {
+   "nameEn": "HAIKARA-YA",
+   "area": "星が丘・下幅・諏訪",
+   "areaEn": "Hoshigaoka, Shimohaba & Suwa",
+   "tags": [
+    "curry",
+    "pasta",
+    "pudding",
+    "craft beer"
+   ],
+   "what": "1999年創業の諏訪町のカフェレストラン。カレーや花巻納豆スパゲティ、クラフトビールやプリンを昼から夕方まで出す。火曜と第1・3水曜休。",
+   "whatEn": "A café-restaurant in Suwacho open since 1999, serving curries, Hanamaki natto spaghetti, craft beer, and pudding from lunch into the afternoon. Closed Tuesdays and first and third Wednesdays.",
+   "note": "プラスチック容器から皿に移して食べるプリンが気になる。",
+   "noteEn": "I am curious about the pudding you turn out onto a plate yourself.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "はいからや",
+    "address": "2-1-14 Suwacho, Hanamaki",
+    "url": "https://haikara-ya.com/",
+    "whatJa": "1999年創業、ステーキカレーやパスタなどボリュームある洋食ランチで地元に愛される諏訪町のカフェレストラン。",
+    "whatEn": "Long-running independent yoshoku cafe-restaurant in Suwacho known for hearty curries, pasta, and craft beer.",
+    "facts": "Operating since 1999 in southern central Hanamaki; popular with locals for beef-steak curry, seasonal pasta lunches, homemade desserts, and rotating Japanese craft beers.",
+    "weak": "",
+    "verifiedBy": "https://www.nap-camp.com/mag/24909",
+    "quote": "洋食好きにはたまらない、花巻の名店「HAIKARA-YA（ハイカラヤ）」は、懐かしさと上質さを併せ持つレトロ洋食レストランです。",
+    "fixes": "",
+    "coords": [
+     39.3763,
+     141.11161
+    ]
+   }
+  },
+  "Sobe's Cafe": {
+   "nameEn": "Sobe's Cafe",
+   "area": "花巻温泉郷",
+   "areaEn": "Hanamaki Onsenkyo",
+   "tags": [
+    "brown rice",
+    "vegan",
+    "coffee"
+   ],
+   "what": "500年続く米農家の無農薬玄米「惣兵衛米」を中心に、植物性100%の料理を出すカフェ。満月と新月でランチが替わり、2026年2月に改装再開。土日休。",
+   "whatEn": "A 100% plant-based café built around pesticide-free Sobe-mai brown rice from a 500-year-old rice farm, reopened after renovation in February 2026. The lunch plate changes with the full and new moon; closed Saturdays and Sundays.",
+   "note": "満月と新月で替わる、惣兵衛米のプレートを食べてみたい。",
+   "noteEn": "I would like the Sobe-mai rice plate that changes at the full and new moon.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "そーべーずかふぇ",
+    "address": "578-4 Yamanokami, Hanamaki",
+    "url": "https://cafe.sobe.jp/",
+    "whatJa": "500年続く花巻の米農家が営む、無農薬の自家製玄米「惣兵衛米」を中心とした植物性100%のカフェ。",
+    "whatEn": "Plant-based brown-rice cafe run by a 500-year-old Hanamaki rice-farming family.",
+    "facts": "Opened in 2007 and reopened after renovation in February 2026; serves 100% plant-based lunches built around pesticide-free Sobe-mai brown rice, kurumafu wheat-gluten cutlets, and tofu tiramisu.",
+    "weak": "",
+    "verifiedBy": "https://cafe.sobe.jp/",
+    "quote": "いいえ、営業しています。2026年2月4日にリニューアルオープンし、現在も花巻市山の神で営業中です。",
+    "fixes": "",
+    "coords": [
+     39.36013,
+     141.11142
+    ]
+   }
+  },
+  "パティスリーアンジュ": {
+   "nameEn": "Patisserie Ange",
+   "area": "星が丘・下幅・諏訪",
+   "areaEn": "Hoshigaoka, Shimohaba & Suwa",
+   "tags": [
+    "cake",
+    "sweets",
+    "rice flour"
+   ],
+   "what": "星が丘の洋菓子店で、カフェスペースもある。江刺産「金札米」の米粉100%で焼く約50cmのロールケーキや、岩手県産チーズのタルトが名物。",
+   "whatEn": "A patisserie with a café space in Hoshigaoka. Known for its 50 cm wheat-free roll cake made with Esashi Kinsatsu rice flour and tarts using Iwate fresh cheese.",
+   "note": "米粉のロールケーキと日替わりの菓子を、カフェで一息に。",
+   "noteEn": "I want to sit in the café with a slice of the rice-flour roll cake and the daily sweet.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりーあんじゅ",
+    "address": "1-1-18 Hoshigaoka, Hanamaki",
+    "url": "https://p-ange.jp/",
+    "whatJa": "星が丘に本店を構える、岩手県産米粉ロールケーキや宮沢賢治モチーフの洋菓子で人気のパティスリー。",
+    "whatEn": "Beloved Hanamaki patisserie creating rice-flour roll cakes and sweets inspired by local ingredients and stories.",
+    "facts": "Known for its 50cm rice-flour roll cake made with Esashi Kinsatsu rice and fresh-cheese tarts named after Kenji Miyazawa's 'Oinomori'; operates its flagship shop in Hoshigaoka.",
+    "weak": "",
+    "verifiedBy": "https://p-ange.jp/",
+    "quote": "その日その日の旬の素材などを使用してお作り致します。\n一日限定販売の日替わりスィーツです。",
+    "fixes": "",
+    "coords": [
+     39.40088,
+     141.10536
+    ]
+   }
+  },
+  "ぱんのかぶ": {
+   "nameEn": "Pan no Kabu",
+   "area": "星が丘・下幅・諏訪",
+   "areaEn": "Hoshigaoka, Shimohaba & Suwa",
+   "tags": [
+    "bread",
+    "croissant",
+    "rice flour"
+   ],
+   "what": "下幅の住宅街にある小さなパン屋。国産小麦と米粉を使い、添加物や卵を使わずに焼くクロワッサンや米粉パンが並ぶ。不定休。",
+   "whatEn": "A small neighborhood bakery in Shimohaba baking croissants and rice-flour breads from domestic wheat and rice flour without additives or eggs. Irregular holidays.",
+   "note": "焼き上がりの時間に寄って、クロワッサンをひとつ選びたい。",
+   "noteEn": "I want to drop by when the loaves come out and pick a croissant.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱんのかぶ",
+    "address": "14-23 Shimohaba, Hanamaki",
+    "url": "https://www.instagram.com/pannokabu/",
+    "whatJa": "花巻市下幅の住宅街にある、国産小麦と米粉を使った無添加パンを焼く小さなパン屋。",
+    "whatEn": "Tiny neighborhood bakery in Shimohaba baking additive-free breads from domestic wheat and rice flour.",
+    "facts": "Named after a tree stump ('kabu') where hikers rest; bakes chewy rice-flour loaves, flaky croissants, and seasonal filled buns in small batches from early morning until sold out.",
+    "weak": "",
+    "verifiedBy": "https://show-un.com/category/blog/blog9/",
+    "quote": "かわいらしい出入り口のドアの向こうでは、もちもちの食感が味わえる魅力的なパンの数々が出迎えてくれます。",
+    "fixes": "",
+    "coords": [
+     39.39988,
+     141.11398
+    ]
+   }
+  },
+  "PATISSERIE 菓音": {
+   "nameEn": "PATISSERIE Kanon",
+   "area": "東和町",
+   "areaEn": "Towa",
+   "tags": [
+    "cake",
+    "sweets",
+    "cookies"
+   ],
+   "what": "2013年に東和町の丘の上に開いた洋菓子店。旬の果実や新鮮な卵・乳製品を使った生菓子や、クッキーなどの焼き菓子が並ぶ。月曜休。",
+   "whatEn": "A hilltop patisserie in Towa opened in 2013, making seasonal fruit cakes, cookies, and choux pastries with fresh eggs and dairy. Closed Mondays.",
+   "note": "季節の果物のケーキと、日持ちする焼き菓子をひとつずつ。",
+   "noteEn": "One seasonal fruit cake, and one baked sweet to keep for later.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりー かのん",
+    "address": "8-300-1 Sotoyachi, Towa-cho, Hanamaki",
+    "url": "https://www.patisserie-kanon.com/",
+    "whatJa": "東和町の丘の上に佇む、旬の果実を使った生菓子や焼き菓子を手がける洋菓子店。",
+    "whatEn": "Hilltop patisserie in Towa crafting seasonal fruit cakes, tarts, and baked confections.",
+    "facts": "Independent patisserie set among rural hills outside Tsuchizawa; makes delicate seasonal entremets, fruit tarts, and giftable sablés using Iwate dairy and local orchard produce.",
+    "weak": "",
+    "verifiedBy": "https://note.com/anko_etc/n/n04f43df984b5",
+    "quote": "東和町では、途中、「菓音」というケーキ屋さんもみつけたし♪　以前、催事でだったかな、クッキーを買ったことがあったんだけど、東和町の丘の上にあった！",
+    "fixes": "whatEn: Hilltop cake shop in Towa selling cakes, cookies and choux pastries. whatJa: 東和町の丘の上にある、ケーキやクッキー、シュー棒を販売する洋菓子店。住所は岩手県花巻市東和町外谷地8区300-1。",
+    "coords": [
+     39.40649,
+     141.21286
+    ]
+   }
+  },
+  "林風舎": {
+   "nameEn": "Rinpoosha",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "coffee",
+    "tea",
+    "zakka"
+   ],
+   "what": "花巻駅近くの、宮沢賢治の親族が営む店。1階で賢治ゆかりの雑貨や書籍を扱い、2階にはピアノを置いた喫茶室がある。木曜休。",
+   "whatEn": "A shop near Hanamaki Station run by relatives of Kenji Miyazawa, with Miyazawa-themed goods and books on the ground floor and a quiet tearoom with a piano upstairs. Closed Thursdays.",
+   "note": "1階で雑貨を見たあと、2階の喫茶室で静かに座りたい。",
+   "noteEn": "After browsing the goods downstairs, I would sit quietly in the upstairs tearoom.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "りんぷうしゃ",
+    "address": "1-3-4 Odori, Hanamaki",
+    "url": "http://www.e-haweb.com/home/rinpoosha/",
+    "whatJa": "花巻駅近くにある、宮沢賢治の親族が営む蔦とレンガ造りのショップ兼2階サロン喫茶室。",
+    "whatEn": "Two-story brick-and-ivy shop and upstairs salon tearoom near Hanamaki Station run by relatives of writer Kenji Miyazawa.",
+    "facts": "1F sells original Kenji Miyazawa-inspired goods and crafts; 2F is a quiet antique-furnished tearoom with a grand piano; serves blended coffee, black tea, and cakes named after Miyazawa stories such as the Oryza roll cake.",
+    "weak": "",
+    "verifiedBy": "https://www.e-haweb.com/home/rinpoosha/",
+    "quote": "2026年11月の定休日のお知らせ\n5日(木)、11日(水)、12日(木)、19日(木)、25日\n(水)\n、26日(木)",
+    "fixes": "whatEn: A shop selling original Kenji Miyazawa-themed goods and household items, with a salon-style tearoom upstairs. whatJa: 1階で賢治にちなんだオリジナルグッズや雑貨を販売し、2階にサロン風の喫茶室を備える店。住所は岩手県花巻市大通り１丁目3-4。",
+    "coords": [
+     39.39078,
+     141.11185
+    ]
+   }
+  },
+  "FishmanCoffee": {
+   "nameEn": "FishmanCoffee",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "coffee",
+    "roastery",
+    "pudding"
+   ],
+   "what": "上町のマルカンビル近くにある、自家焙煎のスペシャルティコーヒー専門店。カウンターで淹れる一杯のほか、豆やエスプレッソプリンも並ぶ。火・水休。",
+   "whatEn": "A specialty coffee roastery near the Marukan Building in Kamicho, brewing pour-overs at the counter and selling roasted beans alongside espresso pudding. Closed Tuesdays and Wednesdays.",
+   "note": "カウンターで一杯飲んで、帰りに豆を一袋選びたい。",
+   "noteEn": "Drink a cup at the counter, then pick a bag of beans to take home.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ふぃっしゅまんこーひー",
+    "address": "1-3 Kamicho, Hanamaki",
+    "url": "https://www.instagram.com/fishmancoffee_hatakeyama/",
+    "whatJa": "マルカンビル近くの上町にある、釣り好きの店主が営む自家焙煎スペシャルティコーヒー専門店。",
+    "whatEn": "Small-batch specialty coffee roastery and cafe near Marukan Building run by an angler-roaster.",
+    "facts": "Roasts single-origin specialty beans in-house and brews each cup to order; offers pour-over tasting flights alongside house-made espresso pudding and torched rare cheesecake.",
+    "weak": "",
+    "verifiedBy": "https://specialtycoffee.info/cafes/fishmancoffee-roastery-hanamaki",
+    "quote": "花巻市上町にある自家焙煎スペシャルティコーヒー専門店のロースタリー店。",
+    "fixes": "",
+    "coords": [
+     39.38621,
+     141.11578
+    ]
+   }
+  },
+  "茶寮かだん": {
+   "nameEn": "Saryo Kadan",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "coffee",
+    "matcha",
+    "wagashi"
+   ],
+   "what": "宮沢賢治が晩年に設計した花壇が残る、花城町の旧橋本家別邸のカフェ。縁側から花壇を眺めながら、ハンドドリップ珈琲や抹茶と和菓子を出している。木曜休。",
+   "whatEn": "A café in the former Hashimoto villa in Kajocho, overlooking a flowerbed designed by Kenji Miyazawa late in his life. Serves hand-dripped coffee, matcha, and wagashi beside the veranda; closed Thursdays.",
+   "note": "縁側の席から花壇を眺めながら、抹茶と和菓子をいただきたい。",
+   "noteEn": "From the veranda facing the flowerbed, I would have matcha and wagashi.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "さりょうかだん",
+    "address": "11-12 Kajocho, Hanamaki",
+    "url": "https://hanamaki-kadan.com/",
+    "whatJa": "宮沢賢治が晩年に設計した花壇が残る旧橋本家別邸を活用した、縁側のある日本家屋カフェ。",
+    "whatEn": "Cafe and tearoom inside the century-old former Hashimoto family villa overlooking a flowerbed designed by Kenji Miyazawa.",
+    "facts": "About a 10-minute walk from Hanamaki Station; serves hand-dripped coffee, matcha, and seasonal Japanese sweets looking onto the historic garden where Kenji Miyazawa designed his final flowerbed.",
+    "weak": "",
+    "verifiedBy": "https://hanamaki.hatenablog.com/entry/kenji-yukari-flower-bed3",
+    "quote": "見学自体は無料・自由に行えますが、個人の邸宅であり静かに営業されているカフェの敷地でもあります。",
+    "fixes": "whatEn: Cafe in an old house beside a flowerbed designed by Kenji Miyazawa late in his life. whatJa: 宮沢賢治が晩年に設計した花壇のある古民家カフェ。公式サイトでハンドドリップ珈琲、抹茶と和菓子、住所の岩手県花巻市花城町11-12を確認。",
+    "coords": [
+     39.38753,
+     141.11743
+    ]
+   }
+  },
+  "kurashimeku": {
+   "nameEn": "kurashimeku",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "ceramics",
+    "wood",
+    "furniture",
+    "tableware"
+   ],
+   "what": "花巻駅近くの大通りにあるインテリアショップ。オーダー家具の相談のほか、作家の器や暮らしの道具を扱い、企画展も開いている。",
+   "whatEn": "An interior shop on Odori near Hanamaki Station offering custom furniture alongside studio ceramics, everyday household tools, and regular maker exhibitions.",
+   "note": "作家の器をひとつ手に取って、木の質感と合わせてみたい。",
+   "noteEn": "I want to hold a piece of studio pottery and see how it sits beside the wood.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "くらしめく",
+    "address": "1-3-1 Odori, Hanamaki",
+    "url": "https://kurashimeku.sumuro.net/",
+    "whatJa": "花巻駅近くの大通りにある、オーダー家具と作家ものの器・暮らしの道具を扱うショップ。",
+    "whatEn": "Interior, custom furniture, and studio-ceramics shop steps from Hanamaki Station.",
+    "facts": "Operated by custom woodwork studio Sumuro; stocks handmade ceramic tableware by independent Japanese potters alongside wooden furniture and everyday household tools; located on the same block as Rinpusha.",
+    "weak": "",
+    "verifiedBy": "https://kurashimeku.sumuro.net/2026/11/07/2026年11月のスケジュール/",
+    "quote": "11月14日(土)からは、板野尚美さんの個展を開催します。",
+    "fixes": "",
+    "coords": [
+     39.39091,
+     141.11186
+    ]
+   }
+  },
+  "C.P.D.": {
+   "nameEn": "C.P.D.",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "tags": [
+    "ceramics",
+    "porcelain",
+    "tableware"
+   ],
+   "what": "鍛冶町の花巻中央広場隣に2025年9月に開いた、長崎・西海陶器の直営ショップ兼ショールーム。波佐見焼を中心とした日常の器を並べる。",
+   "whatEn": "A direct shop and showroom of Nagasaki's Saikai Toki opened in September 2025 next to Hanamaki Central Square in Kajimachi, displaying everyday Hasami porcelain tableware.",
+   "note": "毎日の食卓で使う波佐見焼の器を、形を比べながら選びたい。",
+   "noteEn": "I would compare the shapes and pick a Hasami porcelain piece for everyday use.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "しーぴーでぃー",
+    "address": "4-2 Kajimachi, Hanamaki",
+    "url": "https://www.instagram.com/c.p.d.store/",
+    "whatJa": "花巻まちなかの鍛冶町にある、波佐見焼をはじめ肥前地区の陶磁器やテーブルウェアが揃うショップ兼ショールーム。",
+    "whatEn": "Porcelain tableware shop and showroom in downtown Hanamaki carrying Hasami Porcelain, Common, and Hizen ceramics.",
+    "facts": "Opened in September 2025 next to Hanamaki Central Square by ceramic designer-engineer Kuntaro Abe; displays full lineups of HASAMI PORCELAIN and Common alongside glassware and cutlery.",
+    "weak": "",
+    "verifiedBy": "https://note.com/saikaitoki/n/nd194093b855d",
+    "quote": "本日は、長崎県を飛び出して岩手県花巻市の直営店「C.P.D.」の店長、阿部さんにお話を伺いました。",
+    "fixes": "whatEn: Saikai Toki’s Hanamaki shop for Hasami ceramic tableware. whatJa: 花巻市鍛冶町にある西海陶器の直営店で、波佐見焼のテーブルウェアを扱う。住所は岩手県花巻市鍛冶町4-2（花巻中央広場隣）と一致。",
+    "coords": [
+     39.38532,
+     141.1151
+    ]
+   }
+  },
+  "田舎labo": {
+   "nameEn": "Inaka Labo",
+   "area": "花巻温泉郷",
+   "areaEn": "Hanamaki Onsenkyo",
+   "tags": [
+    "ceramics",
+    "wood",
+    "zakka",
+    "workshop"
+   ],
+   "what": "湯口にあるクラフトショップ兼ギャラリー。岩手県内外の作家の手仕事品やオリジナル雑貨を並べ、常設の手づくり体験も行う。火曜休（冬季は火・金曜休）。",
+   "whatEn": "A craft shop and gallery in Yuguchi stocking handmade works by Iwate and visiting makers alongside original goods and drop-in craft workshops. Closed Tuesdays (Tuesdays and Fridays in winter).",
+   "note": "地元作家の棚から、小さくて持ち帰れる手仕事を一つ探す。",
+   "noteEn": "Look through the local makers' shelves for one small handmade piece to take home.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "いなからぼ",
+    "address": "13-1 Kanisawa, Yuguchi, Hanamaki",
+    "url": "https://inakalabo.jp/",
+    "whatJa": "花巻市湯口にある、岩手県内外の作家による手仕事作品やオリジナル雑貨を扱うショップ兼ギャラリー。",
+    "whatEn": "Craft shop and gallery in Yuguchi showcasing handmade works by Iwate artisans and hosting hands-on workshops.",
+    "facts": "Features ceramics, woodwork, textiles, and accessories from Iwate makers; includes a permanent gallery space for rotating craft exhibitions; sits in the Kanisawa area of Yuguchi near Kajicho-yaki kiln.",
+    "weak": "",
+    "verifiedBy": "https://inakalabo.jp/",
+    "quote": "たぬきとモグラのなかまの動物たちをモチーフにした作品展です。\n2026年10月17日（土）～11月15日（月）※11/3(火)は営業•11/4(水)は振替休業",
+    "fixes": "",
+    "coords": [
+     39.40229,
+     141.02798
+    ]
+   }
+  },
+  "ガラス体験工房 森のくに": {
+   "nameEn": "Glass Studio Mori no Kuni",
+   "area": "大迫町",
+   "areaEn": "Ohasama",
+   "tags": [
+    "glass",
+    "tableware",
+    "workshop"
+   ],
+   "what": "大迫町のガラス工房兼ショップ。職人が作る色合いのきれいなグラスや花器を販売し、土日月祝には予約制の吹きガラス体験も行う。火曜休。",
+   "whatEn": "A glass studio and shop in Ohasama selling hand-blown tumblers and vases by resident craftspeople, with reserved glassblowing sessions on Saturdays through Mondays and holidays. Closed Tuesdays.",
+   "note": "光に透かして気泡を見ながら、毎日のグラスをひとつ選びたい。",
+   "noteEn": "Hold a glass up to the light to check its tiny bubbles and pick one for everyday use.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "がらすたいけんこうぼう もりのくに",
+    "address": "12-45-1 Ohasama, Ohasama-cho, Hanamaki",
+    "url": "https://edel-support.com/glasspage/top/",
+    "whatJa": "早池峰山麓の大迫町にある、吹きガラスやとんぼ玉の制作体験とオリジナルガラス製品の販売を行う工房。",
+    "whatEn": "Glassblowing and lampwork studio and shop at the foot of Mount Hayachine in Ohasama.",
+    "facts": "Crafts and sells colorful hand-blown tumblers, vases, and lampwork glass beads; offers hands-on glassblowing, sandblasting, and fused-glass workshops daily except Tuesdays.",
+    "weak": "",
+    "verifiedBy": "https://edel-support.com/11月の営業日のお知らせ/",
+    "quote": "11月の営業日をお知らせいたしますので、ご来店の際は事前にご確認いただけますと幸いです。",
+    "fixes": "",
+    "coords": [
+     39.47417,
+     141.28197
+    ]
+   }
+  },
+  "株式会社日本ホームスパン": {
+   "nameEn": "Nihon Homespun",
+   "area": "東和町",
+   "areaEn": "Towa",
+   "tags": [
+    "textile",
+    "wool",
+    "homespun"
+   ],
+   "what": "東和町土沢のホームスパン工房。厳選した羊毛を手染め・手紡ぎ・手織りでマフラーやストール、ツイードに仕立てて販売し、体験講座も開く。",
+   "whatEn": "A homespun wool workshop in Tsuchizawa, Towa, hand-dyeing, spinning, and weaving selected fleece into light, warm mufflers, stoles, and tweed, with weaving classes held by arrangement.",
+   "note": "手紡ぎのマフラーの軽さと織りの表情を、直接触れて確かめたい。",
+   "noteEn": "I want to touch the hand-spun mufflers to feel how light and textured the weave is.",
+   "_src": {
+    "category": "local",
+    "industry": "iwate-homespun",
+    "nameKana": "かぶしきがいしゃにほんほーむすぱん",
+    "address": "1-89-2 Tsuchizawa, Towa-cho, Hanamaki",
+    "url": "https://homespun.co.jp/",
+    "whatJa": "東和町土沢で原毛の染色から紡ぎ・手織りまでを手がける、1955年設立のホームスパン工房。",
+    "whatEn": "Historic woolen textile workshop in Tsuchizawa hand-dyeing, spinning, and weaving Iwate homespun fabrics and scarves.",
+    "facts": "Founded in 1955 as Kikuchi Homespun Mingeisha; produces airy woolen mufflers, stoles, and apparel tweeds in Towa-cho Tsuchizawa, selling textiles and offering weaving classes by reservation.",
+    "weak": "",
+    "verifiedBy": "https://www.heralbony.jp/topics/5593",
+    "quote": "本プロジェクトは、ルンビニー苑の作家・良子氏がさをり織りで生み出した手織りテキスタイルデザインを元に、日本ホームスパンの職人が生地へと昇華し、ヘラルボニーがプロダクトとして届けるという試みです。",
+    "fixes": "whatJa: 1955年設立の菊池ホームスパン民芸社を前身とするホームスパン工房。株式会社日本ホームスパンの設立は1961年7月。公式の会社・店舗情報に所在地〒028-0114 岩手県花巻市東和町土沢1区89番地2、体験講座を随時開催と記載。",
+    "coords": [
+     39.39105,
+     141.22226
+    ]
+   }
+  },
+  "佐々長醸造": {
+   "nameEn": "Sasacho Brewery",
+   "area": "東和町",
+   "areaEn": "Towa",
+   "tags": [
+    "miso",
+    "soy sauce",
+    "tsuyu"
+   ],
+   "what": "明治39年（1906年）創業、東和町土沢の味噌・醤油蔵。早池峰山の伏流水を仕込み水に、木桶で味噌や醤油、手作業のだしつゆを造り、直売所がある。日祝休。",
+   "whatEn": "A miso and soy sauce brewery founded in 1906 in Tsuchizawa, Towa, fermenting in wooden vats with Mount Hayachine spring water and making additive-free dashi tsuyu, with a direct shop. Closed Sundays and holidays.",
+   "note": "かつおぶしでだしを取った「老舗の味 つゆ」を台所用に買う。",
+   "noteEn": "Buy a bottle of their slow-brewed katsuobushi tsuyu for the kitchen.",
+   "_src": {
+    "category": "local",
+    "industry": "wooden-vat-brewing",
+    "nameKana": "ささちょうじょうぞう",
+    "address": "5-417 Tsuchizawa, Towa-cho, Hanamaki",
+    "url": "https://www.sasachou.co.jp/",
+    "whatJa": "明治39年（1906年）創業、早池峰山系の伏流水と岩手県産丸大豆を木桶で仕込む東和町土沢の老舗味噌・醤油蔵。",
+    "whatEn": "Traditional miso and soy sauce brewery founded in 1906 in Tsuchizawa with an on-site direct shop.",
+    "facts": "Ferments long-aged Nanbu miso, wooden-vat soy sauce, and katsuobushi tsuyu in cedar barrels using Iwate soybeans and Mount Hayachine underground water; operates a direct retail shop at the brewery.",
+    "weak": "",
+    "verifiedBy": "https://www.renewal.shidotaira.co.jp/news/single.php?id=2919",
+    "quote": "訪問の目的\nコラボビュッフェ開催に先立ち、佐々長醸造㈱さまの醤油・味噌・つゆの品質やこだわり、そして長年受け継がれてきた製造方法を直接学ぶとともに、120年にわたって味を守り続けてきた生産者の皆さまの想いを伺うため、佐々長醸造㈱様を訪問してまいりました。",
+    "fixes": "",
+    "coords": [
+     39.38759,
+     141.22856
+    ]
+   }
+  },
+  "ワインシャトー大迫（エーデルワイン）": {
+   "nameEn": "Wine Chateau Ohasama (Edelwein)",
+   "area": "大迫町",
+   "areaEn": "Ohasama",
+   "tags": [
+    "wine",
+    "tasting"
+   ],
+   "what": "岩手県産ブドウで醸造するエーデルワインの直売所。8種の無料試飲やテイスティングルームでの有料試飲ができ、限定ワインも揃う。",
+   "whatEn": "The direct shop of Edelwein in Ohasama, making wine from Iwate grapes. Offers eight free tastings by server, paid tastings in the tasting room, and cellar-limited vintages.",
+   "note": "テイスティングルームで気になる白を少しずつ試して、一本選ぶ。",
+   "noteEn": "Taste a few pours of white wine in the tasting room before picking a bottle.",
+   "_src": {
+    "category": "local",
+    "industry": "ohasama-wine",
+    "nameKana": "わいんしゃとーおおはさま えーでるわいん",
+    "address": "10-18-3 Ohasama, Ohasama-cho, Hanamaki",
+    "url": "https://edelwein.co.jp/edel_info/wein_chateau",
+    "whatJa": "1962年創業、岩手県産ブドウで醸造を行う大迫町のワイナリー「エーデルワイン」併設の直売所・試飲施設。",
+    "whatEn": "Winery shop and tasting room of Ohasama's 1962 winery producing wines exclusively from Iwate-grown grapes.",
+    "facts": "Showcases Ohasama-grown Campbell Early, Muscat Bailey A, Riesling Lion, and Merlot wines; adjacent to the winery cellar where visitors can observe the bottling line and taste local vintages.",
+    "weak": "",
+    "verifiedBy": "https://edelwein.co.jp/6682",
+    "quote": "開催日 : 2026.10.10（土）.11（日）\n開催時間 : 10：00 ～16：00\n開催場所 : エーデルワイン直売店　ワインシャトー大迫店前",
+    "fixes": "whatEn: Winery shop and tasting room offering eight free wine tastings and paid tastings of selected wines. whatJa: エーデルワイン併設の直売所で、8種類の無料試飲とテイスティングルームでの有料試飲を行う。公式会社情報の設立は1974年7月24日、前身の岩手ぶどう酒醸造合資会社は1962年創立。原料については岩手の葡萄にこだわると記載。住所は岩手県花巻市大迫町大迫10-18-3。",
+    "coords": [
+     39.47381,
+     141.28476
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "宮沢賢治記念館",
+   "nameEn": "Miyazawa Kenji Memorial Museum",
+   "kind": "art",
+   "area": "矢沢・高松",
+   "areaEn": "Yazawa & Takamatsu",
+   "address": "花巻市矢沢1-1-36",
+   "url": "https://www.city.hanamaki.iwate.jp/miyazawakenji/kinenkan/index.html",
+   "what": "胡四王山の中腹にある、宮沢賢治の愛用品や原稿、図書資料などを通じて、詩や童話、農業、科学にわたる多面的な活動を紹介する記念館。南側に賢治設計の南斜花壇がある。",
+   "whatEn": "A memorial museum on Mount Koshio presenting Kenji Miyazawa's manuscripts, personal effects, and archives across poetry, stories, agriculture, and science, with his South-Slope Flowerbed on the grounds below.",
+   "coords": [
+    39.39911,
+    141.16243
+   ],
+   "notice": "開館は9時から16時30分。2026年4月より毎週火曜（祝日の場合は次の平日）と年末年始が休館。",
+   "noticeEn": "Open 9 am to 4:30 pm. From April 2026, closed Tuesdays (or the next weekday if a holiday) and over New Year.",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "宮沢賢治童話村",
+   "nameEn": "Miyazawa Kenji Fairy Tale Village",
+   "kind": "art",
+   "area": "矢沢・高松",
+   "areaEn": "Yazawa & Takamatsu",
+   "address": "花巻市高松26-19",
+   "url": "https://www.city.hanamaki.iwate.jp/miyazawakenji/dowamura/index.html",
+   "what": "宮沢賢治の童話の世界を体験しながら学ぶ施設。5つの展示室がある「賢治の学校」や、植物・動物・星をテーマにしたログハウスの「賢治の教室」が森の中に点在する。",
+   "whatEn": "An open-air and indoor exhibition park exploring Kenji Miyazawa's fairy tales, with the five-zone School of Kenji and log-cabin classrooms for plants, animals, and stars set among the woods.",
+   "coords": [
+    39.39819,
+    141.16914
+   ],
+   "notice": "2026年11月24日は臨時開村、11月25日は臨時休村。",
+   "noticeEn": "Specially open on 24 November 2026 and specially closed on 25 November.",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "花巻市博物館",
+   "nameEn": "Hanamaki City Museum",
+   "kind": "art",
+   "area": "矢沢・高松",
+   "areaEn": "Yazawa & Takamatsu",
+   "address": "花巻市高松26-8-1",
+   "url": "https://www.city.hanamaki.iwate.jp/bunkasports/bunka/1008981/index.html",
+   "what": "考古・歴史・美術工芸の三つの分野から花巻の文化を紹介する市立博物館。旧石器時代から近代までの資料や地域の美術工芸品を展示している。",
+   "whatEn": "Hanamaki's municipal museum covering archaeology, local history, and fine arts and crafts from the Paleolithic era to the modern period.",
+   "coords": [
+    39.39939,
+    141.16852
+   ],
+   "notice": "開館は9時から16時30分。2026年11月24日から12月4日は資料整理のため休館。毎週月曜（祝日の場合は次の平日）休。",
+   "noticeEn": "Open 9 am to 4:30 pm. Closed 24 November to 4 December 2026 for collection work, and closed Mondays (or the next weekday if a holiday).",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "花巻城跡（鳥谷ヶ崎公園）",
+   "nameEn": "Hanamaki Castle Ruins (Toyagasaki Park)",
+   "kind": "sight",
+   "area": "大通り・上町",
+   "areaEn": "Odori & Kamicho",
+   "address": "花巻市城内",
+   "url": "https://www.kanko-hanamaki.ne.jp/spot/article.php?p=159",
+   "what": "稗貫氏の鳥谷ヶ崎城を前身に、1591年以降の南部氏時代に改修された花巻城の跡。本丸跡が鳥谷ヶ崎公園として整備され、復元された西御門や土塁・堀跡が残る。",
+   "whatEn": "Site of Hanamaki Castle, rebuilt by the Nanbu clan after 1591 on the earlier Toyagasaki Castle. The main bailey is now Toyagasaki Park, with a reconstructed West Gate, earthen ramparts, and moat traces.",
+   "coords": [
+    39.39189,
+    141.12021
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "高村光太郎記念館（高村山荘）",
+   "nameEn": "Takamura Kotaro Memorial Museum",
+   "kind": "art",
+   "area": "太田",
+   "areaEn": "Ota",
+   "address": "花巻市太田3-85-1",
+   "url": "https://hanamaki-takamura-kotaro.jp/",
+   "what": "彫刻家で詩人の高村光太郎が戦後7年間を過ごした太田村山口に建つ記念館。彫刻や書、直筆原稿を展示し、同敷地内に暮らした山小屋・高村山荘が残る。",
+   "whatEn": "Memorial museum in Ota where sculptor and poet Kotaro Takamura lived for seven years after the war, exhibiting his sculptures, calligraphy, and manuscripts alongside his preserved mountain hut.",
+   "coords": [
+    39.38809,
+    141.00576
+   ],
+   "notice": "開館は9時から16時30分。2026年4月より毎週月曜（祝日の場合は次の平日）と年末年始が休館。",
+   "noticeEn": "Open 9 am to 4:30 pm. From April 2026, closed Mondays (or the next weekday if a holiday) and over New Year.",
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "Badalone",
+   "verdict": "doubt",
+   "reason": "公式サイトには自動表示の本日の日付と著作権年しかなく、2026年の営業を示す日付付き本文を確認できない。ゴ・エ・ミヨの2026評価欄も開いたが、引用できる営業の文章がない。"
+  },
+  {
+   "name": "森のジェラート ポエーマ",
+   "verdict": "doubt",
+   "reason": "公式サイトで住所と地元食材の自家製ジェラートは一致したが、2026年の日付付き営業本文がない。2026年公開の旅行記事も開いたが、記事が2024年7月頃の訪問と明記しているため営業証拠に採用しない。Yahoo!の2026年口コミは地域制限で本文を読めない。"
+  },
+  {
+   "name": "星の森珈琲店",
+   "verdict": "doubt",
+   "reason": "公式のトップ、店舗情報、こだわりページを開いたが、2026年の営業を示す日付付き文章を確認できない。公式は店内で自家焙煎した豆を注文ごとに挽くと説明している。"
+  },
+  {
+   "name": "早池峰焼 星工房",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+[
+ {
+  "name": "大塚国際美術館",
+  "nameEn": "Otsuka Museum of Art",
+  "kind": "art",
+  "area": "鳴門町",
+  "areaEn": "Naruto-cho",
+  "address": "鳴門市鳴門町 鳴門公園内",
+  "url": "https://o-museum.or.jp/",
+  "what": "鳴門公園内にある陶板名画美術館。世界26カ国の西洋名画を陶板で原寸大に再現して展示する。月曜休館（祝日の場合は翌日）。",
+  "whatEn": "A ceramic-board art museum in Naruto Park displaying full-size reproductions of Western masterpieces from 26 countries. Closed Mondays (or the next day if Monday is a holiday).",
+  "coords": [
+   34.23258,
+   134.63754
+  ],
+  "notice": "2026年12月1日〜3日は塗装修繕工事のため一部鑑賞制限あり。",
+  "noticeEn": "Partial viewing restrictions Dec 1–3, 2026 for painting and repair work.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "大鳴門橋遊歩道 渦の道",
+  "nameEn": "Uzu-no-Michi (Whirlpool Walkway)",
+  "kind": "sight",
+  "area": "鳴門町",
+  "areaEn": "Naruto-cho",
+  "address": "鳴門市鳴門町（鳴門公園内）",
+  "url": "https://www.uzunomichi.jp/",
+  "what": "大鳴門橋の橋桁内に設けられた海上遊歩道。海面から約45メートルの高さから鳴門の渦潮を見下ろす。見頃の時間は潮見表で毎日変わる。",
+  "whatEn": "A walkway inside the girder of the Onaruto Bridge, 45 metres above the sea, looking down on the Naruto whirlpools. Best viewing times change daily with the tide.",
+  "coords": [
+   34.23618,
+   134.64211
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鳴門市ドイツ館",
+  "nameEn": "Naruto German House",
+  "kind": "art",
+  "area": "大麻町桧",
+  "areaEn": "Hinoki",
+  "address": "鳴門市大麻町桧字東山田55-2",
+  "url": "https://doitsukan.com/",
+  "what": "第一次世界大戦時の板東俘虜収容所の史料を展示する館。第4月曜と年末（12月28日〜31日）休館。",
+  "whatEn": "A museum displaying historical materials from the World War I Bando Prisoner-of-War Camp. Closed the 4th Monday and Dec 28–31.",
+  "coords": [
+   34.16469,
+   134.49905
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "霊山寺",
+  "nameEn": "Ryozen-ji Temple",
+  "kind": "sight",
+  "area": "大麻町板東",
+  "areaEn": "Bando",
+  "address": "鳴門市大麻町板東塚鼻126",
+  "url": "https://www.88shikokuhenro.jp/tokushima/01ryozenji/",
+  "what": "四国八十八ヶ所霊場の第一番札所。弘法大師が815年に開いたと伝わり、室町時代建立の多宝塔が残る。",
+  "whatEn": "Temple No. 1 of the Shikoku 88 Pilgrimage, said to have been founded by Kobo Daishi in 815, with a Muromachi-period tahoto pagoda.",
+  "coords": [
+   34.15944,
+   134.5028
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,68 @@
+[
+ {
+  "name": "豆田町伝統的建造物群保存地区",
+  "nameEn": "Mamedamachi Preservation District",
+  "kind": "sight",
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "大分県日田市豆田町",
+  "url": "https://www.city.hita.oita.jp/soshiki/29/2428.html",
+  "what": "天領時代に町人地として栄えた豆田町の古い町並み。江戸時代の町割りや居蔵造りの町家、酒蔵などが残り、国の重要伝統的建造物群保存地区に選ばれている。散策は自由。",
+  "whatEn": "The old merchant quarter of Mamedamachi, which prospered when Hita was shogunate territory. Its Edo-period street grid, plastered igura-zukuri townhouses and breweries are a national preservation district, open to walk freely.",
+  "coords": [
+   33.32798,
+   130.93725
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "咸宜園跡",
+  "nameEn": "Kangien Site",
+  "kind": "sight",
+  "area": "淡窓",
+  "areaEn": "Tanso",
+  "address": "大分県日田市淡窓2-2-15",
+  "url": "https://www.city.hita.oita.jp/site/kangien/",
+  "what": "江戸後期に儒学者・廣瀬淡窓が開いた私塾の跡で、国の史跡。身分や年齢、学歴を問わない教育で知られ、日本遺産「近世日本の教育遺産群」の一つ。隣接する咸宜園教育研究センターで資料を公開している。",
+  "whatEn": "The site of a private academy founded in the late Edo period by Confucian scholar Hirose Tanso, designated a national historic site. Known for admitting students regardless of rank, age or background, with an adjacent research centre exhibiting historical materials.",
+  "coords": [
+   33.32288,
+   130.93501
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "廣瀬資料館",
+  "nameEn": "Hirose Museum",
+  "kind": "art",
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "大分県日田市豆田町9-7",
+  "url": "http://hirose-museum.jp/",
+  "what": "廣瀬淡窓と実業家の弟・廣瀬久兵衛の生家である、掛屋・廣瀬家の旧宅と資料館。主屋や蔵に伝わる資料を公開している。9時から17時、原則月曜休み（2・3・10・11月は毎日開館）。",
+  "whatEn": "The former residence and museum of the Hirose merchant family, birthplace of scholar Hirose Tanso and financier Hirose Kyubei, showing the main house and family collection. Open 9 am to 5 pm; usually closed Mondays (open daily in Feb, Mar, Oct and Nov).",
+  "coords": [
+   33.32669,
+   130.93661
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "日田祇園山鉾会館",
+  "nameEn": "Hita Gion Yamahoko Kaikan",
+  "kind": "art",
+  "area": "隈",
+  "areaEn": "Kuma",
+  "address": "大分県日田市隈2-7-10",
+  "url": "https://www.city.hita.oita.jp/site/hitanioideyo/2460.html",
+  "what": "ユネスコ無形文化遺産に登録された「日田祇園の曳山行事」の山鉾や見送幕を展示する会館。吹抜けの館内で山鉾の大きさを間近に見られる。",
+  "whatEn": "A museum displaying the festival floats and tapestries of the Hita Gion Yamahoko procession, a UNESCO Intangible Cultural Heritage. An atrium lets visitors view the tall floats up close.",
+  "coords": [
+   33.31552,
+   130.93141
+  ],
+  "notice": "日田祇園の曳山行事のため、6月下旬から7月下旬まで山鉾の展示を中断する。",
+  "noticeEn": "Float displays are suspended from late June to late July for the Hita Gion festival.",
+  "verifiedAt": "2026-11-12"
+ }
+]

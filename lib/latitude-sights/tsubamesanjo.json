@@ -1,0 +1,66 @@
+[
+ {
+  "name": "燕市産業史料館",
+  "nameEn": "Tsubame Industrial Materials Museum",
+  "kind": "art",
+  "area": "燕",
+  "areaEn": "Tsubame",
+  "address": "燕市大曲4330-1",
+  "url": "https://tim.securesite.jp/",
+  "what": "江戸時代の和釘づくりから洋食器や鎚起銅器まで、燕の金属加工の歴史を展示する史料館。体験工房館も併設する。9時から16時半、月曜休み（祝日の場合は翌平日）。",
+  "whatEn": "A museum tracing Tsubame's metalworking history from Edo-period nail-making to Western cutlery and hammered copperware, with a hands-on studio attached. Open 9 am to 4:30 pm, closed Mondays (or the following weekday if Monday is a holiday).",
+  "coords": [
+   37.65266,
+   138.9194
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "三条市歴史民俗産業資料館",
+  "nameEn": "Sanjo Historical and Folklore Industrial Museum",
+  "kind": "art",
+  "area": "三条",
+  "areaEn": "Sanjo",
+  "address": "三条市本町3-1-4",
+  "url": "https://sanjo-rekimin-homarea.jp/rekimin/",
+  "what": "1935年築の旧武徳殿を使った資料館。信濃川と五十嵐川の舟運や鍛冶の歴史を伝える古文書や民具を展示する。入館無料、9時から17時、月曜（祝日開館）と月末休み。",
+  "whatEn": "A museum housed in the 1935 former Butokuden hall, showing documents and folk tools from Sanjo's river trade and blacksmithing history. Free entry; open 9 am to 5 pm, closed Mondays (unless a holiday) and the last day of each month.",
+  "coords": [
+   37.63198,
+   138.95673
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "法華宗総本山 本成寺",
+  "nameEn": "Honjoji Temple",
+  "kind": "sight",
+  "area": "三条",
+  "areaEn": "Sanjo",
+  "address": "三条市西本成寺1-1-20",
+  "url": "https://www.city.sanjo.niigata.jp/sanjonavi/see_do/history_culture/jinja_jisha_joshi/2284.html",
+  "what": "1297年に日印上人が開いた法華宗の総本山。広い境内に本堂や三門が並び、春は桜、秋は紅葉が色づく。2月の節分には鬼踊りが行われる。",
+  "whatEn": "The head temple of the Hokke sect, founded in 1297 by Nichiin. The broad grounds hold the main hall and Sanmon gate, with cherry blossoms in spring and autumn foliage; the Oni-odori ritual is held each February.",
+  "coords": [
+   37.62272,
+   138.94474
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "燕三条地場産業振興センター 物産館",
+  "nameEn": "Tsubame-Sanjo Regional Industries Promotion Center",
+  "kind": "sight",
+  "area": "三条",
+  "areaEn": "Sanjo",
+  "address": "三条市須頃1-17",
+  "url": "https://www.tsjiba.or.jp/kankou/",
+  "what": "燕三条の洋食器や刃物、キッチン用品など約1万点を並べる物産館。9時半から17時半、毎月第1水曜と年末年始休み。",
+  "whatEn": "A regional exhibition and sales hall displaying around ten thousand items of Tsubame-Sanjo cutlery, knives and kitchenware. Open 9:30 am to 5:30 pm, closed the first Wednesday of each month and over the New Year.",
+  "coords": [
+   37.64955,
+   138.93375
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

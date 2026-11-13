@@ -1,0 +1,670 @@
+{
+ "slug": "arita",
+ "city": {
+  "name": "Arita",
+  "nameJa": "有田",
+  "latitude": "33.2° N",
+  "country": "Saga, Japan",
+  "countryJa": "佐賀県",
+  "person": "rin",
+  "coords": [
+   33.187,
+   129.89
+  ],
+  "intro": "A porcelain town in the hills of western Saga, where Japanese porcelain began in the early seventeenth century. Family kilns and contemporary tableware shops along the Uchiyama valley and at Arita Sera, with coffee and local food between them: Rin's picks.",
+  "introJa": "佐賀県の西の山あいに開けた、日本の磁器発祥の町。内山の通りやアリタセラに並ぶ有田焼の窯元と器の店、その合間の喫茶や食事を、凛のおすすめで。",
+  "locator": {
+   "en": "In western Saga · a narrow valley town in the hills",
+   "ja": "佐賀県西部・山あいの細長い谷の町"
+  },
+  "industries": [
+   {
+    "key": "arita-porcelain",
+    "en": "Arita Porcelain (Arita-yaki)",
+    "ja": "有田焼",
+    "about": "Porcelain production in Japan began in Arita in the early seventeenth century, after pottery stone was found at Izumiyama. Kilns still work along the valley, making everything from hand-painted sometsuke and overglaze enamels to thin everyday tableware.",
+    "aboutJa": "日本の磁器は、17世紀初めに有田の泉山で陶石が見つかったことから始まった。いまも谷あいの窯元が、手描きの染付や色絵から薄手の普段使いの器まで焼き続けている。",
+    "_src": "Arita is the birthplace of Japanese porcelain, where early 17th-century kaolin quarries at Izumiyama and kiln-brick tonbai alleys still anchor active family kilns and contemporary porcelain makers."
+   }
+  ]
+ },
+ "places": {
+  "今村製陶 町屋": {
+   "nameEn": "Imamura Seito Machiya (JICON)",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "磁器ブランド「JICON 磁今」を手がける今村製陶の直営店。天草陶石を使った、生成りの白の日常の器が並ぶ。",
+   "whatEn": "The direct shop of Imamura Seito, makers of the JICON porcelain line. Everyday vessels in unbleached off-white porcelain made from Amakusa pottery stone.",
+   "note": "生成りの白の飯碗を、手に取って選びたい。",
+   "noteEn": "I want to pick up an off-white rice bowl and choose one by hand.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "いまむらせいとう まちや",
+    "address": "佐賀県西松浦郡有田町岩谷川内2-4-13",
+    "url": "https://www.jicon.jp/",
+    "whatJa": "磁器ブランド「JICON 磁今」を手がける窯元・今村製陶の町家直営ショップ。",
+    "whatEn": "Direct shop and townhouse atelier of Imamura Seito, the porcelain maker behind the JICON tableware brand.",
+    "facts": "Launched in 2012 by Tadasu Imamura (whose family kiln roots go back 350 years to the Nabeshima clan kiln) with designer Oji Masanori; housed in an over-80-year-old machiya in Uchiyama; known for warm unbleached 'kinari' off-white glaze using local Amakusa pottery stone.",
+    "weak": "",
+    "verifiedBy": "https://www.jicon.jp/single-post/株式会社今村製陶-―法人成りのご挨拶―",
+    "quote": "2026年6月1日に、株式会社 今村製陶 となりました。",
+    "fixes": "Site confirms 直営店「今村製陶 町屋」at 844-0011 佐賀県西松浦郡有田町岩谷川内2-4-13 (address matches). Company is now 株式会社今村製陶 (since 2026-06-01).",
+    "coords": [
+     33.18441,
+     129.89158
+    ]
+   }
+  },
+  "やま平窯": {
+   "nameEn": "Yamahei Kiln",
+   "area": "赤坂・アリタセラ",
+   "areaEn": "Akasaka & Arita Sera",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "桑古場の有田焼窯元と直営店。透光性のある極薄の磁器「エッグシェル」や、泡・木目などの器を作る。",
+   "whatEn": "A porcelain kiln and direct shop in Kuwakoba. Known for its ultra-thin, translucent Egg Shell series alongside bubble-glazed and wood-grain vessels.",
+   "note": "薄いエッグシェルの口当たりを確かめてみたい。",
+   "noteEn": "I want to see how thin the Egg Shell rim feels.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "やまへいがま",
+    "address": "佐賀県西松浦郡有田町桑古場乙2267-1",
+    "url": "https://yamaheigama.co.jp/",
+    "whatJa": "極薄の「エッグシェル」シリーズや独自の釉薬表現で知られる有田焼窯元の工房兼ギャラリーショップ。",
+    "whatEn": "Porcelain kiln and factory gallery renowned for ultra-thin Egg Shell porcelain and crystalline-glazed tableware.",
+    "facts": "Produces the signature Egg Shell series fired to roughly 1 mm thickness so light passes through the porcelain; develops original textures like Awa bubble glaze and crystalline glazes for restaurants; operates a direct gallery shop beside its production workshop in Kuwakoba.",
+    "weak": "",
+    "verifiedBy": "https://yamaheigama.co.jp/news",
+    "quote": "11月19日（木）から23日（月・祝）までの5日間、今年も「秋の有田陶磁器まつり」が開催されます。",
+    "fixes": "Address matches (844-0012 有田町桑古場乙2267-1). Page says gallery shop will run an outlet corner during the festival.",
+    "coords": [
+     33.18078,
+     129.88668
+    ]
+   }
+  },
+  "皓洋窯": {
+   "nameEn": "Kouyougama",
+   "area": "赤坂・アリタセラ",
+   "areaEn": "Akasaka & Arita Sera",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "桑古場の窯元とショップ。手描きの染付など普段使いの器が並び、実店舗は平日の10時から16時（12時〜13時は不在）に開く。",
+   "whatEn": "A kiln and showroom in Kuwakoba for everyday hand-painted sometsuke dishes. The shop is open weekdays 10:00 to 16:00 (closed 12:00–13:00).",
+   "note": "ふだんの食卓に使う小皿を、一枚ずつ見たい。",
+   "noteEn": "I would look through the small everyday plates one by one.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "こうようがま",
+    "address": "佐賀県西松浦郡有田町桑古場乙2380-1",
+    "url": "https://kouyougama.co.jp/",
+    "whatJa": "1946年創業、手描きの染付を中心とした普段使いの器をつくる有田焼窯元と併設ショールーム。",
+    "whatEn": "Family-run Arita porcelain kiln founded in 1946 with an on-site showroom of hand-painted underglaze blue everyday dishes.",
+    "facts": "Founded in 1946 in Kuwakoba; specializes in cobalt sometsuke brushwork and soft matte glazes blending Japanese and Western table aesthetics; visitors can browse current kiln stock directly in the workshop showroom.",
+    "weak": "",
+    "verifiedBy": "https://kouyougama.co.jp/",
+    "quote": "８月２８日（金）〜８月３１日（月）まで、夏季休業となり、実店舗ともお休みになります。",
+    "fixes": "Address matches (〒844-0012 有田町桑古場乙2380-1番地). Page lists physical store hours weekdays 10:00-16:00. The page did not show the 1946 founding year or other details I could check.",
+    "coords": [
+     33.17889,
+     129.88672
+    ]
+   }
+  },
+  "KIHARA ARITA本店": {
+   "nameEn": "KIHARA ARITA",
+   "area": "赤坂・アリタセラ",
+   "areaEn": "Akasaka & Arita Sera",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "アリタセラ内にある産地商社キハラの本店。伝統文様を現代の暮らしに合わせた有田焼・波佐見焼の器が揃う。",
+   "whatEn": "Flagship store of Arita and Hasami porcelain producer KIHARA inside Arita Sera, with everyday tableware adapting traditional motifs.",
+   "note": "文様の入った豆皿を、いくつか見比べたい。",
+   "noteEn": "I want to compare a few of the patterned small plates.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きはら ありたほんてん",
+    "address": "佐賀県西松浦郡有田町赤坂丙2351-169",
+    "url": "https://e-kihara.co.jp/",
+    "whatJa": "伝統意匠を現代の食卓向けに再編集した器を揃える産地の器ブランド「KIHARA」の本店。",
+    "whatEn": "Flagship store of Arita porcelain producer KIHARA showcasing modern blue-and-white everyday tableware and icon pattern plates.",
+    "facts": "Located inside Arita Sera; best known for the KOMON mamezara small plates reinterpreting traditional auspicious motifs and the SITAKU kitchen tool porcelain series; operates only its Arita flagship and one Tokyo store in Tomigaya.",
+    "weak": "",
+    "verifiedBy": "https://e-kihara.co.jp/",
+    "quote": "【KIHARA ARITA本店】有田のちゃわん祭り -OUTLET SALE- のお知らせ",
+    "fixes": "",
+    "coords": [
+     33.19508,
+     129.87563
+    ]
+   }
+  },
+  "喫茶Hama 小路庵": {
+   "nameEn": "Kissa Hama (Shujian)",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "tags": [
+    "coffee",
+    "lunch"
+   ],
+   "what": "トンバイ塀の裏路地に建つ登録有形文化財の喫茶。有田焼の器で珈琲や菓子、2026年2月から始まったせいろランチを出す。9時開館、17時閉館。",
+   "whatEn": "A café inside a registered tangible cultural property along a kiln-brick tonbai alley. Serves coffee, sweets, and seasonal steamed lunches on Arita porcelain. Open 9:00–17:00.",
+   "note": "器を見たあとは、ここで座って珈琲を飲みたい。",
+   "noteEn": "After looking at pottery, I want to sit down here for coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "きっさはま しゅうじあん",
+    "address": "佐賀県西松浦郡有田町上幸平1-8-11",
+    "url": "https://shujian.jp/",
+    "whatJa": "トンバイ塀の裏路地に佇む登録有形文化財の旧邸で、有田焼の器とともに珈琲や固めプリンを味わえる喫茶店。",
+    "whatEn": "Quiet kissaten tucked along a kiln-brick tonbai alley inside a Taisho-era registered tangible cultural property.",
+    "facts": "Housed in the former residence of Magoemon Ezoe along Uchiyama's iconic tonbai kiln-wall backstreet; serves hand-drip coffee, classic firm custard pudding, and chiffon cake exclusively on Arita porcelain.",
+    "weak": "",
+    "verifiedBy": "https://shujian.jp/",
+    "quote": "2/24（火）より喫茶Hamaにて、季節を味わう「せいろランチ」と「お弁当」がはじまります",
+    "fixes": "Page also mentions seiro lunch and bento; not checked against whatJa address.",
+    "coords": [
+     33.19126,
+     129.90015
+    ]
+   }
+  },
+  "ギャラリー有田": {
+   "nameEn": "Gallery Arita",
+   "area": "本町・有田駅",
+   "areaEn": "Honmachi & Arita Station",
+   "tags": [
+    "coffee",
+    "lunch",
+    "ceramics"
+   ],
+   "what": "本町のレストラン兼ショップ。店内に2500客以上の有田焼コーヒーカップが並び、地元の食材を使った御膳やごどうふの甘味を出している。11時〜17時、不定休。",
+   "whatEn": "A dining room and porcelain shop in Honmachi lined with over 2,500 Arita coffee cups. Serves local set meals and godofu sweets. Open 11:00–17:00, irregular holidays.",
+   "note": "棚のカップから、その日の一客を選びたい。",
+   "noteEn": "I want to pick one cup from the shelves for the day.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぎゃらりーありた",
+    "address": "佐賀県西松浦郡有田町本町乙3057",
+    "url": "https://gallery-arita.co.jp/",
+    "whatJa": "壁一面に並ぶ2,000客以上の有田焼カップと、ごどうふ御膳や焼きカレーなどの食事が親しまれるカフェレストラン。",
+    "whatEn": "Long-running local dining room and porcelain gallery famous for baked Arita-yaki curry, godofu dishes, and walls lined with over 2,000 coffee cups.",
+    "facts": "Displays more than 2,000 Arita porcelain cups and saucers from local kilns so diners can pick their own cup for post-meal coffee; serves local specialties including Saga beef baked curry and house set meals featuring Arita's kudzu-curd godofu.",
+    "weak": "",
+    "verifiedBy": "https://gallery-arita.co.jp/",
+    "quote": "【2026年 有田陶器市】営業のご案内｜営業時間延長・限定メニュー・特別セール開催",
+    "fixes": "Site says 2500 cups (2500客に及ぶコーヒーカップ); address 〒844-0018 佐賀県西松浦郡有田町本町乙3057 matches.",
+    "coords": [
+     33.18023,
+     129.88205
+    ]
+   }
+  },
+  "龍泉荘": {
+   "nameEn": "Ryusenso",
+   "area": "蔵宿・広瀬山",
+   "areaEn": "Kurashuku & Hiroseyama",
+   "tags": [
+    "carp",
+    "coffee",
+    "bread"
+   ],
+   "what": "龍門峡の麓にある料亭。清流の鯉料理やうなぎを有田焼の器で供し、奥の院の喫茶「木もれ陽」では自家焙煎珈琲と自然酵母パンも出す。",
+   "whatEn": "A longstanding restaurant at the foot of Ryumon Gorge serving spring-water carp dishes and eel on Arita porcelain, with an annex café for house-roasted coffee and natural-yeast bread.",
+   "note": "湧き水で淹れた珈琲と、焼きたてのパンを。",
+   "noteEn": "Coffee brewed with spring water and freshly baked bread.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "りゅうせんそう",
+    "address": "佐賀県西松浦郡有田町広瀬山甲2373-4",
+    "url": "https://ryusenso.jp/",
+    "whatJa": "黒髪山系の名水が湧く龍門峡の麓で、清流育ちの鯉料理やうなぎを有田焼の器で供する老舗料理店。",
+    "whatEn": "Countryside freshwater restaurant in Ryumon Gorge known for spring-water carp dishes and grilled eel served on Arita porcelain.",
+    "facts": "Set beside Ryumon Gorge fed by Selected 100 Exquisite Waters spring water pumped from 103 meters underground; longtime local gathering spot for odorless chilled carp sashimi (koi no arai), koi-koku miso soup, and natural-yeast breads from its annex.",
+    "weak": "",
+    "verifiedBy": "https://ryusenso.jp/",
+    "quote": "龍泉荘 11月の定休日のお知らせです。",
+    "fixes": "",
+    "coords": [
+     33.21302,
+     129.87348
+    ]
+   }
+  },
+  "色鍋島 今右衛門窯": {
+   "nameEn": "Iro-Nabeshima Imaemon Kiln",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "tags": [
+    "ceramics",
+    "iro-nabeshima"
+   ],
+   "what": "赤絵町に窯を構える十四代今泉今右衛門の窯元。江戸時代から続く色鍋島の技法を受け継ぎ、赤・黄・緑の上絵や墨はじきの作品を展示・販売する。",
+   "whatEn": "The Akaemachi kiln and showroom of the fourteenth-generation Imaizumi Imaemon, preserving Edo-period Iro-Nabeshima overglaze enamels and sumihajiki ink-resist work.",
+   "note": "墨はじきの白と藍の文様を、近くでじっくり見たい。",
+   "noteEn": "I want to look closely at the white-and-indigo sumihajiki patterns.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "いろなべしま いまえもんがま",
+    "address": "佐賀県西松浦郡有田町赤絵町2-1-15",
+    "url": "https://www.imaemon.co.jp/",
+    "whatJa": "赤絵町に窯を構え、江戸時代から続く色鍋島の伝統と現代の表現を受け継ぐ十四代今泉今右衛門の窯元ショールーム。",
+    "whatEn": "Historic Akaemachi porcelain house and showroom preserving the overglaze enamel Iro-Nabeshima tradition under the fourteenth-generation Imaizumi Imaemon.",
+    "facts": "Appointed porcelain painters to the Nabeshima clan in the Edo period; stands in Uchiyama's historic Akaemachi enamelers' quarter and is renowned for sumihajiki ink-resist cobalt and refined red, yellow, and green overglaze enamels.",
+    "weak": "",
+    "verifiedBy": "https://www.imaemon.co.jp/information/imaemongama/001248.html",
+    "quote": "この度の、秋の有田陶磁器まつりに際し、\n十四代の作品と重要無形文化財 色鍋島今右衛門技術保存会の作品を交え、\nご紹介いたします。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "源右衛門窯": {
+   "nameEn": "Gen-emon Kiln",
+   "area": "本町・有田駅",
+   "areaEn": "Honmachi & Arita Station",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "1753年（宝暦3年）創業の窯元。印刷を使わずすべて手描きで古伊万里の器を作り、丸尾の窯場にショールームを併設する。",
+   "whatEn": "A porcelain kiln founded in 1753 with a showroom in Maruo. All pieces are painted by hand without transfer printing in the Ko-Imari tradition.",
+   "note": "手描きの湯呑みや飯碗を、ひとつずつ見比べたい。",
+   "noteEn": "I want to compare the hand-painted teacups and rice bowls one by one.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "げんえもんがま",
+    "address": "佐賀県西松浦郡有田町丸尾丙2726",
+    "url": "https://www.gen-emon.co.jp/",
+    "whatJa": "1753年創業、印刷を一切使わず全て手描きで古伊万里の美を受け継ぐ有田焼窯元と併設ショールーム。",
+    "whatEn": "Historic porcelain kiln founded in 1753 with a wooded Maruo compound and showroom devoted entirely to hand-painted Ko-Imari style vessels.",
+    "facts": "Founded in 1753 (Horeki 3) and eschews transfer printing so every piece is painted by hand; visitors can browse the flagship showroom and observe artisans on weekdays at its quiet wooded kiln grounds in Maruo.",
+    "weak": "",
+    "verifiedBy": "https://www.gen-emon.co.jp/news/news-1816/",
+    "quote": "開催期間 : 2026年11月19日(木) 〜 11月23日(月・祝)まで(5日間)",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "しん窯 青花": {
+   "nameEn": "Shingama Seika",
+   "area": "本町・有田駅",
+   "areaEn": "Honmachi & Arita Station",
+   "tags": [
+    "ceramics",
+    "sometsuke"
+   ],
+   "what": "1830年創業の窯元とショールーム。南蛮人などの絵柄を手描きする染付のシリーズ「青花」を作り、工房の見学もできる。",
+   "whatEn": "A porcelain kiln founded in 1830 with an open workshop and showroom, known for its hand-painted cobalt sometsuke Seika tableware.",
+   "note": "異人柄のそば猪口か小鉢を、ひとつ選びたい。",
+   "noteEn": "I want to pick a soba cup or small bowl with the foreign-trader motif.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "しんがま せいか",
+    "address": "佐賀県西松浦郡有田町黒牟田丙2788",
+    "url": "https://www.shingama.com/",
+    "whatJa": "1830年創業、職人が一つひとつ手描きする染付ブランド「青花」を手がける窯元の工房兼ショールーム。",
+    "whatEn": "Porcelain kiln founded in 1830 producing the hand-painted underglaze cobalt Seika tableware line with an on-site showroom and open workshop.",
+    "facts": "Located in the historic Kuromuta kiln valley; launched its signature Seika series in 1976 featuring playful Dutch trader motifs and rich cobalt brushwork by certified traditional master craftsmen.",
+    "weak": "",
+    "verifiedBy": "https://www.shingama.com/",
+    "quote": "■ 会期：2026年11月1日(日) ～ 11月3日(火・祝)",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "幸楽窯": {
+   "nameEn": "Kouraku Kiln",
+   "area": "本町・有田駅",
+   "areaEn": "Honmachi & Arita Station",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "1865年（慶応元年）創業の丸尾の窯元。鯛や鶴亀などの縁起物の器のほか、工場見学や倉庫でのトレジャーハンティングも行う。",
+   "whatEn": "An 1865 porcelain kiln in Maruo making auspicious sea-bream and crane-and-tortoise tableware, alongside factory tours and warehouse treasure hunting.",
+   "note": "倉庫の棚から、掘り出し物の小皿を探してみたい。",
+   "noteEn": "I want to hunt through the warehouse shelves for a small plate.",
+   "_src": {
+    "category": "local",
+    "industry": "arita-porcelain",
+    "nameKana": "こうらくがま",
+    "address": "佐賀県西松浦郡有田町丸尾丙2512",
+    "url": "https://kouraku.jp.net/",
+    "whatJa": "1865年創業、工場見学や倉庫での器探し「トレジャーハンティング」でも知られる有田焼窯元。",
+    "whatEn": "1865 porcelain kiln in Maruo hosting factory tours, an international artist-in-residence program, and warehouse porcelain treasure hunting.",
+    "facts": "Founded in Keio 1 (1865); famous for auspicious crane, sea-bream, and plum-blossom tableware as well as letting visitors carry a basket through stacked kiln-warehouse deadstock.",
+    "weak": "",
+    "verifiedBy": "https://kouraku.jp.net/",
+    "quote": "年末年始休業期間は、2026年12月27日(日)〜2027年1月5日(火)",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "陶磁器ショップ 藍土": {
+   "nameEn": "Tojiki Shop Rando",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "陶山神社の近く、幸平通りの器屋。普段の食卓で使いやすい有田焼や肥前の器を窯元ごとにセレクトして並べる。",
+   "whatEn": "A tableware shop on Koba street near Tozan Shrine, curating everyday Arita and Hizen porcelain from local kilns.",
+   "note": "朝の散歩のついでに、スープカップを覗いてみたい。",
+   "noteEn": "I would stop by on a morning walk to look at the soup cups.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "とうじきしょっぷ らんど",
+    "address": "佐賀県西松浦郡有田町幸平1-2-10",
+    "url": "https://www.holiday-land.jp/",
+    "whatJa": "陶山神社近くの幸平通りに店を構え、普段の食卓に馴染む温かみある有田焼や肥前の器をセレクトする専門店。",
+    "whatEn": "Independent tableware shop near the foot of Tozan Shrine curating warm, tactile everyday porcelain and stoneware from Arita and Hizen kilns.",
+    "facts": "Stands along Uchiyama's historic Koba street steps from Tozan (Sueyama) Shrine and the giant sacred ginkgo; hand-picks casual daily rice bowls, mugs, and small plates with soft hand-painted motifs.",
+    "weak": "",
+    "verifiedBy": "https://www.holiday-land.jp/",
+    "quote": "実店舗「藍土」でも、来年の干支（未）が入荷予定です。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "ギャラリー ペクパソン": {
+   "nameEn": "Gallery Baek Pasun",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "tags": [
+    "ceramics",
+    "gallery"
+   ],
+   "what": "「有田の母」と呼ばれた百婆仙にちなむ岩谷川内のギャラリー。2016年に開館し、日本と韓国の女性陶芸家のうつわを展示する。",
+   "whatEn": "A ceramics gallery in Iwayagawachi opened in 2016 in honor of Baek Pasun, showing vessels by Japanese and Korean women potters.",
+   "note": "日韓の作り手の白磁や染付を、静かな展示室で見たい。",
+   "noteEn": "I want to see white porcelain and sometsuke by Japanese and Korean makers in the quiet gallery.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぎゃらりー ぺくぱそん",
+    "address": "佐賀県西松浦郡有田町岩谷川内2-10-3",
+    "url": "http://www.baekpasun.com/",
+    "whatJa": "「有田の母」と慕われた百婆仙の名を冠し、日本と韓国の女性陶芸家のうつわを紹介する内山地区のギャラリー。",
+    "whatEn": "Ceramics gallery in eastern Uchiyama dedicated to contemporary Japanese and Korean women potters in honor of early Arita matriarch Baek Pasun.",
+    "facts": "Located in Iwayagawachi near Hoonji Temple where Baek Pasun's monument stands; exhibits wheel-thrown white porcelain, sometsuke, and stoneware vessels by women ceramicists from Arita, Saga, Nagasaki, and Korea.",
+    "weak": "",
+    "verifiedBy": "https://www.arita.jp/news/pickup/6671.html",
+    "quote": "有田陶器市にあわせJINJU gallery とギャラリー百婆仙の2会場にて、韓国伝統文化大学校 伝統美術工芸学科大学院の研究生および教授陣による作品展が同時開催されます。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "賞美堂本店 アリタセラ店": {
+   "nameEn": "Shobido Honten Arita Sera",
+   "area": "赤坂・アリタセラ",
+   "areaEn": "Akasaka & Arita Sera",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "アリタセラ内にある産地商社・賞美堂本店の直営店。古伊万里などの伝統文様を受け継ぐオリジナルブランド「其泉」の器が揃う。",
+   "whatEn": "Direct shop of Arita porcelain house Shobido Honten inside Arita Sera, featuring its Kisen tableware line drawing on Ko-Imari motifs.",
+   "note": "赤い文様の小皿を、ハレの日用に一枚見てみたい。",
+   "noteEn": "I want to look at one red-patterned small plate for special occasions.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "しょうびどうほんてん ありたせらてん",
+    "address": "佐賀県西松浦郡有田町赤坂丙2351-169",
+    "url": "https://shobido-honten.com/",
+    "whatJa": "有田焼の伝統文様を現代の食卓へ繋ぐ産地商社「賞美堂本店」のオリジナルブランド「其泉」が揃う直営店。",
+    "whatEn": "Main showroom of Arita porcelain producer Shobido Honten featuring its richly patterned Kisen original tableware collection.",
+    "facts": "Located inside Arita Sera; partners with skilled local kilns and painters to produce the Kisen and momoco porcelain lines celebrating Ko-Imari, Kakiemon, and Nabeshima decorative traditions.",
+    "weak": "",
+    "verifiedBy": "https://shop.shobido-honten.com/blogs/news/akinotouzikimaturi2026",
+    "quote": "アリタセラ店は、有田焼専門店が集まるアリタセラ内にある店舗です。アリタセラ店では1級品、アウトレット品の割引のほかに、期間限限定割引セットの販売を行います。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "arita huis": {
+   "nameEn": "arita huis",
+   "area": "赤坂・アリタセラ",
+   "areaEn": "Akasaka & Arita Sera",
+   "tags": [
+    "lunch",
+    "dinner",
+    "ceramics"
+   ],
+   "what": "アリタセラ内のホテルとレストラン。地元の季節の食材を使った料理を有田焼の器で供し、ランチとディナーを営業している。",
+   "whatEn": "A hotel and restaurant inside Arita Sera serving seasonal local dishes on Arita porcelain for lunch and dinner.",
+   "note": "ランチの皿と料理の組み合わせを、ゆっくり味わいたい。",
+   "noteEn": "I want to take time over lunch and see how each dish meets its plate.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ありたはうす",
+    "address": "佐賀県西松浦郡有田町赤坂丙2351-169",
+    "url": "https://aritahuis.com/",
+    "whatJa": "アリタセラ内で、佐賀県産の旬食材を使ったコースやランチを多彩な有田焼の器で供するレストラン。",
+    "whatEn": "Open-kitchen restaurant inside Arita Sera serving seasonal Saga vegetables, seafood, and meats plated across local porcelain collections.",
+    "facts": "Built around a 42-seat dining room and live counter kitchen inside Arita Sera; serves lunch courses like Taste of Arita pairing regional produce with contemporary vessels made in town.",
+    "weak": "",
+    "verifiedBy": "https://aritahuis.com/topics/2026/10/837/",
+    "quote": "有田の街が器との出会いや散策を楽しむ人々で賑わうこの季節、\nぜひ街歩きとあわせてaritahuisでのお食事もお楽しみください。",
+    "fixes": "whatEn = Restaurant at arita huis inside Arita Sera, serving seasonal dishes on Arita porcelain, with lunch and dinner service. whatJa = アリタセラ内のホテル・レストランで、季節の食材を生かした料理を有田焼の器で供し、ランチとディナーを営業。 Official restaurant and address pages https://aritahuis.com/restaurant/ and https://aritahuis.com/access/.",
+    "coords": null
+   }
+  },
+  "大和一心庵 雪月花": {
+   "nameEn": "Yamato Isshin-an Setsugetsuka",
+   "area": "蔵宿・広瀬山",
+   "areaEn": "Kurashuku & Hiroseyama",
+   "tags": [
+    "soba",
+    "tempura",
+    "japanese"
+   ],
+   "what": "有田の山あいに2015年（平成27年）に移転した和食店。地下100mの井戸水で打つ手打ち十割蕎麦と、旬の野菜や備長炭焼きを供する。",
+   "whatEn": "A hillside Japanese restaurant moved to western Arita in 2015, serving hand-cut 100% buckwheat soba made with well water, seasonal vegetables, and binchotan-grilled dishes.",
+   "note": "石臼挽きの十割蕎麦を、山の景色を見ながら食べたい。",
+   "noteEn": "I want to eat stone-milled juwari soba looking out at the hills.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "やまといっしんあん せつげつか",
+    "address": "佐賀県西松浦郡有田町上本乙3390-6",
+    "url": "https://setsu-getsu-ka.jp/",
+    "whatJa": "西有田の山あいに佇み、手打ち十割蕎麦と近隣有機農家の野菜や旬魚の備長炭焼きを供する和食店。",
+    "whatEn": "Quiet hillside Japanese restaurant in western Arita serving hand-cut 100% buckwheat soba and binchotan charcoal-grilled seasonal dishes.",
+    "facts": "Relocated to its peaceful wooded Kamihon setting in 2015; pairs freshly milled juwari soba with pesticide-free local vegetables and Ariake Sea eel grilled over binchotan charcoal.",
+    "weak": "",
+    "verifiedBy": "https://forestpost-jp.com/2026/02/06/aritahinanoyakimonomatsuri/",
+    "quote": "美吉では有田焼の器で楽しめる蕎麦セット、雪月花では国産原料にこだわった天ぷらや蕎麦、龍泉荘ではリピーター続出の「鯉の炙り丼」と数種類の鯉料理が楽しめるセット\n、などなどたくさんの美味しいグルメが期間限定で提供されます。",
+    "fixes": "whatEn = Japanese restaurant in the mountains of Arita serving hand-made 100% buckwheat soba and seasonal tempura courses. whatJa = 有田町の山間にある和食料理店。自然の景色と共に、十割手打ち蕎麦や旬の天ぷらコースを楽しめる。 The official access page https://setsu-getsu-ka.jp/%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9/ confirms this description and the listed address.",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "陶山神社",
+   "nameEn": "Tozan Shrine",
+   "kind": "sight",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "address": "有田町大樽2-5-1",
+   "url": "http://arita-toso.net/",
+   "what": "1658年頃の建立と伝わる「やきものの神様」。境内に有田焼の大鳥居や狛犬、李参平碑がある。踏切に遮断機がないため左右の確認が必要。",
+   "whatEn": "A shrine to the deities of porcelain, said to date from around 1658, with a porcelain torii gate, porcelain guardian dogs, and a monument to Yi Sam-pyeong. The rail crossing at the entrance has no barrier.",
+   "coords": [
+    33.18894,
+    129.89929
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "http://arita-toso.net/ & https://www.arita.jp/spot/post_22.html (2026): 〒844-0004 有田町大樽2-5-1、有田焼の大鳥居や狛犬、李参平碑、踏切注意。",
+   "_coordsSource": "OSM node 3755901803 (陶山神社 amenity=place_of_worship)"
+  },
+  {
+   "name": "泉山磁石場",
+   "nameEn": "Izumiyama Quarry",
+   "kind": "sight",
+   "area": "泉山",
+   "areaEn": "Izumiyama",
+   "address": "有田町泉山1-33",
+   "url": "https://www.arita.jp/spot/post_16.html",
+   "what": "17世紀初めに李参平らが磁器の原料となる陶石を見つけた採石場の跡。国の史跡。採掘坑の内部には入れず、外から眺める。",
+   "whatEn": "The quarry where Yi Sam-pyeong and his companions found pottery stone in the early seventeenth century, beginning porcelain making in Japan. A national historic site, viewed from outside the pit.",
+   "coords": [
+    33.19394,
+    129.91017
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.arita.jp/spot/post_16.html & https://www.arita.jp/ (2026-11-11 紅葉情報): 〒844-0001 有田町泉山1-33、国指定史跡、※採掘坑内部には入れません。",
+   "_coordsSource": "OSM way 174440799 (泉山磁石場 landuse=quarry)"
+  },
+  {
+   "name": "佐賀県立九州陶磁文化館",
+   "nameEn": "The Kyushu Ceramic Museum",
+   "kind": "art",
+   "area": "戸杓",
+   "areaEn": "Toshaku",
+   "address": "有田町戸杓乙3100-1",
+   "url": "https://saga-museum.jp/ceramic/",
+   "what": "九州各地の古陶磁や有田焼の名品を集めた県立美術館。常設展は無料、9時〜17時（入館は16時30分まで）、月曜休館。",
+   "whatEn": "A prefectural museum of Kyushu ceramics and historic Arita porcelain. Permanent collection admission is free. Open 9:00–17:00 (last entry 16:30), closed Mondays.",
+   "coords": [
+    33.17901,
+    129.88057
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://saga-museum.jp/ceramic/ (2026-11-11 お知らせ、特別企画展 2026/10/3〜12/6): 〒844-8585 有田町戸杓乙3100-1、9時〜17時（入館16時30分まで）、月曜休館（祝日の場合は翌日）・12/29〜1/3。",
+   "_coordsSource": "OSM node 1423799812 (佐賀県立九州陶磁文化館 tourism=museum)"
+  },
+  {
+   "name": "有田陶磁美術館",
+   "nameEn": "Arita Ceramic Museum",
+   "kind": "art",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "address": "有田町大樽1-4-2",
+   "url": "https://www.arita.jp/spot/post.html",
+   "what": "明治7年（1874年）に建てられた焼物倉庫を使った美術館。明治期の有田焼や県重要文化財の作品を展示。9時〜16時30分、月曜休館。",
+   "whatEn": "A small ceramics museum housed in an 1874 porcelain warehouse, showing Meiji-era Arita ware and prefectural cultural properties. Open 9:00–16:30, closed Mondays.",
+   "coords": [
+    33.19069,
+    129.89872
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.arita.jp/spot/post.html : 〒844-0004 有田町大樽1-4-2、9:00〜16:30、月曜休館（祝日の場合は翌日）、12/29〜1/3、大人120円。",
+   "_coordsSource": "OSM way 174249402 (有田陶磁美術館 tourism=museum)"
+  },
+  {
+   "name": "トンバイ塀のある裏通り",
+   "nameEn": "Tonbai Wall Alley",
+   "kind": "sight",
+   "area": "内山",
+   "areaEn": "Uchiyama",
+   "address": "有田町上幸平",
+   "url": "https://www.arita.jp/spot/post_20.html",
+   "what": "登り窯の廃材の耐火レンガや窯道具を赤土で塗り固めた「トンバイ塀」が続く裏通り。泉山大イチョウ付近から有田陶磁美術館まで散策できる。",
+   "whatEn": "Backstreets lined with tonbai walls built from salvaged kiln bricks, kiln furniture, and red clay, running between the Izumiyama ginkgo and the Arita Ceramic Museum.",
+   "coords": [
+    33.19127,
+    129.89995
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.arita.jp/spot/post_20.html : 〒844-0003 有田町上幸平、泉山大イチョウ付近から大樽の有田陶磁美術館までの裏通り。",
+   "_coordsSource": "OSM node 12811211235 (トンバイ塀 tourism=attraction)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "渓山窯（うつわ処 けいざん）",
+   "verdict": "doubt",
+   "reason": "Site shows no dated 2026 post or notice; Instagram (keizangama_official) not readable without login. Cannot confirm 2026 operation."
+  },
+  {
+   "name": "手塚商店",
+   "verdict": "doubt",
+   "reason": "Jimdo site shows no 2026 dated post; the latest dated item is '２０２２年Web陶器市'. No 2026 evidence."
+  },
+  {
+   "name": "JINJU gallery & cafe",
+   "verdict": "doubt",
+   "reason": "Instagram needs login; no post dates or text visible. Cannot confirm 2026 operation."
+  },
+  {
+   "name": "2016/ SHOP",
+   "verdict": "doubt",
+   "reason": "Only online-shop shipping pause notices are dated 2026; no 2026 evidence that the physical Arita Sera shop is open."
+  },
+  {
+   "name": "ARITA PORCELAIN LAB Cafe",
+   "verdict": "doubt",
+   "reason": "Page is JS/Shopify; no 2026 sentence could be read."
+  },
+  {
+   "name": "ef coffee and bakes / STOCK",
+   "verdict": "doubt",
+   "reason": "Instagram gives no readable dated 2026 post without login."
+  },
+  {
+   "name": "ILHA CAFE",
+   "verdict": "doubt",
+   "reason": "Site is JS-rendered; no 2026 sentence could be read."
+  },
+  {
+   "name": "kasane",
+   "verdict": "doubt",
+   "reason": "Official page only shows a 2024 autumn event notice (アリタセラ・ダイニングバル2024年秋); no 2026 evidence."
+  },
+  {
+   "name": "薪の宿から",
+   "verdict": "doubt",
+   "reason": "Instagram not readable with my tools (login wall); only search snippets available, no dated 2026 sentence copied."
+  },
+  {
+   "name": "bakery and art cafe lier",
+   "verdict": "doubt",
+   "reason": "Instagram not readable with my tools (login wall); only search snippets available, no dated 2026 sentence copied."
+  },
+  {
+   "name": "吉永菓舗",
+   "verdict": "doubt",
+   "reason": "Instagram not readable with my tools (login wall); only search snippets available, no dated 2026 sentence copied."
+  },
+  {
+   "name": "MARUBUN SHOP & BAKERY CAFE",
+   "verdict": "doubt",
+   "reason": "Official BAKERY CAFE page is live (hours weekdays 11:00-17:00, weekends/holidays 10:00-17:00) but has no dated 2026 post; the holiday notice '12/29 – 1/3' has no year and the footer is only Copyright 2026. Could not copy a 2026 operating sentence."
+  },
+  {
+   "name": "白",
+   "verdict": "doubt",
+   "reason": "Instagram profile exists (103 posts) but post content and dates are not readable without login, so no dated 2026 sentence could be copied."
+  },
+  {
+   "name": "カネアオ 成富本店",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  }
+ ]
+}

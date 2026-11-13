@@ -1,0 +1,68 @@
+[
+ {
+  "name": "益子陶芸美術館",
+  "nameEn": "Mashiko Museum of Ceramic Art",
+  "kind": "art",
+  "area": "城内坂",
+  "areaEn": "Jonaizaka",
+  "address": "益子町益子3021",
+  "url": "https://www.mashiko-museum.jp/",
+  "what": "陶芸メッセ・益子の高台にある町立の陶芸美術館。益子焼の近現代の企画展やコレクションを展示し、笹島喜平館も併設する。月曜休館（祝日の場合は翌日）。",
+  "whatEn": "A municipal ceramic art museum on the hillside of Ceramic Messe Mashiko, showing exhibitions and collections of modern and contemporary Mashiko ware alongside the Sasajima Kihei Pavilion. Closed Mondays (or the following day if Monday is a holiday).",
+  "coords": [
+   36.46533,
+   140.10417
+  ],
+  "notice": "2026年11月30日〜12月12日は展示替のため休館、12月26日〜1月2日は年末年始休館。",
+  "noticeEn": "Closed Nov 30 – Dec 12, 2026 for exhibition change, and Dec 26 – Jan 2 for New Year.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "濱田庄司記念益子参考館",
+  "nameEn": "Shoji Hamada Memorial Mashiko Sankokan Museum",
+  "kind": "art",
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "益子町益子3388",
+  "url": "https://mashiko-sankokan.net/",
+  "what": "陶芸家・濱田庄司が自らの作陶の参考として蒐集した品々を共有するため、自邸の一部を活用して1977年に開館した美術館。10時から17時、月曜休館（祝日の場合は翌日）。",
+  "whatEn": "Opened in 1977 in part of potter Shoji Hamada's own home to share the folk-craft objects he collected as a reference for his work. Open 10 am to 5 pm; closed Mondays (or the following weekday if Monday is a holiday).",
+  "coords": [
+   36.47004,
+   140.10835
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "旧濱田庄司邸",
+  "nameEn": "Former Shoji Hamada Residence",
+  "kind": "sight",
+  "area": "城内坂",
+  "areaEn": "Jonaizaka",
+  "address": "益子町益子3021",
+  "url": "https://www.mashiko-museum.jp/facilities/hamada/index.html",
+  "what": "陶芸メッセ・益子内に移築公開されている、江戸後期の茅葺の母屋。濱田庄司が1930年に購入し、住まい兼初期の作陶の場として使った町指定文化財。",
+  "whatEn": "A late-Edo thatched farmhouse relocated inside Ceramic Messe Mashiko. Purchased by Shoji Hamada in 1930 as his residence and early workshop, and now a town-designated cultural property.",
+  "coords": [
+   36.46642,
+   140.10485
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "西明寺",
+  "nameEn": "Saimyoji Temple",
+  "kind": "sight",
+  "area": "益子",
+  "areaEn": "Mashiko",
+  "address": "益子町益子4469",
+  "url": "http://fumon.jp/",
+  "what": "坂東二十番札所の古刹。1537年建立の三重塔や純唐様式の楼門、本堂などが国指定重要文化財に指定されている。",
+  "whatEn": "An ancient temple on the Bando pilgrimage route (No. 20), home to a 1537 three-story pagoda, a two-story gate and a main hall designated as national Important Cultural Properties.",
+  "coords": [
+   36.45282,
+   140.11734
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

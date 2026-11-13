@@ -1,0 +1,471 @@
+{
+ "slug": "kurayoshi",
+ "city": {
+  "name": "Kurayoshi",
+  "nameJa": "倉吉",
+  "latitude": "35.4° N",
+  "country": "Tottori, Japan",
+  "countryJa": "鳥取県",
+  "person": "rin",
+  "coords": [
+   35.4317,
+   133.825
+  ],
+  "intro": "A former castle town in central Tottori, at the foot of Mount Utsubuki and along the Tamagawa and Tenjin rivers. Kurayoshi Kasuri weaving, sake breweries and bamboo craft in the red-tiled Shirakabe Dozogun quarter, alongside sweets and morning diners, as Rin’s picks.",
+  "introJa": "鳥取県の中部、打吹山のふもとで玉川と天神川が流れる城下町だった町。赤い石州瓦と白壁の土蔵群に残る倉吉絣や酒蔵、竹細工と、町の菓子と食堂・喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "In central Tottori · a town at the foot of Mount Utsubuki, along the Tenjin River",
+   "ja": "鳥取県の中部・打吹山のふもと、天神川沿いの町"
+  },
+  "industries": [
+   {
+    "key": "kurayoshi-kasuri",
+    "en": "Kurayoshi Kasuri Weaving",
+    "ja": "倉吉絣",
+    "about": "Kurayoshi Kasuri is a hand-tied indigo cotton ikat developed in late-Edo Kurayoshi. Pictorial motifs of flowers, birds, mountains and water are dyed onto the threads and woven on wooden handlooms.",
+    "aboutJa": "倉吉絣は、江戸末期に倉吉で広まった木綿の絵かすり。花や鳥、山や水などの絵柄を糸に染め出し、木製の織り機で一段ずつ手織りする。",
+    "_src": "Hand-tied indigo cotton ikat weaving developed in late-Edo Kurayoshi, prized for intricate pictorial motifs woven on wooden handlooms."
+   },
+   {
+    "key": "sake-brewing",
+    "en": "Kurayoshi Sake Brewing",
+    "ja": "倉吉の酒造り",
+    "about": "Kurayoshi’s sake brewing grew in the merchant townhouses along the Tamagawa river, where Edo- and Meiji-era storehouses and stone bridges still line the water.",
+    "aboutJa": "倉吉の酒造りは、玉川沿いに商家や土蔵が並んだ町筋で続いてきた。石橋と白壁の残る西仲町などに、江戸期築の醸造元がある。",
+    "_src": "Traditional sake brewing nourished by soft underground water from Mt. Utsubuki inside Kurayoshi's preserved Edo- and Meiji-era storehouses."
+   }
+  ]
+ },
+ "places": {
+  "COCOROSTORE": {
+   "nameEn": "COCOROSTORE",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "ceramics",
+    "woodwork",
+    "washi",
+    "tableware"
+   ],
+   "what": "魚町の、鳥取の手仕事の生活道具を扱う店。陶磁器や染織品、鍛冶、木竹工、和紙などをそろえ、修理も引き受ける。",
+   "whatEn": "A shop in Uomachi carrying Tottori craft for everyday use—ceramics, textiles, forged metalwork, wood and bamboo, and washi. Repairs are also taken on.",
+   "note": "長く使う道具を、一つひとつ手に取って選びたい。",
+   "noteEn": "Pick up each everyday tool and choose one to keep.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ココロストア",
+    "address": "2516 Uomachi, Kurayoshi-shi",
+    "url": "https://cocorostore.jp/",
+    "whatJa": "山陰の民藝の器や吹きガラス、木工品、鍛造包丁など暮らしの手仕事道具を扱うセレクトショップ。",
+    "whatEn": "Select shop and gallery curating San'in mingei ceramics, blown glass, woodwork, and forged kitchen tools.",
+    "facts": "Run by Tottori native Nobuhiro Tanaka on Uomachi street in the historic merchant quarter; stocks local kilns such as Fukumitsu-yaki and Kokuzo-yaki alongside Inshu washi and revived Tottori folk toys.",
+    "weak": "",
+    "verifiedBy": "https://cocorostore.jp/317/",
+    "quote": "10月25.26.27日　定休",
+    "fixes": "",
+    "coords": [
+     35.43168,
+     133.82491
+    ]
+   }
+  },
+  "創作工房 中野竹藝": {
+   "nameEn": "Nakano Chikugei",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "bamboo",
+    "craft"
+   ],
+   "what": "大正元年創業の竹細工の工房。鳳尾竹を植物性の染料で染め、割らずに丸のまま曲げる丸竹加工で花入れやバッグ、盛器を作る。",
+   "whatEn": "A bamboo workshop founded in 1912. It dyes hobichiku bamboo with plant dyes and bends whole culms without splitting them into flower vessels, bags and serving trays.",
+   "note": "割らずに曲げた竹の花入れを、近くで見てみたい。",
+   "noteEn": "I want to see the bent whole-bamboo flower vessels up close.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ソウサクコウボウ ナカノチクゲイ",
+    "address": "2571 Higashinakamachi, Kurayoshi-shi",
+    "url": "https://nakano-chikugei.com/",
+    "whatJa": "大正元年創業、独自の丸竹加工で花入れやバッグ、生活雑貨を制作・販売する竹細工工房。",
+    "whatEn": "Century-old bamboo craft workshop creating baskets, bags, and flower vessels from whole curved bamboo.",
+    "facts": "Founded in 1912 and housed in Akagawara Sangokan (Chikuzo); specializes in heat-bent whole-culm marudake bamboo pieces as well as woven split-bamboo accessories.",
+    "weak": "",
+    "verifiedBy": "https://nakano-chikugei.com/exhibition/",
+    "quote": "■202６年出展予定■\n10月９日（金）～13日（火）\n滋賀　近新家具\n伝統展",
+    "fixes": "address: 鳥取県倉吉市東仲町2573（赤瓦三号館「竹蔵～たけぐら～」）。2571ではない。",
+    "coords": [
+     35.43192,
+     133.8243
+    ]
+   }
+  },
+  "倉吉ふるさと工芸館": {
+   "nameEn": "Kurayoshi Furusato Kogeikan",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "textiles",
+    "kasuri",
+    "craft"
+   ],
+   "what": "白壁土蔵群にある倉吉絣の工芸館。絵を織り込んだような絵かすりの展示販売のほか、機織りの見学や予約制のコースター織り体験がある。水曜休。",
+   "whatEn": "A craft hall in Shirakabe Dozogun for Kurayoshi Kasuri, indigo cotton ikat with pictorial motifs. Textiles are displayed and sold, with loom demonstrations and booked coaster-weaving sessions. Closed Wednesdays.",
+   "note": "織り機の前で、絵かすりの細かい柄を見たい。",
+   "noteEn": "Stand by the loom and look at the fine pictorial ikat patterns.",
+   "_src": {
+    "category": "local",
+    "industry": "kurayoshi-kasuri",
+    "nameKana": "クラヨシフルサトコウゲイカン",
+    "address": "2606 Higashinakamachi, Kurayoshi-shi",
+    "url": "https://www.kurayoshi-kankou.jp/hurusatokougei/",
+    "whatJa": "倉吉絣保存会の織り手による手織り実演を見学でき、反物や小物を購入できる工芸館。",
+    "whatEn": "Craft hall where weavers demonstrate handloom Kurayoshi Kasuri indigo weaving and sell woven textiles.",
+    "facts": "Base of the Kurayoshi Kasuri Preservation Society in a white-walled storehouse; visitors can watch indigo pictorial ikat woven on wooden looms, try coaster weaving, and buy bolts, noren, and small goods.",
+    "weak": "No standalone domain; official information page is hosted on the municipal tourism association site.",
+    "verifiedBy": "https://na-na.media/kurayoshi-kasuri/",
+    "quote": "倉吉ふるさと工芸館では倉吉絣のコースターづくりを体験することができます。",
+    "fixes": "",
+    "coords": [
+     35.43156,
+     133.82332
+    ]
+   }
+  },
+  "高田酒造": {
+   "nameEn": "Takata Sake Brewery",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "sake"
+   ],
+   "what": "玉川沿いの西仲町にある、天保14年（1843年）築の醸造元。代表銘柄は「此君（しくん）」。",
+   "whatEn": "A brewery built in 1843 along the Tamagawa river in Nishinakamachi. Its flagship sake is Shikun.",
+   "note": "玉川の石橋と白壁を見ながら、此君を一本。",
+   "noteEn": "Look at the stone bridges over the Tamagawa, and pick up a bottle of Shikun.",
+   "_src": {
+    "category": "local",
+    "industry": "sake-brewing",
+    "nameKana": "タカタシュゾウ",
+    "address": "2633 Nishinakamachi, Kurayoshi-shi",
+    "url": "https://shikun.jp/",
+    "whatJa": "天保14年築の主屋を構え、独自の「酸基醴酛」で代表銘柄「此君」を醸す老舗酒蔵。",
+    "whatEn": "Historic sake brewery crafting Shikun junmai sake using a rare lactic-fermented amazake starter.",
+    "facts": "Founded in the 1830s with sake brewing since 1875; its 1843 main townhouse is a Tottori Prefectural Cultural Property, and all batches use the sanki-amazakemoto starter method with direct brewery sales.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/ottimo2010/entry-12983102717.html",
+    "quote": "鳥取県の高田酒造さんより、此君の純米吟醸無濾過原酒を封切り！",
+    "fixes": "",
+    "coords": [
+     35.43207,
+     133.82239
+    ]
+   }
+  },
+  "石谷精華堂 本店": {
+   "nameEn": "Ishitani Seikado Honten",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "wagashi",
+    "dango"
+   ],
+   "what": "打吹公園だんごの老舗で、創業120余年。幸町の本店には喫茶「花」を併設し、元日を除き年中無休で8時から開いている。",
+   "whatEn": "A confectioner of more than 120 years, known for Utsubuki Koen Dango. The Saiwaicho flagship has a tearoom, Hana, and opens at 8 a.m. every day except New Year’s Day.",
+   "note": "三色のだんごを、店の中の喫茶で一串。",
+   "noteEn": "Have a skewer of the three-colour dango in the tearoom inside.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "イシタニセイカドウ ホンテン",
+    "address": "459-1 Saiwaicho, Kurayoshi-shi",
+    "url": "https://www.kouendango.com/",
+    "whatJa": "明治13年創業、無添加の三色串だんご「打吹公園だんご」を作り続ける老舗和菓子店。",
+    "whatEn": "Confectioner founded in 1880 making Kurayoshi's additive-free three-colour Utsubuki Koen Dango.",
+    "facts": "Founded in 1880; each bite-sized glutinous rice skewer is hand-wrapped in red bean, white bean, and matcha bean paste with no preservatives, and the flagship shop includes a quiet tearoom.",
+    "weak": "",
+    "verifiedBy": "https://www.kouendango.com/topics_detail.php?id=91",
+    "quote": "ご愛顧いただいておりました「打吹公園だんご ぷよぷよver.」につきまして、2026年2月末をもって販売を終了とさせていただきました。",
+    "fixes": "",
+    "coords": [
+     35.43757,
+     133.8379
+    ]
+   }
+  },
+  "菓子蔵楽部 倉吉舎": {
+   "nameEn": "Kurayoshiya",
+   "area": "上灘",
+   "areaEn": "Uwanada",
+   "tags": [
+    "wagashi",
+    "sweets"
+   ],
+   "what": "倉吉で30年以上続く菓子店。添加物を極力使わず、梨ふわどらやはこた饅頭、生菓子や焼き菓子を作る。",
+   "whatEn": "A confectioner in Kurayoshi for over thirty years. With minimal additives, it makes Nashi Fuwadora pear dorayaki, Hakota manju, fresh sweets and baked pastries.",
+   "note": "梨ふわどらと、はこた饅頭を一つずつ選ぶ。",
+   "noteEn": "Pick one Nashi Fuwadora and one Hakota manju.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "カシクラブ クラヨシヤ",
+    "address": "2-16 Dakejicho, Kurayoshi-shi",
+    "url": "https://kurayoshiya.jp/",
+    "whatJa": "添加物を極力抑え、地元素材を使った焼き菓子やケーキ、梨どら焼きを作る菓子店。",
+    "whatEn": "Long-running Kurayoshi confectioner making low-additive Japanese-Western pastries, cakes, and pear dorayaki.",
+    "facts": "Operated by Okamoto Seika in Dakejicho near Kurayoshi Park Square; makes Nashi Fuwadora pear dorayaki, seasonal cakes, and baked sweets with an eat-in tea corner.",
+    "weak": "",
+    "verifiedBy": "https://kurayoshiya.jp/pages/22/detail=1/b_id=67/r_id=149",
+    "quote": "安心してください。当店ケーキも和菓子もプレゼントボックスも、お母さんの好きそうなスイーツはたくさんご用意しております！",
+    "fixes": "",
+    "coords": [
+     35.4297,
+     133.83903
+    ]
+   }
+  },
+  "白壁倶楽部": {
+   "nameEn": "Shirakabe Club",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "tags": [
+    "yoshoku",
+    "coffee"
+   ],
+   "what": "明治41年築の旧国立第三銀行倉吉支店を使ったレストラン＆カフェ。漆喰細工の天井が残る店内で、自家製豆腐料理やランチ、カフェメニューを出す。",
+   "whatEn": "A restaurant and café in the 1908 former Dai-San National Bank Kurayoshi branch. Under plasterwork ceilings, it serves house-made tofu dishes, lunches and café fare.",
+   "note": "明治の銀行の天井を見上げながら、午後の珈琲。",
+   "noteEn": "Afternoon coffee while looking up at the Meiji-era bank ceiling.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "シラカベクラブ",
+    "address": "2540-1 Uomachi, Kurayoshi-shi",
+    "url": "https://shirakabeclub.jp/",
+    "whatJa": "明治41年築の旧国立第三銀行倉吉支店の洋館を活かした洋食レストラン＆カフェ。",
+    "whatEn": "Western-style restaurant and café set inside a 1908 former national bank building.",
+    "facts": "Occupies a Registered Tangible Cultural Property built in 1908 on Uomachi street; serves herb-crusted pork cutlets, hamburger steak, and seasonal lunches using Tottori produce.",
+    "weak": "",
+    "verifiedBy": "https://shirakabeclub.jp/pages/1/detail=1/b_id=3/r_id=110",
+    "quote": "令和8年8月25日（火）は臨時休業いたします。",
+    "fixes": "address: 鳥取県倉吉市魚町2540。公式サイト表記には「-1」がない。",
+    "coords": [
+     35.43162,
+     133.82646
+    ]
+   }
+  },
+  "市場食堂": {
+   "nameEn": "Ichiba Shokudo",
+   "area": "上井",
+   "areaEn": "Agei",
+   "tags": [
+    "shokudo",
+    "curry"
+   ],
+   "what": "倉吉総合産業卸売市場の敷地内にある食堂。朝7時から開き、カフェテリア形式で好みのおかずを選べるほか、カツカレーが定番。",
+   "whatEn": "A diner inside the Kurayoshi Wholesale Market. Open from 7 a.m., with cafeteria-style side dishes to choose from and katsu curry as a staple.",
+   "note": "市場の朝7時。小鉢を並べて朝ごはんにする。",
+   "noteEn": "Seven in the morning at the market. Put together small side dishes for breakfast.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "イチバショクドウ",
+    "address": "2-20 Seidanicho, Kurayoshi-shi",
+    "url": "https://www.instagram.com/ichibasyokudo/",
+    "whatJa": "倉吉総合産業卸売市場内で朝から営業し、小鉢を選べる定食やカツカレーが人気の市場食堂。",
+    "whatEn": "Early-morning wholesale-market diner beloved by locals for katsu curry, sashimi, and pick-your-own side dishes.",
+    "facts": "Located inside the Kurayoshi Wholesale Market in Seidanicho; opens from 7:00 a.m. for market workers and locals, serving generous katsu curry, daily seafood, and custom trays of small dishes.",
+    "weak": "",
+    "verifiedBy": "https://masa-ka.net/tory/ichibasyokudo-kurayoshi/",
+    "quote": "卸売市場の敷地内にある食堂で、朝7時からごはんが楽しめる、知る人ぞ知るお店なんだわん。",
+    "fixes": "",
+    "coords": [
+     35.47256,
+     133.84531
+    ]
+   }
+  },
+  "和食きんぎょ": {
+   "nameEn": "Washoku Kingyo",
+   "area": "上井",
+   "areaEn": "Agei",
+   "tags": [
+    "washoku",
+    "lunch"
+   ],
+   "what": "天神川の西、和田にある和食店。自家農園の野菜を中心にした小鉢が並ぶ「懐石風きんぎょランチ」を出す。",
+   "whatEn": "A washoku spot in Wada, just west of the Tenjin River, serving the kaiseki-style Kingyo Lunch with small dishes built around vegetables from its own farm.",
+   "note": "お盆に並んだ自家農園の小鉢を、少しずつ味わいたい。",
+   "noteEn": "Take time over the small dishes of farm-grown vegetables on the tray.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ワショクキンギョ",
+    "address": "236-2 Wada, Kurayoshi-shi",
+    "url": "https://www.instagram.com/washoku_kingyo/",
+    "whatJa": "自家農園の野菜を使った彩り豊かな懐石風ランチ膳が評判の和食店。",
+    "whatEn": "Intimate washoku lunch spot serving colourful multi-dish trays made with vegetables from its own farm.",
+    "facts": "Located across the Tenjin River in Wada; known for its limited daily Kingyo Lunch tray featuring homegrown seasonal vegetables, house vegetable powders, and small seasonal side dishes.",
+    "weak": "Wada is just east of the Tenjin River adjacent to Agei; reservations are recommended for the limited lunch.",
+    "verifiedBy": "https://ameblo.jp/bread-hanamizuki/entry-12983476115.html",
+    "quote": "土曜日は、懐石風きんぎょランチしかしておりません",
+    "fixes": "",
+    "coords": [
+     35.44394,
+     133.8134
+    ]
+   }
+  },
+  "ティーラウンジ ダイアナ": {
+   "nameEn": "Tea Lounge Diana",
+   "area": "上灘",
+   "areaEn": "Uwanada",
+   "tags": [
+    "coffee",
+    "parfait"
+   ],
+   "what": "米田町の老舗喫茶。8時半から開き、モーニングやランチのほか、とうふちくわをのせた「ちくわぱふぇ」がある。日曜定休、支払いは現金のみ。",
+   "whatEn": "A long-running kissaten in Yonedacho, open from 8:30 a.m. for morning sets, lunch, and its chikuwa parfait topped with tofu chikuwa. Closed Sundays; cash only.",
+   "note": "とうふちくわがのったパフェを、一度頼んでみる。",
+   "noteEn": "Order the parfait with tofu chikuwa on top, just once.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ティーラウンジ ダイアナ",
+    "address": "801 Yonedacho, Kurayoshi-shi",
+    "url": "https://www.facebook.com/dianaweb21/",
+    "whatJa": "1984年創業、直火焙煎の本格コーヒーやモーニングで地元に愛される老舗喫茶。",
+    "whatEn": "Retro 1984 kissaten in Yonedacho serving direct-fire roasted coffee, morning toast sets, and playful parfaits.",
+    "facts": "Long-running independent kissaten in Yonedacho open since 1984; serves direct-fire roasted siphon/drip coffee, classic yoshoku lunches, and a quirky local-specialty chikuwa parfait.",
+    "weak": "",
+    "verifiedBy": "https://tabeteminsai-tottori.com/shop/daiana/",
+    "quote": "「ファンの方にも多く来ていただいています。交流ノートもありますよ」という店主の山根正勝さんのお話しを聞きながら、美味しく完食してしまった次第。",
+    "fixes": "",
+    "coords": [
+     35.42758,
+     133.84192
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "倉吉白壁土蔵群",
+   "nameEn": "Shirakabe Dozogun",
+   "kind": "sight",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "address": "倉吉市魚町・東仲町・西仲町ほか",
+   "url": "https://www.kurayoshi-kankou.jp/kurayoshi_area/shirakabedozogun/",
+   "what": "打吹山のふもと、玉川沿いに江戸から昭和にかけての土蔵や町家が並ぶ国の重要伝統的建造物群保存地区。白い漆喰壁と黒い焼き杉板の腰壁、赤い石州瓦が続く。",
+   "whatEn": "A national preservation district along the Tamagawa river at the foot of Mount Utsubuki, lined with Edo- to Showa-era storehouses and townhouses of white plaster, charred cedar and red Sekishu tiles.",
+   "coords": [
+    35.43245,
+    133.82416
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "打吹公園",
+   "nameEn": "Utsubuki Park",
+   "kind": "sight",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "address": "倉吉市仲ノ町",
+   "url": "https://www.kurayoshi-kankou.jp/utsubukiroute_umo/",
+   "what": "白壁土蔵群の南にそびえる打吹山のふもとの公園。園内に倉吉博物館があり、うつぶき周遊ルートの停留所も置かれている。",
+   "whatEn": "A park at the foot of Mount Utsubuki just south of Shirakabe Dozogun, with the Kurayoshi Museum inside its grounds and a stop on the Utsubuki loop route.",
+   "coords": [
+    35.4298,
+    133.82382
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "鳥取県立美術館",
+   "nameEn": "Tottori Prefectural Museum of Art",
+   "kind": "art",
+   "area": "上灘",
+   "areaEn": "Uwanada",
+   "address": "倉吉市駄経寺町2-3-12",
+   "url": "https://tottori-moa.jp/",
+   "what": "駄経寺町にある鳥取県の県立美術館。企画展やコレクション展を開き、館内にカフェとショップを備える。開館は9時から17時、原則月曜休館。",
+   "whatEn": "Tottori’s prefectural art museum in Dakejicho, holding special and collection exhibitions, with a café and shop inside. Open 9 am to 5 pm, generally closed Mondays.",
+   "coords": [
+    35.43173,
+    133.8385
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "円形劇場くらよしフィギュアミュージアム",
+   "nameEn": "Kurayoshi Figure Museum (Enkei Gekijo)",
+   "kind": "art",
+   "area": "白壁土蔵群",
+   "areaEn": "Shirakabe Dozogun",
+   "address": "倉吉市鍛冶町1-2971-2",
+   "url": "https://enkei-museum.com/",
+   "what": "日本最古の円形校舎を活かしたフィギュアの博物館。らせん階段や扇形の教室に約2,000点のフィギュアや郷土ゆかりの展示が並ぶ。",
+   "whatEn": "A figure museum housed in Japan’s oldest surviving round schoolhouse, displaying around 2,000 figures and local exhibits across its spiral staircase and fan-shaped classrooms.",
+   "coords": [
+    35.42929,
+    133.81528
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "saon",
+   "verdict": "doubt",
+   "reason": "公式サイトは読めたが、2026年の日付のある営業告知・記事がなく、年内営業を示す文を引用できない。"
+  },
+  {
+   "name": "ぎゃらりぃ和",
+   "verdict": "doubt",
+   "reason": "令和8年産の米の販売表記はあるが、日付のある2026年の店舗営業告知は確認できない。著作権年は証拠に採用しない。"
+  },
+  {
+   "name": "福光焼",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "国造焼",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "パティスリー ミノウラ",
+   "verdict": "doubt",
+   "reason": "公式トップで確認できた価格改定は2025年。日付のある2026年の営業文は引用できなかった。"
+  },
+  {
+   "name": "Sweets EN",
+   "verdict": "doubt",
+   "reason": "公式Instagramはcurlでは本文を読めない。代替の県運営記事は2024/11/01付で、2026年営業の証拠にならない。"
+  },
+  {
+   "name": "町屋 清水庵",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "cacala",
+   "verdict": "doubt",
+   "reason": "公式ページは読めて住所・パンランチ・自家焙煎コーヒーは一致したが、投稿本文に年がない。自動表示の11/12と時刻だけでは2026年営業の証拠にできない。"
+  },
+  {
+   "name": "Re'ee Coffee Roasters",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "赤瓦五号館 久楽",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  }
+ ]
+}

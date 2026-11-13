@@ -1,0 +1,445 @@
+[
+ {
+  "name": "隆太窯",
+  "nameEn": "Ryutagama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "見借",
+  "areaEn": "Mirukashi",
+  "address": "見借4333-1",
+  "url": "https://ryutagama.com/",
+  "what": "1974年に中里隆が見借に築いた窯で、中里太亀・健太も作陶する。展示室で作品を選べる。",
+  "whatEn": "A kiln established by Takashi Nakazato in Mirukashi in 1974, where Taki and Kenta Nakazato also make pottery. Works are sold in the showroom.",
+  "note": "形と手触りの違いを、手に取って選びたい。",
+  "noteEn": "I would choose by holding each piece, feeling the shape and texture.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.44304,
+   129.93306
+  ]
+ },
+ {
+  "name": "鏡山窯",
+  "nameEn": "Kyozangama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tea-ware"
+  ],
+  "area": "鏡",
+  "areaEn": "Kagami",
+  "address": "鏡4614-1",
+  "url": "https://kyouzan.co.jp/",
+  "what": "1969年に井上東也が開いた、鏡山のふもとの唐津焼窯元。土と釉薬を作り、薪窯で焼く工房に、直売のギャラリーを併設する。",
+  "whatEn": "A Karatsu-yaki kiln founded by Toya Inoue in 1969 at the foot of Mount Kagamiyama. Clay and glazes are prepared by hand and the pots are wood-fired; a gallery sells the work.",
+  "note": "絵唐津の器は、まず筆の線を見て選びたい。",
+  "noteEn": "With E-Garatsu, I would choose by looking at the brush lines first.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.43543,
+   130.01481
+  ]
+ },
+ {
+  "name": "ギャラリー一番館",
+  "nameEn": "Gallery Ichibankan",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "呉服町",
+  "areaEn": "Gofukumachi",
+  "address": "呉服町1807",
+  "url": "https://www.1bankan.com/",
+  "what": "呉服町の、唐津焼と有田焼を扱う店。1階は器の店、2階は作家の個展などを開くギャラリー。",
+  "whatEn": "A shop for Karatsu and Arita ware in Gofukumachi. Tableware on the ground floor, with a gallery upstairs for potters’ exhibitions.",
+  "note": "普段の食卓に使う皿を、一枚ずつ選びたい。",
+  "noteEn": "I would choose plates one at a time for the everyday table.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.44802,
+   129.96885
+  ]
+ },
+ {
+  "name": "monohanako",
+  "nameEn": "monohanako",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "見借",
+  "areaEn": "Mirukashi",
+  "address": "見借4838-20",
+  "url": "https://www.monohanako.com/",
+  "what": "唐津とアメリカのメイン州で作陶する中里花子のショールーム。見借で皿や鉢を扱い、営業日は公式Instagramで知らせる。",
+  "whatEn": "The showroom of Hanako Nakazato, who works in Karatsu and Maine, USA. Plates and bowls in Mirukashi; opening days are posted on the official Instagram.",
+  "note": "楕円の鉢に、何を盛るか考えながら選びたい。",
+  "noteEn": "I would choose an oval bowl while thinking about what to serve in it.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.43325,
+   129.92613
+  ]
+ },
+ {
+  "name": "ムローメ アートショールーム",
+  "nameEn": "Murome Art Showroom",
+  "category": "craft",
+  "tags": [
+   "glass",
+   "metalwork"
+  ],
+  "area": "町田",
+  "areaEn": "Choda",
+  "address": "町田3-11-46",
+  "url": "https://web.people-i.ne.jp/~murome/",
+  "what": "町田の、フュージングガラスと彫金の企画展を開く工房兼ギャラリー。常設展示はなく、春と秋の会期中だけ開場する。",
+  "whatEn": "A studio and gallery in Choda holding exhibitions of fused glass and metalwork. No permanent display; it opens only during its spring and autumn shows.",
+  "note": "ガラスのランプは、灯りの色まで見て選びたい。",
+  "noteEn": "I would choose a glass lamp by the colour of its light, too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.44199,
+   129.9694
+  ]
+ },
+ {
+  "name": "元祖 伊藤けえらん",
+  "nameEn": "Ganso Ito Keeran",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "浜玉町浜崎",
+  "areaEn": "Hamatama-machi Hamasaki",
+  "address": "浜玉町浜崎943",
+  "url": "https://www.ganso-itokeeran.jp/",
+  "what": "浜崎銘菓「けえらん」を作る和菓子店。県産うるち米の蒸した生地で餡を巻き、保存料は使わない。",
+  "whatEn": "A wagashi shop making keeran, a Hamasaki sweet. Steamed dough made from prefecture-grown rice is wrapped around bean paste, without preservatives.",
+  "note": "県産米の生地で巻いたけえらんを、おやつに選ぶ。",
+  "noteEn": "For a snack, I would choose keeran wrapped in dough made from local rice.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.44849,
+   130.03948
+  ]
+ },
+ {
+  "name": "Tea & Space 基幸庵",
+  "nameEn": "Tea & Space Kikouan",
+  "category": "cafe",
+  "tags": [
+   "matcha",
+   "wagashi",
+   "craft"
+  ],
+  "area": "東唐津",
+  "areaEn": "Higashi-Karatsu",
+  "address": "東唐津1-9-21",
+  "url": "https://kikouan.com/",
+  "what": "東唐津の舞鶴橋のたもとにある、喫茶と民藝品の店。唐津焼の器で抹茶と和生菓子、季節の甘味を出す。",
+  "whatEn": "A tea room and folk-craft shop beside Maizuru Bridge in Higashi-Karatsu. Matcha and fresh wagashi in Karatsu ware, with seasonal sweets.",
+  "note": "器を見たあとは、抹茶と和生菓子の盆にする。",
+  "noteEn": "After looking at the crafts, I would order the matcha and fresh wagashi tray.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.45071,
+   129.98202
+  ]
+ },
+ {
+  "name": "健太郎窯",
+  "nameEn": "Kentarougama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "浜玉町横田下",
+  "areaEn": "Hamatama-machi Yokotashimo",
+  "address": "浜玉町横田下1608-2",
+  "url": "https://www.kentarougama.online/",
+  "what": "2008年に村山健太郎が築いた、鏡山の中腹の唐津焼窯元。山で採った土や石から粘土と釉薬を作り、日常の器を焼く。",
+  "whatEn": "A Karatsu-yaki kiln established by Kentarou Murayama in 2008 on Mount Kagamiyama. Clay and glazes are made from earth and stone gathered in the hills, for everyday tableware.",
+  "note": "小皿を一枚、土と釉薬の表情で選んでみたい。",
+  "noteEn": "I would choose one small plate by the character of its clay and glaze.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "三藤窯",
+  "nameEn": "Mitohgama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tea-ware"
+  ],
+  "area": "宇木",
+  "areaEn": "Uki",
+  "address": "宇木2972-6",
+  "url": "https://www.mitohgama.com/",
+  "what": "宇木で三藤るいが営む唐津焼の窯元。2009年に独立し、土探しから窯焚きまで行い、登り窯の炎や灰による変化を生かす。",
+  "whatEn": "Rui Mitoh’s Karatsu-yaki kiln in Uki, established independently in 2009. She works from finding clay through to firing, using the effects of flame and ash in a climbing kiln.",
+  "note": "ぐい呑は、土と釉薬の違いを見ながら選びたい。",
+  "noteEn": "I would choose a sake cup by looking at the differences in clay and glaze.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "曹源窯",
+  "nameEn": "Sougenkama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "浜玉町平原",
+  "areaEn": "Hamatama-machi Hirabaru",
+  "address": "浜玉町平原甲1064-1",
+  "url": "https://kojimanaoki.com/",
+  "what": "浜玉町平原の、小島直喜の唐津焼窯元。自ら採った土や釉薬の原料を使い、登り窯のほか、作品に応じてガス窯や電気窯でも焼く。",
+  "whatEn": "Naoki Kojima’s Karatsu-yaki kiln in Hirabaru, Hamatama. He gathers his own clay and glaze materials, firing in a climbing kiln or in gas and electric kilns according to the work.",
+  "note": "色だけでなく、手に持った土の感触で選びたい。",
+  "noteEn": "I would choose by the feel of the clay in my hands, as well as its colour.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "由起子窯",
+  "nameEn": "Yukikogama",
+  "category": "local",
+  "industry": "karatsu-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "浜玉町東山田",
+  "areaEn": "Hamatama-machi Higashiyamada",
+  "address": "浜玉町東山田800-1",
+  "url": "https://www.instagram.com/tsuchiyayukiko/",
+  "what": "浜玉町東山田の、土屋由起子の唐津焼窯元。黒唐津の器を作る。",
+  "whatEn": "Yukiko Tsuchiya’s Karatsu-yaki kiln in Higashiyamada, Hamatama, making black-glazed Kuro-Garatsu tableware.",
+  "note": "黒い器に何を盛るか、食卓を考えながら選ぶ。",
+  "noteEn": "I would choose a black vessel while thinking about what to serve in it.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "うつわギャラリー 唐津 草伝社",
+  "nameEn": "Utsuwa Gallery Karatsu Soudensya",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "北波多徳須恵",
+  "areaEn": "Kitahata Tokusue",
+  "address": "北波多徳須恵1030-3",
+  "url": "https://www.instagram.com/soudensya.official/",
+  "what": "北波多徳須恵の、唐津焼と有田焼のギャラリー。国登録文化財の旧商家・旧井手邸で、器の展示や企画展を開く。",
+  "whatEn": "A gallery for Karatsu and Arita ware in Kitahata Tokusue. Exhibitions in the former Ide merchant house, a registered tangible cultural property.",
+  "note": "唐津焼と有田焼を並べて、食卓の器を選びたい。",
+  "noteEn": "I would choose tableware by looking at Karatsu and Arita pieces side by side.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "古道具 caesura",
+  "nameEn": "caesura",
+  "category": "craft",
+  "tags": [
+   "antiques",
+   "coffee"
+  ],
+  "area": "大石町",
+  "areaEn": "Oishimachi",
+  "address": "大石町2484-2",
+  "url": "https://www.instagram.com/caesura_antique/",
+  "what": "大石町の、珈琲とビールが飲める古道具店。開く日時は公式Instagramで知らせる。",
+  "whatEn": "An antique shop in Oishimachi serving coffee and beer. Opening dates and hours are posted on its official Instagram.",
+  "note": "古道具を見たあとは、ここで珈琲を飲みたい。",
+  "noteEn": "After looking at the antiques, I would sit here for coffee.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Viennoiserie selfish",
+  "nameEn": "Viennoiserie Selfish",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "pastries"
+  ],
+  "area": "船宮町",
+  "areaEn": "Funamiyamachi",
+  "address": "船宮町2303-1",
+  "url": "https://www.instagram.com/viennoiserie__selfish/",
+  "what": "船宮町のベーカリー。佐賀県産小麦と唐津産の卵・牛乳を使う。",
+  "whatEn": "A bakery in Funamiyamachi using Saga-grown wheat and eggs and milk from Karatsu.",
+  "note": "地元の小麦と卵を使うパンを、おやつに選びたい。",
+  "noteEn": "I would choose bread made with local wheat and eggs for a snack.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "LAZY BIRD BAKERY",
+  "nameEn": "LAZY BIRD BAKERY",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "東城内",
+  "areaEn": "Higashi-Jonai",
+  "address": "東城内6-50",
+  "url": "https://www.instagram.com/lazy_bird_bakery/",
+  "what": "唐津城のそば、東城内のパン屋。売り切れ次第閉店で、月・木曜は休み。",
+  "whatEn": "A bakery near Karatsu Castle in Higashi-Jonai. It closes when sold out; closed on Mondays and Thursdays.",
+  "note": "城のそばでパンを一つ選んで、持ち帰りたい。",
+  "noteEn": "I would choose something from this bakery near the castle to take away.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Patisserie ANN",
+  "nameEn": "Patisserie ANN",
+  "category": "sweets",
+  "tags": [
+   "cake"
+  ],
+  "area": "鏡",
+  "areaEn": "Kagami",
+  "address": "鏡2917-3",
+  "url": "https://www.instagram.com/patisserieann/",
+  "what": "鏡の、韓国人パティシエが営むケーキ店とカフェ。店内でも食べられ、ドリンクメニューもある。",
+  "whatEn": "A cake shop and café in Kagami run by a Korean pastry chef. Cakes can be eaten inside, with a drinks menu too.",
+  "note": "ケーキを一つ選んで、店内でお茶にしたい。",
+  "noteEn": "I would choose one cake and sit inside for tea.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "川島豆腐店",
+  "nameEn": "Kawashima Tofu",
+  "category": "food",
+  "tags": [
+   "tofu"
+  ],
+  "area": "京町",
+  "areaEn": "Kyomachi",
+  "address": "京町1775",
+  "url": "https://www.zarudoufu.co.jp/",
+  "what": "寛政年間創業の、京町の豆腐店。予約制の食事処では、唐津焼の器で温かいざる豆腐や厚揚げなどの豆腐料理を出す。",
+  "whatEn": "A tofu shop in Kyomachi founded in the Kansei era, 1789–1801. Its dining counter serves warm zaru-dofu and tofu dishes including thick fried tofu on Karatsu ware, by reservation.",
+  "note": "温かいざる豆腐を、唐津焼の器で食べたい。",
+  "noteEn": "I would choose warm zaru-dofu served in Karatsu ware.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "QURIYA 厨",
+  "nameEn": "QURIYA",
+  "category": "food",
+  "tags": [
+   "pasta",
+   "wine"
+  ],
+  "area": "東城内",
+  "areaEn": "Higashi-Jonai",
+  "address": "東城内1-5",
+  "url": "https://quriya-karatu.com/",
+  "what": "東城内のイタリア料理店。海や山の食材を使うパスタやリゾット、肉料理があり、昼と夜に開く。",
+  "whatEn": "An Italian restaurant in Higashi-Jonai. Pasta, risotto and meat dishes using ingredients from sea and land, at lunch and dinner.",
+  "note": "おまかせのパスタに、グラスワインを合わせたい。",
+  "noteEn": "I would pair the chef’s choice pasta with a glass of wine.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "レストラン シマ",
+  "nameEn": "Restaurant Shima",
+  "category": "food",
+  "tags": [
+   "french",
+   "wine"
+  ],
+  "area": "原",
+  "areaEn": "Haru",
+  "address": "原992-1",
+  "url": "https://restaurantshima.com/",
+  "what": "原の、唐津の食材を使うフランス料理店。前菜や主菜を選べるランチコースと、夜のコースがある。",
+  "whatEn": "A French restaurant in Haru using Karatsu ingredients. Lunch courses with a choice of starters and main dishes, and dinner courses.",
+  "note": "昼の主菜は、唐津の魚を使う一皿にしたい。",
+  "noteEn": "For the lunch main, I would choose a dish of Karatsu fish.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Restaurant Présage",
+  "nameEn": "Restaurant Présage",
+  "category": "food",
+  "tags": [
+   "restaurant"
+  ],
+  "area": "新興町",
+  "areaEn": "Shinkomachi",
+  "address": "新興町17",
+  "url": "https://www.instagram.com/restaurant_presage/",
+  "what": "新興町の予約制レストラン。昼と夜に営業し、2名から、2日前までの予約を受け付ける。",
+  "whatEn": "A restaurant in Shinkomachi open for lunch and dinner by reservation. Book at least two days ahead, for two or more people.",
+  "note": "二人で予約して、ゆっくり昼の食事にしたい。",
+  "noteEn": "I would book for two and make it a leisurely lunch.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Jack Coffeestand",
+  "nameEn": "Jack Coffeestand",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "muffins"
+  ],
+  "area": "浜玉町浜崎",
+  "areaEn": "Hamatama-machi Hamasaki",
+  "address": "浜玉町浜崎1799-23",
+  "url": "https://jackwindsurfinggarden.com/",
+  "what": "浜崎の、ウインドサーフィン店WIND JACKと並ぶコーヒースタンド。珈琲とマフィンを出し、木・金曜は休み。",
+  "whatEn": "A coffee stand alongside the windsurfing shop WIND JACK in Hamasaki. Coffee and muffins; closed on Thursdays and Fridays.",
+  "note": "ここではマフィンを一つ、珈琲と合わせたい。",
+  "noteEn": "Here I would have a muffin with my coffee.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "cafe ortoyo",
+  "nameEn": "cafe ortoyo",
+  "category": "cafe",
+  "tags": [
+   "cake"
+  ],
+  "area": "和多田本村",
+  "areaEn": "Watada Honmura",
+  "address": "和多田本村8-70",
+  "url": "https://www.instagram.com/cafe_ortoyo/",
+  "what": "和多田本村のカフェ。シフォンケーキを中心に焼き菓子を出し、食事メニューは準備中。",
+  "whatEn": "A café in Watada Honmura serving chiffon cakes and other baked sweets. The meal menu is still in preparation.",
+  "note": "焼き菓子も気になるけれど、まずはシフォンを選ぶ。",
+  "noteEn": "The baked sweets appeal too, but I would start with chiffon cake.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "タネ屋珈琲店",
+  "nameEn": "Taneya Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweet-potato"
+  ],
+  "area": "熊原町",
+  "areaEn": "Kumanoharamachi",
+  "address": "熊原町3124-1",
+  "url": "https://www.instagram.com/taneyacoffee/",
+  "what": "熊原町の、焼き芋も扱う珈琲店。持ち帰りにも対応する。",
+  "whatEn": "A coffee shop in Kumanoharamachi that also sells roasted sweet potatoes. Takeaway is available.",
+  "note": "焼き芋をおやつに、珈琲を一杯合わせたい。",
+  "noteEn": "I would have a roasted sweet potato for a snack, with a cup of coffee.",
+  "verifiedAt": "2026-11-12"
+ }
+]

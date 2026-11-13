@@ -1,0 +1,226 @@
+[
+ {
+  "name": "COCOROSTORE",
+  "nameEn": "COCOROSTORE",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "woodwork",
+   "washi",
+   "tableware"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "2516 Uomachi, Kurayoshi-shi",
+  "url": "https://cocorostore.jp/",
+  "what": "魚町の、鳥取の手仕事の生活道具を扱う店。陶磁器や染織品、鍛冶、木竹工、和紙などをそろえ、修理も引き受ける。",
+  "whatEn": "A shop in Uomachi carrying Tottori craft for everyday use—ceramics, textiles, forged metalwork, wood and bamboo, and washi. Repairs are also taken on.",
+  "note": "長く使う道具を、一つひとつ手に取って選びたい。",
+  "noteEn": "Pick up each everyday tool and choose one to keep.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43168,
+   133.82491
+  ]
+ },
+ {
+  "name": "創作工房 中野竹藝",
+  "nameEn": "Nakano Chikugei",
+  "category": "craft",
+  "tags": [
+   "bamboo",
+   "craft"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "2571 Higashinakamachi, Kurayoshi-shi",
+  "url": "https://nakano-chikugei.com/",
+  "what": "大正元年創業の竹細工の工房。鳳尾竹を植物性の染料で染め、割らずに丸のまま曲げる丸竹加工で花入れやバッグ、盛器を作る。",
+  "whatEn": "A bamboo workshop founded in 1912. It dyes hobichiku bamboo with plant dyes and bends whole culms without splitting them into flower vessels, bags and serving trays.",
+  "note": "割らずに曲げた竹の花入れを、近くで見てみたい。",
+  "noteEn": "I want to see the bent whole-bamboo flower vessels up close.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43192,
+   133.8243
+  ]
+ },
+ {
+  "name": "倉吉ふるさと工芸館",
+  "nameEn": "Kurayoshi Furusato Kogeikan",
+  "category": "local",
+  "industry": "kurayoshi-kasuri",
+  "tags": [
+   "textiles",
+   "kasuri",
+   "craft"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "2606 Higashinakamachi, Kurayoshi-shi",
+  "url": "https://www.kurayoshi-kankou.jp/hurusatokougei/",
+  "what": "白壁土蔵群にある倉吉絣の工芸館。絵を織り込んだような絵かすりの展示販売のほか、機織りの見学や予約制のコースター織り体験がある。水曜休。",
+  "whatEn": "A craft hall in Shirakabe Dozogun for Kurayoshi Kasuri, indigo cotton ikat with pictorial motifs. Textiles are displayed and sold, with loom demonstrations and booked coaster-weaving sessions. Closed Wednesdays.",
+  "note": "織り機の前で、絵かすりの細かい柄を見たい。",
+  "noteEn": "Stand by the loom and look at the fine pictorial ikat patterns.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43156,
+   133.82332
+  ]
+ },
+ {
+  "name": "高田酒造",
+  "nameEn": "Takata Sake Brewery",
+  "category": "local",
+  "industry": "sake-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "2633 Nishinakamachi, Kurayoshi-shi",
+  "url": "https://shikun.jp/",
+  "what": "玉川沿いの西仲町にある、天保14年（1843年）築の醸造元。代表銘柄は「此君（しくん）」。",
+  "whatEn": "A brewery built in 1843 along the Tamagawa river in Nishinakamachi. Its flagship sake is Shikun.",
+  "note": "玉川の石橋と白壁を見ながら、此君を一本。",
+  "noteEn": "Look at the stone bridges over the Tamagawa, and pick up a bottle of Shikun.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43207,
+   133.82239
+  ]
+ },
+ {
+  "name": "石谷精華堂 本店",
+  "nameEn": "Ishitani Seikado Honten",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "dango"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "459-1 Saiwaicho, Kurayoshi-shi",
+  "url": "https://www.kouendango.com/",
+  "what": "打吹公園だんごの老舗で、創業120余年。幸町の本店には喫茶「花」を併設し、元日を除き年中無休で8時から開いている。",
+  "whatEn": "A confectioner of more than 120 years, known for Utsubuki Koen Dango. The Saiwaicho flagship has a tearoom, Hana, and opens at 8 a.m. every day except New Year’s Day.",
+  "note": "三色のだんごを、店の中の喫茶で一串。",
+  "noteEn": "Have a skewer of the three-colour dango in the tearoom inside.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43757,
+   133.8379
+  ]
+ },
+ {
+  "name": "菓子蔵楽部 倉吉舎",
+  "nameEn": "Kurayoshiya",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "sweets"
+  ],
+  "area": "上灘",
+  "areaEn": "Uwanada",
+  "address": "2-16 Dakejicho, Kurayoshi-shi",
+  "url": "https://kurayoshiya.jp/",
+  "what": "倉吉で30年以上続く菓子店。添加物を極力使わず、梨ふわどらやはこた饅頭、生菓子や焼き菓子を作る。",
+  "whatEn": "A confectioner in Kurayoshi for over thirty years. With minimal additives, it makes Nashi Fuwadora pear dorayaki, Hakota manju, fresh sweets and baked pastries.",
+  "note": "梨ふわどらと、はこた饅頭を一つずつ選ぶ。",
+  "noteEn": "Pick one Nashi Fuwadora and one Hakota manju.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.4297,
+   133.83903
+  ]
+ },
+ {
+  "name": "白壁倶楽部",
+  "nameEn": "Shirakabe Club",
+  "category": "food",
+  "tags": [
+   "yoshoku",
+   "coffee"
+  ],
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "2540-1 Uomachi, Kurayoshi-shi",
+  "url": "https://shirakabeclub.jp/",
+  "what": "明治41年築の旧国立第三銀行倉吉支店を使ったレストラン＆カフェ。漆喰細工の天井が残る店内で、自家製豆腐料理やランチ、カフェメニューを出す。",
+  "whatEn": "A restaurant and café in the 1908 former Dai-San National Bank Kurayoshi branch. Under plasterwork ceilings, it serves house-made tofu dishes, lunches and café fare.",
+  "note": "明治の銀行の天井を見上げながら、午後の珈琲。",
+  "noteEn": "Afternoon coffee while looking up at the Meiji-era bank ceiling.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.43162,
+   133.82646
+  ]
+ },
+ {
+  "name": "市場食堂",
+  "nameEn": "Ichiba Shokudo",
+  "category": "food",
+  "tags": [
+   "shokudo",
+   "curry"
+  ],
+  "area": "上井",
+  "areaEn": "Agei",
+  "address": "2-20 Seidanicho, Kurayoshi-shi",
+  "url": "https://www.instagram.com/ichibasyokudo/",
+  "what": "倉吉総合産業卸売市場の敷地内にある食堂。朝7時から開き、カフェテリア形式で好みのおかずを選べるほか、カツカレーが定番。",
+  "whatEn": "A diner inside the Kurayoshi Wholesale Market. Open from 7 a.m., with cafeteria-style side dishes to choose from and katsu curry as a staple.",
+  "note": "市場の朝7時。小鉢を並べて朝ごはんにする。",
+  "noteEn": "Seven in the morning at the market. Put together small side dishes for breakfast.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.47256,
+   133.84531
+  ]
+ },
+ {
+  "name": "和食きんぎょ",
+  "nameEn": "Washoku Kingyo",
+  "category": "food",
+  "tags": [
+   "washoku",
+   "lunch"
+  ],
+  "area": "上井",
+  "areaEn": "Agei",
+  "address": "236-2 Wada, Kurayoshi-shi",
+  "url": "https://www.instagram.com/washoku_kingyo/",
+  "what": "天神川の西、和田にある和食店。自家農園の野菜を中心にした小鉢が並ぶ「懐石風きんぎょランチ」を出す。",
+  "whatEn": "A washoku spot in Wada, just west of the Tenjin River, serving the kaiseki-style Kingyo Lunch with small dishes built around vegetables from its own farm.",
+  "note": "お盆に並んだ自家農園の小鉢を、少しずつ味わいたい。",
+  "noteEn": "Take time over the small dishes of farm-grown vegetables on the tray.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.44394,
+   133.8134
+  ]
+ },
+ {
+  "name": "ティーラウンジ ダイアナ",
+  "nameEn": "Tea Lounge Diana",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "parfait"
+  ],
+  "area": "上灘",
+  "areaEn": "Uwanada",
+  "address": "801 Yonedacho, Kurayoshi-shi",
+  "url": "https://www.facebook.com/dianaweb21/",
+  "what": "米田町の老舗喫茶。8時半から開き、モーニングやランチのほか、とうふちくわをのせた「ちくわぱふぇ」がある。日曜定休、支払いは現金のみ。",
+  "whatEn": "A long-running kissaten in Yonedacho, open from 8:30 a.m. for morning sets, lunch, and its chikuwa parfait topped with tofu chikuwa. Closed Sundays; cash only.",
+  "note": "とうふちくわがのったパフェを、一度頼んでみる。",
+  "noteEn": "Order the parfait with tofu chikuwa on top, just once.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.42758,
+   133.84192
+  ]
+ }
+]

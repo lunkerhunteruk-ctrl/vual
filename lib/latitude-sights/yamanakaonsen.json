@@ -1,0 +1,82 @@
+[
+ {
+  "name": "こおろぎ橋",
+  "nameEn": "Korogi Bridge",
+  "kind": "sight",
+  "area": "鶴仙渓・こおろぎ橋",
+  "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+  "address": "加賀市山中温泉下谷町",
+  "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+  "what": "鶴仙渓に架かる総ひのきの橋。現在の4代目は2019年に架け替えられ、ここから黒谷橋まで1.3キロの渓谷遊歩道が続く。",
+  "whatEn": "An all-cypress bridge over Kakusenkei Gorge. The current fourth bridge was rebuilt in 2019, and a 1.3 km gorge walking path runs from here to Kurotani Bridge.",
+  "coords": [
+   36.24099,
+   136.37167
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "あやとりはし",
+  "nameEn": "Ayatori Bridge",
+  "kind": "sight",
+  "area": "鶴仙渓・こおろぎ橋",
+  "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+  "address": "加賀市山中温泉河鹿町",
+  "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+  "what": "こおろぎ橋と黒谷橋のほぼ中間に架かる長さ94.7メートルの歩行者専用橋。草月流家元の勅使河原宏が設計した紅紫色のS字形の橋で、通行は自由。",
+  "whatEn": "A 94.7-metre pedestrian bridge midway between Korogi Bridge and Kurotani Bridge, designed in an S-curve of crimson-purple steel by Sogetsu headmaster Hiroshi Teshigahara. Free to cross.",
+  "coords": [
+   36.24547,
+   136.37579
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "総湯 菊の湯",
+  "nameEn": "Kikunoyu Public Bath",
+  "kind": "sight",
+  "area": "ゆげ街道・本町",
+  "areaEn": "Yuge Kaido & Honmachi",
+  "address": "加賀市山中温泉本町二丁目",
+  "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+  "what": "男女別棟で建つ山中温泉の共同浴場。松尾芭蕉の句から名付けられ、7時から22時まで開く（第2・4火曜定休）。",
+  "whatEn": "Yamanaka Onsen's public bathhouse, with separate buildings for men and women. Named after a haiku by Matsuo Basho; open 7 am to 10 pm, closed second and fourth Tuesdays.",
+  "coords": [
+   36.24694,
+   136.37328
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "山中座",
+  "nameEn": "Yamanaka-za",
+  "kind": "sight",
+  "area": "ゆげ街道・本町",
+  "areaEn": "Yuge Kaido & Honmachi",
+  "address": "加賀市山中温泉薬師町",
+  "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+  "what": "菊の湯の女湯に隣接する山中節の館と観光案内所。漆塗りの柱や蒔絵の格天井を備え、週末と祝日には芸妓連による「山中節四季の舞」が開かれる。",
+  "whatEn": "A hall for Yamanaka-bushi folk song and tourist information next to the women's bath of Kikunoyu, with lacquered pillars and maki-e coffered ceilings. Geiko performances are held on weekends and holidays.",
+  "coords": [
+   36.24716,
+   136.37284
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "山中温泉 芭蕉の館",
+  "nameEn": "Basho no Yakata",
+  "kind": "art",
+  "area": "ゆげ街道・本町",
+  "areaEn": "Yuge Kaido & Honmachi",
+  "address": "加賀市山中温泉本町二丁目",
+  "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+  "what": "1905年築の旅館の別荘を整備した展示館。松尾芭蕉ゆかりの品や山中漆器の秀品を展示する。9時から17時、水曜定休。",
+  "whatEn": "An exhibition house in a 1905 ryokan villa with a garden, displaying items linked to Matsuo Basho and Yamanaka lacquerware. Open 9 am to 5 pm; closed Wednesdays.",
+  "coords": [
+   36.24618,
+   136.37387
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

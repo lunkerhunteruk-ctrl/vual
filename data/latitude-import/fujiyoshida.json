@@ -1,0 +1,621 @@
+{
+ "slug": "fujiyoshida",
+ "city": {
+  "name": "Fujiyoshida",
+  "nameJa": "富士吉田",
+  "latitude": "35.5° N",
+  "country": "Yamanashi, Japan",
+  "countryJa": "山梨県",
+  "person": "rin",
+  "coords": [
+   35.487,
+   138.807
+  ],
+  "intro": "A weaving town on the northern slope of Mount Fuji, fed by snowmelt spring water. Linen and jacquard weavers, tableware and vintage shops in Shimoyoshida, and coffee and breakfast places along the old streets: Rin's picks.",
+  "introJa": "富士山の北の麓、雪解けの湧水に支えられたハタオリの町。リネンやジャカード織りの機屋、下吉田の暮らしの道具や器の店、古い通りの珈琲と朝ごはんを、凛のおすすめで。",
+  "locator": {
+   "en": "At the northern foot of Mount Fuji · on a volcanic plateau",
+   "ja": "山梨県・富士山の北麓の町"
+  },
+  "industries": [
+   {
+    "key": "gunnai-textiles",
+    "en": "Gunnai / Koshu-ori Weaving",
+    "ja": "郡内織物・ハタオリ",
+    "about": "Fujiyoshida has woven textiles using Mount Fuji's snowmelt spring water for over a thousand years, moving from silk Koshu-ori linings and neckties to small-batch linen and jacquard fabrics. Mills such as TENJIN-factory and Hadachu Orimono still weave on shuttle and jacquard looms in town.",
+    "aboutJa": "富士吉田では千年以上にわたり、富士山の雪解けの湧水を使って織物が織られてきた。甲斐絹やネクタイ生地の伝統から、いまはリネンやジャカード織りへと広がり、テンジンファクトリーや羽田忠織物などの機屋が町で織りを続けている。",
+    "_src": "Fujiyoshida has woven textiles with Mount Fuji's snowmelt spring water for over a millennium, evolving from fine silk Koshu-ori linings and ties into small-batch linen, organic cotton, and experimental jacquard labels."
+   }
+  ]
+ },
+ "places": {
+  "TENJIN-factory": {
+   "nameEn": "TENJIN-factory",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "linen",
+    "textiles"
+   ],
+   "what": "富士山の麓で、古いシャトル織機を使ってセルビッチリネンを織るリネン専門の織物工場。キッチンクロスやタオル、カーテン、姉妹ブランド「ALDIN」の製品を手がける。",
+   "whatEn": "A linen-specialist weaving mill at the foot of Mount Fuji, weaving selvedge linen on old shuttle looms for kitchen cloths, towels, curtains and its sister label ALDIN.",
+   "note": "キッチンクロスを一枚、手触りで選びたい。",
+   "noteEn": "I'd pick out one kitchen cloth by how it feels in the hand.",
+   "_src": {
+    "category": "local",
+    "industry": "gunnai-textiles",
+    "nameKana": "テンジンファクトリー",
+    "address": "7-29-2 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://www.tenjin-factory.com/",
+    "whatJa": "姉妹ブランド「ALDIN」とともに上質なリネン製品を織り上げる、三代続くリネン専門の織物工場兼ショップ。",
+    "whatEn": "A third-generation family weaving mill crafting pure European-flax household linens alongside sister label ALDIN.",
+    "facts": "Operated by Tenjin Co., Ltd., the family weaving factory behind both TENJIN-factory and ALDIN. Weaves imported European flax yarns on shuttle and rapier looms into curtains, bed linens, and kitchen cloths, offering custom sizing and monogramming at the mill shop.",
+    "weak": "Factory shop visits typically require advance reservation except on monthly open-factory Saturdays.",
+    "verifiedBy": "https://www.tenjin-factory.com/blogs/news/%E3%81%8A%E5%8F%96%E6%89%B1%E5%BA%97%E6%83%85%E5%A0%B1-31",
+    "quote": "「Ginza Draft Journey」に出店いたします。",
+    "fixes": "Address 7-29-2 Shimoyoshida confirmed on /pages/company (有限会社テンジン, 7-29-2 Shimoyoshida Fujiyoshida Yamanashi 403-0004). Site says it is a linen-specialist factory weaving on shuttle looms with looms and showrooms side by side on the same site, plus the ALDIN label. The 'third-generation', 'rapier looms', 'custom monogramming' and 'monthly open-factory Saturdays' claims were NOT found on the pages I read; remove or leave unstated. Site ships online; walk-in visit rules not stated.",
+    "coords": null
+   }
+  },
+  "LONGTEMPS": {
+   "nameEn": "LONGTEMPS",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "furniture",
+    "tableware",
+    "clothing"
+   ],
+   "what": "1934年創業の家具店が営むショップで、路地を挟んで2棟ある。1階に暮らしの雑貨や食器・衣類、2階にセミオーダー家具、別棟に北欧ヴィンテージと英国アンティーク家具を並べる。10時から19時で、火曜と第4水曜は休み。",
+   "whatEn": "A shop run by a furniture store founded in 1934, split across two buildings on either side of a lane: household goods, tableware and clothing downstairs, semi-order furniture upstairs, and Nordic vintage and British antiques across the way. Open 10 am to 7 pm, closed Tuesdays and the fourth Wednesday.",
+   "note": "路地を渡って、二棟ともゆっくり見て回りたい。",
+   "noteEn": "I'd cross the lane and take my time through both buildings.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ロンタン",
+    "address": "3-12-54 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://longtemps.jp/",
+    "whatJa": "器やガラス、台所道具、ヴィンテージ家具など「長い間」使える暮らしの道具を揃える下吉田のセレクトショップ。",
+    "whatEn": "A quiet lifestyle and tableware shop in Shimoyoshida curating Japanese ceramics, glassware, kitchen tools, and vintage furniture.",
+    "facts": "Named after the French word for 'a long time' and set on a calm street near the Nishiura lanes. Stocks everyday stoneware, blown glass, woven baskets, and restored vintage furniture across two floors.",
+    "weak": "",
+    "verifiedBy": "https://hatafes.jp/",
+    "quote": "みずほ公園／小室浅間神社／宮川橋南駐車場／pound／中村会館／フコク生命ガレージ／LONGTEMPS／旧高尾家住宅／渡辺薬局駐車場／KURA HOUSE／FUJIHIMURO　など",
+    "fixes": "Official shop page https://longtemps.jp/shop.html confirms address 〒403-0004 下吉田3-12-54, 10:00-19:00, closed every Tuesday and 4th Wednesday, tel 0555-22-0400. Its news block did not render any dated items, so the 2026 evidence is the Hatafes page listing LONGTEMPS as a 2026 festival venue. The shop is run by 有限会社大星家具店 (family furniture store since 1934). It is two buildings across a lane, not two floors: Nordic vintage and British antique furniture, 1F goods and clothing, 2F semi-order furniture. It also sells clothing (R&D.M.Co-, ALDIN). Ceramics and glass are not confirmed; the site only lists Table/Kitchenwear, Household Goods and Clothing/Accessories. 'near the Nishiura lanes' was not confirmed.",
+    "coords": [
+     35.49163,
+     138.80317
+    ]
+   }
+  },
+  "LIFE STYLE SHOP ALT STYLE": {
+   "nameEn": "LIFE STYLE SHOP ALT STYLE",
+   "area": "中曽根",
+   "areaEn": "Nakasone",
+   "tags": [
+    "tableware",
+    "glass",
+    "goods"
+   ],
+   "what": "中曽根のライフスタイルショップ。食器やキッチン用品、リューズガラスの器、地元のものづくりや服飾小物を扱う。2026年3月に店舗の2階へ移った。10時半から19時半。",
+   "whatEn": "A lifestyle shop in Nakasone stocking tableware, kitchen tools, recycled-glass vessels, local products and small clothing goods. Moved up to the second floor in March 2026. Open 10:30 am to 7:30 pm.",
+   "note": "リューズガラスのコップを、光に透かして選びたい。",
+   "noteEn": "I'd hold the recycled-glass tumblers up to the light before choosing.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ライフスタイルショップ オルトスタイル",
+    "address": "2-13-14 Nakasone, Fujiyoshida-shi",
+    "url": "http://www.alt-style.jp/",
+    "whatJa": "日常の器やリューズガラスの食器、地元作家のクラフトや織物小物を扱う中曽根のライフスタイルショップ。",
+    "whatEn": "An independent homewares and craft shop stocking Japanese tableware, recycled-glass vessels, and local textile goods.",
+    "facts": "Stands along Showa-dori in central Nakasone. Pairs everyday ceramic plates, mugs, and mouth-blown recycled glass with small goods made from Fujiyoshida's traditional kinran brocade.",
+    "weak": "",
+    "verifiedBy": "http://www.alt-style.jp/",
+    "quote": "2026.3月 リニューアルオープン!!",
+    "fixes": "Address 〒403-0007 富士吉田市中曽根2-13-14 matches, hours 10:30-19:30. The shop was renewed in March 2026 and moved to the 2nd floor (\"ALT STYLEは2階になりました。18周年を迎えて新装開店。\"). Page does not mention kinran brocade or Showa-dori; it lists tags 食器/地場(ローカルプロダクト)/キッチン/アパレル小物 and 'リューズガラス' (item dated 2024.11.14). Drop the kinran-brocade and Showa-dori claims from factsForNote unless found elsewhere. Add: now on the 2nd floor.",
+    "coords": null
+   }
+  },
+  "FUJIHIMURO": {
+   "nameEn": "FUJIHIMURO",
+   "area": "富士見",
+   "areaEn": "Fujimi",
+   "tags": [
+    "gallery",
+    "craft"
+   ],
+   "what": "旧富士製氷の跡地を使った複合施設。ギャラリーとワークスペースがあり、写真展や原画展、コミュニティマーケット「氷室どよう市」などが開かれる。",
+   "whatEn": "A cultural complex on the former Fuji Ice factory site with a gallery and workspace, hosting photo and illustration exhibitions and the Himuro Doyo-ichi community market.",
+   "note": "展示や土曜市の日に合わせて、中をのぞいてみたい。",
+   "noteEn": "I'd look inside when an exhibition or the Saturday market is on.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "フジヒムロ",
+    "address": "1-1-5 Fujimi, Fujiyoshida-shi",
+    "url": "https://www.instagram.com/fujihimuro/",
+    "whatJa": "旧製氷工場の氷室を改装し、工芸・テキスタイル・器・現代美術の企画展を開くギャラリー空間。",
+    "whatEn": "A former icehouse converted into an exhibition gallery showcasing regional craft, textiles, ceramics, and contemporary art.",
+    "facts": "Adapted from the thick-walled former Fuji Ice storage building in Fujimi. Hosts rotating craft, ceramic, and Fuji Textile Week exhibitions as well as weekend maker markets.",
+    "weak": "Exhibition-driven gallery; open days follow current exhibition schedules.",
+    "verifiedBy": "https://you-fujiyoshida.jp/fujihimuro",
+    "quote": "2026.10.02 FUJIHIMURO 【10月17日開催】富士吉田市のコミュニティマーケット『氷室どよう市』",
+    "fixes": "Address 1-1-5 Fujimi (〒403-0009 富士吉田市富士見1-1-5) matches. The official Instagram @fujihimuro is stale (0 posts, text still advertises a photo exhibition running 'until 9/8 (Sun)', i.e. an old year), so use https://you-fujiyoshida.jp/fujihimuro (run by the city's you FUJIYOSHIDA) as the URL. Page says it is a 複合施設 run to support citizen activities, with a gallery space and a workspace (also described as artist salon & residence), on the site of the former ice factory 富士製氷 (not 'exhibition gallery only'). 2026 news on the page: 【10/2〜10/25】PORTRAIT LAB EXHIBITION「MY HAND」, 【9月26日~28日開催】星を旅するものがたり〜原画展〜, 【9月19日開催】氷室どよう市. 'Fuji Textile Week' and 'weekend maker markets' are not stated; the market is the 氷室どよう市 community market (monthly-ish, e.g. 9/19 and 10/17). Gallery is for rental/booking; office open weekdays 9:00-17:00.",
+    "coords": [
+     35.47689,
+     138.82022
+    ]
+   },
+   "url": "https://you-fujiyoshida.jp/fujihimuro"
+  },
+  "お食事処 やぶ": {
+   "nameEn": "Oshokujidokoro Yabu",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "soba",
+    "udon",
+    "teishoku"
+   ],
+   "what": "1971年創業の食事処。3種類の鰹節を削って引く出汁と、自家製のうどん・そば・中華麺で、定食や丼を出す。11時から21時（土日は15〜17時に中休みあり）、水・木曜は休み。",
+   "whatEn": "A neighbourhood dining hall founded in 1971, making dashi from three shaved bonito flakes and its own udon, soba and ramen noodles for set meals and rice bowls. Open 11 am to 9 pm (weekend break 3 to 5 pm), closed Wednesdays and Thursdays.",
+   "note": "鰹節の効いた出汁のざるそばと、かつ丼で迷いたい。",
+   "noteEn": "Between the soba with that bonito dashi and the katsudon, I'd take a moment to decide.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おしょくじどころ やぶ",
+    "address": "5-33-27 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://fujiyoshida-yabu.com/",
+    "whatJa": "1971年創業、三種の鰹節から引く出汁と手作りの定食・麺類で地元客に長年愛される下吉田の食事処。",
+    "whatEn": "A second-generation local dining hall founded in 1971 where nearly every teishoku, noodle bowl, and dashi broth is made from scratch.",
+    "facts": "Established in November 1971 via an Edo-lineage noren split and now run by its second generation. Brews its own dashi from three varieties of bonito flakes and prepares set meals, soba, and katsudon by hand.",
+    "weak": "",
+    "verifiedBy": "https://fujiyoshida-yabu.com/",
+    "quote": "10月のお休みは 定休水・木曜日 になります。",
+    "fixes": "Address 山梨県富士吉田市下吉田5-33-27, tel 0555-23-0580 match. Page: 創業昭和46年11月, のれん分け since Edo era, second-generation owners, almost all dishes handmade, dashi from shaving three kinds of katsuobushi, in-house noodles (udon/soba/ramen). Hours AM11:00-PM9:00, regular closing Wed & Thu (since Sept 2025). Another 2026 notice: 2026.04.01 price rise (諸物価の上昇に伴い、一部商品の値上げを実施させていただくこととなりました。). Page lists ざるそば, 天丼, かつ丼 etc.; 'katsudon' OK.",
+    "coords": null
+   }
+  },
+  "春木屋 コーヒーロースタリー 月滴庵": {
+   "nameEn": "Harukiya Coffee Roastery Gettekian",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "coffee",
+    "baked-goods"
+   ],
+   "what": "生豆を富士山の湧水で磨いてから自家焙煎する、焙煎所併設のカフェ。希少な豆や手作りの焼き菓子もあり、道を挟んだ向かいの茶店では抹茶や抹茶ソフトも出す。火曜は休み。",
+   "whatEn": "A roastery café that washes green beans in Mount Fuji spring water before roasting, with rare beans and handmade baked sweets; its tea shop across the street serves matcha and matcha soft-serve. Closed Tuesdays.",
+   "note": "湧水で磨いた豆を一杯飲んで、茶店の抹茶も気になる。",
+   "noteEn": "I'd have a cup of the spring-washed beans, with an eye on the tea shop across the road.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "はるきや こーひーろーすたりー げってきあん",
+    "address": "4-1-11 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://harukiya.com/",
+    "whatJa": "生豆を富士山の湧水で磨いてから自家焙煎する、下吉田のスペシャルティコーヒー焙煎所兼カフェ。",
+    "whatEn": "A specialty coffee roastery and drip counter in Shimoyoshida that washes green beans in Mount Fuji spring water before roasting.",
+    "facts": "Operated by long-standing local merchant Harukiya near Gekkoji and Honcho-dori. Rinses green specialty beans in pure Mount Fuji groundwater and roasts them with superheated steam for remarkably clean hand-drip coffee.",
+    "weak": "",
+    "verifiedBy": "https://harukiya.com/blogs/news/webrenew",
+    "quote": "このたび、WEBサイトのリニューアルを記念して、WEBショップにて 2,000 円以上お買い上げの お客様へ、ドリップコーヒー個包装タイプを3個プレゼントいたします。",
+    "fixes": "Official shop page https://harukiya.com/pages/shop: 住所 〒403-0004 山梨県富士吉田市下吉田4-1-11, TEL 0555-24-1603, 定休日 火曜日, 焙煎所併設のカフェです。茶店から道を挟んだ反対側にあります。 Address matches. Page says 富士山の湧水で磨いたスペシャルティコーヒー (OK) but does NOT mention superheated steam roasting, Gekkoji, or Honcho-dori — remove those from factsForNote. Also mentions rare beans and handmade baked sweets, and a view of Fuji from beside the shop. Evidence is a web-shop news post (dated 2026), shop page is undated; moderately strong.",
+    "coords": null
+   }
+  },
+  "珈琲倶ら部": {
+   "nameEn": "Coffee Kurabu",
+   "area": "松山",
+   "areaEn": "Matsuyama",
+   "tags": [
+    "coffee"
+   ],
+   "what": "松山の自家焙煎珈琲豆の店。富士五湖ぶれんど、ふじやまぶれんど、樹海ぶれんどなどのご当地ブレンドや、月ごとのおすすめ豆を量り売りする。9時から18時半で、日・月曜は休み。",
+   "whatEn": "A home-roastery coffee bean shop in Matsuyama selling local blends such as Fujigoko, Fujiyama and Jukai alongside a monthly featured roast. Open 9 am to 6:30 pm, closed Sundays and Mondays.",
+   "note": "「樹海」や「ふじやま」、名前の響きで一袋選びたい。",
+   "noteEn": "I'd pick one bag just for the name, Jukai or Fujiyama.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こーひーくらぶ",
+    "address": "1-4-56 Matsuyama, Fujiyoshida-shi",
+    "url": "https://fujiyoshida-coffee.wixsite.com/umai-coffee",
+    "whatJa": "富士山の溶岩石の遠赤外線で30種以上の豆をじっくり自家焙煎する、松山の路地裏の珈琲豆専門店。",
+    "whatEn": "A backstreet Matsuyama specialty bean roastery that roasts over thirty varieties using far-infrared heat from Mount Fuji lava stone.",
+    "facts": "Tucked on a quiet lane in Matsuyama. Uses volcanic lava rock from Mount Fuji in the roaster to heat beans evenly to the core, offering signature Fujiyama Blend and single-origin roasts.",
+    "weak": "",
+    "verifiedBy": "https://fujiyoshida-coffee.wixsite.com/umai-coffee",
+    "quote": "2026年11月のお薦め珈琲",
+    "fixes": "Address matches (〒403-0016 山梨県富士吉田市松山1-4-56, Tel 0555-24-2045, 9:00-18:30, closed Sun & Mon, 3 parking spaces). The pages I opened do NOT mention Mount Fuji lava stone/far-infrared roasting or 'over thirty varieties' - remove those claims from whatEn/whatJa/factsForNote, or source them elsewhere; the site does list house blends (ふじやまぶれんど, ビタスキぶれんど, 樹海ぶれんど, モカモカぶれんど, 富士五湖ぶれんど etc.). 'Backstreet' also not stated.",
+    "coords": [
+     35.48979,
+     138.79563
+    ]
+   }
+  },
+  "木村屋": {
+   "nameEn": "Kimuraya",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "bakery",
+    "bread"
+   ],
+   "what": "1958年創業、下吉田の老舗パン屋。先代からのレシピと新しい製法で、フランスパンやライ麦パン、ヒレカツサンド、あんドーナツなどを焼く。10時から18時で、日・月曜は休み。",
+   "whatEn": "A Shimoyoshida bakery founded in 1958, baking French loaves, rye bread, pork-cutlet sandwiches and an-doughnuts from inherited recipes and newer methods. Open 10 am to 6 pm, closed Sundays and Mondays.",
+   "note": "焼きたてのフランスパンと、甘いあんドーナツをひとつずつ。",
+   "noteEn": "One crusty French loaf and one sweet an-doughnut.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "きむらや",
+    "address": "5-3-1 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://kimuraya.site/",
+    "whatJa": "1958年創業、先代から受け継いだ秘伝のレシピと新しい製法でフランスパンや惣菜パン・菓子パンを焼く下吉田の老舗ベーカリー。",
+    "whatEn": "A family-run Shimoyoshida bakery founded in 1958, baking crusty French loaves, sandwiches, and nostalgic sweet buns from inherited recipes.",
+    "facts": "Founded in 1958 in Shimoyoshida near Gekkoji Station. Pairs long-kept family recipes with newer baking methods for crisp French bread, rye loaves, buttermilk French toast, katsu sandwiches, and cinnamon custard doughnuts.",
+    "weak": "",
+    "verifiedBy": "https://kimuraya.site/archives/1397",
+    "quote": "今日も焼き立てパンと共にお待ちしております。",
+    "fixes": "",
+    "coords": [
+     35.50666,
+     138.80925
+    ]
+   }
+  },
+  "sai Breakfast and Cafe": {
+   "nameEn": "sai Breakfast and Cafe",
+   "area": "松山",
+   "areaEn": "Matsuyama",
+   "tags": [
+    "breakfast",
+    "cafe"
+   ],
+   "what": "松山の朝ごはん専門店。富士山の伏流水で炊いた地元の米や武川のコシヒカリ、手作りの味噌、季節の野菜を使った朝食を出す。営業日はInstagramの週間カレンダーで知らせる。",
+   "whatEn": "A morning dining spot in Matsuyama serving breakfasts of local or Mukawa Koshihikari rice cooked in Mount Fuji groundwater, handmade miso and seasonal vegetables. Weekly opening days are posted on Instagram.",
+   "note": "富士山の水で炊いた白いごはんの朝を、ここで迎えたい。",
+   "noteEn": "I'd start a morning here with white rice cooked in Mount Fuji water.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "サイ ブレックファースト アンド カフェ",
+    "address": "2-3-37 Matsuyama, Fujiyoshida-shi",
+    "url": "https://sai-fujiyoshida.com/",
+    "whatJa": "富士山の水で育った地元の食材を使い、メレンゲ卵かけご飯や白米と日替わり小鉢の朝ごはんを提供する松山の朝食専門店。",
+    "whatEn": "A morning-only Matsuyama dining spot serving Japanese rice-and-side-dish breakfasts made with ingredients grown in Mount Fuji's spring water.",
+    "facts": "Located in a residential lane in Matsuyama and dedicated to local morning meals. Serves freshly cooked white rice, fluffy meringue-topped egg over rice, and daily seasonal vegetable side dishes.",
+    "weak": "",
+    "verifiedBy": "https://sai-fujiyoshida.com/",
+    "quote": "2026年6月の営業スケジュールです🙏",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "FUKUCHIYA": {
+   "nameEn": "FUKUCHIYA",
+   "area": "緑ヶ丘",
+   "areaEn": "Midorigaoka",
+   "tags": [
+    "food",
+    "seafood",
+    "sweets"
+   ],
+   "what": "大正時代の建物を生かした緑ヶ丘のダイニングと宿。好みの組み合わせで巻くセルフ手巻き寿司は、海鮮丼、出汁茶漬けへと味を変えて楽しめるほか、焼き魚定食やサーモン丼もある。",
+   "whatEn": "A dining room and guesthouse in Midorigaoka set in a renovated Taisho-era building. Guests roll their own temaki sushi and finish it as kaisendon or dashi chazuke, alongside grilled-fish set meals and salmon bowls.",
+   "note": "手巻きから始めて、最後は出汁茶漬けで締めたい。",
+   "noteEn": "Start with hand-rolled sushi, and finish with hot dashi poured over the rice.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "フクチヤ",
+    "address": "1-3-14 Midorigaoka, Fujiyoshida-shi",
+    "url": "https://fukuchiya.com/",
+    "whatJa": "緑ヶ丘の落ち着いた空間で、海鮮丼や焼き魚定食、出汁茶漬けまで楽しめるセルフ手巻き寿司を提供するダイニング。",
+    "whatEn": "A relaxed dining room and guesthouse in Midorigaoka serving sashimi bowls, grilled fish teishoku, and DIY temaki sushi ending in dashi chazuke.",
+    "facts": "Operates FUKUCHIYA dining alongside a small stay in Midorigaoka. Guests roll their own hand-rolled sushi, turn it into a kaisendon bowl, and finish with hot dashi broth poured over rice, or order salmon bowls and grilled-fish set meals.",
+    "weak": "",
+    "verifiedBy": "https://fukuchiya.com/news/夏季限定ドリンク/",
+    "quote": "コークフロート・コーヒーフロート・ストロベリーフロートの３種をご用意してお待ちしておりま！",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "絹屋商店": {
+   "nameEn": "Kinuya Shoten",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "ceramics",
+    "textiles"
+   ],
+   "what": "本町通りの蔵を改装した文化複合施設「KURA HOUSE」内のセレクトショップ。富士吉田や西桂の織物製品と、アジア諸国の陶芸家の器を扱う。10時から17時で、月・火曜は休み。",
+   "whatEn": "A select shop inside the renovated KURA HOUSE storehouse compound on Honcho-dori, carrying woven goods from Fujiyoshida and Nishikatsura alongside ceramics by potters across Asia. Open 10 am to 5 pm, closed Mondays and Tuesdays.",
+   "note": "蔵の中で、織物とアジアの器を並べて見たい。",
+   "noteEn": "Inside the storehouse, I'd look at the local weaves next to the Asian pottery.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "きぬやしょうてん",
+    "address": "2-1-25 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://seeder.jp/kura-house/",
+    "whatJa": "築70年の蔵を改装した複合施設「KURA HOUSE」内にあり、アジア諸国の陶芸家の器や富士吉田・西桂の織物製品を扱うセレクトショップ。",
+    "whatEn": "A select shop inside the renovated KURA HOUSE storehouse compound curating ceramics by Asian potters alongside Fujiyoshida and Nishikatsura textiles.",
+    "facts": "Housed in KURA HOUSE, a converted storehouse complex on Honcho-dori in central Shimoyoshida. Brings together handcrafted vessels from potters across Asia and locally woven textiles from Fujiyoshida and neighboring Nishikatsura.",
+    "weak": "",
+    "verifiedBy": "https://www.fujioishihanaterasu.com/information/column/p2991/",
+    "quote": "築80年以上の蔵や古民家を活かした「KURA HOUSE」内にあり、趣ある空間で買い物を楽しめます。",
+    "fixes": "whatJa: omit the building age; the official KURA HOUSE page says 70 years while this 2026 article says over 80 years. The official page confirms Asian ceramics, Fujiyoshida/Nishikatsura textiles and the address 2-1-25 Shimoyoshida.",
+    "coords": null
+   }
+  },
+  "羽田忠織物": {
+   "nameEn": "Hadachu Orimono",
+   "area": "上暮地",
+   "areaEn": "Kamikurechi",
+   "tags": [
+    "textiles",
+    "neckties"
+   ],
+   "what": "標高680mの上暮地にあるネクタイ織元のショップ。機織りの音を聞きながらジャカード織りのネクタイや蝶ネクタイ、ストールを選べる。訪問は事前の連絡・予約が必要で、工場見学は不可。",
+   "whatEn": "The shop of a necktie weaver at 680 metres in Kamikurechi, where jacquard ties, bow ties and stoles are displayed beside the sound of working looms. Advance contact is required to visit; factory tours are not offered.",
+   "note": "機織りの音を聞きながら、小さな織物の小物をひとつ。",
+   "noteEn": "I'd pick out one small woven piece while listening to the looms.",
+   "_src": {
+    "category": "local",
+    "industry": "gunnai-textiles",
+    "nameKana": "はだちゅうおりもの",
+    "address": "3-7-26 Kamikurechi, Fujiyoshida-shi",
+    "url": "https://hadachuorimono.jp/pages/shop",
+    "whatJa": "標高680mの上暮地で機織りの音を聞きながらジャカード織りのネクタイや蝶ネクタイ、ストールを選べる機屋のアトリエショップ。",
+    "whatEn": "A necktie weaver's atelier shop at 680 meters on Mount Fuji's slope, selling playful jacquard ties, bow ties, and stoles beside working looms.",
+    "facts": "Set in northern Fujiyoshida's Kamikurechi weaving district, where visitors browse ties, bow ties, stoles, and pouches alongside the weaver's collection of vintage posters, miniatures, and classic cars while looms clack nearby.",
+    "weak": "Advance contact/reservation is requested before visiting (also participates in monthly third-Saturday open factories).",
+    "verifiedBy": "https://hadachuorimono.jp/blogs/news/%E6%96%B0%E5%95%86%E5%93%81%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B-4",
+    "quote": "ネクタイの新作ができました。",
+    "fixes": "Add advance contact/reservation requirement. Official SHOP page explicitly says factory tours are not available. Address, altitude and browsing beside the sound of looms match.",
+    "coords": null
+   }
+  },
+  "染め物ショップ まるこう": {
+   "nameEn": "Somemono Shop Marukou",
+   "area": "上吉田",
+   "areaEn": "Kamiyoshida",
+   "tags": [
+    "dyeing",
+    "textiles"
+   ],
+   "what": "1970年設立の後染め専門会社・丸幸産業の直営店。富士山駅直結のQ-STA 2階にあり、自社で染めた衣類やのれん約120点と染料を並べ、衣類の染め直しの受付も行う。10時から20時、月曜定休（祝日は営業）。",
+   "whatEn": "The direct shop of Maruko Sangyo, a garment-dyeing workshop founded in 1970, on the second floor of Q-STA at Fujisan Station. Displays around 120 in-house dyed garments, noren curtains and dye pigments, and accepts personal clothing for re-dyeing. Open 10 am to 8 pm, closed Mondays (except holidays).",
+   "note": "色見本や染料を眺めながら、染め直しのことも聞いてみたい。",
+   "noteEn": "I'd look at the dye pigments and ask how re-dyeing a garment works.",
+   "_src": {
+    "category": "local",
+    "industry": "gunnai-textiles",
+    "nameKana": "そめものしょっぷ まるこう",
+    "address": "2-5-1 Kamiyoshida, Fujiyoshida-shi",
+    "url": "https://www.marukousangyou.co.jp/shop/",
+    "whatJa": "1970年設立、織物工場を前身とする後染め専門の染色加工会社・丸幸産業が営む染色製品の直営店兼衣類染め直し窓口。",
+    "whatEn": "The direct shop and garment re-dyeing counter of Maruko Sangyo, a Fujiyoshida dyehouse established in 1970 with roots as a local weaving mill.",
+    "facts": "Run by Maruko Sangyo, one of Gunnai's few specialist garment-dyeing and post-processing workshops, on the second floor of Q-STA at Fujisan Station. Displays around 120 in-house dyed garments, noren curtains, and dye pigments, and takes walk-in orders to re-dye personal clothing.",
+    "weak": "",
+    "verifiedBy": "https://www.marukousangyou.co.jp/2026/01/23/%e6%9f%93%e3%82%81%e7%89%a9%e3%82%b7%e3%83%a7%e3%83%83%e3%83%97%e3%80%8c%e3%81%be%e3%82%8b%e3%81%93%e3%81%86%e3%80%8d5%e5%91%a8%e5%b9%b4%e3%83%bb%e8%a8%98%e5%bf%b5%e3%82%bb%e3%83%bc%e3%83%ab%e3%81%ae/",
+    "quote": "染め物ショップまるこうは本日を持ちまして開店5周年を迎えました。",
+    "fixes": "address: 2-5-1 Kamiyoshida, Fujiyoshida-shi, Q-STA 2F (official shop and company pages).",
+    "coords": null
+   }
+  },
+  "古民家カフェ KONOHANA": {
+   "nameEn": "Kominka Cafe KONOHANA",
+   "area": "上吉田東",
+   "areaEn": "Kamiyoshida-higashi",
+   "tags": [
+    "coffee",
+    "sweets",
+    "woodwork"
+   ],
+   "what": "文久元年（1861年）の住宅を復原した「小佐野家復原住宅」のカフェ。ドリップコーヒーや自分でクリームを絞る和栗モンブラン、七輪で焼く団子のほか、併設ショップで富士山麓の木を使った食器や印傳も扱う。11時から17時半で、火曜は休み。",
+   "whatEn": "A café inside the reconstructed 1861 Osano house, serving drip coffee, Japanese-chestnut Mont Blanc that guests pipe themselves, and charcoal-toasted dango, with a shop selling Mount Fuji foothill woodenware and Inden leather goods. Open 11 am to 5:30 pm, closed Tuesdays.",
+   "note": "古い家のガラス越しに外を眺めて、団子を焼いてみたい。",
+   "noteEn": "I'd sit by the glass wall in the old house and toast a skewer of dango.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こみんかかふぇ このはな",
+    "address": "7-27-1 Kamiyoshida-higashi, Fujiyoshida-shi",
+    "url": "https://pica-corp.com/shop/cafe_konohana.html",
+    "whatJa": "江戸時代末期の御師住宅を復原した空間で、ドリップコーヒーや絞りたての和栗モンブラン、炭火焼き団子を味わえる古民家カフェ。",
+    "whatEn": "A cafe inside a reconstructed late-Edo Oshi pilgrim house serving drip coffee, freshly piped Japanese chestnut Mont Blanc, and local wood tableware.",
+    "facts": "Set in Kamiyoshida-higashi with a small shop corner stocking Koshu Inden leatherwork and tableware carved from Mount Fuji foothill timber. Guests can pair coffee with Shingen-chicken spice curry, waguri Mont Blanc piped tableside, or dango toasted over a small charcoal brazier.",
+    "weak": "",
+    "verifiedBy": "https://pica-corp.com/shop/cafe_konohana.html",
+    "quote": "2026年7月より、毎週火曜日を定休日といたします。",
+    "fixes": "whatEn: A cafe in the reconstructed Osano house, originally built in 1861, serving drip coffee and a Japanese-chestnut Mont Blanc that guests finish by squeezing the chestnut cream themselves; its shop sells tableware made from trees grown at the foot of Mount Fuji. Official page describes the wooden tableware as shop merchandise.",
+    "coords": null
+   }
+  },
+  "まつや茶房": {
+   "nameEn": "Matsuya Sabo",
+   "area": "下吉田",
+   "areaEn": "Shimoyoshida",
+   "tags": [
+    "coffee",
+    "matcha",
+    "sweets"
+   ],
+   "what": "下吉田の昭和レトロな喫茶店。深煎りの特製ブレンド珈琲や近隣の茶舗から仕入れる抹茶、女将好みの酸味を効かせたベイクドチーズケーキ、厚切りのシナモントーストなどを出す。",
+   "whatEn": "A Showa-retro kissaten in Shimoyoshida pouring a custom dark-roast coffee blend and matcha from a neighbouring tea shop, with tangy baked cheesecake and thick-cut cinnamon toast.",
+   "note": "深煎りの珈琲に、酸味の効いたチーズケーキを合わせる。",
+   "noteEn": "The dark-roast coffee with a slice of that tangy baked cheesecake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "まつやさぼう",
+    "address": "3-13-6 Shimoyoshida, Fujiyoshida-shi",
+    "url": "https://matsuya-sabo.com/",
+    "whatJa": "下吉田の本町通りで深煎りの特製ブレンド珈琲や近隣茶舗の抹茶、自家製ベイクドチーズケーキを出す昭和レトロな喫茶店。",
+    "whatEn": "A Showa-retro kissaten on Shimoyoshida's Honcho-dori pouring custom-blended dark-roast coffee, neighborhood matcha, and homemade baked cheesecake.",
+    "facts": "Serves dark-roast coffee custom-blended by Cafe Albert, frothy soy cafe au lait, matcha from nearby Omura Chaten, tangy baked cheesecake, and thick-cut cinnamon toast, and hosts small weekend vegetable stalls outside.",
+    "weak": "",
+    "verifiedBy": "https://matsuya-sabo.com/info/4%E6%9C%88%E3%81%AE%E4%BA%88%E5%AE%9A/",
+    "quote": "4月はイベントが少ないので、喫茶でお楽しみください",
+    "fixes": "Address confirmed as 3-13-6 Shimoyoshida on the opened partner listing https://anyplace.jp/anyplace_location/matsuyasabou/; coffee, matcha and baked cheesecake match the official homepage.",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "ふじさんミュージアム",
+   "nameEn": "Mt. Fuji Museum",
+   "kind": "art",
+   "area": "上吉田東",
+   "areaEn": "Kamiyoshida-higashi",
+   "address": "富士吉田市上吉田東7-27-1",
+   "url": "https://www.fy-museum.jp/",
+   "what": "富士山と麓の町・富士吉田の歴史や文化を伝える博物館。1/2,000の大型富士山模型へのプロジェクションマッピングや、ハタオリ・富士山信仰の展示がある。9時半から17時（入館は16時半まで）、火曜は休み（7・8月は無休）。",
+   "whatEn": "A museum of Mount Fuji and Fujiyoshida's local history and culture, with a 1:2,000 projection-mapped mountain model and displays on weaving and mountain worship. Open 9:30 am to 5 pm (last entry 4:30 pm), closed Tuesdays (open daily in July and August).",
+   "coords": [
+    35.45808,
+    138.80532
+   ],
+   "notice": "2026年11月24日（火）〜12月1日（火）は燻蒸作業のため臨時休館（12月2日より通常開館）。",
+   "noticeEn": "Temporarily closed November 24 to December 1, 2026 for fumigation (reopening December 2).",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "北口本宮冨士浅間神社",
+   "nameEn": "Kitaguchi Hongu Fuji Sengen Shrine",
+   "kind": "sight",
+   "area": "上吉田",
+   "areaEn": "Kamiyoshida",
+   "address": "富士吉田市上吉田5558",
+   "url": "https://www.sengenjinja.jp/",
+   "what": "吉田口登山道の起点にあたり、世界遺産富士山の構成資産の一つ。杉並木の参道の先に木造の冨士山大鳥居が立ち、拝殿など11棟が国の重要文化財に指定されている。",
+   "whatEn": "The historic starting point of the Yoshida-guchi trail and a constituent site of the Mount Fuji World Heritage listing. A cedar-lined approach leads to the great wooden torii, with eleven buildings including the worship hall designated Important Cultural Properties.",
+   "coords": [
+    35.47101,
+    138.79264
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "新倉山浅間公園・忠霊塔",
+   "nameEn": "Arakurayama Sengen Park & Chureito Pagoda",
+   "kind": "sight",
+   "area": "浅間",
+   "areaEn": "Asama",
+   "address": "富士吉田市浅間2-4-1",
+   "url": "https://fujiyoshida.net/spot/12",
+   "what": "新倉山の麓から中腹にかけて広がる公園。398段の階段を上った先の展望デッキから、五重塔（忠霊塔）と富士吉田の街並み、その奥に富士山を望める。24時間開放。",
+   "whatEn": "A hillside park on Mount Arakura where 398 steps lead to an observation deck looking out over the five-storey Chureito Pagoda, the town of Fujiyoshida and Mount Fuji beyond. Open 24 hours.",
+   "coords": [
+    35.50049,
+    138.80082
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "金鳥居",
+   "nameEn": "Kanadorii Gate",
+   "kind": "sight",
+   "area": "上吉田",
+   "areaEn": "Kamiyoshida",
+   "address": "富士吉田市上吉田1-10付近",
+   "url": "https://fujiyoshida.net/spot/index.php?p=24",
+   "what": "富士みち（本町通り）に立つ青銅製の鳥居で、吉田口登山道の「一の鳥居」。俗界と富士山の信仰世界を分かつ境界として古くから親しまれ、鳥居越しに富士山を望む。",
+   "whatEn": "A bronze torii spanning Fuji-michi (Honcho-dori) that marks the first gate of the Yoshida-guchi climbing trail, framing Mount Fuji as the traditional boundary between the everyday world and the sacred mountain.",
+   "coords": [
+    35.48321,
+    138.79796
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "THE DEARGROUND",
+   "verdict": "doubt",
+   "reason": "No dated 2026 post, notice or article found on the shop page, its empty blog (まだ記事がありません) or the Instagram page I could load. Only undated hours and seasonal products, so it cannot be confirmed as operating in 2026."
+  },
+  {
+   "name": "前田源商店",
+   "verdict": "doubt",
+   "reason": "The business is active in 2026, but the listed address is a demolished building until about summer 2027. The temporary office is not clearly a shop, and the shop-style description is not supported by the page. Would be keep only with the address changed to 8-23-23 and the description reduced to organic cotton fabric."
+  },
+  {
+   "name": "渡邊織物",
+   "verdict": "doubt",
+   "reason": "Newest news item on the site is dated 31 May 2025 (Osaka Expo curtain). I found no 2026 dated news, journal post or notice. Only '© 2026' and an online-shop price list, which are not evidence."
+  },
+  {
+   "name": "栄香窯",
+   "verdict": "doubt",
+   "reason": "Newest date on the site is '© Copyright 2025'; the newest dated event is 2020. No 2026 post, notice or article was found, so operation in 2026 is unproven."
+  },
+  {
+   "name": "元祖 みうらうどん",
+   "verdict": "doubt",
+   "reason": "Official site's newest notice is 2024.02.06 (２月の営業案内); nothing dated 2026 found on the site (the © line has no year). No closure seen, but no 2026 sentence to quote."
+  },
+  {
+   "name": "Bistro relumé",
+   "verdict": "doubt",
+   "reason": "Could not read any 2026-dated sentence on the official site; no Instagram/article opened that confirms 2026 operation."
+  },
+  {
+   "name": "めん処 一休",
+   "verdict": "doubt",
+   "reason": "Official site is old (only dated entry: 2012.12.01 ホームページ開設しました。; © line has no year). No 2026 notice found."
+  },
+  {
+   "name": "手造りパン工房 サンクルー",
+   "verdict": "doubt",
+   "reason": "Newest dated item on official site is 2022.12.23 (年末年始休業のお知らせ); no 2026 sentence found. Footer ©2019 only."
+  },
+  {
+   "name": "東京屋製菓 富士みずほ堂",
+   "verdict": "doubt",
+   "reason": "Only dated item is 2025.11.22 opening notice (not 2026); no 2026 dated sentence on tokyoya.net/mizuho.html either. ©2026 footer is not evidence."
+  },
+  {
+   "name": "さんづくり",
+   "verdict": "doubt",
+   "reason": "Instagram profile page opened via fetch returns only profile meta (follower/post counts); no post text or dates readable (login-gated), no official website, and no 2026 article could be opened to copy a sentence."
+  },
+  {
+   "name": "BELLE et SINGE",
+   "verdict": "doubt",
+   "reason": "Instagram profile page opened via fetch returns only profile meta (follower/post counts); no post text or dates readable (login-gated), no official website, and no 2026 article could be opened to copy a sentence."
+  },
+  {
+   "name": "FUUTO COFFEE AND BAKE SHOP",
+   "verdict": "doubt",
+   "reason": "Instagram profile page opened via fetch returns only profile meta (follower/post counts); no post text or dates readable (login-gated), no official website, and no 2026 article could be opened to copy a sentence."
+  },
+  {
+   "name": "&U COFFEE",
+   "verdict": "drop",
+   "reason": "Official Instagram bio says it is currently sold only via online shop, the Fujiyoshida roadside station and Fujisan Station Q-Sta 1F - no mention of the Honcho-dori storefront (4-6-13 Shimoyoshida). A search summary (not opened as a page) also says gourmet/map sites mark the Honcho-dori shop as closed. No 2026 evidence found, storefront apparently closed."
+  },
+  {
+   "name": "シフォン富士",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "Patisserie épi",
+   "verdict": "doubt",
+   "reason": "Official homepage confirms cakes, baked sweets and address. The news page data (https://patisserie-epi.com/js/news.js) contains only August 2025 notices; the opened official Instagram exposes no readable dated post. No qualifying 2026 sentence found."
+  },
+  {
+   "name": "前田工芸",
+   "verdict": "doubt",
+   "reason": "Official store page says it is under renovation and asks customers to telephone; duration/reopening date is not stated. Only © 2026 appears, with no dated 2026 operating sentence."
+  }
+ ]
+}

@@ -1,0 +1,315 @@
+[
+ {
+  "name": "大谷焼窯元 森陶器",
+  "nameEn": "Otani-yaki Kiln Mori Toki",
+  "category": "local",
+  "industry": "otani-ware",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "大麻町大谷",
+  "areaEn": "Otani",
+  "address": "鳴門市大麻町大谷字井利ノ肩24",
+  "url": "https://morigama.jp/",
+  "what": "大麻町大谷の窯元。国の登録有形文化財の登り窯があり、大物陶器から日々の器まで作る。登り窯の中では水琴窟の音も聞ける。",
+  "whatEn": "A kiln in Otani with a hillside climbing kiln registered as a Tangible Cultural Property, making everything from giant vats to everyday tableware. A suikinkutsu water chime sounds inside the kiln.",
+  "note": "登り窯の中の水琴窟を聞いてから、日々の器を選びたい。",
+  "noteEn": "Listen to the water chime inside the kiln, then pick out an everyday vessel.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "陶業会館 梅里窯",
+  "nameEn": "Umezatogama",
+  "category": "local",
+  "industry": "otani-ware",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "大麻町大谷",
+  "areaEn": "Otani",
+  "address": "鳴門市大麻町大谷字道の上30-1",
+  "url": "https://umezatogama.com/",
+  "what": "大麻町大谷の窯元。杉薪を焚く窖窯（あながま）で、灰をかぶった自然釉の焼き締めを作る。展示室と陶芸体験もある。",
+  "whatEn": "A kiln in Otani firing unglazed stoneware in a wood-burning anagama tunnel kiln fueled with cedar, giving pieces a natural ash glaze. There is a showroom and pottery classes.",
+  "note": "杉の灰がのった焼き締めの湯呑みを、一つ手に取ってみたい。",
+  "noteEn": "I want to hold one of the ash-glazed yunomi fired with cedar wood.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "STUDIO N2",
+  "nameEn": "STUDIO N2",
+  "category": "local",
+  "industry": "awa-indigo",
+  "tags": [
+   "textile",
+   "indigo"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町小桑島字日向谷80",
+  "url": "https://www.instagram.com/studio.entwo/",
+  "what": "撫養町の阿波藍染の工房と店。鳴門で育てた藍や蒅を灰汁で建てた天然の藍で、メリノウールの衣料や小物を染める。貸切の藍染め体験は予約制。",
+  "whatEn": "An Awa indigo dyeing studio and shop in Muya. Merino wool garments and accessories are dyed in natural lye-fermented indigo, using sukumo and Naruto-grown indigo. Private dyeing workshops are by reservation.",
+  "note": "濃い藍に染まったメリノウールの肌触りを、確かめてみたい。",
+  "noteEn": "I want to feel the texture of merino wool dyed in deep natural indigo.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "矢野陶苑",
+  "nameEn": "Yano Touen",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "大麻町大谷",
+  "areaEn": "Otani",
+  "address": "鳴門市大麻町大谷字久原71",
+  "url": "https://r.goope.jp/yanotouen/",
+  "what": "大麻町大谷の窯元。日曜は10時から、それ以外は9時から17時まで開き、不定休。絵付体験は事前予約が必要。",
+  "whatEn": "A kiln in Otani, open from 9 am (10 am on Sundays) to 5 pm, with irregular holidays. Painting workshops require advance booking.",
+  "note": "窯まつりのマグカップ展のような、普段づかいの器を探したい。",
+  "noteEn": "I want to look for everyday pieces like the mugs shown at the kiln festival.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "大谷焼窯元 大西陶器",
+  "nameEn": "Otani-yaki Kiln Onishi Toki",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "大麻町大谷",
+  "areaEn": "Otani",
+  "address": "鳴門市大麻町大谷字東山谷17-2",
+  "url": "https://onishitoki.jp/",
+  "what": "大麻町大谷の窯元。ギャラリーやショップで日々の器を扱い、陶芸体験も受け入れている。毎週水曜が定休。",
+  "whatEn": "A kiln in Otani with a gallery and shop for everyday stoneware, also offering pottery classes. Closed Wednesdays.",
+  "note": "大谷焼の土肌が残る湯呑みを、手に持って確かめてみたい。",
+  "noteEn": "I want to hold one of the Otani-yaki yunomi and feel the clay surface.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.16859,
+   134.54093
+  ]
+ },
+ {
+  "name": "Art工房 花橘",
+  "nameEn": "Art Kobo Hanatachibana",
+  "category": "craft",
+  "tags": [
+   "glass"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町立岩字五枚193-1",
+  "url": "https://www.gallery-hanatachibana.com/",
+  "what": "撫養町のガラスエッチング工房とギャラリー。サンドブラストで彫ったオリジナルのガラス器や、店主が選んだ雑貨を扱う。完全予約制。",
+  "whatEn": "A glass-etching studio and gallery in Muya, offering original sandblasted glassware and owner-selected small goods. Strictly by appointment.",
+  "note": "光に透けるサンドブラストの模様を、近くで見てみたい。",
+  "noteEn": "I want to look closely at the sandblasted patterns where the light passes through.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "結ノ芽",
+  "nameEn": "Yuinome",
+  "category": "craft",
+  "tags": [
+   "tableware",
+   "glass"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町斎田大池101-2",
+  "url": "https://yuinome-04.studio.site/",
+  "what": "撫養町の池のほとりにあるレトロ雑貨と珈琲の店。",
+  "whatEn": "A shop for retro goods and coffee by a pond in Muya.",
+  "note": "池のほとりで珈琲を飲みながら、古いガラスの器を眺めたい。",
+  "noteEn": "I want to drink coffee by the pond and look over the old glassware.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "The Coffee Beans",
+  "nameEn": "The Coffee Beans",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町林崎北殿町57-1",
+  "url": "https://www.emame.jp/",
+  "what": "1982年創業の珈琲豆販売店と喫茶。朝から夕方まで喫茶が開き、豆の購入は18時30分まで。火曜が定休。",
+  "whatEn": "A coffee bean shop and kissaten open since 1982. The café serves until 5 pm and beans are sold until 6:30 pm. Closed Tuesdays.",
+  "note": "火曜は休み。行くなら朝いちばんに、豆を一袋。",
+  "noteEn": "Closed Tuesdays. If I go, first thing in the morning for a bag of beans.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ナルトロースター by Hirundo Coffee",
+  "nameEn": "Naruto Roaster by Hirundo Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町南浜字東浜35-1 第2城見ビル101",
+  "url": "https://www.instagram.com/hirundocoffee/",
+  "what": "撫養町の自家焙煎コーヒースタンド。豆の個性に合わせて浅煎りから深煎りまで焙煎し、農園ごとのシングルグレードの豆も並べる。",
+  "whatEn": "A small-batch coffee roaster and stand in Muya, roasting from light to dark to suit each bean and selling single-farm lots at the counter.",
+  "note": "浅煎りのシングルオリジンを、その場で一杯淹れてもらいたい。",
+  "noteEn": "I want a cup of light-roast single-origin brewed right at the counter.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Café des épices",
+  "nameEn": "Café des épices",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町岡崎字二等道路西46-13",
+  "url": "https://epices.biz/",
+  "what": "撫養町の海辺に建つ小さなカフェ。海を眺めながら、珈琲やエスプレッソ、スイーツを味わう。カレーランチは前日までの予約制。",
+  "whatEn": "A small seaside café in Muya looking over the water, serving coffee, espresso and sweets. Spiced curry lunches require booking by the day before.",
+  "note": "海を見ながら、エスプレッソと甘いものをゆっくり。",
+  "noteEn": "An espresso and something sweet, slowly, while looking at the sea.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "喫茶店 ろうそく夜",
+  "nameEn": "Kissaten Rousokuyo",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "大麻町大谷",
+  "areaEn": "Otani",
+  "address": "鳴門市大麻町大谷字山田59",
+  "url": "https://www.instagram.com/rousokuyo/",
+  "what": "大麻町大谷のお寺の境内、大きな木の下に佇む喫茶店。2026年3月に隣へ移って新しく開いた。珈琲や堅焼きのプリン。月・木曜が定休。",
+  "whatEn": "A kissaten beneath a large tree in temple grounds in Otani, reopened in a new building next door in March 2026. Coffee and firm custard pudding. Closed Mondays and Thursdays.",
+  "note": "木の下の静かな席で、堅焼きのプリンと珈琲を頼みたい。",
+  "noteEn": "At a quiet table under the tree, I would order the firm pudding and coffee.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "御菓子処 ことらや",
+  "nameEn": "Okashidokoro Kotoraya",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町黒崎字松島234",
+  "url": "https://kotoraya.jp/",
+  "what": "1932年創業の和菓子店。阿波和三盆糖と小豆あんを使った「あん巻」や「阿波どら」、季節の大福を店頭のみで販売する。火・水曜が定休。",
+  "whatEn": "A wagashi shop open since 1932, selling only over the counter: Awa Wasanbon-sweetened Anmaki bean-paste rolls, Awa-dora dorayaki and seasonal daifuku. Closed Tuesdays and Wednesdays.",
+  "note": "和三盆のあん巻と黒豆大福を、ひとつずつ包んでもらう。",
+  "noteEn": "Have them wrap one Wasanbon Anmaki and one black-bean daifuku.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "フレンチモンスター 瀬戸内フードアート",
+  "nameEn": "French Monstar Setouchi Food Art",
+  "category": "sweets",
+  "tags": [
+   "coffee"
+  ],
+  "area": "瀬戸町",
+  "areaEn": "Seto",
+  "address": "鳴門市瀬戸町中島田東山9",
+  "url": "http://www.frenchmonstar.com/setouchi_foodart/",
+  "what": "瀬戸町の島田島、四方見展望台の隣にあるお菓子工房とカフェ。徳島や瀬戸内の素材を使った菓子や季節のスイーツがあり、屋上からはウチノ海を望む。",
+  "whatEn": "A patisserie workshop and café on Shimadajima island in Seto, beside Yomomi Observatory. Sweets and drinks made with Tokushima and Setouchi ingredients, with a rooftop terrace overlooking Uchinoumi bay.",
+  "note": "屋上に上がって、ウチノ海の筏を眺めながらお茶にしたい。",
+  "noteEn": "Go up to the rooftop and have tea while looking out at the rafts on Uchinoumi bay.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Nalu Ge",
+  "nameEn": "Nalu Ge",
+  "category": "sweets",
+  "tags": [
+   "ice cream"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町南浜字東浜34-7 生田ビル106",
+  "url": "https://nalugenaruto.base.shop/",
+  "what": "撫養町のジェラート専門店。鳴門金時や鳴門ワカメなど地元の素材を使い、保存料・着色料を使わずに仕立てる。",
+  "whatEn": "A gelato shop in Muya making preservative- and colouring-free gelato from local ingredients such as Naruto Kintoki sweet potato and Naruto wakame.",
+  "note": "鳴門金時と鳴門ワカメ、二つの味を一緒に食べてみたい。",
+  "noteEn": "I want to try the Naruto Kintoki and Naruto wakame flavours together.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "舩本うどん",
+  "nameEn": "Funamoto Udon",
+  "category": "food",
+  "tags": [
+   "udon"
+  ],
+  "area": "鳴門町",
+  "areaEn": "Naruto-cho",
+  "address": "鳴門市鳴門町高島字中島25-2",
+  "url": "https://funamoto-udon.com/",
+  "what": "鳴門町高島で40年以上続く手打ちの鳴門うどん店。10時30分から売り切れ次第終了で、定休は元旦のみ。",
+  "whatEn": "A hand-cut Naruto udon shop on Takashima island in Naruto-cho, open for over forty years. Serves from 10:30 am until sold out; closed only on New Year's Day.",
+  "note": "売り切れる前の早めの昼に、素朴な手打ちうどんを。",
+  "noteEn": "For an early lunch before it sells out, a bowl of simple hand-cut udon.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "味処 あらし",
+  "nameEn": "Ajidokoro Arashi",
+  "category": "food",
+  "tags": [
+   "seafood"
+  ],
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町大桑島字北ノ浜51-1",
+  "url": "https://arashi-naruto.co.jp/",
+  "what": "撫養町の海鮮料理店。鳴門海峡の魚介や地元徳島の食材を使った料理を出す。11時から21時まで開き、水曜が定休。",
+  "whatEn": "A seafood dining room in Muya serving catch from the Naruto Strait and local Tokushima ingredients. Open 11 am to 9 pm; closed Wednesdays.",
+  "note": "鳴門海峡の魚の刺身と、わかめの味噌汁を頼みたい。",
+  "noteEn": "I would order sashimi from the Naruto Strait and wakame miso soup.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "リストランテ フィッシュボーン",
+  "nameEn": "Ristorante Fishbone",
+  "category": "food",
+  "area": "鳴門町",
+  "areaEn": "Naruto-cho",
+  "address": "鳴門市鳴門町土佐泊浦高砂186-16",
+  "url": "https://moana.co.jp/",
+  "what": "鳴門町の大毛島、ホテル・モアナコースト内のレストラン。海を望む席で、天然鳴門鯛や地元の野菜を使ったイタリア料理と手造りパスタを出す。",
+  "whatEn": "The ocean-view restaurant at Hotel Moana Coast on Ogejima island in Naruto-cho, serving Italian cooking and handmade pasta with wild Naruto sea bream and local produce.",
+  "note": "海を望む昼の席で、手造りパスタと鳴門鯛を味わいたい。",
+  "noteEn": "At a daytime table facing the sea, I want to try the handmade pasta and Naruto sea bream.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "れんまるカフェ",
+  "nameEn": "Renmaru Cafe",
+  "category": "food",
+  "area": "撫養町",
+  "areaEn": "Muya",
+  "address": "鳴門市撫養町斉田字浜端北120",
+  "url": "https://www.renmaru-cafe.jp/",
+  "what": "撫養町の蓮根畑を囲むように建つカフェレストラン。地元の鳴門れんこんを使った創作料理や、蓮根パウダー入りのうどんを出す。火曜が定休。",
+  "whatEn": "A café-restaurant in Muya built around an indoor lotus-root pond, serving dishes made with local Naruto renkon and udon kneaded with lotus-root powder. Closed Tuesdays.",
+  "note": "蓮根畑を眺めながら、鳴門れんこんの料理を昼に食べる。",
+  "noteEn": "Have a lunch of Naruto lotus-root dishes while looking out at the lotus pond.",
+  "verifiedAt": "2026-11-12"
+ }
+]

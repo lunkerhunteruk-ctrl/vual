@@ -1,0 +1,82 @@
+[
+ {
+  "name": "西の原",
+  "nameEn": "Nishinohara",
+  "kind": "sight",
+  "area": "西の原",
+  "areaEn": "Nishinohara",
+  "address": "波佐見町井石郷2187-4",
+  "url": "https://24nohara.jp/",
+  "what": "旧福幸製陶所の工場跡地を活かした一角。国の登録有形文化財の建物群に、器の店やカフェ、雑貨店が集まる。",
+  "whatEn": "The grounds of the former Fukuko porcelain factory, where registered tangible cultural property buildings now house tableware shops, cafés and craft stores.",
+  "coords": [
+   33.14127,
+   129.90853
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "波佐見町陶芸の館",
+  "nameEn": "Hasami Porcelain Museum",
+  "kind": "art",
+  "area": "井石郷",
+  "areaEn": "Isekigo",
+  "address": "波佐見町井石郷2255-2",
+  "url": "https://www.town.hasami.lg.jp/",
+  "what": "やきもの公園にある波佐見焼の拠点施設。1階に町内各窯元の器が揃う物産館「くらわん館」、2階にくらわんか碗やコンプラ瓶などの資料館がある。9時から17時で、年末年始は休み。",
+  "whatEn": "The centre for Hasami ware at Yakimono Park, with the Kurawankan shop of local kilns on the ground floor and a museum of kurawanka bowls and kompra bottles upstairs. Open 9 am to 5 pm, closed year-end.",
+  "coords": [
+   33.14166,
+   129.91215
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "やきもの公園",
+  "nameEn": "Yakimono Park",
+  "kind": "sight",
+  "area": "井石郷",
+  "areaEn": "Isekigo",
+  "address": "波佐見町井石郷2255-2",
+  "url": "https://www.town.hasami.lg.jp/",
+  "what": "古代から近代までの世界の窯12基を実物大で復元した「世界の窯広場」がある公園。春の波佐見陶器まつりや秋の「HASAMI no WA」の会場にもなる。",
+  "whatEn": "A park with full-scale reconstructions of twelve historical kilns from around the world, also serving as a venue for the spring pottery market and autumn HASAMI no WA.",
+  "coords": [
+   33.14178,
+   129.91075
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "陶郷 中尾山",
+  "nameEn": "Nakaoyama Pottery Village",
+  "kind": "sight",
+  "area": "中尾郷",
+  "areaEn": "Nakaogo",
+  "address": "波佐見町中尾郷",
+  "url": "https://www.town.hasami.lg.jp/",
+  "what": "山あいの斜面に窯元や赤レンガの煙突、江戸時代の中尾上登窯跡が残る地区。国の重要文化的景観に選ばれている。",
+  "whatEn": "A hillside pottery quarter with kilns, red-brick chimneys and the ruins of the Edo-period Nakaoue climbing kiln, designated a national Important Cultural Landscape.",
+  "coords": [
+   33.1224,
+   129.93114
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鬼木棚田",
+  "nameEn": "Onigi Rice Terraces",
+  "kind": "sight",
+  "area": "鬼木郷",
+  "areaEn": "Onigigo",
+  "address": "波佐見町鬼木郷",
+  "url": "https://www.town.hasami.lg.jp/",
+  "what": "山あいの斜面に約400枚の石垣の棚田が広がる地区。日本の棚田百選に選ばれ、隣接する中尾郷とともに重要文化的景観となっている。",
+  "whatEn": "Around four hundred stone-walled rice terraces curving across a mountain valley, listed among Japan's Top 100 Terraced Rice Fields and part of the Important Cultural Landscape with Nakaogo.",
+  "coords": [
+   33.11909,
+   129.92118
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

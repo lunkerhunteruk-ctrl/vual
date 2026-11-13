@@ -1,0 +1,189 @@
+[
+ {
+  "name": "喜多酒造",
+  "nameEn": "Kita Sake Brewery",
+  "category": "local",
+  "industry": "machiya-brewing",
+  "tags": [
+   "sake"
+  ],
+  "area": "畝傍・橿原神宮",
+  "areaEn": "Unebi & Kashiharajingu",
+  "address": "8 Gobo-cho, Kashihara",
+  "url": "https://miyokiku.com/",
+  "what": "享保3年（1718年）創業の酒蔵。代表銘柄「御代菊」や、伝統の「水もと仕込み」の酒を造る。蔵見学は予約制。",
+  "whatEn": "A sake brewery founded in 1718. It brews its flagship Miyokiku labels and sake made with the traditional mizumoto starter. Brewery visits are by reservation.",
+  "note": "水もと仕込みの純米吟醸を、一本持ち帰りたい。",
+  "noteEn": "I want to take home a bottle of the mizumoto-brewed junmai ginjo.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.49071,
+   135.79352
+  ]
+ },
+ {
+  "name": "だんご庄 本店",
+  "nameEn": "Dangosho Honten",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "坊城・真菅",
+  "areaEn": "Bojo & Masuga",
+  "address": "860 Higashibojo-cho, Kashihara",
+  "url": "http://dango.kir.jp/",
+  "what": "明治11年（1878年）創業の団子店。唐臼でついた米粉に蜜ときな粉をまぶした手作りのだんごを、店内でお茶とも出している。火曜と第1・第3水曜休み、売り切れ次第終了。",
+  "whatEn": "A dango shop founded in 1878. Handmade rice-flour dumplings coated in house syrup and roasted soybean flour, also served inside with tea. Closed Tuesdays and first and third Wednesdays; closes when sold out.",
+  "note": "きな粉のだんごを、店でお茶と一緒に食べたい。",
+  "noteEn": "Have the kinako dango inside with a cup of tea.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.49238,
+   135.76602
+  ]
+ },
+ {
+  "name": "やさい菓子工房 cocoai",
+  "nameEn": "cocoai",
+  "category": "sweets",
+  "tags": [
+   "sweets"
+  ],
+  "area": "大和八木",
+  "areaEn": "Yamato-Yagi",
+  "address": "5-1-13 Naizen-cho, Kashihara",
+  "url": "https://www.cocoai-nara.com/",
+  "what": "近鉄大和八木駅の駅名店街にある菓子店。白砂糖を使わず、甜菜糖や奈良県産の小麦・米粉、大和野菜を使った焼き菓子やケーキを並べる。",
+  "whatEn": "A pastry shop in the Yamato-Yagi Station arcade. It bakes cakes and cookies with beet sugar, Nara-grown wheat and rice flour, and Yamato vegetables, without white sugar.",
+  "note": "大和やさいサブレの袋を、帰りに一つ選びたい。",
+  "noteEn": "Pick up a bag of Yamato vegetable sablés on the way back.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.5132,
+   135.79297
+  ]
+ },
+ {
+  "name": "THREE MOUNTAIN COFFEE",
+  "nameEn": "THREE MOUNTAIN COFFEE",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "大和八木",
+  "areaEn": "Yamato-Yagi",
+  "address": "3-65-11 Kita-Yagi-cho, Kashihara",
+  "url": "https://www.three-mountain-coffee.jp/",
+  "what": "大和八木駅近くの近鉄百貨店橿原店、地階の食料品売場にあるコーヒー焙煎所。営業は百貨店に準じ、10時から19時まで。",
+  "whatEn": "A coffee roastery in the basement food floor of Kintetsu Department Store Kashihara, near Yamato-Yagi Station. Open 10 am to 7 pm, following department store hours.",
+  "note": "百貨店の地下で、ドリップバッグを少し買っておく。",
+  "noteEn": "Pick up a few drip bags in the department store basement.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.51375,
+   135.79415
+  ]
+ },
+ {
+  "name": "ギャラリーカフェ narairo",
+  "nameEn": "Gallery Cafe narairo",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "畝傍・橿原神宮",
+  "areaEn": "Unebi & Kashiharajingu",
+  "address": "889-1 Kume-cho, Kashihara",
+  "url": "https://narairo.com/",
+  "what": "橿原神宮前駅の参道沿いにある、築80年超の古民家を改装したギャラリーカフェ。奈良で焙煎した珈琲やブリュレトーストを出し、絵画や陶芸の展示も開く。水・日曜休み。",
+  "whatEn": "A gallery café in a renovated Showa house over 80 years old along the approach from Kashiharajingu-mae Station. It serves Nara-roasted coffee and brûlée toast alongside exhibitions of painting and ceramics. Closed Wednesdays and Sundays.",
+  "note": "展示を見たあとに、ブリュレトーストと珈琲でひと息。",
+  "noteEn": "After looking at the exhibition, pause for brûlée toast and coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.48469,
+   135.79322
+  ]
+ },
+ {
+  "name": "自家焙煎珈琲えんれい",
+  "nameEn": "Coffee Enrei",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "今井町",
+  "areaEn": "Imaicho",
+  "address": "1-4-5 Imaicho, Kashihara",
+  "url": "https://www.instagram.com/sakamoto_enrei/",
+  "what": "今井町にある自家焙煎珈琲の店。月〜金曜は9時から16時、土日は8時から16時まで開き、水曜休み。",
+  "whatEn": "A house-roasted coffee shop in Imaicho. Open 9 am to 4 pm Monday to Friday, 8 am to 4 pm on weekends; closed Wednesdays.",
+  "note": "今井町を歩く前に、朝ここで珈琲を一杯。",
+  "noteEn": "A morning cup of coffee here before walking Imaicho.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.50747,
+   135.78955
+  ]
+ },
+ {
+  "name": "農家のオーベルジュ こもれび",
+  "nameEn": "Auberge Komorebi",
+  "category": "food",
+  "area": "今井町",
+  "areaEn": "Imaicho",
+  "address": "4-10-6 Imaicho, Kashihara",
+  "url": "https://komorebi.asuka-minpaku.com/",
+  "what": "今井町の町家を活かした食事処と宿。奈良の野菜を使ったランチがあり、昼は売り切れることもある。",
+  "whatEn": "A restaurant and inn in a townhouse in Imaicho. It serves vegetable lunches from Nara farms and can sell out at midday.",
+  "note": "今井町の町家で、奈良の野菜の昼ごはんを。",
+  "noteEn": "For a lunch of Nara vegetables in an Imaicho townhouse.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.50754,
+   135.78586
+  ]
+ },
+ {
+  "name": "TRATTORIA 前澤",
+  "nameEn": "TRATTORIA Maezawa",
+  "category": "food",
+  "tags": [
+   "italian"
+  ],
+  "area": "大和八木",
+  "areaEn": "Yamato-Yagi",
+  "address": "1-7-38 Yagi-cho, Kashihara",
+  "url": "http://www.torattoria-maezawa.com/",
+  "what": "八木町のビルの2階にあるイタリア料理店。地元の飛鳥野菜や大和牛を使い、手打ちの生パスタやピザを出す。水曜休み。",
+  "whatEn": "An Italian restaurant on the second floor of a building in Yagi-cho. It cooks with local Asuka vegetables and Yamato beef, making handmade fresh pasta and pizza. Closed Wednesdays.",
+  "note": "飛鳥野菜のひと皿と、手打ちの生パスタを頼む。",
+  "noteEn": "Order a plate of Asuka vegetables and the handmade fresh pasta.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.50975,
+   135.79201
+  ]
+ },
+ {
+  "name": "tomato monkey",
+  "nameEn": "tomato monkey",
+  "category": "food",
+  "tags": [
+   "italian"
+  ],
+  "area": "坊城・真菅",
+  "areaEn": "Bojo & Masuga",
+  "address": "65-1 Kazu-cho, Kashihara",
+  "url": "https://tomatomonkey2021.com/",
+  "what": "一町の古民家にある、野菜ソムリエのパスタソース工房とレストラン。奈良県内の野菜を収穫日に加工したソースを売り、金〜日曜の昼は27品目のランチプレートも出す。月・火曜休み（水曜は販売のみ）。",
+  "whatEn": "A pasta-sauce workshop and kominka restaurant run by a vegetable sommelier in Kazu-cho. It sells sauces made from Nara vegetables processed on harvest day and serves a 27-item lunch plate Friday to Sunday. Closed Mondays and Tuesdays; shop sales only on Wednesdays.",
+  "note": "小松菜と柚子胡椒のジェノベーゼを、一本買って帰る。",
+  "noteEn": "Take home a jar of the komatsuna and yuzu-kosho genovese.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.47763,
+   135.76145
+  ]
+ }
+]

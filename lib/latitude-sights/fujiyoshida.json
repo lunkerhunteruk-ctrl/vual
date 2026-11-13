@@ -1,0 +1,68 @@
+[
+ {
+  "name": "ふじさんミュージアム",
+  "nameEn": "Mt. Fuji Museum",
+  "kind": "art",
+  "area": "上吉田東",
+  "areaEn": "Kamiyoshida-higashi",
+  "address": "富士吉田市上吉田東7-27-1",
+  "url": "https://www.fy-museum.jp/",
+  "what": "富士山と麓の町・富士吉田の歴史や文化を伝える博物館。1/2,000の大型富士山模型へのプロジェクションマッピングや、ハタオリ・富士山信仰の展示がある。9時半から17時（入館は16時半まで）、火曜は休み（7・8月は無休）。",
+  "whatEn": "A museum of Mount Fuji and Fujiyoshida's local history and culture, with a 1:2,000 projection-mapped mountain model and displays on weaving and mountain worship. Open 9:30 am to 5 pm (last entry 4:30 pm), closed Tuesdays (open daily in July and August).",
+  "coords": [
+   35.45808,
+   138.80532
+  ],
+  "notice": "2026年11月24日（火）〜12月1日（火）は燻蒸作業のため臨時休館（12月2日より通常開館）。",
+  "noticeEn": "Temporarily closed November 24 to December 1, 2026 for fumigation (reopening December 2).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "北口本宮冨士浅間神社",
+  "nameEn": "Kitaguchi Hongu Fuji Sengen Shrine",
+  "kind": "sight",
+  "area": "上吉田",
+  "areaEn": "Kamiyoshida",
+  "address": "富士吉田市上吉田5558",
+  "url": "https://www.sengenjinja.jp/",
+  "what": "吉田口登山道の起点にあたり、世界遺産富士山の構成資産の一つ。杉並木の参道の先に木造の冨士山大鳥居が立ち、拝殿など11棟が国の重要文化財に指定されている。",
+  "whatEn": "The historic starting point of the Yoshida-guchi trail and a constituent site of the Mount Fuji World Heritage listing. A cedar-lined approach leads to the great wooden torii, with eleven buildings including the worship hall designated Important Cultural Properties.",
+  "coords": [
+   35.47101,
+   138.79264
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "新倉山浅間公園・忠霊塔",
+  "nameEn": "Arakurayama Sengen Park & Chureito Pagoda",
+  "kind": "sight",
+  "area": "浅間",
+  "areaEn": "Asama",
+  "address": "富士吉田市浅間2-4-1",
+  "url": "https://fujiyoshida.net/spot/12",
+  "what": "新倉山の麓から中腹にかけて広がる公園。398段の階段を上った先の展望デッキから、五重塔（忠霊塔）と富士吉田の街並み、その奥に富士山を望める。24時間開放。",
+  "whatEn": "A hillside park on Mount Arakura where 398 steps lead to an observation deck looking out over the five-storey Chureito Pagoda, the town of Fujiyoshida and Mount Fuji beyond. Open 24 hours.",
+  "coords": [
+   35.50049,
+   138.80082
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "金鳥居",
+  "nameEn": "Kanadorii Gate",
+  "kind": "sight",
+  "area": "上吉田",
+  "areaEn": "Kamiyoshida",
+  "address": "富士吉田市上吉田1-10付近",
+  "url": "https://fujiyoshida.net/spot/index.php?p=24",
+  "what": "富士みち（本町通り）に立つ青銅製の鳥居で、吉田口登山道の「一の鳥居」。俗界と富士山の信仰世界を分かつ境界として古くから親しまれ、鳥居越しに富士山を望む。",
+  "whatEn": "A bronze torii spanning Fuji-michi (Honcho-dori) that marks the first gate of the Yoshida-guchi climbing trail, framing Mount Fuji as the traditional boundary between the everyday world and the sacred mountain.",
+  "coords": [
+   35.48321,
+   138.79796
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,639 @@
+{
+ "slug": "yamaga",
+ "city": {
+  "name": "Yamaga",
+  "nameJa": "山鹿",
+  "latitude": "33.0° N",
+  "country": "Kumamoto, Japan",
+  "countryJa": "熊本県",
+  "person": "rin",
+  "coords": [
+   33.015,
+   130.6886
+  ],
+  "intro": "A hot-spring town in the Kikuchi River basin of northern Kumamoto. Washi lanterns, Kutami persimmon-tannin fans, and koji, sake and chestnut sweets along Buzen Kaido and the surrounding hills, as Rin's picks.",
+  "introJa": "熊本県北部、菊池川流域の温泉町。和紙だけで作る山鹿灯籠、来民の渋うちわ、豊前街道と山あいの麹や酒、栗の菓子を、凛のおすすめで。",
+  "locator": {
+   "en": "In northern Kumamoto · a hot-spring town in the Kikuchi River basin",
+   "ja": "熊本県北部・菊池川流域の温泉町"
+  },
+  "industries": [
+   {
+    "key": "yamaga-toro",
+    "en": "Yamaga paper lanterns",
+    "ja": "山鹿灯籠",
+    "about": "Yamaga lanterns are a nationally designated traditional craft made solely from handmade washi paper and a small amount of paste, with no wood or bamboo frame. Licensed toro-shi artisans cut and join the paper into miniature temples, castles and gold lanterns.",
+    "aboutJa": "山鹿灯籠は国の伝統的工芸品で、木や竹の骨を使わず、和紙と少量の糊だけで作る。灯籠師と呼ばれる職人が、神殿造りや城造り、金灯籠などを組み上げる。",
+    "_src": "A centuries-old local craft in which licensed toro-shi masters construct intricate architectural models solely from handmade washi paper and paste without any wood, bamboo, or metal frames."
+   },
+   {
+    "key": "kutami-uchiwa",
+    "en": "Kutami persimmon-tannin fans",
+    "ja": "来民渋うちわ",
+    "about": "Kutami shibu-uchiwa are bamboo-ribbed washi fans coated in aged persimmon tannin (kakishibu), a craft with roughly 400 years of history in Kamoto. Kurikawa Shoten, founded in 1889, still makes them by hand.",
+    "aboutJa": "来民渋うちわは、鹿本町来民に約400年続くうちわ作りで、竹の骨に和紙を貼り、柿渋を塗って仕上げる。1889年創業の栗川商店が、いまも手作業で作り続けている。",
+    "_src": "A 400-year-old Kamoto fan-making tradition where bamboo-ribbed washi fans are coated in aged persimmon tannin for durability and natural insect resistance."
+   },
+   {
+    "key": "koji-brewing",
+    "en": "Buzen Kaido koji and sake brewing",
+    "ja": "豊前街道の麹・醸造文化",
+    "about": "Along Buzen Kaido in the Kikuchi River basin, merchant houses have long made rice koji, miso and sake. Kiya Honten still grows koji in wooden trays, and Chiyonosono Sake Brewery brews junmai sake and Kumamoto's traditional akazake.",
+    "aboutJa": "菊池川流域の豊前街道沿いでは、麹や味噌、酒の造り手が受け継がれてきた。木屋本店は室蓋製法で麹を仕込み、千代の園酒造は純米酒や熊本の伝統酒「赤酒」を醸す。",
+    "_src": "Powered by Kikuchi River water and Higo rice, Yamaga's post-town merchant houses have brewed sake, miso, soy sauce, and rice koji since the Edo and Meiji periods."
+   }
+  ]
+ },
+ "places": {
+  "山鹿灯籠民芸館": {
+   "nameEn": "Yamaga Toro Folk Crafts Museum",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "washi",
+    "lantern"
+   ],
+   "what": "大正14年（1925年）に建てられた旧安田銀行山鹿支店の建物で、和紙と少量の糊だけで作る山鹿灯籠を展示する。別館で灯籠師の制作実演を見られ、擬宝珠ランプの製作体験もできる。",
+   "whatEn": "Housed in a 1925 former Yasuda Bank building, displaying Yamaga lanterns made solely from washi paper and a little paste. Artisans demonstrate lantern-making in the annex, and visitors can try making a giboshi lamp.",
+   "note": "糊と和紙だけで組んだ灯籠を、近くでゆっくり見たい。",
+   "noteEn": "I want to look closely at the lanterns joined with only paste and washi.",
+   "_src": {
+    "category": "local",
+    "industry": "yamaga-toro",
+    "nameKana": "やまがとうろうみんげいかん",
+    "address": "1606-2 Yamaga, Yamaga",
+    "url": "https://yamaga.site/?page_id=1550",
+    "whatJa": "大正14年築の旧安田銀行山鹿支店を活用した館内に名作灯籠を展示し、別館工房で現役灯籠師の制作実演を見学できる拠点。",
+    "whatEn": "A 1925 former bank building on Buzen Kaido housing masterwork washi lanterns and an annex workshop where licensed toro-shi artisans demonstrate hollow paper joinery.",
+    "facts": "Occupies the 1925 former Yasuda Bank building (a Registered Tangible Cultural Property) on Buzen Kaido; resident toro-shi masters cut and edge-glue handmade kozo washi into hollow architectural structures without a single wooden or bamboo splint; offers hands-on mini-lantern workshops.",
+    "weak": "",
+    "verifiedBy": "https://yamaga.site/?mingeikan=%e5%b1%b1%e9%b9%bf%e7%81%af%e7%b1%a0%e6%b0%91%e8%8a%b8%e9%a4%a8%e3%81%8a%e3%82%82%e3%81%a6%e3%81%aa%e3%81%97%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88%e3%80%8c%e5%b1%b1%e9%b9%bf%e7%81%af%e7%b1%a0%e8%b8%8a-2",
+    "quote": "令和8年11月8日(日)、ご来館頂いたお客さまへのおもてなしイベントとしまして、山鹿灯籠踊り保存会の皆様による踊りのご披露と記念撮影会を開催いたします。",
+    "fixes": "",
+    "coords": [
+     33.01514,
+     130.68841
+    ]
+   }
+  },
+  "団扇屋 栗川商店": {
+   "nameEn": "Uchiwaya Kurikawa Shoten",
+   "area": "鹿本",
+   "areaEn": "Kamoto",
+   "tags": [
+    "washi",
+    "fan"
+   ],
+   "what": "明治22年（1889年）創業、来民渋うちわを作る製造本舗。竹骨に和紙を貼り、柿渋を塗って仕上げるうちわを店頭で扱う。",
+   "whatEn": "A workshop and shop founded in 1889 making Kutami persimmon-tannin fans, brushing kakishibu onto washi-covered bamboo ribs.",
+   "note": "小丸か小判か、手に取って風合いを比べて選びたい。",
+   "noteEn": "Round or oval—I want to hold them and compare the feel before choosing.",
+   "_src": {
+    "category": "local",
+    "industry": "kutami-uchiwa",
+    "nameKana": "うちわや くりかわしょうてん",
+    "address": "1648-1 Kamotomachi Kutami, Yamaga",
+    "url": "https://www.uchiwa.jp/",
+    "whatJa": "明治22年創業、日本三大うちわの一つ「来民渋うちわ」を現在も一貫制作する唯一の製造本舗兼店舗。",
+    "whatEn": "Founded in 1889, the sole remaining workshop and shop producing traditional Kutami persimmon-tannin bamboo fans.",
+    "facts": "Founded in Meiji 22 (1889) in Kamotomachi Kutami; artisans brush handmade washi over bamboo ribs with aged persimmon tannin (kakishibu) that deepens in color over decades; shop floor sits alongside the active fan-making workspace.",
+    "weak": "",
+    "verifiedBy": "https://newsdig.tbs.co.jp/articles/-/2737835?page=2",
+    "quote": "明治22年創業の栗川商店は、伝統的な技法を今に受け継ぐ唯一の工房です。",
+    "fixes": "address: 1648 Kamotomachi Kutami, Yamaga（公式表記：熊本県山鹿市鹿本町来民1648）。",
+    "coords": [
+     33.0003,
+     130.73568
+    ]
+   }
+  },
+  "木屋本店": {
+   "nameEn": "Kiya Honten",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "koji",
+    "miso"
+   ],
+   "what": "江戸末期の天保年間に創業した豊前街道の麹専門店。室蓋製法で麹を仕込み、味噌、甘酒、塩麹などを製造・販売する。営業は9時から17時。",
+   "whatEn": "A koji specialist on Buzen Kaido founded in the Tenpo era, making rice koji by the wooden-tray murobuta method alongside miso, amazake and shio-koji. Open 9 am to 5 pm.",
+   "note": "甘酒と塩麹をひと瓶ずつ、台所用に買って帰りたい。",
+   "noteEn": "I would take home a bottle of amazake and one of shio-koji for the kitchen.",
+   "_src": {
+    "category": "local",
+    "industry": "koji-brewing",
+    "nameKana": "きやほんてん",
+    "address": "1820 Yamaga, Yamaga",
+    "url": "https://www.kouji-kiya.kumamoto.jp/",
+    "whatJa": "天保年間（1830年頃）創業、豊前街道沿いの歴史ある町家で麹・味噌・醤油・甘酒を造り続ける老舗麹屋。",
+    "whatEn": "An Edo-period rice-koji, miso, and soy sauce maker operating out of a historic merchant house on Buzen Kaido.",
+    "facts": "Founded in the Tenpo era (around 1830) along Buzen Kaido; cultivates fresh rice and barley koji in its traditional wooden koji-muro room; sells additive-free amazake, shio-koji, and barrel-aged miso.",
+    "weak": "",
+    "verifiedBy": "https://nreal.jp/articles/1988/",
+    "quote": "天保年間の創業から約190年続く「木屋本店」は、昔ながらの室蓋（むろぶた）製法を守り続ける県内でも珍しい麹（こうじ）専門店です。",
+    "fixes": "whatEn/whatJa: 公式の業務内容は「麹、味噌、酢、甘酒、塩麹 等の製造・販売・卸」。醤油製造の記述は確認できないため、麹・味噌・甘酒等を製造販売する老舗とする。創業年は会社概要に1842年、沿革に天保2年とあり矛盾するため約1830年との断定は避ける。",
+    "coords": [
+     33.01121,
+     130.68747
+    ]
+   }
+  },
+  "千代の園酒造": {
+   "nameEn": "Chiyonosono Sake Brewery",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "sake"
+   ],
+   "what": "明治29年（1896年）創業の豊前街道の酒蔵。純米酒や熊本の伝統酒「赤酒」を醸し、蔵に併設のショップで酒を選べる。",
+   "whatEn": "A sake brewery on Buzen Kaido founded in 1896, brewing junmai sake and Kumamoto's traditional akazake, with a shop at the brewery.",
+   "note": "料理に使う赤酒と、小さな純米酒を一本選びたい。",
+   "noteEn": "I would pick a bottle of akazake for cooking and a small junmai.",
+   "_src": {
+    "category": "local",
+    "industry": "koji-brewing",
+    "nameKana": "ちよのそのしゅぞう",
+    "address": "1782 Yamaga, Yamaga",
+    "url": "https://www.chiyonosono.co.jp/",
+    "whatJa": "明治29年（1896年）創業、豊前街道沿いの歴史ある蔵で純米酒や熊本の伝統酒「赤酒」を醸す酒蔵。",
+    "whatEn": "A Meiji-era sake brewery on Buzen Kaido founded by a former rice wholesaler, known for junmai sake and traditional wooden-cask akazake.",
+    "facts": "Founded in 1896 along Buzen Kaido using Kikuchi River basin water and local Kumamoto rice; one of the first breweries in postwar Japan to revive pure junmai brewing; operates a tasting and bottle shop inside its historic earthen-walled storehouse.",
+    "weak": "",
+    "verifiedBy": "https://www.chiyonosono.co.jp/post/地震に伴う弊社への影響について",
+    "quote": "弊社（千代の園酒造株式会社）につきましては、社屋・製造設備ともに被害はなく、通常通り営業しております。",
+    "fixes": "whatEn: traditional wooden-cask という製法の限定は当該公式ページでは確認できないため削除。",
+    "coords": [
+     33.01107,
+     130.68776
+    ]
+   }
+  },
+  "ヤマノテ": {
+   "nameEn": "Yamanote",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "washi",
+    "ceramics",
+    "bamboo"
+   ],
+   "what": "山鹿灯籠の工房「中村制作所」を併設し、山鹿の和紙工芸や九州の器、竹細工、うちわなどを集めた手仕事の店。営業は11時から17時で、月・火・水曜が休み。",
+   "whatEn": "A handcraft shop housing the Yamaga lantern studio Nakamura Seisakusho, gathering local washi work, Kyushu pottery, bamboo craft and fans. Open 11 am to 5 pm; closed Monday to Wednesday.",
+   "note": "灯籠の技を生かした小さな和紙の飾りを、一つ見たい。",
+   "noteEn": "I want to look at a small washi ornament made with lantern-making joinery.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "やまのて",
+    "address": "1375 Yamaga, Yamaga",
+    "url": "https://yamaga-yamanote.com/",
+    "whatJa": "山鹿灯籠師の工房「中村制作所」を併設し、山鹿や九州の手仕事の器・竹細工・生活道具を扱うクラフトショップ。",
+    "whatEn": "A craft and tableware shop on Buzen Kaido run alongside a Yamaga paper-lantern artisan's studio, stocking local pottery, bamboo work, and everyday tools.",
+    "facts": "Located near Yachiyo-za on Buzen Kaido; shares space with toro-shi Junya Nakamura's lantern studio; carries Kyushu ceramics, bamboo baskets, and modern washi mobiles made with Yamaga lantern joinery.",
+    "weak": "",
+    "verifiedBy": "https://yamaga-yamanote.com/archives/2897",
+    "quote": "2026年4月2日で、ヤマノテを始めて10年になります。",
+    "fixes": "",
+    "coords": [
+     33.01791,
+     130.68656
+    ]
+   }
+  },
+  "Différence": {
+   "nameEn": "Différence",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "tableware",
+    "glass"
+   ],
+   "what": "フランスで買い付けたアンティークの器やキッチン雑貨、古家具、リネンなどを並べるブロカントの店。",
+   "whatEn": "A brocante shop stocking antique tableware, kitchen goods, furniture and linens sourced in France.",
+   "note": "古い皿とリネンを、一枚ずつめくるように見てみたい。",
+   "noteEn": "I want to look through the old plates and linens one by one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "でぃふぇらんす",
+    "address": "497-1 Yamaga, Yamaga",
+    "url": "https://difference-web.com/",
+    "whatJa": "フランスの蚤の市から直接買い付けたアンティークの器・ガラス・キッチン道具・古家具が並ぶブロカントショップ。",
+    "whatEn": "A French antique and brocante shop in central Yamaga specializing in vintage European plates, glassware, kitchen tools, and rustic furniture.",
+    "facts": "Sourced directly on buying trips to French flea markets; housed in a Southern-French-style standalone building in Yamaga; carries antique ceramic plates, blown glass goblets, cutlery, and linen.",
+    "weak": "",
+    "verifiedBy": "https://difference-web.com/news/new-arrivals-2026-10-14/",
+    "quote": "なお、10月29日（木）より店舗も通常営業に戻ります。",
+    "fixes": "",
+    "coords": [
+     33.01394,
+     130.70008
+    ]
+   }
+  },
+  "かじや窯": {
+   "nameEn": "Kajiyagama",
+   "area": "鹿本",
+   "areaEn": "Kamoto",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "鹿本町に窯を構える米原暁雄さんの工房。小代焼の系譜を継ぐ、地元の土と釉薬を使った普段使いの器を焼く。",
+   "whatEn": "The Kamoto kiln of Akio Yonehara, who trained at Shodai-yaki Fumoto-gama and fires everyday tableware using local clay and glazes.",
+   "note": "糠釉の七寸皿や飯碗の色合いを、手に取って見たい。",
+   "noteEn": "I want to hold the rice-hull-glazed plates and rice bowls and see their tones.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "かじやがま",
+    "address": "213 Kamotomachi Kajiya, Yamaga",
+    "url": "https://kajiyagama.amebaownd.com/",
+    "whatJa": "小代焼ふもと窯で修業した米原暁雄氏が鹿本町で営む、地元の土と釉薬を使った日常使いの器の窯元。",
+    "whatEn": "The rural Kamoto pottery kiln and showroom of Akio Yonehara, producing warm slip-glazed everyday stoneware rooted in Kumamoto's Shodai-yaki tradition.",
+    "facts": "Potter Akio Yonehara trained at Kumamoto's renowned Shodai-yaki Fumoto-gama before establishing his kiln in Kamotomachi Kajiya; fires bowls, plates, and pitchers in local clay with rich amber, black, and blue-ash glazes.",
+    "weak": "",
+    "verifiedBy": "https://yamaga-yamanote.com/archives/2918",
+    "quote": "8/1-8/16 かじや窯 個展開催します",
+    "fixes": "",
+    "coords": [
+     32.97967,
+     130.74705
+    ]
+   }
+  },
+  "CAFE BANANA FRUITS & COFFEE ROASTERS": {
+   "nameEn": "CAFE BANANA FRUITS & COFFEE ROASTERS",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "coffee",
+    "fruit"
+   ],
+   "what": "創業60年以上の果物店「かきやま果実」が営む、自家焙煎コーヒーと果物の店。生豆の焙煎や果物の販売も行う。営業は9時から18時（日曜は17時まで）。",
+   "whatEn": "A specialty coffee roaster and fruit shop run by Kakiyama Kajitsu, a greengrocer for over 60 years. Open 9 am to 6 pm (until 5 pm on Sunday).",
+   "note": "果物屋さんの奥で焙煎した珈琲を、一袋持ち帰りたい。",
+   "noteEn": "I would take home a bag of coffee roasted at the back of the fruit shop.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇ ばなな ふるーつ あんど こーひー ろーすたーず",
+    "address": "1849 Yamaga, Yamaga",
+    "url": "https://cafebanana.jp/",
+    "whatJa": "豊前街道沿いで創業60年以上の老舗果実店「かきやま果実」が営む、自家焙煎スペシャルティコーヒーと果物の専門店。",
+    "whatEn": "A specialty coffee roaster and fruit stand on Buzen Kaido born from a 60-year-old local greengrocer.",
+    "facts": "Evolved from Kakiyama Kajitsu, a fruit shop with over 60 years of history on Buzen Kaido; roasts specialty coffee beans in-house at the back of the shop; signature Espresso Banana layers house espresso over a thick ripe banana smoothie.",
+    "weak": "",
+    "verifiedBy": "https://www.tnc.co.jp/store/shop/archives/42710",
+    "quote": "2026年2月13日(金) OA\nCAFE BANANA\n【住所】熊本県山鹿市山鹿1849\n【電話】0968-43-2722\n【営業時間】9:00～18:00 日曜9:00～17:00",
+    "fixes": "",
+    "coords": [
+     33.01231,
+     130.68803
+    ]
+   }
+  },
+  "琥珀の刻": {
+   "nameEn": "Kohaku no Toki",
+   "area": "鹿北",
+   "areaEn": "Kahoku",
+   "tags": [
+    "coffee"
+   ],
+   "what": "熊本と福岡の県境に近い鹿北町で、自家焙煎の珈琲豆を売るカフェ。営業は11時から18時（水曜・不定休）。",
+   "whatEn": "A coffee roastery and café in Kahoku near the Fukuoka border, selling house-roasted beans. Open 11 am to 6 pm; closed Wednesday and irregular days.",
+   "note": "深煎りでも浅煎りでも、豆を一袋選んで帰りたい。",
+   "noteEn": "Light or dark roast, I want to pick a bag of beans to take home.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こはくのとき",
+    "address": "1638-1 Kahokumachi Shicho, Yamaga",
+    "url": "http://www.kohaku-toki.com/",
+    "whatJa": "鹿北町の緑豊かな山あいに佇む、厳選生豆を丁寧に自家焙煎するロースターズカフェ。",
+    "whatEn": "A mountain-side coffee roastery and cafe in forested Kahoku serving small-batch house-roasted pour-overs.",
+    "facts": "Set in the wooded hills of Kahokumachi Shicho in northern Yamaga; roasts specialty single-origin and blended beans on-site; offers quiet terrace and indoor seating overlooking mountain greenery.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/kunisena/entry-12971581844.html",
+    "quote": "水出しコーヒー530円を注文  やはり落ち着くな",
+    "fixes": "",
+    "coords": [
+     33.10629,
+     130.69411
+    ]
+   }
+  },
+  "gardencafe528": {
+   "nameEn": "gardencafe528",
+   "area": "鹿本",
+   "areaEn": "Kamoto",
+   "tags": [
+    "coffee",
+    "tea"
+   ],
+   "what": "フローリストが来民に開いた、約千平方メートルの英国風庭園のあるカフェ。珈琲やフレッシュハーブティー、季節の軽食を出す。営業は11時30分から17時（火・水曜休み）。",
+   "whatEn": "A café opened by a florist in Kutami with an English-style garden of about 1,000 square metres, serving coffee, fresh herb tea and seasonal light meals. Open 11:30 am to 5 pm; closed Tuesday and Wednesday.",
+   "note": "庭を眺めながら、フレッシュハーブティーをゆっくり飲みたい。",
+   "noteEn": "I want to drink fresh herb tea slowly while looking out at the garden.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "がーでんかふぇ ごーにいはち",
+    "address": "1513 Kamotomachi Kutami, Yamaga",
+    "url": "https://gardencafe528.com/",
+    "whatJa": "鹿本町来民の静かな住宅地に広がる英国風庭園を眺めながら、ハンドドリップ珈琲やハーブティーを楽しめるカフェ。",
+    "whatEn": "An independent garden cafe in Kutami serving hand-dripped coffee, herbal teas, and light lunches overlooking a landscaped English-style garden.",
+    "facts": "Tucked inside a 1,000-square-meter landscaped garden in Kamotomachi Kutami near Kurikawa Shoten; serves hand-dripped coffee, herbal infusions, and seasonal sandwiches and pasta.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/kunisena/entry-12965731787.html",
+    "quote": "場所は肥後銀行来民支店やホットサンド101などある住宅街にあります。",
+    "fixes": "",
+    "coords": [
+     32.99971,
+     130.7373
+    ]
+   }
+  },
+  "西益屋": {
+   "nameEn": "Nishimasuya",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "昭和4年（1929年）創業、豊前街道沿いの和菓子店。山鹿灯籠をかたどった「燈籠もなか」が名物。本店の営業は8時30分から18時（元日定休）。",
+   "whatEn": "A wagashi shop on Buzen Kaido founded in 1929, known for its lantern-shaped Toro Monaka. The main shop is open 8:30 am to 6 pm, closed New Year's Day.",
+   "note": "灯籠のかたちの最中を、一つおやつに買いたい。",
+   "noteEn": "I would buy a lantern-shaped monaka for a snack.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "にしますや",
+    "address": "1608 Yamaga, Yamaga",
+    "url": "https://nishimasuya.com/index.html",
+    "whatJa": "昭和4年（1929年）創業、山鹿で最も長い歴史を持つ豊前街道沿いの老舗和菓子店。",
+    "whatEn": "Yamaga's oldest wagashi confectioner, founded in 1929 on Buzen Kaido, known for lantern-shaped monaka wafers and nostalgic lemon cakes.",
+    "facts": "Founded in 1929 near Yachiyo-za and Yamaga Toro Folk Crafts Museum; makes Toro Monaka filled with smooth house-cooked bean paste as well as dry-pressed Shiogama sweets and retro glazed lemon cakes.",
+    "weak": "",
+    "verifiedBy": "https://nreal.jp/articles/1988/",
+    "quote": "1929年創業の「西益屋」は、山鹿の夏の風物詩である「山鹿灯籠」をモチーフにした銘菓「灯籠もなか」で知られる老舗和菓子店です。",
+    "fixes": "",
+    "coords": [
+     33.01499,
+     130.68844
+    ]
+   }
+  },
+  "山鹿和栗洋菓子店 An": {
+   "nameEn": "Yamaga Waguri Yogashiten An",
+   "area": "菊鹿",
+   "areaEn": "Kikuka",
+   "tags": [
+    "pastry",
+    "chestnut"
+   ],
+   "what": "菊鹿町「あんずの丘」にある、山鹿和栗や地元の旬の素材を使った洋菓子店。和栗シューや丸ごとマロンパイなどを並べる。営業は10時から17時（火曜定休）。",
+   "whatEn": "A pastry shop at Anzu no Oka in Kikuka making sweets with Yamaga chestnuts and local seasonal fruit, including chestnut choux and whole-chestnut pies. Open 10 am to 5 pm; closed Tuesday.",
+   "note": "和栗のシューかマロンパイを、一つその場で食べたい。",
+   "noteEn": "I want to eat a chestnut choux or marron pie right there.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "やまがわぐりようがしてん あん",
+    "address": "733 Kikukamachi Shimouchida, Yamaga",
+    "url": "https://www.oyatu-an.com/",
+    "whatJa": "西日本一の栗産地・山鹿の菊鹿町「あんずの丘」内に構える、山鹿和栗専門の洋菓子店。",
+    "whatEn": "A pastry shop in chestnut-growing Kikuka dedicated entirely to sweets made from locally harvested Yamaga waguri chestnuts.",
+    "facts": "Specializes in Yamaga chestnuts, the largest chestnut harvest in western Japan; bakes whole-chestnut marron pies and fills choux pastries to order with Yamaga chestnut cream.",
+    "weak": "",
+    "verifiedBy": "https://www.oyatu-an.com/archives/3958",
+    "quote": "「山鹿和栗と山鹿のいちごでクリスマス」2026年のクリスマスケーキのご案内です。",
+    "fixes": "whatEn: dedicated entirely to chestnut sweets は修正。公式紹介では山鹿和栗に加えて、あんず・地元の旬のスイーツも扱う。whatJaは一致。",
+    "coords": [
+     33.02945,
+     130.76923
+    ]
+   }
+  },
+  "ricca": {
+   "nameEn": "ricca",
+   "area": "方保田",
+   "areaEn": "Kahoda",
+   "tags": [
+    "pastry",
+    "coffee"
+   ],
+   "what": "方保田のフランス菓子とカフェの店。家族や仲間の農家の栗や米粉など地元の素材で菓子を作り、古い建具を生かしたカフェ席で皿盛りのデザートも出す。",
+   "whatEn": "A French patisserie and café in Kahoda using local chestnuts, rice flour and fruit grown by family and neighbouring farmers, with café seating framed by old wooden fittings.",
+   "note": "窓から厨房をのぞきながら、皿盛りのデザートを待ちたい。",
+   "noteEn": "I want to watch the kitchen through the window while waiting for a plated dessert.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "りっか",
+    "address": "279-1 Kahoda, Yamaga",
+    "url": "http://ricca-yamaga.jp/",
+    "whatJa": "農家・ジェラート職人・パティシエの三兄弟が営む、大正期の建具を配したフランス菓子とジェラートの店。",
+    "whatEn": "A patisserie, gelateria, and cafe in Kahoda run by three brothers—a farmer, a gelato maker, and a pastry chef—featuring seasonal Yamaga fruit and chestnut desserts.",
+    "facts": "Run by three brothers combining farm produce, artisan gelato, and French pastry; interior incorporates salvaged Taisho-era architectural fittings; renowned for plated seasonal Yamaga chestnut Mont Blanc and fresh milk gelato.",
+    "weak": "",
+    "verifiedBy": "http://ricca-yamaga.jp/2026/07/18/2026-7%e6%9c%88%e3%81%ae%e3%82%ab%e3%83%ac%e3%83%b3%e3%83%80%e3%83%bc/",
+    "quote": "7/23～7/29まで夏季長期休暇をいただきます。",
+    "fixes": "whatEn/whatJa: 公式「想い」では菓子製造は三男夫婦、米粉や栗等の生産は次男夫婦と里山の仲間たちが担うと説明。「農家・ジェラート職人・パティシエの三兄弟が営む」の断定をこの記述に修正。大正期の建具については確認できないため削除。住所は公式アクセスで一致。",
+    "coords": [
+     32.99695,
+     130.72213
+    ]
+   }
+  },
+  "穏Café あたたかい木": {
+   "nameEn": "Oncafe Atatakaiki",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "lunch",
+    "vegetables"
+   ],
+   "what": "豊前街道近くの古民家を改装した食事処。肉や魚を使わない料理と、おむすび御膳を出す。予約は9時から電話で受け付ける。",
+   "whatEn": "A café in a renovated old house near Buzen Kaido serving meat- and fish-free dishes and rice-ball set meals. Phone bookings open from 9 am.",
+   "note": "野菜中心のおむすび御膳で、お昼を静かに食べたい。",
+   "noteEn": "I would have a quiet lunch with the vegetable-centred rice-ball set.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おんかふぇ あたたかいき",
+    "address": "1418 Yamaga, Yamaga",
+    "url": "https://r.goope.jp/atatakaiki/",
+    "whatJa": "豊前街道近くの古民家で、無添加調味料と地元野菜を使ったおむすび御膳を供する食事処。",
+    "whatEn": "A renovated traditional townhouse kitchen near Buzen Kaido serving additive-free rice-ball set meals with seasonal Yamaga vegetables.",
+    "facts": "Housed in an atmospheric old wooden home steps from Yachiyo-za; prepares additive-free lunches centered on hand-formed rice balls, miso soup, and small seasonal vegetable dishes.",
+    "weak": "",
+    "verifiedBy": "https://r.goope.jp/atatakaiki/info/6909000",
+    "quote": "９月のシルバーウィークは、休まず営業致します",
+    "fixes": "whatEn/whatJa: 公式店舗案内に従い、肉や魚を食材に使用しない「自然によりそうお料理」と、おむすび御膳を提供する古民家カフェとする。住所は公式店舗情報で一致。",
+    "coords": [
+     33.0183,
+     130.68858
+    ]
+   }
+  },
+  "お食事 彩座": {
+   "nameEn": "Oshokuji Irodoriza",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "tags": [
+    "local food",
+    "washoku"
+   ],
+   "what": "豊前街道沿いの油屋ビル2階にある和食店。八千代座を思わせる造りの店内で、特製ダレの「馬重」や馬肉・海鮮料理を出す。不定休。",
+   "whatEn": "A Japanese restaurant on the second floor of the Aburaya building on Buzen Kaido, styled after the Yachiyo-za playhouse and known for its umaju horsemeat rice box and seafood. Irregular holidays.",
+   "note": "八千代座を模した店内で、名物の馬重を頼んでみたい。",
+   "noteEn": "Inside the Yachiyo-za-styled room, I would order the house umaju.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おしょくじ いろどりざ",
+    "address": "2F, 1699 Yamaga, Yamaga",
+    "url": "https://www.irodoriza.com/",
+    "whatJa": "豊前街道沿いで芝居小屋・八千代座を模した店内に設え、名物の馬重や熊本の郷土料理を供する和食処。",
+    "whatEn": "A Japanese restaurant on Buzen Kaido modeled after the Yachiyo-za kabuki playhouse, specializing in charcoal-grilled Kumamoto horsemeat rice boxes and local set meals.",
+    "facts": "Interior evokes the crimson lanterns and timberwork of nearby Yachiyo-za; signature Uma-ju layers savory grilled Kumamoto horsemeat over local rice alongside basashi and seasonal side dishes.",
+    "weak": "",
+    "verifiedBy": "https://www.irodoriza.com/2026/04/17/%e5%b1%b1%e9%b9%bf%e3%81%a732%e5%b9%b4%e7%b6%9a%e3%81%8f%e3%80%8c%e5%bd%a9%e5%ba%a7%e3%80%8d%e3%82%92%e5%bc%95%e3%81%8d%e7%b6%99%e3%81%90%e3%80%81%e6%96%b0%e3%81%97%e3%81%84%e3%82%aa%e3%83%bc%e3%83%8a/",
+    "quote": "明るく元気にお店を引き継いでくださる新オーナー（女将さん）を募集しています。",
+    "fixes": "whatEn: charcoal-grilled horsemeat rice boxes は、公式の「熱々の特製ダレでふんわりと仕立てた」馬重に修正。炭火焼きの記載はない。住所は一致。",
+    "coords": [
+     33.01374,
+     130.68872
+    ]
+   }
+  },
+  "菊鹿ワイナリー レストラン": {
+   "nameEn": "Kikuka Winery Restaurant",
+   "area": "菊鹿",
+   "areaEn": "Kikuka",
+   "tags": [
+    "wine",
+    "lunch"
+   ],
+   "what": "菊鹿ワイナリー内のレストラン。地元の旬の食材を使った料理やシャルキュトリを菊鹿ワインと楽しめる。カフェは11時から16時30分、コース料理は木〜日曜・祝日の11時から14時（火曜定休）。",
+   "whatEn": "The restaurant at Kikuka Winery, pairing seasonal local dishes and charcuterie with Kikuka wines. Café open 11 am to 4:30 pm; lunch courses Thursday to Sunday and holidays, 11 am to 2 pm; closed Tuesday.",
+   "note": "木曜から日曜の昼に、シャルキュトリと白ワインを合わせたい。",
+   "noteEn": "Between Thursday and Sunday at lunch, I would pair charcuterie with a glass of white wine.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "きくかわいなりー れすとらん",
+    "address": "559-2 Kikukamachi Aira, Yamaga",
+    "url": "https://kumamotowinefarm.co.jp/kikuka-winery/restaurant/",
+    "whatJa": "菊鹿町のぶどう畑を望む菊鹿ワイナリー内で、旬の地元食材を使った料理やシャルキュトリを菊鹿ワインと共に供するレストラン。",
+    "whatEn": "A vineyard-side restaurant at Kikuka Winery serving house-cured charcuterie and seasonal Kumamoto lunch courses paired with local Kikuka estate wines.",
+    "facts": "Set on the grounds of Kikuka Winery overlooking Kikuka vineyards; led by chef Tetsuya Usuki; offers casual cafe plates on weekdays and full charcuterie and seasonal lunch courses from Thursday through Sunday.",
+    "weak": "",
+    "verifiedBy": "https://kumamotowinefarm.co.jp/news/%e3%80%90%e8%8f%8a%e9%b9%bf%e3%83%af%e3%82%a4%e3%83%8a%e3%83%aa%e3%83%bc%e3%83%ac%e3%82%b9%e3%83%88%e3%83%a9%e3%83%b3%e3%80%911%e5%91%a8%e5%b9%b4%e8%a8%98%e5%bf%b5%e7%89%b9%e5%88%a5%e3%83%a9%e3%83%b3/",
+    "quote": "おかげさまで「菊鹿ワイナリーレストラン＆シャルキュトリ」は、2026年9月4日にオープン1周年を迎えます。",
+    "fixes": "address: 526 Kikukamachi Aira, Yamaga（レストラン公式ページ：熊本県山鹿市菊鹿町相良526）。",
+    "coords": [
+     33.06351,
+     130.76774
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "八千代座",
+   "nameEn": "Yachiyo-za",
+   "kind": "sight",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "address": "山鹿市山鹿1499",
+   "url": "https://yamaga.site/?page_id=2",
+   "what": "明治43年（1910年）に建てられた芝居小屋で、国の重要文化財。廻り舞台や奈落を見学でき、公演も開かれる。",
+   "whatEn": "A kabuki playhouse built in 1910 and designated an Important Cultural Property. Visitors can tour the revolving stage and under-stage area when performances are not on.",
+   "coords": [
+    33.01685,
+    130.6893
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://yamaga.site/?page_id=2 : 2026年11月・12月の催し物案内・見学案内あり。所在地 熊本県山鹿市山鹿1499番地、明治43年(1910年)建築、国指定重要文化財。",
+   "_coordsSource": "OSM way 1349889989 (八千代座)"
+  },
+  {
+   "name": "山鹿温泉さくら湯",
+   "nameEn": "Sakura-yu",
+   "kind": "sight",
+   "area": "豊前街道",
+   "areaEn": "Buzen Kaido",
+   "address": "山鹿市山鹿1-1",
+   "url": "https://yamaga.site/?page_id=1548",
+   "what": "1640年の肥後細川藩の御茶屋に始まり、2012年に伝統工法で再建された木造の温泉施設。毎月第3水曜が休館。",
+   "whatEn": "A wooden bathhouse rooted in the 1640 Higo Hosokawa domain teahouse and rebuilt in 2012 using traditional joinery. Closed the third Wednesday of each month.",
+   "coords": [
+    33.01441,
+    130.68893
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://yamaga.site/?page_id=1548 : 2026年11月のお知らせあり。所在地 熊本県山鹿市山鹿1番地1、休館日 毎月第3水曜日。",
+   "_coordsSource": "OSM way 694507095 (山鹿温泉;さくら湯)"
+  },
+  {
+   "name": "熊本県立装飾古墳館",
+   "nameEn": "Kumamoto Prefectural Ancient Burial Mound Museum",
+   "kind": "art",
+   "area": "鹿央",
+   "areaEn": "Kao",
+   "address": "山鹿市鹿央町岩原3085",
+   "url": "https://kofunkan.pref.kumamoto.jp/",
+   "what": "岩原古墳群のそばに建つ、安藤忠雄設計の県立博物館。装飾古墳のレプリカや出土品を展示する。月曜休館（祝日の場合は翌日）。",
+   "whatEn": "A prefectural museum designed by Tadao Ando beside the Iwabaru tomb cluster, displaying decorated burial-mound replicas and excavated artifacts. Closed Monday (or the following day if a holiday).",
+   "coords": [
+    32.99369,
+    130.66981
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kofunkan.pref.kumamoto.jp/ : 2026年9月〜2027年2月の企画展・イベント案内あり。所在地 熊本県山鹿市鹿央町岩原3085、開館 9:30〜17:15、休館 月曜・年末年始。",
+   "_coordsSource": "OSM node 1423808785 (熊本県立装飾古墳館)"
+  },
+  {
+   "name": "歴史公園 鞠智城・温故創生館",
+   "nameEn": "Kikuchi Castle Historic Park",
+   "kind": "sight",
+   "area": "菊鹿",
+   "areaEn": "Kikuka",
+   "address": "山鹿市菊鹿町米原443-1",
+   "url": "https://kofunkan.pref.kumamoto.jp/kikuchijo/",
+   "what": "大和朝廷が築いた古代山城の跡を整備した歴史公園。復元された八角形鼓楼や資料館「温故創生館」がある。",
+   "whatEn": "A historic park on the site of an ancient mountain fortress built by the Yamato court, with a reconstructed octagonal drum tower and the Onko Soseikan museum.",
+   "coords": [
+    33.00207,
+    130.78814
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kofunkan.pref.kumamoto.jp/kikuchijo/ : 2026年10月〜12月のイベント・展示案内あり。所在地 熊本県山鹿市菊鹿町米原443-1。",
+   "_coordsSource": "OSM node 2483565746 (鞠智城)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "Pour toi",
+   "verdict": "doubt",
+   "reason": "公式紹介で住所と手仕事の器・ガラス・カゴの取扱いは確認。ニュースは2023年のサイト公開案内のみで、ブログに投稿がなく、2026年の営業本文を引用できない。"
+  },
+  {
+   "name": "harvest COFFEE STORE",
+   "verdict": "doubt",
+   "reason": "公式Instagramは本文を取得できない。代替掲載ページhttps://apese.net/?id=7167387もcurlで本文を取得できず、2026年の営業文、紹介内容と住所を確認できない。"
+  },
+  {
+   "name": "パン工房かんぱーにゅ",
+   "verdict": "doubt",
+   "reason": "公式施設紹介で鹿本町の米粉パン・天然酵母・季節パンと住所は一致。ただし2026年の新年挨拶や温泉営業記事は道の駅全体または別施設の情報で、パン工房自体の2026年営業本文を引用できない。"
+  },
+  {
+   "name": "もみじ庵おがさわら",
+   "verdict": "doubt",
+   "reason": "公式ページで十割そば、地元野菜のだんご汁と住所は一致するが日付がない。別公式サイトはページ不存在、Instagramも本文を取得できず、2026年の営業文を引用できない。"
+  }
+ ]
+}

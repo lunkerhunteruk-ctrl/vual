@@ -1,0 +1,68 @@
+[
+ {
+  "name": "八戸市美術館",
+  "nameEn": "Hachinohe Art Museum",
+  "kind": "art",
+  "area": "中心街",
+  "areaEn": "Chushingai",
+  "address": "八戸市番町10-4",
+  "url": "https://hachinohe-art-museum.jp/",
+  "what": "2021年開館の市立美術館。展覧会や市民のプロジェクトが行われ、館内への入館は無料。10時から19時、火曜休み（祝日の場合は開館し翌日休）。",
+  "whatEn": "The city art museum opened in 2021, hosting exhibitions and community projects with free entry to the building. Open 10 am to 7 pm; closed Tuesdays (or the following day if a holiday).",
+  "coords": [
+   40.51178,
+   141.49142
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "八戸ポータルミュージアム はっち",
+  "nameEn": "Hachinohe Portal Museum \"hacchi\"",
+  "kind": "sight",
+  "area": "中心街",
+  "areaEn": "Chushingai",
+  "address": "八戸市三日町11-1",
+  "url": "https://hacchi.jp/",
+  "what": "中心街にある八戸の文化と観光の交流施設。郷土の祭りや工芸の展示、ショップやカフェが入る。9時から21時、火曜休み（祝日の場合は翌日）。",
+  "whatEn": "A civic cultural and visitor centre in Chushingai with displays on local festivals and crafts, plus shops and a cafe. Open 9 am to 9 pm; closed Tuesdays (or the following day if a holiday).",
+  "coords": [
+   40.50991,
+   141.49059
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "是川縄文館",
+  "nameEn": "Korekawa Jomon Museum",
+  "kind": "art",
+  "area": "是川",
+  "areaEn": "Korekawa",
+  "address": "八戸市是川横山1",
+  "url": "https://www.korekawa-jomon.jp/",
+  "what": "是川遺跡や風張1遺跡の出土品を展示する博物館。国宝「合掌土偶」を所蔵する。9時から17時（入館16時30分まで）、月曜休み。",
+  "whatEn": "A museum exhibiting artefacts from the Korekawa and Kazahari 1 sites, home to the National Treasure Seated Clay Figurine with Hands Clasped. Open 9 am to 5 pm (last entry 4:30 pm); closed Mondays.",
+  "coords": [
+   40.47571,
+   141.48895
+  ],
+  "notice": "隣接する是川石器時代遺跡（中居遺跡）は整備工事のため見学不可。縄文学習館は2026年7月で閉館。",
+  "noticeEn": "The adjacent Korekawa Stone Age Site (Nakai Site) is closed for maintenance works; the Jomon Learning Hall closed in July 2026.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "種差海岸インフォメーションセンター",
+  "nameEn": "Tanesashi Coast Information Center",
+  "kind": "sight",
+  "area": "鮫",
+  "areaEn": "Same",
+  "address": "八戸市鮫町棚久保14-167",
+  "url": "https://tanesashi.info/",
+  "what": "種差天然芝生地の前に建つ、三陸復興国立公園の自然やみちのく潮風トレイルを案内する施設。4〜11月は9時から17時（12〜3月は16時まで）。",
+  "whatEn": "A visitor centre facing the Tanesashi natural lawn, introducing the Sanriku Fukko National Park and the Michinoku Coastal Trail. Open 9 am to 5 pm from April to November (until 4 pm from December to March).",
+  "coords": [
+   40.50871,
+   141.6084
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

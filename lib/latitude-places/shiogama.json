@@ -1,0 +1,244 @@
+[
+ {
+  "name": "浦霞 酒ギャラリー",
+  "nameEn": "Urakasumi Sake Gallery",
+  "category": "local",
+  "industry": "sake-brewing",
+  "tags": [
+   "sake",
+   "ceramics",
+   "glass"
+  ],
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町2-19",
+  "url": "https://www.urakasumi.com/",
+  "what": "1724年創業の蔵元・佐浦が本社敷地内に構える直営店。宮城県内限定の浦霞や、県内作家の陶器・ガラスの酒器が並ぶ。コイン式のきき酒サーバーがあり、日曜定休。",
+  "whatEn": "The brewery shop of Saura, founded in 1724, on its headquarters grounds. Stocks Miyagi-only Urakasumi sakes alongside ceramic and glass sake vessels by local makers. Coin-operated tasting server; closed Sundays.",
+  "note": "お猪口を選んで、きき酒を一杯。",
+  "noteEn": "Pick a little cup and try a pour from the tasting server.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31652,
+   141.01924
+  ]
+ },
+ {
+  "name": "太田與八郎商店",
+  "nameEn": "Oota Yohachiro Shoten",
+  "category": "local",
+  "industry": "miso-shoyu",
+  "tags": [
+   "miso",
+   "soy-sauce"
+  ],
+  "area": "宮町",
+  "areaEn": "Miyamachi",
+  "address": "塩竈市宮町2-42",
+  "url": "https://oota-yohachiro.com/",
+  "what": "弘化2年（1845年）創業の味噌・醤油の蔵元。鹽竈神社の門前・宮町で、赤味噌の仙台味噌や醤油を造る。日曜・祝日定休。",
+  "whatEn": "A miso and soy sauce brewer founded in 1845 in Miyamachi, below Shiogama Shrine, making red Sendai miso and soy sauce. Closed Sundays and public holidays.",
+  "note": "甘み控えめの粒味噌「五麹」をひとつ。",
+  "noteEn": "A tub of the less-sweet Go-koji grain miso.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31783,
+   141.01957
+  ]
+ },
+ {
+  "name": "蒲鉾の水野 本店",
+  "nameEn": "Kamaboko no Mizuno",
+  "category": "local",
+  "industry": "kamaboko",
+  "tags": [
+   "kamaboko"
+  ],
+  "area": "北浜",
+  "areaEn": "Kitahama",
+  "address": "塩竈市北浜1-6-3",
+  "url": "https://mizunosuisan.com/",
+  "what": "塩竈港の近くで揚げ蒲鉾を作り続ける水野水産の本店。白身魚のすり身に旬の野菜を練り込んだ揚げ蒲鉾や、おでん向けの詰め合わせが並ぶ。",
+  "whatEn": "The main shop of Mizuno Suisan, a maker of fried kamaboko near Shiogama Port. Stocks fried fish cakes kneaded with seasonal vegetables and assortments for oden.",
+  "note": "おでん用に、野菜入りの揚げ蒲鉾を選ぶ。",
+  "noteEn": "Pick out fried fish cakes with vegetables for oden.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31946,
+   141.0225
+  ]
+ },
+ {
+  "name": "Gelateria Fruits Laboratory",
+  "nameEn": "Gelateria Fruits Laboratory",
+  "category": "sweets",
+  "tags": [
+   "gelato"
+  ],
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町3-5",
+  "url": "https://fruitslaboratory.com/",
+  "what": "渡辺果実店が営む本町商店街のジェラート専門店。旬の果物や珍しいフルーツを使った日替わりのフレーバーが並ぶ。月曜定休（祝日の場合は翌日休）。",
+  "whatEn": "A gelato shop on Motomachi Shopping Street run by Watanabe Fruit Shop, with changing daily flavours made from seasonal and rare fruits. Closed Mondays (next day if a holiday).",
+  "note": "その日に出ている旬の果物を、ひとつ選ぶ。",
+  "noteEn": "Choose whichever seasonal fruit is in the case that day.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31646,
+   141.01854
+  ]
+ },
+ {
+  "name": "梅花堂 本店",
+  "nameEn": "Baikado",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "sweets"
+  ],
+  "area": "北浜",
+  "areaEn": "Kitahama",
+  "address": "塩竈市北浜4-7-3",
+  "url": "https://www.baikado.com/",
+  "what": "大正7年（1918年）創業の菓子店。宮城県産の米粉と塩竈の藻塩・ギバサを最中と合わせた「藻なかさぶれ」や、アーモンド入りのクッキー「東太平洋」、塩竈の伝統菓子「志ほがま」を扱う。",
+  "whatEn": "A confectionery founded in 1918. Makes Monaka Sablé—rice flour with Shiogama moshio salt and gibasa seaweed in a monaka wafer—alongside Higashi-Taiheiyo almond cookies and traditional Shihogama.",
+  "note": "藻なかさぶれと志ほがまを、ひとつずつ。",
+  "noteEn": "One Monaka Sablé and one Shihogama.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.32358,
+   141.02702
+  ]
+ },
+ {
+  "name": "土井精菓",
+  "nameEn": "Doiseika",
+  "category": "sweets",
+  "tags": [
+   "pastry"
+  ],
+  "area": "西塩釜",
+  "areaEn": "Nishi-Shiogama",
+  "address": "塩竈市佐浦町1-11",
+  "url": "https://doiseika-shiogama.com/",
+  "what": "昭和30年（1955年）創業、西塩釜駅近くの洋菓子店。「元祖コーヒーロール」や「レモンパイ」、バタークリームのケーキなどを自社で製造・販売する。支店はない。日曜定休（Instagramでは日曜・月曜定休）。",
+  "whatEn": "A patisserie founded in 1955 near Nishi-Shiogama Station, making its original Coffee Roll, Lemon Pie and buttercream cakes in-house, with no branches. Closed Sundays (and Mondays per Instagram).",
+  "note": "まずはコーヒーロールを、箱に詰めてもらう。",
+  "noteEn": "Start with a Coffee Roll, boxed to take away.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31186,
+   141.01794
+  ]
+ },
+ {
+  "name": "器の郷 ひろ埜 塩竈店",
+  "nameEn": "Utsuwanosato Hirono, Shiogama",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町3-4",
+  "url": "https://hirono88.com/",
+  "what": "伊万里焼・有田焼の専門店。問屋を通さず窯元から直送した普段使いの器を並べ、金継ぎの修理も受け付ける。宮城県内に2店舗あり、ここが塩竈店。",
+  "whatEn": "A specialist in Imari and Arita porcelain, stocking everyday tableware brought directly from the kilns without wholesalers, and taking kintsugi repairs. One of two shops in Miyagi.",
+  "note": "伊万里の小鉢を手に取って、重さを確かめる。",
+  "noteEn": "Pick up a small Imari bowl and feel its weight.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31659,
+   141.0186
+  ]
+ },
+ {
+  "name": "birdo space",
+  "nameEn": "birdo space",
+  "category": "craft",
+  "tags": [
+   "gallery"
+  ],
+  "area": "本塩釜",
+  "areaEn": "Hon-Shiogama",
+  "address": "塩竈市港町2-3-11",
+  "url": "https://birdoflugas.com/",
+  "what": "ビルド・フルーガスが港町で運営するギャラリースペース。作家の個展などを開く。営業は11時から17時で不定休のため、訪れる前に問い合わせが必要。",
+  "whatEn": "A gallery space in Minatomachi run by birdo flugas, hosting solo and group exhibitions. Open 11 am to 5 pm on irregular days; check before visiting.",
+  "note": "港を歩くついでに、企画展の会期を合わせて。",
+  "noteEn": "Time a walk by the port with an exhibition's run.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31697,
+   141.0273
+  ]
+ },
+ {
+  "name": "レストラン シェ・ヌー",
+  "nameEn": "Restaurant Chez Nous",
+  "category": "food",
+  "tags": [
+   "french",
+   "seafood"
+  ],
+  "area": "本塩釜",
+  "areaEn": "Hon-Shiogama",
+  "address": "塩竈市海岸通7-2",
+  "url": "https://www.cheznous.co.jp/",
+  "what": "1980年創業、海岸通のフランス料理店。三陸の魚介を使った「三陸の幸サラダ〝千賀の浦〟」などのコースを出し、隣でパンや焼菓子も売る。月曜（祝日の場合は営業）と木曜ディナー定休。",
+  "whatEn": "A French restaurant on Kaigandori founded in 1980, serving seafood courses led by its Chiganoura Sanriku seafood salad, with bread and baked sweets sold next door. Closed Mondays (open if a holiday) and Thursday evenings.",
+  "note": "海の幸のサラダ「千賀の浦」から、コースを。",
+  "noteEn": "Start the course with the Chiganoura seafood salad.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31858,
+   141.02137
+  ]
+ },
+ {
+  "name": "ラ リエート",
+  "nameEn": "la lieto",
+  "category": "food",
+  "tags": [
+   "pizza",
+   "italian"
+  ],
+  "area": "本町",
+  "areaEn": "Motomachi",
+  "address": "塩竈市本町2-4 福釜ビル1F",
+  "url": "https://www.instagram.com/la.lieto.2026/",
+  "what": "2026年6月に本町に開いたイタリアン。薪窯で焼くピッツァやパスタを出す。ランチは11時から15時、夜は金・土・日曜のみで、水曜・木曜定休。",
+  "whatEn": "An Italian restaurant opened in Motomachi in June 2026, serving wood-fired pizza and pasta. Lunch 11 am to 3 pm, dinner Friday to Sunday only; closed Wednesdays and Thursdays.",
+  "note": "昼のランチセットで、焼きたてのピッツァを。",
+  "noteEn": "Wood-fired pizza for lunch.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31712,
+   141.01986
+  ]
+ },
+ {
+  "name": "café sai",
+  "nameEn": "café sai",
+  "category": "cafe",
+  "tags": [
+   "kakigori",
+   "matcha"
+  ],
+  "area": "宮町",
+  "areaEn": "Miyamachi",
+  "address": "塩竈市宮町3-18",
+  "url": "https://www.instagram.com/cafe_sai_shiogama/",
+  "what": "宮町でかき氷を出すカフェ。抹茶やマンゴー、いちごなどのメニューがあり、糖蜜寒とシロップが付く。営業は11時から16時で不定休。",
+  "whatEn": "A café in Miyamachi serving shaved ice in flavours such as matcha, mango and strawberry, each with agar jelly in syrup. Open 11 am to 4 pm on irregular days.",
+  "note": "抹茶のかき氷に、あんこと糖蜜寒。",
+  "noteEn": "The matcha shaved ice, with red bean paste and agar jelly.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   38.31771,
+   141.01881
+  ]
+ }
+]

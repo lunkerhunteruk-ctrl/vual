@@ -1,0 +1,604 @@
+{
+ "slug": "nichinan",
+ "city": {
+  "name": "Nichinan",
+  "nameJa": "日南",
+  "latitude": "31.6° N",
+  "country": "Miyazaki, Japan",
+  "countryJa": "宮崎県",
+  "person": "rin",
+  "coords": [
+   31.62727,
+   131.35243
+  ],
+  "intro": "A town on the Hyuga-nada coast of southern Miyazaki. Obi cedar woodwork and shochu breweries, plus bread, seafood and coffee across Obi's castle town and the ports of Aburatsu and Nango: Rin's picks.",
+  "introJa": "宮崎県の南部、日向灘に面した町。飫肥杉の木工と焼酎の蔵、城下町・飫肥と港町・油津や南郷のパンや魚料理、喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Hyuga-nada coast in southern Miyazaki · between forested hills and the sea",
+   "ja": "宮崎県の南部、日向灘沿い・山林と海に挟まれた町"
+  },
+  "industries": [
+   {
+    "key": "obi-cedar",
+    "en": "Obi Cedar Woodworking",
+    "ja": "飫肥杉木工",
+    "about": "Obi cedar has been planted in the Obi area since the Edo period as timber for wooden ships, rich in resin and resistant to rot. Today local sawmills and studios shape it into everyday tableware, lunchboxes and furniture.",
+    "aboutJa": "飫肥杉は、江戸時代から木造船の材として飫肥で植えられ、油分が多く腐りにくい。いまも地元の製材所や工房が、器や弁当箱、家具など暮らしの道具を作っている。",
+    "_src": "Planted across the Obi domain since the Edo period as resin-rich, water-resistant timber for wooden ships, Obi cedar is shaped today by local sawmills and woodworking studios into tableware, lunchboxes, and furniture."
+   },
+   {
+    "key": "nichinan-shochu",
+    "en": "Nichinan Honkaku Shochu",
+    "ja": "日南の本格焼酎",
+    "about": "Nichinan's castle town and port districts are home to historic shochu breweries. Breweries such as Kyoya Shuzo, founded in 1834, still ferment sweet potatoes in large earthen kame jars buried in the floor.",
+    "aboutJa": "日南の城下町や港町には、古い焼酎蔵が残る。1834年創業の京屋酒造のように、土に埋めた大きな甕で芋焼酎を仕込む蔵がいまも続く。",
+    "_src": "Nichinan's castle town and port districts sustain one of Miyazaki's densest concentrations of historic shochu breweries, fermenting local sweet potatoes in buried ceramic kame jars with hillside spring water."
+   }
+  ]
+ },
+ "places": {
+  "ベーカリーおびにたすき": {
+   "nameEn": "Bakery OBI ni TASUKI",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "bread"
+   ],
+   "what": "飫肥城下町の、築100年の洋館を直したベーカリー。イギリスパンやフランスパン、クロワッサン生地をもとに約30種類のパンを焼く。7時半から15時で、水・木曜は休み。",
+   "whatEn": "A bakery in a restored 100-year-old Western-style house in Obi's castle town. It bakes around thirty kinds of bread from English, French and croissant doughs. Open 7:30 am to 3 pm; closed Wednesdays and Thursdays.",
+   "note": "朝いちばんに焼きたてのクロワッサンを選びたい。",
+   "noteEn": "Pick a freshly baked croissant first thing in the morning.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "べーかりーおびにたすき",
+    "address": "宮崎県日南市飫肥6-7-26",
+    "url": "https://obini-tasuki.jp/",
+    "whatJa": "飫肥城下町の築100年の洋館（旧梅村邸）を改修したベーカリーカフェ。",
+    "whatEn": "Artisan bakery-cafe inside a renovated 100-year-old Western-style mansion in Obi castle town.",
+    "facts": "Opened in June 2026 inside the restored former Umemura residence after roughly 20 years of vacancy; bakes around 30 varieties daily blending European breadmaking techniques with local ingredients; dine-in room preserves Taisho-era architectural details.",
+    "weak": "",
+    "verifiedBy": "https://obini-tasuki.jp/",
+    "quote": "6月5日（金）朝7時半、築100年の洋館を改修した「おびにたすき」がいよいよグランドオープンを迎えます。",
+    "fixes": "",
+    "coords": [
+     31.62427,
+     131.35324
+    ]
+   }
+  },
+  "HINA MUFFIN": {
+   "nameEn": "HINA MUFFIN",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "sweets"
+   ],
+   "what": "飫肥のニューヨークスタイルマフィンの店。国産バターを使い、生地から手作りで焼く。抹茶やチョコ、あんこと塩のマフィンも並ぶ。10時半から15時で、不定休。",
+   "whatEn": "A New York-style muffin shop in Obi, handmade from scratch with Japanese butter. Matcha, chocolate and salted red-bean muffins sit in the antique showcase. Open 10:30 am to 3 pm; irregular days off.",
+   "note": "抹茶か塩とこしあんのマフィンを選びたい。",
+   "noteEn": "Choose the matcha or the salted smooth red-bean muffin.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ひなまふぃん",
+    "address": "宮崎県日南市飫肥1-4-36-1",
+    "url": "https://hinamuffin-ny.jp/",
+    "whatJa": "季節の果物や地元食材を使ったニューヨークスタイルマフィンを焼く飫肥の焼き菓子専門店。",
+    "whatEn": "Small-batch muffin bakehouse in Obi baking New York-style muffins with seasonal Miyazaki fruits and teas.",
+    "facts": "Specializes in tall, dome-topped New York-style muffins baked fresh in small batches; rotates flavors using Miyazaki citrus, berries, and chocolate alongside classic crumble toppings.",
+    "weak": "",
+    "verifiedBy": "https://miyazaki.goguynet.jp/2026/03/05/miyazakipannbiyori/",
+    "quote": "カリーノ宮崎のInstagramによると、HITOKIWA BAKERY(宮崎市)・HINA MUFFIN(日南市)※15日限定の追加出店も決まっています。",
+    "fixes": "whatEn/whatJa: 公式サイトで確認できるのはニューヨークスタイルのマフィン専門店、国産バターを使用し生地から手作り。「季節の宮崎県産果物・地元食材」の記載は確認できないため削除。住所は公式サイトと一致。",
+    "coords": [
+     31.62537,
+     131.35669
+    ]
+   }
+  },
+  "手づくりパン工房 ふわり": {
+   "nameEn": "Tezukuri Pan Kobo Fuwari",
+   "area": "吾田",
+   "areaEn": "Agata",
+   "tags": [
+    "bread"
+   ],
+   "what": "日南市戸高のパン屋。生地にこだわってパンを焼く。",
+   "whatEn": "A neighborhood bakery in Todaka, Nichinan, focused on its bread dough.",
+   "note": "朝の食卓用に、シンプルな食事パンをひとつ選びたい。",
+   "noteEn": "Pick a plain loaf for the morning table.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "てづくりぱんこうぼう ふわり",
+    "address": "宮崎県日南市戸高2-3-1",
+    "url": "https://www.instagram.com/handmade_fuwari/",
+    "whatJa": "国産小麦100％と無添加生地にこだわる日南市街地のベーカリー。",
+    "whatEn": "Neighborhood bakery baking additive-free breads and croissants from 100% domestic Japanese wheat.",
+    "facts": "Uses 100% Japanese wheat including Hokkaido flour with no synthetic dough conditioners; best known locally for crisp salted butter rolls (shio-pan) and layered croissants that often sell out early.",
+    "weak": "",
+    "verifiedBy": "https://portal.btvm.ne.jp/category/umauma?doing_wp_cron=1791333480.3065021038055419921875",
+    "quote": "生地にもこだわっている「手作りパン工房ふわり」さんをご紹介します！",
+    "fixes": "住所は2026年10月1日の番組紹介で日南市戸高2-3-1と一致。whatEn/whatJaの「国産小麦100％」「無添加」「クロワッサン」は取得できた本文にはなく、紹介文は生地にこだわるパン工房までに限定。",
+    "coords": [
+     31.5991,
+     131.37636
+    ]
+   }
+  },
+  "おれんじ亭": {
+   "nameEn": "Orange-tei",
+   "area": "吾田",
+   "areaEn": "Agata",
+   "tags": [
+    "sweets",
+    "fruit"
+   ],
+   "what": "日南市戸高のフルーツカフェ。自家農園の柑橘など季節の果物のスイーツやジュース、昔ながらのたまごドーナツが並ぶ。10時から18時で、月曜は休み。",
+   "whatEn": "A fruit café in Todaka, Nichinan, serving sweets and juices made with seasonal fruit including citrus from its own orchard, plus old-fashioned egg doughnuts. Open 10 am to 6 pm; closed Mondays.",
+   "note": "季節の柑橘のパフェと、持ち帰りにたまごドーナツを。",
+   "noteEn": "A seasonal citrus parfait, and an egg doughnut to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おれんじてい",
+    "address": "宮崎県日南市戸高1-11-4",
+    "url": "https://www.instagram.com/orange.tei/",
+    "whatJa": "昔ながらの手作りたまごドーナツと季節のフルーツパフェで地元に親しまれるスイーツ店。",
+    "whatEn": "Long-loved local sweets shop known for old-fashioned egg doughnuts and seasonal fruit parfaits.",
+    "facts": "Relocated within Nichinan from Shimokata to Todaka in June 2023; signature tamago doughnuts are fried to a crisp-outside, tender-cake crumb and sold alongside tall seasonal fruit parfaits.",
+    "weak": "",
+    "verifiedBy": "https://www.umk.co.jp/mone/gourmet/16572/",
+    "quote": "季節のフルーツを求めて、多くのお客さんが足を運ぶ人気店です！",
+    "fixes": "",
+    "coords": [
+     31.59972,
+     131.37718
+    ]
+   }
+  },
+  "武家屋敷 伊東邸": {
+   "nameEn": "Samurai House Itotei",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "washoku",
+    "matcha"
+   ],
+   "what": "飫肥藩主・伊東氏の分家の武家屋敷を直した食事処と茶寮。羽釜で炊いたご飯の食事や抹茶を出している。11時から17時で、火曜は休み。",
+   "whatEn": "A restaurant and tearoom in a restored samurai residence of a branch of the Obi domain's Ito family, serving meals with rice cooked in an iron hagama pot and matcha. Open 11 am to 5 pm; closed Tuesdays.",
+   "note": "羽釜で炊いたご飯の昼食と、食後の抹茶を庭の見える席で。",
+   "noteEn": "Lunch with hagama-cooked rice, then matcha facing the garden.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぶけやしき いとうてい",
+    "address": "宮崎県日南市飫肥8-6-10",
+    "url": "https://www.itotei.com/",
+    "whatJa": "築約130年の武家屋敷で羽釜炊きご飯と日南の海の幸・郷土御膳を味わえる食事処。",
+    "whatEn": "Set-meal restaurant serving hagama-cooked rice and local seafood inside a nearly 130-year-old samurai residence.",
+    "facts": "Housed in a restored late-19th-century samurai house in Obi's preservation district; serves fresh Nichinan tuna/bonito bowls and chicken nanban sets with rice cooked in a traditional iron hagama pot overlooking a mossy garden.",
+    "weak": "",
+    "verifiedBy": "https://boo2k.com/obi-ito-residence/",
+    "quote": "武家屋敷 伊東邸的餐點主要以宮崎、日南當地食材為主。",
+    "fixes": "",
+    "coords": [
+     31.62572,
+     131.35125
+    ]
+   }
+  },
+  "魚料理 びびんや": {
+   "nameEn": "Bibinya",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "tags": [
+    "seafood",
+    "udon"
+   ],
+   "what": "油津港の漁協向かいにある魚料理店。地魚やマグロの定食のほか、魚のすり身を麺にした名物の魚うどんを出す。11時から15時で、月曜は休み。",
+   "whatEn": "A seafood dining room across from the Aburatsu fishing cooperative, serving local fish and tuna sets alongside its signature gyo-udon noodles made from minced fish. Open 11 am to 3 pm; closed Mondays.",
+   "note": "魚のすり身から作った魚うどんを、まず一杯頼んでみたい。",
+   "noteEn": "Start with a bowl of gyo-udon noodles made from minced fish.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "さかなりょうり びびんや",
+    "address": "宮崎県日南市西町2-6-3",
+    "url": "https://www.bibinya.com/",
+    "whatJa": "油津港近くで近海カツオや地魚定食、郷土料理「魚うどん」を出す海鮮料理店。",
+    "whatEn": "Portside seafood dining hall known for line-caught bonito, sashimi sets, and Nichinan's local gyo-udon fish noodles.",
+    "facts": "Named after 'bibi,' the Nichinan dialect word for fish; serves wartime-origin Aburatsu gyo-udon noodles made from minced local fish paste in dashi broth alongside daily port-landed sashimi sets.",
+    "weak": "",
+    "verifiedBy": "https://tabihime.com/restaurant/bibinya/",
+    "quote": "価格は2026年9月16日の公式掲載税込価格です。",
+    "fixes": "",
+    "coords": [
+     31.58065,
+     131.39966
+    ]
+   }
+  },
+  "港の駅めいつ": {
+   "nameEn": "Minato no Eki Meitsu",
+   "area": "南郷",
+   "areaEn": "Nango",
+   "tags": [
+    "seafood"
+   ],
+   "what": "目井津港の海を前にした食事処と直売所。甘めの醤油に漬けたカツオを出汁でも味わう名物のカツオめし定食などを出す。食事は10時半から15時で、月曜は休み。",
+   "whatEn": "A dining hall and market overlooking Meitsu Port, known for its katsuo-meshi set of soy-marinated skipjack served plain and with dashi broth. Dining 10:30 am to 3 pm; closed Mondays.",
+   "note": "カツオめしは、後半に熱い出汁をかけて食べるのが良さそう。",
+   "noteEn": "For the katsuo-meshi, pour the hot dashi over the second half.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "みなとのえき めいつ",
+    "address": "宮崎県日南市南郷町中村乙4862-9",
+    "url": "https://fishtown-meitsu.jp/",
+    "whatJa": "近海カツオ一本釣り基地・目井津港の漁協直営食堂で、名物「かつおめし定食」が評判。",
+    "whatEn": "Fishermen's cooperative dining hall on Meitsu Port famous for pole-and-line skipjack tuna rice sets.",
+    "facts": "Run directly by the Nango Fisheries Cooperative right beside Meitsu Port; signature katsuo-meshi set pairs soy-marinated skipjack sashimi with hot dashi broth poured over rice at the end.",
+    "weak": "",
+    "verifiedBy": "https://fishtown-meitsu.jp/meitsu_news/公式通販サイト変更のお知らせ/",
+    "quote": "このたび、港の駅めいつの公式通販サイトが、オンラインショップ「旬鮮直送便（港の駅めいつ）」に変更となりました。",
+    "fixes": "",
+    "coords": [
+     31.54224,
+     131.38296
+    ]
+   }
+  },
+  "塒珈琲": {
+   "nameEn": "Negura Coffee",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "飫肥の自家焙煎珈琲の店。10時から18時で、水曜と第3・第4木曜は休み。",
+   "whatEn": "A house-roasting coffee shop in Obi. Open 10 am to 6 pm; closed Wednesdays and the third and fourth Thursdays.",
+   "note": "城下町を歩いたあと、自家焙煎の珈琲でひと息つきたい。",
+   "noteEn": "After walking the castle town, sit down with a cup of house-roasted coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ねぐらこーひー",
+    "address": "宮崎県日南市飫肥5-2-18",
+    "url": "https://www.instagram.com/neguracoffee0410/",
+    "whatJa": "焼酎蔵の倉庫を飫肥杉で改装した、城下町の自家焙煎スペシャルティコーヒー専門店。",
+    "whatEn": "Small-batch specialty coffee roaster housed in a converted shochu warehouse finished with warm Obi cedar.",
+    "facts": "Renovated a former shochu brewery storehouse in Obi using local Obi cedar woodwork; stocks more than a dozen single-origin beans roasted in-house for hand-drip cups and whole-bean sales.",
+    "weak": "",
+    "verifiedBy": "https://laughly.me/paakhotel_sai/",
+    "quote": "その豆が近くのカフェで焙煎された豆と書いてあったので、カフェにもお邪魔しました。",
+    "fixes": "住所は記事の宮崎県日南市飫肥5丁目2-18と一致。焼酎倉庫の改装・飫肥杉内装はこの記事から確認できない。",
+    "coords": [
+     31.62502,
+     131.35294
+    ]
+   }
+  },
+  "Dear COFFEE ROASTERS": {
+   "nameEn": "Dear COFFEE ROASTERS",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "tags": [
+    "coffee"
+   ],
+   "what": "油津の裏通りにある自家焙煎のコーヒースタンド。カフェラテやエスプレッソに加え、ハードクッキーやベーグル、ベイクドチーズケーキが並ぶ。",
+   "whatEn": "A backstreet coffee stand in Aburatsu roasting beans in-house, serving caffe lattes and espresso alongside hard cookies, bagels and baked cheesecake.",
+   "note": "コーヒーに硬めのクッキーをひとつ添えて頼みたい。",
+   "noteEn": "Order a hard cookie alongside the coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "でぃあーこーひーろーすたーず",
+    "address": "宮崎県日南市岩崎3-3-3",
+    "url": "https://www.instagram.com/dearcoffee_roasters/",
+    "whatJa": "油津の裏通りで自家焙煎豆のエスプレッソやラテ、焼き菓子を提供するコーヒースタンド。",
+    "whatEn": "Backstreet Aburatsu coffee stand roasting beans in-house for espresso drinks and pairing them with chunky cookies.",
+    "facts": "Roasts coffee beans on-site on the ground floor of Petit Building in Iwasaki; known for rich caffe lattes, seasonal espresso tonics, and crisp house-baked hard cookies.",
+    "weak": "",
+    "verifiedBy": "https://www.umk.co.jp/mone/gourmet/18089/",
+    "quote": "店内での自家焙煎にもこだわった、コーヒー好きにはたまらないお店です。",
+    "fixes": "住所の建物階数を補足：宮崎県日南市岩崎3-3-3ぷちビル1階。",
+    "coords": [
+     31.58835,
+     131.40097
+    ]
+   }
+  },
+  "油津珈琲＋": {
+   "nameEn": "Aburatsu Coffee+",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "tags": [
+    "coffee",
+    "pancakes"
+   ],
+   "what": "油津・岩崎のカフェ。コーヒーとともに、九州パンケーキや季節のフルーツパンケーキを出している。10時から16時で、定休日はない。",
+   "whatEn": "A café in Iwasaki, Aburatsu, serving coffee with Kyushu pancakes and seasonal fruit pancakes. Open 10 am to 4 pm daily.",
+   "note": "午後のひと休みに、コーヒーと九州パンケーキを。",
+   "noteEn": "For an afternoon break, coffee and a Kyushu pancake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "あぶらつこーひーぷらす",
+    "address": "宮崎県日南市岩崎3-7-32",
+    "url": "https://www.instagram.com/aburatsu_coffee/",
+    "whatJa": "油津商店街でハンドドリップのブレンド珈琲や九州パンケーキを出す喫茶店。",
+    "whatEn": "Retro-modern kissaten in the Aburatsu shopping arcade serving hand-dripped house blends and Kyushu buttermilk pancakes.",
+    "facts": "Reopened in early 2025 as Aburatsu Coffee+ carrying forward the neighborhood kissaten's legacy; serves morning toast sets, thick egg sandwiches, and hand-dripped original blends.",
+    "weak": "",
+    "verifiedBy": "https://www.nap-camp.com/mag/57082",
+    "quote": "「油津珈琲＋（あぶらつコーヒープラス）」は、宮崎県日南市岩崎にあるカフェ。",
+    "fixes": "住所は記事の宮崎県日南市岩崎3丁目7-32と一致。九州パンケーキを確認。ハンドドリップ・自家ブレンド・バターミルクについては当該記事では確認できない。",
+    "coords": [
+     31.58771,
+     131.39829
+    ]
+   }
+  },
+  "sanga": {
+   "nameEn": "sanga",
+   "area": "南郷",
+   "areaEn": "Nango",
+   "tags": [
+    "coffee",
+    "lunch"
+   ],
+   "what": "南郷町・津屋野の古民家敷地内にあるカフェ。自家製パンのトースティーや玄米ボウル、キャラメルスライスを出す。営業は木・金・土曜のみ。",
+   "whatEn": "A café on the grounds of an old house in Tsuyano, Nango, serving house-baked toasties, brown-rice bowls and caramel slice. Open Thursdays, Fridays and Saturdays only.",
+   "note": "木・金・土だけの営業。トースティーとキャラメルスライスを。",
+   "noteEn": "Open Thursday to Saturday only. The toastie and the caramel slice.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "さんが",
+    "address": "宮崎県日南市南郷町津屋野2061",
+    "url": "https://www.instagram.com/_cafe_sanga/",
+    "whatJa": "南郷町・津屋野の古民家テラスでエスプレッソドリンクやホットサンドを出すカフェ。",
+    "whatEn": "Terrace espresso and toastie cafe in rural Nango pouring Australian-style flat whites and lattes.",
+    "facts": "Operates on the outdoor garden terrace of kominka restaurant Tsuyano Fresca; run by an Australian-trained chef/barista serving specialty lattes, toasties, and burgers.",
+    "weak": "Operates on limited weekly days on a shared kominka terrace; check Instagram calendar.",
+    "verifiedBy": "https://www.umk.co.jp/mone/gourmet/17808/",
+    "quote": "営業日は木・金・土曜日の３日間のみ。",
+    "fixes": "whatEn/whatJa: Tsuyano Fresca敷地内の古民家カフェ。記事では畳のある店内とテーブル席、オーストラリア出身オーナーによるトースティーや玄米ボウルを紹介しているため「テラスのエスプレッソ店」限定の説明を修正。住所は一致。",
+    "coords": [
+     31.54098,
+     131.34509
+    ]
+   }
+  },
+  "PAAK STOCK": {
+   "nameEn": "PAAK STOCK",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "antiques",
+    "craft"
+   ],
+   "what": "飫肥の古材と古道具の店。古い道具や暮らしの品を扱い、ドライフラワー専門店も併設する。火曜と週末を中心に開く。",
+   "whatEn": "An architectural salvage and vintage tool shop in Obi, with a dried-flower shop alongside. Open mainly on Tuesdays and weekends.",
+   "note": "古い器や暮らしの道具を、一つずつ手に取って選びたい。",
+   "noteEn": "Pick up the old vessels and household tools one by one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぱーくすとっく",
+    "address": "宮崎県日南市飫肥2-5-36",
+    "url": "https://www.instagram.com/paak_stock/",
+    "whatJa": "日南の空き家や古民家から引き取った古い器や古道具、建具を次代へ繋ぐアップサイクルショップ。",
+    "whatEn": "Architectural salvage and vintage shop in Obi rescuing ceramic tableware, folk tools, and old timber from Nichinan houses.",
+    "facts": "Operated by local architecture studio PAAK DESIGN in Obi castle town; curates vintage Japanese stoneware dishes, glass bottles, wooden fittings, and furniture salvaged prior to local demolitions.",
+    "weak": "Opens on scheduled monthly weekend dates rather than daily; verify open days on Instagram.",
+    "verifiedBy": "https://ash-design-craft.com/19/place/paak-stock/",
+    "quote": "会期中は、当店のスタッフでもある木工作家〈コトラギ〉の作品を展示。",
+    "fixes": "2026年11月21日～12月6日の会場案内。住所は一致。古材・古道具店で、ドライフラワー専門店を併設。",
+    "coords": [
+     31.62597,
+     131.3568
+    ]
+   }
+  },
+  "オビダラリー": {
+   "nameEn": "Obidaraly",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "tags": [
+    "wood"
+   ],
+   "what": "飫肥の、飫肥杉を使った木製雑貨の店。平日は13時から17時で月・木曜休み、土日は10時から17時まで開く。",
+   "whatEn": "A shop in Obi selling wooden goods made from local Obi cedar. Open 1 pm to 5 pm on weekdays (closed Mondays and Thursdays), and 10 am to 5 pm on weekends.",
+   "note": "飫肥杉の小さな雑貨を、木目を見ながら選びたい。",
+   "noteEn": "Look at the grain while choosing a small piece of Obi cedar.",
+   "_src": {
+    "category": "local",
+    "industry": "obi-cedar",
+    "nameKana": "おびだらりー",
+    "address": "宮崎県日南市飫肥4-2-28",
+    "url": "https://www.facebook.com/Obidaraly/",
+    "whatJa": "飫肥城大手門近くで地元工房による飫肥杉のカップや器、家具を展示販売する専門ギャラリー。",
+    "whatEn": "Dedicated Obi cedar gallery-shop near Obi Castle's Otemon Gate showcasing local makers' cedar cups, plates, trays, and furniture.",
+    "facts": "Name contracts 'Obisugi-darake no gallery' (a gallery full of Obi cedar); launched with Nichinan's obisugi design project to showcase local woodworkers' turned/carved cedar vessels, chopsticks, and hands-on cedar craft workshops.",
+    "weak": "",
+    "verifiedBy": "https://laughly.me/paakhotel_sai/",
+    "quote": "他にもキュンとする雑貨が置いてあり、お値段もお手頃！思わず木製のマグネットを複数、お土産としてお迎えしました。",
+    "fixes": "住所は一致。記事で確認できる説明は飫肥杉を使った雑貨の店。カップ・器・家具それぞれの取扱は当該記事では未確認。",
+    "coords": [
+     31.62766,
+     131.35246
+    ]
+   }
+  },
+  "河宗本店": {
+   "nameEn": "Kawaso Honten",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "tags": [
+    "wood",
+    "tableware"
+   ],
+   "what": "園田に事務所を構える飫肥杉の製材会社。地元の作り手と組んで、弁当箱「SUGI_BAKO」やスツール「NEJI_ISU」などの木工製品「KAWAMOKU」を手がける。",
+   "whatEn": "An Obi cedar sawmill with its office in Sonoda, producing and selling the KAWAMOKU line of cedar lunchboxes (SUGI_BAKO) and stools (NEJI_ISU) with local makers.",
+   "note": "無垢の飫肥杉をくり抜いた弁当箱を手に取ってみたい。",
+   "noteEn": "Pick up a lunchbox milled from a solid block of Obi cedar.",
+   "_src": {
+    "category": "local",
+    "industry": "obi-cedar",
+    "nameKana": "かわそうほんてん",
+    "address": "宮崎県日南市園田3-1-28",
+    "url": "https://kawasohonten.com/",
+    "whatJa": "飫肥杉専門の製材会社で、無垢材くり抜き弁当箱「SUGI_BAKO」などの木製品ブランド「KAWAMOKU」を展開。",
+    "whatEn": "Obi cedar sawmill and maker of the KAWAMOKU design line, including hollowed-cedar lunchboxes and flat-pack stools.",
+    "facts": "Operates its own Obi cedar sawmill in Kitago and main office in Sonoda near Aburatsu; produces KAWAMOKU everyday woodware such as SUGI_BAKO bento boxes milled from solid Obi cedar blocks and screw-together NEJI_ISU stools.",
+    "weak": "Lumber company office/sawmill rather than a daily walk-in retail storefront.",
+    "verifiedBy": "https://kawasohonten.com/お盆休業の御案内-3/",
+    "quote": "８月１７日(月)からは通常営業となります",
+    "fixes": "公式KAWAMOKUページで、河宗本店がプロデュース・販売し、連携企業とのコラボレーションで飫肥杉をくり抜いたSUGI_BAKOやNEJI_ISUを制作すると確認。自社単独製造と読める場合は修正。住所は事務所所在地として一致。",
+    "coords": [
+     31.58862,
+     131.404
+    ]
+   }
+  },
+  "有限会社京屋酒造": {
+   "nameEn": "Kyoya Shuzo",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "tags": [
+    "shochu"
+   ],
+   "what": "天保5年（1834年）創業の焼酎蔵。土に埋めた約800リットルの甕で芋焼酎「甕雫」などを仕込む。蔵の見学は要予約で、日・祝日は休み。",
+   "whatEn": "A shochu brewery founded in 1834, fermenting sweet-potato shochu such as Kameshizuku in 800-liter earthen jars buried in the floor. Tours by reservation; closed Sundays and holidays.",
+   "note": "蔵見学は要予約。土に埋まった大きな甕を見ておきたい。",
+   "noteEn": "Book a tour ahead to see the large earthen jars set into the floor.",
+   "_src": {
+    "category": "local",
+    "industry": "nichinan-shochu",
+    "nameKana": "ゆうげんがいしゃ きょうやしゅぞう",
+    "address": "宮崎県日南市大字平野4299",
+    "url": "https://kyo-ya.online/",
+    "whatJa": "天保5年（1834年）創業、伝統の大甕仕込みで芋焼酎「甕雫」やクラフトジンを造る油津の蔵元。",
+    "whatEn": "1834-founded Aburatsu shochu brewery fermenting organic local sweet potatoes in 800-liter buried ceramic kame jars.",
+    "facts": "Founded in 1834 and still ferments moromi mash in rare 800-liter earthen kame jars buried in the kura floor; bottles flagship Kameshizuku in a bisque-fired ceramic vessel with a wooden ladle and offers kura tours by advance reservation.",
+    "weak": "Brewery tours require advance reservation.",
+    "verifiedBy": "https://kyo-ya.online/shop/information/noticeregardingdeliveryrestrictionsincertainareas20260729",
+    "quote": "また、ご指定いただいた日時でのお届けができない場合もございます。",
+    "fixes": "社名は公式会社概要の「株式会社 京屋酒造」に修正（有限会社ではない）。住所は宮崎県日南市平野4299番地、創業1834年を確認。800リットル・埋設甕はこのページでは未確認。",
+    "coords": [
+     31.58707,
+     131.39376
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "飫肥城跡",
+   "nameEn": "Obi Castle Ruins",
+   "kind": "sight",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "address": "日南市飫肥",
+   "url": "https://obijyo.com/",
+   "what": "天正16年（1588年）以降に伊東氏が治めた飫肥城の跡。旧本丸跡の杉木立や石垣が残り、城下町の町並みとともに国の重要伝統的建造物群保存地区に選ばれている。",
+   "whatEn": "The site of Obi Castle, ruled by the Ito clan from 1588. Cedar groves in the old inner bailey and stone walls remain alongside the castle town, a national preservation district.",
+   "coords": [
+    31.62901,
+    131.35038
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://obijyo.com/ および https://obijyo.com/history/denken/ : 2026年10月イベント情報あり。天正16年（1588）、旧本丸跡の杉木立と石垣、昭和52年国の重要伝統的建造物群保存地区。",
+   "_coordsSource": "OSM node 1143976898（飫肥城）"
+  },
+  {
+   "name": "飫肥城歴史資料館",
+   "nameEn": "Obi Castle History Museum",
+   "kind": "art",
+   "area": "飫肥",
+   "areaEn": "Obi",
+   "address": "日南市飫肥五丁目",
+   "url": "https://obijyo.com/shop_map/pr/",
+   "what": "飫肥城跡の敷地内にある資料館。旧飫肥藩・伊東家に伝わる歴史資料などを展示し、共通券で豫章館など周辺の由緒施設も回れる。",
+   "whatEn": "A history museum on the Obi Castle grounds displaying materials from the Ito clan of the Obi domain; a joint ticket also admits visitors to Yoshokan and other historic buildings nearby.",
+   "coords": [
+    31.62816,
+    131.35135
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://obijyo.com/shop_map/pr/ : 単独券300円・共通券800円、飫肥城有料施設6ヵ所。",
+   "_coordsSource": "OSM way 399448850（飫肥城歴史資料館）"
+  },
+  {
+   "name": "堀川運河",
+   "nameEn": "Horikawa Canal",
+   "kind": "sight",
+   "area": "油津",
+   "areaEn": "Aburatsu",
+   "address": "日南市油津",
+   "url": "https://www.kankou-nichinan.jp/tourisms/316/",
+   "what": "広渡川河口から油津港を結ぶ延長1,450メートルの運河。飫肥杉を運ぶため、1686年に飫肥藩主・伊東祐実の命で造られた。",
+   "whatEn": "A 1,450-meter canal linking the mouth of the Hiroto River to Aburatsu Port, built in 1686 under Obi lord Ito Sukezane to transport Obi cedar.",
+   "coords": [
+    31.58804,
+    131.40361
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kankou-nichinan.jp/tourisms/316/ （日南市観光協会）: 1683年着工、1686年竣工、延長1450メートル、飫肥杉の運搬。",
+   "_coordsSource": "OSM relation 13614511（堀川運河）"
+  },
+  {
+   "name": "鵜戸神宮",
+   "nameEn": "Udo Shrine",
+   "kind": "sight",
+   "area": "宮浦",
+   "areaEn": "Miyaura",
+   "address": "日南市大字宮浦3232",
+   "url": "https://www.udojingu.or.jp/",
+   "what": "日南海岸の断崖の洞窟に本殿が建つ神社。運玉投げや亀石で知られ、境内は午前6時から午後6時まで開門している。",
+   "whatEn": "A shrine on the Nichinan coast whose main hall sits inside a sea-cliff cave, known for throwing undama luck stones at the turtle rock. Grounds open 6 am to 6 pm.",
+   "coords": [
+    31.64916,
+    131.46612
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.udojingu.or.jp/ : 2026年9月〜12月行事予定あり。宮崎県日南市大字宮浦3232番地、午前6時開門・午後6時閉門。",
+   "_coordsSource": "OSM way 1312406391（鵜戸神宮）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "スパイスカフェ ヒトツブ",
+   "verdict": "doubt",
+   "reason": "公式Instagramの投稿本文は取得不可。代替記事は2023年4月9日初出・2026年7月29日更新だが、本文に2026年の訪問・営業日がなく、更新日だけでは2026年営業を確定できない。"
+  },
+  {
+   "name": "足湯と珈琲 BOSCO",
+   "verdict": "drop",
+   "reason": "2026年6月6日の閉店記事で、2026年5月31日閉店と対象住所（北郷町郷之原甲3017-1）を確認。"
+  },
+  {
+   "name": "みちの途中",
+   "verdict": "doubt",
+   "reason": "公式Instagram本文は取得不可。2026年8月15日付の紹介記事は「2023年8月の取材情報をもとに」した再編集で、基本情報も2023年11月時点。2026年の営業を示す文なし。"
+  },
+  {
+   "name": "和雑貨やまの",
+   "verdict": "doubt",
+   "reason": "公式Instagram本文は取得不可。所在地・商品内容を裏付ける記事は2020年10月30日付で、2026年営業を示す文なし。"
+  },
+  {
+   "name": "MAKANA",
+   "verdict": "drop",
+   "reason": "店の公式ブログに16年間の営業終了を告知。日南テレビの同店紹介で所在地「日南市戸高2丁目15-13」とブログURL ameblo.jp/makana120 の対応も確認済み。"
+  },
+  {
+   "name": "株式会社日南家具工芸社",
+   "verdict": "doubt",
+   "reason": "公式サイトを開いて住所は一致。掲載されている新着情報は平成26年（2014年）までで、2026年の操業を示す文なし。代替の企業情報ページも本文取得できず。"
+  }
+ ]
+}

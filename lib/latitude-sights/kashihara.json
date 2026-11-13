@@ -1,0 +1,68 @@
+[
+ {
+  "name": "橿原神宮",
+  "nameEn": "Kashihara Jingu",
+  "kind": "sight",
+  "area": "畝傍・橿原神宮",
+  "areaEn": "Unebi & Kashiharajingu",
+  "address": "橿原市久米町934",
+  "url": "https://kashiharajingu.or.jp/",
+  "what": "明治23年（1890年）に畝傍山の東南麓に創建された神宮。第一代神武天皇と皇后を祀り、広い神域の奥に素木造りの社殿が立つ。境内は開門時間中、自由に参拝できる。",
+  "whatEn": "A shrine founded in 1890 at the southeastern foot of Mount Unebi, enshrining Emperor Jimmu and his empress. Plain-wood halls stand inside broad forested grounds, open daily during gate hours.",
+  "coords": [
+   34.4878,
+   135.7885
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "奈良県立橿原考古学研究所附属博物館",
+  "nameEn": "The Museum, Archaeological Institute of Kashihara",
+  "kind": "art",
+  "area": "畝傍・橿原神宮",
+  "areaEn": "Unebi & Kashiharajingu",
+  "address": "橿原市畝傍町50-2",
+  "url": "https://www.kashikoken.jp/museum/",
+  "what": "奈良県内の遺跡からの出土品を展示する県立の考古学博物館。2026年秋は特別展「ウマと馬具」（11月29日まで）を開催。毎週月曜（祝日の場合は翌日）と年末年始は休館。",
+  "whatEn": "The prefectural archaeology museum displaying finds excavated across Nara. In autumn 2026 it holds the special exhibition on horses and horse trappings from the Fujinoki Kofun through November 29. Closed Mondays (or the following day if a holiday) and year-end.",
+  "coords": [
+   34.49217,
+   135.79136
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "今井町伝統的建造物群保存地区",
+  "nameEn": "Imaicho Preservation District",
+  "kind": "sight",
+  "area": "今井町",
+  "areaEn": "Imaicho",
+  "address": "橿原市今井町",
+  "url": "https://www.kashihara-kanko.or.jp/about/imaicho.php",
+  "what": "称念寺を中心に寺内町として始まり、江戸時代には商工業の町として栄えた地区。江戸の町並みが残り、1993年に国の重要伝統的建造物群保存地区に選ばれた。通りは自由に歩ける。",
+  "whatEn": "A quarter that began as a temple town around Shonen-ji and prospered in the Edo period as a merchant town. Its Edo-period townhouses survive, designated a national preservation district in 1993; the streets are open to walk.",
+  "coords": [
+   34.50793,
+   135.78981
+  ],
+  "notice": "今井まちなみ交流センター「華甍」は臨時休館中。案内業務は今井まちなみ案内所（今井町3-8-8）で対応。",
+  "noticeEn": "Imaicho Townscape Exchange Center (Hanairaka) is temporarily closed; visitor information is handled at the Imaicho Townscape Information Center (3-8-8 Imaicho).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "藤原宮跡",
+  "nameEn": "Fujiwara Palace Ruins",
+  "kind": "sight",
+  "area": "藤原宮跡",
+  "areaEn": "Fujiwara Palace",
+  "address": "橿原市高殿町・醍醐町ほか",
+  "url": "https://www.kashihara-kanko.or.jp/about/fujiwarakyo.php",
+  "what": "日本初の本格的な都城・藤原京の中心にあった藤原宮の跡で、国の特別史跡。いまは広い野原に季節の花が咲き、大和三山を見渡せる。散策は自由。",
+  "whatEn": "The site of Fujiwara Palace, at the centre of Fujiwara-kyo, Japan's first planned capital, and a special national historic site. Now an open field with seasonal flowers and views of the Three Mountains of Yamato; free to walk.",
+  "coords": [
+   34.50151,
+   135.80706
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

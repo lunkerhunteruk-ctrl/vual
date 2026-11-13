@@ -1,0 +1,286 @@
+[
+ {
+  "name": "芦刃物製作所",
+  "nameEn": "Ashi Hamono",
+  "category": "local",
+  "industry": "knives",
+  "tags": [
+   "knives",
+   "craft"
+  ],
+  "area": "綾ノ町",
+  "areaEn": "Ayanocho",
+  "address": "14 Namimatsu-cho, Sakai-ku",
+  "url": "https://www.ashihamono.com/",
+  "what": "並松町の包丁工房。熱処理から研ぎ・柄付けまで一貫して手がけ、洋包丁「銀香」などを作る。土・日・祝は休み。",
+  "whatEn": "A knife workshop in Namimatsu-cho. It handles everything from heat treatment to grinding and handle fitting in-house, making the Ginga line of knives. Closed weekends and holidays.",
+  "note": "薄い刃の「銀香」を、一本手に取ってみたい。",
+  "noteEn": "I would like to pick up one of their thin Ginga blades.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.59278,
+   135.48465
+  ]
+ },
+ {
+  "name": "梅栄堂",
+  "nameEn": "Baieido",
+  "category": "local",
+  "industry": "incense",
+  "tags": [
+   "incense"
+  ],
+  "area": "綾ノ町",
+  "areaEn": "Ayanocho",
+  "address": "1-1-4 Kurumanocho Higashi, Sakai-ku",
+  "url": "https://www.baieido.co.jp/",
+  "what": "1657年創業の線香・お香の老舗。沈香や白檀など天然の香木を調合し、代表的な「好文木」などを作る。",
+  "whatEn": "An incense maker founded in Sakai in 1657, blending natural fragrant woods such as aloeswood and sandalwood, including its signature Kobunboku.",
+  "note": "明治のころから続く「好文木」の香りを試したい。",
+  "noteEn": "I want to try the scent of Kobunboku, made since the Meiji era.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.58163,
+   135.47723
+  ]
+ },
+ {
+  "name": "かん袋",
+  "nameEn": "Kanbukuro",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "mochi"
+  ],
+  "area": "宿院",
+  "areaEn": "Shukuin",
+  "address": "1-2-1 Shinzaikecho Higashi, Sakai-ku",
+  "url": "https://www.kanbukuro.co.jp/",
+  "what": "1329年創業と伝わる和菓子店。緑色の餡に餅をくるんだ「くるみ餅」と「氷くるみ餅」の店。火・水曜は休み（祝日は営業）。",
+  "whatEn": "A sweet shop tracing its start to 1329. It serves only kurumi mochi—rice cakes wrapped in green sweet paste—and shaved-ice kurumi mochi. Closed Tuesdays and Wednesdays (open on public holidays).",
+  "note": "冬でも氷くるみ餅をひとつ、店の中で食べてみたい。",
+  "noteEn": "Even in winter, I would try a single shaved-ice kurumi mochi inside.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.57184,
+   135.46878
+  ]
+ },
+ {
+  "name": "kokorotocacao",
+  "nameEn": "kokorotocacao",
+  "category": "sweets",
+  "tags": [
+   "chocolate",
+   "sweets"
+  ],
+  "area": "浜寺",
+  "areaEn": "Hamadera",
+  "address": "2-176 Hamadera Suwanomoricho Naka, Nishi-ku",
+  "url": "https://www.kokorotocacao.com/",
+  "what": "浜寺諏訪森町の商店街にあるチョコレート専門のお菓子屋。ケーキや焼菓子、寒い季節にはボンボンショコラも並ぶ。木曜休み。",
+  "whatEn": "A chocolate-focused sweet shop in the Hamadera Suwanomori shopping street. Cakes and baked sweets, with bonbons in the colder months. Closed Thursdays.",
+  "note": "寒い季節に並ぶボンボンショコラを、いくつか選びたい。",
+  "noteEn": "In the colder months, I would pick out a few bonbons from the case.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.55038,
+   135.44927
+  ]
+ },
+ {
+  "name": "銀シャリ en",
+  "nameEn": "Ginshari en",
+  "category": "food",
+  "tags": [
+   "teishoku",
+   "breakfast"
+  ],
+  "area": "宿院",
+  "areaEn": "Shukuin",
+  "address": "3-1-9 Ebisonocho Higashi, Sakai-ku",
+  "url": "https://www.instagram.com/kanameoga/",
+  "what": "戎之町東の定食屋。炊き立ての銀シャリと、焼き魚や小鉢などの手作りのおかずを並べる。朝ごはんも出す。",
+  "whatEn": "A teishoku diner in Ebisonocho Higashi serving freshly cooked white rice with grilled fish and handmade side dishes, from breakfast.",
+  "note": "朝に立ち寄って、焼き魚と小鉢をいくつか選びたい。",
+  "noteEn": "Stop in for breakfast and pick grilled fish and a few small side dishes.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.57912,
+   135.47741
+  ]
+ },
+ {
+  "name": "グリルトミー PART2",
+  "nameEn": "Grill Tommy PART2",
+  "category": "food",
+  "tags": [
+   "yoshoku"
+  ],
+  "area": "堺東",
+  "areaEn": "Sakaihigashi",
+  "address": "1-1-4 Minamishojicho, Sakai-ku",
+  "url": "https://www.instagram.com/tommy_part2/",
+  "what": "1971年創業、南庄町の洋食店。ハンバーグやとんかつ、海老フライ、クリームコロッケの盛合せを出す。昼のみ営業で、月・金曜は休み。",
+  "whatEn": "A yoshoku restaurant in Minamishojicho founded in 1971, serving hamburger steaks, tonkatsu, fried prawns and cream croquettes in mixed platters. Lunch only; closed Mondays and Fridays.",
+  "note": "海老フライとクリームコロッケの盛合せを頼んでみたい。",
+  "noteEn": "I would order the mixed platter with fried prawns and cream croquettes.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.58221,
+   135.48314
+  ]
+ },
+ {
+  "name": "麺座ぎん",
+  "nameEn": "Menza Gin",
+  "category": "food",
+  "tags": [
+   "ramen",
+   "tsukemen"
+  ],
+  "area": "堺東",
+  "areaEn": "Sakaihigashi",
+  "address": "2-3-23 Kitakawaramachi, Sakai-ku",
+  "url": "https://www.instagram.com/menzagin121/",
+  "what": "堺東駅の近くのラーメンとつけ麺の店。極太麺に濃厚な魚介豚骨スープのつけ麺や、油そばを出す。",
+  "whatEn": "A ramen and tsukemen shop near Sakaihigashi Station, known for thick noodles with rich seafood-pork dipping broth and abura-soba.",
+  "note": "極太麺のつけ麺にするか、油そばにするか迷う。",
+  "noteEn": "Hard to choose between the thick-noodle tsukemen and the abura-soba.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.57624,
+   135.48331
+  ]
+ },
+ {
+  "name": "手しごと うどん工房 はちまん",
+  "nameEn": "Udon Kobo Hachiman",
+  "category": "food",
+  "tags": [
+   "udon"
+  ],
+  "area": "浜寺",
+  "areaEn": "Hamadera",
+  "address": "4-14-1 Hamadera Ishizucho Nishi, Nishi-ku",
+  "url": "https://hachiman8.wixsite.com/hachiman",
+  "what": "浜寺石津町西のうどん店。小麦の手打ちうどんのほか、グルテンフリーの米粉うどん「さぬきごえ」も作る。",
+  "whatEn": "An udon shop in Hamadera Ishizucho Nishi making both wheat udon and its own gluten-free rice-flour udon, Sanukigoe.",
+  "note": "米粉で打つという「さぬきごえ」を一度食べてみたい。",
+  "noteEn": "I want to try Sanukigoe, their udon made with rice flour.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.55771,
+   135.45054
+  ]
+ },
+ {
+  "name": "specialty coffee DEARCUP",
+  "nameEn": "specialty coffee DEARCUP",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "宿院",
+  "areaEn": "Shukuin",
+  "address": "1-8-3 Sakaebashicho, Sakai-ku",
+  "url": "https://www.instagram.com/dearcup_coffee/",
+  "what": "栄橋町の、スペシャルティコーヒーの焙煎店・喫茶店。シングルオリジンとブレンドを出す。",
+  "whatEn": "A specialty coffee roaster and café in Sakaebashicho serving single-origin and blended coffees.",
+  "note": "シングルオリジンの豆から、その日の気分で一杯選びたい。",
+  "noteEn": "I would pick a single-origin pour to match the day's mood.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.58062,
+   135.46774
+  ]
+ },
+ {
+  "name": "自家焙煎喫茶 あおみどり",
+  "nameEn": "Aomidori",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "堺東",
+  "areaEn": "Sakaihigashi",
+  "address": "1-2-10 Koryo Nishimachi, Sakai-ku",
+  "url": "https://www.instagram.com/zikabaisen_aomidori/",
+  "what": "向陵西町の自家焙煎の喫茶店。注文ごとに焼くハンバーグランチのほか、量り売りの珈琲と珈琲ゼリーがある。",
+  "whatEn": "A house-roasting kissaten in Koryo Nishimachi serving made-to-order hamburger lunches, coffee beans by weight, and coffee jelly.",
+  "note": "食後の珈琲ゼリーと、量り売りの豆をひと袋。",
+  "noteEn": "Coffee jelly after lunch, and a bag of beans by weight.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.57045,
+   135.49004
+  ]
+ },
+ {
+  "name": "wabi-sabi 発酵と珈琲と。",
+  "nameEn": "wabi-sabi Hakko to Coffee to.",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "lunch"
+  ],
+  "area": "浜寺",
+  "areaEn": "Hamadera",
+  "address": "1-1-157 Hamadera Showacho, Nishi-ku",
+  "url": "https://hakkotocoffeeto.com/",
+  "what": "浜寺昭和町のカフェ。発酵野菜のデリをのせたプレートやスパイス料理、自家焙煎珈琲を出す。",
+  "whatEn": "A café in Hamadera Showacho serving plates with fermented vegetable delis, spiced dishes, and house-roasted coffee.",
+  "note": "発酵野菜のプレートのあと、ブレンド珈琲を一杯。",
+  "noteEn": "After a fermented vegetable plate, a cup of house blend coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.54485,
+   135.45115
+  ]
+ },
+ {
+  "name": "plants & keramik kakine",
+  "nameEn": "plants & keramik kakine",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "綾ノ町",
+  "areaEn": "Ayanocho",
+  "address": "2-59-1 Nanashimacho, Sakai-ku",
+  "url": "https://www.instagram.com/p.k_kakine/",
+  "what": "七道駅の近くの、作家ものの器と暮らしの道具、季節の花を扱う店。月に2日ほど開く。",
+  "whatEn": "A shop near Shichido Station for studio ceramics, household tools and seasonal flowers, open only about two days a month.",
+  "note": "月に二日の開店日に合わせて、全国の作家の器を見たい。",
+  "noteEn": "Time a visit for one of the two open days a month to see the studio pots.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.59432,
+   135.47617
+  ]
+ },
+ {
+  "name": "うつわと暮らしの道具 sizuku",
+  "nameEn": "sizuku",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "woodwork"
+  ],
+  "area": "泉北",
+  "areaEn": "Semboku",
+  "address": "2-5-18 Miikedai, Minami-ku",
+  "url": "https://sizuku.info/",
+  "what": "御池台の、手仕事の器と暮らしの道具の店。陶芸やガラス、木工の作家の個展や二人展を定期的に開く。",
+  "whatEn": "A shop for handmade vessels and household tools in Miikedai, holding regular solo and two-person shows of potters, glassmakers and woodworkers.",
+  "note": "個展の会期に合わせて、作家の器を一つずつ見たい。",
+  "noteEn": "Visit during a solo show to look at the maker's pots one by one.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.46602,
+   135.50838
+  ]
+ }
+]

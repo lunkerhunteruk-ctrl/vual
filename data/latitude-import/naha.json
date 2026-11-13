@@ -1,0 +1,505 @@
+{
+  "slug": "naha",
+  "city": {
+    "name": "Naha",
+    "nameJa": "那覇",
+    "latitude": "26.2° N",
+    "country": "Okinawa, Japan",
+    "countryJa": "沖縄県",
+    "person": "rin",
+    "coords": [
+      26.214,
+      127.689
+    ],
+    "intro": "A port town in southern Okinawa Island, with the culture of the Ryukyu Kingdom. Tsuboya pottery, Shuri textiles and awamori, then market coffee and Okinawa soba: Rin's picks. Winters are mild, a season for walking the lanes and the slopes of Shuri.",
+    "introJa": "沖縄本島南部の港町で、琉球王国の文化が残る。壺屋のやちむん、首里の染織と泡盛、それから市場のコーヒーや沖縄そばを、凛のおすすめで。冬も温暖で、路地や首里の坂を歩く旅に。",
+    "locator": {
+      "en": "In southern Okinawa Island · from the Shuri hills to the East China Sea",
+      "ja": "沖縄本島南部・首里の高台から東シナ海へ下る町"
+    },
+    "industries": [
+      {
+        "key": "tsuboya-yaki",
+        "en": "Tsuboya-yaki pottery",
+        "ja": "壺屋焼",
+        "about": "Tsuboya developed as a pottery centre in the seventeenth century, when potters gathered here from across Okinawa. Kilns in its lanes still make everyday tableware and shisa guardian figures.",
+        "aboutJa": "壺屋は17世紀に沖縄各地から陶工が集まり、焼物の産地として発展した。路地にある窯元では、今も日々の器やシーサーを作る。",
+        "_src": "In 1682 the Ryukyu royal government consolidated three kilns onto Tsuboya's clay-rich hillside in Naha, creating Okinawa's foundational pottery quarter for both unglazed iron-red arayachi wares and slip-glazed juyachi tableware."
+      },
+      {
+        "key": "ryukyu-bingata",
+        "en": "Ryukyu bingata & Shuri-ori textiles",
+        "ja": "琉球びんがた・首里織",
+        "about": "Bingata dyeing and Shuri-ori weaving developed around the Ryukyu royal court. Bingata uses stencils or freehand resist patterns; Shuri-ori includes patterned weaves and kasuri, now made into small everyday goods as well as kimono and obi.",
+        "aboutJa": "びんがたと首里織は、琉球王府のおひざ元で育った染めと織り。びんがたは型染めや筒描き、首里織は紋織や絣などの技法があり、今は着物や帯だけでなく、日々使う小物にもなる。",
+        "_src": "Nurtured under royal patronage around Shuri Castle using Naha's spring water, stencil-dyed bingata and handwoven Shuri-ori remain the signature court textiles of the former Ryukyu capital."
+      },
+      {
+        "key": "awamori",
+        "en": "Shuri awamori distilling",
+        "ja": "首里の泡盛造り",
+        "about": "Awamori is a spirit distilled from rice fermented with black koji. Under the Ryukyu Kingdom, production was restricted to the three Shuri quarters of Akata, Sakiyama and Torihori; awamori aged for at least three years is called kusu.",
+        "aboutJa": "泡盛は、米を黒麹で発酵させて蒸留する酒。琉球王国では首里の赤田・崎山・鳥堀の三地区に製造が限られ、3年以上熟成した泡盛は古酒（クース）と呼ぶ。",
+        "_src": "Under the Ryukyu Kingdom, licensed black-koji rice spirit distilleries were concentrated in three hillside wards below Shuri Castle, where mineral-rich spring water still sustains Naha's oldest awamori makers."
+      }
+    ]
+  },
+  "places": {
+    "壺屋焼窯元 育陶園": {
+      "nameEn": "Ikutouen",
+      "area": "壺屋",
+      "areaEn": "Tsuboya",
+      "tags": [
+        "ceramics",
+        "tableware",
+        "shisa"
+      ],
+      "what": "壺屋やちむん通りの窯元の本店。唐草線彫の器や、育陶園の獅子を扱い、工房見学も案内する。",
+      "whatEn": "The main shop of a kiln on Tsuboya Yachimun-dori, with carved arabesque tableware and its own shisa figures. It also arranges studio visits.",
+      "note": "唐草の線を見ながら、毎日使う器を一つ選びたい。",
+      "noteEn": "I would choose one piece for daily use, looking at the carved arabesque lines.",
+      "_src": {
+        "category": "local",
+        "industry": "tsuboya-yaki",
+        "nameKana": "つぼややきかまもと いくとうえん",
+        "address": "沖縄県那覇市壺屋1-22-33",
+        "url": "https://www.ikutouen.com/",
+        "whatJa": "壺屋やちむん通りに本店と工房を構え、伝統の唐草線彫の器や獅子を手作業で制作・販売する老舗窯元。",
+        "whatEn": "Historic Tsuboya-yaki kiln and flagship shop crafting hand-carved arabesque stoneware and traditional guardian shisa on Tsuboya Yachimun-dori.",
+        "facts": "Run by the Takaezu family with roots stretching back roughly 300 years in Tsuboya; signature lines include sgraffito-carved Karakusa Senbori tableware and hand-built Ikutouen shisa, with a back-lane workshop offering studio tours and pottery classes.",
+        "weak": "",
+        "verifiedBy": "https://www.ikutouen.com/2026/10/19/%ef%bc%bc-%e5%a3%ba%e5%b1%8b%e3%81%ae%e3%81%84%e3%82%8a%e3%81%90%e3%81%a1-1st-anniversary%ef%bc%81-%ef%bc%8f/",
+        "quote": "2025年10月にグランドオープンした「壺屋のいりぐち」は、おかげさまで1周年を迎えます。",
+        "fixes": "Address 壺屋1-22-33 matches the official site (本店). Site says the kiln has run '340年以上' in Tsuboya (factsForNote's 'roughly 300 years' is too low). Current head potter is 6th-generation 高江洲忠 (about page). 'Takaezu family' is correct. Shisa: 5th gen 高江洲育男's shisa molds are inherited. Home page also lists a 2026-11-02 festival post and Instagram says 11/20-11/22 Tsuboya Pottery Fair.",
+        "coords": [
+          26.21253,
+          127.69244
+        ]
+      }
+    },
+    "清正陶器・壺屋窯": {
+      "nameEn": "Kiyomasa Pottery / Tsuboya Kiln",
+      "area": "壺屋",
+      "areaEn": "Tsuboya",
+      "tags": [
+        "ceramics",
+        "tableware"
+      ],
+      "what": "壺屋やちむん通りから一本入った路地の窯元の店。4代目の小橋川卓史が、父から継ぐ「赤絵魚紋」と自身の「希望の光」などの器を作る。",
+      "whatEn": "A kiln shop down a lane off Tsuboya Yachimun-dori. Fourth-generation potter Takashi Kobashigawa makes the red fish designs inherited from his father and his own Light of Hope series.",
+      "note": "赤い魚の器を、家の食卓に置くつもりで選びたい。",
+      "noteEn": "I would choose a red fish dish with my own table in mind.",
+      "_src": {
+        "category": "local",
+        "industry": "tsuboya-yaki",
+        "nameKana": "きよまさとうき・つぼやがま",
+        "address": "沖縄県那覇市壺屋1-16-7",
+        "url": "https://kiyomasatouki.com/",
+        "whatJa": "壺屋で330年余り続く系譜を受け継ぎ、伝統の赤絵魚紋や現代的な釉薬の器を手がける窯元・直営店。",
+        "whatEn": "Fourth-generation Tsuboya kiln and shop known for overglaze red-enamel fish motifs alongside luminous contemporary glazes.",
+        "facts": "Fourth-generation potter Takashi Kobashigawa carries on the vivid Akae Gyomon (red-enamel fish motif) originated by his father Kiyomasa while developing his own 'Kibou no Hikari' glaze series at the Tsuboya Yachimun-dori workshop.",
+        "weak": "",
+        "verifiedBy": "https://kiyomasatouki.com/blog/736/",
+        "quote": "令和8年2月、また新しいスタートです。",
+        "fixes": "Address 〒902-0065 那覇市壺屋1-16-7 matches. Site says 330年余り (matches whatJa), 4th-generation 小橋川卓史, 赤絵魚紋, 希望の光 all match. Hours 10:00-18:00, irregular closing days. Latest 2026 evidence is Feb 2026 blog (no later post than that seen; news page latest 2025.11.15 price revision).",
+        "coords": [
+          26.21326,
+          127.69178
+        ]
+      }
+    },
+    "首里染織館 suikara": {
+      "nameEn": "Shuri Textile Center suikara",
+      "area": "首里",
+      "areaEn": "Shuri",
+      "tags": [
+        "bingata",
+        "textile",
+        "weaving"
+      ],
+      "what": "首里当蔵町の、琉球びんがたと首里織の工房・ギャラリー・ショップ。二つの染織組合の職人が技を伝え、染めや織りの体験も行う。",
+      "whatEn": "A studio, gallery and shop for Ryukyu bingata and Shuri-ori in Shuri Tonokura-cho. Artisans from the two textile cooperatives pass on their skills and offer dyeing and weaving workshops.",
+      "note": "びんがたの色を見てから、持ち歩く小物を選びたい。",
+      "noteEn": "I would look at the bingata colours before choosing something small to carry.",
+      "_src": {
+        "category": "local",
+        "industry": "ryukyu-bingata",
+        "nameKana": "しゅりせんしょくかん すいから",
+        "address": "沖縄県那覇市首里当蔵町2-16",
+        "url": "https://suikara.ryukyu/",
+        "whatJa": "琉球びんがた事業協同組合と那覇伝統織物事業協同組合が共同運営する、首里の染織工房・ギャラリー・直営ショップ。",
+        "whatEn": "Joint craft center, working studio, and shop run by Naha's Ryukyu bingata and Shuri-ori weavers' cooperatives near Shuri Castle.",
+        "facts": "Located in Shuri Tonokura-cho, uniting the official cooperatives for Ryukyu bingata stencil dyeing and Shuri-ori weaving under one roof with artisan studios, exhibitions, custom kimono/obi orders, and hands-on dyeing and weaving workshops.",
+        "weak": "",
+        "verifiedBy": "https://suikara.ryukyu/2026/09/03/11-3%e7%81%ab%e9%a6%96%e9%87%8c%e6%9f%93%e7%b9%94%e9%a4%a8suikara%e9%a7%90%e8%bb%8a%e5%a0%b4%e3%81%ab%e5%87%ba%e5%ba%97%e8%80%85%e5%8b%9f%e9%9b%86/",
+        "quote": "首里染織館suikara 駐車場で出店してくださる方を募集します！",
+        "fixes": "Address 那覇市首里当蔵町2-16 (〒903-0812) matches. Page says it is run mainly by 琉球びんがた事業協同組合・那覇伝統織物事業協同組合 with workshop, exhibition gallery, shop. Hours 10:30-18:00, closed Tuesdays, year-end/New Year and ウークイ. Also a 2026-08-23 typhoon notice and 2026 spring/suikara festival posts.",
+        "coords": [
+          26.2198,
+          127.72092
+        ]
+      }
+    },
+    "瑞泉酒造": {
+      "nameEn": "Zuisen Distillery",
+      "area": "首里",
+      "areaEn": "Shuri",
+      "tags": [
+        "awamori",
+        "kusu"
+      ],
+      "what": "首里崎山町で1887年に創業した泡盛の蔵元。売店では古酒や、戦前の黒麹菌で仕込む「御酒」を扱う。",
+      "whatEn": "An awamori distillery founded in 1887 in Shuri Sakiyama-cho. Its shop sells aged kusu and Usaki, made with a strain of black koji preserved from before the war.",
+      "note": "古酒は、家で少しずつ飲む一本を選んで帰りたい。",
+      "noteEn": "I would take home one bottle of aged awamori to drink a little at a time.",
+      "_src": {
+        "category": "local",
+        "industry": "awamori",
+        "nameKana": "ずいせんしゅぞう",
+        "address": "沖縄県那覇市首里崎山町1-35",
+        "url": "https://www.zuisen.co.jp/",
+        "whatJa": "首里崎山町で1887年創業の歴史を持つ琉球泡盛の蔵元で、見学や古酒の試飲・直売を行う。",
+        "whatEn": "Meiji-era awamori distillery in Shuri Sakiyama-cho offering cellar tastings and aged kusu spirits bottled from black-koji rice.",
+        "facts": "Founded in 1887 in Shuri's historic distilling quarter; produces aged kusu (vintage awamori) and revived royal-recipe Usaki spirits using black koji, with an on-site shop and tasting counter.",
+        "weak": "",
+        "verifiedBy": "https://www.zuisen.co.jp/",
+        "quote": "SAKE COMPETITION 2026　泡盛一般酒部門 金賞受賞",
+        "fixes": "Address 沖縄県那覇市首里崎山町1-35 matches. 創業 明治20年（1887年） confirmed on /kigyou. Shop hours 9:00-17:00 (closed holidays); tours weekdays/Sat (none Sun), no reservation needed for shop tasting. Evidence is an undated 2026 award and 2026 payment-program notice, not a dated post; Wix item createdDate values show 2026-10-15 edits. Note: 'cellar tastings' is not literal; page says 見学 and 古酒の飲み比べ at the shop counter.",
+        "coords": [
+          26.21547,
+          127.72065
+        ]
+      }
+    },
+    "GARB DOMINGO": {
+      "nameEn": "GARB DOMINGO",
+      "area": "壺屋",
+      "areaEn": "Tsuboya",
+      "tags": [
+        "ceramics",
+        "glass",
+        "lacquer",
+        "wood"
+      ],
+      "what": "壺屋のギャラリー兼セレクトショップ。沖縄と各地の作り手の陶器、漆器、ガラス、木工を紹介し、個展も開く。",
+      "whatEn": "A gallery and select shop in Tsuboya, showing ceramics, lacquerware, glass and woodwork by makers from Okinawa and elsewhere, with solo exhibitions.",
+      "note": "陶器だけでなく、ガラスや木のものも一つずつ見たい。",
+      "noteEn": "I would look at the glass and wooden pieces one by one, as well as the pottery.",
+      "_src": {
+        "category": "craft",
+        "industry": "",
+        "nameKana": "ガーブ ドミンゴ",
+        "address": "沖縄県那覇市壺屋1-6-3",
+        "url": "https://www.garbdomingo.com/",
+        "whatJa": "壺屋に佇むギャラリー＆セレクトショップで、沖縄の現代作家による陶器やガラス、木工、企画展を紹介する。",
+        "whatEn": "Two-story gallery and craft shop in Tsuboya curating contemporary Okinawan ceramics, blown glass, woodwork, and exhibitions.",
+        "facts": "Situated just off Tsuboya's pottery lanes at Tsuboya 1-6-3; showcases independent Okinawan ceramicists, glassblowers, and textile makers alongside regular solo exhibitions.",
+        "weak": "",
+        "verifiedBy": "https://www.garbdomingo.com/blog/?p=4179",
+        "quote": "2026.11.13  fri – 17 tue / 20 fri – 22 sun",
+        "fixes": "Address 〒902-0065 沖縄県那覇市壺屋1-6-3 matches. Hours Fri-Tue 9:30-13:00/14:30-17:00, closed Wed & Thu. Page describes ceramics, lacquerware, glass, woodwork, art; 'Two-story' and 'textile makers' are NOT on the page - remove. Also exhibition 'AMP' page says '2026年3月20日（金）〜24日（火）'.",
+        "coords": [
+          26.21324,
+          127.68972
+        ]
+      }
+    },
+    "miyagiya": {
+      "nameEn": "miyagiya",
+      "area": "松尾",
+      "areaEn": "Matsuo",
+      "tags": [
+        "ceramics",
+        "glass",
+        "textile",
+        "clothing"
+      ],
+      "what": "松尾の器と服のセレクトショップ。店主が工房で選ぶやちむんに、琉球ガラスや布、ジュエリーなどを合わせて紹介する。",
+      "whatEn": "A shop for tableware and clothing in Matsuo. Yachimun chosen by the owner on studio visits sits alongside Ryukyu glass, textiles and jewellery.",
+      "note": "器も服も、家でふだん使うものとして選んでみたい。",
+      "noteEn": "I would choose both the dishes and the clothes for everyday life at home.",
+      "_src": {
+        "category": "craft",
+        "industry": "",
+        "nameKana": "ミヤギヤ",
+        "address": "沖縄県那覇市松尾2-19-39",
+        "url": "https://magasin-miyagiya.com/",
+        "whatJa": "浮島通り沿いで沖縄のやちむんや琉球ガラス、衣服やジュエリーを独自の視点で編集・紹介するセレクトショップ。",
+        "whatEn": "Editorial craft and lifestyle shop on Ukishima-dori pairing Okinawan yachimun pottery and Ryukyu glass with contemporary clothing.",
+        "facts": "Opened in Naha in 2010 and located on Matsuo's Ukishima-dori street; curates hand-thrown yachimun stoneware and mouth-blown Ryukyu glass from local studios alongside independent fashion and maker exhibitions.",
+        "weak": "",
+        "verifiedBy": "https://magasin-miyagiya.com/2026/10/30/newyearsholidays2027/",
+        "quote": "12/25(金)から翌年1/5(火)まで冬季休暇の予定です。",
+        "fixes": "Address 沖縄県那覇市松尾2-19-39 matches. Hours 12:00-19:00, closed Wed & Thu. Correction: About page says the web shop began in 2010 and the physical Naha shop opened in August 2012 ('Opened in Naha in 2010' in factsForNote is wrong). 'Ukishima-dori' is not stated on the page (remove or verify elsewhere). The site calls itself an editorial select shop for pottery, Ryukyu glass, textiles, clothing, jewelry, daily goods, art.",
+        "coords": [
+          26.21299,
+          127.68722
+        ]
+      }
+    },
+    "COFFEE potohoto": {
+      "nameEn": "COFFEE potohoto",
+      "area": "安里",
+      "areaEn": "Asato",
+      "tags": [
+        "coffee",
+        "coffee beans"
+      ],
+      "what": "安里の栄町市場にあるコーヒー豆の店。産地ごとの豆とオリジナルブレンドを焙煎して売る。",
+      "whatEn": "A coffee bean shop in Sakaemachi Market, Asato, roasting and selling single-origin coffees and its own blends.",
+      "note": "産地の違う豆を見比べて、飲んだことのない一袋を。",
+      "noteEn": "I would compare the origins and take a bag I have never tried.",
+      "_src": {
+        "category": "coffee",
+        "industry": "",
+        "nameKana": "コーヒー ポトホト",
+        "address": "沖縄県那覇市安里388-1",
+        "url": "http://www.potohoto.jp/",
+        "whatJa": "昭和の面影が残る栄町市場の一角で、世界各地のシングルオリジン豆を自家焙煎し提供するコーヒー専門店。",
+        "whatEn": "Tiny specialty coffee roaster and stand tucked inside retro Sakaemachi Market, roasting single-origin beans including Asian micro-lots.",
+        "facts": "Operated by roaster Tetsuya Yamada inside Sakaemachi Market (Asato 388-1) since 2006; serves espresso and pour-over cups at a small counter amidst market produce stalls and sells freshly roasted beans.",
+        "weak": "",
+        "verifiedBy": "http://www.potohoto.jp/",
+        "quote": "10/12(月)ネット店の焙煎・発送お休み",
+        "fixes": "Top page tagline says beans ship 沖縄栄町市場から (matches Sakaemachi Market); tel 098-886-3095. Street address 安里388-1, founder name and 'since 2006' were not shown on the pages I opened. Page lists the same site news with 2026/10/22 'ブレンド3種値上げのお知らせ' and 2026/09/24 new Taiwan geisha lot. Note: the evidence shows the online roasting/shipping business active in 2026; counter hours not checked.",
+        "coords": [
+          26.21735,
+          127.69692
+        ]
+      }
+    },
+    "TAMAGUSUKU COFFEE ROASTERS": {
+      "nameEn": "TAMAGUSUKU COFFEE ROASTERS",
+      "area": "松尾",
+      "areaEn": "Matsuo",
+      "tags": [
+        "coffee",
+        "coffee beans"
+      ],
+      "what": "松尾のグリーンハイツ那覇202号室にある、自家焙煎のスペシャルティコーヒー店。豆の販売のほか、ラテやカプチーノも。",
+      "whatEn": "A specialty coffee roaster in Room 202 of Green Heights Naha in Matsuo. It sells beans and serves drinks including lattes and cappuccinos.",
+      "note": "浅煎りの豆を選んで、家でもゆっくり飲んでみたい。",
+      "noteEn": "I would choose a light roast to brew slowly at home.",
+      "_src": {
+        "category": "coffee",
+        "industry": "",
+        "nameKana": "タマグスク コーヒー ロースターズ",
+        "address": "沖縄県那覇市松尾2-19-39 グリーンハイツ那覇202",
+        "url": "https://tamacoroa.com/",
+        "whatJa": "松尾・浮島通り沿いのビル2階にある小さな自家焙煎スペシャルティコーヒー専門店。",
+        "whatEn": "Second-floor micro-roastery above Ukishima-dori in Matsuo serving small-batch specialty pour-overs in a quiet apartment space.",
+        "facts": "Tucked into Room 202 of Green Heights Naha (above miyagiya on Ukishima-dori); roasts small batches of single-origin specialty beans in-house for pour-over coffee and whole-bean retail.",
+        "weak": "",
+        "verifiedBy": "http://tamacoroa.com/tamacoroa/",
+        "quote": "本日9月9日(水)は16時閉店になります。",
+        "fixes": "Site top page shows '#202 Green Heights Naha 2-19-39, Matsuo Naha-shi Okinawa 900-0014', tel 098-988-4566 (address matches). Page does not mention 'above miyagiya' or 'pour-over in a quiet apartment space'.",
+        "coords": [
+          26.21319,
+          127.68738
+        ]
+      }
+    },
+    "デザートラボショコラ": {
+      "nameEn": "Dessert Labo Chocolat",
+      "area": "首里",
+      "areaEn": "Shuri",
+      "tags": [
+        "cake",
+        "baked sweets"
+      ],
+      "what": "首里金城町の洋菓子店。チョコレートの菓子や、フィナンシェ「Shulien」、伊江ラムレーズンサンドを作る。",
+      "whatEn": "A patisserie in Shuri Kinjo-cho making chocolate sweets, Shulien financiers and Ie-rum raisin sandwiches.",
+      "note": "焼き菓子を選ぶなら、伊江ラムのレーズンサンドを。",
+      "noteEn": "For a baked sweet, I would choose the Ie-rum raisin sandwich.",
+      "_src": {
+        "category": "sweets",
+        "industry": "",
+        "nameKana": "デザートラボショコラ",
+        "address": "沖縄県那覇市首里金城町4-70-4",
+        "url": "https://chocolat2007.jp/",
+        "whatJa": "首里金城町の石畳道近くにある洋菓子店で、看板のチョコレートケーキや県産素材の焼き菓子を手作りする。",
+        "whatEn": "Neighborhood patisserie near Shuri's Kinjo-cho stone-paved road specializing in layered chocolate mousse cakes and Okinawan-ingredient baked sweets.",
+        "facts": "Located in Shuri Kinjo-cho with an open kitchen; best known for its signature 'Chocolat' cake pairing rich chocolate mousse with raspberry jam, alongside financiers and rum-raisin sandwiches.",
+        "weak": "",
+        "verifiedBy": "https://shop.cake-cake.net/dlchocolat/",
+        "quote": "2026.05.16 包装資材価格高騰による料金改定・一部有料化のお知らせ",
+        "fixes": "Address matches official site (https://chocolat2007.jp/): 〒903-0815 沖縄県那覇市首里金城町4-70-4 1F (add '1F'). Official site: 11:00〜18:30, closed Monday (Tuesday if Monday is a holiday); its 2026年11月 calendar widget is auto-generated so not used as evidence. The pages I opened do not say 'layered chocolate mousse' or 'stone-paved road' (only the shop name, Shulien financier, Ie-rum raisin sandwich, chocolate cakes); keep whatEn/whatJa general and drop 'layered mousse'/'open kitchen' unless confirmed elsewhere. Official site news column last post is 2024.09.05.",
+        "coords": [
+          26.21299,
+          127.71798
+        ]
+      },
+      "address": "那覇市首里金城町4-70-4 1F"
+    },
+    "安里屋すば": {
+      "nameEn": "Asatoya Suba",
+      "area": "安里",
+      "areaEn": "Asato",
+      "tags": [
+        "Okinawa soba",
+        "jushi"
+      ],
+      "what": "安里の立ち食い沖縄そば店。木灰を使った自家製麺に、北海道の真昆布・鰹・豚骨の出汁を合わせ、ジューシーも出す。",
+      "whatEn": "A stand-up Okinawa soba shop in Asato, serving house-made wood-ash noodles in a broth of Hokkaido kelp, bonito and pork bones, with jushi seasoned rice too.",
+      "note": "木灰の麺を味わいたいので、まずはかけすばを頼む。",
+      "noteEn": "I would start with plain kake suba to taste the wood-ash noodles.",
+      "_src": {
+        "category": "food",
+        "industry": "",
+        "nameKana": "あさとやすば",
+        "address": "沖縄県那覇市安里3-1-8",
+        "url": "https://asatoyasuba.okinawa/",
+        "whatJa": "自家製の木灰麺と真昆布・鰹・豚骨の澄んだ出汁で伝統の沖縄すばを供する安里の立ち食いそば店。",
+        "whatEn": "Traditional stand-up Okinawa soba shop in Asato making wood-ash noodles in-house for clear kelp, bonito, and pork broth.",
+        "facts": "Located at Asato 3-1-8 near Asato Station and Sakaemachi; kneads traditional wood-ash lye noodles in-house and pairs classic Okinawa soba with seasoned jushi rice.",
+        "weak": "",
+        "verifiedBy": "https://asatoyasuba.okinawa/2026/05/01/2026%e5%b9%b4%e3%80%81%e3%82%b4%e3%83%bc%e3%83%ab%e3%83%87%e3%83%b3%e3%82%a6%e3%82%a3%e3%83%bc%e3%82%af%e5%96%b6%e6%a5%ad%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/",
+        "quote": "安里屋すばのゴールデンウィーク営業についてご案内いたします。",
+        "fixes": "Address on page: 〒902-0067 沖縄県那覇市安里3丁目1-8 (matches); stand-up style, wood-ash in-house noodles, Hokkaido kelp/bonito/pork-bone dashi, jushi all confirmed. Closed Sun/Mon/holidays; Yui Rail Asato station 3 min walk. Latest 2026 post is May; no later 2026 post seen on top page.",
+        "coords": [
+          26.21851,
+          127.69604
+        ]
+      }
+    }
+  },
+  "sights": [
+    {
+      "name": "首里城公園",
+      "nameEn": "Shurijo Castle Park",
+      "kind": "sight",
+      "area": "首里",
+      "areaEn": "Shuri",
+      "address": "那覇市首里金城町1-2",
+      "url": "https://oki-park.jp/shurijo/",
+      "what": "琉球国王の王宮で、政治と祭祀、文化の中心だった首里城を囲む公園。丘の上に曲線を描く城壁が続き、首里城跡は世界遺産。",
+      "whatEn": "A park around Shurijo Castle, the Ryukyu kings’ palace and centre of government, ritual and culture. Curving walls enclose the hilltop; the castle ruins are a World Heritage site.",
+      "coords": [
+        26.21700,
+        127.71937
+      ],
+      "notice": "2026年11月22日は全園休園。23日は城郭内無料区域が11時15分、有料区域が正午に開き、復元正殿も正午から公開予定。正殿内の観覧は日時指定の事前予約制。",
+      "noticeEn": "The whole park is closed on 22 November 2026. On the 23rd, the free castle area opens at 11:15 am and the paid area at noon, when the restored main hall is scheduled to open. Entry inside the main hall requires a timed reservation.",
+      "verifiedAt": "2026-11-12",
+      "_source": "https://oki-park.jp/shurijo/about/ ; https://oki-park.jp/shurijo/information/detail/11419 (2026-09-28 closure notice); https://oki-park.jp/shurijo/information/detail/11164 (2026-07-31 reservation notice).",
+      "_coordsSource": "OpenStreetMap node 4828423125 (historic=castle, 首里城), Nominatim search 首里城 那覇: 26.2170014, 127.7193727."
+    },
+    {
+      "name": "沖縄県立博物館・美術館",
+      "nameEn": "Okinawa Prefectural Museum & Art Museum",
+      "kind": "art",
+      "area": "おもろまち",
+      "areaEn": "Omoromachi",
+      "address": "那覇市おもろまち3-1-1",
+      "url": "https://okimu.jp/",
+      "what": "沖縄の自然・歴史・文化を伝える博物館と、近現代美術を紹介する美術館。博物館には美術工芸や民俗の展示もあり、美術館では沖縄ゆかりの作家を中心に見せる。",
+      "whatEn": "A museum of Okinawa’s nature, history and culture alongside an art museum for modern and contemporary work. The museum includes crafts and folk culture; the art museum focuses on artists connected with Okinawa.",
+      "coords": [
+        26.22716,
+        127.69372
+      ],
+      "notice": "月曜休館（祝日・振替休日・慰霊の日は開館し、翌平日休館）。年末年始は2026年12月29日から2027年1月3日まで休館。",
+      "noticeEn": "Closed Mondays, or the next weekday when Monday is a public holiday, substitute holiday or Okinawa Memorial Day. Closed for New Year from 29 December 2026 to 3 January 2027.",
+      "verifiedAt": "2026-11-12",
+      "_source": "https://okimu.jp/about/charm/ ; https://okimu.jp/guide/information/ ; https://okimu.jp/event/1776396580/ linked on homepage for permanent-exhibition talks 2026-11-12 to 2026-12-10.",
+      "_coordsSource": "OpenStreetMap way 104013354 (tourism=museum), Nominatim search 沖縄県立博物館 美術館: 26.2271587, 127.6937179."
+    },
+    {
+      "name": "玉陵",
+      "nameEn": "Tamaudun Royal Mausoleum",
+      "kind": "sight",
+      "area": "首里",
+      "areaEn": "Shuri",
+      "address": "那覇市首里金城町1-3",
+      "url": "https://www.naha-navi.or.jp/sightseeing/tama-udun/",
+      "what": "第二尚氏の歴代国王の墓。三つの墓室と石碑、門があり、2000年に「琉球王国のグスク及び関連遺産群」の一つとして世界遺産に登録された。",
+      "whatEn": "The tombs of the kings of the Second Sho dynasty, with three burial chambers, a stone inscription and gates. Listed in 2000 as part of the World Heritage Gusuku Sites and Related Properties of the Kingdom of Ryukyu.",
+      "coords": [
+        26.21813,
+        127.71465
+      ],
+      "notice": "2026年11月23日から30日までは、首里城正殿の完成を記念して入園無料。通常は9時から18時、最終入場17時30分。",
+      "noticeEn": "Admission is free from 23 to 30 November 2026 to mark the completion of Shurijo’s main hall. Normally open 9 am to 6 pm, last entry 5:30 pm.",
+      "verifiedAt": "2026-11-12",
+      "_source": "https://www.naha-navi.or.jp/sightseeing/tama-udun/ (Naha City Tourism Association); https://www.city.naha.okinawa.jp/kankou-bunka/bunkazai/1003532/1013276.html (2026-11-11 notice confirming 23–30 November opening and free admission).",
+      "_coordsSource": "OpenStreetMap way 53763966 (historic=tomb, 玉陵), Nominatim search 玉陵 那覇: 26.2181266, 127.7146540."
+    },
+    {
+      "name": "那覇市立壺屋焼物博物館",
+      "nameEn": "Naha Municipal Tsuboya Pottery Museum",
+      "kind": "art",
+      "area": "壺屋",
+      "areaEn": "Tsuboya",
+      "address": "那覇市壺屋1-9-32",
+      "url": "http://www.edu.city.naha.okinawa.jp/tsuboya/",
+      "what": "壺屋焼を中心に、沖縄の焼物の歴史と技法を伝える市立博物館。建設地から発掘されたニシヌ窯を、ほぼ元の位置で保存・展示する。",
+      "whatEn": "A municipal museum of Okinawan pottery, centred on the history and techniques of Tsuboya-yaki. The Nishinu kiln excavated during construction is preserved and displayed almost where it was found.",
+      "coords": [
+        26.21383,
+        127.69079
+      ],
+      "notice": "外壁等の改修工事のため、2026年9月1日から2027年3月31日まで臨時休館予定。期間中は館内を見学できない。",
+      "noticeEn": "Closed for exterior and other repairs from 1 September 2026 through 31 March 2027. The museum interior cannot be visited during this period.",
+      "verifiedAt": "2026-11-12",
+      "_source": "http://www.edu.city.naha.okinawa.jp/tsuboya/ (2026-09-01 closure notice, 2026-10-16 updates); http://www.edu.city.naha.okinawa.jp/tsuboya/gaiyou2.html (permanent exhibition and kiln).",
+      "_coordsSource": "OpenStreetMap way 405576602 (tourism=museum, 壺屋焼物博物館), Nominatim search 壺屋焼物博物館: 26.2138334, 127.6907879."
+    }
+  ],
+  "_dropped": [
+    {
+      "name": "tituti OKINAWAN CRAFT",
+      "verdict": "doubt",
+      "reason": "Official site opens and shop-info page matches address (〒900-0013 沖縄県那覇市牧志3-6-37, 9:30〜17:30／火曜定休), but no 2026-dated sentence found: top page, WORKS (latest 2023.12), and blog feed (latest post 2025-03-05) have no 2026 content; Instagram/Facebook are login-walled."
+    },
+    {
+      "name": "Craft・Gift ヤッチとムーン",
+      "verdict": "doubt",
+      "reason": "Site is live and address matches, but the only 2026 item is an auto-generated 営業日カレンダー '2026年11月' (calendar, not a dated notice); latest TOPICS entry is 2019/12/27; store news is on Instagram (login-walled). No copyable 2026 operation sentence."
+    },
+    {
+      "name": "rokkan COFFEE SHURI",
+      "verdict": "doubt",
+      "reason": "Only 2026 trace is a freee booking page (rokkan COFFEE LABORATORY classes, same Shuri address/tel) that lists '…チャンピオンシップ2026' sessions with no dated notice about the cafe itself; not a clear sentence that the shop operates in 2026."
+    },
+    {
+      "name": "たそかれ珈琲",
+      "verdict": "doubt",
+      "reason": "Instagram is login-walled, so no post text or 2026 date could be read; no official website found. No copyable 2026 sentence."
+    },
+    {
+      "name": "TOUCA BAKE SHOP",
+      "verdict": "doubt",
+      "reason": "Instagram is login-gated for me: only the profile bio (15K followers, 1,964 posts) was visible, no dated 2026 post could be read. No official site. No 2026 sentence copied."
+    },
+    {
+      "name": "soytobio bakehouse",
+      "verdict": "doubt",
+      "reason": "Newest dated text I could open is 2025.8.30 (move notice in Instagram bio). Official site has no dated post; no 2026 sentence found."
+    },
+    {
+      "name": "Fontana Gelato",
+      "verdict": "doubt",
+      "reason": "Newest dated news on the official site is 2025.05.07 (TV feature); no 2026 sentence. Address on the list is the pre-move address."
+    },
+    {
+      "name": "うちなー茶屋 ぶくぶく",
+      "verdict": "doubt",
+      "reason": "The only 2026 text on the page is a developer HTML comment ('2026-08-04 に全ファイル走査で確認') which is not evidence of operation; no dated 2026 notice/post found (Instagram bio only)."
+    },
+    {
+      "name": "沖縄の味 石嶺食堂",
+      "verdict": "doubt",
+      "reason": "The お知らせ section is empty on the official site; no dated post/holiday notice; copyright footer has no year. No 2026 sentence found (checked top, shop, lunch, food, drink, order pages)."
+    },
+    {
+      "name": "浮島ガーデン",
+      "verdict": "drop",
+      "reason": "Official site (close_info.html) says weekend lunch is currently closed and directs to sister Rakuen Cafe; official Instagram bio (@ukishima_garden_okinawa) says 'ただいま飲食部門は臨時休業中' (restaurant/dining division temporarily closed), only the Rakuen Cafe in Rinboku department store and web shop operate. No dated 2026 post/notice found. Also whatEn 'renovated timber-house' / taco rice / natural-wine dinners not confirmed on the page (page describes a vegan grain-based restaurant)."
+    },
+    {
+      "name": "saborami",
+      "verdict": "doubt",
+      "reason": "Instagram without login shows only the profile bio (1,447 posts) and no dated post, so no 2026 sentence could be copied. Search snippets mention no closure or move, but they are not evidence."
+    }
+  ]
+}

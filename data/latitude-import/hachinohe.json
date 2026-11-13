@@ -1,0 +1,638 @@
+{
+ "slug": "hachinohe",
+ "city": {
+  "name": "Hachinohe",
+  "nameJa": "八戸",
+  "latitude": "40.5° N",
+  "country": "Aomori, Japan",
+  "countryJa": "青森県",
+  "person": "rin",
+  "coords": [
+   40.515,
+   141.508
+  ],
+  "intro": "A Pacific port town in eastern Aomori. Sake breweries along the Niida River, Nanbu hishizashi embroidery and Nanbu senbei, plus morning wharf diners and coffee houses in Konakano and Same: Rin's picks.",
+  "introJa": "青森県の太平洋側に開けた港町。新井田川沿いの酒蔵、南部菱刺しと南部せんべい、岸壁の食堂や小中野・鮫の珈琲屋を、凛のおすすめで。",
+  "locator": {
+   "en": "On the Pacific coast of Aomori · a port town at the mouth of the Mabechi and Niida rivers",
+   "ja": "青森県の太平洋側・馬淵川と新井田川の河口の港町"
+  },
+  "industries": [
+   {
+    "key": "port-brewing",
+    "en": "Port-town Sake Brewing",
+    "ja": "湊町の酒造り",
+    "about": "Cold Pacific winters and local spring water have sustained sake breweries near Hachinohe's port since the late 18th century. Houses such as Hachinohe Shuzo (1775) and Hachinohe Syurui (1786) still brew in historic storehouses.",
+    "aboutJa": "太平洋側の寒い冬と地元の仕込み水が、18世紀末から八戸の港まわりの酒造りを支えてきた。1775年創業の八戸酒造や1786年創業の八戸酒類などが、いまも蔵で酒を醸す。",
+    "_src": "Cold Pacific port winters and pure spring water from the Kitakami foothills have sustained historic sake breweries beside Hachinohe's fish landings since the late 18th century."
+   },
+   {
+    "key": "nanbu-hishizashi",
+    "en": "Nanbu Hishizashi Embroidery",
+    "ja": "南部菱刺し",
+    "about": "Nanbu hishizashi is a counted-thread diamond embroidery from eastern Aomori, once stitched onto hemp workwear for warmth and strength. Alongside Tsugaru koginzashi and Shonai sashiko, it is counted among Japan's three major sashiko traditions.",
+    "aboutJa": "南部菱刺しは青森県南部に伝わる刺し子で、麻の野良着を暖かく丈夫にするために刺されたのが始まり。津軽こぎん刺し、庄内刺し子と並ぶ日本三大刺し子のひとつ。",
+    "_src": "Born among farming and port families in eastern Aomori to reinforce and insulate hemp workwear against bitter winds, counted-thread diamond stitching became Hachinohe's signature folk textile craft."
+   },
+   {
+    "key": "nanbu-senbei",
+    "en": "Nanbu Senbei Baking",
+    "ja": "南部せんべい",
+    "about": "Round wheat crackers baked in cast-iron molds in the old Nanbu domain, using sesame, peanuts or plain dough. In Hachinohe they are eaten both crisp as a snack and simmered in brothy senbei-jiru.",
+    "aboutJa": "旧南部藩の地域で鉄型を使って焼かれてきた丸い小麦の煎餅で、胡麻や豆、白などの種類がある。八戸ではそのまま食べるほか、汁物に入れて煮込むせんべい汁にも使う。",
+    "_src": "Crisp round wheat crackers baked in cast-iron molds originated in the Hachinohe-Nanbu domain and anchor both everyday snacking and the city's simmered senbei-jiru."
+   }
+  ]
+ },
+ "places": {
+  "八戸酒造": {
+   "nameEn": "Hachinohe Shuzo",
+   "area": "陸奥湊",
+   "areaEn": "Mutsu-Minato",
+   "tags": [
+    "sake"
+   ],
+   "what": "1775年創業の酒蔵。新井田川沿いに大正期の赤レンガ蔵や漆喰土蔵が並び、「陸奥八仙」や「陸奥男山」を醸す。蔵見学は事前予約制。",
+   "whatEn": "A sake brewery founded in 1775 along the Niida River, with Taisho-era red-brick and earthen storehouses. It brews Mutsu Hassen and Mutsu Otokoyama; brewery tours require advance booking.",
+   "note": "赤レンガ蔵を眺めたあと、直汲みの一本を選びたい。",
+   "noteEn": "After looking at the red-brick storehouses, I would pick a bottle of straight-from-the-press jikagumi.",
+   "_src": {
+    "category": "local",
+    "industry": "port-brewing",
+    "nameKana": "はちのへしゅぞう",
+    "address": "湊町字本町9",
+    "url": "https://mutsu8000.com/",
+    "whatJa": "1775年創業、新井田川沿いの赤レンガ蔵や土蔵で「陸奥八仙」「陸奥男山」を醸す湊町の老舗酒蔵。",
+    "whatEn": "A 1775-founded sake brewery on the Minatomachi canal brewing Mutsu Hassen and Mutsu Otokoyama inside Taisho-era red-brick and earthen storehouses.",
+    "facts": "Founded in An'ei 4 (1775) and marked its 250th anniversary in 2025; six historic buildings including red-brick storehouses are Registered Tangible Cultural Properties; brews aromatic Mutsu Hassen alongside crisp dry fishermen's sake Mutsu Otokoyama using Aomori rice and local Kanisawa water, with a direct shop and bookable kura tours.",
+    "weak": "Kura tours require advance reservation.",
+    "verifiedBy": "https://mutsu8000.com/?p=45100",
+    "quote": "八仙の「直汲み」は、搾りたてのガス感を楽しんでいただくため、搾ってすぐのお酒を瓶詰してお届けしています。",
+    "fixes": "whatEn: replace Minatomachi canal with Niida River (新井田川), as stated at https://mutsu8000.com/kura/.",
+    "coords": [
+     40.52432,
+     141.52317
+    ]
+   }
+  },
+  "八戸酒類 八鶴蔵元直売所": {
+   "nameEn": "Hachinohe Syurui Hachitsuru Direct Shop",
+   "area": "中心街",
+   "areaEn": "Chushingai",
+   "tags": [
+    "sake"
+   ],
+   "what": "1786年創業の老舗蔵元による、八日町の直売所。「八鶴」や「如空」などを扱う。2026年2月の告知で、地震により蔵見学は期間未定で中止中。",
+   "whatEn": "The downtown Yokamachi direct shop of a brewery founded in 1786, selling Hachitsuru and Joku sakes. Brewery tours inside the kura remain suspended indefinitely following an earthquake notice in February 2026.",
+   "note": "八鶴と如空、辛口と吟醸を一本ずつ見比べる。",
+   "noteEn": "Compare a dry Hachitsuru and a ginjo Joku side by side.",
+   "_src": {
+    "category": "local",
+    "industry": "port-brewing",
+    "nameKana": "はちのへしゅるい はちつるくらもとちょくばいじょ",
+    "address": "八日町6-1",
+    "url": "https://hachinohe-syurui.com/",
+    "whatJa": "1786年創業の老舗蔵元が八日町の登録有形文化財蔵のそばで営む、「八鶴」「如空」の蔵元直売所。",
+    "whatEn": "The downtown direct shop of a 1786-founded brewery pouring and selling Hachitsuru and Joku sakes beside its Taisho-modern registered heritage kura.",
+    "facts": "Traces its roots to Tenmei 6 (1786) in downtown Yokamachi; brews Hachitsuru and Joku using Aomori Hanafubuki sake rice; direct shop sells seasonal unpasteurized bottles, sake lees, and regional sake vessels.",
+    "weak": "Brewery tours inside the kura were suspended following a February 2026 earthquake notice, though retail sales continue.",
+    "verifiedBy": "https://hachinohe-syurui.com/u/information/article/80",
+    "quote": "1月5日より営業させていただきます。",
+    "fixes": "address: 青森県八戸市八日町１番地（公式会社概要 https://hachinohe-syurui.com/u/company と八鶴工場紹介の所在地）。蔵見学は2025年12月9日から期間未定で中止（2026年2月18日公式告知）。",
+    "coords": [
+     40.51077,
+     141.49217
+    ]
+   }
+  },
+  "つづれや": {
+   "nameEn": "Tsuzureya",
+   "area": "根城",
+   "areaEn": "Nejo",
+   "tags": [
+    "textiles",
+    "craft"
+   ],
+   "what": "青森県伝統工芸士・山田友子さんが主宰する南部菱刺しの工房。草木染めの糸で菱模様を刺した布小物やバッグなどを制作し、糸も扱う。",
+   "whatEn": "A Nanbu hishizashi embroidery studio led by certified traditional craftsperson Tomoko Yamada. She makes bags and small cloth goods stitched with plant-dyed threads, and also sells the dyed yarn.",
+   "note": "草木染めの糸の色と、菱模様の細かさを近くで見たい。",
+   "noteEn": "I want to see the plant-dyed thread colours and fine diamond stitches up close.",
+   "_src": {
+    "category": "local",
+    "industry": "nanbu-hishizashi",
+    "nameKana": "つづれや",
+    "address": "田面木字上野平91-7",
+    "url": "https://hishizashi.com/",
+    "whatJa": "青森県伝統工芸士・山田友子氏が主宰し、草木染め糸で緻密な菱模様を刺す南部菱刺し工房。",
+    "whatEn": "A Nanbu hishizashi embroidery studio led by certified traditional craftsperson Tomoko Yamada, stitching geometric diamond motifs with plant-dyed threads.",
+    "facts": "Base of the Nanbu Hishizashi Research Group in Tamonoki; preserves one of Japan's Three Great Sashiko traditions alongside Tsugaru koginzashi and Shonai sashiko; produces bags, table runners, and small accessories using natural plant-dyed wool and cotton yarn.",
+    "weak": "Primarily a working studio rather than a full-time street-front retail shop; check ahead before visiting.",
+    "verifiedBy": "https://www.navitabi.jp/article/11676",
+    "quote": "方言の「のれそれ」をひし刺しで表現した南部菱（ひし）刺しの「つづれや」（八戸市）の山田友子代表は「コラボできて楽しかった」と話した。",
+    "fixes": "",
+    "coords": [
+     40.48988,
+     141.44605
+    ]
+   }
+  },
+  "味の海翁堂": {
+   "nameEn": "Aji no Kaiodo",
+   "area": "鮫",
+   "areaEn": "Same",
+   "tags": [
+    "senbei"
+   ],
+   "what": "1970年創業の食品メーカー。隣接する自社工場「南部庵」で、胡麻・豆・白の南部せんべいやせんべい汁用のせんべいを焼く。",
+   "whatEn": "A food maker founded in 1970. At its adjacent Nanbu-an factory, it bakes sesame, peanut and plain Nanbu senbei as well as senbei for stewing in senbei-jiru.",
+   "note": "胡麻と豆の南部せんべいを、せんべい汁用と並べて選ぶ。",
+   "noteEn": "Pick sesame and peanut Nanbu senbei alongside the kind made for simmering in soup.",
+   "_src": {
+    "category": "local",
+    "industry": "nanbu-senbei",
+    "nameKana": "あじのかいおうどう",
+    "address": "岬台4-1-1",
+    "url": "https://www.kaiodo.co.jp/",
+    "whatJa": "隣接する自社工場「南部庵」で胡麻・豆・白せんべいやせんべい汁用の南部せんべいを焼き上げる1970年創業のメーカー。",
+    "whatEn": "A 1970-founded coastal food maker baking sesame, peanut, white, and stewing-grade Nanbu senbei at its adjacent Nanbu-an factory.",
+    "facts": "Founded in 1970 in coastal Misakidai above Same port; bakes traditional cast-iron-style sesame, peanut, and chewy 'otafuku' senbei for Hachinohe senbei-jiru at its on-site Nanbu-an factory, alongside Sanriku sea-urchin and abalone ichigoni.",
+    "weak": "Misakidai headquarters/factory focuses heavily on manufacturing and direct shipping rather than a curated boutique storefront.",
+    "verifiedBy": "https://www.kaiodo.co.jp/shop/tag/取り寄せ/",
+    "quote": "味の海翁堂の魚介類加工珍味 鮭皮チップス 100g ノンフライで糖質ゼロしかもコラーゲン5500mgと豊富なおつまみ珍味はパリパリ食感でボリューム満点！",
+    "fixes": "",
+    "coords": [
+     40.52042,
+     141.56422
+    ]
+   }
+  },
+  "八戸菓子匠 港むら福": {
+   "nameEn": "Minato Murafuku",
+   "area": "陸奥湊",
+   "areaEn": "Mutsu-Minato",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "大正13年（1924年）創業の和菓子店。羊かんを昆布で挟んだ「より藻」や季節の上生菓子を作る。火・水曜休み、9時から18時。",
+   "whatEn": "A wagashi shop founded in 1924, known for Yorimo—yokan sandwiched in kelp—and seasonal nerikiri sweets. Closed Tuesdays and Wednesdays; open 9 am to 6 pm.",
+   "note": "昆布で挟んだ「より藻」と、季節の上生菓子を一つずつ。",
+   "noteEn": "A piece of kelp-wrapped Yorimo and one seasonal sweet.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "はちのへかししょう みなとむらふく",
+    "address": "湊町字本町34-1",
+    "url": "https://minatomurafuku.jimdofree.com/",
+    "whatJa": "大正13年創業、湊町本町で季節の上生菓子や昆布羊羹を手作りする老舗和菓子店。",
+    "whatEn": "A neighborhood wagashi shop in Minatomachi crafting seasonal nerikiri and kelp-infused yokan since 1924.",
+    "facts": "Founded in 1924 (Taisho 13) a short walk from Mutsu-Minato Station; owner-craftsman Osamu Funaba became the first artisan north of Tohoku certified as an Excellent Wagashi Craftsman in 2008; signature sweets include 'Yorimo' kelp yokan and seasonal kuzu confections.",
+    "weak": "",
+    "verifiedBy": "https://minatomurafuku.jimdofree.com/季節のお菓子-1/",
+    "quote": "※2026年桃の節句のSNSご予約を受け付けは終了いたしました。",
+    "fixes": "",
+    "coords": [
+     40.5237,
+     141.524
+    ]
+   }
+  },
+  "ル・スゥブラン": {
+   "nameEn": "Le Souverain",
+   "area": "小中野",
+   "areaEn": "Konakano",
+   "tags": [
+    "pastry",
+    "chocolate"
+   ],
+   "what": "類家のパティスリー。11月の「まるごと栗ロール」や「紅玉のアップルパイ」、青森の塩を使ったブッセなどの生菓子と焼き菓子が並ぶ。",
+   "whatEn": "A patisserie in Ruike offering fresh cakes and baked sweets, including whole-chestnut roll cakes in November, Jonathan apple pie and salted buttercream bouchee.",
+   "note": "栗のロールケーキか、紅玉のアップルパイを一つ。",
+   "noteEn": "A slice of the chestnut roll cake or the Jonathan apple pie.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "る・すぅぶらん",
+    "address": "類家4-18-13",
+    "url": "https://le-souverain.com/",
+    "whatJa": "旬の果実を使った生菓子やショコラ、素材の風味を活かした焼き菓子が並ぶ八戸の実力派パティスリー。",
+    "whatEn": "A beloved Hachinohe patisserie crafting seasonal fruit entremets, rolled cakes, bonbons chocolats, and low-additive baked sweets.",
+    "facts": "Independent single-store patisserie in Ruike whose name means 'supreme' in French; celebrated for whole-chestnut autumn roll cakes, Aomori apple pastries, and artisan chocolates made with minimal additives.",
+    "weak": "",
+    "verifiedBy": "https://le-souverain.com/news/1395/",
+    "quote": "クリスマスコレクションのご予約を11/1～開始致しました！",
+    "fixes": "",
+    "coords": [
+     40.50531,
+     141.50644
+    ]
+   }
+  },
+  "アンジェリーナ": {
+   "nameEn": "Angelina",
+   "area": "小中野",
+   "areaEn": "Konakano",
+   "tags": [
+    "bread"
+   ],
+   "what": "小中野の手作りパン屋。食パンやクロワッサン、クッキーシュー、季節限定のパンなどを毎日焼く。",
+   "whatEn": "A handmade bakery in Konakano baking daily loaves, croissants, cookie choux and seasonal breads.",
+   "note": "焼きたてのクロワッサンと、クッキーシューを袋に。",
+   "noteEn": "A fresh croissant and a cookie choux to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "あんじぇりーな",
+    "address": "小中野4-5-10",
+    "url": "https://anjerina-hachinohe.jp/",
+    "whatJa": "小中野で毎日焼きたての食パンや季節限定パン、自家製菓子パンを手作りする町のベーカリー。",
+    "whatEn": "A neighborhood artisan bakery in Konakano baking everyday hearth loaves, seasonal pastries, and chilled ice-cream bread sandwiches from scratch.",
+    "facts": "Independent bakery rooted in Konakano; bakes additive-conscious daily loaves, autumn chestnut and sweet-potato pastries, and chilled summer ice-cream sandwiches.",
+    "weak": "",
+    "verifiedBy": "https://anjerina-hachinohe.jp/402/",
+    "quote": "秋の新商品続々販売中です。",
+    "fixes": "",
+    "coords": [
+     40.52007,
+     141.51178
+    ]
+   }
+  },
+  "パティスリーヤスヒロ": {
+   "nameEn": "Patisserie Yasuhiro",
+   "area": "根城",
+   "areaEn": "Nejo",
+   "tags": [
+    "pastry"
+   ],
+   "what": "根城の洋菓子店。手焼きのクッキーやダックワーズ、季節のカットケーキが並ぶ。8時30分から（生菓子は10時から）、水曜休み。",
+   "whatEn": "A patisserie in Nejo known for hand-baked cookies, dacquoise and seasonal cut cakes. Open from 8:30 am (fresh cakes from 10 am); closed Wednesdays.",
+   "note": "クッキーを何種類か選んで、ダックワーズも一つ。",
+   "noteEn": "Pick a few kinds of cookies and add a dacquoise.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりーやすひろ",
+    "address": "根城7-1-26",
+    "url": "https://www.yasuhiro.shop/",
+    "whatJa": "職人が一枚ずつ焼き上げるクッキーやダックワーズ、季節の生ケーキが評判の根城の洋菓子店。",
+    "whatEn": "An independent Nejo patisserie celebrated for crisp hand-baked cookies, almond dacquoise, and seasonal Tohoku fruit cakes.",
+    "facts": "Run by Kansai-born Chef Yasuhiro in residential Nejo; specializes in hand-baked sablé cookies, crisp-chewy dacquoise, and seasonal cakes showcasing Tohoku fruits.",
+    "weak": "",
+    "verifiedBy": "https://www.yasuhiro.shop/news/?sc=261112_092239325",
+    "quote": "より多くのお客様に気軽に手に取っていただけるよう、価格を見直しました。",
+    "fixes": "",
+    "coords": [
+     40.50261,
+     141.46909
+    ]
+   }
+  },
+  "漁港ストア": {
+   "nameEn": "Gyoko Store",
+   "area": "陸奥湊",
+   "areaEn": "Mutsu-Minato",
+   "tags": [
+    "soba",
+    "oden"
+   ],
+   "what": "館鼻岸壁のそばで50年ほど続く食堂。麺もつゆも自家製で、そば・うどん・ラーメンと、そばつゆで煮たおでんを出す。",
+   "whatEn": "A diner beside Tatehana Wharf running for about 50 years. It makes its own noodles and broth, serving soba, udon, ramen and oden simmered in soba broth.",
+   "note": "朝の岸壁で、そばとそばつゆのおでんを頼む。",
+   "noteEn": "Order soba and soba-broth oden by the morning wharf.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぎょこうすとあ",
+    "address": "新湊3-4-14",
+    "url": "https://gyokostore.com/",
+    "whatJa": "館鼻岸壁の目の前で約50年愛される、自家製麺のそば・うどん・ラーメンとそばつゆおでんの港食堂。",
+    "whatEn": "A yellow port-side noodle counter right on Tatehana Wharf serving house-made soba, udon, ramen, and soba-broth oden to dockworkers and early risers.",
+    "facts": "Operating for roughly 50 years directly beside the 800-meter Tatehana Wharf Sunday Morning Market site; makes all soba, udon, ramen noodles and dashi tsuyu in-house; famous for hot soba-broth oden and kakiage tempura soba with enka playing in the background.",
+    "weak": "",
+    "verifiedBy": "https://jmty.jp/aomori/eve-fes/article-1r1njn",
+    "quote": "8/16（日）朝7時から、漁港ストア様にてめだかの販売をいたします。",
+    "fixes": "",
+    "coords": [
+     40.53026,
+     141.52676
+    ]
+   }
+  },
+  "浜市場 みなとっと": {
+   "nameEn": "Hama-Ichiba Minatotto",
+   "area": "陸奥湊",
+   "areaEn": "Mutsu-Minato",
+   "tags": [
+    "seafood"
+   ],
+   "what": "八戸みなと漁協直営の海産物直売所と漁師食堂。館鼻岸壁の近くにあり、平目やイカなどの刺身を選んで「のっけろ丼」にできる。",
+   "whatEn": "A seafood market and fishermen's canteen run by the Hachinohe Minato Fisheries Cooperative near Tatehana Wharf. Choose trays of local flounder and squid to make your own Nokkerodon bowl.",
+   "note": "平目とイカの刺身をのせて、のっけろ丼にする。",
+   "noteEn": "Top a rice bowl with fresh flounder and squid sashimi.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "はまいちば みなとっと",
+    "address": "湊町字大沢35-1",
+    "url": "https://www.instagram.com/nokkerodon/",
+    "whatJa": "八戸みなと漁協直営の市場食堂で、水揚げされたばかりの平目やイカを選んで「のっけろ丼」に仕立てられる一軒。",
+    "whatEn": "A fishermen's cooperative market hall and dining room near Tatehana Wharf where diners assemble custom rice bowls from fresh-landed flounder, squid, and mackerel.",
+    "facts": "Directly operated by the Hachinohe Minato Fisheries Cooperative near Mutsu-Minato and Tatehana Wharf; visitors pick sashimi trays of local flounder (hirame), Hachinohe squid, and seasonal fish to build custom 'Nokkerodon' bowls over hot rice.",
+    "weak": "",
+    "verifiedBy": "https://www.activitv.com/entry/kanpai_261019_minatotto/",
+    "quote": "2026年10月19日放送の【鶴瓶の家族に乾杯】鶴瓶さん・藤本美貴さんがロケで紹介した、八戸のイカの刺身・のお店は『浜市場 みなとっと』です。",
+    "fixes": "",
+    "coords": [
+     40.52623,
+     141.53348
+    ]
+   }
+  },
+  "創作そばバル ぱいせん": {
+   "nameEn": "Sosaku Soba Bar Paisen",
+   "area": "陸奥湊",
+   "areaEn": "Mutsu-Minato",
+   "tags": [
+    "soba",
+    "sake"
+   ],
+   "what": "陸奥湊駅近くのそばバル。階上町産のそばの実を石臼で挽いて手打ちし、昼は鴨せいろや創作そば、夜は地酒とそばを出す。",
+   "whatEn": "A soba shop and bar near Mutsu-Minato Station, hand-cutting stone-milled Hashikami buckwheat. It serves duck seiro and inventive broths by day, and local sake with soba at night.",
+   "note": "石臼挽きの鴨せいろか、トムヤムクンそばにするか迷う。",
+   "noteEn": "Torn between the stone-milled duck seiro and the Tom Yum Kung soba.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "そうさくそばばる ぱいせん",
+    "address": "湊町字柳町52",
+    "url": "https://paisen819.com/",
+    "whatJa": "陸奥湊駅近くで階上町産そばの実を石臼挽きして手打ちする、昼は蕎麦屋・夜は地酒バルの個人店。",
+    "whatEn": "An independent soba shop and evening bar near Mutsu-Minato Station hand-cutting stone-milled Hashikami buckwheat into duck seiro and inventive broths.",
+    "facts": "Milled in-house on a stone quern from local Hashikami-grown buckwheat berries; serves classic roasted-duck kamo seiro alongside signature spicy-sour Tom Yum Kung soba and evening Aomori sake.",
+    "weak": "",
+    "verifiedBy": "https://www.8megblog.com/2026/11/06paisen0021.html",
+    "quote": "2026.10.24から新そばが登場して\nイベント会場などで新そばが味わえるようですが…館鼻岸壁朝市の会場内でも新そばが味わえます！",
+    "fixes": "",
+    "coords": [
+     40.52249,
+     141.5244
+    ]
+   }
+  },
+  "Porta Otto": {
+   "nameEn": "Porta Otto",
+   "area": "中心街",
+   "areaEn": "Chushingai",
+   "tags": [
+    "italian"
+   ],
+   "what": "十三日町のイタリア料理店。八戸近海の魚介や肉、野菜を備長炭で焼き、パスタやワインと合わせる。昼は前菜盛り合わせとパスタのセットも。",
+   "whatEn": "An Italian restaurant in Jusannichimachi grilling Hachinohe seafood, meats and vegetables over binchotan charcoal, paired with pasta and wine. Lunch sets include an antipasti plate.",
+   "note": "八戸の魚介の炭火焼きと、前菜の盛り合わせを頼みたい。",
+   "noteEn": "I would order the charcoal-grilled local seafood and the antipasti plate.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぽるたおっと",
+    "address": "十三日町5",
+    "url": "https://portaotto.com/",
+    "whatJa": "八戸近海の魚介や地場野菜を備長炭の炭火焼きとパスタで仕立てる十三日町のイタリア料理店。",
+    "whatEn": "An independent Italian kitchen in Jusannichimachi grilling Hachinohe seafood, local meats, and seasonal vegetables over binchotan charcoal.",
+    "facts": "Led by Hachinohe-born Chef Hirayama (born in Fukiage, 1978); specializes in binchotan charcoal-grilled Pacific fish, local meats, and Aomori vegetables paired with house pastas and wine.",
+    "weak": "",
+    "verifiedBy": "https://hgm-1.blog.jp/archives/cat_46597.html",
+    "quote": "今回は私も友達も、前菜とパスタの組み合わせでランチ\nをいただきました。",
+    "fixes": "address: 青森県八戸市十三日町5番地 2F",
+    "coords": [
+     40.5087,
+     141.48837
+    ]
+   }
+  },
+  "6かく珈琲": {
+   "nameEn": "6kaku Coffee",
+   "area": "小中野",
+   "areaEn": "Konakano",
+   "tags": [
+    "coffee",
+    "sweets"
+   ],
+   "what": "小中野の明治期の木造建築を使った珈琲店。七輪の炭火で無農薬の生豆を少量ずつ焙煎し、オーガニックの焼き菓子も出す。金・土・日の12時から18時のみ営業。",
+   "whatEn": "A coffee house in a Meiji-era wooden building in Konakano. Organic green beans are roasted in small batches over a charcoal shichirin, served with organic baked sweets. Open Fridays to Sundays only, 12 pm to 6 pm.",
+   "note": "七輪の炭火で煎った深い珈琲と、焼き菓子をひとつ。",
+   "noteEn": "A deep charcoal-roasted coffee and one baked sweet.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ろっかくこーひー",
+    "address": "小中野8-13-2",
+    "url": "https://www.6kakucoffee.jp/",
+    "whatJa": "明治期の古民家を改装した空間で、無農薬生豆を七輪の炭火で少量手焙煎する珈琲店。",
+    "whatEn": "A weekend coffee house in a renovated Meiji-era townhouse where organic green beans are hand-roasted in small batches over a charcoal shichirin brazier.",
+    "facts": "Housed in a 120-year-old Meiji wooden building in Konakano's historic Shincho quarter about 10 minutes' walk from Mutsu-Minato Station; roasts pesticide-free beans over wood charcoal on a clay shichirin; open Fridays, Saturdays, and Sundays with organic sweets.",
+    "weak": "Open only three days a week (Friday–Sunday).",
+    "verifiedBy": "https://visithachinohe.com/stories/tatehanaganpekiasaichi-2days-plan/",
+    "quote": "店内ではチョコレートのソフトクリームやプリンも楽しめます。",
+    "fixes": "",
+    "coords": [
+     40.52303,
+     141.5213
+    ]
+   }
+  },
+  "AMBER COFFEE": {
+   "nameEn": "AMBER COFFEE",
+   "area": "小中野",
+   "areaEn": "Konakano",
+   "tags": [
+    "coffee"
+   ],
+   "what": "小中野の自家焙煎スペシャルティコーヒー専門店。熱と時間を設計して焙煎したシングルオリジンや、地元の果物を使ったデザートを出す。",
+   "whatEn": "A specialty coffee roaster and cafe in Konakano designing roasts by heat and time, serving single-origin pour-overs and seasonal desserts with local fruit.",
+   "note": "シングルオリジンの一杯を飲んで、豆もひと袋買いたい。",
+   "noteEn": "Have a single-origin pour-over and pick up a bag of beans.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "あんばーこーひー",
+    "address": "小中野5-2-40",
+    "url": "https://ambercoffee.net/",
+    "whatJa": "Qアラビカ・Qロブスタ両グレーダー資格を持つ店主が営む、小中野の自家焙煎スペシャルティコーヒー専門店。",
+    "whatEn": "A precision-driven specialty coffee roaster and cafe in Konakano run by a dual Q Arabica and Q Robusta Grader.",
+    "facts": "Roasts on a Dutch Giesen roaster using strict thermal and time profiling ('coffee designed by heat and time'); independent local roaster with two Hachinohe locations (Konakano flagship and Mihono); known for single-origin pour-overs and thick French toast.",
+    "weak": "",
+    "verifiedBy": "https://visithachinohe.com/stories/tatehanaganpekiasaichi-2days-plan/",
+    "quote": "農家さんから仕入れたバジルを使うペストジェノベーゼや、地元のフルーツを使うデザートなど、その時期だけ食べられるメニューを目当てに訪れる人がいるのも納得です。",
+    "fixes": "whatEn/whatJa: the 2026 tourism article identifies the qualifications as Q Arabica Grader and SCA Q Grader.",
+    "coords": [
+     40.52017,
+     141.51588
+    ]
+   }
+  },
+  "植物屋 ARAYA": {
+   "nameEn": "Shokubutsuya ARAYA",
+   "area": "小中野",
+   "areaEn": "Konakano",
+   "tags": [
+    "coffee",
+    "plants"
+   ],
+   "what": "小中野の古民家を改装した、観葉植物の店と喫茶。手回し焙煎の珈琲と手作りの焼き菓子を出し、植物の展示も開く。",
+   "whatEn": "A houseplant shop and cafe in a renovated old house in Konakano. It serves hand-roasted coffee and homemade baked sweets, and also hosts plant exhibitions.",
+   "note": "鉢植えを見て回ったあと、手回し焙煎の珈琲でひと息。",
+   "noteEn": "Browse the potted plants, then sit down with a hand-roasted coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "しょくぶつや あらや",
+    "address": "小中野4-3-55",
+    "url": "https://www.instagram.com/shokubutsuya_araya/",
+    "whatJa": "築80年以上の小中野の古民家を改装し、観葉植物に囲まれながら手回し焙煎のコーヒーと焼き菓子を味わえる一軒。",
+    "whatEn": "A botanical shop and cafe inside an 80-year-old renovated Konakano house serving hand-roasted drip coffee surrounded by houseplants.",
+    "facts": "Combines an indoor plant shop with a quiet timber-beamed cafe in Konakano; roasts coffee beans manually without automated machinery and serves gentle house-made sweets and light meals.",
+    "weak": "",
+    "verifiedBy": "https://leaf-laboratory.com/blogs/media/topics4831",
+    "quote": "青森県八戸市の植物屋ARAYAで、2026年6月20日から6月28日まで「榊麻美植物研究所_exhibition」を開催する予定だ。",
+    "fixes": "",
+    "coords": [
+     40.51793,
+     141.50922
+    ]
+   }
+  },
+  "焙煎工房 珈琲の香": {
+   "nameEn": "Baisen Kobo Cafe no Ka",
+   "area": "鮫",
+   "areaEn": "Same",
+   "tags": [
+    "coffee"
+   ],
+   "what": "鮫町の自家焙煎カフェ。注文ごとに生豆から好みの煎り具合で焙煎し、ハンドドリップの珈琲と手作りのケーキを出す。火・水曜休み、10時30分から18時。",
+   "whatEn": "A roastery-cafe in Samecho that roasts green beans to order to your preferred roast, serving hand-dripped coffee and homemade cakes. Closed Tuesdays and Wednesdays; open 10:30 am to 6 pm.",
+   "note": "好みの煎り具合で焼いてもらう間に、珈琲とりんごのケーキ。",
+   "noteEn": "Coffee and apple cake while they roast beans to order.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ばいせんこうぼう かふぇのか",
+    "address": "鮫町字ハンノ木沢6-4",
+    "url": "https://www.instagram.com/nonbiri_cafenoka/",
+    "whatJa": "鮫町で注文ごとに生豆から焙煎し、淹れたての珈琲やカフェオレと手作りスイーツを供する自家焙煎カフェ。",
+    "whatEn": "A quiet coastal roastery-cafe in Samecho that roasts green coffee beans to order and pours fresh cups alongside homemade cakes.",
+    "facts": "Located in coastal Samecho near the Tanesashi coastline; custom-roasts green coffee beans to each customer's preferred roast level while serving hand-dripped coffee and cafe au lait in the adjoining tearoom.",
+    "weak": "",
+    "verifiedBy": "https://aoimorinobiboulog.jp/blog-entry-3039.html",
+    "quote": "そして何より芳醇なコーヒーの香りが、心を解きほぐしてくるようです",
+    "fixes": "",
+    "coords": [
+     40.52884,
+     141.56047
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "八戸市美術館",
+   "nameEn": "Hachinohe Art Museum",
+   "kind": "art",
+   "area": "中心街",
+   "areaEn": "Chushingai",
+   "address": "八戸市番町10-4",
+   "url": "https://hachinohe-art-museum.jp/",
+   "what": "2021年開館の市立美術館。展覧会や市民のプロジェクトが行われ、館内への入館は無料。10時から19時、火曜休み（祝日の場合は開館し翌日休）。",
+   "whatEn": "The city art museum opened in 2021, hosting exhibitions and community projects with free entry to the building. Open 10 am to 7 pm; closed Tuesdays (or the following day if a holiday).",
+   "coords": [
+    40.51178,
+    141.49142
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://hachinohe-art-museum.jp/ , /visit/ , /exhibition/ : 〒031-0031 青森県八戸市大字番町10-4、10:00〜19:00、火曜休館（祝日開館・翌日休）。2026年7月〜2027年2月の展覧会（岡山良一展、ヨシタケシンスケ展、馬カケルなど）を掲載。",
+   "_coordsSource": "OSM way 923042576（八戸市美術館）"
+  },
+  {
+   "name": "八戸ポータルミュージアム はっち",
+   "nameEn": "Hachinohe Portal Museum \"hacchi\"",
+   "kind": "sight",
+   "area": "中心街",
+   "areaEn": "Chushingai",
+   "address": "八戸市三日町11-1",
+   "url": "https://hacchi.jp/",
+   "what": "中心街にある八戸の文化と観光の交流施設。郷土の祭りや工芸の展示、ショップやカフェが入る。9時から21時、火曜休み（祝日の場合は翌日）。",
+   "whatEn": "A civic cultural and visitor centre in Chushingai with displays on local festivals and crafts, plus shops and a cafe. Open 9 am to 9 pm; closed Tuesdays (or the following day if a holiday).",
+   "coords": [
+    40.50991,
+    141.49059
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://hacchi.jp/ , /access/ : 〒031-0032 青森県八戸市三日町11-1、開館時間 9:00〜21:00、火曜日休館（休日の場合翌日）。2026年11月・12月のイベントカレンダー、暮らふとマーケット2026（11/14・15）を掲載。",
+   "_coordsSource": "OSM node 5409447622（八戸ポータルミュージアム はっち）"
+  },
+  {
+   "name": "是川縄文館",
+   "nameEn": "Korekawa Jomon Museum",
+   "kind": "art",
+   "area": "是川",
+   "areaEn": "Korekawa",
+   "address": "八戸市是川横山1",
+   "url": "https://www.korekawa-jomon.jp/",
+   "what": "是川遺跡や風張1遺跡の出土品を展示する博物館。国宝「合掌土偶」を所蔵する。9時から17時（入館16時30分まで）、月曜休み。",
+   "whatEn": "A museum exhibiting artefacts from the Korekawa and Kazahari 1 sites, home to the National Treasure Seated Clay Figurine with Hands Clasped. Open 9 am to 5 pm (last entry 4:30 pm); closed Mondays.",
+   "notice": "隣接する是川石器時代遺跡（中居遺跡）は整備工事のため見学不可。縄文学習館は2026年7月で閉館。",
+   "noticeEn": "The adjacent Korekawa Stone Age Site (Nakai Site) is closed for maintenance works; the Jomon Learning Hall closed in July 2026.",
+   "coords": [
+    40.47571,
+    141.48895
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.korekawa-jomon.jp/ , /guide/ : 〒031-0023 青森県八戸市大字是川字横山1、9:00am〜5:00pm（入館4:30pmまで）、月曜休館。2026年11月12日更新（合掌土偶11/13展示再開、木の実で縄文クッキング等）。",
+   "_coordsSource": "OSM node 11624011916（是川縄文館）"
+  },
+  {
+   "name": "種差海岸インフォメーションセンター",
+   "nameEn": "Tanesashi Coast Information Center",
+   "kind": "sight",
+   "area": "鮫",
+   "areaEn": "Same",
+   "address": "八戸市鮫町棚久保14-167",
+   "url": "https://tanesashi.info/",
+   "what": "種差天然芝生地の前に建つ、三陸復興国立公園の自然やみちのく潮風トレイルを案内する施設。4〜11月は9時から17時（12〜3月は16時まで）。",
+   "whatEn": "A visitor centre facing the Tanesashi natural lawn, introducing the Sanriku Fukko National Park and the Michinoku Coastal Trail. Open 9 am to 5 pm from April to November (until 4 pm from December to March).",
+   "coords": [
+    40.50871,
+    141.6084
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://tanesashi.info/ : 〒031-0841 青森県八戸市大字鮫町棚久保14-167、4〜11月 9:00〜17:00・12〜3月 9:00〜16:00、12/29〜1/3休館。2026年11月のプログラム掲載。",
+   "_coordsSource": "OSM way 555012891（種差海岸インフォメーションセンター）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "戸田菓子舗",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only a profile title. An opened 2026-10-28 article has the bullet ☆戸田菓子舗　10月20日〜Instagramで告知, and the official 2026 Golden Week event page lists the vendor. Neither supplies a full shop-specific operating sentence that meets the requested verbatim-sentence standard."
+  },
+  {
+   "name": "衣とうつわ 手の國",
+   "verdict": "doubt",
+   "reason": "The 2026 craft-market page lists this shop as an exhibitor for November 14–15, but no full shop-specific operating sentence could be copied. Official Instagram returns only its profile title through curl."
+  },
+  {
+   "name": "長瀬荒物店",
+   "verdict": "doubt",
+   "reason": "Official Instagram was unreadable. The opened workshop-organizer page has dated 2026 schedules naming this shop and its address, but no full shop-specific operating sentence could be copied. The earlier search-result sentence was absent from the fetched page and is excluded."
+  },
+  {
+   "name": "古美術まべちがわ",
+   "verdict": "doubt",
+   "reason": "Official Instagram yielded only a profile title. The opened chamber-of-commerce listing confirms address and merchandise but has no dated 2026 operating sentence."
+  },
+  {
+   "name": "満千窯",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  }
+ ]
+}

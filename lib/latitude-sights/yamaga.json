@@ -1,0 +1,66 @@
+[
+ {
+  "name": "八千代座",
+  "nameEn": "Yachiyo-za",
+  "kind": "sight",
+  "area": "豊前街道",
+  "areaEn": "Buzen Kaido",
+  "address": "山鹿市山鹿1499",
+  "url": "https://yamaga.site/?page_id=2",
+  "what": "明治43年（1910年）に建てられた芝居小屋で、国の重要文化財。廻り舞台や奈落を見学でき、公演も開かれる。",
+  "whatEn": "A kabuki playhouse built in 1910 and designated an Important Cultural Property. Visitors can tour the revolving stage and under-stage area when performances are not on.",
+  "coords": [
+   33.01685,
+   130.6893
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "山鹿温泉さくら湯",
+  "nameEn": "Sakura-yu",
+  "kind": "sight",
+  "area": "豊前街道",
+  "areaEn": "Buzen Kaido",
+  "address": "山鹿市山鹿1-1",
+  "url": "https://yamaga.site/?page_id=1548",
+  "what": "1640年の肥後細川藩の御茶屋に始まり、2012年に伝統工法で再建された木造の温泉施設。毎月第3水曜が休館。",
+  "whatEn": "A wooden bathhouse rooted in the 1640 Higo Hosokawa domain teahouse and rebuilt in 2012 using traditional joinery. Closed the third Wednesday of each month.",
+  "coords": [
+   33.01441,
+   130.68893
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "熊本県立装飾古墳館",
+  "nameEn": "Kumamoto Prefectural Ancient Burial Mound Museum",
+  "kind": "art",
+  "area": "鹿央",
+  "areaEn": "Kao",
+  "address": "山鹿市鹿央町岩原3085",
+  "url": "https://kofunkan.pref.kumamoto.jp/",
+  "what": "岩原古墳群のそばに建つ、安藤忠雄設計の県立博物館。装飾古墳のレプリカや出土品を展示する。月曜休館（祝日の場合は翌日）。",
+  "whatEn": "A prefectural museum designed by Tadao Ando beside the Iwabaru tomb cluster, displaying decorated burial-mound replicas and excavated artifacts. Closed Monday (or the following day if a holiday).",
+  "coords": [
+   32.99369,
+   130.66981
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "歴史公園 鞠智城・温故創生館",
+  "nameEn": "Kikuchi Castle Historic Park",
+  "kind": "sight",
+  "area": "菊鹿",
+  "areaEn": "Kikuka",
+  "address": "山鹿市菊鹿町米原443-1",
+  "url": "https://kofunkan.pref.kumamoto.jp/kikuchijo/",
+  "what": "大和朝廷が築いた古代山城の跡を整備した歴史公園。復元された八角形鼓楼や資料館「温故創生館」がある。",
+  "whatEn": "A historic park on the site of an ancient mountain fortress built by the Yamato court, with a reconstructed octagonal drum tower and the Onko Soseikan museum.",
+  "coords": [
+   33.00207,
+   130.78814
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

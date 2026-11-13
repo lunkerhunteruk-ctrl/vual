@@ -1,0 +1,607 @@
+{
+ "slug": "kochi",
+ "city": {
+  "name": "Kochi",
+  "nameJa": "高知",
+  "latitude": "33.6° N",
+  "country": "Kochi, Japan",
+  "countryJa": "高知県",
+  "person": "rin",
+  "coords": [
+   33.5605,
+   133.542
+  ],
+  "intro": "A former castle town of the Tosa domain, with the Kagami River running through it. Autumn is the season for sour citrus. Tosa washi, smoked-bamboo utensils, bonito tataki and coffee around town: Rin’s picks.",
+  "introJa": "土佐藩の城下町で、鏡川が流れる町。秋は酢ミカンの季節。土佐和紙と煤竹の道具、鰹のたたきと町の喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "In Kochi, on Shikoku · the Kagami River and Mount Godaisan",
+   "ja": "四国の高知県・鏡川と五台山のある町"
+  },
+  "industries": [
+   {
+    "key": "tosa-washi",
+    "en": "Tosa Washi Papermaking",
+    "ja": "土佐和紙",
+    "about": "Tosa washi is still made in Ino, Kochi Prefecture. Osaki Paper Mill uses kozo and ramie for papers including Kochi-mashi, whose textured surface is suited to Japanese mineral pigments.",
+    "aboutJa": "高知県のいの町では今も土佐和紙が作られている。尾﨑製紙所は楮や苧麻を使い、表面に凹凸があり岩絵具になじむ高知麻紙などを作る。",
+    "_src": "Fed by the clear waters of the Niyodo River in neighboring Ino, Tosa washi has been hand-couched here for over a millennium, producing everything from everyday kozo stationery to 0.03-millimeter tengujoshi conservation paper."
+   },
+   {
+    "key": "tosa-takezaiku",
+    "en": "Tosa Bamboo Craft",
+    "ja": "土佐の竹細工",
+    "about": "In the mountains upstream on the Kagami River, TAKETO cuts bamboo and smokes it in a charcoal kiln. The black susutake becomes chopsticks, spoons and tongs that use the bamboo’s natural strength and flexibility.",
+    "aboutJa": "鏡川上流の山あいでは、「竹と」が竹を切り出し、炭窯で燻して煤竹にする。黒くなった竹の強さやしなやかさを生かし、箸やスプーン、トングなどの暮らしの道具を作る。",
+    "_src": "Using abundant mountain bamboo along the Kagami River and coastal groves, Kochi makers smoke, split, and shape bamboo into durable baskets and everyday table tools."
+   }
+  ]
+ },
+ "places": {
+  "SANROKU COFFEE": {
+   "nameEn": "SANROKU COFFEE",
+   "area": "桜井町",
+   "areaEn": "Sakuraimachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "桜井町のコーヒー店。公式サイトで営業日カレンダーを知らせる。",
+   "whatEn": "A coffee shop in Sakuraimachi. Opening dates are posted on its website.",
+   "note": "町を歩いたあとは、ここでコーヒーを一杯飲みたい。",
+   "noteEn": "After walking around town, I would stop here for a coffee.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "さんろくこーひー",
+    "address": "1-5-25 Sakuraimachi, Kochi-shi",
+    "url": "https://sanrokucoffee.com/",
+    "whatJa": "菜園場商店街近くで本格的なスパイスカレーと丁寧なハンドドリップコーヒー、愛玉子などの甘味を楽しめる個人店。",
+    "whatEn": "A neighborhood spice-curry and coffee spot near Saenba Arcade pairing scratch-made spice curries with hand-dripped coffee and Taiwanese-inspired desserts.",
+    "facts": "Located in Sakuraimachi just off Saenba; serves aromatic house-blended spice curries alongside specialty drip coffee and desserts such as aiyu jelly.",
+    "weak": "",
+    "verifiedBy": "https://sanrokucoffee.com/",
+    "quote": "\"eventday_title\":\"<span class=\\\"lunch\\\">LUNCH TIME</span> 11:30〜15:00（L.0. 14:30）\",\"eventdays\":\"2026-11-01 2026-11-02 2026-11-03 2026-11-07 2026-11-08 2026-11-09 2026-11-10 2026-11-14",
+    "fixes": "Address matches: 〒780-0821 高知市桜井町1-5-25. Regular closed days Wed/Thu/Fri; lunch 11:30-15:00, dinner 18:30-22:30. Calendar-based evidence only (no dated post text).",
+    "coords": [
+     33.56117,
+     133.54886
+    ]
+   }
+  },
+  "日日": {
+   "nameEn": "Nichika",
+   "area": "葛島",
+   "areaEn": "Kazurashima",
+   "tags": [
+    "tableware",
+    "handwork"
+   ],
+   "what": "葛島の暮らしの道具の店とギャラリー。作家の企画展や、料理と手仕事の教室も開く。",
+   "whatEn": "A shop and gallery for everyday objects in Kazurashima. It holds maker exhibitions and classes in cooking and handwork.",
+   "note": "毎日使う器を、手に取って一つずつ選んでみたい。",
+   "noteEn": "I would pick up the everyday dishes and choose them one by one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "にちか",
+    "address": "1-9-24 Kazurashima, Kochi-shi",
+    "url": "https://comonichi.com/",
+    "whatJa": "葛島で手仕事の器や高知の煤竹道具、天然素材の衣類を扱い、企画展や教室も開くショップ＆ギャラリー。",
+    "whatEn": "A serene craft gallery and lifestyle shop in Kazurashima presenting handmade ceramics, Kochi smoked-bamboo utensils, natural-fiber clothing, and maker exhibitions.",
+    "facts": "Operated alongside living-design studio COMOC; hosts seasonal craft exhibitions, workshops, and features work by Kochi bamboo craftsman Ippo Shimomoto.",
+    "weak": "",
+    "verifiedBy": "https://comonichi.com/",
+    "quote": "2026.11.16 [mon]-11.22 [sun] ババグーリ秋から冬へ",
+    "fixes": "Page describes COMOC/NICHIKA shop & gallery; address not checked on the page text.",
+    "coords": [
+     33.5593,
+     133.57141
+    ]
+   }
+  },
+  "コミベーカリー": {
+   "nameEn": "Komi Bakery",
+   "area": "知寄町",
+   "areaEn": "Chiyoricho",
+   "tags": [
+    "bread",
+    "cheesecake"
+   ],
+   "what": "知寄町のパンと洋菓子の店。窯出しチーズケーキと、食パンや焼きたてのパン。",
+   "whatEn": "A bakery and cake shop in Chiyoricho. Kamadashi cheesecake, loaves and freshly baked bread.",
+   "note": "パンも気になるけれど、まずは窯出しチーズケーキを選ぶ。",
+   "noteEn": "The bread interests me too, but I would start with the Kamadashi cheesecake.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "こみべーかりー",
+    "address": "1-1-21 Chiyoricho, Kochi-shi",
+    "url": "https://www.komi-bakery.co.jp/",
+    "whatJa": "1969年創業、名物の「窯出しチーズケーキ」と焼きたてパンで地元に愛され続ける知寄町の老舗ベーカリー。",
+    "whatEn": "A neighborhood bakery founded in 1969 in Chiyoricho, beloved across Kochi for its soufflé-soft Kamadashi cheesecake alongside everyday loaves and sandwiches.",
+    "facts": "Founded in 1969 near Chiyoricho-itchome tram stop; famous locally and nationwide for its freshly baked Kamadashi cheesecake as well as classic savory breads.",
+    "weak": "",
+    "verifiedBy": "https://www.komi-bakery.co.jp/",
+    "quote": "2026年11月02日 【クリスマスケーキ・年末商品のご予約スタート！】",
+    "fixes": "Address 高知県高知市知寄町1丁目1番21号 matches; 1969 founding not seen in fetched text.",
+    "coords": [
+     33.55927,
+     133.55676
+    ]
+   }
+  },
+  "パティスリー ＋カフェ モンスリール": {
+   "nameEn": "Pâtisserie + café Mon sourire",
+   "area": "新本町",
+   "areaEn": "Shin-Honmachi",
+   "tags": [
+    "cake",
+    "coffee"
+   ],
+   "what": "新本町の洋菓子店。ケーキと焼き菓子、エッグフリーケーキがあり、店内のカフェでコーヒーと楽しめる。",
+   "whatEn": "A patisserie in Shin-Honmachi with cakes, baked sweets and egg-free cakes. There is a café for cake and coffee.",
+   "note": "持ち帰る焼き菓子の前に、ケーキとコーヒーで座る。",
+   "noteEn": "Before choosing baked sweets to take home, I would sit down for cake and coffee.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりー ぷらすかふぇ もんすりーる",
+    "address": "2-5-16 Shin-Honmachi, Kochi-shi",
+    "url": "https://patisserie-mon-sourire.jp/",
+    "whatJa": "高知駅近くの新本町で、季節の生菓子や焼き菓子、エッグフリーケーキと淹れたてコーヒーを楽しめるパティスリー＆カフェ。",
+    "whatEn": "An independent patisserie and eat-in cafe near Kochi Station baking seasonal cakes, baked gift sweets, and dedicated egg-free cakes.",
+    "facts": "Five minutes on foot from JR Kochi Station; combines an eat-in cafe space with showcases of seasonal cakes, baked sweets, and egg-free cakes.",
+    "weak": "",
+    "verifiedBy": "https://patisserie-mon-sourire.jp/entry/165",
+    "quote": "クリスマスケーキ2026 ご予約 受付中！",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "御菓子司 福留菊水堂": {
+   "nameEn": "Fukudome Kikusuidou",
+   "area": "愛宕町",
+   "areaEn": "Atagocho",
+   "tags": [
+    "wagashi",
+    "yokan"
+   ],
+   "what": "1951年創業、愛宕町の和菓子店。季節の茶席菓子と、百合羊羹・山桃羊羹、蜂蜜入りのかすてらを作る。",
+   "whatEn": "A wagashi shop in Atagocho, founded in 1951. Seasonal tea sweets, lily-bulb and yamamomo yokan, and honey castella.",
+   "note": "百合根の羊羹と山桃の羊羹、まずは一つずつ選びたい。",
+   "noteEn": "I would choose one each of the lily-bulb and yamamomo yokan.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おかしつかさ ふくどめきくすいどう",
+    "address": "2-13-3 Atagocho, Kochi-shi",
+    "url": "https://kikusuidou.com/",
+    "whatJa": "1951年創業、土佐の匠に認定された店主が季節の上生菓子や百合羊羹・山桃羊羹、蜂蜜かすてらを作る愛宕町の老舗和菓子店。",
+    "whatEn": "A family wagashi house founded in 1951 in Atagocho, crafting seasonal tea-ceremony confections, yamamomo yokan, and honey castella.",
+    "facts": "Founded in autumn 1951 in Atagocho and led by Kyoto-trained master confectioner Akio Fukudome (certified as a Tosa no Takumi); famed for lily-bulb and yamamomo yokan praised by botanist Tomitaro Makino.",
+    "weak": "Closed Sundays and two irregular Mondays per month.",
+    "verifiedBy": "https://kochike.jp/column/371701/",
+    "quote": "今回やってきたのは、高知市愛宕町商店街から一本裏手に進んだ住宅街にある和菓子店「福留菊水堂」さん。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "葉牡丹": {
+   "nameEn": "Habotan",
+   "area": "堺町",
+   "areaEn": "Sakaimachi",
+   "tags": [
+    "seafood",
+    "kushifry",
+    "sake"
+   ],
+   "what": "堺町で半世紀以上続く、昼から開く居酒屋。鰹のたたき、串フライ、串焼きに定食もある。",
+   "whatEn": "A tavern in Sakaimachi open from daytime, in business for over half a century. Bonito tataki, fried and grilled skewers, and set meals.",
+   "note": "鰹のたたきも食べたいけれど、串フライの盛合せから。",
+   "noteEn": "I want the bonito tataki too, but I would start with the mixed fried skewers.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "はぼたん",
+    "address": "2-21 Sakaimachi, Kochi-shi",
+    "url": "https://habotan.jp/",
+    "whatJa": "創業半世紀を超え、昼から地元客で賑わう堺町の老舗大衆酒場・食堂。",
+    "whatEn": "A bustling, half-century-old Tosa dining tavern near Harimayabashi open from midday for local seafood, fried skewers, and everyday Kochi comfort dishes.",
+    "facts": "Steps from Harimayabashi in Sakaimachi and running for over 50 years; opens from daytime with lively counter seating serving Tosa fish, skewers, and local comfort plates.",
+    "weak": "",
+    "verifiedBy": "https://habotan.jp/info/?item=261110132248202734",
+    "quote": "12/24（木）、12/31（木）、1/1（金）は、休みになります。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "Bar Baffone": {
+   "nameEn": "Bar Baffone",
+   "area": "追手筋",
+   "areaEn": "Otesuji",
+   "tags": [
+    "pasta",
+    "wine",
+    "citrus"
+   ],
+   "what": "1996年に開いたバール。高知のバジルを使うジェノバ風リングイネがあり、秋には酢ミカンの飲み物も出す。",
+   "whatEn": "A bar opened in 1996. It serves Genoese-style linguine with Kochi basil, and sour-citrus drinks in autumn.",
+   "note": "高知のバジルを使うリングイネを、まず一皿頼みたい。",
+   "noteEn": "I would start with a plate of linguine made with Kochi basil.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ばーる ばっふぉーね",
+    "address": "1-4-17 Otesuji, Kochi-shi",
+    "url": "https://baffone.amebaownd.com/",
+    "whatJa": "1996年創業、追手筋で高知の酢ミカンや旬食材を取り入れたイタリア料理とワインを届けるバール＆キッチン。",
+    "whatEn": "An independent European-style bar and kitchen opened in 1996 and set along Otesuji, cooking Italian dishes accented with Kochi sumikan citrus and local produce.",
+    "facts": "Opened in 1996 and relocated to ground-floor premises on Otesuji in December 2023; known for genovese pasta, seasonal Tosa sumikan citrus dishes, and occasional live music nights.",
+    "weak": "",
+    "verifiedBy": "https://baffone.amebaownd.com/posts/59310512",
+    "quote": "スダチジュレップ..超お勧めです！",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "イタリア料理 ラ・ヴィータ": {
+   "nameEn": "La Vita",
+   "area": "本町",
+   "areaEn": "Honmachi",
+   "tags": [
+    "pasta",
+    "pizza"
+   ],
+   "what": "本町、大橋通りの南にある地下のイタリア料理店。パスタやピッツァ、季節の料理を出す。",
+   "whatEn": "An Italian restaurant below ground in Honmachi, south of Ohashidori. Pasta, pizza and seasonal dishes.",
+   "note": "昼はパスタを一皿選んで、地下の店でゆっくり食べる。",
+   "noteEn": "At lunch I would choose a pasta and take my time in the downstairs dining room.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "いたりありょうり ら・ゔぃーた",
+    "address": "3-3-1 Honmachi, Kochi-shi",
+    "url": "https://rest.la-vita.co.jp/",
+    "whatJa": "大橋通り電停すぐの落ち着いた地下空間で、高知の新鮮な旬食材を使ったパスタやピッツァのランチ・ディナーを提供するイタリア料理店。",
+    "whatEn": "A calm basement Italian dining room just off Ohashidori tram stop serving seasonal pastas, pizzas, and lunch courses built around fresh Kochi ingredients.",
+    "facts": "Steps from Tosaden Ohashidori stop in Honmachi (closed Sun/Mon); 40-seat basement dining room serving lunch and dinner menus featuring seasonal Tosa produce and seafood.",
+    "weak": "Closed Sundays and Mondays.",
+    "verifiedBy": "https://rest.la-vita.co.jp/gozen2026_10/",
+    "quote": "ラ・ヴィータとっておきの御膳をお楽しみください。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "TUKI": {
+   "nameEn": "TUKI",
+   "area": "水通町",
+   "areaEn": "Mizudooricho",
+   "tags": [
+    "stew",
+    "coffee"
+   ],
+   "what": "水通町の、和のおばんざいと洋食の定食屋。ビーフシチューや特製カレーがあり、食後のコーヒーは好きなカップを選べる。",
+   "whatEn": "A dining room in Mizudooricho for Japanese side dishes and Western-style meals, including beef stew and house curry. You can choose your cup for coffee after the meal.",
+   "note": "食後のコーヒーは、飲む前にカップを選ぶのが楽しみ。",
+   "noteEn": "For coffee after the meal, I would enjoy choosing the cup first.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "つき",
+    "address": "162 Mizudooricho, Kochi-shi",
+    "url": "https://tuki-kochi.com/",
+    "whatJa": "上町近くの水通町で、じっくり煮込んだビーフシチューや特製カレー、和のおばんざい御膳を提供する定食＆カフェ。",
+    "whatEn": "A warm, wood-toned neighborhood dining room near Kamimachi serving slow-simmered beef stew, house curry, and Japanese obanzai set meals.",
+    "facts": "Located in Mizudooricho just south of Kamimachi; pairs Japanese obanzai side dishes with slow-cooked beef stew and lets guests choose their own ceramic cup for post-meal coffee.",
+    "weak": "",
+    "verifiedBy": "https://osannpo.blog.jp/archives/55162654.html",
+    "quote": "ランチたのしめました",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "紡ぎ珈琲焙煎所": {
+   "nameEn": "Tsumugi Coffee Roastery",
+   "area": "百石町",
+   "areaEn": "Hyakkokucho",
+   "tags": [
+    "coffee",
+    "ice cream",
+    "cake"
+   ],
+   "what": "百石町の自家焙煎珈琲店。2026年に建て替えた2階建ての店で、「TSUMUGI COFFEE & ICECREAM」と「を菓子と。百石町店」が珈琲やクラフトアイス、菓子を出す。",
+   "whatEn": "A coffee roastery in Hyakkokucho, rebuilt as a two-storey café in 2026. TSUMUGI COFFEE & ICECREAM and Wokashito Hyakkokucho serve coffee, craft ice cream and sweets.",
+   "note": "自家焙煎のコーヒーと、カフェラテのアイスを合わせたい。",
+   "noteEn": "I would pair the house-roasted coffee with café-latte ice cream.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "つむぎこーひーばいせんじょ",
+    "address": "4-18-19 Hyakkokucho, Kochi-shi",
+    "url": "https://www.taycoffeestand.com/",
+    "whatJa": "百石町の住宅街で半熱風式焙煎機で焼くスペシャルティコーヒーとカヌレなどの焼き菓子を届ける自家焙煎カフェ。",
+    "whatEn": "A residential specialty coffee roastery and cafe in Hyakkokucho roasting beans on a semi-hot-air roaster and pairing hand-dripped cups with crisp caneles.",
+    "facts": "Set in a quiet residential block of Hyakkokucho south of the Kagami River; roasts specialty beans in-house, pours hand-dripped coffee, and organizes the Kochi Coffee Festival.",
+    "weak": "",
+    "verifiedBy": "https://camp-fire.jp/projects/902117/view/activities",
+    "quote": "想定よりも遅れてしまいましたが無事皆様にお披露目できました。",
+    "fixes": "whatEn: Rebuilt two-storey cafe in Hyakkokucho, with TSUMUGI COFFEE & ICECREAM and を菓子と。百石町店, offering coffee, craft ice cream and cakes. whatJa: 百石町で建て替え後の2階建て店舗を2026年3月14・15日にプレオープン。「TSUMUGI COFFEE & ICECREAM」と「を菓子と。百石町店」として珈琲・クラフトアイス・生菓子・焼き菓子を提供。",
+    "coords": null
+   }
+  },
+  "株式会社尾﨑製紙所": {
+   "nameEn": "Osaki Paper Mill",
+   "area": "いの町加田",
+   "areaEn": "Kada, Ino",
+   "tags": [
+    "washi",
+    "paper"
+   ],
+   "what": "いの町加田の和紙の製紙所で、楮や苧麻を使い、日本画用の高知麻紙などを作る。見学は事前に連絡が必要。",
+   "whatEn": "A washi mill in Kada, Ino, making Kochi-mashi painting paper and other papers from kozo and ramie. Contact the mill in advance for a visit.",
+   "note": "高知麻紙の表と裏、その凹凸の違いをよく見てみたい。",
+   "noteEn": "I would look closely at the different textures on the two sides of Kochi-mashi.",
+   "_src": {
+    "category": "local",
+    "industry": "tosa-washi",
+    "nameKana": "かぶしきがいしゃ おさきせいししょ",
+    "address": "63 Kada, Ino-cho, Agawa-gun",
+    "url": "http://osaki-kouchimasi.com/",
+    "whatJa": "いの町加田で70年にわたり、楮や苧麻を用いた日本画・修復用の「高知麻紙」など伝統と独自技法を融合した土佐和紙を漉く製紙所。",
+    "whatEn": "A 70-year-old Tosa washi papermaker in Ino specializing in textured Kochi-mashi hemp and kozo papers prized by Nihonga painters and conservators.",
+    "facts": "Based in Kada, Ino along the Niyodo River; renowned among Nihonga artists nationwide for its soft-textured, durable Kochi-mashi made from kozo and ramie fibers, as well as ceremonial Jingu paper.",
+    "weak": "Working paper mill rather than a tourist shop; direct orders and visits require advance contact.",
+    "verifiedBy": "http://osaki-kouchimasi.com/custom1.html",
+    "quote": "ご注文金額（税抜き）合計60,000円以上で、送料無料サービス（北海道・沖縄・離島を除く ）は、 令和8年12月までになります。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "竹と": {
+   "nameEn": "TAKETO",
+   "area": "鏡吉原",
+   "areaEn": "Kagami Yoshihara",
+   "tags": [
+    "bamboo",
+    "cutlery"
+   ],
+   "what": "鏡川上流の鏡吉原にある、下本一歩の竹の工房。自ら切った竹を自作の炭窯で燻し、箸やトング、スプーンなどを作る。",
+   "whatEn": "Kazuho Shimomoto’s bamboo workshop in Kagami Yoshihara, upstream on the Kagami River. Locally cut bamboo is smoked in a self-built kiln and made into chopsticks, tongs and spoons.",
+   "note": "真っ黒な煤竹の道具なら、毎日使う箸から選びたい。",
+   "noteEn": "Among the black smoked-bamboo utensils, I would choose everyday chopsticks first.",
+   "_src": {
+    "category": "local",
+    "industry": "tosa-takezaiku",
+    "nameKana": "たけと",
+    "address": "509 Kagami Yoshihara, Kochi-shi",
+    "url": "https://taketo-inc.com/",
+    "whatJa": "鏡川上流の山あいで自ら切り出した竹を自作の炭窯で燻し、煤竹の暮らしの道具へと仕立てる竹工芸工房。",
+    "whatEn": "A mountain bamboo workshop along Kochi's upper Kagami River where craftsman Kazuho Shimomoto fells, kiln-smokes, and shapes susutake bamboo into everyday utensils.",
+    "facts": "Led by bamboo maker Kazuho Shimomoto in Kagami Yoshihara, Kochi City; harvests local bamboo, smokes it black in a self-built charcoal kiln, and crafts functional tongs, cutlery, and coffee tools.",
+    "weak": "Working mountain workshop rather than a walk-in retail storefront; works are stocked at Kochi craft shops and solo exhibitions.",
+    "verifiedBy": "https://taketo-inc.com/2026/09/2026-9-13%e6%97%a5-9-22%e7%81%ab-%e8%bb%bd%e4%ba%95%e6%b2%a2%e3%80%8c%e3%81%86%e3%81%a4%e3%82%8f%e6%89%8b%e4%bb%95%e4%ba%8b-%e8%8a%bd%e5%90%b9%e3%81%8d%e3%80%8d%e3%81%a7%e5%80%8b%e5%b1%95%e3%82%92/",
+    "quote": "2026.9.13[日]-9.22[火] 軽井沢「うつわ手仕事 芽吹き」で個展を開催します",
+    "fixes": "",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "高知城",
+   "nameEn": "Kochi Castle",
+   "kind": "sight",
+   "area": "丸ノ内",
+   "areaEn": "Marunouchi",
+   "address": "高知市丸ノ内1-2-1",
+   "url": "https://kochipark.jp/kochijyo/",
+   "what": "山内一豊が1601年に築城を始めた土佐藩の城。江戸時代の天守と本丸御殿をはじめ、本丸の建物群がすべて残る。",
+   "whatEn": "The castle of the Tosa domain, begun by Yamauchi Katsutoyo in 1601. Its Edo-period keep, main palace and the rest of the inner-citadel buildings survive.",
+   "coords": [
+    33.56069,
+    133.53146
+   ],
+   "notice": "天守・懐徳館は9時〜17時（最終入館16時30分）。12月26日〜1月1日は休館。",
+   "noticeEn": "The keep and Kaitokukan are open 9:00–17:00, last admission 16:30. Closed December 26 to January 1.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kochipark.jp/kochijyo/ — history, surviving buildings, address and hours; notice dated 2026-11-12 announces November Autumn Festival stalls.",
+   "_coordsSource": "OpenStreetMap way 126495756; Nominatim search 高知城, lat 33.5606910, lon 133.5314588, rounded to five decimals."
+  },
+  {
+   "name": "高知県立高知城歴史博物館",
+   "nameEn": "Kochi Castle Museum of History",
+   "kind": "art",
+   "area": "追手筋",
+   "areaEn": "Otesuji",
+   "address": "高知市追手筋2-7-5",
+   "url": "https://www.kochi-johaku.jp/",
+   "what": "高知城のふもとで、土佐藩の歴史と文化を伝える博物館。山内家に伝わった大名道具や、土佐ゆかりの美術を展示する。",
+   "whatEn": "A museum at the foot of Kochi Castle on the history and culture of the Tosa domain. Displays include objects handed down in the Yamauchi family and art connected with Tosa.",
+   "coords": [
+    33.56017,
+    133.53407
+   ],
+   "notice": "総合展示室2は2026年11月10日〜19日、展示替えで休室。12月20日〜25日は設備工事、26日〜31日は年末休館（新年1月1日開館の告知あり）。",
+   "noticeEn": "General Exhibition Room 2 is closed for a display change November 10–19, 2026. The museum announces closure for works December 20–25 and the year-end holiday December 26–31, reopening January 1.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kochi-johaku.jp/ — 2026 exhibition schedule, address, collections; notice dated 2026-11-10 confirms Room 2 closure through 11/19. The prominent year-end notice differs from the generic footer; the specific notice is used.",
+   "_coordsSource": "OpenStreetMap way 500621920; Nominatim search 高知城歴史博物館, lat 33.5601674, lon 133.5340651, rounded to five decimals."
+  },
+  {
+   "name": "高知県立牧野植物園",
+   "nameEn": "The Kochi Prefectural Makino Botanical Garden",
+   "kind": "sight",
+   "area": "五台山",
+   "areaEn": "Godaisan",
+   "address": "高知市五台山4200-6",
+   "url": "https://www.makino.or.jp/",
+   "what": "植物学者・牧野富太郎を記念して1958年に開園した植物園。五台山の起伏を生かした園地に、3,000種類以上の植物と温室、内藤廣設計の記念館がある。",
+   "whatEn": "A botanical garden opened in 1958 in memory of botanist Makino Tomitaro. The slopes of Mount Godaisan hold over 3,000 kinds of plants, a greenhouse and a memorial hall designed by Naito Hiroshi.",
+   "coords": [
+    33.54833,
+    133.57912
+   ],
+   "notice": "9時〜17時（最終入園16時30分）。2026年11月30日はメンテナンス休園、12月27日〜1月1日は年末年始休園。",
+   "noticeEn": "Open 9:00–17:00, last admission 16:30. Closed for maintenance November 30, 2026, and for the year-end holiday December 27 to January 1.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.makino.or.jp/fixed/?page_key=our-garden — founding, terrain, plants and architecture; https://www.makino.or.jp/ — 2026 maintenance closure, hours and address; news dated 2026-11-09 announces a November 29 event.",
+   "_coordsSource": "OpenStreetMap way 397666711; Nominatim search 牧野植物園, lat 33.5483309, lon 133.5791220, rounded to five decimals."
+  },
+  {
+   "name": "竹林寺",
+   "nameEn": "Chikurinji Temple",
+   "kind": "sight",
+   "area": "五台山",
+   "areaEn": "Godaisan",
+   "address": "高知市五台山3577",
+   "url": "http://www.chikurinji.com/",
+   "what": "五台山にある真言宗の寺で、四国八十八箇所の第31番札所。本堂と書院は国の重要文化財、書院を囲む庭園は国の名勝。",
+   "whatEn": "A Shingon temple on Mount Godaisan, number 31 on the Shikoku pilgrimage. Its main hall and shoin are national Important Cultural Properties; the garden around the shoin is a nationally designated scenic site.",
+   "coords": [
+    33.54651,
+    133.57675
+   ],
+   "notice": "参拝は8時〜17時、名勝庭園・宝物館は8時30分〜17時。宝物館の2026年8月18日〜9月13日の拝観停止期間は終了。",
+   "noticeEn": "Temple visits 8:00–17:00; garden and treasure hall 8:30–17:00. The announced treasure-hall closure of August 18 to September 13, 2026, has ended.",
+   "verifiedAt": "2026-11-12",
+   "_source": "http://www.chikurinji.com/shiru/ — pilgrimage number, buildings, garden, address and hours; http://www.chikurinji.com/ — 2026-08-26 announcement of November 15, 2026 Shichi-Go-San prayers; http://www.chikurinji.com/news/893 — limited treasure-hall closure.",
+   "_coordsSource": "OpenStreetMap way 1392390182; Nominatim search 竹林寺 高知, lat 33.5465090, lon 133.5767482, rounded to five decimals."
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "カフェ・ド・梵",
+   "verdict": "doubt",
+   "reason": "Official site opened, but newest news is 2020.09 (delivery service start); no 2026 dated sentence."
+  },
+  {
+   "name": "GRAYGE COFFEE ROASTER",
+   "verdict": "doubt",
+   "reason": "Instagram profile opened (651 posts, 8,678 followers) but logged-out view shows no readable dated 2026 post text; could not copy a 2026 sentence."
+  },
+  {
+   "name": "草や",
+   "verdict": "doubt",
+   "reason": "Official site is live but contains no 2026-dated post or notice (only '2023年2月でお昼営業は終了'); no 2026 evidence."
+  },
+  {
+   "name": "ギャラリー エム・ツウ",
+   "verdict": "doubt",
+   "reason": "Official site is an empty frameset (only the title). 2026 exhibitions seen only in search summary of a third-party site that I could not open directly."
+  },
+  {
+   "name": "mijoter",
+   "verdict": "doubt",
+   "reason": "Only a '©2026' footer; no dated 2026 post or notice."
+  },
+  {
+   "name": "cafeカネナカ",
+   "verdict": "doubt",
+   "reason": "Instagram page opened via fetch shows only the profile title; no dated 2026 post readable, no address/description visible."
+  },
+  {
+   "name": "ぜにや菓子店",
+   "verdict": "doubt",
+   "reason": "Latest post on site is 11月 25, 2018; no 2026 evidence."
+  },
+  {
+   "name": "Kos",
+   "verdict": "doubt",
+   "reason": "Instagram page opened shows only profile title 'Kos (コス) 日常使いにちょっとした贅沢を'; no dated 2026 post readable."
+  },
+  {
+   "name": "市場レストラン 西村商店",
+   "verdict": "doubt",
+   "reason": "Only evidence is 'Ⓒ2026' footer; TOPICS list empty in fetched HTML; no dated 2026 notice."
+  },
+  {
+   "name": "sommarlek coffee roaster",
+   "verdict": "doubt",
+   "reason": "Instagram profile not readable without login; no dated 2026 post could be copied."
+  },
+  {
+   "name": "銘菓創園 桂",
+   "verdict": "doubt",
+   "reason": "Site is live with a notice '10月25日（日）・26日（月）はお休み' but no year is written (weekdays match 2026 only by inference); footer is Copyright 2021; online shop paused indefinitely. Not explicit 2026 evidence."
+  },
+  {
+   "name": "尾戸焼窯元 土居窯",
+   "verdict": "doubt",
+   "reason": "Site live (TEL 088-844-1095, 〒780-8050 鴨部（能茶山）1311-1 matches address) but no dated 2026 content."
+  },
+  {
+   "name": "笹岡鋏製作所",
+   "verdict": "doubt",
+   "reason": "Site live, address not verified, only a 1970 founding statement; no dated 2026 post found on top page (diary not opened)."
+  },
+  {
+   "name": "鹿敷製紙株式会社",
+   "verdict": "doubt",
+   "reason": "Page fetch returned HTTP 406/no readable 2026 content; no dated 2026 evidence."
+  },
+  {
+   "name": "浜田兄弟和紙製作所",
+   "verdict": "doubt",
+   "reason": "Wix site loads but no 2026 dated text found."
+  },
+  {
+   "name": "RIVER COFFEE HOUSE INO",
+   "verdict": "doubt",
+   "reason": "Instagram profile page exists (opened) but without login shows no dated posts; no 2026 sentence could be copied, and no official site/2026 article was opened."
+  },
+  {
+   "name": "街角食堂 ハラハチ",
+   "verdict": "doubt",
+   "reason": "Instagram profile page exists (opened) but without login shows no dated posts; no 2026 sentence could be copied, and no official site/2026 article was opened."
+  },
+  {
+   "name": "OAK Bakery",
+   "verdict": "doubt",
+   "reason": "Instagram profile page exists (opened) but without login shows no dated posts; no 2026 sentence could be copied, and no official site/2026 article was opened."
+  },
+  {
+   "name": "モンプレジール",
+   "verdict": "doubt",
+   "reason": "Official shop page confirms the description and Wakamatsucho 1701 address, but its latest dated notice is effective 2025-10-01; the alternative 2026 recruitment page returned no readable body. No readable dated 2026 operating sentence."
+  },
+  {
+   "name": "ベイクショップ リンデン",
+   "verdict": "doubt",
+   "reason": "Official page confirms the bread, tarts, cheesecake and Takasu 2-18-11 address, but the topics page has no dated posts. The 2026 copyright footer is not operating evidence."
+  },
+  {
+   "name": "自家焙煎珈琲 ハルノ珈琲",
+   "verdict": "doubt",
+   "reason": "Official homepage and linked shop information confirm Tozu 3-1-19, takeout coffee, roasting, KONO brewing and Tosa-washi wrapping, but only the copyright says 2026. Linked official Ameblo latest readable post is 2024-11-06. No dated 2026 operating sentence found."
+  },
+  {
+   "name": "KILIG COFFEE",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only the profile title; no dated post text could be read with curl. Alternative listings confirm the address and French-press specialty coffee. A directory says 情報確認日：2026年10月29日, but provides no dated shop activity or visit; that directory verification stamp alone does not meet the requested strict evidence standard."
+  },
+  {
+   "name": "TABULE",
+   "verdict": "doubt",
+   "reason": "Official About page confirms husband-and-wife sourcing and restoration of Asian/Japanese antiques and Harimayacho 2-7-18, but no dated 2026 operating sentence was found."
+  },
+  {
+   "name": "うつわ家 膳",
+   "verdict": "doubt",
+   "reason": "Official shop page confirms Masugata 4-7 and ceramics from Shigaraki, Kutani, Arita and independent potters. Official homepage has no dated news; no 2026 operating sentence found."
+  },
+  {
+   "name": "古材屋イサム",
+   "verdict": "doubt",
+   "reason": "Official shop page confirms Otani-koencho 20-1 and rescued old timber, fittings, furniture and household goods. Shop-category news is dated 2025-03-01. The parent company has a 2026 construction announcement, but it does not establish operation of this retail shop in 2026."
+  },
+  {
+   "name": "陶工房 Nishida",
+   "verdict": "doubt",
+   "reason": "Official homepage confirms Nobuo Nishida, ceramic classes, rental gallery and Hijimacho 2-15-2-2. Its newest news is 2021-03-04; no dated 2026 operating sentence was found."
+  },
+  {
+   "name": "いの町紙の博物館",
+   "verdict": "drop",
+   "reason": "Official notice announces a long temporary closure from 2026-11-16 to 2027-03-31, including suspension of in-person shop sales. Drop under the requested long-closure rule."
+  }
+ ]
+}

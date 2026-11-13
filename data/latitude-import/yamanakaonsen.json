@@ -1,0 +1,660 @@
+{
+ "slug": "yamanakaonsen",
+ "city": {
+  "name": "Yamanaka Onsen",
+  "nameJa": "山中温泉",
+  "latitude": "36.2° N",
+  "country": "Ishikawa, Japan",
+  "countryJa": "石川県",
+  "person": "rin",
+  "coords": [
+   36.24688,
+   136.37319
+  ],
+  "intro": "A hot-spring town in the gorge of the Daishoji River in southern Ishikawa. Yamanaka lacquerware wood-turners and Kutani kilns, alongside wagashi shops, coffee and diners along Yuge Kaido and Kakusenkei Gorge, as Rin's picks.",
+  "introJa": "石川県の南、大聖寺川の渓谷に沿った温泉の町。山中漆器の木地屋と九谷焼の窯元、ゆげ街道や鶴仙渓のあたりの菓子と喫茶、食堂を、凛のおすすめで。",
+  "locator": {
+   "en": "In southern Ishikawa · a hot-spring town in a river gorge",
+   "ja": "石川県の南・大聖寺川の渓谷に沿った温泉の町"
+  },
+  "industries": [
+   {
+    "key": "yamanaka-shikki",
+    "en": "Yamanaka Lacquerware",
+    "ja": "山中漆器",
+    "about": "Yamanaka lacquerware is known for wood-turning on a lathe, cutting the timber vertically along the grain (tategi-dori). With a history of more than 400 years, its workshops turn paper-thin bowls and tea canisters in the damp climate of the gorge.",
+    "aboutJa": "山中漆器は、木を縦の木目で挽く「縦木取り」など、ろくろ挽きの木地で知られる漆器。400年以上の歴史があり、湿度の高い渓谷の町で、薄挽きの椀や茶筒を作る工房が続く。",
+    "_src": "Japan's leading wood-turned lacquerware center, prized since the 16th century for vertical-grain lathe turning (tategi-dori), paper-thin rims, and fine decorative grooves."
+   },
+   {
+    "key": "kutani-yaki",
+    "en": "Kutani Ware",
+    "ja": "九谷焼",
+    "about": "Kutani ware began in the mid-17th century when a kiln was built in Kutani village, upstream from Yamanaka Onsen. It is known for overglaze enamels in five colours—green, yellow, purple, navy blue and red.",
+    "aboutJa": "九谷焼は17世紀半ば、山中温泉の上流にある九谷村に窯を築いたことから始まった磁器。緑・黄・紫・紺青・赤の「九谷五彩」の上絵付けで知られる。",
+    "_src": "Ishikawa's celebrated overglaze-enameled porcelain tradition, born in the 1650s at the Old Kutani kiln deep in Yamanaka Onsen's upstream Daishoji River gorge."
+   }
+  ]
+ },
+ "places": {
+  "GATO MIKIO/1": {
+   "nameEn": "GATO MIKIO/1",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "tags": [
+    "lacquer",
+    "wood",
+    "tableware"
+   ],
+   "what": "こおろぎ橋の近くにある、1908年創業の木地屋「我戸幹男商店」の直営店。茶筒KARMIや薄挽きの酒器TOHKAなど、山中漆器の器が並ぶ。木曜定休。",
+   "whatEn": "The flagship shop of wood-turning house Gato Mikio Shoten, founded in 1908, near Korogi Bridge. Carries KARMI tea canisters, thin-turned TOHKA sake vessels and other Yamanaka lacquerware. Closed Thursdays.",
+   "note": "茶筒KARMIの蓋の閉まり具合を確かめたい。",
+   "noteEn": "I want to test how the lid of a KARMI canister closes.",
+   "_src": {
+    "category": "local",
+    "industry": "yamanaka-shikki",
+    "nameKana": "ガトミキオ イチ",
+    "address": "石川県加賀市山中温泉こおろぎ町ニ-3-7",
+    "url": "https://www.gatomikio-1.com/",
+    "whatJa": "こおろぎ橋のすぐそばに佇む、山中漆器の木地屋「我戸幹男商店」初の直営ショップ。",
+    "whatEn": "The flagship showroom of Yamanaka wood-turning house Gato Mikio Shoten, steps from Korogi Bridge.",
+    "facts": "Founded in 1908 as a wood-turning workshop; showcases award-winning KARMI tea canisters turned with microscopic lid tolerances and translucent thin-turned TOHKA sake vessels, alongside store-only semi-custom pieces.",
+    "weak": "",
+    "verifiedBy": "https://www.gatomikio-1.com/info/297/",
+    "quote": "GATOMIKIO/1のリクルート情報を公開いたしました。",
+    "fixes": "",
+    "coords": [
+     36.24266,
+     136.37174
+    ]
+   }
+  },
+  "うるしの器 あさだ": {
+   "nameEn": "Urushi no Utsuwa Asada",
+   "area": "菅谷・荒谷",
+   "areaEn": "Sugatani & Aratani",
+   "tags": [
+    "lacquer",
+    "wood",
+    "tableware"
+   ],
+   "what": "菅谷町で、木地挽きから漆塗りまで自社工房で手がける浅田漆器工芸の直営店。ケヤキや桜の器、和ろうそくの煤で模様をつける叢雲塗などを扱う。",
+   "whatEn": "The workshop shop of Asada Shikki Kogei in Sugatani, where wood-turning and urushi lacquering are done under one roof. Carries keyaki and cherry vessels, and smoky Murakumo-nuri.",
+   "note": "和ろうそくの煤の叢雲塗を近くで見たい。",
+   "noteEn": "I want to look closely at the candle-soot Murakumo finish.",
+   "_src": {
+    "category": "local",
+    "industry": "yamanaka-shikki",
+    "nameKana": "ウルシノウツワ アサダ",
+    "address": "石川県加賀市山中温泉菅谷町ハ215",
+    "url": "https://asada-shikki.com/",
+    "whatJa": "木地挽きから漆塗りまで自社工房で一貫して手がける浅田漆器工芸の工房併設ショップ。",
+    "whatEn": "A workshop-attached lacquerware gallery where Asada Shikki Kogei turns domestic hardwoods and brushes urushi under one roof.",
+    "facts": "Specializes in domestic Japanese timber such as keyaki and cherry; known for its smoky Murakumo-nuri finish patterned with Japanese sumac-wax candle soot and everyday Utsuroi cups, with views over Sugatani rice paddies.",
+    "weak": "",
+    "verifiedBy": "https://asada-shikki.com/interior-lifestyle-2026-thanks/",
+    "quote": "2026年6月10日（水）～12日（金）に東京ビッグサイトにて開催されました「インテリア ライフスタイル 2026」に出展いたしました。",
+    "fixes": "",
+    "coords": [
+     36.23071,
+     136.36343
+    ]
+   }
+  },
+  "工房 静寛": {
+   "nameEn": "Kobo Jokan",
+   "area": "上原・長谷田",
+   "areaEn": "Uwahara & Haseda",
+   "tags": [
+    "lacquer",
+    "wood",
+    "tableware"
+   ],
+   "what": "1909年創業の守田漆器が営む、器と植物の店。ガラス越しに木地師や塗師の作業を見られ、塗物静寛の器や薄挽きの照明、観葉植物が並ぶ。",
+   "whatEn": "A tableware and plant shop run by Morita Shikki, founded in 1909. Visitors can watch wood-turners and lacquerers through glass, alongside Nurimono Jokan vessels, thin-turned lamps and houseplants.",
+   "note": "職人の手元を見てから、汁椀を選びたい。",
+   "noteEn": "Watch the turners at work, then pick out a soup bowl.",
+   "_src": {
+    "category": "local",
+    "industry": "yamanaka-shikki",
+    "nameKana": "コウボウ ジョウカン",
+    "address": "石川県加賀市山中温泉上原町ワ531",
+    "url": "https://shikkitogreen.co.jp/",
+    "whatJa": "1909年創業の守田漆器が営む、ガラス越しの職人仕事の見学と器・植物選びができる複合工房ショップ。",
+    "whatEn": "An open-view wood-turning and urushi workshop, tableware store, and botanical space run by 1909 lacquerware maker Morita Shikki.",
+    "facts": "Visitors can watch lathe turners and urushi lacquerers at work through glass partitions, browse Morita Shikki's Nurimono Jokan vessels and translucent Yamanaka Usubiki wood lamps, and join urushi-wiping workshops.",
+    "weak": "",
+    "verifiedBy": "https://shikkitogreen.co.jp/topic/%e3%80%90%e5%b7%a5%e6%88%bf%e9%9d%99%e5%af%9b4%e5%91%a8%e5%b9%b4%e3%80%91%e6%97%a5%e9%a0%83%e3%81%ae%e6%84%9f%e8%ac%9d%e3%82%92%e8%be%bc%e3%82%81%e3%81%a6%e3%80%81%e8%a8%98%e5%bf%b5%e7%b5%b5%e8%91%89",
+    "quote": "おかげさまで、工房静寛は2026年11月12日（木）にオープン4周年を迎えます。",
+    "fixes": "",
+    "coords": [
+     36.2632,
+     136.36653
+    ]
+   }
+  },
+  "九谷焼窯元 きぬや": {
+   "nameEn": "Kutani Kiln Kinuya",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "鶴仙渓の入口近く、紅殻格子の町家にある九谷焼の窯元の店。1階で九谷焼の器や小物を販売し、2階はろくろや上絵付けの体験工房になっている。",
+   "whatEn": "A Kutani ware kiln shop in a red-ochre lattice townhouse near the Kakusenkei Gorge entrance. The ground floor sells Kutani vessels and small pieces; upstairs is a wheel-throwing and overglaze studio.",
+   "note": "五彩の小皿を一枚、普段使いに選びたい。",
+   "noteEn": "Pick out one five-colour small plate for everyday use.",
+   "_src": {
+    "category": "local",
+    "industry": "kutani-yaki",
+    "nameKana": "クタニヤキカマモト キヌヤ",
+    "address": "石川県加賀市山中温泉東町1丁目マ22",
+    "url": "https://kinuya-kutani.jimdofree.com/",
+    "whatJa": "鶴仙渓入口近くの紅殻格子の町家に店を構える、九谷焼窯元のギャラリーショップ兼陶芸工房。",
+    "whatEn": "A Kutani ware kiln showroom and upstairs pottery studio behind red-ochre lattice walls near the Kakusenkei Gorge trailhead.",
+    "facts": "First floor sells original house-fired Kutani Oval plates and works by local Kutani potters; the second-floor Silcro studio runs electric wheel-throwing and traditional five-color Kutani overglaze painting sessions.",
+    "weak": "",
+    "verifiedBy": "https://kinuya-kutani.jimdofree.com/ブログ/",
+    "quote": "◉1F九谷焼窯元きぬやは営業してます♪",
+    "fixes": "",
+    "coords": [
+     36.24969,
+     136.37518
+    ]
+   }
+  },
+  "御菓子調進所 山海堂": {
+   "nameEn": "Sankaido",
+   "area": "湯の本町",
+   "areaEn": "Yunomoto-machi",
+   "tags": [
+    "wagashi",
+    "sweets"
+   ],
+   "what": "明治38年（1905年）創業の湯の本町の和菓子店。季節の干菓子「そっとひらくと」や上生菓子を作る。火曜定休。",
+   "whatEn": "A wagashi confectioner on Yunomoto-machi, founded in 1905. Makes seasonal dry-sugar sweets Sotto Hirakuto and fresh wagashi. Closed Tuesdays.",
+   "note": "箱を開ける「そっとひらくと」を土産にしたい。",
+   "noteEn": "A box of Sotto Hirakuto to take home.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "オカシチョウシンショ サンカイドウ",
+    "address": "石川県加賀市山中温泉湯の本町ク-8",
+    "url": "https://sankaido.co.jp/",
+    "whatJa": "明治38年（1905年）創業、湯の本町で四季の上生菓子や干菓子を誂える老舗和菓子店。",
+    "whatEn": "A family-run wagashi confectioner founded in 1905 on Yunomoto-machi, celebrated for poetic dry-sugar confections and seasonal sweets.",
+    "facts": "Signature confection Sotto Hirakuto hides tiny seasonal sugar motifs of Kakusenkei Gorge inside a crisp round wafer box; also serves walk-around monaka ice cream sandwiches topped with those seasonal wafers.",
+    "weak": "",
+    "verifiedBy": "https://shop-sankaido.com/",
+    "quote": "「そっとひらくと　はるほのか」につきまして、只今ご注文が立て込んでおり、再販売時期は未定となっております。",
+    "fixes": "",
+    "coords": [
+     36.24828,
+     136.37385
+    ]
+   }
+  },
+  "山中石川屋 本店": {
+   "nameEn": "Yamanaka Ishikawaya",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "tags": [
+    "wagashi",
+    "sweets"
+   ],
+   "what": "明治38年（1905年）創業のゆげ街道の和菓子店。黒糖と地産味噌が香る皮に十勝産小豆のこし餡を包んだ「娘娘万頭」や、娘娘ソフトを売る。",
+   "whatEn": "A wagashi shop on Yuge Kaido, founded in 1905. Known for Nyaa-Nyaa Manju, brown-sugar and local-miso buns filled with smooth azuki paste, and Nyaa-Nyaa Soft.",
+   "note": "娘娘万頭は一口の大きさ。こし餡とソフトも。",
+   "noteEn": "Nyaa-Nyaa Manju is bite-sized; the soft serve with azuki paste too.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ヤマナカイシカワヤ ホンテン",
+    "address": "石川県加賀市山中温泉本町2丁目ナ24",
+    "url": "https://www.yamanakaishikawaya.com/",
+    "whatJa": "明治38年（1905年）創業、黒糖と地産味噌が香る銘菓「娘娘万頭」で知られるゆげ街道の老舗和菓子店。",
+    "whatEn": "A 1905 wagashi shop on Yuge Kaido famous for Nyaa-Nyaa Manju, a brown-sugar and Kaga-miso steamed bun filled with smooth Hokkaido azuki paste.",
+    "facts": "Named after 'nyaa-nyaa,' old Kaga dialect for a young woman, and shaped into a petite oval easy to eat in small bites; the flagship also serves Nyaa-Nyaa Soft pairing its signature smooth koshi-an bean paste with soft-serve ice cream.",
+    "weak": "",
+    "verifiedBy": "https://www.yamanakaishikawaya.com/news/4090/",
+    "quote": "今年最後の晦日菓子のご案内です。",
+    "fixes": "",
+    "coords": [
+     36.24806,
+     136.37466
+    ]
+   }
+  },
+  "芭蕉珈琲": {
+   "nameEn": "Basho Coffee",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "1966年創業、菊の湯から徒歩3分のレトロな喫茶店。芭蕉の木のステンドグラスがある店内で、自家焙煎豆をサイフォンで淹れる。9時から19時、不定休。",
+   "whatEn": "A retro coffee shop founded in 1966, a three-minute walk from Kikunoyu. House-roasted beans are brewed in glass siphons in a room with a banana-tree stained-glass window. Open 9 am to 7 pm, irregular holidays.",
+   "note": "ステンドグラスの下で、サイフォンの一杯を待つ。",
+   "noteEn": "Sit under the stained glass and wait for a siphon cup.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "バショウコーヒー",
+    "address": "石川県加賀市山中温泉本町1-ヤ-6",
+    "url": "https://bashow.com/",
+    "whatJa": "1966年（昭和41年）創業、自家焙煎豆をサイフォンで一杯ずつ淹れる山中温泉最古の純喫茶。",
+    "whatEn": "Yamanaka Onsen's oldest kissaten, roasting beans in-house and brewing cup by cup in glass siphons since 1966.",
+    "facts": "Located a three-minute walk from Kikunoyu bathhouse inside a retro room adorned with a banana-tree stained-glass window honoring Matsuo Basho; serves siphon blends, cafe au lait base, waffles, and classic morning sets.",
+    "weak": "",
+    "verifiedBy": "https://bashow.com/60th_anniversary/",
+    "quote": "4/23(木)、芭蕉珈琲は60周年を迎えます。",
+    "fixes": "whatEn = A retro coffee shop founded in 1966, a three-minute walk from Kikunoyu. whatJa = 1966年創業、菊の湯から徒歩3分のレトロな喫茶店。「山中温泉最古」の比較表現は公式ページで確認できないため削除。",
+    "coords": [
+     36.24866,
+     136.37449
+    ]
+   }
+  },
+  "東山ボヌール": {
+   "nameEn": "Higashiyama Bonheur",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "tags": [
+    "coffee",
+    "sweets"
+   ],
+   "what": "鶴仙渓の入口、黒谷橋のたもとに建つ旧旅館を改装した喫茶店。ハンドドリップ珈琲や森のケーキ、ビーフシチューライスを出す。カフェは10時から16時。",
+   "whatEn": "A café in a converted former inn by Kurotani Bridge at the entrance to Kakusenkei Gorge. Serves hand-drip coffee, Mori no Cake and beef stew rice. Café hours 10 am to 4 pm.",
+   "note": "渓谷を歩く前に、ここで珈琲とケーキにする。",
+   "noteEn": "Coffee and cake here before walking the gorge.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ヒガシヤマボヌール",
+    "address": "石川県加賀市山中温泉東町1丁目ホ19-1",
+    "url": "https://higashiyama-bonheur.jimdofree.com/",
+    "whatJa": "鶴仙渓入口・漆器の神様を祀る東山神社の鳥居横に佇む、旧旅館を改装した森の喫茶店。",
+    "whatEn": "A quiet wooded cafe converted in 2010 from the former Higashiyamaso inn beside the stone torii of Higashiyama Shrine at the entrance to Kakusenkei Gorge.",
+    "facts": "Designed by architect Koji Horioka with shelves of foreign picture books overlooking mossy trees; known for hand-drip coffee, fruit-and-nut Mori no Cake pound cake, beef stew rice, and refilling hikers' thermoses before gorge walks.",
+    "weak": "",
+    "verifiedBy": "https://higashiyama-bonheur.jimdofree.com/2026/11/11/2026-11-11-%E6%9D%B1%E5%B1%B1%E3%83%9C%E3%83%8C%E3%83%BC%E3%83%AB%E4%BE%BF%E3%82%8A/",
+    "quote": "連日たくさんのご来店ありがとうございます♪",
+    "fixes": "",
+    "coords": [
+     36.2498,
+     136.37654
+    ]
+   }
+  },
+  "山中PORTAL": {
+   "nameEn": "Yamanaka PORTAL",
+   "area": "湯の本町",
+   "areaEn": "Yunomoto-machi",
+   "tags": [
+    "coffee",
+    "sweets"
+   ],
+   "what": "湯の本町の古民家を改装したカフェ。スペシャルティコーヒーと自家製ドリンク、ほろ苦いプリンやフルーツサンド、マフィンなどを出す。",
+   "whatEn": "A café in a renovated townhouse off Yunomoto-machi. Serves specialty coffee and house-made drinks with slightly bitter pudding, fruit sandwiches and muffins.",
+   "note": "珈琲と、ほろ苦いプリンを頼みたい。",
+   "noteEn": "Order a coffee with the slightly bitter pudding.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ヤマナカポータル",
+    "address": "石川県加賀市山中温泉湯の本町ク27",
+    "url": "https://www.instagram.com/yamanaka_portal/",
+    "whatJa": "湯の本町の古民家を改装した空間で、スペシャルティコーヒーと自家製プリンや焼き菓子を供するカフェ。",
+    "whatEn": "A vintage-toned specialty coffee shop in a renovated townhouse off Yunomoto-machi serving pour-over coffee, firm custard pudding, and baked sweets.",
+    "facts": "Pairs carefully brewed specialty coffee and house-made syrups with classic firm pudding, pound cakes, and cube-shaped fruit sandwiches popular with locals and spa-town strollers.",
+    "weak": "",
+    "verifiedBy": "https://plus.rurubu.jp/article/070725098",
+    "quote": "スぺシャルティコーヒーや自家製ドリンクと共に、手作りスイーツが楽しめる。ほろ苦いプディングやケーキのようなフルーツサンド、さっくりしたマフィンなどがおすすめ。",
+    "fixes": "",
+    "coords": [
+     36.2497,
+     136.37428
+    ]
+   }
+  },
+  "湯の街ビストロ 江沼スタシオン": {
+   "nameEn": "Enuma Station",
+   "area": "湯の本町",
+   "areaEn": "Yunomoto-machi",
+   "tags": [
+    "bistro",
+    "wine"
+   ],
+   "what": "湯の本町のフレンチビストロ。地元の八百屋や魚屋から届く加賀の山海の幸をコースに仕立て、ワインと合わせる。2026年で10周年。",
+   "whatEn": "A French bistro on Yunomoto-machi serving seasonal courses of local Kaga seafood and mountain vegetables with wine. Marks its tenth year in 2026.",
+   "note": "加賀の魚と野菜のコースを、ワインとゆっくり。",
+   "noteEn": "Take time over a course of Kaga fish and vegetables with wine.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ユノマチビストロ エヌマスタシオン",
+    "address": "石川県加賀市山中温泉湯の本町ク38",
+    "url": "https://enuma-station.com/",
+    "whatJa": "湯の本町で地元の魚屋や八百屋から届く加賀の山海の幸を季節のコースに仕立てるフレンチビストロ。",
+    "whatEn": "An intimate reservation-focused French bistro on Yunomoto-machi cooking seasonal Kaga seafood, mountain vegetables, and meats with local sake and wine.",
+    "facts": "Celebrated its 10th anniversary in 2026; sources Sea of Japan fish such as hachime rockfish and seasonal Kaga produce daily from neighborhood greengrocers and fishmongers, pairing courses with wine and soft-water Kaga sake.",
+    "weak": "",
+    "verifiedBy": "https://enuma-station.com/2026%ef%bd%9e10%e5%91%a8%e5%b9%b4%e5%be%a1%e7%a4%bc%ef%bd%9e/",
+    "quote": "本日3月15日、お陰様をもちまして10周年を迎えました。",
+    "fixes": "",
+    "coords": [
+     36.25057,
+     136.37412
+    ]
+   }
+  },
+  "山田食堂": {
+   "nameEn": "Yamada Shokudo",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "tags": [
+    "udon",
+    "soba"
+   ],
+   "what": "山中温泉本町の食堂。自家製のうどん・そばや丼もの、定食を出す。11時から14時45分と17時30分から20時45分、木曜と第1水曜定休。",
+   "whatEn": "A neighbourhood diner in Honmachi serving house-made udon and soba, rice bowls and set meals. Open 11 am to 2:45 pm and 5:30 to 8:45 pm; closed Thursdays and the first Wednesday.",
+   "note": "昼はここで、打ちたてのうどんにする。",
+   "noteEn": "Come at noon for freshly made udon.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ヤマダショクドウ",
+    "address": "石川県加賀市山中温泉本町1-ヤ34",
+    "url": "http://yamanaka-yamashoku.com/",
+    "whatJa": "毎日店内で製麺する自家製うどん・そばや豊富な丼もの・定食で地元客に愛される本町の食堂。",
+    "whatEn": "A long-loved everyday diner in Honmachi making fresh house-kneaded udon and soba daily alongside rice bowls and set meals.",
+    "facts": "Stands across from Yamanaka Onsen Bus Terminal with counter, table, and tatami seating; locals rely on its freshly cut udon, katsudon, and set meals for both sit-down lunches and neighborhood delivery.",
+    "weak": "",
+    "verifiedBy": "http://yamanaka-yamashoku.com/2026/08/09/%e5%96%b6%e6%a5%ad%e6%97%a5%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "８月13日（木）　営業いたします",
+    "fixes": "",
+    "coords": [
+     36.25025,
+     136.37432
+    ]
+   }
+  },
+  "手打ちそば 和楽庵": {
+   "nameEn": "Warakuan",
+   "area": "菅谷・荒谷",
+   "areaEn": "Sugatani & Aratani",
+   "tags": [
+    "soba"
+   ],
+   "what": "山あいの荒谷町にある手打ち蕎麦処。春から初冬にかけて開き、蕎麦の実の中心を挽いた白い御前そばや天ざるを出す。",
+   "whatEn": "A hand-cut soba house in the mountain hamlet of Aratani-machi. Open from spring to early winter, serving pale Gozen soba milled from the heart of the buckwheat and tenzaru.",
+   "note": "山あいの店で、白い御前そばをたぐる。",
+   "noteEn": "Pale Gozen soba in a quiet mountain hamlet.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "テウチソバ ワラクアン",
+    "address": "石川県加賀市山中温泉荒谷町ヌ42",
+    "url": "https://www.kaga-warakuan.sakura.ne.jp/",
+    "whatJa": "山あいの荒谷町で春から初冬まで営業する、囲炉裏部屋を備えた古民家風の手打ち蕎麦処。",
+    "whatEn": "A seasonal mountain-hamlet soba house in Aratani-machi serving hand-rolled pure-white Gozen soba in a traditional house with an irori hearth.",
+    "facts": "Open from April snowmelt until December's first snow; specializes in translucent white Gozen soba milled from the center of the buckwheat kernel and crisp tenzaru tempura platters.",
+    "weak": "",
+    "verifiedBy": "https://www.kaga-warakuan.sakura.ne.jp/news.html",
+    "quote": "８月３０日　日曜日は通常通り\n営業いたします。",
+    "fixes": "",
+    "coords": [
+     36.25113,
+     136.42619
+    ]
+   }
+  },
+  "LUCCI CAFE": {
+   "nameEn": "LUCCI CAFE",
+   "area": "上原・長谷田",
+   "areaEn": "Uwahara & Haseda",
+   "tags": [
+    "curry",
+    "coffee"
+   ],
+   "what": "加美谷台のランチカフェ。麹や能登味噌などの発酵食品を使ったスパイスカレーを、1種から3種盛りまで用意する。11時から18時、月・火曜定休。",
+   "whatEn": "A lunch café in Kamiyadai serving spice curries made with fermented ingredients such as koji and Noto miso, in plates of one to three curries. Open 11 am to 6 pm; closed Mondays and Tuesdays.",
+   "note": "3種盛りにして、発酵のカレーを食べ比べる。",
+   "noteEn": "Order the three-curry plate to compare the fermented curries.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ルッチカフェ",
+    "address": "石川県加賀市山中温泉加美谷台1丁目116",
+    "url": "https://www.instagram.com/lucci_cafe_/",
+    "whatJa": "麹や能登味噌などの発酵食品とスパイスを掛け合わせた創作スパイスカレーが人気のランチカフェ。",
+    "whatEn": "A casual lunch spot in Kamiyadai combining Ishikawa fermented seasonings such as koji and Noto miso with aromatic spice curries.",
+    "facts": "Serves colorful multi-curry plates such as tomato-koji keema and Noto-miso butter chicken accompanied by fermented vegetable side dishes.",
+    "weak": "",
+    "verifiedBy": "https://hokuriku-curry.com/shopmap/lucci_cafe/",
+    "quote": "カレーはお店ではいつも３種のカレーを用意してて、１種から３種盛りまで選べちゃうのもいいですね！",
+    "fixes": "",
+    "coords": [
+     36.25586,
+     136.36592
+    ]
+   }
+  },
+  "畑漆器店 直営店": {
+   "nameEn": "Hata Shikki Company Store",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "tags": [
+    "lacquer",
+    "wood",
+    "tableware"
+   ],
+   "what": "1930年創業の畑漆器店がゆげ街道で営む直営店。山中漆器の木地を活かした「col.」や「SOJI」、応用器などを置く。10時から17時、水曜定休。",
+   "whatEn": "The street-level shop on Yuge Kaido of Hata Shikki, founded in 1930. Stocks contemporary turned-wood lines such as col., SOJI and ouyouki. Open 10 am to 5 pm; closed Wednesdays.",
+   "note": "水曜は休み。木地が透ける器を手に取って選びたい。",
+   "noteEn": "Closed Wednesdays. Pick up the wood-grain pieces to feel them.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ハタシッキテン チョクエイテン",
+    "address": "石川県加賀市山中温泉湯の出町レ23 商山堂ビル1F",
+    "url": "https://www.hatashikki.jp/",
+    "whatJa": "山中漆器の木地技術を活かしたモダンな木製テーブルウェアが揃う、畑漆器店の路面直営ショップ。",
+    "whatEn": "A bright street-level shop near Yuge Kaido showcasing Hata Shikki's contemporary turned-wood tableware lines.",
+    "facts": "Carries Hata Shikki's pastel-painted wooden stacking vessels (col.), minimalist natural-grain SOJI canisters and trays, and everyday ouyouki bowls.",
+    "weak": "",
+    "verifiedBy": "https://www.hatashikki.jp/news/%E3%81%84%E3%81%97%E3%81%8B%E3%82%8F%E3%81%AE%E6%BC%86products-%E3%81%AB%E3%80%8Couyouki%E3%80%8D%E3%82%92%E5%87%BA%E5%93%81%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%99",
+    "quote": "石川県の漆工芸の魅力を紹介する「いしかわの漆Products」に、畑漆器店の「ouyouki（応用器）」を展示出品いたします。",
+    "fixes": "住所の公式表記は「石川県加賀市山中温泉湯の出町レ23 商山堂ビル」。公式直営店案内に階数の記載はないため1Fを削除。",
+    "coords": [
+     36.24606,
+     136.37303
+    ]
+   }
+  },
+  "Amu Shop & Cafe": {
+   "nameEn": "Amu Shop & Cafe",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "tags": [
+    "ceramics",
+    "lacquer",
+    "glass"
+   ],
+   "what": "ゆげ街道の南町にあるショップ兼カフェ。石川県の伝統工芸の技術を生かした雑貨やアクセサリー、県産フードを扱う。9時半から18時半、水曜と第2・4木曜定休。",
+   "whatEn": "A shop and café in Minami-machi on Yuge Kaido selling contemporary crafts, accessories and foods from Ishikawa. Open 9:30 am to 6:30 pm; closed Wednesdays and the second and fourth Thursdays.",
+   "note": "石川の作家の雑貨を見て、ひと息つく。",
+   "noteEn": "Browse the Ishikawa makers' wares, then take a break.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "アム ショップアンドカフェ",
+    "address": "石川県加賀市山中温泉南町ロ11",
+    "url": "https://www.instagram.com/amushopandcafe/",
+    "whatJa": "現代の暮らしに馴染む九谷焼や山中塗、ガラス器など石川の若手・産地の器をセレクトするゆげ街道のショップ。",
+    "whatEn": "A curated craft and tableware shop on Yuge Kaido highlighting contemporary Kutani ware ceramics, Yamanaka lacquerware, glassware, and Kaga handwork.",
+    "facts": "Built around the theme 'Ishikawa's Now,' pairing a select gallery of young Kutani potters, wood-turned bowls, and Kanazawa mizuhiki craft with a small counter serving gelato and Gorojima sweet-potato lattes in local vessels.",
+    "weak": "",
+    "verifiedBy": "https://plus.rurubu.jp/article/070725098",
+    "quote": "石川県の“今”を象徴するアイテムが集結。伝統工芸の技術を生かしたコンテンポラリーな雑貨やアクセサリーを販売。工芸品のほか、みやげに好適な石川県産のフードも揃えている。",
+    "fixes": "whatEn = A shop and cafe selling contemporary crafts, accessories, and foods from Ishikawa. whatJa = 石川県の伝統工芸の技術を生かした雑貨・アクセサリーや県産フードを販売するショップ兼カフェ。2026年取材記事で確認できる内容に修正。住所は南町ロ11で一致。",
+    "coords": [
+     36.24535,
+     136.37265
+    ]
+   }
+  },
+  "CRAFTOUR": {
+   "nameEn": "CRAFTOUR",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "tags": [
+    "lacquer",
+    "wood",
+    "tableware"
+   ],
+   "what": "鶴仙渓の入口近くで、山中漆器の器を扱うショップと、職人の工房を巡る予約制プライベートツアーの拠点。",
+   "whatEn": "A shop near the entrance to Kakusenkei Gorge selling Yamanaka lacquerware and running private reservation-only tours to local artisans' workshops.",
+   "note": "山中漆器の器を見て、工房の話を聞く。",
+   "noteEn": "Look at the Yamanaka lacquerware and hear about the workshops.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "クラフツアー",
+    "address": "石川県加賀市山中温泉東町1丁目マ21",
+    "url": "https://craftour.jp/",
+    "whatJa": "鶴仙渓入口近くで産地の優れた器の販売と、職人工房を巡る予約制プライベートツアーを手がける拠点ショップ。",
+    "whatEn": "A select tableware gallery and artisan-tour desk near the Kakusenkei Gorge entrance connecting visitors with Yamanaka wood-turners and maki-e studios.",
+    "facts": "Sells refined bowls, vessels, and lacquer objects selected from workshops across Yamanaka Onsen, and coordinates behind-the-scenes visits to vertical-grain wood-turning lathes and rare decorative urushi masters.",
+    "weak": "",
+    "verifiedBy": "https://locally.matcha-jp.com/en/27845",
+    "quote": "The CRAFTOUR shop is located at the entrance to the Yamanaka Onsen hot spring resort area, and tours depart from here.",
+    "fixes": "",
+    "coords": [
+     36.24971,
+     136.37494
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "こおろぎ橋",
+   "nameEn": "Korogi Bridge",
+   "kind": "sight",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "address": "加賀市山中温泉下谷町",
+   "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+   "what": "鶴仙渓に架かる総ひのきの橋。現在の4代目は2019年に架け替えられ、ここから黒谷橋まで1.3キロの渓谷遊歩道が続く。",
+   "whatEn": "An all-cypress bridge over Kakusenkei Gorge. The current fourth bridge was rebuilt in 2019, and a 1.3 km gorge walking path runs from here to Kurotani Bridge.",
+   "coords": [
+    36.24099,
+    136.37167
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.yamanaka-spa.or.jp/highlights/landmark/ (山中温泉観光協会公式, 2026年11月紅葉情報あり): 総ひのきの造り、2019年10月12日に4代目が完成、黒谷橋まで1.3キロの遊歩道。",
+   "_coordsSource": "OSM way 197600543 (こおろぎ橋)"
+  },
+  {
+   "name": "あやとりはし",
+   "nameEn": "Ayatori Bridge",
+   "kind": "sight",
+   "area": "鶴仙渓・こおろぎ橋",
+   "areaEn": "Kakusenkei Gorge & Korogi Bridge",
+   "address": "加賀市山中温泉河鹿町",
+   "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+   "what": "こおろぎ橋と黒谷橋のほぼ中間に架かる長さ94.7メートルの歩行者専用橋。草月流家元の勅使河原宏が設計した紅紫色のS字形の橋で、通行は自由。",
+   "whatEn": "A 94.7-metre pedestrian bridge midway between Korogi Bridge and Kurotani Bridge, designed in an S-curve of crimson-purple steel by Sogetsu headmaster Hiroshi Teshigahara. Free to cross.",
+   "coords": [
+    36.24547,
+    136.37579
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.yamanaka-spa.or.jp/highlights/landmark/ & https://plus.rurubu.jp/article/070725098: 長さ94.7メートル、徒歩専用、通行自由、加賀市山中温泉河鹿町。",
+   "_coordsSource": "OSM way 197605955 (綾取り橋)"
+  },
+  {
+   "name": "総湯 菊の湯",
+   "nameEn": "Kikunoyu Public Bath",
+   "kind": "sight",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "address": "加賀市山中温泉本町二丁目",
+   "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+   "what": "男女別棟で建つ山中温泉の共同浴場。松尾芭蕉の句から名付けられ、7時から22時まで開く（第2・4火曜定休）。",
+   "whatEn": "Yamanaka Onsen's public bathhouse, with separate buildings for men and women. Named after a haiku by Matsuo Basho; open 7 am to 10 pm, closed second and fourth Tuesdays.",
+   "coords": [
+    36.24694,
+    136.37328
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.yamanaka-spa.or.jp/highlights/landmark/: 営業時間7:00〜22:00、第2・第4火曜定休、大人500円。",
+   "_coordsSource": "OSM way 599871168 (総湯 菊の湯 男湯)"
+  },
+  {
+   "name": "山中座",
+   "nameEn": "Yamanaka-za",
+   "kind": "sight",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "address": "加賀市山中温泉薬師町",
+   "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+   "what": "菊の湯の女湯に隣接する山中節の館と観光案内所。漆塗りの柱や蒔絵の格天井を備え、週末と祝日には芸妓連による「山中節四季の舞」が開かれる。",
+   "whatEn": "A hall for Yamanaka-bushi folk song and tourist information next to the women's bath of Kikunoyu, with lacquered pillars and maki-e coffered ceilings. Geiko performances are held on weekends and holidays.",
+   "coords": [
+    36.24716,
+    136.37284
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.yamanaka-spa.or.jp/highlights/landmark/ & https://www.yamanaka-spa.or.jp/ (2026年「山中節四季の舞 好評開催中(週末)」): 8:30〜22:00（冬季20:00まで）、年中無休。",
+   "_coordsSource": "OSM node 5705680748 (山中座)"
+  },
+  {
+   "name": "山中温泉 芭蕉の館",
+   "nameEn": "Basho no Yakata",
+   "kind": "art",
+   "area": "ゆげ街道・本町",
+   "areaEn": "Yuge Kaido & Honmachi",
+   "address": "加賀市山中温泉本町二丁目",
+   "url": "https://www.yamanaka-spa.or.jp/highlights/landmark/",
+   "what": "1905年築の旅館の別荘を整備した展示館。松尾芭蕉ゆかりの品や山中漆器の秀品を展示する。9時から17時、水曜定休。",
+   "whatEn": "An exhibition house in a 1905 ryokan villa with a garden, displaying items linked to Matsuo Basho and Yamanaka lacquerware. Open 9 am to 5 pm; closed Wednesdays.",
+   "coords": [
+    36.24618,
+    136.37387
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.yamanaka-spa.or.jp/highlights/landmark/: 2026年4月1日より入館料350円、9:00〜17:00（16:30までに入場）、水曜日定休。",
+   "_coordsSource": "OSM node 5705701560 (山中温泉芭蕉の館)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "山羊パン",
+   "verdict": "doubt",
+   "reason": "公式サイトでパンの製法・販売内容と住所は一致。公式イベント情報はInstagramへ誘導され、curlでは2026年の日付付き投稿本文を取得できず、2026年営業の文章を確認できない。"
+  },
+  {
+   "name": "パティスリー ミルティーユ",
+   "verdict": "doubt",
+   "reason": "The official homepage has a 2026-10-30 notice heading for November opening days, but the calendar is an image. No dated 2026 operating sentence could be copied. The patisserie description and address match."
+  },
+  {
+   "name": "打喜漆器店 with Craft Bliss Cafe SORA",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned no readable posts through curl. The manufacturer website and a 2025-06-01 article confirm the lacquerware cafe, but supply no dated 2026 operating sentence. The article does not print the street number."
+  },
+  {
+   "name": "漆ギャラリー ぬくて",
+   "verdict": "doubt",
+   "reason": "公式サイトで漆器販売・工房見学・金継ぎと住所は一致するが日付がない。公式リンク先ブログの最新記事は2013年8月12日で、2026年営業を示す日付付き文章を確認できない。"
+  },
+  {
+   "name": "喜八工房 本店",
+   "verdict": "drop",
+   "reason": "The supplied URL redirects to the BASE ecommerce-platform business, rather than the Kihachi shop. Dropped under the different-business-page rule. The separately opened correct site matches the address and lacquerware description, but its 2026 shop opening notices concern the Kanazawa branch."
+  }
+ ]
+}

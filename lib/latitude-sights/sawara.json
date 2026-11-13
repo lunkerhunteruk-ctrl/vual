@@ -1,0 +1,68 @@
+[
+ {
+  "name": "伊能忠敬記念館",
+  "nameEn": "Ino Tadataka Museum",
+  "kind": "art",
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ1722-1",
+  "url": "https://www.city.katori.lg.jp/sightseeing/museum/index.html",
+  "what": "伊能忠敬の生涯と業績を伝える博物館。国宝「伊能忠敬関係資料」を収蔵・展示する。開館は9時から16時30分、月曜休館（祝日の場合は翌平日）。",
+  "whatEn": "A museum dedicated to the life and surveying work of Ino Tadataka, housing and exhibiting National Treasure materials from his survey of Japan. Open 9 am to 4:30 pm; closed Mondays (or the following weekday if Monday is a holiday).",
+  "coords": [
+   35.88839,
+   140.49716
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "伊能忠敬旧宅",
+  "nameEn": "Former Residence of Ino Tadataka",
+  "kind": "sight",
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ1900-1",
+  "url": "https://www.city.katori.lg.jp/sightseeing/meisho/rekishi/s_kyutaku.html",
+  "what": "伊能忠敬が17歳から49歳まで30年余りを過ごした国の史跡。小野川に面して店舗や書院、土蔵が残る。9時から16時30分、入館無料、年末年始のみ休館。",
+  "whatEn": "A national historic site where Ino Tadataka lived for over thirty years from age 17 to 49, with its storefront, study and storehouse facing the Ono River. Open 9 am to 4:30 pm; free entry; closed only at New Year.",
+  "coords": [
+   35.88804,
+   140.49825
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "水郷佐原山車会館",
+  "nameEn": "Suigo Sawara Dashi Float Museum",
+  "kind": "art",
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3368",
+  "url": "https://www.city.katori.lg.jp/sightseeing/sawaradashikaikan/index.html",
+  "what": "八坂神社の境内にある、佐原の大祭の山車や大人形を展示する館。開館は9時から16時30分、月曜休館（祝日の場合は翌平日）。",
+  "whatEn": "A museum in the grounds of Yasaka Shrine displaying the festival floats and large figures of the Sawara Grand Festival. Open 9 am to 4:30 pm; closed Mondays (or the following weekday if Monday is a holiday).",
+  "coords": [
+   35.88976,
+   140.50124
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "香取神宮",
+  "nameEn": "Katori Jingu",
+  "kind": "sight",
+  "area": "香取",
+  "areaEn": "Katori",
+  "address": "香取市香取1697-1",
+  "url": "https://katori-jingu.or.jp/",
+  "what": "全国約400社の香取神社の総本社。授与所・御朱印受付は8時30分から17時まで。",
+  "whatEn": "The head shrine of roughly four hundred Katori shrines across Japan. The amulet and goshuin office is open 8:30 am to 5 pm.",
+  "coords": [
+   35.88569,
+   140.52877
+  ],
+  "notice": "宝物館は改修工事のため長期休館中（2026年11月現在、再開日未定）。",
+  "noticeEn": "The Treasure Hall is closed long-term for renovation (as of November 2026; reopening date undecided).",
+  "verifiedAt": "2026-11-12"
+ }
+]

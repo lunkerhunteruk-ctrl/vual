@@ -1,0 +1,68 @@
+[
+ {
+  "name": "諏訪高島城",
+  "nameEn": "Takashima Castle",
+  "kind": "sight",
+  "area": "湖岸通り・高島",
+  "areaEn": "Kogandori & Takashima",
+  "address": "諏訪市高島1-20-1",
+  "url": "https://www.city.suwa.lg.jp/site/enjoy/4446.html",
+  "what": "1598年に日根野高吉が築いた城で、かつて諏訪湖に浮かぶように見えたことから「諏訪の浮城」と呼ばれた。現在の天守は1970年の復興で、3階が展望コーナー。10〜3月は16:30まで（4〜9月は17:30まで）。",
+  "whatEn": "Built in 1598 by Hineno Takayoshi and once called the Floating Castle of Suwa when Lake Suwa reached its walls. The present keep was reconstructed in 1970 and has a viewing floor on top. Open 9:00–16:30 Oct–Mar (until 17:30 Apr–Sep).",
+  "coords": [
+   36.03979,
+   138.11201
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "諏訪大社 上社本宮",
+  "nameEn": "Suwa Taisha Kamisha Honmiya",
+  "kind": "sight",
+  "area": "中洲",
+  "areaEn": "Nakasu",
+  "address": "諏訪市中洲宮山1",
+  "url": "https://suwataisha.or.jp/",
+  "what": "信濃國一之宮・諏訪大社四社のひとつで、諏訪湖の南側に鎮座する。本殿を持たない「諏訪造り」の社殿や、江戸時代に再建された国の重要文化財の建造物が残る。",
+  "whatEn": "One of the four shrines of Suwa Taisha, the chief shrine of Shinano province, on the south side of Lake Suwa. Its Edo-period buildings follow the Suwa-zukuri style without a main sanctuary hall and are Important Cultural Properties.",
+  "coords": [
+   35.99849,
+   138.11902
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "片倉館",
+  "nameEn": "Katakurakan",
+  "kind": "sight",
+  "area": "湖岸通り・高島",
+  "areaEn": "Kogandori & Takashima",
+  "address": "諏訪市湖岸通り4-1-9",
+  "url": "https://www.katakurakan.or.jp/",
+  "what": "片倉財閥が地域住民の厚生と社交の場として1928年に建てた洋風建築。森山松之助の設計で、国の重要文化財。天然温泉の千人風呂があり、日帰り入浴ができる。",
+  "whatEn": "A Western-style bathhouse and social hall completed in 1928 by the Katakura zaibatsu and designed by Matsunosuke Moriyama, now an Important Cultural Property. Its Sennin-buro hot spring bath is open to day visitors.",
+  "coords": [
+   36.04829,
+   138.11313
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "サンリツ服部美術館",
+  "nameEn": "Sanritz Hattori Museum of Arts",
+  "kind": "art",
+  "area": "湖岸通り・高島",
+  "areaEn": "Kogandori & Takashima",
+  "address": "諏訪市湖岸通り2-1-1",
+  "url": "https://www.sunritz-hattori-museum.or.jp/",
+  "what": "諏訪湖畔の美術館。東洋・西洋の美術品を収蔵し、企画展やコレクション展を開く。JR上諏訪駅から徒歩約15分。",
+  "whatEn": "A lakeside art museum holding Eastern and Western artworks, with rotating special and collection exhibitions. About 15 minutes on foot from JR Kamisuwa Station.",
+  "coords": [
+   36.05516,
+   138.11192
+  ],
+  "notice": "設備工事のため、2026年11月30日〜2027年1月29日は臨時休館。",
+  "noticeEn": "Temporarily closed from 30 Nov 2026 to 29 Jan 2027 for facility work.",
+  "verifiedAt": "2026-11-12"
+ }
+]

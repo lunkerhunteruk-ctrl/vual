@@ -1,0 +1,232 @@
+[
+ {
+  "name": "壺屋焼窯元 育陶園",
+  "nameEn": "Ikutouen",
+  "category": "local",
+  "industry": "tsuboya-yaki",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "shisa"
+  ],
+  "area": "壺屋",
+  "areaEn": "Tsuboya",
+  "address": "那覇市壺屋1-22-33",
+  "url": "https://www.ikutouen.com/",
+  "what": "壺屋やちむん通りの窯元の本店。唐草線彫の器や、育陶園の獅子を扱い、工房見学も案内する。",
+  "whatEn": "The main shop of a kiln on Tsuboya Yachimun-dori, with carved arabesque tableware and its own shisa figures. It also arranges studio visits.",
+  "note": "唐草の線を見ながら、毎日使う器を一つ選びたい。",
+  "noteEn": "I would choose one piece for daily use, looking at the carved arabesque lines.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21253,
+   127.69244
+  ]
+ },
+ {
+  "name": "清正陶器・壺屋窯",
+  "nameEn": "Kiyomasa Pottery / Tsuboya Kiln",
+  "category": "local",
+  "industry": "tsuboya-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "壺屋",
+  "areaEn": "Tsuboya",
+  "address": "那覇市壺屋1-16-7",
+  "url": "https://kiyomasatouki.com/",
+  "what": "壺屋やちむん通りから一本入った路地の窯元の店。4代目の小橋川卓史が、父から継ぐ「赤絵魚紋」と自身の「希望の光」などの器を作る。",
+  "whatEn": "A kiln shop down a lane off Tsuboya Yachimun-dori. Fourth-generation potter Takashi Kobashigawa makes the red fish designs inherited from his father and his own Light of Hope series.",
+  "note": "赤い魚の器を、家の食卓に置くつもりで選びたい。",
+  "noteEn": "I would choose a red fish dish with my own table in mind.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21326,
+   127.69178
+  ]
+ },
+ {
+  "name": "首里染織館 suikara",
+  "nameEn": "Shuri Textile Center suikara",
+  "category": "local",
+  "industry": "ryukyu-bingata",
+  "tags": [
+   "bingata",
+   "textile",
+   "weaving"
+  ],
+  "area": "首里",
+  "areaEn": "Shuri",
+  "address": "那覇市首里当蔵町2-16",
+  "url": "https://suikara.ryukyu/",
+  "what": "首里当蔵町の、琉球びんがたと首里織の工房・ギャラリー・ショップ。二つの染織組合の職人が技を伝え、染めや織りの体験も行う。",
+  "whatEn": "A studio, gallery and shop for Ryukyu bingata and Shuri-ori in Shuri Tonokura-cho. Artisans from the two textile cooperatives pass on their skills and offer dyeing and weaving workshops.",
+  "note": "びんがたの色を見てから、持ち歩く小物を選びたい。",
+  "noteEn": "I would look at the bingata colours before choosing something small to carry.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.2198,
+   127.72092
+  ]
+ },
+ {
+  "name": "瑞泉酒造",
+  "nameEn": "Zuisen Distillery",
+  "category": "local",
+  "industry": "awamori",
+  "tags": [
+   "awamori",
+   "kusu"
+  ],
+  "area": "首里",
+  "areaEn": "Shuri",
+  "address": "那覇市首里崎山町1-35",
+  "url": "https://www.zuisen.co.jp/",
+  "what": "首里崎山町で1887年に創業した泡盛の蔵元。売店では古酒や、戦前の黒麹菌で仕込む「御酒」を扱う。",
+  "whatEn": "An awamori distillery founded in 1887 in Shuri Sakiyama-cho. Its shop sells aged kusu and Usaki, made with a strain of black koji preserved from before the war.",
+  "note": "古酒は、家で少しずつ飲む一本を選んで帰りたい。",
+  "noteEn": "I would take home one bottle of aged awamori to drink a little at a time.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21547,
+   127.72065
+  ]
+ },
+ {
+  "name": "GARB DOMINGO",
+  "nameEn": "GARB DOMINGO",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "lacquer",
+   "wood"
+  ],
+  "area": "壺屋",
+  "areaEn": "Tsuboya",
+  "address": "那覇市壺屋1-6-3",
+  "url": "https://www.garbdomingo.com/",
+  "what": "壺屋のギャラリー兼セレクトショップ。沖縄と各地の作り手の陶器、漆器、ガラス、木工を紹介し、個展も開く。",
+  "whatEn": "A gallery and select shop in Tsuboya, showing ceramics, lacquerware, glass and woodwork by makers from Okinawa and elsewhere, with solo exhibitions.",
+  "note": "陶器だけでなく、ガラスや木のものも一つずつ見たい。",
+  "noteEn": "I would look at the glass and wooden pieces one by one, as well as the pottery.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21324,
+   127.68972
+  ]
+ },
+ {
+  "name": "miyagiya",
+  "nameEn": "miyagiya",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "textile",
+   "clothing"
+  ],
+  "area": "松尾",
+  "areaEn": "Matsuo",
+  "address": "那覇市松尾2-19-39",
+  "url": "https://magasin-miyagiya.com/",
+  "what": "松尾の器と服のセレクトショップ。店主が工房で選ぶやちむんに、琉球ガラスや布、ジュエリーなどを合わせて紹介する。",
+  "whatEn": "A shop for tableware and clothing in Matsuo. Yachimun chosen by the owner on studio visits sits alongside Ryukyu glass, textiles and jewellery.",
+  "note": "器も服も、家でふだん使うものとして選んでみたい。",
+  "noteEn": "I would choose both the dishes and the clothes for everyday life at home.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21299,
+   127.68722
+  ]
+ },
+ {
+  "name": "COFFEE potohoto",
+  "nameEn": "COFFEE potohoto",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "coffee beans"
+  ],
+  "area": "安里",
+  "areaEn": "Asato",
+  "address": "那覇市安里388-1",
+  "url": "http://www.potohoto.jp/",
+  "what": "安里の栄町市場にあるコーヒー豆の店。産地ごとの豆とオリジナルブレンドを焙煎して売る。",
+  "whatEn": "A coffee bean shop in Sakaemachi Market, Asato, roasting and selling single-origin coffees and its own blends.",
+  "note": "産地の違う豆を見比べて、飲んだことのない一袋を。",
+  "noteEn": "I would compare the origins and take a bag I have never tried.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21735,
+   127.69692
+  ]
+ },
+ {
+  "name": "TAMAGUSUKU COFFEE ROASTERS",
+  "nameEn": "TAMAGUSUKU COFFEE ROASTERS",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "coffee beans"
+  ],
+  "area": "松尾",
+  "areaEn": "Matsuo",
+  "address": "那覇市松尾2-19-39 グリーンハイツ那覇202",
+  "url": "https://tamacoroa.com/",
+  "what": "松尾のグリーンハイツ那覇202号室にある、自家焙煎のスペシャルティコーヒー店。豆の販売のほか、ラテやカプチーノも。",
+  "whatEn": "A specialty coffee roaster in Room 202 of Green Heights Naha in Matsuo. It sells beans and serves drinks including lattes and cappuccinos.",
+  "note": "浅煎りの豆を選んで、家でもゆっくり飲んでみたい。",
+  "noteEn": "I would choose a light roast to brew slowly at home.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21319,
+   127.68738
+  ]
+ },
+ {
+  "name": "デザートラボショコラ",
+  "nameEn": "Dessert Labo Chocolat",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "baked sweets"
+  ],
+  "area": "首里",
+  "areaEn": "Shuri",
+  "address": "那覇市首里金城町4-70-4 1F",
+  "url": "https://chocolat2007.jp/",
+  "what": "首里金城町の洋菓子店。チョコレートの菓子や、フィナンシェ「Shulien」、伊江ラムレーズンサンドを作る。",
+  "whatEn": "A patisserie in Shuri Kinjo-cho making chocolate sweets, Shulien financiers and Ie-rum raisin sandwiches.",
+  "note": "焼き菓子を選ぶなら、伊江ラムのレーズンサンドを。",
+  "noteEn": "For a baked sweet, I would choose the Ie-rum raisin sandwich.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21299,
+   127.71798
+  ]
+ },
+ {
+  "name": "安里屋すば",
+  "nameEn": "Asatoya Suba",
+  "category": "food",
+  "tags": [
+   "Okinawa soba",
+   "jushi"
+  ],
+  "area": "安里",
+  "areaEn": "Asato",
+  "address": "那覇市安里3-1-8",
+  "url": "https://asatoyasuba.okinawa/",
+  "what": "安里の立ち食い沖縄そば店。木灰を使った自家製麺に、北海道の真昆布・鰹・豚骨の出汁を合わせ、ジューシーも出す。",
+  "whatEn": "A stand-up Okinawa soba shop in Asato, serving house-made wood-ash noodles in a broth of Hokkaido kelp, bonito and pork bones, with jushi seasoned rice too.",
+  "note": "木灰の麺を味わいたいので、まずはかけすばを頼む。",
+  "noteEn": "I would start with plain kake suba to taste the wood-ash noodles.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   26.21851,
+   127.69604
+  ]
+ }
+]

@@ -1,0 +1,353 @@
+[
+ {
+  "name": "いなえ",
+  "nameEn": "Inae",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "ceramics"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ511",
+  "url": "https://sawara-inae.com/",
+  "what": "明治の町家2棟、土蔵、洋館、倉を中庭でつなぐ、甘味処・ギャラリー・工芸品や雑貨の店。水曜定休。",
+  "whatEn": "A sweets parlor, gallery and shop in a restored compound of two Meiji townhouses, an earthen storehouse, a Western-style house and a warehouse linked by a courtyard. Closed Wednesdays.",
+  "note": "土蔵と洋館の展示を見てから、甘味に座る。",
+  "noteEn": "Look at the shows in the storehouse and Western wing, then sit for sweets.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88941,
+   140.49702
+  ]
+ },
+ {
+  "name": "御菓子司 虎屋",
+  "nameEn": "Toraya",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ1717",
+  "url": "https://toraya-coedo.co.jp/",
+  "what": "明暦3年（1657年）創業の和菓子店。香取神宮の御神水で炊いた餡を、虎模様の皮で挟む「とらやき」を作る。",
+  "whatEn": "A wagashi confectioner founded in 1657, known for tiger-patterned Torayaki filled with red bean paste cooked with spring water from Katori Jingu.",
+  "note": "御神水で炊いた餡の、とらやきを一つ選ぶ。",
+  "noteEn": "Pick one Torayaki, filled with bean paste cooked in sacred spring water.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88922,
+   140.49691
+  ]
+ },
+ {
+  "name": "金蜜堂",
+  "nameEn": "Kinmitsudo",
+  "category": "sweets",
+  "tags": [
+   "sweets"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3403-8",
+  "url": "https://ishidanouen.com/",
+  "what": "地元の石田農園が営む、熟成させた「金蜜芋」の菓子店。季節ごとの芋パフェや焼き菓子がある。",
+  "whatEn": "A sweets shop run by the local farm Ishida Nouen, specializing in cured Kinmitsu-imo sweet potatoes for seasonal parfaits and baked goods.",
+  "note": "季節の芋パフェを、川沿いでゆっくり食べる。",
+  "noteEn": "Eat a seasonal sweet potato parfait slowly by the river.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88929,
+   140.49851
+  ]
+ },
+ {
+  "name": "ブーランジェリー 丘の上のシェリー",
+  "nameEn": "Boulangerie Okanoue no Cherie",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "sweets"
+  ],
+  "area": "新宿",
+  "areaEn": "Shinjuku",
+  "address": "香取市佐原イ1217-1",
+  "url": "https://www.instagram.com/okanoueno_cherie/",
+  "what": "高台にあるパンと焼き菓子の店。無添加のパンや、自家製シフォンケーキを使った菓子を出す。水・木曜定休。",
+  "whatEn": "A bakery and sweets shop on a hill, serving additive-free bread and sweets made with house chiffon cake. Closed Wednesdays and Thursdays.",
+  "note": "無添加のパンと焼き菓子を、ひとつずつ選ぶ。",
+  "noteEn": "Pick out an additive-free loaf and a baked sweet, one by one.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88378,
+   140.48968
+  ]
+ },
+ {
+  "name": "リストランテ カーザ・アルベラータ",
+  "nameEn": "Ristorante Casa Alberata",
+  "category": "food",
+  "tags": [
+   "italian"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ1727",
+  "url": "http://www.casaalberata.com/",
+  "what": "小野川沿いの商家・中村屋商店の隠居所を改装したイタリア料理店。日本庭園を望む席で、地元の野菜や銚子港の鮮魚を使う。昼夜とも予約制、月曜と不定の火曜休。",
+  "whatEn": "An Italian restaurant in the former retreat of the Nakamuraya merchant family along the Ono River, overlooking a Japanese garden and cooking with local vegetables and Choshi Port fish. Reservations required; closed Mondays and irregular Tuesdays.",
+  "note": "庭園が見える席で、銚子の魚の皿を待つ。",
+  "noteEn": "Wait for the Choshi fish course with a view of the garden.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88773,
+   140.4973
+  ]
+ },
+ {
+  "name": "香蕎庵",
+  "nameEn": "Kakyoan",
+  "category": "food",
+  "tags": [
+   "soba",
+   "french"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3844-2",
+  "url": "https://www.kakyouan.com/",
+  "what": "小野川近くの古民家を改築した店。昼は手打ち蕎麦と創作フレンチのコース、夜は前日までの予約制でフレンチコース。火・水曜定休。",
+  "whatEn": "A restaurant in a renovated old house near the Ono River, serving handmade soba with creative French courses at lunch and French dinner courses by reservation. Closed Tuesdays and Wednesdays.",
+  "note": "昼の蕎麦懐石で、手打ちの蕎麦を味わう。",
+  "noteEn": "Have the handmade soba in the daytime soba kaiseki course.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.89255,
+   140.49825
+  ]
+ },
+ {
+  "name": "珈琲玉澤",
+  "nameEn": "Coffee Tamazawa",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3401",
+  "url": "https://coffee-tamazawa.com/",
+  "what": "代々続く商家「玉澤」の名と1965年築の鉄筋コンクリート建築を受け継いだ自家焙煎珈琲店。忠敬橋の近く。",
+  "whatEn": "A specialty coffee roastery inheriting the Tamazawa merchant name and a 1965 reinforced-concrete building near Chukei Bridge.",
+  "note": "古いコンクリートの建物で、ハンドドリップを一杯。",
+  "noteEn": "Have a pour-over coffee inside the old concrete building.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.8889,
+   140.49823
+  ]
+ },
+ {
+  "name": "TAWARA WORK AND CAFE",
+  "nameEn": "TAWARA WORK AND CAFE",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ497-2",
+  "url": "https://kimono-cafe.jp/cafe/",
+  "what": "路地裏のカフェ。香取市産米粉の俵形ミニクレープや、関ほたる米の米麹で醸した砂糖不使用の甘酒ラテがある。月曜定休。",
+  "whatEn": "A backstreet cafe serving bale-shaped mini crepes made with Katori rice flour and sugar-free amazake lattes brewed from Seki Hotaru rice koji. Closed Mondays.",
+  "note": "砂糖を使わない糀あまざけラテと、米粉のクレープ。",
+  "noteEn": "Order a sugar-free koji amazake latte with a rice-flour crepe.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.89023,
+   140.49769
+  ]
+ },
+ {
+  "name": "One&Only Cafe 香取店",
+  "nameEn": "One&Only Cafe Katori",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets"
+  ],
+  "area": "香取",
+  "areaEn": "Katori",
+  "address": "香取市岩ヶ崎台12-7",
+  "url": "https://oneandonly-cafe.com/",
+  "what": "焙煎の前後に豆を手作業で選別する自家焙煎珈琲の店。香取市のさつまいもを使ったバスクチーズケーキもある。土日祝は休み、11時から14時まで。",
+  "whatEn": "A specialty coffee roaster that hand-sorts beans before and after roasting, also serving Basque cheesecake made with Katori sweet potatoes. Open weekdays 11 am to 2 pm; closed weekends and holidays.",
+  "note": "雑味のないブラック珈琲と、お芋のチーズケーキ。",
+  "noteEn": "A clean black coffee with the sweet potato cheesecake.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.89757,
+   140.48212
+  ]
+ },
+ {
+  "name": "植田屋荒物店",
+  "nameEn": "Uedaya Aramonoten",
+  "category": "craft",
+  "tags": [
+   "bamboo",
+   "tableware"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ1901",
+  "url": "http://uedayaaramonoten.co.jp/",
+  "what": "宝暦9年（1759年）創業の荒物店。竹のカゴとザル、箸、いぐさのゴザなどの生活道具を扱う。不定休。",
+  "whatEn": "A household-goods shop founded in 1759, stocking bamboo baskets and colanders, chopsticks, rush mats and everyday tools. Irregular holidays.",
+  "note": "竹のザルや箸を、ひとつずつ手に取って選ぶ。",
+  "noteEn": "Pick up the bamboo colanders and chopsticks, and choose one by one.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88858,
+   140.49806
+  ]
+ },
+ {
+  "name": "Legacy Market",
+  "nameEn": "Legacy Market",
+  "category": "craft",
+  "tags": [
+   "antiques",
+   "furniture"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3416",
+  "url": "https://www.home.legacymarket.jp/",
+  "what": "小野川沿いの古道具とアンティークの店。日本の古い家具と、ヨーロッパの雑貨や小物を扱う。",
+  "whatEn": "An antiques and vintage-goods shop along the Ono River, stocking old Japanese furniture alongside European small wares.",
+  "note": "日本の古い家具に合う、小さな古道具を探す。",
+  "noteEn": "Look for small vintage pieces that sit well with old Japanese furniture.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.89139,
+   140.49912
+  ]
+ },
+ {
+  "name": "無垢家",
+  "nameEn": "Mukuya",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "ceramics",
+   "glass"
+  ],
+  "area": "新宿",
+  "areaEn": "Shinjuku",
+  "address": "香取市佐原イ2886",
+  "url": "https://www.mukuya-h.com/",
+  "what": "工務店が営むインテリアと雑貨の店。一枚板の無垢材の家具、陶磁器の器、ガラスの花器、観葉植物を揃える。店舗は火・木曜の10時から16時。",
+  "whatEn": "An interior and craft shop run by a local builder, stocking single-slab solid-wood furniture, ceramic tableware, glass vases and houseplants. Open Tuesdays and Thursdays, 10 am to 4 pm.",
+  "note": "一枚板の木のそばで、陶磁器の器とガラスを見る。",
+  "noteEn": "Look at the ceramic dishes and glass vases beside the solid-wood slabs.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88923,
+   140.51158
+  ]
+ },
+ {
+  "name": "馬場本店酒造",
+  "nameEn": "Baba Honten Brewery",
+  "category": "local",
+  "industry": "brewing-fermentation",
+  "tags": [
+   "sake",
+   "mirin"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ614-1",
+  "url": "https://www.babahonten.com/",
+  "what": "天和年間（1681〜1683年）創業の蔵元。国産もち米と手造りの製法を守る「最上白味醂」と、清酒「糀善」などを醸す。不定休。",
+  "whatEn": "A brewery founded in the 1680s, making Saisho Shiro Mirin from domestic glutinous rice by traditional hand methods alongside sake such as Kozen. Irregular holidays.",
+  "note": "料理用に、最上白味醂の小瓶を一本買う。",
+  "noteEn": "Buy a small bottle of Saisho Shiro Mirin for cooking.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88947,
+   140.49586
+  ]
+ },
+ {
+  "name": "東薫酒造",
+  "nameEn": "Tokun Brewery",
+  "category": "local",
+  "industry": "brewing-fermentation",
+  "tags": [
+   "sake"
+  ],
+  "area": "香取街道",
+  "areaEn": "Katori Kaido",
+  "address": "香取市佐原イ627",
+  "url": "https://www.tokun.co.jp/",
+  "what": "文政8年（1825年）創業の造り酒屋。大吟醸「叶」や吟醸「二人静」などを醸し、直売店がある。酒蔵見学は休止中。",
+  "whatEn": "A sake brewery founded in 1825, brewing Daiginjo Kanau and Ginjo Futarishizuka, with a direct-sales shop. Brewery tours are suspended.",
+  "note": "直売店で、すっきりと飲める「二人静」を選ぶ。",
+  "noteEn": "Pick up a bottle of crisp Futarishizuka at the brewery shop.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88908,
+   140.49483
+  ]
+ },
+ {
+  "name": "いかだ焼本舗 正上",
+  "nameEn": "Ikadayaki Honpo Shojyo",
+  "category": "local",
+  "industry": "brewing-fermentation",
+  "tags": [
+   "soy-sauce",
+   "tsukudani"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3406",
+  "url": "https://www.shoujyou.com/",
+  "what": "寛政12年（1800年）創業、小野川沿いの千葉県有形文化財店舗で醤油や佃煮を扱う老舗。わかさぎのいかだ焼や「粉醤油」などがある。",
+  "whatEn": "A soy sauce and tsukudani shop founded in 1800 in a Chiba-designated cultural property beside the Ono River, known for skewered wakasagi ikada-yaki and powdered soy sauce.",
+  "note": "文化財の店先で、小さな「粉醤油」を見たい。",
+  "noteEn": "Look for the small jar of powdered soy sauce in the historic storefront.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88965,
+   140.49875
+  ]
+ },
+ {
+  "name": "油茂製油",
+  "nameEn": "Abumo Oil Mill",
+  "category": "local",
+  "industry": "sesame-oil-pressing",
+  "tags": [
+   "sesame-oil"
+  ],
+  "area": "小野川沿い",
+  "areaEn": "Ono River",
+  "address": "香取市佐原イ3398",
+  "url": "https://abumo.com/",
+  "what": "390余年の歴史を持つ製油所。明治25年（1892年）築の店舗で、古式の「玉絞め」製法によるごま油と無添加ラー油を売る。",
+  "whatEn": "A sesame oil maker with over 390 years of history, selling stone-pressed tamajime sesame oil and additive-free chili oil in an 1892 storefront.",
+  "note": "千代紙で包んだ、小さな瓶のラー油を手に取りたい。",
+  "noteEn": "Pick up a small bottle of chili oil wrapped in chiyogami paper.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.88875,
+   140.49857
+  ]
+ }
+]

@@ -1,0 +1,68 @@
+[
+ {
+  "name": "金鱗湖",
+  "nameEn": "Lake Kinrinko",
+  "kind": "sight",
+  "area": "金鱗湖",
+  "areaEn": "Lake Kinrinko",
+  "address": "由布市湯布院町川上",
+  "url": "https://yufuin.gr.jp/",
+  "what": "由布岳のふもとにある周囲約400メートルの湖。湖底から清水と温泉が湧き出ているため水温が高く、秋から冬の冷え込んだ朝には湖面から湯気のような朝霧が立つ。",
+  "whatEn": "A lake about 400 metres around at the foot of Mount Yufu. Fresh water and hot-spring water well up from the lake bed, so on cold mornings from autumn to winter mist rises off the surface.",
+  "coords": [
+   33.26672,
+   131.36904
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "COMICO ART MUSEUM YUFUIN",
+  "nameEn": "COMICO ART MUSEUM YUFUIN",
+  "kind": "art",
+  "area": "湯の坪",
+  "areaEn": "Yunotsubo",
+  "address": "由布市湯布院町川上2995-1",
+  "url": "https://www.camy.oita.jp/",
+  "what": "隈研吾が設計した現代美術館。奈良美智や宮島達男、村上隆らの作品を展示し、2階にはカフェもある。9時半から17時半で、隔週水曜は休み。",
+  "whatEn": "A contemporary art museum designed by Kengo Kuma, showing works by Yoshitomo Nara, Tatsuo Miyajima and Takashi Murakami, with a café upstairs. Open 9:30–17:30, closed every other Wednesday.",
+  "coords": [
+   33.26527,
+   131.36158
+  ],
+  "notice": "2026年11月の休館日は11日と25日。",
+  "noticeEn": "Closed on November 11 and 25 in 2026.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "宇奈岐日女神社",
+  "nameEn": "Unagihime Shrine",
+  "kind": "sight",
+  "area": "由布院駅周辺",
+  "areaEn": "Yufuin Station",
+  "address": "由布市湯布院町川南222",
+  "url": "https://www.visit-oita.jp/",
+  "what": "「六所宮」とも呼ばれる由布院の古社。国常立尊など六柱を祀り、境内には大きな杉の木の切り株が残る。",
+  "whatEn": "An old shrine in Yufuin also known as Rokushogu, enshrining six deities including Kunitokotachi-no-Mikoto, with the stump of a huge cedar standing in its wooded grounds.",
+  "coords": [
+   33.25686,
+   131.36549
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "由布院駅",
+  "nameEn": "Yufuin Station",
+  "kind": "sight",
+  "area": "由布院駅周辺",
+  "areaEn": "Yufuin Station",
+  "address": "由布市湯布院町川北8-2",
+  "url": "https://yufuin.gr.jp/",
+  "what": "建築家・磯崎新の設計によるJR久大本線の駅舎。黒を基調とした木造の建物で、構内にはアートホールと足湯がある。",
+  "whatEn": "The JR Kyudai Line station building designed by architect Arata Isozaki, a dark-toned timber structure with an art hall and a footbath inside.",
+  "coords": [
+   33.26261,
+   131.35513
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

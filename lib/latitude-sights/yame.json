@@ -1,0 +1,66 @@
+[
+ {
+  "name": "八女福島伝統的建造物群保存地区",
+  "nameEn": "Yame Fukushima Preservation District",
+  "kind": "sight",
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町周辺",
+  "url": "https://www.city.yame.fukuoka.jp/kanko/8/1496969698028.html",
+  "what": "江戸時代の城下町・在方町として栄えた町並み。白壁の土蔵造りや町家、職人の工房が並び、国の重要伝統的建造物群保存地区に選ばれている。",
+  "whatEn": "The historic merchant quarter of Yame Fukushima, lined with white-walled earthen storehouses, townhouses and craft workshops, designated a national preservation district for groups of traditional buildings.",
+  "coords": [
+   33.20953,
+   130.55827
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "八女伝統工芸館",
+  "nameEn": "Yame Traditional Crafts Museum",
+  "kind": "art",
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町2-123-2",
+  "url": "https://www.yame-kougeikan.jp/",
+  "what": "八女福島仏壇や八女提灯、久留米絣、手漉き和紙など八女地方の伝統工芸を集めた展示館。旧国鉄筑後福島駅の跡地に建ち、製造工程の実演も見られる。",
+  "whatEn": "A museum of Yame's traditional crafts—Buddhist altars, Yame lanterns, Kurume Kasuri and handmade washi—standing on the former Chikugo-Fukushima Station site, with craft demonstrations.",
+  "coords": [
+   33.20727,
+   130.55835
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "茶の文化館",
+  "nameEn": "Tea Culture Museum",
+  "kind": "art",
+  "area": "星野村",
+  "areaEn": "Hoshino",
+  "address": "八女市星野村10816-5",
+  "url": "https://www.hoshinofurusato.jp/tea/",
+  "what": "星野村の八女茶と伝統本玉露を紹介する文化館。呈茶ホールでしずく茶や抹茶を味わえ、茶そばなどの食事もできる。10時から17時で、火曜は休み（祝日・5月・夏休みは開館）。",
+  "whatEn": "A tea museum in Hoshino Village dedicated to Yame tea and traditional gyokuro, with a tasting hall for shizuku-cha and matcha and a tea-soba dining room. Open 10 am to 5 pm, closed Tuesdays (open on holidays, May and summer).",
+  "coords": [
+   33.24513,
+   130.76026
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "岩戸山古墳",
+  "nameEn": "Iwatoyama Kofun",
+  "kind": "sight",
+  "area": "吉田",
+  "areaEn": "Yoshida",
+  "address": "八女市吉田1562-1",
+  "url": "https://www.city.yame.fukuoka.jp/kanko/8/2/1561101356721.html",
+  "what": "6世紀前半に北部九州を治めた筑紫君磐井の墓とされる前方後円墳。墳丘長約135メートルの北部九州最大級の古墳で、隣に歴史文化交流館いわいの郷がある。",
+  "whatEn": "A sixth-century keyhole-shaped burial mound attributed to Chikushi-no-Kimi Iwai, about 135 metres long and among the largest in northern Kyushu, beside the Iwai no Sato museum.",
+  "coords": [
+   33.23031,
+   130.55334
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,66 @@
+[
+ {
+  "name": "飫肥城跡",
+  "nameEn": "Obi Castle Ruins",
+  "kind": "sight",
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥",
+  "url": "https://obijyo.com/",
+  "what": "天正16年（1588年）以降に伊東氏が治めた飫肥城の跡。旧本丸跡の杉木立や石垣が残り、城下町の町並みとともに国の重要伝統的建造物群保存地区に選ばれている。",
+  "whatEn": "The site of Obi Castle, ruled by the Ito clan from 1588. Cedar groves in the old inner bailey and stone walls remain alongside the castle town, a national preservation district.",
+  "coords": [
+   31.62901,
+   131.35038
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "飫肥城歴史資料館",
+  "nameEn": "Obi Castle History Museum",
+  "kind": "art",
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥五丁目",
+  "url": "https://obijyo.com/shop_map/pr/",
+  "what": "飫肥城跡の敷地内にある資料館。旧飫肥藩・伊東家に伝わる歴史資料などを展示し、共通券で豫章館など周辺の由緒施設も回れる。",
+  "whatEn": "A history museum on the Obi Castle grounds displaying materials from the Ito clan of the Obi domain; a joint ticket also admits visitors to Yoshokan and other historic buildings nearby.",
+  "coords": [
+   31.62816,
+   131.35135
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "堀川運河",
+  "nameEn": "Horikawa Canal",
+  "kind": "sight",
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市油津",
+  "url": "https://www.kankou-nichinan.jp/tourisms/316/",
+  "what": "広渡川河口から油津港を結ぶ延長1,450メートルの運河。飫肥杉を運ぶため、1686年に飫肥藩主・伊東祐実の命で造られた。",
+  "whatEn": "A 1,450-meter canal linking the mouth of the Hiroto River to Aburatsu Port, built in 1686 under Obi lord Ito Sukezane to transport Obi cedar.",
+  "coords": [
+   31.58804,
+   131.40361
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鵜戸神宮",
+  "nameEn": "Udo Shrine",
+  "kind": "sight",
+  "area": "宮浦",
+  "areaEn": "Miyaura",
+  "address": "日南市大字宮浦3232",
+  "url": "https://www.udojingu.or.jp/",
+  "what": "日南海岸の断崖の洞窟に本殿が建つ神社。運玉投げや亀石で知られ、境内は午前6時から午後6時まで開門している。",
+  "whatEn": "A shrine on the Nichinan coast whose main hall sits inside a sea-cliff cave, known for throwing undama luck stones at the turtle rock. Grounds open 6 am to 6 pm.",
+  "coords": [
+   31.64916,
+   131.46612
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,333 @@
+[
+ {
+  "name": "うつわ菜の花",
+  "nameEn": "Utsuwa Nanohana",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "glass",
+   "woodwork"
+  ],
+  "area": "南町",
+  "areaEn": "Minamicho",
+  "address": "1-3-12 Minamicho, Odawara",
+  "url": "https://utsuwa-nanohana.com/",
+  "what": "南町の器のギャラリー。陶器やガラス、木の器などの企画展を開き、会期中だけ営業する。",
+  "whatEn": "A gallery for vessels in Minamicho, with exhibitions of ceramics, glass and wooden tableware. Open only during exhibitions.",
+  "note": "器は、ふだんの食卓に置くところを考えて選びたい。",
+  "noteEn": "I would choose a piece by picturing it on my table.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24744,
+   139.15417
+  ]
+ },
+ {
+  "name": "菜の花 暮らしの道具店",
+  "nameEn": "Nanohana Kurashi no Doguten",
+  "category": "craft",
+  "tags": [
+   "tableware",
+   "glass",
+   "textile"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakaecho",
+  "address": "1-1-7 Sakaecho, Odawara",
+  "url": "https://kurashinodouguten.com/",
+  "what": "地下街HaRuNe小田原にある、器と暮らしの道具の店。作家の陶器やガラス、布などの企画展も開く。",
+  "whatEn": "A shop for tableware and everyday things in the HaRuNe Odawara underground arcade. It also holds shows of ceramics, glass and textiles by makers.",
+  "note": "毎日使うグラスを、形の違いを見ながら一つ選びたい。",
+  "noteEn": "I would compare the shapes and choose one glass for everyday use.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.25559,
+   139.15655
+  ]
+ },
+ {
+  "name": "露木木工所",
+  "nameEn": "Tsuyuki Woodwork",
+  "category": "local",
+  "industry": "hakone-yosegi",
+  "tags": [
+   "yosegi",
+   "woodwork"
+  ],
+  "area": "早川",
+  "areaEn": "Hayakawa",
+  "address": "2-2-15 Hayakawa, Odawara",
+  "url": "https://yosegi-g.com/",
+  "what": "早川にある箱根寄木細工の製造元。併設の寄木ギャラリーツユキで、寄木の器や小物を売る。",
+  "whatEn": "A maker of Hakone yosegi wood marquetry in Hayakawa. Its Yosegi Gallery Tsuyuki sells marquetry tableware and small pieces.",
+  "note": "寄木は、模様を作る木の色の違いから見てみたい。",
+  "noteEn": "I would start with the different wood colours that make up the patterns.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24234,
+   139.14633
+  ]
+ },
+ {
+  "name": "大川木工所",
+  "nameEn": "Okawa Woodwork",
+  "category": "local",
+  "industry": "odawara-shikki",
+  "tags": [
+   "lacquer",
+   "woodturning"
+  ],
+  "area": "板橋",
+  "areaEn": "Itabashi",
+  "address": "2-226-2 Minami-Itabashi, Odawara",
+  "url": "https://okawa-mokkoujo.com/",
+  "what": "木目を生かした摺り漆塗りや木地呂塗りの、小田原漆器の工房。椀や盆を作って売り、漆の研ぎ出し体験も受け付ける。",
+  "whatEn": "An Odawara lacquerware workshop using suri-urushi and kijiro finishes that show the wood grain. It makes and sells bowls and trays, and offers lacquer-polishing workshops.",
+  "note": "汁椀は、漆の下に見える木目で一つ選んでみたい。",
+  "noteEn": "I would choose a soup bowl by the grain showing through the lacquer.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24402,
+   139.14739
+  ]
+ },
+ {
+  "name": "もくのすけ",
+  "nameEn": "Mokunosuke",
+  "category": "local",
+  "industry": "odawara-shikki",
+  "tags": [
+   "lacquer",
+   "woodturning"
+  ],
+  "area": "板橋",
+  "areaEn": "Itabashi",
+  "address": "157-1 Itabashi, Odawara",
+  "url": "https://mokunosukeodw.com/",
+  "what": "箱根板橋の小さな木工と漆の工房。ケヤキの生木の乾燥から木地挽き、漆塗りまで行い、椀や皿、弁当箱を作る。",
+  "whatEn": "A small woodturning and lacquer studio in Hakone-Itabashi. It seasons green zelkova, turns and lacquers it to make bowls, plates and lunch boxes.",
+  "note": "飾るものより、毎日のごはんに使う木の器を選びたい。",
+  "noteEn": "I would choose wooden tableware for daily meals rather than display.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24603,
+   139.14415
+  ]
+ },
+ {
+  "name": "Anbos Coffee Roaster",
+  "nameEn": "Anbos Coffee Roaster",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "南町",
+  "areaEn": "Minamicho",
+  "address": "2-1-6 Minamicho, Odawara",
+  "url": "https://www.anbos-coffee-roaster.com/",
+  "what": "南町の自家焙煎珈琲店。ハンドドリップの珈琲を出し、豆の販売と持ち帰りにも対応する。",
+  "whatEn": "A coffee roaster in Minamicho, serving hand-drip coffee and selling beans. Takeaway is available.",
+  "note": "器を見たあとは、ここで珈琲を一杯飲んで座る。",
+  "noteEn": "After looking at tableware, I would sit here over a coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24666,
+   139.15503
+  ]
+ },
+ {
+  "name": "RANCH",
+  "nameEn": "RANCH",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakaecho",
+  "address": "3-14-16 Sakaecho, Odawara",
+  "url": "https://www.instagram.com/ranch_coffee_odawara/",
+  "what": "栄町のビルの2階にあるコーヒーショップ。8時から10時はモーニングの時間。",
+  "whatEn": "A second-floor coffee shop in Sakaecho. Morning service runs from 8 to 10 am.",
+  "note": "朝の散歩のあとは、ここで珈琲を一杯飲みたい。",
+  "noteEn": "I would have a coffee here after a morning walk.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.25828,
+   139.16093
+  ]
+ },
+ {
+  "name": "伊勢屋",
+  "nameEn": "Iseya",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "daifuku"
+  ],
+  "area": "本町",
+  "areaEn": "Honcho",
+  "address": "3-6-22 Honcho, Odawara",
+  "url": "https://www.daifuku-iseya.com/",
+  "what": "1935年創業の本町の和菓子店。豆大福や羊羹、いなり寿司を作る。",
+  "whatEn": "A wagashi shop in Honcho, founded in 1935. It makes mame-daifuku, yokan and inari sushi.",
+  "note": "いろいろ買いたくなるけれど、まずは豆大福を一つ。",
+  "noteEn": "I would be tempted by several things, but start with one mame-daifuku.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24825,
+   139.15985
+  ]
+ },
+ {
+  "name": "ヴァガボンド洋菓子店",
+  "nameEn": "Vagabond Patisserie",
+  "category": "sweets",
+  "tags": [
+   "cake"
+  ],
+  "area": "本町",
+  "areaEn": "Honcho",
+  "address": "4-2-22 Honcho, Odawara",
+  "url": "https://www.instagram.com/vagabond.seika/",
+  "what": "本町の洋菓子店。生菓子は売り切れ次第終了し、休みは公式Instagramのカレンダーで知らせる。",
+  "whatEn": "A patisserie in Honcho. Fresh cakes are sold until they run out; closing days are shown on its official Instagram calendar.",
+  "note": "食べきれるぶんだけ、今日は生菓子を一つ選びたい。",
+  "noteEn": "I would choose one fresh cake, just enough to eat today.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24653,
+   139.15571
+  ]
+ },
+ {
+  "name": "龍宮堂",
+  "nameEn": "Ryugudo",
+  "category": "sweets",
+  "tags": [
+   "gelato",
+   "fruit"
+  ],
+  "area": "本町",
+  "areaEn": "Honcho",
+  "address": "3-4-20 Honcho, Odawara",
+  "url": "https://www.instagram.com/ryugudo_since2021/",
+  "what": "本町の海辺の手作りジェラート専門店。小田原近郊の果物などを使う。",
+  "whatEn": "A handmade gelato shop by the sea in Honcho, using fruit from around Odawara.",
+  "note": "海のそばでは、このあたりの果物のジェラートを選びたい。",
+  "noteEn": "By the sea, I would choose gelato made with fruit from nearby.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24738,
+   139.16081
+  ]
+ },
+ {
+  "name": "パティスリー HINNA",
+  "nameEn": "Patisserie HINNA",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "citrus"
+  ],
+  "area": "南町",
+  "areaEn": "Minamicho",
+  "address": "2-1-60 Minamicho, Odawara",
+  "url": "https://www.hotoku.co.jp/hakone-guchi-garage/PatisserieHINNA.html",
+  "what": "箱根口ガレージの洋菓子店。小田原の柑橘や各地の旬の食材を使い、ケーキや焼き菓子を作る。",
+  "whatEn": "A patisserie at Hakoneguchi Garage, making cakes and baked sweets with Odawara citrus and seasonal ingredients from other regions.",
+  "note": "ケーキを一つ選ぶなら、小田原レモンのタルトにしたい。",
+  "noteEn": "For one cake, I would choose the Odawara lemon tart.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24714,
+   139.15492
+  ]
+ },
+ {
+  "name": "イルマーレ",
+  "nameEn": "Il Mare",
+  "category": "food",
+  "tags": [
+   "italian",
+   "seafood"
+  ],
+  "area": "早川",
+  "areaEn": "Hayakawa",
+  "address": "1-11-6 Hayakawa, Odawara",
+  "url": "https://www.il-mare.co.jp/",
+  "what": "小田原漁港を見下ろすイタリア料理店。朝の競りで仕入れる魚と協力農家の食材で、その日のおまかせコースを出す。",
+  "whatEn": "An Italian restaurant overlooking Odawara Fishing Port. Its daily set courses use fish bought at the morning auction and ingredients from partner farms.",
+  "note": "港の魚をどう料理するのか、おまかせで食べてみたい。",
+  "noteEn": "I would leave it to the kitchen and see how it cooks the harbour fish.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.2409,
+   139.14718
+  ]
+ },
+ {
+  "name": "そば処 橋本",
+  "nameEn": "Sobadokoro Hashimoto",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakaecho",
+  "address": "1-13-37 Sakaecho, Odawara",
+  "url": "https://sobadokoro-hashimoto.com/",
+  "what": "1848年創業の蕎麦店。北海道母子里のそば粉で作る二八蕎麦を、寝かせたかえしと鰹節のもり汁で出す。",
+  "whatEn": "A soba shop founded in 1848. Its nihachi noodles use buckwheat from Moshiri in Hokkaido, served with a dipping broth of aged kaeshi and bonito.",
+  "note": "寒い日なら、季節のかきそばを温かいつゆで食べたい。",
+  "noteEn": "On a cold day, I would have the seasonal oyster soba in hot broth.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.25248,
+   139.1577
+  ]
+ },
+ {
+  "name": "フレンチ食堂 iTToku",
+  "nameEn": "French Shokudo iTToku",
+  "category": "food",
+  "tags": [
+   "french",
+   "bread"
+  ],
+  "area": "栄町",
+  "areaEn": "Sakaecho",
+  "address": "2-10-17 Sakaecho, Odawara",
+  "url": "https://ittoku-odawara.com/",
+  "what": "富士屋ホテルのフュージョンダイニングF元料理長が営む、栄町のフレンチ食堂。ランチは選べる前菜とメインに、スープと自家製パンを添える。",
+  "whatEn": "A French restaurant in Sakaecho run by the former head chef of Fujiya Hotel’s Fusion Dining F. Lunch pairs a choice of starter and main with soup and house-made bread.",
+  "note": "昼はスープと自家製パンから、ゆっくり食べ始めたい。",
+  "noteEn": "At lunch, I would take my time over the soup and house-made bread.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.25596,
+   139.15946
+  ]
+ },
+ {
+  "name": "TEA FACTORY 如春園",
+  "nameEn": "TEA FACTORY Joshunen",
+  "category": "food",
+  "tags": [
+   "black-tea",
+   "curry"
+  ],
+  "area": "板橋",
+  "areaEn": "Itabashi",
+  "address": "636 Itabashi, Odawara",
+  "url": "https://joshunen.jp/",
+  "what": "旧下田豆腐店の建物を使う紅茶工房と喫茶。小田原周辺で育てて製茶するこゆるぎ紅茶と、昼には南インドのスパイスカレーを出す。",
+  "whatEn": "A tea factory and café in the former Shimoda tofu workshop. It makes Koyurugi black tea from leaves grown around Odawara, and serves South Indian spice curry at lunch.",
+  "note": "昼はスパイスカレーを食べて、こゆるぎ紅茶も飲みたい。",
+  "noteEn": "I would have the spice curry for lunch, and Koyurugi black tea too.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.24702,
+   139.14359
+  ]
+ }
+]

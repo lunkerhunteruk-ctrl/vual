@@ -1,0 +1,66 @@
+[
+ {
+  "name": "越前和紙の里",
+  "nameEn": "Echizen Washi Village",
+  "kind": "art",
+  "area": "五箇",
+  "areaEn": "Gokaso",
+  "address": "越前市新在家町8-44",
+  "url": "https://www.echizenwashi.jp/",
+  "what": "越前和紙の里の中心となる施設群。紙漉き体験ができるパピルス館、江戸中期の紙漉き家屋を移築した卯立の工芸館、紙の文化博物館がある。火曜休館。",
+  "whatEn": "The main complex of the Echizen Washi Village in Gokaso, bringing together the Papyrus House for papermaking, the Udatsu Paper and Craft Museum in a relocated Edo-period workshop, and the Paper and Culture Museum. Closed Tuesdays.",
+  "coords": [
+   35.91135,
+   136.24331
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "岡太神社・大瀧神社",
+  "nameEn": "Okamoto-Otaki Shrine",
+  "kind": "sight",
+  "area": "五箇",
+  "areaEn": "Gokaso",
+  "address": "越前市大滝町13-1",
+  "url": "https://okamoto-ootakijinja.jp/",
+  "what": "越前和紙に紙漉きの技を伝えたとされる女神・川上御前を祀る神社。里宮の本殿と拝殿は江戸後期の建築で、国の重要文化財。2026年10月に檜皮葺き屋根の葺き替えが完了した。",
+  "whatEn": "The shrine dedicated to Kawakami Gozen, the goddess said to have brought papermaking to Echizen. Its late-Edo main hall and worship hall are Important Cultural Properties; a cypress-bark roof re-thatching was completed in October 2026.",
+  "coords": [
+   35.9064,
+   136.25307
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "総社大神宮",
+  "nameEn": "Soja Daijingu Shrine",
+  "kind": "sight",
+  "area": "武生",
+  "areaEn": "Takefu",
+  "address": "越前市京町1丁目4-35",
+  "url": "https://osonjasan.jp/",
+  "what": "越前国の神々を一社に合祀して創建され、地元で「おそんじゃさん」と呼ばれる神社。1926年に竣工した本殿と拝殿が残る。",
+  "whatEn": "A shrine in central Takefu founded to enshrine the deities of Echizen Province together, known locally as Osonja-san. Its main hall and worship hall date from 1926.",
+  "coords": [
+   35.90332,
+   136.16411
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "紫式部公園",
+  "nameEn": "Murasaki Shikibu Park",
+  "kind": "sight",
+  "area": "武生",
+  "areaEn": "Takefu",
+  "address": "越前市東千福町20-369",
+  "url": "https://www.echizen-tourism.jp/travel_echizen/visit_detail/20",
+  "what": "紫式部が父・藤原為時とともに越前で暮らしたことを記念して造られた公園。池のまわりに寝殿造の釣殿をしつらえ、平安時代の趣を残す。入園自由。",
+  "whatEn": "A park commemorating Murasaki Shikibu's year in Echizen with her father, Fujiwara no Tametoki. Set around a pond with a Heian-style fishing pavilion; free to enter.",
+  "coords": [
+   35.8902,
+   136.15762
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

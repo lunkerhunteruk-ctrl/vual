@@ -1,0 +1,82 @@
+[
+ {
+  "name": "静岡市美術館",
+  "nameEn": "Shizuoka City Museum of Art",
+  "kind": "art",
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "静岡市葵区紺屋町17-1 葵タワー3階",
+  "url": "https://shizubi.jp/",
+  "what": "JR静岡駅前の葵タワー3階にある市立美術館。美術やデザイン、工芸など幅広い企画展を開く。10時から19時、月曜休館（祝日の場合は翌平日）。",
+  "whatEn": "A municipal art museum on the 3rd floor of Aoi Tower in front of JR Shizuoka Station, holding exhibitions of art, design and craft. Open 10:00–19:00, closed Mondays (or the following weekday if a holiday).",
+  "coords": [
+   34.97239,
+   138.3866
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "静岡市立芹沢銈介美術館",
+  "nameEn": "Shizuoka City Serizawa Keisuke Art Museum",
+  "kind": "art",
+  "area": "駿河区",
+  "areaEn": "Suruga",
+  "address": "静岡市駿河区登呂5-10-5",
+  "url": "https://www.seribi.jp/",
+  "what": "静岡出身の染色家・芹沢銈介の作品と収集品を収蔵・展示する美術館。登呂遺跡の一角にあり、白井晟一の設計で1981年に開館した。月曜休館。",
+  "whatEn": "A museum dedicated to the works and collection of Shizuoka-born dyeing artist Keisuke Serizawa, set at the Toro archaeological site in a 1981 building designed by Seiichi Shirai. Closed Mondays.",
+  "coords": [
+   34.95514,
+   138.40814
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "駿府城公園",
+  "nameEn": "Sunpu Castle Park",
+  "kind": "sight",
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "静岡市葵区駿府城公園1-1",
+  "url": "https://sumpu-castlepark.com/",
+  "what": "徳川家康が晩年を過ごした駿府城の跡を整備した公園。復元された東御門・巽櫓、坤櫓や紅葉山庭園があり、堀と石垣が残る。",
+  "whatEn": "A park on the site of Sunpu Castle, where Tokugawa Ieyasu spent his later years, with moats, stone walls, the reconstructed Higashi-gomon Gate, Tatsumi-yagura, Hitsujisaru-yagura and Momijiyama Garden.",
+  "coords": [
+   34.97928,
+   138.38298
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "静岡浅間神社",
+  "nameEn": "Shizuoka Sengen Shrine",
+  "kind": "sight",
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "静岡市葵区宮ケ崎町102-1",
+  "url": "http://www.shizuokasengen.net/",
+  "what": "賤機山のふもとに鎮座する駿河国の総社。神部神社・浅間神社・大歳御祖神社の三社から成り、国の重要文化財の社殿群が並ぶ。平成の大改修を実施中。",
+  "whatEn": "The principal shrine of Suruga Province at the foot of Mount Shizuhata, comprising three shrines with nationally designated Important Cultural Property buildings. Long-term restoration work is underway.",
+  "coords": [
+   34.98344,
+   138.37547
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "久能山東照宮",
+  "nameEn": "Kunozan Toshogu Shrine",
+  "kind": "sight",
+  "area": "駿河区",
+  "areaEn": "Suruga",
+  "address": "静岡市駿河区根古屋390",
+  "url": "https://www.toshogu.or.jp/",
+  "what": "徳川家康を祀る全国東照宮の創祀。標高216メートルの久能山に鎮座し、総漆塗・極彩色の御社殿は国宝に指定されている。",
+  "whatEn": "The first of Japan’s Toshogu shrines, enshrining Tokugawa Ieyasu atop 216-metre Mount Kuno, with a lacquered, polychrome main hall designated a National Treasure.",
+  "coords": [
+   34.96479,
+   138.4676
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

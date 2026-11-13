@@ -1,0 +1,357 @@
+[
+ {
+  "name": "日田まぶし 千屋",
+  "nameEn": "Hitamabushi Senya",
+  "category": "food",
+  "tags": [
+   "eel",
+   "local-food",
+   "onta-yaki"
+  ],
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "日田市豆田町4-14",
+  "url": "https://senya-hita.yorozuya-hita.com/",
+  "what": "豆田町の「日田まぶし」の店。蒸さずに強火で焼いた国産うなぎと日田の米を、小鹿田焼の器で出し、ゆずごしょうやだし茶漬けなど4通りに食べる。",
+  "whatEn": "A Hitamabushi house in Mamedamachi. Crisp charcoal-grilled domestic eel and Hita rice served in Onta ware, eaten four ways including with yuzu kosho and dashi broth.",
+  "note": "三膳目は、日田のゆずごしょうと大根おろしで。",
+  "noteEn": "For the third bowl, yuzu kosho and grated daikon.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.32728,
+   130.93733
+  ]
+ },
+ {
+  "name": "赤司日田羊羹本舗",
+  "nameEn": "Akashi Hita Yokan Honpo",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "yokan"
+  ],
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "日田市豆田町8-15",
+  "url": "https://www.youkanya.co.jp/",
+  "what": "豆田町の一枚物・流し羊羹の老舗。切って少し置くと表面が糖化してしゃりっとする日田羊羹や、期間限定の珈琲羊羹も並ぶ。",
+  "whatEn": "A long-standing Hita yokan maker in Mamedamachi. Its traditional slab yokan develops a crisp sugar crust once sliced and rested, alongside seasonal coffee yokan.",
+  "note": "一枚物を買って、少し乾かしてから切りたい。",
+  "noteEn": "Buy a whole slab and let it dry a little before slicing.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.32757,
+   130.93611
+  ]
+ },
+ {
+  "name": "小鹿田焼陶芸館",
+  "nameEn": "Onta-yaki Pottery Museum",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "museum"
+  ],
+  "area": "小鹿田・皿山",
+  "areaEn": "Onta (Sarayama)",
+  "address": "日田市源栄町138-1",
+  "url": "https://www.city.hita.oita.jp/site/hitanioideyo/1935.html",
+  "what": "皿山の入口にある市営の展示施設。江戸時代から現代までの小鹿田焼を展示する。9時から17時、水曜と年末年始は休み。",
+  "whatEn": "A municipal exhibition gallery at the entrance to Sarayama, showing Onta ware from the Edo period to today. Open 9 am to 5 pm; closed Wednesdays and New Year.",
+  "note": "窯元を歩く前に、古い時代の器を見ておきたい。",
+  "noteEn": "Look at the older pieces here before walking the kilns.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.42777,
+   130.91122
+  ]
+ },
+ {
+  "name": "CREATIVE BASE FAB",
+  "nameEn": "CREATIVE BASE FAB",
+  "category": "craft",
+  "tags": [
+   "furniture",
+   "ceramics",
+   "wood"
+  ],
+  "area": "三芳・東有田",
+  "areaEn": "Miyoshi & Higashiarita",
+  "address": "日田市東有田1178-10",
+  "url": "https://creativebase-fab.jp/",
+  "what": "オーダーソファメーカー・ベストリビングの倉庫を活かした拠点。ソファのショールームや端材ショップ、日田下駄や小鹿田焼のセレクトショップがある。10時から17時。",
+  "whatEn": "A craft hub in a sofa maker's warehouse run by Best Living, with a sofa showroom, offcut shop, and select shop stocking Hita geta and Onta ware. Open 10 am to 5 pm.",
+  "note": "端材や端切れの棚を、端からゆっくり見たい。",
+  "noteEn": "Take time looking through the offcut and fabric shelves.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.32739,
+   130.96708
+  ]
+ },
+ {
+  "name": "うらつか工房",
+  "nameEn": "Uratsuka Kobo",
+  "category": "local",
+  "industry": "hita-cedar-geta",
+  "tags": [
+   "geta",
+   "wood",
+   "cedar"
+  ],
+  "area": "日田駅・中央周辺",
+  "areaEn": "Central Hita",
+  "address": "大分県日田市吹上町3-2",
+  "url": "https://uratsuka-kobo.com/",
+  "what": "吹上町の、二代目と三代目で営む下駄と木履の工房。木地づくりから仕上げまで行い、ヒノキの下駄や日田杉を5枚重ねた室内履きを作る。",
+  "whatEn": "A family-run geta workshop in Fukiagemachi led by the second and third generations, handling every step from wood shaping to finishing, including hinoki clogs and layered Hita cedar indoor slippers.",
+  "note": "日田杉の室内履き、鼻緒とベルトを履き比べたい。",
+  "noteEn": "Try both the thong and strap cedar indoor slippers.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.33047,
+   130.93266
+  ]
+ },
+ {
+  "name": "Cake Shop SHO",
+  "nameEn": "Cake Shop SHO",
+  "category": "sweets",
+  "tags": [
+   "pastry",
+   "cake"
+  ],
+  "area": "日田駅・中央周辺",
+  "areaEn": "Central Hita",
+  "address": "日田市田島2-154-2",
+  "what": "大原八幡宮近くの田島にある洋菓子店。季節のデコレーションケーキやチーズケーキ、焼き菓子が並ぶ。",
+  "whatEn": "A patisserie in Tashima near Ohara Hachimangu Shrine, selling seasonal whole cakes, cheesecakes and baked sweets.",
+  "note": "チーズケーキと焼き菓子を、ひとつずつ持ち帰る。",
+  "noteEn": "Pick up a cheesecake and a few baked sweets to take away.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "御菓子司 日田とらや",
+  "nameEn": "Hita Toraya",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "maruboro"
+  ],
+  "area": "日田駅・中央周辺",
+  "areaEn": "Central Hita",
+  "address": "日田市中本町5-41",
+  "url": "https://hita-toraya.com/",
+  "what": "中本町の和菓子店。蜂蜜をたっぷり使ったしっとり食感の「丸ぼうろ」を初代から60年以上作り続け、鯛最中も並ぶ。9時から18時、日・月曜は休み。",
+  "whatEn": "A wagashi shop in Nakahonmachi making moist honey-rich maruboro for over 60 years, alongside walnut-studded bean-paste tai monaka. Open 9 am to 6 pm; closed Sundays and Mondays.",
+  "note": "蜂蜜の丸ぼうろと、クルミ入りの鯛最中をひとつずつ。",
+  "noteEn": "One honey maruboro and one walnut tai monaka.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "松浦松翁堂",
+  "nameEn": "Matsuura Shoodo",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "隈",
+  "areaEn": "Kuma",
+  "address": "日田市隈1-3-31",
+  "url": "https://matsuura-wagashi.studio.site/",
+  "what": "隈にある明治25年創業の和菓子店。黒あんのまわりにクルミとピーナッツをつけた焼き菓子「亀山」で知られる。",
+  "whatEn": "A wagashi shop in Kuma founded in 1892, known for Kameyama, a baked sweet of dark bean paste coated with walnuts and peanuts.",
+  "note": "クルミとピーナッツが香ばしい「亀山」をお茶請けに。",
+  "noteEn": "Pick up Kameyama with walnuts and peanuts for tea.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "食感農園 風と根",
+  "nameEn": "Kazetone",
+  "category": "food",
+  "tags": [
+   "lunch",
+   "vegetables"
+  ],
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "日田市港町2-13",
+  "url": "https://www.instagram.com/_kazetone_/",
+  "what": "豆田町近くの港町にある、古い家を改装した食堂。自家栽培の旬の野菜を使った月替わりのお昼ごはんを出す。",
+  "whatEn": "A lunch restaurant in a renovated traditional house in Minatomachi near Mamedamachi, serving monthly menus made with homegrown seasonal vegetables.",
+  "note": "月替わりの野菜のお昼を、豆田を歩いたあとに。",
+  "noteEn": "The monthly vegetable lunch, after walking Mamedamachi.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "BOWL",
+  "nameEn": "BOWL",
+  "category": "food",
+  "tags": [
+   "seafood",
+   "donburi",
+   "cedar"
+  ],
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "日田市豆田町12-3",
+  "url": "https://bowl-mameda.com/",
+  "what": "豆田町の丼の店。日田の和食店「季節料理 花門」の2号店で、内装とテーブルに日田杉を使い、市場の魚介の海鮮丼や国産和牛の肉丼を出す。",
+  "whatEn": "A donburi restaurant in Mamedamachi opened by local washoku house Kisetsu Ryori Kamon. Built with Hita cedar interiors and tables, serving market seafood bowls and domestic wagyu beef bowls.",
+  "note": "日田杉のテーブルで、海鮮丼か和牛の丼を迷う。",
+  "noteEn": "At a Hita cedar table, choosing between seafood and wagyu.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "みくま飯店",
+  "nameEn": "Mikuma Hanten",
+  "category": "food",
+  "tags": [
+   "yakisoba",
+   "local-food"
+  ],
+  "area": "隈",
+  "areaEn": "Kuma",
+  "address": "日田市隈1-5-21",
+  "url": "https://www.instagram.com/mikumagnk/",
+  "what": "隈にある日田焼きそばの店。鉄板で麺を香ばしく焼いた日田焼きそばと、あっさりした豚骨スープを出す。",
+  "whatEn": "A Hita yakisoba shop in Kuma, serving noodles seared crisp on an iron griddle alongside a light tonkotsu soup.",
+  "note": "焦げ目のついた焼きそばと、スープを一緒に。",
+  "noteEn": "The crisp-seared yakisoba, with a bowl of soup.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Bistro Cafe Licht",
+  "nameEn": "Bistro Cafe Licht",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "galette",
+   "tea"
+  ],
+  "area": "豆田町",
+  "areaEn": "Mamedamachi",
+  "address": "日田市豆田町3-10",
+  "url": "https://cafebar-licht.com/cafe/",
+  "what": "豆田町のオーベルジュ併設のカフェ。珈琲やドイツの有機茶、そば粉のガレット、キッシュ、パスタを出す。月・火曜は休み。",
+  "whatEn": "The café of a small auberge in Mamedamachi, serving coffee, German organic tea, buckwheat galettes, quiche and pasta. Closed Mondays and Tuesdays.",
+  "note": "午後はそば粉のガレットと、ドイツの紅茶でひと息。",
+  "noteEn": "Take a break in the afternoon with a buckwheat galette and German tea.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ONOGORO STYLE",
+  "nameEn": "ONOGORO STYLE",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets",
+   "lunch"
+  ],
+  "area": "隈",
+  "areaEn": "Kuma",
+  "address": "日田市石井町1-366-4",
+  "url": "https://www.instagram.com/onogorostyle/",
+  "what": "隈の西、石井町にあるカフェ。素材にこだわったランチやお菓子、アサイーボウルを出す。休みは不定で、Instagramで知らせる。",
+  "whatEn": "A café in Ishiimachi just west of Kuma, serving ingredient-conscious lunches, sweets and acai bowls. Irregular closing days are posted on Instagram.",
+  "note": "川下の町まで足を延ばして、午後にアサイーボウルを。",
+  "noteEn": "Head downstream for an acai bowl in the afternoon.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "おかげさまcafe にこん",
+  "nameEn": "Okagesama Cafe Nicon",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets",
+   "kominka"
+  ],
+  "area": "奥日田",
+  "areaEn": "Okuhita",
+  "address": "日田市天瀬町桜竹862",
+  "url": "https://www.instagram.com/cafe._.nicon/",
+  "what": "奥日田・天瀬町の、築100年を超える古民家のカフェ。囲炉裏や縁側のある座敷で、珈琲や土鍋ぜんざい、土鍋のカレーなどを出す。",
+  "whatEn": "A café in a century-old farmhouse in Amagase, Okuhita. Sit by the irori hearth or open veranda for coffee, clay-pot zenzai and earthenware-pot curry.",
+  "note": "縁側に座って、土鍋のぜんざいで温まりたい。",
+  "noteEn": "Sit by the veranda and warm up with clay-pot zenzai.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ウッドアート楽",
+  "nameEn": "Wood Art Raku",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "tableware"
+  ],
+  "area": "奥日田",
+  "areaEn": "Okuhita",
+  "address": "日田市大山町東大山474-3",
+  "url": "https://woodart-raku.com/",
+  "what": "奥日田・大山町にある木工の工房と店。さまざまな銘木や地元の木を使い、箸やスプーン、フォーク、木の器などを作る。",
+  "whatEn": "A woodworking studio and shop in Oyama, Okuhita, shaping local timber and fine hardwoods into chopsticks, spoons, forks and wooden bowls.",
+  "note": "木の種類を比べながら、持ちやすい箸を選びたい。",
+  "noteEn": "Compare the woods and pick a pair of chopsticks that fits your hand.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "坂本浩二窯",
+  "nameEn": "Sakamoto Koji Kiln",
+  "category": "local",
+  "industry": "onta-yaki",
+  "tags": [
+   "ceramics",
+   "onta-yaki",
+   "tableware"
+  ],
+  "area": "小鹿田・皿山",
+  "areaEn": "Onta (Sarayama)",
+  "address": "日田市源栄町174",
+  "url": "https://www.instagram.com/takumasakamoto/",
+  "what": "皿山の小鹿田焼の窯元。坂本浩二さんと息子の拓磨さんが、水力で動く唐臼で土を砕き、登り窯で飛び鉋や刷毛目の器を焼く。",
+  "whatEn": "An Onta ware family kiln in Sarayama worked by Koji Sakamoto and his son Takuma, crushing clay with water-powered kara-usu and firing slip-decorated vessels in the climbing kiln.",
+  "note": "細かい飛び鉋の皿を一枚、手に取って選びたい。",
+  "noteEn": "Hold and choose a plate with fine tobikanna chatter marks.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "日東木工",
+  "nameEn": "Nitto Mokkou",
+  "category": "local",
+  "industry": "hita-cedar-geta",
+  "tags": [
+   "furniture",
+   "wood"
+  ],
+  "area": "隈",
+  "areaEn": "Kuma",
+  "address": "日田市玉川3-1511-1",
+  "url": "https://nitto-mokkou.com/",
+  "what": "隈の西、玉川にある1962年創業の家具メーカー。木取りから塗装まで一貫して行い、特注家具やダイニングテーブル、椅子、ソファを手で仕上げる。",
+  "whatEn": "A wooden furniture maker founded in 1962 in Tamagawa just west of Kuma, handling timber selection to finishing for custom tables, chairs and sofas.",
+  "note": "無垢の椅子やテーブルの、木目の仕上げを見たい。",
+  "noteEn": "See how the grain is finished on their solid-wood chairs and tables.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "原次郎左衛門の味噌醤油蔵",
+  "nameEn": "Hara Jirozaemon Brewery",
+  "category": "local",
+  "industry": "hita-brewing",
+  "tags": [
+   "soy-sauce",
+   "miso",
+   "local-food"
+  ],
+  "area": "日田駅・中央周辺",
+  "areaEn": "Central Hita",
+  "address": "日田市中本町5-4",
+  "url": "http://www.soysauce.co.jp/",
+  "what": "中本町にある明治32年創業の味噌・醤油蔵。日田の地下水で仕込む味噌や醤油のほか、川魚から作る「鮎魚醤」やラムネも並ぶ。",
+  "whatEn": "A miso and soy sauce brewery in Nakahonmachi founded in 1899, brewing with Hita groundwater and also making ayu sweetfish garum and ramune.",
+  "note": "小さな瓶の鮎魚醤を、家の台所用に一本。",
+  "noteEn": "A small bottle of ayu fish sauce for the kitchen at home.",
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,74 @@
+[
+ {
+  "name": "高知城",
+  "nameEn": "Kochi Castle",
+  "kind": "sight",
+  "area": "丸ノ内",
+  "areaEn": "Marunouchi",
+  "address": "高知市丸ノ内1-2-1",
+  "url": "https://kochipark.jp/kochijyo/",
+  "what": "山内一豊が1601年に築城を始めた土佐藩の城。江戸時代の天守と本丸御殿をはじめ、本丸の建物群がすべて残る。",
+  "whatEn": "The castle of the Tosa domain, begun by Yamauchi Katsutoyo in 1601. Its Edo-period keep, main palace and the rest of the inner-citadel buildings survive.",
+  "coords": [
+   33.56069,
+   133.53146
+  ],
+  "notice": "天守・懐徳館は9時〜17時（最終入館16時30分）。12月26日〜1月1日は休館。",
+  "noticeEn": "The keep and Kaitokukan are open 9:00–17:00, last admission 16:30. Closed December 26 to January 1.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高知県立高知城歴史博物館",
+  "nameEn": "Kochi Castle Museum of History",
+  "kind": "art",
+  "area": "追手筋",
+  "areaEn": "Otesuji",
+  "address": "高知市追手筋2-7-5",
+  "url": "https://www.kochi-johaku.jp/",
+  "what": "高知城のふもとで、土佐藩の歴史と文化を伝える博物館。山内家に伝わった大名道具や、土佐ゆかりの美術を展示する。",
+  "whatEn": "A museum at the foot of Kochi Castle on the history and culture of the Tosa domain. Displays include objects handed down in the Yamauchi family and art connected with Tosa.",
+  "coords": [
+   33.56017,
+   133.53407
+  ],
+  "notice": "総合展示室2は2026年11月10日〜19日、展示替えで休室。12月20日〜25日は設備工事、26日〜31日は年末休館（新年1月1日開館の告知あり）。",
+  "noticeEn": "General Exhibition Room 2 is closed for a display change November 10–19, 2026. The museum announces closure for works December 20–25 and the year-end holiday December 26–31, reopening January 1.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高知県立牧野植物園",
+  "nameEn": "The Kochi Prefectural Makino Botanical Garden",
+  "kind": "sight",
+  "area": "五台山",
+  "areaEn": "Godaisan",
+  "address": "高知市五台山4200-6",
+  "url": "https://www.makino.or.jp/",
+  "what": "植物学者・牧野富太郎を記念して1958年に開園した植物園。五台山の起伏を生かした園地に、3,000種類以上の植物と温室、内藤廣設計の記念館がある。",
+  "whatEn": "A botanical garden opened in 1958 in memory of botanist Makino Tomitaro. The slopes of Mount Godaisan hold over 3,000 kinds of plants, a greenhouse and a memorial hall designed by Naito Hiroshi.",
+  "coords": [
+   33.54833,
+   133.57912
+  ],
+  "notice": "9時〜17時（最終入園16時30分）。2026年11月30日はメンテナンス休園、12月27日〜1月1日は年末年始休園。",
+  "noticeEn": "Open 9:00–17:00, last admission 16:30. Closed for maintenance November 30, 2026, and for the year-end holiday December 27 to January 1.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "竹林寺",
+  "nameEn": "Chikurinji Temple",
+  "kind": "sight",
+  "area": "五台山",
+  "areaEn": "Godaisan",
+  "address": "高知市五台山3577",
+  "url": "http://www.chikurinji.com/",
+  "what": "五台山にある真言宗の寺で、四国八十八箇所の第31番札所。本堂と書院は国の重要文化財、書院を囲む庭園は国の名勝。",
+  "whatEn": "A Shingon temple on Mount Godaisan, number 31 on the Shikoku pilgrimage. Its main hall and shoin are national Important Cultural Properties; the garden around the shoin is a nationally designated scenic site.",
+  "coords": [
+   33.54651,
+   133.57675
+  ],
+  "notice": "参拝は8時〜17時、名勝庭園・宝物館は8時30分〜17時。宝物館の2026年8月18日〜9月13日の拝観停止期間は終了。",
+  "noticeEn": "Temple visits 8:00–17:00; garden and treasure hall 8:30–17:00. The announced treasure-hall closure of August 18 to September 13, 2026, has ended.",
+  "verifiedAt": "2026-11-12"
+ }
+]

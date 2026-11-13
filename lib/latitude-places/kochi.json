@@ -1,0 +1,234 @@
+[
+ {
+  "name": "SANROKU COFFEE",
+  "nameEn": "SANROKU COFFEE",
+  "category": "food",
+  "tags": [
+   "coffee"
+  ],
+  "area": "桜井町",
+  "areaEn": "Sakuraimachi",
+  "address": "1-5-25 Sakuraimachi, Kochi-shi",
+  "url": "https://sanrokucoffee.com/",
+  "what": "桜井町のコーヒー店。公式サイトで営業日カレンダーを知らせる。",
+  "whatEn": "A coffee shop in Sakuraimachi. Opening dates are posted on its website.",
+  "note": "町を歩いたあとは、ここでコーヒーを一杯飲みたい。",
+  "noteEn": "After walking around town, I would stop here for a coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.56117,
+   133.54886
+  ]
+ },
+ {
+  "name": "日日",
+  "nameEn": "Nichika",
+  "category": "craft",
+  "tags": [
+   "tableware",
+   "handwork"
+  ],
+  "area": "葛島",
+  "areaEn": "Kazurashima",
+  "address": "1-9-24 Kazurashima, Kochi-shi",
+  "url": "https://comonichi.com/",
+  "what": "葛島の暮らしの道具の店とギャラリー。作家の企画展や、料理と手仕事の教室も開く。",
+  "whatEn": "A shop and gallery for everyday objects in Kazurashima. It holds maker exhibitions and classes in cooking and handwork.",
+  "note": "毎日使う器を、手に取って一つずつ選んでみたい。",
+  "noteEn": "I would pick up the everyday dishes and choose them one by one.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.5593,
+   133.57141
+  ]
+ },
+ {
+  "name": "コミベーカリー",
+  "nameEn": "Komi Bakery",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "cheesecake"
+  ],
+  "area": "知寄町",
+  "areaEn": "Chiyoricho",
+  "address": "1-1-21 Chiyoricho, Kochi-shi",
+  "url": "https://www.komi-bakery.co.jp/",
+  "what": "知寄町のパンと洋菓子の店。窯出しチーズケーキと、食パンや焼きたてのパン。",
+  "whatEn": "A bakery and cake shop in Chiyoricho. Kamadashi cheesecake, loaves and freshly baked bread.",
+  "note": "パンも気になるけれど、まずは窯出しチーズケーキを選ぶ。",
+  "noteEn": "The bread interests me too, but I would start with the Kamadashi cheesecake.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.55927,
+   133.55676
+  ]
+ },
+ {
+  "name": "パティスリー ＋カフェ モンスリール",
+  "nameEn": "Pâtisserie + café Mon sourire",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "coffee"
+  ],
+  "area": "新本町",
+  "areaEn": "Shin-Honmachi",
+  "address": "2-5-16 Shin-Honmachi, Kochi-shi",
+  "url": "https://patisserie-mon-sourire.jp/",
+  "what": "新本町の洋菓子店。ケーキと焼き菓子、エッグフリーケーキがあり、店内のカフェでコーヒーと楽しめる。",
+  "whatEn": "A patisserie in Shin-Honmachi with cakes, baked sweets and egg-free cakes. There is a café for cake and coffee.",
+  "note": "持ち帰る焼き菓子の前に、ケーキとコーヒーで座る。",
+  "noteEn": "Before choosing baked sweets to take home, I would sit down for cake and coffee.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "御菓子司 福留菊水堂",
+  "nameEn": "Fukudome Kikusuidou",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "yokan"
+  ],
+  "area": "愛宕町",
+  "areaEn": "Atagocho",
+  "address": "2-13-3 Atagocho, Kochi-shi",
+  "url": "https://kikusuidou.com/",
+  "what": "1951年創業、愛宕町の和菓子店。季節の茶席菓子と、百合羊羹・山桃羊羹、蜂蜜入りのかすてらを作る。",
+  "whatEn": "A wagashi shop in Atagocho, founded in 1951. Seasonal tea sweets, lily-bulb and yamamomo yokan, and honey castella.",
+  "note": "百合根の羊羹と山桃の羊羹、まずは一つずつ選びたい。",
+  "noteEn": "I would choose one each of the lily-bulb and yamamomo yokan.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "葉牡丹",
+  "nameEn": "Habotan",
+  "category": "food",
+  "tags": [
+   "seafood",
+   "kushifry",
+   "sake"
+  ],
+  "area": "堺町",
+  "areaEn": "Sakaimachi",
+  "address": "2-21 Sakaimachi, Kochi-shi",
+  "url": "https://habotan.jp/",
+  "what": "堺町で半世紀以上続く、昼から開く居酒屋。鰹のたたき、串フライ、串焼きに定食もある。",
+  "whatEn": "A tavern in Sakaimachi open from daytime, in business for over half a century. Bonito tataki, fried and grilled skewers, and set meals.",
+  "note": "鰹のたたきも食べたいけれど、串フライの盛合せから。",
+  "noteEn": "I want the bonito tataki too, but I would start with the mixed fried skewers.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "Bar Baffone",
+  "nameEn": "Bar Baffone",
+  "category": "food",
+  "tags": [
+   "pasta",
+   "wine",
+   "citrus"
+  ],
+  "area": "追手筋",
+  "areaEn": "Otesuji",
+  "address": "1-4-17 Otesuji, Kochi-shi",
+  "url": "https://baffone.amebaownd.com/",
+  "what": "1996年に開いたバール。高知のバジルを使うジェノバ風リングイネがあり、秋には酢ミカンの飲み物も出す。",
+  "whatEn": "A bar opened in 1996. It serves Genoese-style linguine with Kochi basil, and sour-citrus drinks in autumn.",
+  "note": "高知のバジルを使うリングイネを、まず一皿頼みたい。",
+  "noteEn": "I would start with a plate of linguine made with Kochi basil.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "イタリア料理 ラ・ヴィータ",
+  "nameEn": "La Vita",
+  "category": "food",
+  "tags": [
+   "pasta",
+   "pizza"
+  ],
+  "area": "本町",
+  "areaEn": "Honmachi",
+  "address": "3-3-1 Honmachi, Kochi-shi",
+  "url": "https://rest.la-vita.co.jp/",
+  "what": "本町、大橋通りの南にある地下のイタリア料理店。パスタやピッツァ、季節の料理を出す。",
+  "whatEn": "An Italian restaurant below ground in Honmachi, south of Ohashidori. Pasta, pizza and seasonal dishes.",
+  "note": "昼はパスタを一皿選んで、地下の店でゆっくり食べる。",
+  "noteEn": "At lunch I would choose a pasta and take my time in the downstairs dining room.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "TUKI",
+  "nameEn": "TUKI",
+  "category": "food",
+  "tags": [
+   "stew",
+   "coffee"
+  ],
+  "area": "水通町",
+  "areaEn": "Mizudooricho",
+  "address": "162 Mizudooricho, Kochi-shi",
+  "url": "https://tuki-kochi.com/",
+  "what": "水通町の、和のおばんざいと洋食の定食屋。ビーフシチューや特製カレーがあり、食後のコーヒーは好きなカップを選べる。",
+  "whatEn": "A dining room in Mizudooricho for Japanese side dishes and Western-style meals, including beef stew and house curry. You can choose your cup for coffee after the meal.",
+  "note": "食後のコーヒーは、飲む前にカップを選ぶのが楽しみ。",
+  "noteEn": "For coffee after the meal, I would enjoy choosing the cup first.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "紡ぎ珈琲焙煎所",
+  "nameEn": "Tsumugi Coffee Roastery",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "ice cream",
+   "cake"
+  ],
+  "area": "百石町",
+  "areaEn": "Hyakkokucho",
+  "address": "4-18-19 Hyakkokucho, Kochi-shi",
+  "url": "https://www.taycoffeestand.com/",
+  "what": "百石町の自家焙煎珈琲店。2026年に建て替えた2階建ての店で、「TSUMUGI COFFEE & ICECREAM」と「を菓子と。百石町店」が珈琲やクラフトアイス、菓子を出す。",
+  "whatEn": "A coffee roastery in Hyakkokucho, rebuilt as a two-storey café in 2026. TSUMUGI COFFEE & ICECREAM and Wokashito Hyakkokucho serve coffee, craft ice cream and sweets.",
+  "note": "自家焙煎のコーヒーと、カフェラテのアイスを合わせたい。",
+  "noteEn": "I would pair the house-roasted coffee with café-latte ice cream.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "株式会社尾﨑製紙所",
+  "nameEn": "Osaki Paper Mill",
+  "category": "local",
+  "industry": "tosa-washi",
+  "tags": [
+   "washi",
+   "paper"
+  ],
+  "area": "いの町加田",
+  "areaEn": "Kada, Ino",
+  "address": "63 Kada, Ino-cho, Agawa-gun",
+  "url": "http://osaki-kouchimasi.com/",
+  "what": "いの町加田の和紙の製紙所で、楮や苧麻を使い、日本画用の高知麻紙などを作る。見学は事前に連絡が必要。",
+  "whatEn": "A washi mill in Kada, Ino, making Kochi-mashi painting paper and other papers from kozo and ramie. Contact the mill in advance for a visit.",
+  "note": "高知麻紙の表と裏、その凹凸の違いをよく見てみたい。",
+  "noteEn": "I would look closely at the different textures on the two sides of Kochi-mashi.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "竹と",
+  "nameEn": "TAKETO",
+  "category": "local",
+  "industry": "tosa-takezaiku",
+  "tags": [
+   "bamboo",
+   "cutlery"
+  ],
+  "area": "鏡吉原",
+  "areaEn": "Kagami Yoshihara",
+  "address": "509 Kagami Yoshihara, Kochi-shi",
+  "url": "https://taketo-inc.com/",
+  "what": "鏡川上流の鏡吉原にある、下本一歩の竹の工房。自ら切った竹を自作の炭窯で燻し、箸やトング、スプーンなどを作る。",
+  "whatEn": "Kazuho Shimomoto’s bamboo workshop in Kagami Yoshihara, upstream on the Kagami River. Locally cut bamboo is smoked in a self-built kiln and made into chopsticks, tongs and spoons.",
+  "note": "真っ黒な煤竹の道具なら、毎日使う箸から選びたい。",
+  "noteEn": "Among the black smoked-bamboo utensils, I would choose everyday chopsticks first.",
+  "verifiedAt": "2026-11-12"
+ }
+]

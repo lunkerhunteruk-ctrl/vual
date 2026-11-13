@@ -1,0 +1,510 @@
+{
+ "slug": "ozu",
+ "city": {
+  "name": "Ozu",
+  "nameJa": "大洲",
+  "latitude": "33.5° N",
+  "country": "Ehime, Japan",
+  "countryJa": "愛媛県",
+  "person": "rin",
+  "coords": [
+   33.50793,
+   132.54572
+  ],
+  "intro": "A former castle town in a basin along the Hiji River. Cedar-vat soy sauce and sake, shigure sweets, and coffee and craft shops in the old merchant streets of Konan and along the river, as Rin's picks.",
+  "introJa": "肱川沿いの盆地に開けた、かつての城下町。杉桶の醤油や地酒、銘菓の志ぐれ、肱南の町並みと川辺の喫茶・手仕事の店を、凛のおすすめで。",
+  "locator": {
+   "en": "In Ehime, on Shikoku · a basin town along the Hiji River",
+   "ja": "四国・愛媛県、肱川沿いの盆地の町"
+  },
+  "industries": [
+   {
+    "key": "brewing",
+    "en": "Natural soy sauce, miso, sake & craft brewing",
+    "ja": "醤油・味噌・日本酒・麦酒の醸造",
+    "about": "Fed by soft water from the Hiji River basin and wide inland temperature swings, Ozu's independent breweries ferment cedar-vat soy sauce and miso, handmade sake, and craft beer using local ingredients.",
+    "aboutJa": "肱川流域の水と盆地の寒暖差のもと、大洲では杉桶で仕込む天然醸造の醤油・味噌、手造りの地酒、地元の素材を使ったクラフトビールが造られている。",
+    "_src": "Fed by soft Hiji River basin water and wide inland temperature swings, Ozu's independent breweries ferment cedar-vat soy sauce and miso, small-batch sake, and local-fruit craft beer."
+   }
+  ]
+ },
+ "places": {
+  "梶田商店": {
+   "nameEn": "Kajita Shoten",
+   "area": "肱北",
+   "areaEn": "Kohoku",
+   "tags": [
+    "soy-sauce",
+    "miso"
+   ],
+   "what": "1874年創業の醤油・味噌蔵。杉桶に愛媛県産の大豆・小麦と鳴門の塩だけで仕込む天然醸造の「巽」などを造る。本店は8時から17時で、第2土曜と日祝が休み。",
+   "whatEn": "A soy sauce and miso brewery founded in 1874, fermenting Tatsumi soy sauce naturally in cedar vats from Ehime soybeans and wheat with Naruto salt. Open 8 am to 5 pm; closed the second Saturday, Sundays and holidays.",
+   "note": "濃い口と、四年かけた再仕込みの味を比べたい。",
+   "noteEn": "I would compare the regular koikuchi with the four-year double-brewed.",
+   "_src": {
+    "category": "local",
+    "industry": "brewing",
+    "nameKana": "かじたしょうてん",
+    "address": "大洲市中村559",
+    "url": "https://www.kazita.jp/",
+    "whatJa": "明治7年創業、100年以上の杉桶と愛媛県産丸大豆・小麦で天然醸造を続ける醤油・味噌蔵。",
+    "whatEn": "A family soy sauce and miso brewery founded in 1874 that ferments whole Ehime soybeans and wheat in century-old cedar vats.",
+    "facts": "Founded in 1874 (Meiji 7); brews its flagship Tatsumi soy sauce over 18+ months in 100-year-old cedar kioke vats; uses 100% Ehime-grown soybeans and wheat with no additives and sells directly at the brewery.",
+    "weak": "",
+    "verifiedBy": "https://www.kazita.jp/cat_news/536.html",
+    "quote": "年末年始休業日　　　　　2025年12月27日　～　2026年1月4日 ネット注文最終受付日　　12月25日（木）まで ※26日以降ご注文をいただいたお客様に関しましては1月5日以降順次発送となります。",
+    "fixes": "",
+    "coords": [
+     33.51093,
+     132.54482
+    ]
+   }
+  },
+  "養老酒造": {
+   "nameEn": "Yoro Shuzo",
+   "area": "肱川",
+   "areaEn": "Hijikawa",
+   "tags": [
+    "sake"
+   ],
+   "what": "大正10年（1921年）創業、肱川中流域の山鳥坂にある酒蔵。手造りの地酒「風の里」や「鵜洲」などを醸す。",
+   "whatEn": "A sake brewery founded in 1921 along the middle reaches of the Hiji River in Yamatosaka, making handmade labels such as Kazenosato and Ushu.",
+   "note": "手造りの純米を、小さな瓶で一本持ち帰る。",
+   "noteEn": "Take home a small bottle of the handmade junmai.",
+   "_src": {
+    "category": "local",
+    "industry": "brewing",
+    "nameKana": "ようろうしゅぞう",
+    "address": "大洲市肱川町山鳥坂49",
+    "url": "https://yoroshuzo.jp/",
+    "whatJa": "大正10年創業、清流・肱川上流の地下水と米で手造りの地酒「風の里」を醸す大洲唯一の酒蔵。",
+    "whatEn": "Ozu's sole remaining sake brewery, crafting small-batch handmade sake along the upper Hiji River since 1921.",
+    "facts": "Founded in 1921 (Taisho 10) in Hijikawa-cho; brews small-batch junmai and unpasteurized sake under the label Kazenosato using underground Hiji River water; the last active sake brewery in Ozu City.",
+    "weak": "",
+    "verifiedBy": "https://sakejourney.jp/articles/sake-taste-changes-every-year/",
+    "quote": "2026年10月13日に養老酒造（愛媛県大洲市肱川町）へオンライン取材したところ、語られたのは毎年の米の違いに向き合う 酒造り でした。",
+    "fixes": "whatEn/whatJaの肱川上流を肱川中流域に修正。公式 https://yoroshuzo.jp/ は「愛媛県大洲市の肱川中流域にあります」と記載。住所は公式記載と一致。大洲唯一という記載は開いたページでは確認できない。",
+    "coords": [
+     33.45524,
+     132.68449
+    ]
+   }
+  },
+  "臥龍醸造": {
+   "nameEn": "Garyu Brewing",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "craft-beer"
+   ],
+   "what": "明治期の旧製糸繭倉庫を活かした臥龍煉瓦倉庫内のブルワリー。地元の素材を使ったクラフトビールを醸し、併設のバーで飲める。火・水曜が休み。",
+   "whatEn": "A craft brewery inside Garyu Renga Soko, a Meiji-era silk cocoon warehouse, with a bar pouring house beers brewed with local ingredients. Closed Tuesdays and Wednesdays.",
+   "note": "煉瓦の倉庫で、3種の飲み比べセットを頼む。",
+   "noteEn": "Order the three-beer flight inside the brick warehouse.",
+   "_src": {
+    "category": "local",
+    "industry": "brewing",
+    "nameKana": "がりゅうじょうぞう",
+    "address": "大洲市大洲98-1",
+    "url": "https://garyu-brewing.com/",
+    "whatJa": "大正期の旧程野製糸繭赤煉瓦倉庫を活用し、大洲産の栗や柑橘を使ったクラフトビールを醸すブルワリー。",
+    "whatEn": "A craft brewery and taproom housed inside a Taisho-era red-brick silk cocoon warehouse near Garyu Sanso.",
+    "facts": "Operates inside the historic red-brick Garyu Renga Soko (former Hodono Silk Filature cocoon warehouse); brews small-batch beers with local Ozu chestnuts, kiwi, citrus, and silk powder, with an attached taproom.",
+    "weak": "",
+    "verifiedBy": "https://garyu-brewing.com/",
+    "quote": "【再販開始】「大洲いもたきエール」が今年も登場です！",
+    "fixes": "住所と旧程野製糸繭倉庫・大正時代の説明は公式と一致。",
+    "coords": [
+     33.50783,
+     132.54793
+    ]
+   }
+  },
+  "冨永松栄堂": {
+   "nameEn": "Tominaga Shoeido",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "明治8年（1875年）創業の和菓子店。小豆と米粉・餅粉・砂糖を二段階の蒸気で蒸し上げる大洲名物「志ぐれ」を造る。",
+   "whatEn": "A wagashi maker founded in 1875, steaming azuki beans, rice flour and sugar in two-stage steam to make Ozu's local sweet, Shigure.",
+   "note": "小豆の定番と、栗の志ぐれを一つずつ選びたい。",
+   "noteEn": "I would pick one plain azuki and one chestnut shigure.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "とみながしょうえいどう",
+    "address": "大洲市大洲444",
+    "url": "https://www.oozushigurehonpo.com/",
+    "whatJa": "明治8年創業、小豆と米粉をせいろで蒸し上げる大洲伝統の銘菓「志ぐれ」を守り続ける老舗和菓子店。",
+    "whatEn": "A traditional confectioner founded in 1875 specializing in Ozu's signature steamed azuki and rice-flour sweet, Shigure.",
+    "facts": "Founded in 1875 (Meiji 8) in Ozu's castle town; steams whole azuki beans with glutinous rice flour into chewy blocks of Ozu Shigure, including plain, chestnut, and matcha varieties.",
+    "weak": "",
+    "verifiedBy": "https://mise-repo.com/17219/",
+    "quote": "観光で訪れる方も多く、店内には志ぐれを中心とした土産品が並びます。",
+    "fixes": "住所は記事の大洲市大洲444と一致。創業明治八年・小豆米粉餅粉砂糖の蒸し菓子は公式サイトで確認。",
+    "coords": [
+     33.50631,
+     132.54811
+    ]
+   }
+  },
+  "BREAD&SWEETS yumehonoka": {
+   "nameEn": "BREAD&SWEETS yumehonoka",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "bread"
+   ],
+   "what": "肱川沿いの臥龍煉瓦倉庫にあるパン屋。大洲のしょうゆチーズ塩パンやハード系のパンが並ぶ。月〜水曜が休み（祝日は営業）。",
+   "whatEn": "A bakery in Garyu Renga Soko along the Hiji River, baking Ozu soy-sauce cheese salt bread and crusty loaves. Closed Monday to Wednesday except holidays.",
+   "note": "しょうゆチーズ塩パンは、焼きたてを川辺で。",
+   "noteEn": "Eat the soy-sauce cheese salt bread warm by the river.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ゆめほのか",
+    "address": "大洲市大洲98-1",
+    "url": "https://www.instagram.com/yumehonoka.ozu/",
+    "whatJa": "臥龍煉瓦倉庫内に構えるベーカリーで、国産小麦と隣接ブルワリーのビール酵母を使ったパンやカヌレを焼く。",
+    "whatEn": "A bakery inside the historic Garyu Red Brick Warehouse baking domestic-wheat breads and pastries leavened with local beer yeast.",
+    "facts": "Shares the Taisho-era Garyu Red Brick Warehouse with Garyu Brewing; bakes 60–80 varieties of bread, canelés, and made-to-order pizzas using domestic wheat and house-cultured beer yeast.",
+    "weak": "",
+    "verifiedBy": "https://ehimesasurai3.blogspot.com/2026/10/bread-yumehonoka.html",
+    "quote": "開店直後のタイミングで到着しましたが、店先には既に数組が入店待ち",
+    "fixes": "住所は記事の大洲市大洲98-1と一致。国産小麦・ビール酵母・カヌレは開いた記事では確認できない。確認できる紹介は「肱川沿いのパン屋で、大洲のしょうゆチーズ塩パンなどを販売」。",
+    "coords": [
+     33.50769,
+     132.54803
+    ]
+   }
+  },
+  "大洲炉端 油屋": {
+   "nameEn": "Ozu Robata Aburaya",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "local-food"
+   ],
+   "what": "幕末から旅館だった建物を活かした炉端焼きの店。おおず赤煉瓦館の向かいにあり、昼はとんくりまぶしや鯛飯も出す。月曜休み。",
+   "whatEn": "A robata restaurant in a building that served as an inn from the late Edo period, opposite Ozu Red Brick Hall, also serving tonkuri-mabushi and tai-meshi at lunch. Closed Mondays.",
+   "note": "昼に寄って、栗の入ったとんくりまぶしを頼む。",
+   "noteEn": "Stop in at lunch for the pork and chestnut tonkuri-mabushi.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おおずろばた あぶらや",
+    "address": "大洲市大洲42",
+    "url": "https://www.roundtable-tky.com/aburaya/",
+    "whatJa": "肱川沿いの古民家風建築で、名物「とんくりまぶし」や炉端焼き・せいろ蕎麦を提供する郷土料理店。",
+    "whatEn": "A hearthside restaurant in a restored riverside merchant building serving charcoal-grilled local dishes and handmade soba.",
+    "facts": "Stands beside the Hiji River near Ozu Red Brick Hall; known for Tonkuri-mabushi (sweet-savory grilled pork and Ozu chestnuts over rice finished with dashi broth), Ehime tai-meshi, and chilled seiro soba.",
+    "weak": "",
+    "verifiedBy": "https://toon-note.jp/ozu_ohanahan-street_lunch/",
+    "quote": "2026年4月更新のランチメニューでは、とんくりまぶしが1,500円、南予の鯛飯定食が1,600円、さつま汁定食が1,000円、本日の油屋弁当が900円と案内されており、郷土料理から日替わりの定食まで予算に合わせて選べますが、限定弁当は売り切れる可能性があります。",
+    "fixes": "住所は一致。whatEnのmerchant buildingは、公式記載に従い「幕末より旅館として歴史を刻んできた建物」に修正。手打ち蕎麦・せいろ蕎麦は開いた油屋公式ページでは確認できない。",
+    "coords": [
+     33.50798,
+     132.5465
+    ]
+   }
+  },
+  "まちなか珈琲焙煎所": {
+   "nameEn": "Machinaka Coffee Roastery",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "coffee"
+   ],
+   "what": "中町商店街にある自家焙煎の珈琲店。浅煎りから深煎りまで豆を揃え、自家製プリンも出す。火・水曜あたりが休み。",
+   "whatEn": "A self-roasted coffee shop on Nakamachi Street with beans from light to dark roasts and house-baked pudding. Usually closed Tuesdays and Wednesdays.",
+   "note": "浅煎りの一杯と、自家製のプリンを合わせて。",
+   "noteEn": "A light-roast cup together with the house pudding.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "まちなかこーひーばいせんじょ",
+    "address": "大洲市大洲227",
+    "url": "https://www.instagram.com/machinaka.coffee/",
+    "whatJa": "中町商店街の旧矢野陶器店を改装した自家焙煎珈琲店で、丁寧なハンドドリップと固めのプリンが味わえる。",
+    "whatEn": "A small-batch coffee roastery in a former pottery shop on Nakamachi Street serving hand-drip coffee and firm custard pudding.",
+    "facts": "Housed in the former Yano Pottery Shop in Nakamachi; run by a roaster trained at Tokyo's Cafe Bach, pairing freshly roasted single-origin and blend coffees with firm cream-cheese pudding.",
+    "weak": "",
+    "verifiedBy": "https://hopnanyo.net/20260627machinaka/",
+    "quote": "大洲市・中町商店街の国道寄りにある『まちなか珈琲焙煎所』が、 昨年7月のオープンからまもなく1周年を迎えます。",
+    "fixes": "記事で自家焙煎コーヒー・自家製プリンを確認。旧矢野陶器店・固めのクリームチーズプリンという詳細はこの記事では確認できない。 住所は記事の大洲市大洲227番地と一致。",
+    "coords": [
+     33.50746,
+     132.54481
+    ]
+   }
+  },
+  "Bears Coffee": {
+   "nameEn": "Bears Coffee",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "coffee"
+   ],
+   "what": "2026年6月に伊予市から大洲城の近くへ移った自家焙煎珈琲店。大洲ブレンドやシングルオリジン、3種飲み比べがある。",
+   "whatEn": "A self-roasted coffee shop that moved from Iyo City to near Ozu Castle in June 2026, serving its Ozu Blend, single origins and a three-coffee flight.",
+   "note": "窓際の席で、3種の飲み比べをゆっくり飲む。",
+   "noteEn": "Sit by the window and take my time with the three-coffee flight.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "べあーずこーひー",
+    "address": "大洲市大洲579-2",
+    "url": "https://www.instagram.com/bears_coffee_ozu/",
+    "whatJa": "大洲城近くで自家焙煎豆の販売とハンドドリップの「大洲ブレンド」を提供するコーヒーショップ。",
+    "whatEn": "A small-batch coffee roaster near Ozu Castle serving hand-dripped single origins and its house Ozu Blend.",
+    "facts": "Relocated from Iyo City to the foot of Ozu Castle; roasts specialty beans in-house including a signature Ozu Blend for sit-down drip coffee, takeaway, and retail beans.",
+    "weak": "",
+    "verifiedBy": "https://info-ehime.com/archives/42042942.html",
+    "quote": "伊予市で多くのファンに愛されていた人気店「Bears Coffee」が、2026年6月3日、大洲市へと移転リニューアルオープン。",
+    "fixes": "住所は記事の大洲市大洲579-2と一致。自家焙煎・シングルオリジン・大洲ブレンド・ハンドドリップも確認。",
+    "coords": [
+     33.50684,
+     132.54662
+    ]
+   }
+  },
+  "川久保珈琲店": {
+   "nameEn": "Kawakubo Coffee",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "coffee"
+   ],
+   "what": "肱南の城下町にあるコーヒースタンド。大洲のまち歩きの途中で立ち寄れる。",
+   "whatEn": "A coffee stand in the old castle town of Konan, an easy stop while walking through Ozu.",
+   "note": "城下町を歩く合間に、一杯だけ立ち寄る。",
+   "noteEn": "Stop in for a single cup between walks in the castle town.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かわくぼこーひーてん",
+    "address": "大洲市大洲282",
+    "url": "https://www.instagram.com/ozu.kawakubocoffee/",
+    "whatJa": "城下町の古民家に構えるコーヒースタンドで、すっきり飲みやすいドリップコーヒーやコーヒープリンが人気。",
+    "whatEn": "A folk-house coffee stand in the castle town pouring approachable black coffee alongside coffee pudding and soft-serve.",
+    "facts": "Sister stand to Kochi's Kawakubo Coffee (2 shops total), opened in a renovated Konan townhouse; focuses on clean, low-bitterness black coffee, coffee jelly/pudding, and Ozu-exclusive coffee soft-serve.",
+    "weak": "",
+    "verifiedBy": "https://jp.visitozu.com/archives/4847",
+    "quote": "イベント期間中は、市内参加店舗にて、 「緑」をテーマにしたスイーツ や 各店こだわりのコーヒー が登場。",
+    "fixes": "同記事は川久保珈琲店を参加店舗に明記。公式Instagram本文は取得できず、住所大洲282・プリン・ソフトクリームの詳細は照合未完了。",
+    "coords": [
+     33.50726,
+     132.54843
+    ]
+   }
+  },
+  "商舗・廊 村上邸": {
+   "nameEn": "Murakamitei",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "textile",
+    "craft",
+    "cafe"
+   ],
+   "what": "築170年の古民家を活かした店・カフェ・ギャラリー。中庭を眺めながらお茶を飲める。",
+   "whatEn": "A shop, café and gallery in a 170-year-old merchant house, with tea overlooking the inner courtyard.",
+   "note": "中庭の見える席で、少し時間を忘れて座る。",
+   "noteEn": "Sit overlooking the courtyard and let the afternoon slow down.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "しょうほ・ろう むらかみてい",
+    "address": "大洲市大洲450",
+    "url": "https://sa-rah.net/",
+    "whatJa": "築170余年の商家を再生し、天然素材の衣服ブランド「Sa-Rah」の服やアンティーク器を並べるギャラリー兼茶寮。",
+    "whatEn": "A 170-year-old merchant residence turned gallery and shop offering natural-linen clothing, antique tableware, and courtyard tea.",
+    "facts": "Set in the Edo-period Murakami merchant house overlooking a moss courtyard; operated by Ozu slow-fashion atelier Sa-Rah, pairing linen-and-cotton handwork with curated antique ceramics and tea.",
+    "weak": "",
+    "verifiedBy": "https://specialsource.jp/ateliergallery/",
+    "quote": "会期：2026年7月22日（水）〜8月2日（日） 会場：商舗・廊　村上邸　愛媛県大洲市大洲450　0893-57-9771 営業時間：12:00〜17:00 定休日：月曜日・火曜日",
+    "fixes": "住所は一致。公式 https://www.murakamitei.com/ で築百七十年・物販・カフェ・ギャラリー・中庭を確認。Sa-Rah衣服・アンティーク器の具体的品揃えは開いた公式トップには記載なし。",
+    "coords": [
+     33.50664,
+     132.54824
+    ]
+   }
+  },
+  "大松レザークラフト": {
+   "nameEn": "Omatsu Leather Craft",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "tags": [
+    "leather"
+   ],
+   "what": "大洲の工房「LoLo Rohan」の店。国内でなめした牛・ヤギ・馬の革で鞄や財布を仕立て、細かな注文にも応じる。",
+   "whatEn": "The Ozu workshop of LoLo Rohan, making bags and wallets from domestically tanned cow, goat and horse leather, with custom adjustments available.",
+   "note": "革の厚みや手触りを、一つずつ手で確かめたい。",
+   "noteEn": "I would check the weight and grain of each piece by hand.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "おおまつれざーくらふと",
+    "address": "大洲市大洲261",
+    "url": "https://www.instagram.com/omatsu_leather/",
+    "whatJa": "城下町の通り沿いに工房を構え、手縫いの鞄や財布・革小物を一点ずつ制作・販売するレザークラフト店。",
+    "whatEn": "An artisan leather studio and shop in Ozu's castle town crafting hand-stitched bags, wallets, and everyday leather goods.",
+    "facts": "Workshop and storefront of leather craftsman Masahiko Omatsu (brand LoLo Rohan) on a historic Konan street; produces vegetable-tanned leather bags, wallets, and custom-made small goods on site.",
+    "weak": "",
+    "verifiedBy": "https://sei-simple.com/kawakobo-ehime/",
+    "quote": "大洲市中心部にアトリエを構える大松匡彦さんの個人工房。トートバッグや長財布などを一点ずつ仕立て、細部のカスタマイズにも応じる。",
+    "fixes": "住所は記事および公式 http://www.lolorohan.com の大洲市大洲261と一致。紹介は「国内でなめされた牛革・ヤギ革・馬革を自社工房で製品化するバッグ・財布・革小物の工房」まで公式確認。手縫いという製法は開いたページでは確認できない。",
+    "coords": [
+     33.50706,
+     132.5474
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "大洲城",
+   "nameEn": "Ozu Castle",
+   "kind": "sight",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "address": "大洲市大洲903",
+   "url": "https://ozucastle.jp/",
+   "what": "肱川のほとりに建つ城。明治時代に失われた天守は、2004年に往時の姿のまま木造で復元された。年中無休で9時から17時（札止め16時30分）。",
+   "whatEn": "The castle above the Hiji River, whose keep—lost in the Meiji era—was rebuilt in wood to its historic form in 2004. Open daily 9 am to 5 pm (last entry 4:30 pm).",
+   "coords": [
+    33.50955,
+    132.54113
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://ozucastle.jp/ , https://ozucastle.jp/ozu_castle/guidance , https://ozucastle.jp/news (2026.10.23更新あり), https://jp.visitozu.com/archives/highlight/209 (住所 大洲市大洲903)",
+   "_coordsSource": "OSM way 244039533（大洲城）"
+  },
+  {
+   "name": "臥龍山荘",
+   "nameEn": "Garyu Sanso",
+   "kind": "sight",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "address": "大洲市大洲411-2",
+   "url": "https://www.garyusanso.jp/",
+   "what": "肱川の景勝地「臥龍淵」に、明治の豪商・河内寅次郎が10年余りをかけて築いた数寄屋造りの山荘。臥龍院・知止庵・不老庵と苔の庭がある。",
+   "whatEn": "A sukiya-style villa built over more than ten years in the Meiji era by merchant Torajiro Kochi above the Garyu-buchi bend of the Hiji River, with moss gardens and three pavilions.",
+   "coords": [
+    33.50631,
+    132.55009
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.garyusanso.jp/ , https://www.garyusanso.jp/about/ , https://www.garyusanso.jp/blog/ (2026.03.30更新あり)",
+   "_coordsSource": "OSM node 4946461826（臥龍山荘）"
+  },
+  {
+   "name": "おおず赤煉瓦館",
+   "nameEn": "Ozu Red Brick Hall",
+   "kind": "sight",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "address": "大洲市大洲60",
+   "url": "https://jp.visitozu.com/archives/highlight/184",
+   "what": "1901年に大洲商業銀行の本店として建てられたイギリス積みの煉瓦建築に、和瓦の屋根をのせた和洋折衷の建物。館内では砥部焼や大洲の工芸品を扱う。9時から17時。",
+   "whatEn": "Built in 1901 as the head office of Ozu Commercial Bank in English-bond brick topped with Japanese roof tiles. Inside are Tobe-yaki pottery and local crafts. Open 9 am to 5 pm.",
+   "coords": [
+    33.50782,
+    132.54693
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://jp.visitozu.com/archives/highlight/184 : 大洲市大洲60、9:00〜17:00、休館12/29〜12/31",
+   "_coordsSource": "OSM node 4946461825（おおず赤煉瓦館）"
+  },
+  {
+   "name": "おはなはん通り",
+   "nameEn": "Ohanahan Street",
+   "kind": "sight",
+   "area": "肱南",
+   "areaEn": "Konan",
+   "address": "大洲市大洲",
+   "url": "https://jp.visitozu.com/archives/highlight/216",
+   "what": "江戸時代の町割と白壁の土蔵、武家屋敷の景観が残る通り。1966年のNHK朝の連続テレビ小説「おはなはん」のロケ地となった。散策は自由。",
+   "whatEn": "A street preserving Edo-period town plots, white-walled storehouses and former samurai residences, named after the 1966 television drama Ohanahan filmed here. Free to walk.",
+   "coords": [
+    33.50676,
+    132.54773
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://jp.visitozu.com/archives/highlight/216 : 大洲市大洲、終日・無休・無料",
+   "_coordsSource": "OSM way 47972719（おはなはん通り）"
+  },
+  {
+   "name": "大洲市立博物館",
+   "nameEn": "Ozu City Museum",
+   "kind": "art",
+   "area": "肱北",
+   "areaEn": "Kohoku",
+   "address": "大洲市中村618-1",
+   "url": "https://www.ozu-museum.com/",
+   "what": "大洲地方の歴史・芸術・民俗・自然科学などの資料を展示・研究する市立博物館。9時から17時で、月曜と年末年始が休み。入館無料。",
+   "whatEn": "The city museum displaying and researching history, art, folklore and natural science of the Ozu region. Open 9 am to 5 pm; closed Mondays and year-end. Free admission.",
+   "coords": [
+    33.51373,
+    132.54618
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.ozu-museum.com/ (2026年11月3日更新・特別展案内あり), https://www.city.ozu.ehime.jp/site/kosodate/0282.html (大洲市中村618-1、9:00〜17:00、月曜休館、無料)",
+   "_coordsSource": "OSM node 1423733305（大洲市立博物館）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "長浜木履工場",
+   "verdict": "doubt",
+   "reason": "公式TOPICSの最新掲載は2025.02.14。2026年の営業を示す日付付き文章を確認できない。"
+  },
+  {
+   "name": "ひらのや製造本舗",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "Ridi",
+   "verdict": "doubt",
+   "reason": "公式Instagram本文はcurlで取得できない。代替記事は2025年6月18日公開・2026年1月20日更新だが本文に2025表記が残り、2026年の営業を示す日付付き文章を確認できない。"
+  },
+  {
+   "name": "ビストロ サンマルシェ",
+   "verdict": "doubt",
+   "reason": "公式サイトに2026年の日付付き営業文章がない。2026年の来店記事候補 https://go2senkyo.com/seijika/30518/posts/1503106 もcurlでは本文を取得できず、検索断片を証拠に採用していない。"
+  },
+  {
+   "name": "トラットリア リコルド",
+   "verdict": "doubt",
+   "reason": "公式Instagramはタイトルのみ取得。2026年の営業を示す原文をコピーできない。"
+  },
+  {
+   "name": "糀とカフェ おゝ州レカン",
+   "verdict": "doubt",
+   "reason": "公式Instagramはタイトルのみ。2026年記事候補はcurlでもブラウジングでも403となり本文を取得できない。2026年の営業文章を確認できない。"
+  },
+  {
+   "name": "BREAD&COFFEE茶蔵",
+   "verdict": "doubt",
+   "reason": "公式Instagram本文は取得できず、運営会社の公式カフェページにも日付付き営業案内がない。2026年の営業を示す文章をコピーできない。"
+  },
+  {
+   "name": "しずくや",
+   "verdict": "doubt",
+   "reason": "公式Instagramはタイトルのみ。代替観光掲載は営業日時が無日付で、2026年の営業原文を得られない。"
+  },
+  {
+   "name": "工芸ROSA 大洲店",
+   "verdict": "doubt",
+   "reason": "公式Instagram本文を取得できず、開いた観光記事の日付は2022-01-14。2026年の大洲店営業を示す原文を確認できない。"
+  },
+  {
+   "name": "Angel cat",
+   "verdict": "doubt",
+   "reason": "公式のイベント掲載は2019年、ニュースはコロナ期の案内または無日付。2026年表記は著作権フッターのみで、2026年の営業文章を得られない。"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+[
+ {
+  "name": "多治見市モザイクタイルミュージアム",
+  "nameEn": "Tajimi Mosaic Tile Museum",
+  "kind": "art",
+  "area": "笠原",
+  "areaEn": "Kasahara",
+  "address": "多治見市笠原町2082-5",
+  "url": "https://www.mosaictile-museum.jp/",
+  "what": "施釉磁器モザイクタイルの産地・笠原町にある市立のタイル博物館。建物は藤森照信の設計で、粘土山を思わせる外観を持つ。9時から17時で、月曜は休み（祝日の場合は翌平日）。",
+  "whatEn": "A municipal tile museum in Kasahara, a centre of glazed porcelain mosaic tiles, in a clay-hill building designed by Fujimori Terunobu. Open 9:00–17:00; closed Mondays (the following weekday if a holiday).",
+  "coords": [
+   35.29908,
+   137.15942
+  ],
+  "notice": "11月は23日（月・祝）が開館で24日（火）が休館。年末年始は12月28日〜1月4日が休館。",
+  "noticeEn": "In November, open on Monday the 23rd (holiday) and closed Tuesday the 24th. Closed for the year-end holidays from 28 December to 4 January.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "虎渓山永保寺",
+  "nameEn": "Kokeizan Eihoji Temple",
+  "kind": "sight",
+  "area": "虎渓山",
+  "areaEn": "Kokeizan",
+  "address": "多治見市虎渓山町1-40",
+  "url": "https://www.kokeizan.or.jp/",
+  "what": "1313年（正和2年）に夢窓疎石が開いた臨済宗南禅寺派の禅寺。開山堂と観音堂は国宝、観音堂前の池泉庭園は国の名勝に指定されている。入山は7時から17時。",
+  "whatEn": "A Rinzai Zen temple founded by Muso Soseki in 1313. Its Kaisando and Kannondo halls are National Treasures, and the pond garden in front of the Kannondo is a national Place of Scenic Beauty. Grounds open 7:00–17:00.",
+  "coords": [
+   35.34642,
+   137.13018
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "岐阜県現代陶芸美術館",
+  "nameEn": "Museum of Modern Ceramic Art, Gifu",
+  "kind": "art",
+  "area": "東町",
+  "areaEn": "Higashimachi",
+  "address": "多治見市東町4-2-5",
+  "url": "https://www.cpm-gifu.jp/museum/",
+  "what": "磯崎新の設計による複合施設「セラミックパークMINO」内にある県立の陶芸美術館。国内外の近現代の陶芸作品を収蔵・展示する。10時から18時（入館は17時半まで）。",
+  "whatEn": "The prefectural museum of modern and contemporary ceramics inside Ceramic Park MINO, designed by Isozaki Arata. Open 10:00–18:00 (last entry 17:30).",
+  "coords": [
+   35.33106,
+   137.15479
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "市之倉さかづき美術館",
+  "nameEn": "Ichinokura Sakazuki Art Museum",
+  "kind": "art",
+  "area": "市之倉",
+  "areaEn": "Ichinokura",
+  "address": "多治見市市之倉町6-30-1",
+  "url": "https://www.sakazuki.or.jp/",
+  "what": "陶の里・市之倉にある盃の美術館。ギャラリー「宙」を併設し、館内でモザイクタイルアートの体験もできる。10時から17時で、火曜と水曜は休み（祝日の場合は開館）。",
+  "whatEn": "A museum of sake cups in the pottery village of Ichinokura, with Gallery Sora and a mosaic-tile craft corner inside. Open 10:00–17:00; closed Tuesdays and Wednesdays (open on holidays).",
+  "coords": [
+   35.30004,
+   137.12714
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

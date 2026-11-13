@@ -1,0 +1,68 @@
+[
+ {
+  "name": "鬪雞神社",
+  "nameEn": "Tokei Shrine",
+  "kind": "sight",
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "田辺市東陽1-1",
+  "url": "http://toukeijinja.or.jp/",
+  "what": "創建1600年を超え、熊野三山の別宮的存在として信仰を集めてきた神社。源平合戦の折に湛増が紅白の鶏を闘わせた故事に名を由来し、2016年に世界遺産「紀伊山地の霊場と参詣道」に追加登録された。国の重要文化財の社殿6棟が並ぶ。",
+  "whatEn": "A shrine over 1,600 years old that served as a branch sanctuary of the Kumano Three Mountains. Named after the cockfight omen of the Genpei War, it was added to the Kumano Kodo World Heritage site in 2016; six of its shrine halls are national Important Cultural Properties.",
+  "coords": [
+   33.72969,
+   135.38395
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "南方熊楠顕彰館",
+  "nameEn": "Minakata Kumagusu Archives",
+  "kind": "art",
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "田辺市中屋敷町36",
+  "url": "https://www.minakata.org/",
+  "what": "後半生の37年間を田辺で過ごした博物学者・南方熊楠の蔵書や資料25,000点以上を保存・公開する施設。隣には晩年の25年間を過ごした南方熊楠邸（登録有形文化財）が残る。",
+  "whatEn": "An archive beside the former residence of naturalist and folklorist Minakata Kumagusu, who lived his last 37 years in Tanabe, preserving and exhibiting over 25,000 books and specimens.",
+  "coords": [
+   33.73114,
+   135.37776
+  ],
+  "notice": "開館時間は10時から17時（入館は16時30分まで）。月曜・祝日の翌日・年末年始は休館（2026年度は祝日の翌日を除き火曜も開館）。",
+  "noticeEn": "Open 10 am to 5 pm (last entry 4:30 pm). Closed Mondays, days after public holidays, and Dec 28–Jan 4 (open Tuesdays in FY2026 except days after holidays).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "天神崎",
+  "nameEn": "Tenjinzaki",
+  "kind": "sight",
+  "area": "天神崎・田辺湾",
+  "areaEn": "Tenjinzaki & Tanabe Bay",
+  "address": "田辺市天神崎",
+  "url": "https://www.tanabe-kanko.jp/view/tenjinzaki/",
+  "what": "田辺湾の北側に突き出た岬。緑の丘陵と干潮時に現れる平らな岩礁が一体となり、1974年から日本で先駆けてナショナル・トラスト運動で守られてきた。",
+  "whatEn": "A headland jutting into the north side of Tanabe Bay, where wooded hills meet flat tidal reefs, protected since 1974 by Japan's pioneering National Trust conservation movement.",
+  "coords": [
+   33.72629,
+   135.35395
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高山寺",
+  "nameEn": "Kozan-ji Temple",
+  "kind": "sight",
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "田辺市稲成町392",
+  "url": "https://www.tanabe-kanko.jp/view/kozanji/",
+  "what": "田辺の市街地を望む高台にあり、「弘法さん」として親しまれる古刹。江戸時代建立の多宝塔が立ち、海の見える墓地には南方熊楠や植芝盛平の墓がある。",
+  "whatEn": "An old temple on a hill overlooking Tanabe, locally called Kobo-san, with an Edo-period tahoto pagoda and a hillside cemetery holding the graves of Minakata Kumagusu and Morihei Ueshiba.",
+  "coords": [
+   33.74029,
+   135.37889
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

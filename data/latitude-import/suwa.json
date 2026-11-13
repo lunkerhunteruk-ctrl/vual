@@ -1,0 +1,479 @@
+{
+ "slug": "suwa",
+ "city": {
+  "name": "Suwa",
+  "nameJa": "諏訪",
+  "latitude": "36.0° N",
+  "country": "Nagano, Japan",
+  "countryJa": "長野県",
+  "person": "rin",
+  "coords": [
+   36.04679,
+   138.11628
+  ],
+  "intro": "A lakeside town in the Nagano basin, on the old Koshu Kaido road. Sake breweries and Shinshu miso houses, shops in rescued old timber buildings, and bread, sweets and unagi around Kamisuwa: Rin's picks.",
+  "introJa": "諏訪湖のほとり、旧甲州街道に沿う盆地の町。酒蔵と信州味噌の蔵元、古材を活かした店と暮らしの雑貨、上諏訪まわりのパンと甘味、うなぎを、凛のおすすめで。",
+  "locator": {
+   "en": "In Nagano · a basin town on Lake Suwa",
+   "ja": "信州の中央・諏訪湖のほとりの盆地"
+  },
+  "industries": [
+   {
+    "key": "sake",
+    "en": "Kamisuwa Sake Brewing (Suwa Gokura)",
+    "ja": "酒造り（諏訪五蔵）",
+    "about": "Five sake breweries — Maihime, Reijin, Honkin, Yokobue and Masumi — stand along a 500-metre stretch of the old Koshu Kaido in Kamisuwa. All draw on soft underground water from the Kirigamine highlands.",
+    "aboutJa": "上諏訪の旧甲州街道沿い、わずか500メートルほどの間に、舞姫・麗人・本金・横笛・真澄の五つの酒蔵が並ぶ。いずれも霧ヶ峰の伏流水を仕込み水に使っている。",
+    "_src": "Soft underground spring water from the Kirigamine highlands feeds five historic breweries clustered along a 500-metre stretch of Kamisuwa's old Koshu Kaido highway."
+   },
+   {
+    "key": "miso",
+    "en": "Shinshu Miso Brewing",
+    "ja": "信州味噌醸造",
+    "about": "Cold, dry basin winters and clean mountain water made Suwa one of the centres of Shinshu miso. Makers such as Takeya still sell unpasteurised and seasonal miso straight from the lakeside hall.",
+    "aboutJa": "盆地の冷え込む冬と澄んだ山の水が、信州味噌の産地としての諏訪を育てた。湖畔のタケヤ味噌会館では、蔵元ならではの限定味噌も並ぶ。",
+    "_src": "Cold, dry basin winters and pure mountain runoff made Suwa one of Nagano's historic capitals of fermented rice-koji Shinshu miso."
+   }
+  ]
+ },
+ "places": {
+  "蔵元ショップ Cella MASUMI": {
+   "nameEn": "Cella MASUMI",
+   "area": "元町・小和田",
+   "areaEn": "Motomachi & Owa",
+   "tags": [
+    "sake",
+    "tableware"
+   ],
+   "what": "1662年創業、協会7号酵母発祥の蔵元・宮坂醸造「真澄」の直営ショップ。日本酒とともに、食卓の器や暮らしの品が並ぶ。有料試飲（10:00〜16:30）もできる。水曜定休。",
+   "whatEn": "The flagship shop of Miyasaka Brewing (Masumi), founded in 1662 and birthplace of Kyokai Yeast No. 7. Sake sits beside tableware and everyday goods for the home. Paid tasting is offered 10:00–16:30; closed Wednesdays.",
+   "note": "試飲のあと、食卓の器もゆっくり見て選ぶ。",
+   "noteEn": "After the tasting, take time to look at the tableware.",
+   "_src": {
+    "category": "local",
+    "industry": "sake",
+    "nameKana": "くらもとショップ セラますみ",
+    "address": "諏訪市元町1-16",
+    "url": "https://www.cellamasumi.jp/",
+    "whatJa": "宮坂醸造「真澄」の蔵元直営ショップで、日本酒とともに現代作家の酒器や食卓の器が並ぶ。",
+    "whatEn": "The flagship cellar shop and tasting room of Miyasaka Brewing Company, pairing Masumi sakes with contemporary ceramic, glass, and wood sake vessels.",
+    "facts": "Miyasaka Brewing was founded in 1662 on the Koshu Kaido and is the 1946 birthplace of Kyokai Yeast No. 7; the shop curates contemporary guinomi, katakuchi, and glassware by Japanese makers beside a tasting bar.",
+    "weak": "",
+    "verifiedBy": "https://www.cellamasumi.jp/",
+    "quote": "11月21日（土）「新酒祭」のご案内",
+    "fixes": "Address 諏訪市元町1-16 matches the page. Page also shows a paid tasting (¥700, 10:00-16:30) and a 2026 business-day calendar. The page does not state the 1662 founding year or the ceramic/glass sake vessels; factsForNote should not rely on them unless confirmed elsewhere.",
+    "coords": [
+     36.03976,
+     138.1226
+    ]
+   }
+  },
+  "タケヤ味噌会館": {
+   "nameEn": "Takeya Miso Kaikan",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "tags": [
+    "miso",
+    "soft-serve"
+   ],
+   "what": "諏訪湖畔に立つタケヤみその直売と展示の拠点。数量限定や季節のみそのほか、木曽の漆器も並び、昔のみそづくりの道具を展示する。ごまみそソフトクリームや豚汁もある。9:30〜16:30、年中無休。",
+   "whatEn": "Takeya Miso's lakeside hall and shop. It sells limited and seasonal miso alongside Kiso lacquerware and displays old miso-making tools, with black-sesame miso soft-serve and tonjiru at the counter. 9:30–16:30 daily.",
+   "note": "限定の味噌をひと袋と、ごまみそソフト。",
+   "noteEn": "A bag of limited miso, and the black-sesame miso soft-serve.",
+   "_src": {
+    "category": "local",
+    "industry": "miso",
+    "nameKana": "タケヤみそかいかん",
+    "address": "諏訪市湖岸通り2-3-17",
+    "url": "https://www.takeya-miso.co.jp/miso-kaikan/",
+    "whatJa": "明治5年（1872年）創業の味噌蔵・竹屋が諏訪湖畔に構える直売拠点。",
+    "whatEn": "The lakeside direct brewery hall of Takeya Miso, founded in Suwa in 1872, selling limited barrel-aged Shinshu miso alongside historic wooden brewing tools.",
+    "facts": "Takeya began brewing Shinshu miso in Suwa in 1872; the lakeside hall exhibits giant cedar fermentation vats, sells limited unpasteurized and seasonal蔵出し miso, and serves black-sesame miso soft-serve at its counter.",
+    "weak": "",
+    "verifiedBy": "https://www.takeya-miso.co.jp/",
+    "quote": "「信州味噌ラーメン竹屋本店」11月の定休日(2026/10/23)",
+    "fixes": "The Miso Kaikan page (https://www.takeya-miso.co.jp/miso-kaikan/) gives the address as 諏訪市湖岸通り2-3-17 and hours 9:30-16:30, open every day. It also says it sells limited-quantity brewery-direct miso and seasonal products, and exhibits old miso-making tools and art. It mentions goma-miso soft-serve, a ramen shop, tonjiru and coffee. It does not say 'barrel-aged' or 'giant cedar vats'. The page does not state the 1872 founding year.",
+    "coords": [
+     36.05407,
+     138.11256
+    ]
+   }
+  },
+  "ReBuilding Center JAPAN": {
+   "nameEn": "ReBuilding Center JAPAN",
+   "area": "元町・小和田",
+   "areaEn": "Motomachi & Owa",
+   "tags": [
+    "antiques",
+    "glass",
+    "cafe"
+   ],
+   "what": "レスキューした古材や古道具、レトロな食器やガラスの小瓶を扱う店とカフェ。古材・古道具は10:00〜17:00、カフェは11:00〜17:00（L.O.16:30）。水・木曜定休。",
+   "whatEn": "A salvage shop and café dealing in rescued timber, old tools, retro tableware and small glass bottles. Shop 10:00–17:00, café 11:00–17:00 (last order 16:30); closed Wednesdays and Thursdays.",
+   "note": "古いガラスの小瓶や食器の棚から見て回る。",
+   "noteEn": "Start with the shelves of old glass bottles and tableware.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "リビルディングセンタージャパン",
+    "address": "諏訪市小和田3-8",
+    "url": "https://rebuildingcenter.jp/",
+    "whatJa": "解体される古民家などからレスキューした古材や器、昭和ガラス、古道具が3フロアに並ぶショップ＆カフェ。",
+    "whatEn": "A three-storey architectural salvage storehouse and cafe rescuing kominka ceramics, vintage Japanese glassware, furniture, and timber from dismantled buildings.",
+    "facts": "Founded in Kamisuwa's Owa district under the motto 'ReBuild New Culture'; the 2nd and 3rd floors are lined with rescued everyday ceramics, pressed-glass cups, and tools, while the 1st-floor cafe serves spiced curry and scones.",
+    "weak": "",
+    "verifiedBy": "https://rebuildingcenter.jp/",
+    "quote": "9月の営業日、イベント、サポーターズ募集日",
+    "fixes": "The shop page (https://rebuildingcenter.jp/shop/) gives the address 〒392-0024 諏訪市小和田3-8. The cafe is called 'live in sense' and is open 11:00-17:00 (L.O. 16:30). The page confirms the ReBuild New Culture motto. I did not confirm the 3-floor layout or the spiced curry and scones on the pages I read; the cafe may not be only on the 1st floor.",
+    "coords": [
+     36.04117,
+     138.11899
+    ]
+   }
+  },
+  "IN MY BASKET": {
+   "nameEn": "IN MY BASKET",
+   "area": "上諏訪",
+   "areaEn": "Kamisuwa",
+   "tags": [
+    "ceramics",
+    "craft",
+    "tableware"
+   ],
+   "what": "スタイリストの宮下肇子が2025年4月に東京・世田谷から諏訪へ移した器と道具の店。イタリアの陶芸家クリスチャンヌ・ペロションや日本の工芸作家の器を扱う。11:00〜18:00、水・木曜定休。",
+   "whatEn": "A shop for vessels and everyday objects moved from Setagaya in Tokyo to Suwa in April 2025 by stylist Toshiko Miyashita, carrying ceramics by Christiane Perrochon and Japanese craft makers. 11:00–18:00; closed Wednesdays and Thursdays.",
+   "note": "ペロションの器と日本の作家の仕事を並べて見る。",
+   "noteEn": "Look at Perrochon's vessels alongside the Japanese makers.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "インマイバスケット",
+    "address": "諏訪市末広8-1",
+    "url": "https://inmybasket.net/",
+    "whatJa": "スタイリストの宮下肇子が手がける、国内外の陶芸家やガラス・木工作家の器と暮らしの道具の店。",
+    "whatEn": "An intimate vessel and craft gallery-shop curated by stylist Toshiko Miyashita, presenting stoneware by Christiane Perrochon alongside Japanese ceramic and glass makers.",
+    "facts": "Relocated from Setagaya in Tokyo to Kamisuwa's Suehiro neighbourhood; carries luminous glazed ceramics by Italian-based potter Christiane Perrochon alongside Japanese studio tableware, baskets, and linens.",
+    "weak": "",
+    "verifiedBy": "https://inmybasket.net/",
+    "quote": "IN MY BASKET は通常営業です 8/15（土）のみ15時終了いたします",
+    "fixes": "Address 〒392-0025 諏訪市末広8-1 プラタナスハウス1-A matches. Hours 11:00-18:00, closed Wednesday and Thursday. The site's own news says the Suwa shop opened on 2025-04-18 after the Tokyo (Setagaya) shop closed. The site does not say 'gallery' or give details of the Perrochon and Japanese makers beyond the page title.",
+    "coords": [
+     36.0425,
+     138.11876
+    ]
+   }
+  },
+  "カフェと暮らしの雑貨店 fumi": {
+   "nameEn": "fumi",
+   "area": "上諏訪",
+   "areaEn": "Kamisuwa",
+   "tags": [
+    "cafe",
+    "craft"
+   ],
+   "what": "末広商店街にある、暮らしの雑貨とカフェの店。11:00〜18:00、月曜定休と不定休。",
+   "whatEn": "A shop for everyday goods and a café on Suehiro shopping street. 11:00–18:00; closed Mondays and irregular days.",
+   "note": "雑貨を見たあと、奥でひと息つく。",
+   "noteEn": "After browsing the goods, sit down for a quiet break.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "カフェとくらしのざっかてん フミ",
+    "address": "諏訪市末広5-7",
+    "url": "https://www.instagram.com/__fumi2019/",
+    "whatJa": "築約90年の元薬局を改装した、作家ものの器や生活雑貨のセレクトショップ兼カフェ。",
+    "whatEn": "A craft, vessel, and paper-goods shop with a back-room cafe, housed inside a renovated 90-year-old pharmacy on Suehiro shopping street.",
+    "facts": "Renovated with ReBuilding Center JAPAN while preserving the old pharmacy's wooden medicine cabinets and frosted glass doors; stocks studio pottery, glassware, and baked treats from sister label Kashiya koto.",
+    "weak": "Instagram-only official presence.",
+    "verifiedBy": "https://www.toco-suwa.com/detail/42/index.html",
+    "quote": "7月もfumi 姉妹店 ミヌレ共にゆるりと営業しております",
+    "fixes": "Address 〒392-0025 長野県諏訪市末広5-7 matches. Hours 11:00-18:00, closed Mondays + irregular. Page does not mention '90-year-old pharmacy' or the ReBuilding Center renovation; that comes from other sources.",
+    "coords": [
+     36.04289,
+     138.11805
+    ]
+   }
+  },
+  "太養パン店": {
+   "nameEn": "Taiyo Bakery",
+   "area": "上諏訪",
+   "areaEn": "Kamisuwa",
+   "tags": [
+    "bread"
+   ],
+   "what": "1916年（大正5年）創業のパン屋。霧ヶ峰高原の伏流水と国産小麦、自家製培養天然酵母で毎日焼く。6:30〜14:30（日曜は12:00まで）、無休。",
+   "whatEn": "A bakery open since 1916, baking daily with Kirigamine highland spring water, domestic wheat and house-cultured natural yeast. 6:30–14:30 (until 12:00 on Sundays), open daily.",
+   "note": "朝6時半から開くから、焼きたての食パンを買う。",
+   "noteEn": "It opens at 6:30 in the morning; pick up a freshly baked loaf.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "たいようぱんてん",
+    "address": "諏訪市末広12-2",
+    "url": "https://taiyopan.webnode.jp/",
+    "whatJa": "大正5年（1916年）創業、霧ヶ峰の伏流水と自家培養酵母で焼き上げる上諏訪の老舗パン店。",
+    "whatEn": "A beloved third-generation Kamisuwa bakery founded in 1916, baking Nagano milk bread, crusty loaves, and hearty sandwiches from early morning.",
+    "facts": "Founded in 1916 and renovated by ReBuilding Center JAPAN with salvaged timber and Italian tiles; uses Kirigamine highland spring water and house-cultured yeast for its signature Shinshu gyunyu-pan and mackerel saba-sando.",
+    "weak": "",
+    "verifiedBy": "https://www.toco-suwa.com/detail/482/news/news-218740.html",
+    "quote": "太養パンは1916年の創業から、今年で 110周年 を迎えました。",
+    "fixes": "Same article: 110周年感謝祭 held 10月10日・11日・12日; address 長野県諏訪市末広12-2 matches; hours 6:30-14:30, open every day. Official site (taiyopan.webnode.jp) confirms 創業は大正5年, 現在の社長は３代目, 仕込み水は霧ヶ峰高原の伏流水, 自家製培養天然酵母. The official site's own news is stale (latest 2021). A 'Nagano milk bread' and 'mackerel sandwich' are not on the pages I read, so leave them out or soften them. There is also a branch at Suwako SA.",
+    "coords": [
+     36.04194,
+     138.11795
+    ]
+   }
+  },
+  "ケーキ屋 クローバー": {
+   "nameEn": "Cake Shop Clover",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "tags": [
+    "pastry",
+    "cake"
+   ],
+   "what": "湖岸通りで店主が一人で手作りするケーキと焼き菓子の店。国産小麦100%と長野の旬の果物を使い、クッキーは約26種類ある。金・土・日曜のみ営業、10:30〜18:00。",
+   "whatEn": "A one-person pastry shop on Kogandori making cakes and baked sweets by hand with 100% domestic wheat and seasonal Nagano fruit, plus around 26 kinds of cookies. Open Fridays to Sundays only, 10:30–18:00.",
+   "note": "ほうじ茶など、変わり種のクッキーをいくつか選ぶ。",
+   "noteEn": "Pick out a few of the unusual cookies, such as hojicha.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ケーキや クローバー",
+    "address": "諏訪市湖岸通り4-10-21",
+    "url": "https://suwa-clover.com/",
+    "whatJa": "国産小麦100%と信州の旬の果物を使い、店主が一人で手作りする湖岸通りのタルト・焼き菓子・ケーキ店。",
+    "whatEn": "A solo-baker lakeside patisserie on Kogandori crafting seasonal Nagano fruit tarts, butter cookies, and cakes from 100% domestic wheat.",
+    "facts": "Located on Kogandori 4-chome down the street from Katakurakan bathhouse; every cookie, fruit tart, and cake is baked solo from scratch with 100% Japanese wheat and minimal additives.",
+    "weak": "Open Friday, Saturday, and Sunday only (10:30–18:00).",
+    "verifiedBy": "https://suwa-clover.com/",
+    "quote": "2026年11月11日より受付開始！クリスマスケーキ予約承り中",
+    "fixes": "Address 〒392-0027 長野県諏訪市湖岸通り4-10-21 matches. Hours Fri/Sat/Sun 10:30-18:00 (since 2025-04-01) match weakPoints. Page says 国産小麦を100%, 旬のフルーツ, 全ての商品を手作り, 約26種類のクッキー.",
+    "coords": [
+     36.04815,
+     138.1151
+    ]
+   }
+  },
+  "生アイスとヘーゼルナッツフィナンシェの店 Het's": {
+   "nameEn": "Het's",
+   "area": "中洲",
+   "areaEn": "Nakasu",
+   "tags": [
+    "ice-cream",
+    "pastry"
+   ],
+   "what": "諏訪大社上社近くにある、一度も凍らせない「生アイス」と焼きたてヘーゼルナッツフィナンシェの店。生アイスは毎日6種類が並ぶ。10:00〜17:00、月曜定休（11月中旬〜3月中旬は月・火曜休み）。",
+   "whatEn": "A shop near Suwa Taisha Kamisha serving unfrozen nama-ice (six flavours daily) and freshly baked hazelnut financiers. 10:00–17:00; closed Mondays (Mondays and Tuesdays from mid-November to mid-March).",
+   "note": "生アイスは、まず定番のヘーゼルナッツから。",
+   "noteEn": "Start with the house hazelnut nama-ice.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "なまアイスとヘーゼルナッツフィナンシェのみせ ヘッツ",
+    "address": "諏訪市中洲220-5",
+    "url": "https://namaice-hets-suwa.com/",
+    "whatJa": "諏訪大社上社本宮の近くに佇む、出来立ての「生アイス」と焼きたてヘーゼルナッツフィナンシェの専門店。",
+    "whatEn": "A small-batch dessert shop near Suwa Taisha Kamisha Honmiya specializing in freshly churned nama-ice and roasted-hazelnut financiers.",
+    "facts": "Spins un-hardened 'nama-ice' from fresh milk and seasonal Nagano produce for an airy texture, served alongside crisp-edged financiers baked with roasted hazelnuts.",
+    "weak": "",
+    "verifiedBy": "https://namaice-hets-suwa.com/news/260911",
+    "quote": "この度Het'sは、基礎スキー界のトップで活躍されている、茅野市出身　伊藤浩樹選手(全日本スキー連盟ナショナルデモンストレーター)を スポンサーとして応援させて頂くことになりました。",
+    "fixes": "Address 長野県諏訪市中洲220-5 matches. Hours 10:00-17:00, closed Monday (holidays open); from mid-Nov to mid-Mar closed Monday and Tuesday. Page says nama-ice is never frozen and sold only in store, 6 flavours daily, hazelnut financier supervised by Theobroma's Tsuchiya. The page says 諏訪大社上社近く in the greeting. Also a news item 2026/10/24 (伊藤浩樹選手 サポートページが公開されました！).",
+    "coords": [
+     36.00049,
+     138.11817
+    ]
+   }
+  },
+  "茶房 和茶々": {
+   "nameEn": "Sabou Wacyacya",
+   "area": "元町・小和田",
+   "areaEn": "Motomachi & Owa",
+   "tags": [
+    "wagashi",
+    "matcha"
+   ],
+   "what": "清水にある本わらび餅と和スイーツの甘味処。本わらび粉から毎日手でちぎって仕上げ、きなこや抹茶で出す。11:00〜19:00（L.O.18:30）、木曜定休と不定休。",
+   "whatEn": "A Japanese sweets café in Shimizu making hon-warabimochi by hand each day from pure bracken starch, served with kinako or matcha. 11:00–19:00 (last order 18:30); closed Thursdays and irregular days.",
+   "note": "できたての本わらび餅を、きなこか抹茶で。",
+   "noteEn": "Freshly made hon-warabimochi, with either kinako or matcha.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "さぼう わちゃちゃ",
+    "address": "諏訪市清水1-2-18",
+    "url": "https://sabou-wacyacya.com/",
+    "whatJa": "本わらび粉を丁寧に練り上げる「本わらび餅」と季節の和スイーツを供する甘味処。",
+    "whatEn": "A quiet Japanese sweet shop and tearoom crafting small-batch hon-warabimochi kneaded from pure bracken starch.",
+    "facts": "Sits just uphill from Motomachi in adjacent Shimizu; prepares melt-in-the-mouth hon-warabimochi dusted in deep-roasted kinako or Uji matcha, for takeaway boxes or tearoom seating.",
+    "weak": "Address is in Shimizu 1-chome, immediately uphill bordering Motomachi and Owa.",
+    "verifiedBy": "https://www.toco-suwa.com/detail/466/index.html",
+    "quote": "上諏訪の和カフェ(茶房和茶々）です本日から水わらび餅に黒糖の黒バージョンがでました！",
+    "fixes": "Official site sabou-wacyacya.com: address 〒392-0007 長野県諏訪市清水1丁目2-18 清水101 matches; hours 11:00-19:00 (LO 18:30), closed Thursday plus irregular. The shop's own posts (via Toko-Toko Suwa RSS) also include 2026-10-25 (Halloween limited sweets) and 2026-08-12 (お盆 open). Menu also has 水わらび餅, 飲むわらび餅, dango; 'Uji matcha' is not stated (page says 抹茶).",
+    "coords": [
+     36.03668,
+     138.12188
+    ]
+   }
+  },
+  "うなぎ古畑": {
+   "nameEn": "Unagi Furuhata",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "tags": [
+    "unagi"
+   ],
+   "what": "湖岸通りで創業八十年のうなぎ料理店。一度蒸してから焼く関東風のうな重に、継ぎ足しのたれを合わせる。11:30〜13:50、17:00〜18:50。水曜と第1・第3木曜定休。",
+   "whatEn": "An eighty-year-old unagi restaurant on Kogandori serving Kanto-style eel—steamed then grilled—with a long-tended tare glaze. 11:30–13:50 and 17:00–18:50; closed Wednesdays and the 1st and 3rd Thursdays.",
+   "note": "昼の部が短い。うなぎが切れる前に早めに入る。",
+   "noteEn": "The lunch window is short; go early before the eel runs out.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "うなぎふるはた",
+    "address": "諏訪市湖岸通り5-15-3",
+    "url": "https://www.unagi-furuhata.com/",
+    "whatJa": "湖岸通りで創業80年を超える、備長炭で香ばしく焼き上げるうなぎ料理の老舗。",
+    "whatEn": "An eighty-year-old family-run lakeside unagi restaurant on Kogandori near Katakurakan, grilling eel over binchotan charcoal.",
+    "facts": "Stands along Lake Suwa's Kogandori avenue a short walk from Katakurakan; reflects Suwa's position where eastern and western eel traditions meet, steaming and charcoal-grilling fillets glazed in a rich tare sauce.",
+    "weak": "",
+    "verifiedBy": "https://www.unagi-furuhata.com/ (お知らせ feed: https://www.unagi-furuhata.com/contents-maker/php/index.php?number=5)",
+    "quote": "11月の定休日、連休は4日、5日、11日、18日、19日、25日です。",
+    "fixes": "Address 長野県諏訪市湖岸通り5-15-3 matches (〒392-0027). Page says 創業八十年 (OK), Kanto-style: steamed then grilled, with a tare topped up over the years. The page does not mention binchotan charcoal or Katakurakan, so remove 'binchotan' from whatEn/whatJa (and 'near Katakurakan') unless sourced elsewhere. Page gives 'JR上諏訪駅から徒歩5分'. Closed Wednesdays, with two consecutive-holiday months (1st and 3rd Wed+Thu).",
+    "coords": [
+     36.04571,
+     138.11393
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "諏訪高島城",
+   "nameEn": "Takashima Castle",
+   "kind": "sight",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "address": "諏訪市高島1-20-1",
+   "url": "https://www.city.suwa.lg.jp/site/enjoy/4446.html",
+   "what": "1598年に日根野高吉が築いた城で、かつて諏訪湖に浮かぶように見えたことから「諏訪の浮城」と呼ばれた。現在の天守は1970年の復興で、3階が展望コーナー。10〜3月は16:30まで（4〜9月は17:30まで）。",
+   "whatEn": "Built in 1598 by Hineno Takayoshi and once called the Floating Castle of Suwa when Lake Suwa reached its walls. The present keep was reconstructed in 1970 and has a viewing floor on top. Open 9:00–16:30 Oct–Mar (until 17:30 Apr–Sep).",
+   "coords": [
+    36.03979,
+    138.11201
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.suwa.lg.jp/site/enjoy/4446.html (更新日:2026年4月21日) & https://www.suwakanko.jp/point/takashimajo/ : 1598年築城、別名「諏訪の浮城」、1970年天守閣復興。住所 諏訪市高島1-20-1、9:00〜17:30（10/1〜3/31は16:30まで）、休館12/26〜31・11月第2木曜。",
+   "_coordsSource": "OSM way 233643278（高島城）"
+  },
+  {
+   "name": "諏訪大社 上社本宮",
+   "nameEn": "Suwa Taisha Kamisha Honmiya",
+   "kind": "sight",
+   "area": "中洲",
+   "areaEn": "Nakasu",
+   "address": "諏訪市中洲宮山1",
+   "url": "https://suwataisha.or.jp/",
+   "what": "信濃國一之宮・諏訪大社四社のひとつで、諏訪湖の南側に鎮座する。本殿を持たない「諏訪造り」の社殿や、江戸時代に再建された国の重要文化財の建造物が残る。",
+   "whatEn": "One of the four shrines of Suwa Taisha, the chief shrine of Shinano province, on the south side of Lake Suwa. Its Edo-period buildings follow the Suwa-zukuri style without a main sanctuary hall and are Important Cultural Properties.",
+   "coords": [
+    35.99849,
+    138.11902
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://suwataisha.or.jp/ (2026.10.27 七五三のご案内等、2026年営業確認) & https://suwataisha.or.jp/access/ : 上社本宮 長野県諏訪市中洲宮山1。諏訪造り・重要文化財は諏訪市観光ガイドで確認。",
+   "_coordsSource": "OSM way 182516539（諏訪大社上社本宮）"
+  },
+  {
+   "name": "片倉館",
+   "nameEn": "Katakurakan",
+   "kind": "sight",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "address": "諏訪市湖岸通り4-1-9",
+   "url": "https://www.katakurakan.or.jp/",
+   "what": "片倉財閥が地域住民の厚生と社交の場として1928年に建てた洋風建築。森山松之助の設計で、国の重要文化財。天然温泉の千人風呂があり、日帰り入浴ができる。",
+   "whatEn": "A Western-style bathhouse and social hall completed in 1928 by the Katakura zaibatsu and designed by Matsunosuke Moriyama, now an Important Cultural Property. Its Sennin-buro hot spring bath is open to day visitors.",
+   "coords": [
+    36.04829,
+    138.11313
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.katakurakan.or.jp/ (2026年11月12日 会館棟ご見学休止（23日午後中）のお知らせ等、2026年営業確認) & /about_us/: 1928年竣工、森山松之助設計、国指定重要文化財、住所 諏訪市湖岸通り4-1-9。",
+   "_coordsSource": "OSM way 375040235（片倉館）"
+  },
+  {
+   "name": "サンリツ服部美術館",
+   "nameEn": "Sanritz Hattori Museum of Arts",
+   "kind": "art",
+   "area": "湖岸通り・高島",
+   "areaEn": "Kogandori & Takashima",
+   "address": "諏訪市湖岸通り2-1-1",
+   "url": "https://www.sunritz-hattori-museum.or.jp/",
+   "what": "諏訪湖畔の美術館。東洋・西洋の美術品を収蔵し、企画展やコレクション展を開く。JR上諏訪駅から徒歩約15分。",
+   "whatEn": "A lakeside art museum holding Eastern and Western artworks, with rotating special and collection exhibitions. About 15 minutes on foot from JR Kamisuwa Station.",
+   "notice": "設備工事のため、2026年11月30日〜2027年1月29日は臨時休館。",
+   "noticeEn": "Temporarily closed from 30 Nov 2026 to 29 Jan 2027 for facility work.",
+   "coords": [
+    36.05516,
+    138.11192
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.sunritz-hattori-museum.or.jp/ (2026-11-01 美術講座、2026-10-29 臨時休館のお知らせ 11月30日〜1月29日): 住所 諏訪市湖岸通り2-1-1。",
+   "_coordsSource": "OSM way 375543747（サンリツ服部美術館）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "酒ぬのや本金酒造",
+   "verdict": "doubt",
+   "reason": "The official site has no 2026 content. The only notice on the top page is 'お詫びとお知らせ 2017.11.2'. The /info and /kura pages are undated, and the RSS feed holds only a 2012 'Hello world!' post. The linked Ameblo blog was last posted in 2021. The search result gave no 2026 source either. Operation in 2026 is unconfirmed."
+  },
+  {
+   "name": "トコロテラス",
+   "verdict": "doubt",
+   "reason": "No 2026 evidence. The latest dated notice on the site is '【2022年11月25日より営業時間が変更になります。】'. The page also keeps a COVID-measures notice, and 'the 7th September (Saturday)' fireworks notice does not match 2026. The /cafe/ page has no dates. The site has no news section (/news/ returns 404)."
+  },
+  {
+   "name": "紡",
+   "verdict": "doubt",
+   "reason": "Official site (home and /about/) has no dated post or 2026 notice: it says 営業日・営業時間・お知らせ are only on Instagram, and the only 2026 text is the '© 2026' footer. Instagram (studio_tsumugu, 21 posts) shows no post text without login. No closure sign, but no copyable 2026 sentence."
+  },
+  {
+   "name": "AMBIRD",
+   "verdict": "doubt",
+   "reason": "Official site opened. Newest news post is 2023.11.12; only a '©2026' footer, which is not evidence. Instagram (ambird_coffee_tea) is linked but showed no readable dated 2026 post. No 2026 sentence could be copied."
+  },
+  {
+   "name": "コーヒーノススメ",
+   "verdict": "doubt",
+   "reason": "Instagram profile opened (469 posts) but without login only the bio loads, no dated posts. No 2026 sentence could be copied."
+  },
+  {
+   "name": "珈琲焙煎 るぴなす",
+   "verdict": "doubt",
+   "reason": "Instagram profile opened (39 posts) but without login only the bio loads, no dated posts. No 2026 sentence could be copied."
+  },
+  {
+   "name": "MIKURO CAFE",
+   "verdict": "doubt",
+   "reason": "Instagram profile opened (47 posts) but without login only the bio loads, no dated posts. No 2026 sentence could be copied."
+  },
+  {
+   "name": "あゆみ食堂",
+   "verdict": "doubt",
+   "reason": "Instagram profile opened (7,409 posts) but without login only the bio loads, no dated posts. No 2026 sentence could be copied."
+  },
+  {
+   "name": "そば処 徳八",
+   "verdict": "doubt",
+   "reason": "Official site opened. It has no news section and no dates at all, only undated hours and menu text. No 2026 sentence could be copied."
+  },
+  {
+   "name": "麻婆食堂 どんどん",
+   "verdict": "doubt",
+   "reason": "Instagram profile is behind a login wall; only the profile header was visible (76 posts), no dated 2026 post readable. No official site. Cannot copy a 2026 sentence, so doubt."
+  }
+ ]
+}

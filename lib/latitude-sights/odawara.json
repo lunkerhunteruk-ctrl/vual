@@ -1,0 +1,56 @@
+[
+ {
+  "name": "小田原城",
+  "nameEn": "Odawara Castle",
+  "kind": "sight",
+  "area": "城内",
+  "areaEn": "Jonai",
+  "address": "小田原市城内6-1",
+  "url": "https://odawaracastle.com/",
+  "what": "戦国時代に北条氏の居城となった城。1960年に復興した天守閣では、城の歴史や美術工芸品を展示する。",
+  "whatEn": "The castle of the Hojo lords in the Sengoku period. The keep, reconstructed in 1960, displays the castle’s history, art and crafts.",
+  "coords": [
+   35.25105,
+   139.15342
+  ],
+  "notice": "天守閣は9時から17時（最終入館16時30分）。12月第2水曜と12月31日〜1月1日は休館。園内のこども遊園地は当面休園。",
+  "noticeEn": "The keep opens 9 am to 5 pm, last entry 4:30 pm. Closed the second Wednesday in December and December 31–January 1. The children’s amusement park is closed until further notice.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "報徳二宮神社",
+  "nameEn": "Hotoku Ninomiya Shrine",
+  "kind": "sight",
+  "area": "城内",
+  "areaEn": "Jonai",
+  "address": "小田原市城内8-10",
+  "url": "https://www.ninomiya.or.jp/",
+  "what": "小田原城址公園内にある、二宮尊徳を祀る神社。1894年に創建された。",
+  "whatEn": "A shrine to Ninomiya Sontoku within Odawara Castle Park, founded in 1894.",
+  "coords": [
+   35.24985,
+   139.15297
+  ],
+  "notice": "11月から3月は6時から17時まで開門し、夜間は参拝できない。",
+  "noticeEn": "The grounds open 6 am to 5 pm from November through March. No visits at night.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "神奈川県立生命の星・地球博物館",
+  "nameEn": "Kanagawa Prefectural Museum of Natural History",
+  "kind": "art",
+  "area": "入生田",
+  "areaEn": "Iriuda",
+  "address": "小田原市入生田499",
+  "url": "https://nh.kanagawa-museum.jp/",
+  "what": "地球の46億年の歴史と生命の多様性を伝える自然史博物館。恐竜や隕石、昆虫などの実物標本を展示する。",
+  "whatEn": "A natural history museum tracing 4.6 billion years of Earth’s history and the diversity of life, with specimens ranging from dinosaurs and meteorites to insects.",
+  "coords": [
+   35.23939,
+   139.12158
+  ],
+  "notice": "星槎ミュージアムシアターは機器不調で上映休止中。常設展「再び海へ」の剥製の一部も、資料保護の処置のため見られない。休館日は公式カレンダーで確認。",
+  "noticeEn": "Screenings in the Seisa Museum Theater are suspended because of equipment trouble. Some taxidermy specimens in the permanent exhibition’s “Back to the Sea” section are also off display for conservation. Check the official calendar for closing days.",
+  "verifiedAt": "2026-11-12"
+ }
+]

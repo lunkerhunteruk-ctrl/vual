@@ -1,0 +1,74 @@
+[
+ {
+  "name": "首里城公園",
+  "nameEn": "Shurijo Castle Park",
+  "kind": "sight",
+  "area": "首里",
+  "areaEn": "Shuri",
+  "address": "那覇市首里金城町1-2",
+  "url": "https://oki-park.jp/shurijo/",
+  "what": "琉球国王の王宮で、政治と祭祀、文化の中心だった首里城を囲む公園。丘の上に曲線を描く城壁が続き、首里城跡は世界遺産。",
+  "whatEn": "A park around Shurijo Castle, the Ryukyu kings’ palace and centre of government, ritual and culture. Curving walls enclose the hilltop; the castle ruins are a World Heritage site.",
+  "coords": [
+   26.217,
+   127.71937
+  ],
+  "notice": "2026年11月22日は全園休園。23日は城郭内無料区域が11時15分、有料区域が正午に開き、復元正殿も正午から公開予定。正殿内の観覧は日時指定の事前予約制。",
+  "noticeEn": "The whole park is closed on 22 November 2026. On the 23rd, the free castle area opens at 11:15 am and the paid area at noon, when the restored main hall is scheduled to open. Entry inside the main hall requires a timed reservation.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "沖縄県立博物館・美術館",
+  "nameEn": "Okinawa Prefectural Museum & Art Museum",
+  "kind": "art",
+  "area": "おもろまち",
+  "areaEn": "Omoromachi",
+  "address": "那覇市おもろまち3-1-1",
+  "url": "https://okimu.jp/",
+  "what": "沖縄の自然・歴史・文化を伝える博物館と、近現代美術を紹介する美術館。博物館には美術工芸や民俗の展示もあり、美術館では沖縄ゆかりの作家を中心に見せる。",
+  "whatEn": "A museum of Okinawa’s nature, history and culture alongside an art museum for modern and contemporary work. The museum includes crafts and folk culture; the art museum focuses on artists connected with Okinawa.",
+  "coords": [
+   26.22716,
+   127.69372
+  ],
+  "notice": "月曜休館（祝日・振替休日・慰霊の日は開館し、翌平日休館）。年末年始は2026年12月29日から2027年1月3日まで休館。",
+  "noticeEn": "Closed Mondays, or the next weekday when Monday is a public holiday, substitute holiday or Okinawa Memorial Day. Closed for New Year from 29 December 2026 to 3 January 2027.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "玉陵",
+  "nameEn": "Tamaudun Royal Mausoleum",
+  "kind": "sight",
+  "area": "首里",
+  "areaEn": "Shuri",
+  "address": "那覇市首里金城町1-3",
+  "url": "https://www.naha-navi.or.jp/sightseeing/tama-udun/",
+  "what": "第二尚氏の歴代国王の墓。三つの墓室と石碑、門があり、2000年に「琉球王国のグスク及び関連遺産群」の一つとして世界遺産に登録された。",
+  "whatEn": "The tombs of the kings of the Second Sho dynasty, with three burial chambers, a stone inscription and gates. Listed in 2000 as part of the World Heritage Gusuku Sites and Related Properties of the Kingdom of Ryukyu.",
+  "coords": [
+   26.21813,
+   127.71465
+  ],
+  "notice": "2026年11月23日から30日までは、首里城正殿の完成を記念して入園無料。通常は9時から18時、最終入場17時30分。",
+  "noticeEn": "Admission is free from 23 to 30 November 2026 to mark the completion of Shurijo’s main hall. Normally open 9 am to 6 pm, last entry 5:30 pm.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "那覇市立壺屋焼物博物館",
+  "nameEn": "Naha Municipal Tsuboya Pottery Museum",
+  "kind": "art",
+  "area": "壺屋",
+  "areaEn": "Tsuboya",
+  "address": "那覇市壺屋1-9-32",
+  "url": "http://www.edu.city.naha.okinawa.jp/tsuboya/",
+  "what": "壺屋焼を中心に、沖縄の焼物の歴史と技法を伝える市立博物館。建設地から発掘されたニシヌ窯を、ほぼ元の位置で保存・展示する。",
+  "whatEn": "A municipal museum of Okinawan pottery, centred on the history and techniques of Tsuboya-yaki. The Nishinu kiln excavated during construction is preserved and displayed almost where it was found.",
+  "coords": [
+   26.21383,
+   127.69079
+  ],
+  "notice": "外壁等の改修工事のため、2026年9月1日から2027年3月31日まで臨時休館予定。期間中は館内を見学できない。",
+  "noticeEn": "Closed for exterior and other repairs from 1 September 2026 through 31 March 2027. The museum interior cannot be visited during this period.",
+  "verifiedAt": "2026-11-12"
+ }
+]

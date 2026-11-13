@@ -1,0 +1,497 @@
+{
+ "slug": "tambasasayama",
+ "city": {
+  "name": "Tambasasayama",
+  "nameJa": "丹波篠山",
+  "latitude": "35.1° N",
+  "country": "Hyogo, Japan",
+  "countryJa": "兵庫県",
+  "person": "rin",
+  "coords": [
+   35.07408,
+   135.21778
+  ],
+  "intro": "A castle town in a basin ringed by the Tamba mountains. Tamba-yaki kilns in the Tachikui valley, black-soybean sweets and bread, soba and coffee in the old town: Rin's picks.",
+  "introJa": "丹波の山々に囲まれた盆地の城下町。立杭の里の丹波焼の窯元と、城下町の黒豆の菓子やパン、そばと珈琲を、凛のおすすめで。",
+  "locator": {
+   "en": "In eastern Hyogo · a castle town in a mountain basin",
+   "ja": "兵庫県の東部・山あいの盆地にある城下町"
+  },
+  "industries": [
+   {
+    "key": "tamba-yaki",
+    "en": "Tamba Ware (Tachikui Pottery)",
+    "ja": "丹波焼（丹波立杭焼）",
+    "about": "One of Japan's Six Ancient Kilns, fired in the Tachikui valley for over eight hundred years. Pots take on natural ash glazes from wood-fired climbing kilns, and the lineage runs from folk-craft tableware to everyday dishes.",
+    "aboutJa": "丹波焼は、日本六古窯のひとつで、立杭の里で800年以上続いてきた焼き物。登り窯の薪の灰が自然にかかる釉薬や、民藝の流れを汲む日常の器が今も作られている。",
+    "_src": "One of Japan's Six Ancient Kilns, fired in the Tachikui valley since the late Heian period and prized for natural pine-ash glazes, climbing kilns, and folk-craft stoneware."
+   }
+  ]
+ },
+ "places": {
+  "俊彦窯": {
+   "nameEn": "Toshihiko Kiln",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "address": "丹波篠山市今田町上立杭396",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "1977年に清水俊彦が開いた丹波焼の窯元。生田和孝に学んだ民藝の流れを汲み、現在は息子の剛と二人で作陶している。",
+   "whatEn": "A Tamba-yaki kiln founded in 1977 by Shimizu Toshihiko, who studied under Mingei potter Ikuta Kazutaka. He now makes pottery alongside his son Tsuyoshi.",
+   "note": "丹波の土の、日常の器を手に取って選びたい。",
+   "noteEn": "I want to pick up and choose everyday Tamba-clay vessels.",
+   "_src": {
+    "category": "local",
+    "industry": "tamba-yaki",
+    "nameKana": "としひこがま",
+    "address": "今田町上立杭392",
+    "url": "https://toshihikogama.com/",
+    "whatJa": "民藝の流れを汲み、しのぎや面取りを施した日常使いの丹波焼を手がける窯元・ギャラリー。",
+    "whatEn": "A family-run Tamba-yaki pottery studio and gallery crafting Mingei-lineage everyday stoneware with carved fluting and beveling.",
+    "facts": "Founded in 1977 by Toshihiko Shimizu, who apprenticed under Mingei potter Kazutaka Ikuta; now run alongside his son Tsuyoshi Shimizu; known for shinogi (fluted) and mentori (faceted) vessels.",
+    "weak": "",
+    "verifiedBy": "https://toshihikogama.com/",
+    "quote": "阪急うめだ本店 7階にて「第6回 丹波 清水剛 陶展」を開催",
+    "fixes": "Address on official site (/shop, /about) is 兵庫県篠山市今田町上立杭396, not 392. Official hours: 9時～18時（年中無休）, TEL 079-597-2647. Family: Toshihiko and son Takeshi (清水剛) confirmed; founded 1977; apprenticed under 生田和孝 (Ikuta Kazutaka) confirmed.",
+    "coords": [
+     34.98219,
+     135.12698
+    ]
+   }
+  },
+  "省三窯": {
+   "nameEn": "Shozo Kiln",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "立杭の北の高台に工房とギャラリーを構える丹波焼の窯元。壺や茶わんから日常の食器まで、一つずつ手作りしている。",
+   "whatEn": "A Tamba-yaki kiln and hillside gallery in the northern part of Tachikui, handcrafting everything from vases and tea bowls to everyday tableware.",
+   "note": "高台の静かなギャラリーで、普段の皿を見たい。",
+   "noteEn": "Looking at everyday plates in the quiet hillside gallery.",
+   "_src": {
+    "category": "local",
+    "industry": "tamba-yaki",
+    "nameKana": "しょうぞうがま",
+    "address": "今田町上立杭2-2",
+    "url": "https://shozogama.com/",
+    "whatJa": "立杭の北の高台で、釉薬のグラデーションが美しい日々の食卓向けの丹波焼を作る窯元。",
+    "whatEn": "A Tamba-yaki kiln on the northern hillside of Tachikui producing warm, glaze-gradated stoneware for daily dining.",
+    "facts": "Located on a quiet rise in Kamitachikui; known for its Yusai (colored glaze) series and ash-glazed tableware; has an on-site showroom welcoming visitors.",
+    "weak": "",
+    "verifiedBy": "https://shozogama.com/article/165",
+    "quote": "２０２８年３月２９日～４月４日 日本橋三越本店６階アートスクエアにて個展が開催されます。",
+    "fixes": "Address on site: 〒669-2135 兵庫県篠山市上立杭2-2 (今田町 not in the site's wording but matches list). Site says it is in the northern part of Tachikui (丹波立杭の北の地) with a hillside gallery: matches. 'Yusai/colored-glaze' series not verified on pages I opened.",
+    "coords": [
+     34.99305,
+     135.12731
+    ]
+   }
+  },
+  "丹泉窯": {
+   "nameEn": "Tansen Kiln",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "上立杭のやきもの通りにある丹波焼の窯元。市野清治と市野ちさとが作陶し、近くにぎゃらりーTANSENもある。",
+   "whatEn": "A Tamba-yaki kiln along Kiln Alley in Kamitachikui, where Ichino Kiyoharu and Ichino Chisato make ceramics, with Gallery TANSEN nearby.",
+   "note": "窯元とギャラリー、ふたつの場所を歩いて見たい。",
+   "noteEn": "I would walk between the kiln and the gallery to look.",
+   "_src": {
+    "category": "local",
+    "industry": "tamba-yaki",
+    "nameKana": "たんせんがま",
+    "address": "今田町上立杭527",
+    "url": "https://tansengama.com/",
+    "whatJa": "立杭のやきもの通りで、穴窯による灰被りの焼き締めや日常の器を手がける三代続く丹波焼窯元。",
+    "whatEn": "A third-generation Tamba-yaki kiln along Kiln Alley firing wood-ash stoneware in an anagama tunnel kiln alongside everyday slip-decorated vessels.",
+    "facts": "Led by third-generation master potter Kiyoharu Ichino (member of the Japan Kogeikai) and his daughter Chisato Ichino; operates both the workshop on Yakimono-dori and Gallery Tansen.",
+    "weak": "",
+    "verifiedBy": "https://tanbayaki-toukimatsuri.com/meguri/",
+    "quote": "◆丹泉窯（やきもの通り） 期間中の土、日、祝日 10%off",
+    "fixes": "Address 兵庫県丹波篠山市今田町上立杭527 confirmed on tansengama.com (TEL 079-597-2105). Note: Gallery TANSEN is a separate address (今田町上立杭篠尾口2-6). Site says Kiyoharu b.1957 and Chisato b.1986; 'third generation' not read on site itself. Own website is stale (latest news 2018) so evidence is the 2026 festival participation page only.",
+    "coords": [
+     34.98013,
+     135.12828
+    ]
+   }
+  },
+  "大熊窯": {
+   "nameEn": "Ohkuma Kiln",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "立杭の里で代々作陶を続ける丹波焼の窯元。敷地の長い登り窯が目印で、素朴で温かみのある焼きものを作っている。",
+   "whatEn": "A Tamba-yaki kiln in Tachikui across generations, marked by a long climbing kiln on its grounds, making simple, warm stoneware.",
+   "note": "長い登り窯を見てから、素朴な器を覗いてみたい。",
+   "noteEn": "Look at the long climbing kiln, then step in for the simple stoneware.",
+   "_src": {
+    "category": "local",
+    "industry": "tamba-yaki",
+    "nameKana": "おおくまがま",
+    "address": "今田町上立杭尾中1",
+    "url": "https://ohkumagama.com/",
+    "whatJa": "敷地内に長い登り窯を残し、200年以上の歴史を受け継ぎながら現代の食卓に馴染む器を作る丹波焼窯元。",
+    "whatEn": "A historic Tamba-yaki kiln over two centuries old with a traditional climbing kiln on its grounds and a contemporary showroom for daily tableware.",
+    "facts": "Has operated for over 200 years in Kamitachikui; preserves a multi-chambered climbing kiln on site while potter Takumi Ougami crafts ash-glazed and slip-brushed vessels displayed in its renovated gallery.",
+    "weak": "",
+    "verifiedBy": "https://tanbayaki-toukimatsuri.com/meguri/",
+    "quote": "42 大熊窯 カップ展 お会計時じゃんけんでお客さまが勝てば20％offいたします",
+    "fixes": "Address 〒669-2135 兵庫県丹波篠山市今田町上立杭尾中1 confirmed on ohkumagama.com; hours 10時〜17時・不定休, TEL 079-597-2345. Own site's latest event post found is 2024-06-28. 'Over 200 years' not read on pages I opened (site says 代々立杭の里で作陶).",
+    "coords": [
+     34.991,
+     135.12795
+    ]
+   }
+  },
+  "珈琲豆 誠": {
+   "nameEn": "Coffee Beans Makoto",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "address": "丹波篠山市西町1",
+   "tags": [
+    "coffee"
+   ],
+   "what": "西町の古民家にある自家焙煎の珈琲店。定番や季節のブレンド、スペシャルティコーヒーの豆を量り売りし、焙煎体験もできる。火・水曜休み。",
+   "whatEn": "A house-roasting coffee shop and café in an old townhouse in Nishimachi, selling house and seasonal blends and single-origin beans, with roasting workshops. Closed Tuesdays and Wednesdays.",
+   "note": "まずは「西町」ブレンドを一杯、飲んでみたい。",
+   "noteEn": "I want to start with a cup of the Nishimachi blend.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "こーひーまめ まこと",
+    "address": "西町25",
+    "url": "https://coffeemame-makoto.com/",
+    "whatJa": "30種類以上の丹波焼のカップから好みの器を選んで自家焙煎珈琲を味わえる城下町の専門店。",
+    "whatEn": "A small-batch coffee bean roaster and cafe in the castle town where guests choose their own Tamba-yaki cup for pour-over coffee.",
+    "facts": "Roasts specialty coffee beans to order; lets dine-in guests pick from over 30 Tamba-yaki cups made by local kilns; also runs hands-on hand-roasting workshops.",
+    "weak": "",
+    "verifiedBy": "https://coffeemame-makoto.com/",
+    "quote": "2026/09/10 ✨☕️おかげさまで、6周年☕️✨",
+    "fixes": "Address on the page is 〒669-2342 兵庫県丹波篠山市西町1番地 城下町ホテルNIPPONIA SAWASIRO棟1F (not 西町25). The page describes it as a 古民家カフェ; hours 10:00-17:00, closed Tue/Wed. The page does not state '30+ Tamba-yaki cups' (only that customers can choose a cup, per 2026 reviews) - drop '30種類以上' / 'over 30' unless sourced elsewhere.",
+    "coords": [
+     35.07658,
+     135.21295
+    ]
+   }
+  },
+  "小西のパン": {
+   "nameEn": "Konishi no Pan",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "tags": [
+    "bread"
+   ],
+   "what": "明治26年（1893年）創業、明治42年から篠山で続くパン店。8〜9時間煮込んだ丹波の黒大豆を包んだ黒豆パンが名物。火曜休み。",
+   "whatEn": "A bakery founded in 1893 and in Sasayama since 1909, known for soft loaves filled with Tamba black soybeans simmered for eight to nine hours. Closed Tuesdays.",
+   "note": "甘さを抑えた黒豆パン、ひとつつまみたい。",
+   "noteEn": "A black-soybean loaf, lightly sweetened, to pick up.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "こにしのぱん",
+    "address": "魚屋町23",
+    "url": "https://konipan.cocotte.jp/wp/",
+    "whatJa": "じっくり煮上げた大粒の丹波黒豆をたっぷり包み込んだ黒豆パンで知られる城下町の老舗パン店。",
+    "whatEn": "A long-running castle-town bakery famous for soft loaves packed with slow-simmered Tamba black soybeans.",
+    "facts": "Founded in the Meiji era (1893); simmers Tamba kuromame black beans for 8–9 hours in-house before folding them into soft dough; frequently sells out by early afternoon.",
+    "weak": "",
+    "verifiedBy": "https://konipan.cocotte.jp/wp/",
+    "quote": "2026.09.22 祝日のため通常通り営業いたします。 ※9月24日が定休日となります。",
+    "fixes": "Address 兵庫県丹波篠山市魚屋町23 matches. Page also lists '2026.08.17～2026.09.01 夏季休業とさせていただきます。' Hours 9:00～売り切れまで, closed Tuesday. The page does not mention the 1893 founding year or the 8-9 hour simmering.",
+    "coords": [
+     35.07679,
+     135.21399
+    ]
+   }
+  },
+  "雪岡市郎兵衛洋菓子舗": {
+   "nameEn": "Yukioka Ichirobei Patisserie",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "tags": [
+    "cheesecake",
+    "sweets"
+   ],
+   "what": "魚屋町のチーズケーキ専門店。丹波黒豆や丹波栗、いちじくや各種チーズを使ったチーズケーキと、秋の丹波栗のモンブランを並べる。",
+   "whatEn": "A cheesecake shop on Uoyamachi making cheesecakes with Tamba black beans, Tamba chestnuts, figs and various cheeses, plus autumn Tamba chestnut mont blanc.",
+   "note": "黒豆か丹波栗のチーズケーキをひとつ選びたい。",
+   "noteEn": "I want to pick one cheesecake, either black bean or chestnut.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ゆきおかいちろべえようがしほ",
+    "address": "魚屋町13-1",
+    "url": "https://la-neige-ashiya.ocnk.net/",
+    "whatJa": "丹波栗や黒豆、地酒など地元の素材を生かした多彩なチーズケーキを手がける洋菓子専門店。",
+    "whatEn": "A specialty cheesecake patisserie in a renovated castle-town townhouse crafting baked and rare cheesecakes with Tamba chestnuts, black beans, and local sake.",
+    "facts": "Offers around 15–20 varieties of cheesecake using regional ingredients like Tamba kuromame, Tamba chestnuts, and local sake, alongside world cheeses.",
+    "weak": "",
+    "verifiedBy": "https://la-neige-ashiya.ocnk.net/",
+    "quote": "２０２６年丹波栗のモンブラン販売開始いたします ... ９月１８日より丹波栗のモンブラン、販売開始いたします。",
+    "fixes": "Page confirms seller 丹波篠山 雪岡市郎兵衛洋菓子舗 at 〒669-2336 兵庫県丹波篠山市魚屋町１３－１; billed as 丹波篠山チーズケーキ専門店 and 丹波篠山古民家カフェ. Hours 10:00-18:00; November 2026 closure dates are listed. Page does not state '15-20 varieties'.",
+    "coords": [
+     35.07685,
+     135.21442
+    ]
+   }
+  },
+  "白殻五粉": {
+   "nameEn": "Shirokaragofun",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "tags": [
+    "bread"
+   ],
+   "what": "小川町の天然酵母のパン屋。ブールやいちじくとくるみのカンパーニュなどを焼き、売り切れ次第閉店。火・水曜休み（祝日は営業）。",
+   "whatEn": "A natural-yeast bakery on Ogawamachi baking boules and fig-and-walnut campagne, closing when the bread sells out. Closed Tuesdays and Wednesdays unless a holiday.",
+   "note": "いちじくとくるみのカンパーニュを買って帰る。",
+   "noteEn": "Take home a fig-and-walnut campagne.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "しろからごふん",
+    "address": "小川町2",
+    "url": "https://www.shirokaragofun.com/",
+    "whatJa": "自家製天然酵母と国産小麦で味わい深いハード系パンや惣菜パンを焼くベーカリー。",
+    "whatEn": "An artisan bakery near the castle town baking rustic loaves and buns leavened with homemade wild yeast.",
+    "facts": "Uses house-cultured natural yeast and domestic wheat; known for crusty country loaves, seasonal bean and chestnut breads, and small bread-themed craft goods.",
+    "weak": "",
+    "verifiedBy": "https://www.shirokaragofun.com/",
+    "quote": "2026/10/22 本日のご注文より一部商品を除き、通常便（常温）での発送とさせていただきます。",
+    "fixes": "Page address: 〒669-2326 兵庫県丹波篠山市小川町2, Tel 079-552-8881, 9:30〜17:00 (closes when bread sells out), closed Tue/Wed (open on public holidays). Page is a 天然酵母のパン屋さん online shop. The homepage does not mention domestic wheat.",
+    "coords": [
+     35.07143,
+     135.22301
+    ]
+   }
+  },
+  "小田垣豆堂": {
+   "nameEn": "Odagaki Mamedo",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "tags": [
+    "wagashi",
+    "kuromame"
+   ],
+   "what": "享保19年（1734年）創業の黒豆卸・小田垣商店が営むカフェ。丹波黒豆のパフェやモンブランなどを出す。木曜休み（祝日の場合は翌平日）。",
+   "whatEn": "The café of Odagaki Shoten, a black-soybean merchant founded in 1734, serving Tamba black-soybean parfaits and mont blanc. Closed Thursdays, or the next weekday if a holiday.",
+   "note": "黒豆きなこのパフェを頼んで、ひと休み。",
+   "noteEn": "Order the black-soybean kinako parfait and take a rest.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おだがきまめどう",
+    "address": "立町19",
+    "url": "https://www.odagaki.co.jp/",
+    "whatJa": "享保19年創業の黒豆卸・小田垣商店の登録有形文化財の建物で、丹波黒豆スイーツを庭園越しに味わえるカフェ。",
+    "whatEn": "A salon cafe inside the Edo-period compound of black-soybean merchant Odagaki Shoten, serving Tamba kuromame parfaits and mont blancs overlooking a stone garden.",
+    "facts": "Operated by Odagaki Shoten (founded 1734) inside a Registered Tangible Cultural Property townhouse; serves roasted black-bean tea, kuromame parfaits, and autumn Tamba chestnut sweets.",
+    "weak": "",
+    "verifiedBy": "https://www.odagaki.co.jp/",
+    "quote": "2026.11.02 店舗情報 小田垣豆堂（カフェ）11月の定休日について",
+    "fixes": "Address on page: 〒669-2323 兵庫県丹波篠山市立町19番地, Tel 079-552-0011. Café hours 11:00～17:00 (L.O. 16:00), closed Thursdays (next weekday if holiday) and New Year. Company founded 享保十九年(1734) matches. A 2026.11.10 item says 関西テレビ 'よ～いドン！' featured the café's ODAGAKIモンブラン.",
+    "coords": [
+     35.07253,
+     135.22368
+    ]
+   }
+  },
+  "KONdA to": {
+   "nameEn": "KONdA to",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "tags": [
+    "burger",
+    "ceramics"
+   ],
+   "what": "今田町の古民家で営むハンバーガー店。石臼挽きの自家製粉バンズと手斬りの牛肉パティを作り、丹波焼の器に盛って出す。",
+   "whatEn": "A burger restaurant in an old farmhouse in Konda-cho, baking stone-milled house-ground buns and hand-cut beef patties, served on Tamba-yaki plates.",
+   "note": "丹波焼の皿にのった、手斬りのバーガーを待つ。",
+   "noteEn": "Wait for a hand-cut burger served on a Tamba-yaki plate.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "こなと",
+    "address": "今田町下立杭680",
+    "url": "https://konato.jp/",
+    "whatJa": "丹波焼の里・立杭で自家製バンズと粗挽きパティの本格ハンバーガーとパンを提供するレストラン。",
+    "whatEn": "A burger restaurant and bakery in the pottery village of Tachikui serving coarse-ground beef burgers on house-baked buns.",
+    "facts": "Rebranded from long-loved bakery-diner Esquerre in Shimotachikui; bakes its own buns daily in an attached bakery and grills juicy coarse-ground patties for potters and visitors.",
+    "weak": "",
+    "verifiedBy": "https://konato.jp/blog/11月限定バーガー『pear-beef-syndicate』/",
+    "quote": "今回のバーガーで中心となるのは、二つの牛肉。",
+    "fixes": "Page says the patty is 100% beef, hand-cut (手斬り/ブツ切りカット), not 'coarse-ground'; buns are baked every morning in the shop from stone-milled domestic unpesticided wheat. Fix whatEn/whatJa: 'hand-cut beef patties' / 手斬りパティ (not 粗挽き). Page does not mention an attached bakery or selling bread. Address 兵庫県丹波篠山市今田町下立杭680 matches (konato.jp/access/).",
+    "coords": [
+     34.9695,
+     135.12448
+    ]
+   }
+  },
+  "丹波篠山 一休庵": {
+   "nameEn": "Tambasasayama Ikkyuan",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "address": "丹波篠山市山内町78-2",
+   "tags": [
+    "soba",
+    "botan-nabe"
+   ],
+   "what": "篠山城跡近くの移築古民家の蕎麦処。店内で蕎麦の実を挽く十割そばと、丹波篠山近又監修の出汁のぼたん鍋を出す。",
+   "whatEn": "A soba house near the castle ruins in a relocated old farmhouse, milling buckwheat in-house for 100% soba and serving wild-boar botan-nabe.",
+   "note": "十割そばのあとに、蕎麦の実ぜんざいもつけたい。",
+   "noteEn": "After the 100% buckwheat soba, I want to add the buckwheat-groat zenzai.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "たんばささやま いっきゅうあん",
+    "address": "山内町75-2",
+    "url": "https://ikkyuuan.jp/",
+    "whatJa": "篠山城跡近くの移築古民家で、石臼挽きの十割そばと名物のぼたん鍋を供する蕎麦処。",
+    "whatEn": "A soba restaurant near Sasayama Castle Ruins serving stone-milled 100% buckwheat noodles and wild-boar botan hotpot in a relocated timber farmhouse.",
+    "facts": "Mills buckwheat berries in-house daily for pure juwari (100% buckwheat) soba without wheat binder; also serves grated Tamba yam soba and winter wild-boar miso hotpot.",
+    "weak": "",
+    "verifiedBy": "https://ikkyuuan.jp/",
+    "quote": "お盆期間中  8月11日(火)〜8月16日(日)も休まず営業いたしております。",
+    "fixes": "Address on page is 兵庫県丹波篠山市山内町78-2 (PLACES says 75-2) - correct to 78-2. Page says buckwheat is ground in the shop ('店内で蕎麦の実を挽き') but does not say 'stone-milled' - drop 'stone-' or say 'ground in-house'. Page does not say miso for the botan hotpot (出汁 supervised by 丹波篠山近又, natural wild boar). Farmhouse: rebuilt from Tohoku by previous owner (relocated) - OK. Hours 11:00-16:00 (L.O. 15:30), open daily except New Year.",
+    "coords": [
+     35.078,
+     135.21501
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "篠山城大書院",
+   "nameEn": "Sasayama Castle Oshoin",
+   "kind": "sight",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "address": "兵庫県丹波篠山市北新町2-3",
+   "url": "https://withsasayama.jp/osyoin/",
+   "what": "1609年に徳川家康の命で築かれた篠山城の御殿。1944年に焼失したが2000年に再建され、城の史料を展示している。月曜休館（祝日は開館、翌日休館）。",
+   "whatEn": "The main hall of Sasayama Castle, built in 1609 on Tokugawa Ieyasu's order. Destroyed by fire in 1944 and reconstructed in 2000, it exhibits castle records. Closed Mondays (or Tuesday if a holiday).",
+   "coords": [
+    35.07338,
+    135.21744
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://withsasayama.jp/osyoin/ : 2026年11月11日更新あり。住所 兵庫県丹波篠山市北新町2-3、開館 9:00〜17:00（受付終了16:30）、休館 毎週月曜日・年末年始（12/25〜1/1）。慶長14年（1609）築城、昭和19年（1944）焼失、平成12年（2000）再建。",
+   "_coordsSource": "OSM way 248183319（篠山城大書院）"
+  },
+  {
+   "name": "丹波篠山市立歴史美術館",
+   "nameEn": "Tambasasayama City Historical Art Museum",
+   "kind": "art",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "address": "兵庫県丹波篠山市呉服町53",
+   "url": "https://withsasayama.jp/history-museum/",
+   "what": "1891年建築の旧篠山地方裁判所の木造庁舎を活かした美術館。1982年に開館し、古墳の出土品や中世の丹波焼などを展示する。月曜休館。",
+   "whatEn": "A museum inside the 1891 wooden courthouse of the former Sasayama District Court, opened in 1982 and displaying ancient tomb artifacts and medieval Tamba ware. Closed Mondays.",
+   "coords": [
+    35.0772,
+    135.21992
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://withsasayama.jp/history-museum/ : 2026年10月12日更新あり（令和8年度特別展「丹波篠山の古墳」、2026年11月14日関西文化の日無料入館のお知らせあり）。住所 兵庫県丹波篠山市呉服町53、開館 9:00〜17:00、休館 毎週月曜日・年末年始。",
+   "_coordsSource": "OSM way 248183492（丹波篠山市立歴史美術館）"
+  },
+  {
+   "name": "青山歴史村",
+   "nameEn": "Aoyama Rekishimura",
+   "kind": "sight",
+   "area": "篠山城下町",
+   "areaEn": "Sasayama Castle Town",
+   "address": "兵庫県丹波篠山市北新町48",
+   "url": "https://withsasayama.jp/aoyama/",
+   "what": "篠山藩主青山家の別邸「桂園舎」を中心に、3棟の土蔵と長屋門が残る史料館。漢学書の版木や藩政文書など江戸期の資料を展示する。月曜休館。",
+   "whatEn": "A history museum centered on Keiensha, a villa of the Aoyama lords of Sasayama, with three storehouses and a gatehouse displaying Edo-period domain records and woodblocks. Closed Mondays.",
+   "coords": [
+    35.07547,
+    135.2161
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://withsasayama.jp/aoyama/ : 2026年7月4日更新あり。住所 兵庫県丹波篠山市北新町48番地、開館 9:00〜17:00（受付終了16:30）、休館 毎週月曜日・年末年始（12/25〜1/1）。",
+   "_coordsSource": "OSM way 369611062（丹波篠山市青山歴史村）"
+  },
+  {
+   "name": "丹波伝統工芸公園 立杭陶の郷",
+   "nameEn": "Tachikui Sue no Sato",
+   "kind": "art",
+   "area": "今田町",
+   "areaEn": "Tachikui",
+   "address": "兵庫県丹波篠山市今田町上立杭3",
+   "url": "https://tanbayaki.com/suenosato/",
+   "what": "丹波焼の里・立杭にある総合施設。約50軒の窯元の器を並べる窯元横丁や陶芸教室、展示施設「TAMBA GATEWAY CENTER」がある。火曜休園（祝日は営業）。",
+   "whatEn": "The Tamba-yaki craft park in Tachikui, with a market street carrying vessels from about fifty kilns, pottery workshops, and the TAMBA GATEWAY CENTER gallery. Closed Tuesdays unless a holiday.",
+   "notice": "園内の伝産会館は2027年春のリニューアルに向けて改修工事中。",
+   "noticeEn": "The Densan Kaikan hall inside the park is closed for renovation until spring 2027.",
+   "coords": [
+    34.9808,
+    135.13233
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://tanbayaki.com/suenosato/ : 2026年11月3日営業・2026年11月イベント情報あり。住所 兵庫県丹波篠山市今田町上立杭3、開園 10:00〜17:00、休園 毎週火曜日（祝日営業）・年末年始。TAMBA GATEWAY CENTER 2026年4月19日オープン、伝産会館は2027年春リニューアルオープン予定で改修工事中。",
+   "_coordsSource": "OSM node 5005362369（丹波伝統工芸公園立杭陶の郷）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "喫茶と宿 Oito",
+   "verdict": "doubt",
+   "reason": "Opened oito-henko.com (top, /cafe/, news category, /en/), t-aos.com (latest news 2024-12-01), and the Instagram page (login wall: only meta text, no dated posts readable). Latest dated item on the official site is 2025.03.28 (WEBサイトリニューアルのお知らせ); the WordPress feed's latest pubDate is 27 Mar 2025. No 2026-dated sentence found, so cannot confirm 2026 operation. No sign of closure either."
+  },
+  {
+   "name": "MAGNUM COFFEE",
+   "verdict": "doubt",
+   "reason": "Opened kaori-ltd.com (top, /magnum-coffee/, RSS feed), magnumcoffee.thebase.in/blog and the Instagram page (login wall; only meta text, no dated posts). Latest dated items found: blog 2024/08/24 (FARMERS MARKET) and RSS 28 Jun 2024. No 2026-dated sentence could be copied, so cannot confirm 2026 operation. No sign of closure."
+  },
+  {
+   "name": "Touya cafe",
+   "verdict": "doubt",
+   "reason": "Instagram page opened but, without login, shows only the profile title ('Touya cafe (@touyacafe)', 4,891 Followers, 323 Posts) and no readable dated posts; no 2026 sentence could be copied. Facebook page returned nothing usable. A search summary says it normally operates (closed Thu/Fri, tel 079-506-6930) but undated, so no 2026 evidence."
+  },
+  {
+   "name": "Trattoria al Ragu'",
+   "verdict": "doubt",
+   "reason": "Official Jimdo site (home, お知らせ, ブログ, hours) has no dated 2026 post or notice; the blog links point to 2016 posts and the hours/お知らせ text is undated. Facebook not readable without login. No 2026 evidence found."
+  },
+  {
+   "name": "條鐵庵",
+   "verdict": "doubt",
+   "reason": "Only dated news is 年末年始の営業について of 2024-12-25 (年末は30日（月）まで、年始は１月４日（土）より) - 2024, not 2026. Instagram @jotetsuan7735 loads only a login wall (no readable posts). No 2026 evidence."
+  },
+  {
+   "name": "器とくらしの道具 ハクトヤ",
+   "verdict": "doubt",
+   "reason": "Instagram is login-walled for me and the shop's blog (exblog) returned 403; I could not read any dated 2026 post or notice. Search-result snippets were not used as evidence."
+  },
+  {
+   "name": "素イ",
+   "verdict": "doubt",
+   "reason": "Official site has no dated 2026 post or exhibition notice (only undated hours). Instagram profiles (@masahiko.ichino_, @taigakobo) show only follower counts, no readable posts."
+  },
+  {
+   "name": "SORTE GLASS",
+   "verdict": "doubt",
+   "reason": "Pages opened: sorteglass.com (footer 'Copyright 2012'), news.html (newest entry is dated 2016年5月), and sorteglassjewelry.com (newest news is 2015/12/15). None has a 2026 sentence. The Instagram page did not show readable content to me."
+  },
+  {
+   "name": "篠山ギャラリー KITA'S",
+   "verdict": "doubt",
+   "reason": "kitas-gallery.com is live but has no dated 2026 content; its footer reads '© 2025 by stileLIFE' and it says '現在ここに表示する商品はありません。'. toshiyukikita.com/events has news only up to 2025年10月22日. No 2026 evidence found."
+  }
+ ]
+}

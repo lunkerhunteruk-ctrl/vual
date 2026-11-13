@@ -1,0 +1,418 @@
+[
+ {
+  "name": "南創庫",
+  "nameEn": "Minamisoko",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "西の原",
+  "areaEn": "Nishinohara",
+  "address": "2187-4 Isekigō, Hasami-chō",
+  "url": "https://www.instagram.com/minamisouko/",
+  "what": "製陶所の出荷事務所だった「南倉庫」を2011年に改装した器の店。波佐見焼の販売と、事前予約制の切り絵付け体験を行う。11時から18時で、水曜は休み。",
+  "whatEn": "A tableware shop opened in 2011 in the former south shipping office of a pottery factory. Sells Hasami ware and holds reservation-only paper-cut transferware workshops. Open 11 am to 6 pm, closed on Wednesdays.",
+  "note": "元出荷事務所の棚から、遊びのある普段使いの器を探す。",
+  "noteEn": "Look along the shelves of the old shipping office for playful everyday vessels.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.14096,
+   129.90748
+  ]
+ },
+ {
+  "name": "マルヒロ 直営店",
+  "nameEn": "Maruhiro Flagship Store",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "湯無田郷",
+  "areaEn": "Yumutago",
+  "address": "682 Yumutagō, Hasami-chō",
+  "url": "https://www.hasamiyaki.jp/",
+  "what": "湯無田郷にある陶磁器メーカー・マルヒロの直営店。HASAMIやBARBARなど自社ブランドの器が並ぶ。10時から18時で、休みは不定。",
+  "whatEn": "The flagship shop of pottery maker Maruhiro in Yumutago, stocking its own HASAMI and BARBAR lines. Open 10 am to 6 pm; closed on irregular days.",
+  "note": "色違いのブロックマグを、手になじむ方から一つ。",
+  "noteEn": "Pick one of the coloured block mugs, whichever sits best in the hand.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.14364,
+   129.91453
+  ]
+ },
+ {
+  "name": "Ô YANE",
+  "nameEn": "O Yane",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "折敷瀬郷",
+  "areaEn": "Orishikisego",
+  "address": "2204-4 Orishikisegō, Hasami-chō",
+  "url": "https://oyane.jp/",
+  "what": "大きな瓦屋根の西海陶器のギャラリー＆ショップ。1階の窯蔵に波佐見焼の食器が並び、展示も開かれる。9時から18時で、年末年始を除き無休。",
+  "whatEn": "Saikai Toki's gallery and shop under a broad tiled roof, with Hasami tableware in the ground-floor warehouse and exhibition space. Open 9 am to 6 pm, daily except year-end.",
+  "note": "サヤを積んだ棚を眺めながら、毎日の皿をひとつ選ぶ。",
+  "noteEn": "Walk past the kiln-sagger shelves and choose one plate for every day.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.13788,
+   129.89704
+  ]
+ },
+ {
+  "name": "白山陶器 本社ショールーム",
+  "nameEn": "Hakusan Porcelain Head Office Showroom",
+  "category": "local",
+  "industry": "hasami-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "湯無田郷",
+  "areaEn": "Yumutago",
+  "address": "1334 Yumutagō, Hasami-chō",
+  "url": "https://www.hakusan-porcelain.com/",
+  "what": "「使いやすく生活になじむ器」を作る白山陶器の本社工場併設ショールーム。10時から16時（2026年1月5日から閉店時間が変更）で、木曜は休み。",
+  "whatEn": "The showroom beside Hakusan Porcelain's head factory, dedicated to easy-to-use everyday tableware. Open 10 am to 4 pm (closing time changed from January 2026), closed on Thursdays.",
+  "note": "白磁の器を手に取って、縁の薄さと重さを確かめたい。",
+  "noteEn": "Lift the white porcelain to feel the thinness of the rim and the weight.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.13867,
+   129.92179
+  ]
+ },
+ {
+  "name": "ララフィール 波佐見店",
+  "nameEn": "LaLaFeel Hasami",
+  "category": "sweets",
+  "tags": [
+   "pastry",
+   "cake"
+  ],
+  "area": "宿郷",
+  "areaEn": "Shukugo",
+  "address": "93-1 Shukugō, Hasami-chō",
+  "url": "https://lalafeel.jp/",
+  "what": "宿郷の洋菓子店。創業以来の味のケーキや季節の生菓子、焼き菓子を並べる。営業は10時から18時半。",
+  "whatEn": "A patisserie in Shukugo selling cakes made to the original recipes alongside seasonal sweets and baked goods. Open 10 am to 6:30 pm.",
+  "note": "季節の果物のケーキを、焼き菓子と一緒にひとつ。",
+  "noteEn": "A seasonal fruit cake, and one baked sweet to go with it.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "PAN CLUB",
+  "nameEn": "PAN CLUB",
+  "category": "sweets",
+  "tags": [
+   "bakery"
+  ],
+  "area": "宿郷",
+  "areaEn": "Shukugo",
+  "address": "900-2 Shukugō, Hasami-chō",
+  "url": "https://www.pan-club.net/",
+  "what": "宿郷のベーカリー。常時20種以上のパンや、地域食材を使った季節限定パンを焼き、外の自販機でもパンやジャムを売る。10時から18時で、日曜・月曜は休み。",
+  "whatEn": "A neighbourhood bakery in Shukugo baking over twenty kinds of bread daily and seasonal loaves with local ingredients, plus a vending machine outside for bread and jam. Open 10 am to 6 pm, closed Sundays and Mondays.",
+  "note": "焼きたてのパンを一つと、外の自販機のジャムも気になる。",
+  "noteEn": "One loaf fresh from the oven, and a look at the jam vending machine outside.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ふくたい焼き 純乃屋",
+  "nameEn": "Fukutaiyaki Suminoya",
+  "category": "sweets",
+  "tags": [
+   "taiyaki",
+   "sweets"
+  ],
+  "area": "宿郷",
+  "areaEn": "Shukugo",
+  "address": "338-1 Shukugō, Hasami-chō",
+  "url": "https://www.instagram.com/fuku_suminoya/",
+  "what": "宿郷のたい焼き店。一丁焼きのたい焼きと、併設の焼き菓子工房のタルトや焼き菓子が並ぶ。",
+  "whatEn": "A taiyaki shop in Shukugo serving single-iron taiyaki alongside tarts and baked sweets from the attached bakery.",
+  "note": "焼きたてのたい焼きを一つ、皮が温かいうちに。",
+  "noteEn": "One taiyaki, eaten while the crust is still warm.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ダイニングカフェ るらん",
+  "nameEn": "Dining Cafe Le Lin",
+  "category": "food",
+  "tags": [
+   "cafe",
+   "lunch"
+  ],
+  "area": "宿郷",
+  "areaEn": "Shukugo",
+  "address": "428 Shukugō, Hasami-chō",
+  "url": "https://diningcafe-le-lin.com/",
+  "what": "宿郷のダイニングカフェ。旬の素材の日替わりランチやレモンステーキ丼を波佐見焼の器で出す。ランチは11時半から、カフェは14時半から、ディナーは18時からで、月曜は休み。",
+  "whatEn": "A dining café in Shukugo serving daily seasonal lunches and lemon steak rice bowls on Hasami ware. Lunch from 11:30 am, café from 2:30 pm, dinner from 6 pm; closed on Mondays.",
+  "note": "波佐見焼の器で昼ごはんを食べて、食後の珈琲まで。",
+  "noteEn": "Lunch on Hasami ware, and stay for a coffee afterwards.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "点心屋台くまや",
+  "nameEn": "Tenshin Yatai Kumaya",
+  "category": "food",
+  "tags": [
+   "chinese",
+   "noodles"
+  ],
+  "area": "折敷瀬郷",
+  "areaEn": "Orishikisego",
+  "address": "1911-3-A Orishikisegō, Hasami-chō",
+  "url": "https://www.instagram.com/kumaya425/",
+  "what": "折敷瀬郷の中華料理店。台湾の牛筋麺をアレンジした麻辣和牛筋湯麺や点心を、波佐見焼の器で出す。",
+  "whatEn": "A Chinese noodle and dim sum shop in Orishikisego serving mala wagyu-tendon noodle soup and handmade dim sum in Hasami-yaki bowls.",
+  "note": "波佐見焼の丼に入った麻辣和牛筋湯麺をすする。",
+  "noteEn": "A bowl of mala wagyu-tendon noodles in Hasami porcelain.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "UnDo",
+  "nameEn": "UnDo",
+  "category": "food",
+  "tags": [
+   "curry",
+   "indian"
+  ],
+  "area": "湯無田郷",
+  "areaEn": "Yumutago",
+  "address": "1112-1 Yumutagō, Hasami-chō",
+  "url": "https://www.instagram.com/undoindia/",
+  "what": "湯無田郷の築60年の団地を改装した建物の1階にあるインド料理店。スパイスから作るカレーや野菜のカリーを波佐見焼の皿で出す。",
+  "whatEn": "An Indian restaurant on the ground floor of a renovated sixty-year-old apartment building in Yumutago, serving spiced curries on Hasami ware.",
+  "note": "古い団地の光の中で、二種のカレーをひと皿に。",
+  "noteEn": "Two curries on one plate, in the light of the old apartment room.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "NOOK",
+  "nameEn": "NOOK",
+  "category": "food",
+  "tags": [
+   "lunch",
+   "obanzai"
+  ],
+  "area": "井石郷",
+  "areaEn": "Isekigo",
+  "address": "2242-8 Isekigō, Hasami-chō",
+  "url": "https://www.instagram.com/nook_hasami/",
+  "what": "やきもの公園の入口近くに2026年1月に開いた食事処。波佐見焼の器で季節のおばんざいランチと、夜の小料理を出す。昼は11時半から14時、夜は18時から21時。",
+  "whatEn": "A dining room opened in January 2026 near the entrance to Yakimono Park, serving seasonal obanzai lunches on Hasami ware and small evening plates. Lunch 11:30 am to 2 pm, dinner 6 pm to 9 pm.",
+  "note": "公園を歩いたあと、小鉢が並ぶおばんざいで一息つく。",
+  "noteEn": "After walking the park, sit down to small dishes of obanzai.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "なかみカフェ by JUNE COFFEE",
+  "nameEn": "Nakami Cafe by JUNE COFFEE",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "waffle"
+  ],
+  "area": "田ノ頭郷",
+  "areaEn": "Tanokashirago",
+  "address": "201-1 Tanokashiragō, Hasami-chō",
+  "url": "https://sotonaka.jp/",
+  "what": "貼り箱メーカー・岩嵜紙器の複合施設「そとがわとなかみ」の2階にあるカフェ。長崎市のJUNE COFFEE監修の珈琲とワッフルを出す。",
+  "whatEn": "The second-floor café inside papermaker Iwasaki Shiki's Sotogawa to Nakami complex in Tanokashirago, serving coffee overseen by Nagasaki's JUNE COFFEE and waffles.",
+  "note": "屋上に上がって、波佐見の山の風の中で珈琲を飲む。",
+  "noteEn": "Take a coffee up to the rooftop and sit in the breeze off the hills.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "COFFEE MUSUME",
+  "nameEn": "COFFEE MUSUME",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "sweets"
+  ],
+  "area": "稗木場郷",
+  "areaEn": "Hiekobago",
+  "address": "119-1 Hiekobagō, Hasami-chō",
+  "url": "https://www.instagram.com/coffee__musume/",
+  "what": "稗木場郷にある自家焙煎の珈琲と手作りスイーツのカフェ。波佐見焼の皿と楽しむモンブランパフェなどがある。",
+  "whatEn": "A café in Hiekobago serving house-roasted coffee and handmade sweets, including a Mont Blanc parfait paired with Hasami-yaki plates.",
+  "note": "自家焙煎の珈琲と一緒に、焼き物の皿のパフェを頼む。",
+  "noteEn": "House-roasted coffee and a parfait served on a local ceramic plate.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "ZOË L'Atelier de poterie",
+  "nameEn": "ZOE L'Atelier de poterie",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "ceramics"
+  ],
+  "area": "井石郷",
+  "areaEn": "Isekigo",
+  "address": "2255-5 Isekigō, Hasami-chō",
+  "url": "https://www.instagram.com/zoe_latelier_de_poterie/",
+  "what": "やきもの公園にある窯元・一誠陶器の直営ショップ兼カフェ。ZOËの器が並び、呉須色のクリームソーダや蕎麦猪口ケーキを出している。",
+  "whatEn": "The shop and café of Issei Toki kiln at Yakimono Park, stocking its ZOË tableware line alongside cobalt-blue cream sodas and cakes served in soba cups.",
+  "note": "呉須色のクリームソーダを飲みながら、直営の器を見る。",
+  "noteEn": "Look over the kiln's tableware with a cobalt-blue cream soda.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "H.O.M",
+  "nameEn": "H.O.M",
+  "category": "cafe",
+  "tags": [
+   "bakery",
+   "coffee"
+  ],
+  "area": "湯無田郷",
+  "areaEn": "Yumutago",
+  "address": "1228 Yumutagō, Hasami-chō",
+  "url": "https://www.instagram.com/h.o.m.hasami/",
+  "what": "湯無田郷に2025年12月に開いたベーカリーカフェ。焼きたてのベーグルやハードパン、珈琲が並び、店内でも食べられる。",
+  "whatEn": "A bakery and café opened in December 2025 in Yumutago, serving fresh bagels, crusty bread and coffee, with eat-in seating.",
+  "note": "焼きたてのベーグルと温かい珈琲で、午前のひと休み。",
+  "noteEn": "A fresh bagel and warm coffee for a quiet morning break.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "器屋ぎゃらりー 土くら",
+  "nameEn": "Utsuwa-ya Gallery Dokura",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware",
+   "coffee"
+  ],
+  "area": "宿郷",
+  "areaEn": "Shukugo",
+  "address": "332-3 Shukugō, Hasami-chō",
+  "url": "https://toumoto.com/",
+  "what": "陶磁器商社「陶もと」が営む宿郷の器ギャラリー＆ショップ。波佐見焼や有田焼の日常の食器とともに、和雑貨や大和屋の珈琲豆も扱う。",
+  "whatEn": "A ceramics gallery and shop in Shukugo run by pottery wholesaler Toumoto, carrying everyday Hasami and Arita ware alongside Japanese craft goods and Yamatoya coffee beans.",
+  "note": "日々の器と一緒に、大和屋の珈琲豆も少し選ぶ。",
+  "noteEn": "Choose a bag of Yamatoya coffee beans alongside the everyday bowls.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "WAZAN OUTLET SHOP",
+  "nameEn": "WAZAN OUTLET SHOP",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "折敷瀬郷",
+  "areaEn": "Orishikisego",
+  "address": "2200-1 Orishikisegō, Hasami-chō",
+  "url": "https://www.wazangama.co.jp/",
+  "what": "折敷瀬郷の窯元・和山の敷地内にある直営アウトレットショップ。マット釉の皿や菊割の器など、普段使いの波佐見焼が並ぶ。休みは不定。",
+  "whatEn": "The direct outlet shop on the grounds of the Wazan kiln in Orishikisego, stocking matte-glazed plates, fluted Kikuwari dishes and everyday Hasami ware. Closed on irregular days.",
+  "note": "マットな質感の皿と菊割の器を、色違いで見比べたい。",
+  "noteEn": "Compare the matte plates and fluted Kikuwari dishes side by side.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "FysmColor",
+  "nameEn": "FysmColor",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "折敷瀬郷",
+  "areaEn": "Orishikisego",
+  "address": "878 Orishikisegō, Hasami-chō",
+  "url": "https://fysmcolor.com/",
+  "what": "陶磁器問屋・福田陶器店の直営セレクトショップで、2026年3月に実店舗を改装。波佐見焼・有田焼の普段使いの器が揃う。9時から17時で、土・日・祝日は休み。",
+  "whatEn": "The direct shop of ceramics wholesaler Fukuda Tokiten, renovated in March 2026, offering everyday Hasami and Arita tableware. Open 9 am to 5 pm, closed Saturdays, Sundays and holidays.",
+  "note": "平日に寄って、新しくなった棚の器をゆっくり見る。",
+  "noteEn": "Stop in on a weekday to browse the newly refitted shelves at ease.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "natural69 直営店",
+  "nameEn": "natural69 Direct Shop",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "村木郷",
+  "areaEn": "Murakigo",
+  "address": "2311 Murakigō, Hasami-chō",
+  "url": "https://natural69-hasami.co.jp/",
+  "what": "1954年創業の松尾商店が、窯元と協業して自社デザインの器を作るnatural69の直営店。村木郷のアウトレット倉庫は9時から17時。",
+  "whatEn": "The direct shop of natural69 (Matsuo Shoten, founded 1954), designing original tableware with local kilns. Its outlet warehouse in Murakigo is open 9 am to 5 pm.",
+  "note": "柄違いの豆皿や蕎麦猪口を、一枚ずつ手に取って選ぶ。",
+  "noteEn": "Pick up the small plates and soba cups one pattern at a time.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "やきもの工房・ギャラリー 京千",
+  "nameEn": "Pottery Studio & Gallery Kyosen",
+  "category": "local",
+  "industry": "hasami-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "小樽郷",
+  "areaEn": "Kodarugo",
+  "address": "550 Kodarugō, Hasami-chō",
+  "url": "https://kyosen-nagasaki.jp/",
+  "what": "小樽郷の山間にある工房兼ギャラリー。日用食器や赤い器、箸置き、陶製ボタンなどを作る。11時から17時で、第1・第3日曜は休み。",
+  "whatEn": "A pottery studio and gallery in the hills of Kodarugo making everyday dishes, red-pigment ware, chopstick rests and ceramic buttons. Open 11 am to 5 pm, closed first and third Sundays.",
+  "note": "小さな箸置きや陶のボタンの中から、好きな形を探す。",
+  "noteEn": "Look through the tiny chopstick rests and ceramic buttons for a favourite shape.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "工房紫明・gallery hana",
+  "nameEn": "Koubou Shimei & gallery hana",
+  "category": "local",
+  "industry": "hasami-yaki",
+  "tags": [
+   "ceramics",
+   "craft"
+  ],
+  "area": "折敷瀬郷",
+  "areaEn": "Orishikisego",
+  "address": "1615-2 Orishikisegō, Hasami-chō",
+  "url": "https://koubou-shimei.jp/",
+  "what": "先代・中山紫明の技術を継ぐ2代目が、器や縁起物、紙や布の和雑貨を作る折敷瀬郷の工房兼ショップ。10時から17時半で、日曜・祝日は休み。",
+  "whatEn": "A workshop and shop in Orishikisego where second-generation potter Hana continues Shimei Nakayama's craft with tableware, lucky charms and paper and cloth goods. Open 10 am to 5:30 pm, closed Sundays and holidays.",
+  "note": "柔らかな絵付けの器と、紙や布の小物を並べて見たい。",
+  "noteEn": "See the softly painted porcelain alongside the paper and cloth goods.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "アイユー",
+  "nameEn": "aiyu",
+  "category": "local",
+  "industry": "hasami-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "皿山郷",
+  "areaEn": "Sarayamago",
+  "address": "380 Sarayamagō, Hasami-chō",
+  "url": "https://www.aiyu-hasami.com/",
+  "what": "皿山郷の波佐見焼商社・アイユーの直営ショップ。布目模様の「ORIME」や人間工学に基づく「e-series」などの器が並び、2013年に旧絵付け場を改装した。",
+  "whatEn": "The direct shop of Hasami-yaki maker aiyu in Sarayamago, housed in a former painting workshop renovated in 2013. Carries the textile-patterned ORIME and ergonomic e-series lines.",
+  "note": "布目の紋様が入ったORIMEの皿を、指で触れて選ぶ。",
+  "noteEn": "Run a finger over the woven texture of an ORIME plate before choosing.",
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,485 @@
+{
+ "slug": "tsubamesanjo",
+ "city": {
+  "name": "Tsubame-Sanjo",
+  "nameJa": "燕三条",
+  "latitude": "37.6° N",
+  "country": "Niigata, Japan",
+  "countryJa": "新潟県",
+  "person": "rin",
+  "coords": [
+   37.63264,
+   138.95575
+  ],
+  "intro": "Twin manufacturing towns on the Echigo Plain in Niigata, where winter brings heavy snow. Hammered copperware, hand-forged blades and woodcraft workshops, alongside sweets and a restaurant in a converted factory, as Rin's picks.",
+  "introJa": "新潟の越後平野に並ぶ、ものづくりのふたつの町。冬は雪深い土地で、鎚起銅器や打刃物、木工の工房と、合間に寄りたい菓子や食堂を、凛のおすすめで。",
+  "locator": {
+   "en": "In Niigata, on the Echigo Plain · along the Shinano River",
+   "ja": "新潟県の越後平野・信濃川の流域"
+  },
+  "industries": [
+   {
+    "key": "metal-vessels",
+    "en": "Hammered copperware and metal tableware",
+    "ja": "鎚起銅器・金属洋食器",
+    "about": "Tsubame workshops have hand-hammered vessels from single sheets of copper since the late Edo period, including Gyokusendo, founded in 1816. Today the town is also known for metal cutlery and tableware.",
+    "aboutJa": "燕では江戸の終わり頃から、一枚の銅板を金鎚で叩いて起こす鎚起銅器が作られてきた。1816年創業の玉川堂がいまも仕事を続け、町には金属の洋食器や器を作る工場も多い。",
+    "_src": "Tsubame workshops have hand-hammered copper vessels since the late Edo period and today produce the vast majority of Japan's metal cutlery and hollowware."
+   },
+   {
+    "key": "forged-blades",
+    "en": "Sanjo hand-forged blades and tools",
+    "ja": "三条打刃物・鍛冶",
+    "about": "Sanjo has been a blacksmith town since the mid-17th century, growing from nail-making into knives and tools. Workshops such as Tadafusa and Suwada still forge kitchen knives and nipper-style clippers by hand.",
+    "aboutJa": "三条は1600年代半ばから鍛冶職人が集まった町。和釘づくりから刃物へ広がり、いまもタダフサの包丁や諏訪田製作所のニッパー型爪切りなど、手で鍛える仕事が続く。",
+    "_src": "Growing out of 17th-century nail-making for local farmers, Sanjo blacksmiths forge kitchen knives, precision nippers, and woodworking tools by hand."
+   },
+   {
+    "key": "fine-woodcraft",
+    "en": "Sanjo fine wood carving and tableware",
+    "ja": "三条木工・銘木箸",
+    "about": "Drawing on temple and shrine woodcarving traditions, Sanjo craftsmen shape dense hardwoods into tableware. Marunao, founded in 1939 as a carving shop, turns ebony and rosewood into finely tapered chopsticks and spoons.",
+    "aboutJa": "寺社彫刻の技をもとに、硬い木を削って食卓の道具を作る仕事が三条に根づく。1939年に彫刻業で創業したマルナオは、黒檀や紫檀から八角箸や匙を削り出す。",
+    "_src": "Rooted in temple and shrine woodcarving traditions and carpenter toolmaking, Sanjo craftsmen shape ebony and rosewood into precision chopsticks and wooden vessels."
+   }
+  ]
+ },
+ "places": {
+  "玉川堂": {
+   "nameEn": "Gyokusendo",
+   "area": "燕",
+   "areaEn": "Tsubame",
+   "tags": [
+    "copperware",
+    "tableware"
+   ],
+   "what": "1816年創業の鎚起銅器の老舗。一枚の銅板を叩き起こして湯沸や茶器、酒器を仕立て、燕本店では工房の見学もできる。8時半から17時半、日曜・祝日は休み。",
+   "whatEn": "A hammered-copperware house founded in 1816, raising kettles, tea ware and sake vessels from single sheets of copper. Visitors can also watch the workshop at the Tsubame main shop. Open 8:30 am to 5:30 pm, closed Sundays and holidays.",
+   "note": "小さな銅の酒器か茶筒を、一つ手に取ってみたい。",
+   "noteEn": "I want to hold a small copper sake cup or tea caddy.",
+   "_src": {
+    "category": "local",
+    "industry": "metal-vessels",
+    "nameKana": "ぎょくせんどう",
+    "address": "新潟県燕市中央通2-2-21",
+    "url": "https://www.gyokusendo.com/",
+    "whatJa": "1816年創業、一枚の銅板を金鎚で叩き起こして湯沸や急須、酒器を仕立てる鎚起銅器の老舗工房兼店舗。",
+    "whatEn": "A hammered-copperware workshop and shop founded in 1816 where artisans raise teapots, kettles, and cups from single sheets of copper.",
+    "facts": "Founded in 1816 in central Tsubame and housed in a soot-darkened registered tangible cultural property timber building; artisans hammer single copper sheets over iron stake anvils (ategane) and color surfaces with traditional patina firing; visitors can watch the open workshop floor beside the shop.",
+    "weak": "",
+    "verifiedBy": "https://www.gyokusendo.com/",
+    "quote": "2026年9月29日 - 燕本店 10月の臨時休業日について",
+    "fixes": "Address on page: 〒959-1244 新潟県燕市中央通り2丁目2-21 (matches). Page says founded 1816 and offers 工場のご見学 (factory tour); opening hours 8:30〜17:30, closed Sundays/holidays.",
+    "coords": [
+     37.66527,
+     138.92937
+    ]
+   }
+  },
+  "庖丁工房タダフサ": {
+   "nameEn": "Hocho Kobo Tadafusa",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "tags": [
+    "knives",
+    "tableware"
+   ],
+   "what": "1948年創業の鍛冶工場に併設された直営店。抗菌炭化木の栗材を柄にした「基本の3本」などの手造り庖丁やまな板を扱い、研ぎ直しも受ける。",
+   "whatEn": "The factory shop of a blacksmith founded in 1948. It carries hand-forged knives with charred-chestnut handles, including its core trio, alongside cutting boards, and takes blades for re-sharpening.",
+   "note": "まずは小さなペティナイフの握り心地を確かめたい。",
+   "noteEn": "First I want to test the grip of a small petty knife.",
+   "_src": {
+    "category": "local",
+    "industry": "forged-blades",
+    "nameKana": "ほうちょうこうぼうただふさ",
+    "address": "新潟県三条市東本成寺27-16",
+    "url": "https://www.tadafusa.com/",
+    "whatJa": "1948年創業の鍛冶工房に併設された直営店で、抗菌炭化木の栗材ハンドルを備えた手造り包丁を扱う。",
+    "whatEn": "A 1948 Sanjo blacksmith's factory shop offering hand-forged kitchen knives with patented antibacterial charred-chestnut handles.",
+    "facts": "Founded in Sanjo in 1948 and known for its 'Kihon no Sanbon' (santoku, petty, and scalloped-tip bread knife) line; blades are forged and sharpened by craftsmen in the adjoining workshop; the factory shop lets visitors test-hold knives and accepts blades for re-sharpening.",
+    "weak": "",
+    "verifiedBy": "https://www.tadafusa.com/",
+    "quote": "tadafusa 研ぎ直し料金改定のお知らせ",
+    "fixes": "Address on page: 〒955-0823 新潟県三条市東本成寺27-16 (matches). Page confirms 1948 founding (昭和23年), 抗菌炭化木(栗材) handles (https://www.tadafusa.com/product/koubou_1) and a 製造工場併設の直営店 factory shop. Home page also lists 2026.10.28 event notice 「八十里マーケット」.",
+    "coords": [
+     37.61389,
+     138.94487
+    ]
+   }
+  },
+  "SUWADA OPEN FACTORY": {
+   "nameEn": "SUWADA OPEN FACTORY",
+   "area": "栄",
+   "areaEn": "Sakae",
+   "tags": [
+    "tools",
+    "cafe"
+   ],
+   "what": "1926年創業の諏訪田製作所のオープンファクトリー。ニッパー型の爪切りや盆栽鋏を作る工程を見学でき、直営店とカフェを併設する。",
+   "whatEn": "The open factory of Suwada Seisakusho, founded in 1926. Visitors can watch craftsmen make nipper-style nail clippers and bonsai shears, with a shop and café on site.",
+   "note": "工程を見たあと、カフェでひと息ついてから爪切りを選ぶ。",
+   "noteEn": "Watch the line, sit for a break at the café, then pick out a pair of clippers.",
+   "_src": {
+    "category": "local",
+    "industry": "forged-blades",
+    "nameKana": "すわだおーぷんふぁくとりー",
+    "address": "新潟県三条市高安寺1332",
+    "url": "https://www.suwada.co.jp/",
+    "whatJa": "鍛造から研磨、刃合わせまで職人の手仕事をガラス越しに見学できる、ニッパー型爪切り・盆栽鋏メーカー諏訪田製作所の直営工場兼ショップ。",
+    "whatEn": "An open-corridor blacksmith factory and shop where craftsmen forge, grind, and hand-align nipper-style nail clippers and bonsai shears.",
+    "facts": "Founded in 1926 as Suwada Seisakusho; visitors walk unreserved along a black-walled viewing corridor watching red-hot steel bars forged and hand-finished into curved nipper blades; includes a factory shop displaying the full blade lineup and scrap-steel sculptures.",
+    "weak": "",
+    "verifiedBy": "https://www.suwada.co.jp/",
+    "quote": "2026.9.29 - 工場の祭典に伴う営業日変更のお知らせ",
+    "fixes": "Address on page: 〒959-1114 新潟県三条市高安寺1332番地 (matches). Page says founded 1926 and has 工場見学 menu. Latest news 2026.10.9 mentions Cafe Smiths' new menu and Halloween events.",
+    "coords": [
+     37.5651,
+     138.93767
+    ]
+   }
+  },
+  "マルナオ": {
+   "nameEn": "Marunao",
+   "area": "栄",
+   "areaEn": "Sakae",
+   "tags": [
+    "woodcraft",
+    "chopsticks",
+    "tableware"
+   ],
+   "what": "1939年に寺社彫刻から始まった木工所のオープンファクトリーと直営店。黒檀や紫檀などの銘木から削り出す箸やレンゲを手に取って選べる。10時から19時、年末年始休み。",
+   "whatEn": "The open factory and shop of a woodworker founded in 1939 for temple carving. Visitors can handle and choose chopsticks and spoons shaped from ebony and rosewood. Open 10 am to 7 pm, closed over the New Year.",
+   "note": "八角の箸を、黒檀と紫檀で持ち比べてみたい。",
+   "noteEn": "I want to compare the feel of octagonal chopsticks in ebony and rosewood.",
+   "_src": {
+    "category": "local",
+    "industry": "fine-woodcraft",
+    "nameKana": "まるなお",
+    "address": "新潟県三条市矢田1662-1",
+    "url": "https://marunao.com/",
+    "whatJa": "寺社彫刻の技をルーツに持ち、黒檀や紫檀などの銘木から先端まで繊細な八角箸や木製カトラリーを削り出す工房兼直営店。",
+    "whatEn": "An open factory and shop crafting finely tapered octagonal chopsticks and wooden spoons from aged ebony and rosewood.",
+    "facts": "Founded in 1939 making carved wooden inkpots for carpenters before applying its joinery to hardwood chopsticks; octagonal and sixteen-sided ebony chopsticks taper to 1.5 mm tips; glass windows inside the Yada factory let visitors watch artisans plane and buff each pair.",
+    "weak": "",
+    "verifiedBy": "https://marunao.com/",
+    "quote": "2026/09/08 【秋のシルバーウィークと燕三条 工場の祭典2026】",
+    "fixes": "Address on https://marunao.com/cms/access/: 〒959-1107 新潟県三条市矢田1662-1 (matches). Home page says founded 1939 in Sanjo as temple/shrine carving business and has an OPEN FACTORY section. Home page news also lists 2026年12月16日～12月22日 新潟伊勢丹 NIIGATA越品.",
+    "coords": [
+     37.57456,
+     138.94907
+    ]
+   }
+  },
+  "FACTORY FRONT": {
+   "nameEn": "FACTORY FRONT",
+   "area": "燕",
+   "areaEn": "Tsubame",
+   "tags": [
+    "metalware",
+    "tableware",
+    "workshop"
+   ],
+   "what": "燕市の廃工場を改装したセレクトショップ。燕三条をはじめ各地の日用品や金属の器を揃え、ワークショップも開く。",
+   "whatEn": "A select shop in a renovated former factory in Tsubame, carrying metalware and everyday goods from Tsubame-Sanjo and across Japan, and hosting workshops.",
+   "note": "町で作られた小さな金属の道具を、一つずつ見て回る。",
+   "noteEn": "Look through the small metal tools made in the town, one by one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ふぁくとりーふろんと",
+    "address": "新潟県燕市東太田14-3",
+    "url": "https://factoryfront.com/",
+    "whatJa": "燕市の元工場を改装したセレクトショップ兼体験拠点で、燕三条製の金属器やカトラリー、日用品を揃える。",
+    "whatEn": "A select shop and hands-on studio inside a renovated Tsubame factory showcasing metal tableware and everyday tools made across Tsubame-Sanjo.",
+    "facts": "Run by local manufacturing collective MGNET near Nishi-Tsubame Station in a converted former factory; stocks cutlery, tumblers, kitchenware, and metal vessels sourced from small Tsubame-Sanjo workshops; hosts drop-in metalworking sessions such as hammering brass or stamping spoons.",
+    "weak": "",
+    "verifiedBy": "https://factoryfront.com/blogs/information/popup-20260903",
+    "quote": "そして、9/5(土)、9/26(土)は澤田勇一朗さんに店頭にお立ちいただきお客様に直接ご案内いただきます。",
+    "fixes": "Address on page (アクセス): 〒959-1289 新潟県燕市東太田13-2, NOT 東太田14-3 -> correct address to 新潟県燕市東太田13-2. Top page headline: 新潟県燕三条にある工場の町のセレクトショップ FACTORY FRONT; has ワークショップ menu. The MGNET operator claim and the 'drop-in metalworking sessions' were not checked on the pages I opened.",
+    "coords": [
+     37.6765,
+     138.90925
+    ]
+   },
+   "address": "新潟県燕市東太田13-2"
+  },
+  "古物再生 REYOO": {
+   "nameEn": "REYOO",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "tags": [
+    "antiques",
+    "tableware",
+    "furniture"
+   ],
+   "what": "三条の「三-Me.」1階にある古道具の店。地域の空き家から引き取った古い器や生活道具、家具を整えて並べる。平日の10時から17時、土日祝は休み。",
+   "whatEn": "An antiques shop on the ground floor of the San-Me. complex in Sanjo, selling old tableware, household tools and furniture salvaged from vacant local houses. Open weekdays 10 am to 5 pm, closed weekends and holidays.",
+   "note": "平日に開く店。棚の隅の古い小皿や茶器を探したい。",
+   "noteEn": "Open on weekdays. I want to look in the corners of the shelves for old small plates and tea ware.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "こぶつさいせいりよう",
+    "address": "新潟県三条市島田2-8-25",
+    "url": "https://reyoo.base.shop/",
+    "whatJa": "燕三条エリアの空き家から救い出した古い器や生活道具、古家具、建具を整備して販売する古物倉庫ショップ。",
+    "whatEn": "A warehouse shop salvaging and reselling old ceramics, folk tools, wooden chests, and architectural fittings rescued from vacant Tsubame-Sanjo houses.",
+    "facts": "Operated by the Tsubame-Sanjo Vacant House Utilization Project in a converted Shimada warehouse; shelves hold Meiji- and Showa-era stoneware bowls, lacquerware, ironware, and wooden shop fixtures gathered from local homes; proceeds fund regional house-reuse initiatives.",
+    "weak": "",
+    "verifiedBy": "https://reyoo.base.shop/",
+    "quote": "'26 3/28 14時から16時 店舗イベントオープン",
+    "fixes": "Address is wrong. The About page (https://reyoo.base.shop/about) says REYOO is a shop inside 地域複合交流拠点「三-Me.」, 新潟県三条市神明町5-3 1F (〒955-0063), run by 一般社団法人燕三条空き家活用プロジェクト; the page lists no Shimada 2-8-25 warehouse. Use 新潟県三条市神明町5-3 三-Me.1F (weekdays 10:00-17:00, closed Sat/Sun/holidays, basically). Stockists listed: 三-Me., 羽生紙文具店 pippi (三条市本町3-6-27, 2F), 道の駅 漢学の里しただ. whatEn/whatJa should say the shop is in the 三-Me. complex, not in a warehouse. The 'proceeds fund regional house-reuse initiatives' claim is not on the pages I read.",
+    "coords": [
+     37.62638,
+     138.94675
+    ]
+   },
+   "address": "新潟県三条市神明町5-3 三-Me.1F"
+  },
+  "菓子処 かつぼ屋": {
+   "nameEn": "Katsuboya",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "tags": [
+    "wagashi",
+    "sweets"
+   ],
+   "what": "一ノ木戸商店街にある和菓子店。季節のいちご大福やシャインマスカット大福、若桃大福、羊羹や最中などを揃える。",
+   "whatEn": "A wagashi shop on Ichinokido shopping street in Sanjo, making seasonal fruit daifuku with strawberry, Shine Muscat or young peach, alongside yokan and monaka.",
+   "note": "季節のフルーツ大福と、最中を一つずつ買って帰りたい。",
+   "noteEn": "I want to take home one seasonal fruit daifuku and one monaka.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "かしどころかつぼや",
+    "address": "新潟県三条市林町1-1-13",
+    "url": "https://katsuboya.jp/",
+    "whatJa": "明治初期創業、一ノ木戸商店街で120年以上続く老舗和菓子店で、旬の果実を包んだフルーツ大福や伝統和菓子を作る。",
+    "whatEn": "A Meiji-era wagashi shop on Sanjo's Ichinokido shopping street celebrated for seasonal whole-fruit daifuku mochi and castella.",
+    "facts": "Operating in Sanjo for over 120 years since the early Meiji era; wraps Niigata Echigohime strawberries, Shine Muscat grapes, and young green peaches in soft mochi and white bean paste; also bakes 'Castella Kuchen' blending wagashi sponge craft with butter pastry.",
+    "weak": "",
+    "verifiedBy": "https://katsuboya.jp/",
+    "quote": "明日10月23日（金）は「十三夜」です。",
+    "fixes": "Address on page: 〒955-0061 新潟県三条市林町1丁目1-13（一ノ木戸商店街）, matches. Page shows strawberry, Shine Muscat and young-peach daifuku and Castella Kuchen. The page does not state 'Meiji-era' or '120 years', or Echigohime strawberries, so those are unconfirmed.",
+    "coords": [
+     37.62864,
+     138.9645
+    ]
+   }
+  },
+  "Gelateria COCO": {
+   "nameEn": "Gelateria COCO",
+   "area": "栄",
+   "areaEn": "Sakae",
+   "tags": [
+    "gelato",
+    "sweets"
+   ],
+   "what": "農産物直売所「ただいまーと」の中にあるジェラート店。2025年にイタリアの国際大会で優勝した「マンゴーフロマージュブラン」などを手掛ける。",
+   "whatEn": "A gelateria inside the Tadaimart farmers' market in Sanjo, known for the Mango Fromage Blanc that won Italy's Coppa d'Oro competition in 2025.",
+   "note": "大会で選ばれたマンゴーフロマージュブランを頼む。",
+   "noteEn": "Order the Mango Fromage Blanc that won the competition.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "じぇらてりあここ",
+    "address": "新潟県三条市福島新田丁634",
+    "url": "https://www.gelateriacoco.jp/",
+    "whatJa": "農産物直売所「ただいまーと」内で、三条産の旬果物や生乳を使ったジェラートを毎日手作りする専門店。",
+    "whatEn": "An artisan gelateria inside Sanjo's farmers' market churning Niigata orchard fruits, local milk, and playful Tsubame-Sanjo flavors.",
+    "facts": "Its gelatiere won the grand prize at Italy's Coppa d'Oro international gelato competition with Mango Fromage Blanc; churns seasonal Sanjo Le Lectier pears, figs, strawberries, and edamame from the adjacent farmers' market; offers a bamboo-charcoal and edible-iron 'Tsubame-Sanjo Iron Ice' flavor.",
+    "weak": "",
+    "verifiedBy": "https://www.gelateriacoco.jp/",
+    "quote": "2026年7月8日、首相官邸にて木原官房長官にジェラテリアCOCOのジェラートをご試食いただく貴重な機会をいただきました。",
+    "fixes": "The site is now titled 'ジェラテリアCOCO Connect', a collaboration and product-development page. It lists 本店 〒959-1156 新潟県三条市福島新田丁634 JA 直売所 ただいまーと内, matching the address and whatJa. Mango Fromage Blanc and the Coppa d'Oro win (Dec 2025, first Japanese winner) are confirmed. The page does not mention the pear, fig or edamame flavors, or the Tsubame-Sanjo Iron Ice flavor. It also has a 京都支店 in Kameoka. It shows no daily retail menu or shop hours.",
+    "coords": [
+     37.58747,
+     138.91358
+    ]
+   }
+  },
+  "ARSÉNE": {
+   "nameEn": "ARSÉNE",
+   "area": "燕",
+   "areaEn": "Tsubame",
+   "tags": [
+    "patisserie",
+    "chocolate",
+    "sweets"
+   ],
+   "what": "燕市井土巻のパティスリー。ボンボンショコラや生チョコ、バターサンド、季節のフルーツタルトなどが並び、夏は菓子氷も出す。11時開店、火曜と不定休で水曜休み。",
+   "whatEn": "A patisserie in Idomaki, Tsubame, making bonbon chocolates, nama-choco, butter sandwiches and seasonal fruit tarts, with shaved-ice desserts in summer. Opens at 11 am; closed Tuesdays and some Wednesdays.",
+   "note": "ばら売りのボンボンショコラを、好きな味だけ少し選ぶ。",
+   "noteEn": "Pick out just a few single bonbon chocolates in the flavours I like.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "あるせーぬ",
+    "address": "新潟県燕市井土巻2-181",
+    "url": "https://arsene.ne.jp/",
+    "whatJa": "新潟県産の旬のフルーツや栗を使ったクランブルタルトや生ケーキ、ショコラを手掛ける燕市のパティスリー。",
+    "whatEn": "A Tsubame patisserie and chocolaterie crafting seasonal Niigata fruit crumble tarts, entremets, and bonbons.",
+    "facts": "Located on the Tsubame side near Tsubame-Sanjo Station in Idomaki; known locally for crisp-baked seasonal fruit and chestnut crumble tarts, layered chocolate gateaux, and giftable baked confections.",
+    "weak": "",
+    "verifiedBy": "https://arsene.ne.jp/news/612/",
+    "quote": "誠に勝手ながら開店時間を11:00に変更させていただきます。",
+    "fixes": "Address on page: 〒959-1232 新潟県燕市井土巻2丁目181, 'ICから車で5分、燕三条駅から車で5分', matches. Items listed are chocolates, bonbons, butter sand, cake, decoration cake, namachoco and a summer kakigori; an autumn chestnut×cassis item also appears. The page does not name crumble tarts or entremets. Closed Tuesdays, Wednesday irregular.",
+    "coords": [
+     37.6544,
+     138.93141
+    ]
+   }
+  },
+  "VINTAGE HALL": {
+   "nameEn": "VINTAGE HALL",
+   "area": "燕",
+   "areaEn": "Tsubame",
+   "tags": [
+    "italian",
+    "restaurant",
+    "tableware"
+   ],
+   "what": "燕市の工場街にある、青芳の食器ブランド「VINTAGEINOX」の器で料理を出すレストラン。敷地内の無農薬野菜を使ったイタリアンを、弥彦山と田んぼを望む席で味わえる。11時半から15時、月曜休み。",
+   "whatEn": "A restaurant in Tsubame's factory district serving Italian-style dishes on Aoyoshi's VINTAGEINOX tableware, using pesticide-free vegetables grown on site, with views of Mount Yahiko and the fields. Open 11:30 am to 3 pm, closed Mondays.",
+   "note": "弥彦山と田んぼの見える席で、昼のパスタを待つ。",
+   "noteEn": "Sit where Mount Yahiko and the paddies are in view, and wait for lunch pasta.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ゔぃんてーじほーる",
+    "address": "新潟県燕市小池4852-5",
+    "url": "https://ars-niigata.com/",
+    "whatJa": "燕市の金属洋食器メーカー「青芳」の複合施設内にあり、田園を望む空間でヴィンテージ加工のステンレス器に盛られたラザニアやカレーを味わえるレストラン。",
+    "whatEn": "A sunlit restaurant inside Tsubame metalware maker Aoyoshi's renovated studio serving lasagna and spice curries on stonewashed stainless tableware.",
+    "facts": "Housed inside Aoyoshi Renovation Studio (ARS) overlooking Koike's rice paddies; dishes such as baked lasagna and seasonal pasta arrive on Aoyoshi's signature stonewashed 'VINTAGE INOX' stainless steel plates and cutlery; adjoins a factory showroom and workshop space.",
+    "weak": "",
+    "verifiedBy": "https://ars-niigata.com/feed",
+    "quote": "ASRは5/2(土)、5/3(日)営業します！ 皆様のご予約お待ちしております。 ストア営業時間 [5/2・5/3]11:00～19:00 レストランはGW特別メニューで営業いたします。",
+    "fixes": "Listed url https://ars-niigata.com/ is only a '準備中' placeholder page; use the official restaurant site https://res.ars-niigata.com/ (Instagram @vintagehall_aoyoshi). Page says: 営業時間 火曜–日曜 11:30–15:00, 定休日 月曜, 46席, 新潟県燕市小池4852-5 (address matches). Page says 'イタリアンを中心とした料理' using pesticide-free vegetables grown on site, 弥彦山と田園風景を望む; 'lasagna and spice curries' not confirmed on the page I opened.",
+    "coords": [
+     37.65237,
+     138.89172
+    ]
+   },
+   "url": "https://res.ars-niigata.com/"
+  }
+ },
+ "sights": [
+  {
+   "name": "燕市産業史料館",
+   "nameEn": "Tsubame Industrial Materials Museum",
+   "kind": "art",
+   "area": "燕",
+   "areaEn": "Tsubame",
+   "address": "燕市大曲4330-1",
+   "url": "https://tim.securesite.jp/",
+   "what": "江戸時代の和釘づくりから洋食器や鎚起銅器まで、燕の金属加工の歴史を展示する史料館。体験工房館も併設する。9時から16時半、月曜休み（祝日の場合は翌平日）。",
+   "whatEn": "A museum tracing Tsubame's metalworking history from Edo-period nail-making to Western cutlery and hammered copperware, with a hands-on studio attached. Open 9 am to 4:30 pm, closed Mondays (or the following weekday if Monday is a holiday).",
+   "coords": [
+    37.65266,
+    138.9194
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "三条市歴史民俗産業資料館",
+   "nameEn": "Sanjo Historical and Folklore Industrial Museum",
+   "kind": "art",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "address": "三条市本町3-1-4",
+   "url": "https://sanjo-rekimin-homarea.jp/rekimin/",
+   "what": "1935年築の旧武徳殿を使った資料館。信濃川と五十嵐川の舟運や鍛冶の歴史を伝える古文書や民具を展示する。入館無料、9時から17時、月曜（祝日開館）と月末休み。",
+   "whatEn": "A museum housed in the 1935 former Butokuden hall, showing documents and folk tools from Sanjo's river trade and blacksmithing history. Free entry; open 9 am to 5 pm, closed Mondays (unless a holiday) and the last day of each month.",
+   "coords": [
+    37.63198,
+    138.95673
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "法華宗総本山 本成寺",
+   "nameEn": "Honjoji Temple",
+   "kind": "sight",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "address": "三条市西本成寺1-1-20",
+   "url": "https://www.city.sanjo.niigata.jp/sanjonavi/see_do/history_culture/jinja_jisha_joshi/2284.html",
+   "what": "1297年に日印上人が開いた法華宗の総本山。広い境内に本堂や三門が並び、春は桜、秋は紅葉が色づく。2月の節分には鬼踊りが行われる。",
+   "whatEn": "The head temple of the Hokke sect, founded in 1297 by Nichiin. The broad grounds hold the main hall and Sanmon gate, with cherry blossoms in spring and autumn foliage; the Oni-odori ritual is held each February.",
+   "coords": [
+    37.62272,
+    138.94474
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "燕三条地場産業振興センター 物産館",
+   "nameEn": "Tsubame-Sanjo Regional Industries Promotion Center",
+   "kind": "sight",
+   "area": "三条",
+   "areaEn": "Sanjo",
+   "address": "三条市須頃1-17",
+   "url": "https://www.tsjiba.or.jp/kankou/",
+   "what": "燕三条の洋食器や刃物、キッチン用品など約1万点を並べる物産館。9時半から17時半、毎月第1水曜と年末年始休み。",
+   "whatEn": "A regional exhibition and sales hall displaying around ten thousand items of Tsubame-Sanjo cutlery, knives and kitchenware. Open 9:30 am to 5:30 pm, closed the first Wednesday of each month and over the New Year.",
+   "coords": [
+    37.64955,
+    138.93375
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "穂生窯",
+   "verdict": "doubt",
+   "reason": "Could not copy any 2026-dated sentence from an opened page (Instagram posts not visible to logged-out fetch). Search summary mentions a 2026 窯出し but that is not a page I opened. Maker description 'husband-and-wife / potter couple' conflicts with search results."
+  },
+  {
+   "name": "koti kukka",
+   "verdict": "doubt",
+   "reason": "No sentence with an explicit 2026 date could be copied. The bio only gives month/day for the Nov event and closures, with no year."
+  },
+  {
+   "name": "ツバメコーヒー",
+   "verdict": "doubt",
+   "reason": "Only an undated bio opened (post feed not visible without login). No 2026-dated sentence."
+  },
+  {
+   "name": "KKVEL",
+   "verdict": "doubt",
+   "reason": "Newest news on the official shop is June 2023 and no 2026 evidence was found. Could be closed or inactive."
+  },
+  {
+   "name": "喫茶つばめや",
+   "verdict": "doubt",
+   "reason": "The café's own pages have no 2026 date. The operator's blog has 2026-dated posts (e.g. 'by ability — 2026年3月14日', おでんができましたよ～～♪), but they are about the NPO's workshop and do not mention the café. That is not evidence that the café itself operates in 2026."
+  },
+  {
+   "name": "サントス珈琲店",
+   "verdict": "doubt",
+   "reason": "The website has no news, notice or dated post. Hours and the menu are undated, and 'Copyright ©' has no year, so there is no evidence of operation in 2026."
+  },
+  {
+   "name": "サン・フォーレット",
+   "verdict": "doubt",
+   "reason": "The official BASE shop site has no 2026 content: its newest blog post is 2024/07/30. The Instagram page @sunforet2 and the Facebook page loaded, but without readable posts or dates. I found no copyable 2026 sentence."
+  },
+  {
+   "name": "三条スパイス研究所",
+   "verdict": "doubt",
+   "reason": "The site is JavaScript-rendered. The only readable text was the static page text (about, menu, hours), which carries no dates. The news list did not load, so I could not copy a 2026 sentence. The 2026 Kouba-no-Saiten site also did not render."
+  },
+  {
+   "name": "キママニ食堂",
+   "verdict": "doubt",
+   "reason": "No official website exists. I could not read any dated 2026 post on Instagram. Search summaries are not evidence."
+  },
+  {
+   "name": "CAMEL'S",
+   "verdict": "doubt",
+   "reason": "Instagram page is behind a login wall: I could see only the profile meta (116 posts, 3,801 followers) and no post text or dates. The only opened articles are from 2024 (things-niigata 2024.06.11). I found no 2026 sentence showing it operates in 2026, and no evidence of closure either."
+  }
+ ]
+}

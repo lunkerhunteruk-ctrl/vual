@@ -1,0 +1,338 @@
+[
+ {
+  "name": "陶庫",
+  "nameEn": "Toko",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "城内坂",
+  "areaEn": "Jonaizaka",
+  "address": "芳賀郡益子町城内坂2",
+  "url": "https://mashiko.com/",
+  "what": "1974年創業、城内坂の入り口に立つ益子焼のギャラリー。大谷石の米蔵を改装した石蔵や和室で、常設と作家の個展を開く。3〜10月は10時から18時、11〜2月は17時まで。",
+  "whatEn": "A Mashiko-yaki gallery opened in 1974 at the foot of Jonaizaka, holding permanent displays and solo shows in a converted Oya-stone rice storehouse and tatami rooms. Open 10 am to 6 pm (until 5 pm from November to February).",
+  "note": "大谷石の蔵の中で、普段使いの器を手に取って選びたい。",
+  "noteEn": "Inside the Oya-stone storehouse, I want to pick up everyday vessels and choose.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.46386,
+   140.10085
+  ]
+ },
+ {
+  "name": "小峰窯",
+  "nameEn": "Kominegama",
+  "category": "local",
+  "industry": "mashiko-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3169-1",
+  "url": "http://komine-gama.com/",
+  "what": "益子焼の窯元で、ろくろや手びねりの陶芸体験ができる工房。益子焼や縁のある作家の器と雑貨を並べるショップ「nagi」を併設する。水曜は休み。",
+  "whatEn": "A Mashiko-yaki kiln offering wheel-throwing and hand-building sessions, with an adjoining shop, nagi, selling local stoneware, other makers' pieces and small goods. Closed on Wednesdays.",
+  "note": "柿釉や糠白の器を、併設のnagiでゆっくり見比べたい。",
+  "noteEn": "In the nagi shop next door, I would take my time comparing persimmon and rice-bran glazes.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.46717,
+   140.11369
+  ]
+ },
+ {
+  "name": "Natural Bakery 日々舎",
+  "nameEn": "Natural Bakery Nichinichisha",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子4283-5",
+  "url": "https://nichinichisha.com/",
+  "what": "道祖土の木立の中の小さな小屋で焼く、自家製酵母と国産小麦のパンとベーグルの店。11時から17時で売り切れ次第終了、日・月曜は休み。",
+  "whatEn": "A small bakery in a wooden hut in Sayado making bread and bagels with wild yeast and Japanese wheat. Open 11 am to 5 pm until sold out; closed Sundays and Mondays.",
+  "note": "焼き上がったばかりのベーグルとスコーンを一つずつ選びたい。",
+  "noteEn": "I want to pick out a freshly baked bagel and a scone, one by one.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.46647,
+   140.11135
+  ]
+ },
+ {
+  "name": "益子珈琲",
+  "nameEn": "Mashiko Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "益子本通り",
+  "areaEn": "Mashiko Hondori",
+  "address": "芳賀郡益子町益子983",
+  "url": "https://mashikocoffee.jp/",
+  "what": "ブラジル・ミナスジェライス州の自社農園で育てたアラビカ種を益子の工場で焙煎するコーヒー専門店。ブレンドせず、単一農園のシングルオリジンで届ける。",
+  "whatEn": "A coffee roaster in Mashiko roasting Arabica beans grown on its own farm in Minas Gerais, Brazil, sold unblended as single-origin.",
+  "note": "ブレンドしない単一農園の豆を、飲み比べて選びたい。",
+  "noteEn": "Unblended single-farm beans—I would taste them side by side to choose.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.46105,
+   140.09323
+  ]
+ },
+ {
+  "name": "starnet",
+  "nameEn": "starnet",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "ceramics"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3278-1",
+  "url": "https://www.starnet-bkds.com/",
+  "what": "道祖土の須田ヶ池のほとりにあるカフェとギャラリー。11時から17時（ラストオーダー16時半）で、木曜は休み。",
+  "whatEn": "A café and craft gallery beside Sudagaike Pond in Sayado. Open 11 am to 5 pm (last order 4:30 pm); closed on Thursdays.",
+  "note": "池のそばの席で、益子焼の器に入った珈琲を飲みたい。",
+  "noteEn": "At a seat by the pond, I want to drink coffee poured into a Mashiko-yaki cup.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.46766,
+   140.11542
+  ]
+ },
+ {
+  "name": "なない珈琲ロースタリー",
+  "nameEn": "Nanai Coffee Roastery",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "七井・大沢",
+  "areaEn": "Nanai & Osawa",
+  "address": "芳賀郡益子町大沢1448-5",
+  "url": "https://nanaicoffee.storeinfo.jp/",
+  "what": "真岡鐵道・七井駅から歩いて1〜2分の自家焙煎珈琲工房。ハンドピックした豆を直火式で焙煎し、豆の販売も行う。火・水・木曜は休み（第4・5週は変更あり）。",
+  "whatEn": "A direct-flame coffee roastery a minute or two on foot from Nanai Station, hand-sorting beans before roasting. Usually closed Tuesdays, Wednesdays and Thursdays (schedule varies in the fourth and fifth weeks).",
+  "note": "直火焙煎のシングルオリジンを、浅煎りから深煎りまで試したい。",
+  "noteEn": "I want to try their direct-flame single-origin coffees, from light roast to dark.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   36.49166,
+   140.09542
+  ]
+ },
+ {
+  "name": "益子焼窯元よこやま",
+  "nameEn": "Mashiko-yaki Yokoyama Kiln",
+  "category": "local",
+  "industry": "mashiko-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3527-7",
+  "url": "https://tougei.net/",
+  "what": "道祖土の窯元で、炭化焼成の和食器などを制作・直売し、ろくろの陶芸体験工房やカフェ「益子の茶屋」なども併設する。",
+  "whatEn": "A Mashiko-yaki kiln compound in Sayado making and selling charcoal-fired stoneware, with wheel-throwing studios and cafés including Mashiko no Chaya.",
+  "note": "しのぎの皿や炭化焼成の器を、窯元の直売所で手に取って見たい。",
+  "noteEn": "I want to hold the fluted plates and charcoal-fired bowls at the kiln shop.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "外池酒造店",
+  "nameEn": "Tonoike Shuzoten",
+  "category": "local",
+  "industry": "mashiko-sake",
+  "tags": [
+   "sake"
+  ],
+  "area": "益子本通り",
+  "areaEn": "Mashiko Hondori",
+  "address": "芳賀郡益子町塙333-1",
+  "url": "https://tonoike.jp/",
+  "what": "1937年に塙で創業した益子の造り酒屋で、「燦爛」や「望（bo:）」を醸す。売店は10時から17時で試飲ができ、仕込み水で淹れる珈琲や甘酒ソフトのカフェ「湧-waku-」を併設する。",
+  "whatEn": "A sake brewery founded in 1937 in Hanawa, brewing Sanran and Bo:. The shop is open 10 am to 5 pm with tastings, alongside the café Waku serving brewery-water coffee and amazake soft-serve.",
+  "note": "お猪口で「燦爛」と「望」を飲み比べて、一本選びたい。",
+  "noteEn": "I want to taste Sanran and Bo: side by side in ochoko cups and pick a bottle.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "民芸店ましこ",
+  "nameEn": "Mingeiten Mashiko",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "城内坂",
+  "areaEn": "Jonaizaka",
+  "address": "芳賀郡益子町益子2901",
+  "url": "https://www.instagram.com/mingeiten_mashiko/",
+  "what": "1952年創業、城内坂の民芸店。益子の釉薬を使った日常の器や窯元の作品を扱う。",
+  "whatEn": "A folk-craft shop on Jonaizaka founded in 1952, selling Mashiko-yaki tableware and pieces finished in local glazes.",
+  "note": "益子の釉薬がかかった普段の湯呑みや鉢を手に取って見たい。",
+  "noteEn": "I want to pick up everyday teacups and bowls in Mashiko glazes.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "内町工場",
+  "nameEn": "Uchimachi Kojo",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "glass"
+  ],
+  "area": "益子本通り",
+  "areaEn": "Mashiko Hondori",
+  "address": "芳賀郡益子町益子897",
+  "url": "https://www.instagram.com/uchimachikojo/",
+  "what": "益子本通り近くの内町地区にある、日本の古家具や古道具、ガラス器と古書を扱う店。",
+  "whatEn": "An antique shop in the Uchimachi quarter off Mashiko Hondori, carrying old Japanese wooden furniture, vintage glassware and secondhand books.",
+  "note": "古い木の椅子と、ガラスの器や古書を静かに見て回りたい。",
+  "noteEn": "I want to browse quietly through the old wooden chairs, glassware and books.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "えみぱん",
+  "nameEn": "Emipan",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3018-1",
+  "url": "https://www.instagram.com/emipan_/",
+  "what": "白神こだま酵母と北海道産小麦で焼くコッペパンや焼き菓子の小さなパン屋。注文を受けてからジャムやあんを挟む。売り切れ次第終了。",
+  "whatEn": "A small bakery making koppepan rolls and baked sweets with Shirakami Kodama yeast and Hokkaido wheat, filled to order with jam or sweet bean paste. Closes when sold out.",
+  "note": "コッペパンに自家製ジャムを挟んでもらって、そのまま持ち歩きたい。",
+  "noteEn": "I want a koppepan filled to order with house-made jam to carry along.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Cheese³",
+  "nameEn": "Cheese³",
+  "category": "sweets",
+  "tags": [
+   "cheesecake"
+  ],
+  "area": "城内坂",
+  "areaEn": "Jonaizaka",
+  "address": "芳賀郡益子町益子2661-7",
+  "url": "https://www.instagram.com/_cheese.cheese.cheese_/",
+  "what": "城内坂のチーズケーキ専門店。益子産の朝どれ卵を使い、ベイクドや3層のNYチーズケーキ、季節のチーズケーキを焼く。",
+  "whatEn": "A specialty cheesecake shop near Jonaizaka baking classic, three-layer New York and seasonal cheesecakes with fresh Mashiko eggs.",
+  "note": "3層のチーズケーキか、季節のものを一つだけ選んでみたい。",
+  "noteEn": "I would pick just one slice—either the three-layer or the seasonal cheesecake.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Pain de Noémie",
+  "nameEn": "Pain de Noémie",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3371-1",
+  "url": "https://www.instagram.com/pain_de_noemie/",
+  "what": "道祖土にあるオープンキッチンのパン屋。長時間熟成のバゲットやクロワッサン、デニッシュを焼き、2階にテラスがある。",
+  "whatEn": "An open-kitchen bakery in Sayado baking long-fermented baguettes, croissants and fruit danishes, with an upstairs terrace overlooking the fields.",
+  "note": "焼きたてのクロワッサンを買って、二階のテラスから畑を眺めたい。",
+  "noteEn": "I want to buy a fresh croissant and look out over the fields from the upstairs terrace.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "自家焙煎珈琲 イチトニブンノイチ",
+  "nameEn": "Ichitonibun-no-ichi",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3435-1",
+  "url": "https://avantgalde1-1-2.jimdofree.com/",
+  "what": "益子陶芸村にある自家焙煎珈琲とアートの店。生豆を選別して焙煎し、ハンドドリップで淹れる。11時半から19時（L.O.18時半）で金曜と火・木曜のいずれかが休み。店内は撮影不可。",
+  "whatEn": "A coffee roastery and art space in Mashiko Tougei-mura roasting hand-sorted beans and brewing them by hand drip. Open 11:30 am to 7 pm (last order 6:30 pm), closed Fridays plus either Tuesday or Thursday. No photography inside.",
+  "note": "カメラをしまって、絵を眺めながら珈琲をゆっくり飲みたい。",
+  "noteEn": "Put the camera away and drink coffee slowly while looking at the paintings.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Megumi Drip",
+  "nameEn": "Megumi Drip",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "益子本通り",
+  "areaEn": "Mashiko Hondori",
+  "address": "芳賀郡益子町生田目869-6",
+  "url": "https://megumidrip.shopinfo.jp/",
+  "what": "2026年2月27日に生田目に開いた、SCAJアドバンスドコーヒーマイスターのいるカフェ。12時から20時（L.O.19時）で火・水曜は休み。支払いは現金とましコインのみ。",
+  "whatEn": "A café in Nabatame opened on 27 February 2026 by an SCAJ Advanced Coffee Meister. Open noon to 8 pm (last order 7 pm), closed Tuesdays and Wednesdays; cash and Mashicoin only.",
+  "note": "濃いめの珈琲と固めのプリンを、益子焼の皿で頼んでみたい。",
+  "noteEn": "I want to order a pour-over coffee and firm custard pudding on Mashiko pottery.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Cafe Novel",
+  "nameEn": "Cafe Novel",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "参考館・道祖土",
+  "areaEn": "Sankokan & Sayado",
+  "address": "芳賀郡益子町益子3355-1",
+  "url": "https://www.instagram.com/cafenovel2017/",
+  "what": "道祖土の路地裏にあるカフェ。ランチプレート、焼き菓子、自家製ドリンクとハンドドリップの珈琲を出す。水・日曜と不定休。",
+  "whatEn": "A quiet café off a lane in Sayado serving lunch plates, baked sweets, house-made drinks and hand-drip coffee. Closed Wednesdays, Sundays and irregular days.",
+  "note": "手ごねのスコーンとハンドドリップの珈琲で、ひと息つきたい。",
+  "noteEn": "I want to take a quiet break with a hand-kneaded scone and hand-drip coffee.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "カフェ ましこびと",
+  "nameEn": "Cafe Mashikobito",
+  "category": "food",
+  "area": "山本・上大羽",
+  "areaEn": "Yamamoto & Kamioba",
+  "address": "芳賀郡益子町上大羽496-1",
+  "url": "https://www.instagram.com/mashiko_bito965/",
+  "what": "上大羽の田園と里山に囲まれたカフェ＆レストラン。プレートランチや焼きカレー、益子の郷土料理「ビルマ汁」を出す。土曜と第1・第3木曜は休み。",
+  "whatEn": "A café and restaurant in Kamioba surrounded by fields and wooded hills, serving plate lunches, baked curry and Mashiko's local Biruma-jiru soup. Closed Saturdays and the first and third Thursdays.",
+  "note": "田んぼを眺めながら、益子のビルマ汁とご飯を頼んでみたい。",
+  "noteEn": "Looking out over the fields, I want to order Mashiko's Biruma-jiru soup with rice.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "週末食場 SONO蜩",
+  "nameEn": "Shumatsu Shokuba SONO Higurashi",
+  "category": "food",
+  "tags": [
+   "coffee"
+  ],
+  "area": "七井・大沢",
+  "areaEn": "Nanai & Osawa",
+  "address": "芳賀郡益子町大沢3584-4",
+  "url": "https://www.instagram.com/sono.higurashi/",
+  "what": "大沢の山あいに土日だけ開く食堂。陶芸家・西村俊彦の器で季節のランチプレートやサイフォン珈琲を出す。11時から日没まで。",
+  "whatEn": "A weekend-only dining room in the hills of Osawa, open Saturdays and Sundays from 11 am until sunset, serving seasonal lunch plates and siphon coffee on potter Toshihiko Nishimura's stoneware.",
+  "note": "隣の工房の器に盛られたランチのあとに、サイフォン珈琲を。",
+  "noteEn": "After a lunch served on stoneware from the studio next door, a cup of siphon coffee.",
+  "verifiedAt": "2026-11-13"
+ }
+]

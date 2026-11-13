@@ -1,0 +1,327 @@
+[
+ {
+  "name": "ベーカリーおびにたすき",
+  "nameEn": "Bakery OBI ni TASUKI",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥6-7-26",
+  "url": "https://obini-tasuki.jp/",
+  "what": "飫肥城下町の、築100年の洋館を直したベーカリー。イギリスパンやフランスパン、クロワッサン生地をもとに約30種類のパンを焼く。7時半から15時で、水・木曜は休み。",
+  "whatEn": "A bakery in a restored 100-year-old Western-style house in Obi's castle town. It bakes around thirty kinds of bread from English, French and croissant doughs. Open 7:30 am to 3 pm; closed Wednesdays and Thursdays.",
+  "note": "朝いちばんに焼きたてのクロワッサンを選びたい。",
+  "noteEn": "Pick a freshly baked croissant first thing in the morning.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62427,
+   131.35324
+  ]
+ },
+ {
+  "name": "HINA MUFFIN",
+  "nameEn": "HINA MUFFIN",
+  "category": "sweets",
+  "tags": [
+   "sweets"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥1-4-36-1",
+  "url": "https://hinamuffin-ny.jp/",
+  "what": "飫肥のニューヨークスタイルマフィンの店。国産バターを使い、生地から手作りで焼く。抹茶やチョコ、あんこと塩のマフィンも並ぶ。10時半から15時で、不定休。",
+  "whatEn": "A New York-style muffin shop in Obi, handmade from scratch with Japanese butter. Matcha, chocolate and salted red-bean muffins sit in the antique showcase. Open 10:30 am to 3 pm; irregular days off.",
+  "note": "抹茶か塩とこしあんのマフィンを選びたい。",
+  "noteEn": "Choose the matcha or the salted smooth red-bean muffin.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62537,
+   131.35669
+  ]
+ },
+ {
+  "name": "手づくりパン工房 ふわり",
+  "nameEn": "Tezukuri Pan Kobo Fuwari",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "吾田",
+  "areaEn": "Agata",
+  "address": "日南市戸高2-3-1",
+  "url": "https://www.instagram.com/handmade_fuwari/",
+  "what": "日南市戸高のパン屋。生地にこだわってパンを焼く。",
+  "whatEn": "A neighborhood bakery in Todaka, Nichinan, focused on its bread dough.",
+  "note": "朝の食卓用に、シンプルな食事パンをひとつ選びたい。",
+  "noteEn": "Pick a plain loaf for the morning table.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.5991,
+   131.37636
+  ]
+ },
+ {
+  "name": "おれんじ亭",
+  "nameEn": "Orange-tei",
+  "category": "sweets",
+  "tags": [
+   "sweets",
+   "fruit"
+  ],
+  "area": "吾田",
+  "areaEn": "Agata",
+  "address": "日南市戸高1-11-4",
+  "url": "https://www.instagram.com/orange.tei/",
+  "what": "日南市戸高のフルーツカフェ。自家農園の柑橘など季節の果物のスイーツやジュース、昔ながらのたまごドーナツが並ぶ。10時から18時で、月曜は休み。",
+  "whatEn": "A fruit café in Todaka, Nichinan, serving sweets and juices made with seasonal fruit including citrus from its own orchard, plus old-fashioned egg doughnuts. Open 10 am to 6 pm; closed Mondays.",
+  "note": "季節の柑橘のパフェと、持ち帰りにたまごドーナツを。",
+  "noteEn": "A seasonal citrus parfait, and an egg doughnut to take away.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.59972,
+   131.37718
+  ]
+ },
+ {
+  "name": "武家屋敷 伊東邸",
+  "nameEn": "Samurai House Itotei",
+  "category": "food",
+  "tags": [
+   "washoku",
+   "matcha"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥8-6-10",
+  "url": "https://www.itotei.com/",
+  "what": "飫肥藩主・伊東氏の分家の武家屋敷を直した食事処と茶寮。羽釜で炊いたご飯の食事や抹茶を出している。11時から17時で、火曜は休み。",
+  "whatEn": "A restaurant and tearoom in a restored samurai residence of a branch of the Obi domain's Ito family, serving meals with rice cooked in an iron hagama pot and matcha. Open 11 am to 5 pm; closed Tuesdays.",
+  "note": "羽釜で炊いたご飯の昼食と、食後の抹茶を庭の見える席で。",
+  "noteEn": "Lunch with hagama-cooked rice, then matcha facing the garden.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62572,
+   131.35125
+  ]
+ },
+ {
+  "name": "魚料理 びびんや",
+  "nameEn": "Bibinya",
+  "category": "food",
+  "tags": [
+   "seafood",
+   "udon"
+  ],
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市西町2-6-3",
+  "url": "https://www.bibinya.com/",
+  "what": "油津港の漁協向かいにある魚料理店。地魚やマグロの定食のほか、魚のすり身を麺にした名物の魚うどんを出す。11時から15時で、月曜は休み。",
+  "whatEn": "A seafood dining room across from the Aburatsu fishing cooperative, serving local fish and tuna sets alongside its signature gyo-udon noodles made from minced fish. Open 11 am to 3 pm; closed Mondays.",
+  "note": "魚のすり身から作った魚うどんを、まず一杯頼んでみたい。",
+  "noteEn": "Start with a bowl of gyo-udon noodles made from minced fish.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.58065,
+   131.39966
+  ]
+ },
+ {
+  "name": "港の駅めいつ",
+  "nameEn": "Minato no Eki Meitsu",
+  "category": "food",
+  "tags": [
+   "seafood"
+  ],
+  "area": "南郷",
+  "areaEn": "Nango",
+  "address": "日南市南郷町中村乙4862-9",
+  "url": "https://fishtown-meitsu.jp/",
+  "what": "目井津港の海を前にした食事処と直売所。甘めの醤油に漬けたカツオを出汁でも味わう名物のカツオめし定食などを出す。食事は10時半から15時で、月曜は休み。",
+  "whatEn": "A dining hall and market overlooking Meitsu Port, known for its katsuo-meshi set of soy-marinated skipjack served plain and with dashi broth. Dining 10:30 am to 3 pm; closed Mondays.",
+  "note": "カツオめしは、後半に熱い出汁をかけて食べるのが良さそう。",
+  "noteEn": "For the katsuo-meshi, pour the hot dashi over the second half.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.54224,
+   131.38296
+  ]
+ },
+ {
+  "name": "塒珈琲",
+  "nameEn": "Negura Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥5-2-18",
+  "url": "https://www.instagram.com/neguracoffee0410/",
+  "what": "飫肥の自家焙煎珈琲の店。10時から18時で、水曜と第3・第4木曜は休み。",
+  "whatEn": "A house-roasting coffee shop in Obi. Open 10 am to 6 pm; closed Wednesdays and the third and fourth Thursdays.",
+  "note": "城下町を歩いたあと、自家焙煎の珈琲でひと息つきたい。",
+  "noteEn": "After walking the castle town, sit down with a cup of house-roasted coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62502,
+   131.35294
+  ]
+ },
+ {
+  "name": "Dear COFFEE ROASTERS",
+  "nameEn": "Dear COFFEE ROASTERS",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市岩崎3-3-3",
+  "url": "https://www.instagram.com/dearcoffee_roasters/",
+  "what": "油津の裏通りにある自家焙煎のコーヒースタンド。カフェラテやエスプレッソに加え、ハードクッキーやベーグル、ベイクドチーズケーキが並ぶ。",
+  "whatEn": "A backstreet coffee stand in Aburatsu roasting beans in-house, serving caffe lattes and espresso alongside hard cookies, bagels and baked cheesecake.",
+  "note": "コーヒーに硬めのクッキーをひとつ添えて頼みたい。",
+  "noteEn": "Order a hard cookie alongside the coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.58835,
+   131.40097
+  ]
+ },
+ {
+  "name": "油津珈琲＋",
+  "nameEn": "Aburatsu Coffee+",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "pancakes"
+  ],
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市岩崎3-7-32",
+  "url": "https://www.instagram.com/aburatsu_coffee/",
+  "what": "油津・岩崎のカフェ。コーヒーとともに、九州パンケーキや季節のフルーツパンケーキを出している。10時から16時で、定休日はない。",
+  "whatEn": "A café in Iwasaki, Aburatsu, serving coffee with Kyushu pancakes and seasonal fruit pancakes. Open 10 am to 4 pm daily.",
+  "note": "午後のひと休みに、コーヒーと九州パンケーキを。",
+  "noteEn": "For an afternoon break, coffee and a Kyushu pancake.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.58771,
+   131.39829
+  ]
+ },
+ {
+  "name": "sanga",
+  "nameEn": "sanga",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "lunch"
+  ],
+  "area": "南郷",
+  "areaEn": "Nango",
+  "address": "日南市南郷町津屋野2061",
+  "url": "https://www.instagram.com/_cafe_sanga/",
+  "what": "南郷町・津屋野の古民家敷地内にあるカフェ。自家製パンのトースティーや玄米ボウル、キャラメルスライスを出す。営業は木・金・土曜のみ。",
+  "whatEn": "A café on the grounds of an old house in Tsuyano, Nango, serving house-baked toasties, brown-rice bowls and caramel slice. Open Thursdays, Fridays and Saturdays only.",
+  "note": "木・金・土だけの営業。トースティーとキャラメルスライスを。",
+  "noteEn": "Open Thursday to Saturday only. The toastie and the caramel slice.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.54098,
+   131.34509
+  ]
+ },
+ {
+  "name": "PAAK STOCK",
+  "nameEn": "PAAK STOCK",
+  "category": "craft",
+  "tags": [
+   "antiques",
+   "craft"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥2-5-36",
+  "url": "https://www.instagram.com/paak_stock/",
+  "what": "飫肥の古材と古道具の店。古い道具や暮らしの品を扱い、ドライフラワー専門店も併設する。火曜と週末を中心に開く。",
+  "whatEn": "An architectural salvage and vintage tool shop in Obi, with a dried-flower shop alongside. Open mainly on Tuesdays and weekends.",
+  "note": "古い器や暮らしの道具を、一つずつ手に取って選びたい。",
+  "noteEn": "Pick up the old vessels and household tools one by one.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62597,
+   131.3568
+  ]
+ },
+ {
+  "name": "オビダラリー",
+  "nameEn": "Obidaraly",
+  "category": "local",
+  "industry": "obi-cedar",
+  "tags": [
+   "wood"
+  ],
+  "area": "飫肥",
+  "areaEn": "Obi",
+  "address": "日南市飫肥4-2-28",
+  "url": "https://www.facebook.com/Obidaraly/",
+  "what": "飫肥の、飫肥杉を使った木製雑貨の店。平日は13時から17時で月・木曜休み、土日は10時から17時まで開く。",
+  "whatEn": "A shop in Obi selling wooden goods made from local Obi cedar. Open 1 pm to 5 pm on weekdays (closed Mondays and Thursdays), and 10 am to 5 pm on weekends.",
+  "note": "飫肥杉の小さな雑貨を、木目を見ながら選びたい。",
+  "noteEn": "Look at the grain while choosing a small piece of Obi cedar.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.62766,
+   131.35246
+  ]
+ },
+ {
+  "name": "河宗本店",
+  "nameEn": "Kawaso Honten",
+  "category": "local",
+  "industry": "obi-cedar",
+  "tags": [
+   "wood",
+   "tableware"
+  ],
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市園田3-1-28",
+  "url": "https://kawasohonten.com/",
+  "what": "園田に事務所を構える飫肥杉の製材会社。地元の作り手と組んで、弁当箱「SUGI_BAKO」やスツール「NEJI_ISU」などの木工製品「KAWAMOKU」を手がける。",
+  "whatEn": "An Obi cedar sawmill with its office in Sonoda, producing and selling the KAWAMOKU line of cedar lunchboxes (SUGI_BAKO) and stools (NEJI_ISU) with local makers.",
+  "note": "無垢の飫肥杉をくり抜いた弁当箱を手に取ってみたい。",
+  "noteEn": "Pick up a lunchbox milled from a solid block of Obi cedar.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.58862,
+   131.404
+  ]
+ },
+ {
+  "name": "有限会社京屋酒造",
+  "nameEn": "Kyoya Shuzo",
+  "category": "local",
+  "industry": "nichinan-shochu",
+  "tags": [
+   "shochu"
+  ],
+  "area": "油津",
+  "areaEn": "Aburatsu",
+  "address": "日南市大字平野4299",
+  "url": "https://kyo-ya.online/",
+  "what": "天保5年（1834年）創業の焼酎蔵。土に埋めた約800リットルの甕で芋焼酎「甕雫」などを仕込む。蔵の見学は要予約で、日・祝日は休み。",
+  "whatEn": "A shochu brewery founded in 1834, fermenting sweet-potato shochu such as Kameshizuku in 800-liter earthen jars buried in the floor. Tours by reservation; closed Sundays and holidays.",
+  "note": "蔵見学は要予約。土に埋まった大きな甕を見ておきたい。",
+  "noteEn": "Book a tour ahead to see the large earthen jars set into the floor.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   31.58707,
+   131.39376
+  ]
+ }
+]

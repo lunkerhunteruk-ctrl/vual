@@ -1,0 +1,66 @@
+[
+ {
+  "name": "さかい利晶の杜",
+  "nameEn": "Sakai Plaza of Rikyu and Akiko",
+  "kind": "art",
+  "area": "宿院",
+  "areaEn": "Shukuin",
+  "address": "堺市堺区宿院町西2-1-1",
+  "url": "https://www.sakai-rishonomori.com/",
+  "what": "千利休と与謝野晶子をテーマにした文化観光施設。茶の湯館や記念館の展示のほか、茶室での茶の湯体験もできる。第3火曜は展示室休館。",
+  "whatEn": "A cultural museum devoted to tea master Sen no Rikyu and poet Yosano Akiko, with exhibitions and tea-room experiences. Exhibition halls closed third Tuesdays.",
+  "coords": [
+   34.57595,
+   135.47026
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "堺伝匠館",
+  "nameEn": "Sakai Traditional Crafts Museum",
+  "kind": "art",
+  "area": "綾ノ町",
+  "areaEn": "Ayanocho",
+  "address": "堺市堺区材木町西1-1-30",
+  "url": "https://www.sakaidensan.jp/",
+  "what": "堺打刃物や線香、注染・和晒など、堺の伝統産品を展示・販売する施設。第3火曜と年末年始は休館。",
+  "whatEn": "A museum and shop presenting Sakai's traditional crafts, including forged knives, incense, and chusen-dyed textiles. Closed third Tuesdays and year-end/New Year.",
+  "coords": [
+   34.58289,
+   135.47749
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "堺市博物館",
+  "nameEn": "Sakai City Museum",
+  "kind": "art",
+  "area": "百舌鳥",
+  "areaEn": "Mozu",
+  "address": "堺市堺区百舌鳥夕雲町2丁 大仙公園内",
+  "url": "https://www.city.sakai.lg.jp/kanko/hakubutsukan/index.html",
+  "what": "大仙公園の中にある市立博物館。百舌鳥古墳群や中世の自由都市・堺の歴史資料を展示する。月曜休館。",
+  "whatEn": "The city museum inside Daisen Park, exhibiting artefacts from the Mozu Kofun tombs and Sakai's history as a medieval port city. Closed Mondays.",
+  "coords": [
+   34.55878,
+   135.48468
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "仁徳天皇陵古墳（大仙陵古墳）",
+  "nameEn": "Nintoku-tenno-ryo Kofun",
+  "kind": "sight",
+  "area": "百舌鳥",
+  "areaEn": "Mozu",
+  "address": "堺市堺区大仙町",
+  "url": "https://www.sakai-tcb.or.jp/spot/detail/126",
+  "what": "5世紀中ごろに築かれた日本最大の前方後円墳。百舌鳥古墳群の中心で、全長約486mの墳丘を三重の濠がめぐる。外周と拝所から眺める。",
+  "whatEn": "Japan's largest keyhole-shaped tomb mound, built in the mid-5th century. At 486 metres long and ringed by three moats, it anchors the Mozu Kofun group and is viewed from the outer path and worship platform.",
+  "coords": [
+   34.56342,
+   135.48693
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

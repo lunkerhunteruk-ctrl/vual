@@ -1,0 +1,551 @@
+{
+ "slug": "sakai",
+ "city": {
+  "name": "Sakai",
+  "nameJa": "堺",
+  "latitude": "34.6° N",
+  "country": "Osaka, Japan",
+  "countryJa": "大阪府",
+  "person": "rin",
+  "coords": [
+   34.57918,
+   135.47654
+  ],
+  "intro": "A former free port south of Osaka, framed by Osaka Bay and the Yamato River. Forged knives and incense workshops, centuries-old sweets, and neighbourhood coffee and bowls in Shukuin and Hamadera: Rin's picks.",
+  "introJa": "大和川の南、大阪湾に面したかつての自治都市・堺。打刃物と線香の工房、昔からの和菓子、宿院や浜寺の喫茶とごはんを、凛のおすすめで。",
+  "locator": {
+   "en": "On Osaka Bay · a flat port town south of the Yamato River",
+   "ja": "大阪湾に面した平野・大和川の南の港町"
+  },
+  "industries": [
+   {
+    "key": "knives",
+    "en": "Sakai forged knives",
+    "ja": "堺打刃物",
+    "about": "Forged blade-making in Sakai traces its roots to ironworkers who gathered to build the fifth-century kofun tombs, and later to 16th-century tobacco-cutting knives. Even today, blacksmiths, sharpeners and handle-fitters divide the work, though a few workshops like Ashi Hamono handle every step in-house.",
+    "aboutJa": "堺の打刃物は、5世紀の古墳づくりに集まった鍛冶や、16世紀のたばこ包丁にさかのぼる。いまも鍛冶・研ぎ・柄付けの分業が基本だが、芦刃物製作所のように一貫して手がける工房もある。",
+    "_src": "Growing out of kofun-era ironwork and 16th-century tobacco-cutting blades, Sakai's strict division between blacksmiths and sharpeners still produces the majority of professional Japanese chefs' knives."
+   },
+   {
+    "key": "incense",
+    "en": "Sakai incense",
+    "ja": "堺線香",
+    "about": "Stick incense in Japan began in 16th-century Sakai, when overseas trade brought aloeswood, sandalwood and medicinal aromatics straight into the port. Makers such as Baieido, founded in 1657, still blend natural fragrant woods here.",
+    "aboutJa": "日本の線香は、16世紀の海外貿易で沈香や白檀などの香木が集まった堺から始まった。1657年創業の梅栄堂のように、天然の香木を調合する老舗がいまも残る。",
+    "_src": "Stick incense in Japan began in 16th-century Sakai when Ming maritime trade brought Southeast Asian aloeswood, sandalwood, and medicinal spices straight into the port's temple quarter."
+   }
+  ]
+ },
+ "places": {
+  "芦刃物製作所": {
+   "nameEn": "Ashi Hamono",
+   "area": "綾ノ町",
+   "areaEn": "Ayanocho",
+   "tags": [
+    "knives",
+    "craft"
+   ],
+   "what": "並松町の包丁工房。熱処理から研ぎ・柄付けまで一貫して手がけ、洋包丁「銀香」などを作る。土・日・祝は休み。",
+   "whatEn": "A knife workshop in Namimatsu-cho. It handles everything from heat treatment to grinding and handle fitting in-house, making the Ginga line of knives. Closed weekends and holidays.",
+   "note": "薄い刃の「銀香」を、一本手に取ってみたい。",
+   "noteEn": "I would like to pick up one of their thin Ginga blades.",
+   "_src": {
+    "category": "local",
+    "industry": "knives",
+    "nameKana": "あしはものせいさくしょ",
+    "address": "14 Namimatsu-cho, Sakai-ku",
+    "url": "https://www.ashihamono.com/",
+    "whatJa": "大和川南詰の並松町で熱処理から研ぎ・柄付けまで一貫して手がける包丁工房。",
+    "whatEn": "A working knife workshop just south of the Yamato River known for thin, hand-ground petty and chef's blades.",
+    "facts": "Performs heat treatment, hand-grinding, sharpening, and handle fitting in-house for its ultra-thin Ginga (銀香) carbon and stainless steel petty and gyuto knives; buyers can specify steel type, wa or Western handle, and name engraving.",
+    "weak": "",
+    "verifiedBy": "https://okamiblades.com/pages/ashi-hamono",
+    "quote": "Updated September 2026 at the request of Ashi Cutlery Works Co., Ltd. (芦刃物製作所).",
+    "fixes": "",
+    "coords": [
+     34.59278,
+     135.48465
+    ]
+   }
+  },
+  "梅栄堂": {
+   "nameEn": "Baieido",
+   "area": "綾ノ町",
+   "areaEn": "Ayanocho",
+   "tags": [
+    "incense"
+   ],
+   "what": "1657年創業の線香・お香の老舗。沈香や白檀など天然の香木を調合し、代表的な「好文木」などを作る。",
+   "whatEn": "An incense maker founded in Sakai in 1657, blending natural fragrant woods such as aloeswood and sandalwood, including its signature Kobunboku.",
+   "note": "明治のころから続く「好文木」の香りを試したい。",
+   "noteEn": "I want to try the scent of Kobunboku, made since the Meiji era.",
+   "_src": {
+    "category": "local",
+    "industry": "incense",
+    "nameKana": "ばいえいどう",
+    "address": "1-1-4 Kurumanocho Higashi, Sakai-ku",
+    "url": "https://www.baieido.co.jp/",
+    "whatJa": "明暦3年（1657年）創業、沈香や白檀を用いた伝統の堺線香を調合する老舗香舗。",
+    "whatEn": "Sakai's oldest incense maker, compounding aloeswood, sandalwood, and botanical aromatics since 1657.",
+    "facts": "Began as a medicinal aromatics wholesaler in Sakai port in 1657 before crafting stick incense led by its signature Kobunboku (好文木) blend; headquarters showroom sits one minute's walk from Hanadaguchi stop on the Hankai Tramway.",
+    "weak": "",
+    "verifiedBy": "https://www.baieido.co.jp/jp/information/news/1391.html",
+    "quote": "年末年始は2026年12月29日(火)から2027年1月5日(火)までまで梅栄堂の営業はお休みをいただきます。",
+    "fixes": "whatEn: An incense maker founded in Sakai in 1657, using natural fragrant woods including aloeswood and sandalwood. whatJa: 1657年創業、沈香・白檀など天然香木の調合を得意とする堺の香・線香メーカー。",
+    "coords": [
+     34.58163,
+     135.47723
+    ]
+   }
+  },
+  "かん袋": {
+   "nameEn": "Kanbukuro",
+   "area": "宿院",
+   "areaEn": "Shukuin",
+   "tags": [
+    "wagashi",
+    "mochi"
+   ],
+   "what": "1329年創業と伝わる和菓子店。緑色の餡に餅をくるんだ「くるみ餅」と「氷くるみ餅」の店。火・水曜は休み（祝日は営業）。",
+   "whatEn": "A sweet shop tracing its start to 1329. It serves only kurumi mochi—rice cakes wrapped in green sweet paste—and shaved-ice kurumi mochi. Closed Tuesdays and Wednesdays (open on public holidays).",
+   "note": "冬でも氷くるみ餅をひとつ、店の中で食べてみたい。",
+   "noteEn": "Even in winter, I would try a single shaved-ice kurumi mochi inside.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "かんぶくろ",
+    "address": "1-2-1 Shinzaikecho Higashi, Sakai-ku",
+    "url": "https://www.kanbukuro.co.jp/",
+    "whatJa": "鎌倉末期の1329年創業と伝わる、堺名物「くるみ餅」と「氷くるみ餅」一筋の老舗和菓子店。",
+    "whatEn": "A medieval-rooted sweet shop serving soft rice-cake dumplings wrapped in smooth green-bean paste and shaved ice.",
+    "facts": "Traces its founding to 1329 and its name to Toyotomi Hideyoshi; serves only freshly pounded mochi coated in a secret sweet green-soybean paste, topped with shaved ice even in winter, steps from Terajicho tram stop.",
+    "weak": "",
+    "verifiedBy": "https://note.com/lucky_ixora717/n/nef8e07bc9d18",
+    "quote": "5組位の先客が居てはりました〜😲",
+    "fixes": "whatEn: A Sakai sweet shop serving kurumi mochi, small rice cakes wrapped in green sweet paste, and shaved-ice kurumi mochi. whatJa: 緑色の餡に小さな餅をくるんだくるみ餅と氷くるみ餅を出す和菓子店。",
+    "coords": [
+     34.57184,
+     135.46878
+    ]
+   }
+  },
+  "kokorotocacao": {
+   "nameEn": "kokorotocacao",
+   "area": "浜寺",
+   "areaEn": "Hamadera",
+   "tags": [
+    "chocolate",
+    "sweets"
+   ],
+   "what": "浜寺諏訪森町の商店街にあるチョコレート専門のお菓子屋。ケーキや焼菓子、寒い季節にはボンボンショコラも並ぶ。木曜休み。",
+   "whatEn": "A chocolate-focused sweet shop in the Hamadera Suwanomori shopping street. Cakes and baked sweets, with bonbons in the colder months. Closed Thursdays.",
+   "note": "寒い季節に並ぶボンボンショコラを、いくつか選びたい。",
+   "noteEn": "In the colder months, I would pick out a few bonbons from the case.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "こころとかかお",
+    "address": "2-176 Hamadera Suwanomoricho Naka, Nishi-ku",
+    "url": "https://www.kokorotocacao.com/",
+    "whatJa": "諏訪森商店街に店を構える、ボンボンショコラと濃厚なチョコケーキ・焼菓子の専門店。",
+    "whatEn": "An independent chocolate patisserie in Suwanomori shopping street crafting bonbons, cacao cakes, and spiced biscuits.",
+    "facts": "Pairs distinct chocolate couvertures with seasonal fruits and spices across layered cakes, winter bonbons, and gluten-free rice-flour cookies; sits between timber-built Suwanomori Station and Funao tram stop.",
+    "weak": "",
+    "verifiedBy": "https://matsurigoto.jp/event_detail.html?id=426794",
+    "quote": "浜寺で人気のkokorotocacao（ココロトカカオ）が催事出店します。",
+    "fixes": "",
+    "coords": [
+     34.55038,
+     135.44927
+    ]
+   }
+  },
+  "銀シャリ en": {
+   "nameEn": "Ginshari en",
+   "area": "宿院",
+   "areaEn": "Shukuin",
+   "tags": [
+    "teishoku",
+    "breakfast"
+   ],
+   "what": "戎之町東の定食屋。炊き立ての銀シャリと、焼き魚や小鉢などの手作りのおかずを並べる。朝ごはんも出す。",
+   "whatEn": "A teishoku diner in Ebisonocho Higashi serving freshly cooked white rice with grilled fish and handmade side dishes, from breakfast.",
+   "note": "朝に立ち寄って、焼き魚と小鉢をいくつか選びたい。",
+   "noteEn": "Stop in for breakfast and pick grilled fish and a few small side dishes.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぎんしゃり えん",
+    "address": "3-1-9 Ebisonocho Higashi, Sakai-ku",
+    "url": "https://www.instagram.com/kanameoga/",
+    "whatJa": "炊き立てのツヤツヤの銀シャリと手作りのおかず小鉢を並べる堺の大衆食堂。",
+    "whatEn": "A local teishoku diner centred on glossy kamado-style white rice and trays of handmade fish and vegetable side dishes.",
+    "facts": "Run by the former proprietor of Sakai's famed rice-cooking canteen Gekotei; diners pick grilled fish, rolled omelet, and seasonal simmered dishes from the counter to pair with freshly steamed white rice and miso soup.",
+    "weak": "",
+    "verifiedBy": "https://note.com/masu_mint8888/n/n59272323af0a",
+    "quote": "普段は行列に並ぶのが少し苦手な私ですが、「どうしてもここの朝ごはんが食べてみたい」と覚悟を決めて暖簾をくぐったのが先週のこと。",
+    "fixes": "",
+    "coords": [
+     34.57912,
+     135.47741
+    ]
+   }
+  },
+  "グリルトミー PART2": {
+   "nameEn": "Grill Tommy PART2",
+   "area": "堺東",
+   "areaEn": "Sakaihigashi",
+   "tags": [
+    "yoshoku"
+   ],
+   "what": "1971年創業、南庄町の洋食店。ハンバーグやとんかつ、海老フライ、クリームコロッケの盛合せを出す。昼のみ営業で、月・金曜は休み。",
+   "whatEn": "A yoshoku restaurant in Minamishojicho founded in 1971, serving hamburger steaks, tonkatsu, fried prawns and cream croquettes in mixed platters. Lunch only; closed Mondays and Fridays.",
+   "note": "海老フライとクリームコロッケの盛合せを頼んでみたい。",
+   "noteEn": "I would order the mixed platter with fried prawns and cream croquettes.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぐりるとみー ぱーとつー",
+    "address": "1-1-4 Minamishojicho, Sakai-ku",
+    "url": "https://www.instagram.com/tommy_part2/",
+    "whatJa": "サクサクのエビフライやクリームコロッケ、ハンバーグの盛合せで地元に愛されるカウンター洋食店。",
+    "whatEn": "A counter-seat yoshoku grill beloved by Sakai regulars for crisp fried prawns, cream croquettes, and demi-glace meat platters.",
+    "facts": "Cooks every multi-item yoshoku platter to order in an open narrow kitchen south of Sakaihigashi Station; known for generous combo lunches pairing hand-shaped hamburg steaks, tonkatsu, and house tartar sauce.",
+    "weak": "",
+    "verifiedBy": "https://ts-gourmet.net/sakai-dekamori/",
+    "quote": "グリルトミー PART2は、1971年創業の堺市にある洋食店で、ハンバーグやとんかつなど昔ながらの洋食を楽しめる一軒です。",
+    "fixes": "address: 大阪府堺市堺区南庄町1丁1−4。whatEn: A yoshoku restaurant serving hamburger steaks, tonkatsu and large mixed platters with fried prawns and cream croquettes. whatJa: ハンバーグやとんかつ、海老フライ・クリームコロッケの盛合せを出す洋食店。",
+    "coords": [
+     34.58221,
+     135.48314
+    ]
+   }
+  },
+  "麺座ぎん": {
+   "nameEn": "Menza Gin",
+   "area": "堺東",
+   "areaEn": "Sakaihigashi",
+   "tags": [
+    "ramen",
+    "tsukemen"
+   ],
+   "what": "堺東駅の近くのラーメンとつけ麺の店。極太麺に濃厚な魚介豚骨スープのつけ麺や、油そばを出す。",
+   "whatEn": "A ramen and tsukemen shop near Sakaihigashi Station, known for thick noodles with rich seafood-pork dipping broth and abura-soba.",
+   "note": "極太麺のつけ麺にするか、油そばにするか迷う。",
+   "noteEn": "Hard to choose between the thick-noodle tsukemen and the abura-soba.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "めんざぎん",
+    "address": "2-3-23 Kitakawaramachi, Sakai-ku",
+    "url": "https://www.instagram.com/menzagin121/",
+    "whatJa": "堺東駅近くの路地で行列をつくる、極太麺と濃厚魚介豚骨スープのつけ麺・ラーメン専門店。",
+    "whatEn": "An independent noodle shop near Sakaihigashi Station drawing steady local queues for thick wheat noodles and rich seafood-pork tsukemen.",
+    "facts": "Located three minutes from Sakaihigashi Station on a quiet backstreet; serves glossy, chewy thick noodles alongside slow-simmered pork-bone-and-seafood dipping broth and abura-soba.",
+    "weak": "",
+    "verifiedBy": "https://menma825.com/menzagin2026/",
+    "quote": "この時満席で外待ちは7人、待ち時間は20分ちょいかかった印象です。",
+    "fixes": "",
+    "coords": [
+     34.57624,
+     135.48331
+    ]
+   }
+  },
+  "手しごと うどん工房 はちまん": {
+   "nameEn": "Udon Kobo Hachiman",
+   "area": "浜寺",
+   "areaEn": "Hamadera",
+   "tags": [
+    "udon"
+   ],
+   "what": "浜寺石津町西のうどん店。小麦の手打ちうどんのほか、グルテンフリーの米粉うどん「さぬきごえ」も作る。",
+   "whatEn": "An udon shop in Hamadera Ishizucho Nishi making both wheat udon and its own gluten-free rice-flour udon, Sanukigoe.",
+   "note": "米粉で打つという「さぬきごえ」を一度食べてみたい。",
+   "noteEn": "I want to try Sanukigoe, their udon made with rice flour.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "てしごと うどんこうぼう はちまん",
+    "address": "4-14-1 Hamadera Ishizucho Nishi, Nishi-ku",
+    "url": "https://hachiman8.wixsite.com/hachiman",
+    "whatJa": "浜寺石津町で本格手打ちうどんとグルテンフリーの米粉うどん「さぬきごえ」を打つうどん工房。",
+    "whatEn": "An artisan udon workshop in coastal Ishizu making both traditional hand-cut udon and gluten-free Sanuki-style rice-flour udon.",
+    "facts": "Won the judges' division at Japan's U-1 Udon Grand Prix; developed its own springy rice-flour udon noodles in-house alongside dashi-rich curry udon and tempura bowls near Ishizu.",
+    "weak": "",
+    "verifiedBy": "https://kaihatsu.komeko-koubo.jp/project2025/project10/",
+    "quote": "「米粉うどん さぬきごえ」は実店舗で提供するほか、自社を含む各社通販サイトでも販売しています。",
+    "fixes": "",
+    "coords": [
+     34.55771,
+     135.45054
+    ]
+   }
+  },
+  "specialty coffee DEARCUP": {
+   "nameEn": "specialty coffee DEARCUP",
+   "area": "宿院",
+   "areaEn": "Shukuin",
+   "tags": [
+    "coffee"
+   ],
+   "what": "栄橋町の、スペシャルティコーヒーの焙煎店・喫茶店。シングルオリジンとブレンドを出す。",
+   "whatEn": "A specialty coffee roaster and café in Sakaebashicho serving single-origin and blended coffees.",
+   "note": "シングルオリジンの豆から、その日の気分で一杯選びたい。",
+   "noteEn": "I would pick a single-origin pour to match the day's mood.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "すぺしゃるてぃこーひー でぃあかっぷ",
+    "address": "1-8-3 Sakaebashicho, Sakai-ku",
+    "url": "https://www.instagram.com/dearcup_coffee/",
+    "whatJa": "店内の大型焙煎機で焼くシングルオリジン豆をハンドドリップで提供するスペシャルティコーヒー専門店。",
+    "whatEn": "An in-house specialty coffee roastery and cafe pouring single-origin hand-drip coffee into Arita porcelain cups.",
+    "facts": "Roasts specialty-grade green beans on-site between Sakai Station and the Shukuin canal quarter, brewing each cup to order by hand-drip with thick-cut toast and house-baked cakes.",
+    "weak": "",
+    "verifiedBy": "https://dearcup.theshop.jp/",
+    "quote": "このたび、配送業者の送料改定及び物流コストの上昇に伴い、誠に恐縮ではございますが、2026年10月1日より送料を改定させていただきます。",
+    "fixes": "address: 1-8-3 Sakaebashicho, Sakai-ku, Southern Crest Sakai 1F. whatEn: A specialty coffee roaster and cafe selling single-origin and blended coffees. whatJa: シングルオリジンとブレンドを販売するスペシャルティコーヒーの焙煎店・喫茶店。",
+    "coords": [
+     34.58062,
+     135.46774
+    ]
+   }
+  },
+  "自家焙煎喫茶 あおみどり": {
+   "nameEn": "Aomidori",
+   "area": "堺東",
+   "areaEn": "Sakaihigashi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "向陵西町の自家焙煎の喫茶店。注文ごとに焼くハンバーグランチのほか、量り売りの珈琲と珈琲ゼリーがある。",
+   "whatEn": "A house-roasting kissaten in Koryo Nishimachi serving made-to-order hamburger lunches, coffee beans by weight, and coffee jelly.",
+   "note": "食後の珈琲ゼリーと、量り売りの豆をひと袋。",
+   "noteEn": "Coffee jelly after lunch, and a bag of beans by weight.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "じかばいせんきっさ あおみどり",
+    "address": "1-2-10 Koryo Nishimachi, Sakai-ku",
+    "url": "https://www.instagram.com/zikabaisen_aomidori/",
+    "whatJa": "けやき通り沿いに佇む、自家焙煎のスペシャルティコーヒーと珈琲ゼリーが評判の喫茶店。",
+    "whatEn": "A house-roasted specialty coffee kissaten on tree-lined Keyaki-dori serving hand-drip coffee, coffee jelly, and iced coffee over coffee-ice.",
+    "facts": "Looks onto the zelkova trees of Keyaki-dori between Sakaihigashi and Mikunigaoka; chills its iced specialty coffee with frozen coffee cubes so the cup never dilutes, and also serves lunchtime hamburg steaks.",
+    "weak": "",
+    "verifiedBy": "https://gichancat.blog.fc2.com/blog-entry-5113.html",
+    "quote": "堺市のあおみどりさんでお昼ごはんをいただきました。",
+    "fixes": "whatEn: A Sakai cafe serving hamburger lunches, coffee and coffee jelly. whatJa: ハンバーグランチ、コーヒー、珈琲ゼリーを提供する堺の喫茶店。 address: 大阪府堺市堺区向陵西町1-2-10 向陵西マンション 1F（https://www.lavietaste.com/en/restaurant/205648 で照合）。",
+    "coords": [
+     34.57045,
+     135.49004
+    ]
+   }
+  },
+  "wabi-sabi 発酵と珈琲と。": {
+   "nameEn": "wabi-sabi Hakko to Coffee to.",
+   "area": "浜寺",
+   "areaEn": "Hamadera",
+   "tags": [
+    "coffee",
+    "lunch"
+   ],
+   "what": "浜寺昭和町のカフェ。発酵野菜のデリをのせたプレートやスパイス料理、自家焙煎珈琲を出す。",
+   "whatEn": "A café in Hamadera Showacho serving plates with fermented vegetable delis, spiced dishes, and house-roasted coffee.",
+   "note": "発酵野菜のプレートのあと、ブレンド珈琲を一杯。",
+   "noteEn": "After a fermented vegetable plate, a cup of house blend coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "わびさび はっこうとこーひーと",
+    "address": "1-1-157 Hamadera Showacho, Nishi-ku",
+    "url": "https://hakkotocoffeeto.com/",
+    "whatJa": "浜寺昭和町の静かな住宅街で、自然発酵させた香り高い自家焙煎珈琲と無添加おやつを出すカフェ。",
+    "whatEn": "A quiet cafe in Hamadera Showacho pairing naturally fermented house-roasted coffee with additive-free sweets and fermented vegetable plates.",
+    "facts": "Specialises in fermented coffee beans with winey aroma alongside additive-free puddings and house-fermented vegetable lunches, tucked into the historic villa streets near Hamadera-ekimae tram terminus.",
+    "weak": "",
+    "verifiedBy": "https://sakai-times.com/20261105-2/",
+    "quote": "飲食ブースには、地元の店を中心に20店ほどが並ぶ。",
+    "fixes": "whatEn: A cafe serving fermented vegetable dishes, spiced ethnic dishes and additive-free sweets. whatJa: 発酵野菜の料理、スパイスを効かせたエスニックメニュー、無添加スイーツを提供するカフェ。address: 浜寺昭和町1丁1-157 ハイツＭ。",
+    "coords": [
+     34.54485,
+     135.45115
+    ]
+   }
+  },
+  "plants & keramik kakine": {
+   "nameEn": "plants & keramik kakine",
+   "area": "綾ノ町",
+   "areaEn": "Ayanocho",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "七道駅の近くの、作家ものの器と暮らしの道具、季節の花を扱う店。月に2日ほど開く。",
+   "whatEn": "A shop near Shichido Station for studio ceramics, household tools and seasonal flowers, open only about two days a month.",
+   "note": "月に二日の開店日に合わせて、全国の作家の器を見たい。",
+   "noteEn": "Time a visit for one of the two open days a month to see the studio pots.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぷらんつあんどけらみっく かきね",
+    "address": "2-59-1 Nanashimacho, Sakai-ku",
+    "url": "https://www.instagram.com/p.k_kakine/",
+    "whatJa": "大和川近くの長屋を改装した、作家ものの陶磁器と季節の草花が並ぶ器と暮らしのギャラリーショップ。",
+    "whatEn": "A converted rowhouse gallery and shop near the Yamato River pairing studio ceramic vessels with fresh and dried seasonal botanicals.",
+    "facts": "Occupies a renovated timber nagaya rowhouse in Nanashimacho at Sakai's northern edge; displays small-batch handmade pottery alongside fresh cut flowers and dried arrangements styled by the owner.",
+    "weak": "",
+    "verifiedBy": "https://www.sakaikko-navi.com/detail/374/news/news-98107.html",
+    "quote": "第17回北浜蚤の市に出店します。",
+    "fixes": "whatEn: A Sakai select shop selling studio tableware and everyday household tools. whatJa: 作家もののうつわと暮らしの道具を扱う堺のセレクトショップ。",
+    "coords": [
+     34.59432,
+     135.47617
+    ]
+   }
+  },
+  "うつわと暮らしの道具 sizuku": {
+   "nameEn": "sizuku",
+   "area": "泉北",
+   "areaEn": "Semboku",
+   "tags": [
+    "ceramics",
+    "glass",
+    "woodwork"
+   ],
+   "what": "御池台の、手仕事の器と暮らしの道具の店。陶芸やガラス、木工の作家の個展や二人展を定期的に開く。",
+   "whatEn": "A shop for handmade vessels and household tools in Miikedai, holding regular solo and two-person shows of potters, glassmakers and woodworkers.",
+   "note": "個展の会期に合わせて、作家の器を一つずつ見たい。",
+   "noteEn": "Visit during a solo show to look at the maker's pots one by one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "うつわとくらしのどうぐ しずく",
+    "address": "2-5-18 Miikedai, Minami-ku",
+    "url": "https://sizuku.info/",
+    "whatJa": "全国の陶芸・ガラス・木工作家の個展や常設展示を行う、手仕事の器と台所道具のギャラリーショップ。",
+    "whatEn": "An independent gallery and shop in Semboku hosting solo and duo exhibitions of Japanese studio potters, glassblowers, and woodworkers.",
+    "facts": "Curates enduring tableware and kitchen tools from studio ceramicists such as Noboru Yagihashi and Yuko Matsuzuka alongside blown-glass and turned-wood vessels, staging regular artist solo shows.",
+    "weak": "",
+    "verifiedBy": "https://sizuku2518.exblog.jp/34027489/",
+    "quote": "10月は2年に一度の八木橋昇陶展を開催します。",
+    "fixes": "",
+    "coords": [
+     34.46602,
+     135.50838
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "さかい利晶の杜",
+   "nameEn": "Sakai Plaza of Rikyu and Akiko",
+   "kind": "art",
+   "area": "宿院",
+   "areaEn": "Shukuin",
+   "address": "堺市堺区宿院町西2-1-1",
+   "url": "https://www.sakai-rishonomori.com/",
+   "what": "千利休と与謝野晶子をテーマにした文化観光施設。茶の湯館や記念館の展示のほか、茶室での茶の湯体験もできる。第3火曜は展示室休館。",
+   "whatEn": "A cultural museum devoted to tea master Sen no Rikyu and poet Yosano Akiko, with exhibitions and tea-room experiences. Exhibition halls closed third Tuesdays.",
+   "coords": [
+    34.57595,
+    135.47026
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.sakai-rishonomori.com/ : 2026-11-12更新あり。開館 9:00-18:00（最終入館17:30）、第3火曜・年末年始休館。",
+   "_coordsSource": "OSM way 608257946（さかい利晶の杜）"
+  },
+  {
+   "name": "堺伝匠館",
+   "nameEn": "Sakai Traditional Crafts Museum",
+   "kind": "art",
+   "area": "綾ノ町",
+   "areaEn": "Ayanocho",
+   "address": "堺市堺区材木町西1-1-30",
+   "url": "https://www.sakaidensan.jp/",
+   "what": "堺打刃物や線香、注染・和晒など、堺の伝統産品を展示・販売する施設。第3火曜と年末年始は休館。",
+   "whatEn": "A museum and shop presenting Sakai's traditional crafts, including forged knives, incense, and chusen-dyed textiles. Closed third Tuesdays and year-end/New Year.",
+   "coords": [
+    34.58289,
+    135.47749
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.sakaidensan.jp/ : 〒590-0941 大阪府堺市堺区材木町西1丁1-30、開館時間10:00〜17:00、休館日 第3火曜日・年末年始。",
+   "_coordsSource": "OSM node 4937644440（堺伝統産業会館）"
+  },
+  {
+   "name": "堺市博物館",
+   "nameEn": "Sakai City Museum",
+   "kind": "art",
+   "area": "百舌鳥",
+   "areaEn": "Mozu",
+   "address": "堺市堺区百舌鳥夕雲町2丁 大仙公園内",
+   "url": "https://www.city.sakai.lg.jp/kanko/hakubutsukan/index.html",
+   "what": "大仙公園の中にある市立博物館。百舌鳥古墳群や中世の自由都市・堺の歴史資料を展示する。月曜休館。",
+   "whatEn": "The city museum inside Daisen Park, exhibiting artefacts from the Mozu Kofun tombs and Sakai's history as a medieval port city. Closed Mondays.",
+   "coords": [
+    34.55878,
+    135.48468
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.sakai.lg.jp/kanko/hakubutsukan/index.html : 2026年11月・12月開館カレンダー、2026-11-12更新あり。",
+   "_coordsSource": "OSM relation 17347564（堺市博物館）"
+  },
+  {
+   "name": "仁徳天皇陵古墳（大仙陵古墳）",
+   "nameEn": "Nintoku-tenno-ryo Kofun",
+   "kind": "sight",
+   "area": "百舌鳥",
+   "areaEn": "Mozu",
+   "address": "堺市堺区大仙町",
+   "url": "https://www.sakai-tcb.or.jp/spot/detail/126",
+   "what": "5世紀中ごろに築かれた日本最大の前方後円墳。百舌鳥古墳群の中心で、全長約486mの墳丘を三重の濠がめぐる。外周と拝所から眺める。",
+   "whatEn": "Japan's largest keyhole-shaped tomb mound, built in the mid-5th century. At 486 metres long and ringed by three moats, it anchors the Mozu Kofun group and is viewed from the outer path and worship platform.",
+   "coords": [
+    34.56342,
+    135.48693
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.sakai-tcb.or.jp/spot/detail/126 : 堺観光ガイド（令和8年3月〜令和9年3月の周遊バス案内あり）。宮内庁管理、全長約486m、三重の濠。",
+   "_coordsSource": "OSM way 30908252（大仙古墳）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "水野鍛錬所",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "協和染晒工場",
+   "verdict": "doubt",
+   "reason": "公式会社概要で昭和27年設立、注染ゆかた・注染手拭い・捺染手ぬぐい、毛穴町355-2を確認したが、お知らせは2013年のみ。2026年の営業を示す文を取得できない。"
+  },
+  {
+   "name": "本家小嶋",
+   "verdict": "doubt",
+   "reason": "公式サイトで1532年創業・芥子餅・大町西1丁2-21を確認。2026年百名店の一覧には掲載されるが、2026年の営業を示す店固有の文章は取得できない。"
+  },
+  {
+   "name": "マルミベーカリー",
+   "verdict": "doubt",
+   "reason": "公式サイトで1927年創業、もち麦・白いちじくパン、市之町東2-1-8を確認。2026年7月31日更新の市の一覧にも掲載があるが、店固有の2026年の日付付き営業の文章は取得できない。"
+  },
+  {
+   "name": "こおひい工房 まめの木",
+   "verdict": "drop",
+   "reason": "Official site explicitly says mail-order only; storefront access is suspended. Undated visitor-closure statement; homepage also has dated November 2026 blog posts."
+  },
+  {
+   "name": "コシュカ",
+   "verdict": "doubt",
+   "reason": "Official Instagram unreadable via curl. Local listing matches address 3-319-2 Hamadera Suwanomoricho Higashi but is dated 2023-04-19; no dated 2026 operating sentence retrieved."
+  },
+  {
+   "name": "ama gallery",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  }
+ ]
+}

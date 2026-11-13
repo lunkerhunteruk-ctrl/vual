@@ -1,0 +1,644 @@
+{
+ "slug": "yufuin",
+ "city": {
+  "name": "Yufuin",
+  "nameJa": "由布院",
+  "latitude": "33.3° N",
+  "country": "Oita, Japan",
+  "countryJa": "大分県",
+  "person": "rin",
+  "coords": [
+   33.26568,
+   131.36001
+  ],
+  "intro": "A hot-spring town in a basin at the foot of Mount Yufu. Mist rises from Lake Kinrinko on cold mornings; handmade sweets, coffee along Yunotsubo Street, and a kiln on the foothills, as Rin's picks.",
+  "introJa": "由布岳のふもとの盆地に広がる温泉の町。冷え込む朝は金鱗湖から霧が立ち、湯の坪街道や駅前、山麓で手づくりの菓子や珈琲、窯元を巡る、凛のおすすめで。",
+  "locator": {
+   "en": "In Oita, on Kyushu · in a mountain basin below Mount Yufu",
+   "ja": "九州の大分県・由布岳のふもとの盆地"
+  },
+  "industries": [
+   {
+    "key": "yufuin-preserves-sweets",
+    "en": "Yufuin small-batch preserves and confections",
+    "ja": "由布院の手作りジャム・菓子工房",
+    "about": "Independent kitchens in the Yufuin basin have grown alongside the town's rural inns, cooking local fruit, milk and eggs in small batches into jams, dorayaki and baked sweets.",
+    "aboutJa": "由布院の宿の文化とともに育った小さな菓子やジャムの工房。盆地の果物や牛乳、卵を使い、少量ずつ丁寧に仕込む。",
+    "_src": "Grown alongside Yufuin's rural-inn movement, independent basin kitchens cook Kyushu orchard fruit, local dairy, and bean paste in small batches without artificial flavourings."
+   }
+  ]
+ },
+ "places": {
+  "こちょぱん": {
+   "nameEn": "Kochopan",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "tags": [
+    "bagel",
+    "bread"
+   ],
+   "what": "由布院温泉の源泉に生地をくぐらせてから焼く「おんせんベーグル」の店。国産小麦や国産大豆を使い、もっちりとした食感に仕上げる。",
+   "whatEn": "A small bakery near Yufuin Station making \"onsen bagels\" dipped in local hot-spring water before baking. Made with domestic wheat and soybeans for a chewy crumb.",
+   "note": "白いチョコやいちじくのベーグルを、一つずつ選んでみたい。",
+   "noteEn": "I'd like to pick out the white chocolate and fig bagels one by one.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "こちょぱん",
+    "address": "湯布院町川上3725-13",
+    "url": "http://kochopan.com/",
+    "whatJa": "由布院温泉の源泉で茹でてから焼き上げる、もっちり食感の「おんせんベーグル」や惣菜パンが人気の小さなパン屋。",
+    "whatEn": "Small local bakery near Yufuin Station best known for chewy Onsen Bagels boiled in Yufuin hot-spring water before baking.",
+    "facts": "Inspired by Yufuin homes where hot-spring water flows from kitchen taps; boils bagel dough in local onsen water for a chewy crumb; sells out early in the afternoon.",
+    "weak": "",
+    "verifiedBy": "http://kochopan.com/",
+    "quote": "2026.10.02 ReHac9−リハック九州で紹介されました。",
+    "fixes": "",
+    "coords": [
+     33.26393,
+     131.35639
+    ]
+   }
+  },
+  "ティールーム ニコル": {
+   "nameEn": "Tearoom Nicol's",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "tags": [
+    "coffee",
+    "tea",
+    "sweets"
+   ],
+   "what": "老舗旅館「由布院 玉の湯」内のラウンジ「ニコルズ」の昼の部。13時から17時までティールームとして開き、厳選した茶や大分市のハーブティー、精進豆やゴルゴンゾーラのチーズケーキを出す。",
+   "whatEn": "The daytime tearoom of Lounge Nicol's inside the inn Yufuin Tamanoyu. Open 13:00–17:00 for selected teas, Oita herb tea, shojin beans and Gorgonzola cheesecake.",
+   "note": "センノキの一枚板のカウンターで、焙じ茶とチーズケーキを。",
+   "noteEn": "At the single-slab sen-no-ki counter, with roasted green tea and cheesecake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "てぃーるーむ にこる",
+    "address": "湯布院町川上2731-1",
+    "url": "https://tamanoyu.co.jp/bar/",
+    "whatJa": "老舗旅館「由布院 玉の湯」内の雑木林を望むティールームで、薄切りりんごを重ねた名物アップルパイと珈琲・紅茶を提供する。",
+    "whatEn": "Woodland tearoom and coffee lounge inside historic inn Yufuin Tamanoyu, overlooking a dappled maple courtyard and known for crisp-layered apple pie.",
+    "facts": "Open to non-staying daytime visitors inside Yufuin Tamanoyu at Kawakami 2731-1; looks onto a mossy woodland garden; famous for thinly sliced apple pie that frequently sells out before noon.",
+    "weak": "",
+    "verifiedBy": "https://tamanoyu.co.jp/news/",
+    "quote": "【ラウンジ･ニコルズ】11月店休日のお知らせ",
+    "fixes": "Page https://tamanoyu.co.jp/bar/ calls it ラウンジ ニコルズ (bar + tearoom), tearoom 13:00-17:00; address 湯布院町川上2731-1 matches. Apple pie not mentioned on page; menu lists 精進豆 and ゴルゴンゾーラのチーズケーキ, tea selection. Name on site is 'ニコルズ / Nicol's'.",
+    "coords": [
+     33.26569,
+     131.3631
+    ]
+   }
+  },
+  "由布院 鞠智": {
+   "nameEn": "Yufuin Cucuchi",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "tags": [
+    "wagashi",
+    "jam"
+   ],
+   "what": "湯の坪通りの古民家を改装した菓子とジャムの店。焼き立てのどら焼きやコンフィチュール、自家製ジンジャーエールを扱う。平日10時から17時、土日祝は17時半まで。",
+   "whatEn": "A confectionery and jam shop in a renovated old house on Yunotsubo Street, selling freshly baked dorayaki, confitures and house-made ginger ale. Open 10:00–17:00 on weekdays, until 17:30 on weekends and holidays.",
+   "note": "焼き立てのどら焼きと、小瓶のジャムを一つ見たい。",
+   "noteEn": "Freshly baked dorayaki, and a small jar of jam to look through.",
+   "_src": {
+    "category": "local",
+    "industry": "yufuin-preserves-sweets",
+    "nameKana": "ゆふいん くくち",
+    "address": "湯布院町川上3001-1",
+    "url": "https://cucuchi.jp/",
+    "whatJa": "移築した古民家で銅板手焼きのどら焼きを焼き上げ、大分県産果実のコンフィチュールや柚子胡椒も自社工房で作る菓子舗。",
+    "whatEn": "Confectionery and preserves house on Yunotsubo Street griddling copper-pan dorayaki by hand and simmering Oita fruit confitures and yuzu-kosho condiments.",
+    "facts": "Housed in a relocated traditional timber building on Yunotsubo Street with an inner biotope courtyard; hand-bakes dorayaki pancakes on copper griddles and produces house-made fruit preserves and condiments.",
+    "weak": "",
+    "verifiedBy": "https://cucuchi.jp/1663/",
+    "quote": "日頃より由布院 鞠智をご利用いただきありがとうございます。",
+    "fixes": "whatEn/whatJa: 公式トップは『古民家を改装した店舗』と記載。『移築』は『改装』に修正。銅板・大分県産果実・柚子胡椒・自社工房の詳細は今回開いた本文では確認できず。 住所湯布院町川上3001-1は公式 https://cucuchi.jp/access/ で一致。",
+    "coords": null
+   }
+  },
+  "LINGON": {
+   "nameEn": "LINGON",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "tags": [
+    "cookies",
+    "sweets"
+   ],
+   "what": "湯の坪街道沿いの、ギャラリーを併設したクッキー専門店。バターを使った8種の生地にナッツやドライフルーツなどを合わせ、25種類以上のクッキーを焼く。",
+   "whatEn": "A cookie shop with an attached gallery on Yunotsubo Street. It bakes over 25 varieties of butter cookies from eight doughs with nuts and dried fruit.",
+   "note": "ごまやダージリンのクッキーを、少しずつ選んでみたい。",
+   "noteEn": "I'd like to pick out a few of the sesame and Darjeeling cookies.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "りんごん",
+    "address": "湯布院町川上1510-7",
+    "url": "http://lingon.jp/",
+    "whatJa": "湯の坪街道沿いのギャラリー併設クッキー専門店で、良質なバターとナッツや果実を使った約25〜30種のクッキーを1枚から販売する。",
+    "whatEn": "Cookie bakery and small gallery on Yunotsubo Street lining wooden counters with roughly thirty varieties of butter cookies sold individually.",
+    "facts": "Displays 25–30 varieties of freshly baked cookies unwrapped on trays for single-piece selection; uses rich butter, nuts, spices, and dried fruits; small exhibition space attached.",
+    "weak": "",
+    "verifiedBy": "https://www.funliday.com/posts/yufuin-omiyage/",
+    "quote": "由布院的餅乾專賣店「LINGON」，使用大量優質奶油製作手工餅乾，搭配堅果、果乾、巧克力等不同食材，目前推出超過 25 種口味。",
+    "fixes": "whatEn/whatJa: 種類数は公式記載の25種類以上／over 25 varietiesに統一。ギャラリー・バター・ナッツ・ドライフルーツと住所湯布院町川上1510-7はhttps://lingon.jp/で確認。1枚単位販売は今回の本文で確認できず。",
+    "coords": null
+   }
+  },
+  "telato": {
+   "nameEn": "telato",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "tags": [
+    "matcha",
+    "gelato"
+   ],
+   "what": "由布院駅近くの日本茶ジェラート専門店。福岡・星野村産の抹茶を1倍から5倍までの濃さとプレミアムで出し、玉露やほうじ茶のジェラートもある。",
+   "whatEn": "A Japanese-tea gelato shop near Yufuin Station. It serves matcha from Hoshino-mura in Fukuoka in five strengths plus Premium, alongside gyokuro and hojicha.",
+   "note": "抹茶の濃さを比べて、一番濃いところか玉露を選ぶ。",
+   "noteEn": "Compare the matcha strengths, and pick the deepest one or the gyokuro.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "てらーと",
+    "address": "湯布院町川上2939-4",
+    "url": "https://www.instagram.com/telato.yufuin/",
+    "whatJa": "由布院の老舗茶舗が手がける日本茶ジェラート専門店で、星野村産抹茶の1倍〜5倍までの濃さ別ジェラートや玉露・ほうじ茶味を提供する。",
+    "whatEn": "Tea-gelato shop near Yufuin Station run by a longtime local tea merchant, churning Hoshino-mura matcha in five graded intensities alongside hojicha and gyokuro.",
+    "facts": "Produced by long-established Yufuin tea merchant Aso Chaho; offers five concentration levels of Fukuoka Hoshino-mura matcha gelato plus gyokuro and Japanese black tea; daily limited serving comes in an Onta-yaki ceramic cup.",
+    "weak": "",
+    "verifiedBy": "https://janetchen0707.com/yufuin-food-guide-yunotsubo-street/",
+    "quote": "《telato》是位於由布院車站附近的人氣抹茶義式冰淇淋 (Gelato) 專賣店，主打選用福岡星野村的高級抹茶粉，以及阿蘇澤西牛奶製作，在 Google 上獲得4.6顆星的高評價",
+    "fixes": "住所湯布院町川上2939-4、星野村抹茶、1〜5段階、玉露・焙茶は2026年記事本文に一致。whatEn/whatJa: 1〜5段階に加えPremiumも記載あり。老舗茶舗の経営という出自は開いた記事本文では確認できず。",
+    "coords": null
+   }
+  },
+  "オニパンカフェ": {
+   "nameEn": "Onipain Cafe",
+   "area": "由布岳山麓・塚原",
+   "areaEn": "Mt. Yufu Foothills & Tsukahara",
+   "tags": [
+    "bread"
+   ],
+   "what": "塚原高原にある小さなパン屋。天然酵母を使い、無添加で、マーガリンやショートニングを使わずにパンを焼く。9時から16時で、火・水曜は休み（祝日は営業）。",
+   "whatEn": "A small bakery on the Tsukahara Plateau baking additive-free bread with natural yeast, without margarine or shortening. Open 9:00–16:00, closed Tuesdays and Wednesdays (open on public holidays).",
+   "note": "火水は休み。塚原の朝に、焼きたてのパンを一つ買いたい。",
+   "noteEn": "Closed Tuesdays and Wednesdays. On a Tsukahara morning, I'd like to buy one loaf fresh from the oven.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おにぱんかふぇ",
+    "address": "湯布院町塚原135-142",
+    "url": "https://onipain.com/",
+    "whatJa": "塚原高原の自然の中で自家製天然酵母と無添加素材にこだわり、名物のクレッセント（ツノパン）やハード系・惣菜パンを焼くベーカリー。",
+    "whatEn": "Highland bakery on the Tsukahara Plateau baking additive-free breads with house-cultured natural yeast, fresh butter, and stone-hearth steam.",
+    "facts": "Located along Prefectural Route 617 on Tsukahara Plateau; ferments dough with homemade natural yeast and zero preservatives; beloved by locals for crisp horn-shaped Crescent rolls and country loaves.",
+    "weak": "",
+    "verifiedBy": "https://onipain.com/16716/",
+    "quote": "本日は祝日です。祝日は営業！しかも朝9時から。",
+    "fixes": "住所湯布院町塚原135-142を公式本文で確認。whatEn/whatJaは天然酵母・無添加・マーガリンとショートニング不使用まで公式トップで確認できる。自家培養酵母・石床蒸気焼成は今回の本文で確認できず、削除を推奨。",
+    "coords": null
+   }
+  },
+  "湯布院ゆふふ": {
+   "nameEn": "Yufuin Yufufu",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "tags": [
+    "sweets",
+    "pudding"
+   ],
+   "what": "由布院駅から徒歩1分の洋菓子店。毎日仕入れる産み立ての卵と毎朝届く搾りたての牛乳を使い、ロールケーキやなめらかプリンなど約30種類の菓子を手作りする。",
+   "whatEn": "A patisserie a minute's walk from Yufuin Station, making around 30 kinds of sweets including roll cakes and smooth puddings from daily-delivered eggs and morning milk.",
+   "note": "たまごロールとなめらかプリン、帰る前に駅の前で寄りたい。",
+   "noteEn": "Tamago roll and smooth pudding, to stop by in front of the station before heading back.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ゆふいんゆふふ",
+    "address": "湯布院町川北2-1",
+    "url": "http://www.yufufu.com/",
+    "whatJa": "由布院駅すぐそばの洋菓子店で、毎朝搾りたての牛乳と地元産の新鮮卵を使った「湯布院たまごロール」やなめらかプリンを手作りする。",
+    "whatEn": "Local patisserie steps from Yufuin Station baking fluffy Tamago Roll sponge cakes and smooth puddings from morning-milked Oita dairy and farm-fresh eggs.",
+    "facts": "Stands one minute from JR Yufuin Station at Kawakita 2-1; bakes signature Yufuin Tamago Roll and steamed-cream puddings daily in-house using fresh local eggs and Oita milk.",
+    "weak": "",
+    "verifiedBy": "https://jafmate.jp/drive/road_trip_20260914_1.html",
+    "quote": "地元の搾りたて牛乳や新鮮卵など、こだわりの素材を使って職人が丁寧に手作りするスイーツが評判。",
+    "fixes": "住所湯布院町川北2-1、たまごロール、なめらかプリン、地元牛乳と卵は2026年JAF記事で一致。毎朝の搾乳という頻度・Oita dairyという産地断定は同記事にはない。",
+    "coords": null
+   }
+  },
+  "CAFE 森の交茶店": {
+   "nameEn": "CAFE Mori no Kousaten",
+   "area": "川西",
+   "areaEn": "Kawanishi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "川西の森の中にあるオープンカフェで、自家焙煎珈琲店「CAFE BON VOYAGE！」の支店。ドイツ製の大型焙煎機で煎った珈琲を、真空管アンプと大型スピーカーのあるリスニングルームや木製ベンチで味わえる。11時から17時で、火・水曜は休み。",
+   "whatEn": "An open-air forest café in Kawanishi, a branch of roaster CAFE BON VOYAGE! Coffee roasted on a large German roaster is served with a listening room of tube amps and large speakers, or on wooden benches. Open 11:00–17:00, closed Tuesdays and Wednesdays.",
+   "note": "木製ベンチで外の空気を吸いながら、ブレンドを一杯。",
+   "noteEn": "A cup of the house blend on a wooden bench, taking in the forest air.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇ もりのこうさてん",
+    "address": "湯布院町川西1750-137",
+    "url": "https://www.morinokousaten.jp/",
+    "whatJa": "川西の森の中に佇む自家焙煎珈琲カフェで、ドイツ製プロバット焙煎機で煎った珈琲と音楽リスニングルームを備える。",
+    "whatEn": "Forest coffeehouse in Kawanishi serving beans roasted on a vintage German Probat roaster alongside a dedicated vinyl listening room.",
+    "facts": "Woodland cafe run by Yufuin's pioneering Probat roaster Cafe Bon Voyage; set inside Tsumiki no Mori at Kawanishi 1750-137 with open-air forest seating and an audio listening space.",
+    "weak": "",
+    "verifiedBy": "https://obs-oita.co.jp/tv/nicecatch/nicecatch_review/59568.html",
+    "quote": "大自然の中でコーヒーや軽食が楽しめる。",
+    "fixes": "住所湯布院町川西1750-137は2026年OBS記事本文と一致。whatEn: A woodland cafe serving blend coffee and light meals, with log-house seating when available. whatJa: 森の中でブレンドコーヒーやカレーなどの軽食を提供し、空いていればログハウスで寛げるカフェ。プロバット焙煎機・自家焙煎・専用音楽リスニングルームは今回読めた記事では裏付けなし。",
+    "coords": null
+   }
+  },
+  "湯布珈琲": {
+   "nameEn": "Yufu Coffee",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "tags": [
+    "coffee"
+   ],
+   "what": "湯の坪街道沿いの古民家を改装したロースタリーカフェ。店内の富士珈機R-105で焙煎した珈琲やエスプレッソを出し、豆やドリップバッグ、オリジナルの手拭いやカップも並ぶ。",
+   "whatEn": "A roastery café in a renovated old townhouse along Yunotsubo Street. It serves coffee and espresso roasted in-house on a Fuji Royal R-105, and sells beans, drip bags and original tenugui and cups.",
+   "note": "店内で焙煎した豆を一袋と、手拭いの棚も見てみたい。",
+   "noteEn": "A bag of beans roasted in-house, and a look at the shelf of tenugui.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ゆふこーひー",
+    "address": "湯布院町川上1524-27",
+    "url": "https://yufucoffee.com/",
+    "whatJa": "湯の坪街道沿いの古民家を改装したロースタリー＆カフェで、店内焙煎の新鮮なドリップ珈琲やエスプレッソを提供する。",
+    "whatEn": "Roastery and coffee stand housed in a renovated timber townhouse on Yunotsubo Street, roasting specialty beans in-house on a Fuji Royal roaster.",
+    "facts": "Equipped with an in-store Fuji Royal roaster inside a converted kominka at Kawakami 1524-27; serves freshly roasted single-origin pour-overs, espresso drinks, and sells whole-bean bags.",
+    "weak": "",
+    "verifiedBy": "https://daxian1329.pixnet.net/blog/posts/884389081178652849",
+    "quote": "友人很喜歡喝咖啡，剛好路過了這間湯布珈琲，他說味道很不錯，大家可以進去買一杯來喝喝看，而且外觀也很漂亮，很適合拍照打卡，裡面也有座位區，累了不妨進去喝杯咖啡休息一下~",
+    "fixes": "公式About https://yufucoffee.com/pages/湯布珈琲 で住所湯布院町川上1524-27、古民家改装、店内焙煎、FUJI ROYAL R-105、エスプレッソを確認。説明・住所に訂正なし。",
+    "coords": null
+   }
+  },
+  "CAFE LA RUCHE": {
+   "nameEn": "CAFE LA RUCHE",
+   "area": "金鱗湖",
+   "areaEn": "Lake Kinrinko",
+   "tags": [
+    "coffee",
+    "bread",
+    "gallery"
+   ],
+   "what": "金鱗湖のほとりに建つベーカリーカフェ。店内で焼く天然酵母のクロワッサンなどのパンと自家焙煎コーヒーをテラスや店内で楽しめ、2階はギャラリーとショップになっている。",
+   "whatEn": "A bakery café on the shore of Lake Kinrinko, serving natural-yeast croissants baked in-house and house-roasted coffee, with a gallery and shop on the second floor.",
+   "note": "湖の見える席でクロワッサンを食べて、二階のギャラリーへ。",
+   "noteEn": "A croissant at a lakeside seat, then upstairs to the gallery.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇ ら りゅーしゅ",
+    "address": "湯布院町川上1592-1",
+    "url": "https://cafelaruche.jp/",
+    "whatJa": "金鱗湖の湖畔に建つギャラリー併設のベーカリーカフェで、湖を望む木製デッキでハンドドリップ珈琲と自家製パンを楽しめる。",
+    "whatEn": "Lakeside bakery-cafe and upstairs gallery directly on the shore of Lake Kinrinko, pairing hand-drip coffee with crisp natural-yeast croissants.",
+    "facts": "Open wooden terrace faces directly across the mist-prone waters of Lake Kinrinko; bakes flaky natural-yeast croissants in-house and hosts art exhibitions on the second floor.",
+    "weak": "",
+    "verifiedBy": "https://cafelaruche.jp/",
+    "quote": "2026年\n9月23日（水｜祝）営業いたします。",
+    "fixes": "住所湯布院町川上1592-1、金鱗湖畔、ベーカリー、天然酵母クロワッサン、2階GALLERY&SHOPは公式本文と一致。ハンドドリップ方式は本文で確認できず。",
+    "coords": null
+   }
+  },
+  "イタリア家庭料理 南の風": {
+   "nameEn": "Minami no Kaze",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "tags": [
+    "italian",
+    "pasta",
+    "pizza"
+   ],
+   "what": "由布院盆地の田園に立つイタリア家庭料理の店。地元の旬の食材やチーズを使い、手打ち生麺のパスタや石窯ピッツァ、自家製の菓子やパンを作る。10時から22時で、火曜は休み。",
+   "whatEn": "A home-style Italian restaurant set in the rice fields of the Yufuin basin, serving fresh handmade pasta, stone-oven pizza, baked sweets and bread with local seasonal ingredients. Open 10:00–22:00, closed Tuesdays.",
+   "note": "手打ちのパスタか石窯のピッツァを、昼の明るい時間に。",
+   "noteEn": "Handmade pasta or stone-oven pizza, in the bright hours of midday.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "いたりあかていりょうり みなみのかぜ",
+    "address": "湯布院町川上3616-1",
+    "url": "http://yufuinn-minaminokaze.com/",
+    "whatJa": "由布院駅近くの田園の中に佇む一軒家イタリアンで、地元野菜を使った手打ちパスタや石窯ピッツァなどの家庭料理を供する。",
+    "whatEn": "Rustic Italian trattoria surrounded by rice paddies a short walk from Yufuin Station, cooking handmade pasta and stone-oven pizza with basin vegetables.",
+    "facts": "Five minutes' walk from JR Yufuin Station amid open paddy fields facing Mt. Yufu; longtime local favourite for unpretentious home-style Italian lunches, fresh pasta, and crisp pizzas.",
+    "weak": "",
+    "verifiedBy": "https://yufuinn-minaminokaze.com/%E3%81%82%E3%81%8D%E3%81%AE%E3%83%86%E3%83%BC%E3%82%AF%E3%82%A2%E3%82%A6%E3%83%88/",
+    "quote": "石窯手打ちピッツア　￥2000＝自家製ベーコン・自家製鶏ハム・アンチョビ・マルゲリータ",
+    "fixes": "公式の2026年告知は石窯手打ちピッツア・手打ち生麺、トップは湯布院の旬の食材を記載。公式地図ページ https://yufuinn-minaminokaze.com/地図/ の住所は湯布院町川上３６１６（枝番-1の記載なし）。",
+    "coords": null
+   }
+  },
+  "洋食の店 la porte": {
+   "nameEn": "la porte",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "tags": [
+    "yoshoku"
+   ],
+   "what": "大きな窓から由布岳と田園風景を望む洋食店。ハンバーグやオムライスなどの洋食を出す。",
+   "whatEn": "A yoshoku restaurant with wide windows looking out on Mount Yufu and the surrounding fields, serving hamburger steaks and omurice.",
+   "note": "窓から由布岳と田んぼを眺めながら、ハンバーグを待つ。",
+   "noteEn": "Looking out at Mount Yufu and the fields while waiting for the hamburger steak.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ようしょくのみせ ら ぽるて",
+    "address": "湯布院町川上2798-2",
+    "url": "https://www.instagram.com/la_porte_yufuin/",
+    "whatJa": "大きな窓から由布岳と田園風景を望む洋食レストランで、肉汁あふれる200g超のハンバーグステーキやオムライスが評判。",
+    "whatEn": "Neighbourhood yoshoku kitchen framing wide window views of Mt. Yufu and rice fields, prized locally for hand-formed 200g hamburger steaks and omelettes.",
+    "facts": "Located on a quiet lane off the tourist thoroughfare at Kawakami 2798-2; best known for thick, juicy house-ground hamburger steaks, Oita wagyu plates, and classic demi-glace yoshoku.",
+    "weak": "",
+    "verifiedBy": "https://tennoniwa.jp/diary",
+    "quote": "この日はお客さんも多く、撮影できず・・・ぜひ、実際に行って景色を楽しんでください。",
+    "fixes": "住所湯布院町川上2798-2・由布岳と田園の眺め・ハンバーグ・オムライスは https://www.hotpepper.jp/strJ003581901/ の実読本文で一致。whatEn/whatJaの200g／200g超は開いた本文では裏付けがないため削除。",
+    "coords": null
+   }
+  },
+  "由布院 甘味茶屋": {
+   "nameEn": "Yufuin Amamichaya",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "tags": [
+    "local-food",
+    "wagashi"
+   ],
+   "what": "川南にある大分の郷土料理と甘味の店。自家製手延べのだんご汁やとり天、やせうま、おもち料理が揃う。10時から17時（ラストオーダー16時半）。",
+   "whatEn": "A shop for Oita local dishes and sweets in Kawaminami, serving hand-stretched dango-jiru noodle soup, toriten, yaseuma and mochi dishes. Open 10:00–17:00 (last order 16:30).",
+   "note": "だんご汁で温まったあと、きな粉のやせうまを一つ。",
+   "noteEn": "After warming up with dango-jiru, a plate of kinako-dusted yaseuma.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ゆふいん あまみちゃや",
+    "address": "湯布院町川南113-12",
+    "url": "https://amamichaya.greater.jp/",
+    "whatJa": "築130年の古民家を移築した川南の郷土料理処で、手延べのだんご汁やとり天、やせうまを民藝調の器で提供する。",
+    "whatEn": "Oita folk-food restaurant set in a relocated 130-year-old farmhouse in Kawaminami, serving hand-stretched dango-jiru miso noodle soup and crisp toriten.",
+    "facts": "Yufuin sister house to Beppu's beloved Amamichaya (only two branches total); serves classic Furusato Teishoku pairing wheat-ribbon dango-jiru soup, chicken tempura, and kinako-dusted yaseuma.",
+    "weak": "",
+    "verifiedBy": "https://amamichaya.greater.jp/",
+    "quote": "由布院店11月4日（水）5日（木）連休します",
+    "fixes": "住所湯布院町川南113-12と自家製手延べだんご汁・とり天・やせうまは公式トップ・https://amamichaya.greater.jp/menu/ に一致。whatEn/whatJaは築130年・移築・民藝調の器という詳細を今回の公式本文で確認できず、これらを外して郷土料理と甘味の店とする。",
+    "coords": null
+   }
+  },
+  "ゆふいん蛟龍窯": {
+   "nameEn": "Yufuin Koryugama",
+   "area": "由布岳山麓・塚原",
+   "areaEn": "Mt. Yufu Foothills & Tsukahara",
+   "tags": [
+    "ceramics",
+    "pottery",
+    "gallery"
+   ],
+   "what": "由布岳の麓にある窯元とギャラリー。日々の食卓で使う器を制作・展示販売し、電動ろくろの陶芸体験も行っている。",
+   "whatEn": "A pottery kiln and gallery at the foot of Mount Yufu. It makes and sells everyday tableware and also offers electric-wheel pottery sessions.",
+   "note": "普段づかいのカップや小鉢を、手に取って一つ選びたい。",
+   "noteEn": "I'd like to hold the everyday cups and small bowls and choose one.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ゆふいんこうりゅうがま",
+    "address": "湯布院町川上884-3",
+    "url": "https://www.instagram.com/kouryugama.yujihayashi/",
+    "whatJa": "由布岳の麓にある陶芸家・林裕司の窯元兼ギャラリーで、日々の食卓に馴染む温かみある器を制作・販売し陶芸体験も行う。",
+    "whatEn": "Ceramicist Yuji Hayashi's kiln and gallery at the foot of Mt. Yufu, firing warm everyday stoneware vessels and hosting electric-wheel workshops.",
+    "facts": "Studio and attached gallery at Kawakami 884-3 operated with Experience Studio Mew; focuses on tactile, practical stoneware plates, mugs, and bowls shaped for daily home cooking.",
+    "weak": "",
+    "verifiedBy": "https://onipain.com/15782/",
+    "quote": "とある用事で、由布院の「蛟龍窯」（こうりゅうがま）さんの作業場へ立ち寄る。",
+    "fixes": "住所湯布院町川上884-3、電動ろくろ体験、ギャラリーでの展示販売はhttps://yufuin.gr.jp/spot/spot-1286/ の実読本文で一致。2026年記事も作陶と林さんのカップを紹介。林裕司のフルネームは今回開いた実読本文では確認できず。",
+    "coords": null
+   }
+  },
+  "由布院ステンドグラス美術館": {
+   "nameEn": "Yufuin Stained Glass Museum",
+   "area": "金鱗湖",
+   "areaEn": "Lake Kinrinko",
+   "tags": [
+    "stained-glass",
+    "museum"
+   ],
+   "what": "1800年代からのヨーロッパのアンティーク・ステンドグラスを展示する美術館。ニールズハウスと聖ロバート教会の2棟から成り、不定期でステンドグラス制作体験も行っている。",
+   "whatEn": "A museum displaying European antique stained glass from the 1800s onward across Neil's House and St. Robert's Church, also holding irregular stained-glass workshops.",
+   "note": "聖ロバート教会の窓から入る光を、静かに見ていたい。",
+   "noteEn": "Just to sit quietly and watch the light through St. Robert's Church windows.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ゆふいんすてんどぐらすびじゅつかん",
+    "address": "湯布院町川上2461-3",
+    "url": "https://yufuin-sg-museum.jp/",
+    "whatJa": "19世紀以降の欧州アンティーク・ステンドグラスを展示する美術館で、ガラス雑貨ショップや本格的なステンドグラス制作体験工房を併設する。",
+    "whatEn": "Dedicated stained-glass museum, shop, and craft studio near Lake Kinrinko pairing 19th-century European glassworks with hands-on soldering workshops.",
+    "facts": "Comprises brick-built Neil's House and St. Robert's Church at Kawakami 2461-3; sells glass lamps, mirrors, and ornaments in its shop and runs stained-glass crafting workshops (resumed in August 2026).",
+    "weak": "",
+    "verifiedBy": "https://yufuin-sg-museum.jp/",
+    "quote": "休止しておりましたステンドグラス制作体験を\n2026年8月1日\nより\n再開いたしました。",
+    "fixes": "住所湯布院町川上2461-3、1800年代からの欧州アンティーク展示、ニールズハウスと聖ロバート教会、体験再開は公式本文に一致。ショップ併設・ハンダ付け工程はトップ本文では確認できず。",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "金鱗湖",
+   "nameEn": "Lake Kinrinko",
+   "kind": "sight",
+   "area": "金鱗湖",
+   "areaEn": "Lake Kinrinko",
+   "address": "由布市湯布院町川上",
+   "url": "https://yufuin.gr.jp/",
+   "what": "由布岳のふもとにある周囲約400メートルの湖。湖底から清水と温泉が湧き出ているため水温が高く、秋から冬の冷え込んだ朝には湖面から湯気のような朝霧が立つ。",
+   "whatEn": "A lake about 400 metres around at the foot of Mount Yufu. Fresh water and hot-spring water well up from the lake bed, so on cold mornings from autumn to winter mist rises off the surface.",
+   "coords": [
+    33.26672,
+    131.36904
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "COMICO ART MUSEUM YUFUIN",
+   "nameEn": "COMICO ART MUSEUM YUFUIN",
+   "kind": "art",
+   "area": "湯の坪",
+   "areaEn": "Yunotsubo",
+   "address": "由布市湯布院町川上2995-1",
+   "url": "https://www.camy.oita.jp/",
+   "what": "隈研吾が設計した現代美術館。奈良美智や宮島達男、村上隆らの作品を展示し、2階にはカフェもある。9時半から17時半で、隔週水曜は休み。",
+   "whatEn": "A contemporary art museum designed by Kengo Kuma, showing works by Yoshitomo Nara, Tatsuo Miyajima and Takashi Murakami, with a café upstairs. Open 9:30–17:30, closed every other Wednesday.",
+   "coords": [
+    33.26527,
+    131.36158
+   ],
+   "notice": "2026年11月の休館日は11日と25日。",
+   "noticeEn": "Closed on November 11 and 25 in 2026.",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "宇奈岐日女神社",
+   "nameEn": "Unagihime Shrine",
+   "kind": "sight",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "address": "由布市湯布院町川南222",
+   "url": "https://www.visit-oita.jp/",
+   "what": "「六所宮」とも呼ばれる由布院の古社。国常立尊など六柱を祀り、境内には大きな杉の木の切り株が残る。",
+   "whatEn": "An old shrine in Yufuin also known as Rokushogu, enshrining six deities including Kunitokotachi-no-Mikoto, with the stump of a huge cedar standing in its wooded grounds.",
+   "coords": [
+    33.25686,
+    131.36549
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "由布院駅",
+   "nameEn": "Yufuin Station",
+   "kind": "sight",
+   "area": "由布院駅周辺",
+   "areaEn": "Yufuin Station",
+   "address": "由布市湯布院町川北8-2",
+   "url": "https://yufuin.gr.jp/",
+   "what": "建築家・磯崎新の設計によるJR久大本線の駅舎。黒を基調とした木造の建物で、構内にはアートホールと足湯がある。",
+   "whatEn": "The JR Kyudai Line station building designed by architect Arata Isozaki, a dark-toned timber structure with an art hall and a footbath inside.",
+   "coords": [
+    33.26261,
+    131.35513
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "アトリエときデザイン研究所",
+   "verdict": "doubt",
+   "reason": "Site is live, but the page text has no dated 2026 sentence (only a © 2026 footer and undated notices; it points to Instagram/Facebook, which I did not open)."
+  },
+  {
+   "name": "箸屋一膳",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence in the page text; only undated opening hours."
+  },
+  {
+   "name": "竹聲館",
+   "verdict": "doubt",
+   "reason": "The only 2026 mention is a page-metadata timestamp (2026-10-18). The お知らせ section's latest entry is 2021年01月20日 (ホームページリニューアル中です). I found no 2026 sentence."
+  },
+  {
+   "name": "ことことや",
+   "verdict": "doubt",
+   "reason": "The latest dated text is 2020年5月1日 (shipping notice). No 2026 evidence."
+  },
+  {
+   "name": "HAUS",
+   "verdict": "doubt",
+   "reason": "The page text has only an undated notice (毎週木曜と臨時休業の場合は返信が遅れる場合がございます), which is not 2026 evidence."
+  },
+  {
+   "name": "ギャラリーSORA",
+   "verdict": "doubt",
+   "reason": "The about page only says it opened on 2016年3月1日. No 2026 sentence."
+  },
+  {
+   "name": "木屋かみの",
+   "verdict": "doubt",
+   "reason": "2026 evidence not found: Instagram page only shows profile counts when fetched without login; no dated 2026 post could be read."
+  },
+  {
+   "name": "ゆふいん岳焼 平家窯",
+   "verdict": "doubt",
+   "reason": "2026 evidence not found: site is live with address 川南1525-1 but has no dated 2026 post or notice."
+  },
+  {
+   "name": "赤司菓子舗",
+   "verdict": "doubt",
+   "reason": "2026 evidence not found: newest notice is 2025年2月3日 (2月店休日のご案内); only a © footer mentions 2026."
+  },
+  {
+   "name": "CARANDONEL",
+   "verdict": "doubt",
+   "reason": "2026 evidence not found: newest info 2022/07/29; blog empty; address not shown on pages opened."
+  },
+  {
+   "name": "théomurata",
+   "verdict": "doubt",
+   "reason": "2026 evidence not found: page shows 毎週水曜 closed and an undated notice ＊10月催事出店のご案内＊ with no year; address 川上1272-175 matches."
+  },
+  {
+   "name": "由布まぶし 心",
+   "verdict": "doubt",
+   "reason": "Official site only has 2022 notices (covid irregular-closure notice, 2022.12.28); no 2026 evidence. Address Kawakita 5-3 2F (Ekimae branch) matches."
+  },
+  {
+   "name": "櫟の丘",
+   "verdict": "doubt",
+   "reason": "Official site/news page has no dated 2026 content; footer is ©2024; Tabelog badges 2021/2023 only. Not verified for 2026."
+  },
+  {
+   "name": "不生庵",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence on page."
+  },
+  {
+   "name": "菊すけ",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login (only 8 posts shown, no dates); no 2026 evidence."
+  },
+  {
+   "name": "喫茶 間",
+   "verdict": "doubt",
+   "reason": "Instagram not readable without login; no dated 2026 post seen."
+  },
+  {
+   "name": "茶房 天井棧敷",
+   "verdict": "doubt",
+   "reason": "Official page has no dated 2026 sentence."
+  },
+  {
+   "name": "cafe e-denn",
+   "verdict": "doubt",
+   "reason": "Only dated text on the page is 2025 or earlier (2025年2月いっぱいでいちごタルトは終了しました). No 2026 evidence; Instagram not opened."
+  },
+  {
+   "name": "choco×choco",
+   "verdict": "doubt",
+   "reason": "公式サイトは非対応ブラウザ画面。公式観光案内の本文は読めたが無日付で、2026年の営業を示す日付付き文章を確認できない。"
+  },
+  {
+   "name": "クラフト館 蜂の巣",
+   "verdict": "doubt",
+   "reason": "公式HTTPサイトの店舗・建築紹介は無日付。2026年の営業を示す日付付き文章を確認できない。HTTPSでは本文取得不能だったが、HTTP本文は取得できている。"
+  },
+  {
+   "name": "中島九条珈琲 湯布院本店焙煎所",
+   "verdict": "doubt",
+   "reason": "公式ページの店舗案内は無日付で、©2026以外に当該焙煎所の2026年営業を示す文章を確認できない。他支店の2026年情報は採用しない。"
+  },
+  {
+   "name": "森のSobaCafe ゆふそら",
+   "verdict": "drop",
+   "reason": "公式の閉店告知で2025年11月30日の閉店と飲食業廃業を明記。2026年営業を示す引用はないため、閉店を示す原文を記録。"
+  },
+  {
+   "name": "陶工房 由布きらく舎",
+   "verdict": "doubt",
+   "reason": "公式サイトには2026年の日付付き営業文がない。外部掲載 https://jpluggagego.com/zh-TW/japan/entry/yufuin-kirakusya には2026-07-31の資料查核日があるが、現地営業・開催日を裏付ける日付付き文はなく、旧サイトを案内しているため営業確認には採用しない。"
+  }
+ ]
+}

@@ -1,0 +1,592 @@
+{
+ "slug": "yamagata",
+ "city": {
+  "name": "Yamagata",
+  "nameJa": "山形",
+  "latitude": "38.3° N",
+  "country": "Yamagata, Japan",
+  "countryJa": "山形県",
+  "person": "rin",
+  "coords": [
+   38.25343,
+   140.3393
+  ],
+  "intro": "A former castle town in the Yamagata basin, with Hirashimizu pottery, soba and old confectioners. Autumn colour comes down from Zao to the city gardens; Rin’s picks take in kilns, tableware shops and coffee.",
+  "introJa": "山形盆地の城下町で、平清水焼とそば、昔からの菓子店がある。秋は蔵王から街の庭へ紅葉が下りてくる。窯元と器の店、それから喫茶を、凛のおすすめで。",
+  "locator": {
+   "en": "In inland Tohoku · in the southeastern Yamagata basin",
+   "ja": "東北の内陸・山形盆地の東南部"
+  },
+  "industries": [
+   {
+    "key": "hirashimizu-yaki",
+    "en": "Hirashimizu-yaki Pottery",
+    "ja": "平清水焼",
+    "about": "Hirashimizu pottery began in the early nineteenth century at the foot of Mount Chitose. The kilns use local clay containing iron, each developing its own glazes and everyday tableware.",
+    "aboutJa": "平清水焼は、19世紀初めに千歳山のふもとで始まった焼き物。鉄分を含む地元の土を使い、窯元ごとに釉薬を工夫して、普段使いの器を作る。",
+    "_src": "Rooted for over 200 years at the foot of Mount Chitose on Yamagata City's southeastern edge, Hirashimizu kilns fire local iron-bearing mountain clay into folk stoneware and celadon-glazed vessels."
+   }
+  ]
+ },
+ "places": {
+  "七右エ門窯": {
+   "nameEn": "Shichiemon Kiln",
+   "area": "平清水",
+   "areaEn": "Hirashimizu",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "千歳山の土を使う平清水焼の窯元。普段の器を作り、手びねりと絵付けの体験も受け付ける。",
+   "whatEn": "A Hirashimizu kiln using clay from Mount Chitose. Everyday tableware, with hand-building and pottery-painting workshops.",
+   "note": "お菓子をのせる小皿は、りんごの形を選びたい。",
+   "noteEn": "I would choose the apple-shaped small plate for sweets.",
+   "_src": {
+    "category": "local",
+    "industry": "hirashimizu-yaki",
+    "nameKana": "しちえもんがま",
+    "address": "山形県山形市平清水153",
+    "url": "https://sitiemon.com/",
+    "whatJa": "千歳山の麓で地元の原土を使い、素朴で温かみのある日常の民芸陶器を焼き続ける平清水焼の窯元。",
+    "whatEn": "A family-run Hirashimizu-yaki kiln and gallery at the foot of Mount Chitose firing everyday folk stoneware from local mountain clay.",
+    "facts": "Digs iron-rich clay from nearby Mount Chitose to produce ash-glazed folk tableware and speckled Nashi-seiji (pear-skin celadon); has an on-site shop and runs hand-wheel and painting workshops.",
+    "weak": "",
+    "verifiedBy": "https://sitiemon.com/",
+    "quote": "平清水焼七右ェ門窯はこの度、近年の原材料費の高騰により価格を改定させていただくことになりました。",
+    "fixes": "",
+    "coords": [
+     38.22848,
+     140.35562
+    ]
+   }
+  },
+  "青龍窯": {
+   "nameEn": "Seiryu Kiln",
+   "area": "平清水",
+   "areaEn": "Hirashimizu",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "明治時代に始まった平清水焼の窯元で、地元の土の鉄分を生かした白釉の「残雪」を作る。「梨青瓷」は現在、生産を一時休止している。",
+   "whatEn": "A Hirashimizu kiln founded in the Meiji era. Its white Zansetsu glaze brings out the iron in local clay; production of Nashi-seiji celadon is currently suspended.",
+   "note": "「残雪」の白は、一つずつ手に取って選びたい。",
+   "noteEn": "I would hold each Zansetsu piece to choose its shade of white.",
+   "_src": {
+    "category": "local",
+    "industry": "hirashimizu-yaki",
+    "nameKana": "せいりゅうがま",
+    "address": "山形県山形市平清水50-1",
+    "url": "http://seiryugama.com/",
+    "whatJa": "明治初期から平清水で続く、代表作「梨青瓷」と雪解けを映す白釉「残雪」で知られる平清水焼の窯元。",
+    "whatEn": "An early-Meiji Hirashimizu-yaki kiln celebrated for its pear-skin celadon (Nashi-seiji) and snow-white Zansetsu glazes.",
+    "facts": "Founded in the early Meiji era; its Nashi-seiji celadon won a Grand Prix at the 1958 Brussels World's Fair, while its Zansetsu glaze lets dark iron flecks from Chitose clay show through matte white tableware and soba cups.",
+    "weak": "Uses http:// official domain.",
+    "verifiedBy": "http://seiryugama.com/2026/09/27/%e3%80%90%e6%96%b0%e6%bd%9f%e3%80%91%e9%b6%af%e6%9e%97%e7%aa%af%e3%81%a8%e3%81%ae%e5%90%88%e5%90%8c%e5%b1%95%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b%ef%bc%882026-9-27-10-11%ef%bc%89/",
+    "quote": "先代の頃よりお世話になっている新潟県のアートギャラリー大和（だいわ）101様よりお声掛けを頂き、宮城県川崎町にて陶芸を営む青龍窯現窯主の実弟・鶯林窯（おうりんがま）との合同展を開催する運びとなりました。",
+    "fixes": "",
+    "coords": [
+     38.22969,
+     140.34968
+    ]
+   }
+  },
+  "白露ふうき豆本舗 山田家": {
+   "nameEn": "Yamadaya",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "wagashi",
+    "beans"
+   ],
+   "what": "1931年創業の本町の和菓子店。豆をふっくらと仕上げた「白露ふうき豆」を作る。",
+   "whatEn": "A confectioner in Honcho founded in 1931, making Shiratsuyu Fukimame, soft sweet beans.",
+   "note": "ふうき豆は小さな箱にして、お茶の時間に食べたい。",
+   "noteEn": "I would take a small box of fukimame for tea.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "しらつゆふうきまめほんぽ やまだや",
+    "address": "山形県山形市本町1-7-30",
+    "url": "https://www.fukimame.com/",
+    "whatJa": "本町に一店舗のみを構え、北海道産青えんどう豆をふっくらと炊き上げた銘菓「白露ふうき豆」で知られる老舗和菓子店。",
+    "whatEn": "A single-shop traditional confectioner in Honcho famous across Yamagata for its soft, lightly sweetened green-pea fukimame.",
+    "facts": "Founded in 1931 (Showa 6) with no branch stores; hand-skins and simmers green peas with sugar and a pinch of salt into melt-in-the-mouth Shiratsuyu Fukimame packed straight into wooden or paper boxes.",
+    "weak": "",
+    "verifiedBy": "https://www.fukimame.com/",
+    "quote": "大変恐縮ではございますが、2026年1月15日（木）より商品価格の改定をさせていただきます。",
+    "fixes": "",
+    "coords": [
+     38.25144,
+     140.33799
+    ]
+   }
+  },
+  "榮玉堂": {
+   "nameEn": "Eigyokudo",
+   "area": "旅篭町",
+   "areaEn": "Hatagomachi",
+   "tags": [
+    "wagashi",
+    "cheesecake"
+   ],
+   "what": "江戸末期から続く菓子店。どら焼きと、粒あんを使った「あんチーズ」などのチーズケーキを作る。",
+   "whatEn": "A confectioner dating from the late Edo period, making dorayaki and cheesecakes including An Cheese with chunky bean paste.",
+   "note": "粒あんとチーズを合わせた「あんチーズ」を選びたい。",
+   "noteEn": "I would choose An Cheese, with chunky bean paste and cheese.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "えいぎょくどう",
+    "address": "山形県山形市旅篭町2-1-45",
+    "url": "https://eigyokudo.base.shop/",
+    "whatJa": "江戸末期創業、旅篭町の本店でふわふわの皮のどら焼きや和洋菓子を手がける老舗菓子舗。",
+    "whatEn": "An 180-year-old Yamagata confectioner in Hatagomachi beloved for pillowy fresh-cream dorayaki and eighth-generation baked cheesecakes.",
+    "facts": "Tracing its roots back roughly 180 years to the late Edo period (3 shops total including its adjacent gura cafe); seventh-generation craft modernized nama-dorayaki with seasonal fillings, while the eighth generation added rich cheesecake.",
+    "weak": "",
+    "verifiedBy": "https://at-living.press/culture/49935/",
+    "quote": "山形県山形市にある江戸末期創業、190年続く老舗菓子店「榮玉堂」の八代目後継者。",
+    "fixes": "whatEn: The 2026 article describes the confectioner as 190年続く, so replace 180-year-old with 190-year-old.",
+    "coords": [
+     38.25471,
+     140.33782
+    ]
+   }
+  },
+  "そば処 庄司屋 御殿堰七日町店": {
+   "nameEn": "Shojiya, Gotenzeki Nanokamachi",
+   "area": "七日町",
+   "areaEn": "Nanokamachi",
+   "tags": [
+    "soba"
+   ],
+   "what": "七日町御殿堰にある手打ちそばの店。自家製粉の「といちそば」と白い更科そば、二つを合わせた板そばがある。",
+   "whatEn": "A hand-cut soba shop at Nanokamachi Gotenzeki. House-milled Toichi soba and white sarashina soba, also served together on a wooden tray.",
+   "note": "更科あいもり板そばで、二つのそばを食べ比べたい。",
+   "noteEn": "I would choose the sarashina aimori tray to compare the two kinds of soba.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "そばどころ しょうじや ごてんぜきなのかまちてん",
+    "address": "山形県山形市七日町2-7-6",
+    "url": "https://www.shojiya.jp/",
+    "whatJa": "慶応元年創業の老舗蕎麦店が、石積みの水路が流れる「水の町屋 七日町御殿堰」に構える手打ち蕎麦処。",
+    "whatEn": "A canal-side branch of Yamagata's 1864 hand-cut soba house set along the restored stone water channel of Nanokamachi Gotenzeki.",
+    "facts": "Operates only two shops in Yamagata City; serves stone-milled Toichi (10:1) pale soba alongside dark, chewy rust-husk Inaka soba (often ordered together as Aimori Itasoba) overlooking the 400-year-old Gotenzeki masonry channel.",
+    "weak": "",
+    "verifiedBy": "https://www.shojiya.jp/2026/11/06/5646/",
+    "quote": "2026年の年越しそばについてのスケジュールは以下の通りです。",
+    "fixes": "whatEn and whatJa: The official history says 慶応年間に創業. Use founded in the Keio era / 慶応年間創業, replacing the supplied 1864 / 慶応元年.",
+    "coords": [
+     38.25317,
+     140.33972
+    ]
+   }
+  },
+  "栄屋本店": {
+   "nameEn": "Sakaeya Honten",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "ramen",
+    "soba"
+   ],
+   "what": "1932年創業の麺の店。1952年に冷やしラーメンを考案し、いまも温かい麺と冷たい麺を出す。",
+   "whatEn": "A noodle shop founded in 1932, where chilled ramen was developed in 1952. Hot and cold noodles are both on the menu.",
+   "note": "温かい麺もあるけれど、ここでは冷やしラーメンを。",
+   "noteEn": "I would choose the chilled ramen here, even with hot noodles on the menu.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "さかえやほんてん",
+    "address": "山形県山形市本町2-3-21",
+    "url": "https://www.yamagata-sakaeyahonten.com/",
+    "whatJa": "昭和7年創業、山形名物「冷やしラーメン」発祥の店として年中地元の客で賑わう本町の老舗麺処。",
+    "whatEn": "The Honcho noodle shop founded in 1932 where Yamagata's signature chilled Hiyashi Ramen was invented in 1952.",
+    "facts": "Created Japan's original Hiyashi Ramen in 1952 using a clear beef-and-bonito broth blended with vegetable oils so it never congeals over ice cubes; serves chilled and hot soba and ramen year-round.",
+    "weak": "",
+    "verifiedBy": "https://www.yamagata-sakaeyahonten.com/fr/38",
+    "quote": "2026年11月の定休日のお知らせ",
+    "fixes": "",
+    "coords": [
+     38.25138,
+     140.33997
+    ]
+   }
+  },
+  "金澤屋牛肉店": {
+   "nameEn": "Kanazawaya Gyunikuten",
+   "area": "七日町",
+   "areaEn": "Nanokamachi",
+   "tags": [
+    "beef",
+    "sukiyaki"
+   ],
+   "what": "1893年創業の精肉店と食事処。山形牛のすき焼きやしゃぶしゃぶ、平日昼の一人前の牛鍋。",
+   "whatEn": "A butcher and dining room founded in 1893. Yamagata beef sukiyaki and shabu-shabu, with individual gyunabe hot pots at weekday lunch.",
+   "note": "一人のお昼なら、牛鍋を一人前、ゆっくり食べたい。",
+   "noteEn": "For lunch on my own, I would take my time over an individual gyunabe.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "かなざわやぎゅうにくてん",
+    "address": "山形県山形市七日町3-4-16",
+    "url": "https://www.kanazawaya-gyunikuten.com/",
+    "whatJa": "明治26年創業の老舗精肉店が七日町で営む、山形牛の牛鍋やすき焼きが評判の食事処。",
+    "whatEn": "An 1893 Yamagata beef butcher and dining room in Nanokamachi serving sukiyaki, gyunabe hotpot, and steak lunches.",
+    "facts": "Founded in 1893 as a specialist beef purveyor; selects prime Yamagata Wagyu in-house for generous daytime gyunabe hotpots and steak set meals as well as evening sukiyaki and shabu-shabu.",
+    "weak": "",
+    "verifiedBy": "https://www.kanazawaya-gyunikuten.com/fcblog/192715.html",
+    "quote": "3日の祝日は夜のみ営業いたします。",
+    "fixes": "",
+    "coords": [
+     38.25507,
+     140.34281
+    ]
+   }
+  },
+  "RESTAURANT PAS MAL": {
+   "nameEn": "Restaurant Pas Mal",
+   "area": "七日町",
+   "areaEn": "Nanokamachi",
+   "tags": [
+    "french",
+    "seasonal"
+   ],
+   "what": "山形の旬の食材を使うフランス料理店。昼も夜もコースで、完全予約制。",
+   "whatEn": "A French restaurant using seasonal Yamagata ingredients. Lunch and dinner are courses, by reservation only.",
+   "note": "山形の旬を少しずつ食べるなら、お昼のコースにしたい。",
+   "noteEn": "I would choose the lunch course to try Yamagata's season a little at a time.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "レストラン パ・マル",
+    "address": "山形県山形市七日町2-3-16",
+    "url": "https://yamagatafrench-pasmal.com/",
+    "whatJa": "山形の伝承野菜や旬の地元食材をフランス料理へと仕立てる、七日町の実力派レストラン。",
+    "whatEn": "An independent French restaurant in Nanokamachi showcasing heirloom Yamagata vegetables, mountain produce, and local meats for lunch and dinner.",
+    "facts": "Celebrated over 20 years in Nanokamachi and honored with a MAFF Culinary Masters Bronze Award and Gault & Millau listing; builds seasonal lunch and dinner courses around Yamagata farm produce.",
+    "weak": "",
+    "verifiedBy": "https://note.com/maple119/n/n02249267edb0",
+    "quote": "今回は、山形旅行の最終日に訪れた、食べログフレンチ100名店にも選出されている\n『レストラン パ・マル』\nでの体験をお届けします！🧳✨",
+    "fixes": "",
+    "coords": [
+     38.25201,
+     140.34124
+    ]
+   }
+  },
+  "gu/ra": {
+   "nameEn": "gu/ra",
+   "area": "旅篭町",
+   "areaEn": "Hatagomachi",
+   "tags": [
+    "italian"
+   ],
+   "what": "旅篭町のイタリア料理店。昼と夜に食事を出す。",
+   "whatEn": "An Italian restaurant in Hatagomachi, serving lunch and dinner.",
+   "note": "器を見たあとのお昼は、ここでイタリアンにする。",
+   "noteEn": "After looking at pottery, I would come here for an Italian lunch.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "グラ",
+    "address": "山形県山形市旅篭町2-1-41",
+    "url": "https://www.instagram.com/gura.yamagata/",
+    "whatJa": "旅篭町の複合拠点「gura」の石蔵を改装した空間で、契約農家の旬野菜や県産食材を使ったイタリアンを提供するレストラン。",
+    "whatEn": "A casual Italian dining room housed inside a renovated historic stone warehouse at the gura cultural complex in Hatagomachi.",
+    "facts": "Occupies a thick-walled former stone kura just south of Bunshokan alongside an earthen-kura craft store and lawn courtyard; serves wood-accented pastas and plates built around contracted Yamagata growers.",
+    "weak": "Official domain redirects to Instagram; check weekly restaurant days.",
+    "verifiedBy": "https://kimonoichiba.com/media/event/202611_odekake_yamagata/",
+    "quote": "その後は、秋の街並みを眺めながらイタリアンレストラン「gura」へ。",
+    "fixes": "",
+    "coords": [
+     38.25466,
+     140.33846
+    ]
+   }
+  },
+  "蔵王の森焙煎工房": {
+   "nameEn": "Zao no Mori Baisen Kobo",
+   "area": "旅篭町",
+   "areaEn": "Hatagomachi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "旅篭町の自家焙煎コーヒーの店。オリジナルブレンドとストレートの豆を売り、喫茶もある。",
+   "whatEn": "A coffee roaster in Hatagomachi, selling house blends and single-origin beans, with a café.",
+   "note": "柑橘のような酸味のメークインブレンドを選びたい。",
+   "noteEn": "I would choose the May Queen blend for its citrus-like acidity.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ざおうのもりばいせんこうぼう",
+    "address": "山形県山形市旅篭町1-9-14",
+    "url": "https://zao-coffee.com/",
+    "whatJa": "旅篭町でコーヒーマイスターが厳選生豆を自家焙煎し、淹れたてのスペシャルティコーヒーと豆販売を行う専門店。",
+    "whatEn": "A specialty coffee roaster and cafe in Hatagomachi run by a certified coffee meister roasting single-origin beans in-house.",
+    "facts": "Single-shop roastery a short walk from Bunshokan; roasts specialty-grade beans in small batches for clean aroma and sweetness, offering pour-over cups at the counter as well as whole-bean sales.",
+    "weak": "",
+    "verifiedBy": "https://zao-coffee.com/news/%ef%bc%91%ef%bc%91%e6%9c%88%e3%81%ae%e3%81%8a%e4%bb%bb%e3%81%9b%e3%83%96%e3%83%ac%e3%83%b3%e3%83%89-3/",
+    "quote": "お待たせしました。１１月のお任せブレンドです。",
+    "fixes": "",
+    "coords": [
+     38.25673,
+     140.33541
+    ]
+   }
+  },
+  "Day & Coffee 本町七日町店": {
+   "nameEn": "Day & Coffee, Honcho Nanokamachi",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "coffee",
+    "waffles"
+   ],
+   "what": "本町の自家焙煎スペシャルティコーヒーの店。浅煎りから深煎りまで揃え、ワッフルなどの軽食も出す。",
+   "whatEn": "A specialty coffee shop in Honcho, serving house-roasted light to dark roasts, with waffles and other light food.",
+   "note": "歩いたあとは、コーヒーにワッフルを一つ添えたい。",
+   "noteEn": "After a walk, I would have a waffle with my coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "デイ アンド コーヒー ほんちょうなのかまちてん",
+    "address": "山形県山形市本町2-4-14 津多屋ビル1F",
+    "url": "https://dayandcoffee.official.ec/",
+    "whatJa": "本町の老舗書店「八文字屋本店」隣に構える、自家焙煎スペシャルティコーヒーと焼きたてワッフルのカフェ。",
+    "whatEn": "A light-filled specialty coffee stand and cafe next to Hachimonjiya bookstore in Honcho serving house-roasted pour-overs, lattes, and fresh waffles.",
+    "facts": "Second shop of Yamagata's independent roaster Day & Coffee (2 branches total); brews house-roasted light-to-medium specialty beans with HARIO drippers and welcomes guests reading newly bought books next door.",
+    "weak": "",
+    "verifiedBy": "https://note.com/dayand/n/n4170df96416b",
+    "quote": "Day & Coffeeでは、山形駅前本店と本町七日町店の2店舗で、自家焙煎したスペシャルティコーヒーを提供しています。",
+    "fixes": "Address detail on the official shop: 山形県山形市本町2丁目4-14津多屋ビル1F西側.",
+    "coords": [
+     38.25132,
+     140.33854
+    ]
+   }
+  },
+  "JalanJalan Coffee & More": {
+   "nameEn": "JalanJalan Coffee & More",
+   "area": "七日町",
+   "areaEn": "Nanokamachi",
+   "tags": [
+    "coffee",
+    "organic"
+   ],
+   "what": "七日町の自家焙煎コーヒー豆の店。100g単位の量り売りで、オーガニック食品とアジアの雑貨も扱う。",
+   "whatEn": "A coffee roaster in Nanokamachi, selling beans in 100 g increments, organic food and goods from Asia.",
+   "note": "毎朝飲む豆なら、まずは100gだけ選んで帰りたい。",
+   "noteEn": "For my morning coffee, I would take just 100 g of beans to try.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "じゃらんじゃらん",
+    "address": "山形県山形市七日町2-7-10 ナナビーンズ1F",
+    "url": "https://jalanjalan.jp/",
+    "whatJa": "2002年開業、七日町大通り沿いで毎日売り切る分だけを自家焙煎するコーヒー豆・テイクアウトドリンク店。",
+    "whatEn": "A neighborhood coffee roaster and takeaway stand on Nanokamachi-odori roasting small daily batches of specialty beans since 2002.",
+    "facts": "Roasts only a single day's worth of specialty beans at a time sold from 100g upward alongside takeaway drinks, organic foods, and directly imported Southeast Asian handcrafts.",
+    "weak": "Takeaway drinks and bean sales only (no indoor cafe seating).",
+    "verifiedBy": "https://lifestyles-jalanjalan.blogspot.com/",
+    "quote": "そしてじゃらんじゃらん外商部ｗは、今年も大量のギフトBOXを納品させていただきました。",
+    "fixes": "",
+    "coords": [
+     38.25353,
+     140.33994
+    ]
+   }
+  },
+  "この山道を行きし人あり": {
+   "nameEn": "Kono Yamamichi Wo Yukishi Hito Ari",
+   "area": "七日町",
+   "areaEn": "Nanokamachi",
+   "tags": [
+    "ceramics",
+    "tableware",
+    "books"
+   ],
+   "what": "とんがりビル2階の、器と日用品、食品、本の店。山形をはじめ各地の手仕事を集める。",
+   "whatEn": "A shop on the second floor of the Tongari Building, with tableware, everyday goods, food and books, gathering handwork from Yamagata and elsewhere.",
+   "note": "毎日使う飯碗を、一つずつ手に取って選んでみたい。",
+   "noteEn": "I would hold the rice bowls one by one to choose one for everyday use.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "このやまみちをゆきしひとあり",
+    "address": "山形県山形市七日町2-7-23 とんがりビル2F",
+    "url": "https://www.konoyama.com/",
+    "whatJa": "七日町「とんがりビル」2階にある、手仕事の器や台所道具、日用雑貨、本を独自の視点で選ぶセレクトショップ。",
+    "whatEn": "A curated tableware, craft object, and book shop on the second floor of Nanokamachi's renovated Tongari Building.",
+    "facts": "Housed inside the four-story renovated Tongari Building cultural hub on Cinema-dori; stocks studio ceramics, wooden and glass kitchenware, small-batch Tohoku preserves, and independent publications.",
+    "weak": "",
+    "verifiedBy": "https://www.konoyama.com/1018",
+    "quote": "11月はイベント出店の都合で、いつもよりも不規則な曜日の営業となります。",
+    "fixes": "",
+    "coords": [
+     38.25317,
+     140.34071
+    ]
+   }
+  },
+  "ROOTS & Technique the REAL store": {
+   "nameEn": "ROOTS & Technique the REAL store",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "ceramics",
+    "glass",
+    "wood"
+   ],
+   "what": "1927年築の旧校舎を使うQ1の3階のクラフトショップ。工芸作品を扱い、作家の展示販売会も開く。",
+   "whatEn": "A craft shop on the third floor of Q1, a converted 1927 school building. Craft pieces and regular exhibitions of individual makers.",
+   "note": "普段使いの器も、作った人の展示を見てから選びたい。",
+   "noteEn": "Even for everyday tableware, I would look at the maker's exhibition before choosing.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ルーツ アンド テクニーク ザ リアル ストア",
+    "address": "山形県山形市本町1-5-19 やまがたクリエイティブシティセンターQ1 3F",
+    "url": "https://yamagata-q1.com/floor/3i.php",
+    "whatJa": "1927年築の旧校舎「Q1」3階で、陶磁器やガラスなど現代の工芸作品と企画展を展開するクラフトショップ。",
+    "whatEn": "An art and contemporary craft gallery-shop on the third floor of Q1 exhibiting ceramics, glass, lacquer, and studio vessels from Yamagata and beyond.",
+    "facts": "Directly operated by Q1 Inc. inside Yamagata's 1927 Registered Tangible Cultural Property schoolhouse; rotates solo ceramic and craft exhibitions with permanent shelves of contemporary Tohoku makers.",
+    "weak": "Open Thu–Sun 11:00–18:00 (closed Mon–Wed).",
+    "verifiedBy": "https://yamagata-q1.com/news-topics/2026/001437.php",
+    "quote": "やまがたクリエイティブシティセンターQ1の3階「ROOTS & Technique the REAL store」では、キャンドルアーティスト・ATMiC／アトミックによるPOPUP「冬に灯すATMiC」を開催いたします。",
+    "fixes": "",
+    "coords": [
+     38.25072,
+     140.3357
+    ]
+   }
+  },
+  "せと藤": {
+   "nameEn": "Setofuji",
+   "area": "諏訪町",
+   "areaEn": "Suwamachi",
+   "tags": [
+    "ceramics",
+    "glass",
+    "lacquer"
+   ],
+   "what": "諏訪町の食器専門店。国内外の器と、山形の作家によるオリジナルブランド「BOND+」を扱う。",
+   "whatEn": "A tableware shop in Suwamachi, with pieces from Japan and abroad and BOND+, its own range by Yamagata makers.",
+   "note": "山形の作家の器から、家で使う一つを選んでみたい。",
+   "noteEn": "I would choose one piece by a Yamagata maker to use at home.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "せとふじ",
+    "address": "山形県山形市諏訪町1-1-58",
+    "url": "https://www.setofuji.co.jp/",
+    "whatJa": "昭和12年創業、諏訪町で国内外の陶磁器・ガラス器から山形在住作家のうつわまで幅広く揃える食器専門店。",
+    "whatEn": "A long-standing tableware specialty store founded in 1937 in Suwamachi carrying studio ceramics, glassware, lacquerware, and works by Yamagata potters.",
+    "facts": "Founded in 1937 just south of Honcho; curates the 'BOND+' line of original vessels by Yamagata-based ceramicists alongside Japanese stoneware, glassware, and an adjoining test-kitchen space (MESARA).",
+    "weak": "",
+    "verifiedBy": "https://fullpokko.com/wadai/spal-setofuji-202606-qqm/",
+    "quote": "エスパル山形にて、期間限定ショップ「\nせと藤『ポーランド食器セラミカフェア』\n」が開催されます！",
+    "fixes": "",
+    "coords": [
+     38.24504,
+     140.33869
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "文翔館",
+   "nameEn": "Bunshokan",
+   "kind": "sight",
+   "area": "旅篭町",
+   "areaEn": "Hatagomachi",
+   "address": "山形市旅篭町3-4-51",
+   "url": "https://www.gakushubunka.jp/bunsyokan/",
+   "what": "1916年に建てられた旧県庁舎と旧県会議事堂を公開する郷土館。復原された室内と、山形の歴史の展示を見られる。",
+   "whatEn": "The former prefectural office and assembly buildings, completed in 1916, now open as a local history museum. Restored interiors and displays on Yamagata’s history.",
+   "notice": "2026年11月17日から、更新工事のため館内エレベーターが使用できない。",
+   "noticeEn": "The building’s lift will be out of service for replacement work from 17 November 2026.",
+   "coords": [
+    38.25668,
+    140.34122
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.gakushubunka.jp/bunsyokan/facilities/about/ : 大正5年6月完成の旧県庁舎・県会議事堂、復原・公開と郷土展示。公式トップに2026年11月の開館カレンダーと、令和8年11月17日からエレベーター更新工事の告知。住所・入館料無料もトップで確認。",
+   "_coordsSource": "OpenStreetMap node 2418522207; Nominatim search 文翔館 山形, lat 38.2566803, lon 140.3412244; https://www.openstreetmap.org/node/2418522207"
+  },
+  {
+   "name": "山形美術館",
+   "nameEn": "Yamagata Museum of Art",
+   "kind": "art",
+   "area": "大手町",
+   "areaEn": "Otemachi",
+   "address": "山形市大手町1-63",
+   "url": "http://www.yamagata-art-museum.or.jp/",
+   "what": "1964年に開館した美術館。山形ゆかりの美術、日本と東洋の絵画、新海竹太郎と竹蔵の彫刻を展示する。",
+   "whatEn": "An art museum opened in 1964, showing art connected with Yamagata, Japanese and East Asian painting, and sculpture by Shinkai Taketaro and Takezo.",
+   "notice": "吉野石膏コレクションの当館での公開は2026年8月22日に終了。月曜と展示替え期間は休館。",
+   "noticeEn": "Display of the Yoshino Gypsum Collection here ended on 22 August 2026. Closed Mondays and during exhibition changes.",
+   "coords": [
+    38.25587,
+    140.3324
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "http://www.yamagata-art-museum.or.jp/outline : 1964年開館、吉野石膏コレクション公開は2026/8/22終了。http://www.yamagata-art-museum.or.jp/news/topics/6753.html : 2026/11/5–12/6の山形の美術・長谷川コレクション・新海彫刻展示を確認。/information : 月曜・年末年始・臨時展示替え休館。トップに大手町1-63。11/2–4の臨時休館は終了。",
+   "_coordsSource": "OpenStreetMap way 262671458; Nominatim search 山形美術館, lat 38.2558691, lon 140.3323997; https://www.openstreetmap.org/way/262671458"
+  },
+  {
+   "name": "霞城公園（山形城跡）",
+   "nameEn": "Kajo Park (Yamagata Castle Ruins)",
+   "kind": "sight",
+   "area": "霞城町",
+   "areaEn": "Kajo-machi",
+   "address": "山形市霞城町1-7（管理事務所）",
+   "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006544/1003675.html",
+   "what": "山形城の本丸と二ノ丸を公園にした国の史跡。堀と土塁、石垣が残り、春は桜を見ながら歩ける。",
+   "whatEn": "A national historic site and park on the inner enclosures of Yamagata Castle. Moats, earthworks and stone walls remain; cherry blossoms line the walks in spring.",
+   "notice": "発掘調査と整備のため、2026年7月21日から園内の県体育館への通行経路が変更されている。",
+   "noticeEn": "Routes to the prefectural gymnasium within the park changed on 21 July 2026 for excavation and improvement works.",
+   "coords": [
+    38.25558,
+    140.32824
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "山形市公式 /1006544/1003675.html : 本丸・二ノ丸を活用した都市公園、堀・土塁・石垣、桜、国指定史跡、管理事務所 霞城町1-7、年中無休・入園無料。https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006542/1017209.html : 2026/7/8更新、2026/7/21より通年で県体育館への通行方法変更、発掘調査・道路撤去等。",
+   "_coordsSource": "OpenStreetMap way 728946713; Nominatim search 霞城公園, lat 38.2555771, lon 140.3282413; https://www.openstreetmap.org/way/728946713"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "鋳心ノ工房",
+   "verdict": "drop",
+   "reason": "Official page says ※新型コロナウイルス感染症の流行のため、ショールーム見学はしばらくの間、見学中止とさせていただきます。 This is an indefinite showroom suspension."
+  },
+  {
+   "name": "長文堂",
+   "verdict": "doubt",
+   "reason": "Official homepage and company-history page confirm 山形県山形市鋳物町22 and traditional iron-kettle production but provide no dated 2026 operating sentence. The official online store returned HTTP 403 with a captcha."
+  },
+  {
+   "name": "AndMERCI CAFE",
+   "verdict": "doubt",
+   "reason": "Official page confirms AndMERCI CAFE and the Q1 address. Its only explicit 2026 notice concerns closure of the Omiya branch, which does not establish 2026 operation of this cafe."
+  },
+  {
+   "name": "Pâtisserie Chocolatier kotonowa",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned profile metadata without readable dated posts. An opened 2026-02-01 chocolate blog mentions コトノワ behind 文翔館 but gives no explicit 2026 visit or operating notice. The precise address and Belgian-training description could not be independently confirmed from the opened text."
+  },
+  {
+   "name": "ボタコーヒー",
+   "verdict": "doubt",
+   "reason": "Official website confirms the dark-roast coffee shop and address but has no dated 2026 sentence. The opened 2025 crowdfunding page promises 2026 coffee-bean deliveries, with zero supporters for that reward, and does not confirm this storefront operated in 2026."
+  },
+  {
+   "name": "汽水域",
+   "verdict": "doubt",
+   "reason": "Official website has November workshop dates without a year and a copyright 2026 footer. Neither provides an explicit dated 2026 sentence. Q1 floor page confirms the address, metalwork atelier and shop but is undated."
+  }
+ ]
+}

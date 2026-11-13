@@ -1,0 +1,56 @@
+[
+ {
+  "name": "文翔館",
+  "nameEn": "Bunshokan",
+  "kind": "sight",
+  "area": "旅篭町",
+  "areaEn": "Hatagomachi",
+  "address": "山形市旅篭町3-4-51",
+  "url": "https://www.gakushubunka.jp/bunsyokan/",
+  "what": "1916年に建てられた旧県庁舎と旧県会議事堂を公開する郷土館。復原された室内と、山形の歴史の展示を見られる。",
+  "whatEn": "The former prefectural office and assembly buildings, completed in 1916, now open as a local history museum. Restored interiors and displays on Yamagata’s history.",
+  "coords": [
+   38.25668,
+   140.34122
+  ],
+  "notice": "2026年11月17日から、更新工事のため館内エレベーターが使用できない。",
+  "noticeEn": "The building’s lift will be out of service for replacement work from 17 November 2026.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "山形美術館",
+  "nameEn": "Yamagata Museum of Art",
+  "kind": "art",
+  "area": "大手町",
+  "areaEn": "Otemachi",
+  "address": "山形市大手町1-63",
+  "url": "http://www.yamagata-art-museum.or.jp/",
+  "what": "1964年に開館した美術館。山形ゆかりの美術、日本と東洋の絵画、新海竹太郎と竹蔵の彫刻を展示する。",
+  "whatEn": "An art museum opened in 1964, showing art connected with Yamagata, Japanese and East Asian painting, and sculpture by Shinkai Taketaro and Takezo.",
+  "coords": [
+   38.25587,
+   140.3324
+  ],
+  "notice": "吉野石膏コレクションの当館での公開は2026年8月22日に終了。月曜と展示替え期間は休館。",
+  "noticeEn": "Display of the Yoshino Gypsum Collection here ended on 22 August 2026. Closed Mondays and during exhibition changes.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "霞城公園（山形城跡）",
+  "nameEn": "Kajo Park (Yamagata Castle Ruins)",
+  "kind": "sight",
+  "area": "霞城町",
+  "areaEn": "Kajo-machi",
+  "address": "山形市霞城町1-7（管理事務所）",
+  "url": "https://www.city.yamagata-yamagata.lg.jp/kurashi/koen/1006541/1006544/1003675.html",
+  "what": "山形城の本丸と二ノ丸を公園にした国の史跡。堀と土塁、石垣が残り、春は桜を見ながら歩ける。",
+  "whatEn": "A national historic site and park on the inner enclosures of Yamagata Castle. Moats, earthworks and stone walls remain; cherry blossoms line the walks in spring.",
+  "coords": [
+   38.25558,
+   140.32824
+  ],
+  "notice": "発掘調査と整備のため、2026年7月21日から園内の県体育館への通行経路が変更されている。",
+  "noticeEn": "Routes to the prefectural gymnasium within the park changed on 21 July 2026 for excavation and improvement works.",
+  "verifiedAt": "2026-11-12"
+ }
+]

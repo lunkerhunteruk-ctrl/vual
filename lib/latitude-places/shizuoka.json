@@ -1,0 +1,387 @@
+[
+ {
+  "name": "駿府の工房 匠宿",
+  "nameEn": "Sunpu no Kobo Takumishuku",
+  "category": "craft",
+  "tags": [
+   "bamboo",
+   "woodwork",
+   "ceramics",
+   "lacquer"
+  ],
+  "area": "丸子",
+  "areaEn": "Mariko",
+  "address": "駿河区丸子3240-1",
+  "url": "https://takumishuku.jp/",
+  "what": "駿河区丸子の伝統工芸体験施設。駿河竹千筋細工や和染、木工、漆、陶芸の工房と、ギャラリーやカフェがある。火曜定休。",
+  "whatEn": "A traditional craft centre in Mariko, Suruga-ku. Workshops for Suruga bamboo ware, dyeing, woodwork, lacquer and pottery, with a gallery and café. Closed Tuesdays.",
+  "note": "竹千筋細工か木工か、ひとつ選んで手を動かしてみたい。",
+  "noteEn": "I would pick one craft—bamboo ware or woodwork—and try making something.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.9537,
+   138.33349
+  ]
+ },
+ {
+  "name": "元祖 丁子屋",
+  "nameEn": "Ganso Chojiya",
+  "category": "food",
+  "tags": [
+   "tororo",
+   "historic"
+  ],
+  "area": "丸子",
+  "areaEn": "Mariko",
+  "address": "駿河区丸子7-10-10",
+  "url": "https://chojiya.info/",
+  "what": "慶長元年（1596年）創業の、丸子のとろろ汁の店。歌川広重や芭蕉ゆかりの老舗で、木曜定休（月末は水・木）。",
+  "whatEn": "A tororo-jiru grated yam restaurant in Mariko founded in 1596, with ties to Hiroshige and Basho. Closed Thursdays (and the last Wednesday of the month).",
+  "note": "まずは定番のとろろ汁。由比の桜えびの季節ならそれも。",
+  "noteEn": "The classic tororo-jiru first, and sakura shrimp if it is in season.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.95028,
+   138.33814
+  ]
+ },
+ {
+  "name": "うつわ 暮らしの道具 テクラ",
+  "nameEn": "Tekura",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "woodwork",
+   "tableware"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区大岩1-1-25",
+  "url": "https://tekura.net/",
+  "what": "葵区大岩の、器と暮らしの道具の店。全国の作り手の陶磁器や木工、民具を扱い、展示会も開く。13時から17時、火・水曜定休。",
+  "whatEn": "A shop for vessels and daily tools in Oiwa, Aoi-ku, carrying ceramics, woodwork and folk crafts from makers across Japan and holding exhibitions. Open 13:00–17:00, closed Tue–Wed.",
+  "note": "全国の焼きものや民具を、棚の前でひとつずつ手に取ってみたい。",
+  "noteEn": "I would take my time at the shelves, picking up the pottery and folk crafts one by one.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.99104,
+   138.38181
+  ]
+ },
+ {
+  "name": "手打ち蕎麦 たがた",
+  "nameEn": "Teuchi Soba Tagata",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区常磐町2-6-7",
+  "url": "https://www.instagram.com/teuchisobatagata/",
+  "what": "葵区常磐町の手打ち蕎麦の店。静岡の山奥の在来蕎麦を使い、昼は予約なし、夜は予約可。日曜夜と月曜定休、蕎麦がなくなり次第終了。",
+  "whatEn": "A handmade soba shop in Tokiwa-cho, Aoi-ku, using heirloom mountain buckwheat from Shizuoka. Walk-ins at lunch, reservations at dinner; closed Sunday evening and Monday.",
+  "note": "昼の開店に合わせて、在来蕎麦の香りを確かめにいきたい。",
+  "noteEn": "I would go at lunch opening to taste the aroma of their heirloom buckwheat.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   34.9702,
+   138.38151
+  ]
+ },
+ {
+  "name": "茶町KINZABURO",
+  "nameEn": "Chamachi KINZABURO",
+  "category": "local",
+  "industry": "shizuoka-tea",
+  "tags": [
+   "tea",
+   "matcha",
+   "sweets"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区土太夫町27",
+  "url": "https://kinzaburo.com/",
+  "what": "葵区土太夫町の、創業百余年の茶問屋・前田金三郎商店が営む静岡茶と抹茶スイーツの店。2階のイートインでは10種類のお茶を味わえる。水曜定休。",
+  "whatEn": "A Shizuoka tea and matcha sweets shop in Dodaiyu-cho, Aoi-ku, run by century-old tea wholesaler Maeda Kinzaburo Shoten. Ten teas are served in the upstairs eat-in space. Closed Wednesdays.",
+  "note": "二階で十種類のお茶を飲み比べて、抹茶菓子をひとつ選ぶ。",
+  "noteEn": "Try the ten teas upstairs and pick one matcha sweet to go with them.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "株式会社吉蔵",
+  "nameEn": "Kichizo",
+  "category": "local",
+  "industry": "suruga-joinery",
+  "tags": [
+   "woodwork",
+   "joinery"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区住吉町2-31",
+  "url": "https://www.kichizo.co.jp/",
+  "what": "葵区住吉町の、1922年創業の指物工房。島桑指物や厨子仏壇、暮らしの調度品を手仕事で作る。",
+  "whatEn": "A sashimono joinery workshop in Sumiyoshi-cho, Aoi-ku, founded in 1922. Handcrafts mulberry-wood joinery, household cabinets and small wooden wares.",
+  "note": "島桑の指物や日用の木工小物を、近くで見てみたい。",
+  "noteEn": "I would like to see their mulberry-wood joinery and small wooden wares up close.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "cotory",
+  "nameEn": "cotory",
+  "category": "craft",
+  "tags": [
+   "crafts",
+   "daily-goods"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区伝馬町9-18 KKビル201",
+  "url": "https://cotory.jp/",
+  "what": "葵区伝馬町の裏通り、ビルの2階にある雑貨店。大切に使われてきたものと、使い続けたい手仕事の道具を扱い、企画展も開く。火曜定休。",
+  "whatEn": "A small second-floor shop on a backstreet in Tenma-cho, Aoi-ku, carrying well-made daily tools and holding craft exhibitions. Closed Tuesdays.",
+  "note": "二階の静かな棚で、長く使えそうな道具を探してみたい。",
+  "noteEn": "In the quiet second-floor room, I would look for a daily tool meant to last.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "三保原屋本店",
+  "nameEn": "Mihoharaya Honten",
+  "category": "craft",
+  "tags": [
+   "tableware",
+   "kitchenware",
+   "daily-goods"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区呉服町2丁目3番地6",
+  "url": "https://www.mihoharaya.co.jp/",
+  "what": "1687年（貞享4年）創業、葵区呉服町の暮らしの道具の店。土鍋や台所用品、長く愛用できる日用品を揃える。",
+  "whatEn": "A household goods shop on Gofukucho Street, Aoi-ku, founded in 1687, carrying kitchenware and durable daily tools.",
+  "note": "台所まわりの道具から、毎日使えるものをひとつ見つけたい。",
+  "noteEn": "I would look through the kitchenware for one piece to use every day.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "陶芸しみず春日工房",
+  "nameEn": "Shimizu Kasuga Pottery Studio",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "pottery"
+  ],
+  "area": "清水",
+  "areaEn": "Shimizu",
+  "address": "清水区春日1-3-12",
+  "url": "https://tougei-simizukasugakoubou.com/",
+  "what": "清水区春日の陶芸家・山本敬之の工房。和食器や花器、白瓷・青瓷を制作し、展示場「器ギャラリーヤマモト」を併設する。13時から17時、水・木曜定休。",
+  "whatEn": "Potter Takayuki Yamamoto’s studio in Kasuga, Shimizu-ku, making Japanese tableware, vases, white porcelain and celadon, with an attached gallery. Open 13:00–17:00, closed Wed–Thu.",
+  "note": "白瓷と青瓷の器を、ギャラリーの棚でじっくり見たい。",
+  "noteEn": "I would take time at the gallery shelves to look at the white porcelain and celadon.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "ESORA COFFEE",
+  "nameEn": "ESORA COFFEE",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "roastery"
+  ],
+  "area": "鷹匠",
+  "areaEn": "Takajo",
+  "address": "葵区鷹匠2丁目8-21",
+  "url": "https://esoracoffee.com/",
+  "what": "葵区鷹匠の路地に立つ自家焙煎のロースタリーカフェ。黒い外観と白いのれんが目印で、コーヒーと季節の一皿を出す。",
+  "whatEn": "A small roastery café in a Takajo backstreet, marked by a black facade and white noren curtain, serving house-roasted coffee and seasonal plates.",
+  "note": "白いのれんをくぐって、自家焙煎のコーヒーと季節の一皿を。",
+  "noteEn": "Through the white noren curtain for house-roasted coffee and a seasonal plate.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "創作珈琲工房 くれあーる",
+  "nameEn": "Sosaku Coffee Kobo Créer",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "roastery"
+  ],
+  "area": "駿河区",
+  "areaEn": "Suruga",
+  "address": "駿河区八幡3-5-4",
+  "url": "https://uchidacoffee.com/",
+  "what": "駿河区八幡のスペシャルティコーヒー専門店。10時から19時、日曜定休。",
+  "whatEn": "A specialty coffee shop and roastery in Yahata, Suruga-ku. Open 10:00–19:00, closed Sundays.",
+  "note": "冷めても甘いという豆を、自宅用に一袋選んでみたい。",
+  "noteEn": "I would pick a bag of beans for home—they say good coffee stays sweet even as it cools.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "トクナガコーヒー",
+  "nameEn": "Tokunaga Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "roastery"
+  ],
+  "area": "清水",
+  "areaEn": "Shimizu",
+  "address": "清水区辻4丁目8-20",
+  "url": "https://www.tokunagacoffee.com/",
+  "what": "清水区辻の自家焙煎コーヒー専門店。熱風・直火・炭火・溶岩の4つの焙煎方式を使い分ける。",
+  "whatEn": "A house-roasting coffee shop in Tsuji, Shimizu-ku, using four roasting methods: hot-air, direct-flame, charcoal and lava stone.",
+  "note": "富士山の溶岩で焙煎した豆を、まず一袋買って帰りたい。",
+  "noteEn": "I would buy a bag of the Mt. Fuji lava-roasted beans to take home.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "LA PALETTE",
+  "nameEn": "LA PALETTE",
+  "category": "sweets",
+  "tags": [
+   "gelato",
+   "sweets"
+  ],
+  "area": "駿河区",
+  "areaEn": "Suruga",
+  "address": "駿河区用宗4丁目21-12",
+  "url": "https://lapalette.shop/",
+  "what": "駿河区用宗のジェラート専門店。静岡産の生乳と果物や野菜、特産品を使い、香料や着色料を使わずに作る。",
+  "whatEn": "A gelato shop in Mochimune, Suruga-ku, making gelato from Shizuoka raw milk and local fruits, vegetables and produce without artificial flavourings or colourings.",
+  "note": "用宗のしらすや藤枝の煎茶など、静岡らしい味を選びたい。",
+  "noteEn": "I would pick a Shizuoka flavour—Mochimune whitebait or Fujieda sencha.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "ショコラファン",
+  "nameEn": "Chocolat Fin",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "chocolate",
+   "sweets"
+  ],
+  "area": "鷹匠",
+  "areaEn": "Takajo",
+  "address": "葵区鷹匠1-3-7",
+  "url": "https://www.chocolatfin.com/",
+  "what": "昭和61年（1986年）開店の、葵区鷹匠の洋菓子店。看板のチョコレートケーキ「ショコラファン」のほか、季節の焼き菓子も並ぶ。",
+  "whatEn": "A pastry shop in Takajo, Aoi-ku, open since 1986, known for its signature Chocolat Fin chocolate cake alongside seasonal baked sweets.",
+  "note": "まずは看板のショコラファンと、焼き菓子をひとつ。",
+  "noteEn": "The signature Chocolat Fin cake first, and one baked sweet.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "VERT CLAIR",
+  "nameEn": "VERT CLAIR",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "sweets",
+   "cafe"
+  ],
+  "area": "駿河区",
+  "areaEn": "Suruga",
+  "address": "駿河区豊田3-1-45",
+  "url": "https://vertclair.jp/",
+  "what": "駿河区豊田のパティスリー。店内にイートインスペースがあり、ケーキとドリンクのセットが楽しめる。木曜はイートイン休み。",
+  "whatEn": "A patisserie in Toyoda, Suruga-ku, with an eat-in space for cake and drink sets. Eat-in closed Thursdays.",
+  "note": "ショーケースからひとつ選んで、店内の席で紅茶といただく。",
+  "noteEn": "Pick a cake from the case and sit inside with a cup of tea.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Patisserie Hirondelle",
+  "nameEn": "Patisserie Hirondelle",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "baked-sweets",
+   "pastry"
+  ],
+  "area": "葵区中心部",
+  "areaEn": "Aoi Central",
+  "address": "葵区大岩町5-12",
+  "url": "https://hirondelle-patisserie.net/",
+  "what": "葵区大岩町のフランス菓子店。プティガトーやヴィエノワズリー、約20種類の焼き菓子を作る。10時から19時、水曜定休。",
+  "whatEn": "A French patisserie in Oiwa-cho, Aoi-ku, making petit gâteaux, viennoiserie and around twenty kinds of baked sweets. Open 10:00–19:00, closed Wednesdays.",
+  "note": "棚に並ぶ約20種類の焼き菓子から、いくつか選んでみたい。",
+  "noteEn": "I would choose a few from the twenty or so baked sweets on the shelf.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "ヴィンチスグラッシ",
+  "nameEn": "Vincisgrassi",
+  "category": "food",
+  "tags": [
+   "italian",
+   "pasta",
+   "wine"
+  ],
+  "area": "鷹匠",
+  "areaEn": "Takajo",
+  "address": "葵区鷹匠2-18-7",
+  "url": "https://vincisgrassi.jp/",
+  "what": "葵区鷹匠のイタリア料理店。イタリア中部マルケ州の家庭料理とパスタを、静岡の野菜も取り入れて作る。14席。水曜・不定休。",
+  "whatEn": "A 14-seat Italian restaurant in Takajo, Aoi-ku, cooking home-style dishes and pasta from the Marche region with Shizuoka vegetables. Closed Wednesdays and irregular days.",
+  "note": "マルケ州のパスタと、静岡の野菜を使った一皿を頼んでみたい。",
+  "noteEn": "I would order a Marche pasta and a dish made with Shizuoka vegetables.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "simples",
+  "nameEn": "simples",
+  "category": "food",
+  "tags": [
+   "course",
+   "local-ingredients"
+  ],
+  "area": "丸子",
+  "areaEn": "Mariko",
+  "address": "駿河区丸子3262-1",
+  "url": "https://simples.world/",
+  "what": "駿河区丸子の里山にあるレストラン。静岡のその日限りの食材を使ったコース料理を出し、指物や漆の職人とも協働する。火曜定休（ランチは土日のみ）。",
+  "whatEn": "A restaurant in the satoyama hills of Mariko, Suruga-ku, serving tasting courses from daily Shizuoka ingredients and collaborating with local wood and lacquer craftspeople. Closed Tuesdays (lunch weekends only).",
+  "note": "その日限りの料理と、指物や漆の器との組み合わせを見たい。",
+  "noteEn": "I would go to see how the daily dishes pair with local joinery and lacquer vessels.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "レストラン ソレイユ",
+  "nameEn": "Restaurant Soleil",
+  "category": "food",
+  "tags": [
+   "french"
+  ],
+  "area": "鷹匠",
+  "areaEn": "Takajo",
+  "address": "葵区鷹匠2丁目9-7",
+  "url": "https://soleil2003.jimdofree.com/",
+  "what": "2003年オープンの、葵区鷹匠のフランス料理店。自家製のフォンから作るソースが持ち味。ディナーは前日までの予約制、日曜・月曜不定休。",
+  "whatEn": "A French restaurant in Takajo, Aoi-ku, open since 2003, known for sauces built on house-made stocks. Dinner by reservation a day ahead; closed Sundays and some Mondays.",
+  "note": "昼のコースで、自家製フォンのソースと選べるデザートを。",
+  "noteEn": "A lunch course for the house-made stock sauces and a dessert from the menu.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "ÉPICURIEN",
+  "nameEn": "ÉPICURIEN",
+  "category": "food",
+  "tags": [
+   "french",
+   "course"
+  ],
+  "area": "鷹匠",
+  "areaEn": "Takajo",
+  "address": "葵区鷹匠1-3-5 メゾンフィール鷹匠 1階",
+  "url": "https://tak-epi.com/",
+  "what": "葵区鷹匠のモダンフレンチ。静岡の野菜や近海の天然鮮魚、ジビエを使い、昼夜ともおまかせコースで出す。",
+  "whatEn": "A modern French restaurant in Takajo, Aoi-ku, serving omakase tasting courses of Shizuoka vegetables, wild coastal fish and seasonal game.",
+  "note": "静岡の野菜と近海の魚が並ぶおまかせコースを、ゆっくり。",
+  "noteEn": "Take time over an omakase course of Shizuoka vegetables and coastal fish.",
+  "verifiedAt": "2026-11-13"
+ }
+]

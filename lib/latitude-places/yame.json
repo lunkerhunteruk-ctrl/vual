@@ -1,0 +1,226 @@
+[
+ {
+  "name": "矢部屋許斐本家",
+  "nameEn": "Yabeya Konomi Honke",
+  "category": "local",
+  "industry": "yame-tea",
+  "tags": [
+   "tea",
+   "wagashi"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町126",
+  "url": "https://www.konomien.jp/",
+  "what": "宝永年間創業の茶商。八女市指定有形文化財の町家で、炭火で焙じる焙炉式八女茶や茶菓を商う。9時から18時で、日曜は休み。",
+  "whatEn": "A tea merchant house founded in the Hoei era (1704–1710s). In a city-designated cultural-property townhouse, it sells charcoal-roasted hoiro Yame tea and tea sweets. Open 9 am to 6 pm, closed Sundays.",
+  "note": "炭火の香りの焙炉式八女茶を、まず一袋選びたい。",
+  "noteEn": "I'd pick a bag of the charcoal-roasted hoiro Yame tea first.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.20942,
+   130.55824
+  ]
+ },
+ {
+  "name": "伊藤権次郎商店",
+  "nameEn": "Ito Gonjiro Shoten",
+  "category": "local",
+  "industry": "yame-chouchin",
+  "tags": [
+   "lanterns",
+   "washi"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町220",
+  "url": "https://chouchinya.jp/",
+  "what": "1815年（文化12年）創業の提灯屋。祭礼や社寺用の提灯から現代の暮らしの照明まで、竹ひごと和紙で手作りする。9時から17時半。",
+  "whatEn": "A lantern workshop founded in 1815, making bamboo-and-washi lanterns by hand from shrine and festival pieces to home lighting. Open 9 am to 5:30 pm.",
+  "note": "本店の隣にある展示場で、竹ひごの張り方を間近で見たい。",
+  "noteEn": "In the showroom next door, I'd look closely at how the bamboo ribs are strung.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.20911,
+   130.5548
+  ]
+ },
+ {
+  "name": "下川織物",
+  "nameEn": "Shimogawa Orimono",
+  "category": "local",
+  "industry": "kurume-kasuri",
+  "tags": [
+   "textile",
+   "kasuri",
+   "indigo"
+  ],
+  "area": "八女市街",
+  "areaEn": "Central Yame",
+  "address": "八女市津江1111-2",
+  "url": "https://oriyasan.com/",
+  "what": "久留米絣の織元。反物を1メートル単位で量り売りするほか、シャツやストール、もんぺなどの製品も扱う。",
+  "whatEn": "A Kurume Kasuri weaving mill selling ikat-dyed cotton bolts by the metre alongside shirts, stoles and trousers.",
+  "note": "反物を一メートルずつ見比べて、色の出方を選びたい。",
+  "noteEn": "I'd compare the bolts metre by metre and choose for the way the dye sits.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.21038,
+   130.57962
+  ]
+ },
+ {
+  "name": "うなぎの寝床 旧寺崎邸",
+  "nameEn": "Unagi no Nedoko, Kyu-Terasaki Tei",
+  "category": "local",
+  "industry": "kurume-kasuri",
+  "tags": [
+   "textile",
+   "kasuri",
+   "craft"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町327",
+  "url": "https://unagino-nedoko.net/",
+  "what": "地域文化商社「うなぎの寝床」の八女本店。旧寺崎邸の町家で、久留米絣のもんぺや九州の工芸品を扱う。11時から17時で、火・水曜は休み（祝日は営業）。",
+  "whatEn": "The Yame flagship of regional craft house Unagi no Nedoko, in the former Terasaki residence, selling Kurume Kasuri monpe and Kyushu crafts. Open 11 am to 5 pm, closed Tuesdays and Wednesdays (open on public holidays).",
+  "note": "町家の奥まで歩いて、久留米絣のもんぺの生地に触れてみたい。",
+  "noteEn": "I'd walk to the back of the townhouse and feel the Kurume Kasuri monpe cloth.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.2114,
+   130.55351
+  ]
+ },
+ {
+  "name": "男ノ子焼の里",
+  "nameEn": "Onokoyaki no Sato",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "立花町",
+  "areaEn": "Tachibana",
+  "address": "八女市立花町北山1965",
+  "url": "https://onokoyakinosato.com/",
+  "what": "1598年頃に立花宗茂が朝鮮から陶工を招いて始まったと伝わる男ノ子焼を継ぐ窯元。薄づくりの焼きしめの器を展示販売する。10時から16時で、火曜は休み。",
+  "whatEn": "A kiln in Tachibana reviving Onokoyaki, said to date from 1598 when potters were invited from Korea, showing and selling thin-walled yakishime stoneware. Open 10 am to 4 pm, closed Tuesdays.",
+  "note": "薄づくりの焼きしめの器を、一つ手に取って重さを確かめたい。",
+  "noteEn": "I'd pick up one of the thin yakishime vessels to feel its weight.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.16927,
+   130.54737
+  ]
+ },
+ {
+  "name": "古陶星野焼展示館",
+  "nameEn": "Koto Hoshinoyaki Tenjikan",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tea"
+  ],
+  "area": "星野村",
+  "areaEn": "Hoshino",
+  "address": "福岡県八女市星野村千々谷11865-1",
+  "url": "https://www.hoshinofurusato.jp/pottery/",
+  "what": "星形の屋根と八角形の回廊を持つ星野焼の展示館。江戸中期以降の古陶や「夕日焼」を展示し、村内の窯元の器も販売する。9時から17時、火曜休（12〜2月は月・火曜休）。",
+  "whatEn": "An octagonal gallery with a star-shaped roof in Hoshino, showing Edo-period Hoshino-yaki and iron-glazed Yuhi-yaki alongside contemporary vessels from local kilns. Open 9 am to 5 pm, closed Tuesdays (Mondays and Tuesdays Dec–Feb).",
+  "note": "お茶を注ぐと底が金色に光る夕日焼の器を見てみたい。",
+  "noteEn": "I'd like to see the Yuhi-yaki glaze that turns gold at the bottom when tea is poured.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.24593,
+   130.76539
+  ]
+ },
+ {
+  "name": "八女福島置屋 蒼とねじ",
+  "nameEn": "Yame Fukushima Okiya Ao to Neji",
+  "category": "craft",
+  "tags": [
+   "tea",
+   "ceramics"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町58",
+  "url": "https://www.instagram.com/okiya_yame_official/",
+  "what": "築約100年の旧置屋の建物で、2026年5月に「茶楼 蒼」と「茶と器ねじ」が統合して開いた八女茶のセレクトショップと喫茶。11時から17時で、火曜は休み。",
+  "whatEn": "A Yame tea select shop and tea room in a century-old former okiya townhouse, opened in May 2026 by uniting Sarou Ao and Cha to Utsuwa Neji. Open 11 am to 5 pm, closed Tuesdays.",
+  "note": "1階の庭を向いた席で、選んだ八女茶を急須で淹れてもらいたい。",
+  "noteEn": "At a downstairs seat facing the garden, I'd have my chosen Yame tea brewed in a kyusu.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.20946,
+   130.56005
+  ]
+ },
+ {
+  "name": "Bacopa Coffee Roastery",
+  "nameEn": "Bacopa Coffee Roastery",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町1-248-1 203",
+  "url": "https://www.instagram.com/bacopa_coffee_roastery/",
+  "what": "2026年9月に鹿児島・鹿屋市から八女市本町へ移転した自家焙煎コーヒー店。Flower bldg 203号室の間借り店舗で、10時から17時。",
+  "whatEn": "A small-batch coffee roastery that relocated from Kanoya in Kagoshima to Honmachi in September 2026, operating in a shared second-floor space at Flower bldg 203. Open 10 am to 5 pm.",
+  "note": "階段を上がった先の席で、自家焙煎の一杯を静かに飲みたい。",
+  "noteEn": "Upstairs in the shared room, I'd sit quietly with a cup of their house-roasted coffee.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.21194,
+   130.56347
+  ]
+ },
+ {
+  "name": "Coffee モンブラン",
+  "nameEn": "Coffee Montblanc",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "八女福島",
+  "areaEn": "Yame Fukushima",
+  "address": "八女市本町85",
+  "url": "https://www.instagram.com/coffee_montblanc_yame/",
+  "what": "1972年創業の旧喫茶「モンブラン」を受け継ぎ、2026年4月に開いた小さな珈琲店。珈琲やカフェラテ、ステックスイーツを出す。営業は木・土・日曜の10時から17時。",
+  "whatEn": "A small coffee shop opened in April 2026, carrying on the name of a 1972 kissaten, serving coffee, café latte and stick sweets. Open Thursdays, Saturdays and Sundays, 10 am to 5 pm.",
+  "note": "木・土・日しか開かない小さな店で、カフェラテを頼みたい。",
+  "noteEn": "Open only Thursday, Saturday and Sunday—I'd stop in for a café latte.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.20996,
+   130.55847
+  ]
+ },
+ {
+  "name": "生はちみつ専門店 cafe蜂の雫",
+  "nameEn": "cafe Hachinoshizuku",
+  "category": "food",
+  "tags": [
+   "honey",
+   "lunch"
+  ],
+  "area": "黒木町",
+  "areaEn": "Kurogi",
+  "address": "八女市黒木町木屋5504-2",
+  "url": "https://cafe-hachinosizuku.com/",
+  "what": "黒木町の山あいで養蜂家が営むカフェ。無農薬の自家栽培野菜のランチや、非加熱の生はちみつを使ったスイーツと珈琲を出す。11時から16時で、月・火曜は休み。",
+  "whatEn": "A hillside café in Kurogi run by a beekeeper, serving lunches of pesticide-free home-grown vegetables alongside raw-honey sweets and hand-drip coffee. Open 11 am to 4 pm, closed Mondays and Tuesdays.",
+  "note": "山の景色を見ながら、採れたままの生はちみつの甘さを味わいたい。",
+  "noteEn": "Looking out at the hills, I'd taste the unheated wildflower honey just as it was harvested.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.17829,
+   130.69883
+  ]
+ }
+]

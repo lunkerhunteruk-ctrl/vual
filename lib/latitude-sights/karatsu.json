@@ -1,0 +1,56 @@
+[
+ {
+  "name": "唐津城",
+  "nameEn": "Karatsu Castle",
+  "kind": "sight",
+  "area": "東城内",
+  "areaEn": "Higashi-Jonai",
+  "address": "唐津市東城内8-1",
+  "url": "https://karatsujo.com/",
+  "what": "1602年から7年かけて築かれた城の跡。1966年に建てた天守閣は郷土博物館で、唐津焼の展示と海や虹の松原を望む展望所がある。",
+  "whatEn": "The site of a castle built over seven years from 1602. The keep, built in 1966, houses a local history museum with Karatsu ware and a lookout over the sea and Nijino Matsubara.",
+  "coords": [
+   33.45351,
+   129.97819
+  ],
+  "notice": "天守閣は9時から17時、最終入館16時40分。12月29日から31日は休館。",
+  "noticeEn": "The keep opens 9:00–17:00, with last entry at 16:40. Closed 29–31 December.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "旧高取邸",
+  "nameEn": "Former Takatori Residence",
+  "kind": "sight",
+  "area": "北城内",
+  "areaEn": "Kita-Jonai",
+  "address": "唐津市北城内5-40",
+  "url": "https://www.city.karatsu.lg.jp/page/3842.html",
+  "what": "炭鉱主・高取伊好の旧宅で、国の重要文化財。和風の建物に洋間と能舞台があり、杉戸絵や欄間が残る。",
+  "whatEn": "The former home of coal-mine owner Koreyoshi Takatori, a national Important Cultural Property. A Japanese-style house with a Western room and a Noh stage, painted cedar doors and carved transoms.",
+  "coords": [
+   33.45434,
+   129.97216
+  ],
+  "notice": "9時半から17時、最終入館16時半。月曜は休館（祝日は開館、翌日休館）、12月29日から1月3日も休館。",
+  "noticeEn": "Open 9:30–17:00, last entry 16:30. Closed Mondays, or the following day when Monday is a holiday, and 29 December–3 January.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "末盧館",
+  "nameEn": "Matsuro Museum",
+  "kind": "art",
+  "area": "菜畑",
+  "areaEn": "Nabatake",
+  "address": "唐津市菜畑3359-2",
+  "url": "https://www.city.karatsu.lg.jp/page/1223.html",
+  "what": "菜畑遺跡の出土品を展示する博物館。炭化米や石庖丁が並び、遺跡公園には水田と竪穴式住居が復元されている。",
+  "whatEn": "A museum of finds from the Nabatake archaeological site, including carbonised rice and stone reaping knives. A paddy field and pit dwelling have been reconstructed in the archaeological park.",
+  "coords": [
+   33.44852,
+   129.95788
+  ],
+  "notice": "9時から17時、最終入館16時半。月曜は休館（祝日は開館、翌日休館）、12月29日から1月3日も休館。",
+  "noticeEn": "Open 9:00–17:00, last entry 16:30. Closed Mondays, or the following day when Monday is a holiday, and 29 December–3 January.",
+  "verifiedAt": "2026-11-12"
+ }
+]

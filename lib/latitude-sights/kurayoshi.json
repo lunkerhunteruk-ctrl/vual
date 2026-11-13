@@ -1,0 +1,66 @@
+[
+ {
+  "name": "倉吉白壁土蔵群",
+  "nameEn": "Shirakabe Dozogun",
+  "kind": "sight",
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "倉吉市魚町・東仲町・西仲町ほか",
+  "url": "https://www.kurayoshi-kankou.jp/kurayoshi_area/shirakabedozogun/",
+  "what": "打吹山のふもと、玉川沿いに江戸から昭和にかけての土蔵や町家が並ぶ国の重要伝統的建造物群保存地区。白い漆喰壁と黒い焼き杉板の腰壁、赤い石州瓦が続く。",
+  "whatEn": "A national preservation district along the Tamagawa river at the foot of Mount Utsubuki, lined with Edo- to Showa-era storehouses and townhouses of white plaster, charred cedar and red Sekishu tiles.",
+  "coords": [
+   35.43245,
+   133.82416
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "打吹公園",
+  "nameEn": "Utsubuki Park",
+  "kind": "sight",
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "倉吉市仲ノ町",
+  "url": "https://www.kurayoshi-kankou.jp/utsubukiroute_umo/",
+  "what": "白壁土蔵群の南にそびえる打吹山のふもとの公園。園内に倉吉博物館があり、うつぶき周遊ルートの停留所も置かれている。",
+  "whatEn": "A park at the foot of Mount Utsubuki just south of Shirakabe Dozogun, with the Kurayoshi Museum inside its grounds and a stop on the Utsubuki loop route.",
+  "coords": [
+   35.4298,
+   133.82382
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "鳥取県立美術館",
+  "nameEn": "Tottori Prefectural Museum of Art",
+  "kind": "art",
+  "area": "上灘",
+  "areaEn": "Uwanada",
+  "address": "倉吉市駄経寺町2-3-12",
+  "url": "https://tottori-moa.jp/",
+  "what": "駄経寺町にある鳥取県の県立美術館。企画展やコレクション展を開き、館内にカフェとショップを備える。開館は9時から17時、原則月曜休館。",
+  "whatEn": "Tottori’s prefectural art museum in Dakejicho, holding special and collection exhibitions, with a café and shop inside. Open 9 am to 5 pm, generally closed Mondays.",
+  "coords": [
+   35.43173,
+   133.8385
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "円形劇場くらよしフィギュアミュージアム",
+  "nameEn": "Kurayoshi Figure Museum (Enkei Gekijo)",
+  "kind": "art",
+  "area": "白壁土蔵群",
+  "areaEn": "Shirakabe Dozogun",
+  "address": "倉吉市鍛冶町1-2971-2",
+  "url": "https://enkei-museum.com/",
+  "what": "日本最古の円形校舎を活かしたフィギュアの博物館。らせん階段や扇形の教室に約2,000点のフィギュアや郷土ゆかりの展示が並ぶ。",
+  "whatEn": "A figure museum housed in Japan’s oldest surviving round schoolhouse, displaying around 2,000 figures and local exhibits across its spiral staircase and fan-shaped classrooms.",
+  "coords": [
+   35.42929,
+   133.81528
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

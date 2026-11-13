@@ -1,0 +1,598 @@
+{
+ "slug": "odawara",
+ "city": {
+  "name": "Odawara",
+  "nameJa": "小田原",
+  "latitude": "35.3° N",
+  "country": "Kanagawa, Japan",
+  "countryJa": "神奈川県",
+  "person": "rin",
+  "coords": [
+   35.25095,
+   139.15351
+  ],
+  "intro": "A castle town of the Hojo lords on Sagami Bay, later a post town on the Tokaido. Wooden bowls and yosegi marquetry, harbour fish, sweets and coffee: Rin’s picks. Spring brings cherry blossom to the castle park.",
+  "introJa": "相模湾に面した北条氏の城下町で、のちに東海道の宿場町として栄えた町。木の器と寄木細工、港の魚、菓子と珈琲を、凛のおすすめで。春は城址公園に桜が咲く。",
+  "locator": {
+   "en": "In western Kanagawa · between the Hakone mountains and Sagami Bay",
+   "ja": "神奈川県西部・箱根の山地と相模湾のあいだ"
+  },
+  "industries": [
+   {
+    "key": "odawara-shikki",
+    "en": "Odawara Lacquerware & Woodturning",
+    "ja": "小田原漆器・木工ろくろ",
+    "about": "Odawara lacquerware begins with wood turned on a lathe, then finished in urushi. Suri-urushi and kijiro finishes show the grain of woods such as zelkova. Workshops still make bowls, trays and plates for daily use.",
+    "aboutJa": "小田原漆器は、ろくろで挽いた木の器に漆を塗る。ケヤキなどの木目を生かす、摺り漆塗りや木地呂塗りが特徴。いまも工房で、普段に使う椀や盆、皿を作っている。",
+    "_src": "Lathe-turned zelkova and cherrywood vessels finished in clear urushi lacquer that highlights natural wood grain, rooted in Muromachi-period woodworking around the Hakone mountains."
+   },
+   {
+    "key": "hakone-yosegi",
+    "en": "Yosegi-zaiku Wood Marquetry",
+    "ja": "寄木細工",
+    "about": "Hakone yosegi marquetry combines woods of different colours into geometric patterns. In Hayakawa, Tsuyuki makes boxes and trays with traditional patterns as well as newer designs, including monochrome pieces.",
+    "aboutJa": "箱根寄木細工は、色の違う木を組み合わせて幾何学模様を作る。早川の露木木工所では、伝統模様の箱や盆に加え、白と黒の配色など新しい寄木も作っている。",
+    "_src": "Geometric marquetry crafted in Odawara and Hakone by planing paper-thin sheets or turning solid blocks assembled from naturally coloured native woods."
+   }
+  ]
+ },
+ "places": {
+  "うつわ菜の花": {
+   "nameEn": "Utsuwa Nanohana",
+   "area": "南町",
+   "areaEn": "Minamicho",
+   "tags": [
+    "ceramics",
+    "glass",
+    "woodwork"
+   ],
+   "what": "南町の器のギャラリー。陶器やガラス、木の器などの企画展を開き、会期中だけ営業する。",
+   "whatEn": "A gallery for vessels in Minamicho, with exhibitions of ceramics, glass and wooden tableware. Open only during exhibitions.",
+   "note": "器は、ふだんの食卓に置くところを考えて選びたい。",
+   "noteEn": "I would choose a piece by picturing it on my table.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "うつわなのはな",
+    "address": "1-3-12 Minamicho, Odawara",
+    "url": "https://utsuwa-nanohana.com/",
+    "whatJa": "建築家・中村好文が設計した静かな空間で、現代日本を代表する陶芸・漆・ガラス作家の個展を毎月開催する器のギャラリー。",
+    "whatEn": "Quiet courtyard gallery designed by architect Yoshifumi Nakamura hosting monthly solo exhibitions of leading Japanese ceramic, lacquer, and glass artists.",
+    "facts": "Designed by architect Yoshifumi Nakamura; exhibits works by ceramicists and craft artists such as Koichi Uchida, Taizo Kuroda, and Akito Akagi; open primarily during scheduled monthly exhibitions.",
+    "weak": "Open mainly during scheduled exhibition periods rather than every day.",
+    "verifiedBy": "https://utsuwa-nanohana.com/",
+    "quote": "篠原勝之展\n2026年10月3日(土）ー10月12日(月祝）",
+    "fixes": "Address confirmed: 小田原市南町1-3-12. Official page says ※企画開催時のみ営業; describe as an exhibition-period gallery. The opened page does not substantiate the architect attribution.",
+    "coords": [
+     35.24744,
+     139.15417
+    ]
+   }
+  },
+  "菜の花 暮らしの道具店": {
+   "nameEn": "Nanohana Kurashi no Doguten",
+   "area": "栄町",
+   "areaEn": "Sakaecho",
+   "tags": [
+    "tableware",
+    "glass",
+    "textile"
+   ],
+   "what": "地下街HaRuNe小田原にある、器と暮らしの道具の店。作家の陶器やガラス、布などの企画展も開く。",
+   "whatEn": "A shop for tableware and everyday things in the HaRuNe Odawara underground arcade. It also holds shows of ceramics, glass and textiles by makers.",
+   "note": "毎日使うグラスを、形の違いを見ながら一つ選びたい。",
+   "noteEn": "I would compare the shapes and choose one glass for everyday use.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "なのはなくらしのどうぐてん",
+    "address": "1-1-7 Sakaecho, Odawara",
+    "url": "https://kurashinodouguten.com/",
+    "whatJa": "「うつわ菜の花」の常設店として、日々の食卓に馴染む作家の陶器や吹きガラス、木の器や生活道具を揃えるショップ。",
+    "whatEn": "Permanent sister shop to Utsuwa Nanohana offering everyday handmade ceramics, blown glass, wooden bowls, and household tools beneath Odawara Station.",
+    "facts": "Opened on a full-moon day in April 2006 as the everyday craft counterpart to Utsuwa Nanohana; carries pottery, glassware, woven baskets, and kitchen tools inside HaRuNe Odawara in Sakaecho.",
+    "weak": "",
+    "verifiedBy": "https://kurashinodouguten.com/",
+    "quote": "BINhouseの帛\n2026.10.3-10.12",
+    "fixes": "Full address: 神奈川県小田原市栄町1−1−7 小田原地下街 HaRuNe小田原 菜の花ビレッジ 内. Quote is the BINhouseの帛 exhibition date range, with hours 10:00-20:00 and 会期中無休.",
+    "coords": [
+     35.25559,
+     139.15655
+    ]
+   }
+  },
+  "露木木工所": {
+   "nameEn": "Tsuyuki Woodwork",
+   "area": "早川",
+   "areaEn": "Hayakawa",
+   "tags": [
+    "yosegi",
+    "woodwork"
+   ],
+   "what": "早川にある箱根寄木細工の製造元。併設の寄木ギャラリーツユキで、寄木の器や小物を売る。",
+   "whatEn": "A maker of Hakone yosegi wood marquetry in Hayakawa. Its Yosegi Gallery Tsuyuki sells marquetry tableware and small pieces.",
+   "note": "寄木は、模様を作る木の色の違いから見てみたい。",
+   "noteEn": "I would start with the different wood colours that make up the patterns.",
+   "_src": {
+    "category": "local",
+    "industry": "hakone-yosegi",
+    "nameKana": "つゆきもっこうじょ",
+    "address": "2-2-15 Hayakawa, Odawara",
+    "url": "https://yosegi-g.com/",
+    "whatJa": "大正15年創業の寄木細工工房の本社ギャラリーショップで、伝統模様の小箱から現代的なデザインの木製品まで直販する。",
+    "whatEn": "Fourth-generation wood marquetry maker founded in 1926 with a showroom displaying both traditional geometric yosegi boxes and contemporary monochrome-toned woodwork.",
+    "facts": "Founded in 1926 (Taisho 15); fourth-generation craftsman Kiyotaka Tsuyuki creates contemporary yosegi patterns alongside classic geometric marquetry; head office in Hayakawa includes an attached gallery shop.",
+    "weak": "",
+    "verifiedBy": "https://www.city.odawara.kanagawa.jp/field/industry/commerce/machihaku-area3.html",
+    "quote": "国指定伝統的工芸品の寄木細工を製造販売しています。",
+    "fixes": "2026-04-01 updated city listing confirms 寄木ギャラリー（露木木工所）, 小田原市早川2-2-15, marquetry manufacture and gallery sales. City lists gallery opening 10:00–16:00; official company site lists 9:00–17:00, so confirm hours before visiting.",
+    "coords": [
+     35.24234,
+     139.14633
+    ]
+   }
+  },
+  "大川木工所": {
+   "nameEn": "Okawa Woodwork",
+   "area": "板橋",
+   "areaEn": "Itabashi",
+   "tags": [
+    "lacquer",
+    "woodturning"
+   ],
+   "what": "木目を生かした摺り漆塗りや木地呂塗りの、小田原漆器の工房。椀や盆を作って売り、漆の研ぎ出し体験も受け付ける。",
+   "whatEn": "An Odawara lacquerware workshop using suri-urushi and kijiro finishes that show the wood grain. It makes and sells bowls and trays, and offers lacquer-polishing workshops.",
+   "note": "汁椀は、漆の下に見える木目で一つ選んでみたい。",
+   "noteEn": "I would choose a soup bowl by the grain showing through the lacquer.",
+   "_src": {
+    "category": "local",
+    "industry": "odawara-shikki",
+    "nameKana": "おおかわもっこうじょ",
+    "address": "2-226-2 Minami-Itabashi, Odawara",
+    "url": "https://okawa-mokkoujo.com/",
+    "whatJa": "昭和元年創業の木地挽き・ろくろ工房で、ケヤキの木目を活かした摺り漆塗りや木地呂塗りの小田原漆器を製造・直販する。",
+    "whatEn": "Woodturning and Odawara lacquerware workshop founded in 1926 crafting lathe-turned zelkova bowls and trays coated in translucent urushi lacquer.",
+    "facts": "Founded in 1926 (Showa 1); specializes in suri-urushi and kijiro-nuri finishes that reveal natural zelkova (keyaki) grain on soup bowls, trays, and bento boxes; workshop in the Itabashi artisan area also hosts urushi polishing sessions by reservation.",
+    "weak": "",
+    "verifiedBy": "https://www.city.odawara.kanagawa.jp/field/industry/commerce/machihaku-area3.html",
+    "quote": "昔ながらの機械がある工場は、なかなか見られない風景です。",
+    "fixes": "2026-04-01 updated city listing confirms 木地挽き・ろくろ工房（大川木工所）, 小田原市南板橋2-226-2, 昭和元年（1926年）創業. Official company site confirms lacquerware manufacture/sale and 漆の研ぎ出し体験.",
+    "coords": [
+     35.24402,
+     139.14739
+    ]
+   }
+  },
+  "もくのすけ": {
+   "nameEn": "Mokunosuke",
+   "area": "板橋",
+   "areaEn": "Itabashi",
+   "tags": [
+    "lacquer",
+    "woodturning"
+   ],
+   "what": "箱根板橋の小さな木工と漆の工房。ケヤキの生木の乾燥から木地挽き、漆塗りまで行い、椀や皿、弁当箱を作る。",
+   "whatEn": "A small woodturning and lacquer studio in Hakone-Itabashi. It seasons green zelkova, turns and lacquers it to make bowls, plates and lunch boxes.",
+   "note": "飾るものより、毎日のごはんに使う木の器を選びたい。",
+   "noteEn": "I would choose wooden tableware for daily meals rather than display.",
+   "_src": {
+    "category": "local",
+    "industry": "odawara-shikki",
+    "nameKana": "もくのすけ",
+    "address": "157-1 Itabashi, Odawara",
+    "url": "https://mokunosukeodw.com/",
+    "whatJa": "木工ろくろ職人の鈴木友子が原木の乾燥から木地挽き、漆塗りまで一人で手掛け、普段使いの椀や鉢を制作する板橋の小さな工房。",
+    "whatEn": "One-woman Odawara woodturning and lacquerware studio in Itabashi where artisan Tomoko Suzuki turns raw timber on a lathe and finishes everyday bowls in urushi.",
+    "facts": "Run by woodturner Tomoko Suzuki after training in Odawara's traditional craft apprentice programme; handles green-wood seasoning, lathe turning, and urushi lacquering in-house to make durable everyday soup bowls and plates.",
+    "weak": "Small working studio with gallery exhibition travel; direct studio visits require advance inquiry.",
+    "verifiedBy": "https://mokunosukeodw.com/",
+    "quote": "「木と漆 ３人展」\n２０２６年１月２８日(水)～２月２日(月)",
+    "fixes": "Official site confirms a small 箱根板橋 workshop handling green zelkova wood, drying, turning and lacquering. Exact street number 157-1 and artisan name 鈴木友子 are not stated on the opened page; do not present them as verified. Quote is the announced 木と漆 ３人展 at ギャラリーおかりや, not a studio relocation.",
+    "coords": [
+     35.24603,
+     139.14415
+    ]
+   }
+  },
+  "Anbos Coffee Roaster": {
+   "nameEn": "Anbos Coffee Roaster",
+   "area": "南町",
+   "areaEn": "Minamicho",
+   "tags": [
+    "coffee"
+   ],
+   "what": "南町の自家焙煎珈琲店。ハンドドリップの珈琲を出し、豆の販売と持ち帰りにも対応する。",
+   "whatEn": "A coffee roaster in Minamicho, serving hand-drip coffee and selling beans. Takeaway is available.",
+   "note": "器を見たあとは、ここで珈琲を一杯飲んで座る。",
+   "noteEn": "After looking at tableware, I would sit here over a coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "アンボスコーヒーロースター",
+    "address": "2-1-6 Minamicho, Odawara",
+    "url": "https://www.anbos-coffee-roaster.com/",
+    "whatJa": "南町の静かな旧武家屋敷・別邸エリアに佇む、丁寧な自家焙煎のスペシャルティコーヒー専門店。",
+    "whatEn": "Small-batch specialty coffee roaster tucked into the quiet former samurai residence neighbourhood of Minamicho.",
+    "facts": "Located in Minamicho near Odawara Literature Museum and historic villas; roasts single-origin and blended specialty beans in-house for pour-over drinks and retail bean sales.",
+    "weak": "",
+    "verifiedBy": "https://odawara.goguynet.jp/2026/03/11/anbos-coffee-roaster-2/",
+    "quote": "小田原市南町、国道1号線から西海子小路方面に向かう道沿いにある「Anbos Coffee Roaster」は、本格コーヒーが楽しめるお店です。",
+    "fixes": "Official site confirms 南町2-1-6, in-house roasting, bean sales and hand-drip coffee; 2026 article confirms 10 seats and takeaway.",
+    "coords": [
+     35.24666,
+     139.15503
+    ]
+   }
+  },
+  "RANCH": {
+   "nameEn": "RANCH",
+   "area": "栄町",
+   "areaEn": "Sakaecho",
+   "tags": [
+    "coffee"
+   ],
+   "what": "栄町のビルの2階にあるコーヒーショップ。8時から10時はモーニングの時間。",
+   "whatEn": "A second-floor coffee shop in Sakaecho. Morning service runs from 8 to 10 am.",
+   "note": "朝の散歩のあとは、ここで珈琲を一杯飲みたい。",
+   "noteEn": "I would have a coffee here after a morning walk.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ランチ",
+    "address": "3-14-16 Sakaecho, Odawara",
+    "url": "https://www.instagram.com/ranch_coffee_odawara/",
+    "whatJa": "栄町のビル2階にある自家焙煎カフェで、ハンドピックした豆の丁寧なハンドドリップコーヒーと手作りの焼き菓子を朝から提供する。",
+    "whatEn": "Second-floor specialty coffee shop in Sakaecho roasting hand-picked beans in-house for morning pour-overs and house-baked pastries.",
+    "facts": "Marked by a small red pointed-hat sign on the second floor of Tada Building in Sakaecho 3-chome; opens at 8:00 a.m. for morning toast sets, hand-drip in-house roasted coffee, and homemade sweets.",
+    "weak": "",
+    "verifiedBy": "https://hacooda.com/topics/nw288/",
+    "quote": "小田原駅から徒歩約9分、栄町のビルの２階にひっそりとカフェ「RANCH」がオープンしました。",
+    "fixes": "Address: 神奈川県小田原市栄町3丁目14-16 2階. Article confirms cafe drinks, handmade baked goods and morning service 8:00–10:00; it does not substantiate in-house roasting or hand-picking beans, so remove those claims.",
+    "coords": [
+     35.25828,
+     139.16093
+    ]
+   }
+  },
+  "伊勢屋": {
+   "nameEn": "Iseya",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "wagashi",
+    "daifuku"
+   ],
+   "what": "1935年創業の本町の和菓子店。豆大福や羊羹、いなり寿司を作る。",
+   "whatEn": "A wagashi shop in Honcho, founded in 1935. It makes mame-daifuku, yokan and inari sushi.",
+   "note": "いろいろ買いたくなるけれど、まずは豆大福を一つ。",
+   "noteEn": "I would be tempted by several things, but start with one mame-daifuku.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "いせや",
+    "address": "3-6-22 Honcho, Odawara",
+    "url": "https://www.daifuku-iseya.com/",
+    "whatJa": "昭和10年（1935年）創業の本町の老舗和菓子店で、毎朝つきたての餅で作る名物の豆大福や季節の上生菓子が地元で愛される。",
+    "whatEn": "Neighbourhood wagashi shop founded in 1935 along the Old Tokaido in Honcho, beloved by locals for freshly pounded mame-daifuku.",
+    "facts": "Founded in 1935 (Showa 10) with only its Honcho flagship and one station counter; famous for soft salted red-pea mame-daifuku, yokan packed in yosegi-patterned boxes, and traditional inari sushi.",
+    "weak": "",
+    "verifiedBy": "https://www.daifuku-iseya.com/information/2026.html",
+    "quote": "2026年6月1日より、手提げビニール袋1枚5円、手提げ紙袋1枚10円、保冷剤1個5円、配送料1ヶ所につき100円とさせていただきます。",
+    "fixes": "Official site confirms 本町3-6-22; main shop hours 9:00–16:30, closes when sold out, Thursday holiday. Description of wagashi, daifuku, yokan and inari matches the official site.",
+    "coords": [
+     35.24825,
+     139.15985
+    ]
+   }
+  },
+  "ヴァガボンド洋菓子店": {
+   "nameEn": "Vagabond Patisserie",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "cake"
+   ],
+   "what": "本町の洋菓子店。生菓子は売り切れ次第終了し、休みは公式Instagramのカレンダーで知らせる。",
+   "whatEn": "A patisserie in Honcho. Fresh cakes are sold until they run out; closing days are shown on its official Instagram calendar.",
+   "note": "食べきれるぶんだけ、今日は生菓子を一つ選びたい。",
+   "noteEn": "I would choose one fresh cake, just enough to eat today.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ヴァガボンドようがしてん",
+    "address": "4-2-22 Honcho, Odawara",
+    "url": "https://www.instagram.com/vagabond.seika/",
+    "whatJa": "本町4丁目の古民家を改装した個人経営の洋菓子店で、幾重にも重なる繊細なパイ生地のアップルパイや季節の生菓子が評判。",
+    "whatEn": "Independent patisserie in a renovated old house in Honcho celebrated for leaf-shaped puff-pastry apple pie, seasonal tarts, and baked confections.",
+    "facts": "Opened in November 2023 in a renovated traditional house in Honcho 4-chome; signature crisp leaf-shaped apple pie and fresh seasonal cakes regularly sell out before closing.",
+    "weak": "",
+    "verifiedBy": "https://map.libecity.com/shops/3648",
+    "quote": "ケーキも美味しそうでしたが食べ歩きしたくて、小分けされたグリオットとガレットブルトンヌをいただきました！",
+    "fixes": "Owner-posted listing confirms 神奈川県小田原市本町4−2−22, opening November 2023, apple pie, Mont Blanc and baked sweets. Dated visitor review confirms 2026 purchases. The opened page does not establish a renovated old house or leaf-shaped pastry; remove those details.",
+    "coords": [
+     35.24653,
+     139.15571
+    ]
+   }
+  },
+  "龍宮堂": {
+   "nameEn": "Ryugudo",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "gelato",
+    "fruit"
+   ],
+   "what": "本町の海辺の手作りジェラート専門店。小田原近郊の果物などを使う。",
+   "whatEn": "A handmade gelato shop by the sea in Honcho, using fruit from around Odawara.",
+   "note": "海のそばでは、このあたりの果物のジェラートを選びたい。",
+   "noteEn": "By the sea, I would choose gelato made with fruit from nearby.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "りゅうぐうどう",
+    "address": "3-4-20 Honcho, Odawara",
+    "url": "https://www.instagram.com/ryugudo_since2021/",
+    "whatJa": "御幸の浜のトンネルすぐ近くのかまぼこ通りにあり、小田原産フルーツや足柄茶を使った手作りジェラートを提供する専門店。",
+    "whatEn": "Small-batch artisanal gelato shop on Kamaboko Street steps from the Miyukinohama sea-wall tunnel, churning local Odawara fruit and Ashigara tea.",
+    "facts": "Located in Honcho 3-chome right beside the concrete sea-wall tunnel opening onto Miyukinohama pebble beach; churns small-batch gelato from local strawberries, citrus, and Ashigara green tea.",
+    "weak": "",
+    "verifiedBy": "https://datazoo.jp/w/%E9%BE%8D%E5%AE%AE%E5%A0%82/73467684",
+    "quote": "スタッフはジェラート専門店の龍宮堂を訪問。",
+    "fixes": "2026 TV report confirms 神奈川県小田原市本町3-4-20 and popular 小田原いちご＆凛と足柄茶 gelato; April report places it on かまぼこ通り.",
+    "coords": [
+     35.24738,
+     139.16081
+    ]
+   }
+  },
+  "パティスリー HINNA": {
+   "nameEn": "Patisserie HINNA",
+   "area": "南町",
+   "areaEn": "Minamicho",
+   "tags": [
+    "cake",
+    "citrus"
+   ],
+   "what": "箱根口ガレージの洋菓子店。小田原の柑橘や各地の旬の食材を使い、ケーキや焼き菓子を作る。",
+   "whatEn": "A patisserie at Hakoneguchi Garage, making cakes and baked sweets with Odawara citrus and seasonal ingredients from other regions.",
+   "note": "ケーキを一つ選ぶなら、小田原レモンのタルトにしたい。",
+   "noteEn": "For one cake, I would choose the Odawara lemon tart.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "パティスリーヒンナ",
+    "address": "2-1-60 Minamicho, Odawara",
+    "url": "https://www.hotoku.co.jp/hakone-guchi-garage/PatisserieHINNA.html",
+    "whatJa": "南町の箱根口ガレージ内にあり、小田原産の柑橘や季節の果実と北海道産乳製品を合わせたケーキや焼き菓子を作るパティスリー。",
+    "whatEn": "Local patisserie in Minamicho pairing Odawara citrus and seasonal berries with rich Hokkaido dairy in tarts, choux pastries, and cakes.",
+    "facts": "Set inside the renovated Hakoneguchi Garage courtyard in Minamicho 2-chome; combines locally grown Odawara lemons, mikan, and berries with Hokkaido cream and butter.",
+    "weak": "",
+    "verifiedBy": "https://www.city.odawara.kanagawa.jp/kanko/gourmet/p40758.html",
+    "quote": "和菓子うめぞの／La maman／江之浦果樹園maruesu／㈲ジョイファーム小田原／社福）小田原支援センター パン工房イースト／Patisserie HINNA／廣井園芸／西湘洋菓子組合（創菓工房なかじま／パティスリーガロパン／プティタプティ／フロマージュ／スウィートベリー）",
+    "fixes": "Quote is the exhibitor list for 令和8年2月21日 in the city event report updated 2026-04-13. Official Hakoneguchi Garage page confirms 小田原市南町2-1-60. Official HINNA page describes local citrus and carefully selected seasonal ingredients from Hokkaido/other regions; it does not specifically establish Hokkaido dairy, so replace that detail with the stated ingredient policy.",
+    "coords": [
+     35.24714,
+     139.15492
+    ]
+   }
+  },
+  "イルマーレ": {
+   "nameEn": "Il Mare",
+   "area": "早川",
+   "areaEn": "Hayakawa",
+   "tags": [
+    "italian",
+    "seafood"
+   ],
+   "what": "小田原漁港を見下ろすイタリア料理店。朝の競りで仕入れる魚と協力農家の食材で、その日のおまかせコースを出す。",
+   "whatEn": "An Italian restaurant overlooking Odawara Fishing Port. Its daily set courses use fish bought at the morning auction and ingredients from partner farms.",
+   "note": "港の魚をどう料理するのか、おまかせで食べてみたい。",
+   "noteEn": "I would leave it to the kitchen and see how it cooks the harbour fish.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "イルマーレ",
+    "address": "1-11-6 Hayakawa, Odawara",
+    "url": "https://www.il-mare.co.jp/",
+    "whatJa": "早川の小田原漁港を見渡すイタリア料理店で、毎朝の競りで仕入れる相模湾の地魚と地元農家の野菜を使った料理を提供する。",
+    "whatEn": "Independent harbourside Italian restaurant overlooking Odawara Fishing Port that builds daily menus around fish bought at the morning auction and local farm vegetables.",
+    "facts": "Three minutes on foot from Hayakawa Station right beside Odawara Fishing Port; chef visits the port auction every morning followed by local partner farms to compose Sagami Bay seafood pasta and main dishes.",
+    "weak": "",
+    "verifiedBy": "https://www.il-mare.co.jp/",
+    "quote": "2/10（火)より通常営業いたします。",
+    "fixes": "Full address: 神奈川県小田原市早川1-11-6 PORT SIDE K-II 1F. January 8, 2026 notice announces only February 1–9 temporary closure and explicit February 10 resumption. Official description confirms daily auction purchases, cooperating farms and all courses selected daily.",
+    "coords": [
+     35.2409,
+     139.14718
+    ]
+   }
+  },
+  "そば処 橋本": {
+   "nameEn": "Sobadokoro Hashimoto",
+   "area": "栄町",
+   "areaEn": "Sakaecho",
+   "tags": [
+    "soba"
+   ],
+   "what": "1848年創業の蕎麦店。北海道母子里のそば粉で作る二八蕎麦を、寝かせたかえしと鰹節のもり汁で出す。",
+   "whatEn": "A soba shop founded in 1848. Its nihachi noodles use buckwheat from Moshiri in Hokkaido, served with a dipping broth of aged kaeshi and bonito.",
+   "note": "寒い日なら、季節のかきそばを温かいつゆで食べたい。",
+   "noteEn": "On a cold day, I would have the seasonal oyster soba in hot broth.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "そばどころはしもと",
+    "address": "1-13-37 Sakaecho, Odawara",
+    "url": "https://sobadokoro-hashimoto.com/",
+    "whatJa": "嘉永元年（1848年）創業の栄町の老舗蕎麦店で、北海道母子里産のそば粉で打つ香り高い二八蕎麦と熟成かえしのもり汁を守る。",
+    "whatEn": "Historic soba restaurant in Sakaecho dating back to 1848, serving hand-cut nihachi buckwheat noodles made from Moshiri buckwheat flour.",
+    "facts": "Founded in 1848 (Kaei 1) in central Odawara; uses premium buckwheat flour from Moshiri in Hokkaido for firm nihachi soba paired with aged kaeshi and bonito dashi, plus seasonal oyster soba in winter.",
+    "weak": "",
+    "verifiedBy": "https://www.0465.net/omise/hashimoto/index.html?CATEGORY=990",
+    "quote": "2026年03月16日 09:00\n■季節のおすすめ■\n◆山かけとろろの冷しそば◆",
+    "fixes": "Dated 2026 seasonal-menu notice on shop listing confirms operation. Official website confirms 神奈川県小田原市栄町１－１３－３７, 創業１８４８年, 北海道母子里のそば粉 and 二八蕎麦. Hand-cut noodles are not explicitly stated on the opened official homepage.",
+    "coords": [
+     35.25248,
+     139.1577
+    ]
+   }
+  },
+  "フレンチ食堂 iTToku": {
+   "nameEn": "French Shokudo iTToku",
+   "area": "栄町",
+   "areaEn": "Sakaecho",
+   "tags": [
+    "french",
+    "bread"
+   ],
+   "what": "富士屋ホテルのフュージョンダイニングF元料理長が営む、栄町のフレンチ食堂。ランチは選べる前菜とメインに、スープと自家製パンを添える。",
+   "whatEn": "A French restaurant in Sakaecho run by the former head chef of Fujiya Hotel’s Fusion Dining F. Lunch pairs a choice of starter and main with soup and house-made bread.",
+   "note": "昼はスープと自家製パンから、ゆっくり食べ始めたい。",
+   "noteEn": "At lunch, I would take my time over the soup and house-made bread.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "フレンチしょくどうイットク",
+    "address": "2-10-17 Sakaecho, Odawara",
+    "url": "https://ittoku-odawara.com/",
+    "whatJa": "富士屋ホテルの元料理長が栄町で営むカジュアルフレンチ食堂で、自家製パテやハムを盛り合わせたサラダや季節のビストロ料理が人気。",
+    "whatEn": "Relaxed neighbourhood bistro in Sakaecho run by a former Fujiya Hotel head chef serving house-made charcuterie and casual French dishes.",
+    "facts": "Located in Sakaecho 2-chome; chef previously led Fusion Dining F at Hakone's historic Fujiya Hotel; beloved by locals for generous iTToku charcuterie salads, lunch sets, and relaxed bistro dinners.",
+    "weak": "",
+    "verifiedBy": "https://ittoku-odawara.com/2026/11/03/11%e6%9c%88%e3%81%ae%e3%83%84%e3%82%ad%e3%82%a4%e3%83%81%e3%81%afbbq/",
+    "quote": "料理と飲み物込みでお一人様13000円税込となります。",
+    "fixes": "Dated post announces the 11/15 Sunday BBQ event; homepage explicitly dates it 2026年11月3日. Address confirmed 神奈川県小田原市栄町2-10-17. Homepage confirms former 富士屋ホテル フュージョンダイニングF料理長 星一徳.",
+    "coords": [
+     35.25596,
+     139.15946
+    ]
+   }
+  },
+  "TEA FACTORY 如春園": {
+   "nameEn": "TEA FACTORY Joshunen",
+   "area": "板橋",
+   "areaEn": "Itabashi",
+   "tags": [
+    "black-tea",
+    "curry"
+   ],
+   "what": "旧下田豆腐店の建物を使う紅茶工房と喫茶。小田原周辺で育てて製茶するこゆるぎ紅茶と、昼には南インドのスパイスカレーを出す。",
+   "whatEn": "A tea factory and café in the former Shimoda tofu workshop. It makes Koyurugi black tea from leaves grown around Odawara, and serves South Indian spice curry at lunch.",
+   "note": "昼はスパイスカレーを食べて、こゆるぎ紅茶も飲みたい。",
+   "noteEn": "I would have the spice curry for lunch, and Koyurugi black tea too.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ティーファクトリーじょしゅんえん",
+    "address": "636 Itabashi, Odawara",
+    "url": "https://joshunen.jp/",
+    "whatJa": "板橋の旧東海道沿いにある築90年超の旧豆腐店を改装した紅茶工房兼食堂で、本格的な南インドのスパイスカレーと自家栽培のこゆるぎ紅茶を提供する。",
+    "whatEn": "South Indian spice curry kitchen and micro-lot black tea factory housed inside a renovated 90-year-old former tofu shop on the Old Tokaido in Itabashi.",
+    "facts": "Occupies the historic Shimoda Tofu Shop building in Itabashi; processes pesticide-free Koyurugi black tea grown in Odawara hills on-site and serves South Indian curries and black-tea pudding.",
+    "weak": "",
+    "verifiedBy": "https://www.joshunen.jp/2026/04/02/%EF%BC%92%EF%BC%90%EF%BC%92%EF%BC%96%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB/",
+    "quote": "各ワークショップは、事前決済でのお申し込みのため、それぞれ３０日前からのお申し込み開始となります。",
+    "fixes": "Official 2026 workshop announcement includes 神奈川県小田原市板橋636. Official homepage confirms old 下田豆腐店 building, tea production and South Indian spice-curry lunch.",
+    "coords": [
+     35.24702,
+     139.14359
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "小田原城",
+   "nameEn": "Odawara Castle",
+   "kind": "sight",
+   "area": "城内",
+   "areaEn": "Jonai",
+   "address": "小田原市城内6-1",
+   "url": "https://odawaracastle.com/",
+   "what": "戦国時代に北条氏の居城となった城。1960年に復興した天守閣では、城の歴史や美術工芸品を展示する。",
+   "whatEn": "The castle of the Hojo lords in the Sengoku period. The keep, reconstructed in 1960, displays the castle’s history, art and crafts.",
+   "coords": [
+    35.25105,
+    139.15342
+   ],
+   "notice": "天守閣は9時から17時（最終入館16時30分）。12月第2水曜と12月31日〜1月1日は休館。園内のこども遊園地は当面休園。",
+   "noticeEn": "The keep opens 9 am to 5 pm, last entry 4:30 pm. Closed the second Wednesday in December and December 31–January 1. The children’s amusement park is closed until further notice.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://odawaracastle.com/Overview/ ; https://odawaracastle.com/info/ . Official homepage lists notices dated 2026-11-06 and 2026-11-01; the visitor guide states the keep opening hours and amusement-park closure.",
+   "_coordsSource": "OpenStreetMap way 167050294, 小田原城天守閣; Nominatim search 小田原城: 35.2510547, 139.1534249, rounded to 5 decimals."
+  },
+  {
+   "name": "報徳二宮神社",
+   "nameEn": "Hotoku Ninomiya Shrine",
+   "kind": "sight",
+   "area": "城内",
+   "areaEn": "Jonai",
+   "address": "小田原市城内8-10",
+   "url": "https://www.ninomiya.or.jp/",
+   "what": "小田原城址公園内にある、二宮尊徳を祀る神社。1894年に創建された。",
+   "whatEn": "A shrine to Ninomiya Sontoku within Odawara Castle Park, founded in 1894.",
+   "coords": [
+    35.24985,
+    139.15297
+   ],
+   "notice": "11月から3月は6時から17時まで開門し、夜間は参拝できない。",
+   "noticeEn": "The grounds open 6 am to 5 pm from November through March. No visits at night.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.ninomiya.or.jp/ ; https://www.ninomiya.or.jp/information/11sanpai.html . Official site states 明治二十七年創建, the deity, address and seasonal gate hours; the 2026 October–November worship notice confirms current access.",
+   "_coordsSource": "OpenStreetMap way 558481071, 報徳二宮神社 in Odawara; Nominatim: 35.2498519, 139.1529655, rounded to 5 decimals."
+  },
+  {
+   "name": "神奈川県立生命の星・地球博物館",
+   "nameEn": "Kanagawa Prefectural Museum of Natural History",
+   "kind": "art",
+   "area": "入生田",
+   "areaEn": "Iriuda",
+   "address": "小田原市入生田499",
+   "url": "https://nh.kanagawa-museum.jp/",
+   "what": "地球の46億年の歴史と生命の多様性を伝える自然史博物館。恐竜や隕石、昆虫などの実物標本を展示する。",
+   "whatEn": "A natural history museum tracing 4.6 billion years of Earth’s history and the diversity of life, with specimens ranging from dinosaurs and meteorites to insects.",
+   "coords": [
+    35.23939,
+    139.12158
+   ],
+   "notice": "星槎ミュージアムシアターは機器不調で上映休止中。常設展「再び海へ」の剥製の一部も、資料保護の処置のため見られない。休館日は公式カレンダーで確認。",
+   "noticeEn": "Screenings in the Seisa Museum Theater are suspended because of equipment trouble. Some taxidermy specimens in the permanent exhibition’s “Back to the Sea” section are also off display for conservation. Check the official calendar for closing days.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://nh.kanagawa-museum.jp/exhibition/permanent/ ; https://nh.kanagawa-museum.jp/visit/information.html ; https://nh.kanagawa-museum.jp/new-arrival/news/news20261111.html ; https://nh.kanagawa-museum.jp/exhibition/museumtheater.html . Current exhibition 灯台記念日 runs 2026-10-24–11-23 on the homepage. The partial display closure was announced 2026-11-11; no whole-museum closure is announced.",
+   "_coordsSource": "OpenStreetMap node 1420830429, 神奈川県立生命の星・地球博物館; Nominatim: 35.2393863, 139.1215819, rounded to 5 decimals."
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "sent.",
+   "verdict": "doubt",
+   "reason": "Official site opens and confirms 神奈川県小田原市本町3-1-6 and selected household goods/tools. Latest visible news is 2023/01/11; no dated 2026 operating sentence found."
+  },
+  {
+   "name": "そろりと小田原",
+   "verdict": "doubt",
+   "reason": "Official website has workshop descriptions and contact details but no dated 2026 operating sentence; year-labelled travel-listing titles are not dated operating evidence."
+  },
+  {
+   "name": "鱗吉",
+   "verdict": "doubt",
+   "reason": "Official shop opens and confirms 本町3-7-17, 天明元年 founding and fish-cake production/retail, but has no dated 2026 operating sentence."
+  },
+  {
+   "name": "スズアコーヒー店",
+   "verdict": "doubt",
+   "reason": "Official website opens, but displayed news is no later than 2024 and company history ends in 2025. A searched 2026 coffee blog could not be read with curl, so no usable 2026 sentence was copied."
+  },
+  {
+   "name": "DENT CRAFT Coffee Stand",
+   "verdict": "doubt",
+   "reason": "Official Instagram returns only its page title. Alternative HACOODA listing is readable but has no dated 2026 operating sentence; the 4/25 renewal notice cannot be assigned to 2026."
+  },
+  {
+   "name": "L'officina del Cibo",
+   "verdict": "doubt",
+   "reason": "Official website and information page open but contain no dated 2026 operating sentence. Undated reservation rules and menus do not meet the evidence requirement."
+  }
+ ]
+}

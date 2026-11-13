@@ -1,0 +1,346 @@
+[
+ {
+  "name": "かわらミュージアム",
+  "nameEn": "Kawara Museum",
+  "category": "local",
+  "industry": "hachiman-gawara",
+  "tags": [
+   "tiles"
+  ],
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "多賀町738-2",
+  "url": "https://www.omihachiman-shiryoukan-kawara.jp/",
+  "what": "八幡堀沿いに建つ、瓦がテーマの博物館と体験工房。2万4000枚の瓦を使った10棟の建物で、鬼瓦などの展示を見たり、粘土からいぶし銀の瓦を焼く体験ができたりする。9時から17時で、月曜は休み。",
+  "whatEn": "A museum and workshop along Hachiman-bori devoted to roof tiles. Across ten tile-clad buildings using 24,000 tiles, visitors can see onigawara displays and try firing smoked-silver clay pieces. Open 9:00 to 17:00, closed Mondays.",
+  "note": "体験工房で、粘土から小さな瓦を焼いてみたい。",
+  "noteEn": "I want to try firing a small clay tile at the workshop.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   35.14073,
+   136.09206
+  ]
+ },
+ {
+  "name": "リバーフィールド",
+  "nameEn": "Riverfield",
+  "category": "local",
+  "industry": "hachiman-gutsu",
+  "tags": [
+   "leather",
+   "shoes"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "鷹飼町617",
+  "url": "https://easyorder-shoes.jp/",
+  "what": "JR近江八幡駅南口近くで、伝統の「八幡靴」を手縫いで仕立てるオーダーメイド革靴店。22種類のデザインと28種類の素材から選べる。10時から17時で、月曜は休み。",
+  "whatEn": "A custom leather shoemaker near the south exit of JR Omihachiman Station making traditional hand-sewn Hachiman-gutsu shoes. Choose from 22 designs and 28 materials. Open 10:00 to 17:00, closed Mondays.",
+  "note": "28種類の革を見比べて、一足選びたい。",
+  "noteEn": "I want to compare the 28 leathers and choose a pair.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   35.12235,
+   136.10323
+  ]
+ },
+ {
+  "name": "だもん亭",
+  "nameEn": "Damontei",
+  "category": "sweets",
+  "tags": [
+   "chocolate",
+   "sweets"
+  ],
+  "area": "新町通り",
+  "areaEn": "Shinmachi-dori",
+  "address": "新町4-10",
+  "url": "https://damontei.com/",
+  "what": "陶芸家で料理家のダレン・ダモンテが主宰する、新町の店。併設のショップ＆カフェではbean to barのクラフトチョコレートやスイーツを楽しめ、レストランは1日1組の完全予約制。",
+  "whatEn": "A house on Shinmachi-dori run by potter and chef Darren Damonte. Its attached shop and café serve bean-to-bar craft chocolate and sweets, while the California-cuisine restaurant takes one group a day by reservation only.",
+  "note": "併設のカフェで、bean to barのチョコを選びたい。",
+  "noteEn": "I want to pick out bean-to-bar chocolate at the attached café.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   35.13653,
+   136.09065
+  ]
+ },
+ {
+  "name": "壱製パン所",
+  "nameEn": "Ichisei Bakery",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "堀上町159-75",
+  "url": "https://ichiseipan.com/",
+  "what": "堀上町の住宅地にある、20年続くパン屋。朝8時から17時まで開き、火曜と水曜は休み。",
+  "whatEn": "A bakery in a quiet neighbourhood of Horikami-cho, open for twenty years. Open 8:00 to 17:00, closed Tuesdays and Wednesdays.",
+  "note": "朝に焼きたてのパンを一つ買いたい。",
+  "noteEn": "I want to buy a freshly baked loaf in the morning.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   35.11812,
+   136.09122
+  ]
+ },
+ {
+  "name": "中島多吉商店",
+  "nameEn": "Nakajima Takichi Shoten",
+  "category": "craft",
+  "tags": [
+   "antiques"
+  ],
+  "area": "仲屋町・永原町",
+  "areaEn": "Nakaya-cho & Nagahara-cho",
+  "address": "為心町元22-1",
+  "url": "http://nakajimatakichi.com/",
+  "what": "為心町元の骨董品店。古美術やアンティーク雑貨、仏壇仏具を扱う。通常は10時から15時半まで開き、火曜は休み。",
+  "whatEn": "An antique shop in Ishin-cho Moto dealing in fine antiques, vintage sundries and Buddhist altars. Usually open 10:00 to 15:30, closed Tuesdays.",
+  "note": "古い器や雑貨の棚を、ゆっくり見て回りたい。",
+  "noteEn": "I want to take my time looking through the shelves of old vessels and sundries.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   35.13871,
+   136.09103
+  ]
+ },
+ {
+  "name": "レアウッドビーズ美樹 八幡堀 石畳の小路店",
+  "nameEn": "Rare Wood Beads Bijoux, Hachiman-bori",
+  "category": "local",
+  "industry": "omi-mokuju",
+  "tags": [
+   "wood",
+   "beads"
+  ],
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "大杉町12 八幡堀 石畳の小路",
+  "url": "http://kawasaki-beads.com/",
+  "what": "昭和3年（1928年）創業の木珠メーカー・カワサキが、八幡堀のほとりの古い商家の土蔵を再生した直営店。銘木の木製念珠「半兵衛」や琵琶パールを合わせたアクセサリーが並び、2階で手作り体験もできる。",
+  "whatEn": "The direct shop of wooden-bead maker Kawasaki, founded in 1928, in a restored merchant storehouse by Hachiman-bori. It sells Hanbei wooden rosaries and rare-wood accessories with Biwa pearls, with a second-floor beadwork studio.",
+  "note": "銘木の木肌に触れて、琵琶パールを合わせた珠を見たい。",
+  "noteEn": "I want to feel the grain of the rare woods and see the beads paired with Biwa pearls.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "アンデケン 近江八幡本店",
+  "nameEn": "Andeken, Omihachiman",
+  "category": "sweets",
+  "tags": [
+   "cheesecake",
+   "sweets"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "鷹飼町551",
+  "url": "http://www.ke-ki.jp/",
+  "what": "鷹飼町にあるチーズケーキの店「アンデケン」の近江八幡本店。9時から19時まで開き、火曜は休み。",
+  "whatEn": "The Omihachiman main shop of Andeken, a cheesecake patisserie in Takakai-cho. Open 9:00 to 19:00, closed Tuesdays.",
+  "note": "名物のチーズケーキを一つ買って帰りたい。",
+  "noteEn": "I want to buy one of their signature cheesecakes to take back.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "みいちゃんのお菓子工房",
+  "nameEn": "Miichan no Okashi Kobo",
+  "category": "sweets",
+  "tags": [
+   "cake",
+   "sweets"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "上田町1257-18",
+  "url": "https://mi-okashi.com/",
+  "what": "2020年に開いた小さなお菓子工房。年中いちごのケーキやくまさんケーキを作り、スイーツ自販機も置く。催事のため開店日が少ないので、公式サイトで開店日を確かめてから。",
+  "whatEn": "A small cake workshop opened in 2020, making strawberry cakes year-round and bear-shaped cakes, with a sweets vending machine outside. Because of pop-up events, opening days are few; check the website calendar first.",
+  "note": "いちごのケーキか、生クリームのくまさんを選びたい。",
+  "noteEn": "I want to choose between a strawberry cake and a whipped-cream bear cake.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "和菓子司 近江三方庵",
+  "nameEn": "Omi Sanpouan",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "出町429-10",
+  "url": "https://www.kw-net.co.jp/sanpouan/",
+  "what": "出町の和菓子店。滋賀県産の羽二重糯米と十勝小豆の餡を使い、日持ちの短い朝生和菓子を作っている。9時半から17時半まで開き、金曜は休み。",
+  "whatEn": "A wagashi shop in Demachi making fresh daily morning sweets with Shiga habutae glutinous rice and Tokachi red-bean paste. Open 9:30 to 17:30, closed Fridays.",
+  "note": "羽二重糯米を使った朝生菓子を、その日のうちに食べたい。",
+  "noteEn": "I want to eat the fresh morning wagashi made with habutae mochi rice the same day.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "和菓子 まんすて",
+  "nameEn": "Wagashi Mansute",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "matcha"
+  ],
+  "area": "西の湖・水郷",
+  "areaEn": "Nishinoko & Suiro",
+  "address": "江頭町570",
+  "url": "https://mansute.1net.jp/",
+  "what": "大正3年（1914年）創業、江頭町の和菓子処。栗蒸し羊かんやよもぎ餅、季節の甘味を出し、店内に手芸工房アプリーレも併設する。9時から18時で、1日・9日と第3・第4日曜月曜が休み。",
+  "whatEn": "A handmade wagashi shop in Egashira-cho founded in 1914, serving chestnut steamed yokan, mugwort mochi and seasonal sweets, alongside the small handcraft corner Aprire. Open 9:00 to 18:00; closed on the 1st, 9th, and 3rd and 4th Sun–Mon.",
+  "note": "甘さ控えめの栗蒸し羊かんを、日本茶と合わせたい。",
+  "noteEn": "I want to pair the lightly sweet chestnut steamed yokan with Japanese tea.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "coffee åtta",
+  "nameEn": "coffee åtta",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "vintage"
+  ],
+  "area": "西の湖・水郷",
+  "areaEn": "Nishinoko & Suiro",
+  "address": "小船木町733-22",
+  "url": "https://www.coffee-atta.com/",
+  "what": "小船木町にある、自家焙煎珈琲と北欧ビンテージの店。店内では展示やワークショップなども開いている。",
+  "whatEn": "A shop of home-roasted coffee and Nordic vintage wares in Kobunaki-cho, also hosting small exhibitions and workshops.",
+  "note": "北欧のビンテージの器を見ながら、珈琲を飲みたい。",
+  "noteEn": "I want to drink coffee while looking over the Nordic vintage wares.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Cafe NICO",
+  "nameEn": "Cafe NICO",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "tea",
+   "sweets"
+  ],
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "多賀町579-2",
+  "url": "https://cafenico-siga.com/",
+  "what": "多賀町のカフェ。専門店の豆の珈琲やムレスナの紅茶、地元野菜の創作ごはんに加え、注文後に焼くワッフルやフルーツタルトを出している。",
+  "whatEn": "A café in Taga-cho serving coffee from specialty roasters, Mlesna teas and local-vegetable dishes, along with made-to-order waffles and fruit tarts.",
+  "note": "注文してから焼くワッフルと珈琲で一息つきたい。",
+  "noteEn": "I want to take a break with coffee and a waffle baked to order.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "江湖庵",
+  "nameEn": "Koukoan",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "tea",
+   "sweets"
+  ],
+  "area": "仲屋町・永原町",
+  "areaEn": "Nakaya-cho & Nagahara-cho",
+  "address": "為心町元7",
+  "url": "https://koukoan.com/cafe.html",
+  "what": "為心町元の築200年の町家に構える、印章彫刻の工房を兼ねたカフェ。スペシャルティ珈琲や有機栽培の煎茶、米粉のシフォンやチーズケーキを出している。11時半から18時（冬は17時まで）、火・水曜は休み。",
+  "whatEn": "A café and seal-engraving workshop in a 200-year-old townhouse in Ishin-cho Moto. Serves specialty coffee, organic sencha, and rice-flour chiffon and cheesecake. Open 11:30 to 18:00 (17:00 in winter), closed Tuesdays and Wednesdays.",
+  "note": "米粉のシフォンと、有機栽培の煎茶か珈琲を頼みたい。",
+  "noteEn": "I want to order the rice-flour chiffon with organic sencha or coffee.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "近江一閑張 蔵 -KURA-",
+  "nameEn": "Omi Ikkanbari KURA",
+  "category": "craft",
+  "tags": [
+   "washi",
+   "basketry"
+  ],
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "大杉町12 八幡堀 石畳の小路",
+  "url": "https://ebitani.jp/store",
+  "what": "八幡堀・石畳の小路にある、蔵を改装した近江一閑張の店。蛯谷工芸による籠や箱、盆などの品が並ぶ。10時から17時半（12〜2月は17時まで）で、火曜は休み。",
+  "whatEn": "A renovated storehouse shop along Hachiman-bori's stone-paved lane for Ebitani Kogei's Omi Ikkanbari baskets, boxes and trays. Open 10:00 to 17:30 (17:00 from December to February), closed Tuesdays.",
+  "note": "和紙と柿渋で仕上げた籠や箱を、手に取ってみたい。",
+  "noteEn": "I want to pick up and look closely at the washi-and-persimmon-tannin baskets and boxes.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "暦 ～こよみ～ Local Life & Crafts",
+  "nameEn": "Koyomi Local Life & Crafts",
+  "category": "craft",
+  "tags": [
+   "leather",
+   "canvas",
+   "textiles"
+  ],
+  "area": "仲屋町・永原町",
+  "areaEn": "Nakaya-cho & Nagahara-cho",
+  "address": "仲屋町中21 近江八幡まちや倶楽部内",
+  "url": "https://www.omi-machiyainn.com/%E3%81%93%E3%82%88%E3%81%BF/",
+  "what": "旧酒蔵・まちや倶楽部の江戸時代の蔵を改装したショップ。近江八幡や湖東のヨシ製品、竹工芸、麻織物、近江牛レザーと高島帆布の鞄などが並ぶ。平日は13時、土日祝は10時半から17時で、火曜は休み。",
+  "whatEn": "A shop in a converted Edo-period brewery workers' storehouse at Machiya Club, carrying local reed work, bamboo craft, ramie textiles, and Omi leather and Takashima canvas bags. Open 13:00–17:00 weekdays (10:30 weekends/holidays), closed Tuesdays.",
+  "note": "ヨシや麻、帆布など、この土地の素材の道具を選びたい。",
+  "noteEn": "I want to look through everyday goods made from local reed, ramie and canvas.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "ブラッスリー エパターシュ",
+  "nameEn": "Brasserie Épattache",
+  "category": "food",
+  "tags": [
+   "french"
+  ],
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "宮内町188-8",
+  "url": "https://brasserie-epattache.jp/",
+  "what": "宮内町にあるフランス料理店。地元の旬の野菜や人気のキッシュ、自家製ライ麦パンを含むコースを、こだわりの器で出す。営業日や予約状況は月のカレンダーで確認を。",
+  "whatEn": "A French brasserie in Miyauchi-cho serving courses with seasonal local vegetables, signature quiche and house-baked rye bread on chosen tableware. Check the monthly calendar for opening days and reservations.",
+  "note": "キッシュと自家製ライ麦パンのランチを、器ごと楽しみたい。",
+  "noteEn": "I want to enjoy the quiche and house-baked rye bread lunch, tableware and all.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "京都そば処 志な乃",
+  "nameEn": "Kyoto Soba Shinano",
+  "category": "food",
+  "tags": [
+   "soba",
+   "donburi"
+  ],
+  "area": "近江八幡駅周辺",
+  "areaEn": "Omihachiman Station",
+  "address": "出町414-5",
+  "url": "https://xs977683.com/",
+  "what": "出町で30年続く蕎麦と丼の店。一番人気は親子丼で、蕎麦は柔らかめの茹で上がり。2026年11月13日から営業を再開し、当分は昼の11時から15時のみの営業。",
+  "whatEn": "A thirty-year-old soba and donburi shop in Demachi, an eight-minute walk from Omihachiman Station's north exit. Oyakodon is its best-known dish alongside softly boiled soba. Reopening 13 November 2026 for lunch only (11:00–15:00) for the time being.",
+  "note": "カウンターに座って、一番人気の親子丼を頼みたい。",
+  "noteEn": "I want to sit at the counter and order the oyakodon.",
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "MAISON HIBINO",
+  "nameEn": "MAISON HIBINO",
+  "category": "food",
+  "tags": [
+   "french"
+  ],
+  "area": "西の湖・水郷",
+  "areaEn": "Nishinoko & Suiro",
+  "address": "安土町常楽寺617",
+  "url": "https://maison-hibino.jp/",
+  "what": "安土町常楽寺の築130年の古民家で営むフランス料理店。庭園を眺めながら、滋賀の食材を生かしたコースを味わえる。営業日や空席は公式サイトのカレンダーで確認を。",
+  "whatEn": "A French restaurant in a 130-year-old timber house in Azuchi-cho Jorakuji, serving courses built around Shiga ingredients overlooking a garden. Check the website calendar for open days and bookings.",
+  "note": "庭の見える木の部屋で、滋賀の食材の昼のコースを。",
+  "noteEn": "I would like a lunch course of Shiga ingredients in the timber room facing the garden.",
+  "verifiedAt": "2026-11-13"
+ }
+]

@@ -1,0 +1,66 @@
+[
+ {
+  "name": "八幡堀",
+  "nameEn": "Hachiman-bori Canal",
+  "kind": "sight",
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "近江八幡市宮内町・大杉町ほか",
+  "url": "https://www.omi8.com/stories/detail_141.html",
+  "what": "1585年に豊臣秀次が八幡山城の築城の際に掘らせた全長4.75kmの運河。白壁の土蔵や町家が両岸に残り、周辺は国の重要伝統的建造物群保存地区。散策は自由。",
+  "whatEn": "A 4.75 km artificial canal dug in 1585 when Toyotomi Hidetsugu built Hachiman Castle. White-walled storehouses and merchant houses line the banks, part of a national preservation district. Free to walk.",
+  "coords": [
+   35.13962,
+   136.0881
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "日牟禮八幡宮",
+  "nameEn": "Himure Hachimangu Shrine",
+  "kind": "sight",
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "近江八幡市宮内町257",
+  "url": "https://himure.jp/",
+  "what": "「近江八幡」の地名の由来にもなった古い神社。本殿裏の屏風岩や鏡池が残り、3月の左義長祭と4月の八幡祭で知られる。",
+  "whatEn": "The historic tutelary shrine that gave Omihachiman its name. Known for the Byobuiwa rock formation and Kagami-ike pond behind the main hall, and for its spring Sagicho and Hachiman fire festivals.",
+  "coords": [
+   35.14095,
+   136.0897
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "近江八幡市立資料館",
+  "nameEn": "Omihachiman Municipal Museum",
+  "kind": "art",
+  "area": "新町通り",
+  "areaEn": "Shinmachi-dori",
+  "address": "近江八幡市新町2-22",
+  "url": "https://www.omihachiman-shiryoukan-kawara.jp/",
+  "what": "伝統的建造物群保存地区の新町通りにある郷土資料館と歴史民俗資料館。八幡の歴史資料や、かつての八幡商人の帳場風景・生活様式の資料を展示する。9時から17時で、月曜は休み。",
+  "whatEn": "Local history and folklore museums on Shinmachi-dori in the preservation district, displaying historical records and merchant counting-house rooms and daily wares. Open 9:00 to 17:00, closed Mondays.",
+  "coords": [
+   35.138,
+   136.08907
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "八幡山ロープウェー",
+  "nameEn": "Mt. Hachiman Ropeway",
+  "kind": "sight",
+  "area": "八幡堀",
+  "areaEn": "Hachiman-bori",
+  "address": "近江八幡市宮内町",
+  "url": "https://www.ohmitetudo.co.jp/ropeway/",
+  "what": "日牟禮八幡宮のそばから八幡山の山頂へ上るロープウェー。山頂からは琵琶湖や旧城下町を見渡せる。2027年1月25日から2月10日は設備更新工事のため運休予定。",
+  "whatEn": "A ropeway climbing from beside Himure Hachimangu Shrine to the summit of Mt. Hachiman, looking out over Lake Biwa and the old castle town. Scheduled to close for maintenance from 25 January to 10 February 2027.",
+  "coords": [
+   35.14247,
+   136.08627
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

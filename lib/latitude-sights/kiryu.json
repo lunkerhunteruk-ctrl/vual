@@ -1,0 +1,82 @@
+[
+ {
+  "name": "大川美術館",
+  "nameEn": "Okawa Museum of Art",
+  "kind": "art",
+  "area": "小曾根町",
+  "areaEn": "Ozonemachi",
+  "address": "桐生市小曾根町3-69",
+  "url": "http://www.okawamuseum.jp/",
+  "what": "桐生出身の大川栄二のコレクションをもとに、1989年に水道山の中腹に開館した美術館。松本竣介や野田英夫など日本の近代洋画を中心に収蔵し、市街地を見渡すカフェもある。10:00〜17:00、月曜休み（祝日の場合は翌火曜）。",
+  "whatEn": "Opened in 1989 on the slope of Mount Suido around the collection of Kiryu-born Okawa Eiji, focusing on modern Japanese Western-style painting including Matsumoto Shunsuke and Noda Hideo, with a cafe overlooking the town. 10:00–17:00, closed Mondays.",
+  "coords": [
+   36.41689,
+   139.33386
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "桐生市有鄰館",
+  "nameEn": "Kiryu City Yurinkan",
+  "kind": "sight",
+  "area": "本町",
+  "areaEn": "Honcho",
+  "address": "桐生市本町2-6-32",
+  "url": "https://www.city.kiryu.lg.jp/shisetsu/bunka/yuurinkan/1002114.html",
+  "what": "江戸時代から昭和にかけて酒や味噌・醤油の醸造と保管に使われた11棟の蔵群。いまは展示や演劇などの文化施設として公開されている。9:00〜17:00（催物時は21:00まで）、月曜・祝日の翌日休み。",
+  "whatEn": "A complex of eleven Edo-to-Showa storehouses once used for brewing and storing sake, miso and soy sauce, now open for exhibitions and performances. 9:00–17:00 (21:00 on event days), closed Mondays and days after holidays.",
+  "coords": [
+   36.41656,
+   139.34312
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "織物参考館「紫」",
+  "nameEn": "Textile Reference Museum Yukari",
+  "kind": "art",
+  "area": "仲町・東・菱",
+  "areaEn": "Nakamachi, Higashi & Hishi",
+  "address": "桐生市東4-2-24",
+  "url": "https://www.morihide.jp/",
+  "what": "明治10年創業の森秀織物が1981年に開いた体験型織物博物館。古い織機や染織資料約1,200点を展示し、稼働する織物工場の見学や藍染・手織りの体験もできる。10:00〜16:00、月曜休み。",
+  "whatEn": "A hands-on textile museum opened in 1981 by weaver Morihide Orimono (founded 1877), displaying around 1,200 historic looms and dyeing tools alongside an active weaving mill and indigo-dyeing workshops. 10:00–16:00, closed Mondays.",
+  "coords": [
+   36.4103,
+   139.34471
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "桐生新町重要伝統的建造物群保存地区",
+  "nameEn": "Kiryu Shinmachi Preservation District",
+  "kind": "sight",
+  "area": "本町",
+  "areaEn": "Honcho",
+  "address": "桐生市本町1・2丁目、天神町1丁目の一部",
+  "url": "https://www.city.kiryu.lg.jp/kankou/spot/denken/index.html",
+  "what": "約400年前に天満宮を起点に築かれた織物町の町並み。本町一・二丁目を中心に、町家や蔵、のこぎり屋根の工場が当時の敷地割のまま残り、国の重要伝統的建造物群保存地区に選ばれている。散策は自由。",
+  "whatEn": "A historic weaving quarter laid out around 400 years ago from Tenmangu Shrine, preserving townhouses, storehouses and sawtooth-roof mills on their original plots along Honcho 1- and 2-chome. Free to walk.",
+  "coords": [
+   36.41725,
+   139.34338
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "桐生天満宮",
+  "nameEn": "Kiryu Tenmangu Shrine",
+  "kind": "sight",
+  "area": "天神町",
+  "areaEn": "Tenjincho",
+  "address": "桐生市天神町1-2-1",
+  "url": "https://kiryutenjin.jp/",
+  "what": "桐生新町の起点に位置する桐生広域の総鎮守。産業開発の神・天穂日命と菅原道真公を祀り、本殿などは国の重要文化財に指定されている。開門は日の出頃から日の入頃まで。",
+  "whatEn": "The tutelary shrine at the northern head of Kiryu Shinmachi, dedicated to Ame-no-hohi-no-mikoto and Sugawara no Michizane; its main hall is a national important cultural property. Open roughly sunrise to sunset.",
+  "coords": [
+   36.42184,
+   139.34618
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

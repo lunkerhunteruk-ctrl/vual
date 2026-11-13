@@ -1,0 +1,753 @@
+{
+ "slug": "hita",
+ "city": {
+  "name": "Hita",
+  "nameJa": "日田",
+  "latitude": "33.3° N",
+  "country": "Oita, Japan",
+  "countryJa": "大分県",
+  "person": "rin",
+  "coords": [
+   33.3225,
+   130.9365
+  ],
+  "intro": "A basin town in northern Kyushu where three rivers meet, long prosperous as a shogunate territory. Onta ware kilns in the hills, cedar geta and woodenware, and eel, wagashi and coffee in Mamedamachi and Kuma: Rin's picks.",
+  "introJa": "九州の北部、三つの川が集まる盆地の町。天領として栄えた豆田町と隈の町に、小鹿田焼の窯元と日田杉の下駄や木工、うなぎや和菓子、喫茶の店を、凛のおすすめで。",
+  "locator": {
+   "en": "In western Oita · a mountain basin where rivers meet",
+   "ja": "大分県西部・山に囲まれた川辺の盆地"
+  },
+  "industries": [
+   {
+    "key": "onta-yaki",
+    "en": "Onta ware pottery",
+    "ja": "小鹿田焼",
+    "about": "Folk stoneware made since 1705 in the mountain hamlet of Sarayama. Family kilns crush local clay with stream-driven wooden kara-usu pounders and fire their everyday vessels in communal climbing kilns.",
+    "aboutJa": "1705年から皿山の山あいで作られてきた民陶。川の水で動く木の唐臼で土を砕き、一族の窯元が登り窯で日常の器を焼く。",
+    "_src": "Hand-thrown folk stoneware made since 1705 by family kilns in the mountain hamlet of Sarayama, using stream-driven wooden kara-usu clay crushers and communal climbing kilns."
+   },
+   {
+    "key": "hita-cedar-geta",
+    "en": "Hita cedar geta and woodwork",
+    "ja": "日田下駄・日田杉木工",
+    "about": "Hita is one of Japan's three major geta-making centres, known for lightweight, richly grained local cedar and cypress. Workshops here shape the timber into clogs, sandals and everyday woodenware.",
+    "aboutJa": "日田は日本三大下駄の産地の一つ。軽くて木目のきれいな地元の杉や桧で、下駄や木のサンダル、暮らしの木工品を作る。",
+    "_src": "One of Japan's three major geta-making centers, shaping lightweight, richly grained local Hita cedar and cypress into clogs, sandals, and everyday woodenware."
+   },
+   {
+    "key": "hita-brewing",
+    "en": "Tenryo Hita spring-water brewing",
+    "ja": "日田の醸造（味噌・醤油・酒造り）",
+    "about": "Pure groundwater from the surrounding mountains has sustained miso, soy sauce, sake and shochu makers in Hita since the Edo and Meiji eras.",
+    "aboutJa": "まわりの山々から湧く清らかな地下水をもとに、江戸や明治の頃から味噌や醤油、酒や焼酎の蔵が日田に根づいている。",
+    "_src": "Pure underground spring water from the surrounding volcanic mountains has sustained traditional miso, soy sauce, sake, and shochu breweries in Hita since the Edo and Meiji eras."
+   }
+  ]
+ },
+ "places": {
+  "日田まぶし 千屋": {
+   "nameEn": "Hitamabushi Senya",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "tags": [
+    "eel",
+    "local-food",
+    "onta-yaki"
+   ],
+   "what": "豆田町の「日田まぶし」の店。蒸さずに強火で焼いた国産うなぎと日田の米を、小鹿田焼の器で出し、ゆずごしょうやだし茶漬けなど4通りに食べる。",
+   "whatEn": "A Hitamabushi house in Mamedamachi. Crisp charcoal-grilled domestic eel and Hita rice served in Onta ware, eaten four ways including with yuzu kosho and dashi broth.",
+   "note": "三膳目は、日田のゆずごしょうと大根おろしで。",
+   "noteEn": "For the third bowl, yuzu kosho and grated daikon.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ひたまぶし せんや",
+    "address": "大分県日田市豆田町4-14",
+    "url": "https://senya-hita.yorozuya-hita.com/",
+    "whatJa": "豆田町の古い町並みに佇む、香ばしく焼き上げた国産うなぎを4通りの食べ方で味わう「日田まぶし」の専門店。",
+    "whatEn": "Townhouse specialty restaurant in historic Mamedamachi dedicated to crisp charcoal-grilled domestic eel served over rice in wooden tubs.",
+    "facts": "Serves finely chopped charcoal-grilled domestic eel in wooden ohitsu tubs alongside local condiments including yuzu kosho, grated daikon, spring onion, and wasabi, finished with hot dashi broth.",
+    "weak": "",
+    "verifiedBy": "https://senya-hita.yorozuya-hita.com/",
+    "quote": "2026年11月1日（日）より、ハッピーアワーは平日限定となります。",
+    "fixes": "Address on page not separately verified.",
+    "coords": [
+     33.32728,
+     130.93733
+    ]
+   }
+  },
+  "赤司日田羊羹本舗": {
+   "nameEn": "Akashi Hita Yokan Honpo",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "tags": [
+    "wagashi",
+    "yokan"
+   ],
+   "what": "豆田町の一枚物・流し羊羹の老舗。切って少し置くと表面が糖化してしゃりっとする日田羊羹や、期間限定の珈琲羊羹も並ぶ。",
+   "whatEn": "A long-standing Hita yokan maker in Mamedamachi. Its traditional slab yokan develops a crisp sugar crust once sliced and rested, alongside seasonal coffee yokan.",
+   "note": "一枚物を買って、少し乾かしてから切りたい。",
+   "noteEn": "Buy a whole slab and let it dry a little before slicing.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "あかしひたようかんほんぽ",
+    "address": "大分県日田市豆田町8-15",
+    "url": "https://www.youkanya.co.jp/",
+    "whatJa": "明治24年創業、豆田町で昔ながらの製法を守り続ける、表面が糖化してシャリッとした食感も楽しめる日田羊羹の老舗。",
+    "whatEn": "Meiji-era wagashi confectioner in Mamedamachi crafting traditional crusted Hita yokan sweet bean jelly since 1891.",
+    "facts": "Founded in 1891 on Mamedamachi's historic street; slow-cooks adzuki bean paste, agar, and sugar into pale-red Hita yokan loaves that develop a delicate crisp sugar crust when sliced and left to dry slightly.",
+    "weak": "",
+    "verifiedBy": "https://www.youkanya.co.jp/",
+    "quote": "店舗営業日 2026年11月",
+    "fixes": "Page address 877-0005 日田市豆田町8-15, TEL 0973-22-2240 matches. Page does not itself state 1891 founding.",
+    "coords": [
+     33.32757,
+     130.93611
+    ]
+   }
+  },
+  "小鹿田焼陶芸館": {
+   "nameEn": "Onta-yaki Pottery Museum",
+   "area": "小鹿田・皿山",
+   "areaEn": "Onta (Sarayama)",
+   "tags": [
+    "ceramics",
+    "museum"
+   ],
+   "what": "皿山の入口にある市営の展示施設。江戸時代から現代までの小鹿田焼を展示する。9時から17時、水曜と年末年始は休み。",
+   "whatEn": "A municipal exhibition gallery at the entrance to Sarayama, showing Onta ware from the Edo period to today. Open 9 am to 5 pm; closed Wednesdays and New Year.",
+   "note": "窯元を歩く前に、古い時代の器を見ておきたい。",
+   "noteEn": "Look at the older pieces here before walking the kilns.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "おんたやきとうげいかん",
+    "address": "大分県日田市源栄町138-1",
+    "url": "https://www.city.hita.oita.jp/site/hitanioideyo/1935.html",
+    "whatJa": "皿山の集落入口にあり、小鹿田焼の300年の歴史や飛び鉋・刷毛目などの技法、古陶のコレクションを展示する陶芸ギャラリー。",
+    "whatEn": "Exhibition gallery at the entrance to Sarayama introducing 300 years of Onta ware pottery, decorative slip techniques, and historic works.",
+    "facts": "Admission-free gallery right at the gateway to Onta Sarayama featuring open storage of historic jars and platters, displays on kara-usu clay preparation, and background on Yanagi Muneyoshi and Bernard Leach's Mingei visits.",
+    "weak": "Municipal exhibition gallery rather than an independent retail shop; ceramics are purchased directly at the adjacent family kilns.",
+    "verifiedBy": "https://www.city.hita.oita.jp/site/hitanioideyo/1935.html",
+    "quote": "更新日：2026年10月23日更新",
+    "fixes": "Official address is 日田市大字鶴河内（源栄町）138番1. Hours 9:00-17:00; closed Wednesdays and New Year. The city runs it as a facility (tel 0973-29-2020), so it is not a retail shop. The page says nothing about 300 years, slip techniques or the Yanagi/Leach story, but it does say the exhibits cover Onta ware from the Edo period to today. Admission-free is not stated.",
+    "coords": [
+     33.42777,
+     130.91122
+    ]
+   }
+  },
+  "CREATIVE BASE FAB": {
+   "nameEn": "CREATIVE BASE FAB",
+   "area": "三芳・東有田",
+   "areaEn": "Miyoshi & Higashiarita",
+   "tags": [
+    "furniture",
+    "ceramics",
+    "wood"
+   ],
+   "what": "オーダーソファメーカー・ベストリビングの倉庫を活かした拠点。ソファのショールームや端材ショップ、日田下駄や小鹿田焼のセレクトショップがある。10時から17時。",
+   "whatEn": "A craft hub in a sofa maker's warehouse run by Best Living, with a sofa showroom, offcut shop, and select shop stocking Hita geta and Onta ware. Open 10 am to 5 pm.",
+   "note": "端材や端切れの棚を、端からゆっくり見たい。",
+   "noteEn": "Take time looking through the offcut and fabric shelves.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "くりえいてぃぶべーす ふぁぶ",
+    "address": "大分県日田市東有田1178-10",
+    "url": "https://creativebase-fab.jp/",
+    "whatJa": "老舗ソファメーカーの倉庫を改装したものづくり拠点で、小鹿田焼の器や日田杉の木工品、端材レザー雑貨を扱うショップを併設。",
+    "whatEn": "Converted furniture-warehouse craft hub in Hita's timber district with a shop curating Onta ware, Hita cedarware, and upcycled leather goods.",
+    "facts": "Created by Hita custom-sofa maker Best Living inside a 300-tsubo warehouse in the Wood Combinat district; combines a local craft select shop stocking Onta ware and wooden cutlery with a showroom and hands-on workshops.",
+    "weak": "",
+    "verifiedBy": "https://creativebase-fab.jp/",
+    "quote": "しめ縄リース作り体験を12月5日（土）に開催します 開催日 2026年12月5日（土）",
+    "fixes": "Address on page: 〒877-1372 大分県日田市大字東有田1178－10 ウッドコンビナート内. Hours 10:00-17:00. Organizer ベストリビング株式会社. The page confirms the sofa factory tour and workshops; the Onta ware and cedarware shop was not verified in the text I read.",
+    "coords": [
+     33.32739,
+     130.96708
+    ]
+   }
+  },
+  "うらつか工房": {
+   "nameEn": "Uratsuka Kobo",
+   "area": "日田駅・中央周辺",
+   "areaEn": "Central Hita",
+   "tags": [
+    "geta",
+    "wood",
+    "cedar"
+   ],
+   "what": "吹上町の、二代目と三代目で営む下駄と木履の工房。木地づくりから仕上げまで行い、ヒノキの下駄や日田杉を5枚重ねた室内履きを作る。",
+   "whatEn": "A family-run geta workshop in Fukiagemachi led by the second and third generations, handling every step from wood shaping to finishing, including hinoki clogs and layered Hita cedar indoor slippers.",
+   "note": "日田杉の室内履き、鼻緒とベルトを履き比べたい。",
+   "noteEn": "Try both the thong and strap cedar indoor slippers.",
+   "_src": {
+    "category": "local",
+    "industry": "hita-cedar-geta",
+    "nameKana": "うらつかこうぼう",
+    "address": "大分県日田市吹上町4-41",
+    "url": "https://uratsuka-kobo.com/",
+    "whatJa": "昭和24年創業、下駄の木地づくりで培った技術で日田杉のウッドスリッパや無塗装ヒノキ下駄を手がける小さな工房。",
+    "whatEn": "Second-generation geta wood-base workshop founded in 1949 carving Hita cedar indoor slippers and unvarnished cypress clogs.",
+    "facts": "Led by second-generation craftsman Shigeyuki Uratsuka using vintage woodworking machinery to carve curved Hita cedar room slippers and hinoki sandals, including collaborations with BEAMS JAPAN.",
+    "weak": "Primarily a working kiji (wooden base) manufacturing workshop without regular walk-in shop hours; advance inquiry recommended before visiting.",
+    "verifiedBy": "https://uratsuka-kobo.com/",
+    "quote": "2026.10.01 Web Shop オープンしました。",
+    "fixes": "Address on the official page is 〒877-0083 大分県日田市吹上町3-2 (not 吹上町4-41). Page says 二代目と三代目 work together (family-run). Site says it makes finished products from kiji to finish; Hinoki geta and cedar indoor slippers confirmed. BEAMS not seen on the pages checked. Online store opened 2026-10; walk-in hours not stated.",
+    "coords": [
+     33.33047,
+     130.93266
+    ]
+   },
+   "address": "大分県日田市吹上町3-2"
+  },
+  "Cake Shop SHO": {
+   "nameEn": "Cake Shop SHO",
+   "area": "日田駅・中央周辺",
+   "areaEn": "Central Hita",
+   "tags": [
+    "pastry",
+    "cake"
+   ],
+   "what": "大原八幡宮近くの田島にある洋菓子店。季節のデコレーションケーキやチーズケーキ、焼き菓子が並ぶ。",
+   "whatEn": "A patisserie in Tashima near Ohara Hachimangu Shrine, selling seasonal whole cakes, cheesecakes and baked sweets.",
+   "note": "チーズケーキと焼き菓子を、ひとつずつ持ち帰る。",
+   "noteEn": "Pick up a cheesecake and a few baked sweets to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "けーきしょっぷ しょう",
+    "address": "大分県日田市田島2-154-2",
+    "url": "https://sho.take-eats.jp/",
+    "whatJa": "大原八幡宮近くの田島エリアにある、繊細な生ケーキやチーズケーキ、焼き菓子が評判の洋菓子店。",
+    "whatEn": "Refined local patisserie near Ohara Hachimangu Shrine known for delicate seasonal cakes, cheesecakes, and caramel pecan sablés.",
+    "facts": "Located in Tashima near Ohara Hachimangu Shrine; crafts airy Crème d'Ange, baked and rare cheesecakes, seasonal fruit entremets, and giftable caramel pecan confections.",
+    "weak": "",
+    "verifiedBy": "https://sho.take-eats.jp/info/3206",
+    "quote": "通販のサービスを開始いたしました。",
+    "fixes": "whatEn: Patisserie selling seasonal decorated cakes, cheesecakes, and assorted baked sweets. The opened official menu does not identify caramel pecan sablés. Address confirmed by https://sho.take-eats.jp/law as 日田市田島２丁目154-2.",
+    "coords": null
+   },
+   "url": null
+  },
+  "御菓子司 日田とらや": {
+   "nameEn": "Hita Toraya",
+   "area": "日田駅・中央周辺",
+   "areaEn": "Central Hita",
+   "tags": [
+    "wagashi",
+    "maruboro"
+   ],
+   "what": "中本町の和菓子店。蜂蜜をたっぷり使ったしっとり食感の「丸ぼうろ」を初代から60年以上作り続け、鯛最中も並ぶ。9時から18時、日・月曜は休み。",
+   "whatEn": "A wagashi shop in Nakahonmachi making moist honey-rich maruboro for over 60 years, alongside walnut-studded bean-paste tai monaka. Open 9 am to 6 pm; closed Sundays and Mondays.",
+   "note": "蜂蜜の丸ぼうろと、クルミ入りの鯛最中をひとつずつ。",
+   "noteEn": "One honey maruboro and one walnut tai monaka.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "おかしつかさ ひたとらや",
+    "address": "大分県日田市中本町5-41",
+    "url": "https://hita-toraya.com/",
+    "whatJa": "昭和から三代続く、蜂蜜をたっぷり使ったしっとり食感の「丸ぼうろ」や季節の和菓子で知られる老舗和菓子店。",
+    "whatEn": "Three-generation family wagashi shop in Nakahonmachi beloved locally for moist, honey-rich maruboro cakes.",
+    "facts": "Run for three generations on Nakahonmachi between Hita Station and Mamedamachi; its signature honey-baked maruboro is a staple everyday local sweet alongside seasonal namagashi.",
+    "weak": "",
+    "verifiedBy": "https://www.dreamnews.jp/press/0000342184/",
+    "quote": "そして、今年の天領日田おひなまつりの開始に合わせ、「日田の茶菓本」を販売しました。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "松浦松翁堂": {
+   "nameEn": "Matsuura Shoodo",
+   "area": "隈",
+   "areaEn": "Kuma",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "隈にある明治25年創業の和菓子店。黒あんのまわりにクルミとピーナッツをつけた焼き菓子「亀山」で知られる。",
+   "whatEn": "A wagashi shop in Kuma founded in 1892, known for Kameyama, a baked sweet of dark bean paste coated with walnuts and peanuts.",
+   "note": "クルミとピーナッツが香ばしい「亀山」をお茶請けに。",
+   "noteEn": "Pick up Kameyama with walnuts and peanuts for tea.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "まつうらしょうおうどう",
+    "address": "大分県日田市隈1-3-31",
+    "url": "https://matsuura-wagashi.studio.site/",
+    "whatJa": "明治25年創業、保存料や人工甘味料を使わずクルミとピーナッツをまぶした銘菓「亀山」を手づくりする隈の老舗和菓子店。",
+    "whatEn": "Fourth-generation wagashi confectioner in Kuma making additive-free walnut-and-peanut Kameyama sweets since 1892.",
+    "facts": "Founded in 1892 in the riverside Kuma district and now in its fourth generation; best known for Kameyama, a fragrant roasted-nut wagashi filled with house-cooked bean paste and made without preservatives.",
+    "weak": "",
+    "verifiedBy": "https://www.dreamnews.jp/press/0000342184/",
+    "quote": "そして、今年の天領日田おひなまつりの開始に合わせ、「日田の茶菓本」を販売しました。",
+    "fixes": "whatEn: Wagashi shop founded in 1892, known for Kameyama baked sweets with black bean paste, walnuts and peanuts. whatJa: 明治25年創業、黒あんのまわりにクルミとピーナッツをつけた焼き菓子「亀山」で知られる和菓子店。Address 隈1-3-31 and these details are confirmed at https://oidehita.com/archives/1246. Preservative-free, artificial-sweetener-free and fourth-generation claims were not readable on the opened official site.",
+    "coords": null
+   }
+  },
+  "食感農園 風と根": {
+   "nameEn": "Kazetone",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "tags": [
+    "lunch",
+    "vegetables"
+   ],
+   "what": "豆田町近くの港町にある、古い家を改装した食堂。自家栽培の旬の野菜を使った月替わりのお昼ごはんを出す。",
+   "whatEn": "A lunch restaurant in a renovated traditional house in Minatomachi near Mamedamachi, serving monthly menus made with homegrown seasonal vegetables.",
+   "note": "月替わりの野菜のお昼を、豆田を歩いたあとに。",
+   "noteEn": "The monthly vegetable lunch, after walking Mamedamachi.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "しょっかんのうえん かぜとね",
+    "address": "大分県日田市港町2-13",
+    "url": "https://www.instagram.com/_kazetone_/",
+    "whatJa": "豆田町近くの古い商家を改装した空間で、自家栽培の無農薬・減農薬野菜を主役にした月替わりのお昼ごはんを提供する食堂。",
+    "whatEn": "Farm-to-table lunch dining room in a restored merchant house near Mamedamachi serving monthly set meals built around homegrown pesticide-free vegetables.",
+    "facts": "Operated by farmers growing seasonal vegetables without synthetic pesticides in Hita; serves multi-dish monthly lunch trays in an atmospheric former merchant townhouse in Minatomachi.",
+    "weak": "",
+    "verifiedBy": "https://oidehita.com/archives/63795",
+    "quote": "4月の頭頃ですが、「食感農園 カゼトネ(風と根)」さんでランチを頂きました。",
+    "fixes": "whatEn: Lunch restaurant in a renovated traditional house near Mamedamachi, serving monthly menus made with homegrown seasonal vegetables. whatJa: 豆田エリアの古民家を改修し、自家栽培の旬の野菜を使った月替わりのメニューを提供する食堂。Address 港町2-13, the renovated house, and monthly menus are confirmed at https://smile-pro.net/gourmet/11835/. The opened sources do not substantiate pesticide-free cultivation.",
+    "coords": null
+   }
+  },
+  "BOWL": {
+   "nameEn": "BOWL",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "tags": [
+    "seafood",
+    "donburi",
+    "cedar"
+   ],
+   "what": "豆田町の丼の店。日田の和食店「季節料理 花門」の2号店で、内装とテーブルに日田杉を使い、市場の魚介の海鮮丼や国産和牛の肉丼を出す。",
+   "whatEn": "A donburi restaurant in Mamedamachi opened by local washoku house Kisetsu Ryori Kamon. Built with Hita cedar interiors and tables, serving market seafood bowls and domestic wagyu beef bowls.",
+   "note": "日田杉のテーブルで、海鮮丼か和牛の丼を迷う。",
+   "noteEn": "At a Hita cedar table, choosing between seafood and wagyu.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ぼうる",
+    "address": "大分県日田市豆田町12-3",
+    "url": "https://bowl-mameda.com/",
+    "whatJa": "日田杉を贅沢に使ったモダンな空間で、市場直送の海鮮丼や厳選国産和牛の肉丼を味わえる豆田町の丼専門店。",
+    "whatEn": "Contemporary rice-bowl lunch spot in Mamedamachi fitted out in Hita cedar, serving market-fresh seafood kaisendon and domestic wagyu bowls.",
+    "facts": "Opened by established local washoku restaurant Kisetsu Ryori Kamon; tables and interiors are crafted entirely from local Hita cedar, framing daily seafood bowls and seared wagyu donburi.",
+    "weak": "",
+    "verifiedBy": "https://hitastyle.com/?p=6211",
+    "quote": "日田市豆田町12-3（赤司羊羹さん斜め前）　Tel.070-4436-0131 【営】11:00〜15:00 L.O15:30　【休】月曜日",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "みくま飯店": {
+   "nameEn": "Mikuma Hanten",
+   "area": "隈",
+   "areaEn": "Kuma",
+   "tags": [
+    "yakisoba",
+    "local-food"
+   ],
+   "what": "隈にある日田焼きそばの店。鉄板で麺を香ばしく焼いた日田焼きそばと、あっさりした豚骨スープを出す。",
+   "whatEn": "A Hita yakisoba shop in Kuma, serving noodles seared crisp on an iron griddle alongside a light tonkotsu soup.",
+   "note": "焦げ目のついた焼きそばと、スープを一緒に。",
+   "noteEn": "The crisp-seared yakisoba, with a bowl of soup.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "みくまはんてん",
+    "address": "大分県日田市隈1-5-21",
+    "url": "https://www.instagram.com/mikumagnk/",
+    "whatJa": "1970年創業、強火の鉄板でパリッと焼き上げる日田焼きそばとあっさり豚骨スープで地元客に愛される隈の名店。",
+    "whatEn": "Long-loved Kuma noodle diner founded in 1970 searing Hita yakisoba crisp on an iron griddle alongside bean sprouts and pork-bone soup.",
+    "facts": "Operating in Kuma since 1970; sears noodles undisturbed on a hot iron griddle until golden and crunchy before tossing with crisp bean sprouts, pork, and house sauce, served with light tonkotsu soup.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/divo-divo/entry-12983969390.html",
+    "quote": "日田焼きそばの有名店『みくま飯店』さんです！",
+    "fixes": "Address 隈1-5-21 and crisp Hita yakisoba confirmed at https://oidehita.com/archives/996. The 2026 article documents eating yakisoba and soup at this business.",
+    "coords": null
+   }
+  },
+  "Bistro Cafe Licht": {
+   "nameEn": "Bistro Cafe Licht",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "tags": [
+    "coffee",
+    "galette",
+    "tea"
+   ],
+   "what": "豆田町のオーベルジュ併設のカフェ。珈琲やドイツの有機茶、そば粉のガレット、キッシュ、パスタを出す。月・火曜は休み。",
+   "whatEn": "The café of a small auberge in Mamedamachi, serving coffee, German organic tea, buckwheat galettes, quiche and pasta. Closed Mondays and Tuesdays.",
+   "note": "午後はそば粉のガレットと、ドイツの紅茶でひと息。",
+   "noteEn": "Take a break in the afternoon with a buckwheat galette and German tea.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "びすとろかふぇ りひと",
+    "address": "大分県日田市豆田町3-10",
+    "url": "https://cafebar-licht.com/cafe/",
+    "whatJa": "豆田町のオーベルジュ併設のアンティーク空間で、こだわりのコーヒーやドイツ産オーガニックティー、そば粉ガレットが味わえるカフェ。",
+    "whatEn": "Antique-filled daytime cafe and bistro inside Auberge Licht in Mamedamachi serving coffee, German organic herbal teas, and buckwheat galettes.",
+    "facts": "Daytime cafe arm of small Mamedamachi auberge Licht; pairs brewed coffee and organic German flower-and-fruit teas with house-baked desserts, quiches, and 100% buckwheat galettes.",
+    "weak": "",
+    "verifiedBy": "https://cafebar-licht.com/news",
+    "quote": "11月から月曜日も休業日となります。",
+    "fixes": "Closed Mondays as well as Tuesdays from November, according to the 2026-10-14 notice. The official cafe page confirms coffee, German organic tea, galettes, pasta and quiche, and 豆田町3-10.",
+    "coords": null
+   }
+  },
+  "ONOGORO STYLE": {
+   "nameEn": "ONOGORO STYLE",
+   "area": "隈",
+   "areaEn": "Kuma",
+   "tags": [
+    "coffee",
+    "sweets",
+    "lunch"
+   ],
+   "what": "隈の西、石井町にあるカフェ。素材にこだわったランチやお菓子、アサイーボウルを出す。休みは不定で、Instagramで知らせる。",
+   "whatEn": "A café in Ishiimachi just west of Kuma, serving ingredient-conscious lunches, sweets and acai bowls. Irregular closing days are posted on Instagram.",
+   "note": "川下の町まで足を延ばして、午後にアサイーボウルを。",
+   "noteEn": "Head downstream for an acai bowl in the afternoon.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "おのごろすたいる",
+    "address": "大分県日田市石井町1-366-4",
+    "url": "https://www.instagram.com/onogorostyle/",
+    "whatJa": "芝生の庭を望む開放的な空間で、コーヒーや自家製スコーン、自家製グラノーラのアサイーボウルが楽しめるカフェ。",
+    "whatEn": "Garden cafe in Ishiimachi serving brewed coffee, house-baked scones, homemade-granola acai bowls, and wholesome lunch plates.",
+    "facts": "Opened in autumn 2025 with a lawn garden in Ishiimachi; serves coffee, freshly baked scones, acai bowls topped with house-roasted granola, and seasonal lunch plates.",
+    "weak": "Located in Ishiimachi just downstream west of Kuma; operates with irregular closing days posted on Instagram.",
+    "verifiedBy": "https://oidehita.com/archives/64242",
+    "quote": "素材にこだわった、カラダにやさしいランチメニューやお菓子をお楽しみいただけます。",
+    "fixes": "whatEn: Cafe in Ishiimachi serving ingredient-conscious lunches, sweets and acai bowls, with a private wood-fired barrel sauna. whatJa: 素材にこだわったランチメニューやお菓子、アサイーボウルを楽しめる石井町のカフェ。Address confirmed as 大分県日田市石井町1丁目366-4. Acai bowls are also documented at https://oidehita.com/archives/62751. The 2026 listing does not substantiate house-baked scones or homemade granola.",
+    "coords": null
+   }
+  },
+  "おかげさまcafe にこん": {
+   "nameEn": "Okagesama Cafe Nicon",
+   "area": "奥日田",
+   "areaEn": "Okuhita",
+   "tags": [
+    "coffee",
+    "sweets",
+    "kominka"
+   ],
+   "what": "奥日田・天瀬町の、築100年を超える古民家のカフェ。囲炉裏や縁側のある座敷で、珈琲や土鍋ぜんざい、土鍋のカレーなどを出す。",
+   "whatEn": "A café in a century-old farmhouse in Amagase, Okuhita. Sit by the irori hearth or open veranda for coffee, clay-pot zenzai and earthenware-pot curry.",
+   "note": "縁側に座って、土鍋のぜんざいで温まりたい。",
+   "noteEn": "Sit by the veranda and warm up with clay-pot zenzai.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "おかげさまかふぇ にこん",
+    "address": "大分県日田市天瀬町桜竹862",
+    "url": "https://www.instagram.com/cafe._.nicon/",
+    "whatJa": "天瀬町の築100年を超える古民家で、囲炉裏や縁側のある空間とともにコーヒーや土鍋ぜんざいを味わえるカフェ。",
+    "whatEn": "Century-old farmhouse cafe in the hills of Amagase serving hand-brewed coffee, clay-pot zenzai, and spice curry.",
+    "facts": "Set in an over-100-year-old renovated kominka with an irori hearth and open engawa in Amagase; serves coffee, macrobiotic-inspired sweets, clay-pot sweet bean soup, and earthenware-pot yellow curry.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/nicon-n/entry-12977167768.html",
+    "quote": "あまが森マルシェは\n毎月最後の日曜日に\n開催しています🌿",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "ウッドアート楽": {
+   "nameEn": "Wood Art Raku",
+   "area": "奥日田",
+   "areaEn": "Okuhita",
+   "tags": [
+    "wood",
+    "tableware"
+   ],
+   "what": "奥日田・大山町にある木工の工房と店。さまざまな銘木や地元の木を使い、箸やスプーン、フォーク、木の器などを作る。",
+   "whatEn": "A woodworking studio and shop in Oyama, Okuhita, shaping local timber and fine hardwoods into chopsticks, spoons, forks and wooden bowls.",
+   "note": "木の種類を比べながら、持ちやすい箸を選びたい。",
+   "noteEn": "Compare the woods and pick a pair of chopsticks that fits your hand.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "うっどあーとらく",
+    "address": "大分県日田市大山町東大山474-3",
+    "url": "https://woodart-raku.com/",
+    "whatJa": "日田市大山町に工房兼ショップを構え、多彩な銘木や地元材を使った箸やカトラリー、木の器を手づくりする木工クラフト店。",
+    "whatEn": "Woodworking studio and shop in Oyama handcrafting richly grained wooden chopsticks, spoons, tableware, and small household objects.",
+    "facts": "Led by Oyama-born woodworker Masahiro Yahata; shapes dozens of domestic and exotic hardwoods as well as local timber into ergonomic chopsticks, wooden spoons, cups, and seasonal objects.",
+    "weak": "",
+    "verifiedBy": "https://www.city.hita.oita.jp/site/hitanioideyo/1866.html",
+    "quote": "大山町で「暮らしの中に木の楽しさを」をテーマにする木工品のショップです。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "坂本浩二窯": {
+   "nameEn": "Sakamoto Koji Kiln",
+   "area": "小鹿田・皿山",
+   "areaEn": "Onta (Sarayama)",
+   "tags": [
+    "ceramics",
+    "onta-yaki",
+    "tableware"
+   ],
+   "what": "皿山の小鹿田焼の窯元。坂本浩二さんと息子の拓磨さんが、水力で動く唐臼で土を砕き、登り窯で飛び鉋や刷毛目の器を焼く。",
+   "whatEn": "An Onta ware family kiln in Sarayama worked by Koji Sakamoto and his son Takuma, crushing clay with water-powered kara-usu and firing slip-decorated vessels in the climbing kiln.",
+   "note": "細かい飛び鉋の皿を一枚、手に取って選びたい。",
+   "noteEn": "Hold and choose a plate with fine tobikanna chatter marks.",
+   "_src": {
+    "category": "local",
+    "industry": "onta-yaki",
+    "nameKana": "さかもとこうじがま",
+    "address": "大分県日田市源栄町174",
+    "url": "https://www.instagram.com/takumasakamoto/",
+    "whatJa": "小鹿田焼の里・皿山で坂本浩二氏と拓磨氏親子が作陶する、緻密な飛び鉋や刷毛目の器で知られる窯元。",
+    "whatEn": "Father-and-son Onta ware kiln in Sarayama throwing crisp chatter-marked and slip-brushed stoneware from stream-pounded local clay.",
+    "facts": "Worked by veteran potter Koji Sakamoto and his son Takuma Sakamoto (a multiple Japan Folk Crafts Museum Exhibition prize winner), using water-driven kara-usu clay crushers and Sarayama's climbing kiln.",
+    "weak": "",
+    "verifiedBy": "https://edit.pref.oita.jp/news-columns/7156/",
+    "quote": "小鹿田焼協同組合の副理事長を務める６代目・浩二さんと、その長男・拓磨さんのおふたりで作陶されています。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "日東木工": {
+   "nameEn": "Nitto Mokkou",
+   "area": "隈",
+   "areaEn": "Kuma",
+   "tags": [
+    "furniture",
+    "wood"
+   ],
+   "what": "隈の西、玉川にある1962年創業の家具メーカー。木取りから塗装まで一貫して行い、特注家具やダイニングテーブル、椅子、ソファを手で仕上げる。",
+   "whatEn": "A wooden furniture maker founded in 1962 in Tamagawa just west of Kuma, handling timber selection to finishing for custom tables, chairs and sofas.",
+   "note": "無垢の椅子やテーブルの、木目の仕上げを見たい。",
+   "noteEn": "See how the grain is finished on their solid-wood chairs and tables.",
+   "_src": {
+    "category": "local",
+    "industry": "hita-cedar-geta",
+    "nameKana": "にっとうもっこう",
+    "address": "大分県日田市玉川3-1511-1",
+    "url": "https://nitto-mokkou.com/",
+    "whatJa": "1962年創業、熟練の手仕事で仕上げる特注木製家具と名作椅子を本社2階ショールームで展示する日田の老舗木工メーカー。",
+    "whatEn": "Third-generation Hita bespoke furniture maker founded in 1962 with a second-floor showroom displaying curved solid-wood pieces and classic chairs.",
+    "facts": "Established in 1962 in Hita's leg-furniture woodworking tradition; combines precision joinery and hand-sculpted curves in solid timber, with a showroom above its Tamagawa workshop.",
+    "weak": "Primarily a custom furniture workshop with a second-floor headquarters showroom in Tamagawa just west of Kuma; advance contact recommended before visiting.",
+    "verifiedBy": "https://nitto-mokkou.com/news/夏季休業のお知らせ-2/",
+    "quote": "日東木工では下記の期間を夏季休業とさせていただきます。",
+    "fixes": "whatEn: Hita custom wooden-furniture manufacturer founded in 1962, making tables, chairs, boards and sofas. whatJa: 1962年に日田で創業し、特注家具、ダイニングテーブル、チェア、ボード、ソファーなどを製作する木工メーカー。The opened official site confirms 玉川3-1511-1 but does not describe a second-floor public showroom. The holiday notice prints the inconsistent range 「2026年8月12日(水)～2025年8月16日(日)」.",
+    "coords": null
+   }
+  },
+  "原次郎左衛門の味噌醤油蔵": {
+   "nameEn": "Hara Jirozaemon Brewery",
+   "area": "日田駅・中央周辺",
+   "areaEn": "Central Hita",
+   "tags": [
+    "soy-sauce",
+    "miso",
+    "local-food"
+   ],
+   "what": "中本町にある明治32年創業の味噌・醤油蔵。日田の地下水で仕込む味噌や醤油のほか、川魚から作る「鮎魚醤」やラムネも並ぶ。",
+   "whatEn": "A miso and soy sauce brewery in Nakahonmachi founded in 1899, brewing with Hita groundwater and also making ayu sweetfish garum and ramune.",
+   "note": "小さな瓶の鮎魚醤を、家の台所用に一本。",
+   "noteEn": "A small bottle of ayu fish sauce for the kitchen at home.",
+   "_src": {
+    "category": "local",
+    "industry": "hita-brewing",
+    "nameKana": "はらじろうざえもんのみそしょうゆぐら",
+    "address": "大分県日田市中本町5-4",
+    "url": "http://www.soysauce.co.jp/",
+    "whatJa": "明治32年創業、日田の名水で仕込む味噌や醤油、世界的に評価される「鮎魚醤」を手がける老舗醸造蔵の直売店。",
+    "whatEn": "Meiji-era miso and soy sauce brewery founded in 1899 producing traditional fermented condiments, gourmet ayu fish sauce, and retro Nijiiro Ramune.",
+    "facts": "Founded in 1899 (Maruhara) in Nakahonmachi using Hita groundwater; offers brewery tours and direct shop sales of miso, soy sauce, amber ayu sweetfish garum prized by chefs, and pastel Nijiiro Ramune.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/mami-ogw/entry-12964168147.html",
+    "quote": "日田醤油さん、赤司日田羊羹さん、それからまたもや醤油屋さんになっちゃうけど、原次郎左衛門（まるはら）で鮎魚醤を買いに。",
+    "fixes": "",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "豆田町伝統的建造物群保存地区",
+   "nameEn": "Mamedamachi Preservation District",
+   "kind": "sight",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "address": "大分県日田市豆田町",
+   "url": "https://www.city.hita.oita.jp/soshiki/29/2428.html",
+   "what": "天領時代に町人地として栄えた豆田町の古い町並み。江戸時代の町割りや居蔵造りの町家、酒蔵などが残り、国の重要伝統的建造物群保存地区に選ばれている。散策は自由。",
+   "whatEn": "The old merchant quarter of Mamedamachi, which prospered when Hita was shogunate territory. Its Edo-period street grid, plastered igura-zukuri townhouses and breweries are a national preservation district, open to walk freely.",
+   "coords": [
+    33.32798,
+    130.93725
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "咸宜園跡",
+   "nameEn": "Kangien Site",
+   "kind": "sight",
+   "area": "淡窓",
+   "areaEn": "Tanso",
+   "address": "大分県日田市淡窓2-2-15",
+   "url": "https://www.city.hita.oita.jp/site/kangien/",
+   "what": "江戸後期に儒学者・廣瀬淡窓が開いた私塾の跡で、国の史跡。身分や年齢、学歴を問わない教育で知られ、日本遺産「近世日本の教育遺産群」の一つ。隣接する咸宜園教育研究センターで資料を公開している。",
+   "whatEn": "The site of a private academy founded in the late Edo period by Confucian scholar Hirose Tanso, designated a national historic site. Known for admitting students regardless of rank, age or background, with an adjacent research centre exhibiting historical materials.",
+   "coords": [
+    33.32288,
+    130.93501
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "廣瀬資料館",
+   "nameEn": "Hirose Museum",
+   "kind": "art",
+   "area": "豆田町",
+   "areaEn": "Mamedamachi",
+   "address": "大分県日田市豆田町9-7",
+   "url": "http://hirose-museum.jp/",
+   "what": "廣瀬淡窓と実業家の弟・廣瀬久兵衛の生家である、掛屋・廣瀬家の旧宅と資料館。主屋や蔵に伝わる資料を公開している。9時から17時、原則月曜休み（2・3・10・11月は毎日開館）。",
+   "whatEn": "The former residence and museum of the Hirose merchant family, birthplace of scholar Hirose Tanso and financier Hirose Kyubei, showing the main house and family collection. Open 9 am to 5 pm; usually closed Mondays (open daily in Feb, Mar, Oct and Nov).",
+   "coords": [
+    33.32669,
+    130.93661
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "日田祇園山鉾会館",
+   "nameEn": "Hita Gion Yamahoko Kaikan",
+   "kind": "art",
+   "area": "隈",
+   "areaEn": "Kuma",
+   "address": "大分県日田市隈2-7-10",
+   "url": "https://www.city.hita.oita.jp/site/hitanioideyo/2460.html",
+   "what": "ユネスコ無形文化遺産に登録された「日田祇園の曳山行事」の山鉾や見送幕を展示する会館。吹抜けの館内で山鉾の大きさを間近に見られる。",
+   "whatEn": "A museum displaying the festival floats and tapestries of the Hita Gion Yamahoko procession, a UNESCO Intangible Cultural Heritage. An atrium lets visitors view the tall floats up close.",
+   "notice": "日田祇園の曳山行事のため、6月下旬から7月下旬まで山鉾の展示を中断する。",
+   "noticeEn": "Float displays are suspended from late June to late July for the Hita Gion festival.",
+   "coords": [
+    33.31552,
+    130.93141
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "Hazebo Coffee",
+   "verdict": "doubt",
+   "reason": "Only '© 2026 Hazebo Coffee' footer found; no dated 2026 post."
+  },
+  {
+   "name": "AJI Labo COFFEE",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login-gated shell; no post text readable."
+  },
+  {
+   "name": "麦屋カフェ",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login-gated shell; no post text readable."
+  },
+  {
+   "name": "STEPS",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login-gated shell; no post text readable."
+  },
+  {
+   "name": "いた屋本家",
+   "verdict": "doubt",
+   "reason": "Latest information posts are 2025/06/30 and 2025/04/18; only a calendar date 2026.11.11 and © 2026 footer, no 2026 notice."
+  },
+  {
+   "name": "寳屋 本店",
+   "verdict": "doubt",
+   "reason": "Official site newest post is 2025.10.20 (寳屋寄席 on 2025-11-09); no 2026 sentence found. Hours 11:00-15:00/17:00-21:00, closed Wed; address 元町13-1 matches."
+  },
+  {
+   "name": "すてーき茶寮 和くら",
+   "verdict": "doubt",
+   "reason": "Newest dated news on official site is 2024; no 2026 sentence found."
+  },
+  {
+   "name": "発酵舎KOGURA",
+   "verdict": "doubt",
+   "reason": "Instagram page content not readable without login (only title shown); no 2026 sentence copied. Search results only, which are not evidence."
+  },
+  {
+   "name": "石窯パン工房 Bigarreau",
+   "verdict": "doubt",
+   "reason": "Official page has no dated 2026 content; only undated hours."
+  },
+  {
+   "name": "琴音庵",
+   "verdict": "doubt",
+   "reason": "Page text newest post is about September (year not shown) and 2026 only appears in image file names and page modified metadata (2026-03-31); no copyable dated 2026 sentence. Address not shown on page."
+  },
+  {
+   "name": "Life design shop Areas",
+   "verdict": "doubt",
+   "reason": "Official page has no dated 2026 content, only undated hours that may change without notice."
+  },
+  {
+   "name": "鹿鳴庵",
+   "verdict": "doubt",
+   "reason": "Instagram (@rokumeian) needs a login, so no posts could be read. The only 2026 mention is a third-party event listing on the CREATIVE BASE FAB site. The thatched house, the Ono address and the gallery description could not be confirmed."
+  },
+  {
+   "name": "坂本工窯",
+   "verdict": "doubt",
+   "reason": "Instagram needs a login. Only the profile summary was visible (6,101 followers, 420 posts), with no dated 2026 post. No other official page was opened."
+  },
+  {
+   "name": "こもれび工房",
+   "verdict": "doubt",
+   "reason": "The business calendar on the page is stuck at June-July 2022, so no 2026 evidence exists. The site looks stale."
+  },
+  {
+   "name": "本野はきもの工業",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login shell with no readable posts; official site motono-hakimono.com failed to load (SSL error). No 2026 sentence could be copied."
+  },
+  {
+   "name": "まるせ",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only an Instagram shell. Opened the alternative listing and confirmed the address and egg-free scones / egg-, butter- and milk-free muffins, but its update is 2020-07-28. No dated 2026 operating sentence could be copied."
+  },
+  {
+   "name": "和食工房 新",
+   "verdict": "doubt",
+   "reason": "Official homepage and shop-information page confirm a renovated traditional-house washoku restaurant and 丸の内町4-19, but the only dated notice found is 2017-12-14. No dated 2026 operating sentence could be copied."
+  },
+  {
+   "name": "EAST CAFE",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only an unreadable shell. Tried the alternative Tabelog listing with curl, but it returned an access-congestion error. No dated 2026 operating sentence, menu description, or address could be independently copied from a readable page."
+  },
+  {
+   "name": "沈丁花",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only an unreadable shell. An alternative Yahoo Maps page was region-blocked, and no readable dated 2026 operating sentence was found. The stated address and descriptions remain unverified."
+  },
+  {
+   "name": "紅屋白壺堂",
+   "verdict": "doubt",
+   "reason": "Opened official online shop, access page, and parent-company news. Address 元町19番11号 and Onta-ware sales match. The shop notices end in 2024 and parent-company notices in 2025. No dated 2026 operating sentence could be copied."
+  },
+  {
+   "name": "家具工房 木正舎",
+   "verdict": "doubt",
+   "reason": "Official homepage and workshop-history page are readable and match the furniture business and address. Only the copyright footer says 2026. No dated 2026 operating sentence could be copied."
+  }
+ ]
+}

@@ -1,0 +1,244 @@
+[
+ {
+  "name": "鈴屋",
+  "nameEn": "Suzuya",
+  "category": "sweets",
+  "tags": [
+   "castella",
+   "wagashi"
+  ],
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "15-11 Minato, Tanabe",
+  "url": "https://dxcake.jp/",
+  "what": "大正13年（1924年）創業の菓子店。特殊配合のかすてらに独自のジャムを挟み、ホワイトチョコで包んだ「デラックスケーキ」や「柚もなか」を作る。8時から18時で、年中無休（元日のみ10時から15時）。",
+  "whatEn": "A confectionery founded in 1924. It makes the white-chocolate-coated Deluxe Cake with house jam inside special-recipe castella, alongside wagashi such as Yuzu Monaka. Open 8 am to 6 pm daily (10 am to 3 pm on New Year's Day).",
+  "note": "ホワイトチョコをかけたデラックスケーキを、お土産に一箱。",
+  "noteEn": "A box of the white-chocolate Deluxe Cakes to take home.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.73201,
+   135.38256
+  ]
+ },
+ {
+  "name": "七福堂",
+  "nameEn": "Shichifukudo",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "63 Shinyashiki-machi, Tanabe",
+  "url": "https://tanabekko.com/",
+  "what": "新屋敷町で60余年続く菓子舗。代表銘菓の「田辺っ子」や「酒まんじゅう」「七福もなか」を作る。7時半から19時で、日曜は休み。",
+  "whatEn": "A confectionery in Shinyashiki-machi operating for over 60 years, making its signature Tanabekko alongside sake manju and Shichifuku monaka. Open 7:30 am to 7 pm, closed on Sundays.",
+  "note": "日曜は休み。朝のうちに寄って、田辺っ子と酒まんじゅうを一つずつ。",
+  "noteEn": "Closed on Sundays. Stop by in the morning for one Tanabekko and one sake manju.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.72841,
+   135.38113
+  ]
+ },
+ {
+  "name": "tanabe en+",
+  "nameEn": "tanabe en+",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "tea",
+   "crafts"
+  ],
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "41-1 Minato, Tanabe",
+  "url": "https://tanabe-enplus.jp/",
+  "what": "紀伊田辺駅の正面にある、紀州材を使った建物の交流拠点。カフェでは地元焙煎の珈琲や紀南の果物を混ぜたアイスを出し、ショップでは梅製品や龍神の木工雑貨を扱う。10時から19時（カフェは18時L.O.）で、年中無休。",
+  "whatEn": "A community hub in a Kishu-timber building opposite Kii-Tanabe Station. Its café serves locally roasted coffee and blended ice cream with Kinan fruit, while the shop stocks plum goods and Ryujin woodwork. Open 10 am to 7 pm daily (café last order 6 pm).",
+  "note": "紀南の果物を混ぜたアイスか、川添の和紅茶をここで。",
+  "noteEn": "Blended ice cream with local fruit, or a cup of Kawazoe black tea.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.7326,
+   135.38375
+  ]
+ },
+ {
+  "name": "CABELO",
+  "nameEn": "CABELO",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "中辺路・山間部",
+  "areaEn": "Nakahechi & Mountain Villages",
+  "address": "909-6 Chikatsuyu, Nakahechi-cho, Tanabe",
+  "url": "https://www.instagram.com/cabelo_coffee/",
+  "what": "熊野古道沿いの近露にある、週4日営業の珈琲専門店。メニューは珈琲のみで、ペルーやエチオピアなど季節で変わる豆を自家焙煎して淹れる。",
+  "whatEn": "A coffee-only roaster and stand open four days a week along the Kumano Kodo in Chikatsuyu, roasting seasonal beans such as Peru and Ethiopia in small batches.",
+  "note": "焙煎から二週間ほど置いた豆で、一杯だけ。",
+  "noteEn": "Just one cup, brewed from beans rested about two weeks after roasting.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.81459,
+   135.60626
+  ]
+ },
+ {
+  "name": "木の椅子工房 G.WORKS",
+  "nameEn": "G.WORKS",
+  "category": "craft",
+  "tags": [
+   "woodwork",
+   "furniture"
+  ],
+  "area": "中辺路・山間部",
+  "areaEn": "Nakahechi & Mountain Villages",
+  "address": "493 Fukui, Ryujin-mura, Tanabe",
+  "url": "http://www.gworks-web.com/",
+  "what": "1997年に龍神村で生まれた木の椅子工房。「道の駅 水の郷 日高川 龍游」内にあり、紀州スギや紀州ヒノキの無垢材でロッキングチェアや椅子を作る。10時から17時で、水曜は休み（祝日の場合は翌日）。",
+  "whatEn": "A chair workshop founded in Ryujin in 1997, inside Michi-no-Eki Mizunosato Hidakagawa Ryuyu, building solid Kishu cedar and hinoki rocking chairs and seating. Open 10 am to 5 pm, closed on Wednesdays (or the next day if a holiday).",
+  "note": "紀州スギのロッキングチェアに腰を下ろして、木のやわらかさを確かめる。",
+  "noteEn": "Sit in a Kishu cedar rocking chair and feel the softness of the wood.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.89509,
+   135.43935
+  ]
+ },
+ {
+  "name": "秋津野ガルテン 農家レストラン みかん畑",
+  "nameEn": "Akizuno Garten Farmer's Restaurant Mikanbatake",
+  "category": "food",
+  "tags": [
+   "local-food"
+  ],
+  "area": "万呂・秋津",
+  "areaEn": "Maro & Akizu Foothills",
+  "address": "4558-8 Kamiakizu, Tanabe",
+  "url": "https://www.agarten.jp/",
+  "what": "上秋津の旧・上秋津小学校の木造校舎を活かした交流施設「秋津野ガルテン」内の農家レストラン。地元の主婦たちが作る約30種類の家庭料理をバイキングで出す。",
+  "whatEn": "A farm restaurant in Akizuno Garten, a former wooden elementary schoolhouse in Kamiakizu, serving a buffet of around 30 home-cooked dishes made by local mothers.",
+  "note": "煮物や梅紫蘇ごはん、地元の柑橘を少しずつ皿に取る。",
+  "noteEn": "Take a little of the simmered vegetables, plum-shiso rice and local citrus.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.75598,
+   135.40678
+  ]
+ },
+ {
+  "name": "もんぺとくわ",
+  "nameEn": "Monpe to Kuwa",
+  "category": "food",
+  "tags": [
+   "cafe",
+   "vegetables"
+  ],
+  "area": "中辺路・山間部",
+  "areaEn": "Nakahechi & Mountain Villages",
+  "address": "258 Nishi, Ryujin-mura, Tanabe",
+  "url": "https://monpe-kuwa.com/",
+  "what": "龍神村の日高川沿いにある自然派カフェと農家民泊。自家農園の無農薬野菜を使った「六品目のおふくろ定食」やピタパンサンド、野菜カレーを出す。11時から17時（ランチは14時まで）で、月・火曜は休み（月曜祝日は営業）。",
+  "whatEn": "A natural-food café and farm stay along the Hidaka River in Ryujin, serving homegrown pesticide-free vegetable set meals, pita sandwiches and vegetable curry. Open 11 am to 5 pm (lunch until 2 pm), closed Mondays and Tuesdays (open on Monday holidays).",
+  "note": "日高川を見下ろす席で、畑の野菜の定食をゆっくり。",
+  "noteEn": "Take a seat overlooking the Hidaka River for the homegrown vegetable set meal.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.90055,
+   135.48682
+  ]
+ },
+ {
+  "name": "たな梅本店",
+  "nameEn": "Tanaume Honten",
+  "category": "local",
+  "industry": "nanba-yaki",
+  "tags": [
+   "nanba-yaki",
+   "kamaboko"
+  ],
+  "area": "紀伊田辺・城下町",
+  "areaEn": "Castle Town & Kii-Tanabe",
+  "address": "39 Fukuromachi, Tanabe",
+  "url": "https://www.tanaume.jp/",
+  "what": "1865年創業、福路町の老舗蒲鉾店。田辺伝統の焼き抜き蒲鉾「南蛮焼」や、ごぼうを魚皮で巻いて焼いた「牛蒡巻」を作る。平日の朝には店頭限定で揚げたての「ひら天」も出す。",
+  "whatEn": "A fishcake maker in Fukuromachi founded in 1865, making Tanabe's traditional baked nanba-yaki and burdock-wrapped gobomaki. On weekday mornings, freshly fried hira-ten is sold only at the counter.",
+  "note": "平日の朝なら揚げたてのひら天を、お土産には牛蒡巻を。",
+  "noteEn": "Freshly fried hira-ten on a weekday morning, and gobomaki to take home.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.7333,
+   135.37703
+  ]
+ },
+ {
+  "name": "紀州備長炭記念公園",
+  "nameEn": "Kishu Binchotan Memorial Park",
+  "category": "local",
+  "industry": "kishu-binchotan",
+  "tags": [
+   "binchotan",
+   "charcoal"
+  ],
+  "area": "万呂・秋津",
+  "areaEn": "Maro & Akizu Foothills",
+  "address": "1491-1 Akizugawa, Tanabe",
+  "url": "https://www.binchotan.jp/",
+  "what": "紀州備長炭発祥の地・秋津川にある道の駅。炭焼き窯や備長炭発見館があり、浄水用備長炭の量り売りや風鈴づくり、備長炭コーヒーも味わえる。発見館は9時から17時（12〜3月は16時まで）で、水曜は休み（祝日の場合は翌日）。",
+  "whatEn": "A roadside station in Akizugawa, the birthplace of Kishu Binchotan, with working kilns, a museum, charcoal sold by weight for water purification, wind-chime workshops and Binchotan coffee. Museum open 9 am to 5 pm (to 4 pm Dec–Mar), closed Wednesdays (or the next day if a holiday).",
+  "note": "叩くと澄んだ音がする備長炭を、浄水用に少し量り売りで買う。",
+  "noteEn": "Buy a little kiln-fired Binchotan by weight for water, after hearing its clear ring.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.80332,
+   135.42715
+  ]
+ },
+ {
+  "name": "中峰農園",
+  "nameEn": "Nakamine Farm",
+  "category": "local",
+  "industry": "kishu-nanko-ume",
+  "tags": [
+   "umeboshi"
+  ],
+  "area": "万呂・秋津",
+  "areaEn": "Maro & Akizu Foothills",
+  "address": "2419 Kamiakizu, Tanabe",
+  "url": "https://www.noukanoume.com/",
+  "what": "上秋津で梅の栽培から製造・販売まで一貫して行う梅農家。「農家の梅」として、白干し梅やはちみつ梅、しそ漬など10種類の梅干しを作る。営業は平日の9時から17時。",
+  "whatEn": "A plum orchard in Kamiakizu handling cultivation, pickling and sales in-house, making ten kinds of umeboshi including shiroboshi, honey and shiso plums. Open weekdays 9 am to 5 pm.",
+  "note": "塩だけで漬けた白干し梅と、しそ漬を並べて食べ比べてみたい。",
+  "noteEn": "Put the plain salted shiroboshi beside the shiso-cured plums and taste the difference.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.75381,
+   135.41092
+  ]
+ },
+ {
+  "name": "みちうえ農園",
+  "nameEn": "Michiue Farm",
+  "category": "local",
+  "industry": "kishu-nanko-ume",
+  "tags": [
+   "umeboshi"
+  ],
+  "area": "天神崎・田辺湾",
+  "areaEn": "Tenjinzaki & Tanabe Bay",
+  "address": "330-1 Kamihaya, Tanabe",
+  "url": "https://michiuenouen.com/",
+  "what": "上芳養で自家栽培の南高梅を天然塩で漬け、セイロに並べて天日干しする梅農園。白干梅やしそ漬梅、はちみつ梅などを扱う。日曜・祝日は休み。",
+  "whatEn": "A plum orchard in Kamihaya curing homegrown Nanko-ume in natural sea salt and sun-drying them on trays, offering shiroboshi, shiso and honey plums. Closed Sundays and public holidays.",
+  "note": "セイロで天日干しした白干梅の、ふっくらした実を一つ選ぶ。",
+  "noteEn": "Pick a plump shiroboshi plum, sun-dried on cedar trays.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   33.7957,
+   135.36226
+  ]
+ }
+]

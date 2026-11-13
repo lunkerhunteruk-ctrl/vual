@@ -1,0 +1,245 @@
+[
+ {
+  "name": "俊彦窯",
+  "nameEn": "Toshihiko Kiln",
+  "category": "local",
+  "industry": "tamba-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "丹波篠山市今田町上立杭396",
+  "url": "https://toshihikogama.com/",
+  "what": "1977年に清水俊彦が開いた丹波焼の窯元。生田和孝に学んだ民藝の流れを汲み、現在は息子の剛と二人で作陶している。",
+  "whatEn": "A Tamba-yaki kiln founded in 1977 by Shimizu Toshihiko, who studied under Mingei potter Ikuta Kazutaka. He now makes pottery alongside his son Tsuyoshi.",
+  "note": "丹波の土の、日常の器を手に取って選びたい。",
+  "noteEn": "I want to pick up and choose everyday Tamba-clay vessels.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.98219,
+   135.12698
+  ]
+ },
+ {
+  "name": "省三窯",
+  "nameEn": "Shozo Kiln",
+  "category": "local",
+  "industry": "tamba-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "今田町上立杭2-2",
+  "url": "https://shozogama.com/",
+  "what": "立杭の北の高台に工房とギャラリーを構える丹波焼の窯元。壺や茶わんから日常の食器まで、一つずつ手作りしている。",
+  "whatEn": "A Tamba-yaki kiln and hillside gallery in the northern part of Tachikui, handcrafting everything from vases and tea bowls to everyday tableware.",
+  "note": "高台の静かなギャラリーで、普段の皿を見たい。",
+  "noteEn": "Looking at everyday plates in the quiet hillside gallery.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.99305,
+   135.12731
+  ]
+ },
+ {
+  "name": "丹泉窯",
+  "nameEn": "Tansen Kiln",
+  "category": "local",
+  "industry": "tamba-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "今田町上立杭527",
+  "url": "https://tansengama.com/",
+  "what": "上立杭のやきもの通りにある丹波焼の窯元。市野清治と市野ちさとが作陶し、近くにぎゃらりーTANSENもある。",
+  "whatEn": "A Tamba-yaki kiln along Kiln Alley in Kamitachikui, where Ichino Kiyoharu and Ichino Chisato make ceramics, with Gallery TANSEN nearby.",
+  "note": "窯元とギャラリー、ふたつの場所を歩いて見たい。",
+  "noteEn": "I would walk between the kiln and the gallery to look.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.98013,
+   135.12828
+  ]
+ },
+ {
+  "name": "大熊窯",
+  "nameEn": "Ohkuma Kiln",
+  "category": "local",
+  "industry": "tamba-yaki",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "今田町上立杭尾中1",
+  "url": "https://ohkumagama.com/",
+  "what": "立杭の里で代々作陶を続ける丹波焼の窯元。敷地の長い登り窯が目印で、素朴で温かみのある焼きものを作っている。",
+  "whatEn": "A Tamba-yaki kiln in Tachikui across generations, marked by a long climbing kiln on its grounds, making simple, warm stoneware.",
+  "note": "長い登り窯を見てから、素朴な器を覗いてみたい。",
+  "noteEn": "Look at the long climbing kiln, then step in for the simple stoneware.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.991,
+   135.12795
+  ]
+ },
+ {
+  "name": "珈琲豆 誠",
+  "nameEn": "Coffee Beans Makoto",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "丹波篠山市西町1",
+  "url": "https://coffeemame-makoto.com/",
+  "what": "西町の古民家にある自家焙煎の珈琲店。定番や季節のブレンド、スペシャルティコーヒーの豆を量り売りし、焙煎体験もできる。火・水曜休み。",
+  "whatEn": "A house-roasting coffee shop and café in an old townhouse in Nishimachi, selling house and seasonal blends and single-origin beans, with roasting workshops. Closed Tuesdays and Wednesdays.",
+  "note": "まずは「西町」ブレンドを一杯、飲んでみたい。",
+  "noteEn": "I want to start with a cup of the Nishimachi blend.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.07658,
+   135.21295
+  ]
+ },
+ {
+  "name": "小西のパン",
+  "nameEn": "Konishi no Pan",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "魚屋町23",
+  "url": "https://konipan.cocotte.jp/wp/",
+  "what": "明治26年（1893年）創業、明治42年から篠山で続くパン店。8〜9時間煮込んだ丹波の黒大豆を包んだ黒豆パンが名物。火曜休み。",
+  "whatEn": "A bakery founded in 1893 and in Sasayama since 1909, known for soft loaves filled with Tamba black soybeans simmered for eight to nine hours. Closed Tuesdays.",
+  "note": "甘さを抑えた黒豆パン、ひとつつまみたい。",
+  "noteEn": "A black-soybean loaf, lightly sweetened, to pick up.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.07679,
+   135.21399
+  ]
+ },
+ {
+  "name": "雪岡市郎兵衛洋菓子舗",
+  "nameEn": "Yukioka Ichirobei Patisserie",
+  "category": "sweets",
+  "tags": [
+   "cheesecake",
+   "sweets"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "魚屋町13-1",
+  "url": "https://la-neige-ashiya.ocnk.net/",
+  "what": "魚屋町のチーズケーキ専門店。丹波黒豆や丹波栗、いちじくや各種チーズを使ったチーズケーキと、秋の丹波栗のモンブランを並べる。",
+  "whatEn": "A cheesecake shop on Uoyamachi making cheesecakes with Tamba black beans, Tamba chestnuts, figs and various cheeses, plus autumn Tamba chestnut mont blanc.",
+  "note": "黒豆か丹波栗のチーズケーキをひとつ選びたい。",
+  "noteEn": "I want to pick one cheesecake, either black bean or chestnut.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.07685,
+   135.21442
+  ]
+ },
+ {
+  "name": "白殻五粉",
+  "nameEn": "Shirokaragofun",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "小川町2",
+  "url": "https://www.shirokaragofun.com/",
+  "what": "小川町の天然酵母のパン屋。ブールやいちじくとくるみのカンパーニュなどを焼き、売り切れ次第閉店。火・水曜休み（祝日は営業）。",
+  "whatEn": "A natural-yeast bakery on Ogawamachi baking boules and fig-and-walnut campagne, closing when the bread sells out. Closed Tuesdays and Wednesdays unless a holiday.",
+  "note": "いちじくとくるみのカンパーニュを買って帰る。",
+  "noteEn": "Take home a fig-and-walnut campagne.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.07143,
+   135.22301
+  ]
+ },
+ {
+  "name": "小田垣豆堂",
+  "nameEn": "Odagaki Mamedo",
+  "category": "sweets",
+  "tags": [
+   "wagashi",
+   "kuromame"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "立町19",
+  "url": "https://www.odagaki.co.jp/",
+  "what": "享保19年（1734年）創業の黒豆卸・小田垣商店が営むカフェ。丹波黒豆のパフェやモンブランなどを出す。木曜休み（祝日の場合は翌平日）。",
+  "whatEn": "The café of Odagaki Shoten, a black-soybean merchant founded in 1734, serving Tamba black-soybean parfaits and mont blanc. Closed Thursdays, or the next weekday if a holiday.",
+  "note": "黒豆きなこのパフェを頼んで、ひと休み。",
+  "noteEn": "Order the black-soybean kinako parfait and take a rest.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.07253,
+   135.22368
+  ]
+ },
+ {
+  "name": "KONdA to",
+  "nameEn": "KONdA to",
+  "category": "food",
+  "tags": [
+   "burger",
+   "ceramics"
+  ],
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "今田町下立杭680",
+  "url": "https://konato.jp/",
+  "what": "今田町の古民家で営むハンバーガー店。石臼挽きの自家製粉バンズと手斬りの牛肉パティを作り、丹波焼の器に盛って出す。",
+  "whatEn": "A burger restaurant in an old farmhouse in Konda-cho, baking stone-milled house-ground buns and hand-cut beef patties, served on Tamba-yaki plates.",
+  "note": "丹波焼の皿にのった、手斬りのバーガーを待つ。",
+  "noteEn": "Wait for a hand-cut burger served on a Tamba-yaki plate.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   34.9695,
+   135.12448
+  ]
+ },
+ {
+  "name": "丹波篠山 一休庵",
+  "nameEn": "Tambasasayama Ikkyuan",
+  "category": "food",
+  "tags": [
+   "soba",
+   "botan-nabe"
+  ],
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "丹波篠山市山内町78-2",
+  "url": "https://ikkyuuan.jp/",
+  "what": "篠山城跡近くの移築古民家の蕎麦処。店内で蕎麦の実を挽く十割そばと、丹波篠山近又監修の出汁のぼたん鍋を出す。",
+  "whatEn": "A soba house near the castle ruins in a relocated old farmhouse, milling buckwheat in-house for 100% soba and serving wild-boar botan-nabe.",
+  "note": "十割そばのあとに、蕎麦の実ぜんざいもつけたい。",
+  "noteEn": "After the 100% buckwheat soba, I want to add the buckwheat-groat zenzai.",
+  "verifiedAt": "2026-11-12",
+  "coords": [
+   35.078,
+   135.21501
+  ]
+ }
+]

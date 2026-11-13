@@ -1,0 +1,82 @@
+[
+ {
+  "name": "大洲城",
+  "nameEn": "Ozu Castle",
+  "kind": "sight",
+  "area": "肱南",
+  "areaEn": "Konan",
+  "address": "大洲市大洲903",
+  "url": "https://ozucastle.jp/",
+  "what": "肱川のほとりに建つ城。明治時代に失われた天守は、2004年に往時の姿のまま木造で復元された。年中無休で9時から17時（札止め16時30分）。",
+  "whatEn": "The castle above the Hiji River, whose keep—lost in the Meiji era—was rebuilt in wood to its historic form in 2004. Open daily 9 am to 5 pm (last entry 4:30 pm).",
+  "coords": [
+   33.50955,
+   132.54113
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "臥龍山荘",
+  "nameEn": "Garyu Sanso",
+  "kind": "sight",
+  "area": "肱南",
+  "areaEn": "Konan",
+  "address": "大洲市大洲411-2",
+  "url": "https://www.garyusanso.jp/",
+  "what": "肱川の景勝地「臥龍淵」に、明治の豪商・河内寅次郎が10年余りをかけて築いた数寄屋造りの山荘。臥龍院・知止庵・不老庵と苔の庭がある。",
+  "whatEn": "A sukiya-style villa built over more than ten years in the Meiji era by merchant Torajiro Kochi above the Garyu-buchi bend of the Hiji River, with moss gardens and three pavilions.",
+  "coords": [
+   33.50631,
+   132.55009
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "おおず赤煉瓦館",
+  "nameEn": "Ozu Red Brick Hall",
+  "kind": "sight",
+  "area": "肱南",
+  "areaEn": "Konan",
+  "address": "大洲市大洲60",
+  "url": "https://jp.visitozu.com/archives/highlight/184",
+  "what": "1901年に大洲商業銀行の本店として建てられたイギリス積みの煉瓦建築に、和瓦の屋根をのせた和洋折衷の建物。館内では砥部焼や大洲の工芸品を扱う。9時から17時。",
+  "whatEn": "Built in 1901 as the head office of Ozu Commercial Bank in English-bond brick topped with Japanese roof tiles. Inside are Tobe-yaki pottery and local crafts. Open 9 am to 5 pm.",
+  "coords": [
+   33.50782,
+   132.54693
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "おはなはん通り",
+  "nameEn": "Ohanahan Street",
+  "kind": "sight",
+  "area": "肱南",
+  "areaEn": "Konan",
+  "address": "大洲市大洲",
+  "url": "https://jp.visitozu.com/archives/highlight/216",
+  "what": "江戸時代の町割と白壁の土蔵、武家屋敷の景観が残る通り。1966年のNHK朝の連続テレビ小説「おはなはん」のロケ地となった。散策は自由。",
+  "whatEn": "A street preserving Edo-period town plots, white-walled storehouses and former samurai residences, named after the 1966 television drama Ohanahan filmed here. Free to walk.",
+  "coords": [
+   33.50676,
+   132.54773
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "大洲市立博物館",
+  "nameEn": "Ozu City Museum",
+  "kind": "art",
+  "area": "肱北",
+  "areaEn": "Kohoku",
+  "address": "大洲市中村618-1",
+  "url": "https://www.ozu-museum.com/",
+  "what": "大洲地方の歴史・芸術・民俗・自然科学などの資料を展示・研究する市立博物館。9時から17時で、月曜と年末年始が休み。入館無料。",
+  "whatEn": "The city museum displaying and researching history, art, folklore and natural science of the Ozu region. Open 9 am to 5 pm; closed Mondays and year-end. Free admission.",
+  "coords": [
+   33.51373,
+   132.54618
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

@@ -1,0 +1,439 @@
+{
+ "slug": "kashihara",
+ "city": {
+  "name": "Kashihara",
+  "nameJa": "橿原",
+  "latitude": "34.5° N",
+  "country": "Nara, Japan",
+  "countryJa": "奈良県",
+  "person": "rin",
+  "coords": [
+   34.5072,
+   135.788
+  ],
+  "intro": "A town in the southeastern Nara Basin, set around the Three Mountains of Yamato and the site of Fujiwara-kyo, Japan's first capital. Edo-period townhouses in Imaicho, an 18th-century sake brewery, and sweets, coffee and kitchens across the old quarters, as Rin's picks.",
+  "introJa": "奈良盆地の南東部、大和三山と日本最初の都城・藤原京の跡を抱える町。江戸の町並みが残る今井町のほか、18世紀創業の酒蔵、和菓子と洋菓子、珈琲と台所の店を、凛のおすすめで。",
+  "locator": {
+   "en": "In the Nara Basin · surrounded by the Three Mountains of Yamato",
+   "ja": "奈良盆地の南東部・大和三山を望む町"
+  },
+  "industries": [
+   {
+    "key": "machiya-brewing",
+    "en": "Machiya Sake & Soy Sauce Brewing",
+    "ja": "町家の酒・醤油醸造",
+    "about": "In Imaicho and the old merchant quarters of Kashihara, sake and soy sauce were long brewed in timber townhouses. Kita Sake Brewery, founded in 1718, still brews its Miyokiku sake in Gobo-cho using traditional methods.",
+    "aboutJa": "今井町をはじめとする橿原の古い商家町では、町家の蔵で酒や醤油の醸造が続いてきた。御坊町の喜多酒造は享保3年（1718年）の創業で、いまも伝統製法で「御代菊」を醸す。",
+    "_src": "Kashihara's preserved Edo-period merchant quarters sustained generations of brewers fermenting sake and soy sauce in Yoshino-cedar vats inside lattice-front townhouses."
+   }
+  ]
+ },
+ "places": {
+  "喜多酒造": {
+   "nameEn": "Kita Sake Brewery",
+   "area": "畝傍・橿原神宮",
+   "areaEn": "Unebi & Kashiharajingu",
+   "tags": [
+    "sake"
+   ],
+   "what": "享保3年（1718年）創業の酒蔵。代表銘柄「御代菊」や、伝統の「水もと仕込み」の酒を造る。蔵見学は予約制。",
+   "whatEn": "A sake brewery founded in 1718. It brews its flagship Miyokiku labels and sake made with the traditional mizumoto starter. Brewery visits are by reservation.",
+   "note": "水もと仕込みの純米吟醸を、一本持ち帰りたい。",
+   "noteEn": "I want to take home a bottle of the mizumoto-brewed junmai ginjo.",
+   "_src": {
+    "category": "local",
+    "industry": "machiya-brewing",
+    "nameKana": "きたしゅぞう",
+    "address": "8 Gobo-cho, Kashihara",
+    "url": "https://miyokiku.com/",
+    "whatJa": "享保3年（1718年）創業、橿原神宮の御神酒や代表銘柄「御代菊」を手がける老舗酒蔵。",
+    "whatEn": "An Edo-founded family sake brewery near Unebi that brews sacred sake for Kashihara Jingu alongside its flagship Miyokiku labels.",
+    "facts": "Founded in 1718 (Kyoho 3) in Gobo-cho; brews Miyokiku using Nara basin rice and Yamato underground water, and supplies sacred omiki to Kashihara Jingu.",
+    "weak": "",
+    "verifiedBy": "https://miyokiku.com/news/%e9%85%92%e5%b1%8b%e3%81%bf%e3%82%88%e3%81%8d%e3%81%8f%ef%bc%8f2026gw%e5%96%b6%e6%a5%ad%e6%97%a5%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "喜多酒造本店はカレンダー通りの営業となります。",
+    "fixes": "Address matches 奈良県橿原市御坊町八番地. The official page confirms founding in 1718 and production of 御代菊. The opened pages do not substantiate the Kashihara Jingu sacred-sake claim in whatEn/whatJa, so remove that claim pending a source.",
+    "coords": [
+     34.49071,
+     135.79352
+    ]
+   }
+  },
+  "だんご庄 本店": {
+   "nameEn": "Dangosho Honten",
+   "area": "坊城・真菅",
+   "areaEn": "Bojo & Masuga",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "明治11年（1878年）創業の団子店。唐臼でついた米粉に蜜ときな粉をまぶした手作りのだんごを、店内でお茶とも出している。火曜と第1・第3水曜休み、売り切れ次第終了。",
+   "whatEn": "A dango shop founded in 1878. Handmade rice-flour dumplings coated in house syrup and roasted soybean flour, also served inside with tea. Closed Tuesdays and first and third Wednesdays; closes when sold out.",
+   "note": "きな粉のだんごを、店でお茶と一緒に食べたい。",
+   "noteEn": "Have the kinako dango inside with a cup of tea.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "だんごしょう ほんてん",
+    "address": "860 Higashibojo-cho, Kashihara",
+    "url": "http://dango.kir.jp/",
+    "whatJa": "明治11年（1878年）創業、特製の蜜と挽きたてきな粉をまぶした手作りの「きなこだんご」一筋の老舗。",
+    "whatEn": "An 1878 wagashi shop devoted exclusively to handmade rice-flour skewers coated in house syrup and freshly roasted soybean flour.",
+    "facts": "Founded in 1878 along the old Hatsuse Kaido pilgrim road; pounds Joshinko rice flour daily with a traditional kine pounder and sells only freshly skewered kinako dango (2 local branches total).",
+    "weak": "",
+    "verifiedBy": "https://www.pricey.jp/web/articles/3453",
+    "quote": "『秘密のケンミンショー』や『月曜から夜ふかし』など数多くのテレビ番組でも紹介された大和名物のきなこだんごは、シンプルな材料と手作りにこだわり続けています。",
+    "fixes": "The official shop page confirms the Bojo-station location and the article confirms 1878 founding and handmade kinako dango. Neither opened page gives the street number 860, so that number remains unconfirmed. The article also describes seasonal weekday shaved ice, so remove the absolute exclusively/一筋 wording if it implies nothing else is sold.",
+    "coords": [
+     34.49238,
+     135.76602
+    ]
+   }
+  },
+  "やさい菓子工房 cocoai": {
+   "nameEn": "cocoai",
+   "area": "大和八木",
+   "areaEn": "Yamato-Yagi",
+   "tags": [
+    "sweets"
+   ],
+   "what": "近鉄大和八木駅の駅名店街にある菓子店。白砂糖を使わず、甜菜糖や奈良県産の小麦・米粉、大和野菜を使った焼き菓子やケーキを並べる。",
+   "whatEn": "A pastry shop in the Yamato-Yagi Station arcade. It bakes cakes and cookies with beet sugar, Nara-grown wheat and rice flour, and Yamato vegetables, without white sugar.",
+   "note": "大和やさいサブレの袋を、帰りに一つ選びたい。",
+   "noteEn": "Pick up a bag of Yamato vegetable sablés on the way back.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "やさいがしこうぼう ココアイ",
+    "address": "5-1-13 Naizen-cho, Kashihara",
+    "url": "https://www.cocoai-nara.com/",
+    "whatJa": "てんさい糖やこめ油、大和野菜を使ったやさしい焼き菓子とケーキを手がける大和八木駅前の洋菓子工房。",
+    "whatEn": "A vegetable-forward patisserie at Yamato-Yagi baking cookies, Basque cheesecakes, and tarts with heirloom Yamato vegetables, beet sugar, and rice-bran oil.",
+    "facts": "Operates only two shops in Nara (Yamato-Yagi and Tenri Fukusumi); incorporates local produce such as burdock, komatsuna, and roasted sweet potato into cookies and Basque cheesecakes.",
+    "weak": "",
+    "verifiedBy": "https://www.cocoai-nara.com/news/elementor-10466/",
+    "quote": "10月のマンスリースイーツに、大和橘を使ってみました。",
+    "fixes": "Address matches 奈良県橿原市内膳町5-1-13, 近鉄八木駅名店街内、北側. The official site also lists 北千住店（24時間無人販売） in Tokyo in addition to the two Nara shops, so revise any claim implying only two shops in total. The dated article describes a Yamato-tachibana and nut butter cake.",
+    "coords": [
+     34.5132,
+     135.79297
+    ]
+   }
+  },
+  "THREE MOUNTAIN COFFEE": {
+   "nameEn": "THREE MOUNTAIN COFFEE",
+   "area": "大和八木",
+   "areaEn": "Yamato-Yagi",
+   "tags": [
+    "coffee"
+   ],
+   "what": "大和八木駅近くの近鉄百貨店橿原店、地階の食料品売場にあるコーヒー焙煎所。営業は百貨店に準じ、10時から19時まで。",
+   "whatEn": "A coffee roastery in the basement food floor of Kintetsu Department Store Kashihara, near Yamato-Yagi Station. Open 10 am to 7 pm, following department store hours.",
+   "note": "百貨店の地下で、ドリップバッグを少し買っておく。",
+   "noteEn": "Pick up a few drip bags in the department store basement.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "スリーマウンテン コーヒー",
+    "address": "3-65-11 Kita-Yagi-cho, Kashihara",
+    "url": "https://www.three-mountain-coffee.jp/",
+    "whatJa": "大和三山にちなんで名付けられた、大和八木駅すぐの自家焙煎スペシャルティコーヒー専門店。",
+    "whatEn": "An independent micro-roaster named after the Three Mountains of Yamato, roasting specialty coffee beans in small batches steps from Yamato-Yagi Station.",
+    "facts": "Named after Kashihara's iconic Yamato Sanzan peaks (Unebi, Miminashi, and Kaguyama); roasts specialty-grade beans in-house at its Kashihara roastery counter.",
+    "weak": "Located on the B1 food floor of Kintetsu Department Store Kashihara rather than a street-front shop.",
+    "verifiedBy": "https://www.three-mountain-coffee.jp/news/",
+    "quote": "おかげさまで、３月でスリーマウンテンコーヒーが誕生して8周年を迎える事ができました。",
+    "fixes": "Address should include 近鉄百貨店橿原店 地階食料品売場, 奈良県橿原市北八木町3-65-11, as stated at https://www.three-mountain-coffee.jp/shop/. The site lists both Kashihara and Kusatsu roasteries. Replace the independent-micro-roaster description with an in-store coffee roastery at Kintetsu Department Store.",
+    "coords": [
+     34.51375,
+     135.79415
+    ]
+   }
+  },
+  "ギャラリーカフェ narairo": {
+   "nameEn": "Gallery Cafe narairo",
+   "area": "畝傍・橿原神宮",
+   "areaEn": "Unebi & Kashiharajingu",
+   "tags": [
+    "coffee"
+   ],
+   "what": "橿原神宮前駅の参道沿いにある、築80年超の古民家を改装したギャラリーカフェ。奈良で焙煎した珈琲やブリュレトーストを出し、絵画や陶芸の展示も開く。水・日曜休み。",
+   "whatEn": "A gallery café in a renovated Showa house over 80 years old along the approach from Kashiharajingu-mae Station. It serves Nara-roasted coffee and brûlée toast alongside exhibitions of painting and ceramics. Closed Wednesdays and Sundays.",
+   "note": "展示を見たあとに、ブリュレトーストと珈琲でひと息。",
+   "noteEn": "After looking at the exhibition, pause for brûlée toast and coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ギャラリーカフェ ナライロ",
+    "address": "889-1 Kume-cho, Kashihara",
+    "url": "https://narairo.com/",
+    "whatJa": "橿原神宮の参道沿いに佇む築80年超の昭和古民家を改装し、奈良焙煎の珈琲と企画展示を楽しむギャラリーカフェ。",
+    "whatEn": "A serene gallery cafe in a renovated 80-year-old Showa wooden house along the Kashihara Jingu approach, pouring Nara-roasted specialty coffee beside local art and pottery shows.",
+    "facts": "Two minutes on foot from Kashiharajingu-mae Station; pairs hand-brewed Nara-roasted coffee and signature brulee toast with rotating exhibitions of regional ceramics, painting, and craft.",
+    "weak": "",
+    "verifiedBy": "https://narairo.com/review-tatta/",
+    "quote": "10/15～10/20の期間、TATTAさんによる個展「一度きりの人生」が開催されました。",
+    "fixes": "Address matches 奈良県橿原市久米町889-1 at https://narairo.com/shop-info/. The official article describes a renovated 80-year-old Showa house, gallery and coffee cafe on the shrine approach. No correction to the central description is needed.",
+    "coords": [
+     34.48469,
+     135.79322
+    ]
+   }
+  },
+  "自家焙煎珈琲えんれい": {
+   "nameEn": "Coffee Enrei",
+   "area": "今井町",
+   "areaEn": "Imaicho",
+   "tags": [
+    "coffee"
+   ],
+   "what": "今井町にある自家焙煎珈琲の店。月〜金曜は9時から16時、土日は8時から16時まで開き、水曜休み。",
+   "whatEn": "A house-roasted coffee shop in Imaicho. Open 9 am to 4 pm Monday to Friday, 8 am to 4 pm on weekends; closed Wednesdays.",
+   "note": "今井町を歩く前に、朝ここで珈琲を一杯。",
+   "noteEn": "A morning cup of coffee here before walking Imaicho.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "じかばいせんこーひー えんれい",
+    "address": "1-4-5 Imaicho, Kashihara",
+    "url": "https://www.instagram.com/sakamoto_enrei/",
+    "whatJa": "今井町の東入口に佇む町家風カフェで、店内で丁寧に自家焙煎した雑味のない珈琲と手作りホットサンドを提供。",
+    "whatEn": "A bright machiya-front roastery cafe at the eastern gate of Imaicho serving clean, sweet cups roasted in-house alongside toasted sandwiches and coffee-jelly parfaits.",
+    "facts": "Roasts single-origin and blend beans in-house at the eastern entrance of Imaicho, 3 minutes from Yagi-Nishiguchi Station; sells whole beans to go and serves morning toast and layered coffee parfaits.",
+    "weak": "Instagram-only official web presence.",
+    "verifiedBy": "https://trip.cizz.jp/food/imaicho/",
+    "quote": "自家焙煎珈琲えんれい〜CAFE DE ENREI〜\n〔今井町1丁目4-5〕: 月〜金9:00〜16:00、土日8:00〜16:00で、\n水曜休\n〔DB掲載〕。自家焙煎珈琲の店です。",
+    "fixes": "Address matches 今井町1丁目4-5 in the dated article. That article supports a self-roasted coffee cafe. Toasted sandwiches, coffee-jelly parfaits and the clean/sweet flavour claims are not stated in the readable article and remain unconfirmed.",
+    "coords": [
+     34.50747,
+     135.78955
+    ]
+   }
+  },
+  "農家のオーベルジュ こもれび": {
+   "nameEn": "Auberge Komorebi",
+   "area": "今井町",
+   "areaEn": "Imaicho",
+   "tags": [],
+   "what": "今井町の町家を活かした食事処と宿。奈良の野菜を使ったランチがあり、昼は売り切れることもある。",
+   "whatEn": "A restaurant and inn in a townhouse in Imaicho. It serves vegetable lunches from Nara farms and can sell out at midday.",
+   "note": "今井町の町家で、奈良の野菜の昼ごはんを。",
+   "noteEn": "For a lunch of Nara vegetables in an Imaicho townhouse.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "のうかのオーベルジュ こもれび",
+    "address": "4-10-6 Imaicho, Kashihara",
+    "url": "https://komorebi.asuka-minpaku.com/",
+    "whatJa": "築100年以上の今井町の町家を改修し、奈良県産の無農薬・減農薬野菜を彩り豊かな花籠ランチで供する食事処。",
+    "whatEn": "A century-old Imaicho townhouse restaurant and one-group-a-night auberge serving seasonal low-pesticide Nara vegetables in multi-dish woven-basket lunches.",
+    "facts": "Renovated 100+ year old machiya in Imaicho; known for its seasonal Hanakago basket lunch of Nara farm vegetables and advance-order Asuka wild-boar curry.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/tastyhealthy/entry-12983946711.html",
+    "quote": "資料館でお勧めされた「こもれび」さんに\n行ってみたら完売の看板があったので散策中に\n見かけたら生流茶庭ふる伊音さんに行くことに\nしました😊",
+    "fixes": "The official website's image https://komorebi.asuka-minpaku.com/images/block_3_pc.png confirms 橿原市今井町4-10-6 and overnight accommodation. The dated visitor article reports a sold-out sign at Komorebi. The opened text and inspected image do not substantiate the one-group-per-night or 100-year age claims.",
+    "coords": [
+     34.50754,
+     135.78586
+    ]
+   }
+  },
+  "TRATTORIA 前澤": {
+   "nameEn": "TRATTORIA Maezawa",
+   "area": "大和八木",
+   "areaEn": "Yamato-Yagi",
+   "tags": [
+    "italian"
+   ],
+   "what": "八木町のビルの2階にあるイタリア料理店。地元の飛鳥野菜や大和牛を使い、手打ちの生パスタやピザを出す。水曜休み。",
+   "whatEn": "An Italian restaurant on the second floor of a building in Yagi-cho. It cooks with local Asuka vegetables and Yamato beef, making handmade fresh pasta and pizza. Closed Wednesdays.",
+   "note": "飛鳥野菜のひと皿と、手打ちの生パスタを頼む。",
+   "noteEn": "Order a plate of Asuka vegetables and the handmade fresh pasta.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "トラットリア まえざわ",
+    "address": "1-7-38 Yagi-cho, Kashihara",
+    "url": "http://www.torattoria-maezawa.com/",
+    "whatJa": "旬の鮮魚と奈良の食材を生かしたパスタや名物「雲丹のカルボナーラ」が評判の、八木町のイタリア料理店。",
+    "whatEn": "An intimate chef-run Italian trattoria in Yagi-cho celebrated for seasonal handmade pastas, fresh market seafood, and signature sea-urchin carbonara.",
+    "facts": "Five minutes on foot from Yamato-Yagi Station in historic Yagi-cho; chef-owner focuses on peak-freshness seafood antipasti and rich, made-to-order pasta courses.",
+    "weak": "",
+    "verifiedBy": "https://www.ktv.jp/saturday-yo-idon/261031.html",
+    "quote": "放送日：2026/10/28（水）近畿日本鉄道橿原線・八木西口/後編\n●夫婦揃って永ちゃん大好き♪\n名称：TRATTORIA 前澤（トラットリア マエザワ）",
+    "fixes": "Address should include 2F, as stated on the official homepage, 奈良県橿原市八木町1-7-38 2F. The official page supports fresh ingredients, local Asuka vegetables, A5 female Yamato beef and handmade fresh pasta. Sea-urchin carbonara is not stated there and should be removed from whatEn/whatJa pending a source.",
+    "coords": [
+     34.50975,
+     135.79201
+    ]
+   }
+  },
+  "tomato monkey": {
+   "nameEn": "tomato monkey",
+   "area": "坊城・真菅",
+   "areaEn": "Bojo & Masuga",
+   "tags": [
+    "italian"
+   ],
+   "what": "一町の古民家にある、野菜ソムリエのパスタソース工房とレストラン。奈良県内の野菜を収穫日に加工したソースを売り、金〜日曜の昼は27品目のランチプレートも出す。月・火曜休み（水曜は販売のみ）。",
+   "whatEn": "A pasta-sauce workshop and kominka restaurant run by a vegetable sommelier in Kazu-cho. It sells sauces made from Nara vegetables processed on harvest day and serves a 27-item lunch plate Friday to Sunday. Closed Mondays and Tuesdays; shop sales only on Wednesdays.",
+   "note": "小松菜と柚子胡椒のジェノベーゼを、一本買って帰る。",
+   "noteEn": "Take home a jar of the komatsuna and yuzu-kosho genovese.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "トマトモンキー",
+    "address": "65-1 Kazu-cho, Kashihara",
+    "url": "https://tomatomonkey2021.com/",
+    "whatJa": "野菜ソムリエが古民家で営むパスタソース工房兼レストランで、27品目の奈良野菜プレートや自家製酵母パンが人気。",
+    "whatEn": "A kominka Italian kitchen and small-batch pasta-sauce maker run by a vegetable sommelier, serving 27-item Nara vegetable lunch plates and house natural-yeast bread.",
+    "facts": "Started as an artisanal pasta-sauce maker before opening in a renovated farmhouse in Kazu-cho; serves 27-ingredient local-vegetable plates, domestic-wheat natural-yeast bread, and displays local ceramicists' work.",
+    "weak": "About a 23-minute walk from Kintetsu Bojo Station.",
+    "verifiedBy": "https://tomatomonkey2021.com/2026/09/30/%e3%83%ac%e3%82%b9%e3%83%88%e3%83%a9%e3%83%b3%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%92%e5%a4%89%e6%9b%b4%e3%81%84%e3%81%9f%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/",
+    "quote": "ランチメニュー、カフェメニュー、ディナーメニューを一部変更しております。",
+    "fixes": "Address matches 奈良県橿原市一町65-1. The official site supports a vegetable-sommelier pasta-sauce shop and kominka restaurant using Nara vegetables. The opened pages do not substantiate the specific 27-item plate or house natural-yeast bread. The shop-information page states 坊城駅 徒歩25分.",
+    "coords": [
+     34.47763,
+     135.76145
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "橿原神宮",
+   "nameEn": "Kashihara Jingu",
+   "kind": "sight",
+   "area": "畝傍・橿原神宮",
+   "areaEn": "Unebi & Kashiharajingu",
+   "address": "橿原市久米町934",
+   "url": "https://kashiharajingu.or.jp/",
+   "what": "明治23年（1890年）に畝傍山の東南麓に創建された神宮。第一代神武天皇と皇后を祀り、広い神域の奥に素木造りの社殿が立つ。境内は開門時間中、自由に参拝できる。",
+   "whatEn": "A shrine founded in 1890 at the southeastern foot of Mount Unebi, enshrining Emperor Jimmu and his empress. Plain-wood halls stand inside broad forested grounds, open daily during gate hours.",
+   "coords": [
+    34.4878,
+    135.7885
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kashiharajingu.or.jp/ （令和8年11月のお知らせ・行事あり）および https://www.kashihara-kanko.or.jp/spot/detail.php?sid=S00001",
+   "_coordsSource": "OSM way 1134500300（橿原神宮）"
+  },
+  {
+   "name": "奈良県立橿原考古学研究所附属博物館",
+   "nameEn": "The Museum, Archaeological Institute of Kashihara",
+   "kind": "art",
+   "area": "畝傍・橿原神宮",
+   "areaEn": "Unebi & Kashiharajingu",
+   "address": "橿原市畝傍町50-2",
+   "url": "https://www.kashikoken.jp/museum/",
+   "what": "奈良県内の遺跡からの出土品を展示する県立の考古学博物館。2026年秋は特別展「ウマと馬具」（11月29日まで）を開催。毎週月曜（祝日の場合は翌日）と年末年始は休館。",
+   "whatEn": "The prefectural archaeology museum displaying finds excavated across Nara. In autumn 2026 it holds the special exhibition on horses and horse trappings from the Fujinoki Kofun through November 29. Closed Mondays (or the following day if a holiday) and year-end.",
+   "coords": [
+    34.49217,
+    135.79136
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kashikoken.jp/museum/ （令和8年度秋季特別展 2026.10.3〜11.29、2026年休館日）および assets/inc/footer.html",
+   "_coordsSource": "OSM node 1423058477（奈良県立橿原考古学研究所附属博物館）"
+  },
+  {
+   "name": "今井町伝統的建造物群保存地区",
+   "nameEn": "Imaicho Preservation District",
+   "kind": "sight",
+   "area": "今井町",
+   "areaEn": "Imaicho",
+   "address": "橿原市今井町",
+   "url": "https://www.kashihara-kanko.or.jp/about/imaicho.php",
+   "what": "称念寺を中心に寺内町として始まり、江戸時代には商工業の町として栄えた地区。江戸の町並みが残り、1993年に国の重要伝統的建造物群保存地区に選ばれた。通りは自由に歩ける。",
+   "whatEn": "A quarter that began as a temple town around Shonen-ji and prospered in the Edo period as a merchant town. Its Edo-period townhouses survive, designated a national preservation district in 1993; the streets are open to walk.",
+   "notice": "今井まちなみ交流センター「華甍」は臨時休館中。案内業務は今井まちなみ案内所（今井町3-8-8）で対応。",
+   "noticeEn": "Imaicho Townscape Exchange Center (Hanairaka) is temporarily closed; visitor information is handled at the Imaicho Townscape Information Center (3-8-8 Imaicho).",
+   "coords": [
+    34.50793,
+    135.78981
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kashihara-kanko.or.jp/about/imaicho.php および 2026-10-07 お知らせ https://www.kashihara-kanko.or.jp/topics/detail.php?tid=T0101",
+   "_coordsSource": "OSM node 11323210970（今井町）"
+  },
+  {
+   "name": "藤原宮跡",
+   "nameEn": "Fujiwara Palace Ruins",
+   "kind": "sight",
+   "area": "藤原宮跡",
+   "areaEn": "Fujiwara Palace",
+   "address": "橿原市高殿町・醍醐町ほか",
+   "url": "https://www.kashihara-kanko.or.jp/about/fujiwarakyo.php",
+   "what": "日本初の本格的な都城・藤原京の中心にあった藤原宮の跡で、国の特別史跡。いまは広い野原に季節の花が咲き、大和三山を見渡せる。散策は自由。",
+   "whatEn": "The site of Fujiwara Palace, at the centre of Fujiwara-kyo, Japan's first planned capital, and a special national historic site. Now an open field with seasonal flowers and views of the Three Mountains of Yamato; free to walk.",
+   "coords": [
+    34.50151,
+    135.80706
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.kashihara-kanko.or.jp/about/fujiwarakyo.php",
+   "_coordsSource": "OSM way 426531398（藤原宮跡）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "河合酒造",
+   "verdict": "drop",
+   "reason": "Drop under the requested different-business-page rule. The opened legal notice confirms this is a Yamato-Takada retailer. Its dated 2026 promotion proves that retailer sells 河合酒造 sake, while the specified brewery premises are not established by this page."
+  },
+  {
+   "name": "恒岡醤油醸造本店",
+   "verdict": "drop",
+   "reason": "The opened and downloaded 2026 Architectural Institute of Japan graduation-design PDF, page 2, explicitly says Tsuneoka Shoyu closed last year and that the former brewery is vacant. This overrides the old undated official page."
+  },
+  {
+   "name": "十八製作所",
+   "verdict": "doubt",
+   "reason": "No 2026 date appears in the opened official pages. Workshop announcements give month/day and weekday without a year, which cannot establish 2026 operation."
+  },
+  {
+   "name": "STRANDGADE",
+   "verdict": "doubt",
+   "reason": "The official homepage and store/workshop page contain no dated 2026 operating statement. Their © 2026 footer is excluded."
+  },
+  {
+   "name": "暮らしの隙間",
+   "verdict": "doubt",
+   "reason": "Opened the official studio.site URL with curl, but its visible HTML text was only home. The alternative town-directory page confirms shop details but contains no dated 2026 operating sentence."
+  },
+  {
+   "name": "幸多箱 本店",
+   "verdict": "doubt",
+   "reason": "The readable official online shop has no dated 2026 operating sentence. The linked newer official news site at https://kotabako.jp/news and its 2026 archive timed out in curl, so its search snippets were not accepted as evidence."
+  },
+  {
+   "name": "笑夢空 em.sky",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only an Instagram shell in curl. The alternative town listing provides undated details in a 2022 event site, with no dated 2026 operating sentence."
+  },
+  {
+   "name": "御菓子処 美松",
+   "verdict": "doubt",
+   "reason": "The official website has no dated 2026 operating sentence. Its official Facebook returned an error through curl, and the alternative local news listing returned 403."
+  },
+  {
+   "name": "ベーグルのイマイラージュ",
+   "verdict": "doubt",
+   "reason": "The official homepage's latest dated news is 2025-09-01. No dated 2026 operating sentence could be copied from it."
+  },
+  {
+   "name": "プティ・アルシェ",
+   "verdict": "doubt",
+   "reason": "The official website gives undated opening hours and product descriptions. Its linked Facebook returned an error in curl. No dated 2026 operating sentence was readable."
+  },
+  {
+   "name": "COFFEE ROAST DAICHI",
+   "verdict": "doubt",
+   "reason": "The latest visible official articles are from September 2018. No dated 2026 operating sentence appears in the opened official page."
+  },
+  {
+   "name": "bistro La Fuwaja",
+   "verdict": "doubt",
+   "reason": "The official site contains only undated restaurant information. A Nara Prefecture page showing a 2026 update date was also opened, but its actual article is explicitly from the August 2023 newsletter. It was excluded as evidence of 2026 operation."
+  }
+ ]
+}

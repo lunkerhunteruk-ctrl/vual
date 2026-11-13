@@ -3,14 +3,28 @@
 import type { CityPlace, CitySight, LatitudeCity } from './latitude-places';
 import aizuwakamatsuPlaces from './latitude-places/aizuwakamatsu.json';
 import aizuwakamatsuSights from './latitude-sights/aizuwakamatsu.json';
+import aritaPlaces from './latitude-places/arita.json';
+import aritaSights from './latitude-sights/arita.json';
 import beppuPlaces from './latitude-places/beppu.json';
 import beppuSights from './latitude-sights/beppu.json';
 import chichibuPlaces from './latitude-places/chichibu.json';
 import chichibuSights from './latitude-sights/chichibu.json';
+import echizenPlaces from './latitude-places/echizen.json';
+import echizenSights from './latitude-sights/echizen.json';
+import fujiyoshidaPlaces from './latitude-places/fujiyoshida.json';
+import fujiyoshidaSights from './latitude-sights/fujiyoshida.json';
+import hachinohePlaces from './latitude-places/hachinohe.json';
+import hachinoheSights from './latitude-sights/hachinohe.json';
 import hagiPlaces from './latitude-places/hagi.json';
 import hagiSights from './latitude-sights/hagi.json';
 import hakodatePlaces from './latitude-places/hakodate.json';
 import hakodateSights from './latitude-sights/hakodate.json';
+import hanamakiPlaces from './latitude-places/hanamaki.json';
+import hanamakiSights from './latitude-sights/hanamaki.json';
+import hasamiPlaces from './latitude-places/hasami.json';
+import hasamiSights from './latitude-sights/hasami.json';
+import hitaPlaces from './latitude-places/hita.json';
+import hitaSights from './latitude-sights/hita.json';
 import isePlaces from './latitude-places/ise.json';
 import iseSights from './latitude-sights/ise.json';
 import izumoPlaces from './latitude-places/izumo.json';
@@ -19,26 +33,78 @@ import kagoshimaPlaces from './latitude-places/kagoshima.json';
 import kagoshimaSights from './latitude-sights/kagoshima.json';
 import kakunodatePlaces from './latitude-places/kakunodate.json';
 import kakunodateSights from './latitude-sights/kakunodate.json';
+import karatsuPlaces from './latitude-places/karatsu.json';
+import karatsuSights from './latitude-sights/karatsu.json';
 import kasamaPlaces from './latitude-places/kasama.json';
 import kasamaSights from './latitude-sights/kasama.json';
+import kashiharaPlaces from './latitude-places/kashihara.json';
+import kashiharaSights from './latitude-sights/kashihara.json';
+import kiryuPlaces from './latitude-places/kiryu.json';
+import kiryuSights from './latitude-sights/kiryu.json';
+import kochiPlaces from './latitude-places/kochi.json';
+import kochiSights from './latitude-sights/kochi.json';
 import kurashikiPlaces from './latitude-places/kurashiki.json';
 import kurashikiSights from './latitude-sights/kurashiki.json';
+import kurayoshiPlaces from './latitude-places/kurayoshi.json';
+import kurayoshiSights from './latitude-sights/kurayoshi.json';
+import mashikoPlaces from './latitude-places/mashiko.json';
+import mashikoSights from './latitude-sights/mashiko.json';
 import nagasakiPlaces from './latitude-places/nagasaki.json';
 import nagasakiSights from './latitude-sights/nagasaki.json';
+import nahaPlaces from './latitude-places/naha.json';
+import nahaSights from './latitude-sights/naha.json';
+import narutoPlaces from './latitude-places/naruto.json';
+import narutoSights from './latitude-sights/naruto.json';
+import nichinanPlaces from './latitude-places/nichinan.json';
+import nichinanSights from './latitude-sights/nichinan.json';
+import odawaraPlaces from './latitude-places/odawara.json';
+import odawaraSights from './latitude-sights/odawara.json';
+import omihachimanPlaces from './latitude-places/omihachiman.json';
+import omihachimanSights from './latitude-sights/omihachiman.json';
 import onomichiPlaces from './latitude-places/onomichi.json';
 import onomichiSights from './latitude-sights/onomichi.json';
+import ozuPlaces from './latitude-places/ozu.json';
+import ozuSights from './latitude-sights/ozu.json';
+import sakaiPlaces from './latitude-places/sakai.json';
+import sakaiSights from './latitude-sights/sakai.json';
+import sawaraPlaces from './latitude-places/sawara.json';
+import sawaraSights from './latitude-sights/sawara.json';
+import shiogamaPlaces from './latitude-places/shiogama.json';
+import shiogamaSights from './latitude-sights/shiogama.json';
+import shizuokaPlaces from './latitude-places/shizuoka.json';
+import shizuokaSights from './latitude-sights/shizuoka.json';
+import suwaPlaces from './latitude-places/suwa.json';
+import suwaSights from './latitude-sights/suwa.json';
+import tajimiPlaces from './latitude-places/tajimi.json';
+import tajimiSights from './latitude-sights/tajimi.json';
 import takamatsuPlaces from './latitude-places/takamatsu.json';
 import takamatsuSights from './latitude-sights/takamatsu.json';
 import takaokaPlaces from './latitude-places/takaoka.json';
 import takaokaSights from './latitude-sights/takaoka.json';
 import takayamaPlaces from './latitude-places/takayama.json';
 import takayamaSights from './latitude-sights/takayama.json';
+import tambasasayamaPlaces from './latitude-places/tambasasayama.json';
+import tambasasayamaSights from './latitude-sights/tambasasayama.json';
+import tanabePlaces from './latitude-places/tanabe.json';
+import tanabeSights from './latitude-sights/tanabe.json';
 import tokonamePlaces from './latitude-places/tokoname.json';
 import tokonameSights from './latitude-sights/tokoname.json';
 import tottoriPlaces from './latitude-places/tottori.json';
 import tottoriSights from './latitude-sights/tottori.json';
+import tsubamesanjoPlaces from './latitude-places/tsubamesanjo.json';
+import tsubamesanjoSights from './latitude-sights/tsubamesanjo.json';
 import ujiPlaces from './latitude-places/uji.json';
 import ujiSights from './latitude-sights/uji.json';
+import yamagaPlaces from './latitude-places/yamaga.json';
+import yamagaSights from './latitude-sights/yamaga.json';
+import yamagataPlaces from './latitude-places/yamagata.json';
+import yamagataSights from './latitude-sights/yamagata.json';
+import yamanakaonsenPlaces from './latitude-places/yamanakaonsen.json';
+import yamanakaonsenSights from './latitude-sights/yamanakaonsen.json';
+import yamePlaces from './latitude-places/yame.json';
+import yameSights from './latitude-sights/yame.json';
+import yufuinPlaces from './latitude-places/yufuin.json';
+import yufuinSights from './latitude-sights/yufuin.json';
 
 export const IMPORTED_CITIES: LatitudeCity[] = [
   {
@@ -64,6 +130,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: aizuwakamatsuPlaces as CityPlace[],
     sights: aizuwakamatsuSights as CitySight[],
+  },
+  {
+    slug: "arita",
+    name: "Arita",
+    nameJa: "有田",
+    latitude: "33.2° N",
+    country: "Saga, Japan",
+    countryJa: "佐賀県",
+    person: "rin",
+    coords: [33.187, 129.89],
+    intro: "A porcelain town in the hills of western Saga, where Japanese porcelain began in the early seventeenth century. Family kilns and contemporary tableware shops along the Uchiyama valley and at Arita Sera, with coffee and local food between them: Rin's picks.",
+    introJa: "佐賀県の西の山あいに開けた、日本の磁器発祥の町。内山の通りやアリタセラに並ぶ有田焼の窯元と器の店、その合間の喫茶や食事を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In western Saga · a narrow valley town in the hills", "ja": "佐賀県西部・山あいの細長い谷の町"},
+    industries: [
+      {"key": "arita-porcelain", "en": "Arita Porcelain (Arita-yaki)", "ja": "有田焼", "about": "Porcelain production in Japan began in Arita in the early seventeenth century, after pottery stone was found at Izumiyama. Kilns still work along the valley, making everything from hand-painted sometsuke and overglaze enamels to thin everyday tableware.", "aboutJa": "日本の磁器は、17世紀初めに有田の泉山で陶石が見つかったことから始まった。いまも谷あいの窯元が、手描きの染付や色絵から薄手の普段使いの器まで焼き続けている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: aritaPlaces as CityPlace[],
+    sights: aritaSights as CitySight[],
   },
   {
     slug: "beppu",
@@ -112,6 +199,73 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: chichibuSights as CitySight[],
   },
   {
+    slug: "echizen",
+    name: "Echizen",
+    nameJa: "越前",
+    latitude: "35.9° N",
+    country: "Fukui, Japan",
+    countryJa: "福井県",
+    person: "rin",
+    coords: [35.9033, 136.168],
+    intro: "A craft town in the Takefu basin of Fukui, surrounded by mountains. Echizen washi papermaking in Gokaso, hand-forged cutlery and tansu cabinetry in Takefu, with soba, sweets and coffee in between, as Rin's picks.",
+    introJa: "山に囲まれた福井・武生盆地の手仕事の町。五箇の越前和紙、武生の打刃物と箪笥、その合間に立ち寄るおろしそばと菓子と喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In central Fukui · in the Takefu basin along the Hino river", "ja": "福井県の中ほど・日野川が流れる武生盆地"},
+    industries: [
+      {"key": "echizen-washi", "en": "Echizen Washi Papermaking", "ja": "越前和紙", "about": "Hand-moulded from kozo, mitsumata and gampi fibers for over 1,500 years in the Gokaso valley along the Okamoto river, Echizen washi is a nationally designated traditional craft. Both thin kozo papers for sweets packaging and large art papers are still made by hand.", "aboutJa": "岡太川沿いの五箇地区で1500年以上受け継がれてきた手漉き和紙で、国の伝統的工芸品。楮や三椏、雁皮を原料に、和菓子を包む薄紙から美術紙まで今も手仕事で漉かれる。"},
+      {"key": "echizen-uchihamono", "en": "Echizen Forged Cutlery", "ja": "越前打刃物", "about": "Said to have begun around 700 years ago when the Kyoto swordsmith Chiyozuru Kuniyasu came to Takefu, Echizen cutlery was the first blade craft in Japan designated a Traditional Craft. Makers still forge laminated steel by hand and sharpen kitchen knives.", "aboutJa": "約700年前、京都の刀匠・千代鶴国安が武生に移り住んだのが始まりとされ、刃物産地として日本で初めて国の伝統的工芸品に指定された。今も二枚重ねの鋼を手で鍛えて包丁を打つ。"},
+      {"key": "echizen-tansu", "en": "Echizen Tansu Cabinetry", "ja": "越前箪笥", "about": "Made around Takefu since the late Edo period, Echizen tansu chests join zelkova and paulownia wood without nails, finished with urushi lacquer and hand-worked iron fittings. Workshops today also make smaller wooden pieces for everyday rooms.", "aboutJa": "江戸時代の終わりごろから武生で作られてきた箪笥で、国の伝統的工芸品。釘を使わずに欅や桐を組み、漆塗りと手打ちの金具で仕上げる。今は暮らしに合う小さな木の道具も作る工房がある。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: echizenPlaces as CityPlace[],
+    sights: echizenSights as CitySight[],
+  },
+  {
+    slug: "fujiyoshida",
+    name: "Fujiyoshida",
+    nameJa: "富士吉田",
+    latitude: "35.5° N",
+    country: "Yamanashi, Japan",
+    countryJa: "山梨県",
+    person: "rin",
+    coords: [35.487, 138.807],
+    intro: "A weaving town on the northern slope of Mount Fuji, fed by snowmelt spring water. Linen and jacquard weavers, tableware and vintage shops in Shimoyoshida, and coffee and breakfast places along the old streets: Rin's picks.",
+    introJa: "富士山の北の麓、雪解けの湧水に支えられたハタオリの町。リネンやジャカード織りの機屋、下吉田の暮らしの道具や器の店、古い通りの珈琲と朝ごはんを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "At the northern foot of Mount Fuji · on a volcanic plateau", "ja": "山梨県・富士山の北麓の町"},
+    industries: [
+      {"key": "gunnai-textiles", "en": "Gunnai / Koshu-ori Weaving", "ja": "郡内織物・ハタオリ", "about": "Fujiyoshida has woven textiles using Mount Fuji's snowmelt spring water for over a thousand years, moving from silk Koshu-ori linings and neckties to small-batch linen and jacquard fabrics. Mills such as TENJIN-factory and Hadachu Orimono still weave on shuttle and jacquard looms in town.", "aboutJa": "富士吉田では千年以上にわたり、富士山の雪解けの湧水を使って織物が織られてきた。甲斐絹やネクタイ生地の伝統から、いまはリネンやジャカード織りへと広がり、テンジンファクトリーや羽田忠織物などの機屋が町で織りを続けている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: fujiyoshidaPlaces as CityPlace[],
+    sights: fujiyoshidaSights as CitySight[],
+  },
+  {
+    slug: "hachinohe",
+    name: "Hachinohe",
+    nameJa: "八戸",
+    latitude: "40.5° N",
+    country: "Aomori, Japan",
+    countryJa: "青森県",
+    person: "rin",
+    coords: [40.515, 141.508],
+    intro: "A Pacific port town in eastern Aomori. Sake breweries along the Niida River, Nanbu hishizashi embroidery and Nanbu senbei, plus morning wharf diners and coffee houses in Konakano and Same: Rin's picks.",
+    introJa: "青森県の太平洋側に開けた港町。新井田川沿いの酒蔵、南部菱刺しと南部せんべい、岸壁の食堂や小中野・鮫の珈琲屋を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Pacific coast of Aomori · a port town at the mouth of the Mabechi and Niida rivers", "ja": "青森県の太平洋側・馬淵川と新井田川の河口の港町"},
+    industries: [
+      {"key": "port-brewing", "en": "Port-town Sake Brewing", "ja": "湊町の酒造り", "about": "Cold Pacific winters and local spring water have sustained sake breweries near Hachinohe's port since the late 18th century. Houses such as Hachinohe Shuzo (1775) and Hachinohe Syurui (1786) still brew in historic storehouses.", "aboutJa": "太平洋側の寒い冬と地元の仕込み水が、18世紀末から八戸の港まわりの酒造りを支えてきた。1775年創業の八戸酒造や1786年創業の八戸酒類などが、いまも蔵で酒を醸す。"},
+      {"key": "nanbu-hishizashi", "en": "Nanbu Hishizashi Embroidery", "ja": "南部菱刺し", "about": "Nanbu hishizashi is a counted-thread diamond embroidery from eastern Aomori, once stitched onto hemp workwear for warmth and strength. Alongside Tsugaru koginzashi and Shonai sashiko, it is counted among Japan's three major sashiko traditions.", "aboutJa": "南部菱刺しは青森県南部に伝わる刺し子で、麻の野良着を暖かく丈夫にするために刺されたのが始まり。津軽こぎん刺し、庄内刺し子と並ぶ日本三大刺し子のひとつ。"},
+      {"key": "nanbu-senbei", "en": "Nanbu Senbei Baking", "ja": "南部せんべい", "about": "Round wheat crackers baked in cast-iron molds in the old Nanbu domain, using sesame, peanuts or plain dough. In Hachinohe they are eaten both crisp as a snack and simmered in brothy senbei-jiru.", "aboutJa": "旧南部藩の地域で鉄型を使って焼かれてきた丸い小麦の煎餅で、胡麻や豆、白などの種類がある。八戸ではそのまま食べるほか、汁物に入れて煮込むせんべい汁にも使う。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: hachinohePlaces as CityPlace[],
+    sights: hachinoheSights as CitySight[],
+  },
+  {
     slug: "hagi",
     name: "Hagi",
     nameJa: "萩",
@@ -153,6 +307,73 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: hakodatePlaces as CityPlace[],
     sights: hakodateSights as CitySight[],
+  },
+  {
+    slug: "hanamaki",
+    name: "Hanamaki",
+    nameJa: "花巻",
+    latitude: "39.4° N",
+    country: "Iwate, Japan",
+    countryJa: "岩手県",
+    person: "rin",
+    coords: [39.389, 141.1145],
+    intro: "A hot-spring town in the Kitakami basin, where Kenji Miyazawa lived and wrote. Iwate homespun wool, wooden-vat miso and soy sauce in Towa, Ohasama wine, and downtown coffee and soba: Rin's picks.",
+    introJa: "北上川の盆地にひらけた、宮沢賢治ゆかりの温泉の町。東和の木桶の味噌・醤油と岩手ホームスパン、大迫のワイン、それからまちなかの喫茶とそばを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In central Iwate · along the Kitakami River basin", "ja": "岩手県の中ほど・北上川に沿う盆地の町"},
+    industries: [
+      {"key": "iwate-homespun", "en": "Iwate Homespun Wool Weaving", "ja": "岩手ホームスパン", "about": "Iwate homespun began in the late Meiji era and survives in Hanamaki and Morioka. Wool is hand-dyed, spun by hand, and woven slowly on wooden looms into light, warm cloth.", "aboutJa": "岩手ホームスパンは明治の終わりごろに始まり、花巻と盛岡に受け継がれている毛織物。羊毛を手で染め、手で紡ぎ、木の織機でゆっくりと軽くあたたかな布に織り上げる。"},
+      {"key": "wooden-vat-brewing", "en": "Wooden-Vat Miso & Soy Sauce Brewing", "ja": "木桶仕込みの味噌・醤油醸造", "about": "In Towa, century-old breweries draw soft underground water from Mount Hayachine and ferment Iwate soybeans and grains slowly in wooden cedar vats to make miso and soy sauce.", "aboutJa": "東和町では、早池峰山系のやわらかな伏流水と岩手県産の丸大豆を使い、昔ながらの木桶で時間をかけて味噌や醤油を仕込んでいる。"},
+      {"key": "ohasama-wine", "en": "Ohasama Winemaking", "ja": "大迫ワイン醸造", "about": "At the foot of Mount Hayachine, Ohasama's limestone-rich slopes and wide day-to-night temperature swings have supported winemaking since the post-war era.", "aboutJa": "早池峰山のふもとに位置する大迫町は、石灰質を含む土壌と昼夜の寒暖差を活かし、戦後からワインづくりが続いてきた土地。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: hanamakiPlaces as CityPlace[],
+    sights: hanamakiSights as CitySight[],
+  },
+  {
+    slug: "hasami",
+    name: "Hasami",
+    nameJa: "波佐見",
+    latitude: "33.1° N",
+    country: "Nagasaki, Japan",
+    countryJa: "長崎県",
+    person: "rin",
+    coords: [33.1395, 129.9105],
+    intro: "A pottery town in the hills with more than four hundred years of kiln history. In spring for the pottery market, or in autumn when the terraced fields turn gold: everyday Hasami porcelain shops, bakeries, coffee and dining rooms, as Rin's picks.",
+    introJa: "山あいに窯元の煙突が立つ、400年余りの歴史を持つ焼き物の町。春は陶器まつり、秋は里山の棚田が色づく季節に、普段使いの波佐見焼の店と、パンや珈琲、食堂を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Nagasaki, on Kyushu · in a basin surrounded by hills", "ja": "九州の長崎県・山あいに囲まれた焼き物の町"},
+    industries: [
+      {"key": "hasami-yaki", "en": "Hasami porcelain tableware", "ja": "波佐見焼", "about": "Hasami-yaki has more than four hundred years of history, built on a division of labour across local kilns. Everyday porcelain tableware for Japanese homes is still made here.", "aboutJa": "波佐見焼は400年余りの歴史を持ち、工程ごとの分業で受け継がれてきた。いまも日々の食卓で使う磁器の器が、町内の窯元で作られている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: hasamiPlaces as CityPlace[],
+    sights: hasamiSights as CitySight[],
+  },
+  {
+    slug: "hita",
+    name: "Hita",
+    nameJa: "日田",
+    latitude: "33.3° N",
+    country: "Oita, Japan",
+    countryJa: "大分県",
+    person: "rin",
+    coords: [33.3225, 130.9365],
+    intro: "A basin town in northern Kyushu where three rivers meet, long prosperous as a shogunate territory. Onta ware kilns in the hills, cedar geta and woodenware, and eel, wagashi and coffee in Mamedamachi and Kuma: Rin's picks.",
+    introJa: "九州の北部、三つの川が集まる盆地の町。天領として栄えた豆田町と隈の町に、小鹿田焼の窯元と日田杉の下駄や木工、うなぎや和菓子、喫茶の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In western Oita · a mountain basin where rivers meet", "ja": "大分県西部・山に囲まれた川辺の盆地"},
+    industries: [
+      {"key": "onta-yaki", "en": "Onta ware pottery", "ja": "小鹿田焼", "about": "Folk stoneware made since 1705 in the mountain hamlet of Sarayama. Family kilns crush local clay with stream-driven wooden kara-usu pounders and fire their everyday vessels in communal climbing kilns.", "aboutJa": "1705年から皿山の山あいで作られてきた民陶。川の水で動く木の唐臼で土を砕き、一族の窯元が登り窯で日常の器を焼く。"},
+      {"key": "hita-cedar-geta", "en": "Hita cedar geta and woodwork", "ja": "日田下駄・日田杉木工", "about": "Hita is one of Japan's three major geta-making centres, known for lightweight, richly grained local cedar and cypress. Workshops here shape the timber into clogs, sandals and everyday woodenware.", "aboutJa": "日田は日本三大下駄の産地の一つ。軽くて木目のきれいな地元の杉や桧で、下駄や木のサンダル、暮らしの木工品を作る。"},
+      {"key": "hita-brewing", "en": "Tenryo Hita spring-water brewing", "ja": "日田の醸造（味噌・醤油・酒造り）", "about": "Pure groundwater from the surrounding mountains has sustained miso, soy sauce, sake and shochu makers in Hita since the Edo and Meiji eras.", "aboutJa": "まわりの山々から湧く清らかな地下水をもとに、江戸や明治の頃から味噌や醤油、酒や焼酎の蔵が日田に根づいている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: hitaPlaces as CityPlace[],
+    sights: hitaSights as CitySight[],
   },
   {
     slug: "ise",
@@ -246,6 +467,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: kakunodateSights as CitySight[],
   },
   {
+    slug: "karatsu",
+    name: "Karatsu",
+    nameJa: "唐津",
+    latitude: "33.4° N",
+    country: "Saga, Japan",
+    countryJa: "佐賀県",
+    person: "rin",
+    coords: [33.448, 129.97],
+    intro: "A castle town on the Genkai Sea in northwestern Saga. Karatsu-yaki kilns and tableware shops, cafés and tofu, as Rin’s picks. In November, the floats of Karatsu Kunchi pass through the old castle town.",
+    introJa: "佐賀県北西部、玄界灘に面した城下町。唐津焼の窯元と器の店、喫茶と豆腐の店を、凛のおすすめで。11月は、曳山が旧城下町を巡る唐津くんちの季節。",
+    images: [],
+    locator: {"en": "In northwestern Saga · by Karatsu Bay and the Matsuura River plain", "ja": "佐賀県北西部・唐津湾と松浦川沿いの平野"},
+    industries: [
+      {"key": "karatsu-yaki", "en": "Karatsu ware (Karatsu-yaki)", "ja": "唐津焼", "about": "Pottery begun in the late sixteenth century with techniques brought from the Korean peninsula. Tea ware and everyday plates and bowls are made with attention to the character of the clay and glazes.", "aboutJa": "16世紀末に朝鮮半島から伝わった技術をもとに始まった焼き物。土や釉薬の表情を生かし、茶の湯の道具から日々の食卓の皿や鉢まで作る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: karatsuPlaces as CityPlace[],
+    sights: karatsuSights as CitySight[],
+  },
+  {
     slug: "kasama",
     name: "Kasama",
     nameJa: "笠間",
@@ -265,6 +507,70 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: kasamaPlaces as CityPlace[],
     sights: kasamaSights as CitySight[],
+  },
+  {
+    slug: "kashihara",
+    name: "Kashihara",
+    nameJa: "橿原",
+    latitude: "34.5° N",
+    country: "Nara, Japan",
+    countryJa: "奈良県",
+    person: "rin",
+    coords: [34.5072, 135.788],
+    intro: "A town in the southeastern Nara Basin, set around the Three Mountains of Yamato and the site of Fujiwara-kyo, Japan's first capital. Edo-period townhouses in Imaicho, an 18th-century sake brewery, and sweets, coffee and kitchens across the old quarters, as Rin's picks.",
+    introJa: "奈良盆地の南東部、大和三山と日本最初の都城・藤原京の跡を抱える町。江戸の町並みが残る今井町のほか、18世紀創業の酒蔵、和菓子と洋菓子、珈琲と台所の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In the Nara Basin · surrounded by the Three Mountains of Yamato", "ja": "奈良盆地の南東部・大和三山を望む町"},
+    industries: [
+      {"key": "machiya-brewing", "en": "Machiya Sake & Soy Sauce Brewing", "ja": "町家の酒・醤油醸造", "about": "In Imaicho and the old merchant quarters of Kashihara, sake and soy sauce were long brewed in timber townhouses. Kita Sake Brewery, founded in 1718, still brews its Miyokiku sake in Gobo-cho using traditional methods.", "aboutJa": "今井町をはじめとする橿原の古い商家町では、町家の蔵で酒や醤油の醸造が続いてきた。御坊町の喜多酒造は享保3年（1718年）の創業で、いまも伝統製法で「御代菊」を醸す。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kashiharaPlaces as CityPlace[],
+    sights: kashiharaSights as CitySight[],
+  },
+  {
+    slug: "kiryu",
+    name: "Kiryu",
+    nameJa: "桐生",
+    latitude: "36.4° N",
+    country: "Gunma, Japan",
+    countryJa: "群馬県",
+    person: "rin",
+    coords: [36.4164, 139.34344],
+    intro: "A weaving town at the northern edge of the Kanto Plain, where sawtooth-roof mills still stand along the Watarase River. Kiryu-ori and embroidery workshops, wide himokawa udon, and coffee and sweets in old textile buildings and townhouses, as Rin's picks.",
+    introJa: "関東平野の北端、渡良瀬川沿いにのこぎり屋根の工場が残る織物の町。桐生織と刺繍の工房、幅広のひもかわうどん、古い繊維の建物や町家の喫茶と甘味を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In eastern Gunma · at the foot of the Ashio mountains, on the Watarase River", "ja": "群馬県の東部・渡良瀬川沿い、足尾山地のふもと"},
+    industries: [
+      {"key": "kiryu-textiles", "en": "Kiryu Textiles & Embroidery", "ja": "桐生織・刺繍", "about": "Weaving in Kiryu has a history of over a thousand years, with Kiryu-ori designated a national traditional craft. Today mills in the town still weave silk kimono and obi on jacquard looms, alongside contemporary stoles, household textiles and thread jewelry.", "aboutJa": "桐生の織物は千年以上の歴史があり、桐生織は国の伝統的工芸品。いまも市内の機屋がジャカード織機で絹の着物や帯を織り、暮らしの布小物や糸の装身具も作っている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kiryuPlaces as CityPlace[],
+    sights: kiryuSights as CitySight[],
+  },
+  {
+    slug: "kochi",
+    name: "Kochi",
+    nameJa: "高知",
+    latitude: "33.6° N",
+    country: "Kochi, Japan",
+    countryJa: "高知県",
+    person: "rin",
+    coords: [33.5605, 133.542],
+    intro: "A former castle town of the Tosa domain, with the Kagami River running through it. Autumn is the season for sour citrus. Tosa washi, smoked-bamboo utensils, bonito tataki and coffee around town: Rin’s picks.",
+    introJa: "土佐藩の城下町で、鏡川が流れる町。秋は酢ミカンの季節。土佐和紙と煤竹の道具、鰹のたたきと町の喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Kochi, on Shikoku · the Kagami River and Mount Godaisan", "ja": "四国の高知県・鏡川と五台山のある町"},
+    industries: [
+      {"key": "tosa-washi", "en": "Tosa Washi Papermaking", "ja": "土佐和紙", "about": "Tosa washi is still made in Ino, Kochi Prefecture. Osaki Paper Mill uses kozo and ramie for papers including Kochi-mashi, whose textured surface is suited to Japanese mineral pigments.", "aboutJa": "高知県のいの町では今も土佐和紙が作られている。尾﨑製紙所は楮や苧麻を使い、表面に凹凸があり岩絵具になじむ高知麻紙などを作る。"},
+      {"key": "tosa-takezaiku", "en": "Tosa Bamboo Craft", "ja": "土佐の竹細工", "about": "In the mountains upstream on the Kagami River, TAKETO cuts bamboo and smokes it in a charcoal kiln. The black susutake becomes chopsticks, spoons and tongs that use the bamboo’s natural strength and flexibility.", "aboutJa": "鏡川上流の山あいでは、「竹と」が竹を切り出し、炭窯で燻して煤竹にする。黒くなった竹の強さやしなやかさを生かし、箸やスプーン、トングなどの暮らしの道具を作る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kochiPlaces as CityPlace[],
+    sights: kochiSights as CitySight[],
   },
   {
     slug: "kurashiki",
@@ -289,6 +595,50 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: kurashikiSights as CitySight[],
   },
   {
+    slug: "kurayoshi",
+    name: "Kurayoshi",
+    nameJa: "倉吉",
+    latitude: "35.4° N",
+    country: "Tottori, Japan",
+    countryJa: "鳥取県",
+    person: "rin",
+    coords: [35.4317, 133.825],
+    intro: "A former castle town in central Tottori, at the foot of Mount Utsubuki and along the Tamagawa and Tenjin rivers. Kurayoshi Kasuri weaving, sake breweries and bamboo craft in the red-tiled Shirakabe Dozogun quarter, alongside sweets and morning diners, as Rin’s picks.",
+    introJa: "鳥取県の中部、打吹山のふもとで玉川と天神川が流れる城下町だった町。赤い石州瓦と白壁の土蔵群に残る倉吉絣や酒蔵、竹細工と、町の菓子と食堂・喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In central Tottori · a town at the foot of Mount Utsubuki, along the Tenjin River", "ja": "鳥取県の中部・打吹山のふもと、天神川沿いの町"},
+    industries: [
+      {"key": "kurayoshi-kasuri", "en": "Kurayoshi Kasuri Weaving", "ja": "倉吉絣", "about": "Kurayoshi Kasuri is a hand-tied indigo cotton ikat developed in late-Edo Kurayoshi. Pictorial motifs of flowers, birds, mountains and water are dyed onto the threads and woven on wooden handlooms.", "aboutJa": "倉吉絣は、江戸末期に倉吉で広まった木綿の絵かすり。花や鳥、山や水などの絵柄を糸に染め出し、木製の織り機で一段ずつ手織りする。"},
+      {"key": "sake-brewing", "en": "Kurayoshi Sake Brewing", "ja": "倉吉の酒造り", "about": "Kurayoshi’s sake brewing grew in the merchant townhouses along the Tamagawa river, where Edo- and Meiji-era storehouses and stone bridges still line the water.", "aboutJa": "倉吉の酒造りは、玉川沿いに商家や土蔵が並んだ町筋で続いてきた。石橋と白壁の残る西仲町などに、江戸期築の醸造元がある。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kurayoshiPlaces as CityPlace[],
+    sights: kurayoshiSights as CitySight[],
+  },
+  {
+    slug: "mashiko",
+    name: "Mashiko",
+    nameJa: "益子町",
+    latitude: "36.5° N",
+    country: "Tochigi, Japan",
+    countryJa: "栃木県",
+    person: "rin",
+    coords: [36.465, 140.104],
+    intro: "A pottery town in southeastern Tochigi, where the Kanto Plain meets low wooded hills, known for its spring and autumn pottery markets. Mashiko-yaki kilns and galleries, a local sake brewery, and bakeries and coffeehouses along Jonaizaka and Sayado, as Rin's picks.",
+    introJa: "関東平野の北、栃木県南東部の里山にひらけた焼き物の町で、春と秋には陶器市が立つ。益子焼の窯元とギャラリー、町の造り酒屋、城内坂や道祖土のパンと珈琲の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In southeastern Tochigi · along the Kokai River, among low hills", "ja": "栃木県南東部・小貝川と里山に囲まれた町"},
+    industries: [
+      {"key": "mashiko-yaki", "en": "Mashiko-yaki stoneware", "ja": "益子焼", "about": "Mashiko-yaki began in the late Edo period when Otsuka Keizaburo built a kiln after training in Kasama, and grew by making everyday bowls, jars and teapots for Tokyo. In 1924 the potter Shoji Hamada moved here and, with the mingei movement, gave the town's stoneware its tactile local clay and iron-rich glazes such as persimmon-red and rice-bran white.", "aboutJa": "益子焼は江戸時代末期、笠間で修業した大塚啓三郎が窯を築いたことに始まり、東京に近い日用雑器の産地として育った。1924年に濱田庄司が移住して民藝運動を広め、益子の土味と柿釉や糠白釉などの釉薬が受け継がれている。"},
+      {"key": "mashiko-sake", "en": "Mashiko sake brewing", "ja": "益子の酒造り", "about": "Small-batch sake is brewed in Mashiko using Tochigi-grown rice and groundwater drawn from wells at the foot of the Yamizo hills. Tonoike Shuzoten, founded in 1937 in Hanawa, still brews local labels such as Sanran and Bo:.", "aboutJa": "益子では、栃木の米と八溝山系のふもとの井戸水を使って酒造りが続けられている。1937年に塙で創業した外池酒造店が、いまも「燦爛」や「望」を醸す。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: mashikoPlaces as CityPlace[],
+    sights: mashikoSights as CitySight[],
+  },
+  {
     slug: "nagasaki",
     name: "Nagasaki",
     nameJa: "長崎",
@@ -309,6 +659,118 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: nagasakiPlaces as CityPlace[],
     sights: nagasakiSights as CitySight[],
+  },
+  {
+    slug: "naha",
+    name: "Naha",
+    nameJa: "那覇",
+    latitude: "26.2° N",
+    country: "Okinawa, Japan",
+    countryJa: "沖縄県",
+    person: "rin",
+    coords: [26.214, 127.689],
+    intro: "A port town in southern Okinawa Island, with the culture of the Ryukyu Kingdom. Tsuboya pottery, Shuri textiles and awamori, then market coffee and Okinawa soba: Rin's picks. Winters are mild, a season for walking the lanes and the slopes of Shuri.",
+    introJa: "沖縄本島南部の港町で、琉球王国の文化が残る。壺屋のやちむん、首里の染織と泡盛、それから市場のコーヒーや沖縄そばを、凛のおすすめで。冬も温暖で、路地や首里の坂を歩く旅に。",
+    images: [],
+    locator: {"en": "In southern Okinawa Island · from the Shuri hills to the East China Sea", "ja": "沖縄本島南部・首里の高台から東シナ海へ下る町"},
+    industries: [
+      {"key": "tsuboya-yaki", "en": "Tsuboya-yaki pottery", "ja": "壺屋焼", "about": "Tsuboya developed as a pottery centre in the seventeenth century, when potters gathered here from across Okinawa. Kilns in its lanes still make everyday tableware and shisa guardian figures.", "aboutJa": "壺屋は17世紀に沖縄各地から陶工が集まり、焼物の産地として発展した。路地にある窯元では、今も日々の器やシーサーを作る。"},
+      {"key": "ryukyu-bingata", "en": "Ryukyu bingata & Shuri-ori textiles", "ja": "琉球びんがた・首里織", "about": "Bingata dyeing and Shuri-ori weaving developed around the Ryukyu royal court. Bingata uses stencils or freehand resist patterns; Shuri-ori includes patterned weaves and kasuri, now made into small everyday goods as well as kimono and obi.", "aboutJa": "びんがたと首里織は、琉球王府のおひざ元で育った染めと織り。びんがたは型染めや筒描き、首里織は紋織や絣などの技法があり、今は着物や帯だけでなく、日々使う小物にもなる。"},
+      {"key": "awamori", "en": "Shuri awamori distilling", "ja": "首里の泡盛造り", "about": "Awamori is a spirit distilled from rice fermented with black koji. Under the Ryukyu Kingdom, production was restricted to the three Shuri quarters of Akata, Sakiyama and Torihori; awamori aged for at least three years is called kusu.", "aboutJa": "泡盛は、米を黒麹で発酵させて蒸留する酒。琉球王国では首里の赤田・崎山・鳥堀の三地区に製造が限られ、3年以上熟成した泡盛は古酒（クース）と呼ぶ。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: nahaPlaces as CityPlace[],
+    sights: nahaSights as CitySight[],
+  },
+  {
+    slug: "naruto",
+    name: "Naruto",
+    nameJa: "鳴門",
+    latitude: "34.2° N",
+    country: "Tokushima, Japan",
+    countryJa: "徳島県",
+    person: "rin",
+    coords: [34.16099, 134.54187],
+    intro: "A strait town at the eastern tip of Shikoku, where the whirlpools turn between the Seto Inland Sea and the Kii Channel. Otani-ware kilns in the valley, Awa indigo, Naruchuru udon and sweet-potato sweets, with coffee and seafood along the strait: Rin's picks.",
+    introJa: "瀬戸内海と紀伊水道がぶつかり、渦潮が巻く四国の東端の町。谷あいの大谷焼の窯元と阿波藍、鳴ちゅるうどんと鳴門金時の菓子、海辺の喫茶や魚を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "At the eastern tip of Shikoku · facing the Naruto Strait", "ja": "四国の東端・鳴門海峡に面した町"},
+    industries: [
+      {"key": "otani-ware", "en": "Otani Ware", "ja": "大谷焼", "about": "Otani-yaki began in 1780 in the valley of Otani, and is a nationally designated traditional craft. Iron-rich local clay is thrown into everyday tableware and giant indigo-dyeing vats on a two-person lying-down wheel (nerokuro) and fired in climbing kilns.", "aboutJa": "大谷焼は1780年に大谷の谷で始まり、国の伝統的工芸品に指定されている。鉄分を含む地元の土を使い、二人一組で回す寝ろくろで大きな藍甕から日用の器まで挽き、登り窯で焼く。"},
+      {"key": "awa-indigo", "en": "Awa Indigo Dyeing", "ja": "阿波藍染", "about": "Tokushima's Awa indigo dyeing uses natural sukumo fermented with wood-ash lye, a craft that grew alongside Otani's giant ceramic dyeing vats. Small studios in Naruto still dye cloth and knitwear in deep indigo by hand.", "aboutJa": "徳島の阿波藍染は、藍の葉を発酵させた蒅（すくも）を木灰の灰汁で建てる天然の染め。大谷焼の大きな藍甕とともに育ち、いまも鳴門の小さな工房で布や衣料を手で染めている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: narutoPlaces as CityPlace[],
+    sights: narutoSights as CitySight[],
+  },
+  {
+    slug: "nichinan",
+    name: "Nichinan",
+    nameJa: "日南",
+    latitude: "31.6° N",
+    country: "Miyazaki, Japan",
+    countryJa: "宮崎県",
+    person: "rin",
+    coords: [31.62727, 131.35243],
+    intro: "A town on the Hyuga-nada coast of southern Miyazaki. Obi cedar woodwork and shochu breweries, plus bread, seafood and coffee across Obi's castle town and the ports of Aburatsu and Nango: Rin's picks.",
+    introJa: "宮崎県の南部、日向灘に面した町。飫肥杉の木工と焼酎の蔵、城下町・飫肥と港町・油津や南郷のパンや魚料理、喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Hyuga-nada coast in southern Miyazaki · between forested hills and the sea", "ja": "宮崎県の南部、日向灘沿い・山林と海に挟まれた町"},
+    industries: [
+      {"key": "obi-cedar", "en": "Obi Cedar Woodworking", "ja": "飫肥杉木工", "about": "Obi cedar has been planted in the Obi area since the Edo period as timber for wooden ships, rich in resin and resistant to rot. Today local sawmills and studios shape it into everyday tableware, lunchboxes and furniture.", "aboutJa": "飫肥杉は、江戸時代から木造船の材として飫肥で植えられ、油分が多く腐りにくい。いまも地元の製材所や工房が、器や弁当箱、家具など暮らしの道具を作っている。"},
+      {"key": "nichinan-shochu", "en": "Nichinan Honkaku Shochu", "ja": "日南の本格焼酎", "about": "Nichinan's castle town and port districts are home to historic shochu breweries. Breweries such as Kyoya Shuzo, founded in 1834, still ferment sweet potatoes in large earthen kame jars buried in the floor.", "aboutJa": "日南の城下町や港町には、古い焼酎蔵が残る。1834年創業の京屋酒造のように、土に埋めた大きな甕で芋焼酎を仕込む蔵がいまも続く。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: nichinanPlaces as CityPlace[],
+    sights: nichinanSights as CitySight[],
+  },
+  {
+    slug: "odawara",
+    name: "Odawara",
+    nameJa: "小田原",
+    latitude: "35.3° N",
+    country: "Kanagawa, Japan",
+    countryJa: "神奈川県",
+    person: "rin",
+    coords: [35.25095, 139.15351],
+    intro: "A castle town of the Hojo lords on Sagami Bay, later a post town on the Tokaido. Wooden bowls and yosegi marquetry, harbour fish, sweets and coffee: Rin’s picks. Spring brings cherry blossom to the castle park.",
+    introJa: "相模湾に面した北条氏の城下町で、のちに東海道の宿場町として栄えた町。木の器と寄木細工、港の魚、菓子と珈琲を、凛のおすすめで。春は城址公園に桜が咲く。",
+    images: [],
+    locator: {"en": "In western Kanagawa · between the Hakone mountains and Sagami Bay", "ja": "神奈川県西部・箱根の山地と相模湾のあいだ"},
+    industries: [
+      {"key": "odawara-shikki", "en": "Odawara Lacquerware & Woodturning", "ja": "小田原漆器・木工ろくろ", "about": "Odawara lacquerware begins with wood turned on a lathe, then finished in urushi. Suri-urushi and kijiro finishes show the grain of woods such as zelkova. Workshops still make bowls, trays and plates for daily use.", "aboutJa": "小田原漆器は、ろくろで挽いた木の器に漆を塗る。ケヤキなどの木目を生かす、摺り漆塗りや木地呂塗りが特徴。いまも工房で、普段に使う椀や盆、皿を作っている。"},
+      {"key": "hakone-yosegi", "en": "Yosegi-zaiku Wood Marquetry", "ja": "寄木細工", "about": "Hakone yosegi marquetry combines woods of different colours into geometric patterns. In Hayakawa, Tsuyuki makes boxes and trays with traditional patterns as well as newer designs, including monochrome pieces.", "aboutJa": "箱根寄木細工は、色の違う木を組み合わせて幾何学模様を作る。早川の露木木工所では、伝統模様の箱や盆に加え、白と黒の配色など新しい寄木も作っている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: odawaraPlaces as CityPlace[],
+    sights: odawaraSights as CitySight[],
+  },
+  {
+    slug: "omihachiman",
+    name: "Omihachiman",
+    nameJa: "近江八幡",
+    latitude: "35.1° N",
+    country: "Shiga, Japan",
+    countryJa: "滋賀県",
+    person: "rin",
+    coords: [35.1385, 136.0905],
+    intro: "A former castle town beside Lake Biwa and the Nishinoko reed marshes. Hachiman-gawara roof tiles, hand-sewn leather shoes and turned wooden beads, with wagashi, bread and coffee along the canal and old merchant streets: Rin's picks.",
+    introJa: "琵琶湖と西の湖のほとりに広がる、かつての城下町。八幡瓦や手縫いの八幡靴、木珠の工房、堀や古い町並みの和菓子とパンと珈琲を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Shiga, east of Lake Biwa · a canal town by the reed marshes", "ja": "滋賀県の琵琶湖東岸・水郷と堀の町"},
+    industries: [
+      {"key": "hachiman-gawara", "en": "Hachiman Smoked Clay Roof Tiles", "ja": "八幡瓦", "about": "Ibushi-gawara smoked clay tiles fired along the canal have covered Omihachiman's merchant roofs for centuries. At Kawara Museum, visitors can see how the tiles were made and try firing clay themselves.", "aboutJa": "八幡瓦は、堀のほとりで焼かれてきた銀灰色のいぶし瓦。古い町家の屋根をいまも守り、かわらミュージアムではその歴史を見たり、粘土から焼く体験をしたりできる。"},
+      {"key": "hachiman-gutsu", "en": "Hachiman Hand-Sewn Leather Shoes", "ja": "八幡靴", "about": "Hand-sewn leather shoemaking took root in Omihachiman and grew into a local craft. Makers such as Riverfield near the station still craft made-to-order Hachiman-gutsu leather shoes.", "aboutJa": "八幡靴は、近江八幡に根づいた手縫いの革靴づくり。駅近くのリバーフィールドでは、今も型や革を選んで一足ずつオーダーメイドで仕立てている。"},
+      {"key": "omi-mokuju", "en": "Omi Turned Wooden Rosary & Craft Beads", "ja": "近江木珠", "about": "Omihachiman is known as a centre for turned wooden beads used in Buddhist rosaries. Workshops such as Kawasaki, founded in 1928, cut, turn and finish rare woods in-house.", "aboutJa": "近江木珠は、数珠などに使われる挽き物の木の珠。昭和3年創業のカワサキのように、銘木の木取りから珠挽き、仕上げまでを自社で行う工房が残る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: omihachimanPlaces as CityPlace[],
+    sights: omihachimanSights as CitySight[],
   },
   {
     slug: "onomichi",
@@ -332,6 +794,159 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: onomichiPlaces as CityPlace[],
     sights: onomichiSights as CitySight[],
+  },
+  {
+    slug: "ozu",
+    name: "Ozu",
+    nameJa: "大洲",
+    latitude: "33.5° N",
+    country: "Ehime, Japan",
+    countryJa: "愛媛県",
+    person: "rin",
+    coords: [33.50793, 132.54572],
+    intro: "A former castle town in a basin along the Hiji River. Cedar-vat soy sauce and sake, shigure sweets, and coffee and craft shops in the old merchant streets of Konan and along the river, as Rin's picks.",
+    introJa: "肱川沿いの盆地に開けた、かつての城下町。杉桶の醤油や地酒、銘菓の志ぐれ、肱南の町並みと川辺の喫茶・手仕事の店を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Ehime, on Shikoku · a basin town along the Hiji River", "ja": "四国・愛媛県、肱川沿いの盆地の町"},
+    industries: [
+      {"key": "brewing", "en": "Natural soy sauce, miso, sake & craft brewing", "ja": "醤油・味噌・日本酒・麦酒の醸造", "about": "Fed by soft water from the Hiji River basin and wide inland temperature swings, Ozu's independent breweries ferment cedar-vat soy sauce and miso, handmade sake, and craft beer using local ingredients.", "aboutJa": "肱川流域の水と盆地の寒暖差のもと、大洲では杉桶で仕込む天然醸造の醤油・味噌、手造りの地酒、地元の素材を使ったクラフトビールが造られている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: ozuPlaces as CityPlace[],
+    sights: ozuSights as CitySight[],
+  },
+  {
+    slug: "sakai",
+    name: "Sakai",
+    nameJa: "堺",
+    latitude: "34.6° N",
+    country: "Osaka, Japan",
+    countryJa: "大阪府",
+    person: "rin",
+    coords: [34.57918, 135.47654],
+    intro: "A former free port south of Osaka, framed by Osaka Bay and the Yamato River. Forged knives and incense workshops, centuries-old sweets, and neighbourhood coffee and bowls in Shukuin and Hamadera: Rin's picks.",
+    introJa: "大和川の南、大阪湾に面したかつての自治都市・堺。打刃物と線香の工房、昔からの和菓子、宿院や浜寺の喫茶とごはんを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On Osaka Bay · a flat port town south of the Yamato River", "ja": "大阪湾に面した平野・大和川の南の港町"},
+    industries: [
+      {"key": "knives", "en": "Sakai forged knives", "ja": "堺打刃物", "about": "Forged blade-making in Sakai traces its roots to ironworkers who gathered to build the fifth-century kofun tombs, and later to 16th-century tobacco-cutting knives. Even today, blacksmiths, sharpeners and handle-fitters divide the work, though a few workshops like Ashi Hamono handle every step in-house.", "aboutJa": "堺の打刃物は、5世紀の古墳づくりに集まった鍛冶や、16世紀のたばこ包丁にさかのぼる。いまも鍛冶・研ぎ・柄付けの分業が基本だが、芦刃物製作所のように一貫して手がける工房もある。"},
+      {"key": "incense", "en": "Sakai incense", "ja": "堺線香", "about": "Stick incense in Japan began in 16th-century Sakai, when overseas trade brought aloeswood, sandalwood and medicinal aromatics straight into the port. Makers such as Baieido, founded in 1657, still blend natural fragrant woods here.", "aboutJa": "日本の線香は、16世紀の海外貿易で沈香や白檀などの香木が集まった堺から始まった。1657年創業の梅栄堂のように、天然の香木を調合する老舗がいまも残る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: sakaiPlaces as CityPlace[],
+    sights: sakaiSights as CitySight[],
+  },
+  {
+    slug: "sawara",
+    name: "Sawara",
+    nameJa: "佐原",
+    latitude: "35.9° N",
+    country: "Chiba, Japan",
+    countryJa: "千葉県",
+    person: "rin",
+    coords: [35.8892, 140.498],
+    intro: "A river-port merchant town along the Ono River in northern Chiba. Sake, mirin and sesame-oil makers, old-town sweets and coffee, and household tools along Katori Kaido, as Rin's picks.",
+    introJa: "千葉県の北、小野川のほとりに広がる水運の町。酒と味醂とごま油の老舗、古い町並みの甘味と珈琲、香取街道の荒物屋を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In northern Chiba · a river-port town on the Ono River", "ja": "千葉県の北・小野川沿いの水運の町"},
+    industries: [
+      {"key": "brewing-fermentation", "en": "Sake, Mirin & Soy Sauce Brewing", "ja": "酒・味醂・醤油醸造", "about": "Sawara grew as an Edo-period river port on the Tone and Ono rivers, turning nearby rice harvests and local water into sake, mirin and soy sauce. Breweries such as Baba Honten, Tokun and Shojyo still make them in the old merchant quarter.", "aboutJa": "佐原は江戸時代、利根川と小野川の水運で栄え、周辺の米と土地の水で酒・味醂・醤油を醸してきた。馬場本店酒造や東薫酒造、正上などの蔵元や老舗が、古い町並みのなかに今も残る。"},
+      {"key": "sesame-oil-pressing", "en": "Tamajime Sesame Oil Pressing", "ja": "玉絞め胡麻油製油", "about": "Abumo Oil Mill in Sawara has pressed sesame oil for over three hundred and ninety years using the traditional tamajime method, pressing roasted sesame seeds slowly.", "aboutJa": "佐原の油茂製油は、390余年にわたり古式の「玉絞め」製法でごま油を搾り続けている。焙煎したごまをゆっくり搾ることで、香りのよい一番搾りごま油ができる。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: sawaraPlaces as CityPlace[],
+    sights: sawaraSights as CitySight[],
+  },
+  {
+    slug: "shiogama",
+    name: "Shiogama",
+    nameJa: "塩竈",
+    latitude: "38.3° N",
+    country: "Miyagi, Japan",
+    countryJa: "宮城県",
+    person: "rin",
+    coords: [38.31781, 141.02281],
+    intro: "A port town on Matsushima Bay below Shiogama Shrine. Sake breweries, miso and soy sauce storehouses, and fried kamaboko makers alongside sweets and galleries in Motomachi and the port quarter, as Rin's picks.",
+    introJa: "松島湾に面した、鹽竈神社の門前町であり港町。酒蔵と味噌・醤油の蔵、揚げ蒲鉾の店、それに本町と港まわりの菓子とギャラリーを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On Matsushima Bay · a port town below Shiogama Shrine", "ja": "松島湾に面した、鹽竈神社の門前と港の町"},
+    industries: [
+      {"key": "sake-brewing", "en": "Sake brewing", "ja": "日本酒醸造", "about": "Soft underground water from the hills around Shiogama Shrine and centuries of brewing sacred shrine offerings and sake for the port town made Shiogama a noted sake town in Miyagi. Saura, maker of Urakasumi since 1724, is the birthplace of Kyokai No. 12 yeast.", "aboutJa": "鹽竈神社の丘からの軟水と、御神酒や港町の酒を造ってきた歴史から、塩竈は宮城の酒どころとして知られる。1724年創業の「浦霞」の蔵元・佐浦は、きょうかい12号酵母発祥の蔵。"},
+      {"key": "miso-shoyu", "en": "Miso and soy sauce brewing", "ja": "味噌・醤油醸造", "about": "Brewers of red Sendai miso and soy sauce grew up along the approaches to Shiogama Shrine to serve the port and post town. Oota Yohachiro Shoten, founded in 1845 in Miyamachi, still brews miso and soy sauce in its Taisho- and early-Showa-era buildings.", "aboutJa": "鹽竈神社の門前には、港町と宿場町に向けて仙台味噌や醤油を造る蔵元が育った。宮町の太田與八郎商店は1845年の創業で、大正から昭和初期の蔵と店舗で今も味噌と醤油を醸す。"},
+      {"key": "kamaboko", "en": "Kamaboko fish-cake making", "ja": "蒲鉾製造", "about": "As a fishing port on Matsushima Bay, Shiogama developed a craft of making fish-paste cakes from whitefish surimi. Makers near the harbour still fry kamaboko kneaded with seasonal vegetables.", "aboutJa": "松島湾に臨む漁港として栄えた塩竈では、白身魚のすり身を使った蒲鉾作りが根づいた。港の近くの店では、今も旬の野菜を練り込んだ揚げ蒲鉾を作っている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: shiogamaPlaces as CityPlace[],
+    sights: shiogamaSights as CitySight[],
+  },
+  {
+    slug: "shizuoka",
+    name: "Shizuoka",
+    nameJa: "静岡",
+    latitude: "35.0° N",
+    country: "Shizuoka, Japan",
+    countryJa: "静岡県",
+    person: "rin",
+    coords: [34.97578, 138.38736],
+    intro: "A castle town between the Abe River and Suruga Bay, where craftsmen gathered in Tokugawa Ieyasu’s time. Suruga wood joinery and Shizuoka tea, together with pottery, coffee and sweets across Aoi, Takajo, Mariko and Shimizu, as Rin’s picks.",
+    introJa: "安倍川と駿河湾のあいだに広がる、徳川家康ゆかりの城下町。駿河の指物と静岡茶、葵区・鷹匠・丸子・清水の器と珈琲、菓子を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On Suruga Bay · between the Abe River and the mountains", "ja": "駿河湾に面し・安倍川と山あいのあいだの町"},
+    industries: [
+      {"key": "suruga-joinery", "en": "Suruga Wood Joinery & Sashimono", "ja": "駿河指物・木工", "about": "Suruga sashimono wood joinery grew out of the craftspeople who gathered around Sunpu Castle. In Shizuoka, workshops such as Kichizo still handcraft mulberry-wood joinery, cabinets and everyday wooden wares.", "aboutJa": "駿河指物は、駿府城の築城などに集まった職人たちから始まった木工。静岡では、吉蔵のような工房がいまも島桑の指物や暮らしの調度品を手仕事で作る。"},
+      {"key": "shizuoka-tea", "en": "Shizuoka Green Tea", "ja": "静岡茶", "about": "Shizuoka is one of Japan’s leading tea regions, known for deep-steamed sencha as well as mountain-grown single-origin teas. In town, century-old tea wholesalers such as Chamachi Kinzaburo pair Shizuoka teas with matcha sweets.", "aboutJa": "静岡は日本有数のお茶の産地で、深蒸し煎茶や山間の単一産地のお茶が知られる。街なかでは茶町KINZABUROのような老舗茶問屋の店が、静岡茶と抹茶菓子を出している。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: shizuokaPlaces as CityPlace[],
+    sights: shizuokaSights as CitySight[],
+  },
+  {
+    slug: "suwa",
+    name: "Suwa",
+    nameJa: "諏訪",
+    latitude: "36.0° N",
+    country: "Nagano, Japan",
+    countryJa: "長野県",
+    person: "rin",
+    coords: [36.04679, 138.11628],
+    intro: "A lakeside town in the Nagano basin, on the old Koshu Kaido road. Sake breweries and Shinshu miso houses, shops in rescued old timber buildings, and bread, sweets and unagi around Kamisuwa: Rin's picks.",
+    introJa: "諏訪湖のほとり、旧甲州街道に沿う盆地の町。酒蔵と信州味噌の蔵元、古材を活かした店と暮らしの雑貨、上諏訪まわりのパンと甘味、うなぎを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Nagano · a basin town on Lake Suwa", "ja": "信州の中央・諏訪湖のほとりの盆地"},
+    industries: [
+      {"key": "sake", "en": "Kamisuwa Sake Brewing (Suwa Gokura)", "ja": "酒造り（諏訪五蔵）", "about": "Five sake breweries — Maihime, Reijin, Honkin, Yokobue and Masumi — stand along a 500-metre stretch of the old Koshu Kaido in Kamisuwa. All draw on soft underground water from the Kirigamine highlands.", "aboutJa": "上諏訪の旧甲州街道沿い、わずか500メートルほどの間に、舞姫・麗人・本金・横笛・真澄の五つの酒蔵が並ぶ。いずれも霧ヶ峰の伏流水を仕込み水に使っている。"},
+      {"key": "miso", "en": "Shinshu Miso Brewing", "ja": "信州味噌醸造", "about": "Cold, dry basin winters and clean mountain water made Suwa one of the centres of Shinshu miso. Makers such as Takeya still sell unpasteurised and seasonal miso straight from the lakeside hall.", "aboutJa": "盆地の冷え込む冬と澄んだ山の水が、信州味噌の産地としての諏訪を育てた。湖畔のタケヤ味噌会館では、蔵元ならではの限定味噌も並ぶ。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: suwaPlaces as CityPlace[],
+    sights: suwaSights as CitySight[],
+  },
+  {
+    slug: "tajimi",
+    name: "Tajimi",
+    nameJa: "多治見",
+    latitude: "35.3° N",
+    country: "Gifu, Japan",
+    countryJa: "岐阜県",
+    person: "rin",
+    coords: [35.33488, 137.12516],
+    intro: "A Mino ware town in a basin along the Toki River in southeastern Gifu. Kilns and galleries in Ichinokura and Kokeizan, mosaic-tile and craft shops along Honmachi Oribe Street and in Kasahara, then coffee and sweets: Rin's picks.",
+    introJa: "岐阜県の南東部、土岐川沿いの盆地にある美濃焼の町。市之倉や虎渓山の窯元とギャラリー、本町オリベストリートや笠原のモザイクタイルの店、それに喫茶と和菓子を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In southeastern Gifu · a basin town on the Toki River", "ja": "岐阜県の南東部・土岐川沿いの盆地の町"},
+    industries: [
+      {"key": "mino-ware", "en": "Mino ware ceramics", "ja": "美濃焼", "about": "Tajimi is one of the centres of Mino ware, where kilns in areas such as Ichinokura still make Oribe, Shino and overglaze tableware by hand. Alongside historic kilns like Kobei-gama, founded in 1804, contemporary ceramic studios and Kasahara mosaic-tile workshops continue to work here.", "aboutJa": "多治見は美濃焼の中心地のひとつで、市之倉などの窯元が織部や志野、赤絵の器を手仕事で作っている。1804年開窯の幸兵衛窯のような老舗の窯元と並び、現代の陶磁器工房や笠原のモザイクタイル工房も息づく。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tajimiPlaces as CityPlace[],
+    sights: tajimiSights as CitySight[],
   },
   {
     slug: "takamatsu",
@@ -398,6 +1013,50 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: takayamaSights as CitySight[],
   },
   {
+    slug: "tambasasayama",
+    name: "Tambasasayama",
+    nameJa: "丹波篠山",
+    latitude: "35.1° N",
+    country: "Hyogo, Japan",
+    countryJa: "兵庫県",
+    person: "rin",
+    coords: [35.07408, 135.21778],
+    intro: "A castle town in a basin ringed by the Tamba mountains. Tamba-yaki kilns in the Tachikui valley, black-soybean sweets and bread, soba and coffee in the old town: Rin's picks.",
+    introJa: "丹波の山々に囲まれた盆地の城下町。立杭の里の丹波焼の窯元と、城下町の黒豆の菓子やパン、そばと珈琲を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In eastern Hyogo · a castle town in a mountain basin", "ja": "兵庫県の東部・山あいの盆地にある城下町"},
+    industries: [
+      {"key": "tamba-yaki", "en": "Tamba Ware (Tachikui Pottery)", "ja": "丹波焼（丹波立杭焼）", "about": "One of Japan's Six Ancient Kilns, fired in the Tachikui valley for over eight hundred years. Pots take on natural ash glazes from wood-fired climbing kilns, and the lineage runs from folk-craft tableware to everyday dishes.", "aboutJa": "丹波焼は、日本六古窯のひとつで、立杭の里で800年以上続いてきた焼き物。登り窯の薪の灰が自然にかかる釉薬や、民藝の流れを汲む日常の器が今も作られている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tambasasayamaPlaces as CityPlace[],
+    sights: tambasasayamaSights as CitySight[],
+  },
+  {
+    slug: "tanabe",
+    name: "Tanabe",
+    nameJa: "田辺",
+    latitude: "33.7° N",
+    country: "Wakayama, Japan",
+    countryJa: "和歌山県",
+    person: "rin",
+    coords: [33.732, 135.3805],
+    intro: "A castle town on Tanabe Bay, at the western entrance to the Kumano Kodo. Kishu Binchotan kilns and Nanko-ume orchards in the foothills, nanba-yaki fishcake and sweets in the old town, and coffee along the mountain road, as Rin's picks.",
+    introJa: "田辺湾に面し、熊野古道の入口として栄えた城下町。山あいの紀州備長炭と南高梅の産地、旧城下町のなんば焼と菓子、山道沿いの珈琲を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On the Kii Peninsula, in southern Wakayama · between Tanabe Bay and the Kii Mountains", "ja": "紀伊半島の和歌山県南部・田辺湾と紀伊山地のあいだの町"},
+    industries: [
+      {"key": "kishu-binchotan", "en": "Kishu Binchotan white charcoal", "ja": "紀州備長炭", "about": "Kishu Binchotan is white charcoal fired from ubame oak in Tanabe's Akizugawa valley since the Edo period. Fired at high heat, it rings like metal when tapped and is used for grilling as well as purifying water.", "aboutJa": "紀州備長炭は、江戸時代から田辺・秋津川で焼かれてきたウバメガシの白炭。高温で焼き上げるため叩くと金属のような音がし、料理の火だけでなく水を澄ませるためにも使われる。"},
+      {"key": "kishu-nanko-ume", "en": "Kishu Nanko-ume plums", "ja": "紀州南高梅", "about": "Tanabe's hillsides are the main growing area for thin-skinned Nanko-ume plums. Family orchards pick tree-ripened fruit, cure it in sea salt and sun-dry it on trays over summer.", "aboutJa": "田辺の山の斜面は、皮が薄く果肉の厚い南高梅の産地。梅農家では、熟して落ちた実を塩で漬け、夏のあいだセイロに並べて天日干しにする。"},
+      {"key": "nanba-yaki", "en": "Tanabe nanba-yaki baked fishcake", "ja": "田辺なんば焼", "about": "Nanba-yaki is a square baked fishcake made in the old castle town of Tanabe since the Edo period. Local white fish such as lizardfish is ground and baked rather than steamed until springy and browned.", "aboutJa": "なんば焼は、江戸時代から田辺の城下町で作られてきた四角い焼き蒲鉾。近海のエソなどの白身魚をすり身にし、蒸さずに型に入れて焼き上げるので、弾力があって香ばしい。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tanabePlaces as CityPlace[],
+    sights: tanabeSights as CitySight[],
+  },
+  {
     slug: "tokoname",
     name: "Tokoname",
     nameJa: "常滑",
@@ -443,6 +1102,29 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: tottoriSights as CitySight[],
   },
   {
+    slug: "tsubamesanjo",
+    name: "Tsubame-Sanjo",
+    nameJa: "燕三条",
+    latitude: "37.6° N",
+    country: "Niigata, Japan",
+    countryJa: "新潟県",
+    person: "rin",
+    coords: [37.63264, 138.95575],
+    intro: "Twin manufacturing towns on the Echigo Plain in Niigata, where winter brings heavy snow. Hammered copperware, hand-forged blades and woodcraft workshops, alongside sweets and a restaurant in a converted factory, as Rin's picks.",
+    introJa: "新潟の越後平野に並ぶ、ものづくりのふたつの町。冬は雪深い土地で、鎚起銅器や打刃物、木工の工房と、合間に寄りたい菓子や食堂を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Niigata, on the Echigo Plain · along the Shinano River", "ja": "新潟県の越後平野・信濃川の流域"},
+    industries: [
+      {"key": "metal-vessels", "en": "Hammered copperware and metal tableware", "ja": "鎚起銅器・金属洋食器", "about": "Tsubame workshops have hand-hammered vessels from single sheets of copper since the late Edo period, including Gyokusendo, founded in 1816. Today the town is also known for metal cutlery and tableware.", "aboutJa": "燕では江戸の終わり頃から、一枚の銅板を金鎚で叩いて起こす鎚起銅器が作られてきた。1816年創業の玉川堂がいまも仕事を続け、町には金属の洋食器や器を作る工場も多い。"},
+      {"key": "forged-blades", "en": "Sanjo hand-forged blades and tools", "ja": "三条打刃物・鍛冶", "about": "Sanjo has been a blacksmith town since the mid-17th century, growing from nail-making into knives and tools. Workshops such as Tadafusa and Suwada still forge kitchen knives and nipper-style clippers by hand.", "aboutJa": "三条は1600年代半ばから鍛冶職人が集まった町。和釘づくりから刃物へ広がり、いまもタダフサの包丁や諏訪田製作所のニッパー型爪切りなど、手で鍛える仕事が続く。"},
+      {"key": "fine-woodcraft", "en": "Sanjo fine wood carving and tableware", "ja": "三条木工・銘木箸", "about": "Drawing on temple and shrine woodcarving traditions, Sanjo craftsmen shape dense hardwoods into tableware. Marunao, founded in 1939 as a carving shop, turns ebony and rosewood into finely tapered chopsticks and spoons.", "aboutJa": "寺社彫刻の技をもとに、硬い木を削って食卓の道具を作る仕事が三条に根づく。1939年に彫刻業で創業したマルナオは、黒檀や紫檀から八角箸や匙を削り出す。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tsubamesanjoPlaces as CityPlace[],
+    sights: tsubamesanjoSights as CitySight[],
+  },
+  {
     slug: "uji",
     name: "Uji",
     nameJa: "宇治",
@@ -463,5 +1145,115 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: ujiPlaces as CityPlace[],
     sights: ujiSights as CitySight[],
+  },
+  {
+    slug: "yamaga",
+    name: "Yamaga",
+    nameJa: "山鹿",
+    latitude: "33.0° N",
+    country: "Kumamoto, Japan",
+    countryJa: "熊本県",
+    person: "rin",
+    coords: [33.015, 130.6886],
+    intro: "A hot-spring town in the Kikuchi River basin of northern Kumamoto. Washi lanterns, Kutami persimmon-tannin fans, and koji, sake and chestnut sweets along Buzen Kaido and the surrounding hills, as Rin's picks.",
+    introJa: "熊本県北部、菊池川流域の温泉町。和紙だけで作る山鹿灯籠、来民の渋うちわ、豊前街道と山あいの麹や酒、栗の菓子を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In northern Kumamoto · a hot-spring town in the Kikuchi River basin", "ja": "熊本県北部・菊池川流域の温泉町"},
+    industries: [
+      {"key": "yamaga-toro", "en": "Yamaga paper lanterns", "ja": "山鹿灯籠", "about": "Yamaga lanterns are a nationally designated traditional craft made solely from handmade washi paper and a small amount of paste, with no wood or bamboo frame. Licensed toro-shi artisans cut and join the paper into miniature temples, castles and gold lanterns.", "aboutJa": "山鹿灯籠は国の伝統的工芸品で、木や竹の骨を使わず、和紙と少量の糊だけで作る。灯籠師と呼ばれる職人が、神殿造りや城造り、金灯籠などを組み上げる。"},
+      {"key": "kutami-uchiwa", "en": "Kutami persimmon-tannin fans", "ja": "来民渋うちわ", "about": "Kutami shibu-uchiwa are bamboo-ribbed washi fans coated in aged persimmon tannin (kakishibu), a craft with roughly 400 years of history in Kamoto. Kurikawa Shoten, founded in 1889, still makes them by hand.", "aboutJa": "来民渋うちわは、鹿本町来民に約400年続くうちわ作りで、竹の骨に和紙を貼り、柿渋を塗って仕上げる。1889年創業の栗川商店が、いまも手作業で作り続けている。"},
+      {"key": "koji-brewing", "en": "Buzen Kaido koji and sake brewing", "ja": "豊前街道の麹・醸造文化", "about": "Along Buzen Kaido in the Kikuchi River basin, merchant houses have long made rice koji, miso and sake. Kiya Honten still grows koji in wooden trays, and Chiyonosono Sake Brewery brews junmai sake and Kumamoto's traditional akazake.", "aboutJa": "菊池川流域の豊前街道沿いでは、麹や味噌、酒の造り手が受け継がれてきた。木屋本店は室蓋製法で麹を仕込み、千代の園酒造は純米酒や熊本の伝統酒「赤酒」を醸す。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yamagaPlaces as CityPlace[],
+    sights: yamagaSights as CitySight[],
+  },
+  {
+    slug: "yamagata",
+    name: "Yamagata",
+    nameJa: "山形",
+    latitude: "38.3° N",
+    country: "Yamagata, Japan",
+    countryJa: "山形県",
+    person: "rin",
+    coords: [38.25343, 140.3393],
+    intro: "A former castle town in the Yamagata basin, with Hirashimizu pottery, soba and old confectioners. Autumn colour comes down from Zao to the city gardens; Rin’s picks take in kilns, tableware shops and coffee.",
+    introJa: "山形盆地の城下町で、平清水焼とそば、昔からの菓子店がある。秋は蔵王から街の庭へ紅葉が下りてくる。窯元と器の店、それから喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In inland Tohoku · in the southeastern Yamagata basin", "ja": "東北の内陸・山形盆地の東南部"},
+    industries: [
+      {"key": "hirashimizu-yaki", "en": "Hirashimizu-yaki Pottery", "ja": "平清水焼", "about": "Hirashimizu pottery began in the early nineteenth century at the foot of Mount Chitose. The kilns use local clay containing iron, each developing its own glazes and everyday tableware.", "aboutJa": "平清水焼は、19世紀初めに千歳山のふもとで始まった焼き物。鉄分を含む地元の土を使い、窯元ごとに釉薬を工夫して、普段使いの器を作る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yamagataPlaces as CityPlace[],
+    sights: yamagataSights as CitySight[],
+  },
+  {
+    slug: "yamanakaonsen",
+    name: "Yamanaka Onsen",
+    nameJa: "山中温泉",
+    latitude: "36.2° N",
+    country: "Ishikawa, Japan",
+    countryJa: "石川県",
+    person: "rin",
+    coords: [36.24688, 136.37319],
+    intro: "A hot-spring town in the gorge of the Daishoji River in southern Ishikawa. Yamanaka lacquerware wood-turners and Kutani kilns, alongside wagashi shops, coffee and diners along Yuge Kaido and Kakusenkei Gorge, as Rin's picks.",
+    introJa: "石川県の南、大聖寺川の渓谷に沿った温泉の町。山中漆器の木地屋と九谷焼の窯元、ゆげ街道や鶴仙渓のあたりの菓子と喫茶、食堂を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In southern Ishikawa · a hot-spring town in a river gorge", "ja": "石川県の南・大聖寺川の渓谷に沿った温泉の町"},
+    industries: [
+      {"key": "yamanaka-shikki", "en": "Yamanaka Lacquerware", "ja": "山中漆器", "about": "Yamanaka lacquerware is known for wood-turning on a lathe, cutting the timber vertically along the grain (tategi-dori). With a history of more than 400 years, its workshops turn paper-thin bowls and tea canisters in the damp climate of the gorge.", "aboutJa": "山中漆器は、木を縦の木目で挽く「縦木取り」など、ろくろ挽きの木地で知られる漆器。400年以上の歴史があり、湿度の高い渓谷の町で、薄挽きの椀や茶筒を作る工房が続く。"},
+      {"key": "kutani-yaki", "en": "Kutani Ware", "ja": "九谷焼", "about": "Kutani ware began in the mid-17th century when a kiln was built in Kutani village, upstream from Yamanaka Onsen. It is known for overglaze enamels in five colours—green, yellow, purple, navy blue and red.", "aboutJa": "九谷焼は17世紀半ば、山中温泉の上流にある九谷村に窯を築いたことから始まった磁器。緑・黄・紫・紺青・赤の「九谷五彩」の上絵付けで知られる。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yamanakaonsenPlaces as CityPlace[],
+    sights: yamanakaonsenSights as CitySight[],
+  },
+  {
+    slug: "yame",
+    name: "Yame",
+    nameJa: "八女",
+    latitude: "33.2° N",
+    country: "Fukuoka, Japan",
+    countryJa: "福岡県",
+    person: "rin",
+    coords: [33.20958, 130.5586],
+    intro: "A former castle and merchant town in southern Fukuoka, stretching from the Chikugo plain into the mountains along the Yabe River. Yame tea houses, lantern and Kurume Kasuri workshops, pottery kilns and quiet cafés, as Rin's picks.",
+    introJa: "福岡県の南部、筑後平野から矢部川沿いの山あいへと続く城下町・商家町。八女茶の老舗と提灯・久留米絣の工房、窯元や小さな喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In southern Fukuoka, Kyushu · from river plain to mountain valleys", "ja": "九州の福岡県南部・平野から山あいへ続く町"},
+    industries: [
+      {"key": "yame-tea", "en": "Yame Tea", "ja": "八女茶", "about": "Grown in the mountain valleys along the Yabe River, Yame tea—especially shaded gyokuro—is known for its deep sweetness and umami. In the old merchant quarter of Fukushima, tea houses still roast and blend leaves by hand.", "aboutJa": "矢部川沿いの山あいで育てられる八女茶は、覆いをして作る玉露をはじめ、濃い甘みと旨みで知られる。福島の町並みには、いまも茶葉を焙じて商う茶商が並ぶ。"},
+      {"key": "yame-chouchin", "en": "Yame Paper Lanterns", "ja": "八女提灯", "about": "Yame paper lanterns are a nationally designated traditional craft. Workshops here wind local bamboo into a fine spiral frame and cover it with handmade kozo washi, making both festival lanterns and modern lighting.", "aboutJa": "八女提灯は国の伝統的工芸品。竹ひごをらせん状に組んだ骨組みに手漉きの和紙を貼り、祭礼用の提灯から現代の照明まで手仕事で作られる。"},
+      {"key": "kurume-kasuri", "en": "Kurume Kasuri Indigo Textiles", "ja": "久留米絣", "about": "Woven on shuttle looms across Yame and neighboring Chikugo towns, ikat-dyed cotton kasuri has been used for everyday workwear. Local mills and shops still sell cloth by the metre alongside modern monpe trousers.", "aboutJa": "八女や筑後一帯で織られてきた久留米絣は、先染めの糸で文様を出す木綿織物。いまも織元が反物を量り売りし、現代のもんぺや日常着に仕立てられている。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yamePlaces as CityPlace[],
+    sights: yameSights as CitySight[],
+  },
+  {
+    slug: "yufuin",
+    name: "Yufuin",
+    nameJa: "由布院",
+    latitude: "33.3° N",
+    country: "Oita, Japan",
+    countryJa: "大分県",
+    person: "rin",
+    coords: [33.26568, 131.36001],
+    intro: "A hot-spring town in a basin at the foot of Mount Yufu. Mist rises from Lake Kinrinko on cold mornings; handmade sweets, coffee along Yunotsubo Street, and a kiln on the foothills, as Rin's picks.",
+    introJa: "由布岳のふもとの盆地に広がる温泉の町。冷え込む朝は金鱗湖から霧が立ち、湯の坪街道や駅前、山麓で手づくりの菓子や珈琲、窯元を巡る、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In Oita, on Kyushu · in a mountain basin below Mount Yufu", "ja": "九州の大分県・由布岳のふもとの盆地"},
+    industries: [
+      {"key": "yufuin-preserves-sweets", "en": "Yufuin small-batch preserves and confections", "ja": "由布院の手作りジャム・菓子工房", "about": "Independent kitchens in the Yufuin basin have grown alongside the town's rural inns, cooking local fruit, milk and eggs in small batches into jams, dorayaki and baked sweets.", "aboutJa": "由布院の宿の文化とともに育った小さな菓子やジャムの工房。盆地の果物や牛乳、卵を使い、少量ずつ丁寧に仕込む。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yufuinPlaces as CityPlace[],
+    sights: yufuinSights as CitySight[],
   },
 ];

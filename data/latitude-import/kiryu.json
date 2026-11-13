@@ -1,0 +1,526 @@
+{
+ "slug": "kiryu",
+ "city": {
+  "name": "Kiryu",
+  "nameJa": "桐生",
+  "latitude": "36.4° N",
+  "country": "Gunma, Japan",
+  "countryJa": "群馬県",
+  "person": "rin",
+  "coords": [
+   36.4164,
+   139.34344
+  ],
+  "intro": "A weaving town at the northern edge of the Kanto Plain, where sawtooth-roof mills still stand along the Watarase River. Kiryu-ori and embroidery workshops, wide himokawa udon, and coffee and sweets in old textile buildings and townhouses, as Rin's picks.",
+  "introJa": "関東平野の北端、渡良瀬川沿いにのこぎり屋根の工場が残る織物の町。桐生織と刺繍の工房、幅広のひもかわうどん、古い繊維の建物や町家の喫茶と甘味を、凛のおすすめで。",
+  "locator": {
+   "en": "In eastern Gunma · at the foot of the Ashio mountains, on the Watarase River",
+   "ja": "群馬県の東部・渡良瀬川沿い、足尾山地のふもと"
+  },
+  "industries": [
+   {
+    "key": "kiryu-textiles",
+    "en": "Kiryu Textiles & Embroidery",
+    "ja": "桐生織・刺繍",
+    "about": "Weaving in Kiryu has a history of over a thousand years, with Kiryu-ori designated a national traditional craft. Today mills in the town still weave silk kimono and obi on jacquard looms, alongside contemporary stoles, household textiles and thread jewelry.",
+    "aboutJa": "桐生の織物は千年以上の歴史があり、桐生織は国の伝統的工芸品。いまも市内の機屋がジャカード織機で絹の着物や帯を織り、暮らしの布小物や糸の装身具も作っている。",
+    "_src": "A 1,300-year-old weaving and embroidery hub where over 200 historic sawtooth-roof mills still produce jacquard silks, contemporary stoles, and featherlight thread jewelry."
+   }
+  ]
+ },
+ "places": {
+  "shop & gallery 象": {
+   "nameEn": "shop & gallery Katachi",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "gallery",
+    "cafe"
+   ],
+   "what": "本町一丁目の築130年の平屋で営むギャラリーと喫茶スペース。群馬県内外の作家による企画展を開き、喫茶も楽しめる。",
+   "whatEn": "A gallery and tea space in a 130-year-old single-storey house in Honcho 1-chome. It holds solo and group shows by artists from Gunma and beyond.",
+   "note": "築百三十年の平屋で、展示を見たあとに一服。",
+   "noteEn": "Look at the show in the 130-year-old house, then sit for tea.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "しょっぷあんどぎゃらりーかたち",
+    "address": "1-1-3 Honcho, Kiryu",
+    "url": "https://katachi.gallery/",
+    "whatJa": "本町一丁目の明治期の古民家を改装した、工芸作品や作家の器を展示販売するショップ＆ギャラリー。",
+    "whatEn": "Craft shop and exhibition gallery housed in a renovated Meiji-era townhouse on northern Honcho.",
+    "facts": "Occupies a restored Meiji-era wooden townhouse near Kiryu Tenmangu; hosts rotating solo and group shows of ceramics, woodwork, and contemporary craft alongside a casual engawa-like tea space.",
+    "weak": "",
+    "verifiedBy": "https://katachi.gallery/blog/takanomanabu2026-ec",
+    "quote": "遠方で足を運びづらい方もいらっしゃると思いますのでECサイトでも一部作品の販売を行います。",
+    "fixes": "whatEn/whatJa: The gallery guide describes group and solo exhibitions by artists from Gunma and elsewhere, a cafe space, and selected Kumamoto products. Replace the unsupported ceramics/craft specialization with this description. Address matches 1-1-3 Honcho.",
+    "coords": null
+   }
+  },
+  "器のギャラリー＆旬菜カフェ 自在庵": {
+   "nameEn": "Jizaian",
+   "area": "東久方町・宮本町",
+   "areaEn": "Higashihisakatacho & Miyamotocho",
+   "tags": [
+    "ceramics",
+    "cafe"
+   ],
+   "what": "東久方町の国登録有形文化財・旧金谷家住宅主屋を使った、器のギャラリーと旬菜カフェ。庭を望む座敷で食事や喫茶ができ、備前や唐津などの器も並ぶ。",
+   "whatEn": "A pottery gallery and seasonal cafe inside the former Kanaya residence, a registered tangible cultural property in Higashihisakatacho. Meals and tea look onto the garden, alongside Bizen and Karatsu ceramics.",
+   "note": "庭の見える古い座敷で、備前や唐津の器を眺めたい。",
+   "noteEn": "Look over the Bizen and Karatsu pots from the old tatami room facing the garden.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "うつわのぎゃらりーあんどしゅんさいかふぇじざいあん",
+    "address": "1-1-55 Higashihisakatacho, Kiryu",
+    "url": "https://www.instagram.com/jizaian5133/",
+    "whatJa": "国の登録有形文化財「旧金谷家住宅主屋」を活かした、備前や唐津など作家の器ギャラリー併設の旬菜カフェ。",
+    "whatEn": "Pottery gallery and garden cafe set inside the historic Kanaya residence, a Registered Tangible Cultural Property.",
+    "facts": "Exhibits and sells Bizen, Karatsu, and contemporary Japanese ceramics inside a preserved silk-merchant residence overlooking a Japanese garden, adjacent to the 1920 red-brick sawtooth mill.",
+    "weak": "",
+    "verifiedBy": "https://jhmph0yu4wiv.blog.fc2.com/blog-entry-5375.html",
+    "quote": "自在庵さんにお邪魔してみました。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "藤屋本店": {
+   "nameEn": "Fujiya Honten",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "udon",
+    "himokawa"
+   ],
+   "what": "明治20年（1887年）創業の、本町一丁目のうどん・そば店。桐生名物の幅広なひもかわうどんを、注文を受けてから茹でて出す。月曜と第4火曜休み。",
+   "whatEn": "An udon and soba house in Honcho 1-chome founded in 1887. Its wide-ribbon Kiryu himokawa udon is boiled to order. Closed Mondays and fourth Tuesdays.",
+   "note": "ゆでたての幅広なひもかわを、カレーせいろで。",
+   "noteEn": "Freshly boiled wide himokawa ribbons, with the curry dipping broth.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ふじやほんてん",
+    "address": "1-6-35 Honcho, Kiryu",
+    "url": "https://fujiya-honten.net/",
+    "whatJa": "明治20年（1887年）創業、桐生名物の幅広な「ひもかわうどん」を本町通りで供する老舗うどん店。",
+    "whatEn": "Long-running noodle house founded in 1887 serving Kiryu's signature wide-ribbon himokawa udon.",
+    "facts": "Founded in 1887 (Meiji 20) in the historic Honcho 1-chome district; famous for silky, ribbon-wide himokawa udon served cold with dipping broth or as spicy curry seiro.",
+    "weak": "",
+    "verifiedBy": "https://www.gltjp.com/ja/directory/item/10789/",
+    "quote": "明治20(1887)年創業の老舗うどん店。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "Ju the burger": {
+   "nameEn": "Ju the burger",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "tags": [
+    "burger"
+   ],
+   "what": "本町五丁目のハンバーガー店。つなぎを使わない粗挽き牛肉100％のパティと、表面をパリッと焼いたバンズを合わせる。11:00〜16:00、火・水曜休み。",
+   "whatEn": "A burger shop in Honcho 5-chome pairing 100% coarsely ground beef patties with no filler and crisp-toasted buns. 11:00–16:00, closed Tuesdays and Wednesdays.",
+   "note": "表面を焼いたバンズに、粗挽きのパティをそのまま。",
+   "noteEn": "Coarsely ground beef in a crisp-toasted bun, kept simple.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "じゅーざばーがー",
+    "address": "5-62 Honcho, Kiryu",
+    "url": "https://jutheburger.com/",
+    "whatJa": "本町五丁目の路地に本店を構える、粗挽きビーフ100％パティと香ばしいバンズのクラフトバーガー専門店。",
+    "whatEn": "Kiryu-born craft burger kitchen grilling 100% coarsely chopped beef patties on crisp toasted buns.",
+    "facts": "Founded in Kiryu's Honcho 5-chome (only 2 shops total); sears hand-chopped 100% beef patties with minimal binders and sandwiches them in custom buns toasted crisp on the griddle.",
+    "weak": "",
+    "verifiedBy": "https://tripre.jp/archives/43721",
+    "quote": "会場には、人気ハンバーガー店「Ju the burger」や、「YOLO POP」、「お好み焼き 鉄板　いし川」など全14店が出店します。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "トラットリア バルボン": {
+   "nameEn": "Trattoria Bourbon",
+   "area": "桐生駅周辺",
+   "areaEn": "Kiryu Station Area",
+   "tags": [
+    "italian",
+    "pasta"
+   ],
+   "what": "糸屋通り沿いの永楽町にある一軒家のイタリア料理店。ランチは前菜やパスタ、チーズフォンデュ、手作りケーキなどを出す。火曜定休。",
+   "whatEn": "A standalone Italian trattoria on Itoya-dori in Eirakucho, serving antipasti, pasta, cheese fondue and homemade cakes at lunch. Closed Tuesdays.",
+   "note": "糸屋通りの一軒家で、前菜とパスタの昼ごはん。",
+   "noteEn": "Antipasti and pasta for lunch in the house on Itoya-dori.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "とらっとりあばるぼん",
+    "address": "7-7 Eirakucho, Kiryu",
+    "url": "http://www.bourbon55.com/",
+    "whatJa": "糸屋通り沿いの一軒家で、彩り豊かな前菜盛り合わせや手打ちパスタを供する独立系トラットリア。",
+    "whatEn": "Neighborhood Italian trattoria along historic Itoya-dori known for eight-antipasti plates and house pasta.",
+    "facts": "Opened its Eirakucho standalone house in 2011 on Itoya-dori ('Yarn Merchant Street') near Kiryu Station; beloved locally for generous eight-item antipasti lunch plates and seasonal Gunma vegetables.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/tsubasa82181/entry-12979177937.html",
+    "quote": "富弘美術館へ向かう大人の遠足、お昼は西桐生駅に近いイタリアンの店・トラットリアバルボンさんでいただきました。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "Itoya coffee factory": {
+   "nameEn": "Itoya coffee factory",
+   "area": "仲町・東・菱",
+   "areaEn": "Nakamachi, Higashi & Hishi",
+   "tags": [
+    "coffee",
+    "roastery"
+   ],
+   "what": "仲町の旧繊維関連施設を改装した自家焙煎珈琲店。スペシャルティコーヒーの豆や抽出器具、手作りスイーツを扱う。10:00〜19:00、木曜休み。",
+   "whatEn": "A coffee roastery and cafe in a renovated former textile-testing building in Nakamachi, selling single-origin beans, brewing gear and house sweets. 10:00–19:00, closed Thursdays.",
+   "note": "古い繊維の建物で、浅煎りから深煎りまで豆を選ぶ。",
+   "noteEn": "Pick a bag of beans in the old textile building, light roast or dark.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "いとうやこーひーふぁくとりー",
+    "address": "3-15-20 Nakamachi, Kiryu",
+    "url": "https://itoyacoffee.com/",
+    "whatJa": "旧繊維関連施設の歴史ある建物をリノベーションした、焙煎機を備えた開放的な自家焙煎珈琲カフェ。",
+    "whatEn": "Specialty coffee roastery and cafe inside a spacious renovated former textile-testing facility.",
+    "facts": "Roastery flagship of Kiryu's Itoya Coffee (only 2 shops); serves single-origin specialty beans brewed via espresso, hand drip, or French press alongside coffee soft-serve and a second-floor gallery.",
+    "weak": "",
+    "verifiedBy": "https://www.kiryucci.or.jp/html/kiryufocus/html/cafe_05_itoya.html",
+    "quote": "繊維工業試験場〜ネクタイ屋さんをリノベーションした店内でスペシャルティコーヒーと手作りスイーツをどうぞ！",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "NORRY'S COFFEE": {
+   "nameEn": "NORRY'S COFFEE",
+   "area": "桐生駅周辺",
+   "areaEn": "Kiryu Station Area",
+   "tags": [
+    "coffee",
+    "roastery"
+   ],
+   "what": "JR桐生駅近くの宮前町にあるコーヒースタンド兼ロースタリー。アジア産などのスペシャルティコーヒーを中心に自家焙煎し、豆の販売やハンドドリップを行う。",
+   "whatEn": "A coffee stand and roastery in Miyamaecho near JR Kiryu Station, roasting Asian and other single-origin specialty beans for pour-over and whole-bean sales.",
+   "note": "アジア産の豆をハンドドリップで一杯、駅の近くで。",
+   "noteEn": "A hand-dripped cup of Asian single-origin near the station.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "のーりーずこーひー",
+    "address": "2-8-6 Miyamaecho, Kiryu",
+    "url": "https://www.instagram.com/norryscoffee/",
+    "whatJa": "桐生駅近くの宮前町にある、アジア産などのスペシャルティ豆を丁寧に自家焙煎するコーヒースタンド。",
+    "whatEn": "Sleek black-walled micro-roaster and hand-drip coffee stand steps from Kiryu Station.",
+    "facts": "Independent roaster near JR Kiryu Station known for spotlighting Asian and single-origin specialty beans brewed cup by cup via pour-over, alongside original coffee zines.",
+    "weak": "",
+    "verifiedBy": "https://specialtycoffee.info/cafes/norrys-coffee-kiryu",
+    "quote": "JR桐生駅近くのコーヒースタンド兼ロースタリー。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "Each of Life": {
+   "nameEn": "Each of Life",
+   "area": "新宿・境野・広沢",
+   "areaEn": "Shinjuku, Sakaino & Hirosawa",
+   "tags": [
+    "coffee",
+    "craft"
+   ],
+   "what": "広沢町のスペシャルティコーヒーと手仕事雑貨の店。ホットコーヒーはフレンチプレス・金属フィルター・ペーパーフィルターの3通りから選べる。火曜休み。",
+   "whatEn": "A specialty coffee stand and craft shop in Hirosawacho. Hot coffee can be brewed by French press, metal filter or paper filter, alongside local maker goods. Closed Tuesdays.",
+   "note": "金属フィルターかペーパーか、同じ豆でも淹れ方で選びたい。",
+   "noteEn": "Choose between metal and paper filter for the same beans.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "いーちおぶらいふ",
+    "address": "2-4106 Hirosawacho, Kiryu",
+    "url": "https://eachoflife.com/",
+    "whatJa": "広沢町にある、スペシャルティコーヒーのカフェスタンドを併設した手仕事雑貨・ライフスタイルショップ。",
+    "whatEn": "Specialty coffee stand and craft-minded lifestyle shop pairing single-origin espresso with local maker goods.",
+    "facts": "Serves hand-dripped single-origin coffee and espresso drinks alongside curated tableware and blown glass by Kiryu glassmaker Merhaba (Daisuke Kobayashi).",
+    "weak": "",
+    "verifiedBy": "https://www.eachoflife-shop.com/",
+    "quote": "2026年秋冬シーズンに向けて、各地でPOP UPの開催が決まっています。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "000 ファクトリーショップ（笠盛）": {
+   "nameEn": "Triple O Factory Shop (Kasamori)",
+   "area": "新宿・境野・広沢",
+   "areaEn": "Shinjuku, Sakaino & Hirosawa",
+   "tags": [
+    "embroidery",
+    "accessories"
+   ],
+   "what": "明治10年創業の刺繍会社・笠盛が、三吉町ののこぎり屋根の刺繍工房に併設する直営店。糸だけで作る立体刺繍のアクセサリーが全種類揃う。第1土曜・第3金土のみ通常営業、平日は要予約。",
+   "whatEn": "The factory shop of embroidery maker Kasamori (founded 1877), beside its sawtooth-roof workshop in Miyoshicho. Carries the full line of 000 thread jewelry; open first Saturdays and third Fri–Sat, weekdays by reservation.",
+   "note": "金具のない糸の球体を、手のひらにのせて軽さを確かめる。",
+   "noteEn": "Hold the thread spheres in your palm to feel how light they are without metal.",
+   "_src": {
+    "category": "local",
+    "industry": "kiryu-textiles",
+    "nameKana": "とりぷるおぅふぁくとりーしょっぷ",
+    "address": "1-3-3 Miyoshicho, Kiryu",
+    "url": "https://www.000-triple.com/",
+    "whatJa": "明治10年（1877年）創業の刺繍老舗・笠盛の工場に併設された、糸のみの立体刺繍アクセサリー「000」直営店。",
+    "whatEn": "Factory shop at Kasamori's 1877 embroidery mill selling sculptural jewelry stitched purely from thread.",
+    "facts": "Kasamori was founded in 1877 and launched 000 (Triple O) in 2010; necklaces and earrings are engineered to 0.1 mm precision from silk and cupro thread with zero metal core, making them featherlight.",
+    "weak": "",
+    "verifiedBy": "https://www.000-triple.com/2026/11/09/popup-kashiwatakasimaya/",
+    "quote": "2026年11月18日（水）～11月24日（火）の1週間、柏高島屋 本館3階 ポップアップスペース「ふらりザ・ステージ」にて開催される「メゾンドエフ」POP UP SHOPに、トリプル・オゥも出店いたします！",
+    "fixes": "whatEn/whatJa: The official factory-shop guide confirms the shop at 1-3-3 Miyoshicho adjoins a sawtooth-roof embroidery workshop. It says the factory tour is at Kasamori Park, 3-4-7 Shinjuku, about five minutes away by car; do not conflate the two locations.",
+    "coords": null
+   }
+  },
+  "OLN shop（井清織物）": {
+   "nameEn": "OLN shop (Ise Orimono)",
+   "area": "新宿・境野・広沢",
+   "areaEn": "Shinjuku, Sakaino & Hirosawa",
+   "tags": [
+    "textiles",
+    "obi"
+   ],
+   "what": "境野町の帯の機屋・井清織物が工房に併設する店。ジャカード式シャトル織機で織った天然繊維の帯やバッグ、ストール、ネックウォーマー、麻ふきんなどを置く。平日と第1土曜13:00〜17:00。",
+   "whatEn": "The mill shop of obi weaver Ise Orimono in Sakainocho, selling natural-fibre obi, bags, stoles, neck warmers and linen cloths woven on jacquard shuttle looms. Open weekdays and first Saturdays, 13:00–17:00.",
+   "note": "織機のそばで、麻ふきんやネックウォーマーの手触りをみる。",
+   "noteEn": "Feel the texture of the linen cloths and neck warmers beside the looms.",
+   "_src": {
+    "category": "local",
+    "industry": "kiryu-textiles",
+    "nameKana": "おるんしょっぷいせおりもの",
+    "address": "6-344 Sakainocho, Kiryu",
+    "url": "https://oln2014.jp/",
+    "whatJa": "帯の機屋・井清織物が工房敷地内で営む、現代の暮らしに寄り添うストールや布小物、帯のファクトリーショップ。",
+    "whatEn": "Mill-side shop of weaver Ise Orimono offering contemporary stoles, textiles, and casual obi woven on-site.",
+    "facts": "Operated by traditional Kiryu obi weaver Ise Orimono; produces airy cotton-silk stoles, textured fabrics, and modern hanhaba obi right beside active power looms.",
+    "weak": "",
+    "verifiedBy": "https://note.com/oln_yoshi/n/n82a9a67117bc",
+    "quote": "その期間は土日もすべてOLN shopをオープンしています。",
+    "fixes": "whatEn/whatJa: Official shop guide lists obi, bags, neck warmers and household textile goods, plus kimono and accessories. Replace unconfirmed cotton-silk stoles with these confirmed products. Address matches.",
+    "coords": null
+   }
+  },
+  "泉織物": {
+   "nameEn": "Izumi Orimono",
+   "area": "仲町・東・菱",
+   "areaEn": "Nakamachi, Higashi & Hishi",
+   "tags": [
+    "textiles",
+    "kiryu-ori",
+    "shibori"
+   ],
+   "what": "明治40年（1907年）創業の、東にある桐生織・桐生絞の織元。自社に染場を持ち、糸染めから製織、絞りまで一貫して手がける。通常小売りは行っておらず、見学や購入の機会は事前の確認が要る。",
+   "whatEn": "A Kiryu-ori and Kiryu-shibori kimono workshop in Higashi founded in 1907, handling yarn dyeing, weaving and tie-dyeing under one roof. Not normally open for retail; visits and sales require checking ahead.",
+   "note": "織ってから絞る桐生絞の布目を、近くで見たい。",
+   "noteEn": "Look closely at the weave of Kiryu-shibori, tied and dyed after weaving.",
+   "_src": {
+    "category": "local",
+    "industry": "kiryu-textiles",
+    "nameKana": "いずみおりもの",
+    "address": "5-5-16 Higashi, Kiryu",
+    "url": "http://www.izumi-orimono.co.jp/",
+    "whatJa": "明治40年（1907年）創業、糸染めから製織まで一貫して手掛ける「桐生織」「桐生絞」の織元・工房。",
+    "whatEn": "Meiji-era weaving and tie-dyeing workshop producing traditional Kiryu-ori silk and Kiryu-shibori stoles.",
+    "facts": "Founded in 1907 in the east Kiryu weaving quarter; handles yarn dyeing, shibori tie-dyeing, and weaving under one roof, with an on-site showroom displaying over 200 textiles and stoles (visits by reservation).",
+    "weak": "",
+    "verifiedBy": "https://www.kiryucci.or.jp/html/kiryufocus/html/ori_11_izumi.html",
+    "quote": "通常小売りは行なっていませんので、こんな機会に当社の仕事を見に来てください",
+    "fixes": "whatEn/whatJa: Kiryu-ori and Kiryu-shibori kimono workshop. The 2026 event page says there is normally no retail, and offers reserved factory tours, kimono/obi viewing and limited sales on November 13. Do not imply a routine retail stole shop. Address matches.",
+    "coords": null
+   }
+  },
+  "ベーカリーカフェ レンガ": {
+   "nameEn": "Bakery Cafe Renga",
+   "area": "東久方町・宮本町",
+   "areaEn": "Higashihisakatacho & Miyamotocho",
+   "tags": [
+    "bakery",
+    "cafe"
+   ],
+   "what": "東久方町にある、大正9年（1920年）築の赤レンガ造りのこぎり屋根工場を活かしたベーカリーカフェ。国登録有形文化財の建物の中で焼きたてのパンや喫茶を楽しめる。",
+   "whatEn": "A bakery and cafe in Higashihisakatacho inside a 1920 English-bond red-brick sawtooth-roof mill, a registered tangible cultural property.",
+   "note": "高いのこぎり屋根の下で、焼きたてのパンと珈琲。",
+   "noteEn": "Freshly baked bread and coffee under the high sawtooth roof.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "べーかりーかふぇれんが",
+    "address": "1-1-55 Higashihisakatacho, Kiryu",
+    "url": "https://www.kiryu-renga.jp/",
+    "whatJa": "大正9年（1920年）築の赤レンガ造りのこぎり屋根工場を活用したベーカリーカフェ。",
+    "whatEn": "Artisanal bakery and cafe inside a 1920 red-brick sawtooth-roof textile mill.",
+    "facts": "Housed in a Registered Tangible Cultural Property built in 1920 in English-bond red brick with a classic nokogiri-yane sawtooth roof; bakes nokogiri-roof-shaped pastries, French toast, and raisin loaves.",
+    "weak": "",
+    "verifiedBy": "https://www.wantoko.com/eat/bakery-cafe-renga-kiryu/",
+    "quote": "公式サイトの情報をもとに掲載しています（2026年11月8日時点）。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "わびさびや": {
+   "nameEn": "Wabisabiya",
+   "area": "新宿・境野・広沢",
+   "areaEn": "Shinjuku, Sakaino & Hirosawa",
+   "tags": [
+    "gelato",
+    "sweets"
+   ],
+   "what": "新宿の手作りジェラート専門店。桐生市のとれたての牛乳と和素材・季節の果実を使い、卵を使わずに仕上げる。11:00〜17:00、火・水曜休み。",
+   "whatEn": "A handmade gelateria in Shinjuku making egg-free gelato from fresh local Kiryu milk, Japanese botanicals and seasonal fruit. 11:00–17:00, closed Tuesdays and Wednesdays.",
+   "note": "ほうじ茶や季節の果実のジェラートを、ひとつずつ。",
+   "noteEn": "Roasted green tea and seasonal fruit gelato, one scoop at a time.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "わびさびや",
+    "address": "3-4-49 Shinjuku, Kiryu",
+    "url": "https://www.wabisabiya.jp/",
+    "whatJa": "低温殺菌牛乳や和素材、旬の果実を使い、素材本来の風味を引き出す手作りジェラート専門店。",
+    "whatEn": "Small-batch gelateria crafting Italian-method gelato with local Gunma pasteurized milk and Japanese botanicals.",
+    "facts": "Uses low-temperature pasteurized local milk, Domori chocolate, roasted green tea, and seasonal fruits without artificial emulsifiers, attracting locals year-round.",
+    "weak": "",
+    "verifiedBy": "https://www.kiryucci.or.jp/html/kiryufocus/html/cafe_04_wabisabi.html",
+    "quote": "gelato world tour japanで受賞したヘーゼルナッツほうじ茶ジェラートが人気です。",
+    "fixes": "",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "大川美術館",
+   "nameEn": "Okawa Museum of Art",
+   "kind": "art",
+   "area": "小曾根町",
+   "areaEn": "Ozonemachi",
+   "address": "桐生市小曾根町3-69",
+   "url": "http://www.okawamuseum.jp/",
+   "what": "桐生出身の大川栄二のコレクションをもとに、1989年に水道山の中腹に開館した美術館。松本竣介や野田英夫など日本の近代洋画を中心に収蔵し、市街地を見渡すカフェもある。10:00〜17:00、月曜休み（祝日の場合は翌火曜）。",
+   "whatEn": "Opened in 1989 on the slope of Mount Suido around the collection of Kiryu-born Okawa Eiji, focusing on modern Japanese Western-style painting including Matsumoto Shunsuke and Noda Hideo, with a cafe overlooking the town. 10:00–17:00, closed Mondays.",
+   "coords": [
+    36.41689,
+    139.33386
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "http://www.okawamuseum.jp/ (2026-11-08更新; 企画展「ベン・シャーン ―つたえる手」2026/10/10〜12/13; 住所・時間は /contact.php, /guidance.php)",
+   "_coordsSource": "OSM node 1420710142"
+  },
+  {
+   "name": "桐生市有鄰館",
+   "nameEn": "Kiryu City Yurinkan",
+   "kind": "sight",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "address": "桐生市本町2-6-32",
+   "url": "https://www.city.kiryu.lg.jp/shisetsu/bunka/yuurinkan/1002114.html",
+   "what": "江戸時代から昭和にかけて酒や味噌・醤油の醸造と保管に使われた11棟の蔵群。いまは展示や演劇などの文化施設として公開されている。9:00〜17:00（催物時は21:00まで）、月曜・祝日の翌日休み。",
+   "whatEn": "A complex of eleven Edo-to-Showa storehouses once used for brewing and storing sake, miso and soy sauce, now open for exhibitions and performances. 9:00–17:00 (21:00 on event days), closed Mondays and days after holidays.",
+   "coords": [
+    36.41656,
+    139.34312
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.kiryu.lg.jp/shisetsu/bunka/yuurinkan/1002114.html (令和8年7月24日更新) および 1002917.html (令和8年11月2日更新、令和8年11月・12月行事予定あり)",
+   "_coordsSource": "OSM node 5170550038"
+  },
+  {
+   "name": "織物参考館「紫」",
+   "nameEn": "Textile Reference Museum Yukari",
+   "kind": "art",
+   "area": "仲町・東・菱",
+   "areaEn": "Nakamachi, Higashi & Hishi",
+   "address": "桐生市東4-2-24",
+   "url": "https://www.morihide.jp/",
+   "what": "明治10年創業の森秀織物が1981年に開いた体験型織物博物館。古い織機や染織資料約1,200点を展示し、稼働する織物工場の見学や藍染・手織りの体験もできる。10:00〜16:00、月曜休み。",
+   "whatEn": "A hands-on textile museum opened in 1981 by weaver Morihide Orimono (founded 1877), displaying around 1,200 historic looms and dyeing tools alongside an active weaving mill and indigo-dyeing workshops. 10:00–16:00, closed Mondays.",
+   "coords": [
+    36.4103,
+    139.34471
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.morihide.jp/ (2026.09.10更新) および http://www.morihide.co.jp/yukariNEW/information.html",
+   "_coordsSource": "OSM node 1420713152"
+  },
+  {
+   "name": "桐生新町重要伝統的建造物群保存地区",
+   "nameEn": "Kiryu Shinmachi Preservation District",
+   "kind": "sight",
+   "area": "本町",
+   "areaEn": "Honcho",
+   "address": "桐生市本町1・2丁目、天神町1丁目の一部",
+   "url": "https://www.city.kiryu.lg.jp/kankou/spot/denken/index.html",
+   "what": "約400年前に天満宮を起点に築かれた織物町の町並み。本町一・二丁目を中心に、町家や蔵、のこぎり屋根の工場が当時の敷地割のまま残り、国の重要伝統的建造物群保存地区に選ばれている。散策は自由。",
+   "whatEn": "A historic weaving quarter laid out around 400 years ago from Tenmangu Shrine, preserving townhouses, storehouses and sawtooth-roof mills on their original plots along Honcho 1- and 2-chome. Free to walk.",
+   "coords": [
+    36.41725,
+    139.34338
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.kiryu.lg.jp/kankou/spot/denken/index.html (令和8年9月25日更新)",
+   "_coordsSource": "OSM node 8738550137（本町二丁目）"
+  },
+  {
+   "name": "桐生天満宮",
+   "nameEn": "Kiryu Tenmangu Shrine",
+   "kind": "sight",
+   "area": "天神町",
+   "areaEn": "Tenjincho",
+   "address": "桐生市天神町1-2-1",
+   "url": "https://kiryutenjin.jp/",
+   "what": "桐生新町の起点に位置する桐生広域の総鎮守。産業開発の神・天穂日命と菅原道真公を祀り、本殿などは国の重要文化財に指定されている。開門は日の出頃から日の入頃まで。",
+   "whatEn": "The tutelary shrine at the northern head of Kiryu Shinmachi, dedicated to Ame-no-hohi-no-mikoto and Sugawara no Michizane; its main hall is a national important cultural property. Open roughly sunrise to sunset.",
+   "coords": [
+    36.42184,
+    139.34618
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kiryutenjin.jp/ (公式サイトに開門時間・祭神・重文の記載; 住所は桐生市天神町1-2-1)",
+   "_coordsSource": "OSM way 390462756"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "うつわ・雑貨と喫茶 わだ",
+   "verdict": "drop",
+   "reason": "Official notice announces long-term closure from 2026-09-01, with reopening undecided; latest homepage notice dated 2026-08-31 reiterates closure."
+  },
+  {
+   "name": "食と器 ming",
+   "verdict": "doubt",
+   "reason": "No dated 2026 sentence found. The latest opened article is dated 2023-03-07; an automatically displayed November 2026 calendar alone does not establish dated operation."
+  },
+  {
+   "name": "カーリーテーブル",
+   "verdict": "doubt",
+   "reason": "A dated 2026 event article lists Kali table as an exhibitor, but no complete sentence specifically identifying this shop operating in 2026 was available to copy. Official Instagram returned an unreadable shell; address and South Indian description remain unconfirmed from that page."
+  },
+  {
+   "name": "limpid coffee",
+   "verdict": "doubt",
+   "reason": "Official page confirms roastery/kissaten and address but contains no dated 2026 post or operating sentence; 2023 footer and undated hours are excluded."
+  },
+  {
+   "name": "AZM BASE（PRIRET）",
+   "verdict": "doubt",
+   "reason": "Latest official news is dated 2020-01-01. No readable dated 2026 sentence for this physical shop was found; PRIRET appearances elsewhere do not alone confirm AZM BASE operation."
+  },
+  {
+   "name": "小松屋",
+   "verdict": "doubt",
+   "reason": "Official shop page confirms 4-82 Honcho; homepage confirms handmade hanapan and house-cooked adzuki. The only dated blog notice found is 2018-10-01; no dated 2026 operating sentence found. Do not confuse this shop with the different Komatsuya in Midori."
+  },
+  {
+   "name": "もりの下のパン店",
+   "verdict": "doubt",
+   "reason": "Official website confirms own-cultured yeast and address 2-2689-2 Hishimachi but has no dated 2026 sentence. The 2026 recruitment listing returned a maintenance page, and the 2026 review returned a browser challenge; search snippets were not accepted."
+  }
+ ]
+}

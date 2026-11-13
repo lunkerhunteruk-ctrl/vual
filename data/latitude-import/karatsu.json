@@ -1,0 +1,848 @@
+{
+ "slug": "karatsu",
+ "city": {
+  "name": "Karatsu",
+  "nameJa": "唐津",
+  "latitude": "33.4° N",
+  "country": "Saga, Japan",
+  "countryJa": "佐賀県",
+  "person": "rin",
+  "coords": [
+   33.448,
+   129.97
+  ],
+  "intro": "A castle town on the Genkai Sea in northwestern Saga. Karatsu-yaki kilns and tableware shops, cafés and tofu, as Rin’s picks. In November, the floats of Karatsu Kunchi pass through the old castle town.",
+  "introJa": "佐賀県北西部、玄界灘に面した城下町。唐津焼の窯元と器の店、喫茶と豆腐の店を、凛のおすすめで。11月は、曳山が旧城下町を巡る唐津くんちの季節。",
+  "locator": {
+   "en": "In northwestern Saga · by Karatsu Bay and the Matsuura River plain",
+   "ja": "佐賀県北西部・唐津湾と松浦川沿いの平野"
+  },
+  "industries": [
+   {
+    "key": "karatsu-yaki",
+    "en": "Karatsu ware (Karatsu-yaki)",
+    "ja": "唐津焼",
+    "about": "Pottery begun in the late sixteenth century with techniques brought from the Korean peninsula. Tea ware and everyday plates and bowls are made with attention to the character of the clay and glazes.",
+    "aboutJa": "16世紀末に朝鮮半島から伝わった技術をもとに始まった焼き物。土や釉薬の表情を生かし、茶の湯の道具から日々の食卓の皿や鉢まで作る。",
+    "_src": "Produced since the late 16th century in climbing kilns around Karatsu's clay-rich hills, Karatsu ware is prized across Japan for everyday tableware and tea ceramics that deepen in character with use."
+   }
+  ]
+ },
+ "places": {
+  "隆太窯": {
+   "nameEn": "Ryutagama",
+   "area": "見借",
+   "areaEn": "Mirukashi",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "1974年に中里隆が見借に築いた窯で、中里太亀・健太も作陶する。展示室で作品を選べる。",
+   "whatEn": "A kiln established by Takashi Nakazato in Mirukashi in 1974, where Taki and Kenta Nakazato also make pottery. Works are sold in the showroom.",
+   "note": "形と手触りの違いを、手に取って選びたい。",
+   "noteEn": "I would choose by holding each piece, feeling the shape and texture.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "りゅうたがま",
+    "address": "見借4333-1",
+    "url": "https://ryutagama.com/",
+    "whatJa": "1974年に中里隆が築窯し、現在は親子三世代で作陶を続ける里山の唐津焼窯元・ギャラリー。",
+    "whatEn": "A hillside Karatsu-yaki kiln and showroom founded in 1974 by potter Takashi Nakazato, now run by three generations of the Nakazato family.",
+    "facts": "Visitors can walk freely through the wooded grounds along a mountain stream to see the climbing kiln and workshop. The sunlit second-floor showroom displays everyday plates, bowls, and sake vessels by Takashi, Taki, and Kenta Nakazato.",
+    "weak": "",
+    "verifiedBy": "https://ryutagama.com/",
+    "quote": "２０２６年１２月２８日（月）～２０２７年１月３日（日）の期間、お休みいたします。",
+    "fixes": "",
+    "coords": [
+     33.44304,
+     129.93306
+    ]
+   }
+  },
+  "鏡山窯": {
+   "nameEn": "Kyozangama",
+   "area": "鏡",
+   "areaEn": "Kagami",
+   "tags": [
+    "ceramics",
+    "tea-ware"
+   ],
+   "what": "1969年に井上東也が開いた、鏡山のふもとの唐津焼窯元。土と釉薬を作り、薪窯で焼く工房に、直売のギャラリーを併設する。",
+   "whatEn": "A Karatsu-yaki kiln founded by Toya Inoue in 1969 at the foot of Mount Kagamiyama. Clay and glazes are prepared by hand and the pots are wood-fired; a gallery sells the work.",
+   "note": "絵唐津の器は、まず筆の線を見て選びたい。",
+   "noteEn": "With E-Garatsu, I would choose by looking at the brush lines first.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "きょうざんがま",
+    "address": "鏡4614-1",
+    "url": "https://kyouzan.co.jp/",
+    "whatJa": "1969年に鏡山の麓で開窯した、登り窯と広い展示室を備える唐津焼の窯元。",
+    "whatEn": "A Karatsu-yaki kiln founded in 1969 at the foot of Mount Kagamiyama with a wood-fired climbing kiln and spacious gallery.",
+    "facts": "Founded by Toya Inoue and now led by second-generation potter Koyuki Inoue, the kiln fires traditional E-Garatsu, Chosen-Garatsu, and Madara-Garatsu glazes. Its tatami and table gallery sits in a quiet bamboo-lined garden near the pine grove.",
+    "weak": "",
+    "verifiedBy": "https://kyouzan.co.jp/",
+    "quote": "2026 / 11 / 10 １１月の店休日",
+    "fixes": "Page confirms opened 1969 by 井上東也, run by 井上東也・井上公之.",
+    "coords": [
+     33.43543,
+     130.01481
+    ]
+   }
+  },
+  "ギャラリー一番館": {
+   "nameEn": "Gallery Ichibankan",
+   "area": "呉服町",
+   "areaEn": "Gofukumachi",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "呉服町の、唐津焼と有田焼を扱う店。1階は器の店、2階は作家の個展などを開くギャラリー。",
+   "whatEn": "A shop for Karatsu and Arita ware in Gofukumachi. Tableware on the ground floor, with a gallery upstairs for potters’ exhibitions.",
+   "note": "普段の食卓に使う皿を、一枚ずつ選びたい。",
+   "noteEn": "I would choose plates one at a time for the everyday table.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぎゃらりーいちばんかん",
+    "address": "呉服町1807",
+    "url": "https://www.1bankan.com/",
+    "whatJa": "呉服町通りに店を構える、巨匠から若手まで多彩な唐津焼作家の器を扱う専門店・ギャラリー。",
+    "whatEn": "A long-standing ceramics shop and upstairs gallery on Gofukumachi street carrying works by veteran and emerging Karatsu-yaki potters.",
+    "facts": "Located a few minutes' walk from JR Karatsu Station, it sells pieces at kiln-direct prices. The first floor stocks daily tableware and sake cups, while the second-floor gallery hosts solo and group exhibitions.",
+    "weak": "",
+    "verifiedBy": "https://www.1bankan.com/",
+    "quote": "2026.10.31 「唐津　石井義久　新作展」より13点入荷しました。",
+    "fixes": "Page lists the shop 呉服町1807 1F (器の店) and GALLERY 一番館 on 2F, matching the address.",
+    "coords": [
+     33.44802,
+     129.96885
+    ]
+   }
+  },
+  "monohanako": {
+   "nameEn": "monohanako",
+   "area": "見借",
+   "areaEn": "Mirukashi",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "唐津とアメリカのメイン州で作陶する中里花子のショールーム。見借で皿や鉢を扱い、営業日は公式Instagramで知らせる。",
+   "whatEn": "The showroom of Hanako Nakazato, who works in Karatsu and Maine, USA. Plates and bowls in Mirukashi; opening days are posted on the official Instagram.",
+   "note": "楕円の鉢に、何を盛るか考えながら選びたい。",
+   "noteEn": "I would choose an oval bowl while thinking about what to serve in it.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ものはなこ",
+    "address": "見借4838-20",
+    "url": "https://www.monohanako.com/",
+    "whatJa": "陶芸家・中里花子が唐津の土と向き合い、現代の食卓に馴染む軽やかな器を生み出す工房・ショールーム。",
+    "whatEn": "The hillside studio and showroom of potter Hanako Nakazato, creating modern everyday tableware rooted in Karatsu clay traditions.",
+    "facts": "Splitting her time between Karatsu and Maine, Hanako Nakazato shapes clean, understated plates, mugs, and bowls that pair with both Japanese and Western food. Her studio sits in the quiet Mikari hills near her father's Ryutagama kiln.",
+    "weak": "",
+    "verifiedBy": "https://www.monohanako.com/exhibitions",
+    "quote": "AMAHARE October 16~26, 2026 TOKYO",
+    "fixes": "Address on page: 4838-20 Mirukashi (見借), Karatsu, Saga, matches. Site is an online shop (Karatsu and Maine addresses); page does not mention a showroom, so whatEn/whatJa 'showroom' is not confirmed.",
+    "coords": [
+     33.43325,
+     129.92613
+    ]
+   }
+  },
+  "ムローメ アートショールーム": {
+   "nameEn": "Murome Art Showroom",
+   "area": "町田",
+   "areaEn": "Choda",
+   "tags": [
+    "glass",
+    "metalwork"
+   ],
+   "what": "町田の、フュージングガラスと彫金の企画展を開く工房兼ギャラリー。常設展示はなく、春と秋の会期中だけ開場する。",
+   "whatEn": "A studio and gallery in Choda holding exhibitions of fused glass and metalwork. No permanent display; it opens only during its spring and autumn shows.",
+   "note": "ガラスのランプは、灯りの色まで見て選びたい。",
+   "noteEn": "I would choose a glass lamp by the colour of its light, too.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "むろーめあーとしょーるーむ",
+    "address": "町田3-11-46",
+    "url": "https://web.people-i.ne.jp/~murome/",
+    "whatJa": "町田エリアにある、吹きガラスや創作ガラスの器・オブジェを展示販売するガラス工房ショールーム。",
+    "whatEn": "An independent glass art studio and showroom in Machida displaying blown and kiln-worked glassware alongside small craft objects.",
+    "facts": "Set in a potter's neighborhood better known for clay, this studio offers colorful handmade glasses, vases, and seasonal glasswork. Visitors can browse one-off pieces made in the adjoining workshop.",
+    "weak": "",
+    "verifiedBy": "https://web.people-i.ne.jp/~murome/",
+    "quote": "『 久保田トシ子 の ガラスランプ展 』 2026. 11. 19 (木) － 12. 13 (日) 会期中無休 Open am 11:00 － pm 6:00",
+    "fixes": "Map page: fusing-glass studio and gallery (est. 1984, showroom added 1999), open only during exhibitions in spring and autumn, no permanent display; also shows metalwork (彫金). So 'blown glass' and 'visitors can browse one-off pieces anytime' are not supported. Address 町田3-11-46 not seen on pages fetched.",
+    "coords": [
+     33.44199,
+     129.9694
+    ]
+   }
+  },
+  "元祖 伊藤けえらん": {
+   "nameEn": "Ganso Ito Keeran",
+   "area": "浜玉町浜崎",
+   "areaEn": "Hamatama-machi Hamasaki",
+   "tags": [
+    "wagashi"
+   ],
+   "what": "浜崎銘菓「けえらん」を作る和菓子店。県産うるち米の蒸した生地で餡を巻き、保存料は使わない。",
+   "whatEn": "A wagashi shop making keeran, a Hamasaki sweet. Steamed dough made from prefecture-grown rice is wrapped around bean paste, without preservatives.",
+   "note": "県産米の生地で巻いたけえらんを、おやつに選ぶ。",
+   "noteEn": "For a snack, I would choose keeran wrapped in dough made from local rice.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "がんそいとうけえらん",
+    "address": "浜玉町浜崎943",
+    "url": "https://www.ganso-itokeeran.jp/",
+    "whatJa": "虹の松原の東側・浜崎で代々受け継がれる、しっとりした米粉生地でこし餡を巻いた伝統銘菓「けえらん」の老舗。",
+    "whatEn": "A historic wagashi shop near Nijino Matsubara hand-making keeran, soft steamed rice-flour cakes wrapped around smooth red bean paste.",
+    "facts": "Legend links keeran to Toyotomi Hideyoshi's 16th-century visit to nearby Suwa Shrine, when locals offered the rice cake for victory. Made without preservatives from Saga Uruchi rice, they are meant to be eaten fresh the day they are bought.",
+    "weak": "",
+    "verifiedBy": "https://www.ganso-itokeeran.jp/",
+    "quote": "2026.01.01 あけましておめでとうございます！元旦から営業しております！",
+    "fixes": "Page also has 2026.03.15 notice of mail address change. Page says open every day all year and sells online. Legend: Hideyoshi prayed for victory at Suwa Shrine in Hamasaki, and the name comes from 'not going home'. Rice is described as prefecture-grown uruchi rice. Address 浜玉町浜崎943 not checked on page.",
+    "coords": [
+     33.44849,
+     130.03948
+    ]
+   }
+  },
+  "Tea & Space 基幸庵": {
+   "nameEn": "Tea & Space Kikouan",
+   "area": "東唐津",
+   "areaEn": "Higashi-Karatsu",
+   "tags": [
+    "matcha",
+    "wagashi",
+    "craft"
+   ],
+   "what": "東唐津の舞鶴橋のたもとにある、喫茶と民藝品の店。唐津焼の器で抹茶と和生菓子、季節の甘味を出す。",
+   "whatEn": "A tea room and folk-craft shop beside Maizuru Bridge in Higashi-Karatsu. Matcha and fresh wagashi in Karatsu ware, with seasonal sweets.",
+   "note": "器を見たあとは、抹茶と和生菓子の盆にする。",
+   "noteEn": "After looking at the crafts, I would order the matcha and fresh wagashi tray.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "てぃーあんどすぺーすきこうあん",
+    "address": "東唐津1-9-21",
+    "url": "https://kikouan.com/",
+    "whatJa": "唐津城のたもと・舞鶴橋のそばで、手仕事の工芸品に囲まれながら珈琲や日本茶と甘味を楽しめる喫茶ギャラリー。",
+    "whatEn": "A quiet cafe and folk-craft gallery beside Maizuru Bridge near Karatsu Castle serving hand-drip coffee, Japanese tea, and wagashi.",
+    "facts": "Drinks and seasonal sweets are served in handcrafted Karatsu-yaki and regional mingei vessels, and an adjoining space displays everyday crafts from across Japan.",
+    "weak": "",
+    "verifiedBy": "https://kikouan.com/",
+    "quote": "午前中の自転車ロードレースに伴い当店も開店時間を遅らせる予定です",
+    "fixes": "",
+    "coords": [
+     33.45071,
+     129.98202
+    ]
+   }
+  },
+  "健太郎窯": {
+   "nameEn": "Kentarougama",
+   "area": "浜玉町横田下",
+   "areaEn": "Hamatama-machi Yokotashimo",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "2008年に村山健太郎が築いた、鏡山の中腹の唐津焼窯元。山で採った土や石から粘土と釉薬を作り、日常の器を焼く。",
+   "whatEn": "A Karatsu-yaki kiln established by Kentarou Murayama in 2008 on Mount Kagamiyama. Clay and glazes are made from earth and stone gathered in the hills, for everyday tableware.",
+   "note": "小皿を一枚、土と釉薬の表情で選んでみたい。",
+   "noteEn": "I would choose one small plate by the character of its clay and glaze.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "けんたろうがま",
+    "address": "浜玉町横田下1608-2",
+    "url": "https://www.kentarougama.online/",
+    "whatJa": "2008年に陶芸家・村山健太郎が浜玉町の山あいに開いた、土の表情豊かな唐津焼の窯元・ギャラリー。",
+    "whatEn": "A hillside Karatsu-yaki kiln and showroom in Hamatama established in 2008 by potter Kentaro Murayama.",
+    "facts": "After training under Kiyomi Kawakami, Murayama built his own wood-fired kiln producing Chousen-Garatsu, E-Garatsu, and unglazed Nanban vessels. Visitors can browse everyday plates, bowls, and sake ware dug from coarse local clays.",
+    "weak": "",
+    "verifiedBy": "https://karae.info/news/yakimon2026-journal/",
+    "quote": "今年のやきもん祭りでは、KARAEから徒歩3分の刀町にて、ジャンルを超えて活躍する手仕事作家や商店が集結した、ひときわ異彩を放つ限定イベントに参加。",
+    "fixes": "住所は公式サイト https://www.kentarougama.online/ の『佐賀県唐津市浜玉町横田下1608-2』と一致。whatEn/whatJaの窯元・村山健太郎・浜玉町は記事と一致。創業2008年は開いた本文では確認できず。",
+    "coords": null
+   }
+  },
+  "三藤窯": {
+   "nameEn": "Mitohgama",
+   "area": "宇木",
+   "areaEn": "Uki",
+   "tags": [
+    "ceramics",
+    "tea-ware"
+   ],
+   "what": "宇木で三藤るいが営む唐津焼の窯元。2009年に独立し、土探しから窯焚きまで行い、登り窯の炎や灰による変化を生かす。",
+   "whatEn": "Rui Mitoh’s Karatsu-yaki kiln in Uki, established independently in 2009. She works from finding clay through to firing, using the effects of flame and ash in a climbing kiln.",
+   "note": "ぐい呑は、土と釉薬の違いを見ながら選びたい。",
+   "noteEn": "I would choose a sake cup by looking at the differences in clay and glaze.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "みとうがま",
+    "address": "宇木2972-6",
+    "url": "https://www.mitohgama.com/",
+    "whatJa": "唐津市宇木の里山に工房と展示室を構える、唐津出身の陶芸家・三藤るいの唐津焼窯元。",
+    "whatEn": "The Karatsu-yaki kiln and gallery of Karatsu-born potter Rui Mitoh in the quiet rural district of Uki.",
+    "facts": "Firing a wood-burning climbing kiln built in 2009, Mitoh crafts clean-lined Kohiki, Madara-Garatsu, and Kuro-Garatsu tableware and sake vessels suited to modern dining tables.",
+    "weak": "",
+    "verifiedBy": "https://karae.info/news/yakimon2026-journal/",
+    "quote": "やきもん祭り期間中は、KARAEから徒歩2分の「義経の館」で弟弟子・明賀亘さんと二人展を開催。",
+    "fixes": "whatEnの『Karatsu-born』とwhatJaの『唐津出身』は『福岡出身』に修正。記事本文は『福岡出身の三藤さん』。住所は公式サイト https://www.mitohgama.com/ の『佐賀県唐津市宇木2972-6』と一致。",
+    "coords": null
+   }
+  },
+  "曹源窯": {
+   "nameEn": "Sougenkama",
+   "area": "浜玉町平原",
+   "areaEn": "Hamatama-machi Hirabaru",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "浜玉町平原の、小島直喜の唐津焼窯元。自ら採った土や釉薬の原料を使い、登り窯のほか、作品に応じてガス窯や電気窯でも焼く。",
+   "whatEn": "Naoki Kojima’s Karatsu-yaki kiln in Hirabaru, Hamatama. He gathers his own clay and glaze materials, firing in a climbing kiln or in gas and electric kilns according to the work.",
+   "note": "色だけでなく、手に持った土の感触で選びたい。",
+   "noteEn": "I would choose by the feel of the clay in my hands, as well as its colour.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "そうげんがま",
+    "address": "浜玉町平原甲1064-1",
+    "url": "https://kojimanaoki.com/",
+    "whatJa": "浜玉町平原で二代目・小島直喜が自ら掘り出した原土と薪窯焼成にこだわる唐津焼の窯元・展示場。",
+    "whatEn": "A wood-fired Karatsu-yaki kiln and gallery in Hamatama led by second-generation potter Naoki Kojima.",
+    "facts": "Founded in 1980 and known for deep research into Momoyama-era Ko-Garatsu shards, the kiln produces tea bowls, sake vessels, and rustic tableware from wild-dug local clays.",
+    "weak": "",
+    "verifiedBy": "https://kojimanaoki.com/news_details.html?code=0000058",
+    "quote": "※　会期　　２０２６年　　１０月２１(水)　～　２６日（月）",
+    "fixes": "住所は公式本文『佐賀県唐津市浜玉町平原甲1064-1』と一致。唐津焼・小島直喜の窯元という説明は一致。",
+    "coords": null
+   }
+  },
+  "由起子窯": {
+   "nameEn": "Yukikogama",
+   "area": "浜玉町東山田",
+   "areaEn": "Hamatama-machi Higashiyamada",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "浜玉町東山田の、土屋由起子の唐津焼窯元。黒唐津の器を作る。",
+   "whatEn": "Yukiko Tsuchiya’s Karatsu-yaki kiln in Higashiyamada, Hamatama, making black-glazed Kuro-Garatsu tableware.",
+   "note": "黒い器に何を盛るか、食卓を考えながら選ぶ。",
+   "noteEn": "I would choose a black vessel while thinking about what to serve in it.",
+   "_src": {
+    "category": "local",
+    "industry": "karatsu-yaki",
+    "nameKana": "ゆきこがま",
+    "address": "浜玉町東山田800-1",
+    "url": "https://www.instagram.com/tsuchiyayukiko/",
+    "whatJa": "中里隆に師事した陶芸家・土屋由起子が浜玉町で営む、端正な黒唐津の器で知られる窯元。",
+    "whatEn": "The Hamatama kiln and studio of potter Yukiko Tsuchiya, celebrated for sleek, lustrous Kuro-Garatsu (black Karatsu) tableware.",
+    "facts": "Working in the hills of Higashiyamada, Tsuchiya shapes thin, lightweight plates, cups, and pitchers glazed in deep black and warm ash tones that highlight plated food.",
+    "weak": "",
+    "verifiedBy": "https://karae.info/news/yakimon2026-journal/",
+    "quote": "由起子さんをはじめ、唐津にゆかりのある作陶家の作品が並びます。",
+    "fixes": "黒唐津・土屋由起子・中里隆に師事という説明は2026年記事と一致。住所は開いた https://www.karawan.jp/sp/spots/detail/360 の『唐津市浜玉町東山田800－1』と一致。",
+    "coords": null
+   }
+  },
+  "うつわギャラリー 唐津 草伝社": {
+   "nameEn": "Utsuwa Gallery Karatsu Soudensya",
+   "area": "北波多徳須恵",
+   "areaEn": "Kitahata Tokusue",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "北波多徳須恵の、唐津焼と有田焼のギャラリー。国登録文化財の旧商家・旧井手邸で、器の展示や企画展を開く。",
+   "whatEn": "A gallery for Karatsu and Arita ware in Kitahata Tokusue. Exhibitions in the former Ide merchant house, a registered tangible cultural property.",
+   "note": "唐津焼と有田焼を並べて、食卓の器を選びたい。",
+   "noteEn": "I would choose tableware by looking at Karatsu and Arita pieces side by side.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "うつわぎゃらりーからつそうでんしゃ",
+    "address": "北波多徳須恵1030-3",
+    "url": "https://www.instagram.com/soudensya.official/",
+    "whatJa": "築約120年の国登録有形文化財の旧商家を活用した、唐津焼や肥前陶磁器の企画・常設ギャラリー。",
+    "whatEn": "A ceramics gallery housed in a 120-year-old registered tangible cultural property merchant residence in Kitahata.",
+    "facts": "Set inside the historic former Ide residence with tatami rooms and garden views, Soudensya curates solo shows and permanent displays of leading Karatsu and Arita potters.",
+    "weak": "",
+    "verifiedBy": "https://www.hyogeru.jp/?p=2114",
+    "quote": "このプランでは 、草伝社で唐津焼発祥の歴史を学び、安永氏の工房を訪問して、器文化を体感します。",
+    "fixes": "唐津焼・有田焼のギャラリー、築約120年の登録文化財の旧商家という説明は一致。記事の体験場所表記は『佐賀県唐津市北波多町徳須恵1,030－3』。",
+    "coords": null
+   }
+  },
+  "古道具 caesura": {
+   "nameEn": "caesura",
+   "area": "大石町",
+   "areaEn": "Oishimachi",
+   "tags": [
+    "antiques",
+    "coffee"
+   ],
+   "what": "大石町の、珈琲とビールが飲める古道具店。開く日時は公式Instagramで知らせる。",
+   "whatEn": "An antique shop in Oishimachi serving coffee and beer. Opening dates and hours are posted on its official Instagram.",
+   "note": "古道具を見たあとは、ここで珈琲を飲みたい。",
+   "noteEn": "After looking at the antiques, I would sit here for coffee.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ふるどうぐかえすら",
+    "address": "大石町2484-2",
+    "url": "https://www.instagram.com/caesura_antique/",
+    "whatJa": "大石町の路地裏にある旧印刷作業所を活かした、古い器や吹きガラス、生活古道具のショップ。",
+    "whatEn": "An independent vintage tableware, glassware, and antique object shop set in a former printing workshop in Oishimachi.",
+    "facts": "A nine-minute walk from JR Karatsu Station, the ground floor displays Japanese and European vintage plates, bottles, and furniture mainly on weekends, with a small cafe-bar upstairs.",
+    "weak": "",
+    "verifiedBy": "https://www.moneypost.jp/1423935",
+    "quote": "「causera（カエスラ）」は倉庫として使われていた2階建てのコンクリート建物を改装したショップ。",
+    "fixes": "whatEn/whatJaの建物説明は記事の『倉庫として使われていた2階建てのコンクリート建物を改装』に合わせる。住所は開いた https://antique-leaves.com/?pid=180982107 の『佐賀県唐津市大石町2484-2』と一致。",
+    "coords": null
+   }
+  },
+  "Viennoiserie selfish": {
+   "nameEn": "Viennoiserie Selfish",
+   "area": "船宮町",
+   "areaEn": "Funamiyamachi",
+   "tags": [
+    "bread",
+    "pastries"
+   ],
+   "what": "船宮町のベーカリー。佐賀県産小麦と唐津産の卵・牛乳を使う。",
+   "whatEn": "A bakery in Funamiyamachi using Saga-grown wheat and eggs and milk from Karatsu.",
+   "note": "地元の小麦と卵を使うパンを、おやつに選びたい。",
+   "noteEn": "I would choose bread made with local wheat and eggs for a snack.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ゔぃえのわずりーせるふぃっしゅ",
+    "address": "船宮町2303-1",
+    "url": "https://www.instagram.com/viennoiserie__selfish/",
+    "whatJa": "船宮町にある、美しい層のクロワッサンや季節のフルーツデニッシュが評判のヴィエノワズリー専門店。",
+    "whatEn": "A specialty bakery in Funamiyamachi dedicated to crisp, multi-layered croissants and seasonal fruit danishes.",
+    "facts": "Run by an artisan baker focused on laminated pastries, the bright shop lines up butter croissants, pain au chocolat, and custard danishes alongside an indoor family space.",
+    "weak": "",
+    "verifiedBy": "https://bakerypartner.com/0c070fa5-37db-4002-a835-a00f4731f9c2/",
+    "quote": "開業してから約3年、佐賀県唐津市船宮町2303-1にある「Viennoiserie Selfish」の松本オーナーに開業時や現在のリアルをお聞きしました！",
+    "fixes": "住所は記事『佐賀県唐津市船宮町2303-1』と一致。whatEn/whatJaはベーカリーという業態が一致。クロワッサン・デニッシュは開いた https://karatsu-portal.com/gourmet/articles/karatsu-pan でも紹介。",
+    "coords": null
+   }
+  },
+  "LAZY BIRD BAKERY": {
+   "nameEn": "LAZY BIRD BAKERY",
+   "area": "東城内",
+   "areaEn": "Higashi-Jonai",
+   "tags": [
+    "bread"
+   ],
+   "what": "唐津城のそば、東城内のパン屋。売り切れ次第閉店で、月・木曜は休み。",
+   "whatEn": "A bakery near Karatsu Castle in Higashi-Jonai. It closes when sold out; closed on Mondays and Thursdays.",
+   "note": "城のそばでパンを一つ選んで、持ち帰りたい。",
+   "noteEn": "I would choose something from this bakery near the castle to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "れいじーばーどべーかりー",
+    "address": "東城内6-50",
+    "url": "https://www.instagram.com/lazy_bird_bakery/",
+    "whatJa": "唐津城近くの東城内に店を構える、ハード系パンやカンパーニュ、焼き菓子が人気の小さなベーカリー。",
+    "whatEn": "A neighborhood artisan bakery near Karatsu Castle baking crusty country loaves, baguettes, and sweet pastries.",
+    "facts": "Steps from the castle moat and Maizuru Park, locals stop in early for rustic sourdough-style loaves, savory focaccia, and seasonal tarts before daily sellouts.",
+    "weak": "",
+    "verifiedBy": "https://karatsu-portal.com/gourmet/articles/karatsu-pan",
+    "quote": "この記事では、公式サイト・公式SNSまたは複数の情報源で住所・営業時間が一致し、2026年時点で営業が確認できた店のみを紹介しています。",
+    "fixes": "住所『佐賀県唐津市東城内6-50』、唐津城近くのハード系パン・カンパーニュのベーカリーという説明は記事と一致。バゲット・焼き菓子は開いた本文では未確認。",
+    "coords": null
+   }
+  },
+  "Patisserie ANN": {
+   "nameEn": "Patisserie ANN",
+   "area": "鏡",
+   "areaEn": "Kagami",
+   "tags": [
+    "cake"
+   ],
+   "what": "鏡の、韓国人パティシエが営むケーキ店とカフェ。店内でも食べられ、ドリンクメニューもある。",
+   "whatEn": "A cake shop and café in Kagami run by a Korean pastry chef. Cakes can be eaten inside, with a drinks menu too.",
+   "note": "ケーキを一つ選んで、店内でお茶にしたい。",
+   "noteEn": "I would choose one cake and sit inside for tea.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりーあん",
+    "address": "鏡2917-3",
+    "url": "https://www.instagram.com/patisserieann/",
+    "whatJa": "鏡エリアの松浦河畔公園近くに佇む、繊細な生ケーキや焼き菓子が人気のパティスリー。",
+    "whatEn": "A refined neighborhood patisserie in Kagami near Matsuura Riverside Park offering delicate petit gâteaux and baked confections.",
+    "facts": "Tucked into a quiet green residential corner at the foot of Mount Kagamiyama, its glass showcase features seasonal Saga strawberry shortcakes, tarts, and choux pastries.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/yu-rikun1705/entry-12957759539.html",
+    "quote": "色々と迷ったのですが、また来る前提で、まずはオーソドックスな二つをチョイス。",
+    "fixes": "2026年訪問記事で生ケーキ・焼き菓子のパティスリーと確認。住所は開いた https://wanderlog.com/place/details/7787225/patisserie-ann の『2917ｰ3 Kagami, Karatsu, Saga 847-0022, Japan』と一致。松浦河畔公園近くという位置説明は開いた本文では未確認。",
+    "coords": null
+   }
+  },
+  "川島豆腐店": {
+   "nameEn": "Kawashima Tofu",
+   "area": "京町",
+   "areaEn": "Kyomachi",
+   "tags": [
+    "tofu"
+   ],
+   "what": "寛政年間創業の、京町の豆腐店。予約制の食事処では、唐津焼の器で温かいざる豆腐や厚揚げなどの豆腐料理を出す。",
+   "whatEn": "A tofu shop in Kyomachi founded in the Kansei era, 1789–1801. Its dining counter serves warm zaru-dofu and tofu dishes including thick fried tofu on Karatsu ware, by reservation.",
+   "note": "温かいざる豆腐を、唐津焼の器で食べたい。",
+   "noteEn": "I would choose warm zaru-dofu served in Karatsu ware.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "かわしまとうふてん",
+    "address": "京町1775",
+    "url": "https://www.zarudoufu.co.jp/",
+    "whatJa": "寛政年間創業、京町商店街に暖簾を掲げる「ざる豆腐」発祥の老舗豆腐店・食事処。",
+    "whatEn": "A tofu shop and counter dining room founded in the late 18th century on Kyomachi street, celebrated as the birthplace of basket-drained zaru-dofu.",
+    "facts": "Made each morning from 100% Saga-grown Fukuyutaka soybeans, its freshly scooped zaru-dofu, crisp fried atsuage, soymilk, and seasonal fish courses are served at an intimate hinoki-wood counter.",
+    "weak": "",
+    "verifiedBy": "https://terukosan.com/yonchantv-anomachi-gourmet-shops-20261023/",
+    "quote": "川島豆腐店の公式サイトによると、販売は午前8時から午後5時ごろまでで、短縮営業になる場合があります。",
+    "fixes": "住所『佐賀県唐津市京町1775』は公式 https://www.zarudoufu.co.jp/ と2026-10-16公開MBS記事 https://www.mbs.jp/4chantv/corner/anomachi/article/2026/10/112121.shtml で一致。寛政年間創業、ざる豆腐・豆腐料理・会席の説明は公式本文で確認。",
+    "coords": null
+   }
+  },
+  "QURIYA 厨": {
+   "nameEn": "QURIYA",
+   "area": "東城内",
+   "areaEn": "Higashi-Jonai",
+   "tags": [
+    "pasta",
+    "wine"
+   ],
+   "what": "東城内のイタリア料理店。海や山の食材を使うパスタやリゾット、肉料理があり、昼と夜に開く。",
+   "whatEn": "An Italian restaurant in Higashi-Jonai. Pasta, risotto and meat dishes using ingredients from sea and land, at lunch and dinner.",
+   "note": "おまかせのパスタに、グラスワインを合わせたい。",
+   "noteEn": "I would pair the chef’s choice pasta with a glass of wine.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "くりや",
+    "address": "東城内1-5",
+    "url": "https://quriya-karatu.com/",
+    "whatJa": "唐津城すぐそばの東城内で、東京で修業を重ねたシェフが腕を振るうアットホームなイタリア料理店。",
+    "whatEn": "An intimate Italian dining room right beside Karatsu Castle serving handmade pasta courses and local seasonal dishes.",
+    "facts": "Beloved by neighborhood regulars for generous pasta lunches paired with salads, soup, and house-made sorbet, as well as relaxed evening courses featuring Saga seafood and meats.",
+    "weak": "",
+    "verifiedBy": "https://www.karatsugourmet.com/entry/2026-02-22-194554/",
+    "quote": "メニューもランチはサラダやバゲットなどがついたパスタセットと、様々なおかずを楽しめる気まぐれランチ。",
+    "fixes": "住所『佐賀県唐津市東城内１−５』とイタリア料理店の説明は記事・公式 https://quriya-karatu.com/ で一致。記事は唐津城から『歩いて５分程度』と案内。手打ちパスタ、東京で修業は開いた本文では未確認。",
+    "coords": null
+   }
+  },
+  "レストラン シマ": {
+   "nameEn": "Restaurant Shima",
+   "area": "原",
+   "areaEn": "Haru",
+   "tags": [
+    "french",
+    "wine"
+   ],
+   "what": "原の、唐津の食材を使うフランス料理店。前菜や主菜を選べるランチコースと、夜のコースがある。",
+   "whatEn": "A French restaurant in Haru using Karatsu ingredients. Lunch courses with a choice of starters and main dishes, and dinner courses.",
+   "note": "昼の主菜は、唐津の魚を使う一皿にしたい。",
+   "noteEn": "For the lunch main, I would choose a dish of Karatsu fish.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "れすとらんしま",
+    "address": "原992-1",
+    "url": "https://restaurantshima.com/",
+    "whatJa": "ミシュランのビブグルマンにも選出された、唐津産の旬食材を使った本格フランス料理を気取らず味わえるレストラン。",
+    "whatEn": "A Michelin Bib Gourmand-recognized French bistro in Hara serving approachable multi-course lunches and dinners with Karatsu ingredients.",
+    "facts": "Located south of Kagami in Hara, Chef Shima prepares classic French potages, Genkai Sea fish dishes, and braised meats in a warm neighborhood dining room.",
+    "weak": "",
+    "verifiedBy": "https://bluedesign-group.jp/2026/06/",
+    "quote": "ミシュランガイド掲載の人気店「レストランシマ」と青天堂のコラボレーションによる、一夜限りのスペシャルディナーを開催します。",
+    "fixes": "住所は公式 https://restaurantshima.com/ の『佐賀県唐津市原９９２−１』と一致。公式タイトルで『ミシュラン　ビブグルマン掲載店』、唐津食材を使うフランス料理店と確認。",
+    "coords": null
+   }
+  },
+  "Restaurant Présage": {
+   "nameEn": "Restaurant Présage",
+   "area": "新興町",
+   "areaEn": "Shinkomachi",
+   "tags": [
+    "restaurant"
+   ],
+   "what": "新興町の予約制レストラン。昼と夜に営業し、2名から、2日前までの予約を受け付ける。",
+   "whatEn": "A restaurant in Shinkomachi open for lunch and dinner by reservation. Book at least two days ahead, for two or more people.",
+   "note": "二人で予約して、ゆっくり昼の食事にしたい。",
+   "noteEn": "I would book for two and make it a leisurely lunch.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "れすとらんぷれさーじゅ",
+    "address": "新興町17",
+    "url": "https://www.instagram.com/restaurant_presage/",
+    "whatJa": "唐津駅南口近くで、唐津の湧き水や自家製塩、七山の野菜、玄界灘の魚介を昇華させるカウンターフレンチ。",
+    "whatEn": "A counter-style French gastronomy restaurant a few minutes' walk from Karatsu Station's south exit showcasing Karatsu water, salt, and produce.",
+    "facts": "Opened in 2024 and listed by Gault & Millau, the open kitchen lets diners watch the chef plate seasonal courses served on local Karatsu-yaki ceramics.",
+    "weak": "",
+    "verifiedBy": "https://www.sagatv.co.jp/kachiplus/media/archives/1665320",
+    "quote": "佐賀県唐津市に、世界中の美食家がその一皿を求めて訪れるフレンチレストラン「Restaurant Prèsage」があります。",
+    "fixes": "住所は2026年佐賀テレビ記事『佐賀県唐津市新興町17』と一致。開いた2026-05-18付RKB記事 https://rkb.jp/contents/202605/202633/ は『佐賀県唐津市新興町17スカイタワーマンション1階』と記載し、唐津駅南口徒歩数分、2024年春開業、カウンター、湧き水、自家製塩、ゴ・エ・ミヨでの評価を確認。七山野菜は開いた本文では未確認。",
+    "coords": null
+   }
+  },
+  "Jack Coffeestand": {
+   "nameEn": "Jack Coffeestand",
+   "area": "浜玉町浜崎",
+   "areaEn": "Hamatama-machi Hamasaki",
+   "tags": [
+    "coffee",
+    "muffins"
+   ],
+   "what": "浜崎の、ウインドサーフィン店WIND JACKと並ぶコーヒースタンド。珈琲とマフィンを出し、木・金曜は休み。",
+   "whatEn": "A coffee stand alongside the windsurfing shop WIND JACK in Hamasaki. Coffee and muffins; closed on Thursdays and Fridays.",
+   "note": "ここではマフィンを一つ、珈琲と合わせたい。",
+   "noteEn": "Here I would have a muffin with my coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "じゃっくこーひーすたんど",
+    "address": "浜玉町浜崎1799-23",
+    "url": "https://www.instagram.com/jackcoffeestand/",
+    "whatJa": "虹の松原を抜けた浜崎海岸の目の前で、海風を感じながらエスプレッソやスムージーを楽しめるコーヒースタンド。",
+    "whatEn": "A breezy beachfront coffee stand on Hamasaki Coast just beyond the Nijino Matsubara pine grove.",
+    "facts": "Attached to the Wind Jack windsurfing shop facing Karatsu Bay, its hand-built wooden counter and deck draw surfers and locals for specialty lattes, smoothies, and hot sandwiches.",
+    "weak": "",
+    "verifiedBy": "https://waku-salo.com/activity/%E3%80%90%E6%B4%BB%E5%8B%95%E3%83%AC%E3%83%9D%E3%80%91%E6%B5%B7%E3%81%A8%E9%A2%A8%E3%81%AB%E7%99%92%E3%81%95%E3%82%8C%E3%82%8B%E3%82%A2%E3%83%BC%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E4%BD%93%E9%A8%93in/",
+    "quote": "9月14日、唐津の海辺にある素敵なカフェで、「香り×感情アート」のワークショップを開催しました。",
+    "fixes": "住所は2026年訪問記事と公式 https://jackwindsurfinggarden.com/ の『佐賀県唐津市浜玉町浜崎1799-23』で一致。海辺のカフェ、WIND JACK併設は確認。スムージー・エスプレッソは開いた本文では未確認。",
+    "coords": null
+   },
+   "url": "https://jackwindsurfinggarden.com/"
+  },
+  "cafe ortoyo": {
+   "nameEn": "cafe ortoyo",
+   "area": "和多田本村",
+   "areaEn": "Watada Honmura",
+   "tags": [
+    "cake"
+   ],
+   "what": "和多田本村のカフェ。シフォンケーキを中心に焼き菓子を出し、食事メニューは準備中。",
+   "whatEn": "A café in Watada Honmura serving chiffon cakes and other baked sweets. The meal menu is still in preparation.",
+   "note": "焼き菓子も気になるけれど、まずはシフォンを選ぶ。",
+   "noteEn": "The baked sweets appeal too, but I would start with chiffon cake.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "かふぇおるとよ",
+    "address": "和多田本村8-70",
+    "url": "https://www.instagram.com/cafe_ortoyo/",
+    "whatJa": "和多田の桜並木そばに佇む、丁寧なコーヒーと米粉シフォンケーキや焼き菓子を味わえるカフェ。",
+    "whatEn": "A serene neighborhood cafe along a cherry-tree-lined lane in Watada serving hand-brewed coffee and rice-flour chiffon cakes.",
+    "facts": "Created around the idea of a calm everyday refuge, the light-filled interior pairs drip coffee and seasonal drinks with gluten-free rice-flour sweets.",
+    "weak": "",
+    "verifiedBy": "https://www.karatsugourmet.com/entry/cafe-ortoyo%EF%BC%88%E3%82%AB%E3%83%95%E3%82%A7-%E3%82%AA%E3%83%AB%E3%83%88%E3%83%A8%EF%BC%89%E3%81%AE%E6%9C%88%E6%9B%BF%E3%82%8F%E3%82%8A%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%84%E3%81%A8%E3%83%89/",
+    "quote": "小麦と米粉の２種類のシフォンで、プレーン、ラムレーズン、シナモン味があります。",
+    "fixes": "住所『佐賀県唐津市和多田本村８−７０』、カフェ・米粉シフォンは一致。whatEn/whatJaには記事にある小麦と米粉の2種類のシフォン、月替わりスイーツとドリンクを記載可能。桜並木・ハンドドリップは開いた本文では未確認。",
+    "coords": null
+   }
+  },
+  "タネ屋珈琲店": {
+   "nameEn": "Taneya Coffee",
+   "area": "熊原町",
+   "areaEn": "Kumanoharamachi",
+   "tags": [
+    "coffee",
+    "sweet-potato"
+   ],
+   "what": "熊原町の、焼き芋も扱う珈琲店。持ち帰りにも対応する。",
+   "whatEn": "A coffee shop in Kumanoharamachi that also sells roasted sweet potatoes. Takeaway is available.",
+   "note": "焼き芋をおやつに、珈琲を一杯合わせたい。",
+   "noteEn": "I would have a roasted sweet potato for a snack, with a cup of coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "たねやこーひーてん",
+    "address": "熊原町3124-1",
+    "url": "https://www.instagram.com/taneyacoffee/",
+    "whatJa": "農業一筋40年の店主が熊原町で営む、産地別のストレート珈琲と自家製焼き芋スイーツの喫茶店。",
+    "whatEn": "A green-roofed house cafe near Karatsu Station run by a former agricultural advisor, pairing single-origin coffees with roasted sweet potatoes.",
+    "facts": "Six minutes on foot from JR Karatsu Station, the shop brews house blends and single-origin beans alongside slow-roasted sweet potatoes, an-butter yakiimo, and local farm books.",
+    "weak": "",
+    "verifiedBy": "https://editors-saga.jp/editors/mon/20260520_3087.html",
+    "quote": "今回はその中から、店長おすすめの「イモパフェ」と「アンバター焼き芋」をいただきました。",
+    "fixes": "住所『佐賀県唐津市熊原町3124-1』と、農業普及員だった店主、農業一筋40年、緑の屋根、焼き芋スイーツの説明は記事と一致。ストレート珈琲は開いた本文では未確認。",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "唐津城",
+   "nameEn": "Karatsu Castle",
+   "kind": "sight",
+   "area": "東城内",
+   "areaEn": "Higashi-Jonai",
+   "address": "唐津市東城内8-1",
+   "url": "https://karatsujo.com/",
+   "what": "1602年から7年かけて築かれた城の跡。1966年に建てた天守閣は郷土博物館で、唐津焼の展示と海や虹の松原を望む展望所がある。",
+   "whatEn": "The site of a castle built over seven years from 1602. The keep, built in 1966, houses a local history museum with Karatsu ware and a lookout over the sea and Nijino Matsubara.",
+   "coords": [
+    33.45351,
+    129.97819
+   ],
+   "notice": "天守閣は9時から17時、最終入館16時40分。12月29日から31日は休館。",
+   "noticeEn": "The keep opens 9:00–17:00, with last entry at 16:40. Closed 29–31 December.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.karatsu.lg.jp/page/1041.html : 築城1602年から7か年、1966年に建てた天守閣は郷土博物館。https://www.city.karatsu.lg.jp/page/53429.html : 企画展2026年10月24日～2027年3月31日。https://www.city.karatsu.lg.jp/page/4578.html : 開館時間・年末休館。https://karatsujo.com/access : 東城内8-1。",
+   "_coordsSource": "OpenStreetMap way 500427895（唐津城の建物）。Nominatim search「唐津城」: 33.4535132, 129.9781934を小数第5位に丸めた。https://www.openstreetmap.org/way/500427895"
+  },
+  {
+   "name": "旧高取邸",
+   "nameEn": "Former Takatori Residence",
+   "kind": "sight",
+   "area": "北城内",
+   "areaEn": "Kita-Jonai",
+   "address": "唐津市北城内5-40",
+   "url": "https://www.city.karatsu.lg.jp/page/3842.html",
+   "what": "炭鉱主・高取伊好の旧宅で、国の重要文化財。和風の建物に洋間と能舞台があり、杉戸絵や欄間が残る。",
+   "whatEn": "The former home of coal-mine owner Koreyoshi Takatori, a national Important Cultural Property. A Japanese-style house with a Western room and a Noh stage, painted cedar doors and carved transoms.",
+   "coords": [
+    33.45434,
+    129.97216
+   ],
+   "notice": "9時半から17時、最終入館16時半。月曜は休館（祝日は開館、翌日休館）、12月29日から1月3日も休館。",
+   "noticeEn": "Open 9:30–17:00, last entry 16:30. Closed Mondays, or the following day when Monday is a holiday, and 29 December–3 January.",
+   "verifiedAt": "2026-11-12",
+   "_source": "唐津市公式 https://www.city.karatsu.lg.jp/page/3842.html （2026年10月22日更新）: 国指定重要文化財、炭鉱主高取伊好の邸宅、洋間・能舞台・杉戸絵・欄間。北城内5番40号、開館時間・休館日と2027年3月31日までの現行観覧料を掲載。更新日は https://www.city.karatsu.lg.jp/life/4/27/365/ でも確認。",
+   "_coordsSource": "OpenStreetMap way 1161705831（旧高取家住宅 tourism=museum）。Nominatim search「旧高取邸」: 33.4543357, 129.9721600を小数第5位に丸めた。https://www.openstreetmap.org/way/1161705831"
+  },
+  {
+   "name": "末盧館",
+   "nameEn": "Matsuro Museum",
+   "kind": "art",
+   "area": "菜畑",
+   "areaEn": "Nabatake",
+   "address": "唐津市菜畑3359-2",
+   "url": "https://www.city.karatsu.lg.jp/page/1223.html",
+   "what": "菜畑遺跡の出土品を展示する博物館。炭化米や石庖丁が並び、遺跡公園には水田と竪穴式住居が復元されている。",
+   "whatEn": "A museum of finds from the Nabatake archaeological site, including carbonised rice and stone reaping knives. A paddy field and pit dwelling have been reconstructed in the archaeological park.",
+   "coords": [
+    33.44852,
+    129.95788
+   ],
+   "notice": "9時から17時、最終入館16時半。月曜は休館（祝日は開館、翌日休館）、12月29日から1月3日も休館。",
+   "noticeEn": "Open 9:00–17:00, last entry 16:30. Closed Mondays, or the following day when Monday is a holiday, and 29 December–3 January.",
+   "verifiedAt": "2026-11-12",
+   "_source": "唐津市公式 https://www.city.karatsu.lg.jp/page/1223.html （2026年10月22日更新）: 菜畑遺跡出土の炭化米・石庖丁等、水田・竪穴式住居の復元。所在地・開館案内・2027年3月31日までの現行入館料。2026年11月1日更新 https://www.city.karatsu.lg.jp/page/53041.html に館内見学・復元水田の取材記事。",
+   "_coordsSource": "OpenStreetMap way 1161314288（末盧館 tourism=museum）。Nominatim search「末盧館 唐津」: 33.4485235, 129.9578824を小数第5位に丸めた。https://www.openstreetmap.org/way/1161314288"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "中里太郎右衛門陶房",
+   "verdict": "doubt",
+   "reason": "Site is reachable and lists the 町田3-6-29 address, but no 2026-dated post, notice or season dates found on home or information pages."
+  },
+  {
+   "name": "中野陶痴窯",
+   "verdict": "doubt",
+   "reason": "Only dated 2026 item is a 中野政之 exhibition notice (venue not confirmed as the kiln showroom); no direct proof the Machida showroom is open in 2026."
+  },
+  {
+   "name": "GALLERY 唐重",
+   "verdict": "doubt",
+   "reason": "Page returned 'rate limit reached' (一定時間内のリクエスト制限に達しました), so no content could be read or 2026 evidence copied."
+  },
+  {
+   "name": "ル・カリヨン",
+   "verdict": "doubt",
+   "reason": "Top page shows only a Christmas cake notice 'ご予約締切 12月17日(日)まで' with no year (17 Dec is a Sunday in 2023, not 2026) and still links a COVID page. No 2026 dated text found."
+  },
+  {
+   "name": "宮田の松露饅頭",
+   "verdict": "doubt",
+   "reason": "Old-style page with 'いらっしゃいませ！本日も営業中です！' but no dated 2026 text. Latest date is 2001 (NHK)."
+  },
+  {
+   "name": "neuf",
+   "verdict": "doubt",
+   "reason": "Newest dated notice is 'winter concert 2025 12月21日' and '7日〜10日 お休みします' with no year. The only 2026 string is an image filename (2026_saga_pre.jpg), which is not evidence."
+  },
+  {
+   "name": "銀河食堂の夜",
+   "verdict": "doubt",
+   "reason": "Site opened; embedded Instagram feed shows only 2023 posts (latest 2023-05-21). No 2026 evidence."
+  },
+  {
+   "name": "トラットリア レガーレ",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login/script shell with no readable posts; no 2026 sentence could be copied."
+  },
+  {
+   "name": "魚処 亀山",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login/script shell with no readable posts; no 2026 sentence could be copied."
+  },
+  {
+   "name": "田舎のビストロ ポポット",
+   "verdict": "doubt",
+   "reason": "Instagram page returned only a login/script shell with no readable posts; no 2026 sentence could be copied."
+  },
+  {
+   "name": "CALALI",
+   "verdict": "doubt",
+   "reason": "Only footer '© 2021 by CALALI'; no dated 2026 content."
+  },
+  {
+   "name": "caffe Luna",
+   "verdict": "doubt",
+   "reason": "Official site opened; お知らせ section says お知らせはまだありません (no dated content). Site text does not mention Karatsu-yaki tableware, Kyomachi arcade or address; shows curry-Napolitan 'パキスタン' dish. Page opened but contains no dated 2026 post/notice/season; only undated bio/hours, so 2026 operation not proven."
+  },
+  {
+   "name": "海と虹のcafe ちょこっと",
+   "verdict": "doubt",
+   "reason": "Instagram bio only (undated): 12時open〜16時o.s 定休日:毎週月曜日と第1第3火曜日; address 佐賀県唐津市浜玉町浜崎2846-35 matches. No dated 2026 post visible. Page opened but contains no dated 2026 post/notice/season; only undated bio/hours, so 2026 operation not proven."
+  },
+  {
+   "name": "加部島珈琲焙煎所",
+   "verdict": "doubt",
+   "reason": "Instagram bio only (undated): 営業日→土日祝 営業時間→11:00〜16:00. No dated 2026 post visible; bio names KABESHIMA COFFEE STAND, address not shown. Page opened but contains no dated 2026 post/notice/season; only undated bio/hours, so 2026 operation not proven."
+  },
+  {
+   "name": "北島富作商店",
+   "verdict": "doubt",
+   "reason": "2026-09-29付の商品券記事で対象店舗名は読めたが、この店舗の2026年営業を示す日付付きの一文をコピーできない。"
+  },
+  {
+   "name": "天平窯",
+   "verdict": "drop",
+   "reason": "公式ページに期間未定の展示場休館告知があり、再開日は示されていない。"
+  },
+  {
+   "name": "PATISSERIE RENOIR",
+   "verdict": "doubt",
+   "reason": "公式本文は2011年開業と日付のない営業案内のみ。公式通販はCaptchaで本文を取得できず、2026年の営業を示す一文をコピーできない。"
+  },
+  {
+   "name": "Catnap coffee",
+   "verdict": "doubt",
+   "reason": "2026年の同名店の訪問文は取得したが、所在地が入力と異なり、公式Instagram本文も取得できないため、この相知町の候補と同一店舗だと確認できない。"
+  }
+ ]
+}

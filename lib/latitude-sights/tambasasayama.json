@@ -1,0 +1,68 @@
+[
+ {
+  "name": "篠山城大書院",
+  "nameEn": "Sasayama Castle Oshoin",
+  "kind": "sight",
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "兵庫県丹波篠山市北新町2-3",
+  "url": "https://withsasayama.jp/osyoin/",
+  "what": "1609年に徳川家康の命で築かれた篠山城の御殿。1944年に焼失したが2000年に再建され、城の史料を展示している。月曜休館（祝日は開館、翌日休館）。",
+  "whatEn": "The main hall of Sasayama Castle, built in 1609 on Tokugawa Ieyasu's order. Destroyed by fire in 1944 and reconstructed in 2000, it exhibits castle records. Closed Mondays (or Tuesday if a holiday).",
+  "coords": [
+   35.07338,
+   135.21744
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "丹波篠山市立歴史美術館",
+  "nameEn": "Tambasasayama City Historical Art Museum",
+  "kind": "art",
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "兵庫県丹波篠山市呉服町53",
+  "url": "https://withsasayama.jp/history-museum/",
+  "what": "1891年建築の旧篠山地方裁判所の木造庁舎を活かした美術館。1982年に開館し、古墳の出土品や中世の丹波焼などを展示する。月曜休館。",
+  "whatEn": "A museum inside the 1891 wooden courthouse of the former Sasayama District Court, opened in 1982 and displaying ancient tomb artifacts and medieval Tamba ware. Closed Mondays.",
+  "coords": [
+   35.0772,
+   135.21992
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "青山歴史村",
+  "nameEn": "Aoyama Rekishimura",
+  "kind": "sight",
+  "area": "篠山城下町",
+  "areaEn": "Sasayama Castle Town",
+  "address": "兵庫県丹波篠山市北新町48",
+  "url": "https://withsasayama.jp/aoyama/",
+  "what": "篠山藩主青山家の別邸「桂園舎」を中心に、3棟の土蔵と長屋門が残る史料館。漢学書の版木や藩政文書など江戸期の資料を展示する。月曜休館。",
+  "whatEn": "A history museum centered on Keiensha, a villa of the Aoyama lords of Sasayama, with three storehouses and a gatehouse displaying Edo-period domain records and woodblocks. Closed Mondays.",
+  "coords": [
+   35.07547,
+   135.2161
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "丹波伝統工芸公園 立杭陶の郷",
+  "nameEn": "Tachikui Sue no Sato",
+  "kind": "art",
+  "area": "今田町",
+  "areaEn": "Tachikui",
+  "address": "兵庫県丹波篠山市今田町上立杭3",
+  "url": "https://tanbayaki.com/suenosato/",
+  "what": "丹波焼の里・立杭にある総合施設。約50軒の窯元の器を並べる窯元横丁や陶芸教室、展示施設「TAMBA GATEWAY CENTER」がある。火曜休園（祝日は営業）。",
+  "whatEn": "The Tamba-yaki craft park in Tachikui, with a market street carrying vessels from about fifty kilns, pottery workshops, and the TAMBA GATEWAY CENTER gallery. Closed Tuesdays unless a holiday.",
+  "coords": [
+   34.9808,
+   135.13233
+  ],
+  "notice": "園内の伝産会館は2027年春のリニューアルに向けて改修工事中。",
+  "noticeEn": "The Densan Kaikan hall inside the park is closed for renovation until spring 2027.",
+  "verifiedAt": "2026-11-12"
+ }
+]

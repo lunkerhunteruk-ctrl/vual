@@ -1,0 +1,82 @@
+[
+ {
+  "name": "陶山神社",
+  "nameEn": "Tozan Shrine",
+  "kind": "sight",
+  "area": "内山",
+  "areaEn": "Uchiyama",
+  "address": "有田町大樽2-5-1",
+  "url": "http://arita-toso.net/",
+  "what": "1658年頃の建立と伝わる「やきものの神様」。境内に有田焼の大鳥居や狛犬、李参平碑がある。踏切に遮断機がないため左右の確認が必要。",
+  "whatEn": "A shrine to the deities of porcelain, said to date from around 1658, with a porcelain torii gate, porcelain guardian dogs, and a monument to Yi Sam-pyeong. The rail crossing at the entrance has no barrier.",
+  "coords": [
+   33.18894,
+   129.89929
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "泉山磁石場",
+  "nameEn": "Izumiyama Quarry",
+  "kind": "sight",
+  "area": "泉山",
+  "areaEn": "Izumiyama",
+  "address": "有田町泉山1-33",
+  "url": "https://www.arita.jp/spot/post_16.html",
+  "what": "17世紀初めに李参平らが磁器の原料となる陶石を見つけた採石場の跡。国の史跡。採掘坑の内部には入れず、外から眺める。",
+  "whatEn": "The quarry where Yi Sam-pyeong and his companions found pottery stone in the early seventeenth century, beginning porcelain making in Japan. A national historic site, viewed from outside the pit.",
+  "coords": [
+   33.19394,
+   129.91017
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "佐賀県立九州陶磁文化館",
+  "nameEn": "The Kyushu Ceramic Museum",
+  "kind": "art",
+  "area": "戸杓",
+  "areaEn": "Toshaku",
+  "address": "有田町戸杓乙3100-1",
+  "url": "https://saga-museum.jp/ceramic/",
+  "what": "九州各地の古陶磁や有田焼の名品を集めた県立美術館。常設展は無料、9時〜17時（入館は16時30分まで）、月曜休館。",
+  "whatEn": "A prefectural museum of Kyushu ceramics and historic Arita porcelain. Permanent collection admission is free. Open 9:00–17:00 (last entry 16:30), closed Mondays.",
+  "coords": [
+   33.17901,
+   129.88057
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "有田陶磁美術館",
+  "nameEn": "Arita Ceramic Museum",
+  "kind": "art",
+  "area": "内山",
+  "areaEn": "Uchiyama",
+  "address": "有田町大樽1-4-2",
+  "url": "https://www.arita.jp/spot/post.html",
+  "what": "明治7年（1874年）に建てられた焼物倉庫を使った美術館。明治期の有田焼や県重要文化財の作品を展示。9時〜16時30分、月曜休館。",
+  "whatEn": "A small ceramics museum housed in an 1874 porcelain warehouse, showing Meiji-era Arita ware and prefectural cultural properties. Open 9:00–16:30, closed Mondays.",
+  "coords": [
+   33.19069,
+   129.89872
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "トンバイ塀のある裏通り",
+  "nameEn": "Tonbai Wall Alley",
+  "kind": "sight",
+  "area": "内山",
+  "areaEn": "Uchiyama",
+  "address": "有田町上幸平",
+  "url": "https://www.arita.jp/spot/post_20.html",
+  "what": "登り窯の廃材の耐火レンガや窯道具を赤土で塗り固めた「トンバイ塀」が続く裏通り。泉山大イチョウ付近から有田陶磁美術館まで散策できる。",
+  "whatEn": "Backstreets lined with tonbai walls built from salvaged kiln bricks, kiln furniture, and red clay, running between the Izumiyama ginkgo and the Arita Ceramic Museum.",
+  "coords": [
+   33.19127,
+   129.89995
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

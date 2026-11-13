@@ -1,0 +1,90 @@
+[
+ {
+  "name": "宮沢賢治記念館",
+  "nameEn": "Miyazawa Kenji Memorial Museum",
+  "kind": "art",
+  "area": "矢沢・高松",
+  "areaEn": "Yazawa & Takamatsu",
+  "address": "花巻市矢沢1-1-36",
+  "url": "https://www.city.hanamaki.iwate.jp/miyazawakenji/kinenkan/index.html",
+  "what": "胡四王山の中腹にある、宮沢賢治の愛用品や原稿、図書資料などを通じて、詩や童話、農業、科学にわたる多面的な活動を紹介する記念館。南側に賢治設計の南斜花壇がある。",
+  "whatEn": "A memorial museum on Mount Koshio presenting Kenji Miyazawa's manuscripts, personal effects, and archives across poetry, stories, agriculture, and science, with his South-Slope Flowerbed on the grounds below.",
+  "coords": [
+   39.39911,
+   141.16243
+  ],
+  "notice": "開館は9時から16時30分。2026年4月より毎週火曜（祝日の場合は次の平日）と年末年始が休館。",
+  "noticeEn": "Open 9 am to 4:30 pm. From April 2026, closed Tuesdays (or the next weekday if a holiday) and over New Year.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "宮沢賢治童話村",
+  "nameEn": "Miyazawa Kenji Fairy Tale Village",
+  "kind": "art",
+  "area": "矢沢・高松",
+  "areaEn": "Yazawa & Takamatsu",
+  "address": "花巻市高松26-19",
+  "url": "https://www.city.hanamaki.iwate.jp/miyazawakenji/dowamura/index.html",
+  "what": "宮沢賢治の童話の世界を体験しながら学ぶ施設。5つの展示室がある「賢治の学校」や、植物・動物・星をテーマにしたログハウスの「賢治の教室」が森の中に点在する。",
+  "whatEn": "An open-air and indoor exhibition park exploring Kenji Miyazawa's fairy tales, with the five-zone School of Kenji and log-cabin classrooms for plants, animals, and stars set among the woods.",
+  "coords": [
+   39.39819,
+   141.16914
+  ],
+  "notice": "2026年11月24日は臨時開村、11月25日は臨時休村。",
+  "noticeEn": "Specially open on 24 November 2026 and specially closed on 25 November.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "花巻市博物館",
+  "nameEn": "Hanamaki City Museum",
+  "kind": "art",
+  "area": "矢沢・高松",
+  "areaEn": "Yazawa & Takamatsu",
+  "address": "花巻市高松26-8-1",
+  "url": "https://www.city.hanamaki.iwate.jp/bunkasports/bunka/1008981/index.html",
+  "what": "考古・歴史・美術工芸の三つの分野から花巻の文化を紹介する市立博物館。旧石器時代から近代までの資料や地域の美術工芸品を展示している。",
+  "whatEn": "Hanamaki's municipal museum covering archaeology, local history, and fine arts and crafts from the Paleolithic era to the modern period.",
+  "coords": [
+   39.39939,
+   141.16852
+  ],
+  "notice": "開館は9時から16時30分。2026年11月24日から12月4日は資料整理のため休館。毎週月曜（祝日の場合は次の平日）休。",
+  "noticeEn": "Open 9 am to 4:30 pm. Closed 24 November to 4 December 2026 for collection work, and closed Mondays (or the next weekday if a holiday).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "花巻城跡（鳥谷ヶ崎公園）",
+  "nameEn": "Hanamaki Castle Ruins (Toyagasaki Park)",
+  "kind": "sight",
+  "area": "大通り・上町",
+  "areaEn": "Odori & Kamicho",
+  "address": "花巻市城内",
+  "url": "https://www.kanko-hanamaki.ne.jp/spot/article.php?p=159",
+  "what": "稗貫氏の鳥谷ヶ崎城を前身に、1591年以降の南部氏時代に改修された花巻城の跡。本丸跡が鳥谷ヶ崎公園として整備され、復元された西御門や土塁・堀跡が残る。",
+  "whatEn": "Site of Hanamaki Castle, rebuilt by the Nanbu clan after 1591 on the earlier Toyagasaki Castle. The main bailey is now Toyagasaki Park, with a reconstructed West Gate, earthen ramparts, and moat traces.",
+  "coords": [
+   39.39189,
+   141.12021
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "高村光太郎記念館（高村山荘）",
+  "nameEn": "Takamura Kotaro Memorial Museum",
+  "kind": "art",
+  "area": "太田",
+  "areaEn": "Ota",
+  "address": "花巻市太田3-85-1",
+  "url": "https://hanamaki-takamura-kotaro.jp/",
+  "what": "彫刻家で詩人の高村光太郎が戦後7年間を過ごした太田村山口に建つ記念館。彫刻や書、直筆原稿を展示し、同敷地内に暮らした山小屋・高村山荘が残る。",
+  "whatEn": "Memorial museum in Ota where sculptor and poet Kotaro Takamura lived for seven years after the war, exhibiting his sculptures, calligraphy, and manuscripts alongside his preserved mountain hut.",
+  "coords": [
+   39.38809,
+   141.00576
+  ],
+  "notice": "開館は9時から16時30分。2026年4月より毎週月曜（祝日の場合は次の平日）と年末年始が休館。",
+  "noticeEn": "Open 9 am to 4:30 pm. From April 2026, closed Mondays (or the next weekday if a holiday) and over New Year.",
+  "verifiedAt": "2026-11-12"
+ }
+]
