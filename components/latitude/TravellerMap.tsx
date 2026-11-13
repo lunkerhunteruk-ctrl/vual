@@ -25,6 +25,7 @@ const INK = '#1e1d1b';
 const MUTE = '#78746c';
 const LAND = '#e3ddd1';
 const PAPER = '#f2eee7';
+const FACE = 26; // 2026-11-13 世界地図の人の名前の前に置く顔の丸（px）
 const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const PARALLELS = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]; // 5° おきの線は、寄った時だけ出す
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -130,6 +131,7 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
   const content = useRef<HTMLDivElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const wasEngaged = useRef(false);
+  const nameSide = useRef<Record<string, { side: 'right' | 'left'; top: number }>>({}); // 人の名前の置き場（毎回の描画で計算し直す）
 
   const stopsOf = (slug: string | undefined) => travellers.find((p) => p.slug === slug)?.stops.length ?? 0;
   const animating = !!anim && now < anim.t0 + anim.dur;
@@ -375,6 +377,29 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
               });
             })}
 
+            {(() => {
+              // 2026-11-13 ユーザー：人の名前が重ならないように（リヴとメイヴが重なった）。点の右 → 左 → 右上 → 右下 → 左上 → 左下の順に、
+              // ほかの人の点・名前とぶつからない所へ。px は、いまの見え方の 1 単位の大きさ（layout.cw / cam.w）から見当を付ける
+              const ppu = layout.cw / cam.w;
+              const P = travellers.map((p) => { const q = p.stops.at(-1) ?? p.home; return { slug: p.slug, x: (q.x - cam.x) * ppu, y: (q.y - cam.y) * ppu, w: FACE + 6 + p.name.length * 9 + 4, far: (q.x - cam.x) / cam.w > 0.7 }; });
+              const taken = P.map((d) => ({ x: d.x - 6, y: d.y - 6, w: 12, h: 12 }));
+              const hitR = (a: { x: number; y: number; w: number; h: number }, c: { x: number; y: number; w: number; h: number }) => a.x < c.x + c.w + 3 && c.x < a.x + a.w + 3 && a.y < c.y + c.h + 3 && c.y < a.y + a.h + 3;
+              nameSide.current = {};
+              for (const d of P) {
+                // 2026-11-13 名前の前に顔の丸（FACE px）。札の高さは顔の丸の高さ
+                const R = (dx: number, dy: number) => ({ x: d.x + dx, y: d.y + dy, w: d.w, h: FACE });
+                const mid = -FACE / 2, up = -FACE / 2 - FACE - 4, down = FACE / 2 + 4;
+                const cands: { side: 'right' | 'left'; top: number; r: ReturnType<typeof R> }[] = [
+                  { side: 'right', top: mid, r: R(10, mid) }, { side: 'left', top: mid, r: R(-10 - d.w, mid) },
+                  { side: 'right', top: up, r: R(10, up) }, { side: 'right', top: down, r: R(10, down) },
+                  { side: 'left', top: up, r: R(-10 - d.w, up) }, { side: 'left', top: down, r: R(-10 - d.w, down) },
+                ];
+                if (d.far) cands.sort((a, c) => Number(a.side === 'right') - Number(c.side === 'right'));
+                const pick = cands.find((c) => !taken.some((t) => !(t.x === d.x - 6 && t.y === d.y - 6) && hitR(c.r, t))) ?? cands[0];
+                taken.push(pick.r); nameSide.current[d.slug] = { side: pick.side, top: pick.top };
+              }
+              return null;
+            })()}
             {travellers.map((p, k) => {
               const last = p.stops.at(-1);
               const pos = last ?? p.home;
@@ -401,12 +426,27 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
                     <span className="relative h-[7px] w-[7px] rounded-full" style={{ background: INK }} />
                   </button>
                   {/* 名前。寄った人は、街の名前と札で分かるので隠す */}
-                  <span
-                    className={`pointer-events-none absolute top-[-6px] whitespace-nowrap text-[9px] uppercase tracking-[0.3em] transition-opacity duration-300 ${(pos.x - cam.x) / cam.w > 0.7 ? 'right-3' : 'left-3'} ${open ? 'md:invisible' : ''}`}
-                    style={{ color: INK, opacity: trail?.slug === p.slug && sel === p.slug ? 0 : dim ? 0.2 : 0.8 }}
-                  >
-                    {p.name}
-                  </span>
+                  {(() => {
+                    const ns = nameSide.current[p.slug] ?? { side: (pos.x - cam.x) / cam.w > 0.7 ? 'left' : 'right', top: -FACE / 2 };
+                    const moved = ns.top !== -FACE / 2;
+                    const ly = ns.top + FACE / 2;
+                    return (<>
+                      {moved && (
+                        // 上下にずらした時：点から顔の丸へ細い線（どの点の人か分かるように）
+                        <svg className="pointer-events-none absolute overflow-visible" style={{ left: 0, top: 0, width: 1, height: 1, opacity: dim ? 0.25 : 1 }} aria-hidden="true">
+                          <line x1={0} y1={ly > 0 ? 4 : -4} x2={ns.side === 'left' ? -10 - FACE / 2 : 10 + FACE / 2} y2={ly > 0 ? ly - FACE / 2 : ly + FACE / 2} stroke={MUTE} strokeWidth={0.8} />
+                        </svg>
+                      )}
+                      <span
+                        className={`pointer-events-none absolute flex items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.3em] transition-opacity duration-300 ${open ? 'md:invisible' : ''}`}
+                        style={{ color: INK, opacity: trail?.slug === p.slug && sel === p.slug ? 0 : dim ? 0.25 : 1, top: ns.top, flexDirection: ns.side === 'left' ? 'row-reverse' : 'row', ...(ns.side === 'left' ? { right: 10 } : { left: 10 }) }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={latAsset(`people/${p.slug}.jpg`)} alt="" width={FACE} height={FACE} loading="lazy" className="block shrink-0 rounded-full object-cover" style={{ width: FACE, height: FACE, maxWidth: 'none', boxShadow: `0 0 0 1.5px ${PAPER}` }} />
+                        <span style={{ opacity: 0.85, textShadow: `0 0 3px ${PAPER}, 0 0 2px ${PAPER}` }}>{p.name}</span>
+                      </span>
+                    </>);
+                  })()}
                   {open && (
                     <div className={`absolute top-[-30px] hidden w-max md:block ${flip ? 'right-4' : 'left-4'}`}>
                       <Card p={p} locale={locale} />

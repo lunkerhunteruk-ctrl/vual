@@ -86,6 +86,31 @@ function fit(box: [number, number, number, number], W: number, H: number, pad: {
 const textW = (s: string, px: number) => [...s].reduce((w, ch) => w + (/[　-鿿＀-￯]/.test(ch) ? px : px * 0.56), 0);
 const hit = (a: Rect, b: Rect, gap = 0) => a.x < b.x + b.w + gap && b.x < a.x + a.w + gap && a.y < b.y + b.h + gap && b.y < a.y + a.h + gap;
 
+// 2026-11-13 ユーザー：号の町の印（写真の丸＋名前）が重ならないように（エディンバラとホーリー島、金沢と鳥取）。
+// 点は動かさず、写真と名前の札だけを、決めた向き → 反対の向き → 上下にずらした所の順に、ほかの札・点とぶつからない所へ置く
+type PinIn = { q: PlaceCity; sx: number; sy: number; prefLeft: boolean };
+type PinOut = PinIn & { left: boolean; dy: number; rect: Rect };
+function placePins(list: PinIn[], W: number, H: number, nameOf: (q: PlaceCity) => string, avoid: Rect[] = []): PinOut[] {
+  const taken: Rect[] = [{ x: 0, y: 0, w: 130, h: 46 }, ...avoid, ...list.map((d) => ({ x: d.sx - 7, y: d.sy - 7, w: 14, h: 14 }))];
+  const out: PinOut[] = [];
+  for (const d of [...list].sort((a, b) => a.sy - b.sy)) {
+    const w = 14 + 8 + (d.q.issue ? 40 : 0) + Math.max(textW(nameOf(d.q), 15), 64);
+    const rectAt = (left: boolean, dy: number): Rect => ({ x: left ? d.sx + 7 - w : d.sx - 7, y: d.sy - 18 + dy, w, h: 36 });
+    const sides = [d.prefLeft, !d.prefLeft];
+    const cands: { left: boolean; dy: number }[] = [];
+    for (const dy of [0, 26, -26, 42, -42, 60, -60]) for (const left of sides) cands.push({ left, dy });
+    const ok = (c: { left: boolean; dy: number }) => {
+      const r = rectAt(c.left, c.dy);
+      if (r.x < 2 || r.x + r.w > W - 2 || r.y < 2 || r.y + r.h > H - 2) return false;
+      return !taken.some((t) => !(t.x === d.sx - 7 && t.y === d.sy - 7) && hit(r, t, 2));
+    };
+    const pick = cands.find(ok) ?? { left: d.prefLeft, dy: 0 };
+    const rect = rectAt(pick.left, pick.dy);
+    taken.push(rect); out.push({ ...d, left: pick.left, dy: pick.dy, rect });
+  }
+  return out;
+}
+
 // initial：最初から寄っておく国（国のページ。世界地図を通らない）。worldHref があれば「← 世界」はそのページへのリンク。
 // syncUrl：国へ寄った時に、アドレスを国のページ（/latitude/places/<国>）に合わせる（場所のページ）
 export default function PlacesMap({ countries: given, locale, src, initial, worldHref, syncUrl }: {
@@ -348,21 +373,32 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   // ── 国の段階（地方のある国）：号の町の写真の丸と、地方の数字の丸 ──
   // 数字の丸が出るか（地方に、号の町でない町がある時）。出ない時（本番の2町）は、号の町の名前の向きも今までどおり
   const anyBubble = regionMode && !reg && selC!.cities.some((q) => q.region && !(q.issue || q.upcoming));
-  const pins = regionMode && !reg ? selC!.cities.filter((q) => q.issue || q.upcoming).map((q) => {
+  const pins = regionMode && !reg ? placePins(selC!.cities.filter((q) => q.issue || q.upcoming).map((q) => {
     const p = pos(selC!.code, q);
     const { sx, sy } = toScreen(p.x, p.y);
     // 数字の丸がある時は、名前は国のまん中から外へ（金沢は日本海、盛岡は太平洋の側）。丸とぶつかりにくい
-    const left = anyBubble ? p.x < countryMid.x : sx > size.w - 170;
-    const w = 14 + 8 + (q.issue ? 40 : 0) + Math.max(textW(cityName(q), 15), 64);
-    return { q, sx, sy, left, rect: { x: left ? sx + 7 - w : sx - 7, y: sy - 18, w, h: 36 } };
-  }) : [];
+    return { q, sx, sy, prefLeft: anyBubble ? p.x < countryMid.x : sx > size.w - 170 };
+  }), size.w, size.h, cityName, regionMode && !reg ? regs!.filter((g) => {
+    // 地方の数字の丸が最初に来る所（丸と名前）も避ける。札が丸を押しのけて、丸が別の地方の所まで動かないように
+    const list = selC!.cities.filter((q) => q.region === g.key);
+    return list.length && !list.every((q) => q.issue || q.upcoming);
+  }).map((g) => {
+    const at = regionAt(selC!.code, g); const { sx, sy } = toScreen(at.x, at.y); const d = wide ? 34 : 30;
+    const w = Math.max(d, textW(ja ? g.ja : g.en, wide ? 13 : 12) * 1.08 + 4);
+    return { x: sx - w / 2, y: sy - d / 2, w, h: d + 16 };
+  }) : []) : [];
+  // 地方の無い国（イギリスなど）の町の印も、重ならない所へ
+  const plainPins = selC && !regionMode ? placePins(selC.cities.map((q) => {
+    const { sx, sy } = toScreen(q.x, q.y);
+    return { q, sx, sy, prefLeft: sx > size.w - 170 };
+  }), size.w, size.h, cityName) : [];
   const bubbles = regionMode && !reg ? regs!.map((g) => {
     const list = selC!.cities.filter((q) => q.region === g.key);
     if (!list.length || list.every((q) => q.issue || q.upcoming)) return null; // 号の町だけの地方は、写真の丸で足りる
     const n = list.length;
     const d = Math.round((wide ? 30 : 26) + Math.min(n, 16) * (wide ? 0.9 : 0.6));
     const name = ja ? g.ja : g.en;
-    const nw = textW(name, wide ? 13 : 12) + 4;
+    const nw = textW(name, wide ? 13 : 12) * 1.08 + 4; // 2026-11-13 名前の幅は見当より広め（Chugoku が九州の丸にかかった）
     const at = regionAt(selC!.code, g);
     const { sx, sy } = toScreen(at.x, at.y);
     return { g, list, n, d, name, x: sx, y: sy, w: Math.max(d, nw), h: d + 16 };
@@ -560,14 +596,13 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
         })}
 
         {/* 街の点（地方の無い国に寄った時）。押すと街の案内へ */}
-        {ready && selC && !regionMode && showCities && selC.cities.map((q) => {
-          const { sx, sy } = toScreen(q.x, q.y);
-          return <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={sx > size.w - 170} locale={locale} ja={ja} />;
-        })}
+        {ready && selC && !regionMode && showCities && plainPins.map(({ q, sx, sy, left, dy }) => (
+          <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={left} dy={dy} locale={locale} ja={ja} />
+        ))}
 
         {/* 国の段階（地方のある国）：号の町の写真の丸 */}
-        {ready && showCities && pins.map(({ q, sx, sy, left }) => (
-          <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={left} locale={locale} ja={ja} />
+        {ready && showCities && pins.map(({ q, sx, sy, left, dy }) => (
+          <CityPin key={q.slug} q={q} sx={sx} sy={sy} left={left} dy={dy} locale={locale} ja={ja} />
         ))}
 
         {/* 国の段階：地方の数字の丸。押すとその地方へ */}
@@ -694,7 +729,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
 }
 
 // 号の町の印（点＋号の表紙の小さな丸＋名前と緯度）。押すと街の案内へ
-function CityPin({ q, sx, sy, left, locale, ja }: { q: PlaceCity; sx: number; sy: number; left: boolean; locale: string; ja: boolean }) {
+function CityPin({ q, sx, sy, left, dy = 0, locale, ja }: { q: PlaceCity; sx: number; sy: number; left: boolean; dy?: number; locale: string; ja: boolean }) {
   return (
     <Link href={`/${locale}/latitude/places/${q.slug}`}
       className="group absolute z-[2] flex cursor-pointer items-center gap-2 hover:z-[3]"
@@ -702,6 +737,13 @@ function CityPin({ q, sx, sy, left, locale, ja }: { q: PlaceCity; sx: number; sy
       aria-label={ja ? `${q.nameJa}の案内（${q.latitude}）` : `${q.name} city guide (${q.latitude})`}>
       <span className="block h-[14px] w-[14px] shrink-0 rounded-full group-hover:scale-[1.4]"
         style={{ background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, transition: 'scale 180ms ease-out' }} />
+      {dy !== 0 && (
+        // 札を上下にずらした時：点から札の写真へ細い線
+        <svg className="pointer-events-none absolute overflow-visible" style={{ left: left ? 'auto' : 7, right: left ? 7 : 'auto', top: '50%', width: 1, height: 1 }} aria-hidden="true">
+          <line x1={0} y1={0} x2={left ? -14 : 14} y2={dy} stroke={MUTE} strokeWidth={0.8} />
+        </svg>
+      )}
+      <span className="flex items-center gap-2" style={{ position: 'relative', top: dy, flexDirection: left ? 'row-reverse' : 'row' }}>
       {q.issue && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={q.issue.cover} alt="" loading="lazy" className="block shrink-0 rounded-full object-cover" style={{ width: 32, height: 32, boxShadow: `0 0 0 2px ${PAPER}` }} />
@@ -713,6 +755,7 @@ function CityPin({ q, sx, sy, left, locale, ja }: { q: PlaceCity; sx: number; sy
         <span className="whitespace-nowrap text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
           {q.latitude}{q.upcoming ? (ja ? '・これから' : ' · Next') : ''}
         </span>
+      </span>
       </span>
     </Link>
   );
