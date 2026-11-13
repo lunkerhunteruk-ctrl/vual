@@ -12,7 +12,12 @@ import RoomCam from '@/components/latitude/RoomCam';
 import { CityDayRoute, CityRoute, CityWear, hasDayRoute, placeAnchor } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
-import { latAsset } from '@/lib/latitude-assets';
+import { latAsset, latAssetAbs } from '@/lib/latitude-assets';
+import BANNERS from '@/lib/latitude-banners.json';
+
+// 2026-11-13 町の頭の横長の写真（ウィキメディア・コモンズの自由に使える写真。撮った人と条件を写真の下に書く。選び方は vault.vual.jp tools/commons-town-photos.py）
+type Banner = { file: string; pos: string; alt: string; altJa: string; author: string; license: string; licenseUrl: string; source: string; w: number; h: number };
+const bannerOf = (slug: string) => (BANNERS as Record<string, Banner>)[slug];
 import { CityLocator } from '@/components/latitude/CityLocator';
 import { PLACES } from '@/lib/latitude-map';
 import { breadcrumbJsonLd, countryOfCity, getPlaceCountry, placeCountries } from '@/lib/latitude-places-index';
@@ -49,7 +54,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title,
     description,
     alternates: { canonical: `/${ja ? 'ja' : 'en'}${path}`, languages: { en: `/en${path}`, ja: `/ja${path}`, 'x-default': `/en${path}` } },
-    openGraph: { type: 'article', siteName: 'VUAL', title, description, url: `https://vual.jp/${ja ? 'ja' : 'en'}${path}` },
+    openGraph: { type: 'article', siteName: 'VUAL', title, description, url: `https://vual.jp/${ja ? 'ja' : 'en'}${path}`,
+      ...(bannerOf(c.slug) ? { images: [{ url: latAssetAbs(bannerOf(c.slug)!.file), alt: ja ? bannerOf(c.slug)!.altJa : bannerOf(c.slug)!.alt }] } : {}) },
   };
 }
 
@@ -144,7 +150,31 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       )}
       <PlacesJsonLd c={c} items={c.places} ja={ja} name={ja ? `${c.nameJa} — ${who}のおすすめ` : `${c.name} — where ${who} would go`} />
 
-      <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-16 md:pt-28">
+      {/* 2026-11-13 町の頭の横長の写真。ページのいちばん上（道しるべの上）。スマホは2:1、広い画面は5:2 */}
+      {bannerOf(c.slug) && (() => {
+        const b = bannerOf(c.slug)!;
+        return (
+          <figure className="mx-auto max-w-6xl px-4 pt-6 md:px-8 md:pt-10">
+            <span data-lat-photo className="relative block aspect-[2/1] w-full overflow-hidden md:aspect-[5/2]" style={{ background: '#e6e2da' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={latAsset(b.file)} alt={ja ? b.altJa : b.alt} width={b.w} height={b.h} fetchPriority="high"
+                className="absolute inset-0 block h-full w-full object-cover" style={{ objectPosition: b.pos, height: '100%' }} />
+            </span>
+            <figcaption className="mt-2 text-[11px] leading-relaxed" style={{ color: MUTE }}>
+              {ja ? b.altJa : b.alt}
+              <span className="mx-2">·</span>
+              {ja ? '写真：' : 'Photo: '}
+              <a href={b.source} target="_blank" rel="noopener" className="underline underline-offset-2" style={{ color: MUTE }}>{b.author}</a>
+              {' / '}
+              {b.licenseUrl
+                ? <a href={b.licenseUrl} target="_blank" rel="noopener license" className="underline underline-offset-2" style={{ color: MUTE }}>{b.license}</a>
+                : b.license}
+              {ja ? '（ウィキメディア・コモンズ）' : ' (Wikimedia Commons)'}
+            </figcaption>
+          </figure>
+        );
+      })()}
+      <header className={`mx-auto max-w-6xl px-4 pb-10 md:px-8 md:pb-16 ${bannerOf(c.slug) ? 'pt-8 md:pt-12' : 'pt-16 md:pt-28'}`}>
         {/* 2026-11-11 道しるべ：場所 › 国 › 街 */}
         {home ? (
           <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
@@ -175,6 +205,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <NowInCity place={c.issue ?? c.slug} coords={c.coords} name={ja ? c.nameJa : c.name} ja={ja} className="mt-7" />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
+
 
       {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
       <CityDayRoute c={c} ja={ja} who={who} locale={locale} />

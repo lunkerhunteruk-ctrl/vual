@@ -54,3 +54,5 @@ public/lp/videos/*.mp4
 # 2026-11-02 号のページ画像・動画は R2 から配信（scripts/latitude-assets-upload.mjs）。新しい号のページは git に入れない（og.jpg だけ入れる）
 /public/latitude/*/pages/
 /public/latitude/*/cover.jpg
+# 2026-11-13 町の頭の横長の写真（R2 から配信。git には入れない）
+/public/latitude/banners/
