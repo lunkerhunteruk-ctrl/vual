@@ -328,5 +328,59 @@
    48.19511,
    16.36342
   ]
+ },
+ {
+  "name": "Tostmann Trachten",
+  "nameEn": "Tostmann Trachten",
+  "category": "wear",
+  "area": "インネレ・シュタット（旧市街）",
+  "areaEn": "Innere Stadt",
+  "address": "Schottengasse 3a, 1010 Wien",
+  "url": "https://tostmann.at/",
+  "what": "オーストリアの民族衣装（ディアンドル）の老舗。自分たちの工房で縫った服と、天然素材の布を売る。",
+  "whatEn": "A long-running shop for Austrian dirndl and traditional dress, sewn in its own workshops, with natural-fibre cloth.",
+  "note": "ディアンドルでなくても、エプロン一枚から。",
+  "noteEn": "Not a whole dirndl. Start with an apron.",
+  "coords": [
+   48.21267,
+   16.36336
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "M. Maurer",
+  "nameEn": "M. Maurer",
+  "category": "wear",
+  "area": "ノイバウ",
+  "areaEn": "Neubau",
+  "address": "Kandlgasse 20, 1070 Wien",
+  "url": "https://www.mmaurer.at/",
+  "what": "ウィーンに残る、飾り紐の工房。民族衣装や仕立て服のための紐やリボン、房を中で織り、工場の店で売る。",
+  "whatEn": "A Viennese passementerie workshop that weaves braids, ribbons and tassels for traditional dress and couture, and sells them at the factory shop.",
+  "note": "古いコートも、紐一本で変わる。",
+  "noteEn": "One braid can change an old coat.",
+  "coords": [
+   48.2029,
+   16.34252
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "rosa mosa",
+  "nameEn": "rosa mosa",
+  "category": "wear",
+  "area": "ノイバウ",
+  "areaEn": "Neubau",
+  "address": "Richtergasse 1, 1070 Wien",
+  "url": "https://rosamosa.com/",
+  "what": "ノイバウの店とアトリエ。オーストリアとまわりの国の職人の手で少しずつ作る、革靴やクロッグ、手編みのニット。",
+  "whatEn": "A shop and studio in Neubau for leather shoes, clogs and hand-knits made in small runs by craftspeople in Austria and nearby.",
+  "note": "石畳の街には、底のしっかりした靴を。",
+  "noteEn": "A city of cobbles needs a sturdy sole.",
+  "coords": [
+   48.19929,
+   16.34915
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]

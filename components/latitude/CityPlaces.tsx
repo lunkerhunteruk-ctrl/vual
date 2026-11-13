@@ -8,6 +8,11 @@ import { latAsset } from '@/lib/latitude-assets';
 import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
 import { CARD_W } from '@/lib/latitude-card';
 import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
+import INDUSTRY_PHOTOS from '@/lib/latitude-industry-photos.json';
+
+// 2026-11-13 「〇〇ならでは」のカードの写真。key は「街/産業の key」
+type IndustryPhoto = { file: string; pos: string; alt: string; altJa: string; author: string; license: string; licenseUrl: string; source: string; w: number; h: number };
+const industryPhoto = (city: string, key: string) => (INDUSTRY_PHOTOS as Record<string, IndustryPhoto>)[`${city}/${key}`];
 
 // 2026-10-30 街のページと「街×種類」のページで共通の、店の並び。
 // 種類の見出しの横に旅人の1日の場面を1枚（その店の写真ではないと分かるように、店の行には置かない）。
@@ -72,7 +77,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
 }
 
 // 検索エンジン向けの店の一覧（ItemList）。店の種類ごとに schema.org の型を合わせる
-const TYPE: Record<PlaceCategory, string> = { local: 'LocalBusiness', craft: 'Store', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', cafe: 'CafeOrCoffeeShop' };
+const TYPE: Record<PlaceCategory, string> = { local: 'LocalBusiness', craft: 'Store', wear: 'ClothingStore', sweets: 'CafeOrCoffeeShop', food: 'Restaurant', cafe: 'CafeOrCoffeeShop' };
 export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: CityPlace[]; ja: boolean; name: string }) {
   const data = {
     '@context': 'https://schema.org',
@@ -132,6 +137,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
 }) {
   const label = ja ? sec.label.ja : sec.label.en;
   const im = sec.kind === 'category' ? c.categoryImages?.[sec.category] : undefined;
+  const ph = sec.kind === 'industry' ? industryPhoto(c.slug, sec.key) : undefined;
   const count = sec.items.length + (im ? 1 : 0) + (sec.about ? 1 : 0);
   const head = (
     <div className="flex flex-col gap-1">
@@ -151,9 +157,32 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
       <HScroller count={count} label={ja ? `${c.nameJa}の${label}` : `${label} in ${c.name}`} ja={ja} head={head}>
         {sec.about && (
           // その街ならではの仕事の説明は、列の最初のカードに（見出しの下に置くより縦が短い。字はそのまま）
-          <li className={`${CARD_W} flex shrink-0 snap-start flex-col justify-end p-5`} style={{ background: 'rgba(30,29,27,0.04)' }}>
-            <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
-            <p className="mt-3 text-[14px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
+          // 2026-11-13 カードの上に、その仕事の写真（ウィキメディア・コモンズの自由に使える写真。作者と条件をカードの下に）
+          <li className={`${CARD_W} flex shrink-0 snap-start flex-col`} style={{ background: 'rgba(30,29,27,0.04)' }}>
+            {ph && (
+              <span className="relative block aspect-[4/3] w-full overflow-hidden" style={{ background: '#e6e2da' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={latAsset(ph.file)} alt={ja ? ph.altJa : ph.alt} width={ph.w} height={ph.h} loading="lazy"
+                  className="absolute inset-0 block h-full w-full object-cover" style={{ objectPosition: ph.pos, height: '100%' }} />
+              </span>
+            )}
+            <div className="flex flex-1 flex-col justify-end p-5">
+              <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
+              <p className="mt-3 text-[14px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
+              {ph && (
+                <p className="mt-4 text-[10px] leading-relaxed" style={{ color: MUTE }}>
+                  {ja ? ph.altJa : ph.alt}
+                  <span className="mx-1.5">·</span>
+                  {ja ? '写真：' : 'Photo: '}
+                  <a href={ph.source} target="_blank" rel="noopener" className="underline underline-offset-2" style={{ color: MUTE }}>{ph.author}</a>
+                  {' / '}
+                  {ph.licenseUrl
+                    ? <a href={ph.licenseUrl} target="_blank" rel="noopener license" className="underline underline-offset-2" style={{ color: MUTE }}>{ph.license}</a>
+                    : ph.license}
+                  {ja ? '（ウィキメディア・コモンズ）' : ' (Wikimedia Commons)'}
+                </p>
+              )}
+            </div>
           </li>
         )}
         {sec.items.map((x) => (

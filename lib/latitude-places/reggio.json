@@ -366,5 +366,23 @@
    38.11154,
    15.6465
   ]
+ },
+ {
+  "name": "Leonardo Caliò",
+  "nameEn": "Leonardo Caliò",
+  "category": "wear",
+  "area": "チェントロ",
+  "areaEn": "Centro",
+  "address": "Via Aschenez, Reggio Calabria",
+  "url": "https://www.leonardocalio.it/",
+  "what": "町の中の工房と店。イタリアの革で、サンダルを手で仕立てる。",
+  "whatEn": "A workshop and shop in the centre making leather sandals by hand from Italian leather.",
+  "note": "ここで作ったサンダルで、ここを歩く。",
+  "noteEn": "Sandals made here, for walking here.",
+  "coords": [
+   38.10931,
+   15.64768
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]

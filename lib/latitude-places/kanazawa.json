@@ -424,5 +424,50 @@
   "noteEn": "A studio that shows the work in progress, not only the finished kimono.",
   "coords": [36.55603, 136.65985],
   "verifiedAt": "2026-11-01"
+ },
+ {
+  "name": "kimonodatta.",
+  "nameEn": "kimonodatta.",
+  "category": "wear",
+  "area": "ひがし茶屋街",
+  "areaEn": "Higashi Chaya",
+  "address": "金沢市東山2-6-2",
+  "url": "https://kimonodatta.com/",
+  "what": "古い町家の工房と店。受け継がれた着物の布（大島紬など）を、シャツやワンピースの普段着に仕立て直す。",
+  "whatEn": "A workshop and shop in an old townhouse that remakes inherited kimono cloth, such as Oshima tsumugi, into everyday shirts and dresses.",
+  "note": "着物は着られなくても、布なら毎日着られる。",
+  "noteEn": "If you won't wear a kimono, you can still wear the cloth every day.",
+  "coords": [36.57401, 136.66771],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "加賀友禅の店 ゑり華",
+  "nameEn": "Erihana (Kaga yuzen)",
+  "category": "wear",
+  "area": "竪町",
+  "areaEn": "Tatemachi",
+  "address": "金沢市竪町34",
+  "url": "https://www.erihana.jp/",
+  "what": "加賀友禅の着物と帯の店。友禅の柄のハンカチや風呂敷もあり、古い染め物の小さな展示も見られる。",
+  "whatEn": "A Kaga yuzen shop for kimono and obi, with yuzen-patterned handkerchiefs and furoshiki, and a small display of old dyed textiles.",
+  "note": "着物を買わなくても、風呂敷一枚から。",
+  "noteEn": "You do not need to buy a kimono. Start with one furoshiki.",
+  "coords": [36.55872, 136.65494],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "きもの処 凛屋",
+  "nameEn": "Rinya (kimono)",
+  "category": "wear",
+  "area": "弥生",
+  "areaEn": "Yayoi",
+  "address": "金沢市弥生2-21-7",
+  "url": "https://www.kd-rinya.com/",
+  "what": "明治40年からの呉服店。加賀友禅や牛首紬のほか、好きな鼻緒をすげて仕立てる草履もある。",
+  "whatEn": "A kimono shop since 1907, with Kaga yuzen and Ushikubi tsumugi, and zori sandals made up with the thongs you choose.",
+  "note": "草履は、鼻緒の色を選ぶところからが楽しい。",
+  "noteEn": "With zori, the fun starts with choosing the colour of the thong.",
+  "coords": [36.54691, 136.64539],
+  "verifiedAt": "2026-11-13"
  }
 ]

@@ -27,7 +27,7 @@ import { IMPORTED_CITIES } from './latitude-places-imported';
 // その店は category 'local' ＋ industry（街の industries の key）。ページは産業ごと（/latitude/places/<街>/<産業の key>。例 /latitude/places/kanazawa/gold-leaf）
 // 2026-11-11 ユーザー確認：種類は5つ（この街の仕事・工芸・甘味・ごはん・喫茶）。前の「抹茶」「コーヒー」は「喫茶（cafe）」に、「器」は「工芸（craft）」に。
 // 細かい違い（抹茶・コーヒー・器・ガラス・漆・布など）は店ごとの tags に持つ（今は表示しない）。古い種類のページのアドレスは next.config.ts で 301
-export type PlaceCategory = 'local' | 'craft' | 'sweets' | 'food' | 'cafe';
+export type PlaceCategory = 'local' | 'craft' | 'wear' | 'sweets' | 'food' | 'cafe'; // 2026-11-13 wear＝服と布（その土地の布や服を作る人の店）
 
 export type CityPlace = {
   name: string; // 正式な店名（日本語）
@@ -112,6 +112,7 @@ export type LatitudeCity = {
 export const CATEGORY_LABEL: Record<PlaceCategory, { en: string; ja: string }> = {
   local: { en: 'Made here', ja: 'この街の仕事' },
   craft: { en: 'Craft', ja: '工芸' },
+  wear: { en: 'Wear & cloth', ja: '服と布' },
   sweets: { en: 'Sweets', ja: '甘味' },
   food: { en: 'Food', ja: 'ごはん' },
   cafe: { en: 'Cafés', ja: '喫茶' },
@@ -897,7 +898,7 @@ export function areasOf(c: LatitudeCity) {
 // 2026-11-01 店の並びの「節」。その街ならではの産業（industries の順）を先に、そのあと飲食と器の種類。
 // 節の key がそのまま種類のページの URL（/latitude/places/<街>/<key>）になる。
 // 産業ごとにページを分けるのは、「金沢 金箔」「ウィーン 帽子」のように産業の名前で調べる人が多く、1ページ1つの言葉の方が検索で合うため。
-export const CATEGORY_ORDER: Exclude<PlaceCategory, 'local'>[] = ['craft', 'sweets', 'food', 'cafe'];
+export const CATEGORY_ORDER: Exclude<PlaceCategory, 'local'>[] = ['craft', 'wear', 'sweets', 'food', 'cafe'];
 // 古い種類の key（matcha・coffee）も、転送のために産業の key には使わない
 const RESERVED = new Set<string>([...CATEGORY_ORDER, 'local', 'area', 'matcha', 'coffee', 'art', 'sight', 'sights']);
 export type PlaceSection = {

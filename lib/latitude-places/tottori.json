@@ -334,5 +334,41 @@
    35.49811,
    134.22207
   ]
+ },
+ {
+  "name": "アートスペースからふる",
+  "nameEn": "Art Space Colorful",
+  "category": "wear",
+  "area": "元町",
+  "areaEn": "Moto-machi",
+  "address": "鳥取市元町101",
+  "url": "https://art-colorful.com/",
+  "what": "地元の作り手が、梨やカニなど鳥取にちなんだ絵を手で刷った手ぬぐいやTシャツ、バッグの店。",
+  "whatEn": "A shop of hand-printed tenugui, T-shirts and bags by local artists, with Tottori motifs such as pears and crabs.",
+  "note": "手ぬぐい一枚なら、旅のかばんにも入る。",
+  "noteEn": "One tenugui fits in any travel bag.",
+  "coords": [
+   35.49905,
+   134.23056
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "時代物専門店 風庵",
+  "nameEn": "Fuuan (antique kimono)",
+  "category": "wear",
+  "area": "南町",
+  "areaEn": "Minami-machi",
+  "address": "鳥取市南町511",
+  "url": "https://fuuan.jp/",
+  "what": "古い着物や帯、絣、はぎれなど、昔の和装の品を扱う店。",
+  "whatEn": "A shop of old kimono, obi, kasuri cloth and remnants.",
+  "note": "絣のはぎれは、小さくても柄がはっきりしている。",
+  "noteEn": "Even a small scrap of kasuri has a clear pattern.",
+  "coords": [
+   35.49989,
+   134.22545
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]
