@@ -432,6 +432,97 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   const mpp = size.w ? view.w / size.w : 4; // いまの 1px あたりのメートル
   const toScreen = (x: number, y: number) => ({ sx: ((x - view.x) / view.w) * size.w, sy: ((y - view.y) / h) * size.h });
 
+  // 2026-11-13 ユーザー：寄っている時は、1本指のドラッグで地図を動かす（Google マップと同じ）。2本指で拡大・縮小、2回タップで寄る。
+  // 全体が見えている時の1本指は、ページのスクロールのまま（地図の上で指を置いてもページが流れるように）。マウスはいつでもドラッグで動かせる。
+  const home = homeView();
+  const zoomed = !!base && size.w > 0 && (!!sel || view.w < home.w * 0.97 || Math.abs(view.x - home.x) > home.w * 0.03 || Math.abs(view.y - home.y) > home.w * 0.03);
+  const ptrs = useRef(new Map<number, { x: number; y: number }>());
+  const gest = useRef<{ v0: View; a: { x: number; y: number }[]; d0: number; m0: { x: number; y: number }; z: boolean } | null>(null);
+  const moved = useRef(false);
+  const dragEnd = useRef(0); // 動かし終えた時刻。直後に来るクリック（丸を押した・カードを閉じる）だけを止める
+  const lastTap = useRef<{ t: number; x: number; y: number } | null>(null);
+  const setStatic = (v: View) => { setAnim({ from: v, to: v, t0: 0, dur: 0 }); setNow(performance.now()); };
+  const curView = () => (anim ? viewAt(anim, performance.now(), r) : homeView());
+  const clampW = (w: number) => clamp(w, size.w * 0.4, home.w * 2.5); // 寄れるのは 1px＝0.4m まで、引けるのは全体の2.5倍まで
+  const local = (e: { clientX: number; clientY: number }) => {
+    const b = box.current!.getBoundingClientRect();
+    return { x: e.clientX - b.left, y: e.clientY - b.top };
+  };
+  // 画面の点 m0 にあった地図の位置を、画面の点 m に持ってきて、幅を w にした範囲
+  const around = (v0: View, m0: { x: number; y: number }, m: { x: number; y: number }, w: number): View => {
+    const k0 = v0.w / size.w, k = w / size.w;
+    return { x: v0.x + m0.x * k0 - m.x * k, y: v0.y + m0.y * k0 - m.y * k, w };
+  };
+  const startGesture = (z: boolean) => {
+    const pts = [...ptrs.current.values()];
+    const v0 = curView();
+    if (pts.length >= 2) {
+      const [a, b] = pts;
+      gest.current = { v0, a: pts, d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, m0: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, z };
+    } else gest.current = { v0, a: pts, d0: 1, m0: pts[0], z };
+  };
+  const onDown = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!box.current || !base || !size.w) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if ((e.target as Element).closest('aside')) return; // 広い画面で地図に重ねたカードの上は除く
+    ptrs.current.set(e.pointerId, local(e));
+    if (ptrs.current.size === 1) moved.current = false;
+    startGesture(zoomed || e.pointerType === 'mouse');
+  };
+  const onMove = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!ptrs.current.has(e.pointerId) || !gest.current) return;
+    ptrs.current.set(e.pointerId, local(e));
+    const g = gest.current;
+    const pts = [...ptrs.current.values()];
+    if (pts.length >= 2) { // 2本指：つまんで拡大・縮小しながら動かす
+      const [a, b] = pts;
+      const d = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      moved.current = true;
+      setStatic(around(g.v0, g.m0, { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 }, clampW((g.v0.w * g.d0) / d)));
+      return;
+    }
+    if (!g.z) return; // 全体の時の1本指はページのスクロール
+    const dx = pts[0].x - g.a[0].x, dy = pts[0].y - g.a[0].y;
+    if (!moved.current && Math.hypot(dx, dy) < 6) return; // 押しただけ（丸を押す・カードを閉じる）と分ける
+    if (!moved.current) { try { box.current?.setPointerCapture(e.pointerId); } catch {} }
+    moved.current = true;
+    const k = g.v0.w / size.w;
+    setStatic({ x: g.v0.x - dx * k, y: g.v0.y - dy * k, w: g.v0.w });
+  };
+  const onUp = (e: RPointerEvent<HTMLDivElement>) => {
+    const p = ptrs.current.get(e.pointerId);
+    if (!p) return;
+    ptrs.current.delete(e.pointerId);
+    if (ptrs.current.size) { startGesture(true); return; } // 2本指から1本指に戻った：残りの指で続けて動かす
+    gest.current = null;
+    if (moved.current) dragEnd.current = performance.now();
+    if (e.type !== 'pointerup' || e.pointerType !== 'touch' || moved.current) return;
+    // 2回タップ：その場所へ2倍に寄る
+    const t = performance.now(), L = lastTap.current;
+    if (L && t - L.t < 320 && Math.hypot(L.x - p.x, L.y - p.y) < 30) {
+      lastTap.current = null;
+      const v = curView();
+      flyView(around(v, p, p, clampW(v.w / 2)));
+    } else lastTap.current = { t, x: p.x, y: p.y };
+  };
+  // パソコンのトラックパッドでつまむ（ctrl ＋ ホイール）と拡大・縮小。ふつうのホイールはページのスクロールのまま
+  const wheelRef = useRef<(e: WheelEvent) => void>(() => {});
+  useEffect(() => {
+    wheelRef.current = (e: WheelEvent) => {
+      if (!e.ctrlKey || !base || !size.w) return;
+      e.preventDefault();
+      const p = local(e), v = curView();
+      setStatic(around(v, p, p, clampW(v.w * Math.exp(e.deltaY * 0.01))));
+    };
+  });
+  useEffect(() => {
+    const el = box.current;
+    if (!el) return;
+    const f = (e: WheelEvent) => wheelRef.current(e);
+    el.addEventListener('wheel', f, { passive: false });
+    return () => el.removeEventListener('wheel', f);
+  }, []);
+
   // 丸の大きさ：写真のある店は、寄った時だけ写真の丸になる
   const big = (p: ShopPin) => !!p.photo && mpp < 1.6;
   const dia = (p: ShopPin) => (big(p) ? 32 : p.id === sel ? 22 : 12);
@@ -573,7 +664,9 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
       <div
         ref={box}
         className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[16/9]"
-        style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '82vh', touchAction: 'pan-y' }}
+        style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '82vh', touchAction: zoomed ? 'none' : 'pan-y', cursor: zoomed ? 'grab' : undefined }}
+        onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}
+        onClickCapture={(e) => { if (performance.now() - dragEnd.current < 400) { dragEnd.current = 0; e.stopPropagation(); e.preventDefault(); } }}
         onClick={(e) => { if (sel && !(e.target as Element).closest('button, a, aside')) goTo(null); }}
       >
         {ready && (
@@ -697,7 +790,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           </p>
         )}
 
-        {ready && sel && (
+        {ready && (sel || zoomed) && (
           <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] text-[10px] uppercase tracking-[0.3em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
             {ja ? '← 全体へ' : '← Whole map'}
