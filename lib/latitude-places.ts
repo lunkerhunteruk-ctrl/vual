@@ -16,6 +16,7 @@ import haworth from './latitude-places/haworth.json';
 import morioka from './latitude-places/morioka.json';
 import reggio from './latitude-places/reggio.json';
 import faro from './latitude-places/faro.json';
+import holyIsland from './latitude-places/holy-island.json';
 import kanazawaSights from './latitude-sights/kanazawa.json';
 import moriokaSights from './latitude-sights/morioka.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
@@ -807,6 +808,66 @@ export const CITIES: LatitudeCity[] = [
     places: faro as CityPlace[],
     industries: [
       { key: "gotland-food", en: "Gotland food", ja: "ゴットランドの郷土食", about: "Gotland saffron pancake (saffranspannkaka) is baked with milk and rice and served with salmbär, a dewberry jam. The cottage café in the Bunge open-air museum serves it.", aboutJa: "ゴットランドのサフランパンケーキは、牛乳と米で焼き、サルムベリ（ブラックベリーの仲間）のジャムを添える。ブンゲ野外博物館の中の小屋のカフェで出している。" },
+    ],
+  },
+  // 2026-11-13 ホーリー島（メイヴ・号 holy-island）。潮で道が開いて閉じる1日。店は島の村と、道の本土側（ビール）だけ（Hydrogen が集めて公式で確かめた）。
+  // 写真は号の静止画（vault.vual.jp outputs/latitude-maeve-inismor-20261109/PICKS2.json）を 9:16 に切った物。泥の中を歩くカット2は使わない
+  {
+    slug: 'holy-island',
+    name: 'Holy Island',
+    nameJa: 'ホーリー島',
+    latitude: '55.7° N',
+    country: 'Northumberland, England',
+    countryJa: 'イギリス・ノーサンバーランド',
+    countryCode: 'GB',
+    person: 'maeve',
+    issue: 'holy-island',
+    intro: 'Maeve spent one cold, clear November day here, between two tides: across the causeway as the sea let it go in the morning, the lime kilns and the boat sheds under the castle, the priory at noon, tea on the dunes as the road went under the sea, and a cottage in the village for the night.',
+    introJa: 'メイヴが11月の晴れて冷たい1日を、2つの潮のあいだで過ごした島。朝、海が手放したばかりの道を渡り、城の下の石灰窯と船の物置へ。昼は修道院跡。夕方、道が海の下に消えるのを砂丘の土手で紅茶を飲みながら見て、夜は村の家に泊まる。',
+    images: [
+      { file: 'causeway.jpg', alt: 'The causeway at low tide, still wet with seaweed, a refuge hut on legs', altJa: '潮が引いたばかりの道と、脚の上の避難小屋' },
+      { file: 'boats.jpg', alt: 'Maeve reading by an upturned boat shed, the castle on its rock behind her', altJa: 'ひっくり返した船の物置のそばで本を読むメイヴ。うしろに岩の上の城' },
+      { file: 'priory.jpg', alt: 'Maeve walking past the red sandstone arch of the priory', altJa: '修道院跡の赤い砂岩のアーチの前を歩くメイヴ' },
+      { file: 'tide.jpg', alt: 'The road under the evening tide, Maeve small on the bank with a flask', altJa: '夕方の潮で海の下になった道。土手に小さく座るメイヴ' },
+      { file: 'cottage.jpg', alt: 'Maeve turning an old key in the door of a whitewashed cottage', altJa: '白い漆喰の家の戸で、古い鍵を回すメイヴ' },
+    ],
+    // 店の位置と、メイヴの1日の位置（Hydrogen が地図のデータで確かめた）。宿は架空なので位置を付けない
+    shopMap: true,
+    places: holyIsland as CityPlace[],
+    industries: [
+      { key: "mead-and-spirits", en: "Island mead and spirits", ja: "島の蜂蜜酒と蒸留酒", about: "Lindisfarne Mead has been made at St Aidan's Winery on Holy Island since 1968, from white grapes, honey, herbs and water from the island's well. On the same island, 793 Spirits distils gin, honey vodka and rum in small batches.", aboutJa: "リンディスファーン・ミードは1968年から、ホーリー島のセント・エイダンズ・ワイナリーで造られている。白ブドウと蜂蜜とハーブ、それに島の井戸の水から。同じ島で、793スピリッツがジンや蜂蜜のウォッカ、ラムを少しずつ蒸留している。" },
+    ],
+    wear: {
+      season: 'November',
+      seasonJa: '11月',
+      facts: [
+        { en: 'At Boulmer, the nearest Met Office climate station down the coast, November averages about 10°C by day and 4°C at night (1991–2020).', ja: '海岸ぞいでいちばん近いブールマーの観測所では、11月は昼10℃前後、夜4℃前後（1991〜2020年の平年値）。' },
+        { en: 'The wind comes off the North Sea across the open sands, and the sun sets around four.', ja: '北海からの風が、さえぎる物のない干潟を渡ってくる。日の入りは4時ごろ。' },
+        { en: 'The causeway is only safe between the tides: check the crossing times on the Northumberland County Council table before you go, and plan to stay the night if you miss them.', ja: '道を渡れるのは潮のあいだだけ。行く前に、ノーサンバーランド県の渡れる時間の表を見る。乗り遅れたら島に泊まるつもりで。' },
+      ],
+      looks: [
+        { time: '09:45', image: 'kilns.jpg',
+          items: 'A knee-length khaki chunky cable-knit wrap coat with a knitted belt, over an ink-blue and white striped shirt; dark grey straight trousers with a slit at the hem, burgundy leather ballet pumps.',
+          itemsJa: 'ひざ丈のカーキの太いケーブル編みのラップコートに、編みのベルト。中は紺と白のストライプのシャツ。すそにスリットの入ったダークグレーのまっすぐなパンツ、ボルドーの革のバレエシューズ。',
+          note: 'Flat shoes for the sands, and expect to empty them.', noteJa: '干潟は平らな靴で。砂は入るものと思っておく。' },
+        { time: '10:05', image: 'boats.jpg',
+          items: 'The coat belted, the collar up; an espresso-brown crescent hobo bag on the shoulder.',
+          itemsJa: 'コートはベルトを締めて、襟を立てる。肩にエスプレッソブラウンの三日月形のホーボーバッグ。',
+          note: 'Out of the wind behind the boat sheds, a book.', noteJa: '船の物置の陰は風がない。そこで本を開く。' },
+        { time: '16:12', image: 'tea.jpg',
+          items: 'At dusk, the same coat closed to the stand collar, the shirt cuffs showing.',
+          itemsJa: '夕暮れは、同じコートを立ち襟まで閉じて。シャツの袖口だけがのぞく。',
+          note: 'A flask of tea for the bank, while the sea closes the road.', noteJa: '海が道を閉じるあいだ、土手で飲む魔法瓶の紅茶。' },
+      ],
+    },
+    route: [
+      { time: '08:12', place: "I The Causeway", placeJa: "I 潮の道", what: "The road the tide has just let go, still wet with seaweed.", whatJa: "潮が引いたばかりの道。路面にはまだ海藻が残る。", image: 'causeway.jpg', near: ["The Barn at Beal"], coords: [55.67908, -1.86643], short: 'Causeway', shortJa: '潮の道', gmaps: 'Holy Island Causeway refuge' },
+      { time: '09:45', place: "The lime kilns", placeJa: "石灰窯", what: "Sitting on a low step under the stone arches, emptying sand from a shoe.", whatJa: "石のアーチの下の低い段に腰かけて、靴の砂をあける。", image: 'kilns.jpg', coords: [55.66887, -1.78177], short: 'Lime kilns', shortJa: '石灰窯', gmaps: 'Lindisfarne Lime Kilns' },
+      { time: '10:05', place: "II Castle Point", placeJa: "II 城の岬", what: "A book open by the upturned boat sheds, the castle on its rock behind her.", whatJa: "ひっくり返した船の物置のそばで本を開く。うしろに岩の上の城。", image: 'boats.jpg', near: ["Causeway Café"], coords: [55.66908, -1.78398], short: 'Castle Point', shortJa: '城の岬', gmaps: 'Lindisfarne Castle' },
+      { time: '12:40', place: "III The Priory", placeJa: "III 修道院跡", what: "Walking the lane past the red sandstone arch, a sandwich in hand.", whatJa: "赤い砂岩のアーチの前の小道を、サンドイッチを手に歩く。", image: 'priory.jpg', near: ["The Crown & Anchor Inn", "St Aidan's Winery (Lindisfarne Mead)", "Pilgrims Coffee House & Roastery"], coords: [55.66913, -1.80090], short: 'Priory', shortJa: '修道院跡', gmaps: 'Lindisfarne Priory' },
+      { time: '15:15', place: "IV The Tide", placeJa: "IV 潮", what: "On the dune bank at the island end, watching the last car leave.", whatJa: "島の側の砂丘の土手で、最後の車が本土へ帰るのを見送る。", image: 'dunes.jpg', coords: [55.67695, -1.80457], short: 'Chare Ends', shortJa: '島の側の土手', gmaps: 'Chare Ends Holy Island' },
+      { time: '16:10', place: "The road under the sea", placeJa: "海の下の道", what: "The road gone under the evening tide; tea from a flask on the bank.", whatJa: "夕方の潮で道は海の下。土手で魔法瓶の紅茶を注ぐ。", image: 'tide.jpg', coords: [55.67702, -1.80465], short: 'Chare Ends', shortJa: '島の側の土手', gmaps: 'Chare Ends Holy Island' },
+      { time: '16:55', place: "V The Cottage", placeJa: "V 宿", what: "An old iron key, and warm light from the door.", whatJa: "古い鉄の鍵を回すと、戸の内から暖かい光。", image: 'cottage.jpg' },
     ],
   },
   // 号のない町（images は空・route なし。ページは凛のおすすめと店の地図・自分でルートを組む・国の位置の図まで）

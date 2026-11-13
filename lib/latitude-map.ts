@@ -25,6 +25,7 @@ export const PLACES: Record<string, [number, number]> = {
   reggio: [38.11, 15.65],
   morioka: [39.70, 141.15],
   tottori: [35.54, 134.23], // 鳥取砂丘
+  'holy-island': [55.68, -1.80], // 2026-11-13 ホーリー島（旅の地図に出ていなかった）
 };
 
 // 6人の住む街（person slug → [緯度, 経度]）

@@ -1,0 +1,201 @@
+[
+ {
+  "name": "St Aidan's Winery (Lindisfarne Mead)",
+  "nameEn": "St Aidan's Winery (Lindisfarne Mead)",
+  "category": "local",
+  "industry": "mead-and-spirits",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "9 St Cuthbert's Square, Holy Island, TD15 2RX",
+  "url": "https://www.lindisfarnemead.com/",
+  "what": "島で名物の蜂蜜酒リンディスファーン・ミードを造る醸造所兼直売所。スパイスやダークなど多彩な銘柄の無料試飲も行う。",
+  "whatEn": "Island winery and showroom producing the fortified honey wine Lindisfarne Mead, plus spiced, dark, and fruit varieties with free tastings.",
+  "note": "ミードは、島の井戸の水で造る。",
+  "noteEn": "The mead is made with water from the island's well.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.6707,
+   -1.80227
+  ]
+ },
+ {
+  "name": "793 Spirits (Spirit & Soul)",
+  "nameEn": "793 Spirits (Spirit & Soul)",
+  "category": "local",
+  "industry": "mead-and-spirits",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "6 Fenkle Street, Holy Island, TD15 2SR",
+  "url": "https://www.793spirits.co.uk/",
+  "what": "ホーリー島で少量生産のジンや野生花蜂蜜ウォッカ、スパイスドラムを手がける蒸留所の直営店・バー。",
+  "whatEn": "Holy Island's small-batch distillery shop and cocktail space, crafting Creed & Tide gin, wildflower honey vodka, and spiced rum.",
+  "note": "ジンもウォッカも、この島で少しずつ蒸留している。",
+  "noteEn": "The gin and the vodka are distilled on the island, a little at a time.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67023,
+   -1.80058
+  ]
+ },
+ {
+  "name": "Pilgrims Coffee House & Roastery",
+  "nameEn": "Pilgrims Coffee House & Roastery",
+  "category": "cafe",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Marygate, Holy Island, TD15 2SJ",
+  "url": "https://www.pilgrimscoffee.com/",
+  "what": "島内で自家焙煎する家族経営のコーヒーハウス。自家製ケーキや植物性素材の焼き菓子も揃う。",
+  "whatEn": "Family-run micro-roastery and coffee house roasting traceable beans on-site and serving homemade cakes and plant-friendly bakes.",
+  "note": "豆はこの島で焙煎している。開く時間は潮で変わるので、渡る前に見る。",
+  "noteEn": "The beans are roasted on the island. Hours follow the tide, so check before you cross.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67111,
+   -1.80077
+  ]
+ },
+ {
+  "name": "The Crown & Anchor Inn",
+  "nameEn": "The Crown & Anchor Inn",
+  "category": "food",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Market Place, Holy Island, TD15 2RX",
+  "url": "https://www.holyislandcrown.co.uk/",
+  "what": "マーケット広場に面した独立系の村のパブ兼イン。地元産ハドックのフィッシュ＆チップスや季節料理、カスクエールを提供する。",
+  "whatEn": "Independent village pub and inn overlooking the market place, serving seasonal pub dishes, locally sourced haddock fish and chips, and cask ales.",
+  "note": "夕食は予約してから渡る。",
+  "noteEn": "Book dinner before you cross.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.66996,
+   -1.80063
+  ]
+ },
+ {
+  "name": "Causeway Café",
+  "nameEn": "Causeway Café",
+  "category": "cafe",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Castle Road, Holy Island, TD15 2SX",
+  "what": "リンディスファーン城へ向かう道沿いの小さなカフェ。地元のカニのサンドイッチやスコーン、温かい飲み物を出す。",
+  "whatEn": "Small café along the road toward Lindisfarne Castle serving breakfast rolls, local crab sandwiches, scones, cakes, and hot drinks.",
+  "note": "城へ歩く道の途中。地元のカニのサンドイッチ。",
+  "noteEn": "On the walk to the castle. Local crab sandwiches.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67097,
+   -1.79647
+  ]
+ },
+ {
+  "name": "Pilgrims Gelato (The Oat Kitchen)",
+  "nameEn": "Pilgrims Gelato (The Oat Kitchen)",
+  "category": "sweets",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Marygate, Holy Island, TD15 2SJ",
+  "url": "https://theoatkitchen.co.uk/",
+  "what": "オーツミルクを使ったヴィーガン・グルテンフリーのジェラートやファッジ、ブラウニーを手作りする専門店。",
+  "whatEn": "Artisan scoop shop and bakery kitchen crafting vegan, gluten-free oat-milk gelato, fudge, brownies, and loaded cookies.",
+  "note": "オーツミルクのジェラート。風の日でも一つ。",
+  "noteEn": "Oat-milk gelato. One, even in the wind.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67117,
+   -1.80063
+  ]
+ },
+ {
+  "name": "Holy Island Crafts",
+  "nameEn": "Holy Island Crafts",
+  "category": "craft",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "The Knottery, Holy Island, TD15 2RX",
+  "url": "https://holyislandcrafts.co.uk/",
+  "what": "漁師の古ロープで編む聖カスバートの十字架や手編みのウール小物、フェルト作品を制作する島の工房。",
+  "whatEn": "Island makers crafting traditional Cuthbert's crosses from repurposed fisherman's rope alongside hand-knitted wool, crochet, and felted pieces.",
+  "note": "漁師の古いロープで編んだ、聖カスバートの十字架。",
+  "noteEn": "St Cuthbert's crosses knotted from old fishermen's rope.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.66982,
+   -1.80119
+  ],
+  "coordsApprox": true
+ },
+ {
+  "name": "Lindisfarne Scriptorium",
+  "nameEn": "Lindisfarne Scriptorium",
+  "category": "craft",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Marygate, Holy Island, TD15 2SJ",
+  "url": "https://www.lindisfarne-scriptorium.co.uk/",
+  "what": "島の書家メアリー・フリーソンの工房。ケルト写本風の装飾画やカード、本、毎年恒例の島カレンダーを手がける。",
+  "whatEn": "Studio of island calligrapher Mary Fleeson, producing Celtic-inspired illuminated prints, greeting cards, books, and annual island calendars.",
+  "note": "島の書家の工房。冬は開く日が少ない。",
+  "noteEn": "An island calligrapher's studio. Fewer open days in winter.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67136,
+   -1.80033
+  ]
+ },
+ {
+  "name": "Celtic Crafts",
+  "nameEn": "Celtic Crafts",
+  "category": "craft",
+  "area": "ホーリー島の村",
+  "areaEn": "Holy Island village",
+  "address": "Front Street, Holy Island, TD15 2RX",
+  "url": "https://celticcrafts.info/",
+  "what": "築400年のコテージで営む家族経営の工芸店。ケルト文様の銀やピューターの装身具、ガラス工芸品を扱う。",
+  "whatEn": "Family-owned shop in a 400-year-old cottage selling Celtic silver and pewter jewellery, glasswork, and Northumbrian gifts.",
+  "note": "築400年の家の中の店。",
+  "noteEn": "A shop inside a 400-year-old cottage.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67116,
+   -1.80046
+  ]
+ },
+ {
+  "name": "The Barn at Beal",
+  "nameEn": "The Barn at Beal",
+  "category": "food",
+  "area": "ビールとフェンウィック（道の本土側）",
+  "areaEn": "Beal and Fenwick",
+  "address": "Beal Farm, Beal, Berwick-upon-Tweed, TD15 2PB",
+  "url": "https://thebarnatbeal.co.uk/",
+  "what": "コーズウェイとホーリー島を一望する19世紀の石造納屋を改装したレストラン兼カフェ。地元食材の料理や自家製ケーキ、クラフト雑貨も並ぶ。",
+  "whatEn": "Converted 19th-century stone barn overlooking the causeway and Holy Island, with a restaurant, coffee shop, Bothy Bar, and small local craft retail corner.",
+  "note": "渡る前に、道と島が見える席で。",
+  "noteEn": "Before you cross, a table that looks at the road and the island.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.67809,
+   -1.89579
+  ]
+ },
+ {
+  "name": "Bean Genie Coffee House",
+  "nameEn": "Bean Genie Coffee House",
+  "category": "cafe",
+  "area": "ビールとフェンウィック（道の本土側）",
+  "areaEn": "Beal and Fenwick",
+  "address": "The Old Fenwick Village Hall, Fenwick, TD15 2PJ",
+  "what": "セント・カスバート・ウェイ沿いの旧村集会所にある自家焙煎カフェ。挽きたてのコーヒーと手作りケーキやパイを出す。",
+  "whatEn": "Small-batch coffee roastery and café in the old Fenwick village hall along St Cuthbert's Way, serving freshly roasted coffee, homemade cakes, and pies.",
+  "note": "セント・カスバート・ウェイを歩く人が寄る、村の集会所のカフェ。",
+  "noteEn": "A café in the old village hall, on St Cuthbert's Way.",
+  "verifiedAt": "2026-11-13",
+  "coords": [
+   55.65357,
+   -1.89584
+  ]
+ }
+]
