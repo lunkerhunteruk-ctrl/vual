@@ -47,6 +47,18 @@
   "w": 1600,
   "h": 1200
  },
+ "copenhagen": {
+  "file": "banners/copenhagen.jpg",
+  "pos": "50% 50%",
+  "alt": "Copenhagen’s rooftops and spires from Christiansborg Palace",
+  "altJa": "クリスチャンスボー城の塔から見たコペンハーゲンの屋根と尖塔",
+  "author": "Pudelek",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Copenhagen_-_view_from_Christiansborg_castle.jpg",
+  "w": 1600,
+  "h": 971
+ },
  "echizen": {
   "file": "banners/echizen.jpg",
   "pos": "50% 25%",
@@ -58,6 +70,42 @@
   "source": "https://commons.wikimedia.org/wiki/File:Otaki_Shrine_2.jpg",
   "w": 1600,
   "h": 1200
+ },
+ "edinburgh": {
+  "file": "banners/edinburgh.jpg",
+  "pos": "50% 50%",
+  "alt": "Edinburgh from the air: Princes Street, the Castle and Arthur’s Seat",
+  "altJa": "上空から見たエディンバラ。プリンセス・ストリートと城、アーサーズ・シート",
+  "author": "瑞丽江的河水",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Edinburgh_cityscapes_-_aerial_-_2025-04-19_20.jpg",
+  "w": 1600,
+  "h": 900
+ },
+ "faro": {
+  "file": "banners/faro.jpg",
+  "pos": "50% 55%",
+  "alt": "Limestone sea stacks (raukar) on the shore of Fårö",
+  "altJa": "フォーレ島の海辺に立つ石灰岩の奇岩（ラウカル）",
+  "author": "allen watkin",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rauks_(3881539849).jpg",
+  "w": 1600,
+  "h": 1071
+ },
+ "fujiyoshida": {
+  "file": "banners/fujiyoshida.jpg",
+  "pos": "50% 45%",
+  "alt": "The Chureito Pagoda and Mount Fuji in autumn, above Fujiyoshida",
+  "altJa": "秋の忠霊塔と富士山。下に富士吉田の街",
+  "author": "Dang Son",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "https://commons.wikimedia.org/wiki/File:12-Chureito-pagoda-and-Mount-Fuji-Japan_(29677439878).jpg",
+  "w": 1600,
+  "h": 900
  },
  "hachinohe": {
   "file": "banners/hachinohe.jpg",
@@ -143,6 +191,18 @@
   "w": 1600,
   "h": 1200
  },
+ "holy-island": {
+  "file": "banners/holy-island.jpg",
+  "pos": "50% 50%",
+  "alt": "Boats on the tidal flats, with Lindisfarne Castle on its hill",
+  "altJa": "干潟の小舟と、丘の上のリンディスファーン城",
+  "author": "Michael D Beckwith",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Holy_Island_Lindisfarne_Castle.jpg",
+  "w": 1600,
+  "h": 688
+ },
  "ise": {
   "file": "banners/ise.jpg",
   "pos": "50% 50%",
@@ -188,6 +248,18 @@
   "license": "CC BY-SA 3.0",
   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
   "source": "https://commons.wikimedia.org/wiki/File:Bukeyashiki_Street_in_Kakunodate_20060926.jpg",
+  "w": 1600,
+  "h": 1200
+ },
+ "kanazawa": {
+  "file": "banners/kanazawa.jpg",
+  "pos": "50% 55%",
+  "alt": "A quiet street in the Higashi Chaya district",
+  "altJa": "ひがし茶屋街の静かな通り",
+  "author": "Sjaak Kempe",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:20131007_36_Kanazawa_-_Higashi_Chaya_District_(10477160465).jpg",
   "w": 1600,
   "h": 1200
  },
@@ -275,6 +347,18 @@
   "w": 1600,
   "h": 1200
  },
+ "london": {
+  "file": "banners/london.jpg",
+  "pos": "50% 55%",
+  "alt": "Tower Bridge and the Thames at dusk",
+  "altJa": "夕暮れのタワーブリッジとテムズ川",
+  "author": "Ilya Grigorik",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:London_Skyline_(125508655).jpeg",
+  "w": 1600,
+  "h": 900
+ },
  "mashiko": {
   "file": "banners/mashiko.jpg",
   "pos": "50% 50%",
@@ -286,6 +370,30 @@
   "source": "https://commons.wikimedia.org/wiki/File:Mashiko_Museum_of_Ceramic_Art,_Jan._2023.jpg",
   "w": 1600,
   "h": 1200
+ },
+ "milan": {
+  "file": "banners/milan.jpg",
+  "pos": "50% 60%",
+  "alt": "Milan Cathedral and the Galleria Vittorio Emanuele II on Piazza del Duomo",
+  "altJa": "ドゥオーモ広場の大聖堂と、ヴィットーリオ・エマヌエーレ2世のガッレリア",
+  "author": "Steffen Schmitz",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Milano,_Duomo_with_Milan_Cathedral_and_Galleria_Vittorio_Emanuele_II,_2016.jpg",
+  "w": 1600,
+  "h": 938
+ },
+ "morioka": {
+  "file": "banners/morioka.jpg",
+  "pos": "50% 50%",
+  "alt": "Morioka and Mount Iwate across the Kitakami River",
+  "altJa": "北上川の向こうの盛岡の街と岩手山",
+  "author": "Yuichi Shiraishi",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Morioka_and_Mount_Iwate_and_River_Kitakami_in_May_2019.jpg",
+  "w": 1600,
+  "h": 1067
  },
  "nagasaki": {
   "file": "banners/nagasaki.jpg",
@@ -394,6 +502,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Stretto_Di_Messina_Reggio_Calabria_Tramonto_(120307611).jpeg",
   "w": 1600,
   "h": 1200
+ },
+ "reykjavik": {
+  "file": "banners/reykjavik.jpg",
+  "pos": "50% 50%",
+  "alt": "Reykjavík’s rooftops and harbour from Hallgrímskirkja",
+  "altJa": "ハットルグリムス教会の塔から見たレイキャビクの屋根と港",
+  "author": "Andreas Tille",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Reykjav%C3%ADk_s%C3%A9%C3%B0_%C3%BAr_Hallgr%C3%ADmskirkju.jpeg",
+  "w": 1600,
+  "h": 1068
  },
  "sakai": {
   "file": "banners/sakai.jpg",
