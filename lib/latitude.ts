@@ -726,7 +726,7 @@ export const ISSUES: LatitudeIssue[] = [
       'Out on the sands, a line of tall wooden posts marks the older way to the island. Walter Scott put it into Marmion in 1808: “Twice every day, the waves efface / Of staves and sandall’d feet the trace.”',
     ],
     pages: pages(20, [2, 4, 16, 17, 18]), // 2026-11-13 雑誌版のカルーセル（20枚）。2 時刻表がすりガラスに浮かぶ、4 日照と潮の地図、16–17 朝と夕の空撮、18 その日の6色
-    streamId: 'e1b56ccd0c7bf202057550ee51134607', // 2026-11-13 v0（本編は静止画の仮・曲なし）＋filmic_look level 2・粒子11（LATITUDE-55.7N-HOLYISLAND-reel-v0-filmic.mp4）
+    streamId: '8dd519a46e6f1edb0f7c2320251ef835', // 2026-11-13 v1：filmic_look level 2・粒子11、フィルムの揺れなし（前の v0 は全体と最後のロゴが揺れていた。LATITUDE-55.7N-HOLYISLAND-reel-v1-filmic-noweave.mp4）
     capColour: '#6c4f22', // Bladderwrack
     credits: ['Map data © OpenStreetMap contributors'],
   },
