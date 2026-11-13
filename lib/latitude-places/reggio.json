@@ -384,5 +384,59 @@
    15.64768
   ],
   "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "MIA Concept Store",
+  "nameEn": "MIA Concept Store",
+  "category": "wear",
+  "area": "チェントロ",
+  "areaEn": "Centro",
+  "address": "Corso Giuseppe Garibaldi 316, Reggio Calabria",
+  "url": "https://www.instagram.com/mia_concept_store_/",
+  "what": "地元の人が営む、女性の服と雑貨の店。レッジョの建物や方言を描いた、イタリア製の木綿のTシャツも作っている。",
+  "whatEn": "A locally run shop for women's clothes and objects, with its own Italian cotton T-shirts drawn with Reggio's buildings and dialect.",
+  "note": "この町の言葉が書かれたTシャツは、ここでしか買えない。",
+  "noteEn": "A T-shirt in the local dialect you can only buy here.",
+  "coords": [
+   38.11048,
+   15.64613
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Oro, Argento e Mirra",
+  "nameEn": "Oro, Argento e Mirra",
+  "category": "jewellery",
+  "area": "チェントロ",
+  "areaEn": "Centro",
+  "address": "Corso Giuseppe Garibaldi 277, Reggio Calabria",
+  "url": "https://www.oroargentoemirra.it/",
+  "what": "古代ギリシャやローマ、ビザンチンの装身具の形をもとに、銀と天然の石で一点物を手で作る工房と店。",
+  "whatEn": "A workshop and shop making one-off pieces in silver and natural stone, drawn from ancient Greek, Roman and Byzantine jewellery.",
+  "note": "この町は、もとはギリシャの町だった。",
+  "noteEn": "This city was Greek first.",
+  "coords": [
+   38.11008,
+   15.64613
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Ida Caterini",
+  "nameEn": "Ida Caterini",
+  "category": "jewellery",
+  "area": "チェントロ",
+  "areaEn": "Centro",
+  "address": "Via Fata Morgana 29, Reggio Calabria",
+  "url": "https://www.idacaterini.com/",
+  "what": "父から受け継いだ金細工の家族の工房と店。金や銀のジュエリーを、店の中で手で作る。",
+  "whatEn": "A family goldsmith workshop and shop, carrying on her father's trade and making gold and silver jewellery by hand on site.",
+  "note": "金細工は、代々の手で続いてきた。",
+  "noteEn": "Goldsmithing here has passed from hand to hand.",
+  "coords": [
+   38.10898,
+   15.64596
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]

@@ -34,7 +34,7 @@ GEN_TS = ROOT / 'lib' / 'latitude-places-imported.ts'
 
 # 元の種類 → サイトの5つの種類（＋細かい違いの tags）
 CATEGORY = {
-    'local': ('local', []), 'craft': ('craft', []), 'wear': ('wear', []), 'sweets': ('sweets', []), 'food': ('food', []),
+    'local': ('local', []), 'craft': ('craft', []), 'wear': ('wear', []), 'jewellery': ('jewellery', []), 'sweets': ('sweets', []), 'food': ('food', []),
     'coffee': ('cafe', ['coffee']), 'matcha': ('cafe', ['matcha']), 'cafe': ('cafe', []),
 }
 PLACE_KEYS = ['name', 'nameEn', 'category', 'industry', 'tags', 'area', 'areaEn', 'address', 'url', 'instagram',

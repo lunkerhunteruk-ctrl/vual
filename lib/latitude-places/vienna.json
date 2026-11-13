@@ -382,5 +382,113 @@
    16.34915
   ],
   "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "lila",
+  "nameEn": "lila",
+  "category": "wear",
+  "area": "ノイバウ",
+  "areaEn": "Neubau",
+  "address": "Westbahnstraße 3, 1070 Wien",
+  "url": "https://lila.cx",
+  "what": "ウィーンのデザイナーの店とアトリエ。オーストリアとドイツの天然素材で、ウィーンとスロバキアで縫った女性の服。",
+  "whatEn": "A Viennese designer's shop and studio for women's clothes in Austrian and German natural fibres, sewn in Vienna and Slovakia.",
+  "note": "ウィーンで作られた服は、ウィーンの冬に合う。",
+  "noteEn": "Clothes made in Vienna suit a Viennese winter.",
+  "coords": [
+   48.20158,
+   16.34787
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Marcy-Vintage",
+  "nameEn": "Marcy-Vintage",
+  "category": "wear",
+  "area": "ヴィーデン",
+  "areaEn": "Wieden",
+  "address": "Gußhausstraße 23, 1040 Wien",
+  "url": "https://www.marcy-vintage.at",
+  "what": "カールス広場の近くの古着と委託の店。町の人から集めた1950〜90年代の服や小物を選んでいる。",
+  "whatEn": "A vintage and consignment shop near Karlsplatz, with 1950s to 1990s clothes and accessories gathered from people in the city.",
+  "note": "誰かのウィーンの冬を着る。",
+  "noteEn": "Wear someone else's Viennese winter.",
+  "coords": [
+   48.19689,
+   16.3714
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "A. E. Köchert",
+  "nameEn": "A. E. Köchert",
+  "category": "jewellery",
+  "area": "インネレ・シュタット（旧市街）",
+  "areaEn": "Innere Stadt",
+  "address": "Neuer Markt 15, 1010 Wien",
+  "url": "https://koechert.com/",
+  "what": "1814年からの宝飾店で、オーストリアの宮廷の御用達だった。今も店の上の工房で一点物を手で作る。",
+  "whatEn": "Jewellers since 1814 and once purveyors to the Austrian court, still making one-off pieces by hand in the workshop above the shop.",
+  "note": "見るだけでも、200年の仕事がそこにある。",
+  "noteEn": "Even just looking, there are two hundred years of work there.",
+  "coords": [
+   48.2066,
+   16.37065
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Atelier Stoss im Himmel",
+  "nameEn": "Atelier Stoss im Himmel",
+  "category": "jewellery",
+  "area": "インネレ・シュタット（旧市街）",
+  "areaEn": "Innere Stadt",
+  "address": "Stoß im Himmel 3, 1010 Wien",
+  "url": "https://www.stossimhimmel.net/",
+  "what": "旧市街の路地にある、女性のジュエリー作家たちの共同のアトリエと店。中の工房で作った一点物を買える。",
+  "whatEn": "A shared studio and showroom of women jewellers in an Old Town lane, selling one-off pieces made in the workshop.",
+  "note": "細い路地の名前は「天への一突き」。",
+  "noteEn": "The lane is called \"a thrust to heaven\".",
+  "coords": [
+   48.21241,
+   16.37075
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "SKREIN*",
+  "nameEn": "SKREIN*",
+  "category": "jewellery",
+  "area": "インネレ・シュタット（旧市街）",
+  "areaEn": "Innere Stadt",
+  "address": "Spiegelgasse 5, 1010 Wien",
+  "url": "https://www.skrein.at/",
+  "what": "家族で営むジュエリーの工房と店。フェアトレードやリサイクルの金と、紛争に関わらない石で、自分たちの工房ですべて手で作る。",
+  "whatEn": "A family jewellery workshop and shop making everything by hand in its own workshop, with fair-trade or recycled gold and conflict-free stones.",
+  "note": "どこから来た金かが分かる指輪。",
+  "noteEn": "A ring that knows where its gold came from.",
+  "coords": [
+   48.20761,
+   16.37044
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Bags With Legs",
+  "nameEn": "Bags With Legs",
+  "category": "jewellery",
+  "area": "ノイバウ",
+  "areaEn": "Neubau",
+  "address": "Hermanngasse 19, 1070 Wien",
+  "url": "https://www.bagswithlegs.at/",
+  "what": "ノイバウのバッグの店。店の奥の工房で、ヨーロッパの残った革から、少しずつバッグを縫う。",
+  "whatEn": "A bag shop in Neubau whose workshop at the back sews small runs of bags from European deadstock leather.",
+  "note": "余った革に、もう一度旅をさせる。",
+  "noteEn": "Leftover leather, sent on another journey.",
+  "coords": [
+   48.20232,
+   16.34664
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]

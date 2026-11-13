@@ -203,5 +203,59 @@
    53.83147,
    -1.95602
   ]
+ },
+ {
+  "name": "The Souk",
+  "nameEn": "The Souk",
+  "category": "wear",
+  "area": "メイン・ストリート",
+  "areaEn": "Main Street",
+  "address": "Old Bar House, 117 Main Street, Haworth BD22 8DP",
+  "url": "https://www.yorkshire.com/cross-roads/shopping/clothes-shops/the-souk",
+  "what": "メイン・ストリートの古着とアンティークの店。1940年代のスーツや70年代のドレス、革のジャケットが床から天井まで並ぶ。",
+  "whatEn": "A vintage and antiques shop on Main Street, packed floor to ceiling with 1940s suits, 1970s dresses and leather jackets.",
+  "note": "この坂の村なら、古いツイードが似合う。",
+  "noteEn": "On this steep street, old tweed looks right.",
+  "coords": [
+   53.82911,
+   -1.99317
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Siân Alison Designs",
+  "nameEn": "Siân Alison Designs",
+  "category": "jewellery",
+  "area": "メイン・ストリート",
+  "areaEn": "Main Street",
+  "address": "77 Main Street, Haworth BD22 8DA",
+  "url": "https://sadesigns.co.uk/",
+  "what": "メイン・ストリートの店。地元の作り手が手で作る銀のジュエリーのほか、バッグやスカーフもある。",
+  "whatEn": "A shop on Main Street with handmade silver jewellery by a local maker, along with bags and scarves.",
+  "note": "小さな銀の物なら、旅の記憶を軽く持ち帰れる。",
+  "noteEn": "Something small in silver carries a trip home lightly.",
+  "coords": [
+   53.82956,
+   -1.98606
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Hawksbys",
+  "nameEn": "Hawksbys",
+  "category": "jewellery",
+  "area": "メイン・ストリート",
+  "areaEn": "Main Street",
+  "address": "111 Main Street, Haworth BD22 8DP",
+  "url": "https://hawksbys.co.uk/",
+  "what": "メイン・ストリートの上のギャラリー。ヨークシャーやイギリス各地の作り手による、銀と石のジュエリーを扱う。",
+  "whatEn": "A gallery at the top of Main Street with silver and stone jewellery by makers from Yorkshire and across Britain.",
+  "note": "ヨークシャーの石の色を、指に一つ。",
+  "noteEn": "One Yorkshire stone colour, on one finger.",
+  "coords": [
+   53.82936,
+   -1.98883
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]

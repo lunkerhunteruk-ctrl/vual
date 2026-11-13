@@ -5,6 +5,7 @@ export const CATEGORY_COLOR: Record<string, string> = {
   local: '#a47e2c', // この街の仕事
   craft: '#3f5d78', // 工芸
   wear: '#5f6b4a', // 服と布（2026-11-13・くすんだ苔の緑）
+  jewellery: '#7d6a8a', // アクセサリー（2026-11-13・くすんだ藤色）
   sweets: '#b4616e', // 甘味
   food: '#8f3a2c', // ごはん
   cafe: '#5b4030', // 喫茶

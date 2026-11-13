@@ -296,5 +296,35 @@
   "noteEn": "Indigo becomes your own colour the more you wash it.",
   "coords": [39.68749, 141.02319],
   "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "kasi-friendly",
+  "nameEn": "kasi-friendly",
+  "category": "wear",
+  "area": "材木町",
+  "areaEn": "Zaimokucho",
+  "address": "盛岡市材木町3-8 いわてビル1F",
+  "url": "https://kasi-friendly.com/",
+  "what": "2010年からの材木町の店。天然素材の服と日本の小さなブランドを中心に、暮らしの道具も並べる。",
+  "whatEn": "A shop on Zaimokucho since 2010, mostly natural-fibre clothes from small Japanese labels, with tools for everyday life.",
+  "note": "材木町を歩くなら、ここで一度立ち止まる。",
+  "noteEn": "Walking Zaimokucho, stop here once.",
+  "coords": [39.70599, 141.13846],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "螺鈿 澤井工房",
+  "nameEn": "Sawai Raden Workshop",
+  "category": "jewellery",
+  "area": "東松園",
+  "areaEn": "Higashi-Matsuzono",
+  "address": "盛岡市東松園2-1-4",
+  "url": "https://sawaikoubou.com/",
+  "what": "黒檀に、アワビや夜光貝の螺鈿と岩手の浄法寺の漆を重ねて、ペンダントやピアス、簪を作る工房と店。",
+  "whatEn": "A workshop and shop making pendants, earrings and hairpins in ebony with abalone and turban-shell inlay and Joboji lacquer from Iwate.",
+  "note": "貝の光は、見る角度で色が変わる。",
+  "noteEn": "The shell changes colour as you tilt it.",
+  "coords": [39.75368, 141.16751],
+  "verifiedAt": "2026-11-13"
  }
 ]

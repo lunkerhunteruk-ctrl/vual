@@ -370,5 +370,77 @@
    134.22545
   ],
   "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "taone",
+  "nameEn": "taone",
+  "category": "wear",
+  "area": "川端",
+  "areaEn": "Kawabata",
+  "address": "鳥取市川端1-218 ポールスター鳥取川端101",
+  "url": "https://thenatures.jp/blogs/taone",
+  "what": "川端の、女性の服のセレクトショップ。日本の小さなデザイナーのブランドを中心に選んでいる。",
+  "whatEn": "A women's select shop in Kawabata, mostly small Japanese designer labels.",
+  "note": "旅の服は、軽くて皺にならないものから。",
+  "noteEn": "For travel, start with clothes that are light and do not crease.",
+  "coords": [
+   35.49922,
+   134.23076
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "てとてと",
+  "nameEn": "tetoteto",
+  "category": "wear",
+  "area": "瓦町",
+  "areaEn": "Kawara-machi",
+  "address": "鳥取市瓦町513",
+  "url": "https://www.instagram.com/tetoteto_tottori/",
+  "what": "鳥取駅の近くの古着屋。二つの店が一つの屋根の下で営み、ヨーロッパの古着や、作りの面白い古着を選んでいる。",
+  "whatEn": "A vintage shop near Tottori Station where two shops share one roof, choosing European and well-made vintage.",
+  "note": "古着の傷も、その服が歩いてきた道。",
+  "noteEn": "The marks on old clothes are the roads they have walked.",
+  "coords": [
+   35.49676,
+   134.22693
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "Glass works negy",
+  "nameEn": "Glass works negy",
+  "category": "jewellery",
+  "area": "新",
+  "areaEn": "Shin",
+  "address": "鳥取市新34-3 石井ビル1F",
+  "url": "https://glassworksnegy.com/",
+  "what": "浦富海岸の海の色の「鳥取ブルーガラス」や、鳥取の星空を写したガラスで、ピアスやとんぼ玉を作る工房と店。",
+  "whatEn": "A workshop and shop making glass earrings and beads in \"Tottori Blue\", the colour of the sea at Uradome, and in glass after Tottori's night sky.",
+  "note": "浦富の海の色を、耳に下げて帰る。",
+  "noteEn": "Take the colour of the Uradome sea home on your ears.",
+  "coords": [
+   35.48318,
+   134.23981
+  ],
+  "verifiedAt": "2026-11-13"
+ },
+ {
+  "name": "NONBODY",
+  "nameEn": "NONBODY",
+  "category": "jewellery",
+  "area": "幸町",
+  "areaEn": "Saiwai-cho",
+  "address": "鳥取市幸町22 第一マルニハイツ1F",
+  "url": "https://www.nonbody.com/",
+  "what": "20年以上続く、店の中に工房のあるジュエリーの店。金やプラチナ、銀の注文の仕立てや直しをする。",
+  "whatEn": "A jewellery shop of over twenty years with a workshop inside, making and repairing gold, platinum and silver pieces to order.",
+  "note": "直せる店があると、長く使える。",
+  "noteEn": "A shop that can repair things lets you keep them longer.",
+  "coords": [
+   35.49495,
+   134.22211
+  ],
+  "verifiedAt": "2026-11-13"
  }
 ]
