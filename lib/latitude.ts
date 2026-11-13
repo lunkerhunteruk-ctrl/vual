@@ -683,6 +683,53 @@ export const ISSUES: LatitudeIssue[] = [
     capColour: '#a83e32', // Lift Red
     credits: ['Map data © OpenStreetMap contributors'],
   },
+  {
+    // 2026-11-13 ホーリー島（Maeve・11月14日（土）・晴れて冷たい1日）。ドキュメンタリー回。潮で道が開いて閉じる1日。
+    // リールは v0（本編は静止画をゆっくり寄せた仮の映像・曲なし）に filmic_look level 2・粒子11（ユーザー：これで出す）。動画ができたら streamId を差し替える。
+    // カルーセルは雑誌版（20枚・vault.vual.jp outputs/latitude-magazine/make_issue_holy_mag.py → holy-island/carousel-mag）。色は holy-island/colours.json。
+    // 事実の出どころ：道は1954年に開通・11/14 は 08:10〜15:35 と 20:15〜に渡れる（ノーサンバーランド県の渡れる時間の表）・避難小屋・巡礼の柱・スコット「マーミオン」(1808)
+    slug: 'holy-island',
+    person: 'maeve',
+    month: 'November',
+    seo: {
+      title: "What to wear on Holy Island in November — a day between two tides on the Northumberland coast | LATITUDE 55.7° N",
+      description: "Holy Island in November is around 10°C by day and 4°C at night, with a cold wind off the North Sea. One day in a chunky khaki cable-knit coat, a striped shirt and grey trousers, from the causeway at low tide to a cottage after the sea has closed the road.",
+      month: "November",
+      weather: "On the Northumberland coast November is usually around 10°C by day and 4°C at night, with wind off the North Sea. The sun sets around four, and the causeway is only safe to cross between the tides.",
+      wore: "A knee-length khaki chunky cable-knit wrap coat with a stand collar and a knitted belt, over an ink-blue and white striped shirt; dark grey straight trousers with a slit at the hem, burgundy leather ballet pumps, and an espresso-brown crescent hobo bag.",
+      season: "In October it is a few degrees milder; a knit and a light coat are enough. In December it is colder and darker by four; add a scarf and gloves for the wind on the sands.",
+    },
+    no: 14, // 2026-11-13 公開した順（鳥取の次）
+    latitude: '55.7° N',
+    city: 'Holy Island',
+    published: '2026-11',
+    line: 'One November day on Holy Island, from the road the sea let go in the morning to a cottage after the tide closed it again.',
+    chapters: [
+      { no: 'I', place: 'The Causeway', time: '08:12' },
+      { no: 'II', place: 'Castle Point', time: '10:05' },
+      { no: 'III', place: 'The Priory', time: '12:40' },
+      { no: 'IV', place: 'The Tide', time: '15:15' },
+      { no: 'V', place: 'The Cottage', time: '16:55' },
+    ],
+    colours: [
+      { name: 'Bladderwrack', hex: '#6c4f22' },
+      { name: 'Wet Causeway', hex: '#455e6f' },
+      { name: 'Tar Hull', hex: '#2e3a3e' },
+      { name: 'Priory Sandstone', hex: '#a86852' },
+      { name: 'Low Gold', hex: '#e8a26c' },
+      { name: 'Doorway Amber', hex: '#e2a85c' },
+    ],
+    notesTitle: 'A road, a tide, a poem',
+    notes: [
+      'The road to Holy Island was opened in 1954, and twice a day the North Sea closes over it. On 14 November it was safe to cross from 08:10 to 15:35, and again from 20:15.',
+      'Halfway across, a white hut stands on tall wooden legs, with a steep ladder, for anyone the tide catches.',
+      'Out on the sands, a line of tall wooden posts marks the older way to the island. Walter Scott put it into Marmion in 1808: “Twice every day, the waves efface / Of staves and sandall’d feet the trace.”',
+    ],
+    pages: pages(20, [2, 4, 16, 17, 18]), // 2026-11-13 雑誌版のカルーセル（20枚）。2 時刻表がすりガラスに浮かぶ、4 日照と潮の地図、16–17 朝と夕の空撮、18 その日の6色
+    streamId: 'e1b56ccd0c7bf202057550ee51134607', // 2026-11-13 v0（本編は静止画の仮・曲なし）＋filmic_look level 2・粒子11（LATITUDE-55.7N-HOLYISLAND-reel-v0-filmic.mp4）
+    capColour: '#6c4f22', // Bladderwrack
+    credits: ['Map data © OpenStreetMap contributors'],
+  },
 ];
 
 // 公開予約：今の時刻で出してよい号か
