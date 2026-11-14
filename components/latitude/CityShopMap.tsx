@@ -562,6 +562,43 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
     }
   }
 
+  // 2026-11-14 ②-8 全体が見えている時、押した所の半径 22px に丸が2つ以上あれば、選ばずに（組む時は足さずに）まずその一帯へ寄る。
+  // 金沢の全体の地図では、39のうち13の丸が、まん中を押しても隣の丸が選ばれていた（ひがし茶屋街などで重なる）。押せる範囲を広げても直らなかった。
+  // 寄ったら丸が離れるので、次の1回で選べる。1つしか無い所は今までどおり1回で選ぶ。キーボードで押した時（detail 0）は寄らずに選ぶ。戻るのは「← 全体へ」
+  const TAP_NEAR = 22;
+  type Mark = { id: string; x: number; y: number; d: number; m: { x: number; y: number } };
+  const inViewMarks = (marks: Mark[]) => marks.filter((q) => q.x >= -q.d && q.x <= size.w + q.d && q.y >= -q.d && q.y <= size.h + q.d);
+  const groupZoom = (e: { clientX: number; clientY: number; detail: number }, marks: Mark[]) => {
+    if (zoomed || e.detail === 0 || !box.current || !size.w) return false;
+    const t = local(e);
+    const near = inViewMarks(marks).filter((q) => Math.hypot(q.x - t.x, q.y - t.y) <= TAP_NEAR);
+    if (near.length < 2) return false;
+    // 寄る強さ：その中のいちばん近い2つが、画面で 34px 離れるまで（少なくとも2倍。寄れる限り＝1px 0.4m まで）。
+    // ただし、その丸が全部、枠の内側（左上の「← 全体へ」の下から）に収まる所まで（全体の地図では丸を押し合わせて描くので、押した点と店の本当の位置はずれることがある）
+    let dmin = Infinity;
+    for (let i = 0; i < near.length; i++) for (let j = i + 1; j < near.length; j++) dmin = Math.min(dmin, Math.hypot(near[i].m.x - near[j].m.x, near[i].m.y - near[j].m.y));
+    const xs = near.map((q) => q.m.x), ys = near.map((q) => q.m.y);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const pad = Math.max(32, Math.min(64, size.w * 0.1)), top = 64; // top：「← 全体へ」のボタンの下
+    const aw = Math.max(size.w - 2 * pad, 40), ah = Math.max(size.h - top - pad, 40);
+    const k = Math.max(Math.min(dmin / 34, mpp / 2), (x1 - x0) / aw, (y1 - y0) / ah);
+    const w = clampW(k * size.w), kk = w / size.w;
+    // 丸のまん中を、使える所（左右の余白・上のボタンの下）のまん中に置く
+    flyView({ x: (x0 + x1) / 2 - (size.w / 2) * kk, y: (y0 + y1) / 2 - ((top + size.h - pad) / 2) * kk, w });
+    return true;
+  };
+  // 丸の押せる範囲は重なることがある（寄っても数 m しか離れていない店・同じ建物の店）。指やマウスで押した時は、押した点にいちばん近い丸を選ぶ
+  // （上に重なった隣の丸ではなく）。キーボードの時は、その丸のまま
+  const nearestTo = (e: { clientX: number; clientY: number; detail: number }, marks: Mark[], fallback: string) => {
+    if (e.detail === 0 || !box.current) return fallback;
+    const t = local(e);
+    let best = fallback, bd = Infinity;
+    for (const q of inViewMarks(marks)) { const dd = Math.hypot(q.x - t.x, q.y - t.y); if (dd < bd) { bd = dd; best = q.id; } }
+    return bd <= TAP_NEAR ? best : fallback;
+  };
+  const lookMarks = (): Mark[] => placed.map((o) => ({ id: o.p.id, x: o.x, y: o.y, d: o.d, m: pos(o.p) }));
+  const buildMarks = (): Mark[] => buildPlaced.map((o) => ({ id: o.q.id, x: o.x, y: o.y, d: o.d, m: pos(o.q) }));
+
   const shop = pins.find((p) => p.id === shown) ?? null;
   const open = !!sel && !!shop;
   const ready = !!base && size.w > 0;
@@ -730,7 +767,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           }
           return (
             <button key={p.id} type="button"
-              onClick={(e) => { e.stopPropagation(); goTo(active ? null : p.id); }}
+              onClick={(e) => { e.stopPropagation(); if (!active && groupZoom(e, lookMarks())) return; const id = nearestTo(e, lookMarks(), p.id); goTo(id === sel ? null : id); }}
               onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
               // 2026-11-11 ユーザー：マウスのある画面では、乗せた丸を 1.4倍に・前面へ・名前を横に・指のカーソル。
               // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
@@ -777,7 +814,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             );
           }
           return (
-            <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
+            <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); if (groupZoom(e, buildMarks())) return; toggle(nearestTo(e, buildMarks(), q.id)); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-1 [@media(pointer:coarse)]:before:content-[''] ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
               <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
