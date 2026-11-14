@@ -7,6 +7,7 @@ import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude
 import { ShowOnMap } from '@/components/latitude/HScroller';
 import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { ACTION, ACTION_MAIN } from '@/lib/latitude-theme';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
 import { HIDDEN } from '@/lib/latitude-hidden';
@@ -313,9 +314,10 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                   <p className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{x.name}</p>
                   <p className="mt-1 text-[15px] leading-relaxed">{x.what}</p>
                   {x.notice && <p className="mt-2 text-[13px] leading-relaxed" style={{ color: '#7a241e' }}>{x.notice}</p>}
-                  <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[12px] uppercase tracking-[0.2em]">
-                    <a href={x.site} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? '公式サイト' : 'Website'}</a>
-                    <a href={x.mapUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? 'Google マップ' : 'Google Maps'}</a>
+                  {/* 2026-11-14 店カードと同じ形：押せる高さ 44px、Google マップ（枠つき）が先 */}
+                  <p className="mt-1 flex flex-wrap gap-x-5 gap-y-0">
+                    <a href={x.mapUrl} target="_blank" rel="noopener noreferrer" className={ACTION_MAIN} style={{ color: INK, borderColor: INK }}>{ja ? 'Google マップ' : 'Google Maps'}</a>
+                    <a href={x.site} target="_blank" rel="noopener noreferrer" className={ACTION} style={{ color: INK }}>{ja ? '公式サイト' : 'Website'}</a>
                     <ShowOnMap id={x.id} label={ja ? '地図で見る ↑' : 'On the map ↑'} />
                   </p>
                 </li>

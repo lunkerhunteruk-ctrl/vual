@@ -77,16 +77,16 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <nav id="people" className="mt-10 scroll-mt-20">
           <p lang="en" className="lat-label" style={{ color: MUTE }}>People</p>
           {/* 2026-11-01 ユーザー：スマホで6人が1行に収まるように（字を少し小さく・字間を詰め、幅いっぱいに均等に並べる） */}
-          <ul className="mt-3 flex flex-nowrap justify-between text-[12px] uppercase tracking-[0.06em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-2 md:text-[12px] md:tracking-[0.2em]">
+          <ul className="flex flex-nowrap justify-between text-[12px] uppercase tracking-[0.06em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-0 md:text-[12px] md:tracking-[0.2em]">
             {PEOPLE.map((p) => (
               <li key={p.slug}>
-                <Link href={`/${locale}/latitude/people/${p.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
+                <Link href={`/${locale}/latitude/people/${p.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
               </li>
             ))}
           </ul>
         </nav>
         {/* 2026-11-11 街の案内（旅人のおすすめの店）への入口。号のページの奥にしか無かった */}
-        <nav className="mt-8">
+        <nav className="mt-5">
           {/* 2026-11-11 場所から探すページ（地図）への入口 */}
           <p lang="en" className="lat-label flex items-baseline gap-4" style={{ color: MUTE }}>
             Places
@@ -104,10 +104,10 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             const ja = locale === 'ja';
             return (
               <>
-                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.2em]">
+                <ul className="flex flex-wrap gap-x-5 gap-y-0 text-[12px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.2em]">
                   {withIssue.map((c) => (
                     <li key={c.slug}>
-                      <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.nameJa : c.name}</Link>
+                      <Link href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.nameJa : c.name}</Link>
                     </li>
                   ))}
                 </ul>

@@ -44,9 +44,9 @@ export function CountryCityList({ countries, locale, linkCountry = true, heading
                       {groups.map(({ r, qs }) => (
                         <div key={r.key} className="grid grid-cols-1 gap-1 border-t py-3" style={{ borderColor: 'rgba(30,29,27,0.08)' }}>
                           <dt className="lat-label" style={{ color: MUTE }}>{ja ? r.ja : r.en}</dt>
-                          <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-1.5 text-[15px]" style={{ fontFamily: SERIF }}>
+                          <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-0 text-[15px]" style={{ fontFamily: SERIF }}>
                             {qs.map((q) => (
-                              <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+                              <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
                                 {ja ? q.nameJa : q.name}
                               </Link>
                             ))}
@@ -70,19 +70,19 @@ function Rows({ qs, locale }: { qs: PlaceCountry['cities']; locale: string }) {
   return (
     <ul className="mt-4 flex flex-col">
       {qs.map((q) => (
-        <li key={q.slug} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t py-4" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
+        <li key={q.slug} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0 border-t py-1" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
           <span className="flex items-baseline gap-4">
-            <Link href={`/${locale}/latitude/places/${q.slug}`} className="text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
+            <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
               {ja ? q.nameJa : q.name}
             </Link>
             <span className="text-[12px] uppercase tracking-[0.2em] tabular-nums" style={{ color: MUTE }}>{q.latitude}</span>
           </span>
           <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em]">
-            <Link href={`/${locale}/latitude/places/${q.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+            <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
               {ja ? '街の案内' : 'City guide'}
             </Link>
             {q.issue && (
-              <Link href={`/${locale}/latitude/${q.issue.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+              <Link href={`/${locale}/latitude/${q.issue.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
                 {/* 2026-11-14 ユーザー：「号（RIN・NOVEMBER）」でなく、何があるかで「凛の1日（11月）」 */}
                 {ja ? `${q.person?.nameJa ?? q.person?.name ?? '旅人'}の1日${q.issue.month ? `（${MONTH_NO[q.issue.month] ?? ''}月）` : ''} →` : `${q.person?.name ?? 'The'}'s day${q.issue.month ? `, ${q.issue.month}` : ''} →`}
               </Link>

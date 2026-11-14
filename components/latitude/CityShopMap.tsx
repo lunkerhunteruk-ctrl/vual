@@ -5,7 +5,7 @@ import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
-import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
+import { ACTION, INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
 // 号の「動く地図」と同じ紙の地図の上に、店を小さな丸で並べる。丸を押すとその店へなめらかに寄り、店のカードが出る。
@@ -724,7 +724,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
               // 2026-11-11 ユーザー：マウスのある画面では、乗せた丸を 1.4倍に・前面へ・名前を横に・指のカーソル。
               // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
-              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              // 2026-11-14 指で触る画面だけ、押せる範囲を上下左右に 8px 広げる（丸の見た目は変えない）
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-2 [@media(pointer:coarse)]:before:content-[''] ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
               <span className="block overflow-hidden group-hover:scale-[1.4]"
@@ -767,7 +768,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           }
           return (
             <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
-              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-2 [@media(pointer:coarse)]:before:content-[''] ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
               <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
                 style={{ ...markStyle(q.kind, d, q.color, picked, picked ? `0 0 0 2px ${PAPER}, 0 0 0 3px ${INK}, 0 2px 8px 2px rgba(30,29,27,0.2)` : `0 0 0 2px ${PAPER}`),
@@ -938,11 +939,11 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
       )}
       {p.notice && <p className="mt-3 text-[13px] leading-relaxed" style={{ color: '#7a241e' }}>{p.notice}</p>}
       {p.approx && <p className="mt-3 text-[13px]" style={{ color: MUTE }}>{ja ? '地図の位置はおおよそです。' : 'The position on the map is approximate.'}</p>}
-      <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
+      <p className="mt-2 flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em]">
         {p.site && <TrackLink href={p.site} label={ja ? '公式サイト' : 'Website'} shop={p.key} kind="site" person={person} />}
         {p.instagram && <TrackLink href={p.instagram} label="Instagram" shop={p.key} kind="site" person={person} />}
         <TrackLink href={p.mapUrl} label={ja ? '地図' : 'Map'} shop={p.key} kind="map" person={person} />
-        <a href={`#${p.id}`} className="underline-offset-4 hover:underline" style={{ color: INK }}
+        <a href={`#${p.id}`} className={ACTION} style={{ color: INK }}
           onClick={() => { if (window.innerWidth < WIDE) onClose(); }}>
           {ja ? 'リストで見る ↓' : 'In the list ↓'}
         </a>

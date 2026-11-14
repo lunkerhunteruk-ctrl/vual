@@ -20,7 +20,7 @@ function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolea
   const item = 'relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap text-[11px] uppercase tracking-[0.18em] transition-colors duration-300';
   return (
     <div role="group" aria-label="People / Places"
-      className="relative grid h-[34px] w-[184px] shrink-0 grid-cols-2 rounded-full p-[2px]"
+      className="relative grid h-[34px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px] md:w-[184px]"
       style={{ background: 'rgba(30,29,27,0.06)', boxShadow: 'inset 0 1px 2px rgba(30,29,27,0.10), inset 0 0 0 1px rgba(30,29,27,0.07)' }}>
       <span aria-hidden className="absolute bottom-[2px] top-[2px] w-[calc(50%-2px)] rounded-full transition-transform duration-500"
         style={{
@@ -42,14 +42,15 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
       style={{ background: 'rgba(242,238,231,0.92)', borderColor: 'rgba(30,29,27,0.12)' }}
     >
       <style>{NOSCROLL_CSS}</style>
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:px-8">
-      <Link href={`/${locale}/latitude`} className="shrink-0 py-3 text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>
+      {/* 2026-11-14 押せる高さを 44px にした分、スマホ幅 375 で右の EN がはみ出さないよう、スマホだけ間を gap-3・トグルの幅を 168px に */}
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 md:gap-4 md:px-8">
+      <Link href={`/${locale}/latitude`} className="inline-flex min-h-[44px] shrink-0 items-center text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>
         Latitude
       </Link>
       {/* 2026-11-11 ユーザー：人と場所を、横長のカプセルのトグルに（左＝People が既定・右＝Places）。今どちらのモードかが分かるように。
             つまみはすりガラス（リキッドグラス）風：うすい白・ぼかし・上の縁の光・やわらかい影 */}
         <PeoplePlacesToggle locale={locale} places={!!current?.startsWith('places')} />
-      <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto py-3">
+      <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto">
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
         {liveIssues().map((i) => {
           const on = i.slug === current;
@@ -58,21 +59,22 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
               key={i.slug}
               href={`/${locale}/latitude/${i.slug}`}
               aria-current={on ? 'page' : undefined}
-              className="shrink-0 whitespace-nowrap text-[12px] uppercase tracking-[0.18em] transition-opacity hover:opacity-100"
-              style={{ color: on ? INK : MUTE, borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}
+              className="inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-[12px] uppercase tracking-[0.18em]"
+              style={{ color: on ? INK : MUTE }}
             >
-              {/* 2026-10-30 号の番号の代わりに人の名前 */}
-              {personOf(i)?.name ?? issueNo(i)}&nbsp;&nbsp;{i.city}
+              {/* 2026-10-30 号の番号の代わりに人の名前。2026-11-14 押せる高さを 44px にしたので、下線は字のすぐ下（中の span）に */}
+              <span style={{ borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}>{personOf(i)?.name ?? issueNo(i)}&nbsp;&nbsp;{i.city}</span>
             </Link>
           );
         })}
       </FadeScroller>
       {/* 言語の切り替え：同じページの日本語版・英語版へ */}
-      <div className="flex shrink-0 items-center gap-2 py-3 text-[12px] uppercase tracking-[0.18em]">
+      <div className="-mr-2 flex shrink-0 items-center text-[12px] uppercase tracking-[0.18em]">
+        {/* 2026-11-14 押せる高さ 44px・左右に px-2（字の間はその余白で空ける） */}
         {(['ja', 'en'] as const).map((l, n) => (
-          <span key={l} className="flex items-center gap-2">
+          <span key={l} className="flex items-center">
             {n > 0 && <span style={{ color: MUTE }}>/</span>}
-            <LocaleLink to={l} href={`/${l}/latitude${current ? `/${current}` : ''}`} style={{ color: l === locale ? INK : MUTE }}>
+            <LocaleLink to={l} href={`/${l}/latitude${current ? `/${current}` : ''}`} className="inline-flex min-h-[44px] items-center px-2" style={{ color: l === locale ? INK : MUTE }}>
               <span aria-current={l === locale ? 'true' : undefined}>{l}</span>
             </LocaleLink>
           </span>
@@ -213,12 +215,12 @@ export function PublishedBy({ locale }: { locale: string }) {
   return (
     <p lang="en" className="lat-label text-center" style={{ color: MUTE }}>
       Published by{' '}
-      <Link href={`/${locale}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
         VUAL
       </Link>
       {/* 2026-10-30 奥付（出版元・編集・号の作り方）へ */}
       &nbsp;&nbsp;·&nbsp;&nbsp;
-      <Link href={`/${locale}/latitude/about`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude/about`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
         {locale === 'ja' ? 'この雑誌について' : 'About'}
       </Link>
     </p>

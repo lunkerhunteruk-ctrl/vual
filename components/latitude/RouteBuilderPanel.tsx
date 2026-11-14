@@ -51,7 +51,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
   const gmaps = stops.length >= 2 ? googleWalkUrl(stops.map((s) => s.gq)) : null;
   const minutes = (m: number) => mins((m / WALK_M_PER_MIN) * 60, ja);
 
-  const btn = 'inline-flex min-h-[42px] cursor-pointer items-center justify-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] transition-colors disabled:cursor-default disabled:opacity-35';
+  const btn = 'inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] transition-colors disabled:cursor-default disabled:opacity-35';
 
   return (
     <div className="mt-4 flex flex-col gap-5" style={{ color: INK }}>
@@ -77,11 +77,11 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
                   {legs[k - 1] ? `${legs[k - 1].estimate ? '≈' : ''}${legs[k - 1].distance < 1000 ? `${Math.round(legs[k - 1].distance / 10) * 10} m` : km(legs[k - 1].distance)}` : '…'} →
                 </span>
               )}
-              <span className="flex items-center gap-1.5 py-1 pl-1.5 pr-0.5" style={{ border: `1px solid ${LINE}`, background: 'rgba(255,255,255,0.35)' }}>
+              <span className="flex items-center gap-1.5 pl-1.5 pr-0.5" style={{ border: `1px solid ${LINE}`, background: 'rgba(255,255,255,0.35)' }}>
                 <span className="flex shrink-0 items-center justify-center text-[12px] leading-none tabular-nums" style={{ ...markStyle(s.kind, 20, s.color, true), color: PAPER, fontFamily: SERIF }}>{k + 1}</span>
                 <span className="text-[14px]" style={{ fontFamily: SERIF }}>{s.name}</span>
                 <button type="button" onClick={() => onToggle(s.id)} aria-label={ja ? `${s.name}を外す` : `Remove ${s.name}`}
-                  className="flex h-[30px] w-[28px] cursor-pointer items-center justify-center text-[16px] leading-none" style={{ color: MUTE }}>×</button>
+                  className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center text-[16px] leading-none" style={{ color: MUTE }}>×</button>
               </span>
             </li>
           ))}
@@ -131,7 +131,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
       {/* 名前から選ぶ（種類のスイッチで出している物だけ） */}
       <div>
         <button type="button" onClick={() => setListOpen((v) => !v)} aria-expanded={listOpen}
-          className="min-h-[36px] cursor-pointer text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
+          className="min-h-[44px] cursor-pointer text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
           {ja ? `名前から選ぶ（${visible.length}）` : `Pick by name (${visible.length})`} {listOpen ? '▴' : '▾'}
         </button>
         {listOpen && (
@@ -142,7 +142,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
               return (
                 <li key={p.id}>
                   <button type="button" aria-pressed={k >= 0} onClick={() => onToggle(p.id)}
-                    className="flex min-h-[36px] cursor-pointer items-center gap-2 px-3 text-[14px]"
+                    className="flex min-h-[44px] cursor-pointer items-center gap-2 px-3 text-[14px]"
                     style={{ border: `1px solid ${k >= 0 ? INK : LINE}`, opacity: dim ? 0.4 : 1, fontFamily: SERIF }}>
                     {k >= 0
                       ? <span className="flex items-center justify-center text-[12px] leading-none" style={{ ...markStyle(p.kind, 18, p.color, true), color: PAPER }}>{k + 1}</span>

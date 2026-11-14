@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
+import { ACTION, INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 import RoomChat from '@/components/latitude/RoomChat';
 import { track } from '@/lib/latitude-track';
 import { latAsset } from '@/lib/latitude-assets';
@@ -11,7 +11,7 @@ import { latAsset } from '@/lib/latitude-assets';
 export function AskAboutButton({ text, label, shop, person }: { text: string; label: string; shop: string; person: string }) {
   return (
     <button type="button" onClick={() => { track('ask_shop', { shop, person }); window.dispatchEvent(new CustomEvent('latitude:ask', { detail: text })); }}
-      className="text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
+      className={ACTION} style={{ color: INK }}>
       {label}
     </button>
   );
@@ -57,7 +57,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
                 <p className="mt-1 text-[12px] leading-snug" style={{ color: MUTE }}>{ja ? `${name}はAIです。文字は30日だけ残します。` : `${name} is an AI. Text is kept for 30 days.`}</p>
               </div>
             </div>
-            <button onClick={() => setOpen(false)} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
+            <button onClick={() => setOpen(false)} className="-mr-2 inline-flex min-h-[44px] items-center px-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
           </div>
           <RoomChat locale={locale} slug={slug} name={name} callSeconds={callSeconds} context={context} ask={ask} compact />
         </div>

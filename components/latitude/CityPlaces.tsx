@@ -64,9 +64,10 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
-            <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-[12px] uppercase tracking-[0.2em]">
+            {/* 2026-11-14 押せる高さ 44px。旅先でいちばん押す道案内（地図）を先に、枠つきで */}
+            <p className="mt-1 flex flex-wrap gap-x-5 gap-y-0">
+              <TrackLink href={mapUrl(x.name, x.address)} label={ja ? '地図' : 'Map'} shop={x.name} kind="map" person={c.person} main />
               {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
-              <TrackLink href={mapUrl(x.name, x.address)} label={ja ? '地図' : 'Map'} shop={x.name} kind="map" person={c.person} />
               {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
             </p>
           </li>
@@ -102,9 +103,9 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
 export function CategoryLinks({ c, locale, ja, current }: { c: LatitudeCity; locale: string; ja: boolean; current?: string }) {
   const secs = sectionsOf(c);
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em]">
       {secs.map((s) => (
-        <Link key={s.key} href={`/${locale}/latitude/places/${c.slug}/${s.key}`} className="underline-offset-4 hover:underline"
+        <Link key={s.key} href={`/${locale}/latitude/places/${c.slug}/${s.key}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline"
           style={{ color: s.key === current ? MUTE : INK }} aria-current={s.key === current ? 'page' : undefined}>
           {(ja ? c.nameJa : c.name)}{ja ? 'の' : ' · '}{ja ? s.label.ja : s.label.en}
         </Link>
@@ -118,9 +119,9 @@ export function AreaLinks({ c, locale, ja }: { c: LatitudeCity; locale: string; 
   const areas = areasOf(c);
   if (!areas.length) return null;
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em]">
       {areas.map((a) => (
-        <Link key={a.slug} href={`/${locale}/latitude/places/${c.slug}/area/${a.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+        <Link key={a.slug} href={`/${locale}/latitude/places/${c.slug}/area/${a.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
           {ja ? a.name : a.nameEn}
         </Link>
       ))}
@@ -147,7 +148,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
         {label}
         <span className="text-[12px] uppercase tabular-nums tracking-[0.2em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{sec.items.length}</span>
       </h3>
-      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="pl-[22px] text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="inline-flex min-h-[44px] items-center self-start pl-[22px] text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
         {ja ? `${label}をすべて見る →` : `All ${label.toLowerCase()} →`}
       </Link>
     </div>
@@ -197,10 +198,11 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
-            <p className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5 text-[12px] uppercase tracking-[0.2em]">
-              {mapIds.has(placeAnchor(x)) && <ShowOnMap id={placeAnchor(x)} label={ja ? '地図で見る' : 'On the map'} />}
+            {/* 2026-11-14 押せる高さ 44px。順番は Google マップ（枠つき）→ 公式サイト → 地図で見る → 聞く（旅先でいちばん押すのは道案内） */}
+            <p className="mt-auto flex flex-wrap gap-x-5 gap-y-0 pt-2">
+              <TrackLink href={mapUrl(x.name, x.address)} label={ja ? 'Google マップ' : 'Google Maps'} shop={x.name} kind="map" person={c.person} main />
               {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
-              <TrackLink href={mapUrl(x.name, x.address)} label={ja ? 'Google マップ' : 'Google Maps'} shop={x.name} kind="map" person={c.person} />
+              {mapIds.has(placeAnchor(x)) && <ShowOnMap id={placeAnchor(x)} label={ja ? '地図で見る' : 'On the map'} />}
               {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
             </p>
           </li>
