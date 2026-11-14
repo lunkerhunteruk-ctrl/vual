@@ -205,6 +205,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E9%AB%98%E5%8E%9F%E3%81%AE%E5%85%A5%E5%8F%A3_-_panoramio.jpg",
    "y": 0
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 119314,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 40906,
+     "duration": 0,
+     "line": [
+      [
+       42.9181,
+       143.20202
+      ],
+      [
+       43.28642,
+       143.18544
+      ]
+     ]
+    },
+    {
+     "distance": 10993,
+     "duration": 0,
+     "line": [
+      [
+       43.28642,
+       143.18544
+      ],
+      [
+       43.224642,
+       143.291771
+      ]
+     ]
+    },
+    {
+     "distance": 17688,
+     "duration": 0,
+     "line": [
+      [
+       43.224642,
+       143.291771
+      ],
+      [
+       43.36602,
+       143.190887
+      ]
+     ]
+    },
+    {
+     "distance": 49727,
+     "duration": 0,
+     "line": [
+      [
+       43.36602,
+       143.190887
+      ],
+      [
+       42.9181,
+       143.20202
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -443,6 +506,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Tsuruno-maihashi.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 28149,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 19223,
+     "duration": 0,
+     "line": [
+      [
+       40.59955,
+       140.48521
+      ],
+      [
+       40.75206,
+       140.37716
+      ]
+     ]
+    },
+    {
+     "distance": 441,
+     "duration": 0,
+     "line": [
+      [
+       40.75206,
+       140.37716
+      ],
+      [
+       40.749844,
+       140.372803
+      ]
+     ]
+    },
+    {
+     "distance": 6053,
+     "duration": 0,
+     "line": [
+      [
+       40.749844,
+       140.372803
+      ],
+      [
+       40.73679,
+       140.442688
+      ]
+     ]
+    },
+    {
+     "distance": 2432,
+     "duration": 0,
+     "line": [
+      [
+       40.73679,
+       140.442688
+      ],
+      [
+       40.75799,
+       140.43541
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -682,6 +808,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E5%85%AB%E6%88%B8%E9%A4%A8%E9%BC%BB%E5%B2%B8%E5%A3%81%E6%9C%9D%E5%B8%8220221127-P1007148.jpg",
    "y": 48
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 18216,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 8258,
+     "duration": 0,
+     "line": [
+      [
+       40.50877,
+       141.43188
+      ],
+      [
+       40.52889,
+       141.52608
+      ]
+     ]
+    },
+    {
+     "distance": 3668,
+     "duration": 0,
+     "line": [
+      [
+       40.52889,
+       141.52608
+      ],
+      [
+       40.509827,
+       141.49057
+      ]
+     ]
+    },
+    {
+     "distance": 3701,
+     "duration": 0,
+     "line": [
+      [
+       40.509827,
+       141.49057
+      ],
+      [
+       40.526157,
+       141.452332
+      ]
+     ]
+    },
+    {
+     "distance": 2589,
+     "duration": 0,
+     "line": [
+      [
+       40.526157,
+       141.452332
+      ],
+      [
+       40.50877,
+       141.43188
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -921,6 +1110,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Unsho-ji,_Oga_20210706d.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 28901,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 10589,
+     "duration": 0,
+     "line": [
+      [
+       39.88396,
+       139.84825
+      ],
+      [
+       39.9626,
+       139.77788
+      ]
+     ]
+    },
+    {
+     "distance": 626,
+     "duration": 0,
+     "line": [
+      [
+       39.9626,
+       139.77788
+      ],
+      [
+       39.961132,
+       139.784988
+      ]
+     ]
+    },
+    {
+     "distance": 3890,
+     "duration": 0,
+     "line": [
+      [
+       39.961132,
+       139.784988
+      ],
+      [
+       39.972076,
+       139.741547
+      ]
+     ]
+    },
+    {
+     "distance": 5239,
+     "duration": 0,
+     "line": [
+      [
+       39.972076,
+       139.741547
+      ],
+      [
+       39.928967,
+       139.766632
+      ]
+     ]
+    },
+    {
+     "distance": 8557,
+     "duration": 0,
+     "line": [
+      [
+       39.928967,
+       139.766632
+      ],
+      [
+       39.88396,
+       139.84825
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -1409,6 +1675,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:View_of_Dakigaeri_Gorge_from_Kami-no-iwahashi_Bridge.jpg",
    "y": 40
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 33343,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 8104,
+     "duration": 0,
+     "line": [
+      [
+       39.5917,
+       140.57102
+      ],
+      [
+       39.61086,
+       140.66244
+      ]
+     ]
+    },
+    {
+     "distance": 8646,
+     "duration": 0,
+     "line": [
+      [
+       39.61086,
+       140.66244
+      ],
+      [
+       39.597679,
+       140.56279
+      ]
+     ]
+    },
+    {
+     "distance": 660,
+     "duration": 0,
+     "line": [
+      [
+       39.597679,
+       140.56279
+      ],
+      [
+       39.591782,
+       140.563751
+      ]
+     ]
+    },
+    {
+     "distance": 7687,
+     "duration": 0,
+     "line": [
+      [
+       39.591782,
+       140.563751
+      ],
+      [
+       39.62347,
+       140.483841
+      ]
+     ]
+    },
+    {
+     "distance": 8246,
+     "duration": 0,
+     "line": [
+      [
+       39.62347,
+       140.483841
+      ],
+      [
+       39.5917,
+       140.57102
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -1647,6 +1990,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E5%85%83%E6%BB%9D%E4%BC%8F%E6%B5%81%E6%B0%B4%E3%81%A8%E6%9C%A8%E6%BC%8F%E3%82%8C%E6%97%A5_(Mototaki_Fukuryu-sui_waterfalls)_23_Aug,_2014_-_panoramio.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 15790,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 6556,
+     "duration": 0,
+     "line": [
+      [
+       39.20717,
+       139.90213
+      ],
+      [
+       39.16274,
+       139.95235
+      ]
+     ]
+    },
+    {
+     "distance": 7574,
+     "duration": 0,
+     "line": [
+      [
+       39.16274,
+       139.95235
+      ],
+      [
+       39.218361,
+       139.901382
+      ]
+     ]
+    },
+    {
+     "distance": 233,
+     "duration": 0,
+     "line": [
+      [
+       39.218361,
+       139.901382
+      ],
+      [
+       39.219864,
+       139.89949
+      ]
+     ]
+    },
+    {
+     "distance": 1427,
+     "duration": 0,
+     "line": [
+      [
+       39.219864,
+       139.89949
+      ],
+      [
+       39.20717,
+       139.90213
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -1840,6 +2246,55 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Saihouji-temple_Hondou_02.JPG",
    "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 43743,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 21880,
+     "duration": 0,
+     "line": [
+      [
+       38.25975,
+       140.88002
+      ],
+      [
+       38.36509,
+       140.66783
+      ]
+     ]
+    },
+    {
+     "distance": 242,
+     "duration": 0,
+     "line": [
+      [
+       38.36509,
+       140.66783
+      ],
+      [
+       38.363586,
+       140.669846
+      ]
+     ]
+    },
+    {
+     "distance": 21621,
+     "duration": 0,
+     "line": [
+      [
+       38.363586,
+       140.669846
+      ],
+      [
+       38.25975,
+       140.88002
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -2064,6 +2519,83 @@
      "time": "16:00",
      "what": "山形新幹線つばさで東京・山形方面へ帰路につく。",
      "whatEn": "Board the Yamagata Shinkansen Tsubasa toward Tokyo or Yamagata."
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 57222,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 23875,
+     "duration": 0,
+     "line": [
+      [
+       38.04738,
+       140.14898
+      ],
+      [
+       37.952442,
+       139.9039
+      ]
+     ]
+    },
+    {
+     "distance": 2957,
+     "duration": 0,
+     "line": [
+      [
+       37.952442,
+       139.9039
+      ],
+      [
+       37.92611,
+       139.89878
+      ]
+     ]
+    },
+    {
+     "distance": 13146,
+     "duration": 0,
+     "line": [
+      [
+       37.92611,
+       139.89878
+      ],
+      [
+       38.015,
+       139.998
+      ]
+     ]
+    },
+    {
+     "distance": 15462,
+     "duration": 0,
+     "line": [
+      [
+       38.015,
+       139.998
+      ],
+      [
+       38.050442,
+       140.168991
+      ]
+     ]
+    },
+    {
+     "distance": 1782,
+     "duration": 0,
+     "line": [
+      [
+       38.050442,
+       140.168991
+      ],
+      [
+       38.04738,
+       140.14898
+      ]
+     ]
     }
    ]
   }
@@ -2300,6 +2832,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E4%B8%89%E3%83%8E%E5%80%89%E3%81%B2%E3%81%BE%E3%82%8F%E3%82%8A%E7%95%912013-09-11_-_panoramio.jpg",
    "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 24162,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 11715,
+     "duration": 0,
+     "line": [
+      [
+       37.64395,
+       139.86782
+      ],
+      [
+       37.74948,
+       139.86601
+      ]
+     ]
+    },
+    {
+     "distance": 2644,
+     "duration": 0,
+     "line": [
+      [
+       37.74948,
+       139.86601
+      ],
+      [
+       37.731167,
+       139.885275
+      ]
+     ]
+    },
+    {
+     "distance": 7319,
+     "duration": 0,
+     "line": [
+      [
+       37.731167,
+       139.885275
+      ],
+      [
+       37.666139,
+       139.871467
+      ]
+     ]
+    },
+    {
+     "distance": 1564,
+     "duration": 0,
+     "line": [
+      [
+       37.666139,
+       139.871467
+      ],
+      [
+       37.652176,
+       139.869095
+      ]
+     ]
+    },
+    {
+     "distance": 920,
+     "duration": 0,
+     "line": [
+      [
+       37.652176,
+       139.869095
+      ],
+      [
+       37.64395,
+       139.86782
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -2527,6 +3136,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Nogiwa_Shinden,_Shimogo,_Minamiaizu_District,_Fukushima_Prefecture_969-5341,_Japan_-_panoramio_(4).jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 30895,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 7434,
+     "duration": 0,
+     "line": [
+      [
+       37.22452,
+       139.84182
+      ],
+      [
+       37.19308,
+       139.91608
+      ]
+     ]
+    },
+    {
+     "distance": 9160,
+     "duration": 0,
+     "line": [
+      [
+       37.19308,
+       139.91608
+      ],
+      [
+       37.27482,
+       139.90184
+      ]
+     ]
+    },
+    {
+     "distance": 7473,
+     "duration": 0,
+     "line": [
+      [
+       37.27482,
+       139.90184
+      ],
+      [
+       37.333629,
+       139.860662
+      ]
+     ]
+    },
+    {
+     "distance": 5636,
+     "duration": 0,
+     "line": [
+      [
+       37.333629,
+       139.860662
+      ],
+      [
+       37.294193,
+       139.900885
+      ]
+     ]
+    },
+    {
+     "distance": 1192,
+     "duration": 0,
+     "line": [
+      [
+       37.294193,
+       139.900885
+      ],
+      [
+       37.30398,
+       139.89533
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -2787,6 +3473,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
    "page": "https://commons.wikimedia.org/wiki/File:Hoshitoge_no_Tanada_(14287999165).jpg",
    "y": 60
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 74987,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 32454,
+     "duration": 0,
+     "line": [
+      [
+       36.93588,
+       138.80942
+      ],
+      [
+       37.12424,
+       138.52965
+      ]
+     ]
+    },
+    {
+     "distance": 8625,
+     "duration": 0,
+     "line": [
+      [
+       37.12424,
+       138.52965
+      ],
+      [
+       37.100395,
+       138.622406
+      ]
+     ]
+    },
+    {
+     "distance": 3921,
+     "duration": 0,
+     "line": [
+      [
+       37.100395,
+       138.622406
+      ],
+      [
+       37.133778,
+       138.607941
+      ]
+     ]
+    },
+    {
+     "distance": 6763,
+     "duration": 0,
+     "line": [
+      [
+       37.133778,
+       138.607941
+      ],
+      [
+       37.072905,
+       138.611254
+      ]
+     ]
+    },
+    {
+     "distance": 23224,
+     "duration": 0,
+     "line": [
+      [
+       37.072905,
+       138.611254
+      ],
+      [
+       36.93588,
+       138.80942
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -3027,6 +3790,83 @@
    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
    "page": "https://commons.wikimedia.org/wiki/File:%E5%90%8D%E6%B0%B4%E7%AB%9C%E3%83%B6%E7%AA%AA.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 24801,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 5442,
+     "duration": 0,
+     "line": [
+      [
+       37.02324,
+       138.63929
+      ],
+      [
+       36.97486,
+       138.62934
+      ]
+     ]
+    },
+    {
+     "distance": 4963,
+     "duration": 0,
+     "line": [
+      [
+       36.97486,
+       138.62934
+      ],
+      [
+       36.944771,
+       138.670731
+      ]
+     ]
+    },
+    {
+     "distance": 8515,
+     "duration": 0,
+     "line": [
+      [
+       36.944771,
+       138.670731
+      ],
+      [
+       37.020635,
+       138.656485
+      ]
+     ]
+    },
+    {
+     "distance": 3339,
+     "duration": 0,
+     "line": [
+      [
+       37.020635,
+       138.656485
+      ],
+      [
+       37.002938,
+       138.626021
+      ]
+     ]
+    },
+    {
+     "distance": 2542,
+     "duration": 0,
+     "line": [
+      [
+       37.002938,
+       138.626021
+      ],
+      [
+       37.02324,
+       138.63929
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -3250,6 +4090,83 @@
      "time": "16:00",
      "what": "JR飯山線で越後湯沢（十日町乗り換え）または長野方面へ帰路につく。",
      "whatEn": "Depart from JR Echigo-Tanaka Station via the JR Iiyama Line."
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 20278,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4414,
+     "duration": 0,
+     "line": [
+      [
+       37.01424,
+       138.65255
+      ],
+      [
+       36.974487,
+       138.651093
+      ]
+     ]
+    },
+    {
+     "distance": 3730,
+     "duration": 0,
+     "line": [
+      [
+       36.974487,
+       138.651093
+      ],
+      [
+       36.944771,
+       138.670731
+      ]
+     ]
+    },
+    {
+     "distance": 8455,
+     "duration": 0,
+     "line": [
+      [
+       36.944771,
+       138.670731
+      ],
+      [
+       37.02008,
+       138.656432
+      ]
+     ]
+    },
+    {
+     "distance": 2416,
+     "duration": 0,
+     "line": [
+      [
+       37.02008,
+       138.656432
+      ],
+      [
+       37.00238,
+       138.640564
+      ]
+     ]
+    },
+    {
+     "distance": 1263,
+     "duration": 0,
+     "line": [
+      [
+       37.00238,
+       138.640564
+      ],
+      [
+       37.00509,
+       138.62673
+      ]
+     ]
     }
    ]
   }
@@ -3542,6 +4459,97 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Amaharashi_Coast_20190429.jpg",
    "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 32622,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 8504,
+     "duration": 0,
+     "line": [
+      [
+       36.74152,
+       137.01514
+      ],
+      [
+       36.81509,
+       137.04182
+      ]
+     ]
+    },
+    {
+     "distance": 728,
+     "duration": 0,
+     "line": [
+      [
+       36.81509,
+       137.04182
+      ],
+      [
+       36.815006,
+       137.03363
+      ]
+     ]
+    },
+    {
+     "distance": 6873,
+     "duration": 0,
+     "line": [
+      [
+       36.815006,
+       137.03363
+      ],
+      [
+       36.86441,
+       136.987015
+      ]
+     ]
+    },
+    {
+     "distance": 44,
+     "duration": 0,
+     "line": [
+      [
+       36.86441,
+       136.987015
+      ],
+      [
+       36.8642,
+       136.9866
+      ]
+     ]
+    },
+    {
+     "distance": 9862,
+     "duration": 0,
+     "line": [
+      [
+       36.8642,
+       136.9866
+      ],
+      [
+       36.79287,
+       137.052811
+      ]
+     ]
+    },
+    {
+     "distance": 6611,
+     "duration": 0,
+     "line": [
+      [
+       36.79287,
+       137.052811
+      ],
+      [
+       36.74152,
+       137.01514
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -3783,6 +4791,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Fukiware_Falls_05.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 38968,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 16638,
+     "duration": 0,
+     "line": [
+      [
+       36.64241,
+       139.03566
+      ],
+      [
+       36.70205,
+       139.20705
+      ]
+     ]
+    },
+    {
+     "distance": 150,
+     "duration": 0,
+     "line": [
+      [
+       36.70205,
+       139.20705
+      ],
+      [
+       36.70142,
+       139.20854
+      ]
+     ]
+    },
+    {
+     "distance": 3746,
+     "duration": 0,
+     "line": [
+      [
+       36.70142,
+       139.20854
+      ],
+      [
+       36.66768,
+       139.2092
+      ]
+     ]
+    },
+    {
+     "distance": 2313,
+     "duration": 0,
+     "line": [
+      [
+       36.66768,
+       139.2092
+      ],
+      [
+       36.688466,
+       139.207428
+      ]
+     ]
+    },
+    {
+     "distance": 16121,
+     "duration": 0,
+     "line": [
+      [
+       36.688466,
+       139.207428
+      ],
+      [
+       36.64241,
+       139.03566
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -4017,6 +5102,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Shimagawa_Dam_lake.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 30264,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 14154,
+     "duration": 0,
+     "line": [
+      [
+       36.58578,
+       138.8506
+      ],
+      [
+       36.70147,
+       138.78383
+      ]
+     ]
+    },
+    {
+     "distance": 2157,
+     "duration": 0,
+     "line": [
+      [
+       36.70147,
+       138.78383
+      ],
+      [
+       36.689247,
+       138.764984
+      ]
+     ]
+    },
+    {
+     "distance": 1831,
+     "duration": 0,
+     "line": [
+      [
+       36.689247,
+       138.764984
+      ],
+      [
+       36.680198,
+       138.782182
+      ]
+     ]
+    },
+    {
+     "distance": 12122,
+     "duration": 0,
+     "line": [
+      [
+       36.680198,
+       138.782182
+      ],
+      [
+       36.58578,
+       138.8506
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -4232,6 +5380,69 @@
      "time": "15:40",
      "what": "JR宇都宮駅から新幹線・JR宇都宮線で帰路につきます。",
      "whatEn": "Depart from JR Utsunomiya Station via Shinkansen or JR Utsunomiya Line."
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 19873,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 7415,
+     "duration": 0,
+     "line": [
+      [
+       36.55963,
+       139.89831
+      ],
+      [
+       36.61425,
+       139.85043
+      ]
+     ]
+    },
+    {
+     "distance": 3642,
+     "duration": 0,
+     "line": [
+      [
+       36.61425,
+       139.85043
+      ],
+      [
+       36.594185,
+       139.818085
+      ]
+     ]
+    },
+    {
+     "distance": 964,
+     "duration": 0,
+     "line": [
+      [
+       36.594185,
+       139.818085
+      ],
+      [
+       36.600082,
+       139.826019
+      ]
+     ]
+    },
+    {
+     "distance": 7852,
+     "duration": 0,
+     "line": [
+      [
+       36.600082,
+       139.826019
+      ],
+      [
+       36.55963,
+       139.89831
+      ]
+     ]
     }
    ]
   }
@@ -4483,6 +5694,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Toyama_Shogawa-kyo_268_xl.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 42285,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 19114,
+     "duration": 0,
+     "line": [
+      [
+       36.72664,
+       137.01135
+      ],
+      [
+       36.55446,
+       137.00832
+      ]
+     ]
+    },
+    {
+     "distance": 2614,
+     "duration": 0,
+     "line": [
+      [
+       36.55446,
+       137.00832
+      ],
+      [
+       36.574699,
+       136.993332
+      ]
+     ]
+    },
+    {
+     "distance": 151,
+     "duration": 0,
+     "line": [
+      [
+       36.574699,
+       136.993332
+      ],
+      [
+       36.573914,
+       136.99472
+      ]
+     ]
+    },
+    {
+     "distance": 1938,
+     "duration": 0,
+     "line": [
+      [
+       36.573914,
+       136.99472
+      ],
+      [
+       36.562382,
+       136.978394
+      ]
+     ]
+    },
+    {
+     "distance": 18468,
+     "duration": 0,
+     "line": [
+      [
+       36.562382,
+       136.978394
+      ],
+      [
+       36.72664,
+       137.01135
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -4717,6 +6005,69 @@
      "time": "15:00",
      "what": "JR両毛線で高崎・小山方面へ帰路につきます。",
      "whatEn": "Depart from JR Kiryu Station on the JR Ryomo Line."
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 12780,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4842,
+     "duration": 0,
+     "line": [
+      [
+       36.41105,
+       139.33327
+      ],
+      [
+       36.45272,
+       139.31725
+      ]
+     ]
+    },
+    {
+     "distance": 4802,
+     "duration": 0,
+     "line": [
+      [
+       36.45272,
+       139.31725
+      ],
+      [
+       36.410339,
+       139.306442
+      ]
+     ]
+    },
+    {
+     "distance": 2753,
+     "duration": 0,
+     "line": [
+      [
+       36.410339,
+       139.306442
+      ],
+      [
+       36.412521,
+       139.337143
+      ]
+     ]
+    },
+    {
+     "distance": 383,
+     "duration": 0,
+     "line": [
+      [
+       36.412521,
+       139.337143
+      ],
+      [
+       36.41105,
+       139.33327
+      ]
+     ]
     }
    ]
   }
@@ -4987,6 +6338,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B1%B1%E6%AF%94%E5%92%A9%E7%A5%9E%E7%A4%BE_01.jpg",
    "y": 62
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 4760,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 2331,
+     "duration": 0,
+     "line": [
+      [
+       36.452151,
+       136.621637
+      ],
+      [
+       36.43474,
+       136.63624
+      ]
+     ]
+    },
+    {
+     "distance": 232,
+     "duration": 0,
+     "line": [
+      [
+       36.43474,
+       136.63624
+      ],
+      [
+       36.436813,
+       136.635925
+      ]
+     ]
+    },
+    {
+     "distance": 308,
+     "duration": 0,
+     "line": [
+      [
+       36.436813,
+       136.635925
+      ],
+      [
+       36.43837,
+       136.633072
+      ]
+     ]
+    },
+    {
+     "distance": 939,
+     "duration": 0,
+     "line": [
+      [
+       36.43837,
+       136.633072
+      ],
+      [
+       36.446293,
+       136.629395
+      ]
+     ]
+    },
+    {
+     "distance": 950,
+     "duration": 0,
+     "line": [
+      [
+       36.446293,
+       136.629395
+      ],
+      [
+       36.452151,
+       136.621637
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -5853,6 +7281,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Heisenji_Hakusanjinjya_HAIDEN.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 16926,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4618,
+     "duration": 0,
+     "line": [
+      [
+       36.05629,
+       136.49212
+      ],
+      [
+       36.0438,
+       136.54121
+      ]
+     ]
+    },
+    {
+     "distance": 2534,
+     "duration": 0,
+     "line": [
+      [
+       36.0438,
+       136.54121
+      ],
+      [
+       36.057327,
+       136.518463
+      ]
+     ]
+    },
+    {
+     "distance": 3775,
+     "duration": 0,
+     "line": [
+      [
+       36.057327,
+       136.518463
+      ],
+      [
+       36.073363,
+       136.55556
+      ]
+     ]
+    },
+    {
+     "distance": 5999,
+     "duration": 0,
+     "line": [
+      [
+       36.073363,
+       136.55556
+      ],
+      [
+       36.05629,
+       136.49212
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -6105,6 +7596,83 @@
      "time": "15:55",
      "what": "茅野駅に到着。JR中央本線特急「あずさ」で新宿・松本方面へ帰路につきます（バスは土日祝限定のため平日はタクシー利用）。",
      "whatEn": "Arrive at Chino Station for JR Chuo Line Limited Express Azusa trains toward Shinjuku or Matsumoto (use taxi on weekdays when the bus does not run)."
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 31579,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13304,
+     "duration": 0,
+     "line": [
+      [
+       35.99428,
+       138.15215
+      ],
+      [
+       36.03331,
+       138.29221
+      ]
+     ]
+    },
+    {
+     "distance": 592,
+     "duration": 0,
+     "line": [
+      [
+       36.03331,
+       138.29221
+      ],
+      [
+       36.037558,
+       138.296199
+      ]
+     ]
+    },
+    {
+     "distance": 7115,
+     "duration": 0,
+     "line": [
+      [
+       36.037558,
+       138.296199
+      ],
+      [
+       35.988719,
+       138.24486
+      ]
+     ]
+    },
+    {
+     "distance": 2920,
+     "duration": 0,
+     "line": [
+      [
+       35.988719,
+       138.24486
+      ],
+      [
+       36.0135,
+       138.23395
+      ]
+     ]
+    },
+    {
+     "distance": 7648,
+     "duration": 0,
+     "line": [
+      [
+       36.0135,
+       138.23395
+      ],
+      [
+       35.99428,
+       138.15215
+      ]
+     ]
     }
    ]
   }
@@ -7831,6 +9399,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Nezame_no_Toko_s4.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 19752,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 1451,
+     "duration": 0,
+     "line": [
+      [
+       35.78404,
+       137.69326
+      ],
+      [
+       35.77218,
+       137.70004
+      ]
+     ]
+    },
+    {
+     "distance": 8440,
+     "duration": 0,
+     "line": [
+      [
+       35.77218,
+       137.70004
+      ],
+      [
+       35.848116,
+       137.695223
+      ]
+     ]
+    },
+    {
+     "distance": 8435,
+     "duration": 0,
+     "line": [
+      [
+       35.848116,
+       137.695223
+      ],
+      [
+       35.7722,
+       137.6994
+      ]
+     ]
+    },
+    {
+     "distance": 1426,
+     "duration": 0,
+     "line": [
+      [
+       35.7722,
+       137.6994
+      ],
+      [
+       35.78404,
+       137.69326
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -8089,6 +9720,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Hossawa_falls,_Hinohara,_Tokyo,_Japan.JPG",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 32203,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 8048,
+     "duration": 0,
+     "line": [
+      [
+       35.73235,
+       139.22816
+      ],
+      [
+       35.7275,
+       139.13904
+      ]
+     ]
+    },
+    {
+     "distance": 2370,
+     "duration": 0,
+     "line": [
+      [
+       35.7275,
+       139.13904
+      ],
+      [
+       35.740631,
+       139.118301
+      ]
+     ]
+    },
+    {
+     "distance": 6070,
+     "duration": 0,
+     "line": [
+      [
+       35.740631,
+       139.118301
+      ],
+      [
+       35.72416,
+       139.05406
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       35.72416,
+       139.05406
+      ],
+      [
+       35.72416,
+       139.05406
+      ]
+     ]
+    },
+    {
+     "distance": 15715,
+     "duration": 0,
+     "line": [
+      [
+       35.72416,
+       139.05406
+      ],
+      [
+       35.73235,
+       139.22816
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -8629,7 +10337,69 @@
    "page": "https://commons.wikimedia.org/wiki/File:Genbudo_Seiryudo_Cave_2018.jpg",
    "y": 50
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 9160,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4056,
+     "duration": 0,
+     "line": [
+      [
+       35.62375,
+       134.81342
+      ],
+      [
+       35.58798,
+       134.80426
+      ]
+     ]
+    },
+    {
+     "distance": 172,
+     "duration": 0,
+     "line": [
+      [
+       35.58798,
+       134.80426
+      ],
+      [
+       35.586983,
+       134.802795
+      ]
+     ]
+    },
+    {
+     "distance": 4339,
+     "duration": 0,
+     "line": [
+      [
+       35.586983,
+       134.802795
+      ],
+      [
+       35.625896,
+       134.807396
+      ]
+     ]
+    },
+    {
+     "distance": 593,
+     "duration": 0,
+     "line": [
+      [
+       35.625896,
+       134.807396
+      ],
+      [
+       35.62375,
+       134.81342
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "mino-udatsu-old-town-oyada",
@@ -9212,6 +10982,83 @@
      "whatEn": "Return to Iida Station for JR Iida Line trains or highway buses toward Nagoya and Shinjuku."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 35638,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 11922,
+     "duration": 0,
+     "line": [
+      [
+       35.51877,
+       137.82074
+      ],
+      [
+       35.458327,
+       137.711653
+      ]
+     ]
+    },
+    {
+     "distance": 4917,
+     "duration": 0,
+     "line": [
+      [
+       35.458327,
+       137.711653
+      ],
+      [
+       35.44537,
+       137.65965
+      ]
+     ]
+    },
+    {
+     "distance": 3884,
+     "duration": 0,
+     "line": [
+      [
+       35.44537,
+       137.65965
+      ],
+      [
+       35.431284,
+       137.698968
+      ]
+     ]
+    },
+    {
+     "distance": 3147,
+     "duration": 0,
+     "line": [
+      [
+       35.431284,
+       137.698968
+      ],
+      [
+       35.456132,
+       137.715733
+      ]
+     ]
+    },
+    {
+     "distance": 11768,
+     "duration": 0,
+     "line": [
+      [
+       35.456132,
+       137.715733
+      ],
+      [
+       35.51877,
+       137.82074
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -9448,7 +11295,69 @@
    "page": "https://commons.wikimedia.org/wiki/File:Shimane-Izumohinomisaki_Lighthouse-xl.jpg",
    "y": 45
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 28430,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13820,
+     "duration": 0,
+     "line": [
+      [
+       35.36076,
+       132.75666
+      ],
+      [
+       35.42956,
+       132.62942
+      ]
+     ]
+    },
+    {
+     "distance": 373,
+     "duration": 0,
+     "line": [
+      [
+       35.42956,
+       132.62942
+      ],
+      [
+       35.4328,
+       132.6305
+      ]
+     ]
+    },
+    {
+     "distance": 153,
+     "duration": 0,
+     "line": [
+      [
+       35.4328,
+       132.6305
+      ],
+      [
+       35.43374,
+       132.62927
+      ]
+     ]
+    },
+    {
+     "distance": 14084,
+     "duration": 0,
+     "line": [
+      [
+       35.43374,
+       132.62927
+      ],
+      [
+       35.36076,
+       132.75666
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "tottori-hanakairo-flower-park",
@@ -9669,6 +11578,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
    "page": "https://commons.wikimedia.org/wiki/File:Scarlet_sage_in_Tottori_(51820969082).jpg",
    "y": 52
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 29519,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 11510,
+     "duration": 0,
+     "line": [
+      [
+       35.42278,
+       133.3351
+      ],
+      [
+       35.3478,
+       133.42299
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       35.3478,
+       133.42299
+      ],
+      [
+       35.3478,
+       133.42299
+      ]
+     ]
+    },
+    {
+     "distance": 13490,
+     "duration": 0,
+     "line": [
+      [
+       35.3478,
+       133.42299
+      ],
+      [
+       35.458004,
+       133.360168
+      ]
+     ]
+    },
+    {
+     "distance": 4519,
+     "duration": 0,
+     "line": [
+      [
+       35.458004,
+       133.360168
+      ],
+      [
+       35.42278,
+       133.3351
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -9907,6 +11879,69 @@
    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:Kokeizan_Eih%C5%8D-ji_Temple_20221127_13.jpg",
    "y": 40
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 14656,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 1427,
+     "duration": 0,
+     "line": [
+      [
+       35.33609,
+       137.12189
+      ],
+      [
+       35.34695,
+       137.13032
+      ]
+     ]
+    },
+    {
+     "distance": 3595,
+     "duration": 0,
+     "line": [
+      [
+       35.34695,
+       137.13032
+      ],
+      [
+       35.37793,
+       137.118744
+      ]
+     ]
+    },
+    {
+     "distance": 7065,
+     "duration": 0,
+     "line": [
+      [
+       35.37793,
+       137.118744
+      ],
+      [
+       35.31575,
+       137.13542
+      ]
+     ]
+    },
+    {
+     "distance": 2569,
+     "duration": 0,
+     "line": [
+      [
+       35.31575,
+       137.13542
+      ],
+      [
+       35.33609,
+       137.12189
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -10269,6 +12304,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E9%86%92%E4%BA%95%E3%81%AB%E3%81%A6_%E3%80%8C%E5%8D%81%E7%8E%8B%E6%B0%B4%E3%80%8D_2012.8.26_-_panoramio.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 11882,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 456,
+     "duration": 0,
+     "line": [
+      [
+       35.32764,
+       136.34536
+      ],
+      [
+       35.33098,
+       136.3483
+      ]
+     ]
+    },
+    {
+     "distance": 1974,
+     "duration": 0,
+     "line": [
+      [
+       35.33098,
+       136.3483
+      ],
+      [
+       35.342754,
+       136.33197
+      ]
+     ]
+    },
+    {
+     "distance": 4226,
+     "duration": 0,
+     "line": [
+      [
+       35.342754,
+       136.33197
+      ],
+      [
+       35.37318,
+       136.36003
+      ]
+     ]
+    },
+    {
+     "distance": 5226,
+     "duration": 0,
+     "line": [
+      [
+       35.37318,
+       136.36003
+      ],
+      [
+       35.32764,
+       136.34536
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -10503,6 +12601,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Quan_SIOGAMA.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 76314,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 33882,
+     "duration": 0,
+     "line": [
+      [
+       35.42278,
+       133.3351
+      ],
+      [
+       35.30197,
+       133.67909
+      ]
+     ]
+    },
+    {
+     "distance": 4172,
+     "duration": 0,
+     "line": [
+      [
+       35.30197,
+       133.67909
+      ],
+      [
+       35.2908,
+       133.72306
+      ]
+     ]
+    },
+    {
+     "distance": 6842,
+     "duration": 0,
+     "line": [
+      [
+       35.2908,
+       133.72306
+      ],
+      [
+       35.302132,
+       133.648834
+      ]
+     ]
+    },
+    {
+     "distance": 31418,
+     "duration": 0,
+     "line": [
+      [
+       35.302132,
+       133.648834
+      ],
+      [
+       35.42278,
+       133.3351
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -11046,7 +13207,69 @@
     }
    ]
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 40166,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 10802,
+     "duration": 0,
+     "line": [
+      [
+       35.1633,
+       134.78921
+      ],
+      [
+       35.250469,
+       134.736298
+      ]
+     ]
+    },
+    {
+     "distance": 13445,
+     "duration": 0,
+     "line": [
+      [
+       35.250469,
+       134.736298
+      ],
+      [
+       35.287235,
+       134.877625
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       35.287235,
+       134.877625
+      ],
+      [
+       35.287235,
+       134.877625
+      ]
+     ]
+    },
+    {
+     "distance": 15919,
+     "duration": 0,
+     "line": [
+      [
+       35.287235,
+       134.877625
+      ],
+      [
+       35.1633,
+       134.78921
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "sumatakyo-yume-no-tsuribashi",
@@ -11275,6 +13498,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
    "page": "https://commons.wikimedia.org/wiki/File:Yume-no-Tsuribashi_(40896906290).jpg",
    "y": 62
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 17103,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 8429,
+     "duration": 0,
+     "line": [
+      [
+       35.10811,
+       138.13781
+      ],
+      [
+       35.1811,
+       138.1122
+      ]
+     ]
+    },
+    {
+     "distance": 861,
+     "duration": 0,
+     "line": [
+      [
+       35.1811,
+       138.1122
+      ],
+      [
+       35.17565,
+       138.11896
+      ]
+     ]
+    },
+    {
+     "distance": 398,
+     "duration": 0,
+     "line": [
+      [
+       35.17565,
+       138.11896
+      ],
+      [
+       35.173761,
+       138.122686
+      ]
+     ]
+    },
+    {
+     "distance": 7415,
+     "duration": 0,
+     "line": [
+      [
+       35.173761,
+       138.122686
+      ],
+      [
+       35.10811,
+       138.13781
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -11504,6 +13790,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Okuoikojo_Eki.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 18706,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 7724,
+     "duration": 0,
+     "line": [
+      [
+       35.10811,
+       138.13781
+      ],
+      [
+       35.16803,
+       138.18105
+      ]
+     ]
+    },
+    {
+     "distance": 1642,
+     "duration": 0,
+     "line": [
+      [
+       35.16803,
+       138.18105
+      ],
+      [
+       35.18197,
+       138.18712
+      ]
+     ]
+    },
+    {
+     "distance": 9340,
+     "duration": 0,
+     "line": [
+      [
+       35.18197,
+       138.18712
+      ],
+      [
+       35.10811,
+       138.13781
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       35.10811,
+       138.13781
+      ],
+      [
+       35.10811,
+       138.13781
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -12068,7 +14417,69 @@
     }
    ]
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 25761,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 3276,
+     "duration": 0,
+     "line": [
+      [
+       35.01675,
+       135.58247
+      ],
+      [
+       34.9927,
+       135.56158
+      ]
+     ]
+    },
+    {
+     "distance": 5369,
+     "duration": 0,
+     "line": [
+      [
+       34.9927,
+       135.56158
+      ],
+      [
+       35.010983,
+       135.616241
+      ]
+     ]
+    },
+    {
+     "distance": 10117,
+     "duration": 0,
+     "line": [
+      [
+       35.010983,
+       135.616241
+      ],
+      [
+       35.02128,
+       135.50567
+      ]
+     ]
+    },
+    {
+     "distance": 6999,
+     "duration": 0,
+     "line": [
+      [
+       35.02128,
+       135.50567
+      ],
+      [
+       35.01675,
+       135.58247
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "nihondaira-yume-terrace",
@@ -12338,6 +14749,83 @@
      "whatEn": "Depart from JR Shizuoka Station on the Tokaido Shinkansen."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 19695,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 6353,
+     "duration": 0,
+     "line": [
+      [
+       34.97178,
+       138.38925
+      ],
+      [
+       34.987156,
+       138.456528
+      ]
+     ]
+    },
+    {
+     "distance": 2356,
+     "duration": 0,
+     "line": [
+      [
+       34.987156,
+       138.456528
+      ],
+      [
+       34.967529,
+       138.4664
+      ]
+     ]
+    },
+    {
+     "distance": 1406,
+     "duration": 0,
+     "line": [
+      [
+       34.967529,
+       138.4664
+      ],
+      [
+       34.980167,
+       138.465332
+      ]
+     ]
+    },
+    {
+     "distance": 3365,
+     "duration": 0,
+     "line": [
+      [
+       34.980167,
+       138.465332
+      ],
+      [
+       35.005062,
+       138.444214
+      ]
+     ]
+    },
+    {
+     "distance": 6215,
+     "duration": 0,
+     "line": [
+      [
+       35.005062,
+       138.444214
+      ],
+      [
+       34.97178,
+       138.38925
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -12544,6 +15032,69 @@
      "whatEn": "Board a Kintetsu Nagoya Line express train from Kintetsu Yokkaichi toward Nagoya or Osaka."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 37272,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13124,
+     "duration": 0,
+     "line": [
+      [
+       34.96302,
+       136.63027
+      ],
+      [
+       34.94951,
+       136.48694
+      ]
+     ]
+    },
+    {
+     "distance": 3476,
+     "duration": 0,
+     "line": [
+      [
+       34.94951,
+       136.48694
+      ],
+      [
+       34.963936,
+       136.453033
+      ]
+     ]
+    },
+    {
+     "distance": 6075,
+     "duration": 0,
+     "line": [
+      [
+       34.963936,
+       136.453033
+      ],
+      [
+       35.013287,
+       136.481903
+      ]
+     ]
+    },
+    {
+     "distance": 14597,
+     "duration": 0,
+     "line": [
+      [
+       35.013287,
+       136.481903
+      ],
+      [
+       34.96302,
+       136.63027
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -12747,6 +15298,55 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
    "page": "https://commons.wikimedia.org/wiki/File:Yokokuji25s5s3200.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 9571,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4412,
+     "duration": 0,
+     "line": [
+      [
+       34.9235,
+       135.70072
+      ],
+      [
+       34.91378,
+       135.65371
+      ]
+     ]
+    },
+    {
+     "distance": 3758,
+     "duration": 0,
+     "line": [
+      [
+       34.91378,
+       135.65371
+      ],
+      [
+       34.931541,
+       135.688858
+      ]
+     ]
+    },
+    {
+     "distance": 1401,
+     "duration": 0,
+     "line": [
+      [
+       34.931541,
+       135.688858
+      ],
+      [
+       34.9235,
+       135.70072
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -12987,6 +15587,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:Inaxlivemuseum_2010.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 3267,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 384,
+     "duration": 0,
+     "line": [
+      [
+       34.8906,
+       136.83545
+      ],
+      [
+       34.890221,
+       136.839645
+      ]
+     ]
+    },
+    {
+     "distance": 1288,
+     "duration": 0,
+     "line": [
+      [
+       34.890221,
+       136.839645
+      ],
+      [
+       34.88156,
+       136.84906
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       34.88156,
+       136.84906
+      ],
+      [
+       34.88156,
+       136.84906
+      ]
+     ]
+    },
+    {
+     "distance": 1595,
+     "duration": 0,
+     "line": [
+      [
+       34.88156,
+       136.84906
+      ],
+      [
+       34.8906,
+       136.83545
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -13774,6 +16437,69 @@
      "whatEn": "Board the Kintetsu Nagoya Line from Hisai Station toward Tsu, Nagoya, or Osaka."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 20064,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 3200,
+     "duration": 0,
+     "line": [
+      [
+       34.67582,
+       136.47789
+      ],
+      [
+       34.68878,
+       136.44658
+      ]
+     ]
+    },
+    {
+     "distance": 6848,
+     "duration": 0,
+     "line": [
+      [
+       34.68878,
+       136.44658
+      ],
+      [
+       34.70707,
+       136.37492
+      ]
+     ]
+    },
+    {
+     "distance": 0,
+     "duration": 0,
+     "line": [
+      [
+       34.70707,
+       136.37492
+      ],
+      [
+       34.70707,
+       136.37492
+      ]
+     ]
+    },
+    {
+     "distance": 10016,
+     "duration": 0,
+     "line": [
+      [
+       34.70707,
+       136.37492
+      ],
+      [
+       34.67582,
+       136.47789
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -13978,7 +16704,55 @@
    "page": "https://commons.wikimedia.org/wiki/File:%E4%B8%89%E6%AE%B5%E5%B3%A1%E9%81%8A%E6%AD%A9%E9%81%93_DSC_0108.jpg",
    "y": 50
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 68517,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 32041,
+     "duration": 0,
+     "line": [
+      [
+       34.39621,
+       132.45677
+      ],
+      [
+       34.59959,
+       132.20852
+      ]
+     ]
+    },
+    {
+     "distance": 2240,
+     "duration": 0,
+     "line": [
+      [
+       34.59959,
+       132.20852
+      ],
+      [
+       34.6145,
+       132.192
+      ]
+     ]
+    },
+    {
+     "distance": 34236,
+     "duration": 0,
+     "line": [
+      [
+       34.6145,
+       132.192
+      ],
+      [
+       34.39621,
+       132.45677
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "murou-art-forest",
@@ -14201,7 +16975,69 @@
     }
    ]
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 23617,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4192,
+     "duration": 0,
+     "line": [
+      [
+       34.56575,
+       136.01458
+      ],
+      [
+       34.534546,
+       136.040405
+      ]
+     ]
+    },
+    {
+     "distance": 1,
+     "duration": 0,
+     "line": [
+      [
+       34.534546,
+       136.040405
+      ],
+      [
+       34.53455,
+       136.0404
+      ]
+     ]
+    },
+    {
+     "distance": 12461,
+     "duration": 0,
+     "line": [
+      [
+       34.53455,
+       136.0404
+      ],
+      [
+       34.471153,
+       135.927933
+      ]
+     ]
+    },
+    {
+     "distance": 6963,
+     "duration": 0,
+     "line": [
+      [
+       34.471153,
+       135.927933
+      ],
+      [
+       34.52989,
+       135.95466
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "soni-highland",
@@ -14425,6 +17261,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E6%9B%BD%E7%88%BE%E9%AB%98%E5%8E%9F_Soni_k%C5%8Dgen_2011.10.17_-_panoramio.jpg",
    "y": 52
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 26971,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 12801,
+     "duration": 0,
+     "line": [
+      [
+       34.62179,
+       136.09569
+      ],
+      [
+       34.52022,
+       136.16206
+      ]
+     ]
+    },
+    {
+     "distance": 1067,
+     "duration": 0,
+     "line": [
+      [
+       34.52022,
+       136.16206
+      ],
+      [
+       34.524523,
+       136.151626
+      ]
+     ]
+    },
+    {
+     "distance": 11909,
+     "duration": 0,
+     "line": [
+      [
+       34.524523,
+       136.151626
+      ],
+      [
+       34.625587,
+       136.107925
+      ]
+     ]
+    },
+    {
+     "distance": 1194,
+     "duration": 0,
+     "line": [
+      [
+       34.625587,
+       136.107925
+      ],
+      [
+       34.62179,
+       136.09569
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -14624,7 +17523,55 @@
    "page": "https://commons.wikimedia.org/wiki/File:081018_Abuto_Kannon_Fukuyama_Japan02bs10.jpg",
    "y": 45
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 29441,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13809,
+     "duration": 0,
+     "line": [
+      [
+       34.48939,
+       133.36225
+      ],
+      [
+       34.36569,
+       133.34616
+      ]
+     ]
+    },
+    {
+     "distance": 4239,
+     "duration": 0,
+     "line": [
+      [
+       34.36569,
+       133.34616
+      ],
+      [
+       34.388254,
+       133.383489
+      ]
+     ]
+    },
+    {
+     "distance": 11393,
+     "duration": 0,
+     "line": [
+      [
+       34.388254,
+       133.383489
+      ],
+      [
+       34.48939,
+       133.36225
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "beppu-benten-pond",
@@ -14842,7 +17789,69 @@
    "page": "https://commons.wikimedia.org/wiki/File:Beppu_Benten_Pond.jpg",
    "y": 45
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 34192,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 22636,
+     "duration": 0,
+     "line": [
+      [
+       34.09442,
+       131.39651
+      ],
+      [
+       34.25511,
+       131.24489
+      ]
+     ]
+    },
+    {
+     "distance": 42,
+     "duration": 0,
+     "line": [
+      [
+       34.25511,
+       131.24489
+      ],
+      [
+       34.2553,
+       131.2445
+      ]
+     ]
+    },
+    {
+     "distance": 3810,
+     "duration": 0,
+     "line": [
+      [
+       34.2553,
+       131.2445
+      ],
+      [
+       34.23853,
+       131.208271
+      ]
+     ]
+    },
+    {
+     "distance": 7704,
+     "duration": 0,
+     "line": [
+      [
+       34.23853,
+       131.208271
+      ],
+      [
+       34.1692,
+       131.20442
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "yomomi-observatory",
@@ -15076,6 +18085,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Uchinoumi_-_cut.jpg",
    "y": 58
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 22699,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 6406,
+     "duration": 0,
+     "line": [
+      [
+       34.1789,
+       134.60842
+      ],
+      [
+       34.23645,
+       134.60313
+      ]
+     ]
+    },
+    {
+     "distance": 3160,
+     "duration": 0,
+     "line": [
+      [
+       34.23645,
+       134.60313
+      ],
+      [
+       34.232246,
+       134.637192
+      ]
+     ]
+    },
+    {
+     "distance": 5668,
+     "duration": 0,
+     "line": [
+      [
+       34.232246,
+       134.637192
+      ],
+      [
+       34.189278,
+       134.603821
+      ]
+     ]
+    },
+    {
+     "distance": 3342,
+     "duration": 0,
+     "line": [
+      [
+       34.189278,
+       134.603821
+      ],
+      [
+       34.21299,
+       134.626251
+      ]
+     ]
+    },
+    {
+     "distance": 4123,
+     "duration": 0,
+     "line": [
+      [
+       34.21299,
+       134.626251
+      ],
+      [
+       34.1789,
+       134.60842
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -15311,7 +18397,69 @@
     }
    ]
   },
-  "baseMap": true
+  "baseMap": true,
+  "walk": {
+   "distance": 48061,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 22585,
+     "duration": 0,
+     "line": [
+      [
+       34.22862,
+       132.62847
+      ],
+      [
+       34.17937,
+       132.86724
+      ]
+     ]
+    },
+    {
+     "distance": 1488,
+     "duration": 0,
+     "line": [
+      [
+       34.17937,
+       132.86724
+      ],
+      [
+       34.181973,
+       132.851349
+      ]
+     ]
+    },
+    {
+     "distance": 1442,
+     "duration": 0,
+     "line": [
+      [
+       34.181973,
+       132.851349
+      ],
+      [
+       34.177429,
+       132.866058
+      ]
+     ]
+    },
+    {
+     "distance": 22546,
+     "duration": 0,
+     "line": [
+      [
+       34.177429,
+       132.866058
+      ],
+      [
+       34.22862,
+       132.62847
+      ]
+     ]
+    }
+   ]
+  }
  },
  {
   "slug": "honen-ike-dam",
@@ -15540,6 +18688,69 @@
    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:Front_of_H%C5%8Dnen%27ike_Dam_2023-07-28_1212.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 29282,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 9563,
+     "duration": 0,
+     "line": [
+      [
+       34.12454,
+       133.65563
+      ],
+      [
+       34.04184,
+       133.68478
+      ]
+     ]
+    },
+    {
+     "distance": 7695,
+     "duration": 0,
+     "line": [
+      [
+       34.04184,
+       133.68478
+      ],
+      [
+       34.04285,
+       133.60113
+      ]
+     ]
+    },
+    {
+     "distance": 10604,
+     "duration": 0,
+     "line": [
+      [
+       34.04285,
+       133.60113
+      ],
+      [
+       34.13187,
+       133.64296
+      ]
+     ]
+    },
+    {
+     "distance": 1420,
+     "duration": 0,
+     "line": [
+      [
+       34.13187,
+       133.64296
+      ],
+      [
+       34.12454,
+       133.65563
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -15765,6 +18976,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
    "page": "https://commons.wikimedia.org/wiki/File:Maruyama_Senmaida(34665016140).jpg",
    "y": 65
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 39032,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13564,
+     "duration": 0,
+     "line": [
+      [
+       33.88968,
+       136.09872
+      ],
+      [
+       33.87562,
+       135.95249
+      ]
+     ]
+    },
+    {
+     "distance": 3513,
+     "duration": 0,
+     "line": [
+      [
+       33.87562,
+       135.95249
+      ],
+      [
+       33.877205,
+       135.914413
+      ]
+     ]
+    },
+    {
+     "distance": 2668,
+     "duration": 0,
+     "line": [
+      [
+       33.877205,
+       135.914413
+      ],
+      [
+       33.861809,
+       135.892181
+      ]
+     ]
+    },
+    {
+     "distance": 19287,
+     "duration": 0,
+     "line": [
+      [
+       33.861809,
+       135.892181
+      ],
+      [
+       33.88968,
+       136.09872
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -15993,6 +19267,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Wisteria_on_Wisteria_Tunnel_in_Kawachi_Wisteria_Garden_20150509.JPG",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 10052,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 4088,
+     "duration": 0,
+     "line": [
+      [
+       33.86897,
+       130.79521
+      ],
+      [
+       33.8322,
+       130.79263
+      ]
+     ]
+    },
+    {
+     "distance": 3942,
+     "duration": 0,
+     "line": [
+      [
+       33.8322,
+       130.79263
+      ],
+      [
+       33.86731,
+       130.799088
+      ]
+     ]
+    },
+    {
+     "distance": 836,
+     "duration": 0,
+     "line": [
+      [
+       33.86731,
+       130.799088
+      ],
+      [
+       33.868401,
+       130.80806
+      ]
+     ]
+    },
+    {
+     "distance": 1186,
+     "duration": 0,
+     "line": [
+      [
+       33.868401,
+       130.80806
+      ],
+      [
+       33.86897,
+       130.79521
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -16205,6 +19542,55 @@
    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:Niko_Buchi_deep_water_No.2.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 44065,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 19363,
+     "duration": 0,
+     "line": [
+      [
+       33.54741,
+       133.43049
+      ],
+      [
+       33.70514,
+       133.3411
+      ]
+     ]
+    },
+    {
+     "distance": 15632,
+     "duration": 0,
+     "line": [
+      [
+       33.70514,
+       133.3411
+      ],
+      [
+       33.564415,
+       133.334579
+      ]
+     ]
+    },
+    {
+     "distance": 9070,
+     "duration": 0,
+     "line": [
+      [
+       33.564415,
+       133.334579
+      ],
+      [
+       33.54741,
+       133.43049
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -16464,6 +19850,83 @@
      "whatEn": "Depart from JR Usa Station on the Limited Express Sonic toward Hakata or Oita."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 27468,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 3801,
+     "duration": 0,
+     "line": [
+      [
+       33.53219,
+       131.412
+      ],
+      [
+       33.558697,
+       131.438004
+      ]
+     ]
+    },
+    {
+     "distance": 169,
+     "duration": 0,
+     "line": [
+      [
+       33.558697,
+       131.438004
+      ],
+      [
+       33.559223,
+       131.439713
+      ]
+     ]
+    },
+    {
+     "distance": 7467,
+     "duration": 0,
+     "line": [
+      [
+       33.559223,
+       131.439713
+      ],
+      [
+       33.59274,
+       131.50971
+      ]
+     ]
+    },
+    {
+     "distance": 4719,
+     "duration": 0,
+     "line": [
+      [
+       33.59274,
+       131.50971
+      ],
+      [
+       33.62114,
+       131.47173
+      ]
+     ]
+    },
+    {
+     "distance": 11312,
+     "duration": 0,
+     "line": [
+      [
+       33.62114,
+       131.47173
+      ],
+      [
+       33.53219,
+       131.412
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -16669,6 +20132,55 @@
    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
    "page": "https://commons.wikimedia.org/wiki/File:Iokido_Cave-2.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 5898,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 535,
+     "duration": 0,
+     "line": [
+      [
+       33.492027,
+       133.927597
+      ],
+      [
+       33.4913,
+       133.93331
+      ]
+     ]
+    },
+    {
+     "distance": 2519,
+     "duration": 0,
+     "line": [
+      [
+       33.4913,
+       133.93331
+      ],
+      [
+       33.470566,
+       133.944366
+      ]
+     ]
+    },
+    {
+     "distance": 2844,
+     "duration": 0,
+     "line": [
+      [
+       33.470566,
+       133.944366
+      ],
+      [
+       33.492027,
+       133.927597
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -16882,6 +20394,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Saga-The_rice_terrace_in_Hamanoura-xl.jpg",
    "y": 60
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 33511,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 13142,
+     "duration": 0,
+     "line": [
+      [
+       33.44627,
+       129.96775
+      ],
+      [
+       33.530167,
+       129.86763
+      ]
+     ]
+    },
+    {
+     "distance": 4916,
+     "duration": 0,
+     "line": [
+      [
+       33.530167,
+       129.86763
+      ],
+      [
+       33.48923,
+       129.84737
+      ]
+     ]
+    },
+    {
+     "distance": 13605,
+     "duration": 0,
+     "line": [
+      [
+       33.48923,
+       129.84737
+      ],
+      [
+       33.450829,
+       129.986938
+      ]
+     ]
+    },
+    {
+     "distance": 1848,
+     "duration": 0,
+     "line": [
+      [
+       33.450829,
+       129.986938
+      ],
+      [
+       33.44627,
+       129.96775
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -17373,6 +20948,83 @@
      "whatEn": "Board the JR Kyudai Main Line back toward Kurume and Hakata."
     }
    ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 10710,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 1355,
+     "duration": 0,
+     "line": [
+      [
+       33.33499,
+       130.78896
+      ],
+      [
+       33.32301,
+       130.79174
+      ]
+     ]
+    },
+    {
+     "distance": 1041,
+     "duration": 0,
+     "line": [
+      [
+       33.32301,
+       130.79174
+      ],
+      [
+       33.325058,
+       130.780792
+      ]
+     ]
+    },
+    {
+     "distance": 3357,
+     "duration": 0,
+     "line": [
+      [
+       33.325058,
+       130.780792
+      ],
+      [
+       33.342522,
+       130.751236
+      ]
+     ]
+    },
+    {
+     "distance": 2966,
+     "duration": 0,
+     "line": [
+      [
+       33.342522,
+       130.751236
+      ],
+      [
+       33.35173,
+       130.78126
+      ]
+     ]
+    },
+    {
+     "distance": 1991,
+     "duration": 0,
+     "line": [
+      [
+       33.35173,
+       130.78126
+      ],
+      [
+       33.33499,
+       130.78896
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -17592,6 +21244,69 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Oouo_Jinja_kaichu_torii.jpg",
    "y": 42
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 19054,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 688,
+     "duration": 0,
+     "line": [
+      [
+       33.025,
+       130.17614
+      ],
+      [
+       33.0311,
+       130.17745
+      ]
+     ]
+    },
+    {
+     "distance": 1755,
+     "duration": 0,
+     "line": [
+      [
+       33.0311,
+       130.17745
+      ],
+      [
+       33.045,
+       130.16847
+      ]
+     ]
+    },
+    {
+     "distance": 9471,
+     "duration": 0,
+     "line": [
+      [
+       33.045,
+       130.16847
+      ],
+      [
+       32.963291,
+       130.197784
+      ]
+     ]
+    },
+    {
+     "distance": 7140,
+     "duration": 0,
+     "line": [
+      [
+       32.963291,
+       130.197784
+      ],
+      [
+       33.025,
+       130.17614
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -17850,6 +21565,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:20250308-yachiyo-tenjyou.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 892,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 273,
+     "duration": 0,
+     "line": [
+      [
+       33.01441,
+       130.68893
+      ],
+      [
+       33.01685,
+       130.6893
+      ]
+     ]
+    },
+    {
+     "distance": 38,
+     "duration": 0,
+     "line": [
+      [
+       33.01685,
+       130.6893
+      ],
+      [
+       33.017189,
+       130.689331
+      ]
+     ]
+    },
+    {
+     "distance": 261,
+     "duration": 0,
+     "line": [
+      [
+       33.017189,
+       130.689331
+      ],
+      [
+       33.01532,
+       130.687622
+      ]
+     ]
+    },
+    {
+     "distance": 232,
+     "duration": 0,
+     "line": [
+      [
+       33.01532,
+       130.687622
+      ],
+      [
+       33.014435,
+       130.68988
+      ]
+     ]
+    },
+    {
+     "distance": 88,
+     "duration": 0,
+     "line": [
+      [
+       33.014435,
+       130.68988
+      ],
+      [
+       33.01441,
+       130.68893
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -18787,6 +22579,83 @@
    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
    "page": "https://commons.wikimedia.org/wiki/File:Platform_of_Omisaki_Station_The_Yellow_Handkerchief_of_Happiness_20210530.jpg",
    "y": 60
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 20021,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 6412,
+     "duration": 0,
+     "line": [
+      [
+       32.79033,
+       130.37081
+      ],
+      [
+       32.84376,
+       130.3447
+      ]
+     ]
+    },
+    {
+     "distance": 9278,
+     "duration": 0,
+     "line": [
+      [
+       32.84376,
+       130.3447
+      ],
+      [
+       32.763062,
+       130.370605
+      ]
+     ]
+    },
+    {
+     "distance": 2370,
+     "duration": 0,
+     "line": [
+      [
+       32.763062,
+       130.370605
+      ],
+      [
+       32.784409,
+       130.370575
+      ]
+     ]
+    },
+    {
+     "distance": 753,
+     "duration": 0,
+     "line": [
+      [
+       32.784409,
+       130.370575
+      ],
+      [
+       32.781053,
+       130.377583
+      ]
+     ]
+    },
+    {
+     "distance": 1208,
+     "duration": 0,
+     "line": [
+      [
+       32.781053,
+       130.377583
+      ],
+      [
+       32.79033,
+       130.37081
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -19389,6 +23258,97 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:%E9%A6%AC%E3%83%B6%E8%83%8C%E7%AA%81%E7%AB%AF.jpg",
    "y": 62
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 23563,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 2580,
+     "duration": 0,
+     "line": [
+      [
+       32.42577,
+       131.62799
+      ],
+      [
+       32.41168,
+       131.64989
+      ]
+     ]
+    },
+    {
+     "distance": 3749,
+     "duration": 0,
+     "line": [
+      [
+       32.41168,
+       131.64989
+      ],
+      [
+       32.42421,
+       131.68704
+      ]
+     ]
+    },
+    {
+     "distance": 181,
+     "duration": 0,
+     "line": [
+      [
+       32.42421,
+       131.68704
+      ],
+      [
+       32.42337,
+       131.68539
+      ]
+     ]
+    },
+    {
+     "distance": 2415,
+     "duration": 0,
+     "line": [
+      [
+       32.42337,
+       131.68539
+      ],
+      [
+       32.426971,
+       131.659973
+      ]
+     ]
+    },
+    {
+     "distance": 6664,
+     "duration": 0,
+     "line": [
+      [
+       32.426971,
+       131.659973
+      ],
+      [
+       32.485641,
+       131.675064
+      ]
+     ]
+    },
+    {
+     "distance": 7974,
+     "duration": 0,
+     "line": [
+      [
+       32.485641,
+       131.675064
+      ],
+      [
+       32.42577,
+       131.62799
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -19638,6 +23598,83 @@
    "licenseUrl": "",
    "page": "https://commons.wikimedia.org/wiki/File:RIMG0228.JPG",
    "y": 48
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 49773,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 15323,
+     "duration": 0,
+     "line": [
+      [
+       31.95022,
+       130.72258
+      ],
+      [
+       32.01165,
+       130.57689
+      ]
+     ]
+    },
+    {
+     "distance": 117,
+     "duration": 0,
+     "line": [
+      [
+       32.01165,
+       130.57689
+      ],
+      [
+       32.011982,
+       130.575714
+      ]
+     ]
+    },
+    {
+     "distance": 15517,
+     "duration": 0,
+     "line": [
+      [
+       32.011982,
+       130.575714
+      ],
+      [
+       31.94854,
+       130.722626
+      ]
+     ]
+    },
+    {
+     "distance": 9498,
+     "duration": 0,
+     "line": [
+      [
+       31.94854,
+       130.722626
+      ],
+      [
+       32.031319,
+       130.748154
+      ]
+     ]
+    },
+    {
+     "distance": 9318,
+     "duration": 0,
+     "line": [
+      [
+       32.031319,
+       130.748154
+      ],
+      [
+       31.95022,
+       130.72258
+      ]
+     ]
+    }
+   ]
   }
  },
  {
@@ -20804,6 +24841,83 @@
    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Landform_of_the_Valley_of_Gangala_202312_01.jpg",
    "y": 55
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 32019,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 10420,
+     "duration": 0,
+     "line": [
+      [
+       26.21121,
+       127.67664
+      ],
+      [
+       26.14163,
+       127.74688
+      ]
+     ]
+    },
+    {
+     "distance": 202,
+     "duration": 0,
+     "line": [
+      [
+       26.14163,
+       127.74688
+      ],
+      [
+       26.140242,
+       127.748192
+      ]
+     ]
+    },
+    {
+     "distance": 4916,
+     "duration": 0,
+     "line": [
+      [
+       26.140242,
+       127.748192
+      ],
+      [
+       26.160656,
+       127.791969
+      ]
+     ]
+    },
+    {
+     "distance": 3042,
+     "duration": 0,
+     "line": [
+      [
+       26.160656,
+       127.791969
+      ],
+      [
+       26.134945,
+       127.781387
+      ]
+     ]
+    },
+    {
+     "distance": 13439,
+     "duration": 0,
+     "line": [
+      [
+       26.134945,
+       127.781387
+      ],
+      [
+       26.21121,
+       127.67664
+      ]
+     ]
+    }
+   ]
   }
  }
 ]
