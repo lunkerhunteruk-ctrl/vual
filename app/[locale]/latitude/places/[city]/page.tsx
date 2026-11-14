@@ -9,6 +9,7 @@ import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/C
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { ACTION, ACTION_MAIN, TAP_INLINE } from '@/lib/latitude-theme';
 import CityJumpNav, { type JumpItem } from '@/components/latitude/CityJumpNav';
+import { SavedLink } from '@/components/latitude/SaveButton';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
 import { HIDDEN } from '@/lib/latitude-hidden';
@@ -272,7 +273,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                 ? (ja ? `${who}のおすすめを地図で見る・自分でルートを組む` : `Where ${who} would go, on the map — or build your own route`)
                 : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
             </SectionLabel>
-            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
+            <CityShopMap city={c.slug} src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
               pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
           </div>
         </section>
@@ -281,6 +282,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       <section id="shops" className="scroll-mt-28 px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>{ja ? `${who}のおすすめ` : `Where ${who} would go`}</SectionLabel>
+          {/* 2026-11-14 ③-2 保存した店が1軒以上ある時だけ、入口を見出しの下に */}
+          <SavedLink locale={locale} className="-mt-4 mb-6" />
           {/* 2026-11-11 種類ごとに横に流す（ユーザー「縦スクロールが多すぎる」）。地区のページへのリンクは下に小さく */}
           <div className="flex flex-col gap-11">
             {groups.map((g) => (

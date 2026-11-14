@@ -1,6 +1,7 @@
 // 2026-10-30 街のページと旅人の会話の記録を送る（/api/latitude/track）。ページを離れる時も届くように sendBeacon。
 // Google アナリティクスにも同じ名前で送る（あれば）。会話の中身は送らない。
-export type TrackEvent = 'ask_open' | 'ask_shop' | 'msg' | 'link';
+// 2026-11-14 ③ saved＝店を保存した／shared＝保存した一覧を共有した／locate＝「現在地」を押した（回数だけ。店の名前・位置は送らない）
+export type TrackEvent = 'ask_open' | 'ask_shop' | 'msg' | 'link' | 'saved' | 'shared' | 'locate';
 
 export function track(e: TrackEvent, data: { person?: string; page?: string; shop?: string; kind?: string; mode?: string } = {}) {
   if (typeof window === 'undefined') return;

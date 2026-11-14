@@ -1,5 +1,5 @@
 import { INK, MUTE, SERIF, SectionLabel } from '@/components/latitude/Latitude';
-import { slugify, type CityPlace, type LatitudeCity } from '@/lib/latitude-places';
+import { placeAnchor, type CityPlace, type LatitudeCity } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
 import HScroller from '@/components/latitude/HScroller';
 import { CARD_W } from '@/lib/latitude-card';
@@ -16,7 +16,8 @@ import { ACTION } from '@/lib/latitude-theme';
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
 
-export const placeAnchor = (x: CityPlace) => `place-${slugify(x.nameEn)}`;
+// 2026-11-14 店の id（#place-…）は lib/latitude-places.ts に移した（保存した店の一覧でも使うため）。ここからも読めるように出しておく
+export { placeAnchor };
 
 // id：街のページの目次から飛ぶ先（2026-11-14）
 export function CityWear({ c, ja, who, id }: { c: LatitudeCity; ja: boolean; who: string; id?: string }) {

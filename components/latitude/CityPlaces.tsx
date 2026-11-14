@@ -4,6 +4,7 @@ import { AskAboutButton } from '@/components/latitude/AskTraveller';
 import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
 import { AddressLine, FactsLine, JaName } from '@/components/latitude/ShopFacts';
+import { SaveButton } from '@/components/latitude/SaveButton';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
 import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
@@ -102,6 +103,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
               <TrackLink href={mapUrl(x.name, x.address)} label={ja ? '地図' : 'Map'} shop={x.name} kind="map" person={c.person} main />
               {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
               {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
+              <SaveButton city={c.slug} id={placeAnchor(x)} ja={ja} />{/* 2026-11-14 ③-2 端末の中に保存 */}
             </p>
            </div>
            <ShopThumb c={c} x={x} ja={ja} size={96} />
@@ -224,6 +226,8 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
         )}
         {sec.items.map((x) => (
           <li key={x.name} id={placeAnchor(x)} className={`${CARD_W} flex shrink-0 snap-start flex-col scroll-mt-28 border p-5`} style={{ borderColor: 'rgba(30,29,27,0.16)' }}>
+            {/* 2026-11-14 ③-2 保存はカードの右上（下の行動の並びに足すと、押した後「Saved ✓」で幅が増えて次の行へ落ち、指の下から逃げたため）。
+                店の写真がある時は、その上。押せる高さ 44px、行の高さは変えない */}
             <div className="flex items-start gap-4">
               <div className="min-w-0 flex-1">
                 <p className="lat-label" style={{ color: MUTE }}>
@@ -232,7 +236,10 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
                 </p>
                 <h4 className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>{ja ? x.name : x.nameEn}</h4>
               </div>
-              <ShopThumb c={c} x={x} ja={ja} size={84} />
+              <div className="flex shrink-0 flex-col items-end gap-2">
+                <SaveButton city={c.slug} id={placeAnchor(x)} ja={ja} className="-my-[13px]" />
+                <ShopThumb c={c} x={x} ja={ja} size={84} />
+              </div>
             </div>
             <JaName name={x.name} nameEn={x.nameEn} ja={ja} />
             <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>

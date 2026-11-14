@@ -6,6 +6,7 @@ import { JsonLd } from '@/lib/latitude-publication';
 import { citiesJsonLd, placeCountries } from '@/lib/latitude-places-index';
 import { CountryCityList } from '@/components/latitude/PlaceLists';
 import PlaceSearch from '@/components/latitude/PlaceSearch';
+import { SavedLink } from '@/components/latitude/SaveButton';
 
 // 2026-11-11 試作：場所から探すページ（/latitude/places）。世界の地図 → 国 → 街 → 街の案内。
 // 地図の下に、国ごと・街ごとの文字の一覧（街の案内と号へのリンク）を必ず置く（検索と AI のチャットが読むため）。構造化データは ItemList（City）。
@@ -53,6 +54,8 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
         <div className="mt-6 md:mt-8">
           <PlaceSearch locale={locale} />
         </div>
+        {/* 2026-11-14 ③-2 保存した店が1軒以上ある時だけ */}
+        <SavedLink locale={locale} className="mt-4" />
       </header>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">

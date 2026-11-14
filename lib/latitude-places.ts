@@ -891,6 +891,8 @@ export const AREA_MIN = 4;
 const LETTERS: Record<string, string> = { 'ø': 'o', 'æ': 'ae', 'ð': 'd', 'þ': 'th', 'ß': 'ss', 'œ': 'oe', 'ł': 'l' };
 export const slugify = (t: string) => t.toLowerCase().replace(/[øæðþßœł]/g, (ch) => LETTERS[ch]).normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 export const areaSlug = (areaEn: string) => slugify(areaEn);
+// 店の id（街のページのカードの #place-…、地図の丸、保存した店）。英語の店名から作るので、英語の店名を変えると id も変わる
+export const placeAnchor = (x: CityPlace) => `place-${slugify(x.nameEn)}`;
 export function areasOf(c: LatitudeCity) {
   const m = new Map<string, { slug: string; name: string; nameEn: string; places: CityPlace[] }>();
   for (const x of c.places) {

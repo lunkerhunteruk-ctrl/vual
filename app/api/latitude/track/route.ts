@@ -6,7 +6,8 @@ import { logUse, visitor } from '@/lib/latitude-usage';
 // e：ask_open＝「凛に聞く」を開いた／ask_shop＝店の「凛に聞く」／msg＝凛に送った1通（文字・通話）／link＝店の公式サイト・地図を押した
 // 集計は scripts/latitude-stats.mjs。
 
-const EVENTS = new Set(['ask_open', 'ask_shop', 'msg', 'link']);
+// 2026-11-14 ③ saved・shared・locate は回数だけ（店の名前・位置は来ない）
+const EVENTS = new Set(['ask_open', 'ask_shop', 'msg', 'link', 'saved', 'shared', 'locate']);
 const clean = (v: unknown) => (typeof v === 'string' ? v.slice(0, 80) : undefined);
 
 export async function POST(req: NextRequest) {

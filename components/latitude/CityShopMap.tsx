@@ -6,6 +6,7 @@ import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 import { AddressLine, FactsLine, JaName, type ShopFactsData } from '@/components/latitude/ShopFacts';
+import { SaveButton, SavedLink } from '@/components/latitude/SaveButton';
 import { ACTION, INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
@@ -124,7 +125,8 @@ const inRect = (x: number, y: number, a: Rect) => x >= a.x0 && x <= a.x1 && y >=
 // 名前の字の幅の目安（13px の明朝。全角は約1字、半角は約0.55字）
 const textW = (s: string, px = 13) => [...s].reduce((n, ch) => n + (ch.charCodeAt(0) > 0x2e80 ? px : px * 0.55), 0);
 
-export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [] }: {
+export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [], city }: {
+  city?: string; // 街の slug（③-2 店の保存に使う）
   src: string; // 土台の JSON の URL
   pins: ShopPin[];
   ja: boolean;
@@ -910,7 +912,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             visibility: open || animating ? 'visible' : 'hidden',
           }}
         >
-          {shop && <ShopCard key={shop.id} p={shop} ja={ja} who={who} person={person} onClose={() => goTo(null)} />}
+          {shop && <ShopCard key={shop.id} p={shop} ja={ja} who={who} person={person} city={city} onClose={() => goTo(null)} />}
         </aside>
       </div>
 
@@ -954,7 +956,7 @@ export function PaperLayers({ base, mpp }: { base: BaseMap; mpp: number }) {
   );
 }
 
-function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; who: string; person: string; onClose: () => void }) {
+function ShopCard({ p, ja, who, person, city, onClose }: { p: ShopPin; ja: boolean; who: string; person: string; city?: string; onClose: () => void }) {
   const color = CATEGORY_COLOR[p.category] ?? INK;
   const sight = kindOf(p) !== 'shop';
   return (
@@ -997,7 +999,10 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
           onClick={() => { if (window.innerWidth < WIDE) onClose(); }}>
           {ja ? 'リストで見る ↓' : 'In the list ↓'}
         </a>
+        {/* 2026-11-14 ③-2 店だけ保存できる（見る所は目印なので出さない） */}
+        {city && !sight && <SaveButton city={city} id={p.id} ja={ja} />}
       </p>
+      {city && <SavedLink locale={ja ? 'ja' : 'en'} className="mt-3" />}
       {p.instagram && <InstagramEmbed url={p.instagram} ja={ja} />}
     </div>
   );
