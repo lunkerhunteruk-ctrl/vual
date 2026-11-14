@@ -766,5 +766,89 @@
   "source": "https://commons.wikimedia.org/wiki/File:Lake_Kinrin_20221022-1.jpg",
   "w": 1600,
   "h": 1067
+ },
+ "tsunan": {
+  "file": "banners/tsunan.jpg",
+  "pos": "50% 55%",
+  "alt": "The river terraces of Tsunan above the Shinano River",
+  "altJa": "河岸段丘と信濃川を望む津南町",
+  "author": "Drph17",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tsunan_Shinano_River_Terrace_July2022.jpg",
+  "w": 1920,
+  "h": 970
+ },
+ "uda": {
+  "file": "banners/uda.jpg",
+  "pos": "50% 60%",
+  "alt": "Fields and a village in Ouda, Uda",
+  "altJa": "宇陀市大宇陀の田原の里山",
+  "author": "Nankou Oronain",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%AE%87%E9%99%80%E7%94%B0%E5%8E%9F%E3%81%AB%E3%81%A6_%C5%8Cuda-Tawara_2011.5.19_-_panoramio.jpg",
+  "w": 1920,
+  "h": 1440
+ },
+ "kawanehoncho": {
+  "file": "banners/kawanehoncho.jpg",
+  "pos": "50% 55%",
+  "alt": "Yume-no-Tsuribashi, a suspension bridge over a turquoise lake",
+  "altJa": "エメラルド色の湖にかかる夢の吊橋",
+  "author": "Tetsuji Sakakibara from Tokyo, Japan",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Yume-no-Tsuribashi_(40896906290).jpg",
+  "w": 1920,
+  "h": 1280
+ },
+ "sapporo": {
+  "file": "banners/sapporo.jpg",
+  "pos": "50% 60%",
+  "alt": "Odori Park in autumn, between the city blocks",
+  "altJa": "秋の大通公園と札幌の街並み",
+  "author": "redlegsfan21",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Odori_Park_(15982613668).jpg",
+  "w": 1920,
+  "h": 1440
+ },
+ "otaru": {
+  "file": "banners/otaru.jpg",
+  "pos": "50% 60%",
+  "alt": "Otaru and its bay from Mount Tengu",
+  "altJa": "天狗山から見下ろす小樽の街と海",
+  "author": "Soica2001",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Otaru_from_Tenguyama.JPG",
+  "w": 1920,
+  "h": 1440
+ },
+ "ishigaki": {
+  "file": "banners/ishigaki.jpg",
+  "pos": "50% 55%",
+  "alt": "The coast of Ishigaki Island from a lookout",
+  "altJa": "展望台から見る石垣島の海岸",
+  "author": "Raita Futo from Tokyo, Japan",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ishigaki_landscape_(52117590755).jpg",
+  "w": 1920,
+  "h": 1280
+ },
+ "miyakojima": {
+  "file": "banners/miyakojima.jpg",
+  "pos": "50% 55%",
+  "alt": "A long bridge over the turquoise sea of Miyako",
+  "altJa": "宮古島の青い海に延びる橋",
+  "author": "Ikusuki",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Miyakojima,_Okinawa_Prefecture;_July_2013_(01).jpg",
+  "w": 1920,
+  "h": 1272
  }
 }
