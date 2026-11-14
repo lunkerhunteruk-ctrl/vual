@@ -5,6 +5,7 @@ import { hiddenDots } from '@/lib/latitude-hidden';
 import { JsonLd } from '@/lib/latitude-publication';
 import { citiesJsonLd, placeCountries } from '@/lib/latitude-places-index';
 import { CountryCityList } from '@/components/latitude/PlaceLists';
+import PlaceSearch from '@/components/latitude/PlaceSearch';
 
 // 2026-11-11 試作：場所から探すページ（/latitude/places）。世界の地図 → 国 → 街 → 街の案内。
 // 地図の下に、国ごと・街ごとの文字の一覧（街の案内と号へのリンク）を必ず置く（検索と AI のチャットが読むため）。構造化データは ItemList（City）。
@@ -37,7 +38,8 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
       <JsonLd data={jsonLd} />
       <IssueStrip locale={locale} current="places" />
-      <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
+      {/* 2026-11-14 ③-3 検索欄を足した分、下の余白を欄の上の余白と同じだけ減らした（地図が下がるのは欄の高さだけ） */}
+      <header className="mx-auto max-w-6xl px-4 pb-4 pt-16 md:px-8 md:pb-6 md:pt-28">
         <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '場所' : 'Places'}</p>
         <h1 className="mt-5 text-[48px] leading-[0.95] md:text-[88px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>
           {ja ? '場所から探す' : 'Places'}
@@ -47,6 +49,10 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
             ? '旅人が1日を過ごした街と、旅人のおすすめの町。国を押すとその国へ寄り、街を押すとその街の案内へ。'
             : 'The cities where the travellers spent a day, and towns with their picks. Choose a country to go closer, then a city for its guide.'}
         </p>
+        {/* 2026-11-14 ③-3 街と店の名前で探す（押した後にだけ結果を出す小さな部品。上の字はサーバーで描いたまま） */}
+        <div className="mt-6 md:mt-8">
+          <PlaceSearch locale={locale} />
+        </div>
       </header>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
