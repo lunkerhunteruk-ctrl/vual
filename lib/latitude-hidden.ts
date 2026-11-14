@@ -22,6 +22,8 @@ export type HiddenStop = {
   whatEn: string;
   url?: string;
   move?: { mode: string; min: number; note: string; noteEn: string }; // 次の地点への移り方
+  photo?: string; // 2026-11-14 公式サイトのシェア用の写真（og:image）の住所。写真と確かめた物だけ。保存しない
+  photoCredit?: { author: string; license: string; licenseUrl: string; page: string }; // 写真がウィキメディア・コモンズの時（駅など）。作者と条件
 };
 
 export type HiddenSpot = {

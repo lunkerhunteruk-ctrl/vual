@@ -19,7 +19,7 @@ export function hiddenMonthMetadata(m: number, locale: string): Metadata {
   const ja = locale === 'ja';
   const list = forMonth(m);
   const top = list.slice(0, 5).map((s) => (ja ? s.name : s.nameEn));
-  const title = ja ? `${m}月の日本の穴場 ${list.length}か所 — 地元で有名な、見頃の1か所への1日 | LATITUDE` : `Japan in ${monthLabel(m, false)}: ${list.length} hidden spots locals love, and a day trip to each | LATITUDE`;
+  const title = ja ? `${m}月の日本の、地元の名所 ${list.length}か所 — 見頃の1か所への1日 | LATITUDE` : `Japan in ${monthLabel(m, false)}: ${list.length} hidden spots locals love, and a day trip to each | LATITUDE`;
   const description = ja
     ? `${m}月に見頃をむかえる、地元では有名でも外国から来た人には見つけにくい所。${top.join('、')}など。行き方と1日のおすすめコース、近くのごはんと温泉。編集部が2026年の営業を確かめました。`
     : `Off the beaten path in Japan in ${monthLabel(m, false)}: places famous with locals but easy for visitors to miss, at their best this month — ${top.join(', ')} and more. How to get there and a day around each. Checked for 2026.`;
@@ -38,13 +38,13 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
   const path = `/latitude/places/japan/${MONTHS[m - 1]}`;
   const prev = ((m + 10) % 12) + 1, next = (m % 12) + 1;
   const ld = {
-    '@context': 'https://schema.org', '@type': 'ItemList', name: ja ? `${m}月の日本の穴場` : `Hidden spots in Japan in ${monthLabel(m, false)}`,
+    '@context': 'https://schema.org', '@type': 'ItemList', name: ja ? `${m}月の日本の地元の名所` : `Hidden spots in Japan in ${monthLabel(m, false)}`,
     itemListElement: list.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://vual.jp/${ja ? 'ja' : 'en'}/latitude/places/japan/spot/${s.slug}`, name: ja ? s.name : s.nameEn })),
   };
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
       <JsonLd data={ld} />
-      <JsonLd data={breadcrumbJsonLd(ja, [[ja ? '場所' : 'Places', '/latitude/places'], [ja ? '日本' : 'Japan', '/latitude/places/japan'], [ja ? `${m}月の穴場` : monthLabel(m, false), path]])} />
+      <JsonLd data={breadcrumbJsonLd(ja, [[ja ? '場所' : 'Places', '/latitude/places'], [ja ? '日本' : 'Japan', '/latitude/places/japan'], [ja ? `${m}月の地元の名所` : monthLabel(m, false), path]])} />
       <IssueStrip locale={locale} />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-24">
         <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
@@ -55,7 +55,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
           <span aria-current="page" style={{ color: INK }}>{ja ? `${m}月` : monthLabel(m, false)}</span>
         </nav>
         <h1 className="mt-5 text-[44px] leading-[1] md:text-[84px]" style={{ fontFamily: SERIF, fontWeight: 400, textWrap: 'balance' }}>
-          {ja ? `${m}月の、日本の穴場` : `Japan in ${monthLabel(m, false)}, off the beaten path`}
+          {ja ? `${m}月の、日本の地元の名所` : `Japan in ${monthLabel(m, false)}, off the beaten path`}
         </h1>
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
           {ja

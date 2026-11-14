@@ -215,7 +215,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       {HIDDEN.some((h) => h.townSlug === c.slug) && (
         <section className="px-4 pb-16 md:px-8 md:pb-20">
           <div className="mx-auto max-w-6xl">
-            <SectionLabel>{ja ? `${c.nameJa}から行く穴場` : `A hidden spot from ${c.name}`}</SectionLabel>
+            <SectionLabel>{ja ? `${c.nameJa}から行く地元の名所` : `A hidden spot from ${c.name}`}</SectionLabel>
             <ul className="flex flex-col gap-5">
               {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
                 <li key={h.slug} className="max-w-2xl">

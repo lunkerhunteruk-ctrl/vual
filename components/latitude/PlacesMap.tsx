@@ -127,12 +127,19 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   const ja = locale === 'ja';
   const [month, setMonth] = useState<number | null>(month0 ?? null); // 訪ねる月（null＝決めていない）
   const [card, setCard] = useState<string | null>(null); // カードを出している穴場
+  // 2026-11-14 ユーザー：地方に寄った時、赤い町にも緑の穴場にも、乗せると小さなカード（店の地図と同じく、空いている隅に出す）。't:<町>' か 'h:<穴場>'
+  const [pv, setPv] = useState<string | null>(null);
+  const pvCorner = useRef<'tl' | 'tr' | 'bl' | 'br'>('tl');
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => { setCanHover(window.matchMedia('(hover: hover) and (pointer: fine)').matches); }, []);
   const [geo, setGeo] = useState<Geo | null>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [anim, setAnim] = useState<Anim | null>(null);
   const [now, setNow] = useState(0);
   const [sel, setSel] = useState<string | null>(initial ?? null);
   const [reg, setReg] = useState<string | null>(null); // 寄っている地方
+  // 地方を離れたら（日本全体・世界へ戻ったら）、穴場のカードと乗せた時のカードを閉じる
+  useEffect(() => { if (!reg) { setCard(null); setPv(null); } }, [reg]);
   const [picked, setPicked] = useState<string | null>(null); // 押した町（試しの町はページが無いので、名前を強める）
   const [extra, setExtra] = useState<PlaceCity[]>([]);
   // 世界の段階で写真を出している国（hov）と、いま見せている号の番号（hovI）。seen は一度でも出した国（写真を読み込み始めた国）
@@ -383,7 +390,9 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   // ── 国の段階（地方のある国）：号の町の写真の丸と、地方の数字の丸 ──
   // 数字の丸が出るか（地方に、号の町でない町がある時）。出ない時（本番の2町）は、号の町の名前の向きも今までどおり
   const anyBubble = regionMode && !reg && selC!.cities.some((q) => q.region && !(q.issue || q.upcoming));
-  const pins = regionMode && !reg ? placePins(selC!.cities.filter((q) => q.issue || q.upcoming).map((q) => {
+  // 2026-11-14 ユーザー：号の町（鳥取・金沢・盛岡…）は、日本全体の地図では地方の数字の丸にまとめる（号の町が増えるとごちゃつくため）。号の町は人のページから見つける
+  const FOLD_ISSUES = true;
+  const pins = regionMode && !reg && !FOLD_ISSUES ? placePins(selC!.cities.filter((q) => q.issue || q.upcoming).map((q) => {
     const p = pos(selC!.code, q);
     const { sx, sy } = toScreen(p.x, p.y);
     // 数字の丸がある時は、名前は国のまん中から外へ（金沢は日本海、盛岡は太平洋の側）。丸とぶつかりにくい
@@ -404,14 +413,16 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
   }), size.w, size.h, cityName) : [];
   const bubbles = regionMode && !reg ? regs!.map((g) => {
     const list = selC!.cities.filter((q) => q.region === g.key);
-    if (!list.length || list.every((q) => q.issue || q.upcoming)) return null; // 号の町だけの地方は、写真の丸で足りる
+    if (!list.length || (!FOLD_ISSUES && list.every((q) => q.issue || q.upcoming))) return null; // 号の町だけの地方は、写真の丸で足りる（まとめる時は丸を出す）
     const n = list.length;
     const d = Math.round((wide ? 30 : 26) + Math.min(n, 16) * (wide ? 0.9 : 0.6));
     const name = ja ? g.ja : g.en;
     const nw = textW(name, wide ? 13 : 12) * 1.08 + 4; // 2026-11-13 名前の幅は見当より広め（Chugoku が九州の丸にかかった）
     const at = regionAt(selC!.code, g);
     const { sx, sy } = toScreen(at.x, at.y);
-    return { g, list, n, d, name, x: sx, y: sy, w: Math.max(d, nw), h: d + 16 };
+    // 2026-11-14 ユーザー：数字はいつも1つ。月を選んだ時だけ、その月のおすすめの穴場（4以上）の数に切り替える（丸は緑・0 の地方は薄く）
+    const hn = month && hidden && selC!.code === 'JP' ? hidden.filter((h) => h.region === g.key && h.score[month - 1] >= 4).length : null;
+    return { g, list, n, hn, d, name, x: sx, y: sy, w: Math.max(d, nw), h: d + 16 };
   }).filter((b): b is NonNullable<typeof b> => !!b) : [];
   // 数字の丸（丸の下に地方の名前）を、ほかの丸・号の町の丸と重ならないよう押し合わせる。号の町は動かさない
   {
@@ -482,7 +493,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
 
   // ── 穴場の点（日本に寄った時）。点の大きさと濃さは、選んだ月のおすすめ度（月を決めていない時は、いちばん良い月の点）──
   const scoreOf = (d: HiddenDot) => (month ? d.score[month - 1] : Math.max(...d.score));
-  const hdots = sel === 'JP' && hidden && showCities ? hidden.filter((d) => (!reg || d.region === reg) && scoreOf(d) > 0).map((d) => {
+  const hdots = sel === 'JP' && hidden && showCities && reg ? hidden.filter((d) => d.region === reg && scoreOf(d) > 0).map((d) => {
     const p = project(d.lat, d.lon);
     const q = pos('JP', { ...p, lat: d.lat, lon: d.lon } as PlaceCity);
     const { sx, sy } = toScreen(q.x, q.y);
@@ -633,10 +644,10 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             className="group absolute z-[2] flex -translate-x-1/2 cursor-pointer flex-col items-center hover:z-[3] focus-visible:z-[3]"
             style={{ left: b.x, top: b.y - b.d / 2, animation: 'lat-fade 400ms ease-out' }}
             title={b.list.map((q) => cityName(q)).join(ja ? '・' : ', ')}
-            aria-label={ja ? `${b.name}（${b.n}の町）` : `${b.name} (${b.n} towns)`}>
-            <span className="flex items-center justify-center rounded-full tabular-nums transition-transform duration-200 group-hover:scale-110"
-              style={{ width: b.d, height: b.d, background: RED, color: PAPER, boxShadow: `0 0 0 2px ${PAPER}`, fontFamily: SERIF, fontSize: wide ? 16 : 14, lineHeight: 1 }}>
-              {b.n}
+            aria-label={b.hn !== null ? (ja ? `${b.name}（${month}月のおすすめの名所 ${b.hn}か所）` : `${b.name} (${b.hn} hidden spots for ${MONTH_EN[(month ?? 1) - 1]})`) : ja ? `${b.name}（${b.n}の町）` : `${b.name} (${b.n} towns)`}>
+            <span className="flex items-center justify-center rounded-full tabular-nums transition-[transform,background-color,opacity] duration-300 group-hover:scale-110"
+              style={{ width: b.d, height: b.d, background: b.hn !== null ? MOSS : RED, opacity: b.hn === 0 ? 0.3 : 1, color: PAPER, boxShadow: `0 0 0 2px ${PAPER}`, fontFamily: SERIF, fontSize: wide ? 16 : 14, lineHeight: 1 }}>
+              {b.hn !== null ? b.hn : b.n}
             </span>
             <span className="mt-1 whitespace-nowrap leading-none group-hover:underline underline-offset-4"
               style={{ fontFamily: SERIF, fontSize: wide ? 13 : 12, color: INK, textShadow: HALO }}>
@@ -679,6 +690,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             </button>
           ) : (
             <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`} className={cls} style={st}
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') setPv(`t:${q.slug}`); }} onPointerLeave={() => setPv((v) => (v === `t:${q.slug}` ? null : v))}
               aria-label={ja ? `${q.nameJa}の案内（${q.latitude}）` : `${q.name} city guide (${q.latitude})`}>
               <span className="absolute -left-3 -top-3 block h-6 w-6" />
               {inner}
@@ -694,6 +706,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             <button key={d.slug} type="button" onClick={(e) => { e.stopPropagation(); setCard(on ? null : d.slug); }}
               className={`group absolute block h-0 w-0 cursor-pointer ${on ? 'z-[3]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: sx, top: sy, animation: 'lat-fade 400ms ease-out' }} aria-pressed={on}
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') setPv(`h:${d.slug}`); }} onPointerLeave={() => setPv((v) => (v === `h:${d.slug}` ? null : v))}
               aria-label={`${nm}（${ja ? d.prefectureJa : d.prefecture}）${month ? ` ${ja ? `${month}月のおすすめ度` : `${MONTH_EN[month - 1]}`} ${sc}/5` : ''}`}>
               <span className="absolute -left-3 -top-3 block h-6 w-6" />
               {month && sc >= 4 && (
@@ -709,6 +722,69 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             </button>
           );
         })}
+        {/* 2026-11-14 乗せた時の小さなカード。乗せた点と重ならず、点のいちばん少ない隅に出す（店の地図 CityShopMap と同じ考え方） */}
+        {(() => {
+          if (!canHover || !ready || !regG || !settled || !pv) return null;
+          const town = pv.startsWith('t:') ? marks.find((m) => m.q.slug === pv.slice(2)) : undefined;
+          const hd = pv.startsWith('h:') ? hdots.find((h) => h.d.slug === pv.slice(2)) : undefined;
+          if (!town && !hd) return null;
+          if (hd && card === hd.d.slug) return null; // 押して開いたカードと同じ所は出さない
+          const W = Math.min(300, size.w - 24), H = 128;
+          const at = town ? { x: town.sx, y: town.sy } : { x: hd!.sx, y: hd!.sy };
+          const rect = (c: 'tl' | 'tr' | 'bl' | 'br') => {
+            const x0 = c === 'tl' || c === 'bl' ? 12 : size.w - 12 - W;
+            const y0 = c === 'tl' ? 56 : c === 'tr' ? 84 : size.h - 12 - H; // 左上は「← 日本」、右上は地方の名前の下から
+            return { x0, y0, x1: x0 + W, y1: y0 + H };
+          };
+          const inR = (x: number, y: number, r: { x0: number; y0: number; x1: number; y1: number }, pad = 0) => x > r.x0 - pad && x < r.x1 + pad && y > r.y0 - pad && y < r.y1 + pad;
+          const pts = [...marks.map((m) => ({ x: m.sx, y: m.sy })), ...hdots.map((h) => ({ x: h.sx, y: h.sy }))];
+          const cs = (['tl', 'tr', 'bl', 'br'] as const).filter((c) => !(cardD && c === 'bl')).map((c) => {
+            const r = rect(c);
+            return { c, onIt: inR(at.x, at.y, r, 28), n: pts.filter((p) => inR(p.x, p.y, r, 8)).length };
+          });
+          const pool = cs.filter((x) => !x.onIt).length ? cs.filter((x) => !x.onIt) : cs;
+          const least = Math.min(...pool.map((x) => x.n));
+          const best = pool.filter((x) => x.n === least);
+          const corner = (best.find((x) => x.c === pvCorner.current) ?? best[0]).c;
+          pvCorner.current = corner;
+          const r = rect(corner);
+          const img = town ? town.q.peek?.banner ?? town.q.issue?.cover : hd!.d.banner;
+          const pos = town ? town.q.peek?.pos ?? '50% 50%' : `50% ${hd!.d.bannerY ?? 50}%`;
+          return (
+            <div className="pointer-events-none absolute z-[6] flex flex-row-reverse items-start gap-3 p-3" aria-hidden="true"
+              style={{ left: r.x0, top: r.y0, width: W, background: '#faf8f4', boxShadow: '0 6px 24px rgba(30,29,27,0.14)', animation: 'lat-fade 180ms ease-out' }}>
+              {img && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={img} alt="" className="h-[72px] w-[96px] shrink-0 object-cover" style={{ objectPosition: pos }} />
+              )}
+              <div className="min-w-0 flex-1">
+                {town ? (
+                  <>
+                    <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+                      {town.q.latitude}{town.q.issue ? (ja ? ' · 号のある町' : ' · with an issue') : ''}
+                    </p>
+                    <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{cityName(town.q)}</p>
+                    {town.q.peek && <p className="mt-1.5 line-clamp-3 text-[12px] leading-snug" style={{ color: INK }}>{ja ? town.q.peek.introJa : town.q.peek.intro}</p>}
+                    {town.q.peek && <p className="mt-1.5 text-[9px] uppercase tracking-[0.25em]" style={{ color: RED }}>{ja ? `街の案内 · ${town.q.peek.n}軒` : `City guide · ${town.q.peek.n} places`}</p>}
+                  </>
+                ) : (() => {
+                  const d = hd!.d; const m = month ?? d.score.indexOf(Math.max(...d.score)) + 1; const note = d.note[String(m)];
+                  return (
+                    <>
+                      <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{ja ? ' · 地元の名所' : ' · hidden spot'}</p>
+                      <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
+                      <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: MUTE }}>
+                        <span className="tabular-nums">{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
+                        <Dots n={d.score[m - 1]} />
+                      </p>
+                      <p className="mt-1 line-clamp-2 text-[12px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          );
+        })()}
         {ready && cardD && sel === 'JP' && <HiddenCard d={cardD} month={month} ja={ja} locale={locale} onClose={() => setCard(null)} />}
 
         {/* 地方の段階：右上に地方の名前と町の数 */}
@@ -841,7 +917,7 @@ function MonthBar({ month, setMonth, ja, n }: { month: number | null; setMonth: 
     <div className="mb-3 flex flex-col gap-2">
       <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
         <span className="mr-2 inline-block h-2 w-2 rounded-full align-middle" style={{ background: MOSS }} />
-        {ja ? `穴場 ${n}か所 · 訪ねる月を選ぶと、その月に良い所ほど大きく` : `${n} hidden spots · pick the month you visit; the bigger the dot, the better that month`}
+        {ja ? `地元の名所 ${n}か所 · 訪ねる月を選ぶと、地方の数字がその月のおすすめの数に。地方を押すと点が出ます` : `${n} hidden spots · pick the month you visit: each region shows how many are at their best, and a region shows them all`}
       </p>
       <div className="flex flex-wrap gap-1.5" role="group" aria-label={ja ? '訪ねる月' : 'Month of your visit'}>
         {[null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => {
@@ -867,22 +943,31 @@ function HiddenCard({ d, month, ja, locale, onClose }: { d: HiddenDot; month: nu
   return (
     <div className="absolute bottom-3 left-3 right-3 z-[5] flex gap-3 p-3 md:right-auto md:w-[420px]" onClick={(e) => e.stopPropagation()}
       style={{ background: '#faf8f4', boxShadow: '0 6px 24px rgba(30,29,27,0.14)', animation: 'lat-fade 250ms ease-out' }}>
-      {d.banner && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={d.banner} alt="" className="h-[92px] w-[92px] shrink-0 object-cover" style={{ objectPosition: `50% ${d.bannerY ?? 50}%` }} />
-      )}
       <div className="min-w-0 flex-1">
-        <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{d.seasonal ? (ja ? ' · 季節の穴場' : ' · seasonal') : ''}</p>
-        <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
-        <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: INK }}>
-          <span className="tabular-nums" style={{ color: MUTE }}>{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
-          <Dots n={sc} />
-        </p>
+        {/* 2026-11-14 ユーザー：写真は右上に（題と月の横）。写真の無い穴場は文字だけ */}
+        <div className="flex items-start gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{d.seasonal ? (ja ? ' · 季節の名所' : ' · seasonal') : ''}</p>
+            <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
+            <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: INK }}>
+              <span className="tabular-nums" style={{ color: MUTE }}>{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
+              <Dots n={sc} />
+            </p>
+          </div>
+          {d.banner && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={d.banner} alt="" className="h-[78px] w-[104px] shrink-0 object-cover" style={{ objectPosition: `50% ${d.bannerY ?? 50}%` }} />
+          )}
+        </div>
         <p className="mt-1 text-[12px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
         <Strip score={d.score} at={m} />
-        <Link href={`/${locale}/latitude/places/japan/spot/${d.slug}`} className="mt-2 inline-block text-[10px] uppercase tracking-[0.25em] underline underline-offset-4" style={{ color: MOSS }}>
-          {ja ? '1日のコースを見る →' : 'A day there →'}
-        </Link>
+        {/* 2026-11-14 ユーザー：スマホで押せると気づかなかったので、右下の塗りのボタンに */}
+        <div className="mt-3 flex justify-end">
+          <Link href={`/${locale}/latitude/places/japan/spot/${d.slug}`} className="inline-flex min-h-[38px] items-center gap-2 px-4 text-[10px] uppercase tracking-[0.22em] transition-opacity hover:opacity-85"
+            style={{ background: MOSS, color: PAPER }}>
+            {ja ? '1日のコースを見る' : 'A day there'}<span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
       <button type="button" onClick={onClose} aria-label={ja ? '閉じる' : 'Close'} className="-mr-1 -mt-1 h-6 w-6 shrink-0 cursor-pointer text-[14px] leading-none" style={{ color: MUTE }}>×</button>
     </div>

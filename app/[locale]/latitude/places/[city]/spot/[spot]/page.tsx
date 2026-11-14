@@ -17,7 +17,7 @@ import { breadcrumbJsonLd } from '@/lib/latitude-places-index';
 
 const MOSS = '#4f6b3a';
 const ROLE: Record<string, { en: string; ja: string }> = {
-  arrive: { en: 'Arrive', ja: '着く' }, stop: { en: 'On the way', ja: '途中で' }, spot: { en: 'The spot', ja: '穴場' },
+  arrive: { en: 'Arrive', ja: '着く' }, stop: { en: 'On the way', ja: '途中で' }, spot: { en: 'The spot', ja: '名所' },
   meal: { en: 'Eat', ja: '食べる' }, onsen: { en: 'Hot spring', ja: '温泉' }, cafe: { en: 'Café', ja: 'ひと休み' }, leave: { en: 'Leave', ja: '帰る' },
 };
 const MODE: Record<string, { en: string; ja: string }> = {
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const ja = locale === 'ja';
   const w = words(s, ja);
   const path = `/latitude/places/japan/spot/${s.slug}`;
-  const title = ja ? `${s.name}への1日 — ${s.prefectureJa}の穴場、行き方と見頃 | LATITUDE` : `${s.nameEn} — a day trip, when to go and how to get there | LATITUDE`;
+  const title = ja ? `${s.name}への1日 — ${s.prefectureJa}の地元の名所、行き方と見頃 | LATITUDE` : `${s.nameEn} — a day trip, when to go and how to get there | LATITUDE`;
   return {
     title,
     description: `${w.lead} ${ja ? '行き方、1日のおすすめコース、近くのごはんと温泉。編集部が2026年の営業を確かめました。' : 'How to get there, a day around it, food and hot springs nearby. Checked by the editors for 2026.'}`,
@@ -108,7 +108,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
           <span className="mx-2">›</span>
           <Link href={`/${locale}/latitude/places/japan`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '日本' : 'Japan'}</Link>
           <span className="mx-2">›</span>
-          <span style={{ color: MOSS }}>{ja ? '穴場' : 'Hidden spot'}</span>
+          <span style={{ color: MOSS }}>{ja ? '地元の名所' : 'Hidden spot'}</span>
         </nav>
         <p className="mt-6 text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
           {ja ? `${s.prefectureJa} · ${s.townJa}から` : `${s.prefecture} · from ${s.town}`}
@@ -181,7 +181,20 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
                 <li key={k} className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-t py-5 md:grid-cols-[5rem_8rem_minmax(0,1fr)]" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                   <span className="text-[20px] tabular-nums leading-none md:text-[24px]" style={{ fontFamily: SERIF, color: x.role === 'spot' ? MOSS : INK }}>{x.time}</span>
                   <span className="hidden pt-1 text-[10px] uppercase tracking-[0.3em] md:block" style={{ color: x.role === 'spot' ? MOSS : MUTE }}>{ja ? ROLE[x.role]?.ja : ROLE[x.role]?.en}</span>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flow-root">
+                    {/* 2026-11-14 ユーザー決定：店・温泉の公式サイトのシェア用の写真（og:image）を右に小さく。保存せず公式サイトの写真をそのまま出し、押すと公式サイトへ */}
+                    {x.photo && (x.photoCredit || x.url) && (
+                      <a href={x.photoCredit ? x.photoCredit.page : x.url} target="_blank" rel="noopener noreferrer" className="float-right mb-2 ml-4 block w-[112px] md:w-[168px]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={x.photo} alt={ja ? x.name : x.nameEn} loading="lazy" referrerPolicy="no-referrer"
+                          className="block aspect-[4/3] w-full object-cover" style={{ background: 'rgba(30,29,27,0.06)' }} />
+                        <span className="mt-1 block text-[9px] leading-snug tracking-[0.1em]" style={{ color: MUTE }}>
+                          {x.photoCredit
+                            ? `${ja ? '写真' : 'Photo'}: ${x.photoCredit.author} · ${x.photoCredit.license} · Wikimedia Commons`
+                            : ja ? '写真：公式サイトより' : 'Photo: official website'}
+                        </span>
+                      </a>
+                    )}
                     <p className="text-[17px] leading-snug" style={{ fontFamily: SERIF }}>
                       <span className="mr-2 text-[12px] tabular-nums" style={{ color: MUTE }}>{k + 1}</span>
                       {x.url ? <a href={x.url} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">{ja ? x.name : x.nameEn}</a> : (ja ? x.name : x.nameEn)}
@@ -236,7 +249,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.3em]">
           {town && <Link href={`/${locale}/latitude/places/${town.slug}`} className="underline-offset-4 hover:underline">{ja ? `${town.nameJa}の街の案内 →` : `${town.name} city guide →`}</Link>}
           <Link href={`/${locale}/latitude/places/japan/${MONTHS[(s.peakMonths[0] ?? now) - 1]}`} className="underline-offset-4 hover:underline">
-            {ja ? `${monthLabel(s.peakMonths[0] ?? now, true)}の穴場 →` : `Hidden spots in ${monthLabel(s.peakMonths[0] ?? now, false)} →`}
+            {ja ? `${monthLabel(s.peakMonths[0] ?? now, true)}の地元の名所 →` : `Hidden spots in ${monthLabel(s.peakMonths[0] ?? now, false)} →`}
           </Link>
           <Link href={`/${locale}/latitude/places/japan`} className="underline-offset-4 hover:underline">{ja ? '日本の地図へ →' : 'Back to the map of Japan →'}</Link>
         </div>

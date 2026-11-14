@@ -9,6 +9,8 @@ import { PLACES, project } from '@/lib/latitude-map';
 import { assetUrl, getIssue, getPerson, isLive, type LatitudeIssue } from '@/lib/latitude';
 import { regionOf } from '@/lib/latitude-regions';
 import { getThumbnailUrl } from '@/lib/cloudflare-stream';
+import { latAsset } from '@/lib/latitude-assets';
+import BANNERS from '@/lib/latitude-banners.json';
 
 export const SHOW_UPCOMING = false;
 
@@ -71,11 +73,13 @@ export type PlaceCity = {
   lon: number;
   x: number; // 世界の地図の上の位置（lib/latitude-map.ts の project）
   y: number;
-  person?: { slug: string; name: string };
+  person?: { slug: string; name: string; nameJa?: string };
   issue?: { slug: string; cover: string; month?: string; no: number }; // 公開ずみの号（no は号の番号。大きいほど新しい）
   upcoming: boolean; // 号がまだ無い（これから行く街）
   region?: string; // 国の中の地方（lib/latitude-regions.ts。いまは日本だけ）。地図で地方ごとにまとめる
   preview?: boolean; // 2026-11-11 試しの町（?preview=50 の時だけ地図に足す。街のページは無い）
+  // 2026-11-14 地図で町に乗せた時の小さなカード（町の写真・紹介の1文・案内の店の数）
+  peek?: { banner?: string; pos?: string; intro: string; introJa: string; n: number };
 };
 // issues：その国の公開ずみの号の写真（リールの途中のコマ。COUNTRY_PHOTO_PIN の号が先頭、あとは新しい順）。世界の地図で国の点に重ねた時に出す
 export type PlaceCountry = { code: string; slug: string; name: { en: string; ja: string }; cities: PlaceCity[]; issues: CountryPhoto[] };
@@ -105,11 +109,16 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
       lat: at[0],
       lon: at[1],
       ...project(at[0], at[1]),
-      person: p ? { slug: p.slug, name: p.name } : undefined,
+      person: p ? { slug: p.slug, name: p.name, nameJa: p.ja?.name } : undefined,
       issue: live && i ? { slug: i.slug, cover: assetUrl(i, 'cover.jpg'), month: i.month, no: i.no } : undefined,
       upcoming: !live && planned,
       // 日本の町の countryJa は県名
       region: regionOf(code, c.countryJa, at[0], at[1]),
+      peek: (() => {
+        const b = (BANNERS as Record<string, { file: string; pos?: string }>)[c.slug];
+        const one = (t: string) => (t.match(/^.*?[。.](?=\s|$)/)?.[0] ?? t).trim();   // 紹介は最初の1文だけ
+        return { banner: b ? latAsset(b.file) : undefined, pos: b?.pos, intro: one(c.intro), introJa: one(c.introJa), n: c.places.length };
+      })(),
     };
     m.set(code, [...(m.get(code) ?? []), city]);
   }
