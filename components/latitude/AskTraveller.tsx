@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 import RoomChat from '@/components/latitude/RoomChat';
 import { track } from '@/lib/latitude-track';
 import { latAsset } from '@/lib/latitude-assets';
@@ -38,7 +38,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
       {!open && (
         <button onClick={() => { setOpen(true); setMounted(true); track('ask_open', { person: slug }); }}
           className="fixed z-40 flex items-center gap-3 py-2 pl-2 pr-5 shadow-[0_6px_24px_rgba(30,29,27,0.18)]"
-          style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: '#f2eee7' }}>
+          style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: PAPER }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={latAsset(`people/${slug}.jpg`)} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
           <span className="text-[11px] uppercase tracking-[0.3em]">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
@@ -47,7 +47,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
       {mounted && (
         <div role="dialog" aria-label={ja ? `${name}との会話` : `Talk with ${name}`} hidden={!open}
           className="fixed inset-x-0 bottom-0 z-50 max-h-[85vh] overflow-y-auto border-t px-4 pb-6 pt-4 shadow-[0_-8px_30px_rgba(30,29,27,0.15)] md:inset-x-auto md:bottom-6 md:right-6 md:w-[420px] md:border md:px-6"
-          style={{ background: '#f2eee7', borderColor: 'rgba(30,29,27,0.2)', paddingBottom: 'calc(24px + env(safe-area-inset-bottom, 0px))' }}>
+          style={{ background: PAPER, borderColor: 'rgba(30,29,27,0.2)', paddingBottom: 'calc(24px + env(safe-area-inset-bottom, 0px))' }}>
           <div className="flex items-center justify-between gap-4 pb-3">
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}

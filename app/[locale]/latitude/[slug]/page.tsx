@@ -12,7 +12,7 @@ import { ISSUES_JA } from '@/lib/latitude-issues-ja';
 import { CITIES } from '@/lib/latitude-places';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { ISSUE_CITY_EN, ISSUE_CITY_JA } from '@/lib/latitude-now';
-import { INK, IssueStrip, LatitudeFigure, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, LatitudeFigure, MINCHO, MoreIssues, MUTE, NewsletterSignup, PAPER, Pages, Palette, PublishedBy, Reel, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { latAsset } from '@/lib/latitude-assets';
 import { getNote, noteLead } from '@/lib/latitude-notes';
 
@@ -126,7 +126,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
               <span style={{ color: INK }}>{c.no}</span>&nbsp;&nbsp;—&nbsp;&nbsp;{place(k)}{J ? '　' : ', '}{c.time}
               {/* 2026-11-01 いまの街の時刻がこの章に重なる時だけ、NowLine が出す（ふだんは隠す） */}
               <span data-lat-now className="ml-3 hidden items-center gap-1.5 normal-case tracking-[0.08em]" style={{ color: INK }}>
-                <span aria-hidden="true" className="inline-block h-[5px] w-[5px] rounded-full" style={{ background: 'var(--lat-now-chip, #1e1d1b)' }} />
+                <span aria-hidden="true" className="inline-block h-[5px] w-[5px] rounded-full" style={{ background: `var(--lat-now-chip, ${INK})` }} />
                 {ja ? `いまの${nowName}は、この章の時間` : `${nowName} is at this hour now`}
               </span>
             </li>
@@ -262,7 +262,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
               <SectionLabel>{ja ? '制作ノート' : 'How this issue was made'}</SectionLabel>
               <div className="max-w-2xl">
                 <Link href={`/${locale}/latitude/${issue.slug}/notes`} className="group block" style={{ color: INK }}>
-                  <p className="text-[24px] leading-snug md:text-[30px]" style={{ fontFamily: ja ? '"Hiragino Mincho ProN", "Yu Mincho", serif' : SERIF }}>{b.title}</p>
+                  <p className="text-[24px] leading-snug md:text-[30px]" style={{ fontFamily: ja ? MINCHO : SERIF }}>{b.title}</p>
                   <p className="mt-3 text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? noteLead(b, 120) : b.subtitle || noteLead(b)}</p>
                   <p className="mt-4 text-[11px] uppercase tracking-[0.3em] underline-offset-4 group-hover:underline">{ja ? '全文を読む' : 'Read the notes'}&nbsp;&nbsp;→</p>
                 </Link>
@@ -311,7 +311,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto flex max-w-6xl flex-wrap gap-3">
             {room && person && (
-              <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+              <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
                 {VOICE_CALLS ? (ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`) : ja ? `${who}と話す` : `Talk to ${who}`}&nbsp;&nbsp;→
               </Link>
             )}

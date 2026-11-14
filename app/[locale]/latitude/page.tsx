@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PEOPLE, assetUrl, issueNo, liveIssues } from '@/lib/latitude';
-import { INK, IssueStrip, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MINCHO, MUTE, NewsletterSignup, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import TravellerMap from '@/components/latitude/TravellerMap';
 import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 import { mapTravellers } from '@/lib/latitude-map';
@@ -32,7 +32,6 @@ const STATEMENT_EN =
   'LATITUDE is a series of fictional days, filmed as if documented. The place — and one true thing about it — is real; the person and the day are imagined. We look for the beauty of clothes not in the posed moment, but in the time between.';
 const STATEMENT_JA =
   'LATITUDE は、ひとつの緯度の、ある一日を記録するように描く連作です。場所と、その土地のひとつの事実は本物。人と一日は架空です。飾った瞬間ではなく、その間に流れる時間の中に、服の美しさを探しています。';
-const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;

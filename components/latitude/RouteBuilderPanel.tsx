@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { km, mins } from '@/lib/latitude-routes/format';
 import { MAX_STOPS, WALK_M_PER_MIN, googleWalkUrl, shortestOrder, type Leg } from '@/lib/latitude-routes/pairs';
 import { markStyle, type MarkKind } from '@/lib/latitude-markers';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作（金沢）：店の地図の「自分でルートを組む」の下の段。選んだ順・区間の距離・合計（分速80m）・
 // 近い順に並べ替え（最初の1軒は固定）・リセット・Google マップの歩きの道案内・名前から選ぶ。
@@ -21,11 +22,7 @@ export type BuildPoint = {
   kind: MarkKind; // 店・凛の地点・アート・名所
 };
 
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
-const PAPER = '#f2eee7';
 const LINE = 'rgba(30,29,27,0.14)';
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const SAVE_MIN = 300; // これ以上短くなる時だけ知らせる（メートル）
 
 export default function RouteBuilderPanel({ points, visible, route, setRoute, leg, ready, ja, who, onToggle, onReset, rinIds }: {

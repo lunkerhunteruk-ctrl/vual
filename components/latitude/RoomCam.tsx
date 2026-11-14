@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { MUTE, SERIF } from '@/components/latitude/Latitude';
+import { INK, MUTE, SERIF } from '@/lib/latitude-theme';
 import type { RoomCam as Cam } from '@/lib/latitude-rooms';
 
 // 2026-10-30 部屋の中継ふうの動画。日本の時刻で場面を選ぶので、同じ時刻に開いた人は同じ凛を見る。
@@ -80,7 +80,7 @@ export default function RoomCam({ cam, reaction, fallback }: { cam: Cam; reactio
       className="absolute inset-0 h-full w-full object-cover" style={{ opacity: on ? 1 : 0, transition: `opacity ${FADE}s ease` }} />
   );
   return (
-    <div className="relative h-full w-full overflow-hidden bg-[#1e1d1b]">
+    <div className="relative h-full w-full overflow-hidden" style={{ background: INK }}>
       {v(a, front === 'a')}
       {v(b, front === 'b')}
       <span className="absolute bottom-3 right-3 text-[9px] uppercase tracking-[0.3em] tabular-nums" style={{ color: 'rgba(242,238,231,0.8)' }}>

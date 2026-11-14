@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { LAND_PATH, MAP_H, MAP_W, project } from '@/lib/latitude-map';
 import { latAsset } from '@/lib/latitude-assets';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-10-30 LATITUDE の旅人の地図。6人が最後にいた所に点がまたたき、マウスを乗せると顔・名前・街と月が出る。
 // 細い点線はその人の旅の跡（住む街 → 1日ずつ、号の順）。focus を渡すと、その人だけを濃くする（人のページ用）。
@@ -21,12 +22,8 @@ export type MapTraveller = {
   stops: MapStop[]; // 公開ずみの1日（古い順）
 };
 
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
 const LAND = '#e3ddd1';
-const PAPER = '#f2eee7';
 const FACE = 26; // 2026-11-13 世界地図の人の名前の前に置く顔の丸（px）
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const PARALLELS = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]; // 5° おきの線は、寄った時だけ出す
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

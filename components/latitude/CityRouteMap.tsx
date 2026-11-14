@@ -2,6 +2,7 @@
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { PaperLayers, type BaseMap } from '@/components/latitude/CityShopMap';
 import { km, mins, type RouteWalk } from '@/lib/latitude-routes/format';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：街のページの「凛の1日の道」の地図。ユーザーの案：
 // ほかのサイトのモデルコースは文字と写真だけ。LATITUDE は先に凛の映像でその1日を見て、同じ道を地図でたどれる。
@@ -26,11 +27,7 @@ export type RouteStop = {
 };
 
 
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
-const PAPER = '#f2eee7';
 const LINE = 'rgba(30,29,27,0.14)';
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const RED = '#7a241e'; // 号の動く地図の点線（reel_overlays2.py の RED = 122, 36, 30）
 
 const FIRST = 0.5; // 画面に入ってから最初の印が出るまで

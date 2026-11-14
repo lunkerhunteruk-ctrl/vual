@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { INK, MUTE } from '@/lib/latitude-theme';
 
 // 2026-11-11 ユーザー「縦スクロールが多すぎて見にくい」→ 街のページの「1日の回り方」と「おすすめ」を横に流す。
 // カードはピタッと止まる（scroll-snap）。スマホは画面幅の約8割のカードで、次のカードの端が見える。
@@ -41,11 +42,11 @@ export default function HScroller({ children, count, label, ja, head }: { childr
   const arrow = 'hidden h-8 w-8 items-center justify-center border text-[14px] transition-opacity disabled:opacity-25 [@media(hover:hover)]:inline-flex';
   const controls = count > 1 && (
     <div className="flex shrink-0 items-center gap-3">
-      <p className="text-[10px] tabular-nums tracking-[0.3em]" style={{ color: '#78746c' }} aria-live="polite">
+      <p className="text-[10px] tabular-nums tracking-[0.3em]" style={{ color: MUTE }} aria-live="polite">
         {at + 1} / {count}
       </p>
-      <button type="button" className={arrow} style={{ borderColor: 'rgba(30,29,27,0.2)', color: '#1e1d1b' }} onClick={() => go(-1)} disabled={edge.start} aria-label={ja ? '前へ' : 'Previous'}>←</button>
-      <button type="button" className={arrow} style={{ borderColor: 'rgba(30,29,27,0.2)', color: '#1e1d1b' }} onClick={() => go(1)} disabled={edge.end} aria-label={ja ? '次へ' : 'Next'}>→</button>
+      <button type="button" className={arrow} style={{ borderColor: 'rgba(30,29,27,0.2)', color: INK }} onClick={() => go(-1)} disabled={edge.start} aria-label={ja ? '前へ' : 'Previous'}>←</button>
+      <button type="button" className={arrow} style={{ borderColor: 'rgba(30,29,27,0.2)', color: INK }} onClick={() => go(1)} disabled={edge.end} aria-label={ja ? '次へ' : 'Next'}>→</button>
     </div>
   );
   return (
@@ -70,7 +71,7 @@ export default function HScroller({ children, count, label, ja, head }: { childr
 export function ShowOnMap({ id, label }: { id: string; label: string }) {
   return (
     <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('latitude:shop-map', { detail: id }))}
-      className="cursor-pointer underline-offset-4 hover:underline" style={{ color: '#1e1d1b' }}>
+      className="cursor-pointer underline-offset-4 hover:underline" style={{ color: INK }}>
       {label}
     </button>
   );

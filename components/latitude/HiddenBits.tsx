@@ -1,7 +1,7 @@
 // 2026-11-14 穴場のおすすめ度の小さな部品（地図のカードと穴場のページで使う）。●の数と、12か月の帯
+import { INK, MUTE } from '@/lib/latitude-theme';
+
 const MOSS = '#4f6b3a';
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
 
 export function Dots({ n }: { n: number }) {
   return (

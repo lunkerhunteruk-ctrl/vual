@@ -4,6 +4,7 @@ import { PageVideo } from './PageVideo';
 import { Pic } from './Pic';
 import { PanoPage, type Pano } from './PanoPage';
 import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // カルーセルのページ：スマホもパソコンも横一列。見開きはページの境目をまたぐので、決まった2枚の組にすると切れる（2026-10-27）。
 // パソコンは矢印と ← → で1ページずつ送り、隣り合うどの2枚も並べて見られる。
@@ -13,10 +14,6 @@ import { HOTSPOTS, type Hotspot } from '@/lib/latitude-hotspots';
 
 type Page = { file: string; video?: string; pano?: Pano };
 type StepPage = { page: number; look: number };
-const PAPER = '#f2eee7';
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 
 export function PagesViewer({ slug, base, pages, stepPages, stepOn, sample }: {
   slug: string; base: string; pages: Page[]; stepPages: StepPage[]; stepOn?: boolean; sample?: { face: string; result: string } | null;

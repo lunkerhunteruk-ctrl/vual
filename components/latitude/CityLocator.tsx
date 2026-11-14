@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { COUNTRY_SHAPES } from '@/lib/latitude-locator-shapes';
+import { PAPER } from '@/lib/latitude-theme';
 
 // 2026-11-11 ユーザー：外国の人が「その街がどこか」すぐ分かるように、国の形の小さな図に街の点1つと、短い一文。
 // 地名は書かない（題字が街の名前なので）。国の輪郭は国コードで選ぶ（lib/latitude-locator-shapes.ts。足すのは scripts/latitude-locator.py）。
@@ -7,7 +8,6 @@ import { COUNTRY_SHAPES } from '@/lib/latitude-locator-shapes';
 
 const LAND = '#e3ddd1';
 const EDGE = '#aca8a0';
-const PAPER = '#f2eee7';
 const RED = '#7a241e'; // 号の動く地図の道すじの赤（vault routemap/reel_overlays2.py の RED）
 
 export function CityLocator({ country, at, dot = RED, text, label, href, className }: {

@@ -2,14 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { liveIssues } from '@/lib/latitude';
 import { getNote } from '@/lib/latitude-notes';
-import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MINCHO, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { EDITOR_ID, JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
 
 // 2026-11-08 編集長の紹介ページ。制作ノートの書き手が誰で、どんな経験から判断しているかを、検索と AI に分かる形で置く。
 // 書くのは、本人が制作ノートに書いた事実と、確かめた事だけ（経歴を足す時は本人に確かめる）。
 // 経歴（CSM・Balenciaga・自分のブランド）は vual.jp トップの FOUNDER 欄と同じ文（2026-11-08 ユーザー確認）。トップは画面を JS で組むので、文字で読めるのはこのページ。
 
-const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 const INSTAGRAM = 'https://www.instagram.com/sachio_kawasaki/';
 const NOTE = 'https://note.com/sachiokawasaki';
 const SUBSTACK = 'https://sachiokawasaki.substack.com';

@@ -7,6 +7,7 @@ import { REGIONS, type PlaceRegion } from '@/lib/latitude-regions';
 import HScroller from '@/components/latitude/HScroller';
 import type { HiddenDot } from '@/lib/latitude-hidden';
 import { Dots, Strip } from '@/components/latitude/HiddenBits';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：「場所から探す」の地図（/latitude/places）。
 // 世界の地図（一覧ページの「Where they are」＝TravellerMap と同じ図法・同じ色）に国の点。国を押すと、その国へなめらかに寄る。
@@ -45,9 +46,6 @@ type Rect = { x: number; y: number; w: number; h: number };
 type PreviewTown = { slug: string; name: string; nameJa: string; prefecture: string; prefectureJa: string; region: string; lat: number; lon: number };
 
 const PREVIEW_SRC = '/latitude/placesmap-preview-cities.json';
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
-const PAPER = '#f2eee7';
 const LAND = '#e3ddd1';
 const LAND_ON = '#d8cfbf'; // 街の案内がある国
 const EDGE = '#aca8a0';
@@ -55,7 +53,6 @@ const RED = '#7a241e'; // 号の動く地図の道すじの赤
 const MOSS = '#4f6b3a'; // 2026-11-14 穴場の点（町の赤と見分ける）
 const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // lib/latitude-hidden.ts と同じ（データごと読み込まないよう、ここにも置く）
 const LINE = 'rgba(30,29,27,0.14)';
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const SC = 8.087396; // lib/latitude-map.ts と同じ（緯度1度の高さ）
 const PARALLELS = [20, 30, 40, 50, 60, 70];
 const HALO = `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}`;

@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PEOPLE } from '@/lib/latitude';
-import { INK, IssueStrip, MUTE, PAPER, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MINCHO, MUTE, PAPER, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 
 // 2026-10-30 LATITUDE の奥付。VUAL が出している出版物（コンデナストと Vogue の関係）として、出版元・編集・作り方・連絡先を並べる。
-const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 
 const T = {
   en: {

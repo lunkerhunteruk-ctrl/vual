@@ -5,6 +5,7 @@ import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
 // 号の「動く地図」と同じ紙の地図の上に、店を小さな丸で並べる。丸を押すとその店へなめらかに寄り、店のカードが出る。
@@ -56,11 +57,7 @@ export type BaseMap = {
   layers: Record<'water' | 'park' | 'river' | 'stream' | 'path' | 'minor' | 'major' | 'rail', string> & { coast?: string }; // coast：海岸線（2026-11-11 萩・函館。線だけ）
 };
 
-const INK = '#1e1d1b';
-const MUTE = '#78746c';
-const PAPER = '#f2eee7';
 const LINE = 'rgba(30,29,27,0.14)';
-const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 // 号の動く地図（vault routemap/reel_overlays2.py）の色を、サイトの紙の色に合わせた物
 const ROAD = '#aca8a0';
 const PATH = '#cbc6bd';

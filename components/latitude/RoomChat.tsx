@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { ConversationProvider, useConversation } from '@elevenlabs/react';
-import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
+import { INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 import { track } from '@/lib/latitude-track';
 import { VOICE_CALLS } from '@/lib/latitude-rooms';
 
@@ -212,7 +212,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
   // 通話の入口は、部屋に入るのと同じ大きさの黒いボタン（声で話したい人が迷わないように、こちらを主に見せる）
   const CallButton = () => !VOICE_CALLS ? null : (
     <button onClick={() => { if (conv.status === 'connected') conv.endSession(); setStage('confirm'); }}
-      className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+      className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
       {ja ? `${name}と通話する` : `Call ${name}`}
     </button>
   );
@@ -276,7 +276,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
               <li>{ja ? `・${name}はAIです。声は残さず、文字だけを30日残します。` : `· ${name} is an AI. Audio is not kept; the text is kept for 30 days.`}</li>
             </ul>
             <div className="flex gap-6">
-              <button onClick={call} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+              <button onClick={call} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
                 {ja ? '通話を始める' : 'Start the call'}
               </button>
               <button onClick={() => setStage('outside')} className="text-[11px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>

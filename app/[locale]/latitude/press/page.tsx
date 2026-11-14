@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PEOPLE, assetUrl, liveIssues, personOf } from '@/lib/latitude';
 import { CITIES } from '@/lib/latitude-places';
 import { getNote } from '@/lib/latitude-notes';
-import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MINCHO, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import CopyText from '@/components/latitude/CopyText';
 import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 
@@ -13,7 +13,6 @@ import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 // （アイスランド・コペンハーゲン・ロンドン・エジンバラ・ミラノ・フォーレ島）の画像は、このページに置かない。
 const PRESS_IMAGE_ISSUES = ['kanazawa', 'vienna', 'haworth', 'morioka', 'reggio'];
 
-const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif';
 const RULE = 'rgba(30,29,27,0.15)';
 
 const T = {

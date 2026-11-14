@@ -6,11 +6,9 @@ import { ReelPlayer } from './ReelPlayer';
 import { FadeScroller } from './FadeScroller';
 import type { StepIntoPage } from '@/lib/latitude-recipe';
 
-// LATITUDE の紙面の色と字。Instagram のカルーセルと同じ紙・墨・灰を使う
-export const PAPER = '#f2eee7';
-export const INK = '#1e1d1b';
-export const MUTE = '#78746c';
-export const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
+// LATITUDE の紙面の色と字は lib/latitude-theme.ts（2026-11-14 1か所にまとめた）。ここからも読めるように出しておく
+import { INK, MUTE, SERIF } from '@/lib/latitude-theme';
+export { PAPER, INK, MUTE, SERIF, MINCHO } from '@/lib/latitude-theme';
 
 const STREAM_HOST = 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com';
 
@@ -61,7 +59,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
               href={`/${locale}/latitude/${i.slug}`}
               aria-current={on ? 'page' : undefined}
               className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] transition-opacity hover:opacity-100"
-              style={{ color: on ? INK : MUTE, opacity: on ? 1 : 0.8, borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}
+              style={{ color: on ? INK : MUTE, borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}
             >
               {/* 2026-10-30 号の番号の代わりに人の名前 */}
               {personOf(i)?.name ?? issueNo(i)}&nbsp;&nbsp;{i.city}

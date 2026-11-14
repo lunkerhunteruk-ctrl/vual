@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { INK } from '@/lib/latitude-theme';
 
 // 2026-11-11 プレス用のページ：紹介文をそのまま貼れるように写すボタン
 export default function CopyText({ text, label, done }: { text: string; label: string; done: string }) {
@@ -17,7 +18,7 @@ export default function CopyText({ text, label, done }: { text: string; label: s
         }
       }}
       className="border-b pb-1 text-[10px] uppercase tracking-[0.3em]"
-      style={{ color: '#1e1d1b', borderColor: '#1e1d1b' }}
+      style={{ color: INK, borderColor: INK }}
     >
       {copied ? done : label}
     </button>

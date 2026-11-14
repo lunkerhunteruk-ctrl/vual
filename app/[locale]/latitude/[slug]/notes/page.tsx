@@ -4,14 +4,13 @@ import { notFound } from 'next/navigation';
 import { assetUrl, getIssue, isLive, issueNo, liveIssues, personOf } from '@/lib/latitude';
 import { getNote, noteLead, noteText, type NoteBlock, type NoteRun } from '@/lib/latitude-notes';
 import { EDITOR_ID, JsonLd, PERIODICAL, PUBLISHER, SITE } from '@/lib/latitude-publication';
-import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
+import { INK, IssueStrip, MINCHO, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 
 // 2026-11-08 号ごとの制作ノート（監督の記録）。日本語（/ja）と英語（/en）は別の文章なので、それぞれを本体（canonical）にする。
 // 中身は lib/latitude-notes.ts（data/latitude-notes/<slug>.json）。note と Substack にも同じ文があるが、vual.jp を元の置き場にする。
 
 const NOTE_JA_URL = 'https://note.com/sachiokawasaki/m/mf5725176786b';
 const SUBSTACK_URL = 'https://sachiokawasaki.substack.com';
-const MINCHO = '"Hiragino Mincho ProN", "Yu Mincho", "Shippori Mincho", serif';
 
 export function generateStaticParams() {
   return liveIssues().filter((i) => getNote(i.slug)).map((i) => ({ slug: i.slug }));
@@ -140,7 +139,7 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="mt-14 flex flex-wrap gap-3 border-t pt-8" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
-          <Link href={`/${locale}/latitude/${issue.slug}`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: '#f2eee7' }}>
+          <Link href={`/${locale}/latitude/${issue.slug}`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
             {ja ? `この号を見る（${issue.latitude} ${issue.city}）` : `See the issue — ${issue.latitude} ${issue.city}`}&nbsp;&nbsp;→
           </Link>
           <a href={ja ? NOTE_JA_URL : SUBSTACK_URL} target="_blank" rel="noopener" className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, color: INK }}>
