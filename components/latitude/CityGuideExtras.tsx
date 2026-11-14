@@ -11,6 +11,7 @@ import { reelSources } from '@/components/latitude/Latitude';
 import { getIssue, isLive } from '@/lib/latitude';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { ACTION } from '@/lib/latitude-theme';
 
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
@@ -97,6 +98,14 @@ export function CityRoute({ c, ja, who, withMap = false, bare = false }: { c: La
                 </p>
                 <p className="mt-1 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{ja ? r.placeJa : r.place}</p>
                 <p className="mt-1 text-[15px] leading-relaxed">{ja ? r.whatJa : r.what}</p>
+                {/* 2026-11-14 ②-9 位置のある地点だけ、その1か所を Google マップで（言葉は「1日の道をまるごと開く」と同じ）。枠なし（枠つきは1日の道の方）。押せる高さ 44px、行の高さは増やさない */}
+                {r.coords && (
+                  <p className="mt-3">
+                    <a href={googlePlaceUrl(c, r)} target="_blank" rel="noopener noreferrer" className={`${ACTION} -my-[13px]`} style={{ color: INK }}>
+                      {ja ? 'Google マップ' : 'Google Maps'}
+                    </a>
+                  </p>
+                )}
                 {near.length > 0 && (
                   <p className="mt-3 text-[13px] leading-relaxed" style={{ color: MUTE }}>
                     {ja ? `近くの、${who}のおすすめ：` : `Nearby, ${who} would go to: `}
@@ -129,9 +138,14 @@ export function hasDayRoute(c: LatitudeCity) {
   return (c.route || []).filter((r) => r.coords).length >= 2;
 }
 
+// 2026-11-14 ②-9 回り方の1か所だけの Google マップ（店と同じ作り方）。言葉は googleDirectionsUrl と同じ（gmaps か「地点の日本語名 街の日本語名」）
+const routeQuery = (c: LatitudeCity, r: NonNullable<LatitudeCity['route']>[number]) => r.gmaps ?? `${r.placeJa} ${c.nameJa}`;
+export const googlePlaceUrl = (c: LatitudeCity, r: NonNullable<LatitudeCity['route']>[number]) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(routeQuery(c, r))}`;
+
 // Google マップの道案内（歩き）。地点の名前＋街の名前で、時刻の順に通る。https://developers.google.com/maps/documentation/urls/get-started#directions-action
 export function googleDirectionsUrl(c: LatitudeCity) {
-  const q = (c.route || []).filter((r) => r.coords).map((r) => r.gmaps ?? `${r.placeJa} ${c.nameJa}`);
+  const q = (c.route || []).filter((r) => r.coords).map((r) => routeQuery(c, r));
   const u = new URLSearchParams({ api: '1', origin: q[0], destination: q[q.length - 1], travelmode: 'walking' });
   if (q.length > 2) u.set('waypoints', q.slice(1, -1).join('|'));
   return `https://www.google.com/maps/dir/?${u.toString()}`;
