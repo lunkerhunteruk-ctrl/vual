@@ -5,6 +5,8 @@ import { LAND_PATH, MAP_H, MAP_W, project } from '@/lib/latitude-map';
 import type { PlaceCity, PlaceCountry } from '@/lib/latitude-places-index';
 import { REGIONS, type PlaceRegion } from '@/lib/latitude-regions';
 import HScroller from '@/components/latitude/HScroller';
+import type { HiddenDot } from '@/lib/latitude-hidden';
+import { Dots, Strip } from '@/components/latitude/HiddenBits';
 
 // 2026-11-11 試作：「場所から探す」の地図（/latitude/places）。
 // 世界の地図（一覧ページの「Where they are」＝TravellerMap と同じ図法・同じ色）に国の点。国を押すと、その国へなめらかに寄る。
@@ -22,6 +24,9 @@ import HScroller from '@/components/latitude/HScroller';
 //  写真はリールの途中の字の無いコマ（lib/latitude-places-index.ts の ISSUE_PHOTO_FRAME。丸はパソコン80px・スマホ64px）。
 //  最初はいちばん新しい号（lib/latitude-places-index.ts の COUNTRY_PHOTO_PIN で国ごとに固定できる）。重ねたままなら1.5秒ごとに
 //  ほかの号へふわっと切り替わる（号が1つの国は切り替えない）。横に「イギリス · 3つの号」。スマホはもう1回押すとその国へ寄る。
+// 2026-11-14 穴場（lib/latitude-hidden.ts）：日本に寄った時、町とは色の違う点（苔の緑）で出す。地図の上の「訪ねる月」を選ぶと、
+//  その月のおすすめ度（0〜5）で点が大きく・濃くなり、0 の月（行けない月）は消える。月を選んでいない時は、いちばん良い月の点で描く。
+//  点を押すと、地図の下の端にカード（写真・その月のおすすめ度と理由・12か月の帯・1日のコースへ）。地方に寄った時は名前も出す。
 // 試しの町：URL に ?preview=50 を付けた時だけ public/latitude/placesmap-preview-cities.json を読み、日本に足す（本番には出さない。ページは無い）。
 
 type Inset = {
@@ -47,6 +52,8 @@ const LAND = '#e3ddd1';
 const LAND_ON = '#d8cfbf'; // 街の案内がある国
 const EDGE = '#aca8a0';
 const RED = '#7a241e'; // 号の動く地図の道すじの赤
+const MOSS = '#4f6b3a'; // 2026-11-14 穴場の点（町の赤と見分ける）
+const MONTH_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // lib/latitude-hidden.ts と同じ（データごと読み込まないよう、ここにも置く）
 const LINE = 'rgba(30,29,27,0.14)';
 const SERIF = 'var(--font-playfair), "Didot", "Bodoni 72", Georgia, serif';
 const SC = 8.087396; // lib/latitude-map.ts と同じ（緯度1度の高さ）
@@ -113,10 +120,13 @@ function placePins(list: PinIn[], W: number, H: number, nameOf: (q: PlaceCity) =
 
 // initial：最初から寄っておく国（国のページ。世界地図を通らない）。worldHref があれば「← 世界」はそのページへのリンク。
 // syncUrl：国へ寄った時に、アドレスを国のページ（/latitude/places/<国>）に合わせる（場所のページ）
-export default function PlacesMap({ countries: given, locale, src, initial, worldHref, syncUrl }: {
+export default function PlacesMap({ countries: given, locale, src, initial, worldHref, syncUrl, hidden, month: month0 }: {
   countries: PlaceCountry[]; locale: string; src: string; initial?: string; worldHref?: string; syncUrl?: boolean;
+  hidden?: HiddenDot[]; month?: number;
 }) {
   const ja = locale === 'ja';
+  const [month, setMonth] = useState<number | null>(month0 ?? null); // 訪ねる月（null＝決めていない）
+  const [card, setCard] = useState<string | null>(null); // カードを出している穴場
   const [geo, setGeo] = useState<Geo | null>(null);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [anim, setAnim] = useState<Anim | null>(null);
@@ -470,6 +480,17 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     return dots.map((d) => ({ ...d, label: place.get(d.q.slug) ?? null, fs }));
   })() : [];
 
+  // ── 穴場の点（日本に寄った時）。点の大きさと濃さは、選んだ月のおすすめ度（月を決めていない時は、いちばん良い月の点）──
+  const scoreOf = (d: HiddenDot) => (month ? d.score[month - 1] : Math.max(...d.score));
+  const hdots = sel === 'JP' && hidden && showCities ? hidden.filter((d) => (!reg || d.region === reg) && scoreOf(d) > 0).map((d) => {
+    const p = project(d.lat, d.lon);
+    const q = pos('JP', { ...p, lat: d.lat, lon: d.lon } as PlaceCity);
+    const { sx, sy } = toScreen(q.x, q.y);
+    const sc = scoreOf(d);
+    return { d, sx, sy, sc, dia: Math.round(reg ? 6 + sc * 2.6 : wide ? 4 + sc * 1.6 : 3 + sc * 1.0) }; // 国の段階は小さく（町の数字の丸を覆わない）
+  }).sort((a, b) => a.sc - b.sc) : [];
+  const cardD = card ? hidden?.find((d) => d.slug === card) : undefined;
+
   // スマホの地図の下の一覧（地方のある国）
   const listC = countries.find((c) => REGIONS[c.code] && c.cities.some((q) => q.region));
   const showOnMap = (code: string, key: string, slug: string | null) => {
@@ -502,6 +523,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           </li>
         ))}
       </ul>}
+      {hidden && sel === 'JP' && <MonthBar month={month} setMonth={(m) => { setMonth(m); }} ja={ja} n={hidden.length} />}
       <div ref={box} className="relative aspect-square w-full overflow-hidden md:aspect-[2/1]"
         style={{ background: PAPER, border: `1px solid ${LINE}`, maxHeight: '80vh', touchAction: 'pan-y' }}
         onClick={(e) => {
@@ -664,6 +686,25 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           );
         })}
 
+        {/* 穴場の点（苔の緑）。押すとカード。地方に寄った時は、おすすめ度4以上の所の名前も出す */}
+        {ready && hdots.map(({ d, sx, sy, sc, dia }) => {
+          const on = card === d.slug;
+          const nm = ja ? d.name : d.nameEn;
+          return (
+            <button key={d.slug} type="button" onClick={(e) => { e.stopPropagation(); setCard(on ? null : d.slug); }}
+              className={`group absolute block h-0 w-0 cursor-pointer ${on ? 'z-[3]' : `${reg ? 'z-[2]' : 'z-[1]'} hover:z-[3] focus-visible:z-[3]`}`}
+              style={{ left: sx, top: sy, animation: 'lat-fade 400ms ease-out' }} aria-pressed={on}
+              aria-label={`${nm}（${ja ? d.prefectureJa : d.prefecture}）${month ? ` ${ja ? `${month}月のおすすめ度` : `${MONTH_EN[month - 1]}`} ${sc}/5` : ''}`}>
+              <span className="absolute -left-3 -top-3 block h-6 w-6" />
+              <span className="absolute block rounded-full transition-all duration-300 group-hover:scale-[1.25]"
+                style={{ width: dia, height: dia, left: -dia / 2, top: -dia / 2, background: MOSS, opacity: 0.35 + sc * 0.13, boxShadow: `0 0 0 ${on ? 3 : 1.5}px ${PAPER}` }} />
+              <span className={`pointer-events-none absolute whitespace-nowrap leading-none ${reg && sc >= 4 ? '' : 'hidden group-hover:block group-focus-visible:block'}`}
+                style={{ left: dia / 2 + 4, top: -6, fontFamily: SERIF, fontSize: reg ? 12 : 11, color: MOSS, textShadow: HALO }}>{nm}</span>
+            </button>
+          );
+        })}
+        {ready && cardD && sel === 'JP' && <HiddenCard d={cardD} month={month} ja={ja} locale={locale} onClose={() => setCard(null)} />}
+
         {/* 地方の段階：右上に地方の名前と町の数 */}
         {ready && regG && settled && (
           <p className="pointer-events-none absolute right-3 top-3 z-[4] text-right" style={{ animation: 'lat-fade 400ms ease-out' }}>
@@ -786,3 +827,59 @@ function TownCard({ q, locale, ja, on, onPick }: { q: PlaceCity; locale: string;
     <Link href={`/${locale}/latitude/places/${q.slug}`} className="block">{face}{text}</Link>
   );
 }
+
+
+// 2026-11-14 訪ねる月のボタン（地図の上）。月を選ぶと、穴場の点がその月のおすすめ度で大きく・濃くなる
+function MonthBar({ month, setMonth, ja, n }: { month: number | null; setMonth: (m: number | null) => void; ja: boolean; n: number }) {
+  return (
+    <div className="mb-3 flex flex-col gap-2">
+      <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+        <span className="mr-2 inline-block h-2 w-2 rounded-full align-middle" style={{ background: MOSS }} />
+        {ja ? `穴場 ${n}か所 · 訪ねる月を選ぶと、その月に良い所ほど大きく` : `${n} hidden spots · pick the month you visit; the bigger the dot, the better that month`}
+      </p>
+      <div className="flex flex-wrap gap-1.5" role="group" aria-label={ja ? '訪ねる月' : 'Month of your visit'}>
+        {[null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => {
+          const on = month === m;
+          return (
+            <button key={m ?? 0} type="button" aria-pressed={on} onClick={() => setMonth(m)}
+              className="cursor-pointer px-2 py-1 text-[10px] uppercase tracking-[0.15em] tabular-nums"
+              style={{ color: on ? PAPER : INK, background: on ? MOSS : 'transparent', border: `1px solid ${on ? MOSS : LINE}` }}>
+              {m === null ? (ja ? 'いつでも' : 'Any') : ja ? `${m}月` : MONTH_EN[m - 1].slice(0, 3)}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// 2026-11-14 穴場のカード（地図の下の端）。その月のおすすめ度（●の数）と理由・12か月の帯・1日のコースのページへ
+function HiddenCard({ d, month, ja, locale, onClose }: { d: HiddenDot; month: number | null; ja: boolean; locale: string; onClose: () => void }) {
+  const m = month ?? d.score.indexOf(Math.max(...d.score)) + 1;
+  const sc = d.score[m - 1];
+  const note = d.note[String(m)];
+  return (
+    <div className="absolute bottom-3 left-3 right-3 z-[5] flex gap-3 p-3 md:right-auto md:w-[420px]" onClick={(e) => e.stopPropagation()}
+      style={{ background: '#faf8f4', boxShadow: '0 6px 24px rgba(30,29,27,0.14)', animation: 'lat-fade 250ms ease-out' }}>
+      {d.banner && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={d.banner} alt="" className="h-[92px] w-[92px] shrink-0 object-cover" style={{ objectPosition: `50% ${d.bannerY ?? 50}%` }} />
+      )}
+      <div className="min-w-0 flex-1">
+        <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{d.seasonal ? (ja ? ' · 季節の穴場' : ' · seasonal') : ''}</p>
+        <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
+        <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: INK }}>
+          <span className="tabular-nums" style={{ color: MUTE }}>{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
+          <Dots n={sc} />
+        </p>
+        <p className="mt-1 text-[12px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
+        <Strip score={d.score} at={m} />
+        <Link href={`/${locale}/latitude/places/japan/spot/${d.slug}`} className="mt-2 inline-block text-[10px] uppercase tracking-[0.25em] underline underline-offset-4" style={{ color: MOSS }}>
+          {ja ? '1日のコースを見る →' : 'A day there →'}
+        </Link>
+      </div>
+      <button type="button" onClick={onClose} aria-label={ja ? '閉じる' : 'Close'} className="-mr-1 -mt-1 h-6 w-6 shrink-0 cursor-pointer text-[14px] leading-none" style={{ color: MUTE }}>×</button>
+    </div>
+  );
+}
+

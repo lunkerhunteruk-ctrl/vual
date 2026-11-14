@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { PEOPLE, liveIssues } from '@/lib/latitude';
 import { CITIES, areasOf, sectionsOf } from '@/lib/latitude-places';
 import { placeCountries } from '@/lib/latitude-places-index';
+import { HIDDEN, MONTHS } from '@/lib/latitude-hidden';
 import { getNote } from '@/lib/latitude-notes';
 
 // 公開予約の号が時刻を過ぎたら載るよう、数分ごとに作り直す
@@ -50,7 +51,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 2026-11-01 街のページ（店の一覧）。日本語と英語の両方が本体（canonical はそれぞれの言語）。街・種類・産業・地区（店が4軒以上の地区だけ）
   // 2026-11-11 場所から探すページと、国のページ（/latitude/places/japan など）
-  const placePaths = ['/latitude/places', ...placeCountries().map((c) => `/latitude/places/${c.slug}`), ...CITIES.flatMap((c) => [
+  const placePaths = ['/latitude/places', ...placeCountries().map((c) => `/latitude/places/${c.slug}`),
+    // 2026-11-14 穴場のページと、月ごとの穴場のページ
+    ...HIDDEN.map((h) => `/latitude/places/japan/spot/${h.slug}`), ...MONTHS.map((m) => `/latitude/places/japan/${m}`),
+    ...CITIES.flatMap((c) => [
     `/latitude/places/${c.slug}`,
     ...sectionsOf(c).map((s) => `/latitude/places/${c.slug}/${s.key}`), // 種類と、その街ならではの産業（2026-11-01）
     ...areasOf(c).map((a) => `/latitude/places/${c.slug}/area/${a.slug}`),

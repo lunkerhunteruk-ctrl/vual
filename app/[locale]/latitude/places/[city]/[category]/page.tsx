@@ -7,6 +7,8 @@ import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import HiddenMonthPage, { hiddenMonthMetadata } from '@/components/latitude/HiddenMonthPage';
+import { MONTHS, monthOf } from '@/lib/latitude-hidden';
 
 // 2026-10-30 「街×種類」のページ（例 /latitude/places/kanazawa/cafe）。検索の細かい言葉（金沢 喫茶 など）の入口。
 // 2026-11-11 種類を5つにまとめた（抹茶・コーヒー → 喫茶 cafe、器 → 工芸 craft）。古い /matcha・/coffee は next.config.ts で /cafe へ 301
@@ -15,7 +17,8 @@ import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/C
 // 産業を1ページにまとめず産業ごとに分けるのは、「金沢 金箔」のように産業の名前で調べる人に、題と中身が1つの言葉でそろったページを返すため。
 
 export function generateStaticParams() {
-  return CITIES.flatMap((c) => sectionsOf(c).map((s) => ({ city: c.slug, category: s.key })));
+  // 2026-11-14 日本の月ごとの穴場のページ（/latitude/places/japan/may など）も、この段
+  return [...CITIES.flatMap((c) => sectionsOf(c).map((s) => ({ city: c.slug, category: s.key }))), ...MONTHS.map((m) => ({ city: 'japan', category: m }))];
 }
 
 function words(cityName: string, sec: PlaceSection, ja: boolean, who: string, n: number) {
@@ -32,6 +35,7 @@ function words(cityName: string, sec: PlaceSection, ja: boolean, who: string, n:
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; city: string; category: string }> }): Promise<Metadata> {
   const { locale, city, category } = await params;
+  if (city === 'japan' && monthOf(category)) return hiddenMonthMetadata(monthOf(category), locale);
   const c = getCity(city);
   const sec = c && getSection(c, category);
   if (!c || !sec) return { title: 'LATITUDE — VUAL' };
@@ -50,6 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function LatitudeCityCategoryPage({ params }: { params: Promise<{ locale: string; city: string; category: string }> }) {
   const { locale, city, category } = await params;
+  if (city === 'japan' && monthOf(category)) return <HiddenMonthPage m={monthOf(category)} locale={locale} />;
   const c = getCity(city);
   const sec = c && getSection(c, category);
   if (!c || !sec) notFound();

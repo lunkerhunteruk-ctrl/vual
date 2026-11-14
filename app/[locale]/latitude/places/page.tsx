@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import PlacesMap from '@/components/latitude/PlacesMap';
+import { hiddenDots } from '@/lib/latitude-hidden';
 import { JsonLd } from '@/lib/latitude-publication';
 import { citiesJsonLd, placeCountries } from '@/lib/latitude-places-index';
 import { CountryCityList } from '@/components/latitude/PlaceLists';
@@ -49,7 +50,7 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
       </header>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
-        <PlacesMap countries={countries} locale={locale} src="/latitude/placesmap.json" syncUrl />
+        <PlacesMap countries={countries} locale={locale} src="/latitude/placesmap.json" syncUrl hidden={hiddenDots()} />
       </section>
 
       {/* 文字の一覧（国ごと・街ごと）。地図が読めない時・検索と AI のチャットのため */}

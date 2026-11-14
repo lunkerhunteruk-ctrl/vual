@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import PlacesMap from '@/components/latitude/PlacesMap';
+import { HIDDEN, MONTHS, hiddenDots, monthLabel } from '@/lib/latitude-hidden';
+import { REGIONS } from '@/lib/latitude-regions';
 import { CountryCityList } from '@/components/latitude/PlaceLists';
 import { JsonLd } from '@/lib/latitude-publication';
 import { breadcrumbJsonLd, citiesJsonLd, type PlaceCountry } from '@/lib/latitude-places-index';
@@ -59,8 +61,39 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
       </header>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
-        <PlacesMap countries={[c]} locale={locale} src="/latitude/placesmap.json" initial={c.code} worldHref={`/${locale}/latitude/places`} />
+        <PlacesMap countries={[c]} locale={locale} src="/latitude/placesmap.json" initial={c.code} worldHref={`/${locale}/latitude/places`} hidden={c.code === 'JP' ? hiddenDots() : undefined} />
       </section>
+
+      {/* 2026-11-14 穴場：月ごとのページと、地方ごとの文字の一覧（検索と AI のチャットのため） */}
+      {c.code === 'JP' && (
+        <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
+          <SectionLabel>{ja ? '地元で有名な穴場を、月から' : 'Hidden spots, by the month you visit'}</SectionLabel>
+          <nav className="mb-10 flex flex-wrap gap-x-5 gap-y-2 text-[11px] uppercase tracking-[0.25em]">
+            {MONTHS.map((m, i) => (
+              <Link key={m} href={`/${locale}/latitude/places/japan/${m}`} className="underline-offset-4 hover:underline" style={{ color: '#4f6b3a' }}>{monthLabel(i + 1, ja)}</Link>
+            ))}
+          </nav>
+          <div className="grid gap-x-10 gap-y-8 md:grid-cols-3">
+            {REGIONS.JP.map((g) => {
+              const list = HIDDEN.filter((h) => h.region === g.key);
+              if (!list.length) return null;
+              return (
+                <div key={g.key}>
+                  <p className="mb-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? g.ja : g.en}</p>
+                  <ul className="flex flex-col gap-1 text-[14px]">
+                    {list.map((h) => (
+                      <li key={h.slug}>
+                        <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="underline-offset-4 hover:underline">{ja ? h.name : h.nameEn}</Link>
+                        <span className="ml-2 text-[11px]" style={{ color: MUTE }}>{ja ? h.prefectureJa : h.prefecture}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-6xl px-4 pb-24 md:px-8 md:pb-32">
         <SectionLabel>{ja ? `${c.name.ja}の街` : `Cities in ${c.name.en}`}</SectionLabel>
