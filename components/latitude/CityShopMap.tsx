@@ -725,8 +725,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
               // 2026-11-11 ユーザー：マウスのある画面では、乗せた丸を 1.4倍に・前面へ・名前を横に・指のカーソル。
               // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
-              // 2026-11-14 指で触る画面だけ、押せる範囲を上下左右に 8px 広げる（丸の見た目は変えない）
-              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-2 [@media(pointer:coarse)]:before:content-[''] ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              // 2026-11-14 指で触る画面だけ、押せる範囲を上下左右に 4px 広げる（丸の見た目は変えない。8px では東茶屋街などの固まった所で隣の丸の真ん中を覆う数が増えたので 4px）
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-1 [@media(pointer:coarse)]:before:content-[''] ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
               <span className="block overflow-hidden group-hover:scale-[1.4]"
@@ -769,7 +769,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           }
           return (
             <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked} aria-disabled={dim || undefined}
-              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-2 [@media(pointer:coarse)]:before:content-[''] ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
+              className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-1 [@media(pointer:coarse)]:before:content-[''] ${picked ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: x, top: y, opacity: dim ? 0.35 : 1 }}>
               <span className="flex items-center justify-center leading-none tabular-nums group-hover:scale-[1.3]"
                 style={{ ...markStyle(q.kind, d, q.color, picked, picked ? `0 0 0 2px ${PAPER}, 0 0 0 3px ${INK}, 0 2px 8px 2px rgba(30,29,27,0.2)` : `0 0 0 2px ${PAPER}`),
