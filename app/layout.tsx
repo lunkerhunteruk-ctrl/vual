@@ -86,13 +86,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 2026-11-14 ページの言語を <html lang> に入れる（漢字の字形・読み上げ・自動翻訳のため）。generateMetadata と同じ所から読む
+  const locale = (await headers()).get("x-next-intl-locale");
   return (
-    <html suppressHydrationWarning>
+    <html lang={locale === "en" ? "en" : "ja"} suppressHydrationWarning>
       <head>
         {/* 2026-11-11 Pinterest（LATITUDE by VUAL・editor@vual.jp）で vual.jp の持ち主だと確かめる印 */}
         <meta name="p:domain_verify" content="873b92227ddb2f7f001d84f224652d9e" />
