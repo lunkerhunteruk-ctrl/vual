@@ -3,7 +3,7 @@ import { INK, MUTE, SERIF } from '@/components/latitude/Latitude';
 import { AskAboutButton } from '@/components/latitude/AskTraveller';
 import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
-import { AddressLine, JaName } from '@/components/latitude/ShopFacts';
+import { AddressLine, FactsLine, JaName } from '@/components/latitude/ShopFacts';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
 import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
@@ -63,6 +63,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
             </div>
             <JaName name={x.name} nameEn={x.nameEn} ja={ja} />
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
+            <FactsLine facts={x} ja={ja} className="mt-2 max-w-2xl" />
             <AddressLine address={x.address} ja={ja} className="mt-2 max-w-2xl" />
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{who}</span>
@@ -199,6 +200,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
             <h4 className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>{ja ? x.name : x.nameEn}</h4>
             <JaName name={x.name} nameEn={x.nameEn} ja={ja} />
             <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
+            <FactsLine facts={x} ja={ja} />
             <AddressLine address={x.address} ja={ja} />
             <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>

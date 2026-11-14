@@ -55,6 +55,12 @@ export type CityPlace = {
   photo?: string;
   // 公式の Instagram（プロフィールか投稿の URL）。url が Instagram の店は書かなくてよい。あれば地図のカードに Instagram の正式な埋めこみを出す
   instagram?: string;
+  // 2026-11-14 ②-4 訪日客がいちばん知りたいこと。入れ物だけ（今はどの店にも入っていない）。
+  // 入れるのは編集部が公式サイトで確かめてから。推測で入れない（店の事実を推測で書かない）。カードには、ある項目だけを住所の上に1行で出す
+  hours?: { en: string; ja: string }; // 例「10:00–17:00」
+  closed?: { en: string; ja: string }; // 例「水曜」
+  reserve?: 'required' | 'recommended' | 'no'; // 予約
+  cashOnly?: boolean;
 };
 
 // その街ならではの産業（例 金沢の金箔）。key は URL になる（種類の key と 'area' は使わない）

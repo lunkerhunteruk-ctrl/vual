@@ -90,6 +90,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         name: ja ? x.name : x.nameEn,
         nameJa: !ja && x.name !== x.nameEn ? x.name : undefined, // 2026-11-14 ②-3
         address: x.address,
+        // ②-4 営業時間など（今はどの店にも無い。ある店だけ渡す）
+        facts: x.hours || x.closed || x.reserve || x.cashOnly ? { hours: x.hours, closed: x.closed, reserve: x.reserve, cashOnly: x.cashOnly } : undefined,
         area: ja ? x.area : x.areaEn,
         category: x.category,
         catLabel: ind ? (ja ? ind.ja : ind.en) : (ja ? CATEGORY_LABEL[x.category].ja : CATEGORY_LABEL[x.category].en),
