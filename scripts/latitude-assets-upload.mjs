@@ -36,6 +36,11 @@ async function walk(dir) {
   return out;
 }
 
+// 2026-11-14 店から言われて外した写真（docs/latitude-photo-takedowns.md の表）は、手元に残っていても上げ直さない
+const TAKEN = new Set((await readFile(path.join(process.cwd(), 'docs', 'latitude-photo-takedowns.md'), 'utf8').catch(() => ''))
+  .split('\n').filter((l) => /^\|\s*\d{4}-\d{2}-\d{2}\s*\|/.test(l)).map((l) => l.split('|').map((c) => c.trim()))
+  .flatMap(([, , city, , files]) => files.split(/\s+/).map((f) => `latitude/places/${city}/shops/${f}`)));
+
 const starts = only.length ? only.map((o) => path.join(ROOT, o)) : [ROOT];
 const files = [];
 for (const s of starts) files.push(...((await stat(s)).isDirectory() ? await walk(s) : [s]));
@@ -47,6 +52,7 @@ async function one(f) {
   const type = TYPES[ext];
   if (!type) { skipped.push(path.relative(ROOT, f)); return; }
   const key = 'latitude/' + path.relative(ROOT, f).split(path.sep).join('/');
+  if (TAKEN.has(key)) { skipped.push(`${path.relative(ROOT, f)}（外した写真）`); return; }
   const body = await readFile(f);
   const md5 = createHash('md5').update(body).digest('hex');
   try {
