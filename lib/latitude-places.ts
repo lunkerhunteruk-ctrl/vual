@@ -22,6 +22,7 @@ import holyIsland from './latitude-places/holy-island.json';
 import kanazawaSights from './latitude-sights/kanazawa.json';
 import moriokaSights from './latitude-sights/morioka.json';
 import { KANAZAWA_INN, type RoomCam } from './latitude-rooms';
+import type { OpenHours } from './latitude-open';
 // 2026-11-11 号のない町の「街の案内」（萩・高山・函館…）。scripts/latitude-import-city.py が書く（文は data/latitude-import/<町>.json）
 import { IMPORTED_CITIES } from './latitude-places-imported';
 
@@ -64,6 +65,10 @@ export type CityPlace = {
   closed?: { en: string; ja: string }; // 例「水曜」
   reserve?: 'required' | 'recommended' | 'no'; // 予約
   cashOnly?: boolean;
+  // 2026-11-15 決まった時間割（オーナー決定 2026-11-15）。カードに「時間割では営業時間内か」を出す（lib/latitude-open.ts。「営業中」とは言い切らない）。
+  // hours / closed の字が無い時は、この week から字を作って出す。checked（確かめた日）と source（公式のページ）は必ず。
+  // 書き方は docs/latitude-open-hours-format.md、確かめは scripts/latitude-open-check.mjs。分からない店は書かない（推測しない）
+  open?: OpenHours;
 };
 
 // その街ならではの産業（例 金沢の金箔）。key は URL になる（種類の key と 'area' は使わない）

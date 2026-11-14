@@ -8,6 +8,7 @@ import { SaveButton } from '@/components/latitude/SaveButton';
 import HereDistance from '@/components/latitude/HereDistance';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
+import { townZone } from '@/lib/latitude-open';
 import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
 import { CARD_W } from '@/lib/latitude-card';
 import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
@@ -93,7 +94,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
             </div>
             <JaName name={x.name} nameEn={x.nameEn} ja={ja} />
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
-            <FactsLine facts={x} ja={ja} className="mt-2 max-w-2xl" />
+            <FactsLine facts={x} ja={ja} className="mt-2 max-w-2xl" zone={townZone(c.countryCode)} />
             <AddressLine address={x.address} ja={ja} className="mt-2 max-w-2xl" />
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{who}</span>
@@ -244,7 +245,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
             </div>
             <JaName name={x.name} nameEn={x.nameEn} ja={ja} />
             <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
-            <FactsLine facts={x} ja={ja} />
+            <FactsLine facts={x} ja={ja} zone={townZone(c.countryCode)} />{/* 2026-11-15 時間割があれば、下に「営業時間内か」の1行 */}
             <AddressLine address={x.address} ja={ja} />
             {x.coords && <HereDistance city={c.slug} lat={x.coords[0]} lon={x.coords[1]} ja={ja} />}{/* ③-1 現在地を出した時だけ */}
             <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>

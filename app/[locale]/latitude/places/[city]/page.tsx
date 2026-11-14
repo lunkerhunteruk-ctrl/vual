@@ -30,6 +30,7 @@ import { PLACES } from '@/lib/latitude-map';
 import { breadcrumbJsonLd, countryOfCity, getPlaceCountry, placeCountries } from '@/lib/latitude-places-index';
 import CountryPlacesPage, { countryMetadata } from '@/components/latitude/CountryPlacesPage';
 import { JsonLd } from '@/lib/latitude-publication';
+import { townZone } from '@/lib/latitude-open';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
 // のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。
@@ -93,8 +94,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         name: ja ? x.name : x.nameEn,
         nameJa: !ja && x.name !== x.nameEn ? x.name : undefined, // 2026-11-14 ②-3
         address: x.address,
-        // ②-4 営業時間など（今はどの店にも無い。ある店だけ渡す）
-        facts: x.hours || x.closed || x.reserve || x.cashOnly ? { hours: x.hours, closed: x.closed, reserve: x.reserve, cashOnly: x.cashOnly } : undefined,
+        // ②-4 営業時間など（ある店だけ渡す）。2026-11-15 決まった時間割（open）も
+        facts: x.hours || x.closed || x.reserve || x.cashOnly || x.open ? { hours: x.hours, closed: x.closed, reserve: x.reserve, cashOnly: x.cashOnly, open: x.open } : undefined,
         area: ja ? x.area : x.areaEn,
         category: x.category,
         catLabel: ind ? (ja ? ind.ja : ind.en) : (ja ? CATEGORY_LABEL[x.category].ja : CATEGORY_LABEL[x.category].en),
@@ -276,7 +277,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                 : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
             </SectionLabel>
             <CityShopMap city={c.slug} src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
-              pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
+              pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} zone={townZone(c.countryCode)} />
           </div>
         </section>
       )}

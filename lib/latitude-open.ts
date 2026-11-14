@@ -291,7 +291,7 @@ function daysLabel(days: DayKey[], ja: boolean, first: boolean): string {
   if (key === 'mon,tue,wed,thu,fri') return ja ? '平日' : first ? 'Weekdays' : 'weekdays';
   if (key === 'sat,sun') return ja ? '土日' : first ? 'Weekends' : 'weekends';
   if (days.length === 1) return ja ? DAY_JA[days[0]] : DAY_EN[days[0]];
-  if (days.length === 2) return ja ? DAY_JA[days[0]] + DAY_JA[days[1]] : `${DAY_EN[days[0]]}, ${DAY_EN[days[1]]}`;
+  if (days.length === 2) return ja ? DAY_JA[days[0]] + DAY_JA[days[1]] : `${DAY_EN[days[0]]}–${DAY_EN[days[1]]}`; // 金土 / Fri–Sat（英語は「,」だと日のまとまりの区切りと紛れる）
   return ja ? `${DAY_JA[days[0]]}〜${DAY_JA[days[days.length - 1]]}` : `${DAY_EN[days[0]]}–${DAY_EN[days[days.length - 1]]}`;
 }
 export function weekText(o: Pick<OpenHours, 'week'>, ja: boolean): { hours: string; closed?: string } | null {

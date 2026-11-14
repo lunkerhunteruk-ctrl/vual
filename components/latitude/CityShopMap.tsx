@@ -6,6 +6,8 @@ import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 import { AddressLine, FactsLine, JaName, type ShopFactsData } from '@/components/latitude/ShopFacts';
+import { OpenNowInline } from '@/components/latitude/OpenNow';
+import type { TownZone } from '@/lib/latitude-open';
 import { SaveButton, SavedLink } from '@/components/latitude/SaveButton';
 import HereDistance, { useHere } from '@/components/latitude/HereDistance';
 import { askHere, forgetHere, hereLabel, metersBetween } from '@/lib/latitude-here';
@@ -128,7 +130,7 @@ const inRect = (x: number, y: number, a: Rect) => x >= a.x0 && x <= a.x1 && y >=
 // 名前の字の幅の目安（13px の明朝。全角は約1字、半角は約0.55字）
 const textW = (s: string, px = 13) => [...s].reduce((n, ch) => n + (ch.charCodeAt(0) > 0x2e80 ? px : px * 0.55), 0);
 
-export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [], city }: {
+export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc, rinStops = [], city, zone }: {
   city?: string; // 街の slug（③-2 店の保存に使う）
   src: string; // 土台の JSON の URL
   pins: ShopPin[];
@@ -138,6 +140,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   cats: { key: string; label: string }[]; // 凡例（並べる順）
   pairsSrc?: string; // あれば「自分でルートを組む」を出す（組み合わせの歩く道の JSON）
   rinStops?: RinStop[];
+  zone?: TownZone | null; // 2026-11-15 その町のタイムゾーン（時間割のある店の「営業時間内か」に使う）
 }) {
   const [mode, setMode] = useState<'look' | 'build'>('look');
   const build = mode === 'build';
@@ -965,7 +968,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             visibility: open || animating ? 'visible' : 'hidden',
           }}
         >
-          {shop && <ShopCard key={shop.id} p={shop} ja={ja} who={who} person={person} city={city} onClose={() => goTo(null)} />}
+          {shop && <ShopCard key={shop.id} p={shop} ja={ja} who={who} person={person} city={city} zone={zone} onClose={() => goTo(null)} />}
         </aside>
       </div>
 
@@ -980,6 +983,10 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                   <span className="min-w-0">
                     <span className="text-[16px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>{p.name}</span>
                     <span className="ml-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{p.catLabel}</span>
+                    {/* 2026-11-15 時間割のある店だけ「営業時間内か」（この一覧は位置が取れてから出るので、形のずれは無い） */}
+                    {p.facts?.open && (
+                      <OpenNowInline open={p.facts.open} zone={zone ?? null} ja={ja} className="mt-0.5 flex min-w-0 items-center gap-2 text-[13px] leading-5" />
+                    )}
                   </span>
                   <span className="shrink-0 text-[13px] tabular-nums" style={{ color: INK }}>{hereLabel(d, ja)}</span>
                 </button>
@@ -1029,7 +1036,7 @@ export function PaperLayers({ base, mpp }: { base: BaseMap; mpp: number }) {
   );
 }
 
-function ShopCard({ p, ja, who, person, city, onClose }: { p: ShopPin; ja: boolean; who: string; person: string; city?: string; onClose: () => void }) {
+function ShopCard({ p, ja, who, person, city, zone, onClose }: { p: ShopPin; ja: boolean; who: string; person: string; city?: string; zone?: TownZone | null; onClose: () => void }) {
   const color = CATEGORY_COLOR[p.category] ?? INK;
   const sight = kindOf(p) !== 'shop';
   return (
@@ -1053,7 +1060,7 @@ function ShopCard({ p, ja, who, person, city, onClose }: { p: ShopPin; ja: boole
         </figure>
       )}
       <p className="mt-3 text-[16px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
-      <FactsLine facts={p.facts} ja={ja} />
+      <FactsLine facts={p.facts} ja={ja} zone={zone ?? null} />
       <AddressLine address={p.address} ja={ja} />
       {city && <HereDistance city={city} lat={p.lat} lon={p.lon} ja={ja} />}
       {/* 見る所は凛のおすすめの店ではないので、凛の一言は付けない。休館の予定などを出す */}
