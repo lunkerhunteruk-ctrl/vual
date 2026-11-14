@@ -132,6 +132,15 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
           </figcaption>
         </figure>
       )}
+      {!s.banner && s.bannerOg && (
+        <figure className="mx-auto max-w-6xl px-4 md:px-8">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={s.bannerOg} alt={ja ? s.name : s.nameEn} referrerPolicy="no-referrer" className="block aspect-[16/9] w-full object-cover md:aspect-[21/9]" />
+          <figcaption className="mt-2 text-[10px] leading-relaxed" style={{ color: MUTE }}>
+            <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>{ja ? '写真：公式サイトより' : 'Photo: official website'}</a>
+          </figcaption>
+        </figure>
+      )}
 
       {/* いつ行くか：12か月のおすすめ度 */}
       <section className="mx-auto max-w-6xl px-4 pb-14 pt-12 md:px-8 md:pb-20">

@@ -84,7 +84,10 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
               <li key={s.slug} className="grid grid-cols-[minmax(0,1fr)] gap-4 border-t py-6 md:grid-cols-[180px_minmax(0,1fr)] md:gap-8" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                 {s.banner ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={latAsset(`hidden/${s.slug}/${s.banner.file}`)} alt="" loading="lazy" className="block aspect-[3/2] w-full object-cover md:w-[180px]" style={{ objectPosition: `50% ${s.banner.y ?? 50}%` }} />
+                  <img src={latAsset(`hidden/${s.slug}/thumb.webp`)} alt="" loading="lazy" className="block aspect-[3/2] w-full object-cover md:w-[180px]" style={{ objectPosition: `50% ${s.banner.y ?? 50}%` }} />
+                ) : s.bannerOg ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={s.bannerOg} alt="" loading="lazy" referrerPolicy="no-referrer" className="block aspect-[3/2] w-full object-cover md:w-[180px]" />
                 ) : <span className="hidden md:block" />}
                 <div className="min-w-0">
                   <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{i + 1} · {ja ? s.prefectureJa : s.prefecture}</p>

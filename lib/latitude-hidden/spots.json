@@ -125,6 +125,13 @@
       "min": 65,
       "note": "国道241号・道道経由で約65分（約50km）。牧場入口ゲートから頂上まで牧草地を登ります。",
       "noteEn": "About 65 min drive north via Route 241 and local roads (approx. 50 km) up through the pasture."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1f25b690a5c1.webp",
+     "photoCredit": {
+      "author": "663highland",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "page": "https://commons.wikimedia.org/wiki/File:131012_Obihiro_Station_Hokkaido_Japan01s3.jpg"
      }
     },
     {
@@ -144,7 +151,8 @@
       "min": 20,
       "note": "牧場道路を下り、上士幌市街の道の駅かみしほろまで車で約20分。",
       "noteEn": "Drive about 20 min down the ranch road to Michi-no-eki Kamishihoro."
-     }
+     },
+     "photo": "https://www.kamishihoro.jp/files/place/n/00000009_66582e6b928c6.jpg"
     },
     {
      "role": "meal",
@@ -163,6 +171,13 @@
       "min": 25,
       "note": "国道273号を北上し、大雪山国立公園内のぬかびら源泉郷まで車で約25分。",
       "noteEn": "Drive about 25 min north on Route 273 into Daisetsuzan National Park to Nukabira Onsenkyo."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/38fcb0ff41db.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Michinoeki-Kamishihoro.jpg"
      }
     },
     {
@@ -194,7 +209,14 @@
      ],
      "time": "16:00",
      "what": "レンタカー返却後、JR特急おおぞら・とかちで札幌方面や釧路方面へ帰路につきます。",
-     "whatEn": "After returning the rental car, board the JR Limited Express Ozora or Tokachi toward Sapporo or Kushiro."
+     "whatEn": "After returning the rental car, board the JR Limited Express Ozora or Tokachi toward Sapporo or Kushiro.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1f25b690a5c1.webp",
+     "photoCredit": {
+      "author": "663highland",
+      "license": "CC BY 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+      "page": "https://commons.wikimedia.org/wiki/File:131012_Obihiro_Station_Hokkaido_Japan01s3.jpg"
+     }
     }
    ]
   },
@@ -426,6 +448,13 @@
       "min": 47,
       "note": "JR五能線で陸奥鶴田駅まで約37分（6:47発→7:24着）、駅前からタクシー約10分（約2,000〜2,300円、帰りの予約推奨）。",
       "noteEn": "37 min by JR Gono Line to Mutsu-Tsuruta (06:47–07:24), then a 10 min taxi ride (~2,000–2,300 JPY; pre-book return)."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/bfb6d938c063.webp",
+     "photoCredit": {
+      "author": "Angaurits",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hirosaki_station_20110809.jpg"
      }
     },
     {
@@ -445,6 +474,13 @@
       "min": 5,
       "note": "富士見湖パーク内の遊歩道を徒歩約5分。",
       "noteEn": "5 min walk through Fujimi Lake Park."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/9a24a6ef81e5.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Tsuruno-maihashi.jpg"
      }
     },
     {
@@ -483,6 +519,13 @@
       "min": 6,
       "note": "JR陸奥鶴田駅までタクシーで約6分。",
       "noteEn": "About 6 min by taxi to JR Mutsu-Tsuruta Station."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/9ce7b3ed204d.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Roadside_Station_Tsuruta_20190908c.jpg"
      }
     },
     {
@@ -495,7 +538,14 @@
      ],
      "time": "13:15",
      "what": "JR五能線で弘前・川部方面へ戻ります（本数が限られるため事前に列車時刻をご確認ください）。",
-     "whatEn": "Board the JR Gono Line back toward Hirosaki and Kawabe (check train times in advance as service is infrequent)."
+     "whatEn": "Board the JR Gono Line back toward Hirosaki and Kawabe (check train times in advance as service is infrequent).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e6edcaf1fb9b.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Mutsu-Tsuruda_Station_20190908b.jpg"
+     }
     }
    ]
   },
@@ -728,6 +778,13 @@
       "min": 25,
       "note": "JR八戸線で陸奥湊駅まで約13分、陸奥湊駅から徒歩約10分で館鼻岸壁に到着。",
       "noteEn": "13 min by JR Hachinohe Line to Mutsu-Minato Station, then a 10 min walk to Tatehana Wharf."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/921a2a0341dc.webp",
+     "photoCredit": {
+      "author": "Angaurits",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hachinohe_station_20111029.jpg"
      }
     },
     {
@@ -747,7 +804,8 @@
       "min": 25,
       "note": "館鼻漁港前8:03発の日曜朝市循環バス「いさば号」で中心街・十三日町（8:24着）へ、徒歩2分。",
       "noteEn": "Take the 08:03 Isaba-go Sunday loop bus from Tatehana Gyoko-mae to Jusanichimachi (arr. 08:24), then walk 2 min."
-     }
+     },
+     "photo": "https://aomori-tourism.com/lsc/upfile/spot/0000/7277/7277_1_l.jpg"
     },
     {
      "role": "stop",
@@ -785,7 +843,8 @@
       "min": 12,
       "note": "厨スタジアム東口13:00発または13:55発の「八食150円バス」でJR八戸駅へ（約9分）。",
       "noteEn": "9 min on the Hasshoku 150-yen Bus (13:00 or 13:55 dep.) from Kuriya Stadium East Exit to JR Hachinohe Station."
-     }
+     },
+     "photo": "https://www.849net.com/shared/img/ogp-img.jpg"
     },
     {
      "role": "leave",
@@ -797,7 +856,14 @@
      ],
      "time": "14:15",
      "what": "八戸駅でお土産を購入し、東北新幹線はやぶさで帰路につきます。",
-     "whatEn": "Pick up local souvenirs at Hachinohe Station and board the Tohoku Shinkansen Hayabusa."
+     "whatEn": "Pick up local souvenirs at Hachinohe Station and board the Tohoku Shinkansen Hayabusa.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/921a2a0341dc.webp",
+     "photoCredit": {
+      "author": "Angaurits",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hachinohe_station_20111029.jpg"
+     }
     }
    ]
   },
@@ -1030,7 +1096,8 @@
       "min": 10,
       "note": "北浦漁港方面へ徒歩約10分。",
       "noteEn": "Walk ~10 min toward Kitaura Fishing Port."
-     }
+     },
+     "photo": "http://oganavi.com/ajisai/img/og_image.png?ver=20200310"
     },
     {
      "role": "meal",
@@ -1068,7 +1135,8 @@
       "min": 10,
       "note": "なまはげシャトル（要予約）またはタクシーでなまはげ館へ約10分（あじさい期間中はなまはげ館駐車場発着シャトルも運行）。",
       "noteEn": "Take the pre-booked Namahage Shuttle or a taxi ~10 min to Namahage Museum."
-     }
+     },
+     "photo": "https://yuuzankaku.co.jp/img/og_image.jpg"
     },
     {
      "role": "stop",
@@ -1087,7 +1155,8 @@
       "min": 25,
       "note": "なまはげシャトル（要予約）またはタクシーでJR男鹿駅へ約25分。",
       "noteEn": "Return to JR Oga Station via the pre-booked Namahage Shuttle or taxi (~25 min)."
-     }
+     },
+     "photo": "http://namahage.co.jp/namahagekan/img/og_image.jpg"
     },
     {
      "role": "leave",
@@ -1576,6 +1645,13 @@
       "min": 15,
       "note": "角館駅からタクシーで約15分（紅葉祭期間中は予約制「抱返り渓谷 紅葉バス」や「よぶのる角館」も運行）。",
       "noteEn": "Take a taxi ~15 min from Kakunodate Station (pre-booked autumn foliage buses and Yobunoru Kakunodate also run during the festival)."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/2e4e308d01ce.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kakunodate_Station_building_in_Semboku_City,_Akita_Pref.jpg"
      }
     },
     {
@@ -1595,6 +1671,13 @@
       "min": 15,
       "note": "タクシー（または紅葉バス）で角館武家屋敷通り方面へ約15分。",
       "noteEn": "Take a taxi (or festival bus) ~15 min to the Kakunodate Samurai District."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/dd847c05cd0c.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Dakigaeri_Gorge_and_Kamino-iwahashi_20201101.jpg"
      }
     },
     {
@@ -1614,7 +1697,8 @@
       "min": 10,
       "note": "角館の街並みを歩きながら安藤醸造（本店）へ徒歩約10分。",
       "noteEn": "Stroll ~10 min through Kakunodate's historic streets to Ando Brewery (Main Store)."
-     }
+     },
+     "photo": "https://kakunodate-sakuranosato.com/system_panel/uploads/images/og_img.png"
     },
     {
      "role": "stop",
@@ -1664,7 +1748,14 @@
      ],
      "time": "15:45",
      "what": "JR角館駅から秋田新幹線「こまち」等に乗車し帰路へ。",
-     "whatEn": "Board the Akita Shinkansen Komachi or local JR train from JR Kakunodate Station."
+     "whatEn": "Board the Akita Shinkansen Komachi or local JR train from JR Kakunodate Station.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/2e4e308d01ce.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kakunodate_Station_building_in_Semboku_City,_Akita_Pref.jpg"
+     }
     }
    ]
   },
@@ -1910,6 +2001,13 @@
       "min": 15,
       "note": "象潟駅からタクシー（または象潟合同交通の予約制乗合タクシー）で約15分、元滝無料駐車場下車後、平坦な森の遊歩道（約750m）を徒歩約10分。",
       "noteEn": "Take a taxi (or pre-booked shared taxi) ~15 min to Mototaki free parking, then walk ~10 min along a flat 750m forest path."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/dc7252ccd004.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kisakata_Station_20180526.jpg"
      }
     },
     {
@@ -1929,7 +2027,8 @@
       "min": 15,
       "note": "元滝駐車場からタクシー（または予約制乗合タクシー）で象潟沿岸の道の駅エリアへ約15分。",
       "noteEn": "Take a taxi (or pre-booked shared taxi) ~15 min back to the Kisakata waterfront area."
-     }
+     },
+     "photo": "https://nikaho-kanko.jp/wp-content/uploads/2025/02/87ed2f26cc3d322c3f6094e8ea15fc02-1024x726.jpg"
     },
     {
      "role": "meal",
@@ -1979,7 +2078,14 @@
      ],
      "time": "15:00",
      "what": "JR羽越本線（秋田方面・酒田方面）に乗車し帰路へ。",
-     "whatEn": "Board the JR Uetsu Main Line toward Akita or Sakata."
+     "whatEn": "Board the JR Uetsu Main Line toward Akita or Sakata.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/dc7252ccd004.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kisakata_Station_20180526.jpg"
+     }
     }
    ]
   },
@@ -2487,7 +2593,8 @@
       "min": 25,
       "note": "タクシーで赤湯温泉街へ約25分",
       "noteEn": "Taxi to Akayu Onsen town approx. 25 min"
-     }
+     },
+     "photo": "https://yamagatakanko.com/common/images/ogImg.png"
     },
     {
      "role": "onsen",
@@ -2506,7 +2613,8 @@
       "min": 7,
       "note": "タクシーでJR赤湯駅へ約7分",
       "noteEn": "Taxi to JR Akayu Station approx. 7 min"
-     }
+     },
+     "photo": "https://www.akayu-onsen.com/application/files/3216/7591/6103/home_akayu_p001.png"
     },
     {
      "role": "leave",
@@ -2521,6 +2629,14 @@
      "whatEn": "Board the Yamagata Shinkansen Tsubasa toward Tokyo or Yamagata."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "飯豊町観光協会",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B7%9D%E6%B9%96%E6%B0%B4%E6%B2%A1%E6%9E%97.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -2733,6 +2849,13 @@
       "min": 35,
       "note": "国道121号・県道経由で三ノ倉スキー場方面へ約35分",
       "noteEn": "About 35 min drive north via Route 121 toward Sannokura Ski Resort"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/7217e58017aa.webp",
+     "photoCredit": {
+      "author": "くろふね",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%96%9C%E5%A4%9A%E6%96%B9%E9%A7%85_-_panoramio_(9).jpg"
      }
     },
     {
@@ -2771,7 +2894,8 @@
       "min": 15,
       "note": "喜多方市街地方面へ車で約15分",
       "noteEn": "About 15 min drive south toward central Kitakata"
-     }
+     },
+     "photo": "https://www.spa-yamagataya.com/img/img_all/ogp.jpg"
     },
     {
      "role": "meal",
@@ -2790,7 +2914,8 @@
       "min": 5,
       "note": "喜多方市内の酒蔵エリアへ車で約5分",
       "noteEn": "About 5 min drive to the sake brewery district"
-     }
+     },
+     "photo": "http://ippei-kitakata.com/wp-content/uploads/2023/04/ZZ9_4735-1024x683.jpg"
     },
     {
      "role": "cafe",
@@ -2821,7 +2946,14 @@
      ],
      "time": "15:45",
      "what": "レンタカーを返却し、JR磐越西線（会津若松・郡山方面）で帰路へ。",
-     "whatEn": "Return the rental car and depart on the JR Ban'etsu West Line toward Aizuwakamatsu and Koriyama."
+     "whatEn": "Return the rental car and depart on the JR Ban'etsu West Line toward Aizuwakamatsu and Koriyama.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/7217e58017aa.webp",
+     "photoCredit": {
+      "author": "くろふね",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%96%9C%E5%A4%9A%E6%96%B9%E9%A7%85_-_panoramio_(9).jpg"
+     }
     }
    ]
   },
@@ -3037,6 +3169,13 @@
       "min": 10,
       "note": "養鱒公園駅からタクシーで約10分",
       "noteEn": "About 10 min by taxi from Yoson-Koen Station"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/fe7ba46b29b5.webp",
+     "photoCredit": {
+      "author": "Ff2249",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Y%C5%8Dsonk%C5%8Den_Station.png"
      }
     },
     {
@@ -3056,7 +3195,8 @@
       "min": 15,
       "note": "タクシーで塔のへつりへ約15分",
       "noteEn": "About 15 min by taxi to To-no-Hetsuri"
-     }
+     },
+     "photo": "https://shimogo.jp/wp-content/themes/shimogo_jp/img/ogp.png"
     },
     {
      "role": "stop",
@@ -3075,7 +3215,8 @@
       "min": 15,
       "note": "タクシーで大内宿へ約15分",
       "noteEn": "About 15 min by taxi to Ouchijuku"
-     }
+     },
+     "photo": "https://shimogo.jp/wp-content/themes/shimogo_jp/img/ogp.png"
     },
     {
      "role": "meal",
@@ -3094,7 +3235,8 @@
       "min": 15,
       "note": "タクシーで湯野上温泉のみやもと屋へ約15分",
       "noteEn": "About 15 min by taxi down to Miyamotoya in Yunokami Onsen"
-     }
+     },
+     "photo": "https://shimogo.jp/wp-content/themes/shimogo_jp/img/ogp.png"
     },
     {
      "role": "onsen",
@@ -3113,7 +3255,8 @@
       "min": 15,
       "note": "湯野上温泉駅へ徒歩約15分（またはタクシー約3分）",
       "noteEn": "About 15 min walk (or 3 min taxi) to Yunokami-Onsen Station"
-     }
+     },
+     "photo": "https://minsyuku-miyamotoya.co.jp/assets/images/img/top/img_04-2.jpg"
     },
     {
      "role": "leave",
@@ -3125,7 +3268,14 @@
      ],
      "time": "16:00",
      "what": "全国でも珍しい茅葺き屋根の駅舎と無料の足湯を楽しみ、会津鉄道（16:31発西若松・会津若松方面等）で帰路へ。",
-     "whatEn": "Enjoy the rare thatched-roof station and free footbath before boarding the Aizu Railway (e.g., 16:31 toward Aizuwakamatsu)."
+     "whatEn": "Enjoy the rare thatched-roof station and free footbath before boarding the Aizu Railway (e.g., 16:31 toward Aizuwakamatsu).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/fb883c6b59f2.webp",
+     "photoCredit": {
+      "author": "Ff2249",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Yunokamionsen_Station.png"
+     }
     }
    ]
   },
@@ -3393,7 +3543,8 @@
       "min": 20,
       "note": "松之山エリアの美人林へ車で約20分",
       "noteEn": "About 20 min drive to Bijinbayashi in Matsunoyama"
-     }
+     },
+     "photo": "https://www.tokamachishikankou.jp/wp/wp-content/uploads/2024/05/img_ogp.jpg"
     },
     {
      "role": "stop",
@@ -3412,7 +3563,8 @@
       "min": 15,
       "note": "まつだい「農舞台」へ車で約15分",
       "noteEn": "About 15 min drive to Matsudai Nohbutai"
-     }
+     },
+     "photo": "https://www.tokamachishikankou.jp/wp/wp-content/uploads/2024/05/img_ogp.jpg"
     },
     {
      "role": "meal",
@@ -3431,7 +3583,8 @@
       "min": 15,
       "note": "松之山温泉の日帰り施設へ車で約15分",
       "noteEn": "About 15 min drive to Matsunoyama Onsen"
-     }
+     },
+     "photo": "https://www.tokamachishikankou.jp/wp/wp-content/uploads/2024/05/img_ogp.jpg"
     },
     {
      "role": "onsen",
@@ -3450,7 +3603,8 @@
       "min": 45,
       "note": "越後湯沢駅へ車で約45分",
       "noteEn": "About 45 min drive back to JR Echigo-Yuzawa Station"
-     }
+     },
+     "photo": "https://www.tokamachishikankou.jp/wp/wp-content/uploads/2024/05/img_ogp.jpg"
     },
     {
      "role": "leave",
@@ -3711,7 +3865,8 @@
       "min": 10,
       "note": "タクシーで見玉不動尊へ約10分",
       "noteEn": "About 10 min by taxi to Midama Fudoson"
-     }
+     },
+     "photo": "https://tsunan.info/wp-content/uploads/2019/01/KE2A1645.jpg"
     },
     {
      "role": "stop",
@@ -3749,7 +3904,8 @@
       "min": 10,
       "note": "タクシーで越後田中温泉 しなの荘へ約10分",
       "noteEn": "About 10 min by taxi to Echigo-Tanaka Onsen Shinanosou"
-     }
+     },
+     "photo": "https://www.tokamachishikankou.jp/wp/wp-content/uploads/2024/05/img_ogp.jpg"
     },
     {
      "role": "onsen",
@@ -3768,7 +3924,8 @@
       "min": 6,
       "note": "タクシーでJR津南駅へ約6分",
       "noteEn": "About 6 min by taxi to JR Tsunan Station"
-     }
+     },
+     "photo": "https://tsunan-kanko.co.jp/img/onsen/art2_pic1.jpg"
     },
     {
      "role": "leave",
@@ -4094,6 +4251,14 @@
      "whatEn": "Depart from JR Echigo-Tanaka Station via the JR Iiyama Line."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Yuniko",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:%E6%B4%A5%E5%8D%97%E3%81%AE%E3%81%B2%E3%81%BE%E3%82%8F%E3%82%8A%E7%95%91.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -4694,6 +4859,13 @@
       "min": 45,
       "note": "関越交通バス「吹割の滝」下車 約45分",
       "noteEn": "Kanetsu Kotsu Bus to Fukiware no Taki, ~45 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b767a2b7a266.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Joetsu_Line_Numata_Station_building.jpg"
      }
     },
     {
@@ -4713,6 +4885,13 @@
       "min": 5,
       "note": "遊歩道入口から徒歩 約5分",
       "noteEn": "Walk from the trailhead, ~5 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/3d0ce0e44e33.webp",
+     "photoCredit": {
+      "author": "Σ64",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fukiware_Falls_05.jpg"
      }
     },
     {
@@ -4732,7 +4911,8 @@
       "min": 10,
       "note": "関越交通バス「老神温泉」方面 約10分",
       "noteEn": "Kanetsu Kotsu Bus toward Oigami Onsen, ~10 min"
-     }
+     },
+     "photo": "https://image.jimcdn.com/app/cms/image/transf/dimension=4096x4096:format=jpg/path/sd07dd561ca35db4f/image/ie03d7a25cd987c3e/version/1776520462/%E5%90%B9%E5%89%B2%E3%81%AE%E6%BB%9D%E6%BB%9D%E9%96%8B%E3%81%8D.jpg"
     },
     {
      "role": "onsen",
@@ -4782,7 +4962,14 @@
      ],
      "time": "16:30",
      "what": "JR沼田駅から上越線に乗車し、高崎・東京方面へ帰路につく（夕方の最終バス時刻に注意）。",
-     "whatEn": "Board the JR Joetsu Line from Numata Station toward Takasaki and Tokyo."
+     "whatEn": "Board the JR Joetsu Line from Numata Station toward Takasaki and Tokyo.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b767a2b7a266.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Joetsu_Line_Numata_Station_building.jpg"
+     }
     }
    ]
   },
@@ -5062,7 +5249,8 @@
       "min": 5,
       "note": "四万温泉バス停から関越交通バスまたはタクシーで四万やまぐち館へ約5分（徒歩約20分）",
       "noteEn": "Take the Kanetsu Kotsu bus or a taxi ~5 min south to Shima Yamaguchikan (or walk ~20 min)."
-     }
+     },
+     "photo": "https://www.sekizenkan.co.jp/files/images/ogp.jpg"
     },
     {
      "role": "onsen",
@@ -5081,7 +5269,8 @@
       "min": 40,
       "note": "最寄りの「山口」バス停から関越交通バスでJR中之条駅へ（約40分）",
       "noteEn": "Board the Kanetsu Kotsu bus from the nearby Yamaguchi bus stop to JR Nakanojo Station (~40 min)."
-     }
+     },
+     "photo": "https://www.yamaguchikan.co.jp/yamaguchikan/wp-content/uploads/home_mainvisual_01.jpg"
     },
     {
      "role": "leave",
@@ -5331,7 +5520,8 @@
       "min": 15,
       "note": "大谷エリアのベルテラシェ大谷へタクシーで約15分（約4.9km）",
       "noteEn": "Take a taxi ~15 min (4.9 km) to Bell Terrache Oya."
-     }
+     },
+     "photo": "https://static.wixstatic.com/media/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png/v1/fit/w_2500,h_1330,al_c/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png"
     },
     {
      "role": "meal",
@@ -5350,7 +5540,8 @@
       "min": 12,
       "note": "大谷資料館へ徒歩約12分",
       "noteEn": "Walk ~12 min to Oya History Museum."
-     }
+     },
+     "photo": "https://www.bellterrache-oya.jp/common/ogp.png"
     },
     {
      "role": "stop",
@@ -5385,6 +5576,7 @@
     }
    ]
   },
+  "bannerOg": "https://static.wixstatic.com/media/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png/v1/fit/w_1200,h_640,al_c/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png",
   "baseMap": true,
   "walk": {
    "distance": 19873,
@@ -5616,7 +5808,8 @@
       "min": 10,
       "note": "小牧から加越能バスまたはタクシーで庄川水記念公園方面へ約10分",
       "noteEn": "Kaetsuno bus or taxi from Komaki to Shogawa Suikinen Koen (~10 min)"
-     }
+     },
+     "photo": "https://shogawa-yuran.co.jp/wp/wp-content/themes/shogawa-yuran/images/ogp.png"
     },
     {
      "role": "meal",
@@ -5994,7 +6187,8 @@
       "min": 12,
       "note": "JR桐生駅へ徒歩約12分",
       "noteEn": "Walk ~12 min back to JR Kiryu Station."
-     }
+     },
+     "photo": "https://kiryuorimonokinenkan.com/wp-content/themes/kiryu/assets/images/ogimage.png"
     },
     {
      "role": "leave",
@@ -6279,7 +6473,8 @@
       "min": 5,
       "note": "表参道・駐車場方面のおもてやへ徒歩約5分",
       "noteEn": "Walk ~5 min to Omoteya near the shrine approach."
-     }
+     },
+     "photo": "https://tsurugi-wataya.co.jp/wp-content/uploads/2024/06/IMG_6685.jpg"
     },
     {
      "role": "cafe",
@@ -6598,6 +6793,13 @@
       "min": 25,
       "note": "徒歩 約25分（またはかさま観光周遊バス 約10分）",
       "noteEn": "Walk ~25 min (or Kasama Tourist Loop Bus ~10 min)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4d663f9c0a7c.webp",
+     "photoCredit": {
+      "author": "tak1701d",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Kasama_Station_201805a.jpg"
      }
     },
     {
@@ -6686,7 +6888,14 @@
      ],
      "time": "15:30",
      "what": "JR水戸線に乗車し、友部駅乗り換えで東京方面へ帰る。",
-     "whatEn": "Take the JR Mito Line from Kasama Station, transferring at Tomobe for Tokyo."
+     "whatEn": "Take the JR Mito Line from Kasama Station, transferring at Tomobe for Tokyo.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4d663f9c0a7c.webp",
+     "photoCredit": {
+      "author": "tak1701d",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Kasama_Station_201805a.jpg"
+     }
     }
    ]
   },
@@ -6938,7 +7147,8 @@
       "min": 12,
       "note": "海岸沿いを徒歩 約12分",
       "noteEn": "Walk along the coast, ~12 min"
-     }
+     },
+     "photo": "https://image.jimcdn.com/app/cms/image/transf/none/path/scb324581ba7278fa/backgroundarea/i7e157e95fbb43e94/version/1633568005/image.jpg"
     },
     {
      "role": "meal",
@@ -7222,7 +7432,8 @@
       "min": 12,
       "note": "コミュニティバスまたはタクシーで大師山清大寺へ 約12分",
       "noteEn": "Community bus or taxi to Daishizan Seidaiji, ~12 min"
-     }
+     },
+     "photo": "https://heisenji.jp/hakusan-shrine/wp-content/uploads/2023/08/haiden-2.jpg"
     },
     {
      "role": "stop",
@@ -7509,6 +7720,13 @@
       "min": 34,
       "note": "アルピコ交通 奥蓼科渋の湯線（茅野駅09:40発→明治温泉入口10:14着）",
       "noteEn": "Alpico Bus Oku-Tateshina Line (dep. Chino 09:40, arr. Meiji Onsen Iriguchi 10:14)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/5cde6e1e0a1f.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Chino_Station_West_Exit.jpg"
      }
     },
     {
@@ -7547,7 +7765,8 @@
       "min": 15,
       "note": "明治温泉からタクシーでサンロクカフェへ約15分（事前配車推奨）",
       "noteEn": "15-min taxi from Meiji Onsen to Sanroku Cafe (pre-booking recommended)"
-     }
+     },
+     "photo": "https://meijionsen.jp/images/ogp.jpg"
     },
     {
      "role": "meal",
@@ -7566,7 +7785,8 @@
       "min": 25,
       "note": "山麓の道を歩いて茅野市尖石縄文考古館へ徒歩約25分（またはタクシー約5分）",
       "noteEn": "Walk 25 min (or 5-min taxi) to Chino City Togariishi Jomon Archaeology Museum"
-     }
+     },
+     "photo": "https://sanrokucafe.com/wp/wp-content/uploads/2021/04/ogp.jpg"
     },
     {
      "role": "stop",
@@ -7597,9 +7817,24 @@
      ],
      "time": "15:55",
      "what": "茅野駅に到着。JR中央本線特急「あずさ」で新宿・松本方面へ帰路につきます（バスは土日祝限定のため平日はタクシー利用）。",
-     "whatEn": "Arrive at Chino Station for JR Chuo Line Limited Express Azusa trains toward Shinjuku or Matsumoto (use taxi on weekdays when the bus does not run)."
+     "whatEn": "Arrive at Chino Station for JR Chuo Line Limited Express Azusa trains toward Shinjuku or Matsumoto (use taxi on weekdays when the bus does not run).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/5cde6e1e0a1f.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Chino_Station_West_Exit.jpg"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "TAKAO_Tsushima",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mishaka_pond.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -7825,6 +8060,13 @@
       "min": 20,
       "note": "城下町を経由して登城・徒歩 約20分",
       "noteEn": "Walk through the castle town and up to the keep, ~20 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/ff0f159c5ed2.webp",
+     "photoCredit": {
+      "author": "藤谷良秀 (Yoshihide Fujitani)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Echizen-Ono_Station_20171105.jpg"
      }
     },
     {
@@ -7844,7 +8086,8 @@
       "min": 12,
       "note": "七間通り方面へ下山・徒歩 約12分",
       "noteEn": "Walk down toward Shichiken Street, ~12 min"
-     }
+     },
+     "photo": "https://www.ono-kankou.jp/wp-content/uploads/2026/03/H26-2-scaled-e1773904384849.jpg"
     },
     {
      "role": "meal",
@@ -7863,7 +8106,8 @@
       "min": 5,
       "note": "七間通りを徒歩 約5分",
       "noteEn": "Walk along Shichiken Street, ~5 min"
-     }
+     },
+     "photo": "https://www.ono-kankou.jp/wp-content/uploads/2026/03/H26-2-scaled-e1773904384849.jpg"
     },
     {
      "role": "stop",
@@ -7913,7 +8157,14 @@
      ],
      "time": "16:30",
      "what": "JR越美北線に乗車し、福井駅方面へ帰路につく（本数が少ないため発車時刻を事前確認）。",
-     "whatEn": "Board the JR Etsumi-Hoku Line back to Fukui Station (check infrequent train times in advance)."
+     "whatEn": "Board the JR Etsumi-Hoku Line back to Fukui Station (check infrequent train times in advance).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/ff0f159c5ed2.webp",
+     "photoCredit": {
+      "author": "藤谷良秀 (Yoshihide Fujitani)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Echizen-Ono_Station_20171105.jpg"
+     }
     }
    ]
   },
@@ -8435,7 +8686,8 @@
       "min": 10,
       "note": "タクシーで小江戸佐原・道の駅 水の郷さわらへ 約10分",
       "noteEn": "Taxi to Roadside Station Mizunosato Sawara, ~10 min"
-     }
+     },
+     "photo": "https://katori-jingu.or.jp/wp/wp-content/uploads/2017/04/ogimage.jpg"
     },
     {
      "role": "meal",
@@ -8473,7 +8725,8 @@
       "min": 20,
       "note": "タクシーでおふろcafé かりんの湯へ 約20分",
       "noteEn": "Taxi to Ofuro Cafe Karin no Yu, ~20 min"
-     }
+     },
+     "photo": "https://sawara-inae.com/assets/images/og-image.jpg"
     },
     {
      "role": "onsen",
@@ -9062,6 +9315,13 @@
       "min": 60,
       "note": "山梨市民バス（西沢渓谷線・現金のみ）約60分「西沢渓谷入口」下車",
       "noteEn": "Yamanashi City Bus (Nishizawa Gorge Line, cash only), approx. 60 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1c6ba73e3434.webp",
+     "photoCredit": {
+      "author": "Mister0124\n\n This photo was taken with Sony NEX-3‎",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Yamanashishi_Station_North_Exit.jpg"
      }
     },
     {
@@ -9100,6 +9360,13 @@
       "min": 35,
       "note": "山梨市民バス（山梨市駅方面）で「隼上」または「放光寺入口」下車 約35分",
       "noteEn": "Yamanashi City Bus toward Yamanashishi Station, approx. 35 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/a53988f16bd4.webp",
+     "photoCredit": {
+      "author": "Puchi-masashi",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:R140-141.jpg"
      }
     },
     {
@@ -9131,9 +9398,24 @@
      ],
      "time": "17:30",
      "what": "JR中央線特急かいじ・あずさ等で新宿方面へ帰路につく。",
-     "whatEn": "Depart from JR Yamanashishi Station on the JR Chuo Line toward Shinjuku."
+     "whatEn": "Depart from JR Yamanashishi Station on the JR Chuo Line toward Shinjuku.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1c6ba73e3434.webp",
+     "photoCredit": {
+      "author": "Mister0124\n\n This photo was taken with Sony NEX-3‎",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Yamanashishi_Station_North_Exit.jpg"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Jordy Meow",
+   "license": "CC BY 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Nishizawa-Valley.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -9662,7 +9944,8 @@
       "min": 20,
       "note": "西東京バス「温泉センター」下車 約20分",
       "noteEn": "Nishi-Tokyo Bus to Onsen Center (Kazuma no Yu), ~20 min"
-     }
+     },
+     "photo": "https://static.wixstatic.com/media/87c6da_370ae908c9a84e38b81a507a4fb83bd5~mv2.jpg/v1/fill/w_2500,h_1666,al_c/87c6da_370ae908c9a84e38b81a507a4fb83bd5~mv2.jpg"
     },
     {
      "role": "meal",
@@ -9963,6 +10246,13 @@
       "min": 10,
       "note": "タクシーで約10分",
       "noteEn": "Taxi, ~10 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1c6ba73e3434.webp",
+     "photoCredit": {
+      "author": "Mister0124\n\n This photo was taken with Sony NEX-3‎",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Yamanashishi_Station_North_Exit.jpg"
      }
     },
     {
@@ -10001,7 +10291,8 @@
       "min": 8,
       "note": "タクシー（または山梨市営バス）で約8分",
       "noteEn": "Taxi (or Yamanashi City bus), ~8 min"
-     }
+     },
+     "photo": "https://fuefukigawafp.co.jp/wp/wp-content/uploads/2023/04/ogp.jpg"
     },
     {
      "role": "meal",
@@ -10032,7 +10323,14 @@
      ],
      "time": "13:30",
      "what": "JR中央線特急かいじ・あずさ等に乗車し、新宿方面へ戻る。",
-     "whatEn": "Board a JR Chuo Line limited express (Kaiji/Azusa) from Yamanashishi Station back to Shinjuku."
+     "whatEn": "Board a JR Chuo Line limited express (Kaiji/Azusa) from Yamanashishi Station back to Shinjuku.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/1c6ba73e3434.webp",
+     "photoCredit": {
+      "author": "Mister0124\n\n This photo was taken with Sony NEX-3‎",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Chuo-Main-Line_Yamanashishi_Station_North_Exit.jpg"
+     }
     }
    ]
   },
@@ -10298,7 +10596,8 @@
       "min": 7,
       "note": "タクシーで約7分、城崎温泉街へ",
       "noteEn": "Taxi ~7 min to Kinosaki Onsen town"
-     }
+     },
+     "photo": "https://genbudo-museum.jp/wp-content/uploads/2025/10/ca58585cfdf624ecff92f29bd310ea4c.jpg"
     },
     {
      "role": "onsen",
@@ -10317,7 +10616,8 @@
       "min": 10,
       "note": "温泉街を散策しながら徒歩約10分で駅へ",
       "noteEn": "10 min walk through town back to the station"
-     }
+     },
+     "photo": "https://kinosaki-spa.gr.jp/core/wp-content/uploads/2020/03/02_01_003.jpg"
     },
     {
      "role": "leave",
@@ -10591,7 +10891,8 @@
       "min": 3,
       "note": "町並み内を徒歩約3分",
       "noteEn": "Walk approx. 3 min"
-     }
+     },
+     "photo": "https://www.akariart.jp/wp/wp-content/uploads/2025/03/ogp-1.png"
     },
     {
      "role": "cafe",
@@ -10629,7 +10930,8 @@
       "min": 10,
       "note": "タクシーで約10分（または岐阜バス高美線＋徒歩約30分）",
       "noteEn": "Taxi approx. 10 min (or Gifu Bus + 30 min walk)"
-     }
+     },
+     "photo": "https://minokanko.com/wp/wp-content/uploads/2023/02/ogp.png"
     },
     {
      "role": "spot",
@@ -10648,7 +10950,8 @@
       "min": 10,
       "note": "タクシーでうだつの上がる町並みへ戻る（約10分）",
       "noteEn": "Taxi back to Udatsu Old Town approx. 10 min"
-     }
+     },
+     "photo": "https://minokanko.com/wp/wp-content/uploads/2023/02/ogp.png"
     },
     {
      "role": "stop",
@@ -10682,6 +10985,14 @@
      "whatEn": "Return via Nagaragawa Railway to Mino-Ota for JR connections to Gifu and Nagoya."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "杉山宣嗣",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E3%81%86%E3%81%A0%E3%81%A4%E3%81%AE%E4%B8%8A%E3%81%8C%E3%82%8B%E7%94%BA%E4%B8%A6%E3%81%BF_(%E5%B2%90%E9%98%9C%E7%9C%8C%E7%BE%8E%E6%BF%83%E5%B8%82)-%E7%94%BA%E4%B8%A6%E3%81%BFmino_udatsu024.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -10895,6 +11206,13 @@
       "min": 40,
       "note": "信南交通バス駒場線（飯田駅前08:15発→昼神温泉郷約08:55着）",
       "noteEn": "Shinnan Kotsu Komaba Line (dep. Iida Sta. 08:15, arr. Hirugami Onsen ~08:55)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/613f443b26a8.webp",
+     "photoCredit": {
+      "author": "photo: Qurren (talk) Taken with Canon IXY 430F (Digital IXUS 245 HS)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Iida_Station.jpg"
      }
     },
     {
@@ -10983,9 +11301,24 @@
      ],
      "time": "15:30",
      "what": "JR飯田駅に到着し、JR飯田線または中央道高速バス（名古屋・新宿方面）で帰路へ。",
-     "whatEn": "Return to Iida Station for JR Iida Line trains or highway buses toward Nagoya and Shinjuku."
+     "whatEn": "Return to Iida Station for JR Iida Line trains or highway buses toward Nagoya and Shinjuku.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/613f443b26a8.webp",
+     "photoCredit": {
+      "author": "photo: Qurren (talk) Taken with Canon IXY 430F (Digital IXUS 245 HS)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Iida_Station.jpg"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "濃間",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%A5%9E%E6%A9%8B%E3%82%88%E3%82%8A%E6%9C%AC%E8%B0%B7%E5%B7%9D%E4%B8%8A%E6%B5%81%E5%81%B4%E3%81%AE%E8%8A%B1%E6%A1%83.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -11218,6 +11551,13 @@
       "min": 45,
       "note": "一畑バス 日御碕線（日御碕灯台行き）で約45分",
       "noteEn": "Ichibata Bus (Hinomisaki Line) ~45 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/49fb39321a4c.webp",
+     "photoCredit": {
+      "author": "663highland",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:150322_Izumoshi_Station_Izumo_Shimane_pref_Japan01s5.jpg"
      }
     },
     {
@@ -11287,7 +11627,14 @@
      ],
      "time": "15:15",
      "what": "JR山陰本線・特急列車で松江・岡山方面へ帰路につきます。",
-     "whatEn": "Board the JR Limited Express toward Matsue or Okayama."
+     "whatEn": "Board the JR Limited Express toward Matsue or Okayama.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/49fb39321a4c.webp",
+     "photoCredit": {
+      "author": "663highland",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:150322_Izumoshi_Station_Izumo_Shimane_pref_Japan01s5.jpg"
+     }
     }
    ]
   },
@@ -11521,7 +11868,8 @@
       "min": 3,
       "note": "園内のレストラン花かいろうへ徒歩約3分",
       "noteEn": "3 min walk inside the park to Restaurant Hanakairo"
-     }
+     },
+     "photo": "https://tottorihanakairou.or.jp/user/common/images/ogp_image.jpg"
     },
     {
      "role": "meal",
@@ -11540,7 +11888,8 @@
       "min": 45,
       "note": "無料シャトルバスで米子駅へ戻り（約25分）、路線バスで皆生温泉「汐の湯」へ約20分",
       "noteEn": "Free shuttle back to Yonago Station (~25 min), then local bus to Kaike Onsen Shio-no-Yu ~20 min"
-     }
+     },
+     "photo": "https://tottorihanakairou.or.jp/user/common/images/ogp_image.jpg"
     },
     {
      "role": "onsen",
@@ -11803,6 +12152,13 @@
       "min": 10,
       "note": "東鉄バス「虎渓山」下車 約10分（またはタクシー約8分）",
       "noteEn": "Totetsu Bus to Kokeizan, ~10 min (or taxi ~8 min)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4e9541d05ffb.webp",
+     "photoCredit": {
+      "author": "セントラルライナー",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Tajimi_Station_20230401.jpg"
      }
     },
     {
@@ -11822,6 +12178,13 @@
       "min": 12,
       "note": "タクシーでアルティストビラージュへ 約12分",
       "noteEn": "Taxi to Artiste Village, ~12 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/3ffe12a2daa2.webp",
+     "photoCredit": {
+      "author": "Tomio344456",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Eiho-ji_Temple_Garden_(2),_Kokeizan-cho_Tajimi_2020.jpg"
      }
     },
     {
@@ -11873,7 +12236,14 @@
      ],
      "time": "16:00",
      "what": "JR中央線に乗車し、名古屋駅方面へ戻る。",
-     "whatEn": "Board the JR Chuo Line from Tajimi Station back toward Nagoya."
+     "whatEn": "Board the JR Chuo Line from Tajimi Station back toward Nagoya.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4e9541d05ffb.webp",
+     "photoCredit": {
+      "author": "セントラルライナー",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Tajimi_Station_20230401.jpg"
+     }
     }
    ]
   },
@@ -12229,6 +12599,13 @@
       "min": 8,
       "note": "地蔵川沿いまで徒歩 約8分",
       "noteEn": "Walk to the Jizo River, ~8 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e42821b6b24b.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Samegai_Station_ac_(1).jpg"
      }
     },
     {
@@ -12298,7 +12675,14 @@
      ],
      "time": "16:15",
      "what": "JR東海道本線に乗車し、米原駅経由で京都・大阪または名古屋方面へ帰る。",
-     "whatEn": "Board the JR Tokaido Line from Samegai Station via Maibara toward Kyoto, Osaka, or Nagoya."
+     "whatEn": "Board the JR Tokaido Line from Samegai Station via Maibara toward Kyoto, Osaka, or Nagoya.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e42821b6b24b.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Samegai_Station_ac_(1).jpg"
+     }
     }
    ]
   },
@@ -12849,7 +13233,8 @@
       "min": 25,
       "note": "下曽我駅からJR御殿場線・東海道線（国府津乗換）で小田原駅へ 約25分",
       "noteEn": "Walk back to Shimo-Soga and take JR Gotemba/Tokaido Line via Kozu to Odawara, ~25 min"
-     }
+     },
+     "photo": "https://www.kanagawa-kankou.or.jp/storage/post_picture/20250122132034_寿獅子舞.JPG"
     },
     {
      "role": "stop",
@@ -12887,7 +13272,8 @@
       "min": 12,
       "note": "箱根登山鉄道で小田原駅へ戻り徒歩5分",
       "noteEn": "Hakone Tozan Railway back to Odawara Station (~8 min), then 5 min walk"
-     }
+     },
+     "photo": "https://kamaboko.com/assets/img/top/main01.jpg"
     },
     {
      "role": "onsen",
@@ -12906,7 +13292,8 @@
       "min": 5,
       "note": "小田原駅東口まで徒歩 約5分",
       "noteEn": "Walk to Odawara Station East Exit, ~5 min"
-     }
+     },
+     "photo": "https://manyo.co.jp/odawara/admin/wp-content/uploads/2019/07/odawaraogimage.jpg"
     },
     {
      "role": "leave",
@@ -13177,7 +13564,8 @@
       "min": 1,
       "note": "同施設内の浴場へ徒歩すぐ",
       "noteEn": "Same facility, 1 min walk"
-     }
+     },
+     "photo": "https://yofudo-onsen.jp/assets/images/img/onsen/img_01-1.jpg"
     },
     {
      "role": "onsen",
@@ -13196,7 +13584,8 @@
       "min": 15,
       "note": "タクシーでJR和田山駅（またはJR梁瀬駅）へ約15分",
       "noteEn": "Taxi to JR Wadayama Station approx. 15 min"
-     }
+     },
+     "photo": "https://yofudo-onsen.jp/assets/images/img/onsen/img_01-1.jpg"
     },
     {
      "role": "leave",
@@ -13211,6 +13600,14 @@
      "whatEn": "Depart via JR Bantan Line (or JR Wadayama) toward Himeji and Osaka."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "オータムスネイク",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%A5%9E%E5%AD%90%E7%95%91%E9%81%B8%E9%89%B1%E6%89%80,%E6%98%8E%E5%BB%B6%E9%89%B1%E6%A5%AD%E5%85%A8%E6%99%AF_037.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -14018,6 +14415,13 @@
       "min": 25,
       "note": "京急バス「城ヶ島」行き 約25分（白秋碑前または終点下車）",
       "noteEn": "Keikyu Bus to Jogashima, ~25 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/caf62c697e7e.webp",
+     "photoCredit": {
+      "author": "221.20 (talk)",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Misakiguchi_station01.JPG"
      }
     },
     {
@@ -14056,7 +14460,8 @@
       "min": 10,
       "note": "京急バス「三崎港」下車 約10分",
       "noteEn": "Keikyu Bus to Misaki Port, ~10 min"
-     }
+     },
+     "photo": "http://www.city.miura.kanagawa.jp/material/images/group/37/tenboudekki1.jpg"
     },
     {
      "role": "meal",
@@ -14106,7 +14511,14 @@
      ],
      "time": "15:15",
      "what": "三崎口駅から京急線の快特電車に乗車し、横浜・品川方面へ帰る。",
-     "whatEn": "Board a Keikyu Limited Express train from Misakiguchi Station back to Yokohama and Shinagawa."
+     "whatEn": "Board a Keikyu Limited Express train from Misakiguchi Station back to Yokohama and Shinagawa.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/caf62c697e7e.webp",
+     "photoCredit": {
+      "author": "221.20 (talk)",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Misakiguchi_station01.JPG"
+     }
     }
    ]
   },
@@ -14351,6 +14763,13 @@
       "min": 20,
       "note": "レンタカーで約20分（山道のため冬期は路面凍結に注意）",
       "noteEn": "Rental car ~20 min up the mountain road (watch for frost in late autumn/winter)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b305774fc40b.webp",
+     "photoCredit": {
+      "author": "Saigen Jiro",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Kameoka_Station_ekisha.JPG"
      }
     },
     {
@@ -14389,6 +14808,13 @@
       "min": 15,
       "note": "レンタカーで約15分、湯の花温泉へ",
       "noteEn": "Rental car ~15 min to Yunohana Onsen"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/99af0743a44c.webp",
+     "photoCredit": {
+      "author": "Takasunrise0921",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "page": "https://commons.wikimedia.org/wiki/File:Shimanto02.jpg"
      }
     },
     {
@@ -14408,7 +14834,8 @@
       "min": 15,
       "note": "レンタカーで約15分、JR亀岡駅へ戻り返却",
       "noteEn": "Rental car ~15 min back to JR Kameoka Station to return car"
-     }
+     },
+     "photo": "https://www.kyoto-keburikawa.jp/ogp.jpg"
     },
     {
      "role": "leave",
@@ -14420,9 +14847,24 @@
      ],
      "time": "14:00",
      "what": "レンタカーを返却し、JR嵯峨野線で京都駅方面へ帰路につきます。",
-     "whatEn": "Return the rental car and take the JR Sagano Line back toward Kyoto."
+     "whatEn": "Return the rental car and take the JR Sagano Line back toward Kyoto.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b305774fc40b.webp",
+     "photoCredit": {
+      "author": "Saigen Jiro",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Kameoka_Station_ekisha.JPG"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Takawata",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E3%81%8B%E3%82%81%E3%81%8A%E3%81%8B%E9%9C%A7%E3%81%AE%E3%83%86%E3%83%A9%E3%82%B9.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -14665,6 +15107,13 @@
       "min": 40,
       "note": "しずてつジャストライン 日本平ロープウェイ行き 約40分",
       "noteEn": "Shizutetsu Justline Bus to Nihondaira Ropeway, approx. 40 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/78f0406d57f8.webp",
+     "photoCredit": {
+      "author": "江戸村のとくぞう",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Shizuoka_Station_201016a.jpg"
      }
     },
     {
@@ -14703,6 +15152,13 @@
       "min": 15,
       "note": "ロープウェイで日本平へ戻り、徒歩またはタクシーで日本平ホテルへ約15分",
       "noteEn": "Return by ropeway and walk/taxi to Nihondaira Hotel, approx. 15 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/d59d594983cc.webp",
+     "photoCredit": {
+      "author": "SHIZUOKACITYperson",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E4%B9%85%E8%83%BD%E5%B1%B1%E6%9D%B1%E7%85%A7%E5%AE%AE%E6%A5%BC%E9%96%80.png"
      }
     },
     {
@@ -14753,9 +15209,24 @@
      ],
      "time": "16:45",
      "what": "東海道新幹線ひかり・こだまで東京・名古屋・大阪方面へ帰路につく。",
-     "whatEn": "Depart from JR Shizuoka Station on the Tokaido Shinkansen."
+     "whatEn": "Depart from JR Shizuoka Station on the Tokaido Shinkansen.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/78f0406d57f8.webp",
+     "photoCredit": {
+      "author": "江戸村のとくぞう",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Shizuoka_Station_201016a.jpg"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "663highland",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:231006_Nihondaira_Shizuoka_Japan15s3.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -14986,7 +15457,8 @@
       "min": 15,
       "note": "臨時連絡バス（またはタクシー）で椿大神社へ 約15分",
       "noteEn": "Seasonal shuttle bus (or taxi) to Tsubaki Grand Shrine, ~15 min"
-     }
+     },
+     "photo": "http://www.akatsuka.gr.jp/group/suzuka/img/suzukaforestgarden-thum.jpg"
     },
     {
      "role": "stop",
@@ -15040,6 +15512,7 @@
     }
    ]
   },
+  "bannerOg": "https://www.akatsuka.gr.jp/group/suzuka/img/suzukaforestgarden-thum.jpg",
   "baseMap": true,
   "walk": {
    "distance": 37272,
@@ -15263,7 +15736,8 @@
       "min": 15,
       "note": "タクシーでUnir 本店へ 約15分",
       "noteEn": "Taxi to Unir Head Shop, ~15 min"
-     }
+     },
+     "photo": "https://www.nagaokakyo-kankou.jp/images/hero/hero-autumn-komyoji.jpg"
     },
     {
      "role": "cafe",
@@ -15533,7 +16007,8 @@
       "min": 10,
       "note": "知多バスまたは徒歩（約20分）でINAXライブミュージアムへ",
       "noteEn": "Chita Bus (~10 min) or walk (~20 min) to INAX Live Museum"
-     }
+     },
+     "photo": "https://tokonamesanpo.jp/ogp/tokonamesanpo_ogp.png"
     },
     {
      "role": "spot",
@@ -15552,7 +16027,8 @@
       "min": 2,
       "note": "ミュージアム敷地内のレストランへ徒歩 約2分",
       "noteEn": "Walk to the on-site museum restaurant, ~2 min"
-     }
+     },
+     "photo": "https://livingculture.lixil.com/ogp.png"
     },
     {
      "role": "meal",
@@ -15571,7 +16047,8 @@
       "min": 10,
       "note": "知多バス「常滑駅」行き 約10分",
       "noteEn": "Chita Bus to Meitetsu Tokoname Station, ~10 min"
-     }
+     },
+     "photo": "https://livingculture.lixil.com/ogp.png"
     },
     {
      "role": "leave",
@@ -15854,7 +16331,8 @@
       "min": 15,
       "note": "宇治田原町内バスまたはタクシーで約15分",
       "noteEn": "Local bus or taxi ~15 min within Ujitawara"
-     }
+     },
+     "photo": "https://www.yantan.jp/wp-content/uploads/2024/10/cropped-20240712_051804769_iOS-scaled-1.jpg"
     },
     {
      "role": "cafe",
@@ -16177,6 +16655,14 @@
     }
    ]
   },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Jogungagon",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Bitchu_Matsuyama_Casle_observatory202111-1.jpg",
+   "y": 50
+  },
   "baseMap": true,
   "walk": {
    "distance": 6037,
@@ -16372,6 +16858,13 @@
       "min": 20,
       "note": "三重交通バス「戸木神社前」下車＋徒歩15分（またはタクシー約15分）",
       "noteEn": "Mie Kotsu Bus to Heki Jinja-mae + 15 min walk (or taxi ~15 min)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4ce0bd12153c.webp",
+     "photoCredit": {
+      "author": "もんじゃ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hisai_Station.jpg"
      }
     },
     {
@@ -16441,7 +16934,14 @@
      ],
      "time": "15:15",
      "what": "近鉄久居駅から近鉄名古屋線に乗車し、津・名古屋・大阪方面へ戻る。",
-     "whatEn": "Board the Kintetsu Nagoya Line from Hisai Station toward Tsu, Nagoya, or Osaka."
+     "whatEn": "Board the Kintetsu Nagoya Line from Hisai Station toward Tsu, Nagoya, or Osaka.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4ce0bd12153c.webp",
+     "photoCredit": {
+      "author": "もんじゃ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hisai_Station.jpg"
+     }
     }
    ]
   },
@@ -16649,6 +17149,13 @@
       "min": 75,
       "note": "広電バス75系統（高速道経由・三段峡行き）で約75分、終点下車",
       "noteEn": "Hiroden Express Bus Route 75 ~75 min to Sandankyo"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4cbb49a2d860.webp",
+     "photoCredit": {
+      "author": "Taisyo",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hiroshima-Sogo_2011.JPG"
      }
     },
     {
@@ -16668,6 +17175,13 @@
       "min": 5,
       "note": "黒淵渡舟（片道約5分）で黒淵荘へ",
       "noteEn": "Kurobuchi ferry ~5 min to Kurobuchiso"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e8bc7f8fe0a8.webp",
+     "photoCredit": {
+      "author": "Nobuyuki Kondo from Sendai, Miyagi, Japan",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sandankyo_(9875225076).jpg"
      }
     },
     {
@@ -16699,7 +17213,14 @@
      ],
      "time": "16:15",
      "what": "三段峡正面口から広電バス（14時〜15時台発）で広島バスセンターへ戻り、帰路につきます。",
-     "whatEn": "Take the afternoon Hiroden bus from Sandankyo back to Hiroshima Bus Center."
+     "whatEn": "Take the afternoon Hiroden bus from Sandankyo back to Hiroshima Bus Center.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/4cbb49a2d860.webp",
+     "photoCredit": {
+      "author": "Taisyo",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hiroshima-Sogo_2011.JPG"
+     }
     }
    ]
   },
@@ -17508,7 +18029,8 @@
       "min": 30,
       "note": "鞆鉄バス 鞆の浦・鞆港からJR福山駅へ約30分",
       "noteEn": "Tomotetsu bus from Tomonoura back to JR Fukuyama Station ~30 min"
-     }
+     },
+     "photo": "https://www.ofutei.com/assets/images/ogp.jpg"
     },
     {
      "role": "leave",
@@ -17736,7 +18258,8 @@
       "min": 2,
       "note": "池の目の前の弁天会館・養鱒場エリアへ徒歩約2分",
       "noteEn": "2 min walk right beside the pond to Benten Kaikan"
-     }
+     },
+     "photo": "http://karusuto.com//wp-content/uploads/2016/12/slide01.jpg"
     },
     {
      "role": "meal",
@@ -17755,7 +18278,8 @@
       "min": 12,
       "note": "タクシーで約12分、道の駅おふく（於福温泉）へ",
       "noteEn": "Taxi ~12 min to Roadside Station Ofuku (Ofuku Onsen)"
-     }
+     },
+     "photo": "http://karusuto.com//wp-content/uploads/2016/12/slide01.jpg"
     },
     {
      "role": "onsen",
@@ -18033,7 +18557,8 @@
       "min": 15,
       "note": "徳島バス（鳴門駅方面）またはタクシーで約15分、味処 あらしへ",
       "noteEn": "Tokushima Bus or taxi ~15 min to Ajidokoro Arashi"
-     }
+     },
+     "photo": "https://www.uzunomichi.jp/wp-content/uploads/2020/12/b3869d0370a540360f96c48a557efeac.jpg"
     },
     {
      "role": "meal",
@@ -18052,7 +18577,8 @@
       "min": 15,
       "note": "路線バスまたはタクシーで約15分、鳴門温泉へ",
       "noteEn": "Bus or taxi ~15 min to Naruto Onsen"
-     }
+     },
+     "photo": "https://arashi-naruto.co.jp/wp-content/uploads/2024/02/top.png"
     },
     {
      "role": "onsen",
@@ -18333,6 +18859,13 @@
       "min": 65,
       "note": "瀬戸内産交バス（沖友天満宮行き）で約65分、御手洗港下車",
       "noteEn": "Setouchi Sanko bus ~65 min to Mitarai Port"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/194f007aea62.webp",
+     "photoCredit": {
+      "author": "OS6",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%83%E9%A7%85_Hiro_station_-_panoramio.jpg"
      }
     },
     {
@@ -18402,9 +18935,24 @@
      ],
      "time": "16:30",
      "what": "JR呉線に乗車し、呉・広島方面へ帰路につきます。",
-     "whatEn": "Board the JR Kure Line back toward Kure and Hiroshima."
+     "whatEn": "Board the JR Kure Line back toward Kure and Hiroshima.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/194f007aea62.webp",
+     "photoCredit": {
+      "author": "OS6",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%BA%83%E9%A7%85_Hiro_station_-_panoramio.jpg"
+     }
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "At by At",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Osaki-shimojima_Mitarai_Panoramic_View_2013-08.JPG",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -18617,6 +19165,13 @@
       "min": 20,
       "note": "タクシーで約20分",
       "noteEn": "Taxi ~20 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/92b4371063a0.webp",
+     "photoCredit": {
+      "author": "Yasu (talk)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Shikoku_Kan-onji_Station.jpg"
      }
     },
     {
@@ -18674,7 +19229,8 @@
       "min": 8,
       "note": "タクシー（またはのりあいバス）でJR観音寺駅へ約8分",
       "noteEn": "Taxi back to JR Kanonji Station ~8 min"
-     }
+     },
+     "photo": "https://kotohiki-kairo.co.jp/themes/main/images/img_ogp.jpg"
     },
     {
      "role": "leave",
@@ -18686,7 +19242,14 @@
      ],
      "time": "15:45",
      "what": "JR予讃線の特急しおかぜ等で高松・岡山方面へ帰路につきます。",
-     "whatEn": "Board the JR Yosan Line Limited Express toward Takamatsu or Okayama."
+     "whatEn": "Board the JR Yosan Line Limited Express toward Takamatsu or Okayama.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/92b4371063a0.webp",
+     "photoCredit": {
+      "author": "Yasu (talk)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Shikoku_Kan-onji_Station.jpg"
+     }
     }
    ]
   },
@@ -18924,7 +19487,8 @@
       "min": 12,
       "note": "タクシー（またはバス乗り継ぎ）で道の駅 熊野・板屋九郎兵衛の里へ 約12分",
       "noteEn": "Taxi (or local bus) to Michi-no-Eki Kumano Itaya Kurobe-no-Sato, ~12 min"
-     }
+     },
+     "photo": "https://static.wixstatic.com/media/3b1533_72fab9f9ec8e40a280213e04e2097b38~mv2.jpg/v1/fill/w_1000,h_667,al_c/3b1533_72fab9f9ec8e40a280213e04e2097b38~mv2.jpg"
     },
     {
      "role": "meal",
@@ -19196,6 +19760,13 @@
       "min": 20,
       "note": "タクシーで約20分（藤の時期は渋滞前に朝一番の便を推奨）",
       "noteEn": "Taxi ~20 min (early morning arrival avoids traffic)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/adff68669d43.webp",
+     "photoCredit": {
+      "author": "そらみみ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Yahata_Station_20180616.jpg"
      }
     },
     {
@@ -19215,6 +19786,13 @@
       "min": 20,
       "note": "タクシーで約20分、JR八幡駅周辺へ戻る",
       "noteEn": "Taxi ~20 min back to JR Yahata Station area"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/747ed779bcbb.webp",
+     "photoCredit": {
+      "author": "そらみみ (Soramimi)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Pink_wisteria_in_Kawachi_Wisteria_Garden_20150509-4.jpg"
      }
     },
     {
@@ -19265,7 +19843,14 @@
      ],
      "time": "15:15",
      "what": "JR鹿児島本線（快速・特急）で小倉・博多方面へ帰路につきます。",
-     "whatEn": "Board the JR Kagoshima Main Line back toward Kokura or Hakata."
+     "whatEn": "Board the JR Kagoshima Main Line back toward Kokura or Hakata.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/adff68669d43.webp",
+     "photoCredit": {
+      "author": "そらみみ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Yahata_Station_20180616.jpg"
+     }
     }
    ]
   },
@@ -19509,7 +20094,8 @@
       "min": 50,
       "note": "徒歩約30分で程野入口バス停へ戻り、伊野方面バスで約20分",
       "noteEn": "30 min walk back to Hodono-iriguchi, then ~20 min bus toward Ino"
-     }
+     },
+     "photo": "https://www.inofan.jp/wp/wp-content/uploads/2022/04/ogp.jpg"
     },
     {
      "role": "meal",
@@ -19528,7 +20114,8 @@
       "min": 30,
       "note": "県交北部交通バスでJR伊野駅へ約30分",
       "noteEn": "Local bus back to JR Ino Station ~30 min"
-     }
+     },
+     "photo": "https://www.inofan.jp/wp/wp-content/uploads/2022/04/ogp.jpg"
     },
     {
      "role": "leave",
@@ -19859,6 +20446,14 @@
      "whatEn": "Depart from JR Usa Station on the Limited Express Sonic toward Hakata or Oita."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "RyotaFuno",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Oita-Sunset_at_Matama_Beach-xl.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -20323,6 +20918,13 @@
       "min": 35,
       "note": "昭和バス（有浦・呼子方面）で名護屋城博物館入口まで約35分",
       "noteEn": "Showa Bus toward Nagoya / Ariura ~35 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b3b6698edad5.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Karatsu_Station_ac.jpg"
      }
     },
     {
@@ -20361,7 +20963,8 @@
       "min": 25,
       "note": "昭和バス最終便またはタクシーで約25分、唐津シーサイドホテル方面へ",
       "noteEn": "Evening Showa Bus or taxi ~25 min to Karatsu Seaside Hotel"
-     }
+     },
+     "photo": "https://www.karatsu-kankou.jp/img/common/pic-ogp.png"
     },
     {
      "role": "onsen",
@@ -20380,7 +20983,8 @@
       "min": 5,
       "note": "JR東唐津駅から筑肥線で1駅（約5分）またはタクシー約8分でJR唐津駅へ",
       "noteEn": "1 stop on JR Chikuhi Line from Higashi-Karatsu (or 8 min taxi) to JR Karatsu Station"
-     }
+     },
+     "photo": "https://www.seaside.karatsu.saga.jp/ogp.jpg"
     },
     {
      "role": "leave",
@@ -20392,7 +20996,14 @@
      ],
      "time": "20:00",
      "what": "JR筑肥線（福岡市地下鉄直通）で博多・天神方面へ帰路につきます。",
-     "whatEn": "Board the JR Chikuhi Line (direct to Fukuoka Subway) back toward Hakata."
+     "whatEn": "Board the JR Chikuhi Line (direct to Fukuoka Subway) back toward Hakata.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b3b6698edad5.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Karatsu_Station_ac.jpg"
+     }
     }
    ]
   },
@@ -20599,6 +21210,13 @@
       "min": 10,
       "note": "タクシーまたは路線バスで約10分",
       "noteEn": "Taxi or local bus ~10 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/05fcce28ac71.webp",
+     "photoCredit": {
+      "author": "LERK (talk · contribs)",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JRKyushu-Nagasaki-main-line-Kanzaki-station-south-entrance-20091101.jpg"
      }
     },
     {
@@ -20618,6 +21236,13 @@
       "min": 5,
       "note": "隣接する仁比山公園・フードブースエリアへ徒歩約5分",
       "noteEn": "5 min walk to adjacent Niiyama Park & food booths"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/59861981c913.webp",
+     "photoCredit": {
+      "author": "gtknj",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kunen%27an_kanzaki_1.jpg"
      }
     },
     {
@@ -20649,7 +21274,14 @@
      ],
      "time": "13:00",
      "what": "JR長崎本線に乗車し、佐賀・鳥栖・博多方面へ帰路につきます。",
-     "whatEn": "Board the JR Nagasaki Main Line back toward Saga, Tosu, or Hakata."
+     "whatEn": "Board the JR Nagasaki Main Line back toward Saga, Tosu, or Hakata.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/05fcce28ac71.webp",
+     "photoCredit": {
+      "author": "LERK (talk · contribs)",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JRKyushu-Nagasaki-main-line-Kanzaki-station-south-entrance-20091101.jpg"
+     }
     }
    ]
   },
@@ -20923,7 +21555,8 @@
       "min": 12,
       "note": "タクシーで約12分、筑後川沿いの原鶴温泉へ",
       "noteEn": "Taxi ~12 min to Harazuru Onsen along the Chikugo River"
-     }
+     },
+     "photo": "https://tabisurukissa-ukiha.com/img/top/hero1.jpg"
     },
     {
      "role": "onsen",
@@ -20957,6 +21590,14 @@
      "whatEn": "Board the JR Kyudai Main Line back toward Kurume and Hakata."
     }
    ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Muyo",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Ukiha_Town_view_from_Ukiha_Inari.jpg",
+   "y": 50
   },
   "baseMap": true,
   "walk": {
@@ -21173,6 +21814,13 @@
       "min": 10,
       "note": "徒歩約10分（海沿いの平坦な道）",
       "noteEn": "10 min flat walk along the coast"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/18279949803a.webp",
+     "photoCredit": {
+      "author": "Yobito KAYANUMA",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%A4%9A%E8%89%AF%E9%A7%85_-_panoramio.jpg"
      }
     },
     {
@@ -21230,7 +21878,8 @@
       "min": 15,
       "note": "祐徳バスまたはタクシーでJR多良駅へ約15分",
       "noteEn": "Bus or taxi back to JR Tara Station ~15 min"
-     }
+     },
+     "photo": "https://goten-resort.jp/kanigoten/wp2025/wp-content/themes/kanigoten2024/img_ogpimage.png"
     },
     {
      "role": "leave",
@@ -21242,7 +21891,14 @@
      ],
      "time": "15:45",
      "what": "JR長崎本線に乗車し、佐賀・博多・長崎方面へ帰路につきます。",
-     "whatEn": "Board the JR Nagasaki Main Line back toward Saga, Hakata, or Nagasaki."
+     "whatEn": "Board the JR Nagasaki Main Line back toward Saga, Hakata, or Nagasaki.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/18279949803a.webp",
+     "photoCredit": {
+      "author": "Yobito KAYANUMA",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E5%A4%9A%E8%89%AF%E9%A7%85_-_panoramio.jpg"
+     }
     }
    ]
   },
@@ -21475,6 +22131,13 @@
       "min": 3,
       "note": "豊前街道へ徒歩約3分",
       "noteEn": "Walk approx. 3 min to Buzen Kaido"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8148c19f0300.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sakura-yu_Yamaga_ac_(1).jpg"
      }
     },
     {
@@ -21563,7 +22226,14 @@
      ],
      "time": "16:15",
      "what": "産交バスで熊本桜町バスターミナル・JR熊本駅方面へ戻る。",
-     "whatEn": "Take the Sankō Bus back to Kumamoto Sakuramachi Bus Terminal and JR Kumamoto Station."
+     "whatEn": "Take the Sankō Bus back to Kumamoto Sakuramachi Bus Terminal and JR Kumamoto Station.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8148c19f0300.webp",
+     "photoCredit": {
+      "author": "Asturio Cantabrio",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sakura-yu_Yamaga_ac_(1).jpg"
+     }
     }
    ]
   },
@@ -21887,7 +22557,8 @@
       "min": 12,
       "note": "城下町から駅方面へ徒歩約12分",
       "noteEn": "Walk approx. 12 min toward the station"
-     }
+     },
+     "photo": "https://tajimaya-roho.co.jp/wp_site/wp-content/themes/tajimaya/img/ogp.jpg"
     },
     {
      "role": "onsen",
@@ -22194,7 +22865,8 @@
       "min": 3,
       "note": "滝から道の駅へ徒歩約3分",
       "noteEn": "Walk approx. 3 min to the adjacent Michi-no-Eki"
-     }
+     },
+     "photo": "https://www.ogatakanko.com/wp-content/uploads/2022/02/main1.jpg"
     },
     {
      "role": "meal",
@@ -22213,7 +22885,8 @@
       "min": 20,
       "note": "徒歩約20分で鷹来屋（浜嶋酒造）へ",
       "noteEn": "Walk approx. 20 min to Takakiya (Hamashima Brewery)"
-     }
+     },
+     "photo": "https://www.ogatakanko.com/wp-content/uploads/2022/02/main1.jpg"
     },
     {
      "role": "stop",
@@ -22527,7 +23200,8 @@
       "min": 15,
       "note": "島原港駅から島原鉄道で島原駅・鯉の泳ぐまち方面へ約15分（徒歩含む）",
       "noteEn": "Shimabara Railway from Shimabara-ko to Shimabara area and walk, approx. 15 min"
-     }
+     },
+     "photo": "https://www.seaside-shimabara.com/img_ogpimage.png"
     },
     {
      "role": "cafe",
@@ -22565,7 +23239,8 @@
       "min": 15,
       "note": "徒歩約15分（またはタクシー約5分）",
       "noteEn": "Walk approx. 15 min (or 5 min by taxi)"
-     }
+     },
+     "photo": "https://www.nampuro.com/commons/img/ogp.jpg"
     },
     {
      "role": "leave",
@@ -22857,7 +23532,8 @@
       "min": 15,
       "note": "網田駅へ戻り、JR三角線で1駅の住吉駅へ（約5分＋徒歩）",
       "noteEn": "Return to Oda Station and take JR Misumi Line 1 stop to Sumiyoshi Station"
-     }
+     },
+     "photo": "https://utobiyori.jp/wp-content/uploads/2026/02/IMG_1249.jpg"
     },
     {
      "role": "stop",
@@ -22876,7 +23552,8 @@
       "min": 15,
       "note": "海岸沿いを徒歩約15分",
       "noteEn": "Walk along the coast approx. 15 min"
-     }
+     },
+     "photo": "https://utobiyori.jp/wp-content/uploads/2025/05/IMG_0070-scaled.jpeg"
     },
     {
      "role": "spot",
@@ -23149,6 +23826,13 @@
       "min": 10,
       "note": "タクシーで約10分",
       "noteEn": "Taxi approx. 10 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/ed7f93d43931.webp",
+     "photoCredit": {
+      "author": "PekePON (talk)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hyugashi_Station_west_entrance.jpg"
      }
     },
     {
@@ -23168,7 +23852,8 @@
       "min": 10,
       "note": "タクシーで約10分",
       "noteEn": "Taxi approx. 10 min"
-     }
+     },
+     "photo": "https://oomijinja.or.jp/oomijinja_core/wp-content/uploads/2026/08/20260611_00212_由緒アイキャッチ.jpg"
     },
     {
      "role": "spot",
@@ -23256,7 +23941,14 @@
      ],
      "time": "15:45",
      "what": "JR日豊本線特急にちりん等で大分・宮崎方面へ帰路につく。",
-     "whatEn": "Depart from JR Hyugashi Station via JR Nippo Main Line toward Oita or Miyazaki."
+     "whatEn": "Depart from JR Hyugashi Station via JR Nippo Main Line toward Oita or Miyazaki.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/ed7f93d43931.webp",
+     "photoCredit": {
+      "author": "PekePON (talk)",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hyugashi_Station_west_entrance.jpg"
+     }
     }
    ]
   },
@@ -23508,6 +24200,13 @@
       "min": 25,
       "note": "タクシーで約25分（または南国交通バスで大口バスセンター経由＋タクシー）",
       "noteEn": "Taxi approx. 25 min (or Nangoku Kotsu Bus via Okuchi + taxi)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/a18c8496144a.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR-Kurino-STA.jpg"
      }
     },
     {
@@ -23584,7 +24283,8 @@
       "min": 15,
       "note": "タクシーでJR栗野駅へ約15分",
       "noteEn": "Taxi to JR Kurino Station approx. 15 min"
-     }
+     },
+     "photo": "https://www.kagoshima-kankou.com/images/front/ogp.jpg?id=11f54261a1566c075bb9"
     },
     {
      "role": "leave",
@@ -23596,7 +24296,14 @@
      ],
      "time": "16:00",
      "what": "JR肥薩線・吉都線で鹿児島中央・吉松方面へ帰路につく。",
-     "whatEn": "Depart from JR Kurino Station via the JR Hisatsu/Kitto Line."
+     "whatEn": "Depart from JR Kurino Station via the JR Hisatsu/Kitto Line.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/a18c8496144a.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR-Kurino-STA.jpg"
+     }
     }
    ]
   },
@@ -23926,7 +24633,8 @@
       "min": 5,
       "note": "徒歩約5分でJR都城駅へ",
       "noteEn": "Walk approx. 5 min to JR Miyakonojo Station"
-     }
+     },
+     "photo": "http://www.0986green.com/img_ogpimage.png"
     },
     {
      "role": "leave",
@@ -24184,7 +24892,8 @@
       "min": 40,
       "note": "よかバス（都井岬線・串間駅方面）で道の駅くしまへ約40分",
       "noteEn": "Yoka Bus back to Michi-no-Eki Kushima, approx. 40 min"
-     }
+     },
+     "photo": "https://kushima-city.jp/wp/wp-content/themes/kushima-kanko/assets/img/common/ogp.jpg"
     },
     {
      "role": "meal",
@@ -24203,7 +24912,8 @@
       "min": 15,
       "note": "よかバス（またはタクシー）で串間温泉へ約15分",
       "noteEn": "Yoka Bus (or taxi) to Kushima Onsen, approx. 15 min"
-     }
+     },
+     "photo": "https://kushima-city.jp/wp/wp-content/themes/kushima-kanko/assets/img/common/ogp.jpg"
     },
     {
      "role": "onsen",
@@ -24222,7 +24932,8 @@
       "min": 15,
       "note": "よかバス（またはタクシー）でJR串間駅へ約15分",
       "noteEn": "Yoka Bus (or taxi) back to JR Kushima Station, approx. 15 min"
-     }
+     },
+     "photo": "https://static.wixstatic.com/media/6ac1f1_e6cc51d21f594c0ab64edc2384f2e27f~mv2.jpg/v1/fill/w_2500,h_1875,al_c/6ac1f1_e6cc51d21f594c0ab64edc2384f2e27f~mv2.jpg"
     },
     {
      "role": "leave",
@@ -24467,7 +25178,8 @@
       "min": 15,
       "note": "車で根占港方面へ約15分",
       "noteEn": "Drive toward Nejime Port approx. 15 min"
-     }
+     },
+     "photo": "https://www.kagoshima-kankou.com/images/front/ogp.jpg?id=11f54261a1566c075bb9"
     },
     {
      "role": "meal",
@@ -24505,7 +25217,8 @@
       "min": 110,
       "note": "垂水フェリーまたは東九州道経由で鹿児島中央駅へ戻る（約1時間50分）",
       "noteEn": "Drive back to JR Kagoshima-Chuo Station via Tarumizu Ferry, approx. 110 min"
-     }
+     },
+     "photo": "https://www.kagoshima-kankou.com/images/front/ogp.jpg?id=11f54261a1566c075bb9"
     },
     {
      "role": "leave",
@@ -24770,7 +25483,8 @@
       "min": 2,
       "note": "道路を渡っておきなわワールドへ徒歩約2分",
       "noteEn": "Walk across the street to Okinawa World, approx. 2 min"
-     }
+     },
+     "photo": "https://gangala.com/wp/images/2021/03/ogp.jpg"
     },
     {
      "role": "stop",
@@ -24827,7 +25541,8 @@
       "min": 55,
       "note": "最寄りバス停または玉泉洞前から路線バス（またはタクシー＋バス）で那覇バスターミナルへ約55分",
       "noteEn": "Bus from the nearest stop or Gyokusendo-mae back to Naha Bus Terminal, approx. 55 min"
-     }
+     },
+     "photo": "https://sachibaru.jp/wp/wp-content/uploads/2021/08/sachibaru-ogp.jpg"
     },
     {
      "role": "leave",

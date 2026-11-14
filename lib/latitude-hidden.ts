@@ -52,6 +52,7 @@ export type HiddenSpot = {
   url: string; // 運営する所の公式
   verifiedAt: string;
   banner?: { file: string; author: string; license: string; licenseUrl: string; page: string; y?: number };
+  bannerOg?: string; // 2026-11-14 コモンズに写真が無い時：公式サイトのシェア用の写真の住所（保存しない・「写真：公式サイトより」）
   course?: { titleJa: string; titleEn: string; carFree: boolean; noteJa: string; noteEn: string; stops: HiddenStop[] };
   nearby: { name: string; nameEn: string; kind: string; what: string; whatEn: string; coords: [number, number]; url: string }[];
   baseMap?: boolean; // public/latitude/citymaps/spot-<slug>.json がある時
@@ -75,7 +76,7 @@ export type HiddenDot = {
 export const hiddenDots = (): HiddenDot[] => HIDDEN.map((s) => ({
   slug: s.slug, name: s.name, nameEn: s.nameEn, prefectureJa: s.prefectureJa, prefecture: s.prefecture, region: s.region,
   lat: s.coords[0], lon: s.coords[1], score: s.monthScore, note: s.monthNote, peakNote: s.peakNote, peakNoteJa: s.peakNoteJa,
-  banner: s.banner ? latAsset(`hidden/${s.slug}/${s.banner.file}`) : undefined, bannerY: s.banner?.y, seasonal: s.seasonal,
+  banner: s.banner ? latAsset(`hidden/${s.slug}/thumb.webp`) : s.bannerOg, bannerY: s.banner?.y, seasonal: s.seasonal, // 2026-11-14 banner はカード用の小さな WebP
 }));
 
 // その月のおすすめ順（点の高い順 → 季節の所を先に → 北から）

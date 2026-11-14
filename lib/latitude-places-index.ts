@@ -117,7 +117,8 @@ export function placeCountries(now: number = Date.now()): PlaceCountry[] {
       peek: (() => {
         const b = (BANNERS as Record<string, { file: string; pos?: string }>)[c.slug];
         const one = (t: string) => (t.match(/^.*?[。.](?=\s|$)/)?.[0] ?? t).trim();   // 紹介は最初の1文だけ
-        return { banner: b ? latAsset(b.file) : undefined, pos: b?.pos, intro: one(c.intro), introJa: one(c.introJa), n: c.places.length };
+        return { banner: b ? latAsset(`banners/thumb/${c.slug}.webp`) : undefined,   // 2026-11-14 カード用の小さな WebP（scripts の make_thumbs）
+                  pos: b?.pos, intro: one(c.intro), introJa: one(c.introJa), n: c.places.length };
       })(),
     };
     m.set(code, [...(m.get(code) ?? []), city]);

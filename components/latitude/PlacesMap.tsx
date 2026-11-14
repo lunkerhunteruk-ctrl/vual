@@ -491,6 +491,13 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     return dots.map((d) => ({ ...d, label: place.get(d.q.slug) ?? null, fs }));
   })() : [];
 
+  // 2026-11-14 ユーザー：サムネをすぐ出す。地方を開いたら、その地方の町と名所のサムネ（小さな WebP）を先に読み込んでおく
+  const warmKey = regG ? `${regG.key}:${marks.length}` : '';
+  useEffect(() => {
+    if (!regG) return;
+    const urls = [...marks.map((m) => m.q.peek?.banner ?? m.q.issue?.cover), ...(hidden ?? []).filter((d) => d.region === regG.key).map((d) => d.banner)].filter((u): u is string => !!u);
+    urls.forEach((u) => { const im = new Image(); im.src = u; });
+  }, [warmKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // ── 穴場の点（日本に寄った時）。点の大きさと濃さは、選んだ月のおすすめ度（月を決めていない時は、いちばん良い月の点）──
   const scoreOf = (d: HiddenDot) => (month ? d.score[month - 1] : Math.max(...d.score));
   const hdots = sel === 'JP' && hidden && showCities && reg ? hidden.filter((d) => d.region === reg && scoreOf(d) > 0).map((d) => {
