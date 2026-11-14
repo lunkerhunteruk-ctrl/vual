@@ -6,7 +6,8 @@ import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '
 import TravellerMap from '@/components/latitude/TravellerMap';
 import { mapTravellers } from '@/lib/latitude-map';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
-import { CITIES } from '@/lib/latitude-places';
+import { placeCountries } from '@/lib/latitude-places-index';
+import { REGIONS } from '@/lib/latitude-regions';
 
 // 2026-10-30 LATITUDE の人のページ。号の番号をやめ、名前のある6人がそれぞれ旅する形にした（設定書は vault.vual.jp/docs/LATITUDE-CHARACTERS.md）。
 // 名前・住む街・旅をする理由・持ち物の印・その人の全部の1日。のちの部屋（3D）や会話の入口もここに置く
@@ -102,16 +103,46 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
         ) : (
           <p className="mx-auto max-w-6xl px-4 text-[14px] md:px-8" style={{ color: MUTE }}>{ja ? '最初の1日を準備しています。' : 'Her first day is on its way.'}</p>
         )}
-        {/* 2026-11-01 その人の街のページ（おすすめの店・回り方・何を着るか）へ */}
-        {CITIES.some((c) => c.person === p.slug) && (
-          <p className="mx-auto mt-8 flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-4 text-[11px] uppercase tracking-[0.3em] md:px-8">
-            {CITIES.filter((c) => c.person === p.slug).map((c) => (
-              <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
-                {ja ? `${p.ja.name}の${c.nameJa}のおすすめ` : `Where ${p.name} would go in ${c.name}`}&nbsp;&nbsp;→
-              </Link>
-            ))}
-          </p>
-        )}
+        {/* 2026-11-01 その人の街のページ（おすすめの店・回り方・何を着るか）へ。
+            2026-11-14 ユーザー：「凛の〇〇のおすすめ →」を50回以上並べず、見出し1回＋地方（外国は国）ごとに北から町の名前だけ。号のある町は点で印 */}
+        {(() => {
+          const groups = placeCountries().flatMap((co) => {
+            const mine = co.cities.filter((c) => c.person?.slug === p.slug && !c.preview);
+            if (!mine.length) return [];
+            const rs = REGIONS[co.code];
+            const byNorth = (a: { lat: number }, b: { lat: number }) => b.lat - a.lat;
+            if (!rs) return [{ key: co.code, label: ja ? co.name.ja : co.name.en, cities: mine.sort(byNorth) }];
+            return rs.map((r) => ({ key: `${co.code}-${r.key}`, label: ja ? r.ja : r.en, cities: mine.filter((c) => c.region === r.key).sort(byNorth) })).filter((g) => g.cities.length);
+          });
+          const n = groups.reduce((a, g) => a + g.cities.length, 0);
+          if (!n) return null;
+          return (
+            <div className="mx-auto mt-14 max-w-6xl px-4 md:px-8">
+              <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+                {ja ? `${p.ja.name}のおすすめの町　${n}` : `Where ${p.name} would go  ·  ${n} towns`}
+              </p>
+              <dl className="mt-5 flex flex-col">
+                {groups.map((g) => (
+                  <div key={g.key} className="grid grid-cols-1 gap-1 border-t py-3 md:grid-cols-[140px_minmax(0,1fr)] md:gap-6" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
+                    <dt className="text-[10px] uppercase tracking-[0.3em] md:pt-[3px]" style={{ color: MUTE }}>{g.label}</dt>
+                    <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-1.5 text-[14px]">
+                      {g.cities.map((c) => (
+                        <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline" style={{ color: INK }}>
+                          {c.issue && <span aria-label={ja ? '号あり' : 'with an issue'} title={ja ? '映像とカルーセルの号がある町' : 'A town with an issue'} className="inline-block h-[6px] w-[6px] rounded-full" style={{ background: INK }} />}
+                          {ja ? c.nameJa : c.name}
+                        </Link>
+                      ))}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 flex items-center gap-1.5 text-[10px] tracking-[0.15em]" style={{ color: MUTE }}>
+                <span className="inline-block h-[6px] w-[6px] rounded-full" style={{ background: INK }} />
+                {ja ? `${p.ja.name}の1日の映像とカルーセルがある町` : `Towns with ${p.name}'s day on film`}
+              </p>
+            </div>
+          );
+        })()}
       </section>
 
       {/* 2026-10-30 その人の旅の跡を濃く、ほかの5人は薄く */}

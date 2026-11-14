@@ -1,3 +1,4 @@
+import LocaleLink from '@/components/latitude/LocaleLink';
 import Link from 'next/link';
 import { assetUrl, issueNo, liveIssues, personOf, type LatitudeIssue } from '@/lib/latitude';
 import { PagesViewer } from './PagesViewer';
@@ -73,14 +74,9 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
         {(['ja', 'en'] as const).map((l, n) => (
           <span key={l} className="flex items-center gap-2">
             {n > 0 && <span style={{ color: MUTE }}>/</span>}
-            <Link
-              href={`/${l}/latitude${current ? `/${current}` : ''}`}
-              hrefLang={l}
-              aria-current={l === locale ? 'true' : undefined}
-              style={{ color: l === locale ? INK : MUTE }}
-            >
-              {l}
-            </Link>
+            <LocaleLink to={l} href={`/${l}/latitude${current ? `/${current}` : ''}`} style={{ color: l === locale ? INK : MUTE }}>
+              <span aria-current={l === locale ? 'true' : undefined}>{l}</span>
+            </LocaleLink>
           </span>
         ))}
       </div>

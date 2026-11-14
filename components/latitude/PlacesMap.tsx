@@ -487,7 +487,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     const q = pos('JP', { ...p, lat: d.lat, lon: d.lon } as PlaceCity);
     const { sx, sy } = toScreen(q.x, q.y);
     const sc = scoreOf(d);
-    return { d, sx, sy, sc, dia: Math.round(reg ? 6 + sc * 2.6 : wide ? 4 + sc * 1.6 : 3 + sc * 1.0) }; // 国の段階は小さく（町の数字の丸を覆わない）
+    return { d, sx, sy, sc, dia: Math.round(reg ? 4 + sc * 1.1 : wide ? 3 + sc * 0.8 : 3 + sc * 0.6) }; // 2026-11-14 ユーザー：町の赤い点が主、穴場の緑は小さめ（国の段階はさらに小さく）
   }).sort((a, b) => a.sc - b.sc) : [];
   const cardD = card ? hidden?.find((d) => d.slug === card) : undefined;
 
@@ -651,7 +651,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           const inner = (
             <>
               <span className="absolute block rounded-full transition-transform duration-150 group-hover:scale-[1.5]"
-                style={{ width: q.issue ? 11 : 8, height: q.issue ? 11 : 8, left: q.issue ? -5.5 : -4, top: q.issue ? -5.5 : -4, background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1.5' : undefined }} />
+                style={{ width: q.issue ? 14 : 11, height: q.issue ? 14 : 11, left: q.issue ? -7 : -5.5, top: q.issue ? -7 : -5.5, background: q.upcoming ? PAPER : RED, border: q.upcoming ? `1.5px solid ${RED}` : undefined, boxShadow: `0 0 0 2px ${PAPER}`, scale: on ? '1.5' : undefined }} />
               {q.issue && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={q.issue.cover} alt="" loading="lazy"
@@ -692,13 +692,19 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
           const nm = ja ? d.name : d.nameEn;
           return (
             <button key={d.slug} type="button" onClick={(e) => { e.stopPropagation(); setCard(on ? null : d.slug); }}
-              className={`group absolute block h-0 w-0 cursor-pointer ${on ? 'z-[3]' : `${reg ? 'z-[2]' : 'z-[1]'} hover:z-[3] focus-visible:z-[3]`}`}
+              className={`group absolute block h-0 w-0 cursor-pointer ${on ? 'z-[3]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
               style={{ left: sx, top: sy, animation: 'lat-fade 400ms ease-out' }} aria-pressed={on}
               aria-label={`${nm}（${ja ? d.prefectureJa : d.prefecture}）${month ? ` ${ja ? `${month}月のおすすめ度` : `${MONTH_EN[month - 1]}`} ${sc}/5` : ''}`}>
               <span className="absolute -left-3 -top-3 block h-6 w-6" />
-              <span className="absolute block rounded-full transition-all duration-300 group-hover:scale-[1.25]"
-                style={{ width: dia, height: dia, left: -dia / 2, top: -dia / 2, background: MOSS, opacity: 0.35 + sc * 0.13, boxShadow: `0 0 0 ${on ? 3 : 1.5}px ${PAPER}` }} />
-              <span className={`pointer-events-none absolute whitespace-nowrap leading-none ${reg && sc >= 4 ? '' : 'hidden group-hover:block group-focus-visible:block'}`}
+              {month && sc >= 4 && (
+                // 2026-11-14 ユーザー：月を選んでいる時、その月のおすすめ（4以上）はポワンポワンとゆっくり点滅（輪が広がって消える）
+                <span className="lat-pulse pointer-events-none absolute block rounded-full"
+                  style={{ width: dia, height: dia, left: -dia / 2, top: -dia / 2, background: MOSS, animationDelay: `${(d.slug.length % 7) * 0.35}s` }} />
+              )}
+              <span className="absolute block rounded-full transition-all duration-300 group-hover:scale-[1.4]"
+                style={{ width: dia, height: dia, left: -dia / 2, top: -dia / 2, background: MOSS, opacity: month ? 0.35 + sc * 0.13 : 0.85, boxShadow: `0 0 0 ${on ? 3 : 1.5}px ${PAPER}` }} />
+              {/* 2026-11-14 ユーザー：穴場の名前は、乗せた時・押した時だけ（町の名前と重なるので） */}
+              <span className={`pointer-events-none absolute whitespace-nowrap leading-none ${on ? '' : 'hidden group-hover:block group-focus-visible:block'}`}
                 style={{ left: dia / 2 + 4, top: -6, fontFamily: SERIF, fontSize: reg ? 12 : 11, color: MOSS, textShadow: HALO }}>{nm}</span>
             </button>
           );
@@ -728,7 +734,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
             {ja ? '← 世界' : '← World'}
           </button>
         ))}
-        <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}@media (prefers-reduced-motion: reduce){.lat-cf{transition:none!important}}'}</style>
+        <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}@keyframes lat-pulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(3.2);opacity:0}100%{transform:scale(3.2);opacity:0}}.lat-pulse{animation:lat-pulse 2.8s ease-out infinite}@media (prefers-reduced-motion: reduce){.lat-cf{transition:none!important}.lat-pulse{animation:none;display:none}}'}</style>
       </div>
       <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
         {ja ? '地図データ ' : 'Map data '}
