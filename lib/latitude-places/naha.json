@@ -21,7 +21,15 @@
   "coords": [
    26.21253,
    127.69244
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "1月1日・2日",
+   "en": "Jan 1–2"
+  }
  },
  {
   "name": "清正陶器・壺屋窯",
@@ -44,7 +52,15 @@
   "coords": [
    26.21326,
    127.69178
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "首里染織館 suikara",
@@ -68,7 +84,15 @@
   "coords": [
    26.2198,
    127.72092
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–18:00",
+   "en": "10:30–18:00"
+  },
+  "closed": {
+   "ja": "火曜・年末年始・ウークイ（旧盆最終日）",
+   "en": "Tuesdays, Year-end/New Year, and Ukui (final day of Lunar Obon)"
+  }
  },
  {
   "name": "瑞泉酒造",
@@ -91,7 +115,15 @@
   "coords": [
    26.21547,
    127.72065
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "祝日・その他",
+   "en": "Public holidays and other irregular holidays"
+  }
  },
  {
   "name": "GARB DOMINGO",
@@ -115,7 +147,15 @@
   "coords": [
    26.21324,
    127.68972
-  ]
+  ],
+  "hours": {
+   "ja": "金〜火 9:30–13:00、14:30–17:00",
+   "en": "Fri–Tue 09:30–13:00 & 14:30–17:00"
+  },
+  "closed": {
+   "ja": "水曜・木曜",
+   "en": "Wednesdays and Thursdays"
+  }
  },
  {
   "name": "miyagiya",
@@ -139,7 +179,15 @@
   "coords": [
    26.21299,
    127.68722
-  ]
+  ],
+  "hours": {
+   "ja": "12:00–19:00",
+   "en": "12:00–19:00"
+  },
+  "closed": {
+   "ja": "水曜・木曜",
+   "en": "Wednesdays and Thursdays"
+  }
  },
  {
   "name": "COFFEE potohoto",
@@ -205,7 +253,11 @@
   "coords": [
    26.21299,
    127.71798
-  ]
+  ],
+  "closed": {
+   "ja": "月曜（祝日の場合は火曜）",
+   "en": "Mondays (Tuesdays if a public holiday)"
+  }
  },
  {
   "name": "安里屋すば",
@@ -227,6 +279,14 @@
   "coords": [
    26.21851,
    127.69604
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–15:30（L.O. 15:00）、18:00–24:00（L.O. 23:30）",
+   "en": "11:00–15:30 (last order 15:00), 18:00–24:00 (last order 23:30)"
+  },
+  "closed": {
+   "ja": "日曜・月曜・祝日",
+   "en": "Sundays, Mondays, and public holidays"
+  }
  }
 ]

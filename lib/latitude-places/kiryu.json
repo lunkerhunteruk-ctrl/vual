@@ -51,7 +51,15 @@
   "whatEn": "An udon and soba house in Honcho 1-chome founded in 1887. Its wide-ribbon Kiryu himokawa udon is boiled to order. Closed Mondays and fourth Tuesdays.",
   "note": "ゆでたての幅広なひもかわを、カレーせいろで。",
   "noteEn": "Freshly boiled wide himokawa ribbons, with the curry dipping broth.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "火〜日 11:30–14:30（L.O.）、金〜日 17:30–20:30（L.O.）",
+   "en": "Tue–Sun 11:30–14:30 (last order), Fri–Sun 17:30–20:30 (last order)"
+  },
+  "closed": {
+   "ja": "月曜・第4火曜（月曜が祝日の場合は午前の部のみ営業、翌火曜休）",
+   "en": "Mondays and 4th Tuesdays (open morning only on Monday public holidays, closed next Tuesday)"
+  }
  },
  {
   "name": "Ju the burger",
@@ -68,7 +76,15 @@
   "whatEn": "A burger shop in Honcho 5-chome pairing 100% coarsely ground beef patties with no filler and crisp-toasted buns. 11:00–16:00, closed Tuesdays and Wednesdays.",
   "note": "表面を焼いたバンズに、粗挽きのパティをそのまま。",
   "noteEn": "Coarsely ground beef in a crisp-toasted bun, kept simple.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–16:00（L.O. 15:30）",
+   "en": "11:00–16:00 (last order 15:30)"
+  },
+  "closed": {
+   "ja": "火曜・水曜",
+   "en": "Tuesdays & Wednesdays"
+  }
  },
  {
   "name": "トラットリア バルボン",
@@ -86,7 +102,11 @@
   "whatEn": "A standalone Italian trattoria on Itoya-dori in Eirakucho, serving antipasti, pasta, cheese fondue and homemade cakes at lunch. Closed Tuesdays.",
   "note": "糸屋通りの一軒家で、前菜とパスタの昼ごはん。",
   "noteEn": "Antipasti and pasta for lunch in the house on Itoya-dori.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–15:00（L.O. 14:00）、17:00–21:30（L.O. 21:00）",
+   "en": "11:00–15:00 (last order 14:00), 17:00–21:30 (last order 21:00)"
+  }
  },
  {
   "name": "Itoya coffee factory",
@@ -140,7 +160,15 @@
   "whatEn": "A specialty coffee stand and craft shop in Hirosawacho. Hot coffee can be brewed by French press, metal filter or paper filter, alongside local maker goods. Closed Tuesdays.",
   "note": "金属フィルターかペーパーか、同じ豆でも淹れ方で選びたい。",
   "noteEn": "Choose between metal and paper filter for the same beans.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:30–19:30（日曜 10:30–18:30）",
+   "en": "11:30–19:30 (Sun 10:30–18:30)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "000 ファクトリーショップ（笠盛）",
@@ -159,7 +187,15 @@
   "whatEn": "The factory shop of embroidery maker Kasamori (founded 1877), beside its sawtooth-roof workshop in Miyoshicho. Carries the full line of 000 thread jewelry; open first Saturdays and third Fri–Sat, weekdays by reservation.",
   "note": "金具のない糸の球体を、手のひらにのせて軽さを確かめる。",
   "noteEn": "Hold the thread spheres in your palm to feel how light they are without metal.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "第1土曜・第3金土 10:00–18:00（平日は事前予約制）",
+   "en": "1st Sat & 3rd Fri–Sat 10:00–18:00 (weekdays by reservation)"
+  },
+  "closed": {
+   "ja": "日曜・祝日（第1土曜・第3金土以外は要予約）",
+   "en": "Sundays & public holidays (open 1st Sat & 3rd Fri–Sat; weekdays by reservation)"
+  }
  },
  {
   "name": "OLN shop（井清織物）",
@@ -178,7 +214,11 @@
   "whatEn": "The mill shop of obi weaver Ise Orimono in Sakainocho, selling natural-fibre obi, bags, stoles, neck warmers and linen cloths woven on jacquard shuttle looms. Open weekdays and first Saturdays, 13:00–17:00.",
   "note": "織機のそばで、麻ふきんやネックウォーマーの手触りをみる。",
   "noteEn": "Feel the texture of the linen cloths and neck warmers beside the looms.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日・第1・第3土曜 13:00–17:00",
+   "en": "Weekdays, 1st & 3rd Sat 13:00–17:00"
+  }
  },
  {
   "name": "泉織物",
@@ -216,7 +256,15 @@
   "whatEn": "A bakery and cafe in Higashihisakatacho inside a 1920 English-bond red-brick sawtooth-roof mill, a registered tangible cultural property.",
   "note": "高いのこぎり屋根の下で、焼きたてのパンと珈琲。",
   "noteEn": "Freshly baked bread and coffee under the high sawtooth roof.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "8:00–17:00（L.O. 15:30）",
+   "en": "8:00–17:00 (last order 15:30)"
+  },
+  "closed": {
+   "ja": "無休（年末年始12/29–1/2休）",
+   "en": "Open every day (closed Dec 29–Jan 2)"
+  }
  },
  {
   "name": "わびさびや",
@@ -234,6 +282,14 @@
   "whatEn": "A handmade gelateria in Shinjuku making egg-free gelato from fresh local Kiryu milk, Japanese botanicals and seasonal fruit. 11:00–17:00, closed Tuesdays and Wednesdays.",
   "note": "ほうじ茶や季節の果実のジェラートを、ひとつずつ。",
   "noteEn": "Roasted green tea and seasonal fruit gelato, one scoop at a time.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜",
+   "en": "Tuesdays & Wednesdays"
+  }
  }
 ]

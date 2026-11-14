@@ -40,7 +40,15 @@
   "coords": [
    34.49238,
    135.76602
-  ]
+  ],
+  "hours": {
+   "ja": "8:30–17:00（売り切れ次第終了）",
+   "en": "8:30–17:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "火曜・第1・第3水曜",
+   "en": "Tuesdays, 1st & 3rd Wednesdays"
+  }
  },
  {
   "name": "やさい菓子工房 cocoai",
@@ -61,7 +69,11 @@
   "coords": [
    34.5132,
    135.79297
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  }
  },
  {
   "name": "THREE MOUNTAIN COFFEE",
@@ -82,7 +94,11 @@
   "coords": [
    34.51375,
    135.79415
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  }
  },
  {
   "name": "ギャラリーカフェ narairo",
@@ -103,7 +119,15 @@
   "coords": [
    34.48469,
    135.79322
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00（L.O. 16:00）",
+   "en": "9:00–17:00 (last order 16:00)"
+  },
+  "closed": {
+   "ja": "水曜・日曜（展示会開催期は日曜ギャラリー営業）",
+   "en": "Wednesdays & Sundays (gallery open on Sundays during exhibitions)"
+  }
  },
  {
   "name": "自家焙煎珈琲えんれい",
@@ -163,7 +187,15 @@
   "coords": [
    34.50975,
    135.79201
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00、17:00–21:00",
+   "en": "11:30–14:00, 17:00–21:00"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "tomato monkey",
@@ -184,6 +216,14 @@
   "coords": [
    34.47763,
    135.76145
-  ]
+  ],
+  "hours": {
+   "ja": "金〜日 11:00–16:00、木〜日 18:00–23:00（水曜は販売のみ）",
+   "en": "Fri–Sun 11:00–16:00, Thu–Sun 18:00–23:00 (Wed retail only)"
+  },
+  "closed": {
+   "ja": "月曜・火曜（水曜は販売のみ）",
+   "en": "Mondays & Tuesdays (Wed retail only)"
+  }
  }
 ]

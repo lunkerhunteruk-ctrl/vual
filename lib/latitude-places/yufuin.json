@@ -42,7 +42,11 @@
   "coords": [
    33.26569,
    131.3631
-  ]
+  ],
+  "hours": {
+   "ja": "13:00–17:00（17:00–21:00は宿泊客限定・予約制）",
+   "en": "13:00–17:00 (17:00–21:00 for hotel guests only, by reservation)"
+  }
  },
  {
   "name": "由布院 鞠智",
@@ -79,7 +83,15 @@
   "whatEn": "A cookie shop with an attached gallery on Yunotsubo Street. It bakes over 25 varieties of butter cookies from eight doughs with nuts and dried fruit.",
   "note": "ごまやダージリンのクッキーを、少しずつ選んでみたい。",
   "noteEn": "I'd like to pick out a few of the sesame and Darjeeling cookies.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日は営業・振替休日あり）",
+   "en": "Wednesdays (open on public holidays, substitute holiday)"
+  }
  },
  {
   "name": "telato",
@@ -114,7 +126,15 @@
   "whatEn": "A small bakery on the Tsukahara Plateau baking additive-free bread with natural yeast, without margarine or shortening. Open 9:00–16:00, closed Tuesdays and Wednesdays (open on public holidays).",
   "note": "火水は休み。塚原の朝に、焼きたてのパンを一つ買いたい。",
   "noteEn": "Closed Tuesdays and Wednesdays. On a Tsukahara morning, I'd like to buy one loaf fresh from the oven.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–16:00",
+   "en": "9:00–16:00"
+  },
+  "closed": {
+   "ja": "火・水曜（祝日は営業）",
+   "en": "Tuesdays & Wednesdays (open on public holidays)"
+  }
  },
  {
   "name": "湯布院ゆふふ",
@@ -149,7 +169,15 @@
   "whatEn": "An open-air forest café in Kawanishi, a branch of roaster CAFE BON VOYAGE! Coffee roasted on a large German roaster is served with a listening room of tube amps and large speakers, or on wooden benches. Open 11:00–17:00, closed Tuesdays and Wednesdays.",
   "note": "木製ベンチで外の空気を吸いながら、ブレンドを一杯。",
   "noteEn": "A cup of the house blend on a wooden bench, taking in the forest air.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays & Wednesdays"
+  }
  },
  {
   "name": "湯布珈琲",
@@ -166,7 +194,15 @@
   "whatEn": "A roastery café in a renovated old townhouse along Yunotsubo Street. It serves coffee and espresso roasted in-house on a Fuji Royal R-105, and sells beans, drip bags and original tenugui and cups.",
   "note": "店内で焙煎した豆を一袋と、手拭いの棚も見てみたい。",
   "noteEn": "A bag of beans roasted in-house, and a look at the shelf of tenugui.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "CAFE LA RUCHE",
@@ -185,7 +221,15 @@
   "whatEn": "A bakery café on the shore of Lake Kinrinko, serving natural-yeast croissants baked in-house and house-roasted coffee, with a gallery and shop on the second floor.",
   "note": "湖の見える席でクロワッサンを食べて、二階のギャラリーへ。",
   "noteEn": "A croissant at a lakeside seat, then upstairs to the gallery.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–16:30（L.O. 16:00、2F 10:00–16:00）",
+   "en": "9:00–16:30 (last order 16:00; 2F gallery & shop 10:00–16:00)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "イタリア家庭料理 南の風",
@@ -204,7 +248,15 @@
   "whatEn": "A home-style Italian restaurant set in the rice fields of the Yufuin basin, serving fresh handmade pasta, stone-oven pizza, baked sweets and bread with local seasonal ingredients. Open 10:00–22:00, closed Tuesdays.",
   "note": "手打ちのパスタか石窯のピッツァを、昼の明るい時間に。",
   "noteEn": "Handmade pasta or stone-oven pizza, in the bright hours of midday.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–22:00",
+   "en": "10:00–22:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "洋食の店 la porte",
@@ -239,7 +291,15 @@
   "whatEn": "A shop for Oita local dishes and sweets in Kawaminami, serving hand-stretched dango-jiru noodle soup, toriten, yaseuma and mochi dishes. Open 10:00–17:00 (last order 16:30).",
   "note": "だんご汁で温まったあと、きな粉のやせうまを一つ。",
   "noteEn": "After warming up with dango-jiru, a plate of kinako-dusted yaseuma.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:00（L.O. 16:30）",
+   "en": "10:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "ゆふいん蛟龍窯",

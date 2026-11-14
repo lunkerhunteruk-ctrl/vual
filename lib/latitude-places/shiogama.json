@@ -21,7 +21,15 @@
   "coords": [
    38.31652,
    141.01924
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜、年末年始",
+   "en": "Sundays and New Year holidays"
+  }
  },
  {
   "name": "太田與八郎商店",
@@ -44,7 +52,15 @@
   "coords": [
    38.31783,
    141.01957
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・祝日",
+   "en": "Sundays and public holidays"
+  }
  },
  {
   "name": "蒲鉾の水野 本店",
@@ -66,7 +82,15 @@
   "coords": [
    38.31946,
    141.0225
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–17:30",
+   "en": "9:30–17:30"
+  },
+  "closed": {
+   "ja": "無休（年末年始除く）",
+   "en": "Open every day (except year-end/New Year)"
+  }
  },
  {
   "name": "Gelateria Fruits Laboratory",
@@ -87,7 +111,15 @@
   "coords": [
    38.31646,
    141.01854
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業、翌日休）",
+   "en": "Mondays (open on public holidays, closed the following day)"
+  }
  },
  {
   "name": "梅花堂 本店",
@@ -130,7 +162,11 @@
   "coords": [
    38.31186,
    141.01794
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–17:00",
+   "en": "9:30–17:00"
+  }
  },
  {
   "name": "器の郷 ひろ埜 塩竈店",
@@ -152,7 +188,15 @@
   "coords": [
    38.31659,
    141.0186
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "第1・3・5日曜",
+   "en": "1st, 3rd, and 5th Sundays"
+  }
  },
  {
   "name": "birdo space",
@@ -173,7 +217,15 @@
   "coords": [
    38.31697,
    141.0273
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "レストラン シェ・ヌー",
@@ -195,7 +247,15 @@
   "coords": [
    38.31858,
    141.02137
-  ]
+  ],
+  "hours": {
+   "ja": "11:45–13:30（L.O.）・17:30–19:30（L.O.）",
+   "en": "11:45–13:30 (last order), 17:30–19:30 (last order)"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業）、木曜ディナー、不定休",
+   "en": "Mondays (open on public holidays), Thursday dinner, and irregular holidays"
+  }
  },
  {
   "name": "ラ リエート",

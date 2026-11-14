@@ -35,7 +35,15 @@
   "coords": [
    53.83111,
    -1.95533
-  ]
+  ],
+  "hours": {
+   "ja": "水〜土 10:00–17:00、日〜火 11:00–16:00",
+   "en": "Wed–Sat 10:00–17:00, Sun–Tue 11:00–16:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Taylor's on the Green",
@@ -54,7 +62,11 @@
   "coords": [
    53.86506,
    -1.90975
-  ]
+  ],
+  "hours": {
+   "ja": "日〜木 11:30–21:00、金土 11:30–23:00",
+   "en": "Sun–Thu 11:30–21:00, Fri–Sat 11:30–23:00"
+  }
  },
  {
   "name": "The Boltmakers Arms",
@@ -145,7 +157,15 @@
   "coords": [
    53.83123,
    -1.94806
-  ]
+  ],
+  "hours": {
+   "ja": "火〜木 17:00–22:00、金 15:00–23:00、土 12:00–23:00、日 12:00–22:30",
+   "en": "Tue–Thu 17:00–22:00, Fri 15:00–23:00, Sat 12:00–23:00, Sun 12:00–22:30"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "Dog & Gun",
@@ -163,7 +183,11 @@
   "coords": [
    53.80456,
    -1.92792
-  ]
+  ],
+  "hours": {
+   "ja": "月〜金 11:30–14:30・17:00–22:30、土 11:30–22:30、日 11:30–22:00",
+   "en": "Mon–Fri 11:30–14:30 & 17:00–22:30, Sat 11:30–22:30, Sun 11:30–22:00"
+  }
  },
  {
   "name": "The Old Parcels Office",
@@ -184,7 +208,15 @@
   "coords": [
    53.868,
    -1.90183
-  ]
+  ],
+  "hours": {
+   "ja": "水木日 9:00–17:00、金土 9:00–19:00",
+   "en": "Wed, Thu & Sun 9:00–17:00, Fri–Sat 9:00–19:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜（学校休暇中や列車運行日のうち一部営業）",
+   "en": "Mondays, Tuesdays (open selected days during school holidays and train days)"
+  }
  },
  {
   "name": "Mrs Beighton's Sweet Shop",
@@ -202,7 +234,15 @@
   "coords": [
    53.83147,
    -1.95602
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "The Souk",
@@ -220,7 +260,15 @@
    53.82911,
    -1.99317
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "12:30–17:00",
+   "en": "12:30–17:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Siân Alison Designs",
@@ -238,7 +286,15 @@
    53.82956,
    -1.98606
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "月・水〜金 11:30–17:00、土日 10:30–17:00（火は学校休暇中のみ 11:00–17:00）",
+   "en": "Mon & Wed–Fri 11:30–17:00, Sat–Sun 10:30–17:00 (Tue 11:00–17:00 during school holidays)"
+  },
+  "closed": {
+   "ja": "火曜（学校休暇中は営業）",
+   "en": "Tuesdays (open during school holidays)"
+  }
  },
  {
   "name": "Hawksbys",
@@ -256,6 +312,14 @@
    53.82936,
    -1.98883
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "3〜12月 11:00–17:00、1〜2月 木〜日 11:00–16:00",
+   "en": "Mar–Dec 11:00–17:00, Jan–Feb Thu–Sun 11:00–16:00"
+  },
+  "closed": {
+   "ja": "火曜（1〜2月は月〜水曜）",
+   "en": "Tuesdays (Mon–Wed in Jan–Feb)"
+  }
  }
 ]

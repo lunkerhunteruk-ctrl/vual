@@ -21,7 +21,15 @@
   "coords": [
    35.49613,
    134.22707
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜・年末年始",
+   "en": "Wednesdays, New Year"
+  }
  },
  {
   "name": "因州・中井窯",
@@ -111,7 +119,15 @@
   "coords": [
    35.49613,
    134.22697
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00、17:00–21:00（L.O. 20:00）",
+   "en": "11:30–14:00, 17:00–21:00 (last order 20:00)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "cafe restaurant SUKATTO",
@@ -133,7 +149,15 @@
   "coords": [
    35.54259,
    134.23683
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00（L.O. 17:30）",
+   "en": "11:00–18:00 (last order 17:30)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "春歌秋灯 川端店",
@@ -155,7 +179,15 @@
   "coords": [
    35.49922,
    134.23127
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–14:00、17:00–22:00（L.O. 21:00）",
+   "en": "11:00–14:00, 17:00–22:00 (last order 21:00)"
+  },
+  "closed": {
+   "ja": "月曜・火曜・水曜昼（不定休あり）",
+   "en": "Mondays, Tuesdays, Wednesday lunch (irregular holidays)"
+  }
  },
  {
   "name": "タカハマカフェ",
@@ -178,7 +210,15 @@
   "coords": [
    35.54337,
    134.23731
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（L.O. 16:30）",
+   "en": "10:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "喫茶 ベニ屋",
@@ -200,7 +240,15 @@
   "coords": [
    35.49669,
    134.22914
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:30",
+   "en": "8:00–17:30"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "WEEKDAY COFFEE ROASTERS",
@@ -243,7 +291,15 @@
   "coords": [
    35.54184,
    134.23675
-  ]
+  ],
+  "hours": {
+   "ja": "平日 10:00–17:00、土日祝 9:30–17:30",
+   "en": "Weekdays 10:00–17:00, weekends & holidays 9:30–17:30"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "鳥取宝月堂",
@@ -310,7 +366,11 @@
   "coords": [
    35.49595,
    134.22709
-  ]
+  ],
+  "closed": {
+   "ja": "不定休（年末年始休）",
+   "en": "Irregular (closed New Year)"
+  }
  },
  {
   "name": "Am's",
@@ -333,7 +393,15 @@
   "coords": [
    35.49811,
    134.22207
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "無休（1月1日除く）",
+   "en": "Open every day (except Jan 1)"
+  }
  },
  {
   "name": "アートスペースからふる",
@@ -351,7 +419,15 @@
    35.49905,
    134.23056
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "月–土 9:00–17:00",
+   "en": "Mon–Sat 9:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・祝日・年末年始",
+   "en": "Sundays, public holidays, New Year"
+  }
  },
  {
   "name": "時代物専門店 風庵",
@@ -369,7 +445,15 @@
    35.49989,
    134.22545
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "taone",
@@ -423,7 +507,11 @@
    35.48318,
    134.23981
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  }
  },
  {
   "name": "NONBODY",
@@ -441,6 +529,14 @@
    35.49495,
    134.22211
   ],
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–19:00",
+   "en": "11:00–19:00"
+  },
+  "closed": {
+   "ja": "木曜（祝日・年末年始除く）",
+   "en": "Thursdays (except public holidays and New Year)"
+  }
  }
 ]

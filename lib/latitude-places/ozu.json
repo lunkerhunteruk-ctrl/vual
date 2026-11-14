@@ -20,7 +20,15 @@
   "coords": [
    33.51093,
    132.54482
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:00",
+   "en": "8:00–17:00"
+  },
+  "closed": {
+   "ja": "第2土曜・日曜・祝日・年末年始",
+   "en": "2nd Saturdays, Sundays, public holidays, and New Year holidays"
+  }
  },
  {
   "name": "養老酒造",
@@ -64,7 +72,15 @@
   "coords": [
    33.50783,
    132.54793
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00（L.O. 17:00）",
+   "en": "11:00–18:00 (last order 17:00)"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "冨永松栄堂",
@@ -85,7 +101,15 @@
   "coords": [
    33.50631,
    132.54811
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "BREAD&SWEETS yumehonoka",
@@ -127,7 +151,15 @@
   "coords": [
    33.50798,
    132.5465
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00（L.O. 14:00）・17:30–22:00（L.O. 22:00）",
+   "en": "11:30–14:00 (last order 14:00), 17:30–22:00 (last order 22:00)"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業、翌火曜休）",
+   "en": "Mondays (open on public holidays, closed the following Tuesday)"
+  }
  },
  {
   "name": "まちなか珈琲焙煎所",

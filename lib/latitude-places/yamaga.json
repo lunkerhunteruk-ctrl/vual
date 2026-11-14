@@ -43,7 +43,15 @@
   "coords": [
    33.0003,
    130.73568
-  ]
+  ],
+  "hours": {
+   "ja": "8:30–17:30",
+   "en": "8:30–17:30"
+  },
+  "closed": {
+   "ja": "日曜・祝日・1–3月の土曜",
+   "en": "Sundays, public holidays, and Saturdays Jan–Mar"
+  }
  },
  {
   "name": "木屋本店",
@@ -88,7 +96,15 @@
   "coords": [
    33.01107,
    130.68776
-  ]
+  ],
+  "hours": {
+   "ja": "月–金 8:00–17:00、土日祝 9:00–16:30",
+   "en": "Mon–Fri 8:00–17:00, weekends & holidays 9:00–16:30"
+  },
+  "closed": {
+   "ja": "1月1日–4日",
+   "en": "Jan 1–4"
+  }
  },
  {
   "name": "ヤマノテ",
@@ -111,7 +127,15 @@
   "coords": [
    33.01791,
    130.68656
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜・水曜",
+   "en": "Mondays, Tuesdays, and Wednesdays"
+  }
  },
  {
   "name": "Différence",
@@ -133,7 +157,15 @@
   "coords": [
    33.01394,
    130.70008
-  ]
+  ],
+  "hours": {
+   "ja": "木–土 10:00–16:00（短縮営業中、通常 月・木–土 10:00–17:00）",
+   "en": "Thu–Sat 10:00–16:00 (reduced hours; regular Mon, Thu–Sat 10:00–17:00)"
+  },
+  "closed": {
+   "ja": "火曜・水曜・日曜",
+   "en": "Tuesdays, Wednesdays, and Sundays"
+  }
  },
  {
   "name": "かじや窯",
@@ -177,7 +209,15 @@
   "coords": [
    33.01231,
    130.68803
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日は営業）・年末年始",
+   "en": "Wednesdays (open on public holidays) and New Year"
+  }
  },
  {
   "name": "琥珀の刻",
@@ -198,7 +238,15 @@
   "coords": [
    33.10629,
    130.69411
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00（L.O. 17:30）",
+   "en": "11:00–18:00 (last order 17:30)"
+  },
+  "closed": {
+   "ja": "水曜（不定休あり）",
+   "en": "Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "gardencafe528",
@@ -220,7 +268,15 @@
   "coords": [
    32.99971,
    130.7373
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–17:00",
+   "en": "11:30–17:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "西益屋",
@@ -241,7 +297,11 @@
   "coords": [
    33.01499,
    130.68844
-  ]
+  ],
+  "closed": {
+   "ja": "1月1日",
+   "en": "Jan 1"
+  }
  },
  {
   "name": "山鹿和栗洋菓子店 An",
@@ -263,7 +323,15 @@
   "coords": [
    33.02945,
    130.76923
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（カフェ L.O. 16:30）",
+   "en": "10:00–17:00 (cafe last order 16:30)"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は翌日）",
+   "en": "Tuesdays (following day if public holiday)"
+  }
  },
  {
   "name": "ricca",
@@ -285,7 +353,15 @@
   "coords": [
    32.99695,
    130.72213
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00（喫茶 17:00まで）",
+   "en": "10:00–18:00 (cafe until 17:00)"
+  },
+  "closed": {
+   "ja": "火曜・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "穏Café あたたかい木",
@@ -307,7 +383,15 @@
   "coords": [
    33.0183,
    130.68858
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:00（L.O. 15:00）",
+   "en": "11:00–16:00 (last order 15:00)"
+  },
+  "closed": {
+   "ja": "木曜・金曜・毎月1日（土日の場合は営業）",
+   "en": "Thursdays, Fridays, and 1st of each month (open if weekend)"
+  }
  },
  {
   "name": "お食事 彩座",
@@ -329,7 +413,15 @@
   "coords": [
    33.01374,
    130.68872
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–14:00、18:00–22:00",
+   "en": "11:00–14:00, 18:00–22:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "菊鹿ワイナリー レストラン",
@@ -351,6 +443,14 @@
   "coords": [
    33.06351,
    130.76774
-  ]
+  ],
+  "hours": {
+   "ja": "木–日・祝 11:00–14:00（カフェ 11:00–16:30、テイクアウト 10:00–16:30）",
+   "en": "Thu–Sun & public holidays 11:00–14:00 (cafe 11:00–16:30, takeout 10:00–16:30)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  }
 ]

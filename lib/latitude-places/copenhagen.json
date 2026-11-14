@@ -3,7 +3,10 @@
   "name": "Studio Arhoj",
   "nameEn": "Studio Arhoj",
   "category": "craft",
-  "tags": ["ceramics", "glass"],
+  "tags": [
+   "ceramics",
+   "glass"
+  ],
   "area": "インナーシティ",
   "areaEn": "Indre By",
   "address": "Skindergade 7, 1159 København K",
@@ -13,7 +16,18 @@
   "note": "窓の外から、ガラスを吹くところが見える。棚より先に、工房を見る。",
   "noteEn": "You can watch them blow glass from the street. Look at the workshop before the shelves.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.6806, 12.57588]
+  "coords": [
+   55.6806,
+   12.57588
+  ],
+  "hours": {
+   "ja": "10:00–18:00（本店土曜は 9:00–19:00）",
+   "en": "10:00–18:00 (HQ & Flagship Sat 9:00–19:00)"
+  },
+  "closed": {
+   "ja": "元日・祝日など",
+   "en": "Public holidays (Jan 1, Easter, Constitution Day, Dec 24, etc.)"
+  }
  },
  {
   "name": "Conditori La Glace",
@@ -28,7 +42,10 @@
   "note": "1870年から同じ通りの店。スポーツケーキを一切れ頼む。",
   "noteEn": "On the same street since 1870. A slice of the Sportskage.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67859, 12.57359]
+  "coords": [
+   55.67859,
+   12.57359
+  ]
  },
  {
   "name": "Restaurant Schønnemann",
@@ -43,7 +60,10 @@
   "note": "昼しか開かない。図書館から歩いて行ける。",
   "noteEn": "Lunch only. An easy walk from the library.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.68277, 12.57608]
+  "coords": [
+   55.68277,
+   12.57608
+  ]
  },
  {
   "name": "Apotek 57",
@@ -58,13 +78,26 @@
   "note": "家具と同じ部屋で食べる。椅子を見るのも込みで。",
   "noteEn": "You eat in the same room as the furniture. Looking at the chairs is part of it.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.68695, 12.58583]
+  "coords": [
+   55.68695,
+   12.58583
+  ],
+  "hours": {
+   "ja": "月–金 8:00–16:00、土日 9:00–16:00",
+   "en": "Mon–Fri 8:00–16:00, Sat–Sun 9:00–16:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Lars Rank Keramik",
   "nameEn": "Lars Rank Keramik",
   "category": "craft",
-  "tags": ["ceramics"],
+  "tags": [
+   "ceramics"
+  ],
   "area": "クリスチャンハウン",
   "areaEn": "Christianshavn",
   "address": "Wildersgade 23A, 1408 København K",
@@ -74,7 +107,10 @@
   "note": "作っている場所で買える。カップは手に持ってから選ぶ。",
   "noteEn": "Bought where it's made. Pick the cup up before you choose.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67295, 12.5895]
+  "coords": [
+   55.67295,
+   12.5895
+  ]
  },
  {
   "name": "POPL",
@@ -89,7 +125,18 @@
   "note": "持ち帰って、港の縁で食べる。",
   "noteEn": "Take it away and eat by the harbour.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67761, 12.59782]
+  "coords": [
+   55.67761,
+   12.59782
+  ],
+  "hours": {
+   "ja": "17:00–22:30（L.O. 21:00）、土日ランチ 12:00–14:00",
+   "en": "17:00–22:30 (last order 21:00), Sat–Sun lunch 12:00–14:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Barr",
@@ -104,13 +151,26 @@
   "note": "古い倉庫の中で食べる。シュニッツェルで頼む。",
   "noteEn": "An old harbour warehouse. Order the schnitzel.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67793, 12.59624]
+  "coords": [
+   55.67793,
+   12.59624
+  ],
+  "hours": {
+   "ja": "ランチ（金–日）12:00〜、ディナー（毎日）17:00〜",
+   "en": "Lunch (Fri–Sun) from 12:00, Dinner (daily) from 17:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Prolog Coffee (Papirøen)",
   "nameEn": "Prolog Coffee (Papirøen)",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "クリスチャンハウン",
   "areaEn": "Christianshavn",
   "address": "Papirøen 87, 1436 København K",
@@ -120,7 +180,18 @@
   "note": "劇場の向かいの島。昼の前に一杯。",
   "noteEn": "The island across from the playhouse. One cup before noon.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67837, 12.59874]
+  "coords": [
+   55.67837,
+   12.59874
+  ],
+  "hours": {
+   "ja": "月–金 7:00–18:00、土日 8:00–18:00",
+   "en": "Mon–Fri 7:00–18:00, Sat–Sun 8:00–18:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Christianshavns Færgecafé",
@@ -135,7 +206,10 @@
   "note": "スモーブローに、アクアヴィットを小さく一杯。",
   "noteEn": "Smørrebrød and a small aquavit.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.6755, 12.59248]
+  "coords": [
+   55.6755,
+   12.59248
+  ]
  },
  {
   "name": "Lille Bakery",
@@ -150,13 +224,26 @@
   "note": "島のパン屋。サワードウを一本、持って帰る。",
   "noteEn": "A bakery on the island. Take a loaf home.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.69006, 12.61329]
+  "coords": [
+   55.69006,
+   12.61329
+  ],
+  "hours": {
+   "ja": "水–日 8:00–17:00",
+   "en": "Wed–Sun 8:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜",
+   "en": "Mondays, Tuesdays"
+  }
  },
  {
   "name": "Andersen & Maillard",
   "nameEn": "Andersen & Maillard",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ノアブロ",
   "areaEn": "Nørrebro",
   "address": "Nørrebrogade 62, 2200 København N",
@@ -166,7 +253,10 @@
   "note": "朝3時から焼いている。クロワッサンとコーヒーを一緒に。",
   "noteEn": "They start at 3 a.m. Croissant and coffee, together.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.69042, 12.55503]
+  "coords": [
+   55.69042,
+   12.55503
+  ]
  },
  {
   "name": "Poulette",
@@ -181,7 +271,10 @@
   "note": "辛いのが標準。そのつもりで頼む。",
   "noteEn": "Spicy by default. Order knowing that.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.69046, 12.55521]
+  "coords": [
+   55.69046,
+   12.55521
+  ]
  },
  {
   "name": "Karamelleriet",
@@ -196,7 +289,10 @@
   "note": "手作りのキャラメル。帰りの夜行列車の分も買う。",
   "noteEn": "Handmade caramels. Buy some for the night train home.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.6931, 12.54362]
+  "coords": [
+   55.6931,
+   12.54362
+  ]
  },
  {
   "name": "Mirabelle",
@@ -211,13 +307,18 @@
   "note": "朝はパン、夜はパスタ。同じ店で一日が回る。",
   "noteEn": "Bread in the morning, pasta at night.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.69236, 12.55615]
+  "coords": [
+   55.69236,
+   12.55615
+  ]
  },
  {
   "name": "Keramiker Inge Vincents",
   "nameEn": "Keramiker Inge Vincents",
   "category": "craft",
-  "tags": ["ceramics"],
+  "tags": [
+   "ceramics"
+  ],
   "area": "ノアブロ",
   "areaEn": "Nørrebro",
   "address": "Jægersborggade 43, 2200 København N",
@@ -227,7 +328,18 @@
   "note": "薄い磁器。手に取って、重さを確かめる。",
   "noteEn": "Thin porcelain. Feel the weight in your hand.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.69311, 12.54306]
+  "coords": [
+   55.69311,
+   12.54306
+  ],
+  "hours": {
+   "ja": "月–金 10:30–17:30、土 10:30–16:00（12月の日曜は11:00–15:00）",
+   "en": "Mon–Fri 10:30–17:30, Sat 10:30–16:00 (Sundays in Dec until Christmas 11:00–15:00)"
+  },
+  "closed": {
+   "ja": "日曜（12月除く）・祝日",
+   "en": "Sundays (except Dec until Christmas), Danish public holidays"
+  }
  },
  {
   "name": "Kødbyens Fiskebar",
@@ -242,7 +354,10 @@
   "note": "牛の像の下の店。フィッシュ＆チップスで頼む。",
   "noteEn": "Under the bull. Order the fish and chips.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.66788, 12.55926]
+  "coords": [
+   55.66788,
+   12.55926
+  ]
  },
  {
   "name": "Mangia",
@@ -257,7 +372,10 @@
   "note": "パスタは手打ち。詰め物のパスタで頼む。",
   "noteEn": "The pasta is handmade. Order the plin.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.67328, 12.55442]
+  "coords": [
+   55.67328,
+   12.55442
+  ]
  },
  {
   "name": "KLASSIK",
@@ -273,7 +391,14 @@
   "note": "ヤコブセンもモーエンセンも、建築家として学んだ人。建物を描く手で引いた椅子が、ここに並ぶ。",
   "noteEn": "Jacobsen and Mogensen both trained as architects. Their chairs stand here.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.68131, 12.58759]
+  "coords": [
+   55.68131,
+   12.58759
+  ],
+  "hours": {
+   "ja": "月–金 11:00–18:00、土 10:00–16:00",
+   "en": "Mon–Fri 11:00–18:00, Sat 10:00–16:00"
+  }
  },
  {
   "name": "Brdr. Krüger",
@@ -289,7 +414,10 @@
   "note": "140年、木をろくろで挽いてきた家。椅子の脚の丸みに、その仕事が残る。",
   "noteEn": "A family that has turned wood for 140 years. You see it in the chair legs.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.68288, 12.58986]
+  "coords": [
+   55.68288,
+   12.58986
+  ]
  },
  {
   "name": "House of Finn Juhl",
@@ -305,7 +433,18 @@
   "note": "ユール自身が60年前に手を入れた建物。椅子と部屋を、同じ人の仕事として見られる。",
   "noteEn": "Juhl remodelled this building himself. The room and the chairs are by one hand.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.68155, 12.58449]
+  "coords": [
+   55.68155,
+   12.58449
+  ],
+  "hours": {
+   "ja": "月–水 10:00–16:00、木 10:00–17:00、金 10:00–15:00",
+   "en": "Mon–Wed 10:00–16:00, Thu 10:00–17:00, Fri 10:00–15:00"
+  },
+  "closed": {
+   "ja": "土曜・日曜",
+   "en": "Saturdays, Sundays"
+  }
  },
  {
   "name": "Dansk Møbelkunst",
@@ -321,7 +460,10 @@
   "note": "あるのは、1920年から70年に作られた本物だけ。クリントやユールの時代の木と革を、そのまま見る。",
   "noteEn": "Only originals from 1920 to 1970. The wood and leather of Klint's and Juhl's years.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.70694, 12.56101]
+  "coords": [
+   55.70694,
+   12.56101
+  ]
  },
  {
   "name": "Veirhanen",
@@ -337,6 +479,9 @@
   "note": "乳白ガラスの吊り照明が多い。灯りの透け方を、店の中で並べて比べられる。",
   "noteEn": "Many opal-glass pendants. You can compare how each one lets the light through.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.6885, 12.56171]
+  "coords": [
+   55.6885,
+   12.56171
+  ]
  }
 ]

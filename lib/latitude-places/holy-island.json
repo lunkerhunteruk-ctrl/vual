@@ -179,7 +179,15 @@
   "coords": [
    55.67809,
    -1.89579
-  ]
+  ],
+  "hours": {
+   "ja": "月〜木・日 9:00–16:00、金土 9:00–深夜（冬季）",
+   "en": "Mon–Thu & Sun 9:00–16:00, Fri–Sat 9:00–late (winter hours)"
+  },
+  "closed": {
+   "ja": "無休（1月1日、12月24〜27日を除く）",
+   "en": "Open every day (except Jan 1 & Dec 24–27)"
+  }
  },
  {
   "name": "Bean Genie Coffee House",

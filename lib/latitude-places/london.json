@@ -12,7 +12,18 @@
   "note": "コンクリートの劇場の中で食べる。芝居の前の夕食にいい。",
   "noteEn": "Dinner inside the concrete. Best before a play.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50699, -0.11282]
+  "coords": [
+   51.50699,
+   -0.11282
+  ],
+  "hours": {
+   "ja": "月〜土 16:30–深夜、水・土 12:00–14:00",
+   "en": "Mon–Sat 16:30–late, Wed & Sat 12:00–14:00"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "The Anchor & Hope",
@@ -27,13 +38,23 @@
   "note": "パブだけど、料理を食べに行く所。",
   "noteEn": "A pub, but you go for the food.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50348, -0.10659]
+  "coords": [
+   51.50348,
+   -0.10659
+  ],
+  "hours": {
+   "ja": "月・火 16:00–22:30、水〜土 11:00–22:30、日曜 12:00–17:00",
+   "en": "Mon–Tue 16:00–22:30, Wed–Sat 11:00–22:30, Sun 12:00–17:00"
+  }
  },
  {
   "name": "Wagumi",
   "nameEn": "Wagumi",
   "category": "craft",
-  "tags": ["ceramics", "lacquer"],
+  "tags": [
+   "ceramics",
+   "lacquer"
+  ],
   "area": "サウスバンク",
   "areaEn": "South Bank",
   "address": "Unit 1.09, Oxo Tower Wharf, Bargehouse Street, South Bank, London SE1 9PH",
@@ -43,7 +64,18 @@
   "note": "川沿いで笠間の器に会える。ブラックフライアーズ橋へ歩く前に寄る。",
   "noteEn": "Kasama pottery by the river. Stop on the way to Blackfriars Bridge.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50838, -0.1083]
+  "coords": [
+   51.50838,
+   -0.1083
+  ],
+  "hours": {
+   "ja": "火〜日 11:00–18:00",
+   "en": "Tue–Sun 11:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "The Quality Chop House",
@@ -58,7 +90,14 @@
   "note": "看板に「チョップ」とある。だから、チョップを頼む。",
   "noteEn": "It says chop on the sign. Order the chop.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52477, -0.11005]
+  "coords": [
+   51.52477,
+   -0.11005
+  ],
+  "hours": {
+   "ja": "ランチ 火〜金 12:00–14:30・土 12:00–14:45・日 12:00–15:30、ディナー 月〜土 18:00–21:45",
+   "en": "Lunch Tue–Fri 12:00–14:30, Sat 12:00–14:45, Sun 12:00–15:30; Dinner Mon–Sat 18:00–21:45"
+  }
  },
  {
   "name": "Moro",
@@ -73,7 +112,10 @@
   "note": "レシピ本は古本屋の棚でもよく見る。本物は、ここで食べる。",
   "noteEn": "Their cookbooks turn up on second-hand shelves. The real thing is here.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52584, -0.109]
+  "coords": [
+   51.52584,
+   -0.109
+  ]
  },
  {
   "name": "Morito",
@@ -88,7 +130,14 @@
   "note": "モロの隣。一人なら、カウンターで小皿を。",
   "noteEn": "Next door to Moro. On your own, take the counter and small plates.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.5258, -0.10908]
+  "coords": [
+   51.5258,
+   -0.10908
+  ],
+  "hours": {
+   "ja": "月 12:00–15:00、17:00–22:30、火〜土 12:00–22:30、日 12:00–21:30",
+   "en": "Mon 12:00–15:00 & 17:00–22:30, Tue–Sat 12:00–22:30, Sun 12:00–21:30"
+  }
  },
  {
   "name": "Sessions Arts Club",
@@ -103,7 +152,14 @@
   "note": "昔の判事たちの食堂。予約は30日前の朝7時に開く。",
   "noteEn": "The old judges' dining room. Bookings open at 7am, thirty days ahead.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52254, -0.10598]
+  "coords": [
+   51.52254,
+   -0.10598
+  ],
+  "hours": {
+   "ja": "ランチ 火〜土 12:00–14:30・日 12:00–16:30、ディナー 月〜土 17:30–22:00",
+   "en": "Lunch Tue–Sat 12:00–14:30 & Sun 12:00–16:30, Dinner Mon–Sat 17:30–22:00"
+  }
  },
  {
   "name": "José",
@@ -118,7 +174,14 @@
   "note": "予約はできない。黒板から選ぶ。",
   "noteEn": "No bookings. Choose from the blackboard.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50061, -0.0819]
+  "coords": [
+   51.50061,
+   -0.0819
+  ],
+  "hours": {
+   "ja": "月〜土 12:00–22:15、日曜 12:00–21:00",
+   "en": "Mon–Sat 12:00–22:15, Sun 12:00–21:00"
+  }
  },
  {
   "name": "Pizarro",
@@ -133,13 +196,22 @@
   "note": "平日の昼は、メヌー・デル・ディアで。",
   "noteEn": "Weekday lunch: the menú del día.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.49848, -0.08123]
+  "coords": [
+   51.49848,
+   -0.08123
+  ],
+  "hours": {
+   "ja": "月〜土 12:00–22:45、日曜 12:00–20:45",
+   "en": "Mon–Sat 12:00–22:45, Sun 12:00–20:45"
+  }
  },
  {
   "name": "London Glassblowing",
   "nameEn": "London Glassblowing",
   "category": "craft",
-  "tags": ["glass"],
+  "tags": [
+   "glass"
+  ],
   "area": "バーモンジー",
   "areaEn": "Bermondsey",
   "address": "62-66 Bermondsey Street, Bermondsey, London SE1 3UD",
@@ -149,13 +221,22 @@
   "note": "ガラスは、光に透かして選ぶ。",
   "noteEn": "Hold the glass up to the light, then choose.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50159, -0.08236]
+  "coords": [
+   51.50159,
+   -0.08236
+  ],
+  "hours": {
+   "ja": "火〜土 10:00–17:00、日曜 11:00–17:00",
+   "en": "Tue–Sat 10:00–17:00, Sun 11:00–17:00"
+  }
  },
  {
   "name": "Monmouth Coffee Company",
   "nameEn": "Monmouth Coffee Company",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "バーモンジー",
   "areaEn": "Bermondsey",
   "address": "3 & 4 Dockley Road, Bermondsey, London SE16 3AF",
@@ -165,7 +246,18 @@
   "note": "紙コップはない。座って飲むか、自分のカップで。",
   "noteEn": "No paper cups. Stay, or bring your own.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.4956, -0.06933]
+  "coords": [
+   51.4956,
+   -0.06933
+  ],
+  "hours": {
+   "ja": "月〜土 8:00–19:00（コヴェント・ガーデン店）",
+   "en": "Mon–Sat 08:00–19:00 (Covent Garden)"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "Rochelle Canteen",
@@ -180,7 +272,10 @@
   "note": "塀の向こうの庭で食べる。昼に行く。",
   "noteEn": "A garden behind a wall. Go at lunchtime.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52562, -0.07417]
+  "coords": [
+   51.52562,
+   -0.07417
+  ]
  },
  {
   "name": "The Clove Club",
@@ -195,7 +290,10 @@
   "note": "特別な日のために取っておく店。古い区役所の建物ごと。",
   "noteEn": "One to save for a big day. The old town hall comes with it.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52708, -0.07916]
+  "coords": [
+   51.52708,
+   -0.07916
+  ]
  },
  {
   "name": "Brat",
@@ -210,7 +308,10 @@
   "note": "火で焼く料理。階段を上がる。",
   "noteEn": "Cooking over fire. Up the stairs.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52427, -0.07669]
+  "coords": [
+   51.52427,
+   -0.07669
+  ]
  },
  {
   "name": "Padella Shoreditch",
@@ -225,13 +326,22 @@
   "note": "並んでも、カウンターでパスタを一皿。",
   "noteEn": "Even if there's a queue, one plate of pasta at the counter.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52338, -0.08177]
+  "coords": [
+   51.52338,
+   -0.08177
+  ],
+  "hours": {
+   "ja": "月〜土 12:00–15:45、17:00–22:00、日曜 12:00–21:00",
+   "en": "Mon–Sat 12:00–15:45 & 17:00–22:00, Sun 12:00–21:00"
+  }
  },
  {
   "name": "Prufrock Coffee",
   "nameEn": "Prufrock Coffee",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ホルボーン",
   "areaEn": "Holborn",
   "address": "23-25 Leather Lane, Holborn, London EC1N 7TE",
@@ -241,13 +351,22 @@
   "note": "コーヒーの表は毎回変わる。聞いてから頼む。",
   "noteEn": "The coffee list keeps changing. Ask first, then order.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51995, -0.10952]
+  "coords": [
+   51.51995,
+   -0.10952
+  ],
+  "hours": {
+   "ja": "月〜金 7:30–16:30、土曜 8:00–17:00、日曜 9:00–17:00",
+   "en": "Mon–Fri 07:30–16:30, Sat 08:00–17:00, Sun 09:00–17:00"
+  }
  },
  {
   "name": "Klei",
   "nameEn": "Klei",
   "category": "craft",
-  "tags": ["ceramics"],
+  "tags": [
+   "ceramics"
+  ],
   "area": "ハックニー",
   "areaEn": "Hackney",
   "address": "276 Hackney Road, Hackney, London E2 7SJ",
@@ -257,7 +376,14 @@
   "note": "店の人も陶芸家。西コークの島で焼いた器もある。",
   "noteEn": "Run by a potter. Some of it was fired on an island in West Cork.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.53104, -0.06918]
+  "coords": [
+   51.53104,
+   -0.06918
+  ],
+  "hours": {
+   "ja": "水〜日 11:00–18:00",
+   "en": "Wed–Sun 11:00–18:00"
+  }
  },
  {
   "name": "Sotheran's",
@@ -273,7 +399,18 @@
   "note": "1761年からの本屋が、いまは古書の路地にいる。詩の棚が長い。",
   "noteEn": "A bookseller since 1761, now on the booksellers' lane. Long shelves of poetry.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51078, -0.12761]
+  "coords": [
+   51.51078,
+   -0.12761
+  ],
+  "hours": {
+   "ja": "月〜金 10:00–18:00、土曜 11:00–17:00（Cecil Courtのみ）",
+   "en": "Mon–Fri 10:00–18:00, Sat 11:00–17:00 (Cecil Court only)"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "Maggs Bros. Ltd",
@@ -289,7 +426,14 @@
   "note": "手紙や手稿まで扱う。本になる前の文字が見られる。",
   "noteEn": "They deal in letters and manuscripts too. Words from before they became books.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.5067, -0.14648]
+  "coords": [
+   51.5067,
+   -0.14648
+  ],
+  "hours": {
+   "ja": "月〜金 9:30–17:00（ブルームズベリー）",
+   "en": "Mon–Fri 09:30–17:00 (Bloomsbury)"
+  }
  },
  {
   "name": "Jarndyce Antiquarian Booksellers",
@@ -305,7 +449,14 @@
   "note": "大英博物館の向かいで、19世紀の小冊子を売っている。",
   "noteEn": "Opposite the British Museum, selling 19th-century pamphlets.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51805, -0.12626]
+  "coords": [
+   51.51805,
+   -0.12626
+  ],
+  "hours": {
+   "ja": "月〜金 11:00–17:30",
+   "en": "Mon–Fri 11:00–17:30"
+  }
  },
  {
   "name": "Skoob Books",
@@ -321,7 +472,18 @@
   "note": "地下に降りると、学生の頃に読んだ本の古い版がある。",
   "noteEn": "Downstairs, old editions of the books you read as a student.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.52502, -0.12453]
+  "coords": [
+   51.52502,
+   -0.12453
+  ],
+  "hours": {
+   "ja": "月〜土 10:30–19:30、日曜 10:30–18:00",
+   "en": "Mon–Sat 10:30–19:30, Sun 10:30–18:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "London Review Bookshop",
@@ -337,7 +499,14 @@
   "note": "雑誌の書評を書く人たちが選んだ棚。詩の量が多い。",
   "noteEn": "Shelves chosen by the people behind a review magazine. A lot of poetry.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51855, -0.12424]
+  "coords": [
+   51.51855,
+   -0.12424
+  ],
+  "hours": {
+   "ja": "月〜土 10:00–18:30、日曜 12:00–18:00",
+   "en": "Mon–Sat 10:00–18:30, Sun 12:00–18:00"
+  }
  },
  {
   "name": "Heywood Hill",
@@ -353,7 +522,14 @@
   "note": "本を人に合わせて選ぶ店。私の仕事の、ずっと先にいる。",
   "noteEn": "A shop that chooses books for people. Far ahead of my own job.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50701, -0.14657]
+  "coords": [
+   51.50701,
+   -0.14657
+  ],
+  "hours": {
+   "ja": "月〜金 9:30–18:00",
+   "en": "Mon–Fri 09:30–18:00"
+  }
  },
  {
   "name": "Stanfords",
@@ -369,7 +545,10 @@
   "note": "本で読んだ場所を、地図で確かめられる。",
   "noteEn": "Where you check the places you met in books against a map.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51301, -0.12535]
+  "coords": [
+   51.51301,
+   -0.12535
+  ]
  },
  {
   "name": "Henry Poole & Co",
@@ -385,7 +564,14 @@
   "note": "帳簿に、二百年前の客の注文が残っている店。",
   "noteEn": "Its ledgers still hold orders from two hundred years ago.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51115, -0.14043]
+  "coords": [
+   51.51115,
+   -0.14043
+  ],
+  "hours": {
+   "ja": "月〜金 9:00–17:15",
+   "en": "Mon–Fri 09:00–17:15"
+  }
  },
  {
   "name": "Lock & Co. Hatters",
@@ -401,7 +587,10 @@
   "note": "350年同じ通りにある帽子屋。屋根裏で、いまも縫っている。",
   "noteEn": "A hatter on the same street for 350 years. Still sewing under the roof.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.50573, -0.1382]
+  "coords": [
+   51.50573,
+   -0.1382
+  ]
  },
  {
   "name": "James Smith & Sons",
@@ -417,6 +606,9 @@
   "note": "ヴィクトリア朝の店先がそのまま残る。雨の街の店。",
   "noteEn": "The Victorian shopfront still stands. A shop for a rainy city.",
   "verifiedAt": "2026-11-01",
-  "coords": [51.51683, -0.12661]
+  "coords": [
+   51.51683,
+   -0.12661
+  ]
  }
 ]

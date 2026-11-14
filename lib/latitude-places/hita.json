@@ -20,7 +20,15 @@
   "coords": [
    33.32728,
    130.93733
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–16:30（L.O. 15:30）",
+   "en": "10:30–16:30 (last order 15:30)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "赤司日田羊羹本舗",
@@ -64,7 +72,15 @@
   "coords": [
    33.42777,
    130.91122
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日の場合は翌日）、年末年始",
+   "en": "Wednesdays (following day if public holiday), year-end & New Year"
+  }
  },
  {
   "name": "CREATIVE BASE FAB",
@@ -87,7 +103,11 @@
   "coords": [
    33.32739,
    130.96708
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  }
  },
  {
   "name": "うらつか工房",
@@ -146,7 +166,11 @@
   "whatEn": "A wagashi shop in Nakahonmachi making moist honey-rich maruboro for over 60 years, alongside walnut-studded bean-paste tai monaka. Open 9 am to 6 pm; closed Sundays and Mondays.",
   "note": "蜂蜜の丸ぼうろと、クルミ入りの鯛最中をひとつずつ。",
   "noteEn": "One honey maruboro and one walnut tai monaka.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  }
  },
  {
   "name": "松浦松翁堂",
@@ -200,7 +224,15 @@
   "whatEn": "A donburi restaurant in Mamedamachi opened by local washoku house Kisetsu Ryori Kamon. Built with Hita cedar interiors and tables, serving market seafood bowls and domestic wagyu beef bowls.",
   "note": "日田杉のテーブルで、海鮮丼か和牛の丼を迷う。",
   "noteEn": "At a Hita cedar table, choosing between seafood and wagyu.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–L.O. 15:30（ランチ L.O. 14:00）",
+   "en": "11:00–last order 15:30 (lunch last order 14:00)"
+  },
+  "closed": {
+   "ja": "月曜（祝日により変動あり）・不定休",
+   "en": "Mondays (subject to change on public holidays), irregular"
+  }
  },
  {
   "name": "みくま飯店",
@@ -237,7 +269,11 @@
   "whatEn": "The café of a small auberge in Mamedamachi, serving coffee, German organic tea, buckwheat galettes, quiche and pasta. Closed Mondays and Tuesdays.",
   "note": "午後はそば粉のガレットと、ドイツの紅茶でひと息。",
   "noteEn": "Take a break in the afternoon with a buckwheat galette and German tea.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "ONOGORO STYLE",
@@ -293,7 +329,15 @@
   "whatEn": "A woodworking studio and shop in Oyama, Okuhita, shaping local timber and fine hardwoods into chopsticks, spoons, forks and wooden bowls.",
   "note": "木の種類を比べながら、持ちやすい箸を選びたい。",
   "noteEn": "Compare the woods and pick a pair of chopsticks that fits your hand.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "坂本浩二窯",
@@ -352,6 +396,14 @@
   "whatEn": "A miso and soy sauce brewery in Nakahonmachi founded in 1899, brewing with Hita groundwater and also making ayu sweetfish garum and ramune.",
   "note": "小さな瓶の鮎魚醤を、家の台所用に一本。",
   "noteEn": "A small bottle of ayu fish sauce for the kitchen at home.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00（工場見学受付は–16:00）",
+   "en": "9:00–17:00 (factory tour reception until 16:00)"
+  },
+  "closed": {
+   "ja": "日曜不定休（年末年始休業）",
+   "en": "Irregular Sundays (closed year-end & New Year)"
+  }
  }
 ]

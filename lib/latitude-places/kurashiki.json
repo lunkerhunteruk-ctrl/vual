@@ -20,7 +20,15 @@
   "coords": [
    34.59644,
    133.77372
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:30",
+   "en": "10:00–17:30"
+  },
+  "closed": {
+   "ja": "年末年始",
+   "en": "Year-end and New Year holidays"
+  }
  },
  {
   "name": "FLAT 倉敷美観地区店",
@@ -43,7 +51,15 @@
   "coords": [
    34.59505,
    133.77153
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "年末年始・不定休（1・2・6月は水曜定休）",
+   "en": "Year-end/New Year, irregular holidays (Wednesdays in Jan, Feb, Jun)"
+  }
  },
  {
   "name": "T.S.L Kurashiki",
@@ -67,7 +83,15 @@
   "coords": [
    34.59723,
    133.77025
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00（17:00閉店の場合あり）",
+   "en": "10:00–18:00 (may close at 17:00)"
+  },
+  "closed": {
+   "ja": "月曜・火曜（祝日等で変動あり）",
+   "en": "Mondays and Tuesdays (subject to change on holidays)"
+  }
  },
  {
   "name": "融民藝店",
@@ -113,7 +137,15 @@
   "coords": [
    34.59507,
    133.77139
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（博物館最終入館 16:40）",
+   "en": "10:00–17:00 (museum last entry 16:40)"
+  },
+  "closed": {
+   "ja": "年末年始（12/30–1/1）、閑散期（1・2・6月）の水曜・不定休",
+   "en": "Dec 30–Jan 1, Wednesdays in off-season (Jan, Feb, Jun), and irregular holidays"
+  }
  },
  {
   "name": "滔々 toutou",
@@ -159,7 +191,15 @@
   "coords": [
    34.59381,
    133.77134
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業）",
+   "en": "Mondays (open on public holidays)"
+  }
  },
  {
   "name": "アチブランチ",
@@ -181,7 +221,15 @@
   "coords": [
    34.59737,
    133.77047
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00（12〜2月の平日は10:00–17:00）",
+   "en": "10:00–18:00 (Dec–Feb weekdays 10:00–17:00)"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は翌火曜）",
+   "en": "Mondays (next Tuesday if a public holiday)"
+  }
  },
  {
   "name": "Café＆Ceramics うつわ四季",
@@ -224,7 +272,15 @@
   "coords": [
    34.5975,
    133.77583
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–15:00（L.O. 14:30）",
+   "en": "11:30–15:00 (last order 14:30)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "kobacoffee 倉敷川店",
@@ -245,7 +301,15 @@
   "coords": [
    34.59483,
    133.77195
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜（祝日は営業）",
+   "en": "Tuesdays (open on public holidays)"
+  }
  },
  {
   "name": "Coffee+Bar FIDELITY",

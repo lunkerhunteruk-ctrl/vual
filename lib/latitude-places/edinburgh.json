@@ -12,7 +12,10 @@
   "note": "水辺のフランス料理。ショアを歩いた日の夜に予約する。",
   "noteEn": "French cooking on the water. Book it for the night after the Shore.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97545, -3.17037]
+  "coords": [
+   55.97545,
+   -3.17037
+  ]
  },
  {
   "name": "The Kitchin",
@@ -27,7 +30,10 @@
   "note": "スコットランドの季節を、そのまま皿に。岸壁を歩いて行く。",
   "noteEn": "The Scottish season, straight onto the plate. Walk out along the quay.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97703, -3.17258]
+  "coords": [
+   55.97703,
+   -3.17258
+  ]
  },
  {
   "name": "Heron",
@@ -42,7 +48,14 @@
   "note": "飾らない部屋だから、皿だけを見ていられる。",
   "noteEn": "Plain walls, so you just look at the plate.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97481, -3.17195]
+  "coords": [
+   55.97481,
+   -3.17195
+  ],
+  "hours": {
+   "ja": "水–金 17:30–21:00、土日 12:00–14:00・17:30–21:00",
+   "en": "Wed–Fri 17:30–21:00, Sat–Sun 12:00–14:00 & 17:30–21:00"
+  }
  },
  {
   "name": "Fishers in Leith",
@@ -57,13 +70,18 @@
   "note": "17世紀の見張り塔の下で魚を食べる。泳いだあとにいい。",
   "noteEn": "Fish under a seventeenth-century watchtower. Good after a swim.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97756, -3.16894]
+  "coords": [
+   55.97756,
+   -3.16894
+  ]
  },
  {
   "name": "Williams & Johnson Coffee Co.",
   "nameEn": "Williams & Johnson Coffee Co.",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "リース",
   "areaEn": "Leith",
   "address": "Custom Lane, 1 Customs Wharf, Leith, Edinburgh EH6 6AL",
@@ -73,13 +91,27 @@
   "note": "焙煎機の横で飲む。水に入る前の一杯。",
   "noteEn": "Drink it beside the roaster. One cup before the water.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97686, -3.17053]
+  "coords": [
+   55.97686,
+   -3.17053
+  ],
+  "hours": {
+   "ja": "月–金 8:00–17:00、土 9:00–17:00、日 9:00–16:00",
+   "en": "Mon–Fri 8:00–17:00, Sat 9:00–17:00, Sun 9:00–16:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Cyan Clayworks",
   "nameEn": "Cyan Clayworks",
   "category": "craft",
-  "tags": ["ceramics", "tableware"],
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
   "area": "リース",
   "areaEn": "Leith",
   "address": "5 Commercial Street, Leith, Edinburgh EH6 6JA",
@@ -89,7 +121,14 @@
   "note": "作業場の前に、二人の器が並ぶ。行く前に電話する。",
   "noteEn": "Two potters' work, set out in front of the studio. Call before you go.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.9764, -3.17096]
+  "coords": [
+   55.9764,
+   -3.17096
+  ],
+  "hours": {
+   "ja": "金曜 12:00–16:00（土曜・その他は予約制または不定）",
+   "en": "Most Fridays 12:00–16:00 (Saturdays if not teaching; other days by appointment)"
+  }
  },
  {
   "name": "Timberyard",
@@ -104,7 +143,14 @@
   "note": "畑と森の物だけで組む店。ワインは小さな作り手の物で頼む。",
   "noteEn": "Only what the fields and woods give. Ask for the small-producer wine.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.94635, -3.20173]
+  "coords": [
+   55.94635,
+   -3.20173
+  ],
+  "hours": {
+   "ja": "木 16:00–23:00、金–日 12:00–23:00",
+   "en": "Thu 16:00–23:00, Fri–Sun 12:00–23:00"
+  }
  },
  {
   "name": "Whirlybird",
@@ -119,7 +165,10 @@
   "note": "らせん階段を上がる。坂を下りきる前に寄る。",
   "noteEn": "Take the spiral stair. Stop before the bottom of the hill.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.94856, -3.19435]
+  "coords": [
+   55.94856,
+   -3.19435
+  ]
  },
  {
   "name": "Mary's Milk Bar",
@@ -134,7 +183,14 @@
   "note": "味は毎日変わる。寒い日は、ホットチョコに浮かべて頼む。",
   "noteEn": "The flavours change daily. On a cold day, have it in hot chocolate.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.94684, -3.19739]
+  "coords": [
+   55.94684,
+   -3.19739
+  ],
+  "hours": {
+   "ja": "水–土 11:00–19:30、日 11:00–18:00（冬期）",
+   "en": "Wed–Sat 11:00–19:30, Sun 11:00–18:00 (winter hours)"
+  }
  },
  {
   "name": "Wedgwood the Restaurant",
@@ -149,7 +205,18 @@
   "note": "摘んだ草を使う店。アーサーズ・シートから下りてきて寄る。",
   "noteEn": "They cook with foraged herbs. Come down off Arthur's Seat and stop here.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95083, -3.18337]
+  "coords": [
+   55.95083,
+   -3.18337
+  ],
+  "hours": {
+   "ja": "月–木・日 12:00–13:45・17:00–21:00、金土 12:00–13:45・17:00–22:00",
+   "en": "Mon–Thu & Sun 12:00–13:45 & 17:00–21:00, Fri–Sat 12:00–13:45 & 17:00–22:00"
+  },
+  "closed": {
+   "ja": "無休（11月は日曜休）",
+   "en": "Open every day (closed Sundays in Nov)"
+  }
  },
  {
   "name": "Lannan Bakery",
@@ -164,7 +231,10 @@
   "note": "朝に並ぶ。並ぶだけの店。",
   "noteEn": "Queue in the morning. It earns the queue.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.9598, -3.20669]
+  "coords": [
+   55.9598,
+   -3.20669
+  ]
  },
  {
   "name": "The Scran & Scallie",
@@ -179,13 +249,18 @@
   "note": "肉も魚も、丸ごと仕入れて店でさばく。パブの定番を頼む。",
   "noteEn": "Everything comes in whole and is butchered here. Order the pub classics.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95916, -3.21454]
+  "coords": [
+   55.95916,
+   -3.21454
+  ]
  },
  {
   "name": "Stockbridge Ceramics",
   "nameEn": "Stockbridge Ceramics",
   "category": "craft",
-  "tags": ["ceramics"],
+  "tags": [
+   "ceramics"
+  ],
   "area": "ストックブリッジ",
   "areaEn": "Stockbridge",
   "address": "76 Henderson Row, Stockbridge, Edinburgh EH3 5BJ",
@@ -195,13 +270,19 @@
   "note": "通りから13段下りる。作っている所も見せてくれる。",
   "noteEn": "Thirteen steps down from the street. They let you watch the work.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95991, -3.20622]
+  "coords": [
+   55.95991,
+   -3.20622
+  ]
  },
  {
   "name": "The Scottish Gallery",
   "nameEn": "The Scottish Gallery",
   "category": "craft",
-  "tags": ["ceramics", "glass"],
+  "tags": [
+   "ceramics",
+   "glass"
+  ],
   "area": "ニュータウン",
   "areaEn": "New Town",
   "address": "16 Dundas Street, New Town, Edinburgh EH3 6HZ",
@@ -211,7 +292,14 @@
   "note": "1842年からの画廊。絵より先に、器とガラスを見る。",
   "noteEn": "A gallery since 1842. See the pots and the glass first.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95656, -3.19913]
+  "coords": [
+   55.95656,
+   -3.19913
+  ],
+  "hours": {
+   "ja": "火–金 10:30–18:00、土 11:00–14:00（月曜は予約制）",
+   "en": "Tue–Fri 10:30–18:00, Sat 11:00–14:00 (Mon by appointment)"
+  }
  },
  {
   "name": "L'Escargot Bleu",
@@ -226,7 +314,14 @@
   "note": "黒板の献立から選ぶ。季節で変わる。",
   "noteEn": "Choose from the blackboard. It changes with the season.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95863, -3.19038]
+  "coords": [
+   55.95863,
+   -3.19038
+  ],
+  "hours": {
+   "ja": "ディナー（水–土）17:30〜、ランチ（金・土）12:00〜、ワインバー（水木 16:00〜・金土 14:00〜）",
+   "en": "Dinner (Wed–Sat) from 17:30, Lunch (Fri–Sat) from 12:00, Wine Bar (Wed–Thu from 16:00, Fri–Sat from 14:00)"
+  }
  },
  {
   "name": "Stewart Christie & Co.",
@@ -242,7 +337,18 @@
   "note": "織る工場と仕立てる部屋が、同じ家の中にある。布が上着になるまでを、一本の線でたどれる。",
   "noteEn": "The mill and the cutting room belong to one house. Cloth to coat, in one line.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95361, -3.20484]
+  "coords": [
+   55.95361,
+   -3.20484
+  ],
+  "hours": {
+   "ja": "火–土 10:00–16:00",
+   "en": "Tue–Sat 10:00–16:00"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays, Mondays"
+  }
  },
  {
   "name": "Gordon Nicolson Kiltmakers",
@@ -258,7 +364,10 @@
   "note": "一枚に8ヤードのウール。ひだは一本ずつ手で縫い留める。",
   "noteEn": "Eight yards of wool to a kilt. Every pleat stitched by hand.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.9512, -3.18095]
+  "coords": [
+   55.9512,
+   -3.18095
+  ]
  },
  {
   "name": "Kinloch Anderson",
@@ -274,7 +383,10 @@
   "note": "ザ・ショアから一本入った通り。窓の向こうで、ひだを縫う手が見える。",
   "noteEn": "One street back from the Shore. Through the window, hands sewing pleats.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.97679, -3.17368]
+  "coords": [
+   55.97679,
+   -3.17368
+  ]
  },
  {
   "name": "Bill Baber Knitwear",
@@ -290,7 +402,18 @@
   "note": "店の奥が編み場。麻や絹の糸が、目の前で布になっていく。",
   "noteEn": "The workshop is at the back. Linen and silk turn into cloth in front of you.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.94777, -3.19562]
+  "coords": [
+   55.94777,
+   -3.19562
+  ],
+  "hours": {
+   "ja": "月–土 9:00–17:30、日 11:00–16:00",
+   "en": "Mon–Sat 9:00–17:30, Sun 11:00–16:00"
+  },
+  "closed": {
+   "ja": "12月24日–26日",
+   "en": "Dec 24–26 (Christmas Eve, Christmas Day & Boxing Day)"
+  }
  },
  {
   "name": "Cadenhead's Whisky Shop",
@@ -306,7 +429,18 @@
   "note": "色も足さず、冷やして濾しもしない。樽から出たままの色が、瓶ごとに違う。",
   "noteEn": "No colour added, no chill-filtering. Each bottle keeps its own cask colour.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.95121, -3.18038]
+  "coords": [
+   55.95121,
+   -3.18038
+  ],
+  "hours": {
+   "ja": "月–土 10:30–17:30",
+   "en": "Mon–Sat 10:30–17:30"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "Port of Leith Distillery",
@@ -322,6 +456,9 @@
   "note": "保税倉庫が並んだ港に、蒸留の工程を縦に積んだ建物。水辺から見上げる。",
   "noteEn": "A stacked distillery on the old bonded-warehouse quay. Look up at it from the water.",
   "verifiedAt": "2026-11-01",
-  "coords": [55.9827, -3.17548]
+  "coords": [
+   55.9827,
+   -3.17548
+  ]
  }
 ]

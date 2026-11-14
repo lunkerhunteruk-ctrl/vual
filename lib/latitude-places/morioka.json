@@ -12,14 +12,20 @@
   "whatEn": "A Nambu cast-iron workshop and shop on Konyacho. Closed on Sundays.",
   "note": "鉄瓶は、両手で持った重さで決める。",
   "noteEn": "Choose a kettle by its weight in both hands.",
-  "coords": [39.70141, 141.15572],
+  "coords": [
+   39.70141,
+   141.15572
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
   "name": "shop+space ひめくり",
   "nameEn": "shop+space Himekuri",
   "category": "craft",
-  "tags": ["tableware", "everyday"],
+  "tags": [
+   "tableware",
+   "everyday"
+  ],
   "area": "紺屋町",
   "areaEn": "Konyacho",
   "address": "盛岡市紺屋町4-8",
@@ -28,8 +34,19 @@
   "whatEn": "A shop for tableware and everyday tools on Konyacho, with a run of makers' exhibitions. Closed on Wednesdays and Thursdays.",
   "note": "行く前に、いま何の展示かを見る。",
   "noteEn": "Check what is on show before you go.",
-  "coords": [39.70328, 141.15604],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70328,
+   141.15604
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "10:30–18:30",
+   "en": "10:30–18:30"
+  },
+  "closed": {
+   "ja": "水曜・木曜",
+   "en": "Wednesdays and Thursdays"
+  }
  },
  {
   "name": "老舗 白沢せんべい店",
@@ -43,14 +60,27 @@
   "whatEn": "A nanbu senbei shop on a corner of Konyacho since 1936, baked by hand. The hand-baking experience is paused until about the end of November 2026.",
   "note": "南部せんべいは、ごまから。",
   "noteEn": "With nanbu senbei, start with sesame.",
-  "coords": [39.70231, 141.15618],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70231,
+   141.15618
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "1月1日〜3日",
+   "en": "Jan 1–3"
+  }
  },
  {
   "name": "クラムボン",
   "nameEn": "Kuranbon",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "紺屋町",
   "areaEn": "Konyacho",
   "address": "盛岡市紺屋町5-33",
@@ -59,7 +89,10 @@
   "whatEn": "A coffee house on Konyacho that roasts its own beans.",
   "note": "豆を買って帰る店。",
   "noteEn": "A place to take beans home from.",
-  "coords": [39.70374, 141.15675],
+  "coords": [
+   39.70374,
+   141.15675
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -80,7 +113,10 @@
   "name": "光原社 本店",
   "nameEn": "Kogensha",
   "category": "craft",
-  "tags": ["ceramics", "lacquer"],
+  "tags": [
+   "ceramics",
+   "lacquer"
+  ],
   "area": "材木町",
   "areaEn": "Zaimokucho",
   "address": "盛岡市材木町2-18",
@@ -89,14 +125,19 @@
   "whatEn": "Kogensha published Kenji Miyazawa's first book of stories in 1924. Today its buildings around a courtyard hold folk-craft pottery, lacquer and cloth. Closed on the 15th of each month.",
   "note": "中庭は、急いで抜けない。",
   "noteEn": "Don't hurry through the courtyard.",
-  "coords": [39.70611, 141.13815],
+  "coords": [
+   39.70611,
+   141.13815
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
   "name": "光原社 可否館",
   "nameEn": "Kogensha Kahikan",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "材木町",
   "areaEn": "Zaimokucho",
   "address": "盛岡市材木町2-18",
@@ -105,7 +146,10 @@
   "whatEn": "The coffee room at the back of the Kogensha grounds. 10:00–17:00 (last orders 16:30); closed on the 15th of each month.",
   "note": "器を見たあとは、ここで座る。",
   "noteEn": "After the crafts, sit down here.",
-  "coords": [39.70611, 141.13815],
+  "coords": [
+   39.70611,
+   141.13815
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -121,8 +165,19 @@
   "whatEn": "A dye house in Zaimokucho making Nambu kodai katazome: small things in cloth dyed through paper stencils. Usually closed on Sundays.",
   "note": "布は、柄より色で選ぶ。",
   "noteEn": "Choose the cloth by its colour, not its pattern.",
-  "coords": [39.70864, 141.13564],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70864,
+   141.13564
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜（臨時休業あり）",
+   "en": "Sundays (irregular holidays)"
+  }
  },
  {
   "name": "御菓子司 山善 本店",
@@ -136,8 +191,19 @@
   "whatEn": "A wagashi shop in Zaimokucho: seasonal fresh sweets, dry sweets, and its best seller, mochimochi-yaki. Closed only on New Year's Day.",
   "note": "上生菓子は、その季節のものを一つ。",
   "noteEn": "One fresh sweet, the one for the season.",
-  "coords": [39.70589, 141.13835],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70589,
+   141.13835
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "3〜10月 9:00–18:00、11〜2月 平日・土曜 9:00–18:00・日祝 9:00–17:00",
+   "en": "Mar–Oct 9:00–18:00; Nov–Feb Mon–Sat 9:00–18:00, Sun & holidays 9:00–17:00"
+  },
+  "closed": {
+   "ja": "元日",
+   "en": "New Year's Day only"
+  }
  },
  {
   "name": "盛楼閣",
@@ -152,8 +218,19 @@
   "whatEn": "Morioka reimen and yakiniku on the second floor of a building opposite Morioka Station.",
   "note": "駅に着いたら、まず冷麺。寒い日でも。",
   "noteEn": "Off the train, reimen first. Even on a cold day.",
-  "coords": [39.70283, 141.13655],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70283,
+   141.13655
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "11:00–24:00",
+   "en": "11:00–24:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "東家 盛岡駅前店",
@@ -168,15 +245,28 @@
   "whatEn": "The station branch of Azumaya, a soba house since 1907: wanko soba and local dishes.",
   "note": "わんこそばは、空きを公式で見てから。",
   "noteEn": "Check the wanko soba bookings on their site first.",
-  "coords": [39.70179, 141.13808],
+  "coords": [
+   39.70179,
+   141.13808
+  ],
   "coordsApprox": true,
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "11:00–15:00、17:00–19:00（L.O.、わんこそばは18:30 L.O.）",
+   "en": "11:00–15:00, 17:00–19:00 (last order; wanko soba last order 18:30)"
+  },
+  "closed": {
+   "ja": "火曜（5月GW・8月を除く）",
+   "en": "Tuesdays (except Golden Week in May and August)"
+  }
  },
  {
   "name": "KANEIRI STANDARD STORE 盛岡店",
   "nameEn": "KANEIRI STANDARD STORE Morioka",
   "category": "craft",
-  "tags": ["everyday"],
+  "tags": [
+   "everyday"
+  ],
   "area": "盛岡駅前",
   "areaEn": "Morioka Station",
   "address": "盛岡市盛岡駅前通1-44",
@@ -185,9 +275,20 @@
   "whatEn": "On the ground floor of the Fesan building at Morioka Station: crafts and everyday things from the six prefectures of Tohoku.",
   "note": "帰りの新幹線の前に、ここで一つ。",
   "noteEn": "One thing from here before the train home.",
-  "coords": [39.70266, 141.13577],
+  "coords": [
+   39.70266,
+   141.13577
+  ],
   "coordsApprox": true,
-  "verifiedAt": "2026-11-01"
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "10:00–20:00",
+   "en": "10:00–20:00"
+  },
+  "closed": {
+   "ja": "盛岡フェザンに準ずる",
+   "en": "According to Morioka Fesan"
+  }
  },
  {
   "name": "食道園",
@@ -202,14 +303,23 @@
   "whatEn": "Opened in 1954, the restaurant where Morioka reimen began; yakiniku too. There are no branches.",
   "note": "冷麺は、始まりの店で一度。",
   "noteEn": "Once, at the place where reimen began.",
-  "coords": [39.70327, 141.14812],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   39.70327,
+   141.14812
+  ],
+  "verifiedAt": "2026-11-01",
+  "closed": {
+   "ja": "第1・第3火曜（連休の場合は営業）",
+   "en": "1st and 3rd Tuesdays (open on consecutive holidays)"
+  }
  },
  {
   "name": "pono books & time",
   "nameEn": "pono books & time",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "大通",
   "areaEn": "Odori",
   "address": "盛岡市大通3丁目7-9",
@@ -218,14 +328,19 @@
   "whatEn": "A bookshop with a café on the second floor of a building in Odori 3-chome. Tue–Fri 12:00–18:00, Sat 13:00–17:00; closed Sundays and Mondays.",
   "note": "本と、コーヒー一杯。それだけ。",
   "noteEn": "A book and one coffee. That's all.",
-  "coords": [39.70301, 141.14095],
+  "coords": [
+   39.70301,
+   141.14095
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
   "name": "Some Blue Coffee",
   "nameEn": "Some Blue Coffee",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "大通",
   "areaEn": "Odori",
   "address": "盛岡市大通3丁目7-3",
@@ -234,7 +349,10 @@
   "whatEn": "A coffee shop that opened upstairs in Odori 3-chome in June 2026. From 07:30 on Mon, Tue and Fri; closed Wednesdays and Thursdays.",
   "note": "朝いちばんは、ここから。",
   "noteEn": "First thing in the morning, start here.",
-  "coords": [39.70331, 141.14151],
+  "coords": [
+   39.70331,
+   141.14151
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -249,8 +367,19 @@
   "whatEn": "A Konyacho workshop and shop for Nambu shikon-zome and akane-zome, shibori cloth dyed with gromwell root and madder, from kimono rolls to furoshiki and noren.",
   "note": "紫は、一度で決めずに何度も重ねた色。",
   "noteEn": "This purple is not dyed once. It is layered again and again.",
-  "coords": [39.70226, 141.15608],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   39.70226,
+   141.15608
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–17:30",
+   "en": "9:00–17:30"
+  },
+  "closed": {
+   "ja": "日曜・水曜",
+   "en": "Sundays and Wednesdays"
+  }
  },
  {
   "name": "みちのくあかね会",
@@ -264,7 +393,10 @@
   "whatEn": "A homespun workshop and shop started by women, hand-spinning and hand-weaving wool into scarves, stoles and cloth.",
   "note": "手で紡いだ糸は、少しずつ太さが違う。それがいい。",
   "noteEn": "Hand-spun yarn is never quite even. That is the point.",
-  "coords": [39.69262, 141.15961],
+  "coords": [
+   39.69262,
+   141.15961
+  ],
   "verifiedAt": "2026-11-13"
  },
  {
@@ -279,7 +411,10 @@
   "whatEn": "A shop on Zaimokucho selling coats, jackets, scarves and bags made from Iwate homespun, hand-spun and hand-woven wool.",
   "note": "盛岡の冬を越すなら、まずマフラーから。",
   "noteEn": "To get through a Morioka winter, start with a scarf.",
-  "coords": [39.70633, 141.13805],
+  "coords": [
+   39.70633,
+   141.13805
+  ],
   "verifiedAt": "2026-11-13"
  },
  {
@@ -294,8 +429,19 @@
   "whatEn": "An indigo workshop and shop in Morioka Tezukuri-mura, dyeing samue, hanten jackets, shirts and noren with naturally fermented indigo.",
   "note": "藍は、洗うほど自分の色になる。",
   "noteEn": "Indigo becomes your own colour the more you wash it.",
-  "coords": [39.68749, 141.02319],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   39.68749,
+   141.02319
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "年末年始・不定休",
+   "en": "Year-end/New Year and irregular holidays"
+  }
  },
  {
   "name": "kasi-friendly",
@@ -309,8 +455,19 @@
   "whatEn": "A shop on Zaimokucho since 2010, mostly natural-fibre clothes from small Japanese labels, with tools for everyday life.",
   "note": "材木町を歩くなら、ここで一度立ち止まる。",
   "noteEn": "Walking Zaimokucho, stop here once.",
-  "coords": [39.70599, 141.13846],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   39.70599,
+   141.13846
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–18:00（4〜11月の土曜は19:00まで）",
+   "en": "10:00–18:00 (until 19:00 on Saturdays Apr–Nov)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "螺鈿 澤井工房",
@@ -324,7 +481,18 @@
   "whatEn": "A workshop and shop making pendants, earrings and hairpins in ebony with abalone and turban-shell inlay and Joboji lacquer from Iwate.",
   "note": "貝の光は、見る角度で色が変わる。",
   "noteEn": "The shell changes colour as you tilt it.",
-  "coords": [39.75368, 141.16751],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   39.75368,
+   141.16751
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–16:00（冬季）",
+   "en": "10:00–16:00 (winter)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  }
 ]

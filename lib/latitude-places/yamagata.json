@@ -20,7 +20,15 @@
   "coords": [
    38.22848,
    140.35562
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:30（陶芸体験受付 9:00–15:00）",
+   "en": "9:00–17:30 (pottery experience reception 9:00–15:00)"
+  },
+  "closed": {
+   "ja": "月曜（春–秋は祝日営業、冬期は休業）・年末年始",
+   "en": "Mondays (open on public holidays spring–autumn, closed winter) and New Year"
+  }
  },
  {
   "name": "青龍窯",
@@ -43,7 +51,15 @@
   "coords": [
    38.22969,
    140.34968
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "第2・第4火曜",
+   "en": "2nd and 4th Tuesdays of each month"
+  }
  },
  {
   "name": "白露ふうき豆本舗 山田家",
@@ -65,7 +81,11 @@
   "coords": [
    38.25144,
    140.33799
-  ]
+  ],
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "榮玉堂",
@@ -108,7 +128,15 @@
   "coords": [
    38.25317,
    140.33972
-  ]
+  ],
+  "hours": {
+   "ja": "平日 11:00–15:30・17:00–21:30、土日祝 11:00–21:30",
+   "en": "Weekdays 11:00–15:30 & 17:00–21:30, weekends & holidays 11:00–21:30"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "栄屋本店",
@@ -130,7 +158,15 @@
   "coords": [
    38.25138,
    140.33997
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–17:25（L.O.）",
+   "en": "11:30–17:25 (last order)"
+  },
+  "closed": {
+   "ja": "水曜（祝日の場合は翌日、1月・8月は不定休）",
+   "en": "Wednesdays (following day if public holiday; irregular in Jan & Aug)"
+  }
  },
  {
   "name": "金澤屋牛肉店",
@@ -152,7 +188,15 @@
   "coords": [
    38.25507,
    140.34281
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00（L.O. 13:30）、17:00–21:30（L.O. 20:30）",
+   "en": "11:30–14:00 (last order 13:30), 17:00–21:30 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "火曜（臨時休業あり）",
+   "en": "Tuesdays (irregular holidays)"
+  }
  },
  {
   "name": "RESTAURANT PAS MAL",
@@ -174,7 +218,15 @@
   "coords": [
    38.25201,
    140.34124
-  ]
+  ],
+  "hours": {
+   "ja": "12:00–15:00（L.O. 13:00）、18:00–23:00（L.O. 20:00）",
+   "en": "12:00–15:00 (last order 13:00), 18:00–23:00 (last order 20:00)"
+  },
+  "closed": {
+   "ja": "水曜・第2火曜",
+   "en": "Wednesdays and 2nd Tuesday of each month"
+  }
  },
  {
   "name": "gu/ra",
@@ -216,7 +268,15 @@
   "coords": [
    38.25673,
    140.33541
-  ]
+  ],
+  "hours": {
+   "ja": "平日 11:00–17:00、土日祝 10:00–17:00",
+   "en": "Weekdays 11:00–17:00, weekends & holidays 10:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜・木曜",
+   "en": "Mondays and Thursdays"
+  }
  },
  {
   "name": "Day & Coffee 本町七日町店",
@@ -238,7 +298,15 @@
   "coords": [
    38.25132,
    140.33854
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00（L.O. 17:30）",
+   "en": "10:00–18:00 (last order 17:30)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "JalanJalan Coffee & More",
@@ -260,7 +328,15 @@
   "coords": [
    38.25353,
    140.33994
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "この山道を行きし人あり",
@@ -283,7 +359,11 @@
   "coords": [
    38.25317,
    140.34071
-  ]
+  ],
+  "hours": {
+   "ja": "12:00–17:00",
+   "en": "12:00–17:00"
+  }
  },
  {
   "name": "ROOTS & Technique the REAL store",
@@ -306,7 +386,15 @@
   "coords": [
    38.25072,
    140.3357
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜・水曜（臨時休業あり）",
+   "en": "Mondays, Tuesdays, and Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "せと藤",
@@ -329,6 +417,14 @@
   "coords": [
    38.24504,
    140.33869
-  ]
+  ],
+  "hours": {
+   "ja": "平日 10:00–17:00、土日祝 10:00–18:00",
+   "en": "Weekdays 10:00–17:00, weekends & holidays 10:00–18:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  }
 ]

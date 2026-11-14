@@ -20,7 +20,15 @@
   "coords": [
    34.49171,
    136.70274
-  ]
+  ],
+  "hours": {
+   "ja": "7:55–16:30",
+   "en": "7:55–16:30"
+  },
+  "closed": {
+   "ja": "土曜・日曜・一部祝日",
+   "en": "Saturdays, Sundays, some public holidays"
+  }
  },
  {
   "name": "伊勢 宮忠",
@@ -66,7 +74,15 @@
   "coords": [
    34.48969,
    136.70932
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–17:00（火土は–18:00）",
+   "en": "10:30–17:00 (Tue & Sat until 18:00)"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "他抜きだんらん亭",
@@ -90,7 +106,11 @@
   "coords": [
    34.46184,
    136.72357
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–17:00（季節により異なる）",
+   "en": "9:30–17:00 (varies by season)"
+  }
  },
  {
   "name": "御福餅本家",
@@ -134,7 +154,15 @@
   "coords": [
    34.49964,
    136.71951
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・火曜（火曜は珈琲豆販売のみ営業）",
+   "en": "Sundays, Tuesdays (coffee bean sales only on Tuesdays)"
+  }
  },
  {
   "name": "PROUD COFFEE ROASTERY",
@@ -155,7 +183,15 @@
   "coords": [
    34.5015,
    136.70741
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–19:00（L.O. 18:00）",
+   "en": "11:00–19:00 (last order 18:00)"
+  },
+  "closed": {
+   "ja": "金曜",
+   "en": "Fridays"
+  }
  },
  {
   "name": "糀屋",
@@ -174,7 +210,15 @@
   "whatEn": "A soy sauce and miso brewery founded in 1816, with its shop in Miyajiri. Alongside tamari for Ise udon and miso, it sells rice koji and koji pudding.",
   "note": "日祝は休み。甘酒の糀ドリンクはノンアルコール。",
   "noteEn": "Closed Sundays and holidays. The koji amazake drink is non-alcoholic.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・祝日・年末年始",
+   "en": "Sundays, public holidays, Year-end/New Year"
+  }
  },
  {
   "name": "三重県真珠",
@@ -193,7 +237,15 @@
   "whatEn": "A pearl shop in Futami looking out toward Meoto Iwa, open for over seventy years. It sells Akoya pearl jewellery and runs pearl-extraction sessions from live oysters.",
   "note": "取り出した真珠は、その場でピアスなどに仕立ててもらえる。",
   "noteEn": "A pearl you extract can be set into earrings or a pendant on the spot.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "伊勢 菊一",
@@ -212,7 +264,15 @@
   "whatEn": "A shop on Geku Sando descended from the Meiji-era Kikuichimonji Kanechika blade store. Alongside cutlery, it stocks work by local makers and shrine-town souvenirs. Closed Thursdays.",
   "note": "木曜は休み。包丁だけでなく、外宮参りの小さな土産もある。",
   "noteEn": "Closed Thursdays. Alongside knives, there are small souvenirs for Geku.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "伊勢焼陶芸体験工房",
@@ -229,7 +289,11 @@
   "whatEn": "A pottery studio and gallery about seven minutes on foot from Okage Yokocho, offering wheel-throwing, hand-building and painting sessions. Reservations preferred; irregular holidays.",
   "note": "不定休で予約優先。電動ろくろは焼き上がりまで半年ほどかかる。",
   "noteEn": "Irregular holidays, reservations preferred. Wheel-thrown pieces take about six months to fire.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "YAMADA",
@@ -248,7 +312,15 @@
   "whatEn": "A tableware and gift shop in Iwabuchi founded in 1912 as a maker and seller of Ise Shunkei lacquerware. Today it stocks Japanese and Nordic tableware alongside home goods.",
   "note": "宇治山田駅の近く。伊勢春慶の老舗が始めた器の店。",
   "noteEn": "Near Ujiyamada Station; a tableware shop started by an old Ise Shunkei house.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜（大安を除く）",
+   "en": "Tuesdays (except Taian lucky days)"
+  }
  },
  {
   "name": "吉兆招福亭",
@@ -266,7 +338,11 @@
   "whatEn": "A maneki-neko shop in Okage Yokocho since 1993, moved to a larger space on the main street in July 2026. Over 1,500 ceramic lucky cats and folk toys from Seto, Tokoname and Kutani.",
   "note": "旧店舗の「縁日処」では、時期ごとの小さな展示も開かれる。",
   "noteEn": "Their old shop, now Ennichi-dokoro, holds changing pop-up shows.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:30–17:00（季節により異なる）",
+   "en": "9:30–17:00 (varies by season)"
+  }
  },
  {
   "name": "伊勢河崎商人館",
@@ -285,7 +361,15 @@
   "whatEn": "A local history and culture centre in a restored Edo-period liquor wholesaler along the Seta River. Seven storehouses and two townhouses are registered cultural properties, with craft displays and sales in the Shonin-gura.",
   "note": "蔵のなかの「商人蔵」は月替わりの展示もある。",
   "noteEn": "The Shonin-gura storehouse inside has monthly craft displays.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:30–17:00",
+   "en": "9:30–17:00"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は翌日）",
+   "en": "Tuesdays (following day if public holiday)"
+  }
  },
  {
   "name": "藤屋窓月堂",
@@ -302,7 +386,11 @@
   "whatEn": "A wagashi house founded in 1868 with its main shop on Oharai-machi, making Tokowaka sweets, Rikyu manju and salted-bean daifuku.",
   "note": "11月と12月の土日は安納芋の利休饅頭も出る。",
   "noteEn": "On weekends in November and December they also make Anno sweet-potato Rikyu manju.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "パティスリー・ラ・リシュテール",
@@ -320,7 +408,15 @@
   "whatEn": "A patisserie in Asahicho making cakes and baked sweets with local Ise ingredients and no unnecessary additives, including Ise rusks with Shima aosa seaweed.",
   "note": "焼き菓子の「伊勢ラスク」は日持ちするので土産にもいい。",
   "noteEn": "The Ise rusks keep well if you are buying a box to carry.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜・月2回不定休（主に月曜）",
+   "en": "Tuesdays & twice a month (mainly Mondays)"
+  }
  },
  {
   "name": "ドゥース・ド・フランス",
@@ -338,7 +434,15 @@
   "whatEn": "A patisserie in Misono-cho Nagaya selling fresh cakes and baked sweets, and the maker of the Ise-Shima Terrine served at the G7 Summit. Closed Wednesdays.",
   "note": "水曜は休み。日曜と祝日は18時半で閉まる。",
   "noteEn": "Closed Wednesdays; closes at 6:30 pm on Sundays and holidays.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日・土 10:00–19:00、日祝 10:00–18:30",
+   "en": "Weekdays & Sat 10:00–19:00, Sun & public holidays 10:00–18:30"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "カミノコーヒー",
@@ -372,7 +476,15 @@
   "whatEn": "A quiet kissaten in an old timber house in Miyagawa with seasonal ikebana, open Thursday to Saturday from 10 am to 5 pm.",
   "note": "開くのは木・金・土だけ。ラストオーダーは16時。",
   "noteEn": "Open only Thursday to Saturday; last order is 4 pm.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "木〜土 10:00–17:00（L.O. 16:00）",
+   "en": "Thu–Sat 10:00–17:00 (last order 16:00)"
+  },
+  "closed": {
+   "ja": "日曜〜水曜",
+   "en": "Sun–Wed"
+  }
  },
  {
   "name": "Antiques & Cafe Gallery Miko-Nonno",
@@ -390,7 +502,11 @@
   "whatEn": "An antique gallery and café in a former tailor's near Ise-shi Station, serving house-roasted coffee amid Susie Cooper and other vintage wares.",
   "note": "店が開くのは、原則として金・土・日と祝日だけ。",
   "noteEn": "Usually open only on Fridays, weekends and public holidays.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "金〜日・祝 11:00–18:00",
+   "en": "Fri–Sun & public holidays 11:00–18:00"
+  }
  },
  {
   "name": "伊勢うどんのまめや",
@@ -408,7 +524,15 @@
   "whatEn": "An Ise udon house since 1923. House-made noodles from Mie wheat are served with a dark sauce of bonito, mackerel scad and local tamari.",
   "note": "太くて柔らかい自家製麺に、濃いつゆを絡めて食べる。",
   "noteEn": "Toss the thick, soft noodles well in the dark sauce.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日 10:00–15:00（L.O. 14:45）・17:00–19:30（L.O. 19:15）、土日祝 10:00–19:30（L.O. 19:15）",
+   "en": "Weekdays 10:00–15:00 (last order 14:45) & 17:00–19:30 (last order 19:15), weekends & public holidays 10:00–19:30 (last order 19:15)"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は翌日）、月1回水曜不定休",
+   "en": "Tuesdays (following day if public holiday), 1 irregular Wednesday/month"
+  }
  },
  {
   "name": "つきよみ食堂",
@@ -426,7 +550,15 @@
   "whatEn": "A diner run by a husband and wife, known for hand-cut Ise udon and katsudon. They knead dough from 5 am and open for lunch from 11 am to 2 pm.",
   "note": "昼だけの営業で、ラストオーダーは13時半。",
   "noteEn": "Lunch only; last order is 1:30 pm.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–14:00（L.O. 13:30）",
+   "en": "11:00–14:00 (last order 13:30)"
+  },
+  "closed": {
+   "ja": "日曜・月曜・火曜",
+   "en": "Sundays, Mondays, Tuesdays"
+  }
  },
  {
   "name": "フランス料理 ボンヴィヴァン",
@@ -443,7 +575,15 @@
   "whatEn": "A French restaurant near Geku serving Ise-Shima seafood, Matsusaka beef and local vegetables on Iga and Banko ceramics.",
   "note": "コースの料理だけでなく、載っている伊賀や萬古の器も見どころ。",
   "noteEn": "Notice the Iga and Banko plates the courses arrive on.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "12:00–15:00（L.O. 13:00）、17:30–21:00（L.O. 19:00）",
+   "en": "12:00–15:00 (last order 13:00), 17:30–21:00 (last order 19:00)"
+  },
+  "closed": {
+   "ja": "月曜、火曜・日曜のディナー（祝日の場合は翌日）",
+   "en": "Mondays, Tue & Sun dinner (following day if public holiday)"
+  }
  },
  {
   "name": "カンパーニュ",
@@ -461,6 +601,10 @@
   "whatEn": "A French restaurant in Setacho open for thirty years, serving reservation-only courses of Ise-Shima and Higashi-Kishu produce, plus takeaway cakes from 11 am. Closed Mondays and Tuesdays.",
   "note": "食事は要予約。11時からの持ち帰りの菓子だけも買える。",
   "noteEn": "Dining requires a booking; takeaway cakes can be bought from 11 am.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "月曜・火曜（祝日は原則営業）",
+   "en": "Mondays, Tuesdays (generally open on public holidays)"
+  }
  }
 ]

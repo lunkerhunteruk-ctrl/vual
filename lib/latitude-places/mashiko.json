@@ -42,7 +42,15 @@
   "coords": [
    36.46717,
    140.11369
-  ]
+  ],
+  "hours": {
+   "ja": "4〜11月 10:00–17:00、12〜3月 平日 10:00–16:00・土日祝 10:00–16:30",
+   "en": "Apr–Nov 10:00–17:00; Dec–Mar weekdays 10:00–16:00, weekends & holidays 10:00–16:30"
+  },
+  "closed": {
+   "ja": "水曜（不定休あり）",
+   "en": "Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "Natural Bakery 日々舎",
@@ -106,7 +114,15 @@
   "coords": [
    36.46766,
    140.11542
-  ]
+  ],
+  "hours": {
+   "ja": "ストア 11:00–17:00、カフェ 11:00–17:00（L.O. 16:30）",
+   "en": "Store 11:00–17:00, Cafe 11:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "なない珈琲ロースタリー",
@@ -127,7 +143,15 @@
   "coords": [
    36.49166,
    140.09542
-  ]
+  ],
+  "hours": {
+   "ja": "月曜 11:00–15:00、金〜日 11:00–17:30",
+   "en": "Mon 11:00–15:00, Fri–Sun 11:00–17:30"
+  },
+  "closed": {
+   "ja": "火曜・水曜・木曜",
+   "en": "Tuesdays, Wednesdays, and Thursdays"
+  }
  },
  {
   "name": "益子焼窯元よこやま",
@@ -146,7 +170,15 @@
   "whatEn": "A Mashiko-yaki kiln compound in Sayado making and selling charcoal-fired stoneware, with wheel-throwing studios and cafés including Mashiko no Chaya.",
   "note": "しのぎの皿や炭化焼成の器を、窯元の直売所で手に取って見たい。",
   "noteEn": "I want to hold the fluted plates and charcoal-fired bowls at the kiln shop.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–17:00（最終受付 15:00）",
+   "en": "9:00–17:00 (last entry 15:00)"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は翌平日）、月2回火曜、年末年始",
+   "en": "Mondays (next weekday if a public holiday), twice-monthly Tuesdays, Year-end/New Year"
+  }
  },
  {
   "name": "外池酒造店",
@@ -164,7 +196,15 @@
   "whatEn": "A sake brewery founded in 1937 in Hanawa, brewing Sanran and Bo:. The shop is open 10 am to 5 pm with tastings, alongside the café Waku serving brewery-water coffee and amazake soft-serve.",
   "note": "お猪口で「燦爛」と「望」を飲み比べて、一本選びたい。",
   "noteEn": "I want to taste Sanran and Bo: side by side in ochoko cups and pick a bottle.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "元日",
+   "en": "New Year's Day only"
+  }
  },
  {
   "name": "民芸店ましこ",
@@ -268,7 +308,11 @@
   "whatEn": "A coffee roastery and art space in Mashiko Tougei-mura roasting hand-sorted beans and brewing them by hand drip. Open 11:30 am to 7 pm (last order 6:30 pm), closed Fridays plus either Tuesday or Thursday. No photography inside.",
   "note": "カメラをしまって、絵を眺めながら珈琲をゆっくり飲みたい。",
   "noteEn": "Put the camera away and drink coffee slowly while looking at the paintings.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "closed": {
+   "ja": "第1・2週 木・金曜、第3・4週 火・金曜",
+   "en": "Thu & Fri (1st & 2nd weeks), Tue & Fri (3rd & 4th weeks)"
+  }
  },
  {
   "name": "Megumi Drip",
@@ -285,7 +329,15 @@
   "whatEn": "A café in Nabatame opened on 27 February 2026 by an SCAJ Advanced Coffee Meister. Open noon to 8 pm (last order 7 pm), closed Tuesdays and Wednesdays; cash and Mashicoin only.",
   "note": "濃いめの珈琲と固めのプリンを、益子焼の皿で頼んでみたい。",
   "noteEn": "I want to order a pour-over coffee and firm custard pudding on Mashiko pottery.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "12:00–20:00（L.O. 19:00）",
+   "en": "12:00–20:00 (last order 19:00)"
+  },
+  "closed": {
+   "ja": "火曜・水曜（臨時休業あり）",
+   "en": "Tuesdays and Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "Cafe Novel",

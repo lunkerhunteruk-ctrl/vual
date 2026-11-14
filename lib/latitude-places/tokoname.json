@@ -19,7 +19,15 @@
   "coords": [
    34.84619,
    136.86671
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（売り切れ次第終了）",
+   "en": "10:00–17:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "NOISETTE",
@@ -41,7 +49,15 @@
   "coords": [
    34.86024,
    136.85953
-  ]
+  ],
+  "hours": {
+   "ja": "火–土 9:00–16:00",
+   "en": "Tue–Sat 9:00–16:00"
+  },
+  "closed": {
+   "ja": "日・月曜（祝日も休業）",
+   "en": "Sundays & Mondays (closed even on public holidays)"
+  }
  },
  {
   "name": "バー＆ビストロ 共栄窯",
@@ -63,7 +79,15 @@
   "coords": [
    34.89206,
    136.83569
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–14:30（L.O. 13:30）、日–木・祝 17:00–23:00（L.O. 22:00）、金土・祝前日 17:00–24:00（L.O. 23:00）",
+   "en": "11:00–14:30 (last order 13:30), Sun–Thu & holidays 17:00–23:00 (last order 22:00), Fri, Sat & eve of holidays 17:00–24:00 (last order 23:00)"
+  },
+  "closed": {
+   "ja": "不定休（年10日程度、年末年始含む）",
+   "en": "Irregular (approx. 10 days/year incl. year-end/New Year)"
+  }
  },
  {
   "name": "珈琲工房 しいの木",
@@ -108,7 +132,15 @@
   "coords": [
    34.91203,
    136.84263
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "無休（年末年始除く）",
+   "en": "Open every day (except year-end/New Year)"
+  }
  },
  {
   "name": "グラスワークス・楽",
@@ -171,7 +203,15 @@
   "whatEn": "A bagel shop and café in Asukadai baking additive-free bagels with Hokkaido Haruyokoi wheat and house natural yeast, plus lunches with garden vegetables. Open 11:00 to 15:00; closed Mondays and Fridays.",
   "note": "甘いのと惣菜系をひとつずつ、翌朝用に買う。",
   "noteEn": "One sweet bagel and one savoury, saved for the next morning.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–15:00（売り切れ次第終了、ランチ 11:00–14:00 L.O. 14:00）",
+   "en": "11:00–15:00 (until sold out; lunch 11:00–14:00, last order 14:00)"
+  },
+  "closed": {
+   "ja": "月・金曜（月曜祝日の場合は営業、火曜休、臨時休業あり）",
+   "en": "Mondays & Fridays (if Mon is a public holiday, open Mon & closed Tue; irregular closures)"
+  }
  },
  {
   "name": "カレット洋菓子店 常滑店",
@@ -208,7 +248,15 @@
   "whatEn": "A bakery in Nijigaoka where a baker of over thirty years turns out around eighty kinds of viennoiserie, crusty loaves and baked sweets daily. Open 8:00 to 18:00; closed Mondays and Tuesdays.",
   "note": "朝いちばんに、焼きたてのクロワッサンとハード系を。",
   "noteEn": "First thing in the morning for warm croissants and crusty loaves.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "8:00–18:00",
+   "en": "8:00–18:00"
+  },
+  "closed": {
+   "ja": "月・火曜",
+   "en": "Mondays & Tuesdays"
+  }
  },
  {
   "name": "地魚料理・うなぎ 丸一",
@@ -226,7 +274,15 @@
   "whatEn": "A restaurant in Haramatsucho for local fish, Chita beef and grilled eel; closes when sold out, closed Tuesdays, and dinner requires booking two days ahead. A tiny paper-goods gallery sits next door.",
   "note": "うなぎを待ってから、隣の丸小屋で和紙の雑貨も見る。",
   "noteEn": "Wait for the eel, then look at the washi paper goods next door.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–14:30（L.O. 14:00）、17:00–20:00（夜は完全予約制）",
+   "en": "11:00–14:30 (last order 14:00), 17:00–20:00 (dinner by reservation only)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "炭焼 政",
@@ -244,7 +300,15 @@
   "whatEn": "A charcoal-grill restaurant opened on the Pottery Footpath in March 2025, grilling fish and chicken over Binchotan and plating on local Tokoname ware. Closed Mondays; cash only.",
   "note": "炭火の定食を、常滑焼の作家の器ごと味わいたい。",
   "noteEn": "Enjoy the charcoal-grilled set meal together with the potter's plates.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:30–13:30、17:00–20:00",
+   "en": "11:30–13:30, 17:00–20:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "カフェベレクー",
@@ -262,7 +326,15 @@
   "whatEn": "A French café-bistro in Oguracho run by a chef from Lyon, serving morning plates from 8:00 and lunch; closed Mondays and Tuesdays (dinner on Fridays and Saturdays only).",
   "note": "朝の時間に座って、リヨン風のモーニングをゆっくり。",
   "noteEn": "Sit down in the morning for a slow Lyonnaise breakfast.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "8:00–11:00、11:30–14:00、金土 18:00–21:00（各L.O. 30分前）",
+   "en": "8:00–11:00, 11:30–14:00, Fri–Sat 18:00–21:00 (last order 30 min before close)"
+  },
+  "closed": {
+   "ja": "月・火曜",
+   "en": "Mondays & Tuesdays"
+  }
  },
  {
   "name": "Organic Laundry & Cafe yuragi 1/f",
@@ -281,7 +353,15 @@
   "whatEn": "A café attached to an organic laundry in Segicho, serving specialty coffee and organic Japanese tea brewed in Tokoname kyusu alongside additive-free bakes. Open 8:00 to 17:00; closed Thursdays; cash only.",
   "note": "常滑焼の急須で淹れたお茶と、無添加の焼き菓子で一息。",
   "noteEn": "A quiet break with tea poured from a Tokoname kyusu and a plain bake.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "カフェ 8:00–17:00、コインランドリー 6:00–22:00",
+   "en": "Cafe 8:00–17:00, Coin Laundry 6:00–22:00"
+  },
+  "closed": {
+   "ja": "カフェ 木曜、コインランドリー 無休",
+   "en": "Cafe Thursdays, Coin Laundry open every day"
+  }
  },
  {
   "name": "NoBlendCoffee",
@@ -337,7 +417,11 @@
   "whatEn": "A gallery on the Pottery Footpath in a building by Tezuka Architects, showing and selling Tokoname ceramics alongside glass, woodwork and textiles. Open Friday to Monday, 10:00 to 16:00.",
   "note": "常滑の作家の器と建物のつくりを、静かに見比べたい。",
   "noteEn": "Compare the Tokoname potters' vessels against the quiet building.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "金–月 10:00–16:00",
+   "en": "Fri–Mon 10:00–16:00"
+  }
  },
  {
   "name": "にざまつ 散歩道店",
@@ -356,7 +440,15 @@
   "whatEn": "A kiln-run pottery and mugwort mochi shop at the Pottery Footpath entrance, selling handmade Tokoname ware, wild-grapevine baskets and antiques, with a café for kusamochi. Open 8:30 to 16:00 daily.",
   "note": "草もちと珈琲で一息ついてから、山ぶどうのかごを見る。",
   "noteEn": "Pause over mugwort mochi and coffee, then look at the grapevine baskets.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "8:30–16:00",
+   "en": "8:30–16:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "角山陶苑",
@@ -375,7 +467,11 @@
   "whatEn": "A century-old kiln on the Pottery Footpath whose forerunner dates to around 1900; in its converted old workshop, craftsmen guide visitors on electric potter's wheels. Open 9:00 to 16:00.",
   "note": "古い工房の空気のなかで、電動ろくろを一度回してみたい。",
   "noteEn": "Try throwing on an electric wheel inside the old workshop.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–16:00",
+   "en": "9:00–16:00"
+  }
  },
  {
   "name": "前川製陶所",

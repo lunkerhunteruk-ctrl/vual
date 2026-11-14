@@ -18,7 +18,15 @@
   "coords": [
    31.62427,
    131.35324
-  ]
+  ],
+  "hours": {
+   "ja": "7:30–15:00（なくなり次第終了）",
+   "en": "7:30–15:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "水・木曜",
+   "en": "Wednesdays and Thursdays"
+  }
  },
  {
   "name": "HINA MUFFIN",
@@ -104,7 +112,15 @@
   "coords": [
    31.62572,
    131.35125
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00（ランチ 11:00–15:00、夜は完全予約制）",
+   "en": "11:00–17:00 (lunch 11:00–15:00, dinner by reservation only)"
+  },
+  "closed": {
+   "ja": "火曜（祝日・クルーズ船寄港日は翌日休）",
+   "en": "Tuesdays (closed the following day on public holidays and cruise ship days)"
+  }
  },
  {
   "name": "魚料理 びびんや",
@@ -126,7 +142,15 @@
   "coords": [
    31.58065,
    131.39966
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–15:00（L.O. 14:30）",
+   "en": "11:00–15:00 (last order 14:30)"
+  },
+  "closed": {
+   "ja": "月曜（祝日は翌日休）",
+   "en": "Mondays (closed the following day on public holidays)"
+  }
  },
  {
   "name": "港の駅めいつ",

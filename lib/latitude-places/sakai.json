@@ -20,7 +20,15 @@
   "coords": [
    34.59278,
    135.48465
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–16:00",
+   "en": "9:30–16:00"
+  },
+  "closed": {
+   "ja": "土日祝",
+   "en": "Saturdays, Sundays, and public holidays"
+  }
  },
  {
   "name": "梅栄堂",
@@ -64,7 +72,15 @@
   "coords": [
    34.57184,
    135.46878
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（店内飲食受付 16:45まで、売り切れ次第終了）",
+   "en": "10:00–17:00 (eat-in orders until 16:45, closes when sold out)"
+  },
+  "closed": {
+   "ja": "火・水曜（祝日は営業）",
+   "en": "Tuesdays and Wednesdays (open on public holidays)"
+  }
  },
  {
   "name": "kokorotocacao",
@@ -86,7 +102,15 @@
   "coords": [
    34.55038,
    135.44927
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00（完売次第閉店）",
+   "en": "10:00–19:00 (closes when sold out)"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "銀シャリ en",
@@ -172,7 +196,15 @@
   "coords": [
    34.55771,
    135.45054
-  ]
+  ],
+  "hours": {
+   "ja": "平日 11:00–14:30・17:30–20:30、土日祝 11:00–15:00・17:00–20:30",
+   "en": "Weekdays 11:00–14:30, 17:30–20:30; weekends and public holidays 11:00–15:00, 17:00–20:30"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業、火曜休）",
+   "en": "Mondays (open on public holidays, closed Tuesdays)"
+  }
  },
  {
   "name": "specialty coffee DEARCUP",
@@ -236,7 +268,15 @@
   "coords": [
    34.54485,
    135.45115
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:30",
+   "en": "11:00–16:30"
+  },
+  "closed": {
+   "ja": "土〜月曜",
+   "en": "Saturdays to Mondays"
+  }
  },
  {
   "name": "plants & keramik kakine",

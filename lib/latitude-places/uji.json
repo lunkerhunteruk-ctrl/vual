@@ -19,7 +19,15 @@
   "coords": [
    34.89083,
    135.80951
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は翌日）・最終火曜",
+   "en": "Mondays (following day if public holiday) and last Tuesday of each month"
+  }
  },
  {
   "name": "龍豊窯",
@@ -41,7 +49,15 @@
   "coords": [
    34.93017,
    135.83672
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "京都炭山朝倉木工",
@@ -62,7 +78,11 @@
   "coords": [
    34.92063,
    135.83492
-  ]
+  ],
+  "hours": {
+   "ja": "平日 10:00–16:00（土日祝は予約制）",
+   "en": "Weekdays 10:00–16:00 (weekends & holidays by appointment)"
+  }
  },
  {
   "name": "通圓",
@@ -85,7 +105,15 @@
   "coords": [
    34.89326,
    135.80724
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–17:30（L.O. 16:00）",
+   "en": "10:30–17:30 (last order 16:00)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "堀井七茗園",
@@ -108,7 +136,15 @@
   "coords": [
    34.88852,
    135.8053
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–16:30（12:00–13:30昼休憩）",
+   "en": "10:00–16:30 (closed 12:00–13:30 for lunch)"
+  },
+  "closed": {
+   "ja": "土曜・日曜・祝日",
+   "en": "Saturdays, Sundays, and public holidays"
+  }
  },
  {
   "name": "昇苑くみひも 宇治本店",
@@ -131,7 +167,15 @@
   "coords": [
    34.8902,
    135.80411
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "無休（夏季・冬季休業あり）",
+   "en": "Open every day (summer & winter holidays)"
+  }
  },
  {
   "name": "たま木亭",
@@ -152,7 +196,15 @@
   "coords": [
    34.91011,
    135.80342
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–18:45",
+   "en": "8:00–18:45"
+  },
+  "closed": {
+   "ja": "月曜・火曜・水曜",
+   "en": "Mondays, Tuesdays, and Wednesdays"
+  }
  },
  {
   "name": "シェ・アガタ",
@@ -174,7 +226,15 @@
   "coords": [
    34.89915,
    135.80853
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜・木曜",
+   "en": "Tuesdays, Wednesdays, and Thursdays"
+  }
  },
  {
   "name": "能登椽 稲房安兼",
@@ -213,7 +273,15 @@
   "coords": [
    34.89139,
    135.80452
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–15:00（L.O. 14:30）、17:30–21:00（L.O. 20:30）",
+   "en": "11:30–15:00 (last order 14:30), 17:30–21:00 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "季節料理と天ぷら LovA",
@@ -231,7 +299,15 @@
   "coords": [
    34.88848,
    135.80024
-  ]
+  ],
+  "hours": {
+   "ja": "11:15–14:00（L.O.）",
+   "en": "11:15–14:00 (last order)"
+  },
+  "closed": {
+   "ja": "火曜（イベント時は土曜休）",
+   "en": "Tuesdays (Saturdays during events)"
+  }
  },
  {
   "name": "OUTSTANDING COFFEE ROASTER",
@@ -252,7 +328,15 @@
   "coords": [
    34.88884,
    135.80443
-  ]
+  ],
+  "hours": {
+   "ja": "平日 10:00–16:30、土日祝 10:00–17:00",
+   "en": "Weekdays 10:00–16:30, weekends & holidays 10:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "よこやま珈琲",
@@ -273,7 +357,11 @@
   "coords": [
    34.89726,
    135.78134
-  ]
+  ],
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "MONATIC COFFEE",
@@ -294,7 +382,15 @@
   "coords": [
    34.93333,
    135.80064
-  ]
+  ],
+  "hours": {
+   "ja": "土日 9:00–15:30（L.O. 15:30、16:00頃閉店）",
+   "en": "Weekends 9:00–15:30 (last order 15:30, closes around 16:00)"
+  },
+  "closed": {
+   "ja": "平日（不定休あり）",
+   "en": "Weekdays (irregular holidays)"
+  }
  },
  {
   "name": "AMATISTA Coffee",

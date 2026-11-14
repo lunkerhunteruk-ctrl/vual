@@ -43,7 +43,15 @@
   "coords": [
    34.40737,
    133.20026
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:30",
+   "en": "9:00–17:30"
+  },
+  "closed": {
+   "ja": "無休（年末年始を除く）",
+   "en": "Open every day (except New Year holidays)"
+  }
  },
  {
   "name": "からさわ",
@@ -87,7 +95,15 @@
   "coords": [
    34.40868,
    133.19766
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "珈琲豆ましろ",
@@ -109,7 +125,15 @@
   "coords": [
    34.39489,
    133.19615
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "月・木曜（祝日は営業）",
+   "en": "Mondays and Thursdays (open on public holidays)"
+  }
  },
  {
   "name": "watarite",
@@ -131,7 +155,15 @@
   "coords": [
    34.40608,
    133.19685
-  ]
+  ],
+  "hours": {
+   "ja": "平日 12:00–17:00、土日 11:00–16:00",
+   "en": "Weekdays 12:00–17:00, weekends 11:00–16:00"
+  },
+  "closed": {
+   "ja": "月・木曜",
+   "en": "Mondays and Thursdays"
+  }
  },
  {
   "name": "桂馬蒲鉾商店",
@@ -149,7 +181,15 @@
   "whatEn": "A kamaboko shop in Tsuchido founded in 1913, hand-shaping kakiten, umeyaki and other fish cakes from wild fish caught in the Seto Inland Sea and further west, without preservatives or chemical seasonings.",
   "note": "柿天と梅焼を少しずつ、持ち帰りに選ぶ。",
   "noteEn": "Pick out a few kakiten and umeyaki to take back.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "木曜（12月を除く）",
+   "en": "Thursdays (except December)"
+  }
  },
  {
   "name": "ONOMICHI DENIM SHOP",
@@ -167,7 +207,15 @@
   "whatEn": "A denim shop in the Kubo arcade selling jeans worn in for a year by people working in Onomichi, alongside original denim goods.",
   "note": "一本ごとに色落ちが違うので、棚を順に見ていく。",
   "noteEn": "Each pair fades differently, so take your time going along the shelves.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "火・水曜、年末年始",
+   "en": "Tuesdays, Wednesdays, and New Year's holiday"
+  }
  },
  {
   "name": "Nahui Xocolatl",
@@ -202,7 +250,11 @@
   "whatEn": "A Japanese and Western confectioner in Tsuchido founded in 1916, making lemon butter cakes with Setoda eco-lemons, Tamaura senbei and Onomichi dengaku. Closed Thursdays.",
   "note": "レモンバターケーキと尾道田楽を一つずつ。",
   "noteEn": "One lemon butter cake and one Onomichi dengaku.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "住田製パン所",
@@ -255,7 +307,11 @@
   "whatEn": "A third-generation dining room on the Tsuchido waterfront serving local Seto Inland Sea fish dishes and midday set meals. Closed Wednesdays.",
   "note": "昼の定食から。オコゼの入荷はその日の状況次第。",
   "noteEn": "Start with a midday set meal; okoze depends on the catch.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "closed": {
+   "ja": "水曜（予約により営業の場合あり）",
+   "en": "Wednesdays (may open by reservation)"
+  }
  },
  {
   "name": "AIR CAFÉ",
@@ -292,7 +348,15 @@
   "whatEn": "A coffeehouse in front of the Mount Senkoji ropeway station in Nagae, serving freshly griddled waffles and house-made ice cream. Closed Tuesdays.",
   "note": "ロープウェイに乗る前か後に、焼きたてのワッフルを。",
   "noteEn": "Have a fresh waffle before or after taking the ropeway.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–19:00（L.O. 18:30）",
+   "en": "10:00–19:00 (last order 18:30)"
+  },
+  "closed": {
+   "ja": "火曜（祝日は営業、3月・8月は無休）",
+   "en": "Tuesdays (open on public holidays; open every day in March and August)"
+  }
  },
  {
   "name": "Overview Coffee Setoda Roastery",
@@ -310,7 +374,15 @@
   "whatEn": "A roastery and café facing Setoda Port on Ikuchijima, set in a converted 140-year-old salt storehouse serving hand-dripped house-roasted coffee. Open 1 pm to 5 pm.",
   "note": "午後からの営業なので、瀬戸田の午後に立ち寄る。",
   "noteEn": "It opens in the afternoon, so stop by later in the day in Setoda.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "13:00–17:00",
+   "en": "13:00–17:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "帆雨亭",

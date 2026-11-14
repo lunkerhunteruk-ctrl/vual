@@ -22,7 +22,15 @@
    34.33469,
    134.05783
   ],
-  "coordsApprox": true
+  "coordsApprox": true,
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "HIYORI WASANBON 日和制作所",
@@ -46,7 +54,15 @@
    34.32997,
    134.046
   ],
-  "coordsApprox": true
+  "coordsApprox": true,
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "無休（臨時休業あり）",
+   "en": "Open every day (irregular closures via Instagram)"
+  }
  },
  {
   "name": "kitahama blue stories",
@@ -70,7 +86,15 @@
   "coords": [
    34.35077,
    134.05685
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "まちのシューレ963",
@@ -93,7 +117,15 @@
   "coords": [
    34.34456,
    134.05042
-  ]
+  ],
+  "hours": {
+   "ja": "物販 11:00–19:00、カフェ 月–木 11:30–18:00（L.O. 17:30）・金–日 11:30–20:30（L.O. 19:30）",
+   "en": "Shop 11:00–19:00, Cafe Mon–Thu 11:30–18:00 (last order 17:30), Fri–Sun 11:30–20:30 (last order 19:30)"
+  },
+  "closed": {
+   "ja": "第3月曜（祝日の場合は振替あり）",
+   "en": "3rd Monday (alternate day if public holiday)"
+  }
  },
  {
   "name": "暮らすうつわ とうもん",
@@ -159,7 +191,15 @@
   "coords": [
    34.35094,
    134.05653
-  ]
+  ],
+  "hours": {
+   "ja": "11:00頃–16:30頃（売り切れ次第終了）",
+   "en": "Approx. 11:00–16:30 (until sold out)"
+  },
+  "closed": {
+   "ja": "月・火曜",
+   "en": "Mondays & Tuesdays"
+  }
  },
  {
   "name": "御菓子処 湊屋",
@@ -181,7 +221,15 @@
   "coords": [
    34.35085,
    134.04873
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日の場合は木曜休）",
+   "en": "Wednesdays (closed Thursday if public holiday)"
+  }
  },
  {
   "name": "三びきの子ぶた",
@@ -203,6 +251,14 @@
   "coords": [
    34.33871,
    134.05164
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–19:00",
+   "en": "11:00–19:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays & Wednesdays"
+  }
  }
 ]

@@ -3,7 +3,9 @@
   "name": "Orsonero Coffee",
   "nameEn": "Orsonero Coffee",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ポルタ・ヴェネツィア",
   "areaEn": "Porta Venezia",
   "address": "Via Giuseppe Broggi 15, 20129 Milano",
@@ -13,13 +15,18 @@
   "note": "フィルターで頼む。香りがいちばん開く。",
   "noteEn": "Order the filter. That's where the aroma opens.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47778, 9.21122]
+  "coords": [
+   45.47778,
+   9.21122
+  ]
  },
  {
   "name": "Coffee Studio 7Gr.",
   "nameEn": "Coffee Studio 7Gr.",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ポルタ・ヴェネツィア",
   "areaEn": "Porta Venezia",
   "address": "Corso Venezia 31, 20121 Milano",
@@ -29,7 +36,10 @@
   "note": "エスプレッソの店。朝、立ったまま一杯。",
   "noteEn": "An espresso room. One, standing, in the morning.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.46963, 9.19986]
+  "coords": [
+   45.46963,
+   9.19986
+  ]
  },
  {
   "name": "Røst",
@@ -44,7 +54,10 @@
   "note": "小皿をいくつか頼んで、分けて食べる。",
   "noteEn": "Order a few small plates and share them.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47261, 9.20987]
+  "coords": [
+   45.47261,
+   9.20987
+  ]
  },
  {
   "name": "Gelato Giusto",
@@ -59,7 +72,10 @@
   "note": "果物の味を一つ。香りがまっすぐ。",
   "noteEn": "One fruit flavour. The scent comes through clean.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47848, 9.20645]
+  "coords": [
+   45.47848,
+   9.20645
+  ]
  },
  {
   "name": "Trippa",
@@ -74,7 +90,10 @@
   "note": "揚げたトリッパから。予約は早めに。",
   "noteEn": "Start with the fried tripe. Book well ahead.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.4522, 9.20552]
+  "coords": [
+   45.4522,
+   9.20552
+  ]
  },
  {
   "name": "Un Posto a Milano",
@@ -89,7 +108,10 @@
   "note": "古い農家の中で、昼をゆっくり。",
   "noteEn": "A slow lunch inside the old farmhouse.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45105, 9.21148]
+  "coords": [
+   45.45105,
+   9.21148
+  ]
  },
  {
   "name": "Signor Lievito",
@@ -104,7 +126,18 @@
   "note": "カルダモンの入ったものを選ぶ。",
   "noteEn": "Pick the one with cardamom.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45632, 9.21535]
+  "coords": [
+   45.45632,
+   9.21535
+  ],
+  "hours": {
+   "ja": "火〜土 8:00–15:30",
+   "en": "Tue–Sat 08:00–15:30"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays and Mondays"
+  }
  },
  {
   "name": "Trattoria del Pescatore",
@@ -119,13 +152,18 @@
   "note": "オマールのカタルーニャ風。それで決まり。",
   "noteEn": "The Catalan lobster. That settles it.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.44947, 9.19822]
+  "coords": [
+   45.44947,
+   9.19822
+  ]
  },
  {
   "name": "Bugan Coffee Lab",
   "nameEn": "Bugan Coffee Lab",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ナヴィリ",
   "areaEn": "Navigli",
   "address": "Via Vigevano 15, 20144 Milano",
@@ -135,7 +173,10 @@
   "note": "砂糖は置いていない。そのまま香りを飲む。",
   "noteEn": "No sugar on offer. Drink the aroma as it is.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45285, 9.1739]
+  "coords": [
+   45.45285,
+   9.1739
+  ]
  },
  {
   "name": "28 Posti",
@@ -150,7 +191,10 @@
   "note": "おまかせのコースで。何が出るかは聞かない。",
   "noteEn": "Take the blind menu. Don't ask what's coming.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.4529, 9.17327]
+  "coords": [
+   45.4529,
+   9.17327
+  ]
  },
  {
   "name": "Pasticceria Gattullo",
@@ -165,7 +209,10 @@
   "note": "カンノンチーニを一つ、カウンターで。",
   "noteEn": "One cannoncino, at the counter.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45227, 9.18587]
+  "coords": [
+   45.45227,
+   9.18587
+  ]
  },
  {
   "name": "Cucchi",
@@ -180,7 +227,10 @@
   "note": "朝のカプチーノにパネットーネ。ここは一年中ある。",
   "noteEn": "Panettone with a morning cappuccino. They have it all year.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45838, 9.17741]
+  "coords": [
+   45.45838,
+   9.17741
+  ]
  },
  {
   "name": "Luini",
@@ -195,13 +245,19 @@
   "note": "モッツァレラとトマトのを一つ。歩きながらでいい。",
   "noteEn": "One with mozzarella and tomato. Eat it as you walk.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.4658, 9.19148]
+  "coords": [
+   45.4658,
+   9.19148
+  ]
  },
  {
   "name": "Laboratorio Paravicini",
   "nameEn": "Laboratorio Paravicini",
   "category": "craft",
-  "tags": ["ceramics", "tableware"],
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
   "area": "チンクエ・ヴィエ",
   "areaEn": "Cinque Vie",
   "address": "Via Nerino 8, 20123 Milano",
@@ -211,7 +267,18 @@
   "note": "皿を一枚だけ選ぶ。持って帰れる大きさで。",
   "noteEn": "Choose a single plate. One small enough to carry home.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.46127, 9.18353]
+  "coords": [
+   45.46127,
+   9.18353
+  ],
+  "hours": {
+   "ja": "月〜金 9:30–18:30",
+   "en": "Mon–Fri 09:30–18:30"
+  },
+  "closed": {
+   "ja": "土曜・日曜",
+   "en": "Saturdays and Sundays"
+  }
  },
  {
   "name": "Zhor Parfums",
@@ -227,7 +294,10 @@
   "note": "ウードの棚が厚い。木の樹脂から始まる香りを、まとめて嗅げる。",
   "noteEn": "Deep shelves of oud. Scents that start from a tree's resin, side by side.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.46878, 9.19473]
+  "coords": [
+   45.46878,
+   9.19473
+  ]
  },
  {
   "name": "Profumeria Oggioni",
@@ -243,7 +313,10 @@
   "note": "三代続く香水店。店の人が香りの順番を組んでくれる。",
   "noteEn": "A family perfumery in its third generation. They set the order you smell things in.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47522, 9.21021]
+  "coords": [
+   45.47522,
+   9.21021
+  ]
  },
  {
   "name": "LabSolue Perfume Laboratory",
@@ -259,7 +332,10 @@
   "note": "香料を冷蔵庫で守っている。工場の跡で、香りを瓶に詰める。",
   "noteEn": "Essences kept in a fridge. Bottled where the factory used to be.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.45242, 9.16681]
+  "coords": [
+   45.45242,
+   9.16681
+  ]
  },
  {
   "name": "Nilufar Gallery",
@@ -275,7 +351,10 @@
   "note": "古い家具と新しい家具が同じ部屋にいる。素材の匂いがしそうな店。",
   "noteEn": "Old and new furniture in the same rooms. You can almost smell the materials.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47071, 9.19626]
+  "coords": [
+   45.47071,
+   9.19626
+  ]
  },
  {
   "name": "Fornasetti",
@@ -291,7 +370,10 @@
   "note": "香りのろうそくも、絵付けの磁器に入っている。",
   "noteEn": "Even the scented candles come in hand-decorated porcelain.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.46899, 9.19926]
+  "coords": [
+   45.46899,
+   9.19926
+  ]
  },
  {
   "name": "Spotti Milano",
@@ -307,6 +389,9 @@
   "note": "季節ごとに窓の飾りを変える。通りからでも店が読める。",
   "noteEn": "The windows change every season. You can read the shop from the street.",
   "verifiedAt": "2026-11-01",
-  "coords": [45.47228, 9.2064]
+  "coords": [
+   45.47228,
+   9.2064
+  ]
  }
 ]

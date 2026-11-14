@@ -40,7 +40,11 @@
   "coords": [
    33.5593,
    133.57141
-  ]
+  ],
+  "hours": {
+   "ja": "火〜土 11:00–17:00",
+   "en": "Tue–Sat 11:00–17:00"
+  }
  },
  {
   "name": "コミベーカリー",
@@ -62,7 +66,15 @@
   "coords": [
    33.55927,
    133.55676
-  ]
+  ],
+  "hours": {
+   "ja": "7:30–19:00",
+   "en": "7:30–19:00"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "パティスリー ＋カフェ モンスリール",
@@ -80,7 +92,15 @@
   "whatEn": "A patisserie in Shin-Honmachi with cakes, baked sweets and egg-free cakes. There is a café for cake and coffee.",
   "note": "持ち帰る焼き菓子の前に、ケーキとコーヒーで座る。",
   "noteEn": "Before choosing baked sweets to take home, I would sit down for cake and coffee.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–19:00（カフェ L.O. 18:30）",
+   "en": "10:00–19:00 (cafe last order 18:30)"
+  },
+  "closed": {
+   "ja": "火曜・水曜（不定休あり）",
+   "en": "Tuesdays and Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "御菓子司 福留菊水堂",
@@ -98,7 +118,15 @@
   "whatEn": "A wagashi shop in Atagocho, founded in 1951. Seasonal tea sweets, lily-bulb and yamamomo yokan, and honey castella.",
   "note": "百合根の羊羹と山桃の羊羹、まずは一つずつ選びたい。",
   "noteEn": "I would choose one each of the lily-bulb and yamamomo yokan.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:30–18:00",
+   "en": "9:30–18:00"
+  },
+  "closed": {
+   "ja": "日曜、月2回不定で月曜",
+   "en": "Sundays, twice-monthly irregular Mondays"
+  }
  },
  {
   "name": "葉牡丹",
@@ -117,7 +145,15 @@
   "whatEn": "A tavern in Sakaimachi open from daytime, in business for over half a century. Bonito tataki, fried and grilled skewers, and set meals.",
   "note": "鰹のたたきも食べたいけれど、串フライの盛合せから。",
   "noteEn": "I want the bonito tataki too, but I would start with the mixed fried skewers.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–23:00（ランチ 11:00–14:00、日祝はランチなし）",
+   "en": "11:00–23:00 (lunch 11:00–14:00; no lunch on Sundays and public holidays)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "Bar Baffone",
@@ -154,7 +190,15 @@
   "whatEn": "An Italian restaurant below ground in Honmachi, south of Ohashidori. Pasta, pizza and seasonal dishes.",
   "note": "昼はパスタを一皿選んで、地下の店でゆっくり食べる。",
   "noteEn": "At lunch I would choose a pasta and take my time in the downstairs dining room.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:30–15:00（L.O. 14:00）、18:00–21:30（L.O. 20:30）",
+   "en": "11:30–15:00 (last order 14:00), 18:00–21:30 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays and Mondays"
+  }
  },
  {
   "name": "TUKI",
@@ -172,7 +216,15 @@
   "whatEn": "A dining room in Mizudooricho for Japanese side dishes and Western-style meals, including beef stew and house curry. You can choose your cup for coffee after the meal.",
   "note": "食後のコーヒーは、飲む前にカップを選ぶのが楽しみ。",
   "noteEn": "For coffee after the meal, I would enjoy choosing the cup first.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "ランチ 11:30–15:30（L.O. 15:00）、カフェ 11:30–17:00（L.O. 16:30）",
+   "en": "Lunch 11:30–15:30 (last order 15:00), cafe 11:30–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "土日祝",
+   "en": "Saturdays, Sundays, and public holidays"
+  }
  },
  {
   "name": "紡ぎ珈琲焙煎所",
@@ -191,7 +243,15 @@
   "whatEn": "A coffee roastery in Hyakkokucho, rebuilt as a two-storey café in 2026. TSUMUGI COFFEE & ICECREAM and Wokashito Hyakkokucho serve coffee, craft ice cream and sweets.",
   "note": "自家焙煎のコーヒーと、カフェラテのアイスを合わせたい。",
   "noteEn": "I would pair the house-roasted coffee with café-latte ice cream.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜・不定休",
+   "en": "Tuesdays and irregular holidays"
+  }
  },
  {
   "name": "株式会社尾﨑製紙所",
@@ -210,7 +270,15 @@
   "whatEn": "A washi mill in Kada, Ino, making Kochi-mashi painting paper and other papers from kozo and ramie. Contact the mill in advance for a visit.",
   "note": "高知麻紙の表と裏、その凹凸の違いをよく見てみたい。",
   "noteEn": "I would look closely at the different textures on the two sides of Kochi-mashi.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "月〜土 9:00–17:30",
+   "en": "Mon–Sat 9:00–17:30"
+  },
+  "closed": {
+   "ja": "日祝（土曜も年数回休あり）",
+   "en": "Sundays and public holidays (closed several Saturdays a year)"
+  }
  },
  {
   "name": "竹と",

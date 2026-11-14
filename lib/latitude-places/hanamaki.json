@@ -20,7 +20,15 @@
   "coords": [
    39.38577,
    141.11719
-  ]
+  ],
+  "hours": {
+   "ja": "月〜金 11:00–15:30（L.O. 15:00）、土日祝 11:00–18:30（L.O. 18:00）",
+   "en": "Mon–Fri 11:00–15:30 (last order 15:00), weekends & public holidays 11:00–18:30 (last order 18:00)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "やぶ屋 花巻総本店",
@@ -42,7 +50,15 @@
   "coords": [
    39.3878,
    141.11495
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（L.O. 16:30）、定休日前日 10:00–15:00（L.O. 14:30）",
+   "en": "10:00–17:00 (last order 16:30), day before regular holiday 10:00–15:00 (last order 14:30)"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は火曜）",
+   "en": "Mondays (Tuesdays if Monday is a public holiday)"
+  }
  },
  {
   "name": "HAIKARA-YA",
@@ -66,7 +82,15 @@
   "coords": [
    39.3763,
    141.11161
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00（L.O. 16:30）",
+   "en": "11:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "火曜、第1・第3水曜",
+   "en": "Tuesdays, 1st & 3rd Wednesdays"
+  }
  },
  {
   "name": "Sobe's Cafe",
@@ -89,7 +113,15 @@
   "coords": [
    39.36013,
    141.11142
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00（L.O. 16:30）",
+   "en": "11:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "土曜・日曜",
+   "en": "Saturdays, Sundays"
+  }
  },
  {
   "name": "パティスリーアンジュ",
@@ -112,7 +144,11 @@
   "coords": [
    39.40088,
    141.10536
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–19:00（カフェ L.O. 18:30）",
+   "en": "9:00–19:00 (cafe last order 18:30)"
+  }
  },
  {
   "name": "ぱんのかぶ",
@@ -158,7 +194,15 @@
   "coords": [
    39.40649,
    141.21286
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業）",
+   "en": "Mondays (open on public holidays)"
+  }
  },
  {
   "name": "林風舎",
@@ -181,7 +225,15 @@
   "coords": [
    39.39078,
    141.11185
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（喫茶L.O. 16:20）",
+   "en": "10:00–17:00 (cafe last order 16:20)"
+  },
+  "closed": {
+   "ja": "木曜ほか",
+   "en": "Thursdays and other irregular days"
+  }
  },
  {
   "name": "FishmanCoffee",
@@ -227,7 +279,11 @@
   "coords": [
    39.38753,
    141.11743
-  ]
+  ],
+  "closed": {
+   "ja": "木曜",
+   "en": "Thursdays"
+  }
  },
  {
   "name": "kurashimeku",
@@ -251,7 +307,15 @@
   "coords": [
    39.39091,
    141.11186
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "C.P.D.",
@@ -298,7 +362,15 @@
   "coords": [
    39.40229,
    141.02798
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜（冬季は火・金曜、祝日の場合は翌平日）",
+   "en": "Tuesdays (Tue & Fri in winter; next weekday if public holiday)"
+  }
  },
  {
   "name": "ガラス体験工房 森のくに",
@@ -321,7 +393,15 @@
   "coords": [
    39.47417,
    141.28197
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00（体験最終受付 16:00）",
+   "en": "9:00–17:00 (workshop last reception 16:00)"
+  },
+  "closed": {
+   "ja": "火曜（祝日は営業）",
+   "en": "Tuesdays (open on public holidays)"
+  }
  },
  {
   "name": "株式会社日本ホームスパン",
@@ -369,7 +449,15 @@
   "coords": [
    39.38759,
    141.22856
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:00",
+   "en": "8:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・祝日",
+   "en": "Sundays, public holidays"
+  }
  },
  {
   "name": "ワインシャトー大迫（エーデルワイン）",
@@ -392,6 +480,10 @@
   "coords": [
    39.47381,
    141.28476
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–16:30",
+   "en": "9:00–16:30"
+  }
  }
 ]

@@ -19,7 +19,15 @@
   "coords": [
    35.88941,
    140.49702
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–17:00",
+   "en": "10:30–17:00"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "御菓子司 虎屋",
@@ -40,7 +48,15 @@
   "coords": [
    35.88922,
    140.49691
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜、年末年始",
+   "en": "Wednesdays and New Year holidays"
+  }
  },
  {
   "name": "金蜜堂",
@@ -61,7 +77,11 @@
   "coords": [
    35.88929,
    140.49851
-  ]
+  ],
+  "hours": {
+   "ja": "金〜日曜 10:00–17:00",
+   "en": "Fri–Sun 10:00–17:00"
+  }
  },
  {
   "name": "ブーランジェリー 丘の上のシェリー",
@@ -104,7 +124,15 @@
   "coords": [
    35.88773,
    140.4973
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–15:00（L.O. 14:00）・18:00–21:00（L.O. 20:00）（予約制）",
+   "en": "11:30–15:00 (last order 14:00), 18:00–21:00 (last order 20:00) (reservation required)"
+  },
+  "closed": {
+   "ja": "月・火曜（祝日は営業）",
+   "en": "Mondays and Tuesdays (open on public holidays)"
+  }
  },
  {
   "name": "香蕎庵",
@@ -126,7 +154,15 @@
   "coords": [
    35.89255,
    140.49825
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00（L.O. 13:30、なくなり次第終了）・17:30–21:00（夜は予約制）",
+   "en": "11:30–14:00 (last order 13:30, until sold out), 17:30–21:00 (dinner by reservation)"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "珈琲玉澤",
@@ -147,7 +183,11 @@
   "coords": [
    35.8889,
    140.49823
-  ]
+  ],
+  "closed": {
+   "ja": "月〜金曜（祝日は営業）",
+   "en": "Mondays to Fridays (open on public holidays)"
+  }
  },
  {
   "name": "TAWARA WORK AND CAFE",
@@ -169,7 +209,15 @@
   "coords": [
    35.89023,
    140.49769
-  ]
+  ],
+  "hours": {
+   "ja": "火曜 11:30–、水〜日曜 11:00–",
+   "en": "Tue from 11:30, Wed–Sun from 11:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日は翌日休）",
+   "en": "Mondays (closed the following day on public holidays)"
+  }
  },
  {
   "name": "One&Only Cafe 香取店",
@@ -191,7 +239,15 @@
   "coords": [
    35.89757,
    140.48212
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–14:00（L.O. 13:30）",
+   "en": "11:00–14:00 (last order 13:30)"
+  },
+  "closed": {
+   "ja": "土日祝",
+   "en": "Saturdays, Sundays, and public holidays"
+  }
  },
  {
   "name": "植田屋荒物店",
@@ -213,7 +269,11 @@
   "coords": [
    35.88858,
    140.49806
-  ]
+  ],
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "Legacy Market",
@@ -281,7 +341,15 @@
   "coords": [
    35.88947,
    140.49586
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "東薫酒造",
@@ -303,7 +371,11 @@
   "coords": [
    35.88908,
    140.49483
-  ]
+  ],
+  "closed": {
+   "ja": "水曜（祝日・あやめ祭り期間中は営業）",
+   "en": "Wednesdays (open on public holidays and during the Iris Festival)"
+  }
  },
  {
   "name": "いかだ焼本舗 正上",
@@ -348,6 +420,14 @@
   "coords": [
    35.88875,
    140.49857
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:30",
+   "en": "9:00–17:30"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  }
 ]

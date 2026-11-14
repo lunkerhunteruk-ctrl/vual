@@ -20,7 +20,15 @@
   "coords": [
    36.03976,
    138.1226
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜、1月1日",
+   "en": "Wednesdays & Jan 1"
+  }
  },
  {
   "name": "タケヤ味噌会館",
@@ -43,7 +51,15 @@
   "coords": [
    36.05407,
    138.11256
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–16:30",
+   "en": "9:30–16:30"
+  },
+  "closed": {
+   "ja": "無休（年末年始・社内行事除く）",
+   "en": "Open every day (except year-end/New Year & company events)"
+  }
  },
  {
   "name": "ReBuilding Center JAPAN",
@@ -66,7 +82,15 @@
   "coords": [
    36.04117,
    138.11899
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00（カフェ 11:00–17:00、L.O. 16:30）",
+   "en": "10:00–17:00 (cafe 11:00–17:00, last order 16:30)"
+  },
+  "closed": {
+   "ja": "水・木曜",
+   "en": "Wednesdays & Thursdays"
+  }
  },
  {
   "name": "IN MY BASKET",
@@ -89,7 +113,15 @@
   "coords": [
    36.0425,
    138.11876
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "水・木曜",
+   "en": "Wednesdays & Thursdays"
+  }
  },
  {
   "name": "カフェと暮らしの雑貨店 fumi",
@@ -132,7 +164,15 @@
   "coords": [
    36.04194,
    138.11795
-  ]
+  ],
+  "hours": {
+   "ja": "月–土・祝 6:30–14:30、日曜 6:30–12:00",
+   "en": "Mon–Sat & holidays 6:30–14:30, Sundays 6:30–12:00"
+  },
+  "closed": {
+   "ja": "無休（お盆休業等あり）",
+   "en": "Open every day (except Obon etc.)"
+  }
  },
  {
   "name": "ケーキ屋 クローバー",
@@ -154,7 +194,15 @@
   "coords": [
    36.04815,
    138.1151
-  ]
+  ],
+  "hours": {
+   "ja": "金–日 10:30–18:00",
+   "en": "Fri–Sun 10:30–18:00"
+  },
+  "closed": {
+   "ja": "月–木曜",
+   "en": "Mon–Thu"
+  }
  },
  {
   "name": "生アイスとヘーゼルナッツフィナンシェの店 Het's",
@@ -176,7 +224,15 @@
   "coords": [
    36.00049,
    138.11817
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日は営業、11月中旬–3月中旬は月・火曜）",
+   "en": "Mondays (open on public holidays; Mon & Tue from mid-Nov to mid-Mar)"
+  }
  },
  {
   "name": "茶房 和茶々",
@@ -198,7 +254,15 @@
   "coords": [
    36.03668,
    138.12188
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–19:00（L.O. 18:30）",
+   "en": "11:00–19:00 (last order 18:30)"
+  },
+  "closed": {
+   "ja": "木曜（他不定休あり）",
+   "en": "Thursdays (plus irregular holidays)"
+  }
  },
  {
   "name": "うなぎ古畑",
@@ -219,6 +283,14 @@
   "coords": [
    36.04571,
    138.11393
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–13:50（L.O. 13:50）、17:00–18:50（L.O. 18:50）",
+   "en": "11:30–13:50 (last order 13:50), 17:00–18:50 (last order 18:50)"
+  },
+  "closed": {
+   "ja": "水曜、第1・第3木曜",
+   "en": "Wednesdays, 1st & 3rd Thursdays"
+  }
  }
 ]

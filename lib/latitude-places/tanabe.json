@@ -19,7 +19,15 @@
   "coords": [
    33.73201,
    135.38256
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–18:00（元日のみ 10:00–15:00）",
+   "en": "8:00–18:00 (Jan 1 only: 10:00–15:00)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "七福堂",
@@ -40,7 +48,15 @@
   "coords": [
    33.72841,
    135.38113
-  ]
+  ],
+  "hours": {
+   "ja": "7:30–19:00",
+   "en": "7:30–19:00"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "tanabe en+",
@@ -63,7 +79,15 @@
   "coords": [
    33.7326,
    135.38375
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "CABELO",
@@ -149,7 +173,15 @@
   "coords": [
    33.90055,
    135.48682
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00（ランチ L.O. 14:00、カフェ L.O. 16:00）",
+   "en": "11:00–17:00 (lunch last order 14:00, cafe last order 16:00)"
+  },
+  "closed": {
+   "ja": "月・火曜（月曜祝日は営業）",
+   "en": "Mondays & Tuesdays (open on Monday public holidays)"
+  }
  },
  {
   "name": "たな梅本店",
@@ -195,7 +227,15 @@
   "coords": [
    33.80332,
    135.42715
-  ]
+  ],
+  "hours": {
+   "ja": "4–11月 9:00–17:00、12–3月 9:00–16:00",
+   "en": "Apr–Nov 9:00–17:00, Dec–Mar 9:00–16:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日の場合は翌日休）",
+   "en": "Wednesdays (closed the next day if public holiday)"
+  }
  },
  {
   "name": "中峰農園",
@@ -239,6 +279,10 @@
   "coords": [
    33.7957,
    135.36226
-  ]
+  ],
+  "closed": {
+   "ja": "日祝",
+   "en": "Sundays & public holidays"
+  }
  }
 ]

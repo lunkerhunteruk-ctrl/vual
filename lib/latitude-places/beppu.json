@@ -42,7 +42,15 @@
   "coords": [
    33.31546,
    131.4762
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00（L.O. 18:00）",
+   "en": "10:00–19:00 (last order 18:00)"
+  },
+  "closed": {
+   "ja": "第3水曜（祝日の場合は翌日）",
+   "en": "3rd Wednesday of each month (following day if a public holiday)"
+  }
  },
  {
   "name": "みょうばん湯の里",
@@ -65,7 +73,11 @@
   "coords": [
    33.31775,
    131.45547
-  ]
+  ],
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "和菓子処 茶郎本舗",
@@ -86,7 +98,15 @@
   "coords": [
    33.30623,
    131.49048
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜（月内に不定期で火曜休あり）",
+   "en": "Wednesdays (also irregular Tuesdays)"
+  }
  },
  {
   "name": "御菓子司 紅屋",
@@ -107,7 +127,15 @@
   "coords": [
    33.29094,
    131.48853
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "SPICA",
@@ -175,7 +203,15 @@
   "coords": [
    33.31058,
    131.4867
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–21:00（L.O. 20:30）",
+   "en": "10:00–21:00 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "レストラン東洋軒",
@@ -196,6 +232,14 @@
   "coords": [
    33.30092,
    131.49954
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–15:30（L.O. 15:00）、17:00–22:00（L.O. 21:00）※土日祝15:00–17:00は一部メニュー営業",
+   "en": "11:00–15:30 (last order 15:00), 17:00–22:00 (last order 21:00); limited menu 15:00–17:00 on weekends & holidays"
+  },
+  "closed": {
+   "ja": "第2火曜",
+   "en": "2nd Tuesday of each month"
+  }
  }
 ]

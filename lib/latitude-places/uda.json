@@ -19,7 +19,11 @@
   "coords": [
    34.47793,
    135.93255
-  ]
+  ],
+  "closed": {
+   "ja": "無休（本店）",
+   "en": "Open every day (main shop)"
+  }
  },
  {
   "name": "きみごろも本舗 松月堂",
@@ -40,7 +44,15 @@
   "coords": [
    34.48066,
    135.93254
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:00（売り切れ次第終了）",
+   "en": "8:00–17:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "水曜・夏季・年末年始",
+   "en": "Wednesdays, summer & New Year holidays"
+  }
  },
  {
   "name": "カフェ abc",
@@ -84,7 +96,15 @@
   "coords": [
    34.58226,
    135.99204
-  ]
+  ],
+  "hours": {
+   "ja": "金–日・祝 12:00–17:00（L.O. 16:30）",
+   "en": "Fri–Sun & public holidays 12:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "月–木曜（祝日除く）",
+   "en": "Mon–Thu (except public holidays)"
+  }
  },
  {
   "name": "ヒルトコカフェ",
@@ -106,7 +126,15 @@
   "coords": [
    34.47728,
    135.92384
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:00",
+   "en": "11:00–16:00"
+  },
+  "closed": {
+   "ja": "水曜・不定休",
+   "en": "Wednesdays, irregular"
+  }
  },
  {
   "name": "ごはんcafe SOU",
@@ -128,7 +156,15 @@
   "coords": [
    34.53357,
    135.95487
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00（ランチ 11:00–14:00 L.O. 14:00、カフェ 14:00–18:00 L.O. 17:30）",
+   "en": "11:00–18:00 (lunch 11:00–14:00 L.O. 14:00, cafe 14:00–18:00 L.O. 17:30)"
+  },
+  "closed": {
+   "ja": "水曜（臨時休業あり）",
+   "en": "Wednesdays (irregular holidays)"
+  }
  },
  {
   "name": "Re:Coffee Roasters 榛原焙煎所",

@@ -41,7 +41,15 @@
   "coords": [
    35.69184,
    138.68601
-  ]
+  ],
+  "hours": {
+   "ja": "火–土 9:00–16:00（売り切れ次第終了）",
+   "en": "Tue–Sat 9:00–16:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "日曜・月曜・第4火曜",
+   "en": "Sundays, Mondays, and 4th Tuesday of each month"
+  }
  },
  {
   "name": "山梨果実菓子 和乃果 牧丘本店",
@@ -63,7 +71,15 @@
   "coords": [
    35.73845,
    138.68191
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "土曜・日曜・祝日（平日営業は要問い合わせ）",
+   "en": "Saturdays, Sundays, and public holidays (inquire for weekday opening)"
+  }
  },
  {
   "name": "cafe tubu",
@@ -127,7 +143,15 @@
   "coords": [
    35.70572,
    138.6551
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "木曜（祝日の場合は営業）",
+   "en": "Thursdays (open on public holidays)"
+  }
  },
  {
   "name": "三養醸造",
@@ -171,6 +195,14 @@
   "coords": [
    35.75475,
    138.68923
-  ]
+  ],
+  "hours": {
+   "ja": "夏季 9:00–17:00（冬季 1–3月は要問い合わせ）",
+   "en": "Summer 9:00–17:00 (winter Jan–Mar: inquire)"
+  },
+  "closed": {
+   "ja": "冬季（1–3月・要問い合わせ）",
+   "en": "Winter (Jan–Mar, inquire)"
+  }
  }
 ]

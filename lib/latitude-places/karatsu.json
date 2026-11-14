@@ -20,7 +20,15 @@
   "coords": [
    33.44304,
    129.93306
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜・木曜",
+   "en": "Wednesdays & Thursdays"
+  }
  },
  {
   "name": "鏡山窯",
@@ -43,7 +51,15 @@
   "coords": [
    33.43543,
    130.01481
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–17:30",
+   "en": "9:30–17:30"
+  },
+  "closed": {
+   "ja": "年末年始（不定休あり）",
+   "en": "Year-end/New Year (irregular closures apply)"
+  }
  },
  {
   "name": "ギャラリー一番館",
@@ -65,7 +81,15 @@
   "coords": [
    33.44802,
    129.96885
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "元旦のみ（それ以外は無休）",
+   "en": "Jan 1 only (open all other days)"
+  }
  },
  {
   "name": "monohanako",
@@ -87,7 +111,15 @@
   "coords": [
    33.43325,
    129.92613
-  ]
+  ],
+  "hours": {
+   "ja": "13:30–17:00",
+   "en": "13:30–17:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜（不定休あり）",
+   "en": "Mondays & Tuesdays (irregular closures apply)"
+  }
  },
  {
   "name": "ムローメ アートショールーム",
@@ -130,7 +162,15 @@
   "coords": [
    33.44849,
    130.03948
-  ]
+  ],
+  "hours": {
+   "ja": "8:30–20:00（売切次第閉店）",
+   "en": "8:30–20:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Tea & Space 基幸庵",
@@ -153,7 +193,15 @@
   "coords": [
    33.45071,
    129.98202
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–18:00（L.O. 17:30）",
+   "en": "11:00–18:00 (last order 17:30)"
+  },
+  "closed": {
+   "ja": "火曜・第4月曜",
+   "en": "Tuesdays, 4th Mondays"
+  }
  },
  {
   "name": "健太郎窯",
@@ -334,7 +382,15 @@
   "whatEn": "A tofu shop in Kyomachi founded in the Kansei era, 1789–1801. Its dining counter serves warm zaru-dofu and tofu dishes including thick fried tofu on Karatsu ware, by reservation.",
   "note": "温かいざる豆腐を、唐津焼の器で食べたい。",
   "noteEn": "I would choose warm zaru-dofu served in Karatsu ware.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "販売 8:00–17:00頃、豆腐料理 9:00〜、会席 12:00〜・18:30〜",
+   "en": "Shop 8:00–around 17:00, Tofu dining 9:00–, Kaiseki 12:00– & 18:30–"
+  },
+  "closed": {
+   "ja": "日曜",
+   "en": "Sundays"
+  }
  },
  {
   "name": "QURIYA 厨",
@@ -352,7 +408,15 @@
   "whatEn": "An Italian restaurant in Higashi-Jonai. Pasta, risotto and meat dishes using ingredients from sea and land, at lunch and dinner.",
   "note": "おまかせのパスタに、グラスワインを合わせたい。",
   "noteEn": "I would pair the chef’s choice pasta with a glass of wine.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:30–15:00（L.O. 14:30）、17:00–22:00（L.O. 21:30）",
+   "en": "11:30–15:00 (last order 14:30), 17:00–22:00 (last order 21:30)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "レストラン シマ",
@@ -370,7 +434,15 @@
   "whatEn": "A French restaurant in Haru using Karatsu ingredients. Lunch courses with a choice of starters and main dishes, and dinner courses.",
   "note": "昼の主菜は、唐津の魚を使う一皿にしたい。",
   "noteEn": "For the lunch main, I would choose a dish of Karatsu fish.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:30–14:30（L.O. 13:00）、18:00–21:30（L.O. 19:30）",
+   "en": "11:30–14:30 (last order 13:00), 18:00–21:30 (last order 19:30)"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "Restaurant Présage",
@@ -405,7 +477,15 @@
   "whatEn": "A coffee stand alongside the windsurfing shop WIND JACK in Hamasaki. Coffee and muffins; closed on Thursdays and Fridays.",
   "note": "ここではマフィンを一つ、珈琲と合わせたい。",
   "noteEn": "Here I would have a muffin with my coffee.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "木曜・金曜（その他不定休あり）",
+   "en": "Thursdays & Fridays (other irregular closures apply)"
+  }
  },
  {
   "name": "cafe ortoyo",

@@ -12,13 +12,18 @@
   "note": "島の店は、静かな季節の営業日を先に確かめる。",
   "noteEn": "On the island, check quiet-season hours first.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.96789, 19.23396]
+  "coords": [
+   57.96789,
+   19.23396
+  ]
  },
  {
   "name": "Kafé Smultronstället",
   "nameEn": "Kafé Smultronstället",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "フォーレ島",
   "areaEn": "Fårö",
   "address": "Fårö Svens 1118, 624 66 Fårö",
@@ -28,7 +33,10 @@
   "note": "映画『野いちご』の名をもつカフェ。音を録る人に。",
   "noteEn": "A café named for the film Wild Strawberries. For someone who records sound.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.91882, 19.13836]
+  "coords": [
+   57.91882,
+   19.13836
+  ]
  },
  {
   "name": "Pastamakarna Fårö",
@@ -43,13 +51,19 @@
   "note": "ひとつの農場に、パスタと陶器と羊の店。",
   "noteEn": "Pasta, ceramics and lamb, on one farm.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.90701, 19.10746]
+  "coords": [
+   57.90701,
+   19.10746
+  ]
  },
  {
   "name": "Fårö Krukmakeri",
   "nameEn": "Fårö Krukmakeri",
   "category": "craft",
-  "tags": ["ceramics", "tableware"],
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
   "area": "フォーレ島",
   "areaEn": "Fårö",
   "address": "Fårö Nystugu 3111, 624 66 Fårö",
@@ -59,7 +73,10 @@
   "note": "夏の期間に開く工房。静かな季節は、先に問い合わせる。",
   "noteEn": "A summer workshop. In the quiet season, ask first.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.93864, 19.17747]
+  "coords": [
+   57.93864,
+   19.17747
+  ]
  },
  {
   "name": "Lilla Bageriet i Bunge",
@@ -74,13 +91,18 @@
   "note": "サフランのパン。開くのは、ほぼ土曜だけ。",
   "noteEn": "Saffron buns. Open mostly on Saturdays.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.85236, 19.02775]
+  "coords": [
+   57.85236,
+   19.02775
+  ]
  },
  {
   "name": "Prima Gård",
   "nameEn": "Prima Gård",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "ブンゲ",
   "areaEn": "Bunge",
   "address": "Bunge Ducker 405, 624 64 Fårösund",
@@ -90,7 +112,10 @@
   "note": "島の農場で焙煎した、有機のコーヒー。",
   "noteEn": "Organic coffee, roasted on an island farm.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.85076, 19.02459]
+  "coords": [
+   57.85076,
+   19.02459
+  ]
  },
  {
   "name": "Bungemuseets Mat- och kaffestuga",
@@ -106,7 +131,14 @@
   "note": "古い農家の景色の中で、土地の菓子。",
   "noteEn": "A local sweet, among old farmhouses.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.85389, 19.02864]
+  "coords": [
+   57.85389,
+   19.02864
+  ],
+  "hours": {
+   "ja": "5–6月・8/17–9/13 11:00–16:00、7月 10:00–17:00",
+   "en": "May–Jun & Aug 17–Sep 13: 11:00–16:00, Jul: 10:00–17:00"
+  }
  },
  {
   "name": "Bungenäs Kalklada & Matsal",
@@ -121,7 +153,10 @@
   "note": "車の入れない半島。門から歩く。",
   "noteEn": "A car-free peninsula. Walk in from the gate.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.82342, 19.07967]
+  "coords": [
+   57.82342,
+   19.07967
+  ]
  },
  {
   "name": "Bunge Krog",
@@ -136,7 +171,10 @@
   "note": "フェリーの前に寄る店。生地は自家製。",
   "noteEn": "A stop before the ferry. The dough is made in-house.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.86064, 19.05242]
+  "coords": [
+   57.86064,
+   19.05242
+  ]
  },
  {
   "name": "Fårösunds Fästning",
@@ -151,6 +189,9 @@
   "note": "静かな季節も開いている、海峡の要塞。",
   "noteEn": "A fortress on the strait, open in the quiet season.",
   "verifiedAt": "2026-11-09",
-  "coords": [57.84639, 19.07862]
+  "coords": [
+   57.84639,
+   19.07862
+  ]
  }
 ]

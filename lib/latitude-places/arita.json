@@ -43,7 +43,11 @@
   "coords": [
    33.18078,
    129.88668
-  ]
+  ],
+  "closed": {
+   "ja": "第1・第3日曜",
+   "en": "1st & 3rd Sundays"
+  }
  },
  {
   "name": "皓洋窯",
@@ -88,7 +92,11 @@
   "coords": [
    33.19508,
    129.87563
-  ]
+  ],
+  "closed": {
+   "ja": "元日",
+   "en": "New Year’s Day (Jan 1)"
+  }
  },
  {
   "name": "喫茶Hama 小路庵",
@@ -110,7 +118,15 @@
   "coords": [
    33.19126,
    129.90015
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:00（L.O. 15:30）",
+   "en": "11:00–16:00 (last order 15:30)"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays, Mondays"
+  }
  },
  {
   "name": "ギャラリー有田",
@@ -133,7 +149,15 @@
   "coords": [
    33.18023,
    129.88205
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "龍泉荘",
@@ -194,7 +218,15 @@
   "whatEn": "A porcelain kiln founded in 1753 with a showroom in Maruo. All pieces are painted by hand without transfer printing in the Ko-Imari tradition.",
   "note": "手描きの湯呑みや飯碗を、ひとつずつ見比べたい。",
   "noteEn": "I want to compare the hand-painted teacups and rice bowls one by one.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日 8:00–17:00、土日祝 9:00–17:00",
+   "en": "Weekdays 8:00–17:00, weekends & holidays 9:00–17:00"
+  },
+  "closed": {
+   "ja": "12月31日・1月1日",
+   "en": "Dec 31 & Jan 1"
+  }
  },
  {
   "name": "しん窯 青花",
@@ -250,7 +282,11 @@
   "whatEn": "A tableware shop on Koba street near Tozan Shrine, curating everyday Arita and Hizen porcelain from local kilns.",
   "note": "朝の散歩のついでに、スープカップを覗いてみたい。",
   "noteEn": "I would stop by on a morning walk to look at the soup cups.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  }
  },
  {
   "name": "ギャラリー ペクパソン",
@@ -286,7 +322,15 @@
   "whatEn": "Direct shop of Arita porcelain house Shobido Honten inside Arita Sera, featuring its Kisen tableware line drawing on Ko-Imari motifs.",
   "note": "赤い文様の小皿を、ハレの日用に一枚見てみたい。",
   "noteEn": "I want to look at one red-patterned small plate for special occasions.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "無休（年末年始を除く）",
+   "en": "Open every day (except New Year)"
+  }
  },
  {
   "name": "arita huis",
@@ -324,6 +368,14 @@
   "whatEn": "A hillside Japanese restaurant moved to western Arita in 2015, serving hand-cut 100% buckwheat soba made with well water, seasonal vegetables, and binchotan-grilled dishes.",
   "note": "石臼挽きの十割蕎麦を、山の景色を見ながら食べたい。",
   "noteEn": "I want to eat stone-milled juwari soba looking out at the hills.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "12:00–14:30、18:00–21:30",
+   "en": "12:00–14:30, 18:00–21:30"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  }
 ]

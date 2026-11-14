@@ -20,7 +20,15 @@
   "coords": [
    33.20942,
    130.55824
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "日曜（夏季・年末休業、臨時休業あり）",
+   "en": "Sundays (summer & year-end holidays, irregular closures)"
+  }
  },
  {
   "name": "伊藤権次郎商店",
@@ -91,7 +99,15 @@
   "coords": [
    33.2114,
    130.55351
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜（祝日は営業）",
+   "en": "Tuesdays and Wednesdays (open on public holidays)"
+  }
  },
  {
   "name": "男ノ子焼の里",
@@ -113,7 +129,15 @@
   "coords": [
    33.16927,
    130.54737
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "古陶星野焼展示館",
@@ -135,7 +159,15 @@
   "coords": [
    33.24593,
    130.76539
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "3〜11月 火曜、12〜2月 月・火曜（祝日は開館）、年末年始（12/29〜1/3）",
+   "en": "Mar–Nov: Tuesdays; Dec–Feb: Mondays & Tuesdays (open on public holidays); Dec 29–Jan 3"
+  }
  },
  {
   "name": "八女福島置屋 蒼とねじ",
@@ -221,6 +253,14 @@
   "coords": [
    33.17829,
    130.69883
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:00",
+   "en": "11:00–16:00"
+  },
+  "closed": {
+   "ja": "月・火曜",
+   "en": "Mondays & Tuesdays"
+  }
  }
 ]

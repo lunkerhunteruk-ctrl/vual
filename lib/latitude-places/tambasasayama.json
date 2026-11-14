@@ -20,7 +20,15 @@
   "coords": [
    34.98219,
    135.12698
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "無休（臨時休業あり）",
+   "en": "Open every day (irregular closures)"
+  }
  },
  {
   "name": "省三窯",
@@ -66,7 +74,15 @@
   "coords": [
    34.98013,
    135.12828
-  ]
+  ],
+  "hours": {
+   "ja": "9:00頃–17:00頃",
+   "en": "Approx. 9:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "大熊窯",
@@ -89,7 +105,15 @@
   "coords": [
    34.991,
    135.12795
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "珈琲豆 誠",
@@ -110,7 +134,15 @@
   "coords": [
    35.07658,
    135.21295
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays & Wednesdays"
+  }
  },
  {
   "name": "小西のパン",
@@ -131,7 +163,15 @@
   "coords": [
    35.07679,
    135.21399
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–売り切れまで",
+   "en": "9:00–until sold out"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は水曜休）",
+   "en": "Tuesdays (closed Wednesday if public holiday)"
+  }
  },
  {
   "name": "雪岡市郎兵衛洋菓子舗",
@@ -196,7 +236,15 @@
   "coords": [
    35.07253,
    135.22368
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:00（L.O. 16:00）",
+   "en": "11:00–17:00 (last order 16:00)"
+  },
+  "closed": {
+   "ja": "木曜（祝日の場合は翌平日）、年末年始",
+   "en": "Thursdays (closed next weekday if public holiday), year-end/New Year"
+  }
  },
  {
   "name": "KONdA to",
@@ -218,7 +266,15 @@
   "coords": [
    34.9695,
    135.12448
-  ]
+  ],
+  "hours": {
+   "ja": "火–金 11:00–17:00（L.O. 16:00）、土日祝 11:00–17:00（L.O. 16:30）・17:00–20:00（L.O. 19:00）",
+   "en": "Tue–Fri 11:00–17:00 (last order 16:00), weekends & holidays 11:00–17:00 (last order 16:30), 17:00–20:00 (last order 19:00)"
+  },
+  "closed": {
+   "ja": "火曜、第3月曜（祝日の場合は営業、翌日休）",
+   "en": "Tuesdays & 3rd Monday (open on public holidays, closed the next day)"
+  }
  },
  {
   "name": "丹波篠山 一休庵",
@@ -240,6 +296,10 @@
   "coords": [
    35.078,
    135.21501
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–16:00（L.O. 15:30）",
+   "en": "11:00–16:00 (last order 15:30)"
+  }
  }
 ]

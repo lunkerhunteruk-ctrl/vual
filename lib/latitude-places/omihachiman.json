@@ -42,7 +42,15 @@
   "coords": [
    35.12235,
    136.10323
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "だもん亭",
@@ -64,7 +72,15 @@
   "coords": [
    35.13653,
    136.09065
-  ]
+  ],
+  "hours": {
+   "ja": "木〜日曜 12:00–19:00",
+   "en": "Thu–Sun 12:00–19:00"
+  },
+  "closed": {
+   "ja": "月〜水曜",
+   "en": "Mondays to Wednesdays"
+  }
  },
  {
   "name": "壱製パン所",
@@ -85,7 +101,15 @@
   "coords": [
    35.11812,
    136.09122
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:00",
+   "en": "8:00–17:00"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "中島多吉商店",
@@ -106,7 +130,15 @@
   "coords": [
    35.13871,
    136.09103
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–15:30",
+   "en": "10:00–15:30"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "レアウッドビーズ美樹 八幡堀 石畳の小路店",
@@ -125,7 +157,15 @@
   "whatEn": "The direct shop of wooden-bead maker Kawasaki, founded in 1928, in a restored merchant storehouse by Hachiman-bori. It sells Hanbei wooden rosaries and rare-wood accessories with Biwa pearls, with a second-floor beadwork studio.",
   "note": "銘木の木肌に触れて、琵琶パールを合わせた珠を見たい。",
   "noteEn": "I want to feel the grain of the rare woods and see the beads paired with Biwa pearls.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "アンデケン 近江八幡本店",
@@ -143,7 +183,15 @@
   "whatEn": "The Omihachiman main shop of Andeken, a cheesecake patisserie in Takakai-cho. Open 9:00 to 19:00, closed Tuesdays.",
   "note": "名物のチーズケーキを一つ買って帰りたい。",
   "noteEn": "I want to buy one of their signature cheesecakes to take back.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–19:00",
+   "en": "9:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "みいちゃんのお菓子工房",
@@ -178,7 +226,15 @@
   "whatEn": "A wagashi shop in Demachi making fresh daily morning sweets with Shiga habutae glutinous rice and Tokachi red-bean paste. Open 9:30 to 17:30, closed Fridays.",
   "note": "羽二重糯米を使った朝生菓子を、その日のうちに食べたい。",
   "noteEn": "I want to eat the fresh morning wagashi made with habutae mochi rice the same day.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:30–17:30",
+   "en": "9:30–17:30"
+  },
+  "closed": {
+   "ja": "金曜",
+   "en": "Fridays"
+  }
  },
  {
   "name": "和菓子 まんすて",
@@ -196,7 +252,15 @@
   "whatEn": "A handmade wagashi shop in Egashira-cho founded in 1914, serving chestnut steamed yokan, mugwort mochi and seasonal sweets, alongside the small handcraft corner Aprire. Open 9:00 to 18:00; closed on the 1st, 9th, and 3rd and 4th Sun–Mon.",
   "note": "甘さ控えめの栗蒸し羊かんを、日本茶と合わせたい。",
   "noteEn": "I want to pair the lightly sweet chestnut steamed yokan with Japanese tea.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "1日・9日・第3・4日・月曜",
+   "en": "1st and 9th of each month, 3rd and 4th Sundays and Mondays"
+  }
  },
  {
   "name": "coffee åtta",
@@ -214,7 +278,15 @@
   "whatEn": "A shop of home-roasted coffee and Nordic vintage wares in Kobunaki-cho, also hosting small exhibitions and workshops.",
   "note": "北欧のビンテージの器を見ながら、珈琲を飲みたい。",
   "noteEn": "I want to drink coffee while looking over the Nordic vintage wares.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–16:00（週2〜3日の不定期営業）",
+   "en": "11:00–16:00 (open irregularly 2–3 days a week)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "Cafe NICO",
@@ -233,7 +305,15 @@
   "whatEn": "A café in Taga-cho serving coffee from specialty roasters, Mlesna teas and local-vegetable dishes, along with made-to-order waffles and fruit tarts.",
   "note": "注文してから焼くワッフルと珈琲で一息つきたい。",
   "noteEn": "I want to take a break with coffee and a waffle baked to order.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–20:00（L.O. 19:00）、月曜 11:00–17:00（L.O. 16:30）（ランチ 11:30–14:30）",
+   "en": "11:00–20:00 (last order 19:00), Mon 11:00–17:00 (last order 16:30) (lunch 11:30–14:30)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "江湖庵",
@@ -252,7 +332,15 @@
   "whatEn": "A café and seal-engraving workshop in a 200-year-old townhouse in Ishin-cho Moto. Serves specialty coffee, organic sencha, and rice-flour chiffon and cheesecake. Open 11:30 to 18:00 (17:00 in winter), closed Tuesdays and Wednesdays.",
   "note": "米粉のシフォンと、有機栽培の煎茶か珈琲を頼みたい。",
   "noteEn": "I want to order the rice-flour chiffon with organic sencha or coffee.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:30–18:00（12〜2月は17:00まで）",
+   "en": "11:30–18:00 (until 17:00 in Dec–Feb)"
+  },
+  "closed": {
+   "ja": "火・水曜",
+   "en": "Tuesdays and Wednesdays"
+  }
  },
  {
   "name": "近江一閑張 蔵 -KURA-",
@@ -270,7 +358,15 @@
   "whatEn": "A renovated storehouse shop along Hachiman-bori's stone-paved lane for Ebitani Kogei's Omi Ikkanbari baskets, boxes and trays. Open 10:00 to 17:30 (17:00 from December to February), closed Tuesdays.",
   "note": "和紙と柿渋で仕上げた籠や箱を、手に取ってみたい。",
   "noteEn": "I want to pick up and look closely at the washi-and-persimmon-tannin baskets and boxes.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:30（12〜2月は 10:00–17:00）",
+   "en": "10:00–17:30 (Dec–Feb 10:00–17:00)"
+  },
+  "closed": {
+   "ja": "火曜・不定休",
+   "en": "Tuesdays and irregular holidays"
+  }
  },
  {
   "name": "暦 ～こよみ～ Local Life & Crafts",
@@ -289,7 +385,15 @@
   "whatEn": "A shop in a converted Edo-period brewery workers' storehouse at Machiya Club, carrying local reed work, bamboo craft, ramie textiles, and Omi leather and Takashima canvas bags. Open 13:00–17:00 weekdays (10:30 weekends/holidays), closed Tuesdays.",
   "note": "ヨシや麻、帆布など、この土地の素材の道具を選びたい。",
   "noteEn": "I want to look through everyday goods made from local reed, ramie and canvas.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "平日 13:00–17:00、土日祝 10:30–17:00",
+   "en": "Weekdays 13:00–17:00, weekends and public holidays 10:30–17:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "ブラッスリー エパターシュ",
@@ -306,7 +410,15 @@
   "whatEn": "A French brasserie in Miyauchi-cho serving courses with seasonal local vegetables, signature quiche and house-baked rye bread on chosen tableware. Check the monthly calendar for opening days and reservations.",
   "note": "キッシュと自家製ライ麦パンのランチを、器ごと楽しみたい。",
   "noteEn": "I want to enjoy the quiche and house-baked rye bread lunch, tableware and all.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:30–21:00（ディナーは2日前までの完全予約制）",
+   "en": "11:30–21:00 (dinner by reservation only at least 2 days in advance)"
+  },
+  "closed": {
+   "ja": "月・火曜、第2・4日曜",
+   "en": "Mondays, Tuesdays, and 2nd and 4th Sundays"
+  }
  },
  {
   "name": "京都そば処 志な乃",
@@ -324,7 +436,15 @@
   "whatEn": "A thirty-year-old soba and donburi shop in Demachi, an eight-minute walk from Omihachiman Station's north exit. Oyakodon is its best-known dish alongside softly boiled soba. Reopening 13 November 2026 for lunch only (11:00–15:00) for the time being.",
   "note": "カウンターに座って、一番人気の親子丼を頼みたい。",
   "noteEn": "I want to sit at the counter and order the oyakodon.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–15:00・17:00–19:00",
+   "en": "11:00–15:00, 17:00–19:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "MAISON HIBINO",
@@ -341,6 +461,14 @@
   "whatEn": "A French restaurant in a 130-year-old timber house in Azuchi-cho Jorakuji, serving courses built around Shiga ingredients overlooking a garden. Check the website calendar for open days and bookings.",
   "note": "庭の見える木の部屋で、滋賀の食材の昼のコースを。",
   "noteEn": "I would like a lunch course of Shiga ingredients in the timber room facing the garden.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "12:00–15:00（L.O. 14:30）・18:00–21:30（L.O. 21:00）",
+   "en": "12:00–15:00 (last order 14:30), 18:00–21:30 (last order 21:00)"
+  },
+  "closed": {
+   "ja": "水・日曜",
+   "en": "Wednesdays and Sundays"
+  }
  }
 ]

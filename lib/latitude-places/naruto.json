@@ -35,7 +35,15 @@
   "whatEn": "A kiln in Otani firing unglazed stoneware in a wood-burning anagama tunnel kiln fueled with cedar, giving pieces a natural ash glaze. There is a showroom and pottery classes.",
   "note": "杉の灰がのった焼き締めの湯呑みを、一つ手に取ってみたい。",
   "noteEn": "I want to hold one of the ash-glazed yunomi fired with cedar wood.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "年始（1/1–1/3）",
+   "en": "New Year (Jan 1–3)"
+  }
  },
  {
   "name": "STUDIO N2",
@@ -72,7 +80,15 @@
   "whatEn": "A kiln in Otani, open from 9 am (10 am on Sundays) to 5 pm, with irregular holidays. Painting workshops require advance booking.",
   "note": "窯まつりのマグカップ展のような、普段づかいの器を探したい。",
   "noteEn": "I want to look for everyday pieces like the mugs shown at the kiln festival.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日・土曜 9:00–17:00、日曜 10:00–17:00",
+   "en": "Weekdays and Saturdays 9:00–17:00, Sundays 10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休（年末年始休）",
+   "en": "Irregular (closed over New Year)"
+  }
  },
  {
   "name": "大谷焼窯元 大西陶器",
@@ -94,7 +110,15 @@
   "coords": [
    34.16859,
    134.54093
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "Art工房 花橘",
@@ -111,7 +135,15 @@
   "whatEn": "A glass-etching studio and gallery in Muya, offering original sandblasted glassware and owner-selected small goods. Strictly by appointment.",
   "note": "光に透けるサンドブラストの模様を、近くで見てみたい。",
   "noteEn": "I want to look closely at the sandblasted patterns where the light passes through.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–18:00（完全予約制）",
+   "en": "10:00–18:00 (by reservation only)"
+  },
+  "closed": {
+   "ja": "毎月8日",
+   "en": "8th of each month"
+  }
  },
  {
   "name": "結ノ芽",
@@ -146,7 +178,15 @@
   "whatEn": "A coffee bean shop and kissaten open since 1982. The café serves until 5 pm and beans are sold until 6:30 pm. Closed Tuesdays.",
   "note": "火曜は休み。行くなら朝いちばんに、豆を一袋。",
   "noteEn": "Closed Tuesdays. If I go, first thing in the morning for a bag of beans.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "8:00–18:30（喫茶 17:00まで）",
+   "en": "8:00–18:30 (cafe until 17:00)"
+  },
+  "closed": {
+   "ja": "火曜（臨時休業あり）",
+   "en": "Tuesdays (irregular holidays)"
+  }
  },
  {
   "name": "ナルトロースター by Hirundo Coffee",
@@ -180,7 +220,11 @@
   "whatEn": "A small seaside café in Muya looking over the water, serving coffee, espresso and sweets. Spiced curry lunches require booking by the day before.",
   "note": "海を見ながら、エスプレッソと甘いものをゆっくり。",
   "noteEn": "An espresso and something sweet, slowly, while looking at the sea.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–17:00（L.O. 16:00）",
+   "en": "10:00–17:00 (last order 16:00)"
+  }
  },
  {
   "name": "喫茶店 ろうそく夜",
@@ -214,7 +258,15 @@
   "whatEn": "A wagashi shop open since 1932, selling only over the counter: Awa Wasanbon-sweetened Anmaki bean-paste rolls, Awa-dora dorayaki and seasonal daifuku. Closed Tuesdays and Wednesdays.",
   "note": "和三盆のあん巻と黒豆大福を、ひとつずつ包んでもらう。",
   "noteEn": "Have them wrap one Wasanbon Anmaki and one black-bean daifuku.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "8:30–17:30",
+   "en": "8:30–17:30"
+  },
+  "closed": {
+   "ja": "火・水曜（祝日は営業、翌日休）",
+   "en": "Tuesdays and Wednesdays (open on public holidays, closed the following day)"
+  }
  },
  {
   "name": "フレンチモンスター 瀬戸内フードアート",
@@ -231,7 +283,15 @@
   "whatEn": "A patisserie workshop and café on Shimadajima island in Seto, beside Yomomi Observatory. Sweets and drinks made with Tokushima and Setouchi ingredients, with a rooftop terrace overlooking Uchinoumi bay.",
   "note": "屋上に上がって、ウチノ海の筏を眺めながらお茶にしたい。",
   "noteEn": "Go up to the rooftop and have tea while looking out at the rafts on Uchinoumi bay.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日 12:00–17:00、土日祝 11:00–17:00",
+   "en": "Weekdays 12:00–17:00, weekends and public holidays 11:00–17:00"
+  },
+  "closed": {
+   "ja": "月・火曜（祝日は営業、代休あり）",
+   "en": "Mondays and Tuesdays (open on public holidays with substitute holidays)"
+  }
  },
  {
   "name": "Nalu Ge",
@@ -265,7 +325,15 @@
   "whatEn": "A hand-cut Naruto udon shop on Takashima island in Naruto-cho, open for over forty years. Serves from 10:30 am until sold out; closed only on New Year's Day.",
   "note": "売り切れる前の早めの昼に、素朴な手打ちうどんを。",
   "noteEn": "For an early lunch before it sells out, a bowl of simple hand-cut udon.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:30–売り切れ次第終了",
+   "en": "10:30–until sold out"
+  },
+  "closed": {
+   "ja": "元日",
+   "en": "New Year's Day"
+  }
  },
  {
   "name": "味処 あらし",
@@ -282,7 +350,15 @@
   "whatEn": "A seafood dining room in Muya serving catch from the Naruto Strait and local Tokushima ingredients. Open 11 am to 9 pm; closed Wednesdays.",
   "note": "鳴門海峡の魚の刺身と、わかめの味噌汁を頼みたい。",
   "noteEn": "I would order sashimi from the Naruto Strait and wakame miso soup.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–21:00（L.O. 20:30）",
+   "en": "11:00–21:00 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "水曜（祝日は営業、翌日休）",
+   "en": "Wednesdays (open on public holidays, closed the following day)"
+  }
  },
  {
   "name": "リストランテ フィッシュボーン",
@@ -310,6 +386,14 @@
   "whatEn": "A café-restaurant in Muya built around an indoor lotus-root pond, serving dishes made with local Naruto renkon and udon kneaded with lotus-root powder. Closed Tuesdays.",
   "note": "蓮根畑を眺めながら、鳴門れんこんの料理を昼に食べる。",
   "noteEn": "Have a lunch of Naruto lotus-root dishes while looking out at the lotus pond.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "月〜金 11:00–17:00（L.O. 16:30）、土日 11:00–20:00（L.O. 19:30）",
+   "en": "Mon–Fri 11:00–17:00 (last order 16:30), Sat–Sun 11:00–20:00 (last order 19:30)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  }
 ]

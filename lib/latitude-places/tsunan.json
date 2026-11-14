@@ -41,7 +41,15 @@
   "coords": [
    37.01367,
    138.64937
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜・日曜",
+   "en": "Wednesdays and Sundays"
+  }
  },
  {
   "name": "ROKUの店",
@@ -129,7 +137,15 @@
   "coords": [
    36.99099,
    138.6037
-  ]
+  ],
+  "hours": {
+   "ja": "土日 11:00–14:00頃（売り切れ次第閉店）",
+   "en": "Sat & Sun 11:00–around 14:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "月–金曜・祝日（冬季休業あり）",
+   "en": "Mon–Fri, public holidays (closed in winter)"
+  }
  },
  {
   "name": "Ohisama genki 山の上の小さなカフェ",
@@ -174,6 +190,14 @@
   "coords": [
    36.88122,
    138.63838
-  ]
+  ],
+  "hours": {
+   "ja": "8:00–17:00（食堂 10:00–15:00 L.O.）",
+   "en": "8:00–17:00 (dining 10:00–15:00 last order)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  }
 ]

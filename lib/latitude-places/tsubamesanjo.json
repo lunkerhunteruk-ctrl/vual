@@ -20,7 +20,15 @@
   "coords": [
    37.66527,
    138.92937
-  ]
+  ],
+  "hours": {
+   "ja": "8:30–17:30",
+   "en": "8:30–17:30"
+  },
+  "closed": {
+   "ja": "日曜・祝日",
+   "en": "Sundays and public holidays"
+  }
  },
  {
   "name": "庖丁工房タダフサ",
@@ -43,7 +51,15 @@
   "coords": [
    37.61389,
    138.94487
-  ]
+  ],
+  "hours": {
+   "ja": "月–土・祝 9:00–17:00",
+   "en": "Mon–Sat & public holidays 9:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜（夏季・年末年始・臨時休業あり）",
+   "en": "Sundays (summer, New Year, and irregular holidays)"
+  }
  },
  {
   "name": "SUWADA OPEN FACTORY",
@@ -66,7 +82,15 @@
   "coords": [
    37.5651,
    138.93767
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:30",
+   "en": "10:00–17:30"
+  },
+  "closed": {
+   "ja": "年末年始（臨時休業あり）",
+   "en": "New Year (irregular holidays)"
+  }
  },
  {
   "name": "マルナオ",
@@ -158,7 +182,15 @@
   "coords": [
    37.62864,
    138.9645
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  },
  {
   "name": "Gelateria COCO",
@@ -203,7 +235,11 @@
   "coords": [
    37.6544,
    138.93141
-  ]
+  ],
+  "closed": {
+   "ja": "火曜・水曜不定休",
+   "en": "Tuesdays, irregular Wednesdays"
+  }
  },
  {
   "name": "VINTAGE HALL",
@@ -226,6 +262,14 @@
   "coords": [
    37.65237,
    138.89172
-  ]
+  ],
+  "hours": {
+   "ja": "火–日 11:30–15:00",
+   "en": "Tue–Sun 11:30–15:00"
+  },
+  "closed": {
+   "ja": "月曜",
+   "en": "Mondays"
+  }
  }
 ]

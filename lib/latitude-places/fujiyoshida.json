@@ -43,7 +43,15 @@
   "coords": [
    35.49163,
    138.80317
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜・第4水曜",
+   "en": "Tuesdays, 4th Wednesday of each month"
+  }
  },
  {
   "name": "LIFE STYLE SHOP ALT STYLE",
@@ -66,7 +74,15 @@
   "coords": [
    35.48169,
    138.8035
-  ]
+  ],
+  "hours": {
+   "ja": "10:30–19:30",
+   "en": "10:30–19:30"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "FUJIHIMURO",
@@ -111,7 +127,15 @@
   "coords": [
    35.48635,
    138.80482
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–20:00（土日 15:00–17:00中休み）",
+   "en": "11:00–20:00 (weekends closed 15:00–17:00)"
+  },
+  "closed": {
+   "ja": "水曜・木曜",
+   "en": "Wednesdays, Thursdays"
+  }
  },
  {
   "name": "春木屋 コーヒーロースタリー 月滴庵",
@@ -154,7 +178,11 @@
   "coords": [
    35.48979,
    138.79563
-  ]
+  ],
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays, Mondays"
+  }
  },
  {
   "name": "木村屋",
@@ -176,7 +204,15 @@
   "coords": [
    35.48852,
    138.80153
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00（完売次第終了）",
+   "en": "10:00–18:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays, Mondays"
+  }
  },
  {
   "name": "sai Breakfast and Cafe",
@@ -198,7 +234,15 @@
   "coords": [
    35.48447,
    138.79697
-  ]
+  ],
+  "hours": {
+   "ja": "7:00–12:00（冬季は 8:00–12:00）",
+   "en": "7:00–12:00 (winter: 8:00–12:00)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "FUKUCHIYA",
@@ -243,7 +287,15 @@
   "coords": [
    35.4923,
    138.80426
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "月曜・火曜",
+   "en": "Mondays, Tuesdays"
+  }
  },
  {
   "name": "羽田忠織物",
@@ -289,7 +341,15 @@
   "coords": [
    35.48351,
    138.79512
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–20:00",
+   "en": "10:00–20:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日を除く）",
+   "en": "Mondays (open on public holidays)"
+  }
  },
  {
   "name": "古民家カフェ KONOHANA",
@@ -312,7 +372,15 @@
   "coords": [
    35.45619,
    138.8064
-  ]
+  ],
+  "hours": {
+   "ja": "11:00–17:30（カフェ L.O. 17:00）",
+   "en": "11:00–17:30 (cafe last order 17:00)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "まつや茶房",

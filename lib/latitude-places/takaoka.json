@@ -18,7 +18,15 @@
   "coords": [
    36.74716,
    137.01109
-  ]
+  ],
+  "hours": {
+   "ja": "8:30–19:00",
+   "en": "8:30–19:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日は営業）",
+   "en": "Wednesdays (open on public holidays)"
+  }
  },
  {
   "name": "amida coffee",
@@ -39,7 +47,15 @@
   "coords": [
    36.74574,
    137.01681
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–18:30（L.O. 18:00）",
+   "en": "9:30–18:30 (last order 18:00)"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "シマタニ昇龍工房",
@@ -83,7 +99,11 @@
   "coords": [
    36.73042,
    137.01514
-  ]
+  ],
+  "hours": {
+   "ja": "9:30–18:00",
+   "en": "9:30–18:00"
+  }
  },
  {
   "name": "Le premier",
@@ -104,7 +124,15 @@
   "coords": [
    36.73956,
    137.01528
-  ]
+  ],
+  "hours": {
+   "ja": "11:30–14:00（L.O. 13:00、予約制）、18:00–21:00（L.O. 19:30、予約制）",
+   "en": "11:30–14:00 (last order 13:00, by reservation), 18:00–21:00 (last order 19:30, by reservation)"
+  },
+  "closed": {
+   "ja": "火曜（他不定休あり）",
+   "en": "Tuesdays (plus irregular holidays)"
+  }
  },
  {
   "name": "自家焙煎珈琲店 らんぶる",
@@ -125,7 +153,15 @@
   "coords": [
    36.73842,
    137.01624
-  ]
+  ],
+  "hours": {
+   "ja": "月–金 9:00–18:00、土祝 9:00–17:00",
+   "en": "Mon–Fri 9:00–18:00, Sat & holidays 9:00–17:00"
+  },
+  "closed": {
+   "ja": "第1・第3日曜、年末年始",
+   "en": "1st & 3rd Sundays, year-end/New Year"
+  }
  },
  {
   "name": "山口久乗",
@@ -160,7 +196,15 @@
   "whatEn": "A wagashi shop in Kyoden making its signature Kanokomochi alongside dorayaki and seasonal sweets. Open 9 a.m. to 7 p.m., closed Tuesdays.",
   "note": "名物の鹿の子餅と、季節の菓子を合わせて見る。",
   "noteEn": "Look at the seasonal sweets alongside the signature Kanokomochi.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–19:00",
+   "en": "9:00–19:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "デザートと家庭料理の店 キャセロール",
@@ -178,7 +222,15 @@
   "whatEn": "A yoshoku and country-French restaurant in Ono since 1994. Its signature hamburg steak comes with mustard, tomato, or curry sauce, or a mix of two, served with bread from its sister bakery.",
   "note": "ハンバーグのソースは、二種類のあいがけにできる。",
   "noteEn": "You can ask for two sauces on the hamburg steak.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–15:30（L.O. 14:30）、17:00–22:00（L.O. 21:00）",
+   "en": "11:00–15:30 (last order 14:30), 17:00–22:00 (last order 21:00)"
+  },
+  "closed": {
+   "ja": "月曜、第2火曜",
+   "en": "Mondays & 2nd Tuesday"
+  }
  },
  {
   "name": "茶寮 和香",
@@ -196,7 +248,15 @@
   "whatEn": "A Japanese restaurant in a renovated late-Edo townhouse along Kanayamachi's stone-paved street, serving omakase courses. Both lunch and dinner require reservation by the previous day; closed Monday lunch.",
   "note": "昼も夜も、前日までに電話で予約していく。",
   "noteEn": "Reserve by phone at least a day ahead, for lunch or dinner.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:30–14:00（L.O. 13:00）、18:00–22:00（L.O. 20:30）",
+   "en": "11:30–14:00 (last order 13:00), 18:00–22:00 (last order 20:30)"
+  },
+  "closed": {
+   "ja": "月曜昼",
+   "en": "Monday lunch"
+  }
  },
  {
   "name": "洋食 no ARIKA",
@@ -213,7 +273,11 @@
   "whatEn": "A yoshoku restaurant in southern Takaoka serving Takaoka omurice, hamburg steaks, pasta, and Genghis Khan. Closed Wednesdays and irregular days; one-drink minimum at dinner.",
   "note": "昼のセットランチか、名物の「たかおかオムライス」を。",
   "noteEn": "Go for the lunch set or the Takaoka omurice.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "closed": {
+   "ja": "水曜、不定休",
+   "en": "Wednesdays, irregular"
+  }
  },
  {
   "name": "カフェくらうん",
@@ -231,7 +295,15 @@
   "whatEn": "A coffeehouse in Furujozuka roasting its own beans since 1958. Beans are hand-picked before roasting and served with sweets baked in a lava-stone oven.",
   "note": "ハンドピックの珈琲と、富士溶岩石の窯の焼き菓子。",
   "noteEn": "Hand-picked coffee and sweets baked in a lava-stone oven.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–18:30（L.O. 18:00）",
+   "en": "11:00–18:30 (last order 18:00)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "九谷屋",
@@ -269,7 +341,15 @@
   "whatEn": "A cast-metal homeware brand with a showroom on Kanayamachi's stone-paved street, showing cast aluminum, bronze, and tin vessels and hosting tinware workshops.",
   "note": "予約して錫のうつわ製作体験に参加できる。",
   "noteEn": "You can book a tin-vessel workshop at the showroom.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "木・土・日・祝（金屋町イベント時は営業）",
+   "en": "Thu, Sat, Sun & public holidays (open during Kanayamachi events)"
+  }
  },
  {
   "name": "うつわむすび",
@@ -324,7 +404,15 @@
   "whatEn": "A bakery opened near Aeon Takaoka in December 2017, baking in a Spanish stone oven. Known for house-made custard cream buns and chunky beef curry bread.",
   "note": "自家製カスタードのクリームパンとカレーパン。",
   "noteEn": "The house-made custard cream bun and the curry bread.",
-  "verifiedAt": "2026-11-13"
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "7:00–19:00",
+   "en": "7:00–19:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は火曜休）",
+   "en": "Mondays (closed Tuesday if public holiday)"
+  }
  },
  {
   "name": "あんしんごはん",

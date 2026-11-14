@@ -12,7 +12,14 @@
   "note": "板チョコは一枚ずつ手で包んでいる。ソフトクリームは、ここで食べる。",
   "noteEn": "Every bar is wrapped by hand. Have the soft serve here.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15733, -21.94039]
+  "coords": [
+   64.15733,
+   -21.94039
+  ],
+  "hours": {
+   "ja": "月〜木・土・日曜 11:00–20:00、金曜 13:00–20:00",
+   "en": "Mon–Thu & Sat–Sun 11:00–20:00, Fri 13:00–20:00"
+  }
  },
  {
   "name": "Ísbúðin Valdís",
@@ -27,7 +34,10 @@
   "note": "味はその日によって変わる。迷ったら、店の人に聞く。",
   "noteEn": "The flavours change. Ask which one today.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15357, -21.94898]
+  "coords": [
+   64.15357,
+   -21.94898
+  ]
  },
  {
   "name": "Kaffivagninn",
@@ -42,7 +52,14 @@
   "note": "港の前の店。プロックフィスクルを頼む。",
   "noteEn": "On the harbour. Order the plokkfiskur.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15358, -21.94754]
+  "coords": [
+   64.15358,
+   -21.94754
+  ],
+  "hours": {
+   "ja": "8:00–21:30",
+   "en": "8:00–21:30"
+  }
  },
  {
   "name": "La Primavera",
@@ -57,13 +74,18 @@
   "note": "昼の皿で十分。そのあと港を歩く。",
   "noteEn": "Lunch is enough. Then walk the harbour.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15613, -21.93898]
+  "coords": [
+   64.15613,
+   -21.93898
+  ]
  },
  {
   "name": "Kaffibrugghúsið",
   "nameEn": "Kaffibrugghúsið",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "グランディ（旧港）",
   "areaEn": "Grandi",
   "address": "Fiskislóð 59, 101 Reykjavík",
@@ -73,7 +95,10 @@
   "note": "開くのは水曜だけ。その日に合わせて行く。",
   "noteEn": "Wednesdays only. Plan the day around it.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15656, -21.9442]
+  "coords": [
+   64.15656,
+   -21.9442
+  ]
  },
  {
   "name": "Matur og Drykkur",
@@ -88,13 +113,22 @@
   "note": "夜だけの店。予約して、ゆっくり座る。",
   "noteEn": "Dinner only. Book, and stay a while.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.152, -21.95071]
+  "coords": [
+   64.152,
+   -21.95071
+  ],
+  "hours": {
+   "ja": "木〜日曜 18:00–23:00",
+   "en": "Thu–Sun 18:00–23:00"
+  }
  },
  {
   "name": "Kaffi Ó-le",
   "nameEn": "Kaffi Ó-le",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Hafnarstræti 11, 101 Reykjavík",
@@ -104,13 +138,18 @@
   "note": "ハルパへ歩く前に一杯。豆のことを聞くといい。",
   "noteEn": "One cup before the walk to Harpa. Ask about the beans.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14819, -21.93893]
+  "coords": [
+   64.14819,
+   -21.93893
+  ]
  },
  {
   "name": "Kaktus Espressobar",
   "nameEn": "Kaktus Espressobar",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Vitastígur 12, 101 Reykjavík",
@@ -120,13 +159,19 @@
   "note": "小さい店。エスプレッソを一杯だけ。",
   "noteEn": "A small room. One espresso.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14391, -21.92236]
+  "coords": [
+   64.14391,
+   -21.92236
+  ]
  },
  {
   "name": "Kaolin Ceramic Gallery",
   "nameEn": "Kaolin Ceramic Gallery",
   "category": "craft",
-  "tags": ["ceramics", "tableware"],
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Skólavörðustígur 5, 101 Reykjavík",
@@ -136,7 +181,14 @@
   "note": "何人もの作家の器が一つの部屋にある。重さを手で確かめて選ぶ。",
   "noteEn": "Several potters, one room. Feel the weight before you choose.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14592, -21.93218]
+  "coords": [
+   64.14592,
+   -21.93218
+  ],
+  "hours": {
+   "ja": "5〜10月：平日 10:00–18:00、土日 10:00–16:00／10〜5月：平日 11:00–18:00、土日 11:00–16:00",
+   "en": "May–Oct: Mon–Fri 10:00–18:00, Sat–Sun 10:00–16:00; Oct–May: Mon–Fri 11:00–18:00, Sat–Sun 11:00–16:00"
+  }
  },
  {
   "name": "Sandholt",
@@ -151,7 +203,10 @@
   "note": "朝7時半から開く。サワードウを一つ買って出る。",
   "noteEn": "Open from half past seven. Take a sourdough with you.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14503, -21.92636]
+  "coords": [
+   64.14503,
+   -21.92636
+  ]
  },
  {
   "name": "Kaffi Loki",
@@ -166,7 +221,18 @@
   "note": "教会を見たら、通りを渡るだけ。ライ麦パンのアイスを頼む。",
   "noteEn": "Cross the street from the church. Order the rye bread ice cream.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14247, -21.92893]
+  "coords": [
+   64.14247,
+   -21.92893
+  ],
+  "hours": {
+   "ja": "8:00–22:00（キッチン 8:00–21:30）",
+   "en": "8:00–22:00 (kitchen 8:00–21:30)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Hnoss Bistro",
@@ -181,13 +247,18 @@
   "note": "ハルパの中。演奏会の夜は、終わるまで開いている。",
   "noteEn": "Inside Harpa. On concert nights it stays open until the music ends.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15043, -21.93285]
+  "coords": [
+   64.15043,
+   -21.93285
+  ]
  },
  {
   "name": "Mokka Kaffi",
   "nameEn": "Mokka Kaffi",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "中心部",
   "areaEn": "City Centre",
   "address": "Skólavörðustígur 3a, 101 Reykjavík",
@@ -197,7 +268,18 @@
   "note": "1958年からの店。壁の絵も見る。",
   "noteEn": "Here since 1958. Look at the walls too.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14604, -21.93231]
+  "coords": [
+   64.14604,
+   -21.93231
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "Kaffihús Vesturbæjar",
@@ -212,7 +294,10 @@
   "note": "朝から夜まで開いている、住む人の店。",
   "noteEn": "Open morning to night. A place for people who live here.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14405, -21.96068]
+  "coords": [
+   64.14405,
+   -21.96068
+  ]
  },
  {
   "name": "Kröst",
@@ -227,7 +312,10 @@
   "note": "フードホールの中のグリル。ワインと一緒に。",
   "noteEn": "A grill counter in the food hall. Have it with wine.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14312, -21.91441]
+  "coords": [
+   64.14312,
+   -21.91441
+  ]
  },
  {
   "name": "12 Tónar",
@@ -243,7 +331,10 @@
   "note": "アイスランドの盤が厚い。500クローナ以下の箱もある。",
   "noteEn": "Deep in Icelandic records, with a box of discs at 500 krónur or less.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14486, -21.93073]
+  "coords": [
+   64.14486,
+   -21.93073
+  ]
  },
  {
   "name": "Smekkleysa",
@@ -259,7 +350,10 @@
   "note": "地下で鳴る音を、上の階で聞く店。",
   "noteEn": "The basement plays; you hear it upstairs.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14636, -21.9296]
+  "coords": [
+   64.14636,
+   -21.9296
+  ]
  },
  {
   "name": "Space Odyssey",
@@ -275,7 +369,10 @@
   "note": "アンビエントと実験音楽の棚。小さなレーベルの盤を探す店。",
   "noteEn": "Ambient and experimental shelves. A place for small-label records.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14577, -21.93196]
+  "coords": [
+   64.14577,
+   -21.93196
+  ]
  },
  {
   "name": "Lucky Records",
@@ -291,7 +388,10 @@
   "note": "アイスランドの古いレコードの棚が深い。",
   "noteEn": "Deep shelves of old Icelandic vinyl.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14266, -21.91426]
+  "coords": [
+   64.14266,
+   -21.91426
+  ]
  },
  {
   "name": "Handprjónasamband Íslands",
@@ -307,7 +407,14 @@
   "note": "雨をはじく外毛の糸。風の中で録る人の上着。",
   "noteEn": "Yarn from the rain-shedding outer coat. A sweater for recording in wind.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.14464, -21.93029]
+  "coords": [
+   64.14464,
+   -21.93029
+  ],
+  "hours": {
+   "ja": "月〜金曜 9:00–19:00、土曜 9:00–17:00、日曜 10:00–17:00",
+   "en": "Mon–Fri 9:00–19:00, Sat 9:00–17:00, Sun 10:00–17:00"
+  }
  },
  {
   "name": "Farmers Market",
@@ -323,6 +430,13 @@
   "note": "港の元魚工場の店。外は海風。",
   "noteEn": "A former fish factory by the harbour. Sea wind outside.",
   "verifiedAt": "2026-11-01",
-  "coords": [64.15683, -21.94038]
+  "coords": [
+   64.15683,
+   -21.94038
+  ],
+  "hours": {
+   "ja": "平日 10:00–18:00、土日 11:00–18:00",
+   "en": "Weekdays 10:00–18:00, weekends 11:00–18:00"
+  }
  }
 ]

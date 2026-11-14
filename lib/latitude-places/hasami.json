@@ -41,7 +41,15 @@
   "coords": [
    33.14364,
    129.91453
-  ]
+  ],
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "Ô YANE",
@@ -63,7 +71,15 @@
   "coords": [
    33.13788,
    129.89704
-  ]
+  ],
+  "hours": {
+   "ja": "9:00–18:00",
+   "en": "9:00–18:00"
+  },
+  "closed": {
+   "ja": "無休（年末年始を除く）",
+   "en": "Open every day (except year-end & New Year)"
+  }
  },
  {
   "name": "白山陶器 本社ショールーム",
@@ -121,7 +137,15 @@
   "whatEn": "A neighbourhood bakery in Shukugo baking over twenty kinds of bread daily and seasonal loaves with local ingredients, plus a vending machine outside for bread and jam. Open 10 am to 6 pm, closed Sundays and Mondays.",
   "note": "焼きたてのパンを一つと、外の自販機のジャムも気になる。",
   "noteEn": "One loaf fresh from the oven, and a look at the jam vending machine outside.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–18:00",
+   "en": "10:00–18:00"
+  },
+  "closed": {
+   "ja": "日曜・月曜",
+   "en": "Sundays, Mondays"
+  }
  },
  {
   "name": "ふくたい焼き 純乃屋",
@@ -157,7 +181,11 @@
   "whatEn": "A dining café in Shukugo serving daily seasonal lunches and lemon steak rice bowls on Hasami ware. Lunch from 11:30 am, café from 2:30 pm, dinner from 6 pm; closed on Mondays.",
   "note": "波佐見焼の器で昼ごはんを食べて、食後の珈琲まで。",
   "noteEn": "Lunch on Hasami ware, and stay for a coffee afterwards.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "月曜（祝祭日は変更あり）",
+   "en": "Mondays (subject to change on public holidays)"
+  }
  },
  {
   "name": "点心屋台くまや",
@@ -229,7 +257,15 @@
   "whatEn": "The second-floor café inside papermaker Iwasaki Shiki's Sotogawa to Nakami complex in Tanokashirago, serving coffee overseen by Nagasaki's JUNE COFFEE and waffles.",
   "note": "屋上に上がって、波佐見の山の風の中で珈琲を飲む。",
   "noteEn": "Take a coffee up to the rooftop and sit in the breeze off the hills.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "平日 10:00–17:00、土日 10:00–18:00",
+   "en": "Weekdays 10:00–17:00, weekends 10:00–18:00"
+  },
+  "closed": {
+   "ja": "月曜（祝日の場合は翌火曜）",
+   "en": "Mondays (next Tuesday if public holiday)"
+  }
  },
  {
   "name": "COFFEE MUSUME",
@@ -302,7 +338,15 @@
   "whatEn": "A ceramics gallery and shop in Shukugo run by pottery wholesaler Toumoto, carrying everyday Hasami and Arita ware alongside Japanese craft goods and Yamatoya coffee beans.",
   "note": "日々の器と一緒に、大和屋の珈琲豆も少し選ぶ。",
   "noteEn": "Choose a bag of Yamatoya coffee beans alongside the everyday bowls.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:30–17:00",
+   "en": "9:30–17:00"
+  },
+  "closed": {
+   "ja": "第2・第4日曜",
+   "en": "2nd & 4th Sundays"
+  }
  },
  {
   "name": "WAZAN OUTLET SHOP",
@@ -320,7 +364,11 @@
   "whatEn": "The direct outlet shop on the grounds of the Wazan kiln in Orishikisego, stocking matte-glazed plates, fluted Kikuwari dishes and everyday Hasami ware. Closed on irregular days.",
   "note": "マットな質感の皿と菊割の器を、色違いで見比べたい。",
   "noteEn": "Compare the matte plates and fluted Kikuwari dishes side by side.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "FysmColor",
@@ -338,7 +386,15 @@
   "whatEn": "The direct shop of ceramics wholesaler Fukuda Tokiten, renovated in March 2026, offering everyday Hasami and Arita tableware. Open 9 am to 5 pm, closed Saturdays, Sundays and holidays.",
   "note": "平日に寄って、新しくなった棚の器をゆっくり見る。",
   "noteEn": "Stop in on a weekday to browse the newly refitted shelves at ease.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "土曜・日曜・祝日",
+   "en": "Saturdays, Sundays, public holidays"
+  }
  },
  {
   "name": "natural69 直営店",
@@ -356,7 +412,11 @@
   "whatEn": "The direct shop of natural69 (Matsuo Shoten, founded 1954), designing original tableware with local kilns. Its outlet warehouse in Murakigo is open 9 am to 5 pm.",
   "note": "柄違いの豆皿や蕎麦猪口を、一枚ずつ手に取って選ぶ。",
   "noteEn": "Pick up the small plates and soba cups one pattern at a time.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  }
  },
  {
   "name": "やきもの工房・ギャラリー 京千",
@@ -375,7 +435,15 @@
   "whatEn": "A pottery studio and gallery in the hills of Kodarugo making everyday dishes, red-pigment ware, chopstick rests and ceramic buttons. Open 11 am to 5 pm, closed first and third Sundays.",
   "note": "小さな箸置きや陶のボタンの中から、好きな形を探す。",
   "noteEn": "Look through the tiny chopstick rests and ceramic buttons for a favourite shape.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "11:00–17:00",
+   "en": "11:00–17:00"
+  },
+  "closed": {
+   "ja": "第1・第3日曜",
+   "en": "1st & 3rd Sundays"
+  }
  },
  {
   "name": "工房紫明・gallery hana",
@@ -394,7 +462,15 @@
   "whatEn": "A workshop and shop in Orishikisego where second-generation potter Hana continues Shimei Nakayama's craft with tableware, lucky charms and paper and cloth goods. Open 10 am to 5:30 pm, closed Sundays and holidays.",
   "note": "柔らかな絵付けの器と、紙や布の小物を並べて見たい。",
   "noteEn": "See the softly painted porcelain alongside the paper and cloth goods.",
-  "verifiedAt": "2026-11-12"
+  "verifiedAt": "2026-11-12",
+  "hours": {
+   "ja": "10:00–17:30",
+   "en": "10:00–17:30"
+  },
+  "closed": {
+   "ja": "日曜・祝日",
+   "en": "Sundays, public holidays"
+  }
  },
  {
   "name": "アイユー",

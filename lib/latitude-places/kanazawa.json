@@ -3,7 +3,9 @@
   "name": "森八 Matcha Cafe ひがし三番丁店",
   "nameEn": "Morihachi Matcha Cafe, Higashi",
   "category": "cafe",
-  "tags": ["matcha"],
+  "tags": [
+   "matcha"
+  ],
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
   "address": "金沢市東山1-13-9",
@@ -12,14 +14,27 @@
   "whatEn": "A tea room run by Morihachi, a confectioner since 1625, in an Edo-period townhouse. Matcha with fresh wagashi.",
   "note": "朝9時から開いてる。茶屋街が混む前に行く。",
   "noteEn": "It opens at nine. Go before the teahouse street fills up.",
-  "coords": [36.57285, 136.66708],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.57285,
+   136.66708
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "9:00–18:00（L.O. 17:30）",
+   "en": "9:00–18:00 (last order 17:30)"
+  },
+  "closed": {
+   "ja": "1月1日（それ以外は無休）",
+   "en": "Jan 1 only (open all other days)"
+  }
  },
  {
   "name": "諸江屋 西茶屋菓寮「味和以」",
   "nameEn": "Moroeya Nishi-chaya Karyo \"Miwai\"",
   "category": "cafe",
-  "tags": ["matcha"],
+  "tags": [
+   "matcha"
+  ],
   "area": "にし茶屋街",
   "areaEn": "Nishi Chaya",
   "address": "金沢市野町2-26-1",
@@ -28,14 +43,27 @@
   "whatEn": "The café of Moroeya, makers of rakugan since 1849. Dry or fresh sweets with matcha, and zenzai with mochi toasted on a charcoal grill.",
   "note": "まずは干菓子と抹茶。落雁の店だから。",
   "noteEn": "Dry sweets and matcha, to begin. It is a house of rakugan.",
-  "coords": [36.55725, 136.6476],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.55725,
+   136.6476
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "3〜10月 10:00–18:00、11〜2月平日 10:00–17:30（菓寮 10:00–17:00）",
+   "en": "Mar–Oct 10:00–18:00, Nov–Feb weekdays 10:00–17:30 (tea room 10:00–17:00)"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は翌日）・年末年始",
+   "en": "Tuesdays (next day if public holiday), Year-end/New Year"
+  }
  },
  {
   "name": "兼六園茶屋 見城亭 カフェ",
   "nameEn": "Kenjotei Café, Kenrokuen",
   "category": "cafe",
-  "tags": ["matcha"],
+  "tags": [
+   "matcha"
+  ],
   "area": "兼六園まわり",
   "areaEn": "Kenrokuen",
   "address": "金沢市兼六町1-19",
@@ -44,9 +72,20 @@
   "whatEn": "The ground-floor café of a teahouse at the Katsurazaka gate of Kenrokuen. Matcha from an old tea merchant and fresh rakugan from Moroeya.",
   "note": "カウンターが広いから、一人でも座れる。庭のあとに。",
   "noteEn": "A long counter, so one person is fine. After the garden.",
-  "coords": [36.56344, 136.66162],
+  "coords": [
+   36.56344,
+   136.66162
+  ],
   "coordsApprox": true,
-  "verifiedAt": "2026-10-30"
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–16:30（L.O. 平日 16:00、土日 16:30）",
+   "en": "10:00–16:30 (last order: weekdays 16:00, weekends 16:30)"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "サロン・ド・テ・カワムラ",
@@ -60,8 +99,19 @@
   "whatEn": "The salon upstairs at Amanatto Kawamura, a sweet-bean specialist. Parfaits and teas made with beans.",
   "note": "三色豆茶は砂時計で5分待つ。待つのも込みで頼む。",
   "noteEn": "The three-bean tea comes with a five-minute sandglass. The wait is part of it.",
-  "coords": [36.55664, 136.64711],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.55664,
+   136.64711
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "平日 10:00–17:30（L.O. 17:00）、日祝 10:00–16:30（L.O. 16:00）",
+   "en": "Weekdays 10:00–17:30 (last order 17:00), Sun & holidays 10:00–16:30 (last order 16:00)"
+  },
+  "closed": {
+   "ja": "第1火曜（1・5・12月は営業）、12/22〜1/4",
+   "en": "1st Tuesdays (open in Jan, May, Dec), Dec 22–Jan 4"
+  }
  },
  {
   "name": "おでん高砂",
@@ -75,8 +125,19 @@
   "whatEn": "A Kanazawa oden house since 1936, with a dark broth kept going for decades.",
   "note": "車麩は頼む。ネタがなくなったら終わりだから、早めに。",
   "noteEn": "Order the kuruma-fu. When the pot runs out, they close. Go early.",
-  "coords": [36.56175, 136.65395],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.56175,
+   136.65395
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "16:00–21:00（なくなり次第終了）",
+   "en": "16:00–21:00 (until sold out)"
+  },
+  "closed": {
+   "ja": "日曜・祝日・GW・年末年始",
+   "en": "Sundays, public holidays, Golden Week, Year-end/New Year"
+  }
  },
  {
   "name": "大衆割烹 大関",
@@ -90,7 +151,10 @@
   "whatEn": "A neighbourhood kappo since 1957: oden, rolled omelette, eel.",
   "note": "だし巻きは、だしが卵と半々。最初に頼む。",
   "noteEn": "The omelette is half broth. Order it first.",
-  "coords": [36.56136, 136.65259],
+  "coords": [
+   36.56136,
+   136.65259
+  ],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -105,8 +169,19 @@
   "whatEn": "A seafood canteen in Omicho Market. Seafood bowls and Kanazawa oden, from 8 a.m.",
   "note": "朝ごはんにする。予約はできない。",
   "noteEn": "Make it breakfast. No reservations.",
-  "coords": [36.5712, 136.65567],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.5712,
+   136.65567
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "8:00–21:00",
+   "en": "8:00–21:00"
+  },
+  "closed": {
+   "ja": "水曜・年末年始（年数回臨時休業あり）",
+   "en": "Wednesdays, Year-end/New Year (occasional closures)"
+  }
  },
  {
   "name": "鏑木食堂 武家屋敷店",
@@ -120,14 +195,23 @@
   "whatEn": "A dining room inside Kaburaki, a Kutani porcelain house. Market food served on Kutani ware.",
   "note": "器で選んだ店。食べ終わったら、器を見る。",
   "noteEn": "I would go for the dishes. When you finish, look at the plate.",
-  "coords": [36.56375, 136.65079],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.56375,
+   136.65079
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–18:00（夜営業は応相談）",
+   "en": "10:00–18:00 (evening hours by consultation)"
+  }
  },
  {
   "name": "金澤屋珈琲店 本店",
   "nameEn": "Kanazawa-ya Coffee",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "金沢城公園",
   "areaEn": "Kanazawa Castle Park",
   "address": "金沢市丸の内5-26",
@@ -136,14 +220,27 @@
   "whatEn": "A townhouse by the Kuromon gate of the castle park. House-roasted, flannel-drip coffee.",
   "note": "城を歩いたあとに座る所。",
   "noteEn": "Where to sit down after the castle.",
-  "coords": [36.5686, 136.65855],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.5686,
+   136.65855
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "火曜・水曜（祝日は営業、不定木曜休あり）",
+   "en": "Tuesdays & Wednesdays (open on public holidays, occasional Thursdays)"
+  }
  },
  {
   "name": "橘珈琲店",
   "nameEn": "Tachibana Coffee",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "石引",
   "areaEn": "Ishibiki",
   "address": "金沢市石引4-5-1",
@@ -152,14 +249,20 @@
   "whatEn": "A specialty coffee shop in Ishibiki. It roasts at its own very low temperature, stopping before the first crack, and stocks rare beans.",
   "note": "知らない豆を一つ、選んで帰る。",
   "noteEn": "Leave with one bean you have never heard of.",
-  "coords": [36.55711, 136.66828],
+  "coords": [
+   36.55711,
+   136.66828
+  ],
   "verifiedAt": "2026-10-30"
  },
  {
   "name": "金沢長右衛門",
   "nameEn": "Kanazawa Choemon",
   "category": "craft",
-  "tags": ["ceramics", "tableware"],
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
   "area": "香林坊",
   "areaEn": "Korinbo",
   "address": "金沢市香林坊2-12-10",
@@ -168,14 +271,28 @@
   "whatEn": "The shop of Kamide Choemon, a Kutani kiln since 1879, making tableware for restaurants.",
   "note": "料理屋の器だから、飾らずに使える。底も見て。",
   "noteEn": "Made for restaurants, so made to be used. Look at the base too.",
-  "coords": [36.56373, 136.65242],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.56373,
+   136.65242
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–18:00（12:00頃より1時間休憩閉店）",
+   "en": "10:00–18:00 (closed for 1 hr around 12:00)"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "on la CRU.",
   "nameEn": "on la CRU.",
   "category": "craft",
-  "tags": ["ceramics", "everyday"],
+  "tags": [
+   "ceramics",
+   "everyday"
+  ],
   "area": "大額",
   "areaEn": "Ohnuka",
   "address": "金沢市大額町ル1-1",
@@ -184,14 +301,27 @@
   "whatEn": "Pottery by makers from all over Japan, and things for daily life.",
   "note": "中心から足をのばす価値がある。名前で選ばず、手に持って選ぶ。",
   "noteEn": "Worth the trip out of the centre. Choose with your hands, not by the name.",
-  "coords": [36.51377, 136.63109],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.51377,
+   136.63109
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–17:30",
+   "en": "10:00–17:30"
+  },
+  "closed": {
+   "ja": "GW・年末年始のみ（それ以外は無休）",
+   "en": "Golden Week & Year-end/New Year only (open all other days)"
+  }
  },
  {
   "name": "能作（金沢漆器）",
   "nameEn": "Nosaku (Kanazawa lacquer)",
   "category": "craft",
-  "tags": ["lacquer"],
+  "tags": [
+   "lacquer"
+  ],
   "area": "広坂",
   "areaEn": "Hirosaka",
   "address": "金沢市広坂1-1-60",
@@ -200,8 +330,19 @@
   "whatEn": "A lacquerware shop since 1780: Kanazawa, Wajima and Yamanaka lacquer. They repair it too.",
   "note": "直してくれる店は、信用できる。",
   "noteEn": "A shop that repairs what it sells. I trust that.",
-  "coords": [36.5618, 136.65649],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.5618,
+   136.65649
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–19:00",
+   "en": "10:00–19:00"
+  },
+  "closed": {
+   "ja": "水曜（8月は不定休）",
+   "en": "Wednesdays (irregular in Aug)"
+  }
  },
  {
   "name": "なべ・割烹 太郎",
@@ -215,7 +356,10 @@
   "whatEn": "A hot-pot house started by a former geiko. Seafood simmered in a house broth, served in private rooms by the staff. Reservations needed.",
   "note": "自分で何もしなくていい鍋。〆のおじやまで任せる。",
   "noteEn": "A hot pot where you do nothing yourself. Leave it to them, right up to the rice at the end.",
-  "coords": [36.57214, 136.66383],
+  "coords": [
+   36.57214,
+   136.66383
+  ],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -230,14 +374,27 @@
   "whatEn": "A Japanese restaurant in the riverside townhouse where the American printmaker Clifton Karhu spent his last years. Seasonal courses.",
   "note": "版画家の家で食べる。川を見ながら、黙って。",
   "noteEn": "You eat in a printmaker's house. Look at the river and keep quiet.",
-  "coords": [36.57219, 136.66377],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.57219,
+   136.66377
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "火 17:00–23:00、水〜日祝 11:30–14:30・17:00–23:00（L.O. 22:30）",
+   "en": "Tue 17:00–23:00, Wed–Sun & holidays 11:30–14:30 & 17:00–23:00 (last order 22:30)"
+  },
+  "closed": {
+   "ja": "月曜・火曜ランチ",
+   "en": "Mondays & Tuesday lunch"
+  }
  },
  {
   "name": "まゆ月 くらがり坂",
   "nameEn": "Mayuzuki Kuragarizaka",
   "category": "cafe",
-  "tags": ["coffee"],
+  "tags": [
+   "coffee"
+  ],
   "area": "主計町",
   "areaEn": "Kazuemachi",
   "address": "金沢市主計町3-19",
@@ -246,14 +403,19 @@
   "whatEn": "A teahouse at the foot of the Kuragari slope. Café by day, drinks at night. By reservation only.",
   "note": "予約してから行く。格子の窓ごしの茶屋街がいい。",
   "noteEn": "Book first. The teahouse street through the lattice is the point.",
-  "coords": [36.57208, 136.66339],
+  "coords": [
+   36.57208,
+   136.66339
+  ],
   "verifiedAt": "2026-10-30"
  },
  {
   "name": "久連波",
   "nameEn": "Kureha",
   "category": "cafe",
-  "tags": ["matcha"],
+  "tags": [
+   "matcha"
+  ],
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
   "address": "金沢市東山1-24-3",
@@ -262,7 +424,10 @@
   "whatEn": "Run by an old kimono house. Kaga-yuzen and crafts on the ground floor; upstairs, a tatami café over the street with matcha and fresh sweets.",
   "note": "2階から通りを見下ろす。1階の展示も見て。",
   "noteEn": "Look down at the street from upstairs. See the show downstairs too.",
-  "coords": [36.57239, 136.66737],
+  "coords": [
+   36.57239,
+   136.66737
+  ],
   "verifiedAt": "2026-10-30"
  },
  {
@@ -277,14 +442,27 @@
   "whatEn": "A café and gallery run by a Kaga tea maker, serving only roasted hojicha, in a former teahouse with a courtyard.",
   "note": "抹茶はない。ほうじ茶だけ。それがいい。",
   "noteEn": "No matcha. Only hojicha. That is the good part.",
-  "coords": [36.57236, 136.66783],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.57236,
+   136.66783
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "12:00–17:00（L.O. 16:30）",
+   "en": "12:00–17:00 (last order 16:30)"
+  },
+  "closed": {
+   "ja": "月曜・火曜",
+   "en": "Mondays & Tuesdays"
+  }
  },
  {
   "name": "縁煌",
   "nameEn": "Enishira",
   "category": "craft",
-  "tags": ["tableware"],
+  "tags": [
+   "tableware"
+  ],
   "area": "ひがし茶屋街",
   "areaEn": "Higashi Chaya",
   "address": "金沢市東山1-13-10",
@@ -293,8 +471,15 @@
   "whatEn": "A shop for crafts and vessels by makers from the Hokuriku region, with a different solo show upstairs every month.",
   "note": "2階の個展から見る。いまの北陸の作り手が分かる。",
   "noteEn": "Start with the show upstairs: it shows Hokuriku's makers now.",
-  "coords": [36.57283, 136.66719],
-  "verifiedAt": "2026-10-30"
+  "coords": [
+   36.57283,
+   136.66719
+  ],
+  "verifiedAt": "2026-10-30",
+  "hours": {
+   "ja": "10:00–17:00（季節により異なる）",
+   "en": "10:00–17:00 (varies by season)"
+  }
  },
  {
   "name": "今井金箔 本店",
@@ -309,8 +494,19 @@
   "whatEn": "The main shop of a gold-leaf maker founded in 1898. It offers leaf-application workshops and, on some days, shows part of the engitsuke leaf-making process, a technique on UNESCO's intangible heritage list. Closed Sundays, Mondays and holidays.",
   "note": "明治三十一年からの箔屋。縁付金箔の仕事を、日によって店で見せる。",
   "noteEn": "Leaf makers since 1898. Some days, the engitsuke work is shown in the shop.",
-  "coords": [36.55399, 136.66119],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.55399,
+   136.66119
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "日曜・月曜・祝日",
+   "en": "Sundays, Mondays, public holidays"
+  }
  },
  {
   "name": "かなざわカタニ",
@@ -325,7 +521,10 @@
   "whatEn": "The Kanazawa shop of Katani, a gold-leaf maker founded in 1899. It sells craft gold and silver leaf and its Hanafubuki edible leaf, and runs leaf-application workshops.",
   "note": "食べる箔は、工芸の箔と工程を分けて作る。",
   "noteEn": "The edible leaf is made on a separate line from the craft leaf.",
-  "coords": [36.572, 136.66258],
+  "coords": [
+   36.572,
+   136.66258
+  ],
   "coordsApprox": true,
   "verifiedAt": "2026-11-01"
  },
@@ -342,8 +541,19 @@
   "whatEn": "A city museum built on the gold-leaf artworks and tools collected by former leaf craftsman Yasue Takaaki; Japan's only gold-leaf museum, moved to Higashiyama in autumn 2010. Closed Tuesdays.",
   "note": "箔を打つ道具が見られる、国内でただ一つの金箔の館。",
   "noteEn": "Japan's only gold-leaf museum, with the beating tools on show.",
-  "coords": [36.57376, 136.66599],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.57376,
+   136.66599
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "9:30–17:00（最終入館 16:30）",
+   "en": "9:30–17:00 (last entry 16:30)"
+  },
+  "closed": {
+   "ja": "火曜（祝日の場合は直後の平日）・12/29〜1/3",
+   "en": "Tuesdays (next weekday if public holiday), Dec 29–Jan 3"
+  }
  },
  {
   "name": "金箔屋さくだ 本店",
@@ -358,8 +568,19 @@
   "whatEn": "A gold-leaf maker founded in 1919. You can watch the leaf being beaten, and buy what the workshop makes.",
   "note": "箔を打つ音が聞ける。買う前に、まず見る。",
   "noteEn": "You can hear the leaf being beaten. Watch first, buy later.",
-  "coords": [36.57385, 136.66631],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.57385,
+   136.66631
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "9:00–17:00（季節により変動あり）",
+   "en": "9:00–17:00 (varies by season)"
+  },
+  "closed": {
+   "ja": "無休",
+   "en": "Open every day"
+  }
  },
  {
   "name": "箔座 ひかり藏",
@@ -374,7 +595,10 @@
   "whatEn": "A gold-leaf house in Higashi Chaya, with tableware and small things in its own gold-and-platinum leaf, and a storehouse in the courtyard covered in leaf.",
   "note": "中庭の金の蔵は、曇りの日のほうがきれい。",
   "noteEn": "The gold storehouse in the courtyard looks better on a grey day.",
-  "coords": [36.57246, 136.66725],
+  "coords": [
+   36.57246,
+   136.66725
+  ],
   "verifiedAt": "2026-11-01"
  },
  {
@@ -390,8 +614,19 @@
   "whatEn": "The hall of the Kaga-zome Promotion Cooperative, with the Someria museum of new Kaga yuzen works, a hands-on dyeing corner and yuzen goods for sale. 9:00–17:00, closed Wednesdays except holidays.",
   "note": "染め手の組合の館。いまの加賀友禅の新作が並ぶ。",
   "noteEn": "The dyers' guild hall. New Kaga yuzen work on show.",
-  "coords": [36.56401, 136.66438],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.56401,
+   136.66438
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "9:00–17:00",
+   "en": "9:00–17:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日を除く）・年末年始",
+   "en": "Wednesdays (except public holidays), Year-end/New Year"
+  }
  },
  {
   "name": "茜やアーカイブギャラリー",
@@ -406,8 +641,15 @@
   "whatEn": "The gallery of Akaneya (Okuda Senshoku), a Kaga yuzen dye studio that marked 120 years in 2025. A Meiji-era machiya still used as the studio shows the process and offers colouring workshops; open Sat–Sun 10:00–16:00, other days by appointment. Five minutes' walk from the 21st Century Museum.",
   "note": "いまも工房として使う明治の町家。開くのは土日だけ。",
   "noteEn": "A Meiji townhouse still used as the dye studio. Open weekends only.",
-  "coords": [36.55944, 136.65553],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.55944,
+   136.65553
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "土日 10:00–16:00（平日は要予約）",
+   "en": "Sat & Sun 10:00–16:00 (weekdays by appointment)"
+  }
  },
  {
   "name": "加賀友禅 毎田染画工芸",
@@ -422,8 +664,19 @@
   "whatEn": "The studio of Kaga yuzen artists Maida Kenji and Maida Hitoshi. It takes studio-tour visitors, makes kimono to order and sells small hand-dyed pieces such as earrings and tenugui. 10:00–17:00, irregular closing days.",
   "note": "できた着物でなく、作る途中を見せる工房。",
   "noteEn": "A studio that shows the work in progress, not only the finished kimono.",
-  "coords": [36.55603, 136.65985],
-  "verifiedAt": "2026-11-01"
+  "coords": [
+   36.55603,
+   136.65985
+  ],
+  "verifiedAt": "2026-11-01",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  },
  {
   "name": "kimonodatta.",
@@ -437,8 +690,19 @@
   "whatEn": "A workshop and shop in an old townhouse that remakes inherited kimono cloth, such as Oshima tsumugi, into everyday shirts and dresses.",
   "note": "着物は着られなくても、布なら毎日着られる。",
   "noteEn": "If you won't wear a kimono, you can still wear the cloth every day.",
-  "coords": [36.57401, 136.66771],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.57401,
+   136.66771
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "9:00–16:00",
+   "en": "9:00–16:00"
+  },
+  "closed": {
+   "ja": "火曜",
+   "en": "Tuesdays"
+  }
  },
  {
   "name": "加賀友禅の店 ゑり華",
@@ -452,8 +716,19 @@
   "whatEn": "A Kaga yuzen shop for kimono and obi, with yuzen-patterned handkerchiefs and furoshiki, and a small display of old dyed textiles.",
   "note": "着物を買わなくても、風呂敷一枚から。",
   "noteEn": "You do not need to buy a kimono. Start with one furoshiki.",
-  "coords": [36.55872, 136.65494],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.55872,
+   136.65494
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–18:30",
+   "en": "10:00–18:30"
+  },
+  "closed": {
+   "ja": "水曜",
+   "en": "Wednesdays"
+  }
  },
  {
   "name": "きもの処 凛屋",
@@ -467,8 +742,19 @@
   "whatEn": "A kimono shop since 1907, with Kaga yuzen and Ushikubi tsumugi, and zori sandals made up with the thongs you choose.",
   "note": "草履は、鼻緒の色を選ぶところからが楽しい。",
   "noteEn": "With zori, the fun starts with choosing the colour of the thong.",
-  "coords": [36.54691, 136.64539],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.54691,
+   136.64539
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "11:00–18:00",
+   "en": "11:00–18:00"
+  },
+  "closed": {
+   "ja": "水曜・第1火曜",
+   "en": "Wednesdays, 1st Tuesdays"
+  }
  },
  {
   "name": "Transistor",
@@ -482,8 +768,19 @@
   "whatEn": "A select shop on Tatemachi focused on Japanese labels: everyday clothes with good fabric and tailoring that do not chase trends.",
   "note": "日本の服を一着だけ買うなら、ここで選ぶ。",
   "noteEn": "If you buy one piece of Japanese clothing, choose it here.",
-  "coords": [36.55872, 136.65494],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.55872,
+   136.65494
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "12:00–20:00",
+   "en": "12:00–20:00"
+  },
+  "closed": {
+   "ja": "水曜（祝日は営業）",
+   "en": "Wednesdays (open on public holidays)"
+  }
  },
  {
   "name": "FUDGE UP NOTHING",
@@ -497,7 +794,10 @@
   "whatEn": "A shop founded in Kanazawa in 2011, putting young Japanese labels side by side with chosen vintage, objects and music.",
   "note": "新しい服と古着が、同じ棚で並んでいる。",
   "noteEn": "New clothes and old ones share the same rail.",
-  "coords": [36.56164, 136.65413],
+  "coords": [
+   36.56164,
+   136.65413
+  ],
   "verifiedAt": "2026-11-13"
  },
  {
@@ -512,7 +812,10 @@
   "whatEn": "A workshop and shop near Oyama Shrine making light necklaces and earrings from hand-knotted silk lace finished with Kanazawa gold or platinum leaf.",
   "note": "金箔は、食べるより身につける方が長く残る。",
   "noteEn": "Gold leaf lasts longer worn than eaten.",
-  "coords": [36.56644, 136.65405],
+  "coords": [
+   36.56644,
+   136.65405
+  ],
   "verifiedAt": "2026-11-13"
  },
  {
@@ -527,8 +830,19 @@
   "whatEn": "A workshop and shop that hand-ties earrings, ear cuffs and rings from mizuhiki cord in two hundred colours.",
   "note": "水引は、結び目の形で意味が変わる。",
   "noteEn": "With mizuhiki, the shape of the knot changes its meaning.",
-  "coords": [36.55111, 136.65765],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.55111,
+   136.65765
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–16:00",
+   "en": "10:00–16:00"
+  },
+  "closed": {
+   "ja": "年末年始",
+   "en": "Year-end/New Year"
+  }
  },
  {
   "name": "KiKU",
@@ -542,7 +856,10 @@
   "whatEn": "The studio and shop of metalworker Yuichi Takemata in a renovated Taisho-era townhouse: engraved jewellery, and cutlery and tools with an aged finish.",
   "note": "指輪とスプーンが、同じ手から生まれている。",
   "noteEn": "The rings and the spoons come from the same hands.",
-  "coords": [36.55583, 136.65607],
+  "coords": [
+   36.55583,
+   136.65607
+  ],
   "verifiedAt": "2026-11-13"
  },
  {
@@ -557,7 +874,18 @@
   "whatEn": "A metalwork studio and shop near Omicho Market making its own jewellery, including pieces in Kaga zogan inlay.",
   "note": "加賀象嵌は、小さな面に金属を埋めこむ技。",
   "noteEn": "Kaga zogan sets metal into metal, in a very small space.",
-  "coords": [36.57117, 136.65849],
-  "verifiedAt": "2026-11-13"
+  "coords": [
+   36.57117,
+   136.65849
+  ],
+  "verifiedAt": "2026-11-13",
+  "hours": {
+   "ja": "10:00–17:00",
+   "en": "10:00–17:00"
+  },
+  "closed": {
+   "ja": "不定休",
+   "en": "Irregular"
+  }
  }
 ]
