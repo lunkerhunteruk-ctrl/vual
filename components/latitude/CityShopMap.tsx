@@ -628,13 +628,13 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           <div role="tablist" aria-label={ja ? '地図の使い方' : 'Map mode'} className="inline-flex self-start" style={{ border: `1px solid ${INK}` }}>
             {(['look', 'build'] as const).map((m) => (
               <button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setModeTo(m)}
-                className="min-h-[40px] cursor-pointer px-4 text-[11px] uppercase tracking-[0.22em] transition-colors md:px-5"
+                className="min-h-[40px] cursor-pointer px-4 text-[12px] uppercase tracking-[0.18em] transition-colors md:px-5"
                 style={{ background: mode === m ? INK : 'transparent', color: mode === m ? PAPER : INK }}>
                 {m === 'look' ? (ja ? '店を見る' : 'Browse') : (ja ? '自分でルートを組む' : 'Build your own route')}
               </button>
             ))}
           </div>
-          <p className="max-w-md text-[13px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="max-w-md text-[14px] leading-relaxed" style={{ color: MUTE }}>
             {build
               ? (ja ? `行きたい店や場所を押した順に、1・2・3…と歩く道でつながります。もう一度押すと外れます。${rinStops.length ? `${who}の道をなぞるのは、上の地図です。` : ''}` : `Tap places in the order you want; a walking line joins them. Tap again to remove.${rinStops.length ? ` ${who}'s own day is the map above.` : ''}`)
               : (ja ? `印を押すと、その店や場所へ寄ります。□は美術館や名所（目印）。「自分でルートを組む」で、行きたい所だけの道を作れます。` : `Tap a mark to see the place; squares are museums and sights (landmarks). Use “Build your own route” to make a walk of your own.`)}
@@ -647,14 +647,14 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           const on = !off.has(c.key);
           return (
             <button key={c.key} type="button" aria-pressed={on} onClick={() => toggleCat(c.key)}
-              className="flex min-h-[34px] cursor-pointer items-center gap-2 rounded-full px-3 text-[10px] uppercase tracking-[0.2em] transition-colors"
+              className="flex min-h-[34px] cursor-pointer items-center gap-2 rounded-full px-3 text-[12px] uppercase tracking-[0.2em] transition-colors"
               style={chip(on)}>
               <span className="block shrink-0" style={{ ...markStyle(c.key === RIN ? 'stop' : isSightKind(c.key) ? c.key : 'shop', 9, CATEGORY_COLOR[c.key] ?? INK), opacity: on ? 1 : 0.3 }} />
               {c.label}
             </button>
           );
         })}
-        <button type="button" onClick={setAll} className="min-h-[34px] cursor-pointer px-2 text-[10px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
+        <button type="button" onClick={setAll} className="min-h-[34px] cursor-pointer px-2 text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
           {allOn ? (ja ? 'すべて消す' : 'Hide all') : (ja ? 'すべて出す' : 'Show all')}
         </button>
       </div>
@@ -689,7 +689,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           const s = toScreen(l.x, l.y);
           if (s.sx < -80 || s.sx > size.w + 80 || s.sy < -20 || s.sy > size.h + 20) return null;
           return (
-            <span key={l.en} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[9px] uppercase tracking-[0.28em]"
+            <span key={l.en} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[11px] uppercase tracking-[0.18em]"
               style={{ left: s.sx, top: s.sy, color: l.kind === 'water' ? '#5f6b74' : MUTE, fontStyle: l.kind === 'water' ? 'italic' : undefined, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
               {ja ? l.ja : l.en}
             </span>
@@ -710,7 +710,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             const below = ey > size.h / 2;
             return (
               <button key={p.id} type="button" onClick={(e) => { e.stopPropagation(); goTo(p.id); }} onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
-                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[11px] uppercase tracking-[0.18em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w) }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
                 <span className="block" style={markStyle(kindOf(p), 10, color, false, `0 0 0 2px ${PAPER}`)} />
@@ -735,7 +735,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                 )}
               </span>
               {/* 名前：選んだ店はいつも、ほかはマウスを乗せた時（とキーボードで選んだ時）だけ */}
-              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px] ${active ? 'block' : 'hidden group-hover:block group-focus-visible:block'}`}
+              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[14px] ${active ? 'block' : 'hidden group-hover:block group-focus-visible:block'}`}
                 style={{ fontFamily: SERIF, color: INK, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
                 {p.name}
               </span>
@@ -758,7 +758,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             const below = ey > size.h / 2;
             return (
               <button key={q.id} type="button" onClick={(e) => { e.stopPropagation(); toggle(q.id); }} onPointerEnter={hoverIn(q.id)} onPointerLeave={hoverOut} aria-label={label} aria-pressed={picked}
-                className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[9px] uppercase tracking-[0.22em]"
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[11px] uppercase tracking-[0.18em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1, ...edgeAlign(ex, size.w) }}>
                 <span className="block" style={markStyle(q.kind, 10, q.color, false, `0 0 0 2px ${PAPER}`)} />
                 <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
@@ -774,7 +774,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                   transition: 'width 200ms, height 200ms, scale 180ms ease-out', color: PAPER, fontFamily: SERIF, fontSize: 13 }}>
                 {picked ? si + 1 : null}
               </span>
-              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[13px] ${picked ? 'hidden md:block' : 'hidden group-hover:block group-focus-visible:block'}`}
+              <span className={`pointer-events-none absolute left-full top-1/2 ml-1 -translate-y-1/2 whitespace-nowrap text-[14px] ${picked ? 'hidden md:block' : 'hidden group-hover:block group-focus-visible:block'}`}
                 style={{ fontFamily: SERIF, color: INK, textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>
                 {q.name}
               </span>
@@ -782,13 +782,13 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           );
         })}
         {ready && build && notice && (
-          <p role="status" className="absolute inset-x-3 bottom-3 z-[6] px-3 py-2 text-[12px] leading-snug" style={{ background: PAPER, border: `1px solid ${INK}`, color: INK }}>
+          <p role="status" className="absolute inset-x-3 bottom-3 z-[6] px-3 py-2 text-[13px] leading-snug" style={{ background: PAPER, border: `1px solid ${INK}`, color: INK }}>
             {notice}
           </p>
         )}
 
         {ready && (sel || zoomed) && (
-          <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] text-[10px] uppercase tracking-[0.3em]"
+          <button type="button" onClick={() => goTo(null)} className="absolute left-3 top-3 z-[4] text-[12px] uppercase tracking-[0.2em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>
             {ja ? '← 全体へ' : '← Whole map'}
           </button>
@@ -815,24 +815,24 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                 transform: pvOn ? 'none' : 'translateY(3px)',
                 transition: 'opacity 170ms ease-out, transform 170ms ease-out',
               }}>
-              <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: MUTE }}>
+              <p className="flex items-center gap-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
                 <span className="block shrink-0" style={markStyle(kind, 8, color)} />
                 {pvPin
                   ? <>{pvPin.catLabel}{sight && (ja ? '・目印' : ' · landmark')}</>
                   : pvStop && (ja ? `${who}の1日 ${pvStop.n}` : `${who}'s day ${pvStop.n}`)}
               </p>
               <p className="mt-1.5 text-[18px] leading-snug" style={{ fontFamily: SERIF, color: INK }}>{pvPin?.name ?? pvStop?.name}</p>
-              {pvPin?.area && <p className="mt-0.5 text-[10px] uppercase tracking-[0.24em]" style={{ color: MUTE }}>{pvPin.area}</p>}
+              {pvPin?.area && <p className="mt-0.5 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{pvPin.area}</p>}
               {pvPin?.what && <p className="mt-2 line-clamp-2 text-[12.5px] leading-[1.6]" style={{ color: INK }}>{pvPin.what}</p>}
               {pvPin && !sight && pvPin.note && (
-                <p className="mt-1.5 line-clamp-2 text-[13px] leading-[1.55]" style={{ fontFamily: SERIF, color: INK }}>
-                  <span className="mr-1.5 text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
+                <p className="mt-1.5 line-clamp-2 text-[14px] leading-[1.55]" style={{ fontFamily: SERIF, color: INK }}>
+                  <span className="mr-1.5 text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
                   {pvPin.note}
                 </p>
               )}
-              {pvPin?.notice && <p className="mt-1.5 line-clamp-1 text-[11px]" style={{ color: RED }}>{pvPin.notice}</p>}
+              {pvPin?.notice && <p className="mt-1.5 line-clamp-1 text-[12px]" style={{ color: RED }}>{pvPin.notice}</p>}
               {build && (
-                <p className="mt-2 text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+                <p className="mt-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
                   {si >= 0 ? (ja ? `道の${si + 1}番目・押すと外す` : `Stop ${si + 1} · click to remove`) : (ja ? '押すと道に足す' : 'Click to add')}
                 </p>
               )}
@@ -840,7 +840,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           );
         })()}
         {!ready && (
-          <p className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+          <p className="absolute inset-0 flex items-center justify-center text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
             {ja ? '地図を読みこんでいます' : 'Loading the map'}
           </p>
         )}
@@ -875,7 +875,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
       )}
 
       {/* 地図の出どころ */}
-      <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+      <p className="mt-3 text-right text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
         {ja ? '地図データ ' : 'Map data '}
         <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>© OpenStreetMap contributors</a>
         {build && (ja ? '（道の計算 FOSSGIS OSRM）' : ' (routes: FOSSGIS OSRM)')}
@@ -914,7 +914,7 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
       {/* 狭い画面の、下から出たカードのつまみ */}
       <div className="mx-auto mb-3 h-[3px] w-10 rounded-full md:hidden" style={{ background: LINE }} />
       <div className="flex items-center justify-between gap-4">
-        <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+        <p className="flex items-center gap-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
           <span className="block shrink-0" style={markStyle(kindOf(p), 9, color)} />
           {p.catLabel}{sight && (ja ? '・目印' : ' · landmark')}&nbsp;&nbsp;·&nbsp;&nbsp;{p.area}
         </p>
@@ -925,20 +925,20 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
         <figure className="mt-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={p.photo} alt={p.name} className="block w-full object-cover" style={{ aspectRatio: '4 / 3' }} />
-          <figcaption className="mt-1.5 text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? '写真：店から' : 'Photo: from the shop'}</figcaption>
+          <figcaption className="mt-1.5 text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{ja ? '写真：店から' : 'Photo: from the shop'}</figcaption>
         </figure>
       )}
-      <p className="mt-3 text-[14px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
+      <p className="mt-3 text-[16px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
       {/* 見る所は凛のおすすめの店ではないので、凛の一言は付けない。休館の予定などを出す */}
       {!sight && p.note && (
-        <p className="mt-3 text-[15px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
-          <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
+        <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
+          <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{who}</span>
           {p.note}
         </p>
       )}
-      {p.notice && <p className="mt-3 text-[12px] leading-relaxed" style={{ color: '#7a241e' }}>{p.notice}</p>}
-      {p.approx && <p className="mt-3 text-[11px]" style={{ color: MUTE }}>{ja ? '地図の位置はおおよそです。' : 'The position on the map is approximate.'}</p>}
-      <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.3em]">
+      {p.notice && <p className="mt-3 text-[13px] leading-relaxed" style={{ color: '#7a241e' }}>{p.notice}</p>}
+      {p.approx && <p className="mt-3 text-[13px]" style={{ color: MUTE }}>{ja ? '地図の位置はおおよそです。' : 'The position on the map is approximate.'}</p>}
+      <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
         {p.site && <TrackLink href={p.site} label={ja ? '公式サイト' : 'Website'} shop={p.key} kind="site" person={person} />}
         {p.instagram && <TrackLink href={p.instagram} label="Instagram" shop={p.key} kind="site" person={person} />}
         <TrackLink href={p.mapUrl} label={ja ? '地図' : 'Map'} shop={p.key} kind="map" person={person} />
@@ -990,7 +990,7 @@ function InstagramEmbed({ url, ja }: { url: string; ja: boolean }) {
     <div className="mt-5">
       <div ref={ref} style={{ display: failed ? 'none' : undefined }} />
       {failed && (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
           {ja ? 'Instagram で見る →' : 'See on Instagram →'}
         </a>
       )}

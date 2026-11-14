@@ -97,7 +97,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
 
       {/* 題字 */}
       <header className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:px-8 md:pb-20 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
           Latitude&nbsp;&nbsp;·&nbsp;&nbsp;
           {/* 2026-10-30 号の番号の代わりに「人 · 月」。名前はその人のページへ */}
           {personOf(issue) ? (
@@ -114,7 +114,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         <h1 className="mt-5 text-[64px] leading-[0.95] md:text-[120px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em', color: INK }}>
           <LatitudeFigure value={issue.latitude} />
         </h1>
-        <p className="mt-6 text-[13px] uppercase tracking-[0.5em] md:mt-8 md:text-[15px]">{issue.city}</p>
+        <p className="mt-6 text-[14px] uppercase tracking-[0.2em] md:mt-8 md:text-[15px]">{issue.city}</p>
         {/* 2026-11-01 この街のいま（号の月の話ではなく、見ている今の時刻・気温・天気。取れない時は出ない） */}
         <NowInCity place={issue.slug} coords={city?.coords} ja={ja} className="mt-6" name={nowName} chapters={issue.chapters} />
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
@@ -122,7 +122,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         </p>
         <ol className="mt-8 flex flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-2">
           {issue.chapters.map((c, k) => (
-            <li key={c.no} data-lat-chapter={k} className="text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+            <li key={c.no} data-lat-chapter={k} className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
               <span style={{ color: INK }}>{c.no}</span>&nbsp;&nbsp;—&nbsp;&nbsp;{place(k)}{J ? '　' : ', '}{c.time}
               {/* 2026-11-01 いまの街の時刻がこの章に重なる時だけ、NowLine が出す（ふだんは隠す） */}
               <span data-lat-now className="ml-3 hidden items-center gap-1.5 normal-case tracking-[0.08em]" style={{ color: INK }}>
@@ -138,11 +138,11 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={latAsset(`people/${person.slug}.jpg`)} alt={who} width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
             <span className="flex flex-col gap-1">
-              <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? 'この日を旅した人' : 'The traveller'}</span>
+              <span className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? 'この日を旅した人' : 'The traveller'}</span>
               <span className="text-[18px] leading-snug" style={{ fontFamily: SERIF }}>
                 {who}{ja ? `（${person.ja.home}・${person.age}歳）` : `, ${person.home}, ${person.age}`}
               </span>
-              <span className="text-[11px] uppercase tracking-[0.25em] underline-offset-4 group-hover:underline">
+              <span className="text-[12px] uppercase tracking-[0.18em] underline-offset-4 group-hover:underline">
                 {ja ? `${who}のほかの1日を見る` : `See all of ${who}'s days`}&nbsp;&nbsp;→
               </span>
             </span>
@@ -155,14 +155,14 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
               // eslint-disable-next-line @next/next/no-img-element
               <img src={latAsset(`places/${city.slug}/${city.images[0].file}`)} alt="" width={56} height={56} className="h-14 w-14 shrink-0 rounded-full object-cover" />
             ) : (
-              <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-[11px]" style={{ borderColor: 'rgba(30,29,27,0.25)', fontFamily: SERIF }}>{city.latitude.replace(' N', '')}</span>
+              <span aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border text-[12px]" style={{ borderColor: 'rgba(30,29,27,0.25)', fontFamily: SERIF }}>{city.latitude.replace(' N', '')}</span>
             )}
             <span className="flex flex-col gap-1">
-              <span className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '街の案内' : 'The city guide'}</span>
+              <span className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '街の案内' : 'The city guide'}</span>
               <span className="text-[18px] leading-snug" style={{ fontFamily: SERIF }}>
                 {ja ? `${who}の${city.nameJa}のおすすめ・${city.places.length}軒` : `${city.places.length} places ${who} would go in ${city.name}`}
               </span>
-              <span className="text-[11px] uppercase tracking-[0.25em] underline-offset-4 group-hover:underline">
+              <span className="text-[12px] uppercase tracking-[0.18em] underline-offset-4 group-hover:underline">
                 {ja ? `${city.nameJa}の案内を見る` : `Open the ${city.name} guide`}&nbsp;&nbsp;→
               </span>
             </span>
@@ -241,11 +241,11 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
             <SectionLabel lang={J?.seo ? undefined : 'en'}>{J?.seo ? <>旅の覚え書き&nbsp;&nbsp;—&nbsp;&nbsp;{MONTH_JA[issue.seo.month] ?? issue.seo.month}の{nowName}</> : <>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</>}</SectionLabel>
-            <dl className="flex max-w-2xl flex-col gap-4 text-[14px] leading-relaxed" style={{ color: MUTE }}>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '天気' : 'Weather'}</dt><dd className="mt-1">{trip!.weather}</dd></div>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '着ていた服' : 'What she wore'}</dt><dd className="mt-1">{trip!.wore}</dd></div>
-              <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '前の月・後の月なら' : 'Earlier or later'}</dt><dd className="mt-1">{trip!.season}</dd></div>
-              <p className="text-[12px]">{ja ? 'この号の画像は、VUAL が AI で作りました。場所・道すじ・事実は本物です。' : 'The images in this issue were made with AI by VUAL. The places, the routes and the facts are real.'}</p>
+            <dl className="flex max-w-2xl flex-col gap-4 text-[15px] leading-relaxed" style={{ color: MUTE }}>
+              <div><dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>{J?.seo ? '天気' : 'Weather'}</dt><dd className="mt-1">{trip!.weather}</dd></div>
+              <div><dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>{J?.seo ? '着ていた服' : 'What she wore'}</dt><dd className="mt-1">{trip!.wore}</dd></div>
+              <div><dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>{J?.seo ? '前の月・後の月なら' : 'Earlier or later'}</dt><dd className="mt-1">{trip!.season}</dd></div>
+              <p className="text-[13px]">{ja ? 'この号の画像は、VUAL が AI で作りました。場所・道すじ・事実は本物です。' : 'The images in this issue were made with AI by VUAL. The places, the routes and the facts are real.'}</p>
             </dl>
           </div>
         </section>
@@ -264,7 +264,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
                 <Link href={`/${locale}/latitude/${issue.slug}/notes`} className="group block" style={{ color: INK }}>
                   <p className="text-[24px] leading-snug md:text-[30px]" style={{ fontFamily: ja ? MINCHO : SERIF }}>{b.title}</p>
                   <p className="mt-3 text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? noteLead(b, 120) : b.subtitle || noteLead(b)}</p>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.3em] underline-offset-4 group-hover:underline">{ja ? '全文を読む' : 'Read the notes'}&nbsp;&nbsp;→</p>
+                  <p className="mt-4 text-[12px] uppercase tracking-[0.2em] underline-offset-4 group-hover:underline">{ja ? '全文を読む' : 'Read the notes'}&nbsp;&nbsp;→</p>
                 </Link>
               </div>
             </div>
@@ -288,16 +288,16 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
                         <img src={assetUrl(o, 'cover.jpg')} alt={`${person.name} in ${o.city}, ${o.month} — LATITUDE ${o.latitude}`} loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                       </div>
-                      <p className="mt-3 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{o.month}</p>
+                      <p className="mt-3 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{o.month}</p>
                       <p className="mt-1 text-[22px] leading-tight" style={{ fontFamily: SERIF }}>{o.latitude}</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.35em]">{o.city}</p>
+                      <p className="mt-1 text-[12px] uppercase tracking-[0.2em]">{o.city}</p>
                     </Link>
                   ))}
                 </div>
               ) : (
                 <p className="text-[14px]" style={{ color: MUTE }}>{ja ? `${who}の旅は、この1日から。` : `This is ${who}'s first day.`}</p>
               )}
-              <Link href={`/${locale}/latitude/people/${person.slug}`} className="mt-6 inline-block text-[11px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+              <Link href={`/${locale}/latitude/people/${person.slug}`} className="mt-6 inline-block text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
                 {ja ? `${who}について` : `About ${who}`}&nbsp;&nbsp;→
               </Link>
             </div>
@@ -311,12 +311,12 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto flex max-w-6xl flex-wrap gap-3">
             {room && person && (
-              <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
+              <Link href={`/${locale}/latitude/people/${person.slug}/room`} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
                 {VOICE_CALLS ? (ja ? `${who}と話す・通話する` : `Talk to ${who}, or call her`) : ja ? `${who}と話す` : `Talk to ${who}`}&nbsp;&nbsp;→
               </Link>
             )}
             {city && (
-              <Link href={`/${locale}/latitude/places/${city.slug}`} className="border px-6 py-3 text-[11px] uppercase tracking-[0.3em]" style={{ borderColor: INK, color: INK }}>
+              <Link href={`/${locale}/latitude/places/${city.slug}`} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, color: INK }}>
                 {ja ? `${who}の${city.nameJa}のおすすめ` : `Where ${who} would go in ${city.name}`}&nbsp;&nbsp;→
               </Link>
             )}
@@ -336,22 +336,22 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
 
       <footer className="border-t px-4 py-16 md:px-8 md:py-24" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
         <div className="mx-auto max-w-6xl">
-          <p className="text-[11px] uppercase tracking-[0.3em]">Latitude&nbsp;&nbsp;{issueNo(issue)}</p>
+          <p className="text-[12px] uppercase tracking-[0.2em]">Latitude&nbsp;&nbsp;{issueNo(issue)}</p>
           <p className="mt-3 text-[28px]" style={{ fontFamily: SERIF }}>
             {issue.latitude}&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city}
           </p>
-          <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+          <p className="mt-4 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
             {issue.chapters.map((_, k) => place(k)).join('  ·  ')}
           </p>
           {/* 2026-11-11 この号が何かを、言い切りの1段落で（検索や AI のチャットが引用しやすいように。雑誌の邪魔をしないよう奥付に小さく） */}
-          <p className="mt-6 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="mt-6 max-w-xl text-[15px] leading-relaxed" style={{ color: MUTE }}>
             {ja
               ? `LATITUDE ${issue.latitude} ${nowName}は、${person ? `${who}（${person.ja.home}・${person.age}歳）が` : ''}${nowName}で過ごす架空の1日${issue.month ? `（${issue.month}）` : ''}を、記録のように描いた号です。場所とその土地のひとつの事実は本物、人と1日は架空です。映像と誌面は、VUAL が AI で作りました。`
               : `LATITUDE ${issue.latitude} ${issue.city} is one fictional day in ${issue.city}${issue.month ? `, in ${issue.month}` : ''}${person ? `, with ${person.name}, ${person.age}, from ${person.home}` : ''}, filmed as if documented. The place and one true thing about it are real; the traveller and her day are imagined. The film and pages were made with AI by VUAL.`}
           </p>
           {/* 制作の案内（2026-10-28）：号を見たブランドが VUAL に頼めると分かるように、号のいちばん最後にだけ置く。
               読む人に向けた文なので言語で切り替える（クレジットの行は奥付の慣習どおり英語のまま） */}
-          <p className="mt-10 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="mt-10 max-w-xl text-[15px] leading-relaxed" style={{ color: MUTE }}>
             {locale === 'ja'
               ? 'LATITUDE は、ファッションのクリエイティブスタジオ VUAL が制作しています。VUAL では、ブランドの実物の服から、映像と誌面の制作も承っています。'
               : 'LATITUDE is made by VUAL, a fashion creative studio. VUAL also makes films and editorial for brands, from the real garments.'}{' '}
@@ -363,11 +363,11 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
               studio@vual.jp
             </a>
           </p>
-          <p className="mt-6 text-[10px] tracking-[0.15em]" style={{ color: MUTE }}>
+          <p className="mt-6 text-[12px] tracking-[0.15em]" style={{ color: MUTE }}>
             Created with AI by VUAL.{issue.credits?.map((c) => ` ${c}.`).join('')}
           </p>
 
-          <div className="mt-16 flex items-center justify-between text-[11px] uppercase tracking-[0.25em]">
+          <div className="mt-16 flex items-center justify-between text-[12px] uppercase tracking-[0.18em]">
             {prev ? (
               <Link href={`/${locale}/latitude/${prev.slug}`} style={{ color: INK }}>
                 ← {issueNo(prev)}&nbsp;&nbsp;{prev.city}

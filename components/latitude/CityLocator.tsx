@@ -40,7 +40,7 @@ export function CityLocator({ country, at, dot = RED, text, label, href, classNa
           <circle cx={x} cy={y} r={5.4} fill={dot} stroke={PAPER} strokeWidth={1.2} />
         </svg>
       )}
-      <p className="max-w-[16rem] text-[10px] uppercase leading-[1.9] tracking-[0.28em]">{keepUnits(text)}</p>
+      <p className="max-w-[16rem] text-[12px] uppercase leading-[1.9] tracking-[0.18em]">{keepUnits(text)}</p>
     </div>
   );
 }

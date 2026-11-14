@@ -197,7 +197,7 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
       <JsonLd data={periodicalJsonLd()} />
       <IssueStrip locale={locale} />
       <header className="mx-auto max-w-3xl px-4 pb-10 pt-16 md:px-8 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude`} style={{ color: MUTE }}>Latitude</Link>&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}
         </p>
         <h1 className="mt-5 text-[56px] uppercase leading-none md:text-[96px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '0.12em', color: INK }}>
@@ -226,7 +226,7 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
           <dl className="border-t" style={{ borderColor: RULE }}>
             {t.how.map(([k, v]) => (
               <div key={k} className="gap-6 border-b py-4 md:flex" style={{ borderColor: RULE }}>
-                <dt className="mb-2 w-44 shrink-0 pt-[3px] text-[10px] uppercase tracking-[0.3em] md:mb-0" style={{ color: MUTE }}>{k}</dt>
+                <dt className="mb-2 w-44 shrink-0 pt-[3px] text-[12px] uppercase tracking-[0.2em] md:mb-0" style={{ color: MUTE }}>{k}</dt>
                 <dd className="text-[15px] leading-relaxed" style={body}>
                   {v}
                   {(k === 'Decided by people' || k === '人が決める') && (
@@ -248,7 +248,7 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
           <dl className="border-t" style={{ borderColor: RULE }}>
             {glance.map(([k, v]) => (
               <div key={k} className="flex gap-6 border-b py-4" style={{ borderColor: RULE }}>
-                <dt className="w-36 shrink-0 pt-[3px] text-[10px] uppercase tracking-[0.3em] md:w-48" style={{ color: MUTE }}>{k}</dt>
+                <dt className="w-36 shrink-0 pt-[3px] text-[12px] uppercase tracking-[0.2em] md:w-48" style={{ color: MUTE }}>{k}</dt>
                 <dd className="text-[15px]" style={body}>{v}</dd>
               </div>
             ))}
@@ -269,8 +269,8 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={cover} alt={`LATITUDE ${i.latitude} ${i.city}${who ? `, ${who}` : ''}`} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '3 / 4' }} />
                   </a>
-                  <p className="mt-3 text-[10px] uppercase tracking-[0.3em]">{i.latitude}&nbsp;&nbsp;{ja ? cityName(i.slug, i.city) : i.city}</p>
-                  <p className="mt-2 flex flex-col gap-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+                  <p className="mt-3 text-[12px] uppercase tracking-[0.2em]">{i.latitude}&nbsp;&nbsp;{ja ? cityName(i.slug, i.city) : i.city}</p>
+                  <p className="mt-2 flex flex-col gap-1 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
                     <a href={cover} target="_blank" rel="noopener" className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{t.carousel}</a>
                     <a href={film} target="_blank" rel="noopener" className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{t.film}</a>
                   </p>
@@ -283,7 +283,7 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
         <section className="mt-16">
           <SectionLabel>{t.editorTitle}</SectionLabel>
           <p className={para} style={body}>{t.editor}</p>
-          <Link href={`/${locale}/latitude/editor`} rel="author" className="mt-5 inline-block border-b pb-1 text-[10px] uppercase tracking-[0.3em]" style={{ color: INK, borderColor: INK }}>
+          <Link href={`/${locale}/latitude/editor`} rel="author" className="mt-5 inline-block border-b pb-1 text-[12px] uppercase tracking-[0.2em]" style={{ color: INK, borderColor: INK }}>
             {t.editorLink}&nbsp;&nbsp;→
           </Link>
         </section>
@@ -293,7 +293,7 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
           <dl className="border-t" style={{ borderColor: RULE }}>
             {t.credit.map(([k, v]) => (
               <div key={k} className="flex gap-6 border-b py-4" style={{ borderColor: RULE }}>
-                <dt className="w-36 shrink-0 pt-[3px] text-[10px] uppercase tracking-[0.3em] md:w-48" style={{ color: MUTE }}>{k}</dt>
+                <dt className="w-36 shrink-0 pt-[3px] text-[12px] uppercase tracking-[0.2em] md:w-48" style={{ color: MUTE }}>{k}</dt>
                 <dd className="text-[15px]" style={body}>{v.startsWith('https://') ? <a href={v} style={{ color: INK }}>{v}</a> : v}</dd>
               </div>
             ))}
@@ -302,12 +302,12 @@ export default async function LatitudePressPage({ params }: { params: Promise<{ 
 
         <section className="mt-16">
           <SectionLabel>{t.contactTitle}</SectionLabel>
-          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{t.contactLabel}</p>
+          <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{t.contactLabel}</p>
           <p className="mt-2 text-[20px]" style={{ fontFamily: SERIF }}>
             <a href="mailto:editor@vual.jp" style={{ color: INK }}>editor@vual.jp</a>
           </p>
           <p className={`${para} mt-4`} style={body}>{t.contactLine}</p>
-          <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-2 text-[10px] uppercase tracking-[0.3em]">
+          <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
             {t.more.map(([label, path]) => (
               <li key={path}>
                 <Link href={`/${locale}/latitude/${path}`} style={{ color: INK }}>{label}&nbsp;&nbsp;→</Link>

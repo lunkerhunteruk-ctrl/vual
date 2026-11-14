@@ -17,7 +17,7 @@ export default function Room({ locale, slug, name, city, month, callSeconds, cam
 
   return (
     <main className="mx-auto flex max-w-2xl flex-col px-4 pb-10 pt-12 md:px-8 md:pt-20">
-      <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+      <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
         Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '部屋' : 'Her room'}
       </p>
       <div className="mt-5 flex items-center gap-5">
@@ -27,10 +27,10 @@ export default function Room({ locale, slug, name, city, month, callSeconds, cam
           <h1 className="text-[48px] leading-none md:text-[64px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>
             <Link href={`/${locale}/latitude/people/${slug}`} style={{ color: INK }}>{name}</Link>
           </h1>
-          <p className="mt-2 text-[11px] uppercase tracking-[0.35em]">{city}&nbsp;&nbsp;·&nbsp;&nbsp;{month}</p>
+          <p className="mt-2 text-[12px] uppercase tracking-[0.2em]">{city}&nbsp;&nbsp;·&nbsp;&nbsp;{month}</p>
         </div>
       </div>
-      <p className="mt-6 text-[12px] leading-relaxed" style={{ color: MUTE }}>
+      <p className="mt-6 text-[13px] leading-relaxed" style={{ color: MUTE }}>
         {ja
           ? `${name}はAIです。話した文字は、直すために30日だけ残します。声は残しません。`
           : `${name} is an AI. What you type or say is kept as text for 30 days to improve her, then deleted. Audio is not kept. She answers in English here, and in Japanese on the Japanese page.`}

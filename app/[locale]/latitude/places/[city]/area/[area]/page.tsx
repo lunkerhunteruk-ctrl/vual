@@ -57,7 +57,7 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
       <PlacesJsonLd c={c} items={a.places} ja={ja} name={ja ? `${a.name}（${c.nameJa}）` : `${a.nameEn}, ${c.name}`} />
 
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/places/${c.slug}`} style={{ color: MUTE }}>{c.latitude}&nbsp;&nbsp;{cityName}</Link>
         </p>
         <h1 className="mt-5 text-[48px] leading-[1] md:text-[88px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>{areaName}</h1>
@@ -75,11 +75,11 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
           </div>
           <div className="mt-16 flex flex-col gap-4">
             <CategoryLinks c={c} locale={locale} ja={ja} />
-            <Link href={`/${locale}/latitude/places/${c.slug}`} className="text-[11px] uppercase tracking-[0.3em]" style={{ color: INK }}>
+            <Link href={`/${locale}/latitude/places/${c.slug}`} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: INK }}>
               {ja ? `${who}の${cityName}をすべて見る` : `All of ${who}'s ${cityName}`}&nbsp;&nbsp;→
             </Link>
           </div>
-          <p className="mt-12 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="mt-12 max-w-2xl text-[13px] leading-relaxed" style={{ color: MUTE }}>
             {ja
               ? `${who}は架空の旅人です。店は、編集部が実在と営業を確かめた所だけを載せています。営業時間や休みは、行く前に公式サイトで確かめてください。`
               : `${who} is a fictional traveller. Every place here was checked by the editors to exist and be open. Please confirm hours on the official site before you go.`}

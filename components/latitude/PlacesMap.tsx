@@ -522,13 +522,13 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
     goRegion(key, slug);
   };
 
-  const backBtn = 'absolute left-3 top-3 z-[4] cursor-pointer text-[10px] uppercase tracking-[0.3em]';
+  const backBtn = 'absolute left-3 top-3 z-[4] cursor-pointer text-[12px] uppercase tracking-[0.2em]';
   const backStyle = { color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` };
 
   return (
     <div>
       {/* 国の名前の並び（押すとその国へ。狭い画面で点を押しにくい時のため）。国のページ（1国だけ）では出さない */}
-      {countries.length > 1 && <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.28em]">
+      {countries.length > 1 && <ul className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.18em]">
         {countries.map((c) => (
           <li key={c.code}>
             <button type="button" onClick={() => goTo(sel === c.code && !reg ? null : c.code)} aria-pressed={sel === c.code}
@@ -623,7 +623,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
                 )}
                 <span className="whitespace-nowrap text-[16px] md:text-[18px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO, textAlign: left ? 'right' : 'left' }}>
                   {name}
-                  <span className="ml-2 text-[11px] uppercase tracking-[0.22em]" style={{ fontFamily: 'inherit', color: MUTE }}>
+                  <span className="ml-2 text-[12px] uppercase tracking-[0.18em]" style={{ fontFamily: 'inherit', color: MUTE }}>
                     · {count}
                   </span>
                 </span>
@@ -764,24 +764,24 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
               <div className="min-w-0 flex-1">
                 {town ? (
                   <>
-                    <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+                    <p className="text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
                       {town.q.latitude}{town.q.issue ? (ja ? ' · 号のある町' : ' · with an issue') : ''}
                     </p>
                     <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{cityName(town.q)}</p>
-                    {town.q.peek && <p className="mt-1.5 line-clamp-3 text-[12px] leading-snug" style={{ color: INK }}>{ja ? town.q.peek.introJa : town.q.peek.intro}</p>}
-                    {town.q.peek && <p className="mt-1.5 text-[9px] uppercase tracking-[0.25em]" style={{ color: RED }}>{ja ? `街の案内 · ${town.q.peek.n}軒` : `City guide · ${town.q.peek.n} places`}</p>}
+                    {town.q.peek && <p className="mt-1.5 line-clamp-3 text-[13px] leading-snug" style={{ color: INK }}>{ja ? town.q.peek.introJa : town.q.peek.intro}</p>}
+                    {town.q.peek && <p className="mt-1.5 text-[11px] uppercase tracking-[0.18em]" style={{ color: RED }}>{ja ? `街の案内 · ${town.q.peek.n}軒` : `City guide · ${town.q.peek.n} places`}</p>}
                   </>
                 ) : (() => {
                   const d = hd!.d; const m = month ?? d.score.indexOf(Math.max(...d.score)) + 1; const note = d.note[String(m)];
                   return (
                     <>
-                      <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{ja ? ' · 地元の名所' : ' · hidden spot'}</p>
+                      <p className="text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{ja ? ' · 地元の名所' : ' · hidden spot'}</p>
                       <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
-                      <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: MUTE }}>
+                      <p className="mt-1.5 flex items-center gap-2 text-[12px]" style={{ color: MUTE }}>
                         <span className="tabular-nums">{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
                         <Dots n={d.score[m - 1]} />
                       </p>
-                      <p className="mt-1 line-clamp-2 text-[12px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
+                      <p className="mt-1 line-clamp-2 text-[13px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
                     </>
                   );
                 })()}
@@ -795,7 +795,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
         {ready && regG && settled && (
           <p className="pointer-events-none absolute right-3 top-3 z-[4] text-right" style={{ animation: 'lat-fade 400ms ease-out' }}>
             <span className="block text-[20px] leading-none md:text-[26px]" style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>{ja ? regG.ja : regG.en}</span>
-            <span className="mt-1 block text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
+            <span className="mt-1 block text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE, textShadow: HALO }}>
               {(() => { const n = marks.length; return ja ? `${n}の町` : `${n} ${n === 1 ? 'town' : 'towns'}`; })()}
             </span>
           </p>
@@ -816,7 +816,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
         ))}
         <style>{'@keyframes lat-fade{from{opacity:0}to{opacity:1}}@keyframes lat-pulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(3.2);opacity:0}100%{transform:scale(3.2);opacity:0}}.lat-pulse{animation:lat-pulse 2.8s ease-out infinite}@media (prefers-reduced-motion: reduce){.lat-cf{transition:none!important}.lat-pulse{animation:none;display:none}}'}</style>
       </div>
-      <p className="mt-3 text-right text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>
+      <p className="mt-3 text-right text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
         {ja ? '地図データ ' : 'Map data '}
         <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: MUTE }}>Natural Earth</a>
       </p>
@@ -824,7 +824,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
       {/* スマホ：地図の下に、地方ごとの横に流れる一覧（街のページの横スクロールと同じ作り） */}
       {listC && (
         <div className="mt-10 flex flex-col gap-10 md:hidden">
-          <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? `${listC.name.ja}の地方から` : `${listC.name.en}, by region`}</p>
+          <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? `${listC.name.ja}の地方から` : `${listC.name.en}, by region`}</p>
           {REGIONS[listC.code].map((g) => {
             const list = listC.cities.filter((q) => q.region === g.key);
             if (!list.length) return null;
@@ -835,7 +835,7 @@ export default function PlacesMap({ countries: given, locale, src, initial, worl
                   <div className="flex items-baseline gap-3">
                     <h3 className="text-[24px] leading-none" style={{ fontFamily: SERIF, fontWeight: 400 }}>{name}</h3>
                     <button type="button" onClick={() => showOnMap(listC.code, g.key, null)}
-                      className="cursor-pointer text-[10px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+                      className="cursor-pointer text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
                       {ja ? '地図' : 'Map'}
                     </button>
                   </div>
@@ -879,7 +879,7 @@ function CityPin({ q, sx, sy, left, dy = 0, locale, ja }: { q: PlaceCity; sx: nu
         <span className="whitespace-nowrap text-[15px] leading-tight group-hover:underline underline-offset-4" style={{ fontFamily: SERIF, color: INK, textShadow: HALO }}>
           {ja ? q.nameJa : q.name}
         </span>
-        <span className="whitespace-nowrap text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE, textShadow: HALO }}>
+        <span className="whitespace-nowrap text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE, textShadow: HALO }}>
           {q.latitude}{q.upcoming ? (ja ? '・これから' : ' · Next') : ''}
         </span>
       </span>
@@ -902,7 +902,7 @@ function TownCard({ q, locale, ja, on, onPick }: { q: PlaceCity; locale: string;
   const text = (
     <>
       <p className="mt-3 text-[18px] leading-snug" style={{ fontFamily: SERIF, color: on ? RED : INK }}>{ja ? q.nameJa : q.name}</p>
-      <p className="mt-1 text-[9px] uppercase tabular-nums tracking-[0.25em]" style={{ color: MUTE }}>
+      <p className="mt-1 text-[11px] uppercase tabular-nums tracking-[0.18em]" style={{ color: MUTE }}>
         {q.latitude}{q.issue ? (ja ? '・号' : ' · Issue') : ''}
       </p>
     </>
@@ -919,7 +919,7 @@ function TownCard({ q, locale, ja, on, onPick }: { q: PlaceCity; locale: string;
 function MonthBar({ month, setMonth, ja, n }: { month: number | null; setMonth: (m: number | null) => void; ja: boolean; n: number }) {
   return (
     <div className="mb-3 flex flex-col gap-2">
-      <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+      <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
         <span className="mr-2 inline-block h-2 w-2 rounded-full align-middle" style={{ background: MOSS }} />
         {ja ? `地元の名所 ${n}か所 · 訪ねる月を選ぶと、地方の数字がその月のおすすめの数に。地方を押すと点が出ます` : `${n} hidden spots · pick the month you visit: each region shows how many are at their best, and a region shows them all`}
       </p>
@@ -928,7 +928,7 @@ function MonthBar({ month, setMonth, ja, n }: { month: number | null; setMonth: 
           const on = month === m;
           return (
             <button key={m ?? 0} type="button" aria-pressed={on} onClick={() => setMonth(m)}
-              className="cursor-pointer px-2 py-1 text-[10px] uppercase tracking-[0.15em] tabular-nums"
+              className="cursor-pointer px-2 py-1 text-[12px] uppercase tracking-[0.15em] tabular-nums"
               style={{ color: on ? PAPER : INK, background: on ? MOSS : 'transparent', border: `1px solid ${on ? MOSS : LINE}` }}>
               {m === null ? (ja ? 'いつでも' : 'Any') : ja ? `${m}月` : MONTH_EN[m - 1].slice(0, 3)}
             </button>
@@ -951,9 +951,9 @@ function HiddenCard({ d, month, ja, locale, onClose }: { d: HiddenDot; month: nu
         {/* 2026-11-14 ユーザー：写真は右上に（題と月の横）。写真の無い穴場は文字だけ */}
         <div className="flex items-start gap-3">
           <div className="min-w-0 flex-1">
-            <p className="text-[9px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{d.seasonal ? (ja ? ' · 季節の名所' : ' · seasonal') : ''}</p>
+            <p className="text-[11px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{ja ? d.prefectureJa : d.prefecture}{d.seasonal ? (ja ? ' · 季節の名所' : ' · seasonal') : ''}</p>
             <p className="mt-1 text-[18px] leading-tight" style={{ fontFamily: SERIF, color: INK }}>{ja ? d.name : d.nameEn}</p>
-            <p className="mt-1.5 flex items-center gap-2 text-[11px]" style={{ color: INK }}>
+            <p className="mt-1.5 flex items-center gap-2 text-[12px]" style={{ color: INK }}>
               <span className="tabular-nums" style={{ color: MUTE }}>{ja ? `${m}月` : MONTH_EN[m - 1]}{month ? '' : ja ? '（いちばん良い月）' : ' (best month)'}</span>
               <Dots n={sc} />
             </p>
@@ -963,11 +963,11 @@ function HiddenCard({ d, month, ja, locale, onClose }: { d: HiddenDot; month: nu
             <img src={d.banner} alt="" className="h-[78px] w-[104px] shrink-0 object-cover" style={{ objectPosition: `50% ${d.bannerY ?? 50}%` }} />
           )}
         </div>
-        <p className="mt-1 text-[12px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
+        <p className="mt-1 text-[13px] leading-snug" style={{ color: INK }}>{note ? (ja ? note.ja : note.en) : ja ? d.peakNoteJa : d.peakNote}</p>
         <Strip score={d.score} at={m} />
         {/* 2026-11-14 ユーザー：スマホで押せると気づかなかったので、右下の塗りのボタンに */}
         <div className="mt-3 flex justify-end">
-          <Link href={`/${locale}/latitude/places/japan/spot/${d.slug}`} className="inline-flex min-h-[38px] items-center gap-2 px-4 text-[10px] uppercase tracking-[0.22em] transition-opacity hover:opacity-85"
+          <Link href={`/${locale}/latitude/places/japan/spot/${d.slug}`} className="inline-flex min-h-[38px] items-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] transition-opacity hover:opacity-85"
             style={{ background: MOSS, color: PAPER }}>
             {ja ? '1日のコースを見る' : 'A day there'}<span aria-hidden="true">→</span>
           </Link>

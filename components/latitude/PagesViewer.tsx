@@ -84,7 +84,7 @@ function MobileStrip({ pages, thumb, hit }: {
             </figure>
           ))}
         </div>
-        <p className="pointer-events-none absolute right-3 top-3 rounded-full px-2.5 py-1 text-[11px] tracking-[0.08em] text-white"
+        <p className="pointer-events-none absolute right-3 top-3 rounded-full px-2.5 py-1 text-[12px] tracking-[0.08em] text-white"
           style={{ background: 'rgba(20,20,18,0.55)' }}>
           {at + 1}/{n}
         </p>
@@ -153,7 +153,7 @@ function DesktopStrip({ pages, thumb, hit, paused }: {
         <button type="button" aria-label="Next page" onClick={() => step(1)} disabled={last >= pages.length}
           className={`${arrow} right-0`} style={{ color: PAPER, textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>›</button>
       </div>
-      <p className="mt-4 text-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+      <p className="mt-4 text-center text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
         {first === last ? first : `${first}–${last}`} / {pages.length}
       </p>
     </div>
@@ -202,18 +202,18 @@ function Lightbox({ slug, pages, url, at, setAt, onClose, stepPages, sample }: {
         )}
         {!(mine && showMine) && HOTSPOTS[slug]?.[at] && !sheet && <HotspotLayer key={at} h={HOTSPOTS[slug][at]} />}
       </div>
-      <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 text-[11px] uppercase tracking-[0.3em] text-white/80 hover:text-white">Close ✕</button>
-      <p className="absolute left-4 top-4 z-10 text-[10px] uppercase tracking-[0.3em] text-white/50">{at} / {pages.length}</p>
+      <button type="button" onClick={onClose} aria-label="Close" className="absolute right-4 top-4 z-10 text-[12px] uppercase tracking-[0.2em] text-white/80 hover:text-white">Close ✕</button>
+      <p className="absolute left-4 top-4 z-10 text-[12px] uppercase tracking-[0.2em] text-white/50">{at} / {pages.length}</p>
       {at > 1 && <button type="button" onClick={() => go(-1)} aria-label="Previous" className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-2xl text-white/60 hover:text-white md:block">‹</button>}
       {at < pages.length && <button type="button" onClick={() => go(1)} aria-label="Next" className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 p-3 text-2xl text-white/60 hover:text-white md:block">›</button>}
       {mine && !sheet && (
-        <button type="button" onClick={() => setShowMine(!showMine)} className="absolute bottom-6 left-4 z-10 rounded-full border border-white/40 px-4 py-2 text-[11px] uppercase tracking-[0.25em] text-white">
+        <button type="button" onClick={() => setShowMine(!showMine)} className="absolute bottom-6 left-4 z-10 rounded-full border border-white/40 px-4 py-2 text-[12px] uppercase tracking-[0.18em] text-white">
           {showMine ? 'See the original' : 'See you'}
         </button>
       )}
       {step && !sheet && (
         <button type="button" onClick={() => setSheet(true)}
-          className={`absolute bottom-6 right-4 z-10 rounded-full px-5 py-3 text-[11px] uppercase tracking-[0.25em] transition-opacity duration-700 ${cta ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute bottom-6 right-4 z-10 rounded-full px-5 py-3 text-[12px] uppercase tracking-[0.18em] transition-opacity duration-700 ${cta ? 'opacity-100' : 'opacity-0'}`}
           style={{ background: PAPER, color: INK }}>
           {mine ? 'Try again' : 'Step into this look'} →
         </button>
@@ -273,14 +273,14 @@ function StepSheet({ slug, step, sample, onClose, onDone }: {
     <div className="absolute inset-x-0 bottom-0 z-20 max-h-[78svh] overflow-y-auto rounded-t-2xl p-6 md:inset-y-0 md:left-auto md:right-0 md:max-h-none md:w-[420px] md:rounded-none md:p-8"
       style={{ background: PAPER, color: INK }}>
       <div className="flex items-start justify-between">
-        <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>Step into this look</p>
-        <button type="button" onClick={onClose} aria-label="Close" className="text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>✕</button>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>Step into this look</p>
+        <button type="button" onClick={onClose} aria-label="Close" className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>✕</button>
       </div>
       <h3 className="mt-3 text-[26px] leading-tight" style={{ fontFamily: SERIF, fontWeight: 400 }}>Be the one standing here.</h3>
-      <p className="mt-2 text-[13px] leading-relaxed" style={{ color: MUTE }}>The same place, the same light, these clothes — with your face. One photograph, made for you.</p>
+      <p className="mt-2 text-[14px] leading-relaxed" style={{ color: MUTE }}>The same place, the same light, these clothes — with your face. One photograph, made for you.</p>
       {sample && (
         <div className="mt-6">
-          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>Example — RIN</p>
+          <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>Example — RIN</p>
           <div className="mt-2 flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={sample.face} alt="Example face" className="h-20 w-20 object-cover" />
@@ -298,17 +298,17 @@ function StepSheet({ slug, step, sample, onClose, onDone }: {
         ) : (
           <span className="flex h-16 w-16 items-center justify-center text-2xl" style={{ background: 'rgba(30,29,27,0.06)', color: MUTE }}>+</span>
         )}
-        <span className="text-[13px]">{face ? 'Change photo' : 'Add a clear photo of your face'}</span>
+        <span className="text-[14px]">{face ? 'Change photo' : 'Add a clear photo of your face'}</span>
         <input type="file" accept="image/*" className="hidden" onChange={async (e) => { const f = e.target.files?.[0]; if (f) setFace(await fileToDataUrl(f)); }} />
       </label>
-      <p className="mt-2 text-[11px] leading-relaxed" style={{ color: MUTE }}>Your photo is used only to make this one image. We don&apos;t keep it.</p>
+      <p className="mt-2 text-[13px] leading-relaxed" style={{ color: MUTE }}>Your photo is used only to make this one image. We don&apos;t keep it.</p>
       <button type="button" disabled={!face || busy || left === 0} onClick={run}
-        className="mt-5 w-full py-4 text-[12px] uppercase tracking-[0.3em] disabled:opacity-40" style={{ background: INK, color: PAPER }}>
+        className="mt-5 w-full py-4 text-[12px] uppercase tracking-[0.2em] disabled:opacity-40" style={{ background: INK, color: PAPER }}>
         {busy ? 'Developing…' : 'Step in'}
       </button>
-      {busy && <p className="mt-2 text-center text-[11px]" style={{ color: MUTE }}>About a minute.</p>}
-      {!busy && left !== null && <p className="mt-2 text-center text-[11px]" style={{ color: MUTE }}>Three a day · {left} left today</p>}
-      {err && <p className="mt-2 text-center text-[12px]" style={{ color: '#8a2d22' }}>{err}</p>}
+      {busy && <p className="mt-2 text-center text-[13px]" style={{ color: MUTE }}>About a minute.</p>}
+      {!busy && left !== null && <p className="mt-2 text-center text-[13px]" style={{ color: MUTE }}>Three a day · {left} left today</p>}
+      {err && <p className="mt-2 text-center text-[13px]" style={{ color: '#8a2d22' }}>{err}</p>}
     </div>
   );
 }

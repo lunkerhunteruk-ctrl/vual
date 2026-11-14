@@ -24,7 +24,7 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
     <section className="px-4 pb-20 md:px-8 md:pb-28">
       <div className="mx-auto max-w-6xl">
         <SectionLabel>{ja ? `${w.seasonJa}の${city}で、何を着るか` : `What to wear in ${city}, ${w.season.toLowerCase()}`}</SectionLabel>
-        <ul className="mb-10 flex max-w-2xl flex-col gap-1 text-[14px] leading-relaxed" style={{ color: MUTE }}>
+        <ul className="mb-10 flex max-w-2xl flex-col gap-1 text-[15px] leading-relaxed" style={{ color: MUTE }}>
           {w.facts.map((f) => <li key={f.en}>{ja ? f.ja : f.en}</li>)}
         </ul>
         {/* スマホでは横に流す（縦長の写真を3枚縦に積むと長すぎる）。広い画面では3列 */}
@@ -36,9 +36,9 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
               <img src={latAsset(`places/${c.slug}/${l.image}`)} alt={ja ? l.itemsJa : l.items} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '9 / 16' }} />
               <figcaption className="flex flex-col gap-2">
                 <span className="lat-label tabular-nums" style={{ color: MUTE }}>{l.time}</span>
-                <span className="text-[14px] leading-relaxed">{ja ? l.itemsJa : l.items}</span>
+                <span className="text-[15px] leading-relaxed">{ja ? l.itemsJa : l.items}</span>
                 <span className="text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
-                  <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
+                  <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{who}</span>
                   {ja ? l.noteJa : l.note}
                 </span>
               </figcaption>
@@ -46,7 +46,7 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
           ))}
         </div>
         {/* 実在ブランドの服で撮った号（vualOriginals: false）は出さない。ブランド名も書かない */}
-        {w.vualOriginals !== false && <p className="mt-8 text-[12px]" style={{ color: MUTE }}>{ja ? '服はすべて VUAL のオリジナルです。' : 'All clothes are VUAL originals.'}</p>}
+        {w.vualOriginals !== false && <p className="mt-8 text-[13px]" style={{ color: MUTE }}>{ja ? '服はすべて VUAL のオリジナルです。' : 'All clothes are VUAL originals.'}</p>}
       </div>
     </section>
   );
@@ -86,17 +86,17 @@ export function CityRoute({ c, ja, who, withMap = false, bare = false }: { c: La
                     <span className="text-[44px] leading-none tabular-nums" style={{ fontFamily: SERIF, color: MUTE }}>{r.time}</span>
                   </div>
                 )}
-                <p className="mt-4 flex items-baseline justify-between gap-4 text-[11px] uppercase tabular-nums tracking-[0.3em]" style={{ color: MUTE }}>
+                <p className="mt-4 flex items-baseline justify-between gap-4 text-[12px] uppercase tabular-nums tracking-[0.2em]" style={{ color: MUTE }}>
                   <span>
                     {num > 0 && <span className="mr-2 text-[17px] normal-case tracking-normal" style={{ fontFamily: SERIF, color: INK }}>{num}</span>}
                     {r.time}
                   </span>
-                  {num > 0 && <span className="text-[10px] tracking-[0.25em]"><ShowRouteStop n={num} label={ja ? '地図で見る ↑' : 'On the map ↑'} className="underline-offset-4 hover:underline" /></span>}
+                  {num > 0 && <span className="text-[12px] tracking-[0.18em]"><ShowRouteStop n={num} label={ja ? '地図で見る ↑' : 'On the map ↑'} className="underline-offset-4 hover:underline" /></span>}
                 </p>
                 <p className="mt-1 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{ja ? r.placeJa : r.place}</p>
                 <p className="mt-1 text-[15px] leading-relaxed">{ja ? r.whatJa : r.what}</p>
                 {near.length > 0 && (
-                  <p className="mt-3 text-[12px] leading-relaxed" style={{ color: MUTE }}>
+                  <p className="mt-3 text-[13px] leading-relaxed" style={{ color: MUTE }}>
                     {ja ? `近くの、${who}のおすすめ：` : `Nearby, ${who} would go to: `}
                     {near.map((x, k) => (
                       <span key={x.name}>
@@ -164,7 +164,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
             ? (ja ? `${who}のルートをなぞる——${city}の1日を見て、同じ道を歩く` : `Follow ${who}'s route — watch the day in ${city}, then walk it`)
             : (ja ? `${who}の${city}の1日を見て、同じ道を歩く` : `Watch ${who}'s day in ${city}, then walk it`)}
         </SectionLabel>
-        <p className="-mt-4 mb-8 max-w-xl text-[14px] leading-relaxed" style={{ color: MUTE }}>
+        <p className="-mt-4 mb-8 max-w-xl text-[15px] leading-relaxed" style={{ color: MUTE }}>
           {ja
             ? `先に映像で1日を見て、地図で同じ順をたどれます。最後は Google マップで、そのまま歩く道案内に。`
             : `See the day first, then follow the same order on the map, and open it as walking directions in Google Maps.`}
@@ -176,7 +176,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
               <div className="relative mx-auto w-[72vw] max-w-[320px] overflow-hidden bg-black md:w-full md:max-w-none" style={{ aspectRatio: '9 / 16' }}>
                 <ReelPlayer src={reel.src} poster={reel.poster} title={reel.title} />
               </div>
-              <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em] md:text-left" style={{ color: MUTE }}>
+              <p className="mt-3 text-center text-[12px] uppercase tracking-[0.2em] md:text-left" style={{ color: MUTE }}>
                 {ja ? '押すと音が出ます' : 'Tap for sound'}
                 {issue && (
                   <>
@@ -198,12 +198,12 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
           <div>
             <p className="lat-label mb-3" style={{ color: MUTE }}>{ja ? '③ 歩く' : '3 · Walk it'}</p>
             <a href={googleDirectionsUrl(c)} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[rgba(30,29,27,0.06)]"
+              className="inline-flex items-center gap-3 px-5 py-3 text-[12px] uppercase tracking-[0.2em] transition-colors hover:bg-[rgba(30,29,27,0.06)]"
               style={{ border: `1px solid ${INK}`, color: INK }}>
               {ja ? `Google マップで、この道を開く` : 'Open this walk in Google Maps'}&nbsp;↗
             </a>
           </div>
-          <p className="max-w-md text-[11px] leading-relaxed md:pt-7 md:text-right" style={{ color: MUTE }}>
+          <p className="max-w-md text-[13px] leading-relaxed md:pt-7 md:text-right" style={{ color: MUTE }}>
             {walk && (
               <span className="mb-1 block tabular-nums" style={{ color: INK }}>
                 {ja ? `歩くと約${km(walk.distance)}・${mins(walk.duration, true)}（寄り道なし）` : `About ${km(walk.distance)} on foot, ${mins(walk.duration, false)} without stops`}

@@ -161,7 +161,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
               <img src={latAsset(b.file)} alt={ja ? b.altJa : b.alt} width={b.w} height={b.h} fetchPriority="high"
                 className="absolute inset-0 block h-full w-full object-cover" style={{ objectPosition: b.pos, height: '100%' }} />
             </span>
-            <figcaption className="mt-2 text-[11px] leading-relaxed" style={{ color: MUTE }}>
+            <figcaption className="mt-2 text-[13px] leading-relaxed" style={{ color: MUTE }}>
               {ja ? b.altJa : b.alt}
               <span className="mx-2">·</span>
               {ja ? '写真：' : 'Photo: '}
@@ -220,7 +220,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
               {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
                 <li key={h.slug} className="max-w-2xl">
                   <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
-                  <p className="mt-1 text-[14px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
+                  <p className="mt-1 text-[15px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
                 </li>
               ))}
             </ul>
@@ -253,7 +253,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             </span>
           ))}
         </div>
-        <div className="mx-auto mt-5 max-w-6xl px-4 text-[11px] uppercase tracking-[0.3em] md:px-8">
+        <div className="mx-auto mt-5 max-w-6xl px-4 text-[12px] uppercase tracking-[0.2em] md:px-8">
           {p && (
             <Link href={`/${locale}/latitude/people/${p.slug}`} style={{ color: INK }}>
               {ja ? `${who}の${c.nameJa}の1日` : `${who}'s day in ${c.name}`}&nbsp;&nbsp;→
@@ -268,7 +268,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
           <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:items-end md:gap-12">
             <div className="mb-5 md:mb-0">
               <SectionLabel>{ja ? c.inn.titleJa : c.inn.title}</SectionLabel>
-              <p className="-mt-4 max-w-sm text-[14px] leading-relaxed" style={{ color: MUTE }}>{ja ? c.inn.noteJa : c.inn.note}</p>
+              <p className="-mt-4 max-w-sm text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? c.inn.noteJa : c.inn.note}</p>
             </div>
             <div className="w-full max-w-[360px] overflow-hidden" style={{ aspectRatio: '4 / 5' }}>
               <RoomCam cam={c.inn.cam} reaction={null} fallback={ja ? '戸は開いています。' : 'The door is open.'} />
@@ -293,7 +293,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             <p className="lat-label" style={{ color: MUTE }}>{ja ? '地区から' : 'By area'}</p>
             <AreaLinks c={c} locale={locale} ja={ja} />
           </div>
-          <p className="mt-16 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="mt-16 max-w-2xl text-[13px] leading-relaxed" style={{ color: MUTE }}>
             {ja
               ? `${who}は架空の旅人です。店は、編集部が実在と営業を確かめた所だけを載せています（${checked}確認）。営業時間や休みは、行く前に公式サイトで確かめてください。広告の店には印を付けます。`
               : `${who} is a fictional traveller. Every place here was checked by the editors to exist and be open (checked ${checked}). Please confirm hours on the official site before you go. Paid listings are always marked.`}
@@ -311,9 +311,9 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                 <li key={x.id} id={x.id} className="scroll-mt-24">
                   <p className="lat-label" style={{ color: MUTE }}>{x.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{x.area}</p>
                   <p className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{x.name}</p>
-                  <p className="mt-1 text-[14px] leading-relaxed">{x.what}</p>
-                  {x.notice && <p className="mt-2 text-[12px] leading-relaxed" style={{ color: '#7a241e' }}>{x.notice}</p>}
-                  <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[10px] uppercase tracking-[0.3em]">
+                  <p className="mt-1 text-[15px] leading-relaxed">{x.what}</p>
+                  {x.notice && <p className="mt-2 text-[13px] leading-relaxed" style={{ color: '#7a241e' }}>{x.notice}</p>}
+                  <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[12px] uppercase tracking-[0.2em]">
                     <a href={x.site} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? '公式サイト' : 'Website'}</a>
                     <a href={x.mapUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? 'Google マップ' : 'Google Maps'}</a>
                     <ShowOnMap id={x.id} label={ja ? '地図で見る ↑' : 'On the map ↑'} />
@@ -321,7 +321,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
                 </li>
               ))}
             </ul>
-            <p className="mt-10 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
+            <p className="mt-10 max-w-2xl text-[13px] leading-relaxed" style={{ color: MUTE }}>
               {ja
                 ? `見る所は、${who}のおすすめの店とは別の、街の目印です。開いていることを公式で確かめています（${(c.sights || []).map((x) => x.verifiedAt).sort().at(-1)}確認）。時間や休みは、行く前に公式サイトで。`
                 : `These are landmarks, not ${who}'s picks. Each was checked to be open on its official site (checked ${(c.sights || []).map((x) => x.verifiedAt).sort().at(-1)}). Please confirm hours before you go.`}

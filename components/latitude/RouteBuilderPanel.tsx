@@ -51,14 +51,14 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
   const gmaps = stops.length >= 2 ? googleWalkUrl(stops.map((s) => s.gq)) : null;
   const minutes = (m: number) => mins((m / WALK_M_PER_MIN) * 60, ja);
 
-  const btn = 'inline-flex min-h-[42px] cursor-pointer items-center justify-center gap-2 px-4 text-[11px] uppercase tracking-[0.22em] transition-colors disabled:cursor-default disabled:opacity-35';
+  const btn = 'inline-flex min-h-[42px] cursor-pointer items-center justify-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] transition-colors disabled:cursor-default disabled:opacity-35';
 
   return (
     <div className="mt-4 flex flex-col gap-5" style={{ color: INK }}>
       {/* 選んだ順（番号・名前・外す）と、区間の距離 */}
       {stops.length === 0 ? (
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <p className="text-[14px] leading-relaxed" style={{ color: MUTE }}>
+          <p className="text-[15px] leading-relaxed" style={{ color: MUTE }}>
             {ja ? `まだ選んでいません。地図の丸を押すか、下の「名前から選ぶ」から。最大${MAX_STOPS}か所まで。` : `Nothing chosen yet. Tap the dots, or pick by name below. Up to ${MAX_STOPS} stops.`}
           </p>
           {rinIds.length > 1 && (
@@ -72,14 +72,14 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
           {stops.map((s, k) => (
             <li key={s.id} className="flex items-center gap-1">
               {k > 0 && (
-                <span className="px-1 text-[10px] tabular-nums tracking-[0.12em]" style={{ color: legs[k - 1]?.estimate ? '#a0645c' : MUTE }}
+                <span className="px-1 text-[12px] tabular-nums tracking-[0.12em]" style={{ color: legs[k - 1]?.estimate ? '#a0645c' : MUTE }}
                   title={legs[k - 1]?.estimate ? (ja ? 'まっすぐの線の目安' : 'straight-line estimate') : undefined}>
                   {legs[k - 1] ? `${legs[k - 1].estimate ? '≈' : ''}${legs[k - 1].distance < 1000 ? `${Math.round(legs[k - 1].distance / 10) * 10} m` : km(legs[k - 1].distance)}` : '…'} →
                 </span>
               )}
               <span className="flex items-center gap-1.5 py-1 pl-1.5 pr-0.5" style={{ border: `1px solid ${LINE}`, background: 'rgba(255,255,255,0.35)' }}>
                 <span className="flex shrink-0 items-center justify-center text-[12px] leading-none tabular-nums" style={{ ...markStyle(s.kind, 20, s.color, true), color: PAPER, fontFamily: SERIF }}>{k + 1}</span>
-                <span className="text-[13px]" style={{ fontFamily: SERIF }}>{s.name}</span>
+                <span className="text-[14px]" style={{ fontFamily: SERIF }}>{s.name}</span>
                 <button type="button" onClick={() => onToggle(s.id)} aria-label={ja ? `${s.name}を外す` : `Remove ${s.name}`}
                   className="flex h-[30px] w-[28px] cursor-pointer items-center justify-center text-[16px] leading-none" style={{ color: MUTE }}>×</button>
               </span>
@@ -90,7 +90,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
 
       {/* 合計 */}
       {stops.length >= 2 && (
-        <p className="text-[13px] leading-relaxed tabular-nums" role="status">
+        <p className="text-[14px] leading-relaxed tabular-nums" role="status">
           {ready
             ? (ja
               ? <>{stops.length}か所・歩いて約{km(total)}・{minutes(total)}<span style={{ color: MUTE }}>（分速80m・寄り道なし{estimate ? '・≈ の区間はまっすぐの線の目安' : ''}）</span></>
@@ -111,7 +111,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
           </button>
         </div>
         {saving >= SAVE_MIN && !sameOrder && (
-          <p className="text-[12px] leading-snug" style={{ color: '#7a241e' }}>
+          <p className="text-[13px] leading-snug" style={{ color: '#7a241e' }}>
             {ja ? `並べ替えると約${km(saving)}短くなります（最初の1か所はそのまま）` : `Reordering saves about ${km(saving)} (the first stop stays first)`}
           </p>
         )}
@@ -123,7 +123,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
         </a>
       </div>
       {stops.length > 5 && (
-        <p className="-mt-2 text-[11px] leading-relaxed" style={{ color: MUTE }}>
+        <p className="-mt-2 text-[13px] leading-relaxed" style={{ color: MUTE }}>
           {ja ? 'スマホのブラウザで開くと、途中の地点が減ることがあります。Google マップのアプリで開くと、全部の地点を通ります。' : 'In a phone browser Google Maps may drop some middle stops; the Google Maps app keeps them all.'}
         </p>
       )}
@@ -131,7 +131,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
       {/* 名前から選ぶ（種類のスイッチで出している物だけ） */}
       <div>
         <button type="button" onClick={() => setListOpen((v) => !v)} aria-expanded={listOpen}
-          className="min-h-[36px] cursor-pointer text-[10px] uppercase tracking-[0.3em] underline underline-offset-4" style={{ color: INK }}>
+          className="min-h-[36px] cursor-pointer text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
           {ja ? `名前から選ぶ（${visible.length}）` : `Pick by name (${visible.length})`} {listOpen ? '▴' : '▾'}
         </button>
         {listOpen && (
@@ -142,10 +142,10 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
               return (
                 <li key={p.id}>
                   <button type="button" aria-pressed={k >= 0} onClick={() => onToggle(p.id)}
-                    className="flex min-h-[36px] cursor-pointer items-center gap-2 px-3 text-[13px]"
+                    className="flex min-h-[36px] cursor-pointer items-center gap-2 px-3 text-[14px]"
                     style={{ border: `1px solid ${k >= 0 ? INK : LINE}`, opacity: dim ? 0.4 : 1, fontFamily: SERIF }}>
                     {k >= 0
-                      ? <span className="flex items-center justify-center text-[11px] leading-none" style={{ ...markStyle(p.kind, 18, p.color, true), color: PAPER }}>{k + 1}</span>
+                      ? <span className="flex items-center justify-center text-[12px] leading-none" style={{ ...markStyle(p.kind, 18, p.color, true), color: PAPER }}>{k + 1}</span>
                       : <span className="block shrink-0" style={markStyle(p.kind, 9, p.color)} />}
                     {p.name}
                   </button>

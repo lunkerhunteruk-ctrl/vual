@@ -38,7 +38,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
             <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="text-[22px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
               {label}
             </Link>
-            {sec.about && <p className="mt-3 max-w-xs text-[13px] leading-relaxed" style={{ color: MUTE }}>{ja ? sec.about.ja : sec.about.en}</p>}
+            {sec.about && <p className="mt-3 max-w-xs text-[14px] leading-relaxed" style={{ color: MUTE }}>{ja ? sec.about.ja : sec.about.en}</p>}
           </>
         ) : null /* 街×種類のページでは、題が同じ言葉なので見出しを出さない */}
         {im && (
@@ -55,16 +55,16 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h3 className="text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>
                 {ja ? x.name : x.nameEn}
-                {x.ad && <span className="ml-3 align-middle text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '広告' : 'Ad'}</span>}
+                {x.ad && <span className="ml-3 align-middle text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '広告' : 'Ad'}</span>}
               </h3>
               <p className="lat-label" style={{ color: MUTE }}>{ja ? x.area : x.areaEn}</p>
             </div>
-            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
-            <p className="mt-2 max-w-2xl text-[15px] leading-relaxed" style={{ fontFamily: SERIF }}>
-              <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
+            <p className="mt-2 max-w-2xl text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
+            <p className="mt-2 max-w-2xl text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
+              <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
-            <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-[10px] uppercase tracking-[0.3em]">
+            <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-[12px] uppercase tracking-[0.2em]">
               {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
               <TrackLink href={mapUrl(x.name, x.address)} label={ja ? '地図' : 'Map'} shop={x.name} kind="map" person={c.person} />
               {canAsk && <AskAboutButton text={ja ? `${x.name}について教えて` : `Tell me about ${x.nameEn}`} label={ja ? `${who}に聞く` : `Ask ${who}`} shop={x.name} person={c.person} />}
@@ -102,7 +102,7 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
 export function CategoryLinks({ c, locale, ja, current }: { c: LatitudeCity; locale: string; ja: boolean; current?: string }) {
   const secs = sectionsOf(c);
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.3em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
       {secs.map((s) => (
         <Link key={s.key} href={`/${locale}/latitude/places/${c.slug}/${s.key}`} className="underline-offset-4 hover:underline"
           style={{ color: s.key === current ? MUTE : INK }} aria-current={s.key === current ? 'page' : undefined}>
@@ -118,7 +118,7 @@ export function AreaLinks({ c, locale, ja }: { c: LatitudeCity; locale: string; 
   const areas = areasOf(c);
   if (!areas.length) return null;
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.3em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
       {areas.map((a) => (
         <Link key={a.slug} href={`/${locale}/latitude/places/${c.slug}/area/${a.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
           {ja ? a.name : a.nameEn}
@@ -145,9 +145,9 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
         <span className="block h-[10px] w-[10px] shrink-0 rounded-full" style={{ background: CATEGORY_COLOR[sec.category] ?? INK }} aria-hidden="true" />
         {sec.kind === 'industry' && <span className="sr-only">{ja ? `${c.nameJa}ならでは：` : `Made in ${c.name}: `}</span>}
         {label}
-        <span className="text-[10px] uppercase tabular-nums tracking-[0.3em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{sec.items.length}</span>
+        <span className="text-[12px] uppercase tabular-nums tracking-[0.2em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{sec.items.length}</span>
       </h3>
-      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="pl-[22px] text-[10px] uppercase tracking-[0.3em] underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="pl-[22px] text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
         {ja ? `${label}をすべて見る →` : `All ${label.toLowerCase()} →`}
       </Link>
     </div>
@@ -168,9 +168,9 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
             )}
             <div className="flex flex-1 flex-col justify-end p-5">
               <p className="lat-label" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
-              <p className="mt-3 text-[14px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
+              <p className="mt-3 text-[15px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
               {ph && (
-                <p className="mt-4 text-[10px] leading-relaxed" style={{ color: MUTE }}>
+                <p className="mt-4 text-[12px] leading-relaxed" style={{ color: MUTE }}>
                   {ja ? ph.altJa : ph.alt}
                   <span className="mx-1.5">·</span>
                   {ja ? '写真：' : 'Photo: '}
@@ -192,12 +192,12 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
               {x.ad && <span className="ml-3">{ja ? '広告' : 'Ad'}</span>}
             </p>
             <h4 className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>{ja ? x.name : x.nameEn}</h4>
-            <p className="mt-3 text-[14px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
-            <p className="mt-3 text-[15px] leading-relaxed" style={{ fontFamily: SERIF }}>
-              <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
+            <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
+            <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
+              <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
-            <p className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5 text-[10px] uppercase tracking-[0.3em]">
+            <p className="mt-auto flex flex-wrap gap-x-5 gap-y-2 pt-5 text-[12px] uppercase tracking-[0.2em]">
               {mapIds.has(placeAnchor(x)) && <ShowOnMap id={placeAnchor(x)} label={ja ? '地図で見る' : 'On the map'} />}
               {x.url && <TrackLink href={x.url} label={ja ? '公式サイト' : 'Website'} shop={x.name} kind="site" person={c.person} />}
               <TrackLink href={mapUrl(x.name, x.address)} label={ja ? 'Google マップ' : 'Google Maps'} shop={x.name} kind="map" person={c.person} />

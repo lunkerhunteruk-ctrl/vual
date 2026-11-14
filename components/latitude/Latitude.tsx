@@ -17,10 +17,10 @@ const STREAM_HOST = 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com';
 const NOSCROLL_CSS = '.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}';
 
 function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolean }) {
-  const item = 'relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap text-[10px] uppercase tracking-[0.22em] transition-colors duration-300';
+  const item = 'relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap text-[11px] uppercase tracking-[0.18em] transition-colors duration-300';
   return (
     <div role="group" aria-label="People / Places"
-      className="relative grid h-[26px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px]"
+      className="relative grid h-[34px] w-[184px] shrink-0 grid-cols-2 rounded-full p-[2px]"
       style={{ background: 'rgba(30,29,27,0.06)', boxShadow: 'inset 0 1px 2px rgba(30,29,27,0.10), inset 0 0 0 1px rgba(30,29,27,0.07)' }}>
       <span aria-hidden className="absolute bottom-[2px] top-[2px] w-[calc(50%-2px)] rounded-full transition-transform duration-500"
         style={{
@@ -43,7 +43,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
     >
       <style>{NOSCROLL_CSS}</style>
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 md:px-8">
-      <Link href={`/${locale}/latitude`} className="shrink-0 py-3 text-[11px] uppercase tracking-[0.35em]" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude`} className="shrink-0 py-3 text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>
         Latitude
       </Link>
       {/* 2026-11-11 ユーザー：人と場所を、横長のカプセルのトグルに（左＝People が既定・右＝Places）。今どちらのモードかが分かるように。
@@ -58,7 +58,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
               key={i.slug}
               href={`/${locale}/latitude/${i.slug}`}
               aria-current={on ? 'page' : undefined}
-              className="shrink-0 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] transition-opacity hover:opacity-100"
+              className="shrink-0 whitespace-nowrap text-[12px] uppercase tracking-[0.18em] transition-opacity hover:opacity-100"
               style={{ color: on ? INK : MUTE, borderBottom: on ? `1px solid ${INK}` : '1px solid transparent' }}
             >
               {/* 2026-10-30 号の番号の代わりに人の名前 */}
@@ -68,7 +68,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
         })}
       </FadeScroller>
       {/* 言語の切り替え：同じページの日本語版・英語版へ */}
-      <div className="flex shrink-0 items-center gap-2 py-3 text-[10px] uppercase tracking-[0.25em]">
+      <div className="flex shrink-0 items-center gap-2 py-3 text-[12px] uppercase tracking-[0.18em]">
         {(['ja', 'en'] as const).map((l, n) => (
           <span key={l} className="flex items-center gap-2">
             {n > 0 && <span style={{ color: MUTE }}>/</span>}
@@ -242,7 +242,7 @@ export function NewsletterSignup({ locale }: { locale: string }) {
         href={ja ? NOTE_URL_JA : NEWSLETTER_URL}
         target="_blank"
         rel="noopener"
-        className="mt-5 inline-block border px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
+        className="mt-5 inline-block border px-5 py-3 text-[12px] uppercase tracking-[0.2em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
         style={{ borderColor: INK, color: INK }}
       >
         {ja ? 'note で読む' : 'Subscribe'}&nbsp;&nbsp;→

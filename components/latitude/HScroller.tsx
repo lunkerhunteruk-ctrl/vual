@@ -42,7 +42,7 @@ export default function HScroller({ children, count, label, ja, head }: { childr
   const arrow = 'hidden h-8 w-8 items-center justify-center border text-[14px] transition-opacity disabled:opacity-25 [@media(hover:hover)]:inline-flex';
   const controls = count > 1 && (
     <div className="flex shrink-0 items-center gap-3">
-      <p className="text-[10px] tabular-nums tracking-[0.3em]" style={{ color: MUTE }} aria-live="polite">
+      <p className="text-[12px] tabular-nums tracking-[0.2em]" style={{ color: MUTE }} aria-live="polite">
         {at + 1} / {count}
       </p>
       <button type="button" className={arrow} style={{ borderColor: 'rgba(30,29,27,0.2)', color: INK }} onClick={() => go(-1)} disabled={edge.start} aria-label={ja ? '前へ' : 'Previous'}>←</button>

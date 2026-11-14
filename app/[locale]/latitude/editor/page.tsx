@@ -130,22 +130,22 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
       <IssueStrip locale={locale} />
 
       <header className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:px-8 md:pb-16 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}</p>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}</p>
         <h1 className="mt-5 text-[52px] leading-[1.05] md:text-[96px]" style={{ fontFamily: ja ? MINCHO : SERIF, fontWeight: ja ? 600 : 400, letterSpacing: 0, color: INK }}>
           {t.name}
         </h1>
-        {ja && <p className="mt-3 text-[13px] tracking-[0.3em]" style={{ color: MUTE }}>Sachio Kawasaki</p>}
-        <p className="mt-6 text-[13px] uppercase tracking-[0.35em]">{t.role}</p>
+        {ja && <p className="mt-3 text-[14px] tracking-[0.2em]" style={{ color: MUTE }}>Sachio Kawasaki</p>}
+        <p className="mt-6 text-[14px] uppercase tracking-[0.2em]">{t.role}</p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/lp/founder-bw.jpeg" alt={t.name} width={160} height={160} className="mt-10 h-28 w-28 rounded-full object-cover md:h-36 md:w-36" style={{ filter: 'grayscale(1)' }} />
       </header>
 
       <section className="px-4 pb-16 md:px-8 md:pb-24">
         <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-          <dl className="mb-10 flex flex-col gap-4 text-[13px] md:mb-0">
+          <dl className="mb-10 flex flex-col gap-4 text-[14px] md:mb-0">
             {t.rows.map(([k, v]) => (
               <div key={k}>
-                <dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{k}</dt>
+                <dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{k}</dt>
                 <dd className="mt-1">{v}</dd>
               </div>
             ))}
@@ -171,7 +171,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
           <dl className="flex max-w-2xl flex-col gap-5">
             {t.mems.map(([k, v]) => (
               <div key={k}>
-                <dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{k}</dt>
+                <dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{k}</dt>
                 <dd className="mt-1 text-[17px] leading-relaxed" style={{ fontFamily: ja ? MINCHO : SERIF }}>{v}</dd>
               </div>
             ))}
@@ -183,7 +183,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
         <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
           <div>
             <SectionLabel>{t.notesTitle}</SectionLabel>
-            <p className="mb-8 max-w-xs text-[14px] leading-relaxed" style={{ color: MUTE }}>{t.notesLead}</p>
+            <p className="mb-8 max-w-xs text-[15px] leading-relaxed" style={{ color: MUTE }}>{t.notesLead}</p>
           </div>
           <ul className="flex max-w-2xl flex-col gap-3 text-[15px]">
             {issues.map((o) => {
@@ -191,7 +191,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
               return (
                 <li key={o.slug}>
                   <Link href={`/${locale}/latitude/${o.slug}/notes`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
-                    <span className="mr-3 text-[11px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{o.latitude} {o.city}</span>
+                    <span className="mr-3 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{o.latitude} {o.city}</span>
                     {(ja ? n.ja : n.en).title}
                   </Link>
                 </li>

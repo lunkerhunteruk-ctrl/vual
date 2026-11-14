@@ -11,7 +11,7 @@ import { latAsset } from '@/lib/latitude-assets';
 export function AskAboutButton({ text, label, shop, person }: { text: string; label: string; shop: string; person: string }) {
   return (
     <button type="button" onClick={() => { track('ask_shop', { shop, person }); window.dispatchEvent(new CustomEvent('latitude:ask', { detail: text })); }}
-      className="text-[10px] uppercase tracking-[0.3em] underline-offset-4 hover:underline" style={{ color: INK }}>
+      className="text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
       {label}
     </button>
   );
@@ -41,7 +41,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
           style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: PAPER }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={latAsset(`people/${slug}.jpg`)} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
-          <span className="text-[11px] uppercase tracking-[0.3em]">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
+          <span className="text-[12px] uppercase tracking-[0.2em]">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
         </button>
       )}
       {mounted && (
@@ -54,10 +54,10 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
               <img src={latAsset(`people/${slug}.jpg`)} alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
               <div>
                 <p className="text-[22px] leading-none" style={{ fontFamily: SERIF }}>{name}</p>
-                <p className="mt-1 text-[10px] leading-snug" style={{ color: MUTE }}>{ja ? `${name}はAIです。文字は30日だけ残します。` : `${name} is an AI. Text is kept for 30 days.`}</p>
+                <p className="mt-1 text-[12px] leading-snug" style={{ color: MUTE }}>{ja ? `${name}はAIです。文字は30日だけ残します。` : `${name} is an AI. Text is kept for 30 days.`}</p>
               </div>
             </div>
-            <button onClick={() => setOpen(false)} className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
+            <button onClick={() => setOpen(false)} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
           </div>
           <RoomChat locale={locale} slug={slug} name={name} callSeconds={callSeconds} context={context} ask={ask} compact />
         </div>

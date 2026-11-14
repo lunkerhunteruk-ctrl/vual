@@ -199,12 +199,12 @@ export function PanoPage({ pano, label, eager }: { pano: Pano; label: string; ea
       <img src={pano.overlay} alt="" aria-hidden="true" draggable={false} className="pointer-events-none absolute inset-0 h-full w-full select-none" />
       {motion === 'ask' && (
         <button type="button" onClick={ask}
-          className="absolute bottom-[19%] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-white"
+          className="absolute bottom-[19%] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-2 text-[12px] uppercase tracking-[0.18em] text-white"
           style={{ background: 'rgba(20,20,18,0.55)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}>
           ◐ Turn to look around
         </button>
       )}
-      <p className={`pointer-events-none absolute bottom-[19%] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-white transition-opacity duration-700 ${!hintDone && inView && motion === 'on' ? 'opacity-100' : 'opacity-0'}`}
+      <p className={`pointer-events-none absolute bottom-[19%] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-2 text-[12px] uppercase tracking-[0.18em] text-white transition-opacity duration-700 ${!hintDone && inView && motion === 'on' ? 'opacity-100' : 'opacity-0'}`}
         style={{ background: 'rgba(20,20,18,0.45)' }}>
         ← Turn your phone →
       </p>

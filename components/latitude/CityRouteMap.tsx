@@ -352,9 +352,9 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
               aria-label={`${s.n}. ${s.place} · ${s.time}`} aria-pressed={i === cur && !!focus}>
               <span className="flex items-baseline gap-1.5">
                 <span className={narrow ? 'text-[16px]' : 'text-[20px]'} style={{ fontFamily: SERIF }}>{s.n}</span>
-                <span className={ja ? (narrow ? 'text-[11px] tracking-[0.06em]' : 'text-[13px] tracking-[0.06em]') : (narrow ? 'text-[9px] uppercase tracking-[0.18em]' : 'text-[10px] uppercase tracking-[0.2em]')}>{s.name}</span>
+                <span className={ja ? (narrow ? 'text-[12px] tracking-[0.06em]' : 'text-[14px] tracking-[0.06em]') : (narrow ? 'text-[11px] uppercase tracking-[0.18em]' : 'text-[12px] uppercase tracking-[0.2em]')}>{s.name}</span>
               </span>
-              <span className={`mt-[3px] block pl-[1px] tabular-nums tracking-[0.2em] ${narrow ? 'text-[9px]' : 'text-[10px]'}`} style={{ color: MUTE }}>{s.time}</span>
+              <span className={`mt-[3px] block pl-[1px] tabular-nums tracking-[0.2em] ${narrow ? 'text-[11px]' : 'text-[12px]'}`} style={{ color: MUTE }}>{s.time}</span>
             </button>
           );
         })}
@@ -368,18 +368,18 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
         {ready && (
           <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-3 pt-2.5 md:px-5" style={{ background: 'rgba(242,238,231,0.94)', borderTop: `1px solid ${LINE}` }}>
             {capStop ? (
-              <p key={capStop.n} className="text-[13px] leading-snug md:text-[14px]" style={{ color: INK }}>
-                <span className="mr-2 text-[10px] tabular-nums tracking-[0.25em]" style={{ color: MUTE }}>{capStop.n} · {capStop.time}</span>
+              <p key={capStop.n} className="text-[14px] leading-snug md:text-[15px]" style={{ color: INK }}>
+                <span className="mr-2 text-[12px] tabular-nums tracking-[0.18em]" style={{ color: MUTE }}>{capStop.n} · {capStop.time}</span>
                 <span style={{ fontFamily: SERIF }}>{capStop.place}</span>
                 {useWalk && cur !== null && cur > 0 && (
-                  <span className="ml-2 text-[10px] tabular-nums tracking-[0.15em]" style={{ color: MUTE }}>
+                  <span className="ml-2 text-[12px] tabular-nums tracking-[0.15em]" style={{ color: MUTE }}>
                     {ja ? `（前から ${km(walk!.legs[cur - 1].distance)}）` : `(${km(walk!.legs[cur - 1].distance)} from the last stop)`}
                   </span>
                 )}
-                <span className="mt-0.5 block text-[12px] md:text-[13px]" style={{ color: MUTE }}>{capStop.what}</span>
+                <span className="mt-0.5 block text-[13px] md:text-[14px]" style={{ color: MUTE }}>{capStop.what}</span>
               </p>
             ) : (
-              <p className="text-[10px] tracking-[0.3em]" style={{ color: MUTE }}>
+              <p className="text-[12px] tracking-[0.2em]" style={{ color: MUTE }}>
                 {done
                   ? (useWalk
                     ? (ja ? `${n}か所 · 歩いて約${km(walk!.distance)}・${mins(walk!.duration, true)} · 番号を押すと、その場面` : `${n} stops · about ${km(walk!.distance)} on foot, ${mins(walk!.duration, false)} · tap a number for the scene`)
@@ -391,13 +391,13 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
         )}
 
         {ready && (
-          <button type="button" onClick={start} className="absolute right-3 top-3 z-[2] cursor-pointer text-[10px] uppercase tracking-[0.3em]"
+          <button type="button" onClick={start} className="absolute right-3 top-3 z-[2] cursor-pointer text-[12px] uppercase tracking-[0.2em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}`, opacity: done || focus ? 1 : 0.55 }}>
             {ja ? 'もう一度見る ↻' : 'Play again ↻'}
           </button>
         )}
         {!ready && (
-          <p className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+          <p className="absolute inset-0 flex items-center justify-center text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
             {ja ? '地図を読みこんでいます' : 'Loading the map'}
           </p>
         )}

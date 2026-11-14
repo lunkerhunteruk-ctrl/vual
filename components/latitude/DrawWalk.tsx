@@ -54,7 +54,7 @@ export function DrawWalk({ base, speed = 1100, fps = 6, draw = true }: { base: s
         <img src={`${base}/f${frame + 1}.png`} alt="" className="absolute inset-0 h-full w-full" />
       )}
       {[2, 3, 4].map((n) => <link key={n} rel="preload" as="image" href={`${base}/f${n}.png`} />)}
-      {draw && <button type="button" onClick={() => { setFrame(0); setRun(run + 1); }} className="absolute -bottom-8 right-0 text-[10px] uppercase tracking-[0.3em] text-neutral-500">Replay</button>}
+      {draw && <button type="button" onClick={() => { setFrame(0); setRun(run + 1); }} className="absolute -bottom-8 right-0 text-[12px] uppercase tracking-[0.2em] text-neutral-500">Replay</button>}
     </div>
   );
 }

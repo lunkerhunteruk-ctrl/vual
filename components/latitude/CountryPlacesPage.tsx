@@ -51,7 +51,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
       <JsonLd data={breadcrumbJsonLd(ja, [[ja ? '場所' : 'Places', '/latitude/places'], [name, `/latitude/places/${c.slug}`]])} />
       <IssueStrip locale={locale} current={`places/${c.slug}`} />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
-        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
           <span aria-current="page" style={{ color: INK }}>{name}</span>
@@ -71,7 +71,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
       {/* 2026-11-14 ユーザー：国のページでは「〇〇の街」「〇〇」の見出しは要らない。町の一覧を穴場より上に */}
       <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
         <CountryCityList countries={[c]} locale={locale} linkCountry={false} heading={false} />
-        <p className="mt-12 text-[10px] uppercase tracking-[0.3em]">
+        <p className="mt-12 text-[12px] uppercase tracking-[0.2em]">
           <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
             {ja ? 'ほかの国の街 →' : 'Cities in other countries →'}
           </Link>
@@ -82,7 +82,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
       {c.code === 'JP' && (
         <section className="mx-auto max-w-6xl px-4 pb-16 md:px-8 md:pb-24">
           <SectionLabel>{ja ? '地元の名所を、行く月から' : 'Hidden spots, by the month you visit'}</SectionLabel>
-          <nav className="mb-10 flex flex-wrap gap-x-5 gap-y-2 text-[11px] uppercase tracking-[0.25em]">
+          <nav className="mb-10 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.18em]">
             {MONTHS.map((m, i) => (
               <Link key={m} href={`/${locale}/latitude/places/japan/${m}`} className="underline-offset-4 hover:underline" style={{ color: '#4f6b3a' }}>{monthLabel(i + 1, ja)}</Link>
             ))}
@@ -95,7 +95,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
               return (
                 <details key={g.key} className="group border-t" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                   <summary className="flex cursor-pointer list-none items-baseline justify-between py-3.5 [&::-webkit-details-marker]:hidden">
-                    <span className="text-[17px]" style={{ fontFamily: SERIF }}>{ja ? g.ja : g.en}<span className="ml-3 text-[11px] tabular-nums" style={{ color: MUTE }}>{list.length}</span></span>
+                    <span className="text-[17px]" style={{ fontFamily: SERIF }}>{ja ? g.ja : g.en}<span className="ml-3 text-[12px] tabular-nums" style={{ color: MUTE }}>{list.length}</span></span>
                     <span className="text-[16px] leading-none" style={{ color: MUTE }}><span className="group-open:hidden">＋</span><span className="hidden group-open:inline">－</span></span>
                   </summary>
                   <div className="pb-3">
@@ -104,7 +104,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
                     const qs = list.filter((h) => h.prefectureJa === pj);
                     return (
                       <div key={pj} className="border-t py-2.5" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
-                        <p className="text-[10px] tracking-[0.2em]" style={{ color: MUTE }}>{ja ? pj : qs[0].prefecture}</p>
+                        <p className="text-[12px] tracking-[0.2em]" style={{ color: MUTE }}>{ja ? pj : qs[0].prefecture}</p>
                         <ul className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
                           {qs.map((h) => (
                             <li key={h.slug}>
@@ -126,13 +126,13 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
               if (!list.length) return null;
               return (
                 <div key={g.key}>
-                  <p className="mb-2 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? g.ja : g.en}</p>
+                  <p className="mb-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? g.ja : g.en}</p>
                   {/* 2026-11-14 ユーザー：県ごとにまとめ、県の名前は1回だけ。県の間は細い横線（北から＝県の番号の順） */}
                   {[...new Set(list.map((h) => h.prefectureJa))].sort((x, y) => PREF_ORDER.indexOf(x) - PREF_ORDER.indexOf(y)).map((pj) => {
                     const qs = list.filter((h) => h.prefectureJa === pj);
                     return (
                       <div key={pj} className="border-t py-2.5" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
-                        <p className="text-[10px] tracking-[0.2em]" style={{ color: MUTE }}>{ja ? pj : qs[0].prefecture}</p>
+                        <p className="text-[12px] tracking-[0.2em]" style={{ color: MUTE }}>{ja ? pj : qs[0].prefecture}</p>
                         <ul className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
                           {qs.map((h) => (
                             <li key={h.slug}>

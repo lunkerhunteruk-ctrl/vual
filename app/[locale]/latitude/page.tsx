@@ -77,7 +77,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <nav id="people" className="mt-10 scroll-mt-20">
           <p lang="en" className="lat-label" style={{ color: MUTE }}>People</p>
           {/* 2026-11-01 ユーザー：スマホで6人が1行に収まるように（字を少し小さく・字間を詰め、幅いっぱいに均等に並べる） */}
-          <ul className="mt-3 flex flex-nowrap justify-between text-[10px] uppercase tracking-[0.16em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-2 md:text-[12px] md:tracking-[0.3em]">
+          <ul className="mt-3 flex flex-nowrap justify-between text-[12px] uppercase tracking-[0.06em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-2 md:text-[12px] md:tracking-[0.2em]">
             {PEOPLE.map((p) => (
               <li key={p.slug}>
                 <Link href={`/${locale}/latitude/people/${p.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
@@ -104,7 +104,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             const ja = locale === 'ja';
             return (
               <>
-                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.3em]">
+                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.2em]">
                   {withIssue.map((c) => (
                     <li key={c.slug}>
                       <Link href={`/${locale}/latitude/places/${c.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.nameJa : c.name}</Link>
@@ -112,7 +112,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
                   ))}
                 </ul>
                 {rest.length > 0 && (
-                  <Link href={`/${locale}/latitude/places`} className="mt-4 inline-block text-[12px] underline-offset-4 hover:underline md:text-[13px]" style={{ color: MUTE }}>
+                  <Link href={`/${locale}/latitude/places`} className="mt-4 inline-block text-[13px] underline-offset-4 hover:underline md:text-[14px]" style={{ color: MUTE }}>
                     {ja
                       ? `ほか、${[jp && `日本の${jp}`, abroad && `海外の${abroad}`].filter(Boolean).join('と、')}の街の案内　→`
                       : `And city guides to ${[jp && `${jp} more town${jp > 1 ? 's' : ''} in Japan`, abroad && `${abroad} abroad`].filter(Boolean).join(' and ')}  →`}
@@ -160,7 +160,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           {(locale === 'ja' ? FAQ.ja : FAQ.en).map(([q, a]) => (
             <div key={q}>
               <dt className="text-[17px] leading-snug" style={{ fontFamily: locale === 'ja' ? MINCHO : SERIF }}>{q}</dt>
-              <dd className="mt-2 text-[14px] leading-relaxed" style={{ color: MUTE }}>{a}</dd>
+              <dd className="mt-2 text-[15px] leading-relaxed" style={{ color: MUTE }}>{a}</dd>
             </div>
           ))}
         </dl>

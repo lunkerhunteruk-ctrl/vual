@@ -38,7 +38,7 @@ export default async function LatitudePlacesPage({ params }: { params: Promise<{
       <JsonLd data={jsonLd} />
       <IssueStrip locale={locale} current="places" />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
-        <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '場所' : 'Places'}</p>
+        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '場所' : 'Places'}</p>
         <h1 className="mt-5 text-[48px] leading-[0.95] md:text-[88px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>
           {ja ? '場所から探す' : 'Places'}
         </h1>

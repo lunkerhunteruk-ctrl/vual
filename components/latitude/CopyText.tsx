@@ -17,7 +17,7 @@ export default function CopyText({ text, label, done }: { text: string; label: s
           /* 写せない時は何もしない（文は画面で選んで写せる） */
         }
       }}
-      className="border-b pb-1 text-[10px] uppercase tracking-[0.3em]"
+      className="border-b pb-1 text-[12px] uppercase tracking-[0.2em]"
       style={{ color: INK, borderColor: INK }}
     >
       {copied ? done : label}

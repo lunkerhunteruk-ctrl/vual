@@ -19,7 +19,7 @@ export function Strip({ score, at, big }: { score: number[]; at?: number; big?: 
       {score.map((v, i) => (
         <span key={i} className="flex flex-1 flex-col items-center gap-[2px]">
           <span className="block w-full" style={{ height: Math.max(2, (v / 5) * H), background: MOSS, opacity: at === i + 1 ? 1 : 0.35 }} />
-          {big && <span className="text-[9px] tabular-nums" style={{ color: at === i + 1 ? INK : MUTE }}>{i + 1}</span>}
+          {big && <span className="text-[11px] tabular-nums" style={{ color: at === i + 1 ? INK : MUTE }}>{i + 1}</span>}
         </span>
       ))}
     </span>

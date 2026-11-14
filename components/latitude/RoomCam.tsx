@@ -83,7 +83,7 @@ export default function RoomCam({ cam, reaction, fallback }: { cam: Cam; reactio
     <div className="relative h-full w-full overflow-hidden" style={{ background: INK }}>
       {v(a, front === 'a')}
       {v(b, front === 'b')}
-      <span className="absolute bottom-3 right-3 text-[9px] uppercase tracking-[0.3em] tabular-nums" style={{ color: 'rgba(242,238,231,0.8)' }}>
+      <span className="absolute bottom-3 right-3 text-[11px] uppercase tracking-[0.2em] tabular-nums" style={{ color: 'rgba(242,238,231,0.8)' }}>
         ● Live&nbsp;&nbsp;{clock} JST
       </span>
     </div>
