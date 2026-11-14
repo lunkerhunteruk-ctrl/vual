@@ -56,13 +56,13 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h3 className="text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>
                 {ja ? x.name : x.nameEn}
-                {x.ad && <span className="ml-3 align-middle text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '広告' : 'Ad'}</span>}
+                {x.ad && <span className="ml-3 align-middle text-[11px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{ja ? '広告' : 'Ad'}</span>}
               </h3>
               <p className="lat-label" style={{ color: MUTE }}>{ja ? x.area : x.areaEn}</p>
             </div>
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
             <p className="mt-2 max-w-2xl text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
-              <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{who}</span>
+              <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
             {/* 2026-11-14 押せる高さ 44px。旅先でいちばん押す道案内（地図）を先に、枠つきで */}
@@ -104,7 +104,7 @@ export function PlacesJsonLd({ c, items, ja, name }: { c: LatitudeCity; items: C
 export function CategoryLinks({ c, locale, ja, current }: { c: LatitudeCity; locale: string; ja: boolean; current?: string }) {
   const secs = sectionsOf(c);
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
       {secs.map((s) => (
         <Link key={s.key} href={`/${locale}/latitude/places/${c.slug}/${s.key}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline"
           style={{ color: s.key === current ? MUTE : INK }} aria-current={s.key === current ? 'page' : undefined}>
@@ -120,7 +120,7 @@ export function AreaLinks({ c, locale, ja }: { c: LatitudeCity; locale: string; 
   const areas = areasOf(c);
   if (!areas.length) return null;
   return (
-    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em]">
+    <p className="flex flex-wrap gap-x-6 gap-y-0 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
       {areas.map((a) => (
         <Link key={a.slug} href={`/${locale}/latitude/places/${c.slug}/area/${a.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
           {ja ? a.name : a.nameEn}
@@ -149,7 +149,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
         {label}
         <span className="text-[12px] uppercase tabular-nums tracking-[0.2em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{sec.items.length}</span>
       </h3>
-      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="inline-flex min-h-[44px] items-center self-start pl-[22px] text-[12px] uppercase tracking-[0.2em] underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="inline-flex min-h-[44px] items-center self-start pl-[22px] text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline-offset-4 hover:underline" style={{ color: INK }}>
         {ja ? `${label}をすべて見る →` : `All ${label.toLowerCase()} →`}
       </Link>
     </div>
@@ -196,7 +196,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
             <h4 className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400 }}>{ja ? x.name : x.nameEn}</h4>
             <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
             <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
-              <span className="mr-2 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
+              <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
               {ja ? x.note : x.noteEn}
             </p>
             {/* 2026-11-14 押せる高さ 44px。順番は Google マップ（枠つき）→ 公式サイト → 地図で見る → 聞く（旅先でいちばん押すのは道案内） */}

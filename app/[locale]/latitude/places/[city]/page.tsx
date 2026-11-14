@@ -254,7 +254,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             </span>
           ))}
         </div>
-        <div className="mx-auto mt-5 max-w-6xl px-4 text-[12px] uppercase tracking-[0.2em] md:px-8">
+        <div className="mx-auto mt-5 max-w-6xl px-4 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:px-8">
           {p && (
             <Link href={`/${locale}/latitude/people/${p.slug}`} style={{ color: INK }}>
               {ja ? `${who}の${c.nameJa}の1日` : `${who}'s day in ${c.name}`}&nbsp;&nbsp;→

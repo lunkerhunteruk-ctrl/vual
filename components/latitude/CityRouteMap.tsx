@@ -372,14 +372,14 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
                 <span className="mr-2 text-[12px] tabular-nums tracking-[0.18em]" style={{ color: MUTE }}>{capStop.n} · {capStop.time}</span>
                 <span style={{ fontFamily: SERIF }}>{capStop.place}</span>
                 {useWalk && cur !== null && cur > 0 && (
-                  <span className="ml-2 text-[12px] tabular-nums tracking-[0.15em]" style={{ color: MUTE }}>
+                  <span className="ml-2 text-[12px] tabular-nums tracking-[0.15em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                     {ja ? `（前から ${km(walk!.legs[cur - 1].distance)}）` : `(${km(walk!.legs[cur - 1].distance)} from the last stop)`}
                   </span>
                 )}
                 <span className="mt-0.5 block text-[13px] md:text-[14px]" style={{ color: MUTE }}>{capStop.what}</span>
               </p>
             ) : (
-              <p className="text-[12px] tracking-[0.2em]" style={{ color: MUTE }}>
+              <p className="text-[12px] tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                 {done
                   ? (useWalk
                     ? (ja ? `${n}か所 · 歩いて約${km(walk!.distance)}・${mins(walk!.duration, true)} · 番号を押すと、その場面` : `${n} stops · about ${km(walk!.distance)} on foot, ${mins(walk!.duration, false)} · tap a number for the scene`)
@@ -391,13 +391,13 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
         )}
 
         {ready && (
-          <button type="button" onClick={start} className="absolute right-3 top-3 z-[2] cursor-pointer text-[12px] uppercase tracking-[0.2em]"
+          <button type="button" onClick={start} className="absolute right-3 top-3 z-[2] cursor-pointer text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]"
             style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}`, opacity: done || focus ? 1 : 0.55 }}>
             {ja ? 'もう一度見る ↻' : 'Play again ↻'}
           </button>
         )}
         {!ready && (
-          <p className="absolute inset-0 flex items-center justify-center text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+          <p className="absolute inset-0 flex items-center justify-center text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
             {ja ? '地図を読みこんでいます' : 'Loading the map'}
           </p>
         )}

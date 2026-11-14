@@ -49,14 +49,14 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
       <IssueStrip locale={locale} />
 
       <header className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:px-8 md:pb-20 md:pt-28">
-        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '旅をする人' : 'People'}
         </p>
         <h1 className="mt-5 text-[64px] leading-[0.95] md:text-[120px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em', color: INK }}>
           {big}
         </h1>
-        {ja && big !== p.ja.name && <p className="mt-3 text-[14px] tracking-[0.2em]" style={{ color: MUTE }}>{p.ja.name}</p>}
-        <p className="mt-6 text-[14px] uppercase tracking-[0.2em] md:mt-8 md:text-[15px]">
+        {ja && big !== p.ja.name && <p className="mt-3 text-[14px] tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{p.ja.name}</p>}
+        <p className="mt-6 text-[14px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:mt-8 md:text-[15px]">
           {t.home}&nbsp;&nbsp;·&nbsp;&nbsp;{t.age}
         </p>
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
@@ -64,7 +64,7 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
         </p>
         {/* 2026-10-30 部屋の試作（開いている人だけ） */}
         {getRoom(p.slug) && roomsOpen() && (
-          <Link href={`/${locale}/latitude/people/${p.slug}/room`} className="mt-8 inline-block border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, color: INK }}>
+          <Link href={`/${locale}/latitude/people/${p.slug}/room`} className="mt-8 inline-block border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, color: INK }}>
             {ja ? `${p.ja.name}の部屋へ` : 'Her room'}&nbsp;&nbsp;→
           </Link>
         )}
@@ -118,13 +118,13 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
           if (!n) return null;
           return (
             <div className="mx-auto mt-14 max-w-6xl px-4 md:px-8">
-              <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+              <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                 {ja ? `${p.ja.name}のおすすめの町　${n}` : `Where ${p.name} would go  ·  ${n} towns`}
               </p>
               <dl className="mt-5 flex flex-col">
                 {groups.map((g) => (
                   <div key={g.key} className="grid grid-cols-1 gap-1 border-t py-3 md:grid-cols-[140px_minmax(0,1fr)] md:gap-6" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
-                    <dt className="text-[12px] uppercase tracking-[0.2em] md:pt-[3px]" style={{ color: MUTE }}>{g.label}</dt>
+                    <dt className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:pt-[3px]" style={{ color: MUTE }}>{g.label}</dt>
                     <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-1.5 text-[14px]">
                       {g.cities.map((c) => (
                         <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline" style={{ color: INK }}>
@@ -136,7 +136,7 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
                   </div>
                 ))}
               </dl>
-              <p className="mt-3 flex items-center gap-1.5 text-[12px] tracking-[0.15em]" style={{ color: MUTE }}>
+              <p className="mt-3 flex items-center gap-1.5 text-[12px] tracking-[0.15em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                 <span className="inline-block h-[6px] w-[6px] rounded-full" style={{ background: INK }} />
                 {ja ? `${p.ja.name}の1日の映像とカルーセルがある町` : `Towns with ${p.name}'s day on film`}
               </p>
@@ -156,7 +156,7 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
       <section className="px-4 pb-16 md:px-8">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>{ja ? 'ほかに旅をしている人' : 'Also travelling'}</SectionLabel>
-          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em]">
+          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
             {PEOPLE.filter((o) => o.slug !== p.slug).map((o) => (
               <li key={o.slug}>
                 <Link href={`/${locale}/latitude/people/${o.slug}`} style={{ color: INK }}>{ja ? o.ja.name : o.name}</Link>

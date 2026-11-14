@@ -212,7 +212,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
   // 通話の入口は、部屋に入るのと同じ大きさの黒いボタン（声で話したい人が迷わないように、こちらを主に見せる）
   const CallButton = () => !VOICE_CALLS ? null : (
     <button onClick={() => { if (conv.status === 'connected') conv.endSession(); setStage('confirm'); }}
-      className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
+      className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
       {ja ? `${name}と通話する` : `Call ${name}`}
     </button>
   );
@@ -226,10 +226,10 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
         )}
         {lines.map((l, k) =>
           l.who === 'note' ? (
-            <p key={k} className="text-center text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{l.text}</p>
+            <p key={k} className="text-center text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{l.text}</p>
           ) : (
             <div key={k} className={`flex max-w-[85%] flex-col gap-1 ${l.who === 'you' ? 'self-end items-end' : 'self-start'}`}>
-              <span className="text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+              <span className="text-[11px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                 {l.who === 'her' ? name : ja ? 'あなた' : 'You'}{l.call ? ` · ${ja ? '通話' : 'call'}` : ''}
               </span>
               <p className={l.who === 'her' ? (compact ? 'text-[17px] leading-relaxed' : 'text-[19px] leading-relaxed') : 'text-[15px] leading-relaxed'}
@@ -246,7 +246,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
       <div className="mt-6 flex flex-col gap-4">
         {(stage === 'outside' || stage === 'entering') && (
           <div className="flex flex-wrap gap-3">
-            <button onClick={enter} disabled={stage === 'entering'} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] disabled:opacity-40"
+            <button onClick={enter} disabled={stage === 'entering'} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] disabled:opacity-40"
               style={{ borderColor: INK, color: INK }}>
               {compact ? (ja ? '話しかける' : 'Talk to her') : ja ? '部屋に入る' : 'Enter her room'}&nbsp;&nbsp;→
             </button>
@@ -261,7 +261,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) send(e); }}
               placeholder={ja ? '何か話す' : 'Say something'} className="min-w-0 flex-1 resize-none border-b bg-transparent py-2 text-[16px] outline-none"
               style={{ borderColor: INK, color: INK, fontFamily: SANS }} />
-            <button type="submit" className="pb-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: INK }}>{ja ? '送る' : 'Send'}</button>
+            <button type="submit" className="pb-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: INK }}>{ja ? '送る' : 'Send'}</button>
           </form>
         )}
 
@@ -276,10 +276,10 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
               <li>{ja ? `・${name}はAIです。声は残さず、文字だけを30日残します。` : `· ${name} is an AI. Audio is not kept; the text is kept for 30 days.`}</li>
             </ul>
             <div className="flex gap-6">
-              <button onClick={call} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
+              <button onClick={call} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
                 {ja ? '通話を始める' : 'Start the call'}
               </button>
-              <button onClick={() => setStage('outside')} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+              <button onClick={() => setStage('outside')} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
                 {ja ? 'やめる' : 'Not now'}
               </button>
             </div>
@@ -294,10 +294,10 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
                 <p className="text-[18px]" style={{ fontFamily: SERIF }}>
                   {stage === 'calling' ? (ja ? 'つないでいます' : 'Connecting') : conv.isSpeaking ? (ja ? `${name}が話しています` : `${name} is talking`) : (ja ? '聞いています' : 'Listening')}
                 </p>
-                {stage === 'call' && <p className="mt-1 text-[12px] uppercase tracking-[0.2em] tabular-nums" style={{ color: MUTE }}>{ja ? '残り' : 'Left'} {clock(left)}</p>}
+                {stage === 'call' && <p className="mt-1 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] tabular-nums" style={{ color: MUTE }}>{ja ? '残り' : 'Left'} {clock(left)}</p>}
               </div>
             </div>
-            <button onClick={() => conv.endSession()} className="border px-5 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, color: INK }}>
+            <button onClick={() => conv.endSession()} className="border px-5 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, color: INK }}>
               {ja ? '切る' : 'Hang up'}
             </button>
           </div>

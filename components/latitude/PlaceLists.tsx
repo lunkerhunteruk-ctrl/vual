@@ -35,7 +35,7 @@ export function CountryCityList({ countries, locale, linkCountry = true, heading
                   <details className="group mt-2 border-t" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                     <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 py-4 [&::-webkit-details-marker]:hidden">
                       <span className="text-[20px]" style={{ fontFamily: SERIF, color: INK }}>{ja ? `旅人のおすすめの町　${rest.length}` : `Towns with the travellers' picks  ${rest.length}`}</span>
-                      <span className="text-[12px] uppercase tracking-[0.2em]" style={{ color: INK }}>
+                      <span className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: INK }}>
                         <span className="group-open:hidden">{ja ? '街の案内を見る ＋' : 'City guides +'}</span>
                         <span className="hidden group-open:inline">{ja ? '閉じる －' : 'Close −'}</span>
                       </span>
@@ -77,7 +77,7 @@ function Rows({ qs, locale }: { qs: PlaceCountry['cities']; locale: string }) {
             </Link>
             <span className="text-[12px] uppercase tracking-[0.2em] tabular-nums" style={{ color: MUTE }}>{q.latitude}</span>
           </span>
-          <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em]">
+          <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
             <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
               {ja ? '街の案内' : 'City guide'}
             </Link>

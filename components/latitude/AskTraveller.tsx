@@ -43,7 +43,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
           style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: PAPER }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={latAsset(`people/${slug}.jpg`)} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
-          <span className="hidden text-[12px] uppercase tracking-[0.2em] md:inline">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
+          <span className="hidden text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:inline">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
         </button>
       )}
       {mounted && (
@@ -59,7 +59,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
                 <p className="mt-1 text-[12px] leading-snug" style={{ color: MUTE }}>{ja ? `${name}はAIです。文字は30日だけ残します。` : `${name} is an AI. Text is kept for 30 days.`}</p>
               </div>
             </div>
-            <button onClick={() => setOpen(false)} className="-mr-2 inline-flex min-h-[44px] items-center px-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
+            <button onClick={() => setOpen(false)} className="-mr-2 inline-flex min-h-[44px] items-center px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
           </div>
           <RoomChat locale={locale} slug={slug} name={name} callSeconds={callSeconds} context={context} ask={ask} compact />
         </div>

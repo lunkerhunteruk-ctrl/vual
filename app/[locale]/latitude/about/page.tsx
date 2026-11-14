@@ -84,7 +84,7 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
       <JsonLd data={periodicalJsonLd()} />
       <IssueStrip locale={locale} />
       <header className="mx-auto max-w-3xl px-4 pb-10 pt-16 md:px-8 md:pt-28">
-        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude`} style={{ color: MUTE }}>Latitude</Link>&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}
         </p>
         <h1 className="mt-5 text-[56px] uppercase leading-none md:text-[96px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '0.12em', color: INK }}>
@@ -97,7 +97,7 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
         <dl className="border-t" style={{ borderColor: 'rgba(30,29,27,0.15)' }}>
           {t.rows.map(([k, v]) => (
             <div key={k} className="flex gap-6 border-b py-4" style={{ borderColor: 'rgba(30,29,27,0.15)' }}>
-              <dt className="w-36 shrink-0 pt-[3px] text-[12px] uppercase tracking-[0.2em] md:w-48" style={{ color: MUTE }}>{k}</dt>
+              <dt className="w-36 shrink-0 pt-[3px] text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:w-48" style={{ color: MUTE }}>{k}</dt>
               <dd className="text-[15px]" style={body}>
                 {v.includes('@') ? (
                   <a href={`mailto:${v}`} style={{ color: INK }}>{v}</a>
@@ -124,7 +124,7 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
 
         <section className="mt-16">
           <SectionLabel>{t.travellers}</SectionLabel>
-          <ul className="flex flex-wrap gap-x-7 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
+          <ul className="flex flex-wrap gap-x-7 gap-y-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
             {PEOPLE.map((p) => (
               <li key={p.slug}>
                 <Link href={`/${locale}/latitude/people/${p.slug}`} style={{ color: INK }}>{ja ? p.ja.name : p.name}</Link>
@@ -136,7 +136,7 @@ export default async function LatitudeAboutPage({ params }: { params: Promise<{ 
         <section className="mt-16">
           <SectionLabel>{t.studioTitle}</SectionLabel>
           <p className={ja ? 'text-[15px] leading-[2.1]' : 'text-[17px] leading-relaxed'} style={body}>{t.studio}</p>
-          <Link href={`/${locale}`} className="mt-5 inline-block border-b pb-1 text-[12px] uppercase tracking-[0.2em]" style={{ color: INK, borderColor: INK }}>
+          <Link href={`/${locale}`} className="mt-5 inline-block border-b pb-1 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: INK, borderColor: INK }}>
             {t.studioLink}&nbsp;&nbsp;→
           </Link>
         </section>

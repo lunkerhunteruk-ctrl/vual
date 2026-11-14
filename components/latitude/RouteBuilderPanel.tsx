@@ -51,7 +51,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
   const gmaps = stops.length >= 2 ? googleWalkUrl(stops.map((s) => s.gq)) : null;
   const minutes = (m: number) => mins((m / WALK_M_PER_MIN) * 60, ja);
 
-  const btn = 'inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] transition-colors disabled:cursor-default disabled:opacity-35';
+  const btn = 'inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2 px-4 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] transition-colors disabled:cursor-default disabled:opacity-35';
 
   return (
     <div className="mt-4 flex flex-col gap-5" style={{ color: INK }}>
@@ -131,7 +131,7 @@ export default function RouteBuilderPanel({ points, visible, route, setRoute, le
       {/* 名前から選ぶ（種類のスイッチで出している物だけ） */}
       <div>
         <button type="button" onClick={() => setListOpen((v) => !v)} aria-expanded={listOpen}
-          className="min-h-[44px] cursor-pointer text-[12px] uppercase tracking-[0.2em] underline underline-offset-4" style={{ color: INK }}>
+          className="min-h-[44px] cursor-pointer text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: INK }}>
           {ja ? `名前から選ぶ（${visible.length}）` : `Pick by name (${visible.length})`} {listOpen ? '▴' : '▾'}
         </button>
         {listOpen && (

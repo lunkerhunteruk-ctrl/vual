@@ -77,7 +77,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <nav id="people" className="mt-10 scroll-mt-20">
           <p lang="en" className="lat-label" style={{ color: MUTE }}>People</p>
           {/* 2026-11-01 ユーザー：スマホで6人が1行に収まるように（字を少し小さく・字間を詰め、幅いっぱいに均等に並べる） */}
-          <ul className="flex flex-nowrap justify-between text-[12px] uppercase tracking-[0.06em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-0 md:text-[12px] md:tracking-[0.2em]">
+          <ul lang="en" className="flex flex-nowrap justify-between text-[12px] uppercase tracking-[0.06em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-0 md:text-[12px] md:tracking-[0.2em]">
             {PEOPLE.map((p) => (
               <li key={p.slug}>
                 <Link href={`/${locale}/latitude/people/${p.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>{p.name}</Link>
@@ -104,7 +104,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             const ja = locale === 'ja';
             return (
               <>
-                <ul className="flex flex-wrap gap-x-5 gap-y-0 text-[12px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.2em]">
+                <ul className="flex flex-wrap gap-x-5 gap-y-0 text-[12px] uppercase tracking-[0.16em] md:gap-x-7 md:text-[12px] md:tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
                   {withIssue.map((c) => (
                     <li key={c.slug}>
                       <Link href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? c.nameJa : c.name}</Link>

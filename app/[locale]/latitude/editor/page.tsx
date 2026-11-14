@@ -130,12 +130,12 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
       <IssueStrip locale={locale} />
 
       <header className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:px-8 md:pb-16 md:pt-28">
-        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}</p>
+        <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{t.label}</p>
         <h1 className="mt-5 text-[52px] leading-[1.05] md:text-[96px]" style={{ fontFamily: ja ? MINCHO : SERIF, fontWeight: ja ? 600 : 400, letterSpacing: 0, color: INK }}>
           {t.name}
         </h1>
         {ja && <p className="mt-3 text-[14px] tracking-[0.2em]" style={{ color: MUTE }}>Sachio Kawasaki</p>}
-        <p className="mt-6 text-[14px] uppercase tracking-[0.2em]">{t.role}</p>
+        <p className="mt-6 text-[14px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">{t.role}</p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/lp/founder-bw.jpeg" alt={t.name} width={160} height={160} className="mt-10 h-28 w-28 rounded-full object-cover md:h-36 md:w-36" style={{ filter: 'grayscale(1)' }} />
       </header>
@@ -145,7 +145,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
           <dl className="mb-10 flex flex-col gap-4 text-[14px] md:mb-0">
             {t.rows.map(([k, v]) => (
               <div key={k}>
-                <dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{k}</dt>
+                <dt className="text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{k}</dt>
                 <dd className="mt-1">{v}</dd>
               </div>
             ))}
@@ -171,7 +171,7 @@ export default async function LatitudeEditorPage({ params }: { params: Promise<{
           <dl className="flex max-w-2xl flex-col gap-5">
             {t.mems.map(([k, v]) => (
               <div key={k}>
-                <dt className="text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>{k}</dt>
+                <dt className="text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{k}</dt>
                 <dd className="mt-1 text-[17px] leading-relaxed" style={{ fontFamily: ja ? MINCHO : SERIF }}>{v}</dd>
               </div>
             ))}

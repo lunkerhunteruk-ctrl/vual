@@ -103,14 +103,14 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
       <IssueStrip locale={locale} />
 
       <header className="mx-auto max-w-6xl px-4 pb-8 pt-16 md:px-8 md:pb-12 md:pt-24">
-        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
           <Link href={`/${locale}/latitude/places/japan`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '日本' : 'Japan'}</Link>
           <span className="mx-2">›</span>
           <span style={{ color: MOSS }}>{ja ? '地元の名所' : 'Hidden spot'}</span>
         </nav>
-        <p className="mt-6 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <p className="mt-6 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           {ja ? `${s.prefectureJa} · ${s.townJa}から` : `${s.prefecture} · from ${s.town}`}
         </p>
         <h1 className="mt-3 text-[40px] leading-[1.02] md:text-[72px]" style={{ fontFamily: SERIF, fontWeight: 400, textWrap: 'balance' }}>
@@ -169,7 +169,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
         </div>
         {(ja ? s.ticketJa : s.ticket) && (
           <p className="mt-8 max-w-2xl border-l-2 pl-4 text-[14px] leading-relaxed" style={{ borderColor: MOSS }}>
-            <span className="mr-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: MOSS }}>{ja ? '入場・予約' : 'Tickets'}</span>
+            <span className="mr-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MOSS }}>{ja ? '入場・予約' : 'Tickets'}</span>
             {ja ? s.ticketJa : s.ticket}
           </p>
         )}
@@ -189,7 +189,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
               {s.course.stops.map((x, k) => (
                 <li key={k} className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-t py-5 md:grid-cols-[5rem_8rem_minmax(0,1fr)]" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
                   <span className="text-[20px] tabular-nums leading-none md:text-[24px]" style={{ fontFamily: SERIF, color: x.role === 'spot' ? MOSS : INK }}>{x.time}</span>
-                  <span className="hidden pt-1 text-[12px] uppercase tracking-[0.2em] md:block" style={{ color: x.role === 'spot' ? MOSS : MUTE }}>{ja ? ROLE[x.role]?.ja : ROLE[x.role]?.en}</span>
+                  <span className="hidden pt-1 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:block" style={{ color: x.role === 'spot' ? MOSS : MUTE }}>{ja ? ROLE[x.role]?.ja : ROLE[x.role]?.en}</span>
                   <div className="min-w-0 flow-root">
                     {/* 2026-11-14 ユーザー決定：店・温泉の公式サイトのシェア用の写真（og:image）を右に小さく。保存せず公式サイトの写真をそのまま出し、押すと公式サイトへ */}
                     {x.photo && (x.photoCredit || x.url) && (
@@ -220,7 +220,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
             </ol>
             <div className="mt-6 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
               {dir && (
-                <a href={dir} target="_blank" rel="noopener noreferrer" className="inline-flex w-max items-center gap-3 px-5 py-3 text-[12px] uppercase tracking-[0.2em] hover:bg-[rgba(30,29,27,0.06)]" style={{ border: `1px solid ${INK}`, color: INK }}>
+                <a href={dir} target="_blank" rel="noopener noreferrer" className="inline-flex w-max items-center gap-3 px-5 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] hover:bg-[rgba(30,29,27,0.06)]" style={{ border: `1px solid ${INK}`, color: INK }}>
                   {ja ? 'Google マップで、この順に開く' : 'Open this day in Google Maps'}&nbsp;↗
                 </a>
               )}
@@ -240,7 +240,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
           <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
             {s.nearby.map((n) => (
               <li key={n.name} className="min-w-0">
-                <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{ja ? KIND[n.kind]?.ja ?? n.kind : KIND[n.kind]?.en ?? n.kind}</p>
+                <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{ja ? KIND[n.kind]?.ja ?? n.kind : KIND[n.kind]?.en ?? n.kind}</p>
                 <a href={n.url} target="_blank" rel="noopener noreferrer" className="mt-1 block text-[18px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF }}>{ja ? n.name : n.nameEn}</a>
                 <p className="mt-1 text-[15px] leading-relaxed">{ja ? n.what : n.whatEn}</p>
               </li>
@@ -255,7 +255,7 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
           <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2" style={{ color: INK }}>{s.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a>
           {ja ? ` · 編集部が${s.verifiedAt.replace(/-/g, '.')}に、公式のページで2026年の営業を確かめました。` : ` · The editors checked on the official page that it is open in 2026 (${s.verifiedAt}).`}
         </p>
-        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em]">
+        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
           {town && <Link href={`/${locale}/latitude/places/${town.slug}`} className="underline-offset-4 hover:underline">{ja ? `${town.nameJa}の街の案内 →` : `${town.name} city guide →`}</Link>}
           <Link href={`/${locale}/latitude/places/japan/${MONTHS[(s.peakMonths[0] ?? now) - 1]}`} className="underline-offset-4 hover:underline">
             {ja ? `${monthLabel(s.peakMonths[0] ?? now, true)}の地元の名所 →` : `Hidden spots in ${monthLabel(s.peakMonths[0] ?? now, false)} →`}

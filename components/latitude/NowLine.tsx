@@ -125,7 +125,7 @@ export function NowLine({ data, name, ja, chapters, className = '' }: {
     .filter(Boolean)
     .join(', ');
 
-  const small = ja ? 'text-[12px] tracking-[0.12em]' : 'text-[12px] uppercase tracking-[0.2em]';
+  const small = ja ? 'text-[12px] tracking-[0.08em]' : 'text-[12px] uppercase tracking-[0.2em]';
   const num = { fontFamily: SERIF, fontVariantNumeric: 'lining-nums tabular-nums' } as const;
 
   return (

@@ -47,7 +47,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
       <JsonLd data={breadcrumbJsonLd(ja, [[ja ? '場所' : 'Places', '/latitude/places'], [ja ? '日本' : 'Japan', '/latitude/places/japan'], [ja ? `${m}月の地元の名所` : monthLabel(m, false), path]])} />
       <IssueStrip locale={locale} />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-24">
-        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
           <Link href={`/${locale}/latitude/places/japan`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '日本' : 'Japan'}</Link>
@@ -62,7 +62,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
             ? `地元では誰もが知っているのに、外から来た人には見つけにくい所。${m}月がいい${list.length}か所を、おすすめの順に。どれも、行き方と1日のおすすめコースつきです。`
             : `Places everyone local knows, but visitors rarely find. ${list.length} that are good in ${monthLabel(m, false)}, best first — each with how to get there and a day around it.`}
         </p>
-        <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.2em]">
+        <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
           <Link href={`/${locale}/latitude/places/japan/${MONTHS[prev - 1]}`} className="underline-offset-4 hover:underline">← {monthLabel(prev, ja)}</Link>
           <Link href={`/${locale}/latitude/places/japan/${MONTHS[next - 1]}`} className="underline-offset-4 hover:underline">{monthLabel(next, ja)} →</Link>
         </p>
@@ -90,7 +90,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
                   <img src={s.bannerOg} alt="" loading="lazy" referrerPolicy="no-referrer" className="block aspect-[3/2] w-full object-cover md:w-[180px]" />
                 ) : <span className="hidden md:block" />}
                 <div className="min-w-0">
-                  <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{i + 1} · {ja ? s.prefectureJa : s.prefecture}</p>
+                  <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{i + 1} · {ja ? s.prefectureJa : s.prefecture}</p>
                   <h2 className="mt-1 text-[22px] leading-snug md:text-[26px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>
                     <Link href={`/${locale}/latitude/places/japan/spot/${s.slug}`} className="underline-offset-4 hover:underline">{ja ? s.name : s.nameEn}</Link>
                   </h2>
@@ -99,7 +99,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
                     <span style={{ color: v >= 5 ? MOSS : INK }}>{n ? (ja ? n.ja : n.en) : ja ? s.peakNoteJa : s.peakNote}</span>
                   </p>
                   <p className="mt-2 max-w-2xl text-[15px] leading-relaxed">{ja ? s.what : s.whatEn}</p>
-                  <Link href={`/${locale}/latitude/places/japan/spot/${s.slug}`} className="mt-2 inline-block text-[12px] uppercase tracking-[0.18em] underline underline-offset-4" style={{ color: MOSS }}>
+                  <Link href={`/${locale}/latitude/places/japan/spot/${s.slug}`} className="mt-2 inline-block text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: MOSS }}>
                     {ja ? '行き方と1日のコース →' : 'How to get there, and a day there →'}
                   </Link>
                 </div>
@@ -107,7 +107,7 @@ export default function HiddenMonthPage({ m, locale }: { m: number; locale: stri
             );
           })}
         </ol>
-        <nav className="mt-14 flex flex-wrap gap-x-4 gap-y-2 text-[12px] uppercase tracking-[0.18em]" aria-label={ja ? 'ほかの月' : 'Other months'}>
+        <nav className="mt-14 flex flex-wrap gap-x-4 gap-y-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" aria-label={ja ? 'ほかの月' : 'Other months'}>
           {MONTHS.map((slug, i) => (
             <Link key={slug} href={`/${locale}/latitude/places/japan/${slug}`} aria-current={i + 1 === m ? 'page' : undefined} className="underline-offset-4 hover:underline" style={{ color: i + 1 === m ? INK : MUTE }}>
               {monthLabel(i + 1, ja)}

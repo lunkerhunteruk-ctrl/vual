@@ -17,7 +17,7 @@ export default function Room({ locale, slug, name, city, month, callSeconds, cam
 
   return (
     <main className="mx-auto flex max-w-2xl flex-col px-4 pb-10 pt-12 md:px-8 md:pt-20">
-      <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+      <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
         Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '部屋' : 'Her room'}
       </p>
       <div className="mt-5 flex items-center gap-5">

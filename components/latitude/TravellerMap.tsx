@@ -361,7 +361,7 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
                 const label = (
                   <>
                     <span className="block text-[14px] leading-none md:text-[15px]" style={{ fontFamily: SERIF }}>{s.city}</span>
-                    <span className="mt-1 block text-[11px] uppercase tracking-[0.18em] md:text-[11px]" style={{ color: MUTE }}>{subs[j]}</span>
+                    <span className="mt-1 block text-[11px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] md:text-[11px]" style={{ color: MUTE }}>{subs[j]}</span>
                   </>
                 );
                 const labelStyle = { color: INK, opacity: a, textShadow: `0 0 4px ${PAPER}, 0 0 2px ${PAPER}`, transform: `translateY(${(1 - a) * 4}px)` };
@@ -483,7 +483,7 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
           <button
             type="button"
             onClick={() => goTo(null)}
-            className="absolute right-3 top-3 z-30 cursor-pointer border px-3 py-2 text-[12px] uppercase tracking-[0.2em] md:right-4 md:top-4"
+            className="absolute right-3 top-3 z-30 cursor-pointer border px-3 py-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:right-4 md:top-4"
             style={{ background: `${PAPER}e6`, borderColor: 'rgba(30,29,27,0.25)', color: INK }}
           >
             {ja ? '全体へ' : 'Whole map'}
@@ -495,7 +495,7 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
         {chosen && chosen.slug !== focus ? (
           <Card p={chosen} locale={locale} />
         ) : sel === null ? (
-          <p className="pt-3 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+          <p className="pt-3 text-[11px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
             {ja ? '点を押すと、その人の旅をたどります' : 'Tap a name to follow her journey'}
           </p>
         ) : null}
@@ -582,7 +582,7 @@ function Card({ p, locale }: { p: MapTraveller; locale: string }) {
       <img src={latAsset(`people/${p.slug}.jpg`)} alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
       <span className="flex flex-col">
         <span className="text-[20px] leading-none" style={{ fontFamily: SERIF }}>{p.name}</span>
-        <span className="mt-1.5 text-[11px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <span className="mt-1.5 text-[11px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           {locale === 'ja' ? (last ? '最後にいた所' : '家') : last ? 'Last seen' : 'At home'}&nbsp;&nbsp;·&nbsp;&nbsp;{where}
         </span>
       </span>

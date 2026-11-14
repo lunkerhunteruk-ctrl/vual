@@ -9,5 +9,6 @@ export const MINCHO = `${JA_MINCHO}, serif`;
 
 // 2026-11-14 店カードなどの行動（公式サイト・Google マップ・地図で見る・聞く）。字は小さいまま、押せる高さだけ 44px に広げる。
 // ACTION_MAIN はいちばん押すもの（Google マップ）。枠の色は使う側で INK を付ける
-export const ACTION = 'inline-flex min-h-[44px] items-center text-[12px] uppercase tracking-[0.18em] underline-offset-4 hover:underline';
-export const ACTION_MAIN = 'inline-flex min-h-[44px] items-center border px-4 text-[12px] uppercase tracking-[0.18em]';
+// 日本語のページ（<html lang="ja">）では字間を 0.08em に。lang="en" の要素には効かない
+export const ACTION = 'inline-flex min-h-[44px] items-center text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] underline-offset-4 hover:underline';
+export const ACTION_MAIN = 'inline-flex min-h-[44px] items-center border px-4 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]';

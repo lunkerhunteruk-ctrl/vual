@@ -244,7 +244,7 @@ export function NewsletterSignup({ locale }: { locale: string }) {
         href={ja ? NOTE_URL_JA : NEWSLETTER_URL}
         target="_blank"
         rel="noopener"
-        className="mt-5 inline-block border px-5 py-3 text-[12px] uppercase tracking-[0.2em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
+        className="mt-5 inline-block border px-5 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7]"
         style={{ borderColor: INK, color: INK }}
       >
         {ja ? 'note で読む' : 'Subscribe'}&nbsp;&nbsp;→

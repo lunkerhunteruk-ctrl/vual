@@ -72,7 +72,7 @@ function Block({ b, ja }: { b: NoteBlock; ja: boolean }) {
         </figure>
       );
     case 'sign':
-      return <p className="mt-6 text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>{b.s}</p>;
+      return <p className="mt-6 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{b.s}</p>;
   }
 }
 
@@ -118,14 +118,14 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
       <IssueStrip locale={locale} />
 
       <article className="mx-auto max-w-2xl px-4 pb-20 pt-14 md:px-0 md:pb-28 md:pt-24">
-        <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: MUTE }}>
+        <p className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{issueNo(issue)}&nbsp;&nbsp;·&nbsp;&nbsp;{issue.latitude} {issue.city}&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '制作ノート' : 'How it was made'}
         </p>
         <h1 className="mt-5 text-[34px] leading-[1.25] md:text-[46px]" style={{ fontFamily: ja ? MINCHO : SERIF, fontWeight: ja ? 600 : 400, letterSpacing: 0, color: INK, textWrap: 'balance' }}>
           {b.title}
         </h1>
         {!ja && b.subtitle && <p className="mt-4 text-[17px] leading-relaxed" style={{ color: MUTE }}>{b.subtitle}</p>}
-        <p className="mt-6 text-[12px] uppercase tracking-[0.18em]" style={{ color: MUTE }}>
+        <p className="mt-6 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/editor`} rel="author" className="underline-offset-4 hover:underline" style={{ color: MUTE }}>
             {ja ? '川崎 祥央　LATITUDE 編集長' : 'Sachio Kawasaki, Founding Editor'}
           </Link>
@@ -139,10 +139,10 @@ export default async function LatitudeNotesPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="mt-14 flex flex-wrap gap-3 border-t pt-8" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
-          <Link href={`/${locale}/latitude/${issue.slug}`} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
+          <Link href={`/${locale}/latitude/${issue.slug}`} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, background: INK, color: PAPER }}>
             {ja ? `この号を見る（${issue.latitude} ${issue.city}）` : `See the issue — ${issue.latitude} ${issue.city}`}&nbsp;&nbsp;→
           </Link>
-          <a href={ja ? NOTE_JA_URL : SUBSTACK_URL} target="_blank" rel="noopener" className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em]" style={{ borderColor: INK, color: INK }}>
+          <a href={ja ? NOTE_JA_URL : SUBSTACK_URL} target="_blank" rel="noopener" className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ borderColor: INK, color: INK }}>
             {ja ? 'note でマガジンを読む' : 'Follow the notes on Substack'}&nbsp;&nbsp;↗
           </a>
         </div>
