@@ -7,6 +7,7 @@ import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import { CategoryLinks, PlaceGroup, PlacesJsonLd } from '@/components/latitude/CityPlaces';
+import { PhotoContact, showsShopPhoto } from '@/components/latitude/PhotoContact';
 import HiddenMonthPage, { hiddenMonthMetadata } from '@/components/latitude/HiddenMonthPage';
 import { MONTHS, monthOf } from '@/lib/latitude-hidden';
 
@@ -92,6 +93,7 @@ export default async function LatitudeCityCategoryPage({ params }: { params: Pro
             {ja
               ? `${who}は架空の旅人です。店は、編集部が実在と営業を確かめた所だけを載せています。営業時間や休みは、行く前に公式サイトで確かめてください。`
               : `${who} is a fictional traveller. Every place here was checked by the editors to exist and be open. Please confirm hours on the official site before you go.`}
+            {showsShopPhoto(c, sec.items) && <PhotoContact ja={ja} />}
           </p>
         </div>
       </section>

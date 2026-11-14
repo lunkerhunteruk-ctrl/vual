@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getPerson } from '@/lib/latitude';
 import { CATEGORY_LABEL, CATEGORY_ORDER, CITIES, SIGHT_LABEL, getCity, sectionsOf, slugify } from '@/lib/latitude-places';
 import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude/CityPlaces';
+import { PhotoContact, showsShopPhoto } from '@/components/latitude/PhotoContact';
 import { ShowOnMap } from '@/components/latitude/HScroller';
 import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
@@ -31,7 +32,8 @@ import CountryPlacesPage, { countryMetadata } from '@/components/latitude/Countr
 import { JsonLd } from '@/lib/latitude-publication';
 
 // 2026-10-30 LATITUDE の街のページ（試作）。旅人のその街の1日と、旅人のおすすめの店（編集部が営業を確かめた物だけ）。
-// のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。店の写真は載せない。
+// のちに小さな街の冊子になるように：店は種類ごとに並べ、公式サイトと地図へのリンクを付ける。
+// 2026-11-14 店の写真は使う（前の「載せない」から変更）。苦情が来たらすぐ外す：scripts/latitude-photo-takedown.mjs。写真のある街は、下の注意書きに連絡先を出す
 
 // 2026-11-11 同じ段に国のページも出す（/latitude/places/japan）。国と街の slug は重ならない（lib/latitude-places-index.ts で確かめる）
 export function generateStaticParams() {
@@ -298,6 +300,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             {ja
               ? `${who}は架空の旅人です。店は、編集部が実在と営業を確かめた所だけを載せています（${checked}確認）。営業時間や休みは、行く前に公式サイトで確かめてください。広告の店には印を付けます。`
               : `${who} is a fictional traveller. Every place here was checked by the editors to exist and be open (checked ${checked}). Please confirm hours on the official site before you go. Paid listings are always marked.`}
+            {showsShopPhoto(c, c.places) && <PhotoContact ja={ja} />}
           </p>
         </div>
       </section>

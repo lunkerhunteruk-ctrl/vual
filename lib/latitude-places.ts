@@ -1,7 +1,9 @@
 // 2026-10-30 LATITUDE の街のページ（/latitude/places/<city>）。旅人がその街で過ごした1日と、旅人のおすすめの店。
 // 店は「編集部が実在と営業を確かめた物だけ」（vault.vual.jp/outputs/rin-room-kanazawa-20261030/PLACES-KANAZAWA.json が元）。
 // 同じ一覧を部屋の会話（凛が名前を出してよい店）にも使う。褒めてよい・けなさない・号で行っていない店に「行った」とは書かない。
-// 店の写真はAIで作らない（実物と違う店を見せない）。載せる写真は、旅人の号の場面だけ。
+// 店の写真はAIで作らない（実物と違う店を見せない）。
+// 2026-11-14 オーナー決定（前の「載せる写真は、旅人の号の場面だけ」から変更）：店の公式の写真を使う。店から苦情が来たら、その写真だけすぐ外す
+// （scripts/latitude-photo-takedown.mjs。外した店は docs/latitude-photo-takedowns.md）。号の場面を店の写真として使わない決まりはそのまま。
 // 広告の店を載せる時は ad: true にして、広告だと分かる印を出す。
 
 // 店の一覧は lib/latitude-places/<city>.json（部屋の会話の設定 vault.vual.jp/tools/rin-call-agent.cjs も同じファイルを読む）
@@ -50,8 +52,9 @@ export type CityPlace = {
   // 番地・号まで出ない店は coordsApprox: true（カードに「位置はおおよそ」と出す）。coords の無い店は地図に出ない（リストには出る）
   coords?: [number, number];
   coordsApprox?: boolean;
-  // 店からもらった写真だけ（public/latitude/places/<街>/shops/ のファイル名。R2 へ上げる）。公式サイトや Instagram の画像を切り抜いて使わない。
-  // 号の場面の写真も入れない（その店の写真に見えるため）。あれば地図の丸の中とカードに出る
+  // 2026-11-14 新しい方針（docs/latitude-ui-instructions.md 0-3b）：店の写真を使う。店から苦情が来たら、その写真だけすぐ外す（scripts/latitude-photo-takedown.mjs）。
+  // ここは店からもらった写真（public/latitude/places/<街>/shops/ のファイル名。R2 へ上げる）。公式サイトの共有用の写真は lib/latitude-shop-photos.json の方。
+  // 写真を加工して別物にしない。号の場面の写真は入れない（その店の写真に見えるため）。あれば地図の丸の中とカードに出る（こちらが公式サイトの写真より先）
   photo?: string;
   // 公式の Instagram（プロフィールか投稿の URL）。url が Instagram の店は書かなくてよい。あれば地図のカードに Instagram の正式な埋めこみを出す
   instagram?: string;

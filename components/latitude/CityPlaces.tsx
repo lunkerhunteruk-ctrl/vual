@@ -17,7 +17,7 @@ import SHOP_PHOTOS_JSON from '@/lib/latitude-shop-photos.json';
 // 2026-11-14 店のカードの小さな写真（ユーザー：一覧のカードにも出す）。店からもらった写真（x.photo）が先、無ければ公式サイトの写真
 // （latitude-shop-photos.json。万一言われたら取り下げる決まり）。下に出どころを小さく書く。
 const SHOP_PHOTOS = SHOP_PHOTOS_JSON as Record<string, Record<string, string>>;
-const shopPhoto = (c: LatitudeCity, x: CityPlace) => {
+export const shopPhoto = (c: LatitudeCity, x: CityPlace) => {
   if (x.photo) return { src: latAsset(`places/${c.slug}/shops/${x.photo}`), site: false };
   const f = SHOP_PHOTOS[c.slug]?.[x.name];
   return f ? { src: latAsset(`places/${c.slug}/shops/${f}`), site: true } : undefined;
