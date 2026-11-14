@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function LatitudeIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const nJapanTop = getPlaceCountry('japan')?.cities.length ?? 0;
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
       <JsonLd data={periodicalJsonLd()} />
@@ -72,6 +73,18 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         ) : (
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
             {STATEMENT_EN}
+          </p>
+        )}
+        {/* 2026-11-15 ユーザー：最初の1画面に、訪日客向けの1文。雑誌の説明だけでは「自分の旅に使えるか」が5秒で分からなかった。
+            何の案内か（日本のものづくりの町・店は編集部が確かめた）を、説明のすぐ下に。数は日本のページの一覧と同じ（下のボタンと同じ数え方）。
+            リンクは文の中で折り返せるよう inline のまま、上下の余白で押せる高さを 44px に（行の高さは変わらない） */}
+        {nJapanTop > 0 && (
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed md:text-[16px]" style={{ color: INK }}>
+            {locale === 'ja' ? (
+              <>日本を旅するなら：東京や京都の先にある、<Link href={`/${locale}/latitude/places/japan`} className="py-[13px] underline underline-offset-4" style={{ color: INK }}>ものづくりの町{nJapanTop}の案内</Link>。店はすべて、編集部が実在と営業を確かめています。</>
+            ) : (
+              <>Travelling in Japan? <Link href={`/${locale}/latitude/places/japan`} className="py-[13px] underline underline-offset-4" style={{ color: INK }}>City guides to {nJapanTop} craft towns</Link> beyond Tokyo and Kyoto. Every shop was checked by our editors to exist and be open.</>
+            )}
           </p>
         )}
         {/* 2026-10-30 6人それぞれの旅。名前からその人のページへ */}

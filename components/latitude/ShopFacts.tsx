@@ -1,5 +1,5 @@
 import CopyText from '@/components/latitude/CopyText';
-import { MUTE, TAP_INLINE } from '@/lib/latitude-theme';
+import { INK, MUTE, TAP_INLINE } from '@/lib/latitude-theme';
 import type { CityPlace } from '@/lib/latitude-places';
 
 // 2026-11-14 ②-3 店カードの、日本語の店名と住所（街のページの横に流すカード・種類／地区のページの行・店の地図の下から出るカードで同じ形）。
@@ -30,7 +30,8 @@ export function FactsLine({ facts, ja, className = 'mt-2' }: { facts?: ShopFacts
     facts.cashOnly && (ja ? '現金のみ' : 'Cash only'),
   ].filter(Boolean);
   if (!items.length) return null;
-  return <p className={`${className} text-[13px] leading-snug`} style={{ color: MUTE }}>{items.join('  ·  ')}</p>;
+  // 2026-11-15 営業時間は、その場で使う人にいちばん要る字。住所（灰色・13px）より一段はっきり（墨色・14px）
+  return <p className={`${className} text-[14px] leading-snug`} style={{ color: INK }}>{items.join('  ·  ')}</p>;
 }
 
 // 住所1行と「コピー」。長い住所は1行に収め（…で切る）、全部はコピーと title で。コピーの押せる高さは 44px（行の高さは変えない）
