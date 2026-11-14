@@ -55,7 +55,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
       </Link>
       {/* 2026-11-11 ユーザー：人と場所を、横長のカプセルのトグルに（左＝People が既定・右＝Places）。今どちらのモードかが分かるように。
             つまみはすりガラス（リキッドグラス）風：うすい白・ぼかし・上の縁の光・やわらかい影 */}
-        <PeoplePlacesToggle locale={locale} places={!!current?.startsWith('places')} />
+        <PeoplePlacesToggle locale={locale} places={!!current?.startsWith('places') || current === 'saved'} />
       <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto max-[374px]:hidden">
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
         {liveIssues().map((i) => {

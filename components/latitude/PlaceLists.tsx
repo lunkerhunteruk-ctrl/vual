@@ -77,7 +77,7 @@ function Rows({ qs, locale }: { qs: PlaceCountry['cities']; locale: string }) {
             </Link>
             <span className="text-[12px] uppercase tracking-[0.2em] tabular-nums" style={{ color: MUTE }}>{q.latitude}</span>
           </span>
-          <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
+          <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em] max-[374px]:gap-x-3 max-[374px]:tracking-[0.16em] [&:lang(ja)]:tracking-[0.08em]">
             <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
               {ja ? '街の案内' : 'City guide'}
             </Link>

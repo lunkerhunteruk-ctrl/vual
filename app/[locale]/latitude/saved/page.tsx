@@ -32,7 +32,7 @@ export default async function LatitudeSavedPage({ params, searchParams }: { para
 
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
-      <IssueStrip locale={locale} />
+      <IssueStrip locale={locale} current="saved" />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
         <h1 className="text-[44px] leading-[1] md:text-[72px]" style={{ fontFamily: SERIF, fontWeight: 400 }}>
           {isShared ? (ja ? '共有された店の一覧' : 'A shared list of places') : (ja ? '保存した店' : 'Saved places')}
