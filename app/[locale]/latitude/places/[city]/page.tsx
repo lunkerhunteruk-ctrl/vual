@@ -8,6 +8,7 @@ import { ShowOnMap } from '@/components/latitude/HScroller';
 import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import { ACTION, ACTION_MAIN, TAP_INLINE } from '@/lib/latitude-theme';
+import CityJumpNav, { type JumpItem } from '@/components/latitude/CityJumpNav';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
 import { HIDDEN } from '@/lib/latitude-hidden';
@@ -144,6 +145,14 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       .map((k) => ({ key: k as string, label: ja ? SIGHT_LABEL[k].ja : SIGHT_LABEL[k].en })),
   ];
 
+  const jump: JumpItem[] = [
+    ...(hasDayRoute(c) || c.images.length > 0 || c.route?.length ? [{ id: 'day', label: ja ? `${who}の1日` : `${who}'s day` }] : []),
+    ...(pins.length + sightPins.length > 0 ? [{ id: 'map', label: ja ? '地図' : 'Map' }] : []),
+    { id: 'shops', label: ja ? '店' : 'Shops' },
+    ...(sightPins.length > 0 ? [{ id: 'sights', label: ja ? '見る所' : 'Sights' }] : []),
+    ...(c.wear ? [{ id: 'wear', label: ja ? '何を着るか' : 'What to wear' }] : []),
+  ];
+
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
       <IssueStrip locale={locale} current={`places/${c.slug}`} />
@@ -212,10 +221,13 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
 
+      {/* 2026-11-14 ②-1 目次（上の帯のすぐ下に張りつく）。その街にある節だけ */}
+      <CityJumpNav label={ja ? '目次' : 'Contents'} items={jump} />
+
       {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
       {/* 2026-11-14 ②-2 回り方のある街は、下の「1日の写真の帯」を出さない（同じ写真が回り方・帯・何を着るかで3回出ていたため。オーナー決定）。
           帯の下にあった「凛の〇〇の1日 →」は、この節の最後へ移した */}
-      <CityDayRoute c={c} ja={ja} who={who} locale={locale}
+      <CityDayRoute c={c} ja={ja} who={who} locale={locale} id="day"
         after={p && (
           <div className="mt-8 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
             <Link href={`/${locale}/latitude/people/${p.slug}`} className={TAP_INLINE} style={{ color: INK }}>
@@ -225,7 +237,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         )} />
 
       {/* 2026-11-14 ②-2 回り方の地図が無い街だけ、1日をなぞる所に置く。旅人の1日の場面（号の静止画）。横に流す。2026-11-11 号のない町（場面の写真が無い）は出さない＝「凛の〇〇の1日」とも書かない */}
-      {!hasDayRoute(c) && c.images.length > 0 && <section className="pb-16 md:pb-24">
+      {!hasDayRoute(c) && (c.images.length > 0 || !!c.route?.length) && <div id="day" className="scroll-mt-28">
+      {c.images.length > 0 && <section className="pb-16 md:pb-24">
         <div className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 md:gap-6 md:px-8" style={{ scrollbarWidth: 'thin' }}>
           {c.images.map((im) => (
             // 2026-11-01 data-lat-photo：その街が夜の間だけ、写真をうすく暗く・青くする（NowLine の <style>）
@@ -244,10 +257,11 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </div>
       </section>}
 
-      {!hasDayRoute(c) && <CityRoute c={c} ja={ja} who={who} />}
+      <CityRoute c={c} ja={ja} who={who} />
+      </div>}
 
       {pins.length + sightPins.length > 0 && (
-        <section className="px-4 pb-16 md:px-8 md:pb-24">
+        <section id="map" className="scroll-mt-28 px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl">
             <SectionLabel>
               {c.routeBuilder
@@ -260,7 +274,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </section>
       )}
 
-      <section className="px-4 pb-20 md:px-8 md:pb-28">
+      <section id="shops" className="scroll-mt-28 px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>{ja ? `${who}のおすすめ` : `Where ${who} would go`}</SectionLabel>
           {/* 2026-11-11 種類ごとに横に流す（ユーザー「縦スクロールが多すぎる」）。地区のページへのリンクは下に小さく */}
@@ -283,12 +297,12 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
 
       {/* 2026-11-11 見る所（アート・名所）。店とは別：凛のおすすめの店ではなく、街の目印。公式で開いている事を確かめた所だけ */}
       {sightPins.length > 0 && (
-        <section className="px-4 pb-20 md:px-8 md:pb-28">
+        <section id="sights" className="scroll-mt-28 px-4 pb-20 md:px-8 md:pb-28">
           <div className="mx-auto max-w-6xl">
             <SectionLabel>{ja ? `見る所——美術館と名所（目印）` : `To see — art and sights (landmarks)`}</SectionLabel>
             <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {sightPins.map((x) => (
-                <li key={x.id} id={x.id} className="scroll-mt-24">
+                <li key={x.id} id={x.id} className="scroll-mt-28">
                   <p className="lat-label" style={{ color: MUTE }}>{x.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{x.area}</p>
                   <p className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{x.name}</p>
                   <p className="mt-1 text-[15px] leading-relaxed">{x.what}</p>
@@ -311,7 +325,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </section>
       )}
 
-      <CityWear c={c} ja={ja} who={who} />
+      <CityWear c={c} ja={ja} who={who} id="wear" />
 
       {/* 2026-11-14 この町から行く穴場（lib/latitude-hidden.ts。地元で有名な1か所への1日） */}
       {HIDDEN.some((h) => h.townSlug === c.slug) && (

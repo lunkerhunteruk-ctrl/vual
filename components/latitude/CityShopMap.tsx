@@ -75,6 +75,9 @@ const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 
 const WIDE = 768; // これより広い画面では、カードを地図の右に重ねる。狭い画面では下からせり上がる
 const CARD_W = 360;
 const TOP_GAP = 8; // 狭い画面で店を選んだ時、地図の上の端を置く画面の上からの位置（px）
+// 2026-11-14 上に張りつく帯（IssueStrip・街のページの目次。data-lat-sticky）が張りついた時の下端。地図の上の端は、その下 TOP_GAP に置く（帯に隠れないように）。
+// 帯は地図より上にあるので、地図を上へ流せば必ず張りつく。いまの位置ではなく、張りつく位置（css の top＋高さ）で測る
+const stickyBottom = () => Math.max(0, ...Array.from(document.querySelectorAll<HTMLElement>('[data-lat-sticky]'), (e) => (parseFloat(getComputedStyle(e).top) || 0) + e.offsetHeight));
 
 function viewAt(a: Anim, now: number, r: number): View {
   const t = a.dur > 0 ? clamp((now - a.t0) / a.dur) : 1;
@@ -261,7 +264,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
     const sx = wide ? (size.w - CARD_W - 32) / 2 : size.w / 2;
     // 狭い画面：地図の上の端を画面の上（TOP_GAP）へ流してから、カードの上に見えている地図のまん中へ置く
     const sheetPx = sheetH > 100 ? sheetH : window.innerHeight * 0.5; // まだ測れていない時（最初に開く時）は画面の半分と見こむ
-    const visible = Math.max(80, Math.min(size.h, window.innerHeight - sheetPx - TOP_GAP));
+    const visible = Math.max(80, Math.min(size.h, window.innerHeight - sheetPx - stickyBottom() - TOP_GAP));
     const sy = wide ? size.h / 2 : visible / 2;
     return { x: x - sx * mpp, y: y - sy * mpp, w };
   }, [pins, size.w, size.h, wide, pos, homeView, sheetH]);
@@ -291,7 +294,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
     setNow(t);
     // 狭い画面：下から出るカードに隠れないよう、地図の上の端を画面の上へ流す
     if (id && !wide && box.current) {
-      const top = box.current.getBoundingClientRect().top - TOP_GAP;
+      const top = box.current.getBoundingClientRect().top - stickyBottom() - TOP_GAP;
       if (Math.abs(top) > 2) window.scrollBy({ top, behavior: still ? 'auto' : 'smooth' });
     }
   };

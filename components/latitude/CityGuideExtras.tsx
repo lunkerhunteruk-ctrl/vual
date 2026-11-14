@@ -17,12 +17,13 @@ import type { ReactNode } from 'react';
 
 export const placeAnchor = (x: CityPlace) => `place-${slugify(x.nameEn)}`;
 
-export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: string }) {
+// id：街のページの目次から飛ぶ先（2026-11-14）
+export function CityWear({ c, ja, who, id }: { c: LatitudeCity; ja: boolean; who: string; id?: string }) {
   const w = c.wear;
   if (!w) return null;
   const city = ja ? c.nameJa : c.name;
   return (
-    <section className="px-4 pb-20 md:px-8 md:pb-28">
+    <section id={id} className="scroll-mt-28 px-4 pb-20 md:px-8 md:pb-28">
       <div className="mx-auto max-w-6xl">
         <SectionLabel>{ja ? `${w.seasonJa}の${city}で、何を着るか` : `What to wear in ${city}, ${w.season.toLowerCase()}`}</SectionLabel>
         <ul className="mb-10 flex max-w-2xl flex-col gap-1 text-[15px] leading-relaxed" style={{ color: MUTE }}>
@@ -137,7 +138,7 @@ export function googleDirectionsUrl(c: LatitudeCity) {
 }
 
 // after：節の最後に置く物（2026-11-14 街のページの「凛の〇〇の1日 →」）
-export function CityDayRoute({ c, ja, who, locale, after }: { c: LatitudeCity; ja: boolean; who: string; locale: string; after?: ReactNode }) {
+export function CityDayRoute({ c, ja, who, locale, after, id }: { c: LatitudeCity; ja: boolean; who: string; locale: string; after?: ReactNode; id?: string }) {
   if (!hasDayRoute(c)) return null;
   const issue = getIssue(c.issue ?? c.slug);
   const reel = issue && isLive(issue) && issue.streamId ? reelSources(issue) : null;
@@ -158,7 +159,7 @@ export function CityDayRoute({ c, ja, who, locale, after }: { c: LatitudeCity; j
   const walk = getWalk(c.slug, stops.map((s) => [s.lat, s.lon]));
   const city = ja ? c.nameJa : c.name;
   return (
-    <section className="px-4 pb-16 md:px-8 md:pb-24">
+    <section id={id} className="scroll-mt-28 px-4 pb-16 md:px-8 md:pb-24">
       <div className="mx-auto max-w-6xl">
         {/* 2026-11-11 下の店の地図に「自分でルートを組む」がある街は、こちらが「凛のルートをなぞる」と分かる見出しに */}
         <SectionLabel>

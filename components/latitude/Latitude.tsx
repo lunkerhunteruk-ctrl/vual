@@ -39,6 +39,9 @@ function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolea
 export function IssueStrip({ locale, current }: { locale: string; current?: string }) {
   return (
     <nav
+      // 2026-11-14 data-lat-strip：街のページの目次がこの帯の高さを測ってすぐ下に張りつく。data-lat-sticky：店の地図が上に張りつく物の下端を知る印
+      data-lat-strip
+      data-lat-sticky
       className="sticky top-0 z-30 border-b backdrop-blur"
       style={{ background: 'rgba(242,238,231,0.92)', borderColor: 'rgba(30,29,27,0.12)' }}
     >

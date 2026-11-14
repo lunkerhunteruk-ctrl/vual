@@ -188,7 +188,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
           </li>
         )}
         {sec.items.map((x) => (
-          <li key={x.name} id={placeAnchor(x)} className={`${CARD_W} flex shrink-0 snap-start flex-col scroll-mt-24 border p-5`} style={{ borderColor: 'rgba(30,29,27,0.16)' }}>
+          <li key={x.name} id={placeAnchor(x)} className={`${CARD_W} flex shrink-0 snap-start flex-col scroll-mt-28 border p-5`} style={{ borderColor: 'rgba(30,29,27,0.16)' }}>
             <p className="lat-label" style={{ color: MUTE }}>
               {ja ? x.area : x.areaEn}
               {x.ad && <span className="ml-3">{ja ? '広告' : 'Ad'}</span>}
