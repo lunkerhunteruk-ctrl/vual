@@ -1,0 +1,90 @@
+[
+ {
+  "name": "小樽運河",
+  "nameEn": "Otaru Canal",
+  "kind": "sight",
+  "area": "色内",
+  "areaEn": "Ironai",
+  "address": "小樽市港町・色内",
+  "url": "https://www.city.otaru.lg.jp/docs/2023062000045/",
+  "what": "1923年（大正12年）に完成し、石造倉庫が並ぶ小樽港の運河。1986年に散策路が整えられ、11月から1月は夜の青いイルミネーション「青の運河」が行われる。",
+  "whatEn": "The harbour canal completed in 1923 and lined with stone warehouses. Its promenade was laid out in 1986; from November to January it is lit in blue after sunset.",
+  "coords": [
+   43.20253,
+   141.00036
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "旧日本郵船株式会社小樽支店",
+  "nameEn": "Former Nippon Yusen Otaru Branch",
+  "kind": "sight",
+  "area": "色内",
+  "areaEn": "Ironai",
+  "address": "小樽市色内3-7-8",
+  "url": "https://kyu-nippon-yusen-otaru.jp/",
+  "what": "1906年（明治39年）に建った石造2階建ての海運会社の支店で、国の重要文化財。2025年4月に保存修理工事を終えて開館し、1階の営業室や金唐革紙を貼った2階の貴賓室を見られる。",
+  "whatEn": "A two-storey stone shipping-company branch built in 1906 and a national Important Cultural Property. Reopened in April 2025 after preservation repairs, with its first-floor banking hall and second-floor reception room hung in kinkarakawa paper.",
+  "coords": [
+   43.2073,
+   140.9983
+  ],
+  "notice": "9時30分から17時。毎週火曜（祝日の場合は翌平日）と年末年始は休館。",
+  "noticeEn": "Open 9:30 am to 5 pm. Closed Tuesdays (or the next weekday if a holiday) and over New Year.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "日本銀行旧小樽支店金融資料館",
+  "nameEn": "Bank of Japan Otaru Museum",
+  "kind": "art",
+  "area": "色内",
+  "areaEn": "Ironai",
+  "address": "小樽市色内1-11-16",
+  "url": "https://www3.boj.or.jp/otaru-m/",
+  "what": "1912年に竣工した辰野金吾・長野宇平治らの設計による旧日本銀行小樽支店の建物を使った資料館。日本銀行の歴史や小樽の経済の発展を伝える。",
+  "whatEn": "A museum inside the 1912 former Bank of Japan Otaru Branch designed by Tatsuno Kingo and Nagano Uheiji, showing the history of the bank and Otaru's commerce.",
+  "coords": [
+   43.19627,
+   141.00033
+  ],
+  "notice": "2026年11月26日（木）は臨時休館。毎週水曜（祝休日の場合は開館）と年末年始は休館。入館無料。",
+  "noticeEn": "Closed exceptionally on 26 November 2026. Closed Wednesdays (open if a public holiday) and over New Year. Free entry.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "小樽芸術村",
+  "nameEn": "Otaru Art Base",
+  "kind": "art",
+  "area": "色内",
+  "areaEn": "Ironai",
+  "address": "小樽市色内1-3-1",
+  "url": "https://www.nitorihd.co.jp/otaru-art-base/",
+  "what": "明治末から昭和初期の倉庫や銀行建築を活かした美術館群。重要文化財の旧三井銀行小樽支店のほか、ステンドグラス美術館や似鳥美術館などから成る。",
+  "whatEn": "A group of museums housed in late-Meiji to early-Showa warehouses and banks, including the Important Cultural Property Former Mitsui Bank Otaru Branch, the Stained Glass Museum and the Nitori Museum of Art.",
+  "coords": [
+   43.1974,
+   141.00151
+  ],
+  "notice": "11〜4月は10時から17時で毎週水曜休館（5〜10月は9時30分から、第4水曜休館）。",
+  "noticeEn": "November to April: 10 am to 5 pm, closed Wednesdays (May to October: from 9:30 am, closed the fourth Wednesday).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "小樽市総合博物館 運河館",
+  "nameEn": "Otaru Museum Canal Building",
+  "kind": "art",
+  "area": "色内",
+  "areaEn": "Ironai",
+  "address": "小樽市色内2-1-20",
+  "url": "https://www.city.otaru.lg.jp/docs/2020111400122/",
+  "what": "1893年（明治26年）に建てられた旧小樽倉庫を使った博物館。北前船やニシン漁など小樽の歴史をたどる展示と、小樽の自然史の展示の2室がある。",
+  "whatEn": "A museum inside the 1893 Former Otaru Warehouse, with two halls covering Otaru's history—from Kitamaebune ships to herring fishing—and its natural history.",
+  "coords": [
+   43.2007,
+   141.00022
+  ],
+  "notice": "9時30分から17時。年末年始を除き無休。",
+  "noticeEn": "Open 9:30 am to 5 pm daily except over New Year.",
+  "verifiedAt": "2026-11-12"
+ }
+]

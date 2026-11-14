@@ -1,0 +1,86 @@
+[
+ {
+  "name": "札幌市時計台",
+  "nameEn": "Sapporo Clock Tower",
+  "kind": "sight",
+  "area": "大通",
+  "areaEn": "Odori",
+  "address": "札幌市中央区北1条西2丁目",
+  "url": "https://sapporoshi-tokeidai.jp/",
+  "what": "1878年（明治11年）に旧札幌農学校の演武場として建てられた木造建築で、国の重要文化財。毎正時に時計の鐘が鳴り、館内は資料館として公開されている。8時45分から17時10分（入館は17時まで）、年始1月1日〜3日は休館。",
+  "whatEn": "A wooden building put up in 1878 as the drill hall of the Sapporo Agricultural College, a national Important Cultural Property. Its clock bell chimes on the hour and the interior is open as a museum. Open 8:45 to 17:10 (last entry 17:00); closed January 1 to 3.",
+  "coords": [
+   43.06255,
+   141.35364
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "北海道庁旧本庁舎（赤れんが庁舎）",
+  "nameEn": "Former Hokkaido Government Office (Red Brick Office)",
+  "kind": "sight",
+  "area": "大通",
+  "areaEn": "Odori",
+  "address": "札幌市中央区北3条西6丁目1",
+  "url": "https://www.hokkaido-redbrick.jp/",
+  "what": "1888年（明治21年）竣工のれんが造の旧道庁本庁舎で、国の重要文化財。5年余りの大規模改修を終えて開館し、北海道の歴史や文化の展示、八角塔などを公開している。8時45分から21時（最終入館20時30分）。",
+  "whatEn": "The brick former Hokkaido government building completed in 1888, a national Important Cultural Property. Open after more than five years of restoration, with displays on Hokkaido's history and culture and access to the octagonal tower. Open 8:45 to 21:00 (last entry 20:30).",
+  "coords": [
+   43.06397,
+   141.34802
+  ],
+  "notice": "11月15日（日）と年末年始（12月29日〜1月3日）は休館。",
+  "noticeEn": "Closed on Sunday, November 15, and over year-end and New Year (December 29 to January 3).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "豊平館",
+  "nameEn": "Hoheikan",
+  "kind": "sight",
+  "area": "中島公園",
+  "areaEn": "Nakajima-koen",
+  "address": "札幌市中央区中島公園1番20号",
+  "url": "https://www.s-hoheikan.jp/",
+  "what": "明治13年（1880年）に開拓使直営の洋風ホテルとして建てられ、昭和33年（1958年）に中島公園内へ移築された国の重要文化財。白い外壁を群青色の縁取りが彩る木造建築。9時から17時（入館は16時30分まで）、毎月第2火曜と年末年始は休館。",
+  "whatEn": "Built in 1880 as a Western-style hotel by the Hokkaido Development Commission and moved into Nakajima Park in 1958; a national Important Cultural Property in wood with ultramarine trim on white walls. Open 9:00 to 17:00 (last entry 16:30), closed the second Tuesday of each month and December 29 to January 3.",
+  "coords": [
+   43.04629,
+   141.35258
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "北海道立近代美術館",
+  "nameEn": "Hokkaido Museum of Modern Art",
+  "kind": "art",
+  "area": "西18丁目",
+  "areaEn": "Nishi 18-chome",
+  "address": "札幌市中央区北1条西17丁目",
+  "url": "https://artmuseum.pref.hokkaido.lg.jp/knb/",
+  "what": "北1条西17丁目にある道立美術館。北海道の美術や日本近代の美術のほか、エコール・ド・パリやガラス工芸を収蔵・展示する。9時30分から17時（入場は16時30分まで）。",
+  "whatEn": "The prefectural art museum on Kita 1-jo Nishi 17-chome, collecting and showing Hokkaido art, modern Japanese art, the School of Paris and glasswork. Open 9:30 to 17:00 (last entry 16:30).",
+  "coords": [
+   43.06007,
+   141.33042
+  ],
+  "notice": "休館日は月曜（祝日の場合は翌平日）、展示替期間、年末年始（12月29日〜1月3日）。",
+  "noticeEn": "Closed Mondays (or the following weekday if a holiday), during exhibition changes, and December 29 to January 3.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "北海道大学総合博物館",
+  "nameEn": "The Hokkaido University Museum",
+  "kind": "art",
+  "area": "北大キャンパス",
+  "areaEn": "Hokkaido University",
+  "address": "札幌市北区北10条西8丁目",
+  "url": "https://www.museum.hokudai.ac.jp/",
+  "what": "1929年（昭和4年）竣工の旧理学部本館を使った大学博物館。札幌農学校以来の歴史や各学部の研究、学術標本を無料で公開している。10時から17時、月曜（祝日の場合は翌平日）と年末年始は休館。",
+  "whatEn": "A university museum in the 1929 former Faculty of Science main building, showing the history of Sapporo Agricultural College, research across its faculties and academic specimens, with free admission. Open 10:00 to 17:00, closed Mondays (or the following weekday if a holiday) and December 28 to January 4.",
+  "coords": [
+   43.0726,
+   141.34221
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

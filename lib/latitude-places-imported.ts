@@ -65,10 +65,14 @@ import omihachimanPlaces from './latitude-places/omihachiman.json';
 import omihachimanSights from './latitude-sights/omihachiman.json';
 import onomichiPlaces from './latitude-places/onomichi.json';
 import onomichiSights from './latitude-sights/onomichi.json';
+import otaruPlaces from './latitude-places/otaru.json';
+import otaruSights from './latitude-sights/otaru.json';
 import ozuPlaces from './latitude-places/ozu.json';
 import ozuSights from './latitude-sights/ozu.json';
 import sakaiPlaces from './latitude-places/sakai.json';
 import sakaiSights from './latitude-sights/sakai.json';
+import sapporoPlaces from './latitude-places/sapporo.json';
+import sapporoSights from './latitude-sights/sapporo.json';
 import sawaraPlaces from './latitude-places/sawara.json';
 import sawaraSights from './latitude-sights/sawara.json';
 import shiogamaPlaces from './latitude-places/shiogama.json';
@@ -825,6 +829,28 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: onomichiSights as CitySight[],
   },
   {
+    slug: "otaru",
+    name: "Otaru",
+    nameJa: "小樽",
+    latitude: "43.2° N",
+    country: "Hokkaido, Japan",
+    countryJa: "北海道",
+    person: "rin",
+    coords: [43.19068, 140.9946],
+    intro: "A port town on the Sea of Japan, once Hokkaido's gateway, lined with stone warehouses along the canal. Studio glass and an old sake brewery, ceramics and coffee in coastal Hariusu, and soba and sweets around the station: Rin's picks.",
+    introJa: "日本海に面した北海道の玄関口だった港町。運河沿いの石造倉庫、吹きガラスと造り酒屋、海辺の張碓の器と珈琲、駅まわりの蕎麦と菓子を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "On Hokkaido's west coast · a hillside port town on the Sea of Japan", "ja": "北海道の西海岸・日本海に面した坂の港町"},
+    industries: [
+      {"key": "otaru-glass", "en": "Otaru Glassware", "ja": "小樽硝子", "about": "Glassmaking in Otaru grew from oil lamps and the glass floats made for herring fishing, with Asahara Glass opening in 1903. Today studios such as Asahara and The Glass Studio in Otaru still blow tableware and floats by hand.", "aboutJa": "小樽のガラス作りは、1903年創業の浅原硝子製造所のように、石油ランプやニシン漁のガラス浮き玉から始まった。いまも浅原硝子やザ・グラス・スタジオなどの工房が、食器や浮き玉を手で吹いている。"},
+      {"key": "otaru-sake", "en": "Port Sake Brewing", "ja": "小樽の酒造", "about": "Today Tanaka Sake Brewery, founded in 1899, is Otaru's sole remaining sake brewer. At its Kikkogura warehouse it draws snowmelt groundwater from Mount Tengu and brews year-round with Hokkaido rice.", "aboutJa": "いま小樽に残る唯一の造り酒屋が、1899年創業の田中酒造。亀甲蔵では天狗山の雪解け水の伏流水を汲み上げ、北海道産の米を使って一年を通して酒を仕込む。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: otaruPlaces as CityPlace[],
+    sights: otaruSights as CitySight[],
+  },
+  {
     slug: "ozu",
     name: "Ozu",
     nameJa: "大洲",
@@ -866,6 +892,28 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: sakaiPlaces as CityPlace[],
     sights: sakaiSights as CitySight[],
+  },
+  {
+    slug: "sapporo",
+    name: "Sapporo",
+    nameJa: "札幌",
+    latitude: "43.1° N",
+    country: "Hokkaido, Japan",
+    countryJa: "北海道",
+    person: "rin",
+    coords: [43.06194, 141.35429],
+    intro: "Hokkaido's main city, laid out on the western edge of the Ishikari plain with mountains behind it. Summers stay cool and snow arrives early after autumn. House-roasted coffee and kissaten, sweets made with Hokkaido milk and wheat, craft shops and dining rooms from Maruyama to Nakajima Park and Kotoni, as Rin's picks.",
+    introJa: "石狩平野の西、山を背に広がる北海道の中心の街。夏は涼しく、秋から冬は空気が澄んで雪が早い。自家焙煎の珈琲と喫茶、北海道の乳製品や小麦の菓子、円山から中島公園、琴似の器の店と食堂を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In western Hokkaido · on the edge of the Ishikari plain, backed by mountains", "ja": "北海道の西部・石狩平野の端、山を背にした街"},
+    industries: [
+      {"key": "coffee-roasters-kissaten", "en": "Coffee Roasters & Kissaten Culture", "ja": "自家焙煎珈琲と喫茶文化", "about": "Sapporo has a long-standing independent coffee culture, from classic nel-drip kissaten to small-batch roasters. Shops such as Kotobuki Coffee, Ritaru Coffee and Co lab. roast in-house and serve coffee from morning until late evening.", "aboutJa": "札幌には、ネルドリップの喫茶店と自家焙煎の珈琲店が根づいている。寿珈琲、RITARU COFFEE、Co lab.のように豆を自ら煎り、朝から夜まで一杯を淹れる個人店が街のあちこちにある。"},
+      {"key": "hokkaido-dairy-wheat", "en": "Hokkaido Dairy & Wheat Sweets and Bakeries", "ja": "北海道産乳製品・小麦の手作り菓子とパン", "about": "Sapporo's bakers and confectioners turn raw milk from eastern Hokkaido and local wheat and rice into daily breads, soft serve and sweets. Shops such as Maruyama Milk Store use low-temperature pasteurised milk from Betsukai and Hamanaka.", "aboutJa": "札幌の菓子屋やパン屋では、道東の酪農地帯から届く生乳や道産小麦を使って、日々のパンやソフトクリーム、焼き菓子を作る。円山牛乳販売店のように別海町や浜中町の低温殺菌牛乳をそのまま生かす店もある。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: sapporoPlaces as CityPlace[],
+    sights: sapporoSights as CitySight[],
   },
   {
     slug: "sawara",

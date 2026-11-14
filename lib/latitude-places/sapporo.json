@@ -1,0 +1,370 @@
+[
+ {
+  "name": "円山牛乳販売店",
+  "nameEn": "Maruyama Milk Store",
+  "category": "local",
+  "industry": "hokkaido-dairy-wheat",
+  "tags": [
+   "milk",
+   "sweets",
+   "soft serve"
+  ],
+  "area": "円山",
+  "areaEn": "Maruyama",
+  "address": "札幌市中央区南1条西24丁目1-14",
+  "url": "https://maruyama-milk-store.com/",
+  "what": "別海町や浜中町の低温殺菌生乳を使った、瓶牛乳と牛乳菓子のテイクアウト専門店。11時から18時、火曜は休み。",
+  "whatEn": "A takeaway shop for bottled milk and dairy sweets made with low-temperature pasteurised raw milk from Betsukai and Hamanaka. Open 11:00 to 18:00, closed Tuesdays.",
+  "note": "果物の入らない、牛乳だけのクレープにする。",
+  "noteEn": "The milk crepe without fruit — just milk and batter.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05551,
+   141.32119
+  ]
+ },
+ {
+  "name": "C'est BO et BON",
+  "nameEn": "C'est BO et BON",
+  "category": "sweets",
+  "tags": [
+   "pastry",
+   "cake"
+  ],
+  "area": "円山",
+  "areaEn": "Maruyama",
+  "address": "札幌市中央区南7条西24丁目2-3 カルムマルヤマ1F",
+  "url": "https://cest-bo-et-bon.com/",
+  "what": "円山の住宅街にあるフランス菓子の店。ケーキと焼き菓子を並べる。営業は月・金・土・日曜と祝日の12時から19時で、火〜木曜は休み。",
+  "whatEn": "A French patisserie in a quiet part of Maruyama, with cakes and baked sweets. Open Monday, Friday, weekends and holidays from 12:00 to 19:00; closed Tuesday to Thursday.",
+  "note": "生菓子と一緒に、焼き菓子も一つ持って帰る。",
+  "noteEn": "Take a baked sweet home alongside a fresh cake.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.0488,
+   141.31801
+  ]
+ },
+ {
+  "name": "寿珈琲",
+  "nameEn": "Kotobuki Coffee",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "大通・狸小路",
+  "areaEn": "Odori & Tanukikoji",
+  "address": "札幌市中央区南2条東1丁目1-6 M's2条横丁1F",
+  "url": "https://kotobuki.coffee/",
+  "what": "2007年創業、M's2条横丁の1階にある珈琲店。ネルドリップで一杯ずつ淹れる。月〜土曜は9時から23時、日曜は18時まで、定休なし。",
+  "whatEn": "A coffee shop opened in 2007 on the ground floor of M's Nijo Yokocho, brewing each cup by flannel drip. Open 9:00 to 23:00 Monday to Saturday, until 18:00 on Sundays, with no regular closing day.",
+  "note": "カウンター越しに、ネルから落ちる湯を眺める。",
+  "noteEn": "Watch the hot water drip through the flannel from across the counter.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05912,
+   141.35677
+  ]
+ },
+ {
+  "name": "おだし食堂",
+  "nameEn": "Odashi Shokudo",
+  "category": "food",
+  "tags": [
+   "soup curry"
+  ],
+  "area": "大通・狸小路",
+  "areaEn": "Odori & Tanukikoji",
+  "address": "札幌市中央区南2条西1丁目5-1 第21広和ビル3F",
+  "url": "https://odashishokudo.com/",
+  "what": "羅臼産の鮭節と羅臼昆布の出汁に、一夜干しの宗八ガレイや美瑛の自社農園の野菜を合わせるスープカレー店。カウンター10席で昼夜各50食、定休なし。",
+  "whatEn": "A soup curry shop using broth of Rausu salmon-bushi and kelp, paired with overnight-dried sohachi flounder and vegetables from its Biei farm. Ten counter seats, 50 bowls each at lunch and dinner, open daily.",
+  "note": "宗八ガレイをスープの中で少しずつほぐして食べる。",
+  "noteEn": "Flake the dried flounder into the broth bit by bit as you eat.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05784,
+   141.35617
+  ]
+ },
+ {
+  "name": "SATURDAYS Chocolate",
+  "nameEn": "SATURDAYS Chocolate",
+  "category": "sweets",
+  "tags": [
+   "chocolate"
+  ],
+  "area": "大通・狸小路",
+  "areaEn": "Odori & Tanukikoji",
+  "address": "札幌市中央区南1条西11丁目327-9",
+  "url": "https://www.saturdayschocolate.com/",
+  "what": "2015年に札幌で始まったビーントゥバーのチョコレート工房兼ショップ。2026年11月に南1条西11丁目へ移転し、金〜日曜の10時から17時営業。カフェはなく現金不可。",
+  "whatEn": "A bean-to-bar chocolate workshop and shop started in Sapporo in 2015. It moved to Minami 1-jo Nishi 11-chome in November 2026 and opens Friday to Sunday, 10:00 to 17:00; no cafe, cashless only.",
+  "note": "北海道の日本酒を使った板チョコをまず一枚。",
+  "noteEn": "Start with one of the bars made with Hokkaido sake.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05691,
+   141.34024
+  ]
+ },
+ {
+  "name": "和田硝子器店（Vaisselle）",
+  "nameEn": "Wada Glassware (Vaisselle)",
+  "category": "craft",
+  "tags": [
+   "glass",
+   "tableware"
+  ],
+  "area": "大通・狸小路",
+  "areaEn": "Odori & Tanukikoji",
+  "address": "札幌市中央区南1条西12丁目4-182 札幌ASビル2F",
+  "url": "https://www.vaisselle-sapporo.com/",
+  "what": "飲食店向けのグラスや食器を扱い、家庭向けにも小売りするテーブルウェアの店。11時から18時、日曜は休み。",
+  "whatEn": "A tableware shop supplying glasses and dishes to restaurants and also selling to home cooks. Open 11:00 to 18:00, closed Sundays.",
+  "note": "店の棚に並ぶ業務用のグラスを、家用に一つ選ぶ。",
+  "noteEn": "Pick one restaurant glass from the shelves to use at home.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05725,
+   141.33966
+  ]
+ },
+ {
+  "name": "リヒト Licht",
+  "nameEn": "Licht",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "tableware"
+  ],
+  "area": "大通・狸小路",
+  "areaEn": "Odori & Tanukikoji",
+  "address": "札幌市中央区大通西15丁目3-6 土井ビル2F",
+  "url": "https://www.instagram.com/licht_utsuwa/",
+  "what": "大通西15丁目のビル2階にある器の店。全国各地の作家による、普段使いの陶磁器を扱う。12時から18時、水・木曜は休み。",
+  "whatEn": "A second-floor tableware shop on Odori Nishi 15-chome carrying everyday ceramics by studio potters from across Japan. Open 12:00 to 18:00, closed Wednesdays and Thursdays.",
+  "note": "白い空間で、平皿の手触りと重みを確かめて選ぶ。",
+  "noteEn": "In the white room, test the glaze and weight of each plate in your hand.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.0579,
+   141.33385
+  ]
+ },
+ {
+  "name": "sabita",
+  "nameEn": "sabita",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "antiques",
+   "coffee"
+  ],
+  "area": "西28丁目",
+  "areaEn": "Nishi 28-chome",
+  "address": "札幌市中央区北1条西28丁目2-35 MOMA Place 1F",
+  "url": "https://sabita.jp/",
+  "what": "白い器を中心に、作家の陶磁器やアンティークの道具、衣類を並べる1階の店と、2階のカフェ。12時から17時（カフェL.O.16時半）、火曜は休み。",
+  "whatEn": "A ground-floor shop of white ceramics, antique tools and clothing, with a cafe upstairs. Open 12:00 to 17:00 (cafe last order 16:30), closed Tuesdays.",
+  "note": "二階のカフェで、売り場と同じ作家の器でお茶を飲む。",
+  "noteEn": "Have tea upstairs in the same makers' vessels sold below.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.05665,
+   141.31412
+  ]
+ },
+ {
+  "name": "RITARU COFFEE",
+  "nameEn": "RITARU COFFEE",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "西28丁目",
+  "areaEn": "Nishi 28-chome",
+  "address": "札幌市中央区北3条西26丁目3-8",
+  "url": "https://ritaru.com/",
+  "what": "北3条西26丁目の自家焙煎珈琲店。1階で豆を焼き、2階に喫茶室がある。8時半から20時半まで。",
+  "whatEn": "A coffee roaster on Kita 3-jo Nishi 26-chome, roasting downstairs with a cafe room above. Open 8:30 to 20:30.",
+  "note": "行くなら朝に、無料のトーストと深煎りを頼む。",
+  "noteEn": "Go in the morning for a dark roast with the complimentary toast.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.06077,
+   141.31632
+  ]
+ },
+ {
+  "name": "長命庵",
+  "nameEn": "Chomeian",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "西28丁目",
+  "areaEn": "Nishi 28-chome",
+  "address": "札幌市中央区北3条西28丁目2-1 サンビルB1F",
+  "url": "https://www.choumeian.com/",
+  "what": "昭和55年（1980年）創業の蕎麦店。農薬や化学肥料を使わずに自社栽培・自社製粉した北海道産の韃靼そばを出す。11時から15時、水・日曜と祝日は休み。",
+  "whatEn": "A soba house opened in 1980, growing and milling its own pesticide-free Hokkaido Tartary buckwheat. Open 11:00 to 15:00, closed Wednesdays, Sundays and holidays.",
+  "note": "冷たい韃靼そばせいろで、蕎麦そのものの香りを。",
+  "noteEn": "Order the cold Dattan seiro to taste the buckwheat plainly.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.06008,
+   141.3143
+  ]
+ },
+ {
+  "name": "ギャラリー創",
+  "nameEn": "Gallery Sou",
+  "category": "craft",
+  "tags": [
+   "gallery",
+   "craft"
+  ],
+  "area": "中島公園",
+  "areaEn": "Nakajima-koen",
+  "address": "札幌市中央区南9条西6丁目1-36",
+  "url": "http://sou.agson.jp/",
+  "what": "2007年に中島公園のそばに開いたギャラリー。大きなガラス窓のある空間で、北海道ゆかりの作家をはじめ工芸や美術の企画展を開く。11時から18時、火曜は休み。",
+  "whatEn": "A gallery opened beside Nakajima Park in 2007, holding exhibitions of craft and art behind tall glass windows. Open 11:00 to 18:00, closed Tuesdays.",
+  "note": "中島公園を歩いたあと、南9条通りの大きな窓へ寄る。",
+  "noteEn": "Stop by the tall windows on Minami 9-jo after walking Nakajima Park.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.04846,
+   141.35092
+  ]
+ },
+ {
+  "name": "喫茶コイケ COFFEE and FOLK",
+  "nameEn": "Kissa Koike COFFEE and FOLK",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "中島公園",
+  "areaEn": "Nakajima-koen",
+  "address": "札幌市中央区南11条西8丁目1-11 フジハイツ1F",
+  "url": "https://www.instagram.com/kissa_koike/",
+  "what": "中島公園通の近くにある喫茶店。自家焙煎の珈琲と、ケーキなど手作りの菓子を出す。",
+  "whatEn": "A kissaten near Nakajima-koen-dori serving house-roasted coffee and homemade cakes.",
+  "note": "浅煎りの珈琲に、焼き菓子やケーキを一皿合わせる。",
+  "noteEn": "Pair a light-roast cup with a slice of homemade cake.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.04555,
+   141.34792
+  ]
+ },
+ {
+  "name": "福ねこSOBA",
+  "nameEn": "Fukuneko SOBA",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "中島公園",
+  "areaEn": "Nakajima-koen",
+  "address": "札幌市中央区南10条西8丁目2-22 ひまわりハイツ1F",
+  "url": "https://www.fneko.net/",
+  "what": "中島公園そばの小さな製麺所が営む手打ちそば処。二八と十割のそばを出し、そば打ち教室も開く。2026年11月に1階へ移った。11時半から15時、金・土曜は休み。",
+  "whatEn": "A small noodle workshop and dining room beside Nakajima Park serving handmade ni-hachi and 100% buckwheat soba, with soba-making classes. Moved to the ground floor in November 2026; open 11:30 to 15:00, closed Fridays and Saturdays.",
+  "note": "新そばの時季なら、そば粉100%の十割を頼みたい。",
+  "noteEn": "In new-buckwheat season, order the 100% buckwheat juwari soba.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.0462,
+   141.34762
+  ]
+ },
+ {
+  "name": "よしぱん",
+  "nameEn": "Yoshipan",
+  "category": "sweets",
+  "tags": [
+   "bread"
+  ],
+  "area": "中島公園",
+  "areaEn": "Nakajima-koen",
+  "address": "札幌市中央区南10条西9丁目2-20 MAISON109 1F",
+  "url": "https://www.instagram.com/yoshipain2018/",
+  "what": "中島公園通の住宅街で、アパート1階の小窓から対面販売する小さなパン屋。炊いた「ゆめぴりか」を練り込んだ食パンやあんぱんを焼く。金・土曜の11時から17時、12月から冬休み。",
+  "whatEn": "A tiny bakery in Nakajima-koen selling through an apartment ground-floor window, baking shokupan kneaded with cooked Yumepirika rice and anpan. Open Fridays and Saturdays, 11:00 to 17:00; closed from December for winter.",
+  "note": "小窓の前で話を聞きながら、ゆめぴりか山を一斤選ぶ。",
+  "noteEn": "Chat at the small window and take a loaf of the rice shokupan.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.0463,
+   141.34548
+  ]
+ },
+ {
+  "name": "COFFEE BEANS & COOKING Co lab.",
+  "nameEn": "COFFEE BEANS & COOKING Co lab.",
+  "category": "local",
+  "industry": "coffee-roasters-kissaten",
+  "tags": [
+   "coffee"
+  ],
+  "area": "琴似",
+  "areaEn": "Kotoni",
+  "address": "札幌市西区琴似1条7丁目3-7",
+  "url": "https://coffeebeanscolab.com/",
+  "what": "琴似1条7丁目の自家焙煎珈琲店。直火式焙煎機で豆を焼き、豆の販売のほか昼から夜まで食事と酒も出す。月曜は休み、土曜は15時から、日曜は16時まで。",
+  "whatEn": "An independent roaster on Kotoni 1-jo 7-chome using a direct-fire roaster, selling beans alongside meals and drinks into the evening. Closed Mondays; opens at 15:00 on Saturdays and closes at 16:00 on Sundays.",
+  "note": "直火焙煎の豆を一袋、絵の描かれた袋ごと選ぶ。",
+  "noteEn": "Pick a bag of direct-fire roasted beans — the artwork on the pouch too.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.07229,
+   141.29845
+  ]
+ },
+ {
+  "name": "レ・カネキヨ（Les KaneKIYOs）",
+  "nameEn": "Les KaneKIYOs",
+  "category": "food",
+  "tags": [
+   "french"
+  ],
+  "area": "琴似",
+  "areaEn": "Kotoni",
+  "address": "札幌市西区琴似2条1丁目3-5 玉田ビル クロスロード琴似1F",
+  "url": "https://www.leskanekiyos.com/",
+  "what": "JR琴似駅近くのフランス料理店。北海道の魚介や秋冬のジビエのコースと、定番の牛ホホ肉のビール煮など。12時から15時と18時から22時、日・月曜は休み（最終日曜は営業）。",
+  "whatEn": "A French restaurant near JR Kotoni Station serving Hokkaido seafood, autumn–winter game courses and beef cheek braised in beer. Open 12:00–15:00 and 18:00–22:00; closed Sundays and Mondays except the last Sunday of the month.",
+  "note": "黒ビールで煮た牛ホホ肉か、冬のジビエを狙う。",
+  "noteEn": "Go for the beef cheek braised in dark beer, or winter game.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.07982,
+   141.30683
+  ]
+ },
+ {
+  "name": "パティスリー倉岡",
+  "nameEn": "Patisserie Kuraoka",
+  "category": "sweets",
+  "tags": [
+   "pastry",
+   "chocolate"
+  ],
+  "area": "琴似",
+  "areaEn": "Kotoni",
+  "address": "札幌市西区八軒1条西1丁目1-1 アルカサーノ琴似1F",
+  "url": "http://www.cake-kuraoka.com/",
+  "what": "JR琴似駅前の洋菓子店。季節の生菓子や焼き菓子、チョコレートを並べる。10時から20時（日曜・祝日は19時まで）、月曜は休み。",
+  "whatEn": "A patisserie right by JR Kotoni Station making seasonal fresh cakes, baked sweets and chocolates. Open 10:00 to 20:00 (until 19:00 on Sundays and holidays), closed Mondays.",
+  "note": "琴似を歩いた帰り、ショーケースから生菓子を一つ。",
+  "noteEn": "Pick one fresh cake from the case on the way back from Kotoni.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   43.08224,
+   141.30847
+  ]
+ }
+]

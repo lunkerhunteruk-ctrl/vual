@@ -1,0 +1,639 @@
+{
+ "slug": "sapporo",
+ "city": {
+  "name": "Sapporo",
+  "nameJa": "札幌",
+  "latitude": "43.1° N",
+  "country": "Hokkaido, Japan",
+  "countryJa": "北海道",
+  "person": "rin",
+  "coords": [
+   43.06194,
+   141.35429
+  ],
+  "intro": "Hokkaido's main city, laid out on the western edge of the Ishikari plain with mountains behind it. Summers stay cool and snow arrives early after autumn. House-roasted coffee and kissaten, sweets made with Hokkaido milk and wheat, craft shops and dining rooms from Maruyama to Nakajima Park and Kotoni, as Rin's picks.",
+  "introJa": "石狩平野の西、山を背に広がる北海道の中心の街。夏は涼しく、秋から冬は空気が澄んで雪が早い。自家焙煎の珈琲と喫茶、北海道の乳製品や小麦の菓子、円山から中島公園、琴似の器の店と食堂を、凛のおすすめで。",
+  "locator": {
+   "en": "In western Hokkaido · on the edge of the Ishikari plain, backed by mountains",
+   "ja": "北海道の西部・石狩平野の端、山を背にした街"
+  },
+  "industries": [
+   {
+    "key": "coffee-roasters-kissaten",
+    "en": "Coffee Roasters & Kissaten Culture",
+    "ja": "自家焙煎珈琲と喫茶文化",
+    "about": "Sapporo has a long-standing independent coffee culture, from classic nel-drip kissaten to small-batch roasters. Shops such as Kotobuki Coffee, Ritaru Coffee and Co lab. roast in-house and serve coffee from morning until late evening.",
+    "aboutJa": "札幌には、ネルドリップの喫茶店と自家焙煎の珈琲店が根づいている。寿珈琲、RITARU COFFEE、Co lab.のように豆を自ら煎り、朝から夜まで一杯を淹れる個人店が街のあちこちにある。",
+    "_src": "Sapporo fostered an independent coffee culture from the 1970s onward, blending classic nel-drip kissaten hospitality with small-batch in-house roasting."
+   },
+   {
+    "key": "hokkaido-dairy-wheat",
+    "en": "Hokkaido Dairy & Wheat Sweets and Bakeries",
+    "ja": "北海道産乳製品・小麦の手作り菓子とパン",
+    "about": "Sapporo's bakers and confectioners turn raw milk from eastern Hokkaido and local wheat and rice into daily breads, soft serve and sweets. Shops such as Maruyama Milk Store use low-temperature pasteurised milk from Betsukai and Hamanaka.",
+    "aboutJa": "札幌の菓子屋やパン屋では、道東の酪農地帯から届く生乳や道産小麦を使って、日々のパンやソフトクリーム、焼き菓子を作る。円山牛乳販売店のように別海町や浜中町の低温殺菌牛乳をそのまま生かす店もある。",
+    "_src": "Local makers turn eastern Hokkaido raw milk and regional wheat varieties such as Haruyokoi into everyday breads, soft serve, and confections."
+   }
+  ]
+ },
+ "places": {
+  "円山牛乳販売店": {
+   "nameEn": "Maruyama Milk Store",
+   "area": "円山",
+   "areaEn": "Maruyama",
+   "tags": [
+    "milk",
+    "sweets",
+    "soft serve"
+   ],
+   "what": "別海町や浜中町の低温殺菌生乳を使った、瓶牛乳と牛乳菓子のテイクアウト専門店。11時から18時、火曜は休み。",
+   "whatEn": "A takeaway shop for bottled milk and dairy sweets made with low-temperature pasteurised raw milk from Betsukai and Hamanaka. Open 11:00 to 18:00, closed Tuesdays.",
+   "note": "果物の入らない、牛乳だけのクレープにする。",
+   "noteEn": "The milk crepe without fruit — just milk and batter.",
+   "address": "札幌市中央区南1条西24丁目1-14",
+   "_src": {
+    "category": "local",
+    "industry": "hokkaido-dairy-wheat",
+    "nameKana": "まるやまぎゅうにゅうはんばいてん",
+    "address": "Minami 1-jo Nishi 24-chome 1-14, Chuo-ku",
+    "url": "https://maruyama-milk-store.com/",
+    "whatJa": "北海道別海町や浜中町の酪農家から直送される低温殺菌生乳を使った、瓶牛乳と手作りスイーツのテイクアウト専門店。",
+    "whatEn": "A takeout dairy and sweets specialty shop in Maruyama using low-temperature pasteurized raw milk shipped directly from farmers in Betsukai and Hamanaka in eastern Hokkaido.",
+    "facts": "Offers two distinct soft serves (light Milk vs rich Milky), aged-batter milk crepes, bottled milk, and Maruyama flagship-exclusive scones; operates two permanent Sapporo locations (Maruyama Honten and Marui Imai Sapporo).",
+    "weak": "",
+    "verifiedBy": "https://maruyama-milk-store.com/news/news-1005/",
+    "quote": "このたび、10月30日（金）〜11月9日（月）の11日間、鶴屋百貨店本館6階 催事場で開催される「大道産子市（北海道物産展)」に出店いたします。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "C'est BO et BON": {
+   "nameEn": "C'est BO et BON",
+   "area": "円山",
+   "areaEn": "Maruyama",
+   "tags": [
+    "pastry",
+    "cake"
+   ],
+   "what": "円山の住宅街にあるフランス菓子の店。ケーキと焼き菓子を並べる。営業は月・金・土・日曜と祝日の12時から19時で、火〜木曜は休み。",
+   "whatEn": "A French patisserie in a quiet part of Maruyama, with cakes and baked sweets. Open Monday, Friday, weekends and holidays from 12:00 to 19:00; closed Tuesday to Thursday.",
+   "note": "生菓子と一緒に、焼き菓子も一つ持って帰る。",
+   "noteEn": "Take a baked sweet home alongside a fresh cake.",
+   "address": "札幌市中央区南7条西24丁目2-3 カルムマルヤマ1F",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "せ ぼ え ぼん",
+    "address": "1F Calme Maruyama, Minami 7-jo Nishi 24-chome 2-3, Chuo-ku",
+    "url": "https://cest-bo-et-bon.com/",
+    "whatJa": "円山エリアの静かな住宅街で、厳選した素材と熟練の技術による本格的なフランス菓子やケーキを提供する個人経営のパティスリー。",
+    "whatEn": "An independent French patisserie in southern Maruyama crafting seasonal petit gateaux and classic baked confections.",
+    "facts": "Single-shop patisserie on Minami 7-jo Nishi 24-chome; specializes in French-style cakes and baked sweets made with selected seasonal ingredients.",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/jungleland1215/entry-12965180214.html",
+    "quote": "中央区南7条西24丁目2-3にある 「パティスリーセ・ボー・エ・ボン」 さんに行って来ました。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "寿珈琲": {
+   "nameEn": "Kotobuki Coffee",
+   "area": "大通・狸小路",
+   "areaEn": "Odori & Tanukikoji",
+   "tags": [
+    "coffee"
+   ],
+   "what": "2007年創業、M's2条横丁の1階にある珈琲店。ネルドリップで一杯ずつ淹れる。月〜土曜は9時から23時、日曜は18時まで、定休なし。",
+   "whatEn": "A coffee shop opened in 2007 on the ground floor of M's Nijo Yokocho, brewing each cup by flannel drip. Open 9:00 to 23:00 Monday to Saturday, until 18:00 on Sundays, with no regular closing day.",
+   "note": "カウンター越しに、ネルから落ちる湯を眺める。",
+   "noteEn": "Watch the hot water drip through the flannel from across the counter.",
+   "address": "札幌市中央区南2条東1丁目1-6 M's2条横丁1F",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "ことぶきこーひー",
+    "address": "1F M's Nijo Yokocho, Minami 2-jo Higashi 1-chome 1-6, Chuo-ku",
+    "url": "https://kotobuki.coffee/",
+    "whatJa": "2007年創業、創成東のM's2条横丁1階でネルドリップによる丁寧な一杯を淹れる落ち着いたカウンター中心の珈琲店。",
+    "whatEn": "An intimate nel-drip coffee shop opened in 2007 inside the retro M's Nijo Yokocho alley on the eastern edge of Odori.",
+    "facts": "Open Monday to Saturday 9:00–17:00; brews exclusively by nel-drip and also hosts coffee workshops and bean wholesale.",
+    "weak": "",
+    "verifiedBy": "https://kotobuki.coffee/news/m-gre2e83bfh",
+    "quote": "このたび、寿珈琲のウェブサイトをリニューアルいたしました。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "おだし食堂": {
+   "nameEn": "Odashi Shokudo",
+   "area": "大通・狸小路",
+   "areaEn": "Odori & Tanukikoji",
+   "tags": [
+    "soup curry"
+   ],
+   "what": "羅臼産の鮭節と羅臼昆布の出汁に、一夜干しの宗八ガレイや美瑛の自社農園の野菜を合わせるスープカレー店。カウンター10席で昼夜各50食、定休なし。",
+   "whatEn": "A soup curry shop using broth of Rausu salmon-bushi and kelp, paired with overnight-dried sohachi flounder and vegetables from its Biei farm. Ten counter seats, 50 bowls each at lunch and dinner, open daily.",
+   "note": "宗八ガレイをスープの中で少しずつほぐして食べる。",
+   "noteEn": "Flake the dried flounder into the broth bit by bit as you eat.",
+   "address": "札幌市中央区南2条西1丁目5-1 第21広和ビル3F",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おだししょくどう",
+    "address": "3F Dai-21 Kowa Bldg, Minami 2-jo Nishi 1-chome 5-1, Chuo-ku",
+    "url": "https://odashishokudo.com/",
+    "whatJa": "羅臼産の鮭節と羅臼昆布から一晩かけて引いた和風だしと道産食材で作る、一日100食限定の割烹スタイル・だしスープカレー店。",
+    "whatEn": "An independent kappo-style soup curry restaurant near Tanukikoji 1-chome serving 100 bowls a day built on Rausu salmon-bushi and kelp broth.",
+    "facts": "Replaces meat with overnight-dried Hokkaido sohachi flounder and ~10 farm-grown pesticide-free vegetables; operates two adjacent shops (Honten and Hanare).",
+    "weak": "",
+    "verifiedBy": "https://odashishokudo.com/2026/10/19/nijo-market-lunch-guide/",
+    "quote": "おだし食堂の本店(狸小路商店街アーケード内)でのランチの選び方は 狸小路エリアのスープカレーランチ活用ガイド 、北海道のスープカレーそのものについては 北海道のスープカレーの成り立ちとお店選びのポイント で紹介しています。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "SATURDAYS Chocolate": {
+   "nameEn": "SATURDAYS Chocolate",
+   "area": "大通・狸小路",
+   "areaEn": "Odori & Tanukikoji",
+   "tags": [
+    "chocolate"
+   ],
+   "what": "2015年に札幌で始まったビーントゥバーのチョコレート工房兼ショップ。2026年11月に南1条西11丁目へ移転し、金〜日曜の10時から17時営業。カフェはなく現金不可。",
+   "whatEn": "A bean-to-bar chocolate workshop and shop started in Sapporo in 2015. It moved to Minami 1-jo Nishi 11-chome in November 2026 and opens Friday to Sunday, 10:00 to 17:00; no cafe, cashless only.",
+   "note": "北海道の日本酒を使った板チョコをまず一枚。",
+   "noteEn": "Start with one of the bars made with Hokkaido sake.",
+   "address": "札幌市中央区南1条西11丁目327-9",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "さたでいず ちょこれーと",
+    "address": "Minami 1-jo Nishi 11-chome 327-9, Chuo-ku",
+    "url": "https://www.saturdayschocolate.com/",
+    "whatJa": "2015年に札幌で誕生したビーントゥーバーチョコレート専門店で、南1条西11丁目の工房兼ショップでカカオ豆から板チョコやドリンクを製造販売。",
+    "whatEn": "A Sapporo-born bean-to-bar chocolate maker founded in 2015, crafting small-batch bars and drinks at its relocated Minami 1-jo factory and store.",
+    "facts": "Won silver awards at the International Chocolate Awards 2026 Asia-Pacific for bars paired with Kamikawa Taisetsu junmai daiginjo sake; runs two Sapporo shops (Garage Factory & Store and Stellar Place Stand).",
+    "weak": "",
+    "verifiedBy": "https://www.saturdayschocolate.com/",
+    "quote": "●【2026年11月6日移転オープン】 SATURDAYS Chocolate GARAGE / Factory & Shopが札幌市中央区南1条西11丁目に移転オープンしました！",
+    "fixes": "whatEn/whatJa: 南1条西11丁目327‐9の新本店はチョコレート工房併設のガレージ・ショップ。公式に「＜カフェなし＞」と明記されており、この所在地でのドリンク製造販売の記述は削除。",
+    "coords": null
+   }
+  },
+  "和田硝子器店（Vaisselle）": {
+   "nameEn": "Wada Glassware (Vaisselle)",
+   "area": "大通・狸小路",
+   "areaEn": "Odori & Tanukikoji",
+   "tags": [
+    "glass",
+    "tableware"
+   ],
+   "what": "飲食店向けのグラスや食器を扱い、家庭向けにも小売りするテーブルウェアの店。11時から18時、日曜は休み。",
+   "whatEn": "A tableware shop supplying glasses and dishes to restaurants and also selling to home cooks. Open 11:00 to 18:00, closed Sundays.",
+   "note": "店の棚に並ぶ業務用のグラスを、家用に一つ選ぶ。",
+   "noteEn": "Pick one restaurant glass from the shelves to use at home.",
+   "address": "札幌市中央区南1条西12丁目4-182 札幌ASビル2F",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "わだがらすきてん ゔぇっせる",
+    "address": "2F Sapporo AS Bldg, Minami 1-jo Nishi 12-chome 4-182, Chuo-ku",
+    "url": "https://www.vaisselle-sapporo.com/",
+    "whatJa": "北海道の飲食店やカフェ向けのプロ仕様グラス・食器を扱い、一般の買い物客も手に取って選べる南1条西12丁目のガラス器・テーブルウェア専門店。",
+    "whatEn": "A glassware and tableware select shop on the west side of Odori supplying Hokkaido cafes and restaurants while welcoming everyday retail visitors.",
+    "facts": "Open 11:00–18:00 (closed Sundays); also offers custom logo-engraved glassware and collaborates with local Sapporo coffee shops.",
+    "weak": "",
+    "verifiedBy": "https://www.vaisselle-sapporo.com/news/2461/",
+    "quote": "今年は１０月１５日からスタート致します。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "リヒト Licht": {
+   "nameEn": "Licht",
+   "area": "大通・狸小路",
+   "areaEn": "Odori & Tanukikoji",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "大通西15丁目のビル2階にある器の店。全国各地の作家による、普段使いの陶磁器を扱う。12時から18時、水・木曜は休み。",
+   "whatEn": "A second-floor tableware shop on Odori Nishi 15-chome carrying everyday ceramics by studio potters from across Japan. Open 12:00 to 18:00, closed Wednesdays and Thursdays.",
+   "note": "白い空間で、平皿の手触りと重みを確かめて選ぶ。",
+   "noteEn": "In the white room, test the glaze and weight of each plate in your hand.",
+   "address": "札幌市中央区大通西15丁目3-6 土井ビル2F",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "りひと",
+    "address": "2F Doi Bldg, Odori Nishi 15-chome 3-6, Chuo-ku",
+    "url": "https://www.instagram.com/licht_utsuwa/",
+    "whatJa": "大通西15丁目のビル2階に佇む、国内外の作家による普段使いの陶磁器や手仕事の作品を紹介する器の専門店・ギャラリー。",
+    "whatEn": "A quiet second-floor ceramic and handcraft gallery shop on Odori Nishi 15-chome curating everyday pottery and tableware by Japanese studio artisans.",
+    "facts": "Named after the German word for 'light'; open 12:00–18:00 (closed Wednesdays and Thursdays) and regularly hosts solo artist exhibitions.",
+    "weak": "",
+    "verifiedBy": "https://moula.jp/articles/life/entry-8522.html",
+    "quote": "白を基調とした静かな空間には、全国各地の実力派作家による器が整然と並びます。",
+    "fixes": "whatJa: 記事で確認できるのは「全国各地の実力派作家による器」。『国内外』は『全国各地』に修正。住所は一致。",
+    "coords": null
+   }
+  },
+  "sabita": {
+   "nameEn": "sabita",
+   "area": "西28丁目",
+   "areaEn": "Nishi 28-chome",
+   "tags": [
+    "ceramics",
+    "antiques",
+    "coffee"
+   ],
+   "what": "白い器を中心に、作家の陶磁器やアンティークの道具、衣類を並べる1階の店と、2階のカフェ。12時から17時（カフェL.O.16時半）、火曜は休み。",
+   "whatEn": "A ground-floor shop of white ceramics, antique tools and clothing, with a cafe upstairs. Open 12:00 to 17:00 (cafe last order 16:30), closed Tuesdays.",
+   "note": "二階のカフェで、売り場と同じ作家の器でお茶を飲む。",
+   "noteEn": "Have tea upstairs in the same makers' vessels sold below.",
+   "address": "札幌市中央区北1条西28丁目2-35 MOMA Place 1F",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "さびた",
+    "address": "1F MOMA Place, Kita 1-jo Nishi 28-chome 2-35, Chuo-ku",
+    "url": "https://sabita.jp/",
+    "whatJa": "白い器を中心に国内外の作家もの陶磁器、アンティーク道具、衣類を扱う1階ショップと、落ち着いた2階カフェからなるセレクトショップ。",
+    "whatEn": "A curated tableware and antiques shop near Nishi 28-chome showcasing white ceramics by contemporary Japanese potters alongside a quiet second-floor cafe.",
+    "facts": "Located inside MOMA Place on Kita 1-jo Nishi 28-chome; regularly hosts solo exhibitions by ceramic and woodcraft artists (closed Tuesdays).",
+    "weak": "",
+    "verifiedBy": "https://moula.jp/articles/life/entry-8522.html",
+    "quote": "併設されたカフェでは、 実際に販売されている作家の器で飲み物やスイーツが提供 されます。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "RITARU COFFEE": {
+   "nameEn": "RITARU COFFEE",
+   "area": "西28丁目",
+   "areaEn": "Nishi 28-chome",
+   "tags": [
+    "coffee"
+   ],
+   "what": "北3条西26丁目の自家焙煎珈琲店。1階で豆を焼き、2階に喫茶室がある。8時半から20時半まで。",
+   "whatEn": "A coffee roaster on Kita 3-jo Nishi 26-chome, roasting downstairs with a cafe room above. Open 8:30 to 20:30.",
+   "note": "行くなら朝に、無料のトーストと深煎りを頼む。",
+   "noteEn": "Go in the morning for a dark roast with the complimentary toast.",
+   "address": "札幌市中央区北3条西26丁目3-8",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "りたるこーひー",
+    "address": "Kita 3-jo Nishi 26-chome 3-8, Chuo-ku",
+    "url": "https://ritaru.com/",
+    "whatJa": "厳選した生豆を自家焙煎し、落ち着いた空間で一杯の珈琲とスイーツを提供する西28丁目エリアの自家焙煎珈琲店。",
+    "whatEn": "An independent specialty coffee roaster and cafe in the Nishi 28-chome neighborhood known for meticulous in-house roasting and baked sweets.",
+    "facts": "Founded around the principle of 'rita' (altruism); operates two Sapporo locations (the Maruyama/Nishi 28-chome flagship and Camellia Cafe in Higashi-ku).",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/vej00707/entry-12953218957.html",
+    "quote": "本日は北円山にある人気の自家焙煎珈琲店「RITARU COFFEE（りたる珈琲）」です。",
+    "fixes": "address: Kita 3-jo Nishi 26-chome 3-8, N2 Bldg, Chuo-ku（番地は一致。放送記事にＮ２ビルと記載）。",
+    "coords": null
+   }
+  },
+  "長命庵": {
+   "nameEn": "Chomeian",
+   "area": "西28丁目",
+   "areaEn": "Nishi 28-chome",
+   "tags": [
+    "soba"
+   ],
+   "what": "昭和55年（1980年）創業の蕎麦店。農薬や化学肥料を使わずに自社栽培・自社製粉した北海道産の韃靼そばを出す。11時から15時、水・日曜と祝日は休み。",
+   "whatEn": "A soba house opened in 1980, growing and milling its own pesticide-free Hokkaido Tartary buckwheat. Open 11:00 to 15:00, closed Wednesdays, Sundays and holidays.",
+   "note": "冷たい韃靼そばせいろで、蕎麦そのものの香りを。",
+   "noteEn": "Order the cold Dattan seiro to taste the buckwheat plainly.",
+   "address": "札幌市中央区北3条西28丁目2-1 サンビルB1F",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ちょうめいあん",
+    "address": "Kita 3-jo Nishi 28-chome 2-1, Chuo-ku",
+    "url": "https://www.choumeian.com/",
+    "whatJa": "創業40年以上、無農薬・化学肥料不使用の北海道産「韃靼そば」を自社栽培・自社製粉・自家製麺で提供する西28丁目の老舗蕎麦店。",
+    "whatEn": "A soba restaurant operating for over 40 years at Nishi 28-chome specializing in pesticide-free Hokkaido Dattan (Tartary buckwheat) grown and milled in-house.",
+    "facts": "Started test-cultivating Tartary buckwheat in Sapporo's Nishi-ku in 1995 (Heisei 7); open 11:00–15:00 for dining (closed Wednesdays, Sundays, and holidays).",
+    "weak": "",
+    "verifiedBy": "https://www.choumeian.com/",
+    "quote": "令和８年９月５・６日の両日、サッポロさとらんど交流館にて 「第２１回　ダッタン新そば祭り」を開催いたします。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "ギャラリー創": {
+   "nameEn": "Gallery Sou",
+   "area": "中島公園",
+   "areaEn": "Nakajima-koen",
+   "tags": [
+    "gallery",
+    "craft"
+   ],
+   "what": "2007年に中島公園のそばに開いたギャラリー。大きなガラス窓のある空間で、北海道ゆかりの作家をはじめ工芸や美術の企画展を開く。11時から18時、火曜は休み。",
+   "whatEn": "A gallery opened beside Nakajima Park in 2007, holding exhibitions of craft and art behind tall glass windows. Open 11:00 to 18:00, closed Tuesdays.",
+   "note": "中島公園を歩いたあと、南9条通りの大きな窓へ寄る。",
+   "noteEn": "Stop by the tall windows on Minami 9-jo after walking Nakajima Park.",
+   "address": "札幌市中央区南9条西6丁目1-36",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "ぎゃらりーそう",
+    "address": "1F U-STAGE, Minami 9-jo Nishi 6-chome 1-36, Chuo-ku",
+    "url": "http://sou.agson.jp/",
+    "whatJa": "2007年に中島公園そばのU-STAGEに誕生し、北海道ゆかりの若手から国内外の作家まで工芸・美術の企画展を開催する独立系ギャラリー。",
+    "whatEn": "An independent art and craft gallery opened in 2007 beside Nakajima Park, presenting curated solo exhibitions of ceramics, paper-cut craft, textiles, and fine art.",
+    "facts": "Housed in a modernist iron-concrete-glass-wood building along Minami 9-jo-dori; open 11:00–18:00 (closed Tuesdays).",
+    "weak": "",
+    "verifiedBy": "http://sou.agson.jp/exhibition/?latest",
+    "quote": "2026.10.24-11.8 小林ちほ展 「可愛い君と」",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "喫茶コイケ COFFEE and FOLK": {
+   "nameEn": "Kissa Koike COFFEE and FOLK",
+   "area": "中島公園",
+   "areaEn": "Nakajima-koen",
+   "tags": [
+    "coffee"
+   ],
+   "what": "中島公園通の近くにある喫茶店。自家焙煎の珈琲と、ケーキなど手作りの菓子を出す。",
+   "whatEn": "A kissaten near Nakajima-koen-dori serving house-roasted coffee and homemade cakes.",
+   "note": "浅煎りの珈琲に、焼き菓子やケーキを一皿合わせる。",
+   "noteEn": "Pair a light-roast cup with a slice of homemade cake.",
+   "address": "札幌市中央区南11条西8丁目1-11 フジハイツ1F",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "きっさこいけ",
+    "address": "1F Fuji Heights, Minami 11-jo Nishi 8-chome 1-11, Chuo-ku",
+    "url": "https://www.instagram.com/kissa_koike/",
+    "whatJa": "2026年3月に中島公園通近くに実店舗を構えた、自家焙煎コーヒーやナポリタン、自家製スイーツと音楽が楽しめるレトロな喫茶店。",
+    "whatEn": "A neighborhood kissaten near Nakajima-koen-dori serving house-roasted coffee, neapolitan pasta, and homemade sweets in a retro space opened in March 2026.",
+    "facts": "Evolved from popular pop-up residencies in Maruyama into a permanent shop inheriting a former kissaten space; open 11:30–20:00 (closed Mondays and Tuesdays).",
+    "weak": "",
+    "verifiedBy": "https://ameblo.jp/ten7777/entry-12982435009.html",
+    "quote": "札幌市中央区の 喫茶やさんです 『喫茶　コイケ』 おやつ気分の午後に お邪魔しました",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "福ねこSOBA": {
+   "nameEn": "Fukuneko SOBA",
+   "area": "中島公園",
+   "areaEn": "Nakajima-koen",
+   "tags": [
+    "soba"
+   ],
+   "what": "中島公園そばの小さな製麺所が営む手打ちそば処。二八と十割のそばを出し、そば打ち教室も開く。2026年11月に1階へ移った。11時半から15時、金・土曜は休み。",
+   "whatEn": "A small noodle workshop and dining room beside Nakajima Park serving handmade ni-hachi and 100% buckwheat soba, with soba-making classes. Moved to the ground floor in November 2026; open 11:30 to 15:00, closed Fridays and Saturdays.",
+   "note": "新そばの時季なら、そば粉100%の十割を頼みたい。",
+   "noteEn": "In new-buckwheat season, order the 100% buckwheat juwari soba.",
+   "address": "札幌市中央区南10条西8丁目2-22 ひまわりハイツ1F",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "ふくねこそば",
+    "address": "1F Himawari Heights, Minami 10-jo Nishi 8-chome 2-22, Chuo-ku",
+    "url": "https://www.fneko.net/",
+    "whatJa": "市電「中島公園通」徒歩3分の小さな製麺所が営む、自家製の二八そばや十割そば、いなりそばを提供する手打ち蕎麦処。",
+    "whatEn": "A small noodle workshop and dining room three minutes from Nakajima-koen-dori tram stop serving handmade ni-hachi and 100% buckwheat juwari soba.",
+    "facts": "Also runs small-group soba-making workshops (up to 4 guests) where participants take home about five servings of freshly cut noodles; lunch dining 11:30–15:00.",
+    "weak": "",
+    "verifiedBy": "https://www.fneko.net/",
+    "quote": "お店は建物の1階です（2026年11月11日に2階から移りました。動画は移転前の道順のため、最後の階段は上がらずに1階のお店へお入りください）。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "よしぱん": {
+   "nameEn": "Yoshipan",
+   "area": "中島公園",
+   "areaEn": "Nakajima-koen",
+   "tags": [
+    "bread"
+   ],
+   "what": "中島公園通の住宅街で、アパート1階の小窓から対面販売する小さなパン屋。炊いた「ゆめぴりか」を練り込んだ食パンやあんぱんを焼く。金・土曜の11時から17時、12月から冬休み。",
+   "whatEn": "A tiny bakery in Nakajima-koen selling through an apartment ground-floor window, baking shokupan kneaded with cooked Yumepirika rice and anpan. Open Fridays and Saturdays, 11:00 to 17:00; closed from December for winter.",
+   "note": "小窓の前で話を聞きながら、ゆめぴりか山を一斤選ぶ。",
+   "noteEn": "Chat at the small window and take a loaf of the rice shokupan.",
+   "address": "札幌市中央区南10条西9丁目2-20 MAISON109 1F",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "よしぱん",
+    "address": "1F MAISON 109, Minami 10-jo Nishi 9-chome 2-20, Chuo-ku",
+    "url": "https://www.instagram.com/yoshipain2018/",
+    "whatJa": "中島公園通の住宅街にある小窓からの対面販売が人気の小さなパン・焼き菓子店で、クロワッサンやチーズケーキ、日替わりマフィンが評判。",
+    "whatEn": "A tiny window-counter bakery in the Nakajima-koen residential district loved by locals for Hokkaido-wheat croissants, cheesecakes, and daily muffins.",
+    "facts": "Uses Hokkaido wheat and organic ingredients; operates mainly late in the week (such as Fridays and Saturdays) with updates posted on Instagram.",
+    "weak": "",
+    "verifiedBy": "https://sodane.hokkaido.jp/tv/202608051200006018.html",
+    "quote": "2018年にオープンした「よしぱん」は、金曜日と土曜日の週2日しか営業していない、知る人ぞ知る人気のパン屋さんです。",
+    "fixes": "住所は公式Instagramのプロフィール「札幌市中央区南10条西9丁目2-20メゾン109」で一致。公式プロフィールには「営業日 金土」「12月〜冬季休業」と記載。",
+    "coords": null
+   }
+  },
+  "COFFEE BEANS & COOKING Co lab.": {
+   "nameEn": "COFFEE BEANS & COOKING Co lab.",
+   "area": "琴似",
+   "areaEn": "Kotoni",
+   "tags": [
+    "coffee"
+   ],
+   "what": "琴似1条7丁目の自家焙煎珈琲店。直火式焙煎機で豆を焼き、豆の販売のほか昼から夜まで食事と酒も出す。月曜は休み、土曜は15時から、日曜は16時まで。",
+   "whatEn": "An independent roaster on Kotoni 1-jo 7-chome using a direct-fire roaster, selling beans alongside meals and drinks into the evening. Closed Mondays; opens at 15:00 on Saturdays and closes at 16:00 on Sundays.",
+   "note": "直火焙煎の豆を一袋、絵の描かれた袋ごと選ぶ。",
+   "noteEn": "Pick a bag of direct-fire roasted beans — the artwork on the pouch too.",
+   "address": "札幌市西区琴似1条7丁目3-7",
+   "_src": {
+    "category": "local",
+    "industry": "coffee-roasters-kissaten",
+    "nameKana": "こーひーらぼ",
+    "address": "Kotoni 1-jo 7-chome 3-7, Nishi-ku",
+    "url": "https://coffeebeanscolab.com/",
+    "whatJa": "琴似神社近くで自家焙煎のスペシャルティコーヒー豆の販売と、丁寧に仕立てた食事・ドリンクを提供する地域密着の小さな珈琲店。",
+    "whatEn": "A small independent roaster and cafe near Kotoni Shrine roasting specialty coffee beans in-house and serving thoughtful meals and drinks.",
+    "facts": "Single-shop neighborhood roastery on Kotoni 1-jo 7-chome; added lunch service in April 2026 and stays open until 23:00 Tue–Sat (closed Mondays).",
+    "weak": "",
+    "verifiedBy": "https://coffeebeanscolab.com/staffblog/本日よりランチ営業スタート/",
+    "quote": "さて、本日から始まるランチメニューです。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "レ・カネキヨ（Les KaneKIYOs）": {
+   "nameEn": "Les KaneKIYOs",
+   "area": "琴似",
+   "areaEn": "Kotoni",
+   "tags": [
+    "french"
+   ],
+   "what": "JR琴似駅近くのフランス料理店。北海道の魚介や秋冬のジビエのコースと、定番の牛ホホ肉のビール煮など。12時から15時と18時から22時、日・月曜は休み（最終日曜は営業）。",
+   "whatEn": "A French restaurant near JR Kotoni Station serving Hokkaido seafood, autumn–winter game courses and beef cheek braised in beer. Open 12:00–15:00 and 18:00–22:00; closed Sundays and Mondays except the last Sunday of the month.",
+   "note": "黒ビールで煮た牛ホホ肉か、冬のジビエを狙う。",
+   "noteEn": "Go for the beef cheek braised in dark beer, or winter game.",
+   "address": "札幌市西区琴似2条1丁目3-5 玉田ビル クロスロード琴似1F",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "れ かねきよ",
+    "address": "1F Crossroad Kotoni Tamada Bldg, Kotoni 2-jo 1-chome 3-5, Nishi-ku",
+    "url": "https://www.leskanekiyos.com/",
+    "whatJa": "JR琴似駅近くで北海道産の旬の食材やジビエ、魚介を使ったこだわりのコース料理を肩肘張らずに楽しめるフランス料理・ビストロ。",
+    "whatEn": "An independent French bistronomy restaurant near JR Kotoni Station highlighting seasonal Hokkaido seafood and autumn–winter game courses.",
+    "facts": "Single-location restaurant serving lunch (12:00–15:00) and dinner (18:00–22:00); runs seasonal Hokkaido game omakase courses from November through January.",
+    "weak": "",
+    "verifiedBy": "https://datazoo.jp/w/レ・カネキヨ/73205891",
+    "quote": "訪れたのはジビエフレンチが食べることができる「レ・カネキヨ」。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "パティスリー倉岡": {
+   "nameEn": "Patisserie Kuraoka",
+   "area": "琴似",
+   "areaEn": "Kotoni",
+   "tags": [
+    "pastry",
+    "chocolate"
+   ],
+   "what": "JR琴似駅前の洋菓子店。季節の生菓子や焼き菓子、チョコレートを並べる。10時から20時（日曜・祝日は19時まで）、月曜は休み。",
+   "whatEn": "A patisserie right by JR Kotoni Station making seasonal fresh cakes, baked sweets and chocolates. Open 10:00 to 20:00 (until 19:00 on Sundays and holidays), closed Mondays.",
+   "note": "琴似を歩いた帰り、ショーケースから生菓子を一つ。",
+   "noteEn": "Pick one fresh cake from the case on the way back from Kotoni.",
+   "address": "札幌市西区八軒1条西1丁目1-1 アルカサーノ琴似1F",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱてぃすりーくらおか",
+    "address": "1F Arcasano Kotoni, Hachiken 1-jo Nishi 1-chome 1-1, Nishi-ku",
+    "url": "http://www.cake-kuraoka.com/",
+    "whatJa": "JR琴似駅すぐそばで、定番のショートケーキやシュークリーム、季節のフルーツを使った生菓子・焼菓子・チョコレートを手掛ける地元の洋菓子店。",
+    "whatEn": "A longtime neighborhood patisserie directly beside JR Kotoni Station offering seasonal fresh cakes, choux cream, baked sweets, and chocolates.",
+    "facts": "Single-shop patisserie established in Kotoni since at least 2010; closed Mondays (except when Monday is a public holiday).",
+    "weak": "",
+    "verifiedBy": "http://www.cake-kuraoka.com/news/temporary-closed_20261124/",
+    "quote": "さて、誠に勝手ながら 「2026年11月24日(火)」 は店舗内の設備点検のため臨時の休業日とさせていただきます。",
+    "fixes": "",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "札幌市時計台",
+   "nameEn": "Sapporo Clock Tower",
+   "kind": "sight",
+   "area": "大通",
+   "areaEn": "Odori",
+   "address": "札幌市中央区北1条西2丁目",
+   "url": "https://sapporoshi-tokeidai.jp/",
+   "what": "1878年（明治11年）に旧札幌農学校の演武場として建てられた木造建築で、国の重要文化財。毎正時に時計の鐘が鳴り、館内は資料館として公開されている。8時45分から17時10分（入館は17時まで）、年始1月1日〜3日は休館。",
+   "whatEn": "A wooden building put up in 1878 as the drill hall of the Sapporo Agricultural College, a national Important Cultural Property. Its clock bell chimes on the hour and the interior is open as a museum. Open 8:45 to 17:10 (last entry 17:00); closed January 1 to 3.",
+   "coords": [
+    43.06255,
+    141.35364
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://sapporoshi-tokeidai.jp/ および /inspect/guide.php : 住所 札幌市中央区北1条西2丁目、開館 8:45〜17:10（入館17:00まで）、休館 年始1月1日〜1月3日、国指定重要文化財（旧札幌農学校演武場）、2026年10月16日で創建148年（1878年）。2026年11月更新あり。",
+   "_coordsSource": "OSM way 64747104（札幌市時計台 tourism=museum）"
+  },
+  {
+   "name": "北海道庁旧本庁舎（赤れんが庁舎）",
+   "nameEn": "Former Hokkaido Government Office (Red Brick Office)",
+   "kind": "sight",
+   "area": "大通",
+   "areaEn": "Odori",
+   "address": "札幌市中央区北3条西6丁目1",
+   "url": "https://www.hokkaido-redbrick.jp/",
+   "what": "1888年（明治21年）竣工のれんが造の旧道庁本庁舎で、国の重要文化財。5年余りの大規模改修を終えて開館し、北海道の歴史や文化の展示、八角塔などを公開している。8時45分から21時（最終入館20時30分）。",
+   "whatEn": "The brick former Hokkaido government building completed in 1888, a national Important Cultural Property. Open after more than five years of restoration, with displays on Hokkaido's history and culture and access to the octagonal tower. Open 8:45 to 21:00 (last entry 20:30).",
+   "coords": [
+    43.06397,
+    141.34802
+   ],
+   "notice": "11月15日（日）と年末年始（12月29日〜1月3日）は休館。",
+   "noticeEn": "Closed on Sunday, November 15, and over year-end and New Year (December 29 to January 3).",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.hokkaido-redbrick.jp/ および /information/ /about/ : 札幌市中央区北3条西6丁目1番地、明治21（1888）年竣工、国の重要文化財。開館 8:45〜21:00（最終入館20:30）、休館 2026年11月15日（日）・12月29日〜1月3日。",
+   "_coordsSource": "OSM way 36331476（北海道庁旧本庁舎 building=public）"
+  },
+  {
+   "name": "豊平館",
+   "nameEn": "Hoheikan",
+   "kind": "sight",
+   "area": "中島公園",
+   "areaEn": "Nakajima-koen",
+   "address": "札幌市中央区中島公園1番20号",
+   "url": "https://www.s-hoheikan.jp/",
+   "what": "明治13年（1880年）に開拓使直営の洋風ホテルとして建てられ、昭和33年（1958年）に中島公園内へ移築された国の重要文化財。白い外壁を群青色の縁取りが彩る木造建築。9時から17時（入館は16時30分まで）、毎月第2火曜と年末年始は休館。",
+   "whatEn": "Built in 1880 as a Western-style hotel by the Hokkaido Development Commission and moved into Nakajima Park in 1958; a national Important Cultural Property in wood with ultramarine trim on white walls. Open 9:00 to 17:00 (last entry 16:30), closed the second Tuesday of each month and December 29 to January 3.",
+   "coords": [
+    43.04629,
+    141.35258
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.s-hoheikan.jp/ : 札幌市中央区中島公園1番20号、1880年建築、1958年中島公園へ移築、1964年国の重要文化財指定。開館 9:00〜17:00（入館16:30まで）、毎月第2火曜・年末年始（12/29〜1/3）休館。2026年11月更新あり。",
+   "_coordsSource": "OSM way 352271889（豊平館 building=yes）"
+  },
+  {
+   "name": "北海道立近代美術館",
+   "nameEn": "Hokkaido Museum of Modern Art",
+   "kind": "art",
+   "area": "西18丁目",
+   "areaEn": "Nishi 18-chome",
+   "address": "札幌市中央区北1条西17丁目",
+   "url": "https://artmuseum.pref.hokkaido.lg.jp/knb/",
+   "what": "北1条西17丁目にある道立美術館。北海道の美術や日本近代の美術のほか、エコール・ド・パリやガラス工芸を収蔵・展示する。9時30分から17時（入場は16時30分まで）。",
+   "whatEn": "The prefectural art museum on Kita 1-jo Nishi 17-chome, collecting and showing Hokkaido art, modern Japanese art, the School of Paris and glasswork. Open 9:30 to 17:00 (last entry 16:30).",
+   "coords": [
+    43.06007,
+    141.33042
+   ],
+   "notice": "休館日は月曜（祝日の場合は翌平日）、展示替期間、年末年始（12月29日〜1月3日）。",
+   "noticeEn": "Closed Mondays (or the following weekday if a holiday), during exhibition changes, and December 29 to January 3.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://artmuseum.pref.hokkaido.lg.jp/knb/ および /knb/guide /knb/collection : 札幌市中央区北1条西17丁目、開館 9:30-17:00（入場16:30まで）、月曜休館（祝日時は翌平日）・年末年始（2026/12/29-2027/1/3）・展示替期間等。2026.9.12〜12.20 特別展開催中。",
+   "_coordsSource": "OSM way 1060534182（北海道立近代美術館 tourism=museum）"
+  },
+  {
+   "name": "北海道大学総合博物館",
+   "nameEn": "The Hokkaido University Museum",
+   "kind": "art",
+   "area": "北大キャンパス",
+   "areaEn": "Hokkaido University",
+   "address": "札幌市北区北10条西8丁目",
+   "url": "https://www.museum.hokudai.ac.jp/",
+   "what": "1929年（昭和4年）竣工の旧理学部本館を使った大学博物館。札幌農学校以来の歴史や各学部の研究、学術標本を無料で公開している。10時から17時、月曜（祝日の場合は翌平日）と年末年始は休館。",
+   "whatEn": "A university museum in the 1929 former Faculty of Science main building, showing the history of Sapporo Agricultural College, research across its faculties and academic specimens, with free admission. Open 10:00 to 17:00, closed Mondays (or the following weekday if a holiday) and December 28 to January 4.",
+   "coords": [
+    43.0726,
+    141.34221
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.museum.hokudai.ac.jp/open /display/ /outline/building/ : 札幌市北区北10条西8、1929年11月完成の旧理学部本館、入館無料、開館 10:00-17:00、休館 月曜（祝日は翌平日）・12/28-1/4。2026年11月更新あり。",
+   "_coordsSource": "OSM way 192083649（北海道大学総合博物館 tourism=museum）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "ベーカリーパオン",
+   "verdict": "doubt",
+   "reason": "公式本文に11月の休業案内はあるが年の明記がない。©2005-2026は根拠から除外。公式ブログはcurlで本文取得不可。住所と北海道産小麦・自家製酵母の説明は一致。"
+  },
+  {
+   "name": "wake cafe",
+   "verdict": "doubt",
+   "reason": "公式サイトの住所・自家焙煎珈琲・焼きチーズカレーは一致するが、営業・モーニングの案内は年のない記述。公式ブログはcurlで本文取得不可。2026年の日付付き営業本文を確認できない。 公式Instagramもプロフィールのみ取得でき、2026年の投稿本文は取得できない。"
+  },
+  {
+   "name": "CAFÉ RANBAN",
+   "verdict": "doubt",
+   "reason": "公式サイトの11月の新豆は年のない記述で、FC2026は商品名の一部。2026年の日付付き営業告知は確認できない。"
+  }
+ ]
+}

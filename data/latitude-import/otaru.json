@@ -1,0 +1,562 @@
+{
+ "slug": "otaru",
+ "city": {
+  "name": "Otaru",
+  "nameJa": "小樽",
+  "latitude": "43.2° N",
+  "country": "Hokkaido, Japan",
+  "countryJa": "北海道",
+  "person": "rin",
+  "coords": [
+   43.19068,
+   140.9946
+  ],
+  "intro": "A port town on the Sea of Japan, once Hokkaido's gateway, lined with stone warehouses along the canal. Studio glass and an old sake brewery, ceramics and coffee in coastal Hariusu, and soba and sweets around the station: Rin's picks.",
+  "introJa": "日本海に面した北海道の玄関口だった港町。運河沿いの石造倉庫、吹きガラスと造り酒屋、海辺の張碓の器と珈琲、駅まわりの蕎麦と菓子を、凛のおすすめで。",
+  "locator": {
+   "en": "On Hokkaido's west coast · a hillside port town on the Sea of Japan",
+   "ja": "北海道の西海岸・日本海に面した坂の港町"
+  },
+  "industries": [
+   {
+    "key": "otaru-glass",
+    "en": "Otaru Glassware",
+    "ja": "小樽硝子",
+    "about": "Glassmaking in Otaru grew from oil lamps and the glass floats made for herring fishing, with Asahara Glass opening in 1903. Today studios such as Asahara and The Glass Studio in Otaru still blow tableware and floats by hand.",
+    "aboutJa": "小樽のガラス作りは、1903年創業の浅原硝子製造所のように、石油ランプやニシン漁のガラス浮き玉から始まった。いまも浅原硝子やザ・グラス・スタジオなどの工房が、食器や浮き玉を手で吹いている。",
+    "_src": "Born from oil lamps and glass fishing floats for Hokkaido's herring industry, studio glassblowing remains Otaru's signature craft."
+   },
+   {
+    "key": "otaru-sake",
+    "en": "Port Sake Brewing",
+    "ja": "小樽の酒造",
+    "about": "Today Tanaka Sake Brewery, founded in 1899, is Otaru's sole remaining sake brewer. At its Kikkogura warehouse it draws snowmelt groundwater from Mount Tengu and brews year-round with Hokkaido rice.",
+    "aboutJa": "いま小樽に残る唯一の造り酒屋が、1899年創業の田中酒造。亀甲蔵では天狗山の雪解け水の伏流水を汲み上げ、北海道産の米を使って一年を通して酒を仕込む。",
+    "_src": "Cold winters, snowy mountain meltwater, and historic port trade shaped Otaru's traditional sake breweries."
+   }
+  ]
+ },
+ "places": {
+  "田中酒造 亀甲蔵": {
+   "nameEn": "Tanaka Sake Brewery Kikkogura",
+   "area": "南小樽",
+   "areaEn": "Minami-Otaru",
+   "tags": [
+    "sake"
+   ],
+   "what": "明治32年（1899年）創業の田中酒造が、信香町に構える酒蔵。北海道産米と天狗山の伏流水で一年を通して「宝川」などを仕込み、無料の見学と試飲ができる。9時05分から17時55分、年中無休。",
+   "whatEn": "The Nobukacho brewery of Tanaka Sake Brewery, founded in 1899. It brews Takaragawa and other sake year-round with Hokkaido rice and Mt. Tengu groundwater, with free viewing and tastings. Open 9:05 am to 5:55 pm, every day.",
+   "note": "試飲では「宝川」と、しぼりたての生原酒を比べる。",
+   "noteEn": "At the tasting counter, compare Takaragawa with the freshly pressed nama-genshu.",
+   "_src": {
+    "category": "local",
+    "industry": "otaru-sake",
+    "nameKana": "たなかしゅぞう きっこうぐら",
+    "address": "小樽市信香町2-2",
+    "url": "https://tanakashuzo.com/access/",
+    "whatJa": "明治32年（1899年）創業の老舗酒蔵で、北海道産米と天狗山の伏流水を使い石造りの蔵で一年を通じて仕込みを行う。",
+    "whatEn": "Historic working sake brewery founded in 1899 where Hokkaido rice and Mt. Tengu meltwater are brewed year-round inside stone warehouses.",
+    "facts": "Representative label is Takaragawa; stone Kikkogura warehouse is a designated Otaru historic building; offers free brewery viewing and tastings.",
+    "weak": "",
+    "verifiedBy": "https://tanakashuzo.com/news/%e3%81%8a%e3%81%9f%e3%82%8b%e6%a2%85%e9%85%92%e7%a5%ad%e3%82%8a2026/",
+    "quote": "毎年、多くの皆様よりご好評いただいている「おたる梅酒祭り 2026」を今年も開催いたします。",
+    "fixes": "Event dates April 17–May 6, 2026; venue explicitly includes 田中酒造 亀甲蔵（小樽市信香町２番２号）. Official access/water pages confirm 1899 founding, year-round Hokkaido-rice brewing, and Mt. Tengu snowmelt groundwater drawn from approximately 70 m underground. Address and description match.",
+    "coords": null
+   }
+  },
+  "浅原硝子製造所": {
+   "nameEn": "Asahara Glass",
+   "area": "南小樽",
+   "areaEn": "Minami-Otaru",
+   "tags": [
+    "glass",
+    "tableware"
+   ],
+   "what": "明治36年（1903年）創業、天神の硝子製造所。漁業用のガラス浮き玉を国内で唯一作り続け、リサイクルガラスの食器やキャンドルも吹く。土日は休みで、吹きガラス体験は要予約。",
+   "whatEn": "A glassworks in Tenjin founded in 1903, still the sole maker of glass fishing floats in Japan, also blowing recycled-glass tableware and candles. Closed Saturdays and Sundays; glassblowing sessions require booking.",
+   "note": "浮き玉と、リサイクルガラスの普段のコップを手に取る。",
+   "noteEn": "Pick up a fishing float and one of the everyday recycled-glass tumblers.",
+   "_src": {
+    "category": "local",
+    "industry": "otaru-glass",
+    "nameKana": "あさはらがらすせいぞうしょ",
+    "address": "小樽市天神1-13-20",
+    "url": "https://asaharaglass.com/",
+    "whatJa": "明治36年（1903年）創業の老舗硝子製造所で、小樽伝統のガラス浮き玉やリサイクルガラスの食器を今も吹き続けている。",
+    "whatEn": "Long-running glass manufacturer founded in 1903 that still hand-blows traditional glass fishing floats and recycled-glass tableware.",
+    "facts": "Uses recycled glass including fluorescent-tube cullet since 2009; produces ukidama floats, candle holders for Otaru Snow Light Path, and ECO tableware; studio shop and blowing workshops on site.",
+    "weak": "",
+    "verifiedBy": "https://www.chiba-tv.com/plus/detail/amp/2026081881344",
+    "quote": "北海道小樽市の「浅原硝子製造所」は、全国で唯一、ガラス製の漁業用浮き玉を製造している。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "ザ・グラス・スタジオ イン オタル": {
+   "nameEn": "The Glass Studio in Otaru",
+   "area": "南小樽",
+   "areaEn": "Minami-Otaru",
+   "tags": [
+    "glass",
+    "tableware"
+   ],
+   "what": "天狗山のふもと、最上にある吹きガラス工房。工房で作るガラス器や作家の作品を直売し、吹きガラス体験も開く。10時から18時（11〜3月は17時まで）、火曜は休み。",
+   "whatEn": "A glassblowing studio in Mogami at the foot of Mt. Tengu, selling its own glassware and pieces by makers alongside blowing sessions. Open 10 am to 6 pm (to 5 pm, November to March), closed Tuesdays.",
+   "note": "作家もののグラスを一つ、光に透かして選びたい。",
+   "noteEn": "Hold one of the makers' glasses up to the light to choose.",
+   "_src": {
+    "category": "local",
+    "industry": "otaru-glass",
+    "nameKana": "ざ・ぐらす・すたじお いん おたる",
+    "address": "小樽市最上2-16-16",
+    "url": "https://www.glassstudio-otaru.com/",
+    "whatJa": "天狗山のふもとに構える吹きガラス工房で、自社制作のガラス器や作家作品を直売しつつ吹きガラス体験も行う。",
+    "whatEn": "Independent glassblowing studio at the foot of Mt. Tengu producing original hand-blown vessels and artist pieces for sale alongside workshops.",
+    "facts": "Located in Mogami residential hills above Minami-Otaru; open 10:00–18:00 (Apr–Oct) / 10:00–17:00 (Nov–Mar), closed Tuesdays; showcases works by resident glassblowers.",
+    "weak": "",
+    "verifiedBy": "https://www.timesclub.jp/benefit/shop/shopping/detail.jsp?shop=S000042390",
+    "quote": "天狗山山麓にある小樽ガラスの手造り工房です。吹きガラス体験やオリジナル制作も行っております。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "小樽窯 白勢陶園": {
+   "nameEn": "Otarugama Shirose Toen",
+   "area": "南小樽",
+   "areaEn": "Minami-Otaru",
+   "tags": [
+    "ceramics",
+    "tableware"
+   ],
+   "what": "明治32年（1900年）開窯、2025年に5代目が再始動した入船の窯元。緑玉織部や雪志野、伊羅保などの釉薬で日常の器を作る。窯元での販売は不定休。",
+   "whatEn": "A kiln in Irifune originally opened in 1900 and restarted by its fifth-generation potter in 2025, firing everyday vessels in glazes such as Ryokugyoku Oribe, Yukishino and Irabo. Irregular days at the kiln.",
+   "note": "緑玉織部の湯呑みと、ざらりとした伊羅保の皿を見比べる。",
+   "noteEn": "Compare the Ryokugyoku Oribe teacups with the rough-textured Irabo plates.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "おたるがま しろせとうえん",
+    "address": "小樽市入船4-31-19",
+    "url": "https://otarugamashirosetoen.shop/",
+    "whatJa": "1900年開窯の歴史を受け継ぎ5代目が再始動した小樽焼の窯元で、雪や森や海を映す釉薬の器を制作している。",
+    "whatEn": "Historic Otaru pottery kiln originally opened in 1900 and revived by its fifth generation with glazes evoking Hokkaido snow, forest, and sea.",
+    "facts": "Reopened in 2025 by the fifth-generation potter; signature glazes include Ryokugyoku Oribe (blue-green), white, and Irabo; irregular hours at the Irifune kiln.",
+    "weak": "",
+    "verifiedBy": "https://otarugamashirosetoen.shop/2026/04/14/%e5%b7%a5%e6%88%bf%e3%81%8b%e3%82%89%e3%81%ae%e4%be%bf%e3%82%8a%e3%82%92instagram%e3%81%a7/",
+    "quote": "工房で過ごすちいさな日々と、いただくご縁への感謝をInstagramで綴っています。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "小樽百貨 UNGA↑": {
+   "nameEn": "UNGAPLUS",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "tags": [
+    "ceramics",
+    "glass",
+    "craft"
+   ],
+   "what": "旧小樽倉庫に入る店。1・2階を4つの蔵に分け、小樽のオリジナル品や北海道の作家の器・ガラス、北前船の寄港地の品を扱う。10時から18時。",
+   "whatEn": "A shop inside the Former Otaru Warehouse. Across four storehouse rooms on two floors, it carries original Otaru goods, ceramics and glass by Hokkaido makers, and wares from Kitamaebune ports. Open 10 am to 6 pm.",
+   "note": "1階の「弍の倉」で、道内の作家の器をゆっくり見る。",
+   "noteEn": "Take time in Ni no Kura on the ground floor for vessels by Hokkaido makers.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "おたるひゃっか うんがぷらす",
+    "address": "小樽市色内2-1-20",
+    "url": "https://unga-plus.com/",
+    "whatJa": "北海道初の営業倉庫「旧小樽倉庫本庫」にあり、道内作家の器やガラス工芸、北前船ゆかりの良品を2階ギャラリーとともに紹介する。",
+    "whatEn": "Craft shop and second-floor exhibition gallery inside Hokkaido's first commercial warehouse, curating Hokkaido ceramics, glass, and Kitamaebune-route goods.",
+    "facts": "Housed in the historic Former Otaru Warehouse along the canal; features ceramicists and glass artists from Otaru and across Hokkaido plus rotating solo exhibitions upstairs.",
+    "weak": "",
+    "verifiedBy": "https://unga-plus.com/blogs/news/%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E5%8B%9F%E9%9B%86%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B",
+    "quote": "UNGAPLUSでは、新しいスタッフを募集しております。",
+    "fixes": "whatEn/whatJa: describe the current four spaces: original Otaru goods and Hokkaido artists on 1F; original apparel in 2F 参の倉 and goods from Kitamaebune ports in 2F 四の倉. The official homepage no longer describes the whole second floor as an exhibition gallery. Address matches.",
+    "coords": null
+   }
+  },
+  "yukimichi": {
+   "nameEn": "yukimichi",
+   "area": "朝里",
+   "areaEn": "Asari",
+   "tags": [
+    "ceramics",
+    "coffee",
+    "everyday"
+   ],
+   "what": "海と山に囲まれた張碓町の、器と暮らしの道具、喫茶の店。手仕事の器や日用品が並び、喫茶では作家の器でコーヒーとお菓子を出す。11時から17時、水・木・金曜は休み。",
+   "whatEn": "A shop for vessels, daily goods and tea in Hariusu, between sea and hills. Alongside handmade pottery and household things, the café serves coffee and sweets on makers' ware. Open 11 am to 5 pm, closed Wednesdays to Fridays.",
+   "note": "器を見たあとは、作家のカップでコーヒーとおやつを。",
+   "noteEn": "After browsing the shelves, sit down for coffee and a sweet in a maker's cup.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "ゆきみち",
+    "address": "小樽市張碓町560-24",
+    "url": "https://yukimichi-otaru.com/",
+    "whatJa": "海と山に囲まれた張碓町に佇む器と暮らしの道具の店で、全国各地の作家の陶器や日用品を揃え2階では作家の器で喫茶も楽しめる。",
+    "whatEn": "Hillside shop and upstairs tearoom in coastal Hariusu curating everyday handmade pottery, glass, baskets, and textiles by artists across Japan.",
+    "facts": "Opened in November 2016; selects functional ceramics, glass, and woven baskets tested by the owner; upstairs cafe serves coffee and sweets in artist-made vessels.",
+    "weak": "",
+    "verifiedBy": "https://yukimichi-otaru.com/diary/2026/11/05/12061.html",
+    "quote": "14日(土)から、またよろしくお願いします🙇‍♀️",
+    "fixes": "Temporary break November 7–10 for an aikido event and equipment work; reopening announced for November 14. Address and general shop/cafe description match; the homepage does not specify an upstairs tearoom.",
+    "coords": null
+   }
+  },
+  "小樽 蕎麦屋 籔半": {
+   "nameEn": "Otaru Sobaya Yabuhan",
+   "area": "小樽駅周辺",
+   "areaEn": "Otaru Station",
+   "tags": [
+    "soba"
+   ],
+   "what": "昭和29年（1954年）創業、稲穂の蕎麦屋。道産の地物粉と並粉の2種の麺を選べる。11時15分から14時30分と17時から20時、火・水曜は休み。",
+   "whatEn": "A soba restaurant in Inaho founded in 1954, offering noodles milled from either local Hokkaido buckwheat or standard flour. Open 11:15 am to 2:30 pm and 5 pm to 8 pm, closed Tuesdays and Wednesdays.",
+   "note": "石蔵の座敷で、地物粉の冷たいせいろを一枚。",
+   "noteEn": "In the stone-storehouse tatami room, one cold seiro made with local buckwheat.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "おたる そばや やぶはん",
+    "address": "小樽市稲穂2-19-14",
+    "url": "https://yabuhan.co.jp/",
+    "whatJa": "昭和29年（1954年）創業の手打ち蕎麦の老舗で、道産そば粉を使った風味豊かな蕎麦を歴史的建材を用いた趣ある空間で味わえる。",
+    "whatEn": "Long-loved handmade soba restaurant founded in 1954 serving Hokkaido buckwheat noodles inside a timber-framed dining room built with historic architectural elements.",
+    "facts": "Offers both Hokkaido-milled soba and local dishes such as duck seiro and herring soba; seat reservations are capped at 6 guests with a small fee and unavailable on weekend/holiday lunches.",
+    "weak": "",
+    "verifiedBy": "https://yabuhan.co.jp/",
+    "quote": "四季の酒 秋が決まりました。まず一本目はこちら。",
+    "fixes": "Soba flour: official page distinguishes 地物粉 from Farmtopia in Rankoshi, Hokkaido, and 並粉. Avoid implying that every noodle option uses Hokkaido flour.",
+    "coords": null
+   }
+  },
+  "オステリア・イル・ぴあっと・ヌォーボ": {
+   "nameEn": "Osteria il Piatto Nuovo",
+   "area": "南小樽",
+   "areaEn": "Minami-Otaru",
+   "tags": [
+    "italian",
+    "pasta"
+   ],
+   "what": "東雲町のイタリア料理店。旬の魚や肉を使った料理と手作りのパスタ、ワインを昼と夜に出す。11時30分から14時30分と17時から22時、水曜は休み。",
+   "whatEn": "An Italian osteria in Shinonome-cho serving handmade pasta, seasonal fish and meat dishes, and wine at lunch and dinner. Open 11:30 am to 2:30 pm and 5 pm to 10 pm, closed Wednesdays.",
+   "note": "昼のランチセットで、手作りのパスタを一皿。",
+   "noteEn": "At lunch, a plate of the handmade pasta.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "おすてりあ・いる・ぴあっと・ぬぉーぼ",
+    "address": "小樽市東雲町2-3",
+    "url": "https://osteriailpiattonuovo.com/",
+    "whatJa": "小樽や後志エリアの旬の魚介・野菜を使った手作りイタリアンと北海道ワインを楽しめる、地元で親しまれるオステリア。",
+    "whatEn": "Neighborhood Italian osteria serving handmade pasta, seafood, and Hokkaido wines built around seasonal produce from Otaru and the Shiribeshi region.",
+    "facts": "Offers both accessible lunch sets and course dining; known for locally sourced seafood pasta and curated wine pairings.",
+    "weak": "",
+    "verifiedBy": "https://otaru-city.note.jp/n/n3bf0e931332f",
+    "quote": "会場はイタリアレストラン「オステリア・イル・ぴあっと・ヌォーボ」。",
+    "fixes": "Official site confirms handmade Italian food, seasonal meat/fish/pasta and the address. It describes premium wines without asserting Hokkaido-only wines or specifically Otaru/Shiribeshi sourcing; remove those unsupported specifics from whatEn/whatJa.",
+    "coords": null
+   }
+  },
+  "Bistrot Blanche": {
+   "nameEn": "Bistrot Blanche",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "tags": [
+    "french",
+    "italian"
+   ],
+   "what": "色内の、大正時代の洋館を改装したビストロ。北海道の食材を使ったイタリア・フランス料理。2026年10月から夜のみの営業（17時から22時）になり、火曜と不定休。",
+   "whatEn": "A bistro in a renovated Taisho-era Western building in Ironai, cooking Italian and French dishes with Hokkaido ingredients. Since October 2026 it opens for dinner only (5 pm to 10 pm); closed Tuesdays and irregular days.",
+   "note": "夕方から開く洋館で、道産の魚介や鹿肉をゆっくり食べる。",
+   "noteEn": "In the evening, slow down over Hokkaido seafood or venison inside the old Western house.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "びすとろ ぶらんしゅ",
+    "address": "小樽市色内1-9-10",
+    "url": "https://bistrotblanche-otaru.com/",
+    "whatJa": "北のウォール街と呼ばれた色内の歴史的建造物群の一角、大正時代の洋館を改装した空間で欧風料理を提供するビストロ。",
+    "whatEn": "French-Italian bistro set inside a renovated Taisho-era brick Western-style building in Otaru's historic financial quarter.",
+    "facts": "Housed in a Taisho-era masonry building; focuses on Hokkaido mountain and coastal ingredients; shifted to dinner-focused service from October 2026.",
+    "weak": "",
+    "verifiedBy": "https://bistrotblanche-otaru.com/",
+    "quote": "2026年10月よりランチタイムを終了し その分、夜の営業を長めにする予定です。詳細はまた改めて申し上げます。",
+    "fixes": "Address and Taisho-era renovated building match; current site explicitly states lunch is no longer offered and dinner is 17:00–22:00 (last order 20:30).",
+    "coords": null
+   }
+  },
+  "COTARU": {
+   "nameEn": "COTARU",
+   "area": "小樽駅周辺",
+   "areaEn": "Otaru Station",
+   "tags": [
+    "soup curry",
+    "soft serve"
+   ],
+   "what": "小樽駅と運河のあいだ、稲穂のカフェ。店で仕込む約20種のスパイスのスープカレーと、十勝・広尾町の牛乳を使ったソフトクリームを出す。10時から18時（季節で変動）、不定休。",
+   "whatEn": "A café in Inaho between Otaru Station and the canal, making soup curry with around twenty spices and soft serve from Hiroo, Tokachi milk. Open 10 am to 6 pm (seasonal hours), irregular holidays.",
+   "note": "スープカレーのあとに、十勝の牛乳のソフトクリーム。",
+   "noteEn": "After the soup curry, a soft serve made with Tokachi milk.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "こたる",
+    "address": "小樽市稲穂3-1-1",
+    "url": "https://www.cotaru.co/",
+    "whatJa": "小樽駅から徒歩5分の場所にあり、20種類のスパイスを仕込んだ自家製スープカレーと十勝産ミルクのソフトクリームを提供する。",
+    "whatEn": "Independent cafe-restaurant five minutes from Otaru Station making 20-spice Hokkaido soup curry and house-made Tokachi milk soft serve.",
+    "facts": "Open 10:00–18:00 with irregular holidays; soup curry is simmered in-house with 20 spices and paired with soft serve made from Tokachi milk.",
+    "weak": "",
+    "verifiedBy": "https://www.cotaru.co/post/cotaru-recruit-2026",
+    "quote": "小樽駅から歩いて行けるカフェ＆レンタサイクル店で、2026年シーズンのスタッフ（アルバイト・パート）を募集",
+    "fixes": "whatEn/whatJa: use approximately 20 spices (約20種), as stated on the homepage. Address matches; milk is from Kikuchi Farm in Hiroo, Tokachi.",
+    "coords": null
+   }
+  },
+  "小樽あまとう 本店": {
+   "nameEn": "Otaru Amato",
+   "area": "小樽駅周辺",
+   "areaEn": "Otaru Station",
+   "tags": [
+    "sweets",
+    "coffee"
+   ],
+   "what": "昭和4年（1929年）創業、小樽都通り商店街の洋菓子店と喫茶。1階で手作りの「マロンコロン」などを売り、2階の喫茶では60年以上続く「クリームぜんざい」を出す。水・木曜は休み。",
+   "whatEn": "A confectioner and upstairs café in Miyako-dori Arcade founded in 1929. Handmade Maron Koron cookies are sold downstairs, and the sixty-year-old Cream Zenzai is served on the second floor. Closed Wednesdays and Thursdays.",
+   "note": "2階の喫茶でクリームぜんざいを食べて、帰りにマロンコロン。",
+   "noteEn": "Cream Zenzai in the upstairs tearoom, and Maron Koron to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "おたるあまとう ほんてん",
+    "address": "小樽市稲穂2-16-18",
+    "url": "https://otaru-amato.com/",
+    "whatJa": "昭和4年（1929年）創業の老舗洋菓子・喫茶店で、マロンコロンやクリームぜんざいが小樽のソウルフードとして親しまれている。",
+    "whatEn": "Classic Otaru patisserie and upstairs kissaten founded in 1929, famous locally for Maron Koron cookies and Cream Zenzai.",
+    "facts": "Located inside Miyako-dori shopping arcade; now operates solely from this flagship shop with retail on 1F and a retro tearoom on 2F.",
+    "weak": "",
+    "verifiedBy": "https://www.hotpepper.jp/strJ001066968/",
+    "quote": "小樽に来たら必ず来ます。ここは300円のチーズケーキが、おいしいです。",
+    "fixes": "",
+    "coords": null
+   }
+  },
+  "パン ヨルトノ": {
+   "nameEn": "Pan Yorutono",
+   "area": "朝里",
+   "areaEn": "Asari",
+   "tags": [
+    "bread"
+   ],
+   "what": "張碓町の小さなパン屋。ハード系のパンや食パン、カルダモンロールを焼く。11時から17時で売り切れ次第、水・木曜は休み。",
+   "whatEn": "A small bakery in Hariusu baking crusty loaves, shokupan and cardamom rolls. Open 11 am to 5 pm until sold out; closed Wednesdays and Thursdays.",
+   "note": "水・木は休み。カルダモンロールは早い時間か、3日前までに予約を。",
+   "noteEn": "Closed Wednesdays and Thursdays. For the cardamom roll, go early or book three days ahead.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "ぱん よるとの",
+    "address": "小樽市張碓町560-16",
+    "url": "https://www.instagram.com/yorutono_pan/",
+    "whatJa": "張碓町に移転した個人ベーカリーで、石臼引きの道産小麦と自家製発酵種を使った風味豊かなハード系パンを焼き上げている。",
+    "whatEn": "Small independent bakery in coastal Hariusu baking rustic sourdough and hard loaves from stone-milled Hokkaido wheat and natural starters.",
+    "facts": "Relocated from Midori-cho to seaside Hariusu-cho; specializes in crusty country loaves milled in-house and also runs occasional online sales.",
+    "weak": "",
+    "verifiedBy": "https://note.com/buntankiriko/n/n46317a0cdd16",
+    "quote": "小樽にある「 ヨルトノ 」というパン屋さんは、開店すぐに行かないと売り切れになるくらい、競争率が激しい。",
+    "fixes": "Address matches: 北海道小樽市張碓町５６０−１６. This article confirms a bakery, cardamom rolls and hard loaves; it does not establish in-house stone milling, exclusively Hokkaido wheat or homemade starters. Remove those unverified production specifics from whatEn/whatJa.",
+    "coords": null
+   }
+  },
+  "小樽珈琲香房": {
+   "nameEn": "Otaru Coffee Kobo",
+   "area": "小樽駅周辺",
+   "areaEn": "Otaru Station",
+   "tags": [
+    "coffee"
+   ],
+   "what": "稲穂の自家焙煎珈琲店。店内の焙煎機で豆を焼き、微粉を取り除いて雑味のない一杯を淹れる。朝のトーストやひとり席もある。9時から17時、木曜は休み。",
+   "whatEn": "A roastery café in Inaho roasting beans in-house and sifting out fine particles for a clean cup, with morning toast and single-person seats. Open 9 am to 5 pm, closed Thursdays.",
+   "note": "壁向きのひとり席で、朝はチーズをのせたトーストと珈琲。",
+   "noteEn": "At a single-person desk against the wall, cheese toast and coffee in the morning.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "おたるこーひーこうぼう",
+    "address": "小樽市稲穂2-16-11",
+    "url": "https://www.instagram.com/otaru.coffee.works/",
+    "whatJa": "小樽駅近くの路地に構える自家焙煎スペシャルティコーヒー専門店で、生豆のハンドピックから丁寧に行う冷めても美味しい珈琲を提供する。",
+    "whatEn": "Neighborhood specialty coffee roaster and cafe near Otaru Station hand-sorting green beans for slow, clean-tasting roasts.",
+    "facts": "3-minute walk from Otaru Station; opens at 9:00 with morning toast sets and sells whole beans by weight; closed Thursdays.",
+    "weak": "",
+    "verifiedBy": "https://sasaru.media/article/gourmet/20260915_001",
+    "quote": "店内には焙煎機もあり、豆からこだわりを注いでいるのが特徴。雑味の原因となりうる微粉を丁寧に取り除くなど、細やかなこだわりが詰まった1杯を味わえます。",
+    "fixes": "Address matches 小樽市稲穂2丁目16-11. Article supports in-shop roasting and removal of fine coffee particles; replace unverified green-bean hand sorting and slow-roast specifics with those stated practices.",
+    "coords": null
+   }
+  },
+  "coffee pocket TIME": {
+   "nameEn": "coffee pocket TIME",
+   "area": "朝里",
+   "areaEn": "Asari",
+   "tags": [
+    "coffee"
+   ],
+   "what": "2015年に始まった張碓町の珈琲店。生豆を洗い欠点豆を除いて焙煎する「お口直しのいらない珈琲」や、スパイスとギーの珈琲を出す。火〜土曜の13時から16時（朝営業は冬季休み）。",
+   "whatEn": "A small roastery in Hariusu begun in 2015, washing green beans and sorting out defects for clean-finishing coffee, plus spice and ghee coffees. Open Tuesday to Saturday 1 pm to 4 pm (morning hours closed in winter).",
+   "note": "まずは普通のブラックを頼んで、冷めるまで味わってみる。",
+   "noteEn": "Order it black first and taste how clean it stays as it cools.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "こーひー ぽけっと たいむ",
+    "address": "小樽市張碓町455",
+    "url": "https://coffeepocket-time.com/",
+    "whatJa": "海と山に囲まれた張碓町にある小さな自家焙煎珈琲豆店で、雑味のないクリーンな珈琲やアーユルヴェーダスパイスコーヒーを提供する。",
+    "whatEn": "Small coastal roastery in Hariusu hand-sorting beans for clean-finish pour-overs and signature Ayurveda spice and ghee coffees.",
+    "facts": "Hand-sorts beans for coffee designed to taste clean even when cooled; also sells single-origin beans and Ayurvedic spice blends.",
+    "weak": "",
+    "verifiedBy": "https://otaru.mypl.net/article/lunch_otaru/109958",
+    "quote": "今回は、金・土・日限定で朝6:30～9:00という、本当に“朝一番”の時間帯だけ営業している「coffee pocket TIME」さんへ伺ってきました。",
+    "fixes": "Address matches 小樽市張碓町455. Current official store page lists Tue–Sat 13:00–16:00 and Fri–Sun 6:30–9:30, with winter mornings suspended; these supersede differing hours in the June article.",
+    "coords": null
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "小樽運河",
+   "nameEn": "Otaru Canal",
+   "kind": "sight",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "address": "小樽市港町・色内",
+   "url": "https://www.city.otaru.lg.jp/docs/2023062000045/",
+   "what": "1923年（大正12年）に完成し、石造倉庫が並ぶ小樽港の運河。1986年に散策路が整えられ、11月から1月は夜の青いイルミネーション「青の運河」が行われる。",
+   "whatEn": "The harbour canal completed in 1923 and lined with stone warehouses. Its promenade was laid out in 1986; from November to January it is lit in blue after sunset.",
+   "coords": [
+    43.20253,
+    141.00036
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.otaru.lg.jp/docs/2023062000045/ (小樽市公式: 1923年竣工、1986年散策路完成) および https://otaru.gr.jp/citizen/winter-bluecanal-2026 (小樽観光協会公式: 青の運河 2026年11月1日〜2027年1月31日)",
+   "_coordsSource": "OSM way 562432317 (tourism=attraction, water=canal, 小樽運河)"
+  },
+  {
+   "name": "旧日本郵船株式会社小樽支店",
+   "nameEn": "Former Nippon Yusen Otaru Branch",
+   "kind": "sight",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "address": "小樽市色内3-7-8",
+   "url": "https://kyu-nippon-yusen-otaru.jp/",
+   "what": "1906年（明治39年）に建った石造2階建ての海運会社の支店で、国の重要文化財。2025年4月に保存修理工事を終えて開館し、1階の営業室や金唐革紙を貼った2階の貴賓室を見られる。",
+   "whatEn": "A two-storey stone shipping-company branch built in 1906 and a national Important Cultural Property. Reopened in April 2025 after preservation repairs, with its first-floor banking hall and second-floor reception room hung in kinkarakawa paper.",
+   "coords": [
+    43.2073,
+    140.9983
+   ],
+   "notice": "9時30分から17時。毎週火曜（祝日の場合は翌平日）と年末年始は休館。",
+   "noticeEn": "Open 9:30 am to 5 pm. Closed Tuesdays (or the next weekday if a holiday) and over New Year.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://kyu-nippon-yusen-otaru.jp/ (2026年11月イベント・開館情報あり) および https://www.city.otaru.lg.jp/docs/2025042800027/",
+   "_coordsSource": "OSM way 263908126 (tourism=museum, 旧日本郵船株式会社小樽支店)"
+  },
+  {
+   "name": "日本銀行旧小樽支店金融資料館",
+   "nameEn": "Bank of Japan Otaru Museum",
+   "kind": "art",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "address": "小樽市色内1-11-16",
+   "url": "https://www3.boj.or.jp/otaru-m/",
+   "what": "1912年に竣工した辰野金吾・長野宇平治らの設計による旧日本銀行小樽支店の建物を使った資料館。日本銀行の歴史や小樽の経済の発展を伝える。",
+   "whatEn": "A museum inside the 1912 former Bank of Japan Otaru Branch designed by Tatsuno Kingo and Nagano Uheiji, showing the history of the bank and Otaru's commerce.",
+   "coords": [
+    43.19627,
+    141.00033
+   ],
+   "notice": "2026年11月26日（木）は臨時休館。毎週水曜（祝休日の場合は開館）と年末年始は休館。入館無料。",
+   "noticeEn": "Closed exceptionally on 26 November 2026. Closed Wednesdays (open if a public holiday) and over New Year. Free entry.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www3.boj.or.jp/otaru-m/ (4〜11月 9:30〜17:00、12〜3月 10:00〜17:00、2026年11月26日臨時休館告知あり)",
+   "_coordsSource": "OSM node 462763241 (tourism=museum, 金融資料館)"
+  },
+  {
+   "name": "小樽芸術村",
+   "nameEn": "Otaru Art Base",
+   "kind": "art",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "address": "小樽市色内1-3-1",
+   "url": "https://www.nitorihd.co.jp/otaru-art-base/",
+   "what": "明治末から昭和初期の倉庫や銀行建築を活かした美術館群。重要文化財の旧三井銀行小樽支店のほか、ステンドグラス美術館や似鳥美術館などから成る。",
+   "whatEn": "A group of museums housed in late-Meiji to early-Showa warehouses and banks, including the Important Cultural Property Former Mitsui Bank Otaru Branch, the Stained Glass Museum and the Nitori Museum of Art.",
+   "coords": [
+    43.1974,
+    141.00151
+   ],
+   "notice": "11〜4月は10時から17時で毎週水曜休館（5〜10月は9時30分から、第4水曜休館）。",
+   "noticeEn": "November to April: 10 am to 5 pm, closed Wednesdays (May to October: from 9:30 am, closed the fourth Wednesday).",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.nitorihd.co.jp/otaru-art-base/ (2026/11/13 通常通り開館中、11月休館日4・11・18・25日)",
+   "_coordsSource": "OSM node 9423069277 (小樽芸術村)"
+  },
+  {
+   "name": "小樽市総合博物館 運河館",
+   "nameEn": "Otaru Museum Canal Building",
+   "kind": "art",
+   "area": "色内",
+   "areaEn": "Ironai",
+   "address": "小樽市色内2-1-20",
+   "url": "https://www.city.otaru.lg.jp/docs/2020111400122/",
+   "what": "1893年（明治26年）に建てられた旧小樽倉庫を使った博物館。北前船やニシン漁など小樽の歴史をたどる展示と、小樽の自然史の展示の2室がある。",
+   "whatEn": "A museum inside the 1893 Former Otaru Warehouse, with two halls covering Otaru's history—from Kitamaebune ships to herring fishing—and its natural history.",
+   "coords": [
+    43.2007,
+    141.00022
+   ],
+   "notice": "9時30分から17時。年末年始を除き無休。",
+   "noticeEn": "Open 9:30 am to 5 pm daily except over New Year.",
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.city.otaru.lg.jp/docs/2020111400122/ および https://www.city.otaru.lg.jp/docs/2020111300811/ (2026年運河館トピック展情報あり)",
+   "_coordsSource": "OSM way 1444266306 (tourism=museum, 小樽市総合博物館 運河館)"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "体験工房 小樽 il PONTE",
+   "verdict": "drop",
+   "reason": "Extended suspension of the defining glassblowing activity; reopening date explicitly undecided in the October 20 notice. This is not evidence that the entire shop is permanently closed."
+  },
+  {
+   "name": "vivre sa vie+mi-yyu",
+   "verdict": "doubt",
+   "reason": "Official Instagram returned only its title with curl. The 2026 organizer page identifies the building as this business and an exhibition venue, but supplies no sentence establishing that the described lifestyle/tableware shop is trading, nor its street address. Retail operation and address remain unconfirmed."
+  },
+  {
+   "name": "菓匠 小樽松月堂",
+   "verdict": "doubt",
+   "reason": "Official page has no dated 2026 operating notice or post. Its ©2026 footer is excluded. A search found a purported April 2026 review on Yahoo Maps, but opening it with curl returned a regional-access restriction page, so that snippet was not used."
+  },
+  {
+   "name": "もりのKumaぱん",
+   "verdict": "doubt",
+   "reason": "Readable official site has only a November 2025 shop-location notice and ©2026 footer, not a qualifying dated 2026 sentence. No readable dated 2026 article found."
+  },
+  {
+   "name": "Coffee House CHAFF",
+   "verdict": "doubt",
+   "reason": "Opened official homepage and linked top.html. Readable news dates to 2020, with no qualifying 2026 sentence. The separately opened Central Market shop-list page includes CHAFF, but its January 2026 dates belong to other tenants; its ©2026 footer is excluded."
+  },
+  {
+   "name": "PRESS CAFE",
+   "verdict": "doubt",
+   "reason": "Opened official Instagram, website and its linked official Facebook page with curl; social pages expose only titles and the website has no dated text. A 2026 Tabelog result returned an access-congestion page, so its snippets were not used. No qualifying readable 2026 sentence or address confirmation obtained."
+  }
+ ]
+}
