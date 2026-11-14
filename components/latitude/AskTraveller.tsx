@@ -17,8 +17,12 @@ export function AskAboutButton({ text, label, shop, person }: { text: string; la
   );
 }
 
-export default function AskTraveller({ locale, slug, name, callSeconds, context }: { locale: string; slug: string; name: string; callSeconds: number; context: string }) {
+// city：街のページの時、質問の例に入れる街の名前（2026-11-14 ②-7）
+export default function AskTraveller({ locale, slug, name, callSeconds, context, city }: { locale: string; slug: string; name: string; callSeconds: number; context: string; city?: string }) {
   const ja = locale === 'ja';
+  const examples = city
+    ? (ja ? [`${city}で朝ごはんはどこ？`, '雨の日はどう回る？', '半日しかないなら？'] : [`Where should I have breakfast in ${city}?`, 'What would you do on a rainy day?', 'What if I only have half a day?'])
+    : undefined;
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false); // 一度開いたら会話を保ったまま、閉じても消さない
   const [ask, setAsk] = useState<{ text: string; n: number } | null>(null);
@@ -61,7 +65,7 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
             </div>
             <button onClick={() => setOpen(false)} className="-mr-2 inline-flex min-h-[44px] items-center px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{ja ? '閉じる' : 'Close'}</button>
           </div>
-          <RoomChat locale={locale} slug={slug} name={name} callSeconds={callSeconds} context={context} ask={ask} compact />
+          <RoomChat locale={locale} slug={slug} name={name} callSeconds={callSeconds} context={context} ask={ask} compact examples={examples} />
         </div>
       )}
     </>

@@ -92,7 +92,7 @@ export default async function LatitudeAreaPage({ params }: { params: Promise<{ l
       </footer>
 
       {room && p && (
-        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds}
+        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds} city={cityName}
           context={`The visitor is reading your guide page for the ${a.nameEn} area of ${c.name}. Answer about that area and those places.`} />
       )}
     </div>

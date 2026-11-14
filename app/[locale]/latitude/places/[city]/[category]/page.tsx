@@ -101,7 +101,7 @@ export default async function LatitudeCityCategoryPage({ params }: { params: Pro
       </footer>
 
       {room && p && (
-        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds}
+        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds} city={cityName}
           context={`The visitor is reading your guide page for ${sec.label.en.toLowerCase()} in ${c.name} on the website. Answer about those places.`} />
       )}
     </div>

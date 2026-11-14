@@ -369,7 +369,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       </footer>
 
       {room && p && (
-        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds}
+        <AskTraveller locale={locale} slug={p.slug} name={who} callSeconds={room.callSeconds} city={ja ? c.nameJa : c.name}
           context={`The visitor is reading your guide page for ${c.name} on the website, which lists your recommended places there. Answer about ${c.name} and those places.`} />
       )}
     </div>

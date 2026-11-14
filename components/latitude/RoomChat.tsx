@@ -26,6 +26,7 @@ type Props = {
   ask?: { text: string; n: number } | null;
   compact?: boolean; // 街のページの小さな窓で使う時
   autoEnter?: boolean; // 開いたらすぐ文字の会話を始める
+  examples?: string[]; // 2026-11-14 ②-7 街のページの小さな窓で、入力欄の上に出す質問の例（押すとその文が送られる。1回送ったら消える）
   onStage?: (stage: ChatStage, justEntered: boolean) => void;
 };
 
@@ -37,11 +38,12 @@ export default function RoomChat(props: Props) {
   );
 }
 
-function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, autoEnter, onStage }: Props) {
+function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, autoEnter, examples, onStage }: Props) {
   const ja = locale === 'ja';
   const [stage, setStage] = useState<ChatStage>('outside');
   const [lines, setLines] = useState<Line[]>([]);
   const [draft, setDraft] = useState('');
+  const [started, setStarted] = useState(false); // ②-7 最初の1通を送ったか（質問の例を消す）
   const [left, setLeft] = useState(callSeconds);
   const [justEntered, setJustEntered] = useState(false); // 入った直後だけ、部屋の凛が顔を上げる
   const stageRef = useRef(stage);
@@ -135,6 +137,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
 
   const enter = async () => {
     if (stageRef.current !== 'outside') return;
+    stageRef.current = 'entering'; // 2026-11-14 すぐ印を付け、続けて呼ばれても1回だけ入る（開発中の二重の effect で、あいさつが2回出ていた）
     setStage('entering');
     // Gemini で返せるなら、ElevenLabs につながずに入る（最初の一言は画面で出す）
     const ready = await fetch(`/api/latitude/chat?person=${slug}`, { cache: 'no-store' }).then((r) => r.json()).then((d) => !!d.ready).catch(() => false);
@@ -176,17 +179,29 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
   // 外から質問が来たら、会話中ならそのまま送り、まだなら入ってから送る
   useEffect(() => {
     if (!ask) return;
+    setStarted(true);
     if (stageRef.current === 'text') sendText(ask.text);
     else if (stageRef.current === 'outside') { pending.current = ask.text; enter(); }
   }, [ask?.n]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => { if (autoEnter) enter(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // 2026-11-14 ②-7 街のページの小さな窓（compact）は、開いたらすぐ入力欄と質問の例を出す。「話しかける」の段は無くした。
+  // 会話を始める（enter）のは、最初の1通を送った時（例を押した時も）。窓を開いただけでは何も呼ばない（文字は Gemini で、入るのにお金はかからない。数えるのも最初の1通から）。
+  // 「AIです・文字は30日残します」は窓の上（AskTraveller）にいつも出ている。部屋のページ（compact でない）は今までどおり「部屋に入る」から
+  const start = (t: string) => {
+    setStarted(true);
+    if (stageRef.current === 'text') sendText(t);
+    else if (stageRef.current === 'outside') { pending.current = t; enter(); }
+  };
+
   const send = (e: React.FormEvent) => {
     e.preventDefault();
     const t = draft.trim();
-    if (!t || stage !== 'text') return;
-    sendText(t);
+    if (!t) return;
+    if (stage === 'text') sendText(t);
+    else if (compact && stage === 'outside') start(t);
+    else return;
     setDraft('');
   };
 
@@ -221,8 +236,19 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
     <div className="flex flex-col">
       <div ref={listRef} className={`flex flex-col gap-5 overflow-y-auto border-y py-6 ${compact ? 'max-h-[44vh] min-h-[140px]' : 'mt-8 max-h-[52vh] min-h-[220px]'}`}
         style={{ borderColor: LINE }} aria-live="polite">
-        {lines.length === 0 && stage === 'outside' && (
+        {lines.length === 0 && stage === 'outside' && !compact && (
           <p className="m-auto text-[14px]" style={{ color: MUTE, fontFamily: SERIF }}>{ja ? '戸は開いています。' : 'The door is open.'}</p>
+        )}
+        {/* ②-7 質問の例（入力欄の上。押すとその文を送る。1回送ったら消える） */}
+        {compact && !started && lines.length === 0 && stage === 'outside' && !!examples?.length && (
+          <div className="mt-auto flex flex-col items-start gap-2">
+            {examples.map((q) => (
+              <button key={q} type="button" onClick={() => start(q)}
+                className="inline-flex min-h-[44px] cursor-pointer items-center border px-3 py-2 text-left text-[14px] leading-snug underline-offset-4 hover:underline" style={{ borderColor: LINE, color: INK }}>
+                {q}
+              </button>
+            ))}
+          </div>
         )}
         {lines.map((l, k) =>
           l.who === 'note' ? (
@@ -244,7 +270,7 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
 
       {/* 下の操作：入る → 文字で話す → 通話は自分から（もう一度確かめる） */}
       <div className="mt-6 flex flex-col gap-4">
-        {(stage === 'outside' || stage === 'entering') && (
+        {!compact && (stage === 'outside' || stage === 'entering') && (
           <div className="flex flex-wrap gap-3">
             <button onClick={enter} disabled={stage === 'entering'} className="border px-6 py-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] disabled:opacity-40"
               style={{ borderColor: INK, color: INK }}>
@@ -254,18 +280,18 @@ function ChatInner({ locale, slug, name, callSeconds, context, ask, compact, aut
           </div>
         )}
 
-        {stage === 'text' && (
+        {(stage === 'text' || (compact && (stage === 'outside' || stage === 'entering'))) && (
           <form onSubmit={send} className="flex items-end gap-3">
             <label htmlFor="room-draft" className="sr-only">{ja ? 'メッセージ' : 'Message'}</label>
-            <textarea id="room-draft" value={draft} onChange={(e) => { setDraft(e.target.value); conv.sendUserActivity(); }} rows={1} maxLength={400}
+            <textarea id="room-draft" value={draft} onChange={(e) => { setDraft(e.target.value); if (stage === 'text') conv.sendUserActivity(); }} rows={1} maxLength={400}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) send(e); }}
-              placeholder={ja ? '何か話す' : 'Say something'} className="min-w-0 flex-1 resize-none border-b bg-transparent py-2 text-[16px] outline-none"
+              placeholder={compact ? (ja ? '店や回り方を聞く' : 'Ask about a place or a route') : ja ? '何か話す' : 'Say something'} className="min-w-0 flex-1 resize-none border-b bg-transparent py-2 text-[16px] outline-none"
               style={{ borderColor: INK, color: INK, fontFamily: SANS }} />
-            <button type="submit" className="pb-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: INK }}>{ja ? '送る' : 'Send'}</button>
+            <button type="submit" disabled={stage === 'entering'} className={`${compact ? 'inline-flex min-h-[44px] items-center' : 'pb-2'} text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] disabled:opacity-40`} style={{ color: INK }}>{ja ? '送る' : 'Send'}</button>
           </form>
         )}
 
-        {stage === 'text' && <div><CallButton /></div>}
+        {(stage === 'text' || (compact && stage === 'outside')) && <div><CallButton /></div>}
 
         {VOICE_CALLS && stage === 'confirm' && (
           <div className="flex flex-col gap-4 border p-5" style={{ borderColor: INK }}>
