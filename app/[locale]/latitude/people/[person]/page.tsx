@@ -125,9 +125,9 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
                 {groups.map((g) => (
                   <div key={g.key} className="grid grid-cols-1 gap-1 border-t py-3 md:grid-cols-[140px_minmax(0,1fr)] md:gap-6" style={{ borderColor: 'rgba(30,29,27,0.12)' }}>
                     <dt className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:pt-[3px]" style={{ color: MUTE }}>{g.label}</dt>
-                    <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-1.5 text-[14px]">
+                    <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-0 text-[14px]">
                       {g.cities.map((c) => (
-                        <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline" style={{ color: INK }}>
+                        <Link key={c.slug} href={`/${locale}/latitude/places/${c.slug}`} className="inline-flex min-h-[44px] items-center gap-1.5 underline-offset-4 hover:underline" style={{ color: INK }}>
                           {c.issue && <span aria-label={ja ? '号あり' : 'with an issue'} title={ja ? '映像とカルーセルの号がある町' : 'A town with an issue'} className="inline-block h-[6px] w-[6px] rounded-full" style={{ background: INK }} />}
                           {ja ? c.nameJa : c.name}
                         </Link>
@@ -156,10 +156,10 @@ export default async function LatitudePersonPage({ params }: { params: Promise<{
       <section className="px-4 pb-16 md:px-8">
         <div className="mx-auto max-w-6xl">
           <SectionLabel>{ja ? 'ほかに旅をしている人' : 'Also travelling'}</SectionLabel>
-          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
+          <ul className="flex flex-wrap gap-x-8 gap-y-0 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
             {PEOPLE.filter((o) => o.slug !== p.slug).map((o) => (
               <li key={o.slug}>
-                <Link href={`/${locale}/latitude/people/${o.slug}`} style={{ color: INK }}>{ja ? o.ja.name : o.name}</Link>
+                <Link href={`/${locale}/latitude/people/${o.slug}`} className="inline-flex min-h-[44px] items-center" style={{ color: INK }}>{ja ? o.ja.name : o.name}</Link>
               </li>
             ))}
           </ul>

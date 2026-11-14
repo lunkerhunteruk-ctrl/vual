@@ -90,7 +90,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
           {/* 2026-11-11 場所から探すページ（地図）への入口 */}
           <p lang="en" className="lat-label flex items-baseline gap-4" style={{ color: MUTE }}>
             Places
-            <Link href={`/${locale}/latitude/places`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label underline underline-offset-4" style={{ color: INK }}>{locale === 'ja' ? '地図で見る →' : 'On the map →'}</Link>
+            <Link href={`/${locale}/latitude/places`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label -my-[13px] inline-flex min-h-[44px] items-center underline underline-offset-4" style={{ color: INK }}>{locale === 'ja' ? '地図で見る →' : 'On the map →'}</Link>
           </p>
           {/* 2026-11-12 ユーザー：街が増えると名前の壁になる。ここには号のある街だけを並べ、案内だけの街は数を1行で（一覧は場所のページで地方ごとに） */}
           {(() => {
@@ -112,7 +112,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
                   ))}
                 </ul>
                 {rest.length > 0 && (
-                  <Link href={`/${locale}/latitude/places`} className="mt-4 inline-block text-[13px] underline-offset-4 hover:underline md:text-[14px]" style={{ color: MUTE }}>
+                  <Link href={`/${locale}/latitude/places`} className="-mb-3 mt-1 inline-flex min-h-[44px] items-center text-[13px] underline-offset-4 hover:underline md:text-[14px]" style={{ color: MUTE }}>
                     {ja
                       ? `ほか、${[jp && `日本の${jp}`, abroad && `海外の${abroad}`].filter(Boolean).join('と、')}の街の案内　→`
                       : `And city guides to ${[jp && `${jp} more town${jp > 1 ? 's' : ''} in Japan`, abroad && `${abroad} abroad`].filter(Boolean).join(' and ')}  →`}

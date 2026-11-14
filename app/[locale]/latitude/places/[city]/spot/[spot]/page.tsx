@@ -104,9 +104,9 @@ export default async function HiddenSpotPage({ params }: { params: Promise<{ loc
 
       <header className="mx-auto max-w-6xl px-4 pb-8 pt-16 md:px-8 md:pb-12 md:pt-24">
         <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
-          <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
+          <Link href={`/${locale}/latitude/places`} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
-          <Link href={`/${locale}/latitude/places/japan`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '日本' : 'Japan'}</Link>
+          <Link href={`/${locale}/latitude/places/japan`} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '日本' : 'Japan'}</Link>
           <span className="mx-2">›</span>
           <span style={{ color: MOSS }}>{ja ? '地元の名所' : 'Hidden spot'}</span>
         </nav>

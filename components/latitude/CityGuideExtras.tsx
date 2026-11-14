@@ -91,7 +91,7 @@ export function CityRoute({ c, ja, who, withMap = false, bare = false }: { c: La
                     {num > 0 && <span className="mr-2 text-[17px] normal-case tracking-normal" style={{ fontFamily: SERIF, color: INK }}>{num}</span>}
                     {r.time}
                   </span>
-                  {num > 0 && <span className="text-[12px] tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]"><ShowRouteStop n={num} label={ja ? '地図で見る ↑' : 'On the map ↑'} className="underline-offset-4 hover:underline" /></span>}
+                  {num > 0 && <span className="text-[12px] tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]"><ShowRouteStop n={num} label={ja ? '地図で見る ↑' : 'On the map ↑'} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" /></span>}
                 </p>
                 <p className="mt-1 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{ja ? r.placeJa : r.place}</p>
                 <p className="mt-1 text-[15px] leading-relaxed">{ja ? r.whatJa : r.what}</p>
@@ -181,7 +181,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
                 {issue && (
                   <>
                     &nbsp;&nbsp;·&nbsp;&nbsp;
-                    <Link href={`/${locale}/latitude/${issue.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? '号を読む →' : 'Read the issue →'}</Link>
+                    <Link href={`/${locale}/latitude/${issue.slug}`} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>{ja ? '号を読む →' : 'Read the issue →'}</Link>
                   </>
                 )}
               </p>

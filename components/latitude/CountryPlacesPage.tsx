@@ -52,7 +52,7 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
       <IssueStrip locale={locale} current={`places/${c.slug}`} />
       <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
         <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
-          <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
+          <Link href={`/${locale}/latitude/places`} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
           <span aria-current="page" style={{ color: INK }}>{name}</span>
         </nav>

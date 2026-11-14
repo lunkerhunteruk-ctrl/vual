@@ -17,7 +17,8 @@ const STREAM_HOST = 'https://customer-iachfaxtqeo2l99t.cloudflarestream.com';
 const NOSCROLL_CSS = '.latitude-noscroll{scrollbar-width:none}.latitude-noscroll::-webkit-scrollbar{display:none}';
 
 function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolean }) {
-  const item = 'relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap text-[11px] uppercase tracking-[0.18em] transition-colors duration-300';
+  // 2026-11-14 つまみの見た目（高さ 34px のカプセル）は変えず、押せる範囲だけ上下に 7px 広げて 44px に
+  const item = "relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap before:absolute before:inset-x-0 before:-inset-y-[7px] before:content-[''] text-[11px] uppercase tracking-[0.18em] transition-colors duration-300";
   return (
     <div role="group" aria-label="People / Places"
       className="relative grid h-[34px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px] md:w-[184px]"

@@ -11,4 +11,6 @@ export const MINCHO = `${JA_MINCHO}, serif`;
 // ACTION_MAIN はいちばん押すもの（Google マップ）。枠の色は使う側で INK を付ける
 // 日本語のページ（<html lang="ja">）では字間を 0.08em に。lang="en" の要素には効かない
 export const ACTION = 'inline-flex min-h-[44px] items-center text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] underline-offset-4 hover:underline';
+// 2026-11-14 字の行の中のリンク（道しるべ・「→」の一行など）：押せる高さだけ 44px にし、上下の負の余白で行の高さは変えない（12–13px の字の行に合わせた値）
+export const TAP_INLINE = 'inline-flex min-h-[44px] items-center -my-[13px]';
 export const ACTION_MAIN = 'inline-flex min-h-[44px] items-center border px-4 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]';

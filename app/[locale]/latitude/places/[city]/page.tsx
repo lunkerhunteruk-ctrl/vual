@@ -7,7 +7,7 @@ import { AreaLinks, PlaceRow, PlacesJsonLd, mapUrl } from '@/components/latitude
 import { ShowOnMap } from '@/components/latitude/HScroller';
 import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/CityShopMap';
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
-import { ACTION, ACTION_MAIN } from '@/lib/latitude-theme';
+import { ACTION, ACTION_MAIN, TAP_INLINE } from '@/lib/latitude-theme';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
 import { HIDDEN } from '@/lib/latitude-hidden';
@@ -180,9 +180,9 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         {/* 2026-11-11 道しるべ：場所 › 国 › 街 */}
         {home ? (
           <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="lat-label" style={{ color: MUTE }}>
-            <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
+            <Link href={`/${locale}/latitude/places`} className={`${TAP_INLINE} underline-offset-4 hover:underline`} style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
             <span className="mx-2">›</span>
-            <Link href={`/${locale}/latitude/places/${home.slug}`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? home.name.ja : home.name.en}</Link>
+            <Link href={`/${locale}/latitude/places/${home.slug}`} className={`${TAP_INLINE} underline-offset-4 hover:underline`} style={{ color: MUTE }}>{ja ? home.name.ja : home.name.en}</Link>
             <span className="mx-2">›</span>
             <span aria-current="page" style={{ color: INK }}>{ja ? c.nameJa : c.name}</span>
           </nav>
@@ -220,7 +220,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             <ul className="flex flex-col gap-5">
               {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
                 <li key={h.slug} className="max-w-2xl">
-                  <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
+                  <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="-my-2 inline-flex min-h-[44px] items-center text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
                   <p className="mt-1 text-[15px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
                 </li>
               ))}
@@ -256,7 +256,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </div>
         <div className="mx-auto mt-5 max-w-6xl px-4 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:px-8">
           {p && (
-            <Link href={`/${locale}/latitude/people/${p.slug}`} style={{ color: INK }}>
+            <Link href={`/${locale}/latitude/people/${p.slug}`} className={TAP_INLINE} style={{ color: INK }}>
               {ja ? `${who}の${c.nameJa}の1日` : `${who}'s day in ${c.name}`}&nbsp;&nbsp;→
             </Link>
           )}

@@ -483,10 +483,11 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
           <button
             type="button"
             onClick={() => goTo(null)}
-            className="absolute right-3 top-3 z-30 cursor-pointer border px-3 py-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:right-4 md:top-4"
-            style={{ background: `${PAPER}e6`, borderColor: 'rgba(30,29,27,0.25)', color: INK }}
+            // 2026-11-14 押せる高さは 44px（ボタン）、見た目の枠は中の span（今までと同じ大きさ・位置）
+            className="absolute right-3 top-2 z-30 flex min-h-[44px] cursor-pointer items-center text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] md:right-4 md:top-3"
+            style={{ color: INK }}
           >
-            {ja ? '全体へ' : 'Whole map'}
+            <span className="border px-3 py-2" style={{ background: `${PAPER}e6`, borderColor: 'rgba(30,29,27,0.25)' }}>{ja ? '全体へ' : 'Whole map'}</span>
           </button>
         )}
       </div>

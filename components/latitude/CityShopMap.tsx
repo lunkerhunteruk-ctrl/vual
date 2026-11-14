@@ -628,7 +628,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           <div role="tablist" aria-label={ja ? '地図の使い方' : 'Map mode'} className="inline-flex self-start" style={{ border: `1px solid ${INK}` }}>
             {(['look', 'build'] as const).map((m) => (
               <button key={m} type="button" role="tab" aria-selected={mode === m} onClick={() => setModeTo(m)}
-                className="min-h-[40px] cursor-pointer px-4 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] transition-colors md:px-5"
+                className="min-h-[44px] cursor-pointer px-4 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em] transition-colors md:px-5"
                 style={{ background: mode === m ? INK : 'transparent', color: mode === m ? PAPER : INK }}>
                 {m === 'look' ? (ja ? '店を見る' : 'Browse') : (ja ? '自分でルートを組む' : 'Build your own route')}
               </button>
@@ -647,14 +647,14 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
           const on = !off.has(c.key);
           return (
             <button key={c.key} type="button" aria-pressed={on} onClick={() => toggleCat(c.key)}
-              className="flex min-h-[34px] cursor-pointer items-center gap-2 rounded-full px-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] transition-colors"
+              className="flex min-h-[40px] cursor-pointer items-center gap-2 rounded-full px-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] transition-colors"
               style={chip(on)}>
               <span className="block shrink-0" style={{ ...markStyle(c.key === RIN ? 'stop' : isSightKind(c.key) ? c.key : 'shop', 9, CATEGORY_COLOR[c.key] ?? INK), opacity: on ? 1 : 0.3 }} />
               {c.label}
             </button>
           );
         })}
-        <button type="button" onClick={setAll} className="min-h-[34px] cursor-pointer px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: INK }}>
+        <button type="button" onClick={setAll} className="min-h-[40px] cursor-pointer px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: INK }}>
           {allOn ? (ja ? 'すべて消す' : 'Hide all') : (ja ? 'すべて出す' : 'Show all')}
         </button>
       </div>

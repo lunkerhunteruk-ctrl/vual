@@ -391,9 +391,10 @@ export default function CityRouteMap({ src, stops, ja, walk }: { src: string; st
         )}
 
         {ready && (
-          <button type="button" onClick={start} className="absolute right-3 top-3 z-[2] cursor-pointer text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]"
-            style={{ color: INK, background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}`, opacity: done || focus ? 1 : 0.55 }}>
-            {ja ? 'もう一度見る ↻' : 'Play again ↻'}
+          // 2026-11-14 押せる高さは 44px（ボタン）、見た目の枠は中の span（今までと同じ大きさ・位置）
+          <button type="button" onClick={start} className="absolute right-3 top-[6px] z-[2] flex min-h-[44px] cursor-pointer items-center text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]"
+            style={{ color: INK, opacity: done || focus ? 1 : 0.55 }}>
+            <span style={{ background: PAPER, padding: '6px 10px', border: `1px solid ${LINE}` }}>{ja ? 'もう一度見る ↻' : 'Play again ↻'}</span>
           </button>
         )}
         {!ready && (
