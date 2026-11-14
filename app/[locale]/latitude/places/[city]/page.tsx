@@ -88,6 +88,8 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         id: placeAnchor(x),
         key: x.name,
         name: ja ? x.name : x.nameEn,
+        nameJa: !ja && x.name !== x.nameEn ? x.name : undefined, // 2026-11-14 ②-3
+        address: x.address,
         area: ja ? x.area : x.areaEn,
         category: x.category,
         catLabel: ind ? (ja ? ind.ja : ind.en) : (ja ? CATEGORY_LABEL[x.category].ja : CATEGORY_LABEL[x.category].en),

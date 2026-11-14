@@ -5,6 +5,7 @@ import { CATEGORY_COLOR } from '@/lib/latitude-category-colors';
 import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
+import { AddressLine, JaName } from '@/components/latitude/ShopFacts';
 import { ACTION, INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
@@ -44,6 +45,9 @@ export type ShopPin = {
   // 2026-11-11 見る所（アート・名所）。category は 'art' か 'sight'。店ではなく目印（凛の一言なし・カードに「目印」）
   kind?: 'shop' | 'art' | 'sight';
   notice?: string; // 休館の予定など
+  // 2026-11-14 ②-3 下から出るカードに、日本語の店名（英語のページだけ。英語名と同じなら渡さない）と住所
+  nameJa?: string;
+  address?: string;
 };
 const kindOf = (p: ShopPin): MarkKind => p.kind ?? 'shop';
 
@@ -927,6 +931,7 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
         <button type="button" onClick={onClose} aria-label={ja ? '閉じる' : 'Close'} className="-mr-2 px-2 text-[20px] leading-none" style={{ color: MUTE }}>×</button>
       </div>
       <h3 className="mt-3 text-[22px] leading-snug" style={{ fontFamily: SERIF, fontWeight: 400, color: INK }}>{p.name}</h3>
+      <JaName name={p.nameJa} nameEn={p.name} ja={ja} />
       {p.photo && (
         <figure className="mt-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -935,6 +940,7 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
         </figure>
       )}
       <p className="mt-3 text-[16px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
+      <AddressLine address={p.address} ja={ja} />
       {/* 見る所は凛のおすすめの店ではないので、凛の一言は付けない。休館の予定などを出す */}
       {!sight && p.note && (
         <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>
