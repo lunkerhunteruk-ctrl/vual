@@ -1,7 +1,14 @@
 {
  "aizuwakamatsu": {
   "小澤蝋燭店": "og-0cabae70533e.webp",
-  "渋川問屋": "og-25f330b4b161.webp"
+  "渋川問屋": "og-25f330b4b161.webp",
+  "りんどん": "og-c1f574b82b22.webp",
+  "会津慶山焼 やま陶": "og-553fb9e242ee.webp",
+  "山田木綿織元": "og-50d119e322db.webp",
+  "桐屋・権現亭": "og-6c12f924b6f9.webp",
+  "満田屋": "og-5a793c9f6e76.webp",
+  "蔵喫茶 杏": "og-f8dcf492cdce.webp",
+  "鈴善漆器店": "og-64e3c1b01ba3.webp"
  },
  "arita": {
   "KIHARA ARITA本店": "og-eca37881d4f1.webp",
@@ -9,19 +16,36 @@
   "ギャラリー ペクパソン": "og-fee90dabf1cb.webp",
   "喫茶Hama 小路庵": "og-dc54960e767a.webp",
   "大和一心庵 雪月花": "og-a07ef6fafcb6.webp",
-  "賞美堂本店 アリタセラ店": "og-f14d933a4959.webp"
+  "賞美堂本店 アリタセラ店": "og-f14d933a4959.webp",
+  "arita huis": "og-3a5e901c8324.webp",
+  "しん窯 青花": "og-7108264f5e04.webp",
+  "ギャラリー有田": "og-c805eb23534e.webp",
+  "今村製陶 町屋": "og-8fc12a2395aa.webp",
+  "幸楽窯": "og-be390fcc9353.webp",
+  "源右衛門窯": "og-f215090d207a.webp",
+  "皓洋窯": "og-e95b2029167b.webp",
+  "色鍋島 今右衛門窯": "og-1277b7be7960.webp",
+  "陶磁器ショップ 藍土": "og-40073c27e9d1.webp"
  },
  "beppu": {
   "レストラン東洋軒": "og-6831b3ee243d.webp",
   "和菓子処 茶郎本舗": "og-c59b32724541.webp",
   "甘味茶屋": "og-74360d17a90c.webp",
-  "蒸士茶楼": "og-5a38f5a6d4bc.webp"
+  "蒸士茶楼": "og-5a38f5a6d4bc.webp",
+  "SPICA": "og-dd20ceb2a49b.webp",
+  "みょうばん湯の里": "og-e1c37565f243.webp",
+  "地獄蒸し工房 鉄輪": "og-1e455d7a8b8a.webp"
  },
  "chichibu": {
   "WATAGE": "og-a4fbf78cdf57.webp",
   "パティスリーイシノ": "og-f0f207be66eb.webp",
   "パリー食堂": "og-5d0622d96d68.webp",
-  "齋藤染物店": "og-7335bcb61ffb.webp"
+  "齋藤染物店": "og-7335bcb61ffb.webp",
+  "WAPLUS COFFEE": "og-3d4c5cf5f375.webp",
+  "ちちぶ銘仙館": "og-691a4b86265e.webp",
+  "クチーナ サルヴェ": "og-4ee1ae2b1697.webp",
+  "ラパンノワール くろうさぎ": "og-264af1d7e916.webp",
+  "手打そば 武蔵屋": "og-6fb415e80ecb.webp"
  },
  "copenhagen": {
   "Andersen & Maillard": "og-85b28aac9564.webp",
@@ -30,51 +54,129 @@
   "Kødbyens Fiskebar": "og-48178d6877af.webp",
   "POPL": "og-4d9eeac90ff5.webp",
   "Prolog Coffee (Papirøen)": "og-545902df516c.webp",
-  "Veirhanen": "og-66a297ee963f.webp"
+  "Veirhanen": "og-66a297ee963f.webp",
+  "Barr": "og-36f8a0d6178d.webp",
+  "Conditori La Glace": "og-6c1e943355ee.webp",
+  "Dansk Møbelkunst": "og-9c08c7ddbbd4.webp",
+  "Karamelleriet": "og-88cf1efe51ab.webp",
+  "Keramiker Inge Vincents": "og-ddb8461e6b75.webp",
+  "Lars Rank Keramik": "og-ede4913200be.webp",
+  "Lille Bakery": "og-446d471cce48.webp",
+  "Mangia": "og-14f4503e7f64.webp",
+  "Mirabelle": "og-02cf6c1ce500.webp",
+  "Restaurant Schønnemann": "og-8f9c710d4c08.webp",
+  "Studio Arhoj": "og-1d0adf053495.webp"
  },
  "echizen": {
   "栁瀨良三製紙所": "og-350728159be5.webp",
-  "米パン カゼミドリ": "og-f896709382ed.webp"
+  "米パン カゼミドリ": "og-f896709382ed.webp",
+  "Coffee fam.": "og-18156a984a53.webp",
+  "O-edo+": "og-f56b05a6c040.webp",
+  "RYUSEN FACTORY&STORE": "og-4a87b961dccf.webp",
+  "my name is...": "og-7894196ab042.webp",
+  "くになかのケーキ屋さん": "og-d76b71a94eb1.webp",
+  "和紙屋の杉原商店": "og-2671eca5f060.webp",
+  "小柳タンス店": "og-2c3d9d5821b9.webp",
+  "洋菓子店 bloom": "og-f218f38962ca.webp",
+  "生蕎庵": "og-06d3545089b2.webp",
+  "越前そばと珈琲 HAMA庵": "og-dc5ccb638cc9.webp"
  },
  "edinburgh": {
   "Cyan Clayworks": "og-062e42abc42c.webp",
   "Gordon Nicolson Kiltmakers": "og-bb833ab52909.webp",
   "L'Escargot Bleu": "og-31c68c421fa1.webp",
   "Lannan Bakery": "og-3241bc628998.webp",
-  "Port of Leith Distillery": "og-d02bcc04e58d.webp"
+  "Port of Leith Distillery": "og-d02bcc04e58d.webp",
+  "Bill Baber Knitwear": "og-aadc51674d59.webp",
+  "Cadenhead's Whisky Shop": "og-c1e341901994.webp",
+  "Fishers in Leith": "og-6c460c76892c.webp",
+  "Kinloch Anderson": "og-2046d6d22a9e.webp",
+  "Mary's Milk Bar": "og-231710603bff.webp",
+  "Restaurant Martin Wishart": "og-5e8c2cceb2db.webp",
+  "Stewart Christie & Co.": "og-1b4d393a1866.webp",
+  "The Scottish Gallery": "og-2b7538c41564.webp",
+  "Timberyard": "og-9d953322056a.webp",
+  "Wedgwood the Restaurant": "og-7fc44bc82236.webp",
+  "Williams & Johnson Coffee Co.": "og-c31913db816d.webp"
  },
  "faro": {
-  "Kafé Smultronstället": "og-b3dba2cac5cf.webp"
+  "Kafé Smultronstället": "og-b3dba2cac5cf.webp",
+  "Bungemuseets Mat- och kaffestuga": "og-04b09d649616.webp",
+  "Bungenäs Kalklada & Matsal": "og-598b44e7772e.webp",
+  "Fårö Krukmakeri": "og-3a46936f3b15.webp",
+  "Pastamakarna Fårö": "og-e4d609b16490.webp",
+  "Prima Gård": "og-7e6c165eccb3.webp"
  },
  "fujiyoshida": {
-  "TENJIN-factory": "og-cb3df1eb133c.webp"
+  "TENJIN-factory": "og-cb3df1eb133c.webp",
+  "FUJIHIMURO": "og-64aeb37e2a3b.webp",
+  "FUKUCHIYA": "og-d40597c31c34.webp",
+  "LIFE STYLE SHOP ALT STYLE": "og-116da08ffef1.webp",
+  "LONGTEMPS": "og-008881fb266e.webp",
+  "sai Breakfast and Cafe": "og-0a4a43a37685.webp",
+  "お食事処 やぶ": "og-35a7be6c972d.webp",
+  "まつや茶房": "og-c2f6d301b645.webp",
+  "古民家カフェ KONOHANA": "og-c018d3c25b6a.webp",
+  "木村屋": "og-c6bf3be43517.webp",
+  "染め物ショップ まるこう": "og-7155186e8929.webp"
  },
  "hachinohe": {
   "AMBER COFFEE": "og-2dc5320ae828.webp",
   "Porta Otto": "og-c86f17339ee5.webp",
-  "八戸酒造": "og-38b7e4ad8cfd.webp"
+  "八戸酒造": "og-38b7e4ad8cfd.webp",
+  "つづれや": "og-021d4576e6ff.webp",
+  "パティスリーヤスヒロ": "og-f78fe1d03615.webp",
+  "ル・スゥブラン": "og-01a19fac09eb.webp",
+  "八戸菓子匠 港むら福": "og-3dc622876248.webp",
+  "創作そばバル ぱいせん": "og-81b8c405fe5b.webp",
+  "漁港ストア": "og-4594bf5f5f7c.webp"
  },
  "hagi": {
   "Gallery JIBITA": "og-60609f39474d.webp",
   "三好蒲鉾": "og-79c1c5ebd057.webp",
   "晦事": "og-09d0d4c2e492.webp",
-  "萩ガラス工房": "og-c7abcfd5dfb2.webp"
+  "萩ガラス工房": "og-c7abcfd5dfb2.webp",
+  "Jantique coffee": "og-da9bfa9acfbf.webp",
+  "坂髙麗左衛門窯": "og-0ba19df49ed3.webp",
+  "忠小兵衛蒲鉾本店": "og-98150363bd2a.webp",
+  "萩焼窯元 勝景庵": "og-e35729732c10.webp",
+  "長屋門珈琲 カフェ・ティカル": "og-d8328f8a7f19.webp"
  },
  "hakodate": {
   "はこだて工芸舎": "og-fe2ff9e6f83e.webp",
   "レイモンハウス 元町店": "og-bfdb58533c8e.webp",
   "石窯ピッツァと和食と酒 そる": "og-cfd3b5646dc1.webp",
-  "阿佐利本店": "og-3fd2de9a3af9.webp"
+  "阿佐利本店": "og-3fd2de9a3af9.webp",
+  "バル・レストラン ラ・コンチャ・イ・バスク": "og-823f7f7c923b.webp",
+  "ヤマザキ洋服店": "og-ac8edc43ef3c.webp",
+  "天然酵母パン tombolo": "og-562cfc06cb88.webp",
+  "箱館元町珈琲店": "og-05c9976137c1.webp"
  },
  "hanamaki": {
   "Sobe's Cafe": "og-01fa733b84bd.webp",
   "マルカンビル大食堂": "og-f25d9dc4ed5e.webp",
-  "田舎labo": "og-b35ee4e98144.webp"
+  "田舎labo": "og-b35ee4e98144.webp",
+  "HAIKARA-YA": "og-31b1e8512265.webp",
+  "PATISSERIE 菓音": "og-b7c447bc73cc.webp",
+  "kurashimeku": "og-0e6f9aab3793.webp",
+  "やぶ屋 花巻総本店": "og-b80e99cf4253.webp",
+  "ガラス体験工房 森のくに": "og-4a64d72d3605.webp",
+  "ワインシャトー大迫（エーデルワイン）": "og-6e259b0b9709.webp",
+  "茶寮かだん": "og-d4a00233ed15.webp"
  },
  "hasami": {
   "アイユー": "og-3ee4abb8d6cf.webp",
   "工房紫明・gallery hana": "og-0709baebaf6a.webp",
-  "白山陶器 本社ショールーム": "og-6ee1177065ee.webp"
+  "白山陶器 本社ショールーム": "og-6ee1177065ee.webp",
+  "FysmColor": "og-b47cd33b37bd.webp",
+  "PAN CLUB": "og-94001f5c3e0b.webp",
+  "WAZAN OUTLET SHOP": "og-0fa02ec09da3.webp",
+  "Ô YANE": "og-730e05e67491.webp",
+  "なかみカフェ by JUNE COFFEE": "og-df537b0660cd.webp",
+  "やきもの工房・ギャラリー 京千": "og-040735046c7b.webp",
+  "ダイニングカフェ るらん": "og-9cd3a4550f6a.webp",
+  "ララフィール 波佐見店": "og-c4cf0f4d1712.webp",
+  "器屋ぎゃらりー 土くら": "og-e1596e1cb490.webp"
  },
  "haworth": {
   "The Boltmakers Arms": "og-7069d71b9fad.webp",
@@ -82,71 +184,181 @@
   "The Old Parcels Office": "og-80b761eb99a4.webp",
   "The Royal Oak": "og-f0c16fbb044a.webp",
   "The Souk": "og-f66130b677dc.webp",
-  "Wave of Nostalgia": "og-1dcbd8180857.webp"
+  "Wave of Nostalgia": "og-1dcbd8180857.webp",
+  "Dog & Gun": "og-e765704a2beb.webp",
+  "Hawksbys": "og-d24b414afea9.webp",
+  "Pavé Charcuterie and Bistro": "og-56ad5b4edc78.webp",
+  "Siân Alison Designs": "og-f9a3c9b447aa.webp",
+  "Taylor's on the Green": "og-310618c13a76.webp"
  },
  "hita": {
   "Bistro Cafe Licht": "og-49d1ee3b6c7a.webp",
   "CREATIVE BASE FAB": "og-404138f3f995.webp",
   "日東木工": "og-758670e757ac.webp",
-  "松浦松翁堂": "og-4856e4cd5a01.webp"
+  "松浦松翁堂": "og-4856e4cd5a01.webp",
+  "BOWL": "og-8f0ac95b955b.webp",
+  "ウッドアート楽": "og-2450ce59d7ef.webp",
+  "原次郎左衛門の味噌醤油蔵": "og-18cb39fa53d2.webp",
+  "小鹿田焼陶芸館": "og-d110984caff4.webp",
+  "御菓子司 日田とらや": "og-7b4f4fe1e07d.webp",
+  "日田まぶし 千屋": "og-4953e1b4b900.webp",
+  "赤司日田羊羹本舗": "og-17a40e43f272.webp"
  },
  "holy-island": {
   "Pilgrims Coffee": "og-ecffc2f64b11.webp",
-  "St Aidan's Winery": "og-3e3f73db367c.webp"
+  "St Aidan's Winery": "og-3e3f73db367c.webp",
+  "Celtic Crafts": "og-d2d364ddb341.webp",
+  "Pilgrims Gelato": "og-63c10ba15a71.webp",
+  "The Barn at Beal": "og-204dace9a106.webp",
+  "The Crown & Anchor Inn": "og-c7dbde9d8284.webp"
  },
  "ise": {
   "Antiques & Cafe Gallery Miko-Nonno": "og-04f655ebb6c5.webp",
   "カンパーニュ": "og-92d360f8efb5.webp",
   "ドゥース・ド・フランス": "og-2dbb69bacbd5.webp",
-  "伊勢 宮忠": "og-36a856966af5.webp"
+  "伊勢 宮忠": "og-36a856966af5.webp",
+  "PROUD COFFEE ROASTERY": "og-dac2ef4fc6c4.webp",
+  "YAMADA": "og-2f02d5f149c9.webp",
+  "しろちどり": "og-62980a49e185.webp",
+  "なかむら珈琲": "og-bff50b4d7989.webp",
+  "パティスリー・ラ・リシュテール": "og-6aee3c60ab72.webp",
+  "フランス料理 ボンヴィヴァン": "og-1bb9fd6c9848.webp",
+  "三重県真珠": "og-f4d7c3661b8a.webp",
+  "他抜きだんらん亭": "og-4649c158f193.webp",
+  "伊勢 菊一": "og-fa962771f045.webp",
+  "伊勢うどんのまめや": "og-9affec572aac.webp",
+  "伊勢和紙館": "og-2fa6bac5e40f.webp",
+  "伊勢河崎商人館": "og-8adf09f6d73c.webp",
+  "伊勢焼陶芸体験工房": "og-f5e95a83d257.webp",
+  "吉兆招福亭": "og-fe79cc86b266.webp",
+  "松孫喫茶店": "og-73617dbc70bc.webp",
+  "糀屋": "og-df363370f964.webp",
+  "藤屋窓月堂": "og-04913fc37eb9.webp"
  },
  "izumo": {
   "ガラス工房Izumo": "og-341caa031658.webp",
   "グランシェノン": "og-ffc794b50dc8.webp",
   "出雲民藝館": "og-ed4f804154b1.webp",
-  "本格手打蕎麦 出雲 砂屋": "og-95bbe7b3d83a.webp"
+  "本格手打蕎麦 出雲 砂屋": "og-95bbe7b3d83a.webp",
+  "おかや木芸": "og-7c588a649ead.webp",
+  "ル コションドール出西": "og-fde3faf1abdf.webp",
+  "出西窯": "og-097623088958.webp",
+  "御菓子とみや": "og-a8515f0fe01f.webp",
+  "献上そば 羽根屋 本店": "og-ced13d89a447.webp",
+  "酒持田本店": "og-5eacd4904d17.webp"
  },
  "kagoshima": {
   "AKAYA COFFEE": "og-01a81aeb7ab9.webp",
-  "熊襲亭": "og-b05e932243ca.webp"
+  "熊襲亭": "og-b05e932243ca.webp",
+  "FUKU+RE": "og-d6b3bbe81a71.webp",
+  "tsutsumu": "og-5c33df20cdbe.webp",
+  "ぢゃんぼ餅 平田屋": "og-94b21facd8c9.webp",
+  "器楽": "og-f0da4e18232a.webp",
+  "島津薩摩切子ギャラリーショップ 磯工芸館": "og-8c0fa021fcd1.webp"
  },
  "kakunodate": {
-  "お食事処 桜の里": "og-c65b24b32f73.webp"
+  "お食事処 桜の里": "og-c65b24b32f73.webp",
+  "RÉGAL RITZ": "og-8c7ad3cf7be0.webp",
+  "みちのく懐かしの味 あきたプリン亭": "og-d212a5c3e2f0.webp",
+  "安藤醸造 本店": "og-2f9c0ed693d2.webp",
+  "白岩焼和兵衛窯": "og-2908727abc26.webp",
+  "藤木伝四郎商店": "og-a73b8c35781c.webp",
+  "食堂いなほ": "og-759b8d38bc47.webp"
  },
  "kanazawa": {
   "FUDGE UP NOTHING": "og-cfb1c252d020.webp",
-  "諸江屋 西茶屋菓寮「味和以」": "og-1a11d51e40b5.webp"
+  "諸江屋 西茶屋菓寮「味和以」": "og-1a11d51e40b5.webp",
+  "kimonodatta.": "og-6e9ab2d66807.webp",
+  "on la CRU.": "og-fbe85e120f0f.webp",
+  "いち凛": "og-1130b4c5ea24.webp",
+  "おでん高砂": "og-1988ee8d3517.webp",
+  "きもの処 凛屋": "og-1e16f0589c4c.webp",
+  "まゆ月 くらがり坂": "og-29e2854219d6.webp",
+  "サロン・ド・テ・カワムラ": "og-1e7763855759.webp",
+  "久連波": "og-f9003de43fe8.webp",
+  "今井金箔 本店": "og-8bf59c96c7da.webp",
+  "兼六園茶屋 見城亭 カフェ": "og-348006cbfde4.webp",
+  "加賀友禅 毎田染画工芸": "og-30ba3a19f472.webp",
+  "加賀友禅の店 ゑり華": "og-852b4f198e16.webp",
+  "加賀友禅会館": "og-51e88db5dc07.webp",
+  "大衆割烹 大関": "og-4cf29590089f.webp",
+  "市場めし あまつぼ": "og-97340b9b13c9.webp",
+  "能作（金沢漆器）": "og-6674ad28af13.webp",
+  "自遊花人": "og-be55d3162d5f.webp",
+  "茜やアーカイブギャラリー": "og-4077be531e3d.webp",
+  "金森寿光堂": "og-7c7ab7895551.webp",
+  "金澤屋珈琲店 本店": "og-21438d93f05b.webp"
  },
  "karatsu": {
   "ギャラリー一番館": "og-cefacd10c606.webp",
   "レストラン シマ": "og-3919e1b04224.webp",
   "三藤窯": "og-07c4b15a4d65.webp",
   "健太郎窯": "og-74c5562b7ba5.webp",
-  "元祖 伊藤けえらん": "og-a1aecbbfac15.webp"
+  "元祖 伊藤けえらん": "og-a1aecbbfac15.webp",
+  "Jack Coffeestand": "og-f7ef4b3d1bc1.webp",
+  "QURIYA 厨": "og-4ebbe03f52d2.webp",
+  "Tea & Space 基幸庵": "og-8fc35333b872.webp",
+  "鏡山窯": "og-489ff25c4b0e.webp"
  },
  "kasama": {
-  "Lunch & Cafe 陶之助＋": "og-c98c347ae01d.webp"
+  "Lunch & Cafe 陶之助＋": "og-c98c347ae01d.webp",
+  "Glass Gallery SUMITO": "og-995e8684a8b4.webp",
+  "HOME ROAST COFFEE 夢豆": "og-149842d26844.webp",
+  "お菓子の店 くり～む": "og-df0a9bd34f01.webp",
+  "きらら館": "og-64ae564f7f78.webp",
+  "カフェ モン・リヴル": "og-64fc732d36d9.webp",
+  "大津晃窯": "og-ce9b1fc7a888.webp"
  },
  "kashihara": {
   "やさい菓子工房 cocoai": "og-0c093e13a4d5.webp",
-  "喜多酒造": "og-8d6aac545e37.webp"
+  "喜多酒造": "og-8d6aac545e37.webp",
+  "tomato monkey": "og-59b05eb793c9.webp",
+  "ギャラリーカフェ narairo": "og-be230334cf6a.webp"
  },
  "kiryu": {
-  "000 ファクトリーショップ（笠盛）": "og-b0e894e00476.webp"
+  "000 ファクトリーショップ（笠盛）": "og-b0e894e00476.webp",
+  "Each of Life": "og-865e1fad3e86.webp",
+  "Itoya coffee factory": "og-0f93f730dfe0.webp",
+  "Ju the burger": "og-07d5e8dd66b2.webp",
+  "OLN shop（井清織物）": "og-3b4918cfd120.webp",
+  "shop & gallery 象": "og-3968f65c49a7.webp",
+  "わびさびや": "og-8d2318c96181.webp",
+  "トラットリア バルボン": "og-b3e8fbc29e85.webp",
+  "ベーカリーカフェ レンガ": "og-01b2d30757f3.webp",
+  "泉織物": "og-80929b9b0a59.webp",
+  "藤屋本店": "og-1b03617111a7.webp"
  },
  "kochi": {
   "Bar Baffone": "og-7fdc440fc837.webp",
   "コミベーカリー": "og-5986e28e524a.webp",
-  "パティスリー ＋カフェ モンスリール": "og-b3cc064be6aa.webp"
+  "パティスリー ＋カフェ モンスリール": "og-b3cc064be6aa.webp",
+  "SANROKU COFFEE": "og-62ee9d35952d.webp",
+  "TUKI": "og-14213e2bc4a1.webp",
+  "御菓子司 福留菊水堂": "og-d57c3d8a57dc.webp",
+  "日日": "og-5b3490519709.webp",
+  "株式会社尾﨑製紙所": "og-e08af2b74541.webp",
+  "紡ぎ珈琲焙煎所": "og-6c9d3d1f5b39.webp",
+  "葉牡丹": "og-9bdf349d0fa9.webp"
  },
  "kurashiki": {
   "FLAT 倉敷美観地区店": "og-f0615073b702.webp",
   "kobacoffee 倉敷川店": "og-b02de12f4e8f.webp",
   "天領倉敷珈琲": "og-91a1f60b0da1.webp",
-  "融民藝店": "og-fb41f23a78f1.webp"
+  "融民藝店": "og-fb41f23a78f1.webp",
+  "T.S.L Kurashiki": "og-52e5923d0667.webp",
+  "atelier & salon はしまや": "og-dba426895bab.webp",
+  "アチブランチ": "og-604329864da5.webp",
+  "倉敷帆布 美観地区店": "og-0924d7284ac3.webp",
+  "工房イクコ": "og-c6f9b715dd5a.webp",
+  "滔々 toutou": "og-fce3023a446e.webp"
  },
  "kurayoshi": {
-  "倉吉ふるさと工芸館": "og-944b15307ed8.webp"
+  "倉吉ふるさと工芸館": "og-944b15307ed8.webp",
+  "COCOROSTORE": "og-c2619713f11d.webp",
+  "創作工房 中野竹藝": "og-3dbcd94ffd03.webp",
+  "白壁倶楽部": "og-b400ddeca0e2.webp",
+  "石谷精華堂 本店": "og-fb5aa5777a80.webp",
+  "菓子蔵楽部 倉吉舎": "og-e59e6d06b045.webp"
  },
  "london": {
   "José": "og-e5e226420b15.webp",
@@ -154,122 +366,301 @@
   "Monmouth Coffee Company": "og-368874e859b7.webp",
   "Padella Shoreditch": "og-aec5e4860161.webp",
   "Pizarro": "og-722d9c70d09a.webp",
-  "The Quality Chop House": "og-2103baa1c0b0.webp"
+  "The Quality Chop House": "og-2103baa1c0b0.webp",
+  "Henry Poole & Co": "og-5deb0f185cf0.webp",
+  "James Smith & Sons": "og-cbfbafd65c2d.webp",
+  "Lasdun": "og-bca2f0a1c1b2.webp",
+  "London Glassblowing": "og-dea714a3dd72.webp",
+  "Maggs Bros. Ltd": "og-ccb594104d2e.webp",
+  "Moro": "og-3fe5cda16e57.webp",
+  "Prufrock Coffee": "og-af2b861dd51c.webp",
+  "Skoob Books": "og-ed737577f56b.webp",
+  "Sotheran's": "og-4790cb9de79d.webp",
+  "The Anchor & Hope": "og-637c579180c8.webp",
+  "Wagumi": "og-969dbf4334ab.webp"
  },
  "mashiko": {
   "Megumi Drip": "og-8080c56456e9.webp",
   "外池酒造店": "og-4d41036de0ca.webp",
   "自家焙煎珈琲 イチトニブンノイチ": "og-56253a71b5b1.webp",
-  "陶庫": "og-b5d763065662.webp"
+  "陶庫": "og-b5d763065662.webp",
+  "Natural Bakery 日々舎": "og-1227c1ad2932.webp",
+  "starnet": "og-71b736437b01.webp",
+  "益子焼窯元よこやま": "og-8aaa6c317e1a.webp",
+  "益子珈琲": "og-06fdb129bdce.webp"
  },
  "milan": {
-  "Spotti Milano": "og-8ea67de72329.webp"
+  "Spotti Milano": "og-8ea67de72329.webp",
+  "28 Posti": "og-64b0e21b3634.webp",
+  "Bugan Coffee Lab": "og-3428ee55bf11.webp",
+  "Coffee Studio 7Gr.": "og-35ca8ec50c91.webp",
+  "Cucchi": "og-3fda78c02032.webp",
+  "Fornasetti": "og-9fce8085649d.webp",
+  "Gelato Giusto": "og-9195a0306b86.webp",
+  "LabSolue Perfume Laboratory": "og-b49c2761f718.webp",
+  "Laboratorio Paravicini": "og-4c148237433d.webp",
+  "Nilufar Gallery": "og-a10d313714d8.webp",
+  "Orsonero Coffee": "og-36a06712c26e.webp",
+  "Røst": "og-30bc1dc65e8a.webp",
+  "Signor Lievito": "og-01205a00ab60.webp",
+  "Trattoria del Pescatore": "og-49a8ae81516d.webp",
+  "Trippa": "og-70625744f96c.webp",
+  "Un Posto a Milano": "og-b2fdae3fb58d.webp",
+  "Zhor Parfums": "og-97adaeffd48e.webp"
  },
  "morioka": {
-  "みちのくあかね会": "og-65a9099d3299.webp"
+  "みちのくあかね会": "og-65a9099d3299.webp",
+  "KANEIRI STANDARD STORE 盛岡店": "og-792057a9a070.webp",
+  "kasi-friendly": "og-8ba5a6d408d8.webp",
+  "shop+space ひめくり": "og-861698fe05a9.webp",
+  "光原社 可否館": "og-349ad2ce6147.webp",
+  "光原社 本店": "og-349ad2ce6147.webp",
+  "南部古代型染元 蛭子屋 小野染彩所": "og-8afa7700d2c9.webp",
+  "御菓子司 山善 本店": "og-730ace11b20a.webp",
+  "東家 盛岡駅前店": "og-cf4cad547b83.webp",
+  "染屋たきうら": "og-59acc09f539f.webp",
+  "老舗 白沢せんべい店": "og-6e8f4eea8c20.webp",
+  "草紫堂": "og-ef75f518a191.webp",
+  "螺鈿 澤井工房": "og-fb2e9e2fbe5e.webp",
+  "食道園": "og-caa8ebe3d4e5.webp"
  },
  "nagasaki": {
   "Museum Cafe 南山手八番館": "og-98b932e13295.webp",
   "ニューヨーク堂": "og-d4bc2923be59.webp",
-  "珈琲人町": "og-7c59af1dc3c7.webp"
+  "珈琲人町": "og-7c59af1dc3c7.webp",
+  "吉宗": "og-bc09dff319ee.webp",
+  "瑠璃庵": "og-77e1ffd5c909.webp",
+  "長崎雑貨 たてまつる": "og-7d7ffa3d69cc.webp"
  },
  "naha": {
   "GARB DOMINGO": "og-375aca474a57.webp",
   "壺屋焼窯元 育陶園": "og-0c58b48c0822.webp",
-  "清正陶器・壺屋窯": "og-9aaebaac9157.webp"
+  "清正陶器・壺屋窯": "og-9aaebaac9157.webp",
+  "miyagiya": "og-dcc7fffb9dcb.webp",
+  "安里屋すば": "og-6ebe4592cfff.webp",
+  "瑞泉酒造": "og-ba9cac0601e8.webp",
+  "首里染織館 suikara": "og-6937554365fa.webp"
  },
  "naruto": {
   "リストランテ フィッシュボーン": "og-1c8d727998ad.webp",
   "味処 あらし": "og-09861df5fa6e.webp",
   "結ノ芽": "og-3362d27a0716.webp",
-  "陶業会館 梅里窯": "og-20aabe7c7e9e.webp"
+  "陶業会館 梅里窯": "og-20aabe7c7e9e.webp",
+  "Art工房 花橘": "og-1a950b5ff701.webp",
+  "Café des épices": "og-58e733f7673f.webp",
+  "Nalu Ge": "og-63e2d3471a1f.webp",
+  "The Coffee Beans": "og-e9a31b57b328.webp",
+  "フレンチモンスター 瀬戸内フードアート": "og-f533e2b6904f.webp",
+  "大谷焼窯元 森陶器": "og-b63ca2f7c864.webp",
+  "御菓子処 ことらや": "og-4131deabc04c.webp",
+  "矢野陶苑": "og-aa5b0539cf6b.webp",
+  "舩本うどん": "og-be64120d7f51.webp"
  },
  "nichinan": {
   "HINA MUFFIN": "og-45663cdfe10f.webp",
-  "武家屋敷 伊東邸": "og-f8e299fcd57a.webp"
+  "武家屋敷 伊東邸": "og-f8e299fcd57a.webp",
+  "ベーカリーおびにたすき": "og-0df6b8afa090.webp",
+  "魚料理 びびんや": "og-0bddd2b3f0de.webp"
  },
  "odawara": {
-  "TEA FACTORY 如春園": "og-192a2c8cc5b7.webp"
+  "TEA FACTORY 如春園": "og-192a2c8cc5b7.webp",
+  "Anbos Coffee Roaster": "og-a94ffcc6817c.webp",
+  "そば処 橋本": "og-45806b907125.webp",
+  "イルマーレ": "og-385c8236cf6c.webp",
+  "パティスリー HINNA": "og-5d58ce659116.webp",
+  "フレンチ食堂 iTToku": "og-0f835c0fac39.webp",
+  "伊勢屋": "og-b1373856c09d.webp",
+  "菜の花 暮らしの道具店": "og-85b50b295637.webp",
+  "露木木工所": "og-b8352566777e.webp"
  },
  "omihachiman": {
   "coffee åtta": "og-cc6cc1feff34.webp",
   "みいちゃんのお菓子工房": "og-5a73ae343ef3.webp",
   "ブラッスリー エパターシュ": "og-8370d3c86f24.webp",
-  "暦 ～こよみ～ Local Life & Crafts": "og-34c9483fe529.webp"
+  "暦 ～こよみ～ Local Life & Crafts": "og-34c9483fe529.webp",
+  "Cafe NICO": "og-af29e1520619.webp",
+  "MAISON HIBINO": "og-d3cf8582b383.webp",
+  "だもん亭": "og-1809a638f2d9.webp",
+  "リバーフィールド": "og-4913b7e82869.webp",
+  "レアウッドビーズ美樹 八幡堀 石畳の小路店": "og-49418fcfec52.webp",
+  "中島多吉商店": "og-89c968c3c622.webp",
+  "京都そば処 志な乃": "og-f2086244b111.webp",
+  "和菓子 まんすて": "og-f2a0db81cef8.webp",
+  "和菓子司 近江三方庵": "og-50177161fb4d.webp",
+  "江湖庵": "og-fa7df5df9230.webp",
+  "近江一閑張 蔵 -KURA-": "og-3830c8838a1f.webp"
  },
  "onomichi": {
   "ONOMICHI DENIM SHOP": "og-db1e9929e6ca.webp",
-  "からさわ": "og-4c8c39d25de4.webp"
+  "からさわ": "og-4c8c39d25de4.webp",
+  "Nahui Xocolatl": "og-ecf7f56d5ee6.webp",
+  "watarite": "og-1423783c5720.webp",
+  "住田製パン所": "og-d09643780b9e.webp",
+  "尾道の食事処 青柳": "og-5f0470e36754.webp",
+  "珈琲豆ましろ": "og-073bc7acb7bb.webp",
+  "短編食堂": "og-1a2c5372db43.webp",
+  "茶房こもん": "og-7b9224f48386.webp"
  },
  "reggio": {
   "Azienda Agricola Patea": "og-7a60c666c1f1.webp",
   "Gelato Cesare": "og-e5e26f890ddc.webp",
   "Leonardo Caliò": "og-e4b4c37c0768.webp",
-  "Museo Nazionale del Bergamotto (MuBer)": "og-ce764374b1b3.webp"
+  "Museo Nazionale del Bergamotto (MuBer)": "og-ce764374b1b3.webp",
+  "Cremeria Sottozero": "og-a97c3e9099c5.webp",
+  "Funky Drop": "og-3529fc64c5be.webp",
+  "Gelateria Trebottoni": "og-88cadaa37e1e.webp",
+  "Oro, Argento e Mirra": "og-dca7a2b73356.webp",
+  "Pasticceria La Mimosa": "og-8fd7574d0733.webp"
  },
  "reykjavik": {
   "Hnoss Bistro": "og-759bbf58a8e1.webp",
   "Kaffihús Vesturbæjar": "og-6c4bafc26f99.webp",
   "Kaffivagninn": "og-a7a29582b353.webp",
   "Kaolin Ceramic Gallery": "og-8975db444959.webp",
-  "Matur og Drykkur": "og-90d2e1c73e47.webp"
+  "Matur og Drykkur": "og-90d2e1c73e47.webp",
+  "12 Tónar": "og-dff3e897ddcc.webp",
+  "Handprjónasamband Íslands": "og-a0c19e49f7d9.webp",
+  "Kaffi Loki": "og-825eaabfdfb1.webp",
+  "Kaffibrugghúsið": "og-c051082a94c8.webp",
+  "Kaktus Espressobar": "og-91dd83b1eb90.webp",
+  "Kröst": "og-7da15de54c12.webp",
+  "Omnom Chocolate": "og-be8c88a20208.webp",
+  "Sandholt": "og-2048605d5159.webp",
+  "Smekkleysa": "og-2f23718ed79b.webp",
+  "Space Odyssey": "og-48c9cb814b24.webp"
  },
  "sakai": {
   "kokorotocacao": "og-5c573cb352d9.webp",
-  "芦刃物製作所": "og-bc075ae1bb1e.webp"
+  "芦刃物製作所": "og-bc075ae1bb1e.webp",
+  "wabi-sabi 発酵と珈琲と。": "og-ac756de3d677.webp",
+  "うつわと暮らしの道具 sizuku": "og-febf6a245ef1.webp",
+  "かん袋": "og-d93f7d240364.webp",
+  "梅栄堂": "og-66cf83b92042.webp"
  },
  "sawara": {
   "One&Only Cafe 香取店": "og-1282c5f90f30.webp",
   "いなえ": "og-7dcf64ed40a5.webp",
-  "御菓子司 虎屋": "og-da25069599ba.webp"
+  "御菓子司 虎屋": "og-da25069599ba.webp",
+  "Legacy Market": "og-5c86457964e3.webp",
+  "TAWARA WORK AND CAFE": "og-244df426377c.webp",
+  "いかだ焼本舗 正上": "og-0113f02b50d2.webp",
+  "リストランテ カーザ・アルベラータ": "og-361945a1c005.webp",
+  "油茂製油": "og-3cd2d08ce89a.webp",
+  "無垢家": "og-ea5b26073251.webp",
+  "珈琲玉澤": "og-f7d1c08e599b.webp",
+  "金蜜堂": "og-b64db7627c49.webp",
+  "香蕎庵": "og-affcda353589.webp",
+  "馬場本店酒造": "og-3164cfd7616c.webp"
  },
  "shiogama": {
   "レストラン シェ・ヌー": "og-a82cbe72cc42.webp",
   "土井精菓": "og-b59bdddb7fd6.webp",
   "太田與八郎商店": "og-cf397b7ce708.webp",
-  "浦霞 酒ギャラリー": "og-f4fc618febd5.webp"
+  "浦霞 酒ギャラリー": "og-f4fc618febd5.webp",
+  "Gelateria Fruits Laboratory": "og-0caebbc89238.webp",
+  "birdo space": "og-945dd4ecaa43.webp",
+  "梅花堂 本店": "og-4da6d3fd7994.webp"
  },
  "shizuoka": {
   "ESORA COFFEE": "og-176d0591a3e5.webp",
   "ヴィンチスグラッシ": "og-54b4155a6e58.webp",
-  "株式会社吉蔵": "og-65e016e9ad05.webp"
+  "株式会社吉蔵": "og-65e016e9ad05.webp",
+  "LA PALETTE": "og-9d36f089163f.webp",
+  "Patisserie Hirondelle": "og-8dd6d35bfc51.webp",
+  "VERT CLAIR": "og-c1b0cd03f6a3.webp",
+  "cotory": "og-e8f50233a52a.webp",
+  "simples": "og-d60939465705.webp",
+  "ÉPICURIEN": "og-0283f8b625d0.webp",
+  "うつわ 暮らしの道具 テクラ": "og-622b84ae7cd8.webp",
+  "ショコラファン": "og-8c73882365df.webp",
+  "レストラン ソレイユ": "og-ab581b706825.webp",
+  "三保原屋本店": "og-2e5739ba0e74.webp",
+  "元祖 丁子屋": "og-cd19692272ed.webp",
+  "茶町KINZABURO": "og-ddb87eefe230.webp",
+  "陶芸しみず春日工房": "og-4f167526d12a.webp"
  },
  "suwa": {
   "ケーキ屋 クローバー": "og-3d96e126278b.webp",
   "太養パン店": "og-ca67c9a84b94.webp",
-  "生アイスとヘーゼルナッツフィナンシェの店 Het's": "og-e23b59cd483d.webp"
+  "生アイスとヘーゼルナッツフィナンシェの店 Het's": "og-e23b59cd483d.webp",
+  "IN MY BASKET": "og-bcd0d0f6b386.webp",
+  "ReBuilding Center JAPAN": "og-a6c8458e03b1.webp",
+  "うなぎ古畑": "og-30df11c97978.webp",
+  "タケヤ味噌会館": "og-b0bc2f6120f4.webp",
+  "茶房 和茶々": "og-876268f0b7b4.webp",
+  "蔵元ショップ Cella MASUMI": "og-e59b569cf002.webp"
  },
  "tajimi": {
   "3RD CERAMICS": "og-74534d83d97a.webp",
   "THE GROUND MINO": "og-777bb1f4fba9.webp",
   "ガラス工房Tutti": "og-6becd743a582.webp",
   "御菓子司 陶勝軒": "og-7cc44963938c.webp",
-  "珈琲工房 豆家": "og-5b05527dfd00.webp"
+  "珈琲工房 豆家": "og-5b05527dfd00.webp",
+  "パンブティック ピエニュ": "og-8ede546c2abb.webp",
+  "ラ・メール・ブランシュ": "og-4f30b787c855.webp",
+  "作善堂": "og-bc3303444f05.webp",
+  "幸兵衛窯": "og-d5f57dba65ef.webp",
+  "東美濃": "og-5aefd9ec1fcd.webp",
+  "蔵珍窯": "og-1321844b5a0d.webp"
  },
  "takamatsu": {
   "まちのシューレ963": "og-a4a2560ef8b6.webp",
-  "三びきの子ぶた": "og-4a5ab5062ec7.webp"
+  "三びきの子ぶた": "og-4a5ab5062ec7.webp",
+  "HIYORI WASANBON 日和制作所": "og-ba06e504ae3c.webp",
+  "kitahama blue stories": "og-1df0c17f66dd.webp",
+  "御菓子処 湊屋": "og-86cae11210a0.webp",
+  "暮らすうつわ とうもん": "og-7c992b542b0b.webp",
+  "木型工房 市原・豆花": "og-db96d26f8509.webp"
  },
  "takaoka": {
   "うつわむすび": "og-238dbc903136.webp",
-  "鹿の子餅本舗 不破福寿堂": "og-5ae1b90bd661.webp"
+  "鹿の子餅本舗 不破福寿堂": "og-5ae1b90bd661.webp",
+  "KANAYA": "og-1390851886ab.webp",
+  "Le premier": "og-b821c4710075.webp",
+  "amida coffee": "og-db5848540e7e.webp",
+  "カフェくらうん": "og-40b03009cb48.webp",
+  "シマタニ昇龍工房": "og-d4aad624a9a0.webp",
+  "デザートと家庭料理の店 キャセロール": "og-5012a6a7836b.webp",
+  "パティスリー バレンタイン": "og-0340bed750a6.webp",
+  "九谷屋": "og-86740c3d6c58.webp",
+  "大野屋": "og-c1e403da181e.webp",
+  "山口久乗": "og-36dcdaa3d735.webp",
+  "洋食 no ARIKA": "og-2adc44f35f8d.webp",
+  "自家焙煎珈琲店 らんぶる": "og-379b390372fd.webp"
  },
  "takayama": {
   "Panove": "og-7b6aa9b4dd56.webp",
   "パスタとお酒 Logica docco": "og-8c1d202984c8.webp",
   "小糸焼窯元": "og-3354cdc23c0a.webp",
   "山田春慶店": "og-6649147953bf.webp",
-  "平田酒造場": "og-6cd7e20f706b.webp"
+  "平田酒造場": "og-6cd7e20f706b.webp",
+  "TRAIN BLEU": "og-4b2333f4fd0d.webp",
+  "pizzeria SERICO": "og-89ac8937eb59.webp",
+  "クラフト雑貨 kochi": "og-4ac460db7f7e.webp",
+  "川尻酒造場": "og-a9cb0f3dec0d.webp",
+  "稲豊園": "og-cbf3fd8513f8.webp",
+  "飛騨高山 匠館": "og-30ab9ec1c0a4.webp"
  },
  "tambasasayama": {
   "丹波篠山 一休庵": "og-ba993f7c749e.webp",
   "俊彦窯": "og-e71906a2c8fb.webp",
   "小田垣豆堂": "og-ff14a67dae85.webp",
   "珈琲豆 誠": "og-d1e8b8e37c57.webp",
-  "雪岡市郎兵衛洋菓子舗": "og-b0f0fb68b625.webp"
+  "雪岡市郎兵衛洋菓子舗": "og-b0f0fb68b625.webp",
+  "KONdA to": "og-4c43d75aafdd.webp",
+  "丹泉窯": "og-d5dbb95dc830.webp",
+  "大熊窯": "og-050e53ae4b88.webp",
+  "小西のパン": "og-c2e5ded01f91.webp",
+  "白殻五粉": "og-293ee9d72be1.webp"
  },
  "tanabe": {
-  "みちうえ農園": "og-ad6f4e2aba4a.webp"
+  "みちうえ農園": "og-ad6f4e2aba4a.webp",
+  "たな梅本店": "og-d81d24b7a231.webp",
+  "中峰農園": "og-e81110f40223.webp",
+  "木の椅子工房 G.WORKS": "og-171531294966.webp",
+  "秋津野ガルテン 農家レストラン みかん畑": "og-f50b6c33a476.webp",
+  "紀州備長炭記念公園": "og-8965c00443dd.webp",
+  "鈴屋": "og-603635404588.webp"
  },
  "tokoname": {
   "NOISETTE": "og-eeddc94d0fdf.webp",
@@ -277,58 +668,168 @@
   "にざまつ 散歩道店": "og-cd14741d0e37.webp",
   "バー＆ビストロ 共栄窯": "og-3366a4f291af.webp",
   "パン工房ヴィエノワ": "og-f3ac94b5de26.webp",
-  "急須と器 いそべ": "og-f96f3d126413.webp"
+  "急須と器 いそべ": "og-f96f3d126413.webp",
+  "BAGEL CAFE SORARIN": "og-50e6cb95bcff.webp",
+  "HOUSE OF 12": "og-9a8c4fcaf5d0.webp",
+  "にわのパン": "og-c3e7d24e4ecc.webp",
+  "カフェベレクー": "og-96a8604c3d4c.webp",
+  "カレット洋菓子店 常滑店": "og-cf4832ce0a1b.webp",
+  "前川製陶所": "og-09bac978d042.webp",
+  "地魚料理・うなぎ 丸一": "og-0b007c0ea2b4.webp",
+  "炭焼 政": "og-ae81239a5a54.webp",
+  "珈琲工房 しいの木": "og-01f4b603496b.webp",
+  "角山陶苑": "og-c16d9194181f.webp",
+  "陶房杉": "og-246c3594cc49.webp"
  },
  "tottori": {
   "Gallery そら": "og-aee3f485c331.webp",
-  "Totto PURIN": "og-1997211885cc.webp"
+  "Totto PURIN": "og-1997211885cc.webp",
+  "Am's": "og-b0ca77d7bb1b.webp",
+  "NONBODY": "og-0cfe8b449442.webp",
+  "cafe restaurant SUKATTO": "og-54b3fc28d18b.webp",
+  "taone": "og-9bf2f6ea860e.webp",
+  "yonayona焼き菓子店": "og-2841cf940b86.webp",
+  "アートスペースからふる": "og-25ea525a5945.webp",
+  "タカハマカフェ": "og-ecec0226725a.webp",
+  "喫茶 ベニ屋": "og-0effdfe93391.webp",
+  "因州・中井窯": "og-eec24663e12d.webp",
+  "春歌秋灯 川端店": "og-eb170083c54b.webp",
+  "時代物専門店 風庵": "og-be16a2927760.webp",
+  "鳥取たくみ工芸店": "og-a730d9af0957.webp",
+  "鳥取宝月堂": "og-388ccbdd541a.webp"
  },
  "tsubamesanjo": {
   "FACTORY FRONT": "og-65ba1ab866fe.webp",
-  "菓子処 かつぼ屋": "og-948592b4c324.webp"
+  "菓子処 かつぼ屋": "og-948592b4c324.webp",
+  "ARSÉNE": "og-ee2e80dcbcb2.webp",
+  "SUWADA OPEN FACTORY": "og-048781da2278.webp",
+  "VINTAGE HALL": "og-59037c896e6c.webp",
+  "マルナオ": "og-250dc770f858.webp",
+  "古物再生 REYOO": "og-94bab9b5c987.webp",
+  "庖丁工房タダフサ": "og-cad0cdbe8b78.webp",
+  "玉川堂": "og-3ce8a80cddb0.webp"
  },
  "tsunan": {
-  "大井平そば工房": "og-3071b3e8ff53.webp"
+  "大井平そば工房": "og-3071b3e8ff53.webp",
+  "ROKUの店": "og-7b047428a849.webp",
+  "山源木工": "og-1980c23321c3.webp"
  },
  "uda": {
   "ヒルトコカフェ": "og-b21656424792.webp",
-  "森野吉野葛本舗": "og-fe0a392d58ed.webp"
+  "森野吉野葛本舗": "og-fe0a392d58ed.webp",
+  "きみごろも本舗 松月堂": "og-d3dbc0007950.webp",
+  "ごはんcafe SOU": "og-f406c978c210.webp",
+  "古民家カフェ chou chou": "og-c9db9e903739.webp",
+  "陶工房 釉": "og-5d3b3a240dbc.webp"
  },
  "uji": {
   "Antica Pizzeria L'ASINELLO": "og-54a4a5ce2db7.webp",
   "京都炭山朝倉木工": "og-b875d48aaa6c.webp",
   "堀井七茗園": "og-024d15376806.webp",
-  "龍豊窯": "og-b259804f17d7.webp"
+  "龍豊窯": "og-b259804f17d7.webp",
+  "OUTSTANDING COFFEE ROASTER": "og-b6999ff5cf2e.webp",
+  "シェ・アガタ": "og-4cd65fd2b726.webp",
+  "季節料理と天ぷら LovA": "og-6a3d3fd33868.webp",
+  "昇苑くみひも 宇治本店": "og-fe5ade629cd7.webp",
+  "通圓": "og-4a7777f38727.webp"
  },
  "vienna": {
   "Café Prückel": "og-af8af4679f3f.webp",
   "Café Sperl": "og-96780e6df572.webp",
   "J. & L. Lobmeyr": "og-3514dd6d9cf4.webp",
   "Jarosinski & Vaugoin": "og-6f17ad384c39.webp",
-  "SKREIN*": "og-790f8928708a.webp"
+  "SKREIN*": "og-790f8928708a.webp",
+  "A. E. Köchert": "og-58f526237bba.webp",
+  "Bags With Legs": "og-79057f729097.webp",
+  "Demel": "og-fca431e8db48.webp",
+  "Gastwirtschaft Steman": "og-ae18d5afb5fe.webp",
+  "Jonas Reindl Coffee Roasters": "og-3a1797b4e6ef.webp",
+  "M. Maurer": "og-69ea21bac98c.webp",
+  "Mühlbauer": "og-a52640273559.webp",
+  "Scheer": "og-5749aada32aa.webp",
+  "Tostmann Trachten": "og-9df4ebc51acd.webp",
+  "Vollpension": "og-e8b23e396ad0.webp",
+  "Wiener Porzellanmanufaktur Augarten": "og-47fd8c9dc0c7.webp",
+  "Zum Schwarzen Kameel": "og-44ac98fce6f2.webp",
+  "rosa mosa": "og-2aa9b3d5ce29.webp"
  },
  "yamagata": {
   "JalanJalan Coffee & More": "og-a98f77eced8f.webp",
   "この山道を行きし人あり": "og-898036eee15e.webp",
   "そば処 庄司屋 御殿堰七日町店": "og-d4a23f1acd91.webp",
   "白露ふうき豆本舗 山田家": "og-8e1d828975ce.webp",
-  "金澤屋牛肉店": "og-78f3757ab59a.webp"
+  "金澤屋牛肉店": "og-78f3757ab59a.webp",
+  "Day & Coffee 本町七日町店": "og-c9fc9b967844.webp",
+  "RESTAURANT PAS MAL": "og-981406378b24.webp",
+  "ROOTS & Technique the REAL store": "og-e0e0b9b54391.webp",
+  "せと藤": "og-72d73031f19b.webp",
+  "七右エ門窯": "og-b1bd199ebcf6.webp",
+  "栄屋本店": "og-8f637883624e.webp",
+  "榮玉堂": "og-11f74dbff45d.webp",
+  "蔵王の森焙煎工房": "og-f9fdfd286ee6.webp"
  },
  "yamanakaonsen": {
   "CRAFTOUR": "og-e8254c6bb62a.webp",
   "GATO MIKIO/1": "og-eaa5a0553fc2.webp",
   "うるしの器 あさだ": "og-c3a775bbb785.webp",
   "九谷焼窯元 きぬや": "og-7b714aff43f1.webp",
-  "湯の街ビストロ 江沼スタシオン": "og-35886ea94900.webp"
+  "湯の街ビストロ 江沼スタシオン": "og-35886ea94900.webp",
+  "山田食堂": "og-9e257a8aa4e9.webp",
+  "工房 静寛": "og-adcafe19eed3.webp",
+  "御菓子調進所 山海堂": "og-e8b840992401.webp",
+  "芭蕉珈琲": "og-a0a0ec652719.webp"
  },
  "yame": {
-  "うなぎの寝床 旧寺崎邸": "og-22d0c621dbf5.webp"
+  "うなぎの寝床 旧寺崎邸": "og-22d0c621dbf5.webp",
+  "古陶星野焼展示館": "og-c9d8c317d0f6.webp",
+  "生はちみつ専門店 cafe蜂の雫": "og-b3c569754a8b.webp",
+  "男ノ子焼の里": "og-bf303f1ff769.webp"
  },
  "yufuin": {
   "CAFE LA RUCHE": "og-ce7f7d059c42.webp",
   "LINGON": "og-4556a21e1fd3.webp",
   "こちょぱん": "og-6de61af10b72.webp",
   "ティールーム ニコル": "og-936f4269ba68.webp",
-  "由布院 甘味茶屋": "og-74360d17a90c.webp"
+  "由布院 甘味茶屋": "og-74360d17a90c.webp",
+  "CAFE 森の交茶店": "og-b6a174a1bec1.webp",
+  "イタリア家庭料理 南の風": "og-e480a128b7fe.webp",
+  "オニパンカフェ": "og-c1e88b1c57ee.webp",
+  "湯布珈琲": "og-761cfc0aaac2.webp",
+  "湯布院ゆふふ": "og-743247796e8e.webp",
+  "由布院 鞠智": "og-e5c0eb512aa7.webp",
+  "由布院ステンドグラス美術館": "og-61350d9c157f.webp"
+ },
+ "kawanehoncho": {
+  "SHOP & CAFE 晴耕雨読": "og-f59cc0ec0faf.webp",
+  "rest & coffee 湖上駅カフェ": "og-43e3ae7416b1.webp",
+  "フォーレなかかわね 茶茗舘": "og-3453a6d481dd.webp",
+  "大井川めんぱ 大井屋": "og-f82ddb49e720.webp",
+  "山香荘茶園": "og-62f1dbda998f.webp",
+  "株式会社 前田工房": "og-c444ae041b96.webp"
+ },
+ "ozu": {
+  "冨永松栄堂": "og-3b02c8feade2.webp",
+  "大洲炉端 油屋": "og-14cdb0a9988a.webp",
+  "臥龍醸造": "og-ee47c0180ae9.webp"
+ },
+ "yamaga": {
+  "Différence": "og-dd27d40221a1.webp",
+  "gardencafe528": "og-936f09e4d96e.webp",
+  "ricca": "og-1035f99f32d0.webp",
+  "お食事 彩座": "og-5290f5f5692d.webp",
+  "かじや窯": "og-cfd50bd20e34.webp",
+  "ヤマノテ": "og-cb92d424f586.webp",
+  "団扇屋 栗川商店": "og-23220843cf79.webp",
+  "山鹿和栗洋菓子店 An": "og-28df6264ea17.webp",
+  "山鹿灯籠民芸館": "og-417608bb55a2.webp",
+  "琥珀の刻": "og-2a347e7beb0b.webp",
+  "穏Café あたたかい木": "og-1d8d666a53c1.webp",
+  "菊鹿ワイナリー レストラン": "og-0fe590db88a7.webp"
+ },
+ "yamanashi": {
+  "三養醸造": "og-f793a522b94b.webp",
+  "桃農家カフェ ラ・ペスカ": "og-2867107b0263.webp",
+  "製パン 麦玄": "og-1f2856e7b72f.webp",
+  "陶ギャラリーRoppo 六鵬窯": "og-0e0c0527f6be.webp"
  }
 }
