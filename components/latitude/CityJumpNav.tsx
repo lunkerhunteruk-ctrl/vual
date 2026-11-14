@@ -38,8 +38,10 @@ export default function CityJumpNav({ items, label }: { items: JumpItem[]; label
     };
     const io = new IntersectionObserver(pick, { rootMargin: `-${line}px 0px -${Math.max(0, window.innerHeight - line - 1)}px 0px` });
     els.forEach((e) => io.observe(e));
+    // 目次から飛んだ直後など、線の上で止まった時にも合わせ直す（scrollend の無いブラウザは IntersectionObserver だけ）
+    window.addEventListener('scrollend', pick);
     pick();
-    return () => io.disconnect();
+    return () => { io.disconnect(); window.removeEventListener('scrollend', pick); };
   }, [items, top]);
 
   return (
