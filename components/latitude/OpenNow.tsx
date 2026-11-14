@@ -34,6 +34,9 @@ function subscribe(f: () => void) {
 const minuteNow = () => Math.floor(Date.now() / MINUTE);
 const serverMinute = () => -1; // サーバーと、開いた直後の描画では「まだ分からない」
 export const useMinute = () => useSyncExternalStore(subscribe, minuteNow, serverMinute);
+// on の間だけ時計を動かす（地図の「いま営業時間内」を押した時だけ）。off の間は -1
+const noSubscribe = () => () => {};
+export const useMinuteIf = (on: boolean) => useSyncExternalStore(on ? subscribe : noSubscribe, on ? minuteNow : serverMinute, serverMinute);
 
 // 状態の字と点（色が無くても言葉で分かる）。分からない時は null
 export function OpenNowText({ open, zone, ja, minute }: { open: OpenHours; zone: TownZone | null; ja: boolean; minute: number }) {

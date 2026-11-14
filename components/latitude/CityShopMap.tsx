@@ -6,8 +6,8 @@ import { markStyle, isSightKind, type MarkKind } from '@/lib/latitude-markers';
 import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes/pairs';
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 import { AddressLine, FactsLine, JaName, type ShopFactsData } from '@/components/latitude/ShopFacts';
-import { OpenNowInline } from '@/components/latitude/OpenNow';
-import type { TownZone } from '@/lib/latitude-open';
+import { OpenNowInline, useMinuteIf } from '@/components/latitude/OpenNow';
+import { openStatus, type TownZone } from '@/lib/latitude-open';
 import { SaveButton, SavedLink } from '@/components/latitude/SaveButton';
 import HereDistance, { useHere } from '@/components/latitude/HereDistance';
 import { askHere, forgetHere, hereLabel, metersBetween } from '@/lib/latitude-here';
@@ -376,6 +376,17 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   };
   const catKeys = [...cats.map((c) => c.key), ...(build && rinStops.length ? [RIN] : [])];
   const allOn = catKeys.every((k) => !off.has(k));
+  // 2026-11-15「いま営業時間内」：押すと、時間割で営業時間内でない印（時間割の無い店・見る所も）を薄くする。時間割のある店が1軒も無い町では出さない。
+  // 消すのではなく薄くするだけ（臨時休業は分からないので、選べなくはしない）
+  const timed = pins.some((p) => p.facts?.open);
+  const [openOnly, setOpenOnly] = useState(false);
+  const minute = useMinuteIf(openOnly && timed);
+  const openIds = useMemo(() => {
+    if (minute < 0) return null;
+    const at = new Date(minute * 60_000);
+    return new Set(pins.filter((p) => p.facts?.open && openStatus(p.facts.open, at, zone ?? null).state === 'open').map((p) => p.id));
+  }, [minute, pins, zone]);
+  const faded = (id: string) => !!openIds && !openIds.has(id) && id !== sel;
   const setAll = () => {
     if (allOn) { setOff(new Set(catKeys)); if (sel) goTo(null); } else setOff(new Set());
   };
@@ -734,6 +745,14 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             </button>
           );
         })}
+        {timed && !build && (
+          <button type="button" aria-pressed={openOnly} onClick={() => setOpenOnly(!openOnly)}
+            className="flex min-h-[40px] cursor-pointer items-center gap-2 rounded-full px-3 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] transition-colors"
+            style={chip(openOnly)}>
+            <span aria-hidden="true" className="block h-[7px] w-[7px] shrink-0 rounded-full" style={{ background: openOnly ? '#4f6b3a' : MUTE }} />
+            {ja ? 'いま営業時間内' : 'Usually open now'}
+          </button>
+        )}
         <button type="button" onClick={setAll} className="min-h-[40px] cursor-pointer px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: INK }}>
           {allOn ? (ja ? 'すべて消す' : 'Hide all') : (ja ? 'すべて出す' : 'Show all')}
         </button>
@@ -808,7 +827,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             return (
               <button key={p.id} type="button" onClick={(e) => { e.stopPropagation(); goTo(p.id); }} onPointerEnter={hoverIn(p.id)} onPointerLeave={hoverOut}
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap text-[11px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]"
-                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w) }}
+                style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w), opacity: faded(p.id) ? 0.3 : 1 }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
                 <span className="block" style={markStyle(kindOf(p), 10, color, false, `0 0 0 2px ${PAPER}`)} />
                 {/* 2026-11-14 スマホでは字を出さず点だけ（端で名前が重なるため）。名前と距離は aria-label に */}
@@ -824,7 +843,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
               // Tailwind v4 の hover: は @media (hover: hover) の中だけで効くので、スマホ（指で押す画面）では出ない
               // 2026-11-14 指で触る画面だけ、押せる範囲を上下左右に 4px 広げる（丸の見た目は変えない。8px では東茶屋街などの固まった所で隣の丸の真ん中を覆う数が増えたので 4px）
               className={`group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full p-2 outline-offset-2 [@media(pointer:coarse)]:before:absolute [@media(pointer:coarse)]:before:-inset-1 [@media(pointer:coarse)]:before:content-[''] ${active ? 'z-[4]' : 'z-[1] hover:z-[3] focus-visible:z-[3]'}`}
-              style={{ left: x, top: y }}
+              style={{ left: x, top: y, opacity: faded(p.id) ? 0.3 : 1, transition: 'opacity 200ms' }}
               aria-label={`${p.name} · ${p.catLabel}`} aria-pressed={active}>
               <span className="block overflow-hidden group-hover:scale-[1.4]"
                 style={{ ...markStyle(kindOf(p), d, color, false, active ? `0 0 0 3px ${PAPER}, 0 0 0 5px ${INK}, 0 2px 10px 5px rgba(30,29,27,0.25)` : `0 0 0 2px ${PAPER}`), transition: 'width 300ms, height 300ms, scale 180ms ease-out' }}>
