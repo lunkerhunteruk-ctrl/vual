@@ -1,10 +1,11 @@
-import { CATEGORY_LABEL, CITIES, placeAnchor } from '@/lib/latitude-places';
+import { CATEGORY_LABEL, CITIES, placeAnchor, type CityPlace } from '@/lib/latitude-places';
 
 // 2026-11-14 ③-2 保存した店の一覧に出す、店の id → 1行の中身（店名・日本語の店名・種類と地区・住所）。街ごと。
 // 自分の一覧（ブラウザで描く）は /api/latitude/saved-index/<ja|en> から読み（どの店を保存したかは送らない。全部の一覧を取るだけ）、
 // 共有されたリンクはサーバーでこれを使って描く
-export type SavedRowData = { name: string; nameJa?: string; label: string; address: string };
-export type SavedIndexData = Record<string, { name: string; rows: Record<string, SavedRowData> }>;
+// 2026-11-15 facts：営業時間・休み・予約・現金のみ・決まった時間割（ある店だけ）。cc：街の国（時間割の時刻をその町の時刻で見るため）
+export type SavedRowData = { name: string; nameJa?: string; label: string; address: string; facts?: Pick<CityPlace, 'hours' | 'closed' | 'reserve' | 'cashOnly' | 'open'> };
+export type SavedIndexData = Record<string, { name: string; cc?: string; rows: Record<string, SavedRowData> }>;
 
 export function savedIndex(ja: boolean): SavedIndexData {
   const out: SavedIndexData = {};
@@ -18,9 +19,10 @@ export function savedIndex(ja: boolean): SavedIndexData {
         ...(!ja && x.name !== x.nameEn ? { nameJa: x.name } : {}),
         label: `${cat}  ·  ${ja ? x.area : x.areaEn}`,
         address: x.address,
+        ...(x.hours || x.closed || x.reserve || x.cashOnly || x.open ? { facts: { hours: x.hours, closed: x.closed, reserve: x.reserve, cashOnly: x.cashOnly, open: x.open } } : {}),
       };
     }
-    out[c.slug] = { name: ja ? c.nameJa : c.name, rows };
+    out[c.slug] = { name: ja ? c.nameJa : c.name, ...(c.countryCode ? { cc: c.countryCode } : {}), rows };
   }
   return out;
 }

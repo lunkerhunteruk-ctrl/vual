@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { ACTION_MAIN, INK, MUTE, SERIF } from '@/lib/latitude-theme';
-import { AddressLine, JaName } from '@/components/latitude/ShopFacts';
+import { AddressLine, FactsLine, JaName, type ShopFactsData } from '@/components/latitude/ShopFacts';
+import { townZone } from '@/lib/latitude-open';
 import { RemoveSaved } from '@/components/latitude/SaveButton';
 
 // 2026-11-14 ③-2 保存した店の一覧の行（自分の一覧はブラウザで、共有されたリンクはサーバーで同じ形に描く。'use client' は付けない）。
 // 街ごとに、店名（英語版は日本語の店名も）・種類と地区・住所（コピーつき。②-3 の部品）・その店だけの Google マップ
 
-export type SavedRow = { id: string; name: string; nameJa?: string; label: string; address: string };
-export type SavedCity = { slug: string; name: string; rows: SavedRow[] };
+export type SavedRow = { id: string; name: string; nameJa?: string; label: string; address: string; facts?: ShopFactsData };
+export type SavedCity = { slug: string; name: string; cc?: string; rows: SavedRow[] }; // cc：街の国（2026-11-15 時間割の時刻用）
 
 // Google マップは店のカードと同じ言葉（日本語の店名＋住所）
 export const savedMapUrl = (r: SavedRow) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${r.nameJa ?? r.name} ${r.address}`)}`;
@@ -27,6 +28,7 @@ export function SavedRows({ groups, locale, removable = false }: { groups: Saved
                 <p lang={ja ? undefined : 'en'} className="lat-label" style={{ color: MUTE }}>{r.label}</p>
                 <p className="mt-1 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{r.name}</p>
                 <JaName name={r.nameJa} nameEn={r.name} ja={ja} />
+                <FactsLine facts={r.facts} ja={ja} zone={townZone(g.cc)} />{/* 2026-11-15 営業時間など（ある店だけ）と「営業時間内か」 */}
                 <AddressLine address={r.address} ja={ja} />
                 <p className="mt-2 flex flex-wrap gap-x-5 gap-y-0">
                   <a href={savedMapUrl(r)} target="_blank" rel="noopener noreferrer" className={ACTION_MAIN} style={{ color: INK, borderColor: INK }}>{ja ? 'Google マップ' : 'Google Maps'}</a>

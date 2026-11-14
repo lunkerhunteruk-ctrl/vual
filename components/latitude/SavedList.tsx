@@ -36,7 +36,7 @@ export default function SavedList({ locale }: { locale: string }) {
     const row = city?.rows[x.id];
     if (!city || !row) continue;
     let g = groups.find((y) => y.slug === x.c);
-    if (!g) { g = { slug: x.c, name: city.name, rows: [] }; groups.push(g); }
+    if (!g) { g = { slug: x.c, name: city.name, cc: city.cc, rows: [] }; groups.push(g); }
     g.rows.push({ id: x.id, ...row });
   }
   if (!groups.length) return empty;

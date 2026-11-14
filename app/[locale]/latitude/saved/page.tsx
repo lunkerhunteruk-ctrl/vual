@@ -26,7 +26,7 @@ export default async function LatitudeSavedPage({ params, searchParams }: { para
   const groups: SavedCity[] = [];
   for (const x of shared) {
     let g = groups.find((y) => y.slug === x.c);
-    if (!g) { g = { slug: x.c, name: index[x.c].name, rows: [] }; groups.push(g); }
+    if (!g) { g = { slug: x.c, name: index[x.c].name, cc: index[x.c].cc, rows: [] }; groups.push(g); }
     g.rows.push({ id: x.id, ...index[x.c].rows[x.id] });
   }
 
