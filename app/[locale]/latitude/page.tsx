@@ -7,6 +7,7 @@ import { JsonLd, periodicalJsonLd } from '@/lib/latitude-publication';
 import { mapTravellers } from '@/lib/latitude-map';
 import { latAssetAbs } from '@/lib/latitude-assets';
 import { CITIES } from '@/lib/latitude-places';
+import { getPlaceCountry } from '@/lib/latitude-places-index';
 
 // 2026-11-11 よくある質問：LATITUDE が何かを、言い切りの短い文で（検索や AI のチャットが答えに使いやすいように）。llms.txt の FAQ と同じ中身
 const FAQ = {
@@ -101,6 +102,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
             const rest = CITIES.filter((c) => !hasIssue(c) && !c.issue && c.places.length);
             const jp = rest.filter((c) => (c.countryCode || 'JP') === 'JP').length;
             const abroad = rest.length - jp;
+            const nJapan = getPlaceCountry('japan')?.cities.length ?? 0;
             const ja = locale === 'ja';
             return (
               <>
@@ -111,11 +113,17 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
                     </li>
                   ))}
                 </ul>
-                {rest.length > 0 && (
-                  <Link href={`/${locale}/latitude/places`} className="-mb-3 mt-1 inline-flex min-h-[44px] items-center text-[13px] underline-offset-4 hover:underline md:text-[14px]" style={{ color: MUTE }}>
-                    {ja
-                      ? `ほか、${[jp && `日本の${jp}`, abroad && `海外の${abroad}`].filter(Boolean).join('と、')}の街の案内　→`
-                      : `And city guides to ${[jp && `${jp} more town${jp > 1 ? 's' : ''} in Japan`, abroad && `${abroad} abroad`].filter(Boolean).join(' and ')}  →`}
+                {/* 2026-11-14 ②-5 いちばん役に立つ日本の町の案内へ、枠つきのボタン1つ（NewsletterSignup のボタンと同じ形）。n は日本の町の合計（号のある町も含む。日本のページの一覧と同じ数） */}
+                {nJapan > 0 && (
+                  // 幅 400px 未満の英語は、1行に収まるよう字間と左右の余白を少し詰める（.lat-label は字間を上書きできないので、中の span で）
+                  <Link href={`/${locale}/latitude/places/japan`} className="lat-label mt-5 inline-block border px-5 py-3 transition-colors hover:bg-[#1e1d1b] hover:text-[#f2eee7] max-[399px]:px-4" style={{ borderColor: INK, color: INK }}>
+                    {ja ? `日本の${nJapan}の町の案内を見る　→` : <span className="max-[399px]:tracking-[0.12em]">{`City guides to ${nJapan} towns in Japan  →`}</span>}
+                  </Link>
+                )}
+                {/* 海外に案内だけの街があるときは、今までどおりの小さい1行（場所のページへ） */}
+                {abroad > 0 && (
+                  <Link href={`/${locale}/latitude/places`} className="-mb-3 mt-1 flex min-h-[44px] w-fit items-center text-[13px] underline-offset-4 hover:underline md:text-[14px]" style={{ color: MUTE }}>
+                    {ja ? `ほか、海外の${abroad}の街の案内　→` : `And city guides to ${abroad} abroad  →`}
                   </Link>
                 )}
               </>
