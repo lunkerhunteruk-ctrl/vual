@@ -143,7 +143,20 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
   const zoom = 1 / u;
   const at = (x: number, y: number) => ({ left: `${((x - cam.x) / cam.w) * 100}%`, top: `${((y - cam.y) / cam.h) * 100}%` });
 
+  // 点から離れたら、すぐに札を閉じる（点から札へマウスを動かす間だけ、少し待つ）
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const keep = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  const hide = (slug: string) => {
+    keep();
+    closeTimer.current = setTimeout(() => setActive((a) => (a === slug ? null : a)), 120);
+  };
+  useEffect(() => keep, []);
+
   const show = (slug: string, el: HTMLElement) => {
+    keep();
     const box = scroller.current?.getBoundingClientRect();
     const r = el.getBoundingClientRect();
     setFlip(!!box && r.right + 360 > box.right); // 札の幅はおよそ 250〜340px（日本語の札は長い）
@@ -417,6 +430,7 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
                     aria-label={`${p.name} — ${last ? `last seen in ${where}` : `at home in ${where}`}. ${picked ? (ja ? '全体へ戻る' : 'Back to the whole map') : ja ? '旅の跡に寄る' : 'Follow her journey'}`}
                     className="group absolute -left-3 -top-3 flex h-6 w-6 cursor-pointer items-center justify-center"
                     onPointerEnter={(e) => e.pointerType === 'mouse' && show(p.slug, e.currentTarget)}
+                    onPointerLeave={(e) => e.pointerType === 'mouse' && hide(p.slug)}
                     onFocus={(e) => show(p.slug, e.currentTarget)}
                     onBlur={() => setActive((a) => (a === p.slug ? null : a))}
                     onClick={() => goTo(picked ? null : p.slug)}
@@ -448,7 +462,11 @@ export default function TravellerMap({ travellers, locale, focus }: { travellers
                     </>);
                   })()}
                   {open && (
-                    <div className={`absolute top-[-30px] hidden w-max md:block ${flip ? 'right-4' : 'left-4'}`}>
+                    <div
+                      className={`absolute top-[-30px] hidden w-max md:block ${flip ? 'right-4' : 'left-4'}`}
+                      onPointerEnter={(e) => e.pointerType === 'mouse' && keep()}
+                      onPointerLeave={(e) => e.pointerType === 'mouse' && hide(p.slug)}
+                    >
                       <Card p={p} locale={locale} />
                     </div>
                   )}
