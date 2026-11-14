@@ -1,5 +1,348 @@
 [
  {
+  "slug": "notsuke-peninsula-ice-horizon",
+  "name": "野付半島 氷平線",
+  "nameEn": "Notsuke Peninsula Ice Horizon",
+  "prefecture": "Hokkaido",
+  "prefectureJa": "北海道",
+  "region": "hokkaido",
+  "town": "Nakashibetsu",
+  "townJa": "中標津",
+  "kind": "nature",
+  "coords": [
+   43.583538,
+   145.21431
+  ],
+  "what": "厳冬期に完全結氷した野付湾の海上に現れる、360度遮るもののない雪と氷の「氷平線」をガイドツアーで歩く体験。",
+  "whatEn": "A vast 360-degree frozen sea horizon on Notsuke Bay where guided snowshoe tours walk out across the ice toward the dead-spruce forest of Todowara.",
+  "seasonal": true,
+  "peakMonths": [
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3
+  ],
+  "monthScore": [
+   2,
+   5,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Bay freezes completely by late January",
+    "ja": "1月下旬頃に野付湾が完全結氷"
+   },
+   "2": {
+    "en": "Peak frozen horizon walks & sunset tours",
+    "ja": "氷平線ウォークと夕暮れツアーの最盛期"
+   },
+   "3": {
+    "en": "Tours run until early-mid March",
+    "ja": "3月上〜中旬までツアー実施"
+   },
+   "4": {
+    "en": "Sea ice gone",
+    "ja": "海氷なし"
+   },
+   "5": {
+    "en": "Green season peninsula",
+    "ja": "夏季の野付半島"
+   },
+   "6": {
+    "en": "Wildflowers on peninsula",
+    "ja": "原生花園シーズン"
+   },
+   "7": {
+    "en": "Summer Todowara walks",
+    "ja": "夏のトドワラ散策"
+   },
+   "8": {
+    "en": "Summer Todowara walks",
+    "ja": "夏のトドワラ散策"
+   },
+   "9": {
+    "en": "Autumn grasses",
+    "ja": "秋の草紅葉"
+   },
+   "10": {
+    "en": "Autumn peninsula",
+    "ja": "晩秋の野付半島"
+   },
+   "11": {
+    "en": "Early snow, bay unfrozen",
+    "ja": "初雪、海面未結氷"
+   },
+   "12": {
+    "en": "Bay beginning to freeze",
+    "ja": "湾内の結氷開始期"
+   }
+  },
+  "peakNote": "February provides solid sea ice across Notsuke Bay for both daytime trick-photo walks and sunset tours.",
+  "peakNoteJa": "2月は野付湾の氷が安定し、日中の氷平線ウォークも夕暮れフォトツアーも最盛期を迎えます。",
+  "ticket": "Guided tour required (no unguided entry onto sea ice): mini walk 2,500 JPY, Todowara snowshoe course 3,500 JPY, sunset photo tour available; 1.5x–2x surcharge for solo participants.",
+  "ticketJa": "ガイドツアー参加必須（個人での氷上立入禁止）。ミニウォーク2,500円、トドワラコース3,500円等（1名参加は割増料金あり）、事前予約制。",
+  "url": "https://betsukai-tour.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "道の駅おだいとう",
+    "nameEn": "Michi-no-Eki Odaito",
+    "kind": "sight",
+    "what": "野付湾と北方領土を望む展望塔や、別海町特産のホタテ料理・乳製品を扱う売店に立ち寄ります。",
+    "whatEn": "Stop by the observation tower overlooking Notsuke Bay and shop for Betsukai scallops and local dairy products.",
+    "coords": [
+     43.567673,
+     145.221634
+    ],
+    "url": "https://hokkaido-michinoeki.jp/michiekiinfo/odaitouinfo/66220/"
+   },
+   {
+    "name": "波見亭",
+    "nameEn": "Bamitei",
+    "kind": "food",
+    "what": "尾岱沼の漁港近くで、野付湾産のホタテや旬の魚介を使った海鮮丼やラーメンを味わいます。",
+    "whatEn": "Enjoy scallop rice bowls and seafood ramen using fresh catch from Notsuke Bay near Odaito fishing port.",
+    "coords": [
+     43.583538,
+     145.21431
+    ],
+    "url": "https://sitakke.jp/post/24189/"
+   }
+  ],
+  "course": {
+   "titleJa": "結氷の野付湾へ、冬の氷平線ウォーク",
+   "titleEn": "Walk the Frozen Horizon of Notsuke Bay",
+   "carFree": false,
+   "noteJa": "冬期は野付半島への一般路線バスが運休するため、中標津空港から冬タイヤ装備のレンタカー利用が必要です。海氷上への無断立ち入りは禁止されており、ガイドツアーの事前予約が必須です。",
+   "noteEn": "Regular buses to Notsuke Peninsula do not run in winter, so rent a car with winter tyres from Nakashibetsu Airport. Unguided entry onto the sea ice is prohibited; advance booking for a guided tour is required.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "中標津空港",
+     "nameEn": "Nakashibetsu Airport",
+     "coords": [
+      43.57678,
+      144.95882
+     ],
+     "time": "09:30",
+     "what": "札幌などからの午前便で到着し、冬タイヤ装備のレンタカーを借ります。",
+     "whatEn": "Arrive on a morning flight and pick up a rental car equipped with winter tyres.",
+     "move": {
+      "mode": "car",
+      "min": 35,
+      "note": "冬タイヤ装備のレンタカーで国道272号・244号経由 約35分",
+      "noteEn": "About 35 min by rental car with winter tyres via Routes 272 and 244"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8b89bb2b7cb4.webp",
+     "photoCredit": {
+      "author": "221.20 (talk)",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Nakashibetsu_airport01.jpg"
+     }
+    },
+    {
+     "role": "stop",
+     "name": "道の駅おだいとう",
+     "nameEn": "Michi-no-Eki Odaito",
+     "coords": [
+      43.53314,
+      145.23687
+     ],
+     "time": "10:05",
+     "what": "冬期営業（9:00〜16:00・月曜定休）の館内で野付湾の結氷状況を眺め、防寒準備を整えます。",
+     "whatEn": "Check the frozen bay view from the roadside station (winter hours 9:00–16:00, closed Mon) and prepare for the cold.",
+     "url": "https://hokkaido-michinoeki.jp/michiekiinfo/odaitouinfo/66220/",
+     "move": {
+      "mode": "car",
+      "min": 20,
+      "note": "道道950号経由で野付半島ネイチャーセンターへ 約20分",
+      "noteEn": "About 20 min by car via Prefectural Route 950 to Notsuke Peninsula Nature Center"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b474d57ac3a4.webp",
+     "photoCredit": {
+      "author": "アラツク",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Odaitou.JPG"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "野付半島 氷平線",
+     "nameEn": "Notsuke Peninsula Ice Horizon",
+     "coords": [
+      43.583538,
+      145.21431
+     ],
+     "time": "10:35",
+     "what": "日差しが氷原を照らす午前中に、ネイチャーセンター集合のガイドツアーで結氷した野付湾を歩きます。",
+     "whatEn": "Join a guided tour from the Nature Center in the bright morning light to walk across frozen Notsuke Bay.",
+     "url": "https://betsukai-tour.jp/ice-horizon/",
+     "move": {
+      "mode": "car",
+      "min": 25,
+      "note": "道道950号・国道244号経由で標津市街へ 約25分",
+      "noteEn": "About 25 min by car via Prefectural Route 950 and Route 244 to Shibetsu town"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "郷土料理 武田",
+     "nameEn": "Kyodo Ryori Takeda",
+     "coords": [
+      43.658916,
+      145.132172
+     ],
+     "time": "12:30",
+     "what": "標津前浜の鮭やホタテ、イクラを使った名物「しべつ鮭三代漬け丼」などの郷土料理を味わいます（木・日曜定休）。",
+     "whatEn": "Enjoy local specialties such as Shibetsu Salmon Three-Generation Donburi with salmon, scallops, and ikura (closed Thu & Sun).",
+     "url": "http://salmon-takeda.com/2026/07/30/summer-holiday-notice/",
+     "move": {
+      "mode": "car",
+      "min": 25,
+      "note": "国道272号経由で中標津市街へ 約25分",
+      "noteEn": "About 25 min by car to Nakashibetsu town via Route 272"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "中標津保養所温泉旅館",
+     "nameEn": "Nakashibetsu Hoyosho Onsen Ryokan",
+     "coords": [
+      43.56675,
+      144.98096
+     ],
+     "time": "14:00",
+     "what": "通年営業の日帰り入浴で源泉かけ流しの温泉に浸かり、氷平線歩きで冷えた体を温めます。",
+     "whatEn": "Soak in the free-flowing natural hot spring on a day-use visit to warm up after the ice walk.",
+     "url": "https://nakaho.jp/",
+     "move": {
+      "mode": "car",
+      "min": 10,
+      "note": "空港通り経由で中標津空港へ 約10分",
+      "noteEn": "About 10 min by car to Nakashibetsu Airport"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "中標津空港",
+     "nameEn": "Nakashibetsu Airport",
+     "coords": [
+      43.57678,
+      144.95882
+     ],
+     "time": "15:45",
+     "what": "日没前にレンタカーを返却し、夕方の便で帰路につきます。",
+     "whatEn": "Return the rental car before sunset and board an evening flight.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8b89bb2b7cb4.webp",
+     "photoCredit": {
+      "author": "221.20 (talk)",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:Nakashibetsu_airport01.jpg"
+     }
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Highten31",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Notsuke_Bay_(2013-02-24).JPG",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 57396,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 22878,
+     "duration": 0,
+     "line": [
+      [
+       43.57678,
+       144.95882
+      ],
+      [
+       43.53314,
+       145.23687
+      ]
+     ]
+    },
+    {
+     "distance": 5881,
+     "duration": 0,
+     "line": [
+      [
+       43.53314,
+       145.23687
+      ],
+      [
+       43.583538,
+       145.21431
+      ]
+     ]
+    },
+    {
+     "distance": 10659,
+     "duration": 0,
+     "line": [
+      [
+       43.583538,
+       145.21431
+      ],
+      [
+       43.658916,
+       145.132172
+      ]
+     ]
+    },
+    {
+     "distance": 15878,
+     "duration": 0,
+     "line": [
+      [
+       43.658916,
+       145.132172
+      ],
+      [
+       43.56675,
+       144.98096
+      ]
+     ]
+    },
+    {
+     "distance": 2100,
+     "duration": 0,
+     "line": [
+      [
+       43.56675,
+       144.98096
+      ],
+      [
+       43.57678,
+       144.95882
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
   "slug": "naitai-terrace",
   "name": "ナイタイテラス（ナイタイ高原牧場）",
   "nameEn": "Naitai Terrace (Naitai Highland Farm)",
@@ -286,6 +629,1180 @@
       [
        42.9181,
        143.20202
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "tsurumidai",
+  "name": "鶴見台",
+  "nameEn": "Tsurumidai",
+  "prefecture": "Hokkaido",
+  "prefectureJa": "北海道",
+  "region": "hokkaido",
+  "town": "Tsurui",
+  "townJa": "鶴居村",
+  "kind": "nature",
+  "coords": [
+   43.177143,
+   144.343597
+  ],
+  "what": "冬期に国の給餌事業によって100～200羽以上の野生のタンチョウが飛来し、道道53号線沿いの観察エリアから間近に観察できる越冬地です。",
+  "whatEn": "A winter feeding ground along Prefectural Route 53 in Tsurui Village where 100 to over 200 wild red-crowned cranes gather on snowfields.",
+  "seasonal": true,
+  "peakMonths": [
+   12,
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Peak season: 200+ cranes and courtship dances on snow",
+    "ja": "最盛期、200羽超のタンチョウと求愛ダンスが見られる"
+   },
+   "2": {
+    "en": "Peak season: dense flocks at 9:00 and 13:00–14:00 feedings",
+    "ja": "9時頃と13～14時頃の給餌に多くのタンチョウが集まる"
+   },
+   "3": {
+    "en": "Feeding winds down; pairs depart to wetlands, mostly young cranes",
+    "ja": "給餌終了期でつがいは繁殖地へ移動し若鳥が中心になる"
+   },
+   "4": {
+    "en": "Off-season; cranes disperse to Kushiro Marsh",
+    "ja": "給餌終了後のため飛来は少ない"
+   },
+   "5": {
+    "en": "Off-season; empty feeding field",
+    "ja": "オフシーズンで湿原へ戻っている"
+   },
+   "6": {
+    "en": "Off-season; empty feeding field",
+    "ja": "オフシーズンで湿原へ戻っている"
+   },
+   "7": {
+    "en": "Off-season; empty feeding field",
+    "ja": "オフシーズンで湿原へ戻っている"
+   },
+   "8": {
+    "en": "Off-season; empty feeding field",
+    "ja": "オフシーズンで湿原へ戻っている"
+   },
+   "9": {
+    "en": "Off-season; empty feeding field",
+    "ja": "オフシーズンで湿原へ戻っている"
+   },
+   "10": {
+    "en": "Off-season; cranes remain in wetlands",
+    "ja": "オフシーズンで湿原に滞在"
+   },
+   "11": {
+    "en": "Very few cranes before December feeding begins",
+    "ja": "12月の給餌開始前で飛来数はまだ少ない"
+   },
+   "12": {
+    "en": "Feeding begins in December; 100+ cranes gather by mid-to-late Dec",
+    "ja": "12月より給餌開始、中旬以降100羽以上が飛来"
+   }
+  },
+  "peakNote": "Mid-December through February brings 100–200+ cranes to the snowfield, with courtship dances peaking in January and February.",
+  "peakNoteJa": "12月中旬から2月にかけて100～200羽以上のタンチョウが飛来し、1～2月は求愛ダンスも見頃です。",
+  "ticket": "Free admission, outdoor roadside viewing, no reservation required.",
+  "ticketJa": "見学無料（屋外観察場・予約不要）。",
+  "url": "https://www.vill.tsurui.lg.jp/tancho_matome/1725.html",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "どれみふぁ空",
+    "nameEn": "Doremifasora",
+    "kind": "cafe",
+    "what": "鶴見台の道路向かいにあるカフェで、タンチョウをモチーフにした丹頂カレーや軽食を楽しめます。",
+    "whatEn": "Enjoy crane-themed Tancho Curry and light meals at this cafe directly across from Tsurumidai.",
+    "coords": [
+     43.177143,
+     144.343597
+    ],
+    "url": "https://tsuruimura.com/doremifasora/"
+   },
+   {
+    "name": "鶴居・伊藤タンチョウサンクチュアリ",
+    "nameEn": "Tsurui-Ito Tancho Sanctuary",
+    "kind": "sight",
+    "what": "日本野鳥の会のネイチャーセンター周辺で、冬期に給餌場へ集まるタンチョウを観察します。",
+    "whatEn": "Observe red-crowned cranes gathering at the winter feeding grounds of the Wild Bird Society sanctuary.",
+    "coords": [
+     43.139919,
+     144.317688
+    ],
+    "url": "https://tsuruimura.com/tsurui-ito-tancho-sanctuary/"
+   }
+  ],
+  "course": {
+   "titleJa": "路線バスで行く、朝の鶴見台と鶴居村の温泉",
+   "titleEn": "By Local Bus to Morning Cranes at Tsurumidai and Tsurui Onsen",
+   "carFree": true,
+   "noteJa": "阿寒バス鶴居線は便数が限られるため、冬ダイヤの時刻表を事前に確認してください。鶴見台ではフラッシュ撮影やドローンは禁止されており、氷点下の屋外観覧となるため防寒対策が必須です。",
+   "noteEn": "Akan Bus Tsurui Line has limited daily departures, so check the winter timetable in advance. Flash photography and drones are prohibited at Tsurumidai, and sub-zero winter layers are essential for outdoor viewing.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR釧路駅",
+     "nameEn": "JR Kushiro Station",
+     "coords": [
+      42.99046,
+      144.38203
+     ],
+     "time": "08:45",
+     "what": "JR釧路駅前から阿寒バス鶴居線（グリーンパークつるい行）に乗車します。",
+     "whatEn": "Board the Akan Bus Tsurui Line (bound for Green Park Tsurui) in front of JR Kushiro Station.",
+     "move": {
+      "mode": "bus",
+      "min": 56,
+      "note": "阿寒バス鶴居線（グリーンパークつるい行）で約56分",
+      "noteEn": "About 56 min by Akan Bus Tsurui Line (bound for Green Park Tsurui)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e3fcdd3e87e2.webp",
+     "photoCredit": {
+      "author": "Rory trains",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Building_of_Kushiro_Station_2021.jpg"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "鶴見台",
+     "nameEn": "Tsurumidai",
+     "coords": [
+      43.177143,
+      144.343597
+     ],
+     "time": "09:41",
+     "what": "朝の給餌後にタンチョウが活発に求愛ダンスを見せる時間帯に、雪原のタンチョウを観察します。",
+     "whatEn": "Watch red-crowned cranes on the snowfield during active morning courtship dances.",
+     "url": "https://tsuruimura.com/tsurumidai/",
+     "move": {
+      "mode": "walk",
+      "min": 1,
+      "note": "道路を渡って向かいの「どれみふぁ空」へ徒歩 約1分",
+      "noteEn": "1 min walk across the road to Doremifasora"
+     },
+     "photo": "https://tsuruimura.com/wp-content/uploads/2024/07/鶴見台①-scaled.jpg"
+    },
+    {
+     "role": "meal",
+     "name": "どれみふぁ空",
+     "nameEn": "Doremifasora",
+     "coords": [
+      43.178063,
+      144.319029
+     ],
+     "time": "10:35",
+     "what": "鶴見台向かいのレストラン・カフェ（2月は無休・10:00〜16:00）で、名物の丹頂カレーや山わさびラーメンを食べます。",
+     "whatEn": "Have Tancho Curry or mountain-wasabi ramen at this cafe across from Tsurumidai (open daily in Feb, 10:00–16:00).",
+     "url": "https://tsuruimura.com/doremifasora/",
+     "move": {
+      "mode": "bus",
+      "min": 15,
+      "note": "鶴見台バス停から阿寒バス鶴居線（グリーンパークつるい行・11:21発）で約15分",
+      "noteEn": "About 15 min by Akan Bus Tsurui Line (11:21 dep) from Tsurumidai bus stop to Green Park Tsurui"
+     },
+     "photo": "https://tsuruimura.com/wp-content/uploads/2024/08/タンチョウカレー.jpg"
+    },
+    {
+     "role": "onsen",
+     "name": "グリーンパークつるい 温泉",
+     "nameEn": "Green Park Tsurui Onsen",
+     "coords": [
+      43.240253,
+      144.322845
+     ],
+     "time": "11:45",
+     "what": "源泉100%かけ流しの温泉（日帰り入浴10:00〜22:00）で、雪見の湯に浸かって温まります。",
+     "whatEn": "Soak in the 100% free-flowing natural hot spring (day-use 10:00–22:00) to warm up from the winter cold.",
+     "url": "https://greenpark-tsurui.com/2026/11/11/",
+     "move": {
+      "mode": "bus",
+      "min": 70,
+      "note": "グリーンパークつるい前から阿寒バス鶴居線（釧路駅前行）で約70分",
+      "noteEn": "About 70 min by Akan Bus Tsurui Line from Green Park Tsurui back to JR Kushiro Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR釧路駅",
+     "nameEn": "JR Kushiro Station",
+     "coords": [
+      42.99046,
+      144.38203
+     ],
+     "time": "15:50",
+     "what": "夕方のJR線や空港連絡バスに乗り継ぎ、釧路市街から出発します。",
+     "whatEn": "Connect to an afternoon JR train or airport shuttle bus from JR Kushiro Station.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e3fcdd3e87e2.webp",
+     "photoCredit": {
+      "author": "Rory trains",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Building_of_Kushiro_Station_2021.jpg"
+     }
+    }
+   ]
+  },
+  "bannerOg": "https://www.vill.tsurui.lg.jp/material/images/group/6/P1240774.JPG",
+  "baseMap": true,
+  "walk": {
+   "distance": 57993,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 20955,
+     "duration": 0,
+     "line": [
+      [
+       42.99046,
+       144.38203
+      ],
+      [
+       43.177143,
+       144.343597
+      ]
+     ]
+    },
+    {
+     "distance": 1991,
+     "duration": 0,
+     "line": [
+      [
+       43.177143,
+       144.343597
+      ],
+      [
+       43.178063,
+       144.319029
+      ]
+     ]
+    },
+    {
+     "distance": 6910,
+     "duration": 0,
+     "line": [
+      [
+       43.178063,
+       144.319029
+      ],
+      [
+       43.240253,
+       144.322845
+      ]
+     ]
+    },
+    {
+     "distance": 28137,
+     "duration": 0,
+     "line": [
+      [
+       43.240253,
+       144.322845
+      ],
+      [
+       42.99046,
+       144.38203
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "muhyo-terrace",
+  "name": "霧氷テラス（星野リゾート トマム）",
+  "nameEn": "Muhyo Terrace",
+  "prefecture": "Hokkaido",
+  "prefectureJa": "北海道",
+  "region": "hokkaido",
+  "town": "Shimukappu (Tomamu)",
+  "townJa": "占冠村（トマム）",
+  "kind": "view",
+  "coords": [
+   43.023811,
+   142.600983
+  ],
+  "what": "標高1,088メートルの山上から、氷をまとって白く輝く霧氷の森と日高山脈を一望できる冬期限定の展望テラスです。",
+  "whatEn": "A winter-only observation terrace at 1,088 meters elevation reached by gondola, overlooking frost-coated trees (muhyo) and the Hidaka Mountains.",
+  "seasonal": true,
+  "peakMonths": [
+   12,
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   4,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Peak sub-zero cold; frequent rime ice and clear Hidaka views",
+    "ja": "厳寒期で霧氷の発生率が高く日高山脈もくっきり見える"
+   },
+   "2": {
+    "en": "Deep winter snow and crisp rime ice; early 7:45 gondola until Feb 10",
+    "ja": "極寒の霧氷シーズンで2月10日までは7:45から乗車可能"
+   },
+   "3": {
+    "en": "Bright spring-like sun on snow-covered peaks; rime ice still forms on cold mornings",
+    "ja": "晴天率が高く冷え込んだ朝には霧氷が見られる"
+   },
+   "4": {
+    "en": "Closes Apr 5; late-season snow views",
+    "ja": "4月5日で冬季営業終了、残雪期の山岳展望"
+   },
+   "5": {
+    "en": "Closed as Muhyo Terrace (operates as summer Unkai Terrace)",
+    "ja": "霧氷テラスとしては営業休止（夏季の雲海テラスへ転換）"
+   },
+   "6": {
+    "en": "Closed as Muhyo Terrace (summer Unkai Terrace season)",
+    "ja": "霧氷テラスとしては営業休止（雲海テラス営業期間）"
+   },
+   "7": {
+    "en": "Closed as Muhyo Terrace (summer Unkai Terrace season)",
+    "ja": "霧氷テラスとしては営業休止（雲海テラス営業期間）"
+   },
+   "8": {
+    "en": "Closed as Muhyo Terrace (summer Unkai Terrace season)",
+    "ja": "霧氷テラスとしては営業休止（雲海テラス営業期間）"
+   },
+   "9": {
+    "en": "Closed as Muhyo Terrace (summer Unkai Terrace season)",
+    "ja": "霧氷テラスとしては営業休止（雲海テラス営業期間）"
+   },
+   "10": {
+    "en": "Closed as Muhyo Terrace (gondola maintenance late Oct)",
+    "ja": "霧氷テラスとしては営業休止"
+   },
+   "11": {
+    "en": "Closed ahead of winter season opening",
+    "ja": "冬期営業開始前の準備期間で休業"
+   },
+   "12": {
+    "en": "Opens Dec 1; fresh powder and early-winter rime ice",
+    "ja": "12月1日営業開始、新雪と初冬の霧氷を楽しめる"
+   }
+  },
+  "peakNote": "Sub-zero mornings from mid-December through February produce the thickest white rime ice on the summit trees.",
+  "peakNoteJa": "12月中旬から2月の冷え込んだ朝に最も美しい霧氷が木々に付着します。",
+  "ticket": "Unkai Gondola round-trip: 2,500 JPY (ages 12+), 1,600 JPY (ages 7–11), 500 JPY (pets); free with ski lift pass or for resort hotel guests.",
+  "ticketJa": "雲海ゴンドラ往復：大人（12歳以上）2,500円、7～11歳1,600円、ペット500円（リフト券所持者・宿泊者は無料、予約不要）。",
+  "url": "https://www.snowtomamu.jp/winter/frosttree/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "麺屋 竹蔵（TAKEZO）",
+    "nameEn": "Menya Takezo",
+    "kind": "food",
+    "what": "ホタルストリート内で、魚介や鶏清湯など多彩なスープの北海道ラーメンを味わいます。",
+    "whatEn": "Enjoy Hokkaido ramen with seafood or clear chicken broths inside Hotalu Street.",
+    "coords": [
+     43.023811,
+     142.600983
+    ],
+    "url": "https://www.snowtomamu.jp/winter/restaurant/takezo.php"
+   },
+   {
+    "name": "アイスヴィレッジ",
+    "nameEn": "Ice Village",
+    "kind": "sight",
+    "what": "冬期夜間にオープンする氷の街で、氷の教会や氷のバーなどの幻想的な空間を見学します。",
+    "whatEn": "Visit the winter evening village of ice domes, featuring an ice church and ice bar.",
+    "coords": [
+     43.023811,
+     142.600983
+    ],
+    "url": "https://www.snowtomamu.jp/winter/icevillage/"
+   }
+  ],
+  "course": {
+   "titleJa": "JRで行く、標高1,088mの霧氷テラスと雪見風呂",
+   "titleEn": "By Train to Muhyo Terrace Rime Ice and Snow-View Bath",
+   "carFree": true,
+   "noteJa": "トマム駅からリゾート内は無料送迎バスで移動できるため車なしで巡れます。霧氷テラスは強風等で雲海ゴンドラが運休する場合があり、山頂は氷点下10度以下になるため防寒着と滑りにくい冬靴が必須です。",
+   "noteEn": "Free resort shuttle buses connect JR Tomamu Station and resort facilities, making this course car-free. The Unkai Gondola may suspend operations in high winds, and summit temperatures drop below -10°C, so warm winter layers and non-slip boots are essential.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JRトマム駅",
+     "nameEn": "JR Tomamu Station",
+     "coords": [
+      43.05617,
+      142.61105
+     ],
+     "time": "09:16",
+     "what": "JR石勝線特急おおぞら1号などで到着し、駅前のリゾート無料送迎バスに乗り換えます。",
+     "whatEn": "Arrive by JR Sekisho Line Limited Express and board the free resort shuttle bus outside the station.",
+     "move": {
+      "mode": "bus",
+      "min": 10,
+      "note": "星野リゾート トマム 無料送迎バスでリゾートセンターへ 約10分",
+      "noteEn": "About 10 min by free Hoshino Resorts TOMAMU shuttle bus to the Resort Center"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/d12eaa49ffe7.webp",
+     "photoCredit": {
+      "author": "Ozizo",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Hokkaido_Tomamu_Station.jpg"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "霧氷テラス（星野リゾート トマム）",
+     "nameEn": "Muhyo Terrace (Hoshino Resorts TOMAMU)",
+     "coords": [
+      43.023811,
+      142.600983
+     ],
+     "time": "09:45",
+     "what": "朝の冷え込みで木々に付いた霧氷が朝日に輝く時間帯に、雲海ゴンドラで標高1,088mの山頂へ上がります。",
+     "whatEn": "Ride the Unkai Gondola to the 1,088m summit in the crisp morning light while rime ice coats the trees.",
+     "url": "https://www.snowtomamu.jp/winter/frosttree/",
+     "move": {
+      "mode": "walk",
+      "min": 15,
+      "note": "ゴンドラ下山後、連絡通路・徒歩でホタルストリートへ 約15分",
+      "noteEn": "Descend by gondola and walk via the covered walkway to Hotalu Street (about 15 min)"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "スープカレーGARAKU ～トマムの森～",
+     "nameEn": "Soup Curry GARAKU Tomamu no Mori",
+     "coords": [
+      43.06555,
+      142.6323
+     ],
+     "time": "12:00",
+     "what": "ホタルストリート内の冬期営業店舗で、和風だしとスパイスが効いた北海道名物スープカレーを食べます。",
+     "whatEn": "Warm up with Hokkaido soup curry made with dashi and spices at this winter-open shop in Hotalu Street.",
+     "url": "https://www.snowtomamu.jp/winter/restaurant/garaku.php",
+     "move": {
+      "mode": "bus",
+      "min": 15,
+      "note": "ホタルストリートからリゾート無料送迎バスでJRトマム駅へ 約15分",
+      "noteEn": "About 15 min by free resort shuttle bus from Hotalu Street back to JR Tomamu Station"
+     },
+     "photo": "https://www.snowtomamu.jp/assets/restaurant/images/garaku/hero.jpg"
+    },
+    {
+     "role": "leave",
+     "name": "JRトマム駅",
+     "nameEn": "JR Tomamu Station",
+     "coords": [
+      43.05617,
+      142.61105
+     ],
+     "time": "14:00",
+     "what": "日没前のJR石勝線特急で札幌または帯広方面へ出発します。",
+     "whatEn": "Board an afternoon JR Sekisho Line Limited Express train toward Sapporo or Obihiro before sunset.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/d12eaa49ffe7.webp",
+     "photoCredit": {
+      "author": "Ozizo",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Hokkaido_Tomamu_Station.jpg"
+     }
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Kentaro Ohno",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:UNKAI_TERRACE.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 10980,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 3683,
+     "duration": 0,
+     "line": [
+      [
+       43.05617,
+       142.61105
+      ],
+      [
+       43.023811,
+       142.600983
+      ]
+     ]
+    },
+    {
+     "distance": 5284,
+     "duration": 0,
+     "line": [
+      [
+       43.023811,
+       142.600983
+      ],
+      [
+       43.06555,
+       142.6323
+      ]
+     ]
+    },
+    {
+     "distance": 2013,
+     "duration": 0,
+     "line": [
+      [
+       43.06555,
+       142.6323
+      ],
+      [
+       43.05617,
+       142.61105
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "otsu-coast-jewelry-ice",
+  "name": "大津海岸 ジュエリーアイス",
+  "nameEn": "Otsu Coast Jewelry Ice",
+  "prefecture": "Hokkaido",
+  "prefectureJa": "北海道",
+  "region": "hokkaido",
+  "town": "Obihiro",
+  "townJa": "帯広",
+  "kind": "nature",
+  "coords": [
+   42.689739,
+   143.653854
+  ],
+  "what": "厳冬期に十勝川から太平洋へ流れ出た透明な川氷が、波にもまれて大津海岸の砂浜に打ち上げられ、朝日を浴びて宝石のように輝く自然現象。",
+  "whatEn": "Crystal-clear river ice from the Tokachi River washed onto Otsu Coast by Pacific waves, glowing like amber and diamond gems in the winter sunrise.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3
+  ],
+  "monthScore": [
+   4,
+   5,
+   2,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Ice begins washing ashore mid-January",
+    "ja": "1月中旬頃から海岸に氷が打ち上がる"
+   },
+   "2": {
+    "en": "Peak clear ice blocks and sunrise glow",
+    "ja": "透明度と量が最盛期、朝陽との絶景"
+   },
+   "3": {
+    "en": "Early March possible in cold years, then melts",
+    "ja": "3月上旬まで見られる年もあるが融解"
+   },
+   "4": {
+    "en": "No ice (regular coast)",
+    "ja": "氷なし（通常の海岸）"
+   },
+   "5": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "6": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "7": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "8": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "9": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "10": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "11": {
+    "en": "No ice",
+    "ja": "氷なし"
+   },
+   "12": {
+    "en": "River freezing, coastal ice rare",
+    "ja": "河川結氷期、海岸への漂着は稀"
+   }
+  },
+  "peakNote": "Late January through February brings the largest and clearest ice blocks at sunrise.",
+  "peakNoteJa": "1月下旬から2月にかけて、最も大きく透明度の高い氷塊が朝陽に輝きます。",
+  "ticket": "Free entry and free parking (about 100 cars); no driving onto the beach, idling stop near residential area.",
+  "ticketJa": "見学無料・無料駐車場あり（約100台）。海岸への車両乗り入れ禁止、周辺住宅地でのアイドリングストップ厳守。",
+  "url": "https://www.toyokoro.jp/page/7224.html",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "はるにれの木",
+    "nameEn": "Harunire Elm Tree",
+    "kind": "sight",
+    "what": "十勝川河川敷に立つ樹齢約150年の大木で、雪原に映える冬のシルエットを鑑賞します。",
+    "whatEn": "Admire the 150-year-old twin elm tree standing in the snowy Tokachi River floodplain.",
+    "coords": [
+     42.781803,
+     143.5681
+    ],
+    "url": "https://www.obiun.co.jp/taxi/info_kengaku.html"
+   },
+   {
+    "name": "晩成温泉",
+    "nameEn": "Bansei Onsen",
+    "kind": "sight",
+    "what": "太平洋を望むヨウ素泉の日帰り温泉で、冬期も9:00から入浴できます（火曜定休）。",
+    "whatEn": "Soak in the rare iodine-rich hot spring overlooking the Pacific Ocean (winter hours from 9:00, closed Tuesdays).",
+    "coords": [
+     42.546227,
+     143.463852
+    ],
+    "url": "https://www.town.taiki.hokkaido.jp/soshiki/kikakushokoka/3/5/2/776.html"
+   }
+  ],
+  "course": {
+   "titleJa": "夜明けの大津海岸、朝日を受けるジュエリーアイス",
+   "titleEn": "Sunrise Jewelry Ice at Otsu Coast and Bansei Onsen",
+   "carFree": false,
+   "noteJa": "大津海岸へは公共交通機関がないため、帯広駅から冬タイヤ装備のレンタカー（または早朝貸切タクシー）での移動が必要です。海岸への車の乗り入れは禁止されており、晩成温泉は冬期（10〜3月）毎週火曜定休です。",
+   "noteEn": "There is no public transit to Otsu Coast, so rent a car with winter tyres from Obihiro Station (or book an early-morning taxi plan). Driving onto the beach is prohibited, and Bansei Onsen is closed Tuesdays from October to March.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR帯広駅",
+     "nameEn": "JR Obihiro Station",
+     "coords": [
+      42.9181,
+      143.20202
+     ],
+     "time": "05:45",
+     "what": "帯広駅周辺で冬タイヤ装備のレンタカーを借り、日の出に合わせて大津海岸へ出発します。",
+     "whatEn": "Depart Obihiro Station before dawn in a rental car with winter tyres to reach Otsu Coast for sunrise.",
+     "move": {
+      "mode": "car",
+      "min": 65,
+      "note": "冬タイヤ装備のレンタカーで国道38号・道道経由 約65分",
+      "noteEn": "About 65 min by rental car with winter tyres via Route 38 and prefectural roads"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "大津海岸 ジュエリーアイス",
+     "nameEn": "Otsu Coast Jewelry Ice",
+     "coords": [
+      42.689739,
+      143.653854
+     ],
+     "time": "06:50",
+     "what": "太陽が昇る時間帯に、朝日を透かして琥珀色や青色に輝く海岸の氷塊を鑑賞します。",
+     "whatEn": "View the translucent ice blocks glowing amber and blue on the beach at sunrise.",
+     "url": "https://jewelryice-project.com/jewelryice/",
+     "move": {
+      "mode": "car",
+      "min": 25,
+      "note": "国道336号を南下し晩成温泉へ 約25分",
+      "noteEn": "About 25 min south by car along Route 336 to Bansei Onsen"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "晩成温泉",
+     "nameEn": "Bansei Onsen",
+     "coords": [
+      42.53245,
+      143.48286
+     ],
+     "time": "09:00",
+     "what": "9:00の開館と同時に太平洋を望むヨウ素泉へ入浴し、早朝観賞で冷えた体を芯から温めます。",
+     "whatEn": "Enter at the 9:00 opening to warm up in the ocean-view iodine hot spring after the freezing sunrise walk.",
+     "url": "https://www.town.taiki.hokkaido.jp/soshiki/kikakushokoka/3/5/2/776.html",
+     "move": {
+      "mode": "car",
+      "min": 55,
+      "note": "国道336号・236号経由で帯広市街へ 約55分",
+      "noteEn": "About 55 min by car to Obihiro city via Routes 336 and 236"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "満寿屋商店 麦音",
+     "nameEn": "Masuya Pan Mugion",
+     "coords": [
+      42.890106,
+      143.189743
+     ],
+     "time": "11:30",
+     "what": "冬期営業時間（6:55〜17:00）の店舗で、十勝産小麦100%の焼きたてパンと温かいスープで昼食をとります。",
+     "whatEn": "Enjoy freshly baked bread made from 100% Tokachi wheat and hot soup (winter hours 6:55–17:00).",
+     "url": "https://www.masuyapan.com/shop/",
+     "move": {
+      "mode": "car",
+      "min": 15,
+      "note": "帯広市街を通りJR帯広駅へ 約15分",
+      "noteEn": "About 15 min by car to JR Obihiro Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR帯広駅",
+     "nameEn": "JR Obihiro Station",
+     "coords": [
+      42.9181,
+      143.20202
+     ],
+     "time": "13:30",
+     "what": "レンタカーを返却し、午後のJR石勝線特急などで札幌・新千歳空港方面へ出発します。",
+     "whatEn": "Return the rental car and board an afternoon JR Limited Express train toward Sapporo or New Chitose Airport."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "MaedaAkihiko",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Jewelry-Ice_Otsu-beach.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 116618,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 44627,
+     "duration": 0,
+     "line": [
+      [
+       42.9181,
+       143.20202
+      ],
+      [
+       42.689739,
+       143.653854
+      ]
+     ]
+    },
+    {
+     "distance": 22349,
+     "duration": 0,
+     "line": [
+      [
+       42.689739,
+       143.653854
+      ],
+      [
+       42.53245,
+       143.48286
+      ]
+     ]
+    },
+    {
+     "distance": 46378,
+     "duration": 0,
+     "line": [
+      [
+       42.53245,
+       143.48286
+      ],
+      [
+       42.890106,
+       143.189743
+      ]
+     ]
+    },
+    {
+     "distance": 3264,
+     "duration": 0,
+     "line": [
+      [
+       42.890106,
+       143.189743
+      ],
+      [
+       42.9181,
+       143.20202
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "takayama-inari-shrine",
+  "name": "高山稲荷神社",
+  "nameEn": "Takayama Inari Shrine",
+  "prefecture": "Aomori",
+  "prefectureJa": "青森県",
+  "region": "tohoku",
+  "town": "Goshogawara",
+  "townJa": "五所川原",
+  "kind": "shrine-temple",
+  "coords": [
+   40.928951,
+   140.334641
+  ],
+  "what": "日本庭園の雪景色の中を龍のように蛇行しながら連なる朱色の千本鳥居が、冬に鮮烈な紅白の対比を見せるつがる市の神社。",
+  "whatEn": "A coastal Tsugaru shrine whose winding vermilion Senbon Torii gates snake across a snow-blanketed Japanese garden, creating a stark red-and-white winter panorama.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   3,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   4,
+   3,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Deep snow contrasting with vermilion torii",
+    "ja": "深い雪と朱色の千本鳥居の対比が絶景"
+   },
+   "2": {
+    "en": "Peak snow-covered garden and torii tunnel",
+    "ja": "雪に埋もれる庭園と千本鳥居の最盛期"
+   },
+   "3": {
+    "en": "Remaining snow early March, melting late March",
+    "ja": "3月上旬は残雪、下旬に雪解け"
+   },
+   "4": {
+    "en": "Cherry blossoms in shrine garden",
+    "ja": "境内の桜が見頃"
+   },
+   "5": {
+    "en": "Fresh green garden",
+    "ja": "新緑の庭園"
+   },
+   "6": {
+    "en": "Hydrangeas and pond",
+    "ja": "紫陽花と池の庭園"
+   },
+   "7": {
+    "en": "Summer green torii",
+    "ja": "夏の緑と鳥居"
+   },
+   "8": {
+    "en": "Summer shrine visit",
+    "ja": "夏の参拝"
+   },
+   "9": {
+    "en": "Early autumn",
+    "ja": "初秋"
+   },
+   "10": {
+    "en": "Autumn foliage in garden",
+    "ja": "庭園の紅葉"
+   },
+   "11": {
+    "en": "Late autumn, strong coastal winds",
+    "ja": "晩秋、日本海側の強風期"
+   },
+   "12": {
+    "en": "First snow dusts the torii gates",
+    "ja": "雪化粧が始まる千本鳥居"
+   }
+  },
+  "peakNote": "January and February frame the winding vermilion torii corridor in deep white snow under quiet winter skies.",
+  "peakNoteJa": "1月〜2月は庭園全体が深い雪に覆われ、朱色の千本鳥居との紅白のコントラストが最も鮮やかになります。",
+  "ticket": "Free entry; open daily (roughly 7:00–17:00, office 8:30–16:50).",
+  "ticketJa": "参拝無料・年中無休（参拝時間7:00〜17:00頃、授与所8:30〜16:50）。",
+  "url": "https://takayamainari.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "津軽鉄道 ストーブ列車",
+    "nameEn": "Tsugaru Railway Stove Train",
+    "kind": "sight",
+    "what": "津軽五所川原駅から、だるまストーブでスルメを炙りながら冬の津軽平野を走る列車に乗車します。",
+    "whatEn": "Ride the winter coal-stove train from Tsugaru-Goshogawara Station through the snowy Tsugaru Plain.",
+    "coords": [
+     40.809471,
+     140.446991
+    ],
+    "url": "https://tsutetsu.com/lp"
+   },
+   {
+    "name": "縄文住居展示資料館カルコ",
+    "nameEn": "Jomon Dwelling Exhibition Hall Calco",
+    "kind": "sight",
+    "what": "亀ヶ岡石器時代遺跡の出土品や遮光器土偶に関する展示を屋内施設で見学します。",
+    "whatEn": "Explore indoor exhibits on the Kamegaoka Stone Age Site and its famous goggle-eyed clay figurines.",
+    "coords": [
+     40.808743,
+     140.380264
+    ],
+    "url": "https://www.city.tsugaru.aomori.jp/soshiki/kyoiku/bunkazai/sihakukan/11114.html"
+   }
+  ],
+  "course": {
+   "titleJa": "雪の千本鳥居へ、五所川原からの冬参拝",
+   "titleEn": "Snowy Vermilion Torii at Takayama Inari Shrine from Goshogawara",
+   "carFree": true,
+   "noteJa": "弘南バス小泊線「高山神社入口」から境内までは積雪時徒歩が大変なため、事前予約タクシーの併用が安心です。参道や階段は凍結するため滑りにくい冬靴が必須です。",
+   "noteEn": "Walking from the Takayama Jinja Iriguchi bus stop can be difficult in deep snow, so pre-booking a local taxi for the final leg is recommended. Non-slip winter boots are essential for icy shrine paths and stairs.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR五所川原駅",
+     "nameEn": "JR Goshogawara Station",
+     "coords": [
+      40.80893,
+      140.44803
+     ],
+     "time": "09:15",
+     "what": "JR五能線で到着し、駅前のバスターミナルから弘南バス小泊線に乗車します。",
+     "whatEn": "Arrive on the JR Gono Line and board the Konan Bus Kodomari Line from the station terminal.",
+     "move": {
+      "mode": "bus",
+      "min": 40,
+      "note": "弘南バス小泊線で「高山神社入口」へ 約40分",
+      "noteEn": "About 40 min by Konan Bus Kodomari Line to Takayama Jinja Iriguchi"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "高山稲荷神社",
+     "nameEn": "Takayama Inari Shrine",
+     "coords": [
+      40.928951,
+      140.334641
+     ],
+     "time": "10:10",
+     "what": "午前中の柔らかい光が雪と鳥居を照らす時間帯に、白銀の日本庭園に連なる千本鳥居を参拝します。",
+     "whatEn": "Walk the snow-framed corridor of vermilion torii gates in the soft morning light.",
+     "url": "https://takayamainari.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 50,
+      "note": "事前予約タクシーで高山神社入口へ戻り、弘南バスで五所川原駅前へ 計約50分",
+      "noteEn": "Return to the bus stop by pre-booked taxi and take the Konan Bus back to Goshogawara (about 50 min total)"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "マルコーセンター",
+     "nameEn": "Maruko Center",
+     "coords": [
+      40.809814,
+      140.445312
+     ],
+     "time": "12:30",
+     "what": "五所川原市街の生鮮市場（日曜定休）で、好みの刺身を買ってご飯にのせる名物「のへ丼」を味わいます。",
+     "whatEn": "Enjoy Goshogawara's famous Nohe-don by choosing fresh sashimi from market stalls to top a bowl of warm rice (closed Sundays).",
+     "url": "https://aomori-tourism.com/blog/2023/06/25904.html",
+     "move": {
+      "mode": "walk",
+      "min": 3,
+      "note": "JR五所川原駅前の「コミュニティカフェ でる・そーれ」へ徒歩 約3分",
+      "noteEn": "About 3 min walk to Community Cafe Del Sole next to JR Goshogawara Station"
+     },
+     "photo": "https://aomori-tourism.com/lsc/upfile/blog/0002/5904/25904_1_l.jpg"
+    },
+    {
+     "role": "cafe",
+     "name": "コミュニティカフェ でる・そーれ",
+     "nameEn": "Community Cafe Del Sole",
+     "coords": [
+      40.809341,
+      140.44783
+     ],
+     "time": "13:45",
+     "what": "JR・津軽鉄道五所川原駅すぐ隣のカフェ（水曜定休）で、温かい珈琲や特製アップルパイで列車待ちの時間を過ごします。",
+     "whatEn": "Relax with hot coffee or local apple pie at this community cafe right next to Goshogawara Station (closed Wed).",
+     "url": "http://www.delsole-aomori.jp/",
+     "move": {
+      "mode": "walk",
+      "min": 1,
+      "note": "JR五所川原駅へ徒歩 約1分",
+      "noteEn": "1 min walk to JR Goshogawara Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR五所川原駅",
+     "nameEn": "JR Goshogawara Station",
+     "coords": [
+      40.80893,
+      140.44803
+     ],
+     "time": "15:00",
+     "what": "午後のJR五能線または津軽鉄道で次の目的地へ向かいます。",
+     "whatEn": "Depart on an afternoon JR Gono Line or Tsugaru Railway train."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "あおもりくま",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Takayama_Inari_shrine_P2110474.JPG",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 32801,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 16378,
+     "duration": 0,
+     "line": [
+      [
+       40.80893,
+       140.44803
+      ],
+      [
+       40.928951,
+       140.334641
+      ]
+     ]
+    },
+    {
+     "distance": 16156,
+     "duration": 0,
+     "line": [
+      [
+       40.928951,
+       140.334641
+      ],
+      [
+       40.809814,
+       140.445312
+      ]
+     ]
+    },
+    {
+     "distance": 218,
+     "duration": 0,
+     "line": [
+      [
+       40.809814,
+       140.445312
+      ],
+      [
+       40.809341,
+       140.44783
+      ]
+     ]
+    },
+    {
+     "distance": 49,
+     "duration": 0,
+     "line": [
+      [
+       40.809341,
+       140.44783
+      ],
+      [
+       40.80893,
+       140.44803
       ]
      ]
     }
@@ -622,6 +2139,603 @@
   }
  },
  {
+  "slug": "hirosaki-park-winter-sakura-light-up",
+  "name": "弘前公園 冬のさくらライトアップ",
+  "nameEn": "Hirosaki Park Winter Sakura Light-Up",
+  "prefecture": "Aomori",
+  "prefectureJa": "青森県",
+  "region": "tohoku",
+  "town": "Hirosaki",
+  "townJa": "弘前",
+  "kind": "event",
+  "coords": [
+   40.606075,
+   140.466019
+  ],
+  "what": "弘前公園の外濠約500mに並ぶ桜の枝に積もった雪をピンク色のLEDで照らし、真冬に満開の桜のような光景を演出するライトアップ。",
+  "whatEn": "Snow piled on cherry tree branches along 500 meters of Hirosaki Park's outer moat is illuminated in pink LED light, creating the illusion of full-bloom sakura in midwinter.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   1,
+   5,
+   2,
+   1,
+   1,
+   2,
+   2,
+   3,
+   2,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Deep snow on cherry branches, nightly pink light-up",
+    "ja": "枝に積もった雪とピンクのライトアップが最盛期"
+   },
+   "2": {
+    "en": "Peak snow plus Hirosaki Castle Snow Lantern Festival",
+    "ja": "雪燈籠まつりと冬桜の共演で最盛期"
+   },
+   "3": {
+    "en": "Light-up ends Feb 28; bare branches before spring",
+    "ja": "2月末で点灯終了、春待ちの季節"
+   },
+   "4": {
+    "en": "Famous real cherry blossoms",
+    "ja": "本物の桜が満開"
+   },
+   "5": {
+    "en": "Fresh green park",
+    "ja": "新緑の公園"
+   },
+   "6": {
+    "en": "Quiet summer moat",
+    "ja": "静かな初夏の濠"
+   },
+   "7": {
+    "en": "Summer park",
+    "ja": "夏の公園"
+   },
+   "8": {
+    "en": "Neputa festival season in city",
+    "ja": "弘前ねぷたまつり時期"
+   },
+   "9": {
+    "en": "Early autumn park",
+    "ja": "初秋の公園"
+   },
+   "10": {
+    "en": "Chrysanthemum & autumn leaves festival",
+    "ja": "菊と紅葉まつり"
+   },
+   "11": {
+    "en": "Late autumn, light-up prep",
+    "ja": "晩秋、冬桜準備期"
+   },
+   "12": {
+    "en": "Light-up starts Dec 1 as snow accumulates",
+    "ja": "12月1日点灯開始、雪が積もると見頃"
+   }
+  },
+  "peakNote": "January and February bring heavy snow coating the branches and freezing the moat surface like pink-lit flower rafts.",
+  "peakNoteJa": "1月〜2月は桜の枝に十分な雪が積もり、凍結したお濠にも光が映えて最も美しく見えます。",
+  "ticket": "Free viewing; runs sunset to 21:30 daily (weather permitting).",
+  "ticketJa": "観覧無料。日没〜21:30点灯（年末年始や雪燈籠まつり期間は延長あり）。",
+  "url": "https://hirosaki-fuyusakura.jimdofree.com/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "弘前城雪燈籠まつり（弘前公園）",
+    "nameEn": "Hirosaki Castle Snow Lantern Festival",
+    "kind": "sight",
+    "what": "2月上旬に開催される冬まつりで、雪燈籠やミニかまくらの灯りを鑑賞します。",
+    "whatEn": "See snow lanterns and illuminated mini snow huts during the early-February festival in Hirosaki Park.",
+    "coords": [
+     40.606075,
+     140.466019
+    ],
+    "url": "https://www.hirosaki-kanko.or.jp/edit.html?id=cat02_winter_yuki"
+   },
+   {
+    "name": "弘前れんが倉庫美術館",
+    "nameEn": "Hirosaki Museum of Contemporary Art",
+    "kind": "sight",
+    "what": "明治・大正期の煉瓦造シードル工場を改修した美術館で、冬期展覧会を鑑賞します。",
+    "whatEn": "Visit the winter exhibition inside this contemporary art museum housed in a historic brick cider warehouse.",
+    "coords": [
+     40.598434,
+     140.472443
+    ],
+    "url": "https://www.hirosaki-moca.jp/"
+   }
+  ],
+  "course": {
+   "titleJa": "日没後の外濠に咲く、冬の桜ライトアップ",
+   "titleEn": "Evening Winter Sakura Light-Up Along Hirosaki Castle Moat",
+   "carFree": true,
+   "noteJa": "ライトアップは日没から21:30まで（積雪や天候により見え方が変わります）。弘前れんが倉庫美術館は火曜休館、レストラン山崎は月曜（祝日の場合は翌日）定休です。",
+   "noteEn": "The light-up runs from sunset to 21:30 (appearance varies with snow and weather). Hirosaki Museum of Contemporary Art is closed Tuesdays, and Restaurant Yamazaki is closed Mondays.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR弘前駅",
+     "nameEn": "JR Hirosaki Station",
+     "coords": [
+      40.59955,
+      140.48521
+     ],
+     "time": "14:00",
+     "what": "JR奥羽本線などで到着し、駅前から弘南バス土手町循環100円バスに乗車します。",
+     "whatEn": "Arrive by JR Ou Line and board the Konan Bus Dotemachi Loop 100-yen bus outside the station.",
+     "move": {
+      "mode": "bus",
+      "min": 10,
+      "note": "弘南バス土手町循環100円バスで「中土手町」へ 約10分",
+      "noteEn": "About 10 min by Konan Bus Dotemachi Loop 100-yen bus to Nakadotemachi"
+     }
+    },
+    {
+     "role": "stop",
+     "name": "弘前れんが倉庫美術館",
+     "nameEn": "Hirosaki Museum of Contemporary Art",
+     "coords": [
+      40.598434,
+      140.472443
+     ],
+     "time": "14:20",
+     "what": "日没までの午後の時間帯に、冬期も開館（火曜休館）している美術館で現代アートを鑑賞します。",
+     "whatEn": "Spend the afternoon before sunset exploring contemporary art in the heated brick museum (closed Tuesdays).",
+     "url": "https://www.hirosaki-moca.jp/",
+     "move": {
+      "mode": "walk",
+      "min": 15,
+      "note": "追手門方面へ雪道を徒歩 約15分",
+      "noteEn": "About 15 min walk toward Otemon Gate"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "弘前公園 冬に咲くさくらライトアップ",
+     "nameEn": "Hirosaki Park Winter Sakura Light-Up",
+     "coords": [
+      40.606075,
+      140.466019
+     ],
+     "time": "16:50",
+     "what": "日没とともに外濠の桜並木がピンク色に照らされ、雪が満開の桜のように輝く光景を散策します。",
+     "whatEn": "Stroll along the outer moat as sunset pink LEDs illuminate snow-covered cherry branches like winter blossoms.",
+     "url": "https://www.hirosaki-kanko.or.jp/edit.html?id=cat02_winter_yuki",
+     "move": {
+      "mode": "walk",
+      "min": 8,
+      "note": "親方町方面へ徒歩 約8分",
+      "noteEn": "About 8 min walk toward Oyakatamachi"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "レストラン山崎",
+     "nameEn": "Restaurant Yamazaki",
+     "coords": [
+      40.602596,
+      140.46994
+     ],
+     "time": "18:00",
+     "what": "弘前産のりんごや津軽の食材を使ったフレンチの夕食と名物アップルパイで温まります。",
+     "whatEn": "Warm up with a French dinner featuring Hirosaki apples and local Tsugaru ingredients.",
+     "url": "https://www.r-yamazaki.com/",
+     "move": {
+      "mode": "walk",
+      "min": 18,
+      "note": "JR弘前駅へ徒歩またはタクシーで 約18分",
+      "noteEn": "About 18 min walk (or 5 min taxi) to JR Hirosaki Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR弘前駅",
+     "nameEn": "JR Hirosaki Station",
+     "coords": [
+      40.59955,
+      140.48521
+     ],
+     "time": "19:45",
+     "what": "夜のJR奥羽本線で青森・新青森方面または宿泊先へ向かいます。",
+     "whatEn": "Take an evening JR Ou Line train toward Aomori/Shin-Aomori or your hotel."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "掬茶",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Fuyu-ni-saku-sakura_in_Hirosaki_Castle_2020.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 3928,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 1083,
+     "duration": 0,
+     "line": [
+      [
+       40.59955,
+       140.48521
+      ],
+      [
+       40.598434,
+       140.472443
+      ]
+     ]
+    },
+    {
+     "distance": 1006,
+     "duration": 0,
+     "line": [
+      [
+       40.598434,
+       140.472443
+      ],
+      [
+       40.606075,
+       140.466019
+      ]
+     ]
+    },
+    {
+     "distance": 508,
+     "duration": 0,
+     "line": [
+      [
+       40.606075,
+       140.466019
+      ],
+      [
+       40.602596,
+       140.46994
+      ]
+     ]
+    },
+    {
+     "distance": 1331,
+     "duration": 0,
+     "line": [
+      [
+       40.602596,
+       140.46994
+      ],
+      [
+       40.59955,
+       140.48521
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "oirase-gorge-icefalls",
+  "name": "奥入瀬渓流の氷瀑",
+  "nameEn": "Oirase Gorge Icefalls Tour",
+  "prefecture": "Aomori",
+  "prefectureJa": "青森県",
+  "region": "tohoku",
+  "town": "Towada",
+  "townJa": "十和田",
+  "kind": "water",
+  "coords": [
+   40.571651,
+   141.03363
+  ],
+  "what": "厳冬期に滝や湧水が凍りついて巨大な氷瀑や氷柱となる奥入瀬渓流を、日中のバスツアーや移動式ライトアップ付きのナイトツアーで巡る冬季体験。",
+  "whatEn": "Frozen waterfalls and towering icicle curtains along Oirase Gorge, visited via bookable daytime nature-guide tours and mobile-lit night bus tours.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   1,
+   2,
+   4,
+   4,
+   4,
+   4,
+   3,
+   5,
+   2,
+   3
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Peak frozen waterfalls and night illumination tours",
+    "ja": "氷瀑の形成とナイトツアーが最盛期"
+   },
+   "2": {
+    "en": "Thickest ice curtains through Feb 28",
+    "ja": "2月28日まで巨大な氷柱・氷瀑が見頃"
+   },
+   "3": {
+    "en": "Ice melts, winter tours ended",
+    "ja": "融氷期、冬ツアー終了"
+   },
+   "4": {
+    "en": "Spring snowmelt streams",
+    "ja": "春の雪解け渓流"
+   },
+   "5": {
+    "en": "Fresh green forest",
+    "ja": "新緑の渓流"
+   },
+   "6": {
+    "en": "Lush moss and waterfalls",
+    "ja": "苔と滝のベストシーズン"
+   },
+   "7": {
+    "en": "Cool summer gorge",
+    "ja": "避暑の新緑渓流"
+   },
+   "8": {
+    "en": "Summer gorge",
+    "ja": "夏の渓流"
+   },
+   "9": {
+    "en": "Early autumn",
+    "ja": "初秋"
+   },
+   "10": {
+    "en": "Famous autumn foliage",
+    "ja": "紅葉の名所"
+   },
+   "11": {
+    "en": "Late autumn, leaves fallen",
+    "ja": "落葉期・冬支度"
+   },
+   "12": {
+    "en": "Icefalls form; tours start Dec 25",
+    "ja": "12月下旬に氷結が進み25日からツアー開始"
+   }
+  },
+  "peakNote": "January and February freeze the gorge's roadside springs and waterfalls into massive blue-white ice walls.",
+  "peakNoteJa": "1月〜2月は寒さが極まり、馬門岩や千筋の滝などが巨大な氷瀑・氷柱となって迫力を増します。",
+  "ticket": "Guided bus tour 3,300–4,400 JPY (adults), 1,650–2,200 JPY (elementary); advance online reservation & credit card payment required.",
+  "ticketJa": "公式ツアー料金：大人3,300〜4,400円、小学生1,650〜2,200円（完全予約制・事前オンライン決済）。",
+  "url": "https://www.towada.travel/season/winter",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "奥入瀬渓流ホテル 氷瀑アフタヌーンティー",
+    "nameEn": "Oirase Keiryu Hotel Icefall Afternoon Tea",
+    "kind": "cafe",
+    "what": "奥入瀬渓流温泉のホテルテラスで、氷瀑をテーマにした冬限定のスイーツと紅茶を味わいます。",
+    "whatEn": "Enjoy winter-limited icefall-themed sweets and tea on the heated dome terrace at Oirase Keiryu Hotel.",
+    "coords": [
+     40.612694,
+     141.073318
+    ],
+    "url": "https://hoshinoresorts.com/ja/hotels/oirasekeiryu/activities/15456/"
+   },
+   {
+    "name": "OIRASE BEER Brewery & Restaurant",
+    "nameEn": "OIRASE BEER Brewery & Restaurant",
+    "kind": "food",
+    "what": "奥入瀬ろまんパーク内のブルワリーレストランで、奥入瀬ビールと青森県産食材の料理を楽しみます。",
+    "whatEn": "Savor local craft beer and Aomori cuisine at the brewery restaurant inside Oirase Roman Park.",
+    "coords": [
+     40.612694,
+     141.073318
+    ],
+    "url": "https://oirase.beer/oktober-fest/"
+   }
+  ],
+  "course": {
+   "titleJa": "新幹線と専用バスで巡る、冬の奥入瀬氷瀑ツアー",
+   "titleEn": "Shinkansen & Guided Bus Tour to Oirase Gorge Icefalls",
+   "carFree": true,
+   "noteJa": "「冬の奥入瀬氷瀑ツアー」は完全予約制・事前決済で、週末・祝日を中心に運行されます（平日は除外日あり）。氷点下の渓流沿いでバスを乗り降りするため、防寒着と滑りにくい冬靴が必須です。",
+   "noteEn": "The Oirase Icefalls Tour requires advance online reservation and payment, operating mainly on weekends and holidays (some weekdays excluded). Warm winter clothing and non-slip boots are essential for sub-zero stops along the gorge.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR七戸十和田駅",
+     "nameEn": "JR Shichinohe-Towada Station",
+     "coords": [
+      40.71998,
+      141.15367
+     ],
+     "time": "09:30",
+     "what": "東北新幹線で到着し、十和田観光電鉄バスで十和田市中心部へ向かいます。",
+     "whatEn": "Arrive on the Tohoku Shinkansen and take a local bus to central Towada.",
+     "move": {
+      "mode": "bus",
+      "min": 25,
+      "note": "十和田観光電鉄バスで「十和田市現代美術館」へ 約25分",
+      "noteEn": "About 25 min by Towada Kanko Bus to Towada Art Center"
+     }
+    },
+    {
+     "role": "stop",
+     "name": "十和田市現代美術館",
+     "nameEn": "Towada Art Center",
+     "coords": [
+      40.613899,
+      141.209351
+     ],
+     "time": "10:15",
+     "what": "冬期も開館（月曜休館）している館内で、現代アートの常設作品や企画展を鑑賞します。",
+     "whatEn": "Explore contemporary art installations inside the museum (open in winter, closed Mondays).",
+     "url": "https://towadaartcenter.com/",
+     "move": {
+      "mode": "walk",
+      "min": 5,
+      "note": "美術館周辺の官庁街通りを徒歩で約5分",
+      "noteEn": "About 5 min walk along Kanchogai-dori Avenue"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "道の駅とわだ（とわだぴあ）周辺・十和田グルメ",
+     "nameEn": "Towada Local Dining (near Art Center)",
+     "coords": [
+      40.57507,
+      141.26541
+     ],
+     "time": "11:45",
+     "what": "十和田市街の飲食店で、牛バラ肉と玉ねぎを甘辛いタレで焼くご当地グルメの十和田バラ焼きを食べます。",
+     "whatEn": "Have Towada Barayaki (sweet-savory grilled beef and onions) at a local restaurant in central Towada.",
+     "url": "https://www.towadapia.com/festival/",
+     "move": {
+      "mode": "bus",
+      "min": 40,
+      "note": "十和田市街発の予約制「冬の奥入瀬氷瀑ツアー」バスに乗車 約40分",
+      "noteEn": "Board the pre-booked Oirase Icefalls Tour bus from central Towada (about 40 min)"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "奥入瀬渓流 氷瀑ツアー",
+     "nameEn": "Oirase Gorge Icefalls Tour",
+     "coords": [
+      40.571651,
+      141.03363
+     ],
+     "time": "13:15",
+     "what": "日中の自然光が氷柱を青白く照らす時間帯に、ネイチャーガイド同行のバスで渓流の巨大氷瀑を巡ります。",
+     "whatEn": "Tour the massive frozen waterfalls along Oirase Gorge by guided bus in the clear afternoon daylight.",
+     "url": "https://www.towada.travel/events/frosen-oirase-2026-2027",
+     "move": {
+      "mode": "bus",
+      "min": 45,
+      "note": "ツアー専用バスでJR七戸十和田駅へ戻る 約45分",
+      "noteEn": "About 45 min by tour bus back to JR Shichinohe-Towada Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR七戸十和田駅",
+     "nameEn": "JR Shichinohe-Towada Station",
+     "coords": [
+      40.71998,
+      141.15367
+     ],
+     "time": "16:30",
+     "what": "夕方の東北新幹線で盛岡・東京または新青森方面へ出発します。",
+     "whatEn": "Board an evening Tohoku Shinkansen train toward Morioka/Tokyo or Shin-Aomori."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "あおもりくま,(Aomorikuma)",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Choushi_Ootaki_Oirase_Towada_Japan_IMG_6084x12.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 57939,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 12673,
+     "duration": 0,
+     "line": [
+      [
+       40.71998,
+       141.15367
+      ],
+      [
+       40.613899,
+       141.209351
+      ]
+     ]
+    },
+    {
+     "distance": 6394,
+     "duration": 0,
+     "line": [
+      [
+       40.613899,
+       141.209351
+      ],
+      [
+       40.57507,
+       141.26541
+      ]
+     ]
+    },
+    {
+     "distance": 19545,
+     "duration": 0,
+     "line": [
+      [
+       40.57507,
+       141.26541
+      ],
+      [
+       40.571651,
+       141.03363
+      ]
+     ]
+    },
+    {
+     "distance": 19327,
+     "duration": 0,
+     "line": [
+      [
+       40.571651,
+       141.03363
+      ],
+      [
+       40.71998,
+       141.15367
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
   "slug": "tatehana-wharf-morning-market",
   "name": "館鼻岸壁朝市",
   "nameEn": "Tatehana Wharf Morning Market",
@@ -767,8 +2881,8 @@
      "name": "八戸駅",
      "nameEn": "Hachinohe Station",
      "coords": [
-      40.50877,
-      141.43188
+      40.50834,
+      141.4316
      ],
      "time": "05:25",
      "what": "JR八戸駅に到着。早朝のJR八戸線（5:33発快速「館鼻岸壁朝市号」または6:05発普通）に乗車します。",
@@ -851,8 +2965,8 @@
      "name": "八戸駅",
      "nameEn": "Hachinohe Station",
      "coords": [
-      40.50877,
-      141.43188
+      40.50834,
+      141.4316
      ],
      "time": "14:15",
      "what": "八戸駅でお土産を購入し、東北新幹線はやぶさで帰路につきます。",
@@ -877,16 +2991,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 18216,
+   "distance": 18302,
    "duration": 0,
    "legs": [
     {
-     "distance": 8258,
+     "distance": 8293,
      "duration": 0,
      "line": [
       [
-       40.50877,
-       141.43188
+       40.50834,
+       141.4316
       ],
       [
        40.52889,
@@ -923,7 +3037,7 @@
      ]
     },
     {
-     "distance": 2589,
+     "distance": 2640,
      "duration": 0,
      "line": [
       [
@@ -931,8 +3045,311 @@
        141.452332
       ],
       [
-       40.50877,
-       141.43188
+       40.50834,
+       141.4316
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "mount-moriyoshi-ice-monsters",
+  "name": "森吉山 阿仁の樹氷",
+  "nameEn": "Mount Moriyoshi Ice Monsters",
+  "prefecture": "Akita",
+  "prefectureJa": "秋田県",
+  "region": "tohoku",
+  "town": "Kitaakita",
+  "townJa": "北秋田",
+  "kind": "nature",
+  "coords": [
+   39.991074,
+   140.475327
+  ],
+  "what": "阿仁ゴンドラ山頂駅から歩いて5分の樹氷平に広がる、日本三大樹氷のひとつであるアオモリトドマツの巨大樹氷群。",
+  "whatEn": "One of Japan's three great juhyo (snow monster) fields, reached in 20 minutes by the Ani Gondola plus a 5-minute walk in free loaner snowshoes.",
+  "seasonal": true,
+  "peakMonths": [
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "monthScore": [
+   4,
+   5,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Ice monsters form from early-mid January",
+    "ja": "1月上旬頃から樹氷が成長"
+   },
+   "2": {
+    "en": "Peak giant juhyo and night snowcat tours",
+    "ja": "巨大な樹氷群と夜間観賞会が最盛期"
+   },
+   "3": {
+    "en": "Viewable through early March before thaw",
+    "ja": "3月上旬頃まで樹氷観賞可能"
+   },
+   "4": {
+    "en": "Closed between ski and green seasons",
+    "ja": "休業期"
+   },
+   "5": {
+    "en": "Spring hiking",
+    "ja": "春山"
+   },
+   "6": {
+    "en": "Alpine flowers begin",
+    "ja": "高山植物シーズン"
+   },
+   "7": {
+    "en": "Summer flowers on Mt. Moriyoshi",
+    "ja": "花の百名山の夏"
+   },
+   "8": {
+    "en": "Summer mountain",
+    "ja": "夏山"
+   },
+   "9": {
+    "en": "Early autumn",
+    "ja": "初秋"
+   },
+   "10": {
+    "en": "Autumn foliage gondola",
+    "ja": "紅葉ゴンドラ"
+   },
+   "11": {
+    "en": "Pre-winter prep",
+    "ja": "冬期営業準備"
+   },
+   "12": {
+    "en": "Ski area opens mid-Dec; juhyo still forming",
+    "ja": "12月中旬スキー場開業、樹氷は成長途中"
+   }
+  },
+  "peakNote": "February builds the tallest, thickest snow monsters across Juhyo-daira plateau, with clear blue-sky days and night snowcat tours.",
+  "peakNoteJa": "2月は樹氷が最も大きく育ち、晴天時の「森吉ブルー」と樹氷の対比や夜の圧雪車ツアーを楽しめます。",
+  "ticket": "Ani Gondola round-trip 2,000 JPY (adults), 900 JPY (elementary); free boots, snowshoes, and poles at summit station.",
+  "ticketJa": "阿仁ゴンドラ往復：大人2,000円、小学生900円。山頂駅舎で長靴・スノーシュー・ストック無料貸出あり。",
+  "url": "https://www.aniski.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "里山レストラン＆カフェ こぐま亭",
+    "nameEn": "Satoyama Restaurant & Cafe Kogumatei",
+    "kind": "food",
+    "what": "阿仁合駅舎内のレストランで、馬肉シチューや阿仁みそを使った定食を食べます。",
+    "whatEn": "Eat horse-meat stew or local Ani miso set meals inside Aniai Station.",
+    "coords": [
+     39.992218,
+     140.3983
+    ],
+    "url": "https://www.akita-nairiku.com/"
+   },
+   {
+    "name": "高田食堂",
+    "nameEn": "Takada Shokudo",
+    "kind": "food",
+    "what": "阿仁合駅近くの老舗食堂で、濃厚な煮干し醤油ラーメンや手作り餃子を味わいます。",
+    "whatEn": "Enjoy rich dried-sardine soy-sauce ramen and handmade gyoza at this long-established diner near Aniai Station.",
+    "coords": [
+     39.992218,
+     140.3983
+    ],
+    "url": "https://r.goope.jp/takadashokudo/"
+   }
+  ],
+  "course": {
+   "titleJa": "内陸線とゴンドラで会う、阿仁の樹氷モンスター",
+   "titleEn": "Akita Nairiku Line & Gondola to Mount Moriyoshi Ice Monsters",
+   "carFree": true,
+   "noteJa": "阿仁合駅から森吉山阿仁スキー場への乗合タクシー（森吉山シャトル）は事前予約制です。山頂は吹雪や強風で視界不良になる場合があり、防寒着や防寒手袋が必須です（長靴・スノーシューは山頂駅で無料貸出あり）。",
+   "noteEn": "The shared taxi shuttle from Aniai Station to Ani Ski Resort requires advance reservation. Summit visibility can drop in snowstorms, so warm winter layers and gloves are essential (boots and snowshoes are lent free at the summit station).",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "秋田内陸線 阿仁合駅",
+     "nameEn": "Akita Nairiku Line Aniai Station",
+     "coords": [
+      39.992218,
+      140.3983
+     ],
+     "time": "09:30",
+     "what": "秋田内陸縦貫鉄道で到着し、予約済みの乗合タクシー（森吉山シャトル）に乗り換えます。",
+     "whatEn": "Arrive on the Akita Nairiku Line and transfer to the pre-booked Moriyoshi Shuttle shared taxi.",
+     "move": {
+      "mode": "taxi",
+      "min": 20,
+      "note": "予約制乗合タクシー（森吉山シャトル）で森吉山阿仁スキー場へ 約20分",
+      "noteEn": "About 20 min by pre-booked shared taxi (Moriyoshi Shuttle) to Ani Ski Resort"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "森吉山 阿仁の樹氷",
+     "nameEn": "Mount Moriyoshi Ice Monsters",
+     "coords": [
+      39.991074,
+      140.475327
+     ],
+     "time": "10:15",
+     "what": "日差しが出やすい午前中に阿仁ゴンドラで山頂駅へ上がり、樹氷平で巨大な樹氷群を間近に鑑賞します。",
+     "whatEn": "Ride the Ani Gondola to the summit in the late morning and walk among towering snow monsters on Juhyo-daira.",
+     "url": "https://visitakita.com/news/20260107/5145/",
+     "move": {
+      "mode": "taxi",
+      "min": 20,
+      "note": "下山後、乗合タクシーで阿仁合駅へ戻る 約20分",
+      "noteEn": "Descend by gondola and return to Aniai Station by shared taxi (about 20 min)"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "高田食堂",
+     "nameEn": "Takada Shokudo",
+     "coords": [
+      39.992218,
+      140.3983
+     ],
+     "time": "12:30",
+     "what": "阿仁合駅近くの地元食堂で、温かい煮干し醤油ラーメンと手作りの焼き餃子を食べます。",
+     "whatEn": "Warm up with hot dried-sardine soy-sauce ramen and handmade gyoza near Aniai Station.",
+     "url": "https://r.goope.jp/takadashokudo/",
+     "move": {
+      "mode": "train",
+      "min": 15,
+      "note": "阿仁合駅から秋田内陸線で阿仁前田温泉駅へ 約15分",
+      "noteEn": "About 15 min by Akita Nairiku Line from Aniai to Animaeda-Onsen Station"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "クウィンス森吉",
+     "nameEn": "Quince Moriyoshi",
+     "coords": [
+      40.06126,
+      140.41767
+     ],
+     "time": "14:00",
+     "what": "阿仁前田温泉駅舎に直結した温泉施設で日帰り入浴し、雪山散策で冷えた体を温めます。",
+     "whatEn": "Take a day-use hot spring bath directly connected to Animaeda-Onsen Station.",
+     "url": "https://www.akita-nairiku.com/",
+     "move": {
+      "mode": "walk",
+      "min": 1,
+      "note": "駅舎直結のホームへ徒歩1分",
+      "noteEn": "1 min walk to the station platform"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "秋田内陸線 阿仁前田温泉駅",
+     "nameEn": "Akita Nairiku Line Animaeda-Onsen Station",
+     "coords": [
+      40.065548,
+      140.396912
+     ],
+     "time": "15:30",
+     "what": "夕方の秋田内陸線で鷹巣駅（JR奥羽本線接続）または角館駅（秋田新幹線接続）へ向かいます。",
+     "whatEn": "Board an afternoon Akita Nairiku Line train toward Takanosu (JR Ou Line) or Kakunodate (Akita Shinkansen).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/32460bc4a9d8.webp",
+     "photoCredit": {
+      "author": "Wc018",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Ani-Maeda-Onsen_Station_2022.jpg"
+     }
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "掬茶",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Snow_monsters_in_Mount_Moriyoshi_20250215a.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 22770,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 6552,
+     "duration": 0,
+     "line": [
+      [
+       39.992218,
+       140.3983
+      ],
+      [
+       39.991074,
+       140.475327
+      ]
+     ]
+    },
+    {
+     "distance": 6552,
+     "duration": 0,
+     "line": [
+      [
+       39.991074,
+       140.475327
+      ],
+      [
+       39.992218,
+       140.3983
+      ]
+     ]
+    },
+    {
+     "distance": 7839,
+     "duration": 0,
+     "line": [
+      [
+       39.992218,
+       140.3983
+      ],
+      [
+       40.06126,
+       140.41767
+      ]
+     ]
+    },
+    {
+     "distance": 1827,
+     "duration": 0,
+     "line": [
+      [
+       40.06126,
+       140.41767
+      ],
+      [
+       40.065548,
+       140.396912
       ]
      ]
     }
@@ -1077,6 +3494,13 @@
       "min": 25,
       "note": "男鹿駅から男鹿北線で「北浦」下車徒歩5分、または前日21時までの予約制「なまはげシャトル」で雲昌寺へ（あじさい期間中のみ停車）。",
       "noteEn": "Take the Oga North Line bus to Kitaura (5 min walk) or the pre-booked Namahage Shuttle direct to Unsho-ji (hydrangea season only)."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/61ce32c9c0f3.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Oga_Station_20230624.jpg"
      }
     },
     {
@@ -1168,7 +3592,14 @@
      ],
      "time": "16:00",
      "what": "JR男鹿線に乗車し、秋田駅方面へ帰路につきます（本数が少ないため発車時刻を事前確認）。",
-     "whatEn": "Board the JR Oga Line back toward Akita Station (check train times in advance as service is infrequent)."
+     "whatEn": "Board the JR Oga Line back toward Akita Station (check train times in advance as service is infrequent).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/61ce32c9c0f3.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Oga_Station_20230624.jpg"
+     }
     }
    ]
   },
@@ -1385,8 +3816,8 @@
      "name": "盛岡駅",
      "nameEn": "Morioka Station",
      "coords": [
-      39.70225,
-      141.13554
+      39.7015,
+      141.13655
      ],
      "time": "08:55",
      "what": "JR盛岡駅東口③のりばに集合し、9:10発の季節限定「八幡平自然散策バス」に乗車します（予約不要・降車時精算）。",
@@ -1396,6 +3827,13 @@
       "min": 115,
       "note": "八幡平自然散策バスで八幡平頂上まで約1時間55分（9:10発→11:05着、雪の回廊を通過）。",
       "noteEn": "1 hr 55 min by Hachimantai Nature Bus to Hachimantai Summit (09:10–11:05), passing through snow corridors."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/a3be87152fc7.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Morioka-STA_South.jpg"
      }
     },
     {
@@ -1446,7 +3884,14 @@
      ],
      "time": "15:45",
      "what": "盛岡駅前に帰着。駅周辺で盛岡冷麺やじゃじゃ麺を楽しみ、東北新幹線で帰路につきます。",
-     "whatEn": "Arrive back at Morioka Station; enjoy local Morioka Reimen noodles nearby before catching the Tohoku Shinkansen."
+     "whatEn": "Arrive back at Morioka Station; enjoy local Morioka Reimen noodles nearby before catching the Tohoku Shinkansen.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/a3be87152fc7.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Morioka-STA_South.jpg"
+     }
     }
    ]
   },
@@ -1460,16 +3905,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 73745,
+   "distance": 73864,
    "duration": 0,
    "legs": [
     {
-     "distance": 36869,
+     "distance": 36988,
      "duration": 0,
      "line": [
       [
-       39.70225,
-       141.13554
+       39.7015,
+       141.13655
       ],
       [
        39.9542,
@@ -1502,6 +3947,607 @@
       [
        39.70225,
        141.13554
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "koiwai-farm-winter-night",
+  "name": "小岩井農場 銀河農場の夜・一本桜",
+  "nameEn": "Koiwai Farm Winter Lights & Lone Cherry Tree",
+  "prefecture": "Iwate",
+  "prefectureJa": "岩手県",
+  "region": "tohoku",
+  "town": "Morioka",
+  "townJa": "盛岡",
+  "kind": "view",
+  "coords": [
+   39.73444,
+   141.007233
+  ],
+  "what": "雄大な雪の岩手山を背に純白の雪原に凛と立つ一本桜の昼景色と、東北最大級のイルミネーション「銀河農場の夜」が楽しめる小岩井農場。",
+  "whatEn": "A vast snow-covered dairy farm featuring the iconic lone cherry tree before snow-capped Mt. Iwate by day and the 'Night of the Milky Way Farm' winter light-up by night.",
+  "seasonal": true,
+  "peakMonths": [
+   12,
+   1
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   4,
+   2,
+   4,
+   5,
+   3,
+   3,
+   3,
+   3,
+   4,
+   2,
+   5
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Winter Lights through Jan 17; snowy lone cherry tree",
+    "ja": "1月17日までイルミ、雪原の一本桜が見頃"
+   },
+   "2": {
+    "en": "Peak snowfield & Mt. Iwate backdrop at lone tree",
+    "ja": "雪原の一本桜と岩手山の絶景"
+   },
+   "3": {
+    "en": "Melting snowfields",
+    "ja": "雪解けの牧草地"
+   },
+   "4": {
+    "en": "Lone cherry tree blooms late April",
+    "ja": "4月下旬〜5月上旬に一本桜開花"
+   },
+   "5": {
+    "en": "Cherry blossoms & fresh green pastures",
+    "ja": "桜と新緑の牧場"
+   },
+   "6": {
+    "en": "Green pastures",
+    "ja": "初夏の牧場"
+   },
+   "7": {
+    "en": "Summer pastures",
+    "ja": "夏の牧場"
+   },
+   "8": {
+    "en": "Summer pastures",
+    "ja": "夏の牧場"
+   },
+   "9": {
+    "en": "Early autumn",
+    "ja": "初秋"
+   },
+   "10": {
+    "en": "Autumn foliage & Mt. Iwate",
+    "ja": "紅葉と岩手山"
+   },
+   "11": {
+    "en": "Late autumn; monitor night late Nov",
+    "ja": "晩秋・イルミ準備期"
+   },
+   "12": {
+    "en": "Winter Lights opens Dec 1 with snow",
+    "ja": "12月1日から銀河農場の夜開催"
+   }
+  },
+  "peakNote": "December to mid-January pairs the Milky Way illumination with snow-covered pastures, while Jan–Feb shines for the lone cherry tree.",
+  "peakNoteJa": "12月〜1月中旬は銀河農場の夜、1月〜2月は雪原の一本桜と冠雪した岩手山の組み合わせが最高です。",
+  "ticket": "Winter Lights admission: 1,000 JPY (junior high+), free (elementary and under), dog 300 JPY; lone cherry tree roadside viewing is free.",
+  "ticketJa": "銀河農場の夜：大人1,000円、小学生以下無料、犬300円。一本桜の見学は無料。",
+  "url": "https://www.koiwaifarm.com/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "盛岡手づくり村",
+    "nameEn": "Morioka Handi-Works Square",
+    "kind": "craft",
+    "what": "南部鉄器や冷麺づくりなど盛岡の伝統工芸を見学・体験できる施設（冬期も8:40〜17:00開村、体験は要事前確認）。",
+    "whatEn": "Craft village showcasing Nambu ironware and local food workshops; open in winter 8:40–17:00 (check workshop hours).",
+    "coords": [
+     39.687485,
+     141.023193
+    ],
+    "url": "https://tezukurimura.com/"
+   },
+   {
+    "name": "手づくりアイスクリーム牧舎 松ぼっくり",
+    "nameEn": "Matsubokkuri Gelato Farm",
+    "kind": "sweets",
+    "what": "雫石のしぼりたて牛乳を使ったジェラート店（11月〜3月の冬期営業は10:00〜17:00）。",
+    "whatEn": "Farmhouse gelato shop made with fresh Shizukuishi milk; open in winter (Nov–Mar) 10:00–17:00.",
+    "coords": [
+     39.772327,
+     140.956024
+    ],
+    "url": "https://matsubokkuri.jp/"
+   }
+  ],
+  "townSlug": "morioka",
+  "course": {
+   "titleJa": "雪原の一本桜と盛岡の湯",
+   "titleEn": "Snowy Lone Cherry Tree & Morioka Onsen",
+   "carFree": true,
+   "noteJa": "「銀河農場の夜」は2026年12月1日〜2027年1月17日の夜間開催（期間中の土日祝等に盛岡駅発着の臨時バスあり）。1月下旬〜2月の平日はまきば園が冬期休園・路線バス運休のため、小岩井駅からタクシーで道路沿いの一本桜を見学するか、冬用タイヤのレンタカーを利用。",
+   "noteEn": "Winter Lights runs evenings Dec 1, 2026–Jan 17, 2027 with weekend/holiday shuttle buses from Morioka Station. On late Jan–Feb weekdays Makibaen is closed and regular buses do not run, so take JR Tazawako Line to Koiwai Station + taxi to view the roadside lone cherry tree, or rent a car with winter tyres.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR盛岡駅",
+     "nameEn": "JR Morioka Station",
+     "coords": [
+      39.70225,
+      141.13554
+     ],
+     "time": "10:40",
+     "what": "東北新幹線または在来線で盛岡駅に到着する。",
+     "whatEn": "Arrive at JR Morioka Station by Tohoku Shinkansen or local line.",
+     "move": {
+      "mode": "walk",
+      "min": 3,
+      "note": "東口から徒歩約3分",
+      "noteEn": "Walk 3 min from East Exit"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "ぴょんぴょん舎 盛岡駅前店",
+     "nameEn": "Pyonpyonsha Morioka Ekimae",
+     "coords": [
+      39.702206,
+      141.137985
+     ],
+     "time": "11:00",
+     "what": "盛岡名物の盛岡冷麺や温麺で昼食をとる（冬期も通年営業）。",
+     "whatEn": "Enjoy Morioka reimen noodles or warm broth noodles for lunch (open year-round).",
+     "url": "https://www.pyonpyonsya.co.jp/",
+     "move": {
+      "mode": "train",
+      "min": 30,
+      "note": "JR田沢湖線で小岩井駅まで約13分、駅前からタクシーで約15分",
+      "noteEn": "JR Tazawako Line to Koiwai Station (13 min), then taxi 15 min"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "小岩井農場 銀河農場の夜・一本桜",
+     "nameEn": "Koiwai Farm Winter Lights & Lone Cherry Tree",
+     "coords": [
+      39.73444,
+      141.007233
+     ],
+     "time": "12:30",
+     "what": "雪に覆われた岩手山を背に立つ一本桜を日中の明るい時間帯に専用観覧スペースから見学する（牧草地内は立入禁止）。",
+     "whatEn": "View the lone cherry tree framed by snow-covered Mt. Iwate in clear afternoon daylight from the roadside viewing area (pastures are off-limits).",
+     "url": "https://www.koiwaifarm.com/event/post-4119/",
+     "move": {
+      "mode": "taxi",
+      "min": 15,
+      "note": "タクシーで盛岡つなぎ温泉方面へ約15分",
+      "noteEn": "Taxi 15 min to Morioka Tsunagi Onsen"
+     },
+     "photo": "https://www.koiwaifarm.com/wp-content/uploads/2026/01/銀河農場の夜_イルミネーション_全体イメージ_R5_A5618_記事用.jpg"
+    },
+    {
+     "role": "onsen",
+     "name": "盛岡つなぎ温泉 ホテル紫苑",
+     "nameEn": "Morioka Tsunagi Onsen Hotel Shion",
+     "coords": [
+      39.679146,
+      141.025543
+     ],
+     "time": "13:30",
+     "what": "御所湖を望む大浴場「ひとりじめの湯」で日帰り入浴する（平日は11:00〜16:00・最終受付15:00、冬期も営業）。",
+     "whatEn": "Soak in the lake-view day-use bath at Tsunagi Onsen (weekdays 11:00–16:00, last entry 15:00; open in winter).",
+     "url": "https://www.hotel-shion.com/",
+     "move": {
+      "mode": "bus",
+      "min": 32,
+      "note": "岩手県交通バス 繋温泉線で盛岡駅東口へ約32分",
+      "noteEn": "Iwate Kenkotsu bus to Morioka Station East Exit (approx. 32 min)"
+     },
+     "photo": "https://www.hotel-shion.com/img/thumbnail_ogp.jpg"
+    },
+    {
+     "role": "leave",
+     "name": "JR盛岡駅",
+     "nameEn": "JR Morioka Station",
+     "coords": [
+      39.70225,
+      141.13554
+     ],
+     "time": "15:30",
+     "what": "盛岡駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Morioka Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "掬茶",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Cherry_tree_and_Mount_Iwate_in_winter_2023.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 28010,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 209,
+     "duration": 0,
+     "line": [
+      [
+       39.70225,
+       141.13554
+      ],
+      [
+       39.702206,
+       141.137985
+      ]
+     ]
+    },
+    {
+     "distance": 11726,
+     "duration": 0,
+     "line": [
+      [
+       39.702206,
+       141.137985
+      ],
+      [
+       39.73444,
+       141.007233
+      ]
+     ]
+    },
+    {
+     "distance": 6334,
+     "duration": 0,
+     "line": [
+      [
+       39.73444,
+       141.007233
+      ],
+      [
+       39.679146,
+       141.025543
+      ]
+     ]
+    },
+    {
+     "distance": 9741,
+     "duration": 0,
+     "line": [
+      [
+       39.679146,
+       141.025543
+      ],
+      [
+       39.70225,
+       141.13554
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "jodogahama-beach",
+  "name": "浄土ヶ浜",
+  "nameEn": "Jodogahama Beach in Snow",
+  "prefecture": "Iwate",
+  "prefectureJa": "岩手県",
+  "region": "tohoku",
+  "town": "Miyako",
+  "townJa": "宮古",
+  "kind": "nature",
+  "coords": [
+   39.648605,
+   141.976105
+  ],
+  "what": "白い流紋岩の奇岩と緑の松、群青色の海が雪化粧によって静寂の極楽浄土のようなモノトーンの景観を見せる三陸海岸の名勝。",
+  "whatEn": "A quiet Sanriku cove of jagged white rhyolite sea stacks and green pines dusted with winter snow above deep-blue Pacific water.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   4,
+   4,
+   3,
+   3,
+   4,
+   4,
+   5,
+   5,
+   4,
+   4,
+   3,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Quiet snow-dusted white rocks and blue sea",
+    "ja": "雪化粧の白い奇岩と青い海が静謐"
+   },
+   "2": {
+    "en": "Crisp winter sun on snowy sea stacks",
+    "ja": "冬の澄んだ空気と雪の奇岩"
+   },
+   "3": {
+    "en": "Early spring coast",
+    "ja": "早春の海岸"
+   },
+   "4": {
+    "en": "Spring coast, boat tours active",
+    "ja": "春の海岸・遊覧船運航"
+   },
+   "5": {
+    "en": "Fresh green pines and sea",
+    "ja": "松の緑と青い海"
+   },
+   "6": {
+    "en": "Early summer coast",
+    "ja": "初夏の海岸"
+   },
+   "7": {
+    "en": "Peak summer beach",
+    "ja": "夏の海水浴シーズン"
+   },
+   "8": {
+    "en": "Peak summer beach",
+    "ja": "夏の海水浴シーズン"
+   },
+   "9": {
+    "en": "Early autumn coast",
+    "ja": "初秋の海岸"
+   },
+   "10": {
+    "en": "Autumn coast",
+    "ja": "秋の海岸"
+   },
+   "11": {
+    "en": "Car access opens Nov 1; quiet coast",
+    "ja": "11月1日から園地内車両進入可"
+   },
+   "12": {
+    "en": "First snow dusts the white rocks",
+    "ja": "流紋岩と松に雪が舞う"
+   }
+  },
+  "peakNote": "January and February bring quiet winter light and snow dusting the white rhyolite rocks with zero summer crowds.",
+  "peakNoteJa": "1月〜2月は観光客が少なく、白い流紋岩と松の緑に雪が積もる静かな冬景色を独り占めできます。",
+  "ticket": "Free entry and free parking; road regulation lifted Nov 1–Mar 31 allowing private cars up to Jodogahama Rest House.",
+  "ticketJa": "見学無料・駐車場無料。11月1日〜3月31日は園地内車道規制解除によりレストハウスまで車両進入可能。",
+  "url": "https://jodogahama-vc.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "シートピアなあど（道の駅みやこ）",
+    "nameEn": "Seatopia Naado (Michi-no-Eki Miyako)",
+    "kind": "food",
+    "what": "宮古港に面した道の駅で、三陸の海の幸を使った食事や海産物の買い物を楽しみます。",
+    "whatEn": "Enjoy Sanriku seafood dishes and shop for local marine products at this seaside roadside station.",
+    "coords": [
+     39.639397,
+     141.96994
+    ],
+    "url": "https://oasis385.jp/info/1788/"
+   },
+   {
+    "name": "宮古市魚菜市場",
+    "nameEn": "Miyako Gyosai Market",
+    "kind": "food",
+    "what": "水曜定休の市民市場で、冬の三陸で水揚げされた新鮮な魚介や地元食材を見学します。",
+    "whatEn": "Browse fresh winter Sanriku seafood and local produce at Miyako city market (closed Wednesdays).",
+    "coords": [
+     39.646324,
+     141.946518
+    ],
+    "url": "https://www.gyosai.jp/2026/08/"
+   }
+  ],
+  "course": {
+   "titleJa": "静かな冬の三陸、雪をまとう浄土ヶ浜",
+   "titleEn": "Quiet Winter Light and Snow at Jodogahama Beach",
+   "carFree": true,
+   "noteJa": "園内無料周遊バスは冬期運休のため、宮古駅前から奥浄土ヶ浜行の路線バスを利用します。宮古市魚菜市場は毎週水曜定休です。",
+   "noteEn": "The park shuttle bus does not run in winter, so take the regular bus from Miyako Station to Oku-Jodogahama. Miyako Gyosai Market is closed Wednesdays.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR・三陸鉄道 宮古駅",
+     "nameEn": "JR / Sanriku Railway Miyako Station",
+     "coords": [
+      39.639412,
+      141.946609
+     ],
+     "time": "09:30",
+     "what": "JR山田線または三陸鉄道で到着し、駅前から岩手県北バス（奥浄土ヶ浜行）に乗車します。",
+     "whatEn": "Arrive by JR Yamada Line or Sanriku Railway and board the Iwate Kenpoku Bus bound for Oku-Jodogahama.",
+     "move": {
+      "mode": "bus",
+      "min": 20,
+      "note": "岩手県北バス（奥浄土ヶ浜行）で終点下車 約20分",
+      "noteEn": "About 20 min by Iwate Kenpoku Bus to the Oku-Jodogahama terminal"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "浄土ヶ浜",
+     "nameEn": "Jodogahama Beach in Snow",
+     "coords": [
+      39.648605,
+      141.976105
+     ],
+     "time": "10:00",
+     "what": "観光客の少ない冬の午前中に、雪化粧した白い流紋岩の奇岩と静かな青い入江を散策します。",
+     "whatEn": "Walk along the quiet cove in the clear morning light as snow dusts the white rhyolite rock formations.",
+     "url": "https://sanriku-project.jp/event/article.php?p=1309",
+     "move": {
+      "mode": "bus",
+      "min": 20,
+      "note": "岩手県北バスで宮古港・市街方面へ戻る 約20分",
+      "noteEn": "About 20 min by Iwate Kenpoku Bus toward Miyako Port"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "シートピアなあど（道の駅みやこ）",
+     "nameEn": "Seatopia Naado (Michi-no-Eki Miyako)",
+     "coords": [
+      39.639397,
+      141.96994
+     ],
+     "time": "12:15",
+     "what": "宮古港沿いのレストランで、冬の三陸産魚介を使った海鮮丼や温かい磯ラーメンを食べます。",
+     "whatEn": "Have a Sanriku seafood bowl or hot coastal ramen at the Miyako Port roadside station restaurant.",
+     "url": "https://oasis385.jp/info/1788/",
+     "move": {
+      "mode": "bus",
+      "min": 10,
+      "note": "路線バスまたはタクシーで宮古市魚菜市場へ 約10分",
+      "noteEn": "About 10 min by local bus or taxi to Miyako Gyosai Market"
+     }
+    },
+    {
+     "role": "stop",
+     "name": "宮古市魚菜市場",
+     "nameEn": "Miyako Gyosai Market",
+     "coords": [
+      39.646324,
+      141.946518
+     ],
+     "time": "14:00",
+     "what": "水曜定休に注意しつつ、宮古市民の台所で三陸の海産物や地元の総菜を見て回ります。",
+     "whatEn": "Stroll through Miyako city market (closed Wednesdays) to see winter Sanriku seafood and local delicacies.",
+     "url": "https://www.gyosai.jp/2026/08/",
+     "move": {
+      "mode": "walk",
+      "min": 10,
+      "note": "宮古駅へ徒歩 約10分",
+      "noteEn": "About 10 min walk to Miyako Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR・三陸鉄道 宮古駅",
+     "nameEn": "JR / Sanriku Railway Miyako Station",
+     "coords": [
+      39.639412,
+      141.946609
+     ],
+     "time": "15:30",
+     "what": "日没前のJR山田線（盛岡行）または三陸鉄道リアス線で出発します。",
+     "whatEn": "Depart on an afternoon JR Yamada Line train (toward Morioka) or Sanriku Railway Rias Line train."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "yuichi hayakawa from tokyo, japan",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Jodogahama_2017-03-07_(33326979896).jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 6782,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 2720,
+     "duration": 0,
+     "line": [
+      [
+       39.639412,
+       141.946609
+      ],
+      [
+       39.648605,
+       141.976105
+      ]
+     ]
+    },
+    {
+     "distance": 1150,
+     "duration": 0,
+     "line": [
+      [
+       39.648605,
+       141.976105
+      ],
+      [
+       39.639397,
+       141.96994
+      ]
+     ]
+    },
+    {
+     "distance": 2145,
+     "duration": 0,
+     "line": [
+      [
+       39.639397,
+       141.96994
+      ],
+      [
+       39.646324,
+       141.946518
+      ]
+     ]
+    },
+    {
+     "distance": 767,
+     "duration": 0,
+     "line": [
+      [
+       39.646324,
+       141.946518
+      ],
+      [
+       39.639412,
+       141.946609
       ]
      ]
     }
@@ -2162,6 +5208,575 @@
   }
  },
  {
+  "slug": "geibikei-gorge-kotatsu-boat",
+  "name": "猊鼻渓 こたつ舟",
+  "nameEn": "Geibikei Gorge Kotatsu Boat",
+  "prefecture": "Iwate",
+  "prefectureJa": "岩手県",
+  "region": "tohoku",
+  "town": "Ichinoseki",
+  "townJa": "一関",
+  "kind": "water",
+  "coords": [
+   38.98708,
+   141.258026
+  ],
+  "what": "高さ100mを超える雪化粧した石灰岩の断崖が続く渓谷を、豆炭こたつを備えた屋根付きの木舟で静かに下る冬季限定の舟下り。",
+  "whatEn": "A 90-minute winter river cruise through 100-meter snow-dusted limestone cliffs in a traditional flat-bottomed wooden boat warmed by charcoal kotatsu tables.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   2,
+   3,
+   4,
+   3,
+   3,
+   3,
+   3,
+   5,
+   3,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Peak snowy cliffs and kotatsu boat",
+    "ja": "雪の断崖とこたつ舟が最盛期"
+   },
+   "2": {
+    "en": "Kotatsu boat runs through Feb 28",
+    "ja": "2月28日までこたつ舟運航"
+   },
+   "3": {
+    "en": "Regular boats, early spring thaw",
+    "ja": "通常舟、雪解け期"
+   },
+   "4": {
+    "en": "Spring cliffs",
+    "ja": "春の渓谷"
+   },
+   "5": {
+    "en": "Wisteria and fresh green cliffs",
+    "ja": "藤の花と新緑"
+   },
+   "6": {
+    "en": "Green gorge",
+    "ja": "初夏の渓谷"
+   },
+   "7": {
+    "en": "Summer gorge",
+    "ja": "夏の渓谷"
+   },
+   "8": {
+    "en": "Summer gorge",
+    "ja": "夏の渓谷"
+   },
+   "9": {
+    "en": "Early autumn",
+    "ja": "初秋"
+   },
+   "10": {
+    "en": "Famous autumn foliage",
+    "ja": "紅葉の最盛期"
+   },
+   "11": {
+    "en": "Late autumn",
+    "ja": "晩秋"
+   },
+   "12": {
+    "en": "Kotatsu boat starts Dec 1",
+    "ja": "12月1日よりこたつ舟開始"
+   }
+  },
+  "peakNote": "January and February dress the 100m limestone cliffs in snow, turning the slow river ride into a living ink painting.",
+  "peakNoteJa": "1月〜2月は断崖に雪が積もり、豆炭こたつで温まりながら水墨画のような渓谷美を堪能できます。",
+  "ticket": "Boat fare 2,000 JPY (adults), 900 JPY (elementary), 200 JPY (3+); optional hot-pot lunch requires advance reservation.",
+  "ticketJa": "乗船料：大人2,000円、小学生900円、幼児200円。名物「木流し鍋」付きプランは要事前予約。",
+  "url": "https://www.geibikei.co.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "石と賢治のミュージアム",
+    "nameEn": "Stone and Kenji Museum",
+    "kind": "sight",
+    "what": "宮沢賢治が技師として関わった旧東北砕石工場の資料や鉱物を展示する博物館（冬期も9:00〜17:00開館、月曜休）。",
+    "whatEn": "Museum dedicated to Kenji Miyazawa and the former Tohoku Crushed Stone Factory; open in winter 9:00–17:00 (closed Mon).",
+    "coords": [
+     38.977997,
+     141.238098
+    ],
+    "url": "https://www.city.ichinoseki.iwate.jp/"
+   },
+   {
+    "name": "蔵元レストラン 世嬉の一",
+    "nameEn": "Kuramoto Restaurant Sekinoichi",
+    "kind": "food",
+    "what": "大正時代の酒蔵を活かした一関の郷土餅料理「果報餅膳」と地ビールのレストラン（冬期も通年営業）。",
+    "whatEn": "Brewery restaurant serving Ichinoseki traditional mochi feasts and craft beer in historic storehouses (open year-round).",
+    "coords": [
+     38.931526,
+     141.13298
+    ],
+    "url": "https://sekinoichi.co.jp/"
+   }
+  ],
+  "course": {
+   "titleJa": "雪の渓谷を行くこたつ舟と餅膳",
+   "titleEn": "Kotatsu Boat Through Snowy Gorge & Mochi Lunch",
+   "carFree": true,
+   "noteJa": "こたつ舟は12月1日〜2月28日の10:00〜15:00毎時0分発（予約不要）。船上で「木流し鍋」を食べる場合は前日までの予約が必要。JR大船渡線は本数が少ないため列車の時刻を事前確認すること。",
+   "noteEn": "Kotatsu boats depart hourly 10:00–15:00 from Dec 1 to Feb 28 (no reservation needed for standard ride; kinagashi-nabe hot-pot requires booking by the day before). JR Ofunato Line trains are infrequent—check departure times.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR一ノ関駅",
+     "nameEn": "JR Ichinoseki Station",
+     "coords": [
+      38.92688,
+      141.1389
+     ],
+     "time": "10:05",
+     "what": "東北新幹線または在来線で一ノ関駅に到着する。",
+     "whatEn": "Arrive at JR Ichinoseki Station by Tohoku Shinkansen or local train.",
+     "move": {
+      "mode": "train",
+      "min": 36,
+      "note": "JR大船渡線 気仙沼方面行き（10:16発）で猊鼻渓駅まで約36分",
+      "noteEn": "JR Ofunato Line (10:16 dep) to Geibikei Station, approx. 36 min"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "猊鼻渓 こたつ舟",
+     "nameEn": "Geibikei Gorge Kotatsu Boat",
+     "coords": [
+      38.98708,
+      141.258026
+     ],
+     "time": "11:00",
+     "what": "猊鼻渓駅から徒歩5分の乗り場から11:00発のこたつ舟に乗船し、雪化粧の100m断崖を日中光の中で約90分遊覧する。",
+     "whatEn": "Walk 5 min from Geibikei Station and board the 11:00 heated kotatsu boat for a 90-minute midday cruise between snow-dusted 100m limestone cliffs.",
+     "url": "https://www.geibikei.co.jp/",
+     "move": {
+      "mode": "train",
+      "min": 35,
+      "note": "猊鼻渓駅13:06発のJR大船渡線で一ノ関駅へ戻る（約35分）",
+      "noteEn": "JR Ofunato Line (13:06 dep) back to Ichinoseki Station, approx. 35 min"
+     },
+     "photo": "https://www.geibikei.co.jp/ogp.jpg"
+    },
+    {
+     "role": "meal",
+     "name": "蔵元レストラン 世嬉の一",
+     "nameEn": "Kuramoto Restaurant Sekinoichi",
+     "coords": [
+      38.931526,
+      141.13298
+     ],
+     "time": "13:55",
+     "what": "一ノ関駅から徒歩約10分の酒蔵レストランで、名物の郷土餅料理「果報餅膳」の昼食をとる（冬期も営業）。",
+     "whatEn": "Walk 10 min from Ichinoseki Station to this historic brewery restaurant for a local mochi platter lunch (open in winter).",
+     "url": "https://sekinoichi.co.jp/",
+     "move": {
+      "mode": "train",
+      "min": 30,
+      "note": "一ノ関駅へ徒歩10分、JR東北本線で平泉駅へ（約8分）、駅から徒歩約12分",
+      "noteEn": "Walk 10 min to Ichinoseki Station, JR Tohoku Line 8 min to Hiraizumi Station, then walk 12 min"
+     },
+     "photo": "https://sekinoichi.co.jp/common/img/ogp.png"
+    },
+    {
+     "role": "onsen",
+     "name": "悠久の湯 平泉温泉",
+     "nameEn": "Yukyu no Yu Hiraizumi Onsen",
+     "coords": [
+      38.990829,
+      141.111191
+     ],
+     "time": "15:25",
+     "what": "源泉かけ流しの大浴場を備えた町営の日帰り温泉施設で温まる（10:00〜21:00、火曜定休、冬期も営業）。",
+     "whatEn": "Warm up in the town-run day-use hot spring with free-flowing mineral baths (10:00–21:00, closed Tue, open in winter).",
+     "url": "https://www.town.hiraizumi.iwate.jp/%E5%B9%B3%E6%B3%89%E7%94%BA%E5%81%A5%E5%BA%B7%E7%A6%8F%E7%A5%89%E4%BA%A4%E6%B5%81%E9%A4%A8%EF%BC%88%E6%82%A0%E4%B9%85%E3%81%AE%E6%B9%AF-%E5%B9%B3%E6%B3%89%E6%B8%A9%E6%B3%89%EF%BC%89%E3%81%AE11-41148/",
+     "move": {
+      "mode": "train",
+      "min": 20,
+      "note": "平泉駅へ徒歩約12分、JR東北本線で一ノ関駅へ約8分",
+      "noteEn": "Walk 12 min to Hiraizumi Station, then JR Tohoku Line approx. 8 min back to JR Ichinoseki Station"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR一ノ関駅",
+     "nameEn": "JR Ichinoseki Station",
+     "coords": [
+      38.92688,
+      141.1389
+     ],
+     "time": "17:30",
+     "what": "一ノ関駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Ichinoseki Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "lumoplank",
+   "license": "CC0",
+   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/wiki/File:Geibikei_-_Geibikei7679.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 39030,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 12267,
+     "duration": 0,
+     "line": [
+      [
+       38.92688,
+       141.1389
+      ],
+      [
+       38.98708,
+       141.258026
+      ]
+     ]
+    },
+    {
+     "distance": 12427,
+     "duration": 0,
+     "line": [
+      [
+       38.98708,
+       141.258026
+      ],
+      [
+       38.931526,
+       141.13298
+      ]
+     ]
+    },
+    {
+     "distance": 6846,
+     "duration": 0,
+     "line": [
+      [
+       38.931526,
+       141.13298
+      ],
+      [
+       38.990829,
+       141.111191
+      ]
+     ]
+    },
+    {
+     "distance": 7490,
+     "duration": 0,
+     "line": [
+      [
+       38.990829,
+       141.111191
+      ],
+      [
+       38.92688,
+       141.1389
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "mt-haguro-five-story-pagoda",
+  "name": "羽黒山 五重塔",
+  "nameEn": "Mt. Haguro Five-Story Pagoda",
+  "prefecture": "Yamagata",
+  "prefectureJa": "山形県",
+  "region": "tohoku",
+  "town": "Tsuruoka",
+  "townJa": "鶴岡市",
+  "kind": "shrine-temple",
+  "coords": [
+   38.692657,
+   139.969208
+  ],
+  "what": "国宝に指定された東北最古の五重塔で、冬には樹齢300〜500年の特別天然記念物・杉並木とともに深い雪に包まれ、随神門から片道約10分の参道で拝観できる。",
+  "whatEn": "Tohoku's oldest five-story pagoda (a National Treasure), standing amid 300-to-500-year-old giant cedars in deep snow, reachable on a 10-minute walk from Zuishinmon Gate.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2,
+   10
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   4,
+   3,
+   4,
+   4,
+   4,
+   4,
+   4,
+   5,
+   4,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Deep snow among giant cedars around the National Treasure pagoda",
+    "ja": "杉並木と国宝五重塔が深い雪に包まれる厳冬期"
+   },
+   "2": {
+    "en": "Peak snow depth; quiet silver-and-cedar atmosphere",
+    "ja": "積雪最盛期、静寂の雪と杉木立の風景"
+   },
+   "3": {
+    "en": "Packed snow path to the pagoda with softer light",
+    "ja": "残雪の杉並木と春の光"
+   },
+   "4": {
+    "en": "Snowmelt reveals the full 2,446 stone steps",
+    "ja": "雪解けとともに石段登拝が再開"
+   },
+   "5": {
+    "en": "Fresh green cedar and moss along the stone stairway",
+    "ja": "新緑と苔が美しい石段参道"
+   },
+   "6": {
+    "en": "Misty rainy-season forest atmosphere",
+    "ja": "霧に包まれる幽玄な杉並木"
+   },
+   "7": {
+    "en": "Cool shaded cedar path in summer",
+    "ja": "夏でも涼しい杉並木の参道"
+   },
+   "8": {
+    "en": "Summer pilgrimage season across Dewa Sanzan",
+    "ja": "出羽三山の夏山登拝シーズン"
+   },
+   "9": {
+    "en": "Early autumn coolness in the cedar grove",
+    "ja": "初秋の澄んだ空気と参道"
+   },
+   "10": {
+    "en": "Autumn foliage around the pagoda and Zuishinmon",
+    "ja": "五重塔周辺の紅葉が見頃"
+   },
+   "11": {
+    "en": "Late autumn quiet before snow arrives",
+    "ja": "初雪前の静かな晩秋"
+   },
+   "12": {
+    "en": "First snow settles on the pagoda's shingled roofs",
+    "ja": "五重塔の柿葺き屋根に雪が積もり始める"
+   }
+  },
+  "peakNote": "January and February showcase the unpainted cedar pagoda in deep snow; borrow free rubber boots and poles at Ideha Cultural Museum before entering Zuishinmon.",
+  "peakNoteJa": "1〜2月は素木造りの五重塔と巨杉の雪景色が圧巻で、いでは文化記念館で長靴とストックを無料借用して安全に歩けます。",
+  "ticket": "Free entry to the pagoda precinct; free winter boots and poles at Ideha Cultural Museum (check winter hours/closed days).",
+  "ticketJa": "五重塔の拝観は無料（随神門手前のいでは文化記念館で長靴・ストックの無料貸出あり）。",
+  "url": "http://www.dewasanzan.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "いでは文化記念館",
+    "nameEn": "Ideha Cultural Museum",
+    "kind": "sight",
+    "what": "出羽三山の歴史・修験道資料を展示し、冬期は長靴とストックの無料貸出を行う拠点施設（火曜休）。",
+    "whatEn": "Museum introducing Dewa Sanzan heritage; lends free winter rubber boots and poles (closed Tue).",
+    "coords": [
+     38.692657,
+     139.969208
+    ],
+    "url": "https://hagurokanko.jp/"
+   },
+   {
+    "name": "松ヶ岡開墾場",
+    "nameEn": "Matsugaoka Kaikonjo",
+    "kind": "sight",
+    "what": "庄内藩士が開墾した歴史ある蚕室群で、冬期も一部施設の見学やショップが営業している。",
+    "whatEn": "Historic silk-farming estate built by former Shonai samurai; select buildings and shops remain open in winter.",
+    "coords": [
+     38.700649,
+     139.88623
+    ],
+    "url": "https://www.tsuruokakanko.com/"
+   }
+  ],
+  "course": {
+   "titleJa": "長靴で歩く雪の杉並木と五重塔",
+   "titleEn": "Snowy Cedar Steps to Mt. Haguro Pagoda",
+   "carFree": true,
+   "noteJa": "冬期の石段は除雪されないため、随神門手前の「いでは文化記念館」（冬期9:30〜16:00、火曜休、貸出は15:00まで）で長靴・ストックを無料借用すること。五重塔から山頂への石段は冬期危険なため引き返す。",
+   "noteEn": "Stone steps are not cleared of snow in winter—borrow free rubber boots and poles at Ideha Cultural Museum before Zuishinmon (winter hours 9:30–16:00, closed Tue, rentals until 15:00). Turn back after the pagoda rather than climbing to the summit on foot.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR鶴岡駅",
+     "nameEn": "JR Tsuruoka Station",
+     "coords": [
+      38.74005,
+      139.83597
+     ],
+     "time": "10:00",
+     "what": "JR羽越本線で鶴岡駅に到着し、駅前から庄内交通バス羽黒山頂行きに乗車する。",
+     "whatEn": "Arrive at JR Tsuruoka Station and board the Shonai Kotsu bus bound for Haguro Sancho.",
+     "move": {
+      "mode": "bus",
+      "min": 35,
+      "note": "庄内交通バス 羽黒山頂行きで「随神門」下車（約35分）",
+      "noteEn": "Shonai Kotsu bus to Zuishinmon stop (approx. 35 min)"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "羽黒山五重塔（出羽三山）",
+     "nameEn": "Mt. Haguro Five-Story Pagoda",
+     "coords": [
+      38.692657,
+      139.969208
+     ],
+     "time": "10:45",
+     "what": "いでは文化記念館で長靴・ストックを借り、随神門から雪の杉並木の石段を下って国宝の五重塔を朝の光の中で参拝する。",
+     "whatEn": "Borrow free winter boots and poles at Ideha Cultural Museum, then walk down the snowy cedar steps from Zuishinmon to see the unpainted pagoda in morning light.",
+     "url": "https://hagurokanko.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 40,
+      "note": "随神門前から庄内交通バスで鶴岡駅方面へ戻り、タクシーでスイデンテラスへ約5分",
+      "noteEn": "Shonai Kotsu bus back to Tsuruoka Station (35 min), then taxi 5 min to Suiden Terrasse"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "SHONAI HOTEL SUIDEN TERRASSE（MOON TERRASSE）",
+     "nameEn": "SHONAI HOTEL SUIDEN TERRASSE (MOON TERRASSE)",
+     "coords": [
+      38.745861,
+      139.824051
+     ],
+     "time": "13:00",
+     "what": "庄内の地元食材を活かしたランチを味わい、館内の天然温泉スパで冷えた体を温める（冬期も通年営業）。",
+     "whatEn": "Enjoy a farm-to-table Shonai lunch and warm up in the natural hot spring spa (open year-round).",
+     "url": "https://suiden-terrasse.com/",
+     "move": {
+      "mode": "taxi",
+      "min": 5,
+      "note": "タクシーでJR鶴岡駅へ約5分",
+      "noteEn": "Taxi approx. 5 min back to JR Tsuruoka Station"
+     },
+     "photo": "https://suiden-terrasse.com/images/ogimage.png"
+    },
+    {
+     "role": "leave",
+     "name": "JR鶴岡駅",
+     "nameEn": "JR Tsuruoka Station",
+     "coords": [
+      38.74005,
+      139.83597
+     ],
+     "time": "15:30",
+     "what": "鶴岡駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Tsuruoka Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "さかおり",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Snow_scene_of_Haguro-san_Five-story_Pagoda_January_2022_A.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 27790,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 12679,
+     "duration": 0,
+     "line": [
+      [
+       38.74005,
+       139.83597
+      ],
+      [
+       38.692657,
+       139.969208
+      ]
+     ]
+    },
+    {
+     "distance": 13894,
+     "duration": 0,
+     "line": [
+      [
+       38.692657,
+       139.969208
+      ],
+      [
+       38.745861,
+       139.824051
+      ]
+     ]
+    },
+    {
+     "distance": 1217,
+     "duration": 0,
+     "line": [
+      [
+       38.745861,
+       139.824051
+      ],
+      [
+       38.74005,
+       139.83597
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
   "slug": "jogi-nyorai-saihoji-temple",
   "name": "定義如来 西方寺",
   "nameEn": "Jogi Nyorai Saihoji Temple",
@@ -2291,6 +5906,13 @@
       "min": 75,
       "note": "仙台駅西口バスプール14番のりばから仙台市営バス定義行（845・846系統など）に乗車し終点「定義」下車（約75分）。",
       "noteEn": "Take the Sendai City Bus bound for Jogi (Route 845/846) from Stop 14 to the final stop Jogi (~75 min)."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
      }
     },
     {
@@ -2341,7 +5963,14 @@
      ],
      "time": "14:15",
      "what": "仙台駅到着後、新幹線や在来線に乗り継ぎ帰路へ。",
-     "whatEn": "Arrive back at JR Sendai Station to connect to Shinkansen or local JR lines."
+     "whatEn": "Arrive back at JR Sendai Station to connect to Shinkansen or local JR lines.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
+     }
     }
    ]
   },
@@ -2393,6 +6022,602 @@
       [
        38.363586,
        140.669846
+      ],
+      [
+       38.25975,
+       140.88002
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "akiu-otaki-falls",
+  "name": "秋保大滝",
+  "nameEn": "Akiu Otaki Falls",
+  "prefecture": "Miyagi",
+  "prefectureJa": "宮城県",
+  "region": "tohoku",
+  "town": "Sendai (Akiu Onsen)",
+  "townJa": "仙台（秋保温泉）",
+  "kind": "water",
+  "coords": [
+   38.314266,
+   140.564575
+  ],
+  "what": "「日本の滝百選」および国指定名勝に選ばれた幅6m・落差55mの直瀑で、冬には雪化粧した岩肌とつららに囲まれた滝見台からの厳寒の絶景が楽しめる。",
+  "whatEn": "A 55-meter-tall nationally designated scenic waterfall in western Sendai where snow-draped black cliffs and icicles frame the thundering plunge in midwinter.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2,
+   10,
+   11
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   4,
+   4,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4,
+   3,
+   5,
+   5,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Snow-covered gorge and icicles framing the 55m cascade",
+    "ja": "雪と氷柱に囲まれた厳寒の大滝を滝見台から望む"
+   },
+   "2": {
+    "en": "Peak midwinter contrast of white snow and dark rock",
+    "ja": "白い雪と黒い岩肌のコントラストが最も美しい厳冬期"
+   },
+   "3": {
+    "en": "Early spring snowmelt increases the waterfall's roar",
+    "ja": "雪解け水で水量を増し始める春の気配"
+   },
+   "4": {
+    "en": "Snowmelt volume and emerging mountain buds",
+    "ja": "雪解けの迫力ある水量と芽吹き"
+   },
+   "5": {
+    "en": "Lush fresh green leaves around the canyon",
+    "ja": "新緑に包まれる爽やかな季節"
+   },
+   "6": {
+    "en": "Cool mist and deep green foliage",
+    "ja": "涼しい水飛沫と深緑の渓谷"
+   },
+   "7": {
+    "en": "Refreshing summer spray in the forested valley",
+    "ja": "夏の日差しに輝く水飛沫"
+   },
+   "8": {
+    "en": "Popular summer cooling spot",
+    "ja": "涼を求めて訪れる夏の定番"
+   },
+   "9": {
+    "en": "Early autumn breezes in the gorge",
+    "ja": "秋の風が吹き始める渓谷"
+   },
+   "10": {
+    "en": "Peak autumn foliage around the waterfall",
+    "ja": "モミジやカエデが色づく紅葉シーズン"
+   },
+   "11": {
+    "en": "Late autumn leaves and crisp air",
+    "ja": "晩秋の錦繍と澄んだ空気"
+   },
+   "12": {
+    "en": "First snow settles on the cliffs and pines",
+    "ja": "初雪が岩肌と松を白く彩る"
+   }
+  },
+  "peakNote": "In winter, January and February offer the sharpest contrast of snow and icicles from the safe Takimidai deck; avoid the icy lower basin stairs without cleats.",
+  "peakNoteJa": "冬は1〜2月が最も雪と氷柱の景色が美しく、安全な「滝見台」からの眺望がおすすめです（滝つぼへの急な下り遊歩道は凍結に注意）。",
+  "ticket": "Free admission and free parking (approx. 200 spaces); Takimidai viewing deck is accessible year-round.",
+  "ticketJa": "見学無料・駐車場無料（約200台）。滝見台は通年見学可能だが、冬期の滝つぼ遊歩道は積雪・凍結のため滑りにくい靴が必要。",
+  "url": "https://www.sentabi.jp/spots/34",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "天守閣自然公園（市太郎の湯）",
+    "nameEn": "Tenshukaku Natural Park (Ichitaro-no-Yu)",
+    "kind": "sight",
+    "what": "日本庭園の散策と源泉かけ流しの日帰り温泉が楽しめる秋保の自然公園（冬期も営業）。",
+    "whatEn": "Japanese garden and free-flowing hot spring day-use bath in Akiu; open in winter.",
+    "coords": [
+     38.229355,
+     140.708435
+    ],
+    "url": "https://akiu-sizen.co.jp/"
+   },
+   {
+    "name": "秋保ワイナリー",
+    "nameEn": "Akiu Winery",
+    "kind": "cafe",
+    "what": "宮城産ぶどうのワイン醸造所併設ショップ＆カフェで試飲や軽食を楽しめる（冬期も営業）。",
+    "whatEn": "Local winery shop and cafe offering tastings and light bites in Akiu; open in winter.",
+    "coords": [
+     38.226585,
+     140.727875
+    ],
+    "url": "https://akiuwinery.co.jp/"
+   }
+  ],
+  "course": {
+   "titleJa": "雪と氷柱の秋保大滝と温泉街ランチ",
+   "titleEn": "Snow-Dusted Akiu Otaki Falls & Onsen Lunch",
+   "carFree": true,
+   "noteJa": "平日の秋保大滝行き仙台市営バス85系統（愛子駅2番のりば発）は本数が限られるため9:05発に合わせること。冬期は滝壺への階段が凍結するため、安全な滝見台からの観賞を推奨。",
+   "noteEn": "Weekday Sendai City Bus #85 from Ayashi Station #2 to Akiu Otaki is infrequent—catch the 09:05 bus. In winter, view from the safe Takimidai deck rather than icy lower stairs.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR仙台駅",
+     "nameEn": "JR Sendai Station",
+     "coords": [
+      38.25975,
+      140.88002
+     ],
+     "time": "08:20",
+     "what": "東北新幹線または在来線で仙台駅に到着し、JR仙山線で愛子駅へ向かう。",
+     "whatEn": "Arrive at JR Sendai Station and transfer to the JR Senzan Line for Ayashi Station.",
+     "move": {
+      "mode": "bus",
+      "min": 70,
+      "note": "JR仙山線で愛子駅へ約25分、愛子駅2番のりば9:05発の仙台市営バス85系統で秋保大滝へ約40分",
+      "noteEn": "JR Senzan Line to Ayashi Station (25 min), then 09:05 Sendai City Bus #85 to Akiu Otaki (40 min)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "秋保大滝",
+     "nameEn": "Akiu Otaki Falls",
+     "coords": [
+      38.314266,
+      140.564575
+     ],
+     "time": "09:45",
+     "what": "バス停から徒歩5〜10分の滝見台から、雪と氷柱に縁取られた落差55mの大滝を朝の光の中で観賞する。",
+     "whatEn": "Walk 5–10 min to the safe Takimidai viewing deck to see the 55m waterfall framed by snow and icicles in morning light.",
+     "url": "https://akiusato.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 20,
+      "note": "秋保大滝10:23発の仙台市営バスで秋保温泉湯元方面へ約20分",
+      "noteEn": "10:23 Sendai City Bus from Akiu Otaki to Akiu Onsen (approx. 20 min)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/c69610cd1970.webp",
+     "photoCredit": {
+      "author": "Crown of Lenten rose",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Akiu_Falls_2008.jpg"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "アキウ舎",
+     "nameEn": "Akiusha",
+     "coords": [
+      38.220364,
+      140.734344
+     ],
+     "time": "11:00",
+     "what": "古民家を改装した秋保温泉のカフェレストランで、地元野菜を使ったランチをとる（冬期も営業）。",
+     "whatEn": "Have lunch featuring local vegetables at this renovated kominka cafe-restaurant in Akiu Onsen (open in winter).",
+     "url": "https://akiusha.jp/",
+     "move": {
+      "mode": "walk",
+      "min": 15,
+      "note": "秋保温泉街を徒歩約15分",
+      "noteEn": "Walk 15 min through Akiu Onsen"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "秋保温泉 ホテルニュー水戸屋",
+     "nameEn": "Akiu Onsen Hotel New Mitoya",
+     "coords": [
+      38.226665,
+      140.717926
+     ],
+     "time": "12:30",
+     "what": "趣の異なる湯殿を備えた秋保温泉の老舗宿で日帰り入浴し、雪見の湯で温まる（冬期も営業）。",
+     "whatEn": "Enjoy a day-use hot spring soak at this long-established Akiu Onsen ryokan (open in winter).",
+     "url": "https://www.mitoya-group.co.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 50,
+      "note": "秋保温泉から宮城交通バスまたはタケヤ交通バスで仙台駅へ約50分",
+      "noteEn": "Miyagi Kotsu or Takeya Kotsu bus back to Sendai Station (approx. 50 min)"
+     }
+    },
+    {
+     "role": "leave",
+     "name": "JR仙台駅",
+     "nameEn": "JR Sendai Station",
+     "coords": [
+      38.25975,
+      140.88002
+     ],
+     "time": "15:00",
+     "what": "仙台駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Sendai Station for departure.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
+     }
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Raita Futo from Tokyo, Japan",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Akiu_waterfalls_(51962914612).jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 62439,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 28152,
+     "duration": 0,
+     "line": [
+      [
+       38.25975,
+       140.88002
+      ],
+      [
+       38.314266,
+       140.564575
+      ]
+     ]
+    },
+    {
+     "distance": 18090,
+     "duration": 0,
+     "line": [
+      [
+       38.314266,
+       140.564575
+      ],
+      [
+       38.220364,
+       140.734344
+      ]
+     ]
+    },
+    {
+     "distance": 1593,
+     "duration": 0,
+     "line": [
+      [
+       38.220364,
+       140.734344
+      ],
+      [
+       38.226665,
+       140.717926
+      ]
+     ]
+    },
+    {
+     "distance": 14604,
+     "duration": 0,
+     "line": [
+      [
+       38.226665,
+       140.717926
+      ],
+      [
+       38.25975,
+       140.88002
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "aone-onsen",
+  "name": "青根温泉 雪あかり",
+  "nameEn": "Aone Onsen",
+  "prefecture": "Miyagi",
+  "prefectureJa": "宮城県",
+  "region": "tohoku",
+  "town": "Kawasaki",
+  "townJa": "川崎町",
+  "kind": "onsen",
+  "coords": [
+   38.146278,
+   140.535416
+  ],
+  "what": "伊達家の御殿湯として栄えた蔵王連峰東麓の山あいの温泉地で、真冬には深い雪に包まれ、2月上旬の「青根温泉雪あかり」では共同浴場「じゃっぽの湯」周辺に約300個の雪灯ろうが灯る。",
+  "whatEn": "A quiet historic Date-clan hot spring hamlet on the eastern slopes of Mt. Zao, buried in deep snow in winter and illuminated by roughly 300 handmade snow lanterns during the February Yukiakari night.",
+  "seasonal": true,
+  "peakMonths": [
+   12,
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   4,
+   5,
+   3,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Deep snow around the quiet hot spring hamlet",
+    "ja": "深い雪に包まれる静かな山間の湯治場"
+   },
+   "2": {
+    "en": "Snow lantern night in early Feb plus snowy baths",
+    "ja": "2月上旬の雪あかりと雪見風呂が最盛期"
+   },
+   "3": {
+    "en": "Remaining snow with milder mountain air",
+    "ja": "残雪を眺めながらゆったり湯浴み"
+   },
+   "4": {
+    "en": "Early spring buds after snowmelt",
+    "ja": "雪解け後の静かな春"
+   },
+   "5": {
+    "en": "Fresh green mountain slopes around Zao foothills",
+    "ja": "蔵王山麓の新緑が美しい季節"
+   },
+   "6": {
+    "en": "Cool mountain breezes and quiet soaking",
+    "ja": "涼しい山風と静かな湯治"
+   },
+   "7": {
+    "en": "Lush summer forest retreat",
+    "ja": "深緑に囲まれた避暑の温泉"
+   },
+   "8": {
+    "en": "Cool evenings above the plains",
+    "ja": "平地より涼しい夏の山間温泉"
+   },
+   "9": {
+    "en": "Early autumn air in the foothills",
+    "ja": "秋の気配が漂い始める季節"
+   },
+   "10": {
+    "en": "Autumn foliage on the surrounding mountains",
+    "ja": "周囲の山々が紅葉に染まる"
+   },
+   "11": {
+    "en": "Late autumn chill ideal for hot springs",
+    "ja": "晩秋の冷え込みと温泉が心地よい"
+   },
+   "12": {
+    "en": "First snow blankets the wooden bathhouse roofs",
+    "ja": "初雪が湯治場の屋根を白く染める"
+   }
+  },
+  "peakNote": "January and February bring reliable snow cover, peaking on the evening of the early-February Yukiakari snow lantern event.",
+  "peakNoteJa": "1〜2月は積雪が安定し、特に2月上旬の「青根温泉雪あかり」の夜に温泉街全体が温かい灯りに包まれます。",
+  "ticket": "Public bath Jappo-no-Yu: ¥400 adults, ¥200 elementary students (¥800 adults with rest room); Yukiakari event is free.",
+  "ticketJa": "共同浴場「じゃっぽの湯」入浴料：大人400円・小学生200円（休憩所利用込み大人800円）。雪あかり見学は無料。",
+  "url": "https://japponoyu.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "国営みちのく杜の湖畔公園",
+    "nameEn": "Michinoku Park",
+    "kind": "sight",
+    "what": "冬は雪遊びや冬の自然散策が楽しめる川崎町の国営公園（冬期は9:30〜16:00開園、火曜休）。",
+    "whatEn": "National park in Kawasaki Town offering winter snow activities; open 9:30–16:00 in winter (closed Tue).",
+    "coords": [
+     38.178642,
+     140.667999
+    ],
+    "url": "https://michinoku-park.info/"
+   },
+   {
+    "name": "蔵王町観光案内所（遠刈田温泉）",
+    "nameEn": "Zao Town Tourist Info (Togatta Onsen)",
+    "kind": "sight",
+    "what": "遠刈田温泉街の観光拠点で、こけしや蔵王エリアの冬期道路・観光情報を案内している。",
+    "whatEn": "Visitor center in nearby Togatta Onsen providing local kokeshi craft and winter area information.",
+    "coords": [
+     38.12397,
+     140.576569
+    ],
+    "url": "https://www.zao-machi.com/"
+   }
+  ],
+  "course": {
+   "titleJa": "山あいの名湯「じゃっぽの湯」と蔵王チーズ",
+   "titleEn": "Aone Mountain Onsen & Zao Cheese Lunch",
+   "carFree": true,
+   "noteJa": "共同浴場「じゃっぽの湯」は7:00〜21:00年中無休。「青根温泉雪あかり」は2月上旬の土曜夕方（2026年は2月7日16:30〜）開催。平日は遠刈田温泉まで高速バス＋タクシー約10分でアクセス可能（車の場合は冬用タイヤ必須）。",
+   "noteEn": "Public bath Jappo-no-Yu is open daily 7:00–21:00. Snow Lanterns (Yukiakari) takes place on one Saturday evening in early Feb (Feb 7, 2026 from 16:30). On weekdays, take the highway bus to Togatta Onsen + 10-min taxi (winter tyres mandatory if driving).",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR仙台駅",
+     "nameEn": "JR Sendai Station",
+     "coords": [
+      38.25975,
+      140.88002
+     ],
+     "time": "10:30",
+     "what": "仙台駅に到着し、西口バスプール33番のりばから遠刈田温泉行き高速バスに乗車する。",
+     "whatEn": "Arrive at JR Sendai Station and board the Miyagi Kotsu highway bus from West Exit #33 to Togatta Onsen.",
+     "move": {
+      "mode": "bus",
+      "min": 75,
+      "note": "宮城交通高速バスで遠刈田温泉へ約65分、タクシーに乗り換え青根温泉へ約10分",
+      "noteEn": "Miyagi Kotsu highway bus to Togatta Onsen (65 min), then taxi 10 min to Aone Onsen"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "青根温泉（青根温泉雪あかり）",
+     "nameEn": "Aone Onsen (Snow Lanterns)",
+     "coords": [
+      38.146278,
+      140.535416
+     ],
+     "time": "12:00",
+     "what": "雪深い山あいの温泉街を散策し、名湯「じゃっぽの湯」（7:00〜21:00・年中無休）で日帰り入浴する。",
+     "whatEn": "Stroll the snowy mountain hot spring village and soak in the historic Jappo-no-Yu public bath (open daily 7:00–21:00).",
+     "url": "https://japponoyu.jp/",
+     "move": {
+      "mode": "taxi",
+      "min": 10,
+      "note": "タクシーで遠刈田温泉（蔵王酪農センター）へ約10分",
+      "noteEn": "Taxi approx. 10 min to Zao Dairy Center in Togatta Onsen"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "蔵王酪農センター チーズシェッド",
+     "nameEn": "Zao Dairy Center Cheese Shed",
+     "coords": [
+      38.114876,
+      140.566513
+     ],
+     "time": "13:45",
+     "what": "蔵王の乳製品を使ったチーズフォンデュやドリアなど温かい料理で昼食をとる（冬期も営業）。",
+     "whatEn": "Warm up with cheese fondue or gratin made with local Zao dairy products (open in winter).",
+     "url": "https://www.zao-cheese.or.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 70,
+      "note": "遠刈田温泉から宮城交通高速バスで仙台駅へ約65〜70分",
+      "noteEn": "Miyagi Kotsu highway bus from Togatta Onsen back to Sendai Station (approx. 65–70 min)"
+     },
+     "photo": "https://www.zao-cheese.or.jp/esbt-manager/wp-content/uploads/2026/04/61036a80-27f8-4dc4-a7ca-e94a64400011-scaled-e1648967849918-640x589-1-e1775974993288.jpeg"
+    },
+    {
+     "role": "leave",
+     "name": "JR仙台駅",
+     "nameEn": "JR Sendai Station",
+     "coords": [
+      38.25975,
+      140.88002
+     ],
+     "time": "16:15",
+     "what": "仙台駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Sendai Station for departure.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/8c3a6d1ebed2.webp",
+     "photoCredit": {
+      "author": "掬茶",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sendai_Station_20230806.jpg"
+     }
+    }
+   ]
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 68739,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 32569,
+     "duration": 0,
+     "line": [
+      [
+       38.25975,
+       140.88002
+      ],
+      [
+       38.146278,
+       140.535416
+      ]
+     ]
+    },
+    {
+     "distance": 4418,
+     "duration": 0,
+     "line": [
+      [
+       38.146278,
+       140.535416
+      ],
+      [
+       38.114876,
+       140.566513
+      ]
+     ]
+    },
+    {
+     "distance": 31752,
+     "duration": 0,
+     "line": [
+      [
+       38.114876,
+       140.566513
       ],
       [
        38.25975,
@@ -3044,6 +7269,910 @@
   }
  },
  {
+  "slug": "lake-inawashiro-spray-ice-swans",
+  "name": "猪苗代湖 天神浜のしぶき氷・白鳥",
+  "nameEn": "Lake Inawashiro Spray Ice & Swans",
+  "prefecture": "Fukushima",
+  "prefectureJa": "福島県",
+  "region": "tohoku",
+  "town": "Inawashiro",
+  "townJa": "猪苗代町",
+  "kind": "nature",
+  "coords": [
+   37.519909,
+   140.122452
+  ],
+  "what": "厳冬期の猪苗代湖で強い西風にあおられた湖水が岸辺の木々に氷結して造形される国内でも珍しい「しぶき氷」と、シベリアなどから飛来する数千羽の白鳥が磐梯山を背に楽しめる。",
+  "whatEn": "Rare wind-whipped lake spray freezes onto shoreline trees at Tenjinhama on Lake Inawashiro to form natural ice sculptures, paired with thousands of wintering swans beneath snow-capped Mt. Bandai.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   3,
+   2,
+   3,
+   3,
+   4,
+   4,
+   3,
+   4,
+   3,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Shibuki-gori spray ice forms from mid-Jan; swans along shore",
+    "ja": "1月中旬からしぶき氷が形成、白鳥も飛来中"
+   },
+   "2": {
+    "en": "Peak spray-ice sculptures and snow-capped Mt. Bandai",
+    "ja": "しぶき氷の造形と雪の磐梯山が最盛期"
+   },
+   "3": {
+    "en": "Ice melts in March; swans remain until late March",
+    "ja": "しぶき氷は溶け、白鳥は3月下旬まで滞在"
+   },
+   "4": {
+    "en": "Spring thaw along Lake Inawashiro",
+    "ja": "雪解けの猪苗代湖岸"
+   },
+   "5": {
+    "en": "Fresh green lakeside and Mt. Bandai",
+    "ja": "新緑の磐梯山と湖畔"
+   },
+   "6": {
+    "en": "Quiet early summer lake breezes",
+    "ja": "初夏の爽やかな湖風"
+   },
+   "7": {
+    "en": "Lake swimming and water sports season",
+    "ja": "湖水浴やマリンレジャーの夏"
+   },
+   "8": {
+    "en": "Popular summer lake resort",
+    "ja": "夏の猪苗代湖レジャー"
+   },
+   "9": {
+    "en": "Early autumn clarity over the lake",
+    "ja": "秋の澄んだ湖面"
+   },
+   "10": {
+    "en": "Autumn foliage on Mt. Bandai",
+    "ja": "磐梯山の紅葉を湖畔から望む"
+   },
+   "11": {
+    "en": "Swans begin arriving from Siberia",
+    "ja": "シベリアから白鳥が飛来し始める"
+   },
+   "12": {
+    "en": "Swans gather along the shore as winter cold deepens",
+    "ja": "湖畔に白鳥が集まり厳冬期へ向かう"
+   }
+  },
+  "peakNote": "Mid-January through mid-February offer the largest shibuki-gori ice formations after cold, windy days, combined with swan viewing at nearby Shidahama.",
+  "peakNoteJa": "1月中旬〜2月中旬の強い寒波の後に最も見事なしぶき氷が現れ、近隣の志田浜等での白鳥観察とあわせて楽しめます。",
+  "ticket": "Free natural lakeside access; winter boots and warm windproof gear are essential for the 15–20 minute snowy forest walk.",
+  "ticketJa": "見学無料（天神浜駐車場から湖岸までは雪の林道を徒歩15〜20分歩くため、長靴・防寒着が必須）。",
+  "url": "https://www.bandaisan.or.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "野口英世記念館",
+    "nameEn": "Hideyo Noguchi Memorial Museum",
+    "kind": "sight",
+    "what": "猪苗代出身の細菌学者・野口英世の生家と展示館（冬期も通年開館）。",
+    "whatEn": "Museum and preserved birthplace of bacteriologist Hideyo Noguchi; open year-round in winter.",
+    "coords": [
+     37.536186,
+     140.073425
+    ],
+    "url": "https://www.noguchihideyo.or.jp/"
+   },
+   {
+    "name": "猪苗代湖 世界のガラス館",
+    "nameEn": "Inawashiro Sekai no Glass-kan",
+    "kind": "craft",
+    "what": "世界各地のガラス工芸品を展示・販売するギャラリーで、冬期も営業している。",
+    "whatEn": "Glassware gallery and craft shop near Lake Inawashiro; open in winter.",
+    "coords": [
+     37.537102,
+     140.07634
+    ],
+    "url": "https://www.world-glassware.com/"
+   }
+  ],
+  "course": {
+   "titleJa": "朝のしぶき氷と猪苗代地ビール・湖畔の湯",
+   "titleEn": "Morning Spray Ice, Local Beer Hall & Lake Onsen",
+   "carFree": true,
+   "noteJa": "天神浜への冬期路線バスは本数が非常に少ないため、猪苗代駅からタクシー（約10分）の利用が現実的。駐車場から小平潟天満宮脇の雪の林道を片道15〜20分歩くため、スノーブーツと防風防寒着が必須。",
+   "noteEn": "Winter buses to Tenjinhama are scarce, so take a 10-min taxi from JR Inawashiro Station. Snow boots and windproof gear are essential for the 15–20 min snowy forest walk to the lakeshore.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR猪苗代駅",
+     "nameEn": "JR Inawashiro Station",
+     "coords": [
+      37.54632,
+      140.10324
+     ],
+     "time": "10:00",
+     "what": "JR磐越西線で猪苗代駅に到着し、駅前からタクシーに乗車する。",
+     "whatEn": "Arrive at JR Inawashiro Station on the Ban-etsu West Line and take a taxi.",
+     "move": {
+      "mode": "taxi",
+      "min": 10,
+      "note": "タクシーで天神浜駐車場まで約10分",
+      "noteEn": "Taxi approx. 10 min to Tenjinhama parking area"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "猪苗代湖 天神浜のしぶき氷・白鳥",
+     "nameEn": "Lake Inawashiro Spray Ice & Swans",
+     "coords": [
+      37.519909,
+      140.122452
+     ],
+     "time": "10:30",
+     "what": "天神浜駐車場から雪の林道を15〜20分歩き、午前中の光の中で湖岸の自然氷柱「しぶき氷」を観賞する。",
+     "whatEn": "Walk 15–20 min along the snowy forest trail from Tenjinhama to view the natural shibuki-gori spray ice sculptures in morning daylight.",
+     "url": "https://www.bandaisan.or.jp/",
+     "move": {
+      "mode": "taxi",
+      "min": 10,
+      "note": "予約・配車タクシーで猪苗代地ビール館・世界のガラス館へ約10分",
+      "noteEn": "Pre-booked taxi approx. 10 min to Inawashiro Beer Hall / Sekai no Glass-kan"
+     },
+     "photo": "https://www.bandaisan.or.jp/new_bandaisanorjp/wp-content/uploads/2023/04/inawashiro_lake_og_img-1.png"
+    },
+    {
+     "role": "meal",
+     "name": "猪苗代地ビール館（世界のガラス館隣接）",
+     "nameEn": "Inawashiro Beer Hall (by Sekai no Glass-kan)",
+     "coords": [
+      37.537102,
+      140.07634
+     ],
+     "time": "12:30",
+     "what": "猪苗代の地ビールや温かい地元料理で昼食をとり、ガラス館で工芸品を見る（冬期も営業）。",
+     "whatEn": "Have lunch with local dishes and craft beer beside the glassware gallery (open in winter).",
+     "url": "https://www.world-glassware.com/",
+     "move": {
+      "mode": "taxi",
+      "min": 12,
+      "note": "タクシーでホテルリステル猪苗代へ約12分",
+      "noteEn": "Taxi approx. 12 min to Hotel Listel Inawashiro"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "ホテルリステル猪苗代（猪苗代温泉）",
+     "nameEn": "Hotel Listel Inawashiro (Inawashiro Onsen)",
+     "coords": [
+      37.541458,
+      140.152008
+     ],
+     "time": "14:15",
+     "what": "猪苗代湖を望む展望露天風呂「湖眺の湯」で日帰り入浴し、冷えた体を温める（5:00〜24:00、冬期も営業）。",
+     "whatEn": "Warm up in the lake-view open-air hot spring bath on a day-use pass (open 5:00–24:00 year-round).",
+     "url": "https://www.listel-inawashiro.jp/",
+     "move": {
+      "mode": "taxi",
+      "min": 10,
+      "note": "タクシーまたは送迎バスでJR猪苗代駅へ約10分",
+      "noteEn": "Taxi or shuttle bus approx. 10 min back to JR Inawashiro Station"
+     },
+     "photo": "https://www.listel-inawashiro.jp/ogp.jpg"
+    },
+    {
+     "role": "leave",
+     "name": "JR猪苗代駅",
+     "nameEn": "JR Inawashiro Station",
+     "coords": [
+      37.54632,
+      140.10324
+     ],
+     "time": "16:00",
+     "what": "猪苗代駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Inawashiro Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Sugikats",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E7%8C%AA%E8%8B%97%E4%BB%A3%E6%B9%96_%E5%A4%A9%E7%A5%9E%E6%B5%9C%E4%BB%98%E8%BF%91_%E3%81%97%E3%81%B6%E3%81%8D%E6%B0%B7.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 18874,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 3384,
+     "duration": 0,
+     "line": [
+      [
+       37.54632,
+       140.10324
+      ],
+      [
+       37.519909,
+       140.122452
+      ]
+     ]
+    },
+    {
+     "distance": 4486,
+     "duration": 0,
+     "line": [
+      [
+       37.519909,
+       140.122452
+      ],
+      [
+       37.537102,
+       140.07634
+      ]
+     ]
+    },
+    {
+     "distance": 6678,
+     "duration": 0,
+     "line": [
+      [
+       37.537102,
+       140.07634
+      ],
+      [
+       37.541458,
+       140.152008
+      ]
+     ]
+    },
+    {
+     "distance": 4326,
+     "duration": 0,
+     "line": [
+      [
+       37.541458,
+       140.152008
+      ],
+      [
+       37.54632,
+       140.10324
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "aizu-painted-candle-festival",
+  "name": "会津絵ろうそくまつり",
+  "nameEn": "Aizu Painted Candle Festival",
+  "prefecture": "Fukushima",
+  "prefectureJa": "福島県",
+  "region": "tohoku",
+  "town": "Aizu-Wakamatsu",
+  "townJa": "会津若松市",
+  "kind": "event",
+  "coords": [
+   37.486912,
+   139.930115
+  ],
+  "what": "毎年2月第2金・土曜日に会津若松市の鶴ヶ城や御薬園などで開催される冬の伝統行事で、雪景色の中に数千本の会津伝統工芸「絵ろうそく」の温かい炎が灯る。",
+  "whatEn": "An annual mid-February winter festival at Tsuruga Castle and Oyakuen Garden in Aizu-Wakamatsu where thousands of hand-painted traditional Aizu candles flicker in carved snow lanterns.",
+  "seasonal": true,
+  "peakMonths": [
+   2
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   3,
+   5,
+   3,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   4,
+   4,
+   3
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Snowy castle grounds ahead of the February festival",
+    "ja": "雪の鶴ヶ城と静かな城下町"
+   },
+   "2": {
+    "en": "Peak 2-night Aizu Painted Candle Festival in snow",
+    "ja": "数千本の絵ろうそくが雪の鶴ヶ城を照らす2日間"
+   },
+   "3": {
+    "en": "Late snow and quiet historic garden walks",
+    "ja": "残雪の城址公園と庭園散策"
+   },
+   "4": {
+    "en": "Famous cherry blossoms around Tsuruga Castle moat",
+    "ja": "鶴ヶ城の桜が満開になる春"
+   },
+   "5": {
+    "en": "Fresh green castle grounds",
+    "ja": "新緑の鶴ヶ城公園"
+   },
+   "6": {
+    "en": "Iris blooms in Oyakuen garden",
+    "ja": "御薬園の花菖蒲"
+   },
+   "7": {
+    "en": "Lush summer castle keep and garden",
+    "ja": "夏空に映える天守閣"
+   },
+   "8": {
+    "en": "Summer evenings in Aizu",
+    "ja": "会津の夏祭りシーズン"
+   },
+   "9": {
+    "en": "Early autumn strolls",
+    "ja": "初秋の城下町散策"
+   },
+   "10": {
+    "en": "Autumn leaves in Oyakuen and castle park",
+    "ja": "御薬園と鶴ヶ城の紅葉"
+   },
+   "11": {
+    "en": "Peak autumn foliage in the historic garden",
+    "ja": "晩秋の紅葉ライトアップ"
+   },
+   "12": {
+    "en": "Early snow settles on the red-tiled castle keep",
+    "ja": "赤瓦の天守閣に初雪が降る"
+   }
+  },
+  "peakNote": "Held over two evenings in mid-February (Feb 13–14 in 2026); severe blizzards can occasionally cancel the event, so check the official site.",
+  "peakNoteJa": "2月第2金・土曜日の夜2日間のみ開催（2026年は2/13・14）。大雪等により中止になる年もあるため公式サイトで事前確認が必要です。",
+  "ticket": "Festival grounds (Tsuruga Castle Park & Oyakuen evening candle viewing) are free; castle keep interior admission is separate.",
+  "ticketJa": "絵ろうそくまつり会場の観覧は無料（鶴ヶ城天守閣の入館料は別途）。",
+  "url": "https://www.aizu.com/erousoku/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "御薬園",
+    "nameEn": "Oyakuen Garden",
+    "kind": "sight",
+    "what": "会津絵ろうそくまつりのサブ会場として心字の池を竹筒のろうそくが彩る大名庭園。",
+    "whatEn": "Historic garden serving as the second candle festival venue with bamboo lanterns around the pond.",
+    "coords": [
+     37.491123,
+     139.943802
+    ],
+    "url": "https://aizumatsuri.jp/"
+   },
+   {
+    "name": "会津東山温泉 御宿東鳳",
+    "nameEn": "Onyado Toho (Higashiyama Onsen)",
+    "kind": "sight",
+    "what": "会津盆地を一望する展望露天風呂を備えた東山温泉の宿（冬期も営業）。",
+    "whatEn": "Higashiyama Onsen hotel featuring panoramic open-air baths overlooking the Aizu basin.",
+    "coords": [
+     37.479527,
+     139.960052
+    ],
+    "url": "https://toho.orixhotelsandresorts.com/"
+   }
+  ],
+  "townSlug": "aizuwakamatsu",
+  "course": {
+   "titleJa": "わっぱ飯と東山温泉、夕暮れの絵ろうそく",
+   "titleEn": "Wappa-Meshi, Higashiyama Onsen & Evening Candles",
+   "carFree": true,
+   "noteJa": "会津絵ろうそくまつりは例年2月中旬の2日間（2026年は2月13日・14日 17:30〜20:30）の夜間開催。荒天時は中止の場合あり。まつり期間中は周遊バスの延長運行あり。",
+   "noteEn": "Held over two evenings in mid-February (Feb 13–14, 2026, 17:30–20:30); severe blizzards may cancel the event. Extended loop buses operate during the festival.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR会津若松駅",
+     "nameEn": "JR Aizu-Wakamatsu Station",
+     "coords": [
+      37.50856,
+      139.93013
+     ],
+     "time": "13:00",
+     "what": "JR磐越西線で会津若松駅に到着し、まちなか周遊バス「ハイカラさん」に乗車する。",
+     "whatEn": "Arrive at JR Aizu-Wakamatsu Station and board the Haikara-san city loop bus.",
+     "move": {
+      "mode": "bus",
+      "min": 15,
+      "note": "まちなか周遊バス「ハイカラさん」で「栄町中三丁目」下車徒歩約3分",
+      "noteEn": "Haikara-san loop bus to Sakaemachi Naka-3-chome, then 3 min walk"
+     }
+    },
+    {
+     "role": "meal",
+     "name": "元祖 輪箱飯 割烹・会津料理 田季野",
+     "nameEn": "Ganso Wappameshi Takino",
+     "coords": [
+      37.496449,
+      139.930984
+     ],
+     "time": "13:30",
+     "what": "歴史ある建物で会津の郷土料理「元祖わっぱ飯」の遅めの昼食をとる（冬期も営業）。",
+     "whatEn": "Enjoy traditional steamed Aizu wappa-meshi in a historic wooden building (open in winter).",
+     "url": "http://www.takino.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 20,
+      "note": "周遊バス「ハイカラさん」で東山温泉方面へ約20分",
+      "noteEn": "Haikara-san loop bus to Higashiyama Onsen (approx. 20 min)"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "会津東山温泉 原瀧",
+     "nameEn": "Aizu Higashiyama Onsen Harataki",
+     "coords": [
+      37.479527,
+      139.960052
+     ],
+     "time": "15:00",
+     "what": "自家源泉かけ流しの東山温泉で日帰り入浴し、夜の観賞に備えて体を芯から温める。",
+     "whatEn": "Soak in free-flowing natural hot springs at Harataki to warm up before the evening outdoor event.",
+     "url": "https://www.yumeguri.co.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 15,
+      "note": "周遊バスまたはタクシーで鶴ヶ城入口へ約15分",
+      "noteEn": "Loop bus or taxi approx. 15 min to Tsuruga Castle Park"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "会津絵ろうそくまつり（鶴ヶ城・御薬園）",
+     "nameEn": "Aizu Painted Candle Festival",
+     "coords": [
+      37.486912,
+      139.930115
+     ],
+     "time": "17:30",
+     "what": "17:30の点灯に合わせて雪の鶴ヶ城公園で約1万本の会津絵ろうそくの幻想的な灯りを観賞する。",
+     "whatEn": "Walk through snow-covered Tsuruga Castle Park from 17:30 as ~10,000 hand-painted candles illuminate the grounds.",
+     "url": "https://aizumatsuri.jp/",
+     "move": {
+      "mode": "bus",
+      "min": 15,
+      "note": "臨時延長運行の周遊バスまたはタクシーで会津若松駅へ約15分",
+      "noteEn": "Extended festival loop bus or taxi back to Aizu-Wakamatsu Station (approx. 15 min)"
+     },
+     "photo": "https://aizumatsuri.jp/wp-content/themes/AizuMatsuri2/assets/images/mv-image-01.jpg"
+    },
+    {
+     "role": "leave",
+     "name": "JR会津若松駅",
+     "nameEn": "JR Aizu-Wakamatsu Station",
+     "coords": [
+      37.50856,
+      139.93013
+     ],
+     "time": "19:30",
+     "what": "会津若松駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Aizu-Wakamatsu Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "Sugikats",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:%E4%BC%9A%E6%B4%A5%E7%B5%B5%E3%82%8D%E3%81%86%E3%81%9D%E3%81%8F%E3%81%BE%E3%81%A4%E3%82%8A_%E5%A4%A9%E5%AE%88%E9%96%A3%E4%BB%98%E8%BF%91_20150214.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 9686,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 1346,
+     "duration": 0,
+     "line": [
+      [
+       37.50856,
+       139.93013
+      ],
+      [
+       37.496449,
+       139.930984
+      ]
+     ]
+    },
+    {
+     "distance": 3175,
+     "duration": 0,
+     "line": [
+      [
+       37.496449,
+       139.930984
+      ],
+      [
+       37.479527,
+       139.960052
+      ]
+     ]
+    },
+    {
+     "distance": 2762,
+     "duration": 0,
+     "line": [
+      [
+       37.479527,
+       139.960052
+      ],
+      [
+       37.486912,
+       139.930115
+      ]
+     ]
+    },
+    {
+     "distance": 2403,
+     "duration": 0,
+     "line": [
+      [
+       37.486912,
+       139.930115
+      ],
+      [
+       37.50856,
+       139.93013
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "slug": "first-tadami-river-bridge-viewpoint",
+  "name": "第一只見川橋梁ビューポイント",
+  "nameEn": "First Tadami River Bridge Viewpoint",
+  "prefecture": "Fukushima",
+  "prefectureJa": "福島県",
+  "region": "tohoku",
+  "town": "Mishima (Aizu)",
+  "townJa": "三島町（会津）",
+  "kind": "view",
+  "coords": [
+   37.476166,
+   139.662018
+  ],
+  "what": "JR只見線がエメラルドグリーンの只見川と深い雪に覆われた渓谷を渡る絶景を道の駅「尾瀬街道みしま宿」裏手の尾根から一望できる展望スポット。",
+  "whatEn": "An elevated ridge viewpoint behind Michi-no-Eki Oze-Kaido Mishima-juku overlooking the iconic arched railway bridge as JR Tadami Line trains cross the snow-draped Tadami River gorge.",
+  "seasonal": true,
+  "peakMonths": [
+   1,
+   2,
+   10,
+   11
+  ],
+  "openMonths": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthScore": [
+   5,
+   5,
+   4,
+   3,
+   4,
+   4,
+   4,
+   4,
+   3,
+   5,
+   5,
+   4
+  ],
+  "monthNote": {
+   "1": {
+    "en": "Deep snow blankets the gorge and iron arch bridge",
+    "ja": "深い雪に包まれた渓谷と橋梁を渡る只見線"
+   },
+   "2": {
+    "en": "Peak winter snow and morning river mist",
+    "ja": "豪雪と川霧が織りなす厳冬期の絶景"
+   },
+   "3": {
+    "en": "Snowy peaks linger as spring approaches",
+    "ja": "残雪の渓谷と只見線の冬景色"
+   },
+   "4": {
+    "en": "Cherry blossoms and snowmelt along the river",
+    "ja": "桜と雪解けの只見川"
+   },
+   "5": {
+    "en": "Fresh green mountain walls reflect in the river",
+    "ja": "新緑の渓谷美"
+   },
+   "6": {
+    "en": "Lush greenery and summer river mist",
+    "ja": "深緑と川霧の季節"
+   },
+   "7": {
+    "en": "Misty summer mornings over emerald water",
+    "ja": "朝の川霧が幻想的な夏"
+   },
+   "8": {
+    "en": "Deep green gorge under summer sky",
+    "ja": "真夏の濃い緑と只見川"
+   },
+   "9": {
+    "en": "Early autumn air in Oku-Aizu",
+    "ja": "初秋の奥会津"
+   },
+   "10": {
+    "en": "Autumn foliage across the steep riverbanks",
+    "ja": "渓谷が赤や黄に染まる紅葉シーズン"
+   },
+   "11": {
+    "en": "Peak autumn leaves and crisp morning mist",
+    "ja": "晩秋の紅葉と朝霧が美しい"
+   },
+   "12": {
+    "en": "First heavy snow turns the valley monochrome",
+    "ja": "初雪が降り渓谷が白銀に変わる"
+   }
+  },
+  "peakNote": "January and February provide deep snow framing the arched bridge; time your climb for the morning train crossing around 9:00 AM.",
+  "peakNoteJa": "1〜2月の豪雪期が最も迫力があり、午前9時前後の列車通過時刻に合わせて展望台へ登るのが定番です。",
+  "ticket": "Free access and free parking at Michi-no-Eki Oze-Kaido Mishima-juku.",
+  "ticketJa": "見学無料・道の駅「尾瀬街道みしま宿」駐車場無料（大雪時は遊歩道閉鎖の場合あり）。",
+  "url": "https://www.town.mishima.fukushima.jp/",
+  "verifiedAt": "2026-11-14",
+  "nearby": [
+   {
+    "name": "三島町観光交流舘からんころん",
+    "nameEn": "Mishima Tourist Center Karankoron",
+    "kind": "craft",
+    "what": "会津宮下駅近くの観光案内拠点で、奥会津の編み組細工などの展示・販売を行っている。",
+    "whatEn": "Tourist hub near Aizu-Miyashita Station featuring Okuaizu traditional woven crafts.",
+    "coords": [
+     37.472187,
+     139.643906
+    ],
+    "url": "https://www.town.mishima.fukushima.jp/"
+   },
+   {
+    "name": "会津柳津（cafeあいべこ・圓藏寺）",
+    "nameEn": "Aizu-Yanaizu (Cafe Aibeko & Enzoji Temple)",
+    "kind": "cafe",
+    "what": "只見線沿線の門前町で、カフェでの休憩や雪の圓藏寺参拝を列車待ちの間に楽しめる。",
+    "whatEn": "Historic temple town along the Tadami Line with a local cafe and snowy Enzoji Temple views.",
+    "coords": [
+     37.5306,
+     139.7235
+    ],
+    "url": "https://aizu-yanaizu.com/"
+   }
+  ],
+  "course": {
+   "titleJa": "雪の只見川鉄橋を渡る列車を待つ昼下がり",
+   "titleEn": "Midday Train Crossing Over Snowy Tadami Bridge",
+   "carFree": true,
+   "noteJa": "只見線は本数が少ないため時刻を事前確認すること。冬期は階段が凍結し上部C・D地点が閉鎖される場合が多いため、除雪されるB地点まで防滑靴・長靴で登ること。",
+   "noteEn": "JR Tadami Line trains are infrequent—verify schedules in advance. Upper C/D viewpoints often close in deep snow, so wear non-slip winter boots to the cleared B viewpoint.",
+   "stops": [
+    {
+     "role": "arrive",
+     "name": "JR会津若松駅",
+     "nameEn": "JR Aizu-Wakamatsu Station",
+     "coords": [
+      37.50856,
+      139.93013
+     ],
+     "time": "11:00",
+     "what": "会津若松駅からJR只見線に乗車し、会津宮下駅へ向かう。",
+     "whatEn": "Board the JR Tadami Line at Aizu-Wakamatsu Station bound for Aizu-Miyashita Station.",
+     "move": {
+      "mode": "train",
+      "min": 85,
+      "note": "JR只見線で会津宮下駅まで約80分、駅前からタクシーで道の駅尾瀬街道みしま宿へ約7分",
+      "noteEn": "JR Tadami Line to Aizu-Miyashita Station (approx. 80 min), then taxi 7 min to Michi-no-Eki Mishima-juku"
+     }
+    },
+    {
+     "role": "spot",
+     "name": "第一只見川橋梁ビューポイント",
+     "nameEn": "First Tadami River Bridge Viewpoint",
+     "coords": [
+      37.476166,
+      139.662018
+     ],
+     "time": "12:45",
+     "what": "道の駅「尾瀬街道みしま宿」裏手の雪道を長靴で登り、13:03頃の上り列車が雪のアーチ橋を渡る瞬間を日中光の中で撮影・観賞する。",
+     "whatEn": "Climb the snowy trail behind Michi-no-Eki Mishima-juku in winter boots to watch the ~13:03 train cross the snow-framed arch bridge in midday daylight.",
+     "url": "https://firsttadamibridge.com/",
+     "move": {
+      "mode": "taxi",
+      "min": 12,
+      "note": "遊歩道を下って道の駅へ徒歩5分、タクシーで会津宮下駅前の双葉食堂へ約7分",
+      "noteEn": "Walk 5 min down to the Michi-no-Eki, then taxi 7 min to Futaba Shokudo in front of Aizu-Miyashita Station"
+     },
+     "photo": "https://firsttadamibridge.com/_astro/autumn-reflection.DiQfvURq_Yg5XQ.jpg"
+    },
+    {
+     "role": "meal",
+     "name": "双葉食堂",
+     "nameEn": "Futaba Shokudo",
+     "coords": [
+      37.472187,
+      139.643906
+     ],
+     "time": "13:25",
+     "what": "会津宮下駅前の老舗食堂（日曜・祝日定休、11:00〜14:00）で、名物の焼きそばラーメンや中華そばを食べる。",
+     "whatEn": "Eat local specialty yakisoba-ramen or classic shoyu ramen at this retro diner by Aizu-Miyashita Station (closed Sun & holidays, 11:00–14:00).",
+     "url": "https://www.town.mishima.fukushima.jp/",
+     "move": {
+      "mode": "train",
+      "min": 25,
+      "note": "会津宮下駅から徒歩1分、JR只見線で会津柳津駅へ（約15分）、駅から徒歩約10分",
+      "noteEn": "1 min walk to Aizu-Miyashita Station, JR Tadami Line 15 min to Aizu-Yanaizu Station, then walk 10 min"
+     }
+    },
+    {
+     "role": "onsen",
+     "name": "つきみが丘町民センター",
+     "nameEn": "Tsukimigaoka Chomin Center",
+     "coords": [
+      37.528294,
+      139.724518
+     ],
+     "time": "14:45",
+     "what": "只見川を見下ろす高台の公共温泉（日帰り入浴9:00〜21:00、冬期も営業）で、源泉100%かけ流しの湯に浸かる。",
+     "whatEn": "Soak in 100% free-flowing natural hot spring baths overlooking the Tadami River (day-use 9:00–21:00, open in winter).",
+     "url": "https://akabeko.info/",
+     "move": {
+      "mode": "train",
+      "min": 70,
+      "note": "会津柳津駅へ徒歩約10分、JR只見線で会津若松駅へ約60分",
+      "noteEn": "Walk 10 min to Aizu-Yanaizu Station, then JR Tadami Line to Aizu-Wakamatsu Station (approx. 60 min)"
+     },
+     "photo": "https://akabeko.info/image/on_p01.jpg"
+    },
+    {
+     "role": "leave",
+     "name": "JR会津若松駅",
+     "nameEn": "JR Aizu-Wakamatsu Station",
+     "coords": [
+      37.50856,
+      139.93013
+     ],
+     "time": "17:30",
+     "what": "会津若松駅へ戻り、帰路につく。",
+     "whatEn": "Return to JR Aizu-Wakamatsu Station for departure."
+    }
+   ]
+  },
+  "banner": {
+   "file": "banner.jpg",
+   "author": "MaedaAkihiko",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Tadami-Line-First-Bridge-Winter.jpg",
+   "y": 50
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 53213,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 23880,
+     "duration": 0,
+     "line": [
+      [
+       37.50856,
+       139.93013
+      ],
+      [
+       37.476166,
+       139.662018
+      ]
+     ]
+    },
+    {
+     "distance": 1655,
+     "duration": 0,
+     "line": [
+      [
+       37.476166,
+       139.662018
+      ],
+      [
+       37.472187,
+       139.643906
+      ]
+     ]
+    },
+    {
+     "distance": 9446,
+     "duration": 0,
+     "line": [
+      [
+       37.472187,
+       139.643906
+      ],
+      [
+       37.528294,
+       139.724518
+      ]
+     ]
+    },
+    {
+     "distance": 18232,
+     "duration": 0,
+     "line": [
+      [
+       37.528294,
+       139.724518
+      ],
+      [
+       37.50856,
+       139.93013
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ {
   "slug": "kannon-numa-forest-park",
   "name": "観音沼森林公園",
   "nameEn": "Kannon-numa Forest Park",
@@ -3524,6 +8653,13 @@
       "min": 50,
       "note": "国道353号・253号・403号経由で約50分",
       "noteEn": "About 50 min drive via Routes 353, 253, and 403"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/308a38a88fbc.webp",
+     "photoCredit": {
+      "author": "Rebirth10",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Echigo-Yuzawa_Station_2018.jpg"
      }
     },
     {
@@ -3616,7 +8752,14 @@
      ],
      "time": "15:45",
      "what": "レンタカーを返却し、上越新幹線で東京・新潟方面へ帰路につく。",
-     "whatEn": "Return the rental car and board the Joetsu Shinkansen for Tokyo or Niigata."
+     "whatEn": "Return the rental car and board the Joetsu Shinkansen for Tokyo or Niigata.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/308a38a88fbc.webp",
+     "photoCredit": {
+      "author": "Rebirth10",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Echigo-Yuzawa_Station_2018.jpg"
+     }
     }
    ]
   },
@@ -3846,6 +8989,13 @@
       "min": 15,
       "note": "津南駅からタクシーで約15分",
       "noteEn": "About 15 min by taxi from Tsunan Station"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/15a89a6f1792.webp",
+     "photoCredit": {
+      "author": "Olegushka",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:TsunanStn_IiyamaLine_JRE_20140914.jpg"
      }
     },
     {
@@ -3885,6 +9035,13 @@
       "min": 15,
       "note": "タクシーで津南町中心部のそば処へ約15分",
       "noteEn": "About 15 min by taxi to central Tsunan"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/f96feb523911.webp",
+     "photoCredit": {
+      "author": "越後探検",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:%E8%A6%8B%E7%8E%89%E4%B8%8D%E5%8B%95%E5%B0%8A.jpg"
      }
     },
     {
@@ -3937,7 +9094,14 @@
      ],
      "time": "14:41",
      "what": "JR飯山線（14:41発十日町・越後川口方面、または17:08発等）に乗車して帰路へ。",
-     "whatEn": "Board the JR Iiyama Line (14:41 toward Tokamachi/Echigo-Kawaguchi, or 17:08) for the return journey."
+     "whatEn": "Board the JR Iiyama Line (14:41 toward Tokamachi/Echigo-Kawaguchi, or 17:08) for the return journey.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/15a89a6f1792.webp",
+     "photoCredit": {
+      "author": "Olegushka",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:TsunanStn_IiyamaLine_JRE_20140914.jpg"
+     }
     }
    ]
   },
@@ -4160,6 +9324,13 @@
       "min": 15,
       "note": "タクシーで約15分",
       "noteEn": "Taxi approx. 15 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/15a89a6f1792.webp",
+     "photoCredit": {
+      "author": "Olegushka",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:TsunanStn_IiyamaLine_JRE_20140914.jpg"
      }
     },
     {
@@ -4198,6 +9369,13 @@
       "min": 15,
       "note": "タクシーで津南中心部（国道117号沿い）へ約15分",
       "noteEn": "Taxi to central Tsunan along Route 117, approx. 15 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/f96feb523911.webp",
+     "photoCredit": {
+      "author": "越後探検",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:%E8%A6%8B%E7%8E%89%E4%B8%8D%E5%8B%95%E5%B0%8A.jpg"
      }
     },
     {
@@ -5490,8 +10668,8 @@
      "name": "JR宇都宮駅",
      "nameEn": "JR Utsunomiya Station",
      "coords": [
-      36.55963,
-      139.89831
+      36.55909,
+      139.89783
      ],
      "time": "09:20",
      "what": "JR宇都宮駅西口8番のりばから関東バス（52・56・58系統など）に乗車し、約24分で若竹の杜 若山農場バス停へ。",
@@ -5567,8 +10745,8 @@
      "name": "JR宇都宮駅",
      "nameEn": "JR Utsunomiya Station",
      "coords": [
-      36.55963,
-      139.89831
+      36.55909,
+      139.89783
      ],
      "time": "15:40",
      "what": "JR宇都宮駅から新幹線・JR宇都宮線で帰路につきます。",
@@ -5579,16 +10757,16 @@
   "bannerOg": "https://static.wixstatic.com/media/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png/v1/fit/w_1200,h_640,al_c/5518a8_cd6d905ad9ba49d09ec279ca959702f4~mv2.png",
   "baseMap": true,
   "walk": {
-   "distance": 19873,
+   "distance": 19898,
    "duration": 0,
    "legs": [
     {
-     "distance": 7415,
+     "distance": 7440,
      "duration": 0,
      "line": [
       [
-       36.55963,
-       139.89831
+       36.55909,
+       139.89783
       ],
       [
        36.61425,
@@ -5633,8 +10811,8 @@
        139.826019
       ],
       [
-       36.55963,
-       139.89831
+       36.55909,
+       139.89783
       ]
      ]
     }
@@ -6130,6 +11308,13 @@
       "min": 30,
       "note": "おりひめバス川内線（約25分）＋宝徳寺入口バス停から徒歩約5分",
       "noteEn": "Orihime Bus Kawauchi Line (~25 min) + 5 min walk from Hotokuji-iriguchi."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e0c33c93f58e.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kiryu-STA_North.jpg"
      }
     },
     {
@@ -6200,7 +11385,14 @@
      ],
      "time": "15:00",
      "what": "JR両毛線で高崎・小山方面へ帰路につきます。",
-     "whatEn": "Depart from JR Kiryu Station on the JR Ryomo Line."
+     "whatEn": "Depart from JR Kiryu Station on the JR Ryomo Line.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e0c33c93f58e.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kiryu-STA_North.jpg"
+     }
     }
    ]
   },
@@ -6435,6 +11627,13 @@
       "min": 10,
       "note": "駅からタクシーで約10分（徒歩の場合は鶴来の町並みを通り約30分）",
       "noteEn": "Take a taxi ~10 min to the shrine (or walk ~30 min through historic Tsurugi)."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/7b114639afb4.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hokutetsu-Ishikawa-line_Series7700.jpg"
      }
     },
     {
@@ -6454,6 +11653,13 @@
       "min": 3,
       "note": "神社のすぐ隣にある和田屋へ徒歩約3分",
       "noteEn": "Walk ~3 min to Wataya right beside the shrine."
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/e3535079df02.webp",
+     "photoCredit": {
+      "author": "Saigen Jiro",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "page": "https://commons.wikimedia.org/wiki/File:%E7%99%BD%E5%B1%B1%E6%AF%94%E5%92%A9%E7%A5%9E%E7%A4%BE_%E5%A4%96%E6%8B%9D%E6%AE%BF.JPG"
      }
     },
     {
@@ -6524,7 +11730,14 @@
      ],
      "time": "15:00",
      "what": "北陸鉄道石川線で野町駅方面へ戻ります（1時間に1〜2本運行）。",
-     "whatEn": "Board the Hokuriku Railroad Ishikawa Line back to Nomachi Station (1–2 trains per hour)."
+     "whatEn": "Board the Hokuriku Railroad Ishikawa Line back to Nomachi Station (1–2 trains per hour).",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/7b114639afb4.webp",
+     "photoCredit": {
+      "author": "MaedaAkihiko",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hokutetsu-Ishikawa-line_Series7700.jpg"
+     }
     }
    ]
   },
@@ -9054,6 +14267,13 @@
       "min": 15,
       "note": "タクシーで宮沢湖温泉 喜楽里別邸へ 約15分",
       "noteEn": "Taxi to Miyazawako Onsen Kirari Bettei, ~15 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/224d058e11a9.webp",
+     "photoCredit": {
+      "author": "京浜にけ",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hidaka_Saitama_Shoyu_kingdom_1.JPG"
      }
     },
     {
@@ -9073,6 +14293,13 @@
       "min": 12,
       "note": "イーグルバス「メッツァ」から飯能駅行き 約12分",
       "noteEn": "Eagle Bus from Metsa to Hanno Station, ~12 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/ee0af2ea8c2e.webp",
+     "photoCredit": {
+      "author": "京浜にけ",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hanno_Lake_Miyazawa_1.JPG"
      }
     },
     {
@@ -9085,7 +14312,14 @@
      ],
      "time": "16:15",
      "what": "飯能駅から西武池袋線特急・急行に乗車し、池袋駅方面へ帰る。",
-     "whatEn": "Board the Seibu Ikebukuro Line express or limited express from Hanno Station back to Ikebukuro."
+     "whatEn": "Board the Seibu Ikebukuro Line express or limited express from Hanno Station back to Ikebukuro.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/6fbedef3fefa.webp",
+     "photoCredit": {
+      "author": "Nyao148",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hanno-Sta-N.JPG"
+     }
     }
    ]
   },
@@ -11838,8 +17072,8 @@
      "name": "JR米子駅",
      "nameEn": "JR Yonago Station",
      "coords": [
-      35.42278,
-      133.3351
+      35.42276,
+      133.3354
      ],
      "time": "09:15",
      "what": "JR山陰本線・伯備線で米子駅に到着し、南口の無料シャトルバス乗り場へ向かいます。",
@@ -11849,6 +17083,13 @@
       "min": 25,
       "note": "とっとり花回廊 無料シャトルバスで約25分",
       "noteEn": "Free Tottori Hanakairo shuttle bus ~25 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/19b7d93e20a0.webp",
+     "photoCredit": {
+      "author": "You19994",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E7%B1%B3%E5%AD%90%E9%A7%85%E9%A7%85%E8%88%8E.jpg"
      }
     },
     {
@@ -11915,12 +17156,19 @@
      "name": "JR米子駅",
      "nameEn": "JR Yonago Station",
      "coords": [
-      35.42278,
-      133.3351
+      35.42276,
+      133.3354
      ],
      "time": "16:30",
      "what": "JR特急やくも・スーパーおき等で岡山・松江方面へ帰路につきます。",
-     "whatEn": "Board the JR Limited Express Yakumo or Super Oki toward Okayama or Matsue."
+     "whatEn": "Board the JR Limited Express Yakumo or Super Oki toward Okayama or Matsue.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/19b7d93e20a0.webp",
+     "photoCredit": {
+      "author": "You19994",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E7%B1%B3%E5%AD%90%E9%A7%85%E9%A7%85%E8%88%8E.jpg"
+     }
     }
    ]
   },
@@ -11934,16 +17182,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 29519,
+   "distance": 29487,
    "duration": 0,
    "legs": [
     {
-     "distance": 11510,
+     "distance": 11489,
      "duration": 0,
      "line": [
       [
-       35.42278,
-       133.3351
+       35.42276,
+       133.3354
       ],
       [
        35.3478,
@@ -11980,7 +17228,7 @@
      ]
     },
     {
-     "distance": 4519,
+     "distance": 4508,
      "duration": 0,
      "line": [
       [
@@ -11988,8 +17236,8 @@
        133.360168
       ],
       [
-       35.42278,
-       133.3351
+       35.42276,
+       133.3354
       ]
      ]
     }
@@ -12899,8 +18147,8 @@
      "name": "JR米子駅",
      "nameEn": "JR Yonago Station",
      "coords": [
-      35.42278,
-      133.3351
+      35.42276,
+      133.3354
      ],
      "time": "09:00",
      "what": "JR米子駅でレンタカーを借り、米子自動車道経由で蒜山高原方面へ向かいます。",
@@ -12910,6 +18158,13 @@
       "min": 45,
       "note": "レンタカーで米子道・蒜山IC経由 約45分",
       "noteEn": "Rental car via Hiruzen IC ~45 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/19b7d93e20a0.webp",
+     "photoCredit": {
+      "author": "You19994",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E7%B1%B3%E5%AD%90%E9%A7%85%E9%A7%85%E8%88%8E.jpg"
      }
     },
     {
@@ -12929,6 +18184,13 @@
       "min": 5,
       "note": "レンタカーで約5分、やまな食堂へ",
       "noteEn": "Rental car ~5 min to Yamana Shokudo"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/19e3cccbfcf1.webp",
+     "photoCredit": {
+      "author": "紫煙",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Quan_SIOGAMA.jpg"
      }
     },
     {
@@ -12974,12 +18236,19 @@
      "name": "JR米子駅",
      "nameEn": "JR Yonago Station",
      "coords": [
-      35.42278,
-      133.3351
+      35.42276,
+      133.3354
      ],
      "time": "15:30",
      "what": "レンタカーを返却し、JR特急やくも等で岡山・山陰各地へ帰路につきます。",
-     "whatEn": "Return the rental car and board the JR Limited Express Yakumo."
+     "whatEn": "Return the rental car and board the JR Limited Express Yakumo.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/19b7d93e20a0.webp",
+     "photoCredit": {
+      "author": "You19994",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:%E7%B1%B3%E5%AD%90%E9%A7%85%E9%A7%85%E8%88%8E.jpg"
+     }
     }
    ]
   },
@@ -12993,16 +18262,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 76314,
+   "distance": 76262,
    "duration": 0,
    "legs": [
     {
-     "distance": 33882,
+     "distance": 33856,
      "duration": 0,
      "line": [
       [
-       35.42278,
-       133.3351
+       35.42276,
+       133.3354
       ],
       [
        35.30197,
@@ -13039,7 +18308,7 @@
      ]
     },
     {
-     "distance": 31418,
+     "distance": 31392,
      "duration": 0,
      "line": [
       [
@@ -13047,8 +18316,8 @@
        133.648834
       ],
       [
-       35.42278,
-       133.3351
+       35.42276,
+       133.3354
       ]
      ]
     }
@@ -13515,8 +18784,8 @@
      "name": "JR生野駅",
      "nameEn": "JR Ikuno Station",
      "coords": [
-      35.1633,
-      134.78921
+      35.16334,
+      134.78917
      ],
      "time": "09:30",
      "what": "JR播但線で生野駅に到着し、タクシーで神子畑選鉱場跡へ向かう。",
@@ -13592,8 +18861,8 @@
      "name": "JR生野駅",
      "nameEn": "JR Ikuno Station",
      "coords": [
-      35.1633,
-      134.78921
+      35.16334,
+      134.78917
      ],
      "time": "15:45",
      "what": "JR播但線（または和田山駅からJR山陰本線特急）で姫路・大阪方面へ帰路につく。",
@@ -13611,16 +18880,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 40166,
+   "distance": 40158,
    "duration": 0,
    "legs": [
     {
-     "distance": 10802,
+     "distance": 10796,
      "duration": 0,
      "line": [
       [
-       35.1633,
-       134.78921
+       35.16334,
+       134.78917
       ],
       [
        35.250469,
@@ -13657,7 +18926,7 @@
      ]
     },
     {
-     "distance": 15919,
+     "distance": 15917,
      "duration": 0,
      "line": [
       [
@@ -13665,8 +18934,8 @@
        134.877625
       ],
       [
-       35.1633,
-       134.78921
+       35.16334,
+       134.78917
       ]
      ]
     }
@@ -14822,8 +20091,8 @@
      "name": "湯の花温泉（里山の休日 京都・烟河）",
      "nameEn": "Yunohana Onsen (Kyoto Keburikawa)",
      "coords": [
-      35.02128,
-      135.50567
+      35.02104,
+      135.50385
      ],
      "time": "11:00",
      "what": "里山の宿で日帰り入浴と地元野菜を使った昼食（事前予約制プラン等）を楽しみ、早朝の冷えた体を温めます。",
@@ -14868,7 +20137,7 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 25761,
+   "distance": 26087,
    "duration": 0,
    "legs": [
     {
@@ -14900,7 +20169,7 @@
      ]
     },
     {
-     "distance": 10117,
+     "distance": 10279,
      "duration": 0,
      "line": [
       [
@@ -14908,18 +20177,18 @@
        135.616241
       ],
       [
-       35.02128,
-       135.50567
+       35.02104,
+       135.50385
       ]
      ]
     },
     {
-     "distance": 6999,
+     "distance": 7163,
      "duration": 0,
      "line": [
       [
-       35.02128,
-       135.50567
+       35.02104,
+       135.50385
       ],
       [
        35.01675,
@@ -15438,6 +20707,13 @@
       "min": 40,
       "note": "三重交通臨時バス「鈴鹿の森庭園」下車 約40分",
       "noteEn": "Mie Kotsu temporary shuttle bus to Suzuka Forest Garden, ~40 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/21116f6e97ad.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Central_Yokkaichi_Station_building,_Mie_Pref.jpg"
      }
     },
     {
@@ -15508,7 +20784,14 @@
      ],
      "time": "14:45",
      "what": "近鉄四日市駅から近鉄名古屋線特急・急行に乗車し、名古屋・大阪方面へ戻る。",
-     "whatEn": "Board a Kintetsu Nagoya Line express train from Kintetsu Yokkaichi toward Nagoya or Osaka."
+     "whatEn": "Board a Kintetsu Nagoya Line express train from Kintetsu Yokkaichi toward Nagoya or Osaka.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/21116f6e97ad.webp",
+     "photoCredit": {
+      "author": "Mister0124",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:JR_Central_Yokkaichi_Station_building,_Mie_Pref.jpg"
+     }
     }
    ]
   },
@@ -15717,6 +21000,13 @@
       "min": 15,
       "note": "タクシーで約15分（17日・季節ウイークはシャトルバスあり）",
       "noteEn": "Taxi ~15 min (or shuttle bus on the 17th & seasonal weeks)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/bffdbed473f3.webp",
+     "photoCredit": {
+      "author": "Bakkai at Japanese Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "page": "https://commons.wikimedia.org/wiki/File:Nagaokakyo_stn.jpg"
      }
     },
     {
@@ -15768,7 +21058,14 @@
      ],
      "time": "17:00",
      "what": "JR京都線に乗車し、京都駅・大阪駅方面へ帰路につく。",
-     "whatEn": "Board the JR Kyoto Line from Nagaokakyo Station toward Kyoto or Osaka."
+     "whatEn": "Board the JR Kyoto Line from Nagaokakyo Station toward Kyoto or Osaka.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/bffdbed473f3.webp",
+     "photoCredit": {
+      "author": "Bakkai at Japanese Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "page": "https://commons.wikimedia.org/wiki/File:Nagaokakyo_stn.jpg"
+     }
     }
    ]
   },
@@ -15977,8 +21274,8 @@
      "name": "名鉄常滑駅",
      "nameEn": "Meitetsu Tokoname Station",
      "coords": [
-      34.8906,
-      136.83545
+      34.89615,
+      136.85427
      ],
      "time": "09:30",
      "what": "名鉄常滑線で常滑駅に到着し、やきもの散歩道へ向かって歩き始める。",
@@ -15988,6 +21285,13 @@
       "min": 10,
       "note": "やきもの散歩道入口まで徒歩 約10分",
       "noteEn": "Walk to the Pottery Footpath entrance, ~10 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b4cfa3ac3a3c.webp",
+     "photoCredit": {
+      "author": "ButuCC",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:MT-Tokoname_Station-WestGate_2019.jpg"
      }
     },
     {
@@ -16055,12 +21359,19 @@
      "name": "名鉄常滑駅",
      "nameEn": "Meitetsu Tokoname Station",
      "coords": [
-      34.8906,
-      136.83545
+      34.89615,
+      136.85427
      ],
      "time": "15:00",
      "what": "名鉄常滑線に乗車し、名鉄名古屋駅方面または中部国際空港方面へ移動する。",
-     "whatEn": "Board the Meitetsu Tokoname Line toward Nagoya or Chubu Centrair International Airport."
+     "whatEn": "Board the Meitetsu Tokoname Line toward Nagoya or Chubu Centrair International Airport.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/b4cfa3ac3a3c.webp",
+     "photoCredit": {
+      "author": "ButuCC",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:MT-Tokoname_Station-WestGate_2019.jpg"
+     }
     }
    ]
   },
@@ -16074,16 +21385,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 3267,
+   "distance": 4461,
    "duration": 0,
    "legs": [
     {
-     "distance": 384,
+     "distance": 1485,
      "duration": 0,
      "line": [
       [
-       34.8906,
-       136.83545
+       34.89615,
+       136.85427
       ],
       [
        34.890221,
@@ -16120,7 +21431,7 @@
      ]
     },
     {
-     "distance": 1595,
+     "distance": 1688,
      "duration": 0,
      "line": [
       [
@@ -16128,8 +21439,8 @@
        136.84906
       ],
       [
-       34.8906,
-       136.83545
+       34.89615,
+       136.85427
       ]
      ]
     }
@@ -17991,6 +23302,13 @@
       "min": 45,
       "note": "トモテツバス（阿伏兎・常石方面）で阿伏兎観音入口下車＋徒歩15分（または鞆港行き＋タクシー10分）",
       "noteEn": "Tomotetsu bus ~35 min + 15 min walk (or bus to Tomonoura + 10 min taxi)"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/f4d1ebe90ee3.webp",
+     "photoCredit": {
+      "author": "1stfinal",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fukuyama_Station_Building_(South)_20200927.jpg"
      }
     },
     {
@@ -18042,7 +23360,14 @@
      ],
      "time": "15:30",
      "what": "JR山陽新幹線・山陽本線で広島・岡山・大阪方面へ帰路につきます。",
-     "whatEn": "Board the JR Sanyo Shinkansen or Sanyo Line back toward Hiroshima, Okayama, or Osaka."
+     "whatEn": "Board the JR Sanyo Shinkansen or Sanyo Line back toward Hiroshima, Okayama, or Osaka.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/f4d1ebe90ee3.webp",
+     "photoCredit": {
+      "author": "1stfinal",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fukuyama_Station_Building_(South)_20200927.jpg"
+     }
     }
    ]
   },
@@ -18228,8 +23553,8 @@
      "name": "JR新山口駅",
      "nameEn": "JR Shin-Yamaguchi Station",
      "coords": [
-      34.09442,
-      131.39651
+      34.09571,
+      131.39417
      ],
      "time": "09:30",
      "what": "JR山陽新幹線・山陽本線で新山口駅に到着し、防長交通バス（秋芳洞行き）に乗車します。",
@@ -18239,6 +23564,13 @@
       "min": 55,
       "note": "防長交通バスで秋芳洞まで約40分＋秋芳洞からタクシー約15分",
       "noteEn": "Bocho Bus to Akiyoshido ~40 min, then taxi ~15 min"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/913c0bae1acd.webp",
+     "photoCredit": {
+      "author": "EXECUTOR",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Shin-Yamaguchi_Station_2.jpg"
      }
     },
     {
@@ -18324,16 +23656,16 @@
   },
   "baseMap": true,
   "walk": {
-   "distance": 34192,
+   "distance": 33947,
    "duration": 0,
    "legs": [
     {
-     "distance": 22636,
+     "distance": 22391,
      "duration": 0,
      "line": [
       [
-       34.09442,
-       131.39651
+       34.09571,
+       131.39417
       ],
       [
        34.25511,
@@ -20713,6 +26045,13 @@
       "min": 12,
       "note": "下山駅からごめん・なはり線で伊尾木駅（または安芸・後免方面）へ",
       "noteEn": "Return by Gomen-Nahari Line toward Ioki / Kochi"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/86e4cf15ba7d.webp",
+     "photoCredit": {
+      "author": "Filler",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "page": "https://commons.wikimedia.org/wiki/File:Michinoeki_shinshu_tsutakijuku.jpg"
      }
     },
     {
@@ -20944,6 +26283,13 @@
       "min": 20,
       "note": "昭和バス（有浦線）またはタクシーで約15〜20分、浜野浦へ",
       "noteEn": "Showa Bus or taxi ~15–20 min to Hamanoura"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/2175f1f39f53.webp",
+     "photoCredit": {
+      "author": "Aboshi at Japanese Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "page": "https://commons.wikimedia.org/wiki/File:NagoyaC_museum.jpg"
      }
     },
     {
@@ -23572,6 +28918,13 @@
       "min": 5,
       "note": "徒歩約5分でJR住吉駅へ",
       "noteEn": "Walk approx. 5 min to JR Sumiyoshi Station"
+     },
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/7fc9e73f3c55.webp",
+     "photoCredit": {
+      "author": "Saigen Jiro",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Nagabeta_Kaishoro_Tidal_Road,_gaikan-1.jpg"
      }
     },
     {
@@ -23584,7 +28937,14 @@
      ],
      "time": "17:45",
      "what": "JR三角線で熊本駅へ戻り、新幹線やJR線で帰路につく。",
-     "whatEn": "Take the JR Misumi Line back to Kumamoto Station."
+     "whatEn": "Take the JR Misumi Line back to Kumamoto Station.",
+     "photo": "https://pub-63bccf8e4ef949bb8384ab641631a180.r2.dev/latitude/hidden/stops/2510bf387a07.webp",
+     "photoCredit": {
+      "author": "小田急4000系ファン",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:JR%E4%BD%8F%E5%90%89%E9%A7%85%E5%8C%97%E5%8F%A3.jpg"
+     }
     }
    ]
   },

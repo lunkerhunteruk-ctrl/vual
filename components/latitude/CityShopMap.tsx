@@ -37,7 +37,8 @@ export type ShopPin = {
   note: string;
   site?: string; // 公式サイト（Instagram でない物）
   instagram?: string;
-  photo?: string; // 店からもらった写真の URL
+  photo?: string; // 店の写真の URL（店からもらった物か、公式サイトのシェア用の写真）
+  photoFrom?: 'shop' | 'site';
   mapUrl: string;
   gq?: string; // Google マップの道案内に渡す言葉（店の名前＋住所）
   // 2026-11-11 見る所（アート・名所）。category は 'art' か 'sight'。店ではなく目印（凛の一言なし・カードに「目印」）
@@ -927,7 +928,7 @@ function ShopCard({ p, ja, who, person, onClose }: { p: ShopPin; ja: boolean; wh
         <figure className="mt-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={p.photo} alt={p.name} className="block w-full object-cover" style={{ aspectRatio: '4 / 3' }} />
-          <figcaption className="mt-1.5 text-[11px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{ja ? '写真：店から' : 'Photo: from the shop'}</figcaption>
+          <figcaption className="mt-1.5 text-[11px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{p.photoFrom === 'site' ? (ja ? '写真：公式サイトより' : 'Photo: official website') : ja ? '写真：店から' : 'Photo: from the shop'}</figcaption>
         </figure>
       )}
       <p className="mt-3 text-[16px] leading-relaxed" style={{ color: INK }}>{p.what}</p>

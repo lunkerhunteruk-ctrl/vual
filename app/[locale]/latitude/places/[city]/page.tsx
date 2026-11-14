@@ -15,6 +15,8 @@ import { CityDayRoute, CityRoute, CityWear, hasDayRoute, placeAnchor } from '@/c
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
 import { latAsset, latAssetAbs } from '@/lib/latitude-assets';
+import SHOP_PHOTOS_JSON from '@/lib/latitude-shop-photos.json';
+const SHOP_PHOTOS = SHOP_PHOTOS_JSON as Record<string, Record<string, string>>;
 import BANNERS from '@/lib/latitude-banners.json';
 
 // 2026-11-13 町の頭の横長の写真（ウィキメディア・コモンズの自由に使える写真。撮った人と条件を写真の下に書く。選び方は vault.vual.jp tools/commons-town-photos.py）
@@ -95,7 +97,9 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         note: ja ? x.note : x.noteEn,
         site: isIg(x.url) ? undefined : x.url,
         instagram: x.instagram ?? (isIg(x.url) ? x.url : undefined),
-        photo: x.photo ? latAsset(`places/${c.slug}/shops/${x.photo}`) : undefined,
+        // 2026-11-14 ユーザー：店の写真は公式サイトのシェア用の写真も使う（言われたら取り下げる）。店からもらった写真があればそちらが先
+        photo: x.photo ? latAsset(`places/${c.slug}/shops/${x.photo}`) : SHOP_PHOTOS[c.slug]?.[x.name] ? latAsset(`places/${c.slug}/shops/${SHOP_PHOTOS[c.slug][x.name]}`) : undefined,
+        photoFrom: x.photo ? 'shop' : SHOP_PHOTOS[c.slug]?.[x.name] ? 'site' : undefined,
         mapUrl: mapUrl(x.name, x.address),
         gq: `${x.name} ${x.address}`,
       };
