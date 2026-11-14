@@ -850,5 +850,65 @@
   "source": "https://commons.wikimedia.org/wiki/File:Miyakojima,_Okinawa_Prefecture;_July_2013_(01).jpg",
   "w": 1920,
   "h": 1272
+ },
+ "yamanashi": {
+  "file": "banners/yamanashi.jpg",
+  "pos": "50% 55%",
+  "alt": "Yamanashi City across the Fuefuki River",
+  "altJa": "笛吹川から見る山梨市の街並み",
+  "author": "っ",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Yamanashi_City_Center_from_Fuefuki_River,_Yamanashi,_Yamanashi,_Japan.jpg",
+  "w": 1920,
+  "h": 1440
+ },
+ "asahikawa": {
+  "file": "banners/asahikawa.jpg",
+  "pos": "50% 55%",
+  "alt": "Asahibashi Bridge over the Ishikari River, with the Daisetsuzan range",
+  "altJa": "石狩川の旭橋と大雪山",
+  "author": "Masal64",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Asahibashi_Bridge_and_Mt._Daisetsuzan_Range.jpg",
+  "w": 1920,
+  "h": 1080
+ },
+ "obihiro": {
+  "file": "banners/obihiro.jpg",
+  "pos": "50% 45%",
+  "alt": "The Tokachi Plain around Obihiro, with the Hidaka mountains",
+  "altJa": "帯広をかこむ十勝平野と日高山脈",
+  "author": "T.Kiya",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tokachi_Plain_aerial_view_near_Obihiro_Hokkaido.jpg",
+  "w": 1920,
+  "h": 1280
+ },
+ "kushiro": {
+  "file": "banners/kushiro.jpg",
+  "pos": "50% 60%",
+  "alt": "Nusamai Bridge in Kushiro at dusk",
+  "altJa": "夕暮れの幣舞橋",
+  "author": "Blueapple48",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nusamai-bridge-Magictime.JPG",
+  "w": 1920,
+  "h": 1280
+ },
+ "yomitan": {
+  "file": "banners/yomitan.jpg",
+  "pos": "50% 50%",
+  "alt": "The curved stone walls of Zakimi Castle in Yomitan",
+  "altJa": "読谷の座喜味城跡の石垣",
+  "author": "Toshihiro Matsui",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%E5%BA%A7%E5%96%9C%E5%91%B3%E5%9F%8E%E8%B6%BE_-_panoramio.jpg",
+  "w": 1920,
+  "h": 1280
  }
 }
