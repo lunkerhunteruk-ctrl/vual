@@ -10,6 +10,7 @@ import { ReelPlayer } from '@/components/latitude/ReelPlayer';
 import { reelSources } from '@/components/latitude/Latitude';
 import { getIssue, isLive } from '@/lib/latitude';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 
 // 2026-10-30 街のページの「この季節に何を着るか」と「旅人の1日の回り方」。AI のチャットにない、VUAL の旅の服と、その日を丸ごと真似できる順番を見せる。
 // 回り方の店は「近くの、旅人のおすすめ」。旅人がその店に行ったとは書かない（行ったのは号の場面の場所だけ）。
@@ -135,7 +136,8 @@ export function googleDirectionsUrl(c: LatitudeCity) {
   return `https://www.google.com/maps/dir/?${u.toString()}`;
 }
 
-export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: boolean; who: string; locale: string }) {
+// after：節の最後に置く物（2026-11-14 街のページの「凛の〇〇の1日 →」）
+export function CityDayRoute({ c, ja, who, locale, after }: { c: LatitudeCity; ja: boolean; who: string; locale: string; after?: ReactNode }) {
   if (!hasDayRoute(c)) return null;
   const issue = getIssue(c.issue ?? c.slug);
   const reel = issue && isLive(issue) && issue.streamId ? reelSources(issue) : null;
@@ -222,6 +224,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
         <div className="mt-14">
           <CityRoute c={c} ja={ja} who={who} withMap bare />
         </div>
+        {after}
       </div>
     </section>
   );

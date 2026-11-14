@@ -212,43 +212,20 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <p className="mt-8 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>{ja ? c.introJa : c.intro}</p>
       </header>
 
-
       {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
-      <CityDayRoute c={c} ja={ja} who={who} locale={locale} />
-
-      {/* 2026-11-14 この町から行く穴場（lib/latitude-hidden.ts。地元で有名な1か所への1日） */}
-      {HIDDEN.some((h) => h.townSlug === c.slug) && (
-        <section className="px-4 pb-16 md:px-8 md:pb-20">
-          <div className="mx-auto max-w-6xl">
-            <SectionLabel>{ja ? `${c.nameJa}から行く地元の名所` : `A hidden spot from ${c.name}`}</SectionLabel>
-            <ul className="flex flex-col gap-5">
-              {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
-                <li key={h.slug} className="max-w-2xl">
-                  <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="-my-2 inline-flex min-h-[44px] items-center text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
-                  <p className="mt-1 text-[15px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
-                </li>
-              ))}
-            </ul>
+      {/* 2026-11-14 ②-2 回り方のある街は、下の「1日の写真の帯」を出さない（同じ写真が回り方・帯・何を着るかで3回出ていたため。オーナー決定）。
+          帯の下にあった「凛の〇〇の1日 →」は、この節の最後へ移した */}
+      <CityDayRoute c={c} ja={ja} who={who} locale={locale}
+        after={p && (
+          <div className="mt-8 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]">
+            <Link href={`/${locale}/latitude/people/${p.slug}`} className={TAP_INLINE} style={{ color: INK }}>
+              {ja ? `${who}の${c.nameJa}の1日` : `${who}'s day in ${c.name}`}&nbsp;&nbsp;→
+            </Link>
           </div>
-        </section>
-      )}
+        )} />
 
-      {pins.length + sightPins.length > 0 && (
-        <section className="px-4 pb-16 md:px-8 md:pb-24">
-          <div className="mx-auto max-w-6xl">
-            <SectionLabel>
-              {c.routeBuilder
-                ? (ja ? `${who}のおすすめを地図で見る・自分でルートを組む` : `Where ${who} would go, on the map — or build your own route`)
-                : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
-            </SectionLabel>
-            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
-              pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
-          </div>
-        </section>
-      )}
-
-      {/* 旅人の1日の場面（号の静止画）。横に流す。2026-11-11 号のない町（場面の写真が無い）は出さない＝「凛の〇〇の1日」とも書かない */}
-      {c.images.length > 0 && <section className="pb-16 md:pb-24">
+      {/* 2026-11-14 ②-2 回り方の地図が無い街だけ、1日をなぞる所に置く。旅人の1日の場面（号の静止画）。横に流す。2026-11-11 号のない町（場面の写真が無い）は出さない＝「凛の〇〇の1日」とも書かない */}
+      {!hasDayRoute(c) && c.images.length > 0 && <section className="pb-16 md:pb-24">
         <div className="mx-auto flex max-w-6xl snap-x gap-3 overflow-x-auto px-4 md:gap-6 md:px-8" style={{ scrollbarWidth: 'thin' }}>
           {c.images.map((im) => (
             // 2026-11-01 data-lat-photo：その街が夜の間だけ、写真をうすく暗く・青くする（NowLine の <style>）
@@ -267,23 +244,21 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         </div>
       </section>}
 
-      {/* 深掘りの街だけ：旅人が泊まった宿の部屋（日本の時刻で場面が変わる） */}
-      {c.inn && (
+      {!hasDayRoute(c) && <CityRoute c={c} ja={ja} who={who} />}
+
+      {pins.length + sightPins.length > 0 && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
-          <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:items-end md:gap-12">
-            <div className="mb-5 md:mb-0">
-              <SectionLabel>{ja ? c.inn.titleJa : c.inn.title}</SectionLabel>
-              <p className="-mt-4 max-w-sm text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? c.inn.noteJa : c.inn.note}</p>
-            </div>
-            <div className="w-full max-w-[360px] overflow-hidden" style={{ aspectRatio: '4 / 5' }}>
-              <RoomCam cam={c.inn.cam} reaction={null} fallback={ja ? '戸は開いています。' : 'The door is open.'} />
-            </div>
+          <div className="mx-auto max-w-6xl">
+            <SectionLabel>
+              {c.routeBuilder
+                ? (ja ? `${who}のおすすめを地図で見る・自分でルートを組む` : `Where ${who} would go, on the map — or build your own route`)
+                : (ja ? `地図で見る、${who}のおすすめ` : `Where ${who} would go, on the map`)}
+            </SectionLabel>
+            <CityShopMap src={`/latitude/citymaps/${c.slug}.json`} pins={[...pins, ...sightPins]} ja={ja} who={who} person={c.person} cats={mapCats}
+              pairsSrc={c.routeBuilder ? `/latitude/routes/${c.slug}-pairs.json` : undefined} rinStops={rinStops} />
           </div>
         </section>
       )}
-
-      {!hasDayRoute(c) && <CityRoute c={c} ja={ja} who={who} />}
-      <CityWear c={c} ja={ja} who={who} />
 
       <section className="px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto max-w-6xl">
@@ -335,6 +310,41 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
           </div>
         </section>
       )}
+
+      <CityWear c={c} ja={ja} who={who} />
+
+      {/* 2026-11-14 この町から行く穴場（lib/latitude-hidden.ts。地元で有名な1か所への1日） */}
+      {HIDDEN.some((h) => h.townSlug === c.slug) && (
+        <section className="px-4 pb-16 md:px-8 md:pb-20">
+          <div className="mx-auto max-w-6xl">
+            <SectionLabel>{ja ? `${c.nameJa}から行く地元の名所` : `A hidden spot from ${c.name}`}</SectionLabel>
+            <ul className="flex flex-col gap-5">
+              {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
+                <li key={h.slug} className="max-w-2xl">
+                  <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="-my-2 inline-flex min-h-[44px] items-center text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
+                  <p className="mt-1 text-[15px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* 深掘りの街だけ：旅人が泊まった宿の部屋（日本の時刻で場面が変わる） */}
+      {c.inn && (
+        <section className="px-4 pb-16 md:px-8 md:pb-24">
+          <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:items-end md:gap-12">
+            <div className="mb-5 md:mb-0">
+              <SectionLabel>{ja ? c.inn.titleJa : c.inn.title}</SectionLabel>
+              <p className="-mt-4 max-w-sm text-[15px] leading-relaxed" style={{ color: MUTE }}>{ja ? c.inn.noteJa : c.inn.note}</p>
+            </div>
+            <div className="w-full max-w-[360px] overflow-hidden" style={{ aspectRatio: '4 / 5' }}>
+              <RoomCam cam={c.inn.cam} reaction={null} fallback={ja ? '戸は開いています。' : 'The door is open.'} />
+            </div>
+          </div>
+        </section>
+      )}
+
 
       <footer className="pb-28">
         <PublishedBy locale={locale} />
