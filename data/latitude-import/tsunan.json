@@ -1,0 +1,384 @@
+{
+ "slug": "tsunan",
+ "city": {
+  "name": "Tsunan",
+  "nameJa": "津南",
+  "latitude": "37.0° N",
+  "country": "Niigata, Japan",
+  "countryJa": "新潟県",
+  "person": "rin",
+  "coords": [
+   37.02,
+   138.649
+  ],
+  "intro": "A town of river terraces along the Shinano River, on the border with Nagano in heavy-snow country. Sake brewed with snowmelt, snow-buried carrots and local rice, plus Akiyamago woodwork and village bread and soba: Rin's picks.",
+  "introJa": "長野との県境、信濃川沿いの河岸段丘に広がる豪雪の町。雪解け水の酒蔵と雪下人参や米の店、秋山郷の木工、集落のパンとそばを、凛のおすすめで。",
+  "locator": {
+   "en": "In southern Niigata · a river-terrace town in heavy-snow country",
+   "ja": "新潟県の南端・信濃川沿いの河岸段丘と豪雪の町"
+  },
+  "industries": [
+   {
+    "key": "snow-sake",
+    "en": "Snow-Country Sake Brewing",
+    "ja": "豪雪地帯の酒造り",
+    "about": "Heavy winter snow on the Naeba range melts into ultra-soft water that feeds Tsunan's sake breweries. Tsunan Sake Brewery and Naeba Shuzo brew with this snowmelt and locally grown rice.",
+    "aboutJa": "苗場山系の深い雪が解けて湧く超軟水が、津南の酒造りを支える。町内の津南醸造や苗場酒造が、この雪解け水と地元の米で酒を醸している。",
+    "_src": "Tsunan's heavy snowfall feeds ultra-soft snowmelt water from the Naeba mountain range, supporting local sake breweries."
+   },
+   {
+    "key": "snow-agriculture",
+    "en": "Snow-Buried Produce & Highland Farming",
+    "ja": "雪下人参・高原農業",
+    "about": "Winter snow settles metres deep over the fields, keeping the ground just above freezing. Carrots left under the snow—yukishita ninjin—grow sweet there, alongside highland vegetables and Uonuma Koshihikari rice.",
+    "aboutJa": "冬に何メートルも積もる雪の下で、畑の土は凍らずに保たれる。雪の下で冬を越す雪下人参や高原の野菜、魚沼産コシヒカリなど、雪国の農業が町の食を支える。",
+    "_src": "Deep winter snow insulates carrots and highland crops, concentrating sweetness and supporting farm-direct food makers."
+   }
+  ]
+ },
+ "places": {
+  "津南醸造株式会社": {
+   "nameEn": "Tsunan Sake Brewery",
+   "area": "秋成",
+   "areaEn": "Akinari",
+   "tags": [
+    "sake"
+   ],
+   "what": "苗場山系の超軟水の雪解け水と地元の酒米で「つなん」「郷（GO）」「霧の塔」などを醸す酒蔵。直売店は平日9時から16時で、事前予約制の見学と定番酒3種の試飲がある。",
+   "whatEn": "A sake brewery using ultra-soft Naeba snowmelt and local rice for labels including Tsunan, GO and Kiri no Tou. The direct shop opens weekdays 9:00–16:00; reservation-only tours include a tasting of three standard sakes.",
+   "note": "試飲のあとは、直売店で『郷』を一本選ぶ。",
+   "noteEn": "After the tasting, pick a bottle of GO at the shop.",
+   "_src": {
+    "category": "local",
+    "industry": "snow-sake",
+    "nameKana": "つなんじょうぞう",
+    "address": "新潟県中魚沼郡津南町大字秋成7141",
+    "url": "https://tsunan-sake.com/",
+    "whatJa": "苗場山系の雪解け水（超軟水）と地元産の酒米で「つなん」「郷（GO）」「霧の塔」などを醸す津南町の酒蔵で、直売店と予約制の見学・試飲を行っています。",
+    "whatEn": "A local sake brewery in the Akinari area brewing with Naeba snowmelt water and locally grown rice, offering a direct shop and reservation-based tours.",
+    "facts": "Brews brands including Tsunan, GO, and Kiri no Tou; brewery direct shop open weekdays 9:00–16:00; 30–35 min reservation-required tours include free tasting of 3 standard sakes.",
+    "weak": "Direct shop is generally closed weekends and holidays (may open during peak seasons/events); tours require advance reservation.",
+    "verifiedBy": "https://tsunan-sake.com/go-uonuma-sparkling/",
+    "quote": "津南醸造株式会社（新潟県中魚沼郡津南町）は、魚沼産コシヒカリ100％でつくった日本酒スパークリング「GO UONUMA SPARKLING（ゴー ウオヌマ スパークリング）」を、2026年9月25日より新潟県内限定で先行発売します。",
+    "fixes": "住所一致。直売店・事前予約制見学・試飲は公式 https://tsunan-sake.com/experience/ に記載。",
+    "coords": [
+     36.97482,
+     138.63283
+    ]
+   }
+  },
+  "苗場酒造株式会社": {
+   "nameEn": "Naeba Shuzo",
+   "area": "大割野・下船渡（市街地）",
+   "areaEn": "Okawarino / Town Centre",
+   "tags": [
+    "sake"
+   ],
+   "what": "1907年創業の酒蔵。「ゆきのまゆ」「深然」「苗場山」などを小さな仕込みで醸し、蔵の売店で直売する。9時から17時で、水曜と日曜は休み。",
+   "whatEn": "A sake brewery founded in 1907, making small-batch Yukinomayu, Mizen and Naebasan and selling them at the brewery shop. Open 9:00–17:00; closed Wednesdays and Sundays.",
+   "note": "小さな仕込みの『ゆきのまゆ』を見てみたい。",
+   "noteEn": "I would look for the small-batch Yukinomayu.",
+   "_src": {
+    "category": "local",
+    "industry": "snow-sake",
+    "nameKana": "なえばしゅぞう",
+    "address": "新潟県中魚沼郡津南町大字下船渡戊555番地",
+    "url": "https://www.naebasan.com/",
+    "whatJa": "1907年（明治40年）創業の老舗酒蔵で、伝統的な小仕込みによる「苗場山」「ゆきのまゆ」「醸す森」などを蔵の売店で直売しています。",
+    "whatEn": "Founded in 1907 near Tsunan Station, this small-batch sake brewery sells its Naebasan, Yukinomayu, and Kamosumori labels at its brewery shop.",
+    "facts": "Founded in 1907 (Meiji 40); located about 4 min by car or 20 min walk from JR Tsunan Station; shop open 9:00–17:00 (closed Wed & Sun).",
+    "weak": "Regular brewery tours are currently suspended (special openings only during autumn kura-matsuri events); closed Wednesdays and Sundays.",
+    "verifiedBy": "https://www.naebasan.com/",
+    "quote": "2026年7月1日に1700本限定醸造「酒発点(しゅっぱつてん)」が新発売となりました。",
+    "fixes": "whatEn/whatJa: 「醸す森」は2024年10月より「ゆきのまゆ」にリブランド。現行銘柄は「ゆきのまゆ・深然・苗場山」とする。住所は公式「新潟県中魚沼郡津南町下船渡戊555」と一致。",
+    "coords": [
+     37.01367,
+     138.64937
+    ]
+   }
+  },
+  "ROKUの店": {
+   "nameEn": "ROKU no Mise",
+   "area": "大割野・下船渡（市街地）",
+   "areaEn": "Okawarino / Town Centre",
+   "tags": [
+    "vegetables",
+    "lunch"
+   ],
+   "what": "秋成の農業法人「麓」が津南ショッピングセンター内で営む店。自家産の魚沼産コシヒカリや野菜を使ったランチと、旬の野菜や加工品を置く。11時から18時で、水・木曜は休み。",
+   "whatEn": "A shop and lunch counter inside the Tsunan Shopping Center run by local farm ROKU, serving lunches with its own Uonuma Koshihikari rice and vegetables alongside seasonal produce. Open 11:00–18:00; closed Wednesdays and Thursdays.",
+   "note": "自家産のコシヒカリと旬の野菜のランチを食べる。",
+   "noteEn": "Have lunch with their own Koshihikari rice and seasonal vegetables.",
+   "_src": {
+    "category": "local",
+    "industry": "snow-agriculture",
+    "nameKana": "ろくのみせ",
+    "address": "新潟県中魚沼郡津南町下船渡甲7192-2（津南ショッピングセンター内）",
+    "url": "https://rokutsunan.com/",
+    "whatJa": "津南町秋成の農業法人「株式会社麓」が営む直営カフェ＆ショップで、自家栽培の雪下人参やアスパラガス、コシヒカリ等を使ったカレーやジェラートが楽しめます。",
+    "whatEn": "A farm-to-table cafe and shop operated by local agricultural corporation ROKU, serving curries and unique gelatos made with their Tsunan snow-buried carrots and farm produce.",
+    "facts": "Run by Tsunan agricultural firm ROKU (株式会社麓) which grows snow-buried carrots, asparagus, and award-winning Koshihikari rice; open 11:00–18:00, closed Wed & Thu.",
+    "weak": "Located inside the local Tsunan Shopping Center building rather than a standalone rural storefront; closed Wednesdays and Thursdays.",
+    "verifiedBy": "https://leaf-laboratory.com/blogs/plant-news/2026-09-21-e-099fdb842df2",
+    "quote": "新潟県津南町の農業法人「麓」が運営する「ROKUの店」では、自家産の米や野菜を使った料理や加工品を提供しています。",
+    "fixes": "whatEn/whatJa: 自家産の魚沼産コシヒカリや野菜を使ったランチ、旬の野菜・加工品・地域商品の販売とする。記事は津南ショッピングセンター内と記載するが番地は未記載。自家産雪下人参のジェラートという限定的説明は確認できない。",
+    "coords": [
+     37.02417,
+     138.662
+    ]
+   }
+  },
+  "パンと暮らしと ヤナギヤ": {
+   "nameEn": "Pan to Kurashi to Yanagiya",
+   "area": "三箇",
+   "areaEn": "Sanga",
+   "tags": [
+    "bread",
+    "sweets"
+   ],
+   "what": "築150年以上の古民家を直した集落のパン屋。数種類の国産小麦と自家製酵母で焼くカンパーニュや惣菜パン、カヌレ、スコーンが並ぶ。10時から売り切れまで、営業日はInstagramで知らせる。",
+   "whatEn": "A bakery in a restored farmhouse over 150 years old, baking sourdough, savoury breads, canelés and scones with domestic wheat and wild starter. Opens at 10:00 until sold out; open days are posted on Instagram.",
+   "note": "カンパーニュとカヌレを一つずつ選んでみたい。",
+   "noteEn": "I would pick a sourdough loaf and a canelé, one of each.",
+   "_src": {
+    "category": "sweets",
+    "industry": "",
+    "nameKana": "ぱんとくらしと やなぎや",
+    "address": "新潟県中魚沼郡津南町三箇甲967",
+    "url": "https://www.instagram.com/yanagiya_pan/",
+    "whatJa": "築150年以上の古民家を改装した集落のパン屋で、国産小麦や自家製酵母を使ったカンパーニュやカヌレ、スコーンなどを販売しています。",
+    "whatEn": "A popular bakery set in a 150-year-old kominka farmhouse in a quiet hamlet, baking domestic-wheat sourdough, canelés, and scones.",
+    "facts": "Housed in a 150+ year old traditional farmhouse; opens at 10:00 until sold out; operates irregularly about twice a week per Instagram calendar.",
+    "weak": "Irregular schedule (only ~2 days per week) and sells out quickly; must check Instagram calendar before visiting.",
+    "verifiedBy": "https://tjniigata.jp/gourmet/202610yanagiya/",
+    "quote": "店頭にはハード系のカンパーニュをはじめ、地元食材をふんだんに使った惣菜パン、さらには洋菓子など20種類以上が並んでいます。",
+    "fixes": "住所「津南町三箇甲967」、築150年以上、国産小麦・自家製酵母は一致。カヌレ・スコーンは2026年記事 https://www.andkomachi.com/article/1154504 の本文にも記載。",
+    "coords": [
+     37.05372,
+     138.68081
+    ]
+   }
+  },
+  "隠れ家テラス みくらす": {
+   "nameEn": "Kakurega Terrace Mikurasu",
+   "area": "秋山郷（見倉）",
+   "areaEn": "Akiyamago",
+   "tags": [
+    "galette",
+    "herb-tea"
+   ],
+   "what": "秋山郷の見倉集落にある、築200年以上の古民家のカフェ。地元産有機そば粉100%のガレットや和ハーブティーを出す。金・土・日曜の11時から15時（LO14時半）で、冬は雪のため休む時期がある。",
+   "whatEn": "A café in a farmhouse over 200 years old in Mikura hamlet, Akiyamago, serving 100% local organic buckwheat galettes and Japanese herb tea. Open Friday–Sunday 11:00–15:00 (LO 14:30); closes in heavy snow.",
+   "note": "そば粉のガレットと和ハーブティーにする。",
+   "noteEn": "A buckwheat galette and Japanese herb tea.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "かくれがてらす みくらす",
+    "address": "新潟県中魚沼郡津南町秋成10476",
+    "url": "https://www.instagram.com/kakurega_terrace_mikurasu/",
+    "whatJa": "秋山郷の見倉集落にある築200年以上の古民家カフェで、地元産有機そば粉100%のガレットランチや特製和ハーブティーを提供しています。",
+    "whatEn": "A weekend-only kominka cafe in Akiyamago's Mikura hamlet serving 100% local organic buckwheat galettes and wild-herb tea.",
+    "facts": "Set in a 200+ year old farmhouse; open Fri–Sun 11:00–15:00 (LO 14:30); serves 100% local organic buckwheat galettes.",
+    "weak": "Open Friday–Sunday only (11:00–15:00) and subject to winter seasonal closure in heavy snow.",
+    "verifiedBy": "https://tjniigata.jp/gourmet/2026-10-mikurasu-newopen/",
+    "quote": "昔ながらの生活様式が残る秋山郷で200年以上前に建てられた古民家を改装したカフェがオープンしました。",
+    "fixes": "住所「中魚沼郡津南町秋成10476」、地元産有機そば粉100パーセントのガレット、和ハーブティーは一致。営業は金～日曜11:00～15:00（月～木曜定休）。",
+    "coords": [
+     36.91457,
+     138.64308
+    ]
+   }
+  },
+  "大井平そば工房": {
+   "nameEn": "Ooidaira Soba Kobo",
+   "area": "上郷（大井平）",
+   "areaEn": "Kamigo",
+   "tags": [
+    "soba"
+   ],
+   "what": "上郷大井平集落の小さなそば屋。自家製粉の津南産そば粉に山ゴボウの葉と布海苔をつなぎにした手打ちそばを出す。土曜・日曜の11時から14時ごろまで（祝日休み）、12月から春先まで冬期休業。",
+   "whatEn": "A small soba shop in Ooidaira hamlet, Kamigo, serving handmade soba from house-milled local buckwheat bound with mountain burdock leaf and funori seaweed. Open Saturday–Sunday around 11:00–14:00 (closed public holidays); closed in winter from December.",
+   "note": "山ゴボウの葉をつなぎにした手打ちそばを食べる。",
+   "noteEn": "Order the handmade soba bound with mountain burdock leaf.",
+   "_src": {
+    "category": "food",
+    "industry": "",
+    "nameKana": "おおいだいらそばこうぼう",
+    "address": "新潟県中魚沼郡津南町上郷大井平8204",
+    "url": "https://ooidairasoba.sakura.ne.jp/",
+    "whatJa": "津南町上郷大井平集落にある土日限定の蕎麦屋で、自家製粉の津南産そば粉に山ゴボウの葉と布海苔をつなぎに使った手打ちそばを提供しています。",
+    "whatEn": "A weekend-only handmade soba shop in Ooidaira hamlet milling local Tsunan buckwheat and using mountain burdock leaf and funori seaweed as binders.",
+    "facts": "Open Saturdays and Sundays only (11:00–14:00/15:00, until sold out); serves seasonal sansai and homegrown vegetable tempura; closes in winter (Dec–late Mar).",
+    "weak": "Open weekends only with limited daily quantities; closed in winter from December through late March.",
+    "verifiedBy": "https://ooidairasoba.sakura.ne.jp/",
+    "quote": "12月5～6日に追加の特別営業を行うことになりました。",
+    "fixes": "住所「新潟県中魚沼郡津南町上郷大井平8204」は https://snow-country.jp/archives/6285 の本文と一致（2022年掲載）。自家製粉の津南産そば、オヤマボクチ（地元名やまごぼう）の葉・フノリのつなぎは公式「大井平そばについて」に一致。通常は土日11:00～14:00くらい、祝日休み。2026年は11月14日臨時休業、12月5・6日特別営業。",
+    "coords": [
+     36.99099,
+     138.6037
+    ]
+   }
+  },
+  "Ohisama genki 山の上の小さなカフェ": {
+   "nameEn": "Ohisama Genki",
+   "area": "龍ヶ窪周辺（谷内）",
+   "areaEn": "Ryugakubo",
+   "tags": [
+    "coffee",
+    "lunch"
+   ],
+   "what": "龍ヶ窪近くの標高450メートルの集落にある小さなカフェ。自家栽培の無農薬野菜を使った月替わりランチやスイーツ、コーヒーを出す。金〜月曜の10時から17時で、12月下旬から春まで冬期休業。",
+   "whatEn": "A small hilltop café at 450 m near Ryugakubo serving coffee, sweets and monthly lunches with pesticide-free homegrown vegetables. Open Friday–Monday 10:00–17:00; closed from late December through early spring.",
+   "note": "龍ヶ窪を見たあと、ここでコーヒーにする。",
+   "noteEn": "After Ryugakubo, stop here for coffee.",
+   "_src": {
+    "category": "coffee",
+    "industry": "",
+    "nameKana": "おひさまげんき やまのうえのちいさなかふぇ",
+    "address": "新潟県中魚沼郡津南町谷内844-2",
+    "url": "https://www.instagram.com/ohisama__genki/",
+    "whatJa": "龍ヶ窪近くの標高450mの集落にある小さなカフェで、無農薬の自家栽培野菜を使った月替わりランチやスイーツ、コーヒーが楽しめます。",
+    "whatEn": "A small hilltop cafe at 450m elevation near Ryugakubo serving coffee, sweets, and monthly lunches made with pesticide-free homegrown vegetables.",
+    "facts": "Located at 450m elevation near Ryugakubo Pond; open Fri–Mon 10:00–17:00 (closed Tue–Thu); closes for winter from late Dec to Mar/Apr.",
+    "weak": "Closed Tue–Thu and closed for winter from around Dec 20 through March/April.",
+    "verifiedBy": "https://note.com/modern_duck6132/n/nf5f8fdf94fa1",
+    "quote": "新潟県で、\n小さなカフェ「おひさまげんき」を\n営んでいるみつこです",
+    "fixes": "2026年の店主ブログで営業継続を確認。住所「津南町谷内844-2」、自家栽培無農薬野菜・月替わりランチ・スイーツ・コーヒーは https://tokamachi.yukiguni.town/gourmet/183992.html の本文に一致（同記事は2022年）。",
+    "coords": [
+     36.9838,
+     138.63081
+    ]
+   }
+  },
+  "山源木工": {
+   "nameEn": "Yamagen Mokko",
+   "area": "秋山郷（大赤沢）",
+   "areaEn": "Akiyamago",
+   "tags": [
+    "wood",
+    "furniture",
+    "tableware"
+   ],
+   "what": "秋山郷で親子四代、約100年にわたり無垢材の木工品を作る工房。栃の輪切りテーブルやこね鉢、木の雑貨を展示販売し、食堂を併設する。食堂は12月から3月初めまで冬期休業。",
+   "whatEn": "A four-generation, century-old woodcraft workshop in Akiyamago making solid-wood round-cut tables, kneading bowls and wooden goods, with a dining room next door. The dining room closes from December to early March.",
+   "note": "1階の展示場で、栃の木目の小物から見ていく。",
+   "noteEn": "Start on the ground floor with the small horse-chestnut wood pieces.",
+   "_src": {
+    "category": "craft",
+    "industry": "",
+    "nameKana": "やまげんもっこう",
+    "address": "新潟県中魚沼郡津南町大字大赤沢丁97",
+    "url": "https://otochi.com/",
+    "whatJa": "秋山郷で親子四代約100年にわたり無垢材の木工品を制作・販売する工房で、輪切りテーブルや一輪挿し・木工雑貨を展示販売し、食堂も併設しています。",
+    "whatEn": "A four-generation, ~100-year-old woodcraft workshop and showroom in Akiyamago crafting solid-wood round-cut tables, chairs, vases, and wooden goods, with an adjoining dining space.",
+    "facts": "Four generations (~100 years) in Akiyamago near Ja-buchi Falls; showroom open 8:00/9:00–17:00; adjoining restaurant (10:00–15:00 LO) closes Dec–early Mar.",
+    "weak": "Adjoining dining room closes Dec–early March, and the woodcraft showroom has irregular winter hours (call ahead in heavy snow).",
+    "verifiedBy": "https://otochi.com/%ef%bc%98%e6%9c%88%ef%bc%97%e6%97%a5%e9%87%91%e9%a3%9f%e5%a0%82%e3%81%8a%e4%bc%91%e3%81%bf%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2-2/",
+    "quote": "なお、１階木工品展示場は通常どおり営業いたします。",
+    "fixes": "公式トップ https://otochi.com/ の住所「新潟県中魚沼郡津南町大赤沢丁97」、親子四代約100年の無垢木工、輪切りテーブル・椅子・生活雑貨、食堂併設は一致。引用した告知は11月15日の食堂のみ休業し展示場は営業する旨。",
+    "coords": [
+     36.88122,
+     138.63838
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "農と縄文の体験実習館「なじょもん」",
+   "nameEn": "Najomon (Tsunan Agriculture & Jomon Museum)",
+   "kind": "art",
+   "area": "下船渡",
+   "areaEn": "Shimofunato",
+   "address": "新潟県中魚沼郡津南町下船渡乙835",
+   "url": "https://www.najomon.com/",
+   "what": "津南の農業・縄文・民俗を伝える体験学習施設。町内で出土した縄文土器や石器を展示し、屋外には竪穴式住居7軒を復元した縄文ムラがある。9時から17時、月曜と年末年始は休み。",
+   "whatEn": "A museum and hands-on learning centre for Tsunan's farming, Jomon and folk history, showing locally excavated Jomon pottery and stone tools alongside seven reconstructed pit dwellings outdoors. Open 9:00–17:00; closed Mondays and year-end/New Year.",
+   "coords": [
+    37.04316,
+    138.67338
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://www.najomon.com/page_top/index.php （秋季企画展2026/9/12〜11/29、第11回フォトコンテスト展示会2026/12/12〜2027/3/14を確認）および https://tsunan.info/najomon/ （住所・開館時間・休館日）",
+   "_coordsSource": "OSM way 639721021（津南町農と縄文の体験実習館 なじょもん）"
+  },
+  {
+   "name": "龍ヶ窪",
+   "nameEn": "Ryugakubo Pond",
+   "kind": "sight",
+   "area": "龍ヶ窪周辺（谷内）",
+   "areaEn": "Ryugakubo",
+   "address": "新潟県中魚沼郡津南町谷内6217",
+   "url": "https://tsunan.info/ryugakubo/",
+   "what": "地下水が湧き出る池で、日量43,000トンの水が1日で入れ替わり、澄んだ水を保つ。1974年に新潟県の自然環境保全地域に指定された。",
+   "whatEn": "A spring-fed pond whose 43,000 tons of daily groundwater completely turn over once a day, keeping the water clear. Designated a Niigata Prefectural Nature Conservation Area in 1974.",
+   "notice": "冬期は閉鎖。",
+   "noticeEn": "Closed in winter.",
+   "coords": [
+    36.97486,
+    138.62934
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://tsunan.info/ryugakubo/ （津南町観光協会公式 ©2026）",
+   "_coordsSource": "OSM way 640504043（龍ヶ窪）"
+  },
+  {
+   "name": "見玉不動尊（正宝院）",
+   "nameEn": "Midama Fudoson (Shoboin Temple)",
+   "kind": "sight",
+   "area": "秋成",
+   "areaEn": "Akinari",
+   "address": "新潟県中魚沼郡津南町秋成9761",
+   "url": "https://tsunan.info/midamafudou/",
+   "what": "文治2年（1186年）の創建と伝わる天台宗の寺。老杉に囲まれた参道の石段70段の上に不動堂が建ち、石段の脇を湧水が滝となって流れる。",
+   "whatEn": "A Tendai temple said to have been founded in 1186. Seventy stone steps lined with old cedars and small spring-fed waterfalls lead up to the Fudo hall.",
+   "notice": "冬期は一部閉鎖（観光時期は4月〜12月）。",
+   "noticeEn": "Partially closed in winter (main season April–December).",
+   "coords": [
+    36.95154,
+    138.66776
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://tsunan.info/midamafudou/ （津南町観光協会公式 ©2026）",
+   "_coordsSource": "OSM node 6038275252（見玉不動尊 正宝院）"
+  },
+  {
+   "name": "見倉橋",
+   "nameEn": "Mikura Bridge",
+   "kind": "sight",
+   "area": "秋山郷（見倉）",
+   "areaEn": "Akiyamago",
+   "address": "新潟県中魚沼郡津南町結東地内",
+   "url": "https://tsunan.info/mikurabashi/",
+   "what": "秋山郷の中津川渓谷にかかる木製の吊橋。新潟の橋50選に選ばれており、西川美和監督の映画『ゆれる』の舞台にもなった。",
+   "whatEn": "A wooden suspension bridge over the Nakatsugawa Gorge in Akiyamago, selected among Niigata's 50 bridges and featured in Miwa Nishikawa's film Sway.",
+   "notice": "観光時期は春・夏・秋。重量制限500kg（大人7名ほど）。",
+   "noticeEn": "Open spring through autumn. Weight limit 500 kg (about 7 adults).",
+   "coords": [
+    36.917,
+    138.63985
+   ],
+   "verifiedAt": "2026-11-12",
+   "_source": "https://tsunan.info/mikurabashi/ （津南町観光協会公式 ©2026）",
+   "_coordsSource": "OSM way 226546765（見倉橋）"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "津南菓子処 松屋",
+   "verdict": "doubt",
+   "reason": "公式サイトの最新ニュースは2018年。©2026は証拠から除外。公式Facebookもcurlではエラーとなり、2026年の営業を示す日付付き本文を取得できなかった。"
+  },
+  {
+   "name": "雪椿の台所",
+   "verdict": "doubt",
+   "reason": " / 機械の照合：写した文が開いたページに無い"
+  },
+  {
+   "name": "カフェさんばる",
+   "verdict": "doubt",
+   "reason": "公式Instagramはcurlで本文を取得できない。記事 https://getnews.jp/archives/3686454 は2026年3月15日までのスタンプラリー参加店として紹介するが公開日は2025-12-19。2026年の日付付き営業文を取得できず、指定の基準では保留。"
+  }
+ ]
+}

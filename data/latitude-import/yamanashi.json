@@ -1,0 +1,393 @@
+{
+ "slug": "yamanashi",
+ "city": {
+  "name": "Yamanashi",
+  "nameJa": "山梨市",
+  "latitude": "35.7° N",
+  "country": "Yamanashi, Japan",
+  "countryJa": "山梨県",
+  "person": "rin",
+  "coords": [
+   35.691,
+   138.681
+  ],
+  "intro": "A fruit and wine town at the northern edge of the Kofu Basin, along the Fuefuki River. Family-run wineries in the hills of Makioka, peach-orchard sweets, bread, houtou and a pottery studio, as Rin's picks.",
+  "introJa": "甲府盆地の北の端、笛吹川沿いに広がる果物とワインの町。牧丘の小さなワイナリー、桃農家の甘味、パンとほうとう、陶芸の工房を、凛のおすすめで。",
+  "locator": {
+   "en": "At the northern edge of the Kofu Basin · along the Fuefuki River",
+   "ja": "甲府盆地の北・笛吹川に沿う果物とワインの町"
+  },
+  "industries": [
+   {
+    "key": "koshu-wine",
+    "en": "Boutique Winemaking",
+    "ja": "小規模ワイナリー",
+    "about": "Yamanashi City's alluvial fans and the sunlit slopes of Makioka support small, family-run wineries. Using Koshu and European grape varieties, they make wine in small lots—from Sanyo Wine, founded in 1933, to hillside growers like Cantina Hiro.",
+    "aboutJa": "山梨市の扇状地や牧丘の日当たりのよい斜面には、家族で営む小さなワイナリーが点在する。1933年創業の三養醸造や急斜面の畑で育てるカンティーナ・ヒロなど、甲州種や欧州系品種のぶどうから少量生産のワインを造る。",
+    "_src": "Yamanashi City's sun-drenched alluvial fans and high-elevation Makioka slopes support small, family-run wineries crafting Koshu and European varietals."
+   }
+  ]
+ },
+ "places": {
+  "桃農家カフェ ラ・ペスカ": {
+   "nameEn": "La Pesca",
+   "area": "正徳寺",
+   "areaEn": "Shotokuji",
+   "tags": [
+    "parfait",
+    "gelato",
+    "fruit"
+   ],
+   "what": "正徳寺の桃農家・ピーチ専科ヤマシタが直営するカフェ。自社で育てた採れたての桃や葡萄を使い、皮ごと食べるパフェやジェラートを出す。2026年は6月下旬から10月初めまで営業、月曜は休み。",
+   "whatEn": "A café run directly by peach grower Peach Senka Yamashita in Shotokuji, serving parfaits and gelato made with their own freshly picked peaches—eaten skin-on—and grapes. Open seasonally from late June to early October in 2026, closed Mondays.",
+   "note": "皮ごと食べられる完熟の桃のパフェを、季節のうちに一度は。",
+   "noteEn": "A ripe whole-peach parfait, skin and all, once while the season is on.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "もものうかかふぇ ら・ぺすか",
+    "address": "山梨県山梨市正徳寺1131-1",
+    "url": "https://www2.momo-net.co.jp/",
+    "whatJa": "ピーチ専科ヤマシタが直営する農園カフェで、自家栽培の完熟桃を丸ごと使ったパフェやぶどうパフェ、自家製ジェラートを提供しています。",
+    "whatEn": "An orchard-run cafe operated by Peach Senka Yamashita serving whole-peach parfaits, grape parfaits, and fruit gelato made from their own harvest.",
+    "facts": "Signature 'Peach Jewel' parfait uses a whole ripe peach; operated directly by Peach Senka Yamashita; seasonal operation from mid-June to early October.",
+    "weak": "Seasonal only—closed from mid-October through mid-June; long waits during peak summer peach season.",
+    "verifiedBy": "https://www2.momo-net.co.jp/%e3%82%b7%e3%83%ab%e3%83%90%e3%83%bc%e3%82%a6%e3%82%a3%e3%83%bc%e3%82%af%e3%80%80%e5%96%b6%e6%a5%ad%e6%97%a5%e3%83%bb%e4%bc%91%e6%a5%ad%e6%97%a5%e3%81%ae%e3%81%8a%e3%81%97%e3%82%89%e3%81%9b/",
+    "quote": "9月19日（土）〜23日（水・祝）は、通常通り営業いたします。",
+    "fixes": "住所と桃農家直営・桃と葡萄のパフェ・ジェラートは公式カフェページと一致。factsForNoteの営業開始「mid-June」は、公式カフェページ https://www2.momo-net.co.jp/la-pesca/で示す2026年6月24日～10月4日に訂正。",
+    "coords": [
+     35.68229,
+     138.66473
+    ]
+   }
+  },
+  "製パン 麦玄": {
+   "nameEn": "Seipan Mugiharu",
+   "area": "小原",
+   "areaEn": "Obara",
+   "tags": [
+    "bread"
+   ],
+   "what": "山梨市駅北口から歩いて10分のパン屋。自家製天然酵母と県産小麦「かいほのか」、無農薬玄米粉で、約40種類のパンを焼く。火曜から土曜の9時から16時で、売り切れ次第終了。",
+   "whatEn": "A bakery ten minutes on foot from the north exit of Yamanashi-shi Station, baking around forty kinds of bread with homemade natural yeast, Yamanashi Kaihoka wheat and pesticide-free brown rice flour. Open Tuesday to Saturday, 9 am to 4 pm or until sold out.",
+   "note": "無農薬玄米粉のもっちりしたお米パンと、クリームパンを一つずつ。",
+   "noteEn": "One chewy brown-rice loaf and one cream bun, to take away.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "せいぱん むぎはる",
+    "address": "山梨県山梨市小原西952",
+    "url": "https://mugiharu.jp/",
+    "whatJa": "山梨市駅から徒歩約10分の場所にあるベーカリーで、自家製天然酵母・山梨県産小麦「かいほのか」・無農薬玄米粉を使った約40種類のパンを焼いています。",
+    "whatEn": "A neighborhood bakery about 10 minutes from Yamanashi-shi Station making roughly 40 varieties of bread with homemade natural yeast, Yamanashi Kaihoka wheat, and pesticide-free brown rice flour.",
+    "facts": "Uses Yamanashi-grown Kaihoka wheat and pesticide-free brown rice flour; offers ~40 daily varieties from crusty loaves to soft rolls; 10-minute walk from JR Yamanashi-shi Station.",
+    "weak": "Takeout-focused neighborhood bakery without dedicated dine-in cafe seating.",
+    "verifiedBy": "https://prtimes.jp/main/html/rd/p/000000243.000023945.html",
+    "quote": "本商品は、「製パン麦玄」の職人が日々店舗で提供しているパンと同じレシピ・工程で一つひとつ丁寧に作り上げています。",
+    "fixes": "住所と主な説明は https://mugiharu.jp/ の小原西952、自家製天然酵母・かいほのか・無農薬玄米粉、約40種類、駅北口から徒歩10分と一致。",
+    "coords": [
+     35.69184,
+     138.68601
+    ]
+   }
+  },
+  "山梨果実菓子 和乃果 牧丘本店": {
+   "nameEn": "Wanoca Makioka",
+   "area": "牧丘",
+   "areaEn": "Makioka",
+   "tags": [
+    "sweets",
+    "chocolate"
+   ],
+   "what": "牧丘の丘にある、築200年の武家屋敷を改築した果実菓子店。シャインマスカットや桃、県産ワインを使ったフィナンシェや果実ショコラが並ぶ。平日の10時から16時で、土日祝は休み（要電話確認）。",
+   "whatEn": "A fruit confectionery in a renovated 200-year-old samurai residence on a Makioka hillside, making financiers and fruit chocolates with Shine Muscat, peaches and local wine. Open weekdays 10 am to 4 pm, closed weekends and holidays (call ahead).",
+   "note": "土壁の落ち着いた店内で、ワインや苺の果実ショコラの箱を選びたい。",
+   "noteEn": "In the quiet earthen-walled room, I want to pick out a box of wine and strawberry fruit chocolates.",
+   "_src": {
+    "category": "sweets",
+    "industry": null,
+    "nameKana": "やまなし かじつがし わのか まきおかほんてん",
+    "address": "山梨県山梨市牧丘町西保下1126",
+    "url": "https://wanocajitu.jp/",
+    "whatJa": "牧丘町の丘の上にある築200年以上の武家屋敷を改装した果実菓子店で、シャインマスカットや桃、県産ワインを使ったフィナンシェやショコラを販売しています。",
+    "whatEn": "A fruit confectionery shop in a renovated 200-year-old samurai residence on a Makioka hillside, specializing in financiers and chocolates made with Shine Muscat, peaches, and local wine.",
+    "facts": "Set inside a renovated 200+ year-old samurai residence; crafts fruit financiers and fruit chocolates using Yamanashi Shine Muscat and wine; located in hillside Makioka.",
+    "weak": "Hillside location in Makioka requires a car or taxi; gift-oriented luxury sweets rather than casual everyday snacks.",
+    "verifiedBy": "https://wanocajitu.jp/news/amour.php",
+    "quote": "この度、和乃果は、ジェイアール名古屋タカシマヤにて開催される\n日本最大級のショコラの祭典 「2026 アムール・デュ・ショコラ」 に出店いたします。",
+    "fixes": "牧丘本店の住所は公式サイトの西保下1126と一致。公式の説明は「武家屋敷の一角」の本店。営業時間10:00～16:00、土・日・祝日定休、平日の営業は電話問い合わせ。東京駅店の閉店表示は別支店。",
+    "coords": [
+     35.73845,
+     138.68191
+    ]
+   }
+  },
+  "cafe tubu": {
+   "nameEn": "cafe tubu",
+   "area": "南",
+   "areaEn": "Minami",
+   "tags": [
+    "coffee",
+    "sweets"
+   ],
+   "what": "万力公園の近くに2026年1月に開いたカフェ。小さなお菓子屋から広がり、ボロネーゼや甲斐サーモンポキの食事、皿盛りのプレートパフェ、クラフトコーラを出す。11時から18時で、水曜は休み。",
+   "whatEn": "A café near Manriki Park that opened in January 2026, growing out of a small sweets shop. It serves bolognese and Kai salmon poke plates alongside plated parfaits and craft cola. Open 11 am to 6 pm, closed Wednesdays.",
+   "note": "万力公園を歩いたあと、いちごのプレートパフェとクラフトコーラで休む。",
+   "noteEn": "After a walk in Manriki Park, sit down for the strawberry plated parfait and craft cola.",
+   "_src": {
+    "category": "coffee",
+    "industry": null,
+    "nameKana": "かふぇ つぶ",
+    "address": "山梨県山梨市南1400-1",
+    "url": "https://www.instagram.com/tubu_shop/",
+    "whatJa": "万力公園近くで2026年1月にリニューアルオープンしたカフェで、東京の星付きレストラン出身のオーナーによるパスタやプレート料理、パティシエの皿盛りスイーツ、自家製クラフトコーラが楽しめます。",
+    "whatEn": "A cafe and patisserie near Manriki Park opened in January 2026 by a former Tokyo Michelin-starred restaurant sous-chef, offering plated desserts, baked sweets, craft cola, and Italian lunch plates.",
+    "facts": "Reopened in January 2026 evolving from baked-goods shop 'cafe stand tubu'; all-day hours 11:00–21:00 (closed Wednesdays); pet-friendly terrace seating.",
+    "weak": "Closed Wednesdays; popular lunch and dessert hours can get busy.",
+    "verifiedBy": "https://www.ybs.jp/tetetetv/naiyou/20260306/",
+    "quote": "山梨市の小さなお菓子屋さんが、今年１月にオープンした☕念願のカフェです。",
+    "fixes": "住所は記事の山梨市南１４００－１と一致。営業時間は同記事では11:00～18:00（L.O.17:30）、水曜定休（祝日営業あり）で、factsForNoteの21:00までとは異なる。説明は記事掲載のボロネーゼ、ワッフル＆コメコチキン、甲斐サーモンポキ、プレートパフェ、クラフトコーラまで確認。星付き店出身・ペット可テラスは同記事では未確認。",
+    "coords": [
+     35.69562,
+     138.68272
+    ]
+   }
+  },
+  "ほうとう蔵 歩成 フルーツライン店": {
+   "nameEn": "Hoto Funari Fruit Line",
+   "area": "万力",
+   "areaEn": "Manriki",
+   "tags": [
+    "houtou"
+   ],
+   "what": "フルーツライン沿い、フルーツ公園やほったらかし温泉の入口にあるほうとう専門店。かぼちゃとあわびの肝のペーストを合わせた味噌仕立ての「黄金ほうとう」を出す。11時から21時30分で、無休。",
+   "whatEn": "A houtou restaurant on the Fruit Line near the entrance to Fuefukigawa Fruit Park and Hottarakashi Onsen. Its signature Ogon Houtou pairs miso with pumpkin and abalone-liver paste. Open daily from 11 am to 9:30 pm.",
+   "note": "かぼちゃが溶けた黄金味噌のほうとうで、夕方に温まりたい。",
+   "noteEn": "A bowl of Ogon Houtou in pumpkin-miso broth to warm up in the evening.",
+   "_src": {
+    "category": "food",
+    "industry": null,
+    "nameKana": "ほうとうぐら ふなり ふるーつらいんてん",
+    "address": "山梨県山梨市万力1091",
+    "url": "https://funari.jp/",
+    "whatJa": "フルーツライン沿いの蔵造りのほうとう専門店で、かぼちゃのペーストが溶け込んだ特製味噌スープと甲州富士桜ポークの「黄金ほうとう」が名物です。",
+    "whatEn": "A storehouse-style houtou restaurant on the Fruit Line known for its 'Ogon Houtou' made with pumpkin-blended miso broth and Koshu Fujizakura pork.",
+    "facts": "Local 3-branch Yamanashi institution (station-front Honten, Fruit Line, Kawaguchiko); signature 'Ogon Houtou' won Yamanashi's houtou taste competition; convenient to Fruit Park.",
+    "weak": "Very popular with weekend tourists, so expect queues at peak lunch hours.",
+    "verifiedBy": "https://www.funari.jp/info/2026/08/2858.html",
+    "quote": "誠に勝手ながら、2026年9月28日(月)と29日(火)は社員研修の為、全店臨時休業とさせていただきます。",
+    "fixes": "告知はフルーツライン店を明記。https://www.funari.jp/shop/yamanashi で住所「山梨県山梨市万力1091」を確認。2日間の臨時休業であり長期休業ではない。",
+    "coords": [
+     35.68903,
+     138.67509
+    ]
+   }
+  },
+  "陶ギャラリーRoppo 六鵬窯": {
+   "nameEn": "Tou Gallery Roppo",
+   "area": "矢坪",
+   "areaEn": "Yatsubo",
+   "tags": [
+    "ceramics"
+   ],
+   "what": "笛吹川フルーツ公園やほったらかし温泉の近くにある陶芸工房・ギャラリー。甲府盆地と富士山を望む高台で、電動ろくろや手びねりの体験ができる。営業日は毎月のブログで知らせる。",
+   "whatEn": "A pottery studio and gallery near Fuefukigawa Fruit Park and Hottarakashi Onsen, on a hillside overlooking the Kofu Basin and Mount Fuji. It offers electric-wheel and hand-building sessions; monthly opening days are posted on its blog.",
+   "note": "甲府盆地を見下ろす工房で、土をひいて湯呑みを一つ作ってみたい。",
+   "noteEn": "At the hillside studio overlooking the basin, I want to throw a single teacup on the wheel.",
+   "_src": {
+    "category": "craft",
+    "industry": null,
+    "nameKana": "とうぎゃらりー ろっぽ ろっぽうがま",
+    "address": "山梨県山梨市矢坪1669-79",
+    "url": "https://roppogama.skr.jp/",
+    "whatJa": "笛吹川フルーツ公園やほったらかし温泉の近くにある甲州伊賀焼・六鵬窯のギャラリー兼工房で、地元の土や自然釉を使った日常使いの器や酒器を展示販売しています。",
+    "whatEn": "The pottery gallery and studio of Koshu Iga ware kiln Roppogama near Fuefuki River Fruit Park, showcasing everyday tableware, sake vessels, and vases made with local clay and natural ash glazes.",
+    "facts": "Kiln of potter Roppo Tamura (Koshu Iga ware); open 9:00–18:00 (closed Thursdays except holidays); wheel-throwing pottery workshops also offered by reservation.",
+    "weak": "Located up on the hillside near Fruit Park; best accessed by car or taxi.",
+    "verifiedBy": "https://roppogama.skr.jp/2026/08/23/9%e6%9c%88%e5%96%b6%e6%a5%ad%e6%97%a5%e3%83%bb%e4%bc%91%e6%a5%ad%e6%97%a5%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/",
+    "quote": "9/19(土)〜9/23(水)のシルバーウィークは営業いたします。",
+    "fixes": "住所は公式の「山梨県山梨市矢坪1669-79」と一致。公式で確認できる説明は電動ロクロ11台の工房でのロクロ・手びねり陶芸体験。甲州伊賀焼・田村六鵬・地元土と自然灰釉の記述は、今回開いたページでは確認できず。",
+    "coords": [
+     35.70572,
+     138.6551
+    ]
+   }
+  },
+  "三養醸造": {
+   "nameEn": "Sanyo Wine",
+   "area": "牧丘",
+   "areaEn": "Makioka",
+   "tags": [
+    "wine"
+   ],
+   "what": "1933年創業、牧丘町の家族経営のワイナリー。自社農園の甲州や欧州系品種などから少量生産のワインを造り、売店では常時4種類の試飲ができる。9時から17時で、不定休。",
+   "whatEn": "A family-run winery in Makioka founded in 1933. It makes small-lot wines from Koshu and European varieties grown on its own estate, with four tastings available at the shop. Open 9 am to 5 pm, irregular holidays.",
+   "note": "売店で4種類の試飲をして、畑ごとのフィールドブレンドを一本選ぶ。",
+   "noteEn": "Try the four tastings at the shop and choose a bottle of field blend.",
+   "_src": {
+    "category": "local",
+    "industry": "koshu-wine",
+    "nameKana": "さんようじょうぞう",
+    "address": "山梨県山梨市牧丘町窪平237-2",
+    "url": "https://sanyowine.com/",
+    "whatJa": "1931年創業の牧丘町にある小規模ワイナリーで、標高の高い牧丘周辺の自社畑や契約農家のぶどうから少量生産のワインを造っています。",
+    "whatEn": "A historic boutique winery in Makioka founded in 1931, crafting small-lot wines from high-elevation vineyards in Yamanashi City.",
+    "facts": "Founded in 1931 in Makioka; specializes in small-lot, low-intervention Koshu and red wines; high-elevation vineyard terroir.",
+    "weak": "Small working winery; confirm shop/tasting availability in advance before visiting.",
+    "verifiedBy": "https://sanyowine.com/6402",
+    "quote": "新作をリリースしました！",
+    "fixes": "whatEn/whatJaとfactsForNoteの創業1931年は1933年に訂正。公式「ワイナリーについて」は1933年創業、牧丘町のファミリーワイナリー、自社農園産をメインとした山梨のぶどうと説明。住所は窪平237-2で一致。",
+    "coords": [
+     35.7379,
+     138.71093
+    ]
+   }
+  },
+  "カンティーナ・ヒロ": {
+   "nameEn": "Cantina Hiro",
+   "area": "牧丘",
+   "areaEn": "Makioka",
+   "tags": [
+    "wine"
+   ],
+   "what": "2018年に牧丘町倉科の山あいに開いた小さなワイナリー。イタリア品種や甲州種のぶどうを育て、ワインを醸造する。夏季は9時から17時、1月から3月は冬季休業で要問い合わせ。",
+   "whatEn": "A small winery opened in 2018 in the hills of Kurashina, Makioka, growing Italian grape varieties alongside Koshu. Open 9 am to 5 pm in summer; closed January to March (by inquiry).",
+   "note": "牧丘の丘の畑で育った、イタリア品種のワインを家に一本持って帰りたい。",
+   "noteEn": "I want to bring home a bottle made from Italian grapes grown on the Makioka slopes.",
+   "_src": {
+    "category": "local",
+    "industry": "koshu-wine",
+    "nameKana": "かんてぃーな・ひろ",
+    "address": "山梨県山梨市牧丘町倉科7143-1",
+    "url": "https://cantina-hiro.jp/",
+    "whatJa": "牧丘町の山あいにあるワイナリーで、イタリア品種のぶどうや甲州種を急斜面の畑で育て、個性豊かなワインを醸造しています。",
+    "whatEn": "A hillside winery in Makioka run by winemaker Hirotaka Kobayashi, specializing in Italian grape varieties and Japanese Koshu grown on steep mountain slopes.",
+    "facts": "Focuses on Italian varietals alongside Koshu; steep hillside vineyards in Makioka Kurashina; small-batch artisanal production.",
+    "weak": "Remote hillside setting in Makioka requiring a car; check visiting/tasting policies ahead of time.",
+    "verifiedBy": "https://www.tabechoku.com/producers/3078696",
+    "quote": "2026年1月　 生食用のぶどうはヴィンヤードヒロセ、ワインはカンティーナヒロとして販売の強化",
+    "fixes": "whatEnの運営者「Hirotaka Kobayashi」は削除・訂正。2026-10-24更新の https://vinotier.com/japan-wine/wineries/cantina-hiro.html は、栽培が広瀬武彦、醸造が広瀬泰輝の親子と説明。生産者自身の食べチョク紹介は2018年ワイナリー開業、ワイン関連をカンティーナヒロ、ぶどう栽培をヴィンヤードヒロセと記載。住所は公式 https://cantina-hiro.jp/contact/ の倉科7143-1と一致。",
+    "coords": [
+     35.75475,
+     138.68923
+    ]
+   }
+  }
+ },
+ "sights": [
+  {
+   "name": "根津記念館",
+   "nameEn": "Nezu Memorial Museum",
+   "kind": "art",
+   "area": "正徳寺",
+   "areaEn": "Shotokuji",
+   "address": "山梨市正徳寺296",
+   "url": "https://www.city.yamanashi.yamanashi.jp/site/nezu-kinenkan/",
+   "what": "「鉄道王」と呼ばれた初代根津嘉一郎の実家「根津家」の邸宅を保存・公開する記念館。庭園や登録有形文化財の旧主屋のほか、展示棟がある。",
+   "whatEn": "A memorial museum preserving the family residence of Nezu Kaichiro, the railway magnate and founder of the Nezu Museum in Tokyo, with a garden, registered tangible cultural property main house, and exhibition hall.",
+   "coords": [
+    35.67875,
+    138.66814
+   ],
+   "notice": "開館は9時30分から16時30分（受付は16時まで）。月・火曜（祝日の場合は水曜）と年末年始は休館。入館無料。",
+   "noticeEn": "Open 9:30 am to 4:30 pm (last entry 4 pm). Closed Mondays and Tuesdays (or Wednesday if a holiday) and year-end/New Year. Admission free.",
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "笛吹川フルーツ公園",
+   "nameEn": "Fuefukigawa Fruit Park",
+   "kind": "sight",
+   "area": "江曽原",
+   "areaEn": "Esobara",
+   "address": "山梨市江曽原1488",
+   "url": "https://fuefukigawafp.co.jp/",
+   "what": "果物をテーマにした公園。ガラスのドームや広場、足湯があり、斜面から甲府盆地と富士山を見渡せる。",
+   "whatEn": "A hillside park themed around fruit, with glass domes, lawns and a footbath looking out over the Kofu Basin toward Mount Fuji.",
+   "coords": [
+    35.70178,
+    138.66732
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "万力公園",
+   "nameEn": "Manriki Park",
+   "kind": "sight",
+   "area": "万力",
+   "areaEn": "Manriki",
+   "address": "山梨市万力1828",
+   "url": "http://www.yamanashi-fruitpark.co.jp/manriki-kouen/",
+   "what": "笛吹川沿いに広がる、万葉集に詠まれた110余種の植物が植えられた公園。園内にはふれあい動物広場や万葉歌碑がある。",
+   "whatEn": "A wooded park along the Fuefuki River planted with over 110 species of trees and flowers mentioned in the Manyoshu, with poetry stone monuments and a small animal square.",
+   "coords": [
+    35.69112,
+    138.68124
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "清白寺",
+   "nameEn": "Seihakuji Temple",
+   "kind": "sight",
+   "area": "三ヶ所",
+   "areaEn": "Sangasho",
+   "address": "山梨市三ヶ所620",
+   "url": "https://www.yamanashishi-kankou.com/learn-culture/",
+   "what": "国宝の「方三間裳階付仏殿」と、国の重要文化財である茅葺屋根の庫裏が残る禅寺。春には参道に梅や桜が咲く。",
+   "whatEn": "A Zen temple holding a National Treasure Butsuden hall and an Important Cultural Property thatched-roof kuri kitchen hall. Plum and cherry trees bloom along the approach in spring.",
+   "coords": [
+    35.69407,
+    138.70813
+   ],
+   "verifiedAt": "2026-11-12"
+  },
+  {
+   "name": "大井俣窪八幡神社",
+   "nameEn": "Oimata Kubo Hachiman Shrine",
+   "kind": "sight",
+   "area": "北",
+   "areaEn": "Kita",
+   "address": "山梨市北654",
+   "url": "https://www.yamanashishi-kankou.com/learn-culture/",
+   "what": "武田信虎・信玄が信仰した神社。室町時代の建造物が数多く残り、現存する国内最長の十一間流造の本殿や木造鳥居などが国の重要文化財に指定されている。",
+   "whatEn": "A shrine revered by Takeda Nobutora and Shingen, preserving numerous Muromachi-period structures designated as Important Cultural Properties, including Japan's longest surviving nagare-zukuri main hall and oldest wooden torii.",
+   "coords": [
+    35.70474,
+    138.69002
+   ],
+   "verifiedAt": "2026-11-12"
+  }
+ ],
+ "_dropped": [
+  {
+   "name": "丸山パン",
+   "verdict": "doubt",
+   "reason": "公式InstagramはcurlではInstagramのシェルしか読めず、公式通販もCAPTCHA。実際に開いて読んだ紹介記事は2024年公開・2025年更新で、当店の2026年営業を示す日付付き文章を取得できなかった。"
+  },
+  {
+   "name": "POESY cafe",
+   "verdict": "doubt",
+   "reason": "公式ページは読めたが日付付きの営業告知がなく、2026年営業を示す文章を取得できなかった。"
+  },
+  {
+   "name": "のんきばぁーば",
+   "verdict": "doubt",
+   "reason": "公式トップとメニューには2026年の営業を示す日付付き文章がなく、別途開いた口コミ掲載ページもcurlでは本文が取得できなかった。2026年の検索結果だけでは採用しない。"
+  },
+  {
+   "name": "里山亭",
+   "verdict": "doubt",
+   "reason": "公式トップと紹介ページを読んだが、あるのは2013年の移転開業情報と日付のない営業時間。2026年に営業していることを示す日付付き文章を取得できなかった。"
+  },
+  {
+   "name": "柚木窯",
+   "verdict": "doubt",
+   "reason": "公式トップとマップは読めたが、日付のある案内は2024年度の予約条件で、2026年営業を示す日付付き文章を取得できなかった。"
+  },
+  {
+   "name": "旭洋酒",
+   "verdict": "doubt",
+   "reason": "公式トップ、営業案内と2つの公式ブログを開いたが、トップのお知らせは2024年、ブログの新しい記事は2021年で、2026年営業を示す日付付き文章を取得できなかった。検索で見つかった2026年の他店での旧ヴィンテージ販売だけでは当ワイナリーの営業継続を確認できない。"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+[
+ {
+  "name": "夢のつり橋",
+  "nameEn": "Yume no Tsuribashi",
+  "kind": "sight",
+  "area": "寸又峡温泉",
+  "areaEn": "Sumatakyo Onsen",
+  "address": "静岡県榛原郡川根本町千頭（寸又峡温泉）",
+  "url": "https://yumenotsuribashi-sumatakyo.com/",
+  "what": "寸又峡の渓谷にかかる吊り橋。温泉街からプロムナードコースを歩いて渡り、エメラルドグリーンの湖面を見下ろす。",
+  "whatEn": "A suspension bridge over the Sumatakyo gorge, reached on foot along the promenade trail above the emerald-green reservoir.",
+  "coords": [
+   35.18073,
+   138.11303
+  ],
+  "notice": "紅葉期の12月6日までは7時〜17時の通行制限があり、11月21〜23日は混雑時に整理券を配布。",
+  "noticeEn": "Autumn promenade hours are 7:00–17:00 through Dec 6, with numbered tickets during peak hours on Nov 21–23.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "奥大井湖上駅",
+  "nameEn": "Okuoi Kojo Station",
+  "kind": "sight",
+  "area": "奥泉",
+  "areaEn": "Okuizumi",
+  "address": "静岡県榛原郡川根本町犬間",
+  "url": "https://daitetsu.jp/",
+  "what": "接岨湖に突き出た半島の上にある大井川鐵道井川線の駅。赤い鉄橋の奥大井レインボーブリッジに沿った遊歩道を歩いて渡れる。",
+  "whatEn": "A station on the Oigawa Railway Ikawa Line perched on a peninsula in Lake Sesso, reached by a footpath beside the red Okuoi Rainbow Bridge.",
+  "coords": [
+   35.16803,
+   138.18105
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "奥大井音戯の郷",
+  "nameEn": "Okuoi Otogi no Sato",
+  "kind": "art",
+  "area": "千頭",
+  "areaEn": "Senzu",
+  "address": "静岡県榛原郡川根本町千頭1217-2",
+  "url": "http://www.otoginosato.com/",
+  "what": "千頭駅そばの道の駅を兼ねた音と自然の体験ミュージアム。聴診器で町の音を聴く展示や音具づくりの工房、駅を見渡すラウンジがある。火曜休館。",
+  "whatEn": "A sound-and-nature museum and roadside station beside Senzu Station, with stethoscope listening exhibits, a sound-instrument workshop, and a lounge overlooking the tracks. Closed Tuesdays.",
+  "coords": [
+   35.10713,
+   138.13612
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "資料館やまびこ",
+  "nameEn": "Museum Yamabiko",
+  "kind": "art",
+  "area": "奥泉",
+  "areaEn": "Okuizumi",
+  "address": "静岡県榛原郡川根本町犬間90-1",
+  "url": "https://okuooi.gr.jp/watch/details.php?id=110",
+  "what": "南アルプスの自然と、林業など山峡の暮らしを伝える資料館。長島ダム建設前の調査で集めた動植物の標本などを展示する。火曜休館。",
+  "whatEn": "A local museum on the nature of the Southern Alps and mountain life such as forestry, displaying plant and animal specimens collected before Nagashima Dam was built. Closed Tuesdays.",
+  "coords": [
+   35.17878,
+   138.18642
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

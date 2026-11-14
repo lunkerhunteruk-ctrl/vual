@@ -39,6 +39,8 @@ import kasamaPlaces from './latitude-places/kasama.json';
 import kasamaSights from './latitude-sights/kasama.json';
 import kashiharaPlaces from './latitude-places/kashihara.json';
 import kashiharaSights from './latitude-sights/kashihara.json';
+import kawanehonchoPlaces from './latitude-places/kawanehoncho.json';
+import kawanehonchoSights from './latitude-sights/kawanehoncho.json';
 import kiryuPlaces from './latitude-places/kiryu.json';
 import kiryuSights from './latitude-sights/kiryu.json';
 import kochiPlaces from './latitude-places/kochi.json';
@@ -93,6 +95,10 @@ import tottoriPlaces from './latitude-places/tottori.json';
 import tottoriSights from './latitude-sights/tottori.json';
 import tsubamesanjoPlaces from './latitude-places/tsubamesanjo.json';
 import tsubamesanjoSights from './latitude-sights/tsubamesanjo.json';
+import tsunanPlaces from './latitude-places/tsunan.json';
+import tsunanSights from './latitude-sights/tsunan.json';
+import udaPlaces from './latitude-places/uda.json';
+import udaSights from './latitude-sights/uda.json';
 import ujiPlaces from './latitude-places/uji.json';
 import ujiSights from './latitude-sights/uji.json';
 import yamagaPlaces from './latitude-places/yamaga.json';
@@ -101,6 +107,8 @@ import yamagataPlaces from './latitude-places/yamagata.json';
 import yamagataSights from './latitude-sights/yamagata.json';
 import yamanakaonsenPlaces from './latitude-places/yamanakaonsen.json';
 import yamanakaonsenSights from './latitude-sights/yamanakaonsen.json';
+import yamanashiPlaces from './latitude-places/yamanashi.json';
+import yamanashiSights from './latitude-sights/yamanashi.json';
 import yamePlaces from './latitude-places/yame.json';
 import yameSights from './latitude-sights/yame.json';
 import yufuinPlaces from './latitude-places/yufuin.json';
@@ -528,6 +536,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: kashiharaPlaces as CityPlace[],
     sights: kashiharaSights as CitySight[],
+  },
+  {
+    slug: "kawanehoncho",
+    name: "Kawanehoncho",
+    nameJa: "川根本町",
+    latitude: "35.1° N",
+    country: "Shizuoka, Japan",
+    countryJa: "静岡県",
+    person: "rin",
+    coords: [35.108, 138.138],
+    intro: "A mountain town along the upper Oigawa River, known for Kawane tea and the Oigawa Railway. Tea farms, bentwood lunchboxes and cedar tea chests, then hillside cafes and local dining rooms: Rin's picks.",
+    introJa: "大井川の上流、山あいに広がる川根茶の里。茶園と茶箱やめんぱの工房、湖上駅や温泉街の喫茶と食堂を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In central Shizuoka · a mountain town along the upper Oigawa River", "ja": "静岡県の中部・大井川上流の山あいの町"},
+    industries: [
+      {"key": "kawane-tea", "en": "Kawane Tea", "ja": "川根茶", "about": "Grown on misty mountain slopes along the upper Oigawa River, Kawane tea has long been known for its aroma and clear flavour. Family-run estates still tend their own fields, steam and roll the leaves, and sell directly from the farm.", "aboutJa": "大井川上流の霧がかかりやすい山の斜面で育てられる川根茶。いまも家族経営の茶園が自園で育てた茶葉を製茶し、直売所でそのまま手渡している。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: kawanehonchoPlaces as CityPlace[],
+    sights: kawanehonchoSights as CitySight[],
   },
   {
     slug: "kiryu",
@@ -1125,6 +1154,49 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     sights: tsubamesanjoSights as CitySight[],
   },
   {
+    slug: "tsunan",
+    name: "Tsunan",
+    nameJa: "津南",
+    latitude: "37.0° N",
+    country: "Niigata, Japan",
+    countryJa: "新潟県",
+    person: "rin",
+    coords: [37.02, 138.649],
+    intro: "A town of river terraces along the Shinano River, on the border with Nagano in heavy-snow country. Sake brewed with snowmelt, snow-buried carrots and local rice, plus Akiyamago woodwork and village bread and soba: Rin's picks.",
+    introJa: "長野との県境、信濃川沿いの河岸段丘に広がる豪雪の町。雪解け水の酒蔵と雪下人参や米の店、秋山郷の木工、集落のパンとそばを、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In southern Niigata · a river-terrace town in heavy-snow country", "ja": "新潟県の南端・信濃川沿いの河岸段丘と豪雪の町"},
+    industries: [
+      {"key": "snow-sake", "en": "Snow-Country Sake Brewing", "ja": "豪雪地帯の酒造り", "about": "Heavy winter snow on the Naeba range melts into ultra-soft water that feeds Tsunan's sake breweries. Tsunan Sake Brewery and Naeba Shuzo brew with this snowmelt and locally grown rice.", "aboutJa": "苗場山系の深い雪が解けて湧く超軟水が、津南の酒造りを支える。町内の津南醸造や苗場酒造が、この雪解け水と地元の米で酒を醸している。"},
+      {"key": "snow-agriculture", "en": "Snow-Buried Produce & Highland Farming", "ja": "雪下人参・高原農業", "about": "Winter snow settles metres deep over the fields, keeping the ground just above freezing. Carrots left under the snow—yukishita ninjin—grow sweet there, alongside highland vegetables and Uonuma Koshihikari rice.", "aboutJa": "冬に何メートルも積もる雪の下で、畑の土は凍らずに保たれる。雪の下で冬を越す雪下人参や高原の野菜、魚沼産コシヒカリなど、雪国の農業が町の食を支える。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: tsunanPlaces as CityPlace[],
+    sights: tsunanSights as CitySight[],
+  },
+  {
+    slug: "uda",
+    name: "Uda",
+    nameJa: "宇陀",
+    latitude: "34.5° N",
+    country: "Nara, Japan",
+    countryJa: "奈良県",
+    person: "rin",
+    coords: [34.4795, 135.931],
+    intro: "A town in a mountain basin in northeastern Nara, long known for medicinal herbs and Yoshino kudzu starch. Old kudzu and wagashi shops along the preserved merchant street of Uda-Matsuyama, and cafés in old houses across Ouda, Haibara and Muro: Rin's picks.",
+    introJa: "奈良県の北東部、山あいの盆地にある町。古くから薬草と吉野本葛で知られ、宇陀松山の重伝建の町並みに葛や和菓子の老舗が並ぶ。大宇陀・榛原・室生の古民家カフェや喫茶を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "In northeastern Nara · a town in a mountain basin", "ja": "奈良県の北東部・山あいの盆地の町"},
+    industries: [
+      {"key": "yoshino-kuzu", "en": "Yoshino Kudzu Starch", "ja": "吉野本葛", "about": "Uda's severe winter cold and pure groundwater have sustained traditional kuzu starch refining in Uda-Matsuyama for over 450 years. Makers such as Morino Yoshino Kuzu Honpo refine the starch in winter using only groundwater and no additives.", "aboutJa": "宇陀松山の厳しい冬の冷え込みと清らかな地下水が、450余年続く吉野本葛の製法を支えてきた。森野吉野葛本舗などでは、冬の極寒期に地下水だけで繰り返し晒し、添加物を加えずに本葛粉を作る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: udaPlaces as CityPlace[],
+    sights: udaSights as CitySight[],
+  },
+  {
     slug: "uji",
     name: "Uji",
     nameJa: "宇治",
@@ -1211,6 +1283,27 @@ export const IMPORTED_CITIES: LatitudeCity[] = [
     routeBuilder: true,
     places: yamanakaonsenPlaces as CityPlace[],
     sights: yamanakaonsenSights as CitySight[],
+  },
+  {
+    slug: "yamanashi",
+    name: "Yamanashi",
+    nameJa: "山梨市",
+    latitude: "35.7° N",
+    country: "Yamanashi, Japan",
+    countryJa: "山梨県",
+    person: "rin",
+    coords: [35.691, 138.681],
+    intro: "A fruit and wine town at the northern edge of the Kofu Basin, along the Fuefuki River. Family-run wineries in the hills of Makioka, peach-orchard sweets, bread, houtou and a pottery studio, as Rin's picks.",
+    introJa: "甲府盆地の北の端、笛吹川沿いに広がる果物とワインの町。牧丘の小さなワイナリー、桃農家の甘味、パンとほうとう、陶芸の工房を、凛のおすすめで。",
+    images: [],
+    locator: {"en": "At the northern edge of the Kofu Basin · along the Fuefuki River", "ja": "甲府盆地の北・笛吹川に沿う果物とワインの町"},
+    industries: [
+      {"key": "koshu-wine", "en": "Boutique Winemaking", "ja": "小規模ワイナリー", "about": "Yamanashi City's alluvial fans and the sunlit slopes of Makioka support small, family-run wineries. Using Koshu and European grape varieties, they make wine in small lots—from Sanyo Wine, founded in 1933, to hillside growers like Cantina Hiro.", "aboutJa": "山梨市の扇状地や牧丘の日当たりのよい斜面には、家族で営む小さなワイナリーが点在する。1933年創業の三養醸造や急斜面の畑で育てるカンティーナ・ヒロなど、甲州種や欧州系品種のぶどうから少量生産のワインを造る。"},
+    ],
+    shopMap: true,
+    routeBuilder: true,
+    places: yamanashiPlaces as CityPlace[],
+    sights: yamanashiSights as CitySight[],
   },
   {
     slug: "yame",

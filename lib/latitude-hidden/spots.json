@@ -3668,6 +3668,7 @@
     "url": "https://midama.jp/"
    }
   ],
+  "townSlug": "tsunan",
   "course": {
    "titleJa": "名水百選「龍ヶ窪」の神秘的な湧水池と津南のへぎそば＆美肌の湯",
    "titleEn": "Ryugakubo Sacred Spring Pond, Tsunan Soba & Echigo-Tanaka Onsen",
@@ -3978,6 +3979,7 @@
     "url": "https://midama.jp/"
    }
   ],
+  "townSlug": "tsunan",
   "course": {
    "titleJa": "朝霧のひまわり迷路と津南のへぎそば・温泉",
    "titleEn": "Morning Sunflowers in Tsunan & Onsen",
@@ -9036,6 +9038,7 @@
     "url": "https://nagato-jinja.jp/"
    }
   ],
+  "townSlug": "yamanashi",
   "course": {
    "titleJa": "七ツ釜五段の滝を目指す渓谷歩きと源泉かけ流し温泉",
    "titleEn": "Nishizawa Gorge Trail & Hayabusa Onsen",
@@ -9936,6 +9939,7 @@
     "url": "https://www.sakagura-kai.jp/"
    }
   ],
+  "townSlug": "yamanashi",
   "course": {
    "titleJa": "富士山を望む日の出のほったらかし温泉と黄金ほうとう",
    "titleEn": "Sunrise Over Mt. Fuji at Hottarakashi Onsen & Golden Hoto",
@@ -13395,6 +13399,7 @@
     "url": "https://www.sessokyoonsen.com/"
    }
   ],
+  "townSlug": "kawanehoncho",
   "course": {
    "titleJa": "朝いちばんの夢の吊橋と渓流そば・美女づくりの湯",
    "titleEn": "Early Morning Dream Suspension Bridge & Bijo-zukuri Onsen",
@@ -13687,6 +13692,7 @@
     "url": "https://yumenotsuribashi-sumatakyo.com/"
    }
   ],
+  "townSlug": "kawanehoncho",
   "course": {
    "titleJa": "南アルプスあぷとラインで行く奥大井湖上駅と接岨峡温泉",
    "titleEn": "Okuoi Kojo Lake-Bridge Station & Sessokyo Onsen",
@@ -16879,6 +16885,7 @@
     "url": "https://www.murouji.or.jp/"
    }
   ],
+  "townSlug": "uda",
   "course": {
    "titleJa": "室生寺の古刹と、山上のランドアートを歩く",
    "titleEn": "Ancient Murou-ji Temple & Mountain Landscape Art",
@@ -17158,6 +17165,7 @@
     "url": "https://sonimura.com/"
    }
   ],
+  "townSlug": "uda",
   "course": {
    "titleJa": "黄金色のススキ野原と、お亀の湯・伊賀牛ランチ",
    "titleEn": "Golden Susuki Grasslands, Okame-no-Yu & Iga Beef",

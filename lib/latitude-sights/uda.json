@@ -1,0 +1,86 @@
+[
+ {
+  "name": "宇陀市松山伝統的建造物群保存地区",
+  "nameEn": "Uda-Matsuyama Preservation District",
+  "kind": "sight",
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新ほか",
+  "url": "https://uda-matsuyama.com/judenken/",
+  "what": "戦国時代に城下町として始まり、江戸から昭和初期の町家が約600メートルの通りに沿って残る商家町。2006年に国の重要伝統的建造物群保存地区に選定された。散策は自由。",
+  "whatEn": "A merchant quarter that began as a castle town in the Sengoku period, with townhouses from the Edo to early Showa eras lining a 600-metre street. Designated a national preservation district in 2006; free to walk.",
+  "coords": [
+   34.47886,
+   135.93289
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "森野旧薬園",
+  "nameEn": "Morino Old Herb Garden",
+  "kind": "sight",
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新1880",
+  "url": "https://morino-kuzu.com/kyuyaku",
+  "what": "享保14年（1729年）に森野家が開いた、現存する日本最古の私設薬草園で国の史跡。約250種の薬草木が植えられ、春にはカタクリが咲く。9時から16時半、不定休。",
+  "whatEn": "Japan's oldest surviving private medicinal herb garden, opened by the Morino family in 1729 and a national historic site. Around 250 species of medicinal plants grow here, with dogtooth violets in spring. Open 9:00–16:30, irregular holidays.",
+  "coords": [
+   34.47788,
+   135.93287
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "宇陀市大宇陀歴史文化館「薬の館」",
+  "nameEn": "Uda Ouda History and Culture Museum (Kusuri no Yakata)",
+  "kind": "art",
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上2003",
+  "url": "https://www.city.uda.lg.jp/soshiki/41/1095.html",
+  "what": "江戸時代末期に建てられた薬問屋・旧細川家の町家を改修した歴史文化館。細川家や製薬に関わる資料、昔の薬の看板などを展示する。10時から16時、月・火曜と年末年始（12月15日〜1月15日）は休館。",
+  "whatEn": "A history and culture museum in a restored late-Edo medicine merchant's townhouse, the former Hosokawa residence. Exhibits materials on the Hosokawa family, pharmaceuticals and old medicine signs. Open 10:00–16:00; closed Mondays, Tuesdays and Dec 15–Jan 15.",
+  "coords": [
+   34.48132,
+   135.93261
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "史跡 宇陀松山城跡",
+  "nameEn": "Uda-Matsuyama Castle Ruins",
+  "kind": "sight",
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀",
+  "url": "https://www.city.uda.lg.jp/soshiki/41/1104.html",
+  "what": "南北朝時代から秋山氏が築き、豊臣秀長らの家臣が居城とした山城の跡。1615年に破却され、総石垣の遺構が残る国の史跡。",
+  "whatEn": "The ruins of a mountain castle first held by the Akiyama clan from the Nanboku-cho period and later by retainers of Toyotomi Hidenaga. Dismantled in 1615, its stone-wall remains are a national historic site.",
+  "coords": [
+   34.48137,
+   135.93808
+  ],
+  "notice": "登城路は災害復旧工事や一部立入禁止エリアあり。明るいうちに春日神社ルートまたは赤砂利ルートから登る。",
+  "noticeEn": "Restoration work and restricted areas are in place on the castle grounds; climb during daylight via the Kasuga Shrine or Akajari route.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "室生寺",
+  "nameEn": "Muro-ji Temple",
+  "kind": "sight",
+  "area": "室生",
+  "areaEn": "Muro",
+  "address": "宇陀市室生78",
+  "url": "https://www.uda-kankou.jp/navigation/1324",
+  "what": "奈良時代末期に創建された真言宗室生寺派の大本山。女性の参詣が許されていたことから「女人高野」と呼ばれ、春はシャクナゲ、秋は紅葉の名所として知られる。",
+  "whatEn": "The head temple of the Shingon Muro-ji sect, founded in the late Nara period. Known as Nyonin Koya because women were permitted to worship there, and noted for rhododendrons in spring and autumn foliage.",
+  "coords": [
+   34.53797,
+   136.04062
+  ],
+  "notice": "国宝の五重塔と金堂は屋根葺替え工事中（2027年完了予定）のため外観・金堂内部は拝観不可。境内や本堂・弥勒堂・奥之院は通常通り参拝でき、寳物殿は自由拝観。",
+  "noticeEn": "The five-story pagoda and Kondo hall are covered for roof re-thatching (scheduled through 2027) and cannot be viewed inside or out. The grounds, Hondo, Mirokudo and Okunoin remain open as usual, and the treasure hall is open free of charge.",
+  "verifiedAt": "2026-11-12"
+ }
+]

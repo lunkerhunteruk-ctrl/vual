@@ -1,0 +1,179 @@
+[
+ {
+  "name": "津南醸造株式会社",
+  "nameEn": "Tsunan Sake Brewery",
+  "category": "local",
+  "industry": "snow-sake",
+  "tags": [
+   "sake"
+  ],
+  "area": "秋成",
+  "areaEn": "Akinari",
+  "address": "中魚沼郡津南町大字秋成7141",
+  "url": "https://tsunan-sake.com/",
+  "what": "苗場山系の超軟水の雪解け水と地元の酒米で「つなん」「郷（GO）」「霧の塔」などを醸す酒蔵。直売店は平日9時から16時で、事前予約制の見学と定番酒3種の試飲がある。",
+  "whatEn": "A sake brewery using ultra-soft Naeba snowmelt and local rice for labels including Tsunan, GO and Kiri no Tou. The direct shop opens weekdays 9:00–16:00; reservation-only tours include a tasting of three standard sakes.",
+  "note": "試飲のあとは、直売店で『郷』を一本選ぶ。",
+  "noteEn": "After the tasting, pick a bottle of GO at the shop.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   36.97482,
+   138.63283
+  ]
+ },
+ {
+  "name": "苗場酒造株式会社",
+  "nameEn": "Naeba Shuzo",
+  "category": "local",
+  "industry": "snow-sake",
+  "tags": [
+   "sake"
+  ],
+  "area": "大割野・下船渡（市街地）",
+  "areaEn": "Okawarino / Town Centre",
+  "address": "中魚沼郡津南町大字下船渡戊555番地",
+  "url": "https://www.naebasan.com/",
+  "what": "1907年創業の酒蔵。「ゆきのまゆ」「深然」「苗場山」などを小さな仕込みで醸し、蔵の売店で直売する。9時から17時で、水曜と日曜は休み。",
+  "whatEn": "A sake brewery founded in 1907, making small-batch Yukinomayu, Mizen and Naebasan and selling them at the brewery shop. Open 9:00–17:00; closed Wednesdays and Sundays.",
+  "note": "小さな仕込みの『ゆきのまゆ』を見てみたい。",
+  "noteEn": "I would look for the small-batch Yukinomayu.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   37.01367,
+   138.64937
+  ]
+ },
+ {
+  "name": "ROKUの店",
+  "nameEn": "ROKU no Mise",
+  "category": "local",
+  "industry": "snow-agriculture",
+  "tags": [
+   "vegetables",
+   "lunch"
+  ],
+  "area": "大割野・下船渡（市街地）",
+  "areaEn": "Okawarino / Town Centre",
+  "address": "中魚沼郡津南町下船渡甲7192-2（津南ショッピングセンター内）",
+  "url": "https://rokutsunan.com/",
+  "what": "秋成の農業法人「麓」が津南ショッピングセンター内で営む店。自家産の魚沼産コシヒカリや野菜を使ったランチと、旬の野菜や加工品を置く。11時から18時で、水・木曜は休み。",
+  "whatEn": "A shop and lunch counter inside the Tsunan Shopping Center run by local farm ROKU, serving lunches with its own Uonuma Koshihikari rice and vegetables alongside seasonal produce. Open 11:00–18:00; closed Wednesdays and Thursdays.",
+  "note": "自家産のコシヒカリと旬の野菜のランチを食べる。",
+  "noteEn": "Have lunch with their own Koshihikari rice and seasonal vegetables.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   37.02417,
+   138.662
+  ]
+ },
+ {
+  "name": "パンと暮らしと ヤナギヤ",
+  "nameEn": "Pan to Kurashi to Yanagiya",
+  "category": "sweets",
+  "tags": [
+   "bread",
+   "sweets"
+  ],
+  "area": "三箇",
+  "areaEn": "Sanga",
+  "address": "中魚沼郡津南町三箇甲967",
+  "url": "https://www.instagram.com/yanagiya_pan/",
+  "what": "築150年以上の古民家を直した集落のパン屋。数種類の国産小麦と自家製酵母で焼くカンパーニュや惣菜パン、カヌレ、スコーンが並ぶ。10時から売り切れまで、営業日はInstagramで知らせる。",
+  "whatEn": "A bakery in a restored farmhouse over 150 years old, baking sourdough, savoury breads, canelés and scones with domestic wheat and wild starter. Opens at 10:00 until sold out; open days are posted on Instagram.",
+  "note": "カンパーニュとカヌレを一つずつ選んでみたい。",
+  "noteEn": "I would pick a sourdough loaf and a canelé, one of each.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   37.05372,
+   138.68081
+  ]
+ },
+ {
+  "name": "隠れ家テラス みくらす",
+  "nameEn": "Kakurega Terrace Mikurasu",
+  "category": "food",
+  "tags": [
+   "galette",
+   "herb-tea"
+  ],
+  "area": "秋山郷（見倉）",
+  "areaEn": "Akiyamago",
+  "address": "中魚沼郡津南町秋成10476",
+  "url": "https://www.instagram.com/kakurega_terrace_mikurasu/",
+  "what": "秋山郷の見倉集落にある、築200年以上の古民家のカフェ。地元産有機そば粉100%のガレットや和ハーブティーを出す。金・土・日曜の11時から15時（LO14時半）で、冬は雪のため休む時期がある。",
+  "whatEn": "A café in a farmhouse over 200 years old in Mikura hamlet, Akiyamago, serving 100% local organic buckwheat galettes and Japanese herb tea. Open Friday–Sunday 11:00–15:00 (LO 14:30); closes in heavy snow.",
+  "note": "そば粉のガレットと和ハーブティーにする。",
+  "noteEn": "A buckwheat galette and Japanese herb tea.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   36.91457,
+   138.64308
+  ]
+ },
+ {
+  "name": "大井平そば工房",
+  "nameEn": "Ooidaira Soba Kobo",
+  "category": "food",
+  "tags": [
+   "soba"
+  ],
+  "area": "上郷（大井平）",
+  "areaEn": "Kamigo",
+  "address": "中魚沼郡津南町上郷大井平8204",
+  "url": "https://ooidairasoba.sakura.ne.jp/",
+  "what": "上郷大井平集落の小さなそば屋。自家製粉の津南産そば粉に山ゴボウの葉と布海苔をつなぎにした手打ちそばを出す。土曜・日曜の11時から14時ごろまで（祝日休み）、12月から春先まで冬期休業。",
+  "whatEn": "A small soba shop in Ooidaira hamlet, Kamigo, serving handmade soba from house-milled local buckwheat bound with mountain burdock leaf and funori seaweed. Open Saturday–Sunday around 11:00–14:00 (closed public holidays); closed in winter from December.",
+  "note": "山ゴボウの葉をつなぎにした手打ちそばを食べる。",
+  "noteEn": "Order the handmade soba bound with mountain burdock leaf.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   36.99099,
+   138.6037
+  ]
+ },
+ {
+  "name": "Ohisama genki 山の上の小さなカフェ",
+  "nameEn": "Ohisama Genki",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "lunch"
+  ],
+  "area": "龍ヶ窪周辺（谷内）",
+  "areaEn": "Ryugakubo",
+  "address": "中魚沼郡津南町谷内844-2",
+  "url": "https://www.instagram.com/ohisama__genki/",
+  "what": "龍ヶ窪近くの標高450メートルの集落にある小さなカフェ。自家栽培の無農薬野菜を使った月替わりランチやスイーツ、コーヒーを出す。金〜月曜の10時から17時で、12月下旬から春まで冬期休業。",
+  "whatEn": "A small hilltop café at 450 m near Ryugakubo serving coffee, sweets and monthly lunches with pesticide-free homegrown vegetables. Open Friday–Monday 10:00–17:00; closed from late December through early spring.",
+  "note": "龍ヶ窪を見たあと、ここでコーヒーにする。",
+  "noteEn": "After Ryugakubo, stop here for coffee.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   36.9838,
+   138.63081
+  ]
+ },
+ {
+  "name": "山源木工",
+  "nameEn": "Yamagen Mokko",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "furniture",
+   "tableware"
+  ],
+  "area": "秋山郷（大赤沢）",
+  "areaEn": "Akiyamago",
+  "address": "中魚沼郡津南町大字大赤沢丁97",
+  "url": "https://otochi.com/",
+  "what": "秋山郷で親子四代、約100年にわたり無垢材の木工品を作る工房。栃の輪切りテーブルやこね鉢、木の雑貨を展示販売し、食堂を併設する。食堂は12月から3月初めまで冬期休業。",
+  "whatEn": "A four-generation, century-old woodcraft workshop in Akiyamago making solid-wood round-cut tables, kneading bowls and wooden goods, with a dining room next door. The dining room closes from December to early March.",
+  "note": "1階の展示場で、栃の木目の小物から見ていく。",
+  "noteEn": "Start on the ground floor with the small horse-chestnut wood pieces.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   36.88122,
+   138.63838
+  ]
+ }
+]

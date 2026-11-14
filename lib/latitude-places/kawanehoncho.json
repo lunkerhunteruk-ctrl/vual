@@ -1,0 +1,233 @@
+[
+ {
+  "name": "cafe うえまる",
+  "nameEn": "Cafe Uemaru",
+  "category": "food",
+  "tags": [
+   "curry",
+   "sweets",
+   "lunch"
+  ],
+  "area": "千頭",
+  "areaEn": "Senzu",
+  "address": "榛原郡川根本町千頭1215-12",
+  "url": "https://uemaru.com/",
+  "what": "千頭駅から徒歩20秒の農家直営カフェ。川根の野菜やジビエを使ったダムカレー、自家製ブルーベリーや川根茶のスイーツを出し、アレルギー対応のメニューもある。水曜定休、11時から16時半。",
+  "whatEn": "A farmer-run café 20 seconds from Senzu Station, serving dam curries with local vegetables and gibier, plus blueberry and Kawane tea sweets, with allergy-friendly options. Closed Wednesdays; open 11:00–16:30.",
+  "note": "ジビエ入りの大井川ダムカレーと、食後にブルーベリーのジェラートを。",
+  "noteEn": "The Oigawa Dam curry with local gibier, and blueberry gelato afterward.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.10883,
+   138.1381
+  ]
+ },
+ {
+  "name": "SHOP & CAFE 晴耕雨読",
+  "nameEn": "SHOP & CAFE Seikou-Udoku",
+  "category": "sweets",
+  "tags": [
+   "coffee",
+   "matcha",
+   "sweets"
+  ],
+  "area": "寸又峡温泉",
+  "areaEn": "Sumatakyo Onsen",
+  "address": "榛原郡川根本町寸又峡温泉",
+  "url": "https://seikou-udoku2012.com/shop/",
+  "what": "寸又峡温泉街の雑貨店とカフェ。手焼きせんべいや雑貨が並び、奥の喫茶と2階の和室で、川根産オーガニック抹茶のチーズケーキやガトーショコラ、珈琲を出している。11時から日暮れまで。",
+  "whatEn": "A craft-goods shop and café in Sumatakyo Onsen selling hand-baked senbei and sundries, with a back café and upstairs tatami room serving organic Kawane matcha cheesecake, gateau chocolat, and coffee. Open 11:00 to dusk.",
+  "note": "二階の和室で窓を開けて、川根抹茶のチーズケーキと珈琲にする。",
+  "noteEn": "Upstairs in the tatami room with the window open, for Kawane matcha cheesecake and coffee.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.17331,
+   138.11823
+  ]
+ },
+ {
+  "name": "株式会社 前田工房",
+  "nameEn": "Maeda Koubou",
+  "category": "craft",
+  "tags": [
+   "wood",
+   "chabako",
+   "craft"
+  ],
+  "area": "桑野山",
+  "areaEn": "Kuwanoyama",
+  "address": "榛原郡川根本町桑野山424-6",
+  "url": "https://kawanechabako.jp/",
+  "what": "川根で100年以上続く茶箱の専門店。無塗装の天然杉とトタンで湿気や虫を防ぐ茶箱のほか、卓上に置けるプチ茶箱や茶箱いすも作っている。",
+  "whatEn": "A tea-chest maker in Kawane for over a century, crafting unpainted cedar-and-tin chabako that keep out moisture and insects, alongside tabletop petit chabako and chabako stools.",
+  "note": "無塗装の杉の香りを確かめながら、卓上に置けるプチ茶箱を手に取って選びたい。",
+  "noteEn": "I want to smell the unpainted cedar and pick out a tabletop petit chabako by hand.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.12333,
+   138.14194
+  ]
+ },
+ {
+  "name": "大井川めんぱ 大井屋",
+  "nameEn": "Oigawa Menpa Oiya",
+  "category": "craft",
+  "tags": [
+   "lacquer",
+   "wood",
+   "bento"
+  ],
+  "area": "千頭",
+  "areaEn": "Senzu",
+  "address": "榛原郡川根本町千頭1225-8",
+  "url": "https://ikawa-menpa.com/",
+  "what": "千頭駅前にある大井川めんぱの工房直売店。桜の樺皮で縫い留めた曲げわっぱに柿渋の下地と漆を塗り重ねた弁当箱を作り、塗り直し修理も受けている。水・木曜定休。",
+  "whatEn": "A workshop and shop in front of Senzu Station making Oigawa menpa bentwood lunchboxes stitched with cherry bark and finished with persimmon-tannin undercoat and urushi lacquer, also offering re-lacquering repairs. Closed Wednesdays and Thursdays.",
+  "note": "桜の樺皮の縫い目と漆のつやを見比べて、毎日使える大きさのめんぱを選びたい。",
+  "noteEn": "Compare the cherry-bark stitching and lacquer sheen to choose a menpa for everyday lunches.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.10578,
+   138.13628
+  ]
+ },
+ {
+  "name": "rest & coffee 湖上駅カフェ",
+  "nameEn": "rest & coffee Kojo Station Cafe",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "curry",
+   "tea"
+  ],
+  "area": "奥泉",
+  "areaEn": "Okuizumi",
+  "address": "榛原郡川根本町奥泉（奥大井湖上駅構内）",
+  "url": "https://seikou-udoku2012.com/kojo/",
+  "what": "奥大井湖上駅のホームから階段を登ったコテージにあるカフェ。長島ダムコーヒーや川根の紅茶、食数限定の蒼い湖上カレーや川根抹茶のガトーショコラを出している。11時から16時で、冬季や荒天時は休み。",
+  "whatEn": "A café in the cottage above the platform at Okuoi Kojo Station, serving Nagashima Dam coffee, Kawane black tea, limited-portion Blue Lake curry, and Kawane matcha gateau chocolat. Open 11:00–16:00; closed in winter and bad weather.",
+  "note": "二階の席で湖を見下ろしながら、長島ダムコーヒーと抹茶のガトーショコラを。",
+  "noteEn": "Upstairs overlooking the lake, with Nagashima Dam coffee and matcha gateau chocolat.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.16803,
+   138.18105
+  ]
+ },
+ {
+  "name": "食堂カフェ amandon",
+  "nameEn": "Shokudo Cafe amandon",
+  "category": "food",
+  "tags": [
+   "cafe",
+   "organic",
+   "vegan"
+  ],
+  "area": "徳山",
+  "areaEn": "Tokuyama",
+  "address": "榛原郡川根本町徳山733",
+  "url": "https://www.instagram.com/amandon.cafe/",
+  "what": "駿河徳山駅近くの昭和レトロな雰囲気の食堂カフェ。オーガニック食材にこだわり、ヴェジタリアンやヴィーガンにも対応する。土・日・月・火曜の11時から20時まで営業。",
+  "whatEn": "A Showa-retro dining room and café near Suruga-Tokuyama Station, cooking with organic ingredients and offering vegetarian and vegan options. Open Saturday to Tuesday, 11:00–20:00.",
+  "note": "懐かしい雰囲気の店内で、お茶かご飯をゆっくり食べていく。",
+  "noteEn": "Sit down in the nostalgic dining room for tea or a slow meal.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.07437,
+   138.11057
+  ]
+ },
+ {
+  "name": "山香荘茶園",
+  "nameEn": "Yamakasho Tea Farm",
+  "category": "local",
+  "industry": "kawane-tea",
+  "tags": [
+   "tea",
+   "kawane-tea",
+   "cafe"
+  ],
+  "area": "元藤川",
+  "areaEn": "Motofujikawa",
+  "address": "榛原郡川根本町元藤川17",
+  "url": "https://www.yamakasho.com/",
+  "what": "自園自製の川根茶の直売所と、隣の古民家の縁側を使った茶農家カフェ。川根茶や手づくり川根紅茶を直売し、季節のお茶セットも出している。9時半から17時まで。",
+  "whatEn": "A family-run Kawane tea estate with a direct shop and an engawa café in the next-door old house, selling estate green and black teas and serving seasonal tea sets. Open 9:30–17:00.",
+  "note": "古民家の縁側で季節のお茶セットを飲んでから、手づくり川根紅茶を買う。",
+  "noteEn": "Drink a seasonal tea set on the old-house veranda, then buy a bag of their black tea.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.08901,
+   138.10638
+  ]
+ },
+ {
+  "name": "つちや農園",
+  "nameEn": "Tsuchiya Tea Farm",
+  "category": "local",
+  "industry": "kawane-tea",
+  "tags": [
+   "tea",
+   "kawane-tea"
+  ],
+  "area": "水川",
+  "areaEn": "Mizukawa",
+  "address": "榛原郡川根本町水川972",
+  "url": "https://www.tsuchiya-nouen.com/",
+  "what": "標高600メートルのおろくぼ地区にある自園自製の川根茶農園。静岡の茶草場農法を取り入れ、品評会受賞の煎茶やおくひかりなどの品種茶を直売している。",
+  "whatEn": "A family-run Kawane tea farm at 600 meters in the Oroku-bo district, practicing traditional chagusaba farming and selling award-winning sencha and single-cultivar teas.",
+  "note": "山あいの畑で育った、おくひかりや香駿の品種茶を飲み比べて選びたい。",
+  "noteEn": "Compare single-cultivar teas like Okuhikari and Koshun grown on the mountain slopes.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.07422,
+   138.07389
+  ]
+ },
+ {
+  "name": "和彩食堂 あけぼの",
+  "nameEn": "Wasai Shokudo Akebono",
+  "category": "food",
+  "tags": [
+   "lunch",
+   "gibier",
+   "soba"
+  ],
+  "area": "上長尾",
+  "areaEn": "Kaminagao",
+  "address": "榛原郡川根本町上長尾842-4",
+  "url": "https://akebono-kawane.com/",
+  "what": "上長尾の食堂。川根特産のとろろ汁や大根らぁめん、川根ジビエ餃子や天ぷら茶そばを出している。昼は12時から15時、夜は予約のみで、火曜定休。作り手が一人のため予約優先。",
+  "whatEn": "A dining room in Kaminagao serving Kawane tororo yam soup, daikon ramen, local gibier gyoza, and tempura tea soba. Lunch 12:00–15:00; dinner by reservation; closed Tuesdays. One cook, so reservations have priority.",
+  "note": "川根特産のとろろ汁か、ジビエの餃子にする。昼も予約してから行く。",
+  "noteEn": "The local tororo yam soup, or the gibier gyoza. Book ahead even for lunch.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.04105,
+   138.08248
+  ]
+ },
+ {
+  "name": "フォーレなかかわね 茶茗舘",
+  "nameEn": "Foret Nakakawane Chameikan",
+  "category": "sweets",
+  "tags": [
+   "tea",
+   "kawane-tea",
+   "wagashi"
+  ],
+  "area": "水川",
+  "areaEn": "Mizukawa",
+  "address": "榛原郡川根本町水川71-1",
+  "url": "https://www.chameikan.jp/",
+  "what": "水川の道の駅を兼ねた川根茶の文化施設。日本庭園を望む茶室で地元のお菓子と川根茶を味わえるほか、お土産処や郷土資料館がある。水曜定休、10時から16時半。",
+  "whatEn": "A Kawane tea cultural house and roadside station in Mizukawa, with a tatami tea room overlooking a Japanese garden for tea and local sweets, a souvenir shop, and a local history museum. Closed Wednesdays; open 10:00–16:30.",
+  "note": "茶室で湯温を変えた川根茶を飲み比べてから、お土産処で一煎パックを選ぶ。",
+  "noteEn": "Taste Kawane tea brewed at different temperatures in the tea room, then pick single-steep packs at the shop.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   35.06457,
+   138.09409
+  ]
+ }
+]

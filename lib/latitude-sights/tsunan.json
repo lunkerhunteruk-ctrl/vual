@@ -1,0 +1,72 @@
+[
+ {
+  "name": "農と縄文の体験実習館「なじょもん」",
+  "nameEn": "Najomon (Tsunan Agriculture & Jomon Museum)",
+  "kind": "art",
+  "area": "下船渡",
+  "areaEn": "Shimofunato",
+  "address": "新潟県中魚沼郡津南町下船渡乙835",
+  "url": "https://www.najomon.com/",
+  "what": "津南の農業・縄文・民俗を伝える体験学習施設。町内で出土した縄文土器や石器を展示し、屋外には竪穴式住居7軒を復元した縄文ムラがある。9時から17時、月曜と年末年始は休み。",
+  "whatEn": "A museum and hands-on learning centre for Tsunan's farming, Jomon and folk history, showing locally excavated Jomon pottery and stone tools alongside seven reconstructed pit dwellings outdoors. Open 9:00–17:00; closed Mondays and year-end/New Year.",
+  "coords": [
+   37.04316,
+   138.67338
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "龍ヶ窪",
+  "nameEn": "Ryugakubo Pond",
+  "kind": "sight",
+  "area": "龍ヶ窪周辺（谷内）",
+  "areaEn": "Ryugakubo",
+  "address": "新潟県中魚沼郡津南町谷内6217",
+  "url": "https://tsunan.info/ryugakubo/",
+  "what": "地下水が湧き出る池で、日量43,000トンの水が1日で入れ替わり、澄んだ水を保つ。1974年に新潟県の自然環境保全地域に指定された。",
+  "whatEn": "A spring-fed pond whose 43,000 tons of daily groundwater completely turn over once a day, keeping the water clear. Designated a Niigata Prefectural Nature Conservation Area in 1974.",
+  "coords": [
+   36.97486,
+   138.62934
+  ],
+  "notice": "冬期は閉鎖。",
+  "noticeEn": "Closed in winter.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "見玉不動尊（正宝院）",
+  "nameEn": "Midama Fudoson (Shoboin Temple)",
+  "kind": "sight",
+  "area": "秋成",
+  "areaEn": "Akinari",
+  "address": "新潟県中魚沼郡津南町秋成9761",
+  "url": "https://tsunan.info/midamafudou/",
+  "what": "文治2年（1186年）の創建と伝わる天台宗の寺。老杉に囲まれた参道の石段70段の上に不動堂が建ち、石段の脇を湧水が滝となって流れる。",
+  "whatEn": "A Tendai temple said to have been founded in 1186. Seventy stone steps lined with old cedars and small spring-fed waterfalls lead up to the Fudo hall.",
+  "coords": [
+   36.95154,
+   138.66776
+  ],
+  "notice": "冬期は一部閉鎖（観光時期は4月〜12月）。",
+  "noticeEn": "Partially closed in winter (main season April–December).",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "見倉橋",
+  "nameEn": "Mikura Bridge",
+  "kind": "sight",
+  "area": "秋山郷（見倉）",
+  "areaEn": "Akiyamago",
+  "address": "新潟県中魚沼郡津南町結東地内",
+  "url": "https://tsunan.info/mikurabashi/",
+  "what": "秋山郷の中津川渓谷にかかる木製の吊橋。新潟の橋50選に選ばれており、西川美和監督の映画『ゆれる』の舞台にもなった。",
+  "whatEn": "A wooden suspension bridge over the Nakatsugawa Gorge in Akiyamago, selected among Niigata's 50 bridges and featured in Miwa Nishikawa's film Sway.",
+  "coords": [
+   36.917,
+   138.63985
+  ],
+  "notice": "観光時期は春・夏・秋。重量制限500kg（大人7名ほど）。",
+  "noticeEn": "Open spring through autumn. Weight limit 500 kg (about 7 adults).",
+  "verifiedAt": "2026-11-12"
+ }
+]

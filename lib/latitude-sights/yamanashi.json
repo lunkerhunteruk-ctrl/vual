@@ -1,0 +1,84 @@
+[
+ {
+  "name": "根津記念館",
+  "nameEn": "Nezu Memorial Museum",
+  "kind": "art",
+  "area": "正徳寺",
+  "areaEn": "Shotokuji",
+  "address": "山梨市正徳寺296",
+  "url": "https://www.city.yamanashi.yamanashi.jp/site/nezu-kinenkan/",
+  "what": "「鉄道王」と呼ばれた初代根津嘉一郎の実家「根津家」の邸宅を保存・公開する記念館。庭園や登録有形文化財の旧主屋のほか、展示棟がある。",
+  "whatEn": "A memorial museum preserving the family residence of Nezu Kaichiro, the railway magnate and founder of the Nezu Museum in Tokyo, with a garden, registered tangible cultural property main house, and exhibition hall.",
+  "coords": [
+   35.67875,
+   138.66814
+  ],
+  "notice": "開館は9時30分から16時30分（受付は16時まで）。月・火曜（祝日の場合は水曜）と年末年始は休館。入館無料。",
+  "noticeEn": "Open 9:30 am to 4:30 pm (last entry 4 pm). Closed Mondays and Tuesdays (or Wednesday if a holiday) and year-end/New Year. Admission free.",
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "笛吹川フルーツ公園",
+  "nameEn": "Fuefukigawa Fruit Park",
+  "kind": "sight",
+  "area": "江曽原",
+  "areaEn": "Esobara",
+  "address": "山梨市江曽原1488",
+  "url": "https://fuefukigawafp.co.jp/",
+  "what": "果物をテーマにした公園。ガラスのドームや広場、足湯があり、斜面から甲府盆地と富士山を見渡せる。",
+  "whatEn": "A hillside park themed around fruit, with glass domes, lawns and a footbath looking out over the Kofu Basin toward Mount Fuji.",
+  "coords": [
+   35.70178,
+   138.66732
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "万力公園",
+  "nameEn": "Manriki Park",
+  "kind": "sight",
+  "area": "万力",
+  "areaEn": "Manriki",
+  "address": "山梨市万力1828",
+  "url": "http://www.yamanashi-fruitpark.co.jp/manriki-kouen/",
+  "what": "笛吹川沿いに広がる、万葉集に詠まれた110余種の植物が植えられた公園。園内にはふれあい動物広場や万葉歌碑がある。",
+  "whatEn": "A wooded park along the Fuefuki River planted with over 110 species of trees and flowers mentioned in the Manyoshu, with poetry stone monuments and a small animal square.",
+  "coords": [
+   35.69112,
+   138.68124
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "清白寺",
+  "nameEn": "Seihakuji Temple",
+  "kind": "sight",
+  "area": "三ヶ所",
+  "areaEn": "Sangasho",
+  "address": "山梨市三ヶ所620",
+  "url": "https://www.yamanashishi-kankou.com/learn-culture/",
+  "what": "国宝の「方三間裳階付仏殿」と、国の重要文化財である茅葺屋根の庫裏が残る禅寺。春には参道に梅や桜が咲く。",
+  "whatEn": "A Zen temple holding a National Treasure Butsuden hall and an Important Cultural Property thatched-roof kuri kitchen hall. Plum and cherry trees bloom along the approach in spring.",
+  "coords": [
+   35.69407,
+   138.70813
+  ],
+  "verifiedAt": "2026-11-12"
+ },
+ {
+  "name": "大井俣窪八幡神社",
+  "nameEn": "Oimata Kubo Hachiman Shrine",
+  "kind": "sight",
+  "area": "北",
+  "areaEn": "Kita",
+  "address": "山梨市北654",
+  "url": "https://www.yamanashishi-kankou.com/learn-culture/",
+  "what": "武田信虎・信玄が信仰した神社。室町時代の建造物が数多く残り、現存する国内最長の十一間流造の本殿や木造鳥居などが国の重要文化財に指定されている。",
+  "whatEn": "A shrine revered by Takeda Nobutora and Shingen, preserving numerous Muromachi-period structures designated as Important Cultural Properties, including Japan's longest surviving nagare-zukuri main hall and oldest wooden torii.",
+  "coords": [
+   35.70474,
+   138.69002
+  ],
+  "verifiedAt": "2026-11-12"
+ }
+]

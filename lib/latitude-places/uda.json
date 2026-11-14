@@ -1,0 +1,221 @@
+[
+ {
+  "name": "森野吉野葛本舗",
+  "nameEn": "Morino Yoshino Kuzu Honpo",
+  "category": "local",
+  "industry": "yoshino-kuzu",
+  "tags": [
+   "kuzu"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新1880",
+  "url": "https://morino-kuzu.com/",
+  "what": "450余年の歴史を持つ吉野本葛の老舗。冬の厳寒期に地下水だけで晒す製法で本葛粉を作る。本店は無休で、裏手に森野旧薬園が隣り合う。",
+  "whatEn": "A Yoshino hon-kuzu maker with over 450 years of history, refining kudzu starch in the cold of winter using only groundwater. The main shop is open daily, with Morino Old Herb Garden right behind it.",
+  "note": "冬に地下水だけで晒した本葛を一袋、台所に持ち帰る。",
+  "noteEn": "A bag of hon-kuzu refined with winter groundwater to take home to the kitchen.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.47793,
+   135.93255
+  ]
+ },
+ {
+  "name": "きみごろも本舗 松月堂",
+  "nameEn": "Kimigoromo Honpo Shogetsudo",
+  "category": "sweets",
+  "tags": [
+   "wagashi"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上1988",
+  "url": "https://kimigoromo.com/",
+  "what": "明治35年（1902年）創業の和菓子店。契約養鶏家の新鮮な卵を使う直前に割り、淡雪のような口溶けの名物「きみごろも」を作る。8時から17時（売り切れ次第終了）、水曜定休。",
+  "whatEn": "A wagashi shop founded in 1902. Eggs from contracted farms are cracked just before use to make its signature kimigoromo, soft as light snow. Open 8:00–17:00 (until sold out); closed Wednesdays.",
+  "note": "淡雪みたいなきみごろもを、卵の風味が消えないうちに。",
+  "noteEn": "Light-as-snow kimigoromo, while the egg flavour is still fresh.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.48066,
+   135.93254
+  ]
+ },
+ {
+  "name": "カフェ abc",
+  "nameEn": "Cafe abc",
+  "category": "sweets",
+  "tags": [
+   "baked-sweets",
+   "quiche"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新1899-1",
+  "url": "https://www.instagram.com/abc_uda/",
+  "what": "宇陀松山の重伝建地区にある、白壁の古民家カフェ。手作りのキッシュや焼き菓子を出す。11時半から17時（L.O.16時）で、日・月・火曜と不定休。",
+  "whatEn": "A white-walled kominka café in the Uda-Matsuyama preservation district serving handmade quiche and baked sweets. Open 11:30–17:00 (last order 16:00); closed Sundays, Mondays, Tuesdays and irregular days.",
+  "note": "白壁の古民家で、手作りのキッシュと焼き菓子をゆっくり。",
+  "noteEn": "Handmade quiche and baked sweets, taken slowly in a white-walled kominka.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.47891,
+   135.93232
+  ]
+ },
+ {
+  "name": "古民家カフェ chou chou",
+  "nameEn": "Kominka Cafe chou chou",
+  "category": "sweets",
+  "tags": [
+   "sweets",
+   "fruit"
+  ],
+  "area": "室生",
+  "areaEn": "Muro",
+  "address": "宇陀市室生向渕4244",
+  "url": "https://chouchou-uda.com/",
+  "what": "室生向渕の、築200年以上の古民家にあるカフェ。2階から里山を望み、奈良産の旬の果物などを使った月替わりの手作りデザートを出す。営業日は月のカレンダーで知らせる。",
+  "whatEn": "A café in a 200-year-old kominka in Muro-Mukoji, with views over the satoyama hills from the second floor. Serves monthly changing handmade desserts with seasonal Nara fruit; open days are posted on its monthly calendar.",
+  "note": "二階の窓から里山を見て、その月の果物の菓子を待つ。",
+  "noteEn": "Watching the satoyama hills from upstairs, waiting for that month's fruit dessert.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.58226,
+   135.99204
+  ]
+ },
+ {
+  "name": "ヒルトコカフェ",
+  "nameEn": "Hilltico Cafe",
+  "category": "food",
+  "tags": [
+   "herbs",
+   "lunch"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀中庄129",
+  "url": "https://terrasse.co.jp/hillticocafe/",
+  "what": "大宇陀中庄の古民家を改装したカフェ。身近な薬草や新鮮な地元野菜を使ったランチとお茶、デザートを出す。11時から16時で、水曜と不定休。",
+  "whatEn": "A café in a renovated kominka in Ouda-Nakajo, serving lunches, tea and desserts made with local herbs and fresh vegetables. Open 11:00–16:00; closed Wednesdays and irregular days.",
+  "note": "薬草と地元野菜のお昼ごはんを食べて、お茶まで座っていく。",
+  "noteEn": "Stay on for tea after a lunch of local herbs and vegetables.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.47728,
+   135.92384
+  ]
+ },
+ {
+  "name": "ごはんcafe SOU",
+  "nameEn": "Gohan Cafe SOU",
+  "category": "food",
+  "tags": [
+   "lunch",
+   "sweets"
+  ],
+  "area": "榛原",
+  "areaEn": "Haibara",
+  "address": "宇陀市榛原萩原1775",
+  "url": "https://gohancafe-sou.com/",
+  "what": "榛原にあるカフェ。地元農家から直送される野菜をたっぷり使ったランチや手作りスイーツを出す。ランチは11時から14時、カフェは14時から18時（L.O.17時半）で、水曜定休（臨時休業あり）。",
+  "whatEn": "A café in Haibara serving lunches generous with vegetables sent directly from local farms, along with handmade sweets. Lunch 11:00–14:00, café 14:00–18:00 (last order 17:30); closed Wednesdays and occasional irregular days.",
+  "note": "地元農家の野菜がたっぷりのランチにする。",
+  "noteEn": "Pick a lunch plate full of vegetables from local farms.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.53357,
+   135.95487
+  ]
+ },
+ {
+  "name": "Re:Coffee Roasters 榛原焙煎所",
+  "nameEn": "Re:Coffee Roasters Haibara",
+  "category": "cafe",
+  "tags": [
+   "coffee"
+  ],
+  "area": "榛原",
+  "areaEn": "Haibara",
+  "address": "宇陀市榛原長峯15-3",
+  "url": "https://www.instagram.com/re_coffee_roasters/",
+  "what": "榛原にある、酒蔵のデザインを生かした建物の自家焙煎スペシャルティコーヒー専門店。ブレンドは扱わず、常時9種類ほどの豆から選んでハンドドリップやエスプレッソドリンクを出す。",
+  "whatEn": "A specialty coffee roastery in Haibara in a building that incorporates a sake-brewery design. It carries no blends, offering hand-drip coffee and espresso drinks from around nine single-origin beans.",
+  "note": "ブレンドはない。その日の9種類ほどから、豆を一つ選ぶ。",
+  "noteEn": "There are no blends. Choose one bean from the nine or so on hand.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.53629,
+   135.96503
+  ]
+ },
+ {
+  "name": "町家盆栽Cafe コトノハ",
+  "nameEn": "Machiya Bonsai Cafe Kotonoha",
+  "category": "cafe",
+  "tags": [
+   "coffee",
+   "bonsai"
+  ],
+  "area": "榛原",
+  "areaEn": "Haibara",
+  "address": "宇陀市榛原萩原2664",
+  "url": "https://www.instagram.com/cafe_kotonoha/",
+  "what": "榛原の築70年の古民家を改装した町家カフェ。盆栽を眺めながら地元食材のランチやスイーツを楽しめ、厚焼きホットケーキは14時以降に出す。11時から18時（L.O.17時半）で、月曜と第3火曜定休、支払いは現金のみ。",
+  "whatEn": "A renovated 70-year-old kominka café in Haibara serving local-ingredient lunches and sweets amid bonsai displays, with thick hotcakes after 14:00. Open 11:00–18:00 (last order 17:30); closed Mondays and the third Tuesday; cash only.",
+  "note": "14時を過ぎてから入って、盆栽を眺めながら厚焼きホットケーキ。",
+  "noteEn": "Come after two for the thick hotcakes, looking out at the bonsai.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.53156,
+   135.95764
+  ]
+ },
+ {
+  "name": "古道具 山ノ葉",
+  "nameEn": "Furudogu Yamanoha",
+  "category": "craft",
+  "tags": [
+   "antiques",
+   "tableware",
+   "glass"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新1938-1",
+  "url": "https://www.instagram.com/yamanoha2019/",
+  "what": "2025年4月に曽爾村から宇陀松山へ移転した古道具店。丁寧に手入れした家具や食器、陶器、硝子、照明、アクセサリーなどを並べる。営業は不定期。",
+  "whatEn": "An antique shop that moved from Soni to Uda-Matsuyama in April 2025, selling carefully restored furniture, tableware, pottery, glass, lighting and accessories. Open on irregular days.",
+  "note": "手入れされた古い食器や硝子を、棚から一つずつ見て回る。",
+  "noteEn": "Looking through the shelves of restored old tableware and glass, one piece at a time.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.4794,
+   135.93219
+  ]
+ },
+ {
+  "name": "陶工房 釉",
+  "nameEn": "Tokobo Yu",
+  "category": "craft",
+  "tags": [
+   "ceramics",
+   "lighting"
+  ],
+  "area": "大宇陀",
+  "areaEn": "Ouda",
+  "address": "宇陀市大宇陀上新1882",
+  "url": "http://toukoubouyu.com/",
+  "what": "森野旧薬園の隣、宇陀松山の重伝建地区にある築180年の住居兼工房。陶器に細かな穴を開けて光をこぼす「陶灯」を制作し、常時展示している。",
+  "whatEn": "A ceramic studio and home in a 180-year-old machiya in the Uda-Matsuyama preservation district, next to Morino Old Herb Garden. It makes and permanently exhibits pierced ceramic lanterns.",
+  "note": "築180年の町家の中で、陶器の穴からこぼれる明かりを見る。",
+  "noteEn": "Seeing the light spill through tiny holes in the clay inside a 180-year-old machiya.",
+  "verifiedAt": "2026-11-14",
+  "coords": [
+   34.47797,
+   135.93247
+  ]
+ }
+]
