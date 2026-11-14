@@ -42,9 +42,10 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
           </>
         ) : null /* 街×種類のページでは、題が同じ言葉なので見出しを出さない */}
         {im && (
-          <figure className="mt-4 w-[46vw] max-w-[200px]">
+          // 2026-11-14 種類のページの最初の写真：遅れて出ないよう lazy を外し、読み込み中は紙より少し濃い色に
+          <figure className="mt-4 w-[46vw] max-w-[200px]" style={{ background: '#e6e2da' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
+            <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} className="w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
             <figcaption className="lat-label mt-2" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</figcaption>
           </figure>
         )}

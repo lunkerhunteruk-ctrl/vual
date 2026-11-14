@@ -714,7 +714,8 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', ...edgeAlign(ex, size.w) }}
                 aria-label={ja ? `${p.name}（${p.area}・${km.toFixed(1)}km）` : `${p.name} (${p.area}, ${km.toFixed(1)} km)`}>
                 <span className="block" style={markStyle(kindOf(p), 10, color, false, `0 0 0 2px ${PAPER}`)} />
-                <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{p.area} · {km.toFixed(1)} km</span>
+                {/* 2026-11-14 スマホでは字を出さず点だけ（端で名前が重なるため）。名前と距離は aria-label に */}
+                <span className="hidden md:inline" style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{p.area} · {km.toFixed(1)} km</span>
               </button>
             );
           }
@@ -762,7 +763,7 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
                 className="absolute flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center gap-1.5 whitespace-nowrap text-[11px] uppercase tracking-[0.18em]"
                 style={{ left: ex, top: ey, color: MUTE, flexDirection: below ? 'column-reverse' : 'column', opacity: dim ? 0.35 : 1, ...edgeAlign(ex, size.w) }}>
                 <span className="block" style={markStyle(q.kind, 10, q.color, false, `0 0 0 2px ${PAPER}`)} />
-                <span style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
+                <span className="hidden md:inline" style={{ textShadow: `0 0 3px ${PAPER}, 0 0 3px ${PAPER}` }}>{q.name} · {kmA.toFixed(1)} km</span>
               </button>
             );
           }

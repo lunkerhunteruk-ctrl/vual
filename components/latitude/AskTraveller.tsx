@@ -36,12 +36,14 @@ export default function AskTraveller({ locale, slug, name, callSeconds, context 
   return (
     <>
       {!open && (
+        // 2026-11-14 スマホでは顔だけの丸いボタン（字に重なるため）。名前は aria-label で読み上げる。md 以上は今までどおり
         <button onClick={() => { setOpen(true); setMounted(true); track('ask_open', { person: slug }); }}
-          className="fixed z-40 flex items-center gap-3 py-2 pl-2 pr-5 shadow-[0_6px_24px_rgba(30,29,27,0.18)]"
+          aria-label={ja ? `${name}に聞く` : `Ask ${name}`}
+          className="fixed z-40 flex items-center gap-3 rounded-full p-1.5 shadow-[0_6px_24px_rgba(30,29,27,0.18)] md:rounded-none md:py-2 md:pl-2 md:pr-5"
           style={{ right: 'max(16px, env(safe-area-inset-right, 0px))', bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))', background: INK, color: PAPER }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={latAsset(`people/${slug}.jpg`)} alt="" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
-          <span className="text-[12px] uppercase tracking-[0.2em]">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
+          <span className="hidden text-[12px] uppercase tracking-[0.2em] md:inline">{ja ? `${name}に聞く` : `Ask ${name}`}</span>
         </button>
       )}
       {mounted && (
