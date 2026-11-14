@@ -7,6 +7,9 @@ import { MAX_STOPS, makePairLookup, type PairsFile } from '@/lib/latitude-routes
 import RouteBuilderPanel, { type BuildPoint } from '@/components/latitude/RouteBuilderPanel';
 import { AddressLine, FactsLine, JaName, type ShopFactsData } from '@/components/latitude/ShopFacts';
 import { SaveButton, SavedLink } from '@/components/latitude/SaveButton';
+import HereDistance, { useHere } from '@/components/latitude/HereDistance';
+import { askHere, forgetHere, hereLabel, metersBetween } from '@/lib/latitude-here';
+import { track } from '@/lib/latitude-track';
 import { ACTION, INK, MUTE, PAPER, SERIF } from '@/lib/latitude-theme';
 
 // 2026-11-11 試作：LATITUDE の街のページの「店の地図」。ユーザーの案：
@@ -601,6 +604,32 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
   const lookMarks = (): Mark[] => placed.map((o) => ({ id: o.p.id, x: o.x, y: o.y, d: o.d, m: pos(o.p) }));
   const buildMarks = (): Mark[] => buildPlaced.map((o) => ({ id: o.q.id, x: o.x, y: o.y, d: o.d, m: pos(o.q) }));
 
+  // 2026-11-14 ③-1 現在地。押した時だけ聞く（lib/latitude-here.ts）。地図の丸とは別の印（青い点・押せない・寄る判定にも入らない）
+  const here = useHere();
+  const hereOn = here.status === 'on' && here.city === city ? here : null;
+  const hereMsg = here.status !== 'idle' && here.status !== 'on' && here.city === city ? here.status : null;
+  const hereAt = hereOn && base ? (() => { const m = toM(hereOn.lat, hereOn.lon); return { m, ...toScreen(m.x, m.y) }; })() : null;
+  // 近い順の5軒（店だけ。見る所は入れない）
+  const nearest = hereOn ? pins.filter((p) => kindOf(p) === 'shop').map((p) => ({ p, d: metersBetween(hereOn, p) })).sort((a, b) => a.d - b.d).slice(0, 5) : [];
+  // 地図が画面から消えたら（ほかのページへ移ったら）位置を忘れる
+  useEffect(() => () => forgetHere(), []);
+  // 位置が取れた時、点が今の地図の外なら、街の真ん中と点の両方が入る所まで引く（黙って何も出さない、にしない）
+  const hereKey = hereOn ? `${hereOn.lat},${hereOn.lon}` : '';
+  useEffect(() => {
+    if (!hereKey || !hereAt || !base || !size.w) return;
+    if (hereAt.sx >= 12 && hereAt.sx <= size.w - 12 && hereAt.sy >= 12 && hereAt.sy <= size.h - 12) return;
+    const [hx, hy, hw, hh] = base.home;
+    const x0 = Math.min(hx, hereAt.m.x), y0 = Math.min(hy, hereAt.m.y), x1 = Math.max(hx + hw, hereAt.m.x), y1 = Math.max(hy + hh, hereAt.m.y);
+    if (sel) goTo(null);
+    flyView(boxView(x0, y0, x1 - x0, y1 - y0));
+  }, [hereKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  const pressHere = () => {
+    if (hereOn || here.status === 'asking') { forgetHere(); return; }
+    if (!base) return;
+    track('locate');
+    askHere(city ?? '', { lat: base.center[0], lon: base.center[1] });
+  };
+
   const shop = pins.find((p) => p.id === shown) ?? null;
   const open = !!sel && !!shop;
   const ready = !!base && size.w > 0;
@@ -705,7 +734,24 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
         <button type="button" onClick={setAll} className="min-h-[40px] cursor-pointer px-2 text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em] underline underline-offset-4" style={{ color: INK }}>
           {allOn ? (ja ? 'すべて消す' : 'Hide all') : (ja ? 'すべて出す' : 'Show all')}
         </button>
+        {/* 2026-11-14 ③-1 現在地（押した時だけ位置を聞く）。種類のスイッチの並びの最後に置く（地図の上に1行足さないように） */}
+        {city && (
+          <button type="button" onClick={pressHere} disabled={!base} aria-pressed={!!hereOn}
+            className={`${ACTION} cursor-pointer gap-2 px-2 disabled:opacity-40`} style={{ color: INK }}>
+            <span aria-hidden="true" className={`block h-[9px] w-[9px] rounded-full ${here.status === 'asking' && here.city === city ? 'motion-safe:animate-pulse' : ''}`} style={{ background: '#2f6fb0', boxShadow: `0 0 0 2px ${PAPER}, 0 0 0 3px #2f6fb0` }} />
+            {hereOn ? (ja ? '現在地を消す' : 'Hide my location') : (ja ? '現在地' : 'My location')}
+          </button>
+        )}
       </div>
+      {(hereOn || hereMsg === 'far' || hereMsg === 'error') && (
+        <p role="status" className="-mt-1 mb-3 max-w-xl text-[13px] leading-snug" style={{ color: hereOn ? MUTE : '#7a241e' }}>
+          {hereOn
+            ? (ja ? '位置はこの画面の中だけで使い、どこにも送りません。' : 'Your location stays on this device. It is not sent anywhere.')
+            : hereMsg === 'far'
+              ? (ja ? 'この街の近くにいるときに使えます。' : 'This works when you are near this town.')
+              : (ja ? '現在地を使えませんでした。端末の設定で位置情報を許可すると使えます。' : 'Could not get your location. Allow location access in your device settings to use this.')}
+        </p>
+      )}
       <div
         ref={box}
         className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[16/9]"
@@ -831,6 +877,13 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
             </button>
           );
         })}
+        {/* ③-1 自分の位置：青い点（押せない。店の丸や凛の地点の形と違う） */}
+        {ready && hereAt && (
+          <span aria-hidden="true" className="pointer-events-none absolute z-[3] -translate-x-1/2 -translate-y-1/2" style={{ left: hereAt.sx, top: hereAt.sy }}>
+            <span className="absolute left-1/2 top-1/2 block h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full motion-safe:animate-ping" style={{ background: 'rgba(47,111,176,0.25)' }} />
+            <span className="relative block h-[14px] w-[14px] rounded-full" style={{ background: '#2f6fb0', boxShadow: `0 0 0 3px ${PAPER}, 0 1px 4px 3px rgba(30,29,27,0.25)` }} />
+          </span>
+        )}
         {ready && build && notice && (
           <p role="status" className="absolute inset-x-3 bottom-3 z-[6] px-3 py-2 text-[13px] leading-snug" style={{ background: PAPER, border: `1px solid ${INK}`, color: INK }}>
             {notice}
@@ -916,6 +969,26 @@ export default function CityShopMap({ src, pins, ja, who, person, cats, pairsSrc
         </aside>
       </div>
 
+      {/* ③-1 ここから近い順の5軒（店名・種類・距離）。押すとその店を地図で選ぶ。下の横に流すカードの並びは変えない */}
+      {hereOn && !build && nearest.length > 0 && (
+        <div className="mt-5">
+          <p className="lat-label" style={{ color: MUTE }}>{ja ? 'ここから近い順' : 'Nearest to you'}</p>
+          <ol className="mt-1 flex flex-col">
+            {nearest.map(({ p, d }) => (
+              <li key={p.id} className="border-t" style={{ borderColor: LINE }}>
+                <button type="button" onClick={() => goTo(p.id)} className="flex min-h-[44px] w-full cursor-pointer items-baseline justify-between gap-4 py-2 text-left">
+                  <span className="min-w-0">
+                    <span className="text-[16px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>{p.name}</span>
+                    <span className="ml-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>{p.catLabel}</span>
+                  </span>
+                  <span className="shrink-0 text-[13px] tabular-nums" style={{ color: INK }}>{hereLabel(d, ja)}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
       {/* 自分でルートを組む：選んだ順・合計・並べ替え・リセット・Google マップ */}
       {build && (
         <RouteBuilderPanel points={points} visible={points.filter((q) => !off.has(q.cat))} route={route} setRoute={(r) => { setRoute(r); setNotice(null); }}
@@ -982,6 +1055,7 @@ function ShopCard({ p, ja, who, person, city, onClose }: { p: ShopPin; ja: boole
       <p className="mt-3 text-[16px] leading-relaxed" style={{ color: INK }}>{p.what}</p>
       <FactsLine facts={p.facts} ja={ja} />
       <AddressLine address={p.address} ja={ja} />
+      {city && <HereDistance city={city} lat={p.lat} lon={p.lon} ja={ja} />}
       {/* 見る所は凛のおすすめの店ではないので、凛の一言は付けない。休館の予定などを出す */}
       {!sight && p.note && (
         <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF, color: INK }}>

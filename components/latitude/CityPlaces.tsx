@@ -5,6 +5,7 @@ import { placeAnchor } from '@/components/latitude/CityGuideExtras';
 import TrackLink from '@/components/latitude/TrackLink';
 import { AddressLine, FactsLine, JaName } from '@/components/latitude/ShopFacts';
 import { SaveButton } from '@/components/latitude/SaveButton';
+import HereDistance from '@/components/latitude/HereDistance';
 import { areasOf, sectionsOf, type CityPlace, type LatitudeCity, type PlaceCategory, type PlaceSection } from '@/lib/latitude-places';
 import { latAsset } from '@/lib/latitude-assets';
 import HScroller, { ShowOnMap } from '@/components/latitude/HScroller';
@@ -245,6 +246,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
             <p className="mt-3 text-[16px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
             <FactsLine facts={x} ja={ja} />
             <AddressLine address={x.address} ja={ja} />
+            {x.coords && <HereDistance city={c.slug} lat={x.coords[0]} lon={x.coords[1]} ja={ja} />}{/* ③-1 現在地を出した時だけ */}
             <p className="mt-3 text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
               <span className="mr-2 text-[12px] uppercase tracking-[0.18em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE, fontFamily: 'inherit' }}>{who}</span>
               {ja ? x.note : x.noteEn}
