@@ -9,6 +9,7 @@ import CityShopMap, { type RinStop, type ShopPin } from '@/components/latitude/C
 import { INK, IssueStrip, MUTE, PAPER, PublishedBy, SERIF, SectionLabel } from '@/components/latitude/Latitude';
 import AskTraveller from '@/components/latitude/AskTraveller';
 import RoomCam from '@/components/latitude/RoomCam';
+import { HIDDEN } from '@/lib/latitude-hidden';
 import { CityDayRoute, CityRoute, CityWear, hasDayRoute, placeAnchor } from '@/components/latitude/CityGuideExtras';
 import { getRoom, roomsOpen } from '@/lib/latitude-rooms';
 import { NowInCity } from '@/components/latitude/NowInCity';
@@ -209,6 +210,23 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
 
       {/* 2026-11-11 試作：位置の分かる1日の回り方がある街（金沢）は、店の地図より先に「映像 → 点線の地図 → Google マップ」。回り方のカードもこの中 */}
       <CityDayRoute c={c} ja={ja} who={who} locale={locale} />
+
+      {/* 2026-11-14 この町から行く穴場（lib/latitude-hidden.ts。地元で有名な1か所への1日） */}
+      {HIDDEN.some((h) => h.townSlug === c.slug) && (
+        <section className="px-4 pb-16 md:px-8 md:pb-20">
+          <div className="mx-auto max-w-6xl">
+            <SectionLabel>{ja ? `${c.nameJa}から行く穴場` : `A hidden spot from ${c.name}`}</SectionLabel>
+            <ul className="flex flex-col gap-5">
+              {HIDDEN.filter((h) => h.townSlug === c.slug).map((h) => (
+                <li key={h.slug} className="max-w-2xl">
+                  <Link href={`/${locale}/latitude/places/japan/spot/${h.slug}`} className="text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: '#4f6b3a' }}>{ja ? h.name : h.nameEn}</Link>
+                  <p className="mt-1 text-[14px] leading-relaxed">{ja ? h.what : h.whatEn} <span style={{ color: MUTE }}>{ja ? h.peakNoteJa : h.peakNote}</span></p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {pins.length + sightPins.length > 0 && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
