@@ -25,9 +25,13 @@ export function countryMetadata(c: PlaceCountry, locale: string): Metadata {
   // 2026-11-11 号のない「街の案内」だけの町がある国は「1日を過ごした街」とだけは書かない
   const guides = c.cities.some((q) => !q.issue);
   const names = c.cities.map((q) => (ja ? q.nameJa : q.name));
-  const title = ja
-    ? `${c.name.ja} — LATITUDE の街（${list(names, true)}）｜旅人のおすすめの店と街の案内`
-    : `${c.name.en} — places from LATITUDE: ${list(names, false)} | city guides`;
+  // 2026-11-14 ②-6 日本は町が多く、町名を並べた題が600字を超えていた。短い題に（オーナー了承の文言）。町名は下の一覧に全部ある。ほかの国は今のまま
+  const n = c.cities.length;
+  const title = c.code === 'JP'
+    ? (ja ? `日本——ものづくりの町${n}の案内 | LATITUDE` : `Japan — city guides to ${n} craft towns | LATITUDE`)
+    : ja
+      ? `${c.name.ja} — LATITUDE の街（${list(names, true)}）｜旅人のおすすめの店と街の案内`
+      : `${c.name.en} — places from LATITUDE: ${list(names, false)} | city guides`;
   const description = ja
     ? `${guides ? `LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町、${c.name.ja}の` : `LATITUDE の旅人が1日を過ごした${c.name.ja}の街、`}${list(names, true)}の案内。その街ならではの店、食べる所、器や工芸の店を、編集部が営業を確かめて載せています。`
     : `City guides to ${list(names, false)} in ${c.name.en}, from LATITUDE: where to eat, what is made there, and shops the editors checked are open, from ${guides ? 'a traveller who spent a day there, or whose picks they are' : 'a traveller who spent a day in each'}.`;
@@ -45,12 +49,14 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
   const guides = c.cities.some((q) => !q.issue);
   const name = ja ? c.name.ja : c.name.en;
   const names = c.cities.map((q) => (ja ? q.nameJa : q.name));
+  const jp = c.code === 'JP';
   return (
     <div className="min-h-screen" style={{ background: PAPER, color: INK }}>
       <JsonLd data={citiesJsonLd([c], ja, ja ? `${c.name.ja}の LATITUDE の街` : `LATITUDE cities in ${c.name.en}`)} />
       <JsonLd data={breadcrumbJsonLd(ja, [[ja ? '場所' : 'Places', '/latitude/places'], [name, `/latitude/places/${c.slug}`]])} />
       <IssueStrip locale={locale} current={`places/${c.slug}`} />
-      <header className="mx-auto max-w-6xl px-4 pb-10 pt-16 md:px-8 md:pb-14 md:pt-28">
+      {/* 2026-11-14 ②-6 日本は頭を短く（町名の羅列を外し、下の余白も詰める）。地図と月の絞り込みが1画面めに来るように */}
+      <header className={`mx-auto max-w-6xl px-4 pt-16 md:px-8 md:pt-28 ${jp ? 'pb-6 md:pb-10' : 'pb-10 md:pb-14'}`}>
         <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[12px] uppercase tracking-[0.2em] [&:lang(ja)]:tracking-[0.08em]" style={{ color: MUTE }}>
           <Link href={`/${locale}/latitude/places`} className="-my-[13px] inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
           <span className="mx-2">›</span>
@@ -58,9 +64,13 @@ export default function CountryPlacesPage({ c, locale }: { c: PlaceCountry; loca
         </nav>
         <h1 className="mt-5 text-[56px] leading-[0.95] md:text-[110px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>{name}</h1>
         <p className="mt-6 max-w-xl text-[17px] leading-relaxed md:text-[20px]" style={{ fontFamily: SERIF }}>
-          {ja
-            ? `${guides ? `${c.name.ja}の、LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町` : `LATITUDE の旅人が1日を過ごした${c.name.ja}の街`}：${list(names, true)}。街を押すと、その街の案内へ。`
-            : `${guides ? `The cities in ${c.name.en} where a LATITUDE traveller spent a day, and towns with their picks` : `The cities in ${c.name.en} where a LATITUDE traveller spent a day`}: ${list(names, false)}. Choose one for its city guide.`}
+          {jp
+            ? (ja
+              ? `旅人が1日を過ごした町と、旅人のおすすめの町。東京や京都の先にある、ものづくりの町を${c.cities.length}。地図か、下の一覧から選べます。`
+              : `Towns where a LATITUDE traveller spent a day, and towns with their picks: ${c.cities.length} craft towns beyond Tokyo and Kyoto. Choose one on the map or from the list below.`)
+            : ja
+              ? `${guides ? `${c.name.ja}の、LATITUDE の旅人が1日を過ごした街と、旅人のおすすめの町` : `LATITUDE の旅人が1日を過ごした${c.name.ja}の街`}：${list(names, true)}。街を押すと、その街の案内へ。`
+              : `${guides ? `The cities in ${c.name.en} where a LATITUDE traveller spent a day, and towns with their picks` : `The cities in ${c.name.en} where a LATITUDE traveller spent a day`}: ${list(names, false)}. Choose one for its city guide.`}
         </p>
       </header>
 
