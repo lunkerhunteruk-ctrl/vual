@@ -18,10 +18,10 @@ const NOSCROLL_CSS = '.latitude-noscroll{scrollbar-width:none}.latitude-noscroll
 
 function PeoplePlacesToggle({ locale, places }: { locale: string; places: boolean }) {
   // 2026-11-14 つまみの見た目（高さ 34px のカプセル）は変えず、押せる範囲だけ上下に 7px 広げて 44px に
-  const item = "relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap before:absolute before:inset-x-0 before:-inset-y-[7px] before:content-[''] text-[11px] uppercase tracking-[0.18em] transition-colors duration-300";
+  const item = "relative z-10 flex h-full flex-1 items-center justify-center whitespace-nowrap before:absolute before:inset-x-0 before:-inset-y-[7px] before:content-[''] text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 max-[359px]:tracking-[0.1em]";
   return (
     <div role="group" aria-label="People / Places"
-      className="relative grid h-[34px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px] md:w-[184px]"
+      className="relative grid h-[34px] w-[168px] shrink-0 grid-cols-2 rounded-full p-[2px] max-[374px]:w-[148px] max-[359px]:w-[136px] md:w-[184px]"
       style={{ background: 'rgba(30,29,27,0.06)', boxShadow: 'inset 0 1px 2px rgba(30,29,27,0.10), inset 0 0 0 1px rgba(30,29,27,0.07)' }}>
       <span aria-hidden className="absolute bottom-[2px] top-[2px] w-[calc(50%-2px)] rounded-full transition-transform duration-500"
         style={{
@@ -44,14 +44,16 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
     >
       <style>{NOSCROLL_CSS}</style>
       {/* 2026-11-14 押せる高さを 44px にした分、スマホ幅 375 で右の EN がはみ出さないよう、スマホだけ間を gap-3・トグルの幅を 168px に */}
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 md:gap-4 md:px-8">
-      <Link href={`/${locale}/latitude`} className="inline-flex min-h-[44px] shrink-0 items-center text-[12px] uppercase tracking-[0.18em]" style={{ color: INK }}>
+      {/* 2026-11-14 幅 360px（多くの Android）でも JA / EN まで収まるよう、374px 以下は間・トグルの幅・題字の字間を少し詰め、
+            もともと幅 0 か数 px しか見えていない号のリンクの列を出さない（HTML には残る。JA / EN は右に寄せる）。359px 以下（320px など）は左右の余白・字も少し詰める */}
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 max-[374px]:gap-2 max-[359px]:px-3 md:gap-4 md:px-8">
+      <Link href={`/${locale}/latitude`} className="inline-flex min-h-[44px] shrink-0 items-center text-[12px] uppercase tracking-[0.18em] max-[374px]:tracking-[0.1em] max-[359px]:text-[11px]" style={{ color: INK }}>
         Latitude
       </Link>
       {/* 2026-11-11 ユーザー：人と場所を、横長のカプセルのトグルに（左＝People が既定・右＝Places）。今どちらのモードかが分かるように。
             つまみはすりガラス（リキッドグラス）風：うすい白・ぼかし・上の縁の光・やわらかい影 */}
         <PeoplePlacesToggle locale={locale} places={!!current?.startsWith('places')} />
-      <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto">
+      <FadeScroller className="latitude-noscroll flex min-w-0 flex-1 items-center gap-6 overflow-x-auto max-[374px]:hidden">
         <span className="h-3 w-px shrink-0" style={{ background: 'rgba(30,29,27,0.2)' }} />
         {liveIssues().map((i) => {
           const on = i.slug === current;
@@ -70,7 +72,7 @@ export function IssueStrip({ locale, current }: { locale: string; current?: stri
         })}
       </FadeScroller>
       {/* 言語の切り替え：同じページの日本語版・英語版へ */}
-      <div className="-mr-2 flex shrink-0 items-center text-[12px] uppercase tracking-[0.18em]">
+      <div className="-mr-2 flex shrink-0 items-center text-[12px] uppercase tracking-[0.18em] max-[374px]:ml-auto">
         {/* 2026-11-14 押せる高さ 44px・左右に px-2（字の間はその余白で空ける） */}
         {(['ja', 'en'] as const).map((l, n) => (
           <span key={l} className="flex items-center">
