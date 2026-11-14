@@ -178,7 +178,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
       <header className={`mx-auto max-w-6xl px-4 pb-10 md:px-8 md:pb-16 ${bannerOf(c.slug) ? 'pt-8 md:pt-12' : 'pt-16 md:pt-28'}`}>
         {/* 2026-11-11 道しるべ：場所 › 国 › 街 */}
         {home ? (
-          <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+          <nav aria-label={ja ? '道しるべ' : 'Breadcrumb'} className="lat-label" style={{ color: MUTE }}>
             <Link href={`/${locale}/latitude/places`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? '場所' : 'Places'}</Link>
             <span className="mx-2">›</span>
             <Link href={`/${locale}/latitude/places/${home.slug}`} className="underline-offset-4 hover:underline" style={{ color: MUTE }}>{ja ? home.name.ja : home.name.en}</Link>
@@ -186,7 +186,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             <span aria-current="page" style={{ color: INK }}>{ja ? c.nameJa : c.name}</span>
           </nav>
         ) : (
-          <p className="text-[11px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+          <p className="lat-label" style={{ color: MUTE }}>
             Latitude&nbsp;&nbsp;·&nbsp;&nbsp;{ja ? '街' : 'Places'}
           </p>
         )}
@@ -194,7 +194,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
         <h1 className="mt-3 text-[56px] leading-[0.95] md:text-[110px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '-0.01em' }}>
           {ja ? c.nameJa : c.name}
         </h1>
-        <p className="mt-5 text-[12px] uppercase tracking-[0.4em]">{ja ? c.countryJa : c.country}</p>
+        <p className="lat-label mt-5">{ja ? c.countryJa : c.country}</p>
         {/* 2026-11-11 国の形の小さな図に街の点（外国の人が、その街がどこかすぐ分かるように） */}
         {c.locator && (c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug]) && (
           <CityLocator className="mt-7" country={c.countryCode ?? 'JP'} at={(c.locator.at ?? c.coords ?? PLACES[c.issue ?? c.slug])!}
@@ -290,7 +290,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             ))}
           </div>
           <div className="mt-14 flex flex-col gap-3">
-            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '地区から' : 'By area'}</p>
+            <p className="lat-label" style={{ color: MUTE }}>{ja ? '地区から' : 'By area'}</p>
             <AreaLinks c={c} locale={locale} ja={ja} />
           </div>
           <p className="mt-16 max-w-2xl text-[12px] leading-relaxed" style={{ color: MUTE }}>
@@ -309,7 +309,7 @@ export default async function LatitudeCityPage({ params }: { params: Promise<{ l
             <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {sightPins.map((x) => (
                 <li key={x.id} id={x.id} className="scroll-mt-24">
-                  <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{x.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{x.area}</p>
+                  <p className="lat-label" style={{ color: MUTE }}>{x.catLabel}&nbsp;&nbsp;·&nbsp;&nbsp;{x.area}</p>
                   <p className="mt-2 text-[20px] leading-snug" style={{ fontFamily: SERIF }}>{x.name}</p>
                   <p className="mt-1 text-[14px] leading-relaxed">{x.what}</p>
                   {x.notice && <p className="mt-2 text-[12px] leading-relaxed" style={{ color: '#7a241e' }}>{x.notice}</p>}

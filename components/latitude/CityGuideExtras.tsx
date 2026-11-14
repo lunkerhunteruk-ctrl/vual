@@ -35,7 +35,7 @@ export function CityWear({ c, ja, who }: { c: LatitudeCity; ja: boolean; who: st
               {/* 服が頭から靴まで見えるように、号の絵の縦長のまま（切ると顔や足が切れる） */}
               <img src={latAsset(`places/${c.slug}/${l.image}`)} alt={ja ? l.itemsJa : l.items} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '9 / 16' }} />
               <figcaption className="flex flex-col gap-2">
-                <span className="text-[10px] uppercase tracking-[0.3em] tabular-nums" style={{ color: MUTE }}>{l.time}</span>
+                <span className="lat-label tabular-nums" style={{ color: MUTE }}>{l.time}</span>
                 <span className="text-[14px] leading-relaxed">{ja ? l.itemsJa : l.items}</span>
                 <span className="text-[16px] leading-relaxed" style={{ fontFamily: SERIF }}>
                   <span className="mr-2 text-[10px] uppercase tracking-[0.25em]" style={{ color: MUTE }}>{who}</span>
@@ -66,7 +66,7 @@ export function CityRoute({ c, ja, who, withMap = false, bare = false }: { c: La
   // 2026-11-11 ユーザー「縦スクロールが多すぎる」→ 1つの時刻＝1枚のカードを横に流す（上に写真 4:5、下に時刻・場所・一文・近くのおすすめ）
   const list = (
         <HScroller count={c.route.length} label={ja ? `${who}の1日の回り方` : `${who}'s day, in order`} ja={ja}
-          head={<p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? `${who}の1日の回り方` : `${who}'s day, in order`}</p>}>
+          head={<p className="lat-label" style={{ color: MUTE }}>{ja ? `${who}の1日の回り方` : `${who}'s day, in order`}</p>}>
           {c.route.map((r, k) => {
             const num = withMap ? nums[k] : 0;
             const near = (r.near || []).map((n) => byName.get(n)).filter(Boolean) as CityPlace[];
@@ -172,7 +172,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
         <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:items-stretch md:gap-8 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
           {reel && (
             <div>
-              <p className="mb-3 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? '① この1日を見る' : '1 · Watch the day'}</p>
+              <p className="lat-label mb-3" style={{ color: MUTE }}>{ja ? '① この1日を見る' : '1 · Watch the day'}</p>
               <div className="relative mx-auto w-[72vw] max-w-[320px] overflow-hidden bg-black md:w-full md:max-w-none" style={{ aspectRatio: '9 / 16' }}>
                 <ReelPlayer src={reel.src} poster={reel.poster} title={reel.title} />
               </div>
@@ -188,7 +188,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
             </div>
           )}
           <div className="flex min-w-0 flex-col">
-            <p className="mb-3 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? '② 同じ道を、地図で' : '2 · The same day, on the map'}</p>
+            <p className="lat-label mb-3" style={{ color: MUTE }}>{ja ? '② 同じ道を、地図で' : '2 · The same day, on the map'}</p>
             <div className="min-h-0 flex-1">
               <CityRouteMap src={`/latitude/citymaps/${c.slug}.json`} stops={stops} ja={ja} walk={walk} />
             </div>
@@ -196,7 +196,7 @@ export function CityDayRoute({ c, ja, who, locale }: { c: LatitudeCity; ja: bool
         </div>
         <div className="mt-5 flex flex-col gap-4 md:mt-6 md:flex-row md:items-start md:justify-between md:gap-10">
           <div>
-            <p className="mb-3 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? '③ 歩く' : '3 · Walk it'}</p>
+            <p className="lat-label mb-3" style={{ color: MUTE }}>{ja ? '③ 歩く' : '3 · Walk it'}</p>
             <a href={googleDirectionsUrl(c)} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-5 py-3 text-[11px] uppercase tracking-[0.3em] transition-colors hover:bg-[rgba(30,29,27,0.06)]"
               style={{ border: `1px solid ${INK}`, color: INK }}>

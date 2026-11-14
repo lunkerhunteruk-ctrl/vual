@@ -61,7 +61,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         <h1 className="text-[56px] uppercase leading-none md:text-[104px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: '0.12em', color: INK }}>
           Latitude
         </h1>
-        <p className="mt-6 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+        <p lang="en" className="lat-label mt-6" style={{ color: MUTE }}>
           A travelling issue by VUAL
         </p>
         {locale === 'ja' ? (
@@ -75,7 +75,7 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         )}
         {/* 2026-10-30 6人それぞれの旅。名前からその人のページへ */}
         <nav id="people" className="mt-10 scroll-mt-20">
-          <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>People</p>
+          <p lang="en" className="lat-label" style={{ color: MUTE }}>People</p>
           {/* 2026-11-01 ユーザー：スマホで6人が1行に収まるように（字を少し小さく・字間を詰め、幅いっぱいに均等に並べる） */}
           <ul className="mt-3 flex flex-nowrap justify-between text-[10px] uppercase tracking-[0.16em] md:flex-wrap md:justify-start md:gap-x-7 md:gap-y-2 md:text-[12px] md:tracking-[0.3em]">
             {PEOPLE.map((p) => (
@@ -88,9 +88,9 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
         {/* 2026-11-11 街の案内（旅人のおすすめの店）への入口。号のページの奥にしか無かった */}
         <nav className="mt-8">
           {/* 2026-11-11 場所から探すページ（地図）への入口 */}
-          <p className="flex items-baseline gap-4 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+          <p lang="en" className="lat-label flex items-baseline gap-4" style={{ color: MUTE }}>
             Places
-            <Link href={`/${locale}/latitude/places`} className="underline underline-offset-4" style={{ color: INK }}>{locale === 'ja' ? '地図で見る →' : 'On the map →'}</Link>
+            <Link href={`/${locale}/latitude/places`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label underline underline-offset-4" style={{ color: INK }}>{locale === 'ja' ? '地図で見る →' : 'On the map →'}</Link>
           </p>
           {/* 2026-11-12 ユーザー：街が増えると名前の壁になる。ここには号のある街だけを並べ、案内だけの街は数を1行で（一覧は場所のページで地方ごとに） */}
           {(() => {
@@ -135,20 +135,20 @@ export default async function LatitudeIndexPage({ params }: { params: Promise<{ 
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               />
             </div>
-            <p className="mt-4 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+            <p lang="en" className="lat-label mt-4" style={{ color: MUTE }}>
               {issueNo(i)}
             </p>
             <p className="mt-1 text-[26px] leading-tight" style={{ fontFamily: SERIF }}>
               {i.latitude}
             </p>
-            <p className="mt-1 text-[11px] uppercase tracking-[0.35em]">{i.city}</p>
+            <p lang="en" className="lat-label mt-1">{i.city}</p>
           </Link>
         ))}
       </main>
       {/* 2026-10-30 6人が今どこにいるか（最後の1日の場所がまたたく）。押すとその人のページへ */}
       <section className="mx-auto max-w-6xl pb-24 md:px-8 md:pb-32">
         <div className="px-4 md:px-0">
-          <SectionLabel>Where they are</SectionLabel>
+          <SectionLabel lang="en">Where they are</SectionLabel>
         </div>
         <TravellerMap travellers={mapTravellers()} locale={locale} />
       </section>

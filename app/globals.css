@@ -412,3 +412,7 @@ img {
   0%   { transform: scale(1.0) translate(0, 0); }
   100% { transform: scale(1.12) translate(-2.5%, -2.5%); }
 }
+
+/* LATITUDE の小さい見出し。英語は大文字で字間を広く、日本語は少し大きく字間を詰める */
+.lat-label { font-size: 12px; line-height: 1.5; letter-spacing: 0.2em; text-transform: uppercase; }
+.lat-label:lang(ja) { font-size: 13px; letter-spacing: 0.08em; }

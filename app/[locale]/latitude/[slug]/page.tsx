@@ -173,7 +173,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {/* リール */}
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl">
-          <SectionLabel>Film</SectionLabel>
+          <SectionLabel lang="en">Film</SectionLabel>
           <Reel issue={issue} />
         </div>
       </section>
@@ -184,7 +184,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {/* カルーセルのページ */}
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl">
-          <SectionLabel>The issue</SectionLabel>
+          <SectionLabel lang="en">The issue</SectionLabel>
           <Pages issue={issue} stepPages={stepOn ? await stepIntoPages(issue.slug) : []} stepOn={stepOn} sample={stepOn ? sample : null} />
         </div>
       </section>
@@ -193,7 +193,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
           <div>
-            <SectionLabel>Field notes&nbsp;&nbsp;—&nbsp;&nbsp;{issue.latitude}</SectionLabel>
+            <SectionLabel lang="en">Field notes&nbsp;&nbsp;—&nbsp;&nbsp;{issue.latitude}</SectionLabel>
             <h2 className="text-[36px] leading-tight md:text-[48px]" style={{ fontFamily: SERIF, fontWeight: 400, letterSpacing: 0, color: INK }}>
               {notesTitle}
             </h2>
@@ -227,7 +227,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {/* 号の色 */}
       <section className="px-4 pb-20 md:px-8 md:pb-32">
         <div className="mx-auto max-w-6xl">
-          <SectionLabel>
+          <SectionLabel lang="en">
             The colours of {issue.latitude}
           </SectionLabel>
           <Palette issue={issue} />
@@ -240,7 +240,7 @@ export default async function LatitudeIssuePage({ params, searchParams }: { para
       {issue.seo && (
         <section className="px-4 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-6xl md:grid md:grid-cols-[1fr_2fr] md:gap-16">
-            <SectionLabel>{J?.seo ? <>旅の覚え書き&nbsp;&nbsp;—&nbsp;&nbsp;{MONTH_JA[issue.seo.month] ?? issue.seo.month}の{nowName}</> : <>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</>}</SectionLabel>
+            <SectionLabel lang={J?.seo ? undefined : 'en'}>{J?.seo ? <>旅の覚え書き&nbsp;&nbsp;—&nbsp;&nbsp;{MONTH_JA[issue.seo.month] ?? issue.seo.month}の{nowName}</> : <>Notes for the trip&nbsp;&nbsp;—&nbsp;&nbsp;{issue.city} in {issue.seo.month}</>}</SectionLabel>
             <dl className="flex max-w-2xl flex-col gap-4 text-[14px] leading-relaxed" style={{ color: MUTE }}>
               <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '天気' : 'Weather'}</dt><dd className="mt-1">{trip!.weather}</dd></div>
               <div><dt className="text-[10px] uppercase tracking-[0.25em]" style={{ color: INK }}>{J?.seo ? '着ていた服' : 'What she wore'}</dt><dd className="mt-1">{trip!.wore}</dd></div>

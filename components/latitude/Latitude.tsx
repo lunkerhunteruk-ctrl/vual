@@ -116,7 +116,7 @@ export function MoreIssues({ locale, current }: { locale: string; current: strin
   return (
     <section className="pb-20 md:pb-28">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <SectionLabel>More issues</SectionLabel>
+        <SectionLabel lang="en">More issues</SectionLabel>
       </div>
       <FadeScroller className="latitude-noscroll mx-auto flex max-w-6xl snap-x scroll-px-4 gap-4 overflow-x-auto px-4 md:scroll-px-8 md:gap-6 md:px-8">
         {others.map((i) => (
@@ -126,9 +126,9 @@ export function MoreIssues({ locale, current }: { locale: string; current: strin
               <img src={assetUrl(i, 'cover.jpg')} alt={`LATITUDE ${issueNo(i)} — ${i.latitude} ${i.city}`} loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
             </div>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{issueNo(i)}</p>
+            <p lang="en" className="lat-label mt-3" style={{ color: MUTE }}>{issueNo(i)}</p>
             <p className="mt-1 text-[20px] leading-tight" style={{ fontFamily: SERIF }}>{i.latitude}</p>
-            <p className="mt-1 text-[10px] uppercase tracking-[0.3em]">{i.city}</p>
+            <p lang="en" className="lat-label mt-1">{i.city}</p>
           </Link>
         ))}
       </FadeScroller>
@@ -155,10 +155,10 @@ export function Palette({ issue }: { issue: LatitudeIssue }) {
         {issue.colours.map((c) => (
           <div key={c.name} className="min-w-0">
             {chip(c.hex)}
-            <p className="mt-3 text-[10px] uppercase leading-snug tracking-[0.2em]" style={{ color: INK }}>
+            <p className="mt-3 text-[12px] uppercase leading-snug tracking-[0.2em]" style={{ color: INK }}>
               {c.name}
             </p>
-            <p className="mt-1 text-[10px] tracking-[0.15em]" style={{ color: MUTE }}>
+            <p className="mt-1 text-[12px] tracking-[0.15em]" style={{ color: MUTE }}>
               {c.hex.toUpperCase()}
             </p>
           </div>
@@ -172,7 +172,7 @@ export function Palette({ issue }: { issue: LatitudeIssue }) {
         </div>
         <ol className="mt-5 grid grid-cols-1 gap-y-2.5">
           {issue.colours.map((c) => (
-            <li key={c.name} className="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em]" style={{ color: INK }}>
+            <li key={c.name} className="flex items-center gap-2 text-[12px] uppercase tracking-[0.15em]" style={{ color: INK }}>
               <span className="inline-block h-2.5 w-2.5 shrink-0" style={{ background: c.hex }} />
               <span className="truncate">{c.name}</span>
               <span className="ml-auto shrink-0" style={{ color: MUTE }}>
@@ -199,9 +199,10 @@ export function LatitudeFigure({ value }: { value: string }) {
   );
 }
 
-export function SectionLabel({ children }: { children: React.ReactNode }) {
+// lang：日本語のページでも英語のまま出す見出しは 'en'（日本語用の字間にならないように）
+export function SectionLabel({ children, lang }: { children: React.ReactNode; lang?: string }) {
   return (
-    <p className="mb-8 text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+    <p lang={lang} className="lat-label mb-8" style={{ color: MUTE }}>
       {children}
     </p>
   );
@@ -210,14 +211,14 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
 // 発行元の一行：雑誌の奥付のように、いちばん下に小さく。押すと VUAL のトップへ戻る
 export function PublishedBy({ locale }: { locale: string }) {
   return (
-    <p className="text-center text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>
+    <p lang="en" className="lat-label text-center" style={{ color: MUTE }}>
       Published by{' '}
       <Link href={`/${locale}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
         VUAL
       </Link>
       {/* 2026-10-30 奥付（出版元・編集・号の作り方）へ */}
       &nbsp;&nbsp;·&nbsp;&nbsp;
-      <Link href={`/${locale}/latitude/about`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
+      <Link href={`/${locale}/latitude/about`} lang={locale === 'ja' ? 'ja' : undefined} className="lat-label underline-offset-4 hover:underline" style={{ color: INK }}>
         {locale === 'ja' ? 'この雑誌について' : 'About'}
       </Link>
     </p>
@@ -232,7 +233,7 @@ export function NewsletterSignup({ locale }: { locale: string }) {
   const ja = locale === 'ja';
   return (
     <div className="max-w-xl">
-      <p className="text-[10px] uppercase tracking-[0.35em]" style={{ color: MUTE }}>{ja ? 'Notes' : 'Notes, by email'}</p>
+      <p lang="en" className="lat-label" style={{ color: MUTE }}>{ja ? 'Notes' : 'Notes, by email'}</p>
       {/* 2026-11-08 Substack の Issues の欄を消した（ユーザー決定）。届くのは制作ノート（Notes）だけ */}
       <p className="mt-3 text-[17px] leading-relaxed md:text-[19px]" style={{ fontFamily: SERIF }}>
         {ja ? <>一号ずつ、どう作ったか。<br />制作ノートを note に書いています。</> : 'A note on how each issue was made, by email.'}

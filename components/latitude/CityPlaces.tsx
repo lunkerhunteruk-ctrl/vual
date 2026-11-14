@@ -33,7 +33,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
         {linkHeading ? (
           <>
             {sec.kind === 'industry' && (
-              <p className="mb-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
+              <p className="lat-label mb-2" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
             )}
             <Link href={`/${locale}/latitude/places/${c.slug}/${sec.key}`} className="text-[22px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
               {label}
@@ -45,7 +45,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
           <figure className="mt-4 w-[46vw] max-w-[200px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
-            <figcaption className="mt-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</figcaption>
+            <figcaption className="lat-label mt-2" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</figcaption>
           </figure>
         )}
       </div>
@@ -57,7 +57,7 @@ export function PlaceGroup({ c, sec, ja, locale, who, canAsk, linkHeading }: {
                 {ja ? x.name : x.nameEn}
                 {x.ad && <span className="ml-3 align-middle text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '広告' : 'Ad'}</span>}
               </h3>
-              <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? x.area : x.areaEn}</p>
+              <p className="lat-label" style={{ color: MUTE }}>{ja ? x.area : x.areaEn}</p>
             </div>
             <p className="mt-2 max-w-2xl text-[15px] leading-relaxed">{ja ? x.what : x.whatEn}</p>
             <p className="mt-2 max-w-2xl text-[15px] leading-relaxed" style={{ fontFamily: SERIF }}>
@@ -167,7 +167,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
               </span>
             )}
             <div className="flex flex-1 flex-col justify-end p-5">
-              <p className="text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
+              <p className="lat-label" style={{ color: MUTE }}>{ja ? `${c.nameJa}ならでは` : `Made in ${c.name}`}</p>
               <p className="mt-3 text-[14px] leading-relaxed">{ja ? sec.about.ja : sec.about.en}</p>
               {ph && (
                 <p className="mt-4 text-[10px] leading-relaxed" style={{ color: MUTE }}>
@@ -187,7 +187,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
         )}
         {sec.items.map((x) => (
           <li key={x.name} id={placeAnchor(x)} className={`${CARD_W} flex shrink-0 snap-start flex-col scroll-mt-24 border p-5`} style={{ borderColor: 'rgba(30,29,27,0.16)' }}>
-            <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>
+            <p className="lat-label" style={{ color: MUTE }}>
               {ja ? x.area : x.areaEn}
               {x.ad && <span className="ml-3">{ja ? '広告' : 'Ad'}</span>}
             </p>
@@ -210,7 +210,7 @@ export function PlaceRow({ c, sec, ja, locale, who, canAsk, mapIds }: {
           <li className={`${CARD_W} shrink-0 snap-start`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={latAsset(`places/${c.slug}/${im.file}`)} alt={ja ? im.altJa : im.alt} loading="lazy" className="block w-full object-cover" style={{ aspectRatio: '4 / 5' }} />
-            <p className="mt-2 text-[9px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</p>
+            <p className="lat-label mt-2" style={{ color: MUTE }}>{ja ? `${who}の1日から` : `From ${who}'s day`}</p>
           </li>
         )}
       </HScroller>

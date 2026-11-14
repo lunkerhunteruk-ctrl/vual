@@ -27,7 +27,7 @@ export function CountryCityList({ countries, locale, linkCountry = true, heading
               <>
                 {main.length > 0 && (
                   <>
-                    <p className="mt-6 text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? '旅人が1日を過ごした町' : 'Where a traveller spent a day'}</p>
+                    <p className="lat-label mt-6" style={{ color: MUTE }}>{ja ? '旅人が1日を過ごした町' : 'Where a traveller spent a day'}</p>
                     <Rows qs={main} locale={locale} />
                   </>
                 )}
@@ -43,7 +43,7 @@ export function CountryCityList({ countries, locale, linkCountry = true, heading
                     <dl className="flex flex-col pb-2">
                       {groups.map(({ r, qs }) => (
                         <div key={r.key} className="grid grid-cols-1 gap-1 border-t py-3" style={{ borderColor: 'rgba(30,29,27,0.08)' }}>
-                          <dt className="text-[10px] uppercase tracking-[0.3em]" style={{ color: MUTE }}>{ja ? r.ja : r.en}</dt>
+                          <dt className="lat-label" style={{ color: MUTE }}>{ja ? r.ja : r.en}</dt>
                           <dd className="flex min-w-0 flex-wrap gap-x-5 gap-y-1.5 text-[15px]" style={{ fontFamily: SERIF }}>
                             {qs.map((q) => (
                               <Link key={q.slug} href={`/${locale}/latitude/places/${q.slug}`} className="underline-offset-4 hover:underline" style={{ color: INK }}>
