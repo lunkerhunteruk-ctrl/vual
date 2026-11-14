@@ -888,12 +888,15 @@ function CityPin({ q, sx, sy, left, dy = 0, locale, ja }: { q: PlaceCity; sx: nu
   );
 }
 
-// スマホの一覧の町のカード。号の町は表紙、ほかは紙に緯度だけ（街のページの「1日の回り方」の写真の無い時刻と同じ形）。
+// スマホの一覧の町のカード。2026-11-14 ユーザー：町の写真（街の案内の頭の写真の小さな WebP）を使う。号の表紙は下の「旅人が1日を過ごした町」の方へ。
+// 町の写真が無い町だけ、号の表紙か、紙に緯度だけ（街のページの「1日の回り方」の写真の無い時刻と同じ形）。
 // 街のページのある町は押すとそのページへ。試しの町は、地図でその町に寄って名前を強める
 function TownCard({ q, locale, ja, on, onPick }: { q: PlaceCity; locale: string; ja: boolean; on: boolean; onPick: () => void }) {
-  const face = q.issue ? (
+  const photo = q.peek?.banner ?? q.issue?.cover;
+  const face = photo ? (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={q.issue.cover} alt="" loading="lazy" className="block w-full object-cover" style={{ aspectRatio: '4 / 3' }} />
+    <img src={photo} alt="" loading="lazy" decoding="async" className="block w-full object-cover"
+      style={{ aspectRatio: '4 / 3', objectPosition: q.peek?.banner ? q.peek.pos ?? '50% 50%' : undefined, background: '#e6e2da', outline: on ? `1px solid ${RED}` : undefined }} />
   ) : (
     <div className="flex w-full items-end p-3" style={{ aspectRatio: '4 / 3', border: `1px solid ${on ? RED : LINE}` }}>
       <span className="text-[26px] leading-none tabular-nums" style={{ fontFamily: SERIF, color: MUTE }}>{q.latitude.replace(' N', '')}</span>

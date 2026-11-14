@@ -70,12 +70,20 @@ function Rows({ qs, locale }: { qs: PlaceCountry['cities']; locale: string }) {
   return (
     <ul className="mt-4 flex flex-col">
       {qs.map((q) => (
-        <li key={q.slug} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0 border-t py-1" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
-          <span className="flex items-baseline gap-4">
+        <li key={q.slug} className="flex flex-wrap items-center justify-between gap-x-6 gap-y-0 border-t py-1" style={{ borderColor: 'rgba(30,29,27,0.14)' }}>
+          <span className="flex items-center gap-3">
+            {q.issue && (
+              // 2026-11-14 ユーザー：号のある町は、号の表紙を丸い小さな写真で（地方の横の一覧は町の写真）
+              <Link href={`/${locale}/latitude/${q.issue.slug}`} className="block shrink-0" aria-label={ja ? `${q.nameJa}の号` : `The ${q.name} issue`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={q.issue.cover} alt="" width={36} height={36} decoding="async" className="block rounded-full object-cover" style={{ width: 36, height: 36, objectPosition: '50% 22%', background: '#e6e2da' }} />
+              </Link>
+            )}
             <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center text-[20px] underline-offset-4 hover:underline" style={{ fontFamily: SERIF, color: INK }}>
               {ja ? q.nameJa : q.name}
             </Link>
-            <span className="text-[12px] uppercase tracking-[0.2em] tabular-nums" style={{ color: MUTE }}>{q.latitude}</span>
+            {/* 丸い写真のある行は、狭いスマホで緯度をしまって1行に収める */}
+            <span className={`text-[12px] uppercase tracking-[0.2em] tabular-nums ${q.issue ? 'max-[419px]:hidden' : ''}`} style={{ color: MUTE }}>{q.latitude}</span>
           </span>
           <span className="ml-auto flex gap-x-5 whitespace-nowrap text-[12px] uppercase tracking-[0.2em] max-[374px]:gap-x-3 max-[374px]:tracking-[0.16em] [&:lang(ja)]:tracking-[0.08em]">
             <Link href={`/${locale}/latitude/places/${q.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline" style={{ color: INK }}>
