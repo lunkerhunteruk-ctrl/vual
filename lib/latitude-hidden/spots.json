@@ -1122,6 +1122,55 @@
    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
    "page": "https://commons.wikimedia.org/wiki/File:Akita-Hachimantai_Dragon_Eye_-xl.jpg",
    "y": 45
+  },
+  "baseMap": true,
+  "walk": {
+   "distance": 73745,
+   "duration": 0,
+   "legs": [
+    {
+     "distance": 36869,
+     "duration": 0,
+     "line": [
+      [
+       39.70225,
+       141.13554
+      ],
+      [
+       39.9542,
+       140.85422
+      ]
+     ]
+    },
+    {
+     "distance": 1527,
+     "duration": 0,
+     "line": [
+      [
+       39.9542,
+       140.85422
+      ],
+      [
+       39.9417,
+       140.8617
+      ]
+     ]
+    },
+    {
+     "distance": 35349,
+     "duration": 0,
+     "line": [
+      [
+       39.9417,
+       140.8617
+      ],
+      [
+       39.70225,
+       141.13554
+      ]
+     ]
+    }
+   ]
   }
  },
  {
